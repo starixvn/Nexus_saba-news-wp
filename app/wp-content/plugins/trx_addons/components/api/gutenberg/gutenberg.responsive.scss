@@ -1,0 +1,60 @@
+@import "../../../css/_mixins.scss";
+@import "../../../css/_trx_addons.vars.scss";
+
+//@mixin gutenberg--xl() {
+@media #{$media_xl} {
+	/* Gutenberg */
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:first-child),
+	.wp-block-column:not(:first-child) {
+		margin-left: $xl_grid_gap / 2;
+	}
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:last-child),
+	.wp-block-column:not(:last-child) {
+		margin-right: $xl_grid_gap / 2;
+	}
+}
+
+//@mixin gutenberg--lg() {
+@media #{$media_lg} {
+	/* Gutenberg */
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:first-child),
+	.wp-block-column:not(:first-child) {
+		margin-left: $lg_grid_gap / 2;
+	}
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:last-child),
+	.wp-block-column:not(:last-child) {
+		margin-right: $lg_grid_gap / 2;
+	}
+}
+
+//@mixin gutenberg--md() {
+@media #{$media_md} {
+	/* Gutenberg */
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:first-child),
+	.wp-block-column:not(:first-child) {
+		margin-left: $md_grid_gap / 2;
+	}
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:last-child),
+	.wp-block-column:not(:last-child) {
+		margin-right: $md_grid_gap / 2;
+	}
+}
+
+//@mixin gutenberg--sm() {
+@media #{$media_sm} {
+	/* Gutenberg */
+	.wp-block-columns {
+		@include flex-direction(column);
+	}
+	.wp-block-columns[class*="has-"] .wp-block-column {
+		width: 100%;
+	}
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:first-child),
+	.wp-block-column:not(:first-child) {
+		margin-left: 0;
+	}
+	.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"]:not(:last-child),
+	.wp-block-column:not(:last-child) {
+		margin-right: 0;
+	}
+}

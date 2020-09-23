@@ -1,0 +1,47 @@
+/* Panel */
+/***************************************/
+.components-panel__body > .components-panel__body-title {
+	background-color: #edeff0;
+}
+.components-panel__body.is-opened > .components-panel__body-title {
+	margin-bottom: 15px !important;
+}
+.components-color-palette-preview {
+	border: 1px solid #8d96a0;
+	border-radius: 5px;
+	height: 22px;
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.components-toolbar .components-icon-button.editor-block-switcher__toggle {
+	overflow: hidden
+}
+
+div.edit-post-layout {
+	height: unset;
+}
+div.edit-post-layout__content {
+	overflow-y: visible !important;
+}
+.edit-post-sidebar h3 {
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+div.edit-post-visual-editor {
+	padding: 3em 0;
+}
+
+.wp-block-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] > .editor-block-list__block-edit > div > .editor-inner-blocks {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.wp-block-columns.has-3-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 33.3333%; }
+.wp-block-columns.has-4-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 25%; }
+.wp-block-columns.has-5-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 20%; }
+.wp-block-columns.has-6-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 16.6666%; }
+.wp-block-columns.has-7-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 14.2857%; }
+.wp-block-columns.has-8-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 12.5%; }
+.wp-block-columns.has-9-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 11.1111%; }
+.wp-block-columns.has-10-columns > .editor-inner-blocks > .editor-block-list__layout > [data-type="core/column"] { flex-basis: 10%; }

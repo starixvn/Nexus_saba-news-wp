@@ -1,0 +1,128 @@
+/*----- Importer RTL -----*/
+.trx_importer_advanced_settings_title:after {
+  left: 1em;
+  right: auto;
+}
+.trx_importer_part_pages {
+  margin: 0 2em 1em 0;
+}
+.trx_importer_advanced_settings_title {
+  padding: 1em 1em 1em 4em;
+}
+.trx_addons_tabs_section #trx_importer_form .trx_buttons {
+  text-align: left;
+}
+
+/*----- MSGBox RTL Styles -----*/
+.trx_addons_msgbox .trx_addons_msgbox_icon {
+  right: 18px;
+  left: auto;
+}
+.trx_addons_msgbox .trx_addons_msgbox_close {
+  left: 0;
+  right: auto;
+}
+.trx_addons_msgbox .trx_addons_msgbox_header {
+  padding: 1em 3.75em 1em 2em;
+}
+
+/*----- Elementor RTL -----*/
+#elementor-panel-categories .elementor-panel-category-title:before {
+  left: 8px;
+  right: auto;
+}
+
+/*----- Options RTL -----*/
+.trx_addons_options_item_info .trx_addons_options_item_title {
+  text-align: right;
+}
+.trx_addons_options_item_title {
+  margin: 0.3em 0 0.5em 0.5em;
+  padding-left: 20px;
+  padding-right: 0;
+  float: right;
+  text-align: right;
+}
+.trx_addons_options_clone_control_add {
+  right: auto;
+  left: 30px;
+}
+.trx_addons_options_clone_control_delete {
+  left: 0;
+  right: auto;
+}
+[class*="trx_addons_column-"] {
+  padding-left: 20px;
+  padding-right: 0;
+}
+[class*="trx_addons_column-"] .trx_addons_options_item_data {
+  text-align: right;
+}
+[class*="trx_addons_column-"] .trx_addons_options_item_title {
+  text-align: right;
+  padding-left: 0;
+}
+.trx_addons_options_item_field .trx_addons_options_item_label + .trx_addons_options_item_label {
+  margin-right: 1em;
+  margin-left: 0;
+}
+#trx_addons_options_tabs.with_tabs .trx_addons_options_section {
+  margin-right: 0;
+  margin-left: 2em;
+}
+.trx_addons_icon_selector + .trx_addons_list_icons {
+  padding: 0 1px 1px 0;
+  left: 0!important;
+  right: 10px;
+}
+
+
+/*----- Theme Panel RTL Styles -----*/
+.trx_addons_theme_panel .trx_addons_tabs_section {
+  margin-left: 2em;
+  margin-right: 0;
+}
+.trx_addons_theme_panel_sys_info table th {
+  text-align: right;
+}
+[class*="trx_addons_theme_panel_section_title_label"] {
+  margin-right: 1em;
+  margin-left: 0;
+}
+.trx_addons_theme_panel_plugins_group_title:after {
+  left: 1em;
+  right: auto;
+}
+.trx_addons_theme_panel_plugins_list_item_check {
+  margin-left: 1.5em;
+  margin-right: 0;
+}
+.trx_addons_theme_panel_plugins_list_item_info {
+  padding-right: 1.5em;
+  padding-left: 0;
+}
+.trx_addons_theme_panel_plugins_list_item_state {
+  left: -18px;
+  right: auto;
+}
+.trx_addons_theme_panel_plugins_list_item_state:before {
+  right: 1em;
+  left: auto;
+  border-width: 4px 0 0 7px;
+}
+.trx_addons_theme_panel_plugins_group_title {
+  padding: 0.75em 1em 0.75em 5em;
+}
+.trx_addons_theme_panel .trx_buttons {
+  text-align: left;
+}
+.trx_addons_theme_panel_plugins_list + .trx_addons_theme_panel_plugins_buttons {
+  text-align: left;
+}
+.trx_addons_theme_panel_links .trx_addons_classic_block {
+	padding: 0 0 2em 2em;
+}
+.trx_addons_panel_wizard > ul > li > a:before {
+	margin-right: 0;
+	margin-left: 6px;
+}

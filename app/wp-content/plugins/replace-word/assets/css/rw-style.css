@@ -1,0 +1,154 @@
+/**
+ * 
+ * @access      public
+ * @since       1.2
+ * @return      $admin-action-CSS
+*/
+
+/*Textbox*/
+.other-settings input[type=text], select {
+  width: 100%;
+  padding: 5px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.other-settings input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.other-settings input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.other-settings {
+  border-radius: 10px;
+  background-color: #e2e2e2b5;
+  padding: 20px;
+}
+/* Own Customization */
+.postbox .hndle {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: normal;
+    padding-top: 7px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    line-height: 1;
+}
+
+#far_sb {
+    padding-top: 70px;
+    width: 300px;
+    float: left;
+}
+
+.left {
+    display: block;
+    float: left;
+}
+
+#far_items {
+    width: 600px;
+    float: left;
+}
+
+#far_items ul {
+    padding: 10px 0;
+    clear: both;
+    width: 600px;
+    display: block;
+
+}
+
+#far_items li {
+    width: 470px;
+    display: block;
+    float: left;
+    margin: 0px;
+    padding: 10px;
+
+  border-top-color: #dfdfdf;
+  border-right-color-value: #dfdfdf;
+  border-bottom-color: #dfdfdf;
+  border-left-color-value: #dfdfdf;
+  box-shadow: #ffffff;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: #f5f5f5;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: auto auto;
+  background-image: #f5f5f5;
+}
+
+#far_items li {
+    background-image: url(../images/draggable.png);
+    background-repeat: no-repeat;
+    background-position: 5px 45px;
+    padding-left: 30px;
+    overflow: auto;
+    border: 1px solid #d5d5d5;
+    background-size: 32px 32px;
+}
+
+#far_items textarea {
+    width: 225px;
+    min-height: 75px;
+    margin-right: 5px;
+    resize: vertical;
+}
+
+#far_items input {
+    margin-right: 5px;
+}
+#far_items li input[type="checkbox"]{
+  margin: 3px 0 0 0;
+}
+.findh {
+    display: inline-block;
+    float: left;
+    padding: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    padding-top: 10px;
+    padding: 20px 0 0 30px;
+}
+
+.replaceh {
+    display: inline-block;
+    float: left;
+    padding: 0px;
+    font-size: 12pt;
+    font-weight: bold;
+    padding-top: 10px;
+    padding: 20px 0 0 200px;
+}
+.clearpad { 
+	clear: both;
+	padding: 10px;
+}
