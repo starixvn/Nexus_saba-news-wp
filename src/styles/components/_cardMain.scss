@@ -1,0 +1,119 @@
+.main-card{
+    padding: 1.5rem;
+    box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.06);
+    background-color: $color-fff;
+    border-radius: .3rem;
+    @include tableMobile{
+        padding : 1rem;
+    }
+}
+.card-items{
+    margin-bottom: 1.5rem;
+    @include tableMobile{
+        margin-bottom: 1rem;
+    }
+    .img-columns{
+        position: relative;
+        .btn-play-video{
+            @include position('center',50%,50%);
+        }
+        .custom-button-play{
+            @include tableMobile{
+                width: 4rem;
+                height: 4rem;
+                span{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    .main-img{
+        height: 44rem;
+        @include tableMobile{
+            height: auto;
+        }
+    }
+    .ml-column{
+        margin-left: -2.7rem;
+        @include creen1199px{
+            margin-left: 0 !important;
+        }
+        @include tableMobile{
+            margin-left: 0;
+        }
+    }
+    .content-box{
+        .title-box{
+            margin-top: .5rem;
+            .heading{
+                font-size: 2.2rem;
+                font-family: $font-title;
+                font-weight: 500;
+                text-decoration: none;
+                color: $color-title;
+                transition: color .2s ease-in-out;
+                @include tableMobile{
+                    font-size: 1.6rem;
+                    line-height: 1.4;
+                }
+                &:hover{
+                    color: $color-active;
+                }
+            }
+        }
+        .date-time{
+            color: #8a8a8a;
+            font-family: $font-body;
+            font-size: 1.3rem;
+            margin: .1rem 0;
+            @include tableMobile{
+                margin-top: 0;
+                font-size: 1.3rem;
+            }
+        }
+        .description{
+            font-size: 1.6rem;
+            line-height: 1.5;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            -webkit-line-clamp: 1;
+            height: 2.5rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            margin-bottom: 1.5rem;
+            @include Mobile{
+                display: none;
+            }
+            @include tableMobile{
+                font-size: 1.4rem;
+                //margin: 0;
+                height: 2rem;
+            }
+        }
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+    .child-grid{
+        margin-top: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        .card-child{
+            width: 50%;
+            &:nth-child(odd){
+                padding-right: .7rem;
+            }
+            &:nth-child(even){
+                padding-left: .7rem;
+            }
+            @include Mobile{
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+.hot-news{
+    padding-bottom: 1.2rem;
+}

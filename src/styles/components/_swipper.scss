@@ -16,6 +16,9 @@
     }
     .swiper-pagination-bullets{
         bottom: 1.5rem;
+        @include tableMobile{
+            bottom: 3.5rem;
+        }
     }
     .img-columns{
         border-radius : 0;

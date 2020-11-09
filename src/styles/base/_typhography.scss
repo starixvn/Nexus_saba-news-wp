@@ -1,24 +1,38 @@
-.align-items-center{
-    align-items: center;
+.content{
+    font-size: 1.4rem;
+    line-height: 2.7rem;
+    margin: 1rem 0;
 }
-.title-page{
-    background-color: $color-pagination;
-    padding: 1.8rem 2.3rem 1.7rem;
-    font-size: 2rem;
-    position: relative;
-    border-left: 4px solid $color-active;
-    border-radius: 3px 3px 0 0;
-    a{
-        color: $color-fff;
-        line-height: 2.2rem;
-        font-family: $font-title;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-    @include tableMobile{
-        padding: .5rem;
-        font-size: 1.4rem;
-        letter-spacing : .1rem;
-        font-weight : 500;
+.list-content{
+    list-style: none;
+    padding: .8rem 0 0;
+    .child-list{
+        margin-bottom: 1.5rem;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        .item-list{
+            font-size: 1.6rem;
+            color: $color-title;
+            text-decoration: none;
+            transition: color .1s ease-in-out;
+            font-weight: 500;
+            @include tableMobile{
+                font-size: 1.5rem;
+            }
+            &:hover{
+                color: $color-active;
+            }
+            i{
+                margin-right: .2rem;
+            }
+        }
+        .title-change{
+            font-weight: 700;
+            font-size: 1.8rem;
+            @include tableMobile{
+                font-size: 1.5rem;
+            }
+        }
     }
 }

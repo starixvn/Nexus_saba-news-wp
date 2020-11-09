@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
-    <link rel="stylesheet" href="vendor/icomoon/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="styles/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="styles/detail.css">
 </head>
 <body>
 
@@ -22,30 +22,32 @@
                         <img class="img-res" src="images/logo-2.png" alt="logo">
                     </a>
                     <div class="button-mobile">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span class="line-mb"></span>
+                        <span class="line-mb"></span>
+                        <span class="line-mb"></span>
                     </div>
                 </div>
                 <ul class="main-menu">
-                    <li class="menu-item"><a href="index.html">Trang Chủ</a></li>
-                    <li class="menu-item"><a href="#">Lịch Thi Đấu</a></li>
+                    <li class="menu-item"><a href="index.html" class="item">Trang Chủ</a></li>
+                    <li class="menu-item"><a href="#" class="item">Lịch Thi Đấu</a></li>
                     <li class="menu-item">
-                        <a href="news.html" class="submenu">Tin Tức</a>
+                        <a href="news.html" class="submenu item">Tin Tức</a>
                         <span class="icon-right-chevron click-sub"></span>
                         <ul class="menu-child">
-                            <li><a href="#">Bóng Đá</a></li>
-                            <li><a href="#">Bóng Rổ</a></li>
-                            <li><a href="#">Tin Hậu Trường</a></li>
-                            <li><a href="#">Tin Nóng</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Bóng Đá</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Bóng Rổ</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Tin Hậu Trường</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Tin Nóng</a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="video.html" class="submenu"> Video</a>
+                        <a href="video.html" class="submenu item"> Video</a>
                         <span class="icon-right-chevron click-sub"></span>
                         <ul class="menu-child">
-                            <li><a href="#">Bóng Đá</a></li>
-                            <li><a href="#">Bóng Rổ</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Bóng Đá</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Bóng Rổ</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Tin Hậu Trường</a></li>
+                            <li class="child-menu-item"><a href="#" class="item-child">Tin Nóng</a></li>
                         </ul>
                     </li>
                     <div class="search-input">
@@ -73,11 +75,6 @@
                     <div class="main-card">
                         <div class="detail-wapper">
                             <h2 class="title-wapper">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</h2>
-                            <!-- <ul class="group-view">
-                                <li>13:13 14/10/2020</li>
-                                <li>115 Views</li>
-                                <li>Hank Nguyen</li>
-                            </ul> -->
                             <p class="content">
                                 Một Juve không Ronaldo đã bị đánh bại bởi Barca với sự xuất sắc của Messi, nhưng nếu Morata may mắn hơn mọi thứ có thể đã khác.
                             </p>
@@ -122,31 +119,31 @@
                             </p>
                             <p class="content">Theo lời của Olga Sharypova đây không phải lần đầu tiên tay vợt điển trai này sử dụng bạo lực với cô: “Anh ta đã hành hung tôi rất nhiều lần, lúc nào tôi cũng cố quên đi mọi chuyện và tự trách mình.</p>
                             <ul class="related-post">
-                                <li>Related Posts:</li>
-                                <li><a href="#">1. Roy Keane: Man Utd nên chuyển nhượng David de Gea</a></li>
-                                <li><a href="#">2. Marco Reus vừa mới dính chấn thương</a></li>
-                                <li><a href="#">3. Messi có 700 bàn – Cuộc chiến chưa dừng lại!</a></li>
-                                <li><a href="#">4. Paulo Dybala đoạt giải MVP của Serie A</a></li>
+                                <li class="related-child">Related Posts:</li>
+                                <li class="related-child"><a href="#" class="related-child-item">1. Roy Keane: Man Utd nên chuyển nhượng David de Gea</a></li>
+                                <li class="related-child"><a href="#" class="related-child-item">2. Marco Reus vừa mới dính chấn thương</a></li>
+                                <li class="related-child"><a href="#" class="related-child-item">3. Messi có 700 bàn – Cuộc chiến chưa dừng lại!</a></li>
+                                <li class="related-child"><a href="#" class="related-child-item">4. Paulo Dybala đoạt giải MVP của Serie A</a></li>
                             </ul>
                             <div class="tag-group">
                                 <ul class="tag">
-                                    <li class="name">Thẻ: </li>
+                                    <li class="name tag">Thẻ: </li>
                                     <li class="category"><a href="#">golden state warriors</a></li>
                                 </ul>
                                 <ul class="socical-tag">
                                     <li class="name">Chia sẻ: </li>
-                                    <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon-pinterest-circular-logo-symbol"></i></a></li>
-                                    <li><a href="#"><i class="icon-telegram"></i></a></li>
+                                    <li class="tag"><a href="#" class="icon"><i class="icon-facebook"></i></a></li>
+                                    <li class="tag"><a href="#" class="icon"><i class="icon-twitter"></i></a></li>
+                                    <li class="tag"><a href="#" class="icon"><i class="icon-pinterest-circular-logo-symbol"></i></a></li>
+                                    <li class="tag"><a href="#" class="icon"><i class="icon-telegram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-news">
+                <div class="card-news-child">
                     <h2 class="title-page">
-                        <a href="#">Tin Mới Nhất</a>
+                        <a href="#" class="heading">Tin Mới Nhất</a>
                     </h2>
                     <div class="main-card card-partial-news">
                         <div class="card-items">
@@ -162,7 +159,7 @@
                                 </div>
                                 <div class="col col-9">
                                     <div class="content-box">
-                                        <h4 class="title-box"><a href="#">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
+                                        <h4 class="title-box"><a href="#" class="heading">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
                                         <div class="group-date-times">
                                             <p class="date-time">13:13 14/10/2020</p>
                                             <p class="update-by">bởi <a href="#">Hank Nguyen</a></p>
@@ -184,7 +181,7 @@
                                 </div>
                                 <div class="col col-9">
                                     <div class="content-box">
-                                        <h4 class="title-box"><a href="#">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
+                                        <h4 class="title-box"><a href="#" class="heading">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
                                         <div class="group-date-times">
                                             <p class="date-time">13:13 14/10/2020</p>
                                             <p class="update-by">bởi <a href="#">Hank Nguyen</a></p>
@@ -206,7 +203,7 @@
                                 </div>
                                 <div class="col col-9">
                                     <div class="content-box">
-                                        <h4 class="title-box"><a href="#">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
+                                        <h4 class="title-box"><a href="#" class="heading">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
                                         <div class="group-date-times">
                                             <p class="date-time">13:13 14/10/2020</p>
                                             <p class="update-by">bởi <a href="#">Hank Nguyen</a></p>
@@ -228,7 +225,7 @@
                                 </div>
                                 <div class="col col-9">
                                     <div class="content-box">
-                                        <h4 class="title-box"><a href="#">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
+                                        <h4 class="title-box"><a href="#" class="heading">Barca hạ Juve, trong ngày Morata lập hat-trick buồn</a></h4>
                                         <div class="group-date-times">
                                             <p class="date-time">13:13 14/10/2020</p>
                                             <p class="update-by">bởi <a href="#">Hank Nguyen</a></p>
@@ -242,7 +239,7 @@
 
                 <div class="card-calendar">
                     <h2 class="title-page">
-                        <a href="">Lịch</a>
+                        <a href="" class="heading">Lịch</a>
                     </h2>
                     <div class="main-card card-partial-news">
                         <div class="box-calendar">
@@ -262,10 +259,10 @@
                                 <tbody>
                                     <tr>
                                         <td colspan="6">&nbsp;</td>
-                                        <td class="lastday"><a href="#">1</a></td>
+                                        <td class="lastday"><a href="#" class="prev">1</a></td>
                                     </tr>
                                     <tr>
-                                        <td class="lastday"><a href="#">2</a></td>
+                                        <td class="lastday"><a href="#" class="prev">2</a></td>
                                         <td id="today">3</td>
                                         <td>4</td>
                                         <td>5</td>
@@ -307,7 +304,7 @@
                                 </tbody>
                             </table>
                             <div class="calendar-prev">
-                                <a href="#">« Th10</a>
+                                <a href="#" class="prev">« Th10</a>
                             </div>
                         </div>
                     </div>
@@ -330,7 +327,7 @@
                                     </picture>
                                 </div>
                                 <div class="content-box">
-                                    <h4 class="title-box"><a href="#">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
+                                    <h4 class="title-box"><a href="#" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
                                     <p class="date-time">2 giờ trước</p>
                                     <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
                                 </div>
@@ -344,7 +341,7 @@
                                     </picture>
                                 </div>
                                 <div class="content-box">
-                                    <h4 class="title-box"><a href="#">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
+                                    <h4 class="title-box"><a href="#" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
                                     <p class="date-time">08:14 31/10/2020</p>
                                     <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
                                 </div>
@@ -369,6 +366,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script>
+    <script src="js/lib/modernizr.js"></script>
     <script src="js/all.js"></script>
 
 

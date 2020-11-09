@@ -23,40 +23,15 @@ body,html{
     flex: 1 0 100%;
     margin: 0;
 }
-.container{
-    width: 100%;
-    padding: 0 1rem;
-    margin-right: auto;
-    margin-left: auto;
-    @include tableMobile{
-        padding :0 ;
-    }
-    @media (min-width : 576px){
-        max-width: 54rem;
-    }
-    @media (min-width : 768px){
-        max-width: 72rem;
-    }
-    @media (min-width : 992px){
-        max-width: 96rem;
-    }
-    @media (min-width : 1200px){
-        max-width: 119rem;
-    }
-    @media (min-width : 1440px){
-        max-width: 132rem;
-    }
+.align-items-center{
+    align-items: center;
 }
-.container-fuild{
-    max-width: 128rem;
-    width: 100%;
-    padding: 0 1rem;
-    margin-right: auto;
-    margin-left: auto;
+.hidden-body{
+    overflow: hidden;
+}
+.main{
+    padding: 1.5rem 0;
     @include tableMobile{
-        padding: 0;
-    }
-    @include iphone5{
-        padding: 0;
+        padding : .5rem 0;
     }
 }

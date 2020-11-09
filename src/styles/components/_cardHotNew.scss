@@ -1,0 +1,29 @@
+.card-hot-news{
+    grid-column: 1/5;
+    grid-row: 1/7;
+    @include tableMobile{
+        grid-column: 1/7;
+        grid-row: 1;
+    }
+    .card-items{
+        .img-columns{
+            height: 100%;
+            margin-right: 1.5rem;
+            overflow: hidden;
+            height: 16rem;
+            width: 16rem;
+            @include creen1199px{
+                width: auto;
+            }
+            @include tableMobile{
+                width: auto;
+                margin-right: 1rem;
+                height: 8rem;
+            }
+            img{
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+    }
+}
