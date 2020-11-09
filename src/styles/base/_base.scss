@@ -1,0 +1,62 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 10px;
+}
+body,html{
+    font-weight: 400;
+    font-family: $font-body;
+    background-color: #F4F4F4;
+}
+.img-res{
+    max-width: 100%;
+    height: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 100%;
+    margin: 0;
+}
+.container{
+    width: 100%;
+    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include tableMobile{
+        padding :0 ;
+    }
+    @media (min-width : 576px){
+        max-width: 54rem;
+    }
+    @media (min-width : 768px){
+        max-width: 72rem;
+    }
+    @media (min-width : 992px){
+        max-width: 96rem;
+    }
+    @media (min-width : 1200px){
+        max-width: 119rem;
+    }
+    @media (min-width : 1440px){
+        max-width: 132rem;
+    }
+}
+.container-fuild{
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include tableMobile{
+        padding: 0;
+    }
+    @include iphone5{
+        padding: 0;
+    }
+}

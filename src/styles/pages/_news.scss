@@ -1,0 +1,177 @@
+.card-partial-news{
+    padding: 2.5rem !important;
+    @include tableMobile{
+        padding: 1rem !important;
+    }
+    .box-calendar{
+        .table-calendar{
+            font-family: $font-title;
+            width: 100%;
+            thead{
+                tr{
+                    th{
+                        color: $color-title;
+                        font-size: 2rem;
+                        width: 14%;
+                        line-height: 4.8rem;
+                        padding: .2rem;
+                        text-align: center;
+                        @include tableMobile{
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        color: $color-title;
+                        font-size: 1.5rem;
+                        width: 14%;
+                        line-height: 3.8rem;
+                        padding: .2rem;
+                        text-align: center;
+                        color: $color-calendar;
+                        font-weight: 400;
+                        @include tableMobile{
+                            line-height: 3rem;
+                        }
+                    }
+                    #today{
+                        color: $color-fff;
+                        position: relative;
+                        z-index: 2;
+                        &::before{
+                            content: '';
+                            z-index: -1;
+                            width: 4.5rem;
+                            height: 4.5rem;
+                            @include position('center',50%,50%);
+                            text-align: center;
+                            border-radius: 50%;
+                            background-color: $color-active;
+                            color: $color-fff;
+                            @include tableMobile{
+                                width: 3.5rem;
+                                height: 3.5rem;
+                            }
+                        }
+                    }
+                    .lastday{
+                        color: $color-000;
+                        position: relative;
+                        z-index: 2;
+                        &::before{
+                            content: '';
+                            z-index: -1;
+                            width: 4.5rem;
+                            height: 4.5rem;
+                            @include position('center',50%,50%);
+                            text-align: center;
+                            border-radius: 50%;
+                            background-color: #F4F4F4;
+                            @include tableMobile{
+                                width: 3.5rem;
+                                height: 3.5rem;
+                            }
+                        }
+                        a{
+                            text-decoration: none;
+                            color: $color-000;
+                        }
+                    }
+                }
+            }
+        }
+        .date-year{
+            background-color: $color-active;
+            text-align: center;
+            font-family: $font-body ;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            border-radius: 3rem;
+            padding: 1.7rem;
+            color: $color-fff;
+            margin-bottom: 1.3rem;
+            @include tableMobile{
+                padding: .8rem;
+            }
+        }
+        .calendar-prev{
+            margin: 1rem 0 0 1rem;
+            a{
+                color: $color-active;
+                text-decoration: none;
+                transition: color .2s ease-in-out;
+                font-size: 1.4rem;
+                &:hover{
+                    color: $color-pagination;
+                }
+            }
+        }
+    }
+    .card-items{
+        margin-bottom: 0;
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid #e3e3e3;
+        &:last-child{
+            border: none;
+            padding-bottom : 0;
+        }
+        .img-columns{
+            width: 7rem;
+            height: 7rem;
+            img{
+                width: auto;
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+        .content-box{
+            margin-left: -1rem;
+            @include tableMobile{
+                margin-left: 0;
+            }
+            .title-box{
+                margin-top: 0 !important;
+                a{
+                    font-family: $font-title !important;
+                    font-size: 1.6rem !important;
+                    font-weight: 400 !important;
+                    line-height: 1.4 !important;
+                    @include tableMobile{
+                        font-size: 1.6rem !important;
+                    }
+                }
+            }
+            .group-date-times{
+                @include flex(center,nowrap,flex-start,row);
+                @include tableMobile{
+                    @include flex(center,wrap,flex-start,row);
+                }
+                .date-time{
+                    margin-right: 1.2rem !important;
+                    margin-bottom: 0 !important;
+                }   
+                .update-by{
+                    font-size: 1.4rem;
+                    margin-top: .5rem;
+                    display: none;
+                    @include tableMobile{
+                        font-size: 1rem;
+                        margin-top: 0;
+                    }
+                    a{
+                        margin-left: .1rem;
+                        text-decoration: none;
+                        color: $color-title;
+                        font-weight: 700;
+                        &:hover{
+                            color: $color-active;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

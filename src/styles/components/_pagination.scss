@@ -1,0 +1,42 @@
+.pagination{
+    // margin: 4rem 0 3rem 0;
+    // @include tableMobile{
+    //     margin: 2rem 0 3rem 0;
+    // }
+    .main-pagination{
+        list-style: none;
+        padding: 0 1rem;
+        @include flex(center,nowrap,flex-start,row);
+        .items-pagination{
+            background: transparent;
+            width: 4rem;
+            height: 4rem;
+            text-align: center;
+            margin: .3rem .1rem 0 0;
+            border-radius: 50%;
+            @include tableMobile{
+                width: 3rem;
+                height: 3rem;
+            }
+            a{
+                display: block;
+                text-decoration: none;
+                color: $color-pagination;
+                line-height: 3.9rem;
+                font-size: 2rem;
+                font-family: $font-Oswald;
+                font-weight: 700;
+                @include tableMobile{
+                    font-size: 1.6rem;
+                    line-height: 3rem;
+                }
+            }
+        }
+        .active{
+            background: $color-pagination;
+            a{
+                color: $color-fff;
+            }
+        }
+    }
+}
