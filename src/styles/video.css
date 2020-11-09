@@ -179,26 +179,6 @@ body, html {
   }
 }
 
-textarea,
-input[type]:not([type=number]):not([type=button]):not([type=search]) {
-  background-color: #262F3E;
-  outline: none;
-}
-textarea::placeholder,
-input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
-  color: #b7b7b7;
-}
-textarea:-ms-input-placeholder,
-input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #fff;
-}
-textarea::-ms-input-placeholder,
-input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #fff;
-}
-
 .footer {
   background-color: #081224;
   border-top: 7px solid #f00;
@@ -616,38 +596,6 @@ button {
 }
 .btn-play-video span {
   font-size: 1.8rem;
-}
-
-.swiper-container {
-  width: 100%;
-}
-.swiper-container .swiper-button-prev, .swiper-container .swiper-button-next {
-  outline: none;
-}
-.swiper-container .swiper-pagination-bullet {
-  background-color: #262f3e;
-  height: 0.5rem;
-  width: 3.3rem;
-  border-radius: 0.3rem;
-  opacity: 1;
-  outline: none;
-}
-.swiper-container .swiper-pagination-bullet-active {
-  background-color: #f00;
-}
-.swiper-container .swiper-pagination-bullets {
-  bottom: 1.5rem;
-}
-@media screen and (max-width: 1024px) {
-  .swiper-container .swiper-pagination-bullets {
-    bottom: 3.5rem;
-  }
-}
-.swiper-container .img-columns {
-  border-radius: 0;
-}
-.swiper-container .img-columns img {
-  border-radius: 0;
 }
 
 .pagination {

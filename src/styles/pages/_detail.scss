@@ -1,13 +1,14 @@
 @import '../abstracts/variables';
 @import '../abstracts/mixins';
 @import '../abstracts/functions';
+
 @import '../base/typhography';
 @import '../base/base';
+
 @import '../layout/footer';
 @import '../layout/nav';
+
 @import '../components/buttons';
-@import '../components/swipper';
-@import '../components/pagination';
 @import '../components/container';
 @import '../components/title';
 @import '../components/cardMain';
@@ -90,6 +91,7 @@
                             font-weight: 700;
                             color: $color-title;
                             font-family: $font-title;
+                            margin: .5rem;
                             @include tableMobile{
                                 font-size: 1.6rem;
                             }
