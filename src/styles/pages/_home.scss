@@ -9,91 +9,42 @@
 @import '../layout/footer';
 @import '../layout/nav';
 
-
+@import '../components/block';
+@import '../components/img';
 @import '../components/buttons';
 @import '../components/swipper';
 @import '../components/pagination';
 @import '../components/container';
-@import '../components/title';
-@import '../components/cardMain';
-@import '../components/imgHover';
+
+@import '../components/cardHorizontal';
+@import '../components/cardVertical';
+
+
 .column-main{
     @include grid(10,16.2rem,6,1fr,1.5rem);
     @include tableMobile{
         @include grid(1,1fr,6,1fr,1.5rem);
     }
-    .card-items{
-        margin-bottom: 1.5rem;
-        padding-bottom: 0;
-        @include tableMobile{
-            margin-bottom: 1rem;
-        }
-    }
-    .card-video{
-        background-color: $color-pagination;
-        .card-items{
-            .img-columns{
-                margin-right: 0;
-                @include tableMobile{
-                    width: 100%;
-                }
-            }
-            .content-box{
-                padding: 1rem 0 6rem 0;
-                .title-box{
-                    .heading{
-                        color: $color-fff;
-                    }
-                }
-                .date-time{
-                    margin-bottom: .7rem;
-                }
-                .title-box,.date-time{
-                    text-align: center;
-                }
-            }
-        }
-    }
-
     //left
-    .card-hot-news{
+    .block-hot-news{
         grid-column: 1/5;
         grid-row: 1/7;
         @include tableMobile{
             grid-column: 1/7;
             grid-row: 1;
         }
-        .img-columns{
-            height: 100%;
-            margin-right: 1.5rem;
-            overflow: hidden;
-            height: 16rem;
-            width: 16rem;
-            @include creen1199px{
-                width: auto;
-            }
-            @include tableMobile{
-                width: auto;
-                margin-right: 1rem;
-                height: 8rem;
-            }
-            img{
-                object-fit: cover;
-                height: 100%;
-            }
-        }
     }
-    .card-soccer{
+    .block-soccer{
         grid-column: 1/5;
         grid-row: 7/15;
-        margin-top: -8rem;
+        margin-top: -9.3rem;
         @include tableMobile{
             grid-column: 1/7;
             grid-row: 3;
-            margin-top: -1rem;
+            margin-top: 0;
         }
     }
-    .card-basketball{
+    .block-basketball{
         grid-column: 1/5;
         grid-row: 15/19;
         @include tableMobile{
@@ -101,7 +52,7 @@
             grid-row: 7;
         }
     }
-    .card-tennis{
+    .block-tennis{
         grid-column: 1/5;
         grid-row: 19/24;
         @include tableMobile{
@@ -110,7 +61,7 @@
         }
     }
     //right
-    .card-swipper{
+    .block-swipper{
         grid-column: 5/7;
         grid-row: 1/3;
         @include tableMobile{
@@ -118,7 +69,7 @@
             grid-row: 2;
         }
     }
-    .card-guess{
+    .block-guess{
         grid-column: 5/7;
         grid-row: 3/7;
         @include tableMobile{
@@ -129,7 +80,7 @@
             margin-right: 0;
         }
     }
-    .card-behind{
+    .block-behind{
         grid-column: 5/7;
         grid-row: 7/11;
         @include tableMobile{
@@ -137,7 +88,7 @@
             grid-row: 5;
         }
     }
-    .card-transfer{
+    .block-transfer{
         grid-column: 5/7;
         grid-row: 11/13;
         @include tableMobile{

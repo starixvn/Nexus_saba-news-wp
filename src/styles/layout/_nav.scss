@@ -99,8 +99,10 @@
                 @include tableMobile{
                     width: 100%;
                     order: 2;
+                    border-bottom: 1px solid $color-border;
                 }
                 &:nth-child(4){
+                    border-bottom: none;
                     a{
                         border: none;
                     }
@@ -137,7 +139,6 @@
                         padding: 1.3rem 0rem;
                         font-size: 1.6rem;
                         text-transform: initial;
-                        border-bottom: 1px solid $color-border;
                         font-weight: inherit;
                     }
                     &:hover{
@@ -167,6 +168,9 @@
                          top: auto;
                          left: auto;
                          margin-left: auto;
+                         padding-left: 1.6rem;
+                         box-shadow: none;
+                         border-radius: 0;
                      }
                      &::after{
                         content: ' ';
@@ -210,11 +214,6 @@
                                 color: $color-active;
                             }
                         }
-                        &:last-child{
-                            @include tableMobile{
-                                border-bottom: 1px solid $color-border;
-                            }
-                        }
                     }
                 }
                 &:hover{
@@ -247,7 +246,7 @@
                     @include tableMobile{
                         width: 100%;
                         padding: 1rem 3rem 1rem 2.5rem !important;
-                        height: 4.8rem;
+                        height: 5.5rem;
                     }
                 }
                 .btn-search{
@@ -260,10 +259,11 @@
                     height: 100%;
                     @include tableMobile{
                         background: #7E828B;
-                        height: 4rem;
+                        height: 4.8rem;
                         border-radius: 3rem;
                         top: 2.7rem;
-                        right: .5rem;
+                        right: .4rem;
+                        font-size: 1.5rem;
                     }
                 }
             }
