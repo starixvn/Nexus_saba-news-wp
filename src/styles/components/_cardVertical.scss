@@ -1,67 +1,57 @@
-.child-grid{
-    margin-top: 1.2rem;
-    display: flex;
-    flex-wrap: wrap;
-    .card-child{
-        width: 50%;
-        &:nth-child(odd){
-            padding-right: .7rem;
+.block-vertical{
+    .img-item{
+        margin-bottom: 1rem;
+        .img-block{
+            width: 100%;
         }
-        &:nth-child(even){
-            padding-left: .7rem;
-        }
-        @include Mobile{
-            margin-bottom: 1rem;
-        }
-        .content-box{
-            .title-box{
-                margin-top: .5rem;
-                .heading{
-                    font-size: 2.2rem;
-                    font-family: $font-title;
-                    font-weight: 500;
-                    text-decoration: none;
-                    color: $color-title;
-                    transition: color .2s ease-in-out;
-                    @include tableMobile{
-                        font-size: 1.6rem;
-                        line-height: 1.4;
-                    }
-                    &:hover{
-                        color: $color-active;
-                    }
-                }
-            }
-            .date-time{
-                color: #8a8a8a;
-                font-family: $font-body;
-                font-size: 1.3rem;
-                margin: .1rem 0;
-                @include tableMobile{
-                    margin-top: 0;
-                    font-size: 1.3rem;
-                }
-            }
-            .description{
+    }
+    
+    .block-text{
+        .heading{
+            a{
+                font-size: 2rem;
+                color: $color-text;
+                font-style: normal;
+                font-weight: bold;
                 font-size: 1.6rem;
-                line-height: 1.5;
-                overflow: hidden;
-                -o-text-overflow: ellipsis;
-                text-overflow: ellipsis;
-                line-height: 1.5;
-                -webkit-line-clamp: 1;
-                height: 2.5rem;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                margin-bottom: 3rem;
-                @include Mobile{
-                    display: none;
+                line-height: 2.4rem;
+                letter-spacing: -0.02rem;
+                text-decoration: none;
+                transition: color .3s ease;
+                &:hover{
+                    color: $color-active;
                 }
                 @include tableMobile{
-                    font-size: 1.4rem;
-                    height: 2rem;
+                    font-size: 1.4rem !important;
+                    line-height: 2rem;
                 }
             }
         }
+        .block-time{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.3rem;
+            line-height: 2.4rem;
+            color: $color-input;
+            @include tableMobile{
+                font-size: 1.2rem;
+            }
+        }
+        .description{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+            color: $color-content;
+            margin-top: .3rem;
+            @include tableMobile{
+                font-size: 1.2rem;
+                line-height: 2rem;
+                
+            }
+        }
+    }
+    .bg-text{
+        background-color: $bg-input;
     }
 }

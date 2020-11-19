@@ -5,34 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SaBaSport - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
     <link rel="stylesheet" href="styles/vendor/icomoon/style.css">
     <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
 
-    <section class="menu">
-        <div class="container">
-            <div class="nav-menu">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo-2.png" alt="logo">
-                    </a>
-                    <div class="button-mobile">
-                        <span class="line-mb"></span>
-                        <span class="line-mb"></span>
-                        <span class="line-mb"></span>
+    <section class="header">
+        <div class="top-header">
+            <div class="container">
+                <div class="group-top">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/logo-2.png" alt="logo">
+                        </a>
                     </div>
+                    <div class="search-input">
+                        <input type="text" placeholder="Tìm kiếm...">
+                        <button class="btn-search">
+                            <i class="icon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <div class="container">
+                <div class="button-mobile">
+                    <span class="line-mb"></span>
+                    <span class="line-mb"></span>
+                    <span class="line-mb"></span>
                 </div>
                 <ul class="main-menu">
                     <li class="menu-item"><a href="index.html" class="item active">Trang Chủ</a></li>
                     <li class="menu-item"><a href="#" class="item">Lịch Thi Đấu</a></li>
                     <li class="menu-item">
                         <a href="news.html" class="item submenu">Tin Tức</a>
-                        <span class="icon-right-chevron click-sub"></span>
+                        <span class="icon-chevron-right click-sub"></span>
                         <ul class="menu-child">
                             <li class="child-menu-item"><a href="#" class="item-child">Bóng Đá</a></li>
                             <li class="child-menu-item"><a href="#" class="item-child">Bóng Rổ</a></li>
@@ -40,18 +52,12 @@
                     </li>
                     <li class="menu-item">
                         <a href="video.html" class="item submenu"> Video</a>
-                        <span class="icon-right-chevron click-sub"></span>
+                        <span class="icon-chevron-right click-sub"></span>
                         <ul class="menu-child">
                             <li class="child-menu-item"><a href="#" class="item-child">Bóng Đá</a></li>
                             <li class="child-menu-item"><a href="#" class="item-child">Bóng Rổ</a></li>
                         </ul>
                     </li>
-                    <div class="search-input">
-                        <input type="text" placeholder="Tìm kiếm...">
-                        <button class="btn-search">
-                            <i class="icon-search"></i>
-                        </button>
-                    </div>
                 </ul>
             </div>
         </div>
@@ -59,109 +65,78 @@
 
     <section class="main">
         <div class="container">
-            <div class="column-main">
-
+            <div class="grid-main">
                 <div class="block block-hot-news">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">TIN MỚI NHẤT</a>
-                    </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="row align-items-center">
-                                <div class="col col-3">
-                                    <div class="img-columns horizontal">
-                                        <picture>
-                                            <source srcset="images/img.webp" type="image/webp">
-                                            <source srcset="images/img.jpg" type="image/jpeg"> 
-                                            <img src="images/img.jpg" alt="Alt Text!">
-                                        </picture>
+                    <h2 class="title-block"><a href="#">TIN MỚI NHẤT</a></h2>
+                    <div class="main-block row">
+                        <div class="block-vertical col col-5">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img1.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img1.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img1.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text bg-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                                <p class="description text-description">Bàn thắng muộn của tiền đạo người Anh giúp ‘Gà Trống’ đánh bại West Brom 1-0 qua đó tiếp tục bay cao trên bảng xếp hạng Premier League</p>
+                            </div>
+                        </div>
+                        <div class="block-horizontal col col-7">
+                            <div class="block-item">
+                                <div class="flex-item">
+                                    <div class="img-item">
+                                        <a href="#">
+                                            <picture>
+                                                <source srcset="images/img2.webp" type="image/webp" class="img-res">
+                                                <source srcset="images/img2.jpg" type="image/jpeg" class="img-res"> 
+                                                <img src="images/img2.jpg" alt="Alt Text!" class="img-res img-block">
+                                            </picture>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col col-9">
-                                    <div class="content-box ml-column">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Viettel vs Quảng Ninh (19h15 ngày 03/11)</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
+                                    <div class="block-text">
+                                        <div class="heading"><a href="#">Cập nhật quỹ lương và hạn mức thuế mùa giải NBA 2020/21</a></div>
+                                        <p class="block-time">1 giờ trước</p>
+                                        <p class="description text-description">Theo ký giả Tim Bontemps của ESPN, quỹ lương của 30 đội bóng NBA sẽ nằm ở mức 109.1 triệu đô và hạn mức thuế sẽ là 132.7 triệu đô</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-items">
-                            <div class="row align-items-center">
-                                <div class="col col-3">
-                                    <div class="img-columns horizontal">
-                                        <picture>
-                                            <source srcset="images/img.webp" type="image/webp">
-                                            <source srcset="images/img.jpg" type="image/jpeg"> 
-                                            <img src="images/img.jpg" alt="Alt Text!">
-                                        </picture>
+                            <div class="block-item">
+                                <div class="flex-item">
+                                    <div class="img-item">
+                                        <a href="#">
+                                            <picture>
+                                                <source srcset="images/img2.webp" type="image/webp" class="img-res">
+                                                <source srcset="images/img2.jpg" type="image/jpeg" class="img-res"> 
+                                                <img src="images/img2.jpg" alt="Alt Text!" class="img-res img-block">
+                                            </picture>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col col-9">
-                                    <div class="content-box ml-column">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Viettel vs Quảng Ninh (19h15 ngày 03/11)</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-items">
-                            <div class="row align-items-center">
-                                <div class="col col-3">
-                                    <div class="img-columns horizontal">
-                                        <picture>
-                                            <source srcset="images/img.webp" type="image/webp">
-                                            <source srcset="images/img.jpg" type="image/jpeg"> 
-                                            <img src="images/img.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                </div>
-                                <div class="col col-9">
-                                    <div class="content-box ml-column">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Viettel vs Quảng Ninh (19h15 ngày 03/11)</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
+                                    <div class="block-text">
+                                        <div class="heading"><a href="#">Manchester Utd gặp tổn thất lớn</a></div>
+                                        <p class="block-time">1 giờ trước</p>
+                                        <p class="description text-description">Hậu vệ trái Luke Shaw vừa dính chấn thương gân kheo trong trận gặp Everton và phải nghỉ thi đấu ít nhất 4 tuần.</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-items">
-                            <div class="row align-items-center">
-                                <div class="col col-3">
-                                    <div class="img-columns horizontal">
-                                        <picture>
-                                            <source srcset="images/img.webp" type="image/webp">
-                                            <source srcset="images/img.jpg" type="image/jpeg"> 
-                                            <img src="images/img.jpg" alt="Alt Text!">
-                                        </picture>
+                            <div class="block-item">
+                                <div class="flex-item">
+                                    <div class="img-item">
+                                        <a href="#">
+                                            <picture>
+                                                <source srcset="images/img2.webp" type="image/webp" class="img-res">
+                                                <source srcset="images/img2.jpg" type="image/jpeg" class="img-res"> 
+                                                <img src="images/img2.jpg" alt="Alt Text!" class="img-res img-block">
+                                            </picture>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col col-9">
-                                    <div class="content-box ml-column">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Viettel vs Quảng Ninh (19h15 ngày 03/11)</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-items">
-                            <div class="row align-items-center">
-                                <div class="col col-3">
-                                    <div class="img-columns horizontal">
-                                        <picture>
-                                            <source srcset="images/img.webp" type="image/webp">
-                                            <source srcset="images/img.jpg" type="image/jpeg"> 
-                                            <img src="images/img.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                </div>
-                                <div class="col col-9">
-                                    <div class="content-box ml-column">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Viettel vs Quảng Ninh (19h15 ngày 03/11)</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
+                                    <div class="block-text">
+                                        <div class="heading"><a href="#">“Pogba không chung mâm với Gerrard và Lampard”</a></div>
+                                        <p class="block-time">1 giờ trước</p>
+                                        <p class="description text-description">Cựu danh thủ của Liverpool đã có những đánh giá về tầm ảnh hưởng của Pogba tại M.U, đồng thời so sánh tiền vệ này với những tượng đài ở Premier League.</p>
                                     </div>
                                 </div>
                             </div>
@@ -171,296 +146,689 @@
 
 
 
-
+                <div class="block block-video">
+                    <h2 class="title-block"><a href="#">video</a></h2>
+                    <div class="flex-video row">
+                        <div class="swiper-container col col-7">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="img-item">
+                                        <picture>
+                                            <source srcset="images/video.webp" type="image/webp">
+                                            <source srcset="images/video.jpg" type="image/jpeg"> 
+                                            <img src="images/video.jpg" alt="Alt Text!">
+                                        </picture>
+                                        <div class="btn-play-video">
+                                            <span class="icon-play"></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h4 class="title-box"><a href="detail.html" class="heading">[Ngoại hạng Anh] Burnley vs Chelsea</a></h4>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="img-item">
+                                        <picture>
+                                            <source srcset="images/video.webp" type="image/webp">
+                                            <source srcset="images/video.jpg" type="image/jpeg"> 
+                                            <img src="images/video.jpg" alt="Alt Text!">
+                                        </picture>
+                                        <div class="btn-play-video">
+                                            <span class="icon-play"></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <h4 class="title-box"><a href="detail.html" class="heading">[Ngoại hạng Anh] Burnley vs Chelsea</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+                            <div class="swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="col col-5 slide-video">
+                            <div class="block-horizontal">
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">          
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video1.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video1.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video1.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video1.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video1.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video1.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video1.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video1.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video1.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video2.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video2.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video2.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video2.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video2.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video2.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video2.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video2.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video2.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video2.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video2.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video2.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-item">
+                                    <div class="flex-item bg-text">
+                                        <div class="img-item">
+                                            <a href="#">
+                                                <picture>
+                                                    <source srcset="images/video2.webp" type="image/webp" class="img-res">
+                                                    <source srcset="images/video2.jpg" type="image/jpeg" class="img-res"> 
+                                                    <img src="images/video2.jpg" alt="Alt Text!" class="img-res img-block">
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div class="block-text">
+                                            <div class="heading"><a href="#">[Ngoại hạng Anh] Manchester Utd - Liverpool</a></div>
+                                            <p class="block-time">1 giờ trước</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="block block-soccer">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">Bóng Đá</a>
-                    </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="img-columns main-img">
-                                <picture>
-                                    <source srcset="images/img3.webp" type="image/webp">
-                                    <source srcset="images/img3.jpg" type="image/jpeg"> 
-                                    <img src="images/img3.jpg" alt="Alt Text!">
-                                </picture>
+                    <h2 class="title-block"><a href="#">Bóng Đá</a></h2>
+                    <div class="grid-4-colums">
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img6.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img6.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img6.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
                             </div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="detail.html" class="heading">“Tiền vệ M.U đông nhưng không tinh”</a></h4>
-                                <p class="date-time">2 giờ trước</p>
-                                <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
                             </div>
-                            <div class="child-grid">
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img4.webp" type="image/webp">
-                                            <source srcset="images/img4.jpg" type="image/jpeg"> 
-                                            <img src="images/img4.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">08:14 31/10/2020</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img4.webp" type="image/webp">
-                                            <source srcset="images/img4.jpg" type="image/jpeg"> 
-                                            <img src="images/img4.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img4.webp" type="image/webp">
-                                            <source srcset="images/img4.jpg" type="image/jpeg"> 
-                                            <img src="images/img4.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img4.webp" type="image/webp">
-                                            <source srcset="images/img4.jpg" type="image/jpeg"> 
-                                            <img src="images/img4.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img8.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img8.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img8.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="block block-basketball">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">Bóng Rổ</a>
-                    </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="img-columns main-img">
-                                <picture>
-                                    <source srcset="images/img3.webp" type="image/webp">
-                                    <source srcset="images/img3.jpg" type="image/jpeg"> 
-                                    <img src="images/img3.jpg" alt="Alt Text!">
-                                </picture>
-                            </div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="detail.html" class="heading">“Tiền vệ M.U đông nhưng không tinh”</a></h4>
-                                <p class="date-time">2 giờ trước</p>
-                                <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
-                            </div>
-                        </div>
-                        <ul class="block-list-content">
-                            <li class="block-list"><a href="detail.html" class="title-change item-list"><i class="icon-right-arrow"></i> Bayern không tiếp tục đàm phán với Alaba</a></li>
-                            <li class="block-list"><a href="detail.html" class="title-change item-list"><i class="icon-right-arrow"></i> HLV Slaven Bilic cảm thấy sốc khi Hegazi rời West Brom</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="block block-tennis">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">Quần vợt</a>
-                    </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="img-columns">
-                                <picture>
-                                    <source srcset="images/img3.webp" type="image/webp">
-                                    <source srcset="images/img3.jpg" type="image/jpeg"> 
-                                    <img src="images/img3.jpg" alt="Alt Text!">
-                                </picture>
-                            </div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="detail.html" class="heading">“Tiền vệ M.U đông nhưng không tinh”</a></h4>
-                                <p class="date-time">2 giờ trước</p>
-                                <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
-                            </div>
-                        </div>
-                        <ul class="block-list-content">
-                            <li class="block-list"><a href="detail.html" class="title-change item-list"><i class="icon-right-arrow"></i> Bayern không tiếp tục đàm phán với Alaba</a></li>
-                            <li class="block-list"><a href="detail.html" class="title-change item-list"><i class="icon-right-arrow"></i> HLV Slaven Bilic cảm thấy sốc khi Hegazi rời West Brom</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="swiper-container block block-swipper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="card card-video">
-                                <div class="card-items">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/video.webp" type="image/webp">
-                                            <source srcset="images/video.jpg" type="image/jpeg"> 
-                                            <img src="images/video.jpg" alt="Alt Text!">
-                                        </picture>
-                                        <div class="btn-play-video">
-                                            <span class="icon-play-button-arrowhead"></span>
-                                        </div>
-                                    </div>
-                                    <div class="content-box">
-                                        <p class="date-time">2 giờ trước</p>
-                                        <h4 class="title-box"><a href="detail.html" class="heading">[Ngoại hạng Anh] Burnley vs Chelsea</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card card-video">
-                                <div class="card-items">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/video.webp" type="image/webp">
-                                            <source srcset="images/video.jpg" type="image/jpeg"> 
-                                            <img src="images/video.jpg" alt="Alt Text!">
-                                        </picture>
-                                        <div class="btn-play-video">
-                                            <span class="icon-play-button-arrowhead"></span>
-                                        </div>
-                                    </div>
-                                    <div class="content-box">
-                                        <p class="date-time">2 giờ trước</p>
-                                        <h4 class="title-box"><a href="detail.html" class="heading">[Ngoại hạng Anh] Burnley vs Chelsea</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                
+
                 <div class="block block-guess">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">Nhận định - dự đoán</a>
+                    <h2 class="title-block">
+                        <a href="#">NHẬN ĐỊNH - DỰ ĐOÁN<a>
                     </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="img-columns">
-                                <picture>
-                                    <source srcset="images/img1.webp" type="image/webp">
-                                    <source srcset="images/img1.jpg" type="image/jpeg"> 
-                                    <img src="images/img1.jpg" alt="Alt Text!">
-                                </picture>
-                            </div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="detail.html" class="heading">“Tiền vệ M.U đông nhưng không tinh”</a></h4>
-                                <p class="date-time">2 giờ trước</p>
-                                <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
-                            </div>
-                            <div class="child-grid">
-                                <div class="card-child">
-                                    <div class="img-columns">
+                    <div class="block-horizontal">
+                        <div class="block-item">
+                            <div class="flex-item">
+                                <div class="img-item">
+                                    <a href="#">
                                         <picture>
-                                            <source srcset="images/img2.webp" type="image/webp">
-                                            <source srcset="images/img2.jpg" type="image/jpeg"> 
-                                            <img src="images/img2.jpg" alt="Alt Text!">
+                                            <source srcset="images/img12.webp" type="image/webp" class="img-res">
+                                            <source srcset="images/img12.jpg" type="image/jpeg" class="img-res"> 
+                                            <img src="images/img12.jpg" alt="Alt Text!" class="img-res img-block">
                                         </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
+                                    </a>
                                 </div>
-                                <div class="card-child">
-                                    <div class="img-columns">
+                                <div class="block-text">
+                                    <div class="heading"><a href="#">Cập nhật quỹ lương và hạn mức thuế mùa giải NBA</a></div>
+                                    <p class="block-time">1 giờ trước</p>
+                                    <p class="description text-description">Theo ký giả Tim Bontemps của ESPN, quỹ lương của 30 đội bóng NBA sẽ nằm ở mức 109.1 triệu đô và hạn mức thuế sẽ là 132.7 triệu đô</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-item">
+                            <div class="flex-item">
+                                <div class="img-item">
+                                    <a href="#">
                                         <picture>
-                                            <source srcset="images/img2.webp" type="image/webp">
-                                            <source srcset="images/img2.jpg" type="image/jpeg"> 
-                                            <img src="images/img2.jpg" alt="Alt Text!">
+                                            <source srcset="images/img12.webp" type="image/webp" class="img-res">
+                                            <source srcset="images/img12.jpg" type="image/jpeg" class="img-res"> 
+                                            <img src="images/img12.jpg" alt="Alt Text!" class="img-res img-block">
                                         </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">08:14 31/10/2020</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
+                                    </a>
+                                </div>
+                                <div class="block-text">
+                                    <div class="heading"><a href="#">Manchester Utd gặp tổn thất lớn</a></div>
+                                    <p class="block-time">1 giờ trước</p>
+                                    <p class="description text-description">Hậu vệ trái Luke Shaw vừa dính chấn thương gân kheo trong trận gặp Everton và phải nghỉ thi đấu ít nhất 4 tuần.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-item">
+                            <div class="flex-item">
+                                <div class="img-item">
+                                    <a href="#">
+                                        <picture>
+                                            <source srcset="images/img12.webp" type="image/webp" class="img-res">
+                                            <source srcset="images/img12.jpg" type="image/jpeg" class="img-res"> 
+                                            <img src="images/img12.jpg" alt="Alt Text!" class="img-res img-block">
+                                        </picture>
+                                    </a>
+                                </div>
+                                <div class="block-text">
+                                    <div class="heading"><a href="#">“Pogba không chung mâm với Gerrard và Lampard”</a></div>
+                                    <p class="block-time">1 giờ trước</p>
+                                    <p class="description text-description">Cựu danh thủ của Liverpool đã có những đánh giá về tầm ảnh hưởng của Pogba tại M.U, đồng thời so sánh tiền vệ này với những tượng đài ở Premier League.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-item">
+                            <div class="flex-item">
+                                <div class="img-item">
+                                    <a href="#">
+                                        <picture>
+                                            <source srcset="images/img13.webp" type="image/webp" class="img-res">
+                                            <source srcset="images/img13.jpg" type="image/jpeg" class="img-res"> 
+                                            <img src="images/img13.jpg" alt="Alt Text!" class="img-res img-block">
+                                        </picture>
+                                    </a>
+                                </div>
+                                <div class="block-text">
+                                    <div class="heading"><a href="#">“Pogba không chung mâm với Gerrard và Lampard”</a></div>
+                                    <p class="block-time">1 giờ trước</p>
+                                    <p class="description text-description">Cựu danh thủ của Liverpool đã có những đánh giá về tầm ảnh hưởng của Pogba tại M.U, đồng thời so sánh tiền vệ này với những tượng đài ở Premier League.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-item">
+                            <div class="flex-item">
+                                <div class="img-item">
+                                    <a href="#">
+                                        <picture>
+                                            <source srcset="images/img12.webp" type="image/webp" class="img-res">
+                                            <source srcset="images/img12.jpg" type="image/jpeg" class="img-res"> 
+                                            <img src="images/img12.jpg" alt="Alt Text!" class="img-res img-block">
+                                        </picture>
+                                    </a>
+                                </div>
+                                <div class="block-text">
+                                    <div class="heading"><a href="#">“Pogba không chung mâm với Gerrard và Lampard”</a></div>
+                                    <p class="block-time">1 giờ trước</p>
+                                    <p class="description text-description">Cựu danh thủ của Liverpool đã có những đánh giá về tầm ảnh hưởng của Pogba tại M.U, đồng thời so sánh tiền vệ này với những tượng đài ở Premier League.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="block block-transfer">
+                    <h2 class="title-block"><a href="#">THỊ TRƯỜNG CHUYỂN NHƯỢNG</a></h2>
+                    <div class="grid-3-colums">
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img6.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img6.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img6.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img8.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img8.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img8.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img7.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img7.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img7.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+
 
                 <div class="block block-behind">
-                    <h2 class="title-page">
-                        <a href="#" class="heading">HẬU TRƯỜNG</a>
-                    </h2>
-                    <div class="main-card">
-                        <div class="card-items">
-                            <div class="img-columns">
+                    <h2 class="title-block"><a href="#">Hậu trường</a></h2>
+                    <div class="block-vertical">
+                        <div class="img-item">
+                            <a href="#">
                                 <picture>
-                                    <source srcset="images/img1.webp" type="image/webp">
-                                    <source srcset="images/img1.jpg" type="image/jpeg"> 
-                                    <img src="images/img1.jpg" alt="Alt Text!">
+                                    <source srcset="images/img15.webp" type="image/webp" class="img-res">
+                                    <source srcset="images/img15.jpg" type="image/jpeg" class="img-res"> 
+                                    <img src="images/img15.jpg" alt="Alt Text!" class="img-res img-block">
                                 </picture>
+                            </a>
+                        </div>
+                        <div class="block-text bg-text">
+                            <div class="heading"><a href="#">Greenwood khiến Bruno cảm thấy ngứa mắt</a></div>
+                            <p class="block-time">1 giờ trước</p>
+                        </div>
+                    </div>
+                    <div class="grid-2-colums">
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img16.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img16.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img16.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
                             </div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="detail.html" class="heading">“Tiền vệ M.U đông nhưng không tinh”</a></h4>
-                                <p class="date-time">2 giờ trước</p>
-                                <div class="description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum id quis deserunt, optio corrupti officia impedit qui maxime! Exercitationem consequuntur, sed soluta laudantium quisquam autem reiciendis quo dolorum doloribus voluptatem!</div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
                             </div>
-                            <div class="child-grid">
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img2.webp" type="image/webp">
-                                            <source srcset="images/img2.jpg" type="image/jpeg"> 
-                                            <img src="images/img2.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">2 giờ trước</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
-                                <div class="card-child">
-                                    <div class="img-columns">
-                                        <picture>
-                                            <source srcset="images/img2.webp" type="image/webp">
-                                            <source srcset="images/img2.jpg" type="image/jpeg"> 
-                                            <img src="images/img2.jpg" alt="Alt Text!">
-                                        </picture>
-                                    </div>
-                                    <div class="content-box">
-                                        <h4 class="title-box"><a href="detail.html" class="heading">Isco muốn về Everton, tái ngộ HLV Ancelotti</a></h4>
-                                        <p class="date-time">08:14 31/10/2020</p>
-                                        <div class="description">Theo thông tin từ Daily Mail, chàng Tiền vệ bị thất sủng của Real Madrid</div>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img17.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img17.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img17.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="block block-transfer">
-                    <h2 class="title-page">
-                        <a href="" class="heading">THỊ TRƯỜNG CHUYỂN NHƯỢNG</a>
+
+                <div class="block block-tennis">
+                    <h2 class="title-block">
+                        <a href="#">Quần vợt</a>
                     </h2>
-                    <div class="main-card">
-                        <ul class="block-list-content">
-                            <li class="block-list"><a href="detail.html" class="item-list"><i class="icon-right-arrow"></i> Bayern không tiếp tục đàm phán với Alaba</a></li>
-                            <li class="block-list"><a href="detail.html" class="item-list"><i class="icon-right-arrow"></i> HLV Slaven Bilic cảm thấy sốc khi Hegazi rời West Brom</a></li>
-                            <li class="block-list"><a href="detail.html" class="item-list"><i class="icon-right-arrow"></i> Barcelona gia hạn hợp đồng cùng một lúc với 4 trụ cột</a></li>
-                            <li class="block-list"><a href="detail.html" class="item-list"><i class="icon-right-arrow"></i> Nathaniel Clyne tìm được bến đỗ mới</a></li>
-                            <li class="block-list"><a href="detail.html" class="item-list"><i class="icon-right-arrow"></i> Moses bị Chelsea cho mượn lần thứ 6 trong 8 năm</a></li>
+                    <div class="block-vertical">
+                        <div class="img-item">
+                            <a href="#">
+                                <picture>
+                                    <source srcset="images/img28.webp" type="image/webp" class="img-res">
+                                    <source srcset="images/img28.jpg" type="image/jpeg" class="img-res"> 
+                                    <img src="images/img28.jpg" alt="Alt Text!" class="img-res img-block">
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="block-text">
+                            <div class="heading"><a href="#">Rafael Nadal lập kỷ lục ngay cả Roger Federer lẫn Novak Djokovic vẫn chưa đạt được</a></div>
+                            <p class="block-time">1 giờ trước</p>
+                            <p class="description text-description">
+                                Dù bị loại ở bán kết Paris Masters nhưng tay vợt người Tây Ban Nha cũng được chút an ủi khi anh đã chính thức vượt qua huyền thoại Jimmy Connors về số tuần liên tiếp nằm trong nhóm 10 thế asdssadsda
+                            </p>
+                        </div>
+                        <ul class="block-list">
+                            <li class="list-item"><a href="#" class="item"><i class="icon-content icon-sport-tennis-2"></i> Nick Kyrgios thừa nhận gặp vấn đề tâm lý</a></li>
+                            <li class="list-item"><a href="#" class="item"><i class="icon-content icon-sport-tennis-2"></i> Thất bại tại Paris Master, Nadal vẫn tự tin hướng về ATP Finals</a></li>
+                            <li class="list-item"><a href="#" class="item"><i class="icon-content icon-sport-tennis-2"></i> Federer sẽ góp mặt ở Australian Open 2021, tiết lộ kế hoạch giải nghệ</a></li>
+                            <li class="list-item"><a href="#" class="item"><i class="icon-content icon-sport-tennis-2"></i> Wawrinka, Nadal thẳng tiến vào tứ kết</a></li>
                         </ul>
+                    </div>
+                </div>
+
+                <div class="block block-basketball">
+                    <h2 class="title-block">
+                        <a href="#">Bóng rổ</a>
+                    </h2>
+                    <div class="grid-2-colums">
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img21.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img21.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img21.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img23.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img23.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img23.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img24.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img24.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img24.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img25.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img25.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img25.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img26.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img26.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img26.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="block-vertical">
+                            <div class="img-item">
+                                <a href="#">
+                                    <picture>
+                                        <source srcset="images/img23.webp" type="image/webp" class="img-res">
+                                        <source srcset="images/img23.jpg" type="image/jpeg" class="img-res"> 
+                                        <img src="images/img23.jpg" alt="Alt Text!" class="img-res img-block">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="block-text">
+                                <div class="heading"><a href="#">Ngôi sao 17 tuổi được triệu tập</a></div>
+                                <p class="block-time">1 giờ trước</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -474,7 +842,7 @@
         </div>
 
         <div class="back-to-top">
-            <span class="icon-right-chevron"></span>
+            <span class="icon-chevron-right"></span>
         </div>
     </section>
 

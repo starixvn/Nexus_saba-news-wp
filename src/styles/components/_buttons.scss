@@ -5,14 +5,15 @@ button{
     padding: 0;
 }
 .btn-play-video{
-    height: 6rem;
-    width: 6rem;
-    background-color: $color-active;
+    height: 8rem;
+    width: 8rem;
+    background-color: rgba($color: $color-fff, $alpha: .2);
     @include flex(center,nowrap,center,column);
     border-radius: 50%;
+    @include position('center',50%,50%);
     cursor: pointer;
     span{
-        font-size: 1.8rem;
+        font-size: 4.6rem;
     }
 }
 

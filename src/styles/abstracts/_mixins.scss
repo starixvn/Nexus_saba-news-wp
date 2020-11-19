@@ -3,10 +3,6 @@
         @content;
     }
 }
-
-
-
-
 @mixin tableMobile {
     @media screen and (max-width: 1024px){
         @content;
@@ -19,7 +15,7 @@
 }
 
 @mixin creen1199px {
-    @media screen and (max-width : 1199px){
+    @media screen and (min-width : 1199px){
         @content;
     }
 }
