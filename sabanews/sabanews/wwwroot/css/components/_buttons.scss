@@ -1,0 +1,19 @@
+//button
+button{
+    outline: none;
+    border: 0;
+    padding: 0;
+}
+.btn-play-video{
+    height: 6rem;
+    width: 6rem;
+    background-color: $color-active;
+    @include flex(center,nowrap,center,column);
+    border-radius: 50%;
+    cursor: pointer;
+    span{
+        font-size: 1.8rem;
+    }
+}
+
+

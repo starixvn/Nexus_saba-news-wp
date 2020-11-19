@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?upi2wp');
+  src:  url('fonts/icomoon.eot?upi2wp#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?upi2wp') format('truetype'),
+    url('fonts/icomoon.woff?upi2wp') format('woff'),
+    url('fonts/icomoon.svg?upi2wp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pinterest-circular-logo-symbol:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-telegram:before {
+  content: "\e904";
+  color: #fff;
+}
+.icon-twitter:before {
+  content: "\e906";
+  color: #fff;
+}
+.icon-facebook:before {
+  content: "\e907";
+  color: #fff;
+}
+.icon-play-button-arrowhead:before {
+  content: "\e900";
+  color: #fff;
+}
+.icon-right-arrow:before {
+  content: "\e901";
+}
+.icon-right-chevron:before {
+  content: "\e902";
+  color: #fff;
+}
+.icon-search:before {
+  content: "\e903";
+  color: #fff;
+}

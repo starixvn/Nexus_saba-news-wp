@@ -1,0 +1,276 @@
+@import '../abstracts/placeholders';
+.menu{
+    background-color: $color-pagination;
+    @include tableMobile{
+        overflow: hidden;
+        position: sticky;
+        z-index: 999999;
+        top: 0;
+    }
+    .nav-menu{
+        @include flex(center,nowrap, flex-start,row);
+        @include tableMobile{
+            @include flex(center, wrap, flex-start,row);
+            padding : 0 1rem;
+        }
+        .logo{
+            margin-top: .4rem;
+            width: 30rem;
+            @include tableMobile{
+                width: 100%;
+                margin: .8rem 0 .5rem 0;
+                position: static;
+                z-index: 99999;
+                @include flex(center,nowrap, space-between,row);
+                
+            }
+            .button-mobile{
+                width: 2.2rem;
+                height: 3rem;
+                position: relative;
+                transform: rotate(0);
+                transition: .5s ease-in-out;
+                cursor: pointer;
+                display: none;
+                @include tableMobile{
+                    display: block;
+                }
+                .line-mb{
+                    display: block;
+                    position: absolute;
+                    height: .3rem;
+                    width: 100%;
+                    background: $color-fff;
+                    opacity: 1;
+                    left: -1rem;
+                    transform: rotate(0);
+                    transition: .25s ease-in-out;
+                    border-radius: 1rem;
+                    &:nth-child(1){
+                        top: .7rem;
+                    }
+                    &:nth-child(2){
+                        top: 1.4rem;
+                    }
+                    &:nth-child(3){
+                        top: 2.1rem;
+                    }
+                }
+            }
+            .open{
+                .line-mb{
+                    &:nth-child(1){
+                        top: 1.4rem;
+                        -webkit-transform: rotate(135deg);
+                        -moz-transform: rotate(135deg);
+                        -o-transform: rotate(135deg);
+                        transform: rotate(135deg);
+                    }
+                    &:nth-child(2){
+                        opacity: 0;
+                        left: 5rem;
+                    }
+                    &:nth-child(3){
+                        top: 1.4rem;
+                        -webkit-transform: rotate(-135deg);
+                        -moz-transform: rotate(-135deg);
+                        -o-transform: rotate(-135deg);
+                        transform: rotate(-135deg);
+                    }
+                }
+            }
+        }
+        .main-menu{
+            list-style: none;
+            width: 100%;
+            @include flex(center, nowrap, flex-end,row);
+            margin-right: 2rem;
+            @include tableMobile{
+                margin: 0;
+                @include flex(center, wrap, flex-start,column);
+                background-color: $color-pagination;
+                height: 100vh !important;
+                height: 45%;
+                z-index: 999;
+                display: none;
+            }
+            .menu-item{
+                position: relative;
+                @include tableMobile{
+                    width: 100%;
+                    order: 2;
+                    border-bottom: 1px solid $color-border;
+                }
+                &:nth-child(4){
+                    border-bottom: none;
+                    a{
+                        border: none;
+                    }
+                }
+                .click-sub{
+                    position: absolute;
+                    top: 0;
+                    right: -1rem;
+                    width: 4.6rem;
+                    height: 5rem;
+                    transition: all .2s ease-in-out;
+                    font-size: 1.4rem;
+                    cursor: pointer;
+                    display: none;
+                    transform: rotate(90deg);
+                    @include tableMobile{
+                        @include flex(center, nowrap,center,row);
+                    }
+                }
+                .show{
+                    transform: rotate(270deg) !important;
+                }
+                .item{
+                    color: $color-nav;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    display: block;
+                    padding: 2.5rem 1.5rem;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    transition: color .2s ease;
+                    @include tableMobile{
+                        color: $color-fff;
+                        padding: 1.3rem 0rem;
+                        font-size: 1.6rem;
+                        text-transform: initial;
+                        font-weight: inherit;
+                    }
+                    &:hover{
+                        color: $color-active;
+                    }
+                }
+                .active{
+                    color: $color-active;
+                }
+                .menu-child{
+                    padding: .5rem 0;
+                    background-color: $color-fff;
+                    width: 18rem;
+                    list-style: none;
+                    position: absolute;
+                    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+                    top: 6.9rem;
+                    border-radius: .3rem;
+                    left: 50%;
+                    margin-left: -8.4rem;
+                    display: none;
+                    z-index: 99;
+                     @include tableMobile{
+                         background-color: transparent;
+                         position: inherit;
+                         width: 100%;
+                         top: auto;
+                         left: auto;
+                         margin-left: auto;
+                         padding-left: 1.6rem;
+                         box-shadow: none;
+                         border-radius: 0;
+                     }
+                     &::after{
+                        content: ' ';
+                        display: block;
+                        position: absolute;
+                        z-index: 1;
+                        top: 0;
+                        left: 50%;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        margin: -.6rem 0 0 -.6rem;
+                        background-color: $color-fff;
+                        transform: rotate(45deg);
+                        @include tableMobile {
+                            display: none;
+                        }
+                    }
+                    .child-menu-item{
+                        .item-child{
+                            padding: 1rem 1.5rem;
+                            color: $color-title;
+                            text-transform: inherit;
+                            color: $color-nav;
+                            text-transform: uppercase;
+                            text-decoration: none;
+                            display: block;
+                            font-size: 1.4rem;
+                            font-weight: 700;
+                            transition: color .2s ease;
+                            @include tableMobile{
+                                color: $color-fff;
+                                padding: 1.3rem 0rem;
+                                font-size: 1.6rem;
+                                text-transform: initial;
+                                border-bottom: 1px solid $color-border;
+                                font-weight: inherit;
+                                border: none !important;
+                                color: $color-fff;
+                            }
+                            &:hover{
+                                color: $color-active;
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    .menu-child{
+                        display: block;
+                        @include tableMobile{
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .search-input{
+                margin: 0 0 0 2rem;
+                position: relative;
+                @include tableMobile{
+                    order: 1;
+                    margin: 0;
+                    width: 100%;
+                    padding: 2.3rem 0;
+                }
+                input{
+                    height: 4rem;
+                    font-size: 1.4rem;
+                    font-weight: 400;
+                    padding: 0 6rem 0 2.1rem !important;
+                    line-height: 5rem;
+                    border: none;
+                    color: $color-input;
+                    border-radius: 3rem;
+                    @include tableMobile{
+                        width: 100%;
+                        padding: 1rem 3rem 1rem 2.5rem !important;
+                        height: 5.5rem;
+                    }
+                }
+                .btn-search{
+                    background-color: transparent;
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    right: 0;
+                    width: 5rem;
+                    height: 100%;
+                    @include tableMobile{
+                        background: #7E828B;
+                        height: 4.8rem;
+                        border-radius: 3rem;
+                        top: 2.7rem;
+                        right: .4rem;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+        .active-main-menu{
+            height: 100%;
+            display: flex !important;
+        }
+    }
+}

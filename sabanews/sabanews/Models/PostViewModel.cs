@@ -1,0 +1,17 @@
+﻿namespace sabanews.Models
+{
+    using System.Collections.Generic;
+
+    public class PostViewModel
+    {
+        public IEnumerable<Post> NewPosts { get; set; }
+        public IEnumerable<Post> FootballPosts { get; set; }
+        public IEnumerable<Post> BasketballPosts { get; set; }
+        public IEnumerable<Post> TennisPosts { get; set; }
+        public IEnumerable<Post> VideoPosts { get; set; }
+        public IEnumerable<Post> GuessPosts { get; set; }
+        public IEnumerable<Post> BackstagePosts { get; set; }
+        public IEnumerable<Post> TransferPosts { get; set; }
+        public IEnumerable<Menu> Menus { get; set; }
+    }
+}

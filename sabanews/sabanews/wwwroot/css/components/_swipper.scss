@@ -1,0 +1,53 @@
+.swiper-container {
+    width: 100%;
+    .swiper-button-prev,.swiper-button-next{
+        outline: none;
+    }
+    .swiper-pagination-bullet{
+        background-color: $color-title;
+        height: .5rem;
+        width: 3.3rem;
+        border-radius: .3rem;
+        opacity: 1;
+        outline: none;
+    }
+    .swiper-pagination-bullet-active{
+        background-color: $color-active;
+    }
+    .swiper-pagination-bullets{
+        bottom: 1.5rem;
+        @include tableMobile{
+            bottom: 3.5rem;
+        }
+    }
+    .card-video{
+        background-color: $color-pagination;
+        .card-items{
+            .img-columns{
+                margin-right: 0;
+                border-radius : 0;
+                position: relative;
+                @include tableMobile{
+                    width: 100%;
+                }
+                img{
+                    border-radius : 0;
+                }
+            }
+            .content-box{
+                padding: 1rem 0 6rem 0;
+                .title-box{
+                    .heading{
+                        color: $color-fff;
+                    }
+                }
+                .date-time{
+                    margin-bottom: .7rem;
+                }
+                .title-box,.date-time{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

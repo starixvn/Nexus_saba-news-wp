@@ -1,0 +1,110 @@
+.card-items{
+    margin-bottom: 1.5rem;
+    padding-bottom: 0;
+    @include tableMobile{
+        margin-bottom: 1rem;
+    }
+    .img-columns{
+        .btn-play-video{
+            @include position('center',50%,50%);
+        }
+        .custom-button-play{
+            @include tableMobile{
+                width: 4rem;
+                height: 4rem;
+                span{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    .horizontal{
+        position: relative;
+        height: 100%;
+        margin-right: 1.5rem;
+        overflow: hidden;
+        height: 16rem;
+        width: 16rem;
+        @include creen1199px{
+            width: auto;
+        }
+        @include tableMobile{
+            width: auto;
+            margin-right: 1rem;
+            height: 8rem;
+        }
+        img{
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+    .main-img{
+        height: 44rem;
+        @include tableMobile{
+            height: auto;
+        }
+    }
+    .ml-column{
+        margin-left: -2.7rem;
+        @include creen1199px{
+            margin-left: 0 !important;
+        }
+        @include tableMobile{
+            margin-left: 0;
+        }
+    }
+    .content-box{
+        .title-box{
+            margin-top: .5rem;
+            .heading{
+                font-size: 2.2rem;
+                font-family: $font-title;
+                font-weight: 500;
+                text-decoration: none;
+                color: $color-title;
+                transition: color .2s ease-in-out;
+                @include tableMobile{
+                    font-size: 1.6rem;
+                    line-height: 1.4;
+                }
+                &:hover{
+                    color: $color-active;
+                }
+            }
+        }
+        .date-time{
+            color: #8a8a8a;
+            font-family: $font-body;
+            font-size: 1.3rem;
+            margin: .1rem 0;
+            @include tableMobile{
+                margin-top: 0;
+                font-size: 1.3rem;
+            }
+        }
+        .description{
+            font-size: 1.6rem;
+            line-height: 1.5;
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            -webkit-line-clamp: 1;
+            height: 2.5rem;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            margin-bottom: 1.5rem;
+            @include Mobile{
+                display: none;
+            }
+            @include tableMobile{
+                font-size: 1.4rem;
+                //margin: 0;
+                height: 2rem;
+            }
+        }
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+}

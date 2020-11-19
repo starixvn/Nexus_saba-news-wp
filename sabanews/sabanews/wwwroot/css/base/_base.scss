@@ -1,0 +1,37 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 10px;
+}
+body,html{
+    font-weight: 400;
+    font-family: $font-body;
+    background-color: #F4F4F4;
+}
+.img-res{
+    max-width: 100%;
+    height: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 100%;
+    margin: 0;
+}
+.align-items-center{
+    align-items: center;
+}
+.hidden-body{
+    overflow: hidden;
+}
+.main{
+    padding: 1.5rem 0;
+    @include tableMobile{
+        padding : .5rem 0;
+    }
+}

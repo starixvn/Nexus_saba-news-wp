@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Menu>
+<section class="menu">
+	<div class="container">
+		<div class="nav-menu">
+			<div class="logo">
+				<a href="/">
+					<img class="img-res" src="~/images/logo-2.png" alt="logo">
+				</a>
+				<div class="button-mobile">
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+				</div>
+			</div>
+			<ul class="main-menu">
+				@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
+				{
+					var link = Url.Action("Category", "Home", new { cateId = menu.CatId, page = 1 });
+					if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
+					{
+						link = Url.Action("MatchSchedule", "Home");
+					}
+					else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
+					{
+						link = Url.Action("Index", "Home");
+					}
+					var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+					var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
+					@if (menuLv2.Count == 0)
+					{
+						<li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
+					}
+					else
+					{
+						var selected = Model.Where(p => p.ParentId == menu.ID && p.CatId == Convert.ToInt32(ViewData["CategoryId"])).ToList();
+						if (selected.Count > 0)
+						{
+							activeMenu = "active";
+						}
+						<li class="menu-item">
+							<a href="@Url.Action("Category", "Home", new {cateId = menu.CatId, page = 1 })" class="submenu item @activeMenu">@menu.Name</a>
+							<span class="icon-right-chevron click-sub"></span>
+							<ul class="menu-child">
+								@foreach (var Lv2 in menuLv2)
+								{
+									var subActiveMenu = Lv2.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+									<li class="child-menu-item @subActiveMenu"><a href="@Url.Action("Category", "Home", new {cateId = Lv2.CatId, page = 1 })" class="item-child">@Lv2.Name</a></li>
+								}
+							</ul>
+						</li>
+					}
+				}
+				<div class="search-input">
+					<form  asp-action="Search" method="get">
+						<input type="text" name="keyword" placeholder="Tìm kiếm...">
+						<button type="submit" class="btn-search">
+							<i class="icon-search"></i>
+						</button>
+					</form>
+				</div>
+			</ul>
+		</div>
+	</div>
+</section>

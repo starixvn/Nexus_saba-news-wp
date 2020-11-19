@@ -1,0 +1,16 @@
+﻿@{
+	ViewData["Title"] = "Lịch Thi Đấu - Saba Sports VN";
+}
+@section Styles{
+	<link rel="stylesheet" href="~/css/news.css">
+}
+<section class="main">
+	<div class="container">
+		<div class="column-main">
+			<div class="block block-hot-news">
+				<div class="match-schedule">@Html.Raw(@Model.PostContent)</div>
+			</div>
+			@(await Component.InvokeAsync("Sidebar"))
+		</div>
+	</div>
+</section>
