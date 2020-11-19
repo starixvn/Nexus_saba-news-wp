@@ -1062,109 +1062,102 @@ button {
   background-color: #E8EAEF;
 }
 
-.grid-main {
+.colums-main {
   display: grid;
-  grid-template-rows: repeat(1, 0fr);
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 0rem;
+  grid-template-columns: auto;
+  grid-template-areas: "block-hot-news block-hot-news" "block-video block-video" "block-soccer block-soccer" "block-guess block-behind" "block-transfer block-transfer" "block-basketball block-tennis";
 }
 @media screen and (max-width: 1024px) {
-  .grid-main {
-    display: grid;
-    grid-template-rows: repeat(1, 0fr);
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1rem;
+  .colums-main {
+    display: inherit;
   }
 }
-.grid-main .block-hot-news {
-  grid-column: 1/7;
-  grid-row: 1;
+.colums-main .block-hot-news {
+  grid-area: block-hot-news;
 }
-.grid-main .block-hot-news .main-block .block-vertical {
+.colums-main .block-hot-news .main-block .block-vertical {
   padding-right: 2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-hot-news .main-block .block-vertical {
+  .colums-main .block-hot-news .main-block .block-vertical {
     padding: 0;
     margin-bottom: 1.5rem;
   }
 }
-.grid-main .block-hot-news .main-block .block-vertical .img-item {
+.colums-main .block-hot-news .main-block .block-vertical .img-item {
   margin-bottom: 0;
 }
-.grid-main .block-hot-news .main-block .block-vertical .bg-text {
+.colums-main .block-hot-news .main-block .block-vertical .bg-text {
   background-color: #E8EAEF;
   padding: 1rem 2rem 2rem 2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-hot-news .main-block .block-vertical .bg-text {
+  .colums-main .block-hot-news .main-block .block-vertical .bg-text {
     padding: 0.6rem 0.8rem 0.8rem 0.8rem;
   }
 }
-.grid-main .block-hot-news .main-block .block-vertical .block-text .heading a {
+.colums-main .block-hot-news .main-block .block-vertical .block-text .heading a {
   font-size: 2rem;
   line-height: 2.4rem;
 }
-.grid-main .block-hot-news .main-block .block-horizontal {
+.colums-main .block-hot-news .main-block .block-horizontal {
   padding-left: 1.2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-hot-news .main-block .block-horizontal {
+  .colums-main .block-hot-news .main-block .block-horizontal {
     padding: 0;
   }
 }
-.grid-main .block-video {
-  grid-column: 1/7;
-  grid-row: 2;
+.colums-main .block-video {
+  grid-area: block-video;
 }
-.grid-main .block-video .slide-video {
+.colums-main .block-video .slide-video {
   padding-left: 3rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-video .slide-video {
+  .colums-main .block-video .slide-video {
     padding-left: 0;
     display: none;
   }
 }
-.grid-main .block-video .slide-video .block-horizontal {
+.colums-main .block-video .slide-video .block-horizontal {
   max-height: 40rem;
   overflow-y: scroll;
 }
-.grid-main .block-video .slide-video .block-horizontal::-webkit-scrollbar {
+.colums-main .block-video .slide-video .block-horizontal::-webkit-scrollbar {
   width: 0.6rem;
 }
-.grid-main .block-video .slide-video .block-horizontal::-webkit-scrollbar-track {
+.colums-main .block-video .slide-video .block-horizontal::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-.grid-main .block-video .slide-video .block-horizontal::-webkit-scrollbar-thumb {
+.colums-main .block-video .slide-video .block-horizontal::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
-.grid-main .block-video .slide-video .block-horizontal .block-item {
+.colums-main .block-video .slide-video .block-horizontal .block-item {
   margin-bottom: 1rem;
 }
-.grid-main .block-video .slide-video .block-horizontal .block-item:last-child {
+.colums-main .block-video .slide-video .block-horizontal .block-item:last-child {
   margin-bottom: 0;
 }
-.grid-main .block-video .slide-video .block-horizontal .block-item .flex-item {
+.colums-main .block-video .slide-video .block-horizontal .block-item .flex-item {
   align-items: center;
 }
-.grid-main .block-video .slide-video .block-horizontal .block-item .bg-text {
+.colums-main .block-video .slide-video .block-horizontal .block-item .bg-text {
   background-color: #E8EAEF;
 }
-.grid-main .block-soccer, .grid-main .block-transfer, .grid-main .block-guess {
-  grid-column: 1/7;
-  grid-row: 3;
+.colums-main .block-soccer, .colums-main .block-transfer {
+  grid-area: block-soccer;
 }
-.grid-main .block-soccer .block-vertical .img-item, .grid-main .block-transfer .block-vertical .img-item, .grid-main .block-guess .block-vertical .img-item {
+.colums-main .block-soccer .block-vertical .img-item, .colums-main .block-transfer .block-vertical .img-item {
   margin-bottom: 1rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-soccer .block-vertical .img-item, .grid-main .block-transfer .block-vertical .img-item, .grid-main .block-guess .block-vertical .img-item {
+  .colums-main .block-soccer .block-vertical .img-item, .colums-main .block-transfer .block-vertical .img-item {
     margin-bottom: 0.5rem;
   }
 }
-.grid-main .block-soccer .block-vertical .block-text .heading a, .grid-main .block-transfer .block-vertical .block-text .heading a, .grid-main .block-guess .block-vertical .block-text .heading a {
+.colums-main .block-soccer .block-vertical .block-text .heading a, .colums-main .block-transfer .block-vertical .block-text .heading a {
   font-style: normal;
   font-weight: bold;
   font-size: 1.6rem;
@@ -1172,163 +1165,150 @@ button {
   letter-spacing: 0;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-soccer .block-vertical .block-text .heading a, .grid-main .block-transfer .block-vertical .block-text .heading a, .grid-main .block-guess .block-vertical .block-text .heading a {
+  .colums-main .block-soccer .block-vertical .block-text .heading a, .colums-main .block-transfer .block-vertical .block-text .heading a {
     font-size: 1.4rem;
     line-height: 2rem;
   }
 }
-.grid-main .block-guess {
-  grid-column: 1/4;
-  grid-row: 4;
+.colums-main .block-guess {
+  grid-row: block-guess;
   padding: 0 1.5rem 3.9rem 0;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-guess {
-    grid-column: 1/7;
+  .colums-main .block-guess {
     padding-right: 0;
     padding-bottom: 0.9rem;
   }
 }
-.grid-main .block-guess .title-block {
+.colums-main .block-guess .title-block {
   margin-bottom: 2.6rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-guess .title-block {
+  .colums-main .block-guess .title-block {
     margin-bottom: 1rem;
   }
 }
-.grid-main .block-guess .block-horizontal .block-item {
+.colums-main .block-guess .block-horizontal .block-item {
   margin-bottom: 3rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-guess .block-horizontal .block-item {
+  .colums-main .block-guess .block-horizontal .block-item {
     margin-bottom: 1rem;
   }
 }
-.grid-main .block-guess .block-horizontal .block-item:last-child {
+.colums-main .block-guess .block-horizontal .block-item:last-child {
   margin-bottom: 0;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-guess .block-horizontal .block-item:last-child {
+  .colums-main .block-guess .block-horizontal .block-item:last-child {
     display: none;
   }
 }
-.grid-main .block-transfer {
-  grid-column: 1/7;
-  grid-row: 5;
+.colums-main .block-transfer {
   padding-bottom: 6.2rem;
+  grid-area: block-transfer;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-transfer {
-    grid-row: 6;
+  .colums-main .block-transfer {
     padding-bottom: 1.8rem;
   }
 }
-.grid-main .block-behind {
-  grid-column: 4/7;
-  grid-row: 4;
+.colums-main .block-behind {
+  grid-area: block-behind;
   padding-left: 1.5rem;
   padding-bottom: 3.9rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-behind {
-    grid-column: 1/7;
-    grid-row: 5;
+  .colums-main .block-behind {
     padding: 0;
   }
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-behind .block-vertical {
+  .colums-main .block-behind .block-vertical {
     padding: 0;
     margin-bottom: 1.5rem;
   }
 }
-.grid-main .block-behind .block-vertical .img-item {
+.colums-main .block-behind .block-vertical .img-item {
   margin-bottom: 0;
 }
-.grid-main .block-behind .block-vertical .bg-text {
+.colums-main .block-behind .block-vertical .bg-text {
   padding: 1rem 2rem 1.3rem 2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-behind .block-vertical .bg-text {
+  .colums-main .block-behind .block-vertical .bg-text {
     padding: 1rem 0.8rem 1rem 0.8rem;
   }
 }
-.grid-main .block-behind .block-vertical .block-text .heading a {
+.colums-main .block-behind .block-vertical .block-text .heading a {
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-behind .block-vertical .block-text .heading a {
+  .colums-main .block-behind .block-vertical .block-text .heading a {
     line-height: 2rem;
   }
 }
-.grid-main .block-behind .grid-2-colums {
+.colums-main .block-behind .grid-2-colums {
   margin-top: 2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-behind .grid-2-colums {
+  .colums-main .block-behind .grid-2-colums {
     margin-top: 0;
   }
 }
-.grid-main .block-behind .grid-2-colums .img-item {
+.colums-main .block-behind .grid-2-colums .img-item {
   margin-bottom: 1rem;
 }
-.grid-main .block-basketball {
-  grid-column: 1/4;
-  grid-row: 6;
+.colums-main .block-basketball {
   padding: 0 1.5rem 3.9rem 0;
   border: none;
+  grid-area: block-basketball;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-basketball {
-    grid-column: 1/7;
-    grid-row: 7;
+  .colums-main .block-basketball {
     padding: 0 0 1.2rem 0;
     border-bottom: 1px solid #828282;
   }
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-basketball .grid-2-colums {
+  .colums-main .block-basketball .grid-2-colums {
     grid-gap: 0.5rem 2rem;
   }
 }
-.grid-main .block-tennis {
-  grid-column: 4/7;
-  grid-row: 6;
+.colums-main .block-tennis {
   padding-left: 1.5rem;
   border: none;
+  grid-area: block-tennis;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-tennis {
-    grid-column: 1/7;
-    grid-row: 8;
+  .colums-main .block-tennis {
     padding: 0;
   }
 }
-.grid-main .block-tennis .block-text .heading {
+.colums-main .block-tennis .block-text .heading {
   margin-top: 2rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-tennis .block-text .heading {
+  .colums-main .block-tennis .block-text .heading {
     margin-top: 1rem;
   }
 }
-.grid-main .block-tennis .block-text .heading a {
+.colums-main .block-tennis .block-text .heading a {
   font-weight: bold;
   font-size: 1.8rem;
   line-height: 2.4rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-tennis .block-text .block-time {
+  .colums-main .block-tennis .block-text .block-time {
     margin-top: -0.8rem;
   }
 }
-.grid-main .block-tennis .block-text .description {
+.colums-main .block-tennis .block-text .description {
   margin-top: 1.4rem;
 }
 @media screen and (max-width: 1024px) {
-  .grid-main .block-tennis .block-text .description {
+  .colums-main .block-tennis .block-text .description {
     margin-top: 0;
   }
 }
