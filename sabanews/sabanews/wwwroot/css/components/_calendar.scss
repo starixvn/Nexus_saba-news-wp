@@ -1,115 +1,79 @@
+
 .block-calendar{
-    grid-column: 5/7;
-    grid-row: 4/7;
-    margin-top: -5.2rem;
-    @include tableMobile{
-        grid-column: 1/7;
-        grid-row: 4;
-        margin-top: 0;
-    }
+    border: 1px solid $border-calendar !important;
+    border-radius: 8px;
+    padding: 1rem 0.6rem 1rem 1.2rem !important;
     .box-calendar{
-        .table-calendar{
-            font-family: $font-title;
-            width: 100%;
-            thead{
-                tr{
-                    th{
-                        color: $color-title;
-                        font-size: 2rem;
-                        width: 14%;
-                        line-height: 4.8rem;
-                        padding: .2rem;
-                        text-align: center;
-                        @include tableMobile{
-                            font-size: 1.8rem;
-                        }
-                    }
-                }
-            }
-            tbody{
-                tr{
-                    td{
-                        color: $color-title;
-                        font-size: 1.5rem;
-                        width: 14%;
-                        line-height: 3.8rem;
-                        padding: .2rem;
-                        text-align: center;
-                        color: $color-calendar;
-                        font-weight: 400;
-                        @include tableMobile{
-                            line-height: 3rem;
-                        }
-                    }
-                    #today{
-                        color: $color-fff;
-                        position: relative;
-                        z-index: 2;
-                        &::before{
-                            content: '';
-                            z-index: -1;
-                            width: 4.5rem;
-                            height: 4.5rem;
-                            @include position('center',50%,50%);
-                            text-align: center;
-                            border-radius: 50%;
-                            background-color: $color-active;
-                            color: $color-fff;
-                            @include tableMobile{
-                                width: 3.5rem;
-                                height: 3.5rem;
-                            }
-                        }
-                    }
-                    .lastday{
-                        color: $color-000;
-                        position: relative;
-                        z-index: 2;
-                        &::before{
-                            content: '';
-                            z-index: -1;
-                            width: 4.5rem;
-                            height: 4.5rem;
-                            @include position('center',50%,50%);
-                            text-align: center;
-                            border-radius: 50%;
-                            background-color: #F4F4F4;
-                            @include tableMobile{
-                                width: 3.5rem;
-                                height: 3.5rem;
-                            }
-                        }
-                        .prev{
-                            text-decoration: none;
-                            color: $color-000;
-                        }
-                    }
-                }
-            }
-        }
+        @include flex(center, nowrap,space-evenly,row);
         .date-year{
-            background-color: $color-active;
-            text-align: center;
-            font-family: $font-body ;
-            font-size: 1.4rem;
-            line-height: 1.6rem;
-            border-radius: 3rem;
-            padding: 1.7rem;
-            color: $color-fff;
-            margin-bottom: 1.3rem;
-            @include tableMobile{
-                padding: .8rem;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            color: $color-pagination-2;
+            margin: 0 -1.7rem;
+        }
+        .btn{
+            cursor: pointer;
+            font-size: 2.4rem;
+            &::before{
+                color: $color-title;
             }
         }
-        .calendar-prev{
-            margin: 1rem 0 0 1rem;
-            .prev{
-                color: $color-active;
-                text-decoration: none;
-                transition: color .2s ease-in-out;
-                font-size: 1.4rem;
-                &:hover{
-                    color: $color-pagination;
+    }
+    .table-calendar{
+        width: 100%;
+        margin-top: .9rem;
+        thead{
+            tr{
+                th{
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 1.6rem;
+                    line-height: 2.4rem;
+                    color: $color-pagination-2;
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 1.2rem;
+                    line-height: 3.3rem;
+                    text-align: center;
+                }
+                .lastday{
+                    .prev{
+                        text-decoration: none;
+                        position: relative;
+                        z-index: 1;
+                        color: $color-content;
+                        &::after{
+                            background-color: $bg-input;
+                            display: block;
+                            content: "";
+                            width: 2.8rem;
+                            height: 2.8rem;
+                            position: absolute;
+                            top: 50%;
+                            right: 50%;
+                            transform: translate(50%,-50%);
+                            z-index: -1;
+                            border-radius: 50%;
+
+                        }
+                    }
+                }
+                #today{
+                    @extend .lastday;
+                    .prev{
+                        color: $color-fff;
+                        &::after{
+                            background-color: $color-title;
+                        }
+                    }
                 }
             }
         }

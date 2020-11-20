@@ -29,9 +29,15 @@ body,html{
 .hidden-body{
     overflow: hidden;
 }
-.main{
-    padding: 1.5rem 0;
+.pd-column-left{
+    padding-right: 1.5rem;
     @include tableMobile{
-        padding : .5rem 0;
+        padding: 0;
+    }
+}
+.pd-column-right{
+    padding-left: 2rem;
+    @include tableMobile{
+        padding: 0;
     }
 }

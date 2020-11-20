@@ -1,16 +1,30 @@
 ﻿@model IEnumerable<Menu>
-<section class="menu">
-	<div class="container">
-		<div class="nav-menu">
-			<div class="logo">
-				<a href="/">
-					<img class="img-res" src="~/images/logo-2.png" alt="logo">
-				</a>
-				<div class="button-mobile">
-					<span class="line-mb"></span>
-					<span class="line-mb"></span>
-					<span class="line-mb"></span>
+<section class="header">
+	<div class="top-header">
+		<div class="container">
+			<div class="group-top">
+				<div class="logo">
+					<a href="@Url.Action("Index", "Home")">
+						<img src="~/images/logo-2.png" alt="logo">
+					</a>
 				</div>
+				<div class="search-input">
+					<form asp-action="Search" method="get">
+						<input name="keyword" type="text" placeholder="Tìm kiếm...">
+						<button type="submit" class="btn-search">
+							<i class="icon-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="nav-menu">
+		<div class="container">
+			<div class="button-mobile">
+				<span class="line-mb"></span>
+				<span class="line-mb"></span>
+				<span class="line-mb"></span>
 			</div>
 			<ul class="main-menu">
 				@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
@@ -39,7 +53,7 @@
 						}
 						<li class="menu-item">
 							<a href="@Url.Action("Category", "Home", new {cateId = menu.CatId, page = 1 })" class="submenu item @activeMenu">@menu.Name</a>
-							<span class="icon-right-chevron click-sub"></span>
+							<span class="icon-chevron-right click-sub"></span>
 							<ul class="menu-child">
 								@foreach (var Lv2 in menuLv2)
 								{
@@ -50,14 +64,6 @@
 						</li>
 					}
 				}
-				<div class="search-input">
-					<form  asp-action="Search" method="get">
-						<input type="text" name="keyword" placeholder="Tìm kiếm...">
-						<button type="submit" class="btn-search">
-							<i class="icon-search"></i>
-						</button>
-					</form>
-				</div>
 			</ul>
 		</div>
 	</div>

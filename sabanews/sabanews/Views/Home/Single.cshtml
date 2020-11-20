@@ -1,96 +1,93 @@
 ﻿@section Styles{
-	<link rel="stylesheet" href="~/css/detail.css">
-	<link rel="stylesheet" href="~/css/site.css">
+	<link rel="stylesheet" href="~/css/detailnews.css">
 }
-<section class="main detail-page">
+<section class="main">
 	<div class="container">
-		<div class="column-main">
-			<div class="block block-read-detail">
-				<div class="banner-page">
-					<picture>
-						<source srcset="@Model.SinglePost.FeatureImage" type="image/webp" class="img-res">
-						<source srcset="@Model.SinglePost.FeatureImage" type="image/jpeg" class="img-res">
-						<img src="@Model.SinglePost.FeatureImage" alt="Alt Text!" class="img-res">
-					</picture>
-				</div>
-				<div class="main-card">
-					<div class="detail-wapper">
-						<h2 class="title-wapper">@Model.SinglePost.PostTitle</h2>
-						@Html.Raw(Model.SinglePost.PostContent)
-						<ul class="related-post">
-							@if (Model.RelatedPosts.Count > 0)
-							{
-								<li class="related-child">Related Posts:</li>
-								@foreach (var post in Model.RelatedPosts)
-								{
-									<li class="related-child"><a href="@Url.Action("Single", "Home", new { ID = @post.ID })" class="related-child-item">@post.PostTitle</a></li>
-
-								}
-							}
-							else
-							{
-								<li class="related-child">No Related Posts.</li>
-							}
-
-						</ul>
-						
-						<div class="tag-group">
-							<ul class="tag">
-								@if (Model.SinglePost.Tags != "")
-								{
-									var tags = Model.SinglePost.Tags.Split(',');
-									<li class="name tag">Thẻ: </li>
-									@foreach (var tag in tags)
-									{
-										<li class="category"><a href="@Url.Action("Tag", "Home", new { tag = tag })">@tag</a></li>
-									}
-								}
-							</ul>
-							@{
-								var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { ID = @Model.SinglePost.ID });
-							}
-							<ul class="socical-tag">
-								<li class="name">Chia sẻ: </li>
-								<li class="tag"><a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"  data-count="facebook" target="_blank" rel="nofollow" class="icon"><i class="icon-facebook"></i></a></li>
-								<li class="tag"><a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="twitter" target="_blank" rel="nofollow" class="icon"><i class="icon-twitter"></i></a></li>
-								<li class="tag"><a href="http://pinterest.com/pin/create/link/?url=@absoluteLink" data-count="pinterest-circled" target="_blank" rel="nofollow" class="icon"><i class="icon-pinterest-circular-logo-symbol"></i></a></li>
-								<li class="tag"><a href="#" class="icon"><i class="icon-telegram"></i></a></li>
-							</ul>
+		<div class="row">
+			<div class="col col-8 pd-column-left">
+				<div class="block block-detail-news">
+					<div class="block-vertical block-detail">
+						<div class="img-item">
+							<picture>
+								<source srcset="@Model.SinglePost.FeatureImage" type="image/webp" class="img-res">
+								<source srcset="@Model.SinglePost.FeatureImage" type="image/jpeg" class="img-res">
+								<img src="@Model.SinglePost.FeatureImage" alt="Alt Text!" class="img-res img-block">
+							</picture>
+						</div>
+						<div class="block-text">
+							<div class="heading">
+								<a href="#">
+									@Model.SinglePost.PostTitle
+								</a>
+							</div>
+							<p class="block-time">@Model.SinglePost.PostDate</p>
 						</div>
 					</div>
+
+					<div class="content">
+						@Html.Raw(Model.SinglePost.PostContent)
+					</div>
+
+
+					<ul class="block-list">
+						@foreach (var post in Model.RelatedPosts)
+						{
+							<li class="list-item"><a href="@Url.Action("Single", "Home", new { ID = @post.ID })" class="item"><i class="icon-content icon-sport-soccer"></i> @post.PostTitle</a></li>
+						}
+					</ul>
+
+					@{
+						var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { ID = @Model.SinglePost.ID });
+					}
+					<ul class="social">
+						<li class="item-social">Chia sẻ:</li>
+						<li class="item-social"><a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="twitter" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-twitter"></i></a></li>
+						<li class="item-social"><a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink" data-count="facebook" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-facebook"></i></a></li>
+						<li class="item-social"><a href="http://pinterest.com/pin/create/link/?url=@absoluteLink" data-count="pinterest-circled" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-pinterest"></i></a></li>
+						<li class="item-social"><a href="#" class="item"><i class="icon-social icon-social-telegram"></i></a></li>
+					</ul>
+					<ul class="tag-post">
+						@if (Model.SinglePost.Tags != "")
+						{
+							var tags = Model.SinglePost.Tags.Split(',');
+							@foreach (var tag in tags)
+							{
+								<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tag })" class="tag">@tag</a></li>
+							}
+						}
+					</ul>
+				</div>
+
+
+				<div class="block block-care">
+					<h2 class="title-block"><a href="#">CÓ THỂ BẠN QUAN TÂM</a></h2>
+					@foreach (var post in Model.RandomRelatedPosts)
+					{
+						<div class="block-horizontal">
+							<div class="block-item">
+								<div class="flex-item">
+									<div class="img-item">
+										<a href="#">
+											<picture>
+												<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
+												<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
+												<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
+											</picture>
+										</a>
+									</div>
+									<div class="block-text">
+										<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
+										<p class="block-time">@post.PostDate</p>
+										<p class="description text-description">@post.PostExcerpt</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+
 				</div>
 			</div>
 			@(await Component.InvokeAsync("Sidebar"))
-		</div>
-
-		<div class="card-detail">
-			<h2 class="title-page-details">
-				Có thể bạn quan tâm
-			</h2>
-			<div class="main-card">
-				<div class="card-items">
-					<div class="child-grid">
-						@foreach (var post in Model.RandomRelatedPosts)
-						{
-							<div class="card-child">
-								<div class="img-columns">
-									<picture>
-										<source srcset="@post.FeatureImage" type="image/webp">
-										<source srcset="@post.FeatureImage" type="image/jpeg">
-										<img src="@post.FeatureImage" alt="Alt Text!">
-									</picture>
-								</div>
-								<div class="content-box">
-									<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
-									<p class="date-time">@post.PostDate</p>
-									<div class="description">@post.PostExcerpt</div>
-								</div>
-							</div>
-						}
-
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>

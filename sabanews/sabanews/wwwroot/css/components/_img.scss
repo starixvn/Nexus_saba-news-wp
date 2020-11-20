@@ -1,6 +1,5 @@
-.img-columns{
+.img-item{
     overflow: hidden;
-    border-radius: 3px;
     &:hover{
         img{
             transition: all 0.5s ease;
@@ -10,7 +9,6 @@
     img{
         transition: all 0.5s ease;
         width: 100%;
-        border-radius: 3px;
         display: block;
     }
     source{

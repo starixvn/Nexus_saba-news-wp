@@ -22,13 +22,13 @@
             var Models = new PostViewModel
             {
                 NewPosts = await postService.GetAsync(new PostParam { Category = Constants.NewPostCategory, Start = 0, End = 5 }),
-                FootballPosts = await postService.GetAsync(new PostParam { Category = Constants.FootballCategory, Start = 0, End = 5 }),
-                BasketballPosts = await postService.GetAsync(new PostParam { Category = Constants.BasketballCategory, Start = 0, End = 3 }),
-                TennisPosts = await postService.GetAsync(new PostParam { Category = Constants.TennisCategory, Start = 0, End = 3 }),
+                FootballPosts = await postService.GetAsync(new PostParam { Category = Constants.FootballCategory, Start = 0, End = 8 }),
+                BasketballPosts = await postService.GetAsync(new PostParam { Category = Constants.BasketballCategory, Start = 0, End = 6 }),
+                TennisPosts = await postService.GetAsync(new PostParam { Category = Constants.TennisCategory, Start = 0, End = 5 }),
                 VideoPosts = await postService.GetAsync(new PostParam { Category = Constants.VideoCategory, Start = 0, End = 6 }),
-                GuessPosts = await postService.GetAsync(new PostParam { Category = Constants.GuessCategory, Start = 0, End = 3 }),
+                GuessPosts = await postService.GetAsync(new PostParam { Category = Constants.GuessCategory, Start = 0, End = 5 }),
                 BackstagePosts = await postService.GetAsync(new PostParam { Category = Constants.BackstageCategory, Start = 0, End = 3 }),
-                TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 5 })
+                TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 6 })
             };
 
             return View(Models);
@@ -44,8 +44,9 @@
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["CategoryId"] = cateId;
-            ViewData["controller"] = "category";
-            return View("Blog",Posts);
+            ViewData["Controller"] = "category";
+            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            return View(view, Posts);
         }
 
         [Route("lich-thi-dau")]
@@ -83,8 +84,10 @@
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["keyword"] = keyword;
-            ViewData["controller"] = "Search";
-            return View("Blog", Posts);
+            ViewData["Controller"] = "Search";
+            ViewData["Title"] = "Kết quả tìm kiếm từ khóa '" + keyword + "'";
+            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            return View(view, Posts);
         }
 
 
@@ -98,8 +101,26 @@
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["tag"] = tag;
-            ViewData["controller"] = "Tag";
-            return View("Blog", Posts);
+            ViewData["Controller"] = "Tag";
+            ViewData["Title"] = "Tag: '" + tag + "'";
+            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            return View(view, Posts);
+        }
+
+        [Route("{date}")]
+        public async Task<IActionResult> DateSearch(string date, int page = 1)
+        {
+            var start = (page - 1) * Constants.Perpage;
+            var Posts = await postService.GetPostByDate(date, start, Constants.Perpage);
+            var PostsTotal = await postService.GetPostByDate(date, 0, Constants.Total);
+            ViewData["CurrentPage"] = page;
+            ViewData["PageSize"] = Constants.Perpage;
+            ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
+            ViewData["Date"] = date;
+            ViewData["Controller"] = "DateSearch";
+            ViewData["Title"] = "Kết quả tìm kiếm: '" + date + "'";
+            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            return View(view, Posts);
         }
 
 

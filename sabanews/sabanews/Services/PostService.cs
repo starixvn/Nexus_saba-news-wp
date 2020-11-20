@@ -49,10 +49,11 @@
                         {
                             ID = Convert.ToInt32(reader["ID"]),
                             PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
+                            PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt,
                             PostContent = reader["post_content"].ToString(),
                             PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString()
+                            FeatureImage = reader["feature_image"].ToString(),
+                            Categories = reader["cate_name"].ToString()
                         };
                         posts.Add(post);
                     }
@@ -265,7 +266,6 @@
             }
             return menus;
         }
-
 
         public static string ToRelativeDate(DateTime dateTime)
         {
