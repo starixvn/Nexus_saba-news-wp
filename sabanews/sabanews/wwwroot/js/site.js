@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('.play_video iframe').css({ "width": "425px", "height": "240px" });
+    $('.play_video iframe').css({  "height": "340px" });
     $('.play_video iframe').hide();
     $('.play_video iframe').attr('allow', 'autoplay');
     $('.btn-play-video').on('click', function () {

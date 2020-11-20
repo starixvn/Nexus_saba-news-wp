@@ -60,21 +60,24 @@
 						<div class="swiper-wrapper">
 							@foreach (var post in Model.VideoPosts)
 							{
-								<div class="swiper-slide">
-									<div class="img-item">
-										<picture>
-											<source srcset="@post.FeatureImage" type="image/webp">
-											<source srcset="@post.FeatureImage" type="image/jpeg">
-											<img src="@post.FeatureImage" alt="Alt Text!">
-										</picture>
-										<div class="btn-play-video">
-											<span class="icon-play"></span>
-										</div>
-									</div>
-									<div class="content-box">
-										<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
+							<div class="swiper-slide">
+								<div class="img-item">
+									<picture>
+										<source srcset="@post.FeatureImage" type="image/webp">
+										<source srcset="@post.FeatureImage" type="image/jpeg">
+										<img src="@post.FeatureImage" alt="Alt Text!">
+									</picture>
+									<div class="btn-play-video">
+										<span class="icon-play"></span>
 									</div>
 								</div>
+								<div class="play_video">
+									@Html.Raw(post.PostContent)
+								</div>
+								<div class="content-box">
+									<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
+								</div>
+							</div>
 							}
 							
 						</div>
