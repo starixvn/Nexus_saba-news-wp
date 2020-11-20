@@ -3,8 +3,8 @@
 		<a href="detail.html" class="heading">Tin Mới Nhất</a>
 	</h2>
 	<div class="main-card card-partial-news">
-		@foreach (var post in Model)
-	{
+		@foreach (var post in Model.Posts)
+		{
 		<div class="card-items hot-news">
 			<div class="row">
 				<div class="col col-3">
@@ -18,7 +18,7 @@
 				</div>
 				<div class="col col-9">
 					<div class="content-box">
-						<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
+						<h4 class="title-box"><a href="@Url.Action("Single", "Home", new { ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
 						<div class="group-date-times">
 							<p class="date-time">@post.PostDate</p>
 						</div>
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-	}
+		}
 	</div>
 </div>
 <div class="block block-calendar">
@@ -35,7 +35,7 @@
 	</h2>
 	<div class="main-card card-partial-news">
 		<div class="box-calendar">
-			<div class="date-year">Tháng 11 Năm 2020</div>
+			<div class="date-year">Tháng @Model.CurrentMonth Năm @Model.CurrentYear</div>
 			<table class="table-calendar">
 				<thead>
 					<tr>
@@ -49,52 +49,46 @@
 					</tr>
 				</thead>
 				<tbody>
+					@{
+						var colSpan = Model.FirstDayOfWeek - 1;
+						var dayOfFirstWeek = 8 - Model.FirstDayOfWeek;
+						var month = Model.CurrentMonth > 10 ? Model.CurrentMonth : "0" + Model.CurrentMonth;
+						int weeks = (int)Math.Ceiling((Model.Days - 1) / 7.0);
+
+					}
 					<tr>
-						<td colspan="6">&nbsp;</td>
-						<td class="lastday"><a href="detail.html" class="prev">1</a></td>
+						<td colspan="@colSpan">&nbsp;</td>
+						@for (int i = 1; i <= dayOfFirstWeek; i++)
+						{
+							<td class="lastday"><a href="detail.html" class="prev">@i</a></td>
+						}
 					</tr>
-					<tr>
-						<td class="lastday"><a href="detail.html" class="prev">2</a></td>
-						<td id="today">3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-					</tr>
-					<tr>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-						<td>13</td>
-						<td>14</td>
-						<td>15</td>
-					</tr>
-					<tr>
-						<td>16</td>
-						<td>17</td>
-						<td>18</td>
-						<td>19</td>
-						<td>20</td>
-						<td>21</td>
-						<td>22</td>
-					</tr>
-					<tr>
-						<td>23</td>
-						<td>24</td>
-						<td>25</td>
-						<td>26</td>
-						<td>27</td>
-						<td>28</td>
-						<td>29</td>
-					</tr>
-					<tr>
-						<td>30</td>
-						<td colspan="6">&nbsp;</td>
-					</tr>
+
+					@for (int week = 1; week <= weeks; week++)
+					{
+						var start = dayOfFirstWeek + 1 + (week - 1) * 7;
+						var end = (start + 7 > Model.Days) ? Model.Days + 1 : start + 7;
+						<tr>
+							@for (int day = start; day < end; day++)
+							{
+								var lastday = "";
+								var today = "";
+								var date = Model.CurrentYear + "-" + month + "-" + day;
+								if (day < Model.CurrentDay)
+								{
+									lastday = "lastday";
+								}
+								else if (day == Model.CurrentDay)
+								{
+									today = "today";
+								}
+								<td class="@lastday @date" id="@today">@day</td>
+							}
+						</tr>
+					}
+					
 				</tbody>
-			</table>
+				</table>
 			<div class="calendar-prev">
 				<a href="detail.html" class="prev">« Th10</a>
 			</div>

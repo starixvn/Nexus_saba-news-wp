@@ -18,6 +18,7 @@
         Task<IEnumerable<Post>> GetRandomReplatedPost(string categories, int ID);
         Task<IEnumerable<Post>> SearchPost(string keyword, int start, int end);
         Task<IEnumerable<Post>> GetPostByTag(string tag, int start, int end);
+        Task<IEnumerable<Post>> GetPostByDate(string date, int start, int end);
     }
 
     public class PostService : IPostService
@@ -204,6 +205,37 @@
             }
             return posts;
         }
+
+        public async Task<IEnumerable<Post>> GetPostByDate(string date, int start, int end)
+        {
+            List<Post> posts = new List<Post>();
+            using (var command = new MySqlCommand("CALL wordpress.get_posts_by_date(@date,@start,@end);", Db.Connection))
+            {
+                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
+                command.Parameters.AddWithValue("@date", date);
+                command.Parameters.AddWithValue("@start", start);
+                command.Parameters.AddWithValue("@end", end);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+                        var post = new Post
+                        {
+                            ID = Convert.ToInt32(reader["ID"]),
+                            PostTitle = reader["post_title"].ToString(),
+                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
+                            PostContent = reader["post_content"].ToString(),
+                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
+                            FeatureImage = reader["feature_image"].ToString()
+                        };
+                        posts.Add(post);
+                    }
+                }
+            }
+            return posts;
+        }
+
 
         public async Task<IEnumerable<Menu>> GetMenuAsync(string MenuName)
         {

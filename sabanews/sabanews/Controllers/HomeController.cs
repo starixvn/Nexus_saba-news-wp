@@ -102,6 +102,7 @@
             return View("Blog", Posts);
         }
 
+
         public IActionResult IndexVC()
         {
             return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
