@@ -23,21 +23,12 @@
 
 .colums-main{
 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-areas: 
-        "block-hot-news block-hot-news"
-        "block-video block-video"
-        "block-soccer block-soccer"
-        "block-guess block-behind"
-        "block-transfer block-transfer"
-        "block-basketball block-tennis";
-        @include tableMobile{
-            display: inherit;
-        }
+
+    
+
+
     // block-hot-news
     .block-hot-news{
-        grid-area: block-hot-news;
         .main-block{
             .block-vertical{
                 padding-right: 2rem;
@@ -75,11 +66,27 @@
 
 
 
+    .group-blocks{
+        .col-left{
+            padding-right: 1.5rem;
+            @include tableMobile{
+                padding: 0;
+            }
+        }
+    }
+
+
     // block-video
     .block-video{
-        grid-area: block-video;
+        .swiper-video{
+            overflow: hidden;
+            padding-right: 1.2rem;
+            @include tableMobile{
+                padding: 0;
+            }
+        }
         .slide-video{
-            padding-left: 3rem;
+            padding-left: 2rem;
             @include tableMobile{
                 padding-left: 0;
                 display: none;
@@ -118,12 +125,16 @@
 
     // block-soccer
     .block-soccer{
-        grid-area: block-soccer;
+        .grid-4-colums{
+            @include tableMobile{
+                grid-gap: 1rem 2rem;
+            }
+        }
         .block-vertical{
             .img-item{
                 margin-bottom: 1rem;
                 @include tableMobile{
-                    margin-bottom: .5rem;
+                    margin-bottom: .4rem;
                 }
             }
             .block-text{
@@ -148,16 +159,49 @@
 
     // block-guess
     .block-guess{
-        grid-row: block-guess;
-        padding:0 1.5rem 3.9rem 0;
+        padding: 5rem 0 6rem 0;
+        background: $bg-block;
+        margin-bottom:  6rem;
         @include tableMobile{
-            padding-right: 0;
-            padding-bottom: .9rem;
+            padding: 1.9rem 0 3.7rem 0;
+            margin-bottom: 2.1rem;
         }
         .title-block{
-            margin-bottom: 2.6rem;
+            &::after{
+                background: #506180;;
+            }
+            a{
+                background: $bg-block;
+                color: $color-fff;
+            }
+        }
+        .block-vertical{
+            .heading{
+                a{
+                    color: $color-fff;
+                }
+            }
+            .block-time{
+                color: $color-fff;
+                opacity: .5;
+            }
+        }
+    }
+
+
+
+
+    // block-transfer
+    .block-transfer{
+        padding-bottom: 0;
+        @extend .block-soccer;
+        @include tableMobile{
+            padding-bottom: 1rem;
+        }
+        .title-block {
+            margin-bottom: 2.5rem;
             @include tableMobile{
-                margin-bottom: 1rem;
+                margin-bottom: .7rem;
             }
         }
         .block-horizontal{
@@ -166,35 +210,21 @@
                 @include tableMobile{
                     margin-bottom: 1rem;
                 }
-                &:last-child{
-                    margin-bottom: 0;
-                    @include tableMobile{
-                        display: none;
+                .heading{
+                    a{
+                        line-height: 1.8rem;
                     }
                 }
             }
-        }
-        
-    }
-
-    // block-transfer
-    .block-transfer{
-        padding-bottom: 6.2rem;
-        grid-area: block-transfer;
-        @extend .block-soccer;
-        @include tableMobile{
-            padding-bottom: 1.8rem;
         }
     }
 
 
     // block-behind
     .block-behind{
-        grid-area: block-behind;
-        padding-left: 1.5rem;
-        padding-bottom: 3.9rem;
+        padding: 0 0 2.2rem 1.5rem;
         @include tableMobile{
-            padding: 0;
+            padding: 0 0 .6rem 0;
         }
         .block-vertical{
             @include tableMobile{
@@ -207,7 +237,7 @@
             .bg-text{
                 padding: 1rem 2rem 1.3rem 2rem;
                 @include tableMobile{
-                    padding: 1rem 0.8rem 1rem 0.8rem;
+                    padding: 1rem 0.8rem 1.4rem 0.8rem;
                 }
             }
             .block-text{
@@ -229,6 +259,9 @@
             }
             .img-item{
                 margin-bottom: 1rem;
+                @include tableMobile{
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -240,14 +273,12 @@
     .block-basketball{
         padding: 0 1.5rem 3.9rem 0;
         border: none;
-        grid-area: block-basketball;
         @include tableMobile{
-            padding: 0 0 1.2rem 0;
-            border-bottom: 1px solid $color-input;
+            padding: 0 0 2.2rem 0;
         }
         .grid-2-colums {
             @include tableMobile{
-                grid-gap: .5rem 2rem;
+                grid-gap: 1rem 2rem;
             }
         }
     }
@@ -258,7 +289,6 @@
     .block-tennis{
         padding-left: 1.5rem;
         border: none;
-        grid-area: block-tennis;
         @include tableMobile{
             padding: 0;
         }
@@ -280,7 +310,7 @@
                 }
             }
             .description{
-                margin-top: 1.4rem;
+                margin-top: 1.2rem;
                 @include tableMobile{
                     margin-top: 0;
                 }

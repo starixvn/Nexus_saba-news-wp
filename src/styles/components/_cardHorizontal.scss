@@ -1,6 +1,6 @@
 .block-horizontal{
     .block-item{
-        margin-bottom: 2rem;
+        margin-bottom: 2rem;    
         @include tableMobile{
             margin-bottom: 1rem;
         }
@@ -24,7 +24,7 @@
                 width: 100%;
                 margin-left: 2.2rem;
                 @include tableMobile{
-                    margin-left: 1rem;
+                    margin-left: .8rem;
                 }
                 .heading{
                     @include tableMobile{
@@ -33,7 +33,7 @@
                         text-overflow: ellipsis;
                         line-height: 1.5;
                         -webkit-line-clamp: 2;
-                        height: 4rem;
+                        height: 5rem;
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
                     }
@@ -50,7 +50,6 @@
                         }
                         @include tableMobile{
                             font-size: 1.4rem !important;
-                            line-height: 2rem !important;
                         }
                     }
                 }
@@ -60,6 +59,9 @@
                     font-size: 1.3rem;
                     line-height: 2.4rem;
                     color: $color-input;
+                    @include tableMobile {
+                        margin-top: -.2rem;
+                    }
                 }
                 .description{
                     font-style: normal;
