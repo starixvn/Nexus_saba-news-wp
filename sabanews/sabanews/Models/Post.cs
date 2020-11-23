@@ -10,5 +10,6 @@
         public string FeatureImage { get; set; }
         public string Tags { get; set; }
         public string Categories { get; set; }
+        public string Slug { get; set; }
     }
 }

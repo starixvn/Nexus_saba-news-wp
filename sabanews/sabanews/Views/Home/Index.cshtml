@@ -123,7 +123,7 @@
 						{
 							<div class="block-vertical">
 								<div class="img-item">
-									<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
+									<a href="@Url.Action("Single", "Home", new {ID = @post.ID, slug = post.Slug })">
 										<picture>
 											<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">

@@ -76,7 +76,7 @@
             return View(post);
         }
 
-        [Route("single/{ID}")]
+        [Route("single/{ID}/{slug?}")]
         public async Task<IActionResult> Single(int ID)
         {
             var post = await postService.GetPostDetail(ID);
@@ -116,6 +116,7 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.GetPostByTag(tag, start, Constants.Perpage);
             var PostsTotal = await postService.GetPostByTag(tag, 0, Constants.Total);
+            ViewData["Title"] = tag;
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);

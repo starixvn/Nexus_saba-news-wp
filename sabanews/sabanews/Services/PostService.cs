@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -54,7 +55,8 @@
                             PostContent = reader["post_content"].ToString(),
                             PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
                             FeatureImage = reader["feature_image"].ToString(),
-                            Categories = reader["cate_name"].ToString()
+                            Categories = reader["cate_name"].ToString(),
+                            Slug = GenerateSeoFriendlyURL(reader["post_title"].ToString())
                         };
                         posts.Add(post);
                     }
@@ -73,7 +75,7 @@
                
                 using (var reader = command.ExecuteReader())
                 {
-                    while (reader.Read())
+                    if (reader.Read())
                     {
                         var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
                         post = new Post
@@ -301,6 +303,27 @@
                 return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "about an hour ago";
 
             return dateTime.ToString("H:mm dd/MM/yyyy");
+        }
+        public static string ConvertToUnSign3(string s) // change có dấu thành không dấu
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+        public static string GenerateSeoFriendlyURL(string Title)
+        {
+            Title = ConvertToUnSign3(Title);
+            Regex regex = new Regex(@"[^a-zA-Z0-9-\s]", (RegexOptions)0);
+            Title = regex.Replace(Title, "");
+            Title = Title.ToLower().Replace(" - ", "-");
+            Title = Title.ToLower().Replace("- ", "-");
+            Title = Title.ToLower().Replace(" -", "-");
+            Title = Title.ToLower().Replace("   ", " ");
+            Title = Title.ToLower().Replace("  ", " ");
+            Title = Title.ToLower().Replace("  ", " ");
+            Title = Title.ToLower().Replace(" ", " ");
+            Title = Title.ToLower().Replace(" ", "-");
+            return Title;
         }
     }
 }
