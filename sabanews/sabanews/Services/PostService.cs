@@ -19,6 +19,7 @@
         Task<IEnumerable<Post>> SearchPost(string keyword, int start, int end);
         Task<IEnumerable<Post>> GetPostByTag(string tag, int start, int end);
         Task<IEnumerable<Post>> GetPostByDate(string date, int start, int end);
+        Task<string> GetCateTitle(int cateId);
     }
 
     public class PostService : IPostService
@@ -264,6 +265,26 @@
                 }
             }
             return menus;
+        }
+        public async Task<string> GetCateTitle(int cateId)
+        {
+            string title = "";
+
+            using (var command = new MySqlCommand("CALL wordpress.get_category_title(@cateId);", Db.Connection))
+            {
+                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
+                command.Parameters.AddWithValue("@cateId", cateId);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        title = reader["title"].ToString();
+                    }
+
+                }
+            }
+            return title;
         }
 
         public static string ToRelativeDate(DateTime dateTime)

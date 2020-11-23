@@ -31,6 +31,7 @@
                 TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 5 })
             };
             ViewData["CategoryId"] = Constants.Home;
+            ViewData["Title"] = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
 
             return View(Models);
         }
@@ -41,6 +42,7 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End =  9 });
             var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
+            ViewData["Title"] = await postService.GetCateTitle(cateId);
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
@@ -55,6 +57,7 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End = Constants.Perpage });
             var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
+            ViewData["Title"] = await postService.GetCateTitle(cateId);
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
@@ -69,6 +72,7 @@
         {
             var post = await postService.GetPostDetail(Constants.MatchScheduleCategory);
             ViewData["CategoryId"] = Constants.MatchScheduleCategory;
+            ViewData["Title"] = "Lịch thi đấu hôm nay "+ DateTime.Now + " giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
             return View(post);
         }
 
@@ -100,7 +104,7 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["keyword"] = keyword;
             ViewData["Controller"] = "Search";
-            ViewData["Title"] = "Kết quả tìm kiếm từ khóa '" + keyword + "'";
+            ViewData["HeadTitle"] = "Kết quả tìm kiếm từ khóa '" + keyword + "'";
             var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
             return View(view, Posts);
         }
@@ -117,7 +121,7 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["tag"] = tag;
             ViewData["Controller"] = "Tag";
-            ViewData["Title"] = "Tag: '" + tag + "'";
+            ViewData["HeadTitle"] = "Tag: '" + tag + "'";
             var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
             return View(view, Posts);
         }
@@ -133,7 +137,7 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["Date"] = date;
             ViewData["Controller"] = "DateSearch";
-            ViewData["Title"] = "Kết quả tìm kiếm: '" + date + "'";
+            ViewData["HeadTitle"] = "Kết quả tìm kiếm: '" + date + "'";
             var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
             return View(view, Posts);
         }
