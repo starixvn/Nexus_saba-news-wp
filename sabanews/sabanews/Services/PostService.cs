@@ -95,11 +95,10 @@
         public async Task<IEnumerable<Post>> GetRelatedPost(int ID, string tag)
         {
             List<Post> posts = new List<Post>();
-            using (var command = new MySqlCommand("CALL wordpress.get_related_posts_by_tag(@ID,@tag,0,4);", Db.Connection))
+            using (var command = new MySqlCommand("CALL wordpress.get_related_posts(@ID,0,4);", Db.Connection))
             {
                 if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
                 command.Parameters.AddWithValue("@ID", ID);
-                command.Parameters.AddWithValue("@tag", tag);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -180,7 +179,7 @@
         public async Task<IEnumerable<Post>> GetPostByTag(string tag, int start, int end)
         {
             List<Post> posts = new List<Post>();
-            using (var command = new MySqlCommand("CALL wordpress.get_related_posts_by_tag('',@tag,@start,@end);", Db.Connection))
+            using (var command = new MySqlCommand("CALL wordpress.get_posts_by_tag(@tag,@start,@end);", Db.Connection))
             {
                 if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
                 command.Parameters.AddWithValue("@tag", tag.Trim(' '));

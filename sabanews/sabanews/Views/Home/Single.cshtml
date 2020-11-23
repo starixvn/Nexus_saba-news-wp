@@ -1,6 +1,9 @@
 ﻿@section Styles{
 	<link rel="stylesheet" href="~/css/detailnews.css">
 }
+@{
+	ViewData["Title"] = Model.SinglePost.PostTitle;
+}
 <section class="main">
 	<div class="container">
 		<div class="row">
