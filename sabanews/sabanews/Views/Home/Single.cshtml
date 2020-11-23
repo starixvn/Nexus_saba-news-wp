@@ -67,7 +67,7 @@
 							<div class="block-item">
 								<div class="flex-item">
 									<div class="img-item">
-										<a href="#">
+										<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
 											<picture>
 												<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 												<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -84,7 +84,7 @@
 							</div>
 						</div>
 					}
-
+					
 				</div>
 			</div>
 			@(await Component.InvokeAsync("Sidebar"))

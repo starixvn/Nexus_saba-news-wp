@@ -1,70 +1,77 @@
 ﻿@model IEnumerable<Menu>
 <section class="header">
 	<div class="top-header">
-		<div class="container">
-			<div class="group-top">
+		<div class="container padding-mobile-none">
+			<div class="group-menu">
 				<div class="logo">
 					<a href="@Url.Action("Index", "Home")">
 						<img src="~/images/logo-2.png" alt="logo">
 					</a>
 				</div>
-				<div class="search-input">
-					<form asp-action="Search" method="get">
-						<input name="keyword" type="text" placeholder="Tìm kiếm...">
-						<button type="submit" class="btn-search">
-							<i class="icon-search"></i>
-						</button>
-					</form>
+				<div class="button-mobile">
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+				</div>
+				<div class="nav-menu">
+					<ul class="main-menu">
+						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
+						{
+							var link = Url.Action("Category", "Home", new { cateId = menu.CatId });
+							if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
+							{
+								link = Url.Action("MatchSchedule", "Home");
+							}
+							else if (menu.ID == Convert.ToInt32(ViewData["Video"]))
+							{
+								link = Url.Action("Video", "Home", new { cateId = menu.CatId });
+							}
+							else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
+							{
+								link = Url.Action("Index", "Home");
+							}
+							var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+							var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
+							@if (menuLv2.Count == 0)
+							{
+								<li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
+							}
+							else
+							{
+								var selected = Model.Where(p => p.ParentId == menu.ID && p.CatId == Convert.ToInt32(ViewData["CategoryId"])).ToList();
+								if (selected.Count > 0)
+								{
+									activeMenu = "active";
+								}
+								<li class="menu-item">
+									<a href="@link" class="submenu item @activeMenu">@menu.Name</a>
+									<ul class="menu-child">
+										@foreach (var Lv2 in menuLv2)
+										{
+											link = Url.Action("Category", "Home", new { cateId = Lv2.CatId });
+											if (Lv2.ParentId == Convert.ToInt32(ViewData["Video"]))
+											{
+												link = Url.Action("Video", "Home", new { cateId = Lv2.CatId });
+											}
+											var subActiveMenu = Lv2.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+											<li class="child-menu-item @subActiveMenu"><a href="@link" class="item-child">@Lv2.Name</a></li>
+										}
+									</ul>
+								</li>
+							}
+						}
+						<div class="search-input">
+							<form asp-action="Search" method="get">
+								<input name="keyword" type="text" placeholder="Tìm kiếm...">
+								<button type="submit" class="btn-search">
+									<i class="icon-search"></i>
+								</button>
+							</form>
+							
+						</div>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="nav-menu">
-		<div class="container">
-			<div class="button-mobile">
-				<span class="line-mb"></span>
-				<span class="line-mb"></span>
-				<span class="line-mb"></span>
-			</div>
-			<ul class="main-menu">
-				@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
-				{
-					var link = Url.Action("Category", "Home", new { cateId = menu.CatId, page = 1 });
-					if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
-					{
-						link = Url.Action("MatchSchedule", "Home");
-					}
-					else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
-					{
-						link = Url.Action("Index", "Home");
-					}
-					var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-					var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
-					@if (menuLv2.Count == 0)
-					{
-						<li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
-					}
-					else
-					{
-						var selected = Model.Where(p => p.ParentId == menu.ID && p.CatId == Convert.ToInt32(ViewData["CategoryId"])).ToList();
-						if (selected.Count > 0)
-						{
-							activeMenu = "active";
-						}
-						<li class="menu-item">
-							<a href="@Url.Action("Category", "Home", new {cateId = menu.CatId, page = 1 })" class="submenu item @activeMenu">@menu.Name</a>
-							<span class="icon-chevron-right click-sub"></span>
-							<ul class="menu-child">
-								@foreach (var Lv2 in menuLv2)
-								{
-									var subActiveMenu = Lv2.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-									<li class="child-menu-item @subActiveMenu"><a href="@Url.Action("Category", "Home", new {cateId = Lv2.CatId, page = 1 })" class="item-child">@Lv2.Name</a></li>
-								}
-							</ul>
-						</li>
-					}
-				}
-			</ul>
 		</div>
 	</div>
 </section>

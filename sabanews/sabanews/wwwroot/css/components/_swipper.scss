@@ -1,6 +1,6 @@
 .swiper-container {
     width: 100%;
-    max-width: 75.7rem !important;
+    max-width: 100% !important;
     margin: 0 !important;
     .swiper-button-prev,.swiper-button-next{
         outline: none;
@@ -41,6 +41,9 @@
             margin-right: 0;
             border-radius : 0;
             position: relative;
+            @include Mobile{
+                height: 15rem;
+            }
             @include tableMobile{
                 width: 100%;
             }
@@ -51,9 +54,9 @@
         .content-box{
             .title-box{
                 text-align: center;
-                padding: 1.7rem 0;
+                padding: 1.6rem 0;
                 @include tableMobile{
-                    padding: .5rem 0;
+                    padding: .7rem 0;
                 }
                 a{
                     color: $color-fff;

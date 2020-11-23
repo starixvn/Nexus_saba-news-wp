@@ -12,6 +12,7 @@
         public const int BackstageCategory = 114;
         public const int TransferCategory = 370;
         public const int MatchScheduleCategory = 4814;
+        public const int VideoIdPage = 4589;
 
         public const int Perpage = 10;
         public const int Total = 10000;

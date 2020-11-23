@@ -21,24 +21,25 @@
         {
             var Models = new PostViewModel
             {
-                NewPosts = await postService.GetAsync(new PostParam { Category = Constants.NewPostCategory, Start = 0, End = 5 }),
+                NewPosts = await postService.GetAsync(new PostParam { Category = Constants.NewPostCategory, Start = 0, End = 4 }),
                 FootballPosts = await postService.GetAsync(new PostParam { Category = Constants.FootballCategory, Start = 0, End = 8 }),
                 BasketballPosts = await postService.GetAsync(new PostParam { Category = Constants.BasketballCategory, Start = 0, End = 6 }),
                 TennisPosts = await postService.GetAsync(new PostParam { Category = Constants.TennisCategory, Start = 0, End = 5 }),
                 VideoPosts = await postService.GetAsync(new PostParam { Category = Constants.VideoCategory, Start = 0, End = 6 }),
-                GuessPosts = await postService.GetAsync(new PostParam { Category = Constants.GuessCategory, Start = 0, End = 5 }),
+                GuessPosts = await postService.GetAsync(new PostParam { Category = Constants.GuessCategory, Start = 0, End = 3 }),
                 BackstagePosts = await postService.GetAsync(new PostParam { Category = Constants.BackstageCategory, Start = 0, End = 3 }),
-                TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 6 })
+                TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 5 })
             };
+            ViewData["CategoryId"] = Constants.Home;
 
             return View(Models);
         }
 
-        [Route("category/{cateId}/{page}")]
+        [Route("category/{cateId}/{page?}")]
         public async Task<IActionResult> Category(int cateId, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End =  Constants.Perpage });
+            var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End =  9 });
             var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
@@ -46,6 +47,20 @@
             ViewData["CategoryId"] = cateId;
             ViewData["Controller"] = "category";
             var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            return View(view, Posts);
+        }
+        [Route("category/video/{cateId}/{page?}")]
+        public async Task<IActionResult> Video(int cateId, int page = 1)
+        {
+            var start = (page - 1) * Constants.Perpage;
+            var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End = Constants.Perpage });
+            var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
+            ViewData["CurrentPage"] = page;
+            ViewData["PageSize"] = Constants.Perpage;
+            ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
+            ViewData["CategoryId"] = cateId;
+            ViewData["Controller"] = "video";
+            var view = Posts.Count() == 0 ? "EmptyBlog" : "Video";
             return View(view, Posts);
         }
 

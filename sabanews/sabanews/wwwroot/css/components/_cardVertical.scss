@@ -1,6 +1,9 @@
 .block-vertical{
     .img-item{
         margin-bottom: 1rem;
+        @include tableMobile{
+            margin-bottom: .4rem;
+        }
         .img-block{
             width: 100%;
         }
@@ -9,7 +12,6 @@
     .block-text{
         .heading{
             a{
-                font-size: 2rem;
                 color: $color-text;
                 font-style: normal;
                 font-weight: bold;
@@ -19,7 +21,7 @@
                 text-decoration: none;
                 transition: color .3s ease;
                 &:hover{
-                    color: $color-active;
+                    color: $color-active !important;
                 }
                 @include tableMobile{
                     font-size: 1.4rem !important;

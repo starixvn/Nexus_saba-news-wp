@@ -1,0 +1,133 @@
+﻿@section Styles{
+	<link rel="stylesheet" href="~/css/video.css">
+}
+<section class="main">
+	<div class="container">
+		<div class="row">
+			<div class="col col-8 pd-column-left">
+
+				<div class="block block-video">
+					<h2 class="title-block"><a href="detail_video.html">@(ViewData["Title"] != null ? ViewData["Title"] : Model[0].Categories )</a></h2>
+					<div class="flex-video row">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="img-item">
+										<picture>
+											<source srcset="@Model[0].FeatureImage" type="image/webp">
+											<source srcset="@Model[0].FeatureImage" type="image/jpeg">
+											<img src="@Model[0].FeatureImage" alt="Alt Text!">
+										</picture>
+										<div class="btn-play-video">
+											<span class="icon-play"></span>
+										</div>
+									</div>
+									<div class="play_video">
+										@Html.Raw(Model[0].PostContent)
+									</div>
+									<div class="content-box">
+										<h4 class="title-box"><a href="detail_video.html" class="heading">@Model[0].PostTitle</a></h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="block block-list-video">
+					<div class="grid-4-colums">
+						@for (int i = 1; i < Model.Count; i++)
+						{
+							<div class="block-vertical">
+								<div class="img-item">
+									<a href="@Url.Action("Single", "Home", new {ID = @Model[i].ID })">
+										<picture>
+											<source srcset="@Model[i].FeatureImage" type="image/webp" class="img-res">
+											<source srcset="@Model[i].FeatureImage" type="image/jpeg" class="img-res">
+											<img src="@Model[i].FeatureImage" alt="Alt Text!" class="img-res img-block">
+										</picture>
+									</a>
+								</div>
+								<div class="block-text">
+									<div class="heading">
+										<a href="@Url.Action("Single", "Home", new {ID = @Model[i].ID })">
+											@Model[i].PostTitle
+										</a>
+									</div>
+									<p class="block-time">@Model[i].PostDate</p>
+
+								</div>
+							</div>
+						}
+
+					</div>
+				</div>
+				@{
+					int CurrentPage = Convert.ToInt32(ViewData["CurrentPage"]);
+					int TotalPages = Convert.ToInt32(ViewData["TotalPages"]);
+					var linkLast = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = @ViewData["TotalPages"] });
+					var linkFirst = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = 1 });
+					var linkNext = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = CurrentPage + 1 });
+					var linkPrev = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = CurrentPage - 1 });
+					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
+					linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
+				}
+				@if (TotalPages > 1)
+				{
+					<div class="pagination">
+						<a href="@linkFirst" class="icon-pagination icon-page-first"></a>
+						<a href="@linkPrev" class="icon-pagination icon-chevron-left"></a>
+						<ul class="main-pagination">
+							@{
+								var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
+								front = (CurrentPage - 1 == 3) ? 3 : front;
+								var back = (TotalPages - CurrentPage > 2) ? 2 : TotalPages - CurrentPage;
+								back = (TotalPages - CurrentPage == 3) ? 3 : back;
+
+								if (CurrentPage - 4 >= 1)
+								{
+									<li class="items-pagination"><a href="@linkFirst" class="item">1</a></li>
+									<li class="items-pagination"><a class="item">...</a></li>
+								}
+
+								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
+								{
+									var link = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = i });
+									var active = i == CurrentPage ? "active" : "";
+									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
+								}
+
+								if (CurrentPage + 4 <= TotalPages)
+								{
+									<li class="items-pagination"><a class="item">...</a></li>
+									<li class="items-pagination"><a href="@linkLast" class="item">@ViewData["TotalPages"]</a></li>
+								}
+							}
+						</ul>
+						<a href="@linkNext" class="icon-pagination icon-chevron-right"></a>
+						<a href="@linkLast" class="icon-pagination icon-page-last"></a>
+					</div>
+				}
+
+			</div>
+
+
+			@if (ViewData["Controller"].ToString() == "DateSearch")
+			{
+				var countDate = ViewData["Date"].ToString().Split('-');
+				if (countDate.Count() == 2)
+				{
+					@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) }))
+				}
+				else
+				{
+					@(await Component.InvokeAsync("Sidebar"))
+				}
+			}
+			else
+			{
+				@(await Component.InvokeAsync("Sidebar"))
+			}
+		</div>
+	</div>
+</section>
