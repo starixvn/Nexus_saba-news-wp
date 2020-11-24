@@ -21,3 +21,20 @@ p.has-text-align-center {
 	font-size: 15px !important;
 	text-align: center;
 }
+
+.swiper-slide, .swiper-button, .swiper-pagination {
+	display: none;
+}
+
+.slide-video .img-item.active {
+	background:  #000;
+}
+
+.slide-video .img-item.active img {
+	opacity:0.5;	
+}
+@media screen and (max-width: 992px) {
+	.swiper-slide, .swiper-button, .swiper-pagination {
+		display: block;
+	}
+}

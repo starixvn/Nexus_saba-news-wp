@@ -17,14 +17,14 @@
 					<ul class="main-menu">
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
 						{
-							var link = Url.Action("Category", "Home", new { cateId = menu.CatId });
+							var link = Url.Action("Category", "Home", new { cateId = menu.CatId, type = menu.Slug });
 							if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
 							{
 								link = Url.Action("MatchSchedule", "Home");
 							}
 							else if (menu.ID == Convert.ToInt32(ViewData["Video"]))
 							{
-								link = Url.Action("Video", "Home", new { cateId = menu.CatId });
+								link = Url.Action("Category", "Home", new { cateId = menu.CatId, type = "video" });
 							}
 							else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
 							{
@@ -48,10 +48,10 @@
 									<ul class="menu-child">
 										@foreach (var Lv2 in menuLv2)
 										{
-											link = Url.Action("Category", "Home", new { cateId = Lv2.CatId });
+											link = Url.Action("Category", "Home", new { cateId = Lv2.CatId, type = menu.Slug });
 											if (Lv2.ParentId == Convert.ToInt32(ViewData["Video"]))
 											{
-												link = Url.Action("Video", "Home", new { cateId = Lv2.CatId });
+												link = Url.Action("Category", "Home", new { cateId = Lv2.CatId, type = "video" });
 											}
 											var subActiveMenu = Lv2.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
 											<li class="child-menu-item @subActiveMenu"><a href="@link" class="item-child">@Lv2.Name</a></li>

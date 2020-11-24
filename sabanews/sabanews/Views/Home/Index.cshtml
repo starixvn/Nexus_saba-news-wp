@@ -6,11 +6,11 @@
 	<div class="colums-main">
 		<div class="block block-hot-news">
 			<div class="container">
-				<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.NewPostCategory })">TIN MỚI NHẤT</a></h2>
+				<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId = Constants.NewPostCategory })">TIN MỚI NHẤT</a></h2>
 				<div class="main-block row">
 					<div class="block-vertical col col-5">
 						<div class="img-item">
-							<a href="@Url.Action("Single", "Home", new {ID = @Model.NewPosts[0].ID })">
+							<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">
 								<picture>
 									<source srcset="@Model.NewPosts[0].FeatureImage" type="image/webp" class="img-res">
 									<source srcset="@Model.NewPosts[0].FeatureImage" type="image/jpeg" class="img-res">
@@ -19,7 +19,7 @@
 							</a>
 						</div>
 						<div class="block-text bg-text">
-							<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a></div>
+							<div class="heading"><a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a></div>
 							<p class="block-time">@Model.NewPosts[0].PostDate</p>
 							<p class="description text-description">@Model.NewPosts[0].PostExcerpt</p>
 						</div>
@@ -30,7 +30,7 @@
 							<div class="block-item">
 								<div class="flex-item">
 									<div class="img-item">
-										<a href="@Url.Action("Single", "Home", new {ID = @Model.NewPosts[i].ID })">
+										<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">
 											<picture>
 												<source srcset="@Model.NewPosts[i].FeatureImage" type="image/webp" class="img-res">
 												<source srcset="@Model.NewPosts[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -39,7 +39,7 @@
 										</a>
 									</div>
 									<div class="block-text">
-										<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.NewPosts[i].ID })">@Model.NewPosts[i].PostTitle</a></div>
+										<div class="heading"><a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">@Model.NewPosts[i].PostTitle</a></div>
 										<p class="block-time">@Model.NewPosts[i].PostDate</p>
 										<p class="description text-description">@Model.NewPosts[i].PostExcerpt</p>
 									</div>
@@ -55,14 +55,14 @@
 
 			<div class="block block-video">
 				<div class="container">
-					<h2 class="title-block"><a href="@Url.Action("Video", "Home", new {cateId = Constants.VideoCategory })">video</a></h2>
+					<h2 class="title-block"><a href="@Url.Action("Video", "Home", new { cateId = Constants.VideoCategory })">video</a></h2>
 					<div class="flex-video row">
 						<div class="col col-7 swiper-video">
 							<div class="swiper-container">
 								<div class="swiper-wrapper">
 									@foreach (var post in Model.VideoPosts)
 									{
-										<div class="swiper-slide">
+										<div class="swiper-slide" id="slide-@post.ID" >
 											<div class="img-item">
 												<picture>
 													<source srcset="@post.FeatureImage" type="image/webp">
@@ -83,8 +83,8 @@
 
 									}
 								</div>
-								<div class="swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
-								<div class="swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+								<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+								<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
 								<div class="swiper-pagination"></div>
 							</div>
 						</div>
@@ -95,7 +95,7 @@
 									<div class="block-item">
 										<div class="flex-item bg-text">
 											<div class="img-item">
-												<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
+												<a  data-id="@post.ID" class="image-slider" >
 													<picture>
 														<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 														<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">

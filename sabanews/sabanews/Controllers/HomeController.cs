@@ -32,27 +32,11 @@
             };
             ViewData["CategoryId"] = Constants.Home;
             ViewData["Title"] = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
-
             return View(Models);
         }
 
-        [Route("category/{cateId}/{page?}")]
-        public async Task<IActionResult> Category(int cateId, int page = 1)
-        {
-            var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End =  9 });
-            var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
-            ViewData["Title"] = await postService.GetCateTitle(cateId);
-            ViewData["CurrentPage"] = page;
-            ViewData["PageSize"] = Constants.Perpage;
-            ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
-            ViewData["CategoryId"] = cateId;
-            ViewData["Controller"] = "category";
-            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
-            return View(view, Posts);
-        }
-        [Route("category/video/{cateId}/{page?}")]
-        public async Task<IActionResult> Video(int cateId, int page = 1)
+        [Route("category/{type}/{cateId}/{page?}")]
+        public async Task<IActionResult> Category(string type, int cateId, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End = Constants.Perpage });
@@ -62,8 +46,9 @@
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["CategoryId"] = cateId;
-            ViewData["Controller"] = "video";
-            var view = Posts.Count() == 0 ? "EmptyBlog" : "Video";
+            ViewData["Controller"] = "category";
+            var view = type == "video" ? "Video" : "Blog";
+            view = Posts.Count() == 0 ? "EmptyBlog" : view;
             return View(view, Posts);
         }
 
