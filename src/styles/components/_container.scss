@@ -10,10 +10,12 @@
         max-width: 54rem;
     }
     @media (min-width : 768px){
-        max-width: 72rem;
+        max-width: 100%;
+        padding: 0 1.6rem;
     }
     @media (min-width : 992px){
-        max-width: 96rem;
+        max-width: 100%;
+        padding: 0 1.6rem;
     }
     @media (min-width : 1200px){
         max-width: 119rem;

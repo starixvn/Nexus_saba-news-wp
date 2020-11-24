@@ -250,7 +250,7 @@ input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-
 }
 @media screen and (max-width: 1024px) {
   .header .top-header {
-    padding: 0;
+    padding: 0 1.6rem;
   }
 }
 @media (max-width: 767px) {
@@ -710,6 +710,11 @@ input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-
 }
 @media screen and (max-width: 1024px) {
   .header .active-fixed {
+    padding: 0 1.6rem;
+  }
+}
+@media (max-width: 767px) {
+  .header .active-fixed {
     padding: 0;
   }
 }
@@ -755,13 +760,13 @@ input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-
 .grid-3-colums {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4.4rem 3.4rem;
+  grid-gap: 4.4rem 3.2rem;
 }
 @media screen and (max-width: 1024px) {
   .grid-3-colums {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4.4rem 3.4rem;
+    grid-gap: 4.4rem 3.2rem;
   }
 }
 @media (max-width: 767px) {
@@ -887,12 +892,14 @@ button {
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 72rem;
+    max-width: 100%;
+    padding: 0 1.6rem;
   }
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 96rem;
+    max-width: 100%;
+    padding: 0 1.6rem;
   }
 }
 @media (min-width: 1200px) {

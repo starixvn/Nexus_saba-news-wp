@@ -10,7 +10,7 @@
         box-shadow: (0px 4px 8px rgba(0, 0, 0, 0.16));
         transition: .3s ease-in-out;
         @include tableMobile{
-            padding: 0;
+            padding: 0 1.6rem;
         }
         @include Mobile{
             padding: 0;
@@ -386,6 +386,9 @@
         width: 100%;
         z-index: 999999;
         @include tableMobile{
+            padding: 0 1.6rem;
+        }
+        @include Mobile{
             padding: 0;
         }
     }
