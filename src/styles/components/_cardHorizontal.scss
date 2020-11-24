@@ -12,12 +12,15 @@
             .img-item{
                 width: 100%;
                 max-width: 19.5rem;
+                max-height: 11rem;
+                overflow: hidden;
                 @include tableMobile{
                     width: 100%;
                     max-width: 13rem;
                 }
                 img{
                     width: 100%;
+                    object-fit: cover;
                 }
             }
             .block-text{
@@ -31,9 +34,8 @@
                         overflow: hidden;
                         -o-text-overflow: ellipsis;
                         text-overflow: ellipsis;
-                        line-height: 1.5;
                         -webkit-line-clamp: 2;
-                        height: 5rem;
+                        height: 4rem;
                         display: -webkit-box;
                         -webkit-box-orient: vertical;
                     }
@@ -50,6 +52,7 @@
                         }
                         @include tableMobile{
                             font-size: 1.4rem !important;
+                            line-height: 1.8rem !important; 
                         }
                     }
                 }

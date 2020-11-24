@@ -41,6 +41,8 @@
             margin-right: 0;
             border-radius : 0;
             position: relative;
+            max-height: 34rem;
+            overflow: hidden;
             @include Mobile{
                 height: 15rem;
             }
@@ -49,6 +51,7 @@
             }
             img{
                 border-radius : 0;
+                object-fit: cover;
             }
         }
         .content-box{
