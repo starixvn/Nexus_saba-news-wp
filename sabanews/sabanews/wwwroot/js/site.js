@@ -1,6 +1,4 @@
-﻿
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('.play_video iframe').css({  "height": "340px" });
     $('.play_video iframe').hide();
     $('.play_video iframe').attr('allow', 'autoplay');
@@ -37,8 +35,8 @@ $(document).ready(function () {
         var id = $(this).data('id');
         $('.swiper-slide').hide();
         $('#slide-' + id).show();
-        $('.img-item').removeClass("active");
-        $(this).parent().addClass("active");
+        $('.flex-item').removeClass("active");
+        $(this).parent().parent().addClass("active");
         //$('iframe').attr('src', $('iframe').attr('src'));//stop all iframe
 
         var iframe = $('#slide-' + id).find('iframe');

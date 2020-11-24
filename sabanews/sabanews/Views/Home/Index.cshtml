@@ -6,7 +6,7 @@
 	<div class="colums-main">
 		<div class="block block-hot-news">
 			<div class="container">
-				<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId = Constants.NewPostCategory })">TIN MỚI NHẤT</a></h2>
+				<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId = Constants.NewPostCategory, type = "tin-tuc" })">TIN MỚI NHẤT</a></h2>
 				<div class="main-block row">
 					<div class="block-vertical col col-5">
 						<div class="img-item">
@@ -55,7 +55,7 @@
 
 			<div class="block block-video">
 				<div class="container">
-					<h2 class="title-block"><a href="@Url.Action("Video", "Home", new { cateId = Constants.VideoCategory })">video</a></h2>
+					<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId = Constants.VideoCategory, type = "video" })">video</a></h2>
 					<div class="flex-video row">
 						<div class="col col-7 swiper-video">
 							<div class="swiper-container">
@@ -95,7 +95,7 @@
 									<div class="block-item">
 										<div class="flex-item bg-text">
 											<div class="img-item">
-												<a  data-id="@post.ID" class="image-slider" >
+												<a href="javascript:;" data-id="@post.ID" class="image-slider" >
 													<picture>
 														<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 														<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -117,7 +117,7 @@
 			</div>
 			<div class="block block-soccer">
 				<div class="container">
-					<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.FootballCategory })">Bóng Đá</a></h2>
+					<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.FootballCategory, type = "tin-tuc" })">Bóng Đá</a></h2>
 					<div class="grid-4-colums">
 						@foreach (var post in Model.FootballPosts)
 						{
@@ -147,7 +147,7 @@
 						<div class="col col-6 col-left">
 							<div class="block block-transfer">
 								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TransferCategory })">Thị trường chuyển nhượng</a>
+									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TransferCategory, type = "tin-tuc" })">Thị trường chuyển nhượng</a>
 								</h2>
 								<div class="block-horizontal">
 									@foreach (var post in Model.TransferPosts)
@@ -176,7 +176,7 @@
 						</div>
 						<div class="col col-6 col-right">
 							<div class="block block-behind">
-								<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.BackstageCategory })">hậu trường</a></h2>
+								<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.BackstageCategory, type = "tin-tuc" })">hậu trường</a></h2>
 								<div class="block-vertical">
 									<div class="img-item">
 										<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[0].ID })">
@@ -221,7 +221,7 @@
 
 			<div class="block block-guess">
 				<div class="container">
-					<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.GuessCategory })">Nhận Định - Dự đoán</a></h2>
+					<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.GuessCategory, type = "tin-tuc" })">Nhận Định - Dự đoán</a></h2>
 					<div class="grid-3-colums">
 						@foreach (var post in Model.GuessPosts)
 						{
@@ -252,14 +252,14 @@
 						<div class="col col-6">
 							<div class="block block-basketball">
 								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.BasketballCategory })">Bóng rổ</a>
+									<a href="@Url.Action("Category", "Home", new {cateId = Constants.BasketballCategory, type = "tin-tuc" })">Bóng rổ</a>
 								</h2>
 								<div class="grid-2-colums">
 									@foreach (var post in Model.BasketballPosts)
 									{
 										<div class="block-vertical">
 											<div class="img-item">
-												<a href="#">
+												<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
 													<picture>
 														<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 														<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -268,7 +268,7 @@
 												</a>
 											</div>
 											<div class="block-text">
-												<div class="heading"><a href="#">@post.PostTitle</a></div>
+												<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
 												<p class="block-time">@post.PostDate</p>
 											</div>
 										</div>
@@ -280,7 +280,7 @@
 						<div class="col col-6">
 							<div class="block block-tennis">
 								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TennisCategory })">Quần vợt</a>
+									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TennisCategory, type = "tin-tuc" })">Quần vợt</a>
 								</h2>
 								<div class="block-vertical">
 									<div class="img-item">

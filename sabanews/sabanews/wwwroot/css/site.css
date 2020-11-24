@@ -26,13 +26,11 @@ p.has-text-align-center {
 	display: none;
 }
 
-.slide-video .img-item.active {
-	background:  #000;
+.slide-video .flex-item.active {
+	background: #000 !important;
+	color: #fff;
 }
 
-.slide-video .img-item.active img {
-	opacity:0.5;	
-}
 @media screen and (max-width: 992px) {
 	.swiper-slide, .swiper-button, .swiper-pagination {
 		display: block;
