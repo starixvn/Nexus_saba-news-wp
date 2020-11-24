@@ -14,9 +14,9 @@
     }
 }
 .grid-3-colums{
-    @include grid(3,1fr,4.4rem 3.4rem);
+    @include grid(3,1fr,4.4rem 3.2rem);
     @include tableMobile{
-        @include grid(3,1fr,4.4rem 3.4rem);
+        @include grid(3,1fr,4.4rem 3.2rem);
     }
     @include Mobile{
         @include grid(2,1fr,1.3rem 1.6rem);

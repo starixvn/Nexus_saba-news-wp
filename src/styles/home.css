@@ -789,13 +789,13 @@ input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-
 .grid-3-colums {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4.4rem 3.4rem;
+  grid-gap: 4.4rem 3.2rem;
 }
 @media screen and (max-width: 1024px) {
   .grid-3-colums {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4.4rem 3.4rem;
+    grid-gap: 4.4rem 3.2rem;
   }
 }
 @media (max-width: 767px) {
