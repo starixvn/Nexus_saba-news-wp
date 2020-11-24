@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
-    $('.play_video iframe').css({  "height": "340px" });
+    $('.play_video iframe').css({ "height": "340px" });
+    $('.play_video iframe').css({ "width": "100%" });
     $('.play_video iframe').hide();
     $('.play_video iframe').attr('allow', 'autoplay');
     $('.btn-play-video').on('click', function () {
@@ -37,12 +38,16 @@
         $('#slide-' + id).show();
         $('.flex-item').removeClass("active");
         $(this).parent().parent().addClass("active");
-        //$('iframe').attr('src', $('iframe').attr('src'));//stop all iframe
 
         var iframe = $('#slide-' + id).find('iframe');
-        var src = iframe.attr('src');
-        var symbol = src.indexOf("?") > -1 ? "&" : "?";
-        iframe.attr('src', src + symbol + "autoplay=1");
+        var autoplay = iframe.attr("autoplay");
+        if (autoplay == null || !autoplay) {
+            var src = iframe.attr('src');
+            var symbol = src.indexOf("?") > -1 ? "&" : "?";
+            iframe.attr('src', src + symbol + "autoplay=1");
+            iframe.attr('autoplay', true);
+        }
+       
         $('#slide-' + id).find('.img-item').hide();
         iframe.show();
     });

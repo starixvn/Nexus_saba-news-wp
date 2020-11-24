@@ -1,6 +1,7 @@
-﻿<div class="col col-4 pd-column-right">
+﻿@using sabanews.Constants;
+<div class="col col-4 pd-column-right">
 	<div class="block block-page-news">
-		<h2 class="title-block"><a href="detail_news.html">Tin mới nhất</a></h2>
+		<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId =  Constants.NewPostCategory, type = "tin-tuc"})">Tin mới nhất</a></h2>
 		<div class="block-horizontal">
 			<div class="block-item">
 
@@ -83,17 +84,17 @@
 						@for (int day = start; day < end; day++)
 						{
 							var date = Model.CurrentYear + "-" + month + "-" + (day < 10 ? "0" + day.ToString() : day.ToString());
-						<td class="@(day < Model.CurrentDay ? "lastday" : "") @date" id="@(day == Model.CurrentDay ? "today" : "")">
-							@if (day <= Model.CurrentDay)
-							{
-								<a href="@Url.Action("DateSearch", "Home", new { date = date })" class="@(day <= Model.CurrentDay ? "prev" : "")">@day</a>
-							}
-							else
-							{
-								@day
-							}
+							<td class="@(day < Model.CurrentDay ? "lastday" : "") @date" id="@(day == Model.CurrentDay ? "today" : "")">
+								@if (day <= Model.CurrentDay)
+								{
+									<a href="@Url.Action("DateSearch", "Home", new { date = date })" class="@(day <= Model.CurrentDay ? "prev" : "")">@day</a>
+								}
+								else
+								{
+									@day
+								}
 
-						</td>
+							</td>
 						}
 					</tr>
 				}
