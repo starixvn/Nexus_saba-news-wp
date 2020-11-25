@@ -1,6 +1,6 @@
 $('.submenu').click(function(){
     $(this).parents('.menu-item').siblings().children('.submenu').removeClass('go-page');
-    if(window.innerWidth > 500){
+    if(window.innerWidth <= 1025 ){
         if($(this).hasClass('go-page')){
             console.log('Move page')
         }
