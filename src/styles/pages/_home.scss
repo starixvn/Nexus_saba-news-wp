@@ -26,8 +26,26 @@
     // block-hot-news
     .block-hot-news{
         .main-block{
+            @include grid(12,1fr,3.2rem);
+            @include tableMobile{
+                @include grid(12,1fr,1.6rem);
+            }
+            @include Mobile{
+                @include grid(12,1fr,0);
+            }
+            .left-news{
+                grid-column: 1/6;
+                @include Mobile{
+                    grid-column: 1/13;
+                }
+            }
+            .right-news{
+                grid-column: 6/13;
+                @include Mobile{
+                    grid-column: 1/13;
+                }
+            }
             .block-vertical{
-                padding-right: 2rem;
                 @include Mobile{
                     padding: 0;
                     margin-bottom: 1.5rem;
@@ -56,7 +74,6 @@
                 }
             }
             .block-horizontal{
-                padding-left: 1.2rem;
                 @include tableMobile{
                     padding: 0;
                 }
@@ -86,45 +103,59 @@
 
     // block-video
     .block-video{
-        .swiper-video{
-            overflow: hidden;
-            padding-right: 1.2rem;
+        .flex-video{
+            @include grid(12,1fr,3.2rem);
             @include tableMobile{
-                padding: 0;
+                @include grid(12,1fr,1.6rem);
             }
-        }
-        .slide-video{
-            padding-left: 2rem;
             @include Mobile{
-                padding-left: 0;
-                display: none;
+                @include grid(12,1fr,0);
             }
-            .block-horizontal{
-                max-height: 40rem;
-                overflow-y: scroll; 
-                @include tableMobile{
-                    max-height: 22.6rem;
+            .swiper-video{
+                overflow: hidden;
+                grid-column: 1/8;
+                @include Mobile{
+                    grid-column: 1/13;
                 }
-                &::-webkit-scrollbar{
-                    width: .6rem;
-                }
-                &::-webkit-scrollbar-track {
-                    background: #f1f1f1; 
-                }
-                &::-webkit-scrollbar-thumb {
-                    background: rgba($color: $color-000, $alpha: .2); 
-                    border-radius: 3px;
-                }
-                .block-item{
-                    margin-bottom: 1rem;
-                    &:last-child{
-                        margin-bottom: 0;
+                .btn-play-video,.swiper-button-next,.swiper-button-prev{
+                    display: none;
+                    @include tableMobile{
+                        display: block;
                     }
-                    .flex-item{
-                        align-items: center;
+                }
+            }
+            .slide-video{
+                grid-column: 8/13;
+                @include Mobile{
+                    display: none;
+                }
+                .block-horizontal{
+                    max-height: 40rem;
+                    overflow-y: scroll; 
+                    @include tableMobile{
+                        max-height: 22.6rem;
                     }
-                    .bg-text{
-                        background-color: $bg-input;
+                    &::-webkit-scrollbar{
+                        width: .6rem;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background: #f1f1f1; 
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background: rgba($color: $color-000, $alpha: .2); 
+                        border-radius: 3px;
+                    }
+                    .block-item{
+                        margin-bottom: 1rem;
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                        .flex-item{
+                            align-items: center;
+                        }
+                        .bg-text{
+                            background-color: $bg-input;
+                        }
                     }
                 }
             }
@@ -251,10 +282,11 @@
         .grid-2-colums{
             margin-top: 2rem;
             @include tableMobile{
-                @include grid(2,1fr,1.2rem 2rem);
+                @include grid(2,1fr,1.2rem 1.6rem);
             }
-            @include tableMobile{
+            @include Mobile{
                 margin-top: 0;
+                @include grid(2,1fr,1.2rem 2rem);
             }
             .img-item{
                 margin-bottom: 1rem;
@@ -277,6 +309,9 @@
         }
         .grid-2-colums{
             @include tableMobile{
+                @include grid(2,1fr,1.2rem 1.6rem);
+            }
+            @include Mobile{
                 @include grid(2,1fr,1.2rem 2rem);
             }
         }
