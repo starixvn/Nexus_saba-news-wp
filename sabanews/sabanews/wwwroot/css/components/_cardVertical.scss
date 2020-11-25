@@ -1,14 +1,17 @@
 .block-vertical{
     .img-item{
         margin-bottom: 1rem;
-        max-height: 19rem;
+        max-height: 17.2rem;
         overflow: hidden;
+        height : 100%;
         @include tableMobile{
             margin-bottom: .5rem;
+            max-height : 11rem;
         }
         .img-block{
             width: 100%;
             object-fit: cover;
+            height : 100%;
         }
     }
     

@@ -22,59 +22,76 @@
 
 
 
-.colums-main{
+.colums-main {
     // block-hot-news
-    .block-hot-news{
-        .main-block{
+    .block-hot-news {
+        .main-block {
             @include grid(12,1fr,3.2rem);
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(12,1fr,1.6rem);
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(12,1fr,0);
             }
-            .left-news{
+
+            .left-news {
                 grid-column: 1/6;
-                @include Mobile{
+
+                @include Mobile {
                     grid-column: 1/13;
                 }
             }
-            .right-news{
+
+            .right-news {
                 grid-column: 6/13;
-                @include Mobile{
+
+                @include Mobile {
                     grid-column: 1/13;
                 }
             }
-            .block-vertical{
-                @include Mobile{
+
+            .block-vertical {
+                @include Mobile {
                     padding: 0;
                     margin-bottom: 1.5rem;
                 }
-                .img-item{
+
+                .img-item {
                     margin-bottom: 0;
                     max-height: 24rem;
                     overflow: hidden;
+
+                    @include tableMobile {
+                        max-height: 17.2rem;
+                    }
                 }
-                .bg-text{
+
+                .bg-text {
                     background-color: $bg-input;
                     padding: 1rem 2rem 2rem 2rem;
-                    @include tableMobile{
+
+                    @include tableMobile {
                         padding: 1rem 0.8rem 0.8rem 0.8rem;
                     }
                 }
-                .block-text{
-                    .heading{
-                        a{
+
+                .block-text {
+                    .heading {
+                        a {
                             font-size: 2rem;
-                            @include tableMobile{
+
+                            @include tableMobile {
                                 line-height: 1.8rem !important;
                             }
                         }
                     }
                 }
             }
-            .block-horizontal{
-                @include tableMobile{
+
+            .block-horizontal {
+                @include tableMobile {
                     padding: 0;
                 }
             }
@@ -83,86 +100,115 @@
 
 
 
-    .group-blocks{
-        .grid-2-colums{
-            .block-transfer{
+    .group-blocks {
+        .grid-2-colums {
+            .block-transfer {
                 grid-gap: 0;
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(1,1fr,0);
             }
         }
-        .col-left{
+
+        .col-left {
             padding-right: 1.5rem;
-            @include tableMobile{
+
+            @include tableMobile {
                 padding: 0;
             }
         }
     }
-
-
     // block-video
-    .block-video{
-        .flex-video{
+    .block-video {
+        .flex-video {
             @include grid(12,1fr,3.2rem);
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(12,1fr,1.6rem);
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(12,1fr,0);
             }
-            .swiper-video{
+
+            .swiper-video {
                 overflow: hidden;
                 grid-column: 1/8;
-                @include Mobile{
+
+                @include Mobile {
                     grid-column: 1/13;
                 }
-                .btn-play-video,.swiper-button-next,.swiper-button-prev{
+
+                .swiper-button-next, .swiper-button-prev {
                     display: none;
-                    @include tableMobile{
+
+                    @include tableMobile {
                         display: block;
                     }
                 }
+
+                .btn-play-video {
+                    display: none;
+
+                    @include tableMobile {
+                        display: flex;
+                    }
+                }
             }
-            .slide-video{
+
+            .slide-video {
                 grid-column: 8/13;
-                @include Mobile{
+
+                @include Mobile {
                     display: none;
                 }
-                .block-horizontal{
+
+                .block-horizontal {
                     max-height: 40rem;
-                    overflow-y: scroll; 
-                    @include tableMobile{
+                    overflow-y: scroll;
+
+                    @include tableMobile {
                         max-height: 22.3rem;
                     }
-                    @include ipadpro{
+
+                    @include ipadpro {
                         max-height: 36rem;
                     }
-                    @include landscapeTablet{
+
+                    @include landscapeTablet {
                         max-height: 29.3rem;
                     }
+
                     @include portraitTablet {
                         max-height: 29rem;
                     }
-                    &::-webkit-scrollbar{
+
+                    &::-webkit-scrollbar {
                         width: .6rem;
                     }
+
                     &::-webkit-scrollbar-track {
-                        background: #f1f1f1; 
+                        background: #f1f1f1;
                     }
+
                     &::-webkit-scrollbar-thumb {
-                        background: rgba($color: $color-000, $alpha: .2); 
+                        background: rgba($color: $color-000, $alpha: .2);
                         border-radius: 3px;
                     }
-                    .block-item{
+
+                    .block-item {
                         margin-bottom: 1rem;
-                        &:last-child{
+
+                        &:last-child {
                             margin-bottom: 0;
                         }
-                        .flex-item{
+
+                        .flex-item {
                             align-items: center;
                         }
-                        .bg-text{
+
+                        .bg-text {
                             background-color: $bg-input;
                         }
                     }
@@ -170,21 +216,20 @@
             }
         }
     }
-
-
-
     // block-soccer
-    .block-soccer{
-        .block-vertical{
-            .img-item{
+    .block-soccer {
+        .block-vertical {
+            .img-item {
                 margin-bottom: 1rem;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-bottom: .4rem;
                 }
             }
-            .block-text{
-                .heading{
-                    a{
+
+            .block-text {
+                .heading {
+                    a {
                         font-style: normal;
                         font-weight: bold;
                         font-size: 1.6rem;
@@ -194,179 +239,224 @@
             }
         }
     }
-
-
-
     // block-guess
-    .block-guess{
+    .block-guess {
         padding: 5rem 0 6.2rem 0;
         background: $bg-block;
-        margin-bottom:  6rem;
-        @include tableMobile{
+        margin-bottom: 6rem;
+
+        @include tableMobile {
             padding: 1.9rem 0 4.3rem 0;
             margin-bottom: 2.1rem;
         }
-        .title-block{
-            &::after{
-                background: #506180;;
+
+        .title-block {
+            &::after {
+                background: #506180;
+                ;
             }
-            a{
+
+            a {
                 background: $bg-block;
                 color: $color-fff;
             }
         }
-        .block-vertical{
-            .img-item{
+
+        .block-vertical {
+            .img-item {
                 max-height: 24rem;
                 overflow: hidden;
-                img{
+
+                @include tableMobile {
+                    max-height: 15rem;
+                }
+
+                @include Mobile {
+                    max-height: 11rem;
+                }
+
+                img {
                     object-fit: cover;
                 }
             }
-            .heading{
-                a{
+
+            .heading {
+                a {
                     color: $color-fff;
                 }
             }
-            .block-time{
+
+            .block-time {
                 color: $color-fff;
                 opacity: .5;
             }
         }
     }
-
-
-
-
     // block-transfer
-    .block-transfer{
+    .block-transfer {
         padding-bottom: 0;
         @extend .block-soccer;
-        @include tableMobile{
+
+        @include tableMobile {
             padding-bottom: 1rem;
         }
+
         .title-block {
             margin-bottom: 2.5rem;
-            @include tableMobile{
+
+            @include tableMobile {
                 margin-bottom: .7rem;
             }
         }
-        .block-horizontal{
-            .block-item{
+
+        .block-horizontal {
+            .block-item {
                 margin-bottom: 3rem;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-bottom: 1.1rem;
                 }
             }
         }
     }
-
-
     // block-behind
-    .block-behind{
+    .block-behind {
         padding: 0 0 2.2rem 0;
-        @include tableMobile{
+
+        @include tableMobile {
             padding: 0 0 .6rem 0;
         }
-        .block-vertical{
-            @include tableMobile{
+
+        .block-vertical {
+            @include tableMobile {
                 padding: 0;
                 margin-bottom: 1.6rem;
             }
-            .img-item{
+
+            .img-item {
                 margin-bottom: 0;
                 max-height: 37rem;
                 overflow: hidden;
-                img{
+                height: 100%;
+
+                img {
                     object-fit: cover;
+                    height: 100%;
                 }
             }
-            .bg-text{
+
+            .bg-text {
                 padding: 1rem 2rem 1.3rem 2rem;
-                @include tableMobile{
+
+                @include tableMobile {
                     padding: 1rem 0.8rem 1.5rem 0.8rem;
                 }
             }
         }
-        .grid-2-colums{
+
+        .grid-2-colums {
             margin-top: 2rem;
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(2,1fr,1.2rem 1.6rem);
             }
-            @include Mobile{
+
+            @include Mobile {
                 margin-top: 0;
                 @include grid(2,1fr,1.2rem 2rem);
             }
-            .img-item{
+
+            .img-item {
                 margin-bottom: 1rem;
-                @include tableMobile{
+                max-height: 17.2rem;
+                overflow: hidden;
+                height: 100%;
+
+                @include tableMobile {
                     margin-bottom: .5rem;
+                    max-height: 11rem;
+                }
+
+                img {
+                    height: 100%;
                 }
             }
         }
     }
-
-
-
-
     // block-basketball
-    .block-basketball{
+    .block-basketball {
         padding: 0 0 3.9rem 0;
         border: none;
-        @include tableMobile{
+
+        @include tableMobile {
             padding: 0 0 2.2rem 0;
         }
-        .grid-2-colums{
-            @include tableMobile{
+
+        .grid-2-colums {
+            @include tableMobile {
                 @include grid(2,1fr,1.2rem 1.6rem);
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(2,1fr,1.2rem 2rem);
+            }
+
+            .text-description{
+                @include Mobile{
+                    height : 3.9rem;
+                }
             }
         }
     }
-
-
-
     // block-tennis
-    .block-tennis{
+    .block-tennis {
         border: none;
-        @include tableMobile{
+
+        @include tableMobile {
             padding: 0;
         }
-        .img-item{
-            @include tableMobile{
+
+        .img-item {
+            @include tableMobile {
                 margin-top: 1.3rem;
             }
         }
-        .img-item{
+
+        .img-item {
             margin-bottom: 0;
             max-height: 37rem;
             overflow: hidden;
-            img{
+
+            img {
                 object-fit: cover;
             }
         }
-        .block-text{
-            .heading{
+
+        .block-text {
+            .heading {
                 margin-top: 2rem;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-top: 1rem;
                 }
-                a{
+
+                a {
                     font-weight: bold;
                     font-size: 1.8rem;
                     line-height: 2.4rem;
                 }
             }
-            .block-time{
-                @include tableMobile{
+
+            .block-time {
+                @include tableMobile {
                     margin-top: .3rem;
                 }
             }
-            .description{
+
+            .description {
                 margin-top: 1.2rem;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-top: 0;
                 }
             }

@@ -14,13 +14,16 @@
                 max-width: 19.5rem;
                 max-height: 11rem;
                 overflow: hidden;
+                height : 100%;
                 @include tableMobile{
                     width: 100%;
                     max-width: 13rem;
+                    max-height : 8rem;
                 }
                 img{
                     width: 100%;
                     object-fit: cover;
+                    height : 100%;
                 }
             }
             .block-text{

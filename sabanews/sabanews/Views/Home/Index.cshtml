@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/css/home.css">
+	<link rel="stylesheet" href="~/css/pages/_home.min.css">
 }
 <section class="main">
 	<div class="colums-main">
@@ -263,7 +263,7 @@
 										</a>
 									</div>
 									<div class="block-text">
-										<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
+										<div class="heading text-description"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
 										<p class="block-time">@post.PostDate</p>
 									</div>
 								</div>
