@@ -3,8 +3,6 @@
     HandleIframe: function () {
         //Left Home Video
         $('.match-schedule iframe').css('width', '100%');
-        $('.play_video iframe').css({ "height": "340px" });
-        $('.play_video iframe').css({ "width": "100%" });
         $('.play_video iframe').hide();
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {

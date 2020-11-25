@@ -38,6 +38,9 @@ body,html{
 .pd-column-right{
     padding-left: 2rem;
     @include tableMobile{
+        padding-left: 2rem;
+    }
+    @include Mobile{
         padding: 0;
     }
 }

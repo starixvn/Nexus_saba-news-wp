@@ -1,7 +1,7 @@
 .block-list{
     list-style: none;
     padding: 0;
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     @include tableMobile{
         margin-top: 1rem;
     }
@@ -17,13 +17,17 @@
             font-size: 1.6rem;
             font-style: normal;
             font-weight: bold;
-            @include flex(center, nowrap, flex-start, row);
+            @include flex(flex-start, nowrap, flex-start, row);
             @include tableMobile{
                 font-size: 1.4rem;
             }
             .icon-content{
                 font-size: 2.4rem;
                 margin-right: 1.8rem;
+                @include tableMobile{
+                    font-size: 2rem;
+                    margin: 0.2rem .8rem 0 0;
+                }
             }
         }
     }

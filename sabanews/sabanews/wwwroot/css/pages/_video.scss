@@ -32,6 +32,8 @@
     max-width: 100% !important;
     .swiper-slide{
         .img-item{
+            max-height: 40rem;
+            overflow: hidden;
             img{
                 height: 41.3vh;
                 object-fit: cover;
@@ -50,10 +52,18 @@
     .grid-4-colums{
         grid-gap: 4.5rem 3.5rem;
         @include tableMobile{
-            grid-gap: 1.5rem 2.5rem;
+            @include grid(2,1fr,1.5rem 2.5rem);
+        }
+        .img-item{
+            max-height: 11rem;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
         }
     }
 }
+
 
 
 

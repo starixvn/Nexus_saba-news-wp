@@ -2,10 +2,11 @@
 .pagination{
     text-align: center;
     @include flex(center, nowrap, flex-end, row);
-    padding: 3rem .3rem 1.5rem 0;
+    padding: 1rem .3rem 6rem 0;
     @include tableMobile{
         @include flex(center, nowrap, center, row);
         margin-bottom: 3rem;
+        padding: 1rem .3rem 2rem 0;
     }
     .icon-pagination{
         font-size: 2.4rem;

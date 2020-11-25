@@ -1,18 +1,24 @@
 .grid-2-colums{
-    @include grid(1,1fr,2,1fr,2.5rem 3.2rem);
+    @include grid(2,1fr,2.5rem 3.2rem);
     @include tableMobile{
-        @include grid(1,1fr,2,1fr,1.2rem 2rem);
+        @include grid(2,1fr,1.2rem 2rem);
     }
 }
 .grid-4-colums{
-    @include grid(1,1fr,4,1fr,2.2rem 3.2rem);
+    @include grid(4,1fr,2.2rem 3.2rem);
     @include tableMobile{
-        @include grid(1,1fr,2,1fr,1.2rem 2rem);
+        @include grid(4,1fr,1.3rem 1.6rem);
+    }
+    @include Mobile{
+        @include grid(2,1fr,1.3rem 1.6rem);
     }
 }
 .grid-3-colums{
-    @include grid(1,1fr,3,1fr,4.4rem 3.4rem);
+    @include grid(3,1fr,4.4rem 3.2rem);
     @include tableMobile{
-        @include grid(1,1fr,2,1fr,1.2rem 2rem);
+        @include grid(3,1fr,4.4rem 3.2rem);
+    }
+    @include Mobile{
+        @include grid(2,1fr,1.3rem 1.6rem);
     }
 }

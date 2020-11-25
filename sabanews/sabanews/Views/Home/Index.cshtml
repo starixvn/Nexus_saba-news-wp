@@ -143,78 +143,74 @@
 
 			<div class="group-blocks">
 				<div class="container">
-					<div class="row">
-						<div class="col col-6 col-left">
-							<div class="block block-transfer">
-								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TransferCategory, type = Constants.CategorySlug })">Thị trường chuyển nhượng</a>
-								</h2>
-								<div class="block-horizontal">
-									@foreach (var post in Model.TransferPosts)
-									{
-										<div class="block-item">
-											<div class="flex-item">
-												<div class="img-item">
-													<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
-														<picture>
-															<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
-															<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
-															<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
-														</picture>
-													</a>
-												</div>
-												<div class="block-text">
-													<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
-													<p class="block-time">@post.PostDate</p>
-													<p class="description text-description">@post.PostExcerpt</p>
-												</div>
-											</div>
-										</div>
-									}
-								</div>
-							</div>
-						</div>
-						<div class="col col-6 col-right">
-							<div class="block block-behind">
-								<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.BackstageCategory, type = Constants.CategorySlug })">hậu trường</a></h2>
-								<div class="block-vertical">
-									<div class="img-item">
-										<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[0].ID })">
-											<picture>
-												<source srcset="@Model.BackstagePosts[0].FeatureImage" type="image/webp" class="img-res">
-												<source srcset="@Model.BackstagePosts[0].FeatureImage" type="image/jpeg" class="img-res">
-												<img src="@Model.BackstagePosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
-											</picture>
-										</a>
-									</div>
-									<div class="block-text bg-text">
-										<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[0].ID })">@Model.BackstagePosts[0].PostTitle</a></div>
-										<p class="block-time">@Model.BackstagePosts[0].PostDate</p>
-									</div>
-								</div>
-								<div class="grid-2-colums">
-									@for (int i = 1; i < Model.BackstagePosts.Count; i++)
-									{
-										<div class="block-vertical">
+					<div class="grid-2-colums">
+						<div class="block block-transfer">
+							<h2 class="title-block">
+								<a href="@Url.Action("Category", "Home", new {cateId = Constants.TransferCategory, type = Constants.CategorySlug })">Thị trường chuyển nhượng</a>
+							</h2>
+							<div class="block-horizontal">
+								@foreach (var post in Model.TransferPosts)
+								{
+									<div class="block-item">
+										<div class="flex-item">
 											<div class="img-item">
-												<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">
+												<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
 													<picture>
-														<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/webp" class="img-res">
-														<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/jpeg" class="img-res">
-														<img src="@Model.BackstagePosts[i].FeatureImage" alt="Alt Text!" class="img-res img-block">
+														<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
+														<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
+														<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
 													</picture>
 												</a>
 											</div>
 											<div class="block-text">
-												<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">@Model.BackstagePosts[i].PostTitle</a></div>
-												<p class="block-time">@Model.BackstagePosts[i].PostDate</p>
+												<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
+												<p class="block-time">@post.PostDate</p>
+												<p class="description text-description">@post.PostExcerpt</p>
 											</div>
 										</div>
-									}
-								</div>
+									</div>
+								}
 							</div>
 						</div>
-
+						<div class="block block-behind">
+							<h2 class="title-block"><a href="@Url.Action("Category", "Home", new {cateId = Constants.BackstageCategory, type = Constants.CategorySlug })">hậu trường</a></h2>
+							<div class="block-vertical">
+								<div class="img-item">
+									<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[0].ID })">
+										<picture>
+											<source srcset="@Model.BackstagePosts[0].FeatureImage" type="image/webp" class="img-res">
+											<source srcset="@Model.BackstagePosts[0].FeatureImage" type="image/jpeg" class="img-res">
+											<img src="@Model.BackstagePosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
+										</picture>
+									</a>
+								</div>
+								<div class="block-text bg-text">
+									<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[0].ID })">@Model.BackstagePosts[0].PostTitle</a></div>
+									<p class="block-time">@Model.BackstagePosts[0].PostDate</p>
+								</div>
+							</div>
+							<div class="grid-2-colums">
+								@for (int i = 1; i < Model.BackstagePosts.Count; i++)
+								{
+									<div class="block-vertical">
+										<div class="img-item">
+											<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">
+												<picture>
+													<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/webp" class="img-res">
+													<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/jpeg" class="img-res">
+													<img src="@Model.BackstagePosts[i].FeatureImage" alt="Alt Text!" class="img-res img-block">
+												</picture>
+											</a>
+										</div>
+										<div class="block-text">
+											<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">@Model.BackstagePosts[i].PostTitle</a></div>
+											<p class="block-time">@Model.BackstagePosts[i].PostDate</p>
+										</div>
+									</div>
+								}
+								
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -248,65 +244,61 @@
 
 			<div class="group-blocks">
 				<div class="container">
-					<div class="row">
-						<div class="col col-6">
-							<div class="block block-basketball">
-								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.BasketballCategory, type = Constants.CategorySlug })">Bóng rổ</a>
-								</h2>
-								<div class="grid-2-colums">
-									@foreach (var post in Model.BasketballPosts)
-									{
-										<div class="block-vertical">
-											<div class="img-item">
-												<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
-													<picture>
-														<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
-														<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
-														<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
-													</picture>
-												</a>
-											</div>
-											<div class="block-text">
-												<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
-												<p class="block-time">@post.PostDate</p>
-											</div>
+					<div class="grid-2-colums">
+						<div class="block block-basketball">
+							<h2 class="title-block">
+								<a href="@Url.Action("Category", "Home", new {cateId = Constants.BasketballCategory, type = Constants.CategorySlug })">Bóng rổ</a>
+							</h2>
+							<div class="grid-2-colums">
+								@foreach (var post in Model.BasketballPosts)
+								{
+									<div class="block-vertical">
+										<div class="img-item">
+											<a href="@Url.Action("Single", "Home", new {ID = @post.ID })">
+												<picture>
+													<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
+													<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
+													<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
+												</picture>
+											</a>
 										</div>
-									}
-								</div>
+										<div class="block-text">
+											<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a></div>
+											<p class="block-time">@post.PostDate</p>
+										</div>
+									</div>
+								}
+
 							</div>
 						</div>
-
-						<div class="col col-6">
-							<div class="block block-tennis">
-								<h2 class="title-block">
-									<a href="@Url.Action("Category", "Home", new {cateId = Constants.TennisCategory, type = Constants.CategorySlug })">Quần vợt</a>
-								</h2>
-								<div class="block-vertical">
-									<div class="img-item">
-										<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })">
-											<picture>
-												<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/webp" class="img-res">
-												<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/jpeg" class="img-res">
-												<img src="@Model.TennisPosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
-											</picture>
-										</a>
-									</div>
-									<div class="block-text">
-										<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })">@Model.TennisPosts[0].PostTitle</a></div>
-										<p class="block-time">@Model.TennisPosts[0].PostDate</p>
-										<p class="description text-description">
-											@Model.TennisPosts[0].PostExcerpt
-										</p>
-									</div>
-									<ul class="block-list">
-										@for (int i = 1; i < Model.TennisPosts.Count; i++)
-										{
-											<li class="list-item"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[i].ID })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
-
-										}
-									</ul>
+						<div class="block block-tennis">
+							<h2 class="title-block">
+								<a href="@Url.Action("Category", "Home", new {cateId = Constants.TennisCategory, type = Constants.CategorySlug })">Quần vợt</a>
+							</h2>
+							<div class="block-vertical">
+								<div class="img-item">
+									<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })">
+										<picture>
+											<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/webp" class="img-res">
+											<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/jpeg" class="img-res">
+											<img src="@Model.TennisPosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
+										</picture>
+									</a>
 								</div>
+								<div class="block-text">
+									<div class="heading"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })">@Model.TennisPosts[0].PostTitle</a></div>
+									<p class="block-time">@Model.TennisPosts[0].PostDate</p>
+									<p class="description text-description">
+										@Model.TennisPosts[0].PostExcerpt
+									</p>
+								</div>
+								<ul class="block-list">
+									@for (int i = 1; i < Model.TennisPosts.Count; i++)
+									{
+										<li class="list-item"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[i].ID })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
+
+									}
+								</ul>
 							</div>
 						</div>
 					</div>

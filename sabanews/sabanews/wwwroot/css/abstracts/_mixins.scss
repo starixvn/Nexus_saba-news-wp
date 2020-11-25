@@ -38,9 +38,8 @@
     flex-direction: $dir;
 }
 
-@mixin grid ($rows, $rowsfr, $column, $columnfr, $gap){
+@mixin grid ($column, $columnfr, $gap){
     display: grid;
-    grid-template-rows: repeat($rows,$rowsfr);
     grid-template-columns: repeat($column,$columnfr);
     grid-gap: $gap;
 }

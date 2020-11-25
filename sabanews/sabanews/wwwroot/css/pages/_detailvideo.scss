@@ -34,11 +34,30 @@
     @include tableMobile{
         padding-bottom: 3rem;
     }
+    .img-item{
+        max-height: 40rem;
+        overflow: hidden;
+        img{
+            object-fit: cover;
+        }
+    }
 }
 .block-care{
     margin-bottom: 9rem;
     @include tableMobile{
         margin-bottom: 3rem;
+    }
+    .grid-4-colums{
+        @include tableMobile{
+            @include grid(2,1fr,1.3rem 1.6rem);
+        }
+        .img-item{
+            max-height: 11rem;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
     }
 }
 .block-detail{

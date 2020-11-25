@@ -31,8 +31,18 @@ p.has-text-align-center {
 	color: #fff;
 }
 
-@media screen and (max-width: 992px) {
+.play_video iframe {
+	height: 340px;
+	width: 100%;
+}
+
+@media screen and (max-width: 767px) {
 	.swiper-slide, .swiper-button, .swiper-pagination {
 		display: block;
+	}
+
+	.play_video iframe {
+		height: 150px;
+		width: 100%;
 	}
 }

@@ -3,14 +3,23 @@
         margin-top: 2rem;
     }
     .title-block{
-        margin-bottom: 1rem;
+        margin-bottom: 1rem !important;
     }
     .block-horizontal{
-        .block-text{
-            margin: 0 0 2rem 0 !important;
-            .heading{
-                @include tableMobile{
-                    height: auto !important;
+        .block-item{
+            .flex-item{
+                &:last-child{
+                    .block-text{
+                        margin-bottom: 0 !important;
+                    }
+                }
+                .block-text{
+                    margin: 0 0 2rem 0 !important;
+                    .heading{
+                        @include tableMobile{
+                            height: auto !important;
+                        }
+                    }
                 }
             }
         }

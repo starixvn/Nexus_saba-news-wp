@@ -21,36 +21,36 @@
 @import '../components/cardVertical';
 
 
+
 .colums-main{
-
-
-    
-
-
     // block-hot-news
     .block-hot-news{
         .main-block{
             .block-vertical{
                 padding-right: 2rem;
-                @include tableMobile{
+                @include Mobile{
                     padding: 0;
                     margin-bottom: 1.5rem;
                 }
                 .img-item{
                     margin-bottom: 0;
+                    max-height: 24rem;
+                    overflow: hidden;
                 }
                 .bg-text{
                     background-color: $bg-input;
                     padding: 1rem 2rem 2rem 2rem;
                     @include tableMobile{
-                        padding: 0.6rem 0.8rem .8rem .8rem;
+                        padding: 1rem 0.8rem 0.8rem 0.8rem;
                     }
                 }
                 .block-text{
                     .heading{
                         a{
                             font-size: 2rem;
-                            line-height: 2.4rem;
+                            @include tableMobile{
+                                line-height: 1.8rem !important;
+                            }
                         }
                     }
                 }
@@ -67,6 +67,14 @@
 
 
     .group-blocks{
+        .grid-2-colums{
+            .block-transfer{
+                grid-gap: 0;
+            }
+            @include Mobile{
+                @include grid(1,1fr,0);
+            }
+        }
         .col-left{
             padding-right: 1.5rem;
             @include tableMobile{
@@ -87,14 +95,16 @@
         }
         .slide-video{
             padding-left: 2rem;
-            @include tableMobile{
+            @include Mobile{
                 padding-left: 0;
                 display: none;
             }
             .block-horizontal{
                 max-height: 40rem;
-                overflow-y: scroll;
-
+                overflow-y: scroll; 
+                @include tableMobile{
+                    max-height: 22.6rem;
+                }
                 &::-webkit-scrollbar{
                     width: .6rem;
                 }
@@ -125,11 +135,6 @@
 
     // block-soccer
     .block-soccer{
-        .grid-4-colums{
-            @include tableMobile{
-                grid-gap: 1rem 2rem;
-            }
-        }
         .block-vertical{
             .img-item{
                 margin-bottom: 1rem;
@@ -143,12 +148,7 @@
                         font-style: normal;
                         font-weight: bold;
                         font-size: 1.6rem;
-                        line-height: 2.4rem;
                         letter-spacing: 0;
-                        @include tableMobile{
-                            font-size: 1.4rem;
-                            line-height: 2rem;
-                        }
                     }
                 }
             }
@@ -159,11 +159,11 @@
 
     // block-guess
     .block-guess{
-        padding: 5rem 0 6rem 0;
+        padding: 5rem 0 6.2rem 0;
         background: $bg-block;
         margin-bottom:  6rem;
         @include tableMobile{
-            padding: 1.9rem 0 3.7rem 0;
+            padding: 1.9rem 0 4.3rem 0;
             margin-bottom: 2.1rem;
         }
         .title-block{
@@ -176,6 +176,13 @@
             }
         }
         .block-vertical{
+            .img-item{
+                max-height: 24rem;
+                overflow: hidden;
+                img{
+                    object-fit: cover;
+                }
+            }
             .heading{
                 a{
                     color: $color-fff;
@@ -208,12 +215,7 @@
             .block-item{
                 margin-bottom: 3rem;
                 @include tableMobile{
-                    margin-bottom: 1rem;
-                }
-                .heading{
-                    a{
-                        line-height: 1.8rem;
-                    }
+                    margin-bottom: 1.1rem;
                 }
             }
         }
@@ -222,45 +224,42 @@
 
     // block-behind
     .block-behind{
-        padding: 0 0 2.2rem 1.5rem;
+        padding: 0 0 2.2rem 0;
         @include tableMobile{
             padding: 0 0 .6rem 0;
         }
         .block-vertical{
             @include tableMobile{
                 padding: 0;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.6rem;
             }
             .img-item{
                 margin-bottom: 0;
+                max-height: 37rem;
+                overflow: hidden;
+                img{
+                    object-fit: cover;
+                }
             }
             .bg-text{
                 padding: 1rem 2rem 1.3rem 2rem;
                 @include tableMobile{
-                    padding: 1rem 0.8rem 1.4rem 0.8rem;
-                }
-            }
-            .block-text{
-                .heading{
-                    a{
-                        font-size: 1.6rem;
-                        line-height: 2.4rem;
-                        @include tableMobile{
-                            line-height: 2rem;
-                        }
-                    }
+                    padding: 1rem 0.8rem 1.5rem 0.8rem;
                 }
             }
         }
         .grid-2-colums{
             margin-top: 2rem;
             @include tableMobile{
+                @include grid(2,1fr,1.2rem 2rem);
+            }
+            @include tableMobile{
                 margin-top: 0;
             }
             .img-item{
                 margin-bottom: 1rem;
                 @include tableMobile{
-                    margin-bottom: 0;
+                    margin-bottom: .5rem;
                 }
             }
         }
@@ -271,14 +270,14 @@
 
     // block-basketball
     .block-basketball{
-        padding: 0 1.5rem 3.9rem 0;
+        padding: 0 0 3.9rem 0;
         border: none;
         @include tableMobile{
             padding: 0 0 2.2rem 0;
         }
-        .grid-2-colums {
+        .grid-2-colums{
             @include tableMobile{
-                grid-gap: 1rem 2rem;
+                @include grid(2,1fr,1.2rem 2rem);
             }
         }
     }
@@ -287,10 +286,22 @@
 
     // block-tennis
     .block-tennis{
-        padding-left: 1.5rem;
         border: none;
         @include tableMobile{
             padding: 0;
+        }
+        .img-item{
+            @include tableMobile{
+                margin-top: 1.3rem;
+            }
+        }
+        .img-item{
+            margin-bottom: 0;
+            max-height: 37rem;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
         }
         .block-text{
             .heading{
@@ -306,7 +317,7 @@
             }
             .block-time{
                 @include tableMobile{
-                    margin-top: -.8rem;
+                    margin-top: .3rem;
                 }
             }
             .description{
