@@ -18,7 +18,7 @@
         $('.swiper-slide').last().show();
 
         $(window).on('resize', function () {
-            if ($(window).width() < 992) {
+            if ($(window).width() < 768) {
                 $('.swiper-slide').show();
             } else {
                 $('.swiper-slide').last().show();
@@ -63,5 +63,4 @@
 
 $(document).ready(function () {
     setUp.init();
-    //match schedule
 })
