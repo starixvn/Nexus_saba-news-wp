@@ -22,7 +22,7 @@ p.has-text-align-center {
 	text-align: center;
 }
 
-.swiper-slide, .swiper-button, .swiper-pagination {
+.swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
 	display: none;
 }
 
@@ -37,7 +37,7 @@ p.has-text-align-center {
 }
 
 @media screen and (max-width: 767px) {
-	.swiper-slide, .swiper-button, .swiper-pagination {
+	.swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
 		display: block;
 	}
 

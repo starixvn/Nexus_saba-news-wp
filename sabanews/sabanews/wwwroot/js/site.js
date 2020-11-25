@@ -15,15 +15,14 @@
         });
 
         //Left &  Right Home Video
-        $('.swiper-slide').last().show();
 
-        $(window).on('resize', function () {
-            if ($(window).width() < 768) {
-                $('.swiper-slide').show();
-            } else {
-                $('.swiper-slide').last().show();
-            }
-        });
+        if ($(window).innerWidth() < 768) {
+            $('.swiper-slide').show();
+            $('.swiper-slide .play_video iframe').first().hide();
+        } else {
+            $('.swiper-slide').first().show();
+            $('.swiper-slide .play_video iframe').first().show();
+        }
 
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
