@@ -133,7 +133,16 @@
                     max-height: 40rem;
                     overflow-y: scroll; 
                     @include tableMobile{
-                        max-height: 22.6rem;
+                        max-height: 22.3rem;
+                    }
+                    @include ipadpro{
+                        max-height: 36rem;
+                    }
+                    @include landscapeTablet{
+                        max-height: 29.3rem;
+                    }
+                    @include portraitTablet {
+                        max-height: 29rem;
                     }
                     &::-webkit-scrollbar{
                         width: .6rem;

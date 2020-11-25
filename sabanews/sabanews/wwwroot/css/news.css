@@ -846,17 +846,19 @@ button {
 @media (min-width: 992px) {
   .container {
     max-width: 100%;
-    padding: 0 1.6rem;
+    padding: 0 1rem;
   }
 }
 @media (min-width: 1200px) {
   .container {
     max-width: 119rem;
+    padding: 0 1rem;
   }
 }
 @media (min-width: 1440px) {
   .container {
     max-width: 134rem;
+    padding: 0 1rem;
   }
 }
 

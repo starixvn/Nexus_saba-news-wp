@@ -3,7 +3,6 @@
     HandleIframe: function () {
         //Left Home Video
         $('.match-schedule iframe').css('width', '100%');
-        $('.play_video iframe').hide();
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
             var iframe = $(this).parent().parent().find('iframe');
@@ -13,16 +12,7 @@
             $(this).parent().hide();
             iframe.show();
         });
-
-        //Left &  Right Home Video
-
-        if ($(window).innerWidth() < 768) {
-            $('.swiper-slide').show();
-            $('.swiper-slide .play_video iframe').first().hide();
-        } else {
-            $('.swiper-slide').first().show();
-            $('.swiper-slide .play_video iframe').first().show();
-        }
+       
 
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
