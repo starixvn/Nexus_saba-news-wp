@@ -1,3 +1,5 @@
 sabanews/vs/
 sabanews/sabanews/obj/Debug/
 sabanews/sabanews/bin/Debug/
+/sabanews/sabanews/bin/Debug/netcoreapp2.2/sabanews.dll
+/sabanews/sabanews/bin/Debug/netcoreapp2.2/sabanews.Views.dll
