@@ -140,6 +140,26 @@
                     grid-column: 1/13;
                 }
 
+                .play_video {
+                    iframe {
+                        @include tableMobile {
+                            height: 19rem;
+                        }
+
+                        @include ipadpro {
+                            height: 30rem;
+                        }
+
+                        @include landscapeTablet {
+                            height: 26rem;
+                        }
+
+                        @include portraitTablet {
+                            height: 26rem;
+                        }
+                    }
+                }
+
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
 
@@ -401,9 +421,9 @@
                 @include grid(2,1fr,1.2rem 2rem);
             }
 
-            .text-description{
-                @include Mobile{
-                    height : 3.9rem;
+            .text-description {
+                @include Mobile {
+                    height: 3.9rem;
                 }
             }
         }
