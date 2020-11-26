@@ -8,8 +8,8 @@
 		<div class="container">
 			<h2 class="title-block"><a href="@Url.Action("Category", "Home", new { cateId = Constants.NewPostCategory, type = Constants.CategorySlug })">TIN MỚI NHẤT</a></h2>
 			<div class="main-block">
-				<div class="block-vertical left-news">
-					<div class="img-item">
+				<div class="card-vertical left-news">
+					<div class="card-vertical__image">
 						<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">
 							<picture>
 								<source srcset="@Model.NewPosts[0].FeatureImage" type="image/webp" class="img-res">
@@ -18,11 +18,12 @@
 							</picture>
 						</a>
 					</div>
-					<div class="block-text bg-text">
-						<div class="heading"><a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a></div>
-						<p class="block-time">@Model.NewPosts[0].PostDate</p>
-						<p class="description text-description">@Model.NewPosts[0].PostExcerpt</p>
-					</div>
+					<div class="card-vertical__title">
+						<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a>
+                    </div>
+					<p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
+					<p class="card-vertical__description">@Model.NewPosts[0].PostExcerpt</p>
+					
 				</div>
 				<div class="block-horizontal right-news">
 					@for (int i = 1; i < Model.NewPosts.Count; i++)
