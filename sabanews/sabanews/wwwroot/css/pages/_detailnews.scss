@@ -33,11 +33,21 @@
     @include tableMobile{
         padding-bottom: 3rem;
     }
+    img{
+        width : 100%;
+    }
 }
 .block-care{
     margin-bottom: 9rem;
     @include tableMobile{
         margin-bottom: 3rem;
+    }
+}
+iframe {
+    height: 45rem;
+
+    @include tableMobile {
+        height: 30rem;
     }
 }
 .block-detail{
@@ -48,6 +58,9 @@
     .img-item{
         max-height: 45rem;
         overflow: hidden;
+        @include tableMobile{
+            max-height : 30rem;
+        }
         img{
             object-fit: cover;
         }
@@ -91,25 +104,34 @@
     }
 }
 
-.block-care{
-    .block-horizontal{
-        .flex-item{
+.block-care {
+    .block-horizontal {
+        .flex-item {
             margin-bottom: 2rem;
-            .img-item{
+
+            .img-item {
                 max-width: 30.5rem !important;
                 max-height: 20rem !important;
                 overflow: hidden !important;
-                img{
+
+                @include tableMobile {
+                    max-height: 10rem !important;
+                }
+
+                img {
                     object-fit: cover !important;
                 }
             }
-            .block-text{
+
+            .block-text {
                 margin-left: 3.2rem !important;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-left: 1.5rem !important;
                 }
-                .heading{
-                    @include tableMobile{
+
+                .heading {
+                    @include tableMobile {
                         height: 4rem;
                     }
                 }
