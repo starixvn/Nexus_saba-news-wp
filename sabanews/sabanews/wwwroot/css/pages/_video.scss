@@ -44,20 +44,52 @@
         }
     }
 }
-.block-list-video{
+
+.block-video {
+    .play_video {
+        iframe {
+            height : 50rem;
+            @include tableMobile {
+                height: 25rem;
+            }
+
+            @include ipadpro {
+                height: 43rem;
+            }
+
+            @include landscapeTablet {
+                height: 33rem;
+            }
+
+            @include portraitTablet {
+                height: 30rem;
+            }
+        }
+    }
+}
+
+.block-list-video {
     margin: 3.8rem 0 3rem 0;
-    @include tableMobile{
+
+    @include tableMobile {
         margin: 2rem 0 2rem 0;
     }
-    .grid-4-colums{
+
+ 
+
+    .grid-4-colums {
         grid-gap: 4.5rem 3.5rem;
-        @include tableMobile{
+
+        @include tableMobile {
             @include grid(2,1fr,1.5rem 2.5rem);
         }
-        .img-item{
+
+        .img-item {
             max-height: 11rem;
             overflow: hidden;
-            img{
+            height: 11rem;
+
+            img {
                 object-fit: cover;
             }
         }

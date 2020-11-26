@@ -894,7 +894,7 @@ button {
         .block-horizontal .block-item .flex-item .img-item {
           width: 100%;
           max-width: 13rem;
-          max-height: 8rem; } }
+          max-height: 7.2rem !important; } }
       .block-horizontal .block-item .flex-item .img-item img {
         width: 100%;
         object-fit: cover;
