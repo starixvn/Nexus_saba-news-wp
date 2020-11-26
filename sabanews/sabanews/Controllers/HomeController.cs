@@ -84,6 +84,7 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.SearchPost(keyword, start, Constants.Perpage);
             var PostsTotal = await postService.SearchPost(keyword, 0, Constants.Total);
+            ViewData["Title"] = "Kết quả tìm kiếm '" + keyword + "'";
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
