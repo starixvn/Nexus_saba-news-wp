@@ -124,6 +124,7 @@
             ViewData["Date"] = date;
             ViewData["Controller"] = "DateSearch";
             ViewData["HeadTitle"] = "Kết quả tìm kiếm: '" + date + "'";
+            ViewData["Title"] = date + " - Saba Sports";
             var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
             return View(view, Posts);
         }

@@ -65,7 +65,7 @@
 				@{
 					var colSpan = Model.FirstDayOfWeek - 1;
 					var dayOfFirstWeek = 8 - Model.FirstDayOfWeek;
-					var month = Model.CurrentMonth > 10 ? Model.CurrentMonth : "0" + Model.CurrentMonth;
+					var month = Model.CurrentMonth >= 10 ? Model.CurrentMonth : "0" + Model.CurrentMonth;
 					int weeks = (int)Math.Ceiling((Model.Days - 1) / 7.0);
 
 				}
@@ -73,7 +73,8 @@
 					<td colspan="@colSpan">&nbsp;</td>
 					@for (int i = 1; i <= dayOfFirstWeek; i++)
 					{
-						<td class="lastday"><a href="detail.html" class="prev">@i</a></td>
+						var date = Model.CurrentYear + "-" + month + "-" + (i < 10 ? "0" + i.ToString() : i.ToString());
+						<td class="lastday"><a href="@Url.Action("DateSearch", "Home", new { date = date })" class="prev">@i</a></td>
 					}
 				</tr>
 				@for (int week = 1; week <= weeks; week++)

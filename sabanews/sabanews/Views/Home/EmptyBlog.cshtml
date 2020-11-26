@@ -15,7 +15,7 @@
 			@if (ViewData["Controller"].ToString() == "DateSearch")
 			{
 				var countDate = ViewData["Date"].ToString().Split('-');
-				if (countDate.Count() == 2)
+				if (countDate.Count() >= 2)
 				{
 					@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) }))
 				}
