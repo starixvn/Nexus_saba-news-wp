@@ -9,6 +9,7 @@
             if ($.trim(video) == "") {
                 var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
+                if (typeof found[2] === "undefined") { return false; }
                 var iframe = $(($.parseHTML(found[2].outerHTML)));
 
                 iframe.attr('allow', 'autoplay');
@@ -18,6 +19,7 @@
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
+                
             }
         });
        
@@ -35,6 +37,7 @@
             if ($.trim(video) == "") {
                 var iframe = slide.find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
+                if (typeof found[2] === "undefined") { return false;}
                 var iframe = $(($.parseHTML(found[2].outerHTML)));
 
                 iframe.attr('allow', 'autoplay');
