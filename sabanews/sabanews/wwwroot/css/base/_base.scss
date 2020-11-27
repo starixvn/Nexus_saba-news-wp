@@ -11,6 +11,8 @@ html{
 body,html{
     font-weight: 400;
     font-family: $font-body;
+    color: $color-content;
+    line-height: 2.2rem;
     background-color:#FFFDF9;
 }
 .img-res{

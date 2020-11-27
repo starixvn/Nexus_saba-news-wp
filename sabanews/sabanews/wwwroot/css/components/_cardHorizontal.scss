@@ -1,6 +1,12 @@
 .block-horizontal{
-    .block-item{
-        margin-bottom: 2rem;    
+    @include grid(19.5rem 1fr, 11rem , 1.2rem);
+    overflow: hidden;
+            font-size: $font-size-title;
+                color: $color-title-hover;
+            font-size: $font-size-datetime;
+            color: $color-datetime;
+            max-height: 4.5rem;
+            overflow: hidden;
         @include tableMobile{
             margin-bottom: 1rem;
         }

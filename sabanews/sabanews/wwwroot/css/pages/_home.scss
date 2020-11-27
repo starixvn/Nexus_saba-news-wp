@@ -23,17 +23,26 @@
 
 
 .colums-main {
+    padding-top: 12rem;
     // block-hot-news
     .block-hot-news {
-        .main-block {
-            @include grid(12,1fr,3.2rem);
+        .block__content {
+            @include grid(42% calc(58% - 3.2rem), repeat(3, 11rem), $padding-main 3.2rem);
 
             @include tableMobile {
-                @include grid(12,1fr,1.6rem);
+                @include grid(42% calc(58% - 1.6rem), repeat(3, 11rem), $padding-main 1.6rem);
             }
 
             @include Mobile {
                 @include grid(12,1fr,0);
+
+                [class*="card-vertical__"]:not(.card-vertical__image) {
+                    padding: 0 $padding-main;
+                }
+
+                &__description {
+                    padding-bottom: $padding-main;
+                }
             }
 
             .left-news {
@@ -51,57 +60,16 @@
                     grid-column: 1/13;
                 }
             }
-
             .block-vertical {
-                @include Mobile {
-                    padding: 0;
-                    margin-bottom: 1.5rem;
-                }
-
-                .img-item {
-                    margin-bottom: 0;
-                    max-height: 24rem;
-                    overflow: hidden;
-
-                    @include tableMobile {
-                        max-height: 17.2rem;
-                    }
-                }
-
-                .bg-text {
-                    background-color: $bg-input;
-                    padding: 1rem 2rem 2rem 2rem;
-
-                    @include tableMobile {
-                        padding: 1rem 0.8rem 0.8rem 0.8rem;
-                    }
-                }
-
-                .block-text {
-                    .heading {
-                        a {
-                            font-size: 2rem;
-
-                            @include tableMobile {
-                                line-height: 1.8rem !important;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .block-horizontal {
-                @include tableMobile {
-                    padding: 0;
-                }
-            }
         }
     }
 
 
 
     .group-blocks {
-        .grid-2-colums {
+        .container {
+            @include grid(repeat(2, 1fr), "", 3.2rem);
+
             .block-transfer {
                 grid-gap: 0;
             }
@@ -121,23 +89,19 @@
     }
     // block-video
     .block-video {
-        .flex-video {
-            @include grid(12,1fr,3.2rem);
+        .block__content {
+            @include grid(58% calc(42% - 3.2rem), 40rem, 3.2rem);
 
             @include tableMobile {
-                @include grid(12,1fr,1.6rem);
-            }
-
-            @include Mobile {
-                @include grid(12,1fr,0);
+                @include grid(58% calc(42% - 1.6rem), 40rem, 1.6rem);
             }
 
             .swiper-video {
                 overflow: hidden;
-                grid-column: 1/8;
+                grid-column: 1;
 
                 @include Mobile {
-                    grid-column: 1/13;
+                    //grid-column: 1/13;
                 }
 
                 .play_video {
@@ -178,10 +142,24 @@
             }
 
             .slide-video {
-                grid-column: 8/13;
+                grid-column: 2;
+                overflow: auto;
 
                 @include Mobile {
                     display: none;
+                }
+
+                &::-webkit-scrollbar {
+                    width: .6rem;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: rgba($color: $color-000, $alpha: .2);
+                    border-radius: 3px;
                 }
 
                 .block-horizontal {
@@ -204,18 +182,7 @@
                         max-height: 29rem;
                     }
 
-                    &::-webkit-scrollbar {
-                        width: .6rem;
-                    }
 
-                    &::-webkit-scrollbar-track {
-                        background: #f1f1f1;
-                    }
-
-                    &::-webkit-scrollbar-thumb {
-                        background: rgba($color: $color-000, $alpha: .2);
-                        border-radius: 3px;
-                    }
 
                     .block-item {
                         margin-bottom: 1rem;
@@ -238,24 +205,10 @@
     }
     // block-soccer
     .block-soccer {
-        .block-vertical {
-            .img-item {
-                margin-bottom: 1rem;
-
-                @include tableMobile {
-                    margin-bottom: .4rem;
-                }
-            }
-
-            .block-text {
-                .heading {
-                    a {
-                        font-style: normal;
-                        font-weight: bold;
-                        font-size: 1.6rem;
-                        letter-spacing: 0;
-                    }
-                }
+        .block__content {
+            @include grid(repeat(4, 1fr), unset, 3.2rem 3.2rem);
+            .card-vertical__image {
+                height: 17.2rem;
             }
         }
     }
@@ -270,73 +223,21 @@
             margin-bottom: 2.1rem;
         }
 
-        .title-block {
-            &::after {
-                background: #506180;
-                ;
-            }
-
-            a {
-                background: $bg-block;
-                color: $color-fff;
-            }
+        .block__title a {
+            background-color: $bg-block;
+            color: #fff;
         }
 
-        .block-vertical {
-            .img-item {
-                max-height: 24rem;
-                overflow: hidden;
-
-                @include tableMobile {
-                    max-height: 15rem;
-                }
-
-                @include Mobile {
-                    max-height: 11rem;
-                }
-
-                img {
-                    object-fit: cover;
-                }
-            }
-
-            .heading {
-                a {
-                    color: $color-fff;
-                }
-            }
-
-            .block-time {
-                color: $color-fff;
-                opacity: .5;
-            }
+        .block__content {
+            @include grid(repeat(3, 1fr), 1fr, 3.2rem);
         }
     }
     // block-transfer
     .block-transfer {
         padding-bottom: 0;
-        @extend .block-soccer;
 
         @include tableMobile {
             padding-bottom: 1rem;
-        }
-
-        .title-block {
-            margin-bottom: 2.5rem;
-
-            @include tableMobile {
-                margin-bottom: .7rem;
-            }
-        }
-
-        .block-horizontal {
-            .block-item {
-                margin-bottom: 3rem;
-
-                @include tableMobile {
-                    margin-bottom: 1.1rem;
-                }
-            }
         }
     }
     // block-behind
@@ -347,7 +248,14 @@
             padding: 0 0 .6rem 0;
         }
 
-        .block-vertical {
+        .block__content {
+            @include grid(repeat(2, 1fr), 1fr 1fr, 3.2rem);
+
+            .card-item-0 {
+                grid-column: 1/3;
+            }
+        }
+        /*.block-vertical {
             @include tableMobile {
                 padding: 0;
                 margin-bottom: 1.6rem;
@@ -372,36 +280,7 @@
                     padding: 1rem 0.8rem 1.5rem 0.8rem;
                 }
             }
-        }
-
-        .grid-2-colums {
-            margin-top: 2rem;
-
-            @include tableMobile {
-                @include grid(2,1fr,1.2rem 1.6rem);
-            }
-
-            @include Mobile {
-                margin-top: 0;
-                @include grid(2,1fr,1.2rem 2rem);
-            }
-
-            .img-item {
-                margin-bottom: 1rem;
-                max-height: 17.2rem;
-                overflow: hidden;
-                height: 100%;
-
-                @include tableMobile {
-                    margin-bottom: .5rem;
-                    max-height: 11rem;
-                }
-
-                img {
-                    height: 100%;
-                }
-            }
-        }
+        }*/
     }
     // block-basketball
     .block-basketball {
@@ -412,20 +291,8 @@
             padding: 0 0 2.2rem 0;
         }
 
-        .grid-2-colums {
-            @include tableMobile {
-                @include grid(2,1fr,1.2rem 1.6rem);
-            }
-
-            @include Mobile {
-                @include grid(2,1fr,1.2rem 2rem);
-            }
-
-            .text-description {
-                @include Mobile {
-                    height: 3.9rem;
-                }
-            }
+        .block__content {
+            @include grid(repeat(2, 1fr), "", 3.2rem);
         }
     }
     // block-tennis
