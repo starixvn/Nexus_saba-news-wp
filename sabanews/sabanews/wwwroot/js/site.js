@@ -10,9 +10,12 @@
                 var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 var iframe = $(($.parseHTML(found[2].outerHTML)));
+
+                iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");
+
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
             }
@@ -33,6 +36,8 @@
                 var iframe = slide.find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 var iframe = $(($.parseHTML(found[2].outerHTML)));
+
+                iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");

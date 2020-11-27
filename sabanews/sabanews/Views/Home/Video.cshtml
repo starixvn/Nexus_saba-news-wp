@@ -13,6 +13,7 @@
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
 									<div class="img-item">
+										<input type="hidden" name="iframe_value" value="@Model[0].PostContent" />
 										<picture>
 											<source srcset="@Model[0].FeatureImage" type="image/webp">
 											<source srcset="@Model[0].FeatureImage" type="image/jpeg">
@@ -22,9 +23,7 @@
 											<span class="icon-play"></span>
 										</div>
 									</div>
-									<div class="play_video">
-										@Html.Raw(Model[0].PostContent)
-									</div>
+									<div class="play_video"></div>
 									<div class="content-box">
 										<h4 class="title-box"><a href="detail_video.html" class="heading">@Model[0].PostTitle</a></h4>
 									</div>
