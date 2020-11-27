@@ -61,7 +61,8 @@
 							<div class="swiper-wrapper">
 								@foreach (var post in Model.VideoPosts)
 								{
-									<div class="swiper-slide" id="slide-@post.ID" >
+									<div class="swiper-slide" id="slide-@post.ID">
+										<input type="hidden" name="iframe_value" value="@post.PostContent" />
 										<div class="img-item">
 											<picture>
 												<source srcset="@post.FeatureImage" type="image/webp">
@@ -72,14 +73,11 @@
 												<span class="icon-play"></span>
 											</div>
 										</div>
-										<div class="play_video">
-											@Html.Raw(post.PostContent)
-										</div>
+										<div class="play_video"></div>
 										<div class="content-box">
 											<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
 										</div>
 									</div>
-
 								}
 							</div>
 							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
