@@ -1,0 +1,65 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../abstracts/functions';
+
+@import '../base/base';
+
+@import '../layout/footer';
+@import '../layout/header';
+
+@import '../components/block';
+@import '../components/buttons';
+@import '../components/container';
+@import '../components/img';
+@import '../components/calendar';
+@import '../components/pagination';
+@import '../components/swipper';
+
+.block{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.pd-column-left{
+    overflow: hidden;
+}
+.swiper-container {
+    width: 100%;
+    max-width: 100% !important;
+    .swiper-slide{
+        .img-item{
+            max-height: 40rem;
+            overflow: hidden;
+            img{
+                height: 41.3vh;
+                object-fit: cover;
+                @include tableMobile{
+                    height: auto !important;
+                }
+            }
+        }
+    }
+}
+.block-list-video{
+    margin: 3.8rem 0 3rem 0;
+    @include tableMobile{
+        margin: 2rem 0 2rem 0;
+    }
+    .grid-4-colums{
+        grid-gap: 4.5rem 3.5rem;
+        @include tableMobile{
+            @include grid(2,1fr,1.5rem 2.5rem);
+        }
+        .img-item{
+            max-height: 11rem;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+
+
+

@@ -1176,14 +1176,28 @@ button {
 }
 
 @media screen and (max-width: 1024px) {
-  .card-horizontal__image {
+  .card-horizontal {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 13rem 1fr;
-        grid-template-columns: 13rem 1fr;
-    -ms-grid-rows: "";
-        grid-template-rows: "";
+    -ms-grid-columns: 13.5rem 1fr;
+        grid-template-columns: 13.5rem 1fr;
+    -ms-grid-rows: none;
+        grid-template-rows: none;
     grid-gap: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-horizontal {
+    margin-bottom: 1.2rem;
+  }
+  .card-horizontal:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card-horizontal__image {
     max-height: 7.2rem !important;
   }
 }
@@ -1195,6 +1209,18 @@ button {
   color: #333;
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .card-horizontal__content .title {
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    height: 3.8rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 .card-horizontal__content .title:hover {
@@ -1327,8 +1353,6 @@ button {
 }
 
 .block-calendar .box-calendar .date-year {
-  font-style: normal;
-  font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #294579;
@@ -1350,16 +1374,12 @@ button {
 }
 
 .block-calendar .table-calendar thead tr th {
-  font-style: normal;
-  font-weight: bold;
   font-size: 1.6rem;
   line-height: 2.4rem;
   color: #294579;
 }
 
 .block-calendar .table-calendar tbody tr td {
-  font-style: normal;
-  font-weight: normal;
   font-size: 1.2rem;
   line-height: 3.3rem;
   text-align: center;
@@ -1492,7 +1512,6 @@ button {
 
 .pagination .main-pagination .items-pagination .item {
   text-decoration: none;
-  font-style: normal;
   font-weight: bold;
   font-size: 1.4rem;
   line-height: 2.4rem;

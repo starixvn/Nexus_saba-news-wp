@@ -1,5 +1,5 @@
 ﻿@section Styles{
-	<link rel="stylesheet" href="~/styles/video.css">
+	<link rel="stylesheet" href="~/styles/pages/video.css">
 }
 <section class="main">
 	<div class="container">
@@ -25,7 +25,7 @@
 									</div>
 									<div class="play_video"></div>
 									<div class="content-box">
-										<h4 class="title-box"><a href="detail_video.html" class="heading">@Model[0].PostTitle</a></h4>
+										<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @Model[0].ID })" class="heading">@Model[0].PostTitle</a></h4>
 									</div>
 								</div>
 							</div>
@@ -58,16 +58,37 @@
 								</div>
 							</div>
 						}
-
 					</div>
 				</div>
 				@{
 					int CurrentPage = Convert.ToInt32(ViewData["CurrentPage"]);
 					int TotalPages = Convert.ToInt32(ViewData["TotalPages"]);
-					var linkLast = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = @ViewData["TotalPages"] });
-					var linkFirst = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = 1 });
-					var linkNext = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = CurrentPage + 1 });
-					var linkPrev = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = CurrentPage - 1 });
+					var linkLast = Url.Action("Category", "Home", new { page = @ViewData["TotalPages"] });
+					var linkFirst = Url.Action("Category", "Home", new { page = 1 });
+					var linkNext = Url.Action("Category", "Home", new { page = CurrentPage + 1 });
+					var linkPrev = Url.Action("Category", "Home", new { page = CurrentPage - 1 });
+					if (ViewData["Controller"].ToString() == "Search")
+					{
+						linkLast = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = @ViewData["TotalPages"] });
+						linkFirst = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = 1 });
+						linkNext = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = CurrentPage + 1 });
+						linkPrev = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = CurrentPage - 1 });
+					}
+					else if (ViewData["Controller"].ToString() == "Tag")
+					{
+						linkLast = Url.Action("Tag", "Home", new { keyword = ViewData["tag"], page = @ViewData["TotalPages"] });
+						linkFirst = Url.Action("Tag", "Home", new { keyword = ViewData["tag"], page = 1 });
+						linkNext = Url.Action("Tag", "Home", new { keyword = ViewData["tag"], page = CurrentPage + 1 });
+						linkPrev = Url.Action("Tag", "Home", new { keyword = ViewData["tag"], page = CurrentPage - 1 });
+					}
+					else if (ViewData["Controller"].ToString() == "DateSearch")
+					{
+						linkLast = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = @ViewData["TotalPages"] });
+						linkFirst = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = 1 });
+						linkNext = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = CurrentPage + 1 });
+						linkPrev = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = CurrentPage - 1 });
+					}
+
 					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
 					linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
 				}
@@ -91,7 +112,19 @@
 
 								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 								{
-									var link = Url.Action("Video", "Home", new { cateId = ViewData["CategoryId"], page = i });
+									var link = Url.Action("Category", "Home", new { page = i });
+									if (ViewData["Controller"].ToString() == "Search")
+									{
+										link = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = i });
+									}
+									else if (ViewData["Controller"].ToString() == "Tag")
+									{
+										link = Url.Action("Tag", "Home", new { tag = ViewData["tag"], page = i });
+									}
+									else if (ViewData["Controller"].ToString() == "DateSearch")
+									{
+										link = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = i });
+									}
 									var active = i == CurrentPage ? "active" : "";
 									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
 								}
@@ -107,7 +140,6 @@
 						<a href="@linkLast" class="icon-pagination icon-page-last"></a>
 					</div>
 				}
-
 			</div>
 
 

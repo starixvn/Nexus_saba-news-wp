@@ -1,11 +1,19 @@
 .card-horizontal {
     @include grid(19.5rem 1fr, 11rem , 1.2rem);
     overflow: hidden;
-
+    @include tableMobile{
+        @include grid(13.5rem 1fr, none , 1.2rem);
+    }
+    @include Mobile{
+        margin-bottom: 1.2rem;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
     &__image {
 
         @include tableMobile {
-            @include grid(13rem 1fr, "", 1.2rem);
+            //@include grid(13rem 1fr, "", 1.2rem);
             max-height: 7.2rem !important;
         }
     }
@@ -17,7 +25,15 @@
             text-decoration: none;
             color: $color-text;
             transition: color .3s ease;
-
+            display: block;
+            @include Mobile{
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                height: 3.8rem;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
             &:hover {
                 color: $color-title-hover;
             }
