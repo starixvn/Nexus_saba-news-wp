@@ -9,8 +9,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
-	<link rel="stylesheet" href="~/css/vendor/icomoon/style.css">
-	<link rel="stylesheet" href="~/css/site.css">
+	<link rel="stylesheet" href="~/styles/vendor/icomoon/style.css">
+	<link rel="stylesheet" href="~/styles/site.css">
 
 	@RenderSection("Styles", false)
 </head>
@@ -18,7 +18,7 @@
 <body>
 	@*@Html.Partial("_Menu")*@
 	@(await Component.InvokeAsync("Menu"))
-	
+
 	<div>
 		<partial name="_CookieConsentPartial" />
 		<main role="main" class="pb-3">

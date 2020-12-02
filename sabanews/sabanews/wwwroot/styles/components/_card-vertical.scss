@@ -1,6 +1,13 @@
 .card-vertical {
+    padding-bottom: 1.6rem;
+    &.card-vertical-highlight {
+        [class*="card-vertical__"]:not(.card-vertical__image) {
+            padding: 0 $padding-main;
+        }
+    }
+
     &__image {
-        margin-bottom: 1rem;
+        margin-bottom: 0.4rem;
         overflow: hidden;
         display: block;
 

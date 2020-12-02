@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using sabanews.Services;
-
-namespace sabanews
+﻿namespace sabanews
 {
+    using Fanex.Data;
+    using Fanex.Data.MySql;
+    using Fanex.Data.Repository;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using sabanews.Services;
+    using System.IO;
+
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -31,9 +31,11 @@ namespace sabanews
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddTransient(_ => new ConnectDb(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddTransient(_ => new ConnectDb(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IBaseService, BaseService>();
+            services.AddTransient<IDynamicRepository, DynamicRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,10 @@ namespace sabanews
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            DbSettingProviderManager
+               .StartNewSession()
+               .WithMySql(Directory.GetCurrentDirectory() + "\\App_Data")
+               .Run();
         }
     }
 }

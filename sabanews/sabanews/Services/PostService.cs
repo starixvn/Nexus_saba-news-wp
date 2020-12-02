@@ -1,68 +1,32 @@
 ﻿namespace sabanews.Services
 {
-    using MySqlConnector;
+    using sabanews.Criteria;
     using sabanews.Models;
     using System;
     using System.Collections.Generic;
-    using System.Data;
-    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
-    public interface IPostService
-    {
-        Task<IEnumerable<Post>> GetAsync(PostParam param);
-        Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
-        Task<Post> GetPostDetail(int ID);
-        Task<IEnumerable<Post>> GetRelatedPost(int ID, string tag);
-        Task<IEnumerable<Post>> GetRandomReplatedPost(string categories, int ID);
-        Task<IEnumerable<Post>> SearchPost(string keyword, int start, int end);
-        Task<IEnumerable<Post>> GetPostByTag(string tag, int start, int end);
-        Task<IEnumerable<Post>> GetPostByDate(string date, int start, int end);
-        Task<string> GetCateTitle(int cateId);
-    }
-
     public class PostService : IPostService
     {
-        private readonly ConnectDb Db;
-
-        public PostService(ConnectDb Db)
+        private readonly IBaseService baseService;
+        public PostService(IBaseService baseService)
         {
-            this.Db = Db;
+            this.baseService = baseService;
         }
 
-        public async Task<IEnumerable<Post>> GetAsync(PostParam param)
+        public async Task<IEnumerable<Post>> GetPostsAsync(int cateId, int start, int end)
         {
-            List<Post> posts = new List<Post>();
-            
-            using (var command = new MySqlCommand("CALL wordpress.get_posts(@category,@start,@end);", Db.Connection))
+            var criteria = new GetPostsCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@category", param.Category);
-                command.Parameters.AddWithValue("@start", param.Start);
-                command.Parameters.AddWithValue("@end", param.End);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString(),
-                            Categories = reader["cate_name"].ToString(),
-                            Slug = GenerateSeoFriendlyURL(reader["post_title"].ToString())
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _Category = cateId,
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return FormatData(posts);
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
@@ -78,226 +42,108 @@
             return FormatData(posts);
         }
 
+        public async Task<Post> GetPostDetailAsync(int ID)
         {
-            var post = new Post();
-            using (var command = new MySqlCommand("CALL wordpress.get_post_detail(@ID);", Db.Connection))
+            var criteria = new GetPostDetailCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@ID", ID);
-               
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString(),
-                            Tags = reader["tags"].ToString(),
-                            Categories = reader["categories"].ToString()
-                        };
-                    }
-                }
-            }
+                ID = ID
+            };
+            var post = await baseService.GetDataEntityAsync<Post>(criteria);
+            var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+            post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+            post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+            post.Slug = GenerateSeoFriendlyURL(post.PostTitle);
             return post;
         }
 
-        public async Task<IEnumerable<Post>> GetRelatedPost(int ID, string tag)
+        public async Task<IEnumerable<Post>> GetRelatedPostAsync(int ID)
         {
-            List<Post> posts = new List<Post>();
-            using (var command = new MySqlCommand("CALL wordpress.get_related_posts(@ID,0,4);", Db.Connection))
+            var criteria = new GetRelatedPostCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@ID", ID);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString()
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _ID = ID,
+                _Start = 0,
+                _End = 4
+            };
+            return await baseService.GetDataAsync<Post>(criteria);
         }
 
-        public async Task<IEnumerable<Post>> GetRandomReplatedPost(string categories, int ID)
+        public async Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID)
         {
-            List<Post> posts = new List<Post>();
-
-            using (var command = new MySqlCommand("CALL wordpress.get_random_post_categories(@Categories, @ID);", Db.Connection))
+            var criteria = new GetRandomPostCategoriesCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@Categories", categories);
-                command.Parameters.AddWithValue("@ID", ID);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString()
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _Categories = categories,
+                _ID = ID
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return FormatData(posts);
         }
 
-        public async Task<IEnumerable<Post>> SearchPost(string keyword, int start, int end)
+        public async Task<IEnumerable<Post>> SearchPostAsync(string keyword, int start, int end)
         {
-            List<Post> posts = new List<Post>();
-
-            using (var command = new MySqlCommand("CALL wordpress.search_posts(@keyword,@start,@end);", Db.Connection))
+            var criteria = new SearchPostsCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@keyword", keyword);
-                command.Parameters.AddWithValue("@start", start);
-                command.Parameters.AddWithValue("@end", end);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString()
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _Keyword = keyword,
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts);
         }
 
-        public async Task<IEnumerable<Post>> GetPostByTag(string tag, int start, int end)
+        public async Task<IEnumerable<Post>> GetPostByTagAsync(string tag, int start, int end)
         {
-            List<Post> posts = new List<Post>();
-            using (var command = new MySqlCommand("CALL wordpress.get_posts_by_tag(@tag,@start,@end);", Db.Connection))
+            var criteria = new GetPostsByTagCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@tag", tag.Trim(' '));
-                command.Parameters.AddWithValue("@start", start);
-                command.Parameters.AddWithValue("@end", end);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString()
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _Tag = tag,
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts);
         }
 
-        public async Task<IEnumerable<Post>> GetPostByDate(string date, int start, int end)
+        public async Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end)
         {
-            List<Post> posts = new List<Post>();
-            using (var command = new MySqlCommand("CALL wordpress.get_posts_by_date(@date,@start,@end);", Db.Connection))
+            var criteria = new GetPostsByDateCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@date", date);
-                command.Parameters.AddWithValue("@start", start);
-                command.Parameters.AddWithValue("@end", end);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        var excerpt = Regex.Replace(reader["post_content"].ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                        var post = new Post
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            PostTitle = reader["post_title"].ToString(),
-                            PostExcerpt = (excerpt.Length > 150) ? excerpt.Substring(0, 150) : excerpt,
-                            PostContent = reader["post_content"].ToString(),
-                            PostDate = ToRelativeDate(DateTime.Parse(reader["post_date"].ToString())),
-                            FeatureImage = reader["feature_image"].ToString()
-                        };
-                        posts.Add(post);
-                    }
-                }
-            }
-            return posts;
+                _Date = date,
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts);
         }
 
+        public async Task<Category> GetCateDetailAsync(string slug)
+        {
+            var criteria = new GetCateDetailCriteria
+            {
+                _Slug = slug
+            };
+            return await baseService.GetDataEntityAsync<Category>(criteria);
+        }
 
         public async Task<IEnumerable<Menu>> GetMenuAsync(string MenuName)
         {
-            List<Menu> menus = new List<Menu>();
-
-            using (var command = new MySqlCommand("CALL wordpress.get_menu(@menu_name);", Db.Connection))
+            var criteria = new GetMenuCriteria
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@menu_name", MenuName);
-
-        public async Task<Category> GetCateDetailAsync(string slug)
-                {
-            var criteria = new GetCateDetailCriteria
-                    {
-                _Slug= slug
-                        var menu = new Menu
-                        {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            Name = reader["post_title"].ToString(),
-                            CatId = Convert.ToInt32(reader["term_id"]),
-                            ParentId = Convert.ToInt32(reader["menu_parent"]),
-                            Slug = reader["slug"].ToString()
-                        };
-            return await baseService.GetDataEntityAsync<Category>(criteria);
-                }
-            }
-            return menus;
+                _Menu_name = MenuName
+            };
+            return await baseService.GetDataAsync<Menu>(criteria);
         }
-        public async Task<string> GetCateTitle(int cateId)
+
+
+        public static IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
-            string title = "";
-
-            using (var command = new MySqlCommand("CALL wordpress.get_category_title(@cateId);", Db.Connection))
+            foreach (var post in posts)
             {
-                if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
-                command.Parameters.AddWithValue("@cateId", cateId);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        title = reader["title"].ToString();
-                    }
-
-                }
+                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+                post.Slug = GenerateSeoFriendlyURL(post.PostTitle);
             }
-            return title;
+            return posts;
         }
 
         public static string ToRelativeDate(DateTime dateTime)

@@ -1,20 +1,15 @@
 ﻿@section Styles{
-	<link rel="stylesheet" href="~/css/news.css">
+	<link rel="stylesheet" href="~/styles/pages/news.css">
 }
 
-<section class="main">
-	<div class="container">
-		<div class="row">
-			<div class="col col-8 pd-column-left">
-				<div class="block block-hot-detail">
-					<h2 class="title-block"><a>Lịch Thi Đấu</a></h2>
-					<div class="block-horizontal">
-						<div class="match-schedule">@Html.Raw(@Model.PostContent)</div>
-					</div>
+	<section class="main">
+		<div class="container">
+			<div class="block block-main">
+				<h2 class="block__title"><a>Lịch Thi Đấu</a></h2>
+				<div class="block__content">
+					<div class="match-schedule">@Html.Raw(@Model.PostContent)</div>
 				</div>
 			</div>
-
 			@(await Component.InvokeAsync("Sidebar"))
 		</div>
-	</div>
-</section>
+	</section>

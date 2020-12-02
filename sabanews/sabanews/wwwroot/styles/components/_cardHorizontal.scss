@@ -1,0 +1,87 @@
+.block-horizontal{
+    .block-item{
+        margin-bottom: 2rem;    
+        @include tableMobile{
+            margin-bottom: 1rem;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
+        .flex-item{
+            @include flex(flex-start,nowrap,center,row);
+            .img-item{
+                width: 100%;
+                max-width: 19.5rem;
+                max-height: 11rem;
+                overflow: hidden;
+                @include tableMobile{
+                    width: 100%;
+                    max-width: 13rem;
+                }
+                img{
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            .block-text{
+                width: 100%;
+                margin-left: 2.2rem;
+                @include tableMobile{
+                    margin-left: .8rem;
+                }
+                .heading{
+                    @include tableMobile{
+                        overflow: hidden;
+                        -o-text-overflow: ellipsis;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 2;
+                        height: 4rem;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                    }
+                    a{
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+                        text-decoration: none;
+                        color: $color-text;
+                        transition: color .3s ease;
+                        &:hover{
+                            color: $color-active;
+                        }
+                        @include tableMobile{
+                            font-size: 1.4rem !important;
+                            line-height: 1.8rem !important; 
+                        }
+                    }
+                }
+                .block-time{
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 1.3rem;
+                    line-height: 2.4rem;
+                    color: $color-input;
+                    @include tableMobile {
+                        margin-top: -.2rem;
+                    }
+                }
+                .description{
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 1.4rem;
+                    line-height: 2.4rem;
+                    color: $color-content;
+                    margin-top: .3rem;
+                    @include tableMobile{
+                        display: none;
+                    }
+                }
+            }
+            .bg-text{
+                background-color: $block-highlight-bgcolor;
+            }
+        }
+        
+    }
+}

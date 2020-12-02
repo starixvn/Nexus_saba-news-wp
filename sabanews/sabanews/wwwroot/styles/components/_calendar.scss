@@ -51,7 +51,7 @@
                         z-index: 1;
                         color: $color-content;
                         &::after{
-                            background-color: $bg-input;
+                            background-color: $block-highlight-bgcolor;
                             display: block;
                             content: "";
                             width: 2.8rem;

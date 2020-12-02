@@ -21,15 +21,16 @@
         {
             var Models = new PostViewModel
             {
-                NewPosts = await postService.GetAsync(new PostParam { Category = Constants.NewPostCategory, Start = 0, End = 4 }),
-                FootballPosts = await postService.GetAsync(new PostParam { Category = Constants.FootballCategory, Start = 0, End = 8 }),
-                BasketballPosts = await postService.GetAsync(new PostParam { Category = Constants.BasketballCategory, Start = 0, End = 6 }),
-                TennisPosts = await postService.GetAsync(new PostParam { Category = Constants.TennisCategory, Start = 0, End = 5 }),
-                VideoPosts = await postService.GetAsync(new PostParam { Category = Constants.VideoCategory, Start = 0, End = 6 }),
-                GuessPosts = await postService.GetAsync(new PostParam { Category = Constants.GuessCategory, Start = 0, End = 3 }),
-                BackstagePosts = await postService.GetAsync(new PostParam { Category = Constants.BackstageCategory, Start = 0, End = 3 }),
-                TransferPosts = await postService.GetAsync(new PostParam { Category = Constants.TransferCategory, Start = 0, End = 5 })
+                NewPosts = await postService.GetPostsAsync(Constants.NewPostCategory, 0, 4),
+                FootballPosts = await postService.GetPostsAsync(Constants.FootballCategory, 0, 8),
+                BasketballPosts = await postService.GetPostsAsync(Constants.BasketballCategory, 0, 6),
+                TennisPosts = await postService.GetPostsAsync(Constants.TennisCategory, 0, 5),
+                VideoPosts = await postService.GetPostsAsync(Constants.VideoCategory, 0, 6),
+                GuessPosts = await postService.GetPostsAsync(Constants.GuessCategory, 0, 3),
+                BackstagePosts = await postService.GetPostsAsync(Constants.BackstageCategory, 0, 3),
+                TransferPosts = await postService.GetPostsAsync(Constants.TransferCategory, 0, 5)
             };
+
             ViewData["CategoryId"] = Constants.Home;
             ViewData["Title"] = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
             return View(Models);
@@ -46,18 +47,18 @@
             ViewData["Title"] = cate.Title;
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
-            ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
+            ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage);
             ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
             var view = parent == "video" ? "Video" : "Blog";
-            view = Posts.Count() == 0 ? "EmptyBlog" : view;
-            return View(view, Posts);
+            view = posts.Count() == 0 ? "EmptyBlog" : view;
+            return View(view, posts);
         }
 
         [Route("lich-thi-dau")]
         public async Task<IActionResult> MatchSchedule()
         {
-            var post = await postService.GetPostDetail(Constants.MatchScheduleCategory);
+            var post = await postService.GetPostDetailAsync(Constants.MatchScheduleCategory);
             ViewData["CategoryId"] = Constants.MatchScheduleCategory;
             ViewData["Title"] = "Lịch thi đấu hôm nay "+ DateTime.Now + " giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
             return View(post);
@@ -66,9 +67,9 @@
         [Route("single/{ID}/{slug?}")]
         public async Task<IActionResult> Single(int ID)
         {
-            var post = await postService.GetPostDetail(ID);
-            var relatedPosts = await postService.GetRelatedPost(ID, post.Tags);
-            var randomRelatedPosts = await postService.GetRandomReplatedPost(post.Categories, ID);
+            var post = await postService.GetPostDetailAsync(ID);
+            var relatedPosts = await postService.GetRelatedPostAsync(ID);
+            var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, ID);
             var Models = new SingleViewModel
             {
                 SinglePost = post,
@@ -84,8 +85,8 @@
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.SearchPost(keyword, start, Constants.Perpage);
-            var PostsTotal = await postService.SearchPost(keyword, 0, Constants.Total);
+            var Posts = await postService.SearchPostAsync(keyword, start, Constants.Perpage);
+            var PostsTotal = await postService.SearchPostAsync(keyword, 0, Constants.Total);
             ViewData["Title"] = "Kết quả tìm kiếm '" + keyword + "'";
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
@@ -102,8 +103,8 @@
         public async Task<IActionResult> Tag(string tag, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetPostByTag(tag, start, Constants.Perpage);
-            var PostsTotal = await postService.GetPostByTag(tag, 0, Constants.Total);
+            var Posts = await postService.GetPostByTagAsync(tag, start, Constants.Perpage);
+            var PostsTotal = await postService.GetPostByTagAsync(tag, 0, Constants.Total);
             ViewData["Title"] = tag;
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
@@ -119,8 +120,8 @@
         public async Task<IActionResult> DateSearch(string date, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetPostByDate(date, start, Constants.Perpage);
-            var PostsTotal = await postService.GetPostByDate(date, 0, Constants.Total);
+            var Posts = await postService.GetPostByDateAsync(date, start, Constants.Perpage);
+            var PostsTotal = await postService.GetPostByDateAsync(date, 0, Constants.Total);
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
