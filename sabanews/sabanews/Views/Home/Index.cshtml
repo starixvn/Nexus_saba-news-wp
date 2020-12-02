@@ -241,7 +241,6 @@
 							@for (int i = 1; i < Model.TennisPosts.Count; i++)
 							{
 								<li class="list-item"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[i].ID })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
-
 							}
 						</ul>
 					</div>

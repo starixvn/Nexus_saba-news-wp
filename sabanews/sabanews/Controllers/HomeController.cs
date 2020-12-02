@@ -35,19 +35,21 @@
             return View(Models);
         }
 
-        [Route("category/{type}/{cateId}/{page?}")]
-        public async Task<IActionResult> Category(string type, int cateId, int page = 1)
+        [Route("category/{parent}/{slug?}/{page?}")]
+        public async Task<IActionResult> Category(string parent,  string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetAsync(new PostParam { Category = cateId, Start = start, End = Constants.Perpage });
-            var PostsTotal = await postService.GetAsync(new PostParam { Category = cateId, Start = 0, End = Constants.Total });
-            ViewData["Title"] = await postService.GetCateTitle(cateId);
+            slug = slug ?? parent;
+            var cate = await postService.GetCateDetailAsync(slug);
+            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.Perpage);
+            var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
+            ViewData["Title"] = cate.Title;
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
-            ViewData["CategoryId"] = cateId;
+            ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
-            var view = type == "video" ? "Video" : "Blog";
+            var view = parent == "video" ? "Video" : "Blog";
             view = Posts.Count() == 0 ? "EmptyBlog" : view;
             return View(view, Posts);
         }
@@ -130,16 +132,5 @@
             return View(view, Posts);
         }
 
-
-        public IActionResult IndexVC()
-        {
-            return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

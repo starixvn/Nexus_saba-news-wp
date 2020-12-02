@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Menu>
+﻿@using sabanews.Constants;
+@model IEnumerable<Menu>
 <section class="header">
 	<div class="top-header">
 		<div class="container padding-mobile-none">
@@ -17,21 +18,21 @@
 					<ul class="main-menu">
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
 						{
-							var link = Url.Action("Category", "Home", new { cateId = menu.CatId, type = menu.Slug });
+							var link = Url.Action("Category", "Home", new { parent = menu.Slug });
 							if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
 							{
 								link = Url.Action("MatchSchedule", "Home");
 							}
 							else if (menu.ID == Convert.ToInt32(ViewData["Video"]))
 							{
-								link = Url.Action("Category", "Home", new { cateId = menu.CatId, type = "video" });
-							}
+								link = Url.Action("Category", "Home", new { parent = Constants.VideoSlug });
+								}
 							else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
-							{
-								link = Url.Action("Index", "Home");
-							}
-							var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-							var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
+								{
+									link = Url.Action("Index", "Home");
+								}
+								var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+								var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
 							@if (menuLv2.Count == 0)
 							{
 								<li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
@@ -48,10 +49,10 @@
 									<ul class="menu-child">
 										@foreach (var Lv2 in menuLv2)
 										{
-											link = Url.Action("Category", "Home", new { cateId = Lv2.CatId, type = menu.Slug });
+											link = Url.Action("Category", "Home", new { parent = menu.Slug, slug = Lv2.Slug });
 											if (Lv2.ParentId == Convert.ToInt32(ViewData["Video"]))
 											{
-												link = Url.Action("Category", "Home", new { cateId = Lv2.CatId, type = "video" });
+												link = Url.Action("Category", "Home", new { parent = Constants.VideoSlug, slug = Lv2.Slug });
 											}
 											var subActiveMenu = Lv2.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
 											<li class="child-menu-item @subActiveMenu"><a href="@link" class="item-child">@Lv2.Name</a></li>
@@ -67,7 +68,7 @@
 									<i class="icon-search"></i>
 								</button>
 							</form>
-							
+
 						</div>
 					</ul>
 				</div>

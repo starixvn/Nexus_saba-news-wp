@@ -65,7 +65,19 @@
             return posts;
         }
 
-        public async Task<Post> GetPostDetail(int ID)
+        public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
+        {
+            var criteria = new GetPostsBySlugCriteria
+            {
+                _CategorySlug = slug,
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return FormatData(posts);
+        }
+
         {
             var post = new Post();
             using (var command = new MySqlCommand("CALL wordpress.get_post_detail(@ID);", Db.Connection))
@@ -249,11 +261,11 @@
                 if (Db.Connection.State == ConnectionState.Closed) await Db.Connection.OpenAsync();
                 command.Parameters.AddWithValue("@menu_name", MenuName);
 
-                using (var reader = command.ExecuteReader())
+        public async Task<Category> GetCateDetailAsync(string slug)
                 {
-                    while (reader.Read())
+            var criteria = new GetCateDetailCriteria
                     {
-                        var test = reader["ID"];
+                _Slug= slug
                         var menu = new Menu
                         {
                             ID = Convert.ToInt32(reader["ID"]),
@@ -262,8 +274,7 @@
                             ParentId = Convert.ToInt32(reader["menu_parent"]),
                             Slug = reader["slug"].ToString()
                         };
-                        menus.Add(menu);
-                    }
+            return await baseService.GetDataEntityAsync<Category>(criteria);
                 }
             }
             return menus;

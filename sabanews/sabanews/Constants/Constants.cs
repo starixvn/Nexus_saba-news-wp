@@ -13,8 +13,17 @@
         public const int TransferCategory = 370;
         public const int MatchScheduleCategory = 4814;
         public const int VideoIdPage = 4589;
-        public const string CategorySlug = "tin-tuc";
+
+        public const string NewPostSlug = "tin-tuc";
         public const string VideoSlug = "video";
+        public const string FootballSlug = "tin-bong-da";
+        public const string BasketballSlug = "tin-bong-ro";
+        public const string TennisSlug = "quan-vot";
+        public const string GuessSlug = "nhan-dinh";
+        public const string BackstageSlug = "tin-hau-truong";
+        public const string TransferSlug = "chuyen-nhuong-tin-tuc";
+        public const string CategorySlug = "tin-tuc";
+        
 
         public const int Perpage = 10;
         public const int Total = 10000;
