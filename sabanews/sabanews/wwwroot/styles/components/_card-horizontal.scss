@@ -1,19 +1,52 @@
-.block-horizontal{
+.card-horizontal {
     @include grid(19.5rem 1fr, 11rem , 1.2rem);
     overflow: hidden;
+
+    &__image {
+
+        @include tableMobile {
+            @include grid(13rem 1fr, "", 1.2rem);
+            max-height: 7.2rem !important;
+        }
+    }
+
+    &__content {
+        .title {
+            font-weight: bold;
             font-size: $font-size-title;
+            text-decoration: none;
+            color: $color-text;
+            transition: color .3s ease;
+
+            &:hover {
                 color: $color-title-hover;
+            }
+
+            @include tableMobile {
+                font-size: 1.4rem !important;
+                line-height: 1.8rem !important;
+            }
+        }
+
+        .datetime {
             font-size: $font-size-datetime;
             color: $color-datetime;
+
+            @include tableMobile {
+                margin-top: -.2rem;
+            }
+        }
+
+        .description {
             max-height: 4.5rem;
             overflow: hidden;
-        @include tableMobile{
-            margin-bottom: 1rem;
+
+            @include tableMobile {
+                display: none;
+            }
         }
-        &:last-child{
-            margin-bottom: 0;
-        }
-        .flex-item{
+    }
+    /*.flex-item{
             @include flex(flex-start,nowrap,center,row);
             .img-item{
                 width: 100%;
@@ -90,7 +123,5 @@
             .bg-text{
                 background-color: $bg-input;
             }
-        }
-        
-    }
+        }*/
 }

@@ -17,8 +17,8 @@
 @import '../components/container';
 @import '../components/listContent';
 
-@import '../components/cardHorizontal';
-@import '../components/cardVertical';
+@import '../components/_card-horizontal';
+@import '../components/card-vertical';
 
 
 
@@ -33,8 +33,10 @@
                 @include grid(42% calc(58% - 1.6rem), repeat(3, 11rem), $padding-main 1.6rem);
             }
 
-            @include Mobile {
-                @include grid(12,1fr,0);
+            .card-vertical {
+                grid-column: 1;
+                grid-row: 1/4;
+                background-color: #E8EAEF;
 
                 [class*="card-vertical__"]:not(.card-vertical__image) {
                     padding: 0 $padding-main;
@@ -45,22 +47,15 @@
                 }
             }
 
-            .left-news {
-                grid-column: 1/6;
-
-                @include Mobile {
-                    grid-column: 1/13;
-                }
+            [class*="card-item-"] {
+                grid-column: 2;
             }
 
-            .right-news {
-                grid-column: 6/13;
-
-                @include Mobile {
-                    grid-column: 1/13;
+            @for $i from 1 through 3 {
+                .card-item-#{$i} {
+                    grid-row: $i;
                 }
             }
-            .block-vertical {
         }
     }
 

@@ -47,11 +47,13 @@
     flex-direction: $dir;
 }
 
-@mixin grid ($column, $columnfr, $gap){
+@mixin grid ($column, $row, $gap){
     display: grid;
-    grid-template-columns: repeat($column,$columnfr);
+    grid-template-columns: $column;
+    grid-template-rows: $row;
     grid-gap: $gap;
 }
+
 @mixin grid-auto ($rows, $column, $columnfr, $gap){
     display: grid;
     grid-template-rows: $rows;

@@ -5,47 +5,33 @@
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
-            var video = $(this).parent().parent().find('.play_video').text();
-            if ($.trim(video) == "") {
-                var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
-                var found = $.parseHTML(iframe);
-                if (typeof found[2] === "undefined") { return false; }
-                var iframe = $(($.parseHTML(found[2].outerHTML)));
-
-                iframe.attr('allow', 'autoplay');
-                var src = iframe.attr('src');
-                var symbol = src.indexOf("?") > -1 ? "&" : "?";
-                iframe.attr('src', src + symbol + "autoplay=1");
-
-                $(this).parent().parent().find('.play_video').html(iframe);
-                $(this).parent().hide();
-                
-            }
+            var iframe = $(this).parent().parent().find('iframe');
+            var src = iframe.attr('src');
+            var symbol = src.indexOf("?") > -1 ? "&" : "?";
+            iframe.attr('src', src + symbol + "autoplay=1");
+            $(this).parent().hide();
+            iframe.show();
         });
        
 
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
             $('.swiper-slide').hide();
-            var slide = $('#slide-' + id);
-            slide.show();
-            slide.find('.img-item').hide();
+            $('#slide-' + id).show();
             $('.flex-item').removeClass("active");
             $(this).parent().parent().addClass("active");
 
-            var video = slide.find('.play_video').html();
-            if ($.trim(video) == "") {
-                var iframe = slide.find("input[name=iframe_value]").val();
-                var found = $.parseHTML(iframe);
-                if (typeof found[2] === "undefined") { return false;}
-                var iframe = $(($.parseHTML(found[2].outerHTML)));
-
-                iframe.attr('allow', 'autoplay');
+            var iframe = $('#slide-' + id).find('iframe');
+            var autoplay = iframe.attr("autoplay");
+            if (autoplay == null || !autoplay) {
                 var src = iframe.attr('src');
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");
-                slide.find('.play_video').html(iframe);
-            } 
+                iframe.attr('autoplay', true);
+            }
+
+            $('#slide-' + id).find('.img-item').hide();
+            iframe.show();
         });
 
     },

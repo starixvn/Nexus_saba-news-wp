@@ -1,6 +1,6 @@
 textarea, 
 input[type]:not([type=number]):not([type=button]):not([type=search]) {
-    background-color: $bg-input;
+    background-color: $block-highlight-bgcolor;
     outline: none;
     &::placeholder{
         color: $color-input;

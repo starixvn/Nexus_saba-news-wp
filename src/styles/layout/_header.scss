@@ -335,7 +335,7 @@
                                     display: flex;
                                     align-items: center;
                                     &:hover{
-                                        background-color: $bg-input;
+                                        background-color: $block-highlight-bgcolor;
                                     }
                                     @include tableMobile{
                                         padding: 1.1rem 1.9rem;

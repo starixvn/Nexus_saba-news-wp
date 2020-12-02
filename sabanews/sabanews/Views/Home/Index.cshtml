@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/css/pages/_home.min.css">
+	<link rel="stylesheet" href="~/styles/pages/home.css">
 }
 <section class="main">
 	<div class="colums-main">
@@ -10,7 +10,6 @@
 			    <div class="block__content">
 				    <div class="card-vertical">
 					    <a class="card-vertical__image" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">
-						<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">
 						    <picture>
 							    <source srcset="@Model.NewPosts[0].FeatureImage" type="image/webp" class="img-res">
 							    <source srcset="@Model.NewPosts[0].FeatureImage" type="image/jpeg" class="img-res">
@@ -18,20 +17,14 @@
 						    </picture>
 					    </a>
 					    <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a>
-					<div class="card-vertical__title">
-						<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })">@Model.NewPosts[0].PostTitle</a>
-                    </div>
 					    <p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
 					    <p class="card-vertical__description">@Model.NewPosts[0].PostExcerpt</p>
 					
 				    </div>
-				<div class="block-horizontal right-news">
 				    @for (int i = 1; i < Model.NewPosts.Count; i++)
 				    {
 					    <div class="card-horizontal card-item-@i">
 						    <a class="card-horizontal__image" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">
-								<div class="img-item">
-									<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">
 							    <picture>
 								    <source srcset="@Model.NewPosts[i].FeatureImage" type="image/webp" class="img-res">
 								    <source srcset="@Model.NewPosts[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -42,8 +35,6 @@
 							    <a class="title" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">@Model.NewPosts[i].PostTitle</a>
 							    <p class="datetime">@Model.NewPosts[i].PostDate</p>
 							    <p class="description">@Model.NewPosts[i].PostExcerpt</p>
-									<p class="description text-description">@Model.NewPosts[i].PostExcerpt</p>
-								</div>
 						    </div>
 					    </div>
 
@@ -51,7 +42,6 @@
 			    </div>
 		    </div>
 	    </div>
-	</div>
 
 		<div class="block block-video">
 			<div class="container">
@@ -62,8 +52,8 @@
 							<div class="swiper-wrapper">
 								@foreach (var post in Model.VideoPosts)
 								{
-									<div class="swiper-slide" id="slide-@post.ID">
-										<input type="hidden" name="iframe_value" value="@post.PostContent" />
+									<div class="swiper-slide" id="slide-@post.ID" >
+									<input type="hidden" name="iframe_value" value="@post.PostContent" />
 										<div class="img-item">
 											<picture>
 												<source srcset="@post.FeatureImage" type="image/webp">
@@ -79,6 +69,7 @@
 											<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">@post.PostTitle</a></h4>
 										</div>
 									</div>
+
 								}
 							</div>
 							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
@@ -162,7 +153,7 @@
                         @for (int i = 0; i < Model.BackstagePosts.Count; i++)
                         {
                             <div class="card-vertical card-item-@i">
-                                <a class="card-vertical__img" href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">
+                                <a class="card-vertical__image" href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">
                                     <picture>
                                         <source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/webp" class="img-res">
                                         <source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -185,7 +176,7 @@
 					@foreach (var post in Model.GuessPosts)
 					{
 						<div class="card-vertical">
-							<a class="card-vertical__img" href="@Url.Action("Single", "Home", new {ID = @post.ID })">
+							<a class="card-vertical__image" href="@Url.Action("Single", "Home", new {ID = @post.ID })">
 								<picture>
 									<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 									<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -211,7 +202,7 @@
 						@foreach (var post in Model.BasketballPosts)
 						{
 							<div class="card-vertical">
-								<a class="card-vertical__img" href="@Url.Action("Single", "Home", new {ID = @post.ID })">
+								<a class="card-vertical__image" href="@Url.Action("Single", "Home", new {ID = @post.ID })">
 									<picture>
 										<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 										<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -219,7 +210,7 @@
 									</picture>
 								</a>
 								<a class="card-vertical__title" href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a>
-								<p class="ard-vertical__datetime">@post.PostDate</p>
+								<p class="card-vertical__datetime">@post.PostDate</p>
 							</div>
 						}
 
