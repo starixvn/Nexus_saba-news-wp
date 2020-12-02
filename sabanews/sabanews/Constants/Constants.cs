@@ -1,4 +1,6 @@
-﻿namespace sabanews.Constants
+﻿using System;
+
+namespace sabanews.Constants
 {
     public static class Constants
     {
@@ -23,7 +25,18 @@
         public const string BackstageSlug = "tin-hau-truong";
         public const string TransferSlug = "chuyen-nhuong-tin-tuc";
         public const string CategorySlug = "tin-tuc";
-        
+
+        public const string HomeTitle = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
+        public const string MatchScheduleTitle = "Lịch thi đấu hôm nay giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
+        public const string SearchTitle = "Kết quả tìm kiếm";
+
+        public const int FromFirstItem = 0;
+        public const int GetThreeItems = 3;
+        public const int GetFourItems = 4;
+        public const int GetFiveItems = 5;
+        public const int GetSixItems = 6;
+        public const int GetEightItems = 8;
+
 
         public const int Perpage = 10;
         public const int Total = 10000;

@@ -18,14 +18,14 @@
 					<ul class="main-menu">
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
 						{
-							var link = Url.Action("Category", "Home", new { parent = menu.Slug });
+							var link = Url.Action("Category", "Home", new { parent = menu.Slug, slug = (int?)null });
 							if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
 							{
 								link = Url.Action("MatchSchedule", "Home");
 							}
 							else if (menu.ID == Convert.ToInt32(ViewData["Video"]))
 							{
-							link = Url.Action("Category", "Home", new { parent = Constants.VideoSlug });
+								link = Url.Action("Category", "Home", new { parent = Constants.VideoSlug, slug = (int?)null });
 							}
 							else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
 							{

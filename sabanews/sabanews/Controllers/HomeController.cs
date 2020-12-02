@@ -21,22 +21,22 @@
         {
             var Models = new PostViewModel
             {
-                NewPosts = await postService.GetPostsAsync(Constants.NewPostCategory, 0, 4),
-                FootballPosts = await postService.GetPostsAsync(Constants.FootballCategory, 0, 8),
-                BasketballPosts = await postService.GetPostsAsync(Constants.BasketballCategory, 0, 6),
-                TennisPosts = await postService.GetPostsAsync(Constants.TennisCategory, 0, 5),
-                VideoPosts = await postService.GetPostsAsync(Constants.VideoCategory, 0, 6),
-                GuessPosts = await postService.GetPostsAsync(Constants.GuessCategory, 0, 3),
-                BackstagePosts = await postService.GetPostsAsync(Constants.BackstageCategory, 0, 3),
-                TransferPosts = await postService.GetPostsAsync(Constants.TransferCategory, 0, 5)
+                NewPosts = await postService.GetPostsAsync(Constants.NewPostCategory, Constants.FromFirstItem, Constants.GetFourItems),
+                FootballPosts = await postService.GetPostsAsync(Constants.FootballCategory, Constants.FromFirstItem, Constants.GetEightItems),
+                BasketballPosts = await postService.GetPostsAsync(Constants.BasketballCategory, Constants.FromFirstItem, Constants.GetSixItems),
+                TennisPosts = await postService.GetPostsAsync(Constants.TennisCategory, Constants.FromFirstItem, Constants.GetFiveItems),
+                VideoPosts = await postService.GetPostsAsync(Constants.VideoCategory, Constants.FromFirstItem, Constants.GetSixItems),
+                GuessPosts = await postService.GetPostsAsync(Constants.GuessCategory, Constants.FromFirstItem, Constants.GetThreeItems),
+                BackstagePosts = await postService.GetPostsAsync(Constants.BackstageCategory, Constants.FromFirstItem, Constants.GetThreeItems),
+                TransferPosts = await postService.GetPostsAsync(Constants.TransferCategory, Constants.FromFirstItem, Constants.GetFiveItems)
             };
 
             ViewData["CategoryId"] = Constants.Home;
-            ViewData["Title"] = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
+            ViewData["Title"] = Constants.HomeTitle;
             return View(Models);
         }
 
-        [Route("category/{parent}/{slug?}/{page?}")]
+        [Route("/category/{parent}/{slug?}/{page = 1}")]
         public async Task<IActionResult> Category(string parent,  string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
@@ -51,7 +51,7 @@
             ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
             var view = parent == "video" ? "Video" : "Blog";
-            view = posts.Count() == 0 ? "EmptyBlog" : view;
+            view = posts.Any() ? view : "EmptyBlog";
             return View(view, posts);
         }
 
@@ -60,7 +60,7 @@
         {
             var post = await postService.GetPostDetailAsync(Constants.MatchScheduleCategory);
             ViewData["CategoryId"] = Constants.MatchScheduleCategory;
-            ViewData["Title"] = "Lịch thi đấu hôm nay "+ DateTime.Now + " giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
+            ViewData["Title"] = Constants.MatchScheduleTitle;
             return View(post);
         }
 
@@ -87,14 +87,14 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.SearchPostAsync(keyword, start, Constants.Perpage);
             var PostsTotal = await postService.SearchPostAsync(keyword, 0, Constants.Total);
-            ViewData["Title"] = "Kết quả tìm kiếm '" + keyword + "'";
+            ViewData["Title"] = Constants.SearchTitle + " '" + keyword + "'";
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["keyword"] = keyword;
             ViewData["Controller"] = "Search";
-            ViewData["HeadTitle"] = "Kết quả tìm kiếm từ khóa '" + keyword + "'";
-            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            ViewData["HeadTitle"] = Constants.SearchTitle + " '" + keyword + "'";
+            var view = Posts.Any() ? "Blog" : "EmptyBlog";
             return View(view, Posts);
         }
 
@@ -112,7 +112,7 @@
             ViewData["tag"] = tag;
             ViewData["Controller"] = "Tag";
             ViewData["HeadTitle"] = "Tag: '" + tag + "'";
-            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            var view = Posts.Any() ? "Blog" : "EmptyBlog";
             return View(view, Posts);
         }
 
@@ -127,9 +127,9 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
             ViewData["Date"] = date;
             ViewData["Controller"] = "DateSearch";
-            ViewData["HeadTitle"] = "Kết quả tìm kiếm: '" + date + "'";
+            ViewData["HeadTitle"] = Constants.SearchTitle + " '" + date + "'";
             ViewData["Title"] = date + " - Saba Sports";
-            var view = Posts.Count() == 0 ? "EmptyBlog" : "Blog";
+            var view = Posts.Any() ? "Blog" : "EmptyBlog";
             return View(view, Posts);
         }
 
