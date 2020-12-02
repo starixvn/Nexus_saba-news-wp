@@ -102,7 +102,7 @@
             @include grid(58% calc(42% - #{$column-gap}), 40rem, #{$column-gap});
 
             @include tableMobile {
-                @include grid(58% calc(42% - 1.6rem), auto, 1.6rem);
+                @include grid(58% calc(42% - 1.6rem), 28rem , 1.6rem);
             }
 
             @include Mobile{
@@ -112,25 +112,28 @@
             .swiper-video {
                 overflow: hidden;
                 grid-column: 1;
-                .play_video {
-                    iframe {
-                        @include tableMobile {
-                            height: 19rem;
-                        }
-
-                        @include ipadpro {
-                            height: 30rem;
-                        }
-
-                        @include landscapeTablet {
-                            height: 26rem;
-                        }
-
-                        @include portraitTablet {
-                            height: 26rem;
-                        }
-                    }
+                .swiper-container {
+                    height: 100%;
                 }
+                // .play_video {
+                //     iframe {
+                //         @include tableMobile {
+                //             height: 19rem;
+                //         }
+
+                //         @include ipadpro {
+                //             height: 30rem;
+                //         }
+
+                //         @include landscapeTablet {
+                //             height: 26rem;
+                //         }
+
+                //         @include portraitTablet {
+                //             height: 26rem;
+                //         }
+                //     }
+                // }
 
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
@@ -152,21 +155,21 @@
             .slide-video {
                 grid-column: 2;
                 overflow: auto;
-                @include tableMobile{
-                    max-height: 22.5rem;
-                }
-                @include landscapeTablet{
-                    max-height: 29.5rem !important;
-                }
-                @include portraitTablet{
-                    max-height: 29.5rem;
-                }
-                @include ipadpro{
-                    max-height: 36.5rem;
-                }
-                @include Mobile {
-                    display: none;
-                }
+                // @include tableMobile{
+                //     max-height: 22.5rem;
+                // }
+                // @include landscapeTablet{
+                //     max-height: 29.5rem !important;
+                // }
+                // @include portraitTablet{
+                //     max-height: 29.5rem;
+                // }
+                // @include ipadpro{
+                //     max-height: 36.5rem;
+                // }
+                // @include Mobile {
+                //     display: none;
+                // }
 
                 .card-horizontal {
                     margin-bottom: 1rem;
