@@ -63,12 +63,12 @@
             return View(post);
         }
 
-        [Route("{type}/{ID}/{slug?}")]
-        public async Task<IActionResult> Single(int ID, string type)
+        [Route("{type}/{slug}")]
+        public async Task<IActionResult> Single(string slug, string type)
         {
-            var post = await postService.GetPostDetailAsync(ID);
-            var relatedPosts = await postService.GetRelatedPostAsync(ID);
-            var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, ID);
+            var post = await postService.GetPostDetailBySlugAsync(slug);
+            var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
+            var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
             var Models = new SingleViewModel
             {
                 SinglePost = post,

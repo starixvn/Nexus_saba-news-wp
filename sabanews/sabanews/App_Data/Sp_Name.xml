@@ -8,6 +8,7 @@
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
       <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_posts_by_slug" SpName="get_posts_by_slug" DbName="wordpress">
       <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
@@ -16,6 +17,7 @@
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
       <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_menu" SpName="get_menu" DbName="wordpress">
       <Mapping DataField="ID" ObjectProperty="ID" class="Menu"  />
@@ -36,12 +38,24 @@
       <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
-      <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post"  />\
+      <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post"  />
       <Mapping DataField="tags" ObjectProperty="Tags" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
+    </Setting>
+    <Setting Key="get_post_detail_by_slug" SpName="get_post_detail_by_slug" DbName="wordpress">
+      <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
+      <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post"  />
+      <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
+      <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
+      <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
+      <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post"  />
+      <Mapping DataField="tags" ObjectProperty="Tags" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_related_posts" SpName="get_related_posts" DbName="wordpress">
       <Mapping DataField="ID" ObjectProperty="ID" class="Post"  />
       <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_random_post_categories" SpName="get_random_post_categories" DbName="wordpress">
       <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
@@ -49,6 +63,7 @@
       <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="search_posts" SpName="search_posts" DbName="wordpress">
       <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
@@ -56,6 +71,7 @@
       <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_posts_by_tag" SpName="get_posts_by_tag" DbName="wordpress">
       <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
@@ -63,6 +79,7 @@
       <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
     <Setting Key="get_posts_by_date" SpName="get_posts_by_date" DbName="wordpress">
       <Mapping DataField="id" ObjectProperty="ID" class="Post"  />
@@ -70,6 +87,7 @@
       <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post"  />
       <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post"  />
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
+      <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
   </Function>
 </Functions>

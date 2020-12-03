@@ -10,6 +10,7 @@
         Task<IEnumerable<Post>> GetPostsAsync(int cateId, int start, int end);
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
         Task<Post> GetPostDetailAsync(int ID);
+        Task<Post> GetPostDetailBySlugAsync(string slug);
         Task<IEnumerable<Post>> GetRelatedPostAsync(int ID);
         Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID);
         Task<IEnumerable<Post>> SearchPostAsync(string keyword, int start, int end);

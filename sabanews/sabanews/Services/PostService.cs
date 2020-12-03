@@ -52,7 +52,19 @@
             var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
             post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
             post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
-            post.Slug = GenerateSeoFriendlyURL(post.PostTitle);
+            return post;
+        }
+
+        public async Task<Post> GetPostDetailBySlugAsync(string slug)
+        {
+            var criteria = new GetPostDetailBySlugCriteria
+            {
+                _Slug = slug
+            };
+            var post = await baseService.GetDataEntityAsync<Post>(criteria);
+            var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+            post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+            post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             return post;
         }
 
@@ -64,7 +76,8 @@
                 _Start = 0,
                 _End = 4
             };
-            return await baseService.GetDataAsync<Post>(criteria);
+            var posts =  await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts); 
         }
 
         public async Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID)
@@ -141,7 +154,6 @@
                 var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
-                post.Slug = GenerateSeoFriendlyURL(post.PostTitle);
             }
             return posts;
         }
