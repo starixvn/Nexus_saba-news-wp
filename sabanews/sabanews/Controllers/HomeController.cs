@@ -5,7 +5,6 @@
     using sabanews.Models;
     using sabanews.Services;
     using System;
-    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -64,8 +63,8 @@
             return View(post);
         }
 
-        [Route("single/{ID}/{slug?}")]
-        public async Task<IActionResult> Single(int ID)
+        [Route("{type}/{ID}/{slug?}")]
+        public async Task<IActionResult> Single(int ID, string type)
         {
             var post = await postService.GetPostDetailAsync(ID);
             var relatedPosts = await postService.GetRelatedPostAsync(ID);
@@ -77,6 +76,8 @@
                 RandomRelatedPosts = randomRelatedPosts
             };
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+            ViewData["type"] = type;
+            ViewData["video"] = type == Constants.SingleVideoType ? true : false;
 
             return View(Models);
         }

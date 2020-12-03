@@ -10,27 +10,39 @@
 			<div class="col col-8 pd-column-left">
 				<div class="block block-detail-news">
 					<div class="block-vertical block-detail">
-						<div class="img-item">
+						<div class="single img-item">
+							@if (Convert.ToBoolean(ViewData["video"]))
+							{
+								<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+							}
 							<picture>
 								<source srcset="@Model.SinglePost.FeatureImage" type="image/webp" class="img-res">
 								<source srcset="@Model.SinglePost.FeatureImage" type="image/jpeg" class="img-res">
 								<img src="@Model.SinglePost.FeatureImage" alt="Alt Text!" class="img-res img-block">
 							</picture>
+							@if (Convert.ToBoolean(ViewData["video"]))
+							{
+								<div class="btn-play-video">
+									<span class="icon-play"></span>
+								</div>
+							}
 						</div>
+						<div class="single play_video"></div>
 						<div class="block-text">
 							<div class="heading">
-								<a href="#">
+								<a>
 									@Model.SinglePost.PostTitle
 								</a>
 							</div>
 							<p class="block-time">@Model.SinglePost.PostDate</p>
 						</div>
 					</div>
-
-					<div class="content">
-						@Html.Raw(Model.SinglePost.PostContent)
-					</div>
-
+					@if (!Convert.ToBoolean(ViewData["video"]))
+					{
+						<div class="content">
+							@Html.Raw(Model.SinglePost.PostContent)
+						</div>
+					}
 
 					<ul class="block-list">
 						@foreach (var post in Model.RelatedPosts)

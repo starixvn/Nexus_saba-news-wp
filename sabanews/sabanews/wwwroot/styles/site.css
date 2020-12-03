@@ -2,6 +2,10 @@
 	text-decoration: none;
 }
 
+.single.img-item {
+	position: relative;
+}
+
 .detail-wapper p {
 	font-size: 16px;
 	color: #333;

@@ -9,21 +9,21 @@
 					<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug })">TIN MỚI NHẤT</a></h2>
 					<div class="block__content">
 						<div class="card-vertical card-vertical-highlight">
-							<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })" class="card-vertical__image">
+							<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID, type = Constants.SingleNewsType })" class="card-vertical__image">
 								<picture>
 									<source srcset="@Model.NewPosts[0].FeatureImage" type="image/webp" class="img-res">
 									<source srcset="@Model.NewPosts[0].FeatureImage" type="image/jpeg" class="img-res">
 									<img src="@Model.NewPosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
 								</picture>
 							</a>
-							<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
+							<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[0].ID, type = Constants.SingleNewsType })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
 							<p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
 							<p class="card-vertical__description">@Model.NewPosts[0].PostExcerpt</p>
 						</div>
 						@for (int i = 1; i < Model.NewPosts.Count; i++)
 						{
 							<div class="card-horizontal card-item-@i">
-								<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })" class="card-horizontal__image">
+								<a href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID, type = Constants.SingleNewsType })" class="card-horizontal__image">
 									<picture>
 										<source srcset="@Model.NewPosts[i].FeatureImage" type="image/webp" class="img-res">
 										<source srcset="@Model.NewPosts[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -31,7 +31,7 @@
 									</picture>
 								</a>
 								<div class="card-horizontal__content">
-									<a class="title" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID })">@Model.NewPosts[i].PostTitle</a>
+									<a class="title" href="@Url.Action("Single", "Home", new { ID = @Model.NewPosts[i].ID, type = Constants.SingleNewsType })">@Model.NewPosts[i].PostTitle</a>
 									<p class="datetime">@Model.NewPosts[i].PostDate</p>
 									<p class="description">@Model.NewPosts[i].PostExcerpt</p>
 								</div>
@@ -65,7 +65,7 @@
 										</div>
 										<div class="play_video"></div>
 										<div class="content-box">
-											<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="heading">[Ngoại hạng Anh] Fullham - Arsenal</a></h4>
+											<h4 class="title-box"><a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleVideoType })" class="heading">[Ngoại hạng Anh] Fullham - Arsenal</a></h4>
 										</div>
 									</div>
 									}
@@ -88,7 +88,7 @@
 										</picture>
 									</a>
 									<div class="card-horizontal__content">
-										<a class="title" href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a>
+										<a class="title" href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleVideoType })">@post.PostTitle</a>
 										<p class="datetime">@post.PostDate</p>
 									</div>
 								</div>
@@ -105,14 +105,14 @@
 						@foreach (var post in Model.FootballPosts)
 						{
 							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new {ID = @post.ID, slug = post.Slug })" class="card-vertical__image">
+								<a href="@Url.Action("Single", "Home", new {ID = @post.ID, slug = post.Slug, type = Constants.SingleNewsType })" class="card-vertical__image">
 									<picture>
 										<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 										<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
 										<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="card-vertical__title">@post.PostTitle</a>
+								<a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })" class="card-vertical__title">@post.PostTitle</a>
 								<p class="card-vertical__datetime">@post.PostDate</p>
 							</div>
 						}
@@ -130,7 +130,7 @@
 							@foreach (var post in Model.TransferPosts)
 							{
 								<div class="card-horizontal">
-									<a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="card-horizontal__image">
+									<a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })" class="card-horizontal__image">
 										<picture>
 											<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
@@ -138,7 +138,7 @@
 										</picture>
 									</a>
 									<div class="card-horizontal__content">
-										<a class="title" href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a>
+										<a class="title" href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })">@post.PostTitle</a>
 										<p class="datetime">@post.PostDate</p>
 										<p class="description">@post.PostExcerpt</p>
 									</div>
@@ -152,14 +152,14 @@
 							@for (int i = 0; i < Model.BackstagePosts.Count; i++)
 							{
 								<div class="card-vertical card-vertical-highlight card-item-@(i+1)">
-									<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })" class="card-vertical__image">
+									<a href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID, type = Constants.SingleNewsType })" class="card-vertical__image">
 										<picture>
 											<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@Model.BackstagePosts[i].FeatureImage" type="image/jpeg" class="img-res">
 											<img src="@Model.BackstagePosts[i].FeatureImage" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
-									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID })">@Model.BackstagePosts[i].PostTitle</a>
+									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new {ID = @Model.BackstagePosts[i].ID, type = Constants.SingleNewsType })">@Model.BackstagePosts[i].PostTitle</a>
 									<p class="card-vertical__datetime">@Model.BackstagePosts[i].PostDate</p>
 								</div>
 							}
@@ -176,14 +176,14 @@
 						@foreach (var post in Model.GuessPosts)
 						{
 							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="card-vertical__image">
+								<a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })" class="card-vertical__image">
 									<picture>
 										<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 										<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
 										<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="card-vertical__title">@post.PostTitle</a>
+								<a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })" class="card-vertical__title">@post.PostTitle</a>
 								<p class="card-vertical__datetime">@post.PostDate</p>
 							</div>
 
@@ -202,14 +202,14 @@
 							@foreach (var post in Model.BasketballPosts)
 							{
 								<div class="card-vertical">
-									<a href="@Url.Action("Single", "Home", new {ID = @post.ID })" class="card-vertical__image">
+									<a href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })" class="card-vertical__image">
 										<picture>
 											<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
 											<img src="images/img21.jpg" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
-									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new {ID = @post.ID })">@post.PostTitle</a>
+									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new {ID = @post.ID, type = Constants.SingleNewsType })">@post.PostTitle</a>
 									<p class="ard-vertical__datetime">@post.PostDate</p>
 								</div>
 							}
@@ -221,14 +221,14 @@
 						</h2>
 						<div class="block__content">
 							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })" class="card-vertical__image">
+								<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID, type = Constants.SingleNewsType })" class="card-vertical__image">
 									<picture>
 										<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/webp" class="img-res">
 										<source srcset="@Model.TennisPosts[0].FeatureImage" type="image/jpeg" class="img-res">
 										<img src="@Model.TennisPosts[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
+								<a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[0].ID, type = Constants.SingleNewsType })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
 								<p class="card-vertical__datetime">@Model.TennisPosts[0].PostDate</p>
 								<p class="card-vertical__description">
 									@Model.TennisPosts[0].PostExcerpt
@@ -237,7 +237,7 @@
 							<ul class="block-list">
 								@for (int i = 1; i < Model.TennisPosts.Count; i++)
 								{
-									<li class="list-item"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[i].ID })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
+									<li class="list-item"><a href="@Url.Action("Single", "Home", new {ID = @Model.TennisPosts[i].ID, type = Constants.SingleNewsType })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
 
 								}
 							</ul>
