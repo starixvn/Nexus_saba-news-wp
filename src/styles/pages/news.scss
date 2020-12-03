@@ -19,6 +19,12 @@
 
 .main .container {
     @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
+    @include tableMobile{
+        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
+    }
+    @include Mobile{
+        display: inherit;
+    }
 }
 
 .block-main {
@@ -31,10 +37,28 @@
             grid-template-rows: unset;
             align-items: center;
             margin-bottom: $column-gap;
+            @include tableMobile{
+                display: inherit;
+                height: auto;
+            }
+            .card-horizontal__content{
+                @include tableMobile{
+                    margin-top: 1rem;
+                }
+            }
             .description {
                 max-height: 6.5rem;
                 margin-top: 1rem;
-            } 
+                @include tableMobile{
+                    display: block;
+                    margin-top: 0;
+                }
+            }
+            .card-horizontal__image{
+                @include tableMobile{
+                    max-height: 100% !important;
+                }
+            }
         }
     }
 }

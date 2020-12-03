@@ -22,11 +22,6 @@
 
 
 .main {
-
-    @include tableMobile{
-        padding-top: 7rem;
-    }
-
     // block-hot-news
     .block-hot-news {
         .block__content {
@@ -114,6 +109,11 @@
                 grid-column: 1;
                 .swiper-container {
                     height: 100%;
+                    .img-item{
+                        img{
+                            width: 100%;
+                        }
+                    }
                 }
                 // .play_video {
                 //     iframe {
@@ -138,7 +138,7 @@
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
 
-                    @include tableMobile {
+                    @include Mobile {
                         display: block;
                     }
                 }
@@ -146,7 +146,7 @@
                 .btn-play-video {
                     display: none;
 
-                    @include tableMobile {
+                    @include Mobile {
                         display: flex;
                     }
                 }
@@ -167,9 +167,9 @@
                 // @include ipadpro{
                 //     max-height: 36.5rem;
                 // }
-                // @include Mobile {
-                //     display: none;
-                // }
+                @include Mobile {
+                    display: none;
+                }
 
                 .card-horizontal {
                     margin-bottom: 1rem;

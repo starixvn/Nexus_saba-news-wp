@@ -662,8 +662,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script>
     <script src="js/lib/modernizr.js"></script>
     <script src="js/all.js"></script>
-
-
+    <script>
+        if($(window).innerWidth() <= 500){
+            var Swipes = new Swiper('.swiper-container', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+    </script>
 </body>
 </html>
 

@@ -15,100 +15,75 @@
 @import '../components/list-content';
 @import '../components/socical';
 @import '../components/tag';
+@import '../components//card-vertical';
+@import '../components/card-horizontal';
 
-.block{
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-.block-detail-news{
-    padding-bottom: 5rem;
-    margin-bottom: 3rem;
+.main .container {
+    @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
     @include tableMobile{
-        padding-bottom: 3rem;
+        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
+    }
+    @include Mobile{
+        display: inherit;
     }
 }
-.block-care{
-    margin-bottom: 9rem;
+
+.block-list{
+    margin: 4rem 0;
+    @include tableMobile{
+        margin: 2rem 0;
+    }
+}
+
+.tag-post{
+    margin-bottom: 6rem;
     @include tableMobile{
         margin-bottom: 3rem;
     }
 }
-.block-detail{
-    margin-top: 4rem;
-    @include tableMobile{
-        margin-top: 2rem;
-    }
-    .img-item{
-        max-height: 45rem;
-        overflow: hidden;
-        img{
-            object-fit: cover;
-        }
-    }
-    .heading{
-        margin-top: 2.5rem;
-        @include tableMobile{
-            margin-top: 1rem;
-        }
-        a{
-            font-size: 2.4rem !important;
-            line-height: 3.6rem;
-            letter-spacing: -0.01em;
-        }
-    }
-    .block-time{
-        margin-top: 1.3rem;
-        @include tableMobile{
-            margin-top: .5rem;
-        }
-    }
-}
-.block-list{
-    margin-top: 4rem;
-    @include tableMobile{
-        margin-top: 2rem;
+
+
+.title-care{
+    padding-top: 3rem;
+    border-top: 1px solid $color-input;
+    &::after{
+        display: none;
     }
 }
 
-.content-img{
-    margin-top: 4rem;
-    @include tableMobile{
-        margin-top: 2rem;
+.card-vertical-highlight {
+    [class*="card-vertical__"]:not(.card-vertical__image) {
+        padding: 0 !important;
     }
-    .title-img{
-        text-align: center;
-        margin-top: 1.2rem;
-        font-weight: 300;
-        font-size: 1.4rem;
-        line-height: 2.4rem;
+    .card-vertical__title{
+        font-size: 2.4rem;
+        line-height: 3.8rem;
+        margin-top: 1rem;
+    }
+    .card-vertical__image{
+        @include tableMobile {
+            max-height: 20rem;
+        }
+        @include landscapeTablet{
+            max-height: 30rem;
+        }
+        @include Mobile{
+            max-height: 100%;
+        }
     }
 }
-
-.block-care{
-    .block-horizontal{
-        .flex-item{
-            margin-bottom: 2rem;
-            .img-item{
-                max-width: 30.5rem !important;
-                max-height: 20rem !important;
-                overflow: hidden !important;
-                img{
-                    object-fit: cover !important;
-                }
-            }
-            .block-text{
-                margin-left: 3.2rem !important;
-                @include tableMobile{
-                    margin-left: 1.5rem !important;
-                }
-                .heading{
-                    @include tableMobile{
-                        height: 4rem;
-                    }
-                }
-            }
+.card-horizontal{
+    @include grid(30.5rem 1fr, 17rem , 1.2rem);
+    @include tableMobile{
+        @include grid(20.5rem 1fr, 12rem , 1.2rem);
+    }
+    @include Mobile{
+        @include grid(16.5rem 1fr, 9rem , 1.2rem);
+    }
+    margin-bottom: 2rem;
+    &__image{
+        @include tableMobile{
+            max-height: 13.2rem !important;
         }
     }
 }
