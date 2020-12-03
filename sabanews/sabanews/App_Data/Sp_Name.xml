@@ -89,5 +89,8 @@
       <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post"  />
       <Mapping DataField="post_name" ObjectProperty="Slug" class="Post"  />
     </Setting>
+    <Setting Key="check_type_category" SpName="check_type_category" DbName="wordpress">
+      <Mapping DataField="term_id" ObjectProperty="CatId" class="Category"  />
+    </Setting>
   </Function>
 </Functions>

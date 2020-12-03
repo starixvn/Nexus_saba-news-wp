@@ -11,7 +11,7 @@
 				<h2 class="block__title"><a>@(ViewData["HeadTitle"] != null ? ViewData["HeadTitle"] : Model[0].Categories )</a></h2>
 				<div class="block__content">
 					<div class="card-horizontal card-horizontal-highlight">
-						<a href="@Url.Action("Single", "Home", new { type = Constants.SingleNewsType, slug = Model[0].Slug })" class="card-horizontal__image">
+						<a href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })" class="card-horizontal__image">
 							<picture>
 								<source srcset="@Model[0].FeatureImage" type="image/webp" class="img-res">
 								<source srcset="@Model[0].FeatureImage" type="image/jpeg" class="img-res">
@@ -19,7 +19,7 @@
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
-							<a class="title" href="@Url.Action("Single", "Home", new { type = Constants.SingleNewsType, slug = Model[0].Slug })">@Model[0].PostTitle</a>
+							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })">@Model[0].PostTitle</a>
 							<p class="datetime">@Model[0].PostDate</p>
 							<p class="description">@postExcerpt</p>
 						</div>
@@ -28,7 +28,7 @@
 					{
 						var excerpt = Model[i].PostExcerpt.IndexOf('.') != -1 ? Model[i].PostExcerpt.Substring(0, Model[i].PostExcerpt.IndexOf('.')) : Model[i].PostExcerpt;
 						<div class="card-horizontal">
-							<a href="@Url.Action("Single", "Home", new { type = Constants.SingleNewsType, slug = Model[i].Slug })" class="card-horizontal__image">
+							<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-horizontal__image">
 								<picture>
 									<source srcset="@Model[i].FeatureImage" type="image/webp" class="img-res">
 									<source srcset="@Model[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -36,7 +36,7 @@
 								</picture>
 							</a>
 							<div class="card-horizontal__content">
-								<a class="title" href="@Url.Action("Single", "Home", new { type = Constants.SingleNewsType, slug = Model[i].Slug })">@Model[i].PostTitle</a>
+								<a class="title" href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })">@Model[i].PostTitle</a>
 								<p class="datetime">@Model[i].PostDate</p>
 								<p class="description">@excerpt</p>
 							</div>

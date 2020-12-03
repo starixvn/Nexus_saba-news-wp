@@ -6,7 +6,7 @@
 			@foreach (var post in Model.Posts)
 			{
 				<div class="card-vertical">
-					<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { type = Constants.SingleNewsType, slug = post.Slug })">@post.PostTitle</a>
+					<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
 					<p class="card-vertical__datetime">@post.PostDate</p>
 				</div>
 			}

@@ -26,7 +26,7 @@
 									</div>
 									<div class="play_video"></div>
 									<div class="content-box">
-										<h4 class="title-box"><a href="@Url.Action("Single", "Home", new { type = Constants.SingleVideoType, slug = Model[0].Slug })" class="heading">@Model[0].PostTitle</a></h4>
+										<h4 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })" class="heading">@Model[0].PostTitle</a></h4>
 									</div>
 								</div>
 							</div>
@@ -40,7 +40,7 @@
 						{
 							<div class="block-vertical">
 								<div class="img-item">
-									<a href="@Url.Action("Single", "Home", new { type = Constants.SingleVideoType, slug = Model[i].Slug })">
+									<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })">
 										<picture>
 											<source srcset="@Model[i].FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@Model[i].FeatureImage" type="image/jpeg" class="img-res">
@@ -50,7 +50,7 @@
 								</div>
 								<div class="block-text">
 									<div class="heading">
-										<a href="@Url.Action("Single", "Home", new { type = Constants.SingleVideoType, slug = Model[i].Slug })">
+										<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })">
 											@Model[i].PostTitle
 										</a>
 									</div>

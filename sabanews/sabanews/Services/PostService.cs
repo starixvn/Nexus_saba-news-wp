@@ -137,6 +137,17 @@
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }
 
+        public async Task<Boolean> CheckTypeCategoryAsync(int parentId, int ID)
+        {
+            var criteria = new CheckTypeCategoryCriteria
+            {
+                _Parent = parentId,
+                _ID = ID
+            };
+            var cate = await baseService.GetDataEntityAsync<Category>(criteria);
+            return cate == null ? false : true;
+        }
+
         public async Task<IEnumerable<Menu>> GetMenuAsync(string MenuName)
         {
             var criteria = new GetMenuCriteria

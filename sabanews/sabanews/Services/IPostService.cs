@@ -18,5 +18,6 @@
         Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end);
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
         Task<Category> GetCateDetailAsync(string slug);
+        Task<Boolean> CheckTypeCategoryAsync(int parentId, int ID);
     }
 }

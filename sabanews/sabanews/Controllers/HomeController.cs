@@ -63,12 +63,13 @@
             return View(post);
         }
 
-        [Route("{type}/{slug}")]
-        public async Task<IActionResult> Single(string slug, string type)
+        [Route("{slug}")]
+        public async Task<IActionResult> Single(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug);
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
+            var isVideo = await postService.CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
             var Models = new SingleViewModel
             {
                 SinglePost = post,
@@ -76,8 +77,7 @@
                 RandomRelatedPosts = randomRelatedPosts
             };
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
-            ViewData["type"] = type;
-            ViewData["video"] = type == Constants.SingleVideoType ? true : false;
+            ViewData["video"] = isVideo;
 
             return View(Models);
         }
@@ -117,7 +117,7 @@
             return View(view, Posts);
         }
 
-        [Route("{date}")]
+        [Route("date/{date}")]
         public async Task<IActionResult> DateSearch(string date, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
