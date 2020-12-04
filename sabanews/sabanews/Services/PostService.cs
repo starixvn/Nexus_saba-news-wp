@@ -33,7 +33,7 @@
         {
             var criteria = new GetPostsBySlugCriteria
             {
-                _CategorySlug = slug,
+                _CategorySlug = slug.Trim(),
                 _Start = start,
                 _End = end
             };
@@ -59,7 +59,7 @@
         {
             var criteria = new GetPostDetailBySlugCriteria
             {
-                _Slug = slug
+                _Slug = slug.Trim()
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
@@ -108,7 +108,7 @@
         {
             var criteria = new GetPostsByTagCriteria
             {
-                _Tag = tag,
+                _Tag = tag.Trim(),
                 _Start = start,
                 _End = end
             };
@@ -120,7 +120,7 @@
         {
             var criteria = new GetPostsByDateCriteria
             {
-                _Date = date,
+                _Date = date.Trim(),
                 _Start = start,
                 _End = end
             };

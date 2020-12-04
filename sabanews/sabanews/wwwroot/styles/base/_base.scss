@@ -49,4 +49,7 @@ body{
 
 .main {
     padding-top: 12rem;
+    @include tableMobile{
+        padding-top: 7rem;
+    }
 }

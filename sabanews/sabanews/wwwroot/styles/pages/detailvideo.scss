@@ -18,80 +18,78 @@
 
 @import '../components/tag';
 @import '../components/socical';
+@import '../components//card-vertical';
 
 
-.block{
-    border: none;
-    margin: 0;
-    padding: 0;
-}
 
-.block-detail-video{
-    padding-bottom: 5rem;
-    margin-bottom: 3rem;
+.main .container {
+    @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
     @include tableMobile{
-        padding-bottom: 3rem;
+        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
     }
-    .img-item{
-        max-height: 40rem;
-        overflow: hidden;
-        img{
-            object-fit: cover;
-        }
-    }
-}
-.block-care{
-    margin-bottom: 9rem;
-    @include tableMobile{
-        margin-bottom: 3rem;
-    }
-    .grid-4-colums{
-        @include tableMobile{
-            //@include grid(2,1fr,1.3rem 1.6rem);
-        }
-        .img-item{
-            max-height: 11rem;
-            overflow: hidden;
-            img{
-                object-fit: cover;
-            }
-        }
-    }
-}
-.block-detail{
-    margin-top: 4rem;
-    @include tableMobile{
-        margin-top: 2rem;
-    }
-    .img-item{
-        img{
-            height: 41.3vh;
-            @include tableMobile{
-                height: auto;
-            }
-        }
-    }
-    .heading{
-        margin-top: 2.5rem;
-        @include tableMobile{
-            margin-top: 1rem;
-        }
-        a{
-            font-size: 2.4rem !important;
-            line-height: 3.6rem;
-            letter-spacing: -0.01em;
-        }
-    }
-    .block-time{
-        margin-top: 1.3rem;
-        @include tableMobile{
-            margin-top: .5rem;
-        }
+    @include Mobile{
+        display: inherit;
     }
 }
 .block-list{
-    margin-top: 4rem;
+    margin: 4rem 0;
     @include tableMobile{
-        margin-top: 2rem;
+        margin: 2rem 0;
     }
 }
+
+.tag-post{
+    margin-bottom: 6rem;
+    @include tableMobile{
+        margin-bottom: 3rem;
+    }
+}
+
+
+.title-care{
+    padding-top: 3rem;
+    border-top: 1px solid $color-input;
+    &::after{
+        display: none;
+    }
+}
+
+.card-vertical-highlight {
+    [class*="card-vertical__"]:not(.card-vertical__image) {
+        padding: 0 !important;
+    }
+    .card-vertical__title{
+        font-size: 2.4rem;
+        line-height: 3.8rem;
+        margin-top: 2rem;
+        @include tableMobile{
+            margin-top: 1rem;
+        }
+    }
+    .card-vertical__image{
+        @include tableMobile {
+            max-height: 20rem;
+        }
+        @include landscapeTablet{
+            max-height: 30rem;
+        }
+        @include Mobile{
+            max-height: 100%;
+        }
+    }
+}
+.block__video{
+    @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
+    @include tableMobile{
+        @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap-tablet});
+    }
+    .card-vertical__image{
+        margin-bottom: 1rem;
+        max-height: 10rem;
+        @include tableMobile{
+            max-height: 13rem;
+        }
+    }
+}
+
+

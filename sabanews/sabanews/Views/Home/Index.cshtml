@@ -206,7 +206,7 @@
 										<picture>
 											<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
 											<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
-											<img src="images/img21.jpg" alt="Alt Text!" class="img-res img-block">
+											<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
 									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>

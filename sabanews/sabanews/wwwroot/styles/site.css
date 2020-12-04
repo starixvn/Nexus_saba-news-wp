@@ -2,7 +2,7 @@
 	text-decoration: none;
 }
 
-.single.img-item {
+.single.img-item, .single.card-vertical__image {
 	position: relative;
 }
 

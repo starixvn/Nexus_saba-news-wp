@@ -1,109 +1,93 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/styles/pages/_detailnews.css">
+	<link rel="stylesheet" href="~/styles/pages/detailnews.css">
 }
 @{
 	ViewData["Title"] = Model.SinglePost.PostTitle;
 }
 <section class="main">
 	<div class="container">
-		<div class="row">
-			<div class="col col-8 pd-column-left">
-				<div class="block block-detail-news">
-					<div class="block-vertical block-detail">
-						<div class="single img-item">
-							@if (Convert.ToBoolean(ViewData["video"]))
-							{
-								<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
-							}
-							<picture>
-								<source srcset="@Model.SinglePost.FeatureImage" type="image/webp" class="img-res">
-								<source srcset="@Model.SinglePost.FeatureImage" type="image/jpeg" class="img-res">
-								<img src="@Model.SinglePost.FeatureImage" alt="Alt Text!" class="img-res img-block">
-							</picture>
-							@if (Convert.ToBoolean(ViewData["video"]))
-							{
-								<div class="btn-play-video">
-									<span class="icon-play"></span>
-								</div>
-							}
+		<div class="block block-main">
+			<div class="card-vertical card-vertical-highlight">
+				<div class="single card-vertical__image">
+					@if (Convert.ToBoolean(ViewData["video"]))
+					{
+						<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+					}
+					<picture>
+						<source srcset="@Model.SinglePost.FeatureImage" type="image/webp" class="img-res">
+						<source srcset="@Model.SinglePost.FeatureImage" type="image/jpeg" class="img-res">
+						<img src="@Model.SinglePost.FeatureImage" alt="Alt Text!" class="img-res img-block">
+					</picture>
+					@if (Convert.ToBoolean(ViewData["video"]))
+					{
+						<div class="btn-play-video">
+							<span class="icon-play"></span>
 						</div>
-						<div class="single play_video"></div>
-						<div class="block-text">
-							<div class="heading">
-								<a>
-									@Model.SinglePost.PostTitle
-								</a>
-							</div>
-							<p class="block-time">@Model.SinglePost.PostDate</p>
+					}
+				</div>
+				<div class="single play_video"></div>
+				<a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
+				<p class="card-vertical__datetime">@Model.SinglePost.PostDate</p>
+			</div>
+			@if (!Convert.ToBoolean(ViewData["video"]))
+			{
+				<div class="content">
+					@Html.Raw(Model.SinglePost.PostContent)
+				</div>
+			}
+
+			<ul class="block-list">
+				@foreach (var post in Model.RelatedPosts)
+				{
+					<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-video"></i> @post.PostTitle</a></li>
+				}
+			</ul>
+
+			@{
+				var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
+			}
+			<ul class="social">
+				<li class="item-social">Chia sẻ:</li>
+				<li class="item-social"><a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="twitter" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-twitter"></i></a></li>
+				<li class="item-social"><a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink" data-count="facebook" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-facebook"></i></a></li>
+				<li class="item-social"><a href="http://pinterest.com/pin/create/link/?url=@absoluteLink" data-count="pinterest-circled" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-pinterest"></i></a></li>
+				<li class="item-social"><a href="https://t.me/share/url?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="telegram" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-telegram"></i></a></li>
+			</ul>
+
+			<ul class="tag-post">
+				@if (Model.SinglePost.Tags != null)
+				{
+					var tags = Model.SinglePost.Tags.Split(',');
+					@foreach (var tag in tags)
+					{
+						<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tag })" class="tag">@tag</a></li>
+					}
+
+				}
+			</ul>
+			<h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
+			<div class="block__content">
+				@foreach (var post in Model.RandomRelatedPosts)
+				{
+					<div class="card-horizontal card-horizontal-highlight">
+						<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-horizontal__image">
+							<picture>
+								<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
+								<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
+								<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
+							</picture>
+						</a>
+						<div class="card-horizontal__content">
+							<a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
+							<p class="datetime">@post.PostDate</p>
+							<p class="description">@post.PostExcerpt</p>
 						</div>
 					</div>
-					@if (!Convert.ToBoolean(ViewData["video"]))
-					{
-						<div class="content">
-							@Html.Raw(Model.SinglePost.PostContent)
-						</div>
-					}
+				}
 
-					<ul class="block-list">
-						@foreach (var post in Model.RelatedPosts)
-						{
-							<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-sport-soccer"></i> @post.PostTitle</a></li>
-						}
-					</ul>
-
-					@{
-						var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
-					}
-					<ul class="social">
-						<li class="item-social">Chia sẻ:</li>
-						<li class="item-social"><a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="twitter" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-twitter"></i></a></li>
-						<li class="item-social"><a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink" data-count="facebook" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-facebook"></i></a></li>
-						<li class="item-social"><a href="http://pinterest.com/pin/create/link/?url=@absoluteLink" data-count="pinterest-circled" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-pinterest"></i></a></li>
-						<li class="item-social"><a href="https://t.me/share/url?url=@absoluteLink&text=@Model.SinglePost.PostTitle" data-count="telegram" target="_blank" rel="nofollow" class="item"><i class="icon-social icon-social-telegram"></i></a></li>
-					</ul>
-					<ul class="tag-post">
-						@if (Model.SinglePost.Tags != null)
-						{
-							var tags = Model.SinglePost.Tags.Split(',');
-							@foreach (var tag in tags)
-							{
-								<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tag })" class="tag">@tag</a></li>
-							}
-						}
-					</ul>
-				</div>
-
-
-				<div class="block block-care">
-					<h2 class="title-block"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
-					@foreach (var post in Model.RandomRelatedPosts)
-					{
-						<div class="block-horizontal">
-							<div class="block-item">
-								<div class="flex-item">
-									<div class="img-item">
-										<a href="@Url.Action("Single", "Home", new { slug = post.Slug })">
-											<picture>
-												<source srcset="@post.FeatureImage" type="image/webp" class="img-res">
-												<source srcset="@post.FeatureImage" type="image/jpeg" class="img-res">
-												<img src="@post.FeatureImage" alt="Alt Text!" class="img-res img-block">
-											</picture>
-										</a>
-									</div>
-									<div class="block-text">
-										<div class="heading"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a></div>
-										<p class="block-time">@post.PostDate</p>
-										<p class="description text-description">@post.PostExcerpt</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					}
-
-				</div>
 			</div>
-			@(await Component.InvokeAsync("Sidebar"))
 		</div>
+		@(await Component.InvokeAsync("Sidebar"))
 	</div>
 </section>
