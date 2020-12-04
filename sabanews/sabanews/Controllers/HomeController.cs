@@ -35,7 +35,9 @@
             return View(Models);
         }
 
-        [Route("/category/{parent}/{slug?}/{page = 1}")]
+        
+        [Route("/category/{parent}/{slug?}/page/{page}")]
+        [Route("/category/{parent}/{slug?}")]
         public async Task<IActionResult> Category(string parent,  string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
@@ -82,6 +84,7 @@
             return View(Models);
         }
 
+        [Route("Search/page/{page}")]
         [Route("Search")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
@@ -99,7 +102,7 @@
             return View(view, Posts);
         }
 
-
+        [Route("tag/{tag}/page/{page}")]
         [Route("tag/{tag}")]
         public async Task<IActionResult> Tag(string tag, int page = 1)
         {
@@ -117,6 +120,7 @@
             return View(view, Posts);
         }
 
+        [Route("date/{date}/page/{page}")]
         [Route("date/{date}")]
         public async Task<IActionResult> DateSearch(string date, int page = 1)
         {
