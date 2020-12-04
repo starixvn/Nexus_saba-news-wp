@@ -58,10 +58,11 @@
 			<ul class="tag-post">
 				@if (Model.SinglePost.Tags != null)
 				{
+					var tags_slug = Model.SinglePost.TagsSlug.Split(',');
 					var tags = Model.SinglePost.Tags.Split(',');
-					@foreach (var tag in tags)
+					@for (var i = 0; i < tags.Length; i++)
 					{
-						<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tag })" class="tag">@tag</a></li>
+						<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
 					}
 
 				}

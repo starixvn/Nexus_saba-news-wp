@@ -148,6 +148,17 @@
             return cate == null ? false : true;
         }
 
+        public async Task<string> GetTagNameBySlugAsync(string slug)
+        {
+            var criteria = new GetTagNameBySlugCriteria
+            {
+                _Slug = slug
+            };
+
+            var post = await baseService.GetDataEntityAsync<Post>(criteria);
+            return post.Slug;
+        }
+
         public async Task<IEnumerable<Menu>> GetMenuAsync(string MenuName)
         {
             var criteria = new GetMenuCriteria

@@ -16,6 +16,7 @@
         Task<IEnumerable<Post>> SearchPostAsync(string keyword, int start, int end);
         Task<IEnumerable<Post>> GetPostByTagAsync(string tag, int start, int end);
         Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end);
+        Task<string> GetTagNameBySlugAsync(string slug);
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
         Task<Category> GetCateDetailAsync(string slug);
         Task<Boolean> CheckTypeCategoryAsync(int parentId, int ID);

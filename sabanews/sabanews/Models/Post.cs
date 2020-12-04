@@ -9,6 +9,7 @@
         public string PostDate { get; set; }
         public string FeatureImage { get; set; }
         public string Tags { get; set; }
+        public string TagsSlug { get; set; }
         public string Categories { get; set; }
         public string Slug { get; set; }
     }

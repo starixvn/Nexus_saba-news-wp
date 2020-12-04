@@ -106,7 +106,7 @@
             var start = (page - 1) * Constants.Perpage;
             var Posts = await postService.GetPostByTagAsync(tag, start, Constants.Perpage);
             var PostsTotal = await postService.GetPostByTagAsync(tag, 0, Constants.Total);
-            ViewData["Title"] = tag;
+            ViewData["Title"] = await postService.GetTagNameBySlugAsync(tag);
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = Constants.Perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
