@@ -177,7 +177,7 @@
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                post.FeatureImage = GetImageFromFolderInSolution(post.FeatureImage);
+                post.FeatureImage = ResizeImage(post.FeatureImage);
                 post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             }
@@ -188,10 +188,10 @@
         {
             var imageSplit = image.Split("/");
             var imageName = imageSplit[imageSplit.Length - 1];
-            var file = pathService.MapPathContentRoot("~wordpress/"+imageName);
+            var file = pathService.MapPathContentRoot("wordpress/"+imageName);
             if (System.IO.File.Exists(file))
             {
-                image = "wordpress/"+ imageName;
+                image =  "wordpress/"+ imageName;
             }
             return image;
         }
@@ -215,8 +215,9 @@
             {
                 if (image.IndexOf(type) != -1)
                 {
-                    var imageSplit = image.Split(type);
-                    result = imageSplit[0] + "-600x394" + type;
+                    var imageSplit = image.LastIndexOf(type);
+
+                    result = image.Substring(0, imageSplit) + "-600x394" + type;
                     break;
                 }
             }
