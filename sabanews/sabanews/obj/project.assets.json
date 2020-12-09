@@ -53,15 +53,6 @@
           "lib/netstandard2.0/Fanex.Data.Repository.dll": {}
         }
       },
-      "Microsoft.NET.Sdk.Razor/2.2.0": {
-        "type": "package",
-        "build": {
-          "build/netstandard2.0/Microsoft.NET.Sdk.Razor.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Microsoft.NET.Sdk.Razor.props": {}
-        }
-      },
       "Microsoft.NETCore.Platforms/2.0.0": {
         "type": "package",
         "compile": {
@@ -229,35 +220,6 @@
         "fanex.data.repository.nuspec",
         "lib/net461/Fanex.Data.Repository.dll",
         "lib/netstandard2.0/Fanex.Data.Repository.dll"
-      ]
-    },
-    "Microsoft.NET.Sdk.Razor/2.2.0": {
-      "sha512": "qAauNXVoCM7P5jcK5L7Ajddlmsr1kk1M+4+pA1EDWGHV6bRxn/E/tykk7/smAd8gDa1xlWt1vSJ6Ilrbc9FhGg==",
-      "type": "package",
-      "path": "microsoft.net.sdk.razor/2.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Sdk/Sdk.props",
-        "Sdk/Sdk.targets",
-        "build/netstandard2.0/Microsoft.NET.Sdk.Razor.Compilation.targets",
-        "build/netstandard2.0/Microsoft.NET.Sdk.Razor.DesignTime.targets",
-        "build/netstandard2.0/Microsoft.NET.Sdk.Razor.GenerateAssemblyInfo.targets",
-        "build/netstandard2.0/Microsoft.NET.Sdk.Razor.props",
-        "build/netstandard2.0/Rules/RazorConfiguration.xaml",
-        "build/netstandard2.0/Rules/RazorExtension.xaml",
-        "build/netstandard2.0/Rules/RazorGeneral.xaml",
-        "build/netstandard2.0/Rules/RazorGenerateWithTargetPath.xaml",
-        "build/netstandard2.0/Sdk.Razor.CurrentVersion.props",
-        "build/netstandard2.0/Sdk.Razor.CurrentVersion.targets",
-        "buildMultiTargeting/Microsoft.NET.Sdk.Razor.props",
-        "buildMultiTargeting/Sdk.Razor.CurrentVersion.MultiTargeting.targets",
-        "microsoft.net.sdk.razor.2.2.0.nupkg.sha512",
-        "microsoft.net.sdk.razor.nuspec",
-        "tasks/net46/Microsoft.NET.Sdk.Razor.Tasks.dll",
-        "tasks/net46/Microsoft.NET.Sdk.Razor.Tasks.pdb",
-        "tasks/netstandard2.0/Microsoft.NET.Sdk.Razor.Tasks.dll",
-        "tasks/netstandard2.0/Microsoft.NET.Sdk.Razor.Tasks.pdb"
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
@@ -601,7 +563,6 @@
       "Fanex.Data >= 4.2.2",
       "Fanex.Data.MySql >= 4.2.2",
       "Fanex.Data.Repository >= 4.2.2",
-      "Microsoft.NET.Sdk.Razor >= 2.2.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9"
     ]
   },
@@ -658,10 +619,6 @@
           "Fanex.Data.Repository": {
             "target": "Package",
             "version": "[4.2.2, )"
-          },
-          "Microsoft.NET.Sdk.Razor": {
-            "target": "Package",
-            "version": "[2.2.0, )"
           },
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
             "target": "Package",

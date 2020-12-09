@@ -23,7 +23,6 @@
     <PackageReference Include="Fanex.Data.MySql" Version="4.2.2" />
     <PackageReference Include="Fanex.Data.Repository" Version="4.2.2" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Microsoft.NET.Sdk.Razor" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

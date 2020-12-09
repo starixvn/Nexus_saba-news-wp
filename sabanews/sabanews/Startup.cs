@@ -33,8 +33,6 @@
             });
             //services.AddTransient(_ => new ConnectDb(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
-
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IBaseService, BaseService>();
             services.AddTransient<IDynamicRepository, DynamicRepository>();
@@ -54,15 +52,15 @@
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseHttpsRedirection();
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-            Path.Combine(env.ContentRootPath, "wordpress")),
+                Path.Combine(env.ContentRootPath, "wordpress")),
                 RequestPath = "/wordpress"
             });
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
