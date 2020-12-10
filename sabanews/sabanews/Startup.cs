@@ -60,6 +60,7 @@
                 Path.Combine(env.ContentRootPath, "wordpress")),
                 RequestPath = "/wordpress"
             });
+            app.UseStaticFiles();
 
             app.UseRouting();
 

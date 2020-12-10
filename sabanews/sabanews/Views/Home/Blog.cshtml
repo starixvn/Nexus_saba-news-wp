@@ -13,9 +13,9 @@
 					<div class="card-horizontal card-horizontal-highlight">
 						<a href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })" class="card-horizontal__image">
 							<picture>
-								<source srcset="@Model[0].FeatureImage" type="image/webp" class="img-res">
-								<source srcset="@Model[0].FeatureImage" type="image/jpeg" class="img-res">
-								<img src="@Model[0].FeatureImage" alt="Alt Text!" class="img-res img-block">
+								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/webp" class="img-res">
+								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/jpeg" class="img-res">
+								<img src="@Url.Content(Model[0].FeatureImage)" alt="Alt Text!" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
@@ -30,9 +30,9 @@
 						<div class="card-horizontal">
 							<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-horizontal__image">
 								<picture>
-									<source srcset="@Model[i].FeatureImage" type="image/webp" class="img-res">
-									<source srcset="@Model[i].FeatureImage" type="image/jpeg" class="img-res">
-									<img src="@Model[i].FeatureImage" alt="Alt Text!" class="img-res img-block">
+									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/webp" class="img-res">
+									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/jpeg" class="img-res">
+									<img src="@Url.Content(Model[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
 								</picture>
 							</a>
 							<div class="card-horizontal__content">
