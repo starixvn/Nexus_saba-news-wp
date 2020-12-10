@@ -3,13 +3,6 @@
     using Microsoft.AspNetCore.Hosting;
     using System.IO;
 
-    public interface IPathService
-    {
-        string MapPath(string path);
-        string MapPathContentRoot(string path);
-        string MapFullPath(string path);
-        string MapAbsolutePath(string rootPath, string path);
-    }
     public class PathService : IPathService
     {
         private readonly IHostingEnvironment _HostEnvironment;

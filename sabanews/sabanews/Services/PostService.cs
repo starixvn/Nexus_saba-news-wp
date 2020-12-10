@@ -5,6 +5,7 @@
     using sabanews.Models;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -210,14 +211,15 @@
         public static string ResizeImage(string image)
         {
             var result = image;
+            var extension = "."+image.Split(".").Last();
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             foreach (var type in imgTypes)
             {
-                if (image.IndexOf(type) != -1)
+                if (extension == type)
                 {
-                    var imageSplit = image.LastIndexOf(type);
+                    var imageLength = image.LastIndexOf(type);
 
-                    result = image.Substring(0, imageSplit) + "-600x394" + type;
+                    result = image.Substring(0, imageLength) + "-600x394" + type;
                     break;
                 }
             }
