@@ -6,9 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewData["Title"]</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="stylesheet" href="~/styles/site.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css">
-	<link rel="stylesheet" href="~/styles/vendor/icomoon/style.css">
+	
+	<environment include="Development">
+		<link rel="stylesheet" href="~/styles/site.css">
+		<link rel="stylesheet" href="~/styles/vendor/icomoon/style.css">
+	</environment>
+	<environment exclude="Development">
+		link rel="stylesheet" href="~/styles/site.min.css">
+	</environment>
 
 
 	@RenderSection("Styles", false)
@@ -38,25 +44,31 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js"></script>
-	<script src="~/js/all.js"></script>
-	<script src="~/js/site.js"></script>
+	<environment include="Development">
+		<script src="~/js/all.js"></script>
+		<script src="~/js/site.js"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="~/js/site.min.js"></script>
+	</environment>
+	
 	@RenderSection("Scripts", false)
 	<script>
-        if($(window).innerWidth() <= 500){
-            var Swipes = new Swiper('.swiper-container', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        }
+		if ($(window).innerWidth() <= 500) {
+			var Swipes = new Swiper('.swiper-container', {
+				loop: true,
+				slidesPerView: 1,
+				spaceBetween: 0,
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true,
+				},
+			});
+		}
 	</script>
 
 </body>
