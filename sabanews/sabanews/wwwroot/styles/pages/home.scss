@@ -30,7 +30,8 @@
             @include tableMobile {
                 @include grid(42% calc(58% - 1.6rem), none, #{$padding-main} 1.6rem);
             }
-            @include Mobile{
+
+            @include Mobile {
                 display: inherit;
             }
 
@@ -38,22 +39,27 @@
                 grid-column: 1;
                 grid-row: 1/4;
                 background-color: $block-highlight-bgcolor;
-                @include Mobile{
+
+                @include Mobile {
                     margin-bottom: 1.2rem;
                 }
+
                 .card-vertical__image {
-                    @include landscapeTablet{
-                        max-height: 20rem;
+                    max-height: 23rem;
+
+                    @include tableMobile {
+                        max-height: 11rem !important;
                     }
-                    @include Mobile{
-                        max-height: 20rem;
+
+                    @include Mobile {
+                        max-height: 20rem !important;
                     }
                 }
-
             }
-            .card-horizontal{
-                @include landscapeTablet{
-                    @include grid(17.5rem 1fr, none , 1.2rem);
+
+            .card-horizontal {
+                @include landscapeTablet {
+                    @include grid(17.5rem 1fr, none, 1.2rem);
                 }
             }
 
@@ -74,6 +80,7 @@
     .group-blocks {
         .container {
             @include grid(repeat(2, 1fr), none, #{$column-gap});
+
             .block-transfer {
                 grid-gap: 0;
             }
@@ -97,20 +104,22 @@
             @include grid(58% calc(42% - #{$column-gap}), 40rem, #{$column-gap});
 
             @include tableMobile {
-                @include grid(58% calc(42% - 1.6rem), 28rem , 1.6rem);
+                @include grid(58% calc(42% - 1.6rem), 28rem, 1.6rem);
             }
 
-            @include Mobile{
+            @include Mobile {
                 display: inherit;
             }
 
             .swiper-video {
                 overflow: hidden;
                 grid-column: 1;
+
                 .swiper-container {
                     height: 100%;
-                    .img-item{
-                        img{
+
+                    .img-item {
+                        img {
                             width: 100%;
                         }
                     }
@@ -120,21 +129,17 @@
                 //         @include tableMobile {
                 //             height: 19rem;
                 //         }
-
                 //         @include ipadpro {
                 //             height: 30rem;
                 //         }
-
                 //         @include landscapeTablet {
                 //             height: 26rem;
                 //         }
-
                 //         @include portraitTablet {
                 //             height: 26rem;
                 //         }
                 //     }
                 // }
-
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
 
@@ -173,6 +178,7 @@
 
                 .card-horizontal {
                     margin-bottom: 1rem;
+
                     &:last-child {
                         margin-bottom: 0;
                     }
@@ -197,20 +203,25 @@
     .block-soccer {
         .block__content {
             @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
             }
-            .card-vertical{
-                @include Mobile{
+
+            .card-vertical {
+                @include Mobile {
                     padding-bottom: 0;
                 }
             }
+
             .card-vertical__image {
                 height: 17.2rem;
-                @include landscapeTablet{
+
+                @include landscapeTablet {
                     max-height: 13rem;
                 }
             }
@@ -234,22 +245,33 @@
 
         .block__content {
             @include grid(repeat(3, 1fr), 1fr, #{$column-gap});
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(repeat(3, 1fr), 1fr, #{$column-gap-tablet});
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(repeat(2, 1fr), 1fr, #{$column-gap-mobile});
             }
+
             .card-vertical__title {
                 color: #fff;
             }
-            .card-vertical{
-                @include Mobile{
+
+            .card-vertical {
+                @include Mobile {
                     padding-bottom: 0;
                 }
             }
-            .card-vertical__image{
-                @include landscapeTablet{
+
+            .card-vertical__image {
+                max-height: 23.5rem;
+
+                @include tableMobile {
+                    max-height: 11rem;
+                }
+
+                @include landscapeTablet {
                     max-height: 18rem;
                 }
             }
@@ -265,10 +287,12 @@
 
         .card-horizontal {
             margin-bottom: $column-gap;
-            @include tableMobile{
+
+            @include tableMobile {
                 margin-bottom: $column-gap-tablet;
             }
-            @include Mobile{
+
+            @include Mobile {
                 margin-bottom: $column-gap-mobile;
             }
         }
@@ -283,25 +307,43 @@
 
         .block__content {
             @include grid(repeat(2, 1fr), unset, #{$column-gap});
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
             }
+
+            .card-vertical {
+                &.card-vertical-highlight {
+                    &:nth-child(1) {
+                        [class*="card-vertical__"]:not(.card-vertical__image) {
+                            padding: 0 $padding-main !important;
+                        }
+                    }
+
+                    &:nth-child(n+1) {
+                        [class*="card-vertical__"]:not(.card-vertical__image) {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+
             .card-item-1 {
                 grid-column: 1/3;
                 background-color: $block-highlight-bgcolor;
             }
-            .card-vertical__image{
-                @include tableMobile{
+
+            .card-vertical__image {
+                @include tableMobile {
                     max-height: 20rem;
                 }
             }
-        }      
+        }
     }
-
-
     // block-basketball
     .block-basketball {
         padding: 0 0 3.9rem 0;
@@ -313,14 +355,17 @@
 
         .block__content {
             @include grid(repeat(2, 1fr), unset, #{$column-gap});
-            @include tableMobile{
+
+            @include tableMobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
             }
-            @include Mobile{
+
+            @include Mobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
             }
-            .card-vertical{
-                @include Mobile{
+
+            .card-vertical {
+                @include Mobile {
                     padding-bottom: 0;
                 }
             }
@@ -330,18 +375,22 @@
     .block-tennis {
         .block-list {
             margin-top: 3rem;
-            @include tableMobile{
+
+            @include tableMobile {
                 margin-top: 0;
             }
         }
-        .card-vertical__image{
-            @include tableMobile{
+
+        .card-vertical__image {
+            @include tableMobile {
                 max-height: 20rem;
             }
-            @include landscapeTablet{
+
+            @include landscapeTablet {
                 max-height: 30rem;
             }
         }
+
         .card-vertical__description {
             margin-top: .8rem;
         }

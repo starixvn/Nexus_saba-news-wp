@@ -18,7 +18,7 @@
 							</a>
 							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
 							<p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
-							<p class="card-vertical__description">@Model.NewPosts[0].PostExcerpt</p>
+							<p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
 						</div>
 						@for (int i = 1; i < Model.NewPosts.Count; i++)
 						{
