@@ -27,23 +27,29 @@
 .pd-column-left{
     overflow: hidden;
 }
+
+
 .swiper-container {
     width: 100%;
     max-width: 100% !important;
-    .swiper-slide{
-        .img-item{
+
+    .swiper-slide {
+        .img-item {
             max-height: 40rem;
             overflow: hidden;
-            img{
+
+            img {
                 height: 41.3vh;
                 object-fit: cover;
-                @include tableMobile{
+
+                @include tableMobile {
                     height: auto !important;
                 }
             }
         }
     }
 }
+
 .block-list-video{
     margin: 3.8rem 0 3rem 0;
     @include tableMobile{

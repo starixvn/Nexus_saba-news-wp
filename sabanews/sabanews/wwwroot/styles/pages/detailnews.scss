@@ -28,6 +28,10 @@
     }
 }
 
+img{
+    width : 100%;
+}
+
 .block-list{
     margin: 4rem 0;
     @include tableMobile{
@@ -35,9 +39,26 @@
     }
 }
 
-.tag-post{
+.play_video iframe {
+    height: 48rem;
+    width: 100%;
+
+    @include tableMobile {
+        height: 25rem !important;
+    }
+
+    @include Mobile {
+        height: 20rem !important;
+    }
+}
+.single{
+    max-height : 48rem;
+}
+
+.tag-post {
     margin-bottom: 6rem;
-    @include tableMobile{
+
+    @include tableMobile {
         margin-bottom: 3rem;
     }
 }
