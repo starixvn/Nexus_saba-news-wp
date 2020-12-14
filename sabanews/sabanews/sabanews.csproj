@@ -9,10 +9,14 @@
 
   <ItemGroup>
     <None Remove="App_Data\Sp_Name.xml" />
+    <None Remove="wordpress\Test.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="App_Data\Sp_Name.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wordpress\Test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
