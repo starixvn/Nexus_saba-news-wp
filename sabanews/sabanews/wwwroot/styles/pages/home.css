@@ -961,13 +961,18 @@ button {
           max-height: 11rem !important; } }
       @media (max-width: 767px) {
         .main .block-hot-news .block__content .card-vertical .card-vertical__image {
-          max-height: 20rem !important; } }
+          max-height: 100% !important;
+          height: 22.78rem;
+          display: block; } }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
     .main .block-hot-news .block__content .card-horizontal {
       display: grid;
       grid-template-columns: 17.5rem 1fr;
       grid-template-rows: none;
       grid-gap: 1.2rem; } }
+  @media (max-width: 767px) {
+    .main .block-hot-news .block__content .card-horizontal .card-horizontal__image {
+      height: 7.2rem; } }
   .main .block-hot-news .block__content [class*="card-item-"] {
     grid-column: 2; }
   .main .block-hot-news .block__content .card-item-1 {

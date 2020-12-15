@@ -52,7 +52,9 @@
                     }
 
                     @include Mobile {
-                        max-height: 20rem !important;
+                        max-height: 100% !important;
+                        height: 22.78rem;
+                        display: block;
                     }
                 }
             }
@@ -60,6 +62,12 @@
             .card-horizontal {
                 @include landscapeTablet {
                     @include grid(17.5rem 1fr, none, 1.2rem);
+                }
+
+                .card-horizontal__image{
+                    @include Mobile {
+                        height : 7.2rem;
+                    }
                 }
             }
 
