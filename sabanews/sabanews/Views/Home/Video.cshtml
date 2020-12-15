@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/styles/video.min.css">
+	<link rel="stylesheet" href="~/styles/video.min.css" asp-append-version="true">
 }
 
 	<section class="main">
@@ -16,7 +16,7 @@
 									<picture>
 										<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/webp">
 										<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/jpeg">
-										<img src="@Url.Content(Model[0].FeatureImage)" alt="Alt Text!">
+										<img src="@Url.Content(Model[0].FeatureImage)" alt="@Model[0].PostTitle">
 									</picture>
 									<div class="btn-play-video">
 										<span class="icon-play"></span>
@@ -39,7 +39,7 @@
 								<picture>
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/webp" class="img-res">
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/jpeg" class="img-res">
-									<img src="@Url.Content(Model[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
+									<img src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
 								</picture>
 							</a>
 							<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-vertical__title">@Model[i].PostTitle</a>

@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/styles/detailnews.min.css">
+	<link rel="stylesheet" href="~/styles/detailnews.min.css" asp-append-version="true">
 }
 @{
 	ViewData["Title"] = Model.SinglePost.PostTitle;
@@ -17,7 +17,7 @@
 					<picture>
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-						<img src="@Url.Content(Model.SinglePost.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+						<img src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
 					</picture>
 					@if (Convert.ToBoolean(ViewData["video"]))
 					{
@@ -76,7 +76,7 @@
 							<picture>
 								<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-								<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+								<img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">

@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/styles/news.min.css">
+	<link rel="stylesheet" href="~/styles/news.min.css" asp-append-version="true">
 }
 @{
 	var postExcerpt = Model[0].PostExcerpt.IndexOf('.') != -1 ? Model[0].PostExcerpt.Substring(0, Model[0].PostExcerpt.IndexOf('.')) : Model[0].PostExcerpt;
@@ -15,7 +15,7 @@
 							<picture>
 								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/jpeg" class="img-res">
-								<img src="@Url.Content(Model[0].FeatureImage)" alt="Alt Text!" class="img-res img-block">
+								<img src="@Url.Content(Model[0].FeatureImage)" alt="@Model[0].PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
@@ -32,7 +32,7 @@
 								<picture>
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/webp" class="img-res">
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/jpeg" class="img-res">
-									<img src="@Url.Content(Model[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
+									<img src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
 								</picture>
 							</a>
 							<div class="card-horizontal__content">
