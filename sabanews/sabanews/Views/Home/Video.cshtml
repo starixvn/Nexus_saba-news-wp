@@ -42,7 +42,7 @@
 									<img loading="lazy" src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
 								</picture>
 							</a>
-							<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-vertical__title">@Model[i].PostTitle</a>
+							<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-vertical__title text-description">@Model[i].PostTitle</a>
 							<p class="card-vertical__datetime">@Model[i].PostDate</p>
 						</div>
 					}
