@@ -74,7 +74,7 @@
 .content {
   font-size: 1.4rem;
   line-height: 2.4rem;
-  margin: 2rem 0; }
+  margin: 0; }
   .content p {
     margin-bottom: 1rem; }
 
@@ -615,7 +615,7 @@ input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0; } }
 
 .block {
-  margin-bottom: 2rem; }
+  margin-bottom: 4rem; }
   @media screen and (max-width: 1024px) {
     .block {
       margin-bottom: 0;
@@ -830,7 +830,7 @@ button {
           font-size: 1.4rem; } }
       .block-list .list-item .item .icon-content {
         font-size: 2.4rem;
-        margin-right: 1.8rem; }
+        margin-right: .8rem; }
         @media screen and (max-width: 1024px) {
           .block-list .list-item .item .icon-content {
             font-size: 2rem;
@@ -895,7 +895,7 @@ button {
   .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0 1.6rem; }
   .card-vertical__image {
-    margin-bottom: 0.4rem;
+    margin-bottom: .8rem;
     overflow: hidden;
     display: block; }
     @media screen and (max-width: 1024px) {
@@ -1126,7 +1126,7 @@ button {
         margin-bottom: 1.2rem; } }
 
 .main .block-behind {
-  padding: 0 0 2.2rem 0; }
+  padding: 0; }
   @media screen and (max-width: 1024px) {
     .main .block-behind {
       padding: 0 0 .6rem 0; } }
