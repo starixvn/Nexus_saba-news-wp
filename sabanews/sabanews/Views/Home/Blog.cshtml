@@ -1,6 +1,6 @@
 ﻿@using sabanews.Constants;
 @section Styles{
-	<link rel="stylesheet" href="~/styles/pages/news.css">
+	<link rel="stylesheet" href="~/styles/news.min.css">
 }
 @{
 	var postExcerpt = Model[0].PostExcerpt.IndexOf('.') != -1 ? Model[0].PostExcerpt.Substring(0, Model[0].PostExcerpt.IndexOf('.')) : Model[0].PostExcerpt;

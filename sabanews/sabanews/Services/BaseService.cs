@@ -1,9 +1,9 @@
-﻿using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-namespace sabanews.Services
+﻿namespace sabanews.Services
 {
     using System.Threading.Tasks;
+    using Fanex.Data.Repository;
+    using System;
+    using System.Collections.Generic;
 
     public class BaseService : IBaseService
     {

@@ -1,22 +1,44 @@
 [
   {
-    "outputFileName": "wwwroot/styles/site.min.css",
+    "outputFileName": "wwwroot/styles/home.min.css",
     "inputFiles": [
-      "wwwroot/lib/swipper/css/swiper.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
-      "wwwroot/styles/vendor/icomoon/style.css"
+      "wwwroot/styles/pages/home.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/styles/pages/home.min.css",
+    "outputFileName": "wwwroot/styles/news.min.css",
     "inputFiles": [
-      "wwwroot/styles/pages/home.css"
+      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/site.css",
+      "wwwroot/styles/pages/news.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/styles/video.min.css",
+    "inputFiles": [
+      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/site.css",
+      "wwwroot/styles/pages/video.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/styles/detailnews.min.css",
+    "inputFiles": [
+      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/site.css",
+      "wwwroot/styles/pages/detailnews.css"
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "wwwroot/lib/swipper/js/swiper.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js",
       "wwwroot/js/site.js",
       "wwwroot/js/all.js"
     ],
