@@ -40,15 +40,16 @@
         [Route("/category/{parent}/{slug?}")]
         public async Task<IActionResult> Category(string parent,  string slug = null, int page = 1)
         {
-            var start = (page - 1) * Constants.Perpage;
+            var perpage = parent == "video" ? Constants.PerpageVideo : Constants.Perpage; 
+            var start = (page - 1) * perpage;
             slug = slug ?? parent;
             var cate = await postService.GetCateDetailAsync(slug);
-            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.Perpage);
+            var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
             ViewData["Title"] = cate.Title;
             ViewData["CurrentPage"] = page;
-            ViewData["PageSize"] = Constants.Perpage;
-            ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage);
+            ViewData["PageSize"] = perpage;
+            ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
             ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
             var view = parent == "video" ? "Video" : "Blog";

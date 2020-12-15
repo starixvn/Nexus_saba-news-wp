@@ -42,6 +42,7 @@ namespace sabanews.Constants
 
 
         public const int Perpage = 10;
+        public const int PerpageVideo = 9;
         public const int Total = 10000;
 
         
