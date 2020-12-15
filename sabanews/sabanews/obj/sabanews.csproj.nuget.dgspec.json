@@ -43,6 +43,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
             "Fanex.Data": {
               "target": "Package",
               "version": "[4.2.2, )"
@@ -54,6 +58,22 @@
             "Fanex.Data.Repository": {
               "target": "Package",
               "version": "[4.2.2, )"
+            },
+            "Fanex.Logging": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "Fanex.Logging.Extensions.AspNetCore": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Fanex.Logging.Extensions.Database": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "Fanex.Logging.Sentry": {
+              "target": "Package",
+              "version": "[1.0.6, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",

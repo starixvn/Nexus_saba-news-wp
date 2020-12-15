@@ -3,14 +3,23 @@
     using Fanex.Data;
     using Fanex.Data.MySql;
     using Fanex.Data.Repository;
+    using Fanex.Logging;
+    using Fanex.Logging.Extensions;
+    using Fanex.Logging.Extensions.AspNetCore;
+    using Fanex.Logging.Extensions.Database;
+    using Fanex.Logging.Sentry;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.FileProviders;
     using Microsoft.Extensions.Hosting;
+    using sabanews.Middlewares;
     using sabanews.Services;
+    using Sentry;
+    using System.Collections.Generic;
     using System.IO;
 
     public class Startup
@@ -24,6 +33,32 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            DbSettingProviderManager
+               .StartNewSession()
+               .WithMySql(Path.Combine(Directory.GetCurrentDirectory(), "App_Data"))
+               .Run();
+
+            LogManager
+                .SetDefaultLogCategory("chatbot-for-licensee-service")
+                .Use(new List<ILogEngine>
+                {
+                    new SentryLogging(new SentryEngineOptions
+                    {
+                        Dsn = new Dsn("https://f38b31b0602f4ca7b3c8b3c6975c179f@sentry.nexdev.net/55"),
+                        FrontEndDsn = new Dsn("https://f38b31b0602f4ca7b3c8b3c6975c179f@sentry.nexdev.net/55")
+                    })
+                });
+
+            ExceptionHandler
+                .UseConfig(new LoggingConfiguration())
+                .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -37,17 +72,20 @@
             services.AddTransient<IBaseService, BaseService>();
             services.AddTransient<IDynamicRepository, DynamicRepository>();
             services.AddTransient<IPathService, PathService>();
+            services.AddSingleton<ILogger, Logger>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseMiddleware<ErrorHandler>();
+                //app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseForwardedHeaders();
+                app.UseMiddleware<ErrorHandler>();
                 app.UseHsts();
             }
 
@@ -69,10 +107,7 @@
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            DbSettingProviderManager
-               .StartNewSession()
-               .WithMySql(Path.Combine(Directory.GetCurrentDirectory(), "App_Data"))
-               .Run();
+            
         }
     }
 }
