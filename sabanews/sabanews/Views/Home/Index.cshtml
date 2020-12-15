@@ -13,7 +13,7 @@
 								<picture>
 									<source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/webp" class="img-res">
 									<source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
-									<img loading="lazy" src="@Url.Content(Model.NewPosts[0].FeatureImage)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
+									<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.NewPosts[0].FeatureImage)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
 								</picture>
 							</a>
 							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>

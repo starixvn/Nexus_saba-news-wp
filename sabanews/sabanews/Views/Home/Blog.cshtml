@@ -15,7 +15,7 @@
 							<picture>
 								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/jpeg" class="img-res">
-								<img src="@Url.Content(Model[0].FeatureImage)" alt="@Model[0].PostTitle" class="img-res img-block">
+								<img loading="lazy" src="@Url.Content(Model[0].FeatureImage)" alt="@Model[0].PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
@@ -32,7 +32,7 @@
 								<picture>
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/webp" class="img-res">
 									<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/jpeg" class="img-res">
-									<img src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
+									<img loading="lazy" src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
 								</picture>
 							</a>
 							<div class="card-horizontal__content">

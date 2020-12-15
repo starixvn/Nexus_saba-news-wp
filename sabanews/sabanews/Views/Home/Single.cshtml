@@ -17,7 +17,7 @@
 					<picture>
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-						<img src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
+						<img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
 					</picture>
 					@if (Convert.ToBoolean(ViewData["video"]))
 					{
@@ -76,7 +76,7 @@
 							<picture>
 								<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-								<img src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+								<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
