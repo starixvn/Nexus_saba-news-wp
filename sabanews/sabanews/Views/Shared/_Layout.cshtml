@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewData["Title"]</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	
 	<environment include="Development">
 		@RenderSection("Styles", false)
 	</environment>
@@ -17,7 +16,6 @@
 </head>
 
 <body>
-	@*@Html.Partial("_Menu")*@
 	@(await Component.InvokeAsync("Menu"))
 
 	<div>
@@ -37,7 +35,6 @@
 			<span class="icon-chevron-right"></span>
 		</div>
 	</section>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<environment include="Development">
 		<script src="~/js/site.min.js"></script>
 	</environment>

@@ -27,7 +27,7 @@
 									<picture>
 										<source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/jpeg" class="img-res">
-										<img src="@Url.Content(Model.NewPosts[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
+										<img loading="lazy" src="@Url.Content(Model.NewPosts[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
 								<div class="card-horizontal__content">
@@ -57,7 +57,7 @@
 											<picture>
 												<source srcset="@Url.Content(post.FeatureImage)" type="image/webp">
 												<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg">
-												<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!">
+												<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!">
 											</picture>
 											<div class="btn-play-video">
 												<span class="icon-play"></span>
@@ -84,7 +84,7 @@
 										<picture>
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-											<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+											<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
 									<div class="card-horizontal__content">
@@ -109,7 +109,7 @@
 									<picture>
 										<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-										<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+										<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
 								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
@@ -134,7 +134,7 @@
 										<picture>
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-											<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+											<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
 									<div class="card-horizontal__content">
@@ -156,7 +156,7 @@
 										<picture>
 											<source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/jpeg" class="img-res">
-											<img src="@Url.Content(Model.BackstagePosts[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
+											<img loading="lazy" src="@Url.Content(Model.BackstagePosts[i].FeatureImage)" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
 									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
@@ -180,7 +180,7 @@
 									<picture>
 										<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-										<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+										<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
 									</picture>
 								</a>
 								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
@@ -206,7 +206,7 @@
 										<picture>
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-											<img src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
+											<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="Alt Text!" class="img-res img-block">
 										</picture>
 									</a>
 									<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>

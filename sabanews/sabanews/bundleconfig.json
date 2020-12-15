@@ -2,7 +2,7 @@
   {
     "outputFileName": "wwwroot/styles/home.min.css",
     "inputFiles": [
-      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/home.css"
@@ -11,7 +11,7 @@
   {
     "outputFileName": "wwwroot/styles/news.min.css",
     "inputFiles": [
-      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/news.css"
@@ -20,7 +20,7 @@
   {
     "outputFileName": "wwwroot/styles/video.min.css",
     "inputFiles": [
-      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/video.css"
@@ -29,7 +29,7 @@
   {
     "outputFileName": "wwwroot/styles/detailnews.min.css",
     "inputFiles": [
-      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.css",
+      "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/detailnews.css"
@@ -38,7 +38,8 @@
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
-      "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js",
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/swipper/js/swiper.min.js",
       "wwwroot/js/site.js",
       "wwwroot/js/all.js"
     ],
