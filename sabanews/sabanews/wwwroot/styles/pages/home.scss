@@ -7,7 +7,7 @@
 @import '../base/base';
 
 @import '../layout/footer';
-@import '../layout/header';
+@import  '../layout/_header.scss';
 
 @import '../components/block';
 @import '../components/img';
@@ -64,9 +64,9 @@
                     @include grid(17.5rem 1fr, none, 1.2rem);
                 }
 
-                .card-horizontal__image{
+                .card-horizontal__image {
                     @include Mobile {
-                        height : 7.2rem;
+                        height: 7.2rem;
                     }
                 }
             }
@@ -184,9 +184,15 @@
                     display: none;
                 }
 
+                .card-item {
+                    background-color: $block-highlight-bgcolor;
+                }
+
                 .card-horizontal {
                     margin-bottom: 1rem;
-
+                    &__content{
+                        padding : 1rem 0;
+                    }
                     &:last-child {
                         margin-bottom: 0;
                     }
@@ -210,7 +216,7 @@
     // block-soccer
     .block-soccer {
         .block__content {
-            @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
+            @include grid(repeat(4, 1fr), unset, 0 #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
@@ -237,7 +243,7 @@
     }
     // block-guess
     .block-guess {
-        padding: 5rem 0 6.2rem 0;
+        padding: 5rem 0 3.2rem 0;
         background: $bg-block;
         margin-bottom: 6rem;
 
@@ -259,7 +265,7 @@
             }
 
             @include Mobile {
-               display : inherit !important;
+                display: inherit !important;
             }
 
             .card-vertical__title {
@@ -362,7 +368,7 @@
         }
 
         .block__content {
-            @include grid(repeat(2, 1fr), unset, #{$column-gap});
+            @include grid(repeat(2, 1fr), unset, 0 #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});

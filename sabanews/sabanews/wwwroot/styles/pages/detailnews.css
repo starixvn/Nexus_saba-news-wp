@@ -120,7 +120,7 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 12rem; }
+  padding-top: 10rem; }
   @media screen and (max-width: 1024px) {
     .main {
       padding-top: 7rem; } }
@@ -214,21 +214,25 @@ body {
         width: 4rem;
         height: 4rem; } }
 
-textarea,
-input[type]:not([type=number]):not([type=button]):not([type=search]) {
+:root {
+  --column: 12;
+  --padding-col: 0 1.5rem; }
+
+textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background-color: #E8EAEF;
   outline: none; }
-  textarea::placeholder,
-  input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
+  textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     color: #828282; }
-  textarea:-ms-input-placeholder,
-  input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
+  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: #fff; }
-  textarea::-ms-input-placeholder,
-  input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-placeholder {
+  textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-placeholder {
     /* Microsoft Edge */
     color: #fff; }
+
+:root {
+  --column: 12;
+  --padding-col: 0 1.5rem; }
 
 .header {
   background-color: #FFFDF9;
@@ -236,7 +240,7 @@ input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 100%;
   z-index: 99999; }
   .header .top-header {
-    padding: 1.5rem 0;
+    padding: .5rem 0;
     background-color: #FFFDF9;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
     transition: .3s ease-in-out; }
@@ -615,13 +619,13 @@ input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0; } }
 
 .block {
-  margin-bottom: 4rem; }
+  margin-bottom: 2rem; }
   @media screen and (max-width: 1024px) {
     .block {
       margin-bottom: 0;
       padding-bottom: 2.4rem; } }
   .block__title {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     position: relative; }
     @media screen and (max-width: 1024px) {
       .block__title {
