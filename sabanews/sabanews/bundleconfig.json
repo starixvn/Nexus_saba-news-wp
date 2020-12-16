@@ -4,6 +4,7 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/super-web-share.css",
       "wwwroot/styles/site.css"
     ]
   },
@@ -12,6 +13,7 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/super-web-share.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/home.css"
     ]
@@ -21,6 +23,7 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/super-web-share.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/news.css"
     ]
@@ -30,6 +33,7 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/super-web-share.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/video.css"
     ]
@@ -39,6 +43,7 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/super-web-share.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/detailnews.css"
     ]
@@ -48,6 +53,7 @@
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.min.js",
       "wwwroot/lib/swipper/js/swiper.min.js",
+      "wwwroot/js/super-web-share.js",
       "wwwroot/js/site.js",
       "wwwroot/js/all.js"
     ],
