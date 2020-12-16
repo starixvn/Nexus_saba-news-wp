@@ -6,11 +6,11 @@
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
             var video = $(this).parent().parent().find('.play_video').text();
-            if ($.trim(video) == "") {
+            if ($.trim(video) === "") {
                 var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
-                var iframe = $(($.parseHTML(found[2].outerHTML)));
+                iframe = $(($.parseHTML(found[2].outerHTML)));
 
                 iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
@@ -34,11 +34,11 @@
             $(this).parent().parent().addClass("active");
 
             var video = slide.find('.play_video').html();
-            if ($.trim(video) == "") {
+            if ($.trim(video) === "") {
                 var iframe = slide.find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
-                var iframe = $(($.parseHTML(found[2].outerHTML)));
+                iframe = $(($.parseHTML(found[2].outerHTML)));
 
                 iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
@@ -52,15 +52,21 @@
     HandleSearch: function () {
         $('.search-input button').on('click', function (e) {
             var keyword = $('input[name=keyword]').val();
-            if ($.trim(keyword) == '') {
+            if ($.trim(keyword) === '') {
                 e.preventDefault();
                 $('input[name=keyword]').focus();
             }
         });
     },
+    HandleUI: function () {
+        if ($(window).innerWidth() < 768) {
+            $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
+        }
+    },
     init: function () {
         this.HandleIframe();
         this.HandleSearch();
+        this.HandleUI();
     }
 }
 
