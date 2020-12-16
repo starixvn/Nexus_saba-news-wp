@@ -1098,10 +1098,7 @@ button {
         grid-gap: 1.6rem; } }
     @media (max-width: 767px) {
       .main .block-guess .block__content {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 1fr;
-        grid-gap: 1.2rem; } }
+        display: inherit !important; } }
     .main .block-guess .block__content .card-vertical__title {
       color: #fff; }
     @media (max-width: 767px) {

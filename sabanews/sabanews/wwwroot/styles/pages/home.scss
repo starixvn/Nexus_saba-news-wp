@@ -259,7 +259,7 @@
             }
 
             @include Mobile {
-                @include grid(repeat(2, 1fr), 1fr, #{$column-gap-mobile});
+               display : inherit !important;
             }
 
             .card-vertical__title {

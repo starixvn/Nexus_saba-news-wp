@@ -183,8 +183,10 @@
 										<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-								<p class="card-vertical__datetime">@post.PostDate</p>
+                                <div class="group group-mobile">
+                                    <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+                                    <p class="card-vertical__datetime">@post.PostDate</p>
+                                </div>
 							</div>
 
 						}

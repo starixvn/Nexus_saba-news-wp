@@ -6,7 +6,11 @@
 			<div class="group-menu">
 				<div class="logo">
 					<a href="@Url.Action("Index", "Home")">
-						<img src="~/images/logo-2.png" alt="logo">
+                        <picture>
+                            <source media="(max-width : 767px)" srcset="~/images/logo-mb.png">
+                            <source media="(min-width: 768px)" srcset="~/images/logo-2.png">
+                            <img src="~/images/logo-2.png" alt="saba-sport">
+                        </picture>
 					</a>
 				</div>
 				<div class="button-mobile">
