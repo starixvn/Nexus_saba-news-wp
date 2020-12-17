@@ -27,6 +27,7 @@
   {
     "outputFileName": "wwwroot/styles/video.min.css",
     "inputFiles": [
+      "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
       "wwwroot/styles/pages/video.css"
