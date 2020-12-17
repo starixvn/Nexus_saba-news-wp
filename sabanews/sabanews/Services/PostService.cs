@@ -1,8 +1,8 @@
 ﻿namespace sabanews.Services
 {
-    using Microsoft.AspNetCore.Mvc;
     using sabanews.Criteria;
     using sabanews.Models;
+    using sabanews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -14,6 +14,7 @@
     {
         private readonly IBaseService baseService;
         private readonly IPathService pathService;
+
         public PostService(IBaseService baseService, IPathService pathService)
         {
             this.baseService = baseService;
@@ -80,7 +81,7 @@
                 _Start = 0,
                 _End = 4
             };
-            var posts =  await baseService.GetDataAsync<Post>(criteria);
+            var posts = await baseService.GetDataAsync<Post>(criteria);
             return posts;
         }
 
@@ -141,7 +142,7 @@
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }
 
-        public async Task<Boolean> CheckTypeCategoryAsync(int parentId, int ID)
+        public async Task<bool> CheckTypeCategoryAsync(int parentId, int ID)
         {
             var criteria = new CheckTypeCategoryCriteria
             {
@@ -149,7 +150,7 @@
                 _ID = ID
             };
             var cate = await baseService.GetDataEntityAsync<Category>(criteria);
-            return cate == null ? false : true;
+            return cate != null;
         }
 
         public async Task<string> GetTagNameBySlugAsync(string slug)
@@ -172,7 +173,6 @@
             return await baseService.GetDataAsync<Menu>(criteria);
         }
 
-
         public IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
             foreach (var post in posts)
@@ -189,18 +189,19 @@
         {
             var imageSplit = image.Split("/");
             var imageName = imageSplit[imageSplit.Length - 1];
-            var file = pathService.MapPathContentRoot("wordpress/"+imageName);
+            var file = pathService.MapPathContentRoot("wordpress/" + imageName);
             if (System.IO.File.Exists(file))
             {
-                image =  "wordpress/"+ imageName;
+                image = "wordpress/" + imageName;
             }
             return image;
         }
+
         public string GetImageInFolder(string image)
         {
             var imageSplit = image.Split("/");
             var imageName = imageSplit[imageSplit.Length - 1];
-            var file = pathService.MapAbsolutePath(@"C:\Users\hank.nguyen\Desktop\sabaimgs\",imageName);
+            var file = pathService.MapAbsolutePath(@"C:\Users\hank.nguyen\Desktop\sabaimgs\", imageName);
             if (System.IO.File.Exists(file))
             {
                 image = file;
@@ -211,7 +212,7 @@
         public static string ResizeImage(string image)
         {
             var result = image;
-            var extension = "."+image.Split(".").Last();
+            var extension = "." + image.Split(".").Last();
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             foreach (var type in imgTypes)
             {
@@ -225,7 +226,6 @@
             }
             return result;
         }
-
 
         public static string ToRelativeDate(DateTime dateTime)
         {
@@ -242,12 +242,14 @@
 
             return dateTime.ToString("H:mm dd/MM/yyyy");
         }
+
         public static string ConvertToUnSign3(string s) // change có dấu thành không dấu
         {
             Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
+
         public static string GenerateSeoFriendlyURL(string Title)
         {
             Title = ConvertToUnSign3(Title);

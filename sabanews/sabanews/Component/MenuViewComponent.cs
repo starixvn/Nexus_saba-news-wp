@@ -1,8 +1,8 @@
 ﻿namespace sabanews.Component
 {
     using Microsoft.AspNetCore.Mvc;
-    using sabanews.Services;
     using sabanews.Constants;
+    using sabanews.Services.Interfaces;
     using System.Threading.Tasks;
 
     public class MenuViewComponent : ViewComponent

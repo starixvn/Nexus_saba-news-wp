@@ -3,7 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using sabanews.Constants;
     using sabanews.Models;
-    using sabanews.Services;
+    using sabanews.Services.Interfaces;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -11,11 +11,12 @@
     public class HomeController : Controller
     {
         private readonly IPostService postService;
-        
+
         public HomeController(IPostService postService)
         {
             this.postService = postService;
         }
+
         public async Task<IActionResult> Index()
         {
             var Models = new PostViewModel
@@ -35,14 +36,13 @@
             return View(Models);
         }
 
-        
         [Route("/category/{parent}/{slug?}/page/{page}")]
         [Route("/category/{parent}/{slug?}")]
-        public async Task<IActionResult> Category(string parent,  string slug = null, int page = 1)
+        public async Task<IActionResult> Category(string parent, string slug = null, int page = 1)
         {
-            var perpage = parent == "video" ? Constants.PerpageVideo : Constants.Perpage; 
+            var perpage = parent == "video" ? Constants.PerpageVideo : Constants.Perpage;
             var start = (page - 1) * perpage;
-            slug = slug ?? parent;
+            slug ??= parent;
             var cate = await postService.GetCateDetailAsync(slug);
             var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
@@ -138,6 +138,5 @@
             var view = Posts.Any() ? "Blog" : "EmptyBlog";
             return View(view, Posts);
         }
-
     }
 }

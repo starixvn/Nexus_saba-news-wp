@@ -1,6 +1,7 @@
 ﻿namespace sabanews.Services
 {
     using Microsoft.AspNetCore.Hosting;
+    using sabanews.Services.Interfaces;
     using System.IO;
 
     public class PathService : IPathService

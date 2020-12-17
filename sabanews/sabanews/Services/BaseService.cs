@@ -1,14 +1,14 @@
 ﻿namespace sabanews.Services
 {
-    using System.Threading.Tasks;
     using Fanex.Data.Repository;
+    using sabanews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class BaseService : IBaseService
     {
         private readonly IDynamicRepository dynamicRepository;
-
 
         public BaseService(
             IDynamicRepository dynamicRepository)
@@ -55,6 +55,5 @@
 
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>(new List<TFirst>(), new List<TSecond>(), new List<TThird>());
         }
-
     }
 }

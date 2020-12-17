@@ -18,6 +18,7 @@
     using Microsoft.Extensions.Hosting;
     using sabanews.Middlewares;
     using sabanews.Services;
+    using sabanews.Services.Interfaces;
     using Sentry;
     using System;
     using System.Collections.Generic;
