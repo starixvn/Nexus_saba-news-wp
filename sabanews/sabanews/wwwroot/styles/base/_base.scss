@@ -48,8 +48,9 @@ body{
 }
 
 .main {
-    padding-top: 10rem;
-    @include tableMobile{
+    padding-top: 8.5rem;
+
+    @include tableMobile {
         padding-top: 7rem;
     }
 }

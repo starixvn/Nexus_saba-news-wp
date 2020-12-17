@@ -1,5 +1,6 @@
 .card-vertical {
     padding-bottom: 1.6rem;
+
     &.card-vertical-highlight {
         [class*="card-vertical__"]:not(.card-vertical__image) {
             padding: 0 $padding-main;
@@ -31,6 +32,7 @@
         text-decoration: none;
         transition: color .3s ease;
         display: block;
+
         &:hover {
             color: $color-title-hover;
         }

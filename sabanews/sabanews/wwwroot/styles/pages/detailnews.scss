@@ -18,23 +18,28 @@
 @import '../components//card-vertical';
 @import '../components/card-horizontal';
 
+
+
 .main .container {
     @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
-    @include tableMobile{
+
+    @include tableMobile {
         @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
     }
-    @include Mobile{
+
+    @include Mobile {
         display: inherit;
     }
 }
 
-img{
-    width : 100%;
+img {
+    width: 100%;
 }
 
-.block-list{
+.block-list {
     margin: 4rem 0;
-    @include tableMobile{
+
+    @include tableMobile {
         margin: 2rem 0;
     }
 }
@@ -51,8 +56,9 @@ img{
         height: 20rem !important;
     }
 }
-.single{
-    max-height : 48rem;
+
+.single {
+    max-height: 48rem;
 }
 
 .tag-post {
@@ -64,10 +70,11 @@ img{
 }
 
 
-.title-care{
+.title-care {
     padding-top: 3rem;
     border-top: 1px solid $color-input;
-    &::after{
+
+    &::after {
         display: none;
     }
 }
@@ -76,34 +83,43 @@ img{
     [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0 !important;
     }
-    .card-vertical__title{
+
+    .card-vertical__title {
         font-size: 2.4rem;
         line-height: 3.8rem;
         margin-top: 1rem;
     }
-    .card-vertical__image{
+
+    .card-vertical__image {
         @include tableMobile {
             max-height: 20rem;
         }
-        @include landscapeTablet{
+
+        @include landscapeTablet {
             max-height: 30rem;
         }
-        @include Mobile{
+
+        @include Mobile {
             max-height: 100%;
         }
     }
 }
-.card-horizontal{
-    @include grid(30.5rem 1fr, 17rem , 1.2rem);
-    @include tableMobile{
-        @include grid(20.5rem 1fr, 12rem , 1.2rem);
+
+.card-horizontal {
+    @include grid(30.5rem 1fr, 17rem, 2rem);
+
+    @include tableMobile {
+        @include grid(20.5rem 1fr, 12rem, 1.2rem);
     }
-    @include Mobile{
-        @include grid(16.5rem 1fr, 9rem , 1.2rem);
+
+    @include Mobile {
+        @include grid(16.5rem 1fr, 9rem, 1.2rem);
     }
+
     margin-bottom: 2rem;
-    &__image{
-        @include tableMobile{
+
+    &__image {
+        @include tableMobile {
             max-height: 13.2rem !important;
         }
     }

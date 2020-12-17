@@ -120,7 +120,7 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 10rem; }
+  padding-top: 8.5rem; }
   @media screen and (max-width: 1024px) {
     .main {
       padding-top: 7rem; } }
@@ -725,7 +725,7 @@ button {
       cursor: pointer;
       font-size: 2.4rem; }
       .block-calendar .box-calendar .btn::before {
-        color: #333; }
+        color: #F12F19; }
   .block-calendar .table-calendar {
     width: 100%;
     margin-top: .9rem; }
@@ -890,6 +890,8 @@ button {
       text-decoration: none; }
       .social .item-social .item .icon-social {
         font-size: 2.4rem; }
+        .social .item-social .item .icon-social:before {
+          color: #828282; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }

@@ -7,7 +7,7 @@
 @import '../base/base';
 
 @import '../layout/footer';
-@import  '../layout/header';
+@import '../layout/header';
 
 @import '../components/block';
 @import '../components/img';
@@ -190,9 +190,11 @@
 
                 .card-horizontal {
                     margin-bottom: 1rem;
-                    &__content{
-                        padding : 1rem 0;
+
+                    &__content {
+                        padding: 1rem 0;
                     }
+
                     &:last-child {
                         margin-bottom: 0;
                     }
@@ -216,7 +218,7 @@
     // block-soccer
     .block-soccer {
         .block__content {
-            @include grid(repeat(4, 1fr), unset, 0 #{$column-gap});
+            @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet} #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
@@ -227,6 +229,8 @@
             }
 
             .card-vertical {
+                padding-bottom: 0;
+
                 @include Mobile {
                     padding-bottom: 0;
                 }
@@ -245,7 +249,6 @@
     .block-guess {
         padding: 5rem 0 3.2rem 0;
         background: $bg-block;
-        margin-bottom: 6rem;
 
         @include tableMobile {
             padding: 1.9rem 0 1rem 0;
@@ -332,6 +335,20 @@
 
             .card-vertical {
                 &.card-vertical-highlight {
+                    padding-bottom: 1.6rem !important;
+
+                    &:nth-child(1) {
+                        [class*="card-vertical__image"] {
+                            max-height: 36.3rem;
+                        }
+                    }
+
+                    &:nth-child(2), &:nth-child(3) {
+                        [class*="card-vertical__image"] {
+                            max-height: 17.2rem;
+                        }
+                    }
+
                     &:nth-child(1) {
                         [class*="card-vertical__"]:not(.card-vertical__image) {
                             padding: 0 $padding-main !important;
@@ -368,7 +385,7 @@
         }
 
         .block__content {
-            @include grid(repeat(2, 1fr), unset, 0 #{$column-gap});
+            @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
@@ -379,6 +396,8 @@
             }
 
             .card-vertical {
+                padding-bottom: 0;
+
                 @include Mobile {
                     padding-bottom: 0;
                 }
@@ -410,5 +429,3 @@
         }
     }
 }
-
-

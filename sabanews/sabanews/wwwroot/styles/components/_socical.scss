@@ -1,22 +1,32 @@
-.social{
+.social {
     padding: 0;
     list-style: none;
     @include flex(center, nowrap, center, row);
     margin: 4rem 0 3rem 0;
-    .item-social{
+
+    .item-social {
         margin-right: 1rem;
-        &:first-child{
+
+        &:first-child {
             font-size: 1.6rem;
             line-height: 2.4rem;
             color: $color-pagination;
         }
-        &:last-child{
+
+
+        &:last-child {
             margin-right: 0;
         }
-        .item{
+
+        .item {
             text-decoration: none;
-            .icon-social{
+
+            .icon-social {
                 font-size: 2.4rem;
+
+                &:before {
+                    color: $color-datetime;
+                }
             }
         }
     }
