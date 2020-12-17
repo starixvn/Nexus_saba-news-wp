@@ -1,4 +1,4 @@
-﻿namespace sabanews.Component
+﻿namespace sabanews.Views.Shared.Components
 {
     using Microsoft.AspNetCore.Mvc;
     using sabanews.Constants;
@@ -19,9 +19,9 @@
         public async Task<IViewComponentResult> InvokeAsync(int year = 0, int month = 0)
         {
             var newPosts = await postService.GetPostsAsync(Constants.NewPostCategory, 0, 4);
-            var currentMonth = Convert.ToInt32(DateTime.Now.Month.ToString());
-            var currentYear = Convert.ToInt32(DateTime.Now.Year.ToString());
-            var currentDay = Convert.ToInt32(DateTime.Now.Day.ToString());
+            var currentMonth = DateTime.Now.Month;
+            var currentYear = DateTime.Now.Year;
+            var currentDay = DateTime.Now.Day;
             if (year != 0 && month != 0)
             {
                 if (year != currentYear || month != currentMonth)

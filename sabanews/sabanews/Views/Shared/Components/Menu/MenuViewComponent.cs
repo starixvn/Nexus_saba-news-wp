@@ -1,4 +1,4 @@
-﻿namespace sabanews.Component
+﻿namespace sabanews.Views.Shared.Components
 {
     using Microsoft.AspNetCore.Mvc;
     using sabanews.Constants;
