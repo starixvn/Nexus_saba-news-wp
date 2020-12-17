@@ -19,8 +19,10 @@
     using sabanews.Middlewares;
     using sabanews.Services;
     using Sentry;
+    using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     public class Startup
     {
@@ -33,19 +35,31 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var connections = Configuration.GetSection("ConnectionStrings")
+                         .GetChildren()
+                         .AsEnumerable()
+                         .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
+                         .ToDictionary(x => x.GetValue<string>("Name"),
+                             y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
+
+            string evn = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            string resourcePath = !string.IsNullOrWhiteSpace(evn) ? $"~/App_Data/{evn}" : "~/App_Data";
+
             DbSettingProviderManager
                .StartNewSession()
-               .WithMySql(Path.Combine(Directory.GetCurrentDirectory(), "App_Data"))
+               .Use(connections)
+               .WithMySql()
+               .UseDefaultDbSettingProvider(resourcePath: resourcePath)
                .Run();
 
             LogManager
-                .SetDefaultLogCategory("chatbot-for-licensee-service")
+                .SetDefaultLogCategory(Configuration.GetSection("LogCategory").Value)
                 .Use(new List<ILogEngine>
                 {
                     new SentryLogging(new SentryEngineOptions
                     {
-                        Dsn = new Dsn("https://f38b31b0602f4ca7b3c8b3c6975c179f@sentry.nexdev.net/55"),
-                        FrontEndDsn = new Dsn("https://f38b31b0602f4ca7b3c8b3c6975c179f@sentry.nexdev.net/55")
+                        Dsn = new Dsn(Configuration.GetSection("SentryEngineOptions:Dsn").Value),
+                        FrontEndDsn = new Dsn(Configuration.GetSection("SentryEngineOptions:FrontEndDsn").Value)
                     })
                 });
 
@@ -66,8 +80,9 @@
             });
 
             services.AddResponseCompression();
-            
+
             services.AddControllersWithViews();
+            services.AddSingleton(Configuration);
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IBaseService, BaseService>();
             services.AddTransient<IDynamicRepository, DynamicRepository>();
@@ -79,13 +94,13 @@
         {
             if (env.IsDevelopment())
             {
-                app.UseMiddleware<ErrorHandler>();
-                //app.UseDeveloperExceptionPage();
+                app.UseForwardedHeaders();
+                app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseForwardedHeaders();
                 app.UseMiddleware<ErrorHandler>();
+                app.UseForwardedHeaders();
                 app.UseHsts();
             }
 
@@ -106,8 +121,6 @@
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            
         }
     }
 }

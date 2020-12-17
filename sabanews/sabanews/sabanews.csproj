@@ -8,19 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App_Data\Development\Sp_Name.xml" />
+    <None Remove="App_Data\Local\Sp_Name.xml" />
+    <None Remove="App_Data\Production\Sp_Name.xml" />
     <None Remove="App_Data\Sp_Name.xml" />
+    <None Remove="App_Data\UAT\Sp_Name.xml" />
     <None Remove="wordpress\Test.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="App_Data\Development\Sp_Name.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Local\Sp_Name.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Production\Sp_Name.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\Sp_Name.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\UAT\Sp_Name.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="wordpress\Test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
@@ -33,5 +48,4 @@
     <PackageReference Include="Fanex.Logging.Sentry" Version="1.0.6" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
-
 </Project>

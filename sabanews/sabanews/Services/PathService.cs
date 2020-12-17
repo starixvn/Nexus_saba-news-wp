@@ -5,30 +5,30 @@
 
     public class PathService : IPathService
     {
-        private readonly IHostingEnvironment _HostEnvironment;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public PathService(IHostingEnvironment HostEnvironment)
+        public PathService(IWebHostEnvironment webHostEnvironment)
         {
-            this._HostEnvironment = HostEnvironment;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         public string MapPath(string path)
         {
-            string webRootPath = _HostEnvironment.WebRootPath;
+            string webRootPath = webHostEnvironment.WebRootPath;
 
             return Path.Combine(webRootPath, path);
         }
 
         public string MapPathContentRoot(string path)
         {
-            string contentRootPath = _HostEnvironment.ContentRootPath;
+            string contentRootPath = webHostEnvironment.ContentRootPath;
 
             return Path.Combine(contentRootPath, path);
         }
 
         public string MapFullPath(string path)
         {
-            string contentRootPath = _HostEnvironment.ContentRootPath;
+            string contentRootPath = webHostEnvironment.ContentRootPath;
 
             return Path.GetFullPath(contentRootPath + path);
         }

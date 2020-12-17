@@ -1,21 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitLab\\sabanews\\sabanews\\sabanews\\sabanews.csproj": {}
+    "D:\\Project\\sabanews\\sabanews\\sabanews\\sabanews.csproj": {}
   },
   "projects": {
-    "D:\\GitLab\\sabanews\\sabanews\\sabanews\\sabanews.csproj": {
+    "D:\\Project\\sabanews\\sabanews\\sabanews\\sabanews.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitLab\\sabanews\\sabanews\\sabanews\\sabanews.csproj",
+        "projectUniqueName": "D:\\Project\\sabanews\\sabanews\\sabanews\\sabanews.csproj",
         "projectName": "sabanews",
-        "projectPath": "D:\\GitLab\\sabanews\\sabanews\\sabanews\\sabanews.csproj",
-        "packagesPath": "C:\\Users\\quinn.vo\\.nuget\\packages\\",
-        "outputPath": "D:\\GitLab\\sabanews\\sabanews\\sabanews\\obj\\",
+        "projectPath": "D:\\Project\\sabanews\\sabanews\\sabanews\\sabanews.csproj",
+        "packagesPath": "C:\\Users\\oliver.dang\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\sabanews\\sabanews\\sabanews\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "D:\\GitLab\\sabanews\\sabanews\\NuGet.Config",
-          "C:\\Users\\quinn.vo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "D:\\Project\\sabanews\\sabanews\\NuGet.Config",
+          "C:\\Users\\oliver.dang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -23,8 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://nuget.nexdev.net/api/v2": {},
           "http://nuget.nexdev.net/api/v2/": {},
+          "http://nuget.owdev.net/api/v2/": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
