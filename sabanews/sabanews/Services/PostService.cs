@@ -2,6 +2,7 @@
 {
     using sabanews.Criteria;
     using sabanews.Models;
+    using sabanews.Constants;
     using sabanews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
@@ -82,6 +83,11 @@
                 _End = 4
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            foreach (var post in posts)
+            {
+                var isVideo =  await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
+                post.Type = isVideo ? Constants.SingleVideoType : Constants.SingleNewsType;
+            }
             return posts;
         }
 
