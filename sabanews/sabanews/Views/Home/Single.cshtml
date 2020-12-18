@@ -40,8 +40,8 @@
 			<ul class="block-list">
 				@foreach (var post in Model.RelatedPosts)
 				{
-					var icon = post.Type == Constants.SingleVideoType ? "icon-video" : "icon-sport-soccer";
-					<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content @icon"></i> @post.PostTitle</a></li>
+					
+					<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>
 				}
 			</ul>
 

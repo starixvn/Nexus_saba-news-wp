@@ -37,6 +37,11 @@ namespace sabanews.Constants
         public const string BlogView = "Blog";
         public const string VideoView = "Video";
 
+        public const string VideoPostType = "video";
+        public const string FootballPostType = "sport-soccer";
+        public const string BasketballPostType = "sport-basketball";
+        public const string TennisPostType = "sport-tennis-2";
+
         public const int FromFirstItem = 0;
         public const int GetThreeItems = 3;
         public const int GetFourItems = 4;

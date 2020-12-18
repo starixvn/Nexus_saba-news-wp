@@ -76,6 +76,24 @@
                 var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+                post.Type = Constants.FootballPostType;
+                var isVideo = await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
+                if (isVideo)
+                {
+                    post.Type = Constants.VideoPostType;
+                }
+                else if (post.Categories.Contains(Constants.FootballCategory.ToString()))
+                {
+                    post.Type = Constants.FootballPostType;
+                }
+                else if (post.Categories.Contains(Constants.BasketballCategory.ToString()))
+                {
+                    post.Type = Constants.BasketballPostType;
+                }
+                else if (post.Categories.Contains(Constants.TennisCategory.ToString()))
+                {
+                    post.Type = Constants.TennisPostType;
+                }
             }
             return post;
         }
