@@ -106,13 +106,7 @@
                 _Start = 0,
                 _End = 4
             };
-            var posts = await baseService.GetDataAsync<Post>(criteria);
-            foreach (var post in posts)
-            {
-                var isVideo =  await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
-                post.Type = isVideo ? Constants.SingleVideoType : Constants.SingleNewsType;
-            }
-            return posts;
+            return await baseService.GetDataAsync<Post>(criteria);
         }
 
         public async Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID)
@@ -168,6 +162,14 @@
             var criteria = new GetCateDetailCriteria
             {
                 _Slug = slug
+            };
+            return await baseService.GetDataEntityAsync<Category>(criteria);
+        }
+        public async Task<Category> GetPageDetailAsync(int ID)
+        {
+            var criteria = new GetPageDetailByCateIdCriteria
+            {
+                ID = ID
             };
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }
@@ -265,10 +267,10 @@
                 return string.Format("{0} giây trước", timeSpan.Seconds);
 
             if (timeSpan <= TimeSpan.FromMinutes(60))
-                return timeSpan.Minutes > 1 ? String.Format("{0} phút trước", timeSpan.Minutes) : "about a minute ago";
+                return timeSpan.Minutes > 1 ? String.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
 
             if (timeSpan <= TimeSpan.FromHours(24))
-                return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "about an hour ago";
+                return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
 
             return dateTime.ToString("H:mm dd/MM/yyyy");
         }

@@ -12,7 +12,7 @@
 				<div class="single card-vertical__image">
 					@if (Convert.ToBoolean(ViewData["video"]))
 					{
-						<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+						<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent"/>
 					}
 					<picture>
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">

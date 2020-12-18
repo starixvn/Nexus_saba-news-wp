@@ -30,10 +30,10 @@
                 BackstagePosts = await postService.GetPostsAsync(Constants.BackstageCategory, Constants.FromFirstItem, Constants.GetThreeItems),
                 TransferPosts = await postService.GetPostsAsync(Constants.TransferCategory, Constants.FromFirstItem, Constants.GetFiveItems)
             };
-
+            var pageDetail = await postService.GetPageDetailAsync(Constants.Home);
             ViewData["CategoryId"] = Constants.Home;
-            ViewData["Title"] = Constants.HomeTitle;
-            ViewData["description"] = Constants.HomeTitle;
+            ViewData["Title"] = pageDetail.Title;
+            ViewData["description"] = pageDetail.Description ??= pageDetail.Title;
             return View(Models);
         }
 
@@ -48,7 +48,7 @@
             var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
             ViewData["Title"] = cate.Title;
-            ViewData["description"] = cate.Title;
+            ViewData["description"] = cate.Description ??= cate.Title;
             ViewData["CurrentPage"] = page;
             ViewData["PageSize"] = perpage;
             ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
@@ -63,9 +63,10 @@
         public async Task<IActionResult> MatchSchedule()
         {
             var post = await postService.GetPostDetailAsync(Constants.MatchScheduleCategory);
+            var pageDetail = await postService.GetPageDetailAsync(Constants.MatchScheduleCategory);
             ViewData["CategoryId"] = Constants.MatchScheduleCategory;
-            ViewData["Title"] = Constants.MatchScheduleTitle;
-            ViewData["Description"] = Constants.MatchScheduleTitle;
+            ViewData["Title"] = pageDetail.Title.Replace("%currentdate%", DateTime.Now.ToString());
+            ViewData["Description"] = pageDetail.Description ??= pageDetail.Title;
             return View(post);
         }
 
