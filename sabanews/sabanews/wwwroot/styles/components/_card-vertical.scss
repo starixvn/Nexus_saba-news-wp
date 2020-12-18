@@ -4,6 +4,10 @@
     &.card-vertical-highlight {
         [class*="card-vertical__"]:not(.card-vertical__image) {
             padding: 0 $padding-main;
+
+            @include Mobile {
+                padding: 0 .8rem;
+            }
         }
     }
 

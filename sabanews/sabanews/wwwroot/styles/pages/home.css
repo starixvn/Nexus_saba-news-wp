@@ -414,13 +414,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-wrap: wrap;
               justify-content: flex-start;
               flex-direction: column;
-              background-color: #fff;
               height: 100vh !important;
               height: 45%;
               z-index: 999;
-              display: none; } }
+              display: none;
+              background-color: #FFFDF9; } }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
+            @media (max-width: 767px) {
+              .header .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
+                border-top: 1px solid #E0E0E0; } }
             @media (max-width: 767px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item {
                 width: 100%;
@@ -433,7 +436,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .click-sub {
               position: absolute;
               top: 0;
-              right: -1rem;
+              right: 0;
               width: 4.6rem;
               height: 5rem;
               transition: all .2s ease-in-out;
@@ -898,6 +901,9 @@ button {
   padding-bottom: 1.6rem; }
   .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0 1.6rem; }
+    @media (max-width: 767px) {
+      .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
+        padding: 0 .8rem; } }
   .card-vertical__image {
     margin-bottom: .8rem;
     overflow: hidden;
@@ -957,7 +963,8 @@ button {
     background-color: #E8EAEF; }
     @media (max-width: 767px) {
       .main .block-hot-news .block__content .card-vertical {
-        margin-bottom: 1.2rem; } }
+        margin-bottom: 1.2rem;
+        padding-bottom: 1rem; } }
     .main .block-hot-news .block__content .card-vertical .card-vertical__image {
       max-height: 23rem; }
       @media screen and (max-width: 1024px) {
@@ -1089,7 +1096,7 @@ button {
   background: #223453; }
   @media screen and (max-width: 1024px) {
     .main .block-guess {
-      padding: 1.9rem 0 1rem 0;
+      padding: 2rem 0 2.4rem 0;
       margin-bottom: 2.1rem; } }
   .main .block-guess .block__title a {
     background-color: #223453;
@@ -1159,13 +1166,16 @@ button {
         grid-template-rows: unset;
         grid-gap: 1.2rem; } }
     .main .block-behind .block__content .card-vertical.card-vertical-highlight {
-      padding-bottom: 1.6rem !important; }
+      padding-bottom: .5rem !important; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
         max-height: 36.3rem; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
         max-height: 17.2rem; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0 1.6rem !important; }
+        @media (max-width: 767px) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
+            padding: 0 .8rem !important; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(n+1) [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0; }
     .main .block-behind .block__content .card-item-1 {
@@ -1208,7 +1218,10 @@ button {
   margin-top: 3rem; }
   @media screen and (max-width: 1024px) {
     .main .block-tennis .block-list {
-      margin-top: 0; } }
+      margin-top: 1.2rem; } }
+
+.main .block-tennis .card-vertical {
+  padding-bottom: 0; }
 
 @media screen and (max-width: 1024px) {
   .main .block-tennis .card-vertical__image {
@@ -1217,6 +1230,3 @@ button {
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .main .block-tennis .card-vertical__image {
     max-height: 30rem; } }
-
-.main .block-tennis .card-vertical__description {
-  margin-top: .8rem; }

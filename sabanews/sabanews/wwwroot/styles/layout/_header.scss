@@ -7,6 +7,7 @@
     position: fixed;
     width: 100%;
     z-index: 99999;
+
     .top-header {
         padding: .5rem 0;
         background-color: $bg-nav;
@@ -205,15 +206,22 @@
                     @include Mobile {
                         margin: 0;
                         @include flex(center, wrap, flex-start,column);
-                        background-color: $color-fff;
                         height: 100vh !important;
                         height: 45%;
                         z-index: 999;
                         display: none;
+                        background-color: $bg-nav;
                     }
 
                     .menu-item {
                         position: relative;
+
+                        &:first-child {
+                            @include Mobile {
+  
+                                border-top: 1px solid $border-calendar;
+                            }
+                        }
 
                         @include Mobile {
                             width: 100%;
@@ -232,7 +240,7 @@
                         .click-sub {
                             position: absolute;
                             top: 0;
-                            right: -1rem;
+                            right: 0;
                             width: 4.6rem;
                             height: 5rem;
                             transition: all .2s ease-in-out;

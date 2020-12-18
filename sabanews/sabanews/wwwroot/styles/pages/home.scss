@@ -42,6 +42,7 @@
 
                 @include Mobile {
                     margin-bottom: 1.2rem;
+                    padding-bottom : 1rem;
                 }
 
                 .card-vertical__image {
@@ -132,22 +133,6 @@
                         }
                     }
                 }
-                // .play_video {
-                //     iframe {
-                //         @include tableMobile {
-                //             height: 19rem;
-                //         }
-                //         @include ipadpro {
-                //             height: 30rem;
-                //         }
-                //         @include landscapeTablet {
-                //             height: 26rem;
-                //         }
-                //         @include portraitTablet {
-                //             height: 26rem;
-                //         }
-                //     }
-                // }
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
 
@@ -168,18 +153,6 @@
             .slide-video {
                 grid-column: 2;
                 overflow: auto;
-                // @include tableMobile{
-                //     max-height: 22.5rem;
-                // }
-                // @include landscapeTablet{
-                //     max-height: 29.5rem !important;
-                // }
-                // @include portraitTablet{
-                //     max-height: 29.5rem;
-                // }
-                // @include ipadpro{
-                //     max-height: 36.5rem;
-                // }
                 @include Mobile {
                     display: none;
                 }
@@ -251,7 +224,7 @@
         background: $bg-block;
 
         @include tableMobile {
-            padding: 1.9rem 0 1rem 0;
+            padding: 2rem 0 2.4rem 0;
             margin-bottom: 2.1rem;
         }
 
@@ -335,7 +308,7 @@
 
             .card-vertical {
                 &.card-vertical-highlight {
-                    padding-bottom: 1.6rem !important;
+                    padding-bottom: .5rem !important;
 
                     &:nth-child(1) {
                         [class*="card-vertical__image"] {
@@ -352,6 +325,10 @@
                     &:nth-child(1) {
                         [class*="card-vertical__"]:not(.card-vertical__image) {
                             padding: 0 $padding-main !important;
+
+                            @include Mobile {
+                                padding: 0 .8rem !important;
+                            }
                         }
                     }
 
@@ -410,8 +387,12 @@
             margin-top: 3rem;
 
             @include tableMobile {
-                margin-top: 0;
+                margin-top: 1.2rem;
             }
+        }
+
+        .card-vertical {
+            padding-bottom: 0;
         }
 
         .card-vertical__image {
@@ -422,10 +403,6 @@
             @include landscapeTablet {
                 max-height: 30rem;
             }
-        }
-
-        .card-vertical__description {
-            margin-top: .8rem;
         }
     }
 }

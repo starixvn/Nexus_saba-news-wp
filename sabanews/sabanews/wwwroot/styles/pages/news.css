@@ -378,13 +378,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-wrap: wrap;
               justify-content: flex-start;
               flex-direction: column;
-              background-color: #fff;
               height: 100vh !important;
               height: 45%;
               z-index: 999;
-              display: none; } }
+              display: none;
+              background-color: #FFFDF9; } }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
+            @media (max-width: 767px) {
+              .header .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
+                border-top: 1px solid #E0E0E0; } }
             @media (max-width: 767px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item {
                 width: 100%;
@@ -397,7 +400,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .click-sub {
               position: absolute;
               top: 0;
-              right: -1rem;
+              right: 0;
               width: 4.6rem;
               height: 5rem;
               transition: all .2s ease-in-out;
@@ -764,6 +767,9 @@ button {
   padding-bottom: 1.6rem; }
   .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0 1.6rem; }
+    @media (max-width: 767px) {
+      .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
+        padding: 0 .8rem; } }
   .card-vertical__image {
     margin-bottom: .8rem;
     overflow: hidden;
