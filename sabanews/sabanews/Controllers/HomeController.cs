@@ -52,8 +52,8 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
             ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
-            var view = parent == "video" ? "Video" : "Blog";
-            view = posts.Any() ? view : "EmptyBlog";
+            var view = parent == "video" ? Constants.VideoView : Constants.BlogView;
+            view = posts.Any() ? view : Constants.EmptyBlogView;
             return View(view, posts);
         }
 
@@ -70,6 +70,7 @@
         public async Task<IActionResult> Single(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug);
+            if (post == null) return View(Constants.EmptyBlogView);
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
             var isVideo = await postService.CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
@@ -99,7 +100,7 @@
             ViewData["keyword"] = keyword;
             ViewData["Controller"] = "Search";
             ViewData["HeadTitle"] = Constants.SearchTitle + " '" + keyword + "'";
-            var view = Posts.Any() ? "Blog" : "EmptyBlog";
+            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Posts);
         }
 
@@ -117,7 +118,7 @@
             ViewData["tag"] = tag;
             ViewData["Controller"] = "Tag";
             ViewData["HeadTitle"] = "Tag: '" + tag + "'";
-            var view = Posts.Any() ? "Blog" : "EmptyBlog";
+            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Posts);
         }
 
@@ -135,7 +136,7 @@
             ViewData["Controller"] = "DateSearch";
             ViewData["HeadTitle"] = Constants.SearchTitle + " '" + date + "'";
             ViewData["Title"] = date + " - Saba Sports";
-            var view = Posts.Any() ? "Blog" : "EmptyBlog";
+            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Posts);
         }
     }

@@ -33,6 +33,10 @@ namespace sabanews.Constants
         public const string MatchScheduleTitle = "Lịch thi đấu hôm nay giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
         public const string SearchTitle = "Kết quả tìm kiếm";
 
+        public const string EmptyBlogView = "EmptyBlog";
+        public const string BlogView = "Blog";
+        public const string VideoView = "Video";
+
         public const int FromFirstItem = 0;
         public const int GetThreeItems = 3;
         public const int GetFourItems = 4;

@@ -55,9 +55,12 @@
                 ID = ID
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
-            var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-            post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
-            post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+            if (post != null)
+            {
+                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+            }
             return post;
         }
 
@@ -68,9 +71,12 @@
                 _Slug = slug.Trim()
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
-            var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-            post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
-            post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+            if (post != null)
+            {
+                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+            }
             return post;
         }
 

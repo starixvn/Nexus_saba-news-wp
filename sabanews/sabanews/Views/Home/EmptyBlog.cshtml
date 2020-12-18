@@ -9,7 +9,7 @@
 				<h4>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</h4>
 			</div>
 		</div>
-		@if (ViewData["Controller"].ToString() == "DateSearch")
+		@if (ViewData["Controller"] != null && ViewData["Controller"].ToString() == "DateSearch")
 		{
 			var countDate = ViewData["Date"].ToString().Split('-');
 			if (countDate.Count() >= 2)
