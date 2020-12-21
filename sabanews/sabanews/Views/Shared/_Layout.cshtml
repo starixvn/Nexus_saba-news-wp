@@ -7,7 +7,7 @@
 	<meta name="description" content='@ViewData["description"]' />
 	<title>@ViewData["Title"]</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="preload" href="~/styles/home.min.css" as="style">
+	<link rel="preload" href="~/minify/styles/home.min.css" as="style">
 	<link rel="preload" href="~/styles/vendor/icomoon/fonts/icomoon.ttf?284o61" as="font" crossorigin="anonymous">
 	<link href="~/images/favicon/app_57x57.png" rel="apple-touch-icon" sizes="57x57" />
 	<link href="~/images/favicon/app_60x60.png" rel="apple-touch-icon" sizes="60x60" />
@@ -58,10 +58,10 @@
 		</div>
 	</section>
 	<environment include="Development">
-		<script src="~/js/site.min.js" asp-append-version="true"></script>
+		<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
 	</environment>
 	<environment exclude="Development">
-		<script src="~/js/site.min.js" asp-append-version="true"></script>
+		<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
 	</environment>
 
 	@RenderSection("Scripts", false)

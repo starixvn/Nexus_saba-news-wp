@@ -1,6 +1,6 @@
 [
   {
-    "outputFileName": "wwwroot/styles/site.min.css",
+    "outputFileName": "wwwroot/minify/styles/site.min.css",
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
@@ -8,7 +8,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/styles/home.min.css",
+    "outputFileName": "wwwroot/minify/styles/home.min.css",
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
@@ -17,7 +17,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/styles/news.min.css",
+    "outputFileName": "wwwroot/minify/styles/news.min.css",
     "inputFiles": [
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/styles/video.min.css",
+    "outputFileName": "wwwroot/minify/styles/video.min.css",
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/styles/detailnews.min.css",
+    "outputFileName": "wwwroot/minify/styles/detailnews.min.css",
     "inputFiles": [
       "wwwroot/styles/vendor/icomoon/style.css",
       "wwwroot/styles/site.css",
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/js/site.min.js",
+    "outputFileName": "wwwroot/minify/js/site.min.js",
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.min.js",
       "wwwroot/lib/swipper/js/swiper.min.js",
