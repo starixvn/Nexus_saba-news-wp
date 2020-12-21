@@ -25,10 +25,14 @@
     // block-hot-news
     .block-hot-news {
         .block__content {
-            @include grid(42% calc(58% - #{$column-gap}), repeat(3, 11rem), #{$padding-main} #{$column-gap});
+            @include grid(53rem 1fr, repeat(3, 11rem), #{$padding-main} #{$column-gap});
 
             @include tableMobile {
-                @include grid(42% calc(58% - 1.6rem), none, #{$padding-main} 1.6rem);
+                @include grid(30rem 1fr, none, #{$padding-main} 1.6rem);
+            }
+
+            @include landscapeTablet {
+                @include grid(44rem 1fr, none, #{$padding-main} 1.6rem);
             }
 
             @include Mobile {
@@ -110,10 +114,14 @@
     // block-video
     .block-video {
         .block__content {
-            @include grid(58% calc(42% - #{$column-gap}), 40rem, #{$column-gap});
+            @include grid(75.7rem 1fr, 40rem, #{$column-gap});
 
             @include tableMobile {
-                @include grid(58% calc(42% - 1.6rem), 28rem, 1.6rem);
+                @include grid(45.1rem 1fr, 28rem, 1.6rem);
+            }
+
+            @include landscapeTablet {
+                @include grid(63.1rem 1fr, 28rem, 1.6rem);
             }
 
             @include Mobile {
@@ -222,7 +230,7 @@
     }
     // block-guess
     .block-guess {
-        padding: 5rem 0 3.2rem 0;
+        padding: 3.2rem 0 1.2rem 0;
         background: $bg-block;
 
         @include tableMobile {
