@@ -107,12 +107,6 @@
 
             app.UseHttpsRedirection();
             app.UseResponseCompression();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                Path.Combine(env.ContentRootPath, "wordpress")),
-                RequestPath = "/wordpress"
-            });
             app.UseStaticFiles();
             app.UseRouting();
 

@@ -13,7 +13,6 @@
     <None Remove="App_Data\Production\Sp_Name.xml" />
     <None Remove="App_Data\Sp_Name.xml" />
     <None Remove="App_Data\UAT\Sp_Name.xml" />
-    <None Remove="wordpress\Test.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,9 +29,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\UAT\Sp_Name.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="wordpress\Test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
