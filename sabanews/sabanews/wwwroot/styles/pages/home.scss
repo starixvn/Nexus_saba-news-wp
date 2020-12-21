@@ -251,7 +251,7 @@
             }
 
             .card-vertical {
-                @include Mobile {
+                @include tableMobile {
                     padding-bottom: 0;
                 }
             }

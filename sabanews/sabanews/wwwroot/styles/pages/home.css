@@ -1117,7 +1117,7 @@ button {
         display: inherit !important; } }
     .main .block-guess .block__content .card-vertical__title {
       color: #fff; }
-    @media (max-width: 767px) {
+    @media screen and (max-width: 1024px) {
       .main .block-guess .block__content .card-vertical {
         padding-bottom: 0; } }
     .main .block-guess .block__content .card-vertical__image {
