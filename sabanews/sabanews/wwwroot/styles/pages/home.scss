@@ -42,7 +42,7 @@
 
                 @include Mobile {
                     margin-bottom: 1.2rem;
-                    padding-bottom : 1rem;
+                    padding-bottom: 1rem;
                 }
 
                 .card-vertical__image {
@@ -133,6 +133,7 @@
                         }
                     }
                 }
+
                 .swiper-button-next, .swiper-button-prev {
                     display: none;
 
@@ -153,6 +154,7 @@
             .slide-video {
                 grid-column: 2;
                 overflow: auto;
+
                 @include Mobile {
                     display: none;
                 }
@@ -264,6 +266,10 @@
                 @include landscapeTablet {
                     max-height: 18rem;
                 }
+
+                @include portraitTablet {
+                    max-height: 16rem;
+                }
             }
         }
     }
@@ -313,12 +319,24 @@
                     &:nth-child(1) {
                         [class*="card-vertical__image"] {
                             max-height: 36.3rem;
+
+                            @include landscapeTablet {
+                                max-height: 22.3rem;
+                            }
+
+                            @include portraitTablet {
+                                max-height: 22.3rem;
+                            }
                         }
                     }
 
                     &:nth-child(2), &:nth-child(3) {
                         [class*="card-vertical__image"] {
                             max-height: 17.2rem;
+
+                            @include landscapeTablet {
+                                max-height: 12.2rem;
+                            }
                         }
                     }
 
@@ -401,6 +419,10 @@
             }
 
             @include landscapeTablet {
+                max-height: 30rem;
+            }
+
+            @include portraitTablet {
                 max-height: 30rem;
             }
         }

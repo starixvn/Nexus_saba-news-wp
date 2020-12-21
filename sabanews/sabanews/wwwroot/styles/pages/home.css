@@ -1128,6 +1128,9 @@ button {
       @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
         .main .block-guess .block__content .card-vertical__image {
           max-height: 18rem; } }
+      @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+        .main .block-guess .block__content .card-vertical__image {
+          max-height: 16rem; } }
 
 .main .block-transfer {
   padding-bottom: 0; }
@@ -1169,8 +1172,17 @@ button {
       padding-bottom: .5rem !important; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
         max-height: 36.3rem; }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
+            max-height: 22.3rem; } }
+        @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
+            max-height: 22.3rem; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
         max-height: 17.2rem; }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
+            max-height: 12.2rem; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0 1.6rem !important; }
         @media (max-width: 767px) {
@@ -1228,5 +1240,9 @@ button {
     max-height: 20rem; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .main .block-tennis .card-vertical__image {
+    max-height: 30rem; } }
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
   .main .block-tennis .card-vertical__image {
     max-height: 30rem; } }
