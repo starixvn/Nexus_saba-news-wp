@@ -626,7 +626,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-width: 1024px) {
     .block {
       margin-bottom: 0;
-      padding-bottom: 2.4rem; } }
+      padding-bottom: 1.6rem; } }
   .block__title {
     margin-bottom: 1.2rem;
     position: relative; }
