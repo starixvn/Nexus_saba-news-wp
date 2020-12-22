@@ -424,6 +424,7 @@
         }
 
         .card-vertical__image {
+
             @include tableMobile {
                 max-height: 20rem;
             }

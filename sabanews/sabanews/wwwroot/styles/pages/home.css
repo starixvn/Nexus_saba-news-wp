@@ -336,7 +336,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           .header .top-header .group-menu .search-input .btn-search .icon-search {
             font-size: 2.4rem; }
       .header .top-header .group-menu .button-mobile {
-        width: 3.8rem;
+        width: 2.8rem;
         height: 3rem;
         transform: rotate(0);
         transition: .5s ease-in-out;
