@@ -284,6 +284,7 @@
     // block-transfer
     .block-transfer {
         padding-bottom: 0;
+        margin-bottom: 0;
 
         @include tableMobile {
             padding-bottom: 1rem;
@@ -304,6 +305,7 @@
     // block-behind
     .block-behind {
         padding: 0;
+        margin-bottom: 0;
 
         @include tableMobile {
             padding: 0 0 .6rem 0;
