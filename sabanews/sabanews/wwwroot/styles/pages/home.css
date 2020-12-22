@@ -504,7 +504,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               list-style: none;
               position: absolute;
               border: 1px solid #BDBDBD;
-              top: 9rem;
+              top: 8.1rem;
               border-radius: .4rem;
               left: 50%;
               margin-left: -9.2rem;
@@ -537,10 +537,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 display: block;
                 position: absolute;
                 z-index: 1;
-                top: -.4rem;
+                top: -.3rem;
                 left: 24%;
-                width: 1.8rem;
-                height: 1.8rem;
+                width: 1.5rem;
+                height: 1.5rem;
                 margin: -.6rem 0 0 -.6rem;
                 background-color: #fff;
                 transform: rotate(45deg);
@@ -1145,7 +1145,8 @@ button {
           max-height: 16rem; } }
 
 .main .block-transfer {
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  margin-bottom: 0; }
   @media screen and (max-width: 1024px) {
     .main .block-transfer {
       padding-bottom: 1rem; } }
@@ -1159,7 +1160,8 @@ button {
         margin-bottom: 1.2rem; } }
 
 .main .block-behind {
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 0; }
   @media screen and (max-width: 1024px) {
     .main .block-behind {
       padding: 0 0 .6rem 0; } }
