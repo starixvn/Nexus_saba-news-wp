@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace sabanews.Constants
+﻿namespace sabanews.Constants
 {
     public static class Constants
     {
@@ -49,11 +47,8 @@ namespace sabanews.Constants
         public const int GetSixItems = 6;
         public const int GetEightItems = 8;
 
-
         public const int Perpage = 10;
         public const int PerpageVideo = 9;
         public const int Total = 10000;
-
-        
     }
 }

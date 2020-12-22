@@ -84,7 +84,7 @@
                 RandomRelatedPosts = randomRelatedPosts
             };
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
-            ViewData["video"] = post.Type == Constants.VideoPostType ? true : false ;
+            ViewData["video"] = post.Type == Constants.VideoPostType ? true : false;
 
             return View(Models);
         }

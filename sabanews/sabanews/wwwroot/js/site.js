@@ -1,5 +1,4 @@
 ﻿var setUp = {
-
     HandleIframe: function () {
         //Left Home Video
         $('.match-schedule iframe').css('width', '100%');
@@ -19,10 +18,8 @@
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
-
             }
         });
-
 
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
@@ -47,7 +44,6 @@
                 slide.find('.play_video').html(iframe);
             }
         });
-
     },
     HandleSearch: function () {
         $('.search-input button').on('click', function (e) {

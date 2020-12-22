@@ -13,5 +13,6 @@
         public string Categories { get; set; }
         public string Slug { get; set; }
         public string Type { get; set; }
+        public string Metadata { get; set; }
     }
 }

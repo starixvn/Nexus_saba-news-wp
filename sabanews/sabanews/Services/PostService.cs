@@ -1,8 +1,8 @@
 ﻿namespace sabanews.Services
 {
+    using sabanews.Constants;
     using sabanews.Criteria;
     using sabanews.Models;
-    using sabanews.Constants;
     using sabanews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
@@ -165,6 +165,7 @@
             };
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }
+
         public async Task<Category> GetPageDetailAsync(int ID)
         {
             var criteria = new GetPageDetailByCateIdCriteria
@@ -210,7 +211,7 @@
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                post.FeatureImage = ResizeImage(post.FeatureImage);
+                post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata);
                 post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             }
@@ -241,18 +242,27 @@
             return image;
         }
 
-        public static string ResizeImage(string image)
+        public static string ResizeImage(string image, string metadata)
         {
             var result = image;
             var extension = "." + image.Split(".").Last();
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
+            var imgSizes = new List<string> { "-600x394", "-260x240", "-818x460" };
+            var size = "";
+            foreach (var imgSize in imgSizes)
+            {
+                if (metadata.Contains(imgSize))
+                {
+                    size = imgSize;
+                    break;
+                }
+            }
             foreach (var type in imgTypes)
             {
                 if (extension == type)
                 {
                     var imageLength = image.LastIndexOf(type);
-
-                    result = image.Substring(0, imageLength) + "-600x394" + type;
+                    result = image.Substring(0, imageLength) + size + type;
                     break;
                 }
             }
