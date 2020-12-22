@@ -223,6 +223,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none; }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     color: #828282; }
+    @media screen and (max-width: 1024px) {
+      textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
+        font-size: 1.6rem; } }
   textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: #fff; }
@@ -318,7 +321,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           width: 16vw; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .search-input input {
-              width: 100%; } }
+              width: 100%;
+              font-size: 1.6rem; } }
         .header .top-header .group-menu .search-input .btn-search {
           background-color: transparent;
           position: absolute;
