@@ -120,13 +120,13 @@
             }
 
             .button-mobile {
-                width: 1.8rem;
+                width: 3.8rem;
                 height: 3rem;
                 transform: rotate(0);
                 transition: .5s ease-in-out;
                 cursor: pointer;
                 display: none;
-                margin: 0 1rem 0 0;
+                position: relative;
 
                 @include tableMobile {
                     display: none;
@@ -140,10 +140,9 @@
                     display: block;
                     position: absolute;
                     height: .2rem;
-                    width: 100%;
+                    width: 70%;
                     background: $color-pagination-2;
                     opacity: 1;
-                    left: -.7rem;
                     transform: rotate(0);
                     transition: .25s ease-in-out;
                     border-radius: 1rem;

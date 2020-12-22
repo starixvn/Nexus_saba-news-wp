@@ -4,10 +4,11 @@
     margin-right: auto;
     margin-left: auto;
     @include tableMobile{
-        padding : 0 1.4rem ;
+        padding : 0 .8rem ;
     }
     @media (min-width : 576px){
-        max-width: 54rem;
+        max-width : 100%;
+       // max-width: 54rem;
     }
     @media (min-width : 768px){
         max-width: 100%;

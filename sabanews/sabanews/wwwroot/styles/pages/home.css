@@ -115,7 +115,8 @@
   margin: 0; }
 
 html {
-  font-size: 10px; }
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent; }
 
 body {
   font-size: 1.4rem;
@@ -164,8 +165,7 @@ body {
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;
-  padding: 3.3rem 0;
-  margin-top: 4rem; }
+  padding: 3.3rem 0; }
   @media screen and (max-width: 1024px) {
     .footer {
       padding: .6rem 0;
@@ -336,13 +336,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           .header .top-header .group-menu .search-input .btn-search .icon-search {
             font-size: 2.4rem; }
       .header .top-header .group-menu .button-mobile {
-        width: 1.8rem;
+        width: 3.8rem;
         height: 3rem;
         transform: rotate(0);
         transition: .5s ease-in-out;
         cursor: pointer;
         display: none;
-        margin: 0 1rem 0 0; }
+        position: relative; }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .button-mobile {
             display: none; } }
@@ -353,10 +353,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           display: block;
           position: absolute;
           height: .2rem;
-          width: 100%;
+          width: 70%;
           background: #294579;
           opacity: 1;
-          left: -.7rem;
           transform: rotate(0);
           transition: .25s ease-in-out;
           border-radius: 1rem; }
@@ -777,10 +776,10 @@ button {
   margin-left: auto; }
   @media screen and (max-width: 1024px) {
     .container {
-      padding: 0 1.4rem; } }
+      padding: 0 .8rem; } }
   @media (min-width: 576px) {
     .container {
-      max-width: 54rem; } }
+      max-width: 100%; } }
   @media (min-width: 768px) {
     .container {
       max-width: 100%;
@@ -1109,7 +1108,7 @@ button {
   @media screen and (max-width: 1024px) {
     .main .block-guess {
       padding: 2rem 0 2.4rem 0;
-      margin-bottom: 2.1rem; } }
+      margin-bottom: 1.6rem; } }
   .main .block-guess .block__title a {
     background-color: #223453;
     color: #fff; }
@@ -1149,7 +1148,7 @@ button {
   margin-bottom: 0; }
   @media screen and (max-width: 1024px) {
     .main .block-transfer {
-      padding-bottom: 1rem; } }
+      padding-bottom: .4rem; } }
   .main .block-transfer .card-horizontal {
     margin-bottom: 3.2rem; }
     @media screen and (max-width: 1024px) {
@@ -1212,7 +1211,7 @@ button {
         max-height: 20rem; } }
 
 .main .block-basketball {
-  padding: 0 0 3.9rem 0;
+  padding: 0 0 1.6rem 0;
   border: none; }
   @media screen and (max-width: 1024px) {
     .main .block-basketball {
