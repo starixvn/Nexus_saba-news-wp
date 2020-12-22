@@ -75,7 +75,7 @@
             });
 
             services.AddResponseCompression();
-
+            services.AddResponseCaching();
             services.AddControllersWithViews();
             services.AddSingleton(Configuration);
             services.AddTransient<IPostService, PostService>();
@@ -103,7 +103,7 @@
             app.UseResponseCompression();
             app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseResponseCaching();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
