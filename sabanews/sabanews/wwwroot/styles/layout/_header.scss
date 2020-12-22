@@ -87,7 +87,6 @@
                     font-size: 1.4rem;
                     font-weight: 400;
                     padding: 0 6rem 0 3rem !important;
-                    line-height: 5rem;
                     border: none;
                     color: $color-input;
                     border-radius: 3rem;
@@ -102,7 +101,7 @@
                     background-color: transparent;
                     position: absolute;
                     cursor: pointer;
-                    top: 0;
+                    top: .2rem;
                     right: 3rem;
                     width: .5rem;
                     height: 100%;
@@ -293,7 +292,7 @@
                             @include Mobile {
                                 color: $color-pagination;
                                 padding: 1.6rem 1.2rem;
-                                font-size: 1.4rem;
+                                font-size: 1.6rem;
                                 text-transform: initial;
                                 font-weight: bold;
                                 margin-right: 0;
@@ -410,7 +409,7 @@
                                     @include Mobile {
                                         color: $color-pagination;
                                         padding: 0;
-                                        font-size: 1.4rem;
+                                        font-size: 1.6rem;
                                         text-transform: initial;
                                         border-bottom: 1px solid $color-border;
                                         font-weight: inherit;
