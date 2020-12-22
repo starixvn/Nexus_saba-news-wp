@@ -6,6 +6,7 @@
     using sabanews.Services.Interfaces;
     using System;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
 
     public class HomeController : Controller
@@ -143,6 +144,21 @@
             ViewData["Title"] = date + " - Saba Sports";
             var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Posts);
+        }
+
+        [Route("/robots.txt")]
+        public ContentResult RobotsTxt()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("User-agent: *")
+                .AppendLine("allow: /")
+                .Append("sitemap: ")
+                .Append(this.Request.Scheme)
+                .Append("://")
+                .Append(this.Request.Host)
+                .AppendLine("/sitemap.xml");
+
+            return this.Content(sb.ToString(), "text/plain", Encoding.UTF8);
         }
     }
 }
