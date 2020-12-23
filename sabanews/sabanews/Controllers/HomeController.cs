@@ -145,20 +145,5 @@
             var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Posts);
         }
-
-        [Route("/robots.txt")]
-        public ContentResult RobotsTxt()
-        {
-            var sb = new StringBuilder();
-            sb.AppendLine("User-agent: *")
-                .AppendLine("allow: /")
-                .Append("sitemap: ")
-                .Append(this.Request.Scheme)
-                .Append("://")
-                .Append(this.Request.Host)
-                .AppendLine("/sitemap.xml");
-
-            return this.Content(sb.ToString(), "text/plain", Encoding.UTF8);
-        }
     }
 }
