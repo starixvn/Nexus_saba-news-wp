@@ -31,11 +31,11 @@ pipeline{
 	    stage("C# Unit Test"){
 		  steps{
             script{
-              pipelineLib.xUnitForNetCore()
+              pipelineLib.xUnitForNet5()
             }
           }
-		}
-	  }
+		    }
+	    }
     }
 
     stage("SonarQube Analysis"){
