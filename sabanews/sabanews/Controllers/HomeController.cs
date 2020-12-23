@@ -38,13 +38,13 @@
             return View(Models);
         }
 
-        [Route("/category/{parent}/{slug?}/page/{page}")]
-        [Route("/category/{parent}/{slug?}")]
-        public async Task<IActionResult> Category(string parent, string slug = null, int page = 1)
+        [Route("/tin-tuc/{slug?}/page/{page}")]
+        [Route("/tin-tuc/{slug?}")]
+        public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
-            var perpage = parent == "video" ? Constants.PerpageVideo : Constants.Perpage;
+            var perpage = Constants.Perpage;
             var start = (page - 1) * perpage;
-            slug ??= parent;
+            slug ??= Constants.NewPostSlug;
             var cate = await postService.GetCateDetailAsync(slug);
             var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
@@ -55,8 +55,28 @@
             ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
             ViewData["CategoryId"] = cate.CatId;
             ViewData["Controller"] = "category";
-            var view = parent == "video" ? Constants.VideoView : Constants.BlogView;
-            view = posts.Any() ? view : Constants.EmptyBlogView;
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, posts);
+        }
+
+        [Route("/video/{slug?}/page/{page}")]
+        [Route("/video/{slug?}")]
+        public async Task<IActionResult> Video(string slug = null, int page = 1)
+        {
+            var perpage = Constants.PerpageVideo;
+            var start = (page - 1) * perpage;
+            slug ??= Constants.VideoSlug;
+            var cate = await postService.GetCateDetailAsync(slug);
+            var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
+            var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
+            ViewData["Title"] = cate.Title;
+            ViewData["description"] = cate.Description ??= cate.Title;
+            ViewData["CurrentPage"] = page;
+            ViewData["PageSize"] = perpage;
+            ViewData["TotalPages"] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
+            ViewData["CategoryId"] = cate.CatId;
+            ViewData["Controller"] = "video";
+            var view = posts.Any() ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, posts);
         }
 

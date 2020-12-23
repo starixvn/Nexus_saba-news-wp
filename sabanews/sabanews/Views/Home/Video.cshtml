@@ -51,10 +51,10 @@
 				@{
 					int CurrentPage = Convert.ToInt32(ViewData["CurrentPage"]);
 					int TotalPages = Convert.ToInt32(ViewData["TotalPages"]);
-					var linkLast = Url.Action("Category", "Home", new { page = @ViewData["TotalPages"] });
-					var linkFirst = Url.Action("Category", "Home", new { page = 1 });
-					var linkNext = Url.Action("Category", "Home", new { page = CurrentPage + 1 });
-					var linkPrev = Url.Action("Category", "Home", new { page = CurrentPage - 1 });
+					var linkLast = Url.Action("Video", "Home", new { page = @ViewData["TotalPages"] });
+					var linkFirst = Url.Action("Video", "Home", new { page = 1 });
+					var linkNext = Url.Action("Video", "Home", new { page = CurrentPage + 1 });
+					var linkPrev = Url.Action("Video", "Home", new { page = CurrentPage - 1 });
 
 					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
 					linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
@@ -79,7 +79,7 @@
 
 								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 								{
-									var link = Url.Action("Category", "Home", new { page = i });
+									var link = Url.Action("Video", "Home", new { page = i });
 
 									var active = i == CurrentPage ? "active" : "";
 									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
