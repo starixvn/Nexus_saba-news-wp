@@ -49,4 +49,10 @@
     <Folder Include="wwwroot\minify\js\" />
     <Folder Include="wwwroot\minify\styles\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sabanews.Core\Sabanews.Core.csproj" />
+    <ProjectReference Include="..\..\sabanews.Models\Sabanews.Models.csproj" />
+    <ProjectReference Include="..\..\Sabanews.Services\Sabanews.Services.csproj" />
+  </ItemGroup>
 </Project>

@@ -14,7 +14,6 @@
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.FileProviders;
     using Microsoft.Extensions.Hosting;
     using sabanews.Middlewares;
     using sabanews.Services;
@@ -22,7 +21,6 @@
     using Sentry;
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
 
     public class Startup

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sabanews.Core\Sabanews.Core.csproj" />
+    <ProjectReference Include="..\Sabanews.Criteria\Sabanews.Criteria.csproj" />
+    <ProjectReference Include="..\Sabanews.Models\Sabanews.Models.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>
