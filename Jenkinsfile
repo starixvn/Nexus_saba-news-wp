@@ -6,11 +6,10 @@ pipeline{
   options{
     buildDiscarder(logRotator(numToKeepStr: '5'))
     disableConcurrentBuilds()
-    gitLabConnection('Gitlab')
   }
 
   triggers{
-    gitlab(triggerOnPush: true, triggerOnMergeRequest: true, branchFilterType: 'All')
+    pollSCM("H/15 * * * *")
   }
 
   stages{
@@ -26,7 +25,7 @@ pipeline{
       }
     }
 	
-	stage("Unit Test") {
+	stage("Test") {
 	  parallel{
 	    stage("C# Unit Test"){
 		  steps{
@@ -52,16 +51,17 @@ pipeline{
               pipelineLib.generateSonarQubeReport("Sabasports")
             }
           }
-		  
-		  archiveArtifacts "*.xml,*.email"
-		  step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
-		  mstest failOnError: false
         }
       }
     }
   }
 
   post{
+    always {
+      archiveArtifacts "*.xml,*.email"
+		  step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
+		  mstest failOnError: false
+    }
     unsuccessful{
       emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'quinn.vo@starixvn.com,hank.nguyen@starixvn.com,oliver.dang@starixvn.com'
     }
