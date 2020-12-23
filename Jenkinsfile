@@ -21,7 +21,7 @@ pipeline{
 
           pipelineLib.restoreNuget()
 
-          pipelineLib.msBuild("sabanews.sln")
+          pipelineLib.msBuild("sabanews/sabanews.sln")
         }
       }
     }
