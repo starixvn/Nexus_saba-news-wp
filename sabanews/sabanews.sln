@@ -12,13 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sabanews.Models", "..\sabanews.Models\Sabanews.Models.csproj", "{2E0963AD-9A2C-4261-8FD7-A34860559001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sabanews.Models", "..\sabanews.Models\Sabanews.Models.csproj", "{2E0963AD-9A2C-4261-8FD7-A34860559001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sabanews.Criteria", "..\Sabanews.Criteria\Sabanews.Criteria.csproj", "{42C402CF-3EDF-4B2F-A481-9D332EFC9BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sabanews.Criteria", "..\Sabanews.Criteria\Sabanews.Criteria.csproj", "{42C402CF-3EDF-4B2F-A481-9D332EFC9BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sabanews.Services", "..\Sabanews.Services\Sabanews.Services.csproj", "{B24547AD-DEF4-41B4-8D56-9ABF8282F0F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sabanews.Services", "..\Sabanews.Services\Sabanews.Services.csproj", "{B24547AD-DEF4-41B4-8D56-9ABF8282F0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sabanews.Core", "..\Sabanews.Core\Sabanews.Core.csproj", "{9EEF32A5-BD62-4CFE-8371-8017C56634B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sabanews.Core", "..\Sabanews.Core\Sabanews.Core.csproj", "{9EEF32A5-BD62-4CFE-8371-8017C56634B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,7 +31,6 @@ Global
 		{1B6EF556-9FE4-4AD8-8433-DE4A3450109D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B6EF556-9FE4-4AD8-8433-DE4A3450109D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{831FC224-653D-4372-9581-E4BFD883160D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{831FC224-653D-4372-9581-E4BFD883160D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{831FC224-653D-4372-9581-E4BFD883160D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{831FC224-653D-4372-9581-E4BFD883160D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E0963AD-9A2C-4261-8FD7-A34860559001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
