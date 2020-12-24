@@ -1,0 +1,15 @@
+﻿@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+}
+
+	<section class="main">
+		<div class="container">
+			<div class="block block-main">
+				<h2 class="block__title"><a>Lịch Thi Đấu</a></h2>
+				<div class="block__content">
+					<div class="match-schedule">@Html.Raw(@Model.PostContent)</div>
+				</div>
+			</div>
+			@(await Component.InvokeAsync("Sidebar"))
+		</div>
+	</section>

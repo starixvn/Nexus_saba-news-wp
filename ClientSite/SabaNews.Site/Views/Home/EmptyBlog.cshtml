@@ -1,0 +1,29 @@
+﻿@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+}
+<section class="main">
+	<div class="container">
+		<div class="block block-main">
+			<h2 class="block__title"><a>@ViewData["HeadTitle"]</a></h2>
+			<div class="block__content">
+				<h4>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</h4>
+			</div>
+		</div>
+		@if (ViewData["Controller"] != null && ViewData["Controller"].ToString() == "DateSearch")
+		{
+			var countDate = ViewData["Date"].ToString().Split('-');
+			if (countDate.Count() >= 2)
+			{
+				@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) }))
+			}
+			else
+			{
+				@(await Component.InvokeAsync("Sidebar"))
+			}
+		}
+		else
+		{
+			@(await Component.InvokeAsync("Sidebar"))
+		}
+	</div>
+</section>
