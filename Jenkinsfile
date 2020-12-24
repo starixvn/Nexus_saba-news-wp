@@ -17,7 +17,7 @@ pipeline{
       steps {
         script{
           pipelineLib.beginSonarQubeForMsBuild("SabaNews", "Nexus / Sabasports", "/d:sonar.cs.opencover.reportsPaths=\"${WORKSPACE}\\CoverageReports\\*.xml\" /d:sonar.cs.vstest.reportsPaths=\"${WORKSPACE}\\TestResults\\*.trx\"")
-          pipelineLib.msBuild16("ClientSite/SabaNews.Site/SabaNews.Site.sln")
+          pipelineLib.msBuild16("ClientSite/SabaNews.sln")
         }
       }
     }
