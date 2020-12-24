@@ -5,6 +5,7 @@
     using sabanews.Models;
     using sabanews.Services.Interfaces;
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -42,17 +43,16 @@
         [Route("/tin-tuc/{slug?}")]
         public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
-            var perpage = Constants.Perpage;
-            var start = (page - 1) * perpage;
+            var start = (page - 1) * Constants.Perpage;
             slug ??= Constants.NewPostSlug;
             var cate = await postService.GetCateDetailAsync(slug);
-            var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
+            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.Perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
             ViewData[Constants.ViewDataTitle] = cate.Title;
             ViewData[Constants.ViewDataDescription] = cate.Description ??= cate.Title;
             ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
+            ViewData[Constants.ViewDataPageSize] = Constants.Perpage;
+            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage);
             ViewData[Constants.ViewDataCategoryId] = cate.CatId;
             ViewData[Constants.ViewDataController] = "category";
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
@@ -63,17 +63,16 @@
         [Route("/video/{slug?}")]
         public async Task<IActionResult> Video(string slug = null, int page = 1)
         {
-            var perpage = Constants.PerpageVideo;
-            var start = (page - 1) * perpage;
+            var start = (page - 1) * Constants.PerpageVideo;
             slug ??= Constants.VideoSlug;
             var cate = await postService.GetCateDetailAsync(slug);
-            var posts = await postService.GetPostsBySlugAsync(slug, start, perpage);
+            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.PerpageVideo);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
             ViewData[Constants.ViewDataTitle] = cate.Title;
             ViewData[Constants.ViewDataDescription] = cate.Description ??= cate.Title;
             ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)perpage);
+            ViewData[Constants.ViewDataPageSize] = Constants.PerpageVideo;
+            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.PerpageVideo);
             ViewData[Constants.ViewDataCategoryId] = cate.CatId;
             ViewData[Constants.ViewDataController] = "video";
             var view = posts.Any() ? Constants.VideoView : Constants.EmptyBlogView;
@@ -86,7 +85,7 @@
             var post = await postService.GetPostDetailAsync(Constants.MatchScheduleCategory);
             var pageDetail = await postService.GetPageDetailAsync(Constants.MatchScheduleCategory);
             ViewData[Constants.ViewDataCategoryId] = Constants.MatchScheduleCategory;
-            ViewData[Constants.ViewDataTitle] = pageDetail.Title.Replace("%currentdate%", DateTime.Now.ToString().ToLowerInvariant());
+            ViewData[Constants.ViewDataTitle] = pageDetail.Title.Replace("%currentdate%", DateTime.Now.ToString(CultureInfo.InvariantCulture));
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= pageDetail.Title;
             return View(post);
         }

@@ -252,23 +252,13 @@
             var extension = "." + image.Split(".").Last();
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             var imgSizes = new List<string> { "-600x394", "-260x240", "-818x460" };
-            var size = "";
-            foreach (var imgSize in imgSizes)
+            var size = imgSizes.Where(item => metadata.Contains(item)).FirstOrDefault();
+            var type = imgTypes.Where(item => item.Equals(extension)).FirstOrDefault();
+            size ??= "";
+            if (type != null)
             {
-                if (metadata.Contains(imgSize))
-                {
-                    size = imgSize;
-                    break;
-                }
-            }
-            foreach (var type in imgTypes)
-            {
-                if (extension == type)
-                {
-                    var imageLength = image.LastIndexOf(type);
-                    result = image.Substring(0, imageLength) + size + type;
-                    break;
-                }
+                var imageLength = image.LastIndexOf(type, StringComparison.CurrentCulture);
+                result = image.Substring(0, imageLength) + size + type;
             }
             return result;
         }
