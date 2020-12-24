@@ -25,7 +25,9 @@
             if (year != 0 && month != 0)
             {
                 if (year != currentYear || month != currentMonth)
-                    currentDay = 32;
+                {
+                    currentDay = Constants.NumberDayNotInCurrentMonth;
+                }
                 currentMonth = month;
                 currentYear = year;
             }

@@ -50,5 +50,23 @@
         public const int Perpage = 10;
         public const int PerpageVideo = 9;
         public const int Total = 10000;
+        public const int ExcerptLength = 200;
+        public const int NumberMinutesAHour = 60;
+        public const int NumberSecondsAMinute = 60;
+        public const int NumberHoursADay = 60;
+
+        public const int NumberDayNotInCurrentMonth = 32;
+
+        public const string ViewDataCategoryId = "CategoryId";
+        public const string ViewDataTitle = "Title";
+        public const string ViewDataDescription = "description";
+        public const string ViewDataCurrentPage = "CurrentPage";
+        public const string ViewDataPageSize = "PageSize";
+        public const string ViewDataTotalPages = "TotalPages";
+        public const string ViewDataController = "Controller";
+        public const string ViewDataHeadTitle = "HeadTitle";
+        public const string ViewDataKeyword = "keyword";
+        public const string ViewDataTag = "tag";
+        public const string ViewDataDate = "Date";
     }
 }

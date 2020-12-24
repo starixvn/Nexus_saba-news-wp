@@ -57,8 +57,8 @@
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             if (post != null)
             {
-                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             }
             return post;
@@ -73,8 +73,8 @@
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             if (post != null)
             {
-                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
-                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
                 post.Type = Constants.FootballPostType;
                 var isVideo = await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
@@ -93,6 +93,10 @@
                 else if (post.Categories.Contains(Constants.TennisCategory.ToString()))
                 {
                     post.Type = Constants.TennisPostType;
+                }
+                else
+                {
+                    post.Type = Constants.FootballPostType;
                 }
             }
             return post;
@@ -206,13 +210,13 @@
             return await baseService.GetDataAsync<Menu>(criteria);
         }
 
-        public IEnumerable<Post> FormatData(IEnumerable<Post> posts)
+        public static IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
             foreach (var post in posts)
             {
-                var excerpt = Regex.Replace(post.PostContent.ToString(), @"<[^>]+>|&nbsp;", "").Trim();
+                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata);
-                post.PostExcerpt = (excerpt.Length > 200) ? excerpt.Substring(0, 200) : excerpt;
+                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             }
             return posts;
@@ -273,39 +277,19 @@
         {
             var timeSpan = DateTime.Now - dateTime;
 
-            if (timeSpan <= TimeSpan.FromSeconds(60))
+            if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
+            {
                 return string.Format("{0} giây trước", timeSpan.Seconds);
-
-            if (timeSpan <= TimeSpan.FromMinutes(60))
+            }
+            if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
+            {
                 return timeSpan.Minutes > 1 ? String.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
-
-            if (timeSpan <= TimeSpan.FromHours(24))
+            }
+            if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
+            {
                 return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
-
+            }
             return dateTime.ToString("H:mm dd/MM/yyyy");
-        }
-
-        public static string ConvertToUnSign3(string s) // change có dấu thành không dấu
-        {
-            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
-            string temp = s.Normalize(NormalizationForm.FormD);
-            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
-        }
-
-        public static string GenerateSeoFriendlyURL(string Title)
-        {
-            Title = ConvertToUnSign3(Title);
-            Regex regex = new Regex(@"[^a-zA-Z0-9-\s]", (RegexOptions)0);
-            Title = regex.Replace(Title, "");
-            Title = Title.ToLower().Replace(" - ", "-");
-            Title = Title.ToLower().Replace("- ", "-");
-            Title = Title.ToLower().Replace(" -", "-");
-            Title = Title.ToLower().Replace("   ", " ");
-            Title = Title.ToLower().Replace("  ", " ");
-            Title = Title.ToLower().Replace("  ", " ");
-            Title = Title.ToLower().Replace(" ", " ");
-            Title = Title.ToLower().Replace(" ", "-");
-            return Title;
         }
     }
 }

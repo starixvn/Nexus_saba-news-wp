@@ -40,9 +40,11 @@ MSBUILD.SUMMARY.email
 SUMMARY.DISPLAY.xml
 
 /.vs
+sabanews/.vs
 node_modules
 bower_components
 
 /results.xml
 /UnitTestCoverage*
+
 

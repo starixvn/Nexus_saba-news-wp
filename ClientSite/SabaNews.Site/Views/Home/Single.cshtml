@@ -12,7 +12,7 @@
 				<div class="single card-vertical__image">
 					@if (Convert.ToBoolean(ViewData["video"]))
 					{
-						<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent"/>
+						<input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
 					}
 					<picture>
 						<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
@@ -40,7 +40,7 @@
 			<ul class="block-list">
 				@foreach (var post in Model.RelatedPosts)
 				{
-					
+
 					<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>
 				}
 			</ul>
@@ -63,7 +63,7 @@
 					var tags = Model.SinglePost.Tags.Split(',');
 					@for (var i = 0; i < tags.Length; i++)
 					{
-						<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tag = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
+						<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
 					}
 
 				}
