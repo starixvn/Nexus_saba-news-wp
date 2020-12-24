@@ -20,7 +20,7 @@ pipeline{
 
           pipelineLib.restoreNuget()
 
-          pipelineLib.msBuild("sabanews/sabanews.sln")
+          pipelineLib.msBuild16("sabanews/sabanews.sln")
         }
       }
     }
@@ -51,17 +51,15 @@ pipeline{
               pipelineLib.generateSonarQubeReport("Sabasports")
             }
           }
+          archiveArtifacts "*.xml,*.email"
+          step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
+          mstest failOnError: false
         }
       }
     }
   }
 
   post{
-    always {
-      archiveArtifacts "*.xml,*.email"
-		  step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
-		  mstest failOnError: false
-    }
     unsuccessful{
       emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'quinn.vo@starixvn.com,hank.nguyen@starixvn.com,oliver.dang@starixvn.com'
     }
