@@ -16,8 +16,8 @@ pipeline{
     stage('Build'){
       steps {
         script{
-          pipelineLib.beginSonarQubeForMsBuild("Sabasports", "Nexus / Sabasports", "/d:sonar.cs.opencover.reportsPaths=\"${WORKSPACE}\\CoverageReports\\*.xml\" /d:sonar.cs.vstest.reportsPaths=\"${WORKSPACE}\\TestResults\\*.trx\"")
-          pipelineLib.msBuild16("sabanews/sabanews.sln")
+          pipelineLib.beginSonarQubeForMsBuild("SabaNews", "Nexus / Sabasports", "/d:sonar.cs.opencover.reportsPaths=\"${WORKSPACE}\\CoverageReports\\*.xml\" /d:sonar.cs.vstest.reportsPaths=\"${WORKSPACE}\\TestResults\\*.trx\"")
+          pipelineLib.msBuild16("ClientSite/SabaNews.Site/SabaNews.Site.sln")
         }
       }
     }
@@ -45,7 +45,7 @@ pipeline{
         always{
           script{
             if(manager.logContains(".*Quality gate status.*")){
-              pipelineLib.generateSonarQubeReport("Sabasports")
+              pipelineLib.generateSonarQubeReport("SabaNews")
             }
           }
           archiveArtifacts "*.xml,*.email"
