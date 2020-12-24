@@ -252,8 +252,8 @@
             var extension = "." + image.Split(".").Last();
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             var imgSizes = new List<string> { "-600x394", "-260x240", "-818x460" };
-            var size = imgSizes.Where(item => metadata.Contains(item)).FirstOrDefault();
-            var type = imgTypes.Where(item => item.Equals(extension)).FirstOrDefault();
+            var size = imgSizes.FirstOrDefault(item => metadata.Contains(item));
+            var type = imgTypes.FirstOrDefault(item => item.Equals(extension));
             size ??= "";
             if (type != null)
             {
