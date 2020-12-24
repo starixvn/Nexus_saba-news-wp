@@ -3,7 +3,7 @@
   <Settings>
     <Setting>
       <Key>sonar.cs.analyzeGeneratedCode</Key>
-      <Value>true</Value>
+      <Value>false</Value>
     </Setting>
     <Setting>
       <Key>sonar.cs.file.suffixes</Key>

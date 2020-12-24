@@ -1,19 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <CodeAnalysisRuleSet>..\.sonarlint\sabasportscsharp.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <CodeAnalysisRuleSet>..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="..\.sonarlint\sabasports\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SabaNews.Core\SabaNews.Core.csproj" />
-    <ProjectReference Include="..\SabaNews.Criteria\SabaNews.Criteria.csproj" />
-    <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\SabaNews.Core\SabaNews.Core.csproj" />
+        <ProjectReference Include="..\SabaNews.Criteria\SabaNews.Criteria.csproj" />
+        <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
 </Project>

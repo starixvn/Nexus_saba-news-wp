@@ -1,16 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <CodeAnalysisRuleSet>..\.sonarlint\sabasportscsharp.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <CodeAnalysisRuleSet>..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="..\.sonarlint\sabasports\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Fanex.Data.Repository" Version="4.2.2" />
-  </ItemGroup>
-
+    <ItemGroup>
+        <PackageReference Include="Fanex.Data.Repository" Version="4.2.2" />
+    </ItemGroup>
 </Project>
