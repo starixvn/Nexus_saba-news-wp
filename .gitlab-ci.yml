@@ -1,0 +1,6 @@
+
+include:
+  - project: 'ci/nexcel/nexus/saba-news-ci'
+    ref: master
+    file: 'gitlab-ci.yml'
+    
