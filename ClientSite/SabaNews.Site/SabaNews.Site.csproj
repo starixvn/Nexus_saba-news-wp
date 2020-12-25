@@ -19,6 +19,7 @@
 
     <ItemGroup>
         <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+        <Content Include="App_Data\SpNames.Local.xml" />
         <Content Include="App_Data\SpNames.Production.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
