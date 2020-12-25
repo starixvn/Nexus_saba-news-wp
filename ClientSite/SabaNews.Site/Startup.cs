@@ -19,7 +19,6 @@
     using sabanews.Services;
     using sabanews.Services.Interfaces;
     using Sentry;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -41,14 +40,11 @@
                          .ToDictionary(x => x.GetValue<string>("Name"),
                              y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
 
-            string evn = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            string resourcePath = !string.IsNullOrWhiteSpace(evn) ? $"~/App_Data/{evn}" : "~/App_Data";
-
             DbSettingProviderManager
                .StartNewSession()
                .Use(connections)
                .WithMySql()
-               .UseDefaultDbSettingProvider(resourcePath: resourcePath)
+               .UseDefaultDbSettingProvider(resourcePath: "~/App_Data/SpNames.xml")
                .Run();
 
             LogManager
