@@ -129,7 +129,7 @@ body {
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;
-  padding: 3.3rem 0; }
+  padding: 1.2rem 0; }
   @media screen and (max-width: 1024px) {
     .footer {
       padding: .6rem 0;
@@ -187,6 +187,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   outline: none; }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     color: #828282; }
+    @media screen and (max-width: 1024px) {
+      textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
+        font-size: 1.6rem; } }
   textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: #fff; }
@@ -276,19 +279,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           font-size: 1.4rem;
           font-weight: 400;
           padding: 0 6rem 0 3rem !important;
-          line-height: 5rem;
           border: none;
           color: #828282;
           border-radius: 3rem;
           width: 16vw; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .search-input input {
-              width: 100%; } }
+              width: 100%;
+              font-size: 1.6rem; } }
         .header .top-header .group-menu .search-input .btn-search {
           background-color: transparent;
           position: absolute;
           cursor: pointer;
-          top: 0;
+          top: .2rem;
           right: 3rem;
           width: .5rem;
           height: 100%; }
@@ -448,7 +451,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
                   color: #081224;
                   padding: 1.6rem 1.2rem;
-                  font-size: 1.4rem;
+                  font-size: 1.6rem;
                   text-transform: initial;
                   font-weight: bold;
                   margin-right: 0;
@@ -547,7 +550,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                   .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child .child-menu-item .item-child {
                     color: #081224;
                     padding: 0;
-                    font-size: 1.4rem;
+                    font-size: 1.6rem;
                     text-transform: initial;
                     border-bottom: 1px solid #2C3340;
                     font-weight: inherit;
