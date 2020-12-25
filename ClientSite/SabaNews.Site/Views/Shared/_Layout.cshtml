@@ -27,61 +27,47 @@
     <meta name="msapplication-TileImage" content="~/images/favicon/app_144x144.png">
     <meta name="theme-color" content="#fffdf9">
 
-
-
-    <environment include="Development">
-        @RenderSection("Styles", false)
-    </environment>
-    <environment exclude="Development">
-        @RenderSection("Styles", false)
-    </environment>
-
+    @RenderSection("Styles", false)
 </head>
 
 <body>
-	@(await Component.InvokeAsync("Menu"))
+    @(await Component.InvokeAsync("Menu"))
 
-	<div>
-		<partial name="_CookieConsentPartial" />
-		<main role="main" class="pb-3">
-			@RenderBody()
-		</main>
-	</div>
+    <div>
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
 
-	<section class="footer">
-		<div class="copy-right">
-			@@ 2020 Bản quyền thuộc về Saba Sports
-		</div>
+    <section class="footer">
+        <div class="copy-right">
+            @@ 2020 Bản quyền thuộc về Saba Sports
+        </div>
 
-		<div class="back-to-top">
-			<span class="icon-chevron-right"></span>
-		</div>
-	</section>
-	<environment include="Development">
-		<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
-	</environment>
-	<environment exclude="Development">
-		<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
-	</environment>
+        <div class="back-to-top">
+            <span class="icon-chevron-right"></span>
+        </div>
+    </section>
+    <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
 
-	@RenderSection("Scripts", false)
-	<script>
-		if ($(window).innerWidth() <= 500) {
-			var Swipes = new Swiper('.swiper-container', {
-				loop: true,
-				slidesPerView: 1,
-				spaceBetween: 0,
-				navigation: {
-					nextEl: '.swiper-button-next',
-					prevEl: '.swiper-button-prev',
-				},
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				},
-			});
-		}
-	</script>
-
+    @RenderSection("Scripts", false)
+    <script>
+        if ($(window).innerWidth() <= 500) {
+            var Swipes = new Swiper('.swiper-container', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+    </script>
 </body>
 </html>
