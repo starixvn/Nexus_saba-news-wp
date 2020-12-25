@@ -165,7 +165,7 @@ body {
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;
-  padding: 3.3rem 0; }
+  padding: 1.2rem 0; }
   @media screen and (max-width: 1024px) {
     .footer {
       padding: .6rem 0;
