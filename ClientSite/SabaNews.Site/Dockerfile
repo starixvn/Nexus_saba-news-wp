@@ -1,26 +1,24 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0-buster-slim AS builder
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim AS base
-WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
+
 COPY ["SabaNews.Site/SabaNews.Site.csproj", "SabaNews.Site/"]
 COPY ["SabaNews.Models/SabaNews.Models.csproj", "SabaNews.Models/"]
 COPY ["SabaNews.Services/SabaNews.Services.csproj", "SabaNews.Services/"]
 COPY ["SabaNews.Criteria/SabaNews.Criteria.csproj", "SabaNews.Criteria/"]
 COPY ["SabaNews.Core/SabaNews.Core.csproj", "SabaNews.Core/"]
 COPY ["nuget.config", ""]
-RUN dotnet restore "SabaNews.Site/SabaNews.Site.csproj"
-COPY . .
+
 WORKDIR "/src/SabaNews.Site"
-RUN dotnet build "SabaNews.Site.csproj" -c Release -o /app/build
+RUN dotnet restore -v diag
 
-FROM build AS publish
-RUN dotnet publish "SabaNews.Site.csproj" -c Release -o /app/publish
+COPY . .
 
-FROM base AS final
+RUN dotnet publish -r linux-x64 --self-contained false -o /app
+
+FROM registry.nexdev.net:5050/docker/dotnet/core/aspnet:5.0-buster-slim AS base
+
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=builder /app .
+
 ENTRYPOINT ["dotnet", "SabaNews.Site.dll"]
