@@ -5,7 +5,6 @@
 version: '3.3'
 services:
   saba_news_wp_LOCAL:
-    container_name: wp_saba-reports
     image: registry.nexdev.net:5050/nexcel/nexus/saba-sports/saba-new-wp
     volumes:
       - /var/www/gluster/volume1/nexus/wp/saba_upload/app/uploads:/var/www/html/wp-content/uploads/
@@ -17,7 +16,6 @@ services:
         constraints:
           - node.labels.NEXCEL == yes
     restart: always
-   
     networks:
       - swarm_nexcel_local
       - private
