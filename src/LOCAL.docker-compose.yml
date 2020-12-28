@@ -18,3 +18,8 @@ services:
           - node.labels.NEXCEL == yes
     networks:
       - swarm_nexcel_local
+networks:
+  swarm_nexcel_local:
+    external: true
+  private:
+    external: true
