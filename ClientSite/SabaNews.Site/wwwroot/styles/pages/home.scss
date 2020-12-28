@@ -421,9 +421,13 @@
 
         .card-vertical {
             padding-bottom: 0;
+            .card-vertical__description {
+                display: none;
+            }
         }
 
         .card-vertical__image {
+            max-height: 36.3rem;
 
             @include tableMobile {
                 max-height: 20rem;
