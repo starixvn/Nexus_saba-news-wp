@@ -4,6 +4,10 @@
 	<meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
 }
 
+@section Title {
+	@ViewData["Title"];
+}
+
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
