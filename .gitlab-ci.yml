@@ -2,3 +2,4 @@ include:
   - project: 'ci/repos-ci/nexcel_saba_sports_saba_news'
     ref: master
     file: 'gitlab-ci.yml'
+    
