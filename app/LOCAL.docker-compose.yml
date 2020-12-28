@@ -4,7 +4,7 @@
 #######################################################################
 version: '3.3'
 services:
-  wordpress:
+  saba_news_wp_LOCAL:
     container_name: wp_saba-reports
     image: registry.nexdev.net:5050/nexcel/nexus/saba-sports/saba-new-wp
     volumes:
@@ -15,13 +15,9 @@ services:
       endpoint_mode: dnsrr
       placement:
         constraints:
-          - node.labels.wordpress == yes
+          - node.labels.NEXCEL == yes
     restart: always
-    logging:
-      driver: fluentd
-      options:
-        tag: docker.saba-reports.wordpress
-        fluentd-async-connect: 'true'
+   
     networks:
       - swarm_nexcel_local
       - private
