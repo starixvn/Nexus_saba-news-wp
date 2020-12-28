@@ -12,12 +12,12 @@
             sb.AppendLine("User-agent: *")
                 .AppendLine("allow: /")
                 .Append("sitemap: ")
-                .Append(this.Request.Scheme)
+                .Append(Request.Scheme)
                 .Append("://")
-                .Append(this.Request.Host)
+                .Append(Request.Host)
                 .AppendLine("/sitemap.xml");
 
-            return this.Content(sb.ToString(), "text/plain", Encoding.UTF8);
+            return Content(sb.ToString(), "text/plain", Encoding.UTF8);
         }
     }
 }
