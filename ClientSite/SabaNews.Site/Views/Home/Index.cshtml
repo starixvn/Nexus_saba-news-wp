@@ -1,246 +1,247 @@
 ﻿@using sabanews.Constants;
 
 @section Metadata {
-	<meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
+    <meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
 }
 
 @section Title {
-	@ViewData["Title"];
+    @ViewData["Title"]
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
 <section class="main">
-	<div class="colums-main">
-		<div class="block block-hot-news">
-			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug })">TIN MỚI NHẤT</a></h2>
-				<div class="block__content">
-					<div class="card-vertical card-vertical-highlight">
-						<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
-							<picture>
-								<source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/webp" class="img-res">
-								<source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
-								<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.NewPosts[0].FeatureImage)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-							</picture>
-						</a>
-						<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-						<p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
-						<p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
-					</div>
-					@for (int i = 1; i < Model.NewPosts.Count; i++)
-					{
-		<div class="card-horizontal card-item-@i">
-			<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-				<picture>
-					<source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/webp" class="img-res">
-					<source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/jpeg" class="img-res">
-					<img loading="lazy" src="@Url.Content(Model.NewPosts[i].FeatureImage)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
-				</picture>
-			</a>
-			<div class="card-horizontal__content">
-				<a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-				<p class="datetime">@Model.NewPosts[i].PostDate</p>
-				<p class="description">@Model.NewPosts[i].PostExcerpt</p>
-			</div>
-		</div>}
-				</div>
-			</div>
-		</div>
+    <div class="colums-main">
+        <div class="block block-hot-news">
+            <div class="container">
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug })">TIN MỚI NHẤT</a></h2>
+                <div class="block__content">
+                    <div class="card-vertical card-vertical-highlight">
+                        <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
+                            <picture>
+                                <source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/webp" class="img-res">
+                                <source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
+                                <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.NewPosts[0].FeatureImage)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
+                            </picture>
+                        </a>
+                        <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
+                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
+                        <p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
+                    </div>
+                    @for (int i = 1; i < Model.NewPosts.Count; i++)
+                    {
+        <div class="card-horizontal card-item-@i">
+            <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
+                <picture>
+                    <source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/webp" class="img-res">
+                    <source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/jpeg" class="img-res">
+                    <img loading="lazy" src="@Url.Content(Model.NewPosts[i].FeatureImage)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+                </picture>
+            </a>
+            <div class="card-horizontal__content">
+                <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
+                <p class="datetime">@Model.NewPosts[i].PostDate</p>
+                <p class="description">@Model.NewPosts[i].PostExcerpt</p>
+            </div>
+        </div>}
+                </div>
+            </div>
+        </div>
 
-		<div class="block block-video">
-			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.VideoSlug })">video</a></h2>
-				<div class="block__content flex-video">
-					<div class="swiper-video">
-						<div class="swiper-container">
-							<div class="swiper-wrapper">
-								@foreach (var post in Model.VideoPosts)
-								{
-					<div class="swiper-slide" id="slide-@post.ID">
-						<input type="hidden" name="iframe_value" value="@post.PostContent" />
-						<div class="img-item">
-							<picture>
-								<source srcset="@Url.Content(post.FeatureImage)" type="image/webp">
-								<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg">
-								<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle">
-							</picture>
-							<div class="btn-play-video">
-								<span class="icon-play"></span>
-							</div>
-						</div>
-						<div class="play_video"></div>
-						<div class="content-box">
-							<h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
-						</div>
-					</div>}
-							</div>
-							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
-							<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
-							<div class="swiper-pagination"></div>
-						</div>
-					</div>
-					<div class="slide-video">
-						@foreach (var post in Model.VideoPosts)
-						{
-			<div class="card-horizontal card-item">
-				<a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
-					<picture>
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-						<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-					</picture>
-				</a>
-				<div class="card-horizontal__content">
-					<a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-					<p class="datetime">@post.PostDate</p>
-				</div>
-			</div>}
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="block block-video">
+            <div class="container">
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.VideoSlug })">video</a></h2>
+                <div class="block__content flex-video">
+                    <div class="swiper-video">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                @foreach (var post in Model.VideoPosts)
+                                {
+                    <div class="swiper-slide" id="slide-@post.ID">
+                        <input type="hidden" name="iframe_value" value="@post.PostContent" />
+                        <div class="img-item">
+                            <picture>
+                                <source srcset="@Url.Content(post.FeatureImage)" type="image/webp">
+                                <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg">
+                                <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle">
+                            </picture>
+                            <div class="btn-play-video">
+                                <span class="icon-play"></span>
+                            </div>
+                        </div>
+                        <div class="play_video"></div>
+                        <div class="content-box">
+                            <h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+                        </div>
+                    </div>}
+                            </div>
+                            <div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+                            <div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="slide-video">
+                        @foreach (var post in Model.VideoPosts)
+                        {
+            <div class="card-horizontal card-item">
+                <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
+                    <picture>
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                        <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                    </picture>
+                </a>
+                <div class="card-horizontal__content">
+                    <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
+                    <p class="datetime">@post.PostDate</p>
+                </div>
+            </div>}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="block block-soccer">
-			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.FootballSlug })">Bóng Đá</a></h2>
-				<div class="block__content">
-					@foreach (var post in Model.FootballPosts)
-					{
-		<div class="card-vertical">
-			<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-vertical__image">
-				<picture>
-					<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-					<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-					<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-				</picture>
-			</a>
-			<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-			<p class="card-vertical__datetime">@post.PostDate</p>
-		</div>}
-				</div>
-			</div>
-		</div>
+        <div class="block block-soccer">
+            <div class="container">
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.FootballSlug })">Bóng Đá</a></h2>
+                <div class="block__content">
+                    @foreach (var post in Model.FootballPosts)
+                    {
+        <div class="card-vertical">
+            <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-vertical__image">
+                <picture>
+                    <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                    <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                    <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                </picture>
+            </a>
+            <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+            <p class="card-vertical__datetime">@post.PostDate</p>
+        </div>}
+                </div>
+            </div>
+        </div>
 
-		<div class="block block-guess">
-			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.GuessSlug })">Nhận Định - Dự đoán</a></h2>
-				<div class="block__content">
-					@foreach (var post in Model.GuessPosts)
-					{
-		<div class="card-vertical">
-			<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
-				<picture>
-					<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-					<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-					<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-				</picture>
-			</a>
-			<div class="group group-mobile">
-				<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-				<p class="card-vertical__datetime">@post.PostDate</p>
-			</div>
-		</div>}
-				</div>
-			</div>
-		</div>
+        <div class="block block-guess">
+            <div class="container">
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.GuessSlug })">Nhận Định - Dự đoán</a></h2>
+                <div class="block__content">
+                    @foreach (var post in Model.GuessPosts)
+                    {
+        <div class="card-vertical">
+            <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
+                <picture>
+                    <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                    <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                    <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                </picture>
+            </a>
+            <div class="group group-mobile">
+                <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+                <p class="card-vertical__datetime">@post.PostDate</p>
+            </div>
+        </div>}
+                </div>
+            </div>
+        </div>
 
-		<div class="group-blocks">
-			<div class="container">
-				<div class="block block-behind">
-					<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.BackstageSlug })">hậu trường</a></h2>
-					<div class="block__content">
-						@for (int i = 0; i < Model.BackstagePosts.Count; i++)
-						{
-			<div class="card-vertical card-vertical-highlight card-item-@(i+1)">
-				<a href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })" class="card-vertical__image">
-					<picture>
-						<source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/webp" class="img-res">
-						<source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/jpeg" class="img-res">
-						<img loading="lazy" src="@Url.Content(Model.BackstagePosts[i].FeatureImage)" alt="@Model.BackstagePosts[i].PostTitle" class="img-res img-block">
-					</picture>
-				</a>
-				<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
-				<p class="card-vertical__datetime">@Model.BackstagePosts[i].PostDate</p>
-			</div>}
-					</div>
-				</div>
-				<div class="block block-transfer">
-					<h2 class="block__title">
-						<a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.TransferSlug })">Thị trường chuyển nhượng</a>
-					</h2>
-					<div class="block__content">
-						@foreach (var post in Model.TransferPosts)
-						{
-			<div class="card-horizontal">
-				<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-horizontal__image">
-					<picture>
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-						<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-					</picture>
-				</a>
-				<div class="card-horizontal__content">
-					<a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-					<p class="datetime">@post.PostDate</p>
-					<p class="description">@post.PostExcerpt</p>
-				</div>
-			</div>}
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="group-blocks">
+            <div class="container">
+                <div class="block block-behind">
+                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.BackstageSlug })">hậu trường</a></h2>
+                    <div class="block__content">
+                        @for (int i = 0; i < Model.BackstagePosts.Count; i++)
+                        {
+            <div class="card-vertical card-vertical-highlight card-item-@(i+1)">
+                <a href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })" class="card-vertical__image">
+                    <picture>
+                        <source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/webp" class="img-res">
+                        <source srcset="@Url.Content(Model.BackstagePosts[i].FeatureImage)" type="image/jpeg" class="img-res">
+                        <img loading="lazy" src="@Url.Content(Model.BackstagePosts[i].FeatureImage)" alt="@Model.BackstagePosts[i].PostTitle" class="img-res img-block">
+                    </picture>
+                </a>
+                <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
+                <p class="card-vertical__datetime">@Model.BackstagePosts[i].PostDate</p>
+            </div>}
+                    </div>
+                </div>
+                <div class="block block-transfer">
+                    <h2 class="block__title">
+                        <a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.TransferSlug })">Thị trường chuyển nhượng</a>
+                    </h2>
+                    <div class="block__content">
+                        @foreach (var post in Model.TransferPosts)
+                        {
+            <div class="card-horizontal">
+                <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-horizontal__image">
+                    <picture>
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                        <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                    </picture>
+                </a>
+                <div class="card-horizontal__content">
+                    <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
+                    <p class="datetime">@post.PostDate</p>
+                    <p class="description">@post.PostExcerpt</p>
+                </div>
+            </div>}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="group-blocks">
-			<div class="container">
-				<div class="block block-basketball">
-					<h2 class="block__title">
-						<a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.BasketballSlug })">Bóng rổ</a>
-					</h2>
-					<div class="block__content">
-						@foreach (var post in Model.BasketballPosts)
-						{
-			<div class="card-vertical">
-				<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
-					<picture>
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-						<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-						<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-					</picture>
-				</a>
-				<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-									<p class="card-vertical__datetime">@post.PostDate</p>
-			</div>}
-					</div>
-				</div>
-				<div class="block block-tennis">
-					<h2 class="block__title">
-						<a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.TennisSlug })">Quần vợt</a>
-					</h2>
-					<div class="block__content">
-						<div class="card-vertical">
-							<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })" class="card-vertical__image">
-								<picture>
-									<source srcset="@Url.Content(Model.TennisPosts[0].FeatureImage)" type="image/webp" class="img-res">
-									<source srcset="@Url.Content(Model.TennisPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
-									<img src="@Url.Content(Model.TennisPosts[0].FeatureImage)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
-								</picture>
-							</a>
-							<a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
-							<p class="card-vertical__datetime">@Model.TennisPosts[0].PostDate</p>
-							<p class="card-vertical__description">
-								@Model.TennisPosts[0].PostExcerpt
-							</p>
-						</div>
-						<ul class="block-list">
-							@for (int i = 1; i < Model.TennisPosts.Count; i++)
-							{
-				<li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[i].Slug  })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="group-blocks">
+            <div class="container">
+                <div class="block block-basketball">
+                    <h2 class="block__title">
+                        <a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.BasketballSlug })">Bóng rổ</a>
+                    </h2>
+                    <div class="block__content">
+                        @foreach (var post in Model.BasketballPosts)
+                        {
+            <div class="card-vertical">
+                <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
+                    <picture>
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                        <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                    </picture>
+                </a>
+                <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
+                <p class="card-vertical__datetime">@post.PostDate</p>
+            </div>}
+                    </div>
+                </div>
+                <div class="block block-tennis">
+                    <h2 class="block__title">
+                        <a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug, slug = Constants.TennisSlug })">Quần vợt</a>
+                    </h2>
+                    <div class="block__content">
+                        <div class="card-vertical">
+                            <a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="@Url.Content(Model.TennisPosts[0].FeatureImage)" type="image/webp" class="img-res">
+                                    <source srcset="@Url.Content(Model.TennisPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
+                                    <img src="@Url.Content(Model.TennisPosts[0].FeatureImage)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
+                            <p class="card-vertical__datetime">@Model.TennisPosts[0].PostDate</p>
+                            <p class="card-vertical__description">
+                                @Model.TennisPosts[0].PostExcerpt
+                            </p>
+                        </div>
+                        <ul class="block-list">
+                            @for (int i = 1; i < Model.TennisPosts.Count; i++)
+                            {
+                <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[i].Slug  })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
+}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

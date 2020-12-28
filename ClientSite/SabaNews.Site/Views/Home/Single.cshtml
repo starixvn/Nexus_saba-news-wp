@@ -1,11 +1,11 @@
 ﻿@using sabanews.Constants;
 
 @section Metadata {
-	<meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
+    <meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
 }
 
 @section Title{
-	@ViewData[Constants.ViewDataTitle]
+    @Model.SinglePost.PostTitle
 }
 
 @section Styles{
