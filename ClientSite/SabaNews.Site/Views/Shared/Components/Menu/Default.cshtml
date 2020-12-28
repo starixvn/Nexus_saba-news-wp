@@ -19,15 +19,15 @@
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
 						{
 							var link = Url.Action("Category", "Home", new { slug = (int?)null });
-							if (menu.CatId == Convert.ToInt32(ViewData["MatchSchedule"]))
+							if (menu.CatId == Constants.MatchScheduleCategory)
 							{
 								link = Url.Action("MatchSchedule", "Home");
 							}
-							else if (menu.ID == Convert.ToInt32(ViewData["Video"]))
+							else if (menu.ID == Constants.VideoIdPage)
 							{
 								link = Url.Action("Video", "Home", new { slug = (int?)null });
 							}
-							else if (menu.CatId == Convert.ToInt32(ViewData["Home"]))
+							else if (menu.CatId == Constants.Home)
 							{
 								link = Url.Action("Index", "Home");
 							}
@@ -51,7 +51,7 @@
 										@foreach (var Lv2 in menuLv2)
 										{
 											link = Url.Action("Category", "Home", new { slug = Lv2.Slug });
-											if (Lv2.ParentId == Convert.ToInt32(ViewData["Video"]))
+											if (Lv2.ParentId == Constants.VideoIdPage)
 											{
 												link = Url.Action("Video", "Home", new { slug = Lv2.Slug });
 											}

@@ -10,6 +10,9 @@
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
+@{
+    ViewData["CategoryId"] = Model.ViewData.CategoryId;
+}
 
 <section class="main">
 	<div class="container">

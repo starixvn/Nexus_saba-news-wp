@@ -17,9 +17,6 @@
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var model = await postService.GetMenuAsync("Main Menu");
-            ViewData["MatchSchedule"] = Constants.MatchScheduleCategory;
-            ViewData["Home"] = Constants.Home;
-            ViewData["Video"] = Constants.VideoIdPage;
             return View(model);
         }
     }
