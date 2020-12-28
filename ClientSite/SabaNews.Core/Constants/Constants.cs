@@ -14,6 +14,7 @@
         public const int MatchScheduleCategory = 4814;
         public const int VideoIdPage = 4589;
 
+        public const string HomeSlug = "home-3";
         public const string NewPostSlug = "tin-tuc";
         public const string VideoSlug = "video";
         public const string FootballSlug = "tin-bong-da";
@@ -23,6 +24,7 @@
         public const string BackstageSlug = "tin-hau-truong";
         public const string TransferSlug = "chuyen-nhuong-tin-tuc";
         public const string CategorySlug = "tin-tuc";
+        public const string MatchScheduleSlug = "lich-thi-dau";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";

@@ -76,6 +76,10 @@
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
+                if (post.Categories == null)
+                {
+                    return post;
+                }
                 post.Type = Constants.FootballPostType;
                 var isVideo = await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
                 if (isVideo)
@@ -175,6 +179,15 @@
             var criteria = new GetPageDetailByCateIdCriteria
             {
                 ID = ID
+            };
+            return await baseService.GetDataEntityAsync<Category>(criteria);
+        }
+
+        public async Task<Category> GetPageDetailBySlugAsync(string slug)
+        {
+            var criteria = new GetPageDetailBySlugCriteria
+            {
+                Slug = slug
             };
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }

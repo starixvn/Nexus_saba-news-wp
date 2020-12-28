@@ -33,6 +33,8 @@
 
         Task<Category> GetPageDetailAsync(int ID);
 
+        Task<Category> GetPageDetailBySlugAsync(string slug);
+
         Task<Boolean> CheckTypeCategoryAsync(int parentId, int ID);
     }
 }
