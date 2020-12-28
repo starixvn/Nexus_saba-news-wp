@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace sabanews.Models
+﻿namespace sabanews.Models
 {
     public class Category
     {
@@ -13,5 +8,8 @@ namespace sabanews.Models
         public string Slug { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string OgImage { get; set; }
+        public string OgDescription { get; set; }
+        public string OgTitle { get; set; }
     }
 }

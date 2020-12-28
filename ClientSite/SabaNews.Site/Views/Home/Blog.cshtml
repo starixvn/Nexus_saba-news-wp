@@ -1,74 +1,89 @@
 ﻿@using sabanews.Constants;
+@section Metadata {
+	<meta name="description" content='@Model.ViewData.Description' />
+	@if (Model.Category != null)
+	{
+		<meta property="og:description" content='@Model.Category.OgDescription' />
+		<meta property="og:title" content='@Model.Category.OgTitle' />
+		<meta property="og:image" content='@Model.Category.OgImage' />
+	}
+}
+
+@section Title{
+	@Model.ViewData.Title
+}
+
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
+
 @{
-	var postExcerpt = Model[0].PostExcerpt.IndexOf('.') != -1 ? Model[0].PostExcerpt.Substring(0, Model[0].PostExcerpt.IndexOf('.')) : Model[0].PostExcerpt;
+	var postExcerpt = Model.Posts[0].PostExcerpt.IndexOf('.') != -1 ? Model.Posts[0].PostExcerpt.Substring(0, Model.Posts[0].PostExcerpt.IndexOf('.')) : Model.Posts[0].PostExcerpt;
 }
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>@(ViewData["HeadTitle"] != null ? ViewData["HeadTitle"] : Model[0].Categories )</a></h2>
+			<h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories)</a></h2>
 			<div class="block__content">
 				<div class="card-horizontal card-horizontal-highlight">
-					<a href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })" class="card-horizontal__image">
+					<a href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })" class="card-horizontal__image">
 						<picture>
-							<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/webp" class="img-res">
-							<source srcset="@Url.Content(Model[0].FeatureImage)" type="image/jpeg" class="img-res">
-							<img loading="lazy" src="@Url.Content(Model[0].FeatureImage)" alt="@Model[0].PostTitle" class="img-res img-block">
+							<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp" class="img-res">
+							<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/jpeg" class="img-res">
+							<img loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle" class="img-res img-block">
 						</picture>
 					</a>
 					<div class="card-horizontal__content">
-						<a class="title" href="@Url.Action("Single", "Home", new { slug = Model[0].Slug })">@Model[0].PostTitle</a>
-						<p class="datetime">@Model[0].PostDate</p>
+						<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a>
+						<p class="datetime">@Model.Posts[0].PostDate</p>
 						<p class="description">@postExcerpt</p>
 					</div>
 				</div>
-				@for (int i = 1; i < Model.Count; i++)
+				@for (int i = 1; i < Model.Posts.Count; i++)
 				{
-					var excerpt = Model[i].PostExcerpt.IndexOf('.') != -1 ? Model[i].PostExcerpt.Substring(0, Model[i].PostExcerpt.IndexOf('.')) : Model[i].PostExcerpt;
+					var excerpt = Model.Posts[i].PostExcerpt.IndexOf('.') != -1 ? Model.Posts[i].PostExcerpt.Substring(0, Model.Posts[i].PostExcerpt.IndexOf('.')) : Model.Posts[i].PostExcerpt;
 					<div class="card-horizontal">
-						<a href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })" class="card-horizontal__image">
+						<a href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })" class="card-horizontal__image">
 							<picture>
-								<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/webp" class="img-res">
-								<source srcset="@Url.Content(Model[i].FeatureImage)" type="image/jpeg" class="img-res">
-								<img loading="lazy" src="@Url.Content(Model[i].FeatureImage)" alt="@Model[i].PostTitle" class="img-res img-block">
+								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
+								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
+								<img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<div class="card-horizontal__content">
-							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model[i].Slug })">@Model[i].PostTitle</a>
-							<p class="datetime">@Model[i].PostDate</p>
+							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })">@Model.Posts[i].PostTitle</a>
+							<p class="datetime">@Model.Posts[i].PostDate</p>
 							<p class="description">@excerpt</p>
 						</div>
 					</div>
 				}
 				@{
-					int CurrentPage = Convert.ToInt32(ViewData["CurrentPage"]);
-					int TotalPages = Convert.ToInt32(ViewData["TotalPages"]);
-					var linkLast = Url.Action("Category", "Home", new { page = @ViewData["TotalPages"] });
+					int CurrentPage = Model.ViewData.CurrentPage;
+					int TotalPages = Model.ViewData.TotalPages;
+					var linkLast = Url.Action("Category", "Home", new { page = Model.ViewData.TotalPages });
 					var linkFirst = Url.Action("Category", "Home", new { page = 1 });
 					var linkNext = Url.Action("Category", "Home", new { page = CurrentPage + 1 });
 					var linkPrev = Url.Action("Category", "Home", new { page = CurrentPage - 1 });
-					if (ViewData["Controller"].ToString() == "Search")
+					if (Model.ViewData.Controller == "Search")
 					{
-						linkLast = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = @ViewData["TotalPages"] });
-						linkFirst = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = 1 });
-						linkNext = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = CurrentPage + 1 });
-						linkPrev = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = CurrentPage - 1 });
+						linkLast = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = Model.ViewData.TotalPages });
+						linkFirst = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = 1 });
+						linkNext = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = CurrentPage + 1 });
+						linkPrev = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = CurrentPage - 1 });
 					}
-					else if (ViewData["Controller"].ToString() == "Tag")
+					else if (Model.ViewData.Controller == "Tag")
 					{
-						linkLast = Url.Action("Tag", "Home", new { tagname = ViewData["tag"], page = @ViewData["TotalPages"] });
-						linkFirst = Url.Action("Tag", "Home", new { tagname = ViewData["tag"], page = 1 });
-						linkNext = Url.Action("Tag", "Home", new { tagname = ViewData["tag"], page = CurrentPage + 1 });
-						linkPrev = Url.Action("Tag", "Home", new { tagname = ViewData["tag"], page = CurrentPage - 1 });
+						linkLast = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = Model.ViewData.TotalPages });
+						linkFirst = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = 1 });
+						linkNext = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = CurrentPage + 1 });
+						linkPrev = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = CurrentPage - 1 });
 					}
-					else if (ViewData["Controller"].ToString() == "DateSearch")
+					else if (Model.ViewData.Controller == "DateSearch")
 					{
-						linkLast = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = @ViewData["TotalPages"] });
-						linkFirst = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = 1 });
-						linkNext = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = CurrentPage + 1 });
-						linkPrev = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = CurrentPage - 1 });
+						linkLast = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = Model.ViewData.TotalPages });
+						linkFirst = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = 1 });
+						linkNext = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = CurrentPage + 1 });
+						linkPrev = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = CurrentPage - 1 });
 					}
 
 					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
@@ -95,17 +110,17 @@
 								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 								{
 									var link = Url.Action("Category", "Home", new { page = i });
-									if (ViewData["Controller"].ToString() == "Search")
+									if (Model.ViewData.Controller == "Search")
 									{
-										link = Url.Action("Search", "Home", new { keyword = ViewData["keyword"], page = i });
+										link = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = i });
 									}
-									else if (ViewData["Controller"].ToString() == "Tag")
+									else if (Model.ViewData.Controller == "Tag")
 									{
-										link = Url.Action("Tag", "Home", new { tagname = ViewData["tag"], page = i });
+										link = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = i });
 									}
-									else if (ViewData["Controller"].ToString() == "DateSearch")
+									else if (Model.ViewData.Controller == "DateSearch")
 									{
-										link = Url.Action("DateSearch", "Home", new { date = ViewData["Date"], page = i });
+										link = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = i });
 									}
 									var active = i == CurrentPage ? "active" : "";
 									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
@@ -114,7 +129,7 @@
 								if (CurrentPage + 4 <= TotalPages)
 								{
 									<li class="items-pagination"><a class="item">...</a></li>
-									<li class="items-pagination"><a href="@linkLast" class="item">@ViewData["TotalPages"]</a></li>
+									<li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
 								}
 							}
 						</ul>
@@ -124,10 +139,10 @@
 				}
 			</div>
 		</div>
-		@if (ViewData["Controller"].ToString() == "DateSearch")
+		@if (Model.ViewData.Controller == "DateSearch")
 		{
-			var countDate = ViewData["Date"].ToString().Split('-');
-			if (countDate.Count() >= 2)
+			var countDate = Model.ViewData.DateSearch.Split('-');
+			if (countDate.Length >= 2)
 			{
 				@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) }))
 			}

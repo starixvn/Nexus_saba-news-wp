@@ -30,10 +30,14 @@
         public const string HomeTitle = "Trang tin tức thể thao mới nhất, cập nhật liên tục";
         public const string MatchScheduleTitle = "Lịch thi đấu hôm nay giải ngoại hạng Anh, Tây Ban Nha, C1, Serie A, NBA, ...";
         public const string SearchTitle = "Kết quả tìm kiếm";
+        public const string Search = "Search";
+        public const string Tag = "Tag";
+        public const string DateSearch = "DateSearch";
 
         public const string EmptyBlogView = "EmptyBlog";
         public const string BlogView = "Blog";
         public const string VideoView = "Video";
+        public const string CategoryView = "Category";
 
         public const string VideoPostType = "video";
         public const string FootballPostType = "sport-soccer";

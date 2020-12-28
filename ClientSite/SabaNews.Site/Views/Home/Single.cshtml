@@ -1,7 +1,17 @@
 ﻿@using sabanews.Constants;
+
+@section Metadata {
+	<meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
+}
+
+@section Title{
+	@ViewData[Constants.ViewDataTitle]
+}
+
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 }
+
 @{
 	ViewData["Title"] = Model.SinglePost.PostTitle;
 }
@@ -87,7 +97,6 @@
 						</div>
 					</div>
 				}
-
 			</div>
 		</div>
 		@(await Component.InvokeAsync("Sidebar"))

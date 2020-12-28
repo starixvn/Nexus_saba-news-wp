@@ -48,15 +48,25 @@
             var cate = await postService.GetCateDetailAsync(slug);
             var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.Perpage);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
-            ViewData[Constants.ViewDataTitle] = cate.Title;
-            ViewData[Constants.ViewDataDescription] = cate.Description ??= cate.Title;
-            ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = Constants.Perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage);
-            ViewData[Constants.ViewDataCategoryId] = cate.CatId;
-            ViewData[Constants.ViewDataController] = "category";
+            var ViewData = new ViewData
+            {
+                Title = cate.Title,
+                Description = cate.Description ??= cate.Title,
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage),
+                CategoryId = cate.CatId,
+                Controller = "category"
+            };
+
+            var Model = new CategoryViewModel
+            {
+                Posts = posts,
+                Category = cate,
+                ViewData = ViewData
+            };
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, posts);
+            return View(view, Model);
         }
 
         [Route("/video/{slug?}/page/{page}")]
@@ -68,15 +78,24 @@
             var cate = await postService.GetCateDetailAsync(slug);
             var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.PerpageVideo);
             var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
-            ViewData[Constants.ViewDataTitle] = cate.Title;
-            ViewData[Constants.ViewDataDescription] = cate.Description ??= cate.Title;
-            ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = Constants.PerpageVideo;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.PerpageVideo);
-            ViewData[Constants.ViewDataCategoryId] = cate.CatId;
-            ViewData[Constants.ViewDataController] = "video";
+            var ViewData = new ViewData
+            {
+                Title = cate.Title,
+                Description = cate.Description ??= cate.Title,
+                CurrentPage = page,
+                PageSize = Constants.PerpageVideo,
+                TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.PerpageVideo),
+                CategoryId = cate.CatId,
+                Controller = "video"
+            };
+            var Model = new CategoryViewModel
+            {
+                Posts = posts,
+                Category = cate,
+                ViewData = ViewData
+            };
             var view = posts.Any() ? Constants.VideoView : Constants.EmptyBlogView;
-            return View(view, posts);
+            return View(view, Model);
         }
 
         [Route("lich-thi-dau")]
@@ -117,18 +136,27 @@
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.SearchPostAsync(keyword, start, Constants.Perpage);
-            var PostsTotal = await postService.SearchPostAsync(keyword, 0, Constants.Total);
-            ViewData[Constants.ViewDataTitle] = Constants.SearchTitle + " '" + keyword + "'";
-            ViewData[Constants.ViewDataTitle] = ViewData["Title"];
-            ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = Constants.Perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
-            ViewData[Constants.ViewDataKeyword] = keyword;
-            ViewData[Constants.ViewDataController] = "Search";
-            ViewData[Constants.ViewDataHeadTitle] = Constants.SearchTitle + " '" + keyword + "'";
-            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Posts);
+            var posts = await postService.SearchPostAsync(keyword, start, Constants.Perpage);
+            var postsTotal = await postService.SearchPostAsync(keyword, 0, Constants.Total);
+            var ViewData = new ViewData
+            {
+                Title = Constants.SearchTitle + " '" + keyword + "'",
+                HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
+                Description = Constants.SearchTitle + " '" + keyword + "'",
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage),
+                Keyword = keyword,
+                Controller = Constants.Search
+            };
+            var Model = new CategoryViewModel
+            {
+                Posts = posts,
+                ViewData = ViewData
+            };
+
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, Model);
         }
 
         [Route("tag/{tagname}/page/{page}")]
@@ -136,18 +164,28 @@
         public async Task<IActionResult> Tag(string tagname, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetPostByTagAsync(tagname, start, Constants.Perpage);
-            var PostsTotal = await postService.GetPostByTagAsync(tagname, 0, Constants.Total);
-            ViewData[Constants.ViewDataTitle] = await postService.GetTagNameBySlugAsync(tagname);
-            ViewData[Constants.ViewDataDescription] = await postService.GetTagNameBySlugAsync(tagname);
-            ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = Constants.Perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
-            ViewData[Constants.ViewDataTag] = tagname;
-            ViewData[Constants.ViewDataController] = "Tag";
-            ViewData[Constants.ViewDataHeadTitle] = "Tag: '" + tagname + "'";
-            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Posts);
+            var posts = await postService.GetPostByTagAsync(tagname, start, Constants.Perpage);
+            var postsTotal = await postService.GetPostByTagAsync(tagname, 0, Constants.Total);
+            var name = await postService.GetTagNameBySlugAsync(tagname);
+            var ViewData = new ViewData
+            {
+                Title = name,
+                HeadTitle = "Tag: '" + tagname + "'",
+                Description = name,
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage),
+                Tag = tagname,
+                Controller = Constants.Tag
+            };
+            var Model = new CategoryViewModel
+            {
+                Posts = posts,
+                ViewData = ViewData
+            };
+
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, Model);
         }
 
         [Route("date/{date}/page/{page}")]
@@ -155,17 +193,26 @@
         public async Task<IActionResult> DateSearch(string date, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var Posts = await postService.GetPostByDateAsync(date, start, Constants.Perpage);
-            var PostsTotal = await postService.GetPostByDateAsync(date, 0, Constants.Total);
-            ViewData[Constants.ViewDataCurrentPage] = page;
-            ViewData[Constants.ViewDataPageSize] = Constants.Perpage;
-            ViewData[Constants.ViewDataTotalPages] = (int)Math.Ceiling(PostsTotal.Count() / (double)Constants.Perpage);
-            ViewData[Constants.ViewDataDate] = date;
-            ViewData[Constants.ViewDataController] = "DateSearch";
-            ViewData[Constants.ViewDataHeadTitle] = Constants.SearchTitle + " '" + date + "'";
-            ViewData[Constants.ViewDataTitle] = date + " - Saba Sports";
-            var view = Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Posts);
+            var posts = await postService.GetPostByDateAsync(date, start, Constants.Perpage);
+            var postsTotal = await postService.GetPostByDateAsync(date, 0, Constants.Total);
+            var ViewData = new ViewData
+            {
+                Title = date + " - Saba Sports",
+                HeadTitle = Constants.SearchTitle + " '" + date + "'",
+                Description = Constants.SearchTitle + " '" + date + "'",
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage),
+                DateSearch = date,
+                Controller = Constants.DateSearch
+            };
+            var Model = new CategoryViewModel
+            {
+                Posts = posts,
+                ViewData = ViewData
+            };
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, Model);
         }
     }
 }
