@@ -1,0 +1,20 @@
+########################################################################
+# File managed by Ansible - NexOps
+# Your changes will be overwritten.
+#######################################################################
+version: "3.3"
+services:
+  saba_news_upload_LOCAL:
+    image: registry.nexdev.net:5050/nexcel/nexus/saba-sports/saba-news-upload
+    volumes:
+      - /var/www/gluster/volume1/nexus/wp/saba_upload/app/uploads:/usr/share/nginx
+      - /var/www/gluster/volume1/nexus/wp/saba_upload/logs:/var/log/nginx/
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - node.labels.NEXCEL == yes
+    networks:
+      - swarm_nexcel_local
