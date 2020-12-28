@@ -1,5 +1,5 @@
 include:
-  - project: 'ci/repos-ci/nexus_saba_sports_saba_news'
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_site'
     ref: master
     file: 'gitlab-ci.yml'
     
