@@ -1,0 +1,119 @@
+########################################################################
+# File managed by Ansible - NexOps
+# Your changes will be overwritten.
+#######################################################################
+version: '3.3'
+services:
+  wordpress:
+    container_name: wp_saba-reports
+    image: registry.nexdev.net:5050/nexcel/nexus/saba-sports/saba-new-wp
+    volumes:
+      - /var/www/gluster/volume1/nexus/wp/saba_upload/app/uploads:/var/www/html/wp-content/uploads/
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - node.labels.wordpress == yes
+    restart: always
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.saba-reports.wordpress
+        fluentd-async-connect: 'true'
+    networks:
+      - swarm_nexcel_local
+      - private
+    links:
+      - mysql
+
+  upload:
+    container_name: 'nexus_wp_upload'
+    image: registry.nexdev.net:5050/docker/nginx:1.19.5
+    build:
+      context: .
+      dockerfile: conf/Dockerfile
+    volumes:
+      - ./saba_upload/app/uploads/:/usr/share/nginx
+      - ./saba_upload/conf/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./saba_upload/logs:/var/log/nginx/
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: dnsrr
+      placement:
+        constraints:
+          - node.labels.wordpress == yes
+    restart: always
+    networks:
+      - swarm_nexcel_local
+  mysql:
+    image: registry.nexdev.net:5050/docker/mysql:8.0
+    build:
+      context: .
+      dockerfile: Dockerfile_mysql
+    container_name: db_saba-reports
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - published: 33061
+        target: 3306
+        mode: ingress
+    env_file: .env
+    environment:
+      - MYSQL_DATABASE=database
+    volumes:
+      - saba_db:/var/lib/mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.wordpress == yes
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.saba-reports.mysql
+        fluentd-async-connect: 'true'
+    networks:
+      - swarm_nexcel_local
+      - private
+
+  phpmyadmin:
+    image: registry.nexdev.net:5050/docker/phpmyadmin:latest
+    build:
+      context: .
+      dockerfile: Dockerfile_phpmyadmin
+    container_name: phpmyadmin_saba-reports
+    volumes:
+      - /var/www/gluster/volume1/nexus/wp/uploads.ini:/usr/local/etc/php/conf.d/php-phpmyadmin.ini
+    restart: always
+    ports:
+      - 8032:80
+    links:
+      - mysql
+    environment:
+      MYSQL_USERNAME: $MYSQL_USER
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
+      PMA_HOSTS: mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.wordpress == yes
+    networks:
+      - swarm_nexcel_local
+
+networks:
+  swarm_nexcel_local:
+    external: true
+  private:
+    external: true
+
+volumes:
+  saba_db:
+    driver_opts:
+      o: bind
+      type: none
+      device: /var/www/gluster/volume1/nexus/wp/saba_db
