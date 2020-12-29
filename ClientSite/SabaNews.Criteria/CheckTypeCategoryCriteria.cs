@@ -4,7 +4,7 @@
 
     public class CheckTypeCategoryCriteria : CriteriaBase
     {
-        public int _Parent { get; set; }
+        public string _Parent { get; set; }
 
         public int _ID { get; set; }
 

@@ -81,20 +81,20 @@
                     return post;
                 }
                 post.Type = Constants.FootballPostType;
-                var isVideo = await CheckTypeCategoryAsync(Constants.VideoCategory, post.ID);
+                var isVideo = await CheckTypeCategoryAsync(Constants.VideoSlug, post.ID);
                 if (isVideo)
                 {
                     post.Type = Constants.VideoPostType;
                 }
-                else if (post.Categories.Contains(Constants.FootballCategory.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.FootballSlug.ToString()))
                 {
                     post.Type = Constants.FootballPostType;
                 }
-                else if (post.Categories.Contains(Constants.BasketballCategory.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.BasketballSlug.ToString()))
                 {
                     post.Type = Constants.BasketballPostType;
                 }
-                else if (post.Categories.Contains(Constants.TennisCategory.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.TennisSlug.ToString()))
                 {
                     post.Type = Constants.TennisPostType;
                 }
@@ -192,11 +192,11 @@
             return await baseService.GetDataEntityAsync<Category>(criteria);
         }
 
-        public async Task<bool> CheckTypeCategoryAsync(int parentId, int ID)
+        public async Task<bool> CheckTypeCategoryAsync(string parentSlug, int ID)
         {
             var criteria = new CheckTypeCategoryCriteria
             {
-                _Parent = parentId,
+                _Parent = parentSlug,
                 _ID = ID
             };
             var cate = await baseService.GetDataEntityAsync<Category>(criteria);

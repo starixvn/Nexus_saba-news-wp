@@ -110,7 +110,7 @@
                 Post = post,
                 Category = pageDetail
             };
-            ViewData[Constants.ViewDataCategoryId] = Constants.MatchScheduleCategory;
+            ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
             ViewData[Constants.ViewDataTitle] = title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;
             return View(Model);

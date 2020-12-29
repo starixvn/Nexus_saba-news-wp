@@ -18,7 +18,7 @@
 
         public async Task<IViewComponentResult> InvokeAsync(int year = 0, int month = 0)
         {
-            var newPosts = await postService.GetPostsAsync(Constants.NewPostCategory, 0, 4);
+            var newPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, 0, 4);
             var currentMonth = DateTime.Now.Month;
             var currentYear = DateTime.Now.Year;
             var currentDay = DateTime.Now.Day;

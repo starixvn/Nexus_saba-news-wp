@@ -19,7 +19,7 @@
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
 						{
 							var link = Url.Action("Category", "Home", new { slug = (int?)null });
-							if (menu.CatId == Constants.MatchScheduleCategory)
+							if (menu.Slug == Constants.MatchScheduleSlug)
 							{
 								link = Url.Action("MatchSchedule", "Home");
 							}
