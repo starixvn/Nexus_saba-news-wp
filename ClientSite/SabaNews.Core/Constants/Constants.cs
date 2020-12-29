@@ -7,12 +7,12 @@
         public const string HomeSlug = "home-3";
         public const string NewPostSlug = "tin-tuc";
         public const string VideoSlug = "video";
-        public const string FootballSlug = "tin-bong-da";
-        public const string BasketballSlug = "tin-bong-ro";
+        public const string FootballSlug = "bong-da";
+        public const string BasketballSlug = "bong-ro";
         public const string TennisSlug = "quan-vot";
         public const string GuessSlug = "nhan-dinh";
-        public const string BackstageSlug = "tin-hau-truong";
-        public const string TransferSlug = "chuyen-nhuong-tin-tuc";
+        public const string BackstageSlug = "hau-truong";
+        public const string TransferSlug = "chuyen-nhuong";
         public const string CategorySlug = "tin-tuc";
         public const string MatchScheduleSlug = "lich-thi-dau";
 
