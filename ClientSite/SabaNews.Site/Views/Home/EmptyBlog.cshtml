@@ -1,36 +1,30 @@
 ﻿@using sabanews.Constants;
-@section Metadata {
-	<meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
-}
 
 @section Title{
-	@ViewData[Constants.ViewDataTitle]
+    @Constants.NotFoundPostMsg
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
-}
-@{
-    ViewData["CategoryId"] = Model.ViewData.CategoryId;
+    <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
 
 <section class="main">
-	<div class="container">
-		<div class="block block-main">
-			<h2 class="block__title"><a>@Model.ViewData.HeadTitle</a></h2>
-			<div class="block__content">
-				<h4>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</h4>
-			</div>
-		</div>
-		@if (Model.ViewData.Controller != null && Model.ViewData.Controller == "DateSearch")
-		{
-			var countDate = Model.ViewData.DateSearch.Split('-');
-			if (countDate.Length >= 2)
-			{@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) })) }
-			else
-			{ @(await Component.InvokeAsync("Sidebar")) }
-		}
-		else
-		{ @(await Component.InvokeAsync("Sidebar"))}
-	</div>
+    <div class="container">
+        <div class="block block-main">
+            <h2 class="block__title"><a>@(Model != null ? Model.ViewData.HeadTitle : "") </a></h2>
+            <div class="block__content">
+                <h4>@Constants.NotFoundPostMsg</h4>
+            </div>
+        </div>
+        @if (Model != null && Model.ViewData.Controller != null && Model.ViewData.Controller == "DateSearch")
+        {
+            var countDate = Model.ViewData.DateSearch.Split('-');
+            if (countDate.Length >= 2)
+            {@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) })) }
+            else
+            { @(await Component.InvokeAsync("Sidebar")) }
+        }
+        else
+        { @(await Component.InvokeAsync("Sidebar"))}
+    </div>
 </section>
