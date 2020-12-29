@@ -3,7 +3,6 @@
     public static class Constants
     {
         public const int Home = 587;
-        public const int VideoIdPage = 4589;
 
         public const string HomeSlug = "home-3";
         public const string NewPostSlug = "tin-tuc";

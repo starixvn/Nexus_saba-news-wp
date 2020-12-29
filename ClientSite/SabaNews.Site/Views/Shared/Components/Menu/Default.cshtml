@@ -16,23 +16,26 @@
 				</div>
 				<div class="nav-menu">
 					<ul class="main-menu">
+						@{ var VideoParentId = 0; }
 						@foreach (var menu in Model.Where(p => p.ParentId == 0).ToList())
-						{
-							var link = Url.Action("Category", "Home", new { slug = (int?)null });
-							if (menu.Slug == Constants.MatchScheduleSlug)
-							{
-								link = Url.Action("MatchSchedule", "Home");
-							}
-							else if (menu.ID == Constants.VideoIdPage)
-							{
-								link = Url.Action("Video", "Home", new { slug = (int?)null });
-							}
-							else if (menu.CatId == Constants.Home)
-							{
-								link = Url.Action("Index", "Home");
-							}
-							var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-							var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
+                        {
+
+                            var link = Url.Action("Category", "Home", new { slug = (int?)null });
+                            if (menu.PageSlug == Constants.MatchScheduleSlug)
+                            {
+                                link = Url.Action("MatchSchedule", "Home");
+                            }
+                            else if (menu.Slug == Constants.VideoSlug)
+                            {
+                                VideoParentId = menu.ID;
+                                link = Url.Action("Video", "Home", new { slug = (int?)null });
+                            }
+                            else if (menu.CatId == Constants.Home)
+                            {
+                                link = Url.Action("Index", "Home");
+                            }
+                            var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+                            var menuLv2 = Model.Where(p => p.ParentId == menu.ID).ToList();
 							@if (menuLv2.Count == 0)
 							{
 								<li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
@@ -51,7 +54,7 @@
 										@foreach (var Lv2 in menuLv2)
 										{
 											link = Url.Action("Category", "Home", new { slug = Lv2.Slug });
-											if (Lv2.ParentId == Constants.VideoIdPage)
+											if (Lv2.ParentId == VideoParentId)
 											{
 												link = Url.Action("Video", "Home", new { slug = Lv2.Slug });
 											}
