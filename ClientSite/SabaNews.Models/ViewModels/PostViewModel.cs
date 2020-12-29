@@ -13,5 +13,6 @@
         public IEnumerable<Post> BackstagePosts { get; set; }
         public IEnumerable<Post> TransferPosts { get; set; }
         public IEnumerable<Menu> Menus { get; set; }
+        public Category Category { get; set; }
     }
 }

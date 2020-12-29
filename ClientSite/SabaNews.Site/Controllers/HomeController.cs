@@ -20,6 +20,7 @@
 
         public async Task<IActionResult> Index()
         {
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
             var Models = new PostViewModel
             {
                 NewPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems),
@@ -29,9 +30,10 @@
                 VideoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetSixItems),
                 GuessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems),
                 BackstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems),
-                TransferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems)
+                TransferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems),
+                Category =  pageDetail
             };
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
             ViewData[Constants.ViewDataTitle] = pageDetail.Title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= pageDetail.Title;
@@ -103,10 +105,15 @@
             var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.Title.Replace("%currentdate%", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+            var Model = new PageViewModel
+            {
+                Post = post,
+                Category = pageDetail
+            };
             ViewData[Constants.ViewDataCategoryId] = Constants.MatchScheduleCategory;
             ViewData[Constants.ViewDataTitle] = title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;
-            return View(post);
+            return View(Model);
         }
 
         [Route("{slug}")]

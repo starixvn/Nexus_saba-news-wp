@@ -2,6 +2,9 @@
 
 @section Metadata {
     <meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
+    <meta property="og:description" content='@Model.Category.OgDescription' />
+    <meta property="og:title" content='@Model.Category.OgTitle' />
+    <meta property="og:image" content='@Model.Category.OgImage' />
 }
 
 @section Title {
@@ -236,8 +239,7 @@
                         <ul class="block-list">
                             @for (int i = 1; i < Model.TennisPosts.Count; i++)
                             {
-                <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[i].Slug  })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
-}
+                <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[i].Slug  })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>}
                         </ul>
                     </div>
                 </div>
