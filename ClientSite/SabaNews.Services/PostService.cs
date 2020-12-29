@@ -86,15 +86,15 @@
                 {
                     post.Type = Constants.VideoPostType;
                 }
-                else if (post.CategoriesSlug.Contains(Constants.FootballSlug.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.FootballSlug))
                 {
                     post.Type = Constants.FootballPostType;
                 }
-                else if (post.CategoriesSlug.Contains(Constants.BasketballSlug.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.BasketballSlug))
                 {
                     post.Type = Constants.BasketballPostType;
                 }
-                else if (post.CategoriesSlug.Contains(Constants.TennisSlug.ToString()))
+                else if (post.CategoriesSlug.Contains(Constants.TennisSlug))
                 {
                     post.Type = Constants.TennisPostType;
                 }
