@@ -10,7 +10,7 @@
         public const string FootballSlug = "bong-da";
         public const string BasketballSlug = "bong-ro";
         public const string TennisSlug = "quan-vot";
-        public const string GuessSlug = "nhan-dinh";
+        public const string GuessSlug = "nhan-dinh-bong-da";
         public const string BackstageSlug = "hau-truong";
         public const string TransferSlug = "chuyen-nhuong";
         public const string CategorySlug = "tin-the-thao";
