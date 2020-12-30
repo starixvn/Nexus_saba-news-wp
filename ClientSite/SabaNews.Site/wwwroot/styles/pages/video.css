@@ -239,6 +239,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .header .top-header .group-menu .logo {
         width: 12rem;
         margin-right: 6rem; }
+        .header .top-header .group-menu .logo a {
+          display: flex;
+          align-items: center; }
         .header .top-header .group-menu .logo img {
           width: 12rem; }
         @media screen and (max-width: 1024px) {
@@ -260,7 +263,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .header .top-header .group-menu .search-input {
         position: absolute;
         right: 0px;
-        top: 0px; }
+        top: auto; }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .search-input {
             width: 25vw; } }

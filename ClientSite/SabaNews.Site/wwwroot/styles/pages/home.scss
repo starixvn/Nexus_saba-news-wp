@@ -291,7 +291,7 @@
         }
 
         .card-horizontal {
-            margin-bottom: $column-gap;
+            margin-bottom: $column-gap-tablet;
 
             @include tableMobile {
                 margin-bottom: $column-gap-tablet;
@@ -421,6 +421,7 @@
 
         .card-vertical {
             padding-bottom: 0;
+
             .card-vertical__description {
                 display: none;
             }

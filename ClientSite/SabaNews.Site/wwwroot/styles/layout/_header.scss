@@ -40,6 +40,11 @@
                 width: 12rem;
                 margin-right: 6rem;
 
+                a {
+                    display: flex;
+                    align-items: center;
+                }
+
                 img {
                     width: 12rem;
                 }
@@ -65,7 +70,7 @@
             .search-input {
                 position: absolute;
                 right: 0px;
-                top: 0px;
+                top: auto;
 
                 @include tableMobile {
                     width: 25vw;
@@ -94,7 +99,7 @@
 
                     @include tableMobile {
                         width: 100%;
-                        font-size : 1.6rem;
+                        font-size: 1.6rem;
                     }
                 }
 
