@@ -1,10 +1,12 @@
 ﻿namespace sabanews.Controllers
 {
+    using Fanex.Logging;
     using Microsoft.AspNetCore.Mvc;
     using sabanews.Constants;
     using sabanews.Models;
     using sabanews.Services.Interfaces;
     using System;
+    using System.Diagnostics;
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
@@ -12,14 +14,17 @@
     public class HomeController : Controller
     {
         private readonly IPostService postService;
+        private readonly ILogger logger;
 
-        public HomeController(IPostService postService)
+        public HomeController(IPostService postService, ILogger logger)
         {
             this.postService = postService;
+            this.logger = logger;
         }
 
         public async Task<IActionResult> Index()
         {
+            var watch = Stopwatch.StartNew();
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
             var Models = new PostViewModel
             {
@@ -31,9 +36,14 @@
                 GuessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems),
                 BackstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems),
                 TransferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems),
-                Category =  pageDetail
+                Category = pageDetail
             };
-            
+
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+
+            await logger.InfoAsync($"Execute time: {elapsedMs} ms");
+
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
             ViewData[Constants.ViewDataTitle] = pageDetail.Title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= pageDetail.Title;
