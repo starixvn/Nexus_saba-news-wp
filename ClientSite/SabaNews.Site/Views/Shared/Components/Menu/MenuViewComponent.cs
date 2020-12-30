@@ -16,7 +16,7 @@
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = await postService.GetMenuAsync("Main Menu");
+            var model = await postService.GetMenuAsync("New Site Menu");
             return View(model);
         }
     }
