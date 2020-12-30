@@ -171,7 +171,8 @@
             {
                 _Slug = slug
             };
-            return await baseService.GetDataEntityAsync<Category>(criteria);
+            var cate = await baseService.GetDataEntityAsync<Category>(criteria);
+            return ReplaceStringFromVarSeo(cate);
         }
 
         public async Task<Category> GetPageDetailAsync(int ID)
@@ -189,7 +190,8 @@
             {
                 Slug = slug
             };
-            return await baseService.GetDataEntityAsync<Category>(criteria);
+            var cate = await baseService.GetDataEntityAsync<Category>(criteria);
+            return ReplaceStringFromVarSeo(cate);
         }
 
         public async Task<bool> CheckTypeCategoryAsync(string parentSlug, int ID)
@@ -293,6 +295,31 @@
                 return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
             }
             return dateTime.ToString("H:mm dd/MM/yyyy");
+        }
+
+        public static Category ReplaceStringFromVarSeo(Category cate)
+        {
+            if (cate.Title != null) {
+                var result = Regex.Replace(cate.Title, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
+                cate.Title = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+            }
+            if (cate.Description != null)
+            {
+                var result = Regex.Replace(cate.Description, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
+                cate.Description = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+            }
+            if (cate.OgDescription != null)
+            {
+                var result = Regex.Replace(cate.OgDescription, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
+                cate.OgDescription = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+            }
+            if (cate.OgTitle != null)
+            {
+                var result = Regex.Replace(cate.OgTitle, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
+                cate.OgTitle = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+            }
+           
+            return cate;
         }
     }
 }

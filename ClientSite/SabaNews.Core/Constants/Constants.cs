@@ -65,5 +65,8 @@
         public const string ViewDataKeyword = "keyword";
         public const string ViewDataTag = "tag";
         public const string ViewDataDate = "Date";
+
+        public const string Separate = "-";
+        public const string SiteName = "Saba Sports";
     }
 }
