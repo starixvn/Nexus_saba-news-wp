@@ -312,7 +312,7 @@
         }
 
         .block__content {
-            @include grid(repeat(2, 1fr), unset, #{$column-gap});
+            @include grid(repeat(2, 1fr), unset,2.3rem #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});

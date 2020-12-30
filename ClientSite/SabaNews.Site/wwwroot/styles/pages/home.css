@@ -1174,7 +1174,7 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: unset;
-    grid-gap: 3.2rem; }
+    grid-gap: 2.3rem 3.2rem; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content {
         display: grid;
