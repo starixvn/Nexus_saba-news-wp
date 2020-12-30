@@ -1,5 +1,7 @@
 ﻿namespace sabanews
 {
+    using Fanex.Caching;
+    using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
     using Fanex.Data.Repository;
@@ -74,6 +76,8 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddRedisCache(Configuration.GetSection("Fanex.Caching.Redis"));
+
             services.AddResponseCompression();
             services.AddResponseCaching();
             services.AddControllersWithViews();
@@ -82,6 +86,7 @@
             services.AddTransient<IBaseService, BaseService>();
             services.AddTransient<IDynamicRepository, DynamicRepository>();
             services.AddTransient<IPathService, PathService>();
+            services.AddTransient<ICacheService, CacheService>();
             services.AddSingleton<ILogger, Logger>();
         }
 

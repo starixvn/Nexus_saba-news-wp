@@ -1,10 +1,11 @@
 ﻿namespace sabanews.Controllers
 {
-    using Fanex.Logging;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
     using sabanews.Constants;
     using sabanews.Models;
     using sabanews.Services.Interfaces;
+    using SabaNews.Core.Constants;
     using System;
     using System.Globalization;
     using System.Linq;
@@ -13,35 +14,52 @@
     public class HomeController : Controller
     {
         private readonly IPostService postService;
-        private readonly ILogger logger;
+        private readonly ICacheService cacheService;
 
-        public HomeController(IPostService postService, ILogger logger)
+        public HomeController(IPostService postService, ICacheService cacheService)
         {
             this.postService = postService;
-            this.logger = logger;
+            this.cacheService = cacheService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            var viewModel = await cacheService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
 
-            var Models = new PostViewModel
+            if (viewModel == null)
             {
-                NewPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems),
-                FootballPosts = await postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems),
-                BasketballPosts = await postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems),
-                TennisPosts = await postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems),
-                VideoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetSixItems),
-                GuessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems),
-                BackstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems),
-                TransferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems),
-                Category = pageDetail
-            };
+                var newPosts = postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                var footballPosts = postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
+                var basketballPosts = postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                var tennisPosts = postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                var videoPosts = postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetSixItems);
+                var guessPosts = postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems);
+                var backstagePosts = postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems);
+                var transferPosts = postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems);
+                var category = postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+
+                await Task.WhenAll(newPosts, footballPosts, basketballPosts, tennisPosts, videoPosts, guessPosts, backstagePosts, transferPosts, category);
+                viewModel = new PostViewModel
+                {
+                    NewPosts = (await newPosts).ToArray(),
+                    FootballPosts = (await footballPosts).ToArray(),
+                    BasketballPosts = (await basketballPosts).ToArray(),
+                    TennisPosts = (await tennisPosts).ToArray(),
+                    VideoPosts = (await videoPosts).ToArray(),
+                    GuessPosts = (await guessPosts).ToArray(),
+                    BackstagePosts = (await backstagePosts).ToArray(),
+                    TransferPosts = (await transferPosts).ToArray(),
+                    Category = await category
+                };
+
+                await cacheService.SetAsync(CacheKey.HomePageViewModel, viewModel);
+            }
 
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
-            ViewData[Constants.ViewDataTitle] = pageDetail.Title;
-            ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= pageDetail.Title;
-            return View(Models);
+            ViewData[Constants.ViewDataTitle] = viewModel.Category.Title;
+            ViewData[Constants.ViewDataDescription] = viewModel.Category.Description ??= viewModel.Category.Title;
+
+            return View(viewModel);
         }
 
         [Route("/tin-the-thao/{slug?}/page/{page}")]

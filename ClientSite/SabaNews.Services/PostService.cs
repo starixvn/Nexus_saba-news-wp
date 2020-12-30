@@ -7,7 +7,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -32,7 +31,7 @@
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
 
-            return FormatData(posts);
+            return FormatData(posts).ToList();
         }
 
         public async Task<Post> GetPostDetailBySlugAsync(string slug)
