@@ -24,8 +24,11 @@
 
         public async Task<IActionResult> Index()
         {
-            var watch = Stopwatch.StartNew();
+            var watch1 = Stopwatch.StartNew();
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            watch1.Stop();
+            await logger.InfoAsync($"Execute time SP Get_Page_Detail_By_Slug: {watch1.ElapsedMilliseconds} ms");
+            var watch = Stopwatch.StartNew();
             var Models = new PostViewModel
             {
                 NewPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems),
@@ -42,7 +45,7 @@
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
 
-            await logger.InfoAsync($"Execute time: {elapsedMs} ms");
+            await logger.InfoAsync($"Execute time SP get_post_by_slug (8 time calls): {elapsedMs} ms");
 
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
             ViewData[Constants.ViewDataTitle] = pageDetail.Title;
