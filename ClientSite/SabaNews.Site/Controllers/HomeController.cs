@@ -40,8 +40,8 @@
             return View(Models);
         }
 
-        [Route("/tin-tuc/{slug?}/page/{page}")]
-        [Route("/tin-tuc/{slug?}")]
+        [Route("/tin-the-thao/{slug?}/page/{page}")]
+        [Route("/tin-the-thao/{slug?}")]
         public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;

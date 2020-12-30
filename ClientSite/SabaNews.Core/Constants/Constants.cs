@@ -5,7 +5,7 @@
         public const int Home = 587;
 
         public const string HomeSlug = "home-3";
-        public const string NewPostSlug = "tin-tuc";
+        public const string NewPostSlug = "tin-the-thao";
         public const string VideoSlug = "video";
         public const string FootballSlug = "bong-da";
         public const string BasketballSlug = "bong-ro";
@@ -13,7 +13,7 @@
         public const string GuessSlug = "nhan-dinh";
         public const string BackstageSlug = "hau-truong";
         public const string TransferSlug = "chuyen-nhuong";
-        public const string CategorySlug = "tin-tuc";
+        public const string CategorySlug = "tin-the-thao";
         public const string MatchScheduleSlug = "lich-thi-dau";
 
         public const string SingleNewsType = "single";
