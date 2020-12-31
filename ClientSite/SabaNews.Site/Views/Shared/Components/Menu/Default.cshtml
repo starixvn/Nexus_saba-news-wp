@@ -33,7 +33,7 @@
                             if (menu.CatId != Constants.Home)
                             {
                                 var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-                                <li class="menu-item"><a href="@link" class="item @activeMenu">@menu.Name</a></li>
+                                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
                             }
 
                         }
