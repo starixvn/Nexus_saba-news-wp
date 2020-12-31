@@ -38,7 +38,7 @@
 
             .logo {
                 width: 12rem;
-                margin-right: 6rem;
+                margin-right: 3.6rem;
 
                 a {
                     display: flex;
@@ -95,7 +95,7 @@
                     border: none;
                     color: $color-input;
                     border-radius: 3rem;
-                    width: 16vw;
+                    width: 11vw;
 
                     @include tableMobile {
                         width: 100%;
@@ -281,11 +281,11 @@
                             text-decoration: none;
                             display: block;
                             padding: 3.7rem 0;
-                            font-size: 1.4rem;
+                            font-size: 1.3rem;
                             font-weight: bold;
                             transition: color .2s ease;
                             font-family: $font-title;
-                            margin-right: 6rem;
+                            margin-right: 2.8rem;
                             line-height: 1.7rem;
                             opacity: .5;
 
