@@ -225,7 +225,8 @@
 
         public static Category ReplaceStringFromVarSeo(Category cate)
         {
-            if (cate.SEOTitle != null) {
+            if (cate.SEOTitle != null)
+            {
                 cate.Title = cate.SEOTitle;
                 var result = Regex.Replace(cate.Title, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 cate.Title = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
@@ -245,7 +246,7 @@
                 var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 cate.OgTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
-           
+
             return cate;
         }
     }
