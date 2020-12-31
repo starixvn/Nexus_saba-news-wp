@@ -7,11 +7,7 @@
 
     public interface IPostService
     {
-        Task<IEnumerable<Post>> GetPostsAsync(int cateId, int start, int end);
-
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
-
-        Task<Post> GetPostDetailAsync(int ID);
 
         Task<Post> GetPostDetailBySlugAsync(string slug);
 
@@ -30,8 +26,6 @@
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
         Task<Category> GetCateDetailAsync(string slug);
-
-        Task<Category> GetPageDetailAsync(int ID);
 
         Task<Category> GetPageDetailBySlugAsync(string slug);
 

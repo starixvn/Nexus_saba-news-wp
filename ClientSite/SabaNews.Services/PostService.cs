@@ -22,19 +22,6 @@
             this.pathService = pathService;
         }
 
-        public async Task<IEnumerable<Post>> GetPostsAsync(int cateId, int start, int end)
-        {
-            var criteria = new GetPostsCriteria
-            {
-                _Category = cateId,
-                _Start = start,
-                _End = end
-            };
-            var posts = await baseService.GetDataAsync<Post>(criteria);
-
-            return FormatData(posts);
-        }
-
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
         {
             var criteria = new GetPostsBySlugCriteria
@@ -46,22 +33,6 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
 
             return FormatData(posts);
-        }
-
-        public async Task<Post> GetPostDetailAsync(int ID)
-        {
-            var criteria = new GetPostDetailCriteria
-            {
-                ID = ID
-            };
-            var post = await baseService.GetDataEntityAsync<Post>(criteria);
-            if (post != null)
-            {
-                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
-            }
-            return post;
         }
 
         public async Task<Post> GetPostDetailBySlugAsync(string slug)
@@ -175,15 +146,6 @@
             return ReplaceStringFromVarSeo(cate);
         }
 
-        public async Task<Category> GetPageDetailAsync(int ID)
-        {
-            var criteria = new GetPageDetailByCateIdCriteria
-            {
-                ID = ID
-            };
-            return await baseService.GetDataEntityAsync<Category>(criteria);
-        }
-
         public async Task<Category> GetPageDetailBySlugAsync(string slug)
         {
             var criteria = new GetPageDetailBySlugCriteria
@@ -235,30 +197,6 @@
                 post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate));
             }
             return posts;
-        }
-
-        public string GetImageFromFolderInSolution(string image)
-        {
-            var imageSplit = image.Split("/");
-            var imageName = imageSplit[imageSplit.Length - 1];
-            var file = pathService.MapPathContentRoot("wordpress/" + imageName);
-            if (System.IO.File.Exists(file))
-            {
-                image = "wordpress/" + imageName;
-            }
-            return image;
-        }
-
-        public string GetImageInFolder(string image)
-        {
-            var imageSplit = image.Split("/");
-            var imageName = imageSplit[imageSplit.Length - 1];
-            var file = pathService.MapAbsolutePath(@"C:\Users\hank.nguyen\Desktop\sabaimgs\", imageName);
-            if (System.IO.File.Exists(file))
-            {
-                image = file;
-            }
-            return image;
         }
 
         public static string ResizeImage(string image, string metadata)
