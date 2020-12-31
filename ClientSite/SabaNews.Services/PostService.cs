@@ -299,24 +299,25 @@
 
         public static Category ReplaceStringFromVarSeo(Category cate)
         {
-            if (cate.Title != null) {
-                var result = Regex.Replace(cate.Title, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
-                cate.Title = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+            if (cate.SEOTitle != null) {
+                cate.Title = cate.SEOTitle;
+                var result = Regex.Replace(cate.Title, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                cate.Title = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
             if (cate.Description != null)
             {
-                var result = Regex.Replace(cate.Description, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
-                cate.Description = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+                var result = Regex.Replace(cate.Description, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                cate.Description = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
             if (cate.OgDescription != null)
             {
-                var result = Regex.Replace(cate.OgDescription, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
-                cate.OgDescription = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+                var result = Regex.Replace(cate.OgDescription, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                cate.OgDescription = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
             if (cate.OgTitle != null)
             {
-                var result = Regex.Replace(cate.OgTitle, "%sep%", Constants.Separate, RegexOptions.IgnoreCase);
-                cate.OgTitle = Regex.Replace(result, "%sitename%", Constants.SiteName, RegexOptions.IgnoreCase);
+                var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                cate.OgTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
            
             return cate;

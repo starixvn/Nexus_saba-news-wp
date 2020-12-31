@@ -11,5 +11,6 @@
         public string OgImage { get; set; }
         public string OgDescription { get; set; }
         public string OgTitle { get; set; }
+        public string SEOTitle { get; set; }
     }
 }
