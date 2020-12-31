@@ -38,7 +38,7 @@
                 </div>
                 <div class="single play_video"></div>
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
-                <p class="card-vertical__datetime">@Model.SinglePost.PostDate</p>
+                <p class="card-vertical__datetime">@Model.SinglePost.PostTime</p>
             </div>
             @if (!Convert.ToBoolean(ViewData["video"]))
             {
@@ -92,7 +92,7 @@
                         </a>
                         <div class="card-horizontal__content">
                             <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
-                            <p class="datetime">@post.PostDate</p>
+                            <p class="datetime">@post.PostTime</p>
                             <p class="description">@post.PostExcerpt</p>
                         </div>
                     </div>

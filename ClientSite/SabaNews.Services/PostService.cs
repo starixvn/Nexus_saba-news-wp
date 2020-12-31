@@ -7,6 +7,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -45,7 +46,6 @@
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate), post.PostDateGMT);
                 if (post.Categories == null)
                 {
                     return post;
@@ -182,7 +182,6 @@
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata);
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                post.PostDate = ToRelativeDate(DateTime.Parse(post.PostDate), post.PostDateGMT);
             }
             return posts;
         }
@@ -202,25 +201,6 @@
                 result = image.Substring(0, imageLength) + size + type;
             }
             return result;
-        }
-
-        public static string ToRelativeDate(DateTime postDate, string postDateGMT)
-        {
-            var timeSpan = DateTime.UtcNow - DateTime.Parse(postDateGMT);
-
-            if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
-            {
-                return string.Format("{0} giây trước", timeSpan.Seconds);
-            }
-            if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
-            {
-                return timeSpan.Minutes > 1 ? string.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
-            }
-            if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
-            {
-                return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
-            }
-            return postDate.ToString("H:mm dd/MM/yyyy");
         }
 
         public static Category ReplaceStringFromVarSeo(Category cate)

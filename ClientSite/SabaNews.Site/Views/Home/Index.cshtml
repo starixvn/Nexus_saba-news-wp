@@ -29,7 +29,7 @@
                             </picture>
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostDate</p>
+                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
                         <p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
                     </div>
                     @for (int i = 1; i < Model.NewPosts.Length; i++)
@@ -44,7 +44,7 @@
                             </a>
                             <div class="card-horizontal__content">
                                 <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-                                <p class="datetime">@Model.NewPosts[i].PostDate</p>
+                <p class="datetime">@Model.NewPosts[i].PostTime</p>
                                 <p class="description">@Model.NewPosts[i].PostExcerpt</p>
                             </div>
                         </div>}
@@ -97,7 +97,7 @@
                                 </a>
                                 <div class="card-horizontal__content">
                                     <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                                    <p class="datetime">@post.PostDate</p>
+                    <p class="datetime">@post.PostTime</p>
                                 </div>
                             </div>}
                     </div>
@@ -120,7 +120,7 @@
                                 </picture>
                             </a>
                             <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-                            <p class="card-vertical__datetime">@post.PostDate</p>
+            <p class="card-vertical__datetime">@post.PostTime</p>
                         </div>}
                 </div>
             </div>
@@ -142,7 +142,7 @@
                             </a>
                             <div class="group group-mobile">
                                 <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-                                <p class="card-vertical__datetime">@post.PostDate</p>
+                <p class="card-vertical__datetime">@post.PostTime</p>
                             </div>
                         </div>}
                 </div>
@@ -165,7 +165,7 @@
                                     </picture>
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
-                                <p class="card-vertical__datetime">@Model.BackstagePosts[i].PostDate</p>
+                <p class="card-vertical__datetime">@Model.BackstagePosts[i].PostTime</p>
                             </div>
                         }
                     </div>
@@ -187,7 +187,7 @@
                                 </a>
                                 <div class="card-horizontal__content">
                                     <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                                    <p class="datetime">@post.PostDate</p>
+                    <p class="datetime">@post.PostTime</p>
                                     <p class="description">@post.PostExcerpt</p>
                                 </div>
                             </div>}
@@ -214,7 +214,7 @@
                                     </picture>
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                                <p class="card-vertical__datetime">@post.PostDate</p>
+                <p class="card-vertical__datetime">@post.PostTime</p>
                             </div>}
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                                 </picture>
                             </a>
                             <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
-                            <p class="card-vertical__datetime">@Model.TennisPosts[0].PostDate</p>
+                            <p class="card-vertical__datetime">@Model.TennisPosts[0].PostTime</p>
                             <p class="card-vertical__description">
                                 @Model.TennisPosts[0].PostExcerpt
                             </p>

@@ -58,7 +58,7 @@
 							</picture>
 						</a>
 						<a href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
-						<p class="card-vertical__datetime">@Model.Posts[i].PostDate</p>
+						<p class="card-vertical__datetime">@Model.Posts[i].PostTime</p>
 					</div>}
 			</div>
 			@{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);

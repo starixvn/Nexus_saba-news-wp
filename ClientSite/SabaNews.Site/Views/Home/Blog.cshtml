@@ -36,7 +36,7 @@
 					</a>
 					<div class="card-horizontal__content">
 						<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a>
-						<p class="datetime">@Model.Posts[0].PostDate</p>
+						<p class="datetime">@Model.Posts[0].PostTime</p>
 						<p class="description">@postExcerpt</p>
 					</div>
 				</div>
@@ -53,7 +53,7 @@
 						</a>
 						<div class="card-horizontal__content">
 							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })">@Model.Posts[i].PostTitle</a>
-							<p class="datetime">@Model.Posts[i].PostDate</p>
+							<p class="datetime">@Model.Posts[i].PostTime</p>
 							<p class="description">@excerpt</p>
 						</div>
 					</div>
