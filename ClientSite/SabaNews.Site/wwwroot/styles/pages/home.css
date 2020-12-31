@@ -972,7 +972,7 @@ button {
         margin-bottom: 1.2rem;
         padding-bottom: 1rem; } }
     .main .block-hot-news .block__content .card-vertical .card-vertical__image {
-      max-height: 23rem; }
+      max-height: 25.5rem; }
       @media screen and (max-width: 1024px) {
         .main .block-hot-news .block__content .card-vertical .card-vertical__image {
           max-height: 11rem !important; } }
