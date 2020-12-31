@@ -27,9 +27,7 @@
             transition: color .3s ease;
             display: block;
             @include Mobile{
-                text-overflow: ellipsis;
                 -webkit-line-clamp: 2;
-                height: 3.8rem;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 overflow: hidden;

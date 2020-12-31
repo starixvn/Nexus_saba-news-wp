@@ -877,9 +877,7 @@ button {
     display: block; }
     @media (max-width: 767px) {
       .card-horizontal__content .title {
-        text-overflow: ellipsis;
         -webkit-line-clamp: 2;
-        height: 3.8rem;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden; } }
