@@ -33,7 +33,7 @@
                 return await dynamicRepository.GetAsync<T>(criteria);
             }
 
-            return default(T);
+            return default;
         }
 
         public async Task<ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>>> FetchMultipleAsync<TFirst, TSecond>(ICriteria criteria)

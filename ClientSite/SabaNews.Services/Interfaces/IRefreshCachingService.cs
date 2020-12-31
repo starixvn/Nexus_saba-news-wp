@@ -1,0 +1,9 @@
+﻿namespace SabaNews.Services.Interfaces
+{
+    using System.Threading.Tasks;
+
+    public interface IRefreshCachingService
+    {
+        Task UpdateHomePageCaching();
+    }
+}

@@ -15,4 +15,9 @@
         <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.2" />
+      <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
+    </ItemGroup>
 </Project>
