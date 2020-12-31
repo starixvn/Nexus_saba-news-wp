@@ -215,11 +215,11 @@
             }
             if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
             {
-                return timeSpan.Minutes > 1 ? String.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
+                return timeSpan.Minutes > 1 ? string.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
             }
             if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
             {
-                return timeSpan.Hours > 1 ? String.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
+                return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
             }
             return dateTime.ToString("H:mm dd/MM/yyyy");
         }
