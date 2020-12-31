@@ -7,6 +7,7 @@
         public string PostContent {get; set;}
         public string PostExcerpt { get; set; }
         public string PostDate { get; set; }
+        public string PostDateGMT { get; set; }
         public string FeatureImage { get; set; }
         public string Tags { get; set; }
         public string TagsSlug { get; set; }

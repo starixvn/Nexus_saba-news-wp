@@ -6,6 +6,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
@@ -44,6 +45,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post" />
             <Mapping DataField="cate_slug" ObjectProperty="CategoriesSlug" class="Post" />
@@ -62,6 +64,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
@@ -71,6 +74,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
@@ -80,6 +84,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
@@ -90,6 +95,7 @@
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
