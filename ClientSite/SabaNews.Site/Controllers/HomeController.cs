@@ -177,12 +177,12 @@
             var start = (page - 1) * Constants.Perpage;
             var posts = await postService.GetPostByTagAsync(tagname, start, Constants.Perpage);
             var postsTotal = await postService.GetPostByTagAsync(tagname, 0, Constants.Total);
-            var name = await postService.GetTagNameBySlugAsync(tagname);
+            var tag = posts.Any() ? posts.First().Tags : tagname;
             var ViewData = new ViewData
             {
-                Title = name,
-                HeadTitle = "Tag: '" + tagname + "'",
-                Description = name,
+                Title = tag,
+                HeadTitle = "Tag: '" + tag + "'",
+                Description = tag,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
                 TotalPages = (int)Math.Ceiling(postsTotal.Count() / (double)Constants.Perpage),

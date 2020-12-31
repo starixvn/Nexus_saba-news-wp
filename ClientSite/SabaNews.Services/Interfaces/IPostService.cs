@@ -21,8 +21,6 @@
 
         Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end);
 
-        Task<string> GetTagNameBySlugAsync(string slug);
-
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
         Task<Category> GetCateDetailAsync(string slug);

@@ -83,6 +83,7 @@
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
+            <Mapping DataField="tag_name" ObjectProperty="Tags" class="Post" />
         </Setting>
         <Setting Key="get_posts_by_date" SpName="get_posts_by_date" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
