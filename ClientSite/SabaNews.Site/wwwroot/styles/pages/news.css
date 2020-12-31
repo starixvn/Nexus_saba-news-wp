@@ -237,13 +237,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           flex-direction: row;
           position: relative; } }
       .header .top-header .group-menu .logo {
-        width: 12rem;
+        width: 10rem;
         margin-right: 3.6rem; }
         .header .top-header .group-menu .logo a {
           display: flex;
           align-items: center; }
         .header .top-header .group-menu .logo img {
-          width: 12rem; }
+          width: 100%; }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .logo {
             margin-right: 0; } }
@@ -324,7 +324,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           position: absolute;
           height: .2rem;
           width: 70%;
-          background: #294579;
+          background: #081224;
           opacity: 1;
           transform: rotate(0);
           transition: .25s ease-in-out;
@@ -442,9 +442,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               font-weight: bold;
               transition: color .2s ease;
               font-family: "Montserrat", sans-serif;
-              margin-right: 2.8rem;
-              line-height: 1.7rem;
-              opacity: .5; }
+              margin-right: 3rem;
+              line-height: 1.7rem; }
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
                   font-size: 1.2rem;
@@ -461,11 +460,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                   font-family: "Montserrat", sans-serif;
                   text-transform: uppercase; } }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
-                color: #081224;
-                opacity: 1; }
+                color: #f12f19; }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .active {
-              color: #081224;
-              opacity: 1; }
+              color: #f12f19; }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child {
               padding: .5rem 0;
               background-color: #fff;

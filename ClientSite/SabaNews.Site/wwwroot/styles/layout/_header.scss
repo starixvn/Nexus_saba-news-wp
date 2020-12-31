@@ -37,7 +37,7 @@
             }
 
             .logo {
-                width: 12rem;
+                width: 10rem;
                 margin-right: 3.6rem;
 
                 a {
@@ -46,7 +46,7 @@
                 }
 
                 img {
-                    width: 12rem;
+                    width: 100%;
                 }
 
                 @include tableMobile {
@@ -146,7 +146,7 @@
                     position: absolute;
                     height: .2rem;
                     width: 70%;
-                    background: $color-pagination-2;
+                    background: #081224;
                     opacity: 1;
                     transform: rotate(0);
                     transition: .25s ease-in-out;
@@ -285,9 +285,8 @@
                             font-weight: bold;
                             transition: color .2s ease;
                             font-family: $font-title;
-                            margin-right: 2.8rem;
+                            margin-right: 3rem;
                             line-height: 1.7rem;
-                            opacity: .5;
 
                             @include tableMobile {
                                 font-size: 1.2rem;
@@ -307,14 +306,12 @@
                             }
 
                             &:hover {
-                                color: $color-pagination;
-                                opacity: 1;
+                                color: #f12f19;
                             }
                         }
 
                         .active {
-                            color: $color-pagination;
-                            opacity: 1;
+                            color: #f12f19;
                         }
 
                         .menu-child {
