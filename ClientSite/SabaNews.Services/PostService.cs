@@ -7,19 +7,16 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
     public class PostService : IPostService
     {
         private readonly IBaseService baseService;
-        private readonly IPathService pathService;
 
-        public PostService(IBaseService baseService, IPathService pathService)
+        public PostService(IBaseService baseService)
         {
             this.baseService = baseService;
-            this.pathService = pathService;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)

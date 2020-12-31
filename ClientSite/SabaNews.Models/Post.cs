@@ -6,10 +6,10 @@ namespace sabanews.Models
     {
         public int ID { get; set; }
         public string PostTitle { get; set; }
-        public string PostContent {get; set;}
+        public string PostContent { get; set; }
         public string PostExcerpt { get; set; }
-        public string PostDate { get; set; }
-        public string PostDateGMT { get; set; }
+        public DateTime PostDate { get; set; }
+        public DateTime PostDateGMT { get; set; }
         public string FeatureImage { get; set; }
         public string Tags { get; set; }
         public string TagsSlug { get; set; }
@@ -18,12 +18,13 @@ namespace sabanews.Models
         public string Slug { get; set; }
         public string Type { get; set; }
         public string Metadata { get; set; }
+
         public string PostTime
         {
             get
             {
-                var timeSpan = DateTime.UtcNow - DateTime.Parse(this.PostDateGMT);
-                
+                var timeSpan = DateTime.UtcNow - PostDateGMT;
+
                 if (timeSpan <= TimeSpan.FromSeconds(60))
                 {
                     return string.Format("{0} giây trước", timeSpan.Seconds);
@@ -36,8 +37,8 @@ namespace sabanews.Models
                 {
                     return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
                 }
-                var postDate = DateTime.Parse(this.PostDate);
-                return postDate.ToString("H:mm dd/MM/yyyy");
+
+                return PostDate.ToString("H:mm dd/MM/yyyy");
             }
         }
     }
