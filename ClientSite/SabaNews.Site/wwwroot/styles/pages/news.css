@@ -126,6 +126,23 @@ body {
     .main {
       padding-top: 7rem; } }
 
+.content {
+  line-height: 2.4rem;
+  margin: 0; }
+  .content p {
+    margin-bottom: 1rem; }
+  .content h6 {
+    font-size: inherit; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;

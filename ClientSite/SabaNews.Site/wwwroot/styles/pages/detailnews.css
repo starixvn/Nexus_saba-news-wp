@@ -127,11 +127,12 @@ body {
       padding-top: 7rem; } }
 
 .content {
-  font-size: 1.4rem;
   line-height: 2.4rem;
   margin: 0; }
   .content p {
     margin-bottom: 1rem; }
+  .content h6 {
+    font-size: inherit; }
 
 .text-center {
   text-align: center; }

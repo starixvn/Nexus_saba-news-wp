@@ -71,22 +71,6 @@
 .col-12 {
   --width: 12; }
 
-.content {
-  font-size: 1.4rem;
-  line-height: 2.4rem;
-  margin: 0; }
-  .content p {
-    margin-bottom: 1rem; }
-
-.text-center {
-  text-align: center; }
-
-.text-left {
-  text-align: left; }
-
-.text-right {
-  text-align: right; }
-
 .font-italic {
   font-style: italic; }
 
@@ -161,6 +145,23 @@ body {
   @media screen and (max-width: 1024px) {
     .main {
       padding-top: 7rem; } }
+
+.content {
+  line-height: 2.4rem;
+  margin: 0; }
+  .content p {
+    margin-bottom: 1rem; }
+  .content h6 {
+    font-size: inherit; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
 
 .footer {
   background-color: #081224;

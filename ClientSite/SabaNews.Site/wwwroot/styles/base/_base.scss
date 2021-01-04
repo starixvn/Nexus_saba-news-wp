@@ -55,3 +55,28 @@ body{
         padding-top: 7rem;
     }
 }
+
+.content {
+    //font-size: 1.4rem;
+    line-height: 2.4rem;
+    margin: 0;
+
+    p {
+        margin-bottom: 1rem;
+    }
+    h6 {
+        font-size: inherit;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
