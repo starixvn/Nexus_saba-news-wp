@@ -187,21 +187,21 @@
 
         public static IEnumerable<Post> FormatData(IEnumerable<Post> posts, string slug = null)
         {
-            var thumbnailSize = "";
+            var isAddThumbnail = true;
             var listAddThumbnail = new List<string> { Constants.NewPostSlug, Constants.VideoSlug, Constants.BackstageSlug, Constants.TennisSlug };
             var checkSlug = listAddThumbnail.FirstOrDefault(item => item.Equals(slug));
             if (checkSlug == null && slug != null)
             {
-                thumbnailSize = Constants.ThumbnailSize;
+                isAddThumbnail = false;
             }
             var i = 0;
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                if (i == 0 && thumbnailSize == Constants.ThumbnailSize)
+                if (i == 0 && isAddThumbnail)
                 {
-                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, thumbnailSize);
+                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, "-818x461");
                 }
                 else
                 {
@@ -212,7 +212,7 @@
             return posts;
         }
 
-        public static string ResizeImage(string image, string metadata, string thumbnail = "")
+        public static string ResizeImage(string image, string metadata, string thumbnail = null)
         {
             var result = image;
             var size = "";
@@ -220,9 +220,9 @@
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             var imgSizes = new List<string> { "-406x228", "-260x240", "-600x394" ,"-818x461" };
             var type = imgTypes.FirstOrDefault(item => item.Equals(extension));
-            if (thumbnail != "")
+            if (thumbnail != null)
             {
-                size = metadata.Contains(thumbnail) ? thumbnail : "";
+                size = metadata.Contains(thumbnail) ? thumbnail : null;
             }
             else 
             {
