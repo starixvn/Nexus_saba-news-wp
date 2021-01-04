@@ -8,7 +8,7 @@
     public interface IPostService
     {
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
-
+        Task<IEnumerable<Post>> GetPostsByCategorySlugAsync(string cateSlug, int start, int end);
         Task<Post> GetPostDetailBySlugAsync(string slug);
 
         Task<IEnumerable<Post>> GetRelatedPostAsync(int ID);

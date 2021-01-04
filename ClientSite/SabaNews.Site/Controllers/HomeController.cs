@@ -38,12 +38,12 @@
         {
             var start = (page - 1) * Constants.Perpage;
             slug ??= Constants.NewPostSlug;
-            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.Perpage);
+            var posts = await postService.GetPostsByCategorySlugAsync(slug, start, Constants.Perpage);
             if (!posts.Any())
             {
                 return View(Constants.EmptyBlogView);
             }
-            var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
+            var postsTotal = await postService.GetPostsByCategorySlugAsync(slug, 0, Constants.Total);
             var cate = await postService.GetCateDetailAsync(slug);
             var ViewData = new ViewData
             {
@@ -72,12 +72,12 @@
         {
             var start = (page - 1) * Constants.PerpageVideo;
             slug ??= Constants.VideoSlug;
-            var posts = await postService.GetPostsBySlugAsync(slug, start, Constants.PerpageVideo);
+            var posts = await postService.GetPostsByCategorySlugAsync(slug, start, Constants.PerpageVideo);
             if (!posts.Any())
             {
                 return View(Constants.EmptyBlogView);
             }
-            var postsTotal = await postService.GetPostsBySlugAsync(slug, 0, Constants.Total);
+            var postsTotal = await postService.GetPostsByCategorySlugAsync(slug, 0, Constants.Total);
             var cate = await postService.GetCateDetailAsync(slug);
             var ViewData = new ViewData
             {
