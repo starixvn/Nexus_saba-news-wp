@@ -2,7 +2,7 @@
 {
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
-    using sabanews.Models;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;

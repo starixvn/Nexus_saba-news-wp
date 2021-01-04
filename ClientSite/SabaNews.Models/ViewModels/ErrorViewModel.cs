@@ -1,6 +1,4 @@
-using System;
-
-namespace sabanews.Models
+namespace SabaNews.Models.ViewModel
 {
     public class ErrorViewModel
     {

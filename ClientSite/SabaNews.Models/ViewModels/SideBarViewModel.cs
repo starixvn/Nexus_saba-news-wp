@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace sabanews.Models
+﻿namespace SabaNews.Models.ViewModel
 {
+    using System.Collections.Generic;
     public class SideBarViewModel
     {
         public IEnumerable<Post> Posts { get; set; }

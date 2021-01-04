@@ -1,8 +1,7 @@
 ﻿namespace SabaNews.Services
 {
-    using sabanews.Constants;
-    using sabanews.Models;
-    using sabanews.Services.Interfaces;
+    using SabaNews.Core.Constants;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
     using System.Linq;
     using System.Threading.Tasks;

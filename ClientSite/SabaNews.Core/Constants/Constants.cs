@@ -1,4 +1,4 @@
-﻿namespace sabanews.Constants
+﻿namespace SabaNews.Core.Constants
 {
     public static class Constants
     {

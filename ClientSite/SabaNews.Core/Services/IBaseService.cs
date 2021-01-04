@@ -1,4 +1,4 @@
-﻿namespace sabanews.Services.Interfaces
+﻿namespace SabaNews.Services
 {
     using Fanex.Data.Repository;
     using System;

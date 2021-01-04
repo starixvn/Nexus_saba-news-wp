@@ -1,9 +1,9 @@
-﻿namespace sabanews.Controllers
+﻿namespace SabaNews.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using sabanews.Constants;
-    using sabanews.Models;
-    using sabanews.Services.Interfaces;
+    using SabaNews.Core.Constants;
+    using SabaNews.Models;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Globalization;

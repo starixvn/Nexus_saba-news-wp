@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace sabanews.Models
+﻿namespace SabaNews.Models.ViewModel
 {
+    using System.Collections.Generic;
+
     public class SingleViewModel
     {
         public Post SinglePost { get; set; }

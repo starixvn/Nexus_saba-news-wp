@@ -1,14 +1,14 @@
-﻿namespace sabanews.Services
+﻿namespace SabaNews.Services
 {
-    using sabanews.Constants;
-    using sabanews.Criteria;
-    using sabanews.Models;
-    using sabanews.Services.Interfaces;
+    using SabaNews.Core.Constants;
+    using SabaNews.Criteria;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using SabaNews.Models;
 
     public class PostService : IPostService
     {

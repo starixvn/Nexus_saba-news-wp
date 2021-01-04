@@ -1,4 +1,4 @@
-﻿namespace sabanews.Models
+﻿namespace SabaNews.Models
 {
     public class Menu
     {

@@ -1,4 +1,4 @@
-﻿namespace sabanews
+﻿namespace SabaNews
 {
     using Fanex.Caching;
     using Fanex.Caching.Redis;
@@ -20,11 +20,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using sabanews.Middlewares;
-    using sabanews.Services;
-    using sabanews.Services.Interfaces;
-    using SabaNews.Core.Models;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Core.Models;
     using Sentry;
     using StackExchange.Redis;
     using System;

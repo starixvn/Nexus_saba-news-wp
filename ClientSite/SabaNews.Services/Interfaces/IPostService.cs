@@ -1,6 +1,6 @@
-﻿namespace sabanews.Services.Interfaces
+﻿namespace SabaNews.Services.Interfaces
 {
-    using sabanews.Models;
+    using SabaNews.Models;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;

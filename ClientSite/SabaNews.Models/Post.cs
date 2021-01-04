@@ -1,6 +1,5 @@
 ﻿using System;
-
-namespace sabanews.Models
+namespace SabaNews.Models
 {
     public class Post
     {

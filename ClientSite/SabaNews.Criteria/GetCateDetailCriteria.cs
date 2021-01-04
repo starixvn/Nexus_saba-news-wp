@@ -1,4 +1,4 @@
-﻿namespace sabanews.Criteria
+﻿namespace SabaNews.Criteria
 {
     using Fanex.Data.Repository;
 

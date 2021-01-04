@@ -1,4 +1,4 @@
-﻿namespace sabanews
+﻿namespace SabaNews
 {
     using Microsoft.AspNetCore;
     using Microsoft.AspNetCore.Hosting;

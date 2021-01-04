@@ -1,9 +1,9 @@
-﻿namespace sabanews.Views.Shared.Components
+﻿namespace SabaNews.Views.Shared.Components
 {
     using Microsoft.AspNetCore.Mvc;
-    using sabanews.Constants;
-    using sabanews.Services.Interfaces;
+    using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
+    using SabaNews.Models;
 
     public class MenuViewComponent : ViewComponent
     {

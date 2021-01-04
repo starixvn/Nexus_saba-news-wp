@@ -1,7 +1,6 @@
-﻿namespace sabanews.Services
+﻿namespace SabaNews.Services
 {
     using Fanex.Data.Repository;
-    using sabanews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;

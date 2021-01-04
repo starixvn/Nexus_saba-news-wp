@@ -1,4 +1,4 @@
-﻿namespace sabanews.Services.Interfaces
+﻿namespace SabaNews.Services.Interfaces
 {
     public interface IPathService
     {

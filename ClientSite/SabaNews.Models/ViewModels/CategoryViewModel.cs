@@ -1,4 +1,4 @@
-﻿namespace sabanews.Models
+﻿namespace SabaNews.Models.ViewModel
 {
     using System.Collections.Generic;
 

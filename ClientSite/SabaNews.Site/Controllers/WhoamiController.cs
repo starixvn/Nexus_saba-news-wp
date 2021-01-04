@@ -1,4 +1,4 @@
-﻿namespace sabanews.Controllers
+﻿namespace SabaNews.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using System;
