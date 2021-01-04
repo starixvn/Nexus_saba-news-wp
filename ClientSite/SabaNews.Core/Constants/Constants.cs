@@ -50,7 +50,7 @@
         public const int ExcerptLength = 200;
         public const int NumberMinutesAHour = 60;
         public const int NumberSecondsAMinute = 60;
-        public const int NumberHoursADay = 60;
+        public const int NumberHoursADay = 24;
 
         public const int NumberDayNotInCurrentMonth = 32;
 

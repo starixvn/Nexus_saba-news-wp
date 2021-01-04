@@ -1,4 +1,5 @@
 ﻿using System;
+using SabaNews.Core.Constants;
 namespace SabaNews.Models
 {
     public class Post
@@ -24,15 +25,15 @@ namespace SabaNews.Models
             {
                 var timeSpan = DateTime.UtcNow - PostDateGMT;
 
-                if (timeSpan <= TimeSpan.FromSeconds(60))
+                if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
                 {
                     return string.Format("{0} giây trước", timeSpan.Seconds);
                 }
-                if (timeSpan <= TimeSpan.FromMinutes(60))
+                if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
                 {
                     return timeSpan.Minutes > 1 ? string.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
                 }
-                if (timeSpan <= TimeSpan.FromHours(24))
+                if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
                 {
                     return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
                 }
