@@ -202,6 +202,10 @@
 
         public static Category ReplaceStringFromVarSeo(Category cate)
         {
+            if (cate == null)
+            {
+                return cate;
+            }
             if (cate.SEOTitle != null)
             {
                 cate.Title = cate.SEOTitle;
