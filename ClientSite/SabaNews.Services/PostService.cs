@@ -199,20 +199,14 @@
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                if (i == 0 && isAddThumbnail)
-                {
-                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, "-818x461");
-                }
-                else
-                {
-                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata);
-                }
+                var thumbnail = (i == 0 && isAddThumbnail) ? Constants.ThumbnailSize : "";
+                post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, thumbnail);
                 i++;
             }
             return posts;
         }
 
-        public static string ResizeImage(string image, string metadata, string thumbnail = null)
+        public static string ResizeImage(string image, string metadata, string thumbnail = "")
         {
             var result = image;
             var size = "";
@@ -220,13 +214,10 @@
             var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
             var imgSizes = new List<string> { "-406x228", "-260x240", "-600x394" ,"-818x461" };
             var type = imgTypes.FirstOrDefault(item => item.Equals(extension));
-            if (thumbnail != null)
+            size = imgSizes.FirstOrDefault(item => metadata.Contains(item));
+            if (thumbnail != "")
             {
                 size = metadata.Contains(thumbnail) ? thumbnail : null;
-            }
-            else 
-            {
-                size = imgSizes.FirstOrDefault(item => metadata.Contains(item));
             }
             
             size ??= "";
