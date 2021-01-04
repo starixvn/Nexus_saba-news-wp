@@ -70,6 +70,7 @@
         public const string SiteName = "Saba Sports";
         public const string SepVar = "%sep%";
         public const string SiteNameVar = "%sitename%";
+        public const string ThumbnailSize = "- 818x461";
 
     }
 }
