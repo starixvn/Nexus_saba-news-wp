@@ -96,7 +96,7 @@
         {
             var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.Title.Replace("%current_date_custom%", DateTime.Now.ToString(CultureInfo.InvariantCulture));
+            var title = pageDetail.Title.Replace("%current_date_custom%", DateTime.UtcNow.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
             var Model = new PageViewModel
             {
                 Post = post,
