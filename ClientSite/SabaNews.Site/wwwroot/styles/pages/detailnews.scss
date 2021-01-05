@@ -1,12 +1,12 @@
 @import '../abstracts/variables';
 @import '../abstracts/mixins';
-@import '../abstracts/functions';
 
 @import '../base/base';
 @import '../base/typhography';
 
 @import '../layout/footer';
 @import '../layout/header';
+@import '../components/fonts';
 @import '../components/block';
 @import '../components/buttons';
 @import '../components/container';
@@ -15,8 +15,9 @@
 @import '../components/list-content';
 @import '../components/socical';
 @import '../components/tag';
-@import '../components//card-vertical';
+@import '../components/card-vertical';
 @import '../components/card-horizontal';
+
 
 
 

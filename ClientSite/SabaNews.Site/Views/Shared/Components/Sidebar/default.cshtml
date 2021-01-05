@@ -5,13 +5,20 @@
 		<div class="block-item">
 			@foreach (var post in Model.Posts)
 			{
-				<div class="card-vertical">
-					<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
-					<p class="card-vertical__datetime">@post.PostTime</p>
-				</div>
+            <div class="card-vertical">
+                <a href="" class="card-vertical__image">
+                    <picture>
+                        <source srcset="~/images/img1.webp" type="image/webp" class="img-res">
+                        <source srcset="~/images/img1.jpg" type="image/jpeg" class="img-res">
+                        <img asp-append-version="true" loading="lazy" src="" alt="~/images/img1.jpg" class="img-res img-block">
+                    </picture>
+                </a>
+                <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
+                <p class="card-vertical__datetime">@post.PostTime</p>
+            </div>
 			}
 		</div>
-		<div class="block block-calendar">
+		@*<div class="block block-calendar">
 			<div class="box-calendar">
 				@{
 					var nextMonth = Model.CurrentMonth + 1;
@@ -96,6 +103,6 @@
 				</tbody>
 			</table>
 
-		</div>
+		</div>*@
 	</div>
 </div>

@@ -49,15 +49,10 @@ body{
 }
 
 .main {
-    padding-top: 8.5rem;
-
-    @include tableMobile {
-        padding-top: 7rem;
-    }
+    padding-top: 7rem;
 }
 
 .content {
-    //font-size: 1.4rem;
     line-height: 2.4rem;
     margin: 0;
 
@@ -79,4 +74,13 @@ body{
 
 .text-right {
     text-align: right;
+}
+
+.has-text-align-center {
+    font-size: 15px !important;
+    text-align: center;
+}
+
+p.has-text-align-center {
+    line-height: 1.3;
 }

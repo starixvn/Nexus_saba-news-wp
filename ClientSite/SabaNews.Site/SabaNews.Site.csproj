@@ -10,6 +10,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Remove="compilerconfig.json" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Remove="App_Data\SpNames.Development.xml" />
         <None Remove="App_Data\SpNames.Local.xml" />
         <None Remove="App_Data\SpNames.Production.xml" />
@@ -52,6 +56,10 @@
     <ItemGroup>
         <Folder Include="wwwroot\minify\js\" />
         <Folder Include="wwwroot\minify\styles\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="compilerconfig.json" />
     </ItemGroup>
 
     <ItemGroup>

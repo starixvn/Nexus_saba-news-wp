@@ -2,75 +2,6 @@
   --column: 12;
   --padding-col: 0 1.5rem; }
 
-.col {
-  --width-default: 0;
-  --width: var(--width-mobile, var(--width-default));
-  flex-basis: calc(var(--width) / var(--column) * 100%); }
-
-@media (min-width: 768px) {
-  .col {
-    --width: var(--width-tablet, var(--width-mobile, var(--width-default))); } }
-
-@media (min-width: 1025px) {
-  .col {
-    --width: var(--width-desktop, var(--width-tablet, var(--width-mobile, var(--width-default)))); } }
-
-.col-1 {
-  --width-desktop: 1;
-  --width-tablet: 12;
-  --width-mobile: 12; }
-
-.col-2 {
-  --width-desktop: 2;
-  --width-tablet: 3;
-  --width-mobile: 3; }
-
-.col-3 {
-  --width-desktop: 3;
-  --width-tablet: 2;
-  --width-mobile: 3; }
-
-.col-4 {
-  --width-desktop: 4;
-  --width-tablet: 5;
-  --width-mobile: 12; }
-
-.col-5 {
-  --width-desktop: 5;
-  --width-mobile: 12;
-  --width-tablet: 5; }
-
-.col-6 {
-  --width-desktop: 6;
-  --width-tablet: 6;
-  --width-mobile: 12; }
-
-.col-7 {
-  --width-desktop: 7;
-  --width-mobile: 12;
-  --width-tablet: 7; }
-
-.col-8 {
-  --width-mobile: 12;
-  --width-tablet: 7;
-  --width-desktop: 8; }
-
-.col-9 {
-  --width-desktop: 9;
-  --width-tablet: 10;
-  --width-mobile: 9; }
-
-.col-10 {
-  --width-desktop: 10;
-  --width-tablet: 9;
-  --width-mobile: 9; }
-
-.col-11 {
-  --width: 11; }
-
-.col-12 {
-  --width: 12; }
-
 *, *::after, *::before {
   box-sizing: border-box; }
 
@@ -121,10 +52,7 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 8.5rem; }
-  @media screen and (max-width: 1024px) {
-    .main {
-      padding-top: 7rem; } }
+  padding-top: 7rem; }
 
 .content {
   line-height: 2.4rem;
@@ -142,6 +70,13 @@ body {
 
 .text-right {
   text-align: right; }
+
+.has-text-align-center {
+  font-size: 15px !important;
+  text-align: center; }
+
+p.has-text-align-center {
+  line-height: 1.3; }
 
 .footer {
   background-color: #081224;
@@ -456,7 +391,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               display: block;
               padding: 3.7rem 0;
               font-size: 1.3rem;
-              font-weight: bold;
+              font-weight: 600;
               transition: color .2s ease;
               font-family: "Montserrat", sans-serif;
               margin-right: 3rem;
@@ -603,6 +538,96 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-width: 1024px) {
     .header .padding-mobile-none {
       padding: 0; } }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB; }
+
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gbD_u50.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_bZF3gbD_u50.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB; }
+
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v11/o-0IIpQlx3QUlC5A4PNr6jRAW_0.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB; }
+
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v11/o-0IIpQlx3QUlC5A4PNr5TRA.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* vietnamese */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v11/o-0NIpQlx3QUlC5A4PNjXhFVa9yB1Wk.woff2) format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB; }
+
+/* latin */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v11/o-0NIpQlx3QUlC5A4PNjXhFVZNyB.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
 .block {
   margin-bottom: 2rem; }
@@ -780,6 +805,8 @@ button {
       color: #fff; }
       .block-calendar .table-calendar tbody tr #today .prev::after {
         background-color: #F12F19; }
+  .block-calendar a {
+    text-decoration: none; }
 
 .pagination {
   text-align: center;
@@ -833,6 +860,9 @@ button {
       background-color: #294579; }
       .pagination .main-pagination .active .item {
         color: #fff; }
+
+.pagination a {
+  text-decoration: none; }
 
 .swiper-container {
   width: 100%;
@@ -899,6 +929,30 @@ button {
             .swiper-container .swiper-slide .content-box .title-box a {
               font-size: 1.4rem;
               line-height: 1.9rem; } }
+
+@media screen and (max-width: 767px) {
+  .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
+    display: block; }
+  .play_video iframe {
+    height: 22rem;
+    width: 100%; } }
+
+.swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .play_video iframe {
+  display: none; }
+
+.colums-main .block-video .flex-video .swiper-video .btn-play-video {
+  display: flex !important; }
+
+.swiper-slide:first-child, .swiper-slide .play_video iframe:first-child {
+  display: block; }
+
+.slide-video .flex-item.active {
+  background: #000 !important;
+  color: #fff; }
+
+.play_video iframe {
+  height: 340px;
+  width: 100%; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }

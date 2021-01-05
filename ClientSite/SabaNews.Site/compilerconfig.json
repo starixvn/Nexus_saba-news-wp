@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "wwwroot/styles/pages/detailnews.css",
+    "inputFile": "wwwroot/styles/pages/detailnews.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/home.css",
+    "inputFile": "wwwroot/styles/pages/home.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/news.css",
+    "inputFile": "wwwroot/styles/pages/news.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/video.css",
+    "inputFile": "wwwroot/styles/pages/video.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/detailvideo.css",
+    "inputFile": "wwwroot/styles/pages/detailvideo.scss"
+  }
+]

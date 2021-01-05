@@ -1,18 +1,9 @@
 [
   {
-    "outputFileName": "wwwroot/minify/styles/site.min.css",
-    "inputFiles": [
-      "wwwroot/lib/swipper/css/swiper.min.css",
-      "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/site.css"
-    ]
-  },
-  {
     "outputFileName": "wwwroot/minify/styles/home.min.css",
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/site.css",
       "wwwroot/styles/pages/home.css"
     ]
   },
@@ -20,7 +11,6 @@
     "outputFileName": "wwwroot/minify/styles/news.min.css",
     "inputFiles": [
       "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/site.css",
       "wwwroot/styles/pages/news.css"
     ]
   },
@@ -29,7 +19,6 @@
     "inputFiles": [
       "wwwroot/lib/swipper/css/swiper.min.css",
       "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/site.css",
       "wwwroot/styles/pages/video.css"
     ]
   },
@@ -37,7 +26,6 @@
     "outputFileName": "wwwroot/minify/styles/detailnews.min.css",
     "inputFiles": [
       "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/site.css",
       "wwwroot/styles/pages/detailnews.css"
     ]
   },
