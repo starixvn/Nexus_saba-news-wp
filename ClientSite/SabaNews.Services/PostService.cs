@@ -32,6 +32,23 @@
             return FormatData(posts, slug).ToList();
         }
 
+        public async Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end)
+        {
+            var criteria = new GetPostsByCateSlugCriteria
+            {
+                _CategorySlug = cateSlug.Trim(),
+                _Start = start,
+                _End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            var postTemplate = new PostTemplate
+            {
+                Posts = FormatData(posts).ToList(),
+                TotalItems = criteria.TotalItems
+            };
+            return postTemplate;
+        }
+
         public async Task<IEnumerable<Post>> GetPostsByCategorySlugAsync(string cateSlug, int start, int end)
         {
             var criteria = new GetPostsBySlugCriteria
@@ -109,7 +126,7 @@
             return FormatData(posts);
         }
 
-        public async Task<IEnumerable<Post>> SearchPostAsync(string keyword, int start, int end)
+        public async Task<PostTemplate> SearchPostAsync(string keyword, int start, int end)
         {
             var criteria = new SearchPostsCriteria
             {
@@ -118,10 +135,15 @@
                 _End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            return FormatData(posts);
+            var postTemplate = new PostTemplate
+            {
+                Posts = FormatData(posts),
+                TotalItems = criteria.TotalItems
+            };
+            return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetPostByTagAsync(string tag, int start, int end)
+        public async Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end)
         {
             var criteria = new GetPostsByTagCriteria
             {
@@ -130,10 +152,15 @@
                 _End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            return FormatData(posts);
+            var postTemplate = new PostTemplate
+            {
+                Posts = FormatData(posts),
+                TotalItems = criteria.TotalItems
+            };
+            return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end)
+        public async Task<PostTemplate> GetPostByDateAsync(string date, int start, int end)
         {
             var criteria = new GetPostsByDateCriteria
             {
@@ -142,7 +169,12 @@
                 _End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            return FormatData(posts);
+            var postTemplate = new PostTemplate
+            {
+                Posts = FormatData(posts),
+                TotalItems = criteria.TotalItems
+            };
+            return postTemplate;
         }
 
         public async Task<Category> GetCateDetailAsync(string slug)
@@ -199,8 +231,11 @@
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                var thumbnail = (i == 0 && isAddThumbnail) ? Constants.ThumbnailSize : "";
-                post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, thumbnail);
+                if (post.FeatureImage != null)
+                {
+                    var thumbnail = (i == 0 && isAddThumbnail) ? Constants.ThumbnailSize : "";
+                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, thumbnail);
+                }
                 i++;
             }
             return posts;

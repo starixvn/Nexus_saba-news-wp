@@ -8,18 +8,22 @@
     public interface IPostService
     {
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
+
+        Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end);
+
         Task<IEnumerable<Post>> GetPostsByCategorySlugAsync(string cateSlug, int start, int end);
+
         Task<Post> GetPostDetailBySlugAsync(string slug);
 
         Task<IEnumerable<Post>> GetRelatedPostAsync(int ID);
 
         Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID);
 
-        Task<IEnumerable<Post>> SearchPostAsync(string keyword, int start, int end);
+        Task<PostTemplate> SearchPostAsync(string keyword, int start, int end);
 
-        Task<IEnumerable<Post>> GetPostByTagAsync(string tag, int start, int end);
+        Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end);
 
-        Task<IEnumerable<Post>> GetPostByDateAsync(string date, int start, int end);
+        Task<PostTemplate> GetPostByDateAsync(string date, int start, int end);
 
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
