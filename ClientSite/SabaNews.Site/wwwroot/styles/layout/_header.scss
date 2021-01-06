@@ -78,9 +78,9 @@
                 }
 
                 @include landscapeTablet {
-                    order: unset;
-                    margin: 1rem 0 0 0;
+                    position: absolute;
                     width: auto;
+                    right: 0;
                 }
 
                 input {
@@ -137,6 +137,10 @@
 
                     .icon-search {
                         font-size: 2.4rem;
+                        @include landscapeTablet {
+                            position: relative;
+                            top: 2px;
+                        }
                     }
                 }
             }
@@ -218,7 +222,7 @@
                 }
 
                 @include landscapeTablet {
-                    width: auto;
+                    width: calc(100% - 120px);
                 }
 
                 .main-menu {
@@ -240,8 +244,8 @@
 
                     @include landscapeTablet {
                         display: block;
-                        height: auto !important;
-                        @include flex(center, nowrap, space-between,inherit);
+                        @include flex(center, nowrap, flex-start,inherit);
+                        height: 4rem !important;
                     }
 
                     .menu-item {
@@ -324,9 +328,9 @@
                             @include tableMobile {
                                 color: $color-pagination;
                                 padding: 1.6rem 1.2rem;
-                                font-size: 1.6rem;
+                                font-size: 1.4rem;
                                 text-transform: initial;
-                                font-weight: bold;
+                                font-weight: 600;
                                 margin-right: 0;
                                 font-family: $font-title;
                                 text-transform: uppercase;
@@ -390,10 +394,7 @@
                                 border-top: 1px solid $border-heading;
                                 border-left: 1px solid $border-heading;
                                 z-index: -1;
-                                //@include tableMobile {
-                                // display: block;
-                                // left: 35%;
-                                // }
+
                                 @include tableMobile {
                                     display: none;
                                 }
