@@ -276,7 +276,6 @@
             }
             if (cate.SEOTitle != null)
             {
-                cate.SEOTitle = cate.SEOTitle;
                 var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
                 cate.SEOTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
