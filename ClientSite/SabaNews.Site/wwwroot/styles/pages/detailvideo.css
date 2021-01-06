@@ -165,11 +165,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     transition: .3s ease-in-out; }
     @media screen and (max-width: 1024px) {
       .header .top-header {
-        padding: 0 1.6rem; } }
-    @media (max-width: 767px) {
-      .header .top-header {
         padding: 0;
         overflow: hidden; } }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+      .header .top-header {
+        overflow: inherit; } }
     .header .top-header .group-menu {
       display: flex;
       align-items: center;
@@ -178,9 +178,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       flex-direction: row; }
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu {
-          padding: .8rem 0; } }
-      @media (max-width: 767px) {
-        .header .top-header .group-menu {
           padding: 0;
           display: flex;
           align-items: center;
@@ -188,6 +185,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           justify-content: space-between;
           flex-direction: row;
           position: relative; } }
+      @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+        .header .top-header .group-menu {
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          flex-direction: row; } }
       .header .top-header .group-menu .logo {
         width: 10rem;
         margin-right: 3.6rem; }
@@ -196,30 +200,24 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           align-items: center; }
         .header .top-header .group-menu .logo img {
           width: 100%; }
+          @media screen and (max-width: 1024px) {
+            .header .top-header .group-menu .logo img {
+              width: 8.2rem; } }
         @media screen and (max-width: 1024px) {
-          .header .top-header .group-menu .logo {
-            margin-right: 0; } }
-        @media (max-width: 767px) {
           .header .top-header .group-menu .logo {
             width: 12rem;
             margin-right: 0;
             padding: .8rem 0 .5rem 1.4rem;
             display: flex;
             align-items: center;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: space-between;
             flex-direction: row; } }
-        @media screen and (max-width: 1024px) {
-          .header .top-header .group-menu .logo img {
-            width: 8.2rem; } }
       .header .top-header .group-menu .search-input {
         position: absolute;
         right: 0px;
         top: auto; }
         @media screen and (max-width: 1024px) {
-          .header .top-header .group-menu .search-input {
-            width: 25vw; } }
-        @media (max-width: 767px) {
           .header .top-header .group-menu .search-input {
             order: 1;
             width: 100%;
@@ -229,6 +227,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             top: auto;
             padding: 0 1.2rem;
             margin: 2rem 0 2.1rem 0; } }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .header .top-header .group-menu .search-input {
+            order: unset;
+            margin: 1rem 0 0 0;
+            width: auto; } }
         .header .top-header .group-menu .search-input input {
           height: 3.6rem;
           font-size: 1.4rem;
@@ -242,6 +245,17 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .top-header .group-menu .search-input input {
               width: 100%;
               font-size: 1.6rem; } }
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+            .header .top-header .group-menu .search-input input {
+              position: absolute;
+              z-index: 9999999;
+              top: 3.3rem;
+              width: 20rem;
+              right: 0;
+              display: none; } }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .header .top-header .group-menu .search-input .active-input {
+            display: block; } }
         .header .top-header .group-menu .search-input .btn-search {
           background-color: transparent;
           position: absolute;
@@ -255,6 +269,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               right: 2.5rem;
               font-size: 1.5rem;
               width: 2rem; } }
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+            .header .top-header .group-menu .search-input .btn-search {
+              position: inherit;
+              top: auto;
+              right: auto; } }
           .header .top-header .group-menu .search-input .btn-search .icon-search {
             font-size: 2.4rem; }
       .header .top-header .group-menu .button-mobile {
@@ -267,10 +286,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         position: relative; }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .button-mobile {
-            display: none; } }
-        @media (max-width: 767px) {
-          .header .top-header .group-menu .button-mobile {
             display: block; } }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .header .top-header .group-menu .button-mobile {
+            display: none; } }
         .header .top-header .group-menu .button-mobile .line-mb {
           display: block;
           position: absolute;
@@ -317,6 +336,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             justify-content: flex-start;
             flex-direction: row;
             padding: 0; } }
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+          .header .top-header .group-menu .nav-menu {
+            width: auto; } }
         .header .top-header .group-menu .nav-menu .main-menu {
           position: relative;
           list-style: none;
@@ -327,7 +349,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           justify-content: flex-start;
           flex-direction: row;
           height: 4rem; }
-          @media (max-width: 767px) {
+          @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               margin: 0;
               display: flex;
@@ -340,16 +362,33 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               z-index: 999;
               display: none;
               background-color: #FFFDF9; } }
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+            .header .top-header .group-menu .nav-menu .main-menu {
+              display: block;
+              height: auto !important;
+              display: flex;
+              align-items: center;
+              flex-wrap: nowrap;
+              justify-content: space-between;
+              flex-direction: inherit; } }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
-            @media (max-width: 767px) {
+            @media screen and (max-width: 1024px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
                 border-top: 1px solid #E0E0E0; } }
-            @media (max-width: 767px) {
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+              .header .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
+                border: none; } }
+            @media screen and (max-width: 1024px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item {
                 width: 100%;
                 order: 2;
                 border-bottom: 1px solid #E0E0E0; } }
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+              .header .top-header .group-menu .nav-menu .main-menu .menu-item {
+                border: none;
+                order: unset;
+                width: auto; } }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item:nth-child(4) {
               border-bottom: none; }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item:nth-child(4) a {
@@ -367,7 +406,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               transform: rotate(90deg);
               font-size: 2.4rem;
               color: #fff; }
-              @media (max-width: 767px) {
+              @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .click-sub {
                   display: flex;
                   align-items: center;
@@ -379,9 +418,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
               padding: 4.7rem 0 !important; }
               @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
-                  padding: 1.6rem 1.2rem !important; } }
-              @media (max-width: 767px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
                   padding: 1.6rem 1.2rem !important; } }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
@@ -398,11 +434,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               line-height: 1.7rem; }
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-                  font-size: 1.2rem;
-                  padding: 1.6rem 1.2rem;
-                  margin-right: 0; } }
-              @media (max-width: 767px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
                   color: #081224;
                   padding: 1.6rem 1.2rem;
                   font-size: 1.6rem;
@@ -411,6 +442,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                   margin-right: 0;
                   font-family: "Montserrat", sans-serif;
                   text-transform: uppercase; } }
+              @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+                .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
+                  font-size: 1.2rem; } }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
                 color: #f12f19; }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .active {
@@ -431,9 +465,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               z-index: 9999;
               display: none; }
               @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child {
-                  top: 6rem; } }
-              @media (max-width: 767px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child {
                   background-color: transparent;
                   position: inherit;
@@ -466,10 +497,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 border-left: 1px solid #BDBDBD;
                 z-index: -1; }
                 @media screen and (max-width: 1024px) {
-                  .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child::after {
-                    display: block;
-                    left: 35%; } }
-                @media (max-width: 767px) {
                   .header .top-header .group-menu .nav-menu .main-menu .menu-item .menu-child::after {
                     display: none; } }
               @media (max-width: 767px) {
@@ -517,7 +544,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
                   display: block; } }
-              @media (max-width: 767px) {
+              @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
                   display: flex; } }
         .header .top-header .group-menu .nav-menu .active-main-menu {
@@ -530,9 +557,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     width: 100%;
     z-index: 999999; }
     @media screen and (max-width: 1024px) {
-      .header .active-fixed {
-        padding: 0 1.6rem; } }
-    @media (max-width: 767px) {
       .header .active-fixed {
         padding: 0; } }
   @media screen and (max-width: 1024px) {

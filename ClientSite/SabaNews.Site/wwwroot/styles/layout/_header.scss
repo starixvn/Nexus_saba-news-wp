@@ -15,25 +15,25 @@
         transition: .3s ease-in-out;
 
         @include tableMobile {
-            padding: 0 1.6rem;
-        }
-
-        @include Mobile {
             padding: 0;
             overflow: hidden;
+        }
+
+        @include landscapeTablet {
+            overflow: inherit;
         }
 
         .group-menu {
             @include flex(center,nowrap, flex-start,row);
 
             @include tableMobile {
-                padding: .8rem 0;
-            }
-
-            @include Mobile {
                 padding: 0;
                 @include flex(center,wrap, space-between,row);
                 position: relative;
+            }
+
+            @include landscapeTablet {
+                @include flex(center, nowrap, flex-start,row);
             }
 
             .logo {
@@ -47,23 +47,17 @@
 
                 img {
                     width: 100%;
-                }
 
-                @include tableMobile {
-                    margin-right: 0;
-                }
-
-                @include Mobile {
-                    width: 12rem;
-                    margin-right: 0;
-                    padding: .8rem 0 .5rem 1.4rem;
-                    @include flex(center,nowrap, space-between,row);
-                }
-
-                img {
                     @include tableMobile {
                         width: 8.2rem;
                     }
+                }
+
+                @include tableMobile {
+                    width: 12rem;
+                    margin-right: 0;
+                    padding: .8rem 0 .5rem 1.4rem;
+                    @include flex(center, wrap, space-between,row);
                 }
             }
 
@@ -73,10 +67,6 @@
                 top: auto;
 
                 @include tableMobile {
-                    width: 25vw;
-                }
-
-                @include Mobile {
                     order: 1;
                     width: 100%;
                     padding: 0;
@@ -85,6 +75,12 @@
                     top: auto;
                     padding: 0 1.2rem;
                     margin: 2rem 0 2.1rem 0;
+                }
+
+                @include landscapeTablet {
+                    order: unset;
+                    margin: 1rem 0 0 0;
+                    width: auto;
                 }
 
                 input {
@@ -100,6 +96,21 @@
                     @include tableMobile {
                         width: 100%;
                         font-size: 1.6rem;
+                    }
+
+                    @include landscapeTablet {
+                        position: absolute;
+                        z-index: 9999999;
+                        top: 3.3rem;
+                        width: 20rem;
+                        right: 0;
+                        display: none;
+                    }
+                }
+
+                .active-input {
+                    @include landscapeTablet {
+                        display: block;
                     }
                 }
 
@@ -118,6 +129,12 @@
                         width: 2rem;
                     }
 
+                    @include landscapeTablet {
+                        position: inherit;
+                        top: auto;
+                        right: auto
+                    }
+
                     .icon-search {
                         font-size: 2.4rem;
                     }
@@ -134,11 +151,11 @@
                 position: relative;
 
                 @include tableMobile {
-                    display: none;
+                    display: block;
                 }
 
-                @include Mobile {
-                    display: block;
+                @include landscapeTablet {
+                    display: none;
                 }
 
                 .line-mb {
@@ -200,6 +217,10 @@
                     padding: 0;
                 }
 
+                @include landscapeTablet {
+                    width: auto;
+                }
+
                 .main-menu {
                     position: relative;
                     list-style: none;
@@ -207,7 +228,7 @@
                     @include flex(center, nowrap, flex-start,row);
                     height: 4rem;
 
-                    @include Mobile {
+                    @include tableMobile {
                         margin: 0;
                         @include flex(center, wrap, flex-start,column);
                         height: 100vh !important;
@@ -217,19 +238,35 @@
                         background-color: $bg-nav;
                     }
 
+                    @include landscapeTablet {
+                        display: block;
+                        height: auto !important;
+                        @include flex(center, nowrap, space-between,inherit);
+                    }
+
                     .menu-item {
                         position: relative;
 
                         &:first-child {
-                            @include Mobile {
+                            @include tableMobile {
                                 border-top: 1px solid $border-calendar;
+                            }
+
+                            @include landscapeTablet {
+                                border: none
                             }
                         }
 
-                        @include Mobile {
+                        @include tableMobile {
                             width: 100%;
                             order: 2;
                             border-bottom: 1px solid $border-calendar;
+                        }
+
+                        @include landscapeTablet {
+                            border: none;
+                            order: unset;
+                            width: auto;
                         }
 
                         &:nth-child(4) {
@@ -254,7 +291,7 @@
                             font-size: 2.4rem;
                             color: $color-fff;
 
-                            @include Mobile {
+                            @include tableMobile {
                                 @include flex(center, nowrap,center,row);
                             }
                         }
@@ -267,10 +304,6 @@
                             padding: 4.7rem 0 !important;
 
                             @include tableMobile {
-                                padding: 1.6rem 1.2rem !important;
-                            }
-
-                            @include Mobile {
                                 padding: 1.6rem 1.2rem !important;
                             }
                         }
@@ -289,12 +322,6 @@
                             line-height: 1.7rem;
 
                             @include tableMobile {
-                                font-size: 1.2rem;
-                                padding: 1.6rem 1.2rem;
-                                margin-right: 0;
-                            }
-
-                            @include Mobile {
                                 color: $color-pagination;
                                 padding: 1.6rem 1.2rem;
                                 font-size: 1.6rem;
@@ -303,6 +330,10 @@
                                 margin-right: 0;
                                 font-family: $font-title;
                                 text-transform: uppercase;
+                            }
+
+                            @include landscapeTablet {
+                                font-size: 1.2rem;
                             }
 
                             &:hover {
@@ -331,10 +362,6 @@
                             display: none;
 
                             @include tableMobile {
-                                top: 6rem;
-                            }
-
-                            @include Mobile {
                                 background-color: transparent;
                                 position: inherit;
                                 width: 100%;
@@ -363,13 +390,11 @@
                                 border-top: 1px solid $border-heading;
                                 border-left: 1px solid $border-heading;
                                 z-index: -1;
-
+                                //@include tableMobile {
+                                // display: block;
+                                // left: 35%;
+                                // }
                                 @include tableMobile {
-                                    display: block;
-                                    left: 35%;
-                                }
-
-                                @include Mobile {
                                     display: none;
                                 }
                             }
@@ -437,7 +462,7 @@
                                     display: block;
                                 }
 
-                                @include Mobile {
+                                @include tableMobile {
                                     display: flex;
                                 }
                             }
@@ -461,10 +486,6 @@
         z-index: 999999;
 
         @include tableMobile {
-            padding: 0 1.6rem;
-        }
-
-        @include Mobile {
             padding: 0;
         }
     }

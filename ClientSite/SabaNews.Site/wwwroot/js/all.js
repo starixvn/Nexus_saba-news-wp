@@ -29,7 +29,11 @@ $(document).ready(function(){
     //     $('.menu-child').css('display','none');
     // }
  
-    
+    $('.btn-search').click(function () {
+        if ($(window).innerWidth() <= 1024) {
+            $('.search-input input').toggleClass('active-input');
+        }
+    });
 
     $('.click-sub').click(function(){
         if($(window).innerWidth() <= 1024){
