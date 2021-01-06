@@ -15,6 +15,7 @@
         margin-bottom: .8rem;
         overflow: hidden;
         display: block;
+        position : relative;
 
         @include tableMobile {
             margin-bottom: .5rem;

@@ -983,7 +983,8 @@ button {
   .card-vertical__image {
     margin-bottom: .8rem;
     overflow: hidden;
-    display: block; }
+    display: block;
+    position: relative; }
     @media screen and (max-width: 1024px) {
       .card-vertical__image {
         margin-bottom: .5rem;
