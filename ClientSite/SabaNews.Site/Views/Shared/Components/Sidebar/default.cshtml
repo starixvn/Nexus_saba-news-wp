@@ -8,9 +8,9 @@
             <div class="card-vertical">
                 <a href="" class="card-vertical__image">
                     <picture>
-                        <source srcset="~/images/img1.webp" type="image/webp" class="img-res">
-                        <source srcset="~/images/img1.jpg" type="image/jpeg" class="img-res">
-                        <img asp-append-version="true" loading="lazy" src="" alt="~/images/img1.jpg" class="img-res img-block">
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                        <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                        <img asp-append-version="true" loading="lazy" src="" alt="@Url.Content(post.FeatureImage)" class="img-res img-block">
                     </picture>
                 </a>
                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>

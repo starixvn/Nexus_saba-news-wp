@@ -60,7 +60,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts).ToList(),
+                Posts = FormatData(posts, Constants.None).ToList(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;
