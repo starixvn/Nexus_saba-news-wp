@@ -18,7 +18,7 @@
 
         public async Task<IViewComponentResult> InvokeAsync(int year = 0, int month = 0)
         {
-            var newPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, 0, 4);
+            var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, 0, 4);
             var currentMonth = DateTime.Now.Month;
             var currentYear = DateTime.Now.Year;
             var currentDay = DateTime.Now.Day;
@@ -37,7 +37,7 @@
             int days = DateTime.DaysInMonth(currentYear, currentMonth);
             var Model = new SideBarViewModel
             {
-                Posts = newPosts,
+                Posts = postTemplate.Posts,
                 Days = days,
                 CurrentMonth = currentMonth,
                 CurrentYear = currentYear,

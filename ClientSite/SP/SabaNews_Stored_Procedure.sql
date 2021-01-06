@@ -394,6 +394,46 @@ END
 DELIMITER ;
 
 
+
+DROP PROCEDURE IF EXISTS get_recent_posts;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_recent_posts`(
+	exceptSlug varchar(100),
+	start INT,
+    end INT,
+    OUT TotalItems INT
+)
+BEGIN
+	DECLARE category INT;
+    SET category = (SELECT t.term_id FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = exceptSlug );
+    
+    SELECT count(*)
+    INTO TotalItems
+    FROM wp_posts as p
+	WHERE p.post_type = 'post' AND p.post_status = 'publish' 
+    AND ID NOT IN (SELECT tr.object_id from wp_term_relationships as tr 
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+                    WHERE tt.term_id = category OR tt.parent = category);
+    
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata
+    FROM wp_posts as p
+	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
+	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
+	WHERE p.post_type = 'post' AND p.post_status = 'publish' 
+    AND p.ID NOT IN (SELECT tr.object_id from wp_term_relationships as tr 
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+                    WHERE tt.term_id = category OR tt.parent = category)
+    ORDER BY p.post_date DESC
+	limit start, end;
+    
+END
+//
+DELIMITER ;
+
+
+
+
 DROP PROCEDURE IF EXISTS get_posts;
 DELIMITER //
 DROP PROCEDURE IF EXISTS get_post_detail;

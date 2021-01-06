@@ -26,8 +26,8 @@
             var viewModel = await dataControlService.GetHomePageViewModel();
 
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
-            ViewData[Constants.ViewDataTitle] = viewModel.Category.Title;
-            ViewData[Constants.ViewDataDescription] = viewModel.Category.Description ??= viewModel.Category.Title;
+            ViewData[Constants.ViewDataTitle] = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
+            ViewData[Constants.ViewDataDescription] = viewModel.Category.Description;
 
             return View(viewModel);
         }
@@ -37,18 +37,21 @@
         public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            slug ??= Constants.NewPostSlug;
-            var postTemplate = await postService.GetPostsByCateSlugAsync(slug, start, Constants.Perpage);
+            var postTemplate = slug == null
+                            ? await postService.GetRecentPostsAsync(Constants.VideoSlug, start, Constants.Perpage)
+                            : await postService.GetPostsByCateSlugAsync(slug, start, Constants.Perpage);
             if (!postTemplate.Posts.Any())
             {
                 return View(Constants.EmptyBlogView);
             }
+            slug ??= Constants.NewPostSlug;
             var cate = await postService.GetCateDetailAsync(slug);
             var totalItems = postTemplate.TotalItems;
             var ViewData = new ViewData
             {
-                Title = cate.Title,
-                Description = cate.Description ??= cate.Title,
+                HeadTitle = cate.Title,
+                Title = cate.SEOTitle ??= cate.Title,
+                Description = cate.Description,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
                 TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
@@ -81,8 +84,9 @@
             var totalITems = postTemplate.TotalItems;
             var ViewData = new ViewData
             {
-                Title = cate.Title,
-                Description = cate.Description ??= cate.Title,
+                HeadTitle = cate.Title,
+                Title = cate.SEOTitle ??= cate.Title,
+                Description = cate.Description,
                 CurrentPage = page,
                 PageSize = Constants.PerpageVideo,
                 TotalPages = (int)Math.Ceiling(totalITems / (double)Constants.PerpageVideo),

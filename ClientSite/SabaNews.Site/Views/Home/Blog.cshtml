@@ -19,7 +19,6 @@
 
 @{
     ViewData["CategoryId"] = Model.ViewData.CategoryId;
-    var postExcerpt = Model.Posts[0].PostExcerpt.IndexOf('.') != -1 ? Model.Posts[0].PostExcerpt.Substring(0, Model.Posts[0].PostExcerpt.IndexOf('.')) : Model.Posts[0].PostExcerpt;
 }
 <section class="main">
 	<div class="container">
@@ -37,12 +36,11 @@
 					<div class="card-horizontal__content">
 						<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a>
 						<p class="datetime">@Model.Posts[0].PostTime</p>
-						<p class="description">@postExcerpt</p>
+                        <p class="description">@Model.Posts[0].PostExcerpt</p>
 					</div>
 				</div>
 				@for (int i = 1; i < Model.Posts.Count; i++)
 				{
-					var excerpt = Model.Posts[i].PostExcerpt.IndexOf('.') != -1 ? Model.Posts[i].PostExcerpt.Substring(0, Model.Posts[i].PostExcerpt.IndexOf('.')) : Model.Posts[i].PostExcerpt;
 					<div class="card-horizontal">
 						<a href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })" class="card-horizontal__image">
 							<picture>
@@ -54,7 +52,7 @@
 						<div class="card-horizontal__content">
 							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })">@Model.Posts[i].PostTitle</a>
 							<p class="datetime">@Model.Posts[i].PostTime</p>
-							<p class="description">@excerpt</p>
+                            <p class="description">@Model.Posts[i].PostExcerpt</p>
 						</div>
 					</div>
 				}

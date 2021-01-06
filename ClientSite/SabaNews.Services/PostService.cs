@@ -49,17 +49,21 @@
             return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetPostsByCategorySlugAsync(string cateSlug, int start, int end)
+        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end)
         {
-            var criteria = new GetPostsBySlugCriteria
+            var criteria = new GetRecentPostsCriteria
             {
-                _CategorySlug = cateSlug.Trim(),
-                _Start = start,
-                _End = end
+                ExceptSlug = exceptCategorySlug.Trim(),
+                Start = start,
+                End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-
-            return FormatData(posts).ToList();
+            var postTemplate = new PostTemplate
+            {
+                Posts = FormatData(posts).ToList(),
+                TotalItems = criteria.TotalItems
+            };
+            return postTemplate;
         }
 
         public async Task<Post> GetPostDetailBySlugAsync(string slug)
@@ -272,9 +276,9 @@
             }
             if (cate.SEOTitle != null)
             {
-                cate.Title = cate.SEOTitle;
-                var result = Regex.Replace(cate.Title, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                cate.Title = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.SEOTitle = cate.SEOTitle;
+                var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
+                cate.SEOTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
             }
             if (cate.Description != null)
             {
