@@ -10,23 +10,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Remove="compilerconfig.json" />
+        <Content Remove="compilerconfig.json" />
     </ItemGroup>
 
     <ItemGroup>
         <None Remove="App_Data\SpNames.Development.xml" />
-        <None Remove="App_Data\SpNames.Local.xml" />
-        <None Remove="App_Data\SpNames.Production.xml" />
+        <None Remove="App_Data\SpNames.LOCAL.xml" />
+        <None Remove="App_Data\SpNames.PROD.xml" />
         <None Remove="App_Data\SpNames.UAT.xml" />
         <None Remove="App_Data\SpNames.xml" />
     </ItemGroup>
 
     <ItemGroup>
         <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-        <Content Include="App_Data\SpNames.Local.xml">
+        <Content Include="App_Data\SpNames.LOCAL.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="App_Data\SpNames.Production.xml">
+        <Content Include="App_Data\SpNames.PROD.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="App_Data\SpNames.UAT.xml">
@@ -59,7 +59,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="compilerconfig.json" />
+        <None Include="compilerconfig.json" />
     </ItemGroup>
 
     <ItemGroup>
