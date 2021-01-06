@@ -322,7 +322,7 @@ DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_random_post_categories`(_categories VARCHAR(50), _ID INT)
 BEGIN
-	SELECT distinct p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, pm.meta_value as metadata
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, pm.meta_value as metadata
 		FROM wp_posts as p
 		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
 		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
