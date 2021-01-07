@@ -130,13 +130,15 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
-            var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
+
+            var relatedPosts =  postService.GetRelatedPostAsync(post.ID);
+            var randomRelatedPosts =  postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
+            await Task.WhenAll(relatedPosts, randomRelatedPosts);
             var Models = new SingleViewModel
             {
                 SinglePost = post,
-                RelatedPosts = relatedPosts,
-                RandomRelatedPosts = randomRelatedPosts
+                RelatedPosts = await relatedPosts,
+                RandomRelatedPosts = await randomRelatedPosts
             };
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;

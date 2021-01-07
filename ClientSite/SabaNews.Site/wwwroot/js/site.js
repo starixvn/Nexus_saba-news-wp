@@ -13,6 +13,11 @@
 
                 iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
+                var autoplay = src.indexOf("autoplay");
+                if (autoplay > -1) {
+                    src = src.replace("autoplay=0", "");
+                    src = src.replace("autoplay=1", "");
+                }
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");
 
@@ -36,9 +41,14 @@
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
                 iframe = $(($.parseHTML(found[2].outerHTML)));
-
                 iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
+                var autoplay = src.indexOf("autoplay");
+                if (autoplay > -1) {
+                    src = src.replace("autoplay=0", "");
+                    src = src.replace("autoplay=1", "");
+                }
+
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");
                 slide.find('.play_video').html(iframe);
