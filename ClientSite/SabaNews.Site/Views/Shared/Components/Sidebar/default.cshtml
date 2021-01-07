@@ -1,6 +1,6 @@
 ﻿@using SabaNews.Core.Constants;
 <div class="block block-extension">
-	<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug})">Tin mới nhất</a></h2>
+	<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { parent = Constants.CategorySlug})">@ViewData[Constants.ViewDataHeadTitle]</a></h2>
 	<div class="block__content">
 		<div class="block-item">
 			@foreach (var post in Model.Posts)
@@ -10,7 +10,7 @@
                     <picture>
                         <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
                         <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                        <img asp-append-version="true" loading="lazy" src="" alt="@Url.Content(post.FeatureImage)" class="img-res img-block">
+                        <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
                     </picture>
                 </a>
                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>

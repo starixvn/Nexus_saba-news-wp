@@ -74,6 +74,8 @@
         public const string None = "none";
         public const string pageType = "page";
         public const string postType = "post";
+        public const string RecentPostsTitle = "TIN MỚI NHẤT";
+        public const string ViewestPostTitle = "XEM NHIỀU NHẤT";
 
     }
 }

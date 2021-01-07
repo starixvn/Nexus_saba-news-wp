@@ -25,10 +25,12 @@
             {
                 var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetFourItems);
                 posts = postTemplate.Posts;
+                ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
             }
             else
             {
                 posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                ViewData[Constants.ViewDataHeadTitle] = Constants.ViewestPostTitle;
             }
            
             var Model = new SideBarViewModel
