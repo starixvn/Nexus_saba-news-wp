@@ -13,7 +13,9 @@
 
         Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end);
 
-        Task<Post> GetPostDetailBySlugAsync(string slug);
+        Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end);
+
+        Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 
         Task<IEnumerable<Post>> GetRelatedPostAsync(int ID);
 

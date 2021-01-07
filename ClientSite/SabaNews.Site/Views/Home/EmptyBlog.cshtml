@@ -16,15 +16,6 @@
                 <h4>@Constants.NotFoundPostMsg</h4>
             </div>
         </div>
-        @if (Model != null && Model.ViewData.Controller != null && Model.ViewData.Controller == "DateSearch")
-        {
-            var countDate = Model.ViewData.DateSearch.Split('-');
-            if (countDate.Length >= 2)
-            {@(await Component.InvokeAsync("Sidebar", new { year = Convert.ToInt32(countDate[0]), month = Convert.ToInt32(countDate[1]) })) }
-            else
-            { @(await Component.InvokeAsync("Sidebar")) }
-        }
-        else
-        { @(await Component.InvokeAsync("Sidebar"))}
+        @(await Component.InvokeAsync("Sidebar"))
     </div>
 </section>

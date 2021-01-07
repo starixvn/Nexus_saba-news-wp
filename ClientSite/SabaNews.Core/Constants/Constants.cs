@@ -72,6 +72,8 @@
         public const string SiteNameVar = "%sitename%";
         public const string ThumbnailSize = "-818x461";
         public const string None = "none";
+        public const string pageType = "page";
+        public const string postType = "post";
 
     }
 }

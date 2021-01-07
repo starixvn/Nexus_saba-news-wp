@@ -56,7 +56,8 @@
                 PageSize = Constants.Perpage,
                 TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
                 CategoryId = cate.CatId,
-                Controller = "category"
+                Controller = "category",
+                Slug = slug
             };
 
             var Model = new CategoryViewModel
@@ -91,7 +92,8 @@
                 PageSize = Constants.PerpageVideo,
                 TotalPages = (int)Math.Ceiling(totalITems / (double)Constants.PerpageVideo),
                 CategoryId = cate.CatId,
-                Controller = "video"
+                Controller = "video",
+                Slug = slug
             };
             var Model = new CategoryViewModel
             {
@@ -106,7 +108,7 @@
         [Route("lich-thi-dau")]
         public async Task<IActionResult> MatchSchedule()
         {
-            var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug);
+            var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.Title.Replace("%current_date_custom%", DateTime.UtcNow.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
             var Model = new PageViewModel
@@ -123,7 +125,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-            var post = await postService.GetPostDetailBySlugAsync(slug);
+            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);

@@ -34,6 +34,16 @@
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
         </Setting>
+        <Setting Key="get_top_posts_by_cate_slug" SpName="get_top_posts_by_cate_slug_xtest" DbName="sabasports" Plain="0">
+            <Mapping DataField="id" ObjectProperty="ID" class="Post" />
+            <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
+            <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
+            <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
+            <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
+            <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
+            <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
+            <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
+        </Setting>
         <Setting Key="get_menu" SpName="get_menu" DbName="sabasports" Plain="0">
             <Mapping DataField="ID" ObjectProperty="ID" class="Menu" />
             <Mapping DataField="post_title" ObjectProperty="Name" class="Menu" />
@@ -62,7 +72,7 @@
             <Mapping DataField="og_title" ObjectProperty="OgTitle" class="Category" />
             <Mapping DataField="seo_title" ObjectProperty="SEOTitle" class="Category" />
         </Setting>
-        <Setting Key="get_post_detail_by_slug" SpName="get_post_detail_by_slug" DbName="sabasports" Plain="0">
+        <Setting Key="get_post_detail_by_slug" SpName="get_post_detail_by_slug_xtest" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />

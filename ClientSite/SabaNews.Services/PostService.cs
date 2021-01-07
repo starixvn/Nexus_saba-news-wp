@@ -66,11 +66,25 @@
             return postTemplate;
         }
 
-        public async Task<Post> GetPostDetailBySlugAsync(string slug)
+        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end)
+        {
+            var criteria = new GetTopPostsByCateSlugCriteria
+            {
+                CateSlug = cateSlug.Trim(),
+                Start = start,
+                End = end
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            
+            return FormatData(posts).ToList();
+        }
+
+        public async Task<Post> GetPostDetailBySlugAsync(string slug, string postType)
         {
             var criteria = new GetPostDetailBySlugCriteria
             {
-                _Slug = slug.Trim()
+                Slug = slug.Trim(),
+                PostType = postType
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             if (post != null)

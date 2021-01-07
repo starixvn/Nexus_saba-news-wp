@@ -2,9 +2,11 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class SidebarViewComponent : ViewComponent
@@ -16,33 +18,22 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int year = 0, int month = 0)
+        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "")
         {
-            var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, 0, 4);
-            var currentMonth = DateTime.Now.Month;
-            var currentYear = DateTime.Now.Year;
-            var currentDay = DateTime.Now.Day;
-            if (year != 0 && month != 0)
+            var posts = (IEnumerable<Post>)null;
+            if (string.IsNullOrWhiteSpace(cateSlug))
             {
-                if (year != currentYear || month != currentMonth)
-                {
-                    currentDay = Constants.NumberDayNotInCurrentMonth;
-                }
-                currentMonth = month;
-                currentYear = year;
+                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, 0, 4);
+                posts = postTemplate.Posts;
             }
-
-            var firstDate = new DateTime(currentYear, currentMonth, 1);
-            var firstDayOfWeek = ((int)firstDate.DayOfWeek == 0) ? 7 : (int)firstDate.DayOfWeek;
-            int days = DateTime.DaysInMonth(currentYear, currentMonth);
+            else
+            {
+                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, 0, 4);
+            }
+           
             var Model = new SideBarViewModel
             {
-                Posts = postTemplate.Posts,
-                Days = days,
-                CurrentMonth = currentMonth,
-                CurrentYear = currentYear,
-                CurrentDay = currentDay,
-                FirstDayOfWeek = firstDayOfWeek
+                Posts = posts,
             };
 
             return View(Model);

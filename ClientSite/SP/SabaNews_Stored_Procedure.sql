@@ -275,43 +275,37 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_post_detail_by_slug;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_slug`(_slug varchar(300))
-SQL SECURITY DEFINER
-get_post_detail_by_slug:BEGIN
-	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name
-    , (SELECT pp.guid FROM wp_postmeta pm
-		INNER JOIN wp_posts pp ON pp.ID = pm.meta_value AND pp.post_type="attachment"
-		WHERE pm.post_id = p.ID and meta_key = "_thumbnail_id") as feature_image
-	, (SELECT pm2.meta_value FROM wp_postmeta pm
-		INNER JOIN wp_postmeta pm2 ON pm2.post_id = pm.meta_value AND pm2.meta_key="_wp_attachment_metadata"
-		WHERE pm.post_id = p.ID and pm.meta_key = "_thumbnail_id") as metadata
-	, (SELECT group_concat(t.name separator ', ')
-		FROM wp_terms as t
-        INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'post_tag'
-        INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE  p.ID = t_r.object_id
-	) as 'tags'
-    , (SELECT group_concat(t.slug separator ', ')
-		FROM wp_terms as t
-        INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'post_tag'
-        INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE  p.ID = t_r.object_id
-	) as 'tagsSlug'
-    ,(SELECT group_concat(t.term_id separator ', ')
-		FROM wp_terms as t
-        INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'category'
-        INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE p.ID = t_r.object_id
-	) as 'cate_name'
-    ,(SELECT group_concat(t.slug separator ', ')
-		FROM wp_terms as t
-        INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'category'
-        INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE p.ID = t_r.object_id
-	) as 'categoriesSlug'
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_slug`(Slug varchar(300), PostType varchar (30))
+BEGIN
+	DECLARE PostId varchar(100);
+	DECLARE tags varchar(100);
+    DECLARE tagsSlug varchar(100);
+    DECLARE cate_name varchar(100);
+    DECLARE categoriesSlug varchar(100);
+    
+    SELECT p.ID INTO  PostId FROM wp_posts p where p.post_name = Slug AND p.post_status = 'publish' AND p.post_type = PostType ;
+    
+    SELECT group_concat(t.name separator ', '), group_concat(t.slug separator ', ')
+    INTO tags, tagsSlug
+	FROM wp_terms as t
+	INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'post_tag'
+	INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
+	WHERE  t_r.object_id = PostId;
+    
+    SELECT group_concat(t.term_id separator ', '), group_concat(t.slug separator ', ')
+    INTO cate_name, categoriesSlug
+	FROM wp_terms as t
+	INNER JOIN wp_term_taxonomy as t_t ON t_t.term_id = t.term_id AND taxonomy = 'category'
+	INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
+	WHERE t_r.object_id = PostId;
+    
+	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, tags, tagsSlug, cate_name, categoriesSlug
     FROM wp_posts p
-    WHERE p.post_name = _slug AND p.post_status = 'publish';
-END;
+    LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
+	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
+    WHERE p.ID = PostId AND p.post_status = 'publish';
+END
 
 //
 DELIMITER ;
@@ -431,6 +425,34 @@ END
 //
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS get_top_posts_by_cate_slug;
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
+	cateSlug varchar(100),
+    start INT,
+    end INT
+)
+BEGIN
+	DECLARE category INT;
+    SELECT t.term_id INTO category FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = cateSlug;
+    
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, pm.meta_value as views
+	FROM wp_posts as p
+	INNER JOIN wp_postmeta as pm ON pm.post_id = p.ID AND pm.meta_key = "trx_addons_post_views_count"
+	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
+	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment"
+	WHERE p.post_type = "post" AND p.post_status = "publish"
+	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
+						INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+						WHERE tt.term_id = category OR tt.parent = category)
+	ORDER BY ABS(pm.meta_value) DESC
+    LIMIT start,end;
+END;
+//
+DELIMITER ;
 
 
 
