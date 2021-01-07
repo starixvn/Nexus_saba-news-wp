@@ -20,15 +20,15 @@
 
         public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "")
         {
-            var posts = (IEnumerable<Post>)null;
+            IEnumerable<Post> posts;
             if (string.IsNullOrWhiteSpace(cateSlug))
             {
-                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, 0, 4);
+                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetFourItems);
                 posts = postTemplate.Posts;
             }
             else
             {
-                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, 0, 4);
+                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, Constants.GetFourItems);
             }
            
             var Model = new SideBarViewModel
