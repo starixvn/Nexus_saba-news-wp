@@ -23,18 +23,16 @@
                     @if (Convert.ToBoolean(ViewData["video"]))
                     {
                         <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
-                    }
-                    <picture>
-                        <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
-                        <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-                        <img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
-                    </picture>
-                    @if (Convert.ToBoolean(ViewData["video"]))
-                    {
+                        <picture>
+                            <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
+                            <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
+                            <img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
+                        </picture>
                         <div class="btn-play-video">
                             <span class="icon-play"></span>
                         </div>
                     }
+
                 </div>
                 <div class="single play_video"></div>
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
