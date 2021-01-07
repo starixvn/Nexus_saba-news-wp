@@ -30,7 +30,7 @@
             else
             {
                 posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, Constants.GetFourItems);
-                ViewData[Constants.ViewDataHeadTitle] = Constants.ViewestPostTitle;
+                ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
             }
            
             var Model = new SideBarViewModel
