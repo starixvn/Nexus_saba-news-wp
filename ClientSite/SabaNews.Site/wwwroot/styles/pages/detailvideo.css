@@ -781,6 +781,11 @@ button {
     width: 100%;
     height: auto; }
 
+.wp-block-image figcaption {
+  text-align: center;
+  position: relative;
+  top: -4px; }
+
 .block-calendar {
   border: 1px solid #E0E0E0 !important;
   border-radius: 8px;

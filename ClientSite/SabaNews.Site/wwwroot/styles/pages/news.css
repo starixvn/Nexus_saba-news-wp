@@ -781,6 +781,11 @@ button {
     width: 100%;
     height: auto; }
 
+.wp-block-image figcaption {
+  text-align: center;
+  position: relative;
+  top: -4px; }
+
 .card-horizontal {
   display: grid;
   grid-template-columns: 19.5rem 1fr;

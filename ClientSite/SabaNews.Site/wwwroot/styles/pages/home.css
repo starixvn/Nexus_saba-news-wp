@@ -730,6 +730,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     width: 100%;
     height: auto; }
 
+.wp-block-image figcaption {
+  text-align: center;
+  position: relative;
+  top: -4px; }
+
 button {
   outline: none;
   border: 0;

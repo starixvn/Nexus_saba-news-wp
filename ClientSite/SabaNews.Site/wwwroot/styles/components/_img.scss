@@ -16,3 +16,11 @@
         height: auto;
     }
 }
+
+.wp-block-image {
+    figcaption {
+        text-align: center;
+        position: relative;
+        top: -4px;
+    }
+}
