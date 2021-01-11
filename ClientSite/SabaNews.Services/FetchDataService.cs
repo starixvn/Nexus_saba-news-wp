@@ -19,28 +19,27 @@
 
         public async Task<PostViewModel> GetHomePageViewModel()
         {
-            var newPosts = postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
-            var footballPosts = postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
-            var basketballPosts = postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems);
-            var tennisPosts = postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
-            var videoPosts = postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetSixItems);
-            var guessPosts = postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems);
-            var backstagePosts = postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems);
-            var transferPosts = postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems);
-            var category = postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
+            var newPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
+            var footballPosts = await postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            var basketballPosts = await postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems);
+            var tennisPosts = await postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
+            var videoPosts = await postService.GetPostsBySlugAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetSixItems);
+            var guessPosts = await postService.GetPostsBySlugAsync(Constants.GuessSlug, Constants.FromFirstItem, Constants.GetThreeItems);
+            var backstagePosts = await postService.GetPostsBySlugAsync(Constants.BackstageSlug, Constants.FromFirstItem, Constants.GetThreeItems);
+            var transferPosts = await postService.GetPostsBySlugAsync(Constants.TransferSlug, Constants.FromFirstItem, Constants.GetFiveItems);
+            var category = await postService.GetPageDetailBySlugAsync(Constants.HomeSlug);
 
-            await Task.WhenAll(newPosts, footballPosts, basketballPosts, tennisPosts, videoPosts, guessPosts, backstagePosts, transferPosts, category);
             var viewModel = new PostViewModel
             {
-                NewPosts = (await newPosts).ToArray(),
-                FootballPosts = (await footballPosts).ToArray(),
-                BasketballPosts = (await basketballPosts).ToArray(),
-                TennisPosts = (await tennisPosts).ToArray(),
-                VideoPosts = (await videoPosts).ToArray(),
-                GuessPosts = (await guessPosts).ToArray(),
-                BackstagePosts = (await backstagePosts).ToArray(),
-                TransferPosts = (await transferPosts).ToArray(),
-                Category = await category
+                NewPosts = (newPosts).ToArray(),
+                FootballPosts = (footballPosts).ToArray(),
+                BasketballPosts = (basketballPosts).ToArray(),
+                TennisPosts = (tennisPosts).ToArray(),
+                VideoPosts = (videoPosts).ToArray(),
+                GuessPosts = (guessPosts).ToArray(),
+                BackstagePosts = (backstagePosts).ToArray(),
+                TransferPosts = (transferPosts).ToArray(),
+                Category = category
             };
 
             return viewModel;

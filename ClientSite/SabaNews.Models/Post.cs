@@ -1,7 +1,9 @@
-﻿using System;
-using SabaNews.Core.Constants;
-namespace SabaNews.Models
+﻿namespace SabaNews.Models
 {
+    using SabaNews.Core.Constants;
+    using System;
+    using System.Collections.Generic;
+
     public class Post
     {
         public int ID { get; set; }
@@ -18,6 +20,7 @@ namespace SabaNews.Models
         public string Slug { get; set; }
         public string Type { get; set; }
         public string Metadata { get; set; }
+        public IEnumerable<ImageInfo> Images { get; set; }
 
         public string PostTime
         {

@@ -20,9 +20,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using sabanews.Middlewares;
+    using SabaNews.Core.Models;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using SabaNews.Core.Models;
     using Sentry;
     using StackExchange.Redis;
     using System;
@@ -95,6 +95,7 @@
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddScoped<ILogger, Logger>();
 
+            services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();

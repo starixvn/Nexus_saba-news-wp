@@ -2,21 +2,22 @@
 {
     using SabaNews.Core.Constants;
     using SabaNews.Criteria;
+    using SabaNews.Models;
     using SabaNews.Services.Interfaces;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using SabaNews.Models;
 
     public class PostService : IPostService
     {
         private readonly IBaseService baseService;
+        private readonly ISerializerService serializerService;
 
-        public PostService(IBaseService baseService)
+        public PostService(IBaseService baseService, ISerializerService serializerService)
         {
             this.baseService = baseService;
+            this.serializerService = serializerService;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
@@ -29,7 +30,7 @@
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
 
-            return FormatData(posts, slug).ToList();
+            return FormatData(posts).ToList();
         }
 
         public async Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end)
@@ -60,7 +61,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts, Constants.None).ToList(),
+                Posts = FormatData(posts).ToList(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;
@@ -235,54 +236,18 @@
             return await baseService.GetDataAsync<Menu>(criteria);
         }
 
-        public static IEnumerable<Post> FormatData(IEnumerable<Post> posts, string slug = null)
+        private IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
-            var isAddThumbnail = true;
-            var listAddThumbnail = new List<string> { Constants.NewPostSlug, Constants.VideoSlug, Constants.BackstageSlug, Constants.TennisSlug };
-            var checkSlug = listAddThumbnail.FirstOrDefault(item => item.Equals(slug));
-            if (checkSlug == null && slug != null)
-            {
-                isAddThumbnail = false;
-            }
-            var i = 0;
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
-                if (post.FeatureImage != null)
-                {
-                    var thumbnail = (i == 0 && isAddThumbnail) ? Constants.ThumbnailSize : "";
-                    post.FeatureImage = ResizeImage(post.FeatureImage, post.Metadata, thumbnail);
-                }
-                i++;
+                post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
             }
             return posts;
         }
 
-        public static string ResizeImage(string image, string metadata, string thumbnail = "")
-        {
-            var result = image;
-            var size = "";
-            var extension = "." + image.Split(".").Last();
-            var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg", ".webp" };
-            var imgSizes = new List<string> { "-406x228", "-260x240", "-600x394" ,"-818x461" };
-            var type = imgTypes.FirstOrDefault(item => item.Equals(extension));
-            size = imgSizes.FirstOrDefault(item => metadata.Contains(item));
-            if (thumbnail != "")
-            {
-                size = metadata.Contains(thumbnail) ? thumbnail : null;
-            }
-            
-            size ??= "";
-            if (type != null)
-            {
-                var imageLength = image.LastIndexOf(type, StringComparison.CurrentCulture);
-                result = image.Substring(0, imageLength) + size + type;
-            }
-            return result;
-        }
-
-        public static Category ReplaceStringFromVarSeo(Category cate)
+        private static Category ReplaceStringFromVarSeo(Category cate)
         {
             if (cate == null)
             {

@@ -76,6 +76,5 @@
         public const string postType = "post";
         public const string RecentPostsTitle = "TIN MỚI NHẤT";
         public const string MostViewPostTitle = "XEM NHIỀU NHẤT";
-
     }
 }
