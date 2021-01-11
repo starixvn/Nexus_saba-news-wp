@@ -1,4 +1,5 @@
 ﻿@using SabaNews.Core.Constants;
+@using Microsoft.AspNetCore.Mvc;
 
 @section Metadata {
     <meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
@@ -44,10 +45,11 @@
                             </a>
                             <div class="card-horizontal__content">
                                 <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-                <p class="datetime">@Model.NewPosts[i].PostTime</p>
+                                <p class="datetime">@Model.NewPosts[i].PostTime</p>
                                 <p class="description">@Model.NewPosts[i].PostExcerpt</p>
                             </div>
-                        </div>}
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -97,7 +99,7 @@
                                 </a>
                                 <div class="card-horizontal__content">
                                     <a href="javascript:;" data-id="@post.ID" class="image-slider title">@post.PostTitle</a>
-                    <p class="datetime">@post.PostTime</p>
+                                    <p class="datetime">@post.PostTime</p>
                                 </div>
                             </div>}
                     </div>
@@ -120,7 +122,7 @@
                                 </picture>
                             </a>
                             <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-            <p class="card-vertical__datetime">@post.PostTime</p>
+                            <p class="card-vertical__datetime">@post.PostTime</p>
                         </div>}
                 </div>
             </div>
@@ -142,7 +144,7 @@
                             </a>
                             <div class="group group-mobile">
                                 <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-                <p class="card-vertical__datetime">@post.PostTime</p>
+                                <p class="card-vertical__datetime">@post.PostTime</p>
                             </div>
                         </div>}
                 </div>
@@ -165,7 +167,7 @@
                                     </picture>
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
-                <p class="card-vertical__datetime">@Model.BackstagePosts[i].PostTime</p>
+                                <p class="card-vertical__datetime">@Model.BackstagePosts[i].PostTime</p>
                             </div>
                         }
                     </div>
@@ -187,7 +189,7 @@
                                 </a>
                                 <div class="card-horizontal__content">
                                     <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                    <p class="datetime">@post.PostTime</p>
+                                    <p class="datetime">@post.PostTime</p>
                                     <p class="description">@post.PostExcerpt</p>
                                 </div>
                             </div>}
@@ -214,7 +216,7 @@
                                     </picture>
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                <p class="card-vertical__datetime">@post.PostTime</p>
+                                <p class="card-vertical__datetime">@post.PostTime</p>
                             </div>}
                     </div>
                 </div>
