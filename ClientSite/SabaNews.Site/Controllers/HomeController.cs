@@ -37,14 +37,12 @@
         public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var postTemplate = slug == null
-                            ? await postService.GetRecentPostsAsync(Constants.VideoSlug, start, Constants.Perpage)
-                            : await postService.GetPostsByCateSlugAsync(slug, start, Constants.Perpage);
+            slug ??= Constants.NewPostSlug;
+            var postTemplate =  await postService.GetPostsByCateSlugAsync(slug, start, Constants.Perpage);
             if (!postTemplate.Posts.Any())
             {
                 return View(Constants.EmptyBlogView);
             }
-            slug ??= Constants.NewPostSlug;
             var cate = await postService.GetCateDetailAsync(slug);
             var totalItems = postTemplate.TotalItems;
             var ViewData = new ViewData

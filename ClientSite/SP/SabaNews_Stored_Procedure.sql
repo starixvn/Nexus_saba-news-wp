@@ -97,55 +97,30 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
 )
 BEGIN
 	DECLARE count  INT;
-	DECLARE _category INT;
-    SET _category = (SELECT t.term_id FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug );
-    SET count = (SELECT count(*) FROM wp_term_taxonomy WHERE FIND_IN_SET(term_id, _category) and parent = 0);
-	IF count > 0 THEN
+	DECLARE category INT;
+    DECLARE cate_name INT;
+    SELECT t.term_id, t.name INTO category, cate_name FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug;
     
-		SELECT count(p.id)
-        INTO TotalItems
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND t_t.parent = _category;
-        
-		SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, t.name as cate_name
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        LEFT JOIN wp_terms as t ON t.term_id = _category
-        LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
-        LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
-        LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
-        
-		WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND t_t.parent = _category
-		ORDER BY p.post_date DESC
-        limit _start, _end;
-	ELSE 
-    
-		SELECT count(*)
-        INTO TotalItems
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND taxonomy = 'category' and FIND_IN_SET(t_t.term_id, _category);
-        
-		SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, t.name as cate_name
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-		LEFT JOIN wp_terms as t ON t.term_id = _category
-        LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
-        LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
-        LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
-		WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND taxonomy = 'category' and FIND_IN_SET(t_t.term_id, _category)
-		ORDER BY p.post_date DESC
-        limit _start, _end;
-    END IF;
+	SELECT count(p.id)
+	INTO TotalItems
+	FROM wp_posts as p
+	WHERE p.post_type = 'post' AND p.post_status = 'publish'
+	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+					WHERE tt.term_id = category OR tt.parent = category);
+	
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, cate_name
+	FROM wp_posts as p
+	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
+	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
+	WHERE p.post_type = 'post' AND p.post_status = 'publish'
+	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+					WHERE tt.term_id = category OR tt.parent = category)
+	ORDER BY p.post_date DESC
+	limit _start, _end;
+	
 END;
 //
 DELIMITER ;
@@ -305,7 +280,16 @@ BEGIN
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
 	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
     WHERE p.ID = PostId AND p.post_status = 'publish';
-END
+    
+    IF PostType = "post" THEN
+		UPDATE wp_postmeta 
+		SET meta_value = meta_value  + 1
+		WHERE post_id = postId AND meta_key = "trx_addons_post_views_count";
+    END IF;
+    
+    
+    
+END;
 
 //
 DELIMITER ;
