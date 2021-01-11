@@ -29,6 +29,13 @@
                               GetCronExpression(HangfireJobName.RefreshHomePageCaching),
                               TimeZoneInfo.Local);
             }
+            if (IsEnabledJob(HangfireJobName.RefreshMenuCaching))
+            {
+                recurringJob.AddOrUpdate<IRefreshCachingService>("Update Menu data caching",
+                             job => job.UpdateMenuCaching(),
+                             GetCronExpression(HangfireJobName.RefreshMenuCaching),
+                             TimeZoneInfo.Local);
+            }
         }
 
         private bool IsEnabledJob(string jobName)

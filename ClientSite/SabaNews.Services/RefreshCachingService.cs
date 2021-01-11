@@ -22,5 +22,12 @@
 
             await cacheService.SetAsync(CacheKey.HomePageViewModel, data);
         }
+
+        public async Task UpdateMenuCaching()
+        {
+            var data = await fetchDataService.GetMenuData();
+
+            await cacheService.SetAsync(CacheKey.Menu, data);
+        }
     }
 }

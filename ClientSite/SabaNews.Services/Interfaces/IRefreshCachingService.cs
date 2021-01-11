@@ -5,5 +5,7 @@
     public interface IRefreshCachingService
     {
         Task UpdateHomePageCaching();
+
+        Task UpdateMenuCaching();
     }
 }

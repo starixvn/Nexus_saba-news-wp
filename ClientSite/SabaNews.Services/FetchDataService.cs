@@ -1,8 +1,10 @@
 ﻿namespace SabaNews.Services
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -42,6 +44,12 @@
             };
 
             return viewModel;
+        }
+
+        public async Task<IEnumerable<Menu>> GetMenuData()
+        {
+            var menus = await postService.GetMenuAsync("New Site Menu");
+            return menus;
         }
     }
 }

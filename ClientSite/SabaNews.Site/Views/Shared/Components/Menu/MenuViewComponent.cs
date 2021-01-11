@@ -7,16 +7,16 @@
 
     public class MenuViewComponent : ViewComponent
     {
-        private readonly IPostService postService;
+        private readonly IDataControlService dataControlService;
 
-        public MenuViewComponent(IPostService postService)
+        public MenuViewComponent(IDataControlService dataControlService)
         {
-            this.postService = postService;
+            this.dataControlService = dataControlService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = await postService.GetMenuAsync("New Site Menu");
+            var model = await dataControlService.GetMenuData();
             return View(model);
         }
     }

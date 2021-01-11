@@ -6,6 +6,8 @@
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using SabaNews.Models;
 
     public class DataControlService : IDataControlService
     {
@@ -37,6 +39,25 @@
             }
 
             return await fetchDataService.GetHomePageViewModel();
+        }
+
+        public async Task<IEnumerable<Menu>> GetMenuData()
+        {
+            bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
+            if (isEnabledCache)
+            {
+                var result = await cacheService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+
+                if (result == null)
+                {
+                    result = await fetchDataService.GetMenuData();
+                    await cacheService.SetAsync(CacheKey.Menu, result);
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetMenuData();
         }
     }
 }

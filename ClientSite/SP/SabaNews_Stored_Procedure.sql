@@ -98,7 +98,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
 BEGIN
 	DECLARE count  INT;
 	DECLARE category INT;
-    DECLARE cate_name INT;
+    DECLARE cate_name VARCHAR(100);
     SELECT t.term_id, t.name INTO category, cate_name FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug;
     
 	SELECT count(p.id)
