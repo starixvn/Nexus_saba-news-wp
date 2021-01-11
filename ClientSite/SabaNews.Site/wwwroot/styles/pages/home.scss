@@ -196,6 +196,18 @@
                     border-radius: 3px;
                 }
             }
+
+            .card-horizontal {
+                grid-template-columns: 14rem 1fr;
+                grid-template-rows: 8rem;
+                .card-horizontal__content {
+                    padding: .4rem 0;
+                    line-height: 1.8rem;
+                }
+                .title {
+                    font-size: 1.4rem;
+                }
+            }
         }
     }
     // block-soccer

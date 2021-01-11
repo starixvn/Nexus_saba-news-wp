@@ -5,22 +5,12 @@
 .font-italic {
   font-style: italic; }
 
-.font-italic-bold {
-  font-style: italic;
-  font-weight: bold; }
-
 .text-description {
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
   line-height: 1.5;
   -webkit-line-clamp: 2;
-  height: 4.4rem;
   display: -webkit-box;
-  -webkit-box-orient: vertical; }
-  @media screen and (max-width: 1024px) {
-    .text-description {
-      height: 4rem; } }
+  -webkit-box-orient: vertical;
+  overflow: hidden; }
 
 *, *::after, *::before {
   box-sizing: border-box; }
@@ -75,8 +65,9 @@ body {
   padding-top: 7rem; }
 
 .content {
-  line-height: 2.4rem;
-  margin: 0; }
+  line-height: 3rem;
+  margin: 0;
+  font-size: 1.8rem; }
   .content p {
     margin-bottom: 1rem; }
   .content h6 {
@@ -863,38 +854,9 @@ button {
   @media screen and (max-width: 1024px) {
     .container {
       padding: 0 .8rem; } }
-  @media (min-width: 576px) {
+  @media (min-width: 1280px) {
     .container {
-      max-width: 100%; } }
-  @media (min-width: 768px) {
-    .container {
-      max-width: 100%;
-      padding: 0 1.6rem; } }
-  @media (min-width: 992px) {
-    .container {
-      max-width: 100%;
-      padding: 0 1rem; } }
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 119rem;
-      padding: 0 1rem; } }
-  @media (min-width: 1440px) {
-    .container {
-      max-width: 134rem;
-      padding: 0 1rem; } }
-
-.container-fuild {
-  max-width: 128rem;
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto; }
-  @media screen and (max-width: 1024px) {
-    .container-fuild {
-      padding: 0; } }
-  @media screen and (device-aspect-ratio: 40 / 71) {
-    .container-fuild {
-      padding: 0; } }
+      max-width: 114rem; } }
 
 .block-list {
   list-style: none;
@@ -1158,6 +1120,14 @@ button {
     .main .block-video .block__content .slide-video::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.2);
       border-radius: 3px; }
+  .main .block-video .block__content .card-horizontal {
+    grid-template-columns: 14rem 1fr;
+    grid-template-rows: 8rem; }
+    .main .block-video .block__content .card-horizontal .card-horizontal__content {
+      padding: .4rem 0;
+      line-height: 1.8rem; }
+    .main .block-video .block__content .card-horizontal .title {
+      font-size: 1.4rem; }
 
 .main .block-soccer .block__content {
   display: grid;

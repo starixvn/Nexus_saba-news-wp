@@ -2,20 +2,11 @@
 .font-italic{
     font-style: italic;
 }
-.font-italic-bold{
-    font-style: italic;
-    font-weight: bold;
-}
+
 .text-description{
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
     line-height: 1.5;
     -webkit-line-clamp: 2;
-    height: 4.4rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    @include tableMobile{
-        height: 4rem;
-    }
+    overflow: hidden;
 }

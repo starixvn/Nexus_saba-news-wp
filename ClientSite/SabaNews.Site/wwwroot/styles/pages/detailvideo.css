@@ -55,8 +55,9 @@ body {
   padding-top: 7rem; }
 
 .content {
-  line-height: 2.4rem;
-  margin: 0; }
+  line-height: 3rem;
+  margin: 0;
+  font-size: 1.8rem; }
   .content p {
     margin-bottom: 1rem; }
   .content h6 {
@@ -735,38 +736,9 @@ button {
   @media screen and (max-width: 1024px) {
     .container {
       padding: 0 .8rem; } }
-  @media (min-width: 576px) {
+  @media (min-width: 1280px) {
     .container {
-      max-width: 100%; } }
-  @media (min-width: 768px) {
-    .container {
-      max-width: 100%;
-      padding: 0 1.6rem; } }
-  @media (min-width: 992px) {
-    .container {
-      max-width: 100%;
-      padding: 0 1rem; } }
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 119rem;
-      padding: 0 1rem; } }
-  @media (min-width: 1440px) {
-    .container {
-      max-width: 134rem;
-      padding: 0 1rem; } }
-
-.container-fuild {
-  max-width: 128rem;
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto; }
-  @media screen and (max-width: 1024px) {
-    .container-fuild {
-      padding: 0; } }
-  @media screen and (device-aspect-ratio: 40 / 71) {
-    .container-fuild {
-      padding: 0; } }
+      max-width: 114rem; } }
 
 .card-horizontal__image, .card-vertical__image {
   overflow: hidden; }
