@@ -73,6 +73,8 @@
 
 </body>
 </html>
+<meta name="google-site-verification" content="LZ-CvkjzIX6eZe4tY_dXU3DyJI7PHcpsD71kkEKBBgs" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script>
 	
 	var setUp = {
@@ -217,20 +219,50 @@
 		},
 		changeOthers: function() {
 			//redirect Tin nóng, tin mới nhật to tin tức
-			jQuery('.sc_item_title_text, .sc_item_filters_title').on('click', function(){
+			jQuery('#tin-moi-nhat_sc').on('click', function(){
 				var location = "<?php echo get_category_link(175)?>";
 				window.location.href = location;
 			});
-
+			
+			jQuery('#bongda_sc').on('click', function(){
+				var location = "<?php echo get_category_link(1352)?>";
+				window.location.href = location;
+			});
+			
 			jQuery('.sc_item_filters_title').on('click', function(){
 				var location = "<?php echo get_category_link(111)?>";
+				window.location.href = location;
+			});
+			
+			jQuery('#nhandinh-dudoan_sc .sc_item_filters_title').on('click', function() {
+				var location = "<?php echo get_category_link(1305)?>";
+				window.location.href = location;
+			});
+			
+			jQuery('#chuyen-nhuong_sc .sc_item_filters_title').on('click', function() {
+				var location = "<?php echo get_category_link(1246)?>";
+				window.location.href = location;
+			});
+			
+			jQuery('#hautruong_sc .sc_item_filters_title').on('click', function() {
+				var location = "<?php echo get_category_link(114)?>";
+				window.location.href = location;
+			});
+			
+			jQuery('#bongro_sc .sc_item_filters_title').on('click', function() {
+				var location = "<?php echo get_category_link(109)?>";
+				window.location.href = location;
+			});
+			
+			jQuery('#quan-vot_sc .sc_item_filters_title').on('click', function() {
+				var location = "<?php echo get_category_link(1491)?>";
 				window.location.href = location;
 			});
 			
 			jQuery('#custom_html-2 h5').on('click', function(){
 				var location = "<?php echo get_page_link(5155)?>";
 				window.location.href = location;
-			})
+			});
 
 			//nav-links
 			var nav_text = jQuery('.nav-links').find('.screen-reader-text');
@@ -238,6 +270,16 @@
 				jQuery(this).removeClass('screen-reader-text');
 				jQuery(this).addClass('creen-nav-text');
 			});
+			
+			//change by to bởi
+			var by = jQuery('.post_info_posted_by').html();
+			if(typeof by != 'undefined') {
+				var str = by.replace("by","bởi");
+				jQuery('.post_info_posted_by').html(str);
+			}
+			
+			//hide sidebar on mobile
+			jQuery('.elementor-widget-trx_sc_layouts_widgets').addClass('sc_layouts_hide_on_mobile');
 			
 			//remove humberger menu
 // 			jQuery('.sc_layouts_menu').css('display','block !important');

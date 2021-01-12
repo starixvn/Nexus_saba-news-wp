@@ -125,7 +125,7 @@ trait WordPress {
 
 		// Makes sure the plugin functions are defined before trying to use them.
 		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		}
 
 		return is_plugin_active_for_network( plugin_basename( RANK_MATH_FILE ) ) ?
@@ -287,7 +287,7 @@ trait WordPress {
 
 		// Makes sure the plugin is defined before trying to use it.
 		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+			require_once ABSPATH . '/wp-admin/includes/plugin.php';
 		}
 
 		if ( ! is_plugin_active_for_network( plugin_basename( RANK_MATH_FILE ) ) ) {
@@ -344,6 +344,30 @@ trait WordPress {
 	}
 
 	/**
+	 * Get advanced robots default.
+	 *
+	 * @return array
+	 */
+	public static function get_advanced_robots_defaults() {
+		$screen          = get_current_screen();
+		$advanced_robots = Helper::get_settings( 'titles.advanced_robots_global', [] );
+
+		if ( 'post' === $screen->base && Helper::get_settings( "titles.pt_{$screen->post_type}_custom_robots" ) ) {
+			$advanced_robots = Helper::get_settings( "titles.pt_{$screen->post_type}_advanced_robots", [] );
+		}
+
+		if ( 'term' === $screen->base && Helper::get_settings( "titles.tax_{$screen->taxonomy}_custom_robots" ) ) {
+			$advanced_robots = Helper::get_settings( "titles.tax_{$screen->taxonomy}_advanced_robots", [] );
+		}
+
+		if ( in_array( $screen->base, [ 'profile', 'user-edit' ], true ) && Helper::get_settings( 'titles.author_custom_robots' ) ) {
+			$advanced_robots = Helper::get_settings( 'titles.author_advanced_robots', [] );
+		}
+
+		return $advanced_robots;
+	}
+
+	/**
 	 * Convert timestamp and ISO to date.
 	 *
 	 * @param string  $value            Value to convert.
@@ -357,6 +381,35 @@ trait WordPress {
 		}
 
 		return $include_timezone ? date_i18n( 'Y-m-d H:i-T', $value ) : date_i18n( 'Y-m-d H:i', $value );
+	}
+
+	/**
+	 * Helper function to convert ISO 8601 duration to seconds.
+	 * For example "PT1H12M24S" becomes 5064.
+	 *
+	 * @param string $iso8601 Duration which need to be converted to seconds.
+	 * @return int
+	 */
+	public static function duration_to_seconds( $iso8601 ) {
+		$end = substr( $iso8601, -1 );
+		if ( ! in_array( $end, [ 'D', 'H', 'M', 'S' ], true ) ) {
+			$iso8601 = $iso8601 . 'S';
+		}
+		$iso8601 = ! Str::starts_with( 'P', $iso8601 ) ? 'PT' . $iso8601 : $iso8601;
+
+		preg_match( '/^P([0-9]+D|)?T?([0-9]+H|)?([0-9]+M|)?([0-9]+S|)?$/', $iso8601, $matches );
+		if ( empty( $matches ) ) {
+			return false;
+		}
+
+		return array_sum(
+			[
+				absint( $matches[1] ) * DAY_IN_SECONDS,
+				absint( $matches[2] ) * HOUR_IN_SECONDS,
+				absint( $matches[3] ) * MINUTE_IN_SECONDS,
+				absint( $matches[4] ),
+			]
+		);
 	}
 
 	/**
@@ -412,5 +465,60 @@ trait WordPress {
 		 * @param string $post_type         The post type being checked.
 		 */
 		return apply_filters( 'use_block_editor_for_post_type', true, $post_type );
+	}
+
+	/**
+	 * Generate classes.
+	 *
+	 * @return string
+	 */
+	public static function classnames() {
+		$args = func_get_args();
+
+		$data = array_reduce(
+			$args,
+			function( $carry, $arg ) {
+				if ( is_array( $arg ) ) {
+					return array_merge( $carry, $arg );
+				}
+
+				$carry[] = $arg;
+				return $carry;
+			},
+			[]
+		);
+
+		$classes = array_map(
+			function ( $key, $value ) {
+				$condition = $value;
+				$return    = $key;
+
+				if ( is_int( $key ) ) {
+					$condition = null;
+					$return    = $value;
+				}
+
+				$is_array             = is_array( $return );
+				$is_object            = is_object( $return );
+				$is_stringable_type   = ! $is_array && ! $is_object;
+				$is_stringable_object = $is_object && method_exists( $return, '__toString' );
+
+				if ( ! $is_stringable_type && ! $is_stringable_object ) {
+					return null;
+				}
+
+				if ( is_null( $condition ) ) {
+					return $return;
+				}
+
+				return $condition ? $return : null;
+			},
+			array_keys( $data ),
+			array_values( $data )
+		);
+
+		$classes = array_filter( $classes );
+
+		return implode( ' ', $classes );
 	}
 }

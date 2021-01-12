@@ -8,6 +8,8 @@
 
 use RankMath\Admin\Importers\Detector;
 
+defined( 'ABSPATH' ) || exit;
+
 $detector = new Detector();
 $plugins  = $detector->detect();
 $first = empty( $plugins ) ? '' : array_keys( $plugins )[0];
@@ -29,7 +31,7 @@ $first = empty( $plugins ) ? '' : array_keys( $plugins )[0];
 		<?php else : ?>
 			<div class="rank-math-box-tabs wp-clearfix">
 				<?php foreach ( $plugins as $slug => $importer ) : ?>
-					<a href="#import-plugin-<?php echo esc_attr( $slug ); ?>" class="<?php echo $slug === $first ? 'active' : ''; ?>">
+					<a href="#import-plugin-<?php echo esc_attr( $slug ); ?>" class="<?php echo $slug === $first ? 'active-tab' : ''; ?>">
 						<i class="rm-icon rm-icon-import"></i>
 						<span class="rank-math-tab-text"><?php echo esc_html( $importer['name'] ); ?></span>
 					</a>

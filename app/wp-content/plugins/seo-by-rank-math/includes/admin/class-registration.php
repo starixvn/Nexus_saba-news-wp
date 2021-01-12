@@ -16,6 +16,7 @@ use RankMath\Traits\Hooker;
 use RankMath\Admin\Admin_Helper;
 use MyThemeShop\Helpers\Param;
 use RankMath\Helpers\Security;
+use RankMath\Google\Authentication;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -122,9 +123,15 @@ class Registration {
 					'username'  => $auth_data['username'],
 					'email'     => $auth_data['email'],
 					'api_key'   => $auth_data['api_key'],
+					'plan'      => $auth_data['plan'],
 					'connected' => true,
 				]
 			);
+
+			if ( 1 == Param::get( 'analytics' ) ) {
+				wp_redirect( Authentication::get_auth_url() );
+				exit;
+			}
 
 			// Redirect to the wizard is registration successful.
 			if ( Param::get( 'page' ) === 'rank-math-registration' ) {
@@ -222,8 +229,6 @@ class Registration {
 
 		// Wizard.
 		wp_enqueue_style( 'rank-math-wizard', rank_math()->plugin_url() . 'assets/admin/css/setup-wizard.css', [ 'wp-admin', 'buttons', 'cmb2-styles', 'rank-math-common', 'rank-math-cmb2' ], rank_math()->version );
-		wp_enqueue_script( 'rank-math-wizard', rank_math()->plugin_url() . 'assets/admin/js/wizard.js', [ 'jquery', 'rank-math-common', 'rank-math-validate' ], rank_math()->version, true );
-		wp_localize_script( 'rank-math-wizard', 'wp', [] );
 
 		$logo_url = '<a href="' . KB::get( 'logo' ) . '" target="_blank"><img src="' . esc_url( rank_math()->plugin_url() . 'assets/admin/img/logo.svg' ) . '"></a>';
 

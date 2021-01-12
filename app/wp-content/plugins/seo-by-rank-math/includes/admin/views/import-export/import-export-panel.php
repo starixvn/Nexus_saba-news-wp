@@ -6,6 +6,8 @@
  * @subpackage RankMath\Admin
  */
 
+defined( 'ABSPATH' ) || exit;
+
 ?>
 <h2><?php esc_html_e( 'Plugin Settings', 'rank-math' ); ?></h2>
 
@@ -18,7 +20,7 @@
 
 <div class="rank-math-box no-padding">
 	<div class="rank-math-box-tabs wp-clearfix">
-		<a href="#rank-math-import-form" class="active">
+		<a href="#rank-math-import-form" class="active-tab">
 			<i class="rm-icon rm-icon-import"></i>
 			<span class="rank-math-tab-text"><?php esc_html_e( 'Import Settings', 'rank-math' ); ?></span>
 		</a>

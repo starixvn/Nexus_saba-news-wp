@@ -36,7 +36,8 @@ class Helper {
 	 * @param array  $args    Context object, can be post, taxonomy or term.
 	 * @param array  $exclude Excluded variables won't be replaced.
 	 *
-	 * Inspired from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 * @copyright Copyright (C) 2008-2019, Yoast BV
+	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
 	 *
 	 * @return string
 	 */
@@ -73,9 +74,16 @@ class Helper {
 	 * @return int
 	 */
 	public static function get_midnight( $time ) {
+		$org_time = $time;
 		if ( is_numeric( $time ) ) {
 			$time = date_i18n( 'Y-m-d H:i:s', $time );
 		}
+
+		// Early bail if time format is invalid.
+		if ( false === strtotime( $time ) ) {
+			return $org_time;
+		}
+
 		$date = new \DateTime( $time );
 		$date->setTime( 0, 0, 0 );
 
@@ -89,7 +97,8 @@ class Helper {
 	 * @param  string $part The URL part to retrieve.
 	 * @return string The extracted URL part.
 	 *
-	 * Adapted from Yoast (https://github.com/Yoast/wordpress-seo/)
+	 * @copyright Copyright (C) 2008-2019, Yoast BV
+	 * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
 	 */
 	public static function get_url_part( $url, $part ) {
 		$url_parts = wp_parse_url( $url );
@@ -120,78 +129,6 @@ class Helper {
 	}
 
 	/**
-	 * Get Search Console auth url.
-	 *
-	 * @return string
-	 */
-	public static function get_console_auth_url() {
-		return \RankMath\Search_Console\Client::get()->get_auth_url();
-	}
-
-	/**
-	 * Get or update Search Console data.
-	 *
-	 * @param  bool|array $data Data to save.
-	 * @return bool|array
-	 */
-	public static function search_console_data( $data = null ) {
-		$key          = 'rank_math_search_console_data';
-		$encrypt_keys = [
-			'access_token',
-			'refresh_token',
-			'profiles',
-		];
-
-		// Clear data.
-		if ( false === $data ) {
-			delete_option( $key );
-			return false;
-		}
-
-		$saved = get_option( $key, [] );
-		foreach ( $encrypt_keys as $enc_key ) {
-			if ( isset( $saved[ $enc_key ] ) ) {
-				$saved[ $enc_key ] = Data_Encryption::deep_decrypt( $saved[ $enc_key ] );
-			}
-		}
-
-		// Getter.
-		if ( is_null( $data ) ) {
-			return wp_parse_args(
-				$saved,
-				[
-					'authorized' => false,
-					'profiles'   => [],
-				]
-			);
-		}
-
-		// Setter.
-		foreach ( $encrypt_keys as $enc_key ) {
-			if ( isset( $saved[ $enc_key ] ) ) {
-				$saved[ $enc_key ] = Data_Encryption::deep_encrypt( $saved[ $enc_key ] );
-			}
-			if ( isset( $data[ $enc_key ] ) ) {
-				$data[ $enc_key ] = Data_Encryption::deep_encrypt( $data[ $enc_key ] );
-			}
-		}
-
-		$data = wp_parse_args( $data, $saved );
-		update_option( $key, $data );
-
-		return $data;
-	}
-
-	/**
-	 * Get search console module object.
-	 *
-	 * @return object
-	 */
-	public static function search_console() {
-		return self::get_module( 'search-console' );
-	}
-
-	/**
 	 * Get module by ID.
 	 *
 	 * @param  string $id ID to get module.
@@ -207,7 +144,7 @@ class Helper {
 	 * @param string $modules Modules to modify.
 	 */
 	public static function update_modules( $modules ) {
-		$stored = get_option( 'rank_math_modules' );
+		$stored = get_option( 'rank_math_modules', [] );
 
 		foreach ( $modules as $module => $action ) {
 			if ( 'off' === $action ) {
@@ -291,5 +228,21 @@ class Helper {
 				],
 			]
 		);
+	}
+
+	/**
+	 * Is localhost.
+	 *
+	 * @return boolean
+	 */
+	public static function is_localhost() {
+		$whitelist = [
+			'127.0.0.1', // IPv4 address.
+			'::1', // IPv6 address.
+		];
+
+		$ip = filter_input( INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP );
+
+		return in_array( $ip, $whitelist, true );
 	}
 }

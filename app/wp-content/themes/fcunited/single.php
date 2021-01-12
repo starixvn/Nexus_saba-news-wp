@@ -96,7 +96,7 @@ while ( have_posts() ) {
 	// If comments are open or we have at least one comment, load up the comment template.
 	if ( ( comments_open() || get_comments_number() ) && ( 'scroll' != $fcunited_posts_navigation || fcunited_get_theme_option( 'posts_navigation_scroll_hide_comments' ) == 0 ) ) {
 		do_action( 'fcunited_action_before_comments' );
-		comments_template();
+		//comments_template();
 		do_action( 'fcunited_action_after_comments' );
 	}
 
@@ -148,7 +148,6 @@ get_footer();
 ?>
 <script>
 	jQuery(document).ready(function(){
-// 		jQuery(".related_wrap_title").html("Có thể bạn quan tâm");
 		jQuery("#respond").find("i").hide();
 		jQuery("#respond .checked").hide();
 	});

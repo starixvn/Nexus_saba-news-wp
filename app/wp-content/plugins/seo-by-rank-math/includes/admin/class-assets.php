@@ -57,14 +57,13 @@ class Assets implements Runner {
 		wp_register_style( self::PREFIX . 'common', $css . 'common.css', null, rank_math()->version );
 		wp_register_style( self::PREFIX . 'cmb2', $css . 'cmb2.css', null, rank_math()->version );
 		wp_register_style( self::PREFIX . 'dashboard', $css . 'dashboard.css', [ 'rank-math-common' ], rank_math()->version );
-		wp_register_style( self::PREFIX . 'plugin-feedback', $css . 'feedback.css', null, rank_math()->version );
+		wp_register_style( self::PREFIX . 'dashabord-widget', $css . 'dashabord-widget.css', null, rank_math()->version );
 
 		// Scripts.
 		wp_register_script( 'validate', rank_math()->plugin_url() . 'assets/vendor/jquery.validate.min.js', [ 'jquery' ], '1.19.0', true );
 		wp_register_script( self::PREFIX . 'validate', $js . 'validate.js', [ 'jquery' ], rank_math()->version, true );
-		wp_register_script( self::PREFIX . 'common', $js . 'common.js', [ 'jquery', 'validate', 'wp-i18n' ], rank_math()->version, true );
+		wp_register_script( self::PREFIX . 'common', $js . 'common.js', [ 'jquery', 'validate', 'wp-i18n', 'lodash' ], rank_math()->version, true );
 		wp_register_script( self::PREFIX . 'dashboard', $js . 'dashboard.js', [ 'jquery', 'clipboard', 'validate' ], rank_math()->version, true );
-		wp_register_script( self::PREFIX . 'plugin-feedback', $js . 'feedback.js', [ 'jquery' ], rank_math()->version, true );
 
 		// Select2.
 		wp_register_style( 'select2-rm', $vendor . 'select2/select2.min.css', null, '4.0.6-rc.1' );
@@ -138,6 +137,10 @@ class Assets implements Runner {
 	 */
 	public function enqueue() {
 		$screen = get_current_screen();
+
+		if ( 'dashboard' === $screen->id ) {
+			wp_enqueue_style( self::PREFIX . 'dashabord-widget' );
+		}
 
 		// Our screens only.
 		if ( ! in_array( $screen->taxonomy, Helper::get_allowed_taxonomies(), true ) && ! in_array( $screen->id, $this->get_admin_screen_ids(), true ) ) {
@@ -222,11 +225,12 @@ class Assets implements Runner {
 			'rank-math_page_rank-math-404-monitor',
 			'rank-math_page_rank-math-redirections',
 			'rank-math_page_rank-math-link-builder',
-			'rank-math_page_rank-math-search-console',
+			'rank-math_page_rank-math-analytics',
 			'rank-math_page_rank-math-import-export',
 			'rank-math_page_rank-math-help',
 			'user-edit',
 			'profile',
+			'rank_math_schema',
 		];
 
 		return array_merge( $pages, Helper::get_allowed_post_types() );

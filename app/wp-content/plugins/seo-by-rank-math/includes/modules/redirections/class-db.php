@@ -88,6 +88,8 @@ class DB {
 			$table->orderBy( $args['orderby'], $args['order'] );
 		}
 
+		do_action_ref_array( 'rank_math/redirection/get_redirections_query', [ &$table, $args ] );
+
 		$redirections = $table->get( ARRAY_A );
 		$count        = $table->get_found_rows();
 
@@ -344,6 +346,13 @@ class DB {
 	public static function update_iff( $redirection ) {
 		// Update record.
 		if ( isset( $redirection['id'] ) && ! empty( $redirection['id'] ) ) {
+			self::update( $redirection );
+			return $redirection['id'];
+		}
+
+		$existing_redirection = self::match_redirections_source( maybe_serialize( $redirection['sources'] ) );
+		if ( ! empty( $existing_redirection ) && isset( $existing_redirection[0]['id'] ) ) {
+			$redirection['id'] = $existing_redirection[0]['id'];
 			self::update( $redirection );
 			return $redirection['id'];
 		}

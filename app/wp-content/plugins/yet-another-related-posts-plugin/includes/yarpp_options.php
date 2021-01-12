@@ -30,7 +30,7 @@ if (current_user_can('update_plugins')) {
     $slug = 'yet-another-related-posts-plugin';
     $plugin_name = 'Yet Another Related Posts Plugin';
     $file = basename(YARPP_DIR).'/yarpp.php';
-    if ($yarpp_version_info['result'] === 'new') {
+    if ($yarpp_version_info && isset($yarpp_version_info['result']) && $yarpp_version_info['result'] === 'new') {
 
         /* Make sure the update system is aware of this version. */
         $current = get_site_transient('update_plugins');
@@ -54,7 +54,7 @@ if (current_user_can('update_plugins')) {
         );
         echo '</p></div>';
 
-    } else if ($yarpp_version_info['result'] === 'newbeta') {
+    } else if (isset($yarpp_version_info['result']) && $yarpp_version_info['result'] === 'newbeta') {
 
         echo '<div class="updated"><p>';
         printf(
@@ -72,7 +72,7 @@ if (current_user_can('update_plugins')) {
 /* MyISAM Check */
 include 'yarpp_myisam_notice.php';
 
-/* This is not a yarpp pluging update, it is an yarpp option update */
+/* This is not a yarpp plugin update, it is an yarpp option update */
 if (isset($_POST['update_yarpp']) && check_admin_referer('update_yarpp', 'update_yarpp-nonce')) {
     $new_options = array();
     foreach ($yarpp->default_options as $option => $default) {

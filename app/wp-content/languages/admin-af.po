@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.5.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-09-13 08:56:44+0000\n"
+"PO-Revision-Date: 2020-10-30 08:56:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,215 +36,215 @@ msgstr "Die \"%1$s\"-waarde is kleiner as \"%2$s\"."
 msgid "Environment type"
 msgstr "Omgewing-tipe"
 
-#: wp-admin/about.php:162
+#: wp-admin/about.php:187
 msgid "Video: An image is added with an image block. In the block toolbar, an icon called \"Crop\" is selected, which changes the toolbar to show image resizing tools. First, zoom is used to zoom into the center of the image. Next, aspect ratio is clicked. This shows a dropdown of common aspect ratios. Square is chosen, and the image is moved within the new square outline. The crop is completed by clicking \"Apply.\""
 msgstr "Video: 'n Illustrasie word d.m.v. 'n illustrasie-blok bygevoeg. Die \"Knip\"-ikoon word gekies op die blok-nutsbalk, wat die nutsbalk aanpas om die illustrasie-grootte gereedskap te wys. Eers word vergroot gebruik om na die middel van die illustrasie te gaan. Daarna word die aansig-verhouding gekliek. Dit wys 'n keuse-lys van algemene aansig-verhoudings. Vierkant word gekies en die illustrasie word na binne die nuwe vierkant-omlyning geskuif. Die klein-knip word voltooi deur \"Pas Toe\" te kliek."
 
-#: wp-admin/about.php:154
+#: wp-admin/about.php:179
 msgid "Video: In the editor, the block inserter shows two tabs, Blocks and Patterns. The Patterns tab is selected. There are different block layouts in this tab. After scrolling through options including buttons and columns, a pattern called \"Large header with a heading\" is chosen. This adds a cover block, which is customized with a photo and the name of the WordPress 5.5 jazz musician."
 msgstr "Video: Die blok invoeg-afdeling wys twee oortjies, naamlik Blokke en Patrone. Die Patrone-oortjie is gekies. Daar is verskillende blok-uitlegte in hierdie oortjie. 'n Patroon met die naam \"Groot kopstrook met 'n opskrif\" word gekies, nadat daar verby ander patrone, insluitend knoppies en kolomme, gerol is. 'n Bedekking-blok word bygevoeg, wat aangepas is met 'n foto en die naam van die WordPress 5.5. jazz-musikant."
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:159
 msgid "Video: Installed plugin screen, which shows a new column, Automatic Updates. In this column are buttons that say \"Enable auto-updates\". When clicked, the auto-updates feature is turned on for that plugin, and the button switches to say \"Disable auto-updates\"."
 msgstr "Video: Die uitbreiding-skerm wys 'n lys van uitbreidings wat geïnstalleer is. Daar is 'n nuwe kolom met die naam 'Outomatiese Opgradeering'. Die kolom bevat knoppies met die teks 'Skakel outomatiese opgradeering aan'. Wanneer daar op 'n knoppie gekliek word, is outomatiese opgradeering aangeskakel vir daardie uitbreiding. Die knoppie se teks verander dan na 'Skakel outomatiese opgradeering af'."
 
 #. translators: %s: 'register_meta' function name.
-#: wp-admin/about.php:274
+#: wp-admin/about.php:299
 msgid "The REST API now officially supports specifying default metadata values through %s."
 msgstr "Die REST API bied nou ondersteuning om standaard meta-data waardes deur %s te spesifiseer."
 
 #. translators: %s: 'register_taxonomy' function name.
-#: wp-admin/about.php:265
+#: wp-admin/about.php:290
 msgid "Default terms can now be specified for custom taxonomies in %s."
 msgstr "Voorafopgestelde terme kan nou in %s gespesifiseer word vir nie-standaard klassifikasies."
 
-#: wp-admin/about.php:260
+#: wp-admin/about.php:285
 msgid "Custom post types associated with the category taxonomy can now opt-in to supporting the default term."
 msgstr "Nie-standaard bydrae-tipes wat met die kategorie klassifikasie geassosieer word kan ook nou kies om die voorafopgestelde term te ondersteun."
 
-#: wp-admin/about.php:109
+#: wp-admin/about.php:134
 msgctxt "sitemap"
 msgid "Search"
 msgstr "Soek"
 
-#: wp-admin/about.php:288
+#: wp-admin/about.php:313
 msgid "Check the Field Guide for more!"
 msgstr "Verwys na die Veldgids vir nog inligting!"
 
-#: wp-admin/about.php:279
+#: wp-admin/about.php:304
 msgid "You will find updated versions of these bundled libraries: SimplePie, Twemoji, Masonry, imagesLoaded, getID3, Moment.js, and clipboard.js."
 msgstr "Opgedateerde weergawes van die volgende gebondelde-biblioteke word ingesluit: SimplePie, Twemoji, Masonry, imagesLoaded, getID3, Moment.js, en clipboard.js."
 
 #. translators: %s: 'wp_opcache_invalidate' function name.
-#: wp-admin/about.php:255
+#: wp-admin/about.php:280
 msgid "Sites that use PHP’s OPcache will see more reliable cache invalidation, thanks to the new %s function during updates (including to plugins and themes)."
 msgstr "Webwerwe wat van PHP se OPcache gebruik maak sal meer betroubare kas-vervanging ondervind, danksy die nuwe %s funksie gedurende opgradeerings (insluitend uitbreidings en temas)."
 
 #. translators: %s: 'redirect_guess_404_permalink' function name.
-#: wp-admin/about.php:246
+#: wp-admin/about.php:271
 msgid "Now get more fine-grained control of %s."
 msgstr "Verkry beheer oor meer spesifieke aspekte van %s."
 
-#: wp-admin/about.php:241
+#: wp-admin/about.php:266
 msgid "The PHPMailer library just got a major update, going from version 5.2.27 to 6.1.6."
 msgstr "Die PHPMailer-biblioteek het sopas beduidende veranderinge ondergaan vanaf weergawe 5.2.27 na 6.1.6."
 
-#: wp-admin/about.php:239
+#: wp-admin/about.php:264
 msgid "More changes for developers"
 msgstr "Nog veranderinge vir ontwikkelaars"
 
 #. translators: %1$s: 'get_header' function name, %2$s: 'get_template_part'
 #. function name, %3$s: '$args' variable name.
-#: wp-admin/about.php:227
+#: wp-admin/about.php:252
 msgid "The template loading functions (%1$s, %2$s, etc.) have a new %3$s argument. So now you can pass an entire array’s worth of data to those templates."
 msgstr "Die sjabloon laai-funksies (%1$s, %2$s, ens.) bied nou 'n nuwe %3$s argument. So dit is nou moontlik om 'n hele reeks se data na daardie sjablone oor te plaas."
 
-#: wp-admin/about.php:222
+#: wp-admin/about.php:247
 msgid "Passing data to template files"
 msgstr "Dra data na sjabloon-lêers oor"
 
 #. translators: %s: 'wp_get_environment_type' function name.
-#: wp-admin/about.php:215
+#: wp-admin/about.php:240
 msgid "WordPress now has a standardized way to define a site’s environment type (staging, production, etc). Retrieve that type with %s and execute only the appropriate code."
 msgstr "WordPress het nou 'n manier om 'n webwerf se omgewingstipe (steier-webwerf, produksie, ens.) te definieer. Onttrek daardie tipe met %s en voer slegs die toepaslike kode uit."
 
-#: wp-admin/about.php:210
+#: wp-admin/about.php:235
 msgid "Defining environments"
 msgstr "Definieer omgewings"
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:229
 msgid "The Dashicons library has received its final update in 5.5. It adds 39 block editor icons along with 26 others."
 msgstr "Die Dashikone-biblioteek is in 5.5. vir die laaste keer opgedateer. Dit voeg 39 blok-skryfpaneel en 26 ander ikone by."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:228
 msgid "Dashicons"
 msgstr "Dashikone"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:225
 msgid "The addition of block types endpoints means that JavaScript apps (like the block editor) can retrieve definitions for any blocks registered on the server."
 msgstr "Die nuwe blok-tipe eindpunte beteken dat JavaScript-toepassings (soos die blok-skryfpaneel) definisies vir enige blokke wat op die bediener geregistreer is kan verkry."
 
-#: wp-admin/about.php:199
+#: wp-admin/about.php:224
 msgid "Server-side registered blocks in the REST API"
 msgstr "Bediener-kant geregistreerde blokke in the REST API"
 
-#: wp-admin/about.php:196
+#: wp-admin/about.php:221
 msgid "5.5 also brings a big box of changes just for developers."
 msgstr "5.5. bring hope veranderinge spesiaal vir ontwikkelaars."
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:212
 msgid "You can also move meta boxes with the keyboard, and edit images in WordPress with your assistive device, as it can read you the instructions in the image editor."
 msgstr "Jy kan ook meta-bokse met jou sleutelbord skuif en illustrasies in WordPress wysig met jou ondersteunende toestel, aangesien dit vir jou die instruksies in die illustrasie wysiging-paneel kan lees."
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:211
 msgid "Now you can copy links in media screens and modal dialogs with a button, instead of trying to highlight a line of text."
 msgstr "Jy kan nou skakels in media-skerms en modale dialoë met 'n knoppie dupliseer, i.p.v. om dit te kies en uit te lig."
 
-#: wp-admin/about.php:185
+#: wp-admin/about.php:210
 msgid "Every release adds improvements to the accessible publishing experience, and that remains true for WordPress 5.5."
 msgstr "Elke vrystelling verbeter die toeganklike-publikasie ondervinding. Dit bly waar vir WordPress 5.5."
 
-#: wp-admin/about.php:184
+#: wp-admin/about.php:209
 msgid "Accessibility"
 msgstr "Toeganklikheid"
 
-#: wp-admin/about.php:176
+#: wp-admin/about.php:201
 msgid "The highlights above are a tiny fraction of the new block editor features you’ve just installed. Open the block editor and enjoy!"
 msgstr "Die hoogtepunte hierbo is maar slegs 'n klein deeltjie van die nuwe blok-skryfpaneel kenmerke wat jy sopas geïnstalleer het. Maak die blok-skryfpaneel oop en geniet dit!"
 
-#: wp-admin/about.php:175
+#: wp-admin/about.php:200
 msgid "And so much more."
 msgstr "En soveel meer."
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:198
 msgid "Now it’s easier than ever to find the block you need. The new block directory is built right into the block editor, so you can install new block types to your site without ever leaving the editor."
 msgstr "Dit is nou makliker as ooit tevore om die regte blok vir jou behoeftes op te spoor. Die nuwe blok-bibilioteek is in die blok-wysiger ingebou, wat dit moontlik maak om nuwe soorte blokke tot jou webwerf toe te voeg sonder om ooit die wysiger te verlaat."
 
-#: wp-admin/about.php:172
+#: wp-admin/about.php:197
 msgid "The New Block Directory"
 msgstr "Die Nuwe Blok-biblioteek"
 
-#: wp-admin/about.php:168
+#: wp-admin/about.php:193
 msgid "You will also find block patterns in a wide variety of plugins and themes, with more added all the time. Pick any of them from a single place — just click and go!"
 msgstr "Jy sal ook blok-patrone in 'n wye verskeidenheid van uitbreidings en temas vind en meer word gereeld bygevoeg. Kies enige daarvan vanaf 'n enkele plek. Kliek net en gaan!"
 
-#: wp-admin/about.php:167
+#: wp-admin/about.php:192
 msgid "New block patterns make it simple and fun to create complex, beautiful layouts, using combinations of text and media that you can mix and match to fit your story."
 msgstr "Nuwe blok-patrone maak dit maklik en lekker om kombinasies van teks en media te meng-en-pas in 'n pragtige, ingewikkelde uitleg wat jou storie pas."
 
-#: wp-admin/about.php:166
+#: wp-admin/about.php:191
 msgid "Block patterns"
 msgstr "Blok patrone"
 
-#: wp-admin/about.php:170
+#: wp-admin/about.php:195
 msgid "Crop, rotate, and zoom your photos right from the image block. If you spend a lot of time on images, this could save you hours!"
 msgstr "Knip, draai en vergroot jou fotos vanuit die illustrasie-blok self. As jy baie tyd aan illustrasies spandeer, kan dit jou ure spaar!"
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:194
 msgid "Inline image editing"
 msgstr "Wysig illustrasies in-lyn"
 
-#: wp-admin/about.php:144
+#: wp-admin/about.php:169
 msgid "Once again, the latest WordPress release packs a long list of exciting new features for the block editor. For example:"
 msgstr "Weereens sluit die mees onlangse WordPress vrystelling-pakkie 'n lang lys van opwindende nuwe kenmerke vir die blok-wysiger in. Byvoorbeeld:"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:168
 msgid "Highlights from the block editor"
 msgstr "Hoogtepunte van die blok-wysiger"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:151
 msgid "If updating plugins and themes manually is your thing, now that’s easier too — just upload a ZIP file."
 msgstr "As jy graag self jou uitbreidings en temas opdateer is dit ook nou makliker. Laai eenvoudig 'n .zip lêer op."
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:150
 msgid "Update by uploading ZIP files"
 msgstr "Gradeer op deur .zip lêers op te laai"
 
-#: wp-admin/about.php:124
+#: wp-admin/about.php:149
 msgid "You can also turn auto-updates on or off for each plugin or theme you have installed — all on the same screens you’ve always used."
 msgstr "Jy kan ook outomatiese opgradeering aan of afskakel vir elke uitbreiding of tema wat jy geïnstalleer het — vanaf dieselfde skerms wat jy nog altyd gebruik."
 
-#: wp-admin/about.php:123
+#: wp-admin/about.php:148
 msgid "Now you can set plugins and themes to update automatically — or not! — in the WordPress admin. So you always know your site is running the latest code available."
 msgstr "Nou kan jy uitbreidings en temas stel om outomaties op te gradeer — of nie! — vanuit WordPress se administrasie-skerms. So kan jy verseker wees dat jou webwerf die nuutste kode wat beskikbaar is gebruik."
 
-#: wp-admin/about.php:122
+#: wp-admin/about.php:147
 msgid "Auto-updates for Plugins and Themes"
 msgstr "Die outomatiese opgradeering van uitbreidings en temas"
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:138
 msgid "So more people will find your site sooner, giving you more time to engage, retain and convert them to subscribers, customers or whatever fits your definition of success."
 msgstr "So meer mense sal jou webwerf gouer vind. Dit gee jou meer tyd om hul te betrek, te behou en om te skakel in intekenaars, klante, of watookal jou definisie van sukses pas."
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:137
 msgid "Now, by default, WordPress 5.5 includes an XML sitemap that helps search engines discover your most important pages from the very minute you go live."
 msgstr "WordPress 5.5. kom nou standaard met 'n XML webwerf-kaart, wat help dat soekenjins jou belangrikste bladsye onmiddellik kan opspoor."
 
-#: wp-admin/about.php:111
+#: wp-admin/about.php:136
 msgid "WordPress sites work well with search engines."
 msgstr "WordPress werk goed met soekenjins."
 
-#: wp-admin/about.php:110
+#: wp-admin/about.php:135
 msgid "Say hello to your new sitemap."
 msgstr "Groet jou nuwe webwerf-kaart."
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:128
 msgid "On mobile, lazy loading can also keep browsers from loading files meant for other devices. That can save your readers money on data — and help preserve battery life."
 msgstr "Lui-laai kan ook verhoed dat webblaaiers lêers op mobiele toestelle aflaai wat vir ander toestelle bedoel is. Dit kan help jou gebruikers help om op data — asook battery-lewe — te bespaar."
 
-#: wp-admin/about.php:102
+#: wp-admin/about.php:127
 msgid "In WordPress 5.5, images wait to load until they’re just about to scroll into view. The technical term is ‘lazy loading’."
 msgstr "In WordPress 5.5. wag illustrasies tot net voor hul sigbaar word om te laai. Die tegniese term hiervoor is 'lui-laai'."
 
-#: wp-admin/about.php:101
+#: wp-admin/about.php:126
 msgid "Images give your story a lot of impact, but they can sometimes make your site seem slow."
 msgstr "Illustrasies verhoog die impak van jou storie, maar dit kan soms veroorsaak dat jou webwerf stadig voorkom."
 
-#: wp-admin/about.php:100
+#: wp-admin/about.php:125
 msgid "Posts and pages feel faster, thanks to lazy-loaded images."
 msgstr "Bydraes en bladsye voel vinniger, danksy die lui-laai van illustrasies."
 
-#: wp-admin/about.php:99
+#: wp-admin/about.php:124
 msgid "Speed"
 msgstr "Spoed"
 
@@ -402,10 +402,10 @@ msgstr "Gradeer %s nou op"
 
 #. translators: 1: Plugin name, 2: Version number.
 #. translators: 1: Theme name, 2: Version number.
-#: wp-admin/includes/class-wp-automatic-updater.php:1066
-#: wp-admin/includes/class-wp-automatic-updater.php:1084
-#: wp-admin/includes/class-wp-automatic-updater.php:1107
-#: wp-admin/includes/class-wp-automatic-updater.php:1125
+#: wp-admin/includes/class-wp-automatic-updater.php:1070
+#: wp-admin/includes/class-wp-automatic-updater.php:1088
+#: wp-admin/includes/class-wp-automatic-updater.php:1111
+#: wp-admin/includes/class-wp-automatic-updater.php:1129
 msgid "- %1$s version %2$s"
 msgstr "- %1$s weergawe %2$s"
 
@@ -603,92 +603,92 @@ msgid "Error: You can&#8217;t reply to a comment on a draft post."
 msgstr "Fout: Dit is nie moontlik om op 'n opmerking te reaggeer wat verband hou met 'n konsep-bydrae nie."
 
 #. translators: %s: Themes screen URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1149
+#: wp-admin/includes/class-wp-automatic-updater.php:1153
 msgid "To manage themes on your site, visit the Themes page: %s"
 msgstr "Besoek die tema-blad om die temas op jou webwerf te bestuur: %s"
 
 #. translators: %s: Plugins screen URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1140
+#: wp-admin/includes/class-wp-automatic-updater.php:1144
 msgid "To manage plugins on your site, visit the Plugins page: %s"
 msgstr "Besoek die uitbreiding-blad om die uitbreidings op jou webwerf te bestuur: %s"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1120
+#: wp-admin/includes/class-wp-automatic-updater.php:1124
 msgid "These themes are now up to date:"
 msgstr "Die volgende temas is nou op datum:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1102
+#: wp-admin/includes/class-wp-automatic-updater.php:1106
 msgid "These plugins are now up to date:"
 msgstr "Die volgende uitbreidings is nou op datum:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1079
+#: wp-admin/includes/class-wp-automatic-updater.php:1083
 msgid "These themes failed to update:"
 msgstr "Die volgende temas kon nie opgedateer word nie:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1061
+#: wp-admin/includes/class-wp-automatic-updater.php:1065
 msgid "These plugins failed to update:"
 msgstr "Die volgende uitbreidings kon nie opgedateer word nie:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1056
+#: wp-admin/includes/class-wp-automatic-updater.php:1060
 msgid "Please check your site now. It’s possible that everything is working. If there are updates available, you should update."
 msgstr "Besoek asseblief nou jou webwerf. Dit is moontlik dat alles werk. Indien daar nuwe weergawes beskikbaar is, behoort jy op te gradeer."
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1046
+#: wp-admin/includes/class-wp-automatic-updater.php:1050
 msgid "Howdy! Themes failed to update on your site at %s."
 msgstr "Dagsê! Die temas op jou %s webwerf kon nie opgradeer nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1043
+#: wp-admin/includes/class-wp-automatic-updater.php:1047
 msgid "[%s] Some themes have failed to update"
 msgstr "[%s] Sommige temas kon nie opgedateer word nie"
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1038
+#: wp-admin/includes/class-wp-automatic-updater.php:1042
 msgid "Howdy! Plugins failed to update on your site at %s."
 msgstr "Dagsê! Die uitbreidings op jou %s webwerf kon nie opgradeer nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1035
+#: wp-admin/includes/class-wp-automatic-updater.php:1039
 msgid "[%s] Some plugins have failed to update"
 msgstr "[%s] Sommige uitbreidings kon nie opgradeer nie"
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1030
+#: wp-admin/includes/class-wp-automatic-updater.php:1034
 msgid "Howdy! Plugins and themes failed to update on your site at %s."
 msgstr "Dagsê! Uitbreidings en temas op jou %s webwerf kon nie opgradeer nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1027
+#: wp-admin/includes/class-wp-automatic-updater.php:1031
 msgid "[%s] Some plugins and themes have failed to update"
 msgstr "[%s] Sommige uitbreidings en temas kon nie opgradeer nie"
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1017
+#: wp-admin/includes/class-wp-automatic-updater.php:1021
 msgid "Howdy! Some themes have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
 msgstr "Dagsê! Sommige temas op jou %s webtuiste was outomaties opgegradeer tot hul nuutste weergawes. Jy hoef nie enige verdere aksie te neem nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1014
+#: wp-admin/includes/class-wp-automatic-updater.php:1018
 msgid "[%s] Some themes were automatically updated"
 msgstr "[%s] Sommige temas was outomaties opgegradeer"
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1009
+#: wp-admin/includes/class-wp-automatic-updater.php:1013
 msgid "Howdy! Some plugins have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
 msgstr "Dagsê! Sommige uitbreidings op jou %s webtuiste was outomaties opgegradeer tot hul nuutste weergawes. Jy hoef nie enige verdere aksie te neem nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1006
+#: wp-admin/includes/class-wp-automatic-updater.php:1010
 msgid "[%s] Some plugins were automatically updated"
 msgstr "[%s] Sommige uitbreidings was outomaties opgegradeer"
 
 #. translators: %s: Home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1001
+#: wp-admin/includes/class-wp-automatic-updater.php:1005
 msgid "Howdy! Some plugins and themes have automatically updated to their latest versions on your site at %s. No further action is needed on your part."
 msgstr "Dagsê! Sommige uitbreidings en temas op jou %s webtuiste was outomaties opgegradeer tot hul nuutste weergawes. Jy hoef nie enige verdere aksie te neem nie."
 
 #. translators: %s: Site title.
-#: wp-admin/includes/class-wp-automatic-updater.php:998
+#: wp-admin/includes/class-wp-automatic-updater.php:1002
 msgid "[%s] Some plugins and themes have automatically updated"
 msgstr "[%s] Sommige uitbreidings en temas was outomaties opgegradeer"
 
@@ -705,7 +705,7 @@ msgstr "Skuif die %s boks boëntoe"
 #: wp-admin/includes/class-wp-comments-list-table.php:368
 msgctxt "comment"
 msgid "Not spam"
-msgstr "Nie pla-pos nie"
+msgstr "Nie snert nie"
 
 #: wp-admin/includes/class-wp-site-health.php:2114
 msgid "PHP Sessions"
@@ -1076,7 +1076,7 @@ msgid "Unable to write to %s file."
 msgstr "Kon nie na %s leêr toe skryf nie. "
 
 #. translators: %s: WordPress 5.5 Field Guide link.
-#: wp-admin/about.php:293
+#: wp-admin/about.php:318
 msgid "There’s a lot more for developers to love in WordPress 5.5. To discover more and learn how to make these changes shine on your sites, themes, plugins and more, check the <a href=\"%s\">WordPress 5.5 Field Guide.</a>"
 msgstr "Daar is baie meer vir ontwikkelaars om te waardeer in WordPress 5.5. Om meer te ontdek en te leer hoe om die meeste uit hierdie veranderinge te maak op jou webwerwe, met jou temas, uitbreidings en meer, verwys na die <a href=\"%s\">WordPress 5.5 Veldgids.</a>"
 
@@ -1094,7 +1094,7 @@ msgstr "Fout:"
 #: wp-admin/network/menu.php:81
 msgctxt "theme"
 msgid "Add New"
-msgstr "Voeg nuwe by"
+msgstr "Voeg by"
 
 #. translators: %s: web.config
 #. translators: %s: .htaccess
@@ -1107,30 +1107,30 @@ msgid "This localized version contains both the translation and various other lo
 msgstr "Hierdie gelokaliseerde weergawe bevat beide die vertaling en verskeie ander lokalisasieverbeteringe."
 
 #. translators: 1: Number of issues. 2: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:1851
+#: wp-admin/includes/dashboard.php:1853
 msgid "Take a look at the <strong>%1$d item</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgid_plural "Take a look at the <strong>%1$d items</strong> on the <a href=\"%2$s\">Site Health screen</a>."
 msgstr[0] "Kyk bietjie na die <strong>%1$d item</strong> op die <a href=\"%2$s\">Webbladgesondheidskerm</a>."
 msgstr[1] "Kyk bietjie na die <strong>%1$d items</strong> op die <a href=\"%2$s\">Webbladgesondheidskerm</a>."
 
-#: wp-admin/includes/dashboard.php:1841
+#: wp-admin/includes/dashboard.php:1843
 msgid "Your site&#8217;s health is looking good, but there are still some things you can do to improve its performance and security."
 msgstr "Jou webblad se gesondheid lyk goed, maar daar is nog 'n paar goed wat jy kan doen om die werkverrigting en sekuriteit te verbeter."
 
-#: wp-admin/includes/dashboard.php:1839
+#: wp-admin/includes/dashboard.php:1841
 msgid "Great job! Your site currently passes all site health checks."
 msgstr "Goeie werk! Jou webblad slaag tans alle webbladgesondheidskontroles."
 
-#: wp-admin/includes/dashboard.php:1837
+#: wp-admin/includes/dashboard.php:1839
 msgid "Your site has critical issues that should be addressed as soon as possible to improve its performance and security."
 msgstr "Jou webblad het kritieke kwessies wat so gou moontlik aangespreek moet word om die werkverrigting en sekuriteit te verbeter."
 
 #. translators: %s: URL to Site Health screen.
-#: wp-admin/includes/dashboard.php:1829
+#: wp-admin/includes/dashboard.php:1831
 msgid "Site health checks will automatically run periodically to gather information about your site. You can also <a href=\"%s\">visit the Site Health screen</a> to gather information about your site now."
 msgstr "Webbladgesondheidskontroles sal van tyd to tyd outomaties plaasvind om inligting oor jou webblad te versamel. Jy can ook die <a href=\"%s\">Webbladgesondheidskerm besoek</a> om nou inligting oor jou webblad te versamel."
 
-#: wp-admin/includes/dashboard.php:1817
+#: wp-admin/includes/dashboard.php:1819
 msgid "No information yet&hellip;"
 msgstr "Nog geen inligting nie..."
 
@@ -1184,35 +1184,44 @@ msgstr "Geen medialêers in die Asblik gevind nie."
 
 #. translators: Date string for upcoming events. 1: Starting month, 2: Starting
 #. day, 3: Ending month, 4: Ending day, 5: Year.
-#: wp-admin/includes/class-wp-community-events.php:405
+#. translators: Date string for upcoming events. 1: Starting month, 2: Starting
+#. day, 3: Ending month, 4: Ending day, 5: Ending year.
+#: wp-admin/includes/class-wp-community-events.php:422
+#: wp-admin/js/dashboard.js:750
 msgid "%1$s %2$d – %3$s %4$d, %5$d"
 msgstr "%1$s %2$d – %3$s %4$d, %5$d"
 
 #. translators: Upcoming events year format. See https://www.php.net/date
-#: wp-admin/includes/class-wp-community-events.php:400
-#: wp-admin/includes/class-wp-community-events.php:410
+#: wp-admin/includes/class-wp-community-events.php:417
+#: wp-admin/includes/class-wp-community-events.php:427
+#: wp-admin/js/dashboard.js:763 wp-admin/js/dashboard.js:774
 msgctxt "upcoming events year format"
 msgid "Y"
 msgstr "Y"
 
 #. translators: Upcoming events day format. See https://www.php.net/date
-#: wp-admin/includes/class-wp-community-events.php:397
-#: wp-admin/includes/class-wp-community-events.php:398
-#: wp-admin/includes/class-wp-community-events.php:407
-#: wp-admin/includes/class-wp-community-events.php:409
+#: wp-admin/includes/class-wp-community-events.php:414
+#: wp-admin/includes/class-wp-community-events.php:415
+#: wp-admin/includes/class-wp-community-events.php:424
+#: wp-admin/includes/class-wp-community-events.php:426
+#: wp-admin/js/dashboard.js:761 wp-admin/js/dashboard.js:762
+#: wp-admin/js/dashboard.js:771 wp-admin/js/dashboard.js:773
 msgctxt "upcoming events day format"
 msgid "j"
 msgstr "j"
 
 #. translators: Date string for upcoming events. 1: Month, 2: Starting day, 3:
 #. Ending day, 4: Year.
-#: wp-admin/includes/class-wp-community-events.php:394
+#: wp-admin/includes/class-wp-community-events.php:411
+#: wp-admin/js/dashboard.js:748
 msgid "%1$s %2$d–%3$d, %4$d"
 msgstr "%1$s %2$d–%3$d, %4$d"
 
 #. translators: Upcoming events month format. See https://www.php.net/date
-#: wp-admin/includes/class-wp-community-events.php:388
-#: wp-admin/includes/class-wp-community-events.php:389
+#: wp-admin/includes/class-wp-community-events.php:405
+#: wp-admin/includes/class-wp-community-events.php:406
+#: wp-admin/js/dashboard.js:760 wp-admin/js/dashboard.js:770
+#: wp-admin/js/dashboard.js:772
 msgctxt "upcoming events month format"
 msgid "F"
 msgstr "F"
@@ -1394,7 +1403,7 @@ msgstr "<a href=\"https://wordpress.org/support/article/users-add-new-screen/\">
 msgid "This page can show you every detail about the configuration of your WordPress website. For any improvements that could be made, see the <a href=\"%s\">Site Health Status</a> page."
 msgstr "Hierdie bladsy kan jou elke besonderheid oor die opset van jou WordPress webblad wys. Vir enige verbeteringe wat aangebring kan word, sien die <a href=\"%s\">Bladgesondheidstatus</a> blad."
 
-#: wp-admin/includes/dashboard.php:1819 wp-admin/site-health-info.php:47
+#: wp-admin/includes/dashboard.php:1821 wp-admin/site-health-info.php:47
 #: wp-admin/site-health.php:52
 msgid "Results are still loading&hellip;"
 msgstr "Resultate laai nog&hellip;"
@@ -1467,7 +1476,7 @@ msgstr "Kies óf 'n stad in dieselfde tydsone as jy, óf 'n %s (Koödineerde Uni
 
 #: wp-admin/options-general.php:111
 msgid "Administration Email Address"
-msgstr "Administrasie Eposadres"
+msgstr "Administratiewe e-pos adres"
 
 #: wp-admin/options-general.php:100
 msgid "https://wordpress.org/support/article/giving-wordpress-its-own-directory/"
@@ -1477,7 +1486,7 @@ msgstr "https://wordpress.org/support/article/giving-wordpress-its-own-directory
 msgid "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Documentation on General Settings</a>"
 msgstr "<a href=\"https://wordpress.org/support/article/settings-general-screen/\">Dokumentasie oor Algemene Instellings</a>"
 
-#: wp-admin/includes/dashboard.php:1930
+#: wp-admin/includes/dashboard.php:1932
 msgid "https://wordpress.org/support/article/first-steps-with-wordpress/"
 msgstr "https://wordpress.org/support/article/first-steps-with-wordpress/"
 
@@ -1518,7 +1527,7 @@ msgstr "Privaatheidsbeleidsblad"
 #: wp-admin/includes/template.php:2204
 msgctxt "page label"
 msgid "Posts Page"
-msgstr "Artikels bladsy"
+msgstr "Bydrae-blad"
 
 #: wp-admin/includes/template.php:2200
 msgctxt "page label"
@@ -1528,7 +1537,7 @@ msgstr "Voorblad"
 #: wp-admin/includes/template.php:2191
 msgctxt "post status"
 msgid "Sticky"
-msgstr "Drywend"
+msgstr "Geplak"
 
 #: wp-admin/includes/template.php:2183
 msgctxt "post status"
@@ -1561,7 +1570,7 @@ msgstr "PHP is die programmeringstaal wat gebruik is om WordPress to bou en onde
 #. translators: %s: The current version of WordPress installed on this site.
 #: wp-admin/includes/class-wp-site-health.php:319
 msgid "Your version of WordPress (%s) is up to date"
-msgstr "Jou weergawe van WordPress (%s) is op datum"
+msgstr "Jou WordPress-weergawe (%s) is op datum"
 
 #: wp-admin/includes/ms.php:1158 wp-admin/network/site-new.php:32
 #: wp-admin/network/sites.php:45
@@ -1708,7 +1717,7 @@ msgstr "[%s] Vee My Webblad Uit"
 
 #: wp-admin/options-discussion.php:58
 msgid "Allow people to submit comments on new posts"
-msgstr "Laat mense toe om kommentaar te los op nuwe artikels"
+msgstr "Laat opmerkings op nuwe bydraes toe"
 
 #: wp-admin/options-discussion.php:46 wp-admin/options-discussion.php:47
 msgid "Default post settings"
@@ -1721,31 +1730,31 @@ msgstr "<a href=\"%s\">Jy kan jou profielfoto op Gravatar verander</a>."
 
 #: wp-admin/plugins.php:704
 msgid "Plugin resumed."
-msgstr "Plugin hervat."
+msgstr "Die uitbreiding is hervat."
 
 #: wp-admin/plugins.php:700
 msgid "Selected plugins deactivated."
-msgstr "Gekose plugins afgeskakel."
+msgstr "Die gekose uitbreidings is gedeaktiveer."
 
 #: wp-admin/plugins.php:698
 msgid "Plugin deactivated."
-msgstr "Plugin afgeskakel."
+msgstr "Die uitbreiding is gedeaktiveer."
 
 #: wp-admin/plugins.php:696
 msgid "Selected plugins activated."
-msgstr "Gekose plugins aangeskakel."
+msgstr "Die gekose uitbreidings is geaktiveer."
 
 #: wp-admin/plugins.php:694
 msgid "Plugin activated."
-msgstr "Plugin aangeskakel."
+msgstr "Die uitbreiding is geaktiveer."
 
 #: wp-admin/plugins.php:687
 msgid "The selected plugins have been deleted."
-msgstr "Die gekose plugins is uitgewis."
+msgstr "Die gekose uitbreidings is uitgewis."
 
 #: wp-admin/plugins.php:685
 msgid "The selected plugin has been deleted."
-msgstr "Die gekose plugin is uitgewis."
+msgstr "Die gekose uitbreiding is uitgewis."
 
 #. translators: 1: Plugin file, 2: Error message.
 #: wp-admin/plugins.php:611
@@ -1853,7 +1862,7 @@ msgstr "Die SQL bediener is 'n vereiste stuk sagteware vir die databasis wat Wor
 msgid "PHP modules perform most of the tasks on the server that make your site run. Any changes to these must be made by your server administrator."
 msgstr "PHP modules voer meeste van die take op die bediener uit wat jou webblad laat werk. Enige veranderinge aan hierdie moet deur jou bedieneradministrateur gedoen word."
 
-#: wp-admin/includes/dashboard.php:1747
+#: wp-admin/includes/dashboard.php:1749
 msgid "PHP is the programming language we use to build and maintain WordPress. Newer versions of PHP are both faster and more secure, so updating will have a positive effect on your site&#8217;s performance."
 msgstr "PHP is die programmeringstaal wat ons gebruik om WordPress te bou en te onderhou. Nuwer weergawes van PHP is beide vinniger en meer sekuur, so bywerking sal 'n positiewe effek op jou webblad se werkverrigting hê."
 
@@ -1863,15 +1872,15 @@ msgstr "Bestuur jou temas"
 
 #: wp-admin/includes/class-wp-site-health.php:459
 msgid "Manage inactive plugins"
-msgstr "Bestuur onaktiewe plugins"
+msgstr "Bestuur onaktiewe uitbreidings"
 
 #: wp-admin/includes/class-wp-site-health.php:410
 msgid "Update your plugins"
-msgstr "Dateer jou plugins op"
+msgstr "Gradeer jou uitbreidings op"
 
 #: wp-admin/includes/class-wp-site-health.php:359
 msgid "Manage your plugins"
-msgstr "Bestuur jou plugins"
+msgstr "Bestuur jou uitbreidings"
 
 #: wp-admin/includes/class-wp-privacy-policy-content.php:332
 msgid "View Privacy Policy Guide."
@@ -1888,13 +1897,13 @@ msgstr "Die waarde, %1$s, is óf deur %2$s aangeskakel of tot jou opsetlêer byg
 
 #. translators: Background update finished notification email subject. %s: Site
 #. title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1286
+#: wp-admin/includes/class-wp-automatic-updater.php:1290
 msgid "[%s] Background Update Finished"
 msgstr "[%s] Bywerking in die agtergrond voltooi"
 
 #. translators: Background update failed notification email subject. %s: Site
 #. title.
-#: wp-admin/includes/class-wp-automatic-updater.php:1283
+#: wp-admin/includes/class-wp-automatic-updater.php:1287
 msgid "[%s] Background Update Failed"
 msgstr "[%s] Bywerking in die agtergrond het misluk"
 
@@ -1905,7 +1914,7 @@ msgstr "Kon nie bevestig dat die %s filter beskikbaar is nie."
 
 #: wp-admin/plugins.php:635
 msgid "Plugin could not be resumed because it triggered a <strong>fatal error</strong>."
-msgstr "Plugin kon nie hervat word nie, want dit het 'n <strong>fatale fout</strong> veroorsaak."
+msgstr "Die uitbreiding kon nie hervat word nie, want dit het 'n <strong>noodlottige fout</strong> veroorsaak."
 
 #: wp-admin/includes/class-wp-site-health.php:604
 #: wp-admin/includes/class-wp-site-health.php:650
@@ -1946,7 +1955,7 @@ msgstr "Jammer, jy het nie toegang tot die ontfoutingsinligting nie."
 
 #: wp-admin/site-health-info.php:12 wp-admin/site-health-info.php:84
 msgid "Site Health Info"
-msgstr "Webbladgesondheidsinligting"
+msgstr "Webwerf Gesondheid-inligting"
 
 #: wp-admin/update-core.php:377 wp-admin/update-core.php:556
 msgid "This update doesn&#8217;t work with your version of PHP."
@@ -2073,8 +2082,8 @@ msgstr "Onaktiewe plugins is maklike teikens vir aanvallers. As jy nie 'n plugin
 #: wp-admin/includes/class-wp-site-health.php:446
 msgid "Your site has %d inactive plugin."
 msgid_plural "Your site has %d inactive plugins."
-msgstr[0] "Jou webblad het %d onaktiewe plugin."
-msgstr[1] "Jou webblad het %d onaktiewe plugins."
+msgstr[0] "Jou webwerf het %d onaktiewe uitbreiding."
+msgstr[1] "Jou webwerf het %d onaktiewe uitbreidings."
 
 #: wp-admin/includes/class-wp-site-health.php:309
 #: wp-admin/includes/class-wp-site-health.php:349
@@ -2086,7 +2095,7 @@ msgstr[1] "Jou webblad het %d onaktiewe plugins."
 #: wp-admin/includes/class-wp-site-health.php:1497
 #: wp-admin/includes/class-wp-site-health.php:1560
 #: wp-admin/includes/class-wp-site-health.php:1679
-#: wp-admin/includes/class-wp-site-health.php:1749 wp-admin/about.php:121
+#: wp-admin/includes/class-wp-site-health.php:1749 wp-admin/about.php:146
 msgid "Security"
 msgstr "Sekuriteit"
 
@@ -2171,7 +2180,7 @@ msgstr "Die webbladgesondheidsondersoek wys kritieke inligting oor jou WordPress
 #: wp-admin/includes/dashboard.php:56 wp-admin/site-health.php:17
 #: wp-admin/site-health.php:96
 msgid "Site Health Status"
-msgstr "Webbladgesondheidstatus"
+msgstr "Webwerf-gesondheidtoestand"
 
 #: wp-admin/site-health.php:90
 msgid "Everything is running smoothly here."
@@ -2553,7 +2562,7 @@ msgstr "Ten einde jou webblad se sekuriteit te verbeter, beveel ons aan dat jy a
 
 #: wp-admin/includes/class-wp-site-health.php:440
 msgid "You should remove inactive plugins"
-msgstr "Jy moet onaktiewe plugins verwyder"
+msgstr "Onaktiewe uitbreidings behoort verwyder te word"
 
 #. translators: %d: The number of themes.
 #: wp-admin/includes/class-wp-site-health.php:586
@@ -2579,7 +2588,7 @@ msgstr "Temas bepaal hoe jou webblad lyk. Dit is belangrik om hulle opdatum te h
 
 #: wp-admin/includes/class-wp-site-health.php:479
 msgid "Your themes are all up to date"
-msgstr "Jou temas is almal op datum"
+msgstr "Al jou temas is op datum"
 
 #. translators: %d: The number of active plugins.
 #: wp-admin/includes/class-wp-site-health.php:423
@@ -2605,7 +2614,7 @@ msgstr "Plugins brei jou webblad se funksionaliteit uit, met goed soos kontakvor
 
 #: wp-admin/includes/class-wp-site-health.php:346
 msgid "Your plugins are all up to date"
-msgstr "Jou plugins is almal op datum"
+msgstr "Al jou uitbreidings is op datum"
 
 #: wp-admin/includes/class-wp-site-health.php:325
 msgid "You are currently running the latest version of WordPress available, keep it up!"
@@ -2747,7 +2756,7 @@ msgstr "Die moet-gebruik plugins lêer"
 
 #: wp-admin/includes/class-wp-debug-data.php:1099
 msgid "Theme features"
-msgstr "Temafunksies"
+msgstr "Tema se kenmerke"
 
 #: wp-admin/includes/class-wp-debug-data.php:1094
 #: wp-admin/includes/class-theme-installer-skin.php:244
@@ -3079,15 +3088,15 @@ msgstr "Mediahantering"
 
 #: wp-admin/includes/class-wp-debug-data.php:178
 msgid "Inactive Plugins"
-msgstr "Onaktiewe Plugins"
+msgstr "Onaktiewe Uitbreidings"
 
 #: wp-admin/includes/class-wp-debug-data.php:172
 msgid "Active Plugins"
-msgstr "Aktiewe Plugins"
+msgstr "Aktiewe Uitbreidings"
 
 #: wp-admin/includes/class-wp-debug-data.php:166
 msgid "Must Use Plugins"
-msgstr "Moet-gebruik Plugins"
+msgstr "Verpligte Uitbreidings"
 
 #: wp-admin/includes/class-wp-debug-data.php:150
 #: wp-admin/includes/class-wp-ms-themes-list-table.php:904
@@ -3137,7 +3146,7 @@ msgstr "Tuis URL"
 #: wp-admin/site-health-info.php:35 wp-admin/site-health.php:40
 #: wp-admin/menu.php:282
 msgid "Site Health"
-msgstr "Webbladgesondheid"
+msgstr "Webwerf-gesondheid"
 
 #. translators: %s: Number of requests.
 #: wp-admin/includes/class-wp-privacy-requests-table.php:157
@@ -3192,7 +3201,7 @@ msgstr[1] "Die plugin het %d karakters van <strong>onverwagte uitvoer</strong> t
 
 #: wp-admin/plugins.php:431
 msgid "Sorry, you are not allowed to resume this plugin."
-msgstr "Jammer, jy word nie toegenaat om hierdie plugin te hervat nie."
+msgstr "Jammer, jy word nie toegelaat om hierdie uitbreiding te hervat nie."
 
 #. translators: %s: WordPress Planet URL.
 #: wp-admin/index.php:87
@@ -3255,24 +3264,24 @@ msgstr "Jy kan nie installeer nie, want <a href=\"%1$s\">WordPress %2$s</a> beno
 msgid "You cannot install because <a href=\"%1$s\">WordPress %2$s</a> requires PHP version %3$s or higher. You are running version %4$s."
 msgstr "Jy kan nie installeer nie, want <a href=\"%1$s\">WordPress %2$s</a> benodig PHP weergawe %3$s of hoër. Jy gebruik tans weergawe %4$s."
 
-#: wp-admin/includes/dashboard.php:1913
+#: wp-admin/includes/dashboard.php:1915
 msgid "Set up your homepage"
 msgstr "Stel jou tuisblad op"
 
 #: wp-admin/includes/class-wp-site-health.php:734
-#: wp-admin/includes/dashboard.php:1754
+#: wp-admin/includes/dashboard.php:1756
 msgid "Learn more about updating PHP"
 msgstr "Leer meer oor PHP bywerking"
 
-#: wp-admin/includes/dashboard.php:1746
+#: wp-admin/includes/dashboard.php:1748
 msgid "What is PHP and how does it affect my site?"
 msgstr "Wat is PHP en hoe beïnvloed dit my webblad?"
 
-#: wp-admin/includes/dashboard.php:1740
+#: wp-admin/includes/dashboard.php:1742
 msgid "WordPress has detected that your site is running on an outdated version of PHP."
 msgstr "WordPress het gevind dat jou webblad 'n uit-datum weergawe van PHP gebruik."
 
-#: wp-admin/includes/dashboard.php:1738
+#: wp-admin/includes/dashboard.php:1740
 msgid "WordPress has detected that your site is running on an insecure version of PHP."
 msgstr "WordPress het gevind dat jou webblad 'n onveilige weergawe van PHP gebruik."
 
@@ -3329,7 +3338,7 @@ msgstr "<strong>Fout:</strong> Hierdie plugin <strong>benodig 'n nuwer weergawe 
 #. translators: %s: Widget title.
 #: wp-admin/includes/widgets.php:255
 msgid "Add widget: %s"
-msgstr "Voeg widget by: %s"
+msgstr "Voeg die wiggie by: %s"
 
 #. translators: %s: Widgets sidebar name.
 #: wp-admin/includes/widgets.php:95
@@ -3368,8 +3377,10 @@ msgid "Cannot Install"
 msgstr "Kan nie installeer nie"
 
 #. translators: %s: WordPress version.
+#. translators: %s: WordPress version
 #: wp-admin/includes/update.php:300 wp-admin/install.php:238
 #: wp-admin/update-core.php:80 wp-admin/upgrade.php:80 wp-admin/about.php:86
+#: wp-admin/about.php:111
 msgid "https://wordpress.org/support/wordpress-version/version-%s/"
 msgstr "https://wordpress.org/support/wordpress-version/version-%s/"
 
@@ -3998,7 +4009,7 @@ msgstr "Geforseerde Uitwissing was onsuksesvol."
 
 #: wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php:105
 msgid "Email could not be sent."
-msgstr "E-pos kon nie gestuur word nie."
+msgstr "Die e-pos kon nie gestuur word nie."
 
 #: wp-admin/includes/privacy-tools.php:377
 msgctxt "date/time"
@@ -4199,11 +4210,11 @@ msgstr "Kan nie inligting by die HTML lêer voeg nie."
 
 #: wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php:104
 msgid "Email sent."
-msgstr "E-pos gestuur."
+msgstr "Die e-pos is gestuur."
 
 #: wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php:103
 msgid "Sending Email..."
-msgstr "E-pos word gestuur..."
+msgstr "Besig om die e-pos te stuur..."
 
 #: wp-admin/includes/class-wp-privacy-data-export-requests-list-table.php:61
 msgid "Download Personal Data Again"
@@ -4741,7 +4752,7 @@ msgstr "Onbekend"
 #. translators: %s: Author's display name.
 #: wp-admin/includes/class-wp-users-list-table.php:468
 msgid "View posts by %s"
-msgstr "Kyk na artikels deur %s"
+msgstr "Wys bydraes deur %s"
 
 #: wp-admin/includes/class-wp-terms-list-table.php:543
 msgid "No description"
@@ -4819,7 +4830,7 @@ msgid "Open"
 msgstr "Oop"
 
 #. translators: %s: Meetup organization documentation URL.
-#: wp-admin/includes/dashboard.php:1407
+#: wp-admin/includes/dashboard.php:1409
 msgid "There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href=\"%s\">organize a WordPress event</a>?"
 msgstr "Daar is nie op die oomblik enige byeenkomste geskeduleer naby jou nie. Wil jy graag <a href=\"%s\">een organiseer</a>?"
 
@@ -4833,13 +4844,13 @@ msgstr "Verander gebruiker %s"
 msgid "Edit widget: %s"
 msgstr "Wysig Widget: %s"
 
-#: wp-admin/includes/dashboard.php:1399 wp-admin/includes/dashboard.php:1408
+#: wp-admin/includes/dashboard.php:1401 wp-admin/includes/dashboard.php:1410
 msgid "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
 msgstr "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
 
 #. translators: 1: The city the user searched for, 2: Meetup organization
 #. documentation URL.
-#: wp-admin/includes/dashboard.php:1397
+#: wp-admin/includes/dashboard.php:1399
 msgid "There aren&#8217;t any events scheduled near %1$s at the moment. Would you like to <a href=\"%2$s\">organize a WordPress event</a>?"
 msgstr "Daar is nie op die oomblik enige byeenkomste geskeduleer naby %1$s nie. Wil jy graag <a href=\"%2$s\">'n WordPress-byeenkoms organiseer</a>?"
 
@@ -4874,17 +4885,20 @@ msgstr "WordPress byeenkomste en nuus"
 
 #. translators: Date format for upcoming events on the dashboard. Include the
 #. day of the week. See https://www.php.net/date
-#: wp-admin/includes/class-wp-community-events.php:379
-#: wp-admin/includes/class-wp-community-events.php:384
+#. translators: Date format for upcoming events on the dashboard. Include the
+#. day of the week. See https://www.php.net/manual/datetime.format.php
+#: wp-admin/includes/class-wp-community-events.php:396
+#: wp-admin/includes/class-wp-community-events.php:401
+#: wp-admin/js/dashboard.js:746
 msgid "l, M j, Y"
 msgstr "l, M j, Y"
 
-#: wp-admin/includes/class-wp-community-events.php:122
+#: wp-admin/includes/class-wp-community-events.php:124
 msgid "Unknown API error."
 msgstr "Onbekende API fout. "
 
 #. translators: %d: Numeric HTTP status code, e.g. 400, 403, 500, 504, etc.
-#: wp-admin/includes/class-wp-community-events.php:117
+#: wp-admin/includes/class-wp-community-events.php:119
 msgid "Invalid API response code (%d)."
 msgstr "Ongeldige API reaksie code (%d)."
 
@@ -4963,7 +4977,7 @@ msgstr "Huidige kopstrook foto"
 
 #: wp-admin/includes/plugin-install.php:338
 msgid "Search plugins..."
-msgstr "Soek deur Plugins..."
+msgstr "Deursoek uitbreidings..."
 
 #: wp-admin/includes/meta-boxes.php:138
 msgid "Set status"
@@ -5028,7 +5042,7 @@ msgstr "Herhaal"
 #: wp-admin/network/themes.php:325 wp-admin/network/upgrade.php:32
 #: wp-admin/network/settings.php:64
 msgid "<a href=\"https://wordpress.org/support/\">Support</a>"
-msgstr "<a href=\"https://wordpress.org/support/\">Hulp</a>"
+msgstr "<a href=\"https://af.wordpress.org/support/\">Hulp</a>"
 
 #. translators: %s: Number of failed updates.
 #: wp-admin/includes/update.php:897
@@ -5042,7 +5056,7 @@ msgstr "%s bywerking was onsuksesvol."
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:448
 msgid "Search installed plugins..."
-msgstr "Soek deur geïnstalleerde Plugins..."
+msgstr "Deursoek geïnstalleerde uitbreidings..."
 
 #: wp-admin/plugin-install.php:91
 msgid "You can find new plugins to install by searching or browsing the directory right here in your own Plugins section."
@@ -5089,20 +5103,20 @@ msgstr "Voer artikels, kommentare en gebruikers in vanaf Blogger."
 #: wp-admin/includes/class-wp-plugins-list-table.php:830
 msgctxt "plugin"
 msgid "Deactivate %s"
-msgstr "Onaktiveer %s"
+msgstr "Deaktiveer %s"
 
 #. translators: %s: Plugin name.
 #: wp-admin/includes/class-wp-plugins-list-table.php:809
 #: wp-admin/includes/class-wp-plugins-list-table.php:863
 msgctxt "plugin"
 msgid "Delete %s"
-msgstr "Verwyder %s"
+msgstr "Wis %s uit"
 
 #. translators: %s: Plugin name.
 #: wp-admin/includes/class-wp-plugins-list-table.php:787
 msgctxt "plugin"
 msgid "Network Deactivate %s"
-msgstr "Netwerk deaktiveer %s"
+msgstr "Netwerk-deaktiveer %s"
 
 #: wp-admin/user-new.php:238
 msgid "By default, new users will receive an email letting them know they&#8217;ve been added as a user for your site. This email will also contain a password reset link. Uncheck the box if you don&#8217;t want to send the new user a welcome email."
@@ -5173,15 +5187,15 @@ msgstr "<strong>Fout</strong>: \"Tabel Voorvoeging\" is ongeldig."
 
 #: wp-admin/plugins.php:225
 msgid "Sorry, you are not allowed to deactivate plugins for this site."
-msgstr "Jammer, jy word nie toegelaat om Plugins op hierdie webwerf te onaktiveer."
+msgstr "Jammer, jy word nie toegelaat om uitbreidings te deaktiveer op hierdie webwerf nie."
 
 #: wp-admin/plugins.php:92
 msgid "Sorry, you are not allowed to activate plugins for this site."
-msgstr "Jammer, jy word nie toegelaat om Plugins op hierdie webwerf te aktiveer. "
+msgstr "Jammer, jy word nie toegelaat om uitbreidings te aktiveer op hierdie webwerf nie."
 
 #: wp-admin/includes/file.php:393 wp-admin/plugin-editor.php:18
 msgid "Sorry, you are not allowed to edit plugins for this site."
-msgstr "Jammer, jy word nie toegelaat om Plugins te wysig op hierdie webwerf nie."
+msgstr "Jammer, jy word nie toegelaat om uitbreidings te wysig op hierdie webwerf nie."
 
 #: wp-admin/options.php:248
 msgid "Sorry, you are not allowed to modify unregistered settings for this site."
@@ -5295,7 +5309,7 @@ msgstr "Webjoernaal"
 
 #: wp-admin/includes/theme.php:313
 msgid "Footer Widgets"
-msgstr "Voetstrook Widgets"
+msgstr "Voetstrook Wiggies"
 
 #: wp-admin/includes/theme.php:322
 msgid "Grid Layout"
@@ -5369,7 +5383,7 @@ msgstr "Jammer, jy het nie toestemming om privaatheid op hierdie webwerf te best
 
 #: wp-admin/includes/ajax-actions.php:4579
 msgid "Plugin could not be deleted."
-msgstr "Plugin kon nie verwyder word nie."
+msgstr "Die uitbreiding kon nie uitgewis word nie."
 
 #: wp-admin/includes/ajax-actions.php:4433 wp-admin/update.php:29
 #: wp-admin/update.php:57 wp-admin/update.php:79
@@ -5715,13 +5729,13 @@ msgstr "Datum modelvorm"
 msgid "Taxonomy Template"
 msgstr "Taksonomie modelvorm"
 
-#: wp-admin/includes/dashboard.php:1633
+#: wp-admin/includes/dashboard.php:1635
 msgid "Dismiss the browser warning panel"
 msgstr "Verwyder die webleser se waarskuwing paneel"
 
 #: wp-admin/includes/dashboard.php:1050
 msgid "View more comments"
-msgstr "Sien meer kommentare"
+msgstr "Wys nog opmerkings"
 
 #. translators: 1: Type of comment, 2: Post link, 3: Notification if the
 #. comment is pending.
@@ -5824,7 +5838,7 @@ msgstr "Verander gou die kommentaar inlyn"
 #: wp-admin/includes/class-wp-comments-list-table.php:768
 #: wp-admin/includes/dashboard.php:699
 msgid "Edit this comment"
-msgstr "Wysig hierdie kommentaar"
+msgstr "Wysig hierdie opmerking"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:731
 msgid "Restore this comment from the spam"
@@ -5890,7 +5904,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Huidiglik gestel na: %s)"
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:329
+#: wp-admin/about.php:354
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Weergawe %s</strong> het 'n sekuriteit probleem."
 
@@ -5902,15 +5916,15 @@ msgstr "https://en.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profielfoto"
 
-#: wp-admin/about.php:66 wp-admin/about.php:326
+#: wp-admin/about.php:66 wp-admin/about.php:351
 msgid "Maintenance and Security Releases"
 msgstr "Onderhoud en sekuriteit uitgawes"
 
-#: wp-admin/about.php:323
+#: wp-admin/about.php:348
 msgid "Security Releases"
 msgstr "Sekuriteit uitgawes"
 
-#: wp-admin/about.php:320
+#: wp-admin/about.php:345
 msgid "Maintenance Releases"
 msgstr "Onderhoud uitgawes"
 
@@ -6057,7 +6071,7 @@ msgstr "Dít sal alle items verwyder van die onaktiewe Widget lys. Jy sal geen d
 
 #: wp-admin/widgets.php:482
 msgid "Clear Inactive Widgets"
-msgstr "Verwyder onaktiewe Widgets"
+msgstr "Verwyder onaktiewe wiggies"
 
 #: wp-admin/users.php:146 wp-admin/network/site-users.php:164
 msgid "One of the selected users is not a member of this site."
@@ -6105,7 +6119,7 @@ msgstr "Alle geselekteerde Plugins is op datum."
 
 #: wp-admin/plugins.php:596 wp-admin/plugin-install.php:117
 msgid "Plugins list"
-msgstr "Plugins lys"
+msgstr "Uitbreiding-lys"
 
 #: wp-admin/plugins.php:595 wp-admin/plugin-install.php:116
 msgid "Plugins list navigation"
@@ -6113,7 +6127,7 @@ msgstr "Plugin lys navigasie"
 
 #: wp-admin/plugins.php:594 wp-admin/plugin-install.php:115
 msgid "Filter plugins list"
-msgstr "Filtreer Plugin lys"
+msgstr "Filter die uitbreiding-lys"
 
 #. translators: %s: Plugin file name.
 #: wp-admin/plugin-editor.php:211
@@ -6146,7 +6160,7 @@ msgstr "Plaaslike tyd is %s."
 #: wp-admin/network/sites.php:369
 msgctxt "site"
 msgid "Add New"
-msgstr "Voeg nuwe by"
+msgstr "Skep"
 
 #: wp-admin/link-manager.php:84
 msgid "Links list"
@@ -6242,7 +6256,7 @@ msgstr "Tema se voetstrook"
 
 #: wp-admin/includes/file.php:18
 msgid "Theme Footer"
-msgstr "Tema se voetskrif"
+msgstr "Tema Voetstrook"
 
 #. translators: Date and time format for recent posts on the dashboard, from a
 #. different calendar year, see https://www.php.net/date
@@ -6314,7 +6328,7 @@ msgstr "Alleenlik vir netwerk"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:817
 msgid "Network Active"
-msgstr "Netwerk aktief"
+msgstr "Aktief op netwerk"
 
 #: wp-admin/includes/class-wp-list-table.php:758
 msgid "No pending comments"
@@ -6343,8 +6357,8 @@ msgstr[1] "Asblik <span class=\"count\">(%s)</span>"
 msgctxt "comments"
 msgid "Spam <span class=\"count\">(%s)</span>"
 msgid_plural "Spam <span class=\"count\">(%s)</span>"
-msgstr[0] "Strooipos <span class=\"count\">(%s)</span>"
-msgstr[1] "Strooipos <span class=\"count\">(%s)</span>"
+msgstr[0] "Snert <span class=\"count\">(%s)</span>"
+msgstr[1] "Snert <span class=\"count\">(%s)</span>"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-comments-list-table.php:261
@@ -6359,8 +6373,8 @@ msgstr[1] "Goedgekeur <span class=\"count\">(%s)</span>"
 msgctxt "comments"
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
-msgstr[0] "Hangende <span class=\"count\">(%s)</span>"
-msgstr[1] "Hangende <span class=\"count\">(%s)</span>"
+msgstr[0] "Hangend <span class=\"count\">(%s)</span>"
+msgstr[1] "Hangend <span class=\"count\">(%s)</span>"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-comments-list-table.php:240
@@ -6421,7 +6435,7 @@ msgstr "Artikel geskeduleer vir: %s."
 
 #: wp-admin/edit-form-advanced.php:188
 msgid "Post submitted."
-msgstr "Artikel voorgelê."
+msgstr "Die bydrae is ingedien."
 
 #: wp-admin/edit-form-advanced.php:164
 msgid "View page"
@@ -6437,7 +6451,7 @@ msgstr "Voorskou artikel"
 
 #: wp-admin/edit-comments.php:204
 msgid "Comments list"
-msgstr "Kommentaarlys"
+msgstr "Opmerking-lys"
 
 #: wp-admin/edit-comments.php:203
 msgid "Comments list navigation"
@@ -6445,7 +6459,7 @@ msgstr "Kommentaarlys navigasie"
 
 #: wp-admin/edit-comments.php:202
 msgid "Filter comments list"
-msgstr "Filtreer kommentaarlys"
+msgstr "Filter opmerking-lys"
 
 #: wp-admin/edit-comments.php:187
 msgid "In the <strong>Submitted on</strong> column, the date and time the comment was left on your site appears. Clicking on the date/time link will take you to that comment on your live site."
@@ -6464,7 +6478,7 @@ msgstr "Opmerkings (%s)"
 #. translators: 1: Comments count, 2: Post title.
 #: wp-admin/edit-comments.php:144
 msgid "Comments (%1$s) on &#8220;%2$s&#8221;"
-msgstr "Kommentare (%1$s) op &#8220;%2$s&#8221;"
+msgstr "Opmerkings (%1$s) op &#8220;%2$s&#8221;"
 
 #: wp-admin/includes/ajax-actions.php:5337
 msgid "Sorry, you are not allowed to modify themes."
@@ -6494,7 +6508,7 @@ msgstr "Tekenuit %s vanuit alle areas."
 
 #: wp-admin/user-edit.php:684
 msgid "Did you lose your phone or leave your account logged in at a public computer? You can log out everywhere else, and stay logged in here."
-msgstr "Het jy jou foon verloor of is jou rekening nogsteeds per ongeluk ingeteken by 'n publieke rekenaar? Jy kan uitteken by alle ander lokale en net hier ingeteken bly."
+msgstr "Het jy dalk jou foon verloor of per ongeluk ingeteken gebly op 'n publieke toestel? Jy kan elders uit teken en net hier ingeteken bly."
 
 #: wp-admin/user-edit.php:672 wp-admin/user-edit.php:682
 msgid "Log Out Everywhere Else"
@@ -6515,7 +6529,7 @@ msgstr "Skep wagwoord"
 
 #: wp-admin/user-edit.php:625
 msgid "Account Management"
-msgstr "Bestuur van rekening"
+msgstr "Rekening Bestuur"
 
 #. translators: The non-breaking space prevents 1Password from thinking the
 #. text "log in" should trigger a password save prompt.
@@ -6525,34 +6539,34 @@ msgstr "Jy benodig jou wagwoord om in te teken. Stoor dit asseblief in 'n veilig
 
 #: wp-admin/includes/class-wp-list-table.php:735
 msgid "No approved comments"
-msgstr "Geen goedgekeurde kommentare"
+msgstr "Geen goedgekeurde opmerkings nie"
 
 #: wp-admin/includes/class-wp-list-table.php:705
 #: wp-admin/includes/class-wp-list-table.php:735
 #: wp-admin/includes/class-wp-list-table.php:758
 msgid "No comments"
-msgstr "Geen Kommentaar"
+msgstr "Geen opmerkings"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-list-table.php:697
 msgid "%s pending comment"
 msgid_plural "%s pending comments"
-msgstr[0] "%s kommentaar wat wag"
-msgstr[1] "%s kommentare wat wag"
+msgstr[0] "%s opmerking wag om nagesien te word"
+msgstr[1] "%s opmerkings wag om nagesien te word"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-list-table.php:691
 msgid "%s approved comment"
 msgid_plural "%s approved comments"
-msgstr[0] "%s kommentaar goedgekeur"
-msgstr[1] "%s kommentare goedgekeur"
+msgstr[0] "%s opmerking is goedgekeur"
+msgstr[1] "%s opmerkings is goedgekeur"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-list-table.php:685
 msgid "%s comment"
 msgid_plural "%s comments"
-msgstr[0] "%s kommentaar"
-msgstr[1] "%s kommentare"
+msgstr[0] "%s opmerking"
+msgstr[1] "%s opmerkings"
 
 #: wp-admin/includes/ajax-actions.php:3877
 msgid "Image could not be processed."
@@ -6606,7 +6620,7 @@ msgstr "Eerste bladsy"
 #. translators: %s: Post link.
 #: wp-admin/edit-form-comment.php:160
 msgid "In response to: %s"
-msgstr "In antwoord op: %s"
+msgstr "Verwys na: %s"
 
 #: wp-admin/includes/meta-boxes.php:275 wp-admin/edit-form-comment.php:141
 msgid "Date and time"
@@ -6714,7 +6728,7 @@ msgstr "XML Fout: %1$s by lyn %2$s"
 
 #: wp-admin/includes/class-wp-media-list-table.php:541
 msgid "Detach"
-msgstr "Losmaak"
+msgstr "Ontkoppel"
 
 #: wp-admin/menu-header.php:286
 msgid "Main menu"
@@ -6749,7 +6763,7 @@ msgstr "Hierdie Plugins kan dalk aktief wees op ander webwerwe op die netwerk."
 
 #: wp-admin/plugins.php:346
 msgid "Delete Plugins"
-msgstr "Verwyder Plugins"
+msgstr "Wis uitbreidings uit"
 
 #: wp-admin/edit.php:348
 msgid "1 page not updated, somebody is editing it."
@@ -6831,7 +6845,7 @@ msgstr "Jy is tans besig om veranderinge te maak op die bladsy wat jou nuutste a
 
 #: wp-admin/includes/file.php:31
 msgid "Posts Page"
-msgstr "Artikels bladsy"
+msgstr "Bydrae-blad"
 
 #: wp-admin/includes/class-wp-screen.php:1231
 msgid "Number of items per page:"
@@ -6889,7 +6903,7 @@ msgstr ""
 "Die span by ###SITENAME###\n"
 "###SITEURL###"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1290
+#: wp-admin/includes/class-wp-automatic-updater.php:1294
 msgid ""
 "UPDATE LOG\n"
 "=========="
@@ -6897,7 +6911,7 @@ msgstr ""
 "BYWERKINGS JOERNAAL\n"
 "======================"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1267
+#: wp-admin/includes/class-wp-automatic-updater.php:1271
 msgid ""
 "BETA TESTING?\n"
 "=============\n"
@@ -6933,7 +6947,7 @@ msgstr "Voorgelê op"
 #: wp-admin/includes/class-wp-comments-list-table.php:459
 #: wp-admin/comment.php:186
 msgid "In response to"
-msgstr "In antwoord op"
+msgstr "Verwys na"
 
 #. translators: 1: Month, 2: Day, 3: Year, 4: Hour, 5: Minute.
 #: wp-admin/includes/template.php:833 wp-admin/js/comment.js:89
@@ -6948,7 +6962,7 @@ msgstr "https://wordpress.org/support"
 
 #: wp-admin/user-edit.php:674
 msgid "You are only logged in at this location."
-msgstr "Jy is slegs by hierdie plek ingeteken."
+msgstr "Jy is net hier ingeteken."
 
 #: wp-admin/includes/plugin-install.php:402
 msgid "These suggestions are based on the plugins you and other users have installed."
@@ -6965,7 +6979,7 @@ msgstr "Teken orals uit"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:109
 msgctxt "Plugin Installer"
 msgid "Recommended"
-msgstr "Aanbeveelde"
+msgstr "Aanbeveel"
 
 #. translators: New site notification email. 1: New site URL, 2: User login, 3:
 #. User password or password reset link, 4: Login URL.
@@ -7021,11 +7035,11 @@ msgstr "Gebruikernaam kan slegs alfanumeriese karakters, spasies, onderstreping 
 msgid "Enable full-height editor and distraction-free functionality."
 msgstr "Skakel die vol-hoogte skryfpaneel en afleidings-vrye funksie aan."
 
-#: wp-admin/includes/dashboard.php:1476
+#: wp-admin/includes/dashboard.php:1478
 msgid "https://planet.wordpress.org/feed/"
 msgstr "https://af.wordpress.org/feed/"
 
-#: wp-admin/includes/dashboard.php:1467 wp-admin/index.php:88
+#: wp-admin/includes/dashboard.php:1469 wp-admin/index.php:88
 msgid "https://planet.wordpress.org/"
 msgstr "https://planet.wordpress.org/"
 
@@ -7145,7 +7159,7 @@ msgstr "Soek deur Plugins"
 
 #: wp-admin/plugin-install.php:50
 msgid "Add Plugins"
-msgstr "Voeg Plugins by"
+msgstr "Voeg uitbreidings by"
 
 #. translators: 1: WPLANG, 2: wp-config.php
 #: wp-admin/options-general.php:191
@@ -7208,7 +7222,7 @@ msgstr "Skenk vir hierdie Plugin &#187;"
 #: wp-admin/includes/plugin-install.php:574
 msgctxt "Plugin installer section title"
 msgid "Reviews"
-msgstr "Hersien"
+msgstr "Aanbevelings"
 
 #. translators: %s: Support email address.
 #: wp-admin/includes/class-wp-automatic-updater.php:782
@@ -7223,11 +7237,11 @@ msgstr "Onlangse bywerking"
 #: wp-admin/includes/class-wp-terms-list-table.php:190
 msgctxt "Number/count of items"
 msgid "Count"
-msgstr "Getal"
+msgstr "Aantal"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:1042
 msgid "View details"
-msgstr "Kyk na besonderhede"
+msgstr "Meer besonderhede"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:620
 msgid "More Details"
@@ -7320,7 +7334,7 @@ msgstr "Gewilde"
 #: wp-admin/theme-install.php:176
 msgctxt "themes"
 msgid "Featured"
-msgstr "Gekeurde"
+msgstr "Voorgestel"
 
 #: wp-admin/includes/ms.php:957 wp-admin/users.php:320
 msgid "Attribute all content to:"
@@ -7395,13 +7409,13 @@ msgstr "Wysig sigbaarheid"
 msgid "Edit status"
 msgstr "Wysig status"
 
-#: wp-admin/includes/dashboard.php:1925
+#: wp-admin/includes/dashboard.php:1927
 msgid "Manage menus"
-msgstr "Beheer kieslys"
+msgstr "Bestuur kieslyste"
 
-#: wp-admin/includes/dashboard.php:1922
+#: wp-admin/includes/dashboard.php:1924
 msgid "Manage widgets"
-msgstr "Beheer Widgets"
+msgstr "Bestuur wiggies"
 
 #: wp-admin/credits.php:55 wp-admin/credits.php:70
 msgid "https://make.wordpress.org/"
@@ -7452,12 +7466,12 @@ msgid "If you would like to see more themes to choose from, click on the &#8220;
 msgstr "Indien jy meer temas wil sien om van te kies, kliek op die &#8220;Voeg nuwe by&#8221; knoppie en jy sal deur meer additionele temas vanaf die <a href=\"%s\">WordPress Tema Gids</a> kan soek en blaai. Temas in die WordPress Tema Gids was ontwerp en ontwikkel deur derde partye, is gratis beskikbaar en is versoenbaar met die lisensie wat WordPress gebruik. "
 
 #. translators: 1: Number of megabytes, 2: Percentage.
-#: wp-admin/includes/dashboard.php:1570
+#: wp-admin/includes/dashboard.php:1572
 msgid "%1$s MB (%2$s%%) Space Used"
 msgstr "%1$s MB (%2$s%%) spasie gebruik"
 
 #. translators: %s: Number of megabytes.
-#: wp-admin/includes/dashboard.php:1556
+#: wp-admin/includes/dashboard.php:1558
 msgid "%s MB Space Allowed"
 msgstr "%s MB spasie toegelaat"
 
@@ -7478,8 +7492,8 @@ msgstr[1] "%s bladsye"
 #: wp-admin/includes/dashboard.php:287
 msgid "%s Post"
 msgid_plural "%s Posts"
-msgstr[0] "%s artikel"
-msgstr[1] "%s artikels"
+msgstr[0] "%s Bydrae"
+msgstr[1] "%s Bydraes"
 
 #: wp-admin/options-reading.php:45
 msgid "When this setting is in effect, a reminder is shown in the At a Glance box of the Dashboard that says, &#8220;Search engines discouraged,&#8221; to remind you that your site is not being crawled."
@@ -7556,42 +7570,42 @@ msgid "This screen shows an individual user all of their sites in this network, 
 msgstr "Hierdie skerm wys 'n gebruiker al hulle webwerwe op hierdie netwerk, en laat toe dat die gebruiker 'n primêre webwerf kan stel. Hulle kan die skakel onder elke webwerf gebruik om die webwerk self te besoek of om toegang tot die beheerpaneel te kry."
 
 #. translators: 1: Error code, 2: Error message.
-#: wp-admin/includes/class-wp-automatic-updater.php:1323
+#: wp-admin/includes/class-wp-automatic-updater.php:1327
 msgid "Error: [%1$s] %2$s"
 msgstr "Fout: [%1$s] %2$s"
 
 #. translators: 1: Error code, 2: Error message.
-#: wp-admin/includes/class-wp-automatic-updater.php:1320
+#: wp-admin/includes/class-wp-automatic-updater.php:1324
 msgid "Rollback Error: [%1$s] %2$s"
 msgstr "Terugrol fout: [%1$s] %2$s"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1249
+#: wp-admin/includes/class-wp-automatic-updater.php:1253
 msgid "The following translations failed to update:"
 msgstr "Die volgende vertalings kon nie bygewerk word nie:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1248
+#: wp-admin/includes/class-wp-automatic-updater.php:1252
 msgid "The following themes failed to update:"
 msgstr "Die volgende temas kon nie bygewerk word nie:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1247
+#: wp-admin/includes/class-wp-automatic-updater.php:1251
 msgid "The following plugins failed to update:"
 msgstr "Die volgende Plugins kon nie bygewerk word nie:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1235
+#: wp-admin/includes/class-wp-automatic-updater.php:1239
 msgid "The following translations were successfully updated:"
 msgstr "Die volgende vertalings was suksesvol opgedateer:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1234
+#: wp-admin/includes/class-wp-automatic-updater.php:1238
 msgid "The following themes were successfully updated:"
 msgstr "Die volgende temas was suksesvol opgedateer:"
 
-#: wp-admin/includes/class-wp-automatic-updater.php:1233
+#: wp-admin/includes/class-wp-automatic-updater.php:1237
 msgid "The following plugins were successfully updated:"
 msgstr "Die volgende Plugins was suksesvol opgedateer:"
 
 #: wp-admin/widgets.php:566
 msgid "Add Widget"
-msgstr "Voeg Widget by"
+msgstr "Voeg 'n wiggie by"
 
 #: wp-admin/includes/theme.php:790 wp-admin/themes.php:910
 msgid "Show next theme"
@@ -7607,7 +7621,7 @@ msgstr "Bywerking beskikbaar"
 
 #: wp-admin/themes.php:230 wp-admin/theme-install.php:55
 msgid "Add New Theme"
-msgstr "Voeg nuwe tema by"
+msgstr "Voeg 'n nuwe tema by"
 
 #: wp-admin/themes.php:226
 msgid ""
@@ -7635,7 +7649,7 @@ msgstr "<strong>Aktiwiteit</strong> &mdash; Dit wys komende geskeduleerde artike
 msgid "<strong>Screen Options</strong> &mdash; Use the Screen Options tab to choose which Dashboard boxes to show."
 msgstr "<strong>Skerm Opsies</strong> &mdash; Gebruik die Skerm Opsies tab om te kies watter beheerpaneel-bokse vertoon word."
 
-#: wp-admin/includes/dashboard.php:1563 wp-admin/includes/dashboard.php:1578
+#: wp-admin/includes/dashboard.php:1565 wp-admin/includes/dashboard.php:1580
 msgid "Manage Uploads"
 msgstr "Beheer oplaai"
 
@@ -7677,27 +7691,27 @@ msgid "Activity"
 msgstr "Aktiwiteit"
 
 #. translators: %s: Name of plugin / theme / translation.
-#: wp-admin/includes/class-wp-automatic-updater.php:1256
+#: wp-admin/includes/class-wp-automatic-updater.php:1260
 msgid "FAILED: %s"
 msgstr "MISLUK: %s"
 
 #. translators: %s: Name of plugin / theme / translation.
-#: wp-admin/includes/class-wp-automatic-updater.php:1241
+#: wp-admin/includes/class-wp-automatic-updater.php:1245
 msgid "SUCCESS: %s"
 msgstr "SUKSES: %s"
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/class-wp-automatic-updater.php:1219
+#: wp-admin/includes/class-wp-automatic-updater.php:1223
 msgid "FAILED: WordPress failed to update to %s"
 msgstr "MISLUK: WordPress %s bywerking het misluk"
 
 #. translators: %s: WordPress version.
-#: wp-admin/includes/class-wp-automatic-updater.php:1216
+#: wp-admin/includes/class-wp-automatic-updater.php:1220
 msgid "SUCCESS: WordPress was successfully updated to %s"
 msgstr "SUKSES: WordPress was suksesvol opgedateer tot %s"
 
 #. translators: %s: Network home URL.
-#: wp-admin/includes/class-wp-automatic-updater.php:1209
+#: wp-admin/includes/class-wp-automatic-updater.php:1213
 msgid "WordPress site: %s"
 msgstr "WordPress webwerf: %s"
 
@@ -7728,7 +7742,7 @@ msgstr ""
 #: wp-admin/includes/class-language-pack-upgrader.php:114
 #: wp-admin/update-core.php:632
 msgid "Your translations are all up to date."
-msgstr "Al jou vertaling is op datum."
+msgstr "Al jou vertalings is op datum."
 
 #: wp-admin/update-core.php:631 wp-admin/update-core.php:639
 msgid "Translations"
@@ -7752,7 +7766,7 @@ msgid "We have some data that describes the error your site encountered."
 msgstr "Ons het informasie wat die fout wat jy met jou webwerf het beskryf."
 
 #: wp-admin/includes/class-wp-automatic-updater.php:806
-#: wp-admin/includes/class-wp-automatic-updater.php:1158
+#: wp-admin/includes/class-wp-automatic-updater.php:1162
 msgid "The WordPress Team"
 msgstr "die WordPress span"
 
@@ -7761,7 +7775,7 @@ msgid "You also have some plugins or themes with updates available. Update them 
 msgstr "Jy het ook 'n paar Plugins of temas wat opdateering nodig het. Opdateer hullle nou:"
 
 #: wp-admin/includes/class-wp-automatic-updater.php:787
-#: wp-admin/includes/class-wp-automatic-updater.php:1156
+#: wp-admin/includes/class-wp-automatic-updater.php:1160
 msgid "If you experience any issues or need support, the volunteers in the WordPress.org support forums may be able to help."
 msgstr "Indien jy enige probleme het of ondersteuning nodig het, die vrywilligers in die WordPress.org ondersteuning-forums mag in staat wees om jou te help."
 
@@ -7842,7 +7856,7 @@ msgstr "Vertalings bygewerk vir %1$s (%2$s)&#8230;"
 #: wp-admin/includes/class-language-pack-upgrader-skin.php:31
 #: wp-admin/update-core.php:643 wp-admin/update-core.php:1041
 msgid "Update Translations"
-msgstr "Dateer vertalings op"
+msgstr "Werk vertalings by"
 
 #: wp-admin/includes/class-wp-site-health.php:2160
 msgid "Background updates"
@@ -8393,7 +8407,7 @@ msgstr "Vermoëns"
 
 #: wp-admin/nav-menus.php:1017 wp-admin/network/settings.php:473
 msgid "Menu Settings"
-msgstr "Kieslys instellings"
+msgstr "Kieslys-verstellings"
 
 #: wp-admin/nav-menus.php:940
 msgid "Menu structure"
@@ -8573,15 +8587,15 @@ msgstr "Jy kan ook 'n agtergrondskleur kies deur op die &#8220;Kies kleur#8221; 
 msgid "You can choose whether or not your site will be crawled by robots, ping services, and spiders. If you want those services to ignore your site, click the checkbox next to &#8220;Discourage search engines from indexing this site&#8221; and click the Save Changes button at the bottom of the screen. Note that your privacy is not complete; your site is still visible on the web."
 msgstr "Jy kan kies of jy wil hê jou webwerf moet deurkruip word deur robotte, spinnekoppe en ander soortgelyke dienste. Indien jy wil hê hierdie dienste moet jou webwerf ignoreer, kies dan die boksie wat sê &#8220;Ontmoedig soekenjins om deur hierdie webwerf te gaan&#8221; en kliek op die Stoor veranderinge knoppie aan die onderkant van die skerm. Wees bewus, dat jou webwerf nie heeltemal privaat is nie; enige iemand op die internet kan wel daardeur blaai. "
 
-#: wp-admin/includes/dashboard.php:1930
+#: wp-admin/includes/dashboard.php:1932
 msgid "Learn more about getting started"
 msgstr "Leer meer oor hoe om te begin"
 
-#: wp-admin/includes/dashboard.php:1928
+#: wp-admin/includes/dashboard.php:1930
 msgid "Turn comments on or off"
-msgstr "Sit kommentare aan of af"
+msgstr "Skakel opmerkings aan of af"
 
-#: wp-admin/includes/dashboard.php:1919
+#: wp-admin/includes/dashboard.php:1921
 msgid "More Actions"
 msgstr "Meer aksies"
 
@@ -8631,12 +8645,12 @@ msgstr "Indien jy nie seker is waarna jy soek nie, is Soek jou beste opsie. Die 
 
 #: wp-admin/options-reading.php:205 wp-admin/install.php:201
 msgid "It is up to search engines to honor this request."
-msgstr "Dit is die soekenjin se verantwoordelikheid om hierdie versoek gestand te doen."
+msgstr "Dit is moontlik dat sommige soekenjines hierdie bevel mag verontagsaam."
 
 #: wp-admin/options-reading.php:184 wp-admin/options-reading.php:204
 #: wp-admin/install.php:192 wp-admin/install.php:200
 msgid "Discourage search engines from indexing this site"
-msgstr "Ontmoedig Soekengines om hierdie werf te indeks"
+msgstr "Ontmoedig soekenjins om hierdie webwerf te indeks"
 
 #: wp-admin/options-reading.php:182 wp-admin/install.php:190
 msgid "Allow search engines to index this site"
@@ -8665,49 +8679,49 @@ msgstr "Jou WordPress.org gebruikernaam:"
 msgid "If you have marked plugins as favorites on WordPress.org, you can browse them here."
 msgstr "Indien jy Plugins as gunstelinge gemerk het op WordPress.org kan jy hier deur hulle blaai."
 
-#: wp-admin/includes/dashboard.php:1915
+#: wp-admin/includes/dashboard.php:1917
 msgid "View your site"
-msgstr "Kyk na jou webwerf"
+msgstr "Besoek jou webwerf"
 
-#: wp-admin/includes/dashboard.php:1912
+#: wp-admin/includes/dashboard.php:1914
 msgid "Add an About page"
 msgstr "Voeg 'n bladsy oor jouself by"
 
-#: wp-admin/includes/dashboard.php:1911
+#: wp-admin/includes/dashboard.php:1913
 msgid "Write your first blog post"
-msgstr "Skryf jou eerste webjoernaal artikel"
+msgstr "Skryf jou eerste webjoernaal-bydrae"
 
-#: wp-admin/includes/dashboard.php:1909
+#: wp-admin/includes/dashboard.php:1911
 msgid "Add a blog post"
-msgstr "Voeg 'n webjoernaal artikel "
+msgstr "Skep 'n webjoernaal-bydrae"
 
-#: wp-admin/includes/dashboard.php:1905 wp-admin/includes/dashboard.php:1908
+#: wp-admin/includes/dashboard.php:1907 wp-admin/includes/dashboard.php:1910
 msgid "Add additional pages"
 msgstr "Voeg bykomende bladsye by"
 
-#: wp-admin/includes/dashboard.php:1904 wp-admin/includes/dashboard.php:1907
+#: wp-admin/includes/dashboard.php:1906 wp-admin/includes/dashboard.php:1909
 msgid "Edit your front page"
 msgstr "Wysig jou voorblad"
 
 #: wp-admin/includes/class-wp-privacy-requests-table.php:46
-#: wp-admin/includes/dashboard.php:1901
+#: wp-admin/includes/dashboard.php:1903
 msgid "Next Steps"
 msgstr "Volgende stappe"
 
 #. translators: %s: URL to Themes panel in Customizer or Themes screen.
-#: wp-admin/includes/dashboard.php:1895
+#: wp-admin/includes/dashboard.php:1897
 msgid "or, <a href=\"%s\">change your theme completely</a>"
-msgstr "of, <a href=\"%s\">verander die tema heeltemal</a>"
+msgstr "of <a href=\"%s\">verander die webwerf se tema</a>"
 
-#: wp-admin/includes/dashboard.php:1886
+#: wp-admin/includes/dashboard.php:1888
 msgid "Get Started"
 msgstr "Begin"
 
-#: wp-admin/includes/dashboard.php:1882
+#: wp-admin/includes/dashboard.php:1884
 msgid "We&#8217;ve assembled some links to get you started:"
 msgstr "Ons het 'n paar skakels bymekaar gemaak om jou aan die gang te kry:"
 
-#: wp-admin/includes/dashboard.php:1881
+#: wp-admin/includes/dashboard.php:1883
 msgid "Welcome to WordPress!"
 msgstr "Welkom by WordPress!"
 
@@ -8783,11 +8797,11 @@ msgstr "Kontekstuele hulp oortjie"
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:407
 #: wp-admin/includes/class-wp-ms-users-list-table.php:241
 msgid "Select %s"
-msgstr "Selekteer %s"
+msgstr "Kies %s"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:850
 msgid "Select comment"
-msgstr "Selekteer kommentaar"
+msgstr "Kies 'n opmerking"
 
 #. translators: %s: URL to Categories to Tags Converter tool.
 #: wp-admin/edit-tags.php:622
@@ -8956,7 +8970,7 @@ msgstr "Pasmaak &#8220;%s&#8221;"
 #: wp-admin/user-new.php:532 wp-admin/user-new.php:556
 #: wp-admin/user-edit.php:454 wp-admin/user-edit.php:502
 msgid "(required)"
-msgstr "(vereis)"
+msgstr "(verpligtend)"
 
 #: wp-admin/link.php:111
 msgid "Edit Link"
@@ -8964,7 +8978,7 @@ msgstr "Wysig skakel"
 
 #: wp-admin/includes/user.php:151
 msgid "<strong>Error</strong>: Please enter a nickname."
-msgstr "<strong>Fout</strong>: Vul asseblief jou bynaam in."
+msgstr "<strong>Fout</strong>: Vul asseblief 'n skuilnaam in."
 
 #: wp-admin/credits.php:54
 msgid "https://wordpress.org/about/"
@@ -8979,7 +8993,7 @@ msgstr "Selekteer almal"
 
 #: wp-admin/includes/meta-boxes.php:175 wp-admin/js/post.js:866
 msgid "Public, Sticky"
-msgstr "Publiek, Sweef"
+msgstr "Publiek, Geplak"
 
 #: wp-admin/includes/meta-boxes.php:108 wp-admin/includes/meta-boxes.php:143
 #: wp-admin/js/post.js:789 wp-admin/js/post.js:791
@@ -9004,7 +9018,7 @@ msgstr "Skaal"
 
 #: wp-admin/includes/meta-boxes.php:862
 msgid "No comments yet."
-msgstr "Geen kommentare sover."
+msgstr "Daar is nog nie enige opmerkings nie."
 
 #: wp-admin/includes/class-wp-themes-list-table.php:279
 #: wp-admin/includes/class-wp-theme-install-list-table.php:509
@@ -9019,7 +9033,7 @@ msgstr "Vou in kantkolom"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:463
 msgid "Plugin"
-msgstr "Plugin"
+msgstr "Uitbreiding"
 
 #: wp-admin/includes/media.php:2545
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:368
@@ -9042,7 +9056,7 @@ msgstr "Woorde telling: %s"
 
 #: wp-admin/edit-comments.php:308 wp-admin/edit-comments.php:314
 msgid "Edit comment"
-msgstr "Wysig kommentaar"
+msgstr "Wysig opmerking"
 
 #: wp-admin/options-general.php:337 wp-admin/options-general.php:374
 msgid "Preview:"
@@ -9329,7 +9343,7 @@ msgstr "Om die gebruik van hierdie bladsy toe te laat om databasis probleme te h
 
 #: wp-admin/includes/class-wp-comments-list-table.php:219
 msgid "No comments awaiting moderation."
-msgstr "Geen kommentaar wag op goedkeuring."
+msgstr "Geen opmerkings wag om nagesien te word nie."
 
 #: wp-admin/includes/plugin-install.php:575
 msgctxt "Plugin installer section title"
@@ -9349,7 +9363,7 @@ msgstr "Skermfotos"
 #: wp-admin/includes/plugin-install.php:571
 msgctxt "Plugin installer section title"
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Kwel-vrae"
 
 #: wp-admin/includes/plugin-install.php:570
 msgctxt "Plugin installer section title"
@@ -9442,15 +9456,18 @@ msgstr "Voer die e-posadres van 'n bestaande gebruiker op hierdie netwerk in om 
 msgid "Show Toolbar when viewing site"
 msgstr "Wys nutsbalk wanneer jy kyk na die webwerf"
 
+#. translators: %s: HelpHub URL
 #. translators: %s: HelpHub URL.
 #. translators: %s: Documentation URL.
-#: wp-admin/about.php:83 wp-admin/about.php:352
+#: wp-admin/about.php:83 wp-admin/about.php:108 wp-admin/about.php:377
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Vir meer informasie, sien <a href=\"%s\">die vrystelling notas</a>."
 
+#. translators: 1: WordPress version number, 2: plural number of bugs. More
+#. than one security issue.
 #. translators: 1: WordPress version number, 2: Plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:346
+#: wp-admin/about.php:71 wp-admin/about.php:371
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Weergawe %1$s</strong> spreek 'n sekuriteit probleem aan en herstel die %2$s probleem."
@@ -9458,14 +9475,14 @@ msgstr[1] "<strong>Weergawe %1$s</strong> spreek 'n sekuriteit probleem aan en h
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:340
+#: wp-admin/about.php:365
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Weergawe %1$s</strong> spreek 'n sekuriteit probleem aan en herstel die %2$s probleem."
 msgstr[1] "<strong>Weergawe %1$s</strong> spreek 'n sekuriteit probleem aan en herstel die %2$s probleme."
 
 #. translators: 1: WordPress version number, 2: Plural number of bugs.
-#: wp-admin/about.php:71 wp-admin/about.php:334
+#: wp-admin/about.php:96 wp-admin/about.php:359
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Weergawe %1$s</strong> herstel die %2$s probleem."
@@ -9476,19 +9493,19 @@ msgid "Welcome to your WordPress Dashboard! This is the screen you will see when
 msgstr "Welkom tot jou WordPress Beheerpaneel! Hierdie is die skerm wat jy sal sien wanneer jy inteken tot jou webwerf. Dit gee jou toegang tot al jou webwerf se beheer eienskappe van WordPress. Jy kan hulp kry vir enige skerm deur te kliek op die Help oortjie boaan die skerm se titel. "
 
 #. translators: %s: WordPress version number.
-#: wp-admin/about.php:331
+#: wp-admin/about.php:356
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Weergawe %s</strong> het 'n paar sekuriteits probleme aangespreek."
 
-#: wp-admin/about.php:325
+#: wp-admin/about.php:350
 msgid "Maintenance and Security Release"
 msgstr "Onderhoud en sekuriteit uitgawe"
 
-#: wp-admin/about.php:322
+#: wp-admin/about.php:347
 msgid "Security Release"
 msgstr "Sekuriteit uitgawe"
 
-#: wp-admin/about.php:319
+#: wp-admin/about.php:344
 msgid "Maintenance Release"
 msgstr "Onderhouds vrystelling"
 
@@ -9501,7 +9518,7 @@ msgstr "Wat is nuut"
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Jy kan jou skakelstruktuur op hierdie skerm kies. Jy kan kies uit 'n paar algemene verstellings of 'n unieke skakelstruktuur skep."
 
-#: wp-admin/about.php:306
+#: wp-admin/about.php:331
 msgid "Return to Updates"
 msgstr "Terug na Bywerkings"
 
@@ -9569,7 +9586,7 @@ msgstr "Indien die invoer funksie wat jy nodig het nie gelys word nie kan jy in 
 
 #: wp-admin/edit-comments.php:181
 msgid "Moderating Comments"
-msgstr "Redigeer kommentare"
+msgstr "Sien opmerkings na"
 
 #. translators: %s: URL to Import screen.
 #: wp-admin/tools.php:77
@@ -9578,7 +9595,7 @@ msgstr "Indien jy kategorieë na sleutelwoorde wil verander of anders om, gebrui
 
 #: wp-admin/plugin-install.php:98
 msgid "Adding Plugins"
-msgstr "Voeg Plugins by"
+msgstr "Besig om uitbreidings by te voeg..."
 
 #: wp-admin/themes.php:163
 msgid "Adding Themes"
@@ -9614,7 +9631,7 @@ msgstr "Unieke strukture"
 
 #: wp-admin/options-permalink.php:219
 msgid "Common Settings"
-msgstr "Algemene stellings"
+msgstr "Algemene verstellings"
 
 #: wp-admin/options-permalink.php:23
 msgid "Permalinks are the permanent URLs to your individual pages and blog posts, as well as your category and tag archives. A permalink is the web address used to link to your content. The URL to each post should be permanent, and never change &#8212; hence the name permalink."
@@ -9642,7 +9659,7 @@ msgstr "Indien jy dit verlang sal WordPress automaties verskeie dienste in kenni
 
 #: wp-admin/options-writing.php:33
 msgid "Post Via Email"
-msgstr "Artikel via e-pos"
+msgstr "Dra by via e-pos"
 
 #: wp-admin/options-discussion.php:24
 msgid "This screen provides many options for controlling the management and display of comments and links to your posts/pages. So many, in fact, they won&#8217;t all fit here! :) Use the documentation links to get information on what each discussion setting does."
@@ -9782,11 +9799,11 @@ msgstr "Omdat dit 'n multi-webwerf installasie is, mag jy 'n nuwe rekening skep 
 msgid "Welcome to WordPress %s."
 msgstr "Welkom by WordPress %s."
 
-#: wp-admin/about.php:309
+#: wp-admin/about.php:334
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Gaan na Dashboard &rarr; Tuis"
 
-#: wp-admin/about.php:306
+#: wp-admin/about.php:331
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Gaan terug na Dashboard &rarr; Tuis"
 
@@ -9794,11 +9811,11 @@ msgstr "Gaan terug na Dashboard &rarr; Tuis"
 msgid "WordPress is created by a worldwide team of passionate individuals."
 msgstr "WordPress word deur 'n wêreldwye span van passie-volle indivdue gemaak."
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:220
 msgid "For developers"
 msgstr "Vir ontwikkelaars"
 
-#: wp-admin/includes/dashboard.php:1887 wp-admin/includes/dashboard.php:1889
+#: wp-admin/includes/dashboard.php:1889 wp-admin/includes/dashboard.php:1891
 msgid "Customize Your Site"
 msgstr "Pas jou webwerf aan"
 
@@ -9831,7 +9848,7 @@ msgstr "Kern ontwikkelaar"
 
 #: wp-admin/includes/class-plugin-upgrader.php:441
 msgid "No valid plugins were found."
-msgstr "Geen geldige Plugins was gevind nie."
+msgstr "Geen geldige uitbreidings is gevind nie."
 
 #: wp-admin/includes/class-plugin-upgrader.php:82
 msgid "The plugin contains no files."
@@ -9853,7 +9870,7 @@ msgstr "Alle skakels"
 #. translators: %s: Number of plugins.
 #: wp-admin/includes/plugin-install.php:310
 msgid "%s plugins"
-msgstr "%s Plugins"
+msgstr "%s uitbreidings"
 
 #. translators: %s: Number of plugins.
 #: wp-admin/includes/plugin-install.php:308
@@ -9895,7 +9912,7 @@ msgid "Tumblr"
 msgstr "Tumblr"
 
 #. translators: 1: Browser update URL, 2: Browser name, 3: Browse Happy URL.
-#: wp-admin/includes/dashboard.php:1628
+#: wp-admin/includes/dashboard.php:1630
 msgid "<a href=\"%1$s\" class=\"update-browser-link\">Update %2$s</a> or learn how to <a href=\"%3$s\" class=\"browse-happy-link\">browse happy</a>"
 msgstr "<a href=\"%1$s\" class=\"update-browser-link\">Opdateer %2$s</a> of leer hoe om  <a href=\"%3$s\" class=\"browse-happy-link\">gelukkig te blaai</a>"
 
@@ -9966,13 +9983,13 @@ msgstr "Opdaterings %s"
 
 #: wp-admin/menu.php:242 wp-admin/network/menu.php:105
 msgid "Installed Plugins"
-msgstr "Geïnstalleerde Plugins"
+msgstr "Geïnstalleerde Uitbreidings"
 
 #. translators: %s: Number of pending plugin updates.
 #. translators: %s: Number of available plugin updates.
 #: wp-admin/menu.php:240 wp-admin/network/menu.php:88
 msgid "Plugins %s"
-msgstr "Plugins %s"
+msgstr "Uitbreidings %s"
 
 #: wp-admin/menu.php:260 wp-admin/network/menu.php:56
 msgid "All Users"
@@ -9983,11 +10000,11 @@ msgstr "Alle gebruikers"
 #: wp-admin/network/menu.php:57
 msgctxt "user"
 msgid "Add New"
-msgstr "Skep Nuwe"
+msgstr "Skep"
 
 #: wp-admin/includes/ms.php:987 wp-admin/users.php:345
 msgid "Confirm Deletion"
-msgstr "Bevestig verwydering"
+msgstr "Bevestig uitwissing"
 
 #: wp-admin/includes/class-wp-users-list-table.php:359
 #: wp-admin/user-new.php:416 wp-admin/user-new.php:580
@@ -10005,7 +10022,7 @@ msgstr "Voeg bestaande gebruiker by"
 #: wp-admin/users.php:584 wp-admin/network/site-users.php:279
 #: wp-admin/network/users.php:291
 msgid "Search Users"
-msgstr "Soek Gebruikers"
+msgstr "Deursoek gebruikers"
 
 #: wp-admin/users.php:526 wp-admin/network/site-users.php:260
 msgid "User removed from this site."
@@ -10042,7 +10059,7 @@ msgstr "Waarskuwing:"
 #: wp-admin/network/user-new.php:107 wp-admin/network/site-users.php:337
 #: wp-admin/network/site-users.php:364
 msgid "Add New User"
-msgstr "Voeg nuwe gebruiker by"
+msgstr "Skep 'n nuwe gebruiker"
 
 #: wp-admin/user-new.php:335 wp-admin/network/user-new.php:91
 #: wp-admin/network/site-users.php:242 wp-admin/network/users.php:262
@@ -10117,7 +10134,7 @@ msgstr "Deaktiveer"
 #: wp-admin/includes/class-wp-ms-users-list-table.php:115
 #: wp-admin/includes/class-wp-ms-users-list-table.php:514
 msgid "Delete"
-msgstr "Verwyder"
+msgstr "Wis Uit"
 
 #: wp-admin/ms-delete-site.php:38 wp-admin/menu.php:286
 msgid "Delete Site"
@@ -10135,7 +10152,7 @@ msgstr "Installeer"
 #: wp-admin/options.php:335 wp-admin/network/settings.php:141
 #: wp-admin/network/sites.php:351
 msgid "Settings saved."
-msgstr "Verstellings gestoor."
+msgstr "Die instellings is gestoor."
 
 #: wp-admin/options-reading.php:50 wp-admin/edit-tags.php:304
 #: wp-admin/link-manager.php:77 wp-admin/options-writing.php:51
@@ -10182,7 +10199,7 @@ msgstr "Nota: Nie een van hierdie opsies blok toegang tot jou webwerf. Dit hang 
 
 #: wp-admin/options-permalink.php:238
 msgid "Post name"
-msgstr "Artikel se naam"
+msgstr "Bydrae se naam"
 
 #: wp-admin/options-permalink.php:227 wp-admin/options-permalink.php:231
 #: wp-admin/options-permalink.php:239
@@ -10232,7 +10249,7 @@ msgstr ""
 
 #: wp-admin/includes/theme.php:316 wp-admin/includes/meta-boxes.php:494
 msgid "Post Formats"
-msgstr "Artikel formate"
+msgstr "Bydrae-formate"
 
 #: wp-admin/includes/theme.php:315
 msgid "Full Width Template"
@@ -10240,19 +10257,19 @@ msgstr "Vol-wydte modelvorm"
 
 #: wp-admin/includes/theme.php:312
 msgid "Featured Images"
-msgstr "Hooffoto's"
+msgstr "Fokus-illustrasies"
 
 #: wp-admin/includes/theme.php:311
 msgid "Featured Image Header"
-msgstr "Hooffoto in die mashoof"
+msgstr "Fokus-illustrasie kopstrook"
 
 #. translators: %s: Browser name and link.
-#: wp-admin/includes/dashboard.php:1606
+#: wp-admin/includes/dashboard.php:1608
 msgid "It looks like you're using an old version of %s. For the best WordPress experience, please update your browser."
 msgstr "Dit lyk of jy 'n ouer weergawe van %s gebruik. Bring jou webblaaier op datum vir die beste WordPress ondervinding."
 
 #. translators: %s: Browser name and link.
-#: wp-admin/includes/dashboard.php:1600
+#: wp-admin/includes/dashboard.php:1602
 msgid "It looks like you're using an insecure version of %s. Using an outdated browser makes your computer unsafe. For the best WordPress experience, please update your browser."
 msgstr "Dit lyk asof jy 'n onveilige weergawe van %s gebruik. Deur die gebruik van 'n ou webleser, maak jou rekenaar onveilig. Vir die beste WordPress ondervinding, opdateer asseblief jou webleser."
 
@@ -10333,7 +10350,7 @@ msgstr "WordPress is gratis en oopbronsagteware wat deur 'n verspreide, wêreldw
 
 #: wp-admin/menu.php:109
 msgid "All Comments"
-msgstr "Alle kommentare"
+msgstr "Alle opmerkings"
 
 #: wp-admin/credits.php:139
 msgid "Lead Developer"
@@ -10370,7 +10387,7 @@ msgstr "Krediete"
 #: wp-admin/widgets.php:441
 msgctxt "removing-widget"
 msgid "Deactivate"
-msgstr "Onaktiveer"
+msgstr "Deaktiveer"
 
 #: wp-admin/includes/dashboard.php:34
 msgid "Your browser is out of date!"
@@ -10403,7 +10420,7 @@ msgstr "Jy kan een van jou vorige opgelaaide hoofstroke kies of wys 'n ewekansig
 
 #: wp-admin/menu-header.php:280
 msgid "Collapse menu"
-msgstr "Maak kieslys toe. "
+msgstr "Vou kieslys in"
 
 #: wp-admin/includes/class-custom-image-header.php:647
 msgid "Uploaded Images"
@@ -10627,7 +10644,7 @@ msgstr "Alle inhoud"
 
 #: wp-admin/export.php:175
 msgid "Choose what to export"
-msgstr "Kies wat om oor te skakel"
+msgstr "Kies wat om in die uitgaande-oordrag in te sluit"
 
 #. translators: %s: Number of comments.
 #: wp-admin/includes/class-wp-comments-list-table.php:247
@@ -10681,8 +10698,8 @@ msgstr "<strong>Gee aandag:</strong> Enige veranderinge wat jy maak in jou tema 
 msgctxt "posts"
 msgid "Sticky <span class=\"count\">(%s)</span>"
 msgid_plural "Sticky <span class=\"count\">(%s)</span>"
-msgstr[0] "Drywend <span class=\"count\">(%s)</span>"
-msgstr[1] "Drywend <span class=\"count\">(%s)</span>"
+msgstr[0] "Geplak <span class=\"count\">(%s)</span>"
+msgstr[1] "Geplak<span class=\"count\">(%s)</span>"
 
 #: wp-admin/update-core.php:880
 msgid "Check Again"
@@ -10755,11 +10772,11 @@ msgid_plural "%s users"
 msgstr[0] "%s gebruiker"
 msgstr[1] "%s gebruikers"
 
-#: wp-admin/includes/dashboard.php:1443
+#: wp-admin/includes/dashboard.php:1445
 msgid "https://wordpress.org/news/feed/"
 msgstr "https://wordpress.org/news/feed/"
 
-#: wp-admin/includes/dashboard.php:1434
+#: wp-admin/includes/dashboard.php:1436
 msgid "https://wordpress.org/news/"
 msgstr "https://wordpress.org/news/"
 
@@ -10782,7 +10799,7 @@ msgstr "Daar is 'n nuwe weergawe van %1$s beskikbaar. <a href=\"%2$s\" %3$s>Kyk 
 msgid "Click Save Menu to make pending menu items public."
 msgstr "Kliek op Stoor kieslys om die hangende kieslys items bekend te maak."
 
-#: wp-admin/includes/dashboard.php:1549
+#: wp-admin/includes/dashboard.php:1551
 msgid "Storage Space"
 msgstr "Stoorspasie"
 
@@ -10931,7 +10948,7 @@ msgstr "Redakteurs kan artikels publiseer, hul eie en ander gebruikers se artike
 
 #: wp-admin/user-edit.php:55
 msgid "Remember to click the Update Profile button when you are finished."
-msgstr "Onthou om op die Opdateer profiel knoppie te kliek wanneer jy klaar is."
+msgstr "Onthou om op die \"Werk profiel by\"-knoppie te kliek wanneer jy klaar is."
 
 #: wp-admin/user-edit.php:54
 msgid "Required fields are indicated; the rest are optional. Profile information will only be displayed if your theme is set up to do so."
@@ -10939,7 +10956,7 @@ msgstr "Vereisde velde word aangedui; die res is opsioneel. Profiel informasie s
 
 #: wp-admin/user-edit.php:52
 msgid "Your username cannot be changed, but you can use other fields to enter your real name or a nickname, and change which name to display on your posts."
-msgstr "Jou gebruikersnaam kan nie verander word nie, maar jy kan ander velde gebruik om jou regte naam of noemnaam in te voer. Jy kan dan kies watter naam om in jou artikels verkyn."
+msgstr "Jou gebruiker-naam kan nie verander word nie, maar jy kan ander velde gebruik om jou regte naam of skuilnaam in te vul en dan die naam te verander wat op jou bydraes voorkom."
 
 #: wp-admin/comment.php:64
 msgid "You can also moderate the comment from this screen using the Status box, where you can also change the timestamp of the comment."
@@ -10983,11 +11000,11 @@ msgstr "Die boksies vir skakelnaam, webadres en beskrywing het 'n vaste posisie,
 
 #: wp-admin/update-core.php:467
 msgid "Your themes are all up to date."
-msgstr "Jou temas is almal opdatum."
+msgstr "Al jou temas is op datum."
 
 #: wp-admin/update-core.php:308
 msgid "Your plugins are all up to date."
-msgstr "Jou Plugins is almal opdatum. "
+msgstr "Al jou uitbreidings is op datum."
 
 #: wp-admin/update-core.php:282
 msgid "While your site is being updated, it will be in maintenance mode. As soon as your updates are complete, this mode will be deactivated."
@@ -11156,7 +11173,7 @@ msgstr "Standaard fotos"
 #: wp-admin/includes/class-wp-comments-list-table.php:751
 #: wp-admin/includes/dashboard.php:725
 msgid "Delete this comment permanently"
-msgstr "Verwyder permanent die kommentaar"
+msgstr "Wis die opmerking uit"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:741
 msgid "Restore this comment from the Trash"
@@ -11166,7 +11183,7 @@ msgstr "Herwin die kommentaar uit die asblik"
 #: wp-admin/includes/class-language-pack-upgrader-skin.php:78
 #: wp-admin/includes/class-bulk-theme-upgrader-skin.php:56
 msgid "Return to WordPress Updates page"
-msgstr "Gaan terug na WordPress se opdateringsbladsy"
+msgstr "Gaan terug na WordPress se opgradeering-blad"
 
 #: wp-admin/edit-form-advanced.php:400
 msgid "<strong>Discussion</strong> &mdash; You can turn comments and pings on or off, and if there are comments on the post, you can see them here and moderate them."
@@ -11199,7 +11216,7 @@ msgstr "Jy kan die uitleg van die skerm op 'n hele paar maniere verander:"
 
 #: wp-admin/plugins.php:756
 msgid "Search Installed Plugins"
-msgstr "Soek deur geinstalleerde Plugins"
+msgstr "Deursoek geïnstalleerde uitbreidings..."
 
 #: wp-admin/nav-menus.php:721
 msgid "Your theme supports one menu. Select which menu you would like to use."
@@ -11240,7 +11257,7 @@ msgstr "Opruim"
 #: wp-admin/comment.php:132
 msgctxt "comment"
 msgid "Mark as spam"
-msgstr "Wys uit as pla-pos"
+msgstr "Wys uit as snert"
 
 #: wp-admin/includes/class-custom-background.php:303
 msgid "Remove Background Image"
@@ -11250,7 +11267,7 @@ msgstr "Verwyder agtergrond foto"
 #. translators: %s: Link to post.
 #: wp-admin/edit-comments.php:151 wp-admin/edit-comments.php:217
 msgid "Comments on &#8220;%s&#8221;"
-msgstr "Kommentaar op &#8220;%s&#8221;"
+msgstr "Opmerkings op &#8220;%s&#8221;"
 
 #: wp-admin/includes/nav-menu.php:1104
 msgid "Show advanced menu properties"
@@ -11280,13 +11297,13 @@ msgstr "Aangeskakel"
 #: wp-admin/includes/class-wp-comments-list-table.php:732
 msgctxt "comment"
 msgid "Not Spam"
-msgstr "Geen strooi"
+msgstr "Nie snert nie"
 
 #: wp-admin/includes/class-custom-background.php:318
 msgid "This will restore the original background image. You will not be able to restore any customizations."
 msgstr "Hierdie sal die oorspronklike agtergrond foto herstel. Jy sal nie enige veranderinge kan herstel nie. "
 
-#: wp-admin/includes/dashboard.php:1452
+#: wp-admin/includes/dashboard.php:1454
 msgid "WordPress Blog"
 msgstr "WordPress webjoernaal"
 
@@ -11418,15 +11435,15 @@ msgstr "Jammer, jy het nie toestemming om hierdie item na die asblik te skuif ni
 #: wp-admin/edit-comments.php:295
 msgid "%s comment restored from the Trash."
 msgid_plural "%s comments restored from the Trash."
-msgstr[0] "%s kommentaar herwin uit die asblik."
-msgstr[1] "%s kommentare herwin uit die asblik."
+msgstr[0] "%s opmerking is uit die asblik herwin."
+msgstr[1] "%s opmerkings is uit die asblik herwin."
 
 #. translators: %s: Number of comments.
 #: wp-admin/edit-comments.php:290
 msgid "%s comment moved to the Trash."
 msgid_plural "%s comments moved to the Trash."
-msgstr[0] "%s kommentaar geskuif na die asblik. "
-msgstr[1] "%s kommentare geskuif na die asblik. "
+msgstr[0] "%s opmerking is in die asblik gegooi."
+msgstr[1] "%s opmerkings is in die asblik gegooi."
 
 #: wp-admin/update-core.php:474
 msgid "The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;."
@@ -11485,7 +11502,7 @@ msgstr "Dateer Nou Op"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:618
 #: wp-admin/import.php:204
 msgid "More information about %s"
-msgstr "Meer informasie oor %s"
+msgstr "Meer inligting oor %s"
 
 #: wp-admin/user-edit.php:436
 msgid "Grant this user super admin privileges for the Network."
@@ -11511,7 +11528,7 @@ msgstr "<strong>Fout</strong>: \"Tabel Voorvoeging\" kan slegs syfers, letters e
 
 #: wp-admin/user-edit.php:406
 msgid "Usernames cannot be changed."
-msgstr "Gebruikerne kon nie verander word nie. "
+msgstr "Gebruikername kan nie verander word nie."
 
 #: wp-admin/options-reading.php:156
 msgid "items"
@@ -11533,7 +11550,7 @@ msgstr "In 'n paar woorde, verduidelik waaroor hierdie webwerf is. "
 
 #: wp-admin/includes/class-walker-nav-menu-edit.php:212
 msgid "CSS Classes (optional)"
-msgstr "CSS klasse (optioneel)"
+msgstr "CSS-klasse (opsioneel)"
 
 #: wp-admin/includes/nav-menu.php:1106
 msgid "Link Target"
@@ -11615,7 +11632,7 @@ msgstr "Opdateer WordPress"
 #: wp-admin/update-core.php:970 wp-admin/update-core.php:974
 #: wp-admin/plugins.php:156
 msgid "Update Plugins"
-msgstr "Opdateer Plugins"
+msgstr "Gradeer uitbreidings op"
 
 #. translators: 1: URL to WordPress release notes, 2: WordPress version number,
 #. 3: Minimum required PHP version number, 4: Minimum required MySQL version
@@ -11626,13 +11643,13 @@ msgstr "Jy kan nie opdateer nie, want <a href=\"%1$s\">WordPress %2$s</a> benodi
 
 #: wp-admin/update-core.php:797 wp-admin/update-core.php:858
 msgid "WordPress Updates"
-msgstr "WordPress bywerkings"
+msgstr "Opgradeering van WordPress"
 
 #: wp-admin/includes/class-walker-nav-menu-edit.php:175
 msgid "Edit menu item"
 msgstr "Wysig kieslys item"
 
-#: wp-admin/about.php:309
+#: wp-admin/about.php:334
 msgid "Go to Dashboard"
 msgstr "Gaan na beheerpaneel"
 
@@ -11647,8 +11664,8 @@ msgstr[1] "Inval <span class=\"count\">(%s)</span>"
 #: wp-admin/includes/class-wp-plugins-list-table.php:531
 msgid "Must-Use <span class=\"count\">(%s)</span>"
 msgid_plural "Must-Use <span class=\"count\">(%s)</span>"
-msgstr[0] "Moet-gebruik <span class=\"count\">(%s)</span>"
-msgstr[1] "Moet-gebruik <span class=\"count\">(%s)</span>"
+msgstr[0] "Verpligtend <span class=\"count\">(%s)</span>"
+msgstr[1] "Verpligtend <span class=\"count\">(%s)</span>"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:759
 msgid "Inactive:"
@@ -11668,7 +11685,7 @@ msgstr "Jy is van plan om die volgende Plugin te verwyder:"
 
 #: wp-admin/plugins.php:340
 msgid "Delete Plugin"
-msgstr "Verwyder Plugin"
+msgstr "Wis uitbreiding uit"
 
 #: wp-admin/options-general.php:295
 msgid "This timezone does not observe daylight saving time."
@@ -11727,7 +11744,7 @@ msgstr "Die leêr is leeg. Laai asseblief iets daarin, op."
 
 #: wp-admin/edit-comments.php:314
 msgid "This comment is already marked as spam."
-msgstr "Hierdie kommentaar is al klaar gemerk as strooi. "
+msgstr "Hierdie opmerking is reeds as snert uitgewys."
 
 #: wp-admin/edit-comments.php:311
 msgid "View Trash"
@@ -11735,11 +11752,11 @@ msgstr "Bekyk die asblik"
 
 #: wp-admin/edit-comments.php:311
 msgid "This comment is already in the Trash."
-msgstr "Hierdie kommentaar is reeds in die asblik. "
+msgstr "Hierdie opmerking is reeds in die asblik gegooi."
 
 #: wp-admin/edit-comments.php:308
 msgid "This comment is already approved."
-msgstr "Hierdie kommentaar is alreeds goedgekeur. "
+msgstr "Hierdie opmerking is reeds goedgekeur."
 
 #: wp-admin/comment.php:158
 msgid "This comment is currently in the Trash."
@@ -11763,11 +11780,11 @@ msgstr "Kategorieë:"
 
 #: wp-admin/widgets.php:129
 msgid "Drag widgets here to remove them from the sidebar but keep their settings."
-msgstr "Trek Widgets hier om hulle te verwyder van die kantkolom, maar om die verstellings te behou. "
+msgstr "Trek wiggies hiernatoe om hul van die wiggie-areas te verwyder, maar hul instellings te behou."
 
 #: wp-admin/widgets.php:438 wp-admin/widgets.php:441
 msgid "Available Widgets"
-msgstr "Beskikbare Widgets"
+msgstr "Beskikbare Wiggies"
 
 #: wp-admin/widgets.php:379
 msgid "Error in displaying the widget settings form."
@@ -11785,7 +11802,7 @@ msgstr "Die veranderings is gestoor."
 
 #: wp-admin/widgets.php:357
 msgid "Save Widget"
-msgstr "Stoor Widget"
+msgstr "Stoor wiggie"
 
 #: wp-admin/widgets.php:315
 msgid "Position"
@@ -11798,11 +11815,11 @@ msgstr "Selekteer beide die kantkolom vir dié Widget én die posisie van die Wi
 #. translators: %s: Widget name.
 #: wp-admin/widgets.php:298
 msgid "Widget %s"
-msgstr "Widget %s"
+msgstr "Wiggie %s"
 
 #: wp-admin/widgets.php:126
 msgid "Inactive Widgets"
-msgstr "Onaktiewe Widgets"
+msgstr "Onaktiewe Wiggies"
 
 #: wp-admin/includes/class-wp-users-list-table.php:300
 msgid "Change"
@@ -11867,7 +11884,7 @@ msgstr "Opdateer gebruiker"
 
 #: wp-admin/user-edit.php:777
 msgid "Update Profile"
-msgstr "Opdateer profiel"
+msgstr "Werk profiel by"
 
 #: wp-admin/user-edit.php:746
 msgid "Additional Capabilities"
@@ -11903,11 +11920,11 @@ msgstr "Kontak besonderhede"
 
 #: wp-admin/user-edit.php:459
 msgid "Display name publicly as"
-msgstr "Naam om in die publiek te verskyn"
+msgstr "Vertoon as"
 
 #: wp-admin/user-edit.php:454
 msgid "Nickname"
-msgstr "Troetelnaam"
+msgstr "Skuilnaam"
 
 #: wp-admin/user-new.php:494 wp-admin/user-edit.php:449
 msgid "Last Name"
@@ -11919,7 +11936,7 @@ msgstr "Noemnaam"
 
 #: wp-admin/user-edit.php:321
 msgid "Enable keyboard shortcuts for comment moderation."
-msgstr "Aktiveer kortpadsleutels vir kommentaar moderasie."
+msgstr "Aktiveer kortpad-sleutels om opmerkings na te sien."
 
 #: wp-admin/includes/misc.php:952 wp-admin/user-edit.php:295
 msgid "Admin Color Scheme"
@@ -11927,7 +11944,7 @@ msgstr "Admin kleurskema"
 
 #: wp-admin/user-edit.php:264
 msgid "Disable the visual editor when writing"
-msgstr "Maak die visuele skryfpaneel onaktief tydens skryf "
+msgstr "Deaktiveer die visuele skryfpaneel terwyl jy skryf"
 
 #: wp-admin/user-edit.php:261
 msgid "Visual Editor"
@@ -11972,7 +11989,7 @@ msgstr "Jammer, jy word nie toegelaat om hierdie items te verwyder nie. "
 
 #: wp-admin/upgrade.php:73
 msgid "Your WordPress database is already up to date!"
-msgstr "Jou WordPress databasis is al klaar opdatum!"
+msgstr "Jou WordPress-databasis is reeds op datum."
 
 #. translators: %s: File name.
 #: wp-admin/update.php:305
@@ -11982,7 +11999,7 @@ msgstr "Besig om die tema vanaf die opgelaaide leêr te installeer: %s"
 #: wp-admin/update.php:298 wp-admin/theme-install.php:58
 #: wp-admin/theme-install.php:152 wp-admin/theme-install.php:154
 msgid "Upload Theme"
-msgstr "Laai tema op"
+msgstr "Laai 'n tema op"
 
 #. translators: %s: Theme name and version.
 #: wp-admin/update.php:278
@@ -11997,7 +12014,7 @@ msgstr "Besig om die uitbreiding vanaf die opgelaaide leêr te installeer: %s"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:114
 #: wp-admin/update.php:156 wp-admin/plugin-install.php:138
 msgid "Upload Plugin"
-msgstr "Laai Plugin op"
+msgstr "Laai 'n uitbreiding op"
 
 #. translators: %s: Plugin name and version.
 #: wp-admin/update.php:132
@@ -12104,7 +12121,7 @@ msgstr "Jy probeer 'n item wysig wat nie bestaan nie. Miskien was dit verwyder?"
 
 #: wp-admin/includes/class-wp-plugins-list-table.php:418
 msgid "No plugins found."
-msgstr "Geen Plugins gevind."
+msgstr "Geen uitbreidings is gevind nie."
 
 #. translators: %s: Number of plugins.
 #: wp-admin/includes/class-wp-plugins-list-table.php:523
@@ -12178,7 +12195,7 @@ msgstr "Plugins bry die funksies van WordPress uit. Wanneer 'n Plugin geïnstall
 
 #: wp-admin/plugins.php:400
 msgid "No, return me to the plugin list"
-msgstr "Nee, vat my terug na die lys met Plugins"
+msgstr "Nee, vat my terug na die uitbreiding-lys"
 
 #: wp-admin/plugins.php:392
 msgid "Yes, delete these files"
@@ -12191,12 +12208,12 @@ msgstr "Is jy seker jy wil hierdie leêrs verwyder?"
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:108
 msgctxt "Plugin Installer"
 msgid "Popular"
-msgstr "Populêr"
+msgstr "Gewild"
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:107
 msgctxt "Plugin Installer"
 msgid "Featured"
-msgstr "Gekeurde"
+msgstr "Voorgestel"
 
 #: wp-admin/theme-editor.php:314 wp-admin/plugin-editor.php:287
 msgid "Update File"
@@ -12225,11 +12242,11 @@ msgstr "Leêrs van hierdie tipe kan nie verander word nie. "
 
 #: wp-admin/plugin-editor.php:21
 msgid "Edit Plugins"
-msgstr "Wysig Plugins"
+msgstr "Wysig uitbreidings"
 
 #: wp-admin/options.php:348
 msgid "All Settings"
-msgstr "Alle stellings"
+msgstr "Alle verstellings"
 
 #: wp-admin/options-writing.php:44 wp-admin/options-writing.php:201
 msgid "Update Services"
@@ -12237,7 +12254,7 @@ msgstr "Opdateer dienste"
 
 #: wp-admin/options-writing.php:172
 msgid "Default Mail Category"
-msgstr "Standaard pos kategorie"
+msgstr "Voofafbepaalde bydrae-kategorie"
 
 #: wp-admin/options-writing.php:162
 msgid "Login Name"
@@ -12258,7 +12275,7 @@ msgstr "Om 'n bydrae per e-pos op die webwerf te plaas, benodig jy 'n geheime e-
 
 #: wp-admin/options-writing.php:140
 msgid "Post via email"
-msgstr "Artikel via e-pos"
+msgstr "Dra by via e-pos"
 
 #: wp-admin/options-writing.php:112
 msgid "Default Link Category"
@@ -12311,7 +12328,7 @@ msgstr "<strong>Waarskuwing:</strong> hierdie bladsye moet nie dieselfde wees ni
 #. translators: %s: Select field to choose the page for posts.
 #: wp-admin/options-reading.php:125
 msgid "Posts page: %s"
-msgstr "Artikels bladsy: %s"
+msgstr "Bydrae-blad: %s"
 
 #. translators: %s: URL to Pages screen.
 #: wp-admin/options-reading.php:97
@@ -12324,7 +12341,7 @@ msgstr "Lees verstellings"
 
 #: wp-admin/options-privacy.php:115
 msgid "Privacy Settings"
-msgstr "Privaatheidsinstellings"
+msgstr "Privaatheid-verstellings"
 
 #. translators: %s: web.config
 #: wp-admin/options-permalink.php:392
@@ -12347,7 +12364,7 @@ msgstr "Kategorie basis"
 
 #: wp-admin/options-permalink.php:317
 msgid "Optional"
-msgstr "Optioneel"
+msgstr "Opsioneel"
 
 #: wp-admin/options-permalink.php:244
 msgid "Custom Structure"
@@ -12376,7 +12393,7 @@ msgstr "Skakelstruktuur verander. Verwyder toegang tot %s lêer nou dadelik!"
 
 #: wp-admin/options-permalink.php:16 wp-admin/options-permalink.php:32
 msgid "Permalink Settings"
-msgstr "Skakelstruktuur"
+msgstr "Skakelstruktuur-verstellings"
 
 #: wp-admin/options-media.php:143
 msgid "Organize my uploads into month- and year-based folders"
@@ -12449,7 +12466,7 @@ msgstr "Tydsone"
 
 #: wp-admin/options-general.php:149
 msgid "New User Default Role"
-msgstr "Nuwe gebruiker standaard rol"
+msgstr "Voorafbepaalde rol vir nuwe gebruikers"
 
 #: wp-admin/options-general.php:144
 msgid "Anyone can register"
@@ -12489,7 +12506,7 @@ msgstr "Vir gebruikers wat nie hulle eie Avatar het nie, kan jy òf 'n algemene 
 
 #: wp-admin/options-discussion.php:266 wp-admin/options-discussion.php:267
 msgid "Default Avatar"
-msgstr "Standaard Avatar"
+msgstr "Voorafopgestelde Avatar"
 
 #. translators: Content suitability rating:
 #. https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system
@@ -12562,7 +12579,7 @@ msgstr "'n Kommentaar word gehou vir goedkeuring"
 
 #: wp-admin/options-discussion.php:170
 msgid "Anyone posts a comment"
-msgstr "Enige iemand kan 'n kommentaar maak"
+msgstr "Enige iemand 'n opmerking maak"
 
 #: wp-admin/options-discussion.php:166 wp-admin/options-discussion.php:167
 msgid "Email me whenever"
@@ -12615,7 +12632,7 @@ msgstr "Kommentaar outeur moet 'n naam en e-pos adres invul"
 
 #: wp-admin/options-discussion.php:64 wp-admin/options-discussion.php:65
 msgid "Other comment settings"
-msgstr "Ander kommentaar verstellings"
+msgstr "Ander opmerking-verstellings"
 
 #: wp-admin/options-discussion.php:60
 msgid "These settings may be overridden for individual posts."
@@ -12623,7 +12640,7 @@ msgstr "Hierdie verstellings kan dalk geneutraliseer word vir individuele artike
 
 #: wp-admin/edit-form-advanced.php:405 wp-admin/options-discussion.php:15
 msgid "Discussion Settings"
-msgstr "Besprekingsverstellings"
+msgstr "Bespreking-verstellings"
 
 #: wp-admin/includes/class-wp-users-list-table.php:159
 #: wp-admin/includes/deprecated.php:570
@@ -12681,7 +12698,7 @@ msgstr "Profiel"
 #: wp-admin/plugins.php:725 wp-admin/menu.php:246 wp-admin/network/menu.php:106
 msgctxt "plugin"
 msgid "Add New"
-msgstr "Voeg 'n nuwe by"
+msgstr "Voeg by"
 
 #: wp-admin/menu.php:188
 msgid "Appearance"
@@ -12690,14 +12707,14 @@ msgstr "Voorkoms"
 #. translators: %s: Number of comments.
 #: wp-admin/menu.php:98
 msgid "Comments %s"
-msgstr "Kommentare %s"
+msgstr "Opmerkings %s"
 
 #. translators: Add new file.
 #: wp-admin/media.php:129 wp-admin/upload.php:90 wp-admin/upload.php:273
 #: wp-admin/menu.php:69
 msgctxt "file"
 msgid "Add New"
-msgstr "Voeg 'n nuwe by"
+msgstr "Voeg by"
 
 #: wp-admin/menu.php:67
 msgid "Library"
@@ -12764,11 +12781,11 @@ msgstr[1] "%s skakels verwyder. "
 #: wp-admin/menu.php:83
 msgctxt "link"
 msgid "Add New"
-msgstr "Voeg nuwe by"
+msgstr "Skep"
 
 #: wp-admin/link-add.php:16
 msgid "Add New Link"
-msgstr "Voeg nuwe skakel by"
+msgstr "Skep Skakel"
 
 #: wp-admin/install.php:417
 msgid "Success!"
@@ -12933,7 +12950,7 @@ msgstr "Onderwerp"
 
 #: wp-admin/includes/theme.php:317
 msgid "Sticky Post"
-msgstr "Drywende artikel"
+msgstr "Geplakte bydrae"
 
 #: wp-admin/includes/theme.php:318
 msgid "Theme Options"
@@ -12945,7 +12962,7 @@ msgstr "Unieke kleure"
 
 #: wp-admin/includes/theme.php:302 wp-admin/includes/theme.php:358
 msgid "Features"
-msgstr "Funksies"
+msgstr "Kenmerke"
 
 #: wp-admin/includes/theme.php:328
 msgid "Right Sidebar"
@@ -12973,7 +12990,7 @@ msgstr "Een kolom"
 
 #: wp-admin/includes/theme-install.php:139 wp-admin/theme-install.php:182
 msgid "Feature Filter"
-msgstr "Funksie filter"
+msgstr "Kenmerk-filter"
 
 #: wp-admin/includes/class-wp-screen.php:969
 msgid "Screen Options"
@@ -12981,11 +12998,11 @@ msgstr "Skerm opsies"
 
 #: wp-admin/widgets.php:412
 msgid "Disable accessibility mode"
-msgstr "Onaktiveer toeganklikheid manier"
+msgstr "Deaktiveer die meer toeganklike manier"
 
 #: wp-admin/widgets.php:412
 msgid "Enable accessibility mode"
-msgstr "Aktiveer toeganklikheid manier"
+msgstr "Aktiveer 'n meer toeganklike manier"
 
 #: wp-admin/themes.php:126
 msgid "Manage Themes"
@@ -13057,16 +13074,16 @@ msgstr "Gemisde skedule"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1849
 msgid "Make this post sticky"
-msgstr "Maak hierdie artikel drywend"
+msgstr "Plak hierdie bydrae"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1841
 msgid "Not Sticky"
-msgstr "Nie drywend"
+msgstr "Nie geplak"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1837
 #: wp-admin/includes/class-wp-posts-list-table.php:1840
 msgid "Sticky"
-msgstr "Drywend"
+msgstr "Geplak"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1799
 msgid "Allow Pings"
@@ -13074,7 +13091,7 @@ msgstr "Laat Pings toe"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1790
 msgid "Allow Comments"
-msgstr "Laat kommentare toe"
+msgstr "Laat opmerkings toe"
 
 #: wp-admin/includes/class-wp-posts-list-table.php:1761
 #: wp-admin/includes/class-wp-posts-list-table.php:1774
@@ -13119,7 +13136,7 @@ msgstr "Verhouding"
 #: wp-admin/includes/class-wp-post-comments-list-table.php:27
 msgctxt "column name"
 msgid "Comment"
-msgstr "Kommentaar"
+msgstr "Opmerking"
 
 #. translators: Column name.
 #: wp-admin/includes/class-wp-media-list-table.php:347
@@ -13137,7 +13154,7 @@ msgstr "Lêer"
 #: wp-admin/includes/class-wp-posts-list-table.php:621
 msgctxt "column name"
 msgid "Title"
-msgstr "Titel"
+msgstr "Opskrif"
 
 #: wp-admin/includes/class-wp-terms-list-table.php:484
 #: wp-admin/includes/class-wp-comments-list-table.php:781
@@ -13203,7 +13220,7 @@ msgstr "Kon nie heeltemal die Plugins %s verwyder nie."
 
 #: wp-admin/includes/plugin.php:881
 msgid "One of the plugins is invalid."
-msgstr "Een van die Plugins is ongeldig."
+msgstr "Een van die uitbreidings is ongeldig."
 
 #: wp-admin/includes/plugin.php:731
 msgid "The plugin generated unexpected output."
@@ -13281,7 +13298,7 @@ msgstr "Indien jy 'n uitbreiding het wat in .zip-formaat is, kan jy dit installe
 #: wp-admin/includes/plugin-install.php:337
 #: wp-admin/includes/plugin-install.php:339
 msgid "Search Plugins"
-msgstr "Soek deur Plugins"
+msgstr "Deursoek uitbreidings"
 
 #: wp-admin/includes/plugin-install.php:282
 msgid "You may also browse based on the most popular tags in the Plugin Directory:"
@@ -13289,7 +13306,7 @@ msgstr "Jy kan ook blaai volgens die mees gewilde sleutewoorde in die Plugin gid
 
 #: wp-admin/includes/plugin-install.php:281
 msgid "Popular tags"
-msgstr "Gewilde sleutewoorde"
+msgstr "Gewilde etikette"
 
 #: wp-admin/includes/meta-boxes.php:1372
 msgid "(Leave at 0 for no rating.)"
@@ -13496,7 +13513,7 @@ msgstr "Hoof"
 
 #: wp-admin/includes/meta-boxes.php:872
 msgid "Show comments"
-msgstr "Wys kommentaar"
+msgstr "Wys opmerkings"
 
 #: wp-admin/includes/meta-boxes.php:740
 msgid "Separate multiple URLs with spaces"
@@ -13516,7 +13533,7 @@ msgstr "Nuwe kategorienaam"
 
 #: wp-admin/includes/meta-boxes.php:1141 wp-admin/includes/meta-boxes.php:1143
 msgid "+ Add New Category"
-msgstr "+ Voeg nuwe kategorie by"
+msgstr "+ Skep kategorie"
 
 #: wp-admin/includes/meta-boxes.php:230 wp-admin/includes/meta-boxes.php:244
 msgid "Publish <b>immediately</b>"
@@ -13549,15 +13566,15 @@ msgstr "Skake foto na:"
 
 #: wp-admin/includes/media.php:2880
 msgid "Image Caption"
-msgstr "Foto opskrif"
+msgstr "Illustrasie se byskrif"
 
 #: wp-admin/includes/media.php:2832
 msgid "Filter &#187;"
-msgstr "Filtreer &#187;"
+msgstr "Filter &#187;"
 
 #: wp-admin/includes/media.php:2740
 msgid "All Types"
-msgstr "Alle tipes"
+msgstr "Alle soorte"
 
 #: wp-admin/includes/media.php:2703 wp-admin/includes/media.php:2705
 msgid "Search Media"
@@ -13573,11 +13590,11 @@ msgstr "Gallery kolomme:"
 
 #: wp-admin/includes/media.php:2608
 msgid "Order:"
-msgstr "Orde:"
+msgstr "Volgorde:"
 
 #: wp-admin/includes/media.php:2600
 msgid "Random"
-msgstr "Enige volgorde"
+msgstr "Lukraak"
 
 #: wp-admin/includes/media.php:2599
 msgid "Date/Time"
@@ -13601,7 +13618,7 @@ msgstr "Skakel piekieprentjie na:"
 
 #: wp-admin/includes/media.php:2535 wp-admin/includes/media.php:2616
 msgid "Descending"
-msgstr "Neerdaal"
+msgstr "Dalend"
 
 #: wp-admin/includes/media.php:2534 wp-admin/includes/media.php:2613
 msgid "Ascending"
@@ -13613,7 +13630,7 @@ msgstr "Sorteer volgorde:"
 
 #: wp-admin/includes/media.php:2529
 msgid "All Tabs:"
-msgstr "All oortjies:"
+msgstr "Alle oortjies:"
 
 #: wp-admin/includes/media.php:2337 wp-admin/includes/media.php:2556
 #: wp-admin/includes/media.php:2859
@@ -13905,7 +13922,7 @@ msgstr "Pop-op kommentare modelvorm"
 
 #: wp-admin/includes/file.php:62
 msgid "Comments Template"
-msgstr "Kommentaar modelvorm"
+msgstr "Opmerking-sjabloon"
 
 #: wp-admin/includes/file.php:59
 msgid ".htaccess (for rewrite rules )"
@@ -14003,41 +14020,41 @@ msgstr "Van %1$s op %2$s %3$s"
 #: wp-admin/includes/dashboard.php:734
 msgctxt "verb"
 msgid "Trash"
-msgstr "Skuif na asblik"
+msgstr "Gooi in die asblik"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:759
 #: wp-admin/includes/dashboard.php:733
 msgid "Move this comment to the Trash"
-msgstr "Skuif hierdie kommentaar na die asblik"
+msgstr "Gooi hierdie opmerking in die asblik"
 
 #. translators: "Mark as spam" link.
 #: wp-admin/includes/class-wp-comments-list-table.php:724
 #: wp-admin/includes/dashboard.php:717
 msgctxt "verb"
 msgid "Spam"
-msgstr "Gemors"
+msgstr "Wys uit as snert"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:722
 #: wp-admin/includes/dashboard.php:715
 msgid "Mark this comment as spam"
-msgstr "Merk hierdie kommentaar as strooi"
+msgstr "Wys hierdie opmerking uit as snert"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:790
 #: wp-admin/includes/dashboard.php:707
 msgid "Reply to this comment"
-msgstr "Beantwoord hierdie kommentaar"
+msgstr "Beantwoord hierdie opmerking"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:687
 #: wp-admin/includes/class-wp-comments-list-table.php:712
 #: wp-admin/includes/dashboard.php:692
 msgid "Unapprove this comment"
-msgstr "Keur hierdie kommentaar af"
+msgstr "Keur hierdie opmerking af"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:695
 #: wp-admin/includes/class-wp-comments-list-table.php:704
 #: wp-admin/includes/dashboard.php:684
 msgid "Approve this comment"
-msgstr "Keur hierdie kommentaar goed"
+msgstr "Keur hierdie opmerking goed"
 
 #: wp-admin/edit-form-comment.php:105
 msgid "Pending"
@@ -14055,7 +14072,7 @@ msgstr "Instel"
 msgid "View all"
 msgstr "Kyk na alles"
 
-#: wp-admin/includes/dashboard.php:1485
+#: wp-admin/includes/dashboard.php:1487
 msgid "Other WordPress News"
 msgstr "Ander WordPress nuus"
 
@@ -14110,7 +14127,7 @@ msgstr "Die plugin <strong>%1$s %2$s</strong> is suksesvol geïnstalleer."
 #: wp-admin/includes/class-bulk-plugin-upgrader-skin.php:51
 #: wp-admin/includes/class-plugin-upgrader-skin.php:101
 msgid "Return to Plugins page"
-msgstr "Gaan terug na die Plugins bladsy"
+msgstr "Gaan terug na die uitbreiding-blad"
 
 #: wp-admin/includes/class-plugin-installer-skin.php:116
 #: wp-admin/includes/class-plugin-upgrader-skin.php:96
@@ -14368,7 +14385,7 @@ msgstr "Wanneer jy kliek op die knoppie hier onder, sal WordPress 'n XML lêer v
 
 #: wp-admin/export.php:18 wp-admin/menu.php:281
 msgid "Export"
-msgstr "Voer uit"
+msgstr "Uitgaande oordrag"
 
 #. translators: %s: Number of posts.
 #: wp-admin/includes/class-wp-posts-list-table.php:330
@@ -14397,8 +14414,8 @@ msgstr[1] "%s blokke nie opgedateer nie, iemand is besig om hulle te wysig."
 #: wp-admin/edit.php:334
 msgid "%s post updated."
 msgid_plural "%s posts updated."
-msgstr[0] "%s artikel opgedateer."
-msgstr[1] "%s artikels opgedateer."
+msgstr[0] "%s bydrae is bygewerk."
+msgstr[1] "%s bydraes is bygewerk."
 
 #: wp-admin/edit-tags.php:117 wp-admin/post.php:309 wp-admin/themes.php:63
 #: wp-admin/upload.php:191 wp-admin/edit.php:156
@@ -14427,7 +14444,7 @@ msgstr "Anders as met sleutelwoorde, kategorieë het 'n hiërargie. Jy kan dalk 
 
 #: wp-admin/edit-tags.php:442 wp-admin/edit-tag-form.php:134
 msgid "The name is how it appears on your site."
-msgstr "Die naam is hoe dit verskyn op jou webwerf."
+msgstr "Die naam soos dit op jou webwerf verskyn."
 
 #: wp-admin/edit-link-form.php:133
 msgid "This will be shown when someone hovers over the link in the blogroll, or optionally below the link."
@@ -14452,7 +14469,7 @@ msgstr "Skakel bygevoeg."
 #. translators: %s: URL to Links screen.
 #: wp-admin/edit-link-form.php:22
 msgid "<a href=\"%s\">Links</a> / Add New Link"
-msgstr "<a href=\"%s\">Skakels</a> / Voeg nuwe skakel by"
+msgstr "<a href=\"%s\">Skakels</a> / Skep Skakel"
 
 #: wp-admin/includes/meta-boxes.php:1087 wp-admin/edit-link-form.php:17
 msgid "Update Link"
@@ -14508,7 +14525,7 @@ msgstr "Bladsy herstel na weergawe van %s. "
 
 #: wp-admin/edit-form-advanced.php:187
 msgid "Post saved."
-msgstr "Artikel gestoor. "
+msgstr "Die bydrae is gestoor."
 
 #. translators: %s: Date and time of the revision.
 #: wp-admin/edit-form-advanced.php:185
@@ -14525,7 +14542,7 @@ msgstr "Unieke velde opgedateer."
 
 #: wp-admin/includes/class-wp-comments-list-table.php:223
 msgid "No comments found."
-msgstr "Geen kommentare gevind."
+msgstr "Geen opmerkings is gevind nie."
 
 #: wp-admin/includes/class-wp-media-list-table.php:210
 #: wp-admin/includes/class-wp-comments-list-table.php:415
@@ -14535,7 +14552,7 @@ msgstr "Maak die asblik leeg"
 
 #: wp-admin/includes/class-wp-comments-list-table.php:415
 msgid "Empty Spam"
-msgstr "Verwyder strooi"
+msgstr "Verwyder snert"
 
 #: wp-admin/includes/class-wp-links-list-table.php:119
 #: wp-admin/includes/class-wp-media-list-table.php:207
@@ -14576,7 +14593,7 @@ msgstr "Wys %1$s&#8211;%2$s van %3$s"
 
 #: wp-admin/edit-comments.php:329
 msgid "Search Comments"
-msgstr "Soek deur kommentaar"
+msgstr "Deursoek opmerkings"
 
 #: wp-admin/edit-form-comment.php:102
 msgid "Approved"
@@ -14586,29 +14603,29 @@ msgstr "Goedgekeur"
 #: wp-admin/edit-comments.php:300
 msgid "%s comment permanently deleted."
 msgid_plural "%s comments permanently deleted."
-msgstr[0] "%s kommentaar permanent verwyder."
-msgstr[1] "%s kommentare permanent verwyder."
+msgstr[0] "%s opmerking is uitgewis."
+msgstr[1] "%s opmerkings is uitgewis."
 
 #. translators: %s: Number of comments.
 #: wp-admin/edit-comments.php:284
 msgid "%s comment restored from the spam."
 msgid_plural "%s comments restored from the spam."
-msgstr[0] "%s kommentaar herwin uit strooipos."
-msgstr[1] "%s kommentare herwin uit strooipos."
+msgstr[0] "%s opmerking is vanuit snert herstel."
+msgstr[1] "%s opmerkings is vanuit snert herstel."
 
 #. translators: %s: Number of comments.
 #: wp-admin/edit-comments.php:279
 msgid "%s comment marked as spam."
 msgid_plural "%s comments marked as spam."
-msgstr[0] "%s kommentaar gemerk as strooi. "
-msgstr[1] "%s kommentare gemerk as strooi. "
+msgstr[0] "%s opmerking is as snert uitgewys."
+msgstr[1] "%s opmerkings is as snert uitgewys."
 
 #. translators: %s: Number of comments.
 #: wp-admin/edit-comments.php:273
 msgid "%s comment approved."
 msgid_plural "%s comments approved."
-msgstr[0] "%s kommentaar goegekeur."
-msgstr[1] "%s kommentare goegekeur."
+msgstr[0] "%s opmerking is goegekeur."
+msgstr[1] "%s opmerkings is goegekeur."
 
 #: wp-admin/includes/class-wp-media-list-table.php:184
 #: wp-admin/includes/class-wp-media-list-table.php:555
@@ -14640,7 +14657,7 @@ msgstr "Beskou &#8220;%s&#8221;"
 #: wp-admin/includes/class-wp-posts-list-table.php:1385
 #: wp-admin/includes/dashboard.php:726 wp-admin/edit-form-comment.php:205
 msgid "Delete Permanently"
-msgstr "Wis Permanent Uit"
+msgstr "Wis uit"
 
 #. translators: %s: Link name.
 #. translators: %s: Taxonomy term name.
@@ -14729,7 +14746,7 @@ msgstr "Die kommentaar is in die asblik. Skuif dit terug as jy dit wil wysig."
 #: wp-admin/includes/comment.php:55 wp-admin/comment.php:279
 #: wp-admin/edit-comments.php:253
 msgid "Sorry, you are not allowed to edit comments on this post."
-msgstr "Jammer, maar jy word nie toegelaat om die kommentaar van hierdie artikel te wysig nie."
+msgstr "Jammer, jy word nie toegelaat om opmerkings op hierdie bydrae te wysig nie."
 
 #: wp-admin/includes/template.php:453 wp-admin/comment.php:56
 #: wp-admin/edit-form-comment.php:17
@@ -14738,7 +14755,7 @@ msgstr "Wysig kommentaar"
 
 #: wp-admin/admin.php:329 wp-admin/import.php:18 wp-admin/menu.php:280
 msgid "Import"
-msgstr "Invoer"
+msgstr "Inkomende oordrag"
 
 #. translators: %s: Admin page generated by a plugin.
 #: wp-admin/admin.php:269

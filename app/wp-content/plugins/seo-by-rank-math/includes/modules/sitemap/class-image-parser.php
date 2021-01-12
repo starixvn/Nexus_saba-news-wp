@@ -7,7 +7,8 @@
  * @subpackage RankMath\Sitemap
  * @author     Rank Math <support@rankmath.com>
  *
- * Forked from Yoast (https://github.com/Yoast/wordpress-seo/)
+ * @copyright Copyright (C) 2008-2019, Yoast BV
+ * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.
  */
 
 namespace RankMath\Sitemap;
@@ -308,7 +309,10 @@ class Image_Parser {
 		}
 
 		$src     = $this->get_absolute_url( $src );
-		$no_host = ! Str::contains( $this->host, $src ) || esc_url( $src ) !== $src;
+		$no_host = esc_url( $src ) !== $src;
+		if ( ! $this->do_filter( 'sitemap/include_external_image', false ) ) {
+			$no_host = ! Str::contains( $this->host, $src ) || esc_url( $src ) !== $src;
+		}
 
 		return $no_host ? false : $src;
 	}

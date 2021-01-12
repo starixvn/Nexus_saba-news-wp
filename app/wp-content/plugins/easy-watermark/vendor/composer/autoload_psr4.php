@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'underDEV\\Utils\\' => array($vendorDir . '/underdev/singleton/src'),
+    'Micropackage\\Singleton\\' => array($vendorDir . '/micropackage/singleton/src'),
     'EasyWatermark\\' => array($baseDir . '/src/classes'),
 );
