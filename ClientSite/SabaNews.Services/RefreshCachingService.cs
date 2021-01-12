@@ -3,6 +3,7 @@
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class RefreshCachingService : IRefreshCachingService
@@ -30,12 +31,24 @@
             await cacheService.SetAsync(CacheKey.Menu, data);
         }
 
-        public async Task UpdateCategoryCaching(string slug)
+        public async Task UpdateCategoryCaching()
         {
-            var key = CacheKey.CategoryViewModel + "-" + slug;
-            var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
-            await cacheService.SetAsync(key, data);
+            var listCategoryCaching = new List<string>
+            {
+                Constants.FootballSlug,
+                Constants.GuessSlug,
+                Constants.BackstageSlug,
+                Constants.TransferSlug,
+                Constants.BasketballSlug,
+                Constants.TennisSlug,
+                Constants.VideoSlug
+            };
+            foreach (var slug in listCategoryCaching)
+            {
+                var key = CacheKey.CategoryViewModel + "-" + slug;
+                var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
+                await cacheService.SetAsync(key, data);
+            }
         }
-
     }
 }

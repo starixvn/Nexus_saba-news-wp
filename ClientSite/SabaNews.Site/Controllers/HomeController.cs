@@ -78,8 +78,8 @@
                 return View(Constants.EmptyBlogView);
             }
 
-            var relatedPosts =  postService.GetRelatedPostAsync(post.ID);
-            var randomRelatedPosts =  postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
+            var relatedPosts = postService.GetRelatedPostAsync(post.ID);
+            var randomRelatedPosts = postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
             await Task.WhenAll(relatedPosts, randomRelatedPosts);
             var Models = new SingleViewModel
             {

@@ -8,6 +8,6 @@
 
         Task UpdateMenuCaching();
 
-        Task UpdateCategoryCaching(string slug);
+        Task UpdateCategoryCaching();
     }
 }
