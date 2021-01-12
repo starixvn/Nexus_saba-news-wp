@@ -30,7 +30,7 @@ $(document).ready(function(){
     // }
  
     $('.btn-search').click(function () {
-        if ($(window).innerWidth() <= 1024) {
+        if ($(window).innerWidth() >= 1024) {
             $('.search-input input').toggleClass('active-input');
         }
     });

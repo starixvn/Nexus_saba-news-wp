@@ -92,10 +92,18 @@
                     color: $color-input;
                     border-radius: 3rem;
                     width: 11vw;
+                    position: absolute;
+                    right: 1rem;
+                    top: 2rem;
+                    display: none;
 
                     @include tableMobile {
                         width: 100%;
                         font-size: 1.6rem;
+                        position: inherit;
+                        right: auto;
+                        top: auto;
+                        display: block;
                     }
 
                     @include landscapeTablet {
@@ -109,6 +117,7 @@
                 }
 
                 .active-input {
+                    display: block;
                     @include landscapeTablet {
                         display: block;
                     }
@@ -118,12 +127,13 @@
                     background-color: transparent;
                     position: absolute;
                     cursor: pointer;
-                    top: .2rem;
+                    top: -1rem;
                     right: 3rem;
                     width: .5rem;
                     height: 100%;
 
                     @include tableMobile {
+                        top: 0;
                         right: 2.5rem;
                         font-size: 1.5rem;
                         width: 2rem;
@@ -137,6 +147,7 @@
 
                     .icon-search {
                         font-size: 2.4rem;
+
                         @include landscapeTablet {
                             position: relative;
                             top: 2px;

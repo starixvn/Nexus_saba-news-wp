@@ -241,11 +241,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           border: none;
           color: #828282;
           border-radius: 3rem;
-          width: 11vw; }
+          width: 11vw;
+          position: absolute;
+          right: 1rem;
+          top: 2rem;
+          display: none; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .search-input input {
               width: 100%;
-              font-size: 1.6rem; } }
+              font-size: 1.6rem;
+              position: inherit;
+              right: auto;
+              top: auto;
+              display: block; } }
           @media only screen and (min-width: 1024px) and (max-width: 1366px) {
             .header .top-header .group-menu .search-input input {
               position: absolute;
@@ -254,19 +262,22 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               width: 20rem;
               right: 0;
               display: none; } }
-        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-          .header .top-header .group-menu .search-input .active-input {
-            display: block; } }
+        .header .top-header .group-menu .search-input .active-input {
+          display: block; }
+          @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+            .header .top-header .group-menu .search-input .active-input {
+              display: block; } }
         .header .top-header .group-menu .search-input .btn-search {
           background-color: transparent;
           position: absolute;
           cursor: pointer;
-          top: .2rem;
+          top: -1rem;
           right: 3rem;
           width: .5rem;
           height: 100%; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .search-input .btn-search {
+              top: 0;
               right: 2.5rem;
               font-size: 1.5rem;
               width: 2rem; } }
