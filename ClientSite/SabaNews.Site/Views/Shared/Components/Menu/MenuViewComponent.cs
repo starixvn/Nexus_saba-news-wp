@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
-    using SabaNews.Models;
 
     public class MenuViewComponent : ViewComponent
     {
@@ -17,6 +16,10 @@
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var model = await dataControlService.GetMenuData();
+            var userAgent = Request.Headers["User-Agent"].ToString();
+            ViewBag.UserUgent = userAgent;
+            ViewBag.IsMobile = userAgent.Contains("mobile", System.StringComparison.OrdinalIgnoreCase);
+            ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
             return View(model);
         }
     }

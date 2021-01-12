@@ -21,13 +21,19 @@
             <div class="container">
                 <h2 class="block__title"><a href="@Url.Action("Category", "Home")">TIN MỚI NHẤT</a></h2>
                 <div class="block__content">
+                    <custom-image>
+                    </custom-image>
                     <div class="card-vertical card-vertical-highlight">
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
-                            <picture>
-                                <source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/webp" class="img-res">
-                                <source srcset="@Url.Content(Model.NewPosts[0].FeatureImage)" type="image/jpeg" class="img-res">
-                                <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.NewPosts[0].FeatureImage)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-                            </picture>
+                            @{
+                                string firstImgUrl = Model.NewPosts[0].GetImageBySize(ImageWidth.Width600);
+
+                                <picture>
+                                    <source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
+                                    <source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
+                                </picture>
+                            }
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
                         <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
@@ -37,11 +43,15 @@
                     {
                         <div class="card-horizontal card-item-@i">
                             <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-                                <picture>
-                                    <source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/webp" class="img-res">
-                                    <source srcset="@Url.Content(Model.NewPosts[i].FeatureImage)" type="image/jpeg" class="img-res">
-                                    <img loading="lazy" src="@Url.Content(Model.NewPosts[i].FeatureImage)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
-                                </picture>
+                                @{
+                                    string featuredImg = Model.NewPosts[i].GetImageBySize(ImageWidth.Width270);
+
+                                    <picture>
+                                        <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
+                                        <img loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
                             </a>
                             <div class="card-horizontal__content">
                                 <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>

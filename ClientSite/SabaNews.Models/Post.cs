@@ -3,6 +3,7 @@
     using SabaNews.Core.Constants;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Post
     {
@@ -43,6 +44,16 @@
 
                 return PostDate.ToString("H:mm dd/MM/yyyy");
             }
+        }
+
+        public string GetImageBySize(int width)
+        {
+            if (width > 0)
+            {
+                return Images.FirstOrDefault(i => i.Width == width)?.ImageUrl ?? FeatureImage;
+            }
+
+            return FeatureImage;
         }
     }
 }

@@ -1,20 +1,21 @@
 ﻿@using SabaNews.Core.Constants;
 @model IEnumerable<Menu>
+
 <section class="header">
-	<div class="top-header">
-		<div class="container padding-mobile-none">
-			<div class="group-menu">
-				<div class="logo">
-					<a href="@Url.Action("Index", "Home")">
+    <div class="top-header">
+        <div class="container padding-mobile-none">
+            <div class="group-menu">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")">
                         <img src="~/images/logo-2.svg" alt="saba-sport">
-					</a>
-				</div>
-				<div class="button-mobile">
-					<span class="line-mb"></span>
-					<span class="line-mb"></span>
-					<span class="line-mb"></span>
-				</div>
-				<div class="nav-menu">
+                    </a>
+                </div>
+                <div class="button-mobile">
+                    <span class="line-mb"></span>
+                    <span class="line-mb"></span>
+                    <span class="line-mb"></span>
+                </div>
+                <div class="nav-menu">
                     <ul class="main-menu">
                         @{ var VideoParentId = 0; }
                         @foreach (var menu in Model)
@@ -46,8 +47,8 @@
                             </form>
                         </li>
                     </ul>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
