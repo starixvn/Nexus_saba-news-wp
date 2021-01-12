@@ -7,5 +7,7 @@
         Task UpdateHomePageCaching();
 
         Task UpdateMenuCaching();
+
+        Task UpdateCategoryCaching(string slug);
     }
 }

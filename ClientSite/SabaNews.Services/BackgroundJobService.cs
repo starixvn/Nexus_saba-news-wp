@@ -36,6 +36,26 @@
                              GetCronExpression(HangfireJobName.RefreshMenuCaching),
                              TimeZoneInfo.Local);
             }
+            var listCategoryCaching = new List<string>
+            {
+                Constants.FootballSlug,
+                Constants.GuessSlug,
+                Constants.BackstageSlug,
+                Constants.TransferSlug,
+                Constants.BasketballSlug,
+                Constants.TennisSlug,
+                Constants.VideoSlug
+            };
+            if (IsEnabledJob(HangfireJobName.RefreshCategoryCaching))
+            {
+                foreach (var cate in listCategoryCaching)
+                {
+                    recurringJob.AddOrUpdate<IRefreshCachingService>("Update " + cate + " category data caching",
+                             job => job.UpdateCategoryCaching(cate),
+                             GetCronExpression(HangfireJobName.RefreshCategoryCaching),
+                             TimeZoneInfo.Local);
+                }
+            }
         }
 
         private bool IsEnabledJob(string jobName)

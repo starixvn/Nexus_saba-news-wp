@@ -156,7 +156,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts),
+                Posts = FormatData(posts).ToArray(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;
@@ -173,7 +173,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts),
+                Posts = FormatData(posts).ToArray(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;
@@ -190,7 +190,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts),
+                Posts = FormatData(posts).ToArray(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;

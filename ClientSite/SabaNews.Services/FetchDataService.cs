@@ -4,6 +4,7 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -43,6 +44,46 @@
             };
 
             return viewModel;
+        }
+
+        public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
+        {
+            var perPage = Constants.Perpage;
+            var controller = "category";
+            if (slug == Constants.VideoSlug)
+            {
+                perPage = Constants.PerpageVideo;
+                controller = "video";
+            }
+            var start = (page - 1) * perPage;
+            var postTemplate = await postService.GetPostsByCateSlugAsync(slug, start, perPage);
+            if (!postTemplate.Posts.Any())
+            {
+                return null;
+            }
+            var cate = await postService.GetCateDetailAsync(slug);
+            var totalItems = postTemplate.TotalItems;
+
+            var ViewData = new ViewData
+            {
+                HeadTitle = cate.Title,
+                Title = cate.SEOTitle ??= cate.Title,
+                Description = cate.Description,
+                CurrentPage = page,
+                PageSize = perPage,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage),
+                CategoryId = cate.CatId,
+                Controller = controller,
+                Slug = slug
+            };
+
+            var Model = new CategoryViewModel
+            {
+                Posts = (postTemplate.Posts).ToArray(),
+                Category = cate,
+                ViewData = ViewData
+            };
+            return Model;
         }
 
         public async Task<IEnumerable<Menu>> GetMenuData()

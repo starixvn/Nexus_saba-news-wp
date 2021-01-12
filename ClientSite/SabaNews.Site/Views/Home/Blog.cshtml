@@ -39,7 +39,7 @@
                         <p class="description">@Model.Posts[0].PostExcerpt</p>
                     </div>
                 </div>
-                @for (int i = 1; i < Model.Posts.Count; i++)
+                @for (int i = 1; i < Model.Posts.Length; i++)
                 {
                     <div class="card-horizontal">
                         <a href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })" class="card-horizontal__image">

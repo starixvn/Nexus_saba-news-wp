@@ -41,6 +41,29 @@
             return await fetchDataService.GetHomePageViewModel();
         }
 
+        public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
+        {
+            bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
+            if (isEnabledCache && page == Constants.FirstPage)
+            {
+                var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
+                var result = await cacheService.GetAsync<CategoryViewModel>(cacheKey);
+
+                if (result == null)
+                {
+                    result = await fetchDataService.GetCategoryViewModel(slug, page);
+                    if (result != null)
+                    {
+                        await cacheService.SetAsync(cacheKey, result);
+                    }
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetCategoryViewModel(slug, page);
+        }
+
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
             bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");

@@ -5,5 +5,7 @@
         public const string RefreshHomePageCaching = "RefreshHomePageCaching";
         
         public const string RefreshMenuCaching = "RefreshMenuCaching";
+
+        public const string RefreshCategoryCaching = "RefreshCategoryCaching";
     }
 }

@@ -29,5 +29,13 @@
 
             await cacheService.SetAsync(CacheKey.Menu, data);
         }
+
+        public async Task UpdateCategoryCaching(string slug)
+        {
+            var key = CacheKey.CategoryViewModel + "-" + slug;
+            var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
+            await cacheService.SetAsync(key, data);
+        }
+
     }
 }

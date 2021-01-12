@@ -10,5 +10,7 @@
         Task<PostViewModel> GetHomePageViewModel();
 
         Task<IEnumerable<Menu>> GetMenuData();
+
+        Task<CategoryViewModel> GetCategoryViewModel(string slug, int page);
     }
 }

@@ -36,71 +36,20 @@
         [Route("/tin-the-thao/{slug?}")]
         public async Task<IActionResult> Category(string slug = null, int page = 1)
         {
-            var start = (page - 1) * Constants.Perpage;
             slug ??= Constants.NewPostSlug;
-            var postTemplate =  await postService.GetPostsByCateSlugAsync(slug, start, Constants.Perpage);
-            if (!postTemplate.Posts.Any())
-            {
-                return View(Constants.EmptyBlogView);
-            }
-            var cate = await postService.GetCateDetailAsync(slug);
-            var totalItems = postTemplate.TotalItems;
-            var ViewData = new ViewData
-            {
-                HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
-                Description = cate.Description,
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
-                CategoryId = cate.CatId,
-                Controller = "category",
-                Slug = slug
-            };
-
-            var Model = new CategoryViewModel
-            {
-                Posts = postTemplate.Posts,
-                Category = cate,
-                ViewData = ViewData
-            };
-            var view = postTemplate.Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Model);
+            var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
+            return View(view, viewModel);
         }
 
         [Route("/video/{slug?}/page/{page}")]
         [Route("/video/{slug?}")]
         public async Task<IActionResult> Video(string slug = null, int page = 1)
         {
-            var start = (page - 1) * Constants.PerpageVideo;
             slug ??= Constants.VideoSlug;
-            var postTemplate = await postService.GetPostsByCateSlugAsync(slug, start, Constants.PerpageVideo);
-            if (!postTemplate.Posts.Any())
-            {
-                return View(Constants.EmptyBlogView);
-            }
-            var cate = await postService.GetCateDetailAsync(slug);
-            var totalITems = postTemplate.TotalItems;
-            var ViewData = new ViewData
-            {
-                HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
-                Description = cate.Description,
-                CurrentPage = page,
-                PageSize = Constants.PerpageVideo,
-                TotalPages = (int)Math.Ceiling(totalITems / (double)Constants.PerpageVideo),
-                CategoryId = cate.CatId,
-                Controller = "video",
-                Slug = slug
-            };
-            var Model = new CategoryViewModel
-            {
-                Posts = postTemplate.Posts,
-                Category = cate,
-                ViewData = ViewData
-            };
-            var view = postTemplate.Posts.Any() ? Constants.VideoView : Constants.EmptyBlogView;
-            return View(view, Model);
+            var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
+            return View(view, viewModel);
         }
 
         [Route("lich-thi-dau")]
