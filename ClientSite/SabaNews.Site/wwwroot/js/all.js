@@ -20,18 +20,10 @@ $(document).ready(function(){
         }
     });
 
-
-
-    
-    
-
-    // if($(window).innerWidth() <= 1024){
-    //     $('.menu-child').css('display','none');
-    // }
  
     $('.btn-search').click(function () {
         if ($(window).innerWidth() >= 1024) {
-            $('.search-input input').toggleClass('active-input');
+            $('.search-input .search-box').toggleClass('active-input');
         }
     });
 

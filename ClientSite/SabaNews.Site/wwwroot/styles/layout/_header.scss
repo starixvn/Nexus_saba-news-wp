@@ -83,19 +83,26 @@
                     right: 0;
                 }
 
+                .search-box {
+                    position: absolute;
+                    right: 1rem;
+                    top: 2.6rem;
+                    display: none;
+                    padding: 1.2rem;
+                    background: #fffdf9;
+                    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+                }
+
                 input {
                     height: 3.6rem;
                     font-size: 1.4rem;
                     font-weight: 400;
-                    padding: 0 6rem 0 3rem !important;
                     border: none;
+                    border-bottom: 1px solid #cacaca;
                     color: $color-input;
-                    border-radius: 3rem;
                     width: 11vw;
-                    position: absolute;
-                    right: 1rem;
-                    top: 2rem;
-                    display: none;
+                    background: transparent;
+
 
                     @include tableMobile {
                         width: 100%;
@@ -118,6 +125,7 @@
 
                 .active-input {
                     display: block;
+
                     @include landscapeTablet {
                         display: block;
                     }

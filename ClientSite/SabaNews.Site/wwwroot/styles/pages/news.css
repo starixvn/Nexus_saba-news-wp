@@ -233,19 +233,23 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             position: absolute;
             width: auto;
             right: 0; } }
+        .header .top-header .group-menu .search-input .search-box {
+          position: absolute;
+          right: 1rem;
+          top: 2.6rem;
+          display: none;
+          padding: 1.2rem;
+          background: #fffdf9;
+          box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3); }
         .header .top-header .group-menu .search-input input {
           height: 3.6rem;
           font-size: 1.4rem;
           font-weight: 400;
-          padding: 0 6rem 0 3rem !important;
           border: none;
+          border-bottom: 1px solid #cacaca;
           color: #828282;
-          border-radius: 3rem;
           width: 11vw;
-          position: absolute;
-          right: 1rem;
-          top: 2rem;
-          display: none; }
+          background: transparent; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .search-input input {
               width: 100%;
