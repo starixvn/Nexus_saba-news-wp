@@ -264,7 +264,7 @@
             var result = image;
             var size = "";
             var extension = "." + image.Split(".").Last();
-            var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg" };
+            var imgTypes = new List<string> { ".jpg", ".bmp", ".gif", ".png", ".jpeg", ".webp" };
             var imgSizes = new List<string> { "-406x228", "-260x240", "-600x394" ,"-818x461" };
             var type = imgTypes.FirstOrDefault(item => item.Equals(extension));
             size = imgSizes.FirstOrDefault(item => metadata.Contains(item));
