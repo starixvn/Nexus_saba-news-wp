@@ -8,7 +8,7 @@
         public const short Width270 = 270;
         public const short Width300 = 300;
         public const short Width370 = 370;
-        public const short Width400 = 400;
+        public const short Width406 = 406;
         public const short Width500 = 500;
         public const short Width600 = 600;
         public const short Width768 = 768;
