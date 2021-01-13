@@ -76,7 +76,7 @@
                 End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            
+
             return FormatData(posts).ToList();
         }
 
@@ -92,6 +92,8 @@
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
+                post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
+
                 if (post.Categories == null)
                 {
                     return post;

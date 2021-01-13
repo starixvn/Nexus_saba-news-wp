@@ -19,7 +19,7 @@
     <div class="container">
         <div class="block block-main">
             <div class="card-vertical card-vertical-highlight">
-                <div class="single card-vertical__image">
+                <div class="single card-vertical__video">
                     @if (Convert.ToBoolean(ViewData["video"]))
                     {
                         <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
@@ -32,7 +32,6 @@
                             <span class="icon-play"></span>
                         </div>
                     }
-
                 </div>
                 <div class="single play_video"></div>
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>

@@ -35,6 +35,11 @@
 
         public IEnumerable<ImageInfo> GetListImageFromMetadata(string featuredImage, string metadata)
         {
+            if (string.IsNullOrWhiteSpace(metadata))
+            {
+                return new List<ImageInfo>();
+            }
+
             pos = 0;
             var decryptedData = DeserializeString(metadata);
             var hashTable = (Hashtable)decryptedData;
