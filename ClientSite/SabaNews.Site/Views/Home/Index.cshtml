@@ -295,7 +295,7 @@
                                     <picture>
                                         <source srcset="@Url.Content(tennisPoster)" type="image/webp" class="img-res">
                                         <source srcset="@Url.Content(tennisPoster)" type="image/jpeg" class="img-res">
-                                        <img src="@Url.Content(tennisPoster)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
+                                        <img loading="lazy" src="@Url.Content(tennisPoster)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
                                     </picture>
                                 }
                             </a>
