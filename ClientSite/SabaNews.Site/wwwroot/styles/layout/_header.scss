@@ -91,6 +91,26 @@
                     padding: 1.2rem;
                     background: #fffdf9;
                     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+
+                    @include tableMobile {
+                        display: block;
+                        position: inherit;
+                        top: auto;
+                        right: auto;
+                        padding: 0;
+                        background: none;
+                        box-shadow: none;
+                    }
+
+                    @include landscapeTablet {
+                        display: none;
+                        position: absolute;
+                        right: 1rem;
+                        top: 2.6rem;
+                        padding: 1.2rem;
+                        background: #fffdf9;
+                        box-shadow: 0 3px 4px rgba(0,0,0,.3);
+                    }
                 }
 
                 input {
@@ -111,15 +131,21 @@
                         right: auto;
                         top: auto;
                         display: block;
+                        border-bottom: none;
+                        background: $block-highlight-bgcolor;
+                        border-radius: 28px;
+                        padding: 0 2rem;
                     }
 
                     @include landscapeTablet {
-                        position: absolute;
+                        border-bottom: 1px solid #cacaca;
                         z-index: 9999999;
                         top: 3.3rem;
-                        width: 20rem;
                         right: 0;
-                        display: none;
+                        background: none;
+                        border-radius: 0;
+                        position: unset;
+                        width: 15vw;
                     }
                 }
 
