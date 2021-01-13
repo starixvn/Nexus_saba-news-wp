@@ -26,7 +26,7 @@
     <meta name="msapplication-TileImage" content="~/images/favicon/app_144x144.png">
     <meta name="theme-color" content="#fffdf9">
     @RenderSection("Styles", false)
-    <environment names="Production">
+    <environment include="Production">
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-184324050-6"></script>
         <script>
@@ -52,7 +52,7 @@
 </head>
 
 <body>
-    <environment names="Production">
+    <environment include="Production">
         <!-- Google Tag Manager (noscript) -->
         <noscript>
             <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBMWSGP"
