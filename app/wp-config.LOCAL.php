@@ -29,7 +29,7 @@ define( 'DB_USER', 'sabasports');
 define( 'DB_PASSWORD', 'sabasports1234AA');
 
 /** MySQL hostname */
-define( 'DB_HOST', 'nexus_saba_sports_mysql:33061');
+define( 'DB_HOST', '10.18.200.131:33061');
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8');
