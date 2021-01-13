@@ -41,11 +41,6 @@
         &:hover {
             color: $color-title-hover;
         }
-
-        @include tableMobile {
-            font-size: 1.4rem !important;
-            line-height: 1.8rem !important;
-        }
     }
 
     &__datetime {

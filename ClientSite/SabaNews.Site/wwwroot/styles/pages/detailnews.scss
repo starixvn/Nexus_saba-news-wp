@@ -88,21 +88,14 @@ img {
     .card-vertical__title {
         font-size: 2.8rem;
         line-height: 3.8rem;
-        margin-top: 1rem;
+        @include tableMobile {
+            font-size: 2.4rem; 
+            line-height: 3.2rem;
+        }
     }
 
     .card-vertical__image {
-        @include tableMobile {
-            max-height: 20rem;
-        }
-
-        @include landscapeTablet {
-            max-height: 30rem;
-        }
-
-        @include Mobile {
-            max-height: 100%;
-        }
+        display: none;
     }
 }
 

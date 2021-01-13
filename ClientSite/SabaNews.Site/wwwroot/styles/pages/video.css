@@ -58,6 +58,10 @@ body {
   line-height: 3.2rem;
   margin: 0;
   font-size: 1.8rem; }
+  @media (max-device-width: 767px) {
+    .content {
+      font-size: 1.6rem;
+      line-height: 2.8rem; } }
   .content p {
     margin-bottom: 1rem; }
   .content h6 {
@@ -1004,10 +1008,6 @@ button {
     display: block; }
     .card-vertical__title:hover {
       color: #EB5342; }
-    @media screen and (max-width: 1024px) {
-      .card-vertical__title {
-        font-size: 1.4rem !important;
-        line-height: 1.8rem !important; } }
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
