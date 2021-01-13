@@ -2,12 +2,12 @@
 {
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
-    using SabaNews.Models.ViewModel;
     using SabaNews.Core.Constants;
-    using SabaNews.Services.Interfaces;
-    using System.Threading.Tasks;
-    using System.Collections.Generic;
     using SabaNews.Models;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class DataControlService : IDataControlService
     {
