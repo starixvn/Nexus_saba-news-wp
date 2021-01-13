@@ -12,20 +12,19 @@
     public class DataControlService : IDataControlService
     {
         private readonly IFetchDataService fetchDataService;
-        private readonly IConfiguration configuration;
+        private readonly bool IsUsingCache;
         private readonly ICacheService cacheService;
 
         public DataControlService(IFetchDataService fetchDataService, IConfiguration configuration, ICacheService cacheService)
         {
             this.fetchDataService = fetchDataService;
-            this.configuration = configuration;
+            IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
             this.cacheService = cacheService;
         }
 
         public async Task<PostViewModel> GetHomePageViewModel()
         {
-            bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
-            if (isEnabledCache)
+            if (IsUsingCache)
             {
                 var result = await cacheService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
 
@@ -43,8 +42,7 @@
 
         public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
         {
-            bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
-            if (isEnabledCache && page == Constants.FirstPage)
+            if (IsUsingCache && page == Constants.FirstPage)
             {
                 var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
                 var result = await cacheService.GetAsync<CategoryViewModel>(cacheKey);
@@ -66,8 +64,7 @@
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            bool isEnabledCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
-            if (isEnabledCache)
+            if (IsUsingCache)
             {
                 var result = await cacheService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
 
