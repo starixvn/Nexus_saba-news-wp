@@ -31,17 +31,19 @@
     .card-horizontal {
         margin-bottom: 1.6rem;
         &-highlight {
-            height: 25rem;
+            height: 30rem;
             grid-template-columns: 53rem 1fr;
-            grid-column-gap: $column-gap;
+            grid-column-gap: 0;
             grid-template-rows: unset;
             align-items: flex-start;
             margin-bottom: $column-gap;
+            background-color: $block-highlight-bgcolor;
             @include tableMobile{
                 display: inherit;
                 height: auto;
             }
             .card-horizontal__content{
+                padding: 16px;
                 @include tableMobile{
                     margin-top: 1rem;
                 }

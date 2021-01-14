@@ -1026,19 +1026,22 @@ button {
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }
   .block-main .card-horizontal-highlight {
-    height: 25rem;
+    height: 30rem;
     grid-template-columns: 53rem 1fr;
-    grid-column-gap: 3.2rem;
+    grid-column-gap: 0;
     grid-template-rows: unset;
     align-items: flex-start;
-    margin-bottom: 3.2rem; }
+    margin-bottom: 3.2rem;
+    background-color: #E8EAEF; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight {
         display: inherit;
         height: auto; } }
-    @media screen and (max-width: 1024px) {
-      .block-main .card-horizontal-highlight .card-horizontal__content {
-        margin-top: 1rem; } }
+    .block-main .card-horizontal-highlight .card-horizontal__content {
+      padding: 16px; }
+      @media screen and (max-width: 1024px) {
+        .block-main .card-horizontal-highlight .card-horizontal__content {
+          margin-top: 1rem; } }
     .block-main .card-horizontal-highlight .title {
       font-size: 2rem;
       line-height: 2.8rem; }

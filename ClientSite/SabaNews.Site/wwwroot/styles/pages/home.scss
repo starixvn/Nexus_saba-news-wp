@@ -271,13 +271,18 @@
                 display: inherit !important;
             }
 
-            .card-vertical__title {
-                color: #fff;
-            }
+
 
             .card-vertical {
                 @include tableMobile {
                     padding-bottom: 0;
+                }
+
+                .card-vertical__title {
+                    color: #fff;
+                }
+                .card-vertical__datetime {
+                    color: #cbcbcb;
                 }
             }
 
