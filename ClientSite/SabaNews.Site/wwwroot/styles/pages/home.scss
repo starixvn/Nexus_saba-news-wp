@@ -277,13 +277,14 @@
                 @include tableMobile {
                     padding-bottom: 0;
                 }
+            }
 
-                .card-vertical__title {
-                    color: #fff;
-                }
-                .card-vertical__datetime {
-                    color: #cbcbcb;
-                }
+            .card-vertical__title {
+                color: #fff;
+            }
+
+            .card-vertical__datetime {
+                color: #cbcbcb;
             }
 
             .card-vertical__image {

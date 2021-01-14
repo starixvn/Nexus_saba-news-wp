@@ -1227,9 +1227,9 @@ button {
     @media screen and (max-width: 1024px) {
       .main .block-guess .block__content .card-vertical {
         padding-bottom: 0; } }
-    .main .block-guess .block__content .card-vertical .card-vertical__title {
+    .main .block-guess .block__content .card-vertical__title {
       color: #fff; }
-    .main .block-guess .block__content .card-vertical .card-vertical__datetime {
+    .main .block-guess .block__content .card-vertical__datetime {
       color: #cbcbcb; }
     .main .block-guess .block__content .card-vertical__image {
       max-height: 23.5rem; }
