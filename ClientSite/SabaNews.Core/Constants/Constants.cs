@@ -71,11 +71,13 @@
         public const string SiteName = "Saba Sports";
         public const string SepVar = "%sep%";
         public const string SiteNameVar = "%sitename%";
+        public const string CurrentDateVar = "%current_date_custom%";
         public const string ThumbnailSize = "-818x461";
         public const string None = "none";
         public const string pageType = "page";
         public const string postType = "post";
         public const string RecentPostsTitle = "TIN MỚI NHẤT";
         public const string MostViewPostTitle = "XEM NHIỀU NHẤT";
+
     }
 }
