@@ -1099,3 +1099,6 @@ button {
         max-height: 13rem; } }
   .block__video .card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0; }
+
+.block-extension .card-vertical .card-vertical__title {
+  font-size: 1.4rem; }

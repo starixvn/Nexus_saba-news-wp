@@ -31,11 +31,11 @@
     .card-horizontal {
         margin-bottom: 1.6rem;
         &-highlight {
-            height: 30rem;
+            height: 25rem;
             grid-template-columns: 53rem 1fr;
             grid-column-gap: $column-gap;
             grid-template-rows: unset;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: $column-gap;
             @include tableMobile{
                 display: inherit;
@@ -45,6 +45,10 @@
                 @include tableMobile{
                     margin-top: 1rem;
                 }
+            }
+            .title {
+                font-size: 2rem;
+                line-height: 2.8rem;
             }
             .description {
                 max-height: 6.5rem;
@@ -61,6 +65,10 @@
             }
         }
     }
+}
+
+.block-extension .card-vertical .card-vertical__title {
+    font-size: 1.4rem;
 }
 
 

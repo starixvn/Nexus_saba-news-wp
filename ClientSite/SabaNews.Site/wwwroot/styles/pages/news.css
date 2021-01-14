@@ -1026,11 +1026,11 @@ button {
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }
   .block-main .card-horizontal-highlight {
-    height: 30rem;
+    height: 25rem;
     grid-template-columns: 53rem 1fr;
     grid-column-gap: 3.2rem;
     grid-template-rows: unset;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 3.2rem; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight {
@@ -1039,6 +1039,9 @@ button {
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight .card-horizontal__content {
         margin-top: 1rem; } }
+    .block-main .card-horizontal-highlight .title {
+      font-size: 2rem;
+      line-height: 2.8rem; }
     .block-main .card-horizontal-highlight .description {
       max-height: 6.5rem;
       margin-top: 1rem; }
@@ -1049,3 +1052,6 @@ button {
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight .card-horizontal__image {
         max-height: 100% !important; } }
+
+.block-extension .card-vertical .card-vertical__title {
+  font-size: 1.4rem; }

@@ -1129,3 +1129,6 @@ img {
   @media screen and (max-width: 1024px) {
     .card-horizontal__image {
       max-height: 13.2rem !important; } }
+
+.block-extension .card-vertical .card-vertical__title {
+  font-size: 1.4rem; }
