@@ -1079,9 +1079,9 @@ button {
 
 .block__video {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: unset;
-  grid-gap: 3.2rem 3.2rem; }
+  grid-gap: 1.6rem 3.2rem; }
   @media screen and (max-width: 1024px) {
     .block__video {
       display: grid;
@@ -1090,7 +1090,7 @@ button {
       grid-gap: 1.6rem 1.6rem; } }
   .block__video .card-vertical__image {
     margin-bottom: 1rem;
-    max-height: 10rem;
+    max-height: 12rem;
     overflow: hidden;
     height: 100%; }
     @media screen and (max-width: 1024px) {

@@ -52,13 +52,13 @@
     }
 }
 .block__video{
-    @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
+    @include grid(repeat(3, 1fr), unset, 1.6rem #{$column-gap});
     @include tableMobile{
         @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap-tablet});
     }
     .card-vertical__image{
         margin-bottom: 1rem;
-        max-height: 10rem;
+        max-height: 12rem;
         overflow : hidden;
         height : 100%;
         @include tableMobile{
