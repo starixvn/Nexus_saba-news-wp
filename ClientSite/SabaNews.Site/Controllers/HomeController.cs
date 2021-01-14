@@ -178,11 +178,5 @@
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
         }
-
-        [Route("maintenance")]
-        public async Task<IActionResult> Maintenance()
-        {
-            return View();
-        }
     }
 }
