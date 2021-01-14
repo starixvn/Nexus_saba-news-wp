@@ -19,7 +19,6 @@
         <None Remove="App_Data\SpNames.PROD.xml" />
         <None Remove="App_Data\SpNames.UAT.xml" />
         <None Remove="App_Data\SpNames.xml" />
-        <None Remove="app_offline.htm" />
     </ItemGroup>
 
     <ItemGroup>
@@ -42,9 +41,6 @@
         </Content>
         <Content Include="App_Data\SpNames.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="app_offline.htm">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
 
