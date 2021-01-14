@@ -6,11 +6,11 @@
 			@foreach (var post in Model.Posts)
 			{
             <div class="card-vertical">
-                <a href="" class="card-vertical__image">
+                <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-vertical__image"  style="background-color: #cccccc; width: 100%; display: block; padding-bottom: 65%;">
                     <picture>
                         <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
                         <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                        <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+                        <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block"  style="position:absolute">
                     </picture>
                 </a>
                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
