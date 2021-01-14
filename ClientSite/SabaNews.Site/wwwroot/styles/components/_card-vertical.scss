@@ -15,7 +15,8 @@
         margin-bottom: .8rem;
         overflow: hidden;
         display: block;
-        position : relative;
+        position: relative;
+        max-height: 15rem;
 
         @include tableMobile {
             margin-bottom: .5rem;

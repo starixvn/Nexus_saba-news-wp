@@ -1013,7 +1013,8 @@ button {
     margin-bottom: .8rem;
     overflow: hidden;
     display: block;
-    position: relative; }
+    position: relative;
+    max-height: 15rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__image {
         margin-bottom: .5rem;

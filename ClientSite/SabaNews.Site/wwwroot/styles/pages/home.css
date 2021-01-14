@@ -996,7 +996,8 @@ button {
     margin-bottom: .8rem;
     overflow: hidden;
     display: block;
-    position: relative; }
+    position: relative;
+    max-height: 15rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__image {
         margin-bottom: .5rem;
@@ -1193,7 +1194,8 @@ button {
       .main .block-soccer .block__content .card-vertical {
         padding-bottom: 0; } }
   .main .block-soccer .block__content .card-vertical__image {
-    height: 17.2rem; }
+    height: 17.2rem;
+    max-height: 100%; }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .main .block-soccer .block__content .card-vertical__image {
         max-height: 13rem; } }

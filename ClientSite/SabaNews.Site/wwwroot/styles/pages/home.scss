@@ -25,6 +25,7 @@
     // block-hot-news
     .block-hot-news {
         margin-bottom: .4rem;
+
         .block__content {
             @include grid(53rem 1fr, repeat(3, 11rem), #{$padding-main} #{$column-gap});
 
@@ -201,10 +202,12 @@
             .card-horizontal {
                 grid-template-columns: 14rem 1fr;
                 grid-template-rows: 8rem;
+
                 .card-horizontal__content {
                     padding: .4rem 0;
                     line-height: 1.8rem;
                 }
+
                 .title {
                     font-size: 1.4rem;
                 }
@@ -234,6 +237,7 @@
 
             .card-vertical__image {
                 height: 17.2rem;
+                max-height: 100%;
 
                 @include landscapeTablet {
                     max-height: 13rem;
