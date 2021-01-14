@@ -1,0 +1,22 @@
+﻿@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+@import '../base/base';
+
+@import '../layout/footer';
+@import '../layout/header';
+
+@import '../components/fonts';
+@import '../components/block';
+@import '../components/buttons';
+@import '../components/container';
+@import '../components/img';
+@import '../components/card-horizontal';
+@import '../components/card-vertical';
+@import '../components/calendar';
+@import '../components/pagination';
+
+
+.main .container {
+    display: inherit;
+}

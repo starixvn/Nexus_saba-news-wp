@@ -18,5 +18,9 @@
   {
     "outputFile": "wwwroot/styles/pages/detailvideo.css",
     "inputFile": "wwwroot/styles/pages/detailvideo.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/maintenance.css",
+    "inputFile": "wwwroot/styles/pages/maintenance.scss"
   }
 ]
