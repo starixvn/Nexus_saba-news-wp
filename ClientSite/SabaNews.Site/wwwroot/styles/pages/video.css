@@ -1067,7 +1067,7 @@ button {
     max-width: 100% !important;
     height: 100%; }
     .block__swipper .swiper-container .swiper-slide .img-item {
-      max-height: 40rem;
+      max-height: 34rem;
       overflow: hidden; }
       .block__swipper .swiper-container .swiper-slide .img-item img {
         height: 41.3vh;
