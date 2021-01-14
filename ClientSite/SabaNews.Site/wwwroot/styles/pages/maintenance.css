@@ -1007,8 +1007,53 @@ button {
 .pagination a {
   text-decoration: none; }
 
-.main .container {
-  display: inherit; }
+body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column; }
+
+.main {
+  padding-top: 0; }
+  .main .container {
+    display: inherit; }
+
+.wapper {
+  position: absolute;
+  top: 45%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  text-align: center;
+  width: 100%; }
 
 .block {
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0; }
+  @media screen and (max-width: 1024px) {
+    .block .img-res {
+      width: 250px; } }
+  .block__heading {
+    font-weight: bold;
+    font-size: 3.2rem;
+    line-height: 3.9rem;
+    letter-spacing: 2px;
+    color: #081224;
+    text-transform: uppercase;
+    margin-top: 10rem; }
+    @media screen and (max-width: 1024px) {
+      .block__heading {
+        font-size: 2.2rem;
+        margin-top: 5rem; } }
+  .block__desc {
+    padding-top: 1.7rem;
+    color: #828282;
+    font-size: 2rem;
+    line-height: 3.2rem;
+    max-width: 45rem;
+    margin: 0 auto; }
+    @media screen and (max-width: 1024px) {
+      .block__desc {
+        font-size: 1.6rem; } }
+
+.footer {
+  margin-top: auto;
+  width: 100%; }
