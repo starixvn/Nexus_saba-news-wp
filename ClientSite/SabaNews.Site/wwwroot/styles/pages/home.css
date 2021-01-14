@@ -1232,7 +1232,7 @@ button {
     .main .block-guess .block__content .card-vertical__datetime {
       color: #cbcbcb; }
     .main .block-guess .block__content .card-vertical__image {
-      max-height: 23.5rem; }
+      max-height: 20rem; }
       @media screen and (max-width: 1024px) {
         .main .block-guess .block__content .card-vertical__image {
           max-height: 11rem; } }
