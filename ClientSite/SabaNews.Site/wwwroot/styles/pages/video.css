@@ -1090,7 +1090,9 @@ button {
       grid-gap: 1.6rem 1.6rem; } }
   .block__video .card-vertical__image {
     margin-bottom: 1rem;
-    max-height: 10rem; }
+    max-height: 10rem;
+    overflow: hidden;
+    height: 100%; }
     @media screen and (max-width: 1024px) {
       .block__video .card-vertical__image {
         max-height: 13rem; } }

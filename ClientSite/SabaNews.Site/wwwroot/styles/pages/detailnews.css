@@ -1092,7 +1092,9 @@ img {
     display: none; }
 
 .card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
-  padding: 0 !important; }
+  padding: 0 !important;
+  overflow: hidden;
+  position: relative; }
 
 .card-vertical-highlight .card-vertical__title {
   font-size: 2.8rem;
