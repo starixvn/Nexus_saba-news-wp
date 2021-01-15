@@ -1048,7 +1048,7 @@ button {
 
 .main .container {
   display: grid;
-  grid-template-columns: 65% calc(35% - 3.2rem);
+  grid-template-columns: 70% calc(30% - 3.2rem);
   grid-template-rows: unset;
   grid-gap: 3.2rem; }
   @media screen and (max-width: 1024px) {

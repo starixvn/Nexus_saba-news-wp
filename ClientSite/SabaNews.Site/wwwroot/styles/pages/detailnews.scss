@@ -22,7 +22,7 @@
 
 
 .main .container {
-    @include grid(70% calc(30% - #{$column-gap}), unset, #{$column-gap});
+    @include grid(70% calc(30% - #{$section-gap}), unset, #{$section-gap});
 
     @include tableMobile {
         @include grid(70% calc(30% - #{$column-gap}), unset, #{$column-gap});

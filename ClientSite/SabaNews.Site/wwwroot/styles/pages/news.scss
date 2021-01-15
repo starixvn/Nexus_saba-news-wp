@@ -19,11 +19,13 @@
 
 
 .main .container {
-    @include grid(75% calc(25% - #{$column-gap}), unset, #{$column-gap});
-    @include tableMobile{
+    @include grid(70% calc(30% - #{$section-gap}), unset, #{$section-gap});
+
+    @include tableMobile {
         @include grid(70% calc(30% - #{$column-gap}), unset, #{$column-gap});
     }
-    @include Mobile{
+
+    @include Mobile {
         display: inherit;
     }
 }
