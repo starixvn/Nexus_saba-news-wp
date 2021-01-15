@@ -978,13 +978,6 @@ button {
               font-size: 1.4rem;
               line-height: 1.9rem; } }
 
-@media screen and (max-width: 767px) {
-  .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
-    display: block; }
-  .play_video iframe {
-    height: 22rem;
-    width: 100%; } }
-
 .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .play_video iframe {
   display: none; }
 
@@ -1001,6 +994,13 @@ button {
 .play_video iframe {
   height: 340px;
   width: 100%; }
+
+@media screen and (max-width: 767px) {
+  .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
+    display: block; }
+  .play_video iframe {
+    height: 22rem;
+    width: 100%; } }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
