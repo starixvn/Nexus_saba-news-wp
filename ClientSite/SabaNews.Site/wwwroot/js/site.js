@@ -82,12 +82,12 @@
         $('a.intent.facebook').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
-            try {
-                window.location = uri;
-            }
-            catch(err) {
+            var now = new Date().valueOf();
+            setTimeout(function () {
+                if (new Date().valueOf() - now > 100) return;
                 window.location = href;
-            }
+            }, 25);
+            window.location = uri;
             
             event.preventDefault();
         });
@@ -95,7 +95,14 @@
         $('a.intent.tele').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
-            uriSchemeWithHyperlinkFallback(uri, href);
+            var req = new XMLHttpRequest(); 
+            req.open('GET', uri, true);
+            req.send();
+            if (req.status !== "200") {
+                window.location = href;
+            } else {
+                window.location = uri;
+            }
             event.preventDefault();
         });
     },
