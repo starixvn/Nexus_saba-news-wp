@@ -1,6 +1,6 @@
 ﻿var setUp = {
     HandleIframe: function () {
-        //Left Home Video
+        //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
@@ -25,7 +25,7 @@
                 $(this).parent().hide();
             }
         });
-
+        //Desktop
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
             $('.swiper-slide').hide();
@@ -55,6 +55,7 @@
             }
         });
     },
+    //Desktop & Mobile
     HandleSearch: function () {
         $('.search-input button').on('click', function (e) {
             var keyword = $('input[name=keyword]').val();
@@ -64,11 +65,13 @@
             }
         });
     },
+    //Desktop & Mobile
     HandleUI: function () {
         if ($(window).innerWidth() < 768) {
             $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
         }
     },
+    //Mobile
     HandleSharingSocial: function () {
         function uriSchemeWithHyperlinkFallback(uri, href) {
             if (!window.open(uri)) {
