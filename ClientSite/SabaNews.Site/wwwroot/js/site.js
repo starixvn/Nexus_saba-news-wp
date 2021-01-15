@@ -82,7 +82,13 @@
         $('a.intent.facebook').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
-            window.location = uri;
+            try {
+                window.location = uri;
+            }
+            catch(err) {
+                window.location = href;
+            }
+            
             event.preventDefault();
         });
 
