@@ -96,12 +96,13 @@
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
             var req = new XMLHttpRequest(); 
-            req.open('GET', uri, true);
+            req.open('GET', "https://vnexpress.net/", true);
             req.send();
+            console.log(req);
             if (req.status !== "200") {
-                window.location = href;
+                //window.location = href;
             } else {
-                window.location = uri;
+                //window.location = uri;
             }
             event.preventDefault();
         });
