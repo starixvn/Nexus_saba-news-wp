@@ -82,7 +82,6 @@
         $('a.intent.facebook').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
-            setTimeout(function () { window.location = href }, 25);
             window.location = uri;
             event.preventDefault();
         });
