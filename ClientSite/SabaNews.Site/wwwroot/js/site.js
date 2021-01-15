@@ -69,10 +69,33 @@
             $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
         }
     },
+    HandleSharingSocial: function () {
+        function uriSchemeWithHyperlinkFallback(uri, href) {
+            if (!window.open(uri)) {
+                window.location = href;
+            }
+        }
+
+        $('a.intent.facebook').on('click', function (event) {
+            var uri = $(this).data('scheme');
+            var href = $(this).attr('href');
+            setTimeout(function () { window.location = href }, 25);
+            window.location = uri;
+            event.preventDefault();
+        });
+
+        $('a.intent.tele').on('click', function (event) {
+            var uri = $(this).data('scheme');
+            var href = $(this).attr('href');
+            uriSchemeWithHyperlinkFallback(uri, href);
+            event.preventDefault();
+        });
+    },
     init: function () {
         this.HandleIframe();
         this.HandleSearch();
         this.HandleUI();
+        this.HandleSharingSocial();
     }
 }
 
