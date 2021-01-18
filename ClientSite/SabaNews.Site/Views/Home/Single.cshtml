@@ -1,4 +1,12 @@
-﻿@using SabaNews.Core.Constants;
+﻿@using Wangkanai.Detection.Services;
+@using Wangkanai.Detection.Models;
+
+@inject IDetectionService DetectionService
+@{ 
+    bool isMobile = DetectionService.Device.Type == Device.Mobile;
+    bool isTablet = DetectionService.Device.Type == Device.Tablet;
+    bool isDesktop = DetectionService.Device.Type == Device.Desktop; 
+}
 
 @section Metadata {
     <meta name="description" content='@Model.SinglePost.PostExcerpt' />
@@ -55,48 +63,52 @@
             @{
                 var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
             }
-        <div class="sws_supernormalaction"><button class="superwebshare_normal_button1 superwebshare_prompt"><span>Chia sẻ</span></button></div>
-            <ul class="social">
-                <li class="item-social">Chia sẻ:</li>
-                <li class="item-social">
-                    <a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
-                       data-count="twitter"
-                       data-applink="twitter://intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
-                       target="_blank"
-                       rel="nofollow"
-                       class="item">
-                        <i class="icon-social icon-social-twitter"></i>
-                    </a>
-                </li>
-                <li class="item-social">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
-                       data-scheme="fb://sharer/sharer.php?u=@absoluteLink"
-                       data-applink="fb://sharer/sharer.php?u=@absoluteLink"
-                       data-count="facebook" target="_blank"
-                       rel="nofollow"
-                       class="item intent facebook">
-                        <i class="icon-social icon-social-facebook"></i>
-                    </a>
-                </li>
-                <li class="item-social">
-                    <a href="http://pinterest.com/pin/create/link/?url=@absoluteLink"
-                       data-count="pinterest-circled"
-                       target="_blank"
-                       rel="nofollow" class="item">
-                        <i class="icon-social icon-social-pinterest"></i>
-                    </a>
-                </li>
-                <li class="item-social">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
-                       data-count="telegram"
-                       data-scheme="fb://sharer/sharer.php?u=@absoluteLink"
-                       target="_blank"
-                       rel="nofollow"
-                       class="item intent tele">
-                        <i class="icon-social icon-social-telegram"></i>
-                    </a>
-                </li>
-            </ul>
+            @if (isMobile || isTablet)
+            {
+                 <div class="sws_supernormalaction"><button class="superwebshare_normal_button1 superwebshare_prompt"><span>Chia sẻ</span></button></div>
+            }
+            else
+            { 
+                <ul class="social">
+                    <li class="item-social">Chia sẻ:</li>
+                    <li class="item-social">
+                        <a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
+                           data-count="twitter"
+                           target="_blank"
+                           rel="nofollow"
+                           class="item">
+                            <i class="icon-social icon-social-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="item-social">
+                        <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
+                           data-count="facebook" target="_blank"
+                           rel="nofollow"
+                           class="item intent facebook">
+                            <i class="icon-social icon-social-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="item-social">
+                        <a href="http://pinterest.com/pin/create/link/?url=@absoluteLink"
+                           data-count="pinterest-circled"
+                           target="_blank"
+                           rel="nofollow" class="item">
+                            <i class="icon-social icon-social-pinterest"></i>
+                        </a>
+                    </li>
+                    <li class="item-social">
+                        <a href="https://t.me/share/url?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
+                           data-count="telegram"
+                           target="_blank"
+                           rel="nofollow"
+                           class="item intent tele">
+                            <i class="icon-social icon-social-telegram"></i>
+                        </a>
+                    </li>
+                </ul>
+            }
+
+           
 
             <ul class="tag-post">
                 @if (Model.SinglePost.Tags != null && Model.SinglePost.TagsSlug != null)

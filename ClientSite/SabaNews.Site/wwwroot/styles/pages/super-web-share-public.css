@@ -45,6 +45,7 @@
 
 .sws_supernormalaction {
     text-align: center;
+    padding-bottom: 1rem;
 }
 .superwebshare_prompt::before {
     /* background-size: 24px 24px; */

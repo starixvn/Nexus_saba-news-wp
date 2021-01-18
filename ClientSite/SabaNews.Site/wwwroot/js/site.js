@@ -71,51 +71,11 @@
             $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
         }
     },
-    //Mobile
-    HandleSharingSocial: function () {
-        function uriSchemeWithHyperlinkFallback(uri, href) {
-            if (!window.open(uri)) {
-                window.location = href;
-            }
-        }
-
-        function isFacebookApp() {
-            var ua = navigator.userAgent || navigator.vendor || window.opera;
-            console.log(ua);
-            return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-        } 
-
-
-        $('a.intent.facebook').on('click', function (event) {
-            var uri = $(this).data('scheme');
-            var href = $(this).attr('href');
-            var now = new Date().valueOf();
-            setTimeout(function () {
-                window.location = href;
-            }, 25);
-            window.location = uri;
-            
-            //event.preventDefault();
-        });
-
-        $('a.intent.tele').on('click', function (event) {
-            var uri = $(this).data('scheme');
-            var href = $(this).attr('href');
-            console.log(isFacebookApp);
-            if (isFacebookApp()) {
-                window.location = uri;
-                console.log("app");
-            } else {
-                window.location = href;
-                console.log("web");
-            }
-        });
-    },
+    
     init: function () {
         this.HandleIframe();
         this.HandleSearch();
         this.HandleUI();
-        this.HandleSharingSocial();
     }
 }
 
