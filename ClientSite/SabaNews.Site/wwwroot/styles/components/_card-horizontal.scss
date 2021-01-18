@@ -13,7 +13,6 @@
     &__image {
 
         @include tableMobile {
-            //@include grid(13rem 1fr, "", 1.2rem);
             max-height: 7.2rem !important;
         }
     }

@@ -117,7 +117,7 @@ p.has-text-align-center {
     flex-direction: column;
     cursor: pointer; }
     .footer .back-to-top:hover {
-      background-color: #1a1a1a; }
+      background-color: #cb200c; }
     .footer .back-to-top span {
       font-size: 4rem;
       transform: rotate(270deg);
