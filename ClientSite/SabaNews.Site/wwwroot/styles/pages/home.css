@@ -968,10 +968,6 @@ button {
         overflow: hidden; } }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
-    @media screen and (max-width: 1024px) {
-      .card-horizontal__content .title {
-        font-size: 1.4rem !important;
-        line-height: 1.8rem !important; } }
   .card-horizontal__content .datetime {
     font-size: 1.2rem;
     color: #828282; }
