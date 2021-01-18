@@ -56,6 +56,10 @@
                 height: calc(100% - 4rem);
             }
 
+            @include Mobile {
+                height: 22rem;
+            }
+
             img {
                 border-radius: 0;
                 object-fit: cover;

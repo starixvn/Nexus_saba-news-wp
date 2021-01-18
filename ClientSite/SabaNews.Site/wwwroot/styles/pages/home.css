@@ -838,6 +838,9 @@ button {
       @media screen and (max-width: 1024px) {
         .swiper-container .swiper-slide .img-item {
           height: calc(100% - 4rem); } }
+      @media (max-device-width: 767px) {
+        .swiper-container .swiper-slide .img-item {
+          height: 22rem; } }
       .swiper-container .swiper-slide .img-item img {
         border-radius: 0;
         object-fit: cover;
