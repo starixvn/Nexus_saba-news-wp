@@ -79,32 +79,36 @@
             }
         }
 
+        function isFacebookApp() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            console.log(ua);
+            return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+        } 
+
+
         $('a.intent.facebook').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
             var now = new Date().valueOf();
             setTimeout(function () {
-                if (new Date().valueOf() - now > 100) return;
                 window.location = href;
             }, 25);
             window.location = uri;
             
-            event.preventDefault();
+            //event.preventDefault();
         });
 
         $('a.intent.tele').on('click', function (event) {
             var uri = $(this).data('scheme');
             var href = $(this).attr('href');
-            var req = new XMLHttpRequest(); 
-            req.open('GET', "https://vnexpress.net/", true);
-            req.send();
-            console.log(req);
-            if (req.status !== "200") {
-                //window.location = href;
-            } else {
+            console.log(isFacebookApp);
+            if (isFacebookApp()) {
                 //window.location = uri;
+                console.log("app");
+            } else {
+                //window.location = href;
+                console.log("web");
             }
-            event.preventDefault();
         });
     },
     init: function () {

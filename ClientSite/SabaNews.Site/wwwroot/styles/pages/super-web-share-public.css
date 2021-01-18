@@ -42,6 +42,10 @@
     text-transform: uppercase;
     width: 56px;
 }
+
+.sws_supernormalaction {
+    text-align: center;
+}
 .superwebshare_prompt::before {
     /* background-size: 24px 24px; */
     content: '';
@@ -90,9 +94,9 @@
     text-indent: 0;
     width: auto;
 }
-/*.superwebshare_prompt::before {
-    background-image: url(https://web.dev/images/icons/share_white.svg);
-} */
+.superwebshare_prompt::before {
+    background-image: url('../../images/favicon/android_share.svg');
+} 
 
 .superwebshare_normal_button1:hover {
   opacity: .8!important;
