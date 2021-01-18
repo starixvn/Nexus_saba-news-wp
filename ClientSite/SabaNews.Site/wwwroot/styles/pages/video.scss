@@ -62,7 +62,7 @@
         overflow : hidden;
         height : 100%;
         @include tableMobile{
-            max-height: 13rem;
+            height: 13rem;
         }
     }
     .card-vertical-highlight {

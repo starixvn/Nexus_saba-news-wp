@@ -1099,7 +1099,7 @@ button {
     height: 100%; }
     @media screen and (max-width: 1024px) {
       .block__video .card-vertical__image {
-        max-height: 13rem; } }
+        height: 13rem; } }
   .block__video .card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0; }
 
