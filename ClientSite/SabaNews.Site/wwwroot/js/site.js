@@ -103,10 +103,10 @@
             var href = $(this).attr('href');
             console.log(isFacebookApp);
             if (isFacebookApp()) {
-                //window.location = uri;
+                window.location = uri;
                 console.log("app");
             } else {
-                //window.location = href;
+                window.location = href;
                 console.log("web");
             }
         });
