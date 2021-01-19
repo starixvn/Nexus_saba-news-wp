@@ -4,14 +4,17 @@
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
-            var video = $(this).parent().parent().find('.play_video').text();
-            if ($.trim(video) === "") {
+            var slide = $(this).parent().parent();
+
+            if (!slide.hasClass("active")) {
+                $('.play_video').html('');
+                $('.img-item').show();
+                $('.swiper-slide').removeClass("active");
                 var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
                 iframe = $(($.parseHTML(found[2].outerHTML)));
 
-                iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
                 var autoplay = src.indexOf("autoplay");
                 if (autoplay > -1) {
@@ -23,6 +26,7 @@
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
+                slide.addClass('active');
             }
         });
         //Desktop
@@ -35,8 +39,9 @@
             $('.flex-item').removeClass("active");
             $(this).parent().parent().addClass("active");
 
-            var video = slide.find('.play_video').html();
-            if ($.trim(video) === "") {
+            if (!slide.hasClass("active")) {
+                $('.play_video').html('');
+                $('.swiper-slide').removeClass("active");
                 var iframe = slide.find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
@@ -52,7 +57,9 @@
                 var symbol = src.indexOf("?") > -1 ? "&" : "?";
                 iframe.attr('src', src + symbol + "autoplay=1");
                 slide.find('.play_video').html(iframe);
+                slide.addClass('active');
             }
+           
         });
     },
     //Desktop & Mobile
