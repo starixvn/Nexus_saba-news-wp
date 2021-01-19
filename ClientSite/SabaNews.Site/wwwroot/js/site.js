@@ -14,7 +14,7 @@
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
                 iframe = $(($.parseHTML(found[2].outerHTML)));
-
+                iframe.attr('allow', 'autoplay');
                 var src = iframe.attr('src');
                 var autoplay = src.indexOf("autoplay");
                 if (autoplay > -1) {
