@@ -109,41 +109,51 @@ p.has-text-align-center {
     @media screen and (max-width: 1024px) {
       .footer .copy-right {
         font-size: 1.2rem; } }
-  .footer .back-to-top {
+  .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
     bottom: 8.5rem;
     right: 12.9rem;
-    background: #F12F19;
-    font-size: 1.6rem;
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    transition: background-color .2s ease;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: column;
-    cursor: pointer; }
-    .footer .back-to-top:hover {
-      background-color: #cb200c; }
-    .footer .back-to-top span {
+    width: 6rem;
+    height: 6rem; }
+    .footer .back-to-top-box .back-to-top {
+      background: #F12F19;
+      font-size: 1.6rem;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      transition: background-color .2s ease;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer; }
+      @media screen and (max-width: 1024px) {
+        .footer .back-to-top-box .back-to-top {
+          font-size: 1.2rem;
+          width: 4rem;
+          height: 4rem; } }
+      .footer .back-to-top-box .back-to-top:hover {
+        background-color: #cb200c; }
+    .footer .back-to-top-box .icon-chevron-right {
       font-size: 4rem;
       transform: rotate(270deg);
       font-weight: bold; }
-      .footer .back-to-top span::before {
+      .footer .back-to-top-box .icon-chevron-right::before {
         color: #fff; }
       @media screen and (max-width: 1024px) {
-        .footer .back-to-top span {
+        .footer .back-to-top-box .icon-chevron-right {
           font-size: 2rem; } }
     @media screen and (max-width: 1024px) {
-      .footer .back-to-top {
+      .footer .back-to-top-box {
         right: 4rem;
-        bottom: 6rem;
-        font-size: 1.2rem;
-        width: 4rem;
-        height: 4rem; } }
+        bottom: 6rem; } }
 
 /*:root {
     --column : 12;

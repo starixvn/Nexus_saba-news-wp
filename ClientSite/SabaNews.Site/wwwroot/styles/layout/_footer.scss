@@ -19,25 +19,39 @@
         }
     }
 
-    .back-to-top {
+    .back-to-top-box {
         position: fixed;
         z-index: 99;
         bottom: 8.5rem;
         right: 12.9rem;
-        background: $bg-back-top;
-        font-size: 1.6rem;
-        width: 6rem;
-        height: 6rem;
-        border-radius: 50%;
-        transition: background-color .2s ease;
         @include flex(center,nowrap,center,column);
-        cursor: pointer;
+        width: 6rem; 
+        height: 6rem;
 
-        &:hover {
-            background-color: darken($color: $bg-back-top, $amount: 10%);
+        .back-to-top {
+            background: $bg-back-top;
+            font-size: 1.6rem;
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            transition: background-color .2s ease;
+            @include flex(center,nowrap,center,column);
+            cursor: pointer;
+
+            @include tableMobile {
+                font-size: 1.2rem;
+                width: 4rem;
+                height: 4rem;
+            }
+
+            &:hover {
+                background-color: darken($color: $bg-back-top, $amount: 10%);
+            }
         }
 
-        span {
+
+
+        .icon-chevron-right {
             font-size: 4rem;
             transform: rotate(270deg);
             font-weight: bold;
@@ -54,9 +68,6 @@
         @include tableMobile {
             right: 4rem;
             bottom: 6rem;
-            font-size: 1.2rem;
-            width: 4rem;
-            height: 4rem;
         }
     }
 }
