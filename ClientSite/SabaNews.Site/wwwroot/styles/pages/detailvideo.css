@@ -142,8 +142,8 @@ p.has-text-align-center {
           font-size: 2rem; } }
     @media screen and (max-width: 1024px) {
       .footer .back-to-top-box {
-        right: 2rem;
-        bottom: 4rem; } }
+        right: 1.6rem;
+        bottom: 5rem; } }
 
 /*:root {
     --column : 12;

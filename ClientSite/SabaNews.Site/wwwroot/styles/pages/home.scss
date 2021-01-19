@@ -289,17 +289,21 @@
 
             .card-vertical__image {
                 max-height: 20rem;
+                height: 20rem;
 
                 @include tableMobile {
                     max-height: 11rem;
+                    height: 11rem;
                 }
 
                 @include landscapeTablet {
                     max-height: 18rem;
+                    height: 18rem;
                 }
 
                 @include portraitTablet {
                     max-height: 16rem;
+                    height: 16rem;
                 }
             }
         }
