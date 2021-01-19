@@ -1,7 +1,7 @@
-﻿:root {
-  --column: 12;
-  --padding-col: 0 1.5rem; }
-
+﻿/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .font-italic {
   font-style: italic; }
 
@@ -25,7 +25,7 @@ html {
 
 body {
   font-size: 1.4rem;
-  font-family: "Noto Sans", sans-serif;
+  font-family: Arial, sans-serif;
   color: #4F4F4F;
   line-height: 2.2rem;
   background-color: #FFFDF9; }
@@ -112,8 +112,8 @@ p.has-text-align-center {
   .footer .back-to-top {
     position: fixed;
     z-index: 99;
-    bottom: 8.5rem;
-    right: 12.9rem;
+    bottom: 11rem;
+    right: 14rem;
     background: #F12F19;
     font-size: 1.6rem;
     width: 6rem;
@@ -145,10 +145,10 @@ p.has-text-align-center {
         width: 4rem;
         height: 4rem; } }
 
-:root {
-  --column: 12;
-  --padding-col: 0 1.5rem; }
-
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background-color: #E8EAEF;
   outline: none; }
@@ -164,10 +164,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     /* Microsoft Edge */
     color: #fff; }
 
-:root {
-  --column: 12;
-  --padding-col: 0 1.5rem; }
-
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .header {
   background-color: #FFFDF9;
   position: fixed;
@@ -487,7 +487,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               font-size: 1.3rem;
               font-weight: 600;
               transition: color .2s ease;
-              font-family: "Montserrat", sans-serif;
+              font-family: Arial, sans-serif;
               margin-right: 3rem;
               line-height: 1.7rem; }
               @media screen and (max-width: 1024px) {
@@ -498,7 +498,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                   text-transform: initial;
                   font-weight: 600;
                   margin-right: 0;
-                  font-family: "Montserrat", sans-serif;
+                  font-family: Arial, sans-serif;
                   text-transform: uppercase; } }
               @media only screen and (min-width: 1024px) and (max-width: 1366px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
@@ -574,7 +574,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 line-height: 1.7rem;
                 font-weight: normal;
                 transition: color .2s ease;
-                font-family: "Montserrat", sans-serif;
+                font-family: Arial, sans-serif;
                 height: 3.9rem;
                 display: flex;
                 align-items: center; }
