@@ -116,7 +116,7 @@
     // block-video
     .block-video {
         .block__content {
-            @include grid(75.7rem 1fr, 40rem, #{$column-gap});
+            @include grid(75.7rem 1fr, 49rem, #{$column-gap});
 
             @include tableMobile {
                 @include grid(45.1rem 1fr, 28rem, 1.6rem);

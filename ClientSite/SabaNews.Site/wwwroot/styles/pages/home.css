@@ -892,7 +892,7 @@ button {
   color: #fff; }
 
 .play_video iframe {
-  height: 340px;
+  height: 430px;
   width: 100%; }
 
 @media screen and (max-width: 767px) {
@@ -1110,7 +1110,7 @@ button {
 .main .block-video .block__content {
   display: grid;
   grid-template-columns: 75.7rem 1fr;
-  grid-template-rows: 40rem;
+  grid-template-rows: 49rem;
   grid-gap: 3.2rem; }
   @media screen and (max-width: 1024px) {
     .main .block-video .block__content {
