@@ -18,11 +18,15 @@
                 var src = iframe.attr('src');
                 var autoplay = src.indexOf("autoplay");
                 if (autoplay > -1) {
-                    src = src.replace("autoplay=0", "");
-                    src = src.replace("autoplay=1", "");
+                    src = src.replace("autoplay=0", "autoplay=1");
+                    src = src.replace("autoplay=1", "autoplay=1");
                 }
-                var symbol = src.indexOf("?") > -1 ? "&" : "?";
-                iframe.attr('src', src + symbol + "autoplay=1");
+                else {
+                    var symbol = src.indexOf("?") > -1 ? "&" : "?";
+                    src = src + symbol + "autoplay=1"
+                }
+                
+                iframe.attr('src', src );
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
@@ -50,12 +54,15 @@
                 var src = iframe.attr('src');
                 var autoplay = src.indexOf("autoplay");
                 if (autoplay > -1) {
-                    src = src.replace("autoplay=0", "");
-                    src = src.replace("autoplay=1", "");
+                    src = src.replace("autoplay=0", "autoplay=1");
+                    src = src.replace("autoplay=1", "autoplay=1");
+                }
+                else {
+                    var symbol = src.indexOf("?") > -1 ? "&" : "?";
+                    src = src + symbol + "autoplay=1"
                 }
 
-                var symbol = src.indexOf("?") > -1 ? "&" : "?";
-                iframe.attr('src', src + symbol + "autoplay=1");
+                iframe.attr('src', src);
                 slide.find('.play_video').html(iframe);
                 slide.addClass('active');
             }
