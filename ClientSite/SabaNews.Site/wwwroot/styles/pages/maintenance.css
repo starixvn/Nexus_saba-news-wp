@@ -838,12 +838,6 @@ button {
     color: #333;
     transition: color .3s ease;
     display: block; }
-    @media (max-device-width: 767px) {
-      .card-horizontal__content .title {
-        -webkit-line-clamp: 2;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden; } }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
   .card-horizontal__content .datetime {
@@ -871,11 +865,11 @@ button {
     overflow: hidden;
     display: block;
     position: relative;
-    height: 15rem; }
+    max-height: 15rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__image {
         margin-bottom: .5rem;
-        height: 11rem; } }
+        max-height: 11rem; } }
     .card-vertical__image img {
       width: 100%;
       height: 100%;

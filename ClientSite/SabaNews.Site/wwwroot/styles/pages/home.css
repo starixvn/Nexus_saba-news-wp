@@ -973,12 +973,6 @@ button {
     color: #333;
     transition: color .3s ease;
     display: block; }
-    @media (max-device-width: 767px) {
-      .card-horizontal__content .title {
-        -webkit-line-clamp: 2;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden; } }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
   .card-horizontal__content .datetime {
