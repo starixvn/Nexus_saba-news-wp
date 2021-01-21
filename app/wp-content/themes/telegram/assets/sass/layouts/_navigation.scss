@@ -1,0 +1,165 @@
+
+%reset-button{
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 0;
+    height: 40px;
+    line-height: 40px;
+    width: 45px;
+    text-align: center;
+}
+.admin-bar{
+    .#{$prefix}-navbar-section{
+        &.sticky{
+            top: 30px;
+            .menu-description{
+                display: none;
+            }
+        }
+    }
+}
+.light-mode-caption{
+    display: none;
+}
+.#{$prefix}-navbar-section{
+    background-color: $primary_color;
+    color: $primary_bg_text_color;
+    margin-top: -1px;
+    &.sticky{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        .#{$prefix}-site-feature{
+            button{
+                .#{$prefix}-tooltip{
+                    bottom: -25px;
+                    &:after{
+                        top: -10px;
+                        @include transform(rotate(180deg));
+                    }
+
+                }
+            }
+
+        }
+    }
+    .#{$prefix}-wrapper{
+        align-items: center;
+    }
+    .#{$prefix}-site-navigation{
+        flex: 0 0 110px;
+        max-width: 110px;
+        display: flex;
+        flex-wrap: wrap;
+        @include media(xs){
+            flex: 0 0 calc(100% - 280px);
+            max-width: calc(100% - 280px);
+        }
+        .#{$prefix}-menu-icon-section{
+            @include media(lg){
+                display: none;
+            }
+            button{
+                @extend %reset-button;
+            }
+            .#{$prefix}-menu-icon-with-box{
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+    .#{$prefix}-site-feature{
+        flex: 0 0 calc(100% - 110px);
+        max-width: calc(100% - 110px);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        @include media(xs){
+            flex: 0 0 280px;
+            max-width: 280px;
+        }
+        button{
+            @extend %reset-button;
+            position: relative;
+            color: $primary_bg_text_color;
+            &:hover,
+            &:focus-within{
+                .#{$prefix}-tooltip{
+                    opacity: 1;
+                }
+            }
+            .#{$prefix}-tooltip{
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                bottom: 40px;
+                z-index: 1;
+            }
+        }
+        
+        .#{$prefix}-dark-mode{
+            button{
+                font-size: 20px;
+            }
+        }
+        .#{$prefix}-search-section{
+            button{
+                font-size: 24px;
+            }
+        }
+        .#{$prefix}-offcanvas-section{
+            button{
+                top: -2px;
+                width: 50px;
+            }
+        }
+        .#{$prefix}-nav-newsletter{
+            button{
+                background-color: $color_black;
+                color: $color_white;
+                padding: 0 5px; //overwrite
+                width: 50px;
+                @include media(xs){
+                    width: 140px;
+                }
+                &:hover,
+                &:focus-within{
+                    background-color: $color_light_gray;
+                    color: $primary_color;
+                }
+                .#{$prefix}-caption{
+                    display: none;
+                    @include media(xs){
+                        display: inline-block;
+                    }
+                }
+                span{
+                    display: inline-block;
+                    padding: 0 5px;
+                }
+            }
+        }
+    }
+    .#{$prefix}-nav-search-content{
+        background-color: $color_white;
+        padding: 30px 0;
+        display: none;
+        .#{$prefix}-wrapper{
+            margin: auto;
+            width: 600px;
+        }
+        .search-form{
+            flex: 0 0 calc(100% - 60px);
+        }
+        .#{$prefix}-close{
+            flex: 0 0 60px;
+            max-width: 60px;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li{
+    position: relative;
+}
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li .sub-menu,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li .children{
+    top: 0;
+    left: calc(100% + 30px);
+    overflow: hidden;
+    visibility: hidden;
+    transition: left .2s ease 0s, opacity .2s;
+    -moz-transition: left .2s ease 0s, opacity .2s;
+    -webkit-transition: left .2s ease 0s, opacity .2s;
+    -o-transition: left .2s ease 0s, opacity .2s;
+    -ms-transition: left .2s ease 0s, opacity .2s;
+}
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li:hover .sub-menu,
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li:focus-within .sub-menu,
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li:hover .sub-menu,
+.desktop ul.#{$prefix}-nav-menu>li .sub-menu>li:focus-within .sub-menu,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li:hover .children,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li:focus-within .children,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li:hover .children,
+.desktop div.#{$prefix}-nav-menu>ul>li .children>li:focus-within .children{
+    opacity: 1;
+    height: auto;
+    left: 100%;
+    overflow: visible;
+    visibility: visible;
+}

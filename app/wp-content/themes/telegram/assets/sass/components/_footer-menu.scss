@@ -1,0 +1,21 @@
+.#{$prefix}-footer-menu{
+    @extend %reset-ul;
+    display: flex;
+    flex-wrap: wrap;
+    li{
+        position: relative;
+        a{
+            padding: 0 10px;
+        }
+        &:after{
+            content:'/';
+            display: inline-block;
+
+        }
+        &:last-child{
+            &:after{
+                content: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,204 @@
+
+
+$social_icon: (
+    twitter:    (content: "\f2b0", color: #1ca0fe),
+    facebook:   (content: "\f236",color: #3b5999),
+    dribbble :  (content:"\f233",color: #ea4c89),
+    linkedin :  ( content: "\f240",color: #0177b5),
+    instagram:  (content: "\f23e",color:#E1306c),
+    youtube:    (content: "\f34f",color: #ff0000),
+    vimeo:      (content: "\f2c4",color: #1ab7ea),
+    wordpress:  (content: "\f330",color: #0074aa),
+    pinterest: (content: "\f244",color: #bd071c),
+    tumblr: (content: "\f24d",color:#3e5a70),
+    whatsapp: (content: "\f2c5",color: #00e676),
+    reddit : (content: "\f247",color: #ff4500),
+    vk: (content: "\f10d",color: #4a76a8),
+    mailto: (content: "\f322",color: #EA4335),
+);
+
+ul{
+    &.#{$prefix}-social{
+        @extend %reset-ul;
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            span{
+                font-size: 0;
+                display: none;
+            }
+            a{
+                display: inline-block;
+                text-decoration: none;
+                font-size: 22px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                &:before{ 
+                    display: block;
+                    @extend %ionicons;
+                }
+               
+                @each $social,$icon in $social_icon{
+                    &[href*="#{$social}"] {
+                        &:before {
+                            content: map-get($icon, content);
+                        }
+                    }
+                    &:hover,
+                    &:focus-within{
+                        &[href*="#{$social}"] {
+                            color: $color_white;
+                            background-color: darken(map-get($icon, color),15%);
+                            border-color: darken(map-get($icon, color),15%);
+                            &:before {
+                                color: $color_white;
+                            }
+                        }
+                    }
+                }
+               
+            }
+        }
+    }
+    &.#{$prefix}-social-with-bg{
+        li{
+            a{
+                @include border(2px,solid);
+                line-height: 36px;
+                @each $social,$icon in $social_icon{
+                    &[href*="#{$social}"] {
+                        background-color: map-get($icon, color);
+                        border-color: map-get($icon, color);
+                        color: $color_white;
+                        &:before {
+                            color: $color_white;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    &.#{$prefix}-social-rounded{
+        a{
+            border-radius: 100%;
+        }
+    }
+    &.#{$prefix}-social-with-border{
+        li{
+            a{
+                @include border(2px,solid);
+                line-height: 36px;
+                @each $social,$icon in $social_icon{
+                    &[href*="#{$social}"] {
+                        border-color: map-get($icon, color);
+                        color: map-get($icon, color);
+                        &:before {
+                            color: map-get($icon, color);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    
+}
+.#{$prefix}-social-share-section{
+    .#{$prefix}-share-container{
+        a{
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            @include border(2px,solid);
+            line-height: 26px;
+            @each $social,$icon in $social_icon{
+                &[href*="#{$social}"] {
+                    background-color: map-get($icon, color);
+                    border-color: map-get($icon, color);
+                    color: $color_white;
+                    &:before {
+                        color: $color_white;
+                    }
+                }
+                &:hover,
+                &:focus-within{
+                    &[href*="#{$social}"] {
+                        background-color: darken(map-get($icon, color),15%);
+                        border-color: darken(map-get($icon, color),15%);
+                    }
+                }
+            }
+        }
+    }
+    &.#{$prefix}-social-share-lg{
+        .#{$prefix}-share-container{
+            a{
+                width: 40px;
+                height: 40px;
+                line-height: 36px;
+                font-size: 18px;
+            }
+        }
+    }
+    &.#{$prefix}-social-share-rounded{
+        a{
+            border-radius: 100%;
+        }
+    }
+} 
+.#{$prefix}-social-icon-with-text{
+    @extend %reset-ul;
+    display: flex;
+    flex-wrap: wrap;
+    li{
+        a{
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+            height: 40px;
+            line-height: 40px;
+            display: flex;
+            border-radius: 3px;
+            span{
+                font-size: 15px;
+                padding: 0 15px;
+            }
+            &:before{ 
+                display: inline-block;
+                width: 40px;
+                @extend %ionicons;
+                text-align: center;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                @include transition();
+            }
+           
+            @each $social,$icon in $social_icon{
+                &[href*="#{$social}"] {
+                    color: $color_white;
+                    background-color: map-get($icon, color);
+                    &:before {
+                        content: map-get($icon, content);
+                        background-color: lighten(map-get($icon, color),15%);
+                    }
+                }
+                &:hover,
+                &:focus-within{
+                    &[href*="#{$social}"] {
+                        color: $color_white;
+                        &:before {
+                            background-color: map-get($icon, color);
+                        }
+                    }
+                }
+            }
+           
+        }
+    }
+}

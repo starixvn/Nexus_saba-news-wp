@@ -1,0 +1,139 @@
+.#{$prefix}-featured-post-section,
+.#{$prefix}-carousel-section{
+    margin-top: 15px;
+}
+.#{$prefix}-banner-section{
+    .banner-order-1{
+        order: 1;
+    }
+    .banner-order-2{
+        order: 3;
+        @include media(lg){
+            order: 2;
+        }
+    }
+    .banner-order-3{
+        order: 2;
+        @include media(lg){
+            order: 3;
+        }
+    }
+    .#{$prefix}-exclusive-post-list,
+    .#{$prefix}-banner-slider-section{
+        margin-top: 15px;
+        
+    }
+    .#{$prefix}-exclusive-post-list{
+        &:hover{
+            .#{$prefix}-arrow-section{
+                opacity: 1;
+            }
+        }
+        .#{$prefix}-title-section{
+            padding-bottom: 5px;
+        }
+        .#{$prefix}-section-title,
+        .#{$prefix}-arrow-section{
+            padding-top: 10px;
+        }
+        .#{$prefix}-section-title{
+            margin: 0;
+            line-height: 1;
+        }
+        .#{$prefix}-arrow-section{
+            @include transition();
+            @include media(lg){
+                opacity: 0;
+            }
+        }
+        .#{$prefix}-post{
+            margin-top: 8px;
+        }
+    }
+    .#{$prefix}-banner-slider-section{
+        .#{$prefix}-image-section{
+            height: 470px;
+        }
+        .#{$prefix}-social-share-section{
+            flex: 0 0 100%;
+            max-width: 100%;
+            @include media(xs){
+                flex: none;
+                max-width: none;
+            }
+        }
+    }
+    .#{$prefix}-post-list-with-post-count{
+        .#{$prefix}-post{
+            margin-top: 15px;
+            &:nth-child(odd){ 
+                padding: 10px 15px;
+                background-color: $color_white;
+            }
+        }
+    }
+}
+.#{$prefix}-featured-post-section{
+    color: $color_white;
+    padding: 15px 0 30px;
+    a{
+        color: $color_white;
+        &:hover{
+            color: $primary_color;
+        }
+    }
+    .#{$prefix}-section-title{
+        margin: 0;
+        padding-top: 15px;
+    }
+    .#{$prefix}-post-list{
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+    }
+    .#{$prefix}-post{
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 15px;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        @include media(xs){
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @include media(sm){
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+        }
+        @include media(lg){
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+
+        .#{$prefix}-desc{
+            &:hover{
+                background-color: $color_black;
+            }
+        }
+    }
+}
+.#{$prefix}-carousel-section{
+    .#{$prefix}-social-share-section{
+        flex: 0 0 100%;
+        max-width: 100%;
+        @include media(sm){
+            flex: none;
+            max-width: none;
+        }
+    }
+}
+.#{$prefix}-advertisement-post-section{
+    padding: 30px 0 45px;
+    .#{$prefix}-section-title{
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    .#{$prefix}-post,
+    .#{$prefix}-advertisement-section{
+        margin-top: 15px;
+    }
+}

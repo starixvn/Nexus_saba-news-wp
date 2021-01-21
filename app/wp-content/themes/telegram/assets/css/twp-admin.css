@@ -1,0 +1,18 @@
+#customize-control-footer_widget_layout label label,
+#customize-control-select_global_archive_layout label label{
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+}
+#customize-control-footer_widget_layout label label input,
+#customize-control-select_global_archive_layout label label input{
+    display: inline-block;
+    margin-right: 5px;
+}
+#customize-control-select_global_archive_layout label label input{
+    margin-top: 5px;
+}
+#customize-control-footer_widget_layout label label{
+    align-items: center;
+}

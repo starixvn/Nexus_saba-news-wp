@@ -1,0 +1,140 @@
+
+
+/* Booster Extension */
+.rtl .twp-social-share-with-hover-effect.twp-icon-left-align .twp-social-share-layout-2:hover .twp-share-container{
+    left: 0;
+    right: initial;
+}
+.rtl .twp-social-share-section .twp-toggle-share,
+.rtl .twp-archive-post .twp-social-share-section .twp-toggle-share{
+    transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+}
+
+@media screen and (min-width: 1050px){
+    .rtl .twp-social-share-with-hover-effect .twp-social-share-layout-2 .twp-share-container{
+        left: initial;
+        right: 40px;
+    }
+    .rtl .twp-social-share-with-hover-effect .twp-social-share-layout-2:hover .twp-share-container{
+        right: 5px;
+    }
+    .rtl .twp-social-share-with-hover-effect.twp-icon-left-align .twp-social-share-layout-2 .twp-share-container {
+        right: initial;
+        left: -150px;
+    }
+    .rtl .twp-archive-post .twp-social-share-section .twp-toggle-share{
+        transform: scaleX(1);
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        -o-transform: scaleX(1);
+    }
+    
+}
+
+/* Navigation Bar */
+.rtl .desktop .down-arrow > a:after,
+.rtl .desktop .right-arrow > a:after{
+    right: initial;
+    left: 10px;
+}
+.rtl .desktop .twp-nav-menu li.down-arrow > a{
+    padding-right: 15px;
+    padding-left: 30px;
+}
+.rtl .desktop .right-arrow > a:after{
+    content: '\f27d';
+}
+.rtl .desktop ul.twp-nav-menu > li .sub-menu,
+.rtl .desktop div.twp-nav-menu > ul > li .children{
+    left: initial;
+    right: 0;
+}
+.rtl .desktop ul.twp-nav-menu > li .sub-menu > li .sub-menu,
+.rtl .desktop div.twp-nav-menu > ul > li .children > li .children{
+    right: 100%;
+}
+/* Breaking News Section */
+.rtl .twp-breaking-news-section .twp-title-section{
+    float: right;
+    padding: 0 30px 0 20px;
+}
+.rtl .twp-breaking-news-section .twp-title-section:after,
+.rtl .twp-breaking-news-section .twp-title-section:before{
+    left: initial;
+    right: 15px;
+}
+/* Banner section */
+.rtl .twp-exclusive-post-list .twp-exclusive-prev i:before{
+    content: "\f27e";
+}
+.rtl .twp-exclusive-post-list .twp-exclusive-next i:before{
+    content: "\f28c";
+}
+/* Comment section */
+.rtl .comments-area .comment-list li .comment-content p:before{
+    left: initial;
+    right: 0;
+}
+.rtl .comments-area .comment-list li .comment-content p{
+    padding-left: 0;
+    padding-right: 25px;
+}
+.rtl .comments-area .comment-list li .comment-meta .comment-metadata time,
+.rtl .comments-area .comment-list li .comment-meta .comment-metadata .comment-edit-link{
+    padding-left: 20px;
+    padding-right: 25px;
+}
+.rtl .comments-area .comment-list li .comment-meta .comment-metadata time:before,
+.rtl .comments-area .comment-list li .comment-meta .comment-metadata .comment-edit-link:before{
+    left: initial;
+    right: 5px;
+}
+/* Pagination */
+.rtl .twp-pagination-numeric .next i:before,
+.rtl .posts-navigation .nav-next a:after,
+.rtl .twp-pagination .navigation .nav-next i:before{
+    content: "\f27d";
+}
+.rtl .twp-pagination-numeric .prev i:before,
+.rtl .posts-navigation .nav-previous a:before,
+.rtl .twp-pagination .navigation .nav-previous i:before{
+    content: "\f287";
+}
+.rtl .posts-navigation .nav-next a:after{
+    margin-left: 0;
+    margin-right: 7.5px;
+}
+.rtl .posts-navigation .nav-previous a:before{
+    margin-right: 0;
+    margin-left: 7.5px;
+}
+
+/* Mobile Menu */
+.rtl .twp-mobile-menu-section ul.nav-menu .children,
+.rtl .twp-mobile-menu-section ul.nav-menu .sub-menu,
+.rtl .twp-mobile-menu-section ul.twp-nav-menu .children,
+.rtl .twp-mobile-menu-section ul.twp-nav-menu .sub-menu{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.rtl .twp-tags-list a:before,
+.rtl .entry-footer .tags-links a:before{
+    padding-right: 0;
+    padding-left: 5px;
+}
+/*Tags*/ 
+.rtl .twp-tags-list a:before,
+.rtl .entry-footer .tags-links a:before{
+    padding-right: 0;
+    padding-left: 5px;
+}
+/* Newslettter */
+.rtl .mc4wp-form input[type=checkbox]{
+    margin-right: 0;
+    margin-left: 10px;
+}

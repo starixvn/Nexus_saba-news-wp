@@ -1,0 +1,56 @@
+.#{$prefix}-single-post{
+    .entry-footer{
+        padding: 15px 15px 20px;
+        font-weight: $font_weight_semi_bold;
+        @include border();
+        border-color: $color_light_gray;
+        background-color: $color_light_gray;
+        >span{
+            padding-right: 10px;
+        }
+        a,
+        span{
+            display: inline-block;
+            
+        }
+        a,
+        .#{$prefix}-icon{
+            margin-top: 5px;
+        }
+        .#{$prefix}-icon{
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .edit-link:before,
+        .#{$prefix}-icon{
+            font-size: 16px;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            border-radius: 100%;
+            background-color: $primary_color;
+            color: $primary_bg_text_color;
+            text-align: center;
+        }
+       
+        .cat-links{
+            a{
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+        .edit-link{
+            position: relative;
+            &:before{
+                content:'\f2db';
+                @extend %ionicons;
+                display: inline-block;
+                margin: 5px 5px 0;
+            }
+            a{
+                padding: 0 5px;
+            }
+        }
+    
+    }
+}
