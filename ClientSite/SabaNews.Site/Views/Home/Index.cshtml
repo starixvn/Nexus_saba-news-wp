@@ -306,9 +306,13 @@
                             </p>
                         </div>
                         <ul class="block-list">
-                            @for (int i = 1; i < Model.TennisPosts.Length; i++)
+                            @foreach (var tennisPost in Model.TennisPosts)
                             {
-                                <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[i].Slug  })" class="item"><i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[i].PostTitle</a></li>
+                                <li class="list-item">
+                                    <a href="@Url.Action("Single", "Home", new { slug = tennisPost.Slug  })" class="item">
+                                        <i class="icon-content icon-sport-tennis-2"></i> @tennisPost.PostTitle
+                                    </a>
+                                </li>
                             }
                         </ul>
                     </div>
