@@ -21,6 +21,33 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
+    <style>
+		.comment form textarea {
+		    width: 100%;
+        }
+
+		.comment form input[type="submit"] {
+			color: #fff;
+			padding: 10px;
+			background: #f12f19 !important;
+
+		}
+		.nickname {
+			color:#04416D;
+            padding-right: 5px;
+            font-weight: bold;
+		}
+
+		.comment_item {
+		    margin-top: 20px;
+        }
+
+		.comment_item .block_like_web a {
+			color: #757575;
+			margin-right: 20px;
+            text-decoration: none;
+		}
+    </style>
 }
 
 <section class="main">
@@ -173,6 +200,35 @@
 
                 }
             </ul>
+			<div class="comment">
+                <label>Ý kiến</label>
+                <form>
+                    <textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
+                    <input type="submit" name="submit" value="Add Comment"  />
+                </form>
+
+                <hr style="margin: 15px 0" />
+				<div class="list_comments">
+					<div class="comment_item">
+						<p class="full_content"><span class="nickname">Hank</span> test comment</p>
+						<p class="block_like_web width_common">
+							<a href="javascript:;" class="link_thich">like</a>
+							<a href="javascript:;" class="link_reply">Trả lời</a>
+							<span class="time">1 giờ trước</span>
+						</p>
+					</div>
+
+					<div class="comment_item">
+						<p class="full_content"><span class="nickname">Hank</span> test comment</p>
+						<p class="block_like_web width_common">
+							<a href="javascript:;" class="link_thich">like</a>
+							<a href="javascript:;" class="link_reply">Trả lời</a>
+							<span class="time">1 giờ trước</span>
+						</p>
+					</div>
+
+				</div>
+            </div>
             <h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
             <div class="block__content">
                 @foreach (var post in Model.RandomRelatedPosts)
