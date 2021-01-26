@@ -138,4 +138,29 @@
         <Setting Key="get_sitemap" SpName="get_sitemap" DbName="sabasports" Plain="0" />
         <Setting Key="get_sitemap_news" SpName="get_sitemap_news" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Comment">
+        <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">
+            <Mapping DataField="comment_ID" ObjectProperty="CommentID" class="Comment" />
+            <Mapping DataField="comment_post_ID" ObjectProperty="CommentPostID" class="Comment" />
+            <Mapping DataField="comment_author" ObjectProperty="CommentAuthor" class="Comment" />
+            <Mapping DataField="comment_author_email" ObjectProperty="CommentAuthorEmail" class="Comment" />
+            <Mapping DataField="comment_author_IP" ObjectProperty="CommentAuthorIP" class="Comment" />
+            <Mapping DataField="comment_date" ObjectProperty="CommentDate" class="Comment" />
+            <Mapping DataField="comment_date_gmt" ObjectProperty="CommentDateGMT" class="Comment" />
+            <Mapping DataField="comment_content" ObjectProperty="CommentContent" class="Comment" />
+            <Mapping DataField="user_id" ObjectProperty="UserID" class="Comment" />
+            <Mapping DataField="comment_number_children" ObjectProperty="CommentNumberChildren" class="Comment" />
+        </Setting>
+        <Setting Key="cmt_get_children" SpName="cmt_get_children" DbName="sabasports" Plain="0">
+            <Mapping DataField="comment_ID" ObjectProperty="CommentID" class="Comment" />
+            <Mapping DataField="comment_post_ID" ObjectProperty="CommentPostID" class="Comment" />
+            <Mapping DataField="comment_author" ObjectProperty="CommentAuthor" class="Comment" />
+            <Mapping DataField="comment_author_email" ObjectProperty="CommentAuthorEmail" class="Comment" />
+            <Mapping DataField="comment_author_IP" ObjectProperty="CommentAuthorIP" class="Comment" />
+            <Mapping DataField="comment_date" ObjectProperty="CommentDate" class="Comment" />
+            <Mapping DataField="comment_date_gmt" ObjectProperty="CommentDateGMT" class="Comment" />
+            <Mapping DataField="comment_content" ObjectProperty="CommentContent" class="Comment" />
+            <Mapping DataField="user_id" ObjectProperty="UserID" class="Comment" />
+        </Setting>
+    </Function>
 </Functions>

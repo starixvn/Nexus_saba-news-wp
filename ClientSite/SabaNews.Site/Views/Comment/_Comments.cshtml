@@ -1,0 +1,32 @@
+﻿@foreach (var comment in Model.CommentTemplate.Comments)
+{
+<div class="comment_item">
+	<div class="content_comment">
+		<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
+		<p class="block_like_web width_common">
+			<a href="javascript:;" class="link_thich">like</a>
+			<a href="javascript:;" class="link_reply">Trả lời</a>
+			<span class="time">@comment.CommentTime</span>
+		</p>
+	</div>
+	@if (comment.CommentNumberChildren > 0)
+	{
+<p class="count-reply">
+	<a href="javascript:;" class="view_all_reply" data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID">
+		<span class="num_reply_cmt">@comment.CommentNumberChildren</span> Trả lời
+	</a>
+</p>}
+
+</div>}
+
+@if (Model.ViewData.TotalPages > 1)
+{
+	var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
+	var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
+	var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
+	var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
+<div class="pagination">
+	<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
+	<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
+</div>}
+<div class="clearfix"></div>

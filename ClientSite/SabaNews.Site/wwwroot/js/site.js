@@ -79,11 +79,77 @@
             $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
         }
     },
+    HandleComment: function () {
+        //<div class="sub_comment">
+        //    <div class="sub_comment_item comment_item">
+        //        <p class="full_content"><span class="nickname">Hank</span> test comment</p>
+        //        <p class="block_like_web width_common">
+        //            <a href="javascript:;" class="link_thich">like</a>
+        //            <a href="javascript:;" class="link_reply">Trả lời</a>
+        //            <span class="time">1 giờ trước</span>
+        //        </p>
+        //    </div>
+        //</div>
+        $(document).on('click', '.view_all_reply', function () {
+            var self = $(this)
+            var postID = self.data('postid');
+            var commentID = self.data('cmtid');
+            var html = '<div class="sub_comment">';
+            $.ajax({
+                type: "GET",
+                url: "/comments/getchildren",
+                data: { postID: postID, commentID: commentID },
+                dataType: "json",
+                success: function (response) {
+                    self.parent().hide();
+                    var data = response.data;
+                    $.each(data, function (i, val) {
+                        html += '<div class="sub_comment_item comment_item">';
+                        html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
+                        html += '<p class="block_like_web width_common">';
+                        html += '<a href="javascript:;" class="link_thich">like</a>';
+                        html += '<a href="javascript:;" class="link_reply">Trả lời</a>';
+                        html += '<span class="time">' + val.commentTime + '</span>';
+                        html += '</p>';
+                        html += '</div>';
+                    });
+                    html += '</div>';
+                    self.parent().parent().find('.content_comment').append(html);
+
+                }
+            });
+        });
+
+        $(document).on("click", ".comment-pagination", function () {
+            var self = $(this);
+            var postID = $("input[name=postID]").val();
+            var page = self.data("page");
+            $.ajax({
+                type: "GET",
+                url: "/comments/paging",
+                data: { postID: postID, page: page },
+                success: function (response) {
+                    $('.list_comments').html(response);
+                }
+            });
+        });
+
+        $('.add_comment').on("click", function () {
+            var self = $(this);
+            var comment_value = self.parent().find("textarea[name=comment_value]").val();
+            if ($.trim(comment_value) === "") {
+                self.parent().find("textarea[name=comment_value]").focus();
+                return false;
+            }
+
+        });
+    },
     
     init: function () {
         this.HandleIframe();
         this.HandleSearch();
         this.HandleUI();
+        this.HandleComment();
     }
 }
 

@@ -25,6 +25,7 @@
     using sabanews.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Core.Repositories;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using Sentry;
@@ -94,12 +95,14 @@
             services.AddSingleton(Configuration);
 
             services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<IRecurringJobManager, RecurringJobManager>();

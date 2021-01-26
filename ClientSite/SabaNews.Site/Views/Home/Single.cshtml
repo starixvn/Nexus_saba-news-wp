@@ -1,5 +1,6 @@
 ﻿@using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
+@using SabaNews.Models.ViewModel;
 
 @inject IDetectionService DetectionService
 @{ 
@@ -21,33 +22,79 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
-    <style>
-		.comment form textarea {
-		    width: 100%;
-        }
+	<style>
+		.clearfix {
+			clear: both;
+		}
 
-		.comment form input[type="submit"] {
+		.comment form textarea {
+			width: 100%;
+		}
+
+		.comment form .add_comment {
 			color: #fff;
 			padding: 10px;
 			background: #f12f19 !important;
-
 		}
+
 		.nickname {
-			color:#04416D;
-            padding-right: 5px;
-            font-weight: bold;
+			color: #04416D;
+			padding-right: 5px;
+			font-weight: bold;
 		}
 
 		.comment_item {
-		    margin-top: 20px;
-        }
-
-		.comment_item .block_like_web a {
-			color: #757575;
-			margin-right: 20px;
-            text-decoration: none;
+			margin-top: 20px;
 		}
-    </style>
+
+			.comment_item .block_like_web a {
+				color: #757575;
+				margin-right: 20px;
+				text-decoration: none;
+			}
+
+		.count-reply {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+			.count-reply a {
+				color: #076DB6;
+				font-size: 13px;
+				padding-left: 20px;
+				font-weight: 700;
+			}
+
+		.sub_comment {
+			padding: 0 0 0 56px;
+			width: 100%;
+			position: relative;
+		}
+
+		.pagination {
+			float: right;
+			display: inline-block;
+		}
+
+			.pagination a {
+				color: black;
+				float: left;
+				padding: 8px 16px;
+				text-decoration: none;
+				transition: background-color .3s;
+				border: 1px solid #ddd;
+			}
+
+				.pagination a.active {
+					background-color: #4CAF50;
+					color: white;
+					border: 1px solid #4CAF50;
+				}
+
+				.pagination a:hover:not(.active) {
+					background-color: #ddd;
+				}
+	</style>
 }
 
 <section class="main">
@@ -201,32 +248,16 @@
                 }
             </ul>
 			<div class="comment">
+                <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
                 <label>Ý kiến</label>
                 <form>
                     <textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
-                    <input type="submit" name="submit" value="Add Comment"  />
+                    <input type="button" name="add_comment" class="add_comment" value="Gửi"  />
                 </form>
 
                 <hr style="margin: 15px 0" />
 				<div class="list_comments">
-					<div class="comment_item">
-						<p class="full_content"><span class="nickname">Hank</span> test comment</p>
-						<p class="block_like_web width_common">
-							<a href="javascript:;" class="link_thich">like</a>
-							<a href="javascript:;" class="link_reply">Trả lời</a>
-							<span class="time">1 giờ trước</span>
-						</p>
-					</div>
-
-					<div class="comment_item">
-						<p class="full_content"><span class="nickname">Hank</span> test comment</p>
-						<p class="block_like_web width_common">
-							<a href="javascript:;" class="link_thich">like</a>
-							<a href="javascript:;" class="link_reply">Trả lời</a>
-							<span class="time">1 giờ trước</span>
-						</p>
-					</div>
-
+					@Html.Partial("~/Views/Comment/_Comments.cshtml", new SingleViewModel { CommentTemplate = Model.CommentTemplate, ViewData = Model.ViewData })
 				</div>
             </div>
             <h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>

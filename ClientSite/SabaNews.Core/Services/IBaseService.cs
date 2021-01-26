@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Models;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -14,5 +15,7 @@
         Task<ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>>> FetchMultipleAsync<TFirst, TSecond>(ICriteria criteria);
 
         Task<ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>> FetchMultipleAsync<TFirst, TSecond, TThird>(ICriteria criteria);
+
+        Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command);
     }
 }

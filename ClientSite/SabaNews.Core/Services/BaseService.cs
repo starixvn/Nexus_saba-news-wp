@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Services
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Repositories;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -8,11 +10,14 @@
     public class BaseService : IBaseService
     {
         private readonly IDynamicRepository dynamicRepository;
+        private readonly IBaseRepository baseRepository;
 
         public BaseService(
-            IDynamicRepository dynamicRepository)
+            IDynamicRepository dynamicRepository,
+            IBaseRepository baseRepository)
         {
             this.dynamicRepository = dynamicRepository;
+            this.baseRepository = baseRepository;
         }
 
         public async Task<IEnumerable<T>> GetDataAsync<T>(ICriteria criteria)
@@ -53,6 +58,17 @@
             }
 
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>(new List<TFirst>(), new List<TSecond>(), new List<TThird>());
+        }
+
+        public async Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command)
+        {
+            var commandResult = new CommandResult();
+            if (command != null && command.IsValid())
+            {
+                commandResult = await baseRepository.ExecuteNonQueryAsync(command);
+            }
+
+            return commandResult;
         }
     }
 }
