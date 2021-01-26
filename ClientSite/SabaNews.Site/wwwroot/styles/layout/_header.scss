@@ -285,7 +285,7 @@
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
-                        overflow-y: scroll;
+                        overflow: auto;
                         padding-bottom: 5rem;
                     }
 
