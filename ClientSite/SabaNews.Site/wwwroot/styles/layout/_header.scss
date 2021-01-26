@@ -285,13 +285,15 @@
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
-                        overflow-x: scroll;
+                        overflow-y: scroll;
+                        padding-bottom: 5rem;
                     }
 
                     @include landscapeTablet {
                         display: block;
                         @include flex(center, nowrap, flex-start,inherit);
                         height: 4rem !important;
+                        padding-bottom: 0;
                     }
 
                     .menu-item {
