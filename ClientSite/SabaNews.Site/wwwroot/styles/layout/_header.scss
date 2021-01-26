@@ -279,12 +279,13 @@
 
                     @include tableMobile {
                         margin: 0;
-                        @include flex(center, wrap, flex-start,column);
+                        @include flex(center, nowrap, flex-start,column);
                         height: 100vh !important;
                         height: 45%;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
+                        overflow-x: scroll;
                     }
 
                     @include landscapeTablet {

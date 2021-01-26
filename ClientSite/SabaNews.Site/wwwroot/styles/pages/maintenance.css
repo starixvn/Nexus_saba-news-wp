@@ -412,14 +412,15 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               margin: 0;
               display: flex;
               align-items: center;
-              flex-wrap: wrap;
+              flex-wrap: nowrap;
               justify-content: flex-start;
               flex-direction: column;
               height: 100vh !important;
               height: 45%;
               z-index: 999;
               display: none;
-              background-color: #FFFDF9; } }
+              background-color: #FFFDF9;
+              overflow-x: scroll; } }
           @media only screen and (min-width: 1024px) and (max-width: 1366px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               display: block;
