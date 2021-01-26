@@ -358,31 +358,18 @@
                         }
 
                         .item {
-                            color: $color-pagination;
-                            text-transform: uppercase;
                             text-decoration: none;
                             display: block;
                             padding: 3.7rem 0;
-                            font-size: 1.3rem;
                             font-weight: 600;
                             transition: color .2s ease;
-                            font-family: $font-title;
                             margin-right: 3rem;
                             line-height: 1.7rem;
+                            color: #4f4f4f;
 
                             @include tableMobile {
-                                color: $color-pagination;
                                 padding: 1.6rem 1.2rem;
-                                font-size: 1.4rem;
-                                text-transform: initial;
-                                font-weight: 600;
                                 margin-right: 0;
-                                font-family: $font-title;
-                                text-transform: uppercase;
-                            }
-
-                            @include landscapeTablet {
-                                font-size: 1.2rem;
                             }
 
                             &:hover {
@@ -402,7 +389,7 @@
                             position: absolute;
                             border: 1px solid $border-heading;
                             top: 8.1rem;
-                            border-radius: .4rem;
+                            border-radius: 4px;
                             left: 50%;
                             margin-left: -9.2rem;
                             z-index: 99;

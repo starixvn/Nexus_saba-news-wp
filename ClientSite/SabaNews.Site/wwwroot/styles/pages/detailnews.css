@@ -489,30 +489,18 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
                   padding: 1.6rem 1.2rem !important; } }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-              color: #081224;
-              text-transform: uppercase;
               text-decoration: none;
               display: block;
               padding: 3.7rem 0;
-              font-size: 1.3rem;
               font-weight: 600;
               transition: color .2s ease;
-              font-family: Arial, sans-serif;
               margin-right: 3rem;
-              line-height: 1.7rem; }
+              line-height: 1.7rem;
+              color: #4f4f4f; }
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-                  color: #081224;
                   padding: 1.6rem 1.2rem;
-                  font-size: 1.4rem;
-                  text-transform: initial;
-                  font-weight: 600;
-                  margin-right: 0;
-                  font-family: Arial, sans-serif;
-                  text-transform: uppercase; } }
-              @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-                  font-size: 1.2rem; } }
+                  margin-right: 0; } }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
                 color: #f12f19; }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .active {
@@ -525,7 +513,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               position: absolute;
               border: 1px solid #BDBDBD;
               top: 8.1rem;
-              border-radius: .4rem;
+              border-radius: 4px;
               left: 50%;
               margin-left: -9.2rem;
               z-index: 99;
