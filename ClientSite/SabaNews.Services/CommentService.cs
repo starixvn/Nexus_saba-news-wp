@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
     using SabaNews.Criteria;
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;

@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
-    using SabaNews.Core.Models;
     using SabaNews.Models.Comment;
     using System.Collections.Generic;
     using System.Threading.Tasks;
