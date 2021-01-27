@@ -56,6 +56,8 @@
     <meta name="msapplication-TileColor" content="#333333">
     <meta name="msapplication-TileImage" content="~/images/favicon/app_144x144.png">
     <meta name="theme-color" content="#fffdf9">
+    <link rel="stylesheet" href="~/minify/styles/site.min.css" asp-append-version="true">
+
     @RenderSection("Styles", false)
 </head>
 
@@ -79,6 +81,7 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        <div id="auth-form"></div>
     </div>
 	<section class="footer">
 		<div class="copy-right">
