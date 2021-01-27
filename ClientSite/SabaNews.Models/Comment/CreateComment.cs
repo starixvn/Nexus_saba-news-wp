@@ -11,6 +11,7 @@ namespace SabaNews.Models.Comment
         public long CommentPostID { get; set; }
         public DateTime CommentDateGMT { get; set; }
         public string CommentContent { get; set; }
+        public string CommentContent { get; set; }
         public string CommentAuthor { get; set; }
         public string CommentAuthorEmail { get; set; }
         public string CommentAuthorIP { get; set; }

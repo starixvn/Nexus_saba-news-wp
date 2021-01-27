@@ -161,6 +161,12 @@
                     });
                 }
             }
+        $(document).on('keypress', '.type_page', function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            console.log(keycode);
+            if (keycode === '13') {
+                console.log('enter');
+            }
         });
 
         $(document).on("click", '.add_comment', function () {
