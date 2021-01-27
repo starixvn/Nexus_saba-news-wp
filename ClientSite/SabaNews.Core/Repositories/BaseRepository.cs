@@ -9,16 +9,16 @@
 
     public interface IBaseRepository
     {
-        Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command);
+        Task<CommandResult> ExecuteNonQueryAsync(ICriteria criteria);
     }
 
     public class BaseRepository : IBaseRepository
     {
-        public async Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command)
+        public async Task<CommandResult> ExecuteNonQueryAsync(ICriteria criteria)
         {
-            using (var db = ObjectDbFactory.CreateInstance(command.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                await db.ExecuteNonQueryAsync(command);
+                await db.ExecuteNonQueryAsync(criteria);
                 CommandResult commandResult = GetCommandResult(db.GetOutputParams());
 
                 return commandResult;

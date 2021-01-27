@@ -80,21 +80,11 @@
         }
     },
     HandleComment: function () {
-        //<div class="sub_comment">
-        //    <div class="sub_comment_item comment_item">
-        //        <p class="full_content"><span class="nickname">Hank</span> test comment</p>
-        //        <p class="block_like_web width_common">
-        //            <a href="javascript:;" class="link_thich">like</a>
-        //            <a href="javascript:;" class="link_reply">Trả lời</a>
-        //            <span class="time">1 giờ trước</span>
-        //        </p>
-        //    </div>
-        //</div>
         $(document).on('click', '.view_all_reply', function () {
             var self = $(this)
             var postID = self.data('postid');
             var commentID = self.data('cmtid');
-            var html = '<div class="sub_comment">';
+           
             $.ajax({
                 type: "GET",
                 url: "/comments/getchildren",
@@ -103,18 +93,11 @@
                 success: function (response) {
                     self.parent().hide();
                     var data = response.data;
+                    var html = '';
                     $.each(data, function (i, val) {
-                        html += '<div class="sub_comment_item comment_item">';
-                        html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
-                        html += '<p class="block_like_web width_common">';
-                        html += '<a href="javascript:;" class="link_thich">like</a>';
-                        html += '<a href="javascript:;" class="link_reply">Trả lời</a>';
-                        html += '<span class="time">' + val.commentTime + '</span>';
-                        html += '</p>';
-                        html += '</div>';
+                        html += RenderSubComment(val);
                     });
-                    html += '</div>';
-                    self.parent().parent().find('.content_comment').append(html);
+                    self.parent().parent().find('.sub_comment').append(html);
 
                 }
             });
@@ -134,17 +117,129 @@
             });
         });
 
-        $('.add_comment').on("click", function () {
+        $(document).on("click", '.add_comment', function () {
             var self = $(this);
-            var comment_value = self.parent().find("textarea[name=comment_value]").val();
-            if ($.trim(comment_value) === "") {
+            var commentContent = self.parent().find("textarea[name=comment_value]").val();
+            if ($.trim(commentContent) === "") {
                 self.parent().find("textarea[name=comment_value]").focus();
                 return false;
             }
-
+            var postID = $("input[name=postID]").val();
+            
+            $.ajax({
+                type: "POST",
+                url: "/comments/create",
+                data: { postID: postID, parent: 0, commentContent: commentContent },
+                success: function (response) {
+                    if (response.isSuccessful) {
+                        var html = "";
+                        html += '<div class="comment_item">';
+                        html += '<div class="content_comment">';
+                        html += '<p class="full_content"><span class="nickname">' + response.comment.commentAuthor + '</span> ' + response.comment.commentContent +'</p>';
+                        html += '<p class="block_like_web width_common">';
+                        html += '<a href="javascript:;" class="link_thich">like</a>';
+                        html += '<a href="javascript:;" class="link_reply" data-id="' + response.comment.commentID + '" data-parent="' + response.comment.commentID+'">Trả lời</a>';
+                        html += '<span class="time">1 giây trước</span>';
+                        html += '</p>';
+                        html += '</div>';
+                        html += '<div class="sub_comment"></div>';
+                        html += '</div>';
+                        $('.list_comments').prepend(html);
+                        self.parent().find("textarea[name=comment_value]").val('');
+                    }
+                }
+            });
         });
+
+        $(document).on('click', '.link_reply', function () {
+            var checkSubCmt = $(this).parent().parent().parent();
+            var Subcmt = '';
+            if (checkSubCmt.hasClass('comment_item')) {
+                Subcmt = checkSubCmt.find('.sub_comment'); $(this).parent(); $(this).parent();
+                if (Subcmt.find('.comment_reply_wrapper.rep_parent').length === 0) {
+                    $('.comment_reply_wrapper').remove();
+                    Subcmt.prepend(RenderReplyForm('rep_parent'));
+                } else {
+                    if (Subcmt.find('.comment_reply_wrapper').is(':visible')) {
+                        Subcmt.find('.comment_reply_wrapper').hide();
+                    } else {
+                        Subcmt.find('.comment_reply_wrapper').show();
+                    }
+                }
+            } else {
+                Subcmt = $(this).parent();
+                if (Subcmt.find('.comment_reply_wrapper').length === 0) {
+                    $('.comment_reply_wrapper').remove();
+                    Subcmt.append(RenderReplyForm);
+                } else {
+                    if (Subcmt.find('.comment_reply_wrapper').is(':visible')) {
+                        Subcmt.find('.comment_reply_wrapper').hide();
+                    } else {
+                        Subcmt.find('.comment_reply_wrapper').show();
+                    }
+                }
+            }
+        });
+
+        $(document).on('click', '.add_sub_comment', function () {
+            var self = $(this);
+            var commentContent = self.parent().find("textarea[name=comment_value]").val();
+            if ($.trim(commentContent) === "") {
+                self.parent().find("textarea[name=comment_value]").focus();
+                return false;
+            }
+            var repForm = self.parent().parent();
+            var postID = $("input[name=postID]").val();
+            var parent = 0;
+            var isParent = repForm.hasClass('rep_parent');
+            if (isParent) {
+                parent = repForm.parent().parent().find('.content_comment').find('.link_reply').data('parent');
+            } else {
+                parent = repForm.parent().find('.link_reply').data('parent');
+            }
+            $.ajax({
+                type: "POST",
+                url: "/comments/create",
+                data: { postID: postID, parent: parent, commentContent: commentContent },
+                success: function (response) {
+                    if (response.isSuccessful) {
+                        var html = RenderSubComment(response.comment);
+                        if (isParent) {
+                            repForm.parent().append(html); 
+                        } else {
+                            repForm.parent().parent().parent().append(html);
+                        }
+                        $('.comment_reply_wrapper').remove();
+                        self.parent().find("textarea[name=comment_value]").val('');
+                    }
+                }
+            });
+        });
+
+        function RenderSubComment(val) {
+            var html = "";
+            var commentTime = typeof val.commentTime === "undefined" ? "1 giây trước" : val.commentTime;
+            html += '<div class="sub_comment_item comment_item">';
+            html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
+            html += '<p class="block_like_web width_common">';
+            html += '<a href="javascript:;" class="link_thich">like</a>';
+            html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent +'">Trả lời</a>';
+            html += '<span class="time">' + commentTime + '</span>';
+            html += '</p>';
+            html += '</div>';
+            return html;
+        };
+        function RenderReplyForm(type = 0) {
+            var html = '';
+            html += '<div class="comment_reply_wrapper '+ type +'">';
+            html += '<form>';
+            html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder="comment"></textarea>';
+            html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
+            html += '</form>';
+            html += '</div>';
+            return html;
+        }
     },
-    
     init: function () {
         this.HandleIframe();
         this.HandleSearch();

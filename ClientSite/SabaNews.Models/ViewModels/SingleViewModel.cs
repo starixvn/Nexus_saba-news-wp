@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel
 {
+    using SabaNews.Models.Comment;
     using System.Collections.Generic;
 
     public class SingleViewModel

@@ -31,10 +31,11 @@
 			width: 100%;
 		}
 
-		.comment form .add_comment {
+		.comment form .add_comment, .comment form .add_sub_comment {
 			color: #fff;
 			padding: 10px;
 			background: #f12f19 !important;
+			float: right;
 		}
 
 		.nickname {
@@ -94,6 +95,24 @@
 				.pagination a:hover:not(.active) {
 					background-color: #ddd;
 				}
+		.btn-page.type_page {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			padding: 0;
+			margin: 0 5px;
+			text-align: center;
+			font-size: 15px;
+			font-weight: 700;
+			color: #222;
+			min-width: 40px !important;
+			max-width: 99.99% !important;
+			transition: width 0.25s;
+			float: left;
+			width: 20px;
+			height: 40px;
+			border-radius: 3px;
+			border: 1px solid #757575;
+		}
 	</style>
 }
 
@@ -233,8 +252,6 @@
                 </div>
             }
 
-
-
             <ul class="tag-post">
                 @if (Model.SinglePost.Tags != null && Model.SinglePost.TagsSlug != null)
                 {
@@ -249,11 +266,12 @@
             </ul>
 			<div class="comment">
                 <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
-                <label>Ý kiến</label>
+                <label>Ý kiến (@Model.CommentTemplate.TotalItems)</label>
                 <form>
                     <textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
                     <input type="button" name="add_comment" class="add_comment" value="Gửi"  />
                 </form>
+				<div class="clearfix"></div>
 
                 <hr style="margin: 15px 0" />
 				<div class="list_comments">

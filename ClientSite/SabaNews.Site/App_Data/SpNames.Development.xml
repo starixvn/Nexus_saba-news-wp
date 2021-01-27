@@ -162,5 +162,6 @@
             <Mapping DataField="comment_content" ObjectProperty="CommentContent" class="Comment" />
             <Mapping DataField="user_id" ObjectProperty="UserID" class="Comment" />
         </Setting>
+        <Setting Key="cmt_create" SpName="cmt_create" DbName="sabasports" />
     </Function>
 </Functions>

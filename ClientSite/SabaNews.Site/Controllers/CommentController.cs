@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
+    using SabaNews.Models.Comment;
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
@@ -42,6 +43,29 @@
             };
             return PartialView("_Comments", Model);
 
+        }
+        [HttpPost]
+        [Route("/comments/create")]
+        public async Task<IActionResult> CreateComment(int postID, int parent ,string commentContent)
+        {
+            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
+            var model = new CreateComment
+            {
+                CommentPostID = postID,
+                CommentAuthor = "Hank Nguyen",
+                CommentAuthorEmail = "hank.nguyen@starixsoft.com",
+                CommentAuthorIP = remoteIpAddress,
+                CommentDate = DateTime.Now,
+                CommentDateGMT = DateTime.UtcNow,
+                CommentContent = commentContent,
+                CommentAgent = Request.Headers["User-Agent"].ToString(),
+                CommentParent = parent,
+                UserID = 2
+            };
+            var result = await commentService.CreateComment(model);
+            model.CommentID = result;
+            return Json( new { isSuccessful = result != 0, comment = model});
         }
     }
 }

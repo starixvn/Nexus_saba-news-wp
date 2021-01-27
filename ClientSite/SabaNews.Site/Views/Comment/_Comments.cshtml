@@ -5,10 +5,11 @@
 		<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
 		<p class="block_like_web width_common">
 			<a href="javascript:;" class="link_thich">like</a>
-			<a href="javascript:;" class="link_reply">Trả lời</a>
+			<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">Trả lời</a>
 			<span class="time">@comment.CommentTime</span>
 		</p>
 	</div>
+	<div class="sub_comment"></div>
 	@if (comment.CommentNumberChildren > 0)
 	{
 <p class="count-reply">
@@ -27,6 +28,7 @@
 	var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
 <div class="pagination">
 	<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
+	<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
 	<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
 </div>}
 <div class="clearfix"></div>

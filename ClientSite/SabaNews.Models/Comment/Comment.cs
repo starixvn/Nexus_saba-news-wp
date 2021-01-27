@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Models
+﻿namespace SabaNews.Models.Comment
 {
     using SabaNews.Core.Constants;
     using System;
@@ -13,6 +13,7 @@
         public DateTime CommentDate { get; set; }
         public DateTime CommentDateGMT { get; set; }
         public string CommentContent { get; set; }
+        public int CommentParent { get; set; }
         public int UserID { get; set; }
         public int CommentNumberChildren { get; set; }
         public string CommentTime

@@ -1,7 +1,8 @@
 ﻿namespace SabaNews.Services
 {
+    using SabaNews.Core.Models;
     using SabaNews.Criteria;
-    using SabaNews.Models;
+    using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -41,6 +42,28 @@
                 CmtID = commentID
             };
             return await baseService.GetDataAsync<Comment>(criteria);
+        }
+
+        public async Task<int> CreateComment(CreateComment model)
+        {
+            var command = new CmtCreateCommand
+            {
+                CommentPostID = model.CommentPostID,
+                CommentAuthor = model.CommentAuthor,
+                CommentAuthorEmail = model.CommentAuthorEmail,
+                CommentDate = model.CommentDate,
+                CommentDateGMT = model.CommentDateGMT,
+                CommentContent = model.CommentContent,
+                CommentAgent = model.CommentAgent,
+                CommentParent = model.CommentParent,
+                CommentAuthorIP = model.CommentAuthorIP,
+                UserID = model.UserID
+            };
+
+            var result = await baseService.ExecuteNonQueryAsync(command);
+            return result.IsSuccessful ? command.CommentID : 0;
+            
+
         }
 
 
