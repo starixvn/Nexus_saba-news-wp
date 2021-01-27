@@ -26,7 +26,7 @@
 	var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
 	var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
 	var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
-<div class="pagination">
+<div class="pagination" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
 	<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
 	<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
 	<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>

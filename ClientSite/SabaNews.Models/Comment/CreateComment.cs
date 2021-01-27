@@ -8,7 +8,7 @@ namespace SabaNews.Models.Comment
 {
     public class CreateComment
     {
-        public int CommentPostID { get; set; }
+        public long CommentPostID { get; set; }
         public DateTime CommentDateGMT { get; set; }
         public string CommentContent { get; set; }
         public string CommentAuthor { get; set; }
@@ -16,8 +16,8 @@ namespace SabaNews.Models.Comment
         public string CommentAuthorIP { get; set; }
         public DateTime CommentDate { get; set; }
         public string CommentAgent { get; set; }
-        public int CommentParent { get; set; }
-        public int UserID { get; set; }
-        public int CommentID { get; set; }
+        public long CommentParent { get; set; }
+        public long UserID { get; set; }
+        public long CommentID { get; set; }
     }
 }

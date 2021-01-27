@@ -84,7 +84,7 @@
             var self = $(this)
             var postID = self.data('postid');
             var commentID = self.data('cmtid');
-           
+            self.parent().parent().find('.sub_comment').html('');
             $.ajax({
                 type: "GET",
                 url: "/comments/getchildren",
@@ -97,8 +97,8 @@
                     $.each(data, function (i, val) {
                         html += RenderSubComment(val);
                     });
+                    
                     self.parent().parent().find('.sub_comment').append(html);
-
                 }
             });
         });
@@ -113,15 +113,34 @@
                 data: { postID: postID, page: page },
                 success: function (response) {
                     $('.list_comments').html(response);
+                    $('html,body').animate({
+                        scrollTop: $("#comment").offset().top
+                    }, 'slow');
                 }
             });
         });
 
         $(document).on('keypress', '.type_page', function (event) {
             var keycode = (event.keyCode ? event.keyCode : event.which);
-            console.log(keycode);
-            if (keycode === '13') {
-                console.log('enter');
+            if (keycode === 13) {
+                var current = parseInt($(this).parent().data('current'));
+                var total = parseInt($(this).parent().data('total'));
+                var value = $(this).val();
+                if (Math.floor(value) == value && $.isNumeric(value) && value != current && value >= 1 && value <= total) {
+                    var postID = $("input[name=postID]").val();
+                    var page = value;
+                    $.ajax({
+                        type: "GET",
+                        url: "/comments/paging",
+                        data: { postID: postID, page: page },
+                        success: function (response) {
+                            $('.list_comments').html(response);
+                            $('html,body').animate({
+                                scrollTop: $("#comment").offset().top
+                            }, 'slow');
+                        }
+                    });
+                }
             }
         });
 
@@ -159,11 +178,46 @@
             });
         });
 
+        $(document).on('click', '.add_sub_comment', function () {
+            var self = $(this);
+            var commentContent = self.parent().find("textarea[name=comment_value]").val();
+            if ($.trim(commentContent) === "") {
+                self.parent().find("textarea[name=comment_value]").focus();
+                return false;
+            }
+            var repForm = self.parent().parent();
+            var postID = $("input[name=postID]").val();
+            var parent = 0;
+            var isParent = repForm.hasClass('rep_parent');
+            if (isParent) {
+                parent = repForm.parent().parent().find('.content_comment').find('.link_reply').data('parent');
+            } else {
+                parent = repForm.parent().find('.link_reply').data('parent');
+            }
+            $.ajax({
+                type: "POST",
+                url: "/comments/create",
+                data: { postID: postID, parent: parent, commentContent: commentContent },
+                success: function (response) {
+                    if (response.isSuccessful) {
+                        var html = RenderSubComment(response.comment);
+                        if (isParent) {
+                            repForm.parent().append(html);
+                        } else {
+                            repForm.parent().parent().parent().append(html);
+                        }
+                        $('.comment_reply_wrapper').remove();
+                        self.parent().find("textarea[name=comment_value]").val('');
+                    }
+                }
+            });
+        });
+
         $(document).on('click', '.link_reply', function () {
             var checkSubCmt = $(this).parent().parent().parent();
             var Subcmt = '';
             if (checkSubCmt.hasClass('comment_item')) {
-                Subcmt = checkSubCmt.find('.sub_comment'); $(this).parent(); $(this).parent();
+                Subcmt = checkSubCmt.find('.sub_comment'); $(this).parent();
                 if (Subcmt.find('.comment_reply_wrapper.rep_parent').length === 0) {
                     $('.comment_reply_wrapper').remove();
                     Subcmt.prepend(RenderReplyForm('rep_parent'));
@@ -189,41 +243,6 @@
             }
         });
 
-        $(document).on('click', '.add_sub_comment', function () {
-            var self = $(this);
-            var commentContent = self.parent().find("textarea[name=comment_value]").val();
-            if ($.trim(commentContent) === "") {
-                self.parent().find("textarea[name=comment_value]").focus();
-                return false;
-            }
-            var repForm = self.parent().parent();
-            var postID = $("input[name=postID]").val();
-            var parent = 0;
-            var isParent = repForm.hasClass('rep_parent');
-            if (isParent) {
-                parent = repForm.parent().parent().find('.content_comment').find('.link_reply').data('parent');
-            } else {
-                parent = repForm.parent().find('.link_reply').data('parent');
-            }
-            $.ajax({
-                type: "POST",
-                url: "/comments/create",
-                data: { postID: postID, parent: parent, commentContent: commentContent },
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        var html = RenderSubComment(response.comment);
-                        if (isParent) {
-                            repForm.parent().append(html); 
-                        } else {
-                            repForm.parent().parent().parent().append(html);
-                        }
-                        $('.comment_reply_wrapper').remove();
-                        self.parent().find("textarea[name=comment_value]").val('');
-                    }
-                }
-            });
-        });
-
         function RenderSubComment(val) {
             var html = "";
             var commentTime = typeof val.commentTime === "undefined" ? "1 giây trước" : val.commentTime;
@@ -246,7 +265,7 @@
             html += '</form>';
             html += '</div>';
             return html;
-        }
+        };
     },
     init: function () {
         this.HandleIframe();

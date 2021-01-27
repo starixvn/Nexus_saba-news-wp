@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services
 {
-    using SabaNews.Core.Models;
     using SabaNews.Criteria;
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
@@ -44,7 +43,7 @@
             return await baseService.GetDataAsync<Comment>(criteria);
         }
 
-        public async Task<int> CreateComment(CreateComment model)
+        public async Task<long> CreateComment(CreateComment model)
         {
             var command = new CmtCreateCommand
             {
@@ -61,7 +60,7 @@
             };
 
             var result = await baseService.ExecuteNonQueryAsync(command);
-            return result.IsSuccessful ? command.CommentID : 0;
+            return result.IsSuccessful ? (int)command.CommentID : 0;
             
 
         }
