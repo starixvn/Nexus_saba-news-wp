@@ -25,7 +25,7 @@
             }
         }
 
-        private CommandResult GetCommandResult(Hashtable hash)
+        private static CommandResult GetCommandResult(Hashtable hash)
         {
             var errCode = hash["errCode"];
             var errMsg = hash["errMsg"];

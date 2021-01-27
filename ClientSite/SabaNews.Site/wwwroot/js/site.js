@@ -103,7 +103,7 @@
             });
         });
 
-        $(document).on("click", ".comment-pagination", function () {
+        $(document).on('click', '.comment-pagination', function () {
             var self = $(this);
             var postID = $("input[name=postID]").val();
             var page = self.data("page");
@@ -115,6 +115,14 @@
                     $('.list_comments').html(response);
                 }
             });
+        });
+
+        $(document).on('keypress', '.type_page', function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            console.log(keycode);
+            if (keycode === '13') {
+                console.log('enter');
+            }
         });
 
         $(document).on("click", '.add_comment', function () {
