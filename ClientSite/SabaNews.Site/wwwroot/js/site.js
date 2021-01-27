@@ -321,6 +321,12 @@
             return html;
         };
     },
+            html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
+            html += '</form>';
+            html += '</div>';
+            return html;
+        }
+    },
     init: function () {
         this.HandleIframe();
         this.HandleSearch();
