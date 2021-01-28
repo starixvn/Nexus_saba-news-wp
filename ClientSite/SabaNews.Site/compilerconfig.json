@@ -24,7 +24,5 @@
     "inputFile": "wwwroot/styles/pages/maintenance.scss"
   },
   {
-    "outputFile": "wwwroot/styles/components/_tag.css",
-    "inputFile": "wwwroot/styles/components/_tag.scss"
   }
 ]

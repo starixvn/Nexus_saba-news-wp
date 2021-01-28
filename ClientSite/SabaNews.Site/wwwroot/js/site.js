@@ -1,5 +1,5 @@
-﻿var setUp = (function ($) {
-    function HandleIframe() {
+﻿var setUp = {
+    HandleIframe: function () {
         //Desktop & Mobile
         $('.match-schedule iframe').css('width', '100%');
         $('.play_video iframe').attr('allow', 'autoplay');
@@ -68,9 +68,9 @@
             }
 
         });
-    }
+    },
     //Desktop & Mobile
-    function HandleSearch() {
+    HandleSearch: function () {
         $('.search-input button').on('click', function (e) {
             var keyword = $('input[name=keyword]').val();
             if ($.trim(keyword) === '') {
@@ -78,110 +78,19 @@
                 $('input[name=keyword]').focus();
             }
         });
-    }
+    },
     //Desktop & Mobile
-    function HandleUI() {
+    HandleUI: function () {
         if ($(window).innerWidth() < 768) {
             $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
         }
+    },
+    init: function () {
+        this.HandleIframe();
+        this.HandleSearch();
+        this.HandleUI();
     }
-
-    function HandleAuth() {
-        $('.auth-input .icon-auth').on('click', function () {
-            $.ajax({
-                url: '/Auth/Index',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    $('#auth-form').html(response);
-                    $('#authModal').modal('show');
-                    HandleLogin();
-                    HandleRegister();
-                    HandleForgotPassword();
-                }
-            });
-        });
-    }
-
-    function HandleLogin() {
-        const element = '#authModal form#form-login';
-        $(element).on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: 'Auth/Login',
-                method: "POST",
-                data: $(element).serialize(),
-                success: function (res) {
-                    $('#authModal').modal('hide');
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
-        });
-    }
-    function HandleRegister() {
-        const element = '#authModal form#form-register';
-        $(element).on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: 'Auth/Register',
-                method: "POST",
-                data: $(element).serialize(),
-                success: function (res) {
-                    $('#authModal').modal('hide');
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
-        });
-    }
-
-    function HandleForgotPassword() {
-        $('#forgot-password').on('click', function () {
-            $.ajax({
-                url: '/Auth/ForgotPassword',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    $('#authModal').html(response);
-                    HandleSubmitForgotPassword();
-                }
-            });
-        });
-    }
-
-    function HandleSubmitForgotPassword() {
-        const element = '#authModal form#form-forgot-password';
-        $(element).on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: 'Auth/ForgotPassword',
-                method: "POST",
-                data: $(element).serialize(),
-                success: function (res) {
-                    $('#authModal').modal('hide');
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
-        });
-    }
-    
-    function init() {
-        HandleIframe();
-        HandleSearch();
-        HandleUI();
-        HandleAuth();
-    }
-
-    return {
-        init
-    }
-
-})(jQuery);
+}
 
 $(document).ready(function () {
     setUp.init();
