@@ -16,11 +16,11 @@
         overflow: hidden;
         display: block;
         position: relative;
-        max-height: 15rem;
+        height: 15rem;
 
         @include tableMobile {
             margin-bottom: .5rem;
-            max-height: 11rem;
+            height: 11rem;
         }
 
         img {

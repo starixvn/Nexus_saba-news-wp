@@ -121,6 +121,9 @@ p.has-text-align-center {
     flex-direction: column;
     width: 6rem;
     height: 6rem; }
+    @media (max-device-width: 767px) {
+      .footer .back-to-top-box {
+        height: 8rem; } }
     .footer .back-to-top-box .back-to-top {
       background: #F12F19;
       font-size: 1.6rem;
@@ -137,8 +140,8 @@ p.has-text-align-center {
       @media screen and (max-width: 1024px) {
         .footer .back-to-top-box .back-to-top {
           font-size: 1.2rem;
-          width: 4rem;
-          height: 4rem; } }
+          width: 4.8rem;
+          height: 4.8rem; } }
       .footer .back-to-top-box .back-to-top:hover {
         background-color: #cb200c; }
     .footer .back-to-top-box .icon-chevron-right {
@@ -152,8 +155,8 @@ p.has-text-align-center {
           font-size: 2rem; } }
     @media screen and (max-width: 1024px) {
       .footer .back-to-top-box {
-        right: 1.6rem;
-        bottom: 5rem; } }
+        right: 0.4rem;
+        bottom: 6rem; } }
 
 /*:root {
     --column : 12;
@@ -956,7 +959,7 @@ button {
         margin-bottom: 0; } }
   @media screen and (max-width: 1024px) {
     .card-horizontal__image {
-      max-height: 7.2rem !important; } }
+      height: 7.2rem !important; } }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -991,11 +994,11 @@ button {
     overflow: hidden;
     display: block;
     position: relative;
-    max-height: 15rem; }
+    height: 15rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__image {
         margin-bottom: .5rem;
-        max-height: 11rem; } }
+        height: 11rem; } }
     .card-vertical__image img {
       width: 100%;
       height: 100%;
@@ -1054,13 +1057,12 @@ button {
           margin-bottom: 1.2rem;
           padding-bottom: 1rem; } }
       .main .block-hot-news .block__content .card-vertical .card-vertical__image {
-        max-height: 23.5rem; }
+        height: 23.5rem; }
         @media screen and (max-width: 1024px) {
           .main .block-hot-news .block__content .card-vertical .card-vertical__image {
-            max-height: 11rem !important; } }
+            height: 11rem; } }
         @media (max-device-width: 767px) {
           .main .block-hot-news .block__content .card-vertical .card-vertical__image {
-            max-height: 100% !important;
             height: 22.78rem;
             display: block; } }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -1188,11 +1190,13 @@ button {
       .main .block-soccer .block__content .card-vertical {
         padding-bottom: 0; } }
   .main .block-soccer .block__content .card-vertical__image {
-    height: 17.2rem;
-    max-height: 100%; }
+    height: 17.2rem; }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .main .block-soccer .block__content .card-vertical__image {
-        max-height: 13rem; } }
+        height: 13rem; } }
+    @media (max-device-width: 767px) {
+      .main .block-soccer .block__content .card-vertical__image {
+        height: 12rem; } }
 
 .main .block-guess {
   padding: 3.2rem 0 1.2rem 0;
@@ -1226,19 +1230,15 @@ button {
     .main .block-guess .block__content .card-vertical__datetime {
       color: #cbcbcb; }
     .main .block-guess .block__content .card-vertical__image {
-      max-height: 20rem;
       height: 20rem; }
       @media screen and (max-width: 1024px) {
         .main .block-guess .block__content .card-vertical__image {
-          max-height: 11rem;
           height: 11rem; } }
       @media only screen and (min-width: 1024px) and (max-width: 1366px) {
         .main .block-guess .block__content .card-vertical__image {
-          max-height: 18rem;
           height: 18rem; } }
       @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
         .main .block-guess .block__content .card-vertical__image {
-          max-height: 16rem;
           height: 16rem; } }
 
 .main .block-transfer {
@@ -1282,18 +1282,21 @@ button {
     .main .block-behind .block__content .card-vertical.card-vertical-highlight {
       padding-bottom: .5rem !important; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
-        max-height: 36.3rem; }
+        height: 36.3rem; }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
-            max-height: 22.3rem; } }
+            height: 22.3rem; } }
         @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
           .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
-            max-height: 22.3rem; } }
+            height: 22.3rem; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
-        max-height: 17.2rem; }
+        height: 17.2rem; }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
-            max-height: 12.2rem; } }
+            height: 12.2rem; } }
+        @media (max-device-width: 767px) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"] {
+            height: 12rem; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0 1.6rem !important; }
         @media (max-device-width: 767px) {
@@ -1306,7 +1309,10 @@ button {
       background-color: #E8EAEF; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content .card-vertical__image {
-        max-height: 20rem; } }
+        height: 20rem; } }
+    @media (max-device-width: 767px) {
+      .main .block-behind .block__content .card-vertical__image {
+        height: 12rem; } }
 
 .main .block-basketball {
   padding: 0 0 1.6rem 0;
@@ -1349,13 +1355,13 @@ button {
     display: none; }
 
 .main .block-tennis .card-vertical__image {
-  max-height: 36.3rem; }
+  height: 36.3rem; }
   @media screen and (max-width: 1024px) {
     .main .block-tennis .card-vertical__image {
-      max-height: 20rem; } }
+      height: 20rem; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
     .main .block-tennis .card-vertical__image {
-      max-height: 30rem; } }
+      height: 30rem; } }
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     .main .block-tennis .card-vertical__image {
-      max-height: 30rem; } }
+      height: 30rem; } }

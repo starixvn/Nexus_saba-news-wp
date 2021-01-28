@@ -27,6 +27,9 @@
         @include flex(center,nowrap,center,column);
         width: 6rem; 
         height: 6rem;
+        @include Mobile {
+            height: 8rem;
+        }
 
         .back-to-top {
             background: $bg-back-top;
@@ -40,8 +43,8 @@
 
             @include tableMobile {
                 font-size: 1.2rem;
-                width: 4rem;
-                height: 4rem;
+                width: 4.8rem;
+                height: 4.8rem;
             }
 
             &:hover {
@@ -66,8 +69,8 @@
         }
 
         @include tableMobile {
-            right: 1.6rem;
-            bottom: 5rem;
+            right: 0.4rem;
+            bottom: 6rem;
         }
     }
 }

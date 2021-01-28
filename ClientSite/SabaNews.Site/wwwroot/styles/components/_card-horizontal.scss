@@ -13,7 +13,7 @@
     &__image {
 
         @include tableMobile {
-            max-height: 7.2rem !important;
+            height: 7.2rem !important;
         }
     }
 
