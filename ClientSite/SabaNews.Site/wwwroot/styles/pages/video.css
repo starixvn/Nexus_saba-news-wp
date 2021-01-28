@@ -992,16 +992,12 @@ button {
 
 .block__swipper {
   margin-bottom: 4rem; }
-  .block__swipper .swiper-container {
-    width: 100%;
-    max-width: 100% !important;
-    height: 100%; }
-    .block__swipper .swiper-container .swiper-slide .img-item {
-      max-height: 43rem;
-      overflow: hidden; }
-      .block__swipper .swiper-container .swiper-slide .img-item img {
-        object-fit: cover;
-        width: 100%; }
+  .block__swipper .swiper-container .swiper-slide .img-item {
+    max-height: 43rem;
+    overflow: hidden; }
+    .block__swipper .swiper-container .swiper-slide .img-item img {
+      object-fit: cover;
+      width: 100%; }
 
 .block__video {
   display: grid;
