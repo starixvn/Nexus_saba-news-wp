@@ -4,7 +4,10 @@
 	<div class="content_comment">
 		<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
 		<p class="block_like_web width_common">
-			<a href="javascript:;" class="link_thich">like</a>
+			<a href="javascript:;" class="link_thich">
+				<span class="total_like" href="javascript:;"></span>
+				<i class="ic ic-like"></i>
+			</a>
 			<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">Trả lời</a>
 			<span class="time">@comment.CommentTime</span>
 		</p>

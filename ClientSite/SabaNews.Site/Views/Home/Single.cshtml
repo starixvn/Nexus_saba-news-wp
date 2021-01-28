@@ -64,8 +64,26 @@
 				font-size: 13px;
 				padding-left: 20px;
 				font-weight: 700;
+				background: url(images/favicon/Reply.svg) no-repeat left center;
 			}
+		.comment_item a.link_thich .ic-like {
+			width: 16px !important;
+			height: 16px !important;
+			background: url(images/favicon/Thumb-Up-Normal.svg) no-repeat 0 0 !important;
+			display: inline-block;
+			vertical-align: middle;
+		}
 
+		.comment_item a.link_thich:hover .ic-like {
+			background: url(images/favicon/Thumb-Up-Active.svg) no-repeat 0 0 !important;
+		}
+		.comment_item a.link_thich.unlike .ic-like {
+			width: 16px !important;
+			height: 16px !important;
+			background: url(images/favicon/Thumb-Up-Active.svg) no-repeat 0 0 !important;
+			display: inline-block;
+			vertical-align: middle;
+		}
 		.sub_comment {
 			padding: 0 0 0 56px;
 			width: 100%;

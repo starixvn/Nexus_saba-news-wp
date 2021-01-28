@@ -164,7 +164,10 @@
                         html += '<div class="content_comment">';
                         html += '<p class="full_content"><span class="nickname">' + response.comment.commentAuthor + '</span> ' + response.comment.commentContent +'</p>';
                         html += '<p class="block_like_web width_common">';
-                        html += '<a href="javascript:;" class="link_thich">like</a>';
+                        html += '<a href="javascript:;" class="link_thich">';
+                        html += '<span class="total_like" href="javascript:;"></span>';
+                        html += '<i class="ic ic-like" ></i >'
+                        html += '</a > ';
                         html += '<a href="javascript:;" class="link_reply" data-id="' + response.comment.commentID + '" data-parent="' + response.comment.commentID+'">Trả lời</a>';
                         html += '<span class="time">1 giây trước</span>';
                         html += '</p>';
@@ -249,7 +252,10 @@
             html += '<div class="sub_comment_item comment_item">';
             html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
             html += '<p class="block_like_web width_common">';
-            html += '<a href="javascript:;" class="link_thich">like</a>';
+            html += '<a href="javascript:;" class="link_thich">';
+            html += '<span class="total_like" href="javascript:;"></span>';
+            html += '<i class="ic ic-like" ></i >'
+            html += '</a > ';
             html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent +'">Trả lời</a>';
             html += '<span class="time">' + commentTime + '</span>';
             html += '</p>';
