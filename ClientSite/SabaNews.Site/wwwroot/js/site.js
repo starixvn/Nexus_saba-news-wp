@@ -296,6 +296,30 @@
             }
         });
 
+        $(document).on('click', '.link_thich', function () {
+            var self = $(this);
+            var cmtID = $(this).data('commentid');
+            var total_like = self.find('.total_like').html();
+            if (total_like === '') {
+                total_like = 1;
+            } else {
+                total_like = parseInt(total_like) + 1;
+            }
+            console.log(total_like);
+            $.ajax({
+                type: "POST",
+                url: "/comments/like",
+                data: { commentID: cmtID },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.isSuccessful) {
+                        self.find('.total_like').html(total_like);
+                        self.addClass('unlike');
+                    }
+                }
+            });
+        });
+
         function RenderSubComment(val) {
             var html = "";
             var liked = val.isLiked ? 'unlike' : '';

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria;
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
@@ -89,6 +90,39 @@
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);
                 likeCount = 1;
+            }
+            else
+            {
+                List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
+                List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
+                arrUsers.Add(CurrentUser);
+                arrIPs.Add(ipClient);
+                users = JsonConvert.SerializeObject(arrUsers);
+                ips = JsonConvert.SerializeObject(arrIPs);
+                likeCount = (int)(comment.CommentLikeCount + 1);
+            }
+            var criteria = new CmtUpdateLikeCommand
+            {
+                CommentID = commentID,
+                CommentLikeCount = likeCount,
+                CommentLikeIPs = ips,
+                CommentLikeUsers = users
+            };
+            return await baseService.ExecuteNonQueryAsync(criteria);
+        }
+
+                var arrUsers = new List<int> { CurrentUser };
+                var arrIPs = new List<string> { ipClient };
+                users = JsonConvert.SerializeObject(arrUsers);
+                ips = JsonConvert.SerializeObject(arrIPs);
+                likeCount = 1;
+                {
+                    var arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
+                    var HasUser = arrUsers.FindIndex(item => item == CurrentUser);
+                    if (HasUser != -1)
+                    {
+                        comment.isLiked = true;
+                    }
             }
             else
             {
