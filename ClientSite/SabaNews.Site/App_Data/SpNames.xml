@@ -150,6 +150,9 @@
             <Mapping DataField="comment_content" ObjectProperty="CommentContent" class="Comment" />
             <Mapping DataField="comment_parent" ObjectProperty="CommentParent" class="Comment" />
             <Mapping DataField="user_id" ObjectProperty="UserID" class="Comment" />
+            <Mapping DataField="comment_like_count" ObjectProperty="CommentLikeCount" class="Comment" />
+            <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
+            <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
             <Mapping DataField="comment_number_children" ObjectProperty="CommentNumberChildren" class="Comment" />
         </Setting>
         <Setting Key="cmt_get_children" SpName="cmt_get_children" DbName="sabasports" Plain="0">
@@ -163,7 +166,16 @@
             <Mapping DataField="comment_content" ObjectProperty="CommentContent" class="Comment" />
             <Mapping DataField="comment_parent" ObjectProperty="CommentParent" class="Comment" />
             <Mapping DataField="user_id" ObjectProperty="UserID" class="Comment" />
+            <Mapping DataField="comment_like_count" ObjectProperty="CommentLikeCount" class="Comment" />
+            <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
+            <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
+        </Setting>
+        <Setting  Key="cmt_get_like_data_cmtId" SpName="cmt_get_like_data_cmtId" DbName="sabasports" Plain="0">
+            <Mapping DataField="comment_like_count" ObjectProperty="CommentLikeCount" class="Comment" />
+            <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
+            <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
         </Setting>
         <Setting Key="cmt_create" SpName="cmt_create" DbName="sabasports" />
+        <Setting Key="cmt_update_like" SpName="cmt_update_like" DbName="sabasports" />
     </Function>
 </Functions>

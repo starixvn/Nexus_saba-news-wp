@@ -67,5 +67,14 @@
             model.CommentID = result;
             return Json( new { isSuccessful = result != 0, comment = model});
         }
+
+        [HttpPost]
+        [Route("/comments/like")]
+        public async Task<IActionResult> Like(long commentID)
+        {
+            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            var commandResult = await commentService.UpdateLikeData(commentID, remoteIpAddress);
+            return Json(commandResult);
+        }
     }
 }

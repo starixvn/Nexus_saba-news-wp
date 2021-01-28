@@ -27,16 +27,52 @@
 			clear: both;
 		}
 
+		.comment-content-box {
+			border: 1px solid #bdbdbd;
+			border-radius: 3px;
+			position: relative;
+			padding: 10px 0 10px 0;
+			background-color: #fff;
+		}
+
 		.comment form textarea {
 			width: 100%;
+			resize: none;
+			font: 400 15px/150% arial;
+			background: #fff;
+			border: none;
+			width: 100%;
+			height: 58px;
+			color: #666 !important;
+			overflow: hidden;
+			padding: 5px 37px 0 15px;
+		}
+
+		.note-text-count {
+			font: 400 13px arial;
+			color: #757575;
+			background: #fff;
+			padding: 10px 15px 0 15px;
+			width: 100%;
+			display: none;
 		}
 
 		.comment form .add_comment, .comment form .add_sub_comment {
 			color: #fff;
-			padding: 10px;
-			background: #f12f19 !important;
+			padding: 10px 40px;
+			background: #9F224E !important;
 			float: right;
+			border: none;
+			margin-top: 20px;
+			font-weight: bold;
+			border-radius: 3px;
+			
 		}
+
+			.comment form .add_comment:hover, .comment form .add_sub_comment:hover {
+				cursor: pointer;
+				background: #B52759;
+			}
 
 		.nickname {
 			color: #04416D;
@@ -84,6 +120,10 @@
 			display: inline-block;
 			vertical-align: middle;
 		}
+		.comment_item a.link_thich.unlike {
+			color: #076DB6 !important;
+		}
+
 		.sub_comment {
 			padding: 0 0 0 56px;
 			width: 100%;
@@ -285,10 +325,13 @@
 			<div class="comment" id="comment">
                 <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
                 <label>Ý kiến (@Model.CommentTemplate.TotalItems)</label>
-                <form>
-                    <textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
-                    <input type="button" name="add_comment" class="add_comment" value="Gửi"  />
-                </form>
+				<form>
+					<div class="comment-content-box">
+						<textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
+						<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>
+					</div>
+					<input type="button" name="add_comment" class="add_comment" value="Gửi" />
+				</form>
 				<div class="clearfix"></div>
 
                 <hr style="margin: 15px 0" />

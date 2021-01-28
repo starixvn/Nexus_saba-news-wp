@@ -15,7 +15,11 @@
         public string CommentContent { get; set; }
         public long CommentParent { get; set; }
         public long UserID { get; set; }
+        public long CommentLikeCount { get; set; }
+        public string CommentLikeIPs { get; set; }
+        public string CommentLikeUsers { get; set; }
         public long CommentNumberChildren { get; set; }
+        public bool isLiked { get; set; } = false;
         public string CommentTime
         {
             get
