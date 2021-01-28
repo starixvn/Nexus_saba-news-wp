@@ -93,6 +93,10 @@ p.has-text-align-center {
   -webkit-box-orient: vertical;
   overflow: hidden; }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;
