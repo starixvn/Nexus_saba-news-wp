@@ -467,33 +467,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               border-bottom: none; }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(2) a {
                 border: none; }
-            .header .top-header .group-menu .nav-menu .main-menu .menu-item .click-sub {
-              position: absolute;
-              top: 0;
-              right: 0;
-              width: 4.6rem;
-              height: 5rem;
-              transition: all .2s ease-in-out;
-              font-size: 1.4rem;
-              cursor: pointer;
-              display: none;
-              transform: rotate(90deg);
-              font-size: 2.4rem;
-              color: #fff; }
-              @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .click-sub {
-                  display: flex;
-                  align-items: center;
-                  flex-wrap: nowrap;
-                  justify-content: center;
-                  flex-direction: row; } }
-            .header .top-header .group-menu .nav-menu .main-menu .menu-item .show {
-              transform: rotate(270deg) !important; }
-            .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
-              padding: 4.7rem 0 !important; }
-              @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item .active-menu-item {
-                  padding: 1.6rem 1.2rem !important; } }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
               text-decoration: none;
               display: block;
@@ -805,8 +778,8 @@ button {
 
 .swiper-container {
   width: 100%;
-  max-width: 100% !important;
-  margin: 0 !important; }
+  max-width: 100%;
+  margin: 0; }
   .swiper-container .swiper-button-prev, .swiper-container .swiper-button-next {
     outline: none; }
   .swiper-container .swiper-button-prev, .swiper-container .swiper-button-next {
@@ -959,7 +932,11 @@ button {
         margin-bottom: 0; } }
   @media screen and (max-width: 1024px) {
     .card-horizontal__image {
-      height: 7.2rem !important; } }
+      height: 7.2rem; } }
+  .card-horizontal__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -1221,7 +1198,7 @@ button {
         grid-gap: 1.6rem; } }
     @media (max-device-width: 767px) {
       .main .block-guess .block__content {
-        display: inherit !important; } }
+        display: inherit; } }
     @media screen and (max-width: 1024px) {
       .main .block-guess .block__content .card-vertical {
         padding-bottom: 0; } }
@@ -1280,7 +1257,7 @@ button {
         grid-template-rows: unset;
         grid-gap: 1.2rem; } }
     .main .block-behind .block__content .card-vertical.card-vertical-highlight {
-      padding-bottom: .5rem !important; }
+      padding-bottom: .5rem; }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__image"] {
         height: 36.3rem; }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {

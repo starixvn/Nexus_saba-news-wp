@@ -329,36 +329,7 @@
                             }
                         }
 
-                        .click-sub {
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            width: 4.6rem;
-                            height: 5rem;
-                            transition: all .2s ease-in-out;
-                            font-size: 1.4rem;
-                            cursor: pointer;
-                            display: none;
-                            transform: rotate(90deg);
-                            font-size: 2.4rem;
-                            color: $color-fff;
-
-                            @include tableMobile {
-                                @include flex(center, nowrap,center,row);
-                            }
-                        }
-
-                        .show {
-                            transform: rotate(270deg) !important;
-                        }
-
-                        .active-menu-item {
-                            padding: 4.7rem 0 !important;
-
-                            @include tableMobile {
-                                padding: 1.6rem 1.2rem !important;
-                            }
-                        }
+               
 
                         .item {
                             text-decoration: none;

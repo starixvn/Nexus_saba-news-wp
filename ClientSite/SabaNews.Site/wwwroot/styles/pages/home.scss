@@ -270,7 +270,7 @@
             }
 
             @include Mobile {
-                display: inherit !important;
+                display: inherit;
             }
 
 
@@ -349,7 +349,7 @@
 
             .card-vertical {
                 &.card-vertical-highlight {
-                    padding-bottom: .5rem !important;
+                    padding-bottom: .5rem;
 
                     &:nth-child(1) {
                         [class*="card-vertical__image"] {

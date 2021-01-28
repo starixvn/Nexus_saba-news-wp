@@ -12,9 +12,6 @@ $('.submenu').click(function () {
         }
     }
 })
-
-
-
 $(document).ready(function () {
     //mobile
     $('.button-mobile').click(function(){
@@ -32,27 +29,6 @@ $(document).ready(function () {
         }
     });
 
-
-    //mobile
-    $('.click-sub').click(function(){
-        if($(window).innerWidth() <= 1024){
-            var submm = $(this).parent();
-            if( !$(this).hasClass('show')){
-                submm.find('ul:first').stop().slideToggle(300);
-                $(this).addClass("show");
-                submm.siblings().each(function(){
-                    if($(this).find('.submenu:first').hasClass('show')){
-                        $(this).find('ul:first').stop().slideToggle(300);
-                        $(this).find('.submenu:first').removeClass('show');
-                    }
-                });
-            }else{
-                submm.find('ul:first').stop().slideToggle(300);
-                $(this).removeClass('show');
-            }
-        }
-    });
-  
     //desktop
     $(window).scroll(function() {
         if ($(this).scrollTop() > 0) {
