@@ -70,11 +70,13 @@
 
         [HttpPost]
         [Route("/comments/like")]
-        public async Task<IActionResult> Like(long commentID)
+        public async Task<IActionResult> Like(long commentID, string type)
         {
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            var commandResult = await commentService.UpdateLikeData(commentID, remoteIpAddress);
+            var commandResult = await commentService.UpdateLikeData(commentID, remoteIpAddress, type);
             return Json(commandResult);
         }
+
+
     }
 }

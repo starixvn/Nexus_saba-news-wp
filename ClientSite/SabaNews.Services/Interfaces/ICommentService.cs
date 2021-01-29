@@ -11,6 +11,6 @@
         Task<IEnumerable<Comment>> GetCommentChildrenAsync(int postID, int commentID);
         Task<Comment> GetLikeDataAsync(long commentID);
         Task<long> CreateComment(CreateComment model);
-        Task<CommandResult> UpdateLikeData(long commentID, string ipClient);
+        Task<CommandResult> UpdateLikeData(long commentID, string ipClient, string type);
     }
 }

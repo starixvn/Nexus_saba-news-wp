@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Services
 {
-    using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -76,12 +75,12 @@
             return result.IsSuccessful ? (int)command.CommentID : 0;
         }
 
-        public async Task<CommandResult> UpdateLikeData(long commentID, string ipClient)
+        public async Task<CommandResult> UpdateLikeData(long commentID, string ipClient, string type)
         {
             var comment = await GetLikeDataAsync(commentID);
-            var users = "";
-            var ips = "";
             var likeCount = 0;
+            var ips = "";
+            var users = "";
             if (comment == null || comment.CommentLikeCount == 0 || string.IsNullOrEmpty(comment.CommentLikeUsers))
             {
 
@@ -91,7 +90,7 @@
                 ips = JsonConvert.SerializeObject(arrIPs);
                 likeCount = 1;
             }
-            else
+            else if (type == Constants.CommentTypeLike)
             {
                 List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
                 List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
@@ -100,6 +99,16 @@
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);
                 likeCount = (int)(comment.CommentLikeCount + 1);
+            }
+            else if (type == Constants.CommentTypeUnlike)
+            {
+                List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
+                List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
+                arrUsers.Remove(CurrentUser);
+                arrIPs.Remove(ipClient);
+                users = JsonConvert.SerializeObject(arrUsers);
+                ips = JsonConvert.SerializeObject(arrIPs);
+                likeCount = (int)(comment.CommentLikeCount - 1);
             }
             var criteria = new CmtUpdateLikeCommand
             {
@@ -127,8 +136,6 @@
             }
             return comments;
         }
-
-
 
     }
 }

@@ -98,8 +98,12 @@ $(document).on("click", '.add_comment', function () {
         self.parent().find("textarea[name=comment_value]").focus();
         return false;
     }
+    if (commentContent.length >= 1500) {
+        return false;
+    }
     var postID = $("input[name=postID]").val();
 
+    
     $.ajax({
         type: "POST",
         url: "/comments/create",
@@ -203,20 +207,32 @@ $(document).on('click', '.link_thich', function () {
     var self = $(this);
     var cmtID = $(this).data('commentid');
     var total_like = self.find('.total_like').html();
-    if (total_like === '') {
-        total_like = 1;
+    var type = 'like';
+    if ($(this).hasClass('unlike')) {
+        type = 'unlike';
+        total_like = parseInt(total_like) - 1;
     } else {
-        total_like = parseInt(total_like) + 1;
+        if (total_like === '') {
+            total_like = 1;
+        } else {
+            total_like = parseInt(total_like) + 1;
+        }
     }
+
     $.ajax({
         type: "POST",
         url: "/comments/like",
-        data: { commentID: cmtID },
+        data: { commentID: cmtID, type: type },
         dataType: 'json',
         success: function (response) {
             if (response.isSuccessful) {
                 self.find('.total_like').html(total_like);
-                self.addClass('unlike');
+                if (type === 'like') {
+                    self.addClass('unlike');
+                } else {
+                    self.removeClass('unlike');
+                }
+                
             }
         }
     });
@@ -245,7 +261,7 @@ function RenderReplyForm(type = 0) {
     html += '<div class="comment_reply_wrapper ' + type + '">';
     html += '<form>';
     html += '<div class="comment-content-box">';
-    html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder="comment"></textarea>';
+    html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder=" Ý kiến của bạn"></textarea>';
     html += '<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>';
     html += '</div>';
     html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
