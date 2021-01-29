@@ -94,22 +94,23 @@
             {
                 List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
                 List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
-                arrUsers.Add(CurrentUser);
-                arrIPs.Add(ipClient);
+                if (type == Constants.CommentTypeLike)
+                {
+                    arrUsers.Add(CurrentUser);
+                    arrIPs.Add(ipClient);
+                    likeCount = (int)(comment.CommentLikeCount + 1);
+                }
+                else
+                {
+                    arrUsers = arrUsers.FindAll(val => val != CurrentUser);
+                    arrIPs = arrIPs.FindAll(val => !val.Equals(ipClient));
+                    likeCount = (int)(arrUsers.Count);
+                }
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);
-                likeCount = (int)(comment.CommentLikeCount + 1);
+                
             }
-            else if (type == Constants.CommentTypeUnlike)
-            {
-                List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
-                List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
-                arrUsers.Remove(CurrentUser);
-                arrIPs.Remove(ipClient);
-                users = JsonConvert.SerializeObject(arrUsers);
-                ips = JsonConvert.SerializeObject(arrIPs);
-                likeCount = (int)(comment.CommentLikeCount - 1);
-            }
+            
             var criteria = new CmtUpdateLikeCommand
             {
                 CommentID = commentID,
