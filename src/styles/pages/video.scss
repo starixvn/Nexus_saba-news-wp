@@ -1,0 +1,81 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../abstracts/functions';
+
+@import '../base/base';
+
+@import '../layout/footer';
+@import '../layout/header';
+
+@import '../components/block';
+@import '../components/buttons';
+@import '../components/container';
+@import '../components/img';
+@import '../components/calendar';
+@import '../components/pagination';
+@import '../components/swipper';
+@import '../components//card-vertical';
+
+
+
+.main .container {
+    @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
+    @include tableMobile{
+        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
+    }
+    @include Mobile{
+        display: inherit;
+    }
+}
+
+
+.block__swipper{
+    margin-bottom: 4rem;
+    .swiper-container {
+        width: 100%;
+        max-width: 100% !important;
+        height: 100%;
+        .swiper-slide{
+            .img-item{
+                max-height: 40rem;
+                overflow: hidden;
+                img{
+                    height: 41.3vh;
+                    object-fit: cover;
+                    width: 100%;
+                    @include tableMobile{
+                        height: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.block__video{
+    @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
+    @include tableMobile{
+        @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap-tablet});
+    }
+    .card-vertical__image{
+        margin-bottom: 1rem;
+        max-height: 10rem;
+        @include tableMobile{
+            max-height: 13rem;
+        }
+    }
+    .card-vertical-highlight {
+        [class*="card-vertical__"]:not(.card-vertical__image) {
+            padding: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

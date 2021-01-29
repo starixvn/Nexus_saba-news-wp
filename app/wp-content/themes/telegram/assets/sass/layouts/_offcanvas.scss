@@ -1,0 +1,28 @@
+.admin-bar{
+    .#{$prefix}-offcanvas-content-section{
+        top: 30px;
+    }
+}
+.#{$prefix}-offcanvas-content-section{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: -100%;
+    height: 100vh;
+    background-color: $color_light_gray;
+    z-index: 10;
+    overflow-y: scroll;
+    padding: 15px 15px 60px;
+    @include transition();
+    @include media(sm){
+        left: -600px;
+        width: 400px;
+    }
+    &.open{
+        left: 0;
+    }
+    .#{$prefix}-close{
+        text-align: right;
+        margin-top: 15px;
+    }
+}

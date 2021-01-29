@@ -1,0 +1,89 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../abstracts/functions';
+
+@import '../base/base';
+@import '../base/typhography';
+
+@import '../layout/footer';
+@import '../layout/header';
+@import '../components/block';
+@import '../components/buttons';
+@import '../components/container';
+@import '../components/img';
+@import '../components/calendar';
+@import '../components/list-content';
+@import '../components/socical';
+@import '../components/tag';
+@import '../components//card-vertical';
+@import '../components/card-horizontal';
+
+.main .container {
+    @include grid(65% calc(35% - #{$column-gap}), unset, #{$column-gap});
+    @include tableMobile{
+        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
+    }
+    @include Mobile{
+        display: inherit;
+    }
+}
+
+.block-list{
+    margin: 4rem 0;
+    @include tableMobile{
+        margin: 2rem 0;
+    }
+}
+
+.tag-post{
+    margin-bottom: 6rem;
+    @include tableMobile{
+        margin-bottom: 3rem;
+    }
+}
+
+
+.title-care{
+    padding-top: 3rem;
+    border-top: 1px solid $color-input;
+    &::after{
+        display: none;
+    }
+}
+
+.card-vertical-highlight {
+    [class*="card-vertical__"]:not(.card-vertical__image) {
+        padding: 0 !important;
+    }
+    .card-vertical__title{
+        font-size: 2.4rem;
+        line-height: 3.8rem;
+        margin-top: 1rem;
+    }
+    .card-vertical__image{
+        @include tableMobile {
+            max-height: 20rem;
+        }
+        @include landscapeTablet{
+            max-height: 30rem;
+        }
+        @include Mobile{
+            max-height: 100%;
+        }
+    }
+}
+.card-horizontal{
+    @include grid(30.5rem 1fr, 17rem , 1.2rem);
+    @include tableMobile{
+        @include grid(20.5rem 1fr, 12rem , 1.2rem);
+    }
+    @include Mobile{
+        @include grid(16.5rem 1fr, 9rem , 1.2rem);
+    }
+    margin-bottom: 2rem;
+    &__image{
+        @include tableMobile{
+            max-height: 13.2rem !important;
+        }
+    }
+}

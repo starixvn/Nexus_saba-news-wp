@@ -1,0 +1,70 @@
+.#{$prefix}-newsletter-section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    .#{$prefix}-wrapper{
+        margin: auto;
+        width: calc(100% - 30px);
+        @include media(xs){
+            width: calc(90% - 30px);
+        }
+        @include media(md){
+            width: 800px;
+        }
+    }
+    .#{$prefix}-newsletter-post{
+        background-color: $color_black;
+        color: $color_white;
+    }
+    h2,
+    p{
+        margin: 0;
+        padding-top: 10px;
+    }
+    .#{$prefix}-image-section,
+    .#{$prefix}-desc{
+        flex: 0 0 100%;
+        max-width: 100%;
+        @include media(sm){
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+    .#{$prefix}-image-section{
+        min-height: 400px;
+        max-height: 500px; 
+        display: none;
+        @include media(sm){
+            display: block;
+        }
+    }
+    .#{$prefix}-desc{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 30px 15px;
+        position: relative;
+        min-height: 300px;
+        @include media(sm){
+            min-height: auto;
+        }
+        .#{$prefix}-close{
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 100%;
+            padding: 0 30px;
+            text-align: end;
+            button{
+                background-color: transparent;
+                color: $color_white;
+                &:hover,
+                &:focus-within{
+                    color: $primary_color;
+                }
+            }
+        }
+    } 
+}

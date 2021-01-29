@@ -1,0 +1,49 @@
+body{
+    color: $text_color;
+    font-family: $root_font;
+    font-size: 15px;
+    font-weight: $font_weight_normal;
+    background-color: #f8f9fa;
+    button{
+        font-family: inherit;
+        @include transition();
+    }
+}
+a{
+    text-decoration: none;
+    color: $text_color;
+    @include transition();
+    &:visited{
+        color: $text_color; 
+    }
+    &:hover,
+    &:focus-within{
+        color: $primary_color;
+    }
+}
+p{
+    a{
+        color: $primary_color;
+        &:hover{
+            color: $text_color;
+        }
+    }
+}
+.site-title{
+    font-size: 35px;
+    font-weight: $font_weight_bold;
+}
+.#{$prefix}-section-title{
+    font-size: 30px;
+}
+.#{$prefix}-post-title{
+    @include limitation();
+    font-size: 18px;
+}
+.widget-title,
+.#{$prefix}-post-title-lg{
+    font-size: 24px;
+}
+.#{$prefix}-post-title-xs{
+    font-size: 16px;
+}

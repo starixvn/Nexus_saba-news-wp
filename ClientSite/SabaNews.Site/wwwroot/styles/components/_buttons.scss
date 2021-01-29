@@ -1,0 +1,27 @@
+//button
+button{
+    outline: none;
+    border: 0;
+    padding: 0;
+}
+.btn-play-video{
+    height: 8rem;
+    width: 8rem;
+    @include tableMobile{
+        height: 4.6rem;
+        width: 4.6rem;
+    }
+    background-color: rgba($color: $color-fff, $alpha: .2);
+    @include flex(center,nowrap,center,column);
+    border-radius: 50%;
+    @include position('center',50%,50%);
+    cursor: pointer;
+    span{
+        font-size: 4.6rem;
+        @include tableMobile{
+            font-size: 2rem;
+        }
+    }
+}
+
+

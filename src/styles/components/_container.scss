@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include tableMobile{
+        padding : 0 1.4rem ;
+    }
+    @media (min-width : 576px){
+        max-width: 54rem;
+    }
+    @media (min-width : 768px){
+        max-width: 100%;
+        padding: 0 1.6rem;
+    }
+    @media (min-width : 992px){
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    @media (min-width : 1200px){
+        max-width: 119rem;
+        padding: 0 1rem;
+    }
+    @media (min-width : 1440px){
+        max-width: 134rem;
+        padding: 0 1rem;
+    }
+}
+.container-fuild{
+    max-width: 128rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    @include tableMobile{
+        padding: 0;
+    }
+    @include iphone5{
+        padding: 0;
+    }
+}

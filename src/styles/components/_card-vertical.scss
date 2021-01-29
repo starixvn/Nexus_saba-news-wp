@@ -1,0 +1,61 @@
+.card-vertical {
+    padding-bottom: 1.6rem;
+    &.card-vertical-highlight {
+        [class*="card-vertical__"]:not(.card-vertical__image) {
+            padding: 0 $padding-main;
+        }
+    }
+
+    &__image {
+        margin-bottom: 0.4rem;
+        overflow: hidden;
+        display: block;
+
+        @include tableMobile {
+            margin-bottom: .5rem;
+            max-height: 11rem;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__title {
+        color: $color-text;
+        font-weight: bold;
+        font-size: $font-size-title;
+        letter-spacing: -0.02rem;
+        text-decoration: none;
+        transition: color .3s ease;
+        display: block;
+        &:hover {
+            color: $color-title-hover;
+        }
+
+        @include tableMobile {
+            font-size: 1.4rem !important;
+            line-height: 1.8rem !important;
+        }
+    }
+
+    &__datetime {
+        font-size: $font-size-datetime;
+        color: $color-datetime;
+
+        @include tableMobile {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__description {
+        margin-top: .3rem;
+
+        @include tableMobile {
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+    }
+}

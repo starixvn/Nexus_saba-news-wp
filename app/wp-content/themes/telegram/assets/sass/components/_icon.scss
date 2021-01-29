@@ -1,0 +1,154 @@
+.#{$prefix}-menu-icon{
+    display: block;
+    width: 40px;
+    cursor: pointer;
+    .#{$prefix}-menu-icon{
+        &:hover{
+            .#{$prefix}-line{
+                width: 40px;
+                transform: rotate(180deg);
+                left: initial;
+            }
+        }
+    }
+    span{
+        display: block;
+        position: relative;
+    }
+    .#{$prefix}-line{
+        height: 3px;
+        border-radius: 5px;
+        background-color: $primary_bg_text_color;
+        margin-top: 4px;
+        margin-left: auto;
+        margin-right: auto;
+        @include transition();
+        transform: rotate(160deg);
+    }
+    .#{$prefix}-line-1,
+    .#{$prefix}-line-3{
+        width: 24px;
+    }
+    .#{$prefix}-line-1{
+        left: -2px;
+    }
+    .#{$prefix}-line-2{
+        width: 35px;
+    }
+    .#{$prefix}-line-3{
+        left: 4px;
+    }
+    
+}
+button{
+    &:hover,
+    &:focus-within{
+        .#{$prefix}-menu-icon{
+            .#{$prefix}-line{
+                width: 40px;
+                transform: rotate(180deg);
+                left: initial;
+            }
+        }
+    }
+}
+.#{$prefix}-menu-icon-with-box{
+    display: block;
+    width: 35px;
+    margin: auto;
+    .#{$prefix}-line{
+        display: block;
+        position: relative;
+        height: 4px;
+        background-color: $primary_bg_text_color;
+        margin-bottom: 5px;
+        width: 100%;
+        @include transition();
+        &:before{
+            content:'';
+            display: block;
+            width: 3px;
+            height: 4px;
+            background-color: $primary_color;
+            position: absolute;
+            top: 0;
+            @include transition();
+        }
+    }
+    .#{$prefix}-line-1{
+        &:before{
+            left: 4px;
+        }
+    }
+    .#{$prefix}-line-2{
+        &:before{
+            left: 50%;
+            @include transform(translateX(-50%));
+        }
+    }
+    .#{$prefix}-line-3{
+        &:before{
+            right: 4px;
+        }
+    }
+}
+button{
+    &:hover,
+    &:focus-within{
+        .#{$prefix}-menu-icon-with-box{
+            .#{$prefix}-line-1{
+                &:before{
+                    left: initial;
+                    right: 4px;
+                }
+            }
+            .#{$prefix}-line-3{
+                &:before{
+                    left: 4px;
+                    right: initial;
+                }
+            }
+        }
+    }
+}
+.#{$prefix}-post-format-with-bg{
+    span{
+        background-color: $primary_color;
+        color: $primary_bg_text_color;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 100%;
+    }
+    &.#{$prefix}-post-format-sm{
+        span{
+            height: 25px;
+            width: 25px;
+            line-height: 25px;
+            font-size: 14px; 
+        }
+    }
+    &.#{$prefix}-post-format-white-bg{
+        span{
+            background-color: $color_white;
+            color: $primary_color;
+        }
+    }
+
+}
+.#{$prefix}-close{
+    button{
+        border: 0;
+        padding: 0;
+        font-size: 30px;
+        cursor: pointer;
+        background-color: transparent;
+        &:hover,
+        &:focus-within{
+            color: $primary_color;
+        }
+    }
+}

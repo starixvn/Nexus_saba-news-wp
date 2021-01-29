@@ -1,0 +1,14 @@
+.#{$prefix}-related-post-section{
+    .#{$prefix}-wrapper{
+        @include border-top();
+        border-color: rgba($color_light_gray,0.9);
+        padding: 15px 0 45px;
+    }
+    .#{$prefix}-section-title{
+        margin: 15px 0 0;
+    }
+    .#{$prefix}-post{
+        margin-top: 20px;
+    }
+
+}
