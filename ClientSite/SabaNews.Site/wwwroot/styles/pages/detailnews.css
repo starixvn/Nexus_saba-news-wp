@@ -790,7 +790,8 @@ button {
 .wp-block-image figcaption {
   text-align: center;
   position: relative;
-  top: -4px; }
+  top: -8px;
+  font-size: 1.4rem; }
 
 .block-list {
   list-style: none;

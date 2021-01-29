@@ -748,7 +748,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .wp-block-image figcaption {
   text-align: center;
   position: relative;
-  top: -4px; }
+  top: -8px;
+  font-size: 1.4rem; }
 
 button {
   outline: none;
