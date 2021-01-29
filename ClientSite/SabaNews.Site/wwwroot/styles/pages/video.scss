@@ -14,18 +14,7 @@
 @import '../components/pagination';
 @import '../components/swipper';
 @import '../components/card-vertical';
-
-
-
-.main .container {
-    @include grid(70% calc(30% - #{$column-gap}), unset, #{$column-gap});
-    @include tableMobile{
-        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
-    }
-    @include Mobile{
-        display: inherit;
-    }
-}
+@import '../components/sub-structure';
 
 
 .block__swipper{

@@ -955,20 +955,31 @@ button {
 .thumb-40 {
   padding-bottom: 40%; }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .main .container {
   display: grid;
-  grid-template-columns: 70% calc(30% - 5.4rem);
+  grid-template-columns: 70% 30%;
   grid-template-rows: unset;
-  grid-gap: 5.4rem; }
+  grid-gap: 0; }
   @media screen and (max-width: 1024px) {
     .main .container {
       display: grid;
-      grid-template-columns: 70% calc(30% - 3.2rem);
+      grid-template-columns: 60% 40%;
       grid-template-rows: unset;
-      grid-gap: 3.2rem; } }
+      grid-gap: 0; } }
   @media (max-device-width: 767px) {
     .main .container {
       display: inherit; } }
+
+@media screen and (min-width: 1024px) {
+  .block-main {
+    padding-right: 2.8rem;
+    border-right: 1px solid #e5e5e5; }
+  .block-extension {
+    padding-left: 2.8rem; } }
 
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }
@@ -984,14 +995,25 @@ button {
       .block-main .card-horizontal-highlight {
         display: inherit;
         height: auto; } }
+    @media (max-device-width: 767px) {
+      .block-main .card-horizontal-highlight {
+        margin-bottom: 1.2rem; } }
     .block-main .card-horizontal-highlight .card-horizontal__content {
       padding: 16px; }
       @media screen and (max-width: 1024px) {
         .block-main .card-horizontal-highlight .card-horizontal__content {
           margin-top: 1rem; } }
+      @media (max-device-width: 767px) {
+        .block-main .card-horizontal-highlight .card-horizontal__content {
+          padding: 8px;
+          margin-top: 0; } }
     .block-main .card-horizontal-highlight .title {
       font-size: 2rem;
       line-height: 2.8rem; }
+      @media (max-device-width: 767px) {
+        .block-main .card-horizontal-highlight .title {
+          font-size: 1.6rem;
+          line-height: 2.2rem; } }
     .block-main .card-horizontal-highlight .description {
       max-height: 6.5rem;
       margin-top: 1rem; }
@@ -999,6 +1021,11 @@ button {
         .block-main .card-horizontal-highlight .description {
           display: block;
           margin-top: 0; } }
+      @media (max-device-width: 767px) {
+        .block-main .card-horizontal-highlight .description {
+          font-size: 1.2rem;
+          line-height: 2rem;
+          max-height: 6rem; } }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight .card-horizontal__image {
         max-height: 100% !important; } }

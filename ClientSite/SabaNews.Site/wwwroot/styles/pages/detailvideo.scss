@@ -18,20 +18,8 @@
 @import '../components/tag';
 @import '../components/socical';
 @import '../components//card-vertical';
+@import '../components/sub-structure';
 
-
-
-.main .container {
-    @include grid(70% calc(30% - #{$section-gap}), unset, #{$section-gap});
-
-    @include tableMobile {
-        @include grid(60% calc(40% - #{$column-gap}), unset, #{$column-gap});
-    }
-
-    @include Mobile {
-        display: inherit;
-    }
-}
 .block-list{
     margin: 4rem 0;
     @include tableMobile{

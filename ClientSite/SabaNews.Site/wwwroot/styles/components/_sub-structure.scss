@@ -1,0 +1,29 @@
+﻿@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+
+
+.main .container {
+    @include grid(70% 30%, unset, 0);
+
+    @include tableMobile {
+        @include grid(60% 40%, unset, 0);
+    }
+
+    @include Mobile {
+        display: inherit;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .block-main {
+        padding-right: 2.8rem;
+        border-right: 1px solid $separator-color;
+    }
+
+    .block-extension {
+        padding-left: 2.8rem;
+    }
+}
+

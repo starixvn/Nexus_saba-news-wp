@@ -15,23 +15,15 @@
 @import '../components/card-vertical';
 @import '../components/pagination';
 @import '../components/lazyload';
+@import '../components/sub-structure';
 
 
-.main .container {
-    @include grid(70% calc(30% - #{$section-gap}), unset, #{$section-gap});
 
-    @include tableMobile {
-        @include grid(70% calc(30% - #{$column-gap}), unset, #{$column-gap});
-    }
-
-    @include Mobile {
-        display: inherit;
-    }
-}
 
 .block-main {
     .card-horizontal {
         margin-bottom: 1.6rem;
+
         &-highlight {
             height: 30rem;
             grid-template-columns: 53rem 1fr;
@@ -40,30 +32,57 @@
             align-items: flex-start;
             margin-bottom: $column-gap;
             background-color: $block-highlight-bgcolor;
-            @include tableMobile{
+
+            @include tableMobile {
                 display: inherit;
                 height: auto;
             }
-            .card-horizontal__content{
+
+            @include Mobile {
+                margin-bottom: 1.2rem;
+            }
+
+            .card-horizontal__content {
                 padding: 16px;
-                @include tableMobile{
+
+                @include tableMobile {
                     margin-top: 1rem;
                 }
-            }
-            .title {
-                font-size: 2rem;
-                line-height: 2.8rem;
-            }
-            .description {
-                max-height: 6.5rem;
-                margin-top: 1rem;
-                @include tableMobile{
-                    display: block;
+
+                @include Mobile {
+                    padding: 8px;
                     margin-top: 0;
                 }
             }
-            .card-horizontal__image{
-                @include tableMobile{
+
+            .title {
+                font-size: 2rem;
+                line-height: 2.8rem;
+
+                @include Mobile {
+                    font-size: 1.6rem;
+                    line-height: 2.2rem;
+                }
+            }
+
+            .description {
+                max-height: 6.5rem;
+                margin-top: 1rem;
+
+                @include tableMobile {
+                    display: block;
+                    margin-top: 0;
+                }
+
+                @include Mobile {
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    max-height: 6rem;
+                }
+            }
+
+            .card-horizontal__image {
+                @include tableMobile {
                     max-height: 100% !important;
                 }
             }
