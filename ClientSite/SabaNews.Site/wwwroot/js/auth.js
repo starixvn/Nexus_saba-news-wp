@@ -40,7 +40,12 @@
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
-                        $('#authModal').modal('hide');
+                        if (res.isSuccessful) {
+                            $('#authModal').modal('hide');
+                        } else {
+                            // show error res.Message
+                            console.log(res);
+                        }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus + ': ' + errorThrown);
@@ -89,7 +94,18 @@
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
-                        $('#authModal').modal('hide');
+                        if (res.isSuccessful) {
+                            const email = $(form).find('input[name="email"]').val();
+                            let bodyModal = `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                                <h3>Đăng ký thành công</h3>
+                                <div>Hãy kiểm tra email <b>${email}</b> để xác thực email.</div>
+                                <div>Nhớ kiểm tra thư rác nhé</div>`;
+                            $('#authModal .modal-body').html(bodyModal);
+                        } else {
+                            // show error res.Message
+                            console.log(res);
+                        }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus + ': ' + errorThrown);

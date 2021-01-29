@@ -20,6 +20,8 @@
             ViewBag.UserUgent = userAgent;
             ViewBag.IsMobile = userAgent.Contains("mobile", System.StringComparison.OrdinalIgnoreCase);
             ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
+            //ViewBag.IsAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+            //ViewBag.DisplayName = HttpContext.User.Identity.Name;
             return View(model);
         }
     }

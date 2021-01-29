@@ -15,6 +15,7 @@
     using Fanex.Logging.Sentry;
     using Hangfire;
     using Hangfire.Redis;
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -85,6 +86,14 @@
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddAuthentication(options=>
+            {
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
 
@@ -98,9 +107,11 @@
             services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
 
             services.AddTransient<ISerializerService, SerializerService>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IPathService, PathService>();

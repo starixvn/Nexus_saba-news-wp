@@ -85,6 +85,8 @@
         public const string CommentTypeLike = "like";
         public const string CommentTypeUnlike = "unlike";
         public const string CommentFilterTime = "time";
+        public const string InvalidData = "Invalid data";
+        public const string WrongUsernameOrPassword = "Email hoặc mật khẩu không chính xác";
         public const string CommentFilterLike = "like";
         public const bool IsLogin = true;
     }
