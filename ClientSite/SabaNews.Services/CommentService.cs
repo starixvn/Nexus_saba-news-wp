@@ -19,7 +19,7 @@
             this.baseService = baseService;
         }
 
-        public async Task<CommentTemplate> GetCommentsAsync(int postID, int start,int end)
+        public async Task<CommentTemplate> GetCommentsAsync(int postID, int start, int end)
         {
             var criteria = new CmtGetParentAndNumberChildrenCriteria
             {
@@ -90,39 +90,6 @@
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);
                 likeCount = 1;
-            }
-            else
-            {
-                List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
-                List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
-                arrUsers.Add(CurrentUser);
-                arrIPs.Add(ipClient);
-                users = JsonConvert.SerializeObject(arrUsers);
-                ips = JsonConvert.SerializeObject(arrIPs);
-                likeCount = (int)(comment.CommentLikeCount + 1);
-            }
-            var criteria = new CmtUpdateLikeCommand
-            {
-                CommentID = commentID,
-                CommentLikeCount = likeCount,
-                CommentLikeIPs = ips,
-                CommentLikeUsers = users
-            };
-            return await baseService.ExecuteNonQueryAsync(criteria);
-        }
-
-                var arrUsers = new List<int> { CurrentUser };
-                var arrIPs = new List<string> { ipClient };
-                users = JsonConvert.SerializeObject(arrUsers);
-                ips = JsonConvert.SerializeObject(arrIPs);
-                likeCount = 1;
-                {
-                    var arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
-                    var HasUser = arrUsers.FindIndex(item => item == CurrentUser);
-                    if (HasUser != -1)
-                    {
-                        comment.isLiked = true;
-                    }
             }
             else
             {

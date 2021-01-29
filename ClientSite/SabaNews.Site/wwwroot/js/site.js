@@ -25,8 +25,8 @@
                     var symbol = src.indexOf("?") > -1 ? "&" : "?";
                     src = src + symbol + "autoplay=1"
                 }
-                
-                iframe.attr('src', src );
+
+                iframe.attr('src', src);
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
@@ -66,7 +66,7 @@
                 slide.find('.play_video').html(iframe);
                 slide.addClass('active');
             }
-           
+
         });
     },
     //Desktop & Mobile
@@ -116,7 +116,7 @@
                     $.each(data, function (i, val) {
                         html += RenderSubComment(val);
                     });
-                    
+
                     self.parent().parent().find('.sub_comment').append(html);
                 }
             });
@@ -161,9 +161,6 @@
                     });
                 }
             }
-        $(document).on('keypress', '.type_page', function (event) {
-            var keycode = (event.keyCode ? event.keyCode : event.which);
-            }
         });
 
         $(document).on("click", '.add_comment', function () {
@@ -174,7 +171,7 @@
                 return false;
             }
             var postID = $("input[name=postID]").val();
-            
+
             $.ajax({
                 type: "POST",
                 url: "/comments/create",
@@ -187,13 +184,13 @@
                         var likeCount = comment.commentLikeCount > 0 ? comment.commentLikeCount : "";
                         html += '<div class="comment_item">';
                         html += '<div class="content_comment">';
-                        html += '<p class="full_content"><span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent +'</p>';
+                        html += '<p class="full_content"><span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent + '</p>';
                         html += '<p class="block_like_web width_common">';
                         html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + comment.commentID + '">';
                         html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
                         html += '<i class="ic ic-like" ></i >'
                         html += '</a > ';
-                        html += '<a href="javascript:;" class="link_reply" data-id="' + comment.commentID + '" data-parent="' + comment.commentID+'">Trả lời</a>';
+                        html += '<a href="javascript:;" class="link_reply" data-id="' + comment.commentID + '" data-parent="' + comment.commentID + '">Trả lời</a>';
                         html += '<span class="time">1 giây trước</span>';
                         html += '</p>';
                         html += '</div>';
@@ -236,31 +233,6 @@
                         }
                         $('.comment_reply_wrapper').remove();
                         self.parent().find("textarea[name=comment_value]").val('');
-                    }
-                }
-            });
-        });
-
-                Subcmt = checkSubCmt.find('.sub_comment'); $(this).parent();
-        $(document).on('click', '.link_thich', function () {
-            var self = $(this);
-            var cmtID = $(this).data('commentid');
-            var total_like = self.find('.total_like').html();
-            if (total_like === '') {
-                total_like = 1;
-            } else {
-                total_like = parseInt(total_like) + 1;
-            }
-            console.log(total_like);
-            $.ajax({
-                type: "POST",
-                url: "/comments/like",
-                data: { commentID: cmtID },
-                dataType: 'json',
-                success: function (response) {
-                    if (response.isSuccessful) {
-                        self.find('.total_like').html(total_like);
-                        self.addClass('unlike');
                     }
                 }
             });
@@ -328,11 +300,11 @@
             html += '<div class="sub_comment_item comment_item">';
             html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
             html += '<p class="block_like_web width_common">';
-            html += '<a href="javascript:;" class="link_thich ' + liked +'" data-commentid="' + val.commentID +'">';
-            html += '<span class="total_like" href="javascript:;">' + likeCount +'</span>';
+            html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + val.commentID + '">';
+            html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
             html += '<i class="ic ic-like" ></i >'
             html += '</a > ';
-            html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent +'">Trả lời</a>';
+            html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent + '">Trả lời</a>';
             html += '<span class="time">' + commentTime + '</span>';
             html += '</p>';
             html += '</div>';
@@ -340,15 +312,9 @@
         };
         function RenderReplyForm(type = 0) {
             var html = '';
-            html += '<div class="comment_reply_wrapper '+ type +'">';
+            html += '<div class="comment_reply_wrapper ' + type + '">';
             html += '<form>';
             html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder="comment"></textarea>';
-            html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
-            html += '</form>';
-            html += '</div>';
-            return html;
-        };
-    },
             html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
             html += '</form>';
             html += '</div>';
