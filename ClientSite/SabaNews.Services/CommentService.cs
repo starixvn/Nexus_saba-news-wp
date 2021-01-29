@@ -82,7 +82,7 @@
             var users = "";
             var ips = "";
             var likeCount = 0;
-            if (comment.CommentLikeCount == 0 || string.IsNullOrEmpty(comment.CommentLikeUsers))
+            if (comment == null || comment.CommentLikeCount == 0 || string.IsNullOrEmpty(comment.CommentLikeUsers))
             {
 
                 var arrUsers = new List<int> { CurrentUser };

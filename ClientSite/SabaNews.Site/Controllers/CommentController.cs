@@ -42,11 +42,11 @@
                 ViewData = Data
             };
             return PartialView("_Comments", Model);
-
         }
+
         [HttpPost]
         [Route("/comments/create")]
-        public async Task<IActionResult> CreateComment(int postID, int parent ,string commentContent)
+        public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
@@ -65,7 +65,7 @@
             };
             var result = await commentService.CreateComment(model);
             model.CommentID = result;
-            return Json( new { isSuccessful = result != 0, comment = model});
+            return Json(new { isSuccessful = result != 0, comment = model });
         }
 
         [HttpPost]

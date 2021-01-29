@@ -1,37 +1,52 @@
-﻿@foreach (var comment in Model.CommentTemplate.Comments)
-{
-<div class="comment_item">
-	<div class="content_comment">
-		<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
-		<p class="block_like_web width_common">
-			<a href="javascript:;" class="link_thich @(comment.isLiked ? "unlike" : "")" data-commentid="@comment.CommentID">
-				<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>
-				<i class="ic ic-like"></i>
-			</a>
-			<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">Trả lời</a>
-			<span class="time">@comment.CommentTime</span>
-		</p>
+﻿<label>Ý kiến (<span class="total-count-comment">@Model.CommentTemplate.TotalItems</span>)</label>
+<form>
+	<div class="comment-content-box">
+		<textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
+		<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>
 	</div>
-	<div class="sub_comment"></div>
-	@if (comment.CommentNumberChildren > 0)
-	{
-<p class="count-reply">
-	<a href="javascript:;" class="view_all_reply" data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID">
-		<span class="num_reply_cmt">@comment.CommentNumberChildren</span> Trả lời
-	</a>
-</p>}
-
-</div>}
-
-@if (Model.ViewData.TotalPages > 1)
-{
-	var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
-	var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
-	var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
-	var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
-<div class="pagination" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
-	<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
-	<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
-	<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
-</div>}
+	<input type="button" name="add_comment" class="add_comment" value="Gửi" />
+</form>
 <div class="clearfix"></div>
+
+<hr style="margin: 15px 0" />
+<div class="list_comments">
+	@foreach (var comment in Model.CommentTemplate.Comments)
+	{
+	<div class="comment_item">
+		<div class="content_comment">
+			<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
+			<p class="block_like_web width_common">
+				<a href="javascript:;" class="link_thich @(comment.isLiked ? "unlike" : "")" data-commentid="@comment.CommentID">
+					<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>
+					<i class="ic ic-like"></i>
+				</a>
+				<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">Trả lời</a>
+				<span class="time">@comment.CommentTime</span>
+			</p>
+		</div>
+		<div class="sub_comment"></div>
+		@if (comment.CommentNumberChildren > 0)
+		{
+		<p class="count-reply">
+			<a href="javascript:;" class="view_all_reply" data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID">
+				<span class="num_reply_cmt">@comment.CommentNumberChildren</span> Trả lời
+			</a>
+		</p>}
+
+	</div>}
+
+		@if (Model.ViewData.TotalPages > 1)
+		{
+			var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
+			var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
+			var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
+			var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
+			<div class="pagination" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
+				<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
+				<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
+				<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
+			</div>
+		}
+		<div class="clearfix"></div>
+</div>
+

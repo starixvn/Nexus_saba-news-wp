@@ -20,6 +20,9 @@
     @Model.SinglePost.PostTitle
 }
 
+@section Scripts{
+	<script src="~/js/comment.js" asp-append-version="true"></script>
+}
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 	<style>
@@ -332,22 +335,9 @@
 
                 }
             </ul>
+			<input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
 			<div class="comment" id="comment">
-                <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
-                <label>Ý kiến (@Model.CommentTemplate.TotalItems)</label>
-				<form>
-					<div class="comment-content-box">
-						<textarea rows="5" name="comment_value" id="comment_value" placeholder="comment"></textarea>
-						<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>
-					</div>
-					<input type="button" name="add_comment" class="add_comment" value="Gửi" />
-				</form>
-				<div class="clearfix"></div>
-
-                <hr style="margin: 15px 0" />
-				<div class="list_comments">
-					@Html.Partial("~/Views/Comment/_Comments.cshtml", new SingleViewModel { CommentTemplate = Model.CommentTemplate, ViewData = Model.ViewData })
-				</div>
+               
             </div>
             <h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
             <div class="block__content">
