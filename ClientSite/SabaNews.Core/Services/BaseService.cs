@@ -60,12 +60,12 @@
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>(new List<TFirst>(), new List<TSecond>(), new List<TThird>());
         }
 
-        public async Task<CommandResult> ExecuteNonQueryAsync(ICriteria criteria)
+        public async Task<CommandResult> ExecuteNonQueryAsync(INonQueryCommand command)
         {
             var commandResult = new CommandResult();
-            if (criteria != null && criteria.IsValid())
+            if (command != null && command.IsValid())
             {
-                commandResult = await baseRepository.ExecuteNonQueryAsync(criteria);
+                commandResult = await baseRepository.ExecuteNonQueryAsync(command);
             }
 
             return commandResult;

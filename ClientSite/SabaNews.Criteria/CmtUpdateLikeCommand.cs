@@ -1,8 +1,8 @@
 ﻿namespace SabaNews.Criteria
 {
-    using Fanex.Data.Repository;
+    using SabaNews.Core.Models;
 
-    public class CmtUpdateLikeCommand : CriteriaBase
+    public class CmtUpdateLikeCommand : BaseNonQueryCommand
     {
         public long CommentID { get; set; }
         public long CommentLikeCount { get; set; }

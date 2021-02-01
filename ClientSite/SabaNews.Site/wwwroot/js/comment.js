@@ -35,7 +35,9 @@ $(document).on('keypress', '.type_page', function (event) {
 $(document).on('click', '.filter_comment a', function () {
     var self = $(this);
     filterType = self.data('type');
-    RenderListComment(postID, 1, filterType)
+    if (!self.hasClass('active')) {
+        RenderListComment(postID, 1, filterType)
+    }
 });
 
 //show limit of comment value

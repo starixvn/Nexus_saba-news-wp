@@ -1,10 +1,9 @@
 ﻿namespace SabaNews.Criteria
 {
-    using Fanex.Data.Repository;
     using SabaNews.Core.Models;
     using System;
 
-    public class CmtCreateCommand : CriteriaBase
+    public class CmtCreateCommand : BaseNonQueryCommand
     {
         public long CommentID { get; set; }
         public long CommentPostID { get; set; }
