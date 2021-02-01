@@ -6,6 +6,8 @@
     {
         public int PostID { get; set; }
 
+        public string FilterType { get; set; }
+
         public int Start { get; set; }
 
         public int End { get; set; }

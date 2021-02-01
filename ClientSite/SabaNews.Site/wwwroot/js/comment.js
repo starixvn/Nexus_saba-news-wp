@@ -1,13 +1,41 @@
 ﻿
 //load comment section when load page
 var postID = $("input[name=postID]").val();
-$.ajax({
-    type: "GET",
-    url: "/comments/paging",
-    data: { postID: postID, page: 1 },
-    success: function (response) {
-        $('#comment').html(response);
+var filterType = 'like';
+RenderListComment(postID, 1, filterType);
+
+//comment paging
+$(document).on('click', '.comment-pagination', function () {
+    var self = $(this);
+    var page = self.data("page");
+    RenderListComment(postID, page, filterType);
+    $('html,body').animate({
+        scrollTop: $("#comment").offset().top
+    }, 'slow');
+});
+
+//validate comment value
+$(document).on('keypress', '.type_page', function (event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode === 13) {
+        var current = parseInt($(this).parent().data('current'));
+        var total = parseInt($(this).parent().data('total'));
+        var value = $(this).val();
+        if (Math.floor(value) == value && $.isNumeric(value) && value != current && value >= 1 && value <= total) {
+            var postID = $("input[name=postID]").val();
+            var page = value;
+            RenderListComment(postID, page, filterType);
+            $('html,body').animate({
+                scrollTop: $("#comment").offset().top
+            }, 'slow');
+        }
     }
+});
+
+$(document).on('click', '.filter_comment a', function () {
+    var self = $(this);
+    filterType = self.data('type');
+    RenderListComment(postID, 1, filterType)
 });
 
 //show limit of comment value
@@ -45,49 +73,6 @@ $(document).on('click', '.view_all_reply', function () {
             self.parent().parent().find('.sub_comment').append(html);
         }
     });
-});
-
-//comment paging
-$(document).on('click', '.comment-pagination', function () {
-    var self = $(this);
-    var postID = $("input[name=postID]").val();
-    var page = self.data("page");
-    $.ajax({
-        type: "GET",
-        url: "/comments/paging",
-        data: { postID: postID, page: page },
-        success: function (response) {
-            $('#comment').html(response);
-            $('html,body').animate({
-                scrollTop: $("#comment").offset().top
-            }, 'slow');
-        }
-    });
-});
-
-//validate comment value
-$(document).on('keypress', '.type_page', function (event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode === 13) {
-        var current = parseInt($(this).parent().data('current'));
-        var total = parseInt($(this).parent().data('total'));
-        var value = $(this).val();
-        if (Math.floor(value) == value && $.isNumeric(value) && value != current && value >= 1 && value <= total) {
-            var postID = $("input[name=postID]").val();
-            var page = value;
-            $.ajax({
-                type: "GET",
-                url: "/comments/paging",
-                data: { postID: postID, page: page },
-                success: function (response) {
-                    $('#comment').html(response);
-                    $('html,body').animate({
-                        scrollTop: $("#comment").offset().top
-                    }, 'slow');
-                }
-            });
-        }
-    }
 });
 
 //add comment
@@ -130,6 +115,7 @@ $(document).on("click", '.add_comment', function () {
                 html += '</div>';
                 $('.list_comments').prepend(html);
                 self.parent().find("textarea[name=comment_value]").val('');
+                self.parent().find('.comment-content-box').find('.note-text-count').hide();
             }
         }
     });
@@ -237,6 +223,20 @@ $(document).on('click', '.link_thich', function () {
         }
     });
 });
+
+
+
+function RenderListComment(postID, page, filterType) {
+    $.ajax({
+        type: "GET",
+        url: "/comments",
+        data: { postID: postID, page: page, filterType: filterType },
+        success: function (response) {
+            $('#comment').html(response);
+           
+        }
+    });
+};
 
 function RenderSubComment(val) {
     var html = "";

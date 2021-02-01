@@ -7,7 +7,7 @@
 
     public interface ICommentService
     {
-        Task<CommentTemplate> GetCommentsAsync(int postID, int start, int end);
+        Task<CommentTemplate> GetCommentsAsync(int postID, string filterType, int start, int end);
         Task<IEnumerable<Comment>> GetCommentChildrenAsync(int postID, int commentID);
         Task<Comment> GetLikeDataAsync(long commentID);
         Task<long> CreateComment(CreateComment model);

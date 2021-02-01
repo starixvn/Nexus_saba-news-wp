@@ -25,11 +25,11 @@
             return Json(new { data = comments });
         }
 
-        [Route("/comments/paging")]
-        public async Task<IActionResult> GetComments(int postID, int page)
+        [Route("/comments")]
+        public async Task<IActionResult> GetComments(int postID, string filterType, int page)
         {
             var start = (page - 1) * Constants.Perpage;
-            var commentTemplate = await commentService.GetCommentsAsync(postID, start, Constants.Perpage);
+            var commentTemplate = await commentService.GetCommentsAsync(postID, filterType, start, Constants.Perpage);
             var Data = new ViewData
             {
                 CurrentPage = page,
@@ -39,7 +39,8 @@
             var Model = new CommentViewModel
             {
                 CommentTemplate = commentTemplate,
-                ViewData = Data
+                ViewData = Data,
+                FilterType  = filterType
             };
             return PartialView("_Comments", Model);
         }

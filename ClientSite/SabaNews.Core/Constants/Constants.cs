@@ -84,5 +84,7 @@
         public const string MostViewPostTitle = "XEM NHIỀU NHẤT";
         public const string CommentTypeLike = "like";
         public const string CommentTypeUnlike = "unlike";
+        public const string CommentFilterTime = "time";
+        public const string CommentFilterLike = "like";
     }
 }

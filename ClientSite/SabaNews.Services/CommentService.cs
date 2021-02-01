@@ -18,11 +18,12 @@
             this.baseService = baseService;
         }
 
-        public async Task<CommentTemplate> GetCommentsAsync(int postID, int start, int end)
+        public async Task<CommentTemplate> GetCommentsAsync(int postID, string filterType, int start, int end)
         {
             var criteria = new CmtGetParentAndNumberChildrenCriteria
             {
                 PostID = postID,
+                FilterType = filterType,
                 Start = start,
                 End = end
             };
@@ -90,7 +91,7 @@
                 ips = JsonConvert.SerializeObject(arrIPs);
                 likeCount = 1;
             }
-            else if (type == Constants.CommentTypeLike)
+            else
             {
                 List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
                 List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
