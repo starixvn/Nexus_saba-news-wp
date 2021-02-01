@@ -8,10 +8,14 @@
 	<input type="button" name="add_comment" class="add_comment" value="Gửi" />
 </form>
 <div class="clearfix"></div>
-<div class="filter_comment">
-	<a href="javascript:;" class="@(Model.FilterType == "like"? "active" : "")" data-type="like">Quan tâm nhất</a>
-	<a href="javascript:;" class="@(Model.FilterType == "time"? "active" : "")" data-type="time">Mới nhất</a>
-</div>
+@if (Model.CommentTemplate.Comments.Count > 0) 
+{ 
+	<div class="filter_comment">
+		<a href="javascript:;" class="@(Model.FilterType == "like"? "active" : "")" data-type="like">Quan tâm nhất</a>
+		<a href="javascript:;" class="@(Model.FilterType == "time"? "active" : "")" data-type="time">Mới nhất</a>
+	</div>
+}
+
 <div class="list_comments">
 	@foreach (var comment in Model.CommentTemplate.Comments)
 	{

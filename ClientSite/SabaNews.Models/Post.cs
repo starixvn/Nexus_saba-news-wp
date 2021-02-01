@@ -21,6 +21,7 @@
         public string Slug { get; set; }
         public string Type { get; set; }
         public string Metadata { get; set; }
+        public int CommentCount { get; set; }
         public IEnumerable<ImageInfo> Images { get; set; }
 
         public string PostTime

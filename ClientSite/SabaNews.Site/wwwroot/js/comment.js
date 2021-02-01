@@ -220,7 +220,6 @@ $(document).on('click', '.link_thich', function () {
                 } else {
                     self.removeClass('unlike');
                 }
-                
             }
         }
     });
