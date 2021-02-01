@@ -3,13 +3,12 @@
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using Fanex.Data;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
-    using SabaNews.Criteria;
+    using SabaNews.Core.Services;
     using SabaNews.Models.Auth;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
@@ -18,13 +17,16 @@
     {
         private readonly IBaseService baseService;
         private readonly IAuthService authService;
+        private readonly ISessionService sessionService;
 
         public AuthController(
             IBaseService baseService,
-            IAuthService authService)
+            IAuthService authService,
+            ISessionService sessionService)
         {
             this.baseService = baseService;
             this.authService = authService;
+            this.sessionService = sessionService;
         }
 
         public IActionResult Index()
@@ -38,10 +40,10 @@
             User user = await authService.GetUserAsync(model.Email);
             if (user != null)
             {
-                if (!string.IsNullOrEmpty(user.Password) && ComparePassword(model.Password, user.Password))
+                if (!string.IsNullOrEmpty(user.Password) && authService.ComparePassword(model.Password, user.Password))
                 {
+                    await DoLoginAsync(user.Name, user.Email);
                     return Json(new CommandResult { Code = 0, Message = string.Empty });
-                    //await DoLoginAsync();
                 }
             }
             return Json(new CommandResult { Code = 1, Message = Constants.WrongUsernameOrPassword });
@@ -58,19 +60,13 @@
             {
                 return Json(commandResult);
             }
-            CreateUserCommand command = new CreateUserCommand
+            commandResult = await authService.CreateUserAsync(model);
+            if (commandResult.IsSuccessful)
             {
-                _Email = model.Email,
-                _Name = model.Name,
-                _Password = Cryptography.EncryptPassword(model.Password)
-            };
-            commandResult = await baseService.ExecuteNonQueryAsync(command);
-            //if (commandResult.IsSuccessful)
-            //{
-            //    // send mail for confirmation email
-            //    // set session login 
-            //    await DoLoginAsync();
-            //}
+                // send mail for confirmation email
+                // set session login 
+                await DoLoginAsync(model.Name, model.Email);
+            }
             return Json(commandResult);
         }
 
@@ -88,26 +84,26 @@
 
         public async Task Logout()
         {
+            sessionService.ClearAll();
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        private bool ComparePassword(string plainText, string encrypt)
-        {
-            string decrypt = Cryptography.DecryptPassword(encrypt);
-            return string.Equals(plainText, decrypt);
-        }
-
-        private async Task DoLoginAsync()
+        private async Task DoLoginAsync(string name, string email)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, string.Empty),
-                new Claim(ClaimTypes.NameIdentifier, string.Empty),
-                new Claim(ClaimTypes.Email, string.Empty)
+                new Claim(ClaimTypes.Name, name),
+                new Claim(ClaimTypes.Email, email)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+
+            sessionService.User = new UserSession
+            {
+                Email = email,
+                Name = name
+            };
         }
     }
 }

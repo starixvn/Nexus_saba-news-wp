@@ -43,12 +43,15 @@
 
                         }
                         <li class="right-header-section">
-                            <div class="languages-box">
-                                <div class="language-select"><span class="flag flag-vn"></span><span class="country">Tiếng Việt</span></div>
-                                <ul class="languages-list">
-                                    <li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>简体中文</span></a>
-                                    <li>
-                                        <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>English</span></a>
+                            @if (ViewBag.IsAuthenticated)
+                            {
+                                @*<a class="item">@ViewBag.DisplayName</a>*@
+                                <a class="item auth-logout" href="javascript:;">Đăng xuât</a>
+                            }
+                            else
+                            {
+                                <a class="item auth-login" href="javascript:;">Đăng nhập</a>
+                            }
                                     </li>
                                 </ul>
                             </div>

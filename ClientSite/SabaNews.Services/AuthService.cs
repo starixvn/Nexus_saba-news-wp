@@ -1,6 +1,9 @@
 ﻿namespace SabaNews.Services
 {
     using System.Threading.Tasks;
+    using BCrypt.Net;
+    using SabaNews.Core.Models;
+    using SabaNews.Criteria;
     using SabaNews.Criteria.Auth;
     using SabaNews.Models.Auth;
     using SabaNews.Services.Interfaces;
@@ -21,6 +24,22 @@
                 Email = email
             };
             return await baseService.GetDataEntityAsync<User>(criteria);
+        }
+
+        public async Task<CommandResult> CreateUserAsync(RegisterModel model)
+        {
+            CreateUserCommand command = new CreateUserCommand
+            {
+                _Email = model.Email,
+                _Name = model.Name,
+                _Password = BCrypt.HashPassword(model.Password)
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public bool ComparePassword(string plainText, string encrypt)
+        {
+            return BCrypt.Verify(plainText, encrypt);
         }
     }
 }

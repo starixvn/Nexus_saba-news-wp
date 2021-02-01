@@ -27,6 +27,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Core.Repositories;
+    using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using Sentry;
@@ -92,6 +93,15 @@
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options =>
+            {
+                options.Cookie.Name = ".SabaSports.Cookies";
+            });
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".SabaSports.Session";
+                options.Cookie.IsEssential = true;
             });
 
             services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
@@ -109,6 +119,7 @@
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddScoped<ISessionService, SessionService>();
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IAuthService, AuthService>();
@@ -166,6 +177,8 @@
 
             app.UseRouting();
             app.UseResponseCaching();
+            app.UseAuthentication();
+            app.UseSession();
 
             if (Configuration.GetValue<bool>("HangfireConfig:IsUseDashboard"))
             {

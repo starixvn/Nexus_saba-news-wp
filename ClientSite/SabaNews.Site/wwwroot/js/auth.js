@@ -1,6 +1,6 @@
 ﻿var auth = (function ($) {
     function HandleAuth() {
-        $('.auth-input .icon-auth').on('click', function () {
+        $('.auth-input .auth-login').on('click', function () {
             $.ajax({
                 url: '/Auth/Index',
                 type: 'GET',
@@ -41,7 +41,7 @@
                     data: $(form).serialize(),
                     success: function (res) {
                         if (res.isSuccessful) {
-                            $('#authModal').modal('hide');
+                            location.reload();
                         } else {
                             // show error res.Message
                             console.log(res);
@@ -102,8 +102,9 @@
                                 <div>Hãy kiểm tra email <b>${email}</b> để xác thực email.</div>
                                 <div>Nhớ kiểm tra thư rác nhé</div>`;
                             $('#authModal .modal-body').html(bodyModal);
+                            HandleCloseModal();
                         } else {
-                            // show error res.Message
+                             //show error res.Message
                             console.log(res);
                         }
                     },
@@ -112,6 +113,12 @@
                     }
                 });
             }
+        });
+    }
+
+    function HandleCloseModal() {
+        $('#authModal').on('hidden.bs.modal', function () {
+            location.reload();
         });
     }
 
@@ -147,8 +154,22 @@
         });
     }
 
+    function HandleLogout() {
+        $('.auth-input .auth-logout').on('click', function () {
+            $.ajax({
+                url: '/Auth/Logout',
+                type: 'GET',
+                dataType: 'html',
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
+    }
+
     function init() {
         HandleAuth();
+        HandleLogout();
     }
 
     return {
