@@ -1060,22 +1060,24 @@ button {
     transition: color .3s ease;
     display: block;
     line-height: 2rem; }
-    .card-vertical__title .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle; }
-      .card-vertical__title .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     .card-vertical__title:hover {
       color: #EB5342; }
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
+    .card-vertical__datetime .comment {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 1rem;
+      vertical-align: middle; }
+      .card-vertical__datetime .comment .icon-mode_comment {
+        font-size: 1.6rem; }
+      .card-vertical__datetime .comment .number {
+        color: #2B89CC;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.3rem;
+        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__datetime {
         font-size: 1.2rem; } }

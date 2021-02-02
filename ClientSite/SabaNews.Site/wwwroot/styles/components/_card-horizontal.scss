@@ -36,6 +36,45 @@
             transition: color .3s ease;
             display: block;
 
+
+
+            &:hover {
+                color: $color-title-hover;
+            }
+        }
+
+        .datetime {
+            font-size: $font-size-datetime;
+            color: $color-datetime;
+
+            .comment {
+                display: inline-flex;
+                align-items: center;
+                margin-left: 1rem;
+                vertical-align: middle;
+
+                .icon-mode_comment {
+                    font-size: 1.6rem;
+                }
+
+                .number {
+                    color: #2B89CC;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-size: 1.3rem;
+                    margin-left: .3rem;
+                }
+            }
+
+            @include tableMobile {
+                margin-top: -.2rem;
+            }
+        }
+
+        .description {
+            max-height: 4.5rem;
+            margin: .3rem 0;
+
             .comment {
                 display: inline-flex;
                 align-items: center;
@@ -50,24 +89,6 @@
                     margin-left: .3rem;
                 }
             }
-
-            &:hover {
-                color: $color-title-hover;
-            }
-        }
-
-        .datetime {
-            font-size: $font-size-datetime;
-            color: $color-datetime;
-
-            @include tableMobile {
-                margin-top: -.2rem;
-            }
-        }
-
-        .description {
-            max-height: 4.5rem;
-            margin: .3rem 0;
 
             @include tableMobile {
                 display: none;

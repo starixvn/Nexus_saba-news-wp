@@ -85,10 +85,7 @@
                                 </div>
 								<a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">
 									@Model.NewPosts[i].PostTitle
-									@if (Model.NewPosts[i].CommentCount > 0)
-									{
-								    <span class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></span>
-                                    }
+									
                             {
                                 <div class="card-horizontal card-item-@i">
                                     <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
@@ -102,6 +99,7 @@
                                             </picture>
                                         }
                                     </a>
+								<p class="datetime">@Model.NewPosts[i].PostTime <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span></p>
                                     <div class="card-horizontal__content">
                                         <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
                                         <p class="datetime">@Model.NewPosts[i].PostTime</p>
@@ -305,8 +303,11 @@
                                     </picture>
                                 </a>
                                 <div class="card-horizontal__content">
-                                    <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-                                    <p class="datetime">@post.PostTime</p>
+                                    <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">
+                                        @post.PostTitle
+                            
+                                    </a>
+                                    <p class="datetime">@post.PostTime <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span></p>
                                 </div>
                             </div>
                         }
