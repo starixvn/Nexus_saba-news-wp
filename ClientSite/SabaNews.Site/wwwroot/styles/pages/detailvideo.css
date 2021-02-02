@@ -1060,6 +1060,17 @@ button {
     transition: color .3s ease;
     display: block;
     line-height: 2rem; }
+    .card-vertical__title .comment {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 1rem;
+      vertical-align: middle; }
+      .card-vertical__title .comment .number {
+        color: #2B89CC;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.3rem;
+        margin-left: .3rem; }
     .card-vertical__title:hover {
       color: #EB5342; }
   .card-vertical__datetime {

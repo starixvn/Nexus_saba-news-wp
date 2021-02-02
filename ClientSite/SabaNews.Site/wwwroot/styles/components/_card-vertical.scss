@@ -40,6 +40,20 @@
         transition: color .3s ease;
         display: block;
         line-height: 2rem;
+        .comment {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 1rem;
+            vertical-align: middle;
+
+            .number {
+                color: #2B89CC;
+                font-weight: normal;
+                font-style: normal;
+                font-size: 1.3rem;
+                margin-left: .3rem;
+            }
+        }
 
         &:hover {
             color: $color-title-hover;
