@@ -45,8 +45,12 @@
                             }
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-                            @Model.NewPosts[0].PostTitle <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span>
-                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime @Model.NewPosts[0].CommentCount</p>
+                            @Model.NewPosts[0].PostTitle
+                            @if (Model.NewPosts[0].CommentCount > 0) 
+                            { 
+							<span class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></span>
+                            }
+                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
                         <p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
                         <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
                     </div>
@@ -106,15 +110,18 @@
                                 }
                             </a>
                             <div class="sub-content">
-                                <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">
-                                    @Model.NewPosts[i].PostTitle
-                                    <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span>
-                                </a>
-								<p class="datetime">@Model.NewPosts[i].PostTime @Model.NewPosts[i].CommentCount</p>
+								<a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">
+									@Model.NewPosts[i].PostTitle
+									@if (Model.NewPosts[i].CommentCount > 0)
+									{
+								    <span class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></span>
+                                    }
+								</a>
+								<p class="datetime">@Model.NewPosts[i].PostTime</p>
                                 <p class="description">@Model.NewPosts[i].PostExcerpt </p>
                             </div>                            
                         </div>
->>>>>>> 149339 - update new icon comment
+>>>>>>> 149339 - add comment number
                         }
                     </div>
                 </div>
