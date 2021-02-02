@@ -990,7 +990,7 @@ button {
     font-size: 1.6rem;
     letter-spacing: -0.02rem;
     text-decoration: none;
-    transition: color .3s ease; }
+    transition: color .3s ease;
     display: block;
     line-height: 2rem; }
     .card-vertical__title .comment {
