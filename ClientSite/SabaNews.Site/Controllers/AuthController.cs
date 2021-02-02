@@ -63,11 +63,21 @@
             commandResult = await authService.CreateUserAsync(model);
             if (commandResult.IsSuccessful)
             {
-                // send mail for confirmation email
-                // set session login 
+                string token = await authService.CreateTokenConfirmEmail(model.Id);
+                if (!string.IsNullOrEmpty(token))
+                {
+                    //send mail
+                }
                 await DoLoginAsync(model.Name, model.Email);
             }
             return Json(commandResult);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ConfirmEmail(int userId, string token)
+        {
+            CommandResult commandResult = await authService.ConfirmEmailAsync(userId, token);
+            return View(commandResult.IsSuccessful);
         }
 
         [HttpGet]
@@ -77,7 +87,22 @@
         }
 
         [HttpPost]
-        public IActionResult ForgotPassword(string email)
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            string token = await authService.CreateTokenResetPassword(email);
+            return Json(null);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(int userId, string token)
+        {
+            CommandResult commandResult = await authService.VerifyTokenResetPasswordAsync(userId, token);
+            ViewBag.UserId = userId;
+            return View(commandResult.IsSuccessful);
+        }
+
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordModel model)
         {
             return Json(null);
         }

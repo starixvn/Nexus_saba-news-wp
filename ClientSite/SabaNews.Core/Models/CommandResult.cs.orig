@@ -1,0 +1,18 @@
+﻿namespace SabaNews.Core.Models
+{
+<<<<<<< HEAD
+    public class CommandResult
+    {
+        public int Code { get; set; } = 1;
+        public string Message { get; set; } = "Invalid data.";
+=======
+    using SabaNews.Core.Constants;
+
+    public class CommandResult
+    {
+        public int Code { get; set; } = 1;
+        public string Message { get; set; } = Constants.InvalidData;
+>>>>>>> 149501 - flow login & register
+        public bool IsSuccessful => Code == 0;
+    }
+}

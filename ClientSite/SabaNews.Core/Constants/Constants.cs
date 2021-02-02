@@ -89,5 +89,8 @@
         public const string WrongUsernameOrPassword = "Email hoặc mật khẩu không chính xác";
         public const string CommentFilterLike = "like";
         public const bool IsLogin = true;
+        public const string ConfirmEmail = "Xác thực Email";
+        public const string ResetPassword = "Đặt lại mật khẩu";
+        public const string ExpiredLink = "Liên kết đã hết hạn";
     }
 }

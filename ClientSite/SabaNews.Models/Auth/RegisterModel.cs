@@ -16,5 +16,7 @@
         [Compare("Password")]
         [Required]
         public string ConfirmPassword { get; set; }
+
+        public int Id { get; set; }
     }
 }
