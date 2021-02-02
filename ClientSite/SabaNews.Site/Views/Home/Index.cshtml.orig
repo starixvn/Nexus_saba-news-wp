@@ -111,7 +111,7 @@
                                     <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span>
                                 </a>
 								<p class="datetime">@Model.NewPosts[i].PostTime @Model.NewPosts[i].CommentCount</p>
-                                <p class="description">@Model.NewPosts[i].PostExcerpt</p>
+                                <p class="description">@Model.NewPosts[i].PostExcerpt </p>
                             </div>                            
                         </div>
 >>>>>>> 149339 - update new icon comment
