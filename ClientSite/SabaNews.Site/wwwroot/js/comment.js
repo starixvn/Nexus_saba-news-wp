@@ -90,7 +90,8 @@ $(document).on("click", '.add_comment', function () {
     }
     var postID = $("input[name=postID]").val();
 
-    
+    commentContent = commentContent.replace(/\n\r?/g, '<br />');
+
     $.ajax({
         type: "POST",
         url: "/comments/create",
@@ -131,6 +132,7 @@ $(document).on('click', '.add_sub_comment', function () {
         self.parent().find("textarea[name=comment_value]").focus();
         return false;
     }
+    commentContent = commentContent.replace(/\n\r?/g, '<br />');
     var repForm = self.parent().parent();
     var postID = $("input[name=postID]").val();
     var parent = 0;

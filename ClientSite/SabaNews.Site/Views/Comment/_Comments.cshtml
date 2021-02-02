@@ -1,4 +1,4 @@
-﻿<label>Ý kiến (<span class="total-count-comment">@Model.CommentTemplate.TotalItems</span>)</label>
+﻿<div class="ykien"><h3>Ý kiến </h3><span class="total-count-comment">  (@Model.CommentTemplate.TotalItems)</span></div>
 <form>
 	<input type="hidden" name="filterType" value="@Model.FilterType" />
 	<div class="comment-content-box">
@@ -21,7 +21,7 @@
 	{
 	<div class="comment_item">
 		<div class="content_comment">
-			<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @comment.CommentContent</p>
+			<p class="full_content"><span class="nickname">@comment.CommentAuthor</span> @Html.Raw(comment.CommentContent)</p>
 			<p class="block_like_web width_common">
 				<a href="javascript:;" class="link_thich @(comment.isLiked ? "unlike" : "")" data-commentid="@comment.CommentID">
 					<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>

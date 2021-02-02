@@ -11,6 +11,7 @@
             <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post" />
             <Mapping DataField="post_name" ObjectProperty="Slug" class="Post" />
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
+            <Mapping DataField="comment_count" ObjectProperty="CommentCount" class="Post" />
         </Setting>
         <Setting Key="get_posts_by_cate_slug" SpName="get_posts_by_cate_slug" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
