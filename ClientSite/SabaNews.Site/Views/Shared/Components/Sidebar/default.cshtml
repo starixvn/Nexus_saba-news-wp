@@ -15,7 +15,7 @@
                 </a>
                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
                 <p class="card-vertical__datetime">
-                    @post.PostTime
+					<span>@post.PostTime</span>
                     @if (post.CommentCount > 0)
 					{ 
 						<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
