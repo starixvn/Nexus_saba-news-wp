@@ -99,7 +99,7 @@
                                             </picture>
                                         }
                                     </a>
-								<p class="datetime">@Model.NewPosts[i].PostTime <span class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></span></p>
+								<p class="datetime">@Model.NewPosts[i].PostTime <a href="#"  class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></a></p>
                                     <div class="card-horizontal__content">
                                         <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
                                         <p class="datetime">@Model.NewPosts[i].PostTime</p>

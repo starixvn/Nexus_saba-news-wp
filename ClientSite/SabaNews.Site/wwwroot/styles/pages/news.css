@@ -867,7 +867,8 @@ button {
       display: inline-flex;
       align-items: center;
       margin-left: 1rem;
-      vertical-align: middle; }
+      vertical-align: middle;
+      text-decoration: none; }
       .card-horizontal__content .datetime .comment .icon-mode_comment {
         font-size: 1.6rem; }
       .card-horizontal__content .datetime .comment .number {
@@ -937,7 +938,8 @@ button {
       display: inline-flex;
       align-items: center;
       margin-left: 1rem;
-      vertical-align: middle; }
+      vertical-align: middle;
+      text-decoration: none; }
       .card-vertical__datetime .comment .icon-mode_comment {
         font-size: 1.6rem; }
       .card-vertical__datetime .comment .number {
