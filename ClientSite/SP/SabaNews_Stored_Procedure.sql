@@ -90,7 +90,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_posts_by_cate_slug;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
-	_categorySlug varchar(50),
+	_categorySlug varchar(200),
     _start INT,
     _end INT,
     OUT TotalItems int  
@@ -98,7 +98,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug`(
 BEGIN
 	DECLARE count  INT;
 	DECLARE category INT;
-    DECLARE cate_name VARCHAR(100);
+    DECLARE cate_name VARCHAR(200);
     SELECT t.term_id, t.name INTO category, cate_name FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug;
     
 	SELECT count(p.id)
@@ -109,7 +109,7 @@ BEGIN
 					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
 					WHERE tt.term_id = category OR tt.parent = category);
 	
-	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, cate_name
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, cate_name, p.comment_count
 	FROM wp_posts as p
 	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
@@ -121,7 +121,7 @@ BEGIN
 	ORDER BY p.post_date DESC
 	limit _start, _end;
 	
-END;
+END
 //
 DELIMITER ;
 
@@ -162,45 +162,28 @@ DROP PROCEDURE IF EXISTS get_posts_by_slug;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_slug`(
-	_categorySlug varchar(50),
+	_categorySlug varchar(200),
     _start INT,
     _end INT
 )
-SQL SECURITY DEFINER
-get_posts_by_slug:BEGIN
+BEGIN
 	DECLARE count  INT;
 	DECLARE _category INT;
-    SET _category = (SELECT t.term_id FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug );
-    SET count = (SELECT count(*) FROM wp_term_taxonomy WHERE FIND_IN_SET(term_id, _category) and parent = 0);
-	IF count > 0 THEN
-		SELECT distinct p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, t.name as cate_name
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-        INNER JOIN wp_terms as t ON t.term_id = _category
-        INNER JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
-        INNER JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
-        INNER JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
-        
-		WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND t_t.parent = _category
-		ORDER BY p.post_date DESC
-        limit _start, _end;
-	ELSE 
-		SELECT distinct p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, t.name as cate_name
-		FROM wp_posts as p
-		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
-		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
-		INNER JOIN wp_terms as t ON t.term_id = _category
-        INNER JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
-        INNER JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
-        INNER JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
-		WHERE p.post_type = 'post' AND p.post_status = 'publish'
-		AND taxonomy = 'category' and FIND_IN_SET(t_t.term_id, _category)
-		ORDER BY p.post_date DESC
-        limit _start, _end;
-    END IF;
-END;
+	DECLARE cate_name VARCHAR(200);
+    SELECT t.term_id, t.name INTO _category, cate_name FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = _categorySlug;
+   
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, cate_name, p.comment_count 
+	FROM wp_posts as p
+	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
+	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment" 
+	WHERE p.post_type = 'post' AND p.post_status = 'publish'
+	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
+					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
+					WHERE tt.term_id = _category OR tt.parent = _category)
+	ORDER BY p.post_date DESC
+	limit _start, _end;
+END
 
 //
 DELIMITER ;
@@ -210,7 +193,7 @@ DROP PROCEDURE IF EXISTS get_posts_by_tag;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_tag`(
-	_tag varchar(50),
+	_tag varchar(200),
     _start INT,
     _end INT,
     OUT TotalItems INT 
@@ -224,7 +207,7 @@ BEGIN
 	INNER JOIN wp_posts p ON p.ID = tr.object_id AND p.post_type='post' AND p.post_status='publish'
     WHERE t.slug =  _tag;
     
-	SELECT p.ID, p.post_title, p.post_content, p.post_date, p.post_name, t.name  as tag_name, pp.guid as feature_image, pm.meta_value as metadata
+	SELECT p.ID, p.post_title, p.post_content, p.post_date, p.post_name, t.name as tags, pp.guid as feature_image, pm.meta_value as metadata, p.comment_count
 	FROM wp_terms t
 	INNER JOIN wp_term_taxonomy tt ON tt.term_id = t.term_id AND taxonomy = 'post_tag'
 	INNER JOIN wp_term_relationships tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
@@ -238,7 +221,7 @@ BEGIN
     /*DROP TEMPORARY TABLE IF EXISTS list_tags;*/
     
 
-END;
+END
 
 //
 DELIMITER ;
@@ -250,13 +233,13 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_post_detail_by_slug;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_slug`(Slug varchar(300), PostType varchar (30))
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_post_detail_by_slug`(Slug varchar(200), PostType varchar (30))
 BEGIN
 	DECLARE PostId varchar(100);
-	DECLARE tags varchar(100);
-    DECLARE tagsSlug varchar(100);
-    DECLARE cate_name varchar(100);
-    DECLARE categoriesSlug varchar(100);
+	DECLARE tags varchar(600);
+    DECLARE tagsSlug varchar(600);
+    DECLARE cate_name varchar(600);
+    DECLARE categoriesSlug varchar(600);
     
     SELECT p.ID INTO  PostId FROM wp_posts p where p.post_name = Slug AND p.post_status = 'publish' AND p.post_type = PostType ;
     
@@ -274,7 +257,7 @@ BEGIN
 	INNER JOIN wp_term_relationships as t_r ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
 	WHERE t_r.object_id = PostId;
     
-	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, tags, tagsSlug, cate_name, categoriesSlug
+	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, p.comment_count, tags, tagsSlug, cate_name, categoriesSlug
     FROM wp_posts p
     LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
@@ -289,7 +272,7 @@ BEGIN
     
     
     
-END;
+END
 
 //
 DELIMITER ;
@@ -298,9 +281,9 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_random_post_categories;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_random_post_categories`(_categories VARCHAR(50), _ID INT)
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_random_post_categories`(_categories VARCHAR(200), _ID INT)
 BEGIN
-	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, pm.meta_value as metadata
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, pm.meta_value as metadata, p.comment_count
 		FROM wp_posts as p
 		INNER JOIN wp_term_relationships as t_r ON p.ID = t_r.object_id
 		INNER JOIN wp_term_taxonomy as t_t ON t_r.term_taxonomy_id = t_t.term_taxonomy_id
@@ -321,15 +304,14 @@ DROP PROCEDURE IF EXISTS get_related_posts;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_related_posts`(_ID INT, _start INT, _end INT)
-SQL SECURITY DEFINER
-get_related_posts:BEGIN
-	SELECT  y.ID, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name
+BEGIN
+	SELECT  y.ID, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, p.comment_count
 	FROM wp_posts p
 	INNER JOIN wp_yarpp_related_cache y ON y.ID = p.ID AND y.reference_ID = _ID
 	WHERE post_type = 'post' AND post_status = 'publish'
 	ORDER BY post_date DESC
     LIMIT _start, _end;
-END;
+END
 
 //
 DELIMITER ;
@@ -341,7 +323,7 @@ DROP PROCEDURE IF EXISTS search_posts;
 DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `search_posts`(
-	_keyword varchar(50),
+	_keyword varchar(200),
     _start INT,
     _end INT,
     OUT TotalItems INT
@@ -356,7 +338,7 @@ BEGIN
     AND p.post_status = 'publish';
    
     
-	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, pm.meta_value as metadata
+	SELECT p.ID, p.post_title, p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, pm.meta_value as metadata, p.comment_count
     FROM wp_posts p
     LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
     LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value and pp.post_type = "attachment"
@@ -376,15 +358,14 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_recent_posts;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_recent_posts`(
-	exceptSlug varchar(100),
+	exceptSlug varchar(200),
 	start INT,
     end INT,
     OUT TotalItems INT
 )
 BEGIN
 	DECLARE category INT;
-    SET category = (SELECT t.term_id FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = exceptSlug );
-    
+    SELECT t.term_id INTO category FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = exceptSlug;
     SELECT count(*)
     INTO TotalItems
     FROM wp_posts as p
@@ -393,7 +374,7 @@ BEGIN
 					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
                     WHERE tt.term_id = category OR tt.parent = category);
     
-	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, p.comment_count
     FROM wp_posts as p
 	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
@@ -414,7 +395,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_top_posts_by_cate_slug;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
-	cateSlug varchar(100),
+	cateSlug varchar(200),
     start INT,
     end INT
 )
@@ -424,7 +405,7 @@ BEGIN
     SELECT DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) INTO limitDate;
     SELECT t.term_id INTO category FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND taxonomy = "category" WHERE slug = cateSlug;
     
-	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, pm.meta_value as views
+	SELECT p.id, p.post_title, p.post_content, p.post_date, p.post_date_gmt, p.post_name, pp.guid as feature_image, m1.meta_value as metadata, pm.meta_value as views, p.comment_count
 	FROM wp_posts as p
 	INNER JOIN wp_postmeta as pm ON pm.post_id = p.ID AND pm.meta_key = "trx_addons_post_views_count"
 	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
