@@ -44,17 +44,9 @@
                                 </picture>
                             }
                         </a>
-<<<<<<< HEAD
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
                             @Model.NewPosts[0].PostTitle
                      
-                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime <a href="#" class="comment"><i class="icon-mode_comment"></i> <i class="number">12</i></a></p>
-=======
-                        <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug,  })" class="card-vertical__title">
-                            @Model.NewPosts[0].PostTitle
-                     
-                        </a>
-
                         <p class="card-vertical__datetime">
                             @Model.NewPosts[0].PostTime
                             @if (Model.NewPosts[0].CommentCount > 0)
@@ -62,7 +54,6 @@
                                 <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>
                             }
                         </p>
->>>>>>> 149339 - add comment count in homepage
                         <p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
                     </div>
                     @for (int i = 1; i < Model.NewPosts.Length; i++)
@@ -365,7 +356,11 @@
                             <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
                             <p class="card-vertical__datetime">
                                 @Model.TennisPosts[0].PostTime
+<<<<<<< HEAD
                                  @if (Model.TennisPosts[0].CommentCount > 0)
+=======
+                                @if (Model.TennisPosts[0].CommentCount > 0)
+>>>>>>> 149339 - add comment icon in pages
 								{ 
 									<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.TennisPosts[0].CommentCount</i></a>
                                 }

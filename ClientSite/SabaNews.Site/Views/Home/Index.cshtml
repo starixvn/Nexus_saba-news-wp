@@ -52,7 +52,7 @@
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
                             @Model.NewPosts[0].PostTitle
-                            @if (Model.NewPosts[0].CommentCount > 0) 
+                     
                         <p class="card-vertical__datetime">
                             @Model.NewPosts[0].PostTime
                             @if (Model.NewPosts[0].CommentCount > 0)
@@ -407,7 +407,7 @@
                             <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
                             <p class="card-vertical__datetime">
                                 @Model.TennisPosts[0].PostTime
-                                 @if (Model.TennisPosts[0].CommentCount > 0)
+                                @if (Model.TennisPosts[0].CommentCount > 0)
 								{ 
 									<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.TennisPosts[0].CommentCount</i></a>
                                 }
