@@ -54,7 +54,7 @@
                             @Model.NewPosts[0].PostTitle
                      
                         <p class="card-vertical__datetime">
-                            @Model.NewPosts[0].PostTime
+                           <span> @Model.NewPosts[0].PostTime</span>
                             @if (Model.NewPosts[0].CommentCount > 0)
 							{ 
                                 <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>
@@ -103,10 +103,10 @@
                                         }
                                     </a>
 								<p class="datetime">
+                                 <span>@Model.NewPosts[i].PostTime</span>
                                     <div class="card-horizontal__content">
                                         <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
                                         <p class="datetime">@Model.NewPosts[i].PostTime</p>
-                                @Model.NewPosts[i].PostTime 
                                 @if (Model.NewPosts[i].CommentCount > 0)
 							    { 
                                     <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>
@@ -178,7 +178,7 @@
                                 <div class="card-horizontal__content">
                                     <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" data-id="@post.ID" class="title">@post.PostTitle</a>
 									<p class="datetime">
-										@post.PostTime
+                                        <span>@post.PostTime</span>
 										@if (post.CommentCount > 0)
 										{
 									        <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
@@ -211,7 +211,7 @@
                             </a>
                             <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
                             <p class="card-vertical__datetime">
-                                @post.PostTime
+                                <span> @post.PostTime</span>
                                 @if (post.CommentCount > 0)
 								{
 									<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
@@ -244,7 +244,7 @@
                             <div class="group group-mobile">
                                 <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
                                 <p class="card-vertical__datetime">
-                                    @post.PostTime
+                                    <span> @post.PostTime</span>
                                     @if (post.CommentCount > 0)
 								    {
 									    <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
@@ -307,7 +307,7 @@
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[i].Slug  })">@Model.BackstagePosts[i].PostTitle</a>
                                 <p class="card-vertical__datetime">
-                                    @Model.BackstagePosts[i].PostTime
+                                    <span> @Model.BackstagePosts[i].PostTime</span>
                                     @if (Model.BackstagePosts[i].CommentCount > 0)
 								    {
 									    <a href="@Url.Action("Single", "Home", new { slug =  Model.BackstagePosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.BackstagePosts[i].CommentCount</i></a>
@@ -341,7 +341,7 @@
                             
                                     </a>
                                     <p class="datetime">
-                                        @post.PostTime
+                                        <span>@post.PostTime</span>
                                         @if (post.CommentCount > 0)
 										{ 
 										    <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
@@ -377,7 +377,7 @@
                                 </a>
                                 <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
                                 <p class="card-vertical__datetime">
-                                    @post.PostTime
+                                    <span> @post.PostTime</span>
                                     @if (post.CommentCount > 0)
 									{ 
 										<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
@@ -406,7 +406,7 @@
                             </a>
                             <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
                             <p class="card-vertical__datetime">
-                                @Model.TennisPosts[0].PostTime
+                                <span>@Model.TennisPosts[0].PostTime</span>
                                 @if (Model.TennisPosts[0].CommentCount > 0)
 								{ 
 									<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.TennisPosts[0].CommentCount</i></a>
