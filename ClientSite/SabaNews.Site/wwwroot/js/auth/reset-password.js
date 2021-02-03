@@ -30,7 +30,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: 'Auth/Reset',
+                    url: '/Auth/ResetPassword',
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {

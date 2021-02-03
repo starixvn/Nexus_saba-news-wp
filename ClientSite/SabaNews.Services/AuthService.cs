@@ -18,13 +18,13 @@
             this.baseService = baseService;
         }
 
-        public async Task<User> GetUserAsync(string email)
+        public async Task<UserSession> GetUserAsync(string email)
         {
             var criteria = new GetUserLoginCriteria
             {
                 Email = email
             };
-            return await baseService.GetDataEntityAsync<User>(criteria);
+            return await baseService.GetDataEntityAsync<UserSession>(criteria);
         }
 
         public async Task<CommandResult> CreateUserAsync(RegisterModel model)
@@ -45,12 +45,12 @@
             return BCrypt.Verify(plainText, encrypt);
         }
 
-        public async Task<string> CreateTokenConfirmEmail(int userId)
+        public async Task<string> CreateTokenConfirmEmail(string email)
         {
             string token = Guid.NewGuid().ToString();
             CreateTokenConfirmEmailCommand command = new CreateTokenConfirmEmailCommand
             {
-                UserId = userId,
+                Email = email,
                 Token = token
             };
             CommandResult result = await baseService.ExecuteNonQueryAsync(command);
@@ -70,27 +70,34 @@
         public async Task<string> CreateTokenResetPassword(string email)
         {
             string token = Guid.NewGuid().ToString();
-            //CreateTokenConfirmEmailCommand command = new CreateTokenConfirmEmailCommand
-            //{
-            //    UserId = userId,
-            //    Token = token
-            //};
-            //CommandResult result = await baseService.ExecuteNonQueryAsync(command);
-            //return result.IsSuccessful ? token : string.Empty;
-            return token;
+            CreateTokenResetPasswordCommand command = new CreateTokenResetPasswordCommand
+            {
+                Email = email,
+                Token = token
+            };
+            CommandResult result = await baseService.ExecuteNonQueryAsync(command);
+            return result.IsSuccessful ? token : string.Empty;
         }
 
         public async Task<CommandResult> VerifyTokenResetPasswordAsync(int userId, string token)
         {
-            //ConfirmEmailCommand command = new ConfirmEmailCommand
-            //{
-            //    Id = userId,
-            //    Token = token
-            //};
-            //return await baseService.ExecuteNonQueryAsync(command);
-            CommandResult result = new CommandResult();
-            return result;
+            VerifyTokenResetPasswordCommand command = new VerifyTokenResetPasswordCommand
+            {
+                Id = userId,
+                Token = token
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
+        public async Task<CommandResult> ResetPasswordAsync(ResetPasswordModel model)
+        {
+            ResetPasswordCommand command = new ResetPasswordCommand
+            {
+                Id = model.Id,
+                Token = model.Token,
+                _Password = BCrypt.HashPassword(model.Password)
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
     }
 }

@@ -145,7 +145,19 @@
                 method: "POST",
                 data: $(element).serialize(),
                 success: function (res) {
-                    $('#authModal').modal('hide');
+                    if (res.isSuccessful) {
+                        const email = $(element).find('input[name="email"]').val();
+                        let bodyModal = `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                                <h3>Hãy kiểm tra email</h3>
+                                <div>Hãy kiểm tra email <b>${email}</b></div>
+                                <div>Để xem hướng dẫn lấy lại mật khẩu.</div>
+                                <div>Nhớ kiểm tra thư rác nhé</div>`;
+                        $('#authModal .modal-body').html(bodyModal);
+                    } else {
+                        //show error res.Message
+                        console.log(res);
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus + ': ' + errorThrown);

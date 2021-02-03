@@ -37,12 +37,13 @@
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            User user = await authService.GetUserAsync(model.Email);
+            UserSession user = await authService.GetUserAsync(model.Email);
             if (user != null)
             {
                 if (!string.IsNullOrEmpty(user.Password) && authService.ComparePassword(model.Password, user.Password))
                 {
                     await DoLoginAsync(user.Name, user.Email);
+                    sessionService.User = user;
                     return Json(new CommandResult { Code = 0, Message = string.Empty });
                 }
             }
@@ -63,12 +64,19 @@
             commandResult = await authService.CreateUserAsync(model);
             if (commandResult.IsSuccessful)
             {
-                string token = await authService.CreateTokenConfirmEmail(model.Id);
-                if (!string.IsNullOrEmpty(token))
-                {
-                    //send mail
-                }
+                string token = await authService.CreateTokenConfirmEmail(model.Email);
+                //if (!string.IsNullOrEmpty(token))
+                //{
+                //    //send mail
+                //}
                 await DoLoginAsync(model.Name, model.Email);
+                sessionService.User = new UserSession
+                {
+                    Id = model.Id,
+                    Email = model.Email,
+                    Name = model.Name,
+                    EmailConfirmed = false
+                };
             }
             return Json(commandResult);
         }
@@ -90,7 +98,9 @@
         public async Task<IActionResult> ForgotPassword(string email)
         {
             string token = await authService.CreateTokenResetPassword(email);
-            return Json(null);
+            //send mail
+            //UserSession user = await authService.GetUserAsync(email);
+            return Json(new CommandResult { Code = 0 });
         }
 
         [HttpGet]
@@ -98,13 +108,15 @@
         {
             CommandResult commandResult = await authService.VerifyTokenResetPasswordAsync(userId, token);
             ViewBag.UserId = userId;
+            ViewBag.Token = token;
             return View(commandResult.IsSuccessful);
         }
 
         [HttpPost]
-        public IActionResult ResetPassword(ResetPasswordModel model)
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
         {
-            return Json(null);
+            CommandResult commandResult = await authService.ResetPasswordAsync(model);
+            return Json(commandResult);
         }
 
         public async Task Logout()
@@ -123,12 +135,6 @@
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
-            sessionService.User = new UserSession
-            {
-                Email = email,
-                Name = name
-            };
         }
     }
 }

@@ -2,12 +2,12 @@
 {
     public class CreateTokenConfirmEmailCommand : BaseNonQueryCommand
     {
-        public int UserId { get; set; }
+        public string Email { get; set; }
 
         public string Token { get; set; }
 
         public override string GetSettingKey() => "user_create_token_confirm";
 
-        public override bool IsValid() => UserId > 0 && !string.IsNullOrEmpty(Token);
+        public override bool IsValid() => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Token);
     }
 }

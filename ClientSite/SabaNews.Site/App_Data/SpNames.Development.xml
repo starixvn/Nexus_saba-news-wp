@@ -190,5 +190,8 @@
         <Setting Key="user_get_login" SpName="user_get_login" DbName="sabasports" Plain="0" />
         <Setting Key="user_create_token_confirm" SpName="user_create_token_confirm" DbName="sabasports" Plain="0" />
         <Setting Key="user_confirm_email" SpName="user_confirm_email" DbName="sabasports" Plain="0" />
+        <Setting Key="user_create_token_reset" SpName="user_create_token_reset" DbName="sabasports" Plain="0" />
+        <Setting Key="user_verify_token_reset" SpName="user_verify_token_reset" DbName="sabasports" Plain="0" />
+        <Setting Key="user_reset_password" SpName="user_reset_password" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>
