@@ -105,7 +105,7 @@
                 {
                     arrUsers = arrUsers.FindAll(val => val != CurrentUser);
                     arrIPs = arrIPs.FindAll(val => !val.Equals(ipClient));
-                    likeCount = (int)(arrUsers.Count);
+                    likeCount = arrUsers.Count;
                 }
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);

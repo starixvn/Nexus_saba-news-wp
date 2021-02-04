@@ -5,7 +5,11 @@
 		<textarea rows="5" name="comment_value" id="comment_value" placeholder=" Ý kiến của bạn"></textarea>
 		<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>
 	</div>
-	<input type="button" name="add_comment" class="add_comment" value="Gửi" />
+	@if (Model.IsLogin)
+	{ 
+		<input type="button" name="add_comment" class="add_comment" value="Gửi" />
+	}
+	
 </form>
 <div class="clearfix"></div>
 @if (Model.CommentTemplate.Comments.Count > 0) 

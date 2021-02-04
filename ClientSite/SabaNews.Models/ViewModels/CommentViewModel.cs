@@ -6,6 +6,7 @@
         public CommentTemplate CommentTemplate { get; set; }
         public ViewData ViewData { get; set; }
         public string FilterType { get; set; }
+        public bool IsLogin { get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 //load comment section when load page
-var postID = $("input[name=postID]").val();
+var postID = data.postID;
+var isLogin = data.isLogin;
 var filterType = 'like';
 RenderListComment(postID, 1, filterType);
 
@@ -22,7 +23,6 @@ $(document).on('keypress', '.type_page', function (event) {
         var total = parseInt($(this).parent().data('total'));
         var value = $(this).val();
         if (Math.floor(value) == value && $.isNumeric(value) && value != current && value >= 1 && value <= total) {
-            var postID = $("input[name=postID]").val();
             var page = value;
             RenderListComment(postID, page, filterType);
             $('html,body').animate({
@@ -56,7 +56,6 @@ $(document).on('keyup', 'textarea[name=comment_value]', function () {
 //show children comment
 $(document).on('click', '.view_all_reply', function () {
     var self = $(this)
-    var postID = self.data('postid');
     var commentID = self.data('cmtid');
     self.parent().parent().find('.sub_comment').html('');
     $.ajax({
@@ -88,7 +87,6 @@ $(document).on("click", '.add_comment', function () {
     if (commentContent.length >= 1500) {
         return false;
     }
-    var postID = $("input[name=postID]").val();
 
     commentContent = commentContent.replace(/\n\r?/g, '<br />');
 
@@ -134,7 +132,6 @@ $(document).on('click', '.add_sub_comment', function () {
     }
     commentContent = commentContent.replace(/\n\r?/g, '<br />');
     var repForm = self.parent().parent();
-    var postID = $("input[name=postID]").val();
     var parent = 0;
     var isParent = repForm.hasClass('rep_parent');
     if (isParent) {

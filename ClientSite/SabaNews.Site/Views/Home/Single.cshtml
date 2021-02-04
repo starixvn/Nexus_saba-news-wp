@@ -71,6 +71,9 @@
 			display: none;
 		}
 
+		.comment form {
+			margin-bottom: 15px;
+		}
 		.comment form .add_comment, .comment form .add_sub_comment {
 			color: #fff;
 			padding: 10px 40px;
@@ -407,6 +410,12 @@
         @(await Component.InvokeAsync("Sidebar", new { postID = Model.SinglePost.ID }))
     </div>
 </section>
+<script>
+	var data = {
+		isLogin : true,
+		postID : @Model.SinglePost.ID
+	}
+</script>
 
 <script>
     var checkScroll = function () {
