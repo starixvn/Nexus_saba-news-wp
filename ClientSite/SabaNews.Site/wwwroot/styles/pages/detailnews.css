@@ -225,7 +225,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           justify-content: flex-start;
           flex-direction: row; } }
       .header .top-header .group-menu .logo {
-        width: 12.2rem;
+        width: 12rem;
         margin-right: 3.6rem; }
         .header .top-header .group-menu .logo a {
           display: flex;
