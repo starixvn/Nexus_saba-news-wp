@@ -43,8 +43,7 @@
                         if (res.isSuccessful) {
                             location.reload();
                         } else {
-                            // show error res.Message
-                            console.log(res);
+                            $(form).find('.summary-eror').text(res.message);
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -104,8 +103,7 @@
                             $('#authModal .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
-                             //show error res.Message
-                            console.log(res);
+                            $(form).find('.summary-eror').text(res.message);
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
@@ -138,31 +136,40 @@
 
     function HandleSubmitForgotPassword() {
         const element = '#authModal form#form-forgot-password';
-        $(element).on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                url: 'Auth/ForgotPassword',
-                method: "POST",
-                data: $(element).serialize(),
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        const email = $(element).find('input[name="email"]').val();
-                        let bodyModal = `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                                <h3>Hãy kiểm tra email</h3>
-                                <div>Hãy kiểm tra email <b>${email}</b></div>
+        $(element).validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                email: {
+                    required: 'Hãy nhập email',
+                    email: 'Email không có thật'
+                }
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    url: 'Auth/ForgotPassword',
+                    method: "POST",
+                    data: $(form).serialize(),
+                    success: function (res) {
+                        if (res.isSuccessful) {
+                            const email = $(form).find('input[name="email"]').val();
+                            let bodyModal = `<div>Hãy kiểm tra email <b>${email}</b></div>
                                 <div>Để xem hướng dẫn lấy lại mật khẩu.</div>
                                 <div>Nhớ kiểm tra thư rác nhé</div>`;
-                        $('#authModal .modal-body').html(bodyModal);
-                    } else {
-                        //show error res.Message
-                        console.log(res);
+                            $('#authModal .modal-body').html(bodyModal);
+                        } else {
+                            $(form).find('.summary-eror').text(res.message);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus + ': ' + errorThrown);
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus + ': ' + errorThrown);
-                }
-            });
+                });
+            }
         });
     }
 

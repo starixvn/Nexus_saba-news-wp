@@ -67,18 +67,6 @@
     },
 
     {
-        "outputFileName": "wwwroot/minify/js/confirm-email.min.js",
-        "inputFiles": [
-            "wwwroot/js/auth/confirm-email.js"
-        ],
-        "minify": {
-            "enabled": true,
-            "renameLocals": true
-        },
-        "sourceMap": false
-    },
-
-    {
         "outputFileName": "wwwroot/minify/js/reset-password.min.js",
         "inputFiles": [
             "wwwroot/js/auth/reset-password.js"

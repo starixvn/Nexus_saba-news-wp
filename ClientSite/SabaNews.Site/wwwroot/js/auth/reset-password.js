@@ -1,12 +1,6 @@
-﻿var auth = (function ($) {
-    function HandleCloseModal() {
-        $('#resetModal').on('hidden.bs.modal', function () {
-            document.location = '/';
-        });
-    }
-
+﻿var authReset = (function ($) {
     function HandleResetPassword() {
-        const element = '#resetModal form#form-reset-password';
+        const element = 'form#form-reset-password';
         $(element).validate({
             rules: {
                 password: {
@@ -34,19 +28,12 @@
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
-                        //if (res.isSuccessful) {
-                        //    const email = $(form).find('input[name="email"]').val();
-                        //    let bodyModal = `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        //        <span aria-hidden="true">&times;</span></button>
-                        //        <h3>Đăng ký thành công</h3>
-                        //        <div>Hãy kiểm tra email <b>${email}</b> để xác thực email.</div>
-                        //        <div>Nhớ kiểm tra thư rác nhé</div>`;
-                        //    $('#authModal .modal-body').html(bodyModal);
-                        //    HandleCloseModal();
-                        //} else {
-                        //    //show error res.Message
-                        //    console.log(res);
-                        //}
+                        if (res.isSuccessful) {
+                            let bodyModal = '<h3>Đổi mật khẩu thành công</h3>';
+                            $('.reset-page').html(bodyModal);
+                        } else {
+                            $(form).find('.summary-eror').text(res.message);
+                        }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus + ': ' + errorThrown);
@@ -57,7 +44,6 @@
     }
 
     function init() {
-        $('#resetModal').modal('show');
         HandleResetPassword();
     }
 
@@ -68,5 +54,5 @@
 })(jQuery);
 
 $(document).ready(function () {
-    auth.init();
+    authReset.init();
 })
