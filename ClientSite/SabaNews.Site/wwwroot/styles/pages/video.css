@@ -222,14 +222,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           align-items: center; }
         .header .top-header .group-menu .logo img {
           width: 100%; }
-          @media screen and (max-width: 1024px) {
-            .header .top-header .group-menu .logo img {
-              width: 8.2rem; } }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .logo {
-            width: 12rem;
             margin-right: 0;
-            padding: .8rem 0 .5rem 1.4rem;
+            padding: .6rem 0 .4rem 1.4rem;
             display: flex;
             align-items: center;
             flex-wrap: wrap;

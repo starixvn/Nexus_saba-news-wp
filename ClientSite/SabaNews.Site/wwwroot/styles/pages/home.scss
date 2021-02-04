@@ -345,8 +345,8 @@
                                 height: 22.3rem;
                             }
 
-                            @include portraitTablet {
-                                height: 22.3rem;
+                            @include Mobile {
+                                height: 20rem;
                             }
                         }
                     }
@@ -387,8 +387,7 @@
                 grid-column: 1/3;
                 background-color: $block-highlight-bgcolor;
             }
-
-            .card-vertical__image {
+            /*.card-vertical__image {
                 @include tableMobile {
                     height: 20rem;
                 }
@@ -396,7 +395,7 @@
                 @include Mobile {
                     height: 12rem;
                 }
-            }
+            }*/
         }
     }
     // block-basketball
