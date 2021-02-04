@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -64,11 +65,12 @@
             commandResult = await authService.CreateUserAsync(model);
             if (commandResult.IsSuccessful)
             {
-                string token = await authService.CreateTokenConfirmEmail(model.Email);
-                //if (!string.IsNullOrEmpty(token))
-                //{
-                //    //send mail
-                //}
+                var token = Guid.NewGuid().ToString();
+                commandResult = await authService.CreateTokenConfirmEmail(model.Email, token);
+                if (!commandResult.IsSuccessful)
+                {
+                    return Json(commandResult);
+                }
                 await DoLoginAsync(model.Name, model.Email);
                 sessionService.User = new UserSession
                 {
@@ -97,10 +99,16 @@
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(string email)
         {
-            string token = await authService.CreateTokenResetPassword(email);
-            //send mail
-            //UserSession user = await authService.GetUserAsync(email);
-            return Json(new CommandResult { Code = 0 });
+            var token = Guid.NewGuid().ToString();
+            CommandResult commandResult = await authService.CreateTokenResetPassword(email, token);
+            if (!commandResult.IsSuccessful)
+            {
+                return Json(commandResult);
+            }
+            UserSession user = await authService.GetUserAsync(email);
+            string url = Url.Action("ResetPassword", "Auth", new { UserId = user.Id, token }, Request.Scheme);
+            await authService.SendMailResetPasswordAsync(user.Email, url);
+            return Json(commandResult);
         }
 
         [HttpGet]

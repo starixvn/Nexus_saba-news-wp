@@ -1,9 +1,13 @@
 ﻿namespace SabaNews.Services
 {
     using System;
+    using System.IO;
     using System.Threading.Tasks;
     using BCrypt.Net;
+    using Microsoft.Extensions.Hosting;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria;
     using SabaNews.Criteria.Auth;
     using SabaNews.Models.Auth;
@@ -11,11 +15,21 @@
 
     public class AuthService : IAuthService
     {
-        private readonly IBaseService baseService;
+        private const string ConfirmEmailTemplates = "EmailTemplates\\ConfirmEmail.cshtml";
+        private const string ResetPasswordTemplates = "EmailTemplates\\ResetPassword.cshtml";
 
-        public AuthService(IBaseService baseService)
+        private readonly IBaseService baseService;
+        private readonly IHostEnvironment hostingEnvironment;
+        private readonly IBaseMailService mailService;
+
+        public AuthService(
+            IBaseService baseService,
+            IHostEnvironment hostingEnvironment,
+            IBaseMailService mailService)
         {
             this.baseService = baseService;
+            this.hostingEnvironment = hostingEnvironment;
+            this.mailService = mailService;
         }
 
         public async Task<UserSession> GetUserAsync(string email)
@@ -45,16 +59,14 @@
             return BCrypt.Verify(plainText, encrypt);
         }
 
-        public async Task<string> CreateTokenConfirmEmail(string email)
+        public async Task<CommandResult> CreateTokenConfirmEmail(string email, string token)
         {
-            string token = Guid.NewGuid().ToString();
             CreateTokenConfirmEmailCommand command = new CreateTokenConfirmEmailCommand
             {
                 Email = email,
                 Token = token
             };
-            CommandResult result = await baseService.ExecuteNonQueryAsync(command);
-            return result.IsSuccessful ? token : string.Empty;
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task<CommandResult> ConfirmEmailAsync(int userId, string token)
@@ -67,16 +79,14 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<string> CreateTokenResetPassword(string email)
+        public async Task<CommandResult> CreateTokenResetPassword(string email, string token)
         {
-            string token = Guid.NewGuid().ToString();
             CreateTokenResetPasswordCommand command = new CreateTokenResetPasswordCommand
             {
                 Email = email,
                 Token = token
             };
-            CommandResult result = await baseService.ExecuteNonQueryAsync(command);
-            return result.IsSuccessful ? token : string.Empty;
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task<CommandResult> VerifyTokenResetPasswordAsync(int userId, string token)
@@ -98,6 +108,38 @@
                 _Password = BCrypt.HashPassword(model.Password)
             };
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task SendMailConfirmationAsync(string email, string url)
+        {
+            var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ConfirmEmailTemplates);
+            var subject = Constants.SubjectConfirmation;
+            var body = string.Format(
+                mailService.ReadTextFile(mailPath),
+                email,
+                url);
+            await SendMailAsync(subject, body, email);
+        }
+
+        public async Task SendMailResetPasswordAsync(string email, string url)
+        {
+            var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ResetPasswordTemplates);
+            var subject = Constants.SubjectResetPassword;
+            var body = string.Format(
+                mailService.ReadTextFile(mailPath),
+                url);
+            await SendMailAsync(subject, body, email);
+        }
+
+        private async Task SendMailAsync(string subject, string body, string receiverEmail)
+        {
+            //var email = new MailModel
+            //{
+            //    Subject = subject,
+            //    Body = body,
+            //    ReceiverEmail = receiverEmail
+            //};
+            //await mailService.SendMailAsync(email);
         }
     }
 }

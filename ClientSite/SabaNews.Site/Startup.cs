@@ -107,6 +107,8 @@
             services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
 
+            services.Configure<MailConfigs>(options => Configuration.GetSection("MailConfigs").Bind(options));
+
             services.AddResponseCompression();
             services.AddResponseCaching();
             services.AddDetection();
@@ -119,6 +121,7 @@
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddScoped<IBaseMailService, BaseMailService>();
             services.AddScoped<ISessionService, SessionService>();
 
             services.AddTransient<ISerializerService, SerializerService>();
@@ -133,6 +136,7 @@
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
             services.AddTransient<IDataControlService, DataControlService>();
             services.AddTransient<IBackgroundJobService, BackgroundJobService>();
+
 
             services.AddHangfire(x =>
             {

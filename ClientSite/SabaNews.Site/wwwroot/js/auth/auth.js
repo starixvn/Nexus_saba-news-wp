@@ -36,7 +36,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: 'Auth/Login',
+                    url: '/Auth/Login',
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
@@ -89,7 +89,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: 'Auth/Register',
+                    url: '/Auth/Register',
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
@@ -151,7 +151,7 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: 'Auth/ForgotPassword',
+                    url: '/Auth/ForgotPassword',
                     method: "POST",
                     data: $(form).serialize(),
                     success: function (res) {

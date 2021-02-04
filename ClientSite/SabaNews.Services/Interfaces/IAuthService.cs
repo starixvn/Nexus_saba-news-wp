@@ -12,14 +12,18 @@
 
         bool ComparePassword(string plainText, string encrypt);
 
-        Task<string> CreateTokenConfirmEmail(string email);
+        Task<CommandResult> CreateTokenConfirmEmail(string email, string token);
 
         Task<CommandResult> ConfirmEmailAsync(int userId, string token);
 
-        Task<string> CreateTokenResetPassword(string email);
+        Task<CommandResult> CreateTokenResetPassword(string email, string token);
 
         Task<CommandResult> VerifyTokenResetPasswordAsync(int userId, string token);
 
         Task<CommandResult> ResetPasswordAsync(ResetPasswordModel model);
+
+        Task SendMailConfirmationAsync(string email, string url);
+
+        Task SendMailResetPasswordAsync(string email, string url);
     }
 }
