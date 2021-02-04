@@ -51,4 +51,15 @@ $(document).ready(function () {
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1000);
     });
+
+    $(window).click(function (e) {
+        var elmClass = e.target.className;
+        if (elmClass !== 'icon-search' && elmClass !== 'keyword-input') {
+            var searchbox = $('.search-box');
+            if (searchbox.hasClass('active-input')) {
+                searchbox.removeClass('active-input');
+                $('input[name=keyword]').val('');
+            }
+        }
+    });
 });

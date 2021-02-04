@@ -18,12 +18,13 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "")
+        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0)
         {
             IEnumerable<Post> posts;
             if (string.IsNullOrWhiteSpace(cateSlug))
             {
-                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
+                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, end, postID);
                 posts = postTemplate.Posts;
                 ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
             }

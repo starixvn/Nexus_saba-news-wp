@@ -143,6 +143,6 @@
                 }
             </div>
         </div>
-        @(await Component.InvokeAsync("Sidebar"))
+        @(await Component.InvokeAsync("Sidebar", new { postID = Model.SinglePost.ID }))
     </div>
 </section>

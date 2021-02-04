@@ -50,7 +50,7 @@
             return postTemplate;
         }
 
-        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end)
+        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0)
         {
             var criteria = new GetRecentPostsCriteria
             {
@@ -59,6 +59,16 @@
                 End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            if (postID != 0)
+            {
+                var excerptCurrentPost = posts.Where(item => item.ID != postID).ToList();
+                var totalRealItems = end - 1;
+                posts = excerptCurrentPost;
+                if (excerptCurrentPost.Count > totalRealItems)
+                {
+                    posts = excerptCurrentPost.Skip(start).Take(totalRealItems).ToList();
+                }
+            }
             var postTemplate = new PostTemplate
             {
                 Posts = FormatData(posts).ToList(),
