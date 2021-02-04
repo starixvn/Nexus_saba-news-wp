@@ -24,17 +24,16 @@
 .main {
     // block-hot-news
     .block-hot-news {
-        margin-bottom: .4rem;
 
         .block__content {
-            @include grid(53rem 1fr, repeat(3, 11rem), #{$padding-main} #{$column-gap});
+            @include grid(53rem 1fr, none, 0 #{$column-gap});
 
             @include tableMobile {
-                @include grid(30rem 1fr, none, #{$padding-main} 1.6rem);
+                @include grid(30rem 1fr, none, 0 #{$column-gap});
             }
 
             @include landscapeTablet {
-                @include grid(44rem 1fr, none, #{$padding-main} 1.6rem);
+                @include grid(44rem 1fr, none, 0 #{$column-gap});
             }
 
             @include Mobile {
@@ -43,7 +42,6 @@
 
             .card-vertical {
                 grid-column: 1;
-                grid-row: 1/4;
                 background-color: $block-highlight-bgcolor;
 
                 @include Mobile {
@@ -52,7 +50,7 @@
                 }
 
                 .card-vertical__image {
-                    height: 23.5rem;
+                    height: 25.5rem;
 
                     @include tableMobile {
                         height: 11rem;
@@ -66,24 +64,11 @@
             }
 
             .card-horizontal {
-                @include landscapeTablet {
-                    @include grid(17.5rem 1fr, none, 1.2rem);
-                }
 
                 .card-horizontal__image {
                     @include Mobile {
                         height: 7.2rem;
                     }
-                }
-            }
-
-            [class*="card-item-"] {
-                grid-column: 2;
-            }
-
-            @for $i from 1 through 3 {
-                .card-item-#{$i} {
-                    grid-row: $i;
                 }
             }
         }
@@ -118,11 +103,11 @@
             @include grid(75.7rem 1fr, 49rem, #{$column-gap});
 
             @include tableMobile {
-                @include grid(45.1rem 1fr, 28rem, 1.6rem);
+                @include grid(48.7rem 1fr, 49rem, #{$column-gap});
             }
 
             @include landscapeTablet {
-                @include grid(63.1rem 1fr, 28rem, 1.6rem);
+                @include grid(66.7rem 1fr, 49rem, #{$column-gap});
             }
 
             @include Mobile {
@@ -174,6 +159,7 @@
 
                 .card-horizontal {
                     margin-bottom: 1rem;
+                    padding-bottom: 0;
 
                     &__content {
                         padding: 1rem 0;

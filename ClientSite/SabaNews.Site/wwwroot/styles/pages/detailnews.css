@@ -52,7 +52,7 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 7rem; }
+  padding-top: 8rem; }
 
 .content {
   line-height: 3.2rem;
@@ -225,7 +225,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           justify-content: flex-start;
           flex-direction: row; } }
       .header .top-header .group-menu .logo {
-        width: 10rem;
+        width: 12.2rem;
         margin-right: 3.6rem; }
         .header .top-header .group-menu .logo a {
           display: flex;
@@ -918,12 +918,23 @@ button {
         font-size: 1.2rem;
         line-height: 2rem; } }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .card-horizontal {
   display: grid;
   grid-template-columns: 19.5rem 1fr;
   grid-template-rows: 11rem;
   grid-gap: 1.2rem;
-  overflow: hidden; }
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem; }
+  .card-horizontal:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: grid;
