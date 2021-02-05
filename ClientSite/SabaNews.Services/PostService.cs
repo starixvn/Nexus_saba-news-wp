@@ -253,7 +253,8 @@
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
+                var subTitle = excerpt.IndexOf("\n");
+                post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
             }
             return posts;
