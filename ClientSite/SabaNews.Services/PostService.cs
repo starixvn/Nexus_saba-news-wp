@@ -4,6 +4,7 @@
     using SabaNews.Criteria;
     using SabaNews.Models;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
@@ -253,7 +254,7 @@
             foreach (var post in posts)
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                var subTitle = excerpt.IndexOf("\n");
+                var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                 post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
             }
