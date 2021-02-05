@@ -786,7 +786,7 @@ button {
 .card-horizontal {
   display: grid;
   grid-template-columns: 19.5rem 1fr;
-  grid-template-rows: 11rem;
+  grid-template-rows: none;
   grid-gap: 1.2rem;
   overflow: hidden;
   border-bottom: 1px solid #e5e5e5;
@@ -807,13 +807,15 @@ button {
       margin-bottom: 1.2rem; }
       .card-horizontal:last-child {
         margin-bottom: 0; } }
-  @media screen and (max-width: 1024px) {
-    .card-horizontal__image {
-      height: 8rem; } }
-  .card-horizontal__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; }
+  .card-horizontal__image {
+    height: 11rem; }
+    @media screen and (max-width: 1024px) {
+      .card-horizontal__image {
+        height: 9.3rem; } }
+    .card-horizontal__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -830,11 +832,11 @@ button {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
-    max-height: 4.5rem;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    display: -webkit-box; }
+    /*max-height: 4.5rem;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;*/ }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
         display: none; } }

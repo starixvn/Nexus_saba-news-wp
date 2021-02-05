@@ -62,15 +62,6 @@
                     }
                 }
             }
-
-            .card-horizontal {
-
-                .card-horizontal__image {
-                    @include Mobile {
-                        height: 7.2rem;
-                    }
-                }
-            }
         }
     }
 

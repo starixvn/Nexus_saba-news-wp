@@ -1,7 +1,7 @@
 @import '../abstracts/variables';
 
 .card-horizontal {
-    @include grid(19.5rem 1fr, 11rem, 1.2rem);
+    @include grid(19.5rem 1fr, none, 1.2rem);
     overflow: hidden;
     border-bottom: 1px solid $separator-color;
     padding-bottom: 1.6rem;
@@ -26,8 +26,9 @@
     }
 
     &__image {
+        height: 11rem;
         @include tableMobile {
-            height: 8rem;
+            height: 9.3rem;
         }
 
         img {
@@ -61,11 +62,11 @@
         }
 
         .description {
-            max-height: 4.5rem;
+            /*max-height: 4.5rem;
             overflow: hidden;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
-            display: -webkit-box;
+            display: -webkit-box;*/
 
             @include tableMobile {
                 display: none;
