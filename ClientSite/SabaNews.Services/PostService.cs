@@ -34,7 +34,7 @@
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
 
-            return FormatData(posts, Constants.ExcerptHomeLength).ToList();
+            return FormatData(posts).ToList();
         }
 
         public async Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end)
@@ -48,7 +48,7 @@
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
             {
-                Posts = FormatData(posts, Constants.ExcerptCategoryLength).ToList(),
+                Posts = FormatData(posts).ToList(),
                 TotalItems = criteria.TotalItems
             };
             return postTemplate;
@@ -262,7 +262,7 @@
             return await baseService.GetDataAsync<Menu>(criteria);
         }
 
-        private IEnumerable<Post> FormatData(IEnumerable<Post> posts, int excerptLength = 0)
+        private IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
             foreach (var post in posts)
             {

@@ -51,8 +51,7 @@
         public const int Perpage = 10;
         public const int PerpageVideo = 9;
         public const int Total = 10000;
-        public const int ExcerptHomeLength = 90;
-        public const int ExcerptCategoryLength = 200;
+        public const int ExcerptLength = 200;
         public const int NumberMinutesAHour = 60;
         public const int NumberSecondsAMinute = 60;
         public const int NumberHoursADay = 24;
