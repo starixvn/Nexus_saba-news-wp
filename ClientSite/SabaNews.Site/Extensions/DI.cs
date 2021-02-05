@@ -1,12 +1,16 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using System;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using Hangfire;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
+    using SabaNews.Models.Auth;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
@@ -35,6 +39,36 @@
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
             services.AddTransient<IDataControlService, DataControlService>();
             services.AddTransient<IBackgroundJobService, BackgroundJobService>();
+        }
+
+        public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+                options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+                options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+            }).AddCookie(IdentityConstants.ApplicationScheme, options =>
+            {
+                options.Cookie.Name = ".SabaSports.Cookies";
+            }).AddCookie(IdentityConstants.ExternalScheme, options =>
+            {
+                options.Cookie.Name = IdentityConstants.ExternalScheme;
+                options.ExpireTimeSpan = TimeSpan.MaxValue;
+            }).AddGoogle(options =>
+           {
+               options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
+               options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
+               options.CallbackPath = "/ExternalAuthentication/GoogleSignIn";
+               options.CorrelationCookie.Name = ".SabaSports.Cookies";
+           });
+
+            services.AddIdentity<GoogleUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            })
+            .AddSignInManager().AddRoleManager<IdentityRole>()
+            .AddDefaultTokenProviders();
         }
     }
 }

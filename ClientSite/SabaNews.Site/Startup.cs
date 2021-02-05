@@ -13,7 +13,6 @@
     using Fanex.Logging.Sentry;
     using Hangfire;
     using Hangfire.Redis;
-    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -84,15 +83,7 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options =>
-            {
-                options.Cookie.Name = ".SabaSports.Cookies";
-            });
+            services.RegisterAuthentication(Configuration);
 
             services.AddSession(options =>
             {
