@@ -1,10 +1,10 @@
 ﻿namespace SabaNews.Site.Extensions
 {
-    using System;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using Hangfire;
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -45,29 +45,24 @@
         {
             services.AddAuthentication(options =>
             {
-                options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
-                options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-                options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
-            }).AddCookie(IdentityConstants.ApplicationScheme, options =>
-            {
-                options.Cookie.Name = ".SabaSports.Cookies";
-            }).AddCookie(IdentityConstants.ExternalScheme, options =>
-            {
-                options.Cookie.Name = IdentityConstants.ExternalScheme;
-                options.ExpireTimeSpan = TimeSpan.MaxValue;
-            }).AddGoogle(options =>
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options =>
            {
-               options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
-               options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
-               options.CallbackPath = "/ExternalAuthentication/GoogleSignIn";
-               options.CorrelationCookie.Name = ".SabaSports.Cookies";
-           });
+               options.Cookie.Name = ".SabaSports.Cookies";
+           }).AddGoogle(options =>
+          {
+              options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
+              options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
+              options.CallbackPath = "/ExternalAuthentication/GoogleSignIn";
+              options.CorrelationCookie.Name = ".SabaSports.Cookies";
+          });
 
             services.AddIdentity<GoogleUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = false;
             })
-            .AddSignInManager().AddRoleManager<IdentityRole>()
             .AddDefaultTokenProviders();
         }
     }
