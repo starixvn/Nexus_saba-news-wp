@@ -5,7 +5,6 @@
     public class MailConfigs
     {
         public bool Enabled { get; set; }
-        public string Domain { get; set; }
         public string SenderName { get; set; }
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set; }

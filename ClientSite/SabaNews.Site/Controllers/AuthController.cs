@@ -71,6 +71,8 @@
                 {
                     return Json(commandResult);
                 }
+                string url = Url.Action("ConfirmEmail", "Auth", new { UserId = model.Id, token }, Request.Scheme);
+                await authService.SendMailConfirmationAsync(model.Email, url);
                 await DoLoginAsync(model.Name, model.Email);
                 sessionService.User = new UserSession
                 {

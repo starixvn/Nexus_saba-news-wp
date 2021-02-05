@@ -127,19 +127,20 @@
             var subject = Constants.SubjectResetPassword;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
+                email,
                 url);
             await SendMailAsync(subject, body, email);
         }
 
         private async Task SendMailAsync(string subject, string body, string receiverEmail)
         {
-            //var email = new MailModel
-            //{
-            //    Subject = subject,
-            //    Body = body,
-            //    ReceiverEmail = receiverEmail
-            //};
-            //await mailService.SendMailAsync(email);
+            var email = new MailModel
+            {
+                Subject = subject,
+                Body = body,
+                ReceiverEmail = receiverEmail
+            };
+            await mailService.SendMailAsync(email);
         }
     }
 }
