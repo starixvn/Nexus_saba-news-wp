@@ -11,7 +11,6 @@
 
     public class CommentController : Controller
     {
-        private const bool isLogin = true;
         private readonly ICommentService commentService;
 
         public CommentController(ICommentService commentService)
@@ -42,7 +41,7 @@
                 CommentTemplate = commentTemplate,
                 ViewData = Data,
                 FilterType  = filterType,
-                IsLogin = isLogin
+                IsLogin = Constants.IsLogin
             };
             return PartialView("_Comments", Model);
         }

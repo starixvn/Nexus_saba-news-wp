@@ -132,6 +132,7 @@
             {
                 SinglePost = post,
                 RecentPosts = recentPosts.Posts
+                IsLogin = Constants.IsLogin
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";

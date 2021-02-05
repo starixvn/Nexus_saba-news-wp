@@ -87,5 +87,6 @@
         public const string CommentTypeUnlike = "unlike";
         public const string CommentFilterTime = "time";
         public const string CommentFilterLike = "like";
+        public const bool IsLogin = true;
     }
 }

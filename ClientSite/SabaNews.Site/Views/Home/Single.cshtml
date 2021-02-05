@@ -47,7 +47,7 @@
 			background: #fff;
 			border: none;
 			width: 100%;
-			height: 58px;
+			height: 30px;
 			color: #666 !important;
 			overflow: hidden;
 			padding: 5px 37px 0 15px;
@@ -412,9 +412,9 @@
 </section>
 <script>
 	var data = {
-		isLogin : true,
-		postID : @Model.SinglePost.ID
-	}
+		isLogin: '@Model.IsLogin',
+		postID: @Model.SinglePost.ID
+	};
 </script>
 
 <script>

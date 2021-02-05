@@ -1,7 +1,9 @@
 ﻿
 //load comment section when load page
+console.log(data);
 var postID = data.postID;
-var isLogin = data.isLogin;
+var isLogin = (data.isLogin.toLowerCase() === 'true');
+console.log(isLogin);
 var filterType = 'like';
 RenderListComment(postID, 1, filterType);
 
@@ -191,6 +193,10 @@ $(document).on('click', '.link_reply', function () {
 
 //like process
 $(document).on('click', '.link_thich', function () {
+    if (!isLogin) {
+        alert('Bạn phải đăng nhập để thực hiện chức năng này');
+        return false;
+    }
     var self = $(this);
     var cmtID = $(this).data('commentid');
     var total_like = self.find('.total_like').html();
@@ -258,13 +264,17 @@ function RenderSubComment(val) {
 };
 function RenderReplyForm(type = 0) {
     var html = '';
+    var replySubmit = '';
+    if (isLogin) {
+        replySubmit = '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';s
+    }
     html += '<div class="comment_reply_wrapper ' + type + '">';
     html += '<form>';
     html += '<div class="comment-content-box">';
     html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder=" Ý kiến của bạn"></textarea>';
     html += '<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>';
     html += '</div>';
-    html += '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
+    html += replySubmit
     html += '</form>';
     html += '</div>';
     return html;
