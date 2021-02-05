@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+        <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -17,8 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
       <PackageReference Include="AspNetCore.SEOHelper" Version="1.0.1" />
-      <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.2" />
-      <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
+        <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.2" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
     </ItemGroup>
 </Project>

@@ -3,11 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
-    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -26,10 +24,8 @@
     using sabanews.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Core.Repositories;
-    using SabaNews.Core.Services;
-    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
     using Sentry;
     using StackExchange.Redis;
 
@@ -88,7 +84,7 @@
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddAuthentication(options=>
+            services.AddAuthentication(options =>
             {
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -115,28 +111,13 @@
             services.AddControllersWithViews();
             services.AddSingleton(Configuration);
 
-            services.AddSingleton<IBaseService, BaseService>();
+            services.RegisterCoreDI();
             services.AddSingleton<IBaseRepository, BaseRepository>();
-            services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<ILogger, Logger>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-            services.AddScoped<IBaseMailService, BaseMailService>();
-            services.AddScoped<ISessionService, SessionService>();
-
-            services.AddTransient<ISerializerService, SerializerService>();
-            services.AddTransient<IAuthService, AuthService>();
-            services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
-            services.AddTransient<IPathService, PathService>();
-            services.AddTransient<ICacheService, CacheService>();
-            services.AddTransient<IRecurringJobManager, RecurringJobManager>();
 
-            services.AddTransient<IFetchDataService, FetchDataService>();
-            services.AddTransient<IRefreshCachingService, RefreshCachingService>();
-            services.AddTransient<IDataControlService, DataControlService>();
-            services.AddTransient<IBackgroundJobService, BackgroundJobService>();
-
+            services.RegisterServices();
 
             services.AddHangfire(x =>
             {
