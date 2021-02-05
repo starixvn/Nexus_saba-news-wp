@@ -55,8 +55,8 @@
             var model = new CreateComment
             {
                 CommentPostID = postID,
-                CommentAuthor = "Hank Nguyen",
-                CommentAuthorEmail = "hank.nguyen@starixsoft.com",
+                CommentAuthor = "test user",
+                CommentAuthorEmail = "test@starixsoft.com",
                 CommentAuthorIP = remoteIpAddress,
                 CommentDate = DateTime.Now,
                 CommentDateGMT = DateTime.UtcNow,

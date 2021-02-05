@@ -266,7 +266,7 @@ function RenderReplyForm(type = 0) {
     var html = '';
     var replySubmit = '';
     if (isLogin) {
-        replySubmit = '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';s
+        replySubmit = '<input type="button" name="add_comment" class="add_sub_comment" value="Gửi" />';
     }
     html += '<div class="comment_reply_wrapper ' + type + '">';
     html += '<form>';
