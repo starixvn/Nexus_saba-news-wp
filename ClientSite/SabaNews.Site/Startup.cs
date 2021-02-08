@@ -14,6 +14,7 @@
     using Hangfire;
     using Hangfire.Redis;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.CookiePolicy;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.HttpOverrides;
@@ -153,6 +154,12 @@
 
             app.UseRouting();
             app.UseResponseCaching();
+            app.UseCookiePolicy(new CookiePolicyOptions
+            {
+                HttpOnly = HttpOnlyPolicy.None,
+                Secure = CookieSecurePolicy.None,
+                MinimumSameSitePolicy = SameSiteMode.Strict
+            });
             app.UseAuthentication();
             app.UseSession();
 

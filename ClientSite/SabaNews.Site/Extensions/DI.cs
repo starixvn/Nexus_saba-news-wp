@@ -5,6 +5,7 @@
     using Fanex.Logging;
     using Hangfire;
     using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -43,27 +44,27 @@
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddIdentity<GoogleUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            }).AddUserStore<ExternalUserService>()
+                .AddRoleStore<ExternalUserService>()
+                .AddDefaultTokenProviders();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options =>
-           {
-               options.Cookie.Name = ".SabaSports.Cookies";
-           }).AddGoogle(options =>
-          {
-              options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
-              options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
-              options.CallbackPath = "/ExternalAuthentication/GoogleSignIn";
-              options.CorrelationCookie.Name = ".SabaSports.Cookies";
-          });
-
-            services.AddIdentity<GoogleUser, IdentityRole>(options =>
+            }).AddGoogle(options =>
             {
-                options.User.RequireUniqueEmail = false;
-            })
-            .AddDefaultTokenProviders();
+                options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
+                options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
+                options.CallbackPath = "/ExternalAuthentication/GoogleResponse";
+                options.SaveTokens = true;
+                options.CorrelationCookie.Name = ".SabaSports.Google.Cookies";
+                options.CorrelationCookie.SameSite = SameSiteMode.Lax;
+            });
         }
     }
 }

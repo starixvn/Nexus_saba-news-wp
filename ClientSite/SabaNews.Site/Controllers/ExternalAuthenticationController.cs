@@ -2,6 +2,7 @@
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Models.Auth;
@@ -24,9 +25,13 @@
         {
             string redirectUrl = Url.Action("GoogleResponse", "ExternalAuthentication");
             var properties = signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
+            properties.IsPersistent = true;
+            properties.AllowRefresh = true;
+
             return new ChallengeResult("Google", properties);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> GoogleResponse()
         {
             ExternalLoginInfo info = await signInManager.GetExternalLoginInfoAsync();
