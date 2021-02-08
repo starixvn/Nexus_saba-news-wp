@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     if (typeof navigator.share === 'undefined' || !navigator.share) {
-        //$('.superwebshare_prompt').hide();
+        $('.superwebshare_prompt').hide();
         console.log('SuperWebShare: Your browser does not seems to support SuperWebShare, as the browser is incompatible');
     }
 });
