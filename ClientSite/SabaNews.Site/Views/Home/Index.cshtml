@@ -51,8 +51,6 @@
                             }
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-                            @Model.NewPosts[0].PostTitle
-                     
                         <p class="card-vertical__datetime">
                            <span> @Model.NewPosts[0].PostTime</span>
                             @if (Model.NewPosts[0].CommentCount > 0)
