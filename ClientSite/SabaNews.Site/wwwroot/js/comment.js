@@ -1,9 +1,7 @@
 ﻿
 //load comment section when load page
-console.log(data);
 var postID = data.postID;
 var isLogin = (data.isLogin.toLowerCase() === 'true');
-console.log(isLogin);
 var filterType = 'like';
 RenderListComment(postID, 1, filterType);
 
