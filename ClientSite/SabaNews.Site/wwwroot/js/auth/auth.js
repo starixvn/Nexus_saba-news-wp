@@ -8,6 +8,7 @@
                 success: function (response) {
                     $('#auth-form').html(response);
                     $('#authModal').modal('show');
+                    AddEmailValidation();
                     HandleLogin();
                     HandleRegister();
                     HandleForgotPassword();
@@ -23,7 +24,7 @@
             rules: {
                 email: {
                     required: true,
-                    email: true
+                    validEmail: true
                 },
                 password: 'required'
             },
@@ -61,7 +62,7 @@
                 name: "required",
                 email: {
                     required: true,
-                    email: true
+                    validEmail: true
                 },
                 password: {
                     required: true,
@@ -140,7 +141,7 @@
             rules: {
                 email: {
                     required: true,
-                    email: true
+                    validEmail: true
                 }
             },
             messages: {
@@ -184,6 +185,13 @@
                 }
             });
         });
+    }
+
+    function AddEmailValidation() {
+        $.validator.addMethod("validEmail", function (value, element) {
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            return emailReg.test(value);
+        }, 'Email không có thật');
     }
 
     function init() {
