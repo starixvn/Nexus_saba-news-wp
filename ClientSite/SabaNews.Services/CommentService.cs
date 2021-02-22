@@ -3,6 +3,7 @@
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria;
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
@@ -12,10 +13,12 @@
     public class CommentService : ICommentService
     {
         private readonly IBaseService baseService;
-        public const int CurrentUser = 1;
-        public CommentService(IBaseService baseService)
+        private readonly ISessionService sessionService;
+        
+        public CommentService(IBaseService baseService, ISessionService sessionService)
         {
             this.baseService = baseService;
+            this.sessionService = sessionService;
         }
 
         public async Task<CommentTemplate> GetCommentsAsync(int postID, string filterType, int start, int end)
@@ -78,6 +81,7 @@
 
         public async Task<CommandResult> UpdateLikeData(long commentID, string ipClient, string type)
         {
+            var currentUser = sessionService.User.Id;
             var comment = await GetLikeDataAsync(commentID);
             var likeCount = 0;
             var ips = "";
@@ -85,7 +89,7 @@
             if (comment == null || comment.CommentLikeCount == 0 || string.IsNullOrEmpty(comment.CommentLikeUsers))
             {
 
-                var arrUsers = new List<int> { CurrentUser };
+                var arrUsers = new List<int> { currentUser };
                 var arrIPs = new List<string> { ipClient };
                 users = JsonConvert.SerializeObject(arrUsers);
                 ips = JsonConvert.SerializeObject(arrIPs);
@@ -97,13 +101,13 @@
                 List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
                 if (type == Constants.CommentTypeLike)
                 {
-                    arrUsers.Add(CurrentUser);
+                    arrUsers.Add(currentUser);
                     arrIPs.Add(ipClient);
                     likeCount = (int)(comment.CommentLikeCount + 1);
                 }
                 else
                 {
-                    arrUsers = arrUsers.FindAll(val => val != CurrentUser);
+                    arrUsers = arrUsers.FindAll(val => val != currentUser);
                     arrIPs = arrIPs.FindAll(val => !val.Equals(ipClient));
                     likeCount = arrUsers.Count;
                 }
@@ -122,14 +126,20 @@
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
 
-        private static IEnumerable<Comment> UpdateLikeComment(IEnumerable<Comment> comments)
+        private IEnumerable<Comment> UpdateLikeComment(IEnumerable<Comment> comments)
         {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return comments;
+            }
+            var currentUser = sessionService.User.Id;
             foreach (var comment in comments)
             {
                 if (!string.IsNullOrEmpty(comment.CommentLikeUsers))
                 {
                     var arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
-                    var HasUser = arrUsers.FindIndex(item => item == CurrentUser);
+                    var HasUser = arrUsers.FindIndex(item => item == currentUser);
                     if (HasUser != -1)
                     {
                         comment.isLiked = true;

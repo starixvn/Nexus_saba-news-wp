@@ -420,11 +420,7 @@
         @(await Component.InvokeAsync("Sidebar", new { postID = Model.SinglePost.ID }))
     </div>
 </section>
-<script>
-	var data = {
-		isLogin: '@Model.IsLogin',
-		postID: @Model.SinglePost.ID
-	};
+
 </script>
 
 <script>
@@ -442,4 +438,3 @@
         }
     }
     window.addEventListener('scroll', function () { checkScroll() })
-</script>

@@ -1,7 +1,7 @@
 ﻿
 //load comment section when load page
-var postID = data.postID;
-var isLogin = (data.isLogin.toLowerCase() === 'true');
+var postID = $('input[name=postID]').val();
+
 var filterType = 'like';
 RenderListComment(postID, 1, filterType);
 
@@ -50,6 +50,13 @@ $(document).on('keyup', 'textarea[name=comment_value]', function () {
     } else {
         noteTextCount.hide();
         noteTextCount.find('.counter_word').html(0);
+    }
+});
+
+$(document).on('click', 'textarea[name=comment_value]', function () {
+    var isLogin = (data.isLogin.toLowerCase() === 'true');
+    if (!isLogin) {
+        $('#authModal').modal('show');
     }
 });
 
@@ -191,6 +198,7 @@ $(document).on('click', '.link_reply', function () {
 
 //like process
 $(document).on('click', '.link_thich', function () {
+    var isLogin = (data.isLogin.toLowerCase() === 'true');
     if (!isLogin) {
         alert('Bạn phải đăng nhập để thực hiện chức năng này');
         return false;
@@ -261,6 +269,7 @@ function RenderSubComment(val) {
     return html;
 };
 function RenderReplyForm(type = 0) {
+    var isLogin = (data.isLogin.toLowerCase() === 'true');
     var html = '';
     var replySubmit = '';
     if (isLogin) {

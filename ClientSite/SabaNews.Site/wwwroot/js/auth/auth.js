@@ -1,19 +1,21 @@
 ﻿var auth = (function ($) {
+    function HandleLoginModal() {
+        $.ajax({
+            url: '/Auth/Index',
+            type: 'GET',
+            dataType: 'html',
+            success: function (response) {
+                $('#auth-form').html(response);
+                AddEmailValidation();
+                HandleLogin();
+                HandleRegister();
+                HandleForgotPassword();
+            }
+        });
+    }
     function HandleAuth() {
         $('.auth-input .auth-login').on('click', function () {
-            $.ajax({
-                url: '/Auth/Index',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    $('#auth-form').html(response);
-                    $('#authModal').modal('show');
-                    AddEmailValidation();
-                    HandleLogin();
-                    HandleRegister();
-                    HandleForgotPassword();
-                }
-            });
+            $('#authModal').modal('show');
         });
     }
 
@@ -195,6 +197,7 @@
     }
 
     function init() {
+        HandleLoginModal();
         HandleAuth();
         HandleLogout();
     }

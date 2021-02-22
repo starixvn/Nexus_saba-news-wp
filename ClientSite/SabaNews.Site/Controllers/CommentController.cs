@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Models.Comment;
     using SabaNews.Models.ViewModels;
@@ -12,11 +13,14 @@
     public class CommentController : Controller
     {
         private readonly ICommentService commentService;
+        private readonly ISessionService sessionService;
 
-        public CommentController(ICommentService commentService)
+        public CommentController(ICommentService commentService, ISessionService sessionService)
         {
             this.commentService = commentService;
+            this.sessionService = sessionService;
         }
+
 
         [Route("/comments/getchildren")]
         public async Task<IActionResult> GetChildrenComment(int postID, int commentID)
@@ -41,7 +45,7 @@
                 CommentTemplate = commentTemplate,
                 ViewData = Data,
                 FilterType  = filterType,
-                IsLogin = Constants.IsLogin
+                IsLogin = sessionService.User != null
             };
             return PartialView("_Comments", Model);
         }
@@ -50,20 +54,24 @@
         [Route("/comments/create")]
         public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated) {
+                return Json(new { isSuccessful = false });
+            }
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
             var model = new CreateComment
             {
                 CommentPostID = postID,
-                CommentAuthor = "test user",
-                CommentAuthorEmail = "test@starixsoft.com",
+                CommentAuthor = sessionService.User.Name,
+                CommentAuthorEmail = sessionService.User.Email,
                 CommentAuthorIP = remoteIpAddress,
                 CommentDate = DateTime.Now,
                 CommentDateGMT = DateTime.UtcNow,
                 CommentContent = commentContent,
                 CommentAgent = Request.Headers["User-Agent"].ToString(),
                 CommentParent = parent,
-                UserID = 2
+                UserID = sessionService.User.Id
             };
             var result = await commentService.CreateComment(model);
             model.CommentID = result;
@@ -74,6 +82,11 @@
         [Route("/comments/like")]
         public async Task<IActionResult> Like(long commentID, string type)
         {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Json(new { isSuccessful = false });
+            }
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             var commandResult = await commentService.UpdateLikeData(commentID, remoteIpAddress, type);
             return Json(commandResult);
