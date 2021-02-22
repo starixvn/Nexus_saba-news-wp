@@ -115,11 +115,65 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xác thực email.
+        /// </summary>
+        public static string ConfirmEmail {
+            get {
+                return ResourceManager.GetString("ConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xác thực email thành công.
+        /// </summary>
+        public static string ConfirmEmailSuccessfully {
+            get {
+                return ResourceManager.GetString("ConfirmEmailSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xác nhận mật khẩu.
+        /// </summary>
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link đã hết hạn.
+        /// </summary>
+        public static string ExpiredLink {
+            get {
+                return ResourceManager.GetString("ExpiredLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng đá.
         /// </summary>
         public static string Football {
             get {
                 return ResourceManager.GetString("Football", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quên mật khẩu.
+        /// </summary>
+        public static string ForgotPassword {
+            get {
+                return ResourceManager.GetString("ForgotPassword", resourceCulture);
             }
         }
         
@@ -142,11 +196,74 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Link xác thực email không đúng.
+        /// </summary>
+        public static string IncorrectLinkForConfirmEmail {
+            get {
+                return ResourceManager.GetString("IncorrectLinkForConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link lấy lại mật khẩu không đúng.
+        /// </summary>
+        public static string IncorrectLinkForResetPassword {
+            get {
+                return ResourceManager.GetString("IncorrectLinkForResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập email của bạn để lấy lại mật khẩu.
+        /// </summary>
+        public static string InputEmailForResetPassword {
+            get {
+                return ResourceManager.GetString("InputEmailForResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập mật khẩu mới.
+        /// </summary>
+        public static string InputNewPassword {
+            get {
+                return ResourceManager.GetString("InputNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng nhập.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng nhập với email.
+        /// </summary>
+        public static string LoginWithEmail {
+            get {
+                return ResourceManager.GetString("LoginWithEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lich-thi-dau.
         /// </summary>
         public static string MatchScheduleSlug {
             get {
                 return ResourceManager.GetString("MatchScheduleSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
@@ -160,6 +277,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tin mới nhất.
         /// </summary>
         public static string RecentsPost {
@@ -169,11 +295,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tạo tài khoản.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Có thể bạn quan tâm.
         /// </summary>
         public static string RelatedPosts {
             get {
                 return ResourceManager.GetString("RelatedPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lấy lại mật khẩu.
+        /// </summary>
+        public static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
             }
         }
         

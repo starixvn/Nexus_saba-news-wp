@@ -8,10 +8,10 @@
                 <nav>
                     <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
                         <li class="nav-item nav-link">
-                            <a id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-selected="true">Đăng nhập</a>
+                            <a id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-selected="true">@ViewResources.Login</a>
                         </li>
                         <li class="nav-item nav-link">
-                            <a id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-selected="false">Tạo tài khoản</a>
+                            <a id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-selected="false">@ViewResources.Register</a>
                         </li>
                     </ul>
                 </nav>
@@ -19,18 +19,18 @@
                     <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
                         <div class="row mb-3 mt-3">
                             <div class="col-7">
-                                <p>Đăng nhập với email</p>
+                                <p>@ViewResources.LoginWithEmail</p>
                                 <form id="form-login">
                                     <p class="error summary-eror"></p>
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" placeholder=@ViewResources.Email>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                                        <input type="password" name="password" class="form-control" placeholder=@ViewResources.Password>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                    <button type="submit" class="btn btn-primary">@ViewResources.Login</button>
                                 </form>
-                                <a href="javascript:;" id="forgot-password">Quên mật khẩu</a>
+                                <a href="javascript:;" id="forgot-password">@ViewResources.ForgotPassword</a>
                             </div>
                             <div class="col-5">
                                 Social login
@@ -41,22 +41,22 @@
                     <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
                         <div class="row mb-3 mt-3">
                             <div class="col-7">
-                                <p>Tạo tài khoản</p>
+                                <p>@ViewResources.Register</p>
                                 <form id="form-register">
                                     <p class="error summary-eror"></p>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Tên" name="name" />
+                                        <input type="text" class="form-control" placeholder=@ViewResources.Name name="name" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email" />
+                                        <input type="email" class="form-control" placeholder=@ViewResources.Email name="email" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" id="password" class="form-control" placeholder="Mật khẩu" name="password" />
+                                        <input type="password" id="password" class="form-control" placeholder=@ViewResources.Password name="password" />
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Xác nhận mật khẩu" name="confirmPassword" />
+                                        <input type="password" class="form-control" placeholder=@ViewResources.ConfirmPassword name="confirmPassword" />
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
+                                    <button type="submit" class="btn btn-primary">@ViewResources.Register</button>
                                 </form>
                             </div>
                             <div class="col-5">

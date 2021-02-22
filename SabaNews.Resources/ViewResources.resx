@@ -135,8 +135,26 @@
   <data name="CommentReply" xml:space="preserve">
     <value>Trả lời</value>
   </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Xác thực email</value>
+  </data>
+  <data name="ConfirmEmailSuccessfully" xml:space="preserve">
+    <value>Xác thực email thành công</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Xác nhận mật khẩu</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ExpiredLink" xml:space="preserve">
+    <value>Link đã hết hạn</value>
+  </data>
   <data name="Football" xml:space="preserve">
     <value>Bóng đá</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Quên mật khẩu</value>
   </data>
   <data name="Guess" xml:space="preserve">
     <value>Nhận định - dự đoán</value>
@@ -144,17 +162,47 @@
   <data name="Home" xml:space="preserve">
     <value>587</value>
   </data>
+  <data name="IncorrectLinkForConfirmEmail" xml:space="preserve">
+    <value>Link xác thực email không đúng</value>
+  </data>
+  <data name="IncorrectLinkForResetPassword" xml:space="preserve">
+    <value>Link lấy lại mật khẩu không đúng</value>
+  </data>
+  <data name="InputEmailForResetPassword" xml:space="preserve">
+    <value>Nhập email của bạn để lấy lại mật khẩu</value>
+  </data>
+  <data name="InputNewPassword" xml:space="preserve">
+    <value>Nhập mật khẩu mới</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="LoginWithEmail" xml:space="preserve">
+    <value>Đăng nhập với email</value>
+  </data>
   <data name="MatchScheduleSlug" xml:space="preserve">
     <value>lich-thi-dau</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Tên</value>
   </data>
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
   <data name="RecentsPost" xml:space="preserve">
     <value>Tin mới nhất</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Tạo tài khoản</value>
+  </data>
   <data name="RelatedPosts" xml:space="preserve">
     <value>Có thể bạn quan tâm</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Lấy lại mật khẩu</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm...</value>

@@ -100,7 +100,7 @@
                     success: function (res) {
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
-                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.ReminderCheckMail;
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email);
                             $('#authModal .modal-body').html(bodyModal);
                             HandleCloseModal();

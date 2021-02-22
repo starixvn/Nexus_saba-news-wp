@@ -88,9 +88,6 @@
         public const string WrongUsernameOrPassword = "Email hoặc mật khẩu không chính xác";
         public const string CommentFilterLike = "like";
         public const bool IsLogin = true;
-        public const string ConfirmEmail = "Xác thực Email";
-        public const string ResetPassword = "Đặt lại mật khẩu";
-        public const string ExpiredLink = "Liên kết đã hết hạn";
 
         public const string SubjectConfirmation = "Kích hoạt tài khoản Saba Sports";
         public const string SubjectResetPassword = "Hướng dẫn lấy lại mất khẩu tài khoản Saba Sports";
