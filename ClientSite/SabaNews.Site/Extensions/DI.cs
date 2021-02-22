@@ -40,6 +40,7 @@
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
             services.AddTransient<IDataControlService, DataControlService>();
             services.AddTransient<IBackgroundJobService, BackgroundJobService>();
+            services.AddTransient<ICommentService, CommentService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)

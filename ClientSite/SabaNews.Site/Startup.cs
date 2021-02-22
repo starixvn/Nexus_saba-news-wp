@@ -106,10 +106,8 @@
             services.AddSingleton(Configuration);
 
             services.RegisterCoreDI();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-            services.AddTransient<ICommentService, CommentService>();
 
             services.RegisterServices();
             services.AddRazorPages();
