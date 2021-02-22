@@ -27,42 +27,37 @@
         bottom: 8.5rem;
         right: 12.9rem;
         @include flex(center,nowrap,center,column);
-        width: 6rem; 
+        width: 6rem;
         height: 6rem;
+
         @include Mobile {
-            height: 8rem;
+            display: none;
         }
 
         .back-to-top {
-            background: $bg-back-top;
+            border: 1px solid #bebebe;
             font-size: 1.6rem;
-            width: 6rem;
-            height: 6rem;
+            width: 4rem;
+            height: 4rem;
             border-radius: 50%;
             transition: background-color .2s ease;
             @include flex(center,nowrap,center,column);
             cursor: pointer;
 
-            @include tableMobile {
-                font-size: 1.2rem;
-                width: 4.8rem;
-                height: 4.8rem;
-            }
-
             &:hover {
-                background-color: darken($color: $bg-back-top, $amount: 10%);
+                background-color: #F2EFE9;
             }
         }
 
 
 
         .icon-chevron-right {
-            font-size: 4rem;
+            font-size: 2.4rem;
             transform: rotate(270deg);
             font-weight: bold;
 
             &::before {
-                color: $color-fff;
+                color: #9F9F9F;
             }
 
             @include tableMobile {
