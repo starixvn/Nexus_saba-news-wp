@@ -1,6 +1,8 @@
 ﻿@using SabaNews.Core.Constants;
 @using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
+@using SabaNews.Resources;
+
 @inject IDetectionService DetectionService
 @{
     bool isMobile = DetectionService.Device.Type == Device.Mobile;
@@ -33,7 +35,7 @@
         <div class="banner"><img src="~/images/banner.jpg"></div>
         <div class="block block-hot-news">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">TIN MỚI NHẤT</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
                 <div class="block__content">
                     <custom-image>
                     </custom-image>
@@ -123,7 +125,7 @@
         <div class="banner-mobile"><img src="~/images/banner-mobile.jpg"></div>
         <div class="block block-video">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Video", "Home")">video</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
                 <div class="block__content flex-video">
                     <div class="swiper-video">
                         <div class="swiper-container">
@@ -192,7 +194,7 @@
 
         <div class="block block-soccer">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">Bóng Đá</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">@ViewResources.Football</a></h2>
                 <div class="block__content">
                     @foreach (var post in Model.FootballPosts)
                     {
@@ -222,7 +224,7 @@
 
         <div class="block block-guess">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">Nhận Định - Dự đoán</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">@ViewResources.Guess</a></h2>
                 <div class="block__content">
                     @foreach (var post in Model.GuessPosts)
                     {
@@ -258,7 +260,7 @@
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
-                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">hậu trường</a></h2>
+                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
                     <div class="block__content">
                         <div class="card-horizontal card-horizontal-highlight card-item-1">
                             <a href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[0].Slug  })" class="card-horizontal__image">
@@ -317,7 +319,7 @@
                 </div>
                 <div class="block block-transfer">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">Thị trường chuyển nhượng</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">@ViewResources.Transfer</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.TransferPosts)
@@ -357,7 +359,7 @@
             <div class="container">
                 <div class="block block-basketball">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">Bóng rổ</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">@ViewResources.Basketball</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.BasketballPosts)
@@ -386,7 +388,7 @@
                 </div>
                 <div class="block block-tennis">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">Quần vợt</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">@ViewResources.Tennis</a>
                     </h2>
                     <div class="block__content">
                         <div class="card-vertical">

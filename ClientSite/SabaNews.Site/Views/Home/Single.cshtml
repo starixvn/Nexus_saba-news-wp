@@ -1,6 +1,7 @@
 ﻿@using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
 @using SabaNews.Models.ViewModel;
+@using SabaNews.Resources;
 
 @inject IDetectionService DetectionService
 @{ 
@@ -326,7 +327,7 @@
             else
             {
 
-
+                    <li class="item-social">@ViewResources.Share</li>
 
 
 
@@ -390,7 +391,7 @@
 			<div class="comment" id="comment">
                
             </div>
-            <h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
+            <h2 class="block__title title-care"><a>@ViewResources.RelatedPosts</a></h2>
             <div class="block__content">
                 @foreach (var post in Model.RandomRelatedPosts)
                 {

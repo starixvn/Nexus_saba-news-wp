@@ -1,4 +1,6 @@
-﻿<div class="ykien"><h3>Ý kiến </h3><span class="total-count-comment">  (@Model.CommentTemplate.TotalItems)</span></div>
+﻿@using SabaNews.Resources;
+
+<div class="ykien"><h3>@ViewResources.Comment </h3><span class="total-count-comment">  (@Model.CommentTemplate.TotalItems)</span></div>
 <form>
 	<input type="hidden" name="filterType" value="@Model.FilterType" />
 	<div class="comment-content-box">
@@ -15,8 +17,8 @@
 @if (Model.CommentTemplate.Comments.Count > 0) 
 { 
 	<div class="filter_comment">
-		<a href="javascript:;" class="@(Model.FilterType == "like"? "active" : "")" data-type="like">Quan tâm nhất</a>
-		<a href="javascript:;" class="@(Model.FilterType == "time"? "active" : "")" data-type="time">Mới nhất</a>
+		<a href="javascript:;" class="@(Model.FilterType == "like"? "active" : "")" data-type="like">@ViewResources.CommentMostInterested</a>
+		<a href="javascript:;" class="@(Model.FilterType == "time"? "active" : "")" data-type="time">@ViewResources.CommentMostRecent</a>
 	</div>
 }
 
@@ -31,7 +33,7 @@
 					<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>
 					<i class="ic ic-like"></i>
 				</a>
-				<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">Trả lời</a>
+				<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">@ViewResources.CommentReply</a>
 				<span class="time">@comment.CommentTime</span>
 			</p>
 		</div>
@@ -40,7 +42,7 @@
 		{
 		<p class="count-reply">
 			<a href="javascript:;" class="view_all_reply" data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID">
-				<span class="num_reply_cmt">@comment.CommentNumberChildren</span> Trả lời
+				<span class="num_reply_cmt">@comment.CommentNumberChildren</span> @ViewResources.CommentReply
 			</a>
 		</p>}
 
