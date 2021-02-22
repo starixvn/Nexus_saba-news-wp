@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-5">
                                 Social login
-                                <a class="btn btn-danger" href="ExternalAuthentication/GoogleLogin">Google</a>
+                                <a class="btn btn-danger social-login" href="ExternalAuthentication/GoogleLogin?returnUrl=">Google</a>
                             </div>
                         </div>
                     </div>
@@ -69,3 +69,11 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.social-login').each(function (i, v) {
+            var href = $(this).attr("href") + window.location.pathname;
+            $(this).attr("href", href);
+        });
+    });
+</script>

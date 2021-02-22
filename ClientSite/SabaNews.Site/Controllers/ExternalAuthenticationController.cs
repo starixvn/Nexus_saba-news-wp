@@ -1,61 +1,58 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authentication.Google;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Models.Auth;
 
     public class ExternalAuthenticationController : Controller
     {
-        private readonly SignInManager<GoogleUser> signInManager;
-
-        public ExternalAuthenticationController(SignInManager<GoogleUser> signinMgr)
+        public IActionResult GoogleLogin(string returnUrl = null)
         {
-            signInManager = signinMgr;
+            string redirectUrl = Url.Action("GoogleResponse", "ExternalAuthentication", new { returnUrl });
+            var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+
+            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
         }
 
-        public IActionResult AccessDenied()
+        public async Task<IActionResult> GoogleResponse(string returnUrl)
         {
-            return View();
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var claims = result.Principal.Identities.FirstOrDefault().Claims;
+            var userInfo = new ExternalUser
+            {
+                Identifier = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
+                FirstName = claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value,
+                LastName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value,
+                DisplayName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
+                Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
+            };
+
+            await DoLoginAsync(userInfo.DisplayName, userInfo.Email);
+
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return Redirect(returnUrl);
         }
 
-        public IActionResult GoogleLogin()
+        private async Task DoLoginAsync(string name, string email)
         {
-            string redirectUrl = Url.Action("GoogleResponse", "ExternalAuthentication");
-            var properties = signInManager.ConfigureExternalAuthenticationProperties("Google", redirectUrl);
-            properties.IsPersistent = true;
-            properties.AllowRefresh = true;
-
-            return new ChallengeResult("Google", properties);
-        }
-
-        [AllowAnonymous]
-        public async Task<IActionResult> GoogleResponse()
-        {
-            ExternalLoginInfo info = await signInManager.GetExternalLoginInfoAsync();
-            if (info == null)
+            var claims = new List<Claim>
             {
-                return RedirectToAction("Login", "Auth");
-            }
+                new Claim(ClaimTypes.Name, name),
+                new Claim(ClaimTypes.Email, email)
+            };
 
-            var result = await signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
-            string[] userInfo = { info.Principal.FindFirst(ClaimTypes.Name).Value, info.Principal.FindFirst(ClaimTypes.Email).Value };
-            if (result.Succeeded)
-            {
-                return View(userInfo);
-            }
-            else
-            {
-                GoogleUser user = new GoogleUser
-                {
-                    Email = info.Principal.FindFirst(ClaimTypes.Email).Value,
-                    UserName = info.Principal.FindFirst(ClaimTypes.Email).Value
-                };
-
-                return AccessDenied();
-            }
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         }
     }
 }

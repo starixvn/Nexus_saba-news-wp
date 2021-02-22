@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Identity;
     using SabaNews.Models.Auth;
 
-    public class ExternalUserService : IUserStore<GoogleUser>, IRoleStore<IdentityRole>
+    public class ExternalUserService : IUserStore<ExternalUser>, IRoleStore<IdentityRole>
     {
         private bool isDisposed;
 
@@ -15,7 +15,7 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<IdentityResult> CreateAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<IdentityResult> CreateAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -25,7 +25,7 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<IdentityResult> DeleteAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<IdentityResult> DeleteAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -61,7 +61,7 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<string> GetNormalizedUserNameAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<string> GetNormalizedUserNameAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -76,12 +76,12 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<string> GetUserIdAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<string> GetUserIdAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<string> GetUserNameAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<string> GetUserNameAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -91,7 +91,7 @@
             throw new System.NotImplementedException();
         }
 
-        public Task SetNormalizedUserNameAsync(GoogleUser user, string normalizedName, CancellationToken cancellationToken)
+        public Task SetNormalizedUserNameAsync(ExternalUser user, string normalizedName, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -101,7 +101,7 @@
             throw new System.NotImplementedException();
         }
 
-        public Task SetUserNameAsync(GoogleUser user, string userName, CancellationToken cancellationToken)
+        public Task SetUserNameAsync(ExternalUser user, string userName, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
@@ -111,17 +111,17 @@
             throw new System.NotImplementedException();
         }
 
-        public Task<IdentityResult> UpdateAsync(GoogleUser user, CancellationToken cancellationToken)
+        public Task<IdentityResult> UpdateAsync(ExternalUser user, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
 
-        Task<GoogleUser> IUserStore<GoogleUser>.FindByIdAsync(string userId, CancellationToken cancellationToken)
+        Task<ExternalUser> IUserStore<ExternalUser>.FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
 
-        Task<GoogleUser> IUserStore<GoogleUser>.FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
+        Task<ExternalUser> IUserStore<ExternalUser>.FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();
         }
