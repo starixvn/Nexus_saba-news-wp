@@ -56,7 +56,7 @@ $(document).on('keyup', 'textarea[name=comment_value]', function () {
 $(document).on('click', 'textarea[name=comment_value]', function () {
     var isLogin = (data.isLogin.toLowerCase() === 'true');
     if (!isLogin) {
-        $('#authModal').modal('show');
+        auth.GetModalLogin();
     }
 });
 

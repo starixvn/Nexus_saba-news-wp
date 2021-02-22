@@ -1,11 +1,12 @@
 ﻿var auth = (function ($) {
-    function HandleLoginModal() {
+    function GetModalLogin() {
         $.ajax({
             url: '/Auth/Index',
             type: 'GET',
             dataType: 'html',
             success: function (response) {
                 $('#auth-form').html(response);
+                $('#authModal').modal('show');
                 AddEmailValidation();
                 HandleLogin();
                 HandleRegister();
@@ -13,9 +14,10 @@
             }
         });
     }
+
     function HandleAuth() {
         $('.auth-input .auth-login').on('click', function () {
-            $('#authModal').modal('show');
+            GetModalLogin();
         });
     }
 
@@ -32,10 +34,10 @@
             },
             messages: {
                 email: {
-                    required: 'Hãy nhập email',
-                    email: 'Email không có thật'
+                    required: _viewResource.EmailRequired,
+                    email: _viewResource.EmailInvalid
                 },
-                password: 'Hãy nhập mật khẩu'
+                password: _viewResource.PasswordRequired
             },
             submitHandler: function (form) {
                 $.ajax({
@@ -76,18 +78,18 @@
                 }
             },
             messages: {
-                name: 'Hãy nhập tên',
+                name: _viewResource.NameRequired,
                 email: {
-                    required: 'Hãy nhập email',
-                    email: 'Email không có thật'
+                    required: _viewResource.EmailRequired,
+                    email: _viewResource.EmailInvalid
                 },
                 password: {
-                    required: 'Hãy nhập mật khẩu',
-                    minlength: 'Mật khẩu ít nhất 6 kí tự'
+                    required: _viewResource.PasswordRequired,
+                    minlength: _viewResource.PasswordMinLength
                 },
                 confirmPassword: {
-                    required: 'Hãy xác thực mật khẩu',
-                    equalTo: 'Xác thực mật khẩu sai'
+                    required: _viewResource.ConfirmPasswordRequired,
+                    equalTo: _viewResource.ConfirmPasswordEqualTo
                 }
             },
             submitHandler: function (form) {
@@ -98,11 +100,8 @@
                     success: function (res) {
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
-                            let bodyModal = `<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                                <h3>Đăng ký thành công</h3>
-                                <div>Hãy kiểm tra email <b>${email}</b> để xác thực email.</div>
-                                <div>Nhớ kiểm tra thư rác nhé</div>`;
+                            const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.ReminderCheckMail;
+                            const bodyModal = formatString(html, email);
                             $('#authModal .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
@@ -148,8 +147,8 @@
             },
             messages: {
                 email: {
-                    required: 'Hãy nhập email',
-                    email: 'Email không có thật'
+                    required: _viewResource.EmailRequired,
+                    email: _viewResource.EmailInvalid
                 }
             },
             submitHandler: function (form) {
@@ -160,9 +159,8 @@
                     success: function (res) {
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
-                            let bodyModal = `<div>Hãy kiểm tra email <b>${email}</b></div>
-                                <div>Để xem hướng dẫn lấy lại mật khẩu.</div>
-                                <div>Nhớ kiểm tra thư rác nhé</div>`;
+                            const html = _htmlResource.ForgotPassword + _htmlResource.ReminderCheckMail;
+                            const bodyModal = formatString(html, email);
                             $('#authModal .modal-body').html(bodyModal);
                         } else {
                             $(form).find('.summary-eror').text(res.message);
@@ -193,17 +191,17 @@
         $.validator.addMethod("validEmail", function (value, element) {
             var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
             return emailReg.test(value);
-        }, 'Email không có thật');
+        }, _viewResource.EmailInvalid);
     }
 
     function init() {
-        HandleLoginModal();
         HandleAuth();
         HandleLogout();
     }
 
     return {
-        init
+        init,
+        GetModalLogin
     }
 
 })(jQuery);

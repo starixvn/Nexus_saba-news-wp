@@ -14,12 +14,12 @@
             },
             messages: {
                 password: {
-                    required: 'Hãy nhập mật khẩu',
-                    minlength: 'Mật khẩu ít nhất 6 kí tự'
+                    required: _viewResource.PasswordRequired,
+                    minlength: _viewResource.PasswordMinLength
                 },
                 confirmPassword: {
-                    required: 'Hãy xác thực mật khẩu',
-                    equalTo: 'Xác thực mật khẩu sai'
+                    required: _viewResource.ConfirmPasswordRequired,
+                    equalTo: _viewResource.ConfirmPasswordEqualTo
                 }
             },
             submitHandler: function (form) {
@@ -29,7 +29,7 @@
                     data: $(form).serialize(),
                     success: function (res) {
                         if (res.isSuccessful) {
-                            let bodyModal = '<h3>Đổi mật khẩu thành công</h3>';
+                            let bodyModal = _htmlResource.ResetPasswordSuccessfully;
                             $('.reset-page').html(bodyModal);
                         } else {
                             $(form).find('.summary-eror').text(res.message);
