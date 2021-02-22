@@ -141,11 +141,23 @@
   <data name="Guess" xml:space="preserve">
     <value>Nhận định - dự đoán</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>587</value>
+  </data>
+  <data name="MatchScheduleSlug" xml:space="preserve">
+    <value>lich-thi-dau</value>
+  </data>
+  <data name="NotFoundPostMsg" xml:space="preserve">
+    <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
+  </data>
   <data name="RecentsPost" xml:space="preserve">
     <value>Tin mới nhất</value>
   </data>
   <data name="RelatedPosts" xml:space="preserve">
     <value>Có thể bạn quan tâm</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Tìm kiếm...</value>
   </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>
@@ -158,5 +170,17 @@
   </data>
   <data name="Video" xml:space="preserve">
     <value>Video</value>
+  </data>
+  <data name="VideoSlug" xml:space="preserve">
+    <value>video</value>
+  </data>
+  <data name="ViewDataDescription" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="ViewDataHeadTitle" xml:space="preserve">
+    <value>HeadTitle</value>
+  </data>
+  <data name="ViewDataTitle" xml:space="preserve">
+    <value>Title</value>
   </data>
 </root>

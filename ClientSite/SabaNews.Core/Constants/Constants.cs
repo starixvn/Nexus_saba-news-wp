@@ -26,7 +26,6 @@
         public const string Search = "Search";
         public const string Tag = "Tag";
         public const string DateSearch = "DateSearch";
-        public const string NotFoundPostMsg = "Rất tiếc, chúng tôi không tìm thấy bài viết nào!";
 
         public const string EmptyBlogView = "EmptyBlog";
         public const string BlogView = "Blog";

@@ -1,6 +1,5 @@
-﻿@using SabaNews.Core.Constants;
-<div class="block block-extension">
-	<h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewData[Constants.ViewDataHeadTitle]</a></h2>
+﻿<div class="block block-extension">
+	<h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewData[ViewResources.ViewDataHeadTitle]</a></h2>
 	<div class="block__content">
 		<div class="block-item">
 			@foreach (var post in Model.Posts)

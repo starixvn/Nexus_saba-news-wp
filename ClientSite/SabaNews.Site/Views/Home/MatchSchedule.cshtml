@@ -1,13 +1,12 @@
-﻿@using SabaNews.Core.Constants;
-@section Metadata {
-    <meta name="description" content='@ViewData[Constants.ViewDataDescription]' />
+﻿@section Metadata {
+    <meta name="description" content='@ViewData[ViewResources.ViewDataDescription]' />
     <meta property="og:description" content='@Model.Category.OgDescription' />
     <meta property="og:title" content='@Model.Category.OgTitle' />
     <meta property="og:image" content='@Model.Category.OgImage' />
 }
 
 @section Title{
-    @ViewData[Constants.ViewDataTitle]
+    @ViewData[ViewResources.ViewDataTitle]
 }
 
 @section Styles{

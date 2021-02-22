@@ -133,6 +133,33 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 587.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lich-thi-dau.
+        /// </summary>
+        public static string MatchScheduleSlug {
+            get {
+                return ResourceManager.GetString("MatchScheduleSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rất tiếc, chúng tôi không tìm thấy bài viết nào!.
+        /// </summary>
+        public static string NotFoundPostMsg {
+            get {
+                return ResourceManager.GetString("NotFoundPostMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tin mới nhất.
         /// </summary>
         public static string RecentsPost {
@@ -147,6 +174,15 @@ namespace SabaNews.Resources {
         public static string RelatedPosts {
             get {
                 return ResourceManager.GetString("RelatedPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tìm kiếm....
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         
@@ -183,6 +219,42 @@ namespace SabaNews.Resources {
         public static string Video {
             get {
                 return ResourceManager.GetString("Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to video.
+        /// </summary>
+        public static string VideoSlug {
+            get {
+                return ResourceManager.GetString("VideoSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to description.
+        /// </summary>
+        public static string ViewDataDescription {
+            get {
+                return ResourceManager.GetString("ViewDataDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HeadTitle.
+        /// </summary>
+        public static string ViewDataHeadTitle {
+            get {
+                return ResourceManager.GetString("ViewDataHeadTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string ViewDataTitle {
+            get {
+                return ResourceManager.GetString("ViewDataTitle", resourceCulture);
             }
         }
     }
