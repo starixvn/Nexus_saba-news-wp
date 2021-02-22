@@ -26,12 +26,13 @@
 
         &-highlight {
             height: 30rem;
-            grid-template-columns: 53rem 1fr;
+            grid-template-columns: 44rem 1fr;
             grid-column-gap: 0;
             grid-template-rows: unset;
             align-items: flex-start;
             margin-bottom: $column-gap;
             background-color: $block-highlight-bgcolor;
+            padding-bottom: 0;
 
             @include tableMobile {
                 display: inherit;
@@ -82,6 +83,7 @@
             }
 
             .card-horizontal__image {
+                height: 100%;
                 @include tableMobile {
                     max-height: 100% !important;
                 }

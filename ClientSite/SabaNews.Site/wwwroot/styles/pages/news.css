@@ -993,12 +993,13 @@ button {
   margin-bottom: 1.6rem; }
   .block-main .card-horizontal-highlight {
     height: 30rem;
-    grid-template-columns: 53rem 1fr;
+    grid-template-columns: 44rem 1fr;
     grid-column-gap: 0;
     grid-template-rows: unset;
     align-items: flex-start;
     margin-bottom: 3.2rem;
-    background-color: #E8EAEF; }
+    background-color: #E8EAEF;
+    padding-bottom: 0; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight {
         display: inherit;
@@ -1034,9 +1035,11 @@ button {
           font-size: 1.2rem;
           line-height: 2rem;
           max-height: 6rem; } }
-    @media screen and (max-width: 1024px) {
-      .block-main .card-horizontal-highlight .card-horizontal__image {
-        max-height: 100% !important; } }
+    .block-main .card-horizontal-highlight .card-horizontal__image {
+      height: 100%; }
+      @media screen and (max-width: 1024px) {
+        .block-main .card-horizontal-highlight .card-horizontal__image {
+          max-height: 100% !important; } }
 
 .block-extension .card-vertical .card-vertical__title {
   font-size: 1.4rem; }
