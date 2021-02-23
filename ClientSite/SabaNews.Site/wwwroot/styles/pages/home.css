@@ -1,4 +1,5 @@
-﻿/*:root {
+﻿@charset "UTF-8";
+/*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
@@ -1134,6 +1135,19 @@ button {
     .main .block-video .block__content .card-horizontal .card-horizontal__content {
       padding: .4rem 0;
       line-height: 1.8rem; }
+    .main .block-video .block__content .card-horizontal.active .card-horizontal__image {
+      position: relative; }
+      .main .block-video .block__content .card-horizontal.active .card-horizontal__image:after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        background-color: rgba(0, 0, 0, 0.7);
+        content: 'Đang phát';
+        color: #fff;
+        text-align: center;
+        top: 0;
+        padding-top: 3rem; }
     .main .block-video .block__content .card-horizontal .title {
       font-size: 1.4rem; }
 
