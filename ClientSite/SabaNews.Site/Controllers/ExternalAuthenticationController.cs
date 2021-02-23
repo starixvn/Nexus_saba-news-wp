@@ -8,10 +8,23 @@
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Google;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Models.Auth;
+    using SabaNews.Services.Interfaces;
 
     public class ExternalAuthenticationController : Controller
     {
+        private readonly IExternalAuthService externalAuthService;
+        private readonly ISessionService sessionService;
+
+        public ExternalAuthenticationController(
+            IExternalAuthService externalAuthService,
+            ISessionService sessionService)
+        {
+            this.externalAuthService = externalAuthService;
+            this.sessionService = sessionService;
+        }
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
         {
             string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl });
@@ -30,17 +43,43 @@
                 FirstName = claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value,
                 LastName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value,
                 DisplayName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
-                Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
+                Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+                LoginType = provider
             };
 
-            await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
+            await SetSessionUserAsync(userInfo);
 
+            await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
             if (!string.IsNullOrWhiteSpace(returnUrl))
             {
                 return Redirect(returnUrl);
             }
 
             return Redirect(returnUrl);
+        }
+
+        private async Task SetSessionUserAsync(ExternalUser userInfo)
+        {
+            UserSession user = await externalAuthService.GetUserAsync(userInfo.Email);
+            if (user != null)
+            {
+                sessionService.User = user;
+            }
+            else
+            {
+                CommandResult result = await externalAuthService.CreateUserAsync(userInfo);
+                if (result.IsSuccessful)
+                {
+                    sessionService.User = new UserSession
+                    {
+                        Email = userInfo.Email,
+                        EmailConfirmed = true,
+                        Id = userInfo.Id,
+                        LoginType = userInfo.LoginType,
+                        Name = userInfo.DisplayName
+                    };
+                }
+            }
         }
 
         private async Task DoLoginAsync(string name, string identify)

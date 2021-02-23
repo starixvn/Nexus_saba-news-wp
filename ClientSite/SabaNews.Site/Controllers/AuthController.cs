@@ -45,6 +45,7 @@
                 {
                     await DoLoginAsync(user.Name, user.Email);
                     sessionService.User = user;
+                    sessionService.User.LoginType = LoginType.Internal;
                     return Json(new CommandResult { Code = 0, Message = string.Empty });
                 }
             }
@@ -79,7 +80,8 @@
                     Id = model.Id,
                     Email = model.Email,
                     Name = model.Name,
-                    EmailConfirmed = false
+                    EmailConfirmed = false,
+                    LoginType = LoginType.Internal
                 };
             }
             return Json(commandResult);

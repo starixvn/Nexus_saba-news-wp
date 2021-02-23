@@ -1,4 +1,6 @@
-﻿<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+﻿@using SabaNews.Core.Constants;
+
+<div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -34,8 +36,8 @@
                             </div>
                             <div class="col-5">
                                 Social login
-                                <a class="btn btn-danger social-login" href="ExternalAuthentication/Login?Provider=Google&returnUrl=">Google</a>
-                                <a class="btn btn-primary social-login" href="ExternalAuthentication/Login?Provider=Facebook&returnUrl=">Facebook</a>
+                                <a class="btn btn-danger social-login" href="ExternalAuthentication/Login?Provider=@LoginType.Google&returnUrl=">Google</a>
+                                <a class="btn btn-primary social-login" href="ExternalAuthentication/Login?Provider=@LoginType.Facebook&returnUrl=">Facebook</a>
                             </div>
                         </div>
                     </div>

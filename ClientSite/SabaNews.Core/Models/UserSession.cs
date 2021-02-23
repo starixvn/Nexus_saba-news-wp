@@ -11,5 +11,7 @@
         public string Password { get; set; }
 
         public bool EmailConfirmed { get; set; }
+
+        public string LoginType { get; set; }
     }
 }
