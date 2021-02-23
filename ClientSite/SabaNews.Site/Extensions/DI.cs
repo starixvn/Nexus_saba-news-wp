@@ -1,12 +1,15 @@
 ﻿namespace SabaNews.Site.Extensions
 {
     using System;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using Hangfire;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Google;
+    using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
@@ -65,6 +68,28 @@
                     {
                         Expiration = TimeSpan.FromDays(1),
                         Name = "Sabasports.Google.Cookie"
+                    };
+                }).AddFacebook(options =>
+                {
+                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
+                    options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
+                    options.CorrelationCookie = new CookieBuilder
+                    {
+                        Expiration = TimeSpan.FromDays(1),
+                        Name = "Sabasports.Facebook.Cookie"
+                    };
+                    options.Fields.Add("picture");
+                    options.Events = new OAuthEvents
+                    {
+                        OnCreatingTicket = context =>
+                        {
+                            var identity = (ClaimsIdentity)context.Principal.Identity;
+                            var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
+                            var json = context.User.ToString();
+                            identity.AddClaim(new Claim(ClaimTypes.Thumbprint, profileImg));
+                            return Task.CompletedTask;
+                        }
                     };
                 });
         }

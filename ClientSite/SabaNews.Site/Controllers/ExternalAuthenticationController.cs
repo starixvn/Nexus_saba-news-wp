@@ -12,15 +12,15 @@
 
     public class ExternalAuthenticationController : Controller
     {
-        public IActionResult GoogleLogin(string returnUrl = null)
+        public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
         {
-            string redirectUrl = Url.Action("GoogleResponse", "ExternalAuthentication", new { returnUrl });
+            string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl });
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
 
-            return Challenge(properties, GoogleDefaults.AuthenticationScheme);
+            return Challenge(properties, provider);
         }
 
-        public async Task<IActionResult> GoogleResponse(string returnUrl)
+        public async Task<IActionResult> ExternalResponse(string provider, string returnUrl)
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var claims = result.Principal.Identities.FirstOrDefault().Claims;
@@ -33,7 +33,7 @@
                 Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value
             };
 
-            await DoLoginAsync(userInfo.DisplayName, userInfo.Email);
+            await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
 
             if (!string.IsNullOrWhiteSpace(returnUrl))
             {
@@ -43,12 +43,12 @@
             return Redirect(returnUrl);
         }
 
-        private async Task DoLoginAsync(string name, string email)
+        private async Task DoLoginAsync(string name, string identify)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, name),
-                new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.NameIdentifier, identify)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
