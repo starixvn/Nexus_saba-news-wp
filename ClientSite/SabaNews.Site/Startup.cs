@@ -15,7 +15,6 @@
     using Hangfire.Redis;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -77,14 +76,7 @@
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
-                options.OnAppendCookie = cookieContext =>
-                    CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-                options.OnDeleteCookie = cookieContext =>
-                    CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-            });
+            services.RegisterCookiePolicy();
 
             services.RegisterAuthentication(Configuration);
 
@@ -187,45 +179,6 @@
             var serviceProvider = app.ApplicationServices;
             var backgroundService = serviceProvider.GetService<IBackgroundJobService>();
             backgroundService.TriggerUpdateCaching();
-        }
-
-        private static void CheckSameSite(HttpContext httpContext, CookieOptions options)
-        {
-            if (options.SameSite == SameSiteMode.None)
-            {
-                var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-                if (DisallowsSameSiteNone(userAgent))
-                {
-                    options.SameSite = SameSiteMode.Unspecified;
-                }
-            }
-        }
-
-        private static bool DisallowsSameSiteNone(string userAgent)
-        {
-            if (string.IsNullOrWhiteSpace(userAgent))
-            {
-                return false;
-            }
-
-            if (userAgent.Contains("CPU iPhone OS 12") ||
-                userAgent.Contains("iPad; CPU OS 12"))
-            {
-                return true;
-            }
-
-            if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
-                userAgent.Contains("Version/") && userAgent.Contains("Safari"))
-            {
-                return true;
-            }
-
-            if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }
