@@ -31,11 +31,12 @@
             return result;
         }
 
-        public async Task<UserSession> GetUserAsync(string email)
+        public async Task<UserSession> GetUserAsync(string email, string loginType)
         {
             var criteria = new GetSocialUserCriteria
             {
-                Email = email
+                Email = email,
+                LoginType = loginType
             };
             return await baseService.GetDataEntityAsync<UserSession>(criteria);
         }
