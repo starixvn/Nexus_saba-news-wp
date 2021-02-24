@@ -59,7 +59,7 @@
             };
             return await baseService.GetDataEntityAsync<Comment>(criteria);
         }
-        public async Task<long> CreateComment(CreateComment model)
+        public async Task<long> CreateCommentAsync(CreateComment model)
         {
             var command = new CmtCreateCommand
             {
@@ -79,7 +79,7 @@
             return result.IsSuccessful ? (int)command.CommentID : 0;
         }
 
-        public async Task<CommandResult> UpdateLikeData(long commentID, string ipClient, string type)
+        public async Task<CommandResult> UpdateLikeDataAsync(long commentID, string ipClient, string type)
         {
             var currentUser = sessionService.User.Id;
             var comment = await GetLikeDataAsync(commentID);

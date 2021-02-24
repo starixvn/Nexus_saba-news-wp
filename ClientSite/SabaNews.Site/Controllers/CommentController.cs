@@ -73,7 +73,7 @@
                 CommentParent = parent,
                 UserID = sessionService.User.Id
             };
-            var result = await commentService.CreateComment(model);
+            var result = await commentService.CreateCommentAsync(model);
             model.CommentID = result;
             return Json(new { isSuccessful = result != 0, comment = model });
         }
@@ -88,7 +88,7 @@
                 return Json(new { isSuccessful = false });
             }
             var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            var commandResult = await commentService.UpdateLikeData(commentID, remoteIpAddress, type);
+            var commandResult = await commentService.UpdateLikeDataAsync(commentID, remoteIpAddress, type);
             return Json(commandResult);
         }
 

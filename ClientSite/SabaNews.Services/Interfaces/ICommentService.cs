@@ -10,7 +10,7 @@
         Task<CommentTemplate> GetCommentsAsync(int postID, string filterType, int start, int end);
         Task<IEnumerable<Comment>> GetCommentChildrenAsync(int postID, int commentID);
         Task<Comment> GetLikeDataAsync(long commentID);
-        Task<long> CreateComment(CreateComment model);
-        Task<CommandResult> UpdateLikeData(long commentID, string ipClient, string type);
+        Task<long> CreateCommentAsync(CreateComment model);
+        Task<CommandResult> UpdateLikeDataAsync(long commentID, string ipClient, string type);
     }
 }
