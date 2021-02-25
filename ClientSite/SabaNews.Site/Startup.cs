@@ -1,5 +1,8 @@
 ﻿namespace SabaNews
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
@@ -25,9 +28,6 @@
     using SabaNews.Services.Interfaces;
     using Sentry;
     using StackExchange.Redis;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class Startup
     {
