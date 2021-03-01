@@ -1089,11 +1089,13 @@ img {
     .card-horizontal {
       display: grid;
       grid-template-columns: 16.5rem 1fr;
-      grid-template-rows: 9rem;
+      grid-template-rows: auto;
       grid-gap: 1.2rem; } }
-  @media screen and (max-width: 1024px) {
-    .card-horizontal__image {
-      height: 13.2rem; } }
+  .card-horizontal__image {
+    height: 100%; }
+    @media screen and (max-width: 1024px) {
+      .card-horizontal__image {
+        height: 9.3rem; } }
 
 .block-extension .card-vertical .card-vertical__title {
   font-size: 1.4rem; }
