@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
+
     .swiper-button-prev, .swiper-button-next {
         outline: none;
     }
@@ -37,7 +38,7 @@
         bottom: 6.9rem;
 
         @include tableMobile {
-            bottom: 3.5rem;
+            bottom: 5rem;
         }
     }
 
@@ -70,7 +71,8 @@
             height: 6rem;
 
             @include tableMobile {
-                height: 4rem;
+                height: 5rem;
+                @include flex(center, wrap , center);
             }
 
             .title-box {
@@ -78,7 +80,7 @@
                 padding: 1.6rem 0;
 
                 @include tableMobile {
-                    padding: .7rem 0;
+                    padding: 0;
                 }
 
                 a {

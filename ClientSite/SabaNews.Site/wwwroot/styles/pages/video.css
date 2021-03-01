@@ -857,7 +857,7 @@ button {
     bottom: 6.9rem; }
     @media screen and (max-width: 1024px) {
       .swiper-container .swiper-pagination-bullets {
-        bottom: 3.5rem; } }
+        bottom: 5rem; } }
   .swiper-container .swiper-slide {
     background-color: #081224; }
     .swiper-container .swiper-slide .img-item {
@@ -880,13 +880,18 @@ button {
       height: 6rem; }
       @media screen and (max-width: 1024px) {
         .swiper-container .swiper-slide .content-box {
-          height: 4rem; } }
+          height: 5rem;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: center;
+          flex-direction: row; } }
       .swiper-container .swiper-slide .content-box .title-box {
         text-align: center;
         padding: 1.6rem 0; }
         @media screen and (max-width: 1024px) {
           .swiper-container .swiper-slide .content-box .title-box {
-            padding: .7rem 0; } }
+            padding: 0; } }
         .swiper-container .swiper-slide .content-box .title-box a {
           color: #fff;
           font-weight: 500;
