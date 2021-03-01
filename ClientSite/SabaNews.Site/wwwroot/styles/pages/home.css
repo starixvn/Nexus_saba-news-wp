@@ -804,7 +804,7 @@ button {
       height: calc(100% - 6rem); }
       @media screen and (max-width: 1024px) {
         .swiper-container .swiper-slide .img-item {
-          height: calc(100% - 4rem); } }
+          height: calc(100% - 5rem); } }
       @media (max-device-width: 767px) {
         .swiper-container .swiper-slide .img-item {
           height: 22rem; } }
@@ -819,7 +819,7 @@ button {
           height: 5rem;
           display: flex;
           align-items: center;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           justify-content: center;
           flex-direction: row; } }
       .swiper-container .swiper-slide .content-box .title-box {
