@@ -1137,6 +1137,8 @@ button {
   .main .block-video .block__content .card-horizontal {
     grid-template-columns: 14rem 1fr;
     grid-template-rows: 8rem; }
+    .main .block-video .block__content .card-horizontal__image {
+      height: 8rem; }
     .main .block-video .block__content .card-horizontal .card-horizontal__content {
       padding: .4rem 0;
       line-height: 1.8rem; }
