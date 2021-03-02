@@ -43,6 +43,7 @@
         public const int GetFiveItems = 5;
         public const int GetSixItems = 6;
         public const int GetEightItems = 8;
+        public const int GetTenItems = 10;
 
         public const int FirstPage = 1;
         public const int Perpage = 10;
