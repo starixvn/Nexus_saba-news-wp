@@ -1157,6 +1157,9 @@ button {
 
 .main .block-video .play_video iframe {
   height: 40rem; }
+  @media screen and (max-width: 767px) {
+    .main .block-video .play_video iframe {
+      height: 22rem; } }
 
 .main .block-soccer .block__content {
   display: grid;
