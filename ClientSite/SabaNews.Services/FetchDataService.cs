@@ -48,7 +48,7 @@
 
         public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
         {
-            var perPage = Constants.Perpage;
+            const int perPage = Constants.Perpage;
             var controller = "category";
             if (slug == Constants.VideoSlug)
             {
