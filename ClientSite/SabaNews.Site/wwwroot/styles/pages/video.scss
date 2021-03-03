@@ -59,6 +59,10 @@
 
 .play_video iframe {
     height: 43rem;
+
+    @media screen and (max-width: 767px) {
+        height: 22rem;
+    }
 }
 
 

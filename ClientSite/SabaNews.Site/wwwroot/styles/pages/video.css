@@ -923,9 +923,7 @@ button {
 
 @media screen and (max-width: 767px) {
   .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
-    display: block; }
-  .play_video iframe {
-    height: 22rem; } }
+    display: block; } }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
@@ -1034,3 +1032,6 @@ button {
 
 .play_video iframe {
   height: 43rem; }
+  @media screen and (max-width: 767px) {
+    .play_video iframe {
+      height: 22rem; } }
