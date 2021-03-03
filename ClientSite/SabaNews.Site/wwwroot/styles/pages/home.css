@@ -811,20 +811,21 @@ button {
       .swiper-container .swiper-slide .img-item img {
         border-radius: 0;
         object-fit: cover;
+        object-position: top;
         height: 100%; }
     .swiper-container .swiper-slide .content-box {
-      height: 6rem; }
+      height: 6rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      flex-direction: row; }
       @media screen and (max-width: 1024px) {
         .swiper-container .swiper-slide .content-box {
-          height: 5rem;
-          display: flex;
-          align-items: center;
-          flex-wrap: nowrap;
-          justify-content: center;
-          flex-direction: row; } }
+          height: 5rem; } }
       .swiper-container .swiper-slide .content-box .title-box {
         text-align: center;
-        padding: 1.6rem 0; }
+        padding: 0 8px; }
         @media screen and (max-width: 1024px) {
           .swiper-container .swiper-slide .content-box .title-box {
             padding: 0; } }
@@ -854,15 +855,13 @@ button {
   color: #fff; }
 
 .play_video iframe {
-  height: 43rem;
   width: 100%; }
 
 @media screen and (max-width: 767px) {
   .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
     display: block; }
   .play_video iframe {
-    height: 22rem;
-    width: 100%; } }
+    height: 22rem; } }
 
 .container {
   width: 100%;
@@ -944,7 +943,8 @@ button {
     .card-horizontal__image img {
       width: 100%;
       height: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      object-position: top; }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -961,11 +961,7 @@ button {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
-    /*max-height: 4.5rem;
-            overflow: hidden;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;*/ }
+    line-height: 2rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
         display: none; } }
@@ -1077,20 +1073,20 @@ button {
 
 .main .block-video .block__content {
   display: grid;
-  grid-template-columns: 75.7rem 1fr;
-  grid-template-rows: 49rem;
-  grid-gap: 3.2rem; }
+  grid-template-columns: 71rem 1fr;
+  grid-template-rows: 46rem;
+  grid-gap: 1.6rem; }
   @media screen and (max-width: 1024px) {
     .main .block-video .block__content {
       display: grid;
       grid-template-columns: 48.7rem 1fr;
-      grid-template-rows: 49rem;
+      grid-template-rows: 46rem;
       grid-gap: 3.2rem; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
     .main .block-video .block__content {
       display: grid;
       grid-template-columns: 66.7rem 1fr;
-      grid-template-rows: 49rem;
+      grid-template-rows: 46rem;
       grid-gap: 3.2rem; } }
   @media (max-device-width: 767px) {
     .main .block-video .block__content {
@@ -1125,6 +1121,8 @@ button {
       padding-bottom: 0; }
       .main .block-video .block__content .slide-video .card-horizontal__content {
         padding: 1rem 0; }
+        .main .block-video .block__content .slide-video .card-horizontal__content .title {
+          font-weight: normal; }
       .main .block-video .block__content .slide-video .card-horizontal:last-child {
         margin-bottom: 0; }
     .main .block-video .block__content .slide-video::-webkit-scrollbar {
@@ -1157,6 +1155,9 @@ button {
         padding-top: 3rem; }
     .main .block-video .block__content .card-horizontal .title {
       font-size: 1.4rem; }
+
+.main .block-video .play_video iframe {
+  height: 40rem; }
 
 .main .block-soccer .block__content {
   display: grid;
@@ -1257,16 +1258,7 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: unset;
-    grid-gap: 2.3rem 3.2rem;
-    /*.card-vertical__image {
-                @include tableMobile {
-                    height: 20rem;
-                }
-
-                @include Mobile {
-                    height: 12rem;
-                }
-            }*/ }
+    grid-gap: 2.3rem 3.2rem; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content {
         display: grid;

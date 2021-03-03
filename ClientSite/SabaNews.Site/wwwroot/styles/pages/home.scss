@@ -111,14 +111,14 @@
     // block-video
     .block-video {
         .block__content {
-            @include grid(75.7rem 1fr, 49rem, #{$column-gap});
+            @include grid(71rem 1fr, 46rem, 1.6rem);
 
             @include tableMobile {
-                @include grid(48.7rem 1fr, 49rem, #{$column-gap});
+                @include grid(48.7rem 1fr, 46rem, #{$column-gap});
             }
 
             @include landscapeTablet {
-                @include grid(66.7rem 1fr, 49rem, #{$column-gap});
+                @include grid(66.7rem 1fr, 46rem, #{$column-gap});
             }
 
             @include Mobile {
@@ -174,6 +174,10 @@
 
                     &__content {
                         padding: 1rem 0;
+
+                        .title {
+                            font-weight: normal;
+                        }
                     }
 
                     &:last-child {
@@ -198,9 +202,11 @@
             .card-horizontal {
                 grid-template-columns: 14rem 1fr;
                 grid-template-rows: 8rem;
-                &__image{
-                    height : 8rem;
+
+                &__image {
+                    height: 8rem;
                 }
+
                 .card-horizontal__content {
                     padding: .4rem 0;
                     line-height: 1.8rem;
@@ -208,6 +214,7 @@
 
                 &.active .card-horizontal__image {
                     position: relative;
+
                     &:after {
                         position: absolute;
                         width: 100%;
@@ -226,6 +233,10 @@
                     font-size: 1.4rem;
                 }
             }
+        }
+
+        .play_video iframe {
+            height: 40rem;
         }
     }
     // block-soccer
@@ -416,15 +427,6 @@
                 grid-column: 1/3;
                 background-color: $block-highlight-bgcolor;
             }
-            /*.card-vertical__image {
-                @include tableMobile {
-                    height: 20rem;
-                }
-
-                @include Mobile {
-                    height: 12rem;
-                }
-            }*/
         }
     }
     // block-basketball
