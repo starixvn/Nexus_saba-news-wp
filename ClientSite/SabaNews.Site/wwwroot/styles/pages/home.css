@@ -961,7 +961,7 @@ button {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
-    line-height: 2rem; }
+    line-height: 1.9rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
         display: none; } }
@@ -1004,7 +1004,8 @@ button {
       .card-vertical__datetime {
         font-size: 1.2rem; } }
   .card-vertical__description {
-    margin-top: .3rem; }
+    margin-top: .3rem;
+    line-height: 1.9rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__description {
         font-size: 1.2rem;
