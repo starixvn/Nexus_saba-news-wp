@@ -112,6 +112,10 @@
         .container {
             @include grid(65% 1fr, none, #{$column-gap});
 
+            @include tableMobile {
+                @include grid(50% 1fr, none, #{$column-gap});
+            }
+
             @include Mobile {
                 display: inherit;
             }
@@ -379,7 +383,7 @@
             @include grid(repeat(3, 1fr), unset,2.3rem #{$column-gap});
 
             @include tableMobile {
-                @include grid(repeat(3, 1fr), unset, #{$column-gap-tablet});
+                @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
             }
 
             @include Mobile {
@@ -436,23 +440,61 @@
                 }
             }
 
+            .card-horizontal-highlight {
+                height: 30rem;
+                grid-template-columns: 44rem 1fr;
+                grid-column-gap: 0;
+                grid-template-rows: unset;
+                align-items: flex-start;
+                background-color: $block-highlight-bgcolor;
+                padding-bottom: 0;
+
+                @include tableMobile {
+                    display: inherit;
+                    height: auto;
+                    grid-template-columns: 23rem 1fr;
+                }
+
+                @include Mobile {
+                    grid-template-columns: auto;
+                }
+
+                .card-horizontal__image {
+                    height: 100%
+                }
+
+                .card-horizontal__content {
+                    padding: 1.6rem;
+
+                    @include tableMobile {
+                        margin-top: 1rem;
+                    }
+
+                    @include Mobile {
+                        padding: .8rem;
+                        margin-top: 0;
+                    }
+                }
+            }
+
             .card-item-1 {
                 grid-column: 1/4;
                 background-color: $block-highlight-bgcolor;
 
-                @include Mobile {
+                @include tableMobile {
                     grid-column: 1/5;
                 }
             }
 
+
             .card-item-2, .card-item-4 {
-                @include Mobile {
+                @include tableMobile {
                     grid-column: 1/3;
                 }
             }
 
             .card-item-3 {
-                @include Mobile {
+                @include tableMobile {
                     grid-column: 3/5;
                 }
             }
