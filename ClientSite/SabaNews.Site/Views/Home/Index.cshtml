@@ -191,7 +191,7 @@
             </div>
         </div>
 
-        <div class="group-blocks">
+        <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
                     <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">hậu trường</a></h2>
@@ -247,7 +247,6 @@
                                 <div class="card-horizontal__content">
                                     <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
                                     <p class="datetime">@post.PostTime</p>
-                                    <p class="description">@post.PostExcerpt</p>
                                 </div>
                             </div>
                         }
