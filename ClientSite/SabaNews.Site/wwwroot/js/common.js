@@ -12,7 +12,7 @@ var _htmlResource = {
     ButtonCloseModal: '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
     ForgotPassword: '<div>Hãy kiểm tra email <b>{0}</b></div><div>Để xem hướng dẫn lấy lại mật khẩu.</div>',
     RegisterSuccessfully: '<h3>Đăng ký thành công</h3><div>Hãy kiểm tra email <b>{0}</b> để xác thực email.</div>',
-    RemindCheckMail: '<div>Nhớ kiểm tra thư rác nhé</div>',
+    RemindCheckMail: '<div>Nhớ kiểm tra thư rác nhé.</div>',
     ResetPasswordSuccessfully: '<h3>Đổi mật khẩu thành công</h3>'
 };
 

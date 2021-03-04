@@ -159,7 +159,7 @@
                     success: function (res) {
                         if (res.isSuccessful) {
                             const email = $(form).find('input[name="email"]').val();
-                            const html = _htmlResource.ForgotPassword + _htmlResource.ReminderCheckMail;
+                            const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email);
                             $('#authModal .modal-body').html(bodyModal);
                         } else {
