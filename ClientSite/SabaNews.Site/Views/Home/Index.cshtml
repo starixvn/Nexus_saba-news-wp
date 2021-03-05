@@ -51,24 +51,24 @@
                     <div class="card-horizontal-section">
                         @for (int i = 1; i < Model.NewPosts.Length; i++)
                         {
-                            <div class="card-horizontal card-item-@i">
-                                <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-                                    @{
-                                        string featuredImg = Model.NewPosts[i].GetImageBySize(ImageWidth.Width300);
+                        <div class="card-title-wrapper card-item-@i">
+                            <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
+                            <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
+                                @{
+                                    string featuredImg = Model.NewPosts[i].GetImageBySize(ImageWidth.Width300);
 
-                                        <picture>
-                                            <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
-                                            <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
-                                            <img loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
-                                        </picture>
-                                    }
-                                </a>
-                                <div class="card-horizontal__content">
-                                    <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-                                    <p class="datetime">@Model.NewPosts[i].PostTime</p>
-                                    <p class="description">@Model.NewPosts[i].PostExcerpt</p>
-                                </div>
-                            </div>
+                                    <picture>
+                                        <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
+                                        <img loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
+                            </a>
+                            <div class="sub-content">
+                                <p class="datetime">@Model.NewPosts[i].PostTime</p>
+                                <p class="description">@Model.NewPosts[i].PostExcerpt</p>
+                            </div>                            
+                        </div>
                         }
                     </div>
                 </div>
