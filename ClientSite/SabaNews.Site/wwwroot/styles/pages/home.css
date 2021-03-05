@@ -1342,14 +1342,15 @@ button {
             height: 12.2rem; } }
         @media (max-device-width: 767px) {
           .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3) [class*="card-vertical__image"], .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(4) [class*="card-vertical__image"] {
-            height: 12rem; } }
-      .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
-        padding: 0 1.6rem !important; }
-        @media (max-device-width: 767px) {
-          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(1) [class*="card-vertical__"]:not(.card-vertical__image) {
-            padding: 0 .8rem !important; } }
+            height: 20rem; } }
+      @media (max-device-width: 767px) {
+        .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(2), .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(3), .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(4) {
+          background-color: #E8EAEF; } }
       .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(n+1) [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0; }
+        @media (max-device-width: 767px) {
+          .main .block-behind .block__content .card-vertical.card-vertical-highlight:nth-child(n+1) [class*="card-vertical__"]:not(.card-vertical__image) {
+            padding: 0 .8rem; } }
     .main .block-behind .block__content .card-horizontal-highlight {
       height: 30rem;
       grid-template-columns: 44rem 1fr;
@@ -1369,6 +1370,9 @@ button {
           grid-template-columns: auto; } }
       .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image {
         height: 100%; }
+        @media (max-device-width: 767px) {
+          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image {
+            height: 20rem; } }
       .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content {
         padding: 1.6rem; }
         @media screen and (max-width: 1024px) {
@@ -1384,12 +1388,21 @@ button {
       @media screen and (max-width: 1024px) {
         .main .block-behind .block__content .card-item-1 {
           grid-column: 1/5; } }
+      @media (max-device-width: 767px) {
+        .main .block-behind .block__content .card-item-1 {
+          grid-gap: 0; } }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content .card-item-2, .main .block-behind .block__content .card-item-4 {
         grid-column: 1/3; } }
+    @media (max-device-width: 767px) {
+      .main .block-behind .block__content .card-item-2, .main .block-behind .block__content .card-item-4 {
+        grid-column: 1/5; } }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content .card-item-3 {
         grid-column: 3/5; } }
+    @media (max-device-width: 767px) {
+      .main .block-behind .block__content .card-item-3 {
+        grid-column: 1/5; } }
 
 .main .block-basketball {
   padding: 0 0 1.6rem 0;
