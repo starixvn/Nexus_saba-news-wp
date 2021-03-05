@@ -1084,7 +1084,8 @@ button {
       color: #828282;
       line-height: 1.8rem; }
     .main .block-hot-news .block__content .card-horizontal-section .card-title-wrapper .description {
-      line-height: 1.9rem; }
+      line-height: 1.9rem;
+      margin-bottom: .3rem; }
 
 .main .group-blocks .container {
   display: grid;
