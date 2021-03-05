@@ -1,6 +1,8 @@
 ﻿@using SabaNews.Core.Constants;
 @using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
+
+
 @inject IDetectionService DetectionService
 @{
     bool isMobile = DetectionService.Device.Type == Device.Mobile;
@@ -27,7 +29,7 @@
     <div class="colums-main">
         <div class="block block-hot-news">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">TIN MỚI NHẤT</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
                 <div class="block__content">
                     <custom-image>
                     </custom-image>
@@ -45,8 +47,6 @@
                             }
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-                            @Model.NewPosts[0].PostTitle
-                     
                         <p class="card-vertical__datetime">
                            <span> @Model.NewPosts[0].PostTime</span>
                             @if (Model.NewPosts[0].CommentCount > 0)
@@ -77,6 +77,7 @@
 							    </a>
 							    <div class="sub-content">
 								<a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">
+<<<<<<< HEAD
 									@Model.NewPosts[i].PostTitle
 									
                             {
@@ -92,15 +93,14 @@
                                             </picture>
                                         }
                                     </a>
+=======
+								</a>
+>>>>>>> 000 - fix rebase
 								<p class="datetime">
-<<<<<<< HEAD
+                                 <span>@Model.NewPosts[i].PostTime</span>
                                     <div class="card-horizontal__content">
                                         <a class="title" href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
                                         <p class="datetime">@Model.NewPosts[i].PostTime</p>
-                                @Model.NewPosts[i].PostTime 
-=======
-                                 <span>@Model.NewPosts[i].PostTime</span>
->>>>>>> 149339 - edit tag date html
                                 @if (Model.NewPosts[i].CommentCount > 0)
 							    { 
                                     <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>
@@ -119,7 +119,7 @@
 
         <div class="block block-video">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Video", "Home")">video</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
                 <div class="block__content flex-video">
                     <div class="swiper-video">
                         <div class="swiper-container">
@@ -188,7 +188,7 @@
 
         <div class="block block-soccer">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">Bóng Đá</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">@ViewResources.Football</a></h2>
                 <div class="block__content">
                     @foreach (var post in Model.FootballPosts)
                     {
@@ -218,7 +218,7 @@
 
         <div class="block block-guess">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">Nhận Định - Dự đoán</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">@ViewResources.Guess</a></h2>
                 <div class="block__content">
                     @foreach (var post in Model.GuessPosts)
                     {
@@ -254,7 +254,7 @@
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
-                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">hậu trường</a></h2>
+                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
                     <div class="block__content">
                         <div class="card-horizontal card-horizontal-highlight card-item-1">
                                 <a href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[0].Slug  })" class="card-horizontal__image">
@@ -313,7 +313,7 @@
                 </div>
                 <div class="block block-transfer">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">Thị trường chuyển nhượng</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">@ViewResources.Transfer</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.TransferPosts)
@@ -353,7 +353,7 @@
             <div class="container">
                 <div class="block block-basketball">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">Bóng rổ</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">@ViewResources.Basketball</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.BasketballPosts)
@@ -382,7 +382,7 @@
                 </div>
                 <div class="block block-tennis">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">Quần vợt</a>
+						<a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">@ViewResources.Tennis</a>
                     </h2>
                     <div class="block__content">
                         <div class="card-vertical">
