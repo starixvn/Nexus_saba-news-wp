@@ -1009,7 +1009,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: unset;
-  grid-gap: 1.6rem 3.2rem; }
+  grid-gap: 1.6rem 1.6rem; }
   @media screen and (max-width: 1024px) {
     .block__video {
       display: grid;

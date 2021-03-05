@@ -64,7 +64,7 @@
 
             .card-horizontal-section {
                 width: calc(100% - 53rem - .4rem);
-                padding-left: 2.8rem;
+                padding-left: 1.2rem;
                 display: inline-block;
                 vertical-align: top;
 
@@ -305,7 +305,7 @@
     // block-soccer
     .block-soccer {
         .block__content {
-            @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet} #{$column-gap});
+            @include grid(repeat(4, 1fr), unset, #{$column-gap});
 
             @include tableMobile {
                 @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
@@ -499,6 +499,7 @@
                 align-items: flex-start;
                 background-color: $block-highlight-bgcolor;
                 padding-bottom: 0;
+                margin-bottom: 0;
 
                 @include tableMobile {
                     display: inherit;
@@ -583,7 +584,7 @@
 
     .block-tennis {
         .block-list {
-            margin-top: 3rem;
+            margin-top: 1rem;
 
             @include tableMobile {
                 margin-top: 1.2rem;

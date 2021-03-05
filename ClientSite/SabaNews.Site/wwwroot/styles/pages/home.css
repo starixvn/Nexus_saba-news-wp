@@ -880,7 +880,7 @@ button {
     .block-list {
       margin-top: 1rem; } }
   .block-list .list-item {
-    margin-bottom: 2rem; }
+    margin-bottom: 1rem; }
     @media screen and (max-width: 1024px) {
       .block-list .list-item {
         margin-bottom: 1.2rem; } }
@@ -1039,7 +1039,7 @@ button {
 
 .main .block-hot-news .block__content .card-horizontal-section {
   width: calc(100% - 53rem - .4rem);
-  padding-left: 2.8rem;
+  padding-left: 1.2rem;
   display: inline-block;
   vertical-align: top; }
   @media screen and (max-width: 1024px) {
@@ -1090,7 +1090,7 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: none;
-  grid-gap: 3.2rem; }
+  grid-gap: 1.6rem; }
   .main .group-blocks .container .block-transfer {
     grid-gap: 0; }
   @media (max-device-width: 767px) {
@@ -1107,13 +1107,13 @@ button {
   display: grid;
   grid-template-columns: 63% 1fr;
   grid-template-rows: none;
-  grid-gap: 3.2rem; }
+  grid-gap: 1.6rem; }
   @media screen and (max-width: 1024px) {
     .main .group-change-column .container {
       display: grid;
       grid-template-columns: 50% 1fr;
       grid-template-rows: none;
-      grid-gap: 3.2rem; } }
+      grid-gap: 1.6rem; } }
   @media (max-device-width: 767px) {
     .main .group-change-column .container {
       display: inherit; } }
@@ -1128,13 +1128,13 @@ button {
       display: grid;
       grid-template-columns: 48.7rem 1fr;
       grid-template-rows: 46rem;
-      grid-gap: 3.2rem; } }
+      grid-gap: 1.6rem; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
     .main .block-video .block__content {
       display: grid;
       grid-template-columns: 66.7rem 1fr;
       grid-template-rows: 46rem;
-      grid-gap: 3.2rem; } }
+      grid-gap: 1.6rem; } }
   @media (max-device-width: 767px) {
     .main .block-video .block__content {
       display: inherit; } }
@@ -1213,7 +1213,7 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: unset;
-  grid-gap: 1.6rem 3.2rem; }
+  grid-gap: 1.6rem; }
   @media screen and (max-width: 1024px) {
     .main .block-soccer .block__content {
       display: grid;
@@ -1254,7 +1254,7 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-gap: 3.2rem; }
+    grid-gap: 1.6rem; }
     @media screen and (max-width: 1024px) {
       .main .block-guess .block__content {
         display: grid;
@@ -1311,7 +1311,7 @@ button {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: unset;
-    grid-gap: 1.6rem 3.2rem; }
+    grid-gap: 1.6rem 1.6rem; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content {
         display: grid;
@@ -1356,7 +1356,8 @@ button {
       grid-template-rows: unset;
       align-items: flex-start;
       background-color: #E8EAEF;
-      padding-bottom: 0; }
+      padding-bottom: 0;
+      margin-bottom: 0; }
       @media screen and (max-width: 1024px) {
         .main .block-behind .block__content .card-horizontal-highlight {
           display: inherit;
@@ -1399,7 +1400,7 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: unset;
-    grid-gap: 1.6rem 3.2rem; }
+    grid-gap: 1.6rem 1.6rem; }
     @media screen and (max-width: 1024px) {
       .main .block-basketball .block__content {
         display: grid;
@@ -1419,7 +1420,7 @@ button {
           padding-bottom: 0; } }
 
 .main .block-tennis .block-list {
-  margin-top: 3rem; }
+  margin-top: 1rem; }
   @media screen and (max-width: 1024px) {
     .main .block-tennis .block-list {
       margin-top: 1.2rem; } }

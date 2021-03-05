@@ -996,7 +996,7 @@ button {
     grid-column-gap: 0;
     grid-template-rows: unset;
     align-items: flex-start;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.6rem;
     background-color: #E8EAEF;
     padding-bottom: 0; }
     @media screen and (max-width: 1024px) {
