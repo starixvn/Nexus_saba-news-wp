@@ -45,8 +45,8 @@
                             }
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
                         <p class="card-vertical__description text-description">@Model.NewPosts[0].PostExcerpt</p>
+                        <p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
                     </div>
                     <div class="card-horizontal-section">
                         @for (int i = 1; i < Model.NewPosts.Length; i++)
@@ -65,8 +65,8 @@
                                 }
                             </a>
                             <div class="sub-content">
-                                <p class="datetime">@Model.NewPosts[i].PostTime</p>
                                 <p class="description">@Model.NewPosts[i].PostExcerpt</p>
+                                <p class="datetime">@Model.NewPosts[i].PostTime</p>
                             </div>                            
                         </div>
                         }
@@ -219,9 +219,9 @@
                                     }
                                 </a>
                                 <div class="card-horizontal__content">
-									<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[0].Slug  })">@Model.BackstagePosts[0].PostTitle</a>
-									<p class="datetime">@Model.BackstagePosts[0].PostTime</p>
+                                    <a class="title" href="@Url.Action("Single", "Home", new { slug = Model.BackstagePosts[0].Slug  })">@Model.BackstagePosts[0].PostTitle</a>
                                     <p class="description">@Model.BackstagePosts[0].PostExcerpt</p>
+                                    <p class="datetime">@Model.BackstagePosts[0].PostTime</p>
                                 </div>
                             </div>
                         @for (int i = 1; i < Model.BackstagePosts.Length; i++)
