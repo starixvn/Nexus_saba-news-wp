@@ -64,6 +64,7 @@
 
         .description {
             line-height: 1.9rem;
+            margin: .3rem 0;
 
             @include tableMobile {
                 display: none;

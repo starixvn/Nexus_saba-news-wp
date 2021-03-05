@@ -54,7 +54,7 @@
     }
 
     &__description {
-        margin-top: .3rem;
+        margin: .3rem 0;
         line-height: 1.9rem;
 
         @include tableMobile {
