@@ -10,6 +10,7 @@
                 $('.play_video').html('');
                 $('.img-item').show();
                 $('.swiper-slide').removeClass("active");
+                $('.slide-video .card-item').first().addClass("active");
                 var iframe = $(this).parent().parent().find("input[name=iframe_value]").val();
                 var found = $.parseHTML(iframe);
                 if (typeof found[2] === "undefined") { return false; }
@@ -30,7 +31,7 @@
 
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
-                slide.addClass('active');
+                $(this).parent().addClass('active');
             }
         });
         //Desktop
@@ -40,8 +41,8 @@
             var slide = $('#slide-' + id);
             slide.show();
             slide.find('.img-item').hide();
-            $('.flex-item').removeClass("active");
-            $(this).parent().parent().addClass("active");
+            $('.slide-video .card-item').removeClass("active");
+            $(this).parent().addClass("active");
 
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
@@ -64,7 +65,6 @@
 
                 iframe.attr('src', src);
                 slide.find('.play_video').html(iframe);
-                slide.addClass('active');
             }
 
         });

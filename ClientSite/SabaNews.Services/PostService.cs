@@ -54,7 +54,7 @@
             return postTemplate;
         }
 
-        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0)
+        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID)
         {
             var criteria = new GetRecentPostsCriteria
             {
