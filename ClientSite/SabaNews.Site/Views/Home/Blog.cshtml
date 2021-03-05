@@ -33,11 +33,11 @@
                             <img loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle" class="img-res img-block lazy">
                         </picture>
                     </a>
-                    <div class="card-horizontal__content">
-                        <a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a>
-                        <p class="datetime">@Model.Posts[0].PostTime</p>
-                        <p class="description">@Model.Posts[0].PostExcerpt</p>
-                    </div>
+					<div class="card-horizontal__content">
+						<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })">@Model.Posts[0].PostTitle</a>
+						<p class="description">@Model.Posts[0].PostExcerpt</p>
+						<p class="datetime">@Model.Posts[0].PostTime</p>
+					</div>
                 </div>
                 @for (int i = 1; i < Model.Posts.Length; i++)
                 {
@@ -49,11 +49,11 @@
                                 <img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block lazy">
                             </picture>
                         </a>
-                        <div class="card-horizontal__content">
-                            <a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })">@Model.Posts[i].PostTitle</a>
-                            <p class="datetime">@Model.Posts[i].PostTime</p>
-                            <p class="description">@Model.Posts[i].PostExcerpt</p>
-                        </div>
+						<div class="card-horizontal__content">
+							<a class="title" href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })">@Model.Posts[i].PostTitle</a>
+							<p class="description">@Model.Posts[i].PostExcerpt</p>
+							<p class="datetime">@Model.Posts[i].PostTime</p>
+						</div>
                     </div>
                 }
                 @{
