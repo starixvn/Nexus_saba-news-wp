@@ -25,6 +25,7 @@
             this.externalAuthService = externalAuthService;
             this.sessionService = sessionService;
         }
+
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
         {
             string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl });

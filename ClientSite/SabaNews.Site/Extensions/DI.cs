@@ -67,18 +67,7 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
-                    options.BackchannelHttpHandler = new HttpClientHandler()
-                    {
-                        Proxy = new WebProxy
-                        {
-                            Address = new Uri(
-                                string.Format("{0}:{1}",
-                            configuration.GetValue<string>("ProxySettings:Server"),
-                            configuration.GetValue<string>("ProxySettings:Port")
-                            )),
-                            BypassProxyOnLocal = configuration.GetValue<bool>("ProxySettings:BypassProxyOnLocal")
-                        }
-                    };
+                    options.Backchannel = GetDefaultHttpClient(configuration);
                     options.CorrelationCookie = new CookieBuilder
                     {
                         Expiration = TimeSpan.FromDays(1),
@@ -89,18 +78,8 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
-                    options.BackchannelHttpHandler = new HttpClientHandler()
-                    {
-                        Proxy = new WebProxy
-                        {
-                            Address = new Uri(
-                                string.Format("{0}:{1}",
-                            configuration.GetValue<string>("ProxySettings:Server"),
-                            configuration.GetValue<string>("ProxySettings:Port")
-                            )),
-                            BypassProxyOnLocal = configuration.GetValue<bool>("ProxySettings:BypassProxyOnLocal")
-                        }
-                    };
+                    options.Backchannel = GetDefaultHttpClient(configuration);
+
                     options.CorrelationCookie = new CookieBuilder
                     {
                         Expiration = TimeSpan.FromDays(1),
@@ -113,7 +92,6 @@
                         {
                             var identity = (ClaimsIdentity)context.Principal.Identity;
                             var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
-                            var json = context.User.ToString();
                             identity.AddClaim(new Claim(ClaimTypes.Thumbprint, profileImg));
                             return Task.CompletedTask;
                         }
@@ -170,6 +148,33 @@
             }
 
             return false;
+        }
+
+        private static HttpClient GetDefaultHttpClient(IConfiguration configuration)
+        {
+            var isUseProxy = bool.Parse(configuration.GetSection("ProxySettings:IsUseProxy").Value);
+            var proxyAddress = configuration.GetSection("ProxySettings:ProxyAddress").Value;
+            var bypassOnLocal = bool.Parse(configuration.GetSection("ProxySettings:BypassProxyOnLocal").Value);
+
+            HttpClient httpClient;
+
+            if (isUseProxy)
+            {
+                var proxy = new WebProxy(proxyAddress, bypassOnLocal);
+                var socketsHttpHandler = new SocketsHttpHandler
+                {
+                    UseProxy = isUseProxy,
+                    Proxy = proxy,
+                };
+
+                httpClient = new HttpClient(handler: socketsHttpHandler);
+            }
+            else
+            {
+                httpClient = new HttpClient();
+            }
+
+            return httpClient;
         }
     }
 }
