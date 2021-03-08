@@ -1013,6 +1013,9 @@ button {
 
 .main .block-hot-news .block__content {
   display: flex; }
+  @media (max-device-width: 767px) {
+    .main .block-hot-news .block__content {
+      display: unset; } }
   .main .block-hot-news .block__content .card-vertical {
     background-color: #E8EAEF;
     width: 53rem; }

@@ -27,6 +27,9 @@
 
         .block__content {
             display: flex;
+            @include Mobile {
+                display: unset;
+            }
             .card-vertical {
                 background-color: $block-highlight-bgcolor;
                 width: 53rem;
