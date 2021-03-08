@@ -6,7 +6,7 @@
 
     public interface IExternalAuthService
     {
-        Task<UserSession> GetUserAsync(string email, string loginType);
+        Task<UserSession> GetUserAsync(string identifier, string loginType);
 
         Task<CommandResult> CreateUserAsync(ExternalUser user);
     }

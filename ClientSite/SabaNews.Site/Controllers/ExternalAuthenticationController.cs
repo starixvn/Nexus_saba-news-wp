@@ -60,7 +60,7 @@
 
         private async Task SetSessionUserAsync(ExternalUser userInfo)
         {
-            UserSession user = await externalAuthService.GetUserAsync(userInfo.Email, userInfo.LoginType);
+            UserSession user = await externalAuthService.GetUserAsync(userInfo.Identifier, userInfo.LoginType);
             if (user != null)
             {
                 sessionService.User = user;
