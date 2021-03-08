@@ -136,7 +136,7 @@
 
     .group-blocks {
         .container {
-            @include grid(repeat(2, 1fr), none, #{$column-gap});
+            @include grid(repeat(2, 1fr), none, #{$column-gap} 2.4rem);
 
             .block-transfer {
                 grid-gap: 0;
@@ -158,10 +158,10 @@
 
     .group-change-column {
         .container {
-            @include grid(63% 1fr, none, #{$column-gap});
+            @include grid(63% 1fr, none, #{$column-gap} 2.4rem);
 
             @include tableMobile {
-                @include grid(50% 1fr, none, #{$column-gap});
+                @include grid(50% 1fr, none, #{$column-gap} 2.4rem);
             }
 
             @include Mobile {
@@ -394,6 +394,10 @@
                 @include portraitTablet {
                     height: 16rem;
                 }
+
+                @include Mobile {
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -473,10 +477,6 @@
                                 height: 20rem;
                             }
                         }
-
-                        @include Mobile {
-                            background-color: $block-highlight-bgcolor;
-                        }
                     }
 
                     &:nth-child(n+1) {
@@ -509,6 +509,8 @@
 
                 @include Mobile {
                     grid-template-columns: auto;
+                    background-color: transparent;
+                    border-bottom: none;
                 }
 
                 .card-horizontal__image {
@@ -543,6 +545,7 @@
 
                 @include Mobile {
                     grid-gap: 0;
+                    background-color: transparent;
                 }
             }
 

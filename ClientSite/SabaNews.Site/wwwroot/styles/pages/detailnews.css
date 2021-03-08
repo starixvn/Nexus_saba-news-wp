@@ -928,7 +928,8 @@ button {
       grid-gap: 1.2rem; } }
   @media (max-device-width: 767px) {
     .card-horizontal {
-      margin-bottom: 1.2rem; }
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.2rem; }
       .card-horizontal:last-child {
         margin-bottom: 0; } }
   .card-horizontal__image {
