@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
@@ -69,11 +70,13 @@
             ExceptionHandler
                 .UseConfig(new LoggingConfiguration())
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
-
             services.Configure<ForwardedHeadersOptions>(options =>
             {
+                //options.KnownProxies.Add(IPAddress.Parse("10.18.200.3"));
                 options.ForwardedHeaders =
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                //options.KnownNetworks.Clear();
+                //options.KnownProxies.Clear();
             });
 
             services.RegisterCookiePolicy();
@@ -129,7 +132,6 @@
                 app.UseForwardedHeaders();
                 app.UseHsts();
             }
-
             app.UseResponseCompression();
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -145,7 +147,6 @@
             });
 
             app.UseRouting();
-
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -170,7 +171,7 @@
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
+            
             RunHangfireJob(app);
         }
 

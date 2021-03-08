@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Site.Extensions
 {
     using System;
+    using System.Net;
+    using System.Net.Http;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using Fanex.Caching;
@@ -65,6 +67,18 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
+                    options.BackchannelHttpHandler = new HttpClientHandler()
+                    {
+                        Proxy = new WebProxy
+                        {
+                            Address = new Uri(
+                                string.Format("{0}:{1}",
+                            configuration.GetValue<string>("ProxySettings:Server"),
+                            configuration.GetValue<string>("ProxySettings:Port")
+                            )),
+                            BypassProxyOnLocal = configuration.GetValue<bool>("ProxySettings:BypassProxyOnLocal")
+                        }
+                    };
                     options.CorrelationCookie = new CookieBuilder
                     {
                         Expiration = TimeSpan.FromDays(1),
@@ -75,6 +89,18 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
+                    options.BackchannelHttpHandler = new HttpClientHandler()
+                    {
+                        Proxy = new WebProxy
+                        {
+                            Address = new Uri(
+                                string.Format("{0}:{1}",
+                            configuration.GetValue<string>("ProxySettings:Server"),
+                            configuration.GetValue<string>("ProxySettings:Port")
+                            )),
+                            BypassProxyOnLocal = configuration.GetValue<bool>("ProxySettings:BypassProxyOnLocal")
+                        }
+                    };
                     options.CorrelationCookie = new CookieBuilder
                     {
                         Expiration = TimeSpan.FromDays(1),
