@@ -6,7 +6,7 @@
     background-color: $bg-nav;
     position: fixed;
     width: 100%;
-    z-index: 99999;   
+    z-index: 1025;
 
     .top-header {
         padding: .5rem 0;
@@ -132,6 +132,7 @@
                     width: 100%;
                     @include flex(center, nowrap, flex-start,row);
                     height: 4rem;
+                    margin-bottom: 0;
 
                     @include tableMobile {
                         margin: 0;
@@ -149,6 +150,27 @@
                         @include flex(center, nowrap, flex-start,inherit);
                         height: 4rem !important;
                         padding-bottom: 0;
+                    }
+
+
+                    .auth-input {
+                        position: relative;
+
+                        &:hover {
+                            .auth-logout {
+                                display: block
+                            }
+                        }
+
+                        .auth-logout {
+                            position: absolute;
+                            display: none;
+                            top: 7rem;
+
+                            .item {
+                                padding: 1.7rem 0;
+                            }
+                        }
                     }
 
                     .menu-item {

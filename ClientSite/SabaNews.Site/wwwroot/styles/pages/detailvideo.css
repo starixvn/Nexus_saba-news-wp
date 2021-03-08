@@ -177,7 +177,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background-color: #FFFDF9;
   position: fixed;
   width: 100%;
-  z-index: 99999; }
+  z-index: 1025; }
   .header .top-header {
     padding: .5rem 0;
     background-color: #FFFDF9;
@@ -206,22 +206,27 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           flex-direction: row;
           position: relative; } }
       .header .top-header .group-menu .logo {
-        width: 12rem;
+        width: 10rem;
         margin-right: 2.4rem; }
         .header .top-header .group-menu .logo a {
           display: flex;
           align-items: center; }
         .header .top-header .group-menu .logo img {
           width: 100%; }
+          @media screen and (max-width: 1024px) {
+            .header .top-header .group-menu .logo img {
+              width: 8.2rem; } }
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .logo {
+            width: 12rem;
             margin-right: 0;
-            padding: .6rem 0 .4rem 1.4rem;
+            padding: .8rem 0 .5rem 1.4rem;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             justify-content: space-between;
             flex-direction: row; } }
+          top: -1.5rem;
       .header .top-header .group-menu .button-mobile {
         width: 2.8rem;
         height: 3rem;
@@ -281,7 +286,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           flex-wrap: nowrap;
           justify-content: flex-start;
           flex-direction: row;
-          height: 4rem; }
+          height: 4rem;
+          margin-bottom: 0; }
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               margin: 0;
@@ -306,6 +312,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-direction: inherit;
               height: 4rem !important;
               padding-bottom: 0; } }
+          .header .top-header .group-menu .nav-menu .main-menu .auth-input {
+            position: relative; }
+            .header .top-header .group-menu .nav-menu .main-menu .auth-input:hover .auth-logout {
+              display: block; }
+            .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-logout {
+              position: absolute;
+              display: none;
+              top: 7rem; }
+              .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-logout .item {
+                padding: 1.7rem 0; }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
             @media screen and (max-width: 1024px) {
@@ -808,8 +824,7 @@ button {
 .wp-block-image figcaption {
   text-align: center;
   position: relative;
-  top: -8px;
-  font-size: 1.4rem; }
+  top: -4px; }
 
 .pagination {
   text-align: center;
@@ -1090,21 +1105,17 @@ button {
         font-size: 1.2rem;
         line-height: 2rem; } }
 
-/*:root {
-    --column : 12;
-    --padding-col : 0 1.5rem;
-}*/
 .main .container {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 70% calc(30% - 5.4rem);
   grid-template-rows: unset;
-  grid-gap: 0; }
+  grid-gap: 5.4rem; }
   @media screen and (max-width: 1024px) {
     .main .container {
       display: grid;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: 60% calc(40% - 3.2rem);
       grid-template-rows: unset;
-      grid-gap: 0; } }
+      grid-gap: 3.2rem; } }
   @media (max-device-width: 767px) {
     .main .container {
       display: inherit; } }
@@ -1123,13 +1134,6 @@ button {
   @media (max-device-width: 767px) {
     .main .detail-container {
       display: inherit; } }
-
-@media screen and (min-width: 1024px) {
-  .block-main {
-    padding-right: 2.8rem;
-    border-right: 1px solid #e5e5e5; }
-  .block-extension {
-    padding-left: 2.8rem; } }
 
 .block-list {
   margin: 4rem 0; }

@@ -42,19 +42,17 @@
                             }
 
                         }
-                        <li class="right-header-section">
-                            @if (ViewBag.IsAuthenticated)
-                            {
-                                // name
-                                @*<a class="item">@ViewBag.DisplayName</a>*@
-                                //drop-down
-                                <a class="item auth-logout" href="javascript:;">Đăng xuât</a>
-                            }
-                            else
-                            {
-                                <a class="item auth-login" href="javascript:;">Đăng nhập</a>
-                            }
-                                    </li>
+                        <li class="menu-item auth-input">
+                        @if (ViewBag.IsAuthenticated)
+                        {
+                            <span class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></span>
+                            <span class="auth-logout"> <a class="item" href="javascript:;">Đăng xuât</a></span>
+                        }
+                        else
+                        {
+                            <a class="item auth-login" href="javascript:;">Đăng nhập</a>
+                        }
+                        </li>
                                 </ul>
                             </div>
                             <div class="search-input">
