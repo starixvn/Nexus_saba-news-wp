@@ -183,6 +183,12 @@
   <data name="MatchScheduleSlug" xml:space="preserve">
     <value>lich-thi-dau</value>
   </data>
+  <data name="Message" xml:space="preserve">
+    <value>Thông Báo</value>
+  </data>
+  <data name="MessageRequestLogin" xml:space="preserve">
+    <value>Vui Lòng đăng nhập để thực hiện chức năng này!</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
   </data>

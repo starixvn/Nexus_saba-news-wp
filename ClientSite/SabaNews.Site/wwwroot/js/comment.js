@@ -216,7 +216,7 @@
         $(document).on('click', '.link_thich', function () {
             var isLogin = (data.isLogin.toLowerCase() === 'true');
             if (!isLogin) {
-                alert('Bạn phải đăng nhập để thực hiện chức năng này');
+                $('#requestLogin').modal('show');
                 return false;
             }
             var self = $(this);

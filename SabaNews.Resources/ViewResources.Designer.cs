@@ -259,6 +259,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thông Báo.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui Lòng đăng nhập để thực hiện chức năng này!.
+        /// </summary>
+        public static string MessageRequestLogin {
+            get {
+                return ResourceManager.GetString("MessageRequestLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tên.
         /// </summary>
         public static string Name {
