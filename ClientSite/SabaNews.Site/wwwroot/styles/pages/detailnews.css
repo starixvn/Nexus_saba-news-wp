@@ -1074,11 +1074,11 @@ img {
   display: none; }
 
 .card-horizontal {
+  margin-bottom: 2rem;
   display: grid;
   grid-template-columns: 30.5rem 1fr;
   grid-template-rows: 17rem;
-  grid-gap: 2rem;
-  margin-bottom: 2rem; }
+  grid-gap: 2rem; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: grid;
@@ -1090,7 +1090,8 @@ img {
       display: grid;
       grid-template-columns: 16.5rem 1fr;
       grid-template-rows: auto;
-      grid-gap: 1.2rem; } }
+      grid-gap: 1.2rem;
+      margin-bottom: 1.2rem; } }
   .card-horizontal__image {
     height: 100%; }
     @media screen and (max-width: 1024px) {

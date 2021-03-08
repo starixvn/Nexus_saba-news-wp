@@ -23,6 +23,9 @@
 .block-main {
     .card-horizontal {
         margin-bottom: 1.6rem;
+        @include Mobile {
+            margin-bottom: 1.2rem;
+        }
 
         &-highlight {
             height: 30rem;
@@ -67,7 +70,6 @@
             }
 
             .description {
-                max-height: 6.5rem;
                 margin-top: 1rem;
 
                 @include tableMobile {
@@ -78,7 +80,6 @@
                 @include Mobile {
                     font-size: 1.2rem;
                     line-height: 2rem;
-                    max-height: 6rem;
                 }
             }
 

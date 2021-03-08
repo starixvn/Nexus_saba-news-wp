@@ -991,6 +991,9 @@ button {
 
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }
+  @media (max-device-width: 767px) {
+    .block-main .card-horizontal {
+      margin-bottom: 1.2rem; } }
   .block-main .card-horizontal-highlight {
     height: 30rem;
     grid-template-columns: 44rem 1fr;
@@ -1024,7 +1027,6 @@ button {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
     .block-main .card-horizontal-highlight .description {
-      max-height: 6.5rem;
       margin-top: 1rem; }
       @media screen and (max-width: 1024px) {
         .block-main .card-horizontal-highlight .description {
@@ -1033,8 +1035,7 @@ button {
       @media (max-device-width: 767px) {
         .block-main .card-horizontal-highlight .description {
           font-size: 1.2rem;
-          line-height: 2rem;
-          max-height: 6rem; } }
+          line-height: 2rem; } }
     .block-main .card-horizontal-highlight .card-horizontal__image {
       height: 100%; }
       @media screen and (max-width: 1024px) {
