@@ -10,7 +10,7 @@ COPY ["SabaNews.Site/SabaNews.Site.csproj", "SabaNews.Site/"]
 COPY ["nuget.config", ""]
 
 WORKDIR "/src/SabaNews.Site"
-RUN dotnet restore -v diag
+RUN dotnet restore -v n
 
 COPY ./SabaNews.Site .
 
