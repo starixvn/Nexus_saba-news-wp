@@ -112,7 +112,7 @@
         public async Task SendMailConfirmationAsync(string email, string url)
         {
             var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ConfirmEmailTemplates);
-            var subject = Constants.SubjectConfirmation;
+            const string subject = Constants.SubjectConfirmation;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
                 email,
@@ -123,7 +123,7 @@
         public async Task SendMailResetPasswordAsync(string email, string url)
         {
             var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ResetPasswordTemplates);
-            var subject = Constants.SubjectResetPassword;
+            const string subject = Constants.SubjectResetPassword;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
                 email,

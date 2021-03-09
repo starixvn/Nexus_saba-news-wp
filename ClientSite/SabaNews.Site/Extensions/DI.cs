@@ -52,6 +52,8 @@
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            const int ExpireMinutes = 10;
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -60,7 +62,7 @@
                 .AddCookie(options =>
                 {
                     options.Cookie.IsEssential = true;
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(ExpireMinutes);
                 })
                 .AddGoogle(options =>
                 {

@@ -39,15 +39,12 @@
         public async Task<IActionResult> Login(LoginModel model)
         {
             UserSession user = await authService.GetUserAsync(model.Email);
-            if (user != null)
+            if (user != null && !string.IsNullOrEmpty(user.Password) && authService.ComparePassword(model.Password, user.Password))
             {
-                if (!string.IsNullOrEmpty(user.Password) && authService.ComparePassword(model.Password, user.Password))
-                {
-                    await DoLoginAsync(user.Name, user.Email);
-                    sessionService.User = user;
-                    sessionService.User.LoginType = LoginType.Internal;
-                    return Json(new CommandResult { Code = 0, Message = string.Empty });
-                }
+                await DoLoginAsync(user.Name, user.Email);
+                sessionService.User = user;
+                sessionService.User.LoginType = LoginType.Internal;
+                return Json(new CommandResult { Code = 0, Message = string.Empty });
             }
             return Json(new CommandResult { Code = 1, Message = Constants.WrongUsernameOrPassword });
         }
