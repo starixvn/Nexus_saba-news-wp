@@ -889,7 +889,7 @@ button {
     .block-list {
       margin-top: 1rem; } }
   .block-list .list-item {
-    margin-bottom: 1rem; }
+    margin-bottom: 2rem; }
     @media screen and (max-width: 1024px) {
       .block-list .list-item {
         margin-bottom: 1.2rem; } }
@@ -1157,7 +1157,7 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: unset;
-  grid-gap: 1.6rem 1.6rem; }
+  grid-gap: 3.2rem 3.2rem; }
   @media screen and (max-width: 1024px) {
     .block__video {
       display: grid;
