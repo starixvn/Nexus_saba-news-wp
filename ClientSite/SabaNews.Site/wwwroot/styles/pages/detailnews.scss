@@ -6,6 +6,8 @@
 
 @import '../layout/footer';
 @import '../layout/header';
+@import '../layout/block-extension';
+
 @import '../components/fonts';
 @import '../components/block';
 @import '../components/buttons';
@@ -119,6 +121,4 @@ img {
     }
 }
 
-.block-extension .card-vertical .card-vertical__title {
-    font-size: 1.4rem;
-}
+
