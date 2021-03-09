@@ -58,8 +58,13 @@
                         </a>
                         <a href="@Url.Action("Single", "Home", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
                         <p class="card-vertical__datetime">
-							<span>@Model.Posts[i].PostTime</span>
-
+							<span>
+                                @Model.Posts[i].PostTime
+                                @if (Model.Posts[i].CommentCount > 0)
+								{ 
+									<a href="@Url.Action("Single", "Home", new { slug =  Model.Posts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
+								}
+                            </span>
                         </p>
                     </div>}
             </div>
