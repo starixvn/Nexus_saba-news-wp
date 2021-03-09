@@ -8,6 +8,8 @@
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
+    using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
     public class CommentController : Controller
@@ -58,8 +60,8 @@
             if (!isAuthenticated) {
                 return Json(new { isSuccessful = false });
             }
-            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-
+            var remoteIpAddress = GetRemoteIpAddress();
+            
             var model = new CreateComment
             {
                 CommentPostID = postID,
@@ -87,11 +89,27 @@
             {
                 return Json(new { isSuccessful = false });
             }
-            var remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            var remoteIpAddress = GetRemoteIpAddress();
             var commandResult = await commentService.UpdateLikeDataAsync(commentID, remoteIpAddress, type);
             return Json(commandResult);
         }
 
-
+        public string GetRemoteIpAddress()
+        {
+            IPAddress remoteIpAddress = HttpContext.Connection.RemoteIpAddress;
+            string ip = "";
+            if (remoteIpAddress != null)
+            {
+                // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
+                // This usually only happens when the browser is on the same machine as the server.
+                if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
+                {
+                    remoteIpAddress = System.Net.Dns.GetHostEntry(remoteIpAddress).AddressList
+            .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+                }
+                ip = remoteIpAddress.ToString();
+            }
+            return ip;
+        }
     }
 }
