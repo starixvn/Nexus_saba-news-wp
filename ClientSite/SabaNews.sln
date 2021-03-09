@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Site", "SabaNews.Site\SabaNews.Site.csproj", "{1B6EF556-9FE4-4AD8-8433-DE4A3450109D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F5087F36-7C8B-463A-85FE-A8FCB69A5C10} = {F5087F36-7C8B-463A-85FE-A8FCB69A5C10}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4565925B-B674-4ED2-9090-3FB7A76D16A1}"
 	ProjectSection(SolutionItems) = preProject
@@ -20,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Core", "SabaNews.C
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D15FE799-AEF5-45FD-BA44-AAC05FA592A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Resources", "..\SabaNews.Resources\SabaNews.Resources.csproj", "{27584BD4-0A76-49D3-B254-1D57B949C440}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Resources", "SabaNews.Resources\SabaNews.Resources.csproj", "{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +54,10 @@ Global
 		{D15FE799-AEF5-45FD-BA44-AAC05FA592A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D15FE799-AEF5-45FD-BA44-AAC05FA592A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D15FE799-AEF5-45FD-BA44-AAC05FA592A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27584BD4-0A76-49D3-B254-1D57B949C440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27584BD4-0A76-49D3-B254-1D57B949C440}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27584BD4-0A76-49D3-B254-1D57B949C440}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27584BD4-0A76-49D3-B254-1D57B949C440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
