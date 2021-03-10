@@ -127,6 +127,15 @@
                 app.UseMiddleware<ErrorHandler>();
                 app.UseForwardedHeaders();
                 app.UseHsts();
+
+                app.Use((context, next) =>
+                {
+                    if (context.Request.Headers["x-forwarded-proto"] == "https")
+                    {
+                        context.Request.Scheme = "https";
+                    }
+                    return next();
+                });
             }
             app.UseResponseCompression();
             app.UseStaticFiles(new StaticFileOptions
