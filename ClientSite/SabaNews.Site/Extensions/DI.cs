@@ -69,7 +69,7 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
-                    options.Backchannel = GetDefaultHttpClient(configuration);
+                    //options.Backchannel = GetDefaultHttpClient(configuration);
                     options.CorrelationCookie = new CookieBuilder
                     {
                         Expiration = TimeSpan.FromDays(1),
@@ -80,7 +80,7 @@
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
                     options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
-                    options.Backchannel = GetDefaultHttpClient(configuration);
+                    //options.Backchannel = GetDefaultHttpClient(configuration);
 
                     options.CorrelationCookie = new CookieBuilder
                     {
