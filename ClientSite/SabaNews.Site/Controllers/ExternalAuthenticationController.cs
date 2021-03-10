@@ -28,7 +28,7 @@
 
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
         {
-            string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl });
+            string redirectUrl = Url.Action("ExternalResponse", "ExternalAuthentication", new { provider, returnUrl }, Request.Scheme);
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
 
             return Challenge(properties, provider);
