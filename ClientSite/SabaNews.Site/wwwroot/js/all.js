@@ -60,6 +60,8 @@ $(document).ready(function () {
                 searchbox.removeClass('active-input');
                 $('input[name=keyword]').val('');
             }
+        } else {
+            $('input[name=keyword]').focus();
         }
     });
 });
