@@ -1,9 +1,9 @@
 ﻿namespace SabaNews.Services
 {
-    using System;
     using System.IO;
     using System.Threading.Tasks;
     using BCrypt.Net;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -19,16 +19,16 @@
         private const string ResetPasswordTemplates = "EmailTemplates//ResetPassword.cshtml";
 
         private readonly IBaseService baseService;
-        private readonly IHostEnvironment hostingEnvironment;
+        private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IBaseMailService mailService;
 
         public AuthService(
             IBaseService baseService,
-            IHostEnvironment hostingEnvironment,
+            IWebHostEnvironment webHostEnvironment,
             IBaseMailService mailService)
         {
             this.baseService = baseService;
-            this.hostingEnvironment = hostingEnvironment;
+            this.webHostEnvironment = webHostEnvironment;
             this.mailService = mailService;
         }
 
@@ -112,7 +112,7 @@
 
         public async Task SendMailConfirmationAsync(string email, string url)
         {
-            var mailPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfirmEmailTemplates);
+            var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, ConfirmEmailTemplates);
             const string subject = Constants.SubjectConfirmation;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
@@ -123,7 +123,7 @@
 
         public async Task SendMailResetPasswordAsync(string email, string url)
         {
-            var mailPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ResetPasswordTemplates);
+            var mailPath = Path.Combine(webHostEnvironment.WebRootPath, ResetPasswordTemplates);
             const string subject = Constants.SubjectResetPassword;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),

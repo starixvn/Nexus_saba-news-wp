@@ -82,11 +82,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="EmailTemplates\ConfirmEmail.cshtml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Content Update="wwwroot\EmailTemplates\ConfirmEmail.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
-      <Content Update="EmailTemplates\ResetPassword.cshtml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Content Update="wwwroot\EmailTemplates\ResetPassword.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 </Project>
