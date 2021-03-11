@@ -63,6 +63,7 @@
                 {
                     options.Cookie.IsEssential = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(ExpireMinutes);
+                    options.Cookie.Name = ".Sabasports.Auth.SharedCookie";
                 })
                 .AddGoogle(options =>
                 {
