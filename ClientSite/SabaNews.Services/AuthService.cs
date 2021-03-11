@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services
 {
+    using System;
     using System.IO;
     using System.Threading.Tasks;
     using BCrypt.Net;
@@ -111,7 +112,7 @@
 
         public async Task SendMailConfirmationAsync(string email, string url)
         {
-            var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ConfirmEmailTemplates);
+            var mailPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfirmEmailTemplates);
             const string subject = Constants.SubjectConfirmation;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
@@ -122,7 +123,7 @@
 
         public async Task SendMailResetPasswordAsync(string email, string url)
         {
-            var mailPath = Path.Combine(hostingEnvironment.ContentRootPath, ResetPasswordTemplates);
+            var mailPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ResetPasswordTemplates);
             const string subject = Constants.SubjectResetPassword;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),
