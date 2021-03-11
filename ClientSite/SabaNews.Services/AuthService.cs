@@ -14,8 +14,8 @@
 
     public class AuthService : IAuthService
     {
-        private const string ConfirmEmailTemplates = "EmailTemplates\\ConfirmEmail.cshtml";
-        private const string ResetPasswordTemplates = "EmailTemplates\\ResetPassword.cshtml";
+        private const string ConfirmEmailTemplates = "EmailTemplates//ConfirmEmail.cshtml";
+        private const string ResetPasswordTemplates = "EmailTemplates//ResetPassword.cshtml";
 
         private readonly IBaseService baseService;
         private readonly IHostEnvironment hostingEnvironment;
