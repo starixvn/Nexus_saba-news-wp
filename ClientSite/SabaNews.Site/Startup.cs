@@ -76,6 +76,18 @@
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
 
+            var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
+            var redis = ConnectionMultiplexer.Connect(redisConfig);
+            services.AddDataProtection()
+                .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
+                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = redisConfig;
+                options.InstanceName = $"SabaSports.Session-";
+            });
+
             services.RegisterCookiePolicy();
 
             services.RegisterAuthentication(Configuration);
@@ -85,12 +97,6 @@
                 options.Cookie.Name = ".SabaSports.Session";
                 options.Cookie.IsEssential = true;
             });
-
-            var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
-            var redis = ConnectionMultiplexer.Connect(redisConfig);
-            services.AddDataProtection()
-                .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
-                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
 
             services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
