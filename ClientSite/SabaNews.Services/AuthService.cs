@@ -15,8 +15,8 @@
 
     public class AuthService : IAuthService
     {
-        private const string ConfirmEmailTemplates = "EmailTemplates//ConfirmEmail.cshtml";
-        private const string ResetPasswordTemplates = "EmailTemplates//ResetPassword.cshtml";
+        private const string ConfirmEmailTemplates = "EmailTemplates//ConfirmEmail.txt";
+        private const string ResetPasswordTemplates = "EmailTemplates//ResetPassword.txt";
 
         private readonly IBaseService baseService;
         private readonly IWebHostEnvironment webHostEnvironment;
@@ -123,7 +123,7 @@
 
         public async Task SendMailResetPasswordAsync(string email, string url)
         {
-            var mailPath = Path.Combine(webHostEnvironment.WebRootPath, ResetPasswordTemplates);
+            var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, ResetPasswordTemplates);
             const string subject = Constants.SubjectResetPassword;
             var body = string.Format(
                 mailService.ReadTextFile(mailPath),

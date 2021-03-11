@@ -46,6 +46,12 @@
         <Content Include="App_Data\SpNames.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="EmailTemplates\ConfirmEmail.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="EmailTemplates\ResetPassword.txt">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
@@ -79,14 +85,5 @@
         <ProjectReference Include="..\SabaNews.Core\SabaNews.Core.csproj" />
         <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />
         <ProjectReference Include="..\SabaNews.Services\SabaNews.Services.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="wwwroot\EmailTemplates\ConfirmEmail.cshtml">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="wwwroot\EmailTemplates\ResetPassword.cshtml">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 </Project>
