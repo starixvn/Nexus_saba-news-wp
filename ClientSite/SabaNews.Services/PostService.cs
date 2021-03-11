@@ -1,24 +1,27 @@
 ﻿namespace SabaNews.Services
 {
-    using SabaNews.Core.Constants;
-    using SabaNews.Criteria;
-    using SabaNews.Models;
-    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Constants;
+    using SabaNews.Criteria;
+    using SabaNews.Models;
+    using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
     {
         private readonly IBaseService baseService;
         private readonly ISerializerService serializerService;
+        private readonly IConfiguration configuration;
 
-        public PostService(IBaseService baseService, ISerializerService serializerService)
+        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration)
         {
             this.baseService = baseService;
             this.serializerService = serializerService;
+            this.configuration = configuration;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
@@ -289,6 +292,19 @@
             }
 
             return cate;
+        }
+
+        public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
+        {
+            var domainName = configuration.GetValue<string>("SitemapSettings:Domain");
+            var sitemap = await baseService.GetDataAsync<SitemapModel>(new GetSitemapDataCriteria());
+
+            foreach (var item in sitemap)
+            {
+                item.Url = item.PostType == "category" ? string.Format("{0}tin-the-thao/{1}", domainName, item.Slug) : string.Format("{0}{1}", domainName, item.Slug);
+            }
+
+            return sitemap;
         }
     }
 }

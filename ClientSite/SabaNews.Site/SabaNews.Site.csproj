@@ -49,6 +49,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.SEOHelper" Version="1.0.1" />
         <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
         <PackageReference Include="Fanex.Data" Version="4.2.2" />
         <PackageReference Include="Fanex.Data.MySql" Version="4.2.2" />

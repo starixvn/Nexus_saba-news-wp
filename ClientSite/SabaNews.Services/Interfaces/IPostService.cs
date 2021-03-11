@@ -1,9 +1,9 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
-    using SabaNews.Models;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Models;
 
     public interface IPostService
     {
@@ -34,5 +34,7 @@
         Task<Category> GetPageDetailBySlugAsync(string slug);
 
         Task<Boolean> CheckTypeCategoryAsync(string parentSlug, int ID);
+
+        Task<IEnumerable<SitemapModel>> GetSitemapDataAsync();
     }
 }

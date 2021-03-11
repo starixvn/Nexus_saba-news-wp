@@ -135,5 +135,6 @@
         <Setting Key="check_type_category" SpName="check_type_category" DbName="sabasports" Plain="0">
             <Mapping DataField="term_id" ObjectProperty="CatId" class="Category" />
         </Setting>
+        <Setting Key="get_sitemap" SpName="get_sitemap" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

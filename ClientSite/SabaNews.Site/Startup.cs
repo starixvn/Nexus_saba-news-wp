@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AspNetCore.SEOHelper;
     using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
@@ -147,6 +148,8 @@
                     }
                 }
             });
+            app.UseXMLSitemap(env.ContentRootPath);
+
             app.UseRouting();
             app.UseResponseCaching();
 

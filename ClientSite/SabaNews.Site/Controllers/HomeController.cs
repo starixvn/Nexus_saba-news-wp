@@ -1,24 +1,28 @@
 ﻿namespace SabaNews.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AspNetCore.SEOHelper.Sitemap;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Globalization;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
+        private readonly IWebHostEnvironment env;
 
-        public HomeController(IPostService postService, IDataControlService dataControlService)
+        public HomeController(IPostService postService, IDataControlService dataControlService, IWebHostEnvironment env)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
+            this.env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -177,6 +181,20 @@
             };
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
+        }
+
+        [Route("sitemap/generate")]
+        public async Task<IActionResult> Sitemap()
+        {
+            var sitemap = await postService.GetSitemapDataAsync();
+            var siteMapNodes = sitemap.Select(item => new SitemapNode
+            {
+                Url = item.Url,
+                LastModified = item.ModifiedDate ?? DateTime.Now,
+                Priority = 0.8
+            });
+            new SitemapDocument().CreateSitemapXML(siteMapNodes, env.ContentRootPath);
+            return Redirect("/sitemap.xml");
         }
     }
 }
