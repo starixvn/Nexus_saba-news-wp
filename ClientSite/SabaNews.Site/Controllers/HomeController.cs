@@ -190,8 +190,7 @@
             var siteMapNodes = sitemap.Select(item => new SitemapNode
             {
                 Url = item.Url,
-                LastModified = item.ModifiedDate ?? DateTime.Now,
-                Priority = 0.8
+                LastModified = item.ModifiedDate,
             });
             new SitemapDocument().CreateSitemapXML(siteMapNodes, env.ContentRootPath);
             return Redirect("/sitemap.xml");
