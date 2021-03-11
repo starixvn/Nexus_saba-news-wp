@@ -14,6 +14,7 @@
     using Hangfire;
     using Hangfire.Redis;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
@@ -84,6 +85,12 @@
                 options.Cookie.Name = ".SabaSports.Session";
                 options.Cookie.IsEssential = true;
             });
+
+            var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
+            var redis = ConnectionMultiplexer.Connect(redisConfig);
+            services.AddDataProtection()
+                .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
+                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
 
             services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
