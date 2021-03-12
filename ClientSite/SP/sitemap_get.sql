@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS get_sitemap;
 DELIMITER //
 
-CREATE DEFINER=`root`@`%` PROCEDURE `get_sitemap`()
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap`()
 SQL SECURITY DEFINER
 get_sitemap:BEGIN
 
@@ -10,8 +10,9 @@ get_sitemap:BEGIN
           ,p.post_type AS PostType
           ,p.post_modified_gmt AS ModifiedDate
 	FROM wp_posts p 
-	WHERE p.post_type IN ("post", "page") and post_name <> ''
-    
+	WHERE p.post_type IN ('post', 'page') AND post_name <> ''
+    AND p.post_status = 'publish'
+    AND p.post_modified_gmt > '2020-12-31'
 
     UNION
 
