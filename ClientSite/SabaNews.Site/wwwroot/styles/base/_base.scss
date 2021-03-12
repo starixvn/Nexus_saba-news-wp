@@ -48,10 +48,11 @@ body{
     }
 }
 
-.main {
-    padding-top: 8rem;
-    @include Mobile {
-        padding-top: 7rem;
+.pb-3 {
+    padding-top: 6rem;
+
+    @media (max-device-width: 1024px) {
+        padding-top: 6.8rem;
     }
 }
 
@@ -91,4 +92,16 @@ body{
 
 p.has-text-align-center {
     line-height: 1.3;
+}
+
+.banner {
+    margin: 12px auto;
+    width: 1120px;
+    height: 80px;
+    @media (max-device-width: 1024px) {
+       display: none;
+    }
+    img {
+        border: 1px solid #e0e0e0;
+    }
 }
