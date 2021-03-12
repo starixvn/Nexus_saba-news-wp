@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using AspNetCore.SEOHelper.Sitemap;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Criteria;
@@ -295,7 +294,7 @@
             return cate;
         }
 
-        public async Task<IEnumerable<SitemapNode>> GetSitemapDataAsync()
+        public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
         {
             var domainName = configuration.GetValue<string>("SitemapSettings:Domain");
             var sitemap = await baseService.GetDataAsync<SitemapModel>(new GetSitemapDataCriteria());
@@ -305,12 +304,7 @@
                 item.Url = item.PostType == "category" ? string.Format("{0}tin-the-thao/{1}", domainName, item.Slug) : string.Format("{0}{1}", domainName, item.Slug);
             }
 
-            var siteMapNodes = sitemap.Select(item => new SitemapNode
-            {
-                Url = item.Url,
-                LastModified = item.ModifiedDate,
-            });
-            return siteMapNodes;
+            return sitemap;
         }
     }
 }

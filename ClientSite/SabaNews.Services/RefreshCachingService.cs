@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Caching;
-    using Microsoft.AspNetCore.Hosting;
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
 
@@ -12,17 +11,14 @@
         private readonly IFetchDataService fetchDataService;
         private readonly ICacheService cacheService;
         private readonly IPostService postService;
-        private readonly IWebHostEnvironment webHostEnvironment;
 
         public RefreshCachingService(IFetchDataService fetchDataService,
             ICacheService cacheService,
-            IPostService postService,
-            IWebHostEnvironment webHostEnvironment)
+            IPostService postService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
             this.postService = postService;
-            this.webHostEnvironment = webHostEnvironment;
         }
 
         public async Task UpdateHomePageCaching()

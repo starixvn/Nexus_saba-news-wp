@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using AspNetCore.SEOHelper.Sitemap;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
 
@@ -14,6 +13,6 @@
 
         Task<CategoryViewModel> GetCategoryViewModel(string slug, int page);
 
-        Task<IEnumerable<SitemapNode>> GenerateSitmapXmlData();
+        Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData();
     }
 }

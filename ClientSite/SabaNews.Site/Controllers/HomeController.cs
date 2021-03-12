@@ -4,7 +4,6 @@
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
@@ -15,13 +14,11 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
-        private readonly IWebHostEnvironment env;
 
-        public HomeController(IPostService postService, IDataControlService dataControlService, IWebHostEnvironment env)
+        public HomeController(IPostService postService, IDataControlService dataControlService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
-            this.env = env;
         }
 
         public async Task<IActionResult> Index()

@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using AspNetCore.SEOHelper.Sitemap;
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -83,11 +82,11 @@
             return await fetchDataService.GetMenuData();
         }
 
-        public async Task<IEnumerable<SitemapNode>> GenerateSitmapXmlData()
+        public async Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData()
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<IEnumerable<SitemapNode>>(CacheKey.SitemapXml);
+                var result = await cacheService.GetAsync<IEnumerable<SitemapModel>>(CacheKey.SitemapXml);
 
                 if (result == null)
                 {
