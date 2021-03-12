@@ -178,7 +178,7 @@
             var serviceProvider = app.ApplicationServices;
             var backgroundService = serviceProvider.GetService<IBackgroundJobService>();
             backgroundService.TriggerUpdateCaching();
-            backgroundService.InitSitemapXml();
+            backgroundService.InitCacheSitemapData();
         }
     }
 }

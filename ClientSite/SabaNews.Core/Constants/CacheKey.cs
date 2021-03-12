@@ -7,5 +7,7 @@
         public const string Menu = "Menu";
 
         public const string CategoryViewModel = "CategoryViewModel";
+
+        public const string SitemapXml = "SitemapXml";
     }
 }

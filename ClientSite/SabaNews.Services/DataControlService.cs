@@ -1,25 +1,28 @@
 ﻿namespace SabaNews.Services
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using AspNetCore.SEOHelper.Sitemap;
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class DataControlService : IDataControlService
     {
         private readonly IFetchDataService fetchDataService;
-        private readonly bool IsUsingCache;
         private readonly ICacheService cacheService;
+        private readonly IPostService postService;
+        private readonly bool IsUsingCache;
 
-        public DataControlService(IFetchDataService fetchDataService, IConfiguration configuration, ICacheService cacheService)
+        public DataControlService(IFetchDataService fetchDataService, IConfiguration configuration, ICacheService cacheService, IPostService postService)
         {
             this.fetchDataService = fetchDataService;
-            IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
             this.cacheService = cacheService;
+            this.postService = postService;
+            IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 
         public async Task<PostViewModel> GetHomePageViewModel()
@@ -78,6 +81,24 @@
             }
 
             return await fetchDataService.GetMenuData();
+        }
+
+        public async Task<IEnumerable<SitemapNode>> GenerateSitmapXmlData()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheService.GetAsync<IEnumerable<SitemapNode>>(CacheKey.SitemapXml);
+
+                if (result == null)
+                {
+                    result = await postService.GetSitemapDataAsync();
+                    await cacheService.SetAsync(CacheKey.SitemapXml, result);
+                }
+
+                return result;
+            }
+
+            return await postService.GetSitemapDataAsync();
         }
     }
 }

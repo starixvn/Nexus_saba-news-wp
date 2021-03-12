@@ -10,6 +10,6 @@
 
         Task UpdateCategoryCaching();
 
-        Task UpdateSitemapXml();
+        Task UpdateSitemapData();
     }
 }

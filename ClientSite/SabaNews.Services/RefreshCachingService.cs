@@ -1,9 +1,7 @@
 ﻿namespace SabaNews.Services
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
-    using AspNetCore.SEOHelper.Sitemap;
     using Fanex.Caching;
     using Microsoft.AspNetCore.Hosting;
     using SabaNews.Core.Constants;
@@ -61,16 +59,10 @@
             }
         }
 
-        public async Task UpdateSitemapXml()
+        public async Task UpdateSitemapData()
         {
-            var sitemap = await postService.GetSitemapDataAsync();
-            var siteMapNodes = sitemap.Select(item => new SitemapNode
-            {
-                Url = item.Url,
-                LastModified = item.ModifiedDate,
-            });
-            var siteMapDocument = new SitemapDocument();
-            siteMapDocument.CreateSitemapXML(siteMapNodes, webHostEnvironment.ContentRootPath);
+            var result = await postService.GetSitemapDataAsync();
+            await cacheService.SetAsync(CacheKey.SitemapXml, result);
         }
     }
 }

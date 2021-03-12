@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using AspNetCore.SEOHelper.Sitemap;
     using SabaNews.Models;
 
     public interface IPostService
@@ -35,6 +36,6 @@
 
         Task<Boolean> CheckTypeCategoryAsync(string parentSlug, int ID);
 
-        Task<IEnumerable<SitemapModel>> GetSitemapDataAsync();
+        Task<IEnumerable<SitemapNode>> GetSitemapDataAsync();
     }
 }

@@ -6,6 +6,6 @@
     {
         void TriggerUpdateCaching();
 
-        Task InitSitemapXml();
+        Task InitCacheSitemapData();
     }
 }

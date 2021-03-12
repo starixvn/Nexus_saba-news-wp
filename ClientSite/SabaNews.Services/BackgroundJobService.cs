@@ -50,8 +50,8 @@
 
             if (IsEnabledJob(HangfireJobName.RefreshSitemapXmlFile))
             {
-                recurringJob.AddOrUpdate<IRefreshCachingService>("Update sitemap.xml",
-                            job => job.UpdateSitemapXml(),
+                recurringJob.AddOrUpdate<IRefreshCachingService>("Update sitemap data",
+                            job => job.UpdateSitemapData(),
                             GetCronExpression(HangfireJobName.RefreshSitemapXmlFile),
                             TimeZoneInfo.Local);
             }
@@ -70,9 +70,9 @@
             return settings != null ? settings.CronExpression : string.Empty;
         }
 
-        public async Task InitSitemapXml()
+        public async Task InitCacheSitemapData()
         {
-            await refreshCachingService.UpdateSitemapXml();
+            await refreshCachingService.UpdateSitemapData();
         }
     }
 }
