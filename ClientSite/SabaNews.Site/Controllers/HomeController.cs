@@ -11,6 +11,7 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
 
     public class HomeController : Controller
     {
@@ -183,7 +184,7 @@
             return View(view, Model);
         }
 
-        [Route("sitemap/generate")]
+        [Route("sitemap.xml")]
         public async Task<IActionResult> Sitemap()
         {
             var sitemap = await postService.GetSitemapDataAsync();
@@ -193,7 +194,8 @@
                 LastModified = item.ModifiedDate,
             });
             new SitemapDocument().CreateSitemapXML(siteMapNodes, env.ContentRootPath);
-            return Redirect("/sitemap.xml");
+
+            return Content(SitemapHelper.GetSitemapDocument(siteMapNodes), "text/xml");
         }
     }
 }
