@@ -12,7 +12,6 @@ get_sitemap:BEGIN
 	FROM wp_posts p 
 	WHERE p.post_type IN ('post', 'page') AND post_name <> ''
     AND p.post_status = 'publish'
-    AND p.post_modified_gmt > '2020-12-31'
 
     UNION
 

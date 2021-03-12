@@ -1,7 +1,7 @@
 ﻿namespace Sabanews.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using System.Text;
+    using Microsoft.AspNetCore.Mvc;
 
     public class RobotsController : Controller
     {

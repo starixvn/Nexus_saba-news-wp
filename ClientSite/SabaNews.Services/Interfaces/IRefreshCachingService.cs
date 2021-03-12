@@ -9,5 +9,7 @@
         Task UpdateMenuCaching();
 
         Task UpdateCategoryCaching();
+
+        Task UpdateSitemapXml();
     }
 }

@@ -23,13 +23,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="wwwroot\styles\pages\maintenance.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\styles\pages\maintenance.css" />
     </ItemGroup>
 
     <ItemGroup>
         <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
         <Content Include="App_Data\SpNames.LOCAL_1.xml">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
         <Content Include="App_Data\SpNames.LOCAL.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -49,7 +49,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AspNetCore.SEOHelper" Version="1.0.1" />
         <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
         <PackageReference Include="Fanex.Data" Version="4.2.2" />
         <PackageReference Include="Fanex.Data.MySql" Version="4.2.2" />

@@ -1,20 +1,30 @@
 ﻿namespace SabaNews.Services
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AspNetCore.SEOHelper.Sitemap;
     using Fanex.Caching;
+    using Microsoft.AspNetCore.Hosting;
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class RefreshCachingService : IRefreshCachingService
     {
         private readonly IFetchDataService fetchDataService;
         private readonly ICacheService cacheService;
+        private readonly IPostService postService;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public RefreshCachingService(IFetchDataService fetchDataService, ICacheService cacheService)
+        public RefreshCachingService(IFetchDataService fetchDataService,
+            ICacheService cacheService,
+            IPostService postService,
+            IWebHostEnvironment webHostEnvironment)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
+            this.postService = postService;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         public async Task UpdateHomePageCaching()
@@ -49,6 +59,18 @@
                 var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
                 await cacheService.SetAsync(key, data);
             }
+        }
+
+        public async Task UpdateSitemapXml()
+        {
+            var sitemap = await postService.GetSitemapDataAsync();
+            var siteMapNodes = sitemap.Select(item => new SitemapNode
+            {
+                Url = item.Url,
+                LastModified = item.ModifiedDate,
+            });
+            var siteMapDocument = new SitemapDocument();
+            siteMapDocument.CreateSitemapXML(siteMapNodes, webHostEnvironment.ContentRootPath);
         }
     }
 }

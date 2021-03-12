@@ -1,8 +1,9 @@
 ﻿namespace SabaNews.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Text;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("/whoami")]
     public class WhoamiController : Controller
     {

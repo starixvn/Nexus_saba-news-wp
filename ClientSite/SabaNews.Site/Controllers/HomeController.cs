@@ -4,14 +4,12 @@
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
-    using AspNetCore.SEOHelper.Sitemap;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
-    using SabaNews.Site.Extensions;
 
     public class HomeController : Controller
     {
@@ -182,20 +180,6 @@
             };
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
-        }
-
-        [Route("sitemap.xml")]
-        public async Task<IActionResult> Sitemap()
-        {
-            var sitemap = await postService.GetSitemapDataAsync();
-            var siteMapNodes = sitemap.Select(item => new SitemapNode
-            {
-                Url = item.Url,
-                LastModified = item.ModifiedDate,
-            });
-            new SitemapDocument().CreateSitemapXML(siteMapNodes, env.ContentRootPath);
-
-            return Content(SitemapHelper.GetSitemapDocument(siteMapNodes), "text/xml");
         }
     }
 }
