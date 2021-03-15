@@ -1,4 +1,7 @@
 
+
+
+
 .main-social {
     @include flex(center, nowrap, space-between, row);
 
@@ -72,6 +75,20 @@
                     }
                 }
             }
+        }
+    }
+}
+.fixed-social {
+    position: sticky;
+    top: 0;
+    display: inherit;
+    width: 4rem;
+    text-align: center;
+    .social {
+        display: inherit;
+
+        .item-social {
+            margin-right: 0
         }
     }
 }

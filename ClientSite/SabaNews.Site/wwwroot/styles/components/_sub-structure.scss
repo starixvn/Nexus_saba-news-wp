@@ -7,7 +7,7 @@
     @include grid(70% 30%, unset, 0);
 
     @include tableMobile {
-        @include grid(60% 40%, unset, 0);
+        @include grid( 60% 40%, unset, 0);
     }
 
     @include Mobile {
