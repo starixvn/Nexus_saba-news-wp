@@ -969,11 +969,12 @@ button {
     border: 1px solid #BEBEBE;
     box-sizing: border-box;
     border-radius: 5px;
-    padding: 0.4rem 1rem 0.4rem 0.4rem; }
+    padding: .4rem 1rem .4rem .8rem; }
   .main-social .left-social .item-social .intent {
-    display: flex; }
+    display: flex;
+    align-items: center; }
     .main-social .left-social .item-social .intent .svg-bookmark {
-      margin-right: .4rem; }
+      margin-right: .8rem; }
     .main-social .left-social .item-social .intent .icon-back {
       width: 3.2rem;
       height: 3.2rem;
@@ -984,6 +985,9 @@ button {
       flex-direction: row;
       border: 1px solid #BEBEBE;
       border-radius: 50%; }
+  .main-social .left-social .item-social .active .svg-bookmark path {
+    stroke: #2B89CC;
+    fill: #2B89CC; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
