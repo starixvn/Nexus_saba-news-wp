@@ -27,6 +27,7 @@
 
 .icon-back:before {
   content: "\e916";
+  color: #999;
 }
 .icon-detail_facebook:before {
   content: "\e917";
