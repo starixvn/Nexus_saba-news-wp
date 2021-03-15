@@ -270,3 +270,9 @@ function telegram_add_home_link($items, $args){
     }
     return $items;
 }
+
+// Hide the 'Back to {sitename}' link on the login screen.
+function my_forcelogin_hide_backtoblog() {
+  echo '<style type="text/css">#backtoblog{display:none;}</style>';
+}
+add_action( 'login_enqueue_scripts', 'my_forcelogin_hide_backtoblog' );
