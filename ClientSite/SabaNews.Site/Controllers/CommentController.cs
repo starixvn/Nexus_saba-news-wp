@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
@@ -12,15 +13,19 @@
     using System.Net;
     using System.Threading.Tasks;
 
+
     public class CommentController : Controller
     {
         private readonly ICommentService commentService;
         private readonly ISessionService sessionService;
+        private IHttpContextAccessor accessor;
 
-        public CommentController(ICommentService commentService, ISessionService sessionService)
+
+        public CommentController(ICommentService commentService, ISessionService sessionService, IHttpContextAccessor accessor)
         {
             this.commentService = commentService;
             this.sessionService = sessionService;
+            this.accessor = accessor;
         }
 
 
@@ -56,7 +61,22 @@
         [Route("/comments/create")]
         public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
-            var test = HttpContext.Connection.RemoteIpAddress.ToString();
+            var _IP = "RemoteIp1: "+ accessor.HttpContext.Connection.RemoteIpAddress.ToString() + 
+                " - RemoteIp2: " + Request.HttpContext.Connection.RemoteIpAddress.ToString() +
+                " - RemoteIp3: " + HttpContext.Connection.RemoteIpAddress.ToString() + 
+                " - LocalIpAddress:" + Request.HttpContext.Connection.LocalIpAddress;
+            try
+            {
+                _IP += " IP.AddressFamily:" + Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+
+                _IP += " HostName:" + Dns.GetHostEntry(Dns.GetHostName()).HostName;
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated) {
                 return Json(new { isSuccessful = false });
@@ -68,7 +88,7 @@
                 CommentPostID = postID,
                 CommentAuthor = sessionService.User.Name,
                 CommentAuthorEmail = sessionService.User.Email,
-                CommentAuthorIP = remoteIpAddress,
+                CommentAuthorIP = _IP,
                 CommentDate = DateTime.Now,
                 CommentDateGMT = DateTime.UtcNow,
                 CommentContent = commentContent,
@@ -78,7 +98,7 @@
             };
             var result = await commentService.CreateCommentAsync(model);
             model.CommentID = result;
-            return Json(new { isSuccessful = result != 0, comment = model, TestIP = test });
+            return Json(new { isSuccessful = result != 0, comment = model, IP = _IP });
         }
 
         [HttpPost]

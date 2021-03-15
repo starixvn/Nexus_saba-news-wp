@@ -28,6 +28,7 @@
             services.AddSingleton<IBaseService, BaseService>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<IBaseRepository, BaseRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ILogger, Logger>();
             services.AddScoped<IBaseMailService, BaseMailService>();
             services.AddScoped<ISessionService, SessionService>();
