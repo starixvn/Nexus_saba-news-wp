@@ -856,29 +856,56 @@ button {
             font-size: 2rem;
             margin: 0.2rem .8rem 0 0; } }
 
-.social {
-  padding: 0;
-  list-style: none;
+.main-social {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  justify-content: center;
-  flex-direction: row;
-  margin: 4rem 0 3rem 0; }
-  .social .item-social {
-    margin-right: 1rem; }
-    .social .item-social:first-child {
-      font-size: 1.6rem;
-      line-height: 2.4rem;
-      color: #454545; }
-    .social .item-social:last-child {
-      margin-right: 0; }
-    .social .item-social .item {
-      text-decoration: none; }
-      .social .item-social .item .icon-social {
-        font-size: 2.4rem; }
-        .social .item-social .item .icon-social:before {
-          color: #828282; }
+  justify-content: space-between;
+  flex-direction: row; }
+  .main-social .social {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row;
+    margin: 4rem 0 3rem 0; }
+    .main-social .social .item-social {
+      margin-right: 1rem; }
+      .main-social .social .item-social:first-child {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: #454545; }
+      .main-social .social .item-social:last-child {
+        margin-right: 0; }
+      .main-social .social .item-social .item {
+        text-decoration: none;
+        color: #454545;
+        font-size: 1.5rem; }
+        .main-social .social .item-social .item .icon-social {
+          font-size: 2.4rem; }
+          .main-social .social .item-social .item .icon-social:before {
+            color: #828282; }
+  .main-social .left-social .item-social:last-child {
+    border: 1px solid #BEBEBE;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0.4rem 1rem 0.4rem 0.4rem; }
+  .main-social .left-social .item-social .intent {
+    display: flex; }
+    .main-social .left-social .item-social .intent .svg-bookmark {
+      margin-right: .4rem; }
+    .main-social .left-social .item-social .intent .icon-back {
+      width: 3.2rem;
+      height: 3.2rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      flex-direction: row;
+      border: 1px solid #BEBEBE;
+      border-radius: 50%; }
 
 .tag-post {
   padding: 0;

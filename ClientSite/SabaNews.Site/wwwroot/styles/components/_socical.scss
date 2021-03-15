@@ -1,32 +1,70 @@
-.social {
-    padding: 0;
-    list-style: none;
-    @include flex(center, nowrap, center, row);
-    margin: 4rem 0 3rem 0;
 
-    .item-social {
-        margin-right: 1rem;
+.main-social {
+    @include flex(center, nowrap, space-between, row);
 
-        &:first-child {
-            font-size: 1.6rem;
-            line-height: 2.4rem;
-            color: $text-social;
-        }
+    .social {
+        padding: 0;
+        list-style: none;
+        @include flex(center, nowrap, center, row);
+        margin: 4rem 0 3rem 0;
+
+        .item-social {
+            margin-right: 1rem;
+
+            &:first-child {
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+                color: $text-social;
+            }
 
 
-        &:last-child {
-            margin-right: 0;
-        }
+            &:last-child {
+                margin-right: 0;
+            }
 
-        .item {
-            text-decoration: none;
+            .item {
+                text-decoration: none;
+                color: $text-social;
+                font-size: 1.5rem;
 
-            .icon-social {
-                font-size: 2.4rem;
+                .icon-social {
+                    font-size: 2.4rem;
 
-                &:before {
-                    color: $color-datetime;
+                    &:before {
+                        color: $color-datetime;
+                    }
                 }
+            }
+        }
+    }
+
+    .left-social {
+        .item-social {
+            &:last-child {
+                border: 1px solid $border-social;
+                box-sizing: border-box;
+                border-radius: 5px;
+                padding: .4rem 1rem.4rem 0.4rem;
+            }
+
+            .intent {
+                display: flex;
+
+                .svg-bookmark {
+                    margin-right: .4rem
+                }
+
+                .icon-back {
+                    width: 3.2rem;
+                    height: 3.2rem;
+                    @include flex(center, nowrap, center, row);
+                    border: 1px solid $border-social;
+                    border-radius: 50%;
+                }
+            }
+
+            .active {
+                
             }
         }
     }
