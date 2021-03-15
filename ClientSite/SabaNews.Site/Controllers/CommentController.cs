@@ -57,9 +57,6 @@
         public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
             var test = HttpContext.Connection.RemoteIpAddress.ToString();
-            var addlist = Dns.GetHostEntry(Dns.GetHostName());
-            var IPv6 = addlist.AddressList[2].ToString();
-            var IPv4 = addlist.AddressList[3].ToString();
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated) {
                 return Json(new { isSuccessful = false });
@@ -81,7 +78,7 @@
             };
             var result = await commentService.CreateCommentAsync(model);
             model.CommentID = result;
-            return Json(new { isSuccessful = result != 0, comment = model, IPv6 = IPv6, IPv4 = IPv4, TestIP = test });
+            return Json(new { isSuccessful = result != 0, comment = model, TestIP = test });
         }
 
         [HttpPost]
