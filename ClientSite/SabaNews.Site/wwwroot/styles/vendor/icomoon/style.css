@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?284o61');
-  src:  url('fonts/icomoon.eot?284o61#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?284o61') format('truetype'),
-    url('fonts/icomoon.woff?284o61') format('woff'),
-    url('fonts/icomoon.svg?284o61#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?m3rt4r');
+  src:  url('fonts/icomoon.eot?m3rt4r#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?m3rt4r') format('truetype'),
+    url('fonts/icomoon.woff?m3rt4r') format('woff'),
+    url('fonts/icomoon.svg?m3rt4r#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-back:before {
+  content: "\e916";
+}
+.icon-detail_facebook:before {
+  content: "\e917";
+  color: #999;
+}
+.icon-email:before {
+  content: "\e918";
+  color: #999;
+}
+.icon-link:before {
+  content: "\e919";
+  color: #999;
+}
 .icon-sport-basketball:before {
   content: "\e915";
   color: #4f4f4f;
