@@ -18,7 +18,7 @@
     {
         private readonly ICommentService commentService;
         private readonly ISessionService sessionService;
-        private IHttpContextAccessor accessor;
+        private readonly IHttpContextAccessor accessor;
 
 
         public CommentController(ICommentService commentService, ISessionService sessionService, IHttpContextAccessor accessor)
@@ -61,21 +61,11 @@
         [Route("/comments/create")]
         public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
-            var _IP = "RemoteIp1: "+ accessor.HttpContext.Connection.RemoteIpAddress.ToString() + 
-                " - RemoteIp2: " + Request.HttpContext.Connection.RemoteIpAddress.ToString() +
-                " - RemoteIp3: " + HttpContext.Connection.RemoteIpAddress.ToString() + 
+            var _IP = "RemoteIp1: "+ accessor.HttpContext.Connection.RemoteIpAddress + 
+                " - RemoteIp2: " + Request.HttpContext.Connection.RemoteIpAddress +
+                " - RemoteIp3: " + HttpContext.Connection.RemoteIpAddress + 
                 " - LocalIpAddress:" + Request.HttpContext.Connection.LocalIpAddress;
-            try
-            {
-                _IP += " IP.AddressFamily:" + Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-
-                _IP += " HostName:" + Dns.GetHostEntry(Dns.GetHostName()).HostName;
-
-            }
-            catch (Exception e)
-            {
-
-            }
+           
 
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated) {
@@ -88,7 +78,7 @@
                 CommentPostID = postID,
                 CommentAuthor = sessionService.User.Name,
                 CommentAuthorEmail = sessionService.User.Email,
-                CommentAuthorIP = _IP,
+                CommentAuthorIP = remoteIpAddress,
                 CommentDate = DateTime.Now,
                 CommentDateGMT = DateTime.UtcNow,
                 CommentContent = commentContent,
