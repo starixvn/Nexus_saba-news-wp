@@ -1133,6 +1133,24 @@ button {
         max-width: 100%; }
     .main .banner {
       display: none; } }
+  @media (min-width: 1024px) {
+    .main .banner {
+      margin: 12px auto;
+      max-width: 1120px;
+      max-height: 80px; }
+      .main .banner img {
+        border: 1px solid #e0e0e0;
+        max-width: 100%;
+        height: auto; }
+    .main .banner-mobile {
+      display: none; } }
+  @media (max-device-width: 768px) {
+    .main .banner-mobile {
+      text-align: center; }
+      .main .banner-mobile img {
+        border: 1px solid #e0e0e0; }
+    .main .banner {
+      display: none; } }
   .main .group-blocks .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1311,7 +1329,7 @@ button {
         .main .block-guess .block__content .card-vertical {
           padding-bottom: 0; } }
       .main .block-guess .block__content .card-vertical__title {
-      color: #fff; }
+        color: #fff;
         font-weight: normal; }
       .main .block-guess .block__content .card-vertical__datetime {
         color: #cbcbcb; }
@@ -1319,7 +1337,7 @@ button {
         height: 20rem; }
         @media screen and (max-width: 1024px) {
           .main .block-guess .block__content .card-vertical__image {
-            height: 11rem; } }
+            height: 9rem; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .main .block-guess .block__content .card-vertical__image {
             height: 18rem; } }
