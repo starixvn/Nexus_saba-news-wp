@@ -79,16 +79,13 @@
 								</a>
 								<div class="sub-content">
                                         <p class="description">@Model.NewPosts[i].PostExcerpt</p>
-                                        <p class="datetime">@Model.NewPosts[i].PostTime</p>
-                                    </div>
-                                </div>
-									<p class="datetime">
-										@Model.NewPosts[i].PostTime
-										@if (Model.NewPosts[i].CommentCount > 0)
-											{ 
-												<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>
-											}
-									</p>
+										<p class="datetime">
+											@Model.NewPosts[i].PostTime
+											@if (Model.NewPosts[i].CommentCount > 0)
+												{ 
+													<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>
+												}
+										</p>
 								</div>
 							</div>
 						}
