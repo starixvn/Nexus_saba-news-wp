@@ -28,6 +28,7 @@
         padding-top: 7rem;
     }
     // block-hot-news
+    padding-top: 6rem;
     .block-hot-news {
 
         .block__content {
@@ -165,6 +166,38 @@
             img {
                 border: 1px solid #e0e0e0;
                 max-width : 100%;
+            }
+        }
+
+        .banner {
+            display: none;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .banner {
+            margin: 12px auto;
+            max-width: 1120px;
+            max-height: 80px;
+
+            img {
+                border: 1px solid #e0e0e0;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .banner-mobile {
+            display: none;
+        }
+    }
+
+    @media (max-device-width: 768px) {
+        .banner-mobile {
+            text-align: center;
+
+            img {
+                border: 1px solid #e0e0e0;
             }
         }
 

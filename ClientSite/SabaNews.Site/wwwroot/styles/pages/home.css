@@ -55,10 +55,10 @@ body {
     .pd-column-right {
       padding: 0; } }
 
-.pb-3 {
-  padding-top: 6rem; }
+.main {
+  padding-top: 7rem; }
   @media (max-device-width: 1024px) {
-    .pb-3 {
+    .main {
       padding-top: 6.8rem; } }
 
 .content {
@@ -89,20 +89,6 @@ body {
 
 p.has-text-align-center {
   line-height: 1.3; }
-
-@media (min-width: 1024px) {
-  .banner {
-    margin: 12px auto;
-    max-width: 1120px;
-    max-height: 80px; }
-    .banner img {
-      border: 1px solid #e0e0e0;
-      max-width: 100%;
-      height: auto; } }
-
-@media (max-device-width: 768px) {
-  .banner {
-    text-align: center; } }
 
 /*:root {
     --column : 12;
@@ -1325,7 +1311,7 @@ button {
         .main .block-guess .block__content .card-vertical {
           padding-bottom: 0; } }
       .main .block-guess .block__content .card-vertical__title {
-        color: #fff;
+      color: #fff; }
         font-weight: normal; }
       .main .block-guess .block__content .card-vertical__datetime {
         color: #cbcbcb; }
@@ -1333,7 +1319,7 @@ button {
         height: 20rem; }
         @media screen and (max-width: 1024px) {
           .main .block-guess .block__content .card-vertical__image {
-            height: 9rem; } }
+            height: 11rem; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .main .block-guess .block__content .card-vertical__image {
             height: 18rem; } }
