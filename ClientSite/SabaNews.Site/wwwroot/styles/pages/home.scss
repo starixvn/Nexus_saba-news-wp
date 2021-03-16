@@ -22,14 +22,21 @@
 
 
 .main {
+    padding-top: 6rem;
+    @include Mobile {
+        padding-top: 7rem;
+    }
+
     // block-hot-news
     .block-hot-news {
 
         .block__content {
             display: flex;
+
             @include Mobile {
                 display: unset;
             }
+
             .card-vertical {
                 background-color: $block-highlight-bgcolor;
                 width: 53rem;
@@ -132,6 +139,39 @@
             }
         }
     }
+
+    @media (min-width: 1024px) {
+        .banner {
+            margin: 12px auto;
+            max-width: 1120px;
+            max-height: 80px;
+
+            img {
+                border: 1px solid #e0e0e0;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .banner-mobile {
+            display: none;
+        }
+    }
+
+    @media (max-device-width: 768px) {
+        .banner-mobile {
+            text-align: center;
+
+            img {
+                border: 1px solid #e0e0e0;
+            }
+        }
+
+        .banner {
+            display: none;
+        }
+    }
+
 
     .group-blocks {
         .container {
