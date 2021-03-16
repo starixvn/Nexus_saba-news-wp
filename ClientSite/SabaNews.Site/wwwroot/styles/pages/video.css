@@ -86,15 +86,19 @@ body {
 p.has-text-align-center {
   line-height: 1.3; }
 
-.banner {
-  margin: 12px auto;
-  width: 1120px;
-  height: 80px; }
-  @media (max-device-width: 1024px) {
-    .banner {
-      display: none; } }
-  .banner img {
-    border: 1px solid #e0e0e0; }
+@media (min-width: 1024px) {
+  .banner {
+    margin: 12px auto;
+    max-width: 1120px;
+    max-height: 80px; }
+    .banner img {
+      border: 1px solid #e0e0e0;
+      max-width: 100%;
+      height: auto; } }
+
+@media (max-device-width: 768px) {
+  .banner {
+    text-align: center; } }
 
 /*:root {
     --column : 12;
