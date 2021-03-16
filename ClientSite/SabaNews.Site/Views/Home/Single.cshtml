@@ -200,10 +200,10 @@
 
 <script>
     var checkScroll = function () {
-        var el = document.querySelector('.content');
+        var el = document.querySelector('.title-care');
         var main = document.querySelector('.fixed-social');
         if (el !== null) {
-            var top_of_obj = el.offsetTop;
+            var top_of_obj = el.offsetTop - 600;
             var top_of_window = window.scrollY;
             if (top_of_window > top_of_obj) {
                 main.classList.add('active-nav')

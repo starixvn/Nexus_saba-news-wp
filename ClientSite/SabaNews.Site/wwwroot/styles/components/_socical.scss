@@ -159,10 +159,10 @@
 
     &:hover {
         background: #076DB6;
-        border: 1px solid #fff;
+        border: 1px solid $color-fff;
 
         &:before {
-            color: #fff !important;
+            color: $color-fff !important;
         }
     }
 }
