@@ -48,6 +48,15 @@
                 box-sizing: border-box;
                 border-radius: 5px;
                 padding: .4rem 1rem .4rem .8rem;
+
+                &:hover {
+                    .svg-bookmark {
+                        path {
+                            stroke: $bookmark;
+                            fill: $bookmark;
+                        }
+                    }
+                }
             }
 
             .intent {
@@ -55,30 +64,12 @@
                 align-items: center;
 
                 .svg-bookmark {
-                    margin-right: .8rem
-                }
-            }
-
-            .active {
-                .svg-bookmark {
-                    path {
-                        stroke: #2B89CC;
-                        fill: #2B89CC;
-                    }
+                    margin-right: .8rem;
                 }
             }
         }
     }
 }
-
-.icon-back {
-    width: 3.2rem;
-    height: 3.2rem;
-    @include flex(center, nowrap, center, row);
-    border: 1px solid $border-social;
-    border-radius: 50%;
-}
-
 
 .fixed-social {
     position: sticky;
@@ -86,9 +77,10 @@
     display: table;
     width: 4rem;
     text-align: center;
-    opacity : 1;
-    transition : .3s all ease-in-out;
-    visibility : visible;
+    opacity: 1;
+    transition: .3s all ease-in-out;
+    visibility: visible;
+
     @include Mobile {
         display: none;
     }
@@ -112,4 +104,65 @@
     opacity: 0;
     transition: .3s all ease-in-out;
     visibility: hidden;
+}
+
+.active {
+    .svg-bookmark {
+        path {
+            stroke: $bookmark;
+            fill: $bookmark;
+        }
+    }
+}
+
+.svg-bookmark {
+    &:hover {
+        path {
+            stroke: $bookmark;
+            fill: $bookmark;
+        }
+    }
+}
+
+.svg-comment {
+    &:hover {
+        path {
+            stroke: $comment;
+            fill: $comment;
+        }
+    }
+}
+
+.icon-detail_facebook {
+    &:hover {
+        &:before {
+            color: $facebook !important;
+        }
+    }
+}
+
+.icon-link {
+    &:hover {
+        &:before {
+            color: $link-icon !important;
+        }
+    }
+}
+
+
+.icon-back {
+    width: 3.2rem;
+    height: 3.2rem;
+    @include flex(center, nowrap, center, row);
+    border: 1px solid $border-social;
+    border-radius: 50%;
+
+    &:hover {
+        background: #076DB6;
+        border: 1px solid #fff;
+
+        &:before {
+            color: #fff !important;
+        }
+    }
 }

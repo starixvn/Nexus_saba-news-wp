@@ -960,25 +960,14 @@ button {
     box-sizing: border-box;
     border-radius: 5px;
     padding: .4rem 1rem .4rem .8rem; }
+    .main-social .left-social .item-social:last-child:hover .svg-bookmark path {
+      stroke: #2B89CC;
+      fill: #2B89CC; }
   .main-social .left-social .item-social .intent {
     display: flex;
     align-items: center; }
     .main-social .left-social .item-social .intent .svg-bookmark {
       margin-right: .8rem; }
-  .main-social .left-social .item-social .active .svg-bookmark path {
-    stroke: #2B89CC;
-    fill: #2B89CC; }
-
-.icon-back {
-  width: 3.2rem;
-  height: 3.2rem;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  justify-content: center;
-  flex-direction: row;
-  border: 1px solid #BEBEBE;
-  border-radius: 50%; }
 
 .fixed-social {
   position: sticky;
@@ -1005,6 +994,40 @@ button {
   opacity: 0;
   transition: .3s all ease-in-out;
   visibility: hidden; }
+
+.active .svg-bookmark path {
+  stroke: #2B89CC;
+  fill: #2B89CC; }
+
+.svg-bookmark:hover path {
+  stroke: #2B89CC;
+  fill: #2B89CC; }
+
+.svg-comment:hover path {
+  stroke: #E13C29;
+  fill: #E13C29; }
+
+.icon-detail_facebook:hover:before {
+  color: #3B5999 !important; }
+
+.icon-link:hover:before {
+  color: #076DB6 !important; }
+
+.icon-back {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: row;
+  border: 1px solid #BEBEBE;
+  border-radius: 50%; }
+  .icon-back:hover {
+    background: #076DB6;
+    border: 1px solid #fff; }
+    .icon-back:hover:before {
+      color: #fff !important; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
