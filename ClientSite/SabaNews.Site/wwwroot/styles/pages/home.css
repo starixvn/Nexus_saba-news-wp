@@ -1282,18 +1282,21 @@ button {
       @media (max-device-width: 767px) {
         .main .block-guess .block__content {
           display: inherit; } }
+      .main .block-guess .block__content .card-horizontal {
+        border-color: #506180; }
       @media screen and (max-width: 1024px) {
         .main .block-guess .block__content .card-vertical {
           padding-bottom: 0; } }
       .main .block-guess .block__content .card-vertical__title {
-        color: #fff; }
+        color: #fff;
+        font-weight: normal; }
       .main .block-guess .block__content .card-vertical__datetime {
         color: #cbcbcb; }
       .main .block-guess .block__content .card-vertical__image {
         height: 20rem; }
         @media screen and (max-width: 1024px) {
           .main .block-guess .block__content .card-vertical__image {
-            height: 11rem; } }
+            height: 9rem; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .main .block-guess .block__content .card-vertical__image {
             height: 18rem; } }

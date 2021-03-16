@@ -23,10 +23,10 @@
 
 .main {
     padding-top: 6rem;
+
     @include Mobile {
         padding-top: 7rem;
     }
-
     // block-hot-news
     .block-hot-news {
 
@@ -403,7 +403,9 @@
                 display: inherit;
             }
 
-
+            .card-horizontal {
+                border-color: #506180;
+            }
 
             .card-vertical {
                 @include tableMobile {
@@ -413,6 +415,7 @@
 
             .card-vertical__title {
                 color: #fff;
+                font-weight: normal;
             }
 
             .card-vertical__datetime {
@@ -423,7 +426,7 @@
                 height: 20rem;
 
                 @include tableMobile {
-                    height: 11rem;
+                    height: 9rem;
                 }
 
                 @include landscapeTablet {
