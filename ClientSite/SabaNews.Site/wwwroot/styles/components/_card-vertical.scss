@@ -38,6 +38,7 @@
         text-decoration: none;
         transition: color .3s ease;
         display: block;
+        line-height: 2rem;
 
         &:hover {
             color: $color-title-hover;

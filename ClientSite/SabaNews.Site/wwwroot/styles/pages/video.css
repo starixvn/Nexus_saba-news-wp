@@ -970,7 +970,8 @@ button {
     letter-spacing: -0.02rem;
     text-decoration: none;
     transition: color .3s ease;
-    display: block; }
+    display: block;
+    line-height: 2rem; }
     .card-vertical__title:hover {
       color: #EB5342; }
   .card-vertical__datetime {
