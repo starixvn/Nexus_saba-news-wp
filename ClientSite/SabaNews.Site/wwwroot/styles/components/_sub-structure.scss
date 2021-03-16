@@ -7,7 +7,19 @@
     @include grid(70% 30%, unset, 0);
 
     @include tableMobile {
-        @include grid( 60% 40%, unset, 0);
+        @include grid(60% 40%, unset, 0);
+    }
+
+    @include Mobile {
+        display: inherit;
+    }
+}
+
+.main .detail-container {
+    @include grid(5% 65% 30%, unset, 0);
+
+    @include tableMobile {
+        @include grid( 5% 60% 35%, unset, 0);
     }
 
     @include Mobile {
@@ -26,4 +38,3 @@
         padding-left: 2.8rem;
     }
 }
-

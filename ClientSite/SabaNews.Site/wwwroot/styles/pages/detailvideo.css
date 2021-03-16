@@ -979,30 +979,46 @@ button {
     align-items: center; }
     .main-social .left-social .item-social .intent .svg-bookmark {
       margin-right: .8rem; }
-    .main-social .left-social .item-social .intent .icon-back {
-      width: 3.2rem;
-      height: 3.2rem;
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-      justify-content: center;
-      flex-direction: row;
-      border: 1px solid #BEBEBE;
-      border-radius: 50%; }
   .main-social .left-social .item-social .active .svg-bookmark path {
     stroke: #2B89CC;
     fill: #2B89CC; }
 
+.icon-back {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: row;
+  border: 1px solid #BEBEBE;
+  border-radius: 50%; }
+
 .fixed-social {
   position: sticky;
-  top: 0;
-  display: inherit;
+  top: 8rem;
+  display: table;
   width: 4rem;
-  text-align: center; }
+  text-align: center;
+  opacity: 1;
+  transition: .3s all ease-in-out;
+  visibility: visible; }
+  @media (max-device-width: 767px) {
+    .fixed-social {
+      display: none; } }
   .fixed-social .social {
     display: inherit; }
     .fixed-social .social .item-social {
-      margin-right: 0; }
+      margin-right: 0;
+      padding-bottom: 1.2rem; }
+      .fixed-social .social .item-social:nth-child(3) {
+        border-top: 1px solid #999999;
+        padding-top: 2rem; }
+
+.active-nav {
+  opacity: 0;
+  transition: .3s all ease-in-out;
+  visibility: hidden; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
@@ -1068,6 +1084,21 @@ button {
       grid-gap: 0; } }
   @media (max-device-width: 767px) {
     .main .container {
+      display: inherit; } }
+
+.main .detail-container {
+  display: grid;
+  grid-template-columns: 5% 65% 30%;
+  grid-template-rows: unset;
+  grid-gap: 0; }
+  @media screen and (max-width: 1024px) {
+    .main .detail-container {
+      display: grid;
+      grid-template-columns: 5% 60% 35%;
+      grid-template-rows: unset;
+      grid-gap: 0; } }
+  @media (max-device-width: 767px) {
+    .main .detail-container {
       display: inherit; } }
 
 @media screen and (min-width: 1024px) {

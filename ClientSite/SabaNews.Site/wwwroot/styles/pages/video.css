@@ -1042,6 +1042,21 @@ button {
     .main .container {
       display: inherit; } }
 
+.main .detail-container {
+  display: grid;
+  grid-template-columns: 5% 65% 30%;
+  grid-template-rows: unset;
+  grid-gap: 0; }
+  @media screen and (max-width: 1024px) {
+    .main .detail-container {
+      display: grid;
+      grid-template-columns: 5% 60% 35%;
+      grid-template-rows: unset;
+      grid-gap: 0; } }
+  @media (max-device-width: 767px) {
+    .main .detail-container {
+      display: inherit; } }
+
 @media screen and (min-width: 1024px) {
   .block-main {
     padding-right: 2.8rem;

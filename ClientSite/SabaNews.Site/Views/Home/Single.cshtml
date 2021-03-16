@@ -23,47 +23,47 @@
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 }
 
-<section class="main" id="detail-page"  onmousedown="return false" onselectstart="return false">
-    <div class="container">
+<section class="main">
+    <div class="container detail-container">
+        <div class="main-social fixed-social">
+            <ul class="social">
+                <li class="item-social">
+                    <a href=""
+                       data-count="facebook" target="_blank"
+                       rel="nofollow"
+                       class="item intent facebook">
+                        <i class="icon-social icon-detail_facebook"></i>
+                    </a>
+                </li>
+                <li class="item-social">
+                    <a href="#"
+                       rel="nofollow"
+                       class="item intent tele">
+                        <i class="icon-social icon-link"></i>
+                    </a>
+                </li>
+                <li class="item-social">
+                    <a href="#" class="item intent">
+                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
+                            <path d="M0.51 2.00031V2C0.51 1.17287 1.1794 0.5 2 0.5H12C12.8239 0.5 13.5 1.17614 13.5 2V17.2417L7.19696 14.5404L7 14.456L6.80304 14.5404L0.500474 17.2415L0.51 2.00031Z" fill="none" stroke="#999999" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="item-social">
+                    <a href="#"
+                       class="item intent">
+                        <i class="icon-social icon-mode_comment"></i>
+                    </a>
+                </li>
+                <li class="item-social">
+                    <a href="#"
+                       class="item intent">
+                        <i class="icon-social icon-back"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
         <div class="block block-main">
-            <div class="main-social fixed-social">
-                <ul class="social">
-                    <li class="item-social">
-                        <a href=""
-                           data-count="facebook" target="_blank"
-                           rel="nofollow"
-                           class="item intent facebook">
-                            <i class="icon-social icon-detail_facebook"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="#"
-                           rel="nofollow"
-                           class="item intent tele">
-                            <i class="icon-social icon-link"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="#" class="item intent">
-                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
-                                <path d="M0.51 2.00031V2C0.51 1.17287 1.1794 0.5 2 0.5H12C12.8239 0.5 13.5 1.17614 13.5 2V17.2417L7.19696 14.5404L7 14.456L6.80304 14.5404L0.500474 17.2415L0.51 2.00031Z" fill="none" stroke="#999999" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="#"
-                           class="item intent">
-                            <i class="icon-social icon-mode_comment"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="#"
-                           class="item intent">
-                            <i class="icon-social icon-back"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
             <div class="card-vertical card-vertical-highlight">
                 <div class="single card-vertical__video">
                     @if (Convert.ToBoolean(ViewData["video"]))
@@ -195,3 +195,21 @@
         @(await Component.InvokeAsync("Sidebar", new { postID = Model.SinglePost.ID }))
     </div>
 </section>
+
+<script>
+    var checkScroll = function () {
+        var el = document.querySelector('.content');
+        var main = document.querySelector('.fixed-social');
+        if (el !== null) {
+            var top_of_obj = el.offsetTop;
+            var top_of_window = window.scrollY;
+            console.log('height top to element ', top_of_obj, 'top_of_window', top_of_window)
+            if (top_of_window > top_of_obj) {
+                main.classList.add('active-nav')
+            } else {
+                main.classList.remove('active-nav')
+            }
+        }
+    }
+    window.addEventListener('scroll', function () { checkScroll() })
+</script>
