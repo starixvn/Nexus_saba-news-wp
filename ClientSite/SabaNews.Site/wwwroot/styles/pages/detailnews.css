@@ -1029,6 +1029,7 @@ button {
     transition: color .3s ease;
     display: block;
     line-height: 2rem; }
+    .card-vertical__title:hover {
       color: #EB5342; }
   .card-vertical__datetime {
     font-size: 1.2rem;
