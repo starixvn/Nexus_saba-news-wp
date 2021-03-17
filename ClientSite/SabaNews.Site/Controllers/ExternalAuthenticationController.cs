@@ -45,6 +45,7 @@
                 LastName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value,
                 DisplayName = claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
                 Email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+                Avatar = claims.FirstOrDefault(c => c.Type == ClaimTypes.Thumbprint).Value,
                 LoginType = provider
             };
 

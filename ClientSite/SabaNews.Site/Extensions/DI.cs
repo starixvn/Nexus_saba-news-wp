@@ -77,6 +77,14 @@
                         Expiration = TimeSpan.FromDays(1),
                         Name = "Sabasports.Google.Cookie"
                     };
+                    options.Events.OnCreatingTicket = (context) =>
+                    {
+                        var picture = context.User.GetProperty("picture").GetString();
+
+                        context.Identity.AddClaim(new Claim(ClaimTypes.Thumbprint, picture));
+
+                        return Task.CompletedTask;
+                    };
                 }).AddFacebook(options =>
                 {
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -95,7 +103,7 @@
                         OnCreatingTicket = context =>
                         {
                             var identity = (ClaimsIdentity)context.Principal.Identity;
-                            var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").ToString();
+                            var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").GetString();
                             identity.AddClaim(new Claim(ClaimTypes.Thumbprint, profileImg));
                             return Task.CompletedTask;
                         }
@@ -107,7 +115,7 @@
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
                 options.OnAppendCookie = cookieContext =>
                     CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
                 options.OnDeleteCookie = cookieContext =>
