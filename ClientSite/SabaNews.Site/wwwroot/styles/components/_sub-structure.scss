@@ -27,6 +27,20 @@
     }
 }
 
+.main .profile-container {
+    @include grid(30% 70%, unset, 0);
+
+    @include tableMobile {
+        @include grid( 40% 60% , unset, 0);
+    }
+
+    @include Mobile {
+        display: inherit;
+    }
+}
+
+
+
 
 @media screen and (min-width: 1024px) {
     .block-main {

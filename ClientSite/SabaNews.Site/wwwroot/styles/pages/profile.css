@@ -1055,6 +1055,21 @@ button {
     .main .detail-container {
       display: inherit; } }
 
+.main .profile-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: unset;
+  grid-gap: 0; }
+  @media screen and (max-width: 1024px) {
+    .main .profile-container {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: unset;
+      grid-gap: 0; } }
+  @media (max-device-width: 767px) {
+    .main .profile-container {
+      display: inherit; } }
+
 @media screen and (min-width: 1024px) {
   .block-main {
     padding-right: 2.8rem;
@@ -1062,12 +1077,103 @@ button {
   .block-extension {
     padding-left: 2.8rem; } }
 
-.block-main .card-horizontal {
+.block .profile {
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  box-sizing: border-box; }
+
+.block-extension {
+  display: inherit; }
+  .block-extension .profile {
+    padding: 2rem; }
+
+.block-main .profile {
+  padding: .5rem; }
+  .block-main .profile__avatar {
+    width: 10rem;
+    height: 10rem;
+    display: inline-block;
+    background: #e5e5e5;
+    line-height: 10rem;
+    text-align: center;
+    color: #fff;
+    font-size: 4.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row; }
+  .block-main .profile__name {
+    font-size: 1.8rem;
+    color: #4F4F4F;
+    font-weight: 700;
+    text-align: center; }
+  .block-main .profile__date {
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+    margin-top: 15px;
+    position: relative; }
+    .block-main .profile__date:after {
+      content: "";
+      display: block;
+      width: 14rem;
+      height: .1rem;
+      background: #e5e5e5;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -7rem; }
+    .block-main .profile__date p {
+      margin-bottom: 0; }
+  .block-main .profile__control, .block-main .profile__nav {
+    list-style: none;
+    margin-bottom: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e5e5; }
+    .block-main .profile__control li a, .block-main .profile__nav li a {
+      color: #4F4F4F;
+      text-decoration: none;
+      padding: 1rem 0 1rem 1.5rem;
+      position: relative;
+      width: 100%;
+      display: block;
+      font-size: 1.5rem; }
+      .block-main .profile__control li a:hover, .block-main .profile__nav li a:hover {
+        color: #EB5342; }
+    .block-main .profile__control .active-control, .block-main .profile__nav .active-control {
+      position: relative; }
+      .block-main .profile__control .active-control a, .block-main .profile__nav .active-control a {
+        color: #EB5342; }
+        .block-main .profile__control .active-control a:after, .block-main .profile__nav .active-control a:after {
+          content: '';
+          display: block;
+          width: .3rem;
+          height: 100%;
+          background: #EB5342;
+          position: absolute;
+          top: 0;
+          left: -5px; }
+  .block-main .profile__nav {
+    border-bottom: none;
+    padding: 1rem 0 0 0; }
+    .block-main .profile__nav li {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 1rem; }
+      .block-main .profile__nav li:last-child {
+        border-bottom: none; }
+
+.block-extension .card-horizontal {
   margin-bottom: 1.6rem; }
   @media (max-device-width: 767px) {
-    .block-main .card-horizontal {
+    .block-extension .card-horizontal {
       margin-bottom: 1.2rem; } }
-  .block-main .card-horizontal-highlight {
+  .block-extension .card-horizontal-highlight {
     height: 30rem;
     grid-template-columns: 44rem 1fr;
     grid-column-gap: 0;
@@ -1077,40 +1183,40 @@ button {
     background-color: #E8EAEF;
     padding-bottom: 0; }
     @media screen and (max-width: 1024px) {
-      .block-main .card-horizontal-highlight {
+      .block-extension .card-horizontal-highlight {
         display: inherit;
         height: auto; } }
     @media (max-device-width: 767px) {
-      .block-main .card-horizontal-highlight {
+      .block-extension .card-horizontal-highlight {
         margin-bottom: 1.2rem; } }
-    .block-main .card-horizontal-highlight .card-horizontal__content {
+    .block-extension .card-horizontal-highlight .card-horizontal__content {
       padding: 16px; }
       @media screen and (max-width: 1024px) {
-        .block-main .card-horizontal-highlight .card-horizontal__content {
+        .block-extension .card-horizontal-highlight .card-horizontal__content {
           margin-top: 1rem; } }
       @media (max-device-width: 767px) {
-        .block-main .card-horizontal-highlight .card-horizontal__content {
+        .block-extension .card-horizontal-highlight .card-horizontal__content {
           padding: 8px;
           margin-top: 0; } }
-    .block-main .card-horizontal-highlight .title {
+    .block-extension .card-horizontal-highlight .title {
       font-size: 2rem;
       line-height: 2.8rem; }
       @media (max-device-width: 767px) {
-        .block-main .card-horizontal-highlight .title {
+        .block-extension .card-horizontal-highlight .title {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
-    .block-main .card-horizontal-highlight .description {
+    .block-extension .card-horizontal-highlight .description {
       margin-top: 1rem; }
       @media screen and (max-width: 1024px) {
-        .block-main .card-horizontal-highlight .description {
+        .block-extension .card-horizontal-highlight .description {
           display: block;
           margin-top: 0; } }
       @media (max-device-width: 767px) {
-        .block-main .card-horizontal-highlight .description {
+        .block-extension .card-horizontal-highlight .description {
           font-size: 1.2rem;
           line-height: 2rem; } }
-    .block-main .card-horizontal-highlight .card-horizontal__image {
+    .block-extension .card-horizontal-highlight .card-horizontal__image {
       height: 100%; }
       @media screen and (max-width: 1024px) {
-        .block-main .card-horizontal-highlight .card-horizontal__image {
+        .block-extension .card-horizontal-highlight .card-horizontal__image {
           max-height: 100% !important; } }
