@@ -146,7 +146,7 @@
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         }
 
-        public async Task<IActionResult> AccountInfo()
+        public async Task<IActionResult> Profile()
         {
             var isAuthenticated = sessionService.User != null;
             
