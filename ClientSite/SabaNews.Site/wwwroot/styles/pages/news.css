@@ -863,40 +863,30 @@ button {
   .card-horizontal__content .datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-horizontal__content .datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-horizontal__content .datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-horizontal__content .datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
     max-height: 4.5rem;
     margin: .3rem 0; }
-    .card-horizontal__content .description .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle; }
-      .card-horizontal__content .description .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
         display: none; } }
+
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none !important; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
@@ -934,20 +924,6 @@ button {
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-vertical__datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-vertical__datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-vertical__datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__datetime {
         font-size: 1.2rem; } }
@@ -958,6 +934,21 @@ button {
       .card-vertical__description {
         font-size: 1.2rem;
         line-height: 2rem; } }
+
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none !important; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
 
 .pagination {
   text-align: center;
@@ -1094,7 +1085,7 @@ button {
     grid-column-gap: 0;
     grid-template-rows: unset;
     align-items: flex-start;
-    margin-bottom: 3.2rem;
+    margin-bottom: 1.6rem;
     background-color: #E8EAEF;
     padding-bottom: 0; }
     @media screen and (max-width: 1024px) {

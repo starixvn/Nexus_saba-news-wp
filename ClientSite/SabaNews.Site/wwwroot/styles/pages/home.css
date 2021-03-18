@@ -983,40 +983,30 @@ button {
   .card-horizontal__content .datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-horizontal__content .datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-horizontal__content .datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-horizontal__content .datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
     max-height: 4.5rem;
     margin: .3rem 0; }
-    .card-horizontal__content .description .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle; }
-      .card-horizontal__content .description .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
         display: none; } }
+
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none !important; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
@@ -1054,20 +1044,6 @@ button {
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-vertical__datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-vertical__datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-vertical__datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__datetime {
         font-size: 1.2rem; } }
@@ -1079,7 +1055,23 @@ button {
         font-size: 1.2rem;
         line-height: 2rem; } }
 
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none !important; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
+
 .main {
+  padding-top: 6rem;
   padding-top: 6rem; }
   @media (max-device-width: 767px) {
     .main {
@@ -1201,7 +1193,7 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: none;
-  grid-gap: 3.2rem 2.4rem; }
+    grid-gap: 1.6rem 2.4rem; }
     .main .group-blocks .container .block-transfer {
       grid-gap: 0; }
     @media (max-device-width: 767px) {
@@ -1216,13 +1208,13 @@ button {
     display: grid;
     grid-template-columns: 63% 1fr;
     grid-template-rows: none;
-  grid-gap: 3.2rem 2.4rem; }
+    grid-gap: 1.6rem 2.4rem; }
     @media screen and (max-width: 1024px) {
       .main .group-change-column .container {
         display: grid;
         grid-template-columns: 50% 1fr;
         grid-template-rows: none;
-      grid-gap: 3.2rem 2.4rem; } }
+        grid-gap: 1.6rem 2.4rem; } }
     @media (max-device-width: 767px) {
       .main .group-change-column .container {
         display: inherit; } }
@@ -1236,13 +1228,13 @@ button {
         display: grid;
         grid-template-columns: 48.7rem 1fr;
         grid-template-rows: 46rem;
-      grid-gap: 3.2rem; } }
+        grid-gap: 1.6rem; } }
     @media only screen and (min-width: 1024px) and (max-width: 1366px) {
       .main .block-video .block__content {
         display: grid;
         grid-template-columns: 66.7rem 1fr;
         grid-template-rows: 46rem;
-      grid-gap: 3.2rem; } }
+        grid-gap: 1.6rem; } }
     @media (max-device-width: 767px) {
       .main .block-video .block__content {
         display: inherit; } }
@@ -1303,7 +1295,7 @@ button {
           height: 100%;
           z-index: 999;
           background-color: rgba(0, 0, 0, 0.7);
-        content: 'Đang phát';
+          content: '�ang ph�t';
           color: #fff;
           text-align: center;
           top: 0;
@@ -1319,7 +1311,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: unset;
-  grid-gap: 3.2rem; }
+    grid-gap: 1.6rem; }
     @media screen and (max-width: 1024px) {
       .main .block-soccer .block__content {
         display: grid;
@@ -1359,7 +1351,7 @@ button {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 1fr;
-    grid-gap: 3.2rem; }
+      grid-gap: 1.6rem; }
       @media screen and (max-width: 1024px) {
         .main .block-guess .block__content {
           display: grid;
@@ -1420,7 +1412,7 @@ button {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: unset;
-    grid-gap: 1.6rem 3.2rem; }
+      grid-gap: 1.6rem 1.6rem; }
       @media screen and (max-width: 1024px) {
         .main .block-behind .block__content {
           display: grid;
@@ -1521,7 +1513,7 @@ button {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: unset;
-    grid-gap: 1.6rem 3.2rem; }
+      grid-gap: 1.6rem 1.6rem; }
       @media screen and (max-width: 1024px) {
         .main .block-basketball .block__content {
           display: grid;

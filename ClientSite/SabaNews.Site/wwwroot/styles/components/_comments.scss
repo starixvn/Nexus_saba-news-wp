@@ -14,7 +14,7 @@
     background-color: #fff;
 }
 
-.comment form textarea {
+.comment-post form textarea {
     width: 100%;
     resize: none;
     font: 400 15px/150% arial;
@@ -47,11 +47,11 @@
     display: none;
 }
 
-.comment form {
+.comment-post form {
     margin: 15px 0;
 }
 
-.comment form .add_comment, .comment form .add_sub_comment {
+.comment-post form .add_comment, .comment form .add_sub_comment {
     color: #fff;
     padding: 10px 40px;
     background: #9F224E !important;
@@ -62,7 +62,7 @@
     border-radius: 3px;
 }
 
-.comment form .add_comment:hover, .comment form .add_sub_comment:hover {
+.comment-post form .add_comment:hover, .comment form .add_sub_comment:hover {
     cursor: pointer;
     background: #B52759;
 }

@@ -47,26 +47,6 @@
             font-size: $font-size-datetime;
             color: $color-datetime;
 
-            .comment {
-                display: inline-flex;
-                align-items: center;
-                margin-left: 1rem;
-                vertical-align: middle;
-                text-decoration: none;
-
-                .icon-mode_comment {
-                    font-size: 1.6rem;
-                }
-
-                .number {
-                    color: #2B89CC;
-                    font-weight: normal;
-                    font-style: normal;
-                    font-size: 1.3rem;
-                    margin-left: .3rem;
-                }
-            }
-
             @include tableMobile {
                 margin-top: -.2rem;
             }
@@ -75,25 +55,28 @@
         .description {
             max-height: 4.5rem;
             margin: .3rem 0;
-
-            .comment {
-                display: inline-flex;
-                align-items: center;
-                margin-left: 1rem;
-                vertical-align: middle;
-
-                .number {
-                    color: #2B89CC;
-                    font-weight: normal;
-                    font-style: normal;
-                    font-size: 1.3rem;
-                    margin-left: .3rem;
-                }
-            }
-
             @include tableMobile {
                 display: none;
             }
         }
+    }
+}
+.comment {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 1rem;
+    vertical-align: middle;
+    text-decoration: none !important;
+
+    .icon-mode_comment_full {
+        font-size: 1.6rem;
+    }
+
+    .number {
+        color: #2B89CC;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.3rem;
+        margin-left: .3rem;
     }
 }

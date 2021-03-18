@@ -1013,20 +1013,6 @@ button {
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-vertical__datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-vertical__datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-vertical__datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__datetime {
         font-size: 1.2rem; } }
@@ -1037,6 +1023,21 @@ button {
       .card-vertical__description {
         font-size: 1.2rem;
         line-height: 2rem; } }
+
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
 
 /*:root {
     --column : 12;
@@ -1119,7 +1120,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: unset;
-  grid-gap: 1.6rem 3.2rem; }
+  grid-gap: 1.6rem 1.6rem; }
   @media screen and (max-width: 1024px) {
     .block__video {
       display: grid;

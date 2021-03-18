@@ -1063,20 +1063,6 @@ button {
   .card-vertical__datetime {
     font-size: 1.2rem;
     color: #828282; }
-    .card-vertical__datetime .comment {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 1rem;
-      vertical-align: middle;
-      text-decoration: none; }
-      .card-vertical__datetime .comment .icon-mode_comment {
-        font-size: 1.6rem; }
-      .card-vertical__datetime .comment .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem; }
     @media screen and (max-width: 1024px) {
       .card-vertical__datetime {
         font-size: 1.2rem; } }
@@ -1088,6 +1074,21 @@ button {
         font-size: 1.2rem;
         line-height: 2rem; } }
 
+.comment {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
+  vertical-align: middle;
+  text-decoration: none; }
+  .comment .icon-mode_comment_full {
+    font-size: 1.6rem; }
+  .comment .number {
+    color: #2B89CC;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3rem;
+    margin-left: .3rem; }
+
 .main .container {
   display: grid;
   grid-template-columns: 70% calc(30% - 5.4rem);
@@ -1096,26 +1097,11 @@ button {
   @media screen and (max-width: 1024px) {
     .main .container {
       display: grid;
-      grid-template-columns: 60% calc(40% - 3.2rem);
+      grid-template-columns: 60% calc(40% - 1.6rem);
       grid-template-rows: unset;
-      grid-gap: 3.2rem; } }
+      grid-gap: 1.6rem; } }
   @media (max-device-width: 767px) {
     .main .container {
-      display: inherit; } }
-
-.main .detail-container {
-  display: grid;
-  grid-template-columns: 5% 65% 30%;
-  grid-template-rows: unset;
-  grid-gap: 0; }
-  @media screen and (max-width: 1024px) {
-    .main .detail-container {
-      display: grid;
-      grid-template-columns: 5% 60% 35%;
-      grid-template-rows: unset;
-      grid-gap: 0; } }
-  @media (max-device-width: 767px) {
-    .main .detail-container {
       display: inherit; } }
 
 .block-list {
@@ -1140,7 +1126,7 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: unset;
-  grid-gap: 3.2rem 3.2rem; }
+  grid-gap: 1.6rem 1.6rem; }
   @media screen and (max-width: 1024px) {
     .block__video {
       display: grid;
