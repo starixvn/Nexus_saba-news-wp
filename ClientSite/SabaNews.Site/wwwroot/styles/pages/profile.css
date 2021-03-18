@@ -1063,7 +1063,7 @@ button {
   @media screen and (max-width: 1024px) {
     .main .profile-container {
       display: grid;
-      grid-template-columns: 40% 60%;
+      grid-template-columns: 30% 70%;
       grid-template-rows: unset;
       grid-gap: 0; } }
   @media (max-device-width: 767px) {
@@ -1077,15 +1077,10 @@ button {
   .block-extension {
     padding-left: 2.8rem; } }
 
-.block .profile {
+.block .profile, .block .controls {
   border: 1px solid #e5e5e5;
   background: #fff;
   box-sizing: border-box; }
-
-.block-extension {
-  display: inherit; }
-  .block-extension .profile {
-    padding: 2rem; }
 
 .block-main .profile {
   padding: .5rem; }
@@ -1168,55 +1163,137 @@ button {
       .block-main .profile__nav li:last-child {
         border-bottom: none; }
 
-.block-extension .card-horizontal {
-  margin-bottom: 1.6rem; }
-  @media (max-device-width: 767px) {
-    .block-extension .card-horizontal {
-      margin-bottom: 1.2rem; } }
-  .block-extension .card-horizontal-highlight {
-    height: 30rem;
-    grid-template-columns: 44rem 1fr;
-    grid-column-gap: 0;
-    grid-template-rows: unset;
-    align-items: flex-start;
-    margin-bottom: 1.6rem;
-    background-color: #E8EAEF;
-    padding-bottom: 0; }
-    @media screen and (max-width: 1024px) {
-      .block-extension .card-horizontal-highlight {
-        display: inherit;
-        height: auto; } }
+.block-extension {
+  display: inherit; }
+  .block-extension .controls {
+    padding: 2rem; }
+    .block-extension .controls .title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4F4F4F;
+      margin-bottom: 2rem; }
+    .block-extension .controls .line {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 2.5rem;
+      margin-top: 2.5rem; }
+    .block-extension .controls__choose .input-upload {
+      border: 1px dashed #BDBDBD;
+      position: relative;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      background: #f7f7f7; }
+      .block-extension .controls__choose .input-upload .input-file {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer; }
+    .block-extension .controls__account .group-table {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      flex-direction: row;
+      color: #828282; }
+      .block-extension .controls__account .group-table .left-table {
+        width: 16rem; }
+        @media screen and (max-width: 1024px) {
+          .block-extension .controls__account .group-table .left-table {
+            width: 10rem; } }
+      .block-extension .controls__account .group-table .right-table {
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        width: 100%; }
+        .block-extension .controls__account .group-table .right-table .box-control {
+          display: flex;
+          align-items: flex-start;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          flex-direction: row; }
+          @media screen and (max-width: 1024px) {
+            .block-extension .controls__account .group-table .right-table .box-control .main-fill {
+              width: 70%; } }
+          .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill {
+            list-style: none;
+            margin-bottom: 0; }
+            .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill li {
+              display: inline-block; }
+            .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill .email {
+              margin-right: .5rem; }
+            .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill .validate {
+              color: #EB5342; }
+          .block-extension .controls__account .group-table .right-table .box-control .main-fill .comfirm a {
+            color: #1B71B2; }
+          .block-extension .controls__account .group-table .right-table .box-control .main-fill p {
+            margin-bottom: 0; }
+          .block-extension .controls__account .group-table .right-table .box-control .action {
+            color: #828282;
+            border-bottom: 1px solid;
+            font-size: 1.3rem;
+            text-decoration: none; }
+        .block-extension .controls__account .group-table .right-table .box-edit-form {
+          background: #f7f7f7;
+          border: 1px solid #e5e5e5;
+          border-radius: 3px;
+          padding: 1.5rem 2rem 2rem 2rem;
+          box-sizing: border-box;
+          margin-top: 1.5rem; }
+  .block-extension .block__title {
+    margin-bottom: 3rem; }
+  .block-extension .card-horizontal {
+    margin-bottom: 1.6rem; }
     @media (max-device-width: 767px) {
-      .block-extension .card-horizontal-highlight {
+      .block-extension .card-horizontal {
         margin-bottom: 1.2rem; } }
-    .block-extension .card-horizontal-highlight .card-horizontal__content {
-      padding: 16px; }
+    .block-extension .card-horizontal-highlight {
+      height: 30rem;
+      grid-template-columns: 44rem 1fr;
+      grid-column-gap: 0;
+      grid-template-rows: unset;
+      align-items: flex-start;
+      margin-bottom: 1.6rem;
+      background-color: #E8EAEF;
+      padding-bottom: 0; }
       @media screen and (max-width: 1024px) {
-        .block-extension .card-horizontal-highlight .card-horizontal__content {
-          margin-top: 1rem; } }
+        .block-extension .card-horizontal-highlight {
+          display: inherit;
+          height: auto; } }
       @media (max-device-width: 767px) {
-        .block-extension .card-horizontal-highlight .card-horizontal__content {
-          padding: 8px;
-          margin-top: 0; } }
-    .block-extension .card-horizontal-highlight .title {
-      font-size: 2rem;
-      line-height: 2.8rem; }
-      @media (max-device-width: 767px) {
-        .block-extension .card-horizontal-highlight .title {
-          font-size: 1.6rem;
-          line-height: 2.2rem; } }
-    .block-extension .card-horizontal-highlight .description {
-      margin-top: 1rem; }
-      @media screen and (max-width: 1024px) {
-        .block-extension .card-horizontal-highlight .description {
-          display: block;
-          margin-top: 0; } }
-      @media (max-device-width: 767px) {
-        .block-extension .card-horizontal-highlight .description {
-          font-size: 1.2rem;
-          line-height: 2rem; } }
-    .block-extension .card-horizontal-highlight .card-horizontal__image {
-      height: 100%; }
-      @media screen and (max-width: 1024px) {
-        .block-extension .card-horizontal-highlight .card-horizontal__image {
-          max-height: 100% !important; } }
+        .block-extension .card-horizontal-highlight {
+          margin-bottom: 1.2rem; } }
+      .block-extension .card-horizontal-highlight .card-horizontal__content {
+        padding: 16px; }
+        @media screen and (max-width: 1024px) {
+          .block-extension .card-horizontal-highlight .card-horizontal__content {
+            margin-top: 1rem; } }
+        @media (max-device-width: 767px) {
+          .block-extension .card-horizontal-highlight .card-horizontal__content {
+            padding: 8px;
+            margin-top: 0; } }
+      .block-extension .card-horizontal-highlight .title {
+        font-size: 2rem;
+        line-height: 2.8rem; }
+        @media (max-device-width: 767px) {
+          .block-extension .card-horizontal-highlight .title {
+            font-size: 1.6rem;
+            line-height: 2.2rem; } }
+      .block-extension .card-horizontal-highlight .description {
+        margin-top: 1rem; }
+        @media screen and (max-width: 1024px) {
+          .block-extension .card-horizontal-highlight .description {
+            display: block;
+            margin-top: 0; } }
+        @media (max-device-width: 767px) {
+          .block-extension .card-horizontal-highlight .description {
+            font-size: 1.2rem;
+            line-height: 2rem; } }
+      .block-extension .card-horizontal-highlight .card-horizontal__image {
+        height: 100%; }
+        @media screen and (max-width: 1024px) {
+          .block-extension .card-horizontal-highlight .card-horizontal__image {
+            max-height: 100% !important; } }

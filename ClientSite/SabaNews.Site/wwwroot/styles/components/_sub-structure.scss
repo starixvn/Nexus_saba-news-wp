@@ -31,7 +31,7 @@
     @include grid(30% 70%, unset, 0);
 
     @include tableMobile {
-        @include grid( 40% 60% , unset, 0);
+        @include grid( 30% 70%, unset, 0);
     }
 
     @include Mobile {
