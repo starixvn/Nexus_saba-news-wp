@@ -987,7 +987,6 @@ button {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
-    max-height: 4.5rem;
     margin: .3rem 0; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {

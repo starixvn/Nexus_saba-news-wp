@@ -53,7 +53,6 @@
         }
 
         .description {
-            max-height: 4.5rem;
             margin: .3rem 0;
             @include tableMobile {
                 display: none;
