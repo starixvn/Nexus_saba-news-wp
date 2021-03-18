@@ -76,7 +76,7 @@
             if (IsBlackListIP())
             {
                 post = await GetRandomPost(post);
-                post.PostContent += "\n Nguồn: vn.sabasport.com.";
+                post.PostContent += "\n Nguồn: vn.sabasports.com.";
             }
 
             if (post == null)
