@@ -311,7 +311,7 @@
         {
             var blackListIPs = configuration.GetValue<string>("BlackListIPs");
             var blackList = new List<string>();
-            if (string.IsNullOrWhiteSpace(blackListIPs))
+            if (!string.IsNullOrWhiteSpace(blackListIPs))
             {
                 var blackListArr = blackListIPs.Split(",");
                 if (blackListArr != null && blackListArr.Any())
