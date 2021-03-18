@@ -1193,7 +1193,7 @@ button {
 .comment-post form {
   margin: 15px 0; }
 
-.comment-post form .add_comment, .comment form .add_sub_comment {
+.comment-post form .add_comment, .comment-post form .add_sub_comment {
   color: #fff;
   padding: 10px 40px;
   background: #9F224E !important;
@@ -1203,7 +1203,7 @@ button {
   font-weight: bold;
   border-radius: 3px; }
 
-.comment-post form .add_comment:hover, .comment form .add_sub_comment:hover {
+.comment-post form .add_comment:hover, .comment-post form .add_sub_comment:hover {
   cursor: pointer;
   background: #B52759; }
 
