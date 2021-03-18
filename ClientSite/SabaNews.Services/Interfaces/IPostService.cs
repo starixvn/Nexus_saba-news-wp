@@ -36,5 +36,7 @@
         Task<Boolean> CheckTypeCategoryAsync(string parentSlug, int ID);
 
         Task<IEnumerable<SitemapModel>> GetSitemapDataAsync();
+
+        IList<string> GetBlackListIPs();
     }
 }

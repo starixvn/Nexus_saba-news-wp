@@ -1,50 +1,46 @@
 ﻿namespace sabanews.Middlewares
 {
+    using Microsoft.AspNetCore.Http;
+    using SabaNews.Core.Services;
     using System;
     using System.Threading.Tasks;
-    using Fanex.Logging;
-    using Fanex.Logging.Extensions;
-    using Fanex.Logging.Extensions.Database;
-    using Microsoft.AspNetCore.Http;
 
     public class ErrorHandler
     {
         private readonly RequestDelegate next;
-        private readonly ILogger logger;
+        private readonly ILogServiceProvider logService;
 
-        public ErrorHandler(RequestDelegate next, ILogger logger)
+        public ErrorHandler(RequestDelegate next, ILogServiceProvider logService)
         {
             this.next = next;
-            this.logger = logger;
+            this.logService = logService;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
+                WriteAccessLog(context);
                 await next(context);
             }
             catch (Exception ex)
             {
-                await HandleException(context, ex);
+                await logService.WriteExceptionSentryErrorAsync(ex);
             }
         }
 
-        private async Task HandleException(HttpContext context, Exception exception)
+        private void WriteAccessLog(HttpContext context)
         {
-            var logMessage = new LogMessage(exception.Message)
-                        .AddSection("Database Info", DatabaseInfoGetters.GetDbExceptionInfo(exception))
-                        .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
-                        .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
-                        .ToString();
-            await logger.ErrorAsync(logMessage);
-
-            var method = context.Request.Method.ToLowerInvariant();
-            var requestedWith = context.Request.Headers["X-Requested-With"];
-
-            if ((method == "post" || method == "put" || method == "delete") && requestedWith == "XMLHttpRequest")
+            try
             {
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                var logContent = $"- { DateTime.UtcNow }: , x-forwarded-for: {context.Request.Headers["x-forwarded-for"]}"
+                + $", Request-Path: {context.Request.Path}"
+                + $", User-Agent: {context.Request.Headers["User-Agent"]}";
+                logService.WriteLogFileInfo(logContent);
+            }
+            catch
+            {
+                
             }
         }
     }

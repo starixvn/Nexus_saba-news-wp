@@ -24,6 +24,7 @@
     using Microsoft.Extensions.Hosting;
     using sabanews.Middlewares;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using Sentry;
@@ -94,7 +95,8 @@
 
             services.AddSingleton<IBaseService, BaseService>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddScoped<ILogger, Logger>();
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
@@ -123,6 +125,7 @@
         {
             if (env.IsDevelopment())
             {
+                app.UseMiddleware<ErrorHandler>();
                 app.UseForwardedHeaders();
                 app.UseDeveloperExceptionPage();
             }

@@ -73,6 +73,12 @@
         public async Task<IActionResult> Single(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+            if (IsBlackListIP())
+            {
+                post = await GetRandomPost(post);
+                post.PostContent += "\n Nguồn: vn.sabasport.com.";
+            }
+
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
@@ -91,6 +97,36 @@
             ViewData["video"] = post.Type == Constants.VideoPostType;
 
             return View(Models);
+        }
+
+        private async Task<Post> GetRandomPost(Post post)
+        {
+            var categoryPlus = post.CategoriesSlug.Split(",").FirstOrDefault();
+
+            var relatedPosts = await postService.GetPostsBySlugAsync(categoryPlus, 1, 1000);
+            Random random = new Random();
+            var postIndexRandom = random.Next(0, relatedPosts.Count());
+            return relatedPosts.ToList()[postIndexRandom];
+        }
+
+        private bool IsBlackListIP()
+        {
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
+            {
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+            var blackListIPs = postService.GetBlackListIPs();
+
+            foreach (var blackListIP in blackListIPs)
+            {
+                if (clientIP.Contains(blackListIP))
+                {
+                    return true;
+                }   
+            }
+
+            return false;
         }
 
         [Route("Search/page/{page}")]
