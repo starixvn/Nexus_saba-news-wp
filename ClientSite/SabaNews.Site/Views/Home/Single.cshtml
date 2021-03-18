@@ -221,7 +221,19 @@
 		</div>
 	</div>
 </div>
-            }
-        }
-    }
-    window.addEventListener('scroll', function () { checkScroll() })
+<script>
+	var checkScroll = function () {
+		var el = document.querySelector('.title-care');
+		var main = document.querySelector('.fixed-social');
+		if (el !== null) {
+			var top_of_obj = el.offsetTop - 600;
+			var top_of_window = window.scrollY;
+			if (top_of_window > top_of_obj) {
+				main.classList.add('active-nav')
+			} else {
+				main.classList.remove('active-nav')
+			}
+		}
+	}
+	window.addEventListener('scroll', function () { checkScroll() })
+</script>
