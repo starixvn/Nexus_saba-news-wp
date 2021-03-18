@@ -180,6 +180,9 @@
   <data name="LoginWithEmail" xml:space="preserve">
     <value>Đăng nhập với email</value>
   </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
   <data name="MatchScheduleSlug" xml:space="preserve">
     <value>lich-thi-dau</value>
   </data>
@@ -188,6 +191,9 @@
   </data>
   <data name="MessageRequestLogin" xml:space="preserve">
     <value>Vui Lòng đăng nhập để thực hiện chức năng này!</value>
+  </data>
+  <data name="MyAccount" xml:space="preserve">
+    <value>Tài khoản của tôi</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>

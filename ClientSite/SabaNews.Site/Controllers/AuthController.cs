@@ -145,5 +145,12 @@
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         }
+
+        public async Task<IActionResult> AccountInfo()
+        {
+            var isAuthenticated = sessionService.User != null;
+            
+            return View();
+        }
     }
 }

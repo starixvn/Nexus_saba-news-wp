@@ -160,6 +160,10 @@
                             .auth-logout {
                                 display: block
                             }
+
+                            .auth-info {
+                                display: block
+                            }
                         }
 
                         .auth-logout {
@@ -169,7 +173,13 @@
 
                             .item {
                                 padding: 1.7rem 0;
+                                width: 100%
                             }
+                        }
+                        .auth-info {
+                            position: absolute;
+                            display: none;
+                            top: 9rem;
                         }
                     }
 

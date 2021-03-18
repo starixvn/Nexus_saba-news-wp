@@ -46,11 +46,12 @@
                         @if (ViewBag.IsAuthenticated)
                         {
                             <span class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></span>
-                            <span class="auth-logout"> <a class="item" href="javascript:;">Đăng xuât</a></span>
+                            <span class="auth-logout"> <a class="item" href="javascript:;">@ViewResources.Logout</a></span>
+                            <span class="auth-info"> <a class="item" href="@Url.Action("AccountInfo", "Auth")">@ViewResources.MyAccount</a></span>
                         }
                         else
                         {
-                            <a class="item auth-login" href="javascript:;">Đăng nhập</a>
+                            <a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
                         }
                         </li>
                                 </ul>

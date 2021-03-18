@@ -316,12 +316,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             position: relative; }
             .header .top-header .group-menu .nav-menu .main-menu .auth-input:hover .auth-logout {
               display: block; }
+            .header .top-header .group-menu .nav-menu .main-menu .auth-input:hover .auth-info {
+              display: block; }
             .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-logout {
               position: absolute;
               display: none;
               top: 7rem; }
               .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-logout .item {
-                padding: 1.7rem 0; }
+                padding: 1.7rem 0;
+                width: 100%; }
+            .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-info {
+              position: absolute;
+              display: none;
+              top: 9rem; }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
             @media screen and (max-width: 1024px) {
@@ -1079,7 +1086,7 @@ button {
   align-items: center;
   margin-left: 1rem;
   vertical-align: middle;
-  text-decoration: none; }
+  text-decoration: none !important; }
   .comment .icon-mode_comment_full {
     font-size: 1.6rem; }
   .comment .number {

@@ -250,6 +250,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đăng xuất.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lich-thi-dau.
         /// </summary>
         public static string MatchScheduleSlug {
@@ -273,6 +282,15 @@ namespace SabaNews.Resources {
         public static string MessageRequestLogin {
             get {
                 return ResourceManager.GetString("MessageRequestLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản của tôi.
+        /// </summary>
+        public static string MyAccount {
+            get {
+                return ResourceManager.GetString("MyAccount", resourceCulture);
             }
         }
         
