@@ -24,5 +24,12 @@
     "inputFile": "wwwroot/styles/pages/maintenance.scss"
   },
   {
+    "outputFile": "wwwroot/styles/pages/auth.css",
+    "inputFile": "wwwroot/styles/pages/auth.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/profile.css",
+    "inputFile": "wwwroot/styles/pages/profile.scss"
   }
+
 ]

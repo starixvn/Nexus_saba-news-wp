@@ -1,81 +1,91 @@
 [
-    {
-        "outputFileName": "wwwroot/minify/styles/home.min.css",
-        "inputFiles": [
-            "wwwroot/lib/swipper/css/swiper.min.css",
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/home.css"
-        ]
-    },
-    {
-        "outputFileName": "wwwroot/minify/styles/news.min.css",
-        "inputFiles": [
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/news.css"
-        ]
-    },
-    {
-        "outputFileName": "wwwroot/minify/styles/video.min.css",
-        "inputFiles": [
-            "wwwroot/lib/swipper/css/swiper.min.css",
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/video.css"
-        ]
-    },
-    {
-        "outputFileName": "wwwroot/minify/styles/detailnews.min.css",
-        "inputFiles": [
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/detailnews.css",
-            "wwwroot/styles/pages/super-web-share-public.css"
-        ]
-    },
+  {
+    "outputFileName": "wwwroot/minify/styles/home.min.css",
+    "inputFiles": [
+      "wwwroot/lib/swipper/css/swiper.min.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/home.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/minify/styles/news.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/news.css"
+    ]
+  },
 
-    {
-        "outputFileName": "wwwroot/minify/styles/maintenance.min.css",
-        "inputFiles": [
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/maintenance.css"
-        ]
-    },
 
-    {
-        "outputFileName": "wwwroot/minify/js/site.min.js",
-        "inputFiles": [
-            "wwwroot/lib/jquery/dist/jquery.min.js",
-            "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-            "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
-            "wwwroot/lib/swipper/js/swiper.min.js",
-            "wwwroot/js/common.js",
-            "wwwroot/js/site.js",
-            "wwwroot/js/all.js",
-            "wwwroot/js/super-web-share-public.js",
-            "wwwroot/js/auth/auth.js"
-        ],
-        "minify": {
-            "enabled": true,
-            "renameLocals": true
-        },
-        "sourceMap": false
-    },
+  {
+    "outputFileName": "wwwroot/minify/styles/profile.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/profile.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/minify/styles/video.min.css",
+    "inputFiles": [
+      "wwwroot/lib/swipper/css/swiper.min.css",
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/video.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/minify/styles/detailnews.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/detailnews.css",
+      "wwwroot/styles/pages/super-web-share-public.css"
+    ]
+  },
 
-    {
-        "outputFileName": "wwwroot/minify/styles/site.min.css",
-        "inputFiles": [
-            "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
-            "wwwroot/styles/pages/auth.min.css"
-        ]
-    },
+  {
+    "outputFileName": "wwwroot/minify/styles/maintenance.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/maintenance.css"
+    ]
+  },
 
-    {
-        "outputFileName": "wwwroot/minify/js/reset-password.min.js",
-        "inputFiles": [
-            "wwwroot/js/auth/reset-password.js"
-        ],
-        "minify": {
-            "enabled": true,
-            "renameLocals": true
-        },
-        "sourceMap": false
-    }
+  {
+    "outputFileName": "wwwroot/minify/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/lib/swipper/js/swiper.min.js",
+      "wwwroot/js/common.js",
+      "wwwroot/js/site.js",
+      "wwwroot/js/all.js",
+      "wwwroot/js/super-web-share-public.js",
+      "wwwroot/js/auth/auth.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/minify/styles/site.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/styles/pages/auth.min.css"
+    ]
+  },
+
+
+  {
+    "outputFileName": "wwwroot/minify/js/reset-password.min.js",
+    "inputFiles": [
+      "wwwroot/js/auth/reset-password.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
 ]
