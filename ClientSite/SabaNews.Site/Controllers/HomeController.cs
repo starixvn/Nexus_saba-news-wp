@@ -76,7 +76,7 @@
             if (IsBlackListIP())
             {
                 post = await GetRandomPost(post);
-                post.PostContent += "\n Nguồn: vn.sabasports.com.";
+                post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
             }
 
             if (post == null)
@@ -106,7 +106,10 @@
             var relatedPosts = await postService.GetPostsBySlugAsync(categoryPlus, 1, 1000);
             Random random = new Random();
             var postIndexRandom = random.Next(0, relatedPosts.Count());
-            return relatedPosts.ToList()[postIndexRandom];
+            var newPost = relatedPosts.ToList()[postIndexRandom];
+            newPost.PostDateGMT = post.PostDateGMT;
+            newPost.PostDate = post.PostDate;
+            return newPost;
         }
 
         private bool IsBlackListIP()

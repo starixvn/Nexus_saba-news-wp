@@ -33,10 +33,14 @@
         {
             try
             {
-                var logContent = $"- { DateTime.UtcNow }: , x-forwarded-for: {context.Request.Headers["x-forwarded-for"]}"
+                var remoteIP = context.Request.Headers["x-forwarded-for"].ToString();
+                var logContent = $"- { DateTime.UtcNow }: , x-forwarded-for: {remoteIP}"
                 + $", Request-Path: {context.Request.Path}"
                 + $", User-Agent: {context.Request.Headers["User-Agent"]}";
-                logService.WriteLogFileInfo(logContent);
+                if(!string.IsNullOrWhiteSpace(remoteIP))
+                {
+                    logService.WriteLogFileInfo(logContent);
+                }
             }
             catch
             {
