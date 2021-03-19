@@ -10,5 +10,6 @@
         public IEnumerable<Post> RecentPosts { get; set; }
         public ViewData ViewData { get; set; }
         public bool IsLogin { get; set; }
+        public bool isSave { get; set; }
     }
 }

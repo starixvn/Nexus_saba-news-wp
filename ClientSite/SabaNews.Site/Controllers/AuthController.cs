@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -146,11 +147,5 @@
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         }
 
-        public async Task<IActionResult> Profile()
-        {
-            var isAuthenticated = sessionService.User != null;
-            
-            return View();
-        }
     }
 }

@@ -39,6 +39,7 @@
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IProfileService, ProfileService>();
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<IRecurringJobManager, RecurringJobManager>();

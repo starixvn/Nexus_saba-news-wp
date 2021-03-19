@@ -151,6 +151,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thoát.
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Link đã hết hạn.
         /// </summary>
         public static string ExpiredLink {
@@ -300,6 +309,15 @@ namespace SabaNews.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tin đã lưu.
+        /// </summary>
+        public static string NewsSaved {
+            get {
+                return ResourceManager.GetString("NewsSaved", resourceCulture);
             }
         }
         

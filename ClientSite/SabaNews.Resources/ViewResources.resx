@@ -147,6 +147,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
   <data name="ExpiredLink" xml:space="preserve">
     <value>Link đã hết hạn</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
+  </data>
+  <data name="NewsSaved" xml:space="preserve">
+    <value>Tin đã lưu</value>
   </data>
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
