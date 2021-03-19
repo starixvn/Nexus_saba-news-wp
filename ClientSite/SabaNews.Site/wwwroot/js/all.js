@@ -12,11 +12,24 @@ $('.submenu').click(function () {
         }
     }
 })
+
+
+
+
+
 $(document).ready(function () {
 
-    $('.language-select').click(function () {
-        $(this).siblings('.languages-list').toggleClass('active')
-    });
+    $('.action').click(function (e) {
+        e.preventDefault();
+        $(this).parent('.box-control').next().toggleClass('toggle-active-form');
+    })
+
+    $('.close-edit').click(function (e) {
+        e.preventDefault();
+        $(this).parent().removeClass('toggle-active-form');
+    })
+
+
     //mobile
     $('.button-mobile').click(function(){
         if($(window).innerWidth() <= 1024){
