@@ -18,15 +18,15 @@
         public string LoginType { get; set; }
         
         public string SavedPosts { get; set; }
-        private List<int> ListSavedPosts { get; set; }
+        private List<SavePost> ListSavedPosts { get; set; }
 
-        public List<int> HandleSavePosts
+        public List<SavePost> HandleSavePosts
         {
             get
             {
-                var arrSavedPosts = new List<int>();
+                var arrSavedPosts = new List<SavePost>();
                 if (SavedPosts == null) return arrSavedPosts;
-                arrSavedPosts = JsonConvert.DeserializeObject<List<int>>(SavedPosts);
+                arrSavedPosts = JsonConvert.DeserializeObject<List<SavePost>>(SavedPosts);
                 return arrSavedPosts;
             }
             set 

@@ -27,6 +27,8 @@
 
         Task<PostTemplate> GetPostByDateAsync(string date, int start, int end);
 
+        Task<IEnumerable<Post>> GetSavedPostsByUserID(string IDs);
+
         Task<IEnumerable<Menu>> GetMenuAsync(string MenuName);
 
         Task<Category> GetCateDetailAsync(string slug);

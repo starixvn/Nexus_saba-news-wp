@@ -123,6 +123,8 @@
             var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
             var cateSlug = post.CategoriesSlug;
             if (cateSlug.Contains(","))
+                var savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+                if (savePost != null)
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
                 var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();

@@ -222,6 +222,17 @@
             return postTemplate;
         }
 
+        public async Task<IEnumerable<Post>> GetSavedPostsByUserID(string IDs)
+        {
+            var criteria = new GetPostsByIDsCriteria
+            {
+                IDs = IDs
+            };
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+
+            return FormatData(posts);
+        }
+
         public async Task<Category> GetCateDetailAsync(string slug)
         {
             var criteria = new GetCateDetailCriteria

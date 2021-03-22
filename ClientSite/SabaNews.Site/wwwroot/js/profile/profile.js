@@ -1,8 +1,6 @@
 ﻿var profile = (function ($) {
     var postID = $('input[name=postID]').val();
     var isLogin = ($('input[name=isLogin]').val()).toLowerCase() === 'true';
-    console.log(isLogin);
-    console.log($('input[name=isLogin]').val());
     function save_post() {
         $('.save_post').on('click', function () {
             if (!isLogin) {
@@ -24,8 +22,9 @@
                     }
                 }
             });
-        })
+        });
     }
+
 
     function init() {
         save_post();
