@@ -4,6 +4,7 @@
     using Newtonsoft.Json;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
@@ -32,8 +33,9 @@
             {
                 return View("EmptyProfile");
             }
+            var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
 
-            return View();
+            return View(User);
         }
 
         public async Task<IActionResult> SavePost(int postID)
@@ -87,10 +89,16 @@
             }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             var savedPosts = user.HandleSavePosts;
-            var listPostID = string.Join(",", savedPosts.ConvertAll(x => x.PostID));
+            var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
             var posts = await postService.GetSavedPostsByUserID(listPostID);
+            var haveSavedToday = savedPosts.Find(val => val.Date == DateTime.Now.ToString("yyyy-MM-dd"));
+            var Model = new SavedPostViewModel
+            {
+                Posts = posts,
+                ToDayPost = haveSavedToday
+            };
 
-            return View(posts);
+            return View(Model);
         }
     }
 }

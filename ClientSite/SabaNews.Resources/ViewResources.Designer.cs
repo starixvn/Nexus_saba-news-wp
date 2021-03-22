@@ -313,15 +313,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin đã lưu.
-        /// </summary>
-        public static string NewsSaved {
-            get {
-                return ResourceManager.GetString("NewsSaved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Rất tiếc, chúng tôi không tìm thấy bài viết nào!.
         /// </summary>
         public static string NotFoundPostMsg {
@@ -372,6 +363,15 @@ namespace SabaNews.Resources {
         public static string ResetPassword {
             get {
                 return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tin đã lưu.
+        /// </summary>
+        public static string SavedPost {
+            get {
+                return ResourceManager.GetString("SavedPost", resourceCulture);
             }
         }
         

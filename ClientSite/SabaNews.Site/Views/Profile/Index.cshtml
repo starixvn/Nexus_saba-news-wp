@@ -12,19 +12,17 @@
 		<div class="block block-main">
 			<div class="profile">
 				<div class="profile__avatar">J</div>
-				<div class="profile__name">Jimmy</div>
+				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
 					<p>Tham gia từ</p>
-					<p>18/03/2021</p>
+					<p>@Model.RegisterDate.ToString("dd/MM/yyyy")</p>
 				</div>
 				<ul class="profile__control">
-					<li><a href="#">Hoạt động bình luận</a></li>
-					<li><a href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu (1)</a></li>
-					<li><a href="#">Tin đã xem</a></li>
+					<li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost</a></li>
 				</ul>
 				<ul class="profile__nav">
-					<li class="active-control"><a href="#">@ViewResources.MyAccount</a></li>
-					<li><a href="#">Thoát</a></li>
+					<li class="active-control"><a href="javascript:;">@ViewResources.MyAccount</a></li>
+					<li><a href="#">@ViewResources.Exit</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,8 +47,8 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="txt-feild">jimmynguyen@gmail.com</li>
-										<li class="validate">Chưa xác thực</li>
+										<li class="txt-feild">@Model.Email</li>
+										<li class="validate">@(Model.EmailConfirmed ? "" : "Chưa xác thực")</li>
 									</ul>
 								</div>
 								<a href="#" class="action">Thay Đổi</a>
@@ -62,7 +60,10 @@
 								<button class="btn-submit-edit">Lưu lại</button>
 								<span class="close-edit">close</span>
 							</div>
-							<p class="comfirm"><a href="#" class="action">Xác thực ngay</a></p>
+							@if(!Model.EmailConfirmed)
+							{
+								<p class="comfirm"><a href="#" class="action">Xác thực ngay</a></p>
+							}
 						</div>
 					</div>
 
@@ -125,8 +126,7 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="txt-feild">Jimmy Nguyen</li>
-										<li class="validate">Chưa có tên</li>
+										<li class="txt-feild">@Model.Name</li>
 									</ul>
 								</div>
 								<a href="#" class="action">Thêm</a>

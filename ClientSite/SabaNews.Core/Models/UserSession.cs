@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Core.Models
 {
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
 
     public class UserSession
@@ -18,6 +19,9 @@
         public string LoginType { get; set; }
         
         public string SavedPosts { get; set; }
+
+        public DateTime RegisterDate { get; set; }
+
         private List<SavePost> ListSavedPosts { get; set; }
 
         public List<SavePost> HandleSavePosts

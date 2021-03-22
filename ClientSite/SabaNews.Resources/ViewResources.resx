@@ -201,9 +201,6 @@
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
   </data>
-  <data name="NewsSaved" xml:space="preserve">
-    <value>Tin đã lưu</value>
-  </data>
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
   </data>
@@ -221,6 +218,9 @@
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>Lấy lại mật khẩu</value>
+  </data>
+  <data name="SavedPost" xml:space="preserve">
+    <value>Tin đã lưu</value>
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm...</value>

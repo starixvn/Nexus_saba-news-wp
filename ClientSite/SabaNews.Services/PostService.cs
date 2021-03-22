@@ -230,7 +230,7 @@
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
 
-            return FormatData(posts);
+            return FormatData(posts).ToArray();
         }
 
         public async Task<Category> GetCateDetailAsync(string slug)
