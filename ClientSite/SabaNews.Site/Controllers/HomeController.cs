@@ -3,6 +3,8 @@
     using System;
     using System.Globalization;
     using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
@@ -71,6 +73,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
+            //var x = MD5Hash("vn.sabasports.com");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
             if (IsBlackListIP())
             {
@@ -82,6 +85,8 @@
             {
                 return View(Constants.EmptyBlogView);
             }
+
+            post.PostContent += $"\n <b data-pro='abc'>.</b>";
 
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
@@ -109,6 +114,15 @@
             newPost.PostDateGMT = post.PostDateGMT;
             newPost.PostDate = post.PostDate;
             return newPost;
+        }
+
+        public static string MD5Hash(string input)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
+                return Encoding.ASCII.GetString(result);
+            }
         }
 
         private bool IsBlackListIP()
