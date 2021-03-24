@@ -6,6 +6,20 @@
 	<link rel="stylesheet" href="~/minify/styles/profile.min.css" asp-append-version="true">
 }
 
+@section Scripts{
+	<script src="~/js/profile/update_profile.js" asp-append-version="true"></script>
+}
+
+<div class="modal fade" id="resetPasswordSuccesful" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
 <section class="main">
 
 	<div class="container profile-container">
@@ -18,11 +32,11 @@
 					<p>@Model.RegisterDate.ToString("dd/MM/yyyy")</p>
 				</div>
 				<ul class="profile__control">
-					<li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost</a></li>
+					<li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(Model.HandleSavePosts.Count > 0 ? "(" + Model.HandleSavePosts.Count + ")" : "" )</a></li>
 				</ul>
 				<ul class="profile__nav">
 					<li class="active-control"><a href="javascript:;">@ViewResources.MyAccount</a></li>
-					<li><a href="#">@ViewResources.Exit</a></li>
+					<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,18 +44,18 @@
 			<div class="controls">
 				<h2 class="block__title"><a>@ViewResources.MyAccount </a></h2>
 				<div class="controls__choose">
-					<div class="title">Ảnh đại diện</div>
+					<div class="title">@ViewResources.ProfilePhoto</div>
 					<div class="input-upload">
 						<input type="file" class="input-file" id="act-upload">
-						<span class="txt-img">Tải lên ảnh đại diện mới</span>
+						<span class="txt-img">@ViewResources.ProfileUploadNewPhoto</span>
 					</div>
 				</div>
 
 				<div class="controls__account line">
-					<div class="title">Tài Khoản</div>
+					<div class="title">@ViewResources.ProfileAccount</div>
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Email</div>
+							<div class="label-fill">@ViewResources.Email</div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">
@@ -51,7 +65,7 @@
 										<li class="validate">@(Model.EmailConfirmed ? "" : "Chưa xác thực")</li>
 									</ul>
 								</div>
-								<a href="#" class="action">Thay Đổi</a>
+								<a href="#" class="action">@ViewResources.Change</a>
 							</div>
 							<div class="box-edit-form">
 								<div class="title">Đổi email</div>
@@ -60,121 +74,148 @@
 								<button class="btn-submit-edit">Lưu lại</button>
 								<span class="close-edit">close</span>
 							</div>
-							@if(!Model.EmailConfirmed)
+							@if (!Model.EmailConfirmed)
 							{
-								<p class="comfirm"><a href="#" class="action">Xác thực ngay</a></p>
+								<p class="comfirm"><a href="#" class="action">@ViewResources.ConfirmEmail</a></p>
 							}
 						</div>
 					</div>
 
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Điện thoại</div>
+							<div class="label-fill">@ViewResources.ProfilePhone</div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">
-								<div class="main-fill">
+								<div class="main-fill phone-section">
 									<ul class="txt-fill">
-										<li class="txt-feild">0123456789</li>
-										<li class="validate">Chưa xác thực</li>
+										@if (Model.Phone != null)
+										{
+											<li class="txt-feild">@Model.Phone</li>
+										}
+										else
+										{
+											<li class="validate">@ViewResources.ProfilePhoneValidate</li>
+										}
+
 									</ul>
 								</div>
-								<a href="#" class="action">Thêm</a>
+								<a href="#" class="action">@ViewResources.Add</a>
 							</div>
-							<div class="box-edit-form">
-								<div class="title">Số điện thoại</div>
+							<div class="box-edit-form" id="form_update_phone">
+								<div class="title">@ViewResources.ProfilePhoneUpdateTitle</div>
 								<input type="number" name="phone" value="" class="input-edit" placeholder="Nhập số điện thoại" />
-								<button class="btn-submit-edit">Lưu lại</button>
-								<span class="close-edit">close</span>
+								<p class="error phone-error">Vui lòng nhập số điện thoại</p>
+								<button class="btn-submit-edit btn-save-phone btn-disabled" data-phone="@Model.Phone" disabled>@ViewResources.Save</button>
+								<span class="close-edit">@ViewResources.Close</span>
 							</div>
-							<p class="commitment">Sabasport cam kết bảo mật thông tin này</p>
+							<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 						</div>
 					</div>
 
+					@if (Model.Password != "")
+					{
+						<div class="group-table">
+							<div class="left-table">
+								<div class="label-fill">@ViewResources.Password</div>
+							</div>
+							<div class="right-table">
+								<div class="box-control">
+									<input type="password" name="password" readonly value="@Model.Password" class="input-password" />
+									<a href="#" class="action">@ViewResources.ChangePassword</a>
+								</div>
+								<div class="box-edit-form" id="form_update_password">
+									<div class="title">@ViewResources.ChangePassword</div>
+									<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
+									<p class="error error-password old-password-length-error">Mật khẩu cũ tối thiểu 6 kí tự</p>
+									<p class="error error-password old-password-error"></p>
+									<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
+									<p class="error error-password new-password-length-error">Mật khẩu mới tối thiểu 6 kí tự</p>
+									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
+									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
+									<span class="close-edit">@ViewResources.Close</span>
+								</div>
+							</div>
+						</div>
 
-					<div class="group-table">
-						<div class="left-table">
-							<div class="label-fill">Mật khẩu</div>
-						</div>
-						<div class="right-table">
-							<div class="box-control">
-								<input type="password" name="password" value="" class="input-password" />
-								<a href="#" class="action">Đổi mật khẩu</a>
-							</div>
-							<div class="box-edit-form">
-								<div class="title">Đổi mật khẩu</div>
-								<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
-								<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
-								<button class="btn-submit-edit">Lưu lại</button>
-								<p class="forgot-pass"><a href="#">Lấy lại mật khẩu</a></p>
-								<span class="close-edit">close</span>
-							</div>
-						</div>
-					</div>
+					}
 
 				</div>
 
 
 
 				<div class="controls__account line">
-					<div class="title">Thông tin cá nhân</div>
+					<div class="title">@ViewResources.ProfilePersonalInfo</div>
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Họ và tên</div>
+							<div class="label-fill">@ViewResources.Name</div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">
-								<div class="main-fill">
+								<div class="main-fill name-section">
 									<ul class="txt-fill">
 										<li class="txt-feild">@Model.Name</li>
 									</ul>
 								</div>
-								<a href="#" class="action">Thêm</a>
+								<a href="#" class="action">@ViewResources.Add</a>
 							</div>
-							<div class="box-edit-form">
+							<div class="box-edit-form" id="form_update_name">
 								<div class="title">Họ và tên</div>
 								<input type="text" name="name" value="" class="input-edit" placeholder="Nhập họ và tên" />
-								<button class="btn-submit-edit">Lưu lại</button>
-								<span class="close-edit">close</span>
+								<p class="error name-error">Vui lòng nhập tên</p>
+								<button class="btn-submit-edit btn-save-name btn-disabled" disabled data-name="@Model.Name">@ViewResources.Save</button>
+								<span class="close-edit">@ViewResources.Close</span>
 							</div>
-							<p class="commitment">Hiển thị khi bạn tham gia bình luận</p>
+							<p class="commitment">@ViewResources.ProfileShowWhenComment</p>
 						</div>
 					</div>
 
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Giới tính</div>
+							<div class="label-fill">@ViewResources.ProfileGender</div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">
-								<div class="main-fill">
+								<div class="main-fill gender-section">
 									<ul class="txt-fill">
-										<li class="txt-feild">Nam</li>
-										<li class="validate">Chưa Lựa chọn</li>
+										@{ var disabled = "disabled"; }
+										@if (Model.Gender != null)
+										{
+											disabled = "";
+											<li class="txt-feild">@Model.Gender</li>
+										}
+										else
+										{
+											<li class="validate">@ViewResources.ProfileNoSelected</li>
+										}
+
 									</ul>
 								</div>
-								<a href="#" class="action">Thêm</a>
+								<a href="#" class="action">@ViewResources.Add</a>
 							</div>
-							<div class="box-edit-form">
-								<div class="title">Giới tính</div>
-								<div class="radio-group">
-									<div class="item-radio">
-										<input type="radio" id="male" name="gender" value="male">
-										<label for="male">Nam</label>
+							<div class="box-edit-form" id="form_update_gender">
+								<div class="title">@ViewResources.ProfileGender</div>
+								<form>
+									<div class="radio-group">
+										<div class="item-radio">
+											<input type="radio" id="male" name="gender" value="Nam" @(Model.Gender == "Nam" ? "checked" : "")>
+											<label for="male">@ViewResources.Male</label>
+										</div>
+										<div class="item-radio">
+											<input type="radio" id="female" name="gender" value="Nữ" @(Model.Gender == "Nữ" ? "checked" : "")>
+											<label for="female">@ViewResources.Female</label>
+										</div>
+										<div class="item-radio">
+											<input type="radio" id="other" name="gender" value="Khác" @(Model.Gender == "Khác" ? "checked" : "")>
+											<label for="other">@ViewResources.Other</label>
+										</div>
 									</div>
-									<div class="item-radio">
-										<input type="radio" id="female" name="gender" value="female">
-										<label for="female">Nữ</label>
-									</div>
-									<div class="item-radio">
-										<input type="radio" id="other" name="gender" value="other">
-										<label for="other">Khác</label>
-									</div>
-								</div>
-								<button class="btn-submit-edit">Lưu lại</button>
-								<span class="close-edit">close</span>
+								</form>
+								<button class="btn-submit-edit btn-save-gender btn-@disabled" @disabled data-gender="@Model.Gender">@ViewResources.Save</button>
+								<p class="error gender-error">Vui lòng chọn giới tính</p>
+								<span class="close-edit">@ViewResources.Close</span>
 							</div>
-							<p class="commitment">Sabasport cam kết bảo mật thông tin này</p>
+							<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>
 						</div>
 					</div>
 
@@ -218,3 +259,7 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	var email = '@Model.Email';
+</script>

@@ -124,6 +124,7 @@
 
     function HandleForgotPassword() {
         $('#forgot-password').on('click', function () {
+            console.log('123');
             $.ajax({
                 url: '/Auth/ForgotPassword',
                 type: 'GET',
@@ -175,7 +176,7 @@
     }
 
     function HandleLogout() {
-        $('.auth-input .auth-logout').on('click', function () {
+        $('.auth-input .auth-logout, .profile_logout').on('click', function () {
             $.ajax({
                 url: '/Auth/Logout',
                 type: 'GET',
@@ -201,7 +202,8 @@
 
     return {
         init,
-        GetModalLogin
+        GetModalLogin, 
+        HandleForgotPassword
     }
 
 })(jQuery);

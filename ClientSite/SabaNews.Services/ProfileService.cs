@@ -4,6 +4,7 @@
     using SabaNews.Criteria.Auth;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
+    using BCrypt.Net;
 
     public class ProfileService : IProfileService
     {
@@ -30,6 +31,19 @@
                 UserId = userID
             };
             return await baseService.GetDataEntityAsync<UserSession>(criteria);
+        }
+
+        public async Task<CommandResult> UpdateUserInfoAsync(UserSession user)
+        {
+            var command = new UpdateUserInfoCommand
+            {
+                UserID = user.Id,
+                _name = user.Name,
+                _password = BCrypt.HashPassword(user.Password),
+                _phone = user.Phone,
+                _gender = user.Gender
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
         }
     }
 }

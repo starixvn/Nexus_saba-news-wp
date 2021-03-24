@@ -15,15 +15,18 @@
         private readonly IProfileService profileService;
         private readonly ISessionService sessionService;
         private readonly IPostService postService;
+        private readonly IAuthService authService;
 
         public ProfileController(
             IProfileService profileService,
             ISessionService sessionService,
-            IPostService postService)
+            IPostService postService,
+            IAuthService authService)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
             this.postService = postService;
+            this.authService = authService;
         }
         [Route("Profile")]
         public async Task<IActionResult> Index()
@@ -99,6 +102,52 @@
             };
 
             return View(Model);
+        }
+
+        public async Task<ActionResult> UpdateProfile(string type, string value)
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Json(new { isSuccessful = false });
+            }
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+
+            switch (type)
+            {
+                case "phone":
+                    user.Phone = value;
+                    break;
+                case "name":
+                    user.Name = value;
+                    break;
+                case "gender":
+                    user.Gender = value;
+                    break;
+                default: break;
+            };
+
+            var commandResult =  await profileService.UpdateUserInfoAsync(user);
+            return Json(commandResult);
+
+        }
+
+        public async Task<ActionResult> UpdateProfilePassword(string oldPassword, string newPassword)
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Json(new { isSuccessful = false });
+            }
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            if (!authService.ComparePassword(oldPassword, user.Password))
+            {
+                return Json(new { isSuccessful = false, message = "Mật khẩu cũ không đúng" });
+            }
+            user.Password = newPassword;
+            var commandResult = await profileService.UpdateUserInfoAsync(user);
+            return Json(commandResult);
+
         }
     }
 }

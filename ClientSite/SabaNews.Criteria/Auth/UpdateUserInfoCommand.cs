@@ -1,0 +1,15 @@
+﻿namespace SabaNews.Criteria.Auth
+{
+    public class UpdateUserInfoCommand : BaseNonQueryCommand
+    {
+        public int UserID { get; set; }
+        public string _name { get; set; }
+        public string _password { get; set; }
+        public string _phone { get; set; }
+        public string _gender { get; set; }
+
+        public override string GetSettingKey() => "user_update_info";
+
+        public override bool IsValid() => true;
+    }
+}

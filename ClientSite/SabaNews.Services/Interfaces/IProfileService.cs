@@ -8,5 +8,7 @@
         Task<CommandResult> UpdateUserSavePostAsync(int userID, string listPosts);
 
         Task<UserSession> GetUserByIdAsync(int userID);
+
+        Task<CommandResult> UpdateUserInfoAsync(UserSession user);
     }
 }

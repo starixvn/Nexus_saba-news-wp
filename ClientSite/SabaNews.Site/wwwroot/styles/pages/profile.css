@@ -1253,6 +1253,9 @@ button {
         .block-extension .controls__account .group-table .right-table .commitment {
           margin-bottom: 0;
           color: #828282; }
+        .block-extension .controls__account .group-table .right-table .error {
+          color: #eb5342;
+          display: none; }
         .block-extension .controls__account .group-table .right-table .box-edit-form {
           background: #f7f7f7;
           border: 1px solid #e5e5e5;
@@ -1284,7 +1287,7 @@ button {
             padding: 0 1.5rem;
             outline: none;
             background-color: #fff !important;
-            margin-bottom: 2rem; }
+            margin-bottom: 1.5rem; }
           .block-extension .controls__account .group-table .right-table .box-edit-form .forgot-pass {
             float: right;
             margin-top: 1rem;
@@ -1308,6 +1311,8 @@ button {
             font-weight: bold;
             border-radius: 3px;
             cursor: pointer; }
+          .block-extension .controls__account .group-table .right-table .box-edit-form .btn-disabled {
+            background: #BDBDBD; }
         .block-extension .controls__account .group-table .right-table .toggle-active-form {
           display: block; }
   .block-extension .block__title {

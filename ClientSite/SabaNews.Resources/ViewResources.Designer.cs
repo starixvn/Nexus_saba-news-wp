@@ -61,6 +61,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hậu Trường.
         /// </summary>
         public static string Backstage {
@@ -75,6 +84,33 @@ namespace SabaNews.Resources {
         public static string Basketball {
             get {
                 return ResourceManager.GetString("Basketball", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thay đổi.
+        /// </summary>
+        public static string Change {
+            get {
+                return ResourceManager.GetString("Change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi mật khẩu.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
@@ -165,6 +201,15 @@ namespace SabaNews.Resources {
         public static string ExpiredLink {
             get {
                 return ResourceManager.GetString("ExpiredLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        public static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
             }
         }
         
@@ -268,6 +313,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        public static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lich-thi-dau.
         /// </summary>
         public static string MatchScheduleSlug {
@@ -322,11 +376,110 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khác.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản.
+        /// </summary>
+        public static string ProfileAccount {
+            get {
+                return ResourceManager.GetString("ProfileAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Giới tính.
+        /// </summary>
+        public static string ProfileGender {
+            get {
+                return ResourceManager.GetString("ProfileGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chưa lựa chọn.
+        /// </summary>
+        public static string ProfileNoSelected {
+            get {
+                return ResourceManager.GetString("ProfileNoSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin cá nhân.
+        /// </summary>
+        public static string ProfilePersonalInfo {
+            get {
+                return ResourceManager.GetString("ProfilePersonalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điện thoại.
+        /// </summary>
+        public static string ProfilePhone {
+            get {
+                return ResourceManager.GetString("ProfilePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại.
+        /// </summary>
+        public static string ProfilePhoneUpdateTitle {
+            get {
+                return ResourceManager.GetString("ProfilePhoneUpdateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chưa có số điện thoại.
+        /// </summary>
+        public static string ProfilePhoneValidate {
+            get {
+                return ResourceManager.GetString("ProfilePhoneValidate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ảnh đại diện.
+        /// </summary>
+        public static string ProfilePhoto {
+            get {
+                return ResourceManager.GetString("ProfilePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hiển thị khi bạn tham gia bình luận.
+        /// </summary>
+        public static string ProfileShowWhenComment {
+            get {
+                return ResourceManager.GetString("ProfileShowWhenComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tải lên ảnh đại diện mới.
+        /// </summary>
+        public static string ProfileUploadNewPhoto {
+            get {
+                return ResourceManager.GetString("ProfileUploadNewPhoto", resourceCulture);
             }
         }
         
@@ -363,6 +516,24 @@ namespace SabaNews.Resources {
         public static string ResetPassword {
             get {
                 return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sabasports cam kết bảo mật thông tin này.
+        /// </summary>
+        public static string SabasportsCommitmentSecureInfo {
+            get {
+                return ResourceManager.GetString("SabasportsCommitmentSecureInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lưu lại.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

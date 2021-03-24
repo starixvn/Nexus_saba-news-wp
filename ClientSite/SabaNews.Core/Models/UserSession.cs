@@ -14,6 +14,10 @@
 
         public string Password { get; set; }
 
+        public string Phone { get; set; }
+
+        public string Gender { get; set; } 
+
         public bool EmailConfirmed { get; set; }
 
         public string LoginType { get; set; }

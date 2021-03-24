@@ -43,8 +43,8 @@
             if (user != null && !string.IsNullOrEmpty(user.Password) && authService.ComparePassword(model.Password, user.Password))
             {
                 await DoLoginAsync(user.Name, user.Email);
+                user.LoginType = LoginType.Internal;
                 sessionService.User = user;
-                sessionService.User.LoginType = LoginType.Internal;
                 return Json(new CommandResult { Code = 0, Message = string.Empty });
             }
             return Json(new CommandResult { Code = 1, Message = Constants.WrongUsernameOrPassword });
