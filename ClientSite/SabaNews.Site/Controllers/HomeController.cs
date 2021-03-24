@@ -75,18 +75,20 @@
         {
             //var x = MD5Hash("vn.sabasports.com");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            if (IsBlackListIP())
-            {
-                post = await GetRandomPost(post);
-                post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
-            }
+            //if (IsBlackListIP())
+            //{
+            //    post = await GetRandomPost(post);
+            //    post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
+            //}
 
+            
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
             }
-
-            post.PostContent += $"\n <b data-pro='abc'>.</b>";
+            
+            post.PostContent = post.PostContent.Replace("\"rank-math-link\"", "\"rank-math-link\" data-pro=\"z\"");
+            post.PostContent = post.PostContent.Replace("'rank-math-link'", "'rank-math-link' data-pro=\"z\"");
 
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
