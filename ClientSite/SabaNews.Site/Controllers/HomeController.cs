@@ -42,12 +42,11 @@
             return View(view, viewModel);
         }
 
-        [Route("/video/{slug?}/page/{page}")]
-        [Route("/video/{slug?}")]
-        public async Task<IActionResult> Video(string slug = null, int page = 1)
+        [Route("/video/page/{page}")]
+        [Route("/video/")]
+        public async Task<IActionResult> Video(int page = 1)
         {
-            slug ??= Constants.VideoSlug;
-            var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            var viewModel = await dataControlService.GetCategoryViewModel(Constants.VideoSlug, page);
             var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }

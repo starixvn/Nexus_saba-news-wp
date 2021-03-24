@@ -29,7 +29,7 @@
                             else if (menu.Slug == Constants.VideoSlug)
                             {
                                 VideoParentId = menu.ID;
-                                link = Url.Action("Video", "Home", new { slug = (int?)null });
+                                link = Url.Action("Video", "Home");
                             }
                             if (menu.CatId != Constants.Home)
                             {
