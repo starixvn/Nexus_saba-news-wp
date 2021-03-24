@@ -102,7 +102,7 @@
         {
             var categoryPlus = post.CategoriesSlug.Split(",").FirstOrDefault();
 
-            var relatedPosts = await postService.GetPostsBySlugAsync(categoryPlus, 1, 1000);
+            var relatedPosts = await postService.GetPostsBySlugAsync(categoryPlus, 10, 1000);
             Random random = new Random();
             var postIndexRandom = random.Next(0, relatedPosts.Count());
             var newPost = relatedPosts.ToList()[postIndexRandom];
