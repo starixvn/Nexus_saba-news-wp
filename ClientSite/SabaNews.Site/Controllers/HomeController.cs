@@ -73,7 +73,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-            //var x = MD5Hash("vn.sabasports.com");
+            var hash = GetMd5Hash($"https://vn.sabasports.com/{slug}");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
             //if (IsBlackListIP())
             //{
@@ -87,8 +87,8 @@
                 return View(Constants.EmptyBlogView);
             }
             
-            post.PostContent = post.PostContent.Replace("\"rank-math-link\"", "\"rank-math-link\" data-pro=\"z\"");
-            post.PostContent = post.PostContent.Replace("'rank-math-link'", "'rank-math-link' data-pro=\"z\"");
+            post.PostContent = post.PostContent.Replace("\"rank-math-link\"", $"\"rank-math-link\" data-pro=\"{hash}\"");
+            post.PostContent = post.PostContent.Replace("'rank-math-link'", $"'rank-math-link' data-pro=\"{hash}\"");
 
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
@@ -103,6 +103,19 @@
             ViewData["video"] = post.Type == Constants.VideoPostType;
 
             return View(Models);
+        }
+        public static string GetMd5Hash(string input)
+        { // Create a new instance of the MD5CryptoServiceProvider object.
+            MD5 md5Hasher = MD5.Create(); // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+            // Create a new Stringbuilder to collect the bytes // and create a string.
+            StringBuilder sBuilder = new StringBuilder(); // Loop through each byte of the hashed data // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
         }
 
         private async Task<Post> GetRandomPost(Post post)
@@ -125,26 +138,6 @@
                 var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
                 return Encoding.ASCII.GetString(result);
             }
-        }
-
-        private bool IsBlackListIP()
-        {
-            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            if (string.IsNullOrWhiteSpace(clientIP))
-            {
-                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
-            var blackListIPs = postService.GetBlackListIPs();
-
-            foreach (var blackListIP in blackListIPs)
-            {
-                if (clientIP.Contains(blackListIP))
-                {
-                    return true;
-                }   
-            }
-
-            return false;
         }
 
         [Route("Search/page/{page}")]
