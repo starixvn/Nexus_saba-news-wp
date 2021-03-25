@@ -15,6 +15,7 @@
         public const string TransferSlug = "chuyen-nhuong";
         public const string CategorySlug = "tin-the-thao";
         public const string MatchScheduleSlug = "lich-thi-dau";
+        public const string WarningSlug = "warning";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
