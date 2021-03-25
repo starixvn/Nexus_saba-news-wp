@@ -41,7 +41,8 @@
                 _name = user.Name,
                 _password = user.Password,
                 _phone = user.Phone,
-                _gender = user.Gender
+                _gender = user.Gender,
+                _photo = user.Photo
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }

@@ -18,6 +18,8 @@
 
         public string Gender { get; set; } 
 
+        public string Photo { get; set; }
+
         public bool EmailConfirmed { get; set; }
 
         public string LoginType { get; set; }

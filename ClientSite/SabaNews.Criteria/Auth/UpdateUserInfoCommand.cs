@@ -7,6 +7,7 @@
         public string _password { get; set; }
         public string _phone { get; set; }
         public string _gender { get; set; }
+        public string _photo { get; set; }
 
         public override string GetSettingKey() => "user_update_info";
 

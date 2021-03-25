@@ -11,6 +11,8 @@
     using System.Threading.Tasks;
     using BCrypt.Net;
     using Microsoft.AspNetCore.Http;
+    using System.Net.Http.Headers;
+    using System.IO;
 
     public class ProfileController : Controller
     {
@@ -18,17 +20,20 @@
         private readonly ISessionService sessionService;
         private readonly IPostService postService;
         private readonly IAuthService authService;
+        private readonly IPathService pathService;
 
         public ProfileController(
             IProfileService profileService,
             ISessionService sessionService,
             IPostService postService,
-            IAuthService authService)
+            IAuthService authService,
+            IPathService pathService)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
             this.postService = postService;
             this.authService = authService;
+            this.pathService = pathService;
         }
         [Route("Profile")]
         public async Task<IActionResult> Index()
@@ -158,8 +163,40 @@
 
         public async Task<ActionResult> UpdatePhoto(IFormFile file)
         {
-            var test = file;
-            return null;
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Json(new { isSuccessful = false });
+            }
+
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+            filename = this.EnsureCorrectFilename(filename);
+
+            filename = DateTime.Now.Millisecond + filename ;
+
+            using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
+                await file.CopyToAsync(output);
+
+            user.Photo = filename;
+            var commandResult = await profileService.UpdateUserInfoAsync(user);
+
+            return Json(commandResult);
+        }
+
+
+        private string EnsureCorrectFilename(string filename)
+        {
+            if (filename.Contains("\\"))
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
+
+            return filename;
+        }
+
+        private string GetPathAndFilename(string filename)
+        {
+            return pathService.MapPath("upload\\" + filename);
         }
     }
 }
