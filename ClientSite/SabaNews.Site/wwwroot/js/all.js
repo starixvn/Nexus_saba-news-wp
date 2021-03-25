@@ -52,9 +52,18 @@ $(document).ready(function () {
         $('html, body').animate({scrollTop: 0}, 1000);
     });
     
-    $('#detail-page').bind("cut copy paste", function (e) {
+    $('#detail-page').bind("cut copy paste contextmenu", function (e) {
         e.preventDefault();
     });
+
+    if ($('body').find('#detail-page').length !== 0) {
+        $(document).keydown(function (e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 65) {
+                e.preventDefault();
+            }
+        });
+    }
+    
 
     $(window).click(function (e) {
         var elmClass = e.target.className;
