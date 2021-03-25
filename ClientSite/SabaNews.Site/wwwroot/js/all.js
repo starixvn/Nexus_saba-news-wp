@@ -52,6 +52,12 @@ $(document).ready(function () {
         $('html, body').animate({scrollTop: 0}, 1000);
     });
 
+    $(document).ready(function () {
+        $('#detail-page').bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+    });
+
     $(window).click(function (e) {
         var elmClass = e.target.className;
         if (elmClass !== 'icon-search' && elmClass !== 'keyword-input') {
