@@ -204,10 +204,33 @@
     function update_photo() {
         $('#uploadPhoto').on('submit', function (e) {
             e.preventDefault();
-            var formData = new FormData();
+            $('.photo-error').hide();
             var files = $('input[name=photo]')[0].files[0];
-            formData.append('file', files);
+            if (typeof files === "undefined") {
+                $('.photo-error').html("Vui lòng chọn file trước!");
+                $('.photo-error').show();
+                return false;
+            }
+            var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
             console.log(files);
+            var fsize = files.size,
+                ftype = files.type,
+                fname = files.name,
+                fextension = fname.substring(fname.lastIndexOf('.') + 1);
+
+            console.log(fsize, ftype, fname, fextension);
+
+            if (!type_reg.test(ftype)) {
+                $('.photo-error').html("Kiểu file này được được phép!");
+                $('.photo-error').show();
+                return false;
+            } else if (fsize > 3145728) {
+                $('.photo-error').html("File quá lớn! Vui lòng chọn hình nhỏ hơn 3MB");
+                $('.photo-error').show();
+                return false;
+            }
+            var formData = new FormData();
+            formData.append('file', files);
             $.ajax({
                 type: 'POST',
                 url: "Profile/UpdatePhoto",
@@ -215,7 +238,10 @@
                 processData: false,
                 contentType: false,
                 success: function (res) {
-                    console.log(res);
+                    if (res.isSuccessful) {
+                        $('.photo-error').hide();
+
+                    }
                 }
             });
         });
