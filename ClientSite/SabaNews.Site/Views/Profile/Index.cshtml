@@ -45,10 +45,14 @@
 				<h2 class="block__title"><a>@ViewResources.MyAccount </a></h2>
 				<div class="controls__choose">
 					<div class="title">@ViewResources.ProfilePhoto</div>
-					<div class="input-upload">
-						<input type="file" class="input-file" id="act-upload">
-						<span class="txt-img">@ViewResources.ProfileUploadNewPhoto</span>
-					</div>
+					<form enctype="multipart/form-data" method="post" id="uploadPhoto">
+						<div class="input-upload">
+							<input type="file" class="input-file" id="act-upload" name="photo">
+							<span class="txt-img">@ViewResources.ProfileUploadNewPhoto</span>
+						</div>
+						<input type="submit" name="" value="Submit" />
+					</form>
+				
 				</div>
 
 				<div class="controls__account line">

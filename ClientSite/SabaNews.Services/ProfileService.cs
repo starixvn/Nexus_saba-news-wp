@@ -4,7 +4,7 @@
     using SabaNews.Criteria.Auth;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
-    using BCrypt.Net;
+    
 
     public class ProfileService : IProfileService
     {
@@ -39,7 +39,7 @@
             {
                 UserID = user.Id,
                 _name = user.Name,
-                _password = BCrypt.HashPassword(user.Password),
+                _password = user.Password,
                 _phone = user.Phone,
                 _gender = user.Gender
             };

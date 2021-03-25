@@ -201,12 +201,33 @@
         
     }
 
+    function update_photo() {
+        $('#uploadPhoto').on('submit', function (e) {
+            e.preventDefault();
+            var formData = new FormData();
+            var files = $('input[name=photo]')[0].files[0];
+            formData.append('file', files);
+            console.log(files);
+            $.ajax({
+                type: 'POST',
+                url: "Profile/UpdatePhoto",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+    }
+
    
 
     function init() {
         update_saved_post();
         validate();
         update_profile_info();
+        update_photo();
     }
 
     return {

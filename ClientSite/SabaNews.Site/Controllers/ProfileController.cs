@@ -9,6 +9,8 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using BCrypt.Net;
+    using Microsoft.AspNetCore.Http;
 
     public class ProfileController : Controller
     {
@@ -128,6 +130,10 @@
             };
 
             var commandResult =  await profileService.UpdateUserInfoAsync(user);
+            if (commandResult.IsSuccessful)
+            {
+                sessionService.User = user;
+            }
             return Json(commandResult);
 
         }
@@ -144,10 +150,16 @@
             {
                 return Json(new { isSuccessful = false, message = "Mật khẩu cũ không đúng" });
             }
-            user.Password = newPassword;
+            user.Password = BCrypt.HashPassword(newPassword);
             var commandResult = await profileService.UpdateUserInfoAsync(user);
             return Json(commandResult);
 
+        }
+
+        public async Task<ActionResult> UpdatePhoto(IFormFile file)
+        {
+            var test = file;
+            return null;
         }
     }
 }
