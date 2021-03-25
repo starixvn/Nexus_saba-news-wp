@@ -1,16 +1,16 @@
 ﻿namespace SabaNews.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
+    using SabaNews.Models;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Globalization;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using SabaNews.Core.Constants;
-    using SabaNews.Models;
-    using SabaNews.Models.ViewModel;
-    using SabaNews.Services.Interfaces;
 
     public class HomeController : Controller
     {
@@ -81,7 +81,6 @@
             //    post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
             //}
 
-            
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
@@ -89,6 +88,13 @@
             
             post.PostContent = post.PostContent.Replace("\"rank-math-link\"", $"\"rank-math-link\" data-pro=\"{hash}\"");
             post.PostContent = post.PostContent.Replace("'rank-math-link'", $"'rank-math-link' data-pro=\"{hash}\"");
+
+            var subString = post.PostContent.Split("<p>");
+            Random random = new Random();
+            var randomIndex = random.Next(1, subString.Count() - 1);
+            var x = $"<p>{subString[randomIndex]}";
+            var y = $"<p data-z=\"{hash}\">{subString[randomIndex]}";
+            post.PostContent = post.PostContent.Replace(x, y);
 
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
