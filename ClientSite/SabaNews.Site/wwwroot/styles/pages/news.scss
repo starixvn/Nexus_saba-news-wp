@@ -20,10 +20,10 @@
 
 
 
-
 .block-main {
     .card-horizontal {
         margin-bottom: 1.6rem;
+
         @include Mobile {
             margin-bottom: 1.2rem;
         }
@@ -86,11 +86,23 @@
 
             .card-horizontal__image {
                 height: 100%;
+
                 @include tableMobile {
                     max-height: 100% !important;
                 }
             }
         }
+    }
+}
+
+.block-warning {
+    img {
+        max-width: 100%;
+    }
+
+    .aligncenter {
+        margin: 10px 0;
+        text-align: center;
     }
 }
 
