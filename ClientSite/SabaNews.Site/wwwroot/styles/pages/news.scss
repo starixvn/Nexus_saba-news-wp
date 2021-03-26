@@ -104,6 +104,22 @@
         margin: 10px 0;
         text-align: center;
     }
+
+    .banner-desktop {
+        display: block;
+
+        @include tableMobile {
+            display: none;
+        }
+    }
+
+    .banner-mobile {
+        display: none;
+
+        @include tableMobile {
+            display: block;
+        }
+    }
 }
 
 

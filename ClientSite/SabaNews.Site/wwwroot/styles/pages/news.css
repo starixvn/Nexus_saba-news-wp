@@ -1067,3 +1067,15 @@ button {
 .block-warning .aligncenter {
   margin: 10px 0;
   text-align: center; }
+
+.block-warning .banner-desktop {
+  display: block; }
+  @media screen and (max-width: 1024px) {
+    .block-warning .banner-desktop {
+      display: none; } }
+
+.block-warning .banner-mobile {
+  display: none; }
+  @media screen and (max-width: 1024px) {
+    .block-warning .banner-mobile {
+      display: block; } }
