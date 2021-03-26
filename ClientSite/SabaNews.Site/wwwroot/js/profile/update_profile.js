@@ -237,7 +237,7 @@
                 processData: false,
                 contentType: false,
                 success: function (res) {
-                    if (res.isSuccessful) {
+                    if (res.commandResult.isSuccessful) {
                         $('.photo-error').hide();
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';

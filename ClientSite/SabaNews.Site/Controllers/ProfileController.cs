@@ -181,9 +181,9 @@
             var commandResult = await profileService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
-                linkPhoto = GetPathAndFilename(filename);
+                linkPhoto = "upload/" + filename;
             }
-            return Json(commandResult, new { linkPhoto = linkPhoto });
+            return Json( new { commandResult, linkPhoto });
         }
 
 
