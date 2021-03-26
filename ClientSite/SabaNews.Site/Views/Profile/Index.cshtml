@@ -25,7 +25,14 @@
 	<div class="container profile-container">
 		<div class="block block-main">
 			<div class="profile">
-				<div class="profile__avatar">J</div>
+				@if (Model.Photo == null)
+				{
+					<div class="profile__avatar">J</div>
+				}
+				else
+				{
+					<div class="profile__avatar"><img src="/upload/@Model.Photo"  width="300"/></div>
+				}
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
 					<p>Tham gia từ</p>

@@ -171,18 +171,19 @@
 
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-
             filename = this.EnsureCorrectFilename(filename);
-
             filename = DateTime.Now.Millisecond + filename ;
-
             using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
                 await file.CopyToAsync(output);
 
             user.Photo = filename;
+            var linkPhoto = "";
             var commandResult = await profileService.UpdateUserInfoAsync(user);
-
-            return Json(commandResult);
+            if (commandResult.IsSuccessful)
+            {
+                linkPhoto = GetPathAndFilename(filename);
+            }
+            return Json(commandResult, new { linkPhoto = linkPhoto });
         }
 
 

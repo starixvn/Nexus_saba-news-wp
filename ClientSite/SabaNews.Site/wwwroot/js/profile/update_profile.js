@@ -218,7 +218,6 @@
                 fname = files.name,
                 fextension = fname.substring(fname.lastIndexOf('.') + 1);
 
-            console.log(fsize, ftype, fname, fextension);
 
             if (!type_reg.test(ftype)) {
                 $('.photo-error').html("Kiểu file này được được phép!");
@@ -240,7 +239,9 @@
                 success: function (res) {
                     if (res.isSuccessful) {
                         $('.photo-error').hide();
-
+                        $('input[name=photo]').val(null);
+                        var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
+                        $('.profile__avatar').html(html);
                     }
                 }
             });
