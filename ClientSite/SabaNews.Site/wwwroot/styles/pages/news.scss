@@ -102,6 +102,22 @@
         margin-bottom: 10px;
     }
 
+    .heading-desktop {
+        display: block;
+
+        @include tableMobile {
+            display: none;
+        }
+    }
+
+    .heading-mobile {
+        display: none;
+
+        @include tableMobile {
+            display: block;
+        }
+    }
+
     img {
         max-width: 100%;
     }
