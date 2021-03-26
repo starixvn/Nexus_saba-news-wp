@@ -20,7 +20,7 @@
             <h2 class="block__title heading-mobile"><a>@Model.Category.Title</a></h2>
             <h2 class="block__title heading-desktop"><a>CẢNH BÁO VỀ WEBSITE MẠO DANH THƯƠNG HIỆU SABA SPORTS</a></h2>
             <div class="block__content">
-                <div class="match-schedule">@Html.Raw(@Model.Post.PostContent)</div>
+                <div class="match-schedule content">@Html.Raw(@Model.Post.PostContent)</div>
             </div>
         </div>
 		@(await Component.InvokeAsync("Sidebar"))
