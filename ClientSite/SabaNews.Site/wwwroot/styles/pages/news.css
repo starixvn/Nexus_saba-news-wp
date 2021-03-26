@@ -1061,6 +1061,11 @@ button {
         .block-main .card-horizontal-highlight .card-horizontal__image {
           max-height: 100% !important; } }
 
+.block-warning h6 {
+  font-size: 2.8rem;
+  line-height: 1.3;
+  margin-bottom: 10px; }
+
 .block-warning img {
   max-width: 100%; }
 
