@@ -1,12 +1,13 @@
 ﻿namespace SabaNews.Services
 {
-    using SabaNews.Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Text;
+    using Fanex.Logging;
+    using SabaNews.Models;
 
     public interface ISerializerService
     {
@@ -15,6 +16,7 @@
 
     public class SerializerService : ISerializerService
     {
+        private ILogger logService;
         private int pos;
         private readonly Encoding stringEncoding;
         private readonly NumberFormatInfo nfi;
@@ -23,7 +25,7 @@
         private const short FourCharacters = 4;
         private const short SixCharacters = 6;
 
-        public SerializerService()
+        public SerializerService(ILogger logService)
         {
             nfi = new NumberFormatInfo
             {
@@ -31,29 +33,43 @@
                 NumberDecimalSeparator = "."
             };
             stringEncoding = new UTF8Encoding();
+            this.logService = logService;
         }
 
         public IEnumerable<ImageInfo> GetListImageFromMetadata(string featuredImage, string metadata)
         {
-            if (string.IsNullOrWhiteSpace(metadata))
+            try
             {
+                if (string.IsNullOrWhiteSpace(metadata))
+                {
+                    return new List<ImageInfo>();
+                }
+
+                pos = 0;
+                var decryptedData = DeserializeString(metadata);
+
+                var hashTable = (Hashtable)decryptedData;
+                logService.Info(hashTable.ToString());
+                if (hashTable.Contains("sizes"))
+                {
+                    var sizes = hashTable["sizes"];
+                    logService.Info(hashTable.ToString());
+
+                    var sizeHash = (Hashtable)sizes;
+                    var imageBaseUrl = string.Join("/", featuredImage.Split('/').SkipLast(1).ToArray());
+                    var images = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
+
+                    return images;
+                }
+
                 return new List<ImageInfo>();
             }
-
-            pos = 0;
-            var decryptedData = DeserializeString(metadata);
-            var hashTable = (Hashtable)decryptedData;
-            if (hashTable.Contains("sizes"))
+            catch (Exception ex)
             {
-                var sizes = hashTable["sizes"];
-                var sizeHash = (Hashtable)sizes;
-                var imageBaseUrl = string.Join("/", featuredImage.Split('/').SkipLast(1).ToArray());
-                var images = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
-
-                return images;
+                logService.Info(metadata);
+                logService.Info(ex.Message);
+                throw;
             }
-
-            return new List<ImageInfo>();
         }
 
         private static IEnumerable<ImageInfo> MappingHashTableToListImgInfo(string imageBaseUrl, Hashtable sizeHash)
