@@ -253,7 +253,6 @@
             }
 
             .nav-menu {
-                //@include flex(center,nowrap, flex-start,row);
                 width: 100%;
 
 
@@ -272,12 +271,10 @@
                         margin: 0;
                         @include flex(center, nowrap, flex-start,column);
                         height: calc(100% - 100px);
-                        //height: 45%;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
                         overflow: auto;
-                        //padding-bottom: 30rem;
                     }
 
                     @include landscapeTablet {
@@ -469,7 +466,6 @@
                 }
 
                 .active-main-menu {
-                    // height: 100%;
                     display: flex !important;
                 }
             }
