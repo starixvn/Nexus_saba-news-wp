@@ -17,6 +17,7 @@ $(document).ready(function () {
     $('.button-mobile').click(function(){
         if($(window).innerWidth() <= 1024){
             $('.main-menu').toggleClass('active-main-menu');
+            $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
             $('body').toggleClass('hidden-body');
         }

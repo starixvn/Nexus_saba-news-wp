@@ -384,20 +384,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         -o-transform: rotate(-135deg);
         transform: rotate(-135deg); }
       .header .top-header .group-menu .nav-menu {
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        flex-direction: row;
         width: 100%; }
-        @media screen and (max-width: 1024px) {
-          .header .top-header .group-menu .nav-menu {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            flex-direction: row;
-            padding: 0; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .header .top-header .group-menu .nav-menu {
             width: calc(100% - 120px); } }
@@ -419,13 +406,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-wrap: nowrap;
               justify-content: flex-start;
               flex-direction: column;
-              height: 100vh !important;
-              height: 45%;
+              height: calc(100% - 100px);
               z-index: 999;
               display: none;
               background-color: #FFFDF9;
-              overflow: auto;
-              padding-bottom: 30rem; } }
+              overflow: auto; } }
           @media only screen and (min-width: 1024px) and (max-width: 1366px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               display: block;
@@ -574,8 +559,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
                   display: flex; } }
         .header .top-header .group-menu .nav-menu .active-main-menu {
-          height: 100%;
           display: flex !important; }
+      @media screen and (max-width: 1024px) {
+        .header .top-header .group-menu .active-nav {
+          height: 100vh; } }
   .header .active-fixed {
     padding: .5rem 0;
     transition: .3s ease-in-out;

@@ -253,13 +253,9 @@
             }
 
             .nav-menu {
-                @include flex(center,nowrap, flex-start,row);
+                //@include flex(center,nowrap, flex-start,row);
                 width: 100%;
 
-                @include tableMobile {
-                    @include flex(center, wrap, flex-start,row);
-                    padding: 0;
-                }
 
                 @include landscapeTablet {
                     width: calc(100% - 120px);
@@ -275,13 +271,13 @@
                     @include tableMobile {
                         margin: 0;
                         @include flex(center, nowrap, flex-start,column);
-                        height: 100vh !important;
-                        height: 45%;
+                        height: calc(100% - 100px);
+                        //height: 45%;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
                         overflow: auto;
-                        padding-bottom: 30rem;
+                        //padding-bottom: 30rem;
                     }
 
                     @include landscapeTablet {
@@ -473,8 +469,14 @@
                 }
 
                 .active-main-menu {
-                    height: 100%;
+                    // height: 100%;
                     display: flex !important;
+                }
+            }
+
+            .active-nav {
+                @include tableMobile {
+                    height: 100vh;
                 }
             }
         }
