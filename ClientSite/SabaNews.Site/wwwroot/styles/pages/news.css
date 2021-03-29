@@ -1095,9 +1095,10 @@ button {
   text-align: center; }
 
 .block-warning [class*="banner"] {
-  border: 1px solid #e0e0e0;
   text-align: center;
   margin-bottom: 20px; }
+  .block-warning [class*="banner"] img {
+    border: 1px solid #e0e0e0; }
 
 .block-warning .banner-desktop {
   display: block; }
