@@ -38,32 +38,34 @@
 
         public IEnumerable<ImageInfo> GetListImageFromMetadata(string featuredImage, string metadata)
         {
+            var results = new List<ImageInfo>();
             if (string.IsNullOrWhiteSpace(metadata))
             {
-                return new List<ImageInfo>();
+                return results;
             }
 
-            pos = 0;
-            var decryptedData = DeserializeString(metadata);
-
-            var hashTable = (Hashtable)decryptedData;
-            if (hashTable.Contains("sizes"))
+            try
             {
-                var sizes = hashTable["sizes"];
-                if (sizes.GetType() != typeof(ArrayList))
+                pos = 0;
+                var decryptedData = DeserializeString(metadata);
+
+                var hashTable = (Hashtable)decryptedData;
+                if (hashTable.Contains("sizes"))
                 {
+                    var sizes = hashTable["sizes"];
                     var sizeHash = (Hashtable)sizes;
                     var imageBaseUrl = string.Join("/", featuredImage.Split('/').SkipLast(1).ToArray());
-                    var images = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
-
-                    return images;
+                    results = MappingHashTableToListImgInfo(imageBaseUrl, sizeHash);
                 }
+                return results;
             }
-
-            return new List<ImageInfo>();
+            catch
+            {
+                return results;
+            }
         }
 
-        private static IEnumerable<ImageInfo> MappingHashTableToListImgInfo(string imageBaseUrl, Hashtable sizeHash)
+        private static List<ImageInfo> MappingHashTableToListImgInfo(string imageBaseUrl, Hashtable sizeHash)
         {
             var images = new List<ImageInfo>();
 
