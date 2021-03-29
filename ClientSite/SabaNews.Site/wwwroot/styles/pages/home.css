@@ -56,7 +56,10 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 7rem; }
+  padding-top: 8rem; }
+  @media (max-device-width: 767px) {
+    .main {
+      padding-top: 7rem; } }
 
 .content {
   line-height: 3.2rem;

@@ -49,7 +49,10 @@ body{
 }
 
 .main {
-    padding-top: 7rem;
+    padding-top: 8rem;
+    @include Mobile {
+        padding-top: 7rem;
+    }
 }
 
 .content {

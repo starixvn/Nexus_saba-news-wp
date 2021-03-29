@@ -52,7 +52,10 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 7rem; }
+  padding-top: 8rem; }
+  @media (max-device-width: 767px) {
+    .main {
+      padding-top: 7rem; } }
 
 .content {
   line-height: 3.2rem;
@@ -1066,6 +1069,9 @@ button {
   margin: 0;
   font-size: 1.8rem; }
 
+.block-warning .block__title:after {
+  content: none; }
+
 .block-warning .heading-desktop {
   display: block; }
   @media screen and (max-width: 1024px) {
@@ -1081,9 +1087,17 @@ button {
 .block-warning img {
   max-width: 100%; }
 
+.block-warning figcaption {
+  line-height: 1.8rem; }
+
 .block-warning .aligncenter {
   margin: 10px 0;
   text-align: center; }
+
+.block-warning [class*="banner"] {
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  margin-bottom: 20px; }
 
 .block-warning .banner-desktop {
   display: block; }
