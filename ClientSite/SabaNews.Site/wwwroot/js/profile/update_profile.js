@@ -202,27 +202,11 @@
             e.preventDefault();
             $('.photo-error').hide();
             var files = $('input[name=photo]')[0].files[0];
-            if (typeof files === "undefined") {
-                $('.photo-error').html("Vui lòng chọn file trước!");
-                $('.photo-error').show();
+            var isValid = validate_photo(files);
+            if (!isValid) {
                 return false;
             }
-            var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
-            var fsize = files.size,
-                ftype = files.type,
-                fname = files.name,
-                fextension = fname.substring(fname.lastIndexOf('.') + 1);
 
-
-            if (!type_reg.test(ftype)) {
-                $('.photo-error').html("Kiểu file này được được phép!");
-                $('.photo-error').show();
-                return false;
-            } else if (fsize > 3145728) {
-                $('.photo-error').html("File quá lớn! Vui lòng chọn hình nhỏ hơn 3MB");
-                $('.photo-error').show();
-                return false;
-            }
             var formData = new FormData();
             formData.append('file', files);
             $.ajax({
@@ -234,6 +218,8 @@
                 success: function (res) {
                     if (res.commandResult.isSuccessful) {
                         $('.photo-error').hide();
+                        $('#review_photo').attr('src', '');
+                        $('#review_photo').hide();
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);
@@ -241,6 +227,50 @@
                 }
             });
         });
+
+        $('input[name=photo]').on('change', function (e) {
+            $('#review_photo').attr('src', '');
+            $('#review_photo').hide();
+            var files = $('input[name=photo]')[0].files[0];
+            var isValid = validate_photo(files);
+            if (!isValid) {
+                return false;
+            }
+
+            var reader = new FileReader();
+            reader.readAsDataURL(files);
+            reader.onload = function (e) {
+                $('#review_photo').attr('src', e.target.result);
+                $('#review_photo').show();
+                $('.photo-error').hide();
+            };
+        });
+    }
+
+    function validate_photo(files) {
+        var isValid = true;
+        if (typeof files === "undefined") {
+            $('.photo-error').html("Vui lòng chọn file trước!");
+            $('.photo-error').show();
+            return false;
+        }
+        var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
+        var fsize = files.size,
+            ftype = files.type,
+            fname = files.name,
+            fextension = fname.substring(fname.lastIndexOf('.') + 1);
+
+        if (!type_reg.test(ftype)) {
+            $('.photo-error').html("Kiểu file này được được phép!");
+            $('.photo-error').show();
+            return false;
+        } else if (fsize > 3145728) {
+            $('.photo-error').html("File quá lớn! Vui lòng chọn hình nhỏ hơn 3MB");
+            $('.photo-error').show();
+            return false;
+        }
+
+        return isValid;
     }
 
    
