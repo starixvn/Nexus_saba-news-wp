@@ -281,7 +281,7 @@
                         display: none;
                         background-color: $bg-nav;
                         overflow: auto;
-                        padding-bottom: 5rem;
+                        padding-bottom: 30rem;
                     }
 
                     @include landscapeTablet {
@@ -324,7 +324,7 @@
                             }
                         }
 
-               
+
 
                         .item {
                             text-decoration: none;
