@@ -73,12 +73,10 @@
         [Route("warning")]
         public async Task<IActionResult> Warning()
         {
-            var post = await postService.GetPostDetailBySlugAsync(Constants.WarningSlug, Constants.pageType);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
             var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle : pageDetail.Title;
             var Model = new PageViewModel
             {
-                Post = post,
                 Category = pageDetail
             };
             ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
