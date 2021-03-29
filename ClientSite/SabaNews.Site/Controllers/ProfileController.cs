@@ -171,11 +171,15 @@
 
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-            filename = this.EnsureCorrectFilename(filename);
+            filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename ;
-            using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
+            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
                 await file.CopyToAsync(output);
 
+            if (System.IO.File.Exists(GetPathAndFilename(user.Photo)))
+            {
+                System.IO.File.Delete(GetPathAndFilename(user.Photo));
+            }
             user.Photo = filename;
             var linkPhoto = "";
             var commandResult = await profileService.UpdateUserInfoAsync(user);
@@ -187,7 +191,7 @@
         }
 
 
-        private string EnsureCorrectFilename(string filename)
+        private static string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
                 filename = filename.Substring(filename.LastIndexOf("\\") + 1);
@@ -195,9 +199,6 @@
             return filename;
         }
 
-        private string GetPathAndFilename(string filename)
-        {
-            return pathService.MapPath("upload\\" + filename);
-        }
+        private string GetPathAndFilename(string filename) => pathService.MapPath("upload\\" + filename);
     }
 }

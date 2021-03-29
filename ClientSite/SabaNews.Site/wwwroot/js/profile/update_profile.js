@@ -41,7 +41,6 @@
 
         $('input[name=gender]').on('click', function () {
             var val = $(this).val();
-            console.log(val);
             if (val.trim() === "") {
                 $('.btn-save-gender').prop('disabled', true);
                 $('.btn-save-gender').addClass('btn-disabled');
@@ -54,8 +53,6 @@
         $('input[name=oldpassword], input[name=newpassword').on('keyup', function () {
             var oldPassword = $('input[name = oldpassword]').val();
             var newPassword = $('input[name=newpassword]').val();
-            console.log(oldPassword);
-            console.log(newPassword);
 
             if (oldPassword === "" || newPassword === "") {
                 $('.btn-save-password').prop('disabled', true);
@@ -187,7 +184,6 @@
                 success: function (res) {
                     if (res.isSuccessful) {
                         const html = _htmlResource.ForgotPassword + _htmlResource.RemindCheckMail;
-                        console.log(html);
                         const bodyModal = formatString(html, email);
                         $('#resetPasswordSuccesful .modal-body').html(bodyModal);
                         $('#resetPasswordSuccesful').modal('show');
@@ -212,7 +208,6 @@
                 return false;
             }
             var type_reg = /^image\/(jpg|png|jpeg|bmp|gif|ico)$/;
-            console.log(files);
             var fsize = files.size,
                 ftype = files.type,
                 fname = files.name,
