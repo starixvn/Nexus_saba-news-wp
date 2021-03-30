@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?mecyem');
-  src:  url('fonts/icomoon.eot?mecyem#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?mecyem') format('truetype'),
-    url('fonts/icomoon.woff?mecyem') format('woff'),
-    url('fonts/icomoon.svg?mecyem#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?i7hsjv');
+  src:  url('fonts/icomoon.eot?i7hsjv#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?i7hsjv') format('truetype'),
+    url('fonts/icomoon.woff?i7hsjv') format('woff'),
+    url('fonts/icomoon.svg?i7hsjv#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-birthday:before {
+  content: "\e91d";
+  color: #999;
+}
+.icon-hide:before {
+  content: "\e91e";
+  color: #999;
+}
+.icon-show:before {
+  content: "\e91f";
+  color: #999;
+}
+.icon-upload:before {
+  content: "\e920";
+  color: #999;
+}
 .icon-mode_comment_full:before {
   content: "\e91c";
   color: #999;
