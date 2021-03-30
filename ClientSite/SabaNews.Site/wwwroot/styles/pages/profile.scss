@@ -401,6 +401,12 @@
         }
 
         &__news {
+            border-bottom: 1px solid $separator-color;
+            padding-bottom: 1.2rem;
+            &:last-child {
+                border-bottom: none;
+            }
+
             .card-horizontal {
                 margin-top: 2rem;
                 grid-template-rows: 13rem;
@@ -452,6 +458,7 @@
                             .icon-mode_comment_full {
                                 &:before {
                                     color: $color-fff;
+                                    font-size: 1.5rem;
                                 }
                             }
                         }
@@ -469,6 +476,7 @@
 
                             .svg-bookmark {
                                 fill: $color-fff;
+                                width: 1rem;
 
                                 path {
                                     stroke: $color-fff;

@@ -1352,71 +1352,78 @@ button {
         color: #333;
         height: 3.2rem;
         padding: 0 2rem; }
-    .block-extension .controls__news .card-horizontal {
-      margin-top: 2rem;
-      grid-template-rows: 13rem; }
-      @media screen and (max-width: 1024px) {
-        .block-extension .controls__news .card-horizontal {
-          grid-template-rows: auto; } }
-      .block-extension .controls__news .card-horizontal .title {
-        margin-bottom: 0; }
-      .block-extension .controls__news .card-horizontal .social-control {
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        flex-direction: row;
-        margin-top: 1.5rem; }
+    .block-extension .controls__news {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 1.2rem; }
+      .block-extension .controls__news:last-child {
+        border-bottom: none; }
+      .block-extension .controls__news .card-horizontal {
+        margin-top: 2rem;
+        grid-template-rows: 13rem; }
         @media screen and (max-width: 1024px) {
-          .block-extension .controls__news .card-horizontal .social-control {
-            display: inherit;
-            margin-top: .5rem; } }
-        .block-extension .controls__news .card-horizontal .social-control .name-category {
-          margin-right: 2rem; }
-        .block-extension .controls__news .card-horizontal .social-control .group-icon {
+          .block-extension .controls__news .card-horizontal {
+            grid-template-rows: auto; } }
+        .block-extension .controls__news .card-horizontal .title {
+          margin-bottom: 0; }
+        .block-extension .controls__news .card-horizontal .social-control {
           display: flex;
           align-items: center;
           flex-wrap: nowrap;
-          justify-content: center;
-          flex-direction: row; }
+          justify-content: space-between;
+          flex-direction: row;
+          margin-top: 1.5rem; }
           @media screen and (max-width: 1024px) {
-            .block-extension .controls__news .card-horizontal .social-control .group-icon {
-              display: flex;
-              align-items: center;
-              flex-wrap: nowrap;
-              justify-content: flex-start;
-              flex-direction: row;
+            .block-extension .controls__news .card-horizontal .social-control {
+              display: inherit;
               margin-top: .5rem; } }
-          .block-extension .controls__news .card-horizontal .social-control .group-icon .icon {
-            width: 3.2rem;
-            height: 3.2rem;
-            text-align: center;
-            line-height: 3.2rem;
-            border-radius: 50%;
-            justify-content: center;
+          .block-extension .controls__news .card-horizontal .social-control .name-category {
+            margin-right: 2rem; }
+          .block-extension .controls__news .card-horizontal .social-control .group-icon {
+            display: flex;
             align-items: center;
-            margin-right: 1rem; }
-          .block-extension .controls__news .card-horizontal .social-control .group-icon .comment {
-            margin: 0;
-            background: #E13C29; }
-            .block-extension .controls__news .card-horizontal .social-control .group-icon .comment .icon-mode_comment_full:before {
-              color: #fff; }
-          .block-extension .controls__news .card-horizontal .social-control .group-icon .number {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 1rem 0 .5rem;
-            font-size: 1.3rem;
-            color: #828282; }
-          .block-extension .controls__news .card-horizontal .social-control .group-icon .save {
-            background: #2B89CC; }
-            .block-extension .controls__news .card-horizontal .social-control .group-icon .save .svg-bookmark {
-              fill: #fff; }
-              .block-extension .controls__news .card-horizontal .social-control .group-icon .save .svg-bookmark path {
-                stroke: #fff; }
-          .block-extension .controls__news .card-horizontal .social-control .group-icon .share {
-            padding: .5rem 0 .5rem 1rem;
-            border-left: 1px solid #E0E0E0;
-            color: #828282;
-            text-decoration: none; }
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex-direction: row; }
+            @media screen and (max-width: 1024px) {
+              .block-extension .controls__news .card-horizontal .social-control .group-icon {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                flex-direction: row;
+                margin-top: .5rem; } }
+            .block-extension .controls__news .card-horizontal .social-control .group-icon .icon {
+              width: 3.2rem;
+              height: 3.2rem;
+              text-align: center;
+              line-height: 3.2rem;
+              border-radius: 50%;
+              justify-content: center;
+              align-items: center;
+              margin-right: 1rem; }
+            .block-extension .controls__news .card-horizontal .social-control .group-icon .comment {
+              margin: 0;
+              background: #E13C29; }
+              .block-extension .controls__news .card-horizontal .social-control .group-icon .comment .icon-mode_comment_full:before {
+                color: #fff;
+                font-size: 1.5rem; }
+            .block-extension .controls__news .card-horizontal .social-control .group-icon .number {
+              display: inline-block;
+              vertical-align: middle;
+              margin: 0 1rem 0 .5rem;
+              font-size: 1.3rem;
+              color: #828282; }
+            .block-extension .controls__news .card-horizontal .social-control .group-icon .save {
+              background: #2B89CC; }
+              .block-extension .controls__news .card-horizontal .social-control .group-icon .save .svg-bookmark {
+                fill: #fff;
+                width: 1rem; }
+                .block-extension .controls__news .card-horizontal .social-control .group-icon .save .svg-bookmark path {
+                  stroke: #fff; }
+            .block-extension .controls__news .card-horizontal .social-control .group-icon .share {
+              padding: .5rem 0 .5rem 1rem;
+              border-left: 1px solid #E0E0E0;
+              color: #828282;
+              text-decoration: none; }
   .block-extension .block__title {
     margin-bottom: 3rem; }
