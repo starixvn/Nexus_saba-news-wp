@@ -165,8 +165,8 @@
                 margin-top: 0;
 
                 .group-table {
-                    .right-table{
-                          border-bottom : none;
+                    .right-table {
+                        border-bottom: none;
                     }
                 }
             }
@@ -273,6 +273,7 @@
                         margin-bottom: 0;
                         color: $color-input
                     }
+
                     .error {
                         color: #eb5342;
                         display: none;
@@ -286,7 +287,8 @@
                         box-sizing: border-box;
                         margin-top: 1.5rem;
                         position: relative;
-                        display : none;
+                        display: none;
+
                         .title {
                             margin-bottom: 1.5rem;
                         }
@@ -343,25 +345,44 @@
                             cursor: pointer;
                         }
 
-                        .btn-disabled  {
+                        .btn-disabled {
                             background: #BDBDBD;
                         }
                     }
-                    .toggle-active-form{
-                        display : block
+
+                    .toggle-active-form {
+                        display: block
                     }
                 }
             }
+        }
+
+        &__datetime {
+            @include flex(center, nowrap, space-between, row);
+
+            .time-save {
+                margin-bottom: 0;
+            }
+
+            .filter {
+                border: 1px solid $separator-color;
+                box-sizing: border-box;
+                border-radius: 3px;
+                font-size: 1.6rem;
+                color: $color-title;
+                height: 3.2rem;
+                padding: 0 2rem;
+            }
+        }
+
+        &__news {
         }
     }
 
     .block__title {
         margin-bottom: 3rem;
     }
-
-
-
-    .card-horizontal {
+    /*.card-horizontal {
         margin-bottom: 1.6rem;
 
         @include Mobile {
@@ -432,5 +453,5 @@
                 }
             }
         }
-    }
+    }*/
 }

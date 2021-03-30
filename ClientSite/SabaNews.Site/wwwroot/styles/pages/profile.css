@@ -1164,7 +1164,79 @@ button {
         border-bottom: none; }
 
 .block-extension {
-  display: inherit; }
+  display: inherit;
+  /*.card-horizontal {
+        margin-bottom: 1.6rem;
+
+        @include Mobile {
+            margin-bottom: 1.2rem;
+        }
+
+        &-highlight {
+            height: 30rem;
+            grid-template-columns: 44rem 1fr;
+            grid-column-gap: 0;
+            grid-template-rows: unset;
+            align-items: flex-start;
+            margin-bottom: $column-gap;
+            background-color: $block-highlight-bgcolor;
+            padding-bottom: 0;
+
+            @include tableMobile {
+                display: inherit;
+                height: auto;
+            }
+
+            @include Mobile {
+                margin-bottom: 1.2rem;
+            }
+
+            .card-horizontal__content {
+                padding: 16px;
+
+                @include tableMobile {
+                    margin-top: 1rem;
+                }
+
+                @include Mobile {
+                    padding: 8px;
+                    margin-top: 0;
+                }
+            }
+
+            .title {
+                font-size: 2rem;
+                line-height: 2.8rem;
+
+                @include Mobile {
+                    font-size: 1.6rem;
+                    line-height: 2.2rem;
+                }
+            }
+
+            .description {
+                margin-top: 1rem;
+
+                @include tableMobile {
+                    display: block;
+                    margin-top: 0;
+                }
+
+                @include Mobile {
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                }
+            }
+
+            .card-horizontal__image {
+                height: 100%;
+
+                @include tableMobile {
+                    max-height: 100% !important;
+                }
+            }
+        }
+    }*/ }
   .block-extension .controls {
     padding: 2rem; }
     .block-extension .controls .title {
@@ -1315,57 +1387,21 @@ button {
             background: #BDBDBD; }
         .block-extension .controls__account .group-table .right-table .toggle-active-form {
           display: block; }
+    .block-extension .controls__datetime {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      flex-direction: row; }
+      .block-extension .controls__datetime .time-save {
+        margin-bottom: 0; }
+      .block-extension .controls__datetime .filter {
+        border: 1px solid #e5e5e5;
+        box-sizing: border-box;
+        border-radius: 3px;
+        font-size: 1.6rem;
+        color: #333;
+        height: 3.2rem;
+        padding: 0 2rem; }
   .block-extension .block__title {
     margin-bottom: 3rem; }
-  .block-extension .card-horizontal {
-    margin-bottom: 1.6rem; }
-    @media (max-device-width: 767px) {
-      .block-extension .card-horizontal {
-        margin-bottom: 1.2rem; } }
-    .block-extension .card-horizontal-highlight {
-      height: 30rem;
-      grid-template-columns: 44rem 1fr;
-      grid-column-gap: 0;
-      grid-template-rows: unset;
-      align-items: flex-start;
-      margin-bottom: 1.6rem;
-      background-color: #E8EAEF;
-      padding-bottom: 0; }
-      @media screen and (max-width: 1024px) {
-        .block-extension .card-horizontal-highlight {
-          display: inherit;
-          height: auto; } }
-      @media (max-device-width: 767px) {
-        .block-extension .card-horizontal-highlight {
-          margin-bottom: 1.2rem; } }
-      .block-extension .card-horizontal-highlight .card-horizontal__content {
-        padding: 16px; }
-        @media screen and (max-width: 1024px) {
-          .block-extension .card-horizontal-highlight .card-horizontal__content {
-            margin-top: 1rem; } }
-        @media (max-device-width: 767px) {
-          .block-extension .card-horizontal-highlight .card-horizontal__content {
-            padding: 8px;
-            margin-top: 0; } }
-      .block-extension .card-horizontal-highlight .title {
-        font-size: 2rem;
-        line-height: 2.8rem; }
-        @media (max-device-width: 767px) {
-          .block-extension .card-horizontal-highlight .title {
-            font-size: 1.6rem;
-            line-height: 2.2rem; } }
-      .block-extension .card-horizontal-highlight .description {
-        margin-top: 1rem; }
-        @media screen and (max-width: 1024px) {
-          .block-extension .card-horizontal-highlight .description {
-            display: block;
-            margin-top: 0; } }
-        @media (max-device-width: 767px) {
-          .block-extension .card-horizontal-highlight .description {
-            font-size: 1.2rem;
-            line-height: 2rem; } }
-      .block-extension .card-horizontal-highlight .card-horizontal__image {
-        height: 100%; }
-        @media screen and (max-width: 1024px) {
-          .block-extension .card-horizontal-highlight .card-horizontal__image {
-            max-height: 100% !important; } }

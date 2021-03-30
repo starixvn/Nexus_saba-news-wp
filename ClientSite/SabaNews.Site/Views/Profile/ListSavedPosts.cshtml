@@ -31,27 +31,54 @@
 			</div>
 		</div>
 		<div class="block block-extension">
-			<div class="controls">
-				<h2 class="block__title"><a>@ViewResources.SavedPost </a></h2>
-				@if (Model.ToDayPost != null)
-				{
-					<h4>Hôm nay:</h4>
-					<hr />
-				}
-				@{ var isCheck = false; }
-				@foreach (var post in Model.Posts)
-				{
-					if (isCheck)
-					{
-						isCheck = false;
-						<hr />
-					}
-					if (!isCheck && Model.ToDayPost != null && post.ID == Model.ToDayPost.PostID) {
-						isCheck = true;
-					}
-					<div>@post.PostTitle <a href="javascript:;" class="remove_save_post" data-postid="@post.ID">save post</a></div>
-				}
-			</div>
+            <div class="controls">
+                <h2 class="block__title"><a>@ViewResources.SavedPost </a></h2>
+                @if (Model.ToDayPost != null)
+                {
+                    <div class="controls__datetime">
+                        <h4 class="time-save">Hôm nay:</h4>
+                        <select class="filter">
+                            <option value="all" selected>Tất cả</option>
+                            <option value="video">Video</option>
+                            <option value="image">Image</option>
+                            <option value="Infographics">Infographics</option>
+                            <option value="Live">Live</option>
+                        </select>
+                    </div>
+                    <hr />
+                }
+                @{ var isCheck = false; }
+                @foreach (var post in Model.Posts)
+                {
+                    if (isCheck)
+                    {
+                        isCheck = false;
+                        <hr />
+                    }
+                    if (!isCheck && Model.ToDayPost != null && post.ID == Model.ToDayPost.PostID)
+                    {
+                        isCheck = true;
+                    }
+                    <!--<div>@post.PostTitle <a href="javascript:;" class="remove_save_post" data-postid="@post.ID">save post</a></div>-->
+                    <div class="controls__news">
+                        <div class="card-horizontal">
+                            <a href="#" class="card-horizontal__image">
+                                <img src="https://vncdn.sabasports.com/2021/03/8f1368a5-db9b-4229-b211-4dce9091d75a-480-300x169.jpg" alt="title" />
+                            </a>
+                            <div class="card-horizontal__content">
+                                <a href="#">@post.PostTitle </a>
+                                <p class="description">
+                                    Hợp đồng giữa tiền đạo người Argentina và Juventus còn hiệu lực đến tháng 6/2022, nhưng hiện tại chuyện đàm phán gia hạn vẫn chưa đi tới kết quả chung.
+                                </p>
+                                <p class="datetime">
+                                    <span>8:38 12/03/2021</span>
+                                    <a href="#" class="comment"><i class="icon-mode_comment_full"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
 		</div>
 	</div>
 </section>
