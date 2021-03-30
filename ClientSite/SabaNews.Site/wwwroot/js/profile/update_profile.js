@@ -218,6 +218,8 @@
                 success: function (res) {
                     if (res.commandResult.isSuccessful) {
                         $('.photo-error').hide();
+                        $('.save-img').hide();
+                        $('.txt-img').css('display', 'block');
                         $('#review_photo').attr('src', '');
                         $('#review_photo').hide();
                         $('input[name=photo]').val(null);
