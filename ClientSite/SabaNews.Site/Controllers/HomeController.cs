@@ -91,11 +91,11 @@
         {
             var hash = GetMd5Hash($"https://vn.sabasports.com/{slug}");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            //if (IsBlackListIP())
-            //{
-            //    post = await GetRandomPost(post);
-            //    post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
-            //}
+            if (IsBlackListIP())
+            {
+                post = await GetRandomPost(post);
+                post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
+            }
 
             if (post == null)
             {
@@ -154,6 +154,26 @@
             newPost.PostDateGMT = post.PostDateGMT;
             newPost.PostDate = post.PostDate;
             return newPost;
+        }
+
+        private bool IsBlackListIP()
+        {
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
+            {
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+            var blackListIPs = postService.GetBlackListIPs();
+
+            foreach (var blackListIP in blackListIPs)
+            {
+                if (clientIP.Contains(blackListIP))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public static string MD5Hash(string input)
