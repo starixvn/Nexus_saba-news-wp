@@ -159,6 +159,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EmptyProfileTitle" xml:space="preserve">
+    <value>Trang cá nhân của trên Saba Sports</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>Thoát</value>
   </data>

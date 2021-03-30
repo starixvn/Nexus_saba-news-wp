@@ -187,6 +187,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trang cá nhân của trên Saba Sports.
+        /// </summary>
+        public static string EmptyProfileTitle {
+            get {
+                return ResourceManager.GetString("EmptyProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thoát.
         /// </summary>
         public static string Exit {

@@ -13,6 +13,7 @@
     using Microsoft.AspNetCore.Http;
     using System.Net.Http.Headers;
     using System.IO;
+    using SabaNews.Core.Constants;
 
     public class ProfileController : Controller
     {
@@ -43,6 +44,7 @@
             {
                 return View("EmptyProfile");
             }
+            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
 
             return View(User);
@@ -97,6 +99,7 @@
             {
                 return View("EmptyProfile");
             }
+            
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             var savedPosts = user.HandleSavePosts;
             var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
@@ -107,6 +110,7 @@
                 Posts = posts,
                 ToDayPost = haveSavedToday
             };
+            ViewBag.Title = Constants.Profile + user.Name + Constants.ProfileSiteName;
 
             return View(Model);
         }

@@ -1,5 +1,5 @@
 ﻿@section Title{
-	@ViewResources.NotFoundPostMsg
+	@ViewBag.Title
 }
 
 @section Styles{
@@ -14,7 +14,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
-				
+
 			</div>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 				else
 				{
 					<div class="profile__avatar"><img src="/upload/@Model.Photo" width="300" /></div>
-					
+
 				}
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
@@ -62,7 +62,7 @@
 						<p class="error photo-error"></p>
 						<input type="submit" name="" value="Submit" />
 					</form>
-				
+
 				</div>
 
 				<div class="controls__account line">
@@ -76,10 +76,8 @@
 								<div class="main-fill">
 									<ul class="txt-fill">
 										<li class="txt-feild">@Model.Email</li>
-										<li class="validate">@(Model.EmailConfirmed ? "" : "Chưa xác thực")</li>
 									</ul>
 								</div>
-								<a href="#" class="action">@ViewResources.Change</a>
 							</div>
 							<div class="box-edit-form">
 								<div class="title">Đổi email</div>
@@ -88,10 +86,6 @@
 								<button class="btn-submit-edit">Lưu lại</button>
 								<span class="close-edit">close</span>
 							</div>
-							@if (!Model.EmailConfirmed)
-							{
-								<p class="comfirm"><a href="#" class="action">@ViewResources.ConfirmEmail</a></p>
-							}
 						</div>
 					</div>
 
