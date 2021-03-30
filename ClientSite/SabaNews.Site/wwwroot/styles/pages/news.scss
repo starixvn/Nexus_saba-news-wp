@@ -1,4 +1,4 @@
-@import '../abstracts/variables';
+﻿@import '../abstracts/variables';
 @import '../abstracts/mixins';
 
 @import '../base/base';
@@ -102,25 +102,26 @@
         font-size: 1.8rem;
     }
 
-    .block__title:after {
-        content: none;
-    }
+    .block__title {
+        &:before {
+            content: "CẢNH BÁO VỀ WEBSITE MẠO DANH THƯƠNG HIỆU SABA SPORTS";
+            line-height: 2.7rem;
+            color: #f12f19;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 2rem;
 
-    .heading-desktop {
-        display: block;
+            @include Mobile {
+                content: "CẢNH BÁO VỀ WEBSITE MẠO DANH";
+                font-size: 1.6rem;
+            }
+        }
 
-        @include tableMobile {
-            display: none;
+        &:after {
+            content: none;
         }
     }
 
-    .heading-mobile {
-        display: none;
-
-        @include tableMobile {
-            display: block;
-        }
-    }
 
     img {
         max-width: 100%;
@@ -158,6 +159,11 @@
         @include tableMobile {
             display: block;
         }
+    }
+
+    .domain {
+        padding-left: 16px;
+        padding-bottom: 16px;
     }
 }
 
