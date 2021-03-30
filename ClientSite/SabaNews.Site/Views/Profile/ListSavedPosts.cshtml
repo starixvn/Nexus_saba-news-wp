@@ -62,30 +62,34 @@
                     <!--<div>@post.PostTitle <a href="javascript:;" class="remove_save_post" data-postid="@post.ID">save post</a></div>-->
                     <div class="controls__news">
                         <div class="card-horizontal">
-                            <a href="#" class="card-horizontal__image">
-                                <img src="https://vncdn.sabasports.com/2021/03/8f1368a5-db9b-4229-b211-4dce9091d75a-480-300x169.jpg" alt="title" />
+                            <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-horizontal__image">
+                                <img src="@Url.Content(post.FeatureImage)" alt="title" />
                             </a>
                             <div class="card-horizontal__content">
-                                <a href="#" class="title">@post.PostTitle </a>
+                                <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="title">@post.PostTitle </a>
                                 <p class="description">
-                                    Hợp đồng giữa tiền đạo người Argentina và Juventus còn hiệu lực đến tháng 6/2022, nhưng hiện tại chuyện đàm phán gia hạn vẫn chưa đi tới kết quả chung.
+                                    @post.PostExcerpt
                                 </p>
                                 <div class="social-control">
                                     <div class="time">
-                                        <span class="name-category">Bóng rổ</span> <span>12/03/2021</span>
+                                        @post.PostTime
                                     </div>
-                                    <div class="group-icon">
-                                        <a class="icon save">
-                                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
-                                                <path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2"></path>
-                                            </svg>
-                                        </a>
-                                        <a href="#" class="icon comment">
-                                            <i class="icon-mode_comment_full"></i>
-                                        </a>
-                                        <span class="number">12</span>
-                                        <a href="#" class="share">Chia sẻ</a>
-                                    </div>
+									<div class="group-icon">
+										<a class="icon save">
+											<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
+												<path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2"></path>
+											</svg>
+										</a>
+										@if (post.CommentCount > 0)
+										{
+											<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="icon comment">
+												<i class="icon-mode_comment_full"></i>
+											</a>
+											<span class="number">@post.CommentCount</span>
+										}
+
+										@*<a href="#" class="share">Chia sẻ</a>*@
+									</div>
                                 </div>
                             </div>
                         </div>

@@ -29,10 +29,13 @@
 				{
 					<div class="profile__avatar">@Model.Name.Substring(0, 1)</div>
 				}
-				else
+				else if(Model.Photo.ToLower().Contains("https://") || Model.Photo.ToLower().Contains("http://"))
+				{
+					<div class="profile__avatar"><img src="@Model.Photo" width="300" /></div>
+				}
+				else 
 				{
 					<div class="profile__avatar"><img src="/upload/@Model.Photo" width="300" /></div>
-
 				}
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
