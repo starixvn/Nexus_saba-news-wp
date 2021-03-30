@@ -269,6 +269,8 @@
             $('.photo-error').show();
             return false;
         }
+        $('.save-img').css('display', 'block');
+        $('.txt-img').css('display', 'none');
 
         return isValid;
     }

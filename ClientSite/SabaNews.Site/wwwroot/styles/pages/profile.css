@@ -1193,6 +1193,11 @@ button {
       text-align: center;
       padding: 1rem 0;
       background: #f7f7f7; }
+      .block-extension .controls__choose .input-upload .photo-error {
+        margin: 0; }
+      .block-extension .controls__choose .input-upload img {
+        display: block;
+        margin: 0 auto; }
       .block-extension .controls__choose .input-upload .input-file {
         position: absolute;
         top: 0;
@@ -1202,6 +1207,19 @@ button {
         height: 100%;
         opacity: 0;
         cursor: pointer; }
+      .block-extension .controls__choose .input-upload .save-img {
+        color: #fff;
+        padding: 1rem 2rem;
+        background: #9f224e;
+        border: none;
+        margin-top: 2rem;
+        font-weight: bold;
+        border-radius: 3px;
+        position: relative;
+        z-index: 999999999999;
+        cursor: pointer;
+        display: none;
+        margin: 1rem auto; }
     .block-extension .controls__account .group-table {
       display: flex;
       align-items: flex-start;

@@ -182,6 +182,15 @@
                 padding: 1rem 0;
                 background: #f7f7f7;
 
+                .photo-error {
+                    margin: 0;
+                }
+
+                img {
+                    display: block;
+                    margin: 0 auto;
+                }
+
                 .input-file {
                     position: absolute;
                     top: 0;
@@ -191,6 +200,21 @@
                     height: 100%;
                     opacity: 0;
                     cursor: pointer;
+                }
+
+                .save-img {
+                    color: $color-fff;
+                    padding: 1rem 2rem;
+                    background: #9f224e;
+                    border: none;
+                    margin-top: 2rem;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    position: relative;
+                    z-index: 999999999999;
+                    cursor: pointer;
+                    display: none;
+                    margin: 1rem auto;
                 }
             }
         }
