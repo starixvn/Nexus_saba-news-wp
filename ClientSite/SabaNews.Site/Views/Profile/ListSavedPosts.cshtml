@@ -1,36 +1,36 @@
 ﻿@section Title{
-	@ViewResources.NotFoundPostMsg
+    @ViewResources.NotFoundPostMsg
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/profile.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/profile.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-	<script src="~/js/profile/update_profile.js" asp-append-version="true"></script>
+    <script src="~/js/profile/update_profile.js" asp-append-version="true"></script>
 }
 
 <section class="main">
 
-	<div class="container profile-container">
-		<div class="block block-main">
-			<div class="profile">
-				<div class="profile__avatar">J</div>
-				<div class="profile__name">User</div>
-				<div class="profile__date">
-					<p>Tham gia từ</p>
-					<p>01/01/1970</p>
-				</div>
-				<ul class="profile__control">
-					<li  class="active-control"><a href="javascript:;">@ViewResources.SavedPost @(Model.Posts.Length > 0? "("+ Model.Posts.Length + ")" : "" )</a></li>
-				</ul>
-				<ul class="profile__nav">
-					<li><a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount </a></li>
-					<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="block block-extension">
+    <div class="container profile-container">
+        <div class="block block-main">
+            <div class="profile">
+                <div class="profile__avatar">J</div>
+                <div class="profile__name">User</div>
+                <div class="profile__date">
+                    <p>Tham gia từ</p>
+                    <p>01/01/1970</p>
+                </div>
+                <ul class="profile__control">
+                    <li class="active-control"><a href="javascript:;">@ViewResources.SavedPost @(Model.Posts.Length > 0? "("+ Model.Posts.Length + ")" : "" )</a></li>
+                </ul>
+                <ul class="profile__nav">
+                    <li><a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount </a></li>
+                    <li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="block block-extension">
             <div class="controls">
                 <h2 class="block__title"><a>@ViewResources.SavedPost </a></h2>
                 @if (Model.ToDayPost != null)
@@ -66,19 +66,32 @@
                                 <img src="https://vncdn.sabasports.com/2021/03/8f1368a5-db9b-4229-b211-4dce9091d75a-480-300x169.jpg" alt="title" />
                             </a>
                             <div class="card-horizontal__content">
-                                <a href="#">@post.PostTitle </a>
+                                <a href="#" class="title">@post.PostTitle </a>
                                 <p class="description">
                                     Hợp đồng giữa tiền đạo người Argentina và Juventus còn hiệu lực đến tháng 6/2022, nhưng hiện tại chuyện đàm phán gia hạn vẫn chưa đi tới kết quả chung.
                                 </p>
-                                <p class="datetime">
-                                    <span>8:38 12/03/2021</span>
-                                    <a href="#" class="comment"><i class="icon-mode_comment_full"></i></a>
-                                </p>
+                                <div class="social-control">
+                                    <div class="time">
+                                        <span class="name-category">Bóng rổ</span> <span>12/03/2021</span>
+                                    </div>
+                                    <div class="group-icon">
+                                        <a class="icon save">
+                                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
+                                                <path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="#" class="icon comment">
+                                            <i class="icon-mode_comment_full"></i>
+                                        </a>
+                                        <span class="number">12</span>
+                                        <a href="#" class="share">Chia sẻ</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 }
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 </section>
