@@ -1269,6 +1269,8 @@ button {
               margin-right: .5rem; }
             .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill .validate {
               color: #EB5342; }
+              .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill .validate .icon-validate:before {
+                color: #EB5342; }
           .block-extension .controls__account .group-table .right-table .box-control .main-fill p {
             margin-bottom: 0; }
         .block-extension .controls__account .group-table .right-table .action {

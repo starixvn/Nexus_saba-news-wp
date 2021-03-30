@@ -207,7 +207,7 @@
 										}
 										else
 										{
-											<li class="validate">@ViewResources.ProfileNoSelected</li>
+											<li class="validate">@ViewResources.ProfileNoSelected <i class="icon-validate"></i></li>
 										}
 
 									</ul>
@@ -220,7 +220,7 @@
 									<div class="radio-group">
 										<div class="item-radio">
 											<input type="radio" id="male" name="gender" value="Nam" @(Model.Gender == "Nam" ? "checked" : "")>
-											<label for="male">@ViewResources.Male</label>
+											<label for="male">@ViewResources.Male <i class="icon-validate"></i></label>
 										</div>
 										<div class="item-radio">
 											<input type="radio" id="female" name="gender" value="Nữ" @(Model.Gender == "Nữ" ? "checked" : "")>

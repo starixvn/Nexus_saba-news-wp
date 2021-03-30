@@ -278,6 +278,11 @@
 
                                 .validate {
                                     color: $color-title-hover;
+                                    .icon-validate {
+                                        &:before {
+                                            color: $color-title-hover;
+                                        }
+                                    }
                                 }
                             }
 
@@ -325,6 +330,7 @@
 
                         .input-form {
                             position: relative;
+
                             .event-pass {
                                 text-decoration: none;
                                 position: absolute;
