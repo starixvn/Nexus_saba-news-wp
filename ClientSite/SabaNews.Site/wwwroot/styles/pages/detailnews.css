@@ -399,7 +399,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-wrap: nowrap;
               justify-content: flex-start;
               flex-direction: column;
-              height: 600px;
+              height: 400px;
               z-index: 999;
               display: none;
               background-color: #FFFDF9;

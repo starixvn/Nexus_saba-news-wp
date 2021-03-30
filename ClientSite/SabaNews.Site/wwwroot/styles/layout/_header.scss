@@ -266,7 +266,7 @@
                     @include tableMobile {
                         margin: 0;
                         @include flex(center, nowrap, flex-start,column);
-                        height: 600px;
+                        height: 400px;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
