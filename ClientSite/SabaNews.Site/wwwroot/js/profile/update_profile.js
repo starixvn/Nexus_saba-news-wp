@@ -8,8 +8,8 @@
                 url: "/Profile/SavePost",
                 data: { postID: pID },
                 success: function (response) {
-                    if (response.isSuccessful) {
-                        self.parent().html('');
+                    if (response.isSuccessful) {    
+                        self.parent().parent().parent().parent().parent().html('');
                     }
                 }
             });

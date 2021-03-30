@@ -9,5 +9,7 @@ namespace SabaNews.Models.ViewModels
 
         public SavePost ToDayPost { get; set; }
 
+        public UserSession User { get; set; }
+
     }
 }

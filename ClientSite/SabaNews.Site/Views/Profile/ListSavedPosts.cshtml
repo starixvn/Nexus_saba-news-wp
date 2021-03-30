@@ -1,5 +1,5 @@
 ﻿@section Title{
-    @ViewResources.NotFoundPostMsg
+    @ViewBag.Title
 }
 
 @section Styles{
@@ -14,21 +14,32 @@
 
     <div class="container profile-container">
         <div class="block block-main">
-            <div class="profile">
-                <div class="profile__avatar">J</div>
-                <div class="profile__name">User</div>
-                <div class="profile__date">
-                    <p>Tham gia từ</p>
-                    <p>01/01/1970</p>
-                </div>
-                <ul class="profile__control">
-                    <li class="active-control"><a href="javascript:;">@ViewResources.SavedPost @(Model.Posts.Length > 0? "("+ Model.Posts.Length + ")" : "" )</a></li>
-                </ul>
-                <ul class="profile__nav">
-                    <li><a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount </a></li>
-                    <li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
-                </ul>
-            </div>
+			<div class="profile">
+				@if (Model.User.Photo == null)
+				{
+					<div class="profile__avatar">@Model.User.Name.Substring(0, 1)</div>
+				}
+				else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+				{
+					<div class="profile__avatar"><img src="@Model.User.Photo" width="300" /></div>
+				}
+				else
+				{
+					<div class="profile__avatar"><img src="/upload/@Model.User.Photo" width="300" /></div>
+				}
+				<div class="profile__name">@Model.User.Name</div>
+				<div class="profile__date">
+					<p>Tham gia từ</p>
+					<p>@Model.User.RegisterDate.ToString("dd/MM/yyyy")</p>
+				</div>
+				<ul class="profile__control">
+					<li class="active-control"><a href="javascript:;">@ViewResources.SavedPost @(Model.Posts.Length > 0? "("+ Model.Posts.Length + ")" : "" )</a></li>
+				</ul>
+				<ul class="profile__nav">
+					<li><a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount </a></li>
+					<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
+				</ul>
+			</div>
         </div>
         <div class="block block-extension">
             <div class="controls">
@@ -75,7 +86,7 @@
                                         @post.PostTime
                                     </div>
 									<div class="group-icon">
-										<a class="icon save">
+										<a class="icon save remove_save_post" href="javascript:;"  data-postid="@post.ID">
 											<svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
 												<path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2"></path>
 											</svg>

@@ -108,7 +108,8 @@
             var Model = new SavedPostViewModel
             {
                 Posts = posts,
-                ToDayPost = haveSavedToday
+                ToDayPost = haveSavedToday,
+                User = user
             };
             ViewBag.Title = Constants.Profile + user.Name + Constants.ProfileSiteName;
 
