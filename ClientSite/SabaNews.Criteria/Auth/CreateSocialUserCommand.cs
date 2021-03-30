@@ -14,6 +14,8 @@
 
         public string LoginType { get; set; }
 
+        public string Photo { get; set; }
+
         public int UserId { get; set; }
 
         public override string GetSettingKey() => "social_user_create";

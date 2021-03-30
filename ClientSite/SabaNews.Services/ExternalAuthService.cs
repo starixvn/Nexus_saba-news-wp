@@ -24,7 +24,8 @@
                 FirstName = user.FirstName,
                 Identifier = user.Identifier,
                 LastName = user.LastName,
-                LoginType = user.LoginType
+                LoginType = user.LoginType,
+                Photo  = user.Avatar
             };
             CommandResult result = await baseService.ExecuteNonQueryAsync(command);
             user.Id = command.UserId;
