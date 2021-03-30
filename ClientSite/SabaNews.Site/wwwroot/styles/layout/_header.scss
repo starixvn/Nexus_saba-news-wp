@@ -271,6 +271,7 @@
                         display: none;
                         background-color: $bg-nav;
                         overflow: auto;
+                        -webkit-overflow-scrolling: touch;
                     }
 
                     @include landscapeTablet {
