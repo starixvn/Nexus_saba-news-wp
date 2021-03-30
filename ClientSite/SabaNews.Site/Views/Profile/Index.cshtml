@@ -40,7 +40,7 @@
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
 					<p>Tham gia từ</p>
-					<p>@Model.RegisterDate.ToString("dd/MM/yyyy")</p>
+					<p><i class="icon-birthday"></i> @Model.RegisterDate.ToString("dd/MM/yyyy")</p>
 				</div>
 				<ul class="profile__control">
 					<li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(Model.HandleSavePosts.Count > 0 ? "(" + Model.HandleSavePosts.Count + ")" : "" )</a></li>
@@ -59,7 +59,7 @@
                     <form enctype="multipart/form-data" method="post" id="uploadPhoto">
                         <div class="input-upload">
                             <input type="file" class="input-file" id="act-upload" name="photo">
-                            <span class="txt-img">@ViewResources.ProfileUploadNewPhoto</span>
+                            <span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
                             <div class="img-upload">
                                 <img id="review_photo" src="#" alt="review photo" width="150" style="display:none" />
                                 <p class="error photo-error"></p>
@@ -139,11 +139,19 @@
 								</div>
 								<div class="box-edit-form" id="form_update_password">
 									<div class="title">@ViewResources.ChangePassword</div>
-									<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
-									<p class="error error-password old-password-length-error">Mật khẩu cũ tối thiểu 6 kí tự</p>
-									<p class="error error-password old-password-error"></p>
-									<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
-									<p class="error error-password new-password-length-error">Mật khẩu mới tối thiểu 6 kí tự</p>
+                                    <div class="input-form">
+                                        <input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
+                                        <p class="error error-password old-password-length-error">Mật khẩu cũ tối thiểu 6 kí tự</p>
+                                        <p class="error error-password old-password-error"></p>
+                                        <a href="#" class="event-pass show-pass"><i class="icon-show"></i></a>
+                                        <a href="#" class="event-pass hide-pass"><i class="icon-hide"></i></a>
+                                    </div>
+                                    <div class="input-form">
+                                        <input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
+                                        <p class="error error-password new-password-length-error">Mật khẩu mới tối thiểu 6 kí tự</p>
+                                        <a href="#" class="event-pass show-pass"><i class="icon-show"></i></a>
+                                        <a href="#" class="event-pass hide-pass"><i class="icon-hide"></i></a>
+                                    </div>
 									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
 									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
 									<span class="close-edit">@ViewResources.Close</span>

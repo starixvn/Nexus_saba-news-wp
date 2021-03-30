@@ -1192,6 +1192,15 @@ button {
       text-align: center;
       padding: 1rem 0;
       background: #f7f7f7; }
+      .block-extension .controls__choose .input-upload .txt-img {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: center;
+        flex-direction: row; }
+        .block-extension .controls__choose .input-upload .txt-img .icon-upload {
+          font-size: 5rem;
+          margin-right: 1rem; }
       .block-extension .controls__choose .input-upload .photo-error {
         margin: 0; }
       .block-extension .controls__choose .input-upload img {
@@ -1286,6 +1295,13 @@ button {
           margin-top: 1.5rem;
           position: relative;
           display: none; }
+          .block-extension .controls__account .group-table .right-table .box-edit-form .input-form {
+            position: relative; }
+            .block-extension .controls__account .group-table .right-table .box-edit-form .input-form .event-pass {
+              text-decoration: none;
+              position: absolute;
+              top: 1.3rem;
+              right: 1rem; }
           .block-extension .controls__account .group-table .right-table .box-edit-form .title {
             margin-bottom: 1.5rem; }
           .block-extension .controls__account .group-table .right-table .box-edit-form .close-edit {

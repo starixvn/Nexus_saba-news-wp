@@ -30,7 +30,7 @@
 				<div class="profile__name">@Model.User.Name</div>
 				<div class="profile__date">
 					<p>Tham gia từ</p>
-					<p>@Model.User.RegisterDate.ToString("dd/MM/yyyy")</p>
+					<p> <i class="icon-birthday"></i> @Model.User.RegisterDate.ToString("dd/MM/yyyy")</p>
 				</div>
 				<ul class="profile__control">
 					<li class="active-control"><a href="javascript:;">@ViewResources.SavedPost @(Model.Posts.Length > 0? "("+ Model.Posts.Length + ")" : "" )</a></li>

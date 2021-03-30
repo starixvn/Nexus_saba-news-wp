@@ -182,6 +182,15 @@
                 padding: 1rem 0;
                 background: #f7f7f7;
 
+                .txt-img {
+                    @include flex(center, nowrap,center);
+
+                    .icon-upload {
+                        font-size: 5rem;
+                        margin-right: 1rem;
+                    }
+                }
+
                 .photo-error {
                     margin: 0;
                 }
@@ -313,6 +322,16 @@
                         margin-top: 1.5rem;
                         position: relative;
                         display: none;
+
+                        .input-form {
+                            position: relative;
+                            .event-pass {
+                                text-decoration: none;
+                                position: absolute;
+                                top: 1.3rem;
+                                right: 1rem;
+                            }
+                        }
 
                         .title {
                             margin-bottom: 1.5rem;
