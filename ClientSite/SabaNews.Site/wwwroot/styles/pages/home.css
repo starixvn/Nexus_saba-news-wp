@@ -209,13 +209,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           justify-content: space-between;
           flex-direction: row;
           position: relative; } }
-      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-        .header .top-header .group-menu {
-          display: flex;
-          align-items: center;
-          flex-wrap: nowrap;
-          justify-content: flex-start;
-          flex-direction: row; } }
       .header .top-header .group-menu .logo {
         width: 12rem;
         margin-right: 3.6rem; }
@@ -407,7 +400,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-wrap: nowrap;
               justify-content: flex-start;
               flex-direction: column;
-              height: calc(100% - 100px);
+              height: 100%;
               z-index: 999;
               display: none;
               background-color: #FFFDF9;
@@ -563,7 +556,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           display: flex !important; }
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu .active-nav {
-          height: 100vh; } }
+          height: calc(100vh - 56px);
+          width: 100%; } }
   .header .active-fixed {
     padding: .5rem 0;
     transition: .3s ease-in-out;
@@ -576,6 +570,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-width: 1024px) {
     .header .padding-mobile-none {
       padding: 0; } }
+
+hidden-body .group-menu {
+  height: 100vh; }
 
 /* vietnamese */
 @font-face {

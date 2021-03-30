@@ -32,10 +32,6 @@
                 position: relative;
             }
 
-            @include landscapeTablet {
-                @include flex(center, nowrap, flex-start,row);
-            }
-
             .logo {
                 width: 12rem;
                 margin-right: 3.6rem;
@@ -270,7 +266,7 @@
                     @include tableMobile {
                         margin: 0;
                         @include flex(center, nowrap, flex-start,column);
-                        height: calc(100% - 100px);
+                        height: 100%;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
@@ -472,7 +468,8 @@
 
             .active-nav {
                 @include tableMobile {
-                    height: 100vh;
+                    height: calc(100vh - 56px);
+                    width: 100%;
                 }
             }
         }
@@ -494,5 +491,11 @@
         @include tableMobile {
             padding: 0;
         }
+    }
+}
+
+hidden-body {
+    .group-menu {
+        height: 100vh;
     }
 }
