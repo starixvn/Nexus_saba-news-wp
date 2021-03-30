@@ -6,11 +6,7 @@
     background-color: $bg-nav;
     position: fixed;
     width: 100%;
-    z-index: 99999;
-    @include Mobile {
-        bottom: 0;
-        top: 0;
-    }
+    z-index: 99999;   
 
     .top-header {
         padding: .5rem 0;
@@ -506,6 +502,11 @@
 
         .nav-menu {
             height: calc(100% - 56px);
+        }
+
+        .header {
+            top: 0;
+            bottom: 0;
         }
     }
 }
