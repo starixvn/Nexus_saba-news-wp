@@ -396,23 +396,28 @@
                 font-size: 1.6rem;
                 color: $color-title;
                 height: 3.2rem;
-                padding: 0 2rem;
+                padding: 0 2rem 0 .5rem;
             }
         }
 
         &__news {
             border-bottom: 1px solid $separator-color;
             padding-bottom: 1.2rem;
+
             &:last-child {
                 border-bottom: none;
             }
 
             .card-horizontal {
                 margin-top: 2rem;
-                grid-template-rows: 13rem;
+                grid-template-rows: auto;
 
-                @include tableMobile {
-                    grid-template-rows: auto;
+                .card-horizontal__image {
+                    height: 11rem;
+
+                    @include tableMobile {
+                        height: 7.2rem;
+                    }
                 }
 
                 .title {
@@ -421,7 +426,7 @@
 
                 .social-control {
                     @include flex(center, nowrap, space-between, row);
-                    margin-top: 1.5rem;
+                    margin-top: 1rem;
 
                     @include tableMobile {
                         display: inherit;
