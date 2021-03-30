@@ -181,6 +181,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: fixed;
   width: 100%;
   z-index: 99999; }
+  @media (max-device-width: 767px) {
+    .header {
+      bottom: 0;
+      top: 0; } }
   .header .top-header {
     padding: .5rem 0;
     background-color: #FFFDF9;
@@ -202,7 +206,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu {
           padding: 0;
-          display: block;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          flex-direction: row;
           position: relative; } }
       .header .top-header .group-menu .logo {
         width: 12rem;
@@ -552,7 +560,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           display: flex !important; }
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu .active-nav {
-          height: calc(100vh - 56px);
           width: 100%; } }
   .header .active-fixed {
     padding: .5rem 0;
@@ -567,8 +574,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .header .padding-mobile-none {
       padding: 0; } }
 
-hidden-body .group-menu {
-  height: 100vh; }
+@media screen and (max-width: 1024px) {
+  .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header {
+    height: 100%; }
+  .hidden-body .nav-menu {
+    height: calc(100% - 56px); } }
 
 .block-extension {
   display: flex;

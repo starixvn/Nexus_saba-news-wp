@@ -7,6 +7,10 @@
     position: fixed;
     width: 100%;
     z-index: 99999;
+    @include Mobile {
+        bottom: 0;
+        top: 0;
+    }
 
     .top-header {
         padding: .5rem 0;
@@ -28,7 +32,7 @@
 
             @include tableMobile {
                 padding: 0;
-                display: block;
+                @include flex(center,wrap, space-between,row);
                 position: relative;
             }
 
@@ -469,7 +473,6 @@
 
             .active-nav {
                 @include tableMobile {
-                    height: calc(100vh - 56px);
                     width: 100%;
                 }
             }
@@ -495,8 +498,14 @@
     }
 }
 
-hidden-body {
-    .group-menu {
-        height: 100vh;
+.hidden-body {
+    @include tableMobile {
+        .group-menu, .padding-mobile-none, .top-header {
+            height: 100%;
+        }
+
+        .nav-menu {
+            height: calc(100% - 56px);
+        }
     }
 }
