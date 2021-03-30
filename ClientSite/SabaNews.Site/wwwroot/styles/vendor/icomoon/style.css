@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?i7hsjv');
-  src:  url('fonts/icomoon.eot?i7hsjv#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?i7hsjv') format('truetype'),
-    url('fonts/icomoon.woff?i7hsjv') format('woff'),
-    url('fonts/icomoon.svg?i7hsjv#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?dfu4j3');
+  src:  url('fonts/icomoon.eot?dfu4j3#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?dfu4j3') format('truetype'),
+    url('fonts/icomoon.woff?dfu4j3') format('woff'),
+    url('fonts/icomoon.svg?dfu4j3#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-validate:before {
+  content: "\e921";
+color: #999;
+}
 .icon-birthday:before {
   content: "\e91d";
   color: #999;
@@ -155,3 +159,4 @@ color: #4f4f4f;
   content: "\e913";
 color: #4f4f4f;
 }
+
