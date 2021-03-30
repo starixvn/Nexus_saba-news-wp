@@ -28,7 +28,7 @@
 
             @include tableMobile {
                 padding: 0;
-                @include flex(center,wrap, space-between,row);
+                display: block;
                 position: relative;
             }
 
@@ -266,7 +266,7 @@
                     @include tableMobile {
                         margin: 0;
                         @include flex(center, nowrap, flex-start,column);
-                        height: 400px;
+                        height: 100%;
                         z-index: 999;
                         display: none;
                         background-color: $bg-nav;
