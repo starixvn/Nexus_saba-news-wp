@@ -25,7 +25,15 @@
 	<div class="comment_item">
 		<div class="content_comment">
 			<p class="full_content">
-				<span class="user_avatar">M</span>
+				@if (comment.Photo == null)
+				{
+					<span class="user_avatar">@comment.CommentAuthor.Substring(0, 1)</span>
+				}
+				else
+				{ 
+					<span class="user_avatar"><img src="~/upload/@comment.Photo" alt="Alternate Text" width="50" /></span>
+				}
+
 				<span class="nickname">@comment.CommentAuthor</span> @Html.Raw(comment.CommentContent)
 			</p>
 			<p class="block_like_web width_common">

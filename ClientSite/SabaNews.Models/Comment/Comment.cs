@@ -19,6 +19,7 @@
         public string CommentLikeIPs { get; set; }
         public string CommentLikeUsers { get; set; }
         public long CommentNumberChildren { get; set; }
+        public string Photo { get; set; }
         public bool isLiked { get; set; }
         public string CommentTime
         {

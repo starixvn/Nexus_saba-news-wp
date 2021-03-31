@@ -261,9 +261,13 @@
         var liked = val.isLiked ? 'unlike' : '';
         var commentTime = typeof val.commentTime === "undefined" ? "1 giây trước" : val.commentTime;
         var likeCount = val.commentLikeCount > 0 ? val.commentLikeCount : "";
+        var photo = '<span class="user_avatar">' + val.commentAuthor.substr(0, 1) + '</span>';
+        if (val.photo !== null) {
+            photo = '<span class="user_avatar"><img src="/upload/' + val.photo +'" alt="Alternate Text" width="50" /></span>'
+        }
         html += '<div class="sub_comment_item comment_item">';
         html += '<p class="full_content">';
-        html += '<span class="user_avatar"></span>';
+        html += photo
         html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
         html += '</p>';
         html += '<p class="block_like_web width_common">';
