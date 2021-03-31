@@ -216,7 +216,7 @@
     };
 
     function HandleLikeComment() {
-        $(document).on('click', '.link_thich', function () {
+        $(document).on('click', '.link-like-comment', function () {
             var isLogin = (data.isLogin.toLowerCase() === 'true');
             if (!isLogin) {
                 $('#requestLogin').modal('show');
@@ -271,7 +271,7 @@
         html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
         html += '</p>';
         html += '<p class="block_like_web width_common">';
-        html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + val.commentID + '">';
+        html += '<a href="javascript:;" class="link-like-comment  ' + liked + '" data-commentid="' + val.commentID + '">';
         html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
         html += '<i class="ic ic-like" ></i >'
         html += '</a > ';
