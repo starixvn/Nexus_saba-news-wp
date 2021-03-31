@@ -42,7 +42,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return View("EmptyProfile");
+                return View(Constants.EmptyProfile);
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
@@ -97,7 +97,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return View("EmptyProfile");
+                return View(Constants.EmptyProfile);
             }
             
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
@@ -158,7 +158,7 @@
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             if (!authService.ComparePassword(oldPassword, user.Password))
             {
-                return Json(new { isSuccessful = false, message = "Mật khẩu cũ không đúng" });
+                return Json(new { isSuccessful = false, message = Constants.WrongPassword });
             }
             user.Password = BCrypt.HashPassword(newPassword);
             var commandResult = await profileService.UpdateUserInfoAsync(user);

@@ -93,5 +93,7 @@
         public const string SubjectResetPassword = "Hướng dẫn lấy lại mất khẩu tài khoản Saba Sports";
         public const string Profile = "Trang cá nhân của ";
         public const string ProfileSiteName = " trên Saba Sports";
+        public const string EmptyProfile = "EmptyProfile";
+        public const string WrongPassword = "Mật khẩu cũ không đúng";
     }
 }

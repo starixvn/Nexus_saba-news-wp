@@ -107,20 +107,12 @@
 
         public string GetRemoteIpAddress()
         {
-            IPAddress remoteIpAddress = HttpContext.Connection.RemoteIpAddress;
-            string ip = "";
-            if (remoteIpAddress != null)
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
             {
-                // If we got an IPV6 address, then we need to ask the network for the IPV4 address 
-                // This usually only happens when the browser is on the same machine as the server.
-                if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
-                {
-                    remoteIpAddress = System.Net.Dns.GetHostEntry(remoteIpAddress).AddressList
-            .First(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
-                }
-                ip = remoteIpAddress.ToString();
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
             }
-            return ip;
+            return clientIP;
         }
     }
 }
