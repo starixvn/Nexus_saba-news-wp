@@ -376,12 +376,14 @@
         position: relative;
         padding: 0 1.2rem;
         margin: 1rem 0 2rem 0;
-        flex-direction: column;
+        display: block;
         right: unset;
         top: unset;
     }
 }
 .search-input {
+    position: relative;
+
     form {
         position: relative;
     }
@@ -427,7 +429,6 @@
             border-radius: 28px;
             padding: 0 3.2rem 0 1.6rem;
         }
-
     }
 
     .active-input {
