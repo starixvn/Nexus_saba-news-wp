@@ -160,7 +160,7 @@
                         html += '<span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent;
                         html += '</p>';
                         html += '<p class="block_like_web width_common">';
-                        html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + comment.commentID + '">';
+                        html += '<a href="javascript:;" class="link-like-comment ' + liked + '" data-commentid="' + comment.commentID + '">';
                         html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
                         html += '<i class="ic ic-like" ></i >'
                         html += '</a > ';

@@ -1233,6 +1233,17 @@ button {
     color: #04416d;
     padding-right: 5px;
     font-weight: bold; }
+  .comment-post .list_comments .user_avatar {
+    width: 3.6rem;
+    height: 3.6rem;
+    display: inline-flex;
+    background: #828282;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-right: .5rem;
+    align-items: center;
+    justify-content: center;
+    color: #fff; }
   .comment-post .list_comments .block_like_web a {
     color: #757575;
     margin-right: 2rem;
