@@ -394,7 +394,7 @@
         box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
 
         @include tableMobile {
-            position: inherit;
+            position: relative;
             right: unset;
             top: unset;
             width: 100%;
@@ -419,7 +419,6 @@
         @include tableMobile {
             width: 100%;
             font-size: 1.6rem;
-            position: inherit;
             display: block;
             border-bottom: none;
             background: $block-highlight-bgcolor !important;

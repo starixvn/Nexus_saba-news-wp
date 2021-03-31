@@ -492,7 +492,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3); }
   @media screen and (max-width: 1024px) {
     .search-input .search-box {
-      position: inherit;
+      position: relative;
       right: unset;
       top: unset;
       width: 100%;
@@ -514,7 +514,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .search-input input {
       width: 100%;
       font-size: 1.6rem;
-      position: inherit;
       display: block;
       border-bottom: none;
       background: #E8EAEF !important;
