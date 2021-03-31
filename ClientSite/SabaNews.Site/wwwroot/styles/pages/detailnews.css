@@ -476,7 +476,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       position: relative;
       padding: 0 1.2rem;
       margin: 1rem 0 2rem 0;
-      flex-direction: column; } }
+      flex-direction: column;
+      right: unset;
+      top: unset; } }
 
 .search-input form {
   position: relative; }
