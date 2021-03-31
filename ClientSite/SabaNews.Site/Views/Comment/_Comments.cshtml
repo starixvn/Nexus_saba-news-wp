@@ -1,4 +1,4 @@
-﻿<div class="ykien"><h3>@ViewResources.Comment </h3><span class="total-count-comment">  (@Model.CommentTemplate.TotalItems)</span></div>
+﻿<div class="heading-post-comment"><h3>@ViewResources.Comment </h3><span class="total-count-comment">  (@Model.CommentTemplate.TotalItems)</span></div>
 <form>
 	<input type="hidden" name="filterType" value="@Model.FilterType" />
 	<div class="comment-content-box">
@@ -11,7 +11,6 @@
 	}
 	
 </form>
-<div class="clearfix"></div>
 @if (Model.CommentTemplate.Comments.Count > 0) 
 { 
 	<div class="filter_comment">
