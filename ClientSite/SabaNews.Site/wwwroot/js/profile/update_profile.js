@@ -62,6 +62,28 @@
                 $('.btn-save-password').removeClass('btn-disabled');
             }
         });
+        $(".event-pass").on('click', function () {
+            var self = $(this);
+            if (self.hasClass('show-old-pass')) {
+                self.hide();
+                $('.hide-old-pass').show();
+                $('input[name=oldpassword]').attr('type', 'text');
+            } else if (self.hasClass('hide-old-pass')) {
+                self.hide();
+                $('.show-old-pass').show();
+                $('input[name=oldpassword]').attr('type', 'password');
+            }
+            if (self.hasClass('show-new-pass')) {
+                self.hide();
+                $('.hide-new-pass').show();
+                $('input[name=newpassword]').attr('type', 'text');
+            } else if (self.hasClass('hide-new-pass')) {
+                self.hide();
+                $('.show-new-pass').show();
+                $('input[name=newpassword]').attr('type', 'password');
+            }
+        });
+
     }
 
     function update_profile_info() {
@@ -144,6 +166,9 @@
         });
 
         $('.btn-save-password').on('click', function () {
+            $('.old-password-length-error').hide();
+            $('.new-password-length-error').hide();
+            $('.old-password-error').hide();
             var oldPassword = $('input[name = oldpassword]').val();
             var newPassword = $('input[name=newpassword]').val();
             var check = true;

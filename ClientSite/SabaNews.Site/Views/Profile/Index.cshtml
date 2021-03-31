@@ -108,12 +108,12 @@
 										}
 										else
 										{
-											<li class="validate">@ViewResources.ProfilePhoneValidate</li>
+											<li class="validate">@ViewResources.ProfilePhoneValidate <i class="icon-validate"></i></li>
 										}
 
 									</ul>
 								</div>
-								<a href="#" class="action">@ViewResources.Add</a>
+								<a href="#" class="action">@(Model.Phone == null ?  ViewResources.Add : ViewResources.Change)</a>
 							</div>
 							<div class="box-edit-form" id="form_update_phone">
 								<div class="title">@ViewResources.ProfilePhoneUpdateTitle</div>
@@ -143,14 +143,14 @@
                                         <input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
                                         <p class="error error-password old-password-length-error">Mật khẩu cũ tối thiểu 6 kí tự</p>
                                         <p class="error error-password old-password-error"></p>
-                                        <a href="#" class="event-pass show-pass"><i class="icon-show"></i></a>
-                                        <a href="#" class="event-pass hide-pass"><i class="icon-hide"></i></a>
+                                        <a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
+                                        <a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
                                     </div>
                                     <div class="input-form">
                                         <input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
                                         <p class="error error-password new-password-length-error">Mật khẩu mới tối thiểu 6 kí tự</p>
-                                        <a href="#" class="event-pass show-pass"><i class="icon-show"></i></a>
-                                        <a href="#" class="event-pass hide-pass"><i class="icon-hide"></i></a>
+                                        <a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
+                                        <a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
                                     </div>
 									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
 									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
@@ -178,7 +178,7 @@
 										<li class="txt-feild">@Model.Name</li>
 									</ul>
 								</div>
-								<a href="#" class="action">@ViewResources.Add</a>
+								<a href="#" class="action">@ViewResources.Change</a>
 							</div>
 							<div class="box-edit-form" id="form_update_name">
 								<div class="title">Họ và tên</div>
@@ -212,7 +212,7 @@
 
 									</ul>
 								</div>
-								<a href="#" class="action">@ViewResources.Add</a>
+								<a href="#" class="action">@(Model.Gender == null ?  ViewResources.Add : ViewResources.Change)</a>
 							</div>
 							<div class="box-edit-form" id="form_update_gender">
 								<div class="title">@ViewResources.ProfileGender</div>
@@ -220,7 +220,7 @@
 									<div class="radio-group">
 										<div class="item-radio">
 											<input type="radio" id="male" name="gender" value="Nam" @(Model.Gender == "Nam" ? "checked" : "")>
-											<label for="male">@ViewResources.Male <i class="icon-validate"></i></label>
+											<label for="male">@ViewResources.Male</label>
 										</div>
 										<div class="item-radio">
 											<input type="radio" id="female" name="gender" value="Nữ" @(Model.Gender == "Nữ" ? "checked" : "")>
