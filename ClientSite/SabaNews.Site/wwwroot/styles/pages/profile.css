@@ -1406,11 +1406,7 @@ button {
             flex-direction: row; }
             @media screen and (max-width: 1024px) {
               .block-extension .controls__news .card-horizontal .social-control .group-icon {
-                display: flex;
-                align-items: center;
-                flex-wrap: nowrap;
                 justify-content: flex-start;
-                flex-direction: row;
                 margin-top: .5rem; } }
             .block-extension .controls__news .card-horizontal .social-control .group-icon .icon {
               width: 3.2rem;

@@ -466,7 +466,7 @@
                         @include flex(center, nowrap, center);
 
                         @include tableMobile {
-                            @include flex(center, nowrap, flex-start);
+                            justify-content : flex-start;
                             margin-top: .5rem
                         }
 
