@@ -19,37 +19,49 @@
                     <ul class="main-menu">
                         @{ var VideoParentId = 0; }
                         @foreach (var menu in Model)
-						{
+                        {
 
-							var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-							if (menu.PageSlug == Constants.MatchScheduleSlug)
-							{
-								link = Url.Action("MatchSchedule", "Home");
-							}
-							if (menu.PageSlug == Constants.WarningSlug)
-							{
-								link = Url.Action("Warning", "Home");
-							}
-							else if (menu.Slug == Constants.VideoSlug)
-							{
-								VideoParentId = menu.ID;
-								link = Url.Action("Video", "Home", new { page = (int?)null });
-							}
-							if (menu.CatId != Constants.Home)
-							{
-								var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+                            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                            if (menu.PageSlug == Constants.MatchScheduleSlug)
+                            {
+                                link = Url.Action("MatchSchedule", "Home");
+                            }
+                            if (menu.PageSlug == Constants.WarningSlug)
+                            {
+                                link = Url.Action("Warning", "Home");
+                            }
+                            else if (menu.Slug == Constants.VideoSlug)
+                            {
+                                VideoParentId = menu.ID;
+                                link = Url.Action("Video", "Home", new { page = (int?)null });
+                            }
+                            if (menu.CatId != Constants.Home)
+                            {
+                                var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
                                 <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
                             }
 
                         }
-                        <li class="search-input">
-                            <form asp-action="Search" method="get">
-                                <div class="search-box"><input class="keyword-input" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm..."></div>
-                                <button type="submit" class="btn btn-search" aria-label="search">
-                                    <i class="icon-search"></i>
-                                </button>
-                            </form>
+                        <li class="right-header-section">
+                            <div class="languages-box">
+                                <div class="language-select"><span class="flag flag-vn"></span><span>VN</span></div>
+                                <ul class="languages-list">
+                                    <li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>CN</span></a>
+                                    <li>
+                                        <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="search-input">
+                                <form asp-action="Search" method="get">
+                                    <div class="search-box"><input class="keyword-input" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm..."></div>
+                                    <button type="submit" class="btn btn-search" aria-label="search">
+                                        <i class="icon-search"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>

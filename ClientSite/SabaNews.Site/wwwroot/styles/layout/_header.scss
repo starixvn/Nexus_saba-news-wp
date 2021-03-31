@@ -34,7 +34,7 @@
 
             .logo {
                 width: 12rem;
-                margin-right: 3.6rem;
+                margin-right: 2.4rem;
 
                 a {
                     display: flex;
@@ -51,136 +51,6 @@
                     @include flex(center, wrap, space-between,row);
                 }
             }
-
-            .search-input {
-                position: absolute;
-                right: 0px;
-                top: auto;
-
-                @include tableMobile {
-                    order: 1;
-                    width: 100%;
-                    padding: 0;
-                    position: relative;
-                    right: auto;
-                    top: auto;
-                    padding: 0 1.2rem;
-                    margin: 2rem 0 2.1rem 0;
-                }
-
-                @include landscapeTablet {
-                    position: absolute;
-                    width: auto;
-                    right: 0;
-                }
-
-                .search-box {
-                    position: absolute;
-                    right: 1rem;
-                    top: 2.6rem;
-                    display: none;
-                    padding: 1.2rem;
-                    background: #fffdf9;
-                    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-
-                    @include tableMobile {
-                        display: block;
-                        position: inherit;
-                        top: auto;
-                        right: auto;
-                        padding: 0;
-                        background: none;
-                        box-shadow: none;
-                    }
-
-                    @include landscapeTablet {
-                        display: none;
-                        position: absolute;
-                        right: 1rem;
-                        top: 2.6rem;
-                        padding: 1.2rem;
-                        background: #fffdf9;
-                        box-shadow: 0 3px 4px rgba(0,0,0,.3);
-                    }
-                }
-
-                input {
-                    height: 3.6rem;
-                    font-size: 1.4rem;
-                    font-weight: 400;
-                    border: none;
-                    border-bottom: 1px solid #cacaca;
-                    color: $color-input;
-                    width: 11vw;
-                    background: transparent;
-
-
-                    @include tableMobile {
-                        width: 100%;
-                        font-size: 1.6rem;
-                        position: inherit;
-                        right: auto;
-                        top: auto;
-                        display: block;
-                        border-bottom: none;
-                        background: $block-highlight-bgcolor;
-                        border-radius: 28px;
-                        padding: 0 2rem;
-                    }
-
-                    @include landscapeTablet {
-                        border-bottom: 1px solid #cacaca;
-                        z-index: 9999999;
-                        top: 3.3rem;
-                        right: 0;
-                        background: none;
-                        border-radius: 0;
-                        position: unset;
-                        width: 15vw;
-                    }
-                }
-
-                .active-input {
-                    display: block;
-
-                    @include landscapeTablet {
-                        display: block;
-                    }
-                }
-
-                .btn-search {
-                    background-color: transparent;
-                    position: absolute;
-                    cursor: pointer;
-                    top: -1rem;
-                    right: 3rem;
-                    width: .5rem;
-                    height: 100%;
-
-                    @include tableMobile {
-                        top: 0;
-                        right: 2.5rem;
-                        font-size: 1.5rem;
-                        width: 2rem;
-                    }
-
-                    @include landscapeTablet {
-                        position: inherit;
-                        top: auto;
-                        right: auto
-                    }
-
-                    .icon-search {
-                        font-size: 2.4rem;
-
-                        @include landscapeTablet {
-                            position: relative;
-                            top: 2px;
-                        }
-                    }
-                }
-            }
-
             .button-mobile {
                 width: 2.8rem;
                 height: 3rem;
@@ -322,7 +192,7 @@
                             padding: 3.7rem 0;
                             font-weight: 600;
                             transition: color .2s ease;
-                            margin-right: 3rem;
+                            margin-right: 2rem;
                             line-height: 1.7rem;
                             color: #4f4f4f;
 
@@ -490,6 +360,172 @@
     .padding-mobile-none {
         @include tableMobile {
             padding: 0;
+        }
+    }
+}
+
+.right-header-section {
+    position: absolute;
+    right: 0px;
+    top: auto;
+    display: flex;
+
+    @include tableMobile {
+        order: 1;
+        width: 100%;
+        position: relative;
+        padding: 0 1.2rem;
+        margin: 1rem 0 2rem 0;
+        flex-direction: column;
+    }
+}
+.search-input {
+    form {
+        position: relative;
+    }
+
+    .search-box {
+        position: absolute;
+        right: 1rem;
+        top: 2.6rem;
+        display: none;
+        padding: 1.2rem;
+        background: #fffdf9;
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+
+        @include tableMobile {
+            position: inherit;
+            right: unset;
+            top: unset;
+            width: 100%;
+            padding: 0;
+            display: block;
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+
+    input {
+        height: 3.6rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        border: none;
+        border-bottom: 1px solid #cacaca;
+        color: $color-input;
+        width: 11vw;
+        background: transparent !important;
+
+
+        @include tableMobile {
+            width: 100%;
+            font-size: 1.6rem;
+            position: inherit;
+            display: block;
+            border-bottom: none;
+            background: $block-highlight-bgcolor !important;
+            border-radius: 28px;
+            padding: 0 3.2rem 0 1.6rem;
+        }
+
+    }
+
+    .active-input {
+        display: block;
+
+        @include landscapeTablet {
+            display: block;
+        }
+    }
+
+    .btn-search {
+        background-color: transparent;
+        cursor: pointer;
+
+        @include tableMobile {
+            top: .6rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            width: 2rem;
+            position: absolute
+        }
+
+        .icon-search {
+            font-size: 2.4rem;
+
+            @include landscapeTablet {
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+}
+
+.languages-box {
+    position: relative;
+    margin-right: 16px;
+
+    @include tableMobile {
+        margin-bottom: .8rem;
+    }
+
+    .languages-list {
+        list-style: none;
+        display: none;
+        position: absolute;
+        z-index: 999;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        background: #fff;
+        padding: 4px;
+        width: 80px;
+        border-radius: 4px;
+        left: -4px;
+        top: 30px;
+        transition: opacity .3s;
+
+        .lang-item {
+            text-decoration: none;
+            color: #4f4f4f;
+            display: inline-block;
+            padding: 2px 0;
+        }
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .flag {
+        width: 26px;
+        height: 26px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 2px;
+        position: relative;
+        top: 2px;
+    }
+
+    $langs: vn, cn, en;
+
+    @each $lang in $langs {
+        .flag-#{$lang} {
+            background: url(../../images/flag/icon-#{$lang}.svg) no-repeat;
+        }
+    }
+
+    .language-select {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:after {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #4f4f4f;
+            content: '';
+            margin-left: 4px;
+            display: inline-block;
         }
     }
 }
