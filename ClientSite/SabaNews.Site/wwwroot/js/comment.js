@@ -155,7 +155,10 @@
                         var likeCount = comment.commentLikeCount > 0 ? comment.commentLikeCount : "";
                         html += '<div class="comment_item">';
                         html += '<div class="content_comment">';
-                        html += '<p class="full_content"><span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent + '</p>';
+                        html += '<p class="full_content">';
+                        html += '<span class="user_avatar"></span>';
+                        html += '<span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent;
+                        html += '</p>';
                         html += '<p class="block_like_web width_common">';
                         html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + comment.commentID + '">';
                         html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
@@ -259,7 +262,10 @@
         var commentTime = typeof val.commentTime === "undefined" ? "1 giây trước" : val.commentTime;
         var likeCount = val.commentLikeCount > 0 ? val.commentLikeCount : "";
         html += '<div class="sub_comment_item comment_item">';
-        html += '<p class="full_content"><span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent + '</p>';
+        html += '<p class="full_content">';
+        html += '<span class="user_avatar"></span>';
+        html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
+        html += '</p>';
         html += '<p class="block_like_web width_common">';
         html += '<a href="javascript:;" class="link_thich ' + liked + '" data-commentid="' + val.commentID + '">';
         html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
