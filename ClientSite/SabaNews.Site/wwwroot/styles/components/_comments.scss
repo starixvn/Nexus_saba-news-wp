@@ -111,6 +111,16 @@
             align-items: center;
             justify-content: center;
             color: $color-fff;
+            position: relative;
+            overflow: hidden;
+            img {
+                position: absolute;
+                top: 50%;
+                object-fit: cover;
+                height: 100%;
+                right: 50%;
+                transform: translate(50%,-50%);
+            }
         }
 
         .block_like_web {
@@ -197,8 +207,8 @@
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #222;
-                min-width: 4rem !important;
-                max-width: 100% !important;
+                min-width: 4rem;
+                max-width: 100%;
                 transition: width 0.25s;
                 float: left;
                 width: 2rem;

@@ -1243,7 +1243,16 @@ button {
     margin-right: .5rem;
     align-items: center;
     justify-content: center;
-    color: #fff; }
+    color: #fff;
+    position: relative;
+    overflow: hidden; }
+    .comment-post .list_comments .user_avatar img {
+      position: absolute;
+      top: 50%;
+      object-fit: cover;
+      height: 100%;
+      right: 50%;
+      transform: translate(50%, -50%); }
   .comment-post .list_comments .block_like_web a {
     color: #757575;
     margin-right: 2rem;
@@ -1301,8 +1310,8 @@ button {
       font-size: 1.5rem;
       font-weight: 700;
       color: #222;
-      min-width: 4rem !important;
-      max-width: 100% !important;
+      min-width: 4rem;
+      max-width: 100%;
       transition: width 0.25s;
       float: left;
       width: 2rem;
@@ -1321,10 +1330,7 @@ button {
   grid-gap: 0; }
   @media screen and (max-width: 1024px) {
     .main .container {
-      display: grid;
-      grid-template-columns: 60% 40%;
-      grid-template-rows: unset;
-      grid-gap: 0; } }
+      grid-template-columns: 60% 40%; } }
   @media (max-device-width: 767px) {
     .main .container {
       display: inherit; } }
@@ -1336,10 +1342,7 @@ button {
   grid-gap: 0; }
   @media screen and (max-width: 1024px) {
     .main .detail-container {
-      display: grid;
-      grid-template-columns: 5% 60% 35%;
-      grid-template-rows: unset;
-      grid-gap: 0; } }
+      grid-template-columns: 5% 60% 35%; } }
   @media (max-device-width: 767px) {
     .main .detail-container {
       display: inherit; } }
@@ -1351,10 +1354,7 @@ button {
   grid-gap: 0; }
   @media screen and (max-width: 1024px) {
     .main .profile-container {
-      display: grid;
-      grid-template-columns: 30% 70%;
-      grid-template-rows: unset;
-      grid-gap: 0; } }
+      grid-template-columns: 30% 70%; } }
   @media (max-device-width: 767px) {
     .main .profile-container {
       display: inherit; } }
