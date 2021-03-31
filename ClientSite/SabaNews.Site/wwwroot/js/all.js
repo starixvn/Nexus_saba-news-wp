@@ -72,6 +72,12 @@ $(document).ready(function () {
 
     $(window).click(function (e) {
         var elmClass = e.target.className;
+        console.log(elmClass);
+        if (elmClass !== 'country' && elmClass !== 'language-select' && elmClass !== 'flag flag-vn') {
+            if ($('.languages-list').hasClass('active')) {
+                $('.languages-list').removeClass('active');
+            }
+        }
         if (elmClass !== 'icon-search' && elmClass !== 'keyword-input') {
             var searchbox = $('.search-box');
             if (searchbox.hasClass('active-input')) {
