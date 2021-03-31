@@ -1167,7 +1167,7 @@ button {
   .comment-post .add_comment, .comment-post .add_sub_comment {
     color: #fff;
     padding: 1rem 4rem;
-    background: #9f224e !important;
+    background: #9f224e;
     border: none;
     margin-top: 2rem;
     font-weight: bold;
@@ -1194,7 +1194,7 @@ button {
         border: none;
         width: 100%;
         height: 3rem;
-        color: #333 !important;
+        color: #333;
         overflow: hidden;
         padding: .5rem 3.7rem 0 1.5rem; }
       .comment-post form .comment-content-box .note-text-count {
@@ -1223,7 +1223,7 @@ button {
         bottom: -1.4rem;
         left: 0; }
     .comment-post .filter_comment .active {
-      color: #9f224e !important;
+      color: #9f224e;
       font-weight: 700; }
       .comment-post .filter_comment .active:after {
         background: #9f224e; }
