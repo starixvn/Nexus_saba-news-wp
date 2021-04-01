@@ -71,6 +71,7 @@
                         html += RenderSubComment(val);
                     });
                     self.parent().parent().find('.sub_comment').append(html);
+                    validate_image();
                 }
             });
         });
@@ -156,9 +157,9 @@
                         var photo = '<span class="user_avatar">' + comment.commentAuthor.substr(0, 1) + '</span>';
                         if (comment.photo !== null) {
                             if (comment.photo.indexOf("https://") >= 0 || comment.photo.indexOf("http://") >= 0) {
-                                photo = '<span class="user_avatar"><img src="' + comment.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                                photo = '<span class="user_avatar"><img class="profile_image" src="' + comment.photo + '" width="50" data-name="' + comment.commentAuthor.substr(0, 1)+'" /></span>'
                             } else {
-                                photo = '<span class="user_avatar"><img src="/upload/' + comment.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                                photo = '<span class="user_avatar"><img  class="profile_image"  src="/upload/' + comment.photo + '" width="50"  data-name="' + comment.commentAuthor.substr(0, 1) +'" /></span>'
                             }
                         }
                         html += '<div class="comment_item">';
@@ -181,6 +182,7 @@
                         $('.list_comments').prepend(html);
                         self.parent().find("textarea[name=comment_value]").val('');
                         self.parent().find('.comment-content-box').find('.note-text-count').hide();
+                        validate_image();
                     }
                 }
             });
@@ -217,6 +219,7 @@
                         }
                         $('.comment_reply_wrapper').remove();
                         self.parent().find("textarea[name=comment_value]").val('');
+                        validate_image();
                     }
                 }
             });
@@ -272,9 +275,9 @@
         var photo = '<span class="user_avatar">' + val.commentAuthor.substr(0, 1) + '</span>';
         if (val.photo !== null) {
             if (val.photo.indexOf("https://") >= 0 || val.photo.indexOf("http://") >= 0) {
-                photo = '<span class="user_avatar"><img src="' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                photo = '<span class="user_avatar"><img class="profile_image" src="' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" data-name="' + val.commentAuthor.substr(0, 1) +'" /></span>'
             } else {
-                photo = '<span class="user_avatar"><img src="/upload/' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                photo = '<span class="user_avatar"><img class="profile_image" src="/upload/' + val.photo + '" alt="Đang tải ảnh đại diện" width="50"data-name="' + val.commentAuthor.substr(0, 1) +'" /></span>'
             }
             
         }
@@ -313,6 +316,15 @@
         html += '</div>';
         return html;
     };
+
+    function validate_image() {
+        $('img.profile_image').on('error',  function () {
+            if (typeof $(this).data('name') !== "undefined") {
+                $(this).parent().html($(this).data('name'));
+                $(this).remove();
+            }
+        });
+    }
 
     function init() {
         RenderListComment(postID, 1, filterType);

@@ -21,11 +21,11 @@
 				}
 				else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
 				{
-					<div class="profile__avatar"><img src="@Model.User.Photo" width="300" /></div>
+					<div class="profile__avatar"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></div>
 				}
 				else
 				{
-					<div class="profile__avatar"><img src="/upload/@Model.User.Photo" width="300" /></div>
+					<div class="profile__avatar"><img  class="profile_image" loading="lazy" src="/upload/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></div>
 				}
 				<div class="profile__name">@Model.User.Name</div>
 				<div class="profile__date">
@@ -78,7 +78,7 @@
                     <div class="controls__news">
                         <div class="card-horizontal">
                             <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-horizontal__image">
-                                <img src="@Url.Content(post.FeatureImage)" alt="title" />
+                                <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="title" />
                             </a>
                             <div class="card-horizontal__content">
                                 <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="title">@post.PostTitle </a>
