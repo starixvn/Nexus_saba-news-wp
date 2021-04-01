@@ -195,6 +195,9 @@
   <data name="InputNewPassword" xml:space="preserve">
     <value>Nhập mật khẩu mới</value>
   </data>
+  <data name="LoadingAvatar" xml:space="preserve">
+    <value>Đang tải ảnh đại diện</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
@@ -221,6 +224,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
+  </data>
+  <data name="NoSavedPosts" xml:space="preserve">
+    <value>Chưa có tin nào được lưu</value>
   </data>
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
@@ -291,8 +297,23 @@
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
   </data>
+  <data name="Today" xml:space="preserve">
+    <value>Hôm nay</value>
+  </data>
   <data name="Transfer" xml:space="preserve">
     <value>Thị trường chuyển nhượng</value>
+  </data>
+  <data name="ValidateGender" xml:space="preserve">
+    <value>Vui lòng chọn giới tính</value>
+  </data>
+  <data name="ValidateLengthNewPassword" xml:space="preserve">
+    <value>Mật khẩu mới tối thiểu 6 kí tự</value>
+  </data>
+  <data name="ValidateLengthOldPassword" xml:space="preserve">
+    <value>Mật khẩu cũ tối thiểu 6 kí tự</value>
+  </data>
+  <data name="ValidateName" xml:space="preserve">
+    <value>Vui lòng nhập tên</value>
   </data>
   <data name="Video" xml:space="preserve">
     <value>Video</value>

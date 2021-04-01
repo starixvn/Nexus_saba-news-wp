@@ -295,6 +295,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đang tải ảnh đại diện.
+        /// </summary>
+        public static string LoadingAvatar {
+            get {
+                return ResourceManager.GetString("LoadingAvatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng nhập.
         /// </summary>
         public static string Login {
@@ -372,6 +381,15 @@ namespace SabaNews.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chưa có tin nào được lưu.
+        /// </summary>
+        public static string NoSavedPosts {
+            get {
+                return ResourceManager.GetString("NoSavedPosts", resourceCulture);
             }
         }
         
@@ -583,11 +601,56 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hôm nay.
+        /// </summary>
+        public static string Today {
+            get {
+                return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thị trường chuyển nhượng.
         /// </summary>
         public static string Transfer {
             get {
                 return ResourceManager.GetString("Transfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng chọn giới tính.
+        /// </summary>
+        public static string ValidateGender {
+            get {
+                return ResourceManager.GetString("ValidateGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới tối thiểu 6 kí tự.
+        /// </summary>
+        public static string ValidateLengthNewPassword {
+            get {
+                return ResourceManager.GetString("ValidateLengthNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu cũ tối thiểu 6 kí tự.
+        /// </summary>
+        public static string ValidateLengthOldPassword {
+            get {
+                return ResourceManager.GetString("ValidateLengthOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên.
+        /// </summary>
+        public static string ValidateName {
+            get {
+                return ResourceManager.GetString("ValidateName", resourceCulture);
             }
         }
         

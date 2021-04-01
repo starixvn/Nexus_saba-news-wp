@@ -79,7 +79,7 @@
         public async Task<IActionResult> Warning()
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
-            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle : pageDetail.Title;
+            var title = pageDetail.SEOTitle ?? pageDetail.Title;
             var Model = new PageViewModel
             {
                 Category = pageDetail

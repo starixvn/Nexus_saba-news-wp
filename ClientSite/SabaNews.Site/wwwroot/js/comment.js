@@ -154,8 +154,12 @@
                         var liked = comment.isLiked ? 'unlike' : '';
                         var likeCount = comment.commentLikeCount > 0 ? comment.commentLikeCount : "";
                         var photo = '<span class="user_avatar">' + comment.commentAuthor.substr(0, 1) + '</span>';
-                        if (photo.photo !== null) {
-                            photo = '<span class="user_avatar"><img src="/upload/' + comment.photo + '" alt="Alternate Text" width="50" /></span>'
+                        if (comment.photo !== null) {
+                            if (comment.photo.indexOf("https://") >= 0 || comment.photo.indexOf("http://") >= 0) {
+                                photo = '<span class="user_avatar"><img src="' + comment.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                            } else {
+                                photo = '<span class="user_avatar"><img src="/upload/' + comment.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+                            }
                         }
                         html += '<div class="comment_item">';
                         html += '<div class="content_comment">';
@@ -267,7 +271,12 @@
         var likeCount = val.commentLikeCount > 0 ? val.commentLikeCount : "";
         var photo = '<span class="user_avatar">' + val.commentAuthor.substr(0, 1) + '</span>';
         if (val.photo !== null) {
-            photo = '<span class="user_avatar"><img src="/upload/' + val.photo +'" alt="Alternate Text" width="50" /></span>'
+            if (val.photo.indexOf("https://") >= 0 || val.photo.indexOf("http://") >= 0) {
+                photo = '<span class="user_avatar"><img src="' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+            } else {
+                photo = '<span class="user_avatar"><img src="/upload/' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" /></span>'
+            }
+            
         }
         html += '<div class="sub_comment_item comment_item">';
         html += '<p class="full_content">';

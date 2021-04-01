@@ -44,17 +44,21 @@
         <div class="block block-extension">
             <div class="controls">
                 <h2 class="block__title"><a>@ViewResources.SavedPost </a></h2>
+                @if (Model.Posts.Length == 0)
+				{ 
+                    <p>@ViewResources.NoSavedPosts</p>
+                }
                 @if (Model.ToDayPost != null)
                 {
                     <div class="controls__datetime">
-                        <h4 class="time-save">Hôm nay:</h4>
-                        <select class="filter">
+                        <h4 class="time-save">@ViewResources.Today</h4>
+                        @*<select class="filter">
                             <option value="all" selected>Tất cả</option>
                             <option value="video">Video</option>
                             <option value="image">Image</option>
                             <option value="Infographics">Infographics</option>
                             <option value="Live">Live</option>
-                        </select>
+                        </select>*@
                     </div>
                     <hr />
                 }

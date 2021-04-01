@@ -35,7 +35,10 @@
             get
             {
                 var arrSavedPosts = new List<SavePost>();
-                if (SavedPosts == null) return arrSavedPosts;
+                if (SavedPosts == null)
+                {
+                    return arrSavedPosts;
+                } 
                 arrSavedPosts = JsonConvert.DeserializeObject<List<SavePost>>(SavedPosts);
                 return arrSavedPosts;
             }

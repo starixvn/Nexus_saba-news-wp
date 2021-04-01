@@ -31,11 +31,11 @@
 				}
 				else if(Model.Photo.ToLower().Contains("https://") || Model.Photo.ToLower().Contains("http://"))
 				{
-					<div class="profile__avatar"><img src="@Model.Photo" width="300" /></div>
+					<div class="profile__avatar"><img src="@Model.Photo" width="300" alt="@ViewResources.LoadingAvatar" /></div>
 				}
 				else 
 				{
-					<div class="profile__avatar"><img src="/upload/@Model.Photo" width="300" /></div>
+					<div class="profile__avatar"><img src="/upload/@Model.Photo" width="300" alt="@ViewResources.LoadingAvatar" /></div>
 				}
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
@@ -88,8 +88,8 @@
 								<div class="title">Đổi email</div>
 								<input type="password" name="password" value="" class="input-edit" placeholder="Nhập mật khẩu" />
 								<input type="email" name="email" value="" class="input-edit" placeholder="Nhập email" />
-								<button class="btn-submit-edit">Lưu lại</button>
-								<span class="close-edit">close</span>
+								<button class="btn-submit-edit">@ViewResources.Save</button>
+								<span class="close-edit">@ViewResources.Close</span>
 							</div>
 						</div>
 					</div>
@@ -141,14 +141,14 @@
 									<div class="title">@ViewResources.ChangePassword</div>
                                     <div class="input-form">
                                         <input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
-                                        <p class="error error-password old-password-length-error">Mật khẩu cũ tối thiểu 6 kí tự</p>
+                                        <p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
                                         <p class="error error-password old-password-error"></p>
                                         <a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
                                         <a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
                                     </div>
                                     <div class="input-form">
                                         <input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
-                                        <p class="error error-password new-password-length-error">Mật khẩu mới tối thiểu 6 kí tự</p>
+                                        <p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
                                         <a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
                                         <a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
                                     </div>
@@ -183,7 +183,7 @@
 							<div class="box-edit-form" id="form_update_name">
 								<div class="title">Họ và tên</div>
 								<input type="text" name="name" value="" class="input-edit" placeholder="Nhập họ và tên" />
-								<p class="error name-error">Vui lòng nhập tên</p>
+								<p class="error name-error">@ViewResources.ValidateName</p>
 								<button class="btn-submit-edit btn-save-name btn-disabled" disabled data-name="@Model.Name">@ViewResources.Save</button>
 								<span class="close-edit">@ViewResources.Close</span>
 							</div>
@@ -233,7 +233,7 @@
 									</div>
 								</form>
 								<button class="btn-submit-edit btn-save-gender btn-@disabled" @disabled data-gender="@Model.Gender">@ViewResources.Save</button>
-								<p class="error gender-error">Vui lòng chọn giới tính</p>
+								<p class="error gender-error">@ViewResources.ValidateGender</p>
 								<span class="close-edit">@ViewResources.Close</span>
 							</div>
 							<p class="commitment">@ViewResources.SabasportsCommitmentSecureInfo</p>

@@ -61,12 +61,6 @@
         [Route("/comments/create")]
         public async Task<IActionResult> CreateComment(int postID, int parent, string commentContent)
         {
-            var _IP = "RemoteIp1: "+ accessor.HttpContext.Connection.RemoteIpAddress + 
-                " - RemoteIp2: " + Request.HttpContext.Connection.RemoteIpAddress +
-                " - RemoteIp3: " + HttpContext.Connection.RemoteIpAddress + 
-                " - LocalIpAddress:" + Request.HttpContext.Connection.LocalIpAddress;
-           
-
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated) {
                 return Json(new { isSuccessful = false });
@@ -89,7 +83,7 @@
             };
             var result = await commentService.CreateCommentAsync(model);
             model.CommentID = result;
-            return Json(new { isSuccessful = result != 0, comment = model, IP = _IP });
+            return Json(new { isSuccessful = result != 0, comment = model });
         }
 
         [HttpPost]

@@ -136,7 +136,6 @@
                 case "gender":
                     user.Gender = value;
                     break;
-                default: break;
             };
 
             var commandResult =  await profileService.UpdateUserInfoAsync(user);
@@ -162,6 +161,10 @@
             }
             user.Password = BCrypt.HashPassword(newPassword);
             var commandResult = await profileService.UpdateUserInfoAsync(user);
+            if (commandResult.IsSuccessful)
+            {
+                sessionService.User = user;
+            }
             return Json(commandResult);
 
         }
@@ -191,6 +194,7 @@
             if (commandResult.IsSuccessful)
             {
                 linkPhoto = "upload/" + filename;
+                sessionService.User = user;
             }
             return Json( new { commandResult, linkPhoto });
         }
@@ -199,7 +203,9 @@
         private static string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
-                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
+            {
+                filename = filename.Substring(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
+            }
 
             return filename;
         }

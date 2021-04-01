@@ -72,15 +72,6 @@
                 }
                 string url = Url.Action("ConfirmEmail", "Auth", new { UserId = model.Id, token }, Request.Scheme);
                 await authService.SendMailConfirmationAsync(model.Email, url);
-                //await DoLoginAsync(model.Name, model.Email);
-                //sessionService.User = new UserSession
-                //{
-                //    Id = model.Id,
-                //    Email = model.Email,
-                //    Name = model.Name,
-                //    EmailConfirmed = false,
-                //    LoginType = LoginType.Internal
-                //};
             }
             return Json(commandResult);
         }
