@@ -322,7 +322,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 margin-right: .5rem;
                 display: flex;
                 align-items: center;
-                justify-content: center; }
+                justify-content: center;
+                overflow: hidden; }
+                .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user img {
+                  object-fit: cover;
+                  width: 100%;
+                  height: 100%; }
               .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .item {
                 padding: 0; }
             .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth {
