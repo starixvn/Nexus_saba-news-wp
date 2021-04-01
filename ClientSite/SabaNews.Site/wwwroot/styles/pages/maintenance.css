@@ -202,11 +202,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu {
           padding: 0;
-          display: flex;
-          align-items: center;
           flex-wrap: wrap;
           justify-content: space-between;
-          flex-direction: row;
           position: relative; } }
       .header .top-header .group-menu .logo {
         width: 10rem;
@@ -293,10 +290,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           @media screen and (max-width: 1024px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               margin: 0;
-              display: flex;
-              align-items: center;
-              flex-wrap: nowrap;
-              justify-content: flex-start;
               flex-direction: column;
               height: 100%;
               z-index: 999;
@@ -306,11 +299,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               -webkit-overflow-scrolling: touch; } }
           @media only screen and (min-width: 1024px) and (max-width: 1366px) {
             .header .top-header .group-menu .nav-menu .main-menu {
-              display: block;
               display: flex;
-              align-items: center;
-              flex-wrap: nowrap;
-              justify-content: flex-start;
               flex-direction: inherit;
               height: 4rem !important;
               padding-bottom: 0; } }

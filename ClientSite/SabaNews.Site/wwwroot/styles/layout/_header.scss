@@ -28,10 +28,13 @@
 
             @include tableMobile {
                 padding: 0;
-                @include flex(center,wrap, space-between,row);
+                flex-wrap: wrap;
+                justify-content: space-between;
                 position: relative;
             }
 
+                flex-wrap: nowrap;
+                justify-content: flex-start;
             .logo {
                 width: 12rem;
                 margin-right: 2.4rem;
@@ -136,7 +139,7 @@
 
                     @include tableMobile {
                         margin: 0;
-                        @include flex(center, nowrap, flex-start,column);
+                        flex-direction: column;
                         height: 100%;
                         z-index: 999;
                         display: none;
@@ -146,8 +149,8 @@
                     }
 
                     @include landscapeTablet {
-                        display: block;
-                        @include flex(center, nowrap, flex-start,inherit);
+                        display: flex;
+                        flex-direction: inherit;
                         height: 4rem !important;
                         padding-bottom: 0;
                     }
@@ -176,6 +179,7 @@
                                 width: 100%
                             }
                         }
+
                         .auth-info {
                             position: absolute;
                             display: none;
@@ -316,7 +320,7 @@
                                     font-weight: normal;
                                     transition: color .2s ease;
                                     font-family: $font-title;
-                                   height: 3.9rem;
+                                    height: 3.9rem;
                                     display: flex;
                                     align-items: center;
 
