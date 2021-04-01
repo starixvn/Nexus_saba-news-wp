@@ -160,30 +160,32 @@
                         position: relative;
 
                         &:hover {
-                            .auth-logout {
-                                display: block
-                            }
-
-                            .auth-info {
-                                display: block
+                            .box-auth {
+                                display: block;
                             }
                         }
 
-                        .auth-logout {
-                            position: absolute;
+                        .box-auth {
                             display: none;
-                            top: 7rem;
+                            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+                            list-style: none;
+                            padding: 1.2rem;
+                            background: #fffdf9;
+                            position: absolute;
+                            width: 18rem;
+                            top: 7.5rem;
 
-                            .item {
-                                padding: 1.7rem 0;
-                                width: 100%
+                            li {
+                                margin-bottom: 1rem;
+
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+
+                                .item {
+                                    padding: 0;
+                                }
                             }
-                        }
-
-                        .auth-info {
-                            position: absolute;
-                            display: none;
-                            top: 9rem;
                         }
                     }
 
@@ -219,8 +221,6 @@
                                 border: none;
                             }
                         }
-
-
 
                         .item {
                             text-decoration: none;
