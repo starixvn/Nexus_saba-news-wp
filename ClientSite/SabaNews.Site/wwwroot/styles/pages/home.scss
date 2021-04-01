@@ -29,6 +29,7 @@
     }
     // block-hot-news
     padding-top: 6rem;
+
     .block-hot-news {
 
         .block__content {
@@ -93,7 +94,7 @@
                     display: grid;
                     grid-template-columns: 14rem 1fr;
                     grid-gap: 8px;
-                    border-bottom: 1px solid #e5e5e5;
+                    border-bottom: 1px solid $separator-color;
                     padding-bottom: 1.2rem;
                     margin-bottom: 1.2rem;
 
@@ -110,7 +111,7 @@
                     .title {
                         grid-column: 1/3;
                         grid-row: 1;
-                        color: #333;
+                        color: $color-title;
                         font-weight: bold;
                         font-size: 1.6rem;
                         letter-spacing: -.02rem;
@@ -128,7 +129,7 @@
 
                     .datetime {
                         font-size: 1.2rem;
-                        color: #828282;
+                        color: $color-datetime;
                         line-height: 1.8rem;
                     }
 
@@ -148,7 +149,7 @@
             max-height: 80px;
 
             img {
-                border: 1px solid #e0e0e0;
+                border: 1px solid $border-calendar;
                 max-width: 100%;
                 height: auto;
             }
@@ -164,7 +165,7 @@
             text-align: center;
 
             img {
-                border: 1px solid #e0e0e0;
+                border: 1px solid $border-calendar;
                 max-width : 100%;
             }
         }
@@ -181,7 +182,7 @@
             max-height: 80px;
 
             img {
-                border: 1px solid #e0e0e0;
+                border: 1px solid $border-calendar;
                 max-width: 100%;
                 height: auto;
             }
@@ -197,7 +198,7 @@
             text-align: center;
 
             img {
-                border: 1px solid #e0e0e0;
+                border: 1px solid $border-calendar;
             }
         }
 
@@ -234,7 +235,7 @@
             @include grid(63% 1fr, none, #{$column-gap} 2.4rem);
 
             @include tableMobile {
-                @include grid(50% 1fr, none, #{$column-gap} 2.4rem);
+                grid-template-columns: 50% 1fr;
             }
 
             @include Mobile {
@@ -248,7 +249,7 @@
             @include grid(71rem 1fr, 46rem, 1.6rem);
 
             @include tableMobile {
-                @include grid(48.7rem 1fr, 46rem, #{$column-gap});
+                grid-template-columns: 48.7rem 1fr;
             }
 
             @include landscapeTablet {
@@ -430,7 +431,7 @@
             @include grid(repeat(3, 1fr), 1fr, #{$column-gap});
 
             @include tableMobile {
-                @include grid(repeat(3, 1fr), 1fr, #{$column-gap-tablet});
+                display : grid;
             }
 
             @include Mobile {
@@ -660,11 +661,11 @@
             @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap});
 
             @include tableMobile {
-                @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
+                grid-gap : $column-gap-tablet;
             }
 
             @include Mobile {
-                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+                 grid-gap : $column-gap-mobile
             }
 
             .card-vertical {
