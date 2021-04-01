@@ -28,6 +28,7 @@
             if (isAuthenticated)
             {
                 ViewBag.DisplayName = sessionService.User.Name;
+                ViewBag.Photo = sessionService.User.Photo;
             }
             return View(model);
         }

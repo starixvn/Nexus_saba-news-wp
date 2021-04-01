@@ -45,10 +45,21 @@
                     <li class="menu-item auth-input">
                         @if (ViewBag.IsAuthenticated)
                         {
-                            <ul class="auth-provider">
-                                <li class="avatar-user">J</li>
-                                <li class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></li>
-                            </ul>
+						<ul class="auth-provider">
+							@if (ViewBag.Photo == null)
+							{
+								<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+							}
+							else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+							{
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+							}
+							else
+							{
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+							}
+							<li class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></li>
+						</ul>
                             <ul class="box-auth">
                                 <li class="auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
                                 <li class="auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>

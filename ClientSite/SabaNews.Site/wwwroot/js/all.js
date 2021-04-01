@@ -81,6 +81,13 @@ $(document).ready(function () {
             }
         });
     }
+
+    $('img.profile_image').on('error', function () {
+        if (typeof $(this).data('name') !== "undefined") {
+            $(this).parent().html($(this).data('name'));
+            $(this).remove();
+        }
+    });
     
 
     $(window).click(function (e) {

@@ -301,23 +301,12 @@
         return isValid;
     }
 
-    function validate_image() {
-        $('img.profile_image').on('error', function () {
-            if (typeof $(this).data('name') !== "undefined") {
-                $(this).parent().html($(this).data('name'));
-                $(this).remove();
-            }
-        });
-    }
-
-   
 
     function init() {
         update_saved_post();
         validate();
         update_profile_info();
         update_photo();
-        validate_image();
     }
 
     return {
