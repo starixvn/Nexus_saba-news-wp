@@ -426,6 +426,23 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             position: relative; }
             .header .top-header .group-menu .nav-menu .main-menu .auth-input:hover .box-auth {
               display: block; }
+            .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider {
+              list-style: none;
+              display: flex;
+              align-items: center;
+              padding: 1.6rem 1.2rem; }
+              .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user {
+                width: 2.5rem;
+                height: 2.5rem;
+                background: #C4C4C4;
+                color: #fff;
+                border-radius: 50%;
+                margin-right: .5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center; }
+              .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .item {
+                padding: 0; }
             .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth {
               display: none;
               box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
@@ -434,7 +451,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               background: #fffdf9;
               position: absolute;
               width: 18rem;
-              top: 7.5rem; }
+              top: 5.5rem; }
               .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth li {
                 margin-bottom: 1rem; }
                 .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth li:last-child {
