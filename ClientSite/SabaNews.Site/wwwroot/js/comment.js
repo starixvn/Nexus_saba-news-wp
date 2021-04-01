@@ -153,10 +153,14 @@
                         var html = "";
                         var liked = comment.isLiked ? 'unlike' : '';
                         var likeCount = comment.commentLikeCount > 0 ? comment.commentLikeCount : "";
+                        var photo = '<span class="user_avatar">' + comment.commentAuthor.substr(0, 1) + '</span>';
+                        if (photo.photo !== null) {
+                            photo = '<span class="user_avatar"><img src="/upload/' + comment.photo + '" alt="Alternate Text" width="50" /></span>'
+                        }
                         html += '<div class="comment_item">';
                         html += '<div class="content_comment">';
                         html += '<p class="full_content">';
-                        html += '<span class="user_avatar"></span>';
+                        html += photo;
                         html += '<span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent;
                         html += '</p>';
                         html += '<p class="block_like_web width_common">';

@@ -85,6 +85,7 @@
                 CommentAgent = Request.Headers["User-Agent"].ToString(),
                 CommentParent = parent,
                 UserID = sessionService.User.Id,
+                Photo = sessionService.User.Photo
             };
             var result = await commentService.CreateCommentAsync(model);
             model.CommentID = result;

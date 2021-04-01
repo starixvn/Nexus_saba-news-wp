@@ -19,5 +19,6 @@ namespace SabaNews.Models.Comment
         public long CommentParent { get; set; }
         public long UserID { get; set; }
         public long CommentID { get; set; }
+        public string Photo { get; set; }
     }
 }
