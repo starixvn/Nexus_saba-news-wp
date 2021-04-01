@@ -181,6 +181,7 @@
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename ;
+            var filePath = GetPathAndFilename(filename);
             using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
                 await file.CopyToAsync(output);
 
@@ -196,7 +197,7 @@
                 linkPhoto = "upload/" + filename;
                 sessionService.User = user;
             }
-            return Json( new { commandResult, linkPhoto });
+            return Json( new { commandResult, linkPhoto, filePath });
         }
 
 
