@@ -1260,12 +1260,8 @@ button {
     position: relative;
     overflow: hidden; }
     .comment-post .list_comments .user_avatar img {
-      position: absolute;
-      top: 50%;
-      object-fit: cover;
       height: 100%;
-      right: 50%;
-      transform: translate(50%, -50%); }
+      object-fit: cover; }
   .comment-post .list_comments .block_like_web a {
     color: #757575;
     margin-right: 2rem;

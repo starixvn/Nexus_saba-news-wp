@@ -113,13 +113,10 @@
             color: $color-fff;
             position: relative;
             overflow: hidden;
+
             img {
-                position: absolute;
-                top: 50%;
-                object-fit: cover;
                 height: 100%;
-                right: 50%;
-                transform: translate(50%,-50%);
+                object-fit: cover;
             }
         }
 
