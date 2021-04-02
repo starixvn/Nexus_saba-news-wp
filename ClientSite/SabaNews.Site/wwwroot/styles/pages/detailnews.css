@@ -1285,8 +1285,13 @@ button {
           margin-top: 2rem;
           padding-left: 1rem;
           border-left: 1px solid #e5e5e5; }
-          .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .sub-comment {
-            width: 90%; }
+          .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .child-comment {
+            display: flex;
+            margin-bottom: 2rem; }
+            .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .child-comment:last-child {
+              margin-bottom: 0; }
+            .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .child-comment .sub-comment {
+              width: 90%; }
           .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .controls {
             margin: 1rem 0 0 0; }
             .comment-post .list_comments .comment_item .group-comment .user-comment .group-sub-comment .controls .toggle-like a {

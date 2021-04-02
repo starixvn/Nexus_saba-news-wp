@@ -149,9 +149,15 @@
                         margin-top: 2rem;
                         padding-left: 1rem;
                         border-left: 1px solid $separator-color;
-                        display: flex;
-                        .sub-comment {
-                            width: 90%;
+                        .child-comment {
+                            display: flex;
+                            margin-bottom : 2rem;
+                            &:last-child{
+                                margin-bottom : 0;
+                            }
+                            .sub-comment {
+                                width: 90%;
+                            }
                         }
 
                         .controls {
