@@ -94,33 +94,108 @@
         .comment_item {
             margin-top: 2rem;
 
-            .avatar {
-                margin: 0 1rem 0 0;
-                float: left;
-                width: 3.6rem;
-                height: 3.6rem;
-                background: $separator-color;
-                line-height: 3.6rem;
-                text-align: center;
-                color: $color-fff;
-                font-weight: 700;
-                text-transform: uppercase;
-                font-size: 1.8rem;
-                overflow: hidden;
-                border-radius: 50%;
-            }
+            .group-comment {
+                @include flex(flex-start,nowrap, flex-start);
 
-            .user-comment {
-                .nick-name {
-                    margin-right: .5rem;
-                    a {
-                        color: #04416D;
-                        text-decoration: none;
-                        font-weight : bold;
+                .avatar {
+                    margin: 0 1rem 0 0;
+                    width: 3.6rem;
+                    height: 3.6rem;
+                    background: $separator-color;
+                    line-height: 3.6rem;
+                    text-align: center;
+                    color: $color-fff;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    font-size: 1.8rem;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    img{
+                        width : 100%;
+                        height : 100%;
+                        object-fit : cover;
+                    }
+                }
+
+                .user-comment {
+                    width: 90%;
+
+                    .controls-comment {
+                        margin-right: 2rem;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            color: $color-input;
+                        }
+                    }
+
+                    .nick-name {
+                        margin-right: .5rem;
+
+                        a {
+                            color: #04416D;
+                            text-decoration: none;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .sub-content {
+                        margin-top: 2rem;
+                        padding-left: 1rem;
+                        border-left: 1px solid $separator-color;
+                    }
+
+                    .controls {
+                        margin: 1rem 0 0 0;
+
+                        .toggle-like {
+                            a {
+                                display: inline-flex;
+                                align-items: center;
+                                text-decoration: none;
+
+                                .icon-like {
+                                    margin-left: .5rem;
+
+                                    &:before {
+                                        //color: #076DB6;
+                                        font-size: 1.6rem
+                                    }
+                                }
+                            }
+                        }
+
+                        .active-like {
+                            .icon-like {
+                                &:before {
+                                    color: #076DB6;
+                                }
+                            }
+                        }
+                    }
+
+                    .controls-reply {
+                        a {
+                            color: #076db6;
+                            font-size: 1.3rem;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
         }
+
+
+
+
+
+
+
+
 
         .nickname {
             color: #04416d;
