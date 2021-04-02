@@ -326,7 +326,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user {
                 width: 2.5rem;
                 height: 2.5rem;
-                background: #C4C4C4;
+                background: #e5e5e5;
+                font-weight: bold;
                 color: #fff;
                 border-radius: 50%;
                 margin-right: .5rem;
@@ -1280,7 +1281,7 @@ button {
             color: #04416D;
             text-decoration: none;
             font-weight: bold; }
-        .comment-post .list_comments .comment_item .group-comment .user-comment .sub-content {
+        .comment-post .list_comments .comment_item .group-comment .user-comment .sub-comment {
           margin-top: 2rem;
           padding-left: 1rem;
           border-left: 1px solid #e5e5e5; }
@@ -1300,91 +1301,6 @@ button {
           color: #076db6;
           font-size: 1.3rem;
           font-weight: bold; }
-  .comment-post .list_comments .nickname {
-    color: #04416d;
-    padding-right: 5px;
-    font-weight: bold; }
-  .comment-post .list_comments .user_avatar {
-    width: 3.6rem;
-    height: 3.6rem;
-    display: inline-flex;
-    background: #828282;
-    vertical-align: middle;
-    border-radius: 50%;
-    margin-right: .5rem;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    position: relative;
-    overflow: hidden; }
-    .comment-post .list_comments .user_avatar img {
-      height: 100%;
-      object-fit: cover; }
-  .comment-post .list_comments .block_like_web a {
-    color: #757575;
-    margin-right: 2rem;
-    text-decoration: none; }
-  .comment-post .list_comments .block_like_web .ic-like {
-    width: 1.6rem;
-    height: 1.6rem;
-    background: url(../../images/favicon/Thumb-Up-Normal.svg) no-repeat 0 0;
-    display: inline-block;
-    vertical-align: middle; }
-    .comment-post .list_comments .block_like_web .ic-like:hover {
-      background: url(../../images/favicon/Thumb-Up-Active.svg) no-repeat 0 0; }
-  .comment-post .list_comments .block_like_web .unlike .ic-like {
-    background: url(../../images/favicon/Thumb-Up-Active.svg) no-repeat 0 0; }
-  .comment-post .list_comments .sub_comment {
-    padding: 0 0 0 5.6rem;
-    width: 100%;
-    position: relative; }
-    .comment-post .list_comments .sub_comment:before {
-      content: '';
-      background: #e5e5e5;
-      width: .1rem;
-      height: calc(100% - 1rem);
-      position: absolute;
-      top: .6rem;
-      left: 4.6rem; }
-  .comment-post .list_comments .count-reply a {
-    color: #076DB6;
-    font-size: 1.3rem;
-    padding-left: 2rem;
-    font-weight: 700;
-    background: url(../../images/favicon/Reply.svg) no-repeat left center; }
-  .comment-post .list_comments .pagination {
-    float: right;
-    display: inline-block; }
-    .comment-post .list_comments .pagination a {
-      color: black;
-      float: left;
-      padding: .8rem 1.6rem;
-      text-decoration: none;
-      transition: background-color .3s;
-      border: 1px solid #ddd; }
-      .comment-post .list_comments .pagination a:hover:not(.active) {
-        background-color: #ddd; }
-    .comment-post .list_comments .pagination .active {
-      background-color: #4CAF50;
-      color: #fff;
-      border: 1px solid #4CAF50; }
-    .comment-post .list_comments .pagination .btn-page {
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      padding: 0;
-      margin: 0 .5rem;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #222;
-      min-width: 4rem;
-      max-width: 100%;
-      transition: width 0.25s;
-      float: left;
-      width: 2rem;
-      height: 4rem;
-      border-radius: 3px;
-      border: 1px solid #757575; }
 
 /*:root {
     --column : 12;

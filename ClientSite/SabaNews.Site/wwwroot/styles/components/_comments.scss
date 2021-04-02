@@ -143,7 +143,7 @@
                         }
                     }
 
-                    .sub-content {
+                    .sub-comment {
                         margin-top: 2rem;
                         padding-left: 1rem;
                         border-left: 1px solid $separator-color;
@@ -186,135 +186,6 @@
                         }
                     }
                 }
-            }
-        }
-
-
-
-
-
-
-
-
-
-        .nickname {
-            color: #04416d;
-            padding-right: 5px;
-            font-weight: bold;
-        }
-
-        .user_avatar {
-            width: 3.6rem;
-            height: 3.6rem;
-            display: inline-flex;
-            background: $color-datetime;
-            vertical-align: middle;
-            border-radius: 50%;
-            margin-right: .5rem;
-            align-items: center;
-            justify-content: center;
-            color: $color-fff;
-            position: relative;
-            overflow: hidden;
-
-            img {
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-
-        .block_like_web {
-            a {
-                color: #757575;
-                margin-right: 2rem;
-                text-decoration: none;
-            }
-
-            .ic-like {
-                width: 1.6rem;
-                height: 1.6rem;
-                background: url(../../images/favicon/Thumb-Up-Normal.svg) no-repeat 0 0;
-                display: inline-block;
-                vertical-align: middle;
-
-                &:hover {
-                    background: url(../../images/favicon/Thumb-Up-Active.svg) no-repeat 0 0;
-                }
-            }
-
-            .unlike {
-                .ic-like {
-                    background: url(../../images/favicon/Thumb-Up-Active.svg) no-repeat 0 0;
-                }
-            }
-        }
-
-        .sub_comment {
-            padding: 0 0 0 5.6rem;
-            width: 100%;
-            position: relative;
-
-            &:before {
-                content: '';
-                background: $separator-color;
-                width: .1rem;
-                height: calc(100% - 1rem);
-                position: absolute;
-                top: .6rem;
-                left: 4.6rem;
-            }
-        }
-
-        .count-reply {
-            a {
-                color: $link-icon;
-                font-size: 1.3rem;
-                padding-left: 2rem;
-                font-weight: 700;
-                background: url(../../images/favicon/Reply.svg) no-repeat left center;
-            }
-        }
-
-        .pagination {
-            float: right;
-            display: inline-block;
-
-            a {
-                color: black;
-                float: left;
-                padding: .8rem 1.6rem;
-                text-decoration: none;
-                transition: background-color .3s;
-                border: 1px solid #ddd;
-
-                &:hover:not(.active) {
-                    background-color: #ddd;
-                }
-            }
-
-            .active {
-                background-color: #4CAF50;
-                color: $color-fff;
-                border: 1px solid #4CAF50;
-            }
-
-            .btn-page {
-                -moz-appearance: none;
-                -webkit-appearance: none;
-                padding: 0;
-                margin: 0 .5rem;
-                text-align: center;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #222;
-                min-width: 4rem;
-                max-width: 100%;
-                transition: width 0.25s;
-                float: left;
-                width: 2rem;
-                height: 4rem;
-                border-radius: 3px;
-                border: 1px solid #757575;
             }
         }
     }

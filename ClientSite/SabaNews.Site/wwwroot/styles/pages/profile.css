@@ -434,7 +434,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user {
                 width: 2.5rem;
                 height: 2.5rem;
-                background: #C4C4C4;
+                background: #e5e5e5;
+                font-weight: bold;
                 color: #fff;
                 border-radius: 50%;
                 margin-right: .5rem;
