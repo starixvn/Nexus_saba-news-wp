@@ -23,6 +23,27 @@
                 }
             });
         });
+
+        $('.return-back').click(function () {
+            history.go(-1);
+        });
+
+        $('.copy-clipboard').on('click', function () {
+            var self = $(this);
+            var dummy = document.createElement('input'),
+                text = window.location.href;
+
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            $(this).parent().find('.tip').show();
+            setTimeout(function () {
+                self.parent().find('.tip').hide();
+            }, 1000);
+           
+        });
     }
 
 

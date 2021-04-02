@@ -25,6 +25,34 @@
 }
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
+    <style>
+	    .tip {
+		    position: absolute;
+		    top: -30px;
+		    left: 10px;
+		    transform: translateX(-50%);
+		    height: 24px;
+		    line-height: 24px;
+		    background: #17191A;
+		    color: #fff !important;
+		    font-size: 12px !important;
+		    text-decoration: none !important;
+		    white-space: nowrap;
+		    padding: 0 10px;
+		    border-radius: 3px;
+            display: none;
+	    }
+
+		.item-social {
+		    position:relative;
+        }
+    </style>
+}
+
+
+
+@{
+    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
 }
 
 <section class="main">
@@ -32,7 +60,7 @@
         <div class="main-social fixed-social">
             <ul class="social">
                 <li class="item-social">
-                    <a href=""
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                        data-count="facebook" target="_blank"
                        rel="nofollow"
                        class="item intent facebook">
@@ -40,9 +68,9 @@
                     </a>
                 </li>
                 <li class="item-social">
-                    <a href="#"
+                    <a href="javascript:;"
                        rel="nofollow"
-                       class="item intent tele">
+                       class="item intent copy-clipboard">
                         <i class="icon-social icon-link"></i>
                     </a>
                 </li>
@@ -53,17 +81,21 @@
                         </svg>
                     </a>
                 </li>
+				<li class="item-social">
+					<a href="#comment"
+					   class="item intent">
+						<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-comment">
+							<path d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z" stroke="#999999" stroke-width="2" />
+						</svg>
+					</a>
+					@if(Model.SinglePost.CommentCount > 0)
+                    {
+					    <p>@Model.SinglePost.CommentCount</p>
+                    }
+				</li>
                 <li class="item-social">
-                    <a href="#"
-                       class="item intent">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-comment">
-                            <path d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z" stroke="#999999" stroke-width="2" />
-                        </svg>
-                    </a>
-                </li>
-                <li class="item-social">
-                    <a href="#"
-                       class="item intent">
+                    <a href="javascript:;"
+                       class="item intent return-back">
                         <i class="icon-social icon-back"></i>
                     </a>
                 </li>
@@ -104,9 +136,7 @@
                 }
             </ul>
 
-            @{
-                var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
-            }
+           
             @if (isMobile || isTablet)
             {
                 <div class="share_button" style=""><button class="superwebshare_prompt"><span>Chia sẻ</span></button></div>
@@ -114,16 +144,13 @@
             else
             {
 
-                    <li class="item-social">@ViewResources.Share</li>
-
-
 
 
                 <div class="main-social">
                     <ul class="social left-social">
                         <li class="item-social">
-                            <a href="#"
-                               class="item intent">
+                            <a href="javascript:;"
+                               class="item intent return-back" >
                                 <i class="icon-social icon-back"></i>
                             </a>
                         </li>
@@ -152,13 +179,14 @@
                                 <i class="icon-social icon-email"></i>
                             </a>
                         </li>
-                        <li class="item-social">
-                            <a href="#"
-                               rel="nofollow"
-                               class="item intent tele">
-                                <i class="icon-social icon-link"></i>
-                            </a>
-                        </li>
+						<li class="item-social">
+							<a href="javascript:;"
+							   rel="nofollow"
+							   class="item intent copy-clipboard">
+								<i class="icon-social icon-link"></i>
+							</a>
+							<span class="tip">Copy clipboard thành công</span>
+						</li>
                     </ul>
                 </div>
             }
