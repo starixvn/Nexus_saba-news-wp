@@ -2,49 +2,58 @@
 
 <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-login">
             <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <nav>
-                    <ul class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
-                        <li class="nav-item nav-link">
-                            <a id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-selected="true">@ViewResources.Login</a>
+                    <ul class="nav-login nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+                        <li>
+                            <a class="active" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login" aria-selected="true">@ViewResources.Login</a>
                         </li>
-                        <li class="nav-item nav-link">
+                        <li>
                             <a id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register" aria-selected="false">@ViewResources.Register</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
-                        <div class="row mb-3 mt-3">
-                            <div class="col-7">
-                                <p>@ViewResources.LoginWithEmail</p>
+                        <div class="login-tab">
+                            <div class="group-tab">
+                                <h3 class="headig-modal">@ViewResources.LoginWithEmail</h3>
                                 <form id="form-login">
                                     <p class="error summary-eror"></p>
-                                    <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="@ViewResources.Email">
+                                    <div class="form-modal">
+                                        <input type="email" name="email" class="input-form" placeholder="@ViewResources.Email">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" class="form-control" placeholder="@ViewResources.Password">
+                                    <div class="form-modal">
+                                        <input type="password" name="password" class="input-form" placeholder="@ViewResources.Password">
+                                        <span class="toggle-pass">
+                                            <i class="icon-form icon-show"></i>
+                                            <i class="icon-form icon-hide"></i>
+                                        </span>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">@ViewResources.Login</button>
+                                    <button type="submit" class="btn-login">@ViewResources.Login</button>
+                                    <a href="javascript:;" id="forgot-password">@ViewResources.ForgotPassword</a>
                                 </form>
-                                <a href="javascript:;" id="forgot-password">@ViewResources.ForgotPassword</a>
                             </div>
-                            <div class="col-5">
-                                Social login
-                                <a class="btn btn-danger social-login" href="ExternalAuthentication/Login?Provider=@LoginType.Google&returnUrl=">Google</a>
-                                <a class="btn btn-primary social-login" href="ExternalAuthentication/Login?Provider=@LoginType.Facebook&returnUrl=">Facebook</a>
+                            <div class="login-fb-google">
+                                <h3 class="headig-modal">Đăng nhập với</h3>
+                                <a class="social-login login-google" href="ExternalAuthentication/Login?Provider=@LoginType.Google&returnUrl="><i class="icon-social icon-detail_facebook"></i> Google</a>
+                                <a class="social-login login-facebook" href="ExternalAuthentication/Login?Provider=@LoginType.Facebook&returnUrl="><i class="icon-social icon-detail_facebook"></i> Facebook</a>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
                     <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
-                        <div class="row mb-3 mt-3">
-                            <div class="col-12">
-                                <p>@ViewResources.Register</p>
+                        <div class="register-tab">
+                            <div class="group-tab">
+                                <h3 class="headig-modal">@ViewResources.Register</h3>
                                 <form id="form-register">
                                     <p class="error summary-eror"></p>
                                     <div class="form-group">
