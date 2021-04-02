@@ -57,7 +57,8 @@
         $('.view_all_reply').on('click', function () {
             var self = $(this)
             var commentID = self.data('cmtid');
-            self.parent().parent().find('.sub_comment').html('');
+            self.parent().parent().parent().find('.sub_section_comment').html('');
+            console.log(commentID, postID);
             $.ajax({
                 type: "GET",
                 url: "/comments/getchildren",
@@ -70,7 +71,7 @@
                     $.each(data, function (i, val) {
                         html += RenderSubComment(val);
                     });
-                    self.parent().parent().find('.sub_comment').append(html);
+                    self.parent().parent().parent().find('.sub_section_comment').append(html);
                     validate_image();
                 }
             });
@@ -281,20 +282,42 @@
             }
             
         }
-        html += '<div class="sub_comment_item comment_item">';
-        html += '<p class="full_content">';
-        html += photo
-        html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
-        html += '</p>';
-        html += '<p class="block_like_web width_common">';
-        html += '<a href="javascript:;" class="link-like-comment  ' + liked + '" data-commentid="' + val.commentID + '">';
-        html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
-        html += '<i class="ic ic-like" ></i >'
-        html += '</a > ';
-        html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent + '">Trả lời</a>';
-        html += '<span class="time">' + commentTime + '</span>';
+
+        //<div class="sub-comment">
+        //    <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
+        //    <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
+        //    <p class="controls">
+        //        <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
+        //        <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
+        //        <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
+        //        <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
+        //    </p>
+        //</div>
+        html += '<div class="sub-comment">';
+        html += '<span class="nick-name"><a href="javascript:;">' + val.commentAuthor + '</a></span>';
+        html += '<span class="txt-comment">'+ val.commentContent +'</span>';
+        html += '<p class="controls">';
+        html += '<span class="controls-comment toggle-like"><a href="javascript:;">' + likeCount + ' <i class="icon-like"></i></a></span>';
+        html += '<span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>';
+        html += '<span class="controls-comment time-comment"><a href="javascript:;">' + commentTime + '</a></span>';
         html += '</p>';
         html += '</div>';
+
+
+        //html += '<div class="sub_comment_item comment_item">';
+        //html += '<p class="full_content">';
+        //html += photo
+        //html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
+        //html += '</p>';
+        //html += '<p class="block_like_web width_common">';
+        //html += '<a href="javascript:;" class="link-like-comment  ' + liked + '" data-commentid="' + val.commentID + '">';
+        //html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
+        //html += '<i class="ic ic-like" ></i >'
+        //html += '</a > ';
+        //html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent + '">Trả lời</a>';
+        //html += '<span class="time">' + commentTime + '</span>';
+        //html += '</p>';
+        //html += '</div>';
         return html;
     };
 
