@@ -23,32 +23,46 @@
 	@foreach (var comment in Model.CommentTemplate.Comments)
 	{
 	<div class="comment_item">
-		<div class="content_comment">
-			<p class="full_content">
-				@if (comment.Photo == null)
-				{
-					<span class="user_avatar">@comment.CommentAuthor.Substring(0, 1)</span>
-				}
-				else if(comment.Photo.ToLower().Contains("https://") || comment.Photo.ToLower().Contains("http://"))
-				{
-					<span class="user_avatar"><img class="profile_image" loading="lazy" src="@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
-				}
-				else 
-				{
-					<span class="user_avatar"><img class="profile_image" loading="lazy" src="~/upload/@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
-				}
-
-				<span class="nickname">@comment.CommentAuthor</span> @Html.Raw(comment.CommentContent)
-			</p>
-			<p class="block_like_web width_common">
-				<a href="javascript:;" class="link-like-comment @(comment.isLiked ? "unlike" : "")" data-commentid="@comment.CommentID">
-					<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>
-					<i class="ic ic-like"></i>
-				</a>
-				<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">@ViewResources.CommentReply</a>
-				<span class="time">@comment.CommentTime</span>
-			</p>
+		<div class="group-comment">
+            <div class="avatar">
+                <span>J</span>
+			</div>
+            <div class="user-comment">
+                <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
+                <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
+				<p class="controls-comment">
+                    <span class="toggle-like">5</span>
+				</p>
+			</div>
 		</div>
+
+
+
+
+		<p class="full_content">
+			@if (comment.Photo == null)
+			{
+				<span class="user_avatar">@comment.CommentAuthor.Substring(0, 1)</span>
+			}
+			else if(comment.Photo.ToLower().Contains("https://") || comment.Photo.ToLower().Contains("http://"))
+			{
+				<span class="user_avatar"><img class="profile_image" loading="lazy" src="@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+			}
+			else 
+			{
+				<span class="user_avatar"><img class="profile_image" loading="lazy" src="~/upload/@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+			}
+
+			<span class="nickname">@comment.CommentAuthor</span> @Html.Raw(comment.CommentContent)
+		</p>
+		<p class="block_like_web width_common">
+			<a href="javascript:;" class="link-like-comment @(comment.isLiked ? "unlike" : "")" data-commentid="@comment.CommentID">
+				<span class="total_like" href="javascript:;">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span>
+				<i class="ic ic-like"></i>
+			</a>
+			<a href="javascript:;" class="link_reply" data-id="@comment.CommentID" data-parent="@comment.CommentID">@ViewResources.CommentReply</a>
+			<span class="time">@comment.CommentTime</span>
+		</p>
 		<div class="sub_comment"></div>
 		@if (comment.CommentNumberChildren > 0)
 		{

@@ -1,4 +1,5 @@
 ﻿@import '../abstracts/variables';
+@import '../abstracts/_mixins.scss';
 .comment-post {
     padding: 2rem 0;
 
@@ -92,6 +93,33 @@
     .list_comments {
         .comment_item {
             margin-top: 2rem;
+
+            .avatar {
+                margin: 0 1rem 0 0;
+                float: left;
+                width: 3.6rem;
+                height: 3.6rem;
+                background: $separator-color;
+                line-height: 3.6rem;
+                text-align: center;
+                color: $color-fff;
+                font-weight: 700;
+                text-transform: uppercase;
+                font-size: 1.8rem;
+                overflow: hidden;
+                border-radius: 50%;
+            }
+
+            .user-comment {
+                .nick-name {
+                    margin-right: .5rem;
+                    a {
+                        color: #04416D;
+                        text-decoration: none;
+                        font-weight : bold;
+                    }
+                }
+            }
         }
 
         .nickname {

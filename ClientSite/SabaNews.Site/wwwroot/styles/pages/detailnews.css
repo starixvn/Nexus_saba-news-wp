@@ -1242,6 +1242,26 @@ button {
         background: #9f224e; }
   .comment-post .list_comments .comment_item {
     margin-top: 2rem; }
+    .comment-post .list_comments .comment_item .avatar {
+      margin: 0 1rem 0 0;
+      float: left;
+      width: 3.6rem;
+      height: 3.6rem;
+      background: #e5e5e5;
+      line-height: 3.6rem;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      overflow: hidden;
+      border-radius: 50%; }
+    .comment-post .list_comments .comment_item .user-comment .nick-name {
+      margin-right: .5rem; }
+      .comment-post .list_comments .comment_item .user-comment .nick-name a {
+        color: #04416D;
+        text-decoration: none;
+        font-weight: bold; }
   .comment-post .list_comments .nickname {
     color: #04416d;
     padding-right: 5px;
