@@ -119,13 +119,7 @@
                     }
                 }
 
-                .active-like {
-                    .icon-like {
-                        &:before {
-                            color: #076DB6;
-                        }
-                    }
-                }
+
 
                 .user-comment {
                     width: 90%;
@@ -173,22 +167,6 @@
 
                         .controls {
                             margin: 1rem 0 0 0;
-
-                            .toggle-like {
-                                a {
-                                    display: inline-flex;
-                                    align-items: center;
-                                    text-decoration: none;
-
-                                    .icon-like {
-                                        margin-left: .5rem;
-
-                                        &:before {
-                                            font-size: 1.6rem
-                                        }
-                                    }
-                                }
-                            }
                         }
 
                         .controls-reply {
@@ -198,6 +176,30 @@
                                 font-weight: bold;
                             }
                         }
+                    }
+                }
+            }
+
+            .toggle-like {
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    text-decoration: none;
+
+                    .icon-like {
+                        margin-left: .5rem;
+
+                        &:before {
+                            font-size: 1.6rem
+                        }
+                    }
+                }
+            }
+
+            .active-like {
+                .icon-like {
+                    &:before {
+                        color: #076DB6;
                     }
                 }
             }
