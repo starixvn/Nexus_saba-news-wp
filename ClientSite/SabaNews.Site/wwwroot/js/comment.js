@@ -152,7 +152,7 @@
                         var comment = response.comment;
                         var html = "";
                         var liked = comment.isLiked ? 'active-like' : '';
-                        var likeCount = comment.commentLikeCount > 0 ? comment.commentLikeCount : "";
+                        var likeCount = comment.commentLikeCount > 0 ? '<span class="total_like">' + comment.commentLikeCount + "</span>" : "";
                         var photo = '<span>' + comment.commentAuthor.substr(0, 1) + '</span>';
                         if (comment.photo !== null) {
                             if (comment.photo.indexOf("https://") >= 0 || comment.photo.indexOf("http://") >= 0) {
@@ -171,7 +171,7 @@
                         html += '<span class="nick-name"><a href="javascript:;">' + comment.commentAuthor + '</a></span>';
                         html += '<span class="txt-comment">' + comment.commentContent + '</span>';
                         html += '<p class="controls">';
-                        html += '<span class="controls-comment toggle-like like-comment ' + liked + '"  data-commentid="' + comment.commentID + '"><a href="javascript:;"><span class="total_like">' + likeCount + ' </span> <i class="icon-like"></i></a></span>';
+                        html += '<span class="controls-comment toggle-like like-comment ' + liked + '"  data-commentid="' + comment.commentID + '"><a href="javascript:;">' + likeCount + ' <i class="icon-like"></i></a></span>';
                         html += '<span class="controls-comment reply-comment"  data-id="' + comment.commentID + '" data-parent="' + comment.commentID + '"><a href="javascript:;">Trả lời</a></span>';
                         html += '<span class="controls-comment time-comment"><a href="javascript:;">1 giây trước</a></span>';
                         html += '</p>';
@@ -180,24 +180,6 @@
                         html += '</div>';
                         html += '</div>';
 
-
-                        //html += '<div class="comment_item">';
-                        //html += '<div class="content_comment">';
-                        //html += '<p class="full_content">';
-                        //html += photo;
-                        //html += '<span class="nickname">' + comment.commentAuthor + '</span> ' + comment.commentContent;
-                        //html += '</p>';
-                        //html += '<p class="block_like_web width_common">';
-                        //html += '<a href="javascript:;" class="link-like-comment ' + liked + '" data-commentid="' + comment.commentID + '">';
-                        //html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
-                        //html += '<i class="ic ic-like" ></i >'
-                        //html += '</a > ';
-                        //html += '<a href="javascript:;" class="link_reply" data-id="' + comment.commentID + '" data-parent="' + comment.commentID + '">Trả lời</a>';
-                        //html += '<span class="time">1 giây trước</span>';
-                        //html += '</p>';
-                        //html += '</div>';
-                        //html += '<div class="sub_comment"></div>';
-                        //html += '</div>';
                         $('.list_comments').prepend(html);
                         self.parent().find("textarea[name=comment_value]").val('');
                         self.parent().find('.comment-content-box').find('.note-text-count').hide();
@@ -260,7 +242,7 @@
                 type = 'unlike';
                 total_like = parseInt(total_like) - 1;
             } else {
-                if (total_like.trim() === '') {
+                if (typeof total_like === 'undefined') {
                     total_like = 1;
                 } else {
                     total_like = parseInt(total_like) + 1;
@@ -273,7 +255,13 @@
                 dataType: 'json',
                 success: function (response) {
                     if (response.isSuccessful) {
-                        self.find('.total_like').html(total_like);
+                        var html = '<span class="total_like">' + total_like + '</span>';
+                        if (typeof self.find('.total_like').html() === 'undefined') {
+                            self.prepend(html);
+                        } else {
+                            self.find('.total_like').html(total_like);
+                        }
+
                         if (type === 'like') {
                             self.parent().addClass('active-like');
                         } else {
@@ -289,7 +277,7 @@
         var html = "";
         var liked = val.isLiked ? 'active-like' : '';
         var commentTime = typeof val.commentTime === "undefined" ? "1 giây trước" : val.commentTime;
-        var likeCount = val.commentLikeCount > 0 ? val.commentLikeCount : "";
+        var likeCount = val.commentLikeCount > 0 ? '<span class="total_like">' + val.commentLikeCount + "</span>" : "";
         var photo = '<span>' + val.commentAuthor.substr(0, 1) + '</span>';
         if (val.photo !== null) {
             if (val.photo.indexOf("https://") >= 0 || val.photo.indexOf("http://") >= 0) {
@@ -307,28 +295,13 @@
         html += '<span class="nick-name"><a href="javascript:;">' + val.commentAuthor + '</a></span>';
         html += '<span class="txt-comment">' + val.commentContent + '</span>';
         html += '<p class="controls">';
-        html += '<span class="controls-comment toggle-like like-comment ' + liked + '"  data-commentid="' + val.commentID + '"><a href="javascript:;"><span class="total_like">' + likeCount + ' </span><i class="icon-like"></i></a></span>';
+        html += '<span class="controls-comment toggle-like like-comment ' + liked + '"  data-commentid="' + val.commentID + '"><a href="javascript:;">' + likeCount + ' <i class="icon-like"></i></a></span>';
         html += '<span class="controls-comment reply-comment"  data-id="' + val.commentID + '" data-parent="' + val.commentParent + '"><a href="javascript:;">Trả lời</a></span>';
         html += '<span class="controls-comment time-comment"><a href="javascript:;">' + commentTime + '</a></span>';
         html += '</p>';
         html += '</div>';
         html += '</div>';
 
-
-        //html += '<div class="sub_comment_item comment_item">';
-        //html += '<p class="full_content">';
-        //html += photo
-        //html += '<span class="nickname">' + val.commentAuthor + '</span> ' + val.commentContent;
-        //html += '</p>';
-        //html += '<p class="block_like_web width_common">';
-        //html += '<a href="javascript:;" class="link-like-comment  ' + liked + '" data-commentid="' + val.commentID + '">';
-        //html += '<span class="total_like" href="javascript:;">' + likeCount + '</span>';
-        //html += '<i class="ic ic-like" ></i >'
-        //html += '</a > ';
-        //html += '<a href="javascript:;" class="link_reply" data-id="' + val.commentID + '" data-parent="' + val.commentParent + '">Trả lời</a>';
-        //html += '<span class="time">' + commentTime + '</span>';
-        //html += '</p>';
-        //html += '</div>';
         return html;
     };
 

@@ -43,7 +43,7 @@
 					<span class="nick-name"><a href="javascript:;">@comment.CommentAuthor</a></span>
 					<span class="txt-comment">@Html.Raw(comment.CommentContent)</span>
 					<p class="controls">
-						<span class="controls-comment toggle-like like-comment @(comment.isLiked ? "active-like" : "")"  data-commentid="@comment.CommentID"><a href="javascript:;"><span class="total_like">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span> <i class="icon-like"></i></a></span>
+						<span class="controls-comment toggle-like like-comment @(comment.isLiked ? "active-like" : "")"  data-commentid="@comment.CommentID"><a href="javascript:;">@Html.Raw(comment.CommentLikeCount > 0 ? "<span class='total_like'>" + comment.CommentLikeCount + "</span>" : "") <i class="icon-like"></i></a></span>
 
 						<span class="controls-comment reply-comment" data-id="@comment.CommentID" data-parent="@comment.CommentID"><a href="javascript:;">@ViewResources.CommentReply</a></span>
 
