@@ -50,7 +50,6 @@
 }
 
 
-
 @{
     var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
 }
@@ -67,13 +66,14 @@
                         <i class="icon-social icon-detail_facebook"></i>
                     </a>
                 </li>
-                <li class="item-social">
-                    <a href="javascript:;"
-                       rel="nofollow"
-                       class="item intent copy-clipboard">
-                        <i class="icon-social icon-link"></i>
-                    </a>
-                </li>
+				<li class="item-social">
+					<a href="javascript:;"
+					   rel="nofollow"
+					   class="item intent copy-clipboard">
+						<i class="icon-social icon-link"></i>
+					</a>
+					<span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
+				</li>
                 <li class="item-social">
                     <a href="javascript:;" class="item intent save_post @(Model.isSave ? "active" : "")">
                         <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
@@ -185,7 +185,7 @@
 							   class="item intent copy-clipboard">
 								<i class="icon-social icon-link"></i>
 							</a>
-							<span class="tip">Copy clipboard thành công</span>
+							<span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
 						</li>
                     </ul>
                 </div>

@@ -178,6 +178,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy clipboard thành công.
+        /// </summary>
+        public static string CopyClipBoardSuccessfully {
+            get {
+                return ResourceManager.GetString("CopyClipBoardSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
