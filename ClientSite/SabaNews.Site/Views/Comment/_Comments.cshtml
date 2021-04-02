@@ -6,13 +6,13 @@
 		<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>
 	</div>
 	@if (Model.IsLogin)
-	{ 
+	{
 		<input type="button" name="add_comment" class="add_comment" value="Gửi" />
 	}
-	
+
 </form>
-@if (Model.CommentTemplate.Comments.Count > 0) 
-{ 
+@if (Model.CommentTemplate.Comments.Count > 0)
+{
 	<div class="filter_comment">
 		<a href="javascript:;" class="@(Model.FilterType == "like"? "active" : "")" data-type="like">@ViewResources.CommentMostInterested</a>
 		<a href="javascript:;" class="@(Model.FilterType == "time"? "active" : "")" data-type="time">@ViewResources.CommentMostRecent</a>
@@ -22,94 +22,60 @@
 <div class="list_comments">
 	@foreach (var comment in Model.CommentTemplate.Comments)
 	{
-    <div class="comment_item">
-        <!-- new --->
-		<div class="group-comment">
-			<div class="avatar">
-				<span>@comment.CommentAuthor.Substring(0, 1)</span>
-			</div>
-			<div class="user-comment">
-				<span class="nick-name"><a href="javascript:;">@comment.CommentAuthor</a></span>
-				<span class="txt-comment">@Html.Raw(comment.CommentContent)</span>
-				<p class="controls">
-					<span class="controls-comment toggle-like"><a href="#">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "") <i class="icon-like"></i></a></span>
-					<span class="controls-comment reply-comment"><a href="#">@ViewResources.CommentReply</a></span>
-					<span class="controls-comment time-comment"><a href="#">@comment.CommentTime</a></span>
-				</p>
-				@if (comment.CommentNumberChildren > 0)
-				{
+		<div class="comment_item">
+			<!-- new --->
+			<div class="group-comment">
+				<div class="avatar">
+					@if (comment.Photo == null)
+					{
+						<span>@comment.CommentAuthor.Substring(0, 1)</span>
+					}
+					else if (comment.Photo.ToLower().Contains("https://") || comment.Photo.ToLower().Contains("http://"))
+					{
+						<span><img class="profile_image" loading="lazy" src="@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+					}
+					else
+					{
+						<span><img class="profile_image" loading="lazy" src="~/upload/@comment.Photo" width="50" data-name="@comment.CommentAuthor.Substring(0, 1)" /></span>
+					}
+				</div>
+				<div class="user-comment">
+					<span class="nick-name"><a href="javascript:;">@comment.CommentAuthor</a></span>
+					<span class="txt-comment">@Html.Raw(comment.CommentContent)</span>
 					<p class="controls">
-						<span class="controls-comment controls-reply"><a href="javascript:;" class="view_all_reply"  data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID"><i class="icon-reply"></i> <span class="num_reply_cmt">@comment.CommentNumberChildren</span> @ViewResources.CommentReply</a></span>
+						<span class="controls-comment toggle-like like-comment @(comment.isLiked ? "active-like" : "")"  data-commentid="@comment.CommentID"><a href="javascript:;"><span class="total_like">@(comment.CommentLikeCount > 0 ? comment.CommentLikeCount : "")</span> <i class="icon-like"></i></a></span>
+
+						<span class="controls-comment reply-comment" data-id="@comment.CommentID" data-parent="@comment.CommentID"><a href="javascript:;">@ViewResources.CommentReply</a></span>
+
+						<span class="controls-comment time-comment"><a href="javascript:;">@comment.CommentTime</a></span>
 					</p>
-				}
+					@if (comment.CommentNumberChildren > 0)
+					{
+						<p class="controls">
+							<span class="controls-comment controls-reply"><a href="javascript:;" class="view_all_reply" data-postid="@comment.CommentPostID" data-cmtid="@comment.CommentID"><i class="icon-reply"></i> <span class="num_reply_cmt">@comment.CommentNumberChildren</span> @ViewResources.CommentReply</a></span>
+						</p>
+					}
 
-            <div class="group-sub-comment">
-                <div class="child-comment">
-                    <div class="avatar">
-                        <span>J</span>
-                    </div>
-                    <div class="sub-comment">
-                        <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
-                        <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
-                        <p class="controls">
-                            <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
-                            <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
-                            <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
-                            <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
-                        </p>
-                    </div>
-                </div>
-                <div class="child-comment">
-                    <div class="avatar">
-                        <span>J</span>
-                    </div>
-                    <div class="sub-comment">
-                        <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
-                        <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
-                        <p class="controls">
-                            <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
-                            <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
-                            <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
-                            <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
-                        </p>
-                    </div>
-                </div>
-                <div class="child-comment">
-                    <div class="avatar">
-                        <span>J</span>
-                    </div>
-                    <div class="sub-comment">
-                        <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
-                        <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
-                        <p class="controls">
-                            <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
-                            <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
-                            <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
-                            <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-				
+					<div class="group-sub-comment">
+					</div>
+				</div>
 			</div>
+			<!-- new --->
+		</div>}
+
+	@if (Model.ViewData.TotalPages > 1)
+	{
+		var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
+		var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
+		var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
+		var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
+		<div class="pagination" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
+			<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
+			<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
+			<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
 		</div>
-        <!-- new --->
-    </div>}
-
-		@if (Model.ViewData.TotalPages > 1)
-		{
-			var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
-			var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
-			var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
-			var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
-			<div class="pagination" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
-				<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
-				<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
-				<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
-			</div>
-		}
-		<div class="clearfix"></div>
+	}
+	<div class="clearfix"></div>
 </div>
 <script>
 	var data = {

@@ -119,6 +119,14 @@
                     }
                 }
 
+                .active-like {
+                    .icon-like {
+                        &:before {
+                            color: #076DB6;
+                        }
+                    }
+                }
+
                 .user-comment {
                     width: 90%;
 
@@ -149,12 +157,15 @@
                         margin-top: 2rem;
                         padding-left: 1rem;
                         border-left: 1px solid $separator-color;
+
                         .child-comment {
                             display: flex;
-                            margin-bottom : 2rem;
-                            &:last-child{
-                                margin-bottom : 0;
+                            margin-bottom: 2rem;
+
+                            &:last-child {
+                                margin-bottom: 0;
                             }
+
                             .sub-comment {
                                 width: 90%;
                             }
@@ -175,14 +186,6 @@
                                         &:before {
                                             font-size: 1.6rem
                                         }
-                                    }
-                                }
-                            }
-
-                            .active-like {
-                                .icon-like {
-                                    &:before {
-                                        color: #076DB6;
                                     }
                                 }
                             }
