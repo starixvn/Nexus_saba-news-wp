@@ -57,7 +57,7 @@
         $('.view_all_reply').on('click', function () {
             var self = $(this)
             var commentID = self.data('cmtid');
-            self.parent().parent().parent().find('.sub_section_comment').html('');
+            self.parent().parent().parent().find('.group-sub-comment').html('');
             console.log(commentID, postID);
             $.ajax({
                 type: "GET",
@@ -71,7 +71,7 @@
                     $.each(data, function (i, val) {
                         html += RenderSubComment(val);
                     });
-                    self.parent().parent().parent().find('.sub_section_comment').append(html);
+                    self.parent().parent().parent().find('.group-sub-comment').append(html);
                     validate_image();
                 }
             });
@@ -282,17 +282,22 @@
             }
             
         }
-
-        //<div class="sub-comment">
-        //    <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
-        //    <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
-        //    <p class="controls">
-        //        <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
-        //        <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
-        //        <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
-        //        <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
-        //    </p>
-        //</div>
+     //   <div class="avatar">
+		   // <span>J</span>
+	    //</div>
+	    //<div class="sub-comment">
+		   // <span class="nick-name"><a href="#">Jimmy Nguyen</a></span>
+		   // <span class="txt-comment">Phong cách chơi bóng của Haaland có lẻ phù hợp với bóng đá Anh, đến Barca thì có khi lại theo vết xe đổ của Ibrahimmovic.</span>
+		   // <p class="controls">
+			  //  <span class="controls-comment toggle-like"><a href="#">5 <i class="icon-like"></i></a></span>
+			  //  <span class="controls-comment reply-comment"><a href="#">Trả lời</a></span>
+			  //  <span class="controls-comment share-comment"><a href="#">Chia sẻ</a></span>
+			  //  <span class="controls-comment time-comment"><a href="#">2h trước</a></span>
+		   // </p>
+	    //</div>
+        html += '<div class="avatar">';
+        html += '<span>' + val.commentAuthor.substr(0, 1) + '</span>';
+        html += '</div>';
         html += '<div class="sub-comment">';
         html += '<span class="nick-name"><a href="javascript:;">' + val.commentAuthor + '</a></span>';
         html += '<span class="txt-comment">'+ val.commentContent +'</span>';
