@@ -186,9 +186,10 @@
                     align-items: center;
                     text-decoration: none;
 
+                    .total_like {
+                        margin-right: .3rem;
+                    }
                     .icon-like {
-                        margin-left: .5rem;
-
                         &:before {
                             font-size: 1.6rem
                         }

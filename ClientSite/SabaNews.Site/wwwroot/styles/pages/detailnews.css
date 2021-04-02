@@ -1302,10 +1302,10 @@ button {
       display: inline-flex;
       align-items: center;
       text-decoration: none; }
-      .comment-post .list_comments .comment_item .toggle-like a .icon-like {
-        margin-left: .5rem; }
-        .comment-post .list_comments .comment_item .toggle-like a .icon-like:before {
-          font-size: 1.6rem; }
+      .comment-post .list_comments .comment_item .toggle-like a .total_like {
+        margin-right: .3rem; }
+      .comment-post .list_comments .comment_item .toggle-like a .icon-like:before {
+        font-size: 1.6rem; }
     .comment-post .list_comments .comment_item .active-like .icon-like:before {
       color: #076DB6; }
   .comment-post .pagination {
