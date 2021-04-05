@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?7d40');
-  src:  url('fonts/icomoon.eot?7d40#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?7d40') format('truetype'),
-    url('fonts/icomoon.woff?7d40') format('woff'),
-    url('fonts/icomoon.svg?7d40#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?33ntmg');
+  src:  url('fonts/icomoon.eot?33ntmg#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?33ntmg') format('truetype'),
+    url('fonts/icomoon.woff?33ntmg') format('woff'),
+    url('fonts/icomoon.svg?33ntmg#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -35,23 +35,18 @@
 }
 .icon-validate:before {
   content: "\e921";
-color: #999;
 }
 .icon-birthday:before {
   content: "\e91d";
-  color: #999;
 }
 .icon-hide:before {
   content: "\e91e";
-  color: #999;
 }
 .icon-show:before {
   content: "\e91f";
-  color: #999;
 }
 .icon-upload:before {
   content: "\e920";
-  color: #999;
 }
 .icon-mode_comment_full:before {
   content: "\e91c";
@@ -82,88 +77,67 @@ color: #999;
 }
 .icon-sport-basketball:before {
   content: "\e915";
-color: #4f4f4f;
 }
 .icon-play:before {
   content: "\e914";
-color: #fff;
 }
 .icon-arrow-left:before {
   content: "\e900";
-color: #4f4f4f;
 }
 .icon-arrow-right:before {
   content: "\e901";
-color: #4f4f4f;
 }
 .icon-bullet-arrow-right:before {
   content: "\e902";
-color: #4f4f4f;
 }
 .icon-chevron-down:before {
   content: "\e903";
-color: #4f4f4f;
 }
 .icon-chevron-left:before {
   content: "\e904";
-color: #4f4f4f;
 }
 .icon-chevron-right:before {
   content: "\e905";
-color: #4f4f4f;
 }
 .icon-chevron-up:before {
   content: "\e906";
-color: #4f4f4f;
 }
 .icon-home:before {
   content: "\e907";
-color: #4f4f4f;
 }
 .icon-menu:before {
   content: "\e908";
-color: #4f4f4f;
 }
 .icon-page-first:before {
   content: "\e909";
-color: #4f4f4f;
 }
 .icon-page-last:before {
   content: "\e90a";
-color: #4f4f4f;
 }
 .icon-search:before {
   content: "\e90b";
-color: #4f4f4f;
 }
 .icon-social-facebook:before {
   content: "\e90c";
-color: #4f4f4f;
 }
 .icon-social-pinterest:before {
   content: "\e90d";
-color: #4f4f4f;
 }
 .icon-social-telegram:before {
   content: "\e90e";
 }
 .icon-social-twitter:before {
   content: "\e90f";
-color: #4f4f4f;
 }
 .icon-sport-soccer:before {
   content: "\e910";
-color: #4f4f4f;
 }
 .icon-sport-tennis:before {
   content: "\e911";
-color: #4f4f4f;
 }
 .icon-sport-tennis-2:before {
   content: "\e912";
-color: #4f4f4f;
 }
 .icon-video:before {
   content: "\e913";
-color: #4f4f4f;
 }
