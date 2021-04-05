@@ -57,20 +57,20 @@
           left: 0;
           bottom: -1px;
           background: #9F224E; }
-  .modal-login .login-tab {
+  .modal-login .login-tab, .modal-login .register-tab {
     padding: 3rem 0;
     display: flex; }
-    .modal-login .login-tab .group-tab {
+    .modal-login .login-tab .group-tab, .modal-login .register-tab .group-tab {
       padding: 0 3rem;
       border-right: 1px solid #E0E0E0;
       width: 55%; }
       @media screen and (max-width: 1024px) {
-        .modal-login .login-tab .group-tab {
+        .modal-login .login-tab .group-tab, .modal-login .register-tab .group-tab {
           padding: 0 2rem; } }
-      .modal-login .login-tab .group-tab .form-modal {
+      .modal-login .login-tab .group-tab .form-modal, .modal-login .register-tab .group-tab .form-modal {
         margin-bottom: 2rem;
         position: relative; }
-        .modal-login .login-tab .group-tab .form-modal .input-form {
+        .modal-login .login-tab .group-tab .form-modal .input-form, .modal-login .register-tab .group-tab .form-modal .input-form {
           width: 100%;
           height: 4.8rem;
           border: 1px solid #BDBDBD;
@@ -80,14 +80,14 @@
           color: #333;
           padding: 0 1.5rem;
           outline: none; }
-        .modal-login .login-tab .group-tab .form-modal .toggle-pass {
+        .modal-login .login-tab .group-tab .form-modal .toggle-pass, .modal-login .register-tab .group-tab .form-modal .toggle-pass {
           cursor: pointer;
           position: absolute;
           top: 1.5rem;
           right: 1.5rem; }
-          .modal-login .login-tab .group-tab .form-modal .toggle-pass .icon-form:before {
+          .modal-login .login-tab .group-tab .form-modal .toggle-pass .icon-form:before, .modal-login .register-tab .group-tab .form-modal .toggle-pass .icon-form:before {
             color: #1B71B2; }
-      .modal-login .login-tab .group-tab .btn-login {
+      .modal-login .login-tab .group-tab .btn-login, .modal-login .login-tab .group-tab .btn-register, .modal-login .register-tab .group-tab .btn-login, .modal-login .register-tab .group-tab .btn-register {
         background: #9F224E;
         border-radius: 3px;
         cursor: pointer;
@@ -99,16 +99,16 @@
         text-align: center;
         width: 100%;
         height: 4.8rem; }
-      .modal-login .login-tab .group-tab #forgot-password {
+      .modal-login .login-tab .group-tab #forgot-password, .modal-login .register-tab .group-tab #forgot-password {
         text-decoration: none;
         text-align: center;
         display: block;
         margin-top: 1.5rem;
         color: #828282; }
-    .modal-login .login-tab .login-fb-google {
+    .modal-login .login-tab .login-fb-google, .modal-login .register-tab .login-fb-google {
       padding: 0 1.5rem;
       width: 45%; }
-      .modal-login .login-tab .login-fb-google .social-login {
+      .modal-login .login-tab .login-fb-google .social-login, .modal-login .register-tab .login-fb-google .social-login {
         text-decoration: none;
         width: 100%;
         max-width: 24.2rem;
@@ -120,18 +120,18 @@
         margin-bottom: 20px;
         border-radius: 3px;
         position: relative; }
-        .modal-login .login-tab .login-fb-google .social-login .icon-social {
+        .modal-login .login-tab .login-fb-google .social-login .icon-social, .modal-login .register-tab .login-fb-google .social-login .icon-social {
           font-size: 2.4rem;
           position: absolute;
           left: 1rem;
           top: 1rem; }
-      .modal-login .login-tab .login-fb-google .login-facebook {
+      .modal-login .login-tab .login-fb-google .login-facebook, .modal-login .register-tab .login-fb-google .login-facebook {
         border: 1px solid #3B5999;
         color: #3B5999;
         font-weight: 700; }
-        .modal-login .login-tab .login-fb-google .login-facebook .icon-social:before {
+        .modal-login .login-tab .login-fb-google .login-facebook .icon-social:before, .modal-login .register-tab .login-fb-google .login-facebook .icon-social:before {
           color: #3B5999; }
-      .modal-login .login-tab .login-fb-google .login-google {
+      .modal-login .login-tab .login-fb-google .login-google, .modal-login .register-tab .login-fb-google .login-google {
         color: #4688F1;
         border: 1px solid #4688F1; }
 
