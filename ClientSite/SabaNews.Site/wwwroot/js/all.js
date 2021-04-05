@@ -88,6 +88,18 @@ $(document).ready(function () {
             $(this).remove();
         }
     });
+
+    $(document).on('click', '.toggle-pass .icon-form', function () {
+        if ($(this).hasClass('icon-show')) {
+            $(this).parent().parent().find('input').attr('type', 'text');
+            $(this).hide();
+            $(this).parent().find('.icon-hide').show();
+        } else {
+            $(this).parent().parent().find('input').attr('type', 'password');
+            $(this).hide();
+            $(this).parent().find('.icon-show').show();
+        }
+    });
     
 
     $(window).click(function (e) {
