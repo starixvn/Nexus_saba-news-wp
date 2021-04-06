@@ -69,6 +69,7 @@ img {
 
 .tip {
     position: absolute;
+    z-index : 9999999999;
     top: -2.5rem;
     left: 1.5rem;
     transform: translateX(-50%);
