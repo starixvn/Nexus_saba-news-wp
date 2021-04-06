@@ -187,6 +187,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy link.
+        /// </summary>
+        public static string CopyLink {
+            get {
+                return ResourceManager.GetString("CopyLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -583,6 +592,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lưu bài viết.
+        /// </summary>
+        public static string SavePost {
+            get {
+                return ResourceManager.GetString("SavePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm....
         /// </summary>
         public static string Search {
@@ -597,6 +615,15 @@ namespace SabaNews.Resources {
         public static string Share {
             get {
                 return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chia sẽ bài viết lên facebook.
+        /// </summary>
+        public static string ShareFacebook {
+            get {
+                return ResourceManager.GetString("ShareFacebook", resourceCulture);
             }
         }
         

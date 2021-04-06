@@ -67,6 +67,27 @@ img {
     }
 }
 
+.tip {
+    position: absolute;
+    top: -2.5rem;
+    left: 1.5rem;
+    transform: translateX(-50%);
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background: #17191A;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0 1rem;
+    border-radius: 3px;
+    display: none;
+}
+
+.item-social {
+    position: relative;
+}
+
 
 .title-care {
     padding-top: 3rem;

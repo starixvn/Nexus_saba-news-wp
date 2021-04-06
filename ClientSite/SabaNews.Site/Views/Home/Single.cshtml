@@ -25,28 +25,6 @@
 }
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
-    <style>
-	    .tip {
-		    position: absolute;
-		    top: -30px;
-		    left: 10px;
-		    transform: translateX(-50%);
-		    height: 24px;
-		    line-height: 24px;
-		    background: #17191A;
-		    color: #fff !important;
-		    font-size: 12px !important;
-		    text-decoration: none !important;
-		    white-space: nowrap;
-		    padding: 0 10px;
-		    border-radius: 3px;
-            display: none;
-	    }
-
-		.item-social {
-		    position:relative;
-        }
-    </style>
 }
 
 
@@ -62,20 +40,22 @@
                     <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                        data-count="facebook" target="_blank"
                        rel="nofollow"
-                       class="item intent facebook">
+                       class="item intent facebook"
+                       title="@ViewResources.ShareFacebook">
                         <i class="icon-social icon-detail_facebook"></i>
                     </a>
                 </li>
 				<li class="item-social">
 					<a href="javascript:;"
 					   rel="nofollow"
-					   class="item intent copy-clipboard">
+					   class="item intent copy-clipboard"
+                       title="@ViewResources.CopyLink">
 						<i class="icon-social icon-link"></i>
 					</a>
 					<span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
 				</li>
                 <li class="item-social">
-                    <a href="javascript:;" class="item intent save_post @(Model.isSave ? "active" : "")">
+                    <a href="javascript:;" class="item intent save_post @(Model.isSave ? "active" : "")" title="@ViewResources.SavePost">
                         <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
                             <path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2" />
                         </svg>
@@ -83,7 +63,9 @@
                 </li>
 				<li class="item-social">
 					<a href="#comment"
-					   class="item intent">
+					   class="item intent"
+                       title="@ViewResources.Comment"
+                       >
 						<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-comment">
 							<path d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z" stroke="#999999" stroke-width="2" />
 						</svg>
@@ -169,7 +151,8 @@
                             <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                                data-count="facebook" target="_blank"
                                rel="nofollow"
-                               class="item intent facebook">
+                               class="item intent facebook"
+                               title="@ViewResources.ShareFacebook">
                                 <i class="icon-social icon-detail_facebook"></i>
                             </a>
                         </li>
@@ -183,7 +166,8 @@
 						<li class="item-social">
 							<a href="javascript:;"
 							   rel="nofollow"
-							   class="item intent copy-clipboard">
+							   class="item intent copy-clipboard"
+                               title="@ViewResources.CopyLink">
 								<i class="icon-social icon-link"></i>
 							</a>
 							<span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>

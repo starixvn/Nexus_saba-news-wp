@@ -159,6 +159,9 @@
   <data name="CopyClipBoardSuccessfully" xml:space="preserve">
     <value>Copy clipboard thành công</value>
   </data>
+  <data name="CopyLink" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -291,11 +294,17 @@
   <data name="SavedPost" xml:space="preserve">
     <value>Tin đã lưu</value>
   </data>
+  <data name="SavePost" xml:space="preserve">
+    <value>Lưu bài viết</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm...</value>
   </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>
+  </data>
+  <data name="ShareFacebook" xml:space="preserve">
+    <value>Chia sẽ bài viết lên facebook</value>
   </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
