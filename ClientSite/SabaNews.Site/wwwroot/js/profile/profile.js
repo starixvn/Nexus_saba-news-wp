@@ -14,10 +14,11 @@
                 data: { postID: postID },
                 success: function (response) {
                     if (response.isSuccessful) {
-                        if (self.hasClass("active")) {
-                            self.removeClass("active");
+                        if ($('.save_post').hasClass("active")) {
+                            $('.save_post').removeClass("active");
                         } else {
                             self.addClass("active");
+                            $('.save_post').addClass("active");
                         }
                     }
                 }

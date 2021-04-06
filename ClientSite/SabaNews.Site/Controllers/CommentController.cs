@@ -9,8 +9,6 @@
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
-    using System.Linq;
-    using System.Net;
     using System.Threading.Tasks;
 
 
@@ -18,14 +16,12 @@
     {
         private readonly ICommentService commentService;
         private readonly ISessionService sessionService;
-        private readonly IHttpContextAccessor accessor;
 
 
-        public CommentController(ICommentService commentService, ISessionService sessionService, IHttpContextAccessor accessor)
+        public CommentController(ICommentService commentService, ISessionService sessionService)
         {
             this.commentService = commentService;
             this.sessionService = sessionService;
-            this.accessor = accessor;
         }
 
 
