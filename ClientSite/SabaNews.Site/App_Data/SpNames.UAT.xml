@@ -139,5 +139,6 @@
             <Mapping DataField="name" ObjectProperty="Slug" class="Post" />
         </Setting>
         <Setting Key="get_sitemap" SpName="get_sitemap" DbName="sabasports" Plain="0" />
+        <Setting Key="get_sitemap_news" SpName="get_sitemap_news" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

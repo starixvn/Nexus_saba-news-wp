@@ -9,5 +9,7 @@
         public const string RefreshCategoryCaching = "RefreshCategoryCaching";
 
         public const string RefreshSitemapXmlFile = "RefreshSitemapXmlFile";
+
+        public const string RefreshNewsSitemapXmlFile = "RefreshNewsSitemapXmlFile";
     }
 }

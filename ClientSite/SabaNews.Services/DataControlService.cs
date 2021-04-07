@@ -99,5 +99,23 @@
 
             return await postService.GetSitemapDataAsync();
         }
+
+        public async Task<IEnumerable<NewsSitemapModel>> GenerateNewsSitmapXmlData()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheService.GetAsync<IEnumerable<NewsSitemapModel>>(CacheKey.NewsSitemapXml);
+
+                if (result == null)
+                {
+                    result = await postService.GetNewsSitemapDataAsync();
+                    await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+                }
+
+                return result;
+            }
+
+            return await postService.GetNewsSitemapDataAsync();
+        }
     }
 }

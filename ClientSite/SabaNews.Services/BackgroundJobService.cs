@@ -52,6 +52,14 @@
                             GetCronExpression(HangfireJobName.RefreshSitemapXmlFile),
                             TimeZoneInfo.Local);
             }
+
+            if (IsEnabledJob(HangfireJobName.RefreshNewsSitemapXmlFile))
+            {
+                recurringJob.AddOrUpdate<IRefreshCachingService>("Update news sitemap data",
+                            job => job.UpdateNewsSitemapData(),
+                            GetCronExpression(HangfireJobName.RefreshNewsSitemapXmlFile),
+                            TimeZoneInfo.Local);
+            }
         }
 
         private bool IsEnabledJob(string jobName)

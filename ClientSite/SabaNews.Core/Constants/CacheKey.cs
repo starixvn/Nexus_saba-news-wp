@@ -9,5 +9,7 @@
         public const string CategoryViewModel = "CategoryViewModel";
 
         public const string SitemapXml = "SitemapXml";
+
+        public const string NewsSitemapXml = "NewsSitemapXml";
     }
 }

@@ -11,5 +11,7 @@
         Task UpdateCategoryCaching();
 
         Task UpdateSitemapData();
+
+        Task UpdateNewsSitemapData();
     }
 }

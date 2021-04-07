@@ -322,5 +322,10 @@
 
             return blackList;
         }
+
+        public async Task<IEnumerable<NewsSitemapModel>> GetNewsSitemapDataAsync()
+        {
+            return await baseService.GetDataAsync<NewsSitemapModel>(new GetNewsSitemapCriteria());
+        }
     }
 }

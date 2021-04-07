@@ -37,5 +37,14 @@
             string sitemap = SitemapHelper.GetSitemapDocument(data);
             return Content(sitemap, "text/xml", Encoding.UTF8);
         }
+
+        [Route("sitemap-news.xml")]
+        public async Task<ContentResult> SitemapNews()
+        {
+            var domain = $"{Request.Scheme}://{Request.Host}";
+            var data = await dataControlService.GenerateNewsSitmapXmlData();
+            string sitemap = SitemapHelper.GetSitemapNews(data, domain);
+            return Content(sitemap, "text/xml", Encoding.UTF8);
+        }
     }
 }

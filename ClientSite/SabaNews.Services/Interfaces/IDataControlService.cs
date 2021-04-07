@@ -14,5 +14,7 @@
         Task<CategoryViewModel> GetCategoryViewModel(string slug, int page);
 
         Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData();
+
+        Task<IEnumerable<NewsSitemapModel>> GenerateNewsSitmapXmlData();
     }
 }
