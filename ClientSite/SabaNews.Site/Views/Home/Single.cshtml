@@ -2,17 +2,17 @@
 @using Wangkanai.Detection.Models;
 
 @inject IDetectionService DetectionService
-@{ 
-    bool isMobile = DetectionService.Device.Type == Device.Mobile;
-    bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop; 
-}
+@{ bool isMobile = DetectionService.Device.Type == Device.Mobile;
+                bool isTablet = DetectionService.Device.Type == Device.Tablet;
+                bool isDesktop = DetectionService.Device.Type == Device.Desktop; }
 
 @section Metadata {
     <meta name="description" content='@Model.SinglePost.PostExcerpt' />
     <meta property="og:description" content='@Model.SinglePost.PostExcerpt' />
     <meta property="og:title" content='@Model.SinglePost.PostTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
+    <link rel="canonical" href="@Context.Request.Host@Context.Request.Path" />
+    <link rel="alternate" href="@Context.Request.Host@Context.Request.Path" hreflang="vi-vn" />
 }
 
 @section Title{
@@ -23,23 +23,22 @@
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 }
 
-<section class="main" id="detail-page"  onmousedown="return false" onselectstart="return false">
+<section class="main" id="detail-page" onmousedown="return false" onselectstart="return false">
     <div class="container">
         <div class="block block-main">
             <div class="card-vertical card-vertical-highlight">
                 <div class="single card-vertical__video">
                     @if (Convert.ToBoolean(ViewData["video"]))
                     {
-                        <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+        <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
                         <picture>
                             <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
                             <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
                             <img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
                         </picture>
-                        <div class="btn-play-video">
-                            <span class="icon-play"></span>
-                        </div>
-                    }
+                                        <div class="btn-play-video">
+                                            <span class="icon-play"></span>
+                                        </div>}
                 </div>
                 <div class="single play_video"></div>
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
@@ -47,100 +46,90 @@
             </div>
             @if (!Convert.ToBoolean(ViewData["video"]))
             {
-                <div class="content">
-                    @Html.Raw(Model.SinglePost.PostContent)
-                </div>
-            }
+<div class="content">
+    @Html.Raw(Model.SinglePost.PostContent)
+</div>            }
 
             <ul class="block-list">
                 @foreach (var post in Model.RelatedPosts)
                 {
 
-                    <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>
-                }
+    <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>}
             </ul>
 
-            @{
-                var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
-            }
+            @{ var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug }); }
             @if (isMobile || isTablet)
             {
-		        <div class="share_button" style=""><button class="superwebshare_prompt"><span>Chia sẻ</span></button></div>
-            }
+<div class="share_button" style=""><button class="superwebshare_prompt"><span>Chia sẻ</span></button></div> }
             else
-            { 
-                <ul class="social">
-                    <li class="item-social">Chia sẻ:</li>
-                    <li class="item-social">
-                        <a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
-                           data-count="twitter"
-                           target="_blank"
-                           rel="nofollow"
-                           class="item">
-                            <i class="icon-social icon-social-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
-                           data-count="facebook" target="_blank"
-                           rel="nofollow"
-                           class="item intent facebook">
-                            <i class="icon-social icon-social-facebook"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="http://pinterest.com/pin/create/link/?url=@absoluteLink"
-                           data-count="pinterest-circled"
-                           target="_blank"
-                           rel="nofollow" class="item">
-                            <i class="icon-social icon-social-pinterest"></i>
-                        </a>
-                    </li>
-                    <li class="item-social">
-                        <a href="https://t.me/share/url?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
-                           data-count="telegram"
-                           target="_blank"
-                           rel="nofollow"
-                           class="item intent tele">
-                            <i class="icon-social icon-social-telegram"></i>
-                        </a>
-                    </li>
-                </ul>
-            }
+            {
+<ul class="social">
+    <li class="item-social">Chia sẻ:</li>
+    <li class="item-social">
+        <a href="https://twitter.com/intent/tweet?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
+           data-count="twitter"
+           target="_blank"
+           rel="nofollow"
+           class="item">
+            <i class="icon-social icon-social-twitter"></i>
+        </a>
+    </li>
+    <li class="item-social">
+        <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
+           data-count="facebook" target="_blank"
+           rel="nofollow"
+           class="item intent facebook">
+            <i class="icon-social icon-social-facebook"></i>
+        </a>
+    </li>
+    <li class="item-social">
+        <a href="http://pinterest.com/pin/create/link/?url=@absoluteLink"
+           data-count="pinterest-circled"
+           target="_blank"
+           rel="nofollow" class="item">
+            <i class="icon-social icon-social-pinterest"></i>
+        </a>
+    </li>
+    <li class="item-social">
+        <a href="https://t.me/share/url?url=@absoluteLink&text=@Model.SinglePost.PostTitle"
+           data-count="telegram"
+           target="_blank"
+           rel="nofollow"
+           class="item intent tele">
+            <i class="icon-social icon-social-telegram"></i>
+        </a>
+    </li>
+</ul>            }
 
-           
+
 
             <ul class="tag-post">
                 @if (Model.SinglePost.Tags != null && Model.SinglePost.TagsSlug != null)
                 {
                     var tags_slug = Model.SinglePost.TagsSlug.Split(',');
                     var tags = Model.SinglePost.Tags.Split(',');
-                    @for (var i = 0; i < tags.Length; i++)
-                    {
-                        <li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
-                    }
-
-                }
+    @for (var i = 0; i < tags.Length; i++)
+    {
+<li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>}}
             </ul>
             <h2 class="block__title title-care"><a>CÓ THỂ BẠN QUAN TÂM</a></h2>
             <div class="block__content">
                 @foreach (var post in Model.RandomRelatedPosts)
                 {
-                    <div class="card-horizontal card-horizontal-highlight">
-                        <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-horizontal__image">
-                            <picture>
-                                <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-                                <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                                <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
-                            </picture>
-                        </a>
-                        <div class="card-horizontal__content">
-                            <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
-                            <p class="datetime">@post.PostTime</p>
-                            <p class="description">@post.PostExcerpt</p>
-                        </div>
-                    </div>
-                }
+    <div class="card-horizontal card-horizontal-highlight">
+        <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-horizontal__image">
+            <picture>
+                <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block">
+            </picture>
+        </a>
+        <div class="card-horizontal__content">
+            <a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
+            <p class="datetime">@post.PostTime</p>
+            <p class="description">@post.PostExcerpt</p>
+        </div>
+    </div>}
             </div>
         </div>
         @(await Component.InvokeAsync("Sidebar", new { postID = Model.SinglePost.ID }))
