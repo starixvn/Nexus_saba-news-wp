@@ -1,6 +1,17 @@
+@import '../abstracts/variables';
+
 .card-horizontal {
-    @include grid(19.5rem 1fr, 11rem, 1.2rem);
+    @include grid(19.5rem 1fr, none, 1.2rem);
     overflow: hidden;
+    border-bottom: 1px solid $separator-color;
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.6rem;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
 
     @include tableMobile {
         @include grid(13.5rem 1fr, none, 1.2rem);
@@ -16,14 +27,16 @@
     }
 
     &__image {
+        height: 11rem;
         @include tableMobile {
-            height: 7.2rem;
+            height: 9.3rem;
         }
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top;
         }
     }
 
@@ -35,8 +48,6 @@
             color: $color-text;
             transition: color .3s ease;
             display: block;
-
-
 
             &:hover {
                 color: $color-title-hover;
@@ -53,29 +64,12 @@
         }
 
         .description {
+            line-height: 1.9rem;
             margin: .3rem 0;
+
             @include tableMobile {
                 display: none;
             }
         }
-    }
-}
-.comment {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 1rem;
-    vertical-align: middle;
-    text-decoration: none !important;
-
-    .icon-mode_comment_full {
-        font-size: 1.6rem;
-    }
-
-    .number {
-        color: #2B89CC;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 1.3rem;
-        margin-left: .3rem;
     }
 }

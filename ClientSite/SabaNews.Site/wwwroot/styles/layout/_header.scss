@@ -6,7 +6,7 @@
     background-color: $bg-nav;
     position: fixed;
     width: 100%;
-    z-index: 1025;
+    z-index: 99999;   
 
     .top-header {
         padding: .5rem 0;
@@ -28,13 +28,10 @@
 
             @include tableMobile {
                 padding: 0;
-                flex-wrap: wrap;
-                justify-content: space-between;
+                @include flex(center,wrap, space-between,row);
                 position: relative;
             }
 
-                flex-wrap: nowrap;
-                justify-content: flex-start;
             .logo {
                 width: 12rem;
                 margin-right: 2.4rem;
@@ -54,7 +51,6 @@
                     @include flex(center, wrap, space-between,row);
                 }
             }
-
             .button-mobile {
                 width: 2.8rem;
                 height: 3rem;
@@ -77,7 +73,7 @@
                     position: absolute;
                     height: .2rem;
                     width: 70%;
-                    background: $color-pagination;
+                    background: #081224;
                     opacity: 1;
                     transform: rotate(0);
                     transition: .25s ease-in-out;
@@ -136,11 +132,10 @@
                     width: 100%;
                     @include flex(center, nowrap, flex-start,row);
                     height: 4rem;
-                    margin-bottom: 0;
 
                     @include tableMobile {
                         margin: 0;
-                        flex-direction: column;
+                        @include flex(center, nowrap, flex-start,column);
                         height: 100%;
                         z-index: 999;
                         display: none;
@@ -150,75 +145,10 @@
                     }
 
                     @include landscapeTablet {
-                        display: flex;
-                        flex-direction: inherit;
+                        display: block;
+                        @include flex(center, nowrap, flex-start,inherit);
+                        height: 4rem !important;
                         padding-bottom: 0;
-                        height: 4rem;
-                    }
-
-
-                    .auth-input {
-                        position: relative;
-
-                        &:hover {
-                            .box-auth {
-                                display: block;
-                            }
-                        }
-
-                        .auth-provider {
-                            list-style: none;
-                            display: flex;
-                            align-items: center;
-                            padding: 1.6rem 1.2rem;
-
-                            .avatar-user {
-                                width: 2.5rem;
-                                height: 2.5rem;
-                                background: $separator-color;
-                                font-weight: bold;
-                                color: $color-fff;
-                                border-radius: 50%;
-                                margin-right: .5rem;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                overflow: hidden;
-
-                                img {
-                                    object-fit: cover;
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-
-                            .item {
-                                padding: 0;
-                            }
-                        }
-
-                        .box-auth {
-                            display: none;
-                            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-                            list-style: none;
-                            padding: 1.2rem;
-                            background: $bg-nav;
-                            position: absolute;
-                            width: 18rem;
-                            top: 5.5rem;
-
-                            li {
-                                margin-bottom: 1rem;
-
-                                &:last-child {
-                                    margin-bottom: 0;
-                                }
-
-                                .item {
-                                    padding: 0;
-                                }
-                            }
-                        }
                     }
 
                     .menu-item {
@@ -254,6 +184,8 @@
                             }
                         }
 
+
+
                         .item {
                             text-decoration: none;
                             display: block;
@@ -262,7 +194,7 @@
                             transition: color .2s ease;
                             margin-right: 2rem;
                             line-height: 1.7rem;
-                            color: $color-content;
+                            color: #4f4f4f;
 
                             @include tableMobile {
                                 padding: 1.6rem 1.2rem;
@@ -270,18 +202,144 @@
                             }
 
                             &:hover {
-                                color: $color-main-title;
+                                color: #f12f19;
                             }
                         }
 
                         .active {
-                            color: $color-main-title;
+                            color: #f12f19;
+                        }
+
+                        .menu-child {
+                            padding: .5rem 0;
+                            background-color: $color-fff;
+                            width: 18rem;
+                            list-style: none;
+                            position: absolute;
+                            border: 1px solid $border-heading;
+                            top: 8.1rem;
+                            border-radius: 4px;
+                            left: 50%;
+                            margin-left: -9.2rem;
+                            z-index: 99;
+                            width: 25.1rem;
+                            z-index: 9999;
+                            display: none;
+
+                            @include tableMobile {
+                                background-color: transparent;
+                                position: inherit;
+                                width: 100%;
+                                top: auto;
+                                left: auto;
+                                margin-left: auto;
+                                padding: 0 0 0 1.2rem;
+                                box-shadow: none;
+                                border-radius: 0;
+                                border: none;
+                                @include flex(center,wrap,flex-start,row)
+                            }
+
+                            &::after {
+                                content: ' ';
+                                display: block;
+                                position: absolute;
+                                z-index: 1;
+                                top: -.3rem;
+                                left: 24%;
+                                width: 1.5rem;
+                                height: 1.5rem;
+                                margin: -.6rem 0 0 -.6rem;
+                                background-color: $color-fff;
+                                transform: rotate(45deg);
+                                border-top: 1px solid $border-heading;
+                                border-left: 1px solid $border-heading;
+                                z-index: -1;
+
+                                @include tableMobile {
+                                    display: none;
+                                }
+                            }
+
+                            .child-menu-item {
+                                @include Mobile {
+                                    margin-bottom: 1.6rem;
+                                    width: 48%;
+                                }
+
+                                &:nth-child(even) {
+                                    @include Mobile {
+                                        padding-left: 1rem;
+                                    }
+                                }
+
+                                .item-child {
+                                    padding: 1.1rem 1.9rem;
+                                    text-transform: inherit;
+                                    color: $color-pagination;
+                                    text-decoration: none;
+                                    display: block;
+                                    font-size: 1.4rem;
+                                    line-height: 1.7rem;
+                                    font-weight: normal;
+                                    transition: color .2s ease;
+                                    font-family: $font-title;
+                                    height: 3.9rem;
+                                    display: flex;
+                                    align-items: center;
+
+                                    &:hover {
+                                        background-color: $block-highlight-bgcolor;
+                                    }
+
+                                    @include tableMobile {
+                                        padding: 1.1rem 1.9rem;
+                                    }
+
+                                    @include Mobile {
+                                        color: $color-pagination;
+                                        padding: 0;
+                                        font-size: 1.6rem;
+                                        text-transform: initial;
+                                        border-bottom: 1px solid $color-border;
+                                        font-weight: inherit;
+                                        border: none !important;
+                                        line-height: 1.7rem;
+                                        height: auto;
+                                        display: block;
+                                    }
+
+                                    &:hover {
+                                        color: $color-pagination;
+                                    }
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            .menu-child {
+                                display: block;
+
+                                @include tableMobile {
+                                    display: block;
+                                }
+
+                                @include tableMobile {
+                                    display: flex;
+                                }
+                            }
                         }
                     }
                 }
 
                 .active-main-menu {
-                    display: flex;
+                    display: flex !important;
+                }
+            }
+
+            .active-nav {
+                @include tableMobile {
+                    width: 100%;
                 }
             }
 
@@ -425,7 +483,8 @@
         z-index: 999;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         background: #fff;
-        min-width: 120px;
+        padding: 4px;
+        width: 80px;
         border-radius: 4px;
         left: -4px;
         top: 30px;
@@ -434,11 +493,8 @@
         .lang-item {
             text-decoration: none;
             color: #4f4f4f;
-            display: block;
-            padding: 4px;
-            &:hover {
-                background-color: #ececec;
-            }
+            display: inline-block;
+            padding: 2px 0;
         }
 
         &.active {
@@ -493,6 +549,8 @@
         }
 
         .header {
+            top: 0;
+            bottom: 0;
             top: 0;
             bottom: 0;
         }
