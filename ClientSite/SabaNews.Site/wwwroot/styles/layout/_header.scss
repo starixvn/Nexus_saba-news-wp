@@ -54,6 +54,7 @@
                     @include flex(center, wrap, space-between,row);
                 }
             }
+
             .button-mobile {
                 width: 2.8rem;
                 height: 3rem;
@@ -151,8 +152,8 @@
                     @include landscapeTablet {
                         display: flex;
                         flex-direction: inherit;
-                        height: 4rem !important;
                         padding-bottom: 0;
+                        height: 4rem;
                     }
 
 
@@ -201,7 +202,7 @@
                             box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
                             list-style: none;
                             padding: 1.2rem;
-                            background: #fffdf9;
+                            background: $bg-nav;
                             position: absolute;
                             width: 18rem;
                             top: 5.5rem;
@@ -261,7 +262,7 @@
                             transition: color .2s ease;
                             margin-right: 2rem;
                             line-height: 1.7rem;
-                            color: #4f4f4f;
+                            color: $color-content;
 
                             @include tableMobile {
                                 padding: 1.6rem 1.2rem;
@@ -269,18 +270,18 @@
                             }
 
                             &:hover {
-                                color: #f12f19;
+                                color: $color-main-title;
                             }
                         }
 
                         .active {
-                            color: #f12f19;
+                            color: $color-main-title;
                         }
                     }
                 }
 
                 .active-main-menu {
-                    display: flex !important;
+                    display: flex;
                 }
             }
 
