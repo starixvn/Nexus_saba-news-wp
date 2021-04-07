@@ -189,6 +189,7 @@
                     .total_like {
                         margin-right: .3rem;
                     }
+
                     .icon-like {
                         &:before {
                             font-size: 1.6rem
@@ -213,7 +214,7 @@
         width: 100%;
 
         a {
-            color: black;
+            color: $color-000;
             float: left;
             padding: .8rem 1.6rem;
             text-decoration: none;

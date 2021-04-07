@@ -1171,7 +1171,7 @@ button {
     justify-content: flex-end;
     width: 100%; }
     .comment-post .pagination a {
-      color: black;
+      color: #000;
       float: left;
       padding: .8rem 1.6rem;
       text-decoration: none;
