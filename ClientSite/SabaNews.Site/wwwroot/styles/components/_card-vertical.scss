@@ -65,3 +65,22 @@
         }
     }
 }
+.comment {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 1rem;
+    vertical-align: middle;
+    text-decoration: none !important;
+
+    .icon-mode_comment_full {
+        font-size: 1.6rem;
+    }
+
+    .number {
+        color: #2B89CC;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.3rem;
+        margin-left: .3rem;
+    }
+}

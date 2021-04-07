@@ -18,10 +18,7 @@ body {
   font-family: Arial, sans-serif;
   color: #4F4F4F;
   line-height: 2.2rem;
-  background-color: #FFFDF9;
-  display: flex;
-  flex-direction: column;
-  height: 100vh; }
+  background-color: #FFFDF9; }
 
 .img-res {
   max-width: 100%;
@@ -55,10 +52,10 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 7rem; }
-  @media (max-device-width: 1024px) {
+  padding-top: 8rem; }
+  @media (max-device-width: 767px) {
     .main {
-      padding-top: 6.8rem; } }
+      padding-top: 7rem; } }
 
 .content {
   line-height: 3.2rem;
@@ -96,11 +93,11 @@ p.has-text-align-center {
 .footer {
   background-color: #081224;
   border-top: 4px solid #EB5342;
-  padding: 1.2rem 0;
-  margin-top: auto; }
+  padding: 1.2rem 0; }
   @media screen and (max-width: 1024px) {
     .footer {
-      padding: .6rem 0; } }
+      padding: .6rem 0;
+      margin-top: 2.7rem; } }
   .footer .copy-right {
     font-size: 1.6rem;
     color: #a6a6a6;
@@ -706,14 +703,26 @@ button {
 .wp-block-image figcaption {
   text-align: center;
   position: relative;
-  top: -4px; }
+  top: -8px;
+  font-size: 1.4rem; }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .card-horizontal {
   display: grid;
   grid-template-columns: 19.5rem 1fr;
-  grid-template-rows: 11rem;
+  grid-template-rows: none;
   grid-gap: 1.2rem;
-  overflow: hidden; }
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem; }
+  .card-horizontal:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: grid;
@@ -726,13 +735,16 @@ button {
       padding-bottom: 1.2rem; }
       .card-horizontal:last-child {
         margin-bottom: 0; } }
-  @media screen and (max-width: 1024px) {
-    .card-horizontal__image {
-      height: 7.2rem; } }
-  .card-horizontal__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; }
+  .card-horizontal__image {
+    height: 11rem; }
+    @media screen and (max-width: 1024px) {
+      .card-horizontal__image {
+        height: 9.3rem; } }
+    .card-horizontal__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top; }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -749,6 +761,7 @@ button {
       .card-horizontal__content .datetime {
         margin-top: -.2rem; } }
   .card-horizontal__content .description {
+    line-height: 1.9rem;
     margin: .3rem 0; }
     @media screen and (max-width: 1024px) {
       .card-horizontal__content .description {
@@ -841,7 +854,11 @@ button {
   padding: 2rem .3rem 6rem 0; }
   @media screen and (max-width: 1024px) {
     .pagination {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
       justify-content: center;
+      flex-direction: row;
       margin-bottom: 3rem;
       padding: 1rem .3rem 0 0; } }
   .pagination .icon-pagination {
@@ -921,33 +938,12 @@ button {
   grid-gap: 0; }
   @media screen and (max-width: 1024px) {
     .main .container {
-      grid-template-columns: 60% 40%; } }
+      display: grid;
+      grid-template-columns: 60% 40%;
+      grid-template-rows: unset;
+      grid-gap: 0; } }
   @media (max-device-width: 767px) {
     .main .container {
-      display: inherit; } }
-
-.main .detail-container {
-  display: grid;
-  grid-template-columns: 5% 65% 30%;
-  grid-template-rows: unset;
-  grid-gap: 0; }
-  @media screen and (max-width: 1024px) {
-    .main .detail-container {
-      grid-template-columns: 5% 60% 35%; } }
-  @media (max-device-width: 767px) {
-    .main .detail-container {
-      display: inherit; } }
-
-.main .profile-container {
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: unset;
-  grid-gap: 0; }
-  @media screen and (max-width: 1024px) {
-    .main .profile-container {
-      grid-template-columns: 30% 70%; } }
-  @media (max-device-width: 767px) {
-    .main .profile-container {
       display: inherit; } }
 
 @media screen and (min-width: 1024px) {

@@ -79,7 +79,6 @@
   {
     "outputFileName": "wwwroot/minify/styles/site.min.css",
     "inputFiles": [
-      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
       "wwwroot/styles/pages/auth.min.css"
     ]
   },
