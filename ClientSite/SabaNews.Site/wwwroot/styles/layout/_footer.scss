@@ -1,13 +1,14 @@
 @import '../abstracts/variables';
 @import '../abstracts/_mixins.scss';
+
 .footer {
     background-color: $color-pagination;
     border-top: 4px solid $color-active;
     padding: 1.2rem 0;
+    margin-top: auto;
 
     @include tableMobile {
         padding: .6rem 0;
-        margin-top: 2.7rem;
     }
 
     .copy-right {
