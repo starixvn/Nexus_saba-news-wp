@@ -132,7 +132,10 @@
 
         $(document).on('click', '.add_comment', function () {
             var self = $(this);
+            var rex = /(<([^>]+)>)/ig;
             var commentContent = self.parent().find("textarea[name=comment_value]").val();
+            commentContent = commentContent.replace(rex, "");
+            commentContent = commentContent.replace(/\n\r?/g, '<br />');
             if ($.trim(commentContent) === "") {
                 self.parent().find("textarea[name=comment_value]").focus();
                 return false;
@@ -140,9 +143,7 @@
             if (commentContent.length >= 1500) {
                 return false;
             }
-
-            commentContent = commentContent.replace(/\n\r?/g, '<br />');
-
+            
             $.ajax({
                 type: "POST",
                 url: "/comments/create",
@@ -193,11 +194,16 @@
         $(document).on('click', '.add_sub_comment', function () {
             var self = $(this);
             var commentContent = self.parent().find("textarea[name=comment_value]").val();
+            var rex = /(<([^>]+)>)/ig;
+            commentContent = commentContent.replace(rex, "");
+            commentContent = commentContent.replace(/\n\r?/g, '<br />');
             if ($.trim(commentContent) === "") {
                 self.parent().find("textarea[name=comment_value]").focus();
                 return false;
             }
-            commentContent = commentContent.replace(/\n\r?/g, '<br />');
+            if (commentContent.length >= 1500) {
+                return false;
+            }
             var repForm = self.parent().parent();
             var parent = 0;
             var isParent = repForm.hasClass('rep_parent');

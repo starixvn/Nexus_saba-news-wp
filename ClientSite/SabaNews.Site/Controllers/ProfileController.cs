@@ -42,7 +42,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return View(Constants.EmptyProfile);
+                return Redirect(Url.Action("Index", "Home"));
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
@@ -97,7 +97,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return View(Constants.EmptyProfile);
+                return Redirect(Url.Action("Index", "Home"));
             }
             
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
