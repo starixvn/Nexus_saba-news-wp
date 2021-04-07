@@ -18,6 +18,9 @@ $('.submenu').click(function () {
 
 
 $(document).ready(function () {
+    $('.language-select').click(function () {
+        $(this).siblings('.languages-list').toggleClass('active')
+    });
 
     $('.action').click(function (e) {
         e.preventDefault();
