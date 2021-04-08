@@ -1,6 +1,5 @@
 @import './_variables.scss';
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
-    background-color: $block-highlight-bgcolor;
     outline: none;
 
     &::placeholder {

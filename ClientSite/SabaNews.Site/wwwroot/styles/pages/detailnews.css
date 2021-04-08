@@ -161,7 +161,6 @@ p.has-text-align-center {
     --padding-col : 0 1.5rem;
 }*/
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
-  background-color: #E8EAEF;
   outline: none; }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     color: #828282; }
@@ -454,14 +453,14 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     border-bottom: 1px solid #cacaca;
     color: #828282;
     width: 11vw;
-    background: transparent !important; }
+    background: transparent; }
     @media screen and (max-width: 1024px) {
       .search-input input {
         width: 100%;
         font-size: 1.6rem;
         display: block;
         border-bottom: none;
-        background: #E8EAEF !important;
+        background: #E8EAEF;
         border-radius: 28px;
         padding: 0 3.2rem 0 1.6rem; } }
   .search-input .active-input {
@@ -1122,7 +1121,8 @@ button {
         height: 3rem;
         color: #333;
         overflow: hidden;
-        padding: .5rem 3.7rem 0 1.5rem; }
+        padding: .5rem 3.7rem 0 1.5rem;
+        font-family: Arial, sans-serif; }
       .comment-post form .comment-content-box .note-text-count {
         font-weight: 400;
         color: #757575;

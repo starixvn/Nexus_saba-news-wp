@@ -158,7 +158,6 @@ p.has-text-align-center {
     --padding-col : 0 1.5rem;
 }*/
 textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
-  background-color: #E8EAEF;
   outline: none; }
   textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
     color: #828282; }
@@ -451,14 +450,14 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     border-bottom: 1px solid #cacaca;
     color: #828282;
     width: 11vw;
-    background: transparent !important; }
+    background: transparent; }
     @media screen and (max-width: 1024px) {
       .search-input input {
         width: 100%;
         font-size: 1.6rem;
         display: block;
         border-bottom: none;
-        background: #E8EAEF !important;
+        background: #E8EAEF;
         border-radius: 28px;
         padding: 0 3.2rem 0 1.6rem; } }
   .search-input .active-input {
