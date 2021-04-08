@@ -128,6 +128,70 @@
                     width: calc(100% - 120px);
                 }
 
+                .auth-input {
+                    position: relative;
+
+                    &:hover {
+                        .box-auth {
+                            display: block;
+                        }
+                    }
+
+                    .auth-provider {
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        padding: 1.6rem 1.2rem;
+
+                        .avatar-user {
+                            width: 2.5rem;
+                            height: 2.5rem;
+                            background: $separator-color;
+                            font-weight: bold;
+                            color: $color-fff;
+                            border-radius: 50%;
+                            margin-right: .5rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            overflow: hidden;
+
+                            img {
+                                object-fit: cover;
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .item {
+                            padding: 0;
+                        }
+                    }
+
+                    .box-auth {
+                        display: none;
+                        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+                        list-style: none;
+                        padding: 1.2rem;
+                        background: $bg-nav;
+                        position: absolute;
+                        width: 18rem;
+                        top: 9.5rem;
+
+                        li {
+                            margin-bottom: 1rem;
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            .item {
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+
                 .main-menu {
                     position: relative;
                     list-style: none;
@@ -151,70 +215,6 @@
                         flex-direction: inherit;
                         height: 4rem;
                         padding-bottom: 0;
-                    }
-
-                    .auth-input {
-                        position: relative;
-
-                        &:hover {
-                            .box-auth {
-                                display: block;
-                            }
-                        }
-
-                        .auth-provider {
-                            list-style: none;
-                            display: flex;
-                            align-items: center;
-                            padding: 1.6rem 1.2rem;
-
-                            .avatar-user {
-                                width: 2.5rem;
-                                height: 2.5rem;
-                                background: $separator-color;
-                                font-weight: bold;
-                                color: $color-fff;
-                                border-radius: 50%;
-                                margin-right: .5rem;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                overflow: hidden;
-
-                                img {
-                                    object-fit: cover;
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-
-                            .item {
-                                padding: 0;
-                            }
-                        }
-
-                        .box-auth {
-                            display: none;
-                            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-                            list-style: none;
-                            padding: 1.2rem;
-                            background: $bg-nav;
-                            position: absolute;
-                            width: 18rem;
-                            top: 5.5rem;
-
-                            li {
-                                margin-bottom: 1rem;
-
-                                &:last-child {
-                                    margin-bottom: 0;
-                                }
-
-                                .item {
-                                    padding: 0;
-                                }
-                            }
-                        }
                     }
 
                     .menu-item {

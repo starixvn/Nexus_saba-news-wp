@@ -275,6 +275,48 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .header .top-header .group-menu .nav-menu {
             width: calc(100% - 120px); } }
+        .header .top-header .group-menu .nav-menu .auth-input {
+          position: relative; }
+          .header .top-header .group-menu .nav-menu .auth-input:hover .box-auth {
+            display: block; }
+          .header .top-header .group-menu .nav-menu .auth-input .auth-provider {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            padding: 1.6rem 1.2rem; }
+            .header .top-header .group-menu .nav-menu .auth-input .auth-provider .avatar-user {
+              width: 2.5rem;
+              height: 2.5rem;
+              background: #e5e5e5;
+              font-weight: bold;
+              color: #fff;
+              border-radius: 50%;
+              margin-right: .5rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden; }
+              .header .top-header .group-menu .nav-menu .auth-input .auth-provider .avatar-user img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%; }
+            .header .top-header .group-menu .nav-menu .auth-input .auth-provider .item {
+              padding: 0; }
+          .header .top-header .group-menu .nav-menu .auth-input .box-auth {
+            display: none;
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+            list-style: none;
+            padding: 1.2rem;
+            background: #FFFDF9;
+            position: absolute;
+            width: 18rem;
+            top: 9.5rem; }
+            .header .top-header .group-menu .nav-menu .auth-input .box-auth li {
+              margin-bottom: 1rem; }
+              .header .top-header .group-menu .nav-menu .auth-input .box-auth li:last-child {
+                margin-bottom: 0; }
+              .header .top-header .group-menu .nav-menu .auth-input .box-auth li .item {
+                padding: 0; }
         .header .top-header .group-menu .nav-menu .main-menu {
           position: relative;
           list-style: none;
@@ -301,48 +343,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               flex-direction: inherit;
               height: 4rem;
               padding-bottom: 0; } }
-          .header .top-header .group-menu .nav-menu .main-menu .auth-input {
-            position: relative; }
-            .header .top-header .group-menu .nav-menu .main-menu .auth-input:hover .box-auth {
-              display: block; }
-            .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider {
-              list-style: none;
-              display: flex;
-              align-items: center;
-              padding: 1.6rem 1.2rem; }
-              .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user {
-                width: 2.5rem;
-                height: 2.5rem;
-                background: #e5e5e5;
-                font-weight: bold;
-                color: #fff;
-                border-radius: 50%;
-                margin-right: .5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden; }
-                .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .avatar-user img {
-                  object-fit: cover;
-                  width: 100%;
-                  height: 100%; }
-              .header .top-header .group-menu .nav-menu .main-menu .auth-input .auth-provider .item {
-                padding: 0; }
-            .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth {
-              display: none;
-              box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-              list-style: none;
-              padding: 1.2rem;
-              background: #FFFDF9;
-              position: absolute;
-              width: 18rem;
-              top: 5.5rem; }
-              .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth li {
-                margin-bottom: 1rem; }
-                .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth li:last-child {
-                  margin-bottom: 0; }
-                .header .top-header .group-menu .nav-menu .main-menu .auth-input .box-auth li .item {
-                  padding: 0; }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative; }
             @media screen and (max-width: 1024px) {
