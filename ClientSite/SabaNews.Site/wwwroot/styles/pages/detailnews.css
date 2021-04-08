@@ -270,6 +270,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             margin-bottom: 1rem; }
             .header .header-controls .header-auth-provider .auth-input .box-auth li:last-child {
               margin-bottom: 0; }
+        .header .header-controls .header-auth-provider .auth-input .active-box-auth {
+          display: block; }
       .header .header-controls .header-auth-provider .item-control {
         margin-right: 1.5rem; }
         .header .header-controls .header-auth-provider .item-control:last-child {

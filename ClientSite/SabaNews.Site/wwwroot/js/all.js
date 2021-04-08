@@ -43,6 +43,8 @@ $(document).ready(function () {
         }
     });
 
+    
+
     //desktop
     $('.btn-search').click(function () {
         if ($(window).innerWidth() >= 1024) {
@@ -107,7 +109,12 @@ $(document).ready(function () {
             $(this).parent().find('.icon-show').show();
         }
     });
-    
+
+
+
+    $('.auth-displayname .item').click(function () {
+        $('.box-auth').toggleClass('active-box-auth')
+    });
 
     $(window).click(function (e) {
         var elmClass = e.target.className;
@@ -115,6 +122,8 @@ $(document).ready(function () {
             if ($('.languages-list').hasClass('active')) {
                 $('.languages-list').removeClass('active');
             }
+           
+            
         }
         if (elmClass !== 'icon-search' && elmClass !== 'keyword-input') {
             var searchbox = $('.search-box');
