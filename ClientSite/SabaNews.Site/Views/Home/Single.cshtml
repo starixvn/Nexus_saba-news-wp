@@ -225,10 +225,10 @@
 <div class="auth-form">
     <div class="modal fade" id="requestLogin">
         <div class="modal-content modal-auth">
-            <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
             <div class="modal-body modal-warning">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <div class="modal-body">
                     <h3 class="heading-warning">@ViewResources.Message</h3>
                     <hr />
@@ -247,9 +247,9 @@
 			var top_of_obj = el.offsetTop - 600;
 			var top_of_window = window.scrollY;
 			if (top_of_window > top_of_obj) {
-				main.classList.add('active-nav')
+                main.classList.add('active-nav-socical')
 			} else {
-				main.classList.remove('active-nav')
+                main.classList.remove('active-nav-socical')
 			}
 		}
 	}

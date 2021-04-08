@@ -1008,7 +1008,7 @@ button {
         border-top: 1px solid #999999;
         padding-top: 2rem; }
 
-.active-nav {
+.active-nav-socical {
   opacity: 0;
   transition: .3s all ease-in-out;
   visibility: hidden; }
