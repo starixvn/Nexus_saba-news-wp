@@ -183,7 +183,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background-color: #FFFDF9;
   position: fixed;
   width: 100%;
-  z-index: 99999; }
+  z-index: 999; }
   .header .top-header {
     padding: .5rem 0;
     background-color: #FFFDF9;

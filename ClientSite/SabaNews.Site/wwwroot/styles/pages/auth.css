@@ -2,33 +2,43 @@
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
-.modal-auth {
+#auth-form .show {
+  position: fixed;
+  z-index: 99999;
+  top: 50%;
+  background: #fff;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 100%;
+  max-width: 75rem; }
+
+#auth-form .modal-auth {
   border: none;
   border-radius: 0;
   position: relative; }
-  .modal-auth .modal-body {
+  #auth-form .modal-auth .modal-body {
     padding: 0; }
-  .modal-auth .modal-resetpass {
+  #auth-form .modal-auth .modal-resetpass {
     padding: 3rem; }
-    .modal-auth .modal-resetpass .form-resetpass {
+    #auth-form .modal-auth .modal-resetpass .form-resetpass {
       max-width: 42rem;
       margin: 0 auto; }
-      .modal-auth .modal-resetpass .form-resetpass .heading-resetpass {
+      #auth-form .modal-auth .modal-resetpass .form-resetpass .heading-resetpass {
         padding-bottom: 2rem;
         border-bottom: 1px solid #e5e5e5;
         text-align: center;
         color: #333;
         font-size: 1.8rem;
         font-weight: 700; }
-      .modal-auth .modal-resetpass .form-resetpass .form-title {
+      #auth-form .modal-auth .modal-resetpass .form-resetpass .form-title {
         margin: 2rem 0;
         text-align: center; }
-  .modal-auth .headig-modal {
+  #auth-form .modal-auth .headig-modal {
     text-align: center;
     font-size: 1.6rem;
     color: #333;
     margin-bottom: 2rem; }
-  .modal-auth .close-login {
+  #auth-form .modal-auth .close-login {
     position: absolute;
     top: -1.6rem;
     right: -1.6rem;
@@ -42,18 +52,19 @@
     line-height: 3.2rem;
     font-size: 3rem;
     outline: none; }
-    .modal-auth .close-login:focus {
+    #auth-form .modal-auth .close-login:focus {
       outline: none; }
-  .modal-auth .nav-login {
+  #auth-form .modal-auth .nav-login {
     display: flex;
     align-items: center;
-    flex-wrap: no-wrap;
+    flex-wrap: nowrap;
     justify-content: center;
-    flex-direction: row; }
-    .modal-auth .nav-login li {
+    flex-direction: row;
+    list-style: none; }
+    #auth-form .modal-auth .nav-login li {
       width: 50%;
       text-align: center; }
-      .modal-auth .nav-login li a {
+      #auth-form .modal-auth .nav-login li a {
         text-decoration: none;
         color: #828282;
         font-weight: 700;
@@ -61,9 +72,9 @@
         display: block;
         padding: 1.7rem 0;
         position: relative; }
-      .modal-auth .nav-login li .active {
+      #auth-form .modal-auth .nav-login li .active {
         color: #9F224E; }
-        .modal-auth .nav-login li .active:after {
+        #auth-form .modal-auth .nav-login li .active:after {
           content: '';
           display: block;
           width: 100%;
@@ -72,26 +83,26 @@
           left: 0;
           bottom: -1px;
           background: #9F224E; }
-  .modal-auth .login-tab, .modal-auth .register-tab {
+  #auth-form .modal-auth .login-tab, #auth-form .modal-auth .register-tab {
     padding: 3rem 0;
     display: flex; }
-    .modal-auth .login-tab .group-tab, .modal-auth .register-tab .group-tab {
+    #auth-form .modal-auth .login-tab .group-tab, #auth-form .modal-auth .register-tab .group-tab {
       padding: 0 3rem;
       border-right: 1px solid #E0E0E0;
       width: 55%; }
       @media screen and (max-width: 1024px) {
-        .modal-auth .login-tab .group-tab, .modal-auth .register-tab .group-tab {
+        #auth-form .modal-auth .login-tab .group-tab, #auth-form .modal-auth .register-tab .group-tab {
           padding: 0 2rem; } }
-      .modal-auth .login-tab .group-tab #forgot-password, .modal-auth .register-tab .group-tab #forgot-password {
+      #auth-form .modal-auth .login-tab .group-tab #forgot-password, #auth-form .modal-auth .register-tab .group-tab #forgot-password {
         text-decoration: none;
         text-align: center;
         display: block;
         margin-top: 1.5rem;
         color: #828282; }
-    .modal-auth .login-tab .login-fb-google, .modal-auth .register-tab .login-fb-google {
+    #auth-form .modal-auth .login-tab .login-fb-google, #auth-form .modal-auth .register-tab .login-fb-google {
       padding: 0 1.5rem;
       width: 45%; }
-      .modal-auth .login-tab .login-fb-google .social-login, .modal-auth .register-tab .login-fb-google .social-login {
+      #auth-form .modal-auth .login-tab .login-fb-google .social-login, #auth-form .modal-auth .register-tab .login-fb-google .social-login {
         text-decoration: none;
         width: 100%;
         max-width: 24.2rem;
@@ -103,18 +114,18 @@
         margin-bottom: 2rem;
         border-radius: 3px;
         position: relative; }
-        .modal-auth .login-tab .login-fb-google .social-login .icon-social, .modal-auth .register-tab .login-fb-google .social-login .icon-social {
+        #auth-form .modal-auth .login-tab .login-fb-google .social-login .icon-social, #auth-form .modal-auth .register-tab .login-fb-google .social-login .icon-social {
           font-size: 2.4rem;
           position: absolute;
           left: 1rem;
           top: 1rem; }
-      .modal-auth .login-tab .login-fb-google .login-facebook, .modal-auth .register-tab .login-fb-google .login-facebook {
+      #auth-form .modal-auth .login-tab .login-fb-google .login-facebook, #auth-form .modal-auth .register-tab .login-fb-google .login-facebook {
         border: 1px solid #3B5999;
         color: #3B5999;
         font-weight: 700; }
-        .modal-auth .login-tab .login-fb-google .login-facebook .icon-social:before, .modal-auth .register-tab .login-fb-google .login-facebook .icon-social:before {
+        #auth-form .modal-auth .login-tab .login-fb-google .login-facebook .icon-social:before, #auth-form .modal-auth .register-tab .login-fb-google .login-facebook .icon-social:before {
           color: #3B5999; }
-      .modal-auth .login-tab .login-fb-google .login-google, .modal-auth .register-tab .login-fb-google .login-google {
+      #auth-form .modal-auth .login-tab .login-fb-google .login-google, #auth-form .modal-auth .register-tab .login-fb-google .login-google {
         color: #4688F1;
         border: 1px solid #4688F1; }
 
@@ -152,11 +163,16 @@
   width: 100%;
   height: 4.8rem; }
 
+.modal-backdrop.show {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999; }
+
 .resetpass-container {
   display: inherit !important; }
-
-.modal-open, .modal {
-  padding: 0 !important; }
 
 .error {
   color: red;
