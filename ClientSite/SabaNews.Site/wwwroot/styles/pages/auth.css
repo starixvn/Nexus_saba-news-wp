@@ -52,6 +52,9 @@
     line-height: 3.2rem;
     font-size: 3rem;
     outline: none; }
+    @media screen and (max-width: 1024px) {
+      .auth-form .modal-auth .close-login {
+        right: 0; } }
     .auth-form .modal-auth .close-login:focus {
       outline: none; }
   .auth-form .modal-auth .nav-login {

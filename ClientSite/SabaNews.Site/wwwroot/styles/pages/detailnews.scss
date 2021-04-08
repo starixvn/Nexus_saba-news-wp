@@ -143,7 +143,47 @@ img {
     }
 }
 
+.modal-auth {
+    position: relative;
 
+    .modal-warning {
+        padding: 3rem;
+
+        .heading-warning {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid $separator-color;
+            text-align: center;
+            color: $color-title;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .slogan {
+            text-align: center;
+            margin: 2rem 0;
+        }
+    }
+
+    .close-login {
+        position: absolute;
+        top: -1.6rem;
+        right: -1.6rem;
+        z-index: 999999;
+        cursor: pointer;
+        color: #4F4F4F;
+        width: 3.2rem;
+        height: 3.2rem;
+        background: $color-fff;
+        border-radius: 50%;
+        line-height: 3.2rem;
+        font-size: 3rem;
+        outline: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
 
 .detail-content-table {
     ul {

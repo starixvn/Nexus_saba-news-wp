@@ -1398,6 +1398,37 @@ img {
       .card-horizontal__image {
         height: 9.3rem; } }
 
+.modal-auth {
+  position: relative; }
+  .modal-auth .modal-warning {
+    padding: 3rem; }
+    .modal-auth .modal-warning .heading-warning {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e5e5;
+      text-align: center;
+      color: #333;
+      font-size: 1.8rem;
+      font-weight: 700; }
+    .modal-auth .modal-warning .slogan {
+      text-align: center;
+      margin: 2rem 0; }
+  .modal-auth .close-login {
+    position: absolute;
+    top: -1.6rem;
+    right: -1.6rem;
+    z-index: 999999;
+    cursor: pointer;
+    color: #4F4F4F;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 3.2rem;
+    font-size: 3rem;
+    outline: none; }
+    .modal-auth .close-login:focus {
+      outline: none; }
+
 .detail-content-table ul {
   list-style: none;
   padding-left: 0;

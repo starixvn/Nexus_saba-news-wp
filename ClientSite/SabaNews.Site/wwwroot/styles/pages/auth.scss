@@ -68,7 +68,9 @@
             line-height: 3.2rem;
             font-size: 3rem;
             outline: none;
-
+            @include tableMobile{
+                right : 0;
+            }
             &:focus {
                 outline: none;
             }
