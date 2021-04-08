@@ -24,8 +24,8 @@
                     new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
-                        TimeZoneInfo.ConvertTimeFromUtc(
-                            new DateTimeOffset(sitemapNode.ModifiedDate.Value, timeSpan).DateTime, SEAsiaTimeZone)
+                        new DateTimeOffset(TimeZoneInfo.ConvertTime(
+                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone), timeSpan)
                         .ToString("yyyy-MM-ddTHH:mm:sszzz")));
                 root.Add(urlElement);
             }
@@ -49,8 +49,8 @@
                     xmlns_news + "news",
                     publicationElement,
                     new XElement(xmlns_news + "publication_date",
-                        TimeZoneInfo.ConvertTimeFromUtc(
-                            new DateTimeOffset(sitemapNode.ModifiedDate.Value, timeSpan).DateTime, SEAsiaTimeZone)
+                        new DateTimeOffset(TimeZoneInfo.ConvertTime(
+                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone), timeSpan)
                         .ToString("yyyy-MM-ddTHH:mm:sszzz")),
                     new XElement(xmlns_news + "title", sitemapNode.Title),
                     new XElement(xmlns_news + "keywords", sitemapNode.Tags));
