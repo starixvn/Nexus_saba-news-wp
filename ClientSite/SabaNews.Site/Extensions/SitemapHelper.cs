@@ -11,6 +11,7 @@
         private static readonly XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         private static readonly XNamespace xmlns_news = "http://www.google.com/schemas/sitemap-news/0.9";
         private static readonly TimeZoneInfo SEAsiaTimeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
+        private static readonly TimeSpan timeSpan = new TimeSpan(7, 0, 0);
 
         public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes)
         {
@@ -24,7 +25,8 @@
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
                         TimeZoneInfo.ConvertTimeFromUtc(
-                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone).ToString("yyyy-MM-ddTHH:mm:sszzz")));
+                            new DateTimeOffset(sitemapNode.ModifiedDate.Value, timeSpan).DateTime, SEAsiaTimeZone)
+                        .ToString("yyyy-MM-ddTHH:mm:sszzz")));
                 root.Add(urlElement);
             }
 
@@ -48,7 +50,8 @@
                     publicationElement,
                     new XElement(xmlns_news + "publication_date",
                         TimeZoneInfo.ConvertTimeFromUtc(
-                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone).ToString("yyyy-MM-ddTHH:mm:sszzz")),
+                            new DateTimeOffset(sitemapNode.ModifiedDate.Value, timeSpan).DateTime, SEAsiaTimeZone)
+                        .ToString("yyyy-MM-ddTHH:mm:sszzz")),
                     new XElement(xmlns_news + "title", sitemapNode.Title),
                     new XElement(xmlns_news + "keywords", sitemapNode.Tags));
                 XElement urlE = new(
