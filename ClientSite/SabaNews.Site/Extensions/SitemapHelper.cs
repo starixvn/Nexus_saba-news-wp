@@ -49,7 +49,7 @@
                     new XElement(xmlns_news + "keywords", sitemapNode.Tags));
                 XElement urlE = new(
                     xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}/{sitemapNode.Slug}")),
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Slug}")),
                     newsElement);
                 root.Add(urlE);
             }
