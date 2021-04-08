@@ -1355,8 +1355,11 @@ button {
               text-align: center;
               line-height: 3.2rem;
               border-radius: 50%;
-              justify-content: center;
+              display: flex;
               align-items: center;
+              flex-wrap: nowrap;
+              justify-content: center;
+              flex-direction: row;
               margin-right: 1rem; }
             .block-extension .controls__news .card-horizontal .social-control .group-icon .comment {
               margin: 0;
