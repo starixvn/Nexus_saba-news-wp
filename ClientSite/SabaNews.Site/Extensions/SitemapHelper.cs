@@ -4,12 +4,13 @@
     using System.Collections.Generic;
     using System.Xml.Linq;
     using SabaNews.Models;
+    using TimeZoneConverter;
 
     public static class SitemapHelper
     {
         private static readonly XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         private static readonly XNamespace xmlns_news = "http://www.google.com/schemas/sitemap-news/0.9";
-        private static readonly TimeZoneInfo SEAsiaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+        private static readonly TimeZoneInfo SEAsiaTimeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
 
         public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes)
         {
