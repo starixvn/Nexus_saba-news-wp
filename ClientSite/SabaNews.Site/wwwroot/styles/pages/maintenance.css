@@ -641,6 +641,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     top: 0;
     bottom: 0; } }
 
+.overflow-modal {
+  overflow: hidden; }
+
 /* vietnamese */
 @font-face {
   font-family: 'Montserrat';

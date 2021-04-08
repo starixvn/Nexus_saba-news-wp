@@ -642,6 +642,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     top: 0;
     bottom: 0; } }
 
+.overflow-modal {
+  overflow: hidden; }
+
 .block-extension {
   display: flex;
   align-items: flex-start; }

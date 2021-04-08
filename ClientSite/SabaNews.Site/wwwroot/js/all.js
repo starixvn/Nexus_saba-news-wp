@@ -143,4 +143,12 @@ $(document).ready(function () {
             $('.modal').modal('hide');
         }
     });
+
+    $(document).on('shown.bs.modal', '.modal', function (e) {
+        $('body').addClass('overflow-modal');
+    })
+
+    $(document).on('hidden.bs.modal', '.modal', function (e) {
+        $('body').removeClass('overflow-modal');
+    })
 });

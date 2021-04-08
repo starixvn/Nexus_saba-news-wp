@@ -195,7 +195,6 @@
                 $('.nav-title').removeClass('active');
                 $(this).addClass('active');
                 if (self.attr('id') === 'nav-login-tab') {
-                    console.log('123123');
                     $('#nav-login').addClass('active')
                     $('#nav-register').removeClass('active')
                 } else {
