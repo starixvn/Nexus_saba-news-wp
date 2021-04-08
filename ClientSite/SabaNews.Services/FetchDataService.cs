@@ -20,7 +20,7 @@
 
         public async Task<PostViewModel> GetHomePageViewModel()
         {
-            var newPosts = await postService.GetPostsBySlugAsync(Constants.NewPostSlug, Constants.FromFirstItem, Constants.GetFourItems);
+            var newPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var footballPosts = await postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var basketballPosts = await postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var tennisPosts = await postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
@@ -32,7 +32,7 @@
 
             var viewModel = new PostViewModel
             {
-                NewPosts = (newPosts).ToArray(),
+                NewPosts = (newPosts.Posts).ToArray(),
                 FootballPosts = (footballPosts).ToArray(),
                 BasketballPosts = (basketballPosts).ToArray(),
                 TennisPosts = (tennisPosts).ToArray(),
