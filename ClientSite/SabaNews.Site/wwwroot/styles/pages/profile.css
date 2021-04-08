@@ -36,7 +36,7 @@ body {
 .align-items-center {
   align-items: center; }
 
-.hidden-body {
+.hidden-body, .overflow-modal {
   overflow: hidden; }
 
 .pd-column-left {
@@ -544,9 +544,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   .hidden-body .header {
     top: 0;
     bottom: 0; } }
-
-.overflow-modal {
-  overflow: hidden; }
 
 .block-extension {
   display: flex;

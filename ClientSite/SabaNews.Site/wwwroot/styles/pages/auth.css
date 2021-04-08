@@ -74,7 +74,8 @@
         font-size: 1.8rem;
         display: block;
         padding: 1.7rem 0;
-        position: relative; }
+        position: relative;
+        cursor: pointer; }
       .auth-form .modal-auth .nav-login li .active {
         color: #9F224E; }
         .auth-form .modal-auth .nav-login li .active:after {
