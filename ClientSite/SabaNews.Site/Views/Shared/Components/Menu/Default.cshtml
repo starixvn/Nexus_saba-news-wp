@@ -2,6 +2,62 @@
 @model IEnumerable<Menu>
 
 <section class="header">
+
+    <div class="header-controls">
+        <div class="container padding-mobile-none">
+            <ul class="header-auth-provider">
+                <li class="item-control languages-box">
+                    <div class="language-select"><span class="flag flag-vn"></span><span class="country">VN</span></div>
+                    <ul class="languages-list">
+                        <li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>CN</span></a>
+                        <li>
+                            <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="item-control search-desktop search-input">
+                    <form asp-action="Search" method="get">
+                        <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+                        <button type="submit" class="btn btn-search" aria-label="search">
+                            <i class="icon-search"></i>
+                        </button>
+                    </form>
+                </li>
+                <li class="item-control auth-input">
+                    @if (ViewBag.IsAuthenticated)
+                    {
+                        <ul class="auth-provider">
+                            @if (ViewBag.Photo == null)
+                            {
+                                <li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+                            }
+                            else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+                            {
+                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                            }
+                            else
+                            {
+                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                            }
+                            <li class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></li>
+                        </ul>
+                        <ul class="box-auth">
+                            <li class="auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
+                            <li class="auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
+                    }
+                </li>
+            </ul>
+		</div>
+	</div>
+
+
+
+
     <div class="top-header">
         <div class="container padding-mobile-none">
             <div class="group-menu">
@@ -42,54 +98,14 @@
 							}
 
 						}
-						<li class="menu-item auth-input">
-							@if (ViewBag.IsAuthenticated)
-							{
-								<ul class="auth-provider">
-									@if (ViewBag.Photo == null)
-									{
-										<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
-									}
-									else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
-									{
-										<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
-									}
-									else
-									{
-										<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
-									}
-									<li class="auth-displayname"><a class="item">@ViewBag.DisplayName</a></li>
-								</ul>
-								<ul class="box-auth">
-									<li class="auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
-									<li class="auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
-								</ul>
-							}
-							else
-							{
-								<a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
-							}
+						<li class="right-header-section search-input">
+							<form asp-action="Search" method="get">
+                                <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+								<button type="submit" class="btn btn-search" aria-label="search">
+									<i class="icon-search"></i>
+								</button>
+							</form>
 						</li>
-						<li class="right-header-section">
-							<div class="languages-box">
-								<div class="language-select"><span class="flag flag-vn"></span><span class="country">VN</span></div>
-								<ul class="languages-list">
-									<li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>CN</span></a>
-									<li>
-										<a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
-									</li>
-								</ul>
-							</div>
-							<div class="search-input">
-								<form asp-action="Search" method="get">
-									<div class="search-box"><input class="keyword-input" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm..."></div>
-									<button type="submit" class="btn btn-search" aria-label="search">
-										<i class="icon-search"></i>
-									</button>
-								</form>
-							</div>
-						</li>
-
 					</ul>
                 </div>
             </div>

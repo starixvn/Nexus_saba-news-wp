@@ -4,14 +4,138 @@
 
 .header {
     background-color: $bg-nav;
-    position: fixed;
-    width: 100%;
-    z-index: 999;
+
+    .header-controls {
+        padding: .8rem 0;
+        border-bottom: 1px solid $separator-color;
+
+        .header-auth-provider {
+            list-style: none;
+            @include flex(center,nowrap, flex-end);
+
+            .search-desktop {
+                @include tableMobile {
+                    display: none;
+                }
+
+                form {
+                    position: relative;
+
+                    .search-box {
+                        height: 3.2rem;
+                        line-height: 3.2rem;
+                        border-radius: 16px;
+                        border: 1px solid $separator-color;
+                        padding: 0 3rem 0 1.4rem;
+                    }
+                }
+            }
+
+            .auth-input {
+                position: relative;
+                .item {
+                    padding: 0;
+                    font-weight: 600;
+                    margin-right: 2rem;
+                    line-height: 1.7rem;
+                    color: $color-content;
+                    text-decoration: none;
+                }
+
+                .auth-provider {
+                    list-style: none;
+                    display: flex;
+                    align-items: center;
+                    padding: .5rem 1.2rem;
+
+                    .avatar-user {
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        background: $separator-color;
+                        font-weight: bold;
+                        color: $color-fff;
+                        border-radius: 50%;
+                        margin-right: .5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+
+                        img {
+                            object-fit: cover;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .auth-displayname {
+                        cursor: pointer;
+                        position: relative;
+
+                        &:after {
+                            border-left: 3px solid transparent;
+                            border-right: 3px solid transparent;
+                            border-top: 4px solid #757575;
+                            position: absolute;
+                            top: 1.1rem;
+                            right: .5rem;
+                            content: '';
+                        }
+                    }
+                }
+
+                .box-auth {
+                    display: none;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    list-style: none;
+                    padding: 1.2rem;
+                    background: $bg-nav;
+                    position: absolute;
+                    width: 18rem;
+                    top: 4.8rem;
+                    z-index: 99999;
+                    border: 1px solid $separator-color;
+                    &:before {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border: solid $separator-color;
+                        border-width: 0 1px 1px 0;
+                        content: '';
+                        position: absolute;
+                        top: -.9rem;
+                        right: 2.3rem;
+                        background: $color-fff;
+                        -webkit-transform: rotate( 225deg );
+                        -ms-transform: rotate(225deg);
+                        transform: rotate( 225deg );
+                    }
+                    li {
+                        margin-bottom: 1rem;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+
+            .item-control {
+                margin-right: 1.5rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
 
     .top-header {
+        position: absolute;
+        width: 100%;
+        z-index: 999;
         padding: .5rem 0;
         background-color: $bg-nav;
-        box-shadow: (0px 4px 8px rgba(0, 0, 0, 0.16));
+        box-shadow: (0px 4px 5px rgba(0, 0, 0, 0.16));
         transition: .3s ease-in-out;
 
         @include tableMobile {
@@ -29,7 +153,7 @@
             @include tableMobile {
                 padding: 0;
                 flex-wrap: wrap;
-                justify-content: space-between;
+                justify-content: center;
                 position: relative;
             }
 
@@ -64,6 +188,9 @@
 
                 @include tableMobile {
                     display: block;
+                    position: absolute;
+                    left: 1rem;
+                    top: 1.2rem;
                 }
 
                 @include landscapeTablet {
@@ -107,7 +234,7 @@
 
                     &:nth-child(2) {
                         opacity: 0;
-                        left: 5rem;
+                        left: -5rem;
                     }
 
                     &:nth-child(3) {
@@ -128,69 +255,6 @@
                     width: calc(100% - 120px);
                 }
 
-                .auth-input {
-                    position: relative;
-
-                    &:hover {
-                        .box-auth {
-                            display: block;
-                        }
-                    }
-
-                    .auth-provider {
-                        list-style: none;
-                        display: flex;
-                        align-items: center;
-                        padding: 1.6rem 1.2rem;
-
-                        .avatar-user {
-                            width: 2.5rem;
-                            height: 2.5rem;
-                            background: $separator-color;
-                            font-weight: bold;
-                            color: $color-fff;
-                            border-radius: 50%;
-                            margin-right: .5rem;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            overflow: hidden;
-
-                            img {
-                                object-fit: cover;
-                                width: 100%;
-                                height: 100%;
-                            }
-                        }
-
-                        .item {
-                            padding: 0;
-                        }
-                    }
-
-                    .box-auth {
-                        display: none;
-                        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-                        list-style: none;
-                        padding: 1.2rem;
-                        background: $bg-nav;
-                        position: absolute;
-                        width: 18rem;
-                        top: 9.5rem;
-
-                        li {
-                            margin-bottom: 1rem;
-
-                            &:last-child {
-                                margin-bottom: 0;
-                            }
-
-                            .item {
-                                padding: 0;
-                            }
-                        }
-                    }
-                }
 
                 .main-menu {
                     position: relative;
@@ -311,6 +375,7 @@
         position: fixed;
         width: 100%;
         z-index: 999999;
+        top: 0;
 
         @include tableMobile {
             padding: 0;
@@ -322,102 +387,53 @@
             padding: 0;
         }
     }
-}
 
-.right-header-section {
-    position: absolute;
-    right: 0px;
-    top: auto;
-    display: flex;
+    .right-header-section {
+        display: none;
 
-    @include tableMobile {
-        order: 1;
-        width: 100%;
-        position: relative;
-        padding: 0 1.2rem;
-        margin: 1rem 0 2rem 0;
-        display: block;
-        right: unset;
-        top: unset;
+        @include tableMobile {
+            width: 100%;
+            padding: 0 1.2rem;
+            margin: 1rem 0 2rem 0;
+            display: block;
+        }
     }
 }
+
 
 .search-input {
-    position: relative;
-
     form {
         position: relative;
-    }
 
-    .search-box {
-        position: absolute;
-        right: 1rem;
-        top: 2.6rem;
-        display: none;
-        padding: 1.2rem;
-        background: #fffdf9;
-        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
-
-        @include tableMobile {
-            position: relative;
-            right: unset;
-            top: unset;
-            width: 100%;
-            padding: 0;
-            display: block;
-            background-color: transparent;
-            box-shadow: none;
+        input {
+            @include tableMobile {
+                border: none;
+                height: 3.6rem;
+                width: 100%;
+                font-weight: 400;
+                font-size: 1.6rem;
+                display: block;
+                background: $block-highlight-bgcolor;
+                border-radius: 28px;
+                padding: 0 3.2rem 0 1.6rem;
+            }
         }
-    }
 
-    input {
-        height: 3.6rem;
-        font-size: 1.4rem;
-        font-weight: 400;
-        border: none;
-        border-bottom: 1px solid #cacaca;
-        color: $color-input;
-        width: 11vw;
-        background: transparent;
-
-
-        @include tableMobile {
-            width: 100%;
-            font-size: 1.6rem;
-            display: block;
-            border-bottom: none;
-            background: $block-highlight-bgcolor;
-            border-radius: 28px;
-            padding: 0 3.2rem 0 1.6rem;
-        }
-    }
-
-    .active-input {
-        display: block;
-
-        @include landscapeTablet {
-            display: block;
-        }
-    }
-
-    .btn-search {
-        background-color: transparent;
-        cursor: pointer;
-
-        @include tableMobile {
-            top: .6rem;
-            right: 1.2rem;
+        .btn-search {
+            background: none;
+            position: absolute;
+            right: .5rem;
+            top: .5rem;
             font-size: 1.5rem;
-            width: 2rem;
-            position: absolute
-        }
+            cursor : pointer;
+            @include tableMobile {
+                top: .6rem;
+                right: 1.2rem;
+                position: absolute
+            }
 
-        .icon-search {
-            font-size: 2.4rem;
-
-            @include landscapeTablet {
-                position: relative;
-                top: 2px;
+            .icon-search {
+                font-size: 2.4rem;
             }
         }
     }
@@ -425,31 +441,28 @@
 
 .languages-box {
     position: relative;
-    margin-right: 16px;
-
     @include tableMobile {
         margin-bottom: .8rem;
     }
-
     .languages-list {
         list-style: none;
         display: none;
         position: absolute;
-        z-index: 999;
+        z-index: 9999;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        background: #fff;
-        padding: 4px;
-        width: 80px;
+        background: $color-fff;
+        padding: .4rem;
+        width: 8rem;
         border-radius: 4px;
-        left: -4px;
-        top: 30px;
+        left: -.4rem;
+        top: 3rem;
         transition: opacity .3s;
 
         .lang-item {
             text-decoration: none;
-            color: #4f4f4f;
+            color: $color-content;
             display: inline-block;
-            padding: 2px 0;
+            padding: .2rem 0;
         }
 
         &.active {
@@ -458,13 +471,13 @@
     }
 
     .flag {
-        width: 26px;
-        height: 26px;
+        width: 2.6rem;
+        height: 2.6rem;
         display: inline-block;
         vertical-align: middle;
-        margin-right: 2px;
+        margin-right: .2rem;
         position: relative;
-        top: 2px;
+        top: .2rem;
     }
 
     $langs: vn, cn, en;
@@ -479,6 +492,8 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        padding-right: 1.3rem;
+        border-right: 1px solid $separator-color;
 
         &:after {
             width: 0;
@@ -487,7 +502,7 @@
             border-right: 5px solid transparent;
             border-top: 5px solid #4f4f4f;
             content: '';
-            margin-left: 4px;
+            margin-left: .4rem;
             display: inline-block;
         }
     }
@@ -500,7 +515,7 @@
         }
 
         .nav-menu {
-            height: calc(100% - 56px);
+            height: calc(100% - 5.6rem);
         }
 
         .header {
