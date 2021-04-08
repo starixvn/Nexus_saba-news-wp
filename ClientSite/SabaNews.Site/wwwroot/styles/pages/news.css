@@ -1203,3 +1203,8 @@ button {
 .block-warning .domain {
   padding-left: 16px;
   padding-bottom: 16px; }
+
+.resetpass-container {
+  display: inherit !important; }
+  .resetpass-container .reset-page p {
+    margin-bottom: 1.5rem; }

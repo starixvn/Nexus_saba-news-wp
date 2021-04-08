@@ -175,9 +175,6 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999; }
 
-.resetpass-container {
-  display: inherit; }
-
 .error {
   color: red;
   margin-bottom: 0; }
