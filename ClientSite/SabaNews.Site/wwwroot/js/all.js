@@ -82,6 +82,10 @@ $(document).ready(function () {
             if ((e.ctrlKey || e.metaKey) && e.keyCode === 65) {
                 e.preventDefault();
             }
+            if (e.keyCode === 27) {
+                $('.modal').modal('hide');
+
+            }
         });
     }
 
@@ -120,6 +124,13 @@ $(document).ready(function () {
             }
         } else {
             $('input[name=keyword]').focus();
+        }
+    });
+
+
+    $(document).keyup(function (e) {
+        if (e.keyCode === 27) {
+            $('.modal').modal('hide');
         }
     });
 });
