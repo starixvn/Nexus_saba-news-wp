@@ -21,14 +21,16 @@
         [Route("/robots.txt")]
         public ContentResult RobotsTxt()
         {
+            var domainName = configuration.GetValue<string>("SitemapSettings:Domain");
             var sb = new StringBuilder();
             sb.AppendLine("User-agent: *")
                 .AppendLine("allow: /")
-                .Append("sitemap: ")
-                .Append(Request.Scheme)
-                .Append("://")
-                .Append(Request.Host)
-                .AppendLine("/sitemap.xml");
+                .Append("Sitemap: ")
+                .Append(domainName)
+                .AppendLine("sitemap.xml")
+                .Append("Sitemap: ")
+                .Append(domainName)
+                .AppendLine("sitemap-news.xml");
 
             return Content(sb.ToString(), "text/plain", Encoding.UTF8);
         }
