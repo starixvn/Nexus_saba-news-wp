@@ -3,16 +3,19 @@
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
 
     public class RobotsController : Controller
     {
         private readonly IDataControlService dataControlService;
+        private readonly IConfiguration configuration;
 
-        public RobotsController(IDataControlService dataControlService)
+        public RobotsController(IDataControlService dataControlService, IConfiguration configuration)
         {
             this.dataControlService = dataControlService;
+            this.configuration = configuration;
         }
 
         [Route("/robots.txt")]
@@ -41,7 +44,7 @@
         [Route("sitemap-news.xml")]
         public async Task<ContentResult> SitemapNews()
         {
-            var domain = $"{Request.Scheme}://{Request.Host}";
+            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             var data = await dataControlService.GenerateNewsSitmapXmlData();
             string sitemap = SitemapHelper.GetSitemapNews(data, domain);
             return Content(sitemap, "text/xml", Encoding.UTF8);

@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
@@ -16,11 +17,13 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
+        private readonly IConfiguration configuration;
 
-        public HomeController(IPostService postService, IDataControlService dataControlService)
+        public HomeController(IPostService postService, IDataControlService dataControlService, IConfiguration configuration)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
+            this.configuration = configuration;
         }
 
         public async Task<IActionResult> Index()
@@ -30,6 +33,8 @@
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
             ViewData[Constants.ViewDataTitle] = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
             ViewData[Constants.ViewDataDescription] = viewModel.Category.Description;
+            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
+            ViewData[Constants.ViewUrl] = domain;
 
             return View(viewModel);
         }
@@ -124,6 +129,8 @@
                 RelatedPosts = relatedPosts,
                 RandomRelatedPosts = randomRelatedPosts
             };
+            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
+            ViewData[Constants.ViewUrl] = $"{domain}{slug}";
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;
 

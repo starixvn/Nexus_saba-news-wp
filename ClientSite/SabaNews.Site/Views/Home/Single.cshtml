@@ -1,5 +1,6 @@
 ﻿@using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
+@using SabaNews.Core.Constants;
 
 @inject IDetectionService DetectionService
 @{ bool isMobile = DetectionService.Device.Type == Device.Mobile;
@@ -11,8 +12,8 @@
     <meta property="og:description" content='@Model.SinglePost.PostExcerpt' />
     <meta property="og:title" content='@Model.SinglePost.PostTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
-    <link rel="canonical" href="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
-    <link rel="alternate" href="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" hreflang="vi-vn" />
+    <link rel="canonical" href="@ViewData[Constants.ViewUrl]" />
+    <link rel="alternate" href="@ViewData[Constants.ViewUrl]" hreflang="vi-vn" />
 }
 
 @section Title{
