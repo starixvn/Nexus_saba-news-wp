@@ -222,20 +222,21 @@
         @(await Component.InvokeAsync("Sidebar", new { postID = @Model.SinglePost.ID }))
     </div>
 </section>
-<div class="modal fade" id="requestLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h2 style="text-align:center">@ViewResources.Message</h2>
-				<hr />
-				<h3 style="text-align:center; margin:20px">@ViewResources.MessageRequestLogin</h3>
-			</div>
-		</div>
-	</div>
+<div class="auth-form">
+    <div class="modal fade" id="requestLogin">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 style="text-align:center">@ViewResources.Message</h2>
+                <hr />
+                <h3 style="text-align:center; margin:20px">@ViewResources.MessageRequestLogin</h3>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script>
 	var checkScroll = function () {
 		var el = document.querySelector('#comment');
