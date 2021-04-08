@@ -7,6 +7,10 @@
 		<meta property="og:title" content='@Model.Category.OgTitle' />
 		<meta property="og:image" content='@Model.Category.OgImage' />
 	}
+    @if (Model.ViewData.Controller == "Search")
+	{
+        <meta name="robots" content="noindex,nofollow">
+    }
 }
 
 @section Title{
