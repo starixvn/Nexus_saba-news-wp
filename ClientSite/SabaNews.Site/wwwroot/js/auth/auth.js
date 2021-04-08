@@ -11,6 +11,7 @@
                 HandleLogin();
                 HandleRegister();
                 HandleForgotPassword();
+                HandleModal();
             }
         });
     }
@@ -124,7 +125,6 @@
 
     function HandleForgotPassword() {
         $('#forgot-password').on('click', function () {
-            console.log('123');
             $.ajax({
                 url: '/Auth/ForgotPassword',
                 type: 'GET',
@@ -185,6 +185,24 @@
                     location.reload();
                 }
             });
+        });
+    }
+
+    function HandleModal() {
+        $('.nav-title').on('click', function () {
+            var self = $(this);
+            if (!self.hasClass('active')) {
+                $('.nav-title').removeClass('active');
+                $(this).addClass('active');
+                if (self.attr('id') === 'nav-login-tab') {
+                    console.log('123123');
+                    $('#nav-login').addClass('active')
+                    $('#nav-register').removeClass('active')
+                } else {
+                    $('#nav-register').addClass('active')
+                    $('#nav-login').removeClass('active')
+                }
+            } 
         });
     }
 

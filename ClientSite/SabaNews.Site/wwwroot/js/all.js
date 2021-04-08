@@ -107,7 +107,6 @@ $(document).ready(function () {
 
     $(window).click(function (e) {
         var elmClass = e.target.className;
-        console.log(elmClass);
         if (elmClass !== 'country' && elmClass !== 'language-select' && elmClass !== 'flag flag-vn') {
             if ($('.languages-list').hasClass('active')) {
                 $('.languages-list').removeClass('active');

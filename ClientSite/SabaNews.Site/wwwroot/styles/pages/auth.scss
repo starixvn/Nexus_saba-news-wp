@@ -244,3 +244,10 @@
 input.error {
     border: 1px solid red;
 }
+
+.tab-pane {
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+}
