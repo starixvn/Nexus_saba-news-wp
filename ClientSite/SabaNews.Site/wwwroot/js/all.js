@@ -53,14 +53,15 @@ $(document).ready(function () {
     });
 
     //desktop
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 100) {
+    $(window).scroll(function () {
+        if ($(window).innerWidth() > 1024) {
+            if ($(this).scrollTop() > 100) {
             $('.top-header').addClass('active-fixed');
-            $('.menu-item .item').addClass('active-menu-item');
         } else {
             $('.top-header').removeClass('active-fixed');
-            $('.menu-item .item').removeClass('active-menu-item');
         }
+        }
+
     });
 
     //back to top mb and des
@@ -112,7 +113,7 @@ $(document).ready(function () {
 
 
 
-    $('.auth-displayname .item').click(function () {
+    $('.auth-input').click(function () {
         $('.box-auth').toggleClass('active-box-auth')
     });
 

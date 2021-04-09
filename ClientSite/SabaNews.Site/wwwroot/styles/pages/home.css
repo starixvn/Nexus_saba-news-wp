@@ -189,8 +189,36 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .header {
   background-color: #FFFDF9;
   position: fixed;
+    @media screen and (max-width: 1024px) {
+      .header .header-controls {
+        padding: 0;
+        border-bottom: none; } }
+        cursor: pointer; }
+        @media screen and (max-width: 1024px) {
+          .header .header-controls .header-auth-provider .auth-input {
+            position: absolute;
+            top: 1.5rem;
+            z-index: 99999999;
+            right: 1.2rem;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; } }
+          @media screen and (max-width: 1024px) {
+            .header .header-controls .header-auth-provider .auth-input .auth-provider {
+              padding: 0; } }
   width: 100%;
   z-index: 1025; }
+              @media screen and (max-width: 1024px) {
+                .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname:after {
+                  display: none; } }
+            @media screen and (max-width: 1024px) {
+              .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .display-user {
+                display: none; } }
+          right: 0; }
+          @media screen and (max-width: 1024px) {
+            .header .header-controls .header-auth-provider .auth-input .box-auth {
+              width: 100%;
+              right: -1.2rem; } }
   .header .top-header {
     padding: .5rem 0;
     background-color: #FFFDF9;
@@ -247,6 +275,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         @media screen and (max-width: 1024px) {
           .header .top-header .group-menu .button-mobile {
             display: block; } }
+            z-index: 9999999999999999; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .header .top-header .group-menu .button-mobile {
             display: none; } }
@@ -593,7 +622,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   margin-right: 16px; }
   @media screen and (max-width: 1024px) {
     .languages-box {
-      margin-bottom: .8rem; } }
+      top: 1.5rem;
+      left: 3.5rem;
+      z-index: 999999999999999;
+      position: absolute; } }
   .languages-box .languages-list {
     list-style: none;
     display: none;
@@ -633,6 +665,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     cursor: pointer;
     display: flex;
     align-items: center; }
+    @media screen and (max-width: 1024px) {
+      .languages-box .language-select {
+        border-right: none; } }
     .languages-box .language-select:after {
       width: 0;
       height: 0;
@@ -642,6 +677,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       content: '';
       margin-left: 4px;
       display: inline-block; }
+      @media screen and (max-width: 1024px) {
+        .languages-box .language-select:after {
+          display: none; } }
+    @media screen and (max-width: 1024px) {
+      .languages-box .language-select .country {
+        display: none; } }
 
 @media screen and (max-width: 1024px) {
   .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header {

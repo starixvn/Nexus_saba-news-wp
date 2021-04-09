@@ -183,6 +183,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   .header .header-controls {
     padding: .8rem 0;
     border-bottom: 1px solid #e5e5e5; }
+    @media screen and (max-width: 1024px) {
+      .header .header-controls {
+        padding: 0;
+        border-bottom: none; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
@@ -202,7 +206,17 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           border: 1px solid #e5e5e5;
           padding: 0 3rem 0 1.4rem; }
       .header .header-controls .header-auth-provider .auth-input {
-        position: relative; }
+        position: relative;
+        cursor: pointer; }
+        @media screen and (max-width: 1024px) {
+          .header .header-controls .header-auth-provider .auth-input {
+            position: absolute;
+            top: 1.5rem;
+            z-index: 99999999;
+            right: 1.2rem;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end; } }
         .header .header-controls .header-auth-provider .auth-input .item {
           padding: 0;
           font-weight: 600;
@@ -215,6 +229,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           display: flex;
           align-items: center;
           padding: .5rem 1.2rem; }
+          @media screen and (max-width: 1024px) {
+            .header .header-controls .header-auth-provider .auth-input .auth-provider {
+              padding: 0; } }
           .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user {
             width: 2.5rem;
             height: 2.5rem;
@@ -232,7 +249,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               width: 100%;
               height: 100%; }
           .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname {
-            cursor: pointer;
             position: relative; }
             .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname:after {
               border-left: 3px solid transparent;
@@ -242,6 +258,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               top: 1.1rem;
               right: .5rem;
               content: ''; }
+              @media screen and (max-width: 1024px) {
+                .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname:after {
+                  display: none; } }
+            @media screen and (max-width: 1024px) {
+              .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname .display-user {
+                display: none; } }
         .header .header-controls .header-auth-provider .auth-input .box-auth {
           display: none;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -249,10 +271,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           padding: 1.2rem;
           background: #FFFDF9;
           position: absolute;
-          width: 18rem;
+          width: 24rem;
           top: 4.8rem;
           z-index: 99999;
-          border: 1px solid #e5e5e5; }
+          border: 1px solid #e5e5e5;
+          right: 0; }
           .header .header-controls .header-auth-provider .auth-input .box-auth:before {
             width: 1.5rem;
             height: 1.5rem;
@@ -266,6 +289,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             -webkit-transform: rotate(225deg);
             -ms-transform: rotate(225deg);
             transform: rotate(225deg); }
+          @media screen and (max-width: 1024px) {
+            .header .header-controls .header-auth-provider .auth-input .box-auth {
+              width: 100%;
+              right: -1.2rem; } }
           .header .header-controls .header-auth-provider .auth-input .box-auth li {
             margin-bottom: 1rem; }
             .header .header-controls .header-auth-provider .auth-input .box-auth li:last-child {
@@ -279,7 +306,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   .header .top-header {
     position: absolute;
     width: 100%;
-    z-index: 999;
     padding: .5rem 0;
     background-color: #FFFDF9;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16);
@@ -333,7 +359,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             display: block;
             position: absolute;
             left: 1rem;
-            top: 1.2rem; } }
+            top: 1.2rem;
+            z-index: 9999999999999999; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .header .top-header .group-menu .button-mobile {
             display: none; } }
@@ -505,7 +532,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: relative; }
   @media screen and (max-width: 1024px) {
     .languages-box {
-      margin-bottom: .8rem; } }
+      top: 1.5rem;
+      left: 3.5rem;
+      z-index: 999999999999999;
+      position: absolute; } }
   .languages-box .languages-list {
     list-style: none;
     display: none;
@@ -546,6 +576,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     align-items: center;
     padding-right: 1.3rem;
     border-right: 1px solid #e5e5e5; }
+    @media screen and (max-width: 1024px) {
+      .languages-box .language-select {
+        border-right: none; } }
     .languages-box .language-select:after {
       width: 0;
       height: 0;
@@ -555,6 +588,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       content: '';
       margin-left: .4rem;
       display: inline-block; }
+      @media screen and (max-width: 1024px) {
+        .languages-box .language-select:after {
+          display: none; } }
+    @media screen and (max-width: 1024px) {
+      .languages-box .language-select .country {
+        display: none; } }
 
 @media screen and (max-width: 1024px) {
   .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header {
