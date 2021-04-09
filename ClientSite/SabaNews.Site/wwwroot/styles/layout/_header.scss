@@ -76,7 +76,7 @@
                         font-weight: bold;
                         color: $color-fff;
                         border-radius: 50%;
-                        margin-right: .5rem;
+                        margin: 0 .5rem 0 0;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -125,7 +125,8 @@
                     top: 4.8rem;
                     z-index: 99999;
                     border: 1px solid $separator-color;
-                    right : 0;
+                    right: 0;
+
                     &:before {
                         width: 1.5rem;
                         height: 1.5rem;
@@ -140,10 +141,55 @@
                         -ms-transform: rotate(225deg);
                         transform: rotate( 225deg );
                     }
+
                     @include tableMobile {
-                        width : 100%;
-                        right : -1.2rem;
+                        width: 100%;
+                        right: -1.2rem;
                     }
+
+                    .info-user {
+                        padding-bottom: 1rem;
+                        border-bottom: 1px solid $separator-color;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+
+                        .child-box {
+                            padding-top: 1rem;
+                            border-top: 1px solid $separator-color;
+                            list-style: none;
+
+                            li {
+                                a {
+                                    font-weight: 600;
+                                    line-height: 1.7rem;
+                                    color: #4f4f4f;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .auth-provider {
+                        .auth-displayname {
+                            &:after {
+                                display: none;
+                            }
+                        }
+
+                        .display-user {
+                            @include tableMobile {
+                                display: block;
+                            }
+                        }
+
+                        .avatar-user {
+                            width: 4.8rem;
+                            height: 4.8rem;
+                        }
+                    }
+
                     li {
                         margin-bottom: 1rem;
 
@@ -168,6 +214,53 @@
         }
     }
 
+
+    .child-mobile-menu {
+        display: none;
+
+        @include tableMobile {
+            width: 100%;
+            display: block;
+            margin-top: 6rem;
+            position: relative;
+        }
+
+        .icon-arrow {
+            display: block;
+            width: 5rem;
+            height: 3rem;
+            background: url(../../images/icon/arrow.svg) no-repeat;
+            position: absolute;
+            top: .7rem;
+            right: -.1rem;
+        }
+
+        .main-child-menu {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+            height: 4rem;
+            background: $color-fff;
+            padding: 0;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            li {
+                display: table-cell;
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: #4f4f4f;
+                    padding: 0 .8rem;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
     .top-header {
         position: absolute;
         width: 100%;
@@ -179,6 +272,7 @@
         @include tableMobile {
             padding: 0;
             overflow: hidden;
+            box-shadow: none;
         }
 
         @include landscapeTablet {
@@ -410,11 +504,11 @@
 
     .active-fixed {
         padding: .5rem 0;
-        transition: .3s ease-in-out;
         position: fixed;
         width: 100%;
         z-index: 999999;
         top: 0;
+        margin-top: 0;
 
         @include tableMobile {
             padding: 0;

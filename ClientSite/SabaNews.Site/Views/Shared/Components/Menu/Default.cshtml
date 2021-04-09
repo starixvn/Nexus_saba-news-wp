@@ -59,8 +59,15 @@
                                     <li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
                                 </ul>
                             </li>
-                            <li class="auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
-                            <li class="auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
+                            <li class="info-user">
+                                <ul class="child-box">
+                                    <li><a href="#">Hoạt động bình luận</a></li>
+                                    <li><a href="#">Tin đã lưu</a></li>
+                                    <li><a href="#">tin đã xem</a></li>
+                                </ul>
+                            </li>
+                            <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
+                            <li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
                         </ul>
                     }
                     else
@@ -128,4 +135,35 @@
             </div>
         </div>
     </div>
+
+    <div class="child-mobile-menu">
+        <ul class="main-child-menu">
+            @foreach (var menu in Model)
+            {
+
+                var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                if (menu.PageSlug == Constants.MatchScheduleSlug)
+                {
+                    link = Url.Action("MatchSchedule", "Home");
+                }
+                if (menu.PageSlug == Constants.WarningSlug)
+                {
+                    link = Url.Action("Warning", "Home");
+                }
+                else if (menu.Slug == Constants.VideoSlug)
+                {
+                    VideoParentId = menu.ID;
+                    link = Url.Action("Video", "Home", new { slug = (int?)null });
+                }
+                if (menu.CatId != Constants.Home)
+                {
+                    var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+                    <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+                }
+
+            }
+        </ul>
+        <span class="icon-arrow"></span>
+    </div>
+
 </section>

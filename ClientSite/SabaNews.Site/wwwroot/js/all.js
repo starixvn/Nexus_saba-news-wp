@@ -56,10 +56,19 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if ($(window).innerWidth() > 1024) {
             if ($(this).scrollTop() > 100) {
-            $('.top-header').addClass('active-fixed');
-        } else {
-            $('.top-header').removeClass('active-fixed');
+                $('.top-header').addClass('active-fixed');
+                
+            } else {
+                $('.top-header').removeClass('active-fixed');
+            }
         }
+        if ($(window).innerWidth() <= 1024) {
+            if ($(this).scrollTop() > 100) {
+                $('.child-mobile-menu').addClass('active-fixed');
+
+            } else {
+                $('.child-mobile-menu').removeClass('active-fixed');
+            }
         }
 
     });
