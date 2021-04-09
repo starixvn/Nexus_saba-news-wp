@@ -215,12 +215,13 @@
                 }
             }
 
-            .islogin-user{
-                display : block;
+            .islogin-user {
+                display: block;
             }
 
             .notification-auth {
-                display : none;
+                display: none;
+
                 @include tableMobile {
                     position: absolute;
                     top: 2.2rem;
@@ -296,6 +297,10 @@
 
             li {
                 display: table-cell;
+          
+                &:last-of-type {
+                    padding-right: 3rem;
+                }
 
                 a {
                     display: block;
