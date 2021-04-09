@@ -587,6 +587,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         padding: 0 1.2rem;
         margin: 1rem 0 2rem 0;
         display: block; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .header .right-header-section {
+        display: none; } }
 
 .search-input form {
   position: relative; }
@@ -1096,7 +1099,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       height: 4.4rem;
       top: 0;
       display: none;
-      z-index: 999999999; } }
+      z-index: 999999999;
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.16); } }
   .fixed-social .social {
     display: inherit; }
     @media screen and (max-width: 1024px) {

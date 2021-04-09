@@ -587,6 +587,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         padding: 0 1.2rem;
         margin: 1rem 0 2rem 0;
         display: block; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .header .right-header-section {
+        display: none; } }
 
 .search-input form {
   position: relative; }
