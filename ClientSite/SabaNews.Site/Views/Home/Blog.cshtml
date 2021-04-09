@@ -28,6 +28,8 @@
 @{
     ViewData["CategoryId"] = Model.ViewData.CategoryId;
 }
+
+@(await Component.InvokeAsync("Menu"))
 <section class="main">
     <div class="container">
         <div class="block block-main">

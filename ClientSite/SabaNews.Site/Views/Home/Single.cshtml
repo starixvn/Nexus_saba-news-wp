@@ -31,7 +31,7 @@
 @{
     var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
 }
-
+@(await Component.InvokeAsync("Menu"))
 <section class="main">
     <div class="container detail-container">
         <div class="main-social fixed-social">

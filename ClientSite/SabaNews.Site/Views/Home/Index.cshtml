@@ -28,6 +28,8 @@
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
+
+@(await Component.InvokeAsync("Menu"))
 <section class="main">    
 	<div class="colums-main">
         <div class="banner"><img src="~/images/banner.jpg"></div>

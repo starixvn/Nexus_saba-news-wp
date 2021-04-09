@@ -74,13 +74,12 @@
         }
     }
 
-    @(await Component.InvokeAsync("Menu"))
 
     <div class="wapper">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
         <div class="auth-form" id="auth-form"></div>
     </div>
 	<section class="footer">

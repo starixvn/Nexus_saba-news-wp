@@ -160,4 +160,11 @@ $(document).ready(function () {
     $(document).on('hidden.bs.modal', '.modal', function (e) {
         $('body').removeClass('overflow-modal');
     })
+
+    $('.croll-mobile-menu').on('click', function () {
+        var leftPos = $('.main-child-menu').scrollLeft();
+        $(".main-child-menu").animate({
+            scrollLeft: leftPos + 200
+        }, 800);
+    });
 });
