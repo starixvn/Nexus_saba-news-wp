@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
 
-@(await Component.InvokeAsync("Menu"))
+@(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">    
 	<div class="colums-main">
         <div class="banner"><img src="~/images/banner.jpg"></div>

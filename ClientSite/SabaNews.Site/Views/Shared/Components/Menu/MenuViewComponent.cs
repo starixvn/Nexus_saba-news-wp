@@ -16,7 +16,7 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string page = "")
         {
             var model = await dataControlService.GetMenuData();
             var userAgent = Request.Headers["User-Agent"].ToString();
@@ -25,6 +25,7 @@
             ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
             var isAuthenticated = sessionService.User != null;
             ViewBag.IsAuthenticated = isAuthenticated;
+            ViewBag.Page = page;
             if (isAuthenticated)
             {
                 ViewBag.DisplayName = sessionService.User.Name;
