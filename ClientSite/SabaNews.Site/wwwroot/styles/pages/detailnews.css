@@ -987,9 +987,6 @@ button {
   opacity: 1;
   transition: .3s all ease-in-out;
   visibility: visible; }
-  @media (max-device-width: 767px) {
-    .fixed-social {
-      display: none; } }
   .fixed-social .social {
     display: inherit; }
     .fixed-social .social .item-social {
