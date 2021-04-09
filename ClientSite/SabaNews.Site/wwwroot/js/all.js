@@ -65,9 +65,16 @@ $(document).ready(function () {
         if ($(window).innerWidth() <= 1024) {
             if ($(this).scrollTop() > 100) {
                 $('.child-mobile-menu').addClass('active-fixed');
-
             } else {
                 $('.child-mobile-menu').removeClass('active-fixed');
+            }
+
+            if ($(this).scrollTop() > 130) {
+                $('.singe-page').css('display', 'none');
+                $('.fixed-social').addClass('active-scroll-mobile');
+            } else {
+                $('.singe-page').css('display', 'block');
+                $('.fixed-social').removeClass('active-scroll-mobile');
             }
         }
 

@@ -2,6 +2,8 @@
 @import '../abstracts/variables';
 @import '../abstracts/_mixins.scss';
 
+
+
 .header {
     background-color: $bg-nav;
 
@@ -297,7 +299,7 @@
 
             li {
                 display: table-cell;
-          
+
                 &:last-of-type {
                     padding-right: 3rem;
                 }

@@ -19,11 +19,6 @@
                 color: $text-social;
             }
 
-
-            &:last-child {
-                margin-right: 0;
-            }
-
             .item {
                 text-decoration: none;
                 color: $text-social;
@@ -81,12 +76,14 @@
     visibility: visible;
 
     @include Mobile {
-        display: flex;
+        position:fixed;
+        left : 0;
         width: 100%;
-        justify-content: flex-end;
-        margin: 0;
         background: $color-fff;
         height: 4.4rem;
+        top : 0;
+        display : none;
+        z-index : 999999999;
     }
 
     .social {
@@ -95,7 +92,6 @@
         @include tableMobile {
             margin: 0;
         }
-
         .item-social {
             margin-right: 0;
             padding-bottom: 1.2rem;
@@ -106,12 +102,6 @@
 
                 @include tableMobile {
                     border-top: none;
-                }
-            }
-
-            &:last-child {
-                @include tableMobile {
-                    display: none;
                 }
             }
         }
@@ -127,13 +117,15 @@
                 border-radius: 50%;
                 margin-right: 1rem;
                 padding: 0 !important;
-
-                &:nth-child(4) {
-                    margin-right: 0;
-                }
             }
         }
     }
+}
+
+
+.active-scroll-mobile {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .active-nav-socical {
