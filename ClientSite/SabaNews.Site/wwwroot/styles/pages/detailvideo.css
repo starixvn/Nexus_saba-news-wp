@@ -1011,6 +1011,28 @@ button {
       color: #828282;
       display: block; }
 
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
+textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
+  outline: none; }
+  textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
+    color: #828282; }
+    @media screen and (max-width: 1024px) {
+      textarea::placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::placeholder {
+        font-size: 1.6rem; } }
+  textarea:-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search]):-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff; }
+  textarea::-ms-input-placeholder, input[type]:not([type=number]):not([type=button]):not([type=search])::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #fff; }
+
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
 .main-social {
   display: flex;
   align-items: center;
@@ -1065,14 +1087,44 @@ button {
   opacity: 1;
   transition: .3s all ease-in-out;
   visibility: visible; }
+  @media (max-device-width: 767px) {
+    .fixed-social {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      margin: 0;
+      background: #fff;
+      height: 4.4rem; } }
   .fixed-social .social {
     display: inherit; }
+    @media screen and (max-width: 1024px) {
+      .fixed-social .social {
+        margin: 0; } }
     .fixed-social .social .item-social {
       margin-right: 0;
       padding-bottom: 1.2rem; }
       .fixed-social .social .item-social:nth-child(3) {
         border-top: 1px solid #999999;
         padding-top: 2rem; }
+        @media screen and (max-width: 1024px) {
+          .fixed-social .social .item-social:nth-child(3) {
+            border-top: none; } }
+      @media screen and (max-width: 1024px) {
+        .fixed-social .social .item-social:last-child {
+          display: none; } }
+    @media screen and (max-width: 1024px) {
+      .fixed-social .social .icon-mobile {
+        width: 3.2rem;
+        height: 3.2rem;
+        border: 1px solid #e5e5e5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 1rem;
+        padding: 0 !important; }
+        .fixed-social .social .icon-mobile:nth-child(4) {
+          margin-right: 0; } }
 
 .active-nav-socical {
   opacity: 0;

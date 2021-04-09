@@ -36,7 +36,7 @@
     <div class="container detail-container">
         <div class="main-social fixed-social">
             <ul class="social">
-                <li class="item-social">
+                <li class="item-social icon-mobile">
                     <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                        data-count="facebook" target="_blank"
                        rel="nofollow"
@@ -45,7 +45,7 @@
                         <i class="icon-social icon-detail_facebook"></i>
                     </a>
                 </li>
-				<li class="item-social">
+				<li class="item-social icon-mobile">
 					<a href="javascript:;"
 					   rel="nofollow"
 					   class="item intent copy-clipboard"
@@ -54,14 +54,14 @@
 					</a>
 					<span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
 				</li>
-                <li class="item-social">
+                <li class="item-social icon-mobile">
                     <a href="javascript:;" class="item intent save_post @(Model.isSave ? "active" : "")" title="@ViewResources.SavePost">
                         <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
                             <path d="M1.01 2.00062V2C1.01 1.44575 1.4588 1 2 1H12C12.5477 1 13 1.45228 13 2V16.4835L7.39392 14.0809L7 13.912L6.60608 14.0809L1.00095 16.4831L1.01 2.00062Z" stroke="#999999" stroke-width="2" />
                         </svg>
                     </a>
                 </li>
-				<li class="item-social">
+				<li class="item-social icon-mobile">
 					<a href="#comment"
 					   class="item intent"
                        title="@ViewResources.Comment"
@@ -75,13 +75,15 @@
 					    <p>@Model.SinglePost.CommentCount</p>
                     }*@
 				</li>
-                <li class="item-social">
+                <li class="item-social icon-mobile">
                     <a href="javascript:;"
                        class="item intent return-back">
                         <i class="icon-social icon-back"></i>
                     </a>
                 </li>
+                
             </ul>
+            <button class="button-mobile">áddsa</button>
         </div>
         <div class="block block-main">
             <div class="card-vertical card-vertical-highlight">
