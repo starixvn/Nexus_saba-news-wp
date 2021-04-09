@@ -23,6 +23,14 @@
                         </button>
                     </form>
                 </li>
+
+                <li class="item-control notification-auth">
+                    <span class="bell">
+                        <a href="#" class="auth-bell"><i class="icon-bell"></i></a>
+                        <a href="#" class="number-bell">10</a>
+                    </span>
+                </li>
+
                 <li class="item-control auth-input">
                     @if (ViewBag.IsAuthenticated)
                     {
@@ -67,7 +75,7 @@
                                 </ul>
                             </li>
                             <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
-                            <li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a></li>
+                            <li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a> <i class="icon-logout"></i> </li>
                         </ul>
                     }
                     else

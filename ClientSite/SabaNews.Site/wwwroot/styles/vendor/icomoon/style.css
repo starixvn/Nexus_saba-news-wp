@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?33ntmg');
-  src:  url('fonts/icomoon.eot?33ntmg#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?33ntmg') format('truetype'),
-    url('fonts/icomoon.woff?33ntmg') format('woff'),
-    url('fonts/icomoon.svg?33ntmg#icomoon') format('svg');
+  font-family: 'Fraud-Sensor';
+  src:  url('fonts/Fraud-Sensor.eot?b1q2fs');
+  src:  url('fonts/Fraud-Sensor.eot?b1q2fs#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?b1q2fs') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?b1q2fs') format('woff'),
+    url('fonts/Fraud-Sensor.svg?b1q2fs#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +12,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'Fraud-Sensor' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,141 +25,148 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-like:before {
-  content: "\e922";
-  color: #757575;
-}
-.icon-reply:before {
-  content: "\e923";
-  color: #076db6;
-}
-.icon-validate:before {
-  content: "\e921";
-}
-.icon-birthday:before {
-  content: "\e91d";
-}
-.icon-hide:before {
-  content: "\e91e";
-}
-.icon-show:before {
-  content: "\e91f";
-}
-.icon-upload:before {
-  content: "\e920";
-}
-.icon-mode_comment_full:before {
-  content: "\e91c";
-  color: #999;
-}
-.icon-bookmark:before {
-  content: "\e91a";
-  color: #999;
-}
-.icon-mode_comment:before {
-  content: "\e91b";
-  color: #999;
-}
-.icon-back:before {
-  content: "\e916";
-}
-.icon-detail_facebook:before {
-  content: "\e917";
-  color: #999;
-}
-.icon-email:before {
-  content: "\e918";
-  color: #999;
-}
-.icon-link:before {
-  content: "\e919";
-  color: #999;
-}
-.icon-sport-basketball:before {
-  content: "\e915";
-  color: #4f4f4f;
-}
-.icon-play:before {
-  content: "\e914";
-  color: #fff;
-}
-.icon-arrow-left:before {
+.icon-bell:before {
   content: "\e900";
   color: #4f4f4f;
 }
-.icon-arrow-right:before {
+.icon-logout:before {
   content: "\e901";
-  color: #4f4f4f;
+}
+.icon-like:before {
+  content: "\e969";
+  color: #757575;
+}
+.icon-reply:before {
+  content: "\e96a";
+  color: #076db6;
+}
+.icon-validate:before {
+  content: "\e96b";
+}
+.icon-birthday:before {
+  content: "\e96c";
+}
+.icon-hide:before {
+  content: "\e96d";
+}
+.icon-show:before {
+  content: "\e96e";
+}
+.icon-upload:before {
+  content: "\e96f";
+}
+.icon-mode_comment_full:before {
+  content: "\e970";
+  color: #999;
+}
+.icon-bookmark:before {
+  content: "\e971";
+  color: #999;
+}
+.icon-mode_comment:before {
+  content: "\e972";
+  color: #999;
+}
+.icon-back:before {
+  content: "\e973";
+}
+.icon-detail_facebook:before {
+  content: "\e974";
+  color: #999;
+}
+.icon-email:before {
+  content: "\e975";
+  color: #999;
+}
+.icon-link:before {
+  content: "\e976";
+  color: #999;
+}
+.icon-sport-basketball:before {
+  content: "\e977";
+ color: #4f4f4f;
+}
+.icon-play:before {
+  content: "\e978";
+color: #fff;
+}
+.icon-arrow-left:before {
+  content: "\e979";
+color: #4f4f4f;
+}
+.icon-arrow-right:before {
+  content: "\e98b";
+color: #4f4f4f;
 }
 .icon-bullet-arrow-right:before {
-  content: "\e902";
-  color: #4f4f4f;
+  content: "\e97a";
+color: #4f4f4f;
 }
 .icon-chevron-down:before {
-  content: "\e903";
-  color: #4f4f4f;
+  content: "\e97b";
+color: #4f4f4f;
 }
 .icon-chevron-left:before {
-  content: "\e904";
-  color: #4f4f4f;
+  content: "\e97c";
+color: #4f4f4f;
 }
 .icon-chevron-right:before {
-  content: "\e905";
-  color: #4f4f4f;
+  content: "\e97d";
+color: #4f4f4f;
 }
 .icon-chevron-up:before {
-  content: "\e906";
-  color: #4f4f4f;
+  content: "\e97e";
+color: #4f4f4f;
 }
 .icon-home:before {
-  content: "\e907";
-  color: #4f4f4f;
+  content: "\e97f";
+color: #4f4f4f;
 }
 .icon-menu:before {
-  content: "\e908";
-  color: #4f4f4f;
+  content: "\e980";
+color: #4f4f4f;
 }
 .icon-page-first:before {
-  content: "\e909";
-  color: #4f4f4f;
+  content: "\e981";
+color: #4f4f4f;
 }
 .icon-page-last:before {
-  content: "\e90a";
-  color: #4f4f4f;
+  content: "\e982";
+color: #4f4f4f;
 }
 .icon-search:before {
-  content: "\e90b";
-  color: #4f4f4f;
+  content: "\e983";
+color: #4f4f4f;
 }
 .icon-social-facebook:before {
-  content: "\e90c";
-  color: #4f4f4f;
+  content: "\e984";
+color: #4f4f4f;
 }
 .icon-social-pinterest:before {
-  content: "\e90d";
-  color: #4f4f4f;
+  content: "\e985";
+color: #4f4f4f;
 }
 .icon-social-telegram:before {
-  content: "\e90e";
-  color: #4f4f4f;
+  content: "\e986";
+color: #4f4f4f;
 }
 .icon-social-twitter:before {
-  content: "\e90f";
-  color: #4f4f4f;
+  content: "\e987";
+color: #4f4f4f;
 }
 .icon-sport-soccer:before {
-  content: "\e910";
-  color: #4f4f4f;
+  content: "\e988";
+color: #4f4f4f;
 }
 .icon-sport-tennis:before {
-  content: "\e911";
-  color: #4f4f4f;
+  content: "\e989";
+color: #4f4f4f;
 }
 .icon-sport-tennis-2:before {
-  content: "\e912";
-  color: #4f4f4f;
+  content: "\e98a";
+color: #4f4f4f;
 }
 .icon-video:before {
-  content: "\e913";
-  color: #4f4f4f;
+  content: "\e968";
+color: #4f4f4f;
 }

@@ -211,8 +211,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         @media screen and (max-width: 1024px) {
           .header .header-controls .header-auth-provider .auth-input {
             position: absolute;
-            top: 1.5rem;
-            z-index: 99999999;
+            top: 1.8rem;
+            z-index: 10;
             right: 1.2rem;
             width: 100%;
             display: flex;
@@ -220,7 +220,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         .header .header-controls .header-auth-provider .auth-input .item {
           padding: 0;
           font-weight: 600;
-          margin-right: 2rem;
           line-height: 1.7rem;
           color: #4F4F4F;
           text-decoration: none; }
@@ -296,6 +295,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           .header .header-controls .header-auth-provider .auth-input .box-auth .info-user {
             padding-bottom: 1rem;
             border-bottom: 1px solid #e5e5e5; }
+            .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item {
+              margin-right: .5rem; }
             .header .header-controls .header-auth-provider .auth-input .box-auth .info-user:last-child {
               border-bottom: none; }
             .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .child-box {
@@ -325,6 +326,36 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         margin-right: 1.5rem; }
         .header .header-controls .header-auth-provider .item-control:last-child {
           margin-right: 0; }
+      .header .header-controls .header-auth-provider .islogin-user {
+        display: block; }
+      .header .header-controls .header-auth-provider .notification-auth {
+        display: none; }
+        @media screen and (max-width: 1024px) {
+          .header .header-controls .header-auth-provider .notification-auth {
+            position: absolute;
+            top: 2.2rem;
+            z-index: 99;
+            right: 5rem; } }
+        .header .header-controls .header-auth-provider .notification-auth .bell {
+          position: relative; }
+          .header .header-controls .header-auth-provider .notification-auth .bell .auth-bell {
+            text-decoration: none; }
+          .header .header-controls .header-auth-provider .notification-auth .bell .icon-bell:before {
+            font-size: 1.5rem; }
+          .header .header-controls .header-auth-provider .notification-auth .bell .number-bell {
+            text-decoration: none;
+            background: #FF5F5F;
+            width: 2rem;
+            height: 1.4rem;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 11px;
+            position: absolute;
+            top: -.7rem;
+            left: .5rem; }
   .header .child-mobile-menu {
     display: none; }
     @media screen and (max-width: 1024px) {
@@ -417,7 +448,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             display: block;
             position: absolute;
             left: 1rem;
-            top: 1.2rem;
+            top: 1.5rem;
             z-index: 9999999999999999; } }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
           .header .top-header .group-menu .button-mobile {
@@ -590,9 +621,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: relative; }
   @media screen and (max-width: 1024px) {
     .languages-box {
-      top: 1.5rem;
+      top: 1.8rem;
       left: 3.5rem;
-      z-index: 999999999999999;
+      z-index: 99;
       position: absolute; } }
   .languages-box .languages-list {
     list-style: none;
@@ -801,7 +832,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       text-transform: uppercase;
       background-color: #FFFDF9;
       position: relative;
-      z-index: 99;
+      z-index: 9;
       padding-right: 1rem; }
       .block__title a:hover {
         color: #cb200c; }

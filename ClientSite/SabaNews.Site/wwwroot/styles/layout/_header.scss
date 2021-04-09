@@ -42,8 +42,8 @@
 
                 @include tableMobile {
                     position: absolute;
-                    top: 1.5rem;
-                    z-index: 99999999;
+                    top: 1.8rem;
+                    z-index: 10;
                     right: 1.2rem;
                     width: 100%;
                     display: flex;
@@ -53,7 +53,6 @@
                 .item {
                     padding: 0;
                     font-weight: 600;
-                    margin-right: 2rem;
                     line-height: 1.7rem;
                     color: $color-content;
                     text-decoration: none;
@@ -151,6 +150,10 @@
                         padding-bottom: 1rem;
                         border-bottom: 1px solid $separator-color;
 
+                        .item {
+                            margin-right: .5rem;
+                        }
+
                         &:last-child {
                             border-bottom: none;
                         }
@@ -211,6 +214,50 @@
                     margin-right: 0;
                 }
             }
+
+            .islogin-user{
+                display : block;
+            }
+
+            .notification-auth {
+                display : none;
+                @include tableMobile {
+                    position: absolute;
+                    top: 2.2rem;
+                    z-index: 99;
+                    right: 5rem;
+                }
+
+                .bell {
+                    position: relative;
+
+                    .auth-bell {
+                        text-decoration: none;
+                    }
+
+                    .icon-bell {
+                        &:before {
+                            font-size: 1.5rem;
+                        }
+                    }
+
+                    .number-bell {
+                        text-decoration: none;
+                        background: #FF5F5F;
+                        width: 2rem;
+                        height: 1.4rem;
+                        font-size: 1rem;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: $color-fff;
+                        border-radius: 11px;
+                        position: absolute;
+                        top: -.7rem;
+                        left: .5rem;
+                    }
+                }
+            }
         }
     }
 
@@ -246,6 +293,7 @@
             overflow-x: scroll;
             overflow-y: hidden;
             white-space: nowrap;
+
             li {
                 display: table-cell;
 
@@ -322,7 +370,7 @@
                     display: block;
                     position: absolute;
                     left: 1rem;
-                    top: 1.2rem;
+                    top: 1.5rem;
                     z-index: 9999999999999999;
                 }
 
@@ -576,9 +624,9 @@
     position: relative;
 
     @include tableMobile {
-        top: 1.5rem;
+        top: 1.8rem;
         left: 3.5rem;
-        z-index: 999999999999999;
+        z-index: 99;
         position: absolute;
     }
 
