@@ -137,7 +137,7 @@
                     </li>
                 </ul>
                 <ul class="social right-social">
-                    <li class="item-social">Chia sẻ:</li>
+					<li class="item-social">Chia sẻ:</li>
                     <li class="item-social">
                         <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                            data-count="facebook" target="_blank"
@@ -184,7 +184,7 @@
             </div>
             <h2 class="block__title title-care"><a>@ViewResources.RelatedPosts</a></h2>
             <div class="block__content">
-                @foreach (var post in Model.RandomRelatedPosts)
+                @foreach (var post in Model.RecentPosts)
                 {
                     <div class="card-horizontal card-horizontal-highlight">
                         <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-horizontal__image">
@@ -209,7 +209,7 @@
                 }
             </div>
         </div>
-        @(await Component.InvokeAsync("Sidebar", new { postID = @Model.SinglePost.ID }))
+        @(await Component.InvokeAsync("Sidebar", new { cateSlug = ViewData["cateSlug"], postID = Model.SinglePost.ID }))
     </div>
 </section>
 <div class="auth-form">

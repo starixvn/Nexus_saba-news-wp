@@ -94,6 +94,7 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
+
             var hash = GetMd5Hash($"https://vn.sabasports.com/{slug}");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
             if (IsBlackListIP())
@@ -128,6 +129,13 @@
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
                 var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();
+                cateSlug = exceptCateSlug[0] ?? cateSlug;
+            }
+            var cateSlug = post.CategoriesSlug;
+            if (cateSlug.Contains(","))
+            {
+                var listCateSlug = post.CategoriesSlug.Split(',');
+                var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList() ;
                 cateSlug = exceptCateSlug[0] ?? cateSlug;
             }
             var Models = new SingleViewModel
