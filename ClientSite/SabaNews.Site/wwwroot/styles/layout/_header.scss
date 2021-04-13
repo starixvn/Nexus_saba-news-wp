@@ -358,6 +358,10 @@
                 position: relative;
             }
 
+            @include landscapeTablet {
+                z-index :1;
+            }
+
             .logo {
                 width: 12rem;
                 margin-right: 2.4rem;
@@ -644,13 +648,16 @@
     @include tableMobile {
         top: 1.8rem;
         left: 3.5rem;
-        z-index: 99;
+        z-index: 999999;
         position: absolute;
     }
 
     @include landscapeTablet {
-        top: 1.3rem;
-        right: 26.5rem;
+        //top: 1.3rem;
+        //right: 26.5rem;
+        //left: auto;
+        position: relative;
+        top: auto;
         left: auto;
     }
 
@@ -707,6 +714,7 @@
 
         @include tableMobile {
             border-right: none;
+            padding-right: 0;
         }
 
         &:after {

@@ -431,6 +431,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           flex-wrap: wrap;
           justify-content: center;
           position: relative; } }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .header .top-header .group-menu {
+          z-index: 1; } }
       .header .top-header .group-menu .logo {
         width: 12rem;
         margin-right: 2.4rem; }
@@ -640,12 +643,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .languages-box {
       top: 1.8rem;
       left: 3.5rem;
-      z-index: 99;
+      z-index: 999999;
       position: absolute; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
     .languages-box {
-      top: 1.3rem;
-      right: 26.5rem;
+      position: relative;
+      top: auto;
       left: auto; } }
   .languages-box .languages-list {
     list-style: none;
@@ -689,7 +692,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     border-right: 1px solid #e5e5e5; }
     @media screen and (max-width: 1024px) {
       .languages-box .language-select {
-        border-right: none; } }
+        border-right: none;
+        padding-right: 0; } }
     .languages-box .language-select:after {
       width: 0;
       height: 0;
