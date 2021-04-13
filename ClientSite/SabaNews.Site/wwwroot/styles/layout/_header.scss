@@ -16,6 +16,11 @@
             border-bottom: none;
         }
 
+        @include landscapeTablet {
+            padding: .8rem 0;
+            border-bottom: 1px solid $separator-color;
+        }
+
         .header-auth-provider {
             list-style: none;
             @include flex(center,nowrap, flex-end);
@@ -23,6 +28,10 @@
             .search-desktop {
                 @include tableMobile {
                     display: none;
+                }
+
+                @include landscapeTablet {
+                    display: block;
                 }
 
                 form {
@@ -50,6 +59,11 @@
                     width: 100%;
                     display: flex;
                     justify-content: flex-end;
+                }
+
+                @include landscapeTablet {
+                    position: unset;
+                    width: auto;
                 }
 
                 .item {
@@ -586,8 +600,8 @@
             display: block;
         }
 
-        @include landscapeTablet{
-            display : none;
+        @include landscapeTablet {
+            display: none;
         }
     }
 }
@@ -639,6 +653,10 @@
         left: 3.5rem;
         z-index: 99;
         position: absolute;
+    }
+
+    @include landscapeTablet {
+        position: unset;
     }
 
     .languages-list {

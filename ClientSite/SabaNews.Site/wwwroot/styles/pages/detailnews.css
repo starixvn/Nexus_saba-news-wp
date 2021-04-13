@@ -187,6 +187,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .header .header-controls {
         padding: 0;
         border-bottom: none; } }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .header .header-controls {
+        padding: .8rem 0;
+        border-bottom: 1px solid #e5e5e5; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
@@ -197,6 +201,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .header-controls .header-auth-provider .search-desktop {
           display: none; } }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .header .header-controls .header-auth-provider .search-desktop {
+          display: block; } }
       .header .header-controls .header-auth-provider .search-desktop form {
         position: relative; }
         .header .header-controls .header-auth-provider .search-desktop form .search-box {
@@ -217,6 +224,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             width: 100%;
             display: flex;
             justify-content: flex-end; } }
+        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+          .header .header-controls .header-auth-provider .auth-input {
+            position: unset;
+            width: auto; } }
         .header .header-controls .header-auth-provider .auth-input .item {
           padding: 0;
           font-weight: 600;
@@ -630,6 +641,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       left: 3.5rem;
       z-index: 99;
       position: absolute; } }
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .languages-box {
+      position: unset; } }
   .languages-box .languages-list {
     list-style: none;
     display: none;
