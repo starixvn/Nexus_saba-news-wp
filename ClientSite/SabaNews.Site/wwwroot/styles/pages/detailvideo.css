@@ -440,60 +440,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           .header .top-header .group-menu .logo {
             margin-right: 0;
             padding: .6rem 0 .4rem 1.4rem;
+            position: relative;
+            z-index: 9999999;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             justify-content: space-between;
             flex-direction: row; } }
-      .header .top-header .group-menu .button-mobile {
-        width: 2.8rem;
-        height: 3rem;
-        transform: rotate(0);
-        transition: .5s ease-in-out;
-        cursor: pointer;
-        display: none;
-        position: relative; }
-        @media screen and (max-width: 1024px) {
-          .header .top-header .group-menu .button-mobile {
-            display: block;
-            position: absolute;
-            left: 1rem;
-            top: 1.5rem;
-            z-index: 9999999999999999; } }
-        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-          .header .top-header .group-menu .button-mobile {
-            display: none; } }
-        .header .top-header .group-menu .button-mobile .line-mb {
-          display: block;
-          position: absolute;
-          height: .2rem;
-          width: 70%;
-          background: #081224;
-          opacity: 1;
-          transform: rotate(0);
-          transition: .25s ease-in-out;
-          border-radius: 1rem; }
-          .header .top-header .group-menu .button-mobile .line-mb:nth-child(1) {
-            top: .8rem; }
-          .header .top-header .group-menu .button-mobile .line-mb:nth-child(2) {
-            top: 1.4rem; }
-          .header .top-header .group-menu .button-mobile .line-mb:nth-child(3) {
-            top: 2rem; }
-      .header .top-header .group-menu .open .line-mb:nth-child(1) {
-        top: 1.4rem;
-        -webkit-transform: rotate(135deg);
-        -moz-transform: rotate(135deg);
-        -o-transform: rotate(135deg);
-        transform: rotate(135deg); }
-      .header .top-header .group-menu .open .line-mb:nth-child(2) {
-        opacity: 0;
-        left: -5rem; }
-      .header .top-header .group-menu .open .line-mb:nth-child(3) {
-        top: 1.4rem;
-        -webkit-transform: rotate(-135deg);
-        -moz-transform: rotate(-135deg);
-        -o-transform: rotate(-135deg);
-        transform: rotate(-135deg); }
       .header .top-header .group-menu .nav-menu {
         width: 100%; }
         @media only screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -629,6 +582,62 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         position: absolute; } }
     .search-input form .btn-search .icon-search {
       font-size: 2.4rem; }
+
+.button-mobile, .button-social-menu {
+  width: 2.8rem;
+  height: 3rem;
+  transform: rotate(0);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  display: none;
+  position: relative; }
+  @media screen and (max-width: 1024px) {
+    .button-mobile, .button-social-menu {
+      display: block;
+      position: absolute;
+      left: 1rem;
+      top: 1.5rem;
+      z-index: 9999999999999999; } }
+  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .button-mobile, .button-social-menu {
+      display: none; } }
+  .button-mobile .line-mb, .button-social-menu .line-mb {
+    display: block;
+    position: absolute;
+    height: .2rem;
+    width: 70%;
+    background: #081224;
+    opacity: 1;
+    transform: rotate(0);
+    transition: .25s ease-in-out;
+    border-radius: 1rem; }
+    .button-mobile .line-mb:nth-child(1), .button-social-menu .line-mb:nth-child(1) {
+      top: .8rem; }
+    .button-mobile .line-mb:nth-child(2), .button-social-menu .line-mb:nth-child(2) {
+      top: 1.4rem; }
+    .button-mobile .line-mb:nth-child(3), .button-social-menu .line-mb:nth-child(3) {
+      top: 2rem; }
+
+.open .line-mb:nth-child(1) {
+  top: 1.4rem;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg); }
+
+.open .line-mb:nth-child(2) {
+  opacity: 0;
+  left: -5rem; }
+
+.open .line-mb:nth-child(3) {
+  top: 1.4rem;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg); }
+
+.button-social-menu {
+  top: .8rem; }
 
 .languages-box {
   position: relative; }
