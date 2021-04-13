@@ -593,9 +593,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       left: 1rem;
       top: 1.5rem;
       z-index: 9999999999999999; } }
-  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-    .button-mobile, .button-social-menu {
-      display: none; } }
   .button-mobile .line-mb, .button-social-menu .line-mb {
     display: block;
     position: absolute;
@@ -612,6 +609,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       top: 1.4rem; }
     .button-mobile .line-mb:nth-child(3), .button-social-menu .line-mb:nth-child(3) {
       top: 2rem; }
+
+.button-social-menu {
+  top: .8rem; }
 
 .open .line-mb:nth-child(1) {
   top: 1.4rem;
@@ -630,12 +630,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   -moz-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg); }
-
-.button-social-menu {
-  top: .8rem; }
-  @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-    .button-social-menu {
-      display: block; } }
 
 .languages-box {
   position: relative; }

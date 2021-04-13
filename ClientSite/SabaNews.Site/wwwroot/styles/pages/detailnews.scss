@@ -195,6 +195,38 @@ img {
 }
 
 
+
+.mb-singe-page {
+    display: none;
+
+    @include tableMobile {
+        position: fixed;
+        background: $color-fff;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9999999999;
+    }
+
+    .button-social-menu {
+        @include landscapeTablet {
+            display: none;
+        }
+    }
+
+    .close-socical{
+        cursor : pointer;
+        position : absolute;
+        top : 1rem;
+        right : 1rem;
+    }
+}
+
+.active-mb-social{
+    display : block
+}
+
 .detail-content-table {
     ul {
         list-style: none;
@@ -288,6 +320,9 @@ img {
         }
     }
 }
+
+
+
 
 @media screen and (min-width: 320px) {
     .detail-content-table ul {

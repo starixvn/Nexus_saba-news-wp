@@ -32,6 +32,15 @@ $(document).ready(function () {
         $(this).parent().removeClass('toggle-active-form');
     })
 
+    $('.button-social-menu').click(function () {
+        $('body').addClass('hidden-body');
+        $('.mb-singe-page').addClass('active-mb-social')
+    })
+    $('.close-socical').click(function () {
+        $('body').removeClass('hidden-body');
+        $('.mb-singe-page').removeClass('active-mb-social')
+    })
+
 
     //mobile
     $('.button-mobile').click(function(){
