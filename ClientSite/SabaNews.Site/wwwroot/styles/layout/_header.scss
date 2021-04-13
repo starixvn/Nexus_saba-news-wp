@@ -359,7 +359,7 @@
             }
 
             @include landscapeTablet {
-                z-index :1;
+                z-index: 1;
             }
 
             .logo {
@@ -552,7 +552,8 @@
             right: .5rem;
             top: .5rem;
             font-size: 1.5rem;
-            cursor : pointer;
+            cursor: pointer;
+
             @include tableMobile {
                 top: .6rem;
                 right: 1.2rem;
@@ -638,8 +639,12 @@
     }
 }
 
-.button-social-menu{
-    top : .8rem;
+.button-social-menu {
+    top: .8rem;
+
+    @include landscapeTablet {
+        display: block;
+    }
 }
 
 .languages-box {
@@ -756,7 +761,6 @@
         }
     }
 }
-
 
 .overflow-modal {
     overflow: hidden;

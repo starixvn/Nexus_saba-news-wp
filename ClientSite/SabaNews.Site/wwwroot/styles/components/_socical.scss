@@ -1,6 +1,7 @@
 @import '../abstracts/placeholders';
 @import '../abstracts/variables';
 @import '../abstracts/_mixins.scss';
+
 .main-social {
     @include flex(center, nowrap, space-between, row);
 
@@ -75,7 +76,7 @@
     transition: .3s all ease-in-out;
     visibility: visible;
 
-    @include Mobile {
+    @include tableMobile {
         position: fixed;
         left: 0;
         width: 100%;

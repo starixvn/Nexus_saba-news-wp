@@ -19,7 +19,7 @@
     @include grid(5% 65% 30%, unset, 0);
 
     @include tableMobile {
-        grid-template-columns: 5% 60% 35%;
+        grid-template-columns: 60% 40%;
     }
 
     @include Mobile {
@@ -42,13 +42,29 @@
 
 
 
-@media screen and (min-width: 1024px) {
-    .block-main {
-        padding-right: 2.8rem;
-        border-right: 1px solid $separator-color;
+
+.block-main {
+    padding-right: 2.8rem;
+    border-right: 1px solid $separator-color;
+
+    @include tableMobile {
+        padding-right: 1rem;
+        border: none;
     }
 
-    .block-extension {
-        padding-left: 2.8rem;
+    @include Mobile {
+        padding: 0;
+    }
+}
+
+.block-extension {
+    padding-left: 2.8rem;
+
+    @include tableMobile {
+        padding-left: 1rem;
+    }
+
+    @include Mobile {
+        padding: 0;
     }
 }
