@@ -180,7 +180,7 @@ $(document).ready(function () {
         $('body').removeClass('overflow-modal');
     })
 
-    $('.croll-mobile-menu').on('click', function () {
+    $('.scroll-mobile-menu').on('click', function () {
         var leftPos = $('.main-child-menu').scrollLeft();
         $(".main-child-menu").animate({
             scrollLeft: leftPos + 200
