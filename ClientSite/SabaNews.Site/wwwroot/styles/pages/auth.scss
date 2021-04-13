@@ -60,7 +60,7 @@
             right: -1.6rem;
             z-index: 999999;
             cursor: pointer;
-            color: #4F4F4F;
+            color: $color-content;
             width: 3.2rem;
             height: 3.2rem;
             background: $color-fff;
@@ -68,9 +68,11 @@
             line-height: 3.2rem;
             font-size: 3rem;
             outline: none;
-            @include tableMobile{
-                right : 0;
+
+            @include tableMobile {
+                right: 0;
             }
+
             &:focus {
                 outline: none;
             }
@@ -93,7 +95,7 @@
                     display: block;
                     padding: 1.7rem 0;
                     position: relative;
-                    cursor : pointer;
+                    cursor: pointer;
                 }
 
                 .active {

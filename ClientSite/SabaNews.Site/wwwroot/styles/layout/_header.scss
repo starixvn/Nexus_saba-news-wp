@@ -183,7 +183,7 @@
                                 a {
                                     font-weight: 600;
                                     line-height: 1.7rem;
-                                    color: #4f4f4f;
+                                    color: $color-content;
                                     text-decoration: none;
                                 }
                             }
@@ -260,7 +260,7 @@
 
                     .number-bell {
                         text-decoration: none;
-                        background: #FF5F5F;
+                        background: $color-content;
                         width: 2rem;
                         height: 1.4rem;
                         font-size: 1rem;
@@ -374,11 +374,12 @@
                 @include tableMobile {
                     margin-right: 0;
                     padding: .6rem 0 .4rem 1.4rem;
-                    position : relative;
-                    z-index :9999999;
+                    position: relative;
+                    z-index: 9999999;
                     @include flex(center, wrap, space-between,row);
                 }
             }
+
             .nav-menu {
                 width: 100%;
 
@@ -456,7 +457,7 @@
                             transition: color .2s ease;
                             margin-right: 2rem;
                             line-height: 1.7rem;
-                            color: #4f4f4f;
+                            color: $color-content;
 
                             @include tableMobile {
                                 padding: 1.6rem 1.2rem;
@@ -464,26 +465,12 @@
                             }
 
                             &:hover {
-                                color: #f12f19;
+                                color: $color-main-title;
                             }
                         }
 
                         .active {
-                            color: #f12f19;
-                        }
-
-                        &:hover {
-                            .menu-child {
-                                display: block;
-
-                                @include tableMobile {
-                                    display: block;
-                                }
-
-                                @include tableMobile {
-                                    display: flex;
-                                }
-                            }
+                            color: $color-main-title;
                         }
                     }
                 }
@@ -602,7 +589,7 @@
         position: absolute;
         height: .2rem;
         width: 70%;
-        background: #081224;
+        background: $color-pagination;
         opacity: 1;
         transform: rotate(0);
         transition: .25s ease-in-out;
@@ -727,7 +714,7 @@
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #4f4f4f;
+            border-top: 5px solid $color-content;
             content: '';
             margin-left: .4rem;
             display: inline-block;

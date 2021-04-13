@@ -314,7 +314,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .child-box li a {
                 font-weight: 600;
                 line-height: 1.7rem;
-                color: #4f4f4f;
+                color: #4F4F4F;
                 text-decoration: none; }
           .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .auth-displayname:after {
             display: none; }
@@ -352,7 +352,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             font-size: 1.5rem; }
           .header .header-controls .header-auth-provider .notification-auth .bell .number-bell {
             text-decoration: none;
-            background: #FF5F5F;
+            background: #4F4F4F;
             width: 2rem;
             height: 1.4rem;
             font-size: 1rem;
@@ -508,23 +508,15 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               transition: color .2s ease;
               margin-right: 2rem;
               line-height: 1.7rem;
-              color: #4f4f4f; }
+              color: #4F4F4F; }
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
                   padding: 1.6rem 1.2rem;
                   margin-right: 0; } }
               .header .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
-                color: #f12f19; }
+                color: #F12F19; }
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .active {
-              color: #f12f19; }
-            .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
-              display: block; }
-              @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
-                  display: block; } }
-              @media screen and (max-width: 1024px) {
-                .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .menu-child {
-                  display: flex; } }
+              color: #F12F19; }
         .header .top-header .group-menu .nav-menu .active-main-menu {
           display: flex; }
       @media screen and (max-width: 1024px) {
@@ -700,7 +692,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       height: 0;
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
-      border-top: 5px solid #4f4f4f;
+      border-top: 5px solid #4F4F4F;
       content: '';
       margin-left: .4rem;
       display: inline-block; }
