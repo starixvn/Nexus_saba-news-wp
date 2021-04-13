@@ -46,11 +46,10 @@ $(document).ready(function () {
     
 
     //desktop
-    $('.btn-search').click(function () {
-        if ($(window).innerWidth() >= 1024) {
-            $('.search-input .search-box').toggleClass('active-input');
-        }
-    });
+   
+    if ($(window).innerWidth() < 1024) {
+        $('.search-desktop').remove();
+    }
 
     //desktop
     $(window).scroll(function () {
