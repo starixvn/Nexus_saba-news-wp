@@ -1,0 +1,177 @@
+﻿@using SabaNews.Core.Constants;
+@model IEnumerable<Menu>
+
+<section class="header @ViewBag.Page">
+
+	<div class="header-controls">
+		<div class="container padding-mobile-none">
+			<ul class="header-auth-provider">
+				<li class="item-control languages-box">
+					<div class="language-select"><span class="flag flag-vn"></span><span class="country">VN</span></div>
+					<ul class="languages-list">
+						<li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>CN</span></a>
+						<li>
+							<a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
+						</li>
+					</ul>
+				</li>
+				<li class="item-control search-desktop search-input">
+					<form asp-action="Search" method="get">
+						<input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+						<button type="submit" class="btn btn-search" aria-label="search">
+							<i class="icon-search"></i>
+						</button>
+					</form>
+				</li>
+
+				<li class="item-control notification-auth">
+					<span class="bell">
+						<a href="#" class="auth-bell"><i class="icon-bell"></i></a>
+						<a href="#" class="number-bell">10</a>
+					</span>
+				</li>
+
+				<li class="item-control auth-input">
+					@if (ViewBag.IsAuthenticated)
+					{
+						<ul class="auth-provider">
+							@if (ViewBag.Photo == null)
+							{
+								<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+							}
+							else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+							{
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+							}
+							else
+							{
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+							}
+							<li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+						</ul>
+						<ul class="box-auth">
+							<li>
+								<ul class="auth-provider">
+									@if (ViewBag.Photo == null)
+									{
+										<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+									}
+									else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+									{
+										<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+									}
+									else
+									{
+										<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+									}
+									<li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+								</ul>
+							</li>
+							<li class="info-user">
+								<ul class="child-box">
+									<li><a href="#">Hoạt động bình luận</a></li>
+									<li><a href="#">Tin đã lưu</a></li>
+									<li><a href="#">tin đã xem</a></li>
+								</ul>
+							</li>
+							<li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
+							<li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout</a> <i class="icon-logout"></i> </li>
+						</ul>
+					}
+					else
+					{
+						<a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
+					}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+	<div class="top-header">
+		<div class="container padding-mobile-none">
+			<div class="group-menu">
+				<div class="logo">
+					<a href="@Url.Action("Index", "Home")">
+						<img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
+					</a>
+				</div>
+				<div class="button-mobile">
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+					<span class="line-mb"></span>
+				</div>
+				<div class="nav-menu">
+					<ul class="main-menu">
+						@{ var VideoParentId = 0; }
+						@foreach (var menu in Model)
+						{
+
+							var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+							if (menu.PageSlug == Constants.MatchScheduleSlug)
+							{
+								link = Url.Action("MatchSchedule", "Home");
+							}
+							if (menu.PageSlug == Constants.WarningSlug)
+							{
+								link = Url.Action("Warning", "Home");
+							}
+							else if (menu.Slug == Constants.VideoSlug)
+							{
+								VideoParentId = menu.ID;
+								link = Url.Action("Video", "Home", new { slug = (int?)null });
+							}
+							if (menu.CatId != Constants.Home)
+							{
+								var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+								<li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+							}
+
+						}
+						<li class="right-header-section search-input">
+							<form asp-action="Search" method="get">
+								<input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+								<button type="submit" class="btn btn-search" aria-label="search">
+									<i class="icon-search"></i>
+								</button>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="child-mobile-menu">
+		<ul class="main-child-menu">
+			@foreach (var menu in Model)
+			{
+
+				var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+				if (menu.PageSlug == Constants.MatchScheduleSlug)
+				{
+					link = Url.Action("MatchSchedule", "Home");
+				}
+				if (menu.PageSlug == Constants.WarningSlug)
+				{
+					link = Url.Action("Warning", "Home");
+				}
+				else if (menu.Slug == Constants.VideoSlug)
+				{
+					VideoParentId = menu.ID;
+					link = Url.Action("Video", "Home", new { slug = (int?)null });
+				}
+				if (menu.CatId != Constants.Home)
+				{
+					var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+					<li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+				}
+
+			}
+		</ul>
+		<span class="icon-arrow croll-mobile-menu"></span>
+	</div>
+
+</section>
