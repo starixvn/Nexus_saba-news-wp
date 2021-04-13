@@ -656,7 +656,9 @@
     }
 
     @include landscapeTablet {
-        position: unset;
+        top: 1.3rem;
+        right: 26.5rem;
+        left : auto;
     }
 
     .languages-list {

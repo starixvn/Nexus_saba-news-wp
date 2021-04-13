@@ -643,7 +643,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       position: absolute; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
     .languages-box {
-      position: unset; } }
+      top: 1.3rem;
+      right: 26.5rem;
+      left: auto; } }
   .languages-box .languages-list {
     list-style: none;
     display: none;

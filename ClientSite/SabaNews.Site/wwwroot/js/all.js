@@ -62,7 +62,7 @@ $(document).ready(function () {
                 $('.top-header').removeClass('active-fixed');
             }
         }
-        if ($(window).innerWidth() <= 1024) {
+        if ($(window).innerWidth() < 1024) {
             if ($(this).scrollTop() > 100) {
                 $('.child-mobile-menu').addClass('active-fixed');
             } else {
