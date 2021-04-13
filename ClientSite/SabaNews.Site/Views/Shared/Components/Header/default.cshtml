@@ -6,11 +6,13 @@
 <section class="mobile-socical-header @ViewBag.Page">
 
 
-    <span class="close-socical">Close</span>
+    <div class="close-socical">
+        <i class="icon-close"></i>
+    </div>
 
     <div class="header-controls">
         <div class="container padding-mobile-none">
-            <ul class="header-auth-provider">
+            <ul class="header-auth-provider social-provider">
                 <li class="item-control languages-box">
                     <div class="language-select"><span class="flag flag-vn"></span><span class="country">VN</span></div>
                     <ul class="languages-list">
@@ -28,45 +30,43 @@
 
 
     <div class="top-header">
-        <div class="container padding-mobile-none">
-            <div class="group-menu">
-                <div class="nav-menu">
-                    <ul class="main-menu">
-                        @{ var VideoParentId = 0; }
-                        @foreach (var menu in Model)
+        <div class="group-menu">
+            <div class="nav-menu">
+                <ul class="main-menu">
+                    @{ var VideoParentId = 0; }
+                    @foreach (var menu in Model)
+                    {
+
+                        var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                        if (menu.PageSlug == Constants.MatchScheduleSlug)
                         {
-
-                            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-                            if (menu.PageSlug == Constants.MatchScheduleSlug)
-                            {
-                                link = Url.Action("MatchSchedule", "Home");
-                            }
-                            if (menu.PageSlug == Constants.WarningSlug)
-                            {
-                                link = Url.Action("Warning", "Home");
-                            }
-                            else if (menu.Slug == Constants.VideoSlug)
-                            {
-                                VideoParentId = menu.ID;
-                                link = Url.Action("Video", "Home", new { slug = (int?)null });
-                            }
-                            if (menu.CatId != Constants.Home)
-                            {
-                                var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-                                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
-                            }
-
+                            link = Url.Action("MatchSchedule", "Home");
                         }
-                        <li class="right-header-section search-input">
-                            <form asp-action="Search" method="get">
-                                <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
-                                <button type="submit" class="btn btn-search" aria-label="search">
-                                    <i class="icon-search"></i>
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                        if (menu.PageSlug == Constants.WarningSlug)
+                        {
+                            link = Url.Action("Warning", "Home");
+                        }
+                        else if (menu.Slug == Constants.VideoSlug)
+                        {
+                            VideoParentId = menu.ID;
+                            link = Url.Action("Video", "Home", new { slug = (int?)null });
+                        }
+                        if (menu.CatId != Constants.Home)
+                        {
+                            var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+                            <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+                        }
+
+                    }
+                    <li class="right-header-section search-input">
+                        <form asp-action="Search" method="get">
+                            <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+                            <button type="submit" class="btn btn-search" aria-label="search">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

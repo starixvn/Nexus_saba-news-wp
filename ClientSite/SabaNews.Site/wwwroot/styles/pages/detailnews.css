@@ -1681,8 +1681,45 @@ img {
   .mb-singe-page .close-socical {
     cursor: pointer;
     position: absolute;
-    top: 1rem;
-    right: 1rem; }
+    top: 1.8rem;
+    left: 1rem; }
+    .mb-singe-page .close-socical .icon-close:before {
+      font-size: 2.4rem; }
+  .mb-singe-page .social-provider {
+    list-style: none; }
+    .mb-singe-page .social-provider .languages-box {
+      right: 1rem;
+      left: auto; }
+  .mb-singe-page .main-menu {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 7rem; }
+    .mb-singe-page .main-menu .menu-item {
+      width: 100%;
+      order: 2;
+      border-bottom: 1px solid #E0E0E0;
+      text-align: left; }
+      .mb-singe-page .main-menu .menu-item:first-child {
+        border-top: 1px solid #E0E0E0;
+        margin-top: 1.5rem; }
+      .mb-singe-page .main-menu .menu-item:nth-last-child(2) {
+        border-bottom: none; }
+        .mb-singe-page .main-menu .menu-item:nth-last-child(2) a {
+          border: none; }
+      .mb-singe-page .main-menu .menu-item .item {
+        text-decoration: none;
+        display: block;
+        padding: 1.6rem 1.2rem;
+        font-weight: 600;
+        transition: color .2s ease;
+        line-height: 1.7rem;
+        color: #4F4F4F; }
+        .mb-singe-page .main-menu .menu-item .item:hover {
+          color: #F12F19; }
+    .mb-singe-page .main-menu .search-input {
+      order: 1;
+      width: 100%;
+      margin: 0 1rem; }
 
 .active-mb-social {
   display: block; }
