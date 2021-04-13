@@ -1076,11 +1076,7 @@ button {
   padding: 2rem .3rem 6rem 0; }
   @media screen and (max-width: 1024px) {
     .pagination {
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
       justify-content: center;
-      flex-direction: row;
       margin-bottom: 3rem;
       padding: 1rem .3rem 0 0; } }
   .pagination .icon-pagination {

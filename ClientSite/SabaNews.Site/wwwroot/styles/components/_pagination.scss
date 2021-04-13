@@ -4,7 +4,7 @@
     @include flex(center, nowrap, flex-end, row);
     padding: 2rem .3rem 6rem 0;
     @include tableMobile{
-        @include flex(center, nowrap, center, row);
+        justify-content :center;
         margin-bottom: 3rem;
         padding: 1rem .3rem 0 0;
     }
