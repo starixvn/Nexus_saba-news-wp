@@ -568,7 +568,7 @@
 }
 
 
-.button-mobile, .button-social-menu {
+.button-mobile{
     width: 2.8rem;
     height: 3rem;
     transform: rotate(0);
@@ -584,7 +584,9 @@
         top: 1.5rem;
         z-index: 9999999999999999;
     }
-
+    @include landscapeTablet{
+        display : none;
+    }
     .line-mb {
         display: block;
         position: absolute;
@@ -610,9 +612,6 @@
     }
 }
 
-.button-social-menu{
-    top : .8rem;
-}
 
 .open {
     .line-mb {

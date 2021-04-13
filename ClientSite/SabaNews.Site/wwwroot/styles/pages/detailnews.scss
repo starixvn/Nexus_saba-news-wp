@@ -195,6 +195,46 @@ img {
 }
 
 
+.button-social-menu {
+    width: 2.8rem;
+    height: 3rem;
+    transform: rotate(0);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    display: none;
+    position: relative;
+
+    @include tableMobile {
+        display: block;
+        position: absolute;
+        left: 1rem;
+        top: .8rem;
+        z-index: 9999999999999999;
+    }
+    .line-mb {
+        display: block;
+        position: absolute;
+        height: .2rem;
+        width: 70%;
+        background: $color-pagination;
+        opacity: 1;
+        transform: rotate(0);
+        transition: .25s ease-in-out;
+        border-radius: 1rem;
+
+        &:nth-child(1) {
+            top: .8rem;
+        }
+
+        &:nth-child(2) {
+            top: 1.4rem;
+        }
+
+        &:nth-child(3) {
+            top: 2rem;
+        }
+    }
+}
 
 .mb-singe-page {
     display: none;
@@ -209,20 +249,15 @@ img {
         z-index: 9999999999;
     }
 
-    .button-social-menu {
-        @include landscapeTablet {
-            display: none;
-        }
-    }
-
     .close-socical {
         cursor: pointer;
         position: absolute;
         top: 1.8rem;
         left: 1rem;
-        .icon-close{
-            &:before{
-                font-size : 2.4rem;
+
+        .icon-close {
+            &:before {
+                font-size: 2.4rem;
             }
         }
     }
@@ -233,6 +268,16 @@ img {
         .languages-box {
             right: 1rem;
             left: auto;
+
+            @include landscapeTablet {
+                position: absolute;
+                top: 1.5rem;
+            }
+            .languages-list{
+                @include tableMobile{
+                    left : -6rem;
+                }
+            }
         }
     }
 
@@ -245,7 +290,7 @@ img {
             width: 100%;
             order: 2;
             border-bottom: 1px solid $border-calendar;
-            text-align :left;
+            text-align: left;
 
 
             &:first-child {
@@ -287,6 +332,7 @@ img {
 .active-mb-social{
     display : block
 }
+
 
 .detail-content-table {
     ul {
