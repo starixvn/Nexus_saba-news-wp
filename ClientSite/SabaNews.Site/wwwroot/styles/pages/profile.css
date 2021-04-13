@@ -1194,7 +1194,6 @@ button {
   .block-main .profile__avatar {
     width: 10rem;
     height: 10rem;
-    display: inline-block;
     background: #e5e5e5;
     line-height: 10rem;
     text-align: center;
@@ -1275,7 +1274,7 @@ button {
   .block-extension .controls {
     padding: 2rem; }
     .block-extension .controls .title {
-      font-size: 15px;
+      font-size: 1.5rem;
       font-weight: 700;
       color: #4F4F4F;
       margin-bottom: 2rem; }

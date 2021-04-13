@@ -23,7 +23,7 @@
 .block {
     .profile, .controls {
         border: 1px solid $separator-color;
-        background: #fff;
+        background: $color-fff;
         box-sizing: border-box;
     }
 }
@@ -37,7 +37,6 @@
         &__avatar {
             width: 10rem;
             height: 10rem;
-            display: inline-block;
             background: $separator-color;
             line-height: 10rem;
             text-align: center;
@@ -149,7 +148,7 @@
         padding: 2rem;
 
         .title {
-            font-size: 15px;
+            font-size: 1.5rem;
             font-weight: 700;
             color: $color-content;
             margin-bottom: 2rem;
@@ -397,7 +396,7 @@
                         }
 
                         .btn-disabled {
-                            background: #BDBDBD;
+                            background: $border-heading;
                         }
                     }
 

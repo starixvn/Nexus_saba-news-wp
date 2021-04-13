@@ -174,7 +174,7 @@ img {
             right: -1.6rem;
             z-index: 999999;
             cursor: pointer;
-            color: #4F4F4F;
+            color: $color-content;
             width: 3.2rem;
             height: 3.2rem;
             background: $color-fff;
@@ -198,7 +198,6 @@ img {
 .detail-content-table {
     ul {
         list-style: none;
-        padding-left: 0;
         margin: 0;
         width: 50%;
         padding: 0 1.5rem;
@@ -219,7 +218,7 @@ img {
     }
 
     .tab-success, .tab-danger, .tab-warning {
-        color: #fff;
+        color: $color-fff;
         font-weight: 700;
         padding: .5rem;
         border-radius: 5px;
