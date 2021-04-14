@@ -1585,6 +1585,9 @@ img {
   padding: 0 1rem;
   border-radius: 3px;
   display: none; }
+  @media screen and (max-width: 1024px) {
+    .tip {
+      top: 4rem; } }
 
 .item-social {
   position: relative; }

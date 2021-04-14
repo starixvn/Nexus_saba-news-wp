@@ -83,6 +83,9 @@ img {
     padding: 0 1rem;
     border-radius: 3px;
     display: none;
+    @include tableMobile{
+        top : 4rem;
+    }
 }
 
 .item-social {
