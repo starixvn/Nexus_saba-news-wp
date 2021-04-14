@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Xml.Linq;
+    using SabaNews.Core.Constants;
     using SabaNews.Models;
     using TimeZoneConverter;
 
@@ -43,7 +44,7 @@
             {
                 XElement publicationElement = new(
                     xmlns_news + "publication",
-                    new XElement(xmlns_news + "name", "Saba Sports"),
+                    new XElement(xmlns_news + "name", Constants.SiteName),
                     new XElement(xmlns_news + "language", "vi"));
                 XElement newsElement = new(
                     xmlns_news + "news",
