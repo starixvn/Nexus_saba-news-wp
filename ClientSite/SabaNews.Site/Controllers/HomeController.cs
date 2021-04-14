@@ -121,18 +121,25 @@
             }
 
             var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
-            var randomRelatedPosts = await postService.GetRandomReplatedPostAsync(post.Categories, post.ID);
-
+            var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
+            var cateSlug = post.CategoriesSlug;
+            if (cateSlug.Contains(","))
+            {
+                var listCateSlug = post.CategoriesSlug.Split(',');
+                var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();
+                cateSlug = exceptCateSlug[0] ?? cateSlug;
+            }
             var Models = new SingleViewModel
             {
                 SinglePost = post,
                 RelatedPosts = relatedPosts,
-                RandomRelatedPosts = randomRelatedPosts
+                RecentPosts = recentPosts.Posts
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;
+            ViewData["cateSlug"] = cateSlug;
 
             return View(Models);
         }

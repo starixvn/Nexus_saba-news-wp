@@ -81,7 +81,7 @@
             return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end)
+        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postId)
         {
             var criteria = new GetTopPostsByCateSlugCriteria
             {
@@ -90,6 +90,16 @@
                 End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            if (postId != 0)
+            {
+                var excerptCurrentPost = posts.Where(item => item.ID != postId).ToList();
+                var totalRealItems = end - 1;
+                posts = excerptCurrentPost;
+                if (excerptCurrentPost.Count > totalRealItems)
+                {
+                    posts = excerptCurrentPost.Skip(start).Take(totalRealItems).ToList();
+                }
+            }
 
             return FormatData(posts).ToList();
         }

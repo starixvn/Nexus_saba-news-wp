@@ -6,6 +6,6 @@
     {
         public Post SinglePost { get; set; }
         public IEnumerable<Post> RelatedPosts { get; set; }
-        public IEnumerable<Post> RandomRelatedPosts { get; set; }
+        public IEnumerable<Post> RecentPosts { get; set; }
     }
 }

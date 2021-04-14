@@ -30,7 +30,9 @@
             }
             else
             {
-                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, Constants.GetFourItems);
+                var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
+                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, end, postID);
+                
                 ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
             }
            
