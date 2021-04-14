@@ -52,6 +52,12 @@
         });
 
         $('.mobile-socical-header .btn-search').on('click', function () {
+            var keyword = $(this).val();
+            if ($.trim(keyword) === '') {
+                e.preventDefault();
+                $(this).focus();
+                return false;
+            }
             $(this).parent().submit();
         });
     }
