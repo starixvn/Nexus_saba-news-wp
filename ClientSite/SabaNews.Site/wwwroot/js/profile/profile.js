@@ -45,6 +45,15 @@
             }, 1000);
            
         });
+
+        $('.mobile-socical-header input[name=keyword]').on('keypress', function () {
+            var val = $(this).val();
+            $('.header .top-header').find('input[name=keyword]').val(val);
+        });
+
+        $('.mobile-socical-header .btn-search').on('click', function () {
+            $(this).parent().submit();
+        });
     }
 
 
