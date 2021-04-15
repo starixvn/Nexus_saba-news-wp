@@ -179,6 +179,18 @@
     }
 }
 
+.wapper.active-fixed {
+    .child-mobile-menu, .button-mobile {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+    }
+
+    .button-mobile {
+        z-index: 10004;
+    }
+}
+
 
 
 

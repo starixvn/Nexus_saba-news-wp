@@ -456,3 +456,24 @@ img {
         font-size: 1.6rem;
     }
 }
+
+
+.wapper.active-fixed {
+    .fixed-social {
+        z-index: 10008;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .button-mobile {
+        z-index: 10009;
+        top: .8rem;
+        position: fixed;
+    }
+}
+
+@media (max-device-width: 767px) {
+    .hidden-body .top-header {
+        top: 44px;
+    }
+}

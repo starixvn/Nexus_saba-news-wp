@@ -2,7 +2,32 @@
 @import '../abstracts/variables';
 @import '../abstracts/_mixins.scss';
 
+.logo {
+    width: 12rem;
+    margin-right: 2.4rem;
 
+    a {
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+    }
+    &.logo-mobile {
+        display: none;
+    }
+    @media (max-device-width: 767px){
+        &.logo-mobile {
+            display: block;
+        }
+        &.logo-desktop {
+            display: none;
+        }
+    }
+
+
+}
 
 .header {
     background-color: $bg-nav;
@@ -12,7 +37,6 @@
         border-bottom: 1px solid $separator-color;
 
         @include tableMobile {
-            padding: 0;
             border-bottom: none;
         }
 
@@ -24,6 +48,12 @@
         .header-auth-provider {
             list-style: none;
             @include flex(center,nowrap, flex-end);
+
+            @include tableMobile{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 0 8px;
+            }
 
             .search-desktop {
                 @include tableMobile {
@@ -50,20 +80,8 @@
             .auth-input {
                 position: relative;
                 cursor: pointer;
-
                 @include tableMobile {
-                    position: absolute;
-                    top: 1.8rem;
-                    z-index: 10;
-                    right: 1.2rem;
-                    width: 100%;
-                    display: flex;
-                    justify-content: flex-end;
-                }
-
-                @include landscapeTablet {
-                    position: unset;
-                    width: auto;
+                    justify-self: flex-end;
                 }
 
                 .item {
@@ -158,8 +176,7 @@
                     }
 
                     @include tableMobile {
-                        width: 100%;
-                        right: -1.2rem;
+                        right: 0;
                     }
 
                     .info-user {
@@ -285,7 +302,6 @@
         @include tableMobile {
             width: 100%;
             display: block;
-            margin-top: 6rem;
             position: relative;
         }
 
@@ -339,9 +355,7 @@
         transition: .3s ease-in-out;
 
         @include tableMobile {
-            padding: 0;
-            overflow: hidden;
-            box-shadow: none;
+            display: none;
         }
 
         @include landscapeTablet {
@@ -360,28 +374,6 @@
 
             @include landscapeTablet {
                 z-index: 1;
-            }
-
-            .logo {
-                width: 12rem;
-                margin-right: 2.4rem;
-
-                a {
-                    display: flex;
-                    align-items: center;
-                }
-
-                img {
-                    width: 100%;
-                }
-
-                @include tableMobile {
-                    margin-right: 0;
-                    padding: .6rem 0 .4rem 1.4rem;
-                    position: relative;
-                    z-index: 9999999;
-                    @include flex(center, wrap, space-between,row);
-                }
             }
 
             .nav-menu {
@@ -492,18 +484,6 @@
         }
     }
 
-    .active-fixed {
-        padding: .5rem 0;
-        position: fixed;
-        width: 100%;
-        z-index: 999999;
-        top: 0;
-        margin-top: 0;
-
-        @include tableMobile {
-            padding: 0;
-        }
-    }
 
     .padding-mobile-none {
         @include tableMobile {
@@ -572,7 +552,6 @@
     width: 2.8rem;
     height: 3rem;
     transform: rotate(0);
-    transition: .5s ease-in-out;
     cursor: pointer;
     display: none;
     position: relative;
@@ -580,9 +559,9 @@
     @include tableMobile {
         display: block;
         position: absolute;
-        left: 1rem;
-        top: 1.5rem;
-        z-index: 9999999999999999;
+        top: 1.9rem;
+        left: .8rem;
+        z-index: 9999;
     }
     @include landscapeTablet{
         display : none;
@@ -611,7 +590,6 @@
         }
     }
 }
-
 
 .open {
     .line-mb {
@@ -643,18 +621,8 @@
 
 .languages-box {
     position: relative;
-
-    @include tableMobile {
-        top: 1.8rem;
-        left: 3.5rem;
-        z-index: 999999;
-        position: absolute;
-    }
-
-    @include landscapeTablet {
-        position: relative;
-        top: auto;
-        left: auto;
+    @include tableMobile{
+        padding-left: 30px;
     }
 
     .languages-list {
@@ -738,17 +706,17 @@
 
 .hidden-body {
     @include tableMobile {
-        .group-menu, .padding-mobile-none, .top-header {
+        .group-menu, .padding-mobile-none, .top-header, .nav-menu {
             height: 100%;
         }
 
-        .nav-menu {
-            height: calc(100% - 5.6rem);
-        }
-
-        .header {
-            top: 0;
+        .top-header {
+            top: 70px;
             bottom: 0;
+            width: 100%;
+            z-index: 10000;
+            display: block;
+            position: fixed;
         }
     }
 }

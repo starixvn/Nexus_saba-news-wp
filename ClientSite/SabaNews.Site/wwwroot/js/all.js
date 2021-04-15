@@ -62,26 +62,10 @@ $(document).ready(function () {
 
     //desktop
     $(window).scroll(function () {
-        if ($(window).innerWidth() > 1024) {
-            if ($(this).scrollTop() > 100) {
-                $('.top-header').addClass('active-fixed');
-                
-            } else {
-                $('.top-header').removeClass('active-fixed');
-            }
-        }
-        if ($(window).innerWidth() <= 1024) {
-            if ($(this).scrollTop() > 100) {
-                $('.child-mobile-menu').addClass('active-fixed');
-            } else {
-                $('.child-mobile-menu').removeClass('active-fixed');
-            }
-
-            if ($(this).scrollTop() > 130) {
-                $('.fixed-social').addClass('active-scroll-mobile');
-            } else {
-                $('.fixed-social').removeClass('active-scroll-mobile');
-            }
+        if ($(this).scrollTop() > 100) {
+            $('.wapper').addClass('active-fixed');
+        } else {
+            $('.wapper').removeClass('active-fixed');
         }
 
     });

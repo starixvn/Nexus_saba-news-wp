@@ -1,8 +1,13 @@
 ﻿@using SabaNews.Core.Constants;
 @model IEnumerable<Menu>
 
-<section class="header @ViewBag.Page">
 
+<section class="header @ViewBag.Page">
+    <div class="button-mobile">
+        <span class="line-mb"></span>
+        <span class="line-mb"></span>
+        <span class="line-mb"></span>
+    </div>
     <div class="header-controls">
         <div class="container padding-mobile-none">
             <ul class="header-auth-provider">
@@ -14,6 +19,11 @@
                             <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
                         </li>
                     </ul>
+                </li>
+                <li class="logo logo-mobile">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
+                    </a>
                 </li>
                 <li class="item-control search-desktop search-input">
                     <form asp-action="Search" method="get">
@@ -84,58 +94,53 @@
                     }
                 </li>
             </ul>
-		</div>
-	</div>
+        </div>
+    </div>
 
     <div class="top-header">
         <div class="container padding-mobile-none">
             <div class="group-menu">
-                <div class="logo">
+                <div class="logo logo-desktop">
                     <a href="@Url.Action("Index", "Home")">
-						<img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
+                        <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
                     </a>
                 </div>
-                <div class="button-mobile">
-                    <span class="line-mb"></span>
-                    <span class="line-mb"></span>
-                    <span class="line-mb"></span>
-                </div>
                 <div class="nav-menu">
-					<ul class="main-menu">
-						@{ var VideoParentId = 0; }
-						@foreach (var menu in Model)
-						{
+                    <ul class="main-menu">
+                        @{ var VideoParentId = 0; }
+                        @foreach (var menu in Model)
+                        {
 
-							var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-							if (menu.PageSlug == Constants.MatchScheduleSlug)
-							{
-								link = Url.Action("MatchSchedule", "Home");
-							}
-							if (menu.PageSlug == Constants.WarningSlug)
-							{
-								link = Url.Action("Warning", "Home");
-							}
-							else if (menu.Slug == Constants.VideoSlug)
-							{
-								VideoParentId = menu.ID;
-								link = Url.Action("Video", "Home", new { slug = (int?)null });
-							}
-							if (menu.CatId != Constants.Home)
-							{
-								var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-								<li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
-							}
+                            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                            if (menu.PageSlug == Constants.MatchScheduleSlug)
+                            {
+                                link = Url.Action("MatchSchedule", "Home");
+                            }
+                            if (menu.PageSlug == Constants.WarningSlug)
+                            {
+                                link = Url.Action("Warning", "Home");
+                            }
+                            else if (menu.Slug == Constants.VideoSlug)
+                            {
+                                VideoParentId = menu.ID;
+                                link = Url.Action("Video", "Home", new { slug = (int?)null });
+                            }
+                            if (menu.CatId != Constants.Home)
+                            {
+                                var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+                                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+                            }
 
-						}
-						<li class="right-header-section search-input">
-							<form asp-action="Search" method="get">
+                        }
+                        <li class="right-header-section search-input">
+                            <form asp-action="Search" method="get">
                                 <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
-								<button type="submit" class="btn btn-search" aria-label="search">
-									<i class="icon-search"></i>
-								</button>
-							</form>
-						</li>
-					</ul>
+                                <button type="submit" class="btn btn-search" aria-label="search">
+                                    <i class="icon-search"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
