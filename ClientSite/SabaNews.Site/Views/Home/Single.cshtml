@@ -118,14 +118,6 @@
                 </div>
             }
 
-            <ul class="block-list">
-                @foreach (var post in Model.RelatedPosts)
-                {
-
-                    <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>
-                }
-            </ul>
-
             <div class="main-social">
                 <ul class="social left-social">
                     <li class="item-social">
