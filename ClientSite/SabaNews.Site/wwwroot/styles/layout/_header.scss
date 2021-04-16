@@ -477,8 +477,7 @@
         z-index: 999;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         background: #fff;
-        padding: 4px;
-        width: 80px;
+        min-width: 120px;
         border-radius: 4px;
         left: -4px;
         top: 30px;
@@ -487,8 +486,11 @@
         .lang-item {
             text-decoration: none;
             color: #4f4f4f;
-            display: inline-block;
-            padding: 2px 0;
+            display: block;
+            padding: 4px;
+            &:hover {
+                background-color: #ececec;
+            }
         }
 
         &.active {

@@ -552,8 +552,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     z-index: 999;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     background: #fff;
-    padding: 4px;
-    width: 80px;
+    min-width: 120px;
     border-radius: 4px;
     left: -4px;
     top: 30px;
@@ -561,8 +560,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .languages-box .languages-list .lang-item {
       text-decoration: none;
       color: #4f4f4f;
-      display: inline-block;
-      padding: 2px 0; }
+      display: block;
+      padding: 4px; }
+      .languages-box .languages-list .lang-item:hover {
+        background-color: #ececec; }
     .languages-box .languages-list.active {
       display: block; }
   .languages-box .flag {
