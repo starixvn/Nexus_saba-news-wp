@@ -472,24 +472,13 @@ img {
     }
 }
 
-
-/*.wapper.active-fixed {
-    .top-header {
-        position: fixed;
-        z-index: 10005;
-        top: 0;
-    }
-}*/
 @media (max-device-width: 767px) {
     .wapper.active-fixed {
         .top-header {
             position: fixed;
             z-index: 10005;
-            top: 0;
+            top: 44px;
         }
-    }
-    .hidden-body .wapper .top-header {
-        height: calc(100% - 70px);
     }
     .hidden-body .wapper.active-fixed .top-header {
         height: calc(100% - 44px);

@@ -1837,19 +1837,10 @@ img {
   top: .8rem;
   position: fixed; }
 
-/*.wapper.active-fixed {
-    .top-header {
-        position: fixed;
-        z-index: 10005;
-        top: 0;
-    }
-}*/
 @media (max-device-width: 767px) {
   .wapper.active-fixed .top-header {
     position: fixed;
     z-index: 10005;
-    top: 0; }
-  .hidden-body .wapper .top-header {
-    height: calc(100% - 70px); }
+    top: 44px; }
   .hidden-body .wapper.active-fixed .top-header {
     height: calc(100% - 44px); } }
