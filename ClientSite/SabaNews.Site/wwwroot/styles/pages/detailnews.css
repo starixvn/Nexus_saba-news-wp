@@ -684,7 +684,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     width: 100%;
     z-index: 10000;
     display: block;
-    position: fixed; } }
+    position: fixed;
+    overflow: auto; } }
 
 .block-extension {
   display: flex;
