@@ -51,12 +51,6 @@
     @Html.Raw(Model.SinglePost.PostContent)
 </div>            }
 
-            <ul class="block-list">
-                @foreach (var post in Model.RelatedPosts)
-                {
-
-    <li class="list-item"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="item"><i class="icon-content icon-@Model.SinglePost.Type"></i> @post.PostTitle</a></li>}
-            </ul>
 
             @{ var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug }); }
             @if (isMobile || isTablet)

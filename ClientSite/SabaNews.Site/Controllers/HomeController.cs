@@ -120,7 +120,6 @@
                 post.PostContent = post.PostContent.Replace(oldText, newText);
             }
 
-            var relatedPosts = await postService.GetRelatedPostAsync(post.ID);
             var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
             var cateSlug = post.CategoriesSlug;
             if (cateSlug.Contains(","))
@@ -132,7 +131,6 @@
             var Models = new SingleViewModel
             {
                 SinglePost = post,
-                RelatedPosts = relatedPosts,
                 RecentPosts = recentPosts.Posts
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
