@@ -676,13 +676,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header, .hidden-body .nav-menu {
     height: 100%; }
   .hidden-body .top-header {
-    top: 70px;
-    bottom: 0;
     width: 100%;
     z-index: 10000;
     display: block;
-    position: fixed;
-    overflow: auto; } }
+    overflow: auto;
+    height: calc(100% - 69px); } }
 
 .block-extension {
   display: flex;

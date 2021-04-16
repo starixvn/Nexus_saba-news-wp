@@ -711,13 +711,11 @@
         }
 
         .top-header {
-            top: 70px;
-            bottom: 0;
             width: 100%;
             z-index: 10000;
             display: block;
-            position: fixed;
             overflow: auto;
+            height: calc(100% - 69px);
         }
     }
 }
