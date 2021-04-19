@@ -9,7 +9,7 @@
 
 @section Metadata {
 	<meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&hellip;" )' />
-	<meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&hellip;" )' />
+	<meta property="og:description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&hellip;" )' />
     <meta property="og:title" content='@Model.SinglePost.PostTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@ViewData[Constants.ViewUrl]" />
