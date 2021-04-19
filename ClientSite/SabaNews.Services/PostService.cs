@@ -115,7 +115,8 @@
             if (post != null)
             {
                 var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                post.PostExcerpt = (excerpt.Length > Constants.ExcerptLength) ? excerpt.Substring(0, Constants.ExcerptLength) : excerpt;
+                var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
+                post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
 
                 if (post.Categories == null)
