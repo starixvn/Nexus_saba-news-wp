@@ -34,6 +34,16 @@
     <div class="container">
         <div class="block block-main">
             <h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories)</a></h2>
+            @if (Model.ViewData.Slug == ViewResources.FootballSlug)
+			{
+                <div class="sub-category">
+                    <ul>
+				        <li><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
+				        <li><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
+			        </ul>
+                </div>
+                
+            }
             <div class="block__content">
                 <div class="card-horizontal card-horizontal-highlight">
                     <a href="@Url.Action("Single", "Home", new { slug = Model.Posts[0].Slug })" class="card-horizontal__image thumb thumb-56">

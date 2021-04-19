@@ -250,6 +250,51 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trong nước.
+        /// </summary>
+        public static string FootballInside {
+            get {
+                return ResourceManager.GetString("FootballInside", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bong-da-trong-nuoc.
+        /// </summary>
+        public static string FootballInsideSlug {
+            get {
+                return ResourceManager.GetString("FootballInsideSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quốc tế.
+        /// </summary>
+        public static string FootballOutside {
+            get {
+                return ResourceManager.GetString("FootballOutside", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bong-da-quoc-te.
+        /// </summary>
+        public static string FootballOutsideSlug {
+            get {
+                return ResourceManager.GetString("FootballOutsideSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to bong-da.
+        /// </summary>
+        public static string FootballSlug {
+            get {
+                return ResourceManager.GetString("FootballSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quên mật khẩu.
         /// </summary>
         public static string ForgotPassword {

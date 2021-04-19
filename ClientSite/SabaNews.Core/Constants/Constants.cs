@@ -16,6 +16,8 @@
         public const string CategorySlug = "tin-the-thao";
         public const string MatchScheduleSlug = "lich-thi-dau";
         public const string WarningSlug = "warning";
+        public const string FootballWorldSlug = "bong-da-quoc-te";
+        public const string FootballCountrySlug = "bong-da-trong-nuoc";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";

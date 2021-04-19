@@ -180,6 +180,21 @@
   <data name="Football" xml:space="preserve">
     <value>Bóng đá</value>
   </data>
+  <data name="FootballInside" xml:space="preserve">
+    <value>Trong nước</value>
+  </data>
+  <data name="FootballInsideSlug" xml:space="preserve">
+    <value>bong-da-trong-nuoc</value>
+  </data>
+  <data name="FootballOutside" xml:space="preserve">
+    <value>Quốc tế</value>
+  </data>
+  <data name="FootballOutsideSlug" xml:space="preserve">
+    <value>bong-da-quoc-te</value>
+  </data>
+  <data name="FootballSlug" xml:space="preserve">
+    <value>bong-da</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Quên mật khẩu</value>
   </data>
