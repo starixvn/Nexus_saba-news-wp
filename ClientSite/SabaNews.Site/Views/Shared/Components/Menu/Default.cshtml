@@ -10,6 +10,11 @@
     </div>
     <div class="header-controls">
         <div class="container padding-mobile-none">
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
+                </a>
+            </div>
             <ul class="header-auth-provider">
                 <li class="item-control languages-box">
                     <div class="language-select"><span class="flag flag-vn"></span><span class="country">VN</span></div>
@@ -19,11 +24,6 @@
                             <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>EN</span></a>
                         </li>
                     </ul>
-                </li>
-                <li class="logo logo-mobile">
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
-                    </a>
                 </li>
                 <li class="item-control search-desktop search-input">
                     <form asp-action="Search" method="get">
@@ -100,11 +100,6 @@
     <div class="top-header">
         <div class="container padding-mobile-none">
             <div class="group-menu">
-                <div class="logo logo-desktop">
-                    <a href="@Url.Action("Index", "Home")">
-                        <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
-                    </a>
-                </div>
                 <div class="nav-menu">
                     <ul class="main-menu">
                         @{ var VideoParentId = 0; }
@@ -128,7 +123,7 @@
                             if (menu.CatId != Constants.Home)
                             {
                                 var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
-                                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+                                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a><span class="marked-icon"></span></li>
                             }
 
                         }

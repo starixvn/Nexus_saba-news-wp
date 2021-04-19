@@ -4,7 +4,6 @@
 
 .logo {
     width: 12rem;
-    margin-right: 2.4rem;
 
     a {
         display: flex;
@@ -14,19 +13,12 @@
     img {
         width: 100%;
     }
-    &.logo-mobile {
-        display: none;
+    @include tableMobile{
+        position: absolute;
+        height: 5.3rem;
+        left: 50%;
+        margin-left: -6rem;
     }
-    @media (max-device-width: 767px){
-        &.logo-mobile {
-            display: block;
-        }
-        &.logo-desktop {
-            display: none;
-        }
-    }
-
-
 }
 
 .header {
@@ -44,6 +36,13 @@
             padding: .8rem 0;
             border-bottom: 1px solid $separator-color;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            @include tableMobile {
+                position: relative;
+            }
+        }
 
         .header-auth-provider {
             list-style: none;
@@ -51,8 +50,9 @@
 
             @include tableMobile{
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
                 padding: 0 8px;
+                width: 100%;
             }
 
             .search-desktop {
@@ -412,6 +412,7 @@
 
                     .menu-item {
                         position: relative;
+                        margin-right: 2rem;
 
                         &:first-child {
                             @include tableMobile {
@@ -447,11 +448,10 @@
 
                         .item {
                             text-decoration: none;
-                            display: block;
+                            display: inline-block;
                             padding: 3.7rem 0;
                             font-weight: 600;
                             transition: color .2s ease;
-                            margin-right: 2rem;
                             line-height: 1.7rem;
                             color: $color-content;
 
@@ -703,6 +703,26 @@
         }
     }
 }
+.marked-icon {
+    background: url("../../images/man.png") no-repeat;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    animation: skew 1s infinite;
+    transform: skew(8deg);
+    animation-direction: alternate;
+}
+
+/*@keyframes skew {
+    0% {
+        transform: skewX(8deg);
+    }
+
+    100% {
+        transform: skewX(-8deg);
+    }
+}*/
 
 .hidden-body {
     @include tableMobile {
