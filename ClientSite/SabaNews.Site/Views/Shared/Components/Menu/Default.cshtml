@@ -26,8 +26,8 @@
                     </ul>
                 </li>
                 <li class="item-control search-desktop search-input">
-                    <form asp-action="Search" method="get">
-                        <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+                    <form asp-action="Search" asp-controller="Home" method="get">
+                        <input class="keyword-input search-box" name="keyword" id="keyword-desktop" type="text" placeholder="Tìm kiếm...">
                         <button type="submit" class="btn btn-search" aria-label="search">
                             <i class="icon-search"></i>
                         </button>
@@ -79,9 +79,7 @@
                             </li>
                             <li class="info-user">
                                 <ul class="child-box">
-                                    <li><a href="#">Hoạt động bình luận</a></li>
-                                    <li><a href="#">Tin đã lưu</a></li>
-                                    <li><a href="#">tin đã xem</a></li>
+                                    <li><a href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a></li>
                                 </ul>
                             </li>
                             <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
