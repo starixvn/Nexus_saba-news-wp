@@ -16,8 +16,8 @@
         public const string CategorySlug = "tin-the-thao";
         public const string MatchScheduleSlug = "lich-thi-dau";
         public const string WarningSlug = "warning";
-        public const string FootballWorldSlug = "bong-da-quoc-te";
-        public const string FootballCountrySlug = "bong-da-trong-nuoc";
+        public const string FootballOutside = "bong-da-quoc-te";
+        public const string FootballInside = "bong-da-trong-nuoc";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
@@ -28,6 +28,7 @@
         public const string Search = "Search";
         public const string Tag = "Tag";
         public const string DateSearch = "DateSearch";
+        public const string Football = "Bóng đá";
 
         public const string EmptyBlogView = "EmptyBlog";
         public const string BlogView = "Blog";

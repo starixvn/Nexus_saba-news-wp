@@ -14,5 +14,6 @@
         public string Tag { get; set; }
         public string DateSearch { get; set; }
         public string Slug { get; set; }
+        public bool IsChildren { get; set; }
     }
 }

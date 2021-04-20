@@ -45,6 +45,11 @@
         {
             slug ??= Constants.NewPostSlug;
             var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
+            {
+                viewModel.ViewData.HeadTitle = Constants.Football;
+                viewModel.ViewData.IsChildren = true;
+            }
             var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }

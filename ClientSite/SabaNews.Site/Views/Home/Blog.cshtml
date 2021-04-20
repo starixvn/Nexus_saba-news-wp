@@ -34,7 +34,7 @@
     <div class="container">
         <div class="block block-main">
             <h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories)</a></h2>
-            @if (Model.ViewData.Slug == ViewResources.FootballSlug)
+            @if (Model.ViewData.Slug == ViewResources.FootballSlug || Model.ViewData.IsChildren)
 			{
                 <div class="sub-category">
                     <ul>
