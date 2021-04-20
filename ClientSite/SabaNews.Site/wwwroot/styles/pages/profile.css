@@ -475,7 +475,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               padding-bottom: 0; } }
           .header .top-header .group-menu .nav-menu .main-menu .menu-item {
             position: relative;
-            margin-right: 2rem; }
+            margin-right: 5rem; }
             @media screen and (max-width: 1024px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
                 border-top: 1px solid #E0E0E0; } }
@@ -821,20 +821,20 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding-bottom: 1.6rem; } }
   .block__title {
     margin-bottom: 1.2rem;
-    position: relative; }
+    position: relative;
+    padding-left: 1rem; }
     @media screen and (max-width: 1024px) {
       .block__title {
         margin-bottom: .9rem; } }
     .block__title::after {
       content: "";
       display: block;
-      background: #BDBDBD;
+      background: #F12F19;
       position: absolute;
-      transform: translate(50%, -50%);
-      right: 50%;
-      top: 50%;
-      width: 100%;
-      height: .1rem;
+      left: 0;
+      top: 2px;
+      width: .3rem;
+      height: 2rem;
       z-index: 0; }
     .block__title a {
       font-weight: bold;
