@@ -31,6 +31,7 @@
             var viewModel = await dataControlService.GetHomePageViewModel();
 
             ViewData[Constants.ViewDataCategoryId] = Constants.Home;
+            ViewData[Constants.ViewDataCategorySlug] = Constants.Empty;
             ViewData[Constants.ViewDataTitle] = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
             ViewData[Constants.ViewDataDescription] = viewModel.Category.Description;
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
@@ -45,10 +46,12 @@
         {
             slug ??= Constants.NewPostSlug;
             var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            viewModel.ViewData.ActiveCategory = viewModel.ViewData.Slug;
             if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
             {
-                viewModel.ViewData.HeadTitle = Constants.Football;
+                viewModel.ViewData.HeadTitle = viewModel.Posts.First().CategoryParent;
                 viewModel.ViewData.IsChildren = true;
+                viewModel.ViewData.ActiveCategory = Constants.FootballSlug;
             }
             var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, viewModel);
@@ -74,6 +77,7 @@
                 Post = post,
                 Category = pageDetail
             };
+            ViewData[Constants.ViewDataCategorySlug] = Constants.MatchScheduleSlug;
             ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
             ViewData[Constants.ViewDataTitle] = title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;
@@ -89,6 +93,7 @@
             {
                 Category = pageDetail
             };
+            ViewData[Constants.ViewDataCategorySlug] = Constants.WarningSlug;
             ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
             ViewData[Constants.ViewDataTitle] = title;
             ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;

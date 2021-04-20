@@ -102,25 +102,27 @@
                     <ul class="main-menu">
                         @{ var VideoParentId = 0; }
                         @foreach (var menu in Model)
-                        {
+						{
 
-                            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-                            if (menu.PageSlug == Constants.MatchScheduleSlug)
-                            {
-                                link = Url.Action("MatchSchedule", "Home");
-                            }
-                            if (menu.PageSlug == Constants.WarningSlug)
-                            {
-                                link = Url.Action("Warning", "Home");
-                            }
-                            else if (menu.Slug == Constants.VideoSlug)
-                            {
-                                VideoParentId = menu.ID;
-                                link = Url.Action("Video", "Home", new { slug = (int?)null });
-                            }
-                            if (menu.CatId != Constants.Home)
-                            {
-                                var activeMenu = menu.CatId == Convert.ToInt32(ViewData["CategoryId"]) ? "active" : "";
+							var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+							if (menu.PageSlug == Constants.MatchScheduleSlug)
+							{
+								menu.Slug = menu.PageSlug;
+								link = Url.Action("MatchSchedule", "Home");
+							}
+							if (menu.PageSlug == Constants.WarningSlug)
+							{
+								menu.Slug = menu.PageSlug;
+								link = Url.Action("Warning", "Home");
+							}
+							else if (menu.Slug == Constants.VideoSlug)
+							{
+								VideoParentId = menu.ID;
+								link = Url.Action("Video", "Home", new { slug = (int?)null });
+							}
+							if (menu.CatId != Constants.Home)
+							{
+								var activeMenu = ( ViewData["CategorySlug"] != null && menu.Slug == ViewData["CategorySlug"].ToString()) ? "active" : "";
                                 <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
                                     @if (menu.Slug == Constants.GuessSlug)
 									{ 

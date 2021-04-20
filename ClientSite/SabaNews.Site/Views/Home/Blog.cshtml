@@ -26,7 +26,7 @@
 }
 
 @{
-    ViewData["CategoryId"] = Model.ViewData.CategoryId;
+	ViewData["CategorySlug"] = Model.ViewData.ActiveCategory;
 }
 
 @(await Component.InvokeAsync("Menu"))

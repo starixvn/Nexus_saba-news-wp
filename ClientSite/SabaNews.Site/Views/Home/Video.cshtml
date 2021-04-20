@@ -15,7 +15,7 @@
 }
 
 @{
-    ViewData["CategoryId"] = Model.ViewData.CategoryId;
+	ViewData["CategorySlug"] = Model.ViewData.Slug;
 }
 @(await Component.InvokeAsync("Menu", new { page = "video-page" }))
 <section class="main">
