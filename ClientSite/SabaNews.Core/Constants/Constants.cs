@@ -75,6 +75,7 @@
         public const string ViewDataDate = "Date";
         public const string ViewUrl = "Url";
         public const string Empty = "";
+        public const string ViewRSSUrl = "RSSUrl";
 
         public const string Separate = "-";
         public const string SiteName = "SABA Sports";

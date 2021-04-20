@@ -45,6 +45,7 @@
             ViewData[Constants.ViewDataDescription] = viewModel.Category.Description;
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = domain;
+            ViewData[Constants.ViewRSSUrl] = $"{domain}tin-moi-nhat.rss";
 
             return View(viewModel);
         }
