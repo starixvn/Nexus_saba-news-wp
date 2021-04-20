@@ -37,8 +37,8 @@
             @if (Model.ViewData.Slug == ViewResources.FootballSlug || Model.ViewData.IsChildren)
 			{
                 <ul class="sub-category">
-				    <li class="sub-item"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
-				    <li class="sub-item"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
+				    <li class="sub-item @(Model.ViewData.Slug == ViewResources.FootballInsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
+				    <li class="sub-item @(Model.ViewData.Slug == ViewResources.FootballOutsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
                 </ul>
                 
             }

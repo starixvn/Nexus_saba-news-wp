@@ -46,15 +46,19 @@
         {
             slug ??= Constants.NewPostSlug;
             var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
-            viewModel.ViewData.ActiveCategory = viewModel.ViewData.Slug;
+            if (viewModel == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+
+            viewModel.ViewData.ActiveCategory = slug;
             if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
             {
                 viewModel.ViewData.HeadTitle = viewModel.Posts.First().CategoryParent;
                 viewModel.ViewData.IsChildren = true;
                 viewModel.ViewData.ActiveCategory = Constants.FootballSlug;
             }
-            var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, viewModel);
+            return View(Constants.BlogView, viewModel);
         }
 
         [Route("/video/page/{page}")]
