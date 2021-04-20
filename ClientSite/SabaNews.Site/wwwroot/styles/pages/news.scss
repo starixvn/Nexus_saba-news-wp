@@ -194,10 +194,26 @@
             text-decoration: none;
             padding-bottom: 6px;
             display: inline-block;
+            position: relative;
+
+            &:before {
+                position: absolute;
+                width: 0;
+                bottom: -1px;
+                height: .2rem;
+                background-color: #F12F19;
+                content: '';
+                left: 0;
+                transition: width .09s ease-in;
+            }
         }
 
         &:hover a {
             color: #F12F19;
+
+            &:before {
+                width: 100%;
+            }
         }
     }
 }

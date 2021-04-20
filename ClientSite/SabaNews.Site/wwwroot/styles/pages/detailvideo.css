@@ -686,10 +686,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   display: inline-block;
   width: 32px;
   height: 32px;
-  vertical-align: middle;
-  animation: skew 1s infinite;
-  transform: skew(8deg);
-  animation-direction: alternate; }
+  vertical-align: middle; }
 
 /*@keyframes skew {
     0% {
