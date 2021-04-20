@@ -38,8 +38,8 @@
 			{
                 <div class="sub-category">
                     <ul>
-				        <li><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
-				        <li><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
+				        <li class="@(Model.ViewData.Slug == ViewResources.FootballInsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
+				        <li class="@(Model.ViewData.Slug == ViewResources.FootballOutsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
 			        </ul>
                 </div>
                 
