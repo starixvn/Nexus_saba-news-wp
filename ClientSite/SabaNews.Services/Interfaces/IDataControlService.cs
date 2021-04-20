@@ -16,5 +16,7 @@
         Task<IEnumerable<SitemapModel>> GenerateSitmapXmlData();
 
         Task<IEnumerable<NewsSitemapModel>> GenerateNewsSitmapXmlData();
+
+        Task<IEnumerable<Post>> GenerateRSSData();
     }
 }

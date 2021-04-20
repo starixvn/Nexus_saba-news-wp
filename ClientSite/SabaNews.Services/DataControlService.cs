@@ -117,5 +117,23 @@
 
             return await postService.GetNewsSitemapDataAsync();
         }
+
+        public async Task<IEnumerable<Post>> GenerateRSSData()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheService.GetAsync<IEnumerable<Post>>(CacheKey.RSS);
+
+                if (result == null)
+                {
+                    result = await postService.GetRSSDataAsync();
+                    await cacheService.SetAsync(CacheKey.RSS, result);
+                }
+
+                return result;
+            }
+
+            return await postService.GetRSSDataAsync();
+        }
     }
 }

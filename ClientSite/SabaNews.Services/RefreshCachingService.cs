@@ -66,5 +66,11 @@
             var result = await postService.GetNewsSitemapDataAsync();
             await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
         }
+
+        public async Task UpdateRSSData()
+        {
+            var result = await postService.GetNewsSitemapDataAsync();
+            await cacheService.SetAsync(CacheKey.RSS, result);
+        }
     }
 }

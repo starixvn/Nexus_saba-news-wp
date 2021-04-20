@@ -51,5 +51,14 @@
             string sitemap = SitemapHelper.GetSitemapNews(data, domain);
             return Content(sitemap, "text/xml", Encoding.UTF8);
         }
+
+        [Route("tin-moi-nhat.rss")]
+        public async Task<ContentResult> RSS()
+        {
+            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
+            var data = await dataControlService.GenerateRSSData();
+            string rss = RssHelper.GetRSSDocument(data, domain);
+            return Content(rss, "text/xml", Encoding.UTF8);
+        }
     }
 }

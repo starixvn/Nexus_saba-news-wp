@@ -60,6 +60,14 @@
                             GetCronExpression(HangfireJobName.RefreshNewsSitemapXmlFile),
                             TimeZoneInfo.Local);
             }
+
+            if (IsEnabledJob(HangfireJobName.RefreshRSS))
+            {
+                recurringJob.AddOrUpdate<IRefreshCachingService>("Update RSS",
+                            job => job.UpdateRSSData(),
+                            GetCronExpression(HangfireJobName.RefreshRSS),
+                            TimeZoneInfo.Local);
+            }
         }
 
         private bool IsEnabledJob(string jobName)

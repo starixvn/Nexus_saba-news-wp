@@ -5,14 +5,11 @@
     using System.Xml.Linq;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
-    using TimeZoneConverter;
 
     public static class SitemapHelper
     {
         private static readonly XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         private static readonly XNamespace xmlns_news = "http://www.google.com/schemas/sitemap-news/0.9";
-        private static readonly TimeZoneInfo SEAsiaTimeZone = TZConvert.GetTimeZoneInfo("SE Asia Standard Time");
-        private static readonly TimeSpan timeSpan = new TimeSpan(7, 0, 0);
 
         public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes)
         {
@@ -25,9 +22,7 @@
                     new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
-                        new DateTimeOffset(TimeZoneInfo.ConvertTime(
-                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone), timeSpan)
-                        .ToString("yyyy-MM-ddTHH:mm:sszzz")));
+                        DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)));
                 root.Add(urlElement);
             }
 
@@ -50,9 +45,7 @@
                     xmlns_news + "news",
                     publicationElement,
                     new XElement(xmlns_news + "publication_date",
-                        new DateTimeOffset(TimeZoneInfo.ConvertTime(
-                            sitemapNode.ModifiedDate.Value, SEAsiaTimeZone), timeSpan)
-                        .ToString("yyyy-MM-ddTHH:mm:sszzz")),
+                        DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)),
                     new XElement(xmlns_news + "title", sitemapNode.Title),
                     new XElement(xmlns_news + "keywords", sitemapNode.Tags));
                 XElement urlE = new(

@@ -349,5 +349,11 @@
         {
             return await baseService.GetDataAsync<NewsSitemapModel>(new GetNewsSitemapCriteria());
         }
+
+        public async Task<IEnumerable<Post>> GetRSSDataAsync()
+        {
+            var posts = await baseService.GetDataAsync<Post>(new GetRSSCriteria());
+            return FormatData(posts);
+        }
     }
 }

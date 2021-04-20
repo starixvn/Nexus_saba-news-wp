@@ -11,5 +11,7 @@
         public const string SitemapXml = "SitemapXml";
 
         public const string NewsSitemapXml = "NewsSitemapXml";
+
+        public const string RSS = "RSS";
     }
 }

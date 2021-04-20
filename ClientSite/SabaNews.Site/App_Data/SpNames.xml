@@ -160,6 +160,7 @@
         </Setting>
         <Setting Key="get_sitemap" SpName="get_sitemap" DbName="sabasports" Plain="0" />
         <Setting Key="get_sitemap_news" SpName="get_sitemap_news" DbName="sabasports" Plain="0" />
+        <Setting Key="get_rss" SpName="get_rss" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">
