@@ -198,7 +198,7 @@
 
 		<div class="block block-guess">
 			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">@ViewResources.Guess</a></h2>
+				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">@ViewResources.Guess</a><span class="marked-icon"></span></h2>
 				<div class="block__content">
 					@foreach (var post in Model.GuessPosts)
 					{

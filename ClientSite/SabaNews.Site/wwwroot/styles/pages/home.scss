@@ -159,7 +159,7 @@
 
             img {
                 border: 1px solid #e0e0e0;
-                max-width : 100%;
+                max-width: 100%;
             }
         }
 
@@ -349,7 +349,7 @@
             }
 
             @include Mobile {
-                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+                display: block;
             }
 
             .card-vertical {
@@ -357,6 +357,7 @@
 
                 @include Mobile {
                     padding-bottom: 0;
+                    margin-bottom: 1.6rem;
                 }
             }
 
@@ -368,7 +369,7 @@
                 }
 
                 @include Mobile {
-                    height: 12rem;
+                    height: 20rem;
                 }
             }
         }
@@ -386,6 +387,12 @@
         .block__title a {
             background-color: $bg-block;
             color: #fff;
+            padding-right: .4rem;
+        }
+
+        .marked-icon {
+            position: relative;
+            top: -6px;
         }
 
         .block__content {
@@ -626,7 +633,7 @@
             }
 
             @include Mobile {
-                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+                display: block;
             }
 
             .card-vertical {
@@ -634,6 +641,15 @@
 
                 @include Mobile {
                     padding-bottom: 0;
+                    margin-bottom: 1.6rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+                    .card-vertical__image {
+                        height: 20rem;
+                    }
                 }
             }
         }

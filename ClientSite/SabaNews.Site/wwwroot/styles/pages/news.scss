@@ -208,7 +208,7 @@
             }
         }
 
-        &:hover a {
+        &:hover a, &.active a {
             color: #F12F19;
 
             &:before {
