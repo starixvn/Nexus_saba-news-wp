@@ -53,7 +53,7 @@
                                 </ul>
                             </div>
                             <div class="search-input">
-                                <form asp-action="Search" method="get">
+                                <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
                                     <div class="search-box"><input class="keyword-input" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm..."></div>
                                     <button type="submit" class="btn btn-search" aria-label="search">
                                         <i class="icon-search"></i>
