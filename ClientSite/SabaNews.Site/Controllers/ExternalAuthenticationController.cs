@@ -78,7 +78,8 @@
                         EmailConfirmed = true,
                         Id = userInfo.Id,
                         LoginType = userInfo.LoginType,
-                        Name = userInfo.DisplayName
+                        Name = userInfo.DisplayName,
+                        Photo = userInfo.Avatar
                     };
                 }
             }

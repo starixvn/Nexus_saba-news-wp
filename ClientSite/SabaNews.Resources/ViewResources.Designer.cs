@@ -178,6 +178,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đang liên kết.
+        /// </summary>
+        public static string Connecting {
+            get {
+                return ResourceManager.GetString("Connecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy clipboard thành công.
         /// </summary>
         public static string CopyClipBoardSuccessfully {
@@ -444,6 +453,15 @@ namespace SabaNews.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chưa liên kết.
+        /// </summary>
+        public static string NoConnect {
+            get {
+                return ResourceManager.GetString("NoConnect", resourceCulture);
             }
         }
         

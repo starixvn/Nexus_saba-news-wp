@@ -156,6 +156,9 @@
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Xác nhận mật khẩu</value>
   </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Đang liên kết</value>
+  </data>
   <data name="CopyClipBoardSuccessfully" xml:space="preserve">
     <value>Copy clipboard thành công</value>
   </data>
@@ -245,6 +248,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
+  </data>
+  <data name="NoConnect" xml:space="preserve">
+    <value>Chưa liên kết</value>
   </data>
   <data name="NoSavedPosts" xml:space="preserve">
     <value>Chưa có tin nào được lưu</value>
