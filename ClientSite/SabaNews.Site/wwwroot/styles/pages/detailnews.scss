@@ -338,6 +338,7 @@ img {
 
 
 .detail-content-table {
+    margin-bottom: 2rem;
     ul {
         list-style: none;
         margin: 0;
@@ -351,6 +352,9 @@ img {
         justify-content: space-between;
         border-bottom: 1px solid #e5e5e5;
         padding: .8rem 0;
+        &:last-child {
+            border-bottom: none;
+        }
     }
 
     .date, .name, .place, [class*="tab-"] {

@@ -1765,77 +1765,70 @@ img {
 .active-mb-social {
   display: block; }
 
-.detail-content-table ul {
-  list-style: none;
-  margin: 0;
-  width: 50%;
-  padding: 0 1.5rem; }
-
-.detail-content-table li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5;
-  padding: .8rem 0; }
-
-.detail-content-table .date, .detail-content-table .name, .detail-content-table .place, .detail-content-table [class*="tab-"] {
-  color: #222;
-  text-align: center;
-  width: 10rem; }
-
-.detail-content-table .tab-success, .detail-content-table .tab-danger, .detail-content-table .tab-warning {
-  color: #fff;
-  font-weight: 700;
-  padding: .5rem;
-  border-radius: 5px;
-  width: 13rem; }
-
-.detail-content-table .name, .detail-content-table .place {
-  padding: 0 1.2rem;
-  width: 100%; }
-
-.detail-content-table .name {
-  text-align: right; }
-
-.detail-content-table .place {
-  text-align: left; }
-
-.detail-content-table date {
-  width: 23rem; }
-
-.detail-content-table .tab-success {
-  background: #A2CC90; }
-
-.detail-content-table .tab-danger {
-  background: #BB5555; }
-
-.detail-content-table .tab-warning {
-  background: #E5B05E; }
-
-.detail-content-table .child-table {
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 50rem;
-  margin: 0 auto; }
-  .detail-content-table .child-table:first-child .tab-success, .detail-content-table .child-table:first-child .tab-danger, .detail-content-table .child-table:first-child .tab-warning {
-    background-color: transparent;
-    color: #222; }
-  .detail-content-table .child-table .heading-detail {
-    color: #7C8BC4;
-    font-size: 1.8rem;
-    margin-top: 2rem;
-    padding-bottom: .5rem;
-    margin-bottom: 1.5rem;
-    position: relative; }
-    .detail-content-table .child-table .heading-detail:after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: .2rem;
-      background: #02B8F7;
-      position: absolute;
-      bottom: 0;
-      left: 0; }
+.detail-content-table {
+  margin-bottom: 2rem; }
+  .detail-content-table ul {
+    list-style: none;
+    margin: 0;
+    width: 50%;
+    padding: 0 1.5rem; }
+  .detail-content-table li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    padding: .8rem 0; }
+    .detail-content-table li:last-child {
+      border-bottom: none; }
+  .detail-content-table .date, .detail-content-table .name, .detail-content-table .place, .detail-content-table [class*="tab-"] {
+    color: #222;
+    text-align: center;
+    width: 10rem; }
+  .detail-content-table .tab-success, .detail-content-table .tab-danger, .detail-content-table .tab-warning {
+    color: #fff;
+    font-weight: 700;
+    padding: .5rem;
+    border-radius: 5px;
+    width: 13rem; }
+  .detail-content-table .name, .detail-content-table .place {
+    padding: 0 1.2rem;
+    width: 100%; }
+  .detail-content-table .name {
+    text-align: right; }
+  .detail-content-table .place {
+    text-align: left; }
+  .detail-content-table date {
+    width: 23rem; }
+  .detail-content-table .tab-success {
+    background: #A2CC90; }
+  .detail-content-table .tab-danger {
+    background: #BB5555; }
+  .detail-content-table .tab-warning {
+    background: #E5B05E; }
+  .detail-content-table .child-table {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto; }
+    .detail-content-table .child-table:first-child .tab-success, .detail-content-table .child-table:first-child .tab-danger, .detail-content-table .child-table:first-child .tab-warning {
+      background-color: transparent;
+      color: #222; }
+    .detail-content-table .child-table .heading-detail {
+      color: #7C8BC4;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      padding-bottom: .5rem;
+      margin-bottom: 1.5rem;
+      position: relative; }
+      .detail-content-table .child-table .heading-detail:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: .2rem;
+        background: #02B8F7;
+        position: absolute;
+        bottom: 0;
+        left: 0; }
 
 @media screen and (min-width: 320px) {
   .detail-content-table ul {

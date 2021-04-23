@@ -41,9 +41,8 @@
     }
     .card-vertical__image{
         margin-bottom: 1rem;
-        max-height: 12rem;
+        height: 15rem;
         overflow : hidden;
-        height : 100%;
         @include tableMobile{
             height: 13rem;
         }
