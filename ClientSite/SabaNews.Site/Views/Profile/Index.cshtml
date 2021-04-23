@@ -260,10 +260,10 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="validate">@Model.LoginType</li>
+										<li class="@(Model.LoginType.Contains(ViewResources.Facebook) ? "" : "validate" )">@(Model.LoginType.Contains(ViewResources.Facebook) ? ViewResources.Connecting : ViewResources.NoConnect )</li>
 									</ul>
 								</div>
-								<a href="#" class="action">Liên kết</a>
+								@*<a href="#" class="action">Liên kết</a>*@
 							</div>
 						</div>
 					</div>
@@ -275,10 +275,10 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="validate">Chưa liên kết</li>
+										<li class="@(Model.LoginType.Contains(ViewResources.Google) ? "" : "validate" )">@(Model.LoginType.Contains(ViewResources.Google) ? ViewResources.Connecting : ViewResources.NoConnect )</li>
 									</ul>
 								</div>
-								<a href="#" class="action">Liên kết</a>
+								@*<a href="#" class="action">Liên kết</a>*@
 							</div>
 						</div>
 					</div>

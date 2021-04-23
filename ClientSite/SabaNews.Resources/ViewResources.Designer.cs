@@ -241,6 +241,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Facebook.
+        /// </summary>
+        public static string Facebook {
+            get {
+                return ResourceManager.GetString("Facebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nữ.
         /// </summary>
         public static string Female {
@@ -309,6 +318,15 @@ namespace SabaNews.Resources {
         public static string ForgotPassword {
             get {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google.
+        /// </summary>
+        public static string Google {
+            get {
+                return ResourceManager.GetString("Google", resourceCulture);
             }
         }
         

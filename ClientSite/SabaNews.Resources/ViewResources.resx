@@ -177,6 +177,9 @@
   <data name="ExpiredLink" xml:space="preserve">
     <value>Link đã hết hạn</value>
   </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
   <data name="Female" xml:space="preserve">
     <value>Nữ</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Quên mật khẩu</value>
+  </data>
+  <data name="Google" xml:space="preserve">
+    <value>Google</value>
   </data>
   <data name="Guess" xml:space="preserve">
     <value>Nhận định - dự đoán</value>
