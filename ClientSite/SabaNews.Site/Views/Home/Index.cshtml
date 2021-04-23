@@ -333,79 +333,79 @@
 		</div>
 
 		<div class="group-blocks">
-			<div class="container">
-				<div class="block block-basketball">
-					<h2 class="block__title">
-						<a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">@ViewResources.Basketball</a>
-					</h2>
-					<div class="block__content">
-						@foreach (var post in Model.BasketballPosts)
-						{
-							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
-									@{
-										string basketballImg = post.GetImageBySize(ImageWidth.Width300);
-									}
-									<picture>
-										<source srcset="@Url.Content(basketballImg)" type="image/webp" class="img-res">
-										<source srcset="@Url.Content(basketballImg)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(basketballImg)" alt="@post.PostTitle" class="img-res img-block">
-									</picture>
-								</a>
-								<a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
-								<p class="card-vertical__datetime">
-									@post.PostTime
-									@if (post.CommentCount > 0)
-									{ 
-										<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
-									}
-								</p>
-							</div>}
-					</div>
-				</div>
-				<div class="block block-tennis">
-					<h2 class="block__title">
-						<a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">@ViewResources.Tennis</a>
-					</h2>
-					<div class="block__content">
-						<div class="card-vertical">
-							<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })" class="card-vertical__image">
-								@{
-									short tennisPosterSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
-									string tennisPoster = Model.TennisPosts[0].GetImageBySize(tennisPosterSize);
+            <div class="container">
+                <div class="block block-tennis">
+                    <h2 class="block__title">
+                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TennisSlug })">@ViewResources.Tennis</a>
+                    </h2>
+                    <div class="block__content">
+                        <div class="card-vertical">
+                            <a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[0].Slug  })" class="card-vertical__image">
+                                @{
+                                    short tennisPosterSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
+                                    string tennisPoster = Model.TennisPosts[0].GetImageBySize(tennisPosterSize);
 
-									<picture>
-										<source srcset="@Url.Content(tennisPoster)" type="image/webp" class="img-res">
-										<source srcset="@Url.Content(tennisPoster)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(tennisPoster)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
-									</picture>
-								}
-							</a>
-							<a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
-							<p class="card-vertical__datetime">
-								@Model.TennisPosts[0].PostTime
-								@if (Model.TennisPosts[0].CommentCount > 0)
-								{ 
-									<a href="@Url.Action("Single", "Home", new { slug =  Model.TennisPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.TennisPosts[0].CommentCount</i></a>
-								}
-							</p>
-							<p class="card-vertical__description">
-								@Model.TennisPosts[0].PostExcerpt
-							</p>
-						</div>
-						<ul class="block-list">
-							@for (int j = 1; j < Model.TennisPosts.Length; j++)
-							{
-								<li class="list-item">
-									<a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[j].Slug  })" class="item">
-										<i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[j].PostTitle
-									</a>
-								</li>
-							}
-						</ul>
-					</div>
-				</div>
-			</div>
+                                    <picture>
+                                        <source srcset="@Url.Content(tennisPoster)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(tennisPoster)" type="image/jpeg" class="img-res">
+                                        <img loading="lazy" src="@Url.Content(tennisPoster)" alt="@Model.TennisPosts[0].PostTitle" class="img-res img-block">
+                                    </picture>
+                                }
+                            </a>
+                            <a href="@Url.Action("Single", "Home", new {  slug = Model.TennisPosts[0].Slug  })" class="card-vertical__title">@Model.TennisPosts[0].PostTitle</a>
+                            <p class="card-vertical__datetime">
+                                @Model.TennisPosts[0].PostTime
+                                @if (Model.TennisPosts[0].CommentCount > 0)
+                                {
+                                    <a href="@Url.Action("Single", "Home", new { slug =  Model.TennisPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.TennisPosts[0].CommentCount</i></a>
+                                }
+                            </p>
+                            <p class="card-vertical__description">
+                                @Model.TennisPosts[0].PostExcerpt
+                            </p>
+                        </div>
+                        <ul class="block-list">
+                            @for (int j = 1; j < Model.TennisPosts.Length; j++)
+                            {
+                                <li class="list-item">
+                                    <a href="@Url.Action("Single", "Home", new { slug = Model.TennisPosts[j].Slug  })" class="item">
+                                        <i class="icon-content icon-sport-tennis-2"></i> @Model.TennisPosts[j].PostTitle
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="block block-basketball">
+                    <h2 class="block__title">
+                        <a href="@Url.Action("Category", "Home", new { slug = Constants.BasketballSlug })">@ViewResources.Basketball</a>
+                    </h2>
+                    <div class="block__content">
+                        @foreach (var post in Model.BasketballPosts)
+                        {
+                            <div class="card-vertical">
+                                <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
+                                    @{
+                                        string basketballImg = post.GetImageBySize(ImageWidth.Width300);
+                                    }
+                                    <picture>
+                                        <source srcset="@Url.Content(basketballImg)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(basketballImg)" type="image/jpeg" class="img-res">
+                                        <img loading="lazy" src="@Url.Content(basketballImg)" alt="@post.PostTitle" class="img-res img-block">
+                                    </picture>
+                                </a>
+                                <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">@post.PostTitle</a>
+                                <p class="card-vertical__datetime">
+                                    @post.PostTime
+                                    @if (post.CommentCount > 0)
+                                    {
+                                        <a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+                                    }
+                                </p>
+                            </div>}
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </section>
