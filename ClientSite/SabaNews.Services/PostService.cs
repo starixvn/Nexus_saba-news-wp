@@ -54,7 +54,7 @@
             return postTemplate;
         }
 
-        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postId)
+        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0)
         {
             var criteria = new GetRecentPostsCriteria
             {
@@ -63,9 +63,9 @@
                 End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            if (postId != 0)
+            if (postID != 0)
             {
-                var excerptCurrentPost = posts.Where(item => item.ID != postId).ToList();
+                var excerptCurrentPost = posts.Where(item => item.ID != postID).ToList();
                 var totalRealItems = end - 1;
                 posts = excerptCurrentPost;
                 if (excerptCurrentPost.Count > totalRealItems)
@@ -114,6 +114,7 @@
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             if (post != null)
             {
+                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                 var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                 post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);

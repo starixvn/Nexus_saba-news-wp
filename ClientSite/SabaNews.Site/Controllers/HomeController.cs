@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
@@ -18,12 +19,20 @@
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
+        private readonly ISessionService sessionService;
+        private readonly IProfileService profileService;
 
-        public HomeController(IPostService postService, IDataControlService dataControlService, IConfiguration configuration)
+        public HomeController(IPostService postService, 
+            IDataControlService dataControlService, 
+            IConfiguration configuration, 
+            ISessionService sessionService,
+            IProfileService profileService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
+            this.sessionService = sessionService;
+            this.profileService = profileService;
         }
 
         public async Task<IActionResult> Index()
@@ -137,15 +146,17 @@
 
             var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
             var cateSlug = post.CategoriesSlug;
-            if (cateSlug.Contains(","))
+            var isSave = false;
+            var isLogin = sessionService.User != null;
+            if (isLogin)
+            {
+                var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
                 var savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
                 if (savePost != null)
-            {
-                var listCateSlug = post.CategoriesSlug.Split(',');
-                var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList();
-                cateSlug = exceptCateSlug[0] ?? cateSlug;
+                {
+                    isSave = true;
+                }
             }
-            var cateSlug = post.CategoriesSlug;
             if (cateSlug.Contains(","))
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
@@ -155,8 +166,9 @@
             var Models = new SingleViewModel
             {
                 SinglePost = post,
-                RecentPosts = recentPosts.Posts
-                IsLogin = Constants.IsLogin
+                RecentPosts = recentPosts.Posts,
+                IsLogin = Constants.IsLogin,
+                isSave = isSave
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
