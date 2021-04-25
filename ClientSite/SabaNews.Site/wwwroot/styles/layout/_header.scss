@@ -625,7 +625,8 @@
 
 .languages-box {
     position: relative;
-    @include tableMobile{
+
+    @include tableMobile {
         padding-left: 30px;
     }
 
@@ -636,8 +637,7 @@
         z-index: 9999;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         background: $color-fff;
-        padding: .4rem;
-        width: 8rem;
+        min-width: 120px;
         border-radius: 4px;
         left: -.4rem;
         top: 3rem;
@@ -646,8 +646,12 @@
         .lang-item {
             text-decoration: none;
             color: $color-content;
-            display: inline-block;
-            padding: .2rem 0;
+            display: block;
+            padding: 4px;
+
+            &:hover {
+                background-color: #ececec;
+            }
         }
 
         &.active {

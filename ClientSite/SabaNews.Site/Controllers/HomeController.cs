@@ -167,7 +167,7 @@
             {
                 SinglePost = post,
                 RecentPosts = recentPosts.Posts,
-                IsLogin = Constants.IsLogin,
+                IsLogin = isLogin,
                 isSave = isSave
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
