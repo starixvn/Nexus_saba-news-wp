@@ -718,6 +718,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chia sẻ bài viết qua mail.
+        /// </summary>
+        public static string ShareMail {
+            get {
+                return ResourceManager.GetString("ShareMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quần vợt.
         /// </summary>
         public static string Tennis {

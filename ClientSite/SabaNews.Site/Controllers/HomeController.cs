@@ -161,11 +161,11 @@
             if (cateSlug.Contains(","))
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
-                //var listCateName = post.CategoriesName.Split(',');
+                var listCateName = post.CatesName.Split(',');
                 var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList() ;
-                //var exceptCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
+                var exceptCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
                 cateSlug = exceptCateSlug[0] ?? cateSlug;
-                //cateName = exceptCateName[0] ?? cateName;
+                cateName = exceptCateName[0] ?? cateName;
             }
             var Models = new SingleViewModel
             {
@@ -179,7 +179,7 @@
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;
             ViewData["cateSlug"] = cateSlug.Trim();
-            //ViewData["cateName"] = cateName.Trim();
+            ViewData["cateName"] = cateName.Trim();
 
             return View(Models);
         }

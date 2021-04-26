@@ -85,7 +85,7 @@
 					else { 
                         <a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
 						   class="item intent"
-						   title="@ViewResources.Back @ViewData["CateSlug"]">
+						   title="@ViewResources.Back @ViewData["cateName"]">
 							<i class="icon-social icon-back"></i>
 						</a>
                     }
@@ -136,7 +136,7 @@
 						{
 							<a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
 							   class="item intent"
-							   title="@ViewResources.Back @ViewData["CateSlug"]">
+							   title="@ViewResources.Back @ViewData["cateName"]">
 								<i class="icon-social icon-back"></i>
 							</a>
 						}
@@ -164,7 +164,9 @@
                     <li class="item-social">
                         <a href="javascript:;"
                            onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@absoluteLink', '_blank')"
-                           rel="nofollow" class="item">
+                           rel="nofollow" class="item"
+                           title="@ViewResources.ShareMail"
+                           >
                             <i class="icon-social icon-email"></i>
                         </a>
                     </li>

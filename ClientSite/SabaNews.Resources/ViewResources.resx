@@ -336,6 +336,9 @@
   <data name="ShareFacebook" xml:space="preserve">
     <value>Chia sẽ bài viết lên facebook</value>
   </data>
+  <data name="ShareMail" xml:space="preserve">
+    <value>Chia sẻ bài viết qua mail</value>
+  </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
   </data>
