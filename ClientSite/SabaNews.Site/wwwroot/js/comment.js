@@ -2,21 +2,29 @@
     var postID = $('input[name=postID]').val();
     var filterType = 'like';
 
-    function RenderListComment(postID, page, filterType) {
+    function RenderListComment(postID, page, filterType, getMore = false) {
         $.ajax({
             type: "GET",
             url: "/comments",
-            data: { postID: postID, page: page, filterType: filterType },
+            data: { postID: postID, page: page, filterType: filterType, getMore: getMore },
             success: function (response) {
                 $('#comment').html(response);
-                HanldePaging();
+                HandlePaging();
+                HandleGetMore();
                 HandleFilter();
                 HandleShowChildrenComment();
             }
         });
     };
 
-    function HanldePaging() {
+    function HandleGetMore() {
+        $('.show_get_more_comment').on('click', function () {
+            $('.get_more').removeClass('get_more');
+            $(this).addClass('get_more');
+        });
+    };
+
+    function HandlePaging() {
         $('.comment-pagination').on('click', function () {
             var self = $(this);
             var page = self.data("page");
@@ -48,7 +56,7 @@
             var self = $(this);
             filterType = self.data('type');
             if (!self.hasClass('active')) {
-                RenderListComment(postID, 1, filterType)
+                RenderListComment(postID, 1, filterType, true)
             }
         });
     };
@@ -340,7 +348,7 @@
     }
 
     function init() {
-        RenderListComment(postID, 1, filterType);
+        RenderListComment(postID, 1, filterType, true);
         HandleCreateComment();
         HandleLikeComment();
     }

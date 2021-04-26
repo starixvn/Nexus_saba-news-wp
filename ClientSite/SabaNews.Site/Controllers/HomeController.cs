@@ -145,6 +145,7 @@
             }
 
             var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
+            var cateName = post.CatesName;
             var cateSlug = post.CategoriesSlug;
             var isSave = false;
             var isLogin = sessionService.User != null;
@@ -160,8 +161,11 @@
             if (cateSlug.Contains(","))
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
+                //var listCateName = post.CategoriesName.Split(',');
                 var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList() ;
+                //var exceptCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
                 cateSlug = exceptCateSlug[0] ?? cateSlug;
+                //cateName = exceptCateName[0] ?? cateName;
             }
             var Models = new SingleViewModel
             {
@@ -174,7 +178,8 @@
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;
-            ViewData["cateSlug"] = cateSlug;
+            ViewData["cateSlug"] = cateSlug.Trim();
+            //ViewData["cateName"] = cateName.Trim();
 
             return View(Models);
         }

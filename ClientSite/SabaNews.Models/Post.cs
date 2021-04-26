@@ -17,6 +17,7 @@
         public string Tags { get; set; }
         public string TagsSlug { get; set; }
         public string Categories { get; set; }
+        public string CatesName { get; set; }
         public string CategoriesSlug { get; set; }
         public string CategoryParent { get; set; }
         public string Slug { get; set; }

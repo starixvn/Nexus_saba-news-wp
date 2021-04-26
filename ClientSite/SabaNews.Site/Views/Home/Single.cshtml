@@ -73,12 +73,24 @@
                         </svg>
                     </a>
                 </li>
-                <li class="item-social icon-mobile">
-                    <a href="javascript:;"
-                       class="item intent return-back">
-                        <i class="icon-social icon-back"></i>
-                    </a>
-                </li>
+				<li class="item-social icon-mobile">
+					@if (Convert.ToBoolean(ViewData["video"]))
+					{
+						<a href="@Url.Action("Video", "Home")"
+						   class="item intent"
+						   title="@ViewResources.Back @ViewResources.Video">
+							<i class="icon-social icon-back"></i>
+						</a>
+					}
+					else { 
+                        <a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
+						   class="item intent"
+						   title="@ViewResources.Back @ViewData["CateSlug"]">
+							<i class="icon-social icon-back"></i>
+						</a>
+                    }
+
+				</li>
 
             </ul>
         </div>
@@ -111,12 +123,24 @@
 
             <div class="main-social">
                 <ul class="social left-social">
-                    <li class="item-social">
-                        <a href="javascript:;"
-                           class="item intent return-back">
-                            <i class="icon-social icon-back"></i>
-                        </a>
-                    </li>
+					<li class="item-social">
+						@if (Convert.ToBoolean(ViewData["video"]))
+						{
+							<a href="@Url.Action("Video", "Home")"
+							   class="item intent"
+							   title="@ViewResources.Back @ViewResources.Video">
+								<i class="icon-social icon-back"></i>
+							</a>
+						}
+						else
+						{
+							<a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
+							   class="item intent"
+							   title="@ViewResources.Back @ViewData["CateSlug"]">
+								<i class="icon-social icon-back"></i>
+							</a>
+						}
+					</li>
                     <li class="item-social">
                         <a href="javascript:;" class="item intent save_post @(Model.isSave ? "active" : "")">
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">

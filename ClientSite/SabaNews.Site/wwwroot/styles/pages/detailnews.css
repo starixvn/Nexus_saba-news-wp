@@ -1472,6 +1472,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       height: 4rem;
       border-radius: 3px;
       border: 1px solid #828282; }
+  .comment-post .get_more {
+    display: none; }
+  .comment-post .show_get_more_comment {
+    width: 100%;
+    text-align: center;
+    background: #f7f7f7;
+    padding: 0 2rem;
+    height: 48px;
+    color: #076DB6;
+    cursor: pointer; }
+    .comment-post .show_get_more_comment:hover:not(.active) {
+      background-color: #087CCE;
+      color: #fff; }
 
 /*:root {
     --column : 12;

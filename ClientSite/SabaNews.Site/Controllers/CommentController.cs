@@ -10,6 +10,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Threading.Tasks;
+    using System.Linq;
 
 
     public class CommentController : Controller
@@ -33,10 +34,14 @@
         }
 
         [Route("/comments")]
-        public async Task<IActionResult> GetComments(int postID, string filterType, int page)
+        public async Task<IActionResult> GetComments(int postID, string filterType, int page, bool getMore = false)
         {
             var start = (page - 1) * Constants.Perpage;
             var commentTemplate = await commentService.GetCommentsAsync(postID, filterType, start, Constants.Perpage);
+            if (page == 1 && commentTemplate.Comments.Count() <= Constants.GetFiveItems && getMore)
+            {
+                getMore = false;
+            }
             var Data = new ViewData
             {
                 CurrentPage = page,
@@ -48,7 +53,8 @@
                 CommentTemplate = commentTemplate,
                 ViewData = Data,
                 FilterType  = filterType,
-                IsLogin = sessionService.User != null
+                IsLogin = sessionService.User != null,
+                GetMore = getMore
             };
             return PartialView("_Comments", Model);
         }

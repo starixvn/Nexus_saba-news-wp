@@ -84,7 +84,8 @@
             <Mapping DataField="post_date" ObjectProperty="PostDate" class="Post" />
             <Mapping DataField="post_date_gmt" ObjectProperty="PostDateGMT" class="Post" />
             <Mapping DataField="feature_image" ObjectProperty="FeatureImage" class="Post" />
-            <Mapping DataField="cate_name" ObjectProperty="Categories" class="Post" />
+            <Mapping DataField="cate_name" ObjectProperty="CatesName" class="Post" />
+            <Mapping DataField="cate_id" ObjectProperty="Categories" class="Post" />
             <Mapping DataField="cate_slug" ObjectProperty="CategoriesSlug" class="Post" />
             <Mapping DataField="tags" ObjectProperty="Tags" class="Post" />
             <Mapping DataField="tagsSlug" ObjectProperty="TagsSlug" class="Post" />

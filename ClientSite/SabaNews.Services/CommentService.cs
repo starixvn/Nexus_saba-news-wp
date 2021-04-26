@@ -8,6 +8,7 @@
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class CommentService : ICommentService
@@ -35,7 +36,7 @@
             {
                 TotalItems = criteria.TotalItems,
                 TotalParentCmt = criteria.TotalParentCmt,
-                Comments = UpdateLikeComment(comments)
+                Comments = UpdateLikeComment(comments).ToList()
             };
             return commentTemplate;
         }
@@ -48,7 +49,7 @@
                 CmtID = commentID
             };
             var comments = await baseService.GetDataAsync<Comment>(criteria);
-            return UpdateLikeComment(comments);
+            return UpdateLikeComment(comments).ToList();
         }
 
         public async Task<Comment> GetLikeDataAsync(long commentID)

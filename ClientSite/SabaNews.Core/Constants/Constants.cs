@@ -29,6 +29,7 @@
         public const string Tag = "Tag";
         public const string DateSearch = "DateSearch";
         public const string Football = "Bóng đá";
+        public const string Video = "Video";
 
         public const string EmptyBlogView = "EmptyBlog";
         public const string BlogView = "Blog";

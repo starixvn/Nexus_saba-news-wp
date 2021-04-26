@@ -247,4 +247,23 @@
             border: 1px solid $color-input;
         }
     }
+
+    .get_more {
+        display: none;
+    }
+
+    .show_get_more_comment {
+        width: 100%;
+        text-align: center;
+        background: #f7f7f7;
+        padding: 0 2rem;
+        height: 48px;
+        color: #076DB6;
+        cursor: pointer;
+
+        &:hover:not(.active) {
+            background-color: #087CCE;
+            color: #fff;
+        }
+    }
 }
