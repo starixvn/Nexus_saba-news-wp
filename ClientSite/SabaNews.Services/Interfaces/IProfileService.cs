@@ -10,5 +10,7 @@
         Task<UserSession> GetUserByIdAsync(int userID);
 
         Task<CommandResult> UpdateUserInfoAsync(UserSession user);
+
+        Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType);
     }
 }

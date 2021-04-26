@@ -271,6 +271,25 @@
                 $('.photo-error').hide();
             };
         });
+
+        $('.disconnect_social_login').on('click', function () {
+            var id = $(this).data('id');
+            var type = $(this).data('type');
+            $.ajax({
+                type: 'POST',
+                data: { userId: id, type: type },
+                url: 'Profile/SocialDisconnect',
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        $('#DisconnectSuccessful').find('.content').html("Ngắt liên kết thành công với "+ type);
+                        $('#DisconnectSuccessful').modal('show');
+                    }
+                }
+            });
+        });
+        $('#DisconnectSuccessful').on('hidden.bs.modal', function () {
+            location.reload();
+        });
     }
 
     function validate_photo(files) {

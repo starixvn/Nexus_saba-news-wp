@@ -17,13 +17,16 @@
     {
         private readonly IExternalAuthService externalAuthService;
         private readonly ISessionService sessionService;
+        private readonly IProfileService profileService;
 
         public ExternalAuthenticationController(
             IExternalAuthService externalAuthService,
-            ISessionService sessionService)
+            ISessionService sessionService,
+            IProfileService profileService)
         {
             this.externalAuthService = externalAuthService;
             this.sessionService = sessionService;
+            this.profileService = profileService;
         }
 
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
@@ -70,16 +73,17 @@
             else
             {
                 CommandResult result = await externalAuthService.CreateUserAsync(userInfo);
+                user = await profileService.GetUserByIdAsync(userInfo.Id);
                 if (result.IsSuccessful)
                 {
                     sessionService.User = new UserSession
                     {
-                        Email = userInfo.Email,
+                        Email = user.Email,
                         EmailConfirmed = true,
-                        Id = userInfo.Id,
-                        LoginType = userInfo.LoginType,
-                        Name = userInfo.DisplayName,
-                        Photo = userInfo.Avatar
+                        Id = user.Id,
+                        LoginType = user.LoginType,
+                        Name = user.Name,
+                        Photo = user.Photo
                     };
                 }
             }

@@ -46,5 +46,17 @@
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }
+
+        public async Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType)
+        {
+            var command = new SocialDisconnectTypeCommand
+            {
+                UserId = userId,
+                LoginType = loginType
+            };
+            CommandResult result = await baseService.ExecuteNonQueryAsync(command);
+            result.Message = command.NewLoginType;
+            return result;
+        }
     }
 }

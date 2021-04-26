@@ -14,6 +14,8 @@
     using System.Net.Http.Headers;
     using System.IO;
     using SabaNews.Core.Constants;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
 
     public class ProfileController : Controller
     {
@@ -200,6 +202,17 @@
                 sessionService.User = user;
             }
             return Json( new { commandResult, linkPhoto, filePath });
+        }
+
+        public async Task<ActionResult> SocialDisconnect(int userId, string type)
+        {
+            var commandResult = await profileService.DisconnectLoginTypeAsync(userId, type);
+            if (commandResult.IsSuccessful && string.IsNullOrEmpty(commandResult.Message))
+            {
+                sessionService.ClearAll();
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+            return Json(commandResult);
         }
 
 

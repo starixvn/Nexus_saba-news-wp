@@ -218,5 +218,6 @@
         <Setting Key="user_save_post" SpName="user_save_post" DbName="sabasports" Plain="0" />
         <Setting Key="user_get_by_id" SpName="user_get_by_id" DbName="sabasports" Plain="0" />
         <Setting Key="user_update_info" SpName="user_update_info" DbName="sabasports" Plain="0" />
+        <Setting Key="social_disconnect_type" SpName="social_disconnect_type" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

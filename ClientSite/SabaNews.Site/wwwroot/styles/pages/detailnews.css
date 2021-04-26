@@ -1481,7 +1481,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     padding: 0 2rem;
     height: 48px;
     color: #076DB6;
-    cursor: pointer; }
+    cursor: pointer;
+    font-size: 1.7rem; }
     .comment-post .show_get_more_comment:hover:not(.active) {
       background-color: #087CCE;
       color: #fff; }
