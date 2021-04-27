@@ -91,7 +91,6 @@
 				<div class="controls__choose">
 					<div class="title">@ViewResources.ProfilePhoto</div>
 					<form enctype="multipart/form-data" method="post" id="uploadPhoto">
-						<span class="icon-close" style="display:none"></span>
 						<div class="input-upload">
 							<input type="file" class="input-file" id="act-upload" name="photo">
 							<span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
@@ -99,6 +98,7 @@
 								<img id="review_photo" src="#" alt="review photo" width="150" style="display:none" />
 								<p class="error photo-error"></p>
 								<button type="submit" name="" class="save-img">Lưu hình ảnh</button>
+								<button type="button" class="icon-close" style="display:none"></button>
 							</div>
 						</div>
 					</form>
@@ -295,7 +295,7 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="@(isConnectGoogle ? "" : "validate" )">@(isConnectFacebook ? ViewResources.Connecting : ViewResources.NoConnect )</li>
+										<li class="@(isConnectFacebook ? "" : "validate" )">@(isConnectFacebook ? ViewResources.Connecting : ViewResources.NoConnect )</li>
 									</ul>
 								</div>
 								@if (isConnectFacebook)
@@ -329,7 +329,7 @@
 								}
 								else 
 								{
-									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" >@ViewResources.Connect</a>
+									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile"  >@ViewResources.Connect</a>
 								} 
 							</div>
 						</div>
