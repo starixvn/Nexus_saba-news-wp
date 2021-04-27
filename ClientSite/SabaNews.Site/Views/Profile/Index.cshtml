@@ -285,6 +285,10 @@
 								{
 									<a href="javascript:;" data-id="@Model.Id" data-type="@ViewResources.Facebook" class="action disconnect_social_login">@ViewResources.Disconnect</a>
 								}
+								else
+								{
+									<a href="ExternalAuthentication/Login?Provider=Facebook&returnUrl=/Profile">@ViewResources.Connect</a>
+								}
 							</div>
 						</div>
 					</div>
@@ -306,6 +310,10 @@
 								{
 									<a href="javascript:;" class="action disconnect_social_login" data-id="@Model.Id" data-type="@ViewResources.Google">@ViewResources.Disconnect</a>
 								}
+								else 
+								{
+									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" >@ViewResources.Connect</a>
+								} 
 							</div>
 						</div>
 					</div>

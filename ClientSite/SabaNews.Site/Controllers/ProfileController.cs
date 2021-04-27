@@ -88,7 +88,8 @@
                     EmailConfirmed = sessionService.User.EmailConfirmed,
                     LoginType = sessionService.User.LoginType,
                     SavedPosts = listPosts,
-                    HandleSavePosts = newListSavePosts
+                    HandleSavePosts = newListSavePosts,
+                    Password = sessionService.User.Password
                 };
             }
             return Json(commandResult);
@@ -207,7 +208,7 @@
         public async Task<ActionResult> SocialDisconnect(int userId, string type)
         {
             var commandResult = await profileService.DisconnectLoginTypeAsync(userId, type);
-            if (commandResult.IsSuccessful && string.IsNullOrEmpty(commandResult.Message))
+            if (commandResult.IsSuccessful && string.IsNullOrEmpty(commandResult.Message) && string.IsNullOrEmpty(sessionService.User.Password))
             {
                 sessionService.ClearAll();
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

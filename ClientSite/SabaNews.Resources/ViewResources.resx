@@ -159,6 +159,9 @@
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Xác nhận mật khẩu</value>
   </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Liên kết</value>
+  </data>
   <data name="Connecting" xml:space="preserve">
     <value>Đang liên kết</value>
   </data>
@@ -169,7 +172,7 @@
     <value>Sao chép đường dẫn </value>
   </data>
   <data name="Disconnect" xml:space="preserve">
-    <value>Ngắt kết nối</value>
+    <value>Ngắt liên kết</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>

@@ -187,6 +187,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Liên kết.
+        /// </summary>
+        public static string Connect {
+            get {
+                return ResourceManager.GetString("Connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đang liên kết.
         /// </summary>
         public static string Connecting {
@@ -214,7 +223,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ngắt kết nối.
+        ///   Looks up a localized string similar to Ngắt liên kết.
         /// </summary>
         public static string Disconnect {
             get {

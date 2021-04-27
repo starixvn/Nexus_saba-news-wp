@@ -41,6 +41,11 @@
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var claims = result.Principal.Identities.FirstOrDefault().Claims;
+            var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            if (sessionService.User != null && sessionService.User.Email != email)
+            {
+                return Redirect(returnUrl);
+            }
             var userInfo = new ExternalUser
             {
                 Identifier = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value,
@@ -74,17 +79,10 @@
             {
                 CommandResult result = await externalAuthService.CreateUserAsync(userInfo);
                 user = await profileService.GetUserByIdAsync(userInfo.Id);
+                user.EmailConfirmed = true;
                 if (result.IsSuccessful)
                 {
-                    sessionService.User = new UserSession
-                    {
-                        Email = user.Email,
-                        EmailConfirmed = true,
-                        Id = user.Id,
-                        LoginType = user.LoginType,
-                        Name = user.Name,
-                        Photo = user.Photo
-                    };
+                    sessionService.User = user;
                 }
             }
         }
