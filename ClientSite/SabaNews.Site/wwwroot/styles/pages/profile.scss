@@ -169,6 +169,13 @@
                 padding: 1rem 0;
                 background: #f7f7f7;
 
+                .icon-close {
+                    position: absolute;
+                    right: 16px;
+                    top: 16px;
+                    font-size: 1.8rem;
+                }
+
                 .txt-img {
                     @include flex(center, nowrap,center);
 

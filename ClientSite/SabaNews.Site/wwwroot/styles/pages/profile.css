@@ -1301,6 +1301,11 @@ button {
         text-align: center;
         padding: 1rem 0;
         background: #f7f7f7; }
+        .block-extension .controls__choose .input-upload .icon-close {
+          position: absolute;
+          right: 16px;
+          top: 16px;
+          font-size: 1.8rem; }
         .block-extension .controls__choose .input-upload .txt-img {
           display: flex;
           align-items: center;
