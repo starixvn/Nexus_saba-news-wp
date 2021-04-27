@@ -273,6 +273,7 @@
             };
         });
         $('.icon-close').on('click', function () {
+            $('input[name=photo]').val('');
             $('#review_photo').attr('src', '');
             $('#review_photo').hide();
             $('.icon-close').show();
