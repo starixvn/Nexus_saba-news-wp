@@ -180,6 +180,9 @@
   <data name="EmptyProfileTitle" xml:space="preserve">
     <value>Trang cá nhân của trên Saba Sports</value>
   </data>
+  <data name="ErrorConnectSocial" xml:space="preserve">
+    <value>Email liên kết không trùng khớp</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>Thoát</value>
   </data>

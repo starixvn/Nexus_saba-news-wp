@@ -257,6 +257,7 @@
         $('input[name=photo]').on('change', function (e) {
             $('#review_photo').attr('src', '');
             $('#review_photo').hide();
+            $('.icon-close').show();
             var files = $('input[name=photo]')[0].files[0];
             var isValid = validate_photo(files);
             if (!isValid) {
@@ -270,6 +271,14 @@
                 $('#review_photo').show();
                 $('.photo-error').hide();
             };
+        });
+        $('.icon-close').on('click', function () {
+            $('#review_photo').attr('src', '');
+            $('#review_photo').hide();
+            $('.icon-close').show();
+            $('.save-img').hide();
+            $('.txt-img').css('display', 'flex');
+            $(this).hide();
         });
 
         $('.disconnect_social_login').on('click', function () {
@@ -290,6 +299,10 @@
         $('#DisconnectSuccessful').on('hidden.bs.modal', function () {
             location.reload();
         });
+        errorConnectSocial = errorConnectSocial.toLowerCase() === 'true';
+        if (errorConnectSocial) {
+            $('#ErrorConnectSocial').modal('show');
+        }
     }
 
     function validate_photo(files) {

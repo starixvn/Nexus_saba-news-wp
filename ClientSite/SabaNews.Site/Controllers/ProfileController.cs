@@ -47,7 +47,9 @@
                 return Redirect(Url.Action("Index", "Home"));
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
+            ViewBag.ErrorConnectEmail = sessionService.User.ErrorConnectWrongEmail;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            sessionService.User = User;
 
             return View(User);
         }

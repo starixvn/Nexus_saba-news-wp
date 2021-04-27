@@ -250,6 +250,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email liên kết không trùng khớp.
+        /// </summary>
+        public static string ErrorConnectSocial {
+            get {
+                return ResourceManager.GetString("ErrorConnectSocial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thoát.
         /// </summary>
         public static string Exit {

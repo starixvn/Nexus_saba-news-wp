@@ -44,6 +44,9 @@
             var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
             if (sessionService.User != null && sessionService.User.Email != email)
             {
+                var user = sessionService.User;
+                user.ErrorConnectWrongEmail = true;
+                sessionService.User = user;
                 return Redirect(returnUrl);
             }
             var userInfo = new ExternalUser

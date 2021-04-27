@@ -28,6 +28,8 @@
 
         public DateTime RegisterDate { get; set; }
 
+        public bool ErrorConnectWrongEmail { get; set; }
+
         private List<SavePost> ListSavedPosts { get; set; }
 
         public List<SavePost> HandleSavePosts

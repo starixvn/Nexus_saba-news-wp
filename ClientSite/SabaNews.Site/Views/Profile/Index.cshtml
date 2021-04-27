@@ -38,17 +38,33 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal" id="ErrorConnectSocial" style="display:none">
+		<div class="modal-content modal-auth">
+			<div class="modal-warning">
+				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="tab-content" id="nav-tabContent">
+					<h3 class="heading-warning">@ViewResources.Message</h3>
+					<hr />
+					<h3 class="content">
+						@ViewResources.ErrorConnectSocial
+					</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
-
 	<div class="container profile-container">
 		<div class="block block-main">
 			<div class="profile">
 				@if (Model.Photo == null)
 				{
-					<div class="profile__avatar">@Model.Name.Substring(0, 1)</div>
+					<div class="profile__avatar">@Model.Name.Substring(0, 1) </div>
 				}
 				else if(Model.Photo.ToLower().Contains("https://") || Model.Photo.ToLower().Contains("http://"))
 				{
@@ -74,18 +90,18 @@
 				<h2 class="block__title">@ViewResources.MyAccount</h2>
 				<div class="controls__choose">
 					<div class="title">@ViewResources.ProfilePhoto</div>
-                    <form enctype="multipart/form-data" method="post" id="uploadPhoto">
-                        <div class="input-upload">
-							<span class="icon-close"></span>
-                            <input type="file" class="input-file" id="act-upload" name="photo">
-                            <span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
-                            <div class="img-upload">
-                                <img id="review_photo" src="#" alt="review photo" width="150" style="display:none" />
-                                <p class="error photo-error"></p>
-                                <button type="submit" name="" class="save-img">Lưu hình ảnh</button>
-                            </div>
-                        </div>
-                    </form>
+					<form enctype="multipart/form-data" method="post" id="uploadPhoto">
+						<span class="icon-close" style="display:none"></span>
+						<div class="input-upload">
+							<input type="file" class="input-file" id="act-upload" name="photo">
+							<span class="txt-img"><i class="icon-upload"></i> @ViewResources.ProfileUploadNewPhoto</span>
+							<div class="img-upload">
+								<img id="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+								<p class="error photo-error"></p>
+								<button type="submit" name="" class="save-img">Lưu hình ảnh</button>
+							</div>
+						</div>
+					</form>
 
 				</div>
 
@@ -326,4 +342,5 @@
 
 <script>
 	var email = '@Model.Email';
+	var errorConnectSocial = '@ViewBag.ErrorConnectEmail';
 </script>
