@@ -990,7 +990,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: row;
-    margin: 4rem 0 3rem 0; }
+    margin: 1.6rem 0 1.6rem 0; }
     .main-social .social .item-social {
       margin-right: 1rem; }
       .main-social .social .item-social:first-child {
@@ -1577,7 +1577,7 @@ img {
       max-height: 20rem; } }
 
 .tag-post {
-  margin-bottom: 6rem; }
+  margin-bottom: 1.6rem; }
   @media screen and (max-width: 1024px) {
     .tag-post {
       margin-bottom: 3rem; } }

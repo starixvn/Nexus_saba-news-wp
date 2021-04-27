@@ -292,6 +292,10 @@
                         border-bottom: 1px solid;
                         font-size: 1.3rem;
                         text-decoration: none;
+
+                        &.connect {
+                            color: #1B71B2;
+                        }
                     }
 
 
@@ -533,10 +537,18 @@
 
         .icon-detail_facebook {
             position: relative;
-            left: -6px;
+            left: -10px;
+
             &:before {
                 font-size: 24px;
                 color: #3b5999;
+            }
+        }
+
+        .txt-fb {
+            @include Mobile {
+                position: relative;
+                left: -8px;
             }
         }
 
@@ -545,10 +557,31 @@
             width: 16px;
             height: 16px;
             margin-right: 8px;
+
+            @include Mobile {
+                width: 14px;
+                height: 14px;
+                margin-right: 4px;
+                position: relative;
+                left: -4px;
+            }
         }
     }
 }
 
 .profile-container .block-extension .block__title {
     color: #f12f19;
+}
+
+.modal-auth {
+    .heading-warning {
+        padding: .8rem 1.2rem;
+    }
+
+    .content {
+        padding: 2rem 1.2rem;
+        text-align: center;
+        font-weight: normal;
+        font-size: 1.6rem;
+    }
 }

@@ -1064,7 +1064,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: row;
-    margin: 4rem 0 3rem 0; }
+    margin: 1.6rem 0 1.6rem 0; }
     .main-social .social .item-social {
       margin-right: 1rem; }
       .main-social .social .item-social:first-child {

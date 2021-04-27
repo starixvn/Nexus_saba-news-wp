@@ -1392,6 +1392,8 @@ button {
           border-bottom: 1px solid;
           font-size: 1.3rem;
           text-decoration: none; }
+          .block-extension .controls__account .group-table .right-table .action.connect {
+            color: #1B71B2; }
         .block-extension .controls__account .group-table .right-table .comfirm {
           margin-bottom: 0; }
           .block-extension .controls__account .group-table .right-table .comfirm a {
@@ -1567,15 +1569,35 @@ button {
   align-items: center; }
   .social-network .label-fill .icon-detail_facebook {
     position: relative;
-    left: -6px; }
+    left: -10px; }
     .social-network .label-fill .icon-detail_facebook:before {
       font-size: 24px;
       color: #3b5999; }
+  @media (max-device-width: 767px) {
+    .social-network .label-fill .txt-fb {
+      position: relative;
+      left: -8px; } }
   .social-network .label-fill .icon-google-color {
     background: url("../../images/google-icon.svg") no-repeat;
     width: 16px;
     height: 16px;
     margin-right: 8px; }
+    @media (max-device-width: 767px) {
+      .social-network .label-fill .icon-google-color {
+        width: 14px;
+        height: 14px;
+        margin-right: 4px;
+        position: relative;
+        left: -4px; } }
 
 .profile-container .block-extension .block__title {
   color: #f12f19; }
+
+.modal-auth .heading-warning {
+  padding: .8rem 1.2rem; }
+
+.modal-auth .content {
+  padding: 2rem 1.2rem;
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.6rem; }
