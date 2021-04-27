@@ -139,7 +139,7 @@
     <value>close</value>
   </data>
   <data name="Comment" xml:space="preserve">
-    <value>Ý kiến</value>
+    <value>Bình luận</value>
   </data>
   <data name="CommentMostInterested" xml:space="preserve">
     <value>Quan tâm nhất</value>
@@ -166,7 +166,7 @@
     <value>Copy clipboard thành công</value>
   </data>
   <data name="CopyLink" xml:space="preserve">
-    <value>Copy link</value>
+    <value>Sao chép đường dẫn </value>
   </data>
   <data name="Disconnect" xml:space="preserve">
     <value>Ngắt kết nối</value>
@@ -337,10 +337,10 @@
     <value>Chia sẻ:</value>
   </data>
   <data name="ShareFacebook" xml:space="preserve">
-    <value>Chia sẽ bài viết lên facebook</value>
+    <value>Chia sẻ qua Facebook</value>
   </data>
   <data name="ShareMail" xml:space="preserve">
-    <value>Chia sẻ bài viết qua mail</value>
+    <value>Chia sẻ qua Email</value>
   </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>

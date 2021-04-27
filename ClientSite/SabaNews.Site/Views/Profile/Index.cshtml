@@ -18,7 +18,6 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<div class="modal-body modal-resetpass">
-
 				</div>
 			</div>
 
@@ -61,21 +60,18 @@
 				}
 				<div class="profile__name">@Model.Name</div>
 				<div class="profile__date">
-					<p>Tham gia từ</p>
-					<p><i class="icon-birthday"></i> @Model.RegisterDate.ToString("dd/MM/yyyy")</p>
+                    <p>Tham gia từ @Model.RegisterDate.ToString("dd/MM/yyyy")</p>
 				</div>
-				<ul class="profile__control">
-					<li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(Model.HandleSavePosts.Count > 0 ? "(" + Model.HandleSavePosts.Count + ")" : "" )</a></li>
-				</ul>
-				<ul class="profile__nav">
-					<li class="active-control"><a href="javascript:;">@ViewResources.MyAccount</a></li>
-					<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
-				</ul>
+                <ul class="profile__control">
+                    <li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(Model.HandleSavePosts.Count > 0 ? "(" + Model.HandleSavePosts.Count + ")" : "" )</a></li>
+                    <li class="active-control"><a href="javascript:;">@ViewResources.MyAccount</a></li>
+                    <li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
+                </ul>
 			</div>
 		</div>
 		<div class="block block-extension">
 			<div class="controls">
-				<h2 class="block__title"><a>@ViewResources.MyAccount </a></h2>
+				<h2 class="block__title">@ViewResources.MyAccount</h2>
 				<div class="controls__choose">
 					<div class="title">@ViewResources.ProfilePhoto</div>
                     <form enctype="multipart/form-data" method="post" id="uploadPhoto">
@@ -130,7 +126,7 @@
 										}
 										else
 										{
-											<li class="validate">@ViewResources.ProfilePhoneValidate <i class="icon-validate"></i></li>
+											<li>@ViewResources.ProfilePhoneValidate</li>
 										}
 
 									</ul>
@@ -229,7 +225,7 @@
 										}
 										else
 										{
-											<li class="validate">@ViewResources.ProfileNoSelected <i class="icon-validate"></i></li>
+											<li>@ViewResources.ProfileNoSelected</li>
 										}
 
 									</ul>
@@ -265,11 +261,14 @@
 
 				</div>
 
-				<div class="controls__account line">
+				<div class="controls__account line social-network">
 					<div class="title">Mạng xã hội</div>
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Facebook</div>
+							<div class="label-fill">
+								<span class="icon-social icon-detail_facebook"></span>
+								<span>Facebook</span>
+							</div>
 						</div>
 						@{
 							var isConnectFacebook = (Model.LoginType != null && Model.LoginType.Contains(ViewResources.Facebook)) ? true : false;
@@ -279,7 +278,7 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li class="@(isConnectFacebook ? "" : "validate" )">@(isConnectFacebook ? ViewResources.Connecting : ViewResources.NoConnect )</li>
+										<li>@(Model.LoginType.Contains(ViewResources.Facebook) ? ViewResources.Connecting : ViewResources.NoConnect )</li>
 									</ul>
 								</div>
 								@if (isConnectFacebook)
@@ -291,7 +290,10 @@
 					</div>
 					<div class="group-table">
 						<div class="left-table">
-							<div class="label-fill">Google</div>
+                            <div class="label-fill">
+                                <span class="icon-google-color"></span>
+                                <span>Google</span>
+                            </div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">

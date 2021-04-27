@@ -1247,12 +1247,11 @@ button {
   .block-main .profile__control, .block-main .profile__nav {
     list-style: none;
     margin-bottom: 0;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e5e5e5; }
+    padding: 1rem 0; }
     .block-main .profile__control li a, .block-main .profile__nav li a {
       color: #4F4F4F;
       text-decoration: none;
-      padding: 1rem 0 1rem 1.5rem;
+      padding: .8rem 0 .8rem 1.5rem;
       position: relative;
       width: 100%;
       display: block;
@@ -1292,57 +1291,52 @@ button {
       margin-bottom: 2rem; }
     .block-extension .controls .line {
       border-top: 1px solid #e5e5e5;
-      padding-top: 2.5rem;
-      margin-top: 2.5rem; }
-      .block-extension .controls .line:last-child {
-        border: none;
-        padding-top: 0;
-        margin-top: 0; }
-        .block-extension .controls .line:last-child .group-table .right-table {
-          border-bottom: none; }
-    .block-extension .controls__choose .input-upload {
-      border: 1px dashed #BDBDBD;
-      position: relative;
-      width: 100%;
-      text-align: center;
-      padding: 1rem 0;
-      background: #f7f7f7; }
-      .block-extension .controls__choose .input-upload .txt-img {
-        display: flex;
-        align-items: center;
-        flex-wrap: nowrap;
-        justify-content: center;
-        flex-direction: row; }
-        .block-extension .controls__choose .input-upload .txt-img .icon-upload {
-          font-size: 5rem;
-          margin-right: 1rem; }
-      .block-extension .controls__choose .input-upload .photo-error {
-        margin: 0; }
-      .block-extension .controls__choose .input-upload img {
-        display: block;
-        margin: 0 auto; }
-      .block-extension .controls__choose .input-upload .input-file {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer; }
-      .block-extension .controls__choose .input-upload .save-img {
-        color: #fff;
-        padding: 1rem 2rem;
-        background: #9f224e;
-        border: none;
-        margin-top: 2rem;
-        font-weight: bold;
-        border-radius: 3px;
+      padding-top: 2.5rem; }
+    .block-extension .controls__choose {
+      padding-bottom: 2.5rem; }
+      .block-extension .controls__choose .input-upload {
+        border: 1px dashed #BDBDBD;
         position: relative;
-        z-index: 999999999999;
-        cursor: pointer;
-        display: none;
-        margin: 1rem auto; }
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        background: #f7f7f7; }
+        .block-extension .controls__choose .input-upload .txt-img {
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+          justify-content: center;
+          flex-direction: row; }
+          .block-extension .controls__choose .input-upload .txt-img .icon-upload {
+            font-size: 5rem;
+            margin-right: 1rem; }
+        .block-extension .controls__choose .input-upload .photo-error {
+          margin: 0; }
+        .block-extension .controls__choose .input-upload img {
+          display: block;
+          margin: 0 auto; }
+        .block-extension .controls__choose .input-upload .input-file {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer; }
+        .block-extension .controls__choose .input-upload .save-img {
+          color: #fff;
+          padding: 1rem 2rem;
+          background: #9f224e;
+          border: none;
+          margin-top: 2rem;
+          font-weight: bold;
+          border-radius: 3px;
+          position: relative;
+          z-index: 999999999999;
+          cursor: pointer;
+          display: none;
+          margin: 1rem auto; }
     .block-extension .controls__account .group-table {
       display: flex;
       align-items: flex-start;
@@ -1356,9 +1350,7 @@ button {
           .block-extension .controls__account .group-table .left-table {
             width: 10rem; } }
       .block-extension .controls__account .group-table .right-table {
-        border-bottom: 1px solid #e5e5e5;
         padding-bottom: 2rem;
-        margin-bottom: 2rem;
         width: 100%; }
         .block-extension .controls__account .group-table .right-table .box-control {
           display: flex;
@@ -1377,7 +1369,9 @@ button {
               width: 70%; } }
           .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill {
             list-style: none;
-            margin-bottom: 0; }
+            margin-bottom: 0;
+            font-size: 1.5rem;
+            color: #333; }
             .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill li {
               display: inline-block; }
             .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill .txt-feild {
@@ -1399,7 +1393,8 @@ button {
             color: #1B71B2; }
         .block-extension .controls__account .group-table .right-table .commitment {
           margin-bottom: 0;
-          color: #828282; }
+          color: #828282;
+          font-size: 1.3rem; }
         .block-extension .controls__account .group-table .right-table .error {
           color: #eb5342;
           display: none; }
@@ -1561,3 +1556,21 @@ button {
               text-decoration: none; }
   .block-extension .block__title {
     margin-bottom: 3rem; }
+
+.social-network .label-fill {
+  display: flex;
+  align-items: center; }
+  .social-network .label-fill .icon-detail_facebook {
+    position: relative;
+    left: -6px; }
+    .social-network .label-fill .icon-detail_facebook:before {
+      font-size: 24px;
+      color: #3b5999; }
+  .social-network .label-fill .icon-google-color {
+    background: url("../../images/google-icon.svg") no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px; }
+
+.profile-container .block-extension .block__title {
+  color: #f12f19; }

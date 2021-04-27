@@ -1003,8 +1003,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         font-size: 1.5rem; }
         .main-social .social .item-social .item .icon-social {
           font-size: 2.4rem; }
-          .main-social .social .item-social .item .icon-social:before {
-            color: #828282; }
   .main-social .left-social .item-social:last-child {
     border: 1px solid #BEBEBE;
     box-sizing: border-box;
@@ -1018,6 +1016,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     align-items: center; }
     .main-social .left-social .item-social .intent .svg-bookmark {
       margin-right: .8rem; }
+
+.icon-social:before {
+  color: #828282; }
 
 .fixed-social {
   position: sticky;
@@ -1086,7 +1087,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   stroke: #2B89CC;
   fill: #2B89CC; }
 
-.svg-bookmark:hover path {
+.svg-bookmark:hover path, .svg-email:hover path {
   stroke: #2B89CC;
   fill: #2B89CC; }
 
@@ -1094,13 +1095,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   stroke: #E13C29;
   fill: #E13C29; }
 
-.icon-detail_facebook:hover:before {
-  color: #3B5999 !important; }
+.icon-social.icon-detail_facebook:hover:before {
+  color: #3B5999; }
 
-.icon-link:hover:before {
-  color: #076DB6 !important; }
+.icon-social.icon-link:hover:before {
+  color: #076DB6; }
 
-.icon-back {
+.icon-social.icon-back {
   width: 3.2rem;
   height: 3.2rem;
   display: flex;
@@ -1110,11 +1111,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   flex-direction: row;
   border: 1px solid #BEBEBE;
   border-radius: 50%; }
-  .icon-back:hover {
+  .icon-social.icon-back:hover {
     background: #076DB6;
     border: 1px solid #fff; }
-    .icon-back:hover:before {
-      color: #fff !important; }
+    .icon-social.icon-back:hover:before {
+      color: #fff; }
 
 .tag-post {
   padding: 0;

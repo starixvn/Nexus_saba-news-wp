@@ -124,7 +124,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ý kiến.
+        ///   Looks up a localized string similar to Bình luận.
         /// </summary>
         public static string Comment {
             get {
@@ -205,7 +205,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy link.
+        ///   Looks up a localized string similar to Sao chép đường dẫn .
         /// </summary>
         public static string CopyLink {
             get {
@@ -718,7 +718,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chia sẽ bài viết lên facebook.
+        ///   Looks up a localized string similar to Chia sẻ qua Facebook.
         /// </summary>
         public static string ShareFacebook {
             get {
@@ -727,7 +727,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chia sẻ bài viết qua mail.
+        ///   Looks up a localized string similar to Chia sẻ qua Email.
         /// </summary>
         public static string ShareMail {
             get {

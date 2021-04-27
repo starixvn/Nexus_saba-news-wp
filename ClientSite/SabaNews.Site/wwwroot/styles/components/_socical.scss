@@ -27,10 +27,6 @@
 
                 .icon-social {
                     font-size: 2.4rem;
-
-                    &:before {
-                        color: $color-datetime;
-                    }
                 }
             }
         }
@@ -63,6 +59,12 @@
                 }
             }
         }
+    }
+}
+
+.icon-social {
+    &:before {
+        color: $color-datetime;
     }
 }
 
@@ -128,8 +130,9 @@
                             font-size: 2rem;
                         }
                     }
-                    .icon-back{
-                        border : none;
+
+                    .icon-back {
+                        border: none;
                     }
 
                     svg {
@@ -164,7 +167,7 @@
     }
 }
 
-.svg-bookmark {
+.svg-bookmark, .svg-email {
     &:hover {
         path {
             stroke: $bookmark;
@@ -182,36 +185,39 @@
     }
 }
 
-.icon-detail_facebook {
-    &:hover {
-        &:before {
-            color: $facebook !important;
+.icon-social {
+    &.icon-detail_facebook {
+        &:hover {
+            &:before {
+                color: $facebook;
+            }
+        }
+    }
+
+    &.icon-link {
+        &:hover {
+            &:before {
+                color: $link-icon;
+            }
+        }
+    }
+
+
+    &.icon-back {
+        width: 3.2rem;
+        height: 3.2rem;
+        @include flex(center, nowrap, center, row);
+        border: 1px solid $border-social;
+        border-radius: 50%;
+
+        &:hover {
+            background: #076DB6;
+            border: 1px solid $color-fff;
+
+            &:before {
+                color: $color-fff;
+            }
         }
     }
 }
 
-.icon-link {
-    &:hover {
-        &:before {
-            color: $link-icon !important;
-        }
-    }
-}
-
-
-.icon-back {
-    width: 3.2rem;
-    height: 3.2rem;
-    @include flex(center, nowrap, center, row);
-    border: 1px solid $border-social;
-    border-radius: 50%;
-
-    &:hover {
-        background: #076DB6;
-        border: 1px solid $color-fff;
-
-        &:before {
-            color: $color-fff !important;
-        }
-    }
-}

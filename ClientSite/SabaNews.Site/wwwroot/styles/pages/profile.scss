@@ -85,13 +85,12 @@
             list-style: none;
             margin-bottom: 0;
             padding: 1rem 0;
-            border-bottom: 1px solid $separator-color;
 
             li {
                 a {
                     color: $color-content;
                     text-decoration: none;
-                    padding: 1rem 0 1rem 1.5rem;
+                    padding: .8rem 0 .8rem 1.5rem;
                     position: relative;
                     width: 100%;
                     display: block;
@@ -157,22 +156,11 @@
         .line {
             border-top: 1px solid $separator-color;
             padding-top: 2.5rem;
-            margin-top: 2.5rem;
-
-            &:last-child {
-                border: none;
-                padding-top: 0;
-                margin-top: 0;
-
-                .group-table {
-                    .right-table {
-                        border-bottom: none;
-                    }
-                }
-            }
         }
 
         &__choose {
+            padding-bottom: 2.5rem;
+
             .input-upload {
                 border: 1px dashed $border-heading;
                 position: relative;
@@ -241,9 +229,7 @@
                 }
 
                 .right-table {
-                    border-bottom: 1px solid $separator-color;
                     padding-bottom: 2rem;
-                    margin-bottom: 2rem;
                     width: 100%;
 
                     .box-control {
@@ -266,6 +252,8 @@
                             .txt-fill {
                                 list-style: none;
                                 margin-bottom: 0;
+                                font-size: 1.5rem;
+                                color: #333;
 
                                 li {
                                     display: inline-block;
@@ -310,7 +298,8 @@
 
                     .commitment {
                         margin-bottom: 0;
-                        color: $color-input
+                        color: $color-input;
+                        font-size: 1.3rem;
                     }
 
                     .error {
@@ -528,4 +517,31 @@
     .block__title {
         margin-bottom: 3rem;
     }
+}
+
+.social-network {
+    .label-fill {
+        display: flex;
+        align-items: center;
+
+        .icon-detail_facebook {
+            position: relative;
+            left: -6px;
+            &:before {
+                font-size: 24px;
+                color: #3b5999;
+            }
+        }
+
+        .icon-google-color {
+            background: url("../../images/google-icon.svg") no-repeat;
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+    }
+}
+
+.profile-container .block-extension .block__title {
+    color: #f12f19;
 }
