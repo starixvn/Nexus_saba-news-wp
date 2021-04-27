@@ -278,7 +278,7 @@
 							<div class="box-control">
 								<div class="main-fill">
 									<ul class="txt-fill">
-										<li>@(Model.LoginType.Contains(ViewResources.Facebook) ? ViewResources.Connecting : ViewResources.NoConnect )</li>
+										<li class="@(isConnectGoogle ? "" : "validate" )">@(isConnectFacebook ? ViewResources.Connecting : ViewResources.NoConnect )</li>
 									</ul>
 								</div>
 								@if (isConnectFacebook)
