@@ -26,7 +26,7 @@
                     </ul>
                 </li>
                 <li class="item-control search-desktop search-input">
-                    <form asp-action="Search" asp-controller="Home" method="get">
+                    <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
                         <input class="keyword-input search-box" name="keyword" id="keyword-desktop" type="text" placeholder="Tìm kiếm...">
                         <button type="submit" class="btn btn-search" aria-label="search">
                             <i class="icon-search"></i>
@@ -131,7 +131,7 @@
 
                         }
                         <li class="right-header-section search-input">
-                            <form asp-action="Search" method="get">
+                            <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
                                 <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
                                 <button type="submit" class="btn btn-search" aria-label="search">
                                     <i class="icon-search"></i>
