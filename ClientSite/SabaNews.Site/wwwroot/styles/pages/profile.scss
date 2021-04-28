@@ -231,7 +231,7 @@
                     width: 16rem;
 
                     @include tableMobile {
-                        width: 10rem;
+                        width: 12rem;
                     }
                 }
 
@@ -252,10 +252,6 @@
                         }
 
                         .main-fill {
-                            @include tableMobile {
-                                width: 70%;
-                            }
-
                             .txt-fill {
                                 list-style: none;
                                 margin-bottom: 0;

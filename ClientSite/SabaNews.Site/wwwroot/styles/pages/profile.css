@@ -1353,7 +1353,7 @@ button {
         width: 16rem; }
         @media screen and (max-width: 1024px) {
           .block-extension .controls__account .group-table .left-table {
-            width: 10rem; } }
+            width: 12rem; } }
       .block-extension .controls__account .group-table .right-table {
         padding-bottom: 2rem;
         width: 100%; }
@@ -1369,9 +1369,6 @@ button {
             @media (max-device-width: 767px) {
               .block-extension .controls__account .group-table .right-table .box-control .input-password {
                 width: 15rem; } }
-          @media screen and (max-width: 1024px) {
-            .block-extension .controls__account .group-table .right-table .box-control .main-fill {
-              width: 70%; } }
           .block-extension .controls__account .group-table .right-table .box-control .main-fill .txt-fill {
             list-style: none;
             margin-bottom: 0;
