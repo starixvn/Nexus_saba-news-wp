@@ -495,10 +495,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
               text-decoration: none;
               display: inline-block;
-              padding: 3.7rem 0;
               font-weight: 600;
               transition: color .2s ease;
-              line-height: 1.7rem;
               color: #4F4F4F; }
               @media screen and (max-width: 1024px) {
                 .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
@@ -680,6 +678,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 36px;
   height: 36px;
   vertical-align: middle; }
+  @media (max-device-width: 767px) {
+    .marked-icon {
+      position: relative;
+      top: -3px; } }
 
 /*@keyframes skew {
     0% {

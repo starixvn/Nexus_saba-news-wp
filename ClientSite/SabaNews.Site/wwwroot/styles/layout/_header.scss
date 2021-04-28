@@ -442,10 +442,8 @@
                         .item {
                             text-decoration: none;
                             display: inline-block;
-                            padding: 3.7rem 0;
                             font-weight: 600;
                             transition: color .2s ease;
-                            line-height: 1.7rem;
                             color: $color-content;
 
                             @include tableMobile {
@@ -706,6 +704,11 @@
     width: 36px;
     height: 36px;
     vertical-align: middle;
+
+    @include Mobile {
+        position: relative;
+        top: -3px;
+    }
 }
 
 /*@keyframes skew {
