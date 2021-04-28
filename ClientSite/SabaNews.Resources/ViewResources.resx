@@ -178,7 +178,7 @@
     <value>Email</value>
   </data>
   <data name="EmptyProfileTitle" xml:space="preserve">
-    <value>Trang cá nhân của trên Saba Sports</value>
+    <value>Trang cá nhân của trên SABA Sports</value>
   </data>
   <data name="ErrorConnectSocial" xml:space="preserve">
     <value>Email liên kết không trùng khớp</value>
@@ -325,7 +325,7 @@
     <value>Lấy lại mật khẩu</value>
   </data>
   <data name="SabasportsCommitmentSecureInfo" xml:space="preserve">
-    <value>Saba Sports cam kết bảo mật thông tin này</value>
+    <value>SABA Sports cam kết bảo mật thông tin này</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Lưu lại</value>

@@ -241,7 +241,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trang cá nhân của trên Saba Sports.
+        ///   Looks up a localized string similar to Trang cá nhân của trên SABA Sports.
         /// </summary>
         public static string EmptyProfileTitle {
             get {
@@ -682,7 +682,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Saba Sports cam kết bảo mật thông tin này.
+        ///   Looks up a localized string similar to SABA Sports cam kết bảo mật thông tin này.
         /// </summary>
         public static string SabasportsCommitmentSecureInfo {
             get {

@@ -246,6 +246,7 @@
                         $('.txt-img').css('display', 'flex');
                         $('#review_photo').attr('src', '');
                         $('#review_photo').hide();
+                        $('.icon-close').hide();
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);

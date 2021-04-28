@@ -167,23 +167,8 @@
     }
 }
 
-.svg-bookmark, .svg-email {
-    &:hover {
-        path {
-            stroke: $bookmark;
-            fill: $bookmark;
-        }
-    }
-}
 
-.svg-comment {
-    &:hover {
-        path {
-            stroke: $comment;
-            fill: $comment;
-        }
-    }
-}
+
 
 .icon-social {
     &.icon-detail_facebook {
@@ -216,6 +201,26 @@
 
             &:before {
                 color: $color-fff;
+            }
+        }
+    }
+}
+
+@media (hover: hover) {
+    .svg-bookmark, .svg-email {
+        &:hover {
+            path {
+                stroke: $bookmark;
+                fill: $bookmark;
+            }
+        }
+    }
+
+    .svg-comment {
+        &:hover {
+            path {
+                stroke: $comment;
+                fill: $comment;
             }
         }
     }

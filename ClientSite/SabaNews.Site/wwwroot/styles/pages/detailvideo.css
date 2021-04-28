@@ -1154,14 +1154,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   stroke: #2B89CC;
   fill: #2B89CC; }
 
-.svg-bookmark:hover path, .svg-email:hover path {
-  stroke: #2B89CC;
-  fill: #2B89CC; }
-
-.svg-comment:hover path {
-  stroke: #E13C29;
-  fill: #E13C29; }
-
 .icon-social.icon-detail_facebook:hover:before {
   color: #3B5999; }
 
@@ -1183,6 +1175,14 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     border: 1px solid #fff; }
     .icon-social.icon-back:hover:before {
       color: #fff; }
+
+@media (hover: hover) {
+  .svg-bookmark:hover path, .svg-email:hover path {
+    stroke: #2B89CC;
+    fill: #2B89CC; }
+  .svg-comment:hover path {
+    stroke: #E13C29;
+    fill: #E13C29; } }
 
 .card-vertical {
   padding-bottom: 1.6rem; }
