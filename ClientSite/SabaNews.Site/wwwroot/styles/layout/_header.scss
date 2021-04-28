@@ -382,7 +382,7 @@
                     position: relative;
                     list-style: none;
                     width: 100%;
-                    @include flex(center, nowrap, flex-start,row);
+                    @include flex(center, nowrap, space-around,row);
                     height: 4rem;
 
                     @include tableMobile {
@@ -405,7 +405,6 @@
 
                     .menu-item {
                         position: relative;
-                        margin-right: 5rem;
 
                         &:first-child {
                             @include tableMobile {
