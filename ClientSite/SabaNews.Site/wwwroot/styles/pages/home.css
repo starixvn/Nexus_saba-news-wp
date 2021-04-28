@@ -297,7 +297,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           display: none;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           list-style: none;
-          padding: 1.2rem;
+          padding: 1.2rem 1.2rem 0 1.2rem;
           background: #FFFDF9;
           position: absolute;
           width: 24rem;
@@ -322,21 +322,18 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .header-controls .header-auth-provider .auth-input .box-auth {
               right: 0; } }
           .header .header-controls .header-auth-provider .auth-input .box-auth .info-user {
-            padding-bottom: 1rem;
             border-bottom: 1px solid #e5e5e5; }
             .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item {
-              margin-right: .5rem; }
+              padding: 1rem 0;
+              display: block;
+              font-weight: normal; }
+              .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item .icon-logout {
+                font-weight: bold;
+                margin-left: 6px; }
+              .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .item:hover {
+                color: #087CCE; }
             .header .header-controls .header-auth-provider .auth-input .box-auth .info-user:last-child {
               border-bottom: none; }
-            .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .child-box {
-              padding-top: 1rem;
-              border-top: 1px solid #e5e5e5;
-              list-style: none; }
-              .header .header-controls .header-auth-provider .auth-input .box-auth .info-user .child-box li a {
-                font-weight: 600;
-                line-height: 1.7rem;
-                color: #4F4F4F;
-                text-decoration: none; }
           .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .auth-displayname:after {
             display: none; }
           @media screen and (max-width: 1024px) {
@@ -345,10 +342,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           .header .header-controls .header-auth-provider .auth-input .box-auth .auth-provider .avatar-user {
             width: 4.8rem;
             height: 4.8rem; }
-          .header .header-controls .header-auth-provider .auth-input .box-auth li {
-            margin-bottom: 1rem; }
-            .header .header-controls .header-auth-provider .auth-input .box-auth li:last-child {
-              margin-bottom: 0; }
         .header .header-controls .header-auth-provider .auth-input .active-box-auth {
           display: block; }
       .header .header-controls .header-auth-provider .item-control {

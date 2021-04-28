@@ -37,10 +37,12 @@
             padding: .8rem 0;
             border-bottom: 1px solid $separator-color;
         }
+
         .container {
             display: flex;
             justify-content: space-between;
             height: 100%;
+
             @include tableMobile {
                 position: relative;
             }
@@ -50,7 +52,7 @@
             list-style: none;
             @include flex(center,nowrap, flex-end);
 
-            @include tableMobile{
+            @include tableMobile {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 padding: 0 8px;
@@ -83,6 +85,7 @@
             .auth-input {
                 position: relative;
                 cursor: pointer;
+
                 @include tableMobile {
                     justify-self: flex-end;
                 }
@@ -154,7 +157,7 @@
                     display: none;
                     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
                     list-style: none;
-                    padding: 1.2rem;
+                    padding: 1.2rem 1.2rem 0 1.2rem;
                     background: $bg-nav;
                     position: absolute;
                     width: 24rem;
@@ -183,30 +186,25 @@
                     }
 
                     .info-user {
-                        padding-bottom: 1rem;
                         border-bottom: 1px solid $separator-color;
 
                         .item {
-                            margin-right: .5rem;
+                            padding: 1rem 0;
+                            display: block;
+                            font-weight: normal;
+
+                            .icon-logout {
+                                font-weight: bold;
+                                margin-left: 6px;
+                            }
+
+                            &:hover {
+                                color: #087CCE;
+                            }
                         }
 
                         &:last-child {
                             border-bottom: none;
-                        }
-
-                        .child-box {
-                            padding-top: 1rem;
-                            border-top: 1px solid $separator-color;
-                            list-style: none;
-
-                            li {
-                                a {
-                                    font-weight: 600;
-                                    line-height: 1.7rem;
-                                    color: $color-content;
-                                    text-decoration: none;
-                                }
-                            }
                         }
                     }
 
@@ -226,14 +224,6 @@
                         .avatar-user {
                             width: 4.8rem;
                             height: 4.8rem;
-                        }
-                    }
-
-                    li {
-                        margin-bottom: 1rem;
-
-                        &:last-child {
-                            margin-bottom: 0;
                         }
                     }
                 }
