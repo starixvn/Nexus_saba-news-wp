@@ -25,10 +25,6 @@
             });
         });
 
-        $('.return-back').click(function () {
-            history.go(-1);
-        });
-
         $('.copy-clipboard').on('click', function () {
             var self = $(this);
             var dummy = document.createElement('input'),

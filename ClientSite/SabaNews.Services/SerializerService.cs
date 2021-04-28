@@ -16,7 +16,7 @@
 
     public class SerializerService : ISerializerService
     {
-        private ILogger logService;
+        private readonly ILogger logService;
         private int pos;
         private readonly Encoding stringEncoding;
         private readonly NumberFormatInfo nfi;

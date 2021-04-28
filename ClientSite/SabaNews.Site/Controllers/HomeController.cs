@@ -135,10 +135,10 @@
             post.PostContent = post.PostContent.Replace("'rank-math-link'", $"'rank-math-link' data-pro=\"{hash}\"");
 
             var subString = post.PostContent.Split("<p>");
-            if (subString.Count() > 1)
+            if (subString.Length > 1)
             {
                 Random random = new Random();
-                var randomIndex = random.Next(1, subString.Count() - 1);
+                var randomIndex = random.Next(1, subString.Length - 1);
                 var oldText = $"<p>{subString[randomIndex]}";
                 var newText = $"<p data-z=\"{hash}\">{subString[randomIndex]}";
                 post.PostContent = post.PostContent.Replace(oldText, newText);

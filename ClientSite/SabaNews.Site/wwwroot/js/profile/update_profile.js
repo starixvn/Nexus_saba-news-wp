@@ -119,7 +119,7 @@
                 $('.name-error').show();
                 return false;
             }
-            var currentName = $(this).data('phone');
+            var currentName = $(this).data('name');
             if (name === currentName) {
                 $('#form_update_name').removeClass('toggle-active-form');
                 return false;
