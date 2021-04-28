@@ -143,7 +143,7 @@
                     break;
                 default:
                     throw new InvalidOperationException();
-            };
+            }
 
             var commandResult =  await profileService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)

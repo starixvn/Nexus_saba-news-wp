@@ -42,9 +42,9 @@
                     logService.WriteLogFileInfo(logContent);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                
+                logService.WriteLogFileInfo(ex.Message);
             }
         }
     }
