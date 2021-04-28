@@ -684,7 +684,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media (max-device-width: 767px) {
     .marked-icon {
       position: relative;
-      top: -3px; } }
+      top: -2px; } }
 
 /*@keyframes skew {
     0% {
