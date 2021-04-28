@@ -250,14 +250,17 @@
 <script>
 	var checkScroll = function () {
 		var el = document.querySelector('#comment');
-		var main = document.querySelector('.fixed-social');
+        var main = document.querySelector('.fixed-social');
+        var hambuger = document.querySelector('.button-mobile');
 		if (el !== null) {
 			var top_of_obj = el.offsetTop - 600;
 			var top_of_window = window.scrollY;
 			if (top_of_window > top_of_obj) {
-                main.classList.add('active-nav-socical')
+                main.classList.add('active-nav-socical');
+                hambuger.classList.add('active-nav-socical');
 			} else {
-                main.classList.remove('active-nav-socical')
+                main.classList.remove('active-nav-socical');
+                hambuger.classList.remove('active-nav-socical');
 			}
 		}
     }

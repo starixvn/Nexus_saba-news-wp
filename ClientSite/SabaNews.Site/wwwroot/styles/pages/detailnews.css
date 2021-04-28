@@ -1857,10 +1857,11 @@ img {
   .detail-content-table ul li span {
     font-size: 1.6rem; } }
 
-.wapper.active-fixed .fixed-social {
-  z-index: 10008;
-  display: flex;
-  justify-content: flex-end; }
+@media (max-device-width: 767px) {
+  .wapper.active-fixed .fixed-social {
+    z-index: 10008;
+    display: flex;
+    justify-content: flex-end; } }
 
 .wapper.active-fixed .button-mobile {
   z-index: 10009;

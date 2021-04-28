@@ -464,9 +464,11 @@ img {
 
 .wapper.active-fixed {
     .fixed-social {
-        z-index: 10008;
-        display: flex;
-        justify-content: flex-end;
+        @include Mobile {
+            z-index: 10008;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
     .button-mobile {
