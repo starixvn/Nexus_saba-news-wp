@@ -1377,12 +1377,12 @@ button {
                 color: #EB5342; }
           .block-extension .controls__account .group-table .right-table .box-control .main-fill p {
             margin-bottom: 0; }
-        .block-extension .controls__account .group-table .right-table .action {
+        .block-extension .controls__account .group-table .right-table .social-action {
           color: #828282;
           border-bottom: 1px solid;
           font-size: 1.3rem;
           text-decoration: none; }
-          .block-extension .controls__account .group-table .right-table .action.connect {
+          .block-extension .controls__account .group-table .right-table .social-action.connect {
             color: #1B71B2; }
         .block-extension .controls__account .group-table .right-table .comfirm {
           margin-bottom: 0; }
