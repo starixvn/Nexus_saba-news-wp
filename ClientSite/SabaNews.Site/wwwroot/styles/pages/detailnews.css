@@ -1573,7 +1573,7 @@ img {
   margin-bottom: 1.6rem; }
   @media screen and (max-width: 1024px) {
     .tag-post {
-      margin-bottom: 3rem; } }
+      margin-bottom: 0; } }
 
 .tip {
   position: absolute;

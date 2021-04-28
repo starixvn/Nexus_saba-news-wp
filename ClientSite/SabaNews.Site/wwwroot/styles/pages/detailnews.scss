@@ -63,7 +63,7 @@ img {
     margin-bottom: 1.6rem;
 
     @include tableMobile {
-        margin-bottom: 3rem;
+        margin-bottom: 0;
     }
 }
 
