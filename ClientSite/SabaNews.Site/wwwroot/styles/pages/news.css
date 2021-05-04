@@ -481,7 +481,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             @media screen and (max-width: 1024px) {
               .header .top-header .group-menu .nav-menu .main-menu .menu-item {
                 width: 100%;
-                order: 2;
                 border-bottom: 1px solid #E0E0E0;
                 margin-right: 0; } }
             @media only screen and (min-width: 1024px) and (max-width: 1366px) {
