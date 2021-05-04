@@ -704,7 +704,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     z-index: 10000;
     display: block;
     overflow: auto;
-    height: calc(100% - 100px); } }
+    height: calc(100% - 7rem);
+    top: 7rem; } }
 
 .overflow-modal {
   overflow: hidden; }
