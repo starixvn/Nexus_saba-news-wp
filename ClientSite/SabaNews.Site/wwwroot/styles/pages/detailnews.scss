@@ -476,6 +476,12 @@ img {
         top: .8rem;
         position: fixed;
     }
+
+    .top-header {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+    }
 }
 
 @media (max-device-width: 767px) {
