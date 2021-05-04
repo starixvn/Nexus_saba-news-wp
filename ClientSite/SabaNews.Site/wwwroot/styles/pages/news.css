@@ -701,9 +701,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     z-index: 10000;
     display: block;
     overflow: auto;
-    height: calc(100% - 7rem);
-    top: 7rem;
-    position: fixed; }
+    height: calc(100% - 7rem); }
+  .hidden-body .header {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100009; }
   .hidden-body .header .child-mobile-menu {
     display: none; } }
 
