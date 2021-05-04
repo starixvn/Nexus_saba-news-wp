@@ -119,7 +119,7 @@
                 post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
 
-                if (post.Categories == null)
+                if (postType == Constants.pageType)
                 {
                     return post;
                 }
