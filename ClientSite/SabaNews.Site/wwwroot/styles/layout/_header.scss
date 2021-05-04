@@ -732,7 +732,8 @@
             z-index: 10000;
             display: block;
             overflow: auto;
-            height: calc(100% - 100px);
+            height: calc(100% - 7rem);
+            top: 7rem;
         }
     }
 }
