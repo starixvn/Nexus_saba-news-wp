@@ -55,7 +55,17 @@
                 controller = "video";
             }
             var start = (page - 1) * perPage;
-            var postTemplate = await postService.GetPostsByCateSlugAsync(slug, start, perPage);
+            PostTemplate postTemplate;
+            if (slug == Constants.NewPostSlug)
+            {
+                postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, start, perPage);
+            }
+            else
+            {
+                postTemplate = await postService.GetPostsByCateSlugAsync(slug, start, perPage);
+            }
+            
+
             if (!postTemplate.Posts.Any())
             {
                 return null;
