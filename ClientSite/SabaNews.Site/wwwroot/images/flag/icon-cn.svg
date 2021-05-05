@@ -1,22 +1,22 @@
-<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d)">
-<path d="M13 18C17.9706 18 22 13.9706 22 9C22 4.02944 17.9706 0 13 0C8.02944 0 4 4.02944 4 9C4 13.9706 8.02944 18 13 18Z" fill="#D80027"/>
-<path d="M21.5 9C21.5 13.6944 17.6944 17.5 13 17.5C8.30558 17.5 4.5 13.6944 4.5 9C4.5 4.30558 8.30558 0.5 13 0.5C17.6944 0.5 21.5 4.30558 21.5 9Z" stroke="white"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D80027;}
+	.st1{fill:#FFDA44;}
+</style>
+<circle class="st0" cx="207" cy="397" r="256"/>
+<g>
+	<polygon class="st1" points="91.1,296.8 113.2,364.8 184.7,364.8 126.9,406.9 149,474.9 91.1,432.9 33.2,474.9 55.4,406.9 
+		-2.5,364.8 69,364.8 	"/>
+	<polygon class="st1" points="254.5,537.5 237.6,516.7 212.6,526.4 227.1,503.9 210.2,483 236.1,489.9 250.7,467.4 252.1,494.2 
+		278.1,501.1 253,510.7 	"/>
+	<polygon class="st1" points="288.1,476.5 296.1,450.9 274.2,435.4 301,435 308.9,409.4 317.6,434.8 344.4,434.5 322.9,450.5 
+		331.5,475.9 309.6,460.4 	"/>
+	<polygon class="st1" points="333.4,328.9 321.6,353 340.8,371.7 314.3,367.9 302.5,391.9 297.9,365.5 271.3,361.7 295.1,349.2 
+		290.5,322.7 309.7,341.4 	"/>
+	<polygon class="st1" points="255.2,255.9 253.2,282.6 278.1,292.7 252,299.1 250.1,325.9 236,303.1 209.9,309.5 227.2,289 
+		213,266.3 237.9,276.4 	"/>
 </g>
-<path d="M8.92539 5.47736L9.70234 7.86798H12.216L10.184 9.34806L10.9609 11.7387L8.92539 10.2621L6.88984 11.7387L7.67031 9.34806L5.63477 7.86798H8.14844L8.92539 5.47736Z" fill="#FFDA44"/>
-<path d="M14.6699 13.9394L14.0758 13.2082L13.1969 13.5492L13.7066 12.7582L13.1125 12.0234L14.023 12.266L14.5363 11.475L14.5855 12.4172L15.4996 12.6597L14.6172 12.9972L14.6699 13.9394Z" fill="#FFDA44"/>
-<path d="M15.8512 11.7949L16.1324 10.8949L15.3625 10.35L16.3047 10.3359L16.5824 9.43591L16.8883 10.3289L17.8305 10.3183L17.0746 10.8808L17.377 11.7738L16.607 11.2289L15.8512 11.7949Z" fill="#FFDA44"/>
-<path d="M17.4437 6.60585L17.0289 7.45311L17.7039 8.11053L16.7723 7.97694L16.3574 8.82069L16.1957 7.89257L15.2605 7.75897L16.0973 7.31952L15.9355 6.38788L16.6105 7.0453L17.4437 6.60585Z" fill="#FFDA44"/>
-<path d="M14.6945 4.03943L14.6242 4.9781L15.4996 5.33318L14.582 5.55818L14.5152 6.50037L14.0195 5.6988L13.102 5.9238L13.7102 5.2031L13.2109 4.40505L14.0863 4.76013L14.6945 4.03943Z" fill="#FFDA44"/>
-<defs>
-<filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-</defs>
 </svg>
