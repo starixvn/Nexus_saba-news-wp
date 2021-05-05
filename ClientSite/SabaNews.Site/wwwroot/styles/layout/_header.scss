@@ -109,8 +109,8 @@
                     }
 
                     .avatar-user {
-                        width: 2.5rem;
-                        height: 2.5rem;
+                        width: 3rem;
+                        height: 3rem;
                         background: $separator-color;
                         font-weight: bold;
                         color: $color-fff;
@@ -559,7 +559,7 @@
     @include tableMobile {
         display: block;
         position: absolute;
-        top: 2.1rem;
+        top: 2rem;
         left: 1.2rem;
         z-index: 9999;
     }
@@ -689,7 +689,7 @@
         @include tableMobile {
             border-right: none;
             padding-right: 0;
-            margin-left: .4rem;
+            margin-left: 1rem;
         }
 
         &:after {

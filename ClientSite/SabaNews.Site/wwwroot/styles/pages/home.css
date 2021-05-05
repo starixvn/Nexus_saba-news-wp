@@ -262,8 +262,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             .header .header-controls .header-auth-provider .auth-input .auth-provider {
               padding: 0; } }
           .header .header-controls .header-auth-provider .auth-input .auth-provider .avatar-user {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3rem;
+            height: 3rem;
             background: #e5e5e5;
             font-weight: bold;
             color: #fff;
@@ -577,7 +577,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .button-mobile {
       display: block;
       position: absolute;
-      top: 2.1rem;
+      top: 2rem;
       left: 1.2rem;
       z-index: 9999; } }
   @media only screen and (min-width: 1024px) and (max-width: 1366px) {
@@ -673,7 +673,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .languages-box .language-select {
         border-right: none;
         padding-right: 0;
-        margin-left: .4rem; } }
+        margin-left: 1rem; } }
     .languages-box .language-select:after {
       width: 0;
       height: 0;
