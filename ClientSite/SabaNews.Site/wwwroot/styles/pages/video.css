@@ -1265,7 +1265,7 @@ button {
     .play_video iframe {
       height: 22rem; } }
 
-.wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile {
+.wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile, .wapper.active-fixed .top-header {
   position: fixed;
   z-index: 10005;
   top: 0; }
