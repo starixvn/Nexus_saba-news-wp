@@ -277,13 +277,14 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               width: 100%;
               height: 100%; }
           .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname {
-            position: relative; }
+            position: relative;
+            padding-right: .8rem; }
             .header .header-controls .header-auth-provider .auth-input .auth-provider .auth-displayname:after {
-              border-left: 3px solid transparent;
-              border-right: 3px solid transparent;
-              border-top: 4px solid #757575;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 5px solid #757575;
               position: absolute;
-              top: 1.1rem;
+              top: 1rem;
               right: 0;
               content: ''; }
               @media screen and (max-width: 1024px) {
