@@ -508,6 +508,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               color: #F12F19; }
         .header .top-header .group-menu .nav-menu .active-main-menu {
           display: flex; }
+          @media (max-device-width: 767px) {
+            .header .top-header .group-menu .nav-menu .active-main-menu {
+              display: block; } }
       @media screen and (max-width: 1024px) {
         .header .top-header .group-menu .active-nav {
           width: 100%; } }
@@ -700,8 +703,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     z-index: 10000;
     display: block;
     overflow: auto;
-    /*height: calc(100% - 7rem);
-            padding-top: 7rem;*/ }
+    height: calc(100vh - 7rem);
+    top: 7rem;
+    bottom: 0; }
   .hidden-body .header .child-mobile-menu {
     display: none; } }
 
