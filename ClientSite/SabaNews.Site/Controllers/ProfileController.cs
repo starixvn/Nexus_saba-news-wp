@@ -91,7 +91,8 @@
                     LoginType = sessionService.User.LoginType,
                     SavedPosts = listPosts,
                     HandleSavePosts = newListSavePosts,
-                    Password = sessionService.User.Password
+                    Password = sessionService.User.Password,
+                    Photo =  sessionService.User.Photo
                 };
             }
             return Json(commandResult);
