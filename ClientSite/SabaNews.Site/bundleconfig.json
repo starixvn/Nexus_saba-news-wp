@@ -94,5 +94,29 @@
       "renameLocals": true
     },
     "sourceMap": false
+  },
+
+  {
+    "outputFileName": "wwwroot/minify/js/single.min.js",
+    "inputFiles": [
+      "wwwroot/js/profile/profile.js",
+      "wwwroot/js/comment.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/minify/js/update_profile.min.js",
+    "inputFiles": [
+      "wwwroot/js/profile/update_profile.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
   }
 ]

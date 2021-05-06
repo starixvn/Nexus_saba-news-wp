@@ -41,21 +41,6 @@
             }, 1000);
            
         });
-
-        $('.mobile-socical-header input[name=keyword]').on('keypress', function () {
-            var val = $(this).val();
-            $('.header .top-header').find('input[name=keyword]').val(val);
-        });
-
-        $('.mobile-socical-header .btn-search').on('click', function () {
-            var keyword = $(this).val();
-            if ($.trim(keyword) === '') {
-                e.preventDefault();
-                $(this).focus();
-                return false;
-            }
-            $(this).parent().submit();
-        });
     }
 
 
