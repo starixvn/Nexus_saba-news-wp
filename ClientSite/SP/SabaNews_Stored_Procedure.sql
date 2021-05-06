@@ -1115,7 +1115,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_by_id`(
 )
 BEGIN
 
-	DECLARE LoginType nvarchar(20);
+	DECLARE LoginType nvarchar(200);
     
     SELECT group_concat(s.type separator ',') INTO LoginType FROM wp_social_users s where ID = UserId;
     
