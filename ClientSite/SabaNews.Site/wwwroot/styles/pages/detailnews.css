@@ -1866,8 +1866,9 @@ img {
 .ul1 {
   margin-left: 2rem; }
 
-.p1 {
-  margin-top: 1.2rem; }
+.content .p1 {
+  margin-top: 1.2rem;
+  margin-bottom: 0; }
 
 @media screen and (min-width: 320px) {
   .detail-content-table ul {
