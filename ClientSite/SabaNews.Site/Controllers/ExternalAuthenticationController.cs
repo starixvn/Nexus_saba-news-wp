@@ -82,7 +82,6 @@
             {
                 CommandResult result = await externalAuthService.CreateUserAsync(userInfo);
                 user = await profileService.GetUserByIdAsync(userInfo.Id);
-                user.EmailConfirmed = true;
                 if (result.IsSuccessful)
                 {
                     sessionService.User = user;

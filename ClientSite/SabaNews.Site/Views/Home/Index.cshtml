@@ -33,7 +33,7 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">    
 	<div class="colums-main">
-        <div class="banner"><img src="~/images/banner.jpg"></div>
+        <div class="banner"><img loading="lazy" src="~/images/banner.jpg"></div>
 		<div class="block block-hot-news">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
@@ -97,7 +97,7 @@
 				</div>
 			</div>
 		</div>
-        <div class="banner-mobile"><img src="~/images/banner-mobile.jpg"></div>
+        <div class="banner-mobile"><img loading="lazy" src="~/images/banner-mobile.jpg"></div>
 		<div class="block block-video">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
