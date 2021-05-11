@@ -166,7 +166,7 @@
                 var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList() ;
                 var exceptCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
                 cateSlug = exceptCateSlug[0] ?? cateSlug;
-                cateName = exceptCateName[0] ?? cateName;
+                cateName = exceptCateName[0];
             }
             var Models = new SingleViewModel
             {
@@ -186,7 +186,7 @@
         }
         public static string GetMd5Hash(string input)
         { // Create a new instance of the MD5CryptoServiceProvider object.
-            MD5 md5Hasher = MD5.Create(); // Convert the input string to a byte array and compute the hash.
+            var md5Hasher = new SHA256Managed(); // Convert the input string to a byte array and compute the hash.
             byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
             // Create a new Stringbuilder to collect the bytes // and create a string.
             StringBuilder sBuilder = new StringBuilder(); // Loop through each byte of the hashed data // and format each one as a hexadecimal string.
@@ -233,7 +233,7 @@
 
         public static string MD5Hash(string input)
         {
-            using var md5 = MD5.Create();
+            using var md5 = new SHA256Managed();
             var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
             return Encoding.ASCII.GetString(result);
         }
