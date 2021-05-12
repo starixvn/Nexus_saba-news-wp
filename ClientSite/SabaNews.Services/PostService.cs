@@ -81,7 +81,7 @@
             return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postId)
+        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postID = 0)
         {
             var criteria = new GetTopPostsByCateSlugCriteria
             {
@@ -90,9 +90,9 @@
                 End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            if (postId != 0)
+            if (postID != 0)
             {
-                var excerptCurrentPost = posts.Where(item => item.ID != postId).ToList();
+                var excerptCurrentPost = posts.Where(item => item.ID != postID).ToList();
                 var totalRealItems = end - 1;
                 posts = excerptCurrentPost;
                 if (excerptCurrentPost.Count > totalRealItems)
@@ -129,35 +129,12 @@
                 {
                     post.Type = Constants.VideoPostType;
                 }
-                else if (post.CategoriesSlug.Contains(Constants.FootballSlug))
-                {
-                    post.Type = Constants.FootballPostType;
-                }
-                else if (post.CategoriesSlug.Contains(Constants.BasketballSlug))
-                {
-                    post.Type = Constants.BasketballPostType;
-                }
-                else if (post.CategoriesSlug.Contains(Constants.TennisSlug))
-                {
-                    post.Type = Constants.TennisPostType;
-                }
-                else
+                else 
                 {
                     post.Type = Constants.FootballPostType;
                 }
             }
             return post;
-        }
-
-        public async Task<IEnumerable<Post>> GetRelatedPostAsync(int ID)
-        {
-            var criteria = new GetRelatedPostCriteria
-            {
-                _ID = ID,
-                _Start = 0,
-                _End = 4
-            };
-            return await baseService.GetDataAsync<Post>(criteria);
         }
 
         public async Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID)
@@ -194,23 +171,6 @@
             var criteria = new GetPostsByTagCriteria
             {
                 _Tag = tag.Trim(),
-                _Start = start,
-                _End = end
-            };
-            var posts = await baseService.GetDataAsync<Post>(criteria);
-            var postTemplate = new PostTemplate
-            {
-                Posts = FormatData(posts).ToArray(),
-                TotalItems = criteria.TotalItems
-            };
-            return postTemplate;
-        }
-
-        public async Task<PostTemplate> GetPostByDateAsync(string date, int start, int end)
-        {
-            var criteria = new GetPostsByDateCriteria
-            {
-                _Date = date.Trim(),
                 _Start = start,
                 _End = end
             };

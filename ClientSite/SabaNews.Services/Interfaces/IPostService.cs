@@ -13,19 +13,15 @@
 
         Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0);
 
-        Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postId);
+        Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postID = 0);
 
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
-
-        Task<IEnumerable<Post>> GetRelatedPostAsync(int ID);
 
         Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID);
 
         Task<PostTemplate> SearchPostAsync(string keyword, int start, int end);
 
         Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end);
-
-        Task<PostTemplate> GetPostByDateAsync(string date, int start, int end);
 
         Task<IEnumerable<Post>> GetSavedPostsByUserID(string IDs);
 

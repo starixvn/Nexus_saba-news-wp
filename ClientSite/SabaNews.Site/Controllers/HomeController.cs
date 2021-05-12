@@ -163,10 +163,10 @@
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
                 var listCateName = post.CatesName.Split(',');
-                var exceptCateSlug = listCateSlug.Where(item => item != Constants.FootballSlug && item != Constants.VideoSlug).ToList() ;
-                var exceptCateName = listCateName.Where(item => item != Constants.Football && item != Constants.Video).ToList();
-                cateSlug = exceptCateSlug[0] ?? cateSlug;
-                cateName = exceptCateName[0];
+                var exceptCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList() ;
+                var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+                cateSlug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
+                cateName = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
             }
             var Models = new SingleViewModel
             {
@@ -292,34 +292,6 @@
                 ViewData = ViewData
             };
 
-            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Model);
-        }
-
-        [Route("date/{date}/page/{page}")]
-        [Route("date/{date}")]
-        public async Task<IActionResult> DateSearch(string date, int page = 1)
-        {
-            var start = (page - 1) * Constants.Perpage;
-            var postTemplate = await postService.GetPostByDateAsync(date, start, Constants.Perpage);
-            var posts = postTemplate.Posts;
-            var totalItems = postTemplate.TotalItems;
-            var ViewData = new ViewData
-            {
-                Title = date + " - Saba Sports",
-                HeadTitle = Constants.SearchTitle + " '" + date + "'",
-                Description = Constants.SearchTitle + " '" + date + "'",
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
-                DateSearch = date,
-                Controller = Constants.DateSearch
-            };
-            var Model = new CategoryViewModel
-            {
-                Posts = posts,
-                ViewData = ViewData
-            };
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
         }
