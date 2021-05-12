@@ -11,7 +11,7 @@
     using System;
     using System.Threading.Tasks;
     using System.Linq;
-
+    using SabaNews.Criteria;
 
     public class CommentController : Controller
     {
@@ -37,8 +37,21 @@
         public async Task<IActionResult> GetComments(int postID, string filterType, int page, bool getMore = false)
         {
             var start = (page - 1) * Constants.Perpage;
-            var commentTemplate = await commentService.GetCommentsAsync(postID, filterType, start, Constants.Perpage);
-            if (page == 1 && commentTemplate.Comments.Count() <= Constants.GetFiveItems && getMore)
+            var criteria = new CmtGetParentAndNumberChildrenCriteria
+            {
+                PostID = postID,
+                FilterType = filterType,
+                Start = start, 
+                End = Constants.Perpage
+            };
+            var comments = await commentService.GetCommentsAsync(criteria);
+            var commentTemplate = new CommentTemplate
+            {
+                Comments = comments,
+                TotalItems = criteria.TotalItems,
+                TotalParentCmt = criteria.TotalParentCmt
+            };
+            if (page == 1 && comments.Count() <= Constants.GetFiveItems && getMore)
             {
                 getMore = false;
             }
@@ -46,7 +59,7 @@
             {
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(commentTemplate.TotalParentCmt / (double)Constants.Perpage)
+                TotalPages = (int)Math.Ceiling(criteria.TotalParentCmt / (double)Constants.Perpage)
             };
             var Model = new CommentViewModel
             {

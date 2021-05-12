@@ -22,23 +22,10 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<CommentTemplate> GetCommentsAsync(int postID, string filterType, int start, int end)
+        public async Task<IEnumerable<Comment>> GetCommentsAsync(CmtGetParentAndNumberChildrenCriteria criteria)
         {
-            var criteria = new CmtGetParentAndNumberChildrenCriteria
-            {
-                PostID = postID,
-                FilterType = filterType,
-                Start = start,
-                End = end
-            };
             var comments = await baseService.GetDataAsync<Comment>(criteria);
-            var commentTemplate = new CommentTemplate
-            {
-                TotalItems = criteria.TotalItems,
-                TotalParentCmt = criteria.TotalParentCmt,
-                Comments = UpdateLikeComment(comments).ToList()
-            };
-            return commentTemplate;
+            return UpdateLikeComment(comments).ToList();
         }
 
         public async Task<IEnumerable<Comment>> GetCommentChildrenAsync(int postID, int commentID)

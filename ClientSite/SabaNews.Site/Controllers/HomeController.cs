@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
@@ -148,16 +149,13 @@
             var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
             var cateName = post.CatesName;
             var cateSlug = post.CategoriesSlug;
-            var isSave = false;
+            SavePost savePost = null;
             var isLogin = sessionService.User != null;
             if (isLogin)
             {
                 var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-                var savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
-                if (savePost != null)
-                {
-                    isSave = true;
-                }
+                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+               
             }
             if (cateSlug.Contains(","))
             {
@@ -173,7 +171,7 @@
                 SinglePost = post,
                 RecentPosts = recentPosts.Posts,
                 IsLogin = isLogin,
-                isSave = isSave
+                SavePost = savePost
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";

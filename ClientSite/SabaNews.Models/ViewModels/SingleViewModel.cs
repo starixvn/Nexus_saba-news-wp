@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel
 {
+    using SabaNews.Core.Models;
     using SabaNews.Models.Comment;
     using System.Collections.Generic;
 
@@ -10,6 +11,6 @@
         public IEnumerable<Post> RecentPosts { get; set; }
         public ViewData ViewData { get; set; }
         public bool IsLogin { get; set; }
-        public bool isSave { get; set; }
+        public SavePost SavePost { get; set; }
     }
 }
