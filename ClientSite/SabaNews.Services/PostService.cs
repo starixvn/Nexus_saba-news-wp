@@ -123,30 +123,10 @@
                 {
                     return post;
                 }
-                post.Type = Constants.FootballPostType;
                 var isVideo = await CheckTypeCategoryAsync(Constants.VideoSlug, post.ID);
-                if (isVideo)
-                {
-                    post.Type = Constants.VideoPostType;
-                }
-                else 
-                {
-                    post.Type = Constants.FootballPostType;
-                }
+                post.Type = isVideo ? Constants.VideoPostType : Constants.FootballPostType;
             }
             return post;
-        }
-
-        public async Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID)
-        {
-            var criteria = new GetRandomPostCategoriesCriteria
-            {
-                _Categories = categories,
-                _ID = ID
-            };
-            var posts = await baseService.GetDataAsync<Post>(criteria);
-
-            return FormatData(posts);
         }
 
         public async Task<PostTemplate> SearchPostAsync(string keyword, int start, int end)

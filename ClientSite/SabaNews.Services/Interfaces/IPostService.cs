@@ -17,8 +17,6 @@
 
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 
-        Task<IEnumerable<Post>> GetRandomReplatedPostAsync(string categories, int ID);
-
         Task<PostTemplate> SearchPostAsync(string keyword, int start, int end);
 
         Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end);
