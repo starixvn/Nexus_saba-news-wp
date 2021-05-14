@@ -37,13 +37,13 @@
             return FormatData(posts).ToList();
         }
 
-        public async Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end)
+        public async Task<PostTemplate> GetPostsByCateSlugAsync(PostParam postParam)
         {
             var criteria = new GetPostsByCateSlugCriteria
             {
-                _CategorySlug = cateSlug.Trim(),
-                _Start = start,
-                _End = end
+                _CategorySlug = postParam.Slug,
+                _Start = postParam.Start,
+                _End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
             var postTemplate = new PostTemplate
@@ -54,23 +54,23 @@
             return postTemplate;
         }
 
-        public async Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0)
+        public async Task<PostTemplate> GetRecentPostsAsync(PostParam postParam)
         {
             var criteria = new GetRecentPostsCriteria
             {
-                ExceptSlug = exceptCategorySlug.Trim(),
-                Start = start,
-                End = end
+                ExceptSlug = postParam.Slug.Trim(),
+                Start = postParam.Start,
+                End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            if (postID != 0)
+            if (postParam.PostID != 0)
             {
-                var excerptCurrentPost = posts.Where(item => item.ID != postID).ToList();
-                var totalRealItems = end - 1;
+                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
+                var totalRealItems = postParam.End - 1;
                 posts = excerptCurrentPost;
                 if (excerptCurrentPost.Count > totalRealItems)
                 {
-                    posts = excerptCurrentPost.Skip(start).Take(totalRealItems).ToList();
+                    posts = excerptCurrentPost.Skip(postParam.Start).Take(totalRealItems).ToList();
                 }
             }
             var postTemplate = new PostTemplate
@@ -81,23 +81,23 @@
             return postTemplate;
         }
 
-        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postID = 0)
+        public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(PostParam postParam)
         {
             var criteria = new GetTopPostsByCateSlugCriteria
             {
-                CateSlug = cateSlug.Trim(),
-                Start = start,
-                End = end
+                CateSlug = postParam.Slug.Trim(),
+                Start = postParam.Start,
+                End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            if (postID != 0)
+            if (postParam.PostID != 0)
             {
-                var excerptCurrentPost = posts.Where(item => item.ID != postID).ToList();
-                var totalRealItems = end - 1;
+                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
+                var totalRealItems = postParam.End - 1;
                 posts = excerptCurrentPost;
                 if (excerptCurrentPost.Count > totalRealItems)
                 {
-                    posts = excerptCurrentPost.Skip(start).Take(totalRealItems).ToList();
+                    posts = excerptCurrentPost.Skip(postParam.Start).Take(totalRealItems).ToList();
                 }
             }
 

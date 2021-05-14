@@ -20,7 +20,13 @@
 
         public async Task<PostViewModel> GetHomePageViewModel()
         {
-            var newPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetFourItems);
+            var paramGetRecent = new PostParam
+            {
+                Slug = Constants.VideoSlug,
+                Start = Constants.FromFirstItem,
+                End = Constants.GetFourItems
+            };
+            var newPosts = await postService.GetRecentPostsAsync(paramGetRecent);
             var footballPosts = await postService.GetPostsBySlugAsync(Constants.FootballSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var basketballPosts = await postService.GetPostsBySlugAsync(Constants.BasketballSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var tennisPosts = await postService.GetPostsBySlugAsync(Constants.TennisSlug, Constants.FromFirstItem, Constants.GetFourItems);
@@ -55,9 +61,17 @@
                 controller = "video";
             }
             var start = (page - 1) * perPage;
+            var paramGetRecent = new PostParam
+            {
+                Slug = Constants.VideoSlug,
+                Start = start,
+                End = perPage
+            };
+            var paramGetCategory = paramGetRecent;
+            paramGetCategory.Slug = slug;
             var postTemplate = slug == Constants.NewPostSlug ? 
-                await postService.GetRecentPostsAsync(Constants.VideoSlug, start, perPage) : 
-                await postService.GetPostsByCateSlugAsync(slug, start, perPage);
+                await postService.GetRecentPostsAsync(paramGetRecent) : 
+                await postService.GetPostsByCateSlugAsync(paramGetCategory);
             
 
             if (!postTemplate.Posts.Any())

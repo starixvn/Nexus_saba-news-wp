@@ -9,11 +9,11 @@
     {
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
 
-        Task<PostTemplate> GetPostsByCateSlugAsync(string cateSlug, int start, int end);
+        Task<PostTemplate> GetPostsByCateSlugAsync(PostParam postParam);
 
-        Task<PostTemplate> GetRecentPostsAsync(string exceptCategorySlug, int start, int end, int postID = 0);
+        Task<PostTemplate> GetRecentPostsAsync(PostParam postParam);
 
-        Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(string cateSlug, int start, int end, int postID = 0);
+        Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(PostParam postParam);
 
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 

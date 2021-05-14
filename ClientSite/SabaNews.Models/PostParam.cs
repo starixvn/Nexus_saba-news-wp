@@ -2,8 +2,10 @@
 {
     public class PostParam
     {
-        public int Category { get; set; }
+        public string Slug  { get; set; }
         public int Start { get; set; }
         public int End { get; set; }
+        public int PostID { get; set; } = 0;
+        public int TotalIItems { get; set; }
     }
 }

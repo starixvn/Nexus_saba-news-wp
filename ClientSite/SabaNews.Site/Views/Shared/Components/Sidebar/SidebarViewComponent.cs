@@ -24,14 +24,28 @@
             if (string.IsNullOrWhiteSpace(cateSlug))
             {
                 var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postTemplate = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, end, postID);
+                var postParam = new PostParam
+                {
+                    Slug = Constants.VideoSlug,
+                    Start = Constants.FromFirstItem,
+                    End = end,
+                    PostID = postID
+                };
+                var postTemplate = await postService.GetRecentPostsAsync(postParam);
                 posts = postTemplate.Posts;
                 ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
             }
             else
             {
                 var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                posts = await postService.GetTopPostsByCateSlugAsync(cateSlug, Constants.FromFirstItem, end, postID);
+                var postParam = new PostParam
+                {
+                    Slug = cateSlug,
+                    Start = Constants.FromFirstItem,
+                    End = end,
+                    PostID = postID
+                };
+                posts = await postService.GetTopPostsByCateSlugAsync(postParam);
                 
                 ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
             }

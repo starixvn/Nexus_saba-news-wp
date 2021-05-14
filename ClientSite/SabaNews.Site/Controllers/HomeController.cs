@@ -145,8 +145,14 @@
                 var newText = $"<p data-z=\"{hash}\">{subString[randomIndex]}";
                 post.PostContent = post.PostContent.Replace(oldText, newText);
             }
-
-            var recentPosts = await postService.GetRecentPostsAsync(Constants.VideoSlug, Constants.FromFirstItem, Constants.GetElevenItems, post.ID);
+            var postParam = new PostParam
+            {
+                Slug = Constants.VideoSlug,
+                Start = Constants.FromFirstItem,
+                End = Constants.GetElevenItems,
+                PostID = post.ID
+            };
+            var recentPosts = await postService.GetRecentPostsAsync(postParam);
             var cateName = post.CatesName;
             var cateSlug = post.CategoriesSlug;
             SavePost savePost = null;
