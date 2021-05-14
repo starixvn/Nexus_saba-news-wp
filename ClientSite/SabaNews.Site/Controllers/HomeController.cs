@@ -163,7 +163,7 @@
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
                
             }
-            if (cateSlug.Contains(","))
+            if (!string.IsNullOrEmpty(cateSlug) && cateSlug.Contains(","))
             {
                 var listCateSlug = post.CategoriesSlug.Split(',');
                 var listCateName = post.CatesName.Split(',');

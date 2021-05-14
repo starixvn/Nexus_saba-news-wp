@@ -58,9 +58,10 @@
         {
             var criteria = new GetRecentPostsCriteria
             {
-                ExceptSlug = postParam.Slug.Trim(),
                 Start = postParam.Start,
-                End = postParam.End
+                End = postParam.End,
+                ExceptSlug = postParam.Slug.Trim()
+               
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
             if (postParam.PostID != 0)
@@ -90,10 +91,11 @@
                 End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+
             if (postParam.PostID != 0)
             {
-                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
                 var totalRealItems = postParam.End - 1;
+                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
                 posts = excerptCurrentPost;
                 if (excerptCurrentPost.Count > totalRealItems)
                 {
