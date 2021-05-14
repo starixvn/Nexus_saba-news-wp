@@ -120,6 +120,8 @@
                 var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                 post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
+                post.CategoriesSlug ??= "";
+                post.CatesName ??= "";
 
                 if (postType == Constants.pageType)
                 {
