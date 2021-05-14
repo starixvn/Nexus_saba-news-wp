@@ -67,7 +67,12 @@
                 Start = start,
                 End = perPage
             };
-            var paramGetCategory = paramGetRecent;
+            var paramGetCategory = new PostParam
+            { 
+                Slug = slug,
+                Start = start,
+                End = perPage
+            };
             paramGetCategory.Slug = slug;
             var postTemplate = slug == Constants.NewPostSlug ? 
                 await postService.GetRecentPostsAsync(paramGetRecent) : 
