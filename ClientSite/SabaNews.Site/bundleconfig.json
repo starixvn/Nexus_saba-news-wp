@@ -49,14 +49,21 @@
   },
 
   {
-        "outputFileName": "wwwroot/minify/styles/profile.min.css",
-        "inputFiles": [
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/profile.css"
-        ]
-    },
+    "outputFileName": "wwwroot/minify/styles/profile.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/profile.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/minify/styles/euro2020.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/euro2020.css"
+    ]
+  },
 
-    {
+  {
     "outputFileName": "wwwroot/minify/js/site.min.js",
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.min.js",

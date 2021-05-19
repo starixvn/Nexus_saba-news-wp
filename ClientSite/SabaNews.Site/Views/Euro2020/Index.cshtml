@@ -1,0 +1,312 @@
+﻿@section Title{
+	Euro 2020
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/euro2020.min.css" asp-append-version="true">
+}
+
+@(await Component.InvokeAsync("Menu"))
+
+<section class="main">
+	<div class="container">
+		<div class="block block-main">
+			<h2 class="block__title"><a>Euro 2020 </a></h2>
+			<div class="block__content">
+				<h4>Euro 2020</h4>
+
+				<div class="euro-standbar">
+					<div class="eu-capt">
+						<a class="caption" href="/bang-xep-hang-euro">Bảng xếp hạng</a>
+					</div>
+					<div id="StandingSlide" class="eu-swiper">
+						<a class="prev" href="#"></a>
+						<a class="next activ" href="#"></a>
+						<div class="swiping">
+							<ul class="nav" style="margin-left: 0px;">
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng A</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-ita"></span>
+											</div>
+											<div class="fcol team">Italia</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-sui"></span>
+											</div>
+											<div class="fcol team">Thụy Sỹ</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-tur"></span>
+											</div>
+											<div class="fcol team">Thổ Nhĩ Kỳ</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-wal"></span>
+											</div>
+											<div class="fcol team">Wales</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng B</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-bel"></span>
+											</div>
+											<div class="fcol team">Bỉ</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-den"></span>
+											</div>
+											<div class="fcol team">Đan Mạch</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-fin"></span>
+											</div>
+											<div class="fcol team">Phần Lan</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-rus"></span>
+											</div>
+											<div class="fcol team">Nga</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng C</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-aut"></span>
+											</div>
+											<div class="fcol team">Áo</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-ned"></span>
+											</div>
+											<div class="fcol team">Hà Lan</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-mkd"></span>
+											</div>
+											<div class="fcol team">Bắc Macedonia</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-ukr"></span>
+											</div>
+											<div class="fcol team">Ukraine</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng D</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-cro"></span>
+											</div>
+											<div class="fcol team">Croatia</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-cze"></span>
+											</div>
+											<div class="fcol team">Czech</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-eng"></span>
+											</div>
+											<div class="fcol team">Anh</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-sco"></span>
+											</div>
+											<div class="fcol team">Scotland</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng E</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-pol"></span>
+											</div>
+											<div class="fcol team">Ba Lan</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-svk"></span>
+											</div>
+											<div class="fcol team">Slovakia</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-esp"></span>
+											</div>
+											<div class="fcol team">Tây Ban Nha</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-swe"></span>
+											</div>
+											<div class="fcol team">Thụy Điển</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="eu-board fixtbl">
+										<div class="frow fcap">
+											<div class="fcol capt">Bảng F</div>
+											<div class="fcol count">Trận</div>
+											<div class="fcol count">+/-</div>
+											<div class="fcol point">Điểm</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-fra"></span>
+											</div>
+											<div class="fcol team">Pháp</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-ger"></span>
+											</div>
+											<div class="fcol team">Đức</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-hun"></span>
+											</div>
+											<div class="fcol team">Hungary</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+										<div class="frow">
+											<div class="fcol flg">
+												<span class="flag-por"></span>
+											</div>
+											<div class="fcol team">Bồ Đào Nha</div>
+											<div class="fcol count">0</div>
+											<div class="fcol count">0</div>
+											<div class="fcol point">0</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="eu-more"><a href="/bang-xep-hang-euro">Xem chi tiết</a></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</section>

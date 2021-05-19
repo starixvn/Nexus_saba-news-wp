@@ -30,6 +30,9 @@
     {
         "outputFile": "wwwroot/styles/pages/profile.css",
         "inputFile": "wwwroot/styles/pages/profile.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/euro2020.css",
+    "inputFile": "wwwroot/styles/pages/euro2020.scss"
     }
-
 ]

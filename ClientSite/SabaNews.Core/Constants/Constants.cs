@@ -102,5 +102,8 @@
         public const string ProfileSiteName = " trên SABA Sports";
         public const string EmptyProfile = "EmptyProfile";
         public const string WrongPassword = "Mật khẩu cũ không đúng";
+
+        public const string Euro2020Slug = "euro-2020";
+        public const string Euro2020Ranking = "euro-2020-ranking";
     }
 }

@@ -121,6 +121,10 @@
 								VideoParentId = menu.ID;
 								link = Url.Action("Video", "Home", new { slug = (int?)null });
 							}
+							else if (menu.Slug == Constants.Euro2020Slug)
+							{
+								link = Url.Action("index", "Euro2020");
+							}
 							if (menu.CatId != Constants.Home)
 							{
 								var activeMenu = ( ViewData["CategorySlug"] != null && menu.Slug == ViewData["CategorySlug"].ToString()) ? "active" : "";
