@@ -6,6 +6,24 @@
 	<link rel="stylesheet" href="~/minify/styles/euro2020.min.css" asp-append-version="true">
 }
 
+@section Scripts{
+	<script>
+		var Swipes = new Swiper('.swiper-container', {
+			loop: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+	</script>
+}
+
 @(await Component.InvokeAsync("Menu"))
 
 <section class="main">
@@ -305,8 +323,58 @@
 					</div>
 					<div class="eu-more"><a href="/bang-xep-hang-euro">Xem chi tiết</a></div>
 				</div>
-				
+
+
+				<div class="block__content flex-video">
+					<div class="swiper-video">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="img-item">
+										@{
+											<picture>
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/lebron-james-donald-trump-gty-ap-jt-170923_16x9_1600-300x300.jpg" type="image/webp">
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/lebron-james-donald-trump-gty-ap-jt-170923_16x9_1600-300x300.jpg" type="image/jpeg">
+												<img loading="lazy" src="https://saba-reports-upload.nexdev.net/2020/08/lebron-james-donald-trump-gty-ap-jt-170923_16x9_1600-300x300.jpg" alt="">
+											</picture>
+										}
+									</div>
+								</div>
+
+								<div class="swiper-slide">
+									<div class="img-item">
+										@{
+											<picture>
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/GettyImages-645907886-300x300.jpg" type="image/webp">
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/GettyImages-645907886-300x300.jpg" type="image/jpeg">
+												<img loading="lazy" src="https://saba-reports-upload.nexdev.net/2020/08/GettyImages-645907886-300x300.jpg" alt="">
+											</picture>
+										}
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="img-item">
+										@{
+											<picture>
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/Ee1miU-XgAEkkGA-300x300.jpg" type="image/webp">
+												<source srcset="https://saba-reports-upload.nexdev.net/2020/08/Ee1miU-XgAEkkGA-300x300.jpg" type="image/jpeg">
+												<img loading="lazy" src="https://saba-reports-upload.nexdev.net/2020/08/Ee1miU-XgAEkkGA-300x300.jpg" alt="">
+											</picture>
+										}
+									</div>
+								</div>
+							</div>
+							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+							<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
-	</div>
 </section>
+
+<script>
+
+</script>

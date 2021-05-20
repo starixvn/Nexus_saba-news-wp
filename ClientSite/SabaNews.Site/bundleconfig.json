@@ -59,7 +59,8 @@
     "outputFileName": "wwwroot/minify/styles/euro2020.min.css",
     "inputFiles": [
       "wwwroot/styles/vendor/icomoon/style.css",
-      "wwwroot/styles/pages/euro2020.css"
+      "wwwroot/styles/pages/euro2020.css",
+      "wwwroot/lib/swipper/css/swiper.min.css"
     ]
   },
 
