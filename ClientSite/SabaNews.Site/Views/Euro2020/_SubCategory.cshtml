@@ -11,10 +11,10 @@
 		<a href="@Url.Action("Team", "Euro2020")">@Constants.Euro2020Team</a>
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
-		<a href="@Url.Action(Constants.Euro2020ScheduleSlug, "Euro2020")">@Constants.Euro2020Schedule</a>
+		<a href="@Url.Action("Schedule", "Euro2020")">@Constants.Euro2020Schedule</a>
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
-		<a href="@Url.Action(Constants.Euro2020RankingSlug, "Euro2020")">@Constants.Euro2020Ranking</a>
+		<a href="@Url.Action("Ranking", "Euro2020")">@Constants.Euro2020Ranking</a>
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
 		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Video</a>

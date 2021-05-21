@@ -9,21 +9,6 @@
 }
 
 @section Scripts{
-	<script>
-		var Swipes = new Swiper('.swiper-container', {
-			loop: true,
-			slidesPerView: 1,
-			spaceBetween: 0,
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-		});
-	</script>
 }
 
 @(await Component.InvokeAsync("Menu"))
@@ -34,11 +19,11 @@
 			<h2 class="block__title"><a>Euro 2020 </a></h2>
 			@await Html.PartialAsync("_SubCategory")
 			<div class="block__content">
-				<h4>Euro 2020</h4>
+				<h4>@ViewData["Title"]</h4>
 
 				<div class="euro-standbar">
 					<div class="eu-capt">
-						<a class="caption" href="/bang-xep-hang-euro">Bảng xếp hạng</a>
+						<a class="caption" href="/bang-xep-hang-euro">@Constants.Euro2020Schedule</a>
 					</div>
 					<div id="StandingSlide" class="eu-swiper">
 						<a class="prev" href="#"></a>

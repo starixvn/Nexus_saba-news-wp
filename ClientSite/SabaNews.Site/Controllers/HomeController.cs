@@ -173,7 +173,7 @@
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
-            ViewData["video"] = post.Type == Constants.VideoPostType;
+            ViewData["video"] = post.Type == Constants.VideoPostType ;
             ViewData["cateSlug"] = cateInfo.Item1.Trim();
             ViewData["cateName"] = cateInfo.Item2.Trim();
             ViewData["controller"] = cateInfo.Item3.Trim();
@@ -328,6 +328,10 @@
             {
                 name = Constants.Euro2020;
                 controller = Constants.Euro2020Controller;
+            }
+            if (slug == Constants.Euro2020Slug)
+            {
+                slug = "";
             }
             return Tuple.Create(slug, name, controller);
         }

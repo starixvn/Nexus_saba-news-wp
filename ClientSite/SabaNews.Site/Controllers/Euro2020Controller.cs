@@ -22,6 +22,8 @@ namespace SabaNews.Site.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["CategorySlug"] = Constants.Euro2020Slug;
+            ViewData["Title"] = "Tổng quan";
+            ViewData["CategorySlug"] = Constants.Euro2020Slug;
             return View();
         }
 
@@ -55,6 +57,24 @@ namespace SabaNews.Site.Controllers
             ViewData["ActiveSubCate"] = Constants.Euro2020VideoSlug;
             ViewData["Title"] = Constants.Euro2020Video;
             return View(postTemplate.Posts);
+        }
+
+        [Route("/euro-2020/lich-thi-dau-euro-2020")]
+        public async Task<IActionResult> Schedule()
+        {
+            ViewData["CategorySlug"] = Constants.Euro2020Slug;
+            ViewData["ActiveSubCate"] = Constants.Euro2020ScheduleSlug;
+            ViewData["Title"] = Constants.Euro2020Schedule;
+            return View();
+        }
+
+        [Route("/euro-2020/bang-xep-hang-euro-2020")]
+        public async Task<IActionResult> Ranking()
+        {
+            ViewData["CategorySlug"] = Constants.Euro2020Slug;
+            ViewData["ActiveSubCate"] = Constants.Euro2020RankingSlug;
+            ViewData["Title"] = Constants.Euro2020Ranking;
+            return View();
         }
     }
 }

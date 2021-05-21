@@ -32,6 +32,7 @@
 
 @{
 	var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
+    var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
 	var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
 	if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
 	{
@@ -78,7 +79,7 @@
                     </a>
                 </li>
 				<li class="item-social icon-mobile">
-					@if (Convert.ToBoolean(ViewData["video"]))
+					@if (isVideoReturn)
 					{
 						<a href="@Url.Action("Video", "Home")"
 						   class="item intent"
@@ -128,7 +129,7 @@
             <div class="main-social">
                 <ul class="social left-social">
 					<li class="item-social">
-						@if (Convert.ToBoolean(ViewData["video"]))
+						@if (isVideoReturn)
 						{
 							<a href="@Url.Action("Video", "Home")"
 							   class="item intent"
