@@ -73,6 +73,7 @@
         public const string ViewDataKeyword = "keyword";
         public const string ViewDataTag = "tag";
         public const string ViewDataDate = "Date";
+        public const string ViewDataActiveSubCate = "ActiveSubCate";
         public const string ViewUrl = "Url";
         public const string Empty = "";
         public const string ViewRSSUrl = "RSSUrl";
@@ -103,6 +104,7 @@
         public const string EmptyProfile = "EmptyProfile";
         public const string WrongPassword = "Mật khẩu cũ không đúng";
         public const string HotCategory = "euro-2020";
+        public const string TemplatePost = "template";
 
         public const string Euro2020Controller = "Euro2020";
         public const string Euro2020 = "Euro 2020";

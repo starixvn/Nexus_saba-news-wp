@@ -1,7 +1,12 @@
 ﻿@using SabaNews.Core.Constants;
+<meta name="description" content='@Model.ViewData.Description' />
+<meta name="robots" content="noarchive">
+<meta property="og:description" content='@Model.Category.OgDescription' />
+<meta property="og:title" content='@Model.Category.OgTitle' />
+<meta property="og:image" content='@Model.Category.OgImage' />
 
 @section Title{
-	Euro 2020
+	@Model.ViewData.Title
 }
 
 @section Styles{
@@ -16,10 +21,35 @@
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>Euro 2020 </a></h2>
+			<h2 class="block__title"><a>@Model.ViewData.HeadTitle </a></h2>
 			@await Html.PartialAsync("_SubCategory")
 			<div class="block__content">
-				<h4>@ViewData["Title"]</h4>
+				<h4>@Model.ViewData.HeadTitle</h4>
+
+				<div class="container">
+					<div class="block__content">
+						@foreach (var post in Model.Posts)
+						{
+							<div class="card-vertical">
+								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
+									@{
+										short flagSize = ImageWidth.Width300;
+										string flagImage = post.GetImageBySize(flagSize);
+
+										<picture>
+											<source srcset="@Url.Content(flagImage)" type="image/webp" class="img-res">
+											<source srcset="@Url.Content(flagImage)" type="image/jpeg" class="img-res">
+											<img loading="lazy" src="@Url.Content(flagImage)" alt="@post.PostTitle" class="img-res img-block">
+										</picture>
+									}
+								</a>
+								<div class="group group-mobile">
+									<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@(post.PostSeoTitle != "" ? post.PostSeoTitle : post.PostTitle) </a>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
 
 				<div class="euro-standbar">
 					<div class="eu-capt">

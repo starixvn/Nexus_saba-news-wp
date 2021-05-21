@@ -1,7 +1,13 @@
 ﻿@using SabaNews.Core.Constants;
 
+<meta name="description" content='@Model.ViewData.Description' />
+<meta name="robots" content="noarchive">
+<meta property="og:description" content='@Model.Category.OgDescription' />
+<meta property="og:title" content='@Model.Category.OgTitle' />
+<meta property="og:image" content='@Model.Category.OgImage' />
+
 @section Title{
-	Euro 2020
+	@Model.ViewData.Title
 }
 
 @section Styles{
@@ -9,6 +15,7 @@
 }
 
 @section Scripts{
+	<script src="~/js/euro2020/euro2020.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("Menu"))
@@ -16,10 +23,20 @@
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>Euro 2020 </a></h2>
+			<h2 class="block__title"><a>@Model.ViewData.HeadTitle </a></h2>
 			@await Html.PartialAsync("_SubCategory")
 			<div class="block__content">
-				<h4>@ViewData["Title"]</h4>
+				<h4>@Model.ViewData.HeadTitle</h4>
+				<ul class="sub-category">
+					@foreach (var post in Model.Posts)
+					{
+						<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data">@post.PostTitle</a></li>
+					}
+				</ul>
+
+				<div class="post_content">
+					<div>@Model.Posts[0].PostContent</div>
+				</div>
 			</div>
 		</div>
 	</div>

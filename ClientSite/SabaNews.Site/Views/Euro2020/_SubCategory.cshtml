@@ -4,7 +4,7 @@
 	ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] != null ? ViewData["ActiveSubCate"] : "";
 }
 <ul class="sub-category">
-	<li class="sub-item "><a href="@Url.Action(Constants.Euro2020HotNewsSlug, "Euro2020")">
+	<li class="sub-item "><a href="@Url.Action("Index", "Euro2020")">
 		@Constants.Euro2020HotNews</a>
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">

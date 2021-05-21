@@ -329,7 +329,7 @@
                 name = Constants.Euro2020;
                 controller = Constants.Euro2020Controller;
             }
-            if (slug == Constants.Euro2020Slug)
+            if (slug.Trim() == Constants.Euro2020Slug)
             {
                 slug = "";
             }
