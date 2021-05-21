@@ -102,8 +102,21 @@
         public const string ProfileSiteName = " trên SABA Sports";
         public const string EmptyProfile = "EmptyProfile";
         public const string WrongPassword = "Mật khẩu cũ không đúng";
+        public const string HotCategory = "euro-2020";
+
+        public const string Euro2020Controller = "Euro2020";
+        public const string Euro2020 = "Euro 2020";
+        public const string Euro2020HotNews = "Tín nóng";
+        public const string Euro2020Team = "Đội tuyển";
+        public const string Euro2020Schedule = "Lịch thi đấu";
+        public const string Euro2020Ranking = "Bảng xếp hạng";
+        public const string Euro2020Video = "Video";
 
         public const string Euro2020Slug = "euro-2020";
-        public const string Euro2020Ranking = "euro-2020-ranking";
+        public const string Euro2020RankingSlug = "bang-xep-hang-euro-2020";
+        public const string Euro2020HotNewsSlug = "tin-nong-euro-2020";
+        public const string Euro2020TeamSlug = "doi-tuyen-euro-2020";
+        public const string Euro2020ScheduleSlug = "lich-thi-dau-euro-2020";
+        public const string Euro2020VideoSlug = "video-euro-2020";
     }
 }

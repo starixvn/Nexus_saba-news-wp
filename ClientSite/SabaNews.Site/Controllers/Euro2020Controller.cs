@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SabaNews.Core.Constants;
+using SabaNews.Models;
 using SabaNews.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,42 @@ namespace SabaNews.Site.Controllers
             this.postService = postService;
         }
         [Route("/euro-2020/")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewData["CategorySlug"] = Constants.Euro2020Slug;
             return View();
+        }
+
+        [Route("/euro-2020/doi-tuyen-euro-2020")]
+        public async Task<IActionResult> Team()
+        {
+            var postParam = new PostParam
+            {
+                Start = 0,
+                End = Constants.Total,
+                Slug = Constants.Euro2020TeamSlug
+            };
+            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            ViewData["CategorySlug"] = Constants.Euro2020Slug;
+            ViewData["ActiveSubCate"] = Constants.Euro2020TeamSlug;
+            ViewData["Title"] = Constants.Euro2020Team;
+            return View(postTemplate.Posts);
+        }
+
+        [Route("/euro-2020/video-euro-2020")]
+        public async Task<IActionResult> Video()
+        {
+            var postParam = new PostParam
+            {
+                Start = 0,
+                End = Constants.Total,
+                Slug = Constants.Euro2020VideoSlug
+            };
+            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            ViewData["CategorySlug"] = Constants.Euro2020Slug;
+            ViewData["ActiveSubCate"] = Constants.Euro2020VideoSlug;
+            ViewData["Title"] = Constants.Euro2020Video;
+            return View(postTemplate.Posts);
         }
     }
 }

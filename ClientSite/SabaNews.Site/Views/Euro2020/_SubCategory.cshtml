@@ -1,0 +1,22 @@
+﻿@using SabaNews.Core.Constants;
+
+@{
+	ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] != null ? ViewData["ActiveSubCate"] : "";
+}
+<ul class="sub-category">
+	<li class="sub-item "><a href="@Url.Action(Constants.Euro2020HotNewsSlug, "Euro2020")">
+		@Constants.Euro2020HotNews</a>
+	</li>
+	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
+		<a href="@Url.Action("Team", "Euro2020")">@Constants.Euro2020Team</a>
+	</li>
+	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
+		<a href="@Url.Action(Constants.Euro2020ScheduleSlug, "Euro2020")">@Constants.Euro2020Schedule</a>
+	</li>
+	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
+		<a href="@Url.Action(Constants.Euro2020RankingSlug, "Euro2020")">@Constants.Euro2020Ranking</a>
+	</li>
+	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
+		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Video</a>
+	</li>
+</ul>

@@ -31,7 +31,12 @@
 
 
 @{
-    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
+	var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
+	var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
+	if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
+	{
+		linkReturn = "/euro-2020/" + ViewData["cateSlug"];
+	}
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -82,7 +87,7 @@
 						</a>
 					}
 					else { 
-                        <a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
+                        <a href="@linkReturn"
 						   class="item intent"
 						   title="@ViewResources.Back @ViewData["cateName"]">
 							<i class="icon-social icon-back"></i>
@@ -133,7 +138,7 @@
 						}
 						else
 						{
-							<a href="@Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] })"
+							<a href="@linkReturn"
 							   class="item intent"
 							   title="@ViewResources.Back @ViewData["cateName"]">
 								<i class="icon-social icon-back"></i>

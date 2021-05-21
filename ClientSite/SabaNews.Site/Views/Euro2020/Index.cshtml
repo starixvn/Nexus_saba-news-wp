@@ -1,4 +1,6 @@
-﻿@section Title{
+﻿@using SabaNews.Core.Constants;
+
+@section Title{
 	Euro 2020
 }
 
@@ -30,6 +32,7 @@
 	<div class="container">
 		<div class="block block-main">
 			<h2 class="block__title"><a>Euro 2020 </a></h2>
+			@await Html.PartialAsync("_SubCategory")
 			<div class="block__content">
 				<h4>Euro 2020</h4>
 

@@ -1,0 +1,72 @@
+﻿@using SabaNews.Core.Constants;
+
+@section Title{
+	Euro 2020
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/euro2020.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+	<script>
+		var Swipes = new Swiper('.swiper-container', {
+			loop: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+	</script>
+}
+
+@(await Component.InvokeAsync("Menu"))
+
+<section class="main">
+	<div class="container">
+		<div class="block block-main">
+			<h2 class="block__title"><a>Euro 2020 </a></h2>
+			@await Html.PartialAsync("_SubCategory")
+			<div class="block__content">
+				<h4>@ViewData["Title"]</h4>
+
+
+				<div class="container">
+					<div class="block__content">
+						@foreach (var post in Model)
+						{
+							<div class="card-vertical">
+								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
+									@{
+										short flagSize = ImageWidth.Width300;
+										string flagImage = post.GetImageBySize(flagSize);
+
+										<picture>
+											<source srcset="@Url.Content(flagImage)" type="image/webp" class="img-res">
+											<source srcset="@Url.Content(flagImage)" type="image/jpeg" class="img-res">
+											<img loading="lazy" src="@Url.Content(flagImage)" alt="@post.PostTitle" class="img-res img-block">
+										</picture>
+									}
+								</a>
+								<div class="group group-mobile">
+									<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@(post.PostSeoTitle != "" ? post.PostSeoTitle : post.PostTitle) </a>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+</section>
+
+<script>
+
+</script>

@@ -9,6 +9,7 @@
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Security.Cryptography;
@@ -153,8 +154,6 @@
                 PostID = post.ID
             };
             var recentPosts = await postService.GetRecentPostsAsync(postParam);
-            var cateName = post.CatesName;
-            var cateSlug = post.CategoriesSlug;
             SavePost savePost = null;
             var isLogin = sessionService.User != null;
             if (isLogin)
@@ -163,15 +162,7 @@
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
                
             }
-            if (cateSlug.Contains(","))
-            {
-                var listCateSlug = post.CategoriesSlug.Split(',');
-                var listCateName = post.CatesName.Split(',');
-                var exceptCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList() ;
-                var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-                cateSlug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
-                cateName = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
-            }
+            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var Models = new SingleViewModel
             {
                 SinglePost = post,
@@ -183,8 +174,9 @@
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
             ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
             ViewData["video"] = post.Type == Constants.VideoPostType;
-            ViewData["cateSlug"] = cateSlug.Trim();
-            ViewData["cateName"] = cateName.Trim();
+            ViewData["cateSlug"] = cateInfo.Item1.Trim();
+            ViewData["cateName"] = cateInfo.Item2.Trim();
+            ViewData["controller"] = cateInfo.Item3.Trim();
 
             return View(Models);
         }
@@ -298,6 +290,46 @@
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
+        }
+
+        public static Tuple<string, string, string> GetCateInfo(string cateName, string cateSlug)
+        {
+            var slug = cateSlug;
+            var name = cateName;
+            var controller = "Home";
+            if (cateSlug.Contains(","))
+            {
+                var listCateSlug = cateSlug.Split(',');
+                var listCateName = cateName.Split(',');
+                var exceptCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
+                var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+                slug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
+                name = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
+
+                if (exceptCateSlug.Count > 1 && !exceptCateSlug[0].Contains("euro-2020") && Constants.HotCategory != "")
+                {
+                    var listEuroSlug = new List<string>
+                    {
+                        Constants.Euro2020Slug,
+                        Constants.Euro2020HotNewsSlug,
+                        Constants.Euro2020ScheduleSlug,
+                        Constants.Euro2020RankingSlug,
+                        Constants.Euro2020VideoSlug
+                    };
+                    var checkHotCate = exceptCateSlug.Where(item => item.Trim().Contains("euro-2020")).ToList();
+                    if (checkHotCate.Count > 0)
+                    {
+                        var getHotCate = listEuroSlug.Where(item => item.Trim() == checkHotCate[0].Trim()).ToList();
+                        slug = getHotCate[0];
+                    }
+                }
+            }
+            if (slug.Contains("euro-2020"))
+            {
+                name = Constants.Euro2020;
+                controller = Constants.Euro2020Controller;
+            }
+            return Tuple.Create(slug, name, controller);
         }
     }
 }
