@@ -3,8 +3,6 @@ using SabaNews.Core.Constants;
 using SabaNews.Models;
 using SabaNews.Models.ViewModel;
 using SabaNews.Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -56,6 +54,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020TeamSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            var posts = postTemplate.Posts.OrderBy(item => item.PostSeoTitle);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020TeamSlug);
             var viewData = new ViewData
             {
@@ -65,7 +64,7 @@ namespace SabaNews.Site.Controllers
             };
             var Model = new CategoryViewModel
             {
-                Posts = postTemplate.Posts,
+                Posts = posts,
                 Category = cate,
                 ViewData = viewData
                 
@@ -102,7 +101,6 @@ namespace SabaNews.Site.Controllers
             };
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
             ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020VideoSlug;
-            ViewData["Title"] = Constants.Euro2020Video;
             return View(Model);
         }
 
@@ -115,8 +113,8 @@ namespace SabaNews.Site.Controllers
                 End = Constants.Total,
                 Slug = Constants.Euro2020ScheduleSlug
             };
-            var postsTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postsTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
+            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
             {
@@ -133,7 +131,6 @@ namespace SabaNews.Site.Controllers
             };
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
             ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020ScheduleSlug;
-            ViewData["Title"] = Constants.Euro2020Schedule;
             return View(Model);
         }
 
@@ -146,8 +143,8 @@ namespace SabaNews.Site.Controllers
                 End = Constants.Total,
                 Slug = Constants.Euro2020RankingSlug
             };
-            var postsTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postsTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
+            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData
             {
@@ -164,7 +161,6 @@ namespace SabaNews.Site.Controllers
             };
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
             ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020RankingSlug;
-            ViewData["Title"] = Constants.Euro2020Ranking;
             return View(Model);
         }
 

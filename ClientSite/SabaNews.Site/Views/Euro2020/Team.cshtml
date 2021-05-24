@@ -11,13 +11,14 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/euro2020.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/styles/pages/Euro2020/home.css" asp-append-version="true">
 }
 
 @section Scripts{
 }
 
 @(await Component.InvokeAsync("Menu"))
+
 
 <section class="main">
 	<div class="container">
@@ -30,21 +31,13 @@
 					<div class="block__content">
 						@foreach (var post in Model.Posts)
 						{
+							var arrTeamInfo = post.PostSeoTitle.Split('-');
+							var teamName = arrTeamInfo[0];
+							var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
 							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__image">
-									@{
-										short flagSize = ImageWidth.Width300;
-										string flagImage = post.GetImageBySize(flagSize);
-
-										<picture>
-											<source srcset="@Url.Content(flagImage)" type="image/webp" class="img-res">
-											<source srcset="@Url.Content(flagImage)" type="image/jpeg" class="img-res">
-											<img loading="lazy" src="@Url.Content(flagImage)" alt="@post.PostTitle" class="img-res img-block">
-										</picture>
-									}
-								</a>
 								<div class="group group-mobile">
-									<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title">@(post.PostSeoTitle != "" ? post.PostSeoTitle : post.PostTitle) </a>
+									
+									<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title"><span class="flag-@teamFlag"></span> @teamName - @teamFlag </a>
 								</div>
 							</div>
 						}
