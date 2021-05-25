@@ -54,6 +54,12 @@
             return postTemplate;
         }
 
+        public async Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria)
+        {
+            var posts = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(posts).ToList();
+        }
+
         public async Task<PostTemplate> GetRecentPostsAsync(PostParam postParam)
         {
             var criteria = new GetRecentPostsCriteria

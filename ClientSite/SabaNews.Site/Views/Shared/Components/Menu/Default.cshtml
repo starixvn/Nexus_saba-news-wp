@@ -111,7 +111,7 @@
 								menu.Slug = menu.PageSlug;
 								link = Url.Action("MatchSchedule", "Home");
 							}
-							if (menu.PageSlug == Constants.WarningSlug)
+							else if (menu.PageSlug == Constants.WarningSlug)
 							{
 								menu.Slug = menu.PageSlug;
 								link = Url.Action("Warning", "Home");

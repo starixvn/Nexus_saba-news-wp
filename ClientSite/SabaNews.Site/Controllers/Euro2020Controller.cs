@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SabaNews.Core.Constants;
+using SabaNews.Criteria;
 using SabaNews.Models;
 using SabaNews.Models.ViewModel;
+using SabaNews.Models.ViewModels;
 using SabaNews.Services.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,13 +22,14 @@ namespace SabaNews.Site.Controllers
         [Route("/euro-2020/")]
         public async Task<IActionResult> Index()
         {
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugNotContainChildrenCriteria
             {
-                Start = 0,
-                End = Constants.Total,
-                Slug = Constants.Euro2020Slug
+                _Start = 0,
+                _End = Constants.Total,
+                _CategorySlug = Constants.Euro2020Slug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            var posts = await postService.GetPostsByCateSlugNotContainChidrenAsync(criteria);
+            var ranking = await postService.GetPostDetailBySlugAsync(Constants.Euro2020HomeRankingSlug, Constants.postType);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
             var viewData = new ViewData
             {
@@ -34,9 +37,10 @@ namespace SabaNews.Site.Controllers
                 Title = cate.SEOTitle ??= cate.Title,
                 Description = cate.Description
             };
-            var Model = new CategoryViewModel
+            var Model = new Euro2020ViewModel
             {
-                Posts = postTemplate.Posts,
+                Ranking = ranking,
+                Posts = posts,
                 Category = cate,
                 ViewData = viewData
             };
@@ -144,7 +148,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020RankingSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData
             {

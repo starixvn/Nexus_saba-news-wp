@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Criteria;
     using SabaNews.Models;
 
     public interface IPostService
@@ -10,6 +11,8 @@
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
 
         Task<PostTemplate> GetPostsByCateSlugAsync(PostParam postParam);
+
+        Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria);
 
         Task<PostTemplate> GetRecentPostsAsync(PostParam postParam);
 

@@ -21,240 +21,257 @@
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>@Model.ViewData.HeadTitle </a></h2>
 			@await Html.PartialAsync("_SubCategory")
-			<div class="block__content">
-				<h4>@Model.ViewData.HeadTitle</h4>
+		<div class="block__content">
+			<h4>@Model.ViewData.HeadTitle</h4>
 
-				<div class="euro-standbar">
-					<div class="eu-capt">
-						<a class="caption" href="/bang-xep-hang-euro">@Constants.Euro2020Schedule</a>
-					</div>
-					<div id="StandingSlide" class="eu-swiper">
-						<a class="prev" href="#"></a>
-						<a class="next activ" href="#"></a>
-						<div class="swiping">
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-									<div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-									<div class="fcol flag-italia"></div>
-									<div class="fcol team">Italia</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-									<div class="fcol flag-switzerland"></div>
-									<div class="fcol team">Thụy Sỹ</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-									<div class="fcol flag-turkey"></div>
-									<div class="fcol team">Thổ Nhĩ Kỳ</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-									<div class="fcol flag-wales"></div>
-									<div class="fcol team">Wales</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
+			<div class="euro-standbar">
+				<div class="eu-capt">
+					<a class="caption" href="/bang-xep-hang-euro">@Constants.Euro2020Schedule</a>
+				</div>
+				<div id="StandingSlide" class="eu-swiper">
+					<a class="prev" href="#"></a>
+					<a class="next activ" href="#"></a>
+					<div class="swiping">
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
 							</div>
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-                                    <div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-belgium"></div>
-									<div class="fcol team">Bỉ</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-denmark"></div>
-									<div class="fcol team">Đan Mạch</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-finland"></div>
-									<div class="fcol team">Phần Lan</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-russia"></div>
-									<div class="fcol team">Nga</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
+							<div class="frow">
+								<div class="fcol flag-italia"></div>
+								<div class="fcol team">Italia</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
 							</div>
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-                                    <div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-austria"></div>
-									<div class="fcol team">Áo</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-netherlands"></div>
-									<div class="fcol team">Hà Lan</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-macedonia"></div>
-									<div class="fcol team">Bắc Macedonia</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-ukraine"></div>
-									<div class="fcol team">Ukraine</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
+							<div class="frow">
+								<div class="fcol flag-switzerland"></div>
+								<div class="fcol team">Thụy Sỹ</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
 							</div>
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-                                    <div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-croatia"></div>
-									<div class="fcol team">Croatia</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-czech"></div>
-									<div class="fcol team">Czech</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-england"></div>
-									<div class="fcol team">Anh</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-scotland"></div>
-									<div class="fcol team">Scotland</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
+							<div class="frow">
+								<div class="fcol flag-turkey"></div>
+								<div class="fcol team">Thổ Nhĩ Kỳ</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
 							</div>
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-                                    <div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-poland"></div>
-									<div class="fcol team">Ba Lan</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-slovakia"></div>
-									<div class="fcol team">Slovakia</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-spain"></div>
-									<div class="fcol team">Tây Ban Nha</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-sweden"></div>
-									<div class="fcol team">Thụy Điển</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-							</div>								
-							<div class="eu-board fixtbl">
-								<div class="frow fcap">
-                                    <div class="fcol capt">Đội tuyển</div>
-									<div class="fcol count">Trận</div>
-									<div class="fcol count">+/-</div>
-									<div class="fcol point">Điểm</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-france"></div>
-									<div class="fcol team">Pháp</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-germany"></div>
-									<div class="fcol team">Đức</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-hungary"></div>
-									<div class="fcol team">Hungary</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
-								<div class="frow">
-                                    <div class="fcol flag-portugal"></div>
-									<div class="fcol team">Bồ Đào Nha</div>
-									<div class="fcol count">0</div>
-									<div class="fcol count">0</div>
-									<div class="fcol point">0</div>
-								</div>
+							<div class="frow">
+								<div class="fcol flag-wales"></div>
+								<div class="fcol team">Wales</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
 							</div>
-
 						</div>
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-belgium"></div>
+								<div class="fcol team">Bỉ</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-denmark"></div>
+								<div class="fcol team">Đan Mạch</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-finland"></div>
+								<div class="fcol team">Phần Lan</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-russia"></div>
+								<div class="fcol team">Nga</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-austria"></div>
+								<div class="fcol team">Áo</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-netherlands"></div>
+								<div class="fcol team">Hà Lan</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-macedonia"></div>
+								<div class="fcol team">Bắc Macedonia</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-ukraine"></div>
+								<div class="fcol team">Ukraine</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-croatia"></div>
+								<div class="fcol team">Croatia</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-czech"></div>
+								<div class="fcol team">Czech</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-england"></div>
+								<div class="fcol team">Anh</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-scotland"></div>
+								<div class="fcol team">Scotland</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-poland"></div>
+								<div class="fcol team">Ba Lan</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-slovakia"></div>
+								<div class="fcol team">Slovakia</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-spain"></div>
+								<div class="fcol team">Tây Ban Nha</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-sweden"></div>
+								<div class="fcol team">Thụy Điển</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl">
+							<div class="frow fcap">
+								<div class="fcol capt">Đội tuyển</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-france"></div>
+								<div class="fcol team">Pháp</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-germany"></div>
+								<div class="fcol team">Đức</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-hungary"></div>
+								<div class="fcol team">Hungary</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+							<div class="frow">
+								<div class="fcol flag-portugal"></div>
+								<div class="fcol team">Bồ Đào Nha</div>
+								<div class="fcol count">0</div>
+								<div class="fcol count">0</div>
+								<div class="fcol point">0</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
+			@foreach (var post in Model.Posts)
+			{ 
+				<div class="block__content">
+					<div class="card-horizontal card-horizontal-highlight">
+						<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-56">
+							<picture>
+								<source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+								<source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+								<img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+							</picture>
+						</a>
+						<div class="card-horizontal__content">
+							<a class="title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
+							<p class="description">@post.PostExcerpt</p>
+						</div>
+					</div>
+				</div>
+			}
+			
 		</div>
 </section>
 
