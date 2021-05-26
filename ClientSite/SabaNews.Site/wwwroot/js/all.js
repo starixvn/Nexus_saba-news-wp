@@ -43,8 +43,8 @@ $(document).ready(function () {
 
 
     //mobile
-    $('.button-mobile').click(function(){
-        if($(window).innerWidth() <= 1024){
+    $('.button-mobile').click(function () {
+        if ($(window).innerWidth() <= 1024) {
             $('.main-menu').toggleClass('active-main-menu');
             $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
@@ -52,10 +52,10 @@ $(document).ready(function () {
         }
     });
 
-    
+
 
     //desktop
-   
+
     if ($(window).innerWidth() < 1024) {
         $('.search-desktop').remove();
     }
@@ -71,7 +71,7 @@ $(document).ready(function () {
     });
 
     //back to top mb and des
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop()) {
             $('.back-to-top').fadeIn();
         } else {
@@ -79,9 +79,9 @@ $(document).ready(function () {
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1000);
+        $('html, body').animate({ scrollTop: 0 }, 1000);
     });
-    
+
     $('#detail-page').bind("cut copy paste contextmenu", function (e) {
         e.preventDefault();
     });
@@ -121,13 +121,13 @@ $(document).ready(function () {
 
     $('.auth-input').click(function (e) {
         $('.box-auth').toggleClass('active-box-auth');
-        
+
     });
 
     $(window).click(function (e) {
         var elmClass = e.target.className;
 
-        var elmAuth =  $(e.target).parent().parent();
+        var elmAuth = $(e.target).parent().parent();
         if (!elmAuth.is('.auth-provider') && !elmAuth.is('.auth-input')) {
             if ($('.box-auth').hasClass('active-box-auth')) {
                 $('.box-auth').removeClass('active-box-auth');
@@ -170,4 +170,13 @@ $(document).ready(function () {
             scrollLeft: leftPos + 200
         }, 800);
     });
+
+    $('.tab-item').on('click', function () {
+        var $this = $(this);
+        $this.addClass('active');
+        $(".tab-detail").addClass('hide');
+        var tabActive = $this.find("a").attr("href");
+        $(activeTab).addClass('show');
+
+    }); 
 });

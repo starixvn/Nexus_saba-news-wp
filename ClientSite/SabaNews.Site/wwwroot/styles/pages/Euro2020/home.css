@@ -1461,11 +1461,6 @@ button {
   padding-left: 16px;
   padding-bottom: 16px; }
 
-.resetpass-container {
-  display: inherit !important; }
-  .resetpass-container .reset-page p {
-    margin-bottom: 1.5rem; }
-
 .sub-category {
   list-style: none;
   display: flex;
@@ -1508,35 +1503,197 @@ button {
 
 .eu-board {
   background-color: #fff;
-  margin-right: 1.6rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-  border-radius: 2px; }
+  border-radius: 2px;
+  font-size: 1.4rem;
+  color: #333; }
+  .eu-board .board-body {
+    padding: 15px 12px; }
   .eu-board .frow {
-    border-bottom: 1px solid #a3db82;
+    border-bottom: 1px solid #CCDDE1;
     display: grid;
-    grid-template-columns: 4.6rem 11.2rem 3.2rem 3.2rem 4rem;
+    grid-template-columns: 3.2rem 1fr repeat(3, 4.6rem);
     justify-content: center;
-    padding: 8px 0; }
+    padding: 8px 0;
+    height: 5rem; }
+    .eu-board .frow .fcol:not(.team) {
+      justify-self: center; }
     .eu-board .frow:last-child {
       border-bottom: none; }
     .eu-board .frow.fcap {
-      border-bottom: solid 2px #095763; }
-    .eu-board .frow .capt {
-      grid-column: 1/3; }
+      background-color: #C9E2E9;
+      padding: 0 12px; }
+    .eu-board .frow .fcol.capt {
+      grid-column: 1/3;
+      justify-self: flex-start;
+      font-size: 1.8rem;
+      color: #064858;
+      font-weight: bold; }
     .eu-board .frow .team {
       text-transform: uppercase;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-weight: bold; }
+      font-weight: bold;
+      margin-left: 2rem; }
     .eu-board .frow .fcol {
       line-height: unset;
       align-self: center; }
-    .eu-board .frow .fcol:not(.team) {
-      justify-self: center; }
     .eu-board .frow:not(.fcap) .point {
-      color: #42934f;
+      color: #03647B;
       font-weight: bold; }
+    .eu-board .frow .point {
+      color: #064858; }
 
-.swiping {
-  display: flex; }
+.hide {
+  display: none; }
+
+.show {
+  display: block; }
+
+.block-head .container {
+  display: grid;
+  grid-template-columns: 75rem 1fr;
+  grid-gap: 2rem 2rem; }
+
+.block-head .lastest-news {
+  grid-row: 1/3;
+  grid-column: 1; }
+
+.block-head .board {
+  grid-column: 2;
+  grid-row: 1/2; }
+
+.block-head .guess-block {
+  grid-column: 2;
+  grid-row: 2/3; }
+
+.lastest-news .block__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem 2rem; }
+  .lastest-news .block__content .card-highlight {
+    grid-column: 1/4;
+    height: 43rem;
+    padding-bottom: 0;
+    position: relative;
+    font-size: 1.4rem;
+    color: #002028; }
+    .lastest-news .block__content .card-highlight .card-vertical__image {
+      height: 100%; }
+    .lastest-news .block__content .card-highlight .card__title {
+      font-size: 2rem;
+      color: #004556;
+      text-decoration: none; }
+    .lastest-news .block__content .card-highlight .card__datetime {
+      font-size: 1.3rem; }
+  .lastest-news .block__content .card-vertical__image {
+    height: 14.3rem; }
+  .lastest-news .block__content .card-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 13rem; }
+
+.board .block__content {
+  border: 1px solid #4DAEC6; }
+
+.board .tab-lists {
+  list-style: none;
+  display: flex;
+  background-color: #03647B;
+  justify-content: center; }
+
+.board .tab-link {
+  color: #A2E2F1;
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 12px;
+  font-size: 2rem;
+  font-weight: bold; }
+  .board .tab-link:hover {
+    color: #fff; }
+
+.guess-block .block__content {
+  padding: 1rem;
+  border: 1px solid #4DAEC6; }
+
+.general-section {
+  padding-bottom: 2rem; }
+  .general-section .block__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem 2.4rem; }
+    .general-section .block__content .box {
+      height: 29.3rem;
+      border: 1px solid #4DAEC6;
+      padding: 1rem;
+      border-radius: 5px; }
+  .general-section .box {
+    position: relative; }
+    .general-section .box .img-block {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px; }
+    .general-section .box .team-logo {
+      background: url("../../../images/euro2020/team_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .stadium-logo {
+      background: url("../../../images/euro2020/stadium_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .ball-logo {
+      background: url("../../../images/euro2020/ball_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .mascot-logo {
+      background: url("../../../images/euro2020/mascot_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .record-logo {
+      background: url("../../../images/euro2020/record_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .goal_soccer-logo {
+      background: url("../../../images/euro2020/goal_soccer_logo.svg") no-repeat;
+      display: inline-block;
+      background-size: contain;
+      width: 5rem;
+      height: 5rem; }
+    .general-section .box .stadium-logo {
+      margin-right: -13px; }
+    .general-section .box .record-logo {
+      margin-right: -11px; }
+    .general-section .box .goal_soccer-logo {
+      margin-right: -5px; }
+    .general-section .box .logo-box {
+      width: 8rem;
+      height: 8rem;
+      background-color: #03647B;
+      border-radius: 50%;
+      margin: 0 auto;
+      position: relative;
+      top: -46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 5px solid rgba(255, 255, 255, 0.7); }
+    .general-section .box .text {
+      text-align: center;
+      position: relative;
+      top: -35px;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #03647B; }
