@@ -18,402 +18,404 @@
 		<div class="header-top">
 
 		</div>
-		<div class="menu"></div>
+		<div class="menu">
+			@await Html.PartialAsync("_SubCategory")
+		</div>
 	</header>
 	<div class="main-content">
-        <div class="block block-head">
-            <div class="container">
-                <div class="block lastest-news">
-                    <h2 class="block__title"><a href="">Tin mới nhất</a></h2>
-                    <div class="block__content">
-                        <div class="card-vertical card-highlight">
-                            <a href="" class="card-vertical__image">
-                                <picture>
-                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
-                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
-                                </picture>
-                            </a>
-                            <div class="card-content">
-                                <a href="" class="card__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
-                                <p class="card__description text-description">Bàn thắng muộn của tiền đạo người Anh giúp "Gà Trống" đánh bại West Brom 1-0 qua đó tiếp tục bay cao trên bảng xếp hạng Premier League...</p>
-                                <p class="card__datetime">1 giờ trước</p>
-                            </div>
-                        </div>
-                        <div class="card-vertical">
-                            <a href="" class="card-vertical__image">
-                                <picture>
-                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
-                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
-                                </picture>
-                            </a>
-                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
-                            <p class="card-vertical__datetime">1 giờ trước</p>
-                        </div>
-                        <div class="card-vertical">
-                            <a href="" class="card-vertical__image">
-                                <picture>
-                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
-                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
-                                </picture>
-                            </a>
-                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
-                            <p class="card-vertical__datetime">1 giờ trước</p>
-                        </div>
-                        <div class="card-vertical">
-                            <a href="" class="card-vertical__image">
-                                <picture>
-                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
-                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
-                                </picture>
-                            </a>
-                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
-                            <p class="card-vertical__datetime">1 giờ trước</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="board">
-                    <h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
-                    <div class="block__content">
-                        <ul class="tab-lists">
-                            <li class="tab-item"><a href="tab-a" class="tab-link">A</a></li>
-                            <li class="tab-item"><a href="tab-b" class="tab-link">B</a></li>
-                            <li class="tab-item"><a href="tab-c" class="tab-link">C</a></li>
-                            <li class="tab-item"><a href="tab-d" class="tab-link">D</a></li>
-                            <li class="tab-item"><a href="tab-e" class="tab-link">E</a></li>
-                            <li class="tab-item"><a href="tab-f" class="tab-link">F</a></li>
-                        </ul>
-                        <div class="eu-board fixtbl tab-detail" id="tab-a">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng A</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-                                    <div class="fcol flag-italia"></div>
-                                    <div class="fcol team">Italia</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-                                    <div class="fcol flag-switzerland"></div>
-                                    <div class="fcol team">Thụy Sỹ</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-                                    <div class="fcol flag-turkey"></div>
-                                    <div class="fcol team">Thổ Nhĩ Kỳ</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-                                    <div class="fcol flag-wales"></div>
-                                    <div class="fcol team">Wales</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="eu-board fixtbl tab-detail hide" id="tab-b">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng B</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-								<div class="fcol flag-belgium"></div>
-                                    <div class="fcol team">Bỉ</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-denmark"></div>
-                                    <div class="fcol team">Đan Mạch</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-finland"></div>
-                                    <div class="fcol team">Phần Lan</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-russia"></div>
-                                    <div class="fcol team">Nga</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
+		<div class="block block-head">
+			<div class="container">
+				<div class="block lastest-news">
+					<h2 class="block__title"><a href="">Tin mới nhất</a></h2>
+					<div class="block__content">
+						<div class="card-vertical card-highlight">
+							<a href="" class="card-vertical__image">
+								<picture>
+									<source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+									<source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<div class="card-content">
+								<a href="" class="card__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+								<p class="card__description text-description">Bàn thắng muộn của tiền đạo người Anh giúp "Gà Trống" đánh bại West Brom 1-0 qua đó tiếp tục bay cao trên bảng xếp hạng Premier League...</p>
+								<p class="card__datetime">1 giờ trước</p>
+							</div>
+						</div>
+						<div class="card-vertical">
+							<a href="" class="card-vertical__image">
+								<picture>
+									<source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+									<source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+							<p class="card-vertical__datetime">1 giờ trước</p>
+						</div>
+						<div class="card-vertical">
+							<a href="" class="card-vertical__image">
+								<picture>
+									<source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+									<source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+							<p class="card-vertical__datetime">1 giờ trước</p>
+						</div>
+						<div class="card-vertical">
+							<a href="" class="card-vertical__image">
+								<picture>
+									<source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+									<source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+							<p class="card-vertical__datetime">1 giờ trước</p>
+						</div>
+					</div>
+				</div>
+				<div class="board">
+					<h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
+					<div class="block__content">
+						<ul class="tab-lists">
+							<li class="tab-item"><a href="tab-a" class="tab-link">A</a></li>
+							<li class="tab-item"><a href="tab-b" class="tab-link">B</a></li>
+							<li class="tab-item"><a href="tab-c" class="tab-link">C</a></li>
+							<li class="tab-item"><a href="tab-d" class="tab-link">D</a></li>
+							<li class="tab-item"><a href="tab-e" class="tab-link">E</a></li>
+							<li class="tab-item"><a href="tab-f" class="tab-link">F</a></li>
+						</ul>
+						<div class="eu-board fixtbl tab-detail" id="tab-a">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng A</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-italia"></div>
+									<div class="fcol team">Italia</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-switzerland"></div>
+									<div class="fcol team">Thụy Sỹ</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-turkey"></div>
+									<div class="fcol team">Thổ Nhĩ Kỳ</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-wales"></div>
+									<div class="fcol team">Wales</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl tab-detail hide" id="tab-b">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng B</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-belgium"></div>
+									<div class="fcol team">Bỉ</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-denmark"></div>
+									<div class="fcol team">Đan Mạch</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-finland"></div>
+									<div class="fcol team">Phần Lan</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-russia"></div>
+									<div class="fcol team">Nga</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
 
-                            </div>
-                        </div>
-                        <div class="eu-board fixtbl tab-detail hide" id="tab-c">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng C</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-								<div class="fcol flag-austria"></div>
-                                    <div class="fcol team">Áo</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-netherlands"></div>
-                                    <div class="fcol team">Hà Lan</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-macedonia"></div>
-                                    <div class="fcol team">Bắc Macedonia</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-ukraine"></div>
-                                    <div class="fcol team">Ukraine</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl tab-detail hide" id="tab-c">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng C</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-austria"></div>
+									<div class="fcol team">Áo</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-netherlands"></div>
+									<div class="fcol team">Hà Lan</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-macedonia"></div>
+									<div class="fcol team">Bắc Macedonia</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-ukraine"></div>
+									<div class="fcol team">Ukraine</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
 
-                            </div>
-                        </div>
-                        <div class="eu-board fixtbl tab-detail hide" id="tab-d">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng D</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-								<div class="fcol flag-croatia"></div>
-                                    <div class="fcol team">Croatia</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-czech"></div>
-                                    <div class="fcol team">Czech</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-england"></div>
-                                    <div class="fcol team">Anh</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-scotland"></div>
-                                    <div class="fcol team">Scotland</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="eu-board fixtbl tab-detail hide" id="tab-e">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng E</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-								<div class="fcol flag-poland"></div>
-                                    <div class="fcol team">Ba Lan</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-slovakia"></div>
-                                    <div class="fcol team">Slovakia</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-spain"></div>
-                                    <div class="fcol team">Tây Ban Nha</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-sweden"></div>
-                                    <div class="fcol team">Thụy Điển</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl tab-detail hide" id="tab-d">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng D</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-croatia"></div>
+									<div class="fcol team">Croatia</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-czech"></div>
+									<div class="fcol team">Czech</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-england"></div>
+									<div class="fcol team">Anh</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-scotland"></div>
+									<div class="fcol team">Scotland</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl tab-detail hide" id="tab-e">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng E</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-poland"></div>
+									<div class="fcol team">Ba Lan</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-slovakia"></div>
+									<div class="fcol team">Slovakia</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-spain"></div>
+									<div class="fcol team">Tây Ban Nha</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-sweden"></div>
+									<div class="fcol team">Thụy Điển</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
 
-                            </div>
-                        </div>
-                        <div class="eu-board fixtbl tab-detail hide" id="tab-f">
-                            <div class="frow fcap">
-                                <div class="fcol capt">Bảng F</div>
-                                <div class="fcol count">Trận</div>
-                                <div class="fcol count">+/-</div>
-                                <div class="fcol point">Điểm</div>
-                            </div>
-                            <div class="board-body">
-                                <div class="frow">
-								<div class="fcol flag-france"></div>
-                                    <div class="fcol team">Pháp</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-germany"></div>
-                                    <div class="fcol team">Đức</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-hungary"></div>
-                                    <div class="fcol team">Hungary</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                                <div class="frow">
-								<div class="fcol flag-portugal"></div>
-                                    <div class="fcol team">Bồ Đào Nha</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol count">0</div>
-                                    <div class="fcol point">0</div>
-                                </div>
-                            </div>
+							</div>
+						</div>
+						<div class="eu-board fixtbl tab-detail hide" id="tab-f">
+							<div class="frow fcap">
+								<div class="fcol capt">Bảng F</div>
+								<div class="fcol count">Trận</div>
+								<div class="fcol count">+/-</div>
+								<div class="fcol point">Điểm</div>
+							</div>
+							<div class="board-body">
+								<div class="frow">
+									<div class="fcol flag-france"></div>
+									<div class="fcol team">Pháp</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-germany"></div>
+									<div class="fcol team">Đức</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-hungary"></div>
+									<div class="fcol team">Hungary</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+								<div class="frow">
+									<div class="fcol flag-portugal"></div>
+									<div class="fcol team">Bồ Đào Nha</div>
+									<div class="fcol count">0</div>
+									<div class="fcol count">0</div>
+									<div class="fcol point">0</div>
+								</div>
+							</div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="guess-block">
-                    <h2 class="block__title"><a href="">Nhận định - Dự đoán</a></h2>
-                    <div class="block__content">
-                        <div class="card-vertical">
-                            <a href="" class="card-vertical__image">
-                                <picture>
-                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
-                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
-                                </picture>
-                            </a>
-                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>       
-                            <p class="card-vertical__datetime">1 giờ trước</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+						</div>
+					</div>
+				</div>
+				<div class="guess-block">
+					<h2 class="block__title"><a href="">Nhận định - Dự đoán</a></h2>
+					<div class="block__content">
+						<div class="card-vertical">
+							<a href="" class="card-vertical__image">
+								<picture>
+									<source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+									<source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+							<p class="card-vertical__datetime">1 giờ trước</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="video-section"></div>
 		<div class="general-section">
-            <div class="container">
-                <h2 class="block__title"><a href="">Tổng quan</a></h2>
-                <div class="block__content">
-                    <div class="box team">
-                        <picture>
-                            <source srcset="~/images/euro2020/team_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/team_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/team_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small team-logo"></span>
-                        </div>
-                        <div class="text">Đội tuyển</div>
-                    </div>
-                    <div class="box stadium">
-                        <picture>
-                            <source srcset="~/images/euro2020/stadium_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/stadium_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/stadium_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small stadium-logo"></span>
-                        </div>
-                        <div class="text">Sân vận động</div>
-                    </div>
-                    <div class="box ball">
-                        <picture>
-                            <source srcset="~/images/euro2020/ball_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/ball_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/ball_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small ball-logo"></span>
-                        </div>
-                        <div class="text">Bóng</div>
-                    </div>
-                    <div class="box mascot">
-                        <picture>
-                            <source srcset="~/images/euro2020/mascot_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/mascot_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/mascot_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small mascot-logo"></span>
-                        </div>
-                        <div class="text">Linh vật</div>
-                    </div>
-                    <div class="box record">
-                        <picture>
-                            <source srcset="~/images/euro2020/record_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/record_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/record_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small record-logo"></span>
-                        </div>
-                        <div class="text">Kỷ lục</div>
-                    </div>
-                    <div class="box top-goal-scorer">
-                        <picture>
-                            <source srcset="~/images/euro2020/top_soccer_img.png" type="image/webp" class="img-res">
-                            <source srcset="~/images/euro2020/top_soccer_img.png" type="image/jpeg" class="img-res">
-                            <img src="~/images/euro2020/top_soccer_img.png" alt="" class="img-res img-block">
-                        </picture>
-                        <div class="logo-box">
-                            <span class="logo-small goal_soccer-logo"></span>
-                        </div>
-                        <div class="text">Vua phá lưới</div>
-                    </div>
-                </div>
-            </div>
+			<div class="container">
+				<h2 class="block__title"><a href="">Tổng quan</a></h2>
+				<div class="block__content">
+					<div class="box team">
+						<picture>
+							<source srcset="~/images/euro2020/team_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/team_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/team_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small team-logo"></span>
+						</div>
+						<div class="text">Đội tuyển</div>
+					</div>
+					<div class="box stadium">
+						<picture>
+							<source srcset="~/images/euro2020/stadium_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/stadium_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/stadium_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small stadium-logo"></span>
+						</div>
+						<div class="text">Sân vận động</div>
+					</div>
+					<div class="box ball">
+						<picture>
+							<source srcset="~/images/euro2020/ball_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/ball_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/ball_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small ball-logo"></span>
+						</div>
+						<div class="text">Bóng</div>
+					</div>
+					<div class="box mascot">
+						<picture>
+							<source srcset="~/images/euro2020/mascot_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/mascot_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/mascot_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small mascot-logo"></span>
+						</div>
+						<div class="text">Linh vật</div>
+					</div>
+					<div class="box record">
+						<picture>
+							<source srcset="~/images/euro2020/record_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/record_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/record_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small record-logo"></span>
+						</div>
+						<div class="text">Kỷ lục</div>
+					</div>
+					<div class="box top-goal-scorer">
+						<picture>
+							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/top_soccer_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small goal_soccer-logo"></span>
+						</div>
+						<div class="text">Vua phá lưới</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-				</div>
+</div>
 			}
 			
 </div>
