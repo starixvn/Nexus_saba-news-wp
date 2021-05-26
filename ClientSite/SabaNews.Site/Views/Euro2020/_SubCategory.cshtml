@@ -5,8 +5,10 @@
 }
 <h2 class="block__title"><a>@Constants.Euro2020 </a></h2>
 <ul class="sub-category">
-	<li class="sub-item "><a href="@Url.Action("Index", "Euro2020")">
-		@Constants.Euro2020HotNews</a>
+	<li class="sub-item ">
+		<a href="@Url.Action("Index", "Euro2020")">
+			@Constants.Euro2020HotNews
+		</a>
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
 		<a href="@Url.Action("Team", "Euro2020")">@Constants.Euro2020Team</a>
@@ -19,5 +21,8 @@
 	</li>
 	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
 		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Video</a>
+	</li>
+	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020IdentifySlug ? "active" : "")">
+		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Identify</a>
 	</li>
 </ul>

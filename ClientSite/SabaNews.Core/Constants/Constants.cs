@@ -113,6 +113,7 @@
         public const string Euro2020Schedule = "Lịch thi đấu";
         public const string Euro2020Ranking = "Bảng xếp hạng";
         public const string Euro2020Video = "Video";
+        public const string Euro2020Identify = "Nhận định";
 
         public const string Euro2020Slug = "euro-2020";
         public const string Euro2020RankingSlug = "bang-xep-hang-euro-2020";
@@ -120,6 +121,7 @@
         public const string Euro2020TeamSlug = "doi-tuyen-euro-2020";
         public const string Euro2020ScheduleSlug = "lich-thi-dau-euro-2020";
         public const string Euro2020VideoSlug = "video-euro-2020";
+        public const string Euro2020IdentifySlug = "nhan-dinh-euro-2020";
         public const string Euro2020HomeRankingSlug = "bang-xep-hang-euro-2020-trang-chu";
     }
 }

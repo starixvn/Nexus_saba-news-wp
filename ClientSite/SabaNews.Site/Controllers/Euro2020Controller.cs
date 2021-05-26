@@ -5,6 +5,7 @@ using SabaNews.Models;
 using SabaNews.Models.ViewModel;
 using SabaNews.Models.ViewModels;
 using SabaNews.Services.Interfaces;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -118,7 +119,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020ScheduleSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
             {
@@ -148,7 +149,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020RankingSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower() != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData
             {

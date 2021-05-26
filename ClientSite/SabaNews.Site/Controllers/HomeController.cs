@@ -324,15 +324,7 @@
                     }
                 }
             }
-            if (slug.Contains("euro-2020"))
-            {
-                name = Constants.Euro2020;
-                controller = Constants.Euro2020Controller;
-            }
-            if (slug.Trim() == Constants.Euro2020Slug)
-            {
-                slug = "";
-            }
+            
             return Tuple.Create(slug, name, controller);
         }
     }

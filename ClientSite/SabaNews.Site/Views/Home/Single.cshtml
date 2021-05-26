@@ -32,12 +32,22 @@
 
 @{
 	var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
-    var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
 	var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
+	var cateSlug = ViewData["cateSlug"].ToString().Trim();
+	if (cateSlug.Contains("euro-2020"))
+	{
+		ViewData["cateName"] = Constants.Euro2020;
+		ViewData["controller"] = Constants.Euro2020Controller;
+	}
+	if (cateSlug == Constants.Euro2020Slug)
+	{
+		cateSlug = "";
+	}
 	if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
 	{
-		linkReturn = "/euro-2020/" + ViewData["cateSlug"];
+		linkReturn = "/euro-2020/" + cateSlug;
 	}
+	var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
