@@ -24,10 +24,10 @@
         <a href="@Url.Action("Schedule", "Euro2020")" class="item">@Constants.Euro2020Schedule</a>
     </li>
     <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
-        <a href="@Url.Action("Ranking", "Euro2020")" class="item">@Constants.Euro2020Ranking</a>
+		<a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020VideoSlug} )">@Constants.Euro2020Video</a>
     </li>
     <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
-        <a href="@Url.Action("Video", "Euro2020")" class="item">@Constants.Euro2020Video</a>
+		<a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020IdentifySlug} )">@Constants.Euro2020Identify</a>
     </li>
 
 </ul>

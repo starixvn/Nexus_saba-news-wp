@@ -61,17 +61,17 @@ namespace SabaNews.Site.Controllers
             return View(Model);
         }
 
-        [Route("/euro-2020/video-euro-2020")]
-        public async Task<IActionResult> Video()
+        [Route("/euro-2020/{slug}")]
+        public async Task<IActionResult> Category(string slug)
         {
             var postParam = new PostParam
             {
                 Start = 0,
                 End = Constants.Total,
-                Slug = Constants.Euro2020VideoSlug
+                Slug = slug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var cate = await postService.GetCateDetailAsync(Constants.Euro2020VideoSlug);
+            var cate = await postService.GetCateDetailAsync(slug);
             var viewData = new ViewData
             {
                 HeadTitle = cate.Title,
@@ -86,7 +86,7 @@ namespace SabaNews.Site.Controllers
 
             };
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020VideoSlug;
+            ViewData[Constants.ViewDataActiveSubCate] = slug;
             return View(Model);
         }
 

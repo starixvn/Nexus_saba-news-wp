@@ -4,7 +4,7 @@ namespace SabaNews.Models.ViewModel
 {
     public class Euro2020ViewModel
     {
-        public IEnumerable<Post> RecentPosts { get; set; }
+        public IEnumerable<Post> HotNews { get; set; }
         public IEnumerable<Post> Videos { get; set; }
         public Post TotalRanking { get; set; }
         public IEnumerable<Post> Ranking { get; set; }

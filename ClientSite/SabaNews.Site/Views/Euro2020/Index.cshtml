@@ -137,10 +137,10 @@
                     <div class="block__content">
 
                         <div class="card-vertical card-highlight">
-							<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[0].Slug})" class="card-vertical__image">
+							<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[0].Slug})" class="card-vertical__image">
 								@{
 									short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-									string firstImgUrl = Model.RecentPosts[0].GetImageBySize(imgSize);
+									string firstImgUrl = Model.HotNews[0].GetImageBySize(imgSize);
 								}
                                 <picture>
 									<source srcset="@firstImgUrl" type="image/webp" class="img-res">
@@ -149,30 +149,30 @@
                                 </picture>
                             </a>
                             <div class="card-content">
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[0].Slug})" class="card__title">@Model.RecentPosts[0].PostTitle</a>
-								<p class="card__description text-description">@Model.RecentPosts[0].PostExcerpt</p>
-								<p class="card__datetime">@Model.RecentPosts[0].PostTime</p>
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[0].Slug})" class="card__title">@Model.HotNews[0].PostTitle</a>
+								<p class="card__description text-description">@Model.HotNews[0].PostExcerpt</p>
+								<p class="card__datetime">@Model.HotNews[0].PostTime</p>
                             </div>
                         </div>
-						@for (int i = 1; i < Model.RecentPosts.Length; i++)
+						@for (int i = 1; i < Model.HotNews.Length; i++)
 						{
-							string featuredImg = Model.RecentPosts[i].GetImageBySize(ImageWidth.Width300);
+							string featuredImg = Model.HotNews[i].GetImageBySize(ImageWidth.Width300);
 							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[i].Slug})" class="card-vertical__image">
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-vertical__image">
 									<picture>
 										<source srcset="@featuredImg" type="image/webp" class="img-res">
 										<source srcset="@featuredImg" type="image/jpeg" class="img-res">
 										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[i].Slug})" class="card-vertical__title">@Model.RecentPosts[i].PostTitle</a>
-								<p class="card-vertical__datetime">@Model.RecentPosts[i].PostTime</p>
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-vertical__title">@Model.HotNews[i].PostTitle</a>
+								<p class="card-vertical__datetime">@Model.HotNews[i].PostTime</p>
 							</div>
 						}
                     </div>
                 </div>
                 <div class="board">
-                    <h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
+					<h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
                     <div class="block__content">
                         <ul class="tab-lists">
 							@foreach (var post in Model.Ranking)
@@ -277,7 +277,7 @@
         </div>
         <div class="block block-general-section">
             <div class="container">
-                <h2 class="block__title"><a href="">Tổng quan</a></h2>
+				<h2 class="block__title"><a href="">@ViewResources.Overview</a></h2>
                 <div class="block__content">
                     <div class="box team">
                         <picture>
