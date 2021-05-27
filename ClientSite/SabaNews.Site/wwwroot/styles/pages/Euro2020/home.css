@@ -1654,7 +1654,32 @@ button {
   z-index: 10004; }
 
 .main-content {
-  padding-top: 7rem; }
+  padding-top: 18rem; }
+
+.header .top-header {
+  background: url(../../../images/euro2020/banner-menu.png) no-repeat;
+  height: 16rem;
+  box-shadow: none; }
+  .header .top-header .logo-euro {
+    background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+    width: 6.8rem;
+    height: 7.8rem;
+    margin: 1.8rem auto 1.8rem; }
+  .header .top-header .group-menu .nav-menu {
+    background-color: #03647B; }
+    .header .top-header .group-menu .nav-menu .main-menu {
+      display: block; }
+      .header .top-header .group-menu .nav-menu .main-menu .menu-item {
+        padding: 11px 38px 9px;
+        display: inline-block; }
+        .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover {
+          background-color: #fff; }
+          .header .top-header .group-menu .nav-menu .main-menu .menu-item:hover .item {
+            color: #F12F19; }
+        .header .top-header .group-menu .nav-menu .main-menu .menu-item .item {
+          color: #FFFDF9;
+          text-transform: uppercase;
+          font-size: 1.4rem; }
 
 .eu-swiper {
   overflow: auto;
@@ -1778,65 +1803,81 @@ button {
   padding: 1rem;
   border: 1px solid #4DAEC6; }
 
-.general-section {
+.block-video {
+  background: url(../../../images/euro2020/banner-video-euro.png) no-repeat;
+  height: 50rem;
+  width: 116rem;
+  margin: 0 auto 2rem;
+  padding: 2.6rem 0 3rem; }
+  .block-video .block__content {
+    grid-template-rows: 40rem; }
+    .block-video .block__content .slide-video .card-item {
+      background-color: #C5E1E5; }
+  .block-video .block__title a {
+    background: transparent;
+    color: #fff; }
+  .block-video .block__title:after {
+    background: #fff; }
+
+.block-general-section {
   padding-bottom: 2rem; }
-  .general-section .block__content {
+  .block-general-section .block__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3rem 2.4rem; }
-    .general-section .block__content .box {
+    .block-general-section .block__content .box {
       height: 29.3rem;
       border: 1px solid #4DAEC6;
       padding: 1rem;
       border-radius: 5px; }
-  .general-section .box {
+  .block-general-section .box {
     position: relative; }
-    .general-section .box .img-block {
+    .block-general-section .box .img-block {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px; }
-    .general-section .box .team-logo {
+    .block-general-section .box .team-logo {
       background: url("../../../images/euro2020/team_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .stadium-logo {
+    .block-general-section .box .stadium-logo {
       background: url("../../../images/euro2020/stadium_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .ball-logo {
+    .block-general-section .box .ball-logo {
       background: url("../../../images/euro2020/ball_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .mascot-logo {
+    .block-general-section .box .mascot-logo {
       background: url("../../../images/euro2020/mascot_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .record-logo {
+    .block-general-section .box .record-logo {
       background: url("../../../images/euro2020/record_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .goal_soccer-logo {
+    .block-general-section .box .goal_soccer-logo {
       background: url("../../../images/euro2020/goal_soccer_logo.svg") no-repeat;
       display: inline-block;
       background-size: contain;
       width: 5rem;
       height: 5rem; }
-    .general-section .box .stadium-logo {
+    .block-general-section .box .stadium-logo {
       margin-right: -13px; }
-    .general-section .box .record-logo {
+    .block-general-section .box .record-logo {
       margin-right: -11px; }
-    .general-section .box .goal_soccer-logo {
+    .block-general-section .box .goal_soccer-logo {
       margin-right: -5px; }
-    .general-section .box .logo-box {
+    .block-general-section .box .logo-box {
       width: 8rem;
       height: 8rem;
       background-color: #03647B;
@@ -1848,7 +1889,7 @@ button {
       justify-content: center;
       align-items: center;
       border: 5px solid rgba(255, 255, 255, 0.7); }
-    .general-section .box .text {
+    .block-general-section .box .text {
       text-align: center;
       position: relative;
       top: -35px;

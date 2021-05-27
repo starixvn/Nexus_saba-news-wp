@@ -120,6 +120,7 @@
         </div>
         <div class="top-header">
             <div class="container">
+                <div class="logo-euro"></div>
                 <div class="group-menu">
                     <div class="nav-menu">
                         @await Html.PartialAsync("_SubCategory")
@@ -206,77 +207,75 @@
 				</div>
 			</div>
 		</div>
-		<div class="video-section">
-			<div class="block block-video">
-				<div class="container">
-					<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
-					<div class="block__content flex-video">
-						<div class="swiper-video">
-							<div class="swiper-container">
-								<div class="swiper-wrapper">
-									@foreach (var post in Model.Videos)
-									{
-										<div class="swiper-slide" id="slide-@post.ID">
-											<input type="hidden" name="iframe_value" value="@post.PostContent" />
-											<div class="img-item">
-												@{
+		<div class="block block-video">
+			<div class="container">
+				<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
+				<div class="block__content flex-video">
+					<div class="swiper-video">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								@foreach (var post in Model.Videos)
+								{
+									<div class="swiper-slide" id="slide-@post.ID">
+										<input type="hidden" name="iframe_value" value="@post.PostContent" />
+										<div class="img-item">
+											@{
 
-													string videoImg = post.GetImageBySize(isDesktop ? ImageWidth.Width768 : ImageWidth.Width500);
-													<picture>
-														<source srcset="@Url.Content(videoImg)" type="image/webp">
-														<source srcset="@Url.Content(videoImg)" type="image/jpeg">
-														<img loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
-													</picture>
-												}
-
-												<div class="btn-play-video">
-													<span class="icon-play"></span>
-												</div>
-											</div>
-											<div class="play_video"></div>
-											<div class="content-box">
-												<h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
-											</div>
-										</div>}
-                                </div>
-								<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
-								<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
-								<div class="swiper-pagination"></div>
-							</div>
-						</div>
-						<div class="slide-video">
-							@foreach (var post in Model.Videos)
-							{
-								<div class="card-horizontal card-item">
-									<a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
-										@{
-											string videoDesktopImg = post.GetImageBySize(ImageWidth.Width300);
-
-											<picture>
-												<source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
-												<source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
-												<img loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
-											</picture>
-										}
-									</a>
-									<div class="card-horizontal__content">
-										<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" data-id="@post.ID" class="title">@post.PostTitle</a>
-										<p class="datetime">
-											@post.PostTime
-											@if (post.CommentCount > 0)
-											{
-												<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+												string videoImg = post.GetImageBySize(isDesktop ? ImageWidth.Width768 : ImageWidth.Width500);
+												<picture>
+													<source srcset="@Url.Content(videoImg)" type="image/webp">
+													<source srcset="@Url.Content(videoImg)" type="image/jpeg">
+													<img loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
+												</picture>
 											}
-										</p>
-									</div>
+
+											<div class="btn-play-video">
+												<span class="icon-play"></span>
+											</div>
+										</div>
+										<div class="play_video"></div>
+										<div class="content-box">
+											<h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+										</div>
+									</div>}
+                            </div>
+							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+							<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+					<div class="slide-video">
+						@foreach (var post in Model.Videos)
+						{
+							<div class="card-horizontal card-item">
+								<a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
+									@{
+										string videoDesktopImg = post.GetImageBySize(ImageWidth.Width300);
+
+										<picture>
+											<source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
+											<source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
+											<img loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
+										</picture>
+									}
+								</a>
+								<div class="card-horizontal__content">
+									<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" data-id="@post.ID" class="title">@post.PostTitle</a>
+									<p class="datetime">
+										@post.PostTime
+										@if (post.CommentCount > 0)
+										{
+											<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+										}
+									</p>
 								</div>
-							}
-                        </div>
+							</div>
+						}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="general-section">
+        <div class="block block-general-section">
             <div class="container">
                 <h2 class="block__title"><a href="">Tổng quan</a></h2>
                 <div class="block__content">

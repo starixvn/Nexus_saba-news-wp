@@ -184,8 +184,53 @@
     }
 }
 
+$main-color: #03647B;
+$border-block-color: #4DAEC6;
+
 .main-content {
-    padding-top: 7rem;
+    padding-top: 18rem;
+}
+
+.header {
+    .top-header {
+        background: url(../../../images/euro2020/banner-menu.png) no-repeat;
+        height: 16rem;
+        box-shadow: none;
+
+        .logo-euro {
+            background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+            width: 6.8rem;
+            height: 7.8rem;
+            margin: 1.8rem auto 1.8rem;
+        }
+
+        .group-menu .nav-menu {
+            background-color: $main-color;
+
+            .main-menu {
+                display: block;
+
+                .menu-item {
+                    padding: 11px 38px 9px;
+                    display: inline-block;
+
+                    &:hover {
+                        background-color: #fff;
+
+                        .item {
+                            color: #F12F19;
+                        }
+                    }
+
+                    .item {
+                        color: #FFFDF9;
+                        text-transform: uppercase;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .eu-swiper {
@@ -261,9 +306,6 @@
 .show {
     display: block;
 }
-
-$main-color: #03647B;
-$border-block-color: #4DAEC6;
 
 .block-head {
     .container {
@@ -364,7 +406,34 @@ $border-block-color: #4DAEC6;
     }
 }
 
-.general-section {
+.block-video {
+    background: url(../../../images/euro2020/banner-video-euro.png) no-repeat;
+    height: 50rem;
+    width: 116rem;
+    margin: 0 auto 2rem;
+    padding: 2.6rem 0 3rem;
+
+    .block__content {
+        grid-template-rows: 40rem;
+
+        .slide-video .card-item {
+            background-color: #C5E1E5;
+        }
+    }
+
+    .block__title {
+        a {
+            background: transparent;
+            color: #fff;
+        }
+
+        &:after {
+            background: #fff;
+        }
+    }
+}
+
+.block-general-section {
     padding-bottom: 2rem;
 
     .block__content {

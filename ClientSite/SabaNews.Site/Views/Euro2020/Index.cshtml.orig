@@ -1,0 +1,767 @@
+﻿@using SabaNews.Core.Constants;
+<<<<<<< HEAD
+@using Wangkanai.Detection.Services;
+@using Wangkanai.Detection.Models;
+@inject IDetectionService DetectionService
+@{
+	bool isMobile = DetectionService.Device.Type == Device.Mobile;
+	bool isTablet = DetectionService.Device.Type == Device.Tablet;
+	bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+
+}
+=======
+
+>>>>>>> 000 - add menu to hot euro news
+<meta name="description" content='@Model.ViewData.Description' />
+<meta name="robots" content="noarchive">
+<meta property="og:description" content='@Model.Category.OgDescription' />
+<meta property="og:title" content='@Model.Category.OgTitle' />
+<meta property="og:image" content='@Model.Category.OgImage' />
+
+@section Title{
+    @Model.ViewData.Title
+}
+
+@section Styles{
+<<<<<<< HEAD
+	<link rel="stylesheet" href="~/minify/styles/euro2020_home.min.css" asp-append-version="true">
+=======
+    <link rel="stylesheet" href="~/styles/pages/Euro2020/home.css" asp-append-version="true">
+>>>>>>> 000 - add menu to hot euro news
+}
+
+@section Scripts {
+	<script src="~/js/euro2020/home.js" asp-append-version="true"></script>
+}
+
+
+<div class="page">
+    <header class="header">
+        <div class="button-mobile">
+            <span class="line-mb"></span>
+            <span class="line-mb"></span>
+            <span class="line-mb"></span>
+        </div>
+        <div class="header-controls">
+            <div class="container">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/images/sabasports.svg" alt="saba-sport" asp-append-version="true">
+                    </a>
+                </div>
+                <ul class="header-auth-provider">
+                    <li class="item-control languages-box">
+                        <div class="language-select"><span class="flag flag-vn"></span><span class="country">Tiếng Việt</span></div>
+                        <ul class="languages-list">
+                            <li><a class="lang-item" href="https://www.sabasports.cn/"><span class="flag flag-cn"></span><span>简体中文</span></a>
+                            <li>
+                                <a class="lang-item" href="https://www.sabasports.com/"><span class="flag flag-en"></span><span>English</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="item-control search-desktop search-input">
+                        <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
+                            <input class="keyword-input search-box" name="keyword" id="keyword-desktop" type="text" placeholder="Tìm kiếm...">
+                            <button type="submit" class="btn btn-search" aria-label="search">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                    </li>
+
+                    <li class="item-control notification-auth">
+                        <span class="bell">
+                            <a href="#" class="auth-bell"><i class="icon-bell"></i></a>
+                            <a href="#" class="number-bell">10</a>
+                        </span>
+                    </li>
+
+<<<<<<< HEAD
+		</div>
+		<div class="menu">
+			@await Html.PartialAsync("_SubCategory")
+		</div>
+	</header>
+	<div class="main-content">
+		<div class="block block-head">
+			<div class="container">
+				<div class="block lastest-news">
+					<h2 class="block__title"><a href="">@ViewResources.RecentsPost</a></h2>
+					<div class="block__content">
+
+						<div class="card-vertical card-highlight">
+							<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[0].Slug})" class="card-vertical__image">
+								@{
+									short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+									string firstImgUrl = Model.RecentPosts[0].GetImageBySize(imgSize);
+								}
+								<picture>
+									<source srcset="@firstImgUrl" type="image/webp" class="img-res">
+									<source srcset="@firstImgUrl" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="@firstImgUrl" alt="" class="img-res img-block">
+								</picture>
+							</a>
+							<div class="card-content">
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[0].Slug})" class="card__title">@Model.RecentPosts[0].PostTitle</a>
+								<p class="card__description text-description">@Model.RecentPosts[0].PostExcerpt</p>
+								<p class="card__datetime">@Model.RecentPosts[0].PostTime</p>
+							</div>
+						</div>
+						@for (int i = 1; i < Model.RecentPosts.Length; i++)
+						{
+							string featuredImg = Model.RecentPosts[i].GetImageBySize(ImageWidth.Width300);
+							<div class="card-vertical">
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[i].Slug})" class="card-vertical__image">
+									<picture>
+										<source srcset="@featuredImg" type="image/webp" class="img-res">
+										<source srcset="@featuredImg" type="image/jpeg" class="img-res">
+										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
+									</picture>
+								</a>
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.RecentPosts[i].Slug})" class="card-vertical__title">@Model.RecentPosts[i].PostTitle</a>
+								<p class="card-vertical__datetime">@Model.RecentPosts[i].PostTime</p>
+							</div>
+						}
+					</div>
+				</div>
+				<div class="board">
+					<h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
+					<div class="block__content">
+						<ul class="tab-lists">
+							@foreach (var post in Model.Ranking)
+							{
+								<li class="tab-item active" data-tab="tab-@post.PostSeoTitle.ToLower()"><a href="javascript:;" class="tab-link">@post.PostSeoTitle.ToUpper()</a></li>
+							}
+						</ul>
+						<div class="total_ranking">
+							@Html.Raw(Model.TotalRanking.PostContent)
+						</div>
+					</div>
+				</div>
+				<div class="guess-block">
+					<h2 class="block__title"><a href="">@ViewResources.Guess</a></h2>
+					<div class="block__content">
+						@foreach (var post in Model.Identify)
+						{
+							string featuredImg = post.GetImageBySize(ImageWidth.Width300);
+							<div class="card-vertical">
+								<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-vertical__image">
+									<picture>
+										<source srcset="@featuredImg" type="image/webp" class="img-res">
+										<source srcset="@featuredImg" type="image/jpeg" class="img-res">
+										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
+									</picture>
+								</a>
+								<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-vertical__title">@post.PostTitle</a>
+								<p class="card-vertical__datetime">@post.PostTime</p>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="video-section">
+			<div class="block block-video">
+				<div class="container">
+					<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
+					<div class="block__content flex-video">
+						<div class="swiper-video">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									@foreach (var post in Model.Videos)
+									{
+										<div class="swiper-slide" id="slide-@post.ID">
+											<input type="hidden" name="iframe_value" value="@post.PostContent" />
+											<div class="img-item">
+												@{
+
+													string videoImg = post.GetImageBySize(isDesktop ? ImageWidth.Width768 : ImageWidth.Width500);
+													<picture>
+														<source srcset="@Url.Content(videoImg)" type="image/webp">
+														<source srcset="@Url.Content(videoImg)" type="image/jpeg">
+														<img loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
+													</picture>
+												}
+
+												<div class="btn-play-video">
+													<span class="icon-play"></span>
+												</div>
+											</div>
+											<div class="play_video"></div>
+											<div class="content-box">
+												<h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+											</div>
+										</div>}
+								</div>
+								<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+								<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+								<div class="swiper-pagination"></div>
+							</div>
+						</div>
+						<div class="slide-video">
+							@foreach (var post in Model.Videos)
+							{
+								<div class="card-horizontal card-item">
+									<a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
+										@{
+											string videoDesktopImg = post.GetImageBySize(ImageWidth.Width300);
+
+											<picture>
+												<source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
+												<source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
+												<img loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
+											</picture>
+										}
+									</a>
+									<div class="card-horizontal__content">
+										<a href="@Url.Action("Single", "Home", new { slug = post.Slug })" data-id="@post.ID" class="title">@post.PostTitle</a>
+										<p class="datetime">
+											@post.PostTime
+											@if (post.CommentCount > 0)
+											{
+												<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+											}
+										</p>
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="general-section">
+			<div class="container">
+				<h2 class="block__title"><a href="">Tổng quan</a></h2>
+				<div class="block__content">
+					<div class="box team">
+						<picture>
+							<source srcset="~/images/euro2020/team_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/team_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/team_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small team-logo"></span>
+						</div>
+						<div class="text">Đội tuyển</div>
+					</div>
+					<div class="box stadium">
+						<picture>
+							<source srcset="~/images/euro2020/stadium_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/stadium_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/stadium_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small stadium-logo"></span>
+						</div>
+						<div class="text">Sân vận động</div>
+					</div>
+					<div class="box ball">
+						<picture>
+							<source srcset="~/images/euro2020/ball_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/ball_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/ball_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small ball-logo"></span>
+						</div>
+						<div class="text">Bóng</div>
+					</div>
+					<div class="box mascot">
+						<picture>
+							<source srcset="~/images/euro2020/mascot_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/mascot_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/mascot_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small mascot-logo"></span>
+						</div>
+						<div class="text">Linh vật</div>
+					</div>
+					<div class="box record">
+						<picture>
+							<source srcset="~/images/euro2020/record_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/record_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/record_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small record-logo"></span>
+						</div>
+						<div class="text">Kỷ lục</div>
+					</div>
+					<div class="box top-goal-scorer">
+						<picture>
+							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/webp" class="img-res">
+							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/jpeg" class="img-res">
+							<img src="~/images/euro2020/top_soccer_img.png" alt="" class="img-res img-block">
+						</picture>
+						<div class="logo-box">
+							<span class="logo-small goal_soccer-logo"></span>
+						</div>
+						<div class="text">Vua phá lưới</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+=======
+                    <li class="item-control auth-input">
+                        @*@if (ViewBag.IsAuthenticated)
+                {
+                    <ul class="auth-provider">
+                        @if (ViewBag.Photo == null)
+                        {
+                            <li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+                        }
+                        else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+                        {
+                            <li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                        }
+                        else
+                        {
+                            <li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                        }
+                        <li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+                    </ul>
+                    <ul class="box-auth">
+                        <li>
+                            <ul class="auth-provider">
+                                @if (ViewBag.Photo == null)
+                                {
+                                    <li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+                                }
+                                else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+                                {
+                                    <li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                                }
+                                else
+                                {
+                                    <li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+                                }
+                                <li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+                            </ul>
+                        </li>
+                        <li class="info-user">
+                            <a class="item" href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a>
+                        </li>
+                        <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
+                        <li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout<i class="icon-logout"></i> </a></li>
+                    </ul>
+                }
+                else
+                {
+                    <a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
+                }*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="top-header">
+            <div class="container">
+                <div class="group-menu">
+                    <div class="nav-menu">
+                        @await Html.PartialAsync("_SubCategory")
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="block block-head">
+            <div class="container">
+                <div class="block lastest-news">
+                    <h2 class="block__title"><a href="">Tin mới nhất</a></h2>
+                    <div class="block__content">
+                        <div class="card-vertical card-highlight">
+                            <a href="" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <div class="card-content">
+                                <a href="" class="card__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+                                <p class="card__description text-description">Bàn thắng muộn của tiền đạo người Anh giúp "Gà Trống" đánh bại West Brom 1-0 qua đó tiếp tục bay cao trên bảng xếp hạng Premier League...</p>
+                                <p class="card__datetime">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="card-vertical">
+                            <a href="" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+                            <p class="card-vertical__datetime">1 giờ trước</p>
+                        </div>
+                        <div class="card-vertical">
+                            <a href="" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+                            <p class="card-vertical__datetime">1 giờ trước</p>
+                        </div>
+                        <div class="card-vertical">
+                            <a href="" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+                            <p class="card-vertical__datetime">1 giờ trước</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="board">
+                    <h2 class="block__title"><a href="">Bảng xếp hạng</a></h2>
+                    <div class="block__content">
+                        <ul class="tab-lists">
+                            <li class="tab-item"><a href="tab-a" class="tab-link">A</a></li>
+                            <li class="tab-item"><a href="tab-b" class="tab-link">B</a></li>
+                            <li class="tab-item"><a href="tab-c" class="tab-link">C</a></li>
+                            <li class="tab-item"><a href="tab-d" class="tab-link">D</a></li>
+                            <li class="tab-item"><a href="tab-e" class="tab-link">E</a></li>
+                            <li class="tab-item"><a href="tab-f" class="tab-link">F</a></li>
+                        </ul>
+                        <div class="eu-board fixtbl tab-detail" id="tab-a">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng A</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-italia"></div>
+                                    <div class="fcol team">Italia</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-switzerland"></div>
+                                    <div class="fcol team">Thụy Sỹ</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-turkey"></div>
+                                    <div class="fcol team">Thổ Nhĩ Kỳ</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-wales"></div>
+                                    <div class="fcol team">Wales</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eu-board fixtbl tab-detail hide" id="tab-b">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng B</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-belgium"></div>
+                                    <div class="fcol team">Bỉ</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-denmark"></div>
+                                    <div class="fcol team">Đan Mạch</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-finland"></div>
+                                    <div class="fcol team">Phần Lan</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-russia"></div>
+                                    <div class="fcol team">Nga</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="eu-board fixtbl tab-detail hide" id="tab-c">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng C</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-austria"></div>
+                                    <div class="fcol team">Áo</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-netherlands"></div>
+                                    <div class="fcol team">Hà Lan</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-macedonia"></div>
+                                    <div class="fcol team">Bắc Macedonia</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-ukraine"></div>
+                                    <div class="fcol team">Ukraine</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="eu-board fixtbl tab-detail hide" id="tab-d">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng D</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-croatia"></div>
+                                    <div class="fcol team">Croatia</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-czech"></div>
+                                    <div class="fcol team">Czech</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-england"></div>
+                                    <div class="fcol team">Anh</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-scotland"></div>
+                                    <div class="fcol team">Scotland</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="eu-board fixtbl tab-detail hide" id="tab-e">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng E</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-poland"></div>
+                                    <div class="fcol team">Ba Lan</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-slovakia"></div>
+                                    <div class="fcol team">Slovakia</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-spain"></div>
+                                    <div class="fcol team">Tây Ban Nha</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-sweden"></div>
+                                    <div class="fcol team">Thụy Điển</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="eu-board fixtbl tab-detail hide" id="tab-f">
+                            <div class="frow fcap">
+                                <div class="fcol capt">Bảng F</div>
+                                <div class="fcol count">Trận</div>
+                                <div class="fcol count">+/-</div>
+                                <div class="fcol point">Điểm</div>
+                            </div>
+                            <div class="board-body">
+                                <div class="frow">
+                                    <div class="fcol flag-france"></div>
+                                    <div class="fcol team">Pháp</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-germany"></div>
+                                    <div class="fcol team">Đức</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-hungary"></div>
+                                    <div class="fcol team">Hungary</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                                <div class="frow">
+                                    <div class="fcol flag-portugal"></div>
+                                    <div class="fcol team">Bồ Đào Nha</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol count">0</div>
+                                    <div class="fcol point">0</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="guess-block">
+                    <h2 class="block__title"><a href="">Nhận định - Dự đoán</a></h2>
+                    <div class="block__content">
+                        <div class="card-vertical">
+                            <a href="" class="card-vertical__image">
+                                <picture>
+                                    <source srcset="~/images/img13.webp" type="image/webp" class="img-res">
+                                    <source srcset="~/images/img13.png" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="~/images/img13.png" alt="" class="img-res img-block">
+                                </picture>
+                            </a>
+                            <a href="" class="card-vertical__title">Ngôi sao 17 tuổi được triệu tập lên Đội tuyển Anh</a>
+                            <p class="card-vertical__datetime">1 giờ trước</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="video-section"></div>
+        <div class="general-section">
+            <div class="container">
+                <h2 class="block__title"><a href="">Tổng quan</a></h2>
+                <div class="block__content">
+                    <div class="box team">
+                        <picture>
+                            <source srcset="~/images/euro2020/team_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/team_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/team_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small team-logo"></span>
+                        </div>
+                        <div class="text">Đội tuyển</div>
+                    </div>
+                    <div class="box stadium">
+                        <picture>
+                            <source srcset="~/images/euro2020/stadium_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/stadium_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/stadium_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small stadium-logo"></span>
+                        </div>
+                        <div class="text">Sân vận động</div>
+                    </div>
+                    <div class="box ball">
+                        <picture>
+                            <source srcset="~/images/euro2020/ball_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/ball_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/ball_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small ball-logo"></span>
+                        </div>
+                        <div class="text">Bóng</div>
+                    </div>
+                    <div class="box mascot">
+                        <picture>
+                            <source srcset="~/images/euro2020/mascot_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/mascot_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/mascot_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small mascot-logo"></span>
+                        </div>
+                        <div class="text">Linh vật</div>
+                    </div>
+                    <div class="box record">
+                        <picture>
+                            <source srcset="~/images/euro2020/record_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/record_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/record_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small record-logo"></span>
+                        </div>
+                        <div class="text">Kỷ lục</div>
+                    </div>
+                    <div class="box top-goal-scorer">
+                        <picture>
+                            <source srcset="~/images/euro2020/top_soccer_img.png" type="image/webp" class="img-res">
+                            <source srcset="~/images/euro2020/top_soccer_img.png" type="image/jpeg" class="img-res">
+                            <img src="~/images/euro2020/top_soccer_img.png" alt="" class="img-res img-block">
+                        </picture>
+                        <div class="logo-box">
+                            <span class="logo-small goal_soccer-logo"></span>
+                        </div>
+                        <div class="text">Vua phá lưới</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+			}
+>>>>>>> 000 - add menu to hot euro news
+
+</div>
+
