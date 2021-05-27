@@ -18,5 +18,7 @@
         Task<IEnumerable<NewsSitemapModel>> GenerateNewsSitmapXmlData();
 
         Task<IEnumerable<Post>> GenerateRSSData();
+
+        Task<Euro2020ViewModel> GetEuro2020PageViewModel();
     }
 }

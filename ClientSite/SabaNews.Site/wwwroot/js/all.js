@@ -171,12 +171,4 @@ $(document).ready(function () {
         }, 800);
     });
 
-    $('.tab-item').on('click', function () {
-        var $this = $(this);
-        $this.addClass('active');
-        $(".tab-detail").addClass('hide');
-        var tabActive = $this.find("a").attr("href");
-        $(activeTab).addClass('show');
-
-    }); 
 });

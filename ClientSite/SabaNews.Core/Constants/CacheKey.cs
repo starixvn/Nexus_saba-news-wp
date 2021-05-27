@@ -13,5 +13,7 @@
         public const string NewsSitemapXml = "NewsSitemapXml";
 
         public const string RSS = "RSS";
+
+        public const string Euro2020PageViewModel = "Euro2020PageViewModel";
     }
 }

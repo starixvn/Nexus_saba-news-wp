@@ -42,6 +42,7 @@
         public const string TennisPostType = "sport-tennis-2";
 
         public const int FromFirstItem = 0;
+        public const int GetFirstItem = 1;
         public const int GetThreeItems = 3;
         public const int GetFourItems = 4;
         public const int GetFiveItems = 5;
@@ -49,6 +50,7 @@
         public const int GetEightItems = 8;
         public const int GetTenItems = 10;
         public const int GetElevenItems = 11;
+        
 
         public const int FirstPage = 1;
         public const int Perpage = 10;

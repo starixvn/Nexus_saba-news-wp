@@ -314,7 +314,8 @@
                         Constants.Euro2020HotNewsSlug,
                         Constants.Euro2020ScheduleSlug,
                         Constants.Euro2020RankingSlug,
-                        Constants.Euro2020VideoSlug
+                        Constants.Euro2020VideoSlug,
+                        Constants.Euro2020IdentifySlug
                     };
                     var checkHotCate = exceptCateSlug.Where(item => item.Trim().Contains("euro-2020")).ToList();
                     if (checkHotCate.Count > 0)

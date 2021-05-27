@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Constants;
+    using SabaNews.Criteria;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
@@ -112,6 +114,42 @@
         {
             var menus = await postService.GetMenuAsync("New Site Menu");
             return menus;
+        }
+
+        public async Task<Euro2020ViewModel> GetEuro2020ViewModel()
+        {
+            var criteria = new GetPostsByCateSlugNotContainChildrenCriteria
+            {
+                _Start = 0,
+                _End = Constants.Total,
+                _CategorySlug = Constants.Euro2020Slug
+            };
+
+            var recentPosts = await postService.GetPostsBySlugAsync(Constants.Euro2020Slug, Constants.FromFirstItem, Constants.GetFourItems);
+            var totalRanking = await postService.GetPostDetailBySlugAsync(Constants.Euro2020HomeRankingSlug, Constants.postType);
+            var videos = await postService.GetPostsBySlugAsync(Constants.Euro2020VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var identify = await postService.GetPostsBySlugAsync(Constants.Euro2020IdentifySlug, Constants.FromFirstItem, Constants.GetFirstItem);
+            var ranking = await postService.GetPostsBySlugAsync(Constants.Euro2020RankingSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
+            ranking = ranking.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+
+            var viewData = new ViewData
+            {
+                HeadTitle = cate.Title,
+                Title = cate.SEOTitle ??= cate.Title,
+                Description = cate.Description
+            };
+            var Model = new Euro2020ViewModel
+            {
+                TotalRanking = totalRanking,
+                Ranking = ranking.ToArray(),
+                RecentPosts = recentPosts.ToArray(),
+                Videos = videos.ToArray(),
+                Identify = identify.ToArray(),
+                Category = cate,
+                ViewData = viewData
+            };
+            return Model;
         }
     }
 }

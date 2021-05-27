@@ -135,5 +135,22 @@
 
             return await postService.GetRSSDataAsync();
         }
+
+
+        public async Task<Euro2020ViewModel> GetEuro2020PageViewModel()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheService.GetAsync<Euro2020ViewModel>(CacheKey.Euro2020PageViewModel);
+
+                if (result == null)
+                {
+                    result = await fetchDataService.GetEuro2020ViewModel();
+                    await cacheService.SetAsync(CacheKey.Euro2020PageViewModel, result);
+                }
+                return result;
+            }
+            return await fetchDataService.GetEuro2020ViewModel();
+        }
     }
 }

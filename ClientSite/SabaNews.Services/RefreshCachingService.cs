@@ -72,5 +72,12 @@
             var result = await postService.GetNewsSitemapDataAsync();
             await cacheService.SetAsync(CacheKey.RSS, result);
         }
+
+        public async Task UpdateEuro2020PageCaching()
+        {
+            var data = await fetchDataService.GetEuro2020ViewModel();
+
+            await cacheService.SetAsync(CacheKey.Euro2020PageViewModel, data);
+        }
     }
 }

@@ -18,6 +18,9 @@
 @import '../../components/lazyload';
 @import '../../components/sub-structure';
 @import '../../components/Euro2020/icon.scss';
+@import '../../components/swipper';
+@import '../../components/Euro2020/_slider-video';
+
 
 .block-main {
     .card-horizontal {
@@ -469,3 +472,4 @@ $border-block-color: #4DAEC6;
         }
     }
 }
+

@@ -12,5 +12,7 @@
         Task<IEnumerable<Menu>> GetMenuData();
 
         Task<CategoryViewModel> GetCategoryViewModel(string slug, int page);
+
+        Task<Euro2020ViewModel> GetEuro2020ViewModel();
     }
 }

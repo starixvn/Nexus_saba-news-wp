@@ -68,6 +68,13 @@
                             GetCronExpression(HangfireJobName.RefreshRSS),
                             TimeZoneInfo.Local);
             }
+            if (IsEnabledJob(HangfireJobName.RefreshEuro2020PageCaching))
+            {
+                recurringJob.AddOrUpdate<IRefreshCachingService>("Update Euro2020 home page data caching",
+                            job => job.UpdateEuro2020PageCaching(),
+                            GetCronExpression(HangfireJobName.RefreshEuro2020PageCaching),
+                            TimeZoneInfo.Local);
+            }
         }
 
         private bool IsEnabledJob(string jobName)

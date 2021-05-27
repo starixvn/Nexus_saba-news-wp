@@ -63,6 +63,14 @@
       "wwwroot/lib/swipper/css/swiper.min.css"
     ]
   },
+  {
+    "outputFileName": "wwwroot/minify/styles/euro2020_home.min.css",
+    "inputFiles": [
+      "wwwroot/styles/vendor/icomoon/style.css",
+      "wwwroot/styles/pages/Euro2020/home.css",
+      "wwwroot/lib/swipper/css/swiper.min.css"
+    ]
+  },
 
   {
     "outputFileName": "wwwroot/minify/js/site.min.js",

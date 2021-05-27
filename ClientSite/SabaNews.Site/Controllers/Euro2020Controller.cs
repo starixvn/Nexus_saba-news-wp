@@ -3,7 +3,6 @@ using SabaNews.Core.Constants;
 using SabaNews.Criteria;
 using SabaNews.Models;
 using SabaNews.Models.ViewModel;
-using SabaNews.Models.ViewModels;
 using SabaNews.Services.Interfaces;
 using System.Globalization;
 using System.Linq;
@@ -13,38 +12,20 @@ namespace SabaNews.Site.Controllers
 {
     public class Euro2020Controller : Controller
     {
+        private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
 
         public Euro2020Controller(
-            IPostService postService)
+            IPostService postService,
+            IDataControlService dataControlService)
         {
             this.postService = postService;
+            this.dataControlService = dataControlService;
         }
         [Route("/euro-2020/")]
         public async Task<IActionResult> Index()
         {
-            var criteria = new GetPostsByCateSlugNotContainChildrenCriteria
-            {
-                _Start = 0,
-                _End = Constants.Total,
-                _CategorySlug = Constants.Euro2020Slug
-            };
-            var posts = await postService.GetPostsByCateSlugNotContainChidrenAsync(criteria);
-            var ranking = await postService.GetPostDetailBySlugAsync(Constants.Euro2020HomeRankingSlug, Constants.postType);
-            var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
-            var viewData = new ViewData
-            {
-                HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
-                Description = cate.Description
-            };
-            var Model = new Euro2020ViewModel
-            {
-                Ranking = ranking,
-                Posts = posts,
-                Category = cate,
-                ViewData = viewData
-            };
+            var Model = await dataControlService.GetEuro2020PageViewModel();
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
             return View(Model);
         }
