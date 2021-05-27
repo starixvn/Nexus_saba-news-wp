@@ -171,44 +171,6 @@
     }
 }
 
-.sub-category {
-    list-style: none;
-    display: flex;
-    border-bottom: 1px solid #D4D4D4;
-    margin-bottom: 1.6rem;
-
-    .sub-item {
-        margin-right: 2.4rem;
-        font-weight: bold;
-
-        a {
-            color: #4F4F4F;
-            text-decoration: none;
-            padding-bottom: 6px;
-            display: inline-block;
-            position: relative;
-
-            &:before {
-                position: absolute;
-                width: 0;
-                bottom: -1px;
-                height: .2rem;
-                background-color: #F12F19;
-                content: '';
-                left: 0;
-                transition: width .09s ease-in;
-            }
-        }
-
-        &:hover a, &.active a {
-            color: #F12F19;
-
-            &:before {
-                width: 100%;
-            }
-        }
-    }
-}
 
 .wapper.active-fixed {
     .child-mobile-menu, .button-mobile, .top-header {
@@ -220,6 +182,10 @@
     .button-mobile {
         z-index: 10004;
     }
+}
+
+.main-content {
+    padding-top: 7rem;
 }
 
 .eu-swiper {

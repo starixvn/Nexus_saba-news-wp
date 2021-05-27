@@ -1645,34 +1645,6 @@ button {
   padding-left: 16px;
   padding-bottom: 16px; }
 
-.sub-category {
-  list-style: none;
-  display: flex;
-  border-bottom: 1px solid #D4D4D4;
-  margin-bottom: 1.6rem; }
-  .sub-category .sub-item {
-    margin-right: 2.4rem;
-    font-weight: bold; }
-    .sub-category .sub-item a {
-      color: #4F4F4F;
-      text-decoration: none;
-      padding-bottom: 6px;
-      display: inline-block;
-      position: relative; }
-      .sub-category .sub-item a:before {
-        position: absolute;
-        width: 0;
-        bottom: -1px;
-        height: .2rem;
-        background-color: #F12F19;
-        content: '';
-        left: 0;
-        transition: width .09s ease-in; }
-    .sub-category .sub-item:hover a, .sub-category .sub-item.active a {
-      color: #F12F19; }
-      .sub-category .sub-item:hover a:before, .sub-category .sub-item.active a:before {
-        width: 100%; }
-
 .wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile, .wapper.active-fixed .top-header {
   position: fixed;
   z-index: 10005;
@@ -1680,6 +1652,9 @@ button {
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
+
+.main-content {
+  padding-top: 7rem; }
 
 .eu-swiper {
   overflow: auto;

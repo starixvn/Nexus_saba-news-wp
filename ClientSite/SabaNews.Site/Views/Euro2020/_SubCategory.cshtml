@@ -3,26 +3,31 @@
 @{
 	ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] != null ? ViewData["ActiveSubCate"] : "";
 }
-<h2 class="block__title"><a>@Constants.Euro2020 </a></h2>
-<ul class="sub-category">
-	<li class="sub-item ">
-		<a href="@Url.Action("Index", "Euro2020")">
-			@Constants.Euro2020HotNews
-		</a>
-	</li>
-	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
-		<a href="@Url.Action("Team", "Euro2020")">@Constants.Euro2020Team</a>
-	</li>
-	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
-		<a href="@Url.Action("Schedule", "Euro2020")">@Constants.Euro2020Schedule</a>
-	</li>
-	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
-		<a href="@Url.Action("Ranking", "Euro2020")">@Constants.Euro2020Ranking</a>
-	</li>
-	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
-		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Video</a>
-	</li>
-	<li class="sub-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020IdentifySlug ? "active" : "")">
-		<a href="@Url.Action("Video", "Euro2020")">@Constants.Euro2020Identify</a>
-	</li>
+<ul class="main-menu">
+    <li class="menu-item">
+        <a href="@Url.Action("Index", "Euro2020")" class="item">
+            Trang chủ
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="@Url.Action("Index", "Euro2020")" class="item">
+            @Constants.Euro2020HotNews
+        </a>
+    </li>
+    <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020IdentifySlug ? "active" : "")">
+        <a href="@Url.Action("Video", "Euro2020")" class="item">@Constants.Euro2020Identify</a>
+    </li>
+    <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
+        <a href="@Url.Action("Team", "Euro2020")" class="item">@Constants.Euro2020Team</a>
+    </li>
+    <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
+        <a href="@Url.Action("Schedule", "Euro2020")" class="item">@Constants.Euro2020Schedule</a>
+    </li>
+    <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
+        <a href="@Url.Action("Ranking", "Euro2020")" class="item">@Constants.Euro2020Ranking</a>
+    </li>
+    <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
+        <a href="@Url.Action("Video", "Euro2020")" class="item">@Constants.Euro2020Video</a>
+    </li>
+
 </ul>
