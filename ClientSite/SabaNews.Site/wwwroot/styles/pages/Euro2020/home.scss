@@ -197,6 +197,11 @@ $border-block-color: #4DAEC6;
         height: 16rem;
         box-shadow: none;
 
+        @include Mobile {
+            background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+            height: 12rem;
+        }
+
         .logo-euro {
             background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
             width: 6.8rem;
@@ -312,6 +317,9 @@ $border-block-color: #4DAEC6;
         display: grid;
         grid-template-columns: 75rem 1fr;
         grid-gap: 2rem 2rem;
+        @include Mobile {
+            display: block;
+        }
     }
 
     .lastest-news {
@@ -333,6 +341,9 @@ $border-block-color: #4DAEC6;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem 2rem;
+        @include Mobile{
+            display: block;
+        }
 
         .card-highlight {
             grid-column: 1/4;
@@ -350,6 +361,7 @@ $border-block-color: #4DAEC6;
                 font-size: 2rem;
                 color: #004556;
                 text-decoration: none;
+                font-weight: bold;
             }
 
             .card__datetime {
@@ -413,6 +425,12 @@ $border-block-color: #4DAEC6;
     margin: 0 auto 2rem;
     padding: 2.6rem 0 3rem;
 
+    @include Mobile {
+        background: url(../../../images/euro2020/banner-video-mobile.png) no-repeat;
+        width: 37.5rem;
+        height: 25rem;
+    }
+
     .block__content {
         grid-template-rows: 40rem;
 
@@ -441,11 +459,20 @@ $border-block-color: #4DAEC6;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 3rem 2.4rem;
 
+        @include Mobile {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1.6rem 1.2rem;
+        }
+
         .box {
             height: 29.3rem;
             border: 1px solid $border-block-color;
             padding: 1rem;
             border-radius: 5px;
+
+            @include Mobile {
+                height: 14rem;
+            }
         }
     }
 
@@ -467,6 +494,11 @@ $border-block-color: #4DAEC6;
                 background-size: contain;
                 width: 5rem;
                 height: 5rem;
+
+                @include Mobile {
+                    height: 2rem;
+                    width: 2rem;
+                }
             }
         }
 
@@ -494,6 +526,12 @@ $border-block-color: #4DAEC6;
             justify-content: center;
             align-items: center;
             border: 5px solid rgba(255, 255, 255, 0.7);
+
+            @include Mobile {
+                height: 3.6rem;
+                width: 3.6rem;
+                border-width: 2px;
+            }
         }
 
         .text {
@@ -504,7 +542,18 @@ $border-block-color: #4DAEC6;
             font-size: 1.8rem;
             font-weight: bold;
             color: $main-color;
+
+            @include Mobile {
+                font-size: 1.4rem;
+            }
         }
+    }
+
+}
+
+@media screen and (max-device-width: 768px) {
+    .swiper-container .swiper-slide .img-item {
+        height: 12rem;
     }
 }
 
