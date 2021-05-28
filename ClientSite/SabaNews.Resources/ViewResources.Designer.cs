@@ -385,6 +385,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tin nóng.
+        /// </summary>
+        public static string HotNews {
+            get {
+                return ResourceManager.GetString("HotNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Link xác thực email không đúng.
         /// </summary>
         public static string IncorrectLinkForConfirmEmail {

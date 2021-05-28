@@ -27,6 +27,7 @@ namespace SabaNews.Site.Controllers
         {
             var Model = await dataControlService.GetEuro2020PageViewModel();
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
+            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020Slug;
             return View(Model);
         }
 

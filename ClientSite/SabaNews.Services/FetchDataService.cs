@@ -124,7 +124,10 @@
             var ranking = await postService.GetPostsBySlugAsync(Constants.Euro2020RankingSlug, Constants.FromFirstItem, Constants.GetEightItems);
             var videos = await postService.GetPostsBySlugAsync(Constants.Euro2020VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
-            ranking = ranking.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            if (ranking.Any())
+            {
+                ranking = ranking.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            }
 
             var viewData = new ViewData
             {

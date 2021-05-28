@@ -225,6 +225,9 @@
   <data name="Home" xml:space="preserve">
     <value>587</value>
   </data>
+  <data name="HotNews" xml:space="preserve">
+    <value>Tin nóng</value>
+  </data>
   <data name="IncorrectLinkForConfirmEmail" xml:space="preserve">
     <value>Link xác thực email không đúng</value>
   </data>
