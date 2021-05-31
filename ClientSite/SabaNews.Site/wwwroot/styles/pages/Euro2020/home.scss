@@ -591,9 +591,13 @@ $border-block-color: #4DAEC6;
     .hidden-body .top-header {
         position: absolute;
         height: calc(100% - 7rem);
+        top: 7rem;
         .group-menu .nav-menu .main-menu {
             display: block;
         }
+    }
+    .header .header-controls {
+        border-bottom: 1px solid #eee;
     }
 }
 
