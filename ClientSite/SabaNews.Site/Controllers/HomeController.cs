@@ -176,7 +176,7 @@
             ViewData["video"] = post.Type == Constants.VideoPostType ;
             ViewData["cateSlug"] = cateInfo.Item1.Trim();
             ViewData["cateName"] = cateInfo.Item2.Trim();
-            ViewData["controller"] = cateInfo.Item3.Trim();
+            ViewData["controller"] = "home";
 
             return View(Models);
         }
@@ -292,11 +292,10 @@
             return View(view, Model);
         }
 
-        public static Tuple<string, string, string> GetCateInfo(string cateName, string cateSlug)
+        public static Tuple<string, string> GetCateInfo(string cateName, string cateSlug)
         {
             var slug = cateSlug;
             var name = cateName;
-            var controller = "Home";
             if (cateSlug.Contains(","))
             {
                 var listCateSlug = cateSlug.Split(',');
@@ -326,7 +325,7 @@
                 }
             }
             
-            return Tuple.Create(slug, name, controller);
+            return Tuple.Create(slug, name);
         }
     }
 }

@@ -126,6 +126,9 @@
   <data name="Backstage" xml:space="preserve">
     <value>Hậu Trường</value>
   </data>
+  <data name="Ball" xml:space="preserve">
+    <value>Bóng</value>
+  </data>
   <data name="Basketball" xml:space="preserve">
     <value>Bóng rổ</value>
   </data>
@@ -255,6 +258,9 @@
   <data name="Male" xml:space="preserve">
     <value>Nam</value>
   </data>
+  <data name="Mascot" xml:space="preserve">
+    <value>Linh vật</value>
+  </data>
   <data name="MatchScheduleSlug" xml:space="preserve">
     <value>lich-thi-dau</value>
   </data>
@@ -321,6 +327,9 @@
   <data name="RecentsPost" xml:space="preserve">
     <value>Tin mới nhất</value>
   </data>
+  <data name="Record" xml:space="preserve">
+    <value>Kỷ lục</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Tạo tài khoản</value>
   </data>
@@ -354,11 +363,20 @@
   <data name="ShareMail" xml:space="preserve">
     <value>Chia sẻ qua Email</value>
   </data>
+  <data name="Stadium" xml:space="preserve">
+    <value>Sân vận động</value>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Đội tuyển</value>
+  </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>Hôm nay</value>
+  </data>
+  <data name="TopGoalScorer" xml:space="preserve">
+    <value>Vua phá lưới</value>
   </data>
   <data name="Transfer" xml:space="preserve">
     <value>Thị trường chuyển nhượng</value>

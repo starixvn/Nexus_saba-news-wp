@@ -88,6 +88,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bóng.
+        /// </summary>
+        public static string Ball {
+            get {
+                return ResourceManager.GetString("Ball", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng rổ.
         /// </summary>
         public static string Basketball {
@@ -475,6 +484,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Linh vật.
+        /// </summary>
+        public static string Mascot {
+            get {
+                return ResourceManager.GetString("Mascot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to lich-thi-dau.
         /// </summary>
         public static string MatchScheduleSlug {
@@ -673,6 +691,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kỷ lục.
+        /// </summary>
+        public static string Record {
+            get {
+                return ResourceManager.GetString("Record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tạo tài khoản.
         /// </summary>
         public static string Register {
@@ -772,6 +799,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sân vận động.
+        /// </summary>
+        public static string Stadium {
+            get {
+                return ResourceManager.GetString("Stadium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đội tuyển.
+        /// </summary>
+        public static string Team {
+            get {
+                return ResourceManager.GetString("Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quần vợt.
         /// </summary>
         public static string Tennis {
@@ -786,6 +831,15 @@ namespace SabaNews.Resources {
         public static string Today {
             get {
                 return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vua phá lưới.
+        /// </summary>
+        public static string TopGoalScorer {
+            get {
+                return ResourceManager.GetString("TopGoalScorer", resourceCulture);
             }
         }
         
