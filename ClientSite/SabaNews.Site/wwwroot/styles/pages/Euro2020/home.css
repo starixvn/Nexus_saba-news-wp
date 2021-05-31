@@ -1679,7 +1679,11 @@ button {
       position: relative;
       top: unset; } }
   .header .child-mobile-menu .icon-arrow {
-    display: none; }
+    display: none;
+    background-image: url(../../../images/icon/arrow.svg); }
+    @media (max-device-width: 767px) {
+      .header .child-mobile-menu .icon-arrow {
+        display: block; } }
   .header .child-mobile-menu .main-child-menu {
     background-color: #03647B;
     border: none;
@@ -1712,6 +1716,15 @@ button {
         .header .child-mobile-menu .menu-item .item {
           color: #4f4f4f;
           font-size: 1.3rem; } }
+
+.header .header-controls .languages-box .flag-en {
+  background: url("../../../images/flag/icon-en.svg") no-repeat; }
+
+.header .header-controls .languages-box .flag-cn {
+  background: url("../../../images/flag/icon-cn.svg") no-repeat; }
+
+.header .header-controls .languages-box .flag-vn {
+  background: url("../../../images/flag/icon-vn.svg") no-repeat; }
 
 .eu-swiper {
   overflow: auto;

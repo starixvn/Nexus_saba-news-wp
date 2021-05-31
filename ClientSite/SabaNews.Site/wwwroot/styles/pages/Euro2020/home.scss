@@ -224,6 +224,11 @@ $border-block-color: #4DAEC6;
 
         .icon-arrow {
             display: none;
+            background-image: url(../../../images/icon/arrow.svg);
+
+            @include Mobile {
+                display: block;
+            }
         }
 
         .main-child-menu {
@@ -246,9 +251,11 @@ $border-block-color: #4DAEC6;
         .menu-item {
             padding: 11px 30px 9px;
             display: inline-block;
-            @include Mobile  {
+
+            @include Mobile {
                 padding: 11px 16px 9px 0;
             }
+
             &:hover {
                 background-color: #fff;
 
@@ -261,10 +268,21 @@ $border-block-color: #4DAEC6;
                 color: #FFFDF9;
                 font-size: 1.4rem;
                 padding: 0;
+
                 @include Mobile {
                     color: #4f4f4f;
                     font-size: 1.3rem;
                 }
+            }
+        }
+    }
+
+    .header-controls {
+       $languages: en, cn, vn;
+
+        @each $language in $languages {
+            .languages-box .flag-#{$language} {
+                background: url("../../../images/flag/icon-#{$language}.svg") no-repeat;
             }
         }
     }
