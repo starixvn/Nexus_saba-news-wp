@@ -11,43 +11,34 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/styles/pages/Euro2020/home.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/euro2020_home.min.css" asp-append-version="true">
 }
 
 @section Scripts{
 }
 
-@(await Component.InvokeAsync("Menu"))
 
+<div class="page">
+	@(await Component.InvokeAsync("HeaderEvent"))
+	<div class="main-content">
+		<div class="block__content">
+			<div class="container">
+				<h2 class="block__title"><a href="">@Model.ViewData.HeadTitle</a></h2>
 
-<section class="main">
-	<div class="container">
-		<div class="block block-main">
-			@await Html.PartialAsync("_SubCategory")
-			<div class="block__content">
-				<h4>@Model.ViewData.HeadTitle</h4>
-				<div class="container">
-					<div class="block__content">
-						@foreach (var post in Model.Posts)
-						{
-							var arrTeamInfo = post.PostSeoTitle.Split('-');
-							var teamName = arrTeamInfo[0];
-							var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
-							<div class="card-vertical">
-								<div class="group group-mobile">
-									
-									<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title"><span class="flag-@teamFlag"></span> @teamName - @teamFlag </a>
-								</div>
+				<div class="block__content">
+					@foreach (var post in Model.Posts)
+					{
+						var arrTeamInfo = post.PostSeoTitle.Split('-');
+						var teamName = arrTeamInfo[0];
+						var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
+						<div class="card-vertical">
+							<div class="group group-mobile">
+								<a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title"><span class="flag-@teamFlag"></span> @teamName - @teamFlag </a>
 							</div>
-						}
-					</div>
+						</div>
+					}
 				</div>
-
-
 			</div>
 		</div>
-</section>
-
-<script>
-
-</script>
+	</div>
+</div>

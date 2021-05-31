@@ -11,37 +11,34 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/styles/pages/Euro2020/home.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/euro2020_home.min.css" asp-append-version="true">
 }
 
 @section Scripts{
 	<script src="~/js/euro2020/euro2020.js" asp-append-version="true"></script>
 }
 
-@(await Component.InvokeAsync("Menu"))
 
-<section class="main">
-	<div class="container">
-		<div class="block block-main">
-			
-			@await Html.PartialAsync("_SubCategory")
-			<div class="block__content">
-				<h4>@Model.ViewData.HeadTitle</h4>
-				<ul class="sub-category">
-					@foreach (var post in Model.Posts)
-					{
-						<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data">@post.PostTitle</a></li>
-					}
-				</ul>
+<div class="page">
+	@(await Component.InvokeAsync("HeaderEvent"))
+	<div class="main-content">
+		<div class="block__content">
+			<div class="container">
+				<h2 class="block__title"><a href="">@Model.ViewData.HeadTitle</a></h2>
 
-				<div class="post_content">
-					<div>@Model.Posts[0].PostContent</div>
+				<div class="block__content">
+					<ul class="sub-category">
+						@foreach (var post in Model.Posts)
+						{
+							<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data">@post.PostTitle</a></li>
+						}
+					</ul>
+
+					<div class="post_content">
+						<div>@Model.Posts[0].PostContent</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
-
-<script>
-
-</script>
+</div>

@@ -171,7 +171,7 @@
                 <a href="@Url.Action("Schedule", "Euro2020")" class="item">@Constants.Euro2020Schedule</a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
-                <a href="@Url.Action("Schedule", "Euro2020")" class="item">Bảng xếp hạng</a>
+                <a href="@Url.Action("Ranking", "Euro2020")" class="item">Bảng xếp hạng</a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
                 <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020VideoSlug} )" class="item">@Constants.Euro2020Video</a>

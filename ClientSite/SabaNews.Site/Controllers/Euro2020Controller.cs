@@ -72,7 +72,7 @@ namespace SabaNews.Site.Controllers
                 Slug = slug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            if (postTemplate.Posts.Any())
+            if (!postTemplate.Posts.Any())
             {
                 return View();
             }
