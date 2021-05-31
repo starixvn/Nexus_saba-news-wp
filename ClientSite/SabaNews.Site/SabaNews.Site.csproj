@@ -14,6 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Remove="App_Data\SpNames.AWS.xml" />
         <None Remove="App_Data\SpNames.Development.xml" />
         <None Remove="App_Data\SpNames.LOCAL.xml" />
         <None Remove="App_Data\SpNames.LOCAL_1.xml" />
@@ -28,6 +29,9 @@
 
     <ItemGroup>
         <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+        <Content Include="App_Data\SpNames.AWS.xml">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
         <Content Include="App_Data\SpNames.LOCAL_1.xml">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
