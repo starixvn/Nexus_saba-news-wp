@@ -331,9 +331,10 @@
             overflow-x: scroll;
             overflow-y: hidden;
             white-space: nowrap;
+            list-style: none;
 
             li {
-                display: table-cell;
+                //display: table-cell;
 
                 &:last-of-type {
                     padding-right: 3rem;

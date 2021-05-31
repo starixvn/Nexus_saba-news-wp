@@ -401,17 +401,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0;
       overflow-x: scroll;
       overflow-y: hidden;
-      white-space: nowrap; }
-      .header .child-mobile-menu .main-child-menu li {
-        display: table-cell; }
-        .header .child-mobile-menu .main-child-menu li:last-of-type {
-          padding-right: 3rem; }
-        .header .child-mobile-menu .main-child-menu li a {
-          display: block;
-          text-decoration: none;
-          color: #4f4f4f;
-          padding: 0 1.2rem;
-          font-weight: bold; }
+      white-space: nowrap;
+      list-style: none; }
+      .header .child-mobile-menu .main-child-menu li:last-of-type {
+        padding-right: 3rem; }
+      .header .child-mobile-menu .main-child-menu li a {
+        display: block;
+        text-decoration: none;
+        color: #4f4f4f;
+        padding: 0 1.2rem;
+        font-weight: bold; }
   .header .top-header {
     position: absolute;
     width: 100%;
@@ -1691,10 +1690,16 @@ button {
     @media (max-device-width: 767px) {
       .header .child-mobile-menu .main-child-menu {
         width: 100%;
-        background-color: #fff; } }
+        background-color: #fff;
+        justify-content: flex-start;
+        padding: 0 12px;
+        height: 3.2rem; } }
   .header .child-mobile-menu .menu-item {
     padding: 11px 30px 9px;
     display: inline-block; }
+    @media (max-device-width: 767px) {
+      .header .child-mobile-menu .menu-item {
+        padding: 11px 16px 9px 0; } }
     .header .child-mobile-menu .menu-item:hover {
       background-color: #fff; }
       .header .child-mobile-menu .menu-item:hover .item {
@@ -1705,7 +1710,8 @@ button {
       padding: 0; }
       @media (max-device-width: 767px) {
         .header .child-mobile-menu .menu-item .item {
-          color: #4f4f4f; } }
+          color: #4f4f4f;
+          font-size: 1.3rem; } }
 
 .eu-swiper {
   overflow: auto;
@@ -1871,7 +1877,8 @@ button {
       height: 29.3rem;
       border: 1px solid #4DAEC6;
       padding: 1rem;
-      border-radius: 5px; }
+      border-radius: 5px;
+      text-decoration: none; }
       @media (max-device-width: 767px) {
         .block-general-section .block__content .box {
           height: 14rem; } }

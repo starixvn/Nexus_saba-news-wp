@@ -411,17 +411,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0;
       overflow-x: scroll;
       overflow-y: hidden;
-      white-space: nowrap; }
-      .header .child-mobile-menu .main-child-menu li {
-        display: table-cell; }
-        .header .child-mobile-menu .main-child-menu li:last-of-type {
-          padding-right: 3rem; }
-        .header .child-mobile-menu .main-child-menu li a {
-          display: block;
-          text-decoration: none;
-          color: #4f4f4f;
-          padding: 0 1.2rem;
-          font-weight: bold; }
+      white-space: nowrap;
+      list-style: none; }
+      .header .child-mobile-menu .main-child-menu li:last-of-type {
+        padding-right: 3rem; }
+      .header .child-mobile-menu .main-child-menu li a {
+        display: block;
+        text-decoration: none;
+        color: #4f4f4f;
+        padding: 0 1.2rem;
+        font-weight: bold; }
   .header .top-header {
     position: absolute;
     width: 100%;
