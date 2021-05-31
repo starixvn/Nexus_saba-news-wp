@@ -38,5 +38,13 @@
   {
     "outputFile": "wwwroot/styles/pages/Euro2020/home.css",
     "inputFile": "wwwroot/styles/pages/Euro2020/home.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/layout/Euro2020/_header.css",
+    "inputFile": "wwwroot/styles/layout/Euro2020/_header.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/Euro2020/team.css",
+    "inputFile": "wwwroot/styles/pages/Euro2020/team.scss"
     }
 ]

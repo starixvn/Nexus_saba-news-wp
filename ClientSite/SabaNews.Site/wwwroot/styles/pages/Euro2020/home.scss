@@ -4,8 +4,8 @@
 @import '../../base/base';
 
 @import '../../layout/footer';
-@import '../../layout/header';
 @import '../../layout/block-extension';
+@import '../../layout/Euro2020/_header.scss';
 
 @import '../../components/fonts';
 @import '../../components/block';
@@ -183,110 +183,7 @@ $border-block-color: #4DAEC6;
     }
 }
 
-.header {
-    .top-header {
-        background: url(../../../images/euro2020/banner-menu.png) no-repeat;
-        height: 16rem;
-        box-shadow: none;
-        padding: 0;
 
-        @include Mobile {
-            background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
-            height: 12rem;
-            display: block;
-            top: 11rem;
-        }
-
-        .logo-euro {
-            background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
-            width: 6.8rem;
-            height: 7.8rem;
-            margin: 2.1rem auto 2.1rem;
-        }
-
-        .group-menu .nav-menu {
-            .main-menu {
-                display: none;
-            }
-        }
-    }
-
-    .child-mobile-menu {
-        display: block;
-        position: absolute;
-        width: 100%;
-        top: 19rem;
-
-        @include Mobile {
-            position: relative;
-            top: unset;
-        }
-
-        .icon-arrow {
-            display: none;
-            background-image: url(../../../images/icon/arrow.svg);
-
-            @include Mobile {
-                display: block;
-            }
-        }
-
-        .main-child-menu {
-            background-color: $main-color;
-            border: none;
-            overflow-x: auto;
-            justify-content: center;
-            width: 112rem;
-            margin: 0 auto;
-
-            @include Mobile {
-                width: 100%;
-                background-color: #fff;
-                justify-content: flex-start;
-                padding: 0 12px;
-                height: 3.2rem;
-            }
-        }
-
-        .menu-item {
-            padding: 11px 30px 9px;
-            display: inline-block;
-
-            @include Mobile {
-                padding: 11px 16px 9px 0;
-            }
-
-            &:hover {
-                background-color: #fff;
-
-                .item {
-                    color: #F12F19;
-                }
-            }
-
-            .item {
-                color: #FFFDF9;
-                font-size: 1.4rem;
-                padding: 0;
-
-                @include Mobile {
-                    color: #4f4f4f;
-                    font-size: 1.3rem;
-                }
-            }
-        }
-    }
-
-    .header-controls {
-       $languages: en, cn, vn;
-
-        @each $language in $languages {
-            .languages-box .flag-#{$language} {
-                background: url("../../../images/flag/icon-#{$language}.svg") no-repeat;
-            }
-        }
-    }
-}
 
 .eu-swiper {
     overflow: auto;

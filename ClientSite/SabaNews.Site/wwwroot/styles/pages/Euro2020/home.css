@@ -154,6 +154,23 @@ p.has-text-align-center {
         right: 0.4rem;
         bottom: 6rem; } }
 
+.block-extension {
+  display: flex;
+  align-items: flex-start; }
+  .block-extension .block-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 7rem; }
+  .block-extension .card-vertical {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #e5e5e5; }
+    .block-extension .card-vertical:not(:first-child) .card-vertical__title {
+      font-size: 1.4rem;
+      font-weight: normal; }
+    .block-extension .card-vertical:last-child {
+      border-bottom: none; }
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -724,22 +741,81 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .overflow-modal {
   overflow: hidden; }
 
-.block-extension {
-  display: flex;
-  align-items: flex-start; }
-  .block-extension .block-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7rem; }
-  .block-extension .card-vertical {
-    margin-bottom: 1.2rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid #e5e5e5; }
-    .block-extension .card-vertical:not(:first-child) .card-vertical__title {
+.header .top-header {
+  background: url(../../../images/euro2020/banner-menu.png) no-repeat;
+  height: 16rem;
+  box-shadow: none;
+  padding: 0; }
+  @media (max-device-width: 767px) {
+    .header .top-header {
+      background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+      height: 12rem;
+      display: block;
+      top: 11rem; } }
+  .header .top-header .logo-euro {
+    background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+    width: 6.8rem;
+    height: 7.8rem;
+    margin: 2.1rem auto 2.1rem; }
+  .header .top-header .group-menu .nav-menu .main-menu {
+    display: none; }
+
+.header .child-mobile-menu {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 19rem; }
+  @media (max-device-width: 767px) {
+    .header .child-mobile-menu {
+      position: relative;
+      top: unset; } }
+  .header .child-mobile-menu .icon-arrow {
+    display: none;
+    background-image: url(../../../images/icon/arrow.svg); }
+    @media (max-device-width: 767px) {
+      .header .child-mobile-menu .icon-arrow {
+        display: block; } }
+  .header .child-mobile-menu .main-child-menu {
+    background-color: #03647B;
+    border: none;
+    overflow-x: auto;
+    justify-content: center;
+    width: 112rem;
+    margin: 0 auto; }
+    @media (max-device-width: 767px) {
+      .header .child-mobile-menu .main-child-menu {
+        width: 100%;
+        background-color: #fff;
+        justify-content: flex-start;
+        padding: 0 12px;
+        height: 3.2rem; } }
+  .header .child-mobile-menu .menu-item {
+    padding: 11px 30px 9px;
+    display: inline-block; }
+    @media (max-device-width: 767px) {
+      .header .child-mobile-menu .menu-item {
+        padding: 11px 16px 9px 0; } }
+    .header .child-mobile-menu .menu-item:hover {
+      background-color: #fff; }
+      .header .child-mobile-menu .menu-item:hover .item {
+        color: #F12F19; }
+    .header .child-mobile-menu .menu-item .item {
+      color: #FFFDF9;
       font-size: 1.4rem;
-      font-weight: normal; }
-    .block-extension .card-vertical:last-child {
-      border-bottom: none; }
+      padding: 0; }
+      @media (max-device-width: 767px) {
+        .header .child-mobile-menu .menu-item .item {
+          color: #4f4f4f;
+          font-size: 1.3rem; } }
+
+.header .header-controls .languages-box .flag-en {
+  background: url("../../../images/flag/icon-en.svg") no-repeat; }
+
+.header .header-controls .languages-box .flag-cn {
+  background: url("../../../images/flag/icon-cn.svg") no-repeat; }
+
+.header .header-controls .languages-box .flag-vn {
+  background: url("../../../images/flag/icon-vn.svg") no-repeat; }
 
 /* vietnamese */
 @font-face {
@@ -1649,82 +1725,6 @@ button {
   @media (max-device-width: 767px) {
     .main-content {
       padding-top: 14rem; } }
-
-.header .top-header {
-  background: url(../../../images/euro2020/banner-menu.png) no-repeat;
-  height: 16rem;
-  box-shadow: none;
-  padding: 0; }
-  @media (max-device-width: 767px) {
-    .header .top-header {
-      background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
-      height: 12rem;
-      display: block;
-      top: 11rem; } }
-  .header .top-header .logo-euro {
-    background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
-    width: 6.8rem;
-    height: 7.8rem;
-    margin: 2.1rem auto 2.1rem; }
-  .header .top-header .group-menu .nav-menu .main-menu {
-    display: none; }
-
-.header .child-mobile-menu {
-  display: block;
-  position: absolute;
-  width: 100%;
-  top: 19rem; }
-  @media (max-device-width: 767px) {
-    .header .child-mobile-menu {
-      position: relative;
-      top: unset; } }
-  .header .child-mobile-menu .icon-arrow {
-    display: none;
-    background-image: url(../../../images/icon/arrow.svg); }
-    @media (max-device-width: 767px) {
-      .header .child-mobile-menu .icon-arrow {
-        display: block; } }
-  .header .child-mobile-menu .main-child-menu {
-    background-color: #03647B;
-    border: none;
-    overflow-x: auto;
-    justify-content: center;
-    width: 112rem;
-    margin: 0 auto; }
-    @media (max-device-width: 767px) {
-      .header .child-mobile-menu .main-child-menu {
-        width: 100%;
-        background-color: #fff;
-        justify-content: flex-start;
-        padding: 0 12px;
-        height: 3.2rem; } }
-  .header .child-mobile-menu .menu-item {
-    padding: 11px 30px 9px;
-    display: inline-block; }
-    @media (max-device-width: 767px) {
-      .header .child-mobile-menu .menu-item {
-        padding: 11px 16px 9px 0; } }
-    .header .child-mobile-menu .menu-item:hover {
-      background-color: #fff; }
-      .header .child-mobile-menu .menu-item:hover .item {
-        color: #F12F19; }
-    .header .child-mobile-menu .menu-item .item {
-      color: #FFFDF9;
-      font-size: 1.4rem;
-      padding: 0; }
-      @media (max-device-width: 767px) {
-        .header .child-mobile-menu .menu-item .item {
-          color: #4f4f4f;
-          font-size: 1.3rem; } }
-
-.header .header-controls .languages-box .flag-en {
-  background: url("../../../images/flag/icon-en.svg") no-repeat; }
-
-.header .header-controls .languages-box .flag-cn {
-  background: url("../../../images/flag/icon-cn.svg") no-repeat; }
-
-.header .header-controls .languages-box .flag-vn {
-  background: url("../../../images/flag/icon-vn.svg") no-repeat; }
 
 .eu-swiper {
   overflow: auto;
