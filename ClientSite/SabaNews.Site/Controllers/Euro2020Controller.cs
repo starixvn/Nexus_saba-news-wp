@@ -95,6 +95,39 @@ namespace SabaNews.Site.Controllers
             return View(Model);
         }
 
+        [Route("/euro-2020/video-euro-2020")]
+        public async Task<IActionResult> Video()
+        {
+            var postParam = new PostParam
+            {
+                Start = 0,
+                End = Constants.Total,
+                Slug = Constants.Euro2020VideoSlug
+            };
+            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            if (!postTemplate.Posts.Any())
+            {
+                return View();
+            }
+            var cate = await postService.GetCateDetailAsync(Constants.Euro2020VideoSlug);
+            var viewData = new ViewData
+            {
+                HeadTitle = cate.Title,
+                Title = cate.SEOTitle ??= cate.Title,
+                Description = cate.Description
+            };
+            var Model = new CategoryViewModel
+            {
+                Posts = postTemplate.Posts,
+                Category = cate,
+                ViewData = viewData
+
+            };
+            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
+            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020VideoSlug;
+            return View(Model);
+        }
+
         [Route("/euro-2020/lich-thi-dau-euro-2020")]
         public async Task<IActionResult> Schedule()
         {

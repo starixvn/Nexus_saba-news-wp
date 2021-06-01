@@ -157,7 +157,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="@Url.Action("Index", "Euro2020")" class="item">
+                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020HotNewsSlug} )" class="item">
                     @Constants.Euro2020HotNews
                 </a>
             </li>
@@ -174,7 +174,7 @@
                 <a href="@Url.Action("Ranking", "Euro2020")" class="item">Bảng xếp hạng</a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
-                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020VideoSlug} )" class="item">@Constants.Euro2020Video</a>
+                <a href="@Url.Action("Video", "Euro2020")" class="item">@Constants.Euro2020Video</a>
             </li>
         </ul>
         <span class="icon-arrow scroll-mobile-menu"></span>
