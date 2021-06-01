@@ -67,8 +67,10 @@
 										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-@(card)__title">@Model.HotNews[i].PostTitle</a>
-								<p class="card-@(card)__datetime">@Model.HotNews[i].PostTime</p>
+                                <div class="card-horizontal__content">
+                                    <a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="title">@Model.HotNews[i].PostTitle</a>
+                                    <p class="datetime">@Model.HotNews[i].PostTime</p>
+                                </div>								
 							</div>
 						}
 					</div>
