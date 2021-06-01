@@ -56,17 +56,19 @@
 						</div>
 						@for (int i = 1; i < Model.HotNews.Length; i++)
 						{
+							var card = isMobile || isTablet ? "horizontal" : "vertical";
+							
 							string featuredImg = Model.HotNews[i].GetImageBySize(ImageWidth.Width300);
-							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-vertical__image">
+							<div class="card-@card">
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-@(card)__image">
 									<picture>
 										<source srcset="@featuredImg" type="image/webp" class="img-res">
 										<source srcset="@featuredImg" type="image/jpeg" class="img-res">
 										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
 									</picture>
 								</a>
-								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-vertical__title">@Model.HotNews[i].PostTitle</a>
-								<p class="card-vertical__datetime">@Model.HotNews[i].PostTime</p>
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.HotNews[i].Slug})" class="card-@(card)__title">@Model.HotNews[i].PostTitle</a>
+								<p class="card-@(card)__datetime">@Model.HotNews[i].PostTime</p>
 							</div>
 						}
 					</div>
