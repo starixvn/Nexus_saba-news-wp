@@ -4,6 +4,7 @@ using SabaNews.Criteria;
 using SabaNews.Models;
 using SabaNews.Models.ViewModel;
 using SabaNews.Services.Interfaces;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -95,13 +96,16 @@ namespace SabaNews.Site.Controllers
             return View(Model);
         }
 
+        [Route("/euro-2020/video-euro-2020/page/{page}")]
         [Route("/euro-2020/video-euro-2020")]
-        public async Task<IActionResult> Video()
+        public async Task<IActionResult> Video(int page = 1)
         {
+
+            var start = (page - 1) * Constants.Perpage;
             var postParam = new PostParam
             {
-                Start = 0,
-                End = Constants.Total,
+                Start = start,
+                End = Constants.Perpage,
                 Slug = Constants.Euro2020VideoSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
@@ -114,11 +118,16 @@ namespace SabaNews.Site.Controllers
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
-                Description = cate.Description
+                Description = cate.Description,
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(postTemplate.TotalItems / (double)Constants.Perpage),
+                Controller = Constants.Euro2020Video
+
             };
             var Model = new CategoryViewModel
             {
-                Posts = postTemplate.Posts,
+                Posts = postTemplate.Posts.ToArray(),
                 Category = cate,
                 ViewData = viewData
 

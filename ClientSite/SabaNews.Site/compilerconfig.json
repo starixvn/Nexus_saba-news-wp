@@ -46,5 +46,9 @@
   {
     "outputFile": "wwwroot/styles/pages/Euro2020/team.css",
     "inputFile": "wwwroot/styles/pages/Euro2020/team.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/Euro2020/video.css",
+    "inputFile": "wwwroot/styles/pages/Euro2020/video.scss"
     }
 ]
