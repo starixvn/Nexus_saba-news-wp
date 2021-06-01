@@ -24,115 +24,20 @@
 			<div class="container">
 				<h2 class="block__title"><span class="text-title">@Model.ViewData.HeadTitle</span></h2>
 
-                <div class="block__content">
-                    @*@foreach (var post in Model.Posts)
-        {
-            var arrTeamInfo = post.PostSeoTitle.Split('-');
-            var teamName = arrTeamInfo[0];
-            var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
-            <div class="card-vertical">
-                <div class="group group-mobile">
-                    <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })" class="card-vertical__title"><span class="flag-@teamFlag"></span> @teamName - @teamFlag </a>
-                </div>
-            </div>
-        }*@
-                    <a class="team" href="#">
-                        <span class="flag-germany"></span>
-                        <span class="name">Đức</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-ukraine"></span>
-                        <span class="name">Ukraine</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-switzerland"></span>
-                        <span class="name">Thụy Sỹ</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-sweden"></span>
-                        <span class="name">Thụy Điển</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-czech"></span>
-                        <span class="name">Cộng hòa Séc</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-poland"></span>
-                        <span class="name">Ba lan</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-spain"></span>
-                        <span class="name">Tây Ban Nha</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-scotland"></span>
-                        <span class="name">Scotland</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-finland"></span>
-                        <span class="name">Phần Lan</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-russia"></span>
-                        <span class="name">Nga</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-croatia"></span>
-                        <span class="name">Croatia</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-austria"></span>
-                        <span class="name">Áo</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-hungary"></span>
-                        <span class="name">Hungary</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-netherlands"></span>
-                        <span class="name">Hà Lan</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-france"></span>
-                        <span class="name">Pháp</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-italia"></span>
-                        <span class="name">Ý</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-belgium"></span>
-                        <span class="name">Bỉ</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-england"></span>
-                        <span class="name">Anh</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-portugal"></span>
-                        <span class="name">Bồ đào nha</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-turkey"></span>
-                        <span class="name">Thổ nhĩ kỳ</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-slovakia"></span>
-                        <span class="name">Slovakia</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-denmark"></span>
-                        <span class="name">Đan mạch</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-macedonia"></span>
-                        <span class="name">Bắc Macedonia</span>
-                    </a>
-                    <a class="team" href="#">
-                        <span class="flag-wales"></span>
-                        <span class="name">Xứ wales</span>
-                    </a>
-                </div>
+				<div class="block__content">
+					@foreach (var post in Model.Posts)
+					{
+						var arrTeamInfo = post.PostSeoTitle.Split('-');
+						var teamName = arrTeamInfo[0];
+						var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
+
+						<a class="team" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">
+							<span class="flag-@teamFlag"></span>
+							<span class="name">@teamName</span>
+						</a>
+
+					}
+				</div>
 			</div>
 	</div>
 </div>
