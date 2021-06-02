@@ -9,7 +9,9 @@
     using Fanex.Data.Repository;
     using Fanex.Logging;
     using Hangfire;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Authentication.Google;
     using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
@@ -60,56 +62,18 @@
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-            })
-                .AddCookie(options =>
-                {
-                    options.Cookie.IsEssential = true;
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(ExpireMinutes);
-                    options.Cookie.Name = ".Sabasports.Auth.SharedCookie";
-                })
-                .AddGoogle(options =>
-                {
-                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
-                    options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
-                    options.Backchannel = GetDefaultHttpClient(configuration);
-                    options.CorrelationCookie = new CookieBuilder
-                    {
-                        Expiration = TimeSpan.FromDays(1),
-                        Name = "Sabasports.Google.Cookie"
-                    };
-                    options.Events.OnCreatingTicket = (context) =>
-                    {
-                        var picture = context.User.GetProperty("picture").GetString();
-
-                        context.Identity.AddClaim(new Claim(ClaimTypes.Thumbprint, picture));
-
-                        return Task.CompletedTask;
-                    };
-                }).AddFacebook(options =>
-                {
-                    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
-                    options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
-                    options.Backchannel = GetDefaultHttpClient(configuration);
-
-                    options.CorrelationCookie = new CookieBuilder
-                    {
-                        Expiration = TimeSpan.FromDays(1),
-                        Name = "Sabasports.Facebook.Cookie"
-                    };
-                    options.Fields.Add("picture");
-                    options.Events = new OAuthEvents
-                    {
-                        OnCreatingTicket = context =>
-                        {
-                            var identity = (ClaimsIdentity)context.Principal.Identity;
-                            var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").GetString();
-                            identity.AddClaim(new Claim(ClaimTypes.Thumbprint, profileImg));
-                            return Task.CompletedTask;
-                        }
-                    };
-                });
+            }).AddCookie(options =>
+            {
+                options.Cookie.IsEssential = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(ExpireMinutes);
+                options.Cookie.Name = ".Sabasports.Auth.SharedCookie";
+            }).AddGoogle(options =>
+            {
+                AddGoogleAuthenticateOptions(services, options, configuration);
+            }).AddFacebook(options =>
+            {
+                AddFacebookAuthenticateOptions(services, options, configuration);
+            });
         }
 
         public static void RegisterCookiePolicy(this IServiceCollection services)
@@ -188,6 +152,72 @@
             }
 
             return httpClient;
+        }
+
+        private static void RemoteFailureWriteLogAsync(RemoteFailureContext context, IServiceCollection services, string provider)
+        {
+            context.HandleResponse();
+            var logger = services.BuildServiceProvider().GetRequiredService<ILogger>();
+            logger.ErrorAsync(provider, context.Failure);
+        }
+
+        private static void AddGoogleAuthenticateOptions(IServiceCollection services, GoogleOptions options, IConfiguration configuration)
+        {
+            options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
+            options.ClientSecret = configuration.GetValue<string>("Authentication:Google:ClientSecret");
+            options.Backchannel = GetDefaultHttpClient(configuration);
+            options.CorrelationCookie = new CookieBuilder
+            {
+                Expiration = TimeSpan.FromDays(1),
+                Name = "Sabasports.Google.Cookie"
+            };
+            options.Events = new OAuthEvents
+            {
+                OnCreatingTicket = context =>
+                {
+                    var picture = context.User.GetProperty("picture").GetString();
+
+                    context.Identity.AddClaim(new Claim(ClaimTypes.Thumbprint, picture));
+
+                    return Task.CompletedTask;
+                },
+                OnRemoteFailure = context =>
+                {
+                    RemoteFailureWriteLogAsync(context, services, "Google");
+                    return Task.CompletedTask;
+                }
+            };
+        }
+
+        private static void AddFacebookAuthenticateOptions(IServiceCollection services, FacebookOptions options, IConfiguration configuration)
+        {
+            options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
+            options.ClientSecret = configuration.GetValue<string>("Authentication:Facebook:ClientSecret");
+            options.Backchannel = GetDefaultHttpClient(configuration);
+
+            options.CorrelationCookie = new CookieBuilder
+            {
+                Expiration = TimeSpan.FromDays(1),
+                Name = "Sabasports.Facebook.Cookie"
+            };
+            options.Fields.Add("picture");
+            options.Events = new OAuthEvents
+            {
+                OnCreatingTicket = context =>
+                {
+                    var identity = (ClaimsIdentity)context.Principal.Identity;
+                    var profileImg = context.User.GetProperty("picture").GetProperty("data").GetProperty("url").GetString();
+                    identity.AddClaim(new Claim(ClaimTypes.Thumbprint, profileImg));
+                    return Task.CompletedTask;
+                },
+                OnRemoteFailure = context =>
+                {
+                    RemoteFailureWriteLogAsync(context, services, "Facebook");
+                    return Task.CompletedTask;
+                }
+            };
         }
     }
 }
