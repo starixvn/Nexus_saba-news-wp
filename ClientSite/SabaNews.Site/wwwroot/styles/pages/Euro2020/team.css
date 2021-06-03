@@ -960,21 +960,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   height: 32px;
   background: url("../../../images/flag-event/spain.svg") no-repeat; }
 
-.container {
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto; }
-  @media screen and (max-width: 1024px) {
-    .container {
-      padding: 0 1.2rem; } }
-  @media (min-width: 1280px) {
-    .container {
-      max-width: 114rem; } }
-
-.main-content {
-  padding-top: 18rem; }
-
 .block__title {
   margin-bottom: 4rem;
   font-size: 2rem;
@@ -995,6 +980,21 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     padding: 0 1.6rem;
     background-color: #fff; }
 
+.main-content {
+  padding-top: 18rem; }
+
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin-right: auto;
+  margin-left: auto; }
+  @media screen and (max-width: 1024px) {
+    .container {
+      padding: 0 1.2rem; } }
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 114rem; } }
+
 .block__content {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1007,7 +1007,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .block__content .team [class*="flag"] {
       width: 8rem;
       height: 8rem;
-      justify-self: center; }
+      justify-self: center;
+      border: 2px solid #bdbdbd;
+      border-radius: 50%;
+      background-clip: content-box; }
   .block__content .name {
     display: block;
     text-align: center;

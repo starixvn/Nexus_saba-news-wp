@@ -494,7 +494,8 @@ $border-block-color: #4DAEC6;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 5px solid rgba(255, 255, 255, 0.7);
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            background-clip: padding-box;
 
             @include Mobile {
                 height: 3.6rem;
@@ -517,7 +518,6 @@ $border-block-color: #4DAEC6;
             }
         }
     }
-
 }
 
 @media screen and (max-device-width: 768px) {
