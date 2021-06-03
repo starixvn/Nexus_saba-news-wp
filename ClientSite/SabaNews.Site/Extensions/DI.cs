@@ -18,6 +18,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
     using SabaNews.Services;
@@ -158,7 +159,15 @@
         {
             context.HandleResponse();
             var logger = services.BuildServiceProvider().GetRequiredService<ILogger>();
-            logger.ErrorAsync(provider, context.Failure);
+            var httpContext = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
+            var userAgent = httpContext.HttpContext.Request.Headers["User-Agent"].ToString();
+            var errorObject = new
+            {
+                Provider = provider,
+                UserAgent = userAgent,
+                ErrorMessage = context.Failure.Message,
+            };
+            logger.ErrorAsync(JsonConvert.SerializeObject(errorObject));
         }
 
         private static void AddGoogleAuthenticateOptions(IServiceCollection services, GoogleOptions options, IConfiguration configuration)
