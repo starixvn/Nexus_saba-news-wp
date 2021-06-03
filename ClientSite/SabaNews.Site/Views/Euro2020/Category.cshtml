@@ -117,7 +117,18 @@
 						<a href="@linkLast" class="icon-pagination icon-page-last"></a>
 					</div>
 				}
+
+				@if (Model.ViewData.Slug != null)
+				{
+					@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
+				}
+				else
+				{
+					@(await Component.InvokeAsync("Sidebar"))
+				}
 			</div>
+			
+
 		</div>
 	</div>
 </div>

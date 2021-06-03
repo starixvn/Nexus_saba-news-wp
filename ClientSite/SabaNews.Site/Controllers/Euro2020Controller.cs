@@ -88,7 +88,8 @@ namespace SabaNews.Site.Controllers
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
                 TotalPages = (int)Math.Ceiling(postTemplate.TotalItems / (double)Constants.Perpage),
-                Controller = Constants.Euro2020Video
+                Controller = Constants.Euro2020Video,
+                Slug = slug
             };
             var Model = new CategoryViewModel
             {
