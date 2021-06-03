@@ -1001,6 +1001,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   justify-content: center;
   grid-row-gap: 4.8rem;
   margin-bottom: 6rem; }
+  @media (max-device-width: 767px) {
+    .block__content {
+      grid-template-columns: repeat(3, 1fr); } }
   .block__content .team {
     text-decoration: none;
     display: grid; }
@@ -1011,6 +1014,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       border: 2px solid #bdbdbd;
       border-radius: 50%;
       background-clip: content-box; }
+      @media (max-device-width: 767px) {
+        .block__content .team [class*="flag"] {
+          width: 7rem;
+          height: 7rem; } }
   .block__content .name {
     display: block;
     text-align: center;
@@ -1018,3 +1025,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     color: #081224;
     margin-top: 2.4rem;
     text-transform: uppercase; }
+    @media (max-device-width: 767px) {
+      .block__content .name {
+        font-size: 1.4rem; } }

@@ -1485,6 +1485,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .container {
   width: 80rem; }
+  @media (max-device-width: 767px) {
+    .container {
+      width: 100%; } }
 
 @media screen and (max-device-width: 768px) {
   .swiper-container .swiper-slide .img-item {

@@ -1524,10 +1524,10 @@ button {
   .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
     display: block; } }
 
-.main-content {
+.main {
   padding-top: 18rem; }
   @media (max-device-width: 767px) {
-    .main-content {
+    .main {
       padding-top: 14rem; } }
 
 .hide {

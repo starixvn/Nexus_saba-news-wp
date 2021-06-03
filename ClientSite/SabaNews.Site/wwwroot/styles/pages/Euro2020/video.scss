@@ -35,6 +35,9 @@ $border-block-color: #4DAEC6;
 
 .container {
     width: 80rem;
+    @include Mobile {
+        width: 100%;
+    }
 }
 
 
