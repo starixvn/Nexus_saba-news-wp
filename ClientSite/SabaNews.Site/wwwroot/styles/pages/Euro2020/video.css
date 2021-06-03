@@ -816,6 +816,29 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .header .header-controls .languages-box .flag-vn {
   background: url("../../../images/flag/icon-vn.svg") no-repeat; }
 
+.block__title {
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  color: #F12F19;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative; }
+  .block__title:before {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: #F12F19;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    top: 10px; }
+  .block__title .text-title {
+    padding: 0 1.6rem;
+    background-color: #fff; }
+
+.main-content {
+  padding-top: 18rem; }
+
 /* vietnamese */
 @font-face {
   font-family: 'Montserrat';
@@ -905,76 +928,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/notosans/v11/o-0NIpQlx3QUlC5A4PNjXhFVZNyB.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-
-.block {
-  margin-bottom: 2rem; }
-  @media screen and (max-width: 1024px) {
-    .block {
-      margin-bottom: 0;
-      padding-bottom: 1.6rem; } }
-  .block__title {
-    margin-bottom: 1.2rem;
-    position: relative;
-    padding-left: 1rem; }
-    @media screen and (max-width: 1024px) {
-      .block__title {
-        margin-bottom: .9rem; } }
-    .block__title::after {
-      content: "";
-      display: block;
-      background: #F12F19;
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: .3rem;
-      height: 2rem;
-      z-index: 0; }
-    .block__title a {
-      font-weight: bold;
-      font-size: 2rem;
-      line-height: 2.7rem;
-      color: #F12F19;
-      text-decoration: none;
-      text-transform: uppercase;
-      background-color: #FFFDF9;
-      position: relative;
-      z-index: 9;
-      padding-right: 1rem; }
-      .block__title a:hover {
-        color: #cb200c; }
-      @media screen and (max-width: 1024px) {
-        .block__title a {
-          font-size: 1.6rem; } }
-
-button {
-  outline: none;
-  border: 0;
-  padding: 0; }
-
-.btn-play-video {
-  height: 8rem;
-  width: 8rem;
-  background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(50%, -50%);
-  right: 50%;
-  top: 50%;
-  cursor: pointer; }
-  @media screen and (max-width: 1024px) {
-    .btn-play-video {
-      height: 4.6rem;
-      width: 4.6rem; } }
-  .btn-play-video span {
-    font-size: 4.6rem; }
-    @media screen and (max-width: 1024px) {
-      .btn-play-video span {
-        font-size: 2rem; } }
 
 .container {
   width: 100%;
@@ -1524,17 +1477,14 @@ button {
   .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
     display: block; } }
 
-.main-content {
-  padding-top: 18rem; }
-  @media (max-device-width: 767px) {
-    .main-content {
-      padding-top: 14rem; } }
-
 .hide {
   display: none; }
 
 .show {
   display: block; }
+
+.container {
+  width: 80rem; }
 
 @media screen and (max-device-width: 768px) {
   .swiper-container .swiper-slide .img-item {
@@ -1548,20 +1498,25 @@ button {
   .header .header-controls {
     border-bottom: 1px solid #eee; } }
 
-.wapper.active-fixed .top-header {
-  position: relative; }
+/*.wapper.active-fixed {
+    .top-header {
+        position: relative;
+    }
 
-.wapper.active-fixed .child-mobile-menu {
-  position: fixed;
-  z-index: 10005;
-  top: 0; }
+    .child-mobile-menu {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+    }
 
-.wapper.active-fixed .button-mobile {
-  z-index: 10004; }
+    .button-mobile {
+        z-index: 10004;
+    }
 
-.wapper.active-fixed .main-content {
-  padding-top: 6rem; }
-
+    .main-content {
+        padding-top: 6rem;
+    }
+}*/
 .block__swipper {
   margin-bottom: 4rem; }
   .block__swipper .swiper-container .swiper-slide .img-item {
@@ -1598,7 +1553,7 @@ button {
     .play_video iframe {
       height: 22rem; } }
 
-.wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile, .wapper.active-fixed .top-header {
+.wapper.active-fixed .child-mobile-menu {
   position: fixed;
   z-index: 10005;
   top: 0; }
