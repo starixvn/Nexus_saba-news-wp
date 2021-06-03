@@ -154,6 +154,10 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020ScheduleSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
+            if (!postTemplate.Posts.Any())
+            {
+                return View("~/Views/Home/EmptyBlog.cshtml");
+            }
             var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
