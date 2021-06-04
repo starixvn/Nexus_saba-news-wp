@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     [Route("/whoami")]
+    [Route("/whoami.aspx")]
     public class WhoamiController : Controller
     {
         public IActionResult Index()
