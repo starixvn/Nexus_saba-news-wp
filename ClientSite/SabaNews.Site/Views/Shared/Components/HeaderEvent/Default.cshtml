@@ -156,12 +156,12 @@
                     Trang chủ
                 </a>
             </li>
-            <li class="menu-item">
+            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020HotNewsSlug ? "active" : "")">
                 <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020HotNewsSlug} )" class="item">
                     @Constants.Euro2020HotNews
                 </a>
             </li>
-            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
+            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020IdentifySlug ? "active" : "")">
                 <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020IdentifySlug} )" class="item">@Constants.Euro2020Identify</a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
@@ -170,10 +170,10 @@
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
                 <a href="@Url.Action("Schedule", "Euro2020")" class="item">@Constants.Euro2020Schedule</a>
             </li>
-            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020ScheduleSlug ? "active" : "")">
+            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
                 <a href="@Url.Action("Ranking", "Euro2020")" class="item">Bảng xếp hạng</a>
             </li>
-            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020RankingSlug ? "active" : "")">
+            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020VideoSlug ? "active" : "")">
                 <a href="@Url.Action("Video", "Euro2020")" class="item">@Constants.Euro2020Video</a>
             </li>
         </ul>
