@@ -11,7 +11,7 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/euro2020_home.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/styles/pages/Euro2020/ranking.css" asp-append-version="true">
 }
 
 @section Scripts{
@@ -22,23 +22,129 @@
 <div class="page">
 	@(await Component.InvokeAsync("HeaderEvent"))
 	<div class="main-content">
-		<div class="block__content">
-			<div class="container">
-				<h2 class="block__title"><a href="">@Model.ViewData.HeadTitle</a></h2>
+		<div class="container">
+				<h2 class="block__title"><span class="text-title">@Model.ViewData.HeadTitle</span></h2>
 
-				<div class="block__content">
-					<ul class="sub-category">
-						@foreach (var post in Model.Posts)
-						{
-							<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data">@post.PostTitle</a></li>
-						}
-					</ul>
+                <div class="block__content">
+                    <div class="block">
+                        <ul class="sub-category">
+                            @foreach (var post in Model.Posts)
+                            {
+                                <li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data">@post.PostTitle</a></li>
+                            }
+                        </ul>
+                        <div class="post_content">
+                            <div class="table-block">
+                                <div class="row title">
+                                    <div class="col">Bảng A</div>
+                                    <div class="col">Trân</div>
+                                    <div class="col">Thắng</div>
+                                    <div class="col">Hòa</div>
+                                    <div class="col">Thua</div>
+                                    <div class="col">Hiệu số</div>
+                                    <div class="col point">Điểm</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col point">0</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col point">0</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col point">0</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col">0</div>
+                                    <div class="col point">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="post_content">
-						<div>@Model.Posts[0].PostContent</div>
-					</div>
-				</div>
+                    <div class="block table-block">
+                        <div class="row title">
+                            <div class="col">Thứ tự các đội xếp thứ 3</div>
+                            <div class="col">Trân</div>
+                            <div class="col">Thắng</div>
+                            <div class="col">Hòa</div>
+                            <div class="col">Thua</div>
+                            <div class="col">Hiệu số</div>
+                            <div class="col point">Điểm</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col point">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col point">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col point">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col point">0</div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><span class="number number-5">5</span><span class="flag-croatia"></span><span class="country">Croatia</span></div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col">0</div>
+                            <div class="col point">0</div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <h2 class="block__title"><span class="text-title">Lịch thi đấu</span></h2>
+                    </div>
+                </div>
 			</div>
-		</div>
 	</div>
 </div>

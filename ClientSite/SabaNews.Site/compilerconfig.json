@@ -58,5 +58,9 @@
   {
     "outputFile": "wwwroot/styles/pages/Euro2020/category.css",
     "inputFile": "wwwroot/styles/pages/Euro2020/category.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/Euro2020/ranking.css",
+    "inputFile": "wwwroot/styles/pages/Euro2020/ranking.scss"
     }
 ]
