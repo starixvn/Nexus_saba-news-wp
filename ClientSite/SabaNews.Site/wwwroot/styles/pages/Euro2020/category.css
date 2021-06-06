@@ -1429,6 +1429,12 @@ button {
   height: 32px;
   background: url("../../../images/flag-event/spain.svg") no-repeat; }
 
+.flag-undefined {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url("../../../images/flag-event/undefined.svg") no-repeat; }
+
 .swiper-container {
   width: 100%;
   max-width: 100%;

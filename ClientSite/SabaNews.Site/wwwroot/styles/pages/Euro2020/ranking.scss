@@ -15,6 +15,9 @@
 .container {
     width: 83.2rem;
     margin: 0 auto;
+    @include Mobile {
+        width: 100%;
+    }
 }
 
 .block {
@@ -48,79 +51,120 @@
     }
 }
 
+.table-scroll {
+    position: relative;
+    overflow: hidden;
+}
 
-.table-block {
-    .row {
-        border-bottom: 1px solid #CCDDE1;
-        display: grid;
-        grid-template-columns: 28rem repeat(6, 1fr);
-        align-items: center;
+.table-wrap {
+    width: 100%;
+    overflow: auto;
+    
+}
 
-        &:not(.title) {
-            font-size: 1.8rem;
-        }
+.table-scroll table {
+    width: 100%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0; 
+    @media screen and (max-device-width: 768px) {
+        width: 50rem;
+    }
+}
 
-        .col {
-            padding: 1rem 0;
+.table-scroll table, .clone {
+    > tbody > tr:last-child td{
+        border-bottom: none;
+    }
+}
 
-            &:not(:first-child) {
-                justify-self: center;
-            }
+.table-scroll th, .table-scroll td {
+    padding: 10px 0;
+    background: #fff;
+    white-space: nowrap;
+    vertical-align: top;
 
-            &:first-child {
-                display: flex;
-                align-items: center;
-                font-weight: bold;
+    &:last-child {
+        color: #064858;
+        font-weight: bold;
+    }
+}
 
-                .country {
-                    text-transform: uppercase;
-                    font-size: 1.4rem;
-                }
+.table-scroll td, .clone td {
+    border-bottom: 1px solid #CCDDE1;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.8rem;    
+}
+.table-scroll th, .clone th {
+    border-bottom: 1px solid #4DAEC6;
+    background-color: #C9E2E9;
+    padding: 4px 0;
+    &.col {
+        width: 8rem;
+    }
+}
 
-                [class*="flag"] {
-                    margin: 0 1rem;
-                }
+.table-scroll thead {
+    background: #C9E2E9;
+}
 
-                .number {
-                    width: 5.2rem;
-                    height: 3.2rem;
-                    color: #fff;
-                    clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
-                    padding-left: 1.6rem;
-                    line-height: 32px;
+.clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
 
-                    $numbers: ("1": #024657, "2": #03576B, "3": #03677F, "4": #047894, "5": #0588A8);
+.clone th, .clone td {
+    visibility: hidden
+}
 
-                    @each $number, $color in $numbers {
-                        &.number-#{$number} {
-                            background-color: $color;
-                        }
-                    }
-                }
-            }
 
-            &.point {
-                color: #064858;
-            }
-        }
+.clone th.fixed-side, .main-table th.fixed-side {
+    padding-left: 2rem;
+}
 
-        &.title {
-            background-color: #C9E2E9;
-            border-bottom-color: #4DAEC6;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #4f4f4f;
+.clone .fixed-side, .main-table .fixed-side {
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
 
-            .col:first-child {
-                color: #03647B;
-                padding-left: 2rem;
-            }
-        }
+    .country {
+        text-transform: uppercase;
+        font-size: 1.4rem;
 
-        &:last-child {
-            border-bottom: none;
+        @include Mobile {
+            font-size: 1.2rem;
         }
     }
+
+    [class*="flag"] {
+        margin: 0 1rem;
+    }
+
+    .number {
+        width: 5.2rem;
+        height: 3.2rem;
+        color: #fff;
+        clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
+        padding-left: 1.6rem;
+        line-height: 32px;
+        text-align: left;
+
+        $numbers: ("1": #024657, "2": #03576B, "3": #03677F, "4": #047894, "5": #0588A8);
+
+        @each $number, $color in $numbers {
+            &.number-#{$number} {
+                background-color: $color;
+            }
+        }
+    }
+}
+
+.clone thead{
+    background: transparent;
 }
 
 

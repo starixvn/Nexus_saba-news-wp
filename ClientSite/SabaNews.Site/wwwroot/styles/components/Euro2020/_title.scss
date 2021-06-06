@@ -25,5 +25,8 @@
 
 .main-content {
     padding-top: 18rem;
+    @media screen and (max-device-width: 768px){
+        padding-top: 14rem;
+    }
 }
 

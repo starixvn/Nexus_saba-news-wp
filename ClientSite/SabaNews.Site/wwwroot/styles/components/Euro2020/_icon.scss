@@ -4,7 +4,7 @@
     height: 32px;
 }
 
-$countries: italia, switzerland, wales, ukraine, turkey, sweden, slovakia, scotland, russia, portugal, poland, macedonia, netherlands, finland, hungary, england, denmark, czech, belgium, croatia, austria, germany, france, spain;
+$countries: italia, switzerland, wales, ukraine, turkey, sweden, slovakia, scotland, russia, portugal, poland, macedonia, netherlands, finland, hungary, england, denmark, czech, belgium, croatia, austria, germany, france, spain, undefined;
 
 @each $country in $countries {
     .flag-#{$country} {

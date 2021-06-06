@@ -28,4 +28,6 @@
 
 $(document).ready(function () {
     euro2020.init();
+    $('.main-table').clone(true).appendTo('#table-scroll-team').addClass('clone');
+    $('.main-table').clone(true).appendTo('#table-scroll-main').addClass('clone');
 });

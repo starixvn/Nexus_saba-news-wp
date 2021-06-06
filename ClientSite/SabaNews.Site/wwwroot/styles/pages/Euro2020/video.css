@@ -838,6 +838,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .main-content {
   padding-top: 18rem; }
+  @media screen and (max-device-width: 768px) {
+    .main-content {
+      padding-top: 14rem; } }
 
 /* vietnamese */
 @font-face {
@@ -1381,6 +1384,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 32px;
   height: 32px;
   background: url("../../../images/flag-event/spain.svg") no-repeat; }
+
+.flag-undefined {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url("../../../images/flag-event/undefined.svg") no-repeat; }
 
 .swiper-container {
   width: 100%;
