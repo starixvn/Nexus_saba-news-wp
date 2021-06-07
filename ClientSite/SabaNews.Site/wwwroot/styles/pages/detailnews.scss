@@ -453,18 +453,8 @@ img {
     font-weight: bold;
     position: relative;
     text-transform: uppercase;
-    margin-right: 2.8rem;
-    //clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-    /* &:before {
-        content: '';
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        height: 4.5rem;
-        width: calc(100% - 2px);
-        //clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-        background: #fff;
-    }*/
+    margin: 1rem 2.8rem 1rem 0;
+    
     &:after {
         content: "";
         position: absolute;
@@ -487,14 +477,19 @@ img {
         border-top: 23px solid transparent;
         content: '';
         position: absolute;
+        @include Mobile {
+            right: -26px;
+        }
     }
 
     .euro-number {
         background-color: #03647B;
         color: #fff;
         display: inline-block;
-        padding: 7px 18px 8px;
+        padding: 0 18px;
         margin-right: 12px;
+        height: 4.7rem;
+        line-height: 47px;
     }
 }
 
