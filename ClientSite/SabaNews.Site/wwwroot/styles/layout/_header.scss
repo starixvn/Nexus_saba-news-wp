@@ -49,10 +49,13 @@
                 position: relative;
             }
 
-            .banner-euro {
+            .banner-euro-desktop {
                 position: absolute;
                 left: 150px;
                 top: -3px;
+                @include Mobile {
+                    display: none;
+                }
             }
         }
 

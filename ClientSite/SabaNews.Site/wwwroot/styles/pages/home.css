@@ -214,10 +214,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .header-controls .container {
           position: relative; } }
-      .header .header-controls .container .banner-euro {
+      .header .header-controls .container .banner-euro-desktop {
         position: absolute;
         left: 150px;
         top: -3px; }
+        @media (max-device-width: 767px) {
+          .header .header-controls .container .banner-euro-desktop {
+            display: none; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
@@ -1665,6 +1668,9 @@ button {
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     .main .block-tennis .card-vertical__image {
       height: 30rem; } }
+
+.banner-euro-mobile {
+  text-align: center; }
 
 .wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile, .wapper.active-fixed .top-header {
   position: fixed;

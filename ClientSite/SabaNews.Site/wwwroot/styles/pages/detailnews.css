@@ -213,10 +213,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .header-controls .container {
           position: relative; } }
-      .header .header-controls .container .banner-euro {
+      .header .header-controls .container .banner-euro-desktop {
         position: absolute;
         left: 150px;
         top: -3px; }
+        @media (max-device-width: 767px) {
+          .header .header-controls .container .banner-euro-desktop {
+            display: none; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
