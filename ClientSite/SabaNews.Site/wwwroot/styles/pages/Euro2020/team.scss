@@ -11,6 +11,14 @@
 @import '../../components/Euro2020/title.scss';
 @import '../../components/container';
 
+.block__title {
+    margin-bottom: 4rem;
+
+    @include Mobile {
+        margin-bottom: 2rem;
+    }
+}
+
 .block__content {
     display: grid;
     grid-template-columns: repeat(6, 1fr);

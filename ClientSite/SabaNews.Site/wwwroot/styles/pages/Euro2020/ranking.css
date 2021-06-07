@@ -967,12 +967,15 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background: url("../../../images/flag-event/undefined.svg") no-repeat; }
 
 .block__title {
-  margin-bottom: 4rem;
+  margin-bottom: 2.4rem;
   font-size: 2rem;
   color: #F12F19;
   text-transform: uppercase;
   text-align: center;
   position: relative; }
+  @media screen and (max-device-width: 768px) {
+    .block__title {
+      margin-bottom: 1.2rem; } }
   .block__title:before {
     content: '';
     height: 2px;

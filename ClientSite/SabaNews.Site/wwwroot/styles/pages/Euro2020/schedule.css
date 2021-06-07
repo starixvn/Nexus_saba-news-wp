@@ -967,12 +967,15 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background: url("../../../images/flag-event/undefined.svg") no-repeat; }
 
 .block__title {
-  margin-bottom: 4rem;
+  margin-bottom: 2.4rem;
   font-size: 2rem;
   color: #F12F19;
   text-transform: uppercase;
   text-align: center;
   position: relative; }
+  @media screen and (max-device-width: 768px) {
+    .block__title {
+      margin-bottom: 1.2rem; } }
   .block__title:before {
     content: '';
     height: 2px;
@@ -1025,7 +1028,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media (max-device-width: 767px) {
         .block__content .sub-category .sub-item .tab-data {
           font-size: 1.4rem; } }
-      .block__content .sub-category .sub-item .tab-data:hover, .block__content .sub-category .sub-item .tab-data .active {
+      .block__content .sub-category .sub-item .tab-data:hover, .block__content .sub-category .sub-item .tab-data.active {
         background-color: #03647B;
         border-radius: 10px;
         color: #fff; }
@@ -1085,7 +1088,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     align-items: center; }
     @media (max-device-width: 767px) {
       .date-content .main-info {
-        grid-template-columns: 1fr 9rem 1fr; } }
+        grid-template-columns: 1fr 8rem 1fr; } }
     .date-content .main-info * {
       align-self: center; }
     .date-content .main-info .home-team, .date-content .main-info .away-team {

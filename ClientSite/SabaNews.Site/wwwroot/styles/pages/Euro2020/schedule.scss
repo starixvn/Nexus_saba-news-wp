@@ -11,6 +11,7 @@
 @import '../../components/Euro2020/title.scss';
 @import '../../components/container';
 
+
 .block__content {
     .sub-category {
         list-style: none;
@@ -36,7 +37,7 @@
                     font-size: 1.4rem;
                 }
 
-                &:hover, .active {
+                &:hover, &.active {
                     background-color: #03647B;
                     border-radius: 10px;
                     color: #fff
@@ -115,7 +116,7 @@
         align-items: center;
 
         @include Mobile {
-            grid-template-columns: 1fr 9rem 1fr;
+            grid-template-columns: 1fr 8rem 1fr;
         }
 
         * {
