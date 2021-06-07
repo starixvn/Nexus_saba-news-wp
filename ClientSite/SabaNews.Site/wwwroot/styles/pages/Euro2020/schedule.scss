@@ -36,7 +36,7 @@
                     font-size: 1.4rem;
                 }
 
-                &:hover {
+                &:hover, .active {
                     background-color: #03647B;
                     border-radius: 10px;
                     color: #fff
@@ -80,6 +80,7 @@
     .match {
         padding: 2.4rem 0;
         border-bottom: 1px solid #CCDDE1;
+
         @include Mobile {
             padding: 1rem 0;
             position: relative;
@@ -95,6 +96,7 @@
         font-size: 1.3rem;
         color: #4F4F4F;
         font-weight: bold;
+
         @include Mobile {
             position: absolute;
             width: 100%;
@@ -109,8 +111,12 @@
 
     .main-info {
         display: grid;
-        grid-template-columns: 1fr 9rem 1fr;
+        grid-template-columns: 1fr 12rem 1fr;
         align-items: center;
+
+        @include Mobile {
+            grid-template-columns: 1fr 9rem 1fr;
+        }
 
         * {
             align-self: center;
@@ -155,7 +161,8 @@
 
             .name {
                 padding-right: 1.2rem;
-                @include Mobile  {
+
+                @include Mobile {
                     padding-right: 0;
                 }
             }
@@ -163,12 +170,14 @@
 
         .away-team {
             justify-self: flex-start;
+
             @include Mobile {
                 justify-self: center;
             }
 
             .name {
                 padding-left: 1.2rem;
+
                 @include Mobile {
                     padding-left: 0;
                 }
