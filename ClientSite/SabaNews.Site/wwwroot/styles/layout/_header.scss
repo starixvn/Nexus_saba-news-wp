@@ -38,13 +38,21 @@
             border-bottom: 1px solid $separator-color;
         }
 
+
         .container {
             display: flex;
             justify-content: space-between;
             height: 100%;
+            position: relative;
 
             @include tableMobile {
                 position: relative;
+            }
+
+            .banner-euro {
+                position: absolute;
+                left: 150px;
+                top: -3px;
             }
         }
 
@@ -465,6 +473,7 @@
 
                 .active-main-menu {
                     display: flex;
+
                     @include Mobile {
                         display: block;
                         padding-top: 6.6rem;
