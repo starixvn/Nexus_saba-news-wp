@@ -21,6 +21,21 @@
             var self = next.find('.tab-data');
             getTabData(self);
         });
+        $('.previous').on('click', function () {
+            var activeTab = '';
+            tabItem.each(function (index, value) {
+                if ($(this).hasClass("active")) {
+                    activeTab = $(this);
+                    return;
+                }
+            });
+            var next = activeTab.parent().prev();
+            if (next.length === 0) {
+                next = $('.sub-item').last();
+            };
+            var self = next.find('.tab-data');
+            getTabData(self);
+        });
     }
     function getTabData(self) {
         var slug = self.data('slug');
@@ -33,6 +48,11 @@
                     $('.post_content').html(res.data.postContent);
                     tabItem.removeClass('active');
                     self.addClass('active');
+                    if ($(window).innerWidth() <= 768) {
+                        $('.sub-item').removeClass('hide-tab');
+                        $('.sub-item').hide();
+                        self.parent().show();
+                    }
                 }
             }
         });

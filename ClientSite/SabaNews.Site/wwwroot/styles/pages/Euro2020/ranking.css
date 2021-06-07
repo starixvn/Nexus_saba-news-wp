@@ -1132,11 +1132,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .clone th, .clone td {
   visibility: hidden; }
 
+.sub-item.hide-tab {
+  display: none !important; }
+
 .clone th.fixed-side, .main-table th.fixed-side {
   padding-left: 2rem; }
 
 .clone .fixed-side, .main-table .fixed-side {
-  visibility: visible;
   display: flex;
   align-items: center;
   font-weight: bold; }
