@@ -3,14 +3,16 @@
     function handleTab() {
         tabItem.on('click', function () {
             var slug = $(this).data('slug');
+            var self = $(this);
             $.ajax({
                 type: 'GET',
                 url: '/euro-2020/getTabData',
                 data: { slug: slug },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        console.log(res.data.PostContent);
                         $('.post_content').html(res.data.postContent);
+                        tabItem.parent().removeClass('active');
+                        self.parent().addClass('active');
                     }
                 }
             })
