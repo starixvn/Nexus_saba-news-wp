@@ -42,7 +42,7 @@
                 text-decoration: none;
                 padding: 15px 0 14px;
 
-                &:hover {
+                &:hover, &.active {
                     color: #fff;
                 }
             }

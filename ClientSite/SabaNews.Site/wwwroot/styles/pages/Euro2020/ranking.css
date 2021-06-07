@@ -1032,7 +1032,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       font-size: 1.8rem;
       text-decoration: none;
       padding: 15px 0 14px; }
-      .block__content .sub-category .sub-item .tab-data:hover {
+      .block__content .sub-category .sub-item .tab-data:hover, .block__content .sub-category .sub-item .tab-data.active {
         color: #fff; }
 
 .table-scroll {
