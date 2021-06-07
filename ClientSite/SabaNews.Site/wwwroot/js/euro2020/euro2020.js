@@ -2,20 +2,8 @@
     var tabItem = $('.tab-data');
     function handleTab() {
         tabItem.on('click', function () {
-            var slug = $(this).data('slug');
             var self = $(this);
-            $.ajax({
-                type: 'GET',
-                url: '/euro-2020/getTabData',
-                data: { slug: slug },
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        $('.post_content').html(res.data.postContent);
-                        tabItem.removeClass('active');
-                        self.addClass('active');
-                    }
-                }
-            });
+            getTabData(self);
         });
         $('.next').on('click', function () {
             var activeTab = '';
@@ -31,19 +19,22 @@
                 next = $('.sub-item').first();
             };
             var self = next.find('.tab-data');
-            var slug = self.data('slug');
-            $.ajax({
-                type: 'GET',
-                url: '/euro-2020/getTabData',
-                data: { slug: slug },
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        $('.post_content').html(res.data.postContent);
-                        tabItem.removeClass('active');
-                        self.addClass('active');
-                    }
+            getTabData(self);
+        });
+    }
+    function getTabData(self) {
+        var slug = self.data('slug');
+        $.ajax({
+            type: 'GET',
+            url: '/euro-2020/getTabData',
+            data: { slug: slug },
+            success: function (res) {
+                if (res.isSuccessful) {
+                    $('.post_content').html(res.data.postContent);
+                    tabItem.removeClass('active');
+                    self.addClass('active');
                 }
-            });
+            }
         });
     }
     function init() {
