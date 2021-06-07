@@ -26,145 +26,147 @@
 			<h2 class="block__title"><span class="text-title">@Model.ViewData.HeadTitle</span></h2>
 
 			<div class="block__content">
-				<div class="block">
-					<span class="previous"></span>
-					<span class="next"></span>
-					<ul class="sub-category">
-						@{
-							var first = true;
-						}
-						@foreach (var post in Model.Posts)
-						{
-							var active = "";
-							if (first)
-							{
-								first = false;
-								active = "active";
-							}
-							<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data  @active">@post.PostTitle</a></li>
-						}
-					</ul>
-					<div id="table-scroll-team" class="table-scroll">
-						<div class="table-wrap">
-							<table class="main-table">
-								<thead>
-									<tr>
-										<th class="fixed-side" scope="col">Bảng A</th>
-										<th class="col">Trận</th>
-										<th class="col">Thắng</th>
-										<th class="col">Hòa</th>
-										<th class="col">Thua</th>
-										<th class="col">Hiệu số</th>
-										<th class="col">Điểm</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="fixed-side"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td class="fixed-side"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td class="fixed-side"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-									</tr>
-									<tr>
-										<td class="fixed-side"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-									</tr>
-								</tbody>
-							</table>
+                <div class="post-content">
+                    <div class="block">
+                        <span class="previous"></span>
+                        <span class="next"></span>
+                        <ul class="sub-category">
+                            @{
+                                var first = true;
+                            }
+                            @foreach (var post in Model.Posts)
+                            {
+                                var active = "";
+                                if (first)
+                                {
+                                    first = false;
+                                    active = "active";
+                                }
+                                <li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data  @active">@post.PostTitle</a></li>
+                            }
+                        </ul>
+                        <div id="table-scroll-team" class="table-scroll">
+                            <div class="table-wrap">
+                                <table class="main-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="fixed-side" scope="col">Bảng A</th>
+                                            <th class="col">Trận</th>
+                                            <th class="col">Thắng</th>
+                                            <th class="col">Hòa</th>
+                                            <th class="col">Thua</th>
+                                            <th class="col">Hiệu số</th>
+                                            <th class="col">Điểm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fixed-side"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fixed-side"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fixed-side"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fixed-side"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-						</div>
-					</div>
-				</div>
-				<div id="table-scroll-main" class="block table-scroll">
-					<div class="table-wrap">
-						<table class="main-table">
-							<thead>
-								<tr>
-									<th class="fixed-side" scope="col">Thứ tự các đội xếp thứ 3</th>
-									<th class="col">Trận</th>
-									<th class="col">Thắng</th>
-									<th class="col">Hòa</th>
-									<th class="col">Thua</th>
-									<th class="col">Hiệu số</th>
-									<th class="col">Điểm</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="fixed-side"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td class="fixed-side"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td class="fixed-side"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td class="fixed-side"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-								<tr>
-									<td class="fixed-side"><span class="number number-5">5</span><span class="flag-croatia"></span><span class="country">Croatia</span></td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-									<td>0</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="table-scroll-main" class="block table-scroll">
+                        <div class="table-wrap">
+                            <table class="main-table">
+                                <thead>
+                                    <tr>
+                                        <th class="fixed-side" scope="col">Thứ tự các đội xếp thứ 3</th>
+                                        <th class="col">Trận</th>
+                                        <th class="col">Thắng</th>
+                                        <th class="col">Hòa</th>
+                                        <th class="col">Thua</th>
+                                        <th class="col">Hiệu số</th>
+                                        <th class="col">Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fixed-side"><span class="number number-1">1</span><span class="flag-turkey"></span><span class="country">Thổ Nhĩ Kỳ</span></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-side"><span class="number number-2">2</span><span class="flag-switzerland"></span><span class="country">Thụy Sỹ</span></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-side"><span class="number number-3">3</span><span class="flag-italia"></span><span class="country">Ý</span></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-side"><span class="number number-4">4</span><span class="flag-wales"></span><span class="country">Xứ Wales</span></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fixed-side"><span class="number number-5">5</span><span class="flag-croatia"></span><span class="country">Croatia</span></td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>				
 			</div>
 		</div>
 	</div>
