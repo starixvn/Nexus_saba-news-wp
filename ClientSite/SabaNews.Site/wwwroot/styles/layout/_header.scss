@@ -51,9 +51,9 @@
 
             .banner-euro-desktop {
                 position: absolute;
-                left: 150px;
-                top: -3px;
-                @include Mobile {
+                left: 240px;
+                top: -8px;
+                @include tableMobile {
                     display: none;
                 }
             }

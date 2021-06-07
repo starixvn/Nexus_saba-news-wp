@@ -213,9 +213,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           position: relative; } }
       .header .header-controls .container .banner-euro-desktop {
         position: absolute;
-        left: 150px;
-        top: -3px; }
-        @media (max-device-width: 767px) {
+        left: 240px;
+        top: -8px; }
+        @media screen and (max-width: 1024px) {
           .header .header-controls .container .banner-euro-desktop {
             display: none; } }
     .header .header-controls .header-auth-provider {
