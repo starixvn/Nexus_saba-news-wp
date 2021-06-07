@@ -570,7 +570,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     right: .5rem;
     top: .5rem;
     font-size: 1.5rem;
-    cursor: pointer; }
+    cursor: pointer;
+    border: none; }
     @media screen and (max-width: 1024px) {
       .search-input form .btn-search {
         top: .6rem;
@@ -1007,16 +1008,33 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .container {
       max-width: 114rem; } }
 
-.container {
+.main-content .container {
   width: 83.2rem;
   margin: 0 auto; }
   @media (max-device-width: 767px) {
-    .container {
+    .main-content .container {
       width: 100%; } }
 
 .block {
   margin-bottom: 2.4rem;
-  border: 1px solid #4DAEC6; }
+  border: 1px solid #4DAEC6;
+  position: relative; }
+  .block .next, .block .previous {
+    position: absolute;
+    top: 8px;
+    font-size: 1.6rem;
+    padding: 8px 16px;
+    cursor: pointer; }
+    .block .next:before, .block .previous:before {
+      color: #fff; }
+  .block .previous {
+    left: 0; }
+    .block .previous:before {
+      content: '\276E'; }
+  .block .next {
+    right: 0; }
+    .block .next:before {
+      content: '\276F'; }
 
 .block__content .sub-category {
   list-style: none;
