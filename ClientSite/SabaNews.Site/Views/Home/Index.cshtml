@@ -34,10 +34,10 @@
 <section class="main">    
     <div class="colums-main">
         <div class="banner"><img loading="lazy" src="~/images/banner.jpg"></div>
-        @if (isMobile)
+        @if (isMobile || isTablet)
         {
             <div class="banner-euro-mobile">
-                <img src="~/images/Euro-2020-Banner.png" />
+                <img src="~/images/Euro-2020-mobile.png" />
             </div>
         }
         <div class="block block-hot-news">
