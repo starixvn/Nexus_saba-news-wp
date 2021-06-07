@@ -166,7 +166,13 @@
 				</div>
 			</div>
 		</div>
-
+		@if (isMobile)
+		{ 
+			<div class="banner-euro-mobile">
+				<img src="~/images/Euro-2020-Banner.png" />
+			</div>
+		}
+		
 		<div class="block block-soccer">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">@ViewResources.Football</a></h2>
