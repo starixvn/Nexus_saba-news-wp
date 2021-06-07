@@ -795,9 +795,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     @media (max-device-width: 767px) {
       .header .child-mobile-menu .menu-item {
         padding: 11px 16px 9px 0; } }
-    .header .child-mobile-menu .menu-item:hover {
+    .header .child-mobile-menu .menu-item:hover, .header .child-mobile-menu .menu-item.active {
       background-color: #fff; }
-      .header .child-mobile-menu .menu-item:hover .item {
+      .header .child-mobile-menu .menu-item:hover .item, .header .child-mobile-menu .menu-item.active .item {
         color: #F12F19; }
     .header .child-mobile-menu .menu-item .item {
       color: #FFFDF9;
@@ -996,6 +996,30 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .main-content {
       padding-top: 14rem; } }
 
+.wapper.active-fixed .top-header {
+  position: relative; }
+
+.wapper.active-fixed .child-mobile-menu {
+  position: fixed;
+  z-index: 10005;
+  top: 0; }
+
+.wapper.active-fixed .button-mobile {
+  z-index: 10004; }
+
+.wapper.active-fixed .main-content {
+  padding-top: 6rem; }
+
+@media screen and (max-device-width: 768px) {
+  .hidden-body .top-header {
+    position: absolute;
+    height: calc(100% - 7rem);
+    top: 7rem; }
+    .hidden-body .top-header .group-menu .nav-menu .main-menu {
+      display: block; }
+  .header .header-controls {
+    border-bottom: 1px solid #eee; } }
+
 .container {
   width: 100%;
   padding: 0 1rem;
@@ -1039,7 +1063,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .block__content .sub-category {
   list-style: none;
   text-align: center;
-  background-color: #03647B; }
+  background-color: #03647B;
+  padding: 0 4rem; }
   .block__content .sub-category .sub-item {
     display: inline-block;
     margin-right: 4rem; }

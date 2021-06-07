@@ -76,7 +76,7 @@ $border-block-color: #4DAEC6;
                 padding: 11px 16px 9px 0;
             }
 
-            &:hover {
+            &:hover, &.active {
                 background-color: #fff;
 
                 .item {

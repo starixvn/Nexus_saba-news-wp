@@ -570,7 +570,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     right: .5rem;
     top: .5rem;
     font-size: 1.5rem;
-    cursor: pointer; }
+    cursor: pointer;
+    border: none; }
     @media screen and (max-width: 1024px) {
       .search-input form .btn-search {
         top: .6rem;
@@ -794,9 +795,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     @media (max-device-width: 767px) {
       .header .child-mobile-menu .menu-item {
         padding: 11px 16px 9px 0; } }
-    .header .child-mobile-menu .menu-item:hover {
+    .header .child-mobile-menu .menu-item:hover, .header .child-mobile-menu .menu-item.active {
       background-color: #fff; }
-      .header .child-mobile-menu .menu-item:hover .item {
+      .header .child-mobile-menu .menu-item:hover .item, .header .child-mobile-menu .menu-item.active .item {
         color: #F12F19; }
     .header .child-mobile-menu .menu-item .item {
       color: #FFFDF9;
