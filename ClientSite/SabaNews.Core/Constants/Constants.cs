@@ -110,7 +110,7 @@
 
         public const string Euro2020Controller = "Euro2020";
         public const string Euro2020 = "Euro 2020";
-        public const string Euro2020HotNews = "Tín nóng";
+        public const string Euro2020HotNews = "Tin nóng";
         public const string Euro2020Team = "Đội tuyển";
         public const string Euro2020Schedule = "Lịch thi đấu";
         public const string Euro2020Ranking = "Bảng xếp hạng";

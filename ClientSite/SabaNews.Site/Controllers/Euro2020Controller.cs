@@ -158,7 +158,7 @@ namespace SabaNews.Site.Controllers
             {
                 return View("~/Views/Home/EmptyBlog.cshtml");
             }
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
             {
