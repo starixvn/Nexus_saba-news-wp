@@ -11,8 +11,8 @@
                 success: function (res) {
                     if (res.isSuccessful) {
                         $('.post_content').html(res.data.postContent);
-                        tabItem.parent().removeClass('active');
-                        self.parent().addClass('active');
+                        tabItem.removeClass('active');
+                        self.addClass('active');
                     }
                 }
             })
