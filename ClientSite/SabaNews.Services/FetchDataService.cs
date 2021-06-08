@@ -121,7 +121,7 @@
             var recentPosts = await postService.GetPostsBySlugAsync(Constants.Euro2020HotNewsSlug, Constants.FromFirstItem, Constants.GetFourItems);
             var totalRanking = await postService.GetPostDetailBySlugAsync(Constants.Euro2020HomeRankingSlug, Constants.postType);
             var identify = await postService.GetPostsBySlugAsync(Constants.Euro2020IdentifySlug, Constants.FromFirstItem, Constants.GetFirstItem);
-            var ranking = await postService.GetPostsBySlugAsync(Constants.Euro2020RankingSlug, Constants.FromFirstItem, Constants.GetEightItems);
+            var ranking = await postService.GetPostsBySlugAsync(Constants.Euro2020RankingSlug, Constants.FromFirstItem, Constants.Total);
             var videos = await postService.GetPostsBySlugAsync(Constants.Euro2020VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
             if (ranking.Any())
