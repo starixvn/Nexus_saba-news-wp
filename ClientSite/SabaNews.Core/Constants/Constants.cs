@@ -125,5 +125,6 @@
         public const string Euro2020VideoSlug = "video-euro-2020";
         public const string Euro2020IdentifySlug = "nhan-dinh-euro-2020";
         public const string Euro2020HomeRankingSlug = "bang-xep-hang-euro-2020-trang-chu";
+        public const string Euro2020FirstThirdPlaceTeamSlug = "thu-tu-cac-doi-xep-thu-ba-euro-2020";
     }
 }

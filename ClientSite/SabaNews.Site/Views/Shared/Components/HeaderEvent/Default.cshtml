@@ -151,7 +151,7 @@
     </div>
     <div class="child-mobile-menu">
         <ul class="main-child-menu">
-            <li class="menu-item">
+            <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020Slug ? "active" : "")">
                 <a href="@Url.Action("Index", "Euro2020")" class="item">
                     Trang chủ
                 </a>

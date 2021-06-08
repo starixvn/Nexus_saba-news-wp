@@ -189,6 +189,7 @@ namespace SabaNews.Site.Controllers
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
             var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            var thirdPlaceTable = await postService.GetPostDetailBySlugAsync(Constants.Euro2020FirstThirdPlaceTeamSlug, Constants.postType);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData
             {
@@ -196,9 +197,10 @@ namespace SabaNews.Site.Controllers
                 Title = cate.SEOTitle ??= cate.Title,
                 Description = cate.Description
             };
-            var Model = new CategoryViewModel
+            var Model = new Euro2020RankingViewModel
             {
                 Posts = posts,
+                ThirdPlaceTable = thirdPlaceTable,
                 Category = cate,
                 ViewData = viewData
 
