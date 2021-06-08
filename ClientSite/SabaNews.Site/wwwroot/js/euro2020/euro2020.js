@@ -48,7 +48,8 @@
                     $('.post_content').html(res.data.postContent);
                     tabItem.removeClass('active');
                     self.addClass('active');
-                    if ($(window).innerWidth() <= 768) {
+                    $('#table-scroll-team .main-table').clone(true).appendTo('#table-scroll-team').addClass('clone');
+                    if ($(window).innerWidth() <= 768 && $('.ranking').length > 0) {
                         $('.sub-item').removeClass('hide-tab');
                         $('.sub-item').hide();
                         self.parent().show();
