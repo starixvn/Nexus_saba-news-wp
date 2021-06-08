@@ -1182,8 +1182,5 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           align-self: flex-start;
           position: relative;
           top: 8px; } }
-    .date-content .main-info .result {
+    .date-content .main-info .time {
       font-size: 1.6rem; }
-      @media (max-device-width: 767px) {
-        .date-content .main-info .result {
-          font-size: 1.3rem; } }

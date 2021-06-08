@@ -199,12 +199,8 @@
             }
         }
 
-        .result {
+        .time {
             font-size: 1.6rem;
-
-            @include Mobile {
-                font-size: 1.3rem;
-            }
         }
     }
 }
