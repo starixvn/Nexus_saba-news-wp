@@ -60,7 +60,10 @@
 
         .sub-item {
             display: inline-block;
-            margin-right: 4rem;
+            margin-right: 2.4rem;
+            &:last-child {
+                margin-right: 0;
+            }
 
             .tab-data {
                 display: inline-block;

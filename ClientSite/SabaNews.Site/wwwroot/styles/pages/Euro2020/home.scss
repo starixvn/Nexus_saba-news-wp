@@ -263,7 +263,7 @@ $border-block-color: #4DAEC6;
     .container {
         display: grid;
         grid-template-columns: 75rem 1fr;
-        grid-gap: 2rem 2rem;
+        grid-column-gap: 2rem;
         @include Mobile {
             display: block;
         }
@@ -284,6 +284,7 @@ $border-block-color: #4DAEC6;
 }
 
 .lastest-news {
+    margin-bottom: 0;
     .block__content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -380,9 +381,19 @@ $border-block-color: #4DAEC6;
     @include Mobile {
         margin-top: 2.4rem;
     }
+
     .block__content {
         padding: 1rem;
         border: 1px solid $border-block-color;
+        .card-vertical {
+            padding-bottom: 0;
+        }
+        .card-vertical__image {
+            height: 17rem;
+            @include Mobile {
+                height: 20rem;
+            }
+        }
     }
 }
 
@@ -396,7 +407,8 @@ $border-block-color: #4DAEC6;
     @include Mobile {
         background: url(../../../images/euro2020/banner-video-mobile.png) no-repeat;
         width: 37.5rem;
-        height: 25rem;
+        height: 34.5rem;
+        padding: 2rem 0;
     }
 
     .block__content {
@@ -465,17 +477,9 @@ $border-block-color: #4DAEC6;
                 height: 5rem;
 
                 @include Mobile {
-                    height: 2rem;
-                    width: 2rem;
+                    height: 2.4rem;
+                    width: 2.4rem;
                 }
-            }
-        }
-
-        .stadium-logo {
-            margin-right: -13px;
-
-            @include Mobile {
-                margin-right: -5px;
             }
         }
 
@@ -485,10 +489,6 @@ $border-block-color: #4DAEC6;
             @include Mobile {
                 margin-right: -5px;
             }
-        }
-
-        .goal_soccer-logo {
-            margin-right: -5px;
         }
 
         .logo-box {
@@ -523,17 +523,14 @@ $border-block-color: #4DAEC6;
             color: $main-color;
 
             @include Mobile {
-                font-size: 1.4rem;
-                top: -25px;
+                font-size: 1.3rem;
+                top: -27px;
             }
         }
     }
 }
 
 @media screen and (max-device-width: 768px) {
-    .swiper-container .swiper-slide .img-item {
-        height: 12rem;
-    }
     .hidden-body .top-header {
         position: absolute;
         height: calc(100% - 7rem);

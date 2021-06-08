@@ -1802,7 +1802,7 @@ button {
 .block-head .container {
   display: grid;
   grid-template-columns: 75rem 1fr;
-  grid-gap: 2rem 2rem; }
+  grid-column-gap: 2rem; }
   @media (max-device-width: 767px) {
     .block-head .container {
       display: block; } }
@@ -1819,48 +1819,50 @@ button {
   grid-column: 2;
   grid-row: 2/3; }
 
-.lastest-news .block__content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem 2rem; }
-  @media (max-device-width: 767px) {
-    .lastest-news .block__content {
-      display: block; } }
-  .lastest-news .block__content .card-highlight {
-    grid-column: 1/4;
-    height: 43rem;
-    padding-bottom: 0;
-    position: relative;
-    font-size: 1.4rem;
-    color: #002028; }
+.lastest-news {
+  margin-bottom: 0; }
+  .lastest-news .block__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem 2rem; }
     @media (max-device-width: 767px) {
-      .lastest-news .block__content .card-highlight {
-        margin-bottom: 1.2rem; } }
-    .lastest-news .block__content .card-highlight .card-vertical__image {
-      height: 100%; }
-    .lastest-news .block__content .card-highlight .card__title {
-      font-size: 2rem;
-      color: #004556;
-      text-decoration: none;
-      font-weight: bold; }
+      .lastest-news .block__content {
+        display: block; } }
+    .lastest-news .block__content .card-highlight {
+      grid-column: 1/4;
+      height: 43rem;
+      padding-bottom: 0;
+      position: relative;
+      font-size: 1.4rem;
+      color: #002028; }
       @media (max-device-width: 767px) {
-        .lastest-news .block__content .card-highlight .card__title {
-          font-size: 1.4rem; } }
-    .lastest-news .block__content .card-highlight .card__datetime {
-      font-size: 1.3rem; }
-  .lastest-news .block__content .card-vertical__image {
-    height: 14.3rem; }
-  .lastest-news .block__content .card-content {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 13rem; }
-    @media (max-device-width: 767px) {
-      .lastest-news .block__content .card-content {
-        padding: 1rem .8rem;
-        font-size: 1.2rem; } }
+        .lastest-news .block__content .card-highlight {
+          margin-bottom: 1.2rem; } }
+      .lastest-news .block__content .card-highlight .card-vertical__image {
+        height: 100%; }
+      .lastest-news .block__content .card-highlight .card__title {
+        font-size: 2rem;
+        color: #004556;
+        text-decoration: none;
+        font-weight: bold; }
+        @media (max-device-width: 767px) {
+          .lastest-news .block__content .card-highlight .card__title {
+            font-size: 1.4rem; } }
+      .lastest-news .block__content .card-highlight .card__datetime {
+        font-size: 1.3rem; }
+    .lastest-news .block__content .card-vertical__image {
+      height: 14.3rem; }
+    .lastest-news .block__content .card-content {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 2rem;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 13rem; }
+      @media (max-device-width: 767px) {
+        .lastest-news .block__content .card-content {
+          padding: 1rem .8rem;
+          font-size: 1.2rem; } }
 
 @media (max-device-width: 767px) {
   .board {
@@ -1892,6 +1894,13 @@ button {
 .guess-block .block__content {
   padding: 1rem;
   border: 1px solid #4DAEC6; }
+  .guess-block .block__content .card-vertical {
+    padding-bottom: 0; }
+  .guess-block .block__content .card-vertical__image {
+    height: 17rem; }
+    @media (max-device-width: 767px) {
+      .guess-block .block__content .card-vertical__image {
+        height: 20rem; } }
 
 .block-video {
   background: url(../../../images/euro2020/banner-video-euro.png) no-repeat;
@@ -1903,7 +1912,8 @@ button {
     .block-video {
       background: url(../../../images/euro2020/banner-video-mobile.png) no-repeat;
       width: 37.5rem;
-      height: 25rem; } }
+      height: 34.5rem;
+      padding: 2rem 0; } }
   .block-video .block__content {
     grid-template-rows: 40rem; }
     .block-video .block__content .slide-video .card-item {
@@ -1946,8 +1956,8 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .team-logo {
-          height: 2rem;
-          width: 2rem; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .stadium-logo {
       background: url("../../../images/euro2020/stadium_logo.svg") no-repeat;
       display: inline-block;
@@ -1956,8 +1966,8 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .stadium-logo {
-          height: 2rem;
-          width: 2rem; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .ball-logo {
       background: url("../../../images/euro2020/ball_logo.svg") no-repeat;
       display: inline-block;
@@ -1966,8 +1976,8 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .ball-logo {
-          height: 2rem;
-          width: 2rem; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .mascot-logo {
       background: url("../../../images/euro2020/mascot_logo.svg") no-repeat;
       display: inline-block;
@@ -1976,8 +1986,8 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .mascot-logo {
-          height: 2rem;
-          width: 2rem; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .record-logo {
       background: url("../../../images/euro2020/record_logo.svg") no-repeat;
       display: inline-block;
@@ -1986,8 +1996,8 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .record-logo {
-          height: 2rem;
-          width: 2rem; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .goal_soccer-logo {
       background: url("../../../images/euro2020/goal_soccer_logo.svg") no-repeat;
       display: inline-block;
@@ -1996,20 +2006,13 @@ button {
       height: 5rem; }
       @media (max-device-width: 767px) {
         .block-general-section .box .goal_soccer-logo {
-          height: 2rem;
-          width: 2rem; } }
-    .block-general-section .box .stadium-logo {
-      margin-right: -13px; }
-      @media (max-device-width: 767px) {
-        .block-general-section .box .stadium-logo {
-          margin-right: -5px; } }
+          height: 2.4rem;
+          width: 2.4rem; } }
     .block-general-section .box .record-logo {
       margin-right: -11px; }
       @media (max-device-width: 767px) {
         .block-general-section .box .record-logo {
           margin-right: -5px; } }
-    .block-general-section .box .goal_soccer-logo {
-      margin-right: -5px; }
     .block-general-section .box .logo-box {
       width: 8rem;
       height: 8rem;
@@ -2039,12 +2042,10 @@ button {
       color: #03647B; }
       @media (max-device-width: 767px) {
         .block-general-section .box .text {
-          font-size: 1.4rem;
-          top: -25px; } }
+          font-size: 1.3rem;
+          top: -27px; } }
 
 @media screen and (max-device-width: 768px) {
-  .swiper-container .swiper-slide .img-item {
-    height: 12rem; }
   .hidden-body .top-header {
     position: absolute;
     height: calc(100% - 7rem);

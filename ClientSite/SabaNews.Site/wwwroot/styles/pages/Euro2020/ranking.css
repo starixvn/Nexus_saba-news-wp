@@ -1080,7 +1080,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   padding: 0 4rem; }
   .block__content .sub-category .sub-item {
     display: inline-block;
-    margin-right: 4rem; }
+    margin-right: 2.4rem; }
+    .block__content .sub-category .sub-item:last-child {
+      margin-right: 0; }
     .block__content .sub-category .sub-item .tab-data {
       display: inline-block;
       color: #A2E2F1;
