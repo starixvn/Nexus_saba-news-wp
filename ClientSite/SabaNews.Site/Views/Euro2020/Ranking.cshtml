@@ -35,8 +35,6 @@
 
 			<div class="block__content">
                 <div class="block">
-                    <span class="previous"></span>
-                    <span class="next"></span>
 					<ul class="sub-category">
 						@{
 							var first = true;
@@ -50,13 +48,10 @@
 							if (first)
 							{
 								active = "active";
+								first = false;
 							}
-							if (isMobile & !first)
-							{
-								hideTab = "hide-tab";
-							}
-							first = false;
-							<li class="sub-item @hideTab"><a href="javascript:;" data-slug="@post.Slug" class="tab-data  @active">@post.PostTitle</a></li>
+
+							<li class="sub-item"><a href="javascript:;" data-slug="@post.Slug" class="tab-data  @active">@post.PostTitle</a></li>
 						}
 
 					</ul>
