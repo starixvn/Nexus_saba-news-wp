@@ -1551,25 +1551,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   .header .header-controls {
     border-bottom: 1px solid #eee; } }
 
-/*.wapper.active-fixed {
-    .top-header {
-        position: relative;
-    }
-
-    .child-mobile-menu {
-        position: fixed;
-        z-index: 10005;
-        top: 0;
-    }
-
-    .button-mobile {
-        z-index: 10004;
-    }
-
-    .main-content {
-        padding-top: 6rem;
-    }
-}*/
 .block__swipper {
   margin-bottom: 4rem; }
   .block__swipper .swiper-container .swiper-slide .img-item {

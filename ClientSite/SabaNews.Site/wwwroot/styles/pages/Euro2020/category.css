@@ -1620,3 +1620,27 @@ button {
       @media screen and (max-width: 1024px) {
         .card-horizontal-highlight .card-horizontal__image {
           max-height: 100% !important; } }
+
+.wapper.active-fixed .top-header {
+  position: relative; }
+
+.wapper.active-fixed .child-mobile-menu {
+  position: fixed;
+  z-index: 10005;
+  top: 0; }
+
+.wapper.active-fixed .button-mobile {
+  z-index: 10004; }
+
+.wapper.active-fixed .main-content {
+  padding-top: 6rem; }
+
+@media screen and (max-device-width: 768px) {
+  .hidden-body .top-header {
+    position: absolute;
+    height: calc(100% - 7rem);
+    top: 7rem; }
+    .hidden-body .top-header .group-menu .nav-menu .main-menu {
+      display: block; }
+  .header .header-controls {
+    border-bottom: 1px solid #eee; } }

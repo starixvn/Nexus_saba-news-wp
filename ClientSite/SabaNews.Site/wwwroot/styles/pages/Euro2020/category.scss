@@ -136,3 +136,40 @@ $border-block-color: #4DAEC6;
         }
     }
 }
+
+.wapper.active-fixed {
+    .top-header {
+        position: relative;
+    }
+
+    .child-mobile-menu {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+    }
+
+    .button-mobile {
+        z-index: 10004;
+    }
+
+    .main-content {
+        padding-top: 6rem;
+    }
+}
+
+@media screen and (max-device-width: 768px) {
+
+    .hidden-body .top-header {
+        position: absolute;
+        height: calc(100% - 7rem);
+        top: 7rem;
+
+        .group-menu .nav-menu .main-menu {
+            display: block;
+        }
+    }
+
+    .header .header-controls {
+        border-bottom: 1px solid #eee;
+    }
+}
