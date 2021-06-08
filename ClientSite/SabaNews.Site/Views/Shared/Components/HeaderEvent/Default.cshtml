@@ -1,5 +1,14 @@
 ﻿@using SabaNews.Core.Constants;
 @model IEnumerable<Menu>
+@using Wangkanai.Detection.Services;
+@using Wangkanai.Detection.Models;
+@inject IDetectionService DetectionService
+@{
+    bool isMobile = DetectionService.Device.Type == Device.Mobile;
+    bool isTablet = DetectionService.Device.Type == Device.Tablet;
+    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+
+}
 
 
 <section class="header @ViewBag.Page">
@@ -157,12 +166,12 @@
                 </a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020HotNewsSlug ? "active" : "")">
-                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020HotNewsSlug} )" class="item">
+                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020HotNewsSlug })" class="item">
                     @Constants.Euro2020HotNews
                 </a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020IdentifySlug ? "active" : "")">
-                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020IdentifySlug} )" class="item">@Constants.Euro2020Identify</a>
+                <a href="@Url.Action("Category", "Euro2020", new { slug = Constants.Euro2020IdentifySlug })" class="item">@Constants.Euro2020Identify</a>
             </li>
             <li class="menu-item @(ViewData["ActiveSubCate"].ToString() == Constants.Euro2020TeamSlug ? "active" : "")">
                 <a href="@Url.Action("Team", "Euro2020")" class="item">@Constants.Euro2020Team</a>
@@ -179,6 +188,11 @@
         </ul>
         <span class="icon-arrow scroll-mobile-menu"></span>
     </div>
+    @if (isMobile)
+    {
+        <div class="background-euro-mobile"><span class="logo-euro"></span></div>
+    }
+
 
 
 

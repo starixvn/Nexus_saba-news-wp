@@ -576,8 +576,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   padding: 0; }
   @media (max-device-width: 767px) {
     .header .top-header {
-      background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
-      height: 12rem;
+      background-image: none;
       display: block;
       top: 11rem; } }
   .header .top-header .logo-euro {
@@ -585,6 +584,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     width: 6.8rem;
     height: 7.8rem;
     margin: 2.1rem auto 2.1rem; }
+    @media (max-device-width: 767px) {
+      .header .top-header .logo-euro {
+        display: none; } }
   .header .top-header .group-menu .nav-menu .main-menu {
     display: none; }
 
@@ -644,3 +646,14 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .header .header-controls .languages-box .flag-vn {
   background: url("../../../images/flag/icon-vn.svg") no-repeat; }
+
+.header .background-euro-mobile {
+  background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .header .background-euro-mobile .logo-euro {
+    background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+    width: 6.8rem;
+    height: 7.8rem; }

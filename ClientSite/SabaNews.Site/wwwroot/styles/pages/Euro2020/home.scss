@@ -179,7 +179,7 @@ $border-block-color: #4DAEC6;
 .main-content {
     padding-top: 18rem;
     @include Mobile {
-        padding-top: 14rem;
+        padding-top: 2rem;
     }
 }
 
@@ -473,10 +473,18 @@ $border-block-color: #4DAEC6;
 
         .stadium-logo {
             margin-right: -13px;
+
+            @include Mobile {
+                margin-right: -5px;
+            }
         }
 
         .record-logo {
             margin-right: -11px;
+
+            @include Mobile {
+                margin-right: -5px;
+            }
         }
 
         .goal_soccer-logo {
@@ -501,6 +509,7 @@ $border-block-color: #4DAEC6;
                 height: 3.6rem;
                 width: 3.6rem;
                 border-width: 2px;
+                top: -25px;
             }
         }
 
@@ -515,6 +524,7 @@ $border-block-color: #4DAEC6;
 
             @include Mobile {
                 font-size: 1.4rem;
+                top: -25px;
             }
         }
     }

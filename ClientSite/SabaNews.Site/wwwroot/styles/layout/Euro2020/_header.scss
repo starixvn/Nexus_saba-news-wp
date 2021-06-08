@@ -11,8 +11,7 @@ $border-block-color: #4DAEC6;
         padding: 0;
 
         @include Mobile {
-            background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
-            height: 12rem;
+            background-image: none;
             display: block;
             top: 11rem;
         }
@@ -22,6 +21,10 @@ $border-block-color: #4DAEC6;
             width: 6.8rem;
             height: 7.8rem;
             margin: 2.1rem auto 2.1rem;
+
+            @include Mobile {
+                display: none;
+            }
         }
 
         .group-menu .nav-menu {
@@ -104,6 +107,20 @@ $border-block-color: #4DAEC6;
             .languages-box .flag-#{$language} {
                 background: url("../../../images/flag/icon-#{$language}.svg") no-repeat;
             }
+        }
+    }
+
+    .background-euro-mobile {
+        background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+        height: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo-euro {
+            background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+            width: 6.8rem;
+            height: 7.8rem;
         }
     }
 }
