@@ -70,6 +70,9 @@ $border-block-color: #4DAEC6;
             .img-item {
                 max-height: 43rem;
                 overflow: hidden;
+                @media screen and (max-width: 767px) {
+                    height: 22rem;
+                }
 
                 img {
                     object-fit: cover;
@@ -105,11 +108,7 @@ $border-block-color: #4DAEC6;
 }
 
 .play_video iframe {
-    height: 43rem;
-
-    @media screen and (max-width: 767px) {
-        height: 22rem;
-    }
+    height: 43rem;   
 }
 
 .wapper.active-fixed {
