@@ -1891,9 +1891,20 @@ button {
   display: inline-block;
   padding: 14px 12px;
   font-size: 2rem;
-  font-weight: bold; }
-  .board .tab-link:hover {
+  font-weight: bold;
+  position: relative; }
+  .board .tab-link:before {
+    position: absolute;
+    height: 2px;
+    width: 0;
+    background-color: #fff;
+    bottom: 10px;
+    left: 12px;
+    content: ''; }
+  .board .tab-link:hover, .board .tab-link.active {
     color: #fff; }
+    .board .tab-link:hover:before, .board .tab-link.active:before {
+      width: 15px; }
 
 @media (max-device-width: 767px) {
   .guess-block {

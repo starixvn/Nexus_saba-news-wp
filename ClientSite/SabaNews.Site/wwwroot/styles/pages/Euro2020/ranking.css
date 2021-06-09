@@ -1097,9 +1097,20 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       font-weight: bold;
       font-size: 1.8rem;
       text-decoration: none;
-      padding: 15px 0 14px; }
+      padding: 15px 0 14px;
+      position: relative; }
+      .block__content .sub-category .sub-item .tab-data:before {
+        position: absolute;
+        height: 2px;
+        width: 0;
+        background-color: #fff;
+        bottom: 10px;
+        left: -1px;
+        content: ''; }
       .block__content .sub-category .sub-item .tab-data:hover, .block__content .sub-category .sub-item .tab-data.active {
         color: #fff; }
+        .block__content .sub-category .sub-item .tab-data:hover:before, .block__content .sub-category .sub-item .tab-data.active:before {
+          width: 15px; }
 
 .table-scroll {
   position: relative;

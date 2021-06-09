@@ -370,9 +370,23 @@ $border-block-color: #4DAEC6;
         padding: 14px 12px;
         font-size: 2rem;
         font-weight: bold;
+        position: relative;
 
-        &:hover {
+        &:before {
+            position: absolute;
+            height: 2px;
+            width: 0;
+            background-color: #fff;
+            bottom: 10px;
+            left: 12px;
+            content:'';
+        }
+
+        &:hover, &.active {
             color: #fff;
+            &:before {
+                width: 15px;
+            } 
         }
     }
 }

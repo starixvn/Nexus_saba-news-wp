@@ -51,7 +51,7 @@
     }
 }
 
-.block__content {    
+.block__content {
     .sub-category {
         list-style: none;
         text-align: center;
@@ -61,6 +61,7 @@
         .sub-item {
             display: inline-block;
             margin-right: 2.4rem;
+
             &:last-child {
                 margin-right: 0;
             }
@@ -72,9 +73,24 @@
                 font-size: 1.8rem;
                 text-decoration: none;
                 padding: 15px 0 14px;
+                position: relative;
+
+                &:before {
+                    position: absolute;
+                    height: 2px;
+                    width: 0;
+                    background-color: #fff;
+                    bottom: 10px;
+                    left: -1px;
+                    content: '';
+                }
 
                 &:hover, &.active {
                     color: #fff;
+
+                    &:before {
+                        width: 15px;
+                    }
                 }
             }
         }
