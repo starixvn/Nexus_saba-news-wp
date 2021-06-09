@@ -39,6 +39,7 @@ $border-block-color: #4DAEC6;
         position: absolute;
         width: 100%;
         top: 19rem;
+        background-color: $main-color;
 
         @include Mobile {
             position: relative;
@@ -55,12 +56,12 @@ $border-block-color: #4DAEC6;
         }
 
         .main-child-menu {
-            background-color: $main-color;
             border: none;
             overflow-x: auto;
             justify-content: center;
             width: 112rem;
             margin: 0 auto;
+            background-color: inherit;
 
             @include Mobile {
                 width: 100%;

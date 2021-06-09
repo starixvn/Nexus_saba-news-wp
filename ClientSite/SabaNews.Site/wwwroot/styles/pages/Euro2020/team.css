@@ -774,7 +774,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   display: block;
   position: absolute;
   width: 100%;
-  top: 19rem; }
+  top: 19rem;
+  background-color: #03647B; }
   @media (max-device-width: 767px) {
     .header .child-mobile-menu {
       position: relative;
@@ -786,12 +787,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .header .child-mobile-menu .icon-arrow {
         display: block; } }
   .header .child-mobile-menu .main-child-menu {
-    background-color: #03647B;
     border: none;
     overflow-x: auto;
     justify-content: center;
     width: 112rem;
-    margin: 0 auto; }
+    margin: 0 auto;
+    background-color: inherit; }
     @media (max-device-width: 767px) {
       .header .child-mobile-menu .main-child-menu {
         width: 100%;

@@ -775,7 +775,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   display: block;
   position: absolute;
   width: 100%;
-  top: 19rem; }
+  top: 19rem;
+  background-color: #03647B; }
   @media (max-device-width: 767px) {
     .header .child-mobile-menu {
       position: relative;
@@ -787,12 +788,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .header .child-mobile-menu .icon-arrow {
         display: block; } }
   .header .child-mobile-menu .main-child-menu {
-    background-color: #03647B;
     border: none;
     overflow-x: auto;
     justify-content: center;
     width: 112rem;
-    margin: 0 auto; }
+    margin: 0 auto;
+    background-color: inherit; }
     @media (max-device-width: 767px) {
       .header .child-mobile-menu .main-child-menu {
         width: 100%;
@@ -1764,21 +1765,24 @@ button {
   font-size: 1.4rem;
   color: #333; }
   .eu-board .board-body {
-    padding: 15px 12px; }
+    padding: 12px 0; }
+    .eu-board .board-body .frow .fcol:not(.team) {
+      font-size: 2rem; }
   .eu-board .frow {
     border-bottom: 1px solid #CCDDE1;
     display: grid;
     grid-template-columns: 3.2rem 1fr repeat(3, 4.6rem);
     justify-content: center;
-    padding: 8px 0;
+    padding: 8px 12px;
     height: 5rem; }
     .eu-board .frow .fcol:not(.team) {
       justify-self: center; }
     .eu-board .frow:last-child {
       border-bottom: none; }
     .eu-board .frow.fcap {
-      background-color: #C9E2E9;
-      padding: 0 12px; }
+      background-color: #C9E2E9; }
+      .eu-board .frow.fcap .fcol {
+        font-weight: bold; }
     .eu-board .frow .fcol.capt {
       grid-column: 1/3;
       justify-self: flex-start;
@@ -1876,14 +1880,14 @@ button {
   .board {
     margin-top: .8rem; } }
 
-.board .block__content {
-  border: 1px solid #4DAEC6; }
-
 .board .tab-lists {
   list-style: none;
   display: flex;
   background-color: #03647B;
   justify-content: center; }
+
+.board .total_ranking {
+  border: 1px solid #4daec6; }
 
 .board .tab-link {
   color: #A2E2F1;
