@@ -6,8 +6,8 @@
             if ($(table).hasClass('hide')) {
                 $('.tab-detail').addClass('hide')
                 $(table).removeClass('hide');
-                $('.tab-item').removeClass('active');
-                $(this).addClass('active');
+                $('.tab-item .tab-link').removeClass('active');
+                $(this).find('.tab-link').addClass('active');
             }
         });
     }
