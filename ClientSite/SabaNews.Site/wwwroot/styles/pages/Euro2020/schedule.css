@@ -843,150 +843,175 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/italia.svg") no-repeat; }
 
 .flag-switzerland {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/switzerland.svg") no-repeat; }
 
 .flag-wales {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/wales.svg") no-repeat; }
 
 .flag-ukraine {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/ukraine.svg") no-repeat; }
 
 .flag-turkey {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/turkey.svg") no-repeat; }
 
 .flag-sweden {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/sweden.svg") no-repeat; }
 
 .flag-slovakia {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/slovakia.svg") no-repeat; }
 
 .flag-scotland {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/scotland.svg") no-repeat; }
 
 .flag-russia {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/russia.svg") no-repeat; }
 
 .flag-portugal {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/portugal.svg") no-repeat; }
 
 .flag-poland {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/poland.svg") no-repeat; }
 
 .flag-macedonia {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/macedonia.svg") no-repeat; }
 
 .flag-netherlands {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/netherlands.svg") no-repeat; }
 
 .flag-finland {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/finland.svg") no-repeat; }
 
 .flag-hungary {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/hungary.svg") no-repeat; }
 
 .flag-england {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/england.svg") no-repeat; }
 
 .flag-denmark {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/denmark.svg") no-repeat; }
 
 .flag-czech {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/czech.svg") no-repeat; }
 
 .flag-belgium {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/belgium.svg") no-repeat; }
 
 .flag-croatia {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/croatia.svg") no-repeat; }
 
 .flag-austria {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/austria.svg") no-repeat; }
 
 .flag-germany {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/germany.svg") no-repeat; }
 
 .flag-france {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/france.svg") no-repeat; }
 
 .flag-spain {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/spain.svg") no-repeat; }
 
 .flag-undefined {
   display: inline-block;
   width: 32px;
   height: 32px;
+  border-radius: 50%;
   background: url("../../../images/flag-event/undefined.svg") no-repeat; }
 
 .block__title {
@@ -1131,7 +1156,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       top: 8px; }
   .date-content .main-info {
     display: grid;
-    grid-template-columns: 1fr 11rem 1fr;
+    grid-template-columns: 1fr 12rem 1fr;
     align-items: center; }
     @media (max-device-width: 767px) {
       .date-content .main-info {

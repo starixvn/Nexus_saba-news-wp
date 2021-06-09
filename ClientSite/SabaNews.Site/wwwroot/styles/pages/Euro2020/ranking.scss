@@ -202,7 +202,7 @@
         line-height: 32px;
         text-align: left;
 
-        $numbers: ("1": #024657, "2": #03576B, "3": #03677F, "4": #047894, "5": #0588A8);
+        $numbers: ("1": #024657, "2": #03576B, "3": #03677F, "4": #047894, "5": #0588A8, "6": #0699BD);
 
         @each $number, $color in $numbers {
             &.number-#{$number} {
@@ -311,3 +311,14 @@
         }
     }
 }
+
+#table-scroll-main .main-table > tbody > tr {
+    td {
+        background-color: #E3FDE3;
+    }
+
+    &:nth-last-child(-n+2) td{
+        background-color: #fff;
+    }
+}
+    

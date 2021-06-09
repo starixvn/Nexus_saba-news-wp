@@ -112,7 +112,7 @@
 
     .main-info {
         display: grid;
-        grid-template-columns: 1fr 11rem 1fr;
+        grid-template-columns: 1fr 12rem 1fr;
         align-items: center;
 
         @include Mobile {
