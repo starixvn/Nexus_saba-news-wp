@@ -1100,7 +1100,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .date-content {
   border: 1px solid #4DAEC6;
-  padding: .4rem 3rem;
+  padding: .4rem 2rem;
   background-color: #FAFEFF;
   margin: 0 2rem;
   border-top: none; }
@@ -1131,7 +1131,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       top: 8px; }
   .date-content .main-info {
     display: grid;
-    grid-template-columns: 1fr 12rem 1fr;
+    grid-template-columns: 1fr 11rem 1fr;
     align-items: center; }
     @media (max-device-width: 767px) {
       .date-content .main-info {
