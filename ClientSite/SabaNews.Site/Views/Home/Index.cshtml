@@ -36,9 +36,11 @@
         <div class="banner"><img loading="lazy" src="~/images/banner.jpg"></div>
         @if (isMobile || isTablet)
         {
-            <div class="banner-euro-mobile">
-                <img src="~/images/Euro-2020-mobile.png" />
-            </div>
+	<div class="banner-euro-mobile">
+		<a href="@Url.Action("Index", "Euro2020")">
+			<img src="~/images/Euro-2020-mobile.png" />
+		</a>
+	</div>
         }
         <div class="block block-hot-news">
             <div class="container">
