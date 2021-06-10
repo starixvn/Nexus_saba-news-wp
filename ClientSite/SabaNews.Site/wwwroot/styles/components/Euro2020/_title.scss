@@ -7,6 +7,7 @@
     position: relative;
     @media screen and (max-device-width: 768px) {
         margin-bottom: 1.2rem;
+        font-size: 1.6rem;
     }
 
     &:before {
@@ -29,7 +30,7 @@
 .main-content {
     padding-top: 18rem;
     @media screen and (max-device-width: 768px){
-        padding-top: 2rem;
+        padding-top: 1.2rem;
     }
 }
 

@@ -1024,7 +1024,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: relative; }
   @media screen and (max-device-width: 768px) {
     .block__title {
-      margin-bottom: 1.2rem; } }
+      margin-bottom: 1.2rem;
+      font-size: 1.6rem; } }
   .block__title:before {
     content: '';
     height: 2px;
@@ -1042,7 +1043,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   padding-top: 18rem; }
   @media screen and (max-device-width: 768px) {
     .main-content {
-      padding-top: 2rem; } }
+      padding-top: 1.2rem; } }
 
 .wapper.active-fixed .top-header {
   position: relative; }
