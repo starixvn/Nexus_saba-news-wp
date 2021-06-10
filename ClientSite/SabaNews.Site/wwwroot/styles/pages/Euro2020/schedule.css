@@ -1052,12 +1052,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: fixed;
   z-index: 10005;
   top: 0; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .child-mobile-menu {
+      border-bottom: 1px solid #333;
+      background-color: #fff; } }
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
 
 .wapper.active-fixed .main-content {
-  padding-top: 6rem; }
+  padding-top: 4rem; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .main-content {
+      padding-top: 3.2rem; } }
 
 @media screen and (max-device-width: 768px) {
   .hidden-body .top-header {
@@ -1124,6 +1131,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background-color: #03647B;
   padding: 1rem 0;
   clip-path: polygon(0% 0%, 100% 0%, 98% 100%, 2% 100%); }
+  @media (max-device-width: 767px) {
+    .date-title {
+      font-size: 1.6rem; } }
 
 .date-content {
   border: 1px solid #4DAEC6;

@@ -570,15 +570,22 @@ $border-block-color: #4DAEC6;
     .top-header {
         position: relative;
     }
-    .child-mobile-menu{
+
+    .child-mobile-menu {
         position: fixed;
         z-index: 10005;
         top: 0;
+
+        @media screen and (max-device-width: 768px) {
+            border-bottom: 1px solid #333;
+            background-color: #fff;
+        }
     }
 
     .button-mobile {
         z-index: 10004;
     }
+
     .main-content {
         padding-top: 6rem;
     }

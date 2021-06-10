@@ -146,6 +146,11 @@ $border-block-color: #4DAEC6;
         position: fixed;
         z-index: 10005;
         top: 0;
+
+        @media screen and (max-device-width: 768px) {
+            border-bottom: 1px solid #333;
+            background-color: #fff;
+        }
     }
 
     .button-mobile {

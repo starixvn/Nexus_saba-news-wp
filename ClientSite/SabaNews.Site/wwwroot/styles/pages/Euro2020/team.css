@@ -1052,12 +1052,19 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   position: fixed;
   z-index: 10005;
   top: 0; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .child-mobile-menu {
+      border-bottom: 1px solid #333;
+      background-color: #fff; } }
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
 
 .wapper.active-fixed .main-content {
-  padding-top: 6rem; }
+  padding-top: 4rem; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .main-content {
+      padding-top: 3.2rem; } }
 
 @media screen and (max-device-width: 768px) {
   .hidden-body .top-header {
@@ -1095,7 +1102,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   margin-bottom: 6rem; }
   @media (max-device-width: 767px) {
     .block__content {
-      grid-template-columns: repeat(3, 1fr); } }
+      grid-template-columns: repeat(3, 1fr);
+      grid-row-gap: 2.4rem; } }
   .block__content .team {
     text-decoration: none;
     display: grid; }
@@ -1119,4 +1127,5 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     text-transform: uppercase; }
     @media (max-device-width: 767px) {
       .block__content .name {
-        font-size: 1.4rem; } }
+        font-size: 1.4rem;
+        margin-top: 1.2rem; } }

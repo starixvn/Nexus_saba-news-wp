@@ -66,6 +66,9 @@
     background-color: #03647B;
     padding: 1rem 0;
     clip-path: polygon(0% 0%, 100% 0%, 98% 100%, 2% 100%);
+    @include Mobile {
+        font-size: 1.6rem;
+    }
 }
 .date-content {
     border: 1px solid #4DAEC6;

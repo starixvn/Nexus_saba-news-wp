@@ -2111,6 +2111,10 @@ button {
   position: fixed;
   z-index: 10005;
   top: 0; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .child-mobile-menu {
+      border-bottom: 1px solid #333;
+      background-color: #fff; } }
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
