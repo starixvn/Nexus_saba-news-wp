@@ -1671,8 +1671,8 @@ button {
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
 
-.wapper.active-fixed .main-content {
-  padding-top: 6rem; }
+.wapper.active-fixed .main {
+  padding-top: 4rem; }
 
 @media screen and (max-device-width: 768px) {
   .hidden-body .top-header {
@@ -1683,3 +1683,6 @@ button {
       display: block; }
   .header .header-controls {
     border-bottom: 1px solid #eee; } }
+
+.pagination .main-pagination .active {
+  background-color: #03647B; }

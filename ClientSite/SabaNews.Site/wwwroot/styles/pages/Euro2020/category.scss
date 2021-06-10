@@ -157,8 +157,8 @@ $border-block-color: #4DAEC6;
         z-index: 10004;
     }
 
-    .main-content {
-        padding-top: 6rem;
+    .main {
+        padding-top: 4rem;
     }
 }
 
@@ -177,4 +177,8 @@ $border-block-color: #4DAEC6;
     .header .header-controls {
         border-bottom: 1px solid #eee;
     }
+}
+
+.pagination .main-pagination .active {
+    background-color: #03647B;
 }
