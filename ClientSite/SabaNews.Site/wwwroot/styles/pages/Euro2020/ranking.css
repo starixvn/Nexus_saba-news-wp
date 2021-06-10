@@ -750,15 +750,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   overflow: hidden; }
 
 .header .top-header {
-  background: url(../../../images/euro2020/banner-menu.png) no-repeat;
+  background: url(../../../images/euro2020/banner-menu.png) #0084A4 top center no-repeat;
   height: 16rem;
   box-shadow: none;
   padding: 0; }
   @media (max-device-width: 767px) {
     .header .top-header {
-      background-image: none;
       display: block;
-      top: 11rem; } }
+      top: 11rem;
+      background: none;
+      height: unset; } }
   .header .top-header .logo-euro {
     background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
     width: 6.8rem;
@@ -829,7 +830,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background: url("../../../images/flag/icon-vn.svg") no-repeat; }
 
 .header .background-euro-mobile {
-  background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+  background: url(../../../images/euro2020/banner-euro-mobile.png) #0084A4 top center no-repeat;
   height: 12rem;
   display: flex;
   justify-content: center;
@@ -1163,6 +1164,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   background: #fff;
   white-space: nowrap;
   vertical-align: top; }
+  @media (max-device-width: 767px) {
+    .table-scroll th, .table-scroll td {
+      padding: 5px 0 6px; } }
   .table-scroll th:last-child, .table-scroll td:last-child {
     color: #064858;
     font-weight: bold; }
@@ -1172,6 +1176,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   text-align: center;
   vertical-align: middle;
   font-size: 1.8rem; }
+  @media (max-device-width: 767px) {
+    .table-scroll td, .clone td {
+      font-size: 1.4rem; } }
 
 .table-scroll th, .clone th {
   border-bottom: 1px solid #4DAEC6;
@@ -1197,6 +1204,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .clone th.fixed-side, .main-table th.fixed-side {
   padding-left: 2rem; }
+  @media (max-device-width: 767px) {
+    .clone th.fixed-side, .main-table th.fixed-side {
+      min-width: 20rem;
+      padding-left: 1rem; } }
 
 .clone .fixed-side, .main-table .fixed-side {
   display: flex;
@@ -1211,6 +1222,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         font-size: 1.2rem; } }
   .clone .fixed-side [class*="flag"], .main-table .fixed-side [class*="flag"] {
     margin: 0 1rem; }
+    @media (max-device-width: 767px) {
+      .clone .fixed-side [class*="flag"], .main-table .fixed-side [class*="flag"] {
+        width: 2rem;
+        height: 2rem; } }
   .clone .fixed-side .number, .main-table .fixed-side .number {
     width: 5.2rem;
     height: 3.2rem;
@@ -1219,6 +1234,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     padding-left: 1.6rem;
     line-height: 32px;
     text-align: left; }
+    @media (max-device-width: 767px) {
+      .clone .fixed-side .number, .main-table .fixed-side .number {
+        font-size: 1.4rem;
+        width: 2.8rem;
+        height: 2.4rem;
+        padding-left: .8rem;
+        line-height: 24px; } }
     .clone .fixed-side .number.number-1, .main-table .fixed-side .number.number-1 {
       background-color: #024657; }
     .clone .fixed-side .number.number-2, .main-table .fixed-side .number.number-2 {

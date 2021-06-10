@@ -130,6 +130,10 @@
     white-space: nowrap;
     vertical-align: top;
 
+    @include Mobile {
+        padding: 5px 0 6px;
+    }
+
     &:last-child {
         color: #064858;
         font-weight: bold;
@@ -140,7 +144,10 @@
     border-bottom: 1px solid #CCDDE1;
     text-align: center;
     vertical-align: middle;
-    font-size: 1.8rem;    
+    font-size: 1.8rem; 
+    @include Mobile {
+        font-size: 1.4rem;
+    }
 }
 .table-scroll th, .clone th {
     border-bottom: 1px solid #4DAEC6;
@@ -172,6 +179,11 @@
 
 .clone th.fixed-side, .main-table th.fixed-side {
     padding-left: 2rem;
+
+    @include Mobile {
+        min-width: 20rem;
+        padding-left: 1rem;
+    }
 }
 
 .clone .fixed-side, .main-table .fixed-side {
@@ -191,6 +203,10 @@
 
     [class*="flag"] {
         margin: 0 1rem;
+        @include Mobile {
+            width: 2rem;
+            height: 2rem;
+        }
     }
 
     .number {
@@ -201,6 +217,13 @@
         padding-left: 1.6rem;
         line-height: 32px;
         text-align: left;
+        @include Mobile {
+            font-size: 1.4rem;
+            width: 2.8rem;
+            height: 2.4rem;
+            padding-left: .8rem;
+            line-height: 24px;
+        }
 
         $numbers: ("1": #024657, "2": #03576B, "3": #03677F, "4": #047894, "5": #0588A8, "6": #0699BD);
 

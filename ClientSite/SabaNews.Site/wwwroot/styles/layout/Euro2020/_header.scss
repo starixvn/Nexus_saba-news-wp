@@ -5,15 +5,16 @@ $main-color: #03647B;
 $border-block-color: #4DAEC6;
 .header {
     .top-header {
-        background: url(../../../images/euro2020/banner-menu.png) no-repeat;
+        background: url(../../../images/euro2020/banner-menu.png) #0084A4 top center no-repeat;
         height: 16rem;
         box-shadow: none;
         padding: 0;
 
         @include Mobile {
-            background-image: none;
             display: block;
             top: 11rem;
+            background: none;
+            height: unset;
         }
 
         .logo-euro {
@@ -112,7 +113,7 @@ $border-block-color: #4DAEC6;
     }
 
     .background-euro-mobile {
-        background: url(../../../images/euro2020/banner-euro-mobile.png) no-repeat;
+        background: url(../../../images/euro2020/banner-euro-mobile.png) #0084A4 top center no-repeat;
         height: 12rem;
         display: flex;
         justify-content: center;
