@@ -1887,30 +1887,32 @@ img {
   font-weight: bold;
   position: relative;
   text-transform: uppercase;
-  margin: 1rem 2.8rem 1rem 0; }
-  .euro-detail-title:after {
-    content: "";
-    position: absolute;
-    right: -28px;
-    width: 0;
-    height: 0;
-    border-left: 28px solid #4daec6;
-    border-top: 24px solid transparent;
-    border-bottom: 24px solid transparent;
-    top: -1px; }
-  .euro-detail-title:before {
-    right: -27px;
-    border-left-color: #fff;
-    z-index: 99;
-    top: 0;
-    border-left: 27px solid #fff;
-    border-bottom: 23px solid transparent;
-    border-top: 23px solid transparent;
-    content: '';
-    position: absolute; }
-    @media (max-device-width: 767px) {
-      .euro-detail-title:before {
-        right: -26px; } }
+  margin: 1rem 0;
+  /*&:after {
+        content: "";
+        position: absolute;
+        right: -28px;
+        width: 0;
+        height: 0;
+        border-left: 28px solid #4daec6;
+        border-top: 24px solid transparent;
+        border-bottom: 24px solid transparent;
+        top: -1px;
+    }*/
+  /* &:before {
+        right: -27px;
+        border-left-color: #fff;
+        z-index: 99;
+        top: 0;
+        border-left: 27px solid #fff;
+        border-bottom: 23px solid transparent;
+        border-top: 23px solid transparent;
+        content: '';
+        position: absolute;
+        @include Mobile {
+            right: -26px;
+        }
+    }*/ }
   .euro-detail-title .euro-number {
     background-color: #03647B;
     color: #fff;
