@@ -201,7 +201,7 @@
 						</div>
 						<div class="text">@ViewResources.Team</div>
 					</a>
-					<a class="box stadium" href="https://vn.sabasports.com/danh-sach-san-thi-du-vong-chung-kt-euro-2020">
+					<a class="box stadium" href="@Url.Action("Single", "Home", new { slug = Constants.Euro2020StadiumSlug })">
 						<picture>
 							<source srcset="~/images/euro2020/stadium_img.png" type="image/webp" class="img-res">
 							<source srcset="~/images/euro2020/stadium_img.png" type="image/jpeg" class="img-res">
@@ -212,7 +212,7 @@
 						</div>
 						<div class="text">@ViewResources.Stadium</div>
 					</a>
-					<a class="box ball" href="https://vn.sabasports.com/bong-thi-dau-tai-cac-ky-euro">
+					<a class="box ball" href="@Url.Action("Single", "Home", new { slug = Constants.Euro2020BallSlug })">
 						<picture>
 							<source srcset="~/images/euro2020/ball_img.png" type="image/webp" class="img-res">
 							<source srcset="~/images/euro2020/ball_img.png" type="image/jpeg" class="img-res">
@@ -223,7 +223,7 @@
 						</div>
 						<div class="text">@ViewResources.Ball</div>
 					</a>
-					<a class="box mascot" href="https://vn.sabasports.com/linh-vat-qua-cac-vck-euro">
+					<a class="box mascot" href="@Url.Action("Single", "Home", new { slug = Constants.Euro2020MascotSlug })">
 						<picture>
 							<source srcset="~/images/euro2020/mascot_img.png" type="image/webp" class="img-res">
 							<source srcset="~/images/euro2020/mascot_img.png" type="image/jpeg" class="img-res">
@@ -234,7 +234,7 @@
 						</div>
 						<div class="text">@ViewResources.Mascot</div>
 					</a>
-					<a class="box record" href="https://vn.sabasports.com/nhung-ky-luc-dac-biet-trong-lich-su-euro">
+					<a class="box record" href="@Url.Action("Single", "Home", new { slug = Constants.Euro2020RecordSlug })">
 						<picture>
 							<source srcset="~/images/euro2020/record_img.png" type="image/webp" class="img-res">
 							<source srcset="~/images/euro2020/record_img.png" type="image/jpeg" class="img-res">
@@ -245,7 +245,7 @@
 						</div>
 						<div class="text">@ViewResources.Record</div>
 					</a>
-					<a class="box top-goal-scorer" href="https://vn.sabasports.com/vua-pha-luoi-tai-cac-vck-euro">
+					<a class="box top-goal-scorer" href="@Url.Action("Single", "Home", new { slug = Constants.Euro2020TopGoalScorer })">
 						<picture>
 							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/webp" class="img-res">
 							<source srcset="~/images/euro2020/top_soccer_img.png" type="image/jpeg" class="img-res">

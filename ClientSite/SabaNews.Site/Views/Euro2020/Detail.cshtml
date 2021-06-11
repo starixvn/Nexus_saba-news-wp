@@ -214,7 +214,7 @@
 			<input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
 			<input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
 			<div class="comment-post" id="comment">
-
+					
 			</div>
 			<h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
 			@(await Component.InvokeAsync("RelatedPosts", new { postID = Model.SinglePost.ID, slug = Constants.Euro2020Slug }))

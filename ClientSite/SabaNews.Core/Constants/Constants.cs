@@ -126,5 +126,10 @@
         public const string Euro2020IdentifySlug = "nhan-dinh-euro-2020";
         public const string Euro2020HomeRankingSlug = "bang-xep-hang-euro-2020-trang-chu";
         public const string Euro2020FirstThirdPlaceTeamSlug = "thu-tu-cac-doi-xep-thu-ba-euro-2020";
+        public const string Euro2020StadiumSlug = "danh-sach-san-thi-du-vong-chung-kt-euro-2020";
+        public const string Euro2020BallSlug = "bong-thi-dau-tai-cac-ky-euro";
+        public const string Euro2020MascotSlug = "linh-vat-qua-cac-vck-euro";
+        public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
+        public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
     }
 }
