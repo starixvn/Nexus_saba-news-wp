@@ -1054,7 +1054,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   top: 0; }
   @media screen and (max-device-width: 768px) {
     .wapper.active-fixed .child-mobile-menu {
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #666;
       background-color: #fff; } }
 
 .wapper.active-fixed .button-mobile {

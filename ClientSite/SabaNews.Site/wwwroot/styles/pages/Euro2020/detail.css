@@ -1661,6 +1661,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0;
       padding-top: 2.4rem; } }
 
+.main {
+  padding-top: 18rem; }
+  @media (max-device-width: 767px) {
+    .main {
+      padding-top: 2rem; } }
+
 img {
   width: 100%; }
 
@@ -2028,26 +2034,30 @@ img {
   .detail-content-table ul li span {
     font-size: 1.6rem; } }
 
-@media (max-device-width: 767px) {
-  .wapper.active-fixed .fixed-social {
-    z-index: 10008;
-    display: flex;
-    justify-content: flex-end; } }
-
-.wapper.active-fixed .button-mobile {
-  z-index: 10009;
-  top: .8rem;
-  position: fixed; }
-
 .wapper.active-fixed .top-header {
+  position: relative; }
+
+.wapper.active-fixed .child-mobile-menu {
   position: fixed;
   z-index: 10005;
   top: 0; }
+  @media screen and (max-device-width: 768px) {
+    .wapper.active-fixed .child-mobile-menu {
+      border-bottom: 1px solid #666;
+      background-color: #fff; } }
 
-@media (max-device-width: 767px) {
-  .wapper.active-fixed .top-header {
-    position: fixed;
-    z-index: 10005;
-    top: 44px; }
-  .hidden-body .wapper.active-fixed .top-header {
-    height: calc(100% - 44px); } }
+.wapper.active-fixed .button-mobile {
+  z-index: 10004; }
+
+.wapper.active-fixed .main {
+  padding-top: 4rem; }
+
+@media screen and (max-device-width: 768px) {
+  .hidden-body .top-header {
+    position: absolute;
+    height: calc(100% - 7rem);
+    top: 7rem; }
+    .hidden-body .top-header .group-menu .nav-menu .main-menu {
+      display: block; }
+  .header .header-controls {
+    border-bottom: 1px solid #eee; } }

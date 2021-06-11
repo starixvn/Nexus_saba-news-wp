@@ -1628,8 +1628,6 @@ button {
       padding-bottom: 0; }
       .block-video .block__content .slide-video .card-horizontal__content {
         padding: 1rem 0; }
-        .block-video .block__content .slide-video .card-horizontal__content .title {
-          font-weight: normal; }
       .block-video .block__content .slide-video .card-horizontal:last-child {
         margin-bottom: 0; }
     .block-video .block__content .slide-video::-webkit-scrollbar {
@@ -1952,21 +1950,29 @@ button {
         height: 20rem; } }
 
 .block-video {
-  background: url(../../../images/euro2020/banner-video-euro.png) no-repeat;
-  height: 50rem;
+  background: url(../../../images/euro2020/banner-video-euro.png) #017B8D top center no-repeat;
   width: 116rem;
   margin: 0 auto 2rem;
   padding: 2.6rem 0 3rem; }
   @media (max-device-width: 767px) {
     .block-video {
-      background: url(../../../images/euro2020/banner-video-mobile.png) no-repeat;
+      background: url(../../../images/euro2020/banner-video-mobile.png) #017B8D top center no-repeat;
       width: 37.5rem;
       height: 34.5rem;
       padding: 2rem 0; } }
   .block-video .block__content {
-    grid-template-rows: 40rem; }
+    grid-template-rows: 46rem; }
     .block-video .block__content .slide-video .card-item {
-      background-color: #C5E1E5; }
+      background-color: #C5E1E5;
+      grid-template-columns: 16rem 1fr;
+      grid-template-rows: 9rem; }
+      .block-video .block__content .slide-video .card-item .card-horizontal__image {
+        height: 100%; }
+      .block-video .block__content .slide-video .card-item .datetime {
+        color: #595959;
+        padding-top: 4px; }
+    .block-video .block__content .swiper-slide .content-box {
+      background-color: #00252B; }
   .block-video .block__title a {
     background: transparent;
     color: #fff; }
@@ -2113,7 +2119,7 @@ button {
   top: 0; }
   @media screen and (max-device-width: 768px) {
     .wapper.active-fixed .child-mobile-menu {
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #666;
       background-color: #fff; } }
 
 .wapper.active-fixed .button-mobile {

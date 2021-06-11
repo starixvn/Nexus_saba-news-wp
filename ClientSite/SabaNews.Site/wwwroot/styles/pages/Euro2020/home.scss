@@ -419,24 +419,38 @@ $border-block-color: #4DAEC6;
 }
 
 .block-video {
-    background: url(../../../images/euro2020/banner-video-euro.png) no-repeat;
-    height: 50rem;
+    background: url(../../../images/euro2020/banner-video-euro.png) #017B8D top center no-repeat;
     width: 116rem;
     margin: 0 auto 2rem;
     padding: 2.6rem 0 3rem;
 
     @include Mobile {
-        background: url(../../../images/euro2020/banner-video-mobile.png) no-repeat;
+        background: url(../../../images/euro2020/banner-video-mobile.png) #017B8D top center no-repeat;
         width: 37.5rem;
         height: 34.5rem;
         padding: 2rem 0;
     }
 
     .block__content {
-        grid-template-rows: 40rem;
+        grid-template-rows: 46rem;
 
         .slide-video .card-item {
             background-color: #C5E1E5;
+            grid-template-columns: 16rem 1fr;
+            grid-template-rows: 9rem;
+
+            .card-horizontal__image {
+                height: 100%;
+            }
+
+            .datetime {
+                color: #595959;
+                padding-top: 4px;
+            }
+        }
+
+        .swiper-slide .content-box {
+            background-color: #00252B;
         }
     }
 
@@ -577,7 +591,7 @@ $border-block-color: #4DAEC6;
         top: 0;
 
         @media screen and (max-device-width: 768px) {
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #666;
             background-color: #fff;
         }
     }
