@@ -1,35 +1,35 @@
 ﻿[
-    {
-        "outputFile": "wwwroot/styles/pages/detailnews.css",
-        "inputFile": "wwwroot/styles/pages/detailnews.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/home.css",
-        "inputFile": "wwwroot/styles/pages/home.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/news.css",
-        "inputFile": "wwwroot/styles/pages/news.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/video.css",
-        "inputFile": "wwwroot/styles/pages/video.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/detailvideo.css",
-        "inputFile": "wwwroot/styles/pages/detailvideo.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/maintenance.css",
-        "inputFile": "wwwroot/styles/pages/maintenance.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/auth.css",
-        "inputFile": "wwwroot/styles/pages/auth.scss"
-    },
-    {
-        "outputFile": "wwwroot/styles/pages/profile.css",
-        "inputFile": "wwwroot/styles/pages/profile.scss"
+  {
+    "outputFile": "wwwroot/styles/pages/detailnews.css",
+    "inputFile": "wwwroot/styles/pages/detailnews.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/home.css",
+    "inputFile": "wwwroot/styles/pages/home.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/news.css",
+    "inputFile": "wwwroot/styles/pages/news.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/video.css",
+    "inputFile": "wwwroot/styles/pages/video.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/detailvideo.css",
+    "inputFile": "wwwroot/styles/pages/detailvideo.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/maintenance.css",
+    "inputFile": "wwwroot/styles/pages/maintenance.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/auth.css",
+    "inputFile": "wwwroot/styles/pages/auth.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/profile.css",
+    "inputFile": "wwwroot/styles/pages/profile.scss"
   },
   {
     "outputFile": "wwwroot/styles/pages/euro2020.css",
@@ -62,5 +62,9 @@
   {
     "outputFile": "wwwroot/styles/pages/Euro2020/ranking.css",
     "inputFile": "wwwroot/styles/pages/Euro2020/ranking.scss"
-    }
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/Euro2020/detail.css",
+    "inputFile": "wwwroot/styles/pages/Euro2020/detail.scss"
+  }
 ]

@@ -107,6 +107,13 @@
             "wwwroot/styles/pages/Euro2020/ranking.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/euro2020_detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/Euro2020/detail.css"
+        ]
+    },
 
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",

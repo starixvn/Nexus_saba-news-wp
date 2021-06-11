@@ -1,0 +1,64 @@
+﻿namespace SabaNews.Site.Views.Shared.Components.RelatedPosts
+{
+    using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
+    using SabaNews.Models;
+    using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Linq;
+
+    public class RelatedPostsViewComponent : ViewComponent
+    {
+        private readonly IPostService postService;
+
+        public RelatedPostsViewComponent(IPostService postService)
+        {
+            this.postService = postService;
+        }
+
+
+        public async Task<IViewComponentResult> InvokeAsync(int postID, string slug = "")
+        {
+            IEnumerable<Post> posts ;
+            if (slug == "")
+            {
+                var recentParam = new PostParam
+                {
+                    Slug = Constants.VideoSlug,
+                    Start = Constants.FromFirstItem,
+                    End = Constants.GetElevenItems,
+                    PostID = postID
+                };
+                var postTeamplate = await postService.GetRecentPostsAsync(recentParam);
+                posts = postTeamplate.Posts;
+            }
+            else 
+            {
+                var relatedParam = new PostParam
+                {
+                    Slug = slug,
+                    Start = Constants.FromFirstItem,
+                    End = Constants.GetElevenItems,
+                    PostID = postID
+                };
+                var postTeamplate = await postService.GetPostsByCateSlugAsync(relatedParam);
+                posts = GetPostsExcerptPostID(postTeamplate.Posts, relatedParam);
+            }
+            
+            return View(posts);
+        }
+
+        public static IEnumerable<Post> GetPostsExcerptPostID(IEnumerable<Post> posts, PostParam param)
+        {
+            var totalRealItems = param.End - 1;
+            var excerptCurrentPost = posts.Where(item => item.ID != param.PostID).ToList();
+            posts = excerptCurrentPost;
+            if (excerptCurrentPost.Count > totalRealItems)
+            {
+                posts = excerptCurrentPost.Skip(param.Start).Take(totalRealItems).ToList();
+            }
+            return posts;
+        }
+    }
+}

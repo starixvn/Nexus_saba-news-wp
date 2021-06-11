@@ -177,7 +177,10 @@
             ViewData["cateSlug"] = cateInfo.Item1.Trim();
             ViewData["cateName"] = cateInfo.Item2.Trim();
             ViewData["controller"] = "home";
-
+            if (cateInfo.Item1.Trim().Contains("euro-2020"))
+            {
+                return View("~/Views/Euro2020/Detail.cshtml", Models);
+            } 
             return View(Models);
         }
         public static string GetMd5Hash(string input)

@@ -4,13 +4,15 @@
 @using Wangkanai.Detection.Models;
 @inject IDetectionService DetectionService
 @{
-    bool isMobile = DetectionService.Device.Type == Device.Mobile;
-    bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+	bool isMobile = DetectionService.Device.Type == Device.Mobile;
+	bool isTablet = DetectionService.Device.Type == Device.Tablet;
+	bool isDesktop = DetectionService.Device.Type == Device.Desktop;
 
 }
 
-
+@{
+	ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] == null ? "" : ViewData["ActiveSubCate"];
+}
 <section class="header @ViewBag.Page">
     <div class="button-mobile">
         <span class="line-mb"></span>
