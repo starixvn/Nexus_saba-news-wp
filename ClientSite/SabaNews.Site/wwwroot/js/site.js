@@ -37,7 +37,7 @@
         //Desktop
         $('.image-slider').on('click', function () {
             var id = $(this).data('id');
-            $('.swiper-slide').hide();
+            $('.block-video .swiper-slide').hide();
             var slide = $('#slide-' + id);
             slide.show();
             slide.find('.img-item').hide();
