@@ -196,7 +196,6 @@ $border-block-color: #4DAEC6;
     color: #333;
 
     .board-body {
-        padding: 12px 0;
         .frow .fcol:not(.team) {
             font-size: 2rem;
         }
@@ -288,6 +287,17 @@ $border-block-color: #4DAEC6;
     .guess-block {
         grid-column: 2;
         grid-row: 2/3;
+
+        .swiper-container .swiper-slide {
+            img {
+                height: 21rem;
+                width: 100%;
+            }
+
+            .title-box a {
+                font-size: 1.6rem;
+            }
+        }
     }
 }
 
@@ -434,10 +444,10 @@ $border-block-color: #4DAEC6;
         padding: 2rem 0;
     }
 
-     @media screen and (max-device-width: 767px) and (orientation:landscape) {
-         width: 100%;
-         height: 46rem;
-     }
+    @media screen and (max-device-width: 767px) and (orientation:landscape) {
+        width: 100%;
+        height: 46rem;
+    }
 
     .block__content {
         grid-template-rows: 46rem;

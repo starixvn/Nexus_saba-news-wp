@@ -1515,7 +1515,7 @@ button {
         bottom: 5rem; } }
     @media (max-device-width: 767px) {
       .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
-        bottom: 51px; } }
+        bottom: 60px; } }
   .swiper-container .swiper-slide {
     background-color: #081224; }
     .swiper-container .swiper-slide .img-item {
@@ -1800,10 +1800,8 @@ button {
   border-radius: 2px;
   font-size: 1.4rem;
   color: #333; }
-  .eu-board .board-body {
-    padding: 12px 0; }
-    .eu-board .board-body .frow .fcol:not(.team) {
-      font-size: 2rem; }
+  .eu-board .board-body .frow .fcol:not(.team) {
+    font-size: 2rem; }
   .eu-board .frow {
     border-bottom: 1px solid #CCDDE1;
     display: grid;
@@ -1866,6 +1864,11 @@ button {
 .block-head .guess-block {
   grid-column: 2;
   grid-row: 2/3; }
+  .block-head .guess-block .swiper-container .swiper-slide img {
+    height: 21rem;
+    width: 100%; }
+  .block-head .guess-block .swiper-container .swiper-slide .title-box a {
+    font-size: 1.6rem; }
 
 .lastest-news {
   margin-bottom: 0; }
