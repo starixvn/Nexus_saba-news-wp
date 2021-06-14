@@ -34,11 +34,15 @@
         width: 2rem;
     }
 
-    .swiper-pagination-bullets {
+    &.swiper-container-horizontal > .swiper-pagination-bullets {
         bottom: 6.9rem;
 
         @include tableMobile {
             bottom: 5rem;
+        }
+
+        @include Mobile {
+            bottom: 51px;
         }
     }
 

@@ -1528,11 +1528,14 @@ button {
   .swiper-container .swiper-pagination-bullet-active {
     background-color: #EB5342;
     width: 2rem; }
-  .swiper-container .swiper-pagination-bullets {
+  .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: 6.9rem; }
     @media screen and (max-width: 1024px) {
-      .swiper-container .swiper-pagination-bullets {
+      .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
         bottom: 5rem; } }
+    @media (max-device-width: 767px) {
+      .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: 51px; } }
   .swiper-container .swiper-slide {
     background-color: #081224; }
     .swiper-container .swiper-slide .img-item {
