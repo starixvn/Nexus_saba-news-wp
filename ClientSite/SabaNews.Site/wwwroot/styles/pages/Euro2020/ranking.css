@@ -1163,6 +1163,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-device-width: 768px) {
     .table-scroll table {
       width: 50rem; } }
+  @media screen and (max-device-width: 767px) and (orientation: landscape) {
+    .table-scroll table {
+      width: 100%; } }
 
 .table-scroll table > tbody > tr:last-child td, .clone > tbody > tr:last-child td {
   border-bottom: none; }

@@ -434,6 +434,11 @@ $border-block-color: #4DAEC6;
         padding: 2rem 0;
     }
 
+     @media screen and (max-device-width: 767px) and (orientation:landscape) {
+         width: 100%;
+         height: 46rem;
+     }
+
     .block__content {
         grid-template-rows: 46rem;
 
@@ -482,6 +487,10 @@ $border-block-color: #4DAEC6;
             grid-gap: 1.6rem 1.2rem;
         }
 
+        @media screen and (max-device-width: 767px) and (orientation:landscape) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
         .box {
             height: 29.3rem;
             border: 1px solid $border-block-color;
@@ -491,6 +500,10 @@ $border-block-color: #4DAEC6;
 
             @include Mobile {
                 height: 14rem;
+            }
+
+            @media screen and (max-device-width: 767px) and (orientation:landscape) {
+                height: 16rem;
             }
         }
     }

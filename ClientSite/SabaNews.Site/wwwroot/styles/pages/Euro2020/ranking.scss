@@ -112,9 +112,14 @@
     width: 100%;
     margin: auto;
     border-collapse: separate;
-    border-spacing: 0; 
+    border-spacing: 0;
+
     @media screen and (max-device-width: 768px) {
         width: 50rem;
+    }
+
+    @media screen and (max-device-width: 767px) and (orientation:landscape) {
+        width: 100%;
     }
 }
 
