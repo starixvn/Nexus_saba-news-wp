@@ -1,18 +1,27 @@
-﻿.block-video {
+﻿.block-video .block__content {
+    @include grid(71rem 1fr, 46rem, 1.6rem);
+
+    @include tableMobile {
+        @include grid(48.7rem 1fr, 46rem, #{$column-gap});
+    }
+
+    @include landscapeTablet {
+        @include grid(66.7rem 1fr, 46rem, #{$column-gap});
+    }
+
+    @include Mobile {
+        display: inherit;
+    }
+}
+
+.guess-block .block__content {
+    display: grid;
+}
+
+
+.block-video, .guess-block {
     .block__content {
-        @include grid(71rem 1fr, 46rem, 1.6rem);
-
-        @include tableMobile {
-            @include grid(48.7rem 1fr, 46rem, #{$column-gap});
-        }
-
-        @include landscapeTablet {
-            @include grid(66.7rem 1fr, 46rem, #{$column-gap});
-        }
-
-        @include Mobile {
-            display: inherit;
-        }
+        
 
         .swiper-video {
             overflow: hidden;

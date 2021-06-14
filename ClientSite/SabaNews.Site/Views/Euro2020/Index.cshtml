@@ -24,6 +24,21 @@
 
 @section Scripts {
 	<script src="~/js/euro2020/home.js" asp-append-version="true"></script>
+	<script>
+		var Swipes = new Swiper('.swiper-container.guess-section', {
+			loop: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+		});
+	</script>
 }
 
 
@@ -99,21 +114,30 @@
 				<div class="guess-block">
 					<h2 class="block__title"><a href="">@ViewResources.Guess</a></h2>
 					<div class="block__content">
-						@foreach (var post in Model.Identify)
-						{
-							string featuredImg = post.GetImageBySize(ImageWidth.Width300);
-							<div class="card-vertical">
-								<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-vertical__image">
-									<picture>
-										<source srcset="@featuredImg" type="image/webp" class="img-res">
-										<source srcset="@featuredImg" type="image/jpeg" class="img-res">
-										<img asp-append-version="true" loading="lazy" src="@featuredImg" alt="" class="img-res img-block">
-									</picture>
-								</a>
-								<a href="@Url.Action("Single", "Home", new { slug =  post.Slug})" class="card-vertical__title">@post.PostTitle</a>
-								<p class="card-vertical__datetime">@post.PostTime</p>
+						<div class="swiper-container guess-section">
+							<div class="swiper-wrapper">
+								@foreach (var post in Model.Identify)
+								{
+									<div class="swiper-slide" >
+										<div class="img-item">
+											@{
+												string videoImg = post.GetImageBySize(ImageWidth.Width300);
+												<picture>
+													<source srcset="@Url.Content(videoImg)" type="image/webp">
+													<source srcset="@Url.Content(videoImg)" type="image/jpeg">
+													<img loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
+												</picture>
+											}
+										</div>
+										<div class="content-box">
+											<h3 class="title-box"><a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="heading">@post.PostTitle</a></h3>
+										</div>
+									</div>}
 							</div>
-						}
+							<div class="swiper-button swiper-button-next"><span class="icon-slide icon-chevron-right"></span></div>
+							<div class="swiper-button swiper-button-prev"><span class="icon-slide icon-chevron-left"></span></div>
+							<div class="swiper-pagination"></div>
+						</div>
 					</div>
 				</div>
 			</div>

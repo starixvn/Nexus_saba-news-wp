@@ -1067,9 +1067,6 @@ button {
               font-size: 1.4rem;
               line-height: 1.9rem; } }
 
-.swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .play_video iframe {
-  display: none; }
-
 .colums-main .block-video .flex-video .swiper-video .btn-play-video {
   display: flex !important; }
 
