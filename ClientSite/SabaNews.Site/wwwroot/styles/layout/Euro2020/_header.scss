@@ -68,17 +68,15 @@ $border-block-color: #4DAEC6;
                 width: 100%;
                 background-color: #fff;
                 justify-content: flex-start;
-                padding: 0 12px;
-                height: 3.2rem;
             }
         }
 
         .menu-item {
-            padding: 11px 30px 9px;
             display: inline-block;
+            padding: 11px 30px 9px;
 
             @include Mobile {
-                padding: 11px 16px 9px 0;
+                padding: 0;
             }
 
             &:hover, &.active {
@@ -96,7 +94,7 @@ $border-block-color: #4DAEC6;
 
                 @include Mobile {
                     color: #4f4f4f;
-                    font-size: 1.3rem;
+                    padding: 0 1.2rem;
                 }
             }
         }

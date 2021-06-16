@@ -303,11 +303,13 @@ $border-block-color: #4DAEC6;
 
 .lastest-news {
     margin-bottom: 0;
+
     .block__content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 2rem 2rem;
-        @include Mobile{
+
+        @include Mobile {
             display: block;
         }
 
@@ -318,12 +320,19 @@ $border-block-color: #4DAEC6;
             position: relative;
             font-size: 1.4rem;
             color: #002028;
+
             @include Mobile {
                 margin-bottom: 1.2rem;
+                height: unset;
             }
 
             .card-vertical__image {
                 height: 100%;
+
+                @include Mobile {
+                    height: 22.78rem;
+                    margin-top: 0;
+                }
             }
 
             .card__title {
@@ -331,14 +340,25 @@ $border-block-color: #4DAEC6;
                 color: #004556;
                 text-decoration: none;
                 font-weight: bold;
-                @include Mobile {
-                    font-size: 1.4rem
-                }
 
+                @include Mobile {
+                    font-size: 1.6rem
+                }
+            }
+
+            .card__description {
+                @include Mobile {
+                    font-size: 1.2rem;
+                }
             }
 
             .card__datetime {
                 font-size: 1.3rem;
+
+                @include Mobile {
+                    color: #828282;
+                    font-size: 1.2rem;
+                }
             }
         }
 
@@ -349,19 +369,18 @@ $border-block-color: #4DAEC6;
 
         .card-content {
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 2rem;
             position: absolute;
             bottom: 0;
             width: 100%;
             height: 13rem;
+            padding: 2rem;
+
             @include Mobile {
-                padding: 1rem .8rem;
-                font-size: 1.2rem;
+                position: unset;
+                height: unset;
+                padding: .8rem;
+                background-color: #e8eaef;
             }
-        }
-
-        .sub-content {
-
         }
     }
 }
