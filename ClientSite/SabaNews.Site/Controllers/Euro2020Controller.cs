@@ -23,7 +23,7 @@ namespace SabaNews.Site.Controllers
             this.postService = postService;
             this.dataControlService = dataControlService;
         }
-        [Route("/euro-2020/")]
+        [Route("/euro-2020")]
         public async Task<IActionResult> Index()
         {
             var Model = await dataControlService.GetEuro2020PageViewModel();
@@ -37,7 +37,7 @@ namespace SabaNews.Site.Controllers
         {
             var postParam = new PostParam
             {
-                Start = 0,
+                Start = Constants.FromFirstItem,
                 End = Constants.Total,
                 Slug = Constants.Euro2020TeamSlug
             };

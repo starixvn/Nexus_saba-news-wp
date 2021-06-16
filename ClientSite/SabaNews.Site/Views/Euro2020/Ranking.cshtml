@@ -38,13 +38,11 @@
 					<ul class="sub-category">
 						@{
 							var first = true;
-
 						}
 
 						@foreach (var post in Model.Posts)
 						{
 							var active = "";
-							var hideTab = "";
 							if (first)
 							{
 								active = "active";
