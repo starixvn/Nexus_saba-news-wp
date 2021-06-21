@@ -1906,10 +1906,10 @@ button {
         .lastest-news .block__content .card-highlight .card__description {
           font-size: 1.2rem; } }
       .lastest-news .block__content .card-highlight .card__datetime {
-        font-size: 1.3rem; }
+        font-size: 1.3rem;
+        color: #828282; }
         @media (max-device-width: 767px) {
           .lastest-news .block__content .card-highlight .card__datetime {
-            color: #828282;
             font-size: 1.2rem; } }
     .lastest-news .block__content .card-vertical__image {
       height: 14.3rem; }

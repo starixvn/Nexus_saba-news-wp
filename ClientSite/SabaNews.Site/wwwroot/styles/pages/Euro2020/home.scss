@@ -354,9 +354,9 @@ $border-block-color: #4DAEC6;
 
             .card__datetime {
                 font-size: 1.3rem;
+                color: #828282;
 
                 @include Mobile {
-                    color: #828282;
                     font-size: 1.2rem;
                 }
             }
