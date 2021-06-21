@@ -17,13 +17,17 @@
 
             foreach (SitemapModel sitemapNode in sitemapNodes)
             {
-                XElement urlElement = new(
+                if (!string.IsNullOrEmpty(sitemapNode.Url))
+                {
+                    XElement urlElement = new(
                     xmlns + "url",
                     new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
                         DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)));
-                root.Add(urlElement);
+                    root.Add(urlElement);
+                }
+                
             }
 
             XDocument document = new(root);

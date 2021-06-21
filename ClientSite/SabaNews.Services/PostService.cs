@@ -273,6 +273,10 @@
 
             foreach (var item in sitemap)
             {
+                if (item.Slug == Constants.WarningSlug)
+                {
+                    continue;
+                }
                 item.Url = item.PostType == "category" ? string.Format("{0}tin-the-thao/{1}", domainName, item.Slug) : string.Format("{0}{1}", domainName, item.Slug);
             }
 
