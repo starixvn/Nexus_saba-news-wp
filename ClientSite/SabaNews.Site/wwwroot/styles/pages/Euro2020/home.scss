@@ -373,7 +373,7 @@ $border-block-color: #4DAEC6;
             bottom: 0;
             width: 100%;
             height: 13rem;
-            padding: 2rem;
+            padding: 1.2rem 1.6rem;
 
             @include Mobile {
                 position: unset;
@@ -387,7 +387,7 @@ $border-block-color: #4DAEC6;
 
 .board {
     @include Mobile {
-        margin-top: .8rem;
+        margin-top: .4rem;
     }
 
     .tab-lists {
@@ -432,7 +432,7 @@ $border-block-color: #4DAEC6;
 
 .guess-block {
     @include Mobile {
-        margin-top: 2.4rem;
+        margin-top: 2rem;
     }
 
     .block__content {
