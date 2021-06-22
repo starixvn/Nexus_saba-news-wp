@@ -51,7 +51,7 @@
 		<div class="block block-head">
 			<div class="container">
 				<div class="block lastest-news">
-					<h2 class="block__title"><a href="">@ViewResources.HotNews</a></h2>
+					<h2 class="block__title"><a href="@Url.Action("Category", "Euro2020", new { slug =  Constants.Euro2020HotNewsSlug})">@ViewResources.HotNews</a></h2>
 					<div class="block__content">
 
 						<div class="card-vertical card-highlight">
@@ -94,7 +94,7 @@
 					</div>
 				</div>
 				<div class="board">
-					<h2 class="block__title"><a href="">@Constants.Euro2020Ranking</a></h2>
+					<h2 class="block__title"><a href="@Url.Action("Ranking", "Euro2020")">@Constants.Euro2020Ranking</a></h2>
 					<div class="block__content">
 						<ul class="tab-lists">
 							@{ var first = true; }
@@ -115,7 +115,7 @@
 					</div>
 				</div>
 				<div class="guess-block">
-					<h2 class="block__title"><a href="">@ViewResources.Guess</a></h2>
+					<h2 class="block__title"><a href="@Url.Action("Category", "Euro2020", new { slug =  Constants.Euro2020IdentifySlug})">@ViewResources.Guess</a></h2>
 					<div class="block__content">
 						<div class="swiper-container guess-section">
 							<div class="swiper-wrapper">
@@ -147,7 +147,7 @@
 		</div>
 		<div class="block block-video">
 			<div class="container">
-				<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
+				<h2 class="block__title"><a href="@Url.Action("Video", "Euro2020")">@ViewResources.Video</a></h2>
 				<div class="block__content flex-video">
 					<div class="swiper-video">
 						<div class="swiper-container">
