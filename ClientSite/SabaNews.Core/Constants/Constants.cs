@@ -107,6 +107,7 @@
         public const string WrongPassword = "Mật khẩu cũ không đúng";
         public const string HotCategory = "euro-2020";
         public const string TemplatePost = "template";
+        public const string Active = "active";
 
         public const string Euro2020Controller = "Euro2020";
         public const string Euro2020 = "Euro 2020";
