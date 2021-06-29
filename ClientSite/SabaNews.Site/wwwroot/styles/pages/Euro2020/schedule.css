@@ -1151,6 +1151,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         position: relative; } }
     .date-content .match:last-child {
       border-bottom: none; }
+  .date-content .support-info {
+    text-align: center;
+    position: relative;
+    top: -16px;
+    color: #4f4f4f;
+    font-size: 13px; }
   .date-content .extra-info {
     text-align: center;
     font-size: 1.3rem;
