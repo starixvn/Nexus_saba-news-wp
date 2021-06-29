@@ -1157,6 +1157,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     top: -16px;
     color: #4f4f4f;
     font-size: 13px; }
+    @media (max-device-width: 767px) {
+      .date-content .support-info {
+        top: -10px; } }
   .date-content .extra-info {
     text-align: center;
     font-size: 1.3rem;
