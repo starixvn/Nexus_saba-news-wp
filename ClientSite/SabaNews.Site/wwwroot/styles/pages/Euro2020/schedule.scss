@@ -101,6 +101,9 @@
         top: -16px;
         color: #4f4f4f;
         font-size: 13px;
+        @include Mobile {
+            top: -10px;
+        }
     }
 
 
