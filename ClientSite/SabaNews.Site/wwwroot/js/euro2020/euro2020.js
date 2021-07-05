@@ -1,4 +1,7 @@
 ﻿var euro2020 = (function ($) {
+    var leftPos = $('.sub-category').scrollLeft();
+    $(".sub-category").animate({ scrollLeft: leftPos + 200 }, 800);
+
     var tabItem = $('.tab-data');
     function handleTab() {
         tabItem.on('click', function () {
