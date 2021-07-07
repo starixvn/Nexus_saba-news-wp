@@ -1,0 +1,58 @@
+﻿@section Title{
+	@ViewBag.Title
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/profile.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+	<script src="~/minify/js/sendmail.min.js" asp-append-version="true"></script>
+}
+
+@(await Component.InvokeAsync("Menu"))
+<section class="main">
+	<div class="container profile-container">
+		<div class="block block-main">
+			@await Html.PartialAsync("_LeftMenu", new { User = Model })
+		</div>
+		<div class="block block-extension">
+			<div class="controls">
+				<h2 class="block__title"><a>@ViewResources.Send_Mail </a></h2>
+				<div class="sendmail">
+					<div class="group-tab">
+						<h3 class="headig-modal">@ViewResources.Register</h3>
+						<form id="form-sendmail">
+							<p class="error summary-eror"></p>
+							<div class="form-modal col-md-3">
+								<label>Country</label>
+								<input type="text" class="input-form" placeholder="" name="country" />
+							</div>
+							<div class="form-modal">
+								<label>Members number now</label>
+								<input type="email" class="input-form" placeholder="" name="member_numbers" />
+							</div>
+							<div class="form-modal">
+								<label>Send date</label>
+								<input type="text" id="password" class="input-form" placeholder="" name="send_date" />
+							</div>
+							<div class="form-modal">
+								<label>EDM title</label>
+								<input type="text" class="input-form" placeholder="" name="mail_title" />
+							</div>
+							<div class="form-modal">
+								<label>EDM Content</label>
+								<textarea name="mail_content" class="input-form"></textarea>
+							</div>
+							<div class="form-modal">
+								<label>EDM link</label>
+								<input type="text" class="input-form" placeholder="" name="mail_return_link" />
+							</div>
+							<button type="submit" class="btn-send-mail">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

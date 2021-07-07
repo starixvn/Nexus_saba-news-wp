@@ -177,5 +177,16 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/sendmail.min.js",
+        "inputFiles": [
+            "wwwroot/js/profile/sendmail.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 ]

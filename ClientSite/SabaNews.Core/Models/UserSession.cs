@@ -3,6 +3,7 @@
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using SabaNews.Core.Constants;
 
     public class UserSession
     {
@@ -27,6 +28,10 @@
         public string SavedPosts { get; set; }
 
         public DateTime RegisterDate { get; set; }
+
+        public string Metadata { get; set; }
+
+        public string Role => Metadata != null && Metadata.Contains(Constants.AdministratorRole) ? Constants.AdministratorRole : Constants.NormalRole;
 
         public bool ErrorConnectWrongEmail { get; set; }
 

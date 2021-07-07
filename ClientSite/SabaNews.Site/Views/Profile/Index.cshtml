@@ -61,29 +61,7 @@
 <section class="main">
 	<div class="container profile-container">
 		<div class="block block-main">
-			<div class="profile">
-				@if (Model.Photo == null)
-				{
-					<div class="profile__avatar">@Model.Name.Substring(0, 1) </div>
-				}
-				else if(Model.Photo.ToLower().Contains("https://") || Model.Photo.ToLower().Contains("http://"))
-				{
-					<div class="profile__avatar"><img class="profile_image" loading="lazy" src="@Model.Photo" width="300" data-name="@Model.Name.Substring(0, 1)" /></div>
-				}
-				else 
-				{
-					<div class="profile__avatar"><img  class="profile_image" loading="lazy" src="/upload/@Model.Photo" width="300" data-name="@Model.Name.Substring(0, 1)" /></div>
-				}
-				<div class="profile__name">@Model.Name</div>
-				<div class="profile__date">
-                    <p>Tham gia từ @Model.RegisterDate.ToString("dd/MM/yyyy")</p>
-				</div>
-                <ul class="profile__control">
-                    <li><a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(Model.HandleSavePosts.Count > 0 ? "(" + Model.HandleSavePosts.Count + ")" : "" )</a></li>
-                    <li class="active-control"><a href="javascript:;">@ViewResources.MyAccount</a></li>
-                    <li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
-                </ul>
-			</div>
+			@await Html.PartialAsync("_LeftMenu", new { User = Model })
 		</div>
 		<div class="block block-extension">
 			<div class="controls">

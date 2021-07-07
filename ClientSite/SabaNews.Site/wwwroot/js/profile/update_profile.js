@@ -301,8 +301,9 @@
         $('#DisconnectSuccessful').on('hidden.bs.modal', function () {
             location.reload();
         });
-        errorConnectSocial = errorConnectSocial.toLowerCase() === 'true';
-        if (errorConnectSocial) {
+       
+        var errorConnect = typeof errorConnectSocial !== "undefined" && errorConnectSocial.toLowerCase() === 'true';
+        if (errorConnect) {
             $('#ErrorConnectSocial').modal('show');
         }
     }

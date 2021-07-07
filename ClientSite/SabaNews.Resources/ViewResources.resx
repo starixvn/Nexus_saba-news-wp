@@ -357,6 +357,9 @@
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm...</value>
   </data>
+  <data name="Send Mail" xml:space="preserve">
+    <value>Gửi Mail</value>
+  </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>
   </data>

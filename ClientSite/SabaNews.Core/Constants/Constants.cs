@@ -135,5 +135,9 @@
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
 
         public const string OlympicTokyoTag = "olympic-tokyo";
+        public const string NormalRole = "normal";
+        public const string ProfileIndexPage = "Index";
+        public const string ProfileListPostsPage = "ListSavedPosts";
+        public const string ProfileSendMailPage = "SendMail";
     }
 }

@@ -47,6 +47,7 @@
                 return Redirect(Url.Action("Index", "Home"));
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
+            ViewBag.Page = Constants.ProfileIndexPage;
             ViewBag.ErrorConnectEmail = sessionService.User.ErrorConnectWrongEmail;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
             sessionService.User = User;
@@ -118,6 +119,7 @@
                 User = user
             };
             ViewBag.Title = Constants.Profile + user.Name + Constants.ProfileSiteName;
+            ViewBag.Page = Constants.ProfileListPostsPage ;
 
             return View(Model);
         }
@@ -217,6 +219,19 @@
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             }
             return Json(commandResult);
+        }
+
+        public async Task<ActionResult> SendMail()
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Redirect(Url.Action("Index", "Home"));
+            }
+            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
+            ViewBag.Page = Constants.ProfileSendMailPage;
+            var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            return View(User);
         }
 
 
