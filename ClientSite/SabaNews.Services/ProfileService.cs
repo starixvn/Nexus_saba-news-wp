@@ -3,13 +3,14 @@
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Auth;
     using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     
 
     public class ProfileService : IProfileService
     {
         private readonly IBaseService baseService;
-
+            
         public ProfileService(IBaseService baseService)
         {
             this.baseService = baseService;
@@ -45,6 +46,11 @@
                 _photo = user.Photo
             };
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IEnumerable<UserSession>> GetAllUserAsync()
+        {
+            return await baseService.GetDataAsync<UserSession>(new GetAllUserCriteria());
         }
 
         public async Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType)

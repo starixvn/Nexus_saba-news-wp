@@ -15,7 +15,19 @@
                 mail_return_link: "Vui lòng nhập return link"
             },
             submitHandler: function (form) {
-                console.log(123);
+                $.ajax({
+                    url: "Profile/SaveDataAndSendEmail",
+                    type: "POST",
+                    data: $(form).serialize(),
+                    success: function (res) {
+                        if (res.isSuccessful) {
+                            location.reload();
+                        } else {
+                            $(form).find('.summary-eror').text(res.message);
+                        }
+                    },
+
+                });
             }
         });
 

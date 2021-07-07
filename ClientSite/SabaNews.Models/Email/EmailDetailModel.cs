@@ -1,0 +1,17 @@
+﻿namespace SabaNews.Models.Email
+{
+    public class EmailDetailModel
+    {
+        public int EmailId { get; set; }
+
+        public int UserId { get; set; }
+
+        public string TokenId { get; set; }
+
+        public string EmailAddress { get; set; }
+
+        public string EmailTitle { get; set; }
+
+        public string EmailContent { get; set; }
+    }
+}

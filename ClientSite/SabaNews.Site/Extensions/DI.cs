@@ -46,6 +46,7 @@
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();
             services.AddTransient<IRecurringJobManager, RecurringJobManager>();
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();

@@ -16,6 +16,7 @@
     using SabaNews.Core.Constants;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
+    using SabaNews.Models.Mail;
 
     public class ProfileController : Controller
     {
@@ -232,6 +233,12 @@
             ViewBag.Page = Constants.ProfileSendMailPage;
             var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
             return View(User);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveDataAndSendEmail(EmailModel model)
+        { 
+            
         }
 
 

@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
 
@@ -12,5 +13,7 @@
         Task<CommandResult> UpdateUserInfoAsync(UserSession user);
 
         Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType);
+
+        Task<IEnumerable<UserSession>> GetAllUserAsync();
     }
 }
