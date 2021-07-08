@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Services.Interfaces
+﻿namespace SabaNews.Services.Interfaces
 {
-    public class IEmailService
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Email;
+    using System.Threading.Tasks;
+
+    public interface IEmailService
     {
+        Task<CommandResult> CreateEmailAsync(EmailModel model);
+
+        Task<CommandResult> CreateEmailDetailAsync(EmailDetailModel model);
     }
 }

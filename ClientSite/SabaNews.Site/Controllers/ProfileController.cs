@@ -16,7 +16,8 @@
     using SabaNews.Core.Constants;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
-    using SabaNews.Models.Mail;
+    using SabaNews.Models.Email;
+    using System.Linq;
 
     public class ProfileController : Controller
     {
@@ -25,19 +26,22 @@
         private readonly IPostService postService;
         private readonly IAuthService authService;
         private readonly IPathService pathService;
+        private readonly IEmailService emailService;
 
         public ProfileController(
             IProfileService profileService,
             ISessionService sessionService,
             IPostService postService,
             IAuthService authService,
-            IPathService pathService)
+            IPathService pathService,
+            IEmailService emailService)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
             this.postService = postService;
             this.authService = authService;
             this.pathService = pathService;
+            this.emailService = emailService;
         }
         [Route("Profile")]
         public async Task<IActionResult> Index()
@@ -237,8 +241,38 @@
 
         [HttpPost]
         public async Task<ActionResult> SaveDataAndSendEmail(EmailModel model)
-        { 
-            
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Json(model);
+            }
+            var users = await profileService.GetAllUserAsync();
+            var userNumber = users.Count();
+            model.CreatedBy = sessionService.User.Id;
+            model.SendDate = DateTime.Now;
+
+            var result = await emailService.CreateEmailAsync(model);
+            await authService.SendMailAsync(model.EmailTitle, model.EmailContent, sessionService.User.Email);
+
+            //if (result.IsSuccessful)
+            //{
+            //    foreach (var user in users)
+            //    {
+            //        var token = Guid.NewGuid().ToString();
+            //        var detailModel = new EmailDetailModel
+            //        {
+            //            EmailId = model.EmailId,
+            //            UserId = sessionService.User.Id,
+            //            EmailAddress = user.Email,
+            //            EmailContent = model.EmailContent,
+            //            EmailTitle = model.EmailTitle,
+            //            TokenId = token
+            //        };
+            //        await emailService.CreateEmailDetailAsync(detailModel);
+            //    }
+            //}
+            return Json(new { result, userNumber });
         }
 
 

@@ -25,5 +25,7 @@
         Task SendMailConfirmationAsync(string email, string url);
 
         Task SendMailResetPasswordAsync(string email, string url);
+
+        Task SendMailAsync(string subject, string body, string receiverEmail);
     }
 }

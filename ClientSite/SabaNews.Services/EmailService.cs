@@ -25,7 +25,9 @@
                 SendDate = model.SendDate,
                 CreatedBy = model.CreatedBy
             };
-            return await baseService.ExecuteNonQueryAsync(command);
+            var result =  await baseService.ExecuteNonQueryAsync(command);
+            model.EmailId = command.EmailId;
+            return result;
         }
 
         public async Task<CommandResult> CreateEmailDetailAsync(EmailDetailModel model)

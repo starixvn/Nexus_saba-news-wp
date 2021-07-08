@@ -16,14 +16,15 @@
             },
             submitHandler: function (form) {
                 $.ajax({
-                    url: "Profile/SaveDataAndSendEmail",
+                    url: 'SaveDataAndSendEmail',
                     type: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
-                        if (res.isSuccessful) {
+                        result = res.result;
+                        if (result.isSuccessful) {
                             location.reload();
                         } else {
-                            $(form).find('.summary-eror').text(res.message);
+                            $(form).find('.summary-eror').text(result.message);
                         }
                     },
 
