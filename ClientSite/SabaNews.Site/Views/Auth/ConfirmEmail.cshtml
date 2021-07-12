@@ -12,8 +12,16 @@
 	<div class="container">
 		<div class="block block-main">
 			<div class="block__content block__title">
-				<h3>@(Model ? ViewResources.ConfirmEmail : ViewResources.ExpiredLink)</h3>
-				<p>@(Model ? ViewResources.ConfirmEmailSuccessfully : ViewResources.IncorrectLinkForConfirmEmail)</p>
+				@if (Model)
+				{
+					<h3>@ViewResources.ConfirmEmail</h3>
+					<div class="auth-input">Hãy Bấm vào <span style="color:rgb(0,0,255); cursor: pointer; text-decoration:underline" class="auth-login">đây</span> để đăng nhập</div>
+				}
+				else
+				{
+					<h3>@ViewResources.ExpiredLink</h3>
+					<div>@ViewResources.IncorrectLinkForConfirmEmail</div>
+				}
 			</div>
 		</div>
 		@(await Component.InvokeAsync("Sidebar"))
