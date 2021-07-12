@@ -18,19 +18,19 @@
   position: relative; }
   .auth-form .modal-auth .modal-body {
     padding: 0; }
-  .auth-form .modal-auth .modal-resetpass {
+  .auth-form .modal-auth .modal-resetpass, .auth-form .modal-auth .modal-body {
     padding: 3rem; }
-    .auth-form .modal-auth .modal-resetpass .form-resetpass {
+    .auth-form .modal-auth .modal-resetpass .form-resetpass, .auth-form .modal-auth .modal-body .form-resetpass {
       max-width: 42rem;
       margin: 0 auto; }
-      .auth-form .modal-auth .modal-resetpass .form-resetpass .heading-resetpass {
+      .auth-form .modal-auth .modal-resetpass .form-resetpass .heading-resetpass, .auth-form .modal-auth .modal-body .form-resetpass .heading-resetpass {
         padding-bottom: 2rem;
         border-bottom: 1px solid #e5e5e5;
         text-align: center;
         color: #333;
         font-size: 1.8rem;
         font-weight: 700; }
-      .auth-form .modal-auth .modal-resetpass .form-resetpass .form-title {
+      .auth-form .modal-auth .modal-resetpass .form-resetpass .form-title, .auth-form .modal-auth .modal-body .form-resetpass .form-title {
         margin: 2rem 0;
         text-align: center; }
   .auth-form .modal-auth .headig-modal {
@@ -38,7 +38,7 @@
     font-size: 1.6rem;
     color: #333;
     margin-bottom: 2rem; }
-  .auth-form .modal-auth .close-login {
+  .auth-form .modal-auth .close-login, .auth-form .modal-auth .close {
     position: absolute;
     top: -1.6rem;
     right: -1.6rem;
@@ -53,9 +53,9 @@
     font-size: 3rem;
     outline: none; }
     @media screen and (max-width: 1024px) {
-      .auth-form .modal-auth .close-login {
+      .auth-form .modal-auth .close-login, .auth-form .modal-auth .close {
         right: 0; } }
-    .auth-form .modal-auth .close-login:focus {
+    .auth-form .modal-auth .close-login:focus, .auth-form .modal-auth .close:focus {
       outline: none; }
   .auth-form .modal-auth .nav-login {
     display: flex;
