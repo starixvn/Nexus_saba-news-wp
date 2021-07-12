@@ -157,7 +157,7 @@
     <value>Xác thực email</value>
   </data>
   <data name="ConfirmEmailSuccessfully" xml:space="preserve">
-    <value>Xác thực email thành công</value>
+    <value>Xác thực email thành công!</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Xác nhận mật khẩu</value>

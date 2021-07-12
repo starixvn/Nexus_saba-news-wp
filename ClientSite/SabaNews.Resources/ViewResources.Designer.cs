@@ -178,7 +178,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Xác thực email thành công.
+        ///   Looks up a localized string similar to Xác thực email thành công!.
         /// </summary>
         public static string ConfirmEmailSuccessfully {
             get {
