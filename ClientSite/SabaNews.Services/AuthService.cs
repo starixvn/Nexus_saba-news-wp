@@ -132,7 +132,7 @@
             await SendMailAsync(subject, body, email);
         }
 
-        public async Task SendMailAsync(string subject, string body, string receiverEmail)
+        public async Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail)
         {
             var email = new MailModel
             {
@@ -140,7 +140,7 @@
                 Body = body,
                 ReceiverEmail = receiverEmail
             };
-            await mailService.SendMailAsync(email);
+            return await mailService.SendMailAsync(email);
         }
 
       

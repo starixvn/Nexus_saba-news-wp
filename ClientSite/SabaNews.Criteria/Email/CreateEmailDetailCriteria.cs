@@ -14,6 +14,8 @@
 
         public string EmailContent { get; set; }
 
+        public int Status { get; set; }
+
         public override string GetSettingKey() => "email_detail_create";
 
         public override bool IsValid() => true;

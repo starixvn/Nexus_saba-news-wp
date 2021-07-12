@@ -10,6 +10,8 @@ namespace SabaNews.Models.Email
 
         public string EmailReturnLink { get; set; }
 
+        public string EmailEmbeddedLink { get; set; }
+
         public int CreatedBy { get; set; }
 
         public DateTime SendDate { get; set; }

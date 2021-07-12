@@ -39,8 +39,14 @@
                 TokenId = model.TokenId,
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
-                EmailAddress = model.EmailAddress
+                EmailAddress = model.EmailAddress,
+                Status = model.Status
             };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command)
+        {
             return await baseService.ExecuteNonQueryAsync(command);
         }
     }

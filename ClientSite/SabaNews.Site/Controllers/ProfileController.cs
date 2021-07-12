@@ -18,6 +18,7 @@
     using Microsoft.AspNetCore.Authentication.Cookies;
     using SabaNews.Models.Email;
     using System.Linq;
+    using SabaNews.Criteria.Email;
 
     public class ProfileController : Controller
     {
@@ -251,28 +252,45 @@
             var userNumber = users.Count();
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.Now;
-
             var result = await emailService.CreateEmailAsync(model);
-            await authService.SendMailAsync(model.EmailTitle, model.EmailContent, sessionService.User.Email);
+            
 
-            //if (result.IsSuccessful)
-            //{
-            //    foreach (var user in users)
-            //    {
-            //        var token = Guid.NewGuid().ToString();
-            //        var detailModel = new EmailDetailModel
-            //        {
-            //            EmailId = model.EmailId,
-            //            UserId = sessionService.User.Id,
-            //            EmailAddress = user.Email,
-            //            EmailContent = model.EmailContent,
-            //            EmailTitle = model.EmailTitle,
-            //            TokenId = token
-            //        };
-            //        await emailService.CreateEmailDetailAsync(detailModel);
-            //    }
-            //}
+            if (result.IsSuccessful)
+            {
+                foreach (var user in users)
+                {
+                    var token = Guid.NewGuid().ToString();
+                    var resultSendMail = await authService.SendMailAsync(model.EmailTitle, model.EmailContent, sessionService.User.Email);
+                    var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token = token, returnUrl = model.EmailReturnLink });
+                    var detailModel = new EmailDetailModel
+                    {
+                        EmailId = model.EmailId,
+                        UserId = sessionService.User.Id,
+                        EmailAddress = user.Email,
+                        EmailContent = model.EmailContent + "\n" + returnLink,
+                        EmailTitle = model.EmailTitle,
+                        TokenId = token,
+                        Status = resultSendMail.Code
+                    };
+                    detailModel.Status = resultSendMail.Code;
+                    await emailService.CreateEmailDetailAsync(detailModel);
+                }
+            }
             return Json(new { result, userNumber });
+        }
+
+        public async Task<ActionResult> ClickedSendMailLink(string token, string returnUrl)
+        {
+            var command = new VerifyTokenEmailDetailCommand
+            {
+                TokenId = token
+            };
+            var result = await emailService.VerifyTokenEmailDetailAsync(command);
+            if (!result.IsSuccessful)
+            {
+                return View("~/Views/Home/EmptyBlog.cshtml");
+            }
+            return Redirect(returnUrl);
         }
 
 

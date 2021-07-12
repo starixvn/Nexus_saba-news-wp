@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
     using SabaNews.Core.Models;
+    using SabaNews.Criteria.Email;
     using SabaNews.Models.Email;
     using System.Threading.Tasks;
 
@@ -9,5 +10,7 @@
         Task<CommandResult> CreateEmailAsync(EmailModel model);
 
         Task<CommandResult> CreateEmailDetailAsync(EmailDetailModel model);
+
+        Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command);
     }
 }

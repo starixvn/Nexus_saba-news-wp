@@ -22,7 +22,7 @@
                     success: function (res) {
                         result = res.result;
                         if (result.isSuccessful) {
-                            location.reload();
+                            //location.reload();
                         } else {
                             $(form).find('.summary-eror').text(result.message);
                         }

@@ -13,5 +13,7 @@
         public string EmailTitle { get; set; }
 
         public string EmailContent { get; set; }
+
+        public int Status { get; set; } = 0;
     }
 }
