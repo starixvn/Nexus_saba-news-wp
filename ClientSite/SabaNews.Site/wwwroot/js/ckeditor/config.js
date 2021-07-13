@@ -2,7 +2,7 @@
  * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
-console.log('123123');
+console.log('111');
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
@@ -10,14 +10,14 @@ CKEDITOR.editorConfig = function( config ) {
 	config.syntaxhighlight_lang = 'csharp';
 	config.syntaxhighlight_hideControls = true;
 	config.languages = 'vi';
-	config.filebrowserBrowseUrl = '/js/ckfinder/ckfinder.html';
-	config.filebrowserImageBrowseUrl = '/js/ckfinder/ckfinder.html?Types=Images';
-	config.filebrowserFlashBrowseUrl = '/js/ckfinder/ckfinder.html?Types=Flash';
-	config.filebrowserUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=File';
-	config.filebrowserImageUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
-	config.filebrowserFlashUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
+	//config.filebrowserBrowseUrl = '/js/ckfinder/ckfinder.html';
+	//config.filebrowserImageBrowseUrl = '/js/ckfinder/ckfinder.html?Types=Images';
+	//config.filebrowserFlashBrowseUrl = '/js/ckfinder/ckfinder.html?Types=Flash';
+	//config.filebrowserUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=File';
+	//config.filebrowserImageUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
+	//config.filebrowserFlashUploadUrl = '/js/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
 
-	CKFinder.setupCKEditor(null, '/js/ckfinder/');
+	//CKFinder.setupCKEditor(null, '/js/ckfinder/');
 
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
