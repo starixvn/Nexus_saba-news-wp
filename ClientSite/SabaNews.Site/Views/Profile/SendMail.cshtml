@@ -7,9 +7,14 @@
 }
 
 @section Scripts{
+	<script src="~/js/ckeditor/ckeditor.js" asp-append-version="true"></script>
+	<script src="~/js/ckfinder/ckfinder.js" asp-append-version="true"></script>
 	<script src="~/minify/js/sendmail.min.js" asp-append-version="true"></script>
+	<script>
+		CKEDITOR.replace("emailContent");
+	</script>
 }
-
+	
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
 	<div class="container profile-container">
@@ -30,7 +35,7 @@
 							</div>
 							<div class="form-modal">
 								<label>EDM Content</label>
-								<textarea name="emailContent" class="input-form"></textarea>
+								<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
 							</div>
 							<div class="form-modal">
 								<label>EDM link</label>

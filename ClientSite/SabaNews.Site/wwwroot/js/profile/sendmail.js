@@ -5,16 +5,23 @@
 
         $(form).validate({
             rules: {
-                mail_title: 'required',
-                mail_content: 'required',
-                mail_return_link: 'required'
+                emailTitle: 'required',
+                emailContent: 'required',
+                emailReturnLink: 'required'
             },
             messages: {
-                mail_title: "Vui lòng nhập email title",
-                mail_content: "vui lòng nhập content",
-                mail_return_link: "Vui lòng nhập return link"
+                emailTitle: "Vui lòng nhập email title",
+                emailContent: "vui lòng nhập content",
+                emailReturnLink: "Vui lòng nhập return link"
             },
             submitHandler: function (form) {
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances['emailContent'].updateElement();
+                }
+                var desc = CKEDITOR.instances.emailContent.getData();
+                var data = 
+                console.log(desc);
+                console.log($(form).serialize());
                 $.ajax({
                     url: 'SaveDataAndSendEmail',
                     type: "POST",
