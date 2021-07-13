@@ -208,4 +208,10 @@
         <Setting Key="user_update_info" SpName="user_update_info" DbName="sabasports" Plain="0" />
         <Setting Key="social_disconnect_type" SpName="social_disconnect_type" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="SendMail">
+        <Setting Key="user_get_all" SpName="user_get_all" DbName="sabasports" Plain="0" />
+        <Setting Key="email_create" SpName="email_create" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_create" SpName="email_detail_create" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_verify_token" SpName="email_detail_verify_token" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>

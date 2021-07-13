@@ -260,7 +260,7 @@
                 foreach (var user in users)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var resultSendMail = await authService.SendMailAsync(model.EmailTitle, model.EmailContent, sessionService.User.Email);
+                    var resultSendMail = await authService.SendMailAsync(model.EmailTitle, model.EmailContent, user.Email);
                     var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token = token, returnUrl = model.EmailReturnLink });
                     var detailModel = new EmailDetailModel
                     {

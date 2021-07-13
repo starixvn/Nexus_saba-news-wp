@@ -27,6 +27,7 @@
                     type: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
+                        console.log(res);
                         result = res.result;
                         if (result.isSuccessful) {
                             //location.reload();
