@@ -260,15 +260,16 @@
                 foreach (var user in users)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var resultSendMail = await authService.SendMailAsync(model.EmailTitle, model.EmailContent, user.Email);
                     var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token = token, returnUrl = model.EmailReturnLink });
                     var messageReturnLink = "<h4>Click vào <a href=" + returnLink + ">đây</a> để xem chi tiết</h4>";
+                    var emailContent = model.EmailContent + "\n" + messageReturnLink;
+                    var resultSendMail = await authService.SendMailAsync(model.EmailTitle, emailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
                         UserId = sessionService.User.Id,
                         EmailAddress = user.Email,
-                        EmailContent = model.EmailContent + "\n" + messageReturnLink,
+                        EmailContent = emailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
                         Status = resultSendMail.Code
