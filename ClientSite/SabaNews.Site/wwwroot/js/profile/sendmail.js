@@ -3,7 +3,7 @@
     function HandleValidate() {
         var form = 'form#form-sendmail';
 
-        $(form).validate({
+        var validate = $(form).validate({
             rules: {
                 emailTitle: 'required',
                 emailContent: 'required',
@@ -18,22 +18,21 @@
                 for (instance in CKEDITOR.instances) {
                     CKEDITOR.instances['emailContent'].updateElement();
                 }
-                var desc = CKEDITOR.instances.emailContent.getData();
-                var data = 
-                console.log(desc);
-                console.log($(form).serialize());
+                $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: 'SaveDataAndSendEmail',
                     type: "POST",
                     data: $(form).serialize(),
                     success: function (res) {
-                        console.log(res);
                         result = res.result;
                         if (result.isSuccessful) {
-                            //location.reload();
+                            $(form).find('.summary-eror').text("Gửi email thành công");
+                            $(form).trigger('reset');
+                            CKEDITOR.instances['emailContent'].setData('');
                         } else {
                             $(form).find('.summary-eror').text(result.message);
                         }
+                        $('.btn-send-mail').prop('disabled', false);
                     },
 
                 });
