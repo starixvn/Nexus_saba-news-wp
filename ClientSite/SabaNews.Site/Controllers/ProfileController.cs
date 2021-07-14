@@ -261,8 +261,8 @@
                 {
                     var token = Guid.NewGuid().ToString();
                     var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token = token, returnUrl = model.EmailReturnLink });
-                    var messageReturnLink = string.Format("<h4>Click vào <a href=\"{0}\">đây</a> để xem chi tiết</h4>", returnLink);
-                    var emailContent = model.EmailContent + "\n" + messageReturnLink;
+                    var messageReturnLink = string.Format("<p>Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.< br /> Saba Sports </p>", returnLink);
+                    var emailContent = model.EmailContent + "<br />" + messageReturnLink;
                     var resultSendMail = await authService.SendMailAsync(model.EmailTitle, emailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
