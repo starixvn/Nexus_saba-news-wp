@@ -95,4 +95,19 @@
         <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />
         <ProjectReference Include="..\SabaNews.Services\SabaNews.Services.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="CKFinder">
+        <HintPath>wwwroot\js\ckfinder\bin\Debug\CKFinder.dll</HintPath>
+      </Reference>
+      <Reference Include="CKFinder_FileEditor">
+        <HintPath>wwwroot\js\ckfinder\bin\Debug\CKFinder_FileEditor.dll</HintPath>
+      </Reference>
+      <Reference Include="CKFinder_ImageResize">
+        <HintPath>wwwroot\js\ckfinder\bin\Debug\CKFinder_ImageResize.dll</HintPath>
+      </Reference>
+      <Reference Include="CKFinder_Watermark">
+        <HintPath>wwwroot\js\ckfinder\bin\Debug\CKFinder_Watermark.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 </Project>

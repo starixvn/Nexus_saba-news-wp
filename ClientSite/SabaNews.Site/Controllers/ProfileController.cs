@@ -295,6 +295,22 @@
             return Redirect(returnUrl);
         }
 
+        public async Task<ActionResult> UploadImageSendMail(IFormFile file)
+        {
+            string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            filename = EnsureCorrectFilename(filename);
+            filename = DateTime.Now.Millisecond + filename;
+            var filePath = GetPathAndFilename(filename);
+            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
+                await file.CopyToAsync(output);
+
+            var linkPhoto = "upload/" + filename;
+            var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/"; 
+            var url = string.Concat(baseUrl, linkPhoto);
+
+            return Json(new { url, filePath });
+        }
+
 
         private static string EnsureCorrectFilename(string filename)
         {
