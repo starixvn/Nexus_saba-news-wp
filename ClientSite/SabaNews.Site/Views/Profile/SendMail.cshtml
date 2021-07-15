@@ -7,11 +7,23 @@
 }
 
 @section Scripts{
-	<script src="~/js/ckeditor/ckeditor.js" asp-append-version="true"></script>
-	<script src="~/js/ckfinder/ckfinder.js" asp-append-version="true"></script>
+	@*<script src="~/js/ckeditor/ckeditor.js" asp-append-version="true"></script>*@
+	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
 	<script src="~/minify/js/sendmail.min.js" asp-append-version="true"></script>
+	@*<script src="~/js/ckfinder/ckfinder.js" asp-append-version="true"></script>*@
+	
 	<script>
-		CKEDITOR.replace("emailContent");
+		//CKEDITOR.replace("emailContent");
+		//ClassicEditor
+		//	.create(document.querySelector('#emailContent'), {
+		//		image: {
+		//			toolbar: ['toggleImageCaption', 'imageTextAlternative']
+		//		}
+		//	})
+		//	.catch(error => {
+		//		console.error(error);
+		//	});
+		
 	</script>
 }
 	
