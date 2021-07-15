@@ -7,16 +7,21 @@ var sendmailevent = (function ($) {
         $(form).validate({
             rules: {
                 emailTitle: 'required',
-                emailContent: 'required',
+                EmailContent: 'required',
                 emailReturnLink: 'required'
             },
             messages: {
                 emailTitle: "Vui lòng nhập email title",
-                emailContent: "vui lòng nhập content",
+                EmailContent: "vui lòng nhập content",
                 emailReturnLink: "Vui lòng nhập return link"
             },
             submitHandler: function (form) {
                 console.log(editorValue.getData());
+                if (editorValue.getData().trim() === "") {
+                    $(form).find('.summary-eror').text('vui lòng nhập content');
+                    return false;
+                }
+                console.log($(form).serialize());
                 $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: 'SaveDataAndSendEmail',

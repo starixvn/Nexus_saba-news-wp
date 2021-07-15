@@ -4,6 +4,7 @@ var configCkeditor = (function ($) {
         ClassicEditor
             .create(document.querySelector(element), {
                 extraPlugins: [CustomUpload],
+                inlineStyles: true,
                 toolbar: {
                     items: [
                         'heading',
@@ -17,7 +18,6 @@ var configCkeditor = (function ($) {
                         'outdent',
                         'indent',
                         '|',
-                        'imageUpload',
                         'blockQuote',
                         'insertTable',
                         'mediaEmbed',
