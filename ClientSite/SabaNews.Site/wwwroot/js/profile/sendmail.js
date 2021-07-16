@@ -43,10 +43,18 @@ var sendmailevent = (function ($) {
                 });
             }
         });
+    }
 
+    function HanldeEmailList() {
+        $('.view_content').click(function () {
+            var content = $(this).parent().find('.email_content').val();
+            $('#ViewEmailContent .modal-body').html(content);
+            $('#ViewEmailContent').modal('show');
+        });
     }
 	function init() {
         HandleValidate();
+        HanldeEmailList();
     }
 
     return {

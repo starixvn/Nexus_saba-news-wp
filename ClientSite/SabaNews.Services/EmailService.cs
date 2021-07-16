@@ -4,6 +4,8 @@
     using SabaNews.Criteria.Email;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class EmailService : IEmailService
@@ -43,6 +45,11 @@
                 Status = model.Status
             };
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IEnumerable<EmailModel>> GetEmailByUser(GetEmailByUserCriteria criteria)
+        {
+            return await baseService.GetDataAsync<EmailModel>(criteria);
         }
 
         public async Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command)

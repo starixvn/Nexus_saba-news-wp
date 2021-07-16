@@ -31,33 +31,73 @@
 <section class="main">
 	<div class="container profile-container">
 		<div class="block block-main">
-			@await Html.PartialAsync("_LeftMenu", new { User = Model })
+			@await Html.PartialAsync("_LeftMenu", new { User = Model.User })
 		</div>
-		<div class="block block-extension">
+		<div class="block block-email">
 			<div class="controls">
-				<h2 class="block__title"><a>@ViewResources.Send_Mail </a></h2>
-				<div class="sendmail">
-					<div class="group-tab">
-						<form id="form-sendmail">
-							<p class="error summary-eror"></p>
-							<div class="form-modal">
-								<label>Email title</label>
-								<input type="text" class="input-form" placeholder="" name="emailTitle" />
-							</div>
-							<div class="form-modal">
-								<label>Email Return link</label>
-								<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
-							</div>
-							<div class="form-modal">
-								<label>Email Content</label>
-								<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
-								<label id="emailContent-error" class="error" for="emailTitle"></label>
-							</div>
-							<button type="submit" class="btn-send-mail">Gửi</button>
-						</form>
+				<div class="controls__sendmail">
+					<h2 class="block__title"><a>@ViewResources.Send_Mail </a></h2>
+					<div class="sendmail">
+						<div class="group-tab">
+							<form id="form-sendmail">
+								<p class="error summary-eror"></p>
+								<div class="form-modal">
+									<label>Email title</label>
+									<input type="text" class="input-form" placeholder="" name="emailTitle" />
+								</div>
+								<div class="form-modal">
+									<label>Email Return link</label>
+									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
+								</div>
+								<div class="form-modal">
+									<label>Email Content</label>
+									<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
+									<label id="emailContent-error" class="error" for="emailTitle"></label>
+								</div>
+								<button type="submit" class="btn-send-mail">Gửi</button>
+							</form>
+						</div>
 					</div>
+				</div>
+
+				<div class="constrols_list_sendmail line">
+					<h1>Danh sách email đã gửi</h1>
+					<table>
+						<tr>
+							<th>Title</th>
+							<th>Date</th>
+							<th>Number of sending</th>
+							<th>Click number/ rate</th>
+							<th>Content</th>
+						</tr>
+						@foreach (var email in Model.Emails)
+						{
+							var rate = (email.TotalClicked > 0 ? Math.Round((double)email.TotalClicked / email.TotalSent * 100, 2) : 0)  + "%";
+							<tr>
+								<td>@email.EmailTitle</td>
+								<td>@email.SendDate</td>
+								<td>@email.TotalSent</td>
+								<td>@email.TotalClicked / @rate</td>
+								<td><input value="@email.EmailContent" type="hidden" class="email_content" /><a href="javascript:;" class="email view_content">View</a></td>
+							</tr>
+						}
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="modal" id="ViewEmailContent" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modal-body ck-content">
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </section>
+

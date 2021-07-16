@@ -236,8 +236,14 @@
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.Page = Constants.ProfileSendMailPage;
-            var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
-            return View(User);
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var emails = await emailService.GetEmailByUser(new GetEmailByUserCriteria{ UserId= user.Id });
+            var Model = new EmailViewModel
+            {
+                User = user,
+                Emails = emails
+            };
+            return View(Model);
         }
 
         [HttpPost]

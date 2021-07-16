@@ -141,8 +141,8 @@
 
 
 
-.block-extension {
-    display: inherit;
+.block-email {
+    display: block;
 
     .controls {
         padding: 2rem;
@@ -157,368 +157,7 @@
         .line {
             border-top: 1px solid $separator-color;
             padding-top: 2.5rem;
-        }
-
-        &__choose {
-            padding-bottom: 2.5rem;
-
-            .input-upload {
-                border: 1px dashed $border-heading;
-                position: relative;
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-                background: #f7f7f7;
-
-                .icon-close {
-                    position: absolute;
-                    right: 16px;
-                    top: 16px;
-                    font-size: 1.8rem;
-                }
-
-                .txt-img {
-                    @include flex(center, nowrap,center);
-
-                    profile_sendmail .icon-upload {
-                        font-size: 5rem;
-                        margin-right: 1rem;
-                    }
-                }
-
-                .photo-error {
-                    margin: 0;
-                }
-
-                img {
-                    display: block;
-                    margin: 0 auto;
-                }
-
-                .input-file {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    z-index: 0;
-                    width: 100%;
-                    height: 100%;
-                    opacity: 0;
-                    cursor: pointer;
-                }
-
-                .save-img {
-                    color: $color-fff;
-                    padding: 1rem 2rem;
-                    background: #9f224e;
-                    border: none;
-                    margin-top: 2rem;
-                    font-weight: bold;
-                    border-radius: 3px;
-                    position: relative;
-                    z-index: 999999999999;
-                    cursor: pointer;
-                    display: none;
-                    margin: 1rem auto;
-                }
-            }
-        }
-
-        &__account {
-            .group-table {
-                @include flex(flex-start, nowrap, flex-start, row);
-                color: $color-input;
-
-                .left-table {
-                    width: 16rem;
-
-                    @include tableMobile {
-                        width: 12rem;
-                    }
-                }
-
-                .right-table {
-                    padding-bottom: 2rem;
-                    width: 100%;
-
-                    .box-control {
-                        @include flex(flex-start, nowrap, space-between, row);
-
-                        .input-password {
-                            border: 1px solid $border-heading;
-                            background-color: $color-fff !important;
-
-                            @include Mobile {
-                                width: 15rem;
-                            }
-                        }
-
-                        .main-fill {
-                            .txt-fill {
-                                list-style: none;
-                                margin-bottom: 0;
-                                font-size: 1.5rem;
-                                color: #333;
-
-                                li {
-                                    display: inline-block;
-                                }
-
-                                .txt-feild {
-                                    margin-right: .5rem;
-                                }
-
-                                .validate {
-                                    color: $color-title-hover;
-
-                                    .icon-validate {
-                                        &:before {
-                                            color: $color-title-hover;
-                                        }
-                                    }
-                                }
-                            }
-
-                            p {
-                                margin-bottom: 0;
-                            }
-                        }
-                    }
-
-                    .social-action {
-                        color: $color-input;
-                        border-bottom: 1px solid;
-                        font-size: 1.3rem;
-                        text-decoration: none;
-
-                        &.connect {
-                            color: #1B71B2;
-                        }
-                    }
-
-
-                    .comfirm {
-                        margin-bottom: 0;
-
-                        a {
-                            color: #1B71B2;
-                        }
-                    }
-
-                    .commitment {
-                        margin-bottom: 0;
-                        color: $color-input;
-                        font-size: 1.3rem;
-                    }
-
-                    .error {
-                        color: #eb5342;
-                        display: none;
-                    }
-
-                    .box-edit-form {
-                        background: #f7f7f7;
-                        border: 1px solid $separator-color;
-                        border-radius: 3px;
-                        padding: 1.5rem 2rem 2rem 2rem;
-                        box-sizing: border-box;
-                        margin-top: 1.5rem;
-                        position: relative;
-                        display: none;
-
-                        .input-form {
-                            position: relative;
-
-                            .event-pass {
-                                text-decoration: none;
-                                position: absolute;
-                                top: 1.3rem;
-                                right: 1rem;
-                            }
-                        }
-
-                        .title {
-                            margin-bottom: 1.5rem;
-                        }
-
-                        .close-edit {
-                            position: absolute;
-                            top: 1rem;
-                            right: 1rem;
-                            color: $color-content;
-                            width: 3rem;
-                            height: 3rem;
-                            text-align: center;
-                            line-height: 3rem;
-                            cursor: pointer;
-                        }
-
-                        .input-edit {
-                            width: 100%;
-                            height: 4.8rem;
-                            border: 1px solid $border-heading;
-                            border-radius: 3px;
-                            font-size: 1.5rem;
-                            color: $color-content;
-                            padding: 0 1.5rem;
-                            outline: none;
-                            background-color: $color-fff !important;
-                            margin-bottom: 1.5rem;
-                        }
-
-
-                        .forgot-pass {
-                            float: right;
-                            margin-top: 1rem;
-                            margin-bottom: 0;
-
-                            @include Mobile {
-                                float: none;
-                            }
-                        }
-
-                        .radio-group {
-                            @include flex(center, nowrap, space-between, row);
-                            max-width: 35rem;
-                            margin-bottom: 2rem;
-                        }
-
-                        .btn-submit-edit {
-                            color: $color-fff;
-                            padding: 1rem 4rem;
-                            background: #9f224e;
-                            border: none;
-                            font-weight: bold;
-                            border-radius: 3px;
-                            cursor: pointer;
-                        }
-
-                        .btn-disabled {
-                            background: $border-heading;
-                        }
-                    }
-
-                    .toggle-active-form {
-                        display: block
-                    }
-                }
-            }
-        }
-
-        &__datetime {
-            @include flex(center, nowrap, space-between, row);
-
-            .time-save {
-                margin-bottom: 0;
-            }
-
-            .filter {
-                border: 1px solid $separator-color;
-                box-sizing: border-box;
-                border-radius: 3px;
-                font-size: 1.6rem;
-                color: $color-title;
-                height: 3.2rem;
-                padding: 0 2rem 0 .5rem;
-            }
-        }
-
-        &__news {
-            border-bottom: 1px solid $separator-color;
-            padding-bottom: 1.2rem;
-
-            &:last-child {
-                border-bottom: none;
-            }
-
-            .card-horizontal {
-                margin-top: 2rem;
-                grid-template-rows: auto;
-
-                .card-horizontal__image {
-                    height: 11rem;
-
-                    @include tableMobile {
-                        height: 7.2rem;
-                    }
-                }
-
-                .title {
-                    margin-bottom: 0;
-                }
-
-                .social-control {
-                    @include flex(center, nowrap, space-between, row);
-                    margin-top: 1rem;
-
-                    @include tableMobile {
-                        display: inherit;
-                        margin-top: .5rem;
-                    }
-
-                    .name-category {
-                        margin-right: 2rem;
-                    }
-
-                    .group-icon {
-                        @include flex(center, nowrap, center);
-
-                        @include tableMobile {
-                            justify-content: flex-start;
-                            margin-top: .5rem
-                        }
-
-                        .icon {
-                            width: 3.2rem;
-                            height: 3.2rem;
-                            text-align: center;
-                            line-height: 3.2rem;
-                            border-radius: 50%;
-                            @include flex(center, nowrap, center);
-                            margin-right: 1rem;
-                        }
-
-                        .comment {
-                            margin: 0;
-                            background: $comment;
-
-                            .icon-mode_comment_full {
-                                &:before {
-                                    color: $color-fff;
-                                    font-size: 1.5rem;
-                                }
-                            }
-                        }
-
-                        .number {
-                            display: inline-block;
-                            vertical-align: middle;
-                            margin: 0 1rem 0 .5rem;
-                            font-size: 1.3rem;
-                            color: $color-datetime;
-                        }
-
-                        .save {
-                            background: $bookmark;
-
-                            .svg-bookmark {
-                                fill: $color-fff;
-                                width: 1rem;
-
-                                path {
-                                    stroke: $color-fff;
-                                }
-                            }
-                        }
-
-                        .share {
-                            padding: .5rem 0 .5rem 1rem;
-                            border-left: 1px solid $border-calendar;
-                            color: $color-input;
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
+            padding-top: 2.5rem;
         }
     }
 
@@ -595,4 +234,57 @@
 
 .btn-send-mail:disabled {
     background: #dddddd;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.modal.show {
+    position: fixed;
+    z-index: 99999;
+    top: 50%;
+    background: #fff;
+    right: 50%;
+    transform: translate(50%,-50%);
+    width: 100%;
+    max-width: 75rem;
+}
+
+.modal .modal-content{
+    border: none;
+    border-radius: 0;
+    position: relative;
+}
+
+.modal .close-login {
+    position: absolute;
+    top: -1.6rem;
+    right: -1.6rem;
+    z-index: 999999;
+    cursor: pointer;
+    color: #4f4f4f;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: #fff;
+    border-radius: 50%;
+    line-height: 3.2rem;
+    font-size: 3rem;
+    outline: none;
+}
+
+.modal .modal-body {
+    padding: 3rem;
 }

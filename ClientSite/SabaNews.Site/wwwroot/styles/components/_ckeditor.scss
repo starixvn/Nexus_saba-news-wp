@@ -33,7 +33,7 @@ main .ck-editor[role='application'] .ck.ck-content,
 }
 
 main .ck-editor[role='application'] {
-    overflow: auto;
+    //overflow: auto;
 }
 
 .ck.ck-editor__editable {
@@ -46,11 +46,6 @@ main .ck-editor[role='application'] {
 .ck.ck-editor__editable {
     position: relative;
     z-index: var(--ck-sample-editor-z-index);
-}
-
-.ck ul, .ck ol {
-    padding-left: 40px;
-    margin: 1em 0;
 }
 
 .editor-container {
@@ -345,25 +340,6 @@ body[ data-editor='InlineEditor'] .collaboration-demo__row {
     right: unset;
 }
 
-/* --------- SAMPLE GENERIC STYLES (not related to CKEditor) ------------------------------------------------------- */
-body, html {
-    padding: 0;
-    margin: 0;
-    line-height: 1.5;
-}
-
-body {
-    height: 100%;
-    color: #2D3A4A;
-}
-
-body * {
-    box-sizing: border-box;
-}
-
-a {
-    color: #38A5EE;
-}
 
 header .centered {
     display: flex;
@@ -470,7 +446,6 @@ footer {
     text-align: center;
     color: rgba(0,0,0,.4);
 }
-
 
 /* --------- RWD --------------------------------------------------------------------------------------------------- */
 @media screen and ( max-width: 800px ) {
