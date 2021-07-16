@@ -18,16 +18,18 @@ var configCkeditor = (function ($) {
                         'outdent',
                         'indent',
                         '|',
+                        'imageInsert',
                         'blockQuote',
                         'insertTable',
                         'mediaEmbed',
+                        'alignment',
                         'undo',
-                        'redo',
-                        'imageInsert'
+                        'redo'
                     ]
                 },
                 language: 'en',
                 image: {
+                    resizeUnit: 'px',
                     toolbar: [
                         'imageTextAlternative',
                         'imageStyle:inline',
