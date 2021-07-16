@@ -27,5 +27,7 @@
         Task SendMailResetPasswordAsync(string email, string url);
 
         Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail);
+
+        Task<CommandResult> SendMailCkeditorAsync(string subject, string content, string email);
     }
 }

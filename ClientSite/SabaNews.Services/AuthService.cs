@@ -17,6 +17,7 @@
     {
         private const string ConfirmEmailTemplates = "EmailTemplates//ConfirmEmail.txt";
         private const string ResetPasswordTemplates = "EmailTemplates//ResetPassword.txt";
+        private const string SendMailEventTemplates = "EmailTemplates//SendMailEvent.txt";
 
         private readonly IBaseService baseService;
         private readonly IWebHostEnvironment webHostEnvironment;
@@ -130,6 +131,14 @@
                 email,
                 url);
             await SendMailAsync(subject, body, email);
+        }
+
+        public async Task<CommandResult> SendMailCkeditorAsync(string subject, string content, string email)
+        {
+            var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, SendMailEventTemplates);
+            var rawBody = mailService.ReadTextFile(mailPath);
+            var body = rawBody.Replace("{0}", content);
+            return await SendMailAsync(subject, body, email);
         }
 
         public async Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail)

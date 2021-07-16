@@ -110,4 +110,10 @@
         <HintPath>wwwroot\js\ckfinder\bin\Debug\CKFinder_Watermark.dll</HintPath>
       </Reference>
     </ItemGroup>
+
+    <ItemGroup>
+      <None Update="EmailTemplates\SendMailEvent.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>
