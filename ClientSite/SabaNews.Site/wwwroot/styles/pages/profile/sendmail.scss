@@ -20,7 +20,6 @@
 @import '../../components/ckeditor';
 
 
-
 .block {
     .profile, .controls {
         border: 1px solid $separator-color;
@@ -139,7 +138,9 @@
     }
 }
 
-
+.controls__sendmail {
+    padding-bottom: 2.5rem;
+}
 
 .block-email {
     display: block;
@@ -156,7 +157,6 @@
 
         .line {
             border-top: 1px solid $separator-color;
-            padding-top: 2.5rem;
             padding-top: 2.5rem;
         }
     }
@@ -237,6 +237,7 @@
 }
 
 table {
+    margin-top: 1.5rem;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -286,5 +287,5 @@ tr:nth-child(even) {
 }
 
 .modal .modal-body {
-    padding: 3rem;
+    padding: 1rem;
 }

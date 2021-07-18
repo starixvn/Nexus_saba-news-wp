@@ -7,24 +7,9 @@
 }
 
 @section Scripts{
-	@*<script src="~/js/ckeditor/ckeditor.js" asp-append-version="true"></script>*@
 	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
 	<script src="~/js/lib/config_ckeditor.js"></script>
 	<script src="~/js/profile/sendmail.js" asp-append-version="true"></script>
-	
-	<script>
-		//CKEDITOR.replace("emailContent");
-		//ClassicEditor
-		//	.create(document.querySelector('#emailContent'), {
-		//		image: {
-		//			toolbar: ['toggleImageCaption', 'imageTextAlternative']
-		//		}
-		//	})
-		//	.catch(error => {
-		//		console.error(error);
-		//	});
-		
-	</script>
 }
 	
 @(await Component.InvokeAsync("Menu"))

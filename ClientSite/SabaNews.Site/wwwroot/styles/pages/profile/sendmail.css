@@ -1233,6 +1233,11 @@ button {
   --ck-sample-editor-z-index: 10; }
 
 /* --------- EDITOR STYLES  ---------------------------------------------------------------------------------------- */
+.ck-content * {
+  word-wrap: break-word;
+  margin: revert;
+  padding: revert; }
+
 .editor__editable,
 main .ck-editor[role='application'] .ck.ck-content,
 .ck.editor__editable[role='textbox'],
@@ -1693,6 +1698,9 @@ footer {
       .block-main .profile__nav li:last-child {
         border-bottom: none; }
 
+.controls__sendmail {
+  padding-bottom: 2.5rem; }
+
 .block-email {
   display: block; }
   .block-email .controls {
@@ -1704,7 +1712,6 @@ footer {
       margin-bottom: 2rem; }
     .block-email .controls .line {
       border-top: 1px solid #e5e5e5;
-      padding-top: 2.5rem;
       padding-top: 2.5rem; }
   .block-email .block__title {
     margin-bottom: 3rem; }
@@ -1760,6 +1767,7 @@ footer {
   background: #dddddd; }
 
 table {
+  margin-top: 1.5rem;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%; }
@@ -1803,4 +1811,4 @@ tr:nth-child(even) {
   outline: none; }
 
 .modal .modal-body {
-  padding: 3rem; }
+  padding: 1rem; }
