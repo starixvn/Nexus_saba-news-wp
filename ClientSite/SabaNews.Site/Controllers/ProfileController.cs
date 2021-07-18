@@ -318,6 +318,11 @@
             return Json(new { url, filePath });
         }
 
+        public async Task<ActionResult> ViewContent()
+        {
+            return View();
+        }
+
 
         private static string EnsureCorrectFilename(string filename)
         {
