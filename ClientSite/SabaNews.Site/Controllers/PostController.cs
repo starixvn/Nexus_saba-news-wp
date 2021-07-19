@@ -21,16 +21,19 @@
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly IProfileService profileService;
+        private readonly IStatisticService statisticService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
-            IProfileService profileService)
+            IProfileService profileService,
+            IStatisticService statisticService)
         {
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.profileService = profileService;
+            this.statisticService = statisticService;
         }
 
         [Route("{slug}")]
@@ -186,6 +189,14 @@
         {
             var viewVideoResult = await postService.UpdateVideoView(postId);
             return Ok(viewVideoResult);
+        }
+
+        [HttpGet]
+        [Route("api/post-view")]
+        public async Task<IActionResult> GetPostViewStatistic(DateTime fromDate, DateTime toDate)
+        {
+            var viewPostStatistic = await statisticService.GetPostViewStatistic(fromDate, toDate);
+            return Ok(viewPostStatistic);
         }
     }
 }

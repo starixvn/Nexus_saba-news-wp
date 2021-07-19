@@ -54,6 +54,7 @@
             services.AddTransient<IBackgroundJobService, BackgroundJobService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IExternalAuthService, ExternalAuthService>();
+            services.AddTransient<IStatisticService, StatisticService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
