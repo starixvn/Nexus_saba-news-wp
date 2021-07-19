@@ -32,6 +32,23 @@
                 $(this).parent().parent().find('.play_video').html(iframe);
                 $(this).parent().hide();
                 $(this).parent().addClass('active');
+
+                const $btn = $(this);
+                var postId = $btn.attr("post-id");
+                if (postId) {
+                    $.ajax({
+                        url: "api/post/view-video",
+                        method: "POST",
+                        data: {
+                            postId
+                        },
+                        success: function (response) {
+                            if (response.IsSuccessful) {
+                                $btn.removeAttr("post-id");
+                            }
+                        }
+                    });
+                }
             }
         });
         //Desktop
@@ -66,7 +83,6 @@
                 iframe.attr('src', src);
                 slide.find('.play_video').html(iframe);
             }
-
         });
     },
     //Desktop & Mobile

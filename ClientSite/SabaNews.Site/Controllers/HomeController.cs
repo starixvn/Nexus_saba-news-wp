@@ -8,8 +8,6 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
-    using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
@@ -19,20 +17,14 @@
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
-        private readonly ISessionService sessionService;
-        private readonly IProfileService profileService;
 
-        public HomeController(IPostService postService, 
-            IDataControlService dataControlService, 
-            IConfiguration configuration, 
-            ISessionService sessionService,
-            IProfileService profileService)
+        public HomeController(IPostService postService,
+            IDataControlService dataControlService,
+            IConfiguration configuration)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
-            this.sessionService = sessionService;
-            this.profileService = profileService;
         }
 
         public async Task<IActionResult> Index()
@@ -114,53 +106,6 @@
             return View(Model);
         }
 
-
-        [Route("{slug}")]
-        public async Task<IActionResult> Single(string slug)
-        {
-            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-
-            if (post == null)
-            {
-                return View(Constants.EmptyBlogView);
-            }
-            
-            var postParam = new PostParam
-            {
-                Slug = Constants.VideoSlug,
-                Start = Constants.FromFirstItem,
-                End = Constants.GetElevenItems,
-                PostID = post.ID
-            };
-            var recentPosts = await postService.GetRecentPostsAsync(postParam);
-            SavePost savePost = null;
-            var isLogin = sessionService.User != null;
-            if (isLogin)
-            {
-                var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
-               
-            }
-            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
-            var Models = new SingleViewModel
-            {
-                SinglePost = post,
-                RecentPosts = recentPosts.Posts,
-                IsLogin = isLogin,
-                SavePost = savePost
-            };
-            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
-            ViewData[Constants.ViewUrl] = $"{domain}{slug}";
-            ViewData["BaseUrl"] = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
-            ViewData["video"] = post.Type == Constants.VideoPostType ;
-            ViewData["cateSlug"] = cateInfo.Item1.Trim();
-            ViewData["cateName"] = cateInfo.Item2.Trim();
-            ViewData["controller"] = "home";
-            if (cateInfo.Item1.Trim().Contains("euro-2020"))
-            {
-                return View("~/Views/Euro2020/Detail.cshtml", Models);
-            } 
-            return View(Models);
         }
 
         [Route("Search/page/{page}")]
@@ -219,42 +164,6 @@
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
-        }
-
-        public static Tuple<string, string> GetCateInfo(string cateName, string cateSlug)
-        {
-            var slug = cateSlug;
-            var name = cateName;
-            if (cateSlug.Contains(","))
-            {
-                var listCateSlug = cateSlug.Split(',');
-                var listCateName = cateName.Split(',');
-                var exceptCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-                var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-                slug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
-                name = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
-
-                if (exceptCateSlug.Count > 1 && !exceptCateSlug[0].Contains("euro-2020") && Constants.HotCategory != "")
-                {
-                    var listEuroSlug = new List<string>
-                    {
-                        Constants.Euro2020Slug,
-                        Constants.Euro2020HotNewsSlug,
-                        Constants.Euro2020ScheduleSlug,
-                        Constants.Euro2020RankingSlug,
-                        Constants.Euro2020VideoSlug,
-                        Constants.Euro2020IdentifySlug
-                    };
-                    var checkHotCate = exceptCateSlug.Where(item => item.Trim().Contains("euro-2020")).ToList();
-                    if (checkHotCate.Count > 0)
-                    {
-                        var getHotCate = listEuroSlug.Where(item => item.Trim() == checkHotCate[0].Trim()).ToList();
-                        slug = getHotCate[0];
-                    }
-                }
-            }
-            
-            return Tuple.Create(slug, name);
         }
     }
 }

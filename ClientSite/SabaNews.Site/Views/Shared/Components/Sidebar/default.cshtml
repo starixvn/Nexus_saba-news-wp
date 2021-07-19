@@ -5,24 +5,24 @@
             <div class="block-item">
                 @foreach (var post in Model.Posts)
                 {
-            <div class="card-vertical">
-                @if (Model.Posts.IndexOf(post) == 0)
-                {
-            <a href="@Url.Action("Single", "Home", new { slug = post.Slug })" class="card-vertical__image thumb thumb-65">
-                <picture>
-                    <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-                    <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                    <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
-                </picture>
-            </a>}
-                <a class="card-vertical__title" href="@Url.Action("Single", "Home", new { slug = post.Slug })">@post.PostTitle</a>
-                <p class="card-vertical__datetime">
-                    <span>@post.PostTime</span>
-                    @if (post.CommentCount > 0)
-                    {
-                <a href="@Url.Action("Single", "Home", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
-                </p>
-            </div>}
+                    <div class="card-vertical">
+                        @if (Model.Posts.IndexOf(post) == 0)
+                        {
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb thumb-65">
+                                <picture>
+                                    <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                                    <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+                                </picture>
+                            </a>}
+                        <a class="card-vertical__title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
+                        <p class="card-vertical__datetime">
+                            <span>@post.PostTime</span>
+                            @if (post.CommentCount > 0)
+                            {
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                        </p>
+                    </div>}
             </div>
         </div>
     </div>

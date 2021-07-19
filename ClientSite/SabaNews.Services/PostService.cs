@@ -7,7 +7,9 @@
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria;
+    using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Services.Interfaces;
 
@@ -67,7 +69,6 @@
                 Start = postParam.Start,
                 End = postParam.End,
                 ExceptSlug = postParam.Slug.Trim()
-               
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
             if (postParam.PostID != 0)
@@ -135,8 +136,20 @@
                 }
                 var isVideo = await CheckTypeCategoryAsync(Constants.VideoSlug, post.ID);
                 post.Type = isVideo ? Constants.VideoPostType : Constants.FootballPostType;
+                await UpdatePostView(post.ID, post.Type == Constants.VideoPostType);
             }
             return post;
+        }
+
+        private async Task<CommandResult> UpdatePostView(int postId, bool isVideoPost)
+        {
+            var command = new UpdatePostViewCommand
+            {
+                PostId = postId,
+                IsVideoPost = isVideoPost
+            };
+
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task<PostTemplate> SearchPostAsync(string keyword, int start, int end)
@@ -308,6 +321,16 @@
         {
             var posts = await baseService.GetDataAsync<Post>(new GetRSSCriteria());
             return FormatData(posts);
+        }
+
+        public async Task<CommandResult> UpdateVideoView(int postId)
+        {
+            var command = new UpdateVideoViewCommand
+            {
+                PostId = postId,
+            };
+
+            return await baseService.ExecuteNonQueryAsync(command);
         }
     }
 }

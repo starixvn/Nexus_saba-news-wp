@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria;
     using SabaNews.Models;
 
@@ -41,5 +42,7 @@
         Task<IEnumerable<NewsSitemapModel>> GetNewsSitemapDataAsync();
 
         Task<IEnumerable<Post>> GetRSSDataAsync();
+
+        Task<CommandResult> UpdateVideoView(int postId);
     }
 }

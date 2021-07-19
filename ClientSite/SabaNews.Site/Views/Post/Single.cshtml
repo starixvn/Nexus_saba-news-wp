@@ -3,15 +3,15 @@
 @using SabaNews.Core.Constants;
 
 @inject IDetectionService DetectionService
-@{ 
+@{
     bool isMobile = DetectionService.Device.Type == Device.Mobile;
     bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop; 
+    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
 }
 
 @section Metadata {
     <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&nbsp;" )' />
-	<meta property="og:description" content="&nbsp;" />
+    <meta property="og:description" content="&nbsp;" />
     <meta property="og:title" content='@Model.SinglePost.PostTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@ViewData[Constants.ViewUrl]" />
@@ -23,31 +23,30 @@
 }
 
 @section Scripts{
-	<script src="~/minify/js/single.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
 }
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
 }
 
-
 @{
-	var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Home", new { slug = @Model.SinglePost.Slug });
-	var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
-	var cateSlug = ViewData["cateSlug"].ToString().Trim();
-	if (cateSlug.Contains("euro-2020"))
-	{
-		ViewData["cateName"] = Constants.Euro2020;
-		ViewData["controller"] = Constants.Euro2020Controller;
-	}
-	if (cateSlug == Constants.Euro2020Slug)
-	{
-		cateSlug = "";
-	}
-	if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
-	{
-		linkReturn = "/euro-2020/" + cateSlug;
-	}
-	var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
+    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Post", new { slug = @Model.SinglePost.Slug });
+    var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
+    var cateSlug = ViewData["cateSlug"].ToString().Trim();
+    if (cateSlug.Contains("euro-2020"))
+    {
+        ViewData["cateName"] = Constants.Euro2020;
+        ViewData["controller"] = Constants.Euro2020Controller;
+    }
+    if (cateSlug == Constants.Euro2020Slug)
+    {
+        cateSlug = "";
+    }
+    if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
+    {
+        linkReturn = "/euro-2020/" + cateSlug;
+    }
+    var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -88,25 +87,24 @@
                         </svg>
                     </a>
                 </li>
-				<li class="item-social icon-mobile">
-					@if (isVideoReturn)
-					{
-						<a href="@Url.Action("Video", "Home")"
-						   class="item intent"
-						   title="@ViewResources.Back @ViewResources.Video">
-							<i class="icon-social icon-back"></i>
-						</a>
-					}
-					else { 
-                        <a href="@linkReturn"
-						   class="item intent"
-						   title="@ViewResources.Back @ViewData["cateName"]">
-							<i class="icon-social icon-back"></i>
-						</a>
+                <li class="item-social icon-mobile">
+                    @if (isVideoReturn)
+                    {
+                        <a href="@Url.Action("Video", "Home")"
+                           class="item intent"
+                           title="@ViewResources.Back @ViewResources.Video">
+                            <i class="icon-social icon-back"></i>
+                        </a>
                     }
-
-				</li>
-
+                    else
+                    {
+                        <a href="@linkReturn"
+                           class="item intent"
+                           title="@ViewResources.Back @ViewData["cateName"]">
+                            <i class="icon-social icon-back"></i>
+                        </a>
+                    }
+                </li>
             </ul>
         </div>
         <div class="block block-main">
@@ -120,7 +118,7 @@
                             <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
                             <img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
                         </picture>
-                        <div class="btn-play-video">
+                        <div class="btn-play-video" post-id="@Model.SinglePost.ID">
                             <span class="icon-play"></span>
                         </div>
                     }
@@ -138,24 +136,24 @@
 
             <div class="main-social">
                 <ul class="social left-social">
-					<li class="item-social">
-						@if (isVideoReturn)
-						{
-							<a href="@Url.Action("Video", "Home")"
-							   class="item intent"
-							   title="@ViewResources.Back @ViewResources.Video">
-								<i class="icon-social icon-back"></i>
-							</a>
-						}
-						else
-						{
-							<a href="@linkReturn"
-							   class="item intent"
-							   title="@ViewResources.Back @ViewData["cateName"]">
-								<i class="icon-social icon-back"></i>
-							</a>
-						}
-					</li>
+                    <li class="item-social">
+                        @if (isVideoReturn)
+                        {
+                            <a href="@Url.Action("Video", "Home")"
+                               class="item intent"
+                               title="@ViewResources.Back @ViewResources.Video">
+                                <i class="icon-social icon-back"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@linkReturn"
+                               class="item intent"
+                               title="@ViewResources.Back @ViewData["cateName"]">
+                                <i class="icon-social icon-back"></i>
+                            </a>
+                        }
+                    </li>
                     <li class="item-social">
                         <a href="javascript:;" class="item intent save_post @(Model.SavePost != null ? "active" : "")">
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-bookmark">
@@ -166,7 +164,7 @@
                     </li>
                 </ul>
                 <ul class="social right-social">
-					<li class="item-social">Chia sẻ:</li>
+                    <li class="item-social">Chia sẻ:</li>
                     <li class="item-social">
                         <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
                            data-count="facebook" target="_blank"
@@ -180,8 +178,7 @@
                         <a href="javascript:;"
                            onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@absoluteLink', '_blank')"
                            rel="nofollow" class="item"
-                           title="@ViewResources.ShareMail"
-                           >
+                           title="@ViewResources.ShareMail">
                             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-email">
                                 <path d="M16.2 0H1.8C0.81 0 0.00899999 0.7875 0.00899999 1.75L0 12.25C0 13.2125 0.81 14 1.8 14H16.2C17.19 14 18 13.2125 18 12.25V1.75C18 0.7875 17.19 0 16.2 0ZM16.2 3.5L9 7.875L1.8 3.5V1.75L9 6.125L16.2 1.75V3.5Z" fill="#999999" />
                             </svg>
@@ -213,7 +210,6 @@
             <input name="postID" id="postID" type="hidden" value="@Model.SinglePost.ID" />
             <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
             <div class="comment-post" id="comment">
-
             </div>
             <h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
             @(await Component.InvokeAsync("RelatedPosts", new { postID = Model.SinglePost.ID }))
@@ -222,38 +218,38 @@
     </div>
 </section>
 <div class="auth-form">
-	<div class="modal" id="requestLogin">
-		<div class="modal-content modal-auth">
-			<div class="modal-warning">
-				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<div class="tab-content" id="nav-tabContent">
-					<h3 class="heading-warning">@ViewResources.Message</h3>
-					<hr />
-					<h3 class="slogan">@ViewResources.MessageRequestLogin</h3>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="modal" id="requestLogin">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tab-content" id="nav-tabContent">
+                    <h3 class="heading-warning">@ViewResources.Message</h3>
+                    <hr />
+                    <h3 class="slogan">@ViewResources.MessageRequestLogin</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-	var checkScroll = function () {
-		var el = document.querySelector('#comment');
+    var checkScroll = function () {
+        var el = document.querySelector('#comment');
         var main = document.querySelector('.fixed-social');
         var hambuger = document.querySelector('.button-mobile');
-		if (el !== null) {
-			var top_of_obj = el.offsetTop - 600;
-			var top_of_window = window.scrollY;
-			if (top_of_window > top_of_obj) {
+        if (el !== null) {
+            var top_of_obj = el.offsetTop - 600;
+            var top_of_window = window.scrollY;
+            if (top_of_window > top_of_obj) {
                 main.classList.add('active-nav-socical');
                 hambuger.classList.add('active-nav-socical');
-			} else {
+            } else {
                 main.classList.remove('active-nav-socical');
                 hambuger.classList.remove('active-nav-socical');
-			}
-		}
+            }
+        }
     }
     if (window.innerWidth > 1024) {
         window.addEventListener('scroll', function () { checkScroll() })
