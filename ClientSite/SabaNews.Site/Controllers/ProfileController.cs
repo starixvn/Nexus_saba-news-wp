@@ -257,7 +257,7 @@
             var users = await profileService.GetAllUserAsync();
             var userNumber = users.Count();
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = DateTime.Now;
+            model.SendDate = DateTime.UtcNow;
             var result = await emailService.CreateEmailAsync(model);
             
 
@@ -279,7 +279,7 @@
                         EmailContent = emailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
-                        SendTime = DateTime.Now,
+                        SendTime = DateTime.UtcNow,
                         Status = resultSendMail.Code
                     };
                     detailModel.Status = resultSendMail.Code;

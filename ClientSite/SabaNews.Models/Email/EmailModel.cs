@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SabaNews.Core.Constants;
+using System;
 
 namespace SabaNews.Models.Email
 {
@@ -22,5 +23,28 @@ namespace SabaNews.Models.Email
         public int TotalSent { get; set; }
 
         public int TotalClicked { get; set; }
+
+        public string SendMailTime
+        {
+            get
+            {
+                var timeSpan = DateTime.UtcNow - SendDate;
+
+                if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
+                {
+                    return string.Format("{0} giây trước", timeSpan.Seconds);
+                }
+                if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
+                {
+                    return timeSpan.Minutes > 1 ? string.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
+                }
+                if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
+                {
+                    return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
+                }
+
+                return SendDate.ToString("H:mm dd/MM/yyyy");
+            }
+        }
     }
 }

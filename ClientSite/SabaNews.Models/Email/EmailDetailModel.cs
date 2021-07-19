@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace SabaNews.Models.Email
+﻿namespace SabaNews.Models.Email
 {
+    using System;
+    using SabaNews.Core.Constants;
+
     public class EmailDetailModel
     {
         public int EmailId { get; set; }
@@ -21,5 +22,28 @@ namespace SabaNews.Models.Email
         public int IsUserClicked { get; set; }
 
         public int Status { get; set; } = 0;
+
+        public string SendMailTime
+        {
+            get
+            {
+                var timeSpan = DateTime.UtcNow - SendTime;
+
+                if (timeSpan <= TimeSpan.FromSeconds(Constants.NumberSecondsAMinute))
+                {
+                    return string.Format("{0} giây trước", timeSpan.Seconds);
+                }
+                if (timeSpan <= TimeSpan.FromMinutes(Constants.NumberMinutesAHour))
+                {
+                    return timeSpan.Minutes > 1 ? string.Format("{0} phút trước", timeSpan.Minutes) : "1 phút trước";
+                }
+                if (timeSpan <= TimeSpan.FromHours(Constants.NumberHoursADay))
+                {
+                    return timeSpan.Hours > 1 ? string.Format("{0} giờ trước", timeSpan.Hours) : "1 giờ trước";
+                }
+
+                return SendTime.ToString("H:mm dd/MM/yyyy");
+            }
+        }
     }
 }
