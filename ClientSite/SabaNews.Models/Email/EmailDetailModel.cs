@@ -1,4 +1,6 @@
-﻿namespace SabaNews.Models.Email
+﻿using System;
+
+namespace SabaNews.Models.Email
 {
     public class EmailDetailModel
     {
@@ -13,6 +15,10 @@
         public string EmailTitle { get; set; }
 
         public string EmailContent { get; set; }
+
+        public DateTime SendTime { get; set; }
+
+        public int IsUserClicked { get; set; }
 
         public int Status { get; set; } = 0;
     }

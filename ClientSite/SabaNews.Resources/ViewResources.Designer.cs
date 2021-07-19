@@ -214,6 +214,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nội Dung.
+        /// </summary>
+        public static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy clipboard thành công.
         /// </summary>
         public static string CopyClipBoardSuccessfully {
@@ -439,6 +448,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Danh sách email đã gửi.
+        /// </summary>
+        public static string ListEmailSent {
+            get {
+                return ResourceManager.GetString("ListEmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đang tải ảnh đại diện.
         /// </summary>
         public static string LoadingAvatar {
@@ -561,6 +579,24 @@ namespace SabaNews.Resources {
         public static string NotFoundPostMsg {
             get {
                 return ResourceManager.GetString("NotFoundPostMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng tương tác.
+        /// </summary>
+        public static string NumberClicked {
+            get {
+                return ResourceManager.GetString("NumberClicked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số lượng gửi.
+        /// </summary>
+        public static string NumberSent {
+            get {
+                return ResourceManager.GetString("NumberSent", resourceCulture);
             }
         }
         
@@ -781,11 +817,38 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gửi.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gửi Mail.
         /// </summary>
         public static string Send_Mail {
             get {
                 return ResourceManager.GetString("Send Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngày gửi.
+        /// </summary>
+        public static string SendDate {
+            get {
+                return ResourceManager.GetString("SendDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gửi Email.
+        /// </summary>
+        public static string SendEmail {
+            get {
+                return ResourceManager.GetString("SendEmail", resourceCulture);
             }
         }
         
@@ -826,6 +889,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to STT.
+        /// </summary>
+        public static string STT {
+            get {
+                return ResourceManager.GetString("STT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đội tuyển.
         /// </summary>
         public static string Team {
@@ -840,6 +912,15 @@ namespace SabaNews.Resources {
         public static string Tennis {
             get {
                 return ResourceManager.GetString("Tennis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiêu đề.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

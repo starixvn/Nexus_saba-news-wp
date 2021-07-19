@@ -14,22 +14,34 @@
 <section class="main">
 	<div class="container profile-container">
 		<div class="block block-main">
-			@(await Component.InvokeAsync("LeftMenuProfile"))
+			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
 		</div>
 		<div class="block block-email">
 			<div class="controls">
 				
 
 				<div class="constrols_list_sendmail line">
-					<h1>Danh sách email đã gửi</h1>
+					<h1>Danh sách email đã gửi với tiêu đề: @ViewBag.EmailTitle </h1>
 					<table>
 						<tr>
 							<th>STT</th>
-							<th>Tiêu đề</th>
+							<th>Email được gửi</th>
 							<th>Ngày gửi</th>
-							<th>Số lượng gửi</th>
-							<th>Số lượng tương tác</th>
+							<th>Tương tác</th>
+							<th>Trạng thái</th>
 						</tr>
+						@{ var stt = 0; }
+						@foreach (var detail in Model)
+						{
+							stt++;
+							<tr>
+								<td>@stt</td>
+								<td>@detail.EmailAddress</td>
+								<td>@detail.SendTime</td>
+								<td>@(detail.IsUserClicked == 1 ? "Đã tương tác" : "Chưa tương tác")</td>
+								<td>@(detail.Status == 0 ? "Gửi thành công" : "Gửi thất bại") </td>
+							</tr>
+						}
 					</table>
 				</div>
 

@@ -1,4 +1,6 @@
-﻿namespace SabaNews.Criteria.Email
+﻿using System;
+
+namespace SabaNews.Criteria.Email
 {
     public class CreateEmailDetailCriteria : BaseNonQueryCommand
     {
@@ -13,6 +15,8 @@
         public string EmailTitle { get; set; }
 
         public string EmailContent { get; set; }
+
+        public DateTime SendTime { get; set; }
 
         public int Status { get; set; }
 

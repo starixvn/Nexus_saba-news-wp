@@ -5,12 +5,12 @@
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
 
-    public class LeftMenuProfileComponent : ViewComponent
+    public class LeftMenuProfileViewComponent : ViewComponent
     {
         private readonly ISessionService sessionService;
         private readonly IProfileService profileService;
 
-        public LeftMenuProfileComponent(
+        public LeftMenuProfileViewComponent(
             ISessionService sessionService,
             IProfileService profileService)
         {

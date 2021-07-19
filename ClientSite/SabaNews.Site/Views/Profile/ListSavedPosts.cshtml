@@ -15,7 +15,7 @@
 
     <div class="container profile-container">
 		<div class="block block-main">
-			@await Html.PartialAsync("_LeftMenu", new { User = Model.User })
+			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
 		</div>
         <div class="block block-extension">
             <div class="controls">

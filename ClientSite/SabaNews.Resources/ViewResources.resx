@@ -168,6 +168,9 @@
   <data name="Connecting" xml:space="preserve">
     <value>Đang liên kết</value>
   </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội Dung</value>
+  </data>
   <data name="CopyClipBoardSuccessfully" xml:space="preserve">
     <value>Copy clipboard thành công</value>
   </data>
@@ -243,6 +246,9 @@
   <data name="InputNewPassword" xml:space="preserve">
     <value>Nhập mật khẩu mới</value>
   </data>
+  <data name="ListEmailSent" xml:space="preserve">
+    <value>Danh sách email đã gửi</value>
+  </data>
   <data name="LoadingAvatar" xml:space="preserve">
     <value>Đang tải ảnh đại diện</value>
   </data>
@@ -284,6 +290,12 @@
   </data>
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
+  </data>
+  <data name="NumberClicked" xml:space="preserve">
+    <value>Số lượng tương tác</value>
+  </data>
+  <data name="NumberSent" xml:space="preserve">
+    <value>Số lượng gửi</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
@@ -357,8 +369,17 @@
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm...</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
   <data name="Send Mail" xml:space="preserve">
     <value>Gửi Mail</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Ngày gửi</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Gửi Email</value>
   </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>
@@ -372,11 +393,17 @@
   <data name="Stadium" xml:space="preserve">
     <value>Sân vận động</value>
   </data>
+  <data name="STT" xml:space="preserve">
+    <value>STT</value>
+  </data>
   <data name="Team" xml:space="preserve">
     <value>Đội tuyển</value>
   </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tiêu đề</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>Hôm nay</value>

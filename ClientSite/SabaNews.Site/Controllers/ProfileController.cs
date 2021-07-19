@@ -279,6 +279,7 @@
                         EmailContent = emailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
+                        SendTime = DateTime.Now,
                         Status = resultSendMail.Code
                     };
                     detailModel.Status = resultSendMail.Code;
@@ -327,6 +328,9 @@
             }
 
             var listEmailDetails = await emailService.GetEmailDetailByEmailId(new GetEmailDetailByEmailIdCriteria { EmailID = emailId });
+            ViewBag.Page = Constants.ProfileSendMailPage;
+            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
+            ViewBag.EmailTitle = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailTitle : "";
             return View(listEmailDetails);
         }
 
