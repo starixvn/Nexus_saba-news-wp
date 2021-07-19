@@ -52,6 +52,11 @@
             return await baseService.GetDataAsync<EmailModel>(criteria);
         }
 
+        public async Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailId(GetEmailDetailByEmailIdCriteria criteria)
+        {
+            return await baseService.GetDataAsync<EmailDetailModel>(criteria);
+        }
+
         public async Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command)
         {
             return await baseService.ExecuteNonQueryAsync(command);

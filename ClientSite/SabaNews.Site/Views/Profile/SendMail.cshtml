@@ -49,19 +49,22 @@
 					<h1>Danh sách email đã gửi</h1>
 					<table>
 						<tr>
-							<th>Title</th>
-							<th>Date</th>
-							<th>Number of sending</th>
-							<th>Click number/ rate</th>
-							<th>Content</th>
+							<th>STT</th>
+							<th>Tiêu đề</th>
+							<th>Ngày gửi</th>
+							<th>Số lượng gửi</th>
+							<th>Số lượng tương tác</th>
 						</tr>
+						@{ var stt = 0; }
 						@foreach (var email in Model.Emails)
 						{
+							stt++;
 							var rate = (email.TotalClicked > 0 ? Math.Round((double)email.TotalClicked / email.TotalSent * 100, 2) : 0)  + "%";
 							<tr>
+								<td>@stt</td>
 								<td>@email.EmailTitle</td>
 								<td>@email.SendDate</td>
-								<td>@email.TotalSent</td>
+								<td><a href="@Url.Action("SendMailDetail", "Profile", new { emailId = email.Id })">@email.TotalSent</a></td>
 								<td>@email.TotalClicked / @rate</td>
 								<td><input value="@email.EmailContent" type="hidden" class="email_content" /><a href="javascript:;" class="email view_content">View</a></td>
 							</tr>

@@ -15,5 +15,7 @@
         Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command);
 
         Task<IEnumerable<EmailModel>> GetEmailByUser(GetEmailByUserCriteria criteria);
+
+        Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailId(GetEmailDetailByEmailIdCriteria criteria);
     }
 }

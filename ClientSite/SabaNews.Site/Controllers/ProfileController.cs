@@ -318,6 +318,18 @@
             return Json(new { url, filePath });
         }
 
+        public async Task<ActionResult> SendMailDetail(int emailId)
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Redirect(Url.Action("Index", "Home"));
+            }
+
+            var listEmailDetails = await emailService.GetEmailDetailByEmailId(new GetEmailDetailByEmailIdCriteria { EmailID = emailId });
+            return View(listEmailDetails);
+        }
+
         public async Task<ActionResult> ViewContent()
         {
             return View();

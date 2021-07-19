@@ -1,0 +1,42 @@
+﻿@section Title{
+	@ViewBag.Title
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/profile_sendmail.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+	<script src="~/js/profile/sendmail.js" asp-append-version="true"></script>
+}
+
+@(await Component.InvokeAsync("Menu"))
+<section class="main">
+	<div class="container profile-container">
+		<div class="block block-main">
+			@(await Component.InvokeAsync("LeftMenuProfile"))
+		</div>
+		<div class="block block-email">
+			<div class="controls">
+				
+
+				<div class="constrols_list_sendmail line">
+					<h1>Danh sách email đã gửi</h1>
+					<table>
+						<tr>
+							<th>STT</th>
+							<th>Tiêu đề</th>
+							<th>Ngày gửi</th>
+							<th>Số lượng gửi</th>
+							<th>Số lượng tương tác</th>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+
+</section>
+
