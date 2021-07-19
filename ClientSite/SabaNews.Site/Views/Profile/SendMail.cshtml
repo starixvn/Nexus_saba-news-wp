@@ -65,7 +65,16 @@
 								<td>@stt</td>
 								<td>@email.EmailTitle</td>
 								<td>@email.SendDate</td>
-								<td><a href="@Url.Action("SendMailDetail", "Profile", new { emailId = email.Id })">@email.TotalSent</a></td>
+								<td>
+									@if (email.TotalSent > 0)
+									{
+										<a href="@Url.Action("SendMailDetail", "Profile", new { emailId = email.Id })">@email.TotalSent</a>
+									}
+									else
+									{
+										@email.TotalSent
+									}
+								</td>
 								<td>@email.TotalClicked / @rate</td>
 								<td><input value="@email.EmailContent" type="hidden" class="email_content" /><a href="javascript:;" class="email view_content">View</a></td>
 							</tr>

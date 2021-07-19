@@ -33,6 +33,7 @@ var sendmailevent = (function ($) {
                             $(form).find('.summary-eror').text("Gửi email thành công");
 							$(form).trigger('reset');
                             editorValue.setData('');
+                            location.reload();
                         } else {
                             $(form).find('.summary-eror').text(result.message);
                         }

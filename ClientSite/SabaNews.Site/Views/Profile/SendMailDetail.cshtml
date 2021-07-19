@@ -21,28 +21,35 @@
 				
 
 				<div class="constrols_list_sendmail line">
-					<h1>Danh sách email đã gửi với tiêu đề: @ViewBag.EmailTitle </h1>
-					<table>
-						<tr>
-							<th>STT</th>
-							<th>Email được gửi</th>
-							<th>Ngày gửi</th>
-							<th>Tương tác</th>
-							<th>Trạng thái</th>
-						</tr>
-						@{ var stt = 0; }
-						@foreach (var detail in Model)
-						{
-							stt++;
+					@if (Model.Count == 0)
+					{
+						<h1>Không có email nào được gửi đi </h1>
+					}
+					else
+					{
+						<h1>Danh sách email đã gửi với tiêu đề: @ViewBag.EmailTitle </h1>
+						<table>
 							<tr>
-								<td>@stt</td>
-								<td>@detail.EmailAddress</td>
-								<td>@detail.SendTime</td>
-								<td>@(detail.IsUserClicked == 1 ? "Đã tương tác" : "Chưa tương tác")</td>
-								<td>@(detail.Status == 0 ? "Gửi thành công" : "Gửi thất bại") </td>
+								<th>STT</th>
+								<th>Email được gửi</th>
+								<th>Ngày gửi</th>
+								<th>Tương tác</th>
+								<th>Trạng thái</th>
 							</tr>
-						}
-					</table>
+							@{ var stt = 0; }
+							@foreach (var detail in Model)
+							{
+								stt++;
+								<tr>
+									<td>@stt</td>
+									<td>@detail.EmailAddress</td>
+									<td>@detail.SendTime</td>
+									<td>@(detail.IsUserClicked == 1 ? "Đã tương tác" : "Chưa tương tác")</td>
+									<td>@(detail.Status == 0 ? "Gửi thành công" : "Gửi thất bại") </td>
+								</tr>
+							}
+						</table>
+					}
 				</div>
 
 			</div>
