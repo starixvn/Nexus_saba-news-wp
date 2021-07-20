@@ -252,7 +252,8 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Json(model);
+                var error = new { isSuccessful= false, message= "Please login first" };
+                return Json(new { result = error });
             }
             var users = await profileService.GetAllUserAsync();
             var userNumber = users.Count();
@@ -332,11 +333,6 @@
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.EmailTitle = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailTitle : "";
             return View(listEmailDetails);
-        }
-
-        public async Task<ActionResult> ViewContent()
-        {
-            return View();
         }
 
 

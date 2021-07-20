@@ -246,6 +246,9 @@
   <data name="InputNewPassword" xml:space="preserve">
     <value>Nhập mật khẩu mới</value>
   </data>
+  <data name="LinkReturn" xml:space="preserve">
+    <value>Đường dẫn</value>
+  </data>
   <data name="ListEmailSent" xml:space="preserve">
     <value>Danh sách email đã gửi</value>
   </data>

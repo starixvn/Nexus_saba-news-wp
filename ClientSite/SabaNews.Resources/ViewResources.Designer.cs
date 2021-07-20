@@ -448,6 +448,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đường dẫn.
+        /// </summary>
+        public static string LinkReturn {
+            get {
+                return ResourceManager.GetString("LinkReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Danh sách email đã gửi.
         /// </summary>
         public static string ListEmailSent {

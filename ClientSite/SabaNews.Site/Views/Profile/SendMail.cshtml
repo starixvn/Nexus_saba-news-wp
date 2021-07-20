@@ -27,17 +27,16 @@
 							<form id="form-sendmail">
 								<p class="error summary-eror"></p>
 								<div class="form-modal">
-									<label>Email title</label>
+									<label>@ViewResources.Title</label>
 									<input type="text" class="input-form" placeholder="" name="emailTitle" />
 								</div>
 								<div class="form-modal">
-									<label>Email Return link</label>
+									<label>@ViewResources.LinkReturn</label>
 									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
 								</div>
 								<div class="form-modal">
-									<label>Email Content</label>
+									<label>@ViewResources.Content</label>
 									<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
-									<label id="emailContent-error" class="error" for="emailTitle"></label>
 								</div>
 								<button type="submit" class="btn-send-mail">@ViewResources.Send</button>
 							</form>
