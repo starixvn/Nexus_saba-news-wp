@@ -16,9 +16,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         @include tableMobile {
-            display: block;
-            text-align: center;
+            flex-direction: column-reverse;
         }
     }
 
@@ -31,20 +31,36 @@
         }
     }
 
+    .copy-right {
+        @include Mobile {
+            border-top: 1px solid #1B263A;
+            padding-top: .6rem;
+        }
+    }
+
     .follow {
+        @include Mobile {
+            padding-bottom: .6rem;
+        }
+
         [class*="icon-"] {
             font-size: 2.4rem;
             margin-right: .8rem;
             position: relative;
             top: 3px;
             cursor: pointer;
+            text-decoration: none;
+
+            @include Mobile {
+                font-size: 1.6rem;
+            }
 
             &:before {
                 color: #fff;
             }
         }
 
-        .icon-social-twitter {
+        .icon-social-facebook {
             margin-left: 1rem;
         }
     }
