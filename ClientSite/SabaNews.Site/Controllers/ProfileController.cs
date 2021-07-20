@@ -312,14 +312,27 @@
             filename = DateTime.Now.Millisecond + filename;
             string filePath = "";
             string message = "";
+            string checkExitst = "";
+            string status = "";
+            string tmpPath = GetPathAndFilename("banner.jpg");
             try
             {
                 using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
                 {
                     await file.CopyToAsync(output);
                     filePath = output.Name;
-                }
+                    message = output.Length.ToString();
+                    status = output.CanRead ? "Can Read" : "";
 
+                }
+                if (System.IO.File.Exists(filePath))
+                {
+                    checkExitst = "file exist";
+                }
+                else
+                {
+                    checkExitst = "file not exist";
+                }
             }
             catch (Exception ex)
             {
@@ -329,7 +342,7 @@
             string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
             string url = string.Concat(baseUrl, linkPhoto);
 
-            return Json(new { url, filePath, message });
+            return Json(new { url, filePath, message, checkExitst, status, tmpPath });
         }
 
         public async Task<ActionResult> SendMailDetail(int emailId)
@@ -355,9 +368,10 @@
                 filename = filename.Substring(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
             }
 
+
             return filename;
         }
 
-        private string GetPathAndFilename(string filename) => pathService.MapAbsolutePath("wwwroot/upload/", filename);
+        private string GetPathAndFilename(string filename) => pathService.MapAbsolutePath("wwwroot/upload/" ,  filename);
     }
 }
