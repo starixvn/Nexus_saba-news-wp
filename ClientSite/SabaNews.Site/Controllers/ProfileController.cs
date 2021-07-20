@@ -310,15 +310,26 @@
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename;
-            var filePath = GetPathAndFilename(filename);
-            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
-                await file.CopyToAsync(output);
+            string filePath = "";
+            string message = "";
+            try
+            {
+                using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
+                {
+                    await file.CopyToAsync(output);
+                    filePath = output.Name;
+                }
 
-            var linkPhoto = "upload/" + filename;
-            var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/"; 
-            var url = string.Concat(baseUrl, linkPhoto);
+            }
+            catch (Exception ex)
+            {
+                message = ex.ToString();
+            }
+            string linkPhoto = "upload/" + filename;
+            string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
+            string url = string.Concat(baseUrl, linkPhoto);
 
-            return Json(new { url, filePath });
+            return Json(new { url, filePath, message });
         }
 
         public async Task<ActionResult> SendMailDetail(int emailId)
@@ -347,6 +358,6 @@
             return filename;
         }
 
-        private string GetPathAndFilename(string filename) => pathService.MapPath("upload\\" + filename);
+        private string GetPathAndFilename(string filename) => pathService.MapAbsolutePath("wwwroot/upload/", filename);
     }
 }
