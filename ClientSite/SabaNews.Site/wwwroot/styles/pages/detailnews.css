@@ -109,6 +109,10 @@ p.has-text-align-center {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    @media screen and (max-width: 1024px) {
+      .footer .container {
+        display: block;
+        text-align: center; } }
   .footer .copy-right, .footer .follow {
     font-size: 1.6rem;
     color: #fff; }
@@ -126,9 +130,8 @@ p.has-text-align-center {
   .footer .follow .icon-social-twitter {
     margin-left: 1rem; }
   .footer .ex {
-    position: absolute;
-    right: 2rem;
-    top: 3.6rem; }
+    display: inline-block;
+    vertical-align: middle; }
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;

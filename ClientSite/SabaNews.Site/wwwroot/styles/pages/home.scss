@@ -694,11 +694,19 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-column-gap: 2.4rem;
+
+            @include Mobile {
+                display: block;
+            }
         }
 
         .card-vertical-highlight {
             .card-vertical__image {
                 height: 40rem;
+
+                @include Mobile {
+                    height: 20rem;
+                }
             }
 
             .card-vertical__title {
@@ -710,6 +718,13 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-column-gap: 1.6rem;
+
+            @include Mobile {
+                display: block;
+                .card-vertical__image {
+                    height: 20rem;
+                }
+            }
         }
     }
 }

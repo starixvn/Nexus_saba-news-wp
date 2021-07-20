@@ -110,6 +110,10 @@ p.has-text-align-center {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    @media screen and (max-width: 1024px) {
+      .footer .container {
+        display: block;
+        text-align: center; } }
   .footer .copy-right, .footer .follow {
     font-size: 1.6rem;
     color: #fff; }
@@ -127,9 +131,8 @@ p.has-text-align-center {
   .footer .follow .icon-social-twitter {
     margin-left: 1rem; }
   .footer .ex {
-    position: absolute;
-    right: 2rem;
-    top: 3.6rem; }
+    display: inline-block;
+    vertical-align: middle; }
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
@@ -1690,9 +1693,15 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2.4rem; }
+  @media (max-device-width: 767px) {
+    .main .block-others .block__content {
+      display: block; } }
 
 .main .block-others .card-vertical-highlight .card-vertical__image {
   height: 40rem; }
+  @media (max-device-width: 767px) {
+    .main .block-others .card-vertical-highlight .card-vertical__image {
+      height: 20rem; } }
 
 .main .block-others .card-vertical-highlight .card-vertical__title {
   padding: 0; }
@@ -1701,6 +1710,11 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 1.6rem; }
+  @media (max-device-width: 767px) {
+    .main .block-others .list-card {
+      display: block; }
+      .main .block-others .list-card .card-vertical__image {
+        height: 20rem; } }
 
 .banner-euro-mobile {
   text-align: center; }
