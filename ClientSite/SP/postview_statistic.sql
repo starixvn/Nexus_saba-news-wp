@@ -5,7 +5,6 @@ CREATE TABLE `wp_postview_details` (
   PRIMARY KEY (`post_id`,`view_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
 DROP PROCEDURE IF EXISTS post_update_viewcount;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_update_viewcount`( postId bigint(20) unsigned, isVideoPost bit, errCode int, errMsg nvarchar(100))
@@ -37,9 +36,31 @@ END
 //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS post_view_statistic_get;
-
+DROP FUNCTION IF EXISTS get_root_category;
 DELIMITER //
+CREATE DEFINER=`sabasports`@`%` FUNCTION `get_root_category`(categoryId int)
+RETURNS INT
+BEGIN
+
+	DECLARE RootCategoryId INT;
+    
+    SELECT tmp_cate_tree.cate_id INTO RootCategoryId
+    FROM (
+	SELECT tmp_t.term_id as cate_id, @pv:=tmp_t.parent as parent_id
+		FROM (SELECT * FROM wp_term_taxonomy) tmp_t
+		INNER JOIN
+		(SELECT @pv:=categoryId)tmp
+		WHERE tmp_t.term_id = @pv) tmp_cate_tree
+	WHERE tmp_cate_tree.parent_id = 0;	
+    
+    RETURN RootCategoryId;
+END; 
+//
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS post_view_statistic_get;
+DELIMITER //
+
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_statistic_get`(
 	fromDate DATE,
     toDate DATE
@@ -59,18 +80,45 @@ BEGIN
            ,pvd.video_view
            ,pvd.is_video_post
     FROM wp_postview_details pvd
-    INNER JOIN wp_posts p ON p.ID = pvd.post_id AND p.post_status = 'publish'
+    INNER JOIN wp_posts p ON p.ID = pvd.post_id AND p.post_status = 'publish' AND p.post_type = 'post'
     WHERE pvd.view_date BETWEEN fromDate AND toDate;
     
-	SELECT COUNT(DISTINCT tmp.PostId) FROM tmp_PostViews tmp WHERE tmp.IsVideo = 0 INTO TotalPost;
-    SELECT COUNT(DISTINCT tmp.PostId) FROM tmp_PostViews tmp WHERE tmp.IsVideo = 1 INTO TotalVideo;
-    SELECT SUM(tmp.ViewCount) FROM tmp_PostViews tmp WHERE tmp.IsVideo = 0 INTO TotalPostView;
-	SELECT SUM(tmp.VideoView) FROM tmp_PostViews tmp WHERE tmp.IsVideo = 1 INTO TotalVideoView;
+    DROP TEMPORARY TABLE IF EXISTS tmp_PostRootCategory;
+    CREATE TEMPORARY TABLE tmp_PostRootCategory(PostId BIGINT UNSIGNED, RootCategoryId INT);
+    INSERT INTO tmp_PostRootCategory(PostId, RootCategoryId)
+    SELECT DISTINCT p.ID
+                    ,get_root_category(tt.term_id)
+    FROM wp_posts p
+    INNER JOIN wp_term_relationships tr ON p.ID = tr.object_id
+    INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id and tt.taxonomy = 'category'
+    WHERE p.post_status = 'publish' AND p.post_type = 'post'
+    AND p.post_date BETWEEN fromDate  AND toDate;
+
+	SELECT COUNT(DISTINCT tmp.PostId) 
+    FROM tmp_PostRootCategory tmp 
+    INNER JOIN wp_terms t ON tmp.RootCategoryId = t.term_id 
+    WHERE t.name <> 'video' INTO TotalPost;
+
+    SELECT COUNT(DISTINCT tmp.PostId) 
+    FROM tmp_PostRootCategory tmp 
+    INNER JOIN wp_terms t ON tmp.RootCategoryId = t.term_id 
+    WHERE t.name = 'video' INTO TotalVideo;
+
+    SELECT SUM(tmp.ViewCount) 
+    FROM tmp_PostViews tmp 
+    WHERE tmp.IsVideo = 0 INTO TotalPostView;
+
+	SELECT SUM(tmp.VideoView) 
+    FROM tmp_PostViews tmp WHERE tmp.IsVideo = 1 INTO TotalVideoView;
     
-    SELECT TotalPost, TotalVideo, TotalPostView, TotalVideoView;
+    SELECT IFNULL(TotalPost, 0) As TotalPost
+            ,IFNULL(TotalVideo, 0) As TotalVideo
+            ,IFNULL(TotalPostView, 0) As TotalPostView
+            ,IFNULL(TotalVideoView, 0) As TotalVideoView;
     
     DROP TEMPORARY TABLE IF EXISTS tmp_PostViews;
-    
+    DROP TEMPORARY TABLE IF EXISTS tmp_PostRootCategory;
+
 END
 //
 DELIMITER ;	
