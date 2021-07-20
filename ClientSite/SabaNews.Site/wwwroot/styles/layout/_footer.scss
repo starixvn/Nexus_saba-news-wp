@@ -4,22 +4,51 @@
 .footer {
     background-color: $color-pagination;
     border-top: 4px solid $color-active;
-    padding: 1.2rem 0;
-    margin-top: auto;
+    padding: 3.6rem 0;
+    position: relative;
 
     @include tableMobile {
         padding: .6rem 0;
+        margin-top: 2.7rem;
     }
 
-    .copy-right {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .copy-right, .follow {
         font-size: 1.6rem;
-        color: #a6a6a6;
-        text-align: center;
-        line-height: 2.4rem;
+        color: #fff;
 
         @include tableMobile {
             font-size: 1.2rem;
         }
+    }
+
+    .follow {
+        [class*="icon-social"] {
+            font-size: 2.4rem;
+            margin-right: .8rem;
+            position: relative;
+            top: 3px;
+            cursor: pointer;
+
+            &:before {
+                color: #fff;
+            }
+        }
+
+        .icon-social-twitter {
+            margin-left: 1rem;
+        }
+    }
+
+    .ex {
+        position: absolute;
+        right: 2rem;
+        top: 3.6rem;
     }
 
     .back-to-top-box {

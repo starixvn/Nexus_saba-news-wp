@@ -688,6 +688,30 @@
             }
         }
     }
+
+    .block-others {
+        .block__content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 2.4rem;
+        }
+
+        .card-vertical-highlight {
+            .card-vertical__image {
+                height: 40rem;
+            }
+
+            .card-vertical__title {
+                padding: 0;
+            }
+        }
+
+        .list-card {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 1.6rem;
+        }
+    }
 }
 .banner-euro-mobile {
     text-align: center;
