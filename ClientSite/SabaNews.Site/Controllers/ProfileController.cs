@@ -260,7 +260,8 @@
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.UtcNow;
             var result = await emailService.CreateEmailAsync(model);
-            
+            var returnUrl = "/" + model.EmailReturnLink;
+            model.EmailReturnLink = returnUrl.Replace("//", "/");
 
             if (result.IsSuccessful)
             {
