@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?j1xl3');
-  src:  url('fonts/icomoon.eot?j1xl3#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?j1xl3') format('truetype'),
-    url('fonts/icomoon.woff?j1xl3') format('woff'),
-    url('fonts/icomoon.svg?j1xl3#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ay7pwm');
+  src:  url('fonts/icomoon.eot?ay7pwm#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ay7pwm') format('truetype'),
+    url('fonts/icomoon.woff?ay7pwm') format('woff'),
+    url('fonts/icomoon.svg?ay7pwm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tiktok:before {
+  content: "\e917";
+  color: #fff;
+}
 .icon-social-youtube:before {
   content: "\e916";
   color: #fff;

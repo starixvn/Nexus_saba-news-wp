@@ -116,19 +116,20 @@ p.has-text-align-center {
     @media screen and (max-width: 1024px) {
       .footer .copy-right, .footer .follow {
         font-size: 1.2rem; } }
-  .footer .follow [class*="icon-social"] {
+  .footer .follow [class*="icon-"] {
     font-size: 2.4rem;
     margin-right: .8rem;
     position: relative;
     top: 3px;
     cursor: pointer; }
-    .footer .follow [class*="icon-social"]:before {
+    .footer .follow [class*="icon-"]:before {
       color: #fff; }
   .footer .follow .icon-social-twitter {
     margin-left: 1rem; }
   .footer .ex {
     display: inline-block;
-    vertical-align: middle; }
+    position: relative;
+    top: 3px; }
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
