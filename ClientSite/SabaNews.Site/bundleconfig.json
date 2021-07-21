@@ -31,6 +31,13 @@
         ]
     },
     {
+        "outputFileName": "wwwroot/minify/styles/profile_sendmail_detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages//profile/sendmail_detail.css"
+        ]
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/video.min.css",
         "inputFiles": [
             "wwwroot/lib/swipper/css/swiper.min.css",

@@ -3,7 +3,7 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/profile_sendmail.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/profile_sendmail_detail.min.css" asp-append-version="true">
 }
 
 @section Scripts{
@@ -18,8 +18,6 @@
 		</div>
 		<div class="block block-email">
 			<div class="controls">
-				
-
 				<div class="constrols_list_sendmail line">
 					@if (Model.Count == 0)
 					{
@@ -28,6 +26,7 @@
 					else
 					{
 						<h1>Danh sách email đã gửi với tiêu đề: @ViewBag.EmailTitle </h1>
+						<p><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">Xem nội dung</a></p>
 						<table>
 							<tr>
 								<th>STT</th>
@@ -49,12 +48,30 @@
 								</tr>
 							}
 						</table>
+
+						<div class="modal" id="ViewEmailContent" style="display:none">
+							<div class="modal-content">
+								<div class="modal-warning">
+									<div class="modal-title">
+										<h2 class="title">@ViewBag.EmailTitle</h2>
+										<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+
+									<div class="modal-body ck-content">
+										@Html.Raw(ViewBag.EmailContent)
+									</div>
+								</div>
+							</div>
+						</div>
 					}
 				</div>
 
 			</div>
 		</div>
 	</div>
+
 	
 
 </section>

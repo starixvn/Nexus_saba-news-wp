@@ -75,7 +75,11 @@
 									}
 								</td>
 								<td>@email.TotalClicked / @rate</td>
-								<td><input value="@email.EmailContent" type="hidden" class="email_content" /><a href="javascript:;" class="email view_content">View</a></td>
+								<td>
+									<input value="@email.EmailContent" type="hidden" class="email_content" />
+									<input value="@email.EmailTitle" type="hidden" class="email_title" />
+									<a href="javascript:;" class="email view_content">View</a>
+								</td>
 							</tr>
 						}
 					</table>
@@ -87,9 +91,13 @@
 	<div class="modal" id="ViewEmailContent" style="display:none">
 		<div class="modal-content">
 			<div class="modal-warning">
-				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+				<div class="modal-title">
+					<h2 class="title"></h2>
+					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
 				<div class="modal-body ck-content">
 				</div>
 			</div>

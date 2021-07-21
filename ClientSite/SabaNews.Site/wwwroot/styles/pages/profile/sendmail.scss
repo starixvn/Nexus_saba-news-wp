@@ -280,11 +280,10 @@ tr:nth-child(even) {
     right: 0.4rem;
     z-index: 999999;
     cursor: pointer;
-    color: #4f4f4f;
+    color: #fff;
     width: 3.2rem;
     height: 3.2rem;
-    background: #fff;
-    border-radius: 50%;
+    background: transparent;
     line-height: 3.2rem;
     font-size: 3rem;
     outline: none;
@@ -292,6 +291,12 @@ tr:nth-child(even) {
 
 .modal .modal-body {
     padding: 1rem;
+}
+
+.modal .modal-title {
+    color: #fff !important;
+    background-color: #009688 !important;
+    padding: 1rem 4rem 1rem 1rem;
 }
 
 .summary-eror {

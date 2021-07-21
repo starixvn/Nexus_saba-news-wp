@@ -96,7 +96,9 @@ var sendmailevent = (function ($) {
     function HanldeEmailList() {
         $('.view_content').click(function () {
             var content = $(this).parent().find('.email_content').val();
+            var title = $(this).parent().find('.email_title').val();
             $('#ViewEmailContent .modal-body').html(content);
+            $('#ViewEmailContent .title').html(title);
             $('#ViewEmailContent').modal('show');
         });
     }

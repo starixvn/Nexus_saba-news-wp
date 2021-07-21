@@ -21,7 +21,7 @@
 
         public int IsUserClicked { get; set; }
 
-        public int Status { get; set; } = 0;
+        public int Status { get; set; }
 
         public string SendMailTime
         {

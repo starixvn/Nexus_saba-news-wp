@@ -4,7 +4,6 @@
     using SabaNews.Criteria.Email;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

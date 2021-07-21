@@ -5,8 +5,8 @@
 
     public class EmailViewModel
     {
-        public IEnumerable<EmailModel> Emails;
+        public IEnumerable<EmailModel> Emails { get; set; }
 
-        public UserSession User;
+        public UserSession User { get; set; }
     }
 }

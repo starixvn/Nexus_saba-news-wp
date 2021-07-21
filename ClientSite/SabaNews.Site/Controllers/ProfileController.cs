@@ -268,8 +268,8 @@
                 foreach (var user in users)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token = token, returnUrl = model.EmailReturnLink }, Request.Scheme);
-                    var messageReturnLink = string.Format("<div>Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
+                    var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
+                    var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
                     var emailContent = model.EmailContent + "<br />" + messageReturnLink;
                     
                     var resultSendMail = await authService.SendMailCkeditorAsync(model.EmailTitle, emailContent, user.Email);
@@ -312,26 +312,12 @@
             filename = DateTime.Now.Millisecond + filename;
             string filePath = "";
             string message = "";
-            string checkExitst = "";
-            string status = "";
-            string tmpPath = GetPathAndFilename("banner.jpg");
             try
             {
                 using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
                 {
                     await file.CopyToAsync(output);
                     filePath = output.Name;
-                    message = output.Length.ToString();
-                    status = output.CanRead ? "Can Read" : "";
-
-                }
-                if (System.IO.File.Exists(filePath))
-                {
-                    checkExitst = "file exist";
-                }
-                else
-                {
-                    checkExitst = "file not exist";
                 }
             }
             catch (Exception ex)
@@ -342,7 +328,7 @@
             string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
             string url = string.Concat(baseUrl, linkPhoto);
 
-            return Json(new { url, filePath, message, checkExitst, status, tmpPath });
+            return Json(new { url, filePath, message });
         }
 
         public async Task<ActionResult> SendMailDetail(int emailId)
@@ -357,6 +343,7 @@
             ViewBag.Page = Constants.ProfileSendMailPage;
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.EmailTitle = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailTitle : "";
+            ViewBag.EmailContent = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailContent : "";
             return View(listEmailDetails);
         }
 

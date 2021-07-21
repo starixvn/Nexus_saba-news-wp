@@ -27,6 +27,7 @@
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\Euro2020\detail.css" />
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\Euro2020\video.css" />
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\maintenance.css" />
+        <_ContentIncludedByDefault Remove="wwwroot\styles\pages\profile\sendmail_detail.css" />
     </ItemGroup>
 
     <ItemGroup>
