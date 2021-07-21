@@ -1789,17 +1789,20 @@ tr:nth-child(even) {
   right: 50%;
   transform: translate(50%, -50%);
   width: 100%;
-  max-width: 75rem; }
+  max-width: 84rem;
+  overflow-y: initial !important; }
 
 .modal .modal-content {
   border: none;
   border-radius: 0;
-  position: relative; }
+  position: relative;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto; }
 
 .modal .close-login {
   position: absolute;
-  top: -1.6rem;
-  right: -1.6rem;
+  top: 0.4rem;
+  right: 0.4rem;
   z-index: 999999;
   cursor: pointer;
   color: #4f4f4f;
@@ -1813,3 +1816,7 @@ tr:nth-child(even) {
 
 .modal .modal-body {
   padding: 1rem; }
+
+.summary-eror {
+  margin-left: 20px;
+  margin-bottom: 20px; }
