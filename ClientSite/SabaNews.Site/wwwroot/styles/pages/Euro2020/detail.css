@@ -103,7 +103,7 @@ p.has-text-align-center {
   position: relative; }
   @media screen and (max-width: 1024px) {
     .footer {
-      padding: .6rem 0;
+      padding: .8rem 0;
       margin-top: 2.7rem; } }
   .footer .container {
     display: flex;
@@ -121,24 +121,22 @@ p.has-text-align-center {
   @media (max-device-width: 767px) {
     .footer .copy-right {
       border-top: 1px solid #1B263A;
-      padding-top: .6rem; } }
-  @media (max-device-width: 767px) {
-    .footer .follow {
-      padding-bottom: .6rem; } }
-  .footer .follow [class*="icon-"] {
-    font-size: 2.4rem;
-    margin-right: .8rem;
-    position: relative;
-    top: 3px;
-    cursor: pointer;
-    text-decoration: none; }
+      padding-top: .8rem; } }
+  .footer .follow {
+    display: flex;
+    align-items: center; }
     @media (max-device-width: 767px) {
-      .footer .follow [class*="icon-"] {
-        font-size: 1.6rem; } }
-    .footer .follow [class*="icon-"]:before {
-      color: #fff; }
-  .footer .follow .icon-social-facebook {
-    margin-left: 1rem; }
+      .footer .follow {
+        padding-bottom: .8rem; } }
+    .footer .follow [class*="icon-"] {
+      font-size: 2.4rem;
+      margin-right: 1.6rem;
+      cursor: pointer;
+      text-decoration: none; }
+      .footer .follow [class*="icon-"]:before {
+        color: #fff; }
+    .footer .follow .icon-social-facebook {
+      margin-left: 1.6rem; }
   .footer .ex {
     display: inline-block;
     position: relative;

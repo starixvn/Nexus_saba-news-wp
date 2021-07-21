@@ -8,7 +8,7 @@
     position: relative;
 
     @include tableMobile {
-        padding: .6rem 0;
+        padding: .8rem 0;
         margin-top: 2.7rem;
     }
 
@@ -34,26 +34,22 @@
     .copy-right {
         @include Mobile {
             border-top: 1px solid #1B263A;
-            padding-top: .6rem;
+            padding-top: .8rem;
         }
     }
 
     .follow {
+        display: flex;
+        align-items: center;
         @include Mobile {
-            padding-bottom: .6rem;
+            padding-bottom: .8rem;
         }
 
         [class*="icon-"] {
             font-size: 2.4rem;
-            margin-right: .8rem;
-            position: relative;
-            top: 3px;
+            margin-right: 1.6rem;
             cursor: pointer;
             text-decoration: none;
-
-            @include Mobile {
-                font-size: 1.6rem;
-            }
 
             &:before {
                 color: #fff;
@@ -61,7 +57,7 @@
         }
 
         .icon-social-facebook {
-            margin-left: 1rem;
+            margin-left: 1.6rem;
         }
     }
 
