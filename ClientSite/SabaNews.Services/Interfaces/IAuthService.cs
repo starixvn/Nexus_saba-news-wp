@@ -28,6 +28,6 @@
 
         Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail);
 
-        Task<CommandResult> SendMailCkeditorAsync(string subject, string content, string email);
+        Task<CommandResult> SendMailEventAsync(string subject, string content, string email);
     }
 }

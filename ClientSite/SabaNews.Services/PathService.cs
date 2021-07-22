@@ -34,9 +34,11 @@
             return Path.GetFullPath(contentRootPath + path);
         }
 
-        public string MapAbsolutePath(string rootPath, string path)
+        public string MapAbsoluteRootPath(string path)
         {
-            return Path.GetFullPath(rootPath + path);
+            string webRootPath = webHostEnvironment.WebRootPath;
+            return Path.GetFullPath(webRootPath + path);
         }
+
     }
 }

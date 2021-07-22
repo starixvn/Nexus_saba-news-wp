@@ -272,7 +272,7 @@
                     var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
                     var emailContent = model.EmailContent + "<br />" + messageReturnLink;
                     
-                    var resultSendMail = await authService.SendMailCkeditorAsync(model.EmailTitle, emailContent, user.Email);
+                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, emailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
@@ -284,7 +284,6 @@
                         SendTime = DateTime.UtcNow,
                         Status = resultSendMail.Code
                     };
-                    detailModel.Status = resultSendMail.Code;
                     await emailService.CreateEmailDetailAsync(detailModel);
                 }
             }
@@ -359,6 +358,6 @@
             return filename;
         }
 
-        private string GetPathAndFilename(string filename) => pathService.MapAbsolutePath("wwwroot/upload/" ,  filename);
+        private string GetPathAndFilename(string filename) => pathService.MapAbsoluteRootPath("//upload//" + filename);
     }
 }

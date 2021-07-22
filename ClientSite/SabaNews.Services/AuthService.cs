@@ -133,7 +133,7 @@
             await SendMailAsync(subject, body, email);
         }
 
-        public async Task<CommandResult> SendMailCkeditorAsync(string subject, string content, string email)
+        public async Task<CommandResult> SendMailEventAsync(string subject, string content, string email)
         {
             var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, SendMailEventTemplates);
             var rawBody = mailService.ReadTextFile(mailPath);

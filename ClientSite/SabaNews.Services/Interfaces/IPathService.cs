@@ -8,6 +8,6 @@
 
         string MapFullPath(string path);
 
-        string MapAbsolutePath(string rootPath, string path);
+        string MapAbsoluteRootPath(string path);
     }
 }
