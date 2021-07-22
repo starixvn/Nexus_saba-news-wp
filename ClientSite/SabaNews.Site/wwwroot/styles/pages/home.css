@@ -1129,7 +1129,8 @@ button {
     text-decoration: none;
     color: #333;
     transition: color .3s ease;
-    display: block; }
+    /*display: block;*/
+    display: initial; }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
   .card-horizontal__content .datetime {
@@ -1189,7 +1190,8 @@ button {
     letter-spacing: -0.02rem;
     text-decoration: none;
     transition: color .3s ease;
-    display: block;
+    /*display: block;*/
+    display: initial;
     line-height: 2rem; }
     .card-vertical__title:hover {
       color: #EB5342; }
@@ -1403,7 +1405,8 @@ button {
       .main .block-video .block__content .slide-video .card-horizontal__content {
         padding: 1rem 0; }
         .main .block-video .block__content .slide-video .card-horizontal__content .title {
-          font-weight: normal; }
+          font-weight: normal;
+          display: initial; }
       .main .block-video .block__content .slide-video .card-horizontal:last-child {
         margin-bottom: 0; }
     .main .block-video .block__content .slide-video::-webkit-scrollbar {

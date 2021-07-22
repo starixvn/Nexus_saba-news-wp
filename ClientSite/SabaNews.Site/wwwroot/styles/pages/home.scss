@@ -273,6 +273,7 @@
 
                         .title {
                             font-weight: normal;
+                            display: initial;
                         }
                     }
 
@@ -351,7 +352,6 @@
             @include Mobile {
                 display: block;
             }
-
             .card-vertical {
                 padding-bottom: 0;
 
@@ -721,6 +721,7 @@
 
             @include Mobile {
                 display: block;
+
                 .card-vertical__image {
                     height: 20rem;
                 }

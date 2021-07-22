@@ -38,7 +38,8 @@
         letter-spacing: -0.02rem;
         text-decoration: none;
         transition: color .3s ease;
-        display: block;
+        /*display: block;*/
+        display : initial;
         line-height: 2rem;
 
         &:hover {
