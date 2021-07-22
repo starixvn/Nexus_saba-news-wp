@@ -574,6 +574,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Các môn khác.
+        /// </summary>
+        public static string OtherPosts {
+            get {
+                return ResourceManager.GetString("OtherPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tổng quan.
         /// </summary>
         public static string Overview {

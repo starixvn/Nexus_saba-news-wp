@@ -288,6 +288,9 @@
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
   </data>
+  <data name="OtherPosts" xml:space="preserve">
+    <value>Các môn khác</value>
+  </data>
   <data name="Overview" xml:space="preserve">
     <value>Tổng quan</value>
   </data>
