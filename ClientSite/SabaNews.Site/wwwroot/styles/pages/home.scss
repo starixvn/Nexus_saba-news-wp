@@ -352,6 +352,7 @@
             @include Mobile {
                 display: block;
             }
+
             .card-vertical {
                 padding-bottom: 0;
 
@@ -528,9 +529,9 @@
                         [class*="card-vertical__"]:not(.card-vertical__image) {
                             padding: 0;
 
-                            @include Mobile {
+                            /*@include Mobile {
                                 padding: 0 .8rem;
-                            }
+                            }*/
                         }
                     }
                 }
@@ -574,7 +575,7 @@
                     }
 
                     @include Mobile {
-                        padding: .8rem;
+                        padding: .8rem 0;
                         margin-top: 0;
                     }
                 }
