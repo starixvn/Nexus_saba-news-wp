@@ -1,6 +1,8 @@
 ﻿var editorValue;
 var configCkeditor = (function ($) {
-    function configContentForm(element) {
+    var url = "";
+    function configContentForm(element, urlUpload) {
+        url = urlUpload;
         ClassicEditor
             .create(document.querySelector(element), {
                 extraPlugins: [CustomUpload],
@@ -97,7 +99,7 @@ var configCkeditor = (function ($) {
             // integration to choose the right communication channel. This example uses
             // a POST request with JSON as a data structure but your configuration
             // could be different.
-            xhr.open('POST', '/Profile/UploadImageSendMail', true);
+            xhr.open('POST', url, true);
             xhr.responseType = 'json';
         }
 
@@ -119,8 +121,8 @@ var configCkeditor = (function ($) {
                 //
                 // Your integration may handle upload errors in a different way so make sure
                 // it is done properly. The reject() function must be called when the upload fails.
-                if (!response || response.error) {
-                    return reject(response && response.error ? response.error.message : genericErrorText);
+                if (!response || response.error !== "") {
+                    return reject(response && response.error ? response.error : genericErrorText);
                 }
 
                 // If the upload is successful, resolve the upload promise with an object containing

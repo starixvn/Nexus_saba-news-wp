@@ -1,6 +1,6 @@
 ﻿
 var sendmailevent = (function ($) {
-    configCkeditor.configContentForm('#emailContent');
+    configCkeditor.configContentForm('#emailContent', '/Profile/UploadImageSendMail');
 
     function HandleValidate() {
         var form = 'form#form-sendmail';

@@ -310,7 +310,7 @@
             filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename;
             string filePath = "";
-            string message = "";
+            string error = "";
             try
             {
                 using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
@@ -321,13 +321,13 @@
             }
             catch (Exception ex)
             {
-                message = ex.ToString();
+                error = ex.ToString();
             }
             string linkPhoto = "upload/" + filename;
             string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
             string url = string.Concat(baseUrl, linkPhoto);
 
-            return Json(new { url, filePath, message });
+            return Json(new { url, filePath, error });
         }
 
         public async Task<ActionResult> SendMailDetail(int emailId)
