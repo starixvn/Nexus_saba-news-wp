@@ -3,13 +3,12 @@
 
 .footer {
     background-color: $color-pagination;
-    border-top: 4px solid $color-active;
+    border-top: 4px solid $color-main-title;
     padding: 3.6rem 0;
     position: relative;
 
     @include tableMobile {
         padding: .8rem 0;
-        margin-top: 2.7rem;
     }
 
     .container {
@@ -32,15 +31,22 @@
     }
 
     .copy-right {
+        display: flex;
+        align-items: center;
+
         @include Mobile {
             border-top: 1px solid #1B263A;
             padding-top: .8rem;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
         }
     }
 
     .follow {
         display: flex;
         align-items: center;
+
         @include Mobile {
             padding-bottom: .8rem;
         }
@@ -65,6 +71,7 @@
         display: inline-block;
         position: relative;
         top: 3px;
+        left: 3px;
     }
 
     .back-to-top-box {
