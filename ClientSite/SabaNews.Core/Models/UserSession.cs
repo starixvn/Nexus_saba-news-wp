@@ -1,9 +1,8 @@
 ﻿namespace SabaNews.Core.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using SabaNews.Core.Constants;
+    using Newtonsoft.Json;
 
     public class UserSession
     {
@@ -17,15 +16,17 @@
 
         public string Phone { get; set; }
 
-        public string Gender { get; set; } 
+        public string Gender { get; set; }
 
         public string Photo { get; set; }
 
         public bool EmailConfirmed { get; set; }
 
         public string LoginType { get; set; }
-        
+
         public string SavedPosts { get; set; }
+
+        public string Metadata { get; set; }
 
         public DateTime RegisterDate { get; set; }
 
@@ -47,16 +48,14 @@
                 if (SavedPosts == null)
                 {
                     return arrSavedPosts;
-                } 
+                }
                 arrSavedPosts = JsonConvert.DeserializeObject<List<SavePost>>(SavedPosts);
                 return arrSavedPosts;
             }
-            set 
+            set
             {
                 this.ListSavedPosts = value;
             }
         }
-            
-
     }
 }
