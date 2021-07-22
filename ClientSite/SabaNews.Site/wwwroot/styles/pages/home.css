@@ -1252,6 +1252,8 @@ button {
         padding-bottom: 1rem;
         display: block;
         width: 100%; } }
+    .main .block-hot-news .block__content .card-vertical .card-vertical__title {
+      display: block; }
     .main .block-hot-news .block__content .card-vertical .card-vertical__image {
       height: 25.5rem; }
       @media screen and (max-width: 1024px) {
