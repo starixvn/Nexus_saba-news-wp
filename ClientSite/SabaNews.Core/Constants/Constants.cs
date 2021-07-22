@@ -18,6 +18,7 @@
         public const string WarningSlug = "warning";
         public const string FootballOutside = "bong-da-quoc-te";
         public const string FootballInside = "bong-da-trong-nuoc";
+        public const string OtherPostSlug = "cac-mon-khac";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";

@@ -345,66 +345,37 @@
 				<div class="block__content">
 					<div class="card-vertical card-vertical-highlight">
 						<a href="" class="card-vertical__image">
-
+							@{
+								short otherImgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+								string otherFirstImgUrl = Model.OtherPosts[0].GetImageBySize(imgSize);
+							}
 							<picture>
-								<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-								<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-								<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
+								<source srcset="@Url.Content(otherFirstImgUrl)" type="image/webp" class="img-res">
+								<source srcset="@Url.Content(otherFirstImgUrl)" type="image/jpeg" class="img-res">
+								<img asp-append-version="true" loading="lazy" src="@Url.Content(otherFirstImgUrl)" alt="@Model.OtherPosts[0].PostTitle" class="img-res img-block">
 							</picture>
 
 						</a>
-						<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
+						<a href="@Url.Action("Single", "Home", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__title">@Model.OtherPosts[0].PostTitle</a>
 
-						<p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
+						<p class="card-vertical__datetime">@Model.OtherPosts[0].PostTime</p>
 					</div>
 					<div class="list-card">
-						<div class="card-vertical">
-							<a href="" class="card-vertical__image">
-								<picture>
-									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-									<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-									<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-								</picture>
-							</a>
-							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-							<p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
-						</div>
-						<div class="card-vertical">
-							<a href="" class="card-vertical__image">
-								<picture>
-									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-									<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-									<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-								</picture>
-							</a>
-							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-
-							<p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
-						</div>
-						<div class="card-vertical">
-							<a href="" class="card-vertical__image">
-								<picture>
-									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-									<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-									<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-								</picture>
-							</a>
-							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-
-							<p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
-						</div>
-						<div class="card-vertical">
-							<a href="" class="card-vertical__image">
-								<picture>
-									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-									<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-									<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-								</picture>
-							</a>
-							<a href="@Url.Action("Single", "Home", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-
-							<p class="card-vertical__datetime">@Model.NewPosts[0].PostTime</p>
-						</div>
+						@for (int i = 1; i < Model.OtherPosts.Length; i++)
+						{
+							string otherImg = Model.OtherPosts[i].GetImageBySize(ImageWidth.Width300);
+							<div class="card-vertical">
+								<a href="" class="card-vertical__image">
+									<picture>
+										<source srcset="@Url.Content(otherImg)" type="image/webp" class="img-res">
+										<source srcset="@Url.Content(otherImg)" type="image/jpeg" class="img-res">
+										<img asp-append-version="true" loading="lazy" src="@Url.Content(otherImg)" alt="@Model.OtherPosts[i].PostTitle" class="img-res img-block">
+									</picture>
+								</a>
+								<a href="@Url.Action("Single", "Home", new { slug =  Model.OtherPosts[i].Slug })" class="card-vertical__title">@Model.OtherPosts[i].PostTitle</a>
+								<p class="card-vertical__datetime">@Model.OtherPosts[0].PostTime</p>
+							</div>
+						}
 					</div>
 				</div>
 			</div>
