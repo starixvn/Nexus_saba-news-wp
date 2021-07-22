@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?shedcp');
-  src:  url('fonts/Fraud-Sensor.eot?shedcp#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?shedcp') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?shedcp') format('woff'),
-    url('fonts/Fraud-Sensor.svg?shedcp#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?pttbyq');
+  src:  url('fonts/Fraud-Sensor.eot?pttbyq#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?pttbyq') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?pttbyq') format('woff'),
+    url('fonts/Fraud-Sensor.svg?pttbyq#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -84,93 +84,78 @@
 }
 .icon-sport-basketball:before {
   content: "\e977";
- color: #4f4f4f;
 }
 .icon-play:before {
   content: "\e978";
-color: #fff;
 }
 .icon-arrow-left:before {
   content: "\e979";
-color: #4f4f4f;
 }
 .icon-arrow-right:before {
   content: "\e98b";
-color: #4f4f4f;
 }
 .icon-bullet-arrow-right:before {
   content: "\e97a";
-color: #4f4f4f;
 }
 .icon-chevron-down:before {
   content: "\e97b";
-color: #4f4f4f;
 }
 .icon-chevron-left:before {
   content: "\e97c";
-color: #4f4f4f;
 }
 .icon-chevron-right:before {
   content: "\e97d";
-color: #4f4f4f;
 }
 .icon-chevron-up:before {
   content: "\e97e";
-color: #4f4f4f;
 }
 .icon-home:before {
   content: "\e97f";
-color: #4f4f4f;
 }
 .icon-menu:before {
   content: "\e980";
-color: #4f4f4f;
 }
 .icon-page-first:before {
   content: "\e981";
-color: #4f4f4f;
 }
 .icon-page-last:before {
   content: "\e982";
-color: #4f4f4f;
 }
 .icon-search:before {
   content: "\e983";
-color: #4f4f4f;
 }
 .icon-social-facebook:before {
   content: "\e984";
-color: #4f4f4f;
 }
 .icon-social-pinterest:before {
   content: "\e985";
-color: #4f4f4f;
 }
 .icon-social-telegram:before {
   content: "\e986";
-color: #4f4f4f;
 }
 .icon-social-twitter:before {
   content: "\e987";
-color: #4f4f4f;
 }
 .icon-sport-soccer:before {
   content: "\e988";
-color: #4f4f4f;
 }
 .icon-sport-tennis:before {
   content: "\e989";
-color: #4f4f4f;
 }
 .icon-sport-tennis-2:before {
   content: "\e98a";
-color: #4f4f4f;
 }
 .icon-video:before {
   content: "\e968";
-color: #4f4f4f;
 }
-
 .icon-close:before {
   content: "\e99d";
+}
+.icon-tiktok:before {
+  content: "\e917";
+  color: #fff;
+}
+.icon-social-youtube:before {
+  content: "\e916";
+  color: #fff;
 }
