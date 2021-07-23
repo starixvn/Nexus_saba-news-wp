@@ -37,7 +37,7 @@
 		@if (isMobile || isTablet)
         {
 		<div class="banner-euro-mobile">
-			<img src="~/images/GDN_375x200.png" />
+			<a href="@Url.Action("Tag", "Home", new { tagname =  Constants.OlympicTokyoTag })"><img src="~/images/GDN_375x200.png" /></a>
 		</div>
         }
 		<div class="block block-hot-news">

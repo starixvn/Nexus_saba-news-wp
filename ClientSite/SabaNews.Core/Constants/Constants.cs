@@ -133,5 +133,7 @@
         public const string Euro2020MascotSlug = "linh-vat-qua-cac-vck-euro";
         public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
+
+        public const string OlympicTokyoTag = "olympic-tokyo";
     }
 }
