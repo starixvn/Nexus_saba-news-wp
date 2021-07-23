@@ -134,8 +134,10 @@
         public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
 
-        public const string OlympicTokyoTag = "olympic-tokyo";
+
+        public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
+        public const string OlympicTokyoTag = "olympic-tokyo";
         public const string ProfileIndexPage = "Index";
         public const string ProfileListPostsPage = "ListSavedPosts";
         public const string ProfileSendMailPage = "SendMail";
