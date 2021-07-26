@@ -1012,7 +1012,8 @@ button {
         bottom: 5rem; } }
     @media (max-device-width: 767px) {
       .swiper-container.swiper-container-horizontal > .swiper-pagination-bullets {
-        bottom: 60px; } }
+        top: 0;
+        bottom: auto; } }
   .swiper-container .swiper-slide {
     background-color: #081224; }
     .swiper-container .swiper-slide .img-item {
