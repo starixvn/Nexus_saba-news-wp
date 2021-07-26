@@ -5,7 +5,6 @@
         $('.play_video iframe').attr('allow', 'autoplay');
         $('.btn-play-video').on('click', function () {
             var slide = $(this).parent().parent();
-            $('.swiper-pagination').css('display', 'none');
             if (!slide.hasClass("active")) {
                 $('.play_video').html('');
                 $('.img-item').show();
