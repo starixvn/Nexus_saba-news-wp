@@ -1,0 +1,109 @@
+{
+    "AppSettings": {
+        "Key": "Value"
+    },
+    "AllowedHosts": "*",
+    "Logging": {
+        "LogLevel": {
+            "Default": "Debug",
+            "System": "Information",
+            "Microsoft": "Information"
+        }
+    },
+    "ConnectionStrings": [
+        {
+            "Name": "sabasports",
+<<<<<<< HEAD
+            "ConnectionString": "Data Source=10.18.200.141;Port=3306;Initial Catalog=wordpress;Keepalive=30;Persist Security Info=True;User ID=root;Password=IOR71CwzkLI=",
+=======
+            "ConnectionString": "Data Source=10.18.200.131;Port=33061;SslMode=none;charset=utf8mb4;Initial Catalog=sabasports;Persist Security Info=True;User ID=sabasports;Password=rDdQ+TcIgASHu1Rbq6stOar9KV0fJYc4",
+>>>>>>> 000 - update config local
+            "ProviderName": "MySql.Data.MySqlClient"
+        }
+    ],
+    "LogCategory": "sabanews-client-LOCAL",
+    "SentryEngineOptions": {
+        "Dsn": "https://7377848fc981487aae32a9d58aeed848@sentry.nexdev.net/115",
+        "FrontEndDsn": "https://7377848fc981487aae32a9d58aeed848@sentry.nexdev.net/115"
+    },
+    "RedisConfig": {
+        "ConnectionString": "ha.nexdev.net:16379,password=foo1@bared,defaultDatabase=7",
+        "ApplicationName": "SabaNews:Website"
+    },
+    "IsEnabledUseFanexCaching": false,
+    "IsShowGoogleAnalytics": false,
+    "HangfireConfig": {
+        "IsUseDashboard": true,
+        "WorkerCount": 1,
+        "Prefix": "SabaNews_Hangfire_Local1",
+        "SucceededListSize": 2000,
+        "DeletedListSize": 2000,
+        "Db": 6,
+        "JobSettings": [
+            {
+                "JobName": "RefreshHomePageCaching",
+                "IsEnabled": true,
+                "CronExpression": "*/2 * * * *"
+            },
+            {
+                "JobName": "RefreshMenuCaching",
+                "IsEnabled": true,
+                "CronExpression": "0 12 * * *"
+            },
+            {
+                "JobName": "RefreshCategoryCaching",
+                "IsEnabled": true,
+                "CronExpression": "*/10 * * * *"
+            },
+            {
+                "JobName": "RefreshSitemapXmlFile",
+                "IsEnabled": true,
+                "CronExpression": "*/30 * * * *"
+            },
+            {
+                "JobName": "RefreshNewsSitemapXmlFile",
+                "IsEnabled": true,
+                "CronExpression": "*/30 * * * *"
+            },
+            {
+                "JobName": "RefreshRSS",
+                "IsEnabled": true,
+                "CronExpression": "*/30 * * * *"
+            },
+            {
+                "JobName": "RefreshEuro2020PageCaching",
+                "IsEnabled": true,
+                "CronExpression": "*/2 * * * *"
+            }
+        ]
+    },
+    "MailConfigs": {
+        "Enabled": true,
+        "SenderName": "Saba Sports",
+        "SmtpServer": "smtp.nexdev.net",
+        "SmtpPort": 25,
+        "EnableSsl": false,
+        "MailPriority": 0, // 0 - Non Urgent, 1 - Normal, 2 - Urgent
+        "Username": "sabasports@starixvn.com",
+        "Password": "123456"
+    },
+    "Authentication": {
+        "Google": {
+            "ClientId": "405489459999-bolnj0jq7m5pqa3go58p61hrdjq9feg2.apps.googleusercontent.com",
+            "ClientSecret": "sGngnwjpjlUT4sK_1pHpmWpe"
+        },
+        "Facebook": {
+            "ClientId": "478380056662110",
+            "ClientSecret": "af3ffad5a7ac25263119554ca4ec3e19"
+        }
+    },
+    "ProxySettings": {
+        "IsUseProxy": true,
+        "ProxyAddress": "10.18.200.3:3128",
+        "BypassProxyOnLocal": true
+    },
+    "SitemapSettings": {
+        "Domain": "https://saba-news-v1.nexdev.net/"
+    },
+    "BlackListIPs": "10.40.40.73, 10.40.40.72"
+}
