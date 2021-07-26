@@ -4,36 +4,32 @@
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Filters;
-    using SabaNews.Core.Services;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Extensions;
+    using SabaNews.Core.Models;
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class SabaAuthAttribute : Attribute, IAuthorizationFilter
     {
-        private readonly ISessionService sessionService;
-
         public string Role { get; set; }
-
-        public SabaAuthAttribute(ISessionService sessionService)
-        {
-            this.sessionService = sessionService;
-        }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            if (sessionService.User is null || sessionService.User.Id == 0)
+            var userSession = context.HttpContext.Session.Get<UserSession>(SessionKey.User);
+            if (userSession is null || userSession.Id == 0)
             {
                 UnauthorizedResponse(context);
                 return;
             }
 
-            if (!string.IsNullOrWhiteSpace(Role) && IsValidRole())
+            if (!string.IsNullOrWhiteSpace(Role) && !IsValidRole(userSession))
             {
                 UnauthorizedResponse(context);
             }
         }
 
-        private bool IsValidRole()
-            => sessionService.User.Metadata.Contains(Role);
+        private bool IsValidRole(UserSession userSession)
+            => userSession.Metadata.Contains(Role);
 
         private static void UnauthorizedResponse(AuthorizationFilterContext context)
         {

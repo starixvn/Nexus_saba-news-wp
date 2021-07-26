@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Site.Controllers.Admin
+﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using System;
     using System.Threading.Tasks;
@@ -6,7 +6,7 @@
     using SabaNews.Models.ViewModel.Statistic;
     using SabaNews.Services.Interfaces;
 
-    public class StatisticController : Controller
+    public class StatisticController : AdminController
     {
         private readonly IStatisticService statisticService;
 
@@ -23,14 +23,14 @@
                 FromDate = new DateTime(now.Year, now.Month, 1),
                 ToDate = new DateTime(now.Year, now.Month, now.Day)
             };
-            return View("~/Admin/Statistic/Index.cshtml", viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostViewStatistic([FromBody] StatisticFilterViewModel viewModel)
+        public async Task<IActionResult> PostViewStatistic(StatisticFilterViewModel viewModel)
         {
             var statistic = await statisticService.GetPostViewStatistic(viewModel.FromDate, viewModel.ToDate);
-            return Json(statistic);
+            return PartialView("_PostViewStatistic", statistic);
         }
     }
 }

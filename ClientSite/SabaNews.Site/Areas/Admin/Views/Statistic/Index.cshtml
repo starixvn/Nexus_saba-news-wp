@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_AdminLayout";
+}
+
+@section Title{
+    Post View Statistic
+}
+<section>
+    <div class="form-filter" id="filter">
+        <form action="PostViewStatistic" method="post">
+            <input type="date" id="FromDate" name="FromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+            <input type="date" id="ToDate" name="ToDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="statistic-report" id="statistic-report"></div>
+</section>
+@section Scripts {
+    <script src="~/minify/js/admin_statistic_post_view.min.js" asp-append-version="true"></script>
+}

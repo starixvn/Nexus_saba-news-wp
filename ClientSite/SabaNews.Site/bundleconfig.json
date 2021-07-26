@@ -126,7 +126,14 @@
             "wwwroot/styles/pages/Euro2020/detail.css"
         ]
     },
-
+    {
+        "outputFileName": "wwwroot/minify/styles/admin.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/admin/admin.css"
+        ]
+    },
+    /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
         "inputFiles": [
@@ -146,15 +153,12 @@
         },
         "sourceMap": false
     },
-
     {
         "outputFileName": "wwwroot/minify/styles/site.min.css",
         "inputFiles": [
             "wwwroot/styles/pages/auth.min.css"
         ]
     },
-
-
     {
         "outputFileName": "wwwroot/minify/js/reset-password.min.js",
         "inputFiles": [
@@ -191,10 +195,10 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/email.min.js",
+        "outputFileName": "wwwroot/minify/js/admin_statistic_post_view.min.js",
         "inputFiles": [
-            "wwwroot/js/email/index.js"
-        ],
+            "wwwroot/lib/jquery/dist/jquery.min.js",
+            "wwwroot/js/admin/statistic/post-view-statistic.js"
         "minify": {
             "enabled": true,
             "renameLocals": true
