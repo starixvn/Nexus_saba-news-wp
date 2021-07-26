@@ -31,6 +31,7 @@
             @include Mobile {
                 display: unset;
             }
+
             .card-vertical {
                 background-color: $block-highlight-bgcolor;
                 width: 53rem;
@@ -49,9 +50,11 @@
                     display: block;
                     width: 100%
                 }
-                .card-vertical__title{
-                    display : block;
+
+                .card-vertical__title {
+                    display: block;
                 }
+
                 .card-vertical__image {
                     height: 25.5rem;
 
@@ -241,6 +244,7 @@
 
                     @include Mobile {
                         display: block;
+                        transform: translate(0,-50%);
                     }
                 }
 
@@ -529,7 +533,6 @@
                     &:nth-child(n+1) {
                         [class*="card-vertical__"]:not(.card-vertical__image) {
                             padding: 0;
-
                             /*@include Mobile {
                                 padding: 0 .8rem;
                             }*/

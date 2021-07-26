@@ -1425,7 +1425,8 @@ button {
       display: none; }
       @media (max-device-width: 767px) {
         .main .block-video .block__content .swiper-video .swiper-button-next, .main .block-video .block__content .swiper-video .swiper-button-prev {
-          display: block; } }
+          display: block;
+          transform: translate(0, -50%); } }
     .main .block-video .block__content .swiper-video .btn-play-video {
       display: none; }
       @media (max-device-width: 767px) {
