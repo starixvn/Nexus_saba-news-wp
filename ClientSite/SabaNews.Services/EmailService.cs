@@ -47,12 +47,12 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<IEnumerable<EmailModel>> GetEmailByUser(GetEmailByUserCriteria criteria)
+        public async Task<IEnumerable<EmailModel>> GetEmailByUserAsync(GetEmailByUserCriteria criteria)
         {
             return await baseService.GetDataAsync<EmailModel>(criteria);
         }
 
-        public async Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailId(GetEmailDetailByEmailIdCriteria criteria)
+        public async Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailIdAsync(GetEmailDetailByEmailIdCriteria criteria)
         {
             return await baseService.GetDataAsync<EmailDetailModel>(criteria);
         }
@@ -60,6 +60,16 @@
         public async Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command)
         {
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<CommandResult> UpdateEmailDetailStatusAsync(UpdateEmailDetailStatusCommand command)
+        {
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<EmailDetailModel> GetDetailByEmailIdUserIdAsync(GetDetailEmailDetailCriteria criteria)
+        {
+            return await baseService.GetDataEntityAsync<EmailDetailModel>(criteria);
         }
     }
 }

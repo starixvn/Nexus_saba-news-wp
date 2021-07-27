@@ -70,6 +70,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Announcement.
+        /// </summary>
+        public static string Announcement {
+            get {
+                return ResourceManager.GetString("Announcement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trở lại.
         /// </summary>
         public static string Back {
@@ -214,7 +223,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nội Dung.
+        ///   Looks up a localized string similar to Content.
         /// </summary>
         public static string Content {
             get {
@@ -255,6 +264,24 @@ namespace SabaNews.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Content.
+        /// </summary>
+        public static string EmailContent {
+            get {
+                return ResourceManager.GetString("EmailContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Title.
+        /// </summary>
+        public static string EmailTitle {
+            get {
+                return ResourceManager.GetString("EmailTitle", resourceCulture);
             }
         }
         
@@ -300,6 +327,15 @@ namespace SabaNews.Resources {
         public static string Facebook {
             get {
                 return ResourceManager.GetString("Facebook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string Failed {
+            get {
+                return ResourceManager.GetString("Failed", resourceCulture);
             }
         }
         
@@ -448,6 +484,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IsClicked.
+        /// </summary>
+        public static string IsClicked {
+            get {
+                return ResourceManager.GetString("IsClicked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đường dẫn.
         /// </summary>
         public static string LinkReturn {
@@ -457,7 +502,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Danh sách email đã gửi.
+        ///   Looks up a localized string similar to List Sent Email.
         /// </summary>
         public static string ListEmailSent {
             get {
@@ -592,7 +637,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Số lượng tương tác.
+        ///   Looks up a localized string similar to Click Number/ Rate.
         /// </summary>
         public static string NumberClicked {
             get {
@@ -601,7 +646,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Số lượng gửi.
+        ///   Looks up a localized string similar to Number Of Sending.
         /// </summary>
         public static string NumberSent {
             get {
@@ -844,7 +889,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ngày gửi.
+        ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string SendDate {
             get {
@@ -898,11 +943,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STT.
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #.
         /// </summary>
         public static string STT {
             get {
                 return ResourceManager.GetString("STT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         
@@ -925,7 +988,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tiêu đề.
+        ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string Title {
             get {

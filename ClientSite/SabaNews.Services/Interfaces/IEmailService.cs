@@ -14,8 +14,12 @@
 
         Task<CommandResult> VerifyTokenEmailDetailAsync(VerifyTokenEmailDetailCommand command);
 
-        Task<IEnumerable<EmailModel>> GetEmailByUser(GetEmailByUserCriteria criteria);
+        Task<IEnumerable<EmailModel>> GetEmailByUserAsync(GetEmailByUserCriteria criteria);
 
-        Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailId(GetEmailDetailByEmailIdCriteria criteria);
+        Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailIdAsync(GetEmailDetailByEmailIdCriteria criteria);
+
+        Task<CommandResult> UpdateEmailDetailStatusAsync(UpdateEmailDetailStatusCommand command);
+
+        Task<EmailDetailModel> GetDetailByEmailIdUserIdAsync(GetDetailEmailDetailCriteria criteria);
     }
 }

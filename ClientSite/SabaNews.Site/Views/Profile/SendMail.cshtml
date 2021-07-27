@@ -27,67 +27,23 @@
 							<form id="form-sendmail">
 								<ul class="error summary-eror"></ul>
 								<div class="form-modal">
-									<label>@ViewResources.Title</label>
+									<label>@ViewResources.EmailTitle</label>
 									<input type="text" class="input-form" placeholder="" name="emailTitle" />
 								</div>
 								<div class="form-modal">
-									<label>@ViewResources.LinkReturn</label>
-									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
-								</div>
-								<div class="form-modal">
-									<label>@ViewResources.Content</label>
+									<label>@ViewResources.EmailContent</label>
 									<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
 								</div>
-								<button type="submit" class="btn-send-mail">@ViewResources.Send</button>
+								<button type="submit" class="btn-send-mail">Send</button>
 							</form>
 						</div>
 					</div>
 				</div>
-
-				<div class="constrols_list_sendmail line">
-					<h1>@ViewResources.ListEmailSent</h1>
-					<table>
-						<tr>
-							<th>@ViewResources.STT</th>
-							<th>@ViewResources.Title</th>
-							<th>@ViewResources.SendDate</th>
-							<th>@ViewResources.NumberSent</th>
-							<th>@ViewResources.NumberClicked</th>
-							<th>@ViewResources.Content</th>
-						</tr>
-						@{ var stt = 0; }
-						@foreach (var email in Model.Emails)
-						{
-							stt++;
-							var rate = (email.TotalClicked > 0 ? Math.Round((double)email.TotalClicked / email.TotalSent * 100, 2) : 0)  + "%";
-							<tr>
-								<td>@stt</td>
-								<td>@email.EmailTitle</td>
-								<td>@email.SendMailTime</td>
-								<td>
-									@if (email.TotalSent > 0)
-									{
-										<a href="@Url.Action("SendMailDetail", "Profile", new { emailId = email.Id })">@email.TotalSent</a>
-									}
-									else
-									{
-										@email.TotalSent
-									}
-								</td>
-								<td>@email.TotalClicked / @rate</td>
-								<td>
-									<input value="@email.EmailContent" type="hidden" class="email_content" />
-									<input value="@email.EmailTitle" type="hidden" class="email_title" />
-									<a href="javascript:;" class="email view_content">View</a>
-								</td>
-							</tr>
-						}
-					</table>
-				</div>
-
 			</div>
 		</div>
 	</div>
+
+
 	<div class="modal" id="ViewEmailContent" style="display:none">
 		<div class="modal-content">
 			<div class="modal-warning">
@@ -97,12 +53,29 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				
+
 				<div class="modal-body ck-content">
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+
+	<div class="modal" id="NoticeModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-notice" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+				</div>
+			</div>
+		</div>
+	</div>
+
 </section>
 

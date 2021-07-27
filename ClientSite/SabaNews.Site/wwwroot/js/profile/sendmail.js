@@ -4,59 +4,16 @@ var sendmailevent = (function ($) {
 
     function HandleValidate() {
         var form = 'form#form-sendmail';
-       // $(form).validate({
-       //     ignore: ":hidden:not(#emailContent)",
-       //     rules: {
-       //         emailTitle: 'required',
-       //         emailReturnLink: 'required'
-       //     },
-       //     messages: {
-       //         emailTitle: "Vui lòng nhập email title",
-       //         emailReturnLink: "Vui lòng nhập return link"
-       //     },
-       //     submitHandler: function (form) {
-       //         console.log(editorValue.getData());
-       //         if (editorValue.getData().trim() === "") {
-       //             $(form).find('.summary-eror').text('vui lòng nhập content');
-       //             return false;
-       //         }
-       //         console.log($(form).serialize());
-       //         $('.btn-send-mail').prop('disabled', true);
-       //         $.ajax({
-       //             url: 'SaveDataAndSendEmail',
-       //             type: "POST",
-       //             data: $(form).serialize(),
-       //             success: function (res) {
-       //                 result = res.result;
-       //                 if (result.isSuccessful) {
-       //                     $(form).find('.summary-eror').text("Gửi email thành công");
-							//$(form).trigger('reset');
-       //                     editorValue.setData('');
-       //                     location.reload();
-       //                 } else {
-       //                     $(form).find('.summary-eror').text(result.message);
-       //                 }
-       //                 $('.btn-send-mail').prop('disabled', false);
-       //                 $('.main').scrollTop();
-       //             },
-
-       //         });
-       //     }
-       // });
 
         function ValidateForm() {
             var error = "";
             var isValid = true;
             if (editorValue.getData().trim() === "") {
-                error += "<li>Vui lòng nhập nội dung</li>"
+                error += "<li>Email Content is required</li>"
                 isValid = false;
             }
             if ($('input[name="emailTitle"]').val() === "") {
-                error += "<li>Vui lòng nhập tiêu đề</li>";
-                isValid = false;
-            }
-            if ($('input[name="emailReturnLink"]').val() === "") {
-                error += "<li>Vui lòng nhập link trả về</li>";
+                error += "<li>Email Title is required</li>";
                 isValid = false;
             }
             $('.summary-eror').html(error);
@@ -65,11 +22,9 @@ var sendmailevent = (function ($) {
 
         $(form).on('submit', function (e) {
             e.preventDefault();
-            console.log(editorValue.getData());
            
             var isValid = ValidateForm();
             if (!isValid) return false;
-            console.log($(form).serialize());
             $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: 'SaveDataAndSendEmail',
@@ -78,15 +33,15 @@ var sendmailevent = (function ($) {
                     success: function (res) {
                         result = res.result;
                         if (result.isSuccessful) {
-                            $(form).find('.summary-eror').text("Gửi email thành công");
-							$(form).trigger('reset');
+                            var html = '<p>Send Email Successfully. There are ' + res.userNumber + ' email has been sent<p>';
+                            $(form).trigger('reset');
                             editorValue.setData('');
-                            location.reload();
+                            $('#NoticeModal .modal-body').html(html)
                         } else {
                             $(form).find('.summary-eror').text(result.message);
                         }
                         $('.btn-send-mail').prop('disabled', false);
-                        $('.main').scrollTop();
+                        $('#NoticeModal').modal('show');
                     },
 
                 });

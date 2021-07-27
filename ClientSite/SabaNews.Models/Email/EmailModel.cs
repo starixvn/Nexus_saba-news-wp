@@ -6,6 +6,7 @@ namespace SabaNews.Models.Email
     public class EmailModel
     {
         public string Id { get; set; }
+
         public string EmailTitle { get; set; }
 
         public string EmailContent { get; set; }

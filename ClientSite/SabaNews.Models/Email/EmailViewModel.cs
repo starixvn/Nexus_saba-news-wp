@@ -1,12 +1,13 @@
 ﻿namespace SabaNews.Models.Email
 {
-    using SabaNews.Core.Models;
+    using SabaNews.Models;
     using System.Collections.Generic;
 
     public class EmailViewModel
     {
         public IEnumerable<EmailModel> Emails { get; set; }
 
-        public UserSession User { get; set; }
+        public ViewData ViewData { get; set; }
+
     }
 }

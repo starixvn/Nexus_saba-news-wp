@@ -19,6 +19,7 @@
     using SabaNews.Models.Email;
     using System.Linq;
     using SabaNews.Criteria.Email;
+    using SabaNews.Models;
 
     public class ProfileController : Controller
     {
@@ -236,14 +237,7 @@
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.Page = Constants.ProfileSendMailPage;
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-            var emails = await emailService.GetEmailByUser(new GetEmailByUserCriteria{ UserId= user.Id });
-            var Model = new EmailViewModel
-            {
-                User = user,
-                Emails = emails
-            };
-            return View(Model);
+            return View();
         }
 
         [HttpPost]
@@ -259,26 +253,26 @@
             var userNumber = users.Count();
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.UtcNow;
+            model.EmailReturnLink = "";
             var result = await emailService.CreateEmailAsync(model);
-            var returnUrl = "/" + model.EmailReturnLink;
-            model.EmailReturnLink = returnUrl.Replace("//", "/");
+          
 
             if (result.IsSuccessful)
             {
                 foreach (var user in users)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
-                    var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
-                    var emailContent = model.EmailContent + "<br />" + messageReturnLink;
+                    //var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
+                    //var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
+                    //var emailContent = model.EmailContent + "<br />" + messageReturnLink;
                     
-                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, emailContent, user.Email);
+                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, model.EmailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
                         UserId = sessionService.User.Id,
                         EmailAddress = user.Email,
-                        EmailContent = emailContent,
+                        EmailContent = model.EmailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
                         SendTime = DateTime.UtcNow,
@@ -288,6 +282,34 @@
                 }
             }
             return Json(new { result, userNumber });
+        }
+
+        [Route("/Profile/ListSendMail/page/{page}")]
+        [Route("/Profile/ListSendMail/")]
+        public async Task<ActionResult> ListSendMail(int page = 1)
+        {
+            var isAuthenticated = sessionService.User != null;
+            if (!isAuthenticated)
+            {
+                return Redirect(Url.Action("Index", "Home"));
+            }
+            const int perPage = Constants.Perpage;
+            var start = (page - 1) * perPage;
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var criteria = new GetEmailByUserCriteria { UserId = user.Id, Start = start, End = Constants.Perpage };
+            var emails = await emailService.GetEmailByUserAsync(criteria);
+            var ViewData = new ViewData
+            {
+                CurrentPage = page,
+                PageSize = perPage,
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
+            };
+            var Model = new EmailViewModel
+            {
+                Emails = emails,
+                ViewData = ViewData
+            };
+            return View(Model);
         }
 
         public async Task<ActionResult> ClickedSendMailLink(string token, string returnUrl)
@@ -330,20 +352,53 @@
             return Json(new { url, filePath, error });
         }
 
-        public async Task<ActionResult> SendMailDetail(int emailId)
+        [Route("/Profile/SendMailDetail/{emailId}/page/{page}")]
+        [Route("/Profile/SendMailDetail/{emailId}")]
+        public async Task<ActionResult> SendMailDetail(int emailId, int page = 1)
         {
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
                 return Redirect(Url.Action("Index", "Home"));
             }
+            const int perPage = Constants.Perpage;
+            var start = (page - 1) * perPage;
+            var criteria = new GetEmailDetailByEmailIdCriteria
+            {
+                EmailID = emailId,
+                Start = start,
+                End = perPage
+            };
+            var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
+            var ViewData = new ViewData
+            {
+                CurrentPage = page,
+                PageSize = perPage,
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
+            };
+            var Model = new EmailDetailViewModel
+            {
+                ListEmailDetails = listEmailDetails,
+                ViewData = ViewData
+            };
 
-            var listEmailDetails = await emailService.GetEmailDetailByEmailId(new GetEmailDetailByEmailIdCriteria { EmailID = emailId });
             ViewBag.Page = Constants.ProfileSendMailPage;
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.EmailTitle = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailTitle : "";
             ViewBag.EmailContent = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailContent : "";
-            return View(listEmailDetails);
+            return View(Model);
+        }
+
+        public async Task<ActionResult> ResendEmail(int userId, int emailId)
+        {
+            var detail = await emailService.GetDetailByEmailIdUserIdAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
+            var resultSendMail = await authService.SendMailEventAsync(detail.EmailTitle, detail.EmailContent, detail.EmailAddress);
+            if (resultSendMail.Code == 0)
+            {
+                var command = await emailService.UpdateEmailDetailStatusAsync(new UpdateEmailDetailStatusCommand { Status = resultSendMail.Code, EmailId = emailId, UserId = userId });
+                return Json(command);
+            }
+            return Json(new { isSuccessful = false });
         }
 
 

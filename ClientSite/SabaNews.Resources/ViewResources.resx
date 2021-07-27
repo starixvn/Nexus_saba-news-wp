@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Thêm</value>
   </data>
+  <data name="Announcement" xml:space="preserve">
+    <value>Announcement</value>
+  </data>
   <data name="Back" xml:space="preserve">
     <value>Trở lại</value>
   </data>
@@ -169,7 +172,7 @@
     <value>Đang liên kết</value>
   </data>
   <data name="Content" xml:space="preserve">
-    <value>Nội Dung</value>
+    <value>Content</value>
   </data>
   <data name="CopyClipBoardSuccessfully" xml:space="preserve">
     <value>Copy clipboard thành công</value>
@@ -182,6 +185,12 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="EmailContent" xml:space="preserve">
+    <value>Email Content</value>
+  </data>
+  <data name="EmailTitle" xml:space="preserve">
+    <value>Email Title</value>
   </data>
   <data name="EmptyProfileTitle" xml:space="preserve">
     <value>Trang cá nhân của trên SABA Sports</value>
@@ -197,6 +206,9 @@
   </data>
   <data name="Facebook" xml:space="preserve">
     <value>Facebook</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
   </data>
   <data name="Female" xml:space="preserve">
     <value>Nữ</value>
@@ -246,11 +258,14 @@
   <data name="InputNewPassword" xml:space="preserve">
     <value>Nhập mật khẩu mới</value>
   </data>
+  <data name="IsClicked" xml:space="preserve">
+    <value>IsClicked</value>
+  </data>
   <data name="LinkReturn" xml:space="preserve">
     <value>Đường dẫn</value>
   </data>
   <data name="ListEmailSent" xml:space="preserve">
-    <value>Danh sách email đã gửi</value>
+    <value>List Sent Email</value>
   </data>
   <data name="LoadingAvatar" xml:space="preserve">
     <value>Đang tải ảnh đại diện</value>
@@ -295,10 +310,10 @@
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
   </data>
   <data name="NumberClicked" xml:space="preserve">
-    <value>Số lượng tương tác</value>
+    <value>Click Number/ Rate</value>
   </data>
   <data name="NumberSent" xml:space="preserve">
-    <value>Số lượng gửi</value>
+    <value>Number Of Sending</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
@@ -379,7 +394,7 @@
     <value>Gửi Mail</value>
   </data>
   <data name="SendDate" xml:space="preserve">
-    <value>Ngày gửi</value>
+    <value>Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Gửi Email</value>
@@ -396,8 +411,14 @@
   <data name="Stadium" xml:space="preserve">
     <value>Sân vận động</value>
   </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="STT" xml:space="preserve">
-    <value>STT</value>
+    <value>#</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="Team" xml:space="preserve">
     <value>Đội tuyển</value>
@@ -406,7 +427,7 @@
     <value>Quần vợt</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Tiêu đề</value>
+    <value>Title</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>Hôm nay</value>

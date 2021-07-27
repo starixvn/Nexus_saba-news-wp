@@ -11,6 +11,12 @@ namespace SabaNews.Criteria.Email
     {
         public int EmailID { get; set; }
 
+        public int Start { get; set; }
+
+        public int End { get; set; }
+
+        public int TotalItems { get; set; }
+
         public override string GetSettingKey() => "email_detail_get_by_emailId";
 
         public override bool IsValid() => true;

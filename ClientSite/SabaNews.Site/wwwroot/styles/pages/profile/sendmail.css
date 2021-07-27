@@ -95,20 +95,57 @@ p.has-text-align-center {
 }*/
 .footer {
   background-color: #081224;
-  border-top: 4px solid #EB5342;
-  padding: 1.2rem 0;
-  margin-top: auto; }
+  border-top: 4px solid #F12F19;
+  padding: 3.6rem 0;
+  position: relative; }
   @media screen and (max-width: 1024px) {
     .footer {
-      padding: .6rem 0; } }
-  .footer .copy-right {
-    font-size: 1.6rem;
-    color: #a6a6a6;
-    text-align: center;
-    line-height: 2.4rem; }
+      padding: .8rem 0; } }
+  .footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
     @media screen and (max-width: 1024px) {
-      .footer .copy-right {
+      .footer .container {
+        flex-direction: column-reverse; } }
+  .footer .copy-right, .footer .follow {
+    font-size: 1.6rem;
+    color: #fff; }
+    @media screen and (max-width: 1024px) {
+      .footer .copy-right, .footer .follow {
         font-size: 1.2rem; } }
+  .footer .copy-right {
+    display: flex;
+    align-items: center; }
+    @media (max-device-width: 767px) {
+      .footer .copy-right {
+        border-top: 1px solid #1B263A;
+        padding-top: .8rem;
+        width: 100%;
+        justify-content: space-between; } }
+  .footer .follow {
+    display: flex;
+    align-items: center; }
+    @media (max-device-width: 767px) {
+      .footer .follow {
+        padding-bottom: .8rem; } }
+    .footer .follow [class*="icon-"] {
+      font-size: 2.4rem;
+      margin-right: 1.6rem;
+      cursor: pointer;
+      text-decoration: none; }
+      .footer .follow [class*="icon-"]:before {
+        color: #fff; }
+    .footer .follow .icon-social-facebook {
+      margin-left: 1.6rem; }
+  .footer .ex {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    left: 3px; }
+    @media (max-device-width: 767px) {
+      .footer .ex {
+        left: 0; } }
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
@@ -904,7 +941,8 @@ button {
       height: 4.6rem;
       width: 4.6rem; } }
   .btn-play-video span {
-    font-size: 4.6rem; }
+    font-size: 4.6rem;
+    color: #fff; }
     @media screen and (max-width: 1024px) {
       .btn-play-video span {
         font-size: 2rem; } }
@@ -985,7 +1023,8 @@ button {
     text-decoration: none;
     color: #333;
     transition: color .3s ease;
-    display: block; }
+    /*display: block;*/
+    display: initial; }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
   .card-horizontal__content .datetime {
@@ -1045,7 +1084,8 @@ button {
     letter-spacing: -0.02rem;
     text-decoration: none;
     transition: color .3s ease;
-    display: block;
+    /*display: block;*/
+    display: initial;
     line-height: 2rem; }
     .card-vertical__title:hover {
       color: #EB5342; }
@@ -1799,7 +1839,7 @@ tr:nth-child(even) {
   max-height: calc(100vh - 200px);
   overflow-y: auto; }
 
-.modal .close-login {
+.modal .close-login, .modal .close {
   position: absolute;
   top: 0.4rem;
   right: 0.4rem;

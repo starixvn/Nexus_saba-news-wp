@@ -7,7 +7,7 @@
 }
 
 @section Scripts{
-	<script src="~/js/profile/sendmail.js" asp-append-version="true"></script>
+	<script src="~/js/profile/email.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("Menu"))
@@ -19,7 +19,7 @@
 		<div class="block block-email">
 			<div class="controls">
 				<div class="constrols_list_sendmail line">
-					@if (Model.Count == 0)
+					@if (Model.ListEmailDetails.Count == 0)
 					{
 						<h1>Không có email nào được gửi đi </h1>
 					}
@@ -29,25 +29,82 @@
 						<p><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">Xem nội dung</a></p>
 						<table>
 							<tr>
-								<th>STT</th>
-								<th>Email được gửi</th>
-								<th>Ngày gửi</th>
-								<th>Tương tác</th>
-								<th>Trạng thái</th>
+								<th>@ViewResources.STT</th>
+								<th>@ViewResources.Email</th>
+								<th>@ViewResources.SendDate</th>
+								<th>@ViewResources.IsClicked</th>
+								<th>@ViewResources.Status</th>
 							</tr>
 							@{ var stt = 0; }
-							@foreach (var detail in Model)
+							@foreach (var detail in Model.ListEmailDetails)
 							{
 								stt++;
 								<tr>
 									<td>@stt</td>
 									<td>@detail.EmailAddress</td>
 									<td>@detail.SendMailTime</td>
-									<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Đã tương tác</b>" : "Chưa tương tác")</td>
-									<td>@(detail.Status == 0 ? "Gửi thành công" : "Gửi thất bại") </td>
+									<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
+									<td>
+										@if (detail.Status == 0)
+										{
+											<p>@ViewResources.Success</p>
+										}
+										else
+										{
+											<p>@ViewResources.Failed <span><a href="javascript:;" class="resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">Resend</a></span></p>
+
+										}
+									</td>
 								</tr>
 							}
 						</table>
+
+						int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
+						int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
+						var linkLast = Url.Action("SendMailDetail", "Profile", new { page = Model.ViewData.TotalPages });
+						var linkFirst = Url.Action("SendMailDetail", "Profile", new { page = 1 });
+						var linkNext = Url.Action("SendMailDetail", "Profile", new { page = CurrentPage + 1 });
+						var linkPrev = Url.Action("SendMailDetail", "Profile", new { page = CurrentPage - 1 });
+
+						linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
+						linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
+
+						@if (TotalPages > 1)
+						{
+							<div class="pagination">
+								<a href="@linkFirst" class="icon-pagination icon-page-first"></a>
+								<a href="@linkPrev" class="icon-pagination icon-chevron-left"></a>
+								<ul class="main-pagination">
+									@{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
+										front = (CurrentPage - 1 == 3) ? 3 : front;
+										var back = (TotalPages - CurrentPage > 2) ? 2 : TotalPages - CurrentPage;
+										back = (TotalPages - CurrentPage == 3) ? 3 : back;
+
+										if (CurrentPage - 4 >= 1)
+										{
+											<li class="items-pagination"><a href="@linkFirst" class="item">1</a></li>
+											<li class="items-pagination"><a class="item">...</a></li>
+										}
+
+										for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
+										{
+											var link = Url.Action("SendMailDetail", "Profile", new { page = i });
+
+											var active = i == CurrentPage ? "active" : "";
+											<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
+										}
+
+										if (CurrentPage + 4 <= TotalPages)
+										{
+											<li class="items-pagination"><a class="item">...</a></li>
+											<li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+										}
+									}
+								</ul>
+								<a href="@linkNext" class="icon-pagination icon-chevron-right"></a>
+								<a href="@linkLast" class="icon-pagination icon-page-last"></a>
+							</div>
+						}
 
 						<div class="modal" id="ViewEmailContent" style="display:none">
 							<div class="modal-content">
@@ -61,6 +118,23 @@
 
 									<div class="modal-body ck-content">
 										@Html.Raw(ViewBag.EmailContent)
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal" id="NoticeModal" style="display:none">
+							<div class="modal-content">
+								<div class="modal-warning">
+									<div class="modal-title">
+										<h2 class="title">@ViewResources.Announcement</h2>
+										<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+
+									<div class="modal-body">
+										
 									</div>
 								</div>
 							</div>
