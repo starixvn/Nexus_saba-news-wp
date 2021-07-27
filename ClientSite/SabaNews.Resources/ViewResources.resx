@@ -267,6 +267,12 @@
   <data name="ListEmailSent" xml:space="preserve">
     <value>List Sent Email</value>
   </data>
+  <data name="ListSentEmailDetail" xml:space="preserve">
+    <value>List sent email detail</value>
+  </data>
+  <data name="ListSentMail" xml:space="preserve">
+    <value>List sent email</value>
+  </data>
   <data name="LoadingAvatar" xml:space="preserve">
     <value>Đang tải ảnh đại diện</value>
   </data>

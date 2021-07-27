@@ -309,6 +309,7 @@
                 Emails = emails,
                 ViewData = ViewData
             };
+            ViewBag.Page = Constants.ProfileListSendMailPage;
             return View(Model);
         }
 

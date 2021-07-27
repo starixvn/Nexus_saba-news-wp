@@ -141,5 +141,6 @@
         public const string ProfileIndexPage = "Index";
         public const string ProfileListPostsPage = "ListSavedPosts";
         public const string ProfileSendMailPage = "SendMail";
+        public const string ProfileListSendMailPage = "ListSendMail";
     }
 }

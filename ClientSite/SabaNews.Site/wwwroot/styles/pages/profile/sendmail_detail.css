@@ -1816,3 +1816,49 @@ tr:nth-child(even) {
 
 .return_link {
   display: none; }
+
+.detail_header {
+  padding-bottom: 2rem; }
+
+.detail_title {
+  float: left; }
+
+.detail_content {
+  float: right; }
+
+.label {
+  text-decoration: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  padding: 0.12em 0.4em 0.14em;
+  margin: 0 0.42em;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  display: inline;
+  white-space: nowrap;
+  vertical-align: baseline;
+  position: relative;
+  top: -0.15em;
+  background-color: #999999; }
+
+.label.color-blue {
+  background-color: #6f9ad1; }
+
+.label.color-red {
+  background-color: #d37c7c; }
+
+.label.color-green {
+  background-color: #9bc268; }
+
+.label.color-orange {
+  background-color: #dea154; }
+
+.label.color-yellow {
+  background-color: #e9d641; }
+
+.label.color-purple {
+  background-color: #9f83d1; }

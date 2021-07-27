@@ -25,8 +25,12 @@
 					}
 					else
 					{
-						<h1>Danh sách email đã gửi với tiêu đề: @ViewBag.EmailTitle </h1>
-						<p><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">Xem nội dung</a></p>
+						<h2 class="block__title"><a>@ViewResources.ListSentEmailDetail</a> </h2>
+						<div class="detail_header">
+							<h3 class="detail_title">Title: @ViewBag.EmailTitle</h3>
+							<p class="detail_content"><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">View content</a></p>
+						</div>
+						
 						<table>
 							<tr>
 								<th>@ViewResources.STT</th>
@@ -51,7 +55,7 @@
 										}
 										else
 										{
-											<p>@ViewResources.Failed <span><a href="javascript:;" class="resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">Resend</a></span></p>
+											<p>@ViewResources.Failed <span><a href="javascript:;" class="label color-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">Resend</a></span></p>
 
 										}
 									</td>
@@ -134,7 +138,7 @@
 									</div>
 
 									<div class="modal-body">
-										
+
 									</div>
 								</div>
 							</div>

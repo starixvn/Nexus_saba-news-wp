@@ -511,6 +511,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List sent email detail.
+        /// </summary>
+        public static string ListSentEmailDetail {
+            get {
+                return ResourceManager.GetString("ListSentEmailDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List sent email.
+        /// </summary>
+        public static string ListSentMail {
+            get {
+                return ResourceManager.GetString("ListSentMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đang tải ảnh đại diện.
         /// </summary>
         public static string LoadingAvatar {
