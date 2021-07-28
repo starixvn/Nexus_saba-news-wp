@@ -38,6 +38,7 @@ var sendmailevent = (function ($) {
             if (!isValid) return false;
             var data = $(form).serialize();
             data += "&emailEmbeddedLink=" + $('#returnUrl').val();
+            console.log(data);
             $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: 'SaveDataAndSendEmail',
@@ -64,10 +65,9 @@ var sendmailevent = (function ($) {
         $('input[name=emailReturnLink]').on('keyup', function () {
             if ($(this).val().trim() !== "") {
                 $('.raw_link').show()
-                var value = "/" + $(this).val();
+                var value = $(this).val();
                 var baseUrl = $('#baseUrl').val();
-                value = value.replace("//", "/");
-                var rawLink = baseUrl + '?returnUrl=' + value;
+                var rawLink = baseUrl + '&returnUrl=' + value;
                 $('#returnUrl').val(rawLink);
                 $('.raw_link span').html(rawLink);
             } else {

@@ -20,6 +20,7 @@
     using System.Linq;
     using SabaNews.Criteria.Email;
     using SabaNews.Models;
+    using System.Web;
 
     public class ProfileController : Controller
     {
@@ -237,7 +238,7 @@
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.Page = Constants.ProfileSendMailPage;
-            string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/Profile/VerifySendMailLink";
+            string baseUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/Profile/VerifySendMailLink?{token}");
             ViewBag.BaseUrl = baseUrl;
             return View();
         }
@@ -256,20 +257,21 @@
             var userNumber = subScribedUsers.Count();
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.UtcNow;
-            var returnUrl = "/" + model.EmailReturnLink;
-            model.EmailReturnLink = returnUrl.Replace("//", "/");
+            model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
+
+
             var result = await emailService.CreateEmailAsync(model);
-          
+            
 
             if (result.IsSuccessful)
             {
                 foreach (var user in subScribedUsers)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var returnLink = Url.Action("VerifySendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
+                    var tokenParam = "token=" + token;
                     var UnsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id }, Request.Scheme);
                     var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", UnsubcribeLink);
-                    var emailContent = model.EmailContent.Replace(model.EmailEmbeddedLink, returnLink) + messageReturnLink;
+                    var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
                     
                     var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, model.EmailContent, user.Email);
                     var detailModel = new EmailDetailModel
