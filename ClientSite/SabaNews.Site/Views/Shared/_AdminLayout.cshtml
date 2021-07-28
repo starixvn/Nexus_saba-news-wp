@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="~/images/favicon/manifest.json">
-    <link rel="stylesheet" href="~/minify/styles/site.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/admin.min.css" asp-append-version="true">
 
     @RenderSection("Styles", false)
 </head>
@@ -22,17 +22,7 @@
             @RenderBody()
         </main>
     </div>
-    <section class="footer">
-        <div class="copy-right">
-            <span>SABA Sports Admin</span>
-        </div>
 
-        <div class="back-to-top-box">
-            <div class="back-to-top"><span class="icon-chevron-right"></span></div>
-        </div>
-    </section>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", false)
 </body>
 </html>

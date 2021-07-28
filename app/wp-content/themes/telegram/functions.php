@@ -276,3 +276,17 @@ function my_forcelogin_hide_backtoblog() {
   echo '<style type="text/css">#backtoblog{display:none;}</style>';
 }
 add_action( 'login_enqueue_scripts', 'my_forcelogin_hide_backtoblog' );
+
+function add_posts_views_column($columns) {
+	$columns['post_views'] = 'Views';
+	return $columns;
+}
+
+function render_post_view_column_value($column) {
+	if ($column === 'post_views') {
+		echo get_post_meta( get_the_ID(), 'trx_addons_post_views_count', true);
+	}
+}
+
+add_filter('manage_posts_columns', 'add_posts_views_column' );
+add_action('manage_posts_custom_column', 'render_post_view_column_value');
