@@ -21,6 +21,7 @@
         <None Remove="App_Data\SpNames.PROD.xml" />
         <None Remove="App_Data\SpNames.UAT.xml" />
         <None Remove="App_Data\SpNames.xml" />
+        <None Remove="Views\Profile\ViewContent.html" />
     </ItemGroup>
 
     <ItemGroup>
@@ -59,6 +60,7 @@
         <Content Include="EmailTemplates\ResetPassword.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="Views\Profile\ViewContent.html" />
     </ItemGroup>
 
     <ItemGroup>

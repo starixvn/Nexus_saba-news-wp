@@ -6,34 +6,47 @@ var sendmailevent = (function ($) {
         var form = 'form#form-sendmail';
 
         function ValidateForm() {
-            var error = "";
             var isValid = true;
             if (editorValue.getData().trim() === "") {
-                error += "<li>Email Content is required</li>"
+                $('.email_content .help-block').append('Email Content is required');
                 isValid = false;
             }
             if ($('input[name="emailTitle"]').val() === "") {
-                error += "<li>Email Title is required</li>";
+                $('input[name="emailTitle"]').addClass('has-error');
+                $('.email_title .help-block').append('Email Title is required');
                 isValid = false;
             }
-            $('.summary-eror').html(error);
+            if ($('input[name="emailReturnLink"]').val() === "") {
+                $('input[name="emailReturnLink"]').addClass('has-error');
+                $('.email_link .help-block').append('Return Link is required');
+                isValid = false;
+            }
+           // $('.summary-eror').html(error);
             return isValid;
         }
+
+        $('input[name="emailTitle"], input[name="emailReturnLink"]').on('keyup', function () {
+            $(this).parent().find('.help-block').html('');
+            $(this).removeClass('has-error');
+            $('.email_content .help-block').html('');
+        });
 
         $(form).on('submit', function (e) {
             e.preventDefault();
            
             var isValid = ValidateForm();
             if (!isValid) return false;
+            var data = $(form).serialize();
+            data += "&emailEmbeddedLink=" + $('#returnUrl').val();
             $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: 'SaveDataAndSendEmail',
                     type: "POST",
-                    data: $(form).serialize(),
+                    data: data,
                     success: function (res) {
                         result = res.result;
                         if (result.isSuccessful) {
-                            var html = '<p>Send Email Successfully. There are ' + res.userNumber + ' email has been sent<p>';
+                            var html = '<p>Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>';
                             $(form).trigger('reset');
                             editorValue.setData('');
                             $('#NoticeModal .modal-body').html(html)
@@ -42,10 +55,29 @@ var sendmailevent = (function ($) {
                         }
                         $('.btn-send-mail').prop('disabled', false);
                         $('#NoticeModal').modal('show');
+                        $('.raw_link').hide();
                     },
 
                 });
         });
+
+        $('input[name=emailReturnLink]').on('keyup', function () {
+            if ($(this).val().trim() !== "") {
+                $('.raw_link').show()
+                var value = "/" + $(this).val();
+                var baseUrl = $('#baseUrl').val();
+                value = value.replace("//", "/");
+                var rawLink = baseUrl + '?returnUrl=' + value;
+                $('#returnUrl').val(rawLink);
+                $('.raw_link span').html(rawLink);
+            } else {
+                $('.raw_link').hide()
+            }
+        });
+
+        $('#NoticeModal').on('hidden.bs.modal', function () {
+            location.reload();
+        })
     }
 
     function HanldeEmailList() {

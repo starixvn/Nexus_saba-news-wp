@@ -34,9 +34,10 @@
 						{
 							stt++;
 							var rate = (email.TotalClicked > 0 ? Math.Round((double)email.TotalClicked / email.TotalSent * 100, 2) : 0) + "%";
+							var title = email.EmailTitle.Length > 50 ? email.EmailTitle.Substring(0, 50) + "..." : email.EmailTitle;
 							<tr>
 								<td>@stt</td>
-								<td>@email.EmailTitle</td>
+								<td>@title</td>
 								<td>@email.SendMailTime</td>
 								<td>
 									@if (email.TotalSent > 0)

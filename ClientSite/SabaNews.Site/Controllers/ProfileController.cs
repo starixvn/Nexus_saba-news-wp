@@ -237,6 +237,8 @@
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.Page = Constants.ProfileSendMailPage;
+            string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/Profile/VerifySendMailLink";
+            ViewBag.BaseUrl = baseUrl;
             return View();
         }
 
@@ -250,29 +252,32 @@
                 return Json(new { result = error });
             }
             var users = await profileService.GetAllUserAsync();
-            var userNumber = users.Count();
+            var subScribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
+            var userNumber = subScribedUsers.Count();
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.UtcNow;
-            model.EmailReturnLink = "";
+            var returnUrl = "/" + model.EmailReturnLink;
+            model.EmailReturnLink = returnUrl.Replace("//", "/");
             var result = await emailService.CreateEmailAsync(model);
           
 
             if (result.IsSuccessful)
             {
-                foreach (var user in users)
+                foreach (var user in subScribedUsers)
                 {
                     var token = Guid.NewGuid().ToString();
-                    //var returnLink = Url.Action("ClickedSendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
-                    //var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> để xem chi tiết  <br />Cảm ơn.<br /> Saba Sports </div>", returnLink);
-                    //var emailContent = model.EmailContent + "<br />" + messageReturnLink;
+                    var returnLink = Url.Action("VerifySendMailLink", "Profile", new { token, returnUrl = model.EmailReturnLink }, Request.Scheme);
+                    var UnsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id }, Request.Scheme);
+                    var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", UnsubcribeLink);
+                    var emailContent = model.EmailContent.Replace(model.EmailEmbeddedLink, returnLink) + messageReturnLink;
                     
                     var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, model.EmailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
-                        UserId = sessionService.User.Id,
+                        UserId = user.Id,
                         EmailAddress = user.Email,
-                        EmailContent = model.EmailContent,
+                        EmailContent = emailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
                         SendTime = DateTime.UtcNow,
@@ -313,8 +318,12 @@
             return View(Model);
         }
 
-        public async Task<ActionResult> ClickedSendMailLink(string token, string returnUrl)
+        public async Task<ActionResult> VerifySendMailLink(string returnUrl, string token = "" )
         {
+            if (token == "")
+            {
+                return Redirect(returnUrl);
+            }
             var command = new VerifyTokenEmailDetailCommand
             {
                 TokenId = token
@@ -371,6 +380,7 @@
                 End = perPage
             };
             var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
+            var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             var ViewData = new ViewData
             {
                 CurrentPage = page,
@@ -385,8 +395,8 @@
 
             ViewBag.Page = Constants.ProfileSendMailPage;
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
-            ViewBag.EmailTitle = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailTitle : "";
-            ViewBag.EmailContent = listEmailDetails.Any() ? listEmailDetails.FirstOrDefault().EmailContent : "";
+            ViewBag.EmailTitle = email.EmailTitle;
+            ViewBag.EmailContent = email.EmailContent;
             return View(Model);
         }
 
@@ -400,6 +410,12 @@
                 return Json(command);
             }
             return Json(new { isSuccessful = false });
+        }
+
+        public async Task<ActionResult> Unsubscribe(int UserId)
+        {
+            var command = await profileService.UnSubcriteUserAsync(UserId);
+            return View();
         }
 
 

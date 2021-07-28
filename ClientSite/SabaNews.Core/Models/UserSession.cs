@@ -35,6 +35,8 @@
 
         public bool ErrorConnectWrongEmail { get; set; }
 
+        public int IsSubcribe { get; set; } = 1;
+
         private List<SavePost> ListSavedPosts { get; set; }
 
         public List<SavePost> HandleSavePosts

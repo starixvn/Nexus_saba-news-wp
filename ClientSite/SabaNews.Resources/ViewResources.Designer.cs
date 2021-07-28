@@ -493,15 +493,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Đường dẫn.
-        /// </summary>
-        public static string LinkReturn {
-            get {
-                return ResourceManager.GetString("LinkReturn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to List Sent Email.
         /// </summary>
         public static string ListEmailSent {
@@ -844,6 +835,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return Link.
+        /// </summary>
+        public static string ReturnLink {
+            get {
+                return ResourceManager.GetString("ReturnLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SABA Sports cam kết bảo mật thông tin này.
         /// </summary>
         public static string SabasportsCommitmentSecureInfo {
@@ -1038,6 +1038,15 @@ namespace SabaNews.Resources {
         public static string Transfer {
             get {
                 return ResourceManager.GetString("Transfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsubscribe thành công.
+        /// </summary>
+        public static string UnsubscribeSuccessfully {
+            get {
+                return ResourceManager.GetString("UnsubscribeSuccessfully", resourceCulture);
             }
         }
         

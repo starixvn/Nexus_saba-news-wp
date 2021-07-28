@@ -21,5 +21,7 @@
         Task<CommandResult> UpdateEmailDetailStatusAsync(UpdateEmailDetailStatusCommand command);
 
         Task<EmailDetailModel> GetDetailByEmailIdUserIdAsync(GetDetailEmailDetailCriteria criteria);
+
+        Task<EmailModel> GetEmailByIdAsync(GetEmailByIdCriteria criteria);
     }
 }

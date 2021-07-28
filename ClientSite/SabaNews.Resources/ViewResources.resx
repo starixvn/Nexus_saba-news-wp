@@ -261,9 +261,6 @@
   <data name="IsClicked" xml:space="preserve">
     <value>IsClicked</value>
   </data>
-  <data name="LinkReturn" xml:space="preserve">
-    <value>Đường dẫn</value>
-  </data>
   <data name="ListEmailSent" xml:space="preserve">
     <value>List Sent Email</value>
   </data>
@@ -378,6 +375,9 @@
   <data name="ResetPassword" xml:space="preserve">
     <value>Lấy lại mật khẩu</value>
   </data>
+  <data name="ReturnLink" xml:space="preserve">
+    <value>Return Link</value>
+  </data>
   <data name="SabasportsCommitmentSecureInfo" xml:space="preserve">
     <value>SABA Sports cam kết bảo mật thông tin này</value>
   </data>
@@ -443,6 +443,9 @@
   </data>
   <data name="Transfer" xml:space="preserve">
     <value>Thị trường chuyển nhượng</value>
+  </data>
+  <data name="UnsubscribeSuccessfully" xml:space="preserve">
+    <value>Unsubscribe thành công</value>
   </data>
   <data name="ValidateGender" xml:space="preserve">
     <value>Vui lòng chọn giới tính</value>

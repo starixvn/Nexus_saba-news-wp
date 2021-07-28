@@ -22,7 +22,7 @@
             {
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
-                EmailEmbeddedLink = model.EmailReturnLink,
+                EmailEmbeddedLink = model.EmailEmbeddedLink,
                 SendDate = model.SendDate,
                 CreatedBy = model.CreatedBy
             };
@@ -70,6 +70,11 @@
         public async Task<EmailDetailModel> GetDetailByEmailIdUserIdAsync(GetDetailEmailDetailCriteria criteria)
         {
             return await baseService.GetDataEntityAsync<EmailDetailModel>(criteria);
+        }
+
+        public async Task<EmailModel> GetEmailByIdAsync(GetEmailByIdCriteria criteria)
+        {
+            return await baseService.GetDataEntityAsync<EmailModel>(criteria);
         }
     }
 }

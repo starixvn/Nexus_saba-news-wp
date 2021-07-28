@@ -25,14 +25,25 @@
 					<div class="sendmail">
 						<div class="group-tab">
 							<form id="form-sendmail">
+								<input type="hidden" name="baseUrl" id="baseUrl" value="@ViewBag.BaseUrl" />
+								<input type="hidden" name="baseUrl" id="returnUrl" value="" />
 								<ul class="error summary-eror"></ul>
-								<div class="form-modal">
+								<div class="form-group  email_title">
 									<label>@ViewResources.EmailTitle</label>
 									<input type="text" class="input-form" placeholder="" name="emailTitle" />
+									<p class="help-block"></p>
 								</div>
-								<div class="form-modal">
+								
+								<div class="form-group email_link">
+									<label>@ViewResources.ReturnLink</label>
+									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
+									<p class="raw_link" style="display: none">Raw link: <span></span></p>
+									<p class="help-block"></p>
+								</div>
+								<div class="form-group email_content">
 									<label>@ViewResources.EmailContent</label>
 									<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
+									<p class="help-block"></p>
 								</div>
 								<button type="submit" class="btn-send-mail">Send</button>
 							</form>

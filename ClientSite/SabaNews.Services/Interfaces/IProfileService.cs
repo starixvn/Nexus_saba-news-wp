@@ -15,5 +15,8 @@
         Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType);
 
         Task<IEnumerable<UserSession>> GetAllUserAsync();
+
+        Task<CommandResult> UnSubcriteUserAsync(int UserId);
     }
+
 }

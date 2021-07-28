@@ -21,9 +21,10 @@ var email = (function ($) {
             })
         });
 
-        $('.close-announcement').on('click', function () {
+        $('#NoticeModal').on('hidden.bs.modal', function () {
             location.reload();
-        });
+        })
+       
     }
 
     function HanldeEmailList() {

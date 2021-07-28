@@ -53,6 +53,15 @@
             return await baseService.GetDataAsync<UserSession>(new GetAllUserCriteria());
         }
 
+        public async Task<CommandResult> UnSubcriteUserAsync(int UserId)
+        {
+            var command = new UserUnsubribeCommand
+            {
+                UserId = UserId
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
         public async Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType)
         {
             var command = new SocialDisconnectTypeCommand
