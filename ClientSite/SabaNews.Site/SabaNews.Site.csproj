@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <_ContentIncludedByDefault Remove="wwwroot\styles\pages\admin\admin.css" />
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\Euro2020\detail.css" />
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\Euro2020\video.css" />
         <_ContentIncludedByDefault Remove="wwwroot\styles\pages\maintenance.css" />

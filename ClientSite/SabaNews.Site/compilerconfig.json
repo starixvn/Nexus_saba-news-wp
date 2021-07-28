@@ -68,8 +68,8 @@
     "inputFile": "wwwroot/styles/pages/Euro2020/detail.scss"
   },
   {
-    "outputFile": "wwwroot/styles/pages/profile/profile.css",
-    "inputFile": "wwwroot/styles/pages/profile/profile.scss"
+    "outputFile": "wwwroot/styles/pages/admin/admin.css",
+    "inputFile": "wwwroot/styles/pages/admin/admin.scss"
   },
   {
     "outputFile": "wwwroot/styles/pages/profile/sendmail.css",
