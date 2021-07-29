@@ -1,0 +1,7 @@
+﻿namespace SabaNews.Core.Constants
+{
+    public static class Role
+    {
+        public const string Administrator = "administrator";
+    }
+}
