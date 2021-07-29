@@ -21,20 +21,18 @@ namespace SabaNews.Site.Controllers
     {
         private readonly IProfileService profileService;
         private readonly ISessionService sessionService;
-        private readonly IAuthService authService;
         private readonly IPathService pathService;
         private readonly IEmailService emailService;
+        private const string SendMailTemplates = "EmailTemplates//SendMailEvent.txt";
 
         public EmailController(
             IProfileService profileService,
             ISessionService sessionService,
-            IAuthService authService,
             IPathService pathService,
             IEmailService emailService)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
-            this.authService = authService;
             this.pathService = pathService;
             this.emailService = emailService;
         }
@@ -111,11 +109,11 @@ namespace SabaNews.Site.Controllers
                 {
                     var token = Guid.NewGuid().ToString();
                     var tokenParam = "token=" + token;
-                    var unsubcribeLink = Url.Action("Unsubscribe", "SendEmail", new { UserId = user.Id }, Request.Scheme);
+                    var unsubcribeLink = Url.Action("Unsubscribe", "Email", new { UserId = user.Id }, Request.Scheme);
                     var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", unsubcribeLink);
                     var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
 
-                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, emailContent, user.Email);
+                    var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
@@ -223,7 +221,7 @@ namespace SabaNews.Site.Controllers
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
         {
             var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
-            var resultSendMail = await authService.SendMailEventAsync(email.EmailTitle, email.EmailContent, email.EmailAddress);
+            var resultSendMail = await emailService.SendMailWithTemplateAsync(email.EmailTitle, email.EmailContent, email.EmailAddress, SendMailTemplates);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, EmailId = emailId, UserId = userId });
             return Json(resultSendMail);
         }

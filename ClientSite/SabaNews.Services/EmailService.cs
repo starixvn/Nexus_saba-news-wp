@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services
 {
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
@@ -10,10 +11,18 @@
     public class EmailService : IEmailService
     {
         private readonly IBaseService baseService;
+        private readonly IBaseMailService baseMailService;
+        private readonly IPathService pathService;
 
-        public EmailService(IBaseService baseService)
+        public EmailService(
+            IBaseService baseService,
+            IBaseMailService baseMailService,
+            IPathService pathService)
         {
             this.baseService = baseService;
+            this.baseMailService = baseMailService;
+            this.pathService = pathService;
+
         }
 
         public async Task<CommandResult> CreateEmailAsync(EmailModel model)
@@ -75,6 +84,25 @@
         public async Task<EmailModel> GetEmailByIdAsync(GetEmailByIdCriteria criteria)
         {
             return await baseService.GetDataEntityAsync<EmailModel>(criteria);
+        }
+
+        public async Task<CommandResult> SendMailWithTemplateAsync(string subject, string content, string email, string path)
+        {
+            var mailPath = pathService.MapPathContentRoot(path);
+            var rawBody = baseMailService.ReadTextFile(mailPath);
+            var body = rawBody.Replace("{0}", content);
+            return await SendMailAsync(subject, body, email);
+        }
+
+        public async Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail)
+        {
+            var email = new MailModel
+            {
+                Subject = subject,
+                Body = body,
+                ReceiverEmail = receiverEmail
+            };
+            return await baseMailService.SendMailAsync(email);
         }
     }
 }
