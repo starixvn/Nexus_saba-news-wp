@@ -62,7 +62,7 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> UpdateEmailDetailStatusAsync(UpdateEmailDetailStatusCommand command)
+        public async Task<CommandResult> UpdateEmailStatusAsync(UpdateEmailStatusCommand command)
         {
             return await baseService.ExecuteNonQueryAsync(command);
         }

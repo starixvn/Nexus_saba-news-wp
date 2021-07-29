@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SabaNews.Criteria.Email
 {
-    public class UpdateEmailDetailStatusCommand : BaseNonQueryCommand
+    public class UpdateEmailStatusCommand : BaseNonQueryCommand
     {
         public int EmailId { get; set; }
 
