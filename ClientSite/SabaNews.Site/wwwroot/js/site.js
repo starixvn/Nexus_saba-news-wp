@@ -37,7 +37,7 @@
                 var postId = $btn.attr("post-id");
                 if (postId) {
                     $.ajax({
-                        url: "api/post/view-video",
+                        url: "/api/post/view-video",
                         method: "POST",
                         data: {
                             postId
