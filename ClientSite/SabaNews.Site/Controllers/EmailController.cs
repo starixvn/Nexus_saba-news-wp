@@ -115,7 +115,7 @@ namespace SabaNews.Site.Controllers
                     var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", unsubcribeLink);
                     var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
 
-                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, model.EmailContent, user.Email);
+                    var resultSendMail = await authService.SendMailEventAsync(model.EmailTitle, emailContent, user.Email);
                     var detailModel = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
@@ -189,7 +189,7 @@ namespace SabaNews.Site.Controllers
                 Email = email
             };
 
-            ViewBag.Page = Constants.ProfileSendMailPage;
+            ViewBag.Page = Constants.ProfileListSendMailPage;
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             return View(Model);
         }
