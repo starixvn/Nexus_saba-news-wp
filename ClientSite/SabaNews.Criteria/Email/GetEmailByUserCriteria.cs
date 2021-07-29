@@ -6,6 +6,8 @@
     {
         public int UserId { get; set; }
 
+        public string Search { get; set; } = "";
+
         public int Start { get; set; }
 
         public int End { get; set; }

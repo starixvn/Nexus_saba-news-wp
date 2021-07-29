@@ -7,7 +7,7 @@ var email = (function ($) {
             var userId = $(this).data('userid');
 
             $.ajax({
-                url: "/Profile/ResendEmail",
+                url: "/SendEmail/ResendEmail",
                 type: "POST",
                 data: { emailId, userId },
                 success: function (response) {

@@ -20,21 +20,21 @@
         "outputFileName": "wwwroot/minify/styles/profile.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages//profile/profile.css"
+            "wwwroot/styles/pages/profile/profile.css"
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/profile_sendmail.min.css",
+        "outputFileName": "wwwroot/minify/styles/sendemail.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages//profile/sendmail.css"
+            "wwwroot/styles/pages/sendemail/index.css"
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/profile_sendmail_detail.min.css",
+        "outputFileName": "wwwroot/minify/styles/sendemail_view.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages//profile/sendmail_detail.css"
+            "wwwroot/styles/pages/sendemail/view.css"
         ]
     },
     {
@@ -193,9 +193,20 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/sendmail.min.js",
+        "outputFileName": "wwwroot/minify/js/sendemail.min.js",
         "inputFiles": [
-            "wwwroot/js/profile/sendmail.js"
+            "wwwroot/js/sendemail/index.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/sendemail_view.min.js",
+        "inputFiles": [
+            "wwwroot/js/sendemail/view.js"
         ],
         "minify": {
             "enabled": true,

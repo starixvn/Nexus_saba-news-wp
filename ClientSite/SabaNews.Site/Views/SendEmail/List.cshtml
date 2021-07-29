@@ -3,11 +3,11 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/profile_sendmail_detail.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/sendemail_view.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-	<script src="~/js/profile/email.js" asp-append-version="true"></script>
+	<script src="~/js/sendemail/view.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("Menu"))
@@ -42,7 +42,7 @@
 								<td>
 									@if (email.TotalSent > 0)
 									{
-										<a href="@Url.Action("SendMailDetail", "Profile", new { emailId = email.Id })">@email.TotalSent</a>
+										<a href="@Url.Action("Detail", "SendEmail", new { emailId = email.Id })">@email.TotalSent</a>
 									}
 									else
 									{
@@ -61,10 +61,10 @@
 				</div>
 				@{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
 					int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-					var linkLast = Url.Action("ListSendMail", "Profile", new { page = Model.ViewData.TotalPages });
-					var linkFirst = Url.Action("ListSendMail", "Profile", new { page = 1 });
-					var linkNext = Url.Action("ListSendMail", "Profile", new { page = CurrentPage + 1 });
-					var linkPrev = Url.Action("ListSendMail", "Profile", new { page = CurrentPage - 1 });
+					var linkLast = Url.Action("List", "SendEmail", new { page = Model.ViewData.TotalPages });
+					var linkFirst = Url.Action("List", "SendEmail", new { page = 1 });
+					var linkNext = Url.Action("List", "SendEmail", new { page = CurrentPage + 1 });
+					var linkPrev = Url.Action("List", "SendEmail", new { page = CurrentPage - 1 });
 
 					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
 					linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;"; }
@@ -87,7 +87,7 @@
 
 								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 								{
-									var link = Url.Action("ListSendMail", "Profile", new { page = i });
+									var link = Url.Action("List", "SendEmail", new { page = i });
 
 									var active = i == CurrentPage ? "active" : "";
 									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>

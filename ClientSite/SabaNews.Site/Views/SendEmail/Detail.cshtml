@@ -3,12 +3,13 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/profile_sendmail_detail.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/sendemail_view.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-	<script src="~/js/profile/email.js" asp-append-version="true"></script>
+	<script src="~/js/sendemail/view.js" asp-append-version="true"></script>
 }
+
 
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
@@ -30,7 +31,7 @@
 							<h3 class="detail_title">Title: @ViewBag.EmailTitle</h3>
 							<p class="detail_content"><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">View content</a></p>
 						</div>
-						
+
 						<table>
 							<tr>
 								<th>@ViewResources.STT</th>
@@ -65,10 +66,10 @@
 
 						int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
 						int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-						var linkLast = Url.Action("SendMailDetail", "Profile", new { page = Model.ViewData.TotalPages });
-						var linkFirst = Url.Action("SendMailDetail", "Profile", new { page = 1 });
-						var linkNext = Url.Action("SendMailDetail", "Profile", new { page = CurrentPage + 1 });
-						var linkPrev = Url.Action("SendMailDetail", "Profile", new { page = CurrentPage - 1 });
+						var linkLast = Url.Action("Detail", "SendEmail", new { page = Model.ViewData.TotalPages });
+						var linkFirst = Url.Action("Detail", "SendEmail", new { page = 1 });
+						var linkNext = Url.Action("Detail", "SendEmail", new { page = CurrentPage + 1 });
+						var linkPrev = Url.Action("Detail", "SendEmail", new { page = CurrentPage - 1 });
 
 						linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
 						linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
@@ -92,7 +93,7 @@
 
 										for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 										{
-											var link = Url.Action("SendMailDetail", "Profile", new { page = i });
+											var link = Url.Action("Detail", "SendEmail", new { page = i });
 
 											var active = i == CurrentPage ? "active" : "";
 											<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
@@ -150,7 +151,7 @@
 		</div>
 	</div>
 
-	
+
 
 </section>
 
