@@ -80,10 +80,6 @@
     "inputFile": "wwwroot/styles/pages/profile/sendmail_detail.scss"
   },
   {
-    "outputFile": "wwwroot/styles/pages/sendemail/view.css",
-    "inputFile": "wwwroot/styles/pages/sendemail/view.scss"
-  },
-  {
     "outputFile": "wwwroot/styles/pages/email/create.css",
     "inputFile": "wwwroot/styles/pages/email/create.scss"
   },

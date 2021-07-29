@@ -229,7 +229,7 @@ namespace SabaNews.Site.Controllers
         public async Task<ActionResult> Unsubscribe(int UserId)
         {
             var result = await profileService.UnSubcriteUserAsync(UserId);
-            return View(result);
+            return View();
         }
 
 
