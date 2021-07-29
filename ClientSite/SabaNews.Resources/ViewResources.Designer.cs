@@ -898,7 +898,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gửi Mail.
+        ///   Looks up a localized string similar to Send email.
         /// </summary>
         public static string Send_Mail {
             get {
@@ -916,7 +916,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gửi Email.
+        ///   Looks up a localized string similar to Send email.
         /// </summary>
         public static string SendEmail {
             get {

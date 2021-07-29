@@ -49,7 +49,7 @@ namespace SabaNews.Site.Controllers
             }
             ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             ViewBag.Page = Constants.ProfileSendMailPage;
-            string baseUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/Profile/VerifySendMailLink?{token}");
+            string baseUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/SendEmail/VerifySendEmailLink?{token}");
             ViewBag.BaseUrl = baseUrl;
             return View();
         }
@@ -80,7 +80,7 @@ namespace SabaNews.Site.Controllers
                 {
                     var token = Guid.NewGuid().ToString();
                     var tokenParam = "token=" + token;
-                    var UnsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id }, Request.Scheme);
+                    var UnsubcribeLink = Url.Action("Unsubscribe", "SendEmail", new { UserId = user.Id }, Request.Scheme);
                     var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", UnsubcribeLink);
                     var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
 
@@ -131,7 +131,7 @@ namespace SabaNews.Site.Controllers
             return View(Model);
         }
 
-        public async Task<ActionResult> VerifySendMailLink(string returnUrl, string token = "")
+        public async Task<ActionResult> VerifySendEmailLink(string returnUrl, string token = "")
         {
             if (token == "")
             {

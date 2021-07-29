@@ -38,7 +38,6 @@ var sendmailevent = (function ($) {
             if (!isValid) return false;
             var data = $(form).serialize();
             data += "&emailEmbeddedLink=" + $('#returnUrl').val();
-            console.log(data);
             $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
                     url: "SendEmail/SaveDataAndSendEmail",

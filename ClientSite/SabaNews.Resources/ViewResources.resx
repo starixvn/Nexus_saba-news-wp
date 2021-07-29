@@ -397,13 +397,13 @@
     <value>Gửi</value>
   </data>
   <data name="Send Mail" xml:space="preserve">
-    <value>Gửi Mail</value>
+    <value>Send email</value>
   </data>
   <data name="SendDate" xml:space="preserve">
     <value>Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
-    <value>Gửi Email</value>
+    <value>Send email</value>
   </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>
