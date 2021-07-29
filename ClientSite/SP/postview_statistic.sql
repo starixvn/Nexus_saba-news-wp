@@ -1,8 +1,10 @@
 CREATE TABLE `wp_postview_details` (
   `post_id` bigint(20) unsigned NOT NULL,
   `view_date` date NOT NULL,
+  `is_video_post` bit(1) NOT NULL DEFAULT b'0',
   `view_count` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`post_id`,`view_date`)
+  `video_view` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`post_id`,`view_date`,`is_video_post`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP PROCEDURE IF EXISTS post_update_viewcount;
