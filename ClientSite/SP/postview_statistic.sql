@@ -37,6 +37,7 @@ END
 DELIMITER ;
 
 DROP FUNCTION IF EXISTS get_root_category;
+SET GLOBAL log_bin_trust_function_creators = 1;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` FUNCTION `get_root_category`(categoryId int)
 RETURNS INT
