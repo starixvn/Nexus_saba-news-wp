@@ -1,5 +1,10 @@
 ﻿namespace SabaNews.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -8,13 +13,6 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Security.Cryptography;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {
@@ -120,32 +118,13 @@
         [Route("{slug}")]
         public async Task<IActionResult> Single(string slug)
         {
-
-            var hash = GetMd5Hash($"https://vn.sabasports.com/{slug}");
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            if (IsBlackListIP())
-            {
-                post = await GetRandomPost(post);
-                post.PostContent += $"\n Nguồn: <a href='https://vn.sabasports.com/{post.Slug}'>vn.sabasports.com</a>";
-            }
 
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
             }
             
-            post.PostContent = post.PostContent.Replace("\"rank-math-link\"", $"\"rank-math-link\" data-pro=\"{hash}\"");
-            post.PostContent = post.PostContent.Replace("'rank-math-link'", $"'rank-math-link' data-pro=\"{hash}\"");
-
-            var subString = post.PostContent.Split("<p>");
-            if (subString.Length > 1)
-            {
-                Random random = new Random();
-                var randomIndex = random.Next(1, subString.Length - 1);
-                var oldText = $"<p>{subString[randomIndex]}";
-                var newText = $"<p data-z=\"{hash}\">{subString[randomIndex]}";
-                post.PostContent = post.PostContent.Replace(oldText, newText);
-            }
             var postParam = new PostParam
             {
                 Slug = Constants.VideoSlug,
@@ -182,59 +161,6 @@
                 return View("~/Views/Euro2020/Detail.cshtml", Models);
             } 
             return View(Models);
-        }
-        public static string GetMd5Hash(string input)
-        { // Create a new instance of the MD5CryptoServiceProvider object.
-            var md5Hasher = new SHA256Managed(); // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
-            // Create a new Stringbuilder to collect the bytes // and create a string.
-            StringBuilder sBuilder = new StringBuilder(); // Loop through each byte of the hashed data // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
-        private async Task<Post> GetRandomPost(Post post)
-        {
-            var categoryPlus = post.CategoriesSlug.Split(",").FirstOrDefault();
-
-            var relatedPosts = await postService.GetPostsBySlugAsync(categoryPlus, 10, 1000);
-            Random random = new Random();
-            var postIndexRandom = random.Next(0, relatedPosts.Count());
-            var newPost = relatedPosts.ToList()[postIndexRandom];
-            newPost.PostDateGMT = post.PostDateGMT;
-            newPost.PostDate = post.PostDate;
-            return newPost;
-        }
-
-        private bool IsBlackListIP()
-        {
-            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            if (string.IsNullOrWhiteSpace(clientIP))
-            {
-                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
-            var blackListIPs = postService.GetBlackListIPs();
-
-            foreach (var blackListIP in blackListIPs)
-            {
-                if (clientIP.Contains(blackListIP))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public static string MD5Hash(string input)
-        {
-            using var md5 = new SHA256Managed();
-            var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
-            return Encoding.ASCII.GetString(result);
         }
 
         [Route("Search/page/{page}")]
