@@ -1,13 +1,27 @@
 ﻿
-var email = (function ($) {
+var detail = (function ($) {
+    var page = 1;
+    var search = "";
+    var emailId = eId;
 
+    function renderList() {
+        $.ajax({
+            url: '/Email/GetListEmailDetailData',
+            type: 'POST',
+            data: { emailId ,page, search },
+            success: function (res) {
+                $('.list_detail_content').html(res);
+                handleEmailDetailList();
+            }
+        });
+    }
     function handleEmailDetailList() {
         $('.resend-email').on('click', function () {
             var emailId = $(this).data('emailid');
             var userId = $(this).data('userid');
 
             $.ajax({
-                url: "/SendEmail/ResendEmail",
+                url: "/Email/ResendEmail",
                 type: "POST",
                 data: { emailId, userId },
                 success: function (response) {
@@ -22,23 +36,20 @@ var email = (function ($) {
         });
 
         $('#NoticeModal').on('hidden.bs.modal', function () {
-            location.reload();
-        })
-       
-    }
+            renderList();
+        });
 
-    function HanldeEmailList() {
-        $('.view_content').click(function () {
-            var content = $(this).parent().find('.email_content').val();
-            var title = $(this).parent().find('.email_title').val();
-            $('#ViewEmailContent .modal-body').html(content);
-            $('#ViewEmailContent .title').html(title);
-            $('#ViewEmailContent').modal('show');
+        $('.paging').on('click', function () {
+            page = $(this).data('page');
+            renderList();
+
         });
     }
+
+ 
     function init() {
-        handleEmailDetailList();
-        HanldeEmailList();
+        renderList();
+        
     }
 
     return {
@@ -49,5 +60,5 @@ var email = (function ($) {
 
 
 $(document).ready(function () {
-    email.init();
+    detail.init();
 });

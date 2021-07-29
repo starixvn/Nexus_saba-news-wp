@@ -1824,7 +1824,7 @@ table {
   display: none; }
 
 .detail_header {
-  padding-bottom: 2rem; }
+  margin: 2rem 0; }
 
 .detail_title {
   float: left; }
@@ -1868,3 +1868,38 @@ table {
 
 .label.color-purple {
   background-color: #9f83d1; }
+
+.form_search {
+  width: 35%;
+  float: right;
+  margin-bottom: 2rem;
+  clear: both; }
+
+.form_search input[type=text] {
+  padding: 5px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%; }
+
+/* Style the submit button */
+.form_search button {
+  float: left;
+  width: 20%;
+  padding: 7px;
+  background: #2b686e;
+  color: white;
+  font-size: 15px;
+  border: 1px solid grey;
+  border-left: none;
+  /* Prevent double borders */
+  cursor: pointer; }
+
+.form_search button:hover {
+  background: #0b7dda; }
+
+/* Clear floats */
+.form_search::after {
+  content: "";
+  clear: both;
+  display: table; }

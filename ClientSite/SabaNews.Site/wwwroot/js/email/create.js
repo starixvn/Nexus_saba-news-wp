@@ -1,6 +1,6 @@
 ﻿
 var sendmailevent = (function ($) {
-    configCkeditor.configContentForm('#emailContent', '/SendEmail/UploadImageSendMail');
+    configCkeditor.configContentForm('#emailContent', '/Email/UploadImageSendMail');
 
     function HandleValidate() {
         var form = 'form#form-sendmail';
@@ -40,7 +40,7 @@ var sendmailevent = (function ($) {
             data += "&emailEmbeddedLink=" + $('#returnUrl').val();
             $('.btn-send-mail').prop('disabled', true);
                 $.ajax({
-                    url: "SendEmail/SaveDataAndSendEmail",
+                    url: "/Email/SaveDataAndSendEmail",
                     type: "POST",
                     data: data,
                     success: function (res) {

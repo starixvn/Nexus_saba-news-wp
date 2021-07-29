@@ -7,6 +7,8 @@ namespace SabaNews.Models.Email
 
         public IEnumerable<EmailDetailModel> ListEmailDetails { get; set; }
 
+        public EmailModel Email { get; set; }
+
         public ViewData ViewData { get; set; }
     }
 }

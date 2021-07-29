@@ -234,7 +234,7 @@
         {
             if (filename.Contains("\\"))
             {
-                filename = filename.Substring(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1);
+                filename = filename[(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1)..];
             }
 
 

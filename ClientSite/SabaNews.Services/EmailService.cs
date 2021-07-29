@@ -67,7 +67,7 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<EmailDetailModel> GetDetailByEmailIdUserIdAsync(GetDetailEmailDetailCriteria criteria)
+        public async Task<EmailDetailModel> GetEmailDetailAsync(GetDetailEmailDetailCriteria criteria)
         {
             return await baseService.GetDataEntityAsync<EmailDetailModel>(criteria);
         }

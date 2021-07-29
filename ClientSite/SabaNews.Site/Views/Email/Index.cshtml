@@ -1,0 +1,42 @@
+﻿@section Title{
+	@ViewBag.Title
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/email.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+	<script src="~/js/email/index.js" asp-append-version="true"></script>
+}
+
+@(await Component.InvokeAsync("Menu"))
+<section class="main">
+	<div class="container profile-container">
+		<div class="block block-main">
+			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
+		</div>
+		<div class="block block-email">
+			<div class="controls list_email_block">
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal" id="ViewEmailContent" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title"></h2>
+					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body ck-content">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+

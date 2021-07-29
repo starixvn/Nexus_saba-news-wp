@@ -1,0 +1,71 @@
+﻿@section Title{
+	@ViewBag.Title
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/email.min.css" asp-append-version="true">
+}
+.
+@section Scripts{
+	<script src="~/js/email/details.js" asp-append-version="true"></script>
+}
+
+
+@(await Component.InvokeAsync("Menu"))
+<section class="main">
+	<div class="container profile-container">
+		<div class="block block-main">
+			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
+		</div>
+		<div class="block block-email">
+			<div class="controls">
+				<div class="constrols_list_sendmail line">
+					<h2 class="block__title"><a>@ViewResources.ListSentEmailDetail</a> </h2>
+					<div class="detail_header">
+						<h3 class="detail_title">Title: @Model.Email.EmailTitle</h3>
+						<p class="detail_content"><a data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">View content</a></p>
+					</div>
+					<div class="list_detail_content"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="ViewEmailContent" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@Model.Email.EmailTitle</h2>
+					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body ck-content">
+					@Html.Raw(Model.Email.EmailContent)
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="NoticeModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	var eId = '@Model.Email.Id';
+</script>
+
