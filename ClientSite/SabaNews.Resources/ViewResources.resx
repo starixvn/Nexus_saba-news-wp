@@ -400,7 +400,7 @@
     <value>Send email</value>
   </data>
   <data name="SendDate" xml:space="preserve">
-    <value>Date</value>
+    <value>Created Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
@@ -422,6 +422,9 @@
   </data>
   <data name="STT" xml:space="preserve">
     <value>#</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>

@@ -43,7 +43,7 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-
+            await postService.UpdateViewAsync(post.ID);
             var postParam = new PostParam
             {
                 Slug = Constants.VideoSlug,
@@ -59,8 +59,8 @@
                 var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
-            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
-            var Models = new SingleViewModel
+            (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var models = new SingleViewModel
             {
                 SinglePost = post,
                 RecentPosts = recentPosts.Posts,
@@ -69,19 +69,14 @@
             };
             var domain = configuration.GetValue<string>("SitemapSettings:Domain");
             ViewData[Constants.ViewUrl] = $"{domain}{slug}";
-            ViewData["BaseUrl"] = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+            ViewData["BaseUrl"] = domain;
             ViewData["video"] = post.Type == Constants.VideoPostType;
-            ViewData["cateSlug"] = cateInfo.Item1.Trim();
-            ViewData["cateName"] = cateInfo.Item2.Trim();
-            ViewData["controller"] = "home";
-            if (cateInfo.Item1.Trim().Contains("euro-2020"))
-            {
-                return View("~/Views/Euro2020/Detail.cshtml", Models);
-            }
-            return View(Models);
+            ViewData["cateSlug"] = cateInfo.slug;
+            ViewData["cateName"] = cateInfo.name;
+            return View(models);
         }
 
-        private static Tuple<string, string> GetCateInfo(string cateName, string cateSlug)
+        private static (string, string) GetCateInfo(string cateName, string cateSlug)
         {
             var slug = cateSlug;
             var name = cateName;
@@ -93,28 +88,9 @@
                 var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
                 slug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
                 name = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
-
-                if (exceptCateSlug.Count > 1 && !exceptCateSlug[0].Contains("euro-2020") && Constants.HotCategory != "")
-                {
-                    var listEuroSlug = new List<string>
-                    {
-                        Constants.Euro2020Slug,
-                        Constants.Euro2020HotNewsSlug,
-                        Constants.Euro2020ScheduleSlug,
-                        Constants.Euro2020RankingSlug,
-                        Constants.Euro2020VideoSlug,
-                        Constants.Euro2020IdentifySlug
-                    };
-                    var checkHotCate = exceptCateSlug.Where(item => item.Trim().Contains("euro-2020")).ToList();
-                    if (checkHotCate.Count > 0)
-                    {
-                        var getHotCate = listEuroSlug.Where(item => item.Trim() == checkHotCate[0].Trim()).ToList();
-                        slug = getHotCate[0];
-                    }
-                }
             }
 
-            return Tuple.Create(slug, name);
+            return (slug.Trim(), name.Trim());
         }
 
         [HttpPost]

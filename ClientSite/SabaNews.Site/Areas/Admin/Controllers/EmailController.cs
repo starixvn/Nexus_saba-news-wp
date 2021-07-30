@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
     using SabaNews.Models;
@@ -46,18 +47,18 @@
             var start = (page - 1) * perPage;
             var criteria = new GetEmailByUserCriteria { UserId = sessionService.User.Id, Start = start, Search = search ??= "", End = perPage };
             var emails = await emailService.GetEmailByUserAsync(criteria);
-            var viewData = new ViewData
+            var paging = new PagingModel
             {
                 CurrentPage = page,
                 PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage)
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
+                SearchValue = search
             };
             var model = new EmailViewModel
             {
                 Emails = emails,
-                ViewData = viewData
+                Paging = paging
             };
-            ViewBag.Search = search;
             return PartialView("_ListEmailData", model);
         }
 
@@ -155,7 +156,7 @@
                 End = perPage
             };
             var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
-            var viewData = new ViewData
+            var paging = new PagingModel
             {
                 CurrentPage = page,
                 PageSize = perPage,
@@ -164,7 +165,7 @@
             var model = new EmailDetailViewModel
             {
                 ListEmailDetails = listEmailDetails,
-                ViewData = viewData
+                Paging = paging
             };
             return PartialView("_ListEmailDetailData", model);
         }
@@ -176,9 +177,6 @@
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, EmailId = emailId, UserId = userId });
             return Json(resultSendMail);
         }
-
-       
-
 
         private static string EnsureCorrectFilename(string filename)
         {

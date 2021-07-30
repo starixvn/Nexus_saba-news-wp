@@ -44,5 +44,7 @@
         Task<IEnumerable<Post>> GetRSSDataAsync();
 
         Task<CommandResult> UpdateVideoView(int postId);
+
+        Task<CommandResult> UpdateViewAsync(int postId);
     }
 }

@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace SabaNews.Models.Email
+﻿namespace SabaNews.Models.Email
 {
+    using SabaNews.Core.Models;
+    using System.Collections.Generic;
+
     public class EmailDetailViewModel
     {
 
@@ -9,6 +10,6 @@ namespace SabaNews.Models.Email
 
         public EmailModel Email { get; set; }
 
-        public ViewData ViewData { get; set; }
+        public PagingModel Paging { get; set; }
     }
 }

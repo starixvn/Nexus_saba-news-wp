@@ -55,7 +55,6 @@ namespace SabaNews.Site.Controllers
                 Posts = posts,
                 Category = cate,
                 ViewData = viewData
-                
             };
 
             ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;

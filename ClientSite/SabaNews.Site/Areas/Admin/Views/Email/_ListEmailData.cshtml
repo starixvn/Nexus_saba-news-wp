@@ -3,19 +3,19 @@
 <div class="constrols_list_sendmail line">
 	<h2 class="block__title"><a>@ViewResources.ListEmailSent </a></h2>
 	<div class="form_search">
-		<input type="text" placeholder="Search title..." name="search" value="@ViewBag.Search">
+		<input type="text" placeholder="Search title..." name="search" value="@Model.Paging.SearchValue">
 		<button type="button" class="search_list_email"><i class="icon-search"></i></button>
 	</div>
 	<table>
 		<tr>
 			<th width="5%">@ViewResources.STT</th>
 			<th>@ViewResources.Title</th>
+			<th width="15%">@ViewResources.Content</th>
 			<th width="15%">@ViewResources.SendDate</th>
 			<th width="15%">@ViewResources.NumberSent</th>
 			<th width="15%">@ViewResources.NumberClicked</th>
-			<th width="15%">@ViewResources.Content</th>
-		</tr>
-		@{ var stt = (Model.ViewData.CurrentPage - 1) * Model.ViewData.PageSize; }
+
+		@{ var stt = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 		@foreach (var email in Model.Emails)
 		{
 			stt++;
@@ -24,6 +24,11 @@
 			<tr>
 				<td>@stt</td>
 				<td>@title</td>
+				<td>
+					<input value="@email.EmailContent" type="hidden" class="email_content" />
+					<input value="@email.EmailTitle" type="hidden" class="email_title" />
+					<a href="javascript:;" class="label color-blue email view_content">View</a>
+				</td>
 				<td>@email.SendMailTime</td>
 				<td>
 					@if (email.TotalSent > 0)
@@ -36,11 +41,6 @@
 					}
 				</td>
 				<td>@email.TotalClicked / @rate</td>
-				<td>
-					<input value="@email.EmailContent" type="hidden" class="email_content" />
-					<input value="@email.EmailTitle" type="hidden" class="email_title" />
-					<a href="javascript:;" class="label color-blue email view_content">View</a>
-				</td>
 			</tr>
 		}
 		@if (Model.Emails.Count == 0)
@@ -53,10 +53,10 @@
 	</table>
 </div>
 @{
-	int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-	int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
+	int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
+	int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
 
-	var pageLast = Model.ViewData.TotalPages;
+	var pageLast = Model.Paging.TotalPages;
 	var pageNext = CurrentPage + 1;
 	var pagePrev = CurrentPage - 1;
 	var checkPrev = CurrentPage > 1 ? "paging" : "0";
@@ -89,7 +89,7 @@
 				if (CurrentPage + 4 <= TotalPages)
 				{
 					<li class="items-pagination"><a class="item">...</a></li>
-					<li class="items-pagination"><a href="javascript:;" data-page="@pageLast" class="item paging">@Model.ViewData.TotalPages</a></li>
+					<li class="items-pagination"><a href="javascript:;" data-page="@pageLast" class="item paging">@Model.Paging.TotalPages</a></li>
 				} }
 		</ul>
 		<a href="javascript:;" data-page="@pageNext" class="icon-pagination icon-chevron-right @checkNext"></a>

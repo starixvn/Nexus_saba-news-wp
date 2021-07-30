@@ -39,10 +39,9 @@
 
 </table>
 @{
-	int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-	int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-	var pageLast = Model.ViewData.TotalPages;
-	var pageFirst = 1;
+	int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
+	int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
+	var pageLast = Model.Paging.TotalPages;
 	var pageNext = CurrentPage + 1;
 	var pagePrev = CurrentPage - 1;
 	var checkPrev = CurrentPage > 1 ? "paging" : "0";
@@ -75,7 +74,7 @@
 				if (CurrentPage + 4 <= TotalPages)
 				{
 					<li class="items-pagination"><a class="item">...</a></li>
-					<li class="items-pagination"><a href="javascript:;" data-page="@pageLast" class="item paging">@Model.ViewData.TotalPages</a></li>
+					<li class="items-pagination"><a href="javascript:;" data-page="@pageLast" class="item paging">@Model.Paging.TotalPages</a></li>
 				} }
 		</ul>
 		<a href="javascript:;" data-page="@pageNext" class="icon-pagination icon-chevron-right @checkNext"></a>

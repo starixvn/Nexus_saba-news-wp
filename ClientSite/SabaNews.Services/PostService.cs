@@ -332,5 +332,15 @@
 
             return await baseService.ExecuteNonQueryAsync(command);
         }
+
+        public async Task<CommandResult> UpdateViewAsync(int postId)
+        {
+            var command = new UpdateViewCommand
+            {
+                PostId = postId
+            };
+
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
     }
 }

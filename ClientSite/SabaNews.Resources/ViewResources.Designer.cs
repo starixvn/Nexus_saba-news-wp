@@ -907,7 +907,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date.
+        ///   Looks up a localized string similar to Created Date.
         /// </summary>
         public static string SendDate {
             get {
@@ -975,6 +975,15 @@ namespace SabaNews.Resources {
         public static string STT {
             get {
                 return ResourceManager.GetString("STT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        public static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
             }
         }
         

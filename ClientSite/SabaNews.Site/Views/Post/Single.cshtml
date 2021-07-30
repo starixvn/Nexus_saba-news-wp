@@ -33,20 +33,7 @@
     var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Post", new { slug = @Model.SinglePost.Slug });
     var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
     var cateSlug = ViewData["cateSlug"].ToString().Trim();
-    if (cateSlug.Contains("euro-2020"))
-    {
-        ViewData["cateName"] = Constants.Euro2020;
-        ViewData["controller"] = Constants.Euro2020Controller;
-    }
-    if (cateSlug == Constants.Euro2020Slug)
-    {
-        cateSlug = "";
-    }
-    if (ViewData["controller"].ToString() == Constants.Euro2020Controller)
-    {
-        linkReturn = "/euro-2020/" + cateSlug;
-    }
-    var isVideoReturn = Convert.ToBoolean(ViewData["video"]) && ViewData["controller"].ToString() == "Home";
+    var isVideo = Convert.ToBoolean(ViewData["video"]);
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -88,7 +75,7 @@
                     </a>
                 </li>
                 <li class="item-social icon-mobile">
-                    @if (isVideoReturn)
+                    @if (isVideo)
                     {
                         <a href="@Url.Action("Video", "Home")"
                            class="item intent"
@@ -137,7 +124,7 @@
             <div class="main-social">
                 <ul class="social left-social">
                     <li class="item-social">
-                        @if (isVideoReturn)
+                        @if (isVideo)
                         {
                             <a href="@Url.Action("Video", "Home")"
                                class="item intent"
