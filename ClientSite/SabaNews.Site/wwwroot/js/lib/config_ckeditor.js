@@ -23,7 +23,6 @@ var configCkeditor = (function ($) {
                         'imageInsert',
                         'blockQuote',
                         'insertTable',
-                        'mediaEmbed',
                         'alignment',
                         'undo',
                         'redo'

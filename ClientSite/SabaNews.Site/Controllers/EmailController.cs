@@ -16,7 +16,6 @@ namespace SabaNews.Site.Controllers
     using System.Threading.Tasks;
     using System.Web;
 
-    
     public class EmailController : Controller
     {
         private readonly IProfileService profileService;
@@ -96,8 +95,8 @@ namespace SabaNews.Site.Controllers
                 return Json(new { result = error });
             }
             var users = await profileService.GetAllUserAsync();
-            var subScribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
-            var userNumber = subScribedUsers.Count;
+            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
+            var userNumber = subscribedUsers.Count;
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.UtcNow;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
@@ -105,12 +104,12 @@ namespace SabaNews.Site.Controllers
 
             if (result.IsSuccessful)
             {
-                foreach (var user in subScribedUsers)
+                foreach (var user in subscribedUsers)
                 {
                     var token = Guid.NewGuid().ToString();
                     var tokenParam = "token=" + token;
                     var unsubcribeLink = Url.Action("Unsubscribe", "Email", new { UserId = user.Id }, Request.Scheme);
-                    var messageReturnLink = string.Format("<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi  </div>", unsubcribeLink);
+                    var messageReturnLink = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
                     var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
 
                     var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
@@ -144,7 +143,7 @@ namespace SabaNews.Site.Controllers
             var result = await emailService.VerifyTokenEmailDetailAsync(command);
             if (!result.IsSuccessful)
             {
-                return View("~/Views/Home/EmptyBlog.cshtml");
+                return View(Constants.NotfoundView);
             }
             return Redirect(returnUrl);
         }
@@ -169,7 +168,6 @@ namespace SabaNews.Site.Controllers
             string linkPhoto = "uploads/" + filename;
             string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
             string url = string.Concat(baseUrl, linkPhoto);
-
             return Json(new { url, filePath, error });
         }
 
@@ -192,9 +190,8 @@ namespace SabaNews.Site.Controllers
             return View(Model);
         }
 
-        public async Task<ActionResult> GetListEmailDetailData(int emailId, int page, string search)
+        public async Task<ActionResult> GetListEmailDetailData(int emailId, int page)
         {
-            search ??= "";
             const int perPage = Constants.Perpage;
             var start = (page - 1) * perPage;
             var criteria = new GetEmailDetailByEmailIdCriteria
@@ -204,18 +201,18 @@ namespace SabaNews.Site.Controllers
                 End = perPage
             };
             var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
-            var ViewData = new ViewData
+            var viewData = new ViewData
             {
                 CurrentPage = page,
                 PageSize = perPage,
                 TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
             };
-            var Model = new EmailDetailViewModel
+            var model = new EmailDetailViewModel
             {
                 ListEmailDetails = listEmailDetails,
-                ViewData = ViewData
+                ViewData = viewData
             };
-            return PartialView("_ListEmailDetailData", Model);
+            return PartialView("_ListEmailDetailData", model);
         }
 
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
@@ -229,7 +226,7 @@ namespace SabaNews.Site.Controllers
         public async Task<ActionResult> Unsubscribe(int UserId)
         {
             var result = await profileService.UnSubcriteUserAsync(UserId);
-            return View();
+            return View(result.IsSuccessful);
         }
 
 

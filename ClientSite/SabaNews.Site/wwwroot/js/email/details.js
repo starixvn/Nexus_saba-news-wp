@@ -1,14 +1,13 @@
 ﻿
 var detail = (function ($) {
     var page = 1;
-    var search = "";
     var emailId = eId;
 
     function renderList() {
         $.ajax({
             url: '/Email/GetListEmailDetailData',
             type: 'POST',
-            data: { emailId ,page, search },
+            data: { emailId ,page },
             success: function (res) {
                 $('.list_detail_content').html(res);
                 handleEmailDetailList();
