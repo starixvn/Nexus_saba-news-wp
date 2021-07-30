@@ -63,7 +63,7 @@
 
         public IActionResult Create()
         {
-            string rawUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/Admin/Email/VerifySendEmailLink?{token}");
+            string rawUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/VerifySendEmailLink?{token}");
             ViewBag.rawUrl = rawUrl;
             return View();
         }
@@ -85,7 +85,7 @@
                 {
                     var token = Guid.NewGuid().ToString();
                     var tokenParam = "token=" + token;
-                    var unsubcribeLink = Url.Action("Unsubscribe", "Email", new { UserId = user.Id }, Request.Scheme);
+                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
                     var messageReturnLink = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
                     var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
 
@@ -105,24 +105,6 @@
                 }
             }
             return Json(new { result, userNumber });
-        }
-
-        public async Task<ActionResult> VerifySendEmailLink(string returnUrl, string token = "")
-        {
-            if (token == "")
-            {
-                return Redirect(returnUrl);
-            }
-            var command = new VerifyTokenEmailDetailCommand
-            {
-                TokenId = token
-            };
-            var result = await emailService.VerifyTokenEmailDetailAsync(command);
-            if (!result.IsSuccessful)
-            {
-                return View(Constants.NotfoundView);
-            }
-            return Redirect(returnUrl);
         }
 
         public async Task<ActionResult> UploadImageSendMail(IFormFile file)
@@ -195,11 +177,7 @@
             return Json(resultSendMail);
         }
 
-        public async Task<ActionResult> Unsubscribe(int UserId)
-        {
-            var result = await profileService.UnSubcriteUserAsync(UserId);
-            return View(result.IsSuccessful);
-        }
+       
 
 
         private static string EnsureCorrectFilename(string filename)

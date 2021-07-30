@@ -229,7 +229,32 @@
             return Json(commandResult);
         }
 
-            string linkPhoto = "uploads/" + filename;
+        public async Task<ActionResult> Unsubscribe(int UserId)
+        {
+            var result = await profileService.UnSubcriteUserAsync(UserId);
+            return View(result.IsSuccessful);
+        }
+
+        [Route("VerifySendEmailLink")]
+        public async Task<ActionResult> VerifySendEmailLink(string returnUrl, string token = "")
+        {
+            if (token == "")
+            {
+                return Redirect(returnUrl);
+            }
+            var command = new VerifyTokenEmailDetailCommand
+            {
+                TokenId = token
+            };
+            var result = await emailService.VerifyTokenEmailDetailAsync(command);
+            if (!result.IsSuccessful)
+            {
+                return View(Constants.NotfoundView);
+            }
+            return Redirect(returnUrl);
+        }
+
+
         private static string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
