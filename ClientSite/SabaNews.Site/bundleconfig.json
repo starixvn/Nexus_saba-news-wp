@@ -200,6 +200,19 @@
         "inputFiles": [
             "wwwroot/lib/jquery/dist/jquery.min.js",
             "wwwroot/js/admin/statistic/post-view-statistic.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+
+    {
+        "outputFileName": "wwwroot/minify/js/email.min.js",
+        "inputFiles": [
+            "wwwroot/js/email/index.js"
+        ],
         "minify": {
             "enabled": true,
             "renameLocals": true

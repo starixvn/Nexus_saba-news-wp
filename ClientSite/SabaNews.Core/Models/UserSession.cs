@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using SabaNews.Core.Constants;
 
     public class UserSession
     {
@@ -29,8 +30,6 @@
         public string Metadata { get; set; }
 
         public DateTime RegisterDate { get; set; }
-
-        public string Metadata { get; set; }
 
         public string Role => Metadata != null && Metadata.Contains(Constants.AdministratorRole) ? Constants.AdministratorRole : Constants.NormalRole;
 

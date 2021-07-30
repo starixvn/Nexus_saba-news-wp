@@ -106,7 +106,6 @@
             return View(Model);
         }
 
-        }
 
         [Route("Search/page/{page}")]
         [Route("Search")]

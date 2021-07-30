@@ -72,14 +72,6 @@
     "inputFile": "wwwroot/styles/pages/admin/admin.scss"
   },
   {
-    "outputFile": "wwwroot/styles/pages/profile/sendmail.css",
-    "inputFile": "wwwroot/styles/pages/profile/sendmail.scss"
-  },
-  {
-    "outputFile": "wwwroot/styles/pages/profile/sendmail_detail.css",
-    "inputFile": "wwwroot/styles/pages/profile/sendmail_detail.scss"
-  },
-  {
     "outputFile": "wwwroot/styles/pages/email/create.css",
     "inputFile": "wwwroot/styles/pages/email/create.scss"
   },
