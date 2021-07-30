@@ -78,5 +78,13 @@
   {
     "outputFile": "wwwroot/styles/pages/email/index.css",
     "inputFile": "wwwroot/styles/pages/email/index.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/admin/email/index.css",
+    "inputFile": "wwwroot/styles/pages/admin/email/index.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/admin/email/create.css",
+    "inputFile": "wwwroot/styles/pages/admin/email/create.scss"
   }
 ]

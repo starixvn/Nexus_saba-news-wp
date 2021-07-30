@@ -25,14 +25,14 @@
         "outputFileName": "wwwroot/minify/styles/email.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/email/index.css"
+            "wwwroot/styles/pages/admin/email/index.css"
         ]
     },
     {
         "outputFileName": "wwwroot/minify/styles/email_create.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/email/create.css"
+            "wwwroot/styles/pages/admin/email/create.css"
         ]
     },
     {
@@ -211,7 +211,7 @@
     {
         "outputFileName": "wwwroot/minify/js/email.min.js",
         "inputFiles": [
-            "wwwroot/js/email/index.js"
+            "wwwroot/js/admin/email/index.js"
         ],
         "minify": {
             "enabled": true,
@@ -220,9 +220,9 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/email_create.min.js",
+        "outputFileName": "wwwroot/minify/js/admin_email_create.min.js",
         "inputFiles": [
-            "wwwroot/js/email/create.js"
+            "wwwroot/js/admin/email/create.js"
         ],
         "minify": {
             "enabled": true,
@@ -231,9 +231,9 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/email_detail.min.js",
+        "outputFileName": "wwwroot/minify/js/admin_email_detail.min.js",
         "inputFiles": [
-            "wwwroot/js/email/detail.js"
+            "wwwroot/js/admin/email/detail.js"
         ],
         "minify": {
             "enabled": true,

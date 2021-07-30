@@ -1,4 +1,10 @@
-﻿@section Title{
+﻿@using SabaNews.Resources;
+@{
+	Layout = "_AdminLayout";
+}
+
+
+@section Title{
 	@ViewBag.Title
 }
 
@@ -9,15 +15,11 @@
 @section Scripts{
 	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
 	<script src="~/js/lib/config_ckeditor.js"></script>
-	<script src="~/js/email/create.js" asp-append-version="true"></script>
+	<script src="~/js/admin/email/create.js" asp-append-version="true"></script>
 }
-	
-@(await Component.InvokeAsync("Menu"))
-<section class="main">
-	<div class="container profile-container">
-		<div class="block block-main">
-			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
-		</div>
+
+<section>
+	<div>
 		<div class="block block-email">
 			<div class="controls">
 				<div class="controls__sendmail">
@@ -33,7 +35,7 @@
 									<input type="text" class="input-form" placeholder="" name="emailTitle" />
 									<p class="help-block"></p>
 								</div>
-								
+
 								<div class="form-group email_link">
 									<label>@ViewResources.ReturnLink</label>
 									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />

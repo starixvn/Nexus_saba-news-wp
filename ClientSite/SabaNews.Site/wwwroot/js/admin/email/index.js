@@ -30,7 +30,7 @@ var email = (function ($) {
 
     function renderListEmail() {
         $.ajax({
-            url: '/Email/GetListEmailData',
+            url: "/Admin/Email/GetListEmailData",
             type: 'POST',
             data: { page: page, search: search },
             success: function (res) {

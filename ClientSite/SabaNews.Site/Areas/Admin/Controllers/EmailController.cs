@@ -1,5 +1,4 @@
-﻿
-namespace SabaNews.Site.Controllers
+﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -16,7 +15,7 @@ namespace SabaNews.Site.Controllers
     using System.Threading.Tasks;
     using System.Web;
 
-    public class EmailController : Controller
+    public class EmailController : AdminController
     {
         private readonly IProfileService profileService;
         private readonly ISessionService sessionService;
@@ -36,16 +35,9 @@ namespace SabaNews.Site.Controllers
             this.emailService = emailService;
         }
 
-        [Route("Email")]
         public IActionResult Index()
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Redirect(Url.Action("Index", "Home"));
-            }
-
-            ViewBag.Page = Constants.ProfileListSendMailPage;
+          
             return View();
         }
 
@@ -171,7 +163,7 @@ namespace SabaNews.Site.Controllers
             return Json(new { url, filePath, error });
         }
 
-       
+
         public async Task<ActionResult> Detail(int emailId)
         {
             var isAuthenticated = sessionService.User != null;
@@ -241,5 +233,6 @@ namespace SabaNews.Site.Controllers
         }
 
         private string GetPathAndFilename(string filename) => pathService.MapAbsoluteRootPath("//uploads//" + filename);
+
     }
 }

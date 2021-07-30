@@ -1,4 +1,10 @@
-﻿@section Title{
+﻿@using SabaNews.Resources;
+@{
+	Layout = "_AdminLayout";
+}
+
+
+@section Title{
 	@ViewBag.Title
 }
 
@@ -7,16 +13,12 @@
 }
 .
 @section Scripts{
-	<script src="~/js/email/details.js" asp-append-version="true"></script>
+	<script src="~/js/admin/email/details.js" asp-append-version="true"></script>
 }
 
 
-@(await Component.InvokeAsync("Menu"))
-<section class="main">
-	<div class="container profile-container">
-		<div class="block block-main">
-			@(await Component.InvokeAsync("LeftMenuProfile", new { page = ViewBag.Page }))
-		</div>
+<section>
+	<div>
 		<div class="block block-email">
 			<div class="controls">
 				<div class="constrols_list_sendmail line">

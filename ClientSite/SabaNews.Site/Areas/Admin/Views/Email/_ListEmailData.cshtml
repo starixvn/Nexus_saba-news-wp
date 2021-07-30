@@ -1,4 +1,6 @@
-﻿<div class="constrols_list_sendmail line">
+﻿@using SabaNews.Resources;
+
+<div class="constrols_list_sendmail line">
 	<h2 class="block__title"><a>@ViewResources.ListEmailSent </a></h2>
 	<div class="form_search">
 		<input type="text" placeholder="Search title..." name="search" value="@ViewBag.Search">
@@ -13,7 +15,7 @@
 			<th>@ViewResources.NumberClicked</th>
 			<th>@ViewResources.Content</th>
 		</tr>
-		@{ var stt = (Model.ViewData.CurrentPage - 1)* Model.ViewData.PageSize; }
+		@{ var stt = (Model.ViewData.CurrentPage - 1) * Model.ViewData.PageSize; }
 		@foreach (var email in Model.Emails)
 		{
 			stt++;

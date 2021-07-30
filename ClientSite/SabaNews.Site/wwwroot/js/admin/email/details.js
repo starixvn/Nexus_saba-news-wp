@@ -5,7 +5,7 @@ var detail = (function ($) {
 
     function renderList() {
         $.ajax({
-            url: '/Email/GetListEmailDetailData',
+            url: '/Admin/Email/GetListEmailDetailData',
             type: 'POST',
             data: { emailId ,page },
             success: function (res) {
@@ -20,7 +20,7 @@ var detail = (function ($) {
             var userId = $(this).data('userid');
 
             $.ajax({
-                url: "/Email/ResendEmail",
+                url: "/Admin/Email/ResendEmail",
                 type: "POST",
                 data: { emailId, userId },
                 success: function (response) {

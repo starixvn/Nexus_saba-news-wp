@@ -61,7 +61,7 @@
         <Content Include="EmailTemplates\ResetPassword.txt">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="Views\Email\ViewContent.html" />
+        <Content Include="Areas\Admin\Views\Email\ViewContent.html" />
     </ItemGroup>
 
     <ItemGroup>
