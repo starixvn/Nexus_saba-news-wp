@@ -8,12 +8,12 @@
 	</div>
 	<table>
 		<tr>
-			<th>@ViewResources.STT</th>
+			<th width="5%">@ViewResources.STT</th>
 			<th>@ViewResources.Title</th>
-			<th>@ViewResources.SendDate</th>
-			<th>@ViewResources.NumberSent</th>
-			<th>@ViewResources.NumberClicked</th>
-			<th>@ViewResources.Content</th>
+			<th width="15%">@ViewResources.SendDate</th>
+			<th width="15%">@ViewResources.NumberSent</th>
+			<th width="15%">@ViewResources.NumberClicked</th>
+			<th width="15%">@ViewResources.Content</th>
 		</tr>
 		@{ var stt = (Model.ViewData.CurrentPage - 1) * Model.ViewData.PageSize; }
 		@foreach (var email in Model.Emails)
@@ -43,6 +43,13 @@
 				</td>
 			</tr>
 		}
+		@if (Model.Emails.Count == 0)
+		{
+			<tr>
+				<th class="nodata_table" colspan="7">There are no data</th>
+			</tr>
+		}
+
 	</table>
 </div>
 @{
@@ -50,7 +57,6 @@
 	int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
 
 	var pageLast = Model.ViewData.TotalPages;
-	var pageFirst = 1;
 	var pageNext = CurrentPage + 1;
 	var pagePrev = CurrentPage - 1;
 	var checkPrev = CurrentPage > 1 ? "paging" : "0";

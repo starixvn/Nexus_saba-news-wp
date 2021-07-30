@@ -37,7 +37,6 @@
 
         public IActionResult Index()
         {
-          
             return View();
         }
 
@@ -45,8 +44,7 @@
         {
             const int perPage = Constants.Perpage;
             var start = (page - 1) * perPage;
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-            var criteria = new GetEmailByUserCriteria { UserId = user.Id, Start = start, Search = search ??= "", End = Constants.Perpage };
+            var criteria = new GetEmailByUserCriteria { UserId = sessionService.User.Id, Start = start, Search = search ??= "", End = perPage };
             var emails = await emailService.GetEmailByUserAsync(criteria);
             var viewData = new ViewData
             {
@@ -65,27 +63,14 @@
 
         public IActionResult Create()
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Redirect(Url.Action("Index", "Home"));
-            }
-            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
-            ViewBag.Page = Constants.ProfileSendMailPage;
-            string baseUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/Email/VerifySendEmailLink?{token}");
-            ViewBag.BaseUrl = baseUrl;
+            string rawUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/Admin/Email/VerifySendEmailLink?{token}");
+            ViewBag.rawUrl = rawUrl;
             return View();
         }
 
         [HttpPost]
         public async Task<ActionResult> SaveDataAndSendEmail(EmailModel model)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                var error = new { isSuccessful = false, message = "Please login first" };
-                return Json(new { result = error });
-            }
             var users = await profileService.GetAllUserAsync();
             var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
             var userNumber = subscribedUsers.Count;
@@ -166,11 +151,6 @@
 
         public async Task<ActionResult> Detail(int emailId)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Redirect(Url.Action("Index", "Home"));
-            }
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             var Model = new EmailDetailViewModel
             {

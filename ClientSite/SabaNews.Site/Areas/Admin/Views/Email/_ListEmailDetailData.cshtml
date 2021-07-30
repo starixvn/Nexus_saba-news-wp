@@ -2,11 +2,11 @@
 
 <table>
 	<tr>
-		<th>@ViewResources.STT</th>
+		<th width="5%">@ViewResources.STT</th>
 		<th>@ViewResources.Email</th>
-		<th>@ViewResources.SendDate</th>
-		<th>@ViewResources.IsClicked</th>
-		<th>@ViewResources.Status</th>
+		<th width="20%">@ViewResources.SendDate</th>
+		<th width="20%">@ViewResources.IsClicked</th>
+		<th width="20%">@ViewResources.Status</th>
 	</tr>
 	@{ var stt = 0; }
 	@foreach (var detail in Model.ListEmailDetails)
@@ -30,6 +30,13 @@
 			</td>
 		</tr>
 	}
+	@if (Model.ListEmailDetails.Count == 0)
+	{
+		<tr>
+			<th class="nodata_table" colspan="6">There are no data</th>
+		</tr>
+	}
+
 </table>
 @{
 	int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);

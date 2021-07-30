@@ -868,7 +868,6 @@ table {
     color: #2b686e;
     padding: 10px; }
   table td {
-    text-align: center;
     vertical-align: middle; }
     table td:last-child {
       font-size: 0.95em;
@@ -876,8 +875,7 @@ table {
       text-align: left; }
   table th {
     background-color: #daeff1;
-    font-weight: bold;
-    text-align: center; }
+    font-weight: bold; }
   table tr:nth-child(2n) {
     background-color: white; }
   table tr:nth-child(2n+1) {
@@ -1011,3 +1009,7 @@ table {
   content: "";
   clear: both;
   display: table; }
+
+.nodata_table {
+  text-align: center;
+  color: red; }

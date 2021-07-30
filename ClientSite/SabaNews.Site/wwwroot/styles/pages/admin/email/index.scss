@@ -168,7 +168,6 @@ table {
     }
 
     td {
-        text-align: center;
         vertical-align: middle;
 
         &:last-child {
@@ -181,7 +180,6 @@ table {
     th {
         background-color: lighten(#398B93, 50%);
         font-weight: bold;
-        text-align: center;
     }
 
     tr {
@@ -341,6 +339,11 @@ table {
     content: "";
     clear: both;
     display: table;
+}
+
+.nodata_table {
+    text-align:center;
+    color: red;
 }
 
 
