@@ -107,12 +107,15 @@ BEGIN
     INNER JOIN wp_terms t ON tmp.RootCategoryId = t.term_id 
     WHERE t.name = 'video' INTO TotalVideo;
 
-    SELECT SUM(tmp.ViewCount) 
-    FROM tmp_PostViews tmp 
-    WHERE tmp.IsVideo = 0 INTO TotalPostView;
+    SELECT SUM(tmpView.ViewCount) 
+    FROM tmp_PostViews tmpView
+    INNER JOIN tmp_PostRootCategory tmpPost ON tmpView.PostId = tmpPost.PostId
+    WHERE tmpView.IsVideo = 0 INTO TotalPostView;
 
-	SELECT SUM(tmp.VideoView) 
-    FROM tmp_PostViews tmp WHERE tmp.IsVideo = 1 INTO TotalVideoView;
+	SELECT SUM(tmpView.VideoView) 
+    FROM tmp_PostViews tmpView 
+    INNER JOIN tmp_PostRootCategory tmpPost ON tmpView.PostId = tmpPost.PostId
+    WHERE tmpView.IsVideo = 1 INTO TotalVideoView;
     
     SELECT IFNULL(TotalPost, 0) As TotalPost
             ,IFNULL(TotalVideo, 0) As TotalVideo
