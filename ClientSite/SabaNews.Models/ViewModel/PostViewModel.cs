@@ -13,5 +13,9 @@
         public IEnumerable<Post> BackstagePosts { get; set; }
         public IEnumerable<Post> TransferPosts { get; set; }
         public Category Category { get; set; }
+        public string Url { get; set; }
+        public string RSSUrl { get; set; }
+        public HeaderViewModel Header { get; set; }
+
     }
 }

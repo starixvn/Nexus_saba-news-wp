@@ -61,6 +61,11 @@
             return await baseService.GetDataAsync<EmailModel>(criteria);
         }
 
+        public async Task<IEnumerable<EmailModel>> GetEmailsAsync(GetEmailsCriteria criteria)
+        {
+            return await baseService.GetDataAsync<EmailModel>(criteria);
+        }
+
         public async Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailIdAsync(GetEmailDetailByEmailIdCriteria criteria)
         {
             return await baseService.GetDataAsync<EmailDetailModel>(criteria);

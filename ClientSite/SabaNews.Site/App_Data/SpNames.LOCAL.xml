@@ -225,5 +225,6 @@
         <Setting Key="email_detail_get_detail" SpName="email_detail_get_detail" DbName="sabasports" Plain="0" />
         <Setting Key="email_detail_update_status" SpName="email_detail_update_status" DbName="sabasports" Plain="0" />
         <Setting Key="email_get_by_id" SpName="email_get_by_id" DbName="sabasports" Plain="0" />
+        <Setting Key="email_get_all" SpName="email_get_all" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

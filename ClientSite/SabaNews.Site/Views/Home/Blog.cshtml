@@ -25,11 +25,8 @@
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
 
-@{
-    ViewData["CategorySlug"] = Model.ViewData.ActiveCategory;
-}
 
-@(await Component.InvokeAsync("Menu"))
+@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.ViewData.ActiveCategory }))
 <section class="main">
     <div class="container">
         <div class="block block-main">

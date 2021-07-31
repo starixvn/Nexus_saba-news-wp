@@ -180,6 +180,9 @@
   <data name="CopyLink" xml:space="preserve">
     <value>Sao chép đường dẫn </value>
   </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>Created By</value>
+  </data>
   <data name="Disconnect" xml:space="preserve">
     <value>Ngắt liên kết</value>
   </data>

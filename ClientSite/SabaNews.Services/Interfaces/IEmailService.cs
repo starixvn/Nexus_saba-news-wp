@@ -16,6 +16,8 @@
 
         Task<IEnumerable<EmailModel>> GetEmailByUserAsync(GetEmailByUserCriteria criteria);
 
+        Task<IEnumerable<EmailModel>> GetEmailsAsync(GetEmailsCriteria criteria);
+
         Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailIdAsync(GetEmailDetailByEmailIdCriteria criteria);
 
         Task<CommandResult> UpdateEmailStatusAsync(UpdateEmailStatusCommand command);

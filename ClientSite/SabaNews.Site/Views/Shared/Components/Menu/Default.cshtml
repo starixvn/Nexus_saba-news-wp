@@ -1,8 +1,8 @@
 ﻿@using SabaNews.Core.Constants;
-@model IEnumerable<Menu>
+@model MenuViewModel;
 
 
-<section class="header @ViewBag.Page">
+<section class="header @Model.Page">
     <div class="button-mobile">
         <span class="line-mb"></span>
         <span class="line-mb"></span>
@@ -45,39 +45,39 @@
 				</li>
 
 				<li class="item-control auth-input">
-					@if (ViewBag.IsAuthenticated)
+					@if (Model.IsAuthenticated)
 					{
 						<ul class="auth-provider">
-							@if (ViewBag.Photo == null)
+							@if (Model.User.Photo == null)
 							{
-								<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+								<li class="avatar-user">@Model.User.Name.Substring(0, 1)</li>
 							}
-							else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+							else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
 							{
-								<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
 							}
 							else
 							{
-								<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+								<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
 							}
-							<li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+							<li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
 						</ul>
 						<ul class="box-auth">
 							<li>
 								<ul class="auth-provider">
-									@if (ViewBag.Photo == null)
+									@if (Model.User.Photo == null)
 									{
-										<li class="avatar-user">@ViewBag.DisplayName.Substring(0, 1)</li>
+										<li class="avatar-user">@Model.User.Name.Substring(0, 1)</li>
 									}
-									else if (ViewBag.Photo.ToLower().Contains("https://") || ViewBag.Photo.ToLower().Contains("http://"))
+									else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
 									{
-										<li class="avatar-user"><img class="profile_image" loading="lazy" src="@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+										<li class="avatar-user"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
 									}
 									else
 									{
-										<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@ViewBag.Photo" width="300" data-name="@ViewBag.DisplayName.Substring(0, 1)" /></li>
+										<li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
 									}
-									<li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
+									<li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
 								</ul>
 							</li>
 							<li class="info-user">
@@ -102,7 +102,7 @@
                 <div class="nav-menu">
                     <ul class="main-menu">
                         @{ var VideoParentId = 0; }
-                        @foreach (var menu in Model)
+                        @foreach (var menu in Model.Menus)
 						{
 
 							var link = Url.Action("Category", "Home", new { slug = menu.Slug });
@@ -127,7 +127,7 @@
 							}
 							if (menu.CatId != Constants.Home)
 							{
-								var activeMenu = ( ViewData["CategorySlug"] != null && menu.Slug == ViewData["CategorySlug"].ToString()) ? "active" : "";
+								var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                                 <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
                                     @if (menu.Slug == Constants.GuessSlug)
 									{ 
@@ -153,7 +153,7 @@
 
     <div class="child-mobile-menu">
         <ul class="main-child-menu">
-            @foreach (var menu in Model)
+            @foreach (var menu in Model.Menus)
 			{
 
 				var link = Url.Action("Category", "Home", new { slug = menu.Slug });
@@ -178,7 +178,7 @@
 				}
 				if (menu.CatId != Constants.Home)
 				{
-					var activeMenu = ( ViewData["CategorySlug"] != null && menu.Slug == ViewData["CategorySlug"].ToString()) ? "active" : "";
+					var activeMenu = ( Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                     <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
                 }
 

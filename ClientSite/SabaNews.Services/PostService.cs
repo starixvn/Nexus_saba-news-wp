@@ -281,7 +281,7 @@
 
         public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
         {
-            var domainName = configuration.GetValue<string>("SitemapSettings:Domain");
+            var domainName = configuration.GetValue<string>("BaseUrl");
             var sitemap = await baseService.GetDataAsync<SitemapModel>(new GetSitemapDataCriteria());
 
             foreach (var item in sitemap)

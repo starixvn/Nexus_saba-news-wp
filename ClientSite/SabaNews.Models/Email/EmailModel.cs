@@ -17,6 +17,8 @@ namespace SabaNews.Models.Email
 
         public int CreatedBy { get; set; }
 
+        public string CreatedName { get; set; }
+
         public DateTime SendDate { get; set; }
 
         public int EmailId { get; set; }

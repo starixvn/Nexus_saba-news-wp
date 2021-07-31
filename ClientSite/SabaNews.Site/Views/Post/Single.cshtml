@@ -1,6 +1,5 @@
 ﻿@using Wangkanai.Detection.Services;
 @using Wangkanai.Detection.Models;
-@using SabaNews.Core.Constants;
 
 @inject IDetectionService DetectionService
 @{
@@ -14,8 +13,8 @@
     <meta property="og:description" content="&nbsp;" />
     <meta property="og:title" content='@Model.SinglePost.PostTitle' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
-    <link rel="canonical" href="@ViewData[Constants.ViewUrl]" />
-    <link rel="alternate" href="@ViewData[Constants.ViewUrl]" hreflang="vi-vn" />
+    <link rel="canonical" href="@Model.AbsoluteUrl" />
+    <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
 }
 
 @section Title{
@@ -30,10 +29,7 @@
 }
 
 @{
-    var absoluteLink = ViewData["BaseUrl"] + Url.Action("Single", "Post", new { slug = @Model.SinglePost.Slug });
-    var linkReturn = Url.Action("Category", "Home", new { slug = ViewData["cateSlug"] });
-    var cateSlug = ViewData["cateSlug"].ToString().Trim();
-    var isVideo = Convert.ToBoolean(ViewData["video"]);
+    var linkReturn = Url.Action("Category", "Home", new { slug = Model.CateSlug });
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -41,7 +37,7 @@
         <div class="main-social fixed-social">
             <ul class="social">
                 <li class="item-social icon-mobile">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
                        data-count="facebook" target="_blank"
                        rel="nofollow"
                        class="item intent facebook"
@@ -75,7 +71,7 @@
                     </a>
                 </li>
                 <li class="item-social icon-mobile">
-                    @if (isVideo)
+                    @if (Model.IsVideo)
                     {
                         <a href="@Url.Action("Video", "Home")"
                            class="item intent"
@@ -87,7 +83,7 @@
                     {
                         <a href="@linkReturn"
                            class="item intent"
-                           title="@ViewResources.Back @ViewData["cateName"]">
+                           title="@ViewResources.Back @Model.CateName">
                             <i class="icon-social icon-back"></i>
                         </a>
                     }
@@ -97,7 +93,7 @@
         <div class="block block-main">
             <div class="card-vertical card-vertical-highlight">
                 <div class="single card-vertical__video">
-                    @if (Convert.ToBoolean(ViewData["video"]))
+                    @if (Model.IsVideo)
                     {
                         <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
                         <picture>
@@ -114,7 +110,7 @@
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
                 <p class="card-vertical__datetime">@Model.SinglePost.PostTime</p>
             </div>
-            @if (!Convert.ToBoolean(ViewData["video"]))
+            @if (!Model.IsVideo)
             {
                 <div class="content">
                     @Html.Raw(Model.SinglePost.PostContent)
@@ -124,7 +120,7 @@
             <div class="main-social">
                 <ul class="social left-social">
                     <li class="item-social">
-                        @if (isVideo)
+                        @if (Model.IsVideo)
                         {
                             <a href="@Url.Action("Video", "Home")"
                                class="item intent"
@@ -136,7 +132,7 @@
                         {
                             <a href="@linkReturn"
                                class="item intent"
-                               title="@ViewResources.Back @ViewData["cateName"]">
+                               title="@ViewResources.Back @Model.CateName">
                                 <i class="icon-social icon-back"></i>
                             </a>
                         }
@@ -153,7 +149,7 @@
                 <ul class="social right-social">
                     <li class="item-social">Chia sẻ:</li>
                     <li class="item-social">
-                        <a href="http://www.facebook.com/sharer/sharer.php?u=@absoluteLink"
+                        <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
                            data-count="facebook" target="_blank"
                            rel="nofollow"
                            class="item intent facebook"
@@ -163,7 +159,7 @@
                     </li>
                     <li class="item-social">
                         <a href="javascript:;"
-                           onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@absoluteLink', '_blank')"
+                           onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=@Model.SinglePost.PostTitle&body=@Model.AbsoluteUrl', '_blank')"
                            rel="nofollow" class="item"
                            title="@ViewResources.ShareMail">
                             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-email">
@@ -201,7 +197,7 @@
             <h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
             @(await Component.InvokeAsync("RelatedPosts", new { postID = Model.SinglePost.ID }))
         </div>
-        @(await Component.InvokeAsync("Sidebar", new { cateSlug = ViewData["cateSlug"], postID = Model.SinglePost.ID }))
+        @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.CateSlug, postID = Model.SinglePost.ID }))
     </div>
 </section>
 <div class="auth-form">

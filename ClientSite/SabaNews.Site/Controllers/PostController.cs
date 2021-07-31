@@ -1,9 +1,5 @@
 ﻿namespace SabaNews.Site.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -12,6 +8,9 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class PostController : Controller
     {
@@ -38,7 +37,6 @@
         public async Task<IActionResult> Single(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-           
             if (post == null)
             {
                 return View(Constants.EmptyBlogView);
@@ -60,19 +58,19 @@
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
             (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var domain = configuration.GetValue<string>("BaseUrl");
             var models = new SingleViewModel
             {
                 SinglePost = post,
                 RecentPosts = recentPosts.Posts,
                 IsLogin = isLogin,
-                SavePost = savePost
+                SavePost = savePost,
+                AbsoluteUrl = $"{domain}{slug}",
+                IsVideo = post.Type == Constants.VideoPostType,
+                CateSlug = cateInfo.slug,
+                CateName = cateInfo.name
             };
-            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
-            ViewData[Constants.ViewUrl] = $"{domain}{slug}";
-            ViewData["BaseUrl"] = domain;
-            ViewData["video"] = post.Type == Constants.VideoPostType;
-            ViewData["cateSlug"] = cateInfo.slug;
-            ViewData["cateName"] = cateInfo.name;
+           
             return View(models);
         }
 

@@ -2,11 +2,11 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
-    using SabaNews.Models;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
     using System;
@@ -22,18 +22,21 @@
         private readonly ISessionService sessionService;
         private readonly IPathService pathService;
         private readonly IEmailService emailService;
+        private readonly IConfiguration configuration;
         private const string SendMailTemplates = "EmailTemplates//SendMailEvent.txt";
 
         public EmailController(
             IProfileService profileService,
             ISessionService sessionService,
             IPathService pathService,
-            IEmailService emailService)
+            IEmailService emailService,
+            IConfiguration configuration)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
             this.pathService = pathService;
             this.emailService = emailService;
+            this.configuration = configuration;
         }
 
         public IActionResult Index()
@@ -45,8 +48,8 @@
         {
             const int perPage = Constants.Perpage;
             var start = (page - 1) * perPage;
-            var criteria = new GetEmailByUserCriteria { UserId = sessionService.User.Id, Start = start, Search = search ??= "", End = perPage };
-            var emails = await emailService.GetEmailByUserAsync(criteria);
+            var criteria = new GetEmailsCriteria { Start = start, Search = search ??= "", End = perPage };
+            var emails = await emailService.GetEmailsAsync(criteria);
             var paging = new PagingModel
             {
                 CurrentPage = page,
@@ -64,7 +67,7 @@
 
         public IActionResult Create()
         {
-            string rawUrl = string.Concat($"{Request.Scheme}://{Request.Host}{Request.PathBase}", "/VerifySendEmailLink?{token}");
+            var rawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}");
             ViewBag.rawUrl = rawUrl;
             return View();
         }
@@ -76,7 +79,7 @@
             var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
             var userNumber = subscribedUsers.Count;
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = DateTime.UtcNow;
+            model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             var result = await emailService.CreateEmailAsync(model);
 
@@ -85,13 +88,12 @@
                 foreach (var user in subscribedUsers)
                 {
                     var token = Guid.NewGuid().ToString();
-                    var tokenParam = "token=" + token;
                     var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
-                    var messageReturnLink = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
-                    var emailContent = model.EmailContent.Replace("{token}", tokenParam) + messageReturnLink;
+                    var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                    var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
 
                     var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
-                    var detailModel = new EmailDetailModel
+                    var emailData = new EmailDetailModel
                     {
                         EmailId = model.EmailId,
                         UserId = user.Id,
@@ -99,10 +101,10 @@
                         EmailContent = emailContent,
                         EmailTitle = model.EmailTitle,
                         TokenId = token,
-                        SendTime = DateTime.UtcNow,
+                        SendTime = DateTime.Now,
                         Status = resultSendMail.Code
                     };
-                    await emailService.CreateEmailDetailAsync(detailModel);
+                    await emailService.CreateEmailDetailAsync(emailData);
                 }
             }
             return Json(new { result, userNumber });
@@ -126,7 +128,7 @@
                 error = ex.ToString();
             }
             string linkPhoto = "uploads/" + filename;
-            string baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}/";
+            string baseUrl = configuration.GetValue<string>("BaseUrl");
             string url = string.Concat(baseUrl, linkPhoto);
             return Json(new { url, filePath, error });
         }
@@ -139,9 +141,6 @@
             {
                 Email = email
             };
-
-            ViewBag.Page = Constants.ProfileListSendMailPage;
-            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
             return View(Model);
         }
 

@@ -14,10 +14,8 @@
     <link rel="stylesheet" href="~/minify/styles/video.min.css" asp-append-version="true">
 }
 
-@{
-    ViewData["CategorySlug"] = Model.ViewData.Slug;
-}
-@(await Component.InvokeAsync("Menu", new { page = "video-page" }))
+
+@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.ViewData.Slug }))
 <section class="main">
     <div class="container">
         <div class="block block-main">

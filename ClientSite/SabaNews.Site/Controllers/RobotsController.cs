@@ -21,7 +21,7 @@
         [Route("/robots.txt")]
         public ContentResult RobotsTxt()
         {
-            var domainName = configuration.GetValue<string>("SitemapSettings:Domain");
+            var domainName = configuration.GetValue<string>("BaseUrl");
             var sb = new StringBuilder();
             sb.AppendLine("User-agent: *")
                 .AppendLine("allow: /")
@@ -46,7 +46,7 @@
         [Route("sitemap-news.xml")]
         public async Task<ContentResult> SitemapNews()
         {
-            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
+            var domain = configuration.GetValue<string>("BaseUrl");
             var data = await dataControlService.GenerateNewsSitmapXmlData();
             string sitemap = SitemapHelper.GetSitemapNews(data, domain);
             return Content(sitemap, "text/xml", Encoding.UTF8);
@@ -55,7 +55,7 @@
         [Route("tin-moi-nhat.rss")]
         public async Task<ContentResult> RSS()
         {
-            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
+            var domain = configuration.GetValue<string>("BaseUrl");
             var data = await dataControlService.GenerateRSSData();
             string rss = RssHelper.GetRSSDocument(data, domain);
             return Content(rss, "text/xml", Encoding.UTF8);

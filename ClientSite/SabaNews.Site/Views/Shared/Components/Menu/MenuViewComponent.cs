@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Services;
+    using SabaNews.Models;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
 
@@ -16,20 +17,20 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string page = "")
+        public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "")
         {
-            var model = await dataControlService.GetMenuData();
-            var userAgent = Request.Headers["User-Agent"].ToString();
-            ViewBag.UserUgent = userAgent;
-            ViewBag.IsMobile = userAgent.Contains("mobile", System.StringComparison.OrdinalIgnoreCase);
-            ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
+            var menus = await dataControlService.GetMenuData();
             var isAuthenticated = sessionService.User != null;
-            ViewBag.IsAuthenticated = isAuthenticated;
-            ViewBag.Page = page;
+            var model = new MenuViewModel
+            {
+                Menus = menus,
+                Page = page,
+                IsAuthenticated = isAuthenticated,
+                CategorySlug = categorySlug
+            };
             if (isAuthenticated)
             {
-                ViewBag.DisplayName = sessionService.User.Name;
-                ViewBag.Photo = sessionService.User.Photo;
+                model.User = sessionService.User;
             }
             return View(model);
         }

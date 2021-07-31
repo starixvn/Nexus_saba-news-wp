@@ -1,16 +1,15 @@
 ﻿namespace SabaNews.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class HomeController : Controller
     {
@@ -30,15 +29,17 @@
         public async Task<IActionResult> Index()
         {
             var viewModel = await dataControlService.GetHomePageViewModel();
-
-            ViewData[Constants.ViewDataCategoryId] = Constants.Home;
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Empty;
-            ViewData[Constants.ViewDataTitle] = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
-            ViewData[Constants.ViewDataDescription] = viewModel.Category.Description;
-            var domain = configuration.GetValue<string>("SitemapSettings:Domain");
-            ViewData[Constants.ViewUrl] = domain;
-            ViewData[Constants.ViewRSSUrl] = $"{domain}tin-moi-nhat.rss";
-
+            var domain = configuration.GetValue<string>("BaseUrl");
+            var header = new HeaderViewModel
+            {
+                CategoryId = Constants.Home,
+                CategorySlug = Constants.Empty,
+                Title = viewModel.Category.SEOTitle ??= viewModel.Category.Title,
+                Description = viewModel.Category.Description
+            };
+            viewModel.Header = header;
+            viewModel.Url = domain;
+            viewModel.RSSUrl = $"{domain}tin-moi-nhat.rss";
             return View(viewModel);
         }
 
@@ -78,15 +79,21 @@
             var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+            var header = new HeaderViewModel
+            {
+                CategorySlug = Constants.MatchScheduleSlug,
+                CategoryId = pageDetail.CatId,
+                Title = title,
+                Description = pageDetail.Description ??= title
+
+            };
             var Model = new PageViewModel
             {
                 Post = post,
-                Category = pageDetail
+                Category = pageDetail,
+                Header = header
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.MatchScheduleSlug;
-            ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
-            ViewData[Constants.ViewDataTitle] = title;
-            ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;
+           
             return View(Model);
         }
 
@@ -95,14 +102,20 @@
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
             var title = pageDetail.SEOTitle ?? pageDetail.Title;
+            var header = new HeaderViewModel
+            {
+                CategorySlug = Constants.WarningSlug,
+                CategoryId = pageDetail.CatId,
+                Title = title,
+                Description = pageDetail.Description ??= title
+
+            };
             var Model = new PageViewModel
             {
-                Category = pageDetail
+                Category = pageDetail,
+                Header = header
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.WarningSlug;
-            ViewData[Constants.ViewDataCategoryId] = pageDetail.CatId;
-            ViewData[Constants.ViewDataTitle] = title;
-            ViewData[Constants.ViewDataDescription] = pageDetail.Description ??= title;
+            
             return View(Model);
         }
 
