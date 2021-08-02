@@ -39,15 +39,20 @@
 								<div class="form-group email_link">
 									<label>@ViewResources.ReturnLink</label>
 									<input type="text" class="input-form" placeholder="" name="emailReturnLink" />
-									<p class="raw_link" style="display: none">Raw link: <span></span></p>
+									<div class="group_raw_link">
+										<p class="raw_link"><span></span></p>
+										<a href="javascript:;" title="Copy raw link" class="copy-link"><span><i class="icon-link"></i></span></a>
+									</div>
+
 									<p class="help-block"></p>
 								</div>
 								<div class="form-group email_content">
 									<label>@ViewResources.EmailContent</label>
-									<textarea id="emailContent" name="emailContent" class="input-form"></textarea>
+									<textarea id="emailContent" class="input-form"></textarea>
 									<p class="help-block"></p>
 								</div>
-								<button type="submit" class="btn-send-mail">Send</button>
+								<button type="button" class="button btn-red btn-save-as-draft">Save as draft</button>
+								<button type="button" class="button btn-red btn-send-mail">Send</button>
 							</form>
 						</div>
 					</div>

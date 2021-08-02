@@ -186,6 +186,9 @@
   <data name="Disconnect" xml:space="preserve">
     <value>Ngắt liên kết</value>
   </data>
+  <data name="Draft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -407,6 +410,9 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
+  </data>
+  <data name="Sent" xml:space="preserve">
+    <value>Sent</value>
   </data>
   <data name="Share" xml:space="preserve">
     <value>Chia sẻ:</value>

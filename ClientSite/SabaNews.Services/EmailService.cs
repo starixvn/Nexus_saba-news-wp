@@ -5,6 +5,7 @@
     using SabaNews.Criteria.Email;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -33,10 +34,12 @@
                 EmailContent = model.EmailContent,
                 EmailEmbeddedLink = model.EmailEmbeddedLink,
                 SendDate = model.SendDate,
-                CreatedBy = model.CreatedBy
+                CreatedBy = model.CreatedBy,
+                Status = model.Status,
+                CreatedDate = DateTime.Now
             };
             var result =  await baseService.ExecuteNonQueryAsync(command);
-            model.EmailId = command.EmailId;
+            model.Id = command.Id;
             return result;
         }
 
@@ -89,6 +92,11 @@
         public async Task<EmailModel> GetEmailByIdAsync(GetEmailByIdCriteria criteria)
         {
             return await baseService.GetDataEntityAsync<EmailModel>(criteria);
+        }
+
+        public async Task<CommandResult> UpdateStatusAsync(UpdateStatusCommand criteria)
+        {
+            return await baseService.ExecuteNonQueryAsync(criteria);
         }
 
         public async Task<CommandResult> SendMailWithTemplateAsync(string subject, string content, string email, string path)

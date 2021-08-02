@@ -658,18 +658,21 @@ footer {
 .profile-container .block-extension .block__title {
   color: #f12f19; }
 
-.btn-send-mail {
+.button {
   color: #fff;
   padding: 1rem 4rem;
-  background: #9f224e;
   border: none;
   margin-top: 2rem;
   font-weight: bold;
   border-radius: 3px; }
 
-.btn-send-mail:disabled {
+.button:disabled {
   background: #dddddd; }
 
+.btn-red {
+  background: #9f224e; }
+
+.btn
 table {
   margin-top: 1.5rem;
   font-family: arial, sans-serif;
@@ -729,11 +732,6 @@ tr:nth-child(even) {
   margin-left: 20px;
   margin-bottom: 20px; }
 
-.raw_link {
-  margin-top: 1rem !important; }
-  .raw_link span {
-    font-weight: bold; }
-
 .help-block {
   color: red; }
 
@@ -755,3 +753,24 @@ tr:nth-child(even) {
   .form-group label {
     margin-bottom: 1rem;
     font-weight: bold; }
+
+.email_link {
+  position: relative;
+  word-break: break-all; }
+
+.group_raw_link {
+  border: 1px solid #c4c4c4;
+  margin-top: 2rem;
+  display: none; }
+  .group_raw_link .raw_link {
+    margin: 1rem 5rem 1rem 1rem; }
+    .group_raw_link .raw_link span {
+      font-weight: bold; }
+  .group_raw_link .copy-link {
+    cursor: pointer;
+    position: absolute;
+    top: 10.5rem;
+    right: 1.5rem;
+    text-decoration: none; }
+  .group_raw_link .copy-link i {
+    text-decoration: none; }

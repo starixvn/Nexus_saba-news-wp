@@ -4,7 +4,7 @@ namespace SabaNews.Criteria.Email
 {
     public class CreateEmailCriteria : BaseNonQueryCommand
     {
-        public int EmailId { get; set; }
+        public int Id { get; set; }
        
         public string EmailTitle { get; set; }
 
@@ -15,6 +15,10 @@ namespace SabaNews.Criteria.Email
         public DateTime SendDate { get; set; }
 
         public int CreatedBy { get; set; }
+
+        public int Status { get; set; }
+        
+        public DateTime CreatedDate { get; set; }
 
         public override string GetSettingKey() => "email_create";
 

@@ -13,6 +13,8 @@
 }
 
 @section Scripts{
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+
 	<script src="~/js/admin/email/index.js" asp-append-version="true"></script>
 }
 
@@ -24,7 +26,7 @@
 				<div class="list_email_block"></div>
 			</div>
 		</div>
-		
+
 	</div>
 
 	<div class="modal" id="ViewEmailContent" style="display:none">
@@ -38,6 +40,23 @@
 				</div>
 
 				<div class="modal-body ck-content">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="NoticeModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,7 @@ namespace SabaNews.Models.Email
 {
     public class EmailModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string EmailTitle { get; set; }
 
@@ -21,17 +21,20 @@ namespace SabaNews.Models.Email
 
         public DateTime SendDate { get; set; }
 
-        public int EmailId { get; set; }
+
+        public int Status { get; set; } 
 
         public int TotalSent { get; set; }
 
         public int TotalClicked { get; set; }
 
-        public string SendMailTime
+        public DateTime CreatedDate { get; set; }
+
+        public string CreatedTime
         {
             get
             {
-                return SendDate.ToString("dd MMMM yyyy hh:mm ");
+                return CreatedDate.ToString("dd MMMM yyyy hh:mm ");
             }
         }
     }

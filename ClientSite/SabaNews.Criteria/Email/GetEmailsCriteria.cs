@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Email
 {
     using Fanex.Data.Repository;
+    using System;
 
     public class GetEmailsCriteria : CriteriaBase
     {
@@ -9,6 +10,10 @@
         public int Start { get; set; }
 
         public int End { get; set; }
+
+        public string DateFrom { get; set; }
+
+        public string DateTo { get; set; }
 
         public int TotalItems { get; set; }
 

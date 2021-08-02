@@ -976,39 +976,34 @@ table {
   background-color: #9f83d1; }
 
 .form_search {
-  width: 30%;
-  float: right;
+  width: 100%;
   margin-bottom: 2rem;
   clear: both; }
-
-.form_search input[type=text] {
-  padding: 5px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%; }
-
-/* Style the submit button */
-.form_search button {
-  float: left;
-  width: 20%;
-  padding: 6px;
-  background: #2b686e;
-  color: white;
-  font-size: 15px;
-  border: 1px solid grey;
-  border-left: none;
-  /* Prevent double borders */
-  cursor: pointer; }
-
-.form_search button:hover {
-  background: #0b7dda; }
-
-/* Clear floats */
-.form_search::after {
-  content: "";
-  clear: both;
-  display: table; }
+  .form_search input[type=text] {
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 100%; }
+  .form_search button {
+    float: right;
+    width: 100%;
+    padding: 0.5rem;
+    background: #2b686e;
+    color: white;
+    font-size: 15px;
+    border: 1px solid grey;
+    border-left: none;
+    /* Prevent double borders */
+    cursor: pointer; }
+  .form_search::after {
+    content: "";
+    clear: both;
+    display: table; }
+  .form_search .form-group {
+    margin-right: 1rem; }
+    .form_search .form-group .form-control {
+      padding: 1.5rem; }
 
 .nodata_table {
   text-align: center;

@@ -195,19 +195,24 @@
 }
 
 
-.btn-send-mail {
+.button {
     color: #fff;
     padding: 1rem 4rem;
-    background: #9f224e;
     border: none;
     margin-top: 2rem;
     font-weight: bold;
     border-radius: 3px;
 }
 
-.btn-send-mail:disabled {
+.button:disabled {
     background: #dddddd;
 }
+
+.btn-red {
+    background: #9f224e;
+}
+
+.btn
 
 table {
     margin-top: 1.5rem;
@@ -277,14 +282,6 @@ tr:nth-child(even) {
     margin-bottom: 20px;
 }
 
-.raw_link {
-    margin-top: 1rem !important;
-
-    span {
-        font-weight: bold;
-    }
-}
-
 .help-block {
     color: red;
 }
@@ -313,3 +310,39 @@ tr:nth-child(even) {
         font-weight: bold;
     }
 }
+
+.email_link {
+    position: relative;
+    word-break: break-all;
+}
+
+.group_raw_link {
+    border: 1px solid #c4c4c4;
+    margin-top: 2rem;
+    display: none;
+
+    .raw_link {
+        margin: 1rem 5rem 1rem 1rem;
+
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .copy-link {
+        cursor: pointer;
+        position: absolute;
+        top: 10.5rem;
+        right: 1.5rem;
+        text-decoration: none
+    }
+
+    .copy-link i{
+        text-decoration: none
+    }
+}
+
+
+
+
