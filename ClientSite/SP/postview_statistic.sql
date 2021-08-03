@@ -69,62 +69,58 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_statistic_get`(
     toDate DATE
 )
 BEGIN
-	DECLARE TotalPost INT DEFAULT 0; 
-    DECLARE TotalVideo INT DEFAULT 0;
-    DECLARE TotalPostView INT DEFAULT 0;
-    DECLARE TotalVideoView INT DEFAULT 0;
-	
-	DROP TEMPORARY TABLE IF EXISTS tmp_PostViews;
-	CREATE TEMPORARY TABLE tmp_PostViews(PostId BIGINT UNSIGNED, ViewCount INT, ViewDate DATE, VideoView INT, IsVideo BIT);
-    INSERT INTO tmp_PostViews(PostId, ViewCount, ViewDate, VideoView, IsVideo)
-    SELECT pvd.post_id 
-           ,pvd.view_count
-           ,pvd.view_date
-           ,pvd.video_view
-           ,pvd.is_video_post
-    FROM wp_postview_details pvd
-    INNER JOIN wp_posts p ON p.ID = pvd.post_id AND p.post_status = 'publish' AND p.post_type = 'post'
-    WHERE pvd.view_date BETWEEN fromDate AND toDate;
-    
-    DROP TEMPORARY TABLE IF EXISTS tmp_PostRootCategory;
-    CREATE TEMPORARY TABLE tmp_PostRootCategory(PostId BIGINT UNSIGNED, RootCategoryId INT);
-    INSERT INTO tmp_PostRootCategory(PostId, RootCategoryId)
-    SELECT DISTINCT p.ID
-                    ,get_root_category(tt.term_id)
+    DROP TEMPORARY TABLE IF EXISTS tmpPosts;
+    CREATE TEMPORARY TABLE tmpPosts(PostId BIGINT UNSIGNED, PostDate DATE, RootCategoryId INT);
+    INSERT INTO tmpPosts(PostId, PostDate, RootCategoryId)
+    SELECT DISTINCT p.ID ,p.post_date ,get_root_category(tt.term_id)
     FROM wp_posts p
     INNER JOIN wp_term_relationships tr ON p.ID = tr.object_id
     INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id and tt.taxonomy = 'category'
     WHERE p.post_status = 'publish' AND p.post_type = 'post'
     AND p.post_date BETWEEN fromDate  AND toDate;
-
-	SELECT COUNT(DISTINCT tmp.PostId) 
-    FROM tmp_PostRootCategory tmp 
-    INNER JOIN wp_terms t ON tmp.RootCategoryId = t.term_id 
-    WHERE t.name <> 'video' INTO TotalPost;
-
-    SELECT COUNT(DISTINCT tmp.PostId) 
-    FROM tmp_PostRootCategory tmp 
-    INNER JOIN wp_terms t ON tmp.RootCategoryId = t.term_id 
-    WHERE t.name = 'video' INTO TotalVideo;
-
-    SELECT SUM(tmpView.ViewCount) 
-    FROM tmp_PostViews tmpView
-    INNER JOIN tmp_PostRootCategory tmpPost ON tmpView.PostId = tmpPost.PostId
-    WHERE tmpView.IsVideo = 0 INTO TotalPostView;
-
-	SELECT SUM(tmpView.VideoView) 
-    FROM tmp_PostViews tmpView 
-    INNER JOIN tmp_PostRootCategory tmpPost ON tmpView.PostId = tmpPost.PostId
-    WHERE tmpView.IsVideo = 1 INTO TotalVideoView;
     
-    SELECT IFNULL(TotalPost, 0) As TotalPost
-            ,IFNULL(TotalVideo, 0) As TotalVideo
-            ,IFNULL(TotalPostView, 0) As TotalPostView
-            ,IFNULL(TotalVideoView, 0) As TotalVideoView;
+    DROP TEMPORARY TABLE IF EXISTS tmpResult;
+    CREATE TEMPORARY TABLE tmpResult(OnDate DATE PRIMARY KEY, PostCount INT, VideoCount INT, PostView INT, VideoView INT);
+    INSERT INTO tmpResult(OnDate, PostCount, VideoCount)
+    SELECT p.PostDate
+            ,COUNT(IF (t.Name <> 'video', p.PostId, NULL)) As PostCount
+            ,COUNT(IF (t.Name = 'video', p.PostId, NULL)) As VideoCount
+    FROM tmpPosts p
+    INNER JOIN wp_terms t ON p.RootCategoryId = t.term_id
+    GROUP BY p.PostDate
+    ORDER BY p.PostDate;       
+
+    DROP TEMPORARY TABLE IF EXISTS tmpViews;
+    CREATE TEMPORARY TABLE tmpViews(OnDate DATE, PostView INT, VideoView INT);
+    INSERT INTO tmpViews(OnDate, PostView, VideoView)
+	SELECT pwd.view_date
+	   ,SUM(CASE WHEN pwd.is_video_post <> 1 THEN pwd.view_count ELSE 0 END) AS PostView
+       ,SUM(CASE WHEN pwd.is_video_post = 1 THEN pwd.video_view ELSE 0 END) As VideoView       
+    FROM wp_postview_details pwd 
+    INNER JOIN tmpPosts p ON pwd.post_id = p.PostId
+    WHERE pwd.view_date BETWEEN fromDate  AND toDate
+    GROUP BY pwd.view_date
+    ORDER BY pwd.view_date;
+
+	INSERT INTO tmpResult(OnDate, PostView, VideoView)
+    SELECT v.OnDate, v.PostView, v.VideoView
+    FROM tmpViews v
+    ON DUPLICATE KEY UPDATE
+        PostView = IFNULL(v.PostView,0)
+       ,VideoView = IFNULL(v.VideoView, 0);
     
-    DROP TEMPORARY TABLE IF EXISTS tmp_PostViews;
-    DROP TEMPORARY TABLE IF EXISTS tmp_PostRootCategory;
+    SELECT r.OnDate
+         ,IFNULL(r.PostCount, 0) AS PostCount
+         ,IFNULL(r.VideoCount, 0) AS VideoCount
+         ,IFNULL(r.VideoView, 0) AS VideoView
+         ,IFNULL(r.PostView, 0) AS PostView
+    FROM tmpResult r
+    ORDER BY r.OnDate;
+    
+    DROP TEMPORARY TABLE IF EXISTS tmpPosts;
+    DROP TEMPORARY TABLE IF EXISTS tmpResult;
+    DROP TEMPORARY TABLE IF EXISTS tmpViews;
 
 END
 //
-DELIMITER ;	
+DELIMITER ;

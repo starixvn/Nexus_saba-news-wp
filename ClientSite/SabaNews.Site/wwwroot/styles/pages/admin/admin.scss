@@ -40,6 +40,7 @@
         padding: 20px;
         border: 1px solid #ccc;
     }
+
     .content {
         padding: 20px;
     }
@@ -52,5 +53,35 @@
 
     .sidenav a {
         font-size: 18px;
+    }
+}
+.text-center {
+    text-align: center;
+}
+
+.data-grid {
+    width: 100%;
+
+    tbody tr td {
+        border: 1px solid #ced4da;
+        vertical-align: middle;
+        padding: 5px 10px;
+    }
+
+    thead tr th {
+        background-color: #066896;
+        border: none;
+        border-left: 1px solid #ced4da;
+        text-align: center;
+        padding: 10px;
+        color: #fff;
+    }
+
+    tfoot tr td {
+        background-color: #a9cbdc;
+        border: none;
+        border-left: 1px solid #ced4da;
+        text-align: center;
+        padding: 5px 10px;
     }
 }

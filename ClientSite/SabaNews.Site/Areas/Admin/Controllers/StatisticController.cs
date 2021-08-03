@@ -3,6 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Statistic;
     using SabaNews.Services.Interfaces;
 
@@ -21,7 +22,7 @@
             StatisticFilterViewModel viewModel = new()
             {
                 FromDate = new DateTime(now.Year, now.Month, 1),
-                ToDate = new DateTime(now.Year, now.Month, now.Day)
+                ToDate = now
             };
             return View(viewModel);
         }
@@ -30,7 +31,11 @@
         public async Task<IActionResult> PostViewStatistic(StatisticFilterViewModel viewModel)
         {
             var statistic = await statisticService.GetPostViewStatistic(viewModel.FromDate, viewModel.ToDate);
-            return PartialView("_PostViewStatistic", statistic);
+            var statisticViewModel = new PostViewStatisticModel
+            {
+                PostViewDetails = statistic
+            };
+            return PartialView("_PostViewStatistic", statisticViewModel);
         }
     }
 }

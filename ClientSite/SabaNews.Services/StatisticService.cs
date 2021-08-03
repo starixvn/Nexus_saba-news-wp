@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Services
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
@@ -15,7 +17,7 @@
             this.baseService = baseService;
         }
 
-        public async Task<PostViewStatistic> GetPostViewStatistic(DateTime fromDate, DateTime toDate)
+        public async Task<IEnumerable<PostStatisticInfo>> GetPostViewStatistic(DateTime fromDate, DateTime toDate)
         {
             var criteria = new GetPostViewStatiscticCriteria
             {
@@ -23,7 +25,36 @@
                 ToDate = toDate
             };
 
-            return await baseService.GetDataEntityAsync<PostViewStatistic>(criteria);
+            var postStatistics = await baseService.GetDataAsync<PostStatisticInfo>(criteria);
+
+            var results = FillBlankDateStatistic(fromDate, toDate, postStatistics);
+            return results;
+        }
+
+        private IEnumerable<PostStatisticInfo> FillBlankDateStatistic(DateTime fromDate, DateTime toDate, IEnumerable<PostStatisticInfo> postStatistics)
+        {
+            var result = new List<PostStatisticInfo>();
+            double totalDays = (toDate - fromDate).TotalDays;
+            var startDate = fromDate;
+            for (double i = 0; i < totalDays; i++)
+            {
+                if (postStatistics.Any(s => s.OnDate.Date == startDate.Date))
+                {
+                    var item = postStatistics.FirstOrDefault(i => i.OnDate.Date == startDate.Date);
+                    result.Add(item);
+                }
+                else
+                {
+                    var filledItem = new PostStatisticInfo
+                    {
+                        OnDate = startDate
+                    };
+                    result.Add(filledItem);
+                }
+                startDate = startDate.AddDays(1);
+            }
+
+            return result.OrderBy(x => x.OnDate);
         }
     }
 }
