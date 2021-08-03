@@ -3,7 +3,6 @@ var sendmailevent = (function ($) {
     configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
     var form = 'form#form-sendmail';
     function HandleValidate() {
-        console.log(123);
         var isValid = true;
         if (editorValue.getData().trim() === "") {
             $('.email_content .help-block').html('Email Content is required');
@@ -45,7 +44,7 @@ var sendmailevent = (function ($) {
         });
 
         $('.copy-link').on("click", function () {
-            console.log(123);
+            var self = $(this);
             var dummy = document.createElement('input'),
                 text = $('#returnUrl').val();
 
@@ -54,6 +53,10 @@ var sendmailevent = (function ($) {
             dummy.select();
             document.execCommand('copy');
             document.body.removeChild(dummy);
+            $(this).parent().find('.tip').show();
+            setTimeout(function () {
+                self.parent().find('.tip').hide();
+            }, 1000);
         });
 
 
@@ -80,7 +83,6 @@ var sendmailevent = (function ($) {
         var data = $(form).serialize();
         data += "&emailEmbeddedLink=" + $('#returnUrl').val();
         data += "&emailContent=" + encodeURIComponent(editorValue.getData());
-        console.log(data);
         $('.btn-send-mail').prop('disabled', true);
         $('.btn-save-as-draft').prop('disabled', true);
         $.ajax({

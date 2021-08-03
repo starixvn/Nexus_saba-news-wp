@@ -21,7 +21,6 @@ namespace SabaNews.Models.Email
 
         public DateTime SendDate { get; set; }
 
-
         public int Status { get; set; } 
 
         public int TotalSent { get; set; }

@@ -144,9 +144,9 @@
         public const string ProfileListSendMailPage = "ListSendMail";
         public const string UnsubscribeTemplate = "<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi </div>";
         public const string NotfoundView = "~/Views/Home/EmptyBlog.cshtml";
+        public const string CustomerRole = "customer";
         public const int EmailSent = 0;
-        public const int Emaildraft = 1;
-        public const int EmailTesting = 2;
+        public const int EmailReview = 1;
         
     }
 }

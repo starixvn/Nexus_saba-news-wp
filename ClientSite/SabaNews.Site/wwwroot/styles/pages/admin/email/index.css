@@ -922,6 +922,9 @@ table {
   background-color: #009688 !important;
   padding: 1rem 4rem 1rem 1rem; }
 
+.modal select {
+  padding: 0.5rem !important; }
+
 .summary-eror {
   margin-left: 20px;
   margin-bottom: 20px; }
@@ -975,17 +978,17 @@ table {
 .label.color-purple {
   background-color: #9f83d1; }
 
-.form_search {
+.form_search, .form {
   width: 100%;
   margin-bottom: 2rem;
   clear: both; }
-  .form_search input[type=text] {
+  .form_search input[type=text], .form input[type=text] {
     padding: 5px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
     width: 100%; }
-  .form_search button {
+  .form_search button, .form button {
     float: right;
     width: 100%;
     padding: 0.5rem;
@@ -996,15 +999,38 @@ table {
     border-left: none;
     /* Prevent double borders */
     cursor: pointer; }
-  .form_search::after {
+  .form_search::after, .form::after {
     content: "";
     clear: both;
     display: table; }
-  .form_search .form-group {
+  .form_search .form-group, .form .form-group {
     margin-right: 1rem; }
-    .form_search .form-group .form-control {
+    .form_search .form-group .form-control, .form .form-group .form-control {
       padding: 1.5rem; }
+    .form_search .form-group label, .form .form-group label {
+      font-weight: bold; }
+  .form_search .btn-review-send-email, .form .btn-review-send-email {
+    margin-top: 2rem; }
 
 .nodata_table {
   text-align: center;
   color: red; }
+
+.send_to {
+  margin-left: 3rem; }
+
+.user_list {
+  display: none; }
+
+select.form-control {
+  height: 4rem;
+  font-size: 1.5rem; }
+
+.help-block {
+  color: red; }
+
+.has-error {
+  border: 1px solid red !important; }
+
+#TestSendEmail .modal-body {
+  padding: 3rem; }

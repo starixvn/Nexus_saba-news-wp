@@ -239,6 +239,10 @@ table {
     padding: 1rem 4rem 1rem 1rem;
 }
 
+.modal select {
+    padding: 0.5rem !important;
+}
+
 .summary-eror {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -303,7 +307,7 @@ table {
     background-color: #9f83d1;
 }
 
-.form_search {
+.form_search, .form {
     width: 100%;
     margin-bottom: 2rem;
     clear: both;
@@ -328,6 +332,8 @@ table {
         cursor: pointer;
     }
 
+    
+
     &::after {
         content: "";
         clear: both;
@@ -340,6 +346,14 @@ table {
         .form-control {
             padding: 1.5rem;
         }
+
+        label {
+            font-weight: bold;
+        }
+    }
+
+    .btn-review-send-email {
+        margin-top: 2rem;
     }
 }
 
@@ -348,6 +362,35 @@ table {
     text-align:center;
     color: red;
 }
+
+.send_to {
+    margin-left: 3rem;
+}
+
+.user_list {
+    display: none;
+}
+
+select.form-control {
+    height: 4rem;
+    font-size: 1.5rem;
+}
+
+.help-block {
+    color: red;
+}
+
+.has-error {
+    border: 1px solid red !important;
+}
+
+#TestSendEmail .modal-body {
+    padding: 3rem;
+}
+
+
+
+
 
 
 

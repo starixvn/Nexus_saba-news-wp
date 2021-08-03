@@ -48,9 +48,9 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<IEnumerable<UserSession>> GetAllUserAsync()
+        public async Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria)
         {
-            return await baseService.GetDataAsync<UserSession>(new GetAllUserCriteria());
+            return await baseService.GetDataAsync<UserSession>(criteria);
         }
 
         public async Task<CommandResult> UnSubcriteUserAsync(int UserId)

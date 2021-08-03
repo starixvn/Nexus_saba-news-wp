@@ -61,6 +61,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm.
         /// </summary>
         public static string Add {
@@ -538,6 +547,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List Users.
+        /// </summary>
+        public static string ListUsers {
+            get {
+                return ResourceManager.GetString("ListUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đang tải ảnh đại diện.
         /// </summary>
         public static string LoadingAvatar {
@@ -862,6 +880,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reviewing.
+        /// </summary>
+        public static string Reviewing {
+            get {
+                return ResourceManager.GetString("Reviewing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review Send Email.
+        /// </summary>
+        public static string ReviewSendEmail {
+            get {
+                return ResourceManager.GetString("ReviewSendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SABA Sports cam kết bảo mật thông tin này.
         /// </summary>
         public static string SabasportsCommitmentSecureInfo {
@@ -939,6 +975,15 @@ namespace SabaNews.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send To:.
+        /// </summary>
+        public static string SendTo {
+            get {
+                return ResourceManager.GetString("SendTo", resourceCulture);
             }
         }
         
@@ -1038,6 +1083,15 @@ namespace SabaNews.Resources {
         public static string Tennis {
             get {
                 return ResourceManager.GetString("Tennis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Send Email.
+        /// </summary>
+        public static string TestSendEmail {
+            get {
+                return ResourceManager.GetString("TestSendEmail", resourceCulture);
             }
         }
         

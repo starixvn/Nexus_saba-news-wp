@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Thêm</value>
   </data>
@@ -276,6 +279,9 @@
   <data name="ListSentMail" xml:space="preserve">
     <value>List sent email</value>
   </data>
+  <data name="ListUsers" xml:space="preserve">
+    <value>List Users</value>
+  </data>
   <data name="LoadingAvatar" xml:space="preserve">
     <value>Đang tải ảnh đại diện</value>
   </data>
@@ -384,6 +390,12 @@
   <data name="ReturnLink" xml:space="preserve">
     <value>Return Link</value>
   </data>
+  <data name="Reviewing" xml:space="preserve">
+    <value>Reviewing</value>
+  </data>
+  <data name="ReviewSendEmail" xml:space="preserve">
+    <value>Review Send Email</value>
+  </data>
   <data name="SabasportsCommitmentSecureInfo" xml:space="preserve">
     <value>SABA Sports cam kết bảo mật thông tin này</value>
   </data>
@@ -410,6 +422,9 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
+  </data>
+  <data name="SendTo" xml:space="preserve">
+    <value>Send To:</value>
   </data>
   <data name="Sent" xml:space="preserve">
     <value>Sent</value>
@@ -443,6 +458,9 @@
   </data>
   <data name="Tennis" xml:space="preserve">
     <value>Quần vợt</value>
+  </data>
+  <data name="TestSendEmail" xml:space="preserve">
+    <value>Test Send Email</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>

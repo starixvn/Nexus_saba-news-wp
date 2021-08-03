@@ -29,12 +29,13 @@
 	<tr>
 		<th width="5%">@ViewResources.STT</th>
 		<th>@ViewResources.Title</th>
-		<th width="15%">@ViewResources.Content</th>
+		<th width="10%">@ViewResources.Content</th>
 		<th width="15%">@ViewResources.SendDate</th>
-		<th width="15%">@ViewResources.CreatedBy</th>
+		<th width="10%">@ViewResources.CreatedBy</th>
 		<th width="10%">@ViewResources.NumberSent</th>
 		<th width="10%">@ViewResources.NumberClicked</th>
 		<th width="15%">@ViewResources.Status</th>
+		<th width="10%">@ViewResources.Action</th>
 
 		@{ var stt = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 		@foreach (var email in Model.Emails)
@@ -68,18 +69,19 @@
 					{
 						@ViewResources.Sent
 					}
-					else
+					else if (email.Status == 1)
 					{
-						@ViewResources.Draft
+						@ViewResources.Reviewing
 						<a href="javascript:;" class="label color-blue send-email" data-emailid="@email.Id">Send</a>
 					}
 				</td>
+				<td><a href="javascript:;" class="label color-blue review-send-email" data-emailid="@email.Id">Review send email</a></td>
 			</tr>
 	}
 	@if (Model.Emails.Count == 0)
 	{
 		<tr>
-			<th class="nodata_table" colspan="8">There are no data</th>
+			<th class="nodata_table" colspan="9">There are no data</th>
 		</tr>
 	}
 

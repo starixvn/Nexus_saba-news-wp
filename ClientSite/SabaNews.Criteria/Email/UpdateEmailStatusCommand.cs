@@ -2,9 +2,9 @@
 {
     public class UpdateEmailStatusCommand : BaseNonQueryCommand
     {
-        public int EmailId { get; set; }
+        public int _EmailId { get; set; }
 
-        public int UserId { get; set; }
+        public int _UserId { get; set; }
 
         public int Status { get; set; }
 
