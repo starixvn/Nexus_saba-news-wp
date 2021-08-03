@@ -31,27 +31,26 @@
             return results;
         }
 
-        private IEnumerable<PostStatisticInfo> FillBlankDateStatistic(DateTime fromDate, DateTime toDate, IEnumerable<PostStatisticInfo> postStatistics)
+        private static IEnumerable<PostStatisticInfo> FillBlankDateStatistic(DateTime fromDate, DateTime toDate, IEnumerable<PostStatisticInfo> postStatistics)
         {
             var result = new List<PostStatisticInfo>();
-            double totalDays = (toDate - fromDate).TotalDays;
-            var startDate = fromDate;
+            double totalDays = (toDate - fromDate).TotalDays + 1;
             for (double i = 0; i < totalDays; i++)
             {
-                if (postStatistics.Any(s => s.OnDate.Date == startDate.Date))
+                if (postStatistics.Any(s => s.OnDate.Date == fromDate.Date))
                 {
-                    var item = postStatistics.FirstOrDefault(i => i.OnDate.Date == startDate.Date);
+                    var item = postStatistics.FirstOrDefault(i => i.OnDate.Date == fromDate.Date);
                     result.Add(item);
                 }
                 else
                 {
                     var filledItem = new PostStatisticInfo
                     {
-                        OnDate = startDate
+                        OnDate = fromDate
                     };
                     result.Add(filledItem);
                 }
-                startDate = startDate.AddDays(1);
+                fromDate = fromDate.AddDays(1);
             }
 
             return result.OrderBy(x => x.OnDate);
