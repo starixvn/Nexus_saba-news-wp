@@ -442,7 +442,7 @@
     <value>Send email</value>
   </data>
   <data name="SendTestEmailTo" xml:space="preserve">
-    <value>SendTestEmailTo</value>
+    <value>Send test email to</value>
   </data>
   <data name="SendTo" xml:space="preserve">
     <value>Send To:</value>

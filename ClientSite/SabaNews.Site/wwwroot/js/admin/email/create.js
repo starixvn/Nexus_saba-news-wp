@@ -108,7 +108,6 @@ var sendmailevent = (function ($) {
     }
 
     function HandleTestSendEmail() {
-
         $('.btn-test').on('click', function () {
             var isValid = HandleValidate();
             if (isValid) {
@@ -135,15 +134,15 @@ var sendmailevent = (function ($) {
 
         $('.submit-test-send-email').on('click', function () {
             var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            if (!regex.test($('input[name="email"]').val())) {
-                $('input[name="email"]').addClass('has-error');
+            if (!regex.test($('input[name="emailAddress"]').val())) {
+                $('input[name="emailAddress"]').addClass('has-error');
                 $('.email .help-block').html('Please enter email format');
                 return false;
             }
             $('#TestSendEmail').modal('hide');
             var data = $(form).serialize();
             data += "&emailContent=" + encodeURIComponent(editorValue.getData());
-            data += "&emailAddress" + $('input[name=email]').val();
+            data += "&emailAddress=" + $('input[name=emailAddress]').val();
             $.ajax({
                 url: "/Admin/Email/TestSendEmail",
                 type: "POST",

@@ -1105,7 +1105,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SendTestEmailTo.
+        ///   Looks up a localized string similar to Send test email to.
         /// </summary>
         public static string SendTestEmailTo {
             get {
