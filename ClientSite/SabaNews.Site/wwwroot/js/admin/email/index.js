@@ -63,7 +63,7 @@ var email = (function ($) {
         });
 
         $('#NoticeModal').on('hidden.bs.modal', function () {
-            location.reload();
+            renderListEmail();
         })
     }
 

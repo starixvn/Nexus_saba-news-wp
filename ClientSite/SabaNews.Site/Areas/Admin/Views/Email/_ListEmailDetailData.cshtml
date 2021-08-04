@@ -37,6 +37,19 @@
 		</tr>
 	}
 
+	<div class="form_search">
+		<div class="row">
+			<div class="col-xs-6 form-group">
+				<label>Email</label>
+				<input class="form-control" name="search" value="@Model.Paging.SearchValue" placeholder="Search Email..." type="text" />
+			</div>
+			<div class="col-xs-6 form-group">
+				<label>&nbsp;</label>
+				<button type="button" class="btn btn-primary search_email_detail"><i class="icon-search"></i></button>
+			</div>
+		</div>
+	</div>
+
 </table>
 @{
 	int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);

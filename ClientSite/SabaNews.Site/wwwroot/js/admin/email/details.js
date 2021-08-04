@@ -2,12 +2,13 @@
 var detail = (function ($) {
     var page = 1;
     var emailId = eId;
+    var search = "";
 
     function renderList() {
         $.ajax({
             url: '/Admin/Email/GetListEmailDetailData',
             type: 'POST',
-            data: { emailId ,page },
+            data: { emailId ,page, search },
             success: function (res) {
                 $('.list_detail_content').html(res);
                 handleEmailDetailList();
@@ -42,6 +43,11 @@ var detail = (function ($) {
             page = $(this).data('page');
             renderList();
 
+        });
+
+        $('.search_email_detail').on('click', function () {
+            search = $("input[name=search]").val();
+            renderList();
         });
     }
 

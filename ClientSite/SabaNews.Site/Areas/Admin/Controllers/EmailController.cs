@@ -223,22 +223,24 @@
             return View(Model);
         }
 
-        public async Task<ActionResult> GetListEmailDetailData(int emailId, int page)
+        public async Task<ActionResult> GetListEmailDetailData(EmailDetailFilterViewModel param)
         {
             const int perPage = Constants.Perpage;
-            var start = (page - 1) * perPage;
+            var start = (param.Page - 1) * perPage;
             var criteria = new GetEmailDetailByEmailIdCriteria
             {
-                EmailID = emailId,
+                EmailID = param.EmailId,
+                Search = param.Search ??= "",
                 Start = start,
                 End = perPage
             };
             var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
             var paging = new PagingModel
             {
-                CurrentPage = page,
+                CurrentPage = param.Page,
                 PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
+                SearchValue = param.Search,
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage)
             };
             var model = new EmailDetailViewModel
             {

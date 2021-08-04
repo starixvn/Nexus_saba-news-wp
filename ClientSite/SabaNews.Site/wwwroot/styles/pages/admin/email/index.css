@@ -932,15 +932,6 @@ table {
 .return_link {
   display: none; }
 
-.detail_header {
-  margin: 2rem 0; }
-
-.detail_title {
-  float: left; }
-
-.detail_content {
-  float: right; }
-
 .label {
   text-decoration: none;
   box-sizing: border-box;
