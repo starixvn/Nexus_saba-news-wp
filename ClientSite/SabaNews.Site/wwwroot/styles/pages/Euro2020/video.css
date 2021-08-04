@@ -95,13 +95,12 @@ p.has-text-align-center {
 }*/
 .footer {
   background-color: #081224;
-  border-top: 4px solid #EB5342;
+  border-top: 4px solid #F12F19;
   padding: 3.6rem 0;
   position: relative; }
   @media screen and (max-width: 1024px) {
     .footer {
-      padding: .8rem 0;
-      margin-top: 2.7rem; } }
+      padding: .8rem 0; } }
   .footer .container {
     display: flex;
     justify-content: space-between;
@@ -115,10 +114,15 @@ p.has-text-align-center {
     @media screen and (max-width: 1024px) {
       .footer .copy-right, .footer .follow {
         font-size: 1.2rem; } }
-  @media (max-device-width: 767px) {
-    .footer .copy-right {
-      border-top: 1px solid #1B263A;
-      padding-top: .8rem; } }
+  .footer .copy-right {
+    display: flex;
+    align-items: center; }
+    @media (max-device-width: 767px) {
+      .footer .copy-right {
+        border-top: 1px solid #1B263A;
+        padding-top: .8rem;
+        width: 100%;
+        justify-content: space-between; } }
   .footer .follow {
     display: flex;
     align-items: center; }
@@ -137,7 +141,11 @@ p.has-text-align-center {
   .footer .ex {
     display: inline-block;
     position: relative;
-    top: 3px; }
+    top: 3px;
+    left: 3px; }
+    @media (max-device-width: 767px) {
+      .footer .ex {
+        left: 0; } }
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
@@ -1125,7 +1133,8 @@ button {
     text-decoration: none;
     color: #333;
     transition: color .3s ease;
-    display: block; }
+    /*display: block;*/
+    display: initial; }
     .card-horizontal__content .title:hover {
       color: #EB5342; }
   .card-horizontal__content .datetime {
@@ -1185,7 +1194,8 @@ button {
     letter-spacing: -0.02rem;
     text-decoration: none;
     transition: color .3s ease;
-    display: block;
+    /*display: block;*/
+    display: initial;
     line-height: 2rem; }
     .card-vertical__title:hover {
       color: #EB5342; }

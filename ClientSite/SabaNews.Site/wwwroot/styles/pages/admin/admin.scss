@@ -1,4 +1,8 @@
-﻿body {
+﻿@import '../../abstracts/_variables.scss';
+@import '../../abstracts/_mixins.scss';
+@import '../../components/_buttons.scss';
+
+body {
     font-family: "Lato", sans-serif;
 }
 
@@ -9,7 +13,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #066896;
+    background-color: $bg-nav-admin;
     overflow-x: hidden;
     padding-top: 20px;
 
