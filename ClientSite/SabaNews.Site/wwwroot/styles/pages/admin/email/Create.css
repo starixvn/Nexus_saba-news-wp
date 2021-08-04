@@ -551,29 +551,6 @@ footer {
     flex-wrap: nowrap;
     justify-content: center;
     flex-direction: row; }
-  .block-main .profile__name {
-    font-size: 1.8rem;
-    color: #4F4F4F;
-    font-weight: 700;
-    text-align: center; }
-  .block-main .profile__date {
-    border-bottom: 1px solid #e5e5e5;
-    text-align: center;
-    padding: 1rem 0 1rem 0;
-    margin-top: 1.5rem;
-    position: relative; }
-    .block-main .profile__date:after {
-      content: "";
-      display: block;
-      width: 14rem;
-      height: .1rem;
-      background: #e5e5e5;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      margin-left: -7rem; }
-    .block-main .profile__date p {
-      margin-bottom: 0; }
   .block-main .profile__control, .block-main .profile__nav {
     list-style: none;
     margin-bottom: 0;
@@ -784,7 +761,7 @@ tr:nth-child(even) {
 select.form-control {
   height: 3.5rem;
   font-size: 1.5rem;
-  padding: 0.5rem; }
+  padding: .5rem; }
 
 .tip {
   position: absolute;
