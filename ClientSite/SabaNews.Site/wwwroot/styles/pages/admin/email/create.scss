@@ -36,7 +36,29 @@
 
        
 
-        
+        &__date {
+            border-bottom: 1px solid $separator-color;
+            text-align: center;
+            padding: 1rem 0 1rem 0;
+            margin-top: 1.5rem;
+            position: relative;
+
+            &:after {
+                content: "";
+                display: block;
+                width: 14rem;
+                height: .1rem;
+                background: $separator-color;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                margin-left: -7rem;
+            }
+
+            p {
+                margin-bottom: 0;
+            }
+        }
 
         &__control, &__nav {
             list-style: none;
