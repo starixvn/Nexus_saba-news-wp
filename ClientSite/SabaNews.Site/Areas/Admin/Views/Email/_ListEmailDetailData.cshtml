@@ -1,5 +1,24 @@
 ﻿@using SabaNews.Resources;
-
+<div class="form_search">
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<label>Email</label>
+			<input class="form-control" name="search" value="@Model.Paging.SearchValue" placeholder="Search Email..." type="text" />
+		</div>
+		<div class="col-md-3 form-group">
+			<label>IsClicked</label>
+			<select class="form-control" name="filterClicked">
+				<option value="-1">All</option>
+				<option value="0">None</option>
+				<option value="1">Clicked</option>
+			</select>
+		</div>
+		<div class="col-xs-6 form-group">
+			<label>&nbsp;</label>
+			<button type="button" class="btn btn-primary search_email_detail"><i class="icon-search"></i></button>
+		</div>
+	</div>
+</div>
 <table>
 	<tr>
 		<th width="5%">@ViewResources.STT</th>
@@ -37,18 +56,7 @@
 		</tr>
 	}
 
-	<div class="form_search">
-		<div class="row">
-			<div class="col-xs-6 form-group">
-				<label>Email</label>
-				<input class="form-control" name="search" value="@Model.Paging.SearchValue" placeholder="Search Email..." type="text" />
-			</div>
-			<div class="col-xs-6 form-group">
-				<label>&nbsp;</label>
-				<button type="button" class="btn btn-primary search_email_detail"><i class="icon-search"></i></button>
-			</div>
-		</div>
-	</div>
+	
 
 </table>
 @{

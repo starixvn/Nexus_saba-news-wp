@@ -7,5 +7,7 @@
         public int EmailId { get; set; }
 
         public string Search { get; set; }
+
+        public int FilterClicked { get; set; }
     }
 }

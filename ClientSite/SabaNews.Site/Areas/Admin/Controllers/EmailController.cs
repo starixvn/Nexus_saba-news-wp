@@ -53,8 +53,8 @@
             var criteria = new GetEmailsCriteria 
             {
                 Search = param.Search ??= "", 
-                DateFrom = param.DateFrom ??= "",
-                DateTo = param.DateTo ??= "", 
+                DateFrom = param.DateFrom,
+                DateTo = param.DateTo, 
                 End = perPage,
                 Start = start 
             };
@@ -65,8 +65,8 @@
                 PageSize = perPage,
                 TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
                 SearchValue = param.Search,
-                DateFrom = criteria.DateFrom,
-                DateTo = criteria.DateTo
+                DateFrom = param.DateFrom,
+                DateTo = param.DateTo,
             };
             var model = new EmailViewModel
             {
@@ -231,6 +231,7 @@
             {
                 EmailID = param.EmailId,
                 Search = param.Search ??= "",
+                IsClicked = param.FilterClicked,
                 Start = start,
                 End = perPage
             };

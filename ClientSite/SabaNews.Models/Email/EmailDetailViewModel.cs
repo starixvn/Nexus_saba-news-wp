@@ -11,5 +11,6 @@
         public EmailModel Email { get; set; }
 
         public PagingModel Paging { get; set; }
+
     }
 }

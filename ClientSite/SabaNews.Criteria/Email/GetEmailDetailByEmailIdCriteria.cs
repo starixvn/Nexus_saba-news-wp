@@ -13,6 +13,8 @@ namespace SabaNews.Criteria.Email
 
         public string Search { get; set; }
 
+        public int IsClicked { get; set; }
+
         public int Start { get; set; }
 
         public int End { get; set; }

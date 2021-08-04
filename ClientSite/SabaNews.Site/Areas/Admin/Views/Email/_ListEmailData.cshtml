@@ -3,17 +3,17 @@
 
 <div class="form_search">
 	<div class="row">
-		<div class="col-xs-6 form-group">
+		<div class="col-md-3 form-group">
 			<label>Title</label>
 			<input class="form-control" name="search" value="@Model.Paging.SearchValue" placeholder="Search Title..." type="text" />
 		</div>
-		<div class="col-xs-6 form-group">
+		<div class="col-md-3 form-group">
 			<label>Date From</label>
-			<input class="form-control" type="date" id="dateFrom" name="dateFrom" value="@Model.Paging.DateFrom" />
+			<input class="form-control" type="date" id="dateFrom" name="dateFrom" value="@(Model.Paging.DateFrom.Year > 1 ? Model.Paging.DateFrom.ToString("yyyy-MM-dd") : "" )" />
 		</div>
-		<div class="col-xs-6 form-group">
+		<div class="col-md-3 form-group">
 			<label>Date To</label>
-			<input class="form-control" type="date" id="dateTo" name="dateTo" value="@Model.Paging.DateTo" />
+			<input class="form-control" type="date" id="dateTo" name="dateTo" value="@(Model.Paging.DateTo.Year > 1 ? Model.Paging.DateTo.ToString("yyyy-MM-dd") : "" )" />
 		</div>
 		
 		<div class="col-xs-6 form-group">

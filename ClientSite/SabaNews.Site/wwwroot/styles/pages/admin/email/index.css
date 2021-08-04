@@ -1014,8 +1014,9 @@ table {
   display: none; }
 
 select.form-control {
-  height: 4rem;
-  font-size: 1.5rem; }
+  height: 3.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem !important; }
 
 .help-block {
   color: red; }
