@@ -65,21 +65,7 @@
             margin-bottom: 0;
             padding: 1rem 0;
 
-            li {
-                a {
-                    color: $color-content;
-                    text-decoration: none;
-                    padding: .8rem 0 .8rem 1.5rem;
-                    position: relative;
-                    width: 100%;
-                    display: block;
-                    font-size: 1.5rem;
-
-                    &:hover {
-                        color: $color-title-hover
-                    }
-                }
-            }
+            
 
             .active-control {
                 position: relative;

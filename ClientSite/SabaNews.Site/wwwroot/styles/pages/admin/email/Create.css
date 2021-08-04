@@ -573,16 +573,6 @@ footer {
     list-style: none;
     margin-bottom: 0;
     padding: 1rem 0; }
-    .block-main .profile__control li a, .block-main .profile__nav li a {
-      color: #4F4F4F;
-      text-decoration: none;
-      padding: .8rem 0 .8rem 1.5rem;
-      position: relative;
-      width: 100%;
-      display: block;
-      font-size: 1.5rem; }
-      .block-main .profile__control li a:hover, .block-main .profile__nav li a:hover {
-        color: #EB5342; }
     .block-main .profile__control .active-control, .block-main .profile__nav .active-control {
       position: relative; }
   .block-main .profile__nav {
