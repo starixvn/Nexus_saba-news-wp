@@ -88,9 +88,12 @@
                                     <li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
                                 </ul>
                             </li>
-                            <li class="info-user">
-                                <a href="~/Admin/Statistic/Index">Admin Dashboard</a>
-                            </li>
+                            @if (ViewBag.IsAdmin)
+                            {
+                                <li class="info-user">
+                                    <a class="item" href="~/Admin/Statistic/Index">@ViewResources.Administration</a>
+                                </li>
+                            }
                             <li class="info-user">
                                 <a class="item" href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a>
                             </li>

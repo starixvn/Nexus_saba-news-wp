@@ -504,4 +504,7 @@
   <data name="ViewDataTitle" xml:space="preserve">
     <value>Title</value>
   </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
 </root>
