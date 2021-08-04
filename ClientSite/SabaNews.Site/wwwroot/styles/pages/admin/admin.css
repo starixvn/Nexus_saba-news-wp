@@ -42,13 +42,16 @@ button {
   color: #fff;
   background: #E13C29;
   font-weight: bold; }
+  .btn-custom-admin:focus {
+    outline: none; }
 
 html {
   font-size: 10px;
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Arial"; }
+  font-family: "Arial";
+  background: #e5e5e5; }
 
 .header-admin {
   height: 8rem;
@@ -95,14 +98,107 @@ body {
     list-style: none;
     padding-left: 3.2rem; }
     .slide-nav .menu-slide .menu-item {
-      padding: 2rem 0; }
+      padding: 2.4rem 0; }
       .slide-nav .menu-slide .menu-item a {
         text-decoration: none;
         color: #9193B8;
         font-weight: bold;
-        font-size: 1.7rem; }
+        font-size: 1.7rem;
+        display: flex;
+        align-items: center; }
+        .slide-nav .menu-slide .menu-item a:hover {
+          color: #fff; }
+          .slide-nav .menu-slide .menu-item a:hover .icon-page:before {
+            color: #fff; }
+        .slide-nav .menu-slide .menu-item a .icon-page {
+          margin-right: 2.5rem; }
     .slide-nav .menu-slide .active a {
       color: #fff; }
+      .slide-nav .menu-slide .active a .icon-page:before {
+        color: #fff; }
+
+.card-view {
+  display: grid;
+  grid-gap: 3.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  margin-top: 2.4rem; }
+  .card-view .card-item {
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 2rem;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center; }
+    .card-view .card-item:hover {
+      border: 2px solid #565CC2; }
+    .card-view .card-item .card-icon {
+      width: 4.2rem;
+      height: 4.2rem;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 2rem; }
+      .card-view .card-item .card-icon .icon-page:before {
+        font-size: 1.6rem; }
+    .card-view .card-item .bg-pupple {
+      background: #EAE7FD; }
+      .card-view .card-item .bg-pupple .icon-page:before {
+        color: #5243AA; }
+    .card-view .card-item .bg-green {
+      background: #DDF9EF; }
+      .card-view .card-item .bg-green .icon-page:before {
+        color: #00875A; }
+    .card-view .card-item .bg-orange {
+      background: #FFE5DE; }
+      .card-view .card-item .bg-orange .icon-page:before {
+        color: #DE350B; }
+    .card-view .card-item .bg-blue {
+      background: #D5E6FF; }
+      .card-view .card-item .bg-blue .icon-page:before {
+        color: #0052CC; }
+    .card-view .card-item .card-total {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0; }
+      .card-view .card-item .card-total .cart-total-title {
+        margin-bottom: 1rem;
+        color: #3A537E;
+        font-size: 1.6rem;
+        line-height: 1; }
+      .card-view .card-item .card-total .cart-toal-count {
+        line-height: 1;
+        font-weight: bold;
+        color: #042765;
+        font-size: 3rem; }
+
+.table-admin {
+  margin-top: 2.4rem;
+  max-width: 105.8rem; }
+  .table-admin table {
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #D7D7D7; }
+    .table-admin table th {
+      padding: 1.3rem 0;
+      border: 1px solid #D7D7D7;
+      color: #424242;
+      font-weight: bold;
+      font-size: 1.4rem;
+      background: #FBFBFB; }
+    .table-admin table td {
+      color: #424242;
+      font-size: 1.4rem;
+      border: 1px solid #D7D7D7;
+      padding: 1rem; }
+    .table-admin table tfoot {
+      background: #FBFBFB;
+      font-weight: bold; }
+      .table-admin table tfoot td {
+        font-size: 1.8rem; }
 
 .main-admin {
   padding-left: 27rem; }

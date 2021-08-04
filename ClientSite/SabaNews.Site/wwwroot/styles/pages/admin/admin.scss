@@ -9,6 +9,7 @@ html {
 
 body {
     font-family: "Arial";
+    background: $separator-color;
 }
 
 .header-admin {
@@ -76,23 +77,182 @@ body {
         padding-left: 3.2rem;
 
         .menu-item {
-            padding: 2rem 0;
+            padding: 2.4rem 0;
 
             a {
                 text-decoration: none;
                 color: $color-icon;
                 font-weight: bold;
                 font-size: 1.7rem;
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    color: $color-fff;
+
+                    .icon-page {
+                        &:before {
+                            color: $color-fff;
+                        }
+                    }
+                }
+
+                .icon-page {
+                    margin-right: 2.5rem;
+                }
             }
         }
 
         .active {
             a {
                 color: $color-fff;
+
+                .icon-page {
+                    &:before {
+                        color: $color-fff;
+                    }
+                }
             }
         }
     }
 }
+
+
+.card-view {
+    display: grid;
+    grid-gap: 3.2rem;
+    grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+    margin-top: 2.4rem;
+
+    .card-item {
+        background: $color-fff;
+        box-sizing: border-box;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 2rem;
+        border: 2px solid transparent;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            border: 2px solid #565CC2;
+        }
+
+        .card-icon {
+            width: 4.2rem;
+            height: 4.2rem;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+
+            .icon-page {
+                &:before {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .bg-pupple {
+            background: #EAE7FD;
+
+            .icon-page {
+                &:before {
+                    color: #5243AA;
+                }
+            }
+        }
+
+        .bg-green {
+            background: #DDF9EF;
+
+            .icon-page {
+                &:before {
+                    color: #00875A;
+                }
+            }
+        }
+
+        .bg-orange {
+            background: #FFE5DE;
+
+            .icon-page {
+                &:before {
+                    color: #DE350B;
+                }
+            }
+        }
+
+        .bg-blue {
+            background: #D5E6FF;
+
+            .icon-page {
+                &:before {
+                    color: #0052CC;
+                }
+            }
+        }
+
+        .card-total {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+
+            .cart-total-title {
+                margin-bottom: 1rem;
+                color: #3A537E;
+                font-size: 1.6rem;
+                line-height: 1;
+            }
+
+            .cart-toal-count {
+                line-height: 1;
+                font-weight: bold;
+                color: #042765;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+.table-admin {
+    margin-top: 2.4rem;
+    max-width: 105.8rem;
+
+    table {
+        width: 100%;
+        text-align: center;
+        background: $color-fff;
+        border: 1px solid #D7D7D7;
+
+        th {
+            padding: 1.3rem 0;
+            border: 1px solid #D7D7D7;
+            color: #424242;
+            font-weight: bold;
+            font-size: 1.4rem;
+            background: #FBFBFB;
+        }
+
+        td {
+            color: #424242;
+            font-size: 1.4rem;
+            border: 1px solid #D7D7D7;
+            padding: 1rem;
+        }
+
+        tfoot {
+            background: #FBFBFB;
+            font-weight: bold;
+
+            td {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
 
 .main-admin {
     padding-left: 27rem;

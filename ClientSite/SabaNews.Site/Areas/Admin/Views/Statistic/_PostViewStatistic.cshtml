@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div class="table-admin">
     <table class="data-grid">
         <thead>
             <tr>
@@ -13,23 +13,23 @@
             @{
                 foreach (var item in Model.PostViewDetails)
                 {
-                    <tr class="text-center">
-                        <td>@item.OnDate.ToString("dd MMM yyyy")</td>
-                        <td>@item.PostCount</td>
-                        <td>@item.PostView</td>
-                        <td>@item.VideoCount</td>
-                        <td>@item.VideoView</td>
+                    <tr>
+                        <td class="text-center">@item.OnDate.ToString("dd MMM yyyy")</td>
+                        <td class="text-right">@item.PostCount</td>
+                        <td class="text-right">item.PostView</td>
+                        <td class="text-right">@item.VideoCount</td>
+                        <td class="text-right">@item.VideoView</td>
                     </tr>
                 }
             }
         </tbody>
         <tfoot>
             <tr>
-                <td></td>
-                <td>@Model.TotalPost</td>
-                <td>@Model.TotalPostView</td>
-                <td>@Model.TotalVideo</td>
-                <td>@Model.TotalVideoView</td>
+                <td class="text-center">ToTal</td>
+                <td class="text-right">@Model.TotalPost</td>
+                <td class="text-right">@Model.TotalPostView</td>
+                <td class="text-right">@Model.TotalVideo</td>
+                <td class="text-right">@Model.TotalVideoView</td>
             </tr>
         </tfoot>
     </table>

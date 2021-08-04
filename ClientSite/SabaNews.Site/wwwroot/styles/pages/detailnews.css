@@ -959,6 +959,8 @@ button {
   color: #fff;
   background: #E13C29;
   font-weight: bold; }
+  .btn-custom-admin:focus {
+    outline: none; }
 
 .container {
   width: 100%;
