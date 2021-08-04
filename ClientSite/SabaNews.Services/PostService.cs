@@ -136,7 +136,6 @@
                 }
                 var isVideo = await CheckTypeCategoryAsync(Constants.VideoSlug, post.ID);
                 post.Type = isVideo ? Constants.VideoPostType : Constants.FootballPostType;
-                await UpdatePostView(post.ID, post.Type == Constants.VideoPostType);
             }
             return post;
         }
