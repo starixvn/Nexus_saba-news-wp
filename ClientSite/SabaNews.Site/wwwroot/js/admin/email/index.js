@@ -18,13 +18,7 @@ var email = (function ($) {
     }
 
     function HandleSearch() {
-        $('.view_content').click(function () {
-            var content = $(this).parent().find('.email_content').val();
-            var title = $(this).parent().find('.email_title').val();
-            $('#ViewEmailContent .modal-body').html(content);
-            $('#ViewEmailContent .title').html(title);
-            $('#ViewEmailContent').modal('show');
-        });
+       
 
        
 
@@ -44,11 +38,20 @@ var email = (function ($) {
 
     function HandleActionEmail() {
         var emailId = 0;
+        $('.view_content').click(function () {
+            var content = $(this).parent().find('.email_content').val();
+            var title = $(this).parent().find('.email_title').val();
+            $('#ViewEmailContent .modal-body').html(content);
+            $('#ViewEmailContent .title').html(title);
+            $('#ViewEmailContent').modal('show');
+        });
+
         $('.paging').on('click', function () {
             page = $(this).data('page');
             renderListEmail();
 
         });
+
         $('.delete-email').on('click', function () {
             emailId = $(this).data('emailid');
             $('#ConfirmModal .modal-body').html('Are you sure you would like to delete this email');

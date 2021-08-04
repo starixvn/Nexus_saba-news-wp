@@ -378,6 +378,30 @@ select.form-control {
     padding: 3rem;
 }
 
+.green {
+    background-color: #9bc268;
+}
+
+.red {
+    background-color: #d37c7c;
+}
+
+.confirm {
+    .modal-body {
+        text-align: center
+    }
+
+    .button_confirm {
+        text-align: center;
+
+        button {
+            padding: 1rem;
+            margin: 1rem;
+        }
+    }
+}
+
+
 
 
 

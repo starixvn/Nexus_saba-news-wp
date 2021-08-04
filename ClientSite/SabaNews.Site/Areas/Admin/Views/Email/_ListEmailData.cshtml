@@ -2,7 +2,7 @@
 <table>
 	<tr>
 		<th width="5%">@ViewResources.STT</th>
-		<th>@ViewResources.Title</th>
+		<th>@ViewResources.Subject</th>
 		<th width="10%">@ViewResources.Content</th>
 		<th width="15%">@ViewResources.SendDate</th>
 		<th width="10%">@ViewResources.CreatedBy</th>
@@ -51,9 +51,9 @@
 				<td>
 					@if (email.Status == 1)
 					{
-						<a href="@Url.Action("Edit", "Email", new { emailId = @email.Id })" class="label color-green edit-email" data-emailid="@email.Id">Edit</a>
-						<a href="javascript:;" class="label color-red delete-email" data-emailid="@email.Id">Delete</a>
-						<a href="javascript:;" class="label color-blue send-email" data-emailid="@email.Id">Send</a>
+						<a href="@Url.Action("Edit", "Email", new { emailId = @email.Id })" class="label color-green edit-email" data-emailid="@email.Id">@ViewResources.Edit</a>
+						<a href="javascript:;" class="label color-red delete-email" data-emailid="@email.Id">@ViewResources.Delete</a>
+						<a href="javascript:;" class="label color-blue send-email" data-emailid="@email.Id">@ViewResources.SendEmail</a>
 					}
 				</td>
 			</tr>
@@ -61,7 +61,7 @@
 	@if (Model.Emails.Count == 0)
 	{
 		<tr>
-			<th class="nodata_table" colspan="9">There are no data</th>
+			<th class="nodata_table" colspan="9">@ViewResources.EmptyData</th>
 		</tr>
 	}
 

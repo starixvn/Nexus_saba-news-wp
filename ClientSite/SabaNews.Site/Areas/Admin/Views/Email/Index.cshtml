@@ -27,7 +27,7 @@
 					<div class="row">
 						<div class="col-md-3 form-group">
 							<label>@ViewResources.Subject</label>
-							<input class="form-control" name="search" value="" placeholder="Search Title..." type="text" />
+							<input class="form-control" name="search" value="" placeholder="Search subject..." type="text" />
 						</div>
 						<div class="col-md-3 form-group">
 							<label>@ViewResources.FromDate</label>
@@ -84,7 +84,7 @@
 		</div>
 	</div>
 
-	<div class="modal" id="ConfirmModal" style="display:none">
+	<div class="modal confirm" id="ConfirmModal" style="display:none">
 		<div class="modal-content">
 			<div class="modal-warning">
 				<div class="modal-title">
@@ -98,9 +98,9 @@
 
 				</div>
 
-				<div class="modal-footer">
-					<button class="button confirm-action color-green">Yes</button>
-					<button class="button color-red close">No</button>
+				<div class="button_confirm">
+					<button class="button confirm-action green">Yes</button>
+					<button data-dismiss="modal" aria-label="Close" class="button red">No</button>
 				</div>
 			</div>
 		</div>

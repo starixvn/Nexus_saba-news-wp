@@ -12,11 +12,26 @@ var detail = (function ($) {
             data: { emailId, page, search, filterClicked },
             success: function (res) {
                 $('.list_detail_content').html(res);
-                handleEmailDetailList();
+                HandleEmailDetailList();
             }
         });
     }
-    function handleEmailDetailList() {
+
+    function HandleSearch() {
+        $('.paging').on('click', function () {
+            page = $(this).data('page');
+            renderList();
+
+        });
+
+        $('.search_email_detail').on('click', function () {
+            search = $("input[name=search]").val();
+            filterClicked = $("select[name=filterClicked]").val();
+            renderList();
+        });
+    }
+
+    function HandleEmailDetailList() {
         $('.resend-email').on('click', function () {
             var emailId = $(this).data('emailid');
             var userId = $(this).data('userid');
@@ -40,22 +55,13 @@ var detail = (function ($) {
             renderList();
         });
 
-        $('.paging').on('click', function () {
-            page = $(this).data('page');
-            renderList();
-
-        });
-
-        $('.search_email_detail').on('click', function () {
-            search = $("input[name=search]").val();
-            filterClicked = $("select[name=filterClicked]").val();
-            renderList();
-        });
+      
     }
 
  
     function init() {
         renderList();
+        HandleSearch();
         
     }
 

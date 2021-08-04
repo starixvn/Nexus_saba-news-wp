@@ -1,24 +1,5 @@
 ﻿@using SabaNews.Resources;
-<div class="form_search">
-	<div class="row">
-		<div class="col-md-3 form-group">
-			<label>Email</label>
-			<input class="form-control" name="search" value="@Model.Paging.SearchValue" placeholder="Search Email..." type="text" />
-		</div>
-		<div class="col-md-3 form-group">
-			<label>IsClicked</label>
-			<select class="form-control" name="filterClicked">
-				<option value="-1">All</option>
-				<option value="0">None</option>
-				<option value="1">Clicked</option>
-			</select>
-		</div>
-		<div class="col-xs-6 form-group">
-			<label>&nbsp;</label>
-			<button type="button" class="btn btn-primary search_email_detail"><i class="icon-search"></i></button>
-		</div>
-	</div>
-</div>
+
 <table>
 	<tr>
 		<th width="5%">@ViewResources.STT</th>
@@ -43,7 +24,7 @@
 				}
 				else
 				{
-					<p>@ViewResources.Failed <span><a href="javascript:;" class="label color-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">Resend</a></span></p>
+					<p>@ViewResources.Failed <span><a href="javascript:;" class="label color-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">@ViewResources.Resend</a></span></p>
 
 				}
 			</td>
@@ -52,7 +33,7 @@
 	@if (Model.ListEmailDetails.Count == 0)
 	{
 		<tr>
-			<th class="nodata_table" colspan="6">There are no data</th>
+			<th class="nodata_table" colspan="6">@ViewResources.EmptyData</th>
 		</tr>
 	}
 

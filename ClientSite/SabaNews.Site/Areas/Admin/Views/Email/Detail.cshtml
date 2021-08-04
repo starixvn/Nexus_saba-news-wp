@@ -21,12 +21,32 @@
 			<div class="constrols_list_sendmail line">
 				<p><a href="@Url.Action("Index", "Email")"><i class="icon-arrow-left"></i><span> Back to email list</span></a></p>
 				<h2 class="block__title"><a>@ViewResources.ListSentEmailDetail</a> </h2>
+				<div class="form_search">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Email</label>
+							<input class="form-control" name="search" value="" placeholder="Search Email..." type="text" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>IsClicked</label>
+							<select class="form-control" name="filterClicked">
+								<option value="-1">All</option>
+								<option value="0">None</option>
+								<option value="1">Clicked</option>
+							</select>
+						</div>
+						<div class="col-xs-6 form-group">
+							<label>&nbsp;</label>
+							<button type="button" class="btn btn-primary search_email_detail"><i class="icon-search"></i></button>
+						</div>
+					</div>
+				</div>
 
-			
 				<div class="detail_header">
 					<h3 class="detail_title">Title: @Model.Email.EmailTitle</h3>
 					<p class="detail_content">Content: <a class="label color-blue" data-toggle="modal" data-target="#ViewEmailContent" href="javascript:;">View</a></p>
 				</div>
+
 				<div class="list_detail_content"></div>
 			</div>
 		</div>

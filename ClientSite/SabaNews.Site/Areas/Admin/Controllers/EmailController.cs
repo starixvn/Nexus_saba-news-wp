@@ -69,9 +69,6 @@
                 CurrentPage = param.Page,
                 PageSize = perPage,
                 TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
-                SearchValue = param.Search,
-                FromDate = param.FromDate,
-                ToDate = param.ToDate,
             };
             var model = new EmailViewModel
             {
@@ -99,7 +96,7 @@
             model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
-            var result = await emailService.UpdateEmailAsync(model);
+            var result = await emailService.CreateEmailAsync(model);
 
             if (result.IsSuccessful)
             {
@@ -143,7 +140,7 @@
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
-            var originalUrl = email.EmbeddedLink.Substring(indexString + 1);
+            var originalUrl = email.EmbeddedLink[(indexString + 1)..];
             var model = new EmailEditViewModel
             {
                 Email = email,
@@ -202,17 +199,6 @@
             return Json(new { result });
         }
 
-
-        [HttpPost]
-        public async Task<ActionResult> SaveAndReviewSendEmail(EmailReviewModel model)
-        {
-            model.CreatedBy = sessionService.User.Id;
-            model.Status = Constants.EmailNew;
-            model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
-            var result = await emailService.CreateEmailAsync(model);
-            var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplates);
-            return Json(new { result, resultSendMail });
-        }
 
         [HttpPost]
         public async Task<ActionResult> TestSendEmail(EmailReviewModel model)
