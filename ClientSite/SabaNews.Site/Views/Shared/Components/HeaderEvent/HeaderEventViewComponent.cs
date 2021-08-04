@@ -1,9 +1,10 @@
 ﻿namespace SabaNews.Site.Views.Shared.Components
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Services.Interfaces;
-    using System.Threading.Tasks;
 
     public class HeaderEventViewComponent : ViewComponent
     {
@@ -25,6 +26,7 @@
             ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
             var isAuthenticated = sessionService.User != null;
             ViewBag.IsAuthenticated = isAuthenticated;
+            ViewBag.IsAdmin = sessionService.User != null && sessionService.User.Metadata.Contains(Role.Administrator);
             if (isAuthenticated)
             {
                 ViewBag.DisplayName = sessionService.User.Name;

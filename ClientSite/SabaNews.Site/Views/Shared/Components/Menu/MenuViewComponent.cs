@@ -1,10 +1,11 @@
 ﻿namespace SabaNews.Views.Shared.Components
 {
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Services.Interfaces;
-    using System.Threading.Tasks;
 
     public class MenuViewComponent : ViewComponent
     {
@@ -26,7 +27,8 @@
                 Menus = menus,
                 Page = page,
                 IsAuthenticated = isAuthenticated,
-                CategorySlug = categorySlug
+                CategorySlug = categorySlug,
+                IsAdmin = isAuthenticated && sessionService.User.Metadata.Contains(Role.Administrator)
             };
             if (isAuthenticated)
             {

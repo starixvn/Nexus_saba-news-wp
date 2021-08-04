@@ -4,14 +4,14 @@
 @using Wangkanai.Detection.Models;
 @inject IDetectionService DetectionService
 @{
-	bool isMobile = DetectionService.Device.Type == Device.Mobile;
-	bool isTablet = DetectionService.Device.Type == Device.Tablet;
-	bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+    bool isMobile = DetectionService.Device.Type == Device.Mobile;
+    bool isTablet = DetectionService.Device.Type == Device.Tablet;
+    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
 
 }
 
 @{
-	ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] == null ? "" : ViewData["ActiveSubCate"];
+    ViewData["ActiveSubCate"] = ViewData["ActiveSubCate"] == null ? "" : ViewData["ActiveSubCate"];
 }
 <section class="header @ViewBag.Page">
     <div class="button-mobile">
@@ -87,6 +87,9 @@
                                     }
                                     <li class="auth-displayname"><a class="item display-user">@ViewBag.DisplayName</a></li>
                                 </ul>
+                            </li>
+                            <li class="info-user">
+                                <a href="~/Admin/Statistic/Index">Admin Dashboard</a>
                             </li>
                             <li class="info-user">
                                 <a class="item" href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a>
@@ -194,8 +197,4 @@
     {
         <div class="background-euro-mobile"><span class="logo-euro"></span></div>
     }
-
-
-
-
 </section>

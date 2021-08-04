@@ -1,7 +1,7 @@
 ﻿namespace SabaNews.Models
 {
-    using SabaNews.Core.Models;
     using System.Collections.Generic;
+    using SabaNews.Core.Models;
 
     public class MenuViewModel
     {
@@ -11,5 +11,6 @@
         public bool IsAuthenticated { get; set; }
         public string Page { get; set; }
         public string CategorySlug { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }
