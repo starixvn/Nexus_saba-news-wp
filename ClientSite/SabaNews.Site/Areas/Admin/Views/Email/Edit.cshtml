@@ -1,0 +1,165 @@
+﻿@using SabaNews.Resources;
+@{
+	Layout = "_AdminLayout";
+}
+
+
+@section Title{
+	@ViewBag.Title
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/email_create.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
+	<script src="~/js/lib/config_ckeditor.js"></script>
+	<script src="~/js/admin/email/edit.js" asp-append-version="true"></script>
+	
+}
+
+<section>
+	<div>
+		<div class="block block-email">
+			<div class="controls">
+				<div class="controls__sendmail">
+					<h2 class="block__title"><a>@ViewResources.SendEmail </a></h2>
+					<div class="sendmail">
+						<div class="group-tab">
+							<form id="form-sendmail">
+								<input type="hidden" name="Id" value="@Model.Email.Id" />
+								<input type="hidden" name="rawUrl" id="baseUrl" value="@Model.RawUrl" />
+								<input type="hidden" name="embeddedLink" id="embeddedLink" value="@Model.Email.EmbeddedLink" />
+								<ul class="error summary-eror"></ul>
+								<div class="form-group  email_title">
+									<label>@ViewResources.Subject</label>
+									<input type="text" class="input-form" placeholder="" name="emailTitle"  value="@Model.Email.EmailTitle"/>
+									<p class="help-block"></p>
+								</div>
+
+								<div class="form-group email_link">
+									<label>@ViewResources.OriginalUrl</label>
+									<input type="text" class="input-form" placeholder="" name="emailReturnLink"  value="@Model.OriginalUrl"/>
+									<div class="group_raw_link" style="display: block">
+										<label>@ViewResources.EmbeddedUrl</label>
+										<p class="raw_link">@Model.Email.EmbeddedLink</p>
+										<a href="javascript:;" title="Copy raw link" class="copy-link"><span><i class="icon-link"></i></span></a>
+										<span class="tip">Copied raw link</span>
+									</div>
+
+									<p class="help-block"></p>
+								</div>
+								<div class="form-group email_content">
+									<label>@ViewResources.EmailContent</label>
+									<textarea id="emailContent" class="input-form">@Model.Email.EmailContent</textarea>
+									<p class="help-block"></p>
+								</div>
+								<button type="button" class="button btn-red btn-save-as-draft">@ViewResources.SaveEmail</button>
+								<button type="button" class="button btn-red btn-send-mail">@ViewResources.SaveAndSend</button>
+								<button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal" id="ViewEmailContent" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title"></h2>
+					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body ck-content">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="TestSendEmail" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">Review Send Email</h2>
+					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+					<form id="form_test_sendemail" class="form">
+						<div class="form-group  option">
+							<label>@ViewResources.SendTo</label>
+							<input type="radio" name="sendTo" class="send_to" value="email" checked /> Email
+							<input type="radio" name="sendTo" class="send_to" value="user" /> User
+						</div>
+
+						<div class="form-group user_list">
+							<label>@ViewResources.ListUsers</label>
+							<select name="user" class="form-control user">
+								@foreach (var user in Model.Users)
+								{
+									<option value="@user.Email" data-email="@user.Email">@user.Name</option>
+								}
+							</select>
+						</div>
+
+						<div class="form-group email">
+							<label>@ViewResources.Email</label>
+							<input type="text" class="form-control" id="email" placeholder="" name="email" />
+							<p class="help-block"></p>
+						</div>
+						<div class="form-group">
+							<button type="button" class="button btn-success submit-test-send-email">Send</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="TestModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-notice" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal" id="NoticeModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-notice" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+

@@ -36,7 +36,7 @@ var sendmailevent = (function ($) {
                 var value = $(this).val();
                 var baseUrl = $('#baseUrl').val();
                 var rawLink = baseUrl + '&returnUrl=' + value;
-                $('#returnUrl').val(rawLink);
+                $('#embeddedLink').val(rawLink);
                 $('.raw_link').html(rawLink);
             } else {
                 $('.group_raw_link').hide()
@@ -46,7 +46,7 @@ var sendmailevent = (function ($) {
         $('.copy-link').on("click", function () {
             var self = $(this);
             var dummy = document.createElement('input'),
-                text = $('#returnUrl').val();
+                text = $('#embeddedLink').val();
 
             document.body.appendChild(dummy);
             dummy.value = text;
@@ -68,12 +68,12 @@ var sendmailevent = (function ($) {
     function HandleClick() {
         $('.btn-send-mail').on('click', function (e) {
             e.preventDefault();
-            HandleSubmit("/Admin/Email/SaveDataAndSendEmail");
+            HandleSubmit("/Admin/Email/SaveAndSendCreate");
         });
 
         $('.btn-save-as-draft').on('click', function (e) {
             e.preventDefault();
-            HandleSubmit("/Admin/Email/SaveAsDraft");
+            HandleSubmit("/Admin/Email/SaveCreate");
         });
     }
 
@@ -81,10 +81,8 @@ var sendmailevent = (function ($) {
         var isValid = HandleValidate();
         if (!isValid) return false;
         var data = $(form).serialize();
-        data += "&emailEmbeddedLink=" + $('#returnUrl').val();
         data += "&emailContent=" + encodeURIComponent(editorValue.getData());
-        $('.btn-send-mail').prop('disabled', true);
-        $('.btn-save-as-draft').prop('disabled', true);
+        $('.button').prop('disabled', true);
         $.ajax({
             url: url,
             type: "POST",
@@ -96,7 +94,7 @@ var sendmailevent = (function ($) {
                     html = '<p>Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>';
                     $('#NoticeModal .modal-body').html(html);
                 } else if (result.isSuccessful) {
-                    html = '<p>Send Email Successfully<p>';
+                    html = '<p>Save Data Successfully<p>';
                     $('#NoticeModal .modal-body').html(html);
                 } else {
                     $(form).find('.summary-eror').text(result.message);
@@ -109,11 +107,66 @@ var sendmailevent = (function ($) {
         });
     }
 
+    function HandleTestSendEmail() {
+
+        $('.btn-test').on('click', function () {
+            var isValid = HandleValidate();
+            if (isValid) {
+                $('#TestSendEmail').modal('show');
+            }
+        });
+
+
+        $('input[name=sendTo]').on('change', function () {
+            var type = $(this).val()
+            var email = $('.users').find(':selected').data('email');
+            if (type === "email") {
+                $('.user_list').hide();
+            } else {
+                $('#email').val(email);
+                $('.user_list').show();
+            }
+        });
+
+        $('.user').on('change', function () {
+            var email = $(this).find(':selected').data('email');
+            $('#email').val(email);
+        })
+
+        $('.submit-test-send-email').on('click', function () {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test($('input[name="email"]').val())) {
+                $('input[name="email"]').addClass('has-error');
+                $('.email .help-block').html('Please enter email format');
+                return false;
+            }
+            $('#TestSendEmail').modal('hide');
+            var data = $(form).serialize();
+            data += "&emailContent=" + encodeURIComponent(editorValue.getData());
+            data += "&emailAddress" + $('input[name=email]').val();
+            $.ajax({
+                url: "/Admin/Email/TestSendEmail",
+                type: "POST",
+                data: data,
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        $('#TestModal .modal-body').html('Send Email Successfully. Please check your mailbox~');
+                    } else {
+                        $('#TestModal .modal-body').html('An error occurred while send email, please try again');
+                    }
+                    $('#TestModal').modal('show');
+                }
+            });
+
+        });
+    }
+
 
    
     function init() {
         HandleProcessForm();
         HandleClick();
+        HandleTestSendEmail();
     }
 
     return {

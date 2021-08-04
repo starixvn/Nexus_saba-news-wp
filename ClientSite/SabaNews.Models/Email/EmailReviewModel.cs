@@ -2,8 +2,7 @@
 {
     public class EmailReviewModel : EmailModel
     {
-        public int EmailId { get; set; }
-
-        public string Email { get; set; }
+        public string EmailAddress { get; set; }
+      
     }
 }

@@ -750,21 +750,21 @@ tr:nth-child(even) {
     font-weight: bold; }
 
 .email_link {
-  position: relative;
   word-break: break-all; }
 
 .group_raw_link {
-  border: 1px solid #c4c4c4;
   margin-top: 2rem;
-  display: none; }
+  display: none;
+  position: relative; }
   .group_raw_link .raw_link {
-    margin: 1rem 5rem 1rem 1rem; }
+    padding: 1rem 5rem 1rem 1rem;
+    border: 1px solid #c4c4c4; }
     .group_raw_link .raw_link span {
       font-weight: bold; }
   .group_raw_link .copy-link {
     cursor: pointer;
     position: absolute;
-    top: 10.5rem;
+    top: 4.5rem;
     right: 1.5rem;
     text-decoration: none; }
   .group_raw_link .copy-link i {
@@ -797,3 +797,7 @@ select.form-control {
   padding: 0 1rem;
   border-radius: 3px;
   display: none; }
+
+.btn-test {
+  float: right;
+  background-color: blue; }

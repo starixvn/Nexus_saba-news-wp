@@ -8,8 +8,8 @@
 
         public string Search { get; set; }
 
-        public DateTime DateFrom { get; set; }
+        public DateTime FromDate { get; set; }
 
-        public DateTime DateTo { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }

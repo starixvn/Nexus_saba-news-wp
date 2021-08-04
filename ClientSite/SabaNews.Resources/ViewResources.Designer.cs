@@ -196,6 +196,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ConfirmAction {
+            get {
+                return ResourceManager.GetString("ConfirmAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xác thực email.
         /// </summary>
         public static string ConfirmEmail {
@@ -318,6 +327,15 @@ namespace SabaNews.Resources {
         public static string EmailTitle {
             get {
                 return ResourceManager.GetString("EmailTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Embedded Url.
+        /// </summary>
+        public static string EmbeddedUrl {
+            get {
+                return ResourceManager.GetString("EmbeddedUrl", resourceCulture);
             }
         }
         
@@ -529,11 +547,11 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List Sent Email.
+        ///   Looks up a localized string similar to List Email.
         /// </summary>
-        public static string ListEmailSent {
+        public static string ListEmail {
             get {
-                return ResourceManager.GetString("ListEmailSent", resourceCulture);
+                return ResourceManager.GetString("ListEmail", resourceCulture);
             }
         }
         
@@ -664,6 +682,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chưa liên kết.
         /// </summary>
         public static string NoConnect {
@@ -705,6 +732,15 @@ namespace SabaNews.Resources {
         public static string NumberSent {
             get {
                 return ResourceManager.GetString("NumberSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Original Url.
+        /// </summary>
+        public static string OriginalUrl {
+            get {
+                return ResourceManager.GetString("OriginalUrl", resourceCulture);
             }
         }
         
@@ -880,15 +916,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return Link.
-        /// </summary>
-        public static string ReturnLink {
-            get {
-                return ResourceManager.GetString("ReturnLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Reviewing.
         /// </summary>
         public static string Reviewing {
@@ -925,11 +952,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save &amp; Send.
+        /// </summary>
+        public static string SaveAndSend {
+            get {
+                return ResourceManager.GetString("SaveAndSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tin đã lưu.
         /// </summary>
         public static string SavedPost {
             get {
                 return ResourceManager.GetString("SavedPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveEmail {
+            get {
+                return ResourceManager.GetString("SaveEmail", resourceCulture);
             }
         }
         
@@ -984,6 +1029,15 @@ namespace SabaNews.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SendTestEmailTo.
+        /// </summary>
+        public static string SendTestEmailTo {
+            get {
+                return ResourceManager.GetString("SendTestEmailTo", resourceCulture);
             }
         }
         
@@ -1110,6 +1164,15 @@ namespace SabaNews.Resources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Date.
+        /// </summary>
+        public static string ToDate {
+            get {
+                return ResourceManager.GetString("ToDate", resourceCulture);
             }
         }
         

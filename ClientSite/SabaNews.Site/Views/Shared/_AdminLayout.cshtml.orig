@@ -1,0 +1,63 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - @RenderSection("Title", false)</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="~/images/favicon/android-icon-192x192.png">
+    <link rel="shortcut icon" href="~/images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/images/favicon/manifest.json">
+    <link rel="stylesheet" href="~/minify/styles/admin.min.css" asp-append-version="true">
+
+    @RenderSection("Styles", false)
+</head>
+
+<body>
+<<<<<<< HEAD
+    <div class="sidenav">
+        <div class="logi-admin"><img loading="lazy" src="~/images/logo-admin.png"></div>
+        <ul class="menu">
+            <li class="menu-item active"><a href="~/Admin/Statistic/Index">Post View Statistic</a></li>
+            <li class="menu-item active"><a href="~/Admin/Email/Index">List Emails</a></li>
+            <li class="menu-item active"><a href="~/Admin/Email/Create">Send Email</a></li>
+            <li class="menu-item active"><a href="~/Admin/Email/ReviewSendEmail">Review Send Email</a></li>
+        </ul>
+
+=======
+    <div class="page-admin">
+        <header class="header-admin">
+            <div class="main-header">
+                <div class="title-page">Statistics</div>
+                <ul class="control-header">
+                    <li class="icon-item"><a href="#"><i class="icon-page icon-home"></i></a></li>
+                    <li class="icon-item"><a href="#"><i class="icon-page icon-exit-admin"></i></a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="slide-nav">
+            <div class="logo-admin"><img loading="lazy" src="~/images/logo-admin.png"></div>
+            <ul class="menu-slide">
+                <li class="menu-item active"><a href="~/Admin/Statistic/Index"><i class="icon-page icon-statics"></i> @ViewResources.PostViewStatistic</a></li>
+                <li class="menu-item"><a href="~/Admin/Email/Index"><i class="icon-page icon-statics"></i> List Emails</a></li>
+                <li class="menu-item"><a href="~/Admin/Email/Create"><i class="icon-page icon-edit-admin"></i> Send Email</a></li>
+                <li class="menu-item"><a href="~/Admin/Email/ReviewSendEmail"><i class="icon-page icon-statics"></i> Review Send Email</a></li>
+            </ul>
+        </div>
+        <div class="main-admin">
+            @RenderBody()
+        </div>
+>>>>>>> 000 - add new icon admin
+    </div>
+
+	<div class="main">
+		@RenderBody()
+	</div>
+	<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
+	@RenderSection("Scripts", false)
+</body>
+</html>

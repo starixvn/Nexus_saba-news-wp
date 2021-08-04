@@ -13,7 +13,7 @@ namespace SabaNews.Models.Email
 
         public string EmailReturnLink { get; set; }
 
-        public string EmailEmbeddedLink { get; set; }
+        public string EmbeddedLink { get; set; }
 
         public int CreatedBy { get; set; }
 

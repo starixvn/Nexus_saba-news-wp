@@ -31,5 +31,7 @@
         Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail);
 
         Task<CommandResult> UpdateStatusAsync(UpdateStatusCommand criteria);
+
+        Task<CommandResult> UpdateEmailAsync(EmailModel model);
     }
 }

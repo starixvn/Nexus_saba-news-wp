@@ -10,7 +10,7 @@ namespace SabaNews.Criteria.Email
 
         public string EmailContent { get; set; }
 
-        public string EmailEmbeddedLink { get; set; }
+        public string EmbeddedLink { get; set; }
 
         public DateTime SendDate { get; set; }
 

@@ -22,7 +22,29 @@
 	<div class="block block-email">
 		<div class="controls">
 			<div class="line">
-				<h2 class="block__title"><a>@ViewResources.ListSentEmailDetail</a> </h2>
+				<h2 class="block__title"><a>@ViewResources.ListEmail</a> </h2>
+				<div class="form_search">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>@ViewResources.Subject</label>
+							<input class="form-control" name="search" value="" placeholder="Search Title..." type="text" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>@ViewResources.FromDate</label>
+							<input class="form-control" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>@ViewResources.ToDate</label>
+							<input class="form-control" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+						</div>
+
+						<div class="col-xs-6 form-group">
+							<label>&nbsp;</label>
+							<button type="button" class="btn btn-primary search_list_email">Submit</button>
+						</div>
+					</div>
+
+				</div>
 				<div class="list_email_block"></div>
 			</div>
 		</div>
@@ -45,50 +67,6 @@
 		</div>
 	</div>
 
-	<div class="modal" id="ReviewSendEmail" style="display:none">
-		<div class="modal-content">
-			<div class="modal-warning">
-				<div class="modal-title">
-					<h2 class="title">Review Send Email</h2>
-					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<form id="form_review_sendemail" class="form">
-						<input type="hidden" name="emailId" id="emailId" value="" />
-						<div class="form-group  option">
-							<label>@ViewResources.SendTo</label>
-							<input type="radio" name="sendTo" class="send_to" value="email" checked /> Email
-							<input type="radio" name="sendTo" class="send_to" value="user" /> User
-						</div>
-
-						<div class="form-group user_list">
-							<label>@ViewResources.ListUsers</label>
-							<select name="user" class="form-control user">
-								@foreach (var user in Model)
-								{
-									<option value="@user.Email" data-email="@user.Email">@user.Name</option>
-								}
-							</select>
-						</div>
-
-						<div class="form-group email">
-							<label>@ViewResources.Email</label>
-							<input type="text" class="form-control" id="email" placeholder="" name="email" />
-							<p class="help-block"></p>
-						</div>
-						<div class="form-group">
-							<button type="button" class="btn btn-success btn-review-send-email">Send</button>
-						</div>
-					</form>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="modal" id="NoticeModal" style="display:none">
 		<div class="modal-content">
 			<div class="modal-warning">
@@ -101,6 +79,28 @@
 
 				<div class="modal-body">
 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal" id="ConfirmModal" style="display:none">
+		<div class="modal-content">
+			<div class="modal-warning">
+				<div class="modal-title">
+					<h2 class="title">@ViewResources.Announcement</h2>
+					<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+
+				</div>
+
+				<div class="modal-footer">
+					<button class="button confirm-action color-green">Yes</button>
+					<button class="button color-red close">No</button>
 				</div>
 			</div>
 		</div>

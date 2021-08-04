@@ -307,17 +307,18 @@ tr:nth-child(even) {
 }
 
 .email_link {
-    position: relative;
+    
     word-break: break-all;
 }
 
 .group_raw_link {
-    border: 1px solid #c4c4c4;
     margin-top: 2rem;
     display: none;
+    position: relative;
 
     .raw_link {
-        margin: 1rem 5rem 1rem 1rem;
+        padding: 1rem 5rem 1rem 1rem;
+        border: 1px solid #c4c4c4;
 
 
         span {
@@ -328,12 +329,12 @@ tr:nth-child(even) {
     .copy-link {
         cursor: pointer;
         position: absolute;
-        top: 10.5rem;
+        top: 4.5rem;
         right: 1.5rem;
         text-decoration: none
     }
 
-    .copy-link i{
+    .copy-link i {
         text-decoration: none
     }
 }
@@ -368,6 +369,11 @@ select.form-control {
     padding: 0 1rem;
     border-radius: 3px;
     display: none;
+}
+
+.btn-test {
+    float: right;
+    background-color: blue;
 }
 
 

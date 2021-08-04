@@ -40,10 +40,15 @@
             this.configuration = configuration;
         }
 
-        public async Task<ActionResult> Index()
+        public IActionResult Index()
         {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
-            return View(users);
+            var model = new PagingModel
+            {
+                FromDate = DateTime.Now.AddMonths(-6),
+                ToDate = DateTime.Now
+
+            };
+            return View(model);
         }
 
         public async Task<ActionResult> GetListEmailData(EmailFilterViewModel param)
@@ -53,8 +58,8 @@
             var criteria = new GetEmailsCriteria 
             {
                 Search = param.Search ??= "", 
-                DateFrom = param.DateFrom,
-                DateTo = param.DateTo, 
+                FromDate = param.FromDate,
+                ToDate = param.ToDate, 
                 End = perPage,
                 Start = start 
             };
@@ -65,8 +70,8 @@
                 PageSize = perPage,
                 TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
                 SearchValue = param.Search,
-                DateFrom = param.DateFrom,
-                DateTo = param.DateTo,
+                FromDate = param.FromDate,
+                ToDate = param.ToDate,
             };
             var model = new EmailViewModel
             {
@@ -76,15 +81,16 @@
             return PartialView("_ListEmailData", model);
         }
 
-        public IActionResult Create()
+        public async Task<ActionResult> Create()
         {
             var rawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}");
+            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             ViewBag.rawUrl = rawUrl;
-            return View();
+            return View(users);
         }
 
         [HttpPost]
-        public async Task<ActionResult> SaveDataAndSendEmail(EmailModel model)
+        public async Task<ActionResult> SaveAndSendCreate(EmailModel model)
         {
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
             var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
@@ -93,7 +99,72 @@
             model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
+            var result = await emailService.UpdateEmailAsync(model);
+
+            if (result.IsSuccessful)
+            {
+                foreach (var user in subscribedUsers)
+                {
+                    var token = Guid.NewGuid().ToString();
+                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
+                    var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                    var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
+                    var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
+                    var emailData = new EmailDetailModel
+                    {
+                        EmailId = model.Id,
+                        UserId = user.Id,
+                        EmailAddress = user.Email,
+                        EmailContent = emailContent,
+                        EmailTitle = model.EmailTitle,
+                        TokenId = token,
+                        SendTime = DateTime.Now,
+                        Status = resultSendMail.Code
+                    };
+                    await emailService.CreateEmailDetailAsync(emailData);
+                }
+            }
+            return Json(new { result, userNumber });
+        }
+
+        
+        [HttpPost]
+        public async Task<ActionResult> SaveCreate(EmailModel model)
+        {
+            model.CreatedBy = sessionService.User.Id;
+            model.Status = Constants.EmailNew;
+            model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             var result = await emailService.CreateEmailAsync(model);
+            return Json(new { result });
+        }
+
+        public async Task<ActionResult> Edit(int emailId)
+        {
+            var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
+            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
+            var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
+            var originalUrl = email.EmbeddedLink.Substring(indexString + 1);
+            var model = new EmailEditViewModel
+            {
+                Email = email,
+                RawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}"),
+                OriginalUrl = originalUrl,
+                Users = users
+            };
+            
+            return View(model);
+        }
+
+        public async Task<ActionResult> SaveAndSendEdit(EmailModel model)
+        {
+            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
+            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
+            var userNumber = subscribedUsers.Count;
+            model.CreatedBy = sessionService.User.Id;
+            model.SendDate = DateTime.Now;
+            model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
+            model.Status = Constants.EmailSent;
+            var result = await emailService.UpdateEmailAsync(model);
 
             if (result.IsSuccessful)
             {
@@ -122,39 +193,31 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult> SaveAsDraft(EmailModel model)
+        public async Task<ActionResult> SaveEdit(EmailModel model)
         {
             model.CreatedBy = sessionService.User.Id;
-            model.Status = Constants.EmailReview;
+            model.Status = Constants.EmailNew;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
-            var result = await emailService.CreateEmailAsync(model);
+            var result = await emailService.UpdateEmailAsync(model);
             return Json(new { result });
         }
 
-        public async Task<ActionResult> ReviewSendEmail()
-        {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
-            var rawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}");
-            ViewBag.rawUrl = rawUrl;
-            return View(users);
-        }
 
         [HttpPost]
         public async Task<ActionResult> SaveAndReviewSendEmail(EmailReviewModel model)
         {
             model.CreatedBy = sessionService.User.Id;
-            model.Status = Constants.EmailReview;
+            model.Status = Constants.EmailNew;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             var result = await emailService.CreateEmailAsync(model);
-            var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, model.EmailContent, model.Email, SendMailTemplates);
+            var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplates);
             return Json(new { result, resultSendMail });
         }
 
         [HttpPost]
-        public async Task<ActionResult> ReviewSendEmail(EmailReviewModel model)
+        public async Task<ActionResult> TestSendEmail(EmailReviewModel model)
         {
-            var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = model.EmailId });
-            var resultSendMail = await emailService.SendMailWithTemplateAsync(email.EmailTitle, email.EmailContent, model.Email, SendMailTemplates);
+            var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplates);
             return Json(resultSendMail);
         }
 
@@ -187,6 +250,13 @@
             }
             var result = await emailService.UpdateStatusAsync(new UpdateStatusCommand { EmailId = emailId, Status = Constants.EmailSent });
             return Json(new { result, userNumber });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(int emailId)
+        {
+            var result = await emailService.UpdateStatusAsync(new UpdateStatusCommand { EmailId = emailId, Status = Constants.EmailDestroy });
+            return Json(result);
         }
 
         public async Task<ActionResult> UploadImageSendMail(IFormFile file)

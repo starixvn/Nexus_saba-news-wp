@@ -1,10 +1,8 @@
 ﻿
-var testing = (function ($) {
+var edit = (function ($) {
     configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
     var form = 'form#form-sendmail';
     function HandleValidate() {
-        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
         var isValid = true;
         if (editorValue.getData().trim() === "") {
             $('.email_content .help-block').html('Email Content is required');
@@ -20,11 +18,7 @@ var testing = (function ($) {
             $('.email_link .help-block').html('Return Link is required');
             isValid = false;
         }
-        if (!regex.test($('input[name="email"]').val())) {
-            $('input[name="email"]').addClass('has-error');
-            $('.email .help-block').html('Please enter email format');
-            isValid = false;
-        }
+        // $('.summary-eror').html(error);
         return isValid;
     }
 
@@ -42,7 +36,7 @@ var testing = (function ($) {
                 var value = $(this).val();
                 var baseUrl = $('#baseUrl').val();
                 var rawLink = baseUrl + '&returnUrl=' + value;
-                $('#returnUrl').val(rawLink);
+                $('#embeddedLink').val(rawLink);
                 $('.raw_link').html(rawLink);
             } else {
                 $('.group_raw_link').hide()
@@ -50,29 +44,86 @@ var testing = (function ($) {
         });
 
         $('.copy-link').on("click", function () {
+            var self = $(this);
             var dummy = document.createElement('input'),
-                text = $('#returnUrl').val();
+                text = $('#embeddedLink').val();
 
             document.body.appendChild(dummy);
             dummy.value = text;
             dummy.select();
             document.execCommand('copy');
             document.body.removeChild(dummy);
+            $(this).parent().find('.tip').show();
+            setTimeout(function () {
+                self.parent().find('.tip').hide();
+            }, 1000);
         });
 
 
         $('#NoticeModal').on('hidden.bs.modal', function () {
             location.reload();
         });
+    }
+
+    function HandleClick() {
+        $('.btn-send-mail').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveAndSendEdit");
+        });
+
+        $('.btn-save-as-draft').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveEdit");
+        });
+    }
+
+    function HandleSubmit(url) {
+        var isValid = HandleValidate();
+        if (!isValid) return false;
+        var data = $(form).serialize();
+        data += "&emailContent=" + encodeURIComponent(editorValue.getData());
+        console.log(data)
+        $('.button').prop('disabled', true);
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+            success: function (res) {
+                result = res.result;
+                html = "";
+                if (result.isSuccessful && res.userNumber != null) {
+                    html = '<p>Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>';
+                    $('#NoticeModal .modal-body').html(html);
+                } else if (result.isSuccessful) {
+                    html = '<p>Save Data Successfully<p>';
+                    $('#NoticeModal .modal-body').html(html);
+                } else {
+                    $(form).find('.summary-eror').text(result.message);
+                }
+                //$('.btn-send-mail').prop('disabled', false);
+                $('#NoticeModal').modal('show');
+                $('.group_raw_link').hide();
+            },
+
+        });
+    }
+
+    function HandleTestSendEmail() {
+
+        $('.btn-test').on('click', function () {
+            var isValid = HandleValidate();
+            if (isValid) {
+                $('#TestSendEmail').modal('show');
+            }
+        });
+
 
         $('input[name=sendTo]').on('change', function () {
             var type = $(this).val()
             var email = $('.users').find(':selected').data('email');
             if (type === "email") {
-                $('#email').prop('readonly', false);
                 $('.user_list').hide();
             } else {
-                $('#email').prop('readonly', true);
                 $('#email').val(email);
                 $('.user_list').show();
             }
@@ -82,38 +133,31 @@ var testing = (function ($) {
             var email = $(this).find(':selected').data('email');
             $('#email').val(email);
         })
-    }
 
-    function HandleClick() {
-        $('.btn-send-mail').on('click', function (e) {
-            e.preventDefault();
-            HandleSubmit("/Admin/Email/SaveAndReviewSendEmail");
-        });
-    }
-
-    function HandleSubmit(url) {
-        var isValid = HandleValidate();
-        if (!isValid) return false;
-        var data = $(form).serialize();
-        data += "&emailEmbeddedLink=" + $('#returnUrl').val();
-        data += "&emailContent=" + encodeURIComponent(editorValue.getData());
-        $('.button').prop('disabled', true);
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: data,
-            success: function (res) {
-                result = res.result;
-                html = "";
-                if (result.isSuccessful ) {
-                    html = '<p>Send Email Successfully. Please Check Your Email Box!';
-                    $('#NoticeModal .modal-body').html(html);
-                } else {
-                    $(form).find('.summary-eror').text(result.message);
+        $('.submit-test-send-email').on('click', function () {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test($('input[name="email"]').val())) {
+                $('input[name="email"]').addClass('has-error');
+                $('.email .help-block').html('Please enter email format');
+                return false;
+            }
+            $('#TestSendEmail').modal('hide');
+            var data = $(form).serialize();
+            data += "&emailContent=" + encodeURIComponent(editorValue.getData());
+            data += "&emailAddress" + $('input[name=email]').val();
+            $.ajax({
+                url: "/Admin/Email/TestSendEmail",
+                type: "POST",
+                data: data,
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        $('#TestModal .modal-body').html('Send Email Successfully. Please check your mailbox~');
+                    } else {
+                        $('#TestModal .modal-body').html('An error occurred while send email, please try again');
+                    }
+                    $('#TestModal').modal('show');
                 }
-                $('#NoticeModal').modal('show');
-                $('.group_raw_link').hide();
-            },
+            });
 
         });
     }
@@ -123,6 +167,7 @@ var testing = (function ($) {
     function init() {
         HandleProcessForm();
         HandleClick();
+        HandleTestSendEmail();
     }
 
     return {
@@ -132,5 +177,5 @@ var testing = (function ($) {
 
 
 $(document).ready(function () {
-    testing.init();
+    edit.init();
 });

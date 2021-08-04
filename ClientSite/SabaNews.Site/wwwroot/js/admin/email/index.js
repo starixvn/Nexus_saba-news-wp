@@ -1,24 +1,23 @@
 ﻿
 var email = (function ($) {
     var page = 1;
-    var search = " ";
-    var dateFrom = " ";
-    var dateTo = " ";
+    var search = "";
+    var fromDate = $('input[name=fromDate]').val();
+    var toDate = $('input[name=toDate]').val();
 
     function renderListEmail() {
         $.ajax({
             url: "/Admin/Email/GetListEmailData",
             type: 'POST',
-            data: { page: page, search: search, dateFrom, dateTo },
+            data: { page: page, search: search, fromDate, toDate },
             success: function (res) {
                 $('.list_email_block').html(res);
-                HandleEmailList();
-                HandleTrySendEmail();
+                HandleActionEmail();
             }
         });
     }
 
-    function HandleEmailList() {
+    function HandleSearch() {
         $('.view_content').click(function () {
             var content = $(this).parent().find('.email_content').val();
             var title = $(this).parent().find('.email_title').val();
@@ -27,28 +26,62 @@ var email = (function ($) {
             $('#ViewEmailContent').modal('show');
         });
 
-        $('.paging').on('click', function () {
-            page = $(this).data('page');
-            renderListEmail();
-           
-        });
+       
 
         $('.search_list_email').on('click', function () {
             search = $('input[name=search]').val();
-            dateFrom = $('input[name=dateFrom]').val();
-            dateTo = $('input[name=dateTo]').val();
+            fromDate = $('input[name=fromDate]').val();
+            toDate = $('input[name=toDate]').val();
             page = 1;
             renderListEmail();
         });
 
 
+        $('#NoticeModal').on('hidden.bs.modal', function () {
+            renderListEmail();
+        })
+    }
+
+    function HandleActionEmail() {
+        var emailId = 0;
+        $('.paging').on('click', function () {
+            page = $(this).data('page');
+            renderListEmail();
+
+        });
+        $('.delete-email').on('click', function () {
+            emailId = $(this).data('emailid');
+            $('#ConfirmModal .modal-body').html('Are you sure you would like to delete this email');
+            $('#ConfirmModal').modal('show');
+        });
+
+        $('.confirm-action').on('click', function () {
+            $('#ConfirmModal').modal('hide');
+            $.blockUI({ message: '<h3>Processing...</h3>' });
+            $.ajax({
+                url: "/Admin/Email/Delete",
+                type: "POST",
+                data: { emailId },
+                success: function (res) {
+                    $.unblockUI();
+                    if (res.isSuccessful) {
+                        $('#NoticeModal .modal-body').html('Delete Email Successfully');
+                    } else {
+                        $('#NoticeModal .modal-body').html('An error occurred while delete email, please try again');
+                    }
+
+                    $('#NoticeModal').modal('show');
+                }
+            });
+        });
+
         $('.send-email').on('click', function () {
-            var id = $(this).data('emailid');
-            $.blockUI({ message: '<h3>Loading</h3>' }); 
+            emailId = $(this).data('emailid');
+            $.blockUI({ message: '<h3>Loading...</h3>' });
             $.ajax({
                 url: "/Admin/Email/SendEmail",
                 type: "POST",
-                data: { emailId: id },
+                data: { emailId },
                 success: function (res) {
                     $.unblockUI();
                     if (res.result.isSuccessful) {
@@ -61,68 +94,11 @@ var email = (function ($) {
                 }
             });
         });
+    } 
 
-        $('#NoticeModal').on('hidden.bs.modal', function () {
-            renderListEmail();
-        })
-    }
-
-    function HandleTrySendEmail() {
-        var form = $('form#form_review_sendemail');
-
-        $('.review-send-email').on('click', function () {
-            $('#email').val('');
-            var emailId = $(this).data('emailid');
-            $('#form_review_sendemail #emailId').val(emailId);
-            $('#ReviewSendEmail').modal('show');
-        });
-
-
-        $('input[name=sendTo]').on('change', function () {
-            var type = $(this).val()
-            var email = $('.users').find(':selected').data('email');
-            if (type === "email") {
-                $('#email').prop('readonly', false);
-                $('.user_list').hide();
-            } else {
-                $('#email').prop('readonly', true);
-                $('#email').val(email);
-                $('.user_list').show();
-            }
-        });
-
-        $('.user').on('change', function () {
-            var email = $(this).find(':selected').data('email');
-            $('#email').val(email);
-        })
-
-        $('.btn-review-send-email').on('click', function () {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            if (!regex.test($('input[name="email"]').val())) {
-                $('input[name="email"]').addClass('has-error');
-                $('.email .help-block').html('Please enter email format');
-                return false;
-            }
-            $.blockUI({ message: '<h3>Loading</h3>' }); 
-            $.ajax({
-                url: "/Admin/Email/ReviewSendEmail",
-                type: "POST",
-                data: form.serialize(),
-                success: function (res) {
-                    $.unblockUI(); 
-                    if (res.isSuccessful) {
-                        $('#NoticeModal .modal-body').html('Send Email Successfully. Please check your mailbox~');
-                    } else {
-                        $('#NoticeModal .modal-body').html('An error occurred while send email, please try again');
-                    }
-                    $('#ReviewSendEmail').modal('hide');
-                    $('#NoticeModal').modal('show');
-                }
-            });
-           
-        });
-    }
+    
     function init() {
+        HandleSearch();
         renderListEmail();
     }
 

@@ -670,6 +670,9 @@
   <data name="CommentReply" xml:space="preserve">
     <value>Trả lời</value>
   </data>
+  <data name="ConfirmAction" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="ConfirmEmail" xml:space="preserve">
     <value>Xác thực email</value>
   </data>
@@ -711,6 +714,9 @@
   </data>
   <data name="EmailTitle" xml:space="preserve">
     <value>Email Title</value>
+  </data>
+  <data name="EmbeddedUrl" xml:space="preserve">
+    <value>Embedded Url</value>
   </data>
   <data name="EmptyProfileTitle" xml:space="preserve">
     <value>Trang cá nhân của trên SABA Sports</value>
@@ -754,6 +760,9 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Quên mật khẩu</value>
   </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From Date</value>
+  </data>
   <data name="Google" xml:space="preserve">
     <value>Google</value>
   </data>
@@ -781,8 +790,8 @@
   <data name="IsClicked" xml:space="preserve">
     <value>IsClicked</value>
   </data>
-  <data name="ListEmailSent" xml:space="preserve">
-    <value>List Sent Email</value>
+  <data name="ListEmail" xml:space="preserve">
+    <value>List Email</value>
   </data>
   <data name="ListSentEmailDetail" xml:space="preserve">
     <value>List sent email detail</value>
@@ -826,6 +835,9 @@
   <data name="Name" xml:space="preserve">
     <value>Tên</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
   <data name="NoConnect" xml:space="preserve">
     <value>Chưa liên kết</value>
   </data>
@@ -840,6 +852,9 @@
   </data>
   <data name="NumberSent" xml:space="preserve">
     <value>Number Of Sending</value>
+  </data>
+  <data name="OriginalUrl" xml:space="preserve">
+    <value>Original Url</value>
   </data>
   <data name="Other" xml:space="preserve">
     <value>Khác</value>
@@ -898,9 +913,6 @@
   <data name="ResetPassword" xml:space="preserve">
     <value>Lấy lại mật khẩu</value>
   </data>
-  <data name="ReturnLink" xml:space="preserve">
-    <value>Return Link</value>
-  </data>
   <data name="Reviewing" xml:space="preserve">
     <value>Reviewing</value>
   </data>
@@ -913,8 +925,14 @@
   <data name="Save" xml:space="preserve">
     <value>Lưu lại</value>
   </data>
+  <data name="SaveAndSend" xml:space="preserve">
+    <value>Save &amp; Send</value>
+  </data>
   <data name="SavedPost" xml:space="preserve">
     <value>Tin đã lưu</value>
+  </data>
+  <data name="SaveEmail" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="SavePost" xml:space="preserve">
     <value>Lưu bài viết</value>
@@ -933,6 +951,9 @@
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
+  </data>
+  <data name="SendTestEmailTo" xml:space="preserve">
+    <value>SendTestEmailTo</value>
   </data>
   <data name="SendTo" xml:space="preserve">
     <value>Send To:</value>
@@ -975,6 +996,9 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To Date</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>Hôm nay</value>
@@ -1045,5 +1069,5 @@
   <data name="PostViewStatistic" xml:space="preserve">
     <value>Post View Statistic</value>
   </data>
->>>>>>> 000 - remove cache
+>>>>>>> 158134 - update list send email
 </root>

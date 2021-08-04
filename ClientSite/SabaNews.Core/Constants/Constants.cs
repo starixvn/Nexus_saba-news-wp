@@ -145,8 +145,10 @@
         public const string UnsubscribeTemplate = "<div class=\"return_link\">Click vào <a href=\"{0}\">đây</a> nếu sau này bạn không muốn nhận email từ chúng tôi </div>";
         public const string NotfoundView = "~/Views/Home/EmptyBlog.cshtml";
         public const string CustomerRole = "customer";
+        public const string ReturnUrl = "returnUrl";
         public const int EmailSent = 0;
-        public const int EmailReview = 1;
+        public const int EmailNew = 1;
+        public const int EmailDestroy = 2;
         
     }
 }

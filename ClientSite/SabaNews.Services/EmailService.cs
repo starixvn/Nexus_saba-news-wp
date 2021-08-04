@@ -32,7 +32,7 @@
             {
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
-                EmailEmbeddedLink = model.EmailEmbeddedLink,
+                EmbeddedLink = model.EmbeddedLink,
                 SendDate = model.SendDate,
                 CreatedBy = model.CreatedBy,
                 Status = model.Status,
@@ -97,6 +97,21 @@
         public async Task<CommandResult> UpdateStatusAsync(UpdateStatusCommand criteria)
         {
             return await baseService.ExecuteNonQueryAsync(criteria);
+        }
+
+        public async Task<CommandResult> UpdateEmailAsync(EmailModel model)
+        {
+            var command = new UpdateEmailCommand
+            {
+                EmailId = model.Id,
+                EmailTitle = model.EmailTitle,
+                EmailContent = model.EmailContent,
+                EmbeddedLink = model.EmbeddedLink,
+                Status = model.Status,
+                CreatedBy = model.CreatedBy,
+                SendDate = model.SendDate
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task<CommandResult> SendMailWithTemplateAsync(string subject, string content, string email, string path)

@@ -11,9 +11,9 @@
 
         public int End { get; set; }
 
-        public DateTime DateFrom { get; set; }
+        public DateTime FromDate { get; set; }
 
-        public DateTime DateTo { get; set; }
+        public DateTime ToDate { get; set; }
 
         public int TotalItems { get; set; }
 
