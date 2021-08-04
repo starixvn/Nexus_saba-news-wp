@@ -83,21 +83,6 @@
 
             .active-control {
                 position: relative;
-
-                a {
-                    color: $color-title-hover;
-
-                    &:after {
-                        content: '';
-                        display: block;
-                        width: .3rem;
-                        height: 100%;
-                        background: $color-title-hover;
-                        position: absolute;
-                        top: 0;
-                        left: -5px;
-                    }
-                }
             }
         }
 
