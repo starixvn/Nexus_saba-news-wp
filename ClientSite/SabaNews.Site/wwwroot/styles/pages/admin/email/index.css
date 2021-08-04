@@ -250,6 +250,16 @@ button {
       .btn-play-video span {
         font-size: 2rem; } }
 
+.btn-custom-admin {
+  cursor: pointer;
+  width: 11.3rem;
+  height: 4rem;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  color: #fff;
+  background: #E13C29;
+  font-weight: bold; }
+
 .pagination {
   text-align: center;
   display: flex;

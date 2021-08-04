@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?smc2oa');
-  src:  url('fonts/Fraud-Sensor.eot?smc2oa#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?smc2oa') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?smc2oa') format('woff'),
-    url('fonts/Fraud-Sensor.svg?smc2oa#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?p4ccfe');
+  src:  url('fonts/Fraud-Sensor.eot?p4ccfe#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?p4ccfe') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?p4ccfe') format('woff'),
+    url('fonts/Fraud-Sensor.svg?p4ccfe#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,12 +25,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-date_range:before {
+.icon-chart-admin:before {
   content: "\e902";
-  color: #1f2252;
+  color: #fff;
 }
-.icon-edit-admin:before {
+.icon-date_range:before {
   content: "\e903";
+  color: #1f2252;
 }
 .icon-exit-admin:before {
   content: "\e904";
@@ -40,9 +41,9 @@
   content: "\e905";
   color: #5243aa;
 }
-.icon-statics:before {
+.icon-mail-admin:before {
   content: "\e906";
-  color: #fff;
+  color: #9ea1d0;
 }
 .icon-bell:before {
   content: "\e900";
@@ -178,4 +179,3 @@
   content: "\e916";
   color: #fff;
 }
-

@@ -2,90 +2,135 @@
 @import '../../abstracts/_mixins.scss';
 @import '../../components/_buttons.scss';
 
-body {
-    font-family: "Lato", sans-serif;
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.sidenav {
-    height: 100%;
-    width: 300px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: $bg-nav-admin;
-    overflow-x: hidden;
-    padding-top: 20px;
+body {
+    font-family: "Arial";
+}
 
-    ul.menu {
-        list-style: none;
+.header-admin {
+    height: 8rem;
+    background-color: $bg-header-admin;
+    display: flex;
 
-        li > a {
-            background-color: #044868;
-            color: #51e7ff;
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 16px;
+    .main-header {
+        padding-left: 27rem;
+        margin: 0 2.4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .title-page {
+            color: $color-fff;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .control-header {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            margin-bottom: 0;
+
+            .icon-item {
+                margin-right: 3.2rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            }
         }
     }
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-.main {
-    margin-left: 300px;
-    font-size: 20px;
-    padding: 0px 10px;
-
-    .form-filter {
-        margin: 20px;
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
-
-    .content {
-        padding: 20px;
+.icon-page {
+    &:before {
+        font-size: 2.4rem;
+        color: $color-icon
     }
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
+.slide-nav {
+    position: fixed;
+    z-index: 9999;
+    background: $bg-nav-admin;
+    height: 100%;
+    min-height: 100vh;
+    top: 0;
+    width: 27rem;
+
+    .logo-admin {
+        padding: 2.4rem 0 4.5rem 3.2rem;
     }
 
-    .sidenav a {
-        font-size: 18px;
+    .menu-slide {
+        list-style: none;
+        padding-left: 3.2rem;
+
+        .menu-item {
+            padding: 2rem 0;
+
+            a {
+                text-decoration: none;
+                color: $color-icon;
+                font-weight: bold;
+                font-size: 1.7rem;
+            }
+        }
+
+        .active {
+            a {
+                color: $color-fff;
+            }
+        }
     }
 }
-.text-center {
-    text-align: center;
-}
 
-.data-grid {
-    width: 100%;
+.main-admin {
+    padding-left: 27rem;
 
-    tbody tr td {
-        border: 1px solid #ced4da;
-        vertical-align: middle;
-        padding: 5px 10px;
-    }
+    .page-content {
+        padding: 2.4rem;
 
-    thead tr th {
-        background-color: #066896;
-        border: none;
-        border-left: 1px solid #ced4da;
-        text-align: center;
-        padding: 10px;
-        color: #fff;
-    }
+        .form-horizontal {
+            display: flex;
+            align-items: flex-end;
 
-    tfoot tr td {
-        background-color: #a9cbdc;
-        border: none;
-        border-left: 1px solid #ced4da;
-        text-align: center;
-        padding: 5px 10px;
+            .form-input {
+                margin-right: 2.4rem;
+
+                .label-admin {
+                    margin-bottom: .6rem;
+                    font-size: 1.4rem;
+                    color: #444444;
+                }
+
+                .custom-input {
+                    height: 4rem;
+                    width: 22rem;
+                    background: #FFFFFF;
+                    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                    border: none;
+                    padding: .8rem;
+                    font-size: 1.4rem;
+                    color: #444444;
+                    font-weight: bold;
+                    cursor: pointer;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
     }
 }
