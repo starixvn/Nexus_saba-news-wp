@@ -41,12 +41,9 @@
                     margin-right: 2.5rem;
                 }
             }
-        }
 
-        .active {
-            a {
+            .active {
                 color: $color-fff;
-
                 .icon-page {
                     &:before {
                         color: $color-fff;
