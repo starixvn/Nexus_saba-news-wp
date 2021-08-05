@@ -28,13 +28,5 @@ namespace SabaNews.Models.Email
         public int TotalClicked { get; set; }
 
         public DateTime CreatedDate { get; set; }
-
-        public string CreatedTime
-        {
-            get
-            {
-                return CreatedDate.ToString("dd MMMM yyyy hh:mm ");
-            }
-        }
     }
 }

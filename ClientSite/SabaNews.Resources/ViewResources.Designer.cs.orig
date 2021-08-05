@@ -350,6 +350,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Electronic Direct Mail.
+        /// </summary>
+        public static string ElectronicDirectMail {
+            get {
+                return ResourceManager.GetString("ElectronicDirectMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -611,11 +620,20 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List Email.
+        ///   Looks up a localized string similar to List Emails.
         /// </summary>
         public static string ListEmail {
             get {
                 return ResourceManager.GetString("ListEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List email details.
+        /// </summary>
+        public static string ListEmailDetail {
+            get {
+                return ResourceManager.GetString("ListEmailDetail", resourceCulture);
             }
         }
         
@@ -1210,6 +1228,15 @@ namespace SabaNews.Resources {
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful.
+        /// </summary>
+        public static string Successful {
+            get {
+                return ResourceManager.GetString("Successful", resourceCulture);
             }
         }
         
@@ -1754,6 +1781,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EDMCreate.
+        /// </summary>
+        public static string EDMCreatePage {
+            get {
+                return ResourceManager.GetString("EDMCreatePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDMList.
+        /// </summary>
+        public static string EDMListPage {
+            get {
+                return ResourceManager.GetString("EDMListPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Electronic Direct Mail.
         /// </summary>
         public static string ElectronicDirectMail {
@@ -2294,6 +2339,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PostViewStatisticPage.
+        /// </summary>
+        public static string PostViewStatisticPage {
+            get {
+                return ResourceManager.GetString("PostViewStatisticPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tài khoản.
         /// </summary>
         public static string ProfileAccount {
@@ -2542,6 +2596,15 @@ namespace SabaNews.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Status.
+        /// </summary>
+        public static string SendStatus {
+            get {
+                return ResourceManager.GetString("SendStatus", resourceCulture);
             }
         }
         
@@ -2807,6 +2870,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User Interaction.
+        /// </summary>
+        public static string UserInteraction {
+            get {
+                return ResourceManager.GetString("UserInteraction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng chọn giới tính.
         /// </summary>
         public static string ValidateGender {
@@ -2888,4 +2960,4 @@ namespace SabaNews.Resources {
         }
     }
 }
->>>>>>> 000 - update email detail page
+>>>>>>> 000 - refactor code

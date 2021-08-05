@@ -349,6 +349,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EDMCreate.
+        /// </summary>
+        public static string EDMCreatePage {
+            get {
+                return ResourceManager.GetString("EDMCreatePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDMList.
+        /// </summary>
+        public static string EDMListPage {
+            get {
+                return ResourceManager.GetString("EDMListPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Electronic Direct Mail.
         /// </summary>
         public static string ElectronicDirectMail {
@@ -871,6 +889,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PostViewStatisticPage.
+        /// </summary>
+        public static string PostViewStatisticPage {
+            get {
+                return ResourceManager.GetString("PostViewStatisticPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tài khoản.
         /// </summary>
         public static string ProfileAccount {
@@ -1123,6 +1150,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send Status.
+        /// </summary>
+        public static string SendStatus {
+            get {
+                return ResourceManager.GetString("SendStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Send test email to.
         /// </summary>
         public static string SendTestEmailTo {
@@ -1334,6 +1370,15 @@ namespace SabaNews.Resources {
         public static string UnsubscribeSuccessfully {
             get {
                 return ResourceManager.GetString("UnsubscribeSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Interaction.
+        /// </summary>
+        public static string UserInteraction {
+            get {
+                return ResourceManager.GetString("UserInteraction", resourceCulture);
             }
         }
         

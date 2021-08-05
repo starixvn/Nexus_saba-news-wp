@@ -4,8 +4,13 @@
 }
 
 
+@section TopHeader{
+	@ViewResources.ElectronicDirectMail
+}
+
+
 @section Title{
-	@ViewBag.Title
+	@ViewResources.ElectronicDirectMail
 }
 
 @section Styles{
@@ -36,7 +41,7 @@
 							</select>
 						</div>
 						<div class="col-md-3 form-group">
-							<label>Status</label>
+							<label>@ViewResources.Status</label>
 							<select class="form-control" name="status">
 								<option value="-1">All</option>
 								<option value="0">Successful</option>

@@ -3,9 +3,13 @@
 	Layout = "_AdminLayout";
 }
 
+@section TopHeader{
+	@ViewResources.ElectronicDirectMail
+}
+
 
 @section Title{
-	@ViewBag.Title
+	@ViewResources.ElectronicDirectMail
 }
 
 @section Styles{
@@ -16,7 +20,7 @@
 	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
 	<script src="~/js/lib/config_ckeditor.js"></script>
 	<script src="~/js/admin/email/create.js" asp-append-version="true"></script>
-	
+
 }
 
 <section>
@@ -34,13 +38,13 @@
 								<ul class="error summary-eror"></ul>
 								<div class="form-group  email_title">
 									<label>@ViewResources.Subject</label>
-									<input type="text" class="input-form" placeholder="" name="emailTitle"  value="@Model.Email.EmailTitle"/>
+									<input type="text" class="input-form" placeholder="" name="emailTitle" value="@Model.Email.EmailTitle" />
 									<p class="help-block"></p>
 								</div>
 
 								<div class="form-group email_link">
 									<label>@ViewResources.OriginalUrl</label>
-									<input type="text" class="input-form" placeholder="" name="emailReturnLink"  value="@Model.OriginalUrl"/>
+									<input type="text" class="input-form" placeholder="" name="emailReturnLink" value="@Model.OriginalUrl" />
 									<div class="group_raw_link" style="display: @(Model.OriginalUrl != "" ? "block" : "none")">
 										<label>@ViewResources.EmbeddedUrl</label>
 										<p class="raw_link">@Model.Email.EmbeddedLink</p>

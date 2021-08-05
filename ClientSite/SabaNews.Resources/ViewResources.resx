@@ -567,4 +567,19 @@
   <data name="ElectronicDirectMail" xml:space="preserve">
     <value>Electronic Direct Mail</value>
   </data>
+  <data name="SendStatus" xml:space="preserve">
+    <value>Send Status</value>
+  </data>
+  <data name="EDMCreatePage" xml:space="preserve">
+    <value>EDMCreate</value>
+  </data>
+  <data name="EDMListPage" xml:space="preserve">
+    <value>EDMList</value>
+  </data>
+  <data name="PostViewStatisticPage" xml:space="preserve">
+    <value>PostViewStatisticPage</value>
+  </data>
+  <data name="UserInteraction" xml:space="preserve">
+    <value>User Interaction</value>
+  </data>
 </root>

@@ -5,7 +5,7 @@
 		<th width="5%">@ViewResources.STT</th>
 		<th>@ViewResources.Email</th>
 		<th width="20%">@ViewResources.SentDate</th>
-		<th width="20%">User Interaction</th>
+		<th width="20%">@ViewResources.UserInteraction</th>
 		<th width="20%">@ViewResources.Status</th>
 	</tr>
 	@{ var stt = 0; }
@@ -15,7 +15,7 @@
 		<tr>
 			<td>@stt</td>
 			<td>@detail.EmailAddress</td>
-			<td>@detail.SendTime.ToString("dd MMMM yyyy hh:mm:ssss ")</td>
+			<td>@detail.SendTime.ToString("dd MMM yyyy hh:mm:ssss ")</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
 			<td>
 				@if (detail.Status == 0)
