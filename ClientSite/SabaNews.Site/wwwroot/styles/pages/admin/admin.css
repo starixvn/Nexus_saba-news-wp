@@ -74,12 +74,12 @@ button {
   top: 0;
   width: 27rem; }
   .slide-nav .logo-admin {
-    padding: 2.4rem 0 4.5rem 3.2rem; }
+    padding: 2.4rem 0 4rem 3.5rem; }
   .slide-nav .menu-slide {
     list-style: none;
-    padding-left: 3.2rem; }
+    padding-left: 3.5rem; }
     .slide-nav .menu-slide .menu-item {
-      padding: 2.4rem 0; }
+      padding: 2rem 0; }
       .slide-nav .menu-slide .menu-item a {
         text-decoration: none;
         color: #9193B8;
@@ -92,7 +92,7 @@ button {
           .slide-nav .menu-slide .menu-item a:hover .icon-page:before {
             color: #fff; }
         .slide-nav .menu-slide .menu-item a .icon-page {
-          margin-right: 2.5rem; }
+          margin-right: 2.4rem; }
     .slide-nav .menu-slide .active a {
       color: #fff; }
       .slide-nav .menu-slide .active a .icon-page:before {
