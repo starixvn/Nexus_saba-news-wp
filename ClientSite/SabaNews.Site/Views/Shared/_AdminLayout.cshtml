@@ -32,7 +32,9 @@
 		<div class="slide-nav">
 			<div class="logo-admin"><img loading="lazy" src="~/images/logo-admin.png"></div>
 			<ul class="menu-slide">
-				<li class="menu-item"><a href="~/Admin/Statistic/Index" class="active"><i class="icon-page icon-chart-admin"></i> @ViewResources.PostViewStatistic</a></li>
+                <li class="menu-item">
+                    <a href="~/Admin/Statistic/Index"><i class="icon-page icon-chart-admin"></i> @ViewResources.PostViewStatistic</a>
+                </li>
 				<li class="menu-item"><a href="~/Admin/Email/Index"><i class="icon-page icon-mail-admin"></i> List Emails</a></li>
 				<li class="menu-item"><a href="~/Admin/Email/Create"><i class="icon-page icon-mail-admin"></i> Send Email</a></li>
 			</ul>
@@ -43,6 +45,16 @@
 	</div>
 	<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
 	<script src="~/js/admin/admin.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            var currentPath = window.location.pathname;
+            $('.menu-item').each(function (i, e) {
+                if ($(e).find('a').attr('href').indexOf(currentPath) !== - 1) {
+                    $(e).addClass('active');
+                }
+            });
+        });
+    </script>
 	@RenderSection("Scripts", false)
 </body>
 </html>
