@@ -565,23 +565,32 @@
   <data name="ListEmailDetail" xml:space="preserve">
     <value>List email details</value>
   </data>
-  <data name="ElectronicDirectMail" xml:space="preserve">
-    <value>Electronic Direct Mail</value>
+  <data name="CreateElectronicDirectMail" xml:space="preserve">
+    <value>Create Electronic Direct Mail </value>
   </data>
   <data name="SendStatus" xml:space="preserve">
     <value>Send Status</value>
-  </data>
-  <data name="EDMCreatePage" xml:space="preserve">
-    <value>EDMCreate</value>
-  </data>
-  <data name="EDMListPage" xml:space="preserve">
-    <value>EDMList</value>
   </data>
   <data name="PostViewStatisticPage" xml:space="preserve">
     <value>PostViewStatisticPage</value>
   </data>
   <data name="UserInteraction" xml:space="preserve">
     <value>User Interaction</value>
+  </data>
+  <data name="CreateEDM" xml:space="preserve">
+    <value>Create EDM</value>
+  </data>
+  <data name="EditElectronicDirectMail" xml:space="preserve">
+    <value>Edit Electronic Direct Mail</value>
+  </data>
+  <data name="ListDetailElectronicDirectMail" xml:space="preserve">
+    <value>List Detail Electronic Direct Mail</value>
+  </data>
+  <data name="ListEDM" xml:space="preserve">
+    <value>List EDM</value>
+  </data>
+  <data name="ListElectronicDirectMail" xml:space="preserve">
+    <value>List Electronic Direct Mail</value>
   </data>
 =======
 ﻿<?xml version="1.0" encoding="utf-8"?>
@@ -1126,20 +1135,11 @@
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
-  <data name="Date" xml:space="preserve">
-    <value>Date</value>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
   </data>
-  <data name="TotalPost" xml:space="preserve">
-    <value>Total Post</value>
-  </data>
-  <data name="TotalPostView" xml:space="preserve">
-    <value>Total Post View</value>
-  </data>
-  <data name="TotalVideo" xml:space="preserve">
-    <value>Total Video</value>
-  </data>
-  <data name="TotalVideoView" xml:space="preserve">
-    <value>Total Video View</value>
+  <data name="TotalViews" xml:space="preserve">
+    <value>Total Views</value>
   </data>
   <data name="PostViewStatistic" xml:space="preserve">
     <value>Post View Statistic</value>
@@ -1204,5 +1204,23 @@
   <data name="ListElectronicDirectMail" xml:space="preserve">
     <value>List Electronic Direct Mail</value>
   </data>
->>>>>>> 000 - update title
+  <data name="ArticleViews" xml:space="preserve">
+    <value>Article views</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="VideoViews" xml:space="preserve">
+    <value>Video views</value>
+  </data>
+  <data name="TooltipIcon" xml:space="preserve">
+    <value>(i)</value>
+  </data>
+  <data name="ArticleTooltipContent" xml:space="preserve">
+    <value>Views of articles published on the Created Date, and is accumulated to the present time.</value>
+  </data>
+  <data name="VideoTooltipContent" xml:space="preserve">
+    <value>Views of videos published on the Created Date, and is accumulated to the present time.</value>
+  </data>
+>>>>>>> 000 - update text and fix UI
 </root>

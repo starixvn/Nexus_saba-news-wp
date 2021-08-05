@@ -3,28 +3,28 @@
     <div class="card-item card-pupple">
         <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i></div>
         <ul class="card-total">
-            <li class="cart-total-title">@ViewResources.TotalPost</li>
+            <li class="cart-total-title">@ViewResources.Articles</li>
             <li class="cart-toal-count">@Model.TotalPost</li>
         </ul>
     </div>
     <div class="card-item card-green">
         <div class="card-icon bg-green"><i class="icon-page icon-icon-admin"></i></div>
         <ul class="card-total">
-            <li class="cart-total-title">@ViewResources.TotalPostView</li>
+            <li class="cart-total-title">@ViewResources.ArticleViews</li>
             <li class="cart-toal-count">@Model.TotalPostView</li>
         </ul>
     </div>
     <div class="card-item card-orange">
         <div class="card-icon bg-orange"><i class="icon-page icon-icon-admin"></i></div>
         <ul class="card-total">
-            <li class="cart-total-title">@ViewResources.TotalVideo</li>
+            <li class="cart-total-title">@ViewResources.Videos</li>
             <li class="cart-toal-count">@Model.TotalVideo</li>
         </ul>
     </div>
     <div class="card-item card-blue">
         <div class="card-icon bg-blue"><i class="icon-page icon-icon-admin"></i></div>
         <ul class="card-total">
-            <li class="cart-total-title">@ViewResources.TotalVideoView</li>
+            <li class="cart-total-title">@ViewResources.VideoViews</li>
             <li class="cart-toal-count">@Model.TotalVideoView</li>
         </ul>
     </div>
@@ -34,11 +34,17 @@
     <table class="data-grid">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Total Posts</th>
-                <th>Post Views</th>
-                <th>Total Videos</th>
-                <th>Video Views</th>
+                <th>@ViewResources.CreatedDate</th>
+                <th>@ViewResources.Articles</th>
+                <th>
+                    @ViewResources.TotalViews
+                    <span class="tooltip-icon">@ViewResources.TooltipIcon<span class="tooltip-content">@ViewResources.ArticleTooltipContent</span></span>
+                </th>
+                <th>@ViewResources.Videos</th>
+                <th>
+                    @ViewResources.TotalViews
+                    <span class="tooltip-icon">@ViewResources.TooltipIcon<span class="tooltip-content">@ViewResources.VideoTooltipContent</span></span>
+                </th>
             </tr>
         </thead>
         <tbody>

@@ -106,6 +106,33 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Articles.
+        /// </summary>
+        public static string Articles {
+            get {
+                return ResourceManager.GetString("Articles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Views of articles published on the Created Date, and is accumulated to the present time..
+        /// </summary>
+        public static string ArticleTooltipContent {
+            get {
+                return ResourceManager.GetString("ArticleTooltipContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Article views.
+        /// </summary>
+        public static string ArticleViews {
+            get {
+                return ResourceManager.GetString("ArticleViews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trở lại.
         /// </summary>
         public static string Back {
@@ -1365,6 +1392,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (i).
+        /// </summary>
+        public static string TooltipIcon {
+            get {
+                return ResourceManager.GetString("TooltipIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vua phá lưới.
         /// </summary>
         public static string TopGoalScorer {
@@ -1379,6 +1415,15 @@ namespace SabaNews.Resources {
         public static string Total {
             get {
                 return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Views.
+        /// </summary>
+        public static string TotalViews {
+            get {
+                return ResourceManager.GetString("TotalViews", resourceCulture);
             }
         }
         
@@ -1455,11 +1500,38 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Videos.
+        /// </summary>
+        public static string Videos {
+            get {
+                return ResourceManager.GetString("Videos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to video.
         /// </summary>
         public static string VideoSlug {
             get {
                 return ResourceManager.GetString("VideoSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Views of videos published on the Created Date, and is accumulated to the present time..
+        /// </summary>
+        public static string VideoTooltipContent {
+            get {
+                return ResourceManager.GetString("VideoTooltipContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video views.
+        /// </summary>
+        public static string VideoViews {
+            get {
+                return ResourceManager.GetString("VideoViews", resourceCulture);
             }
         }
         
