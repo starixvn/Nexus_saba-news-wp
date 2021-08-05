@@ -304,6 +304,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created Date.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -1087,15 +1096,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created Date.
-        /// </summary>
-        public static string SendDate {
-            get {
-                return ResourceManager.GetString("SendDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Send email.
         /// </summary>
         public static string SendEmail {
@@ -1128,6 +1128,15 @@ namespace SabaNews.Resources {
         public static string Sent {
             get {
                 return ResourceManager.GetString("Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent Date.
+        /// </summary>
+        public static string SentDate {
+            get {
+                return ResourceManager.GetString("SentDate", resourceCulture);
             }
         }
         

@@ -1276,6 +1276,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thị trường chuyển nhượng.
         /// </summary>
         public static string Transfer {
@@ -1678,6 +1687,15 @@ namespace SabaNews.Resources {
         public static string CreatedBy {
             get {
                 return ResourceManager.GetString("CreatedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created Date.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
             }
         }
         
@@ -2492,15 +2510,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created Date.
-        /// </summary>
-        public static string SendDate {
-            get {
-                return ResourceManager.GetString("SendDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Send email.
         /// </summary>
         public static string SendEmail {
@@ -2533,6 +2542,15 @@ namespace SabaNews.Resources {
         public static string Sent {
             get {
                 return ResourceManager.GetString("Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent Date.
+        /// </summary>
+        public static string SentDate {
+            get {
+                return ResourceManager.GetString("SentDate", resourceCulture);
             }
         }
         
@@ -2834,4 +2852,4 @@ namespace SabaNews.Resources {
         }
     }
 }
->>>>>>> 000 - refactor and update admin layout
+>>>>>>> 000 - refactor code

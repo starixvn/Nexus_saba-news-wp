@@ -553,6 +553,9 @@
   <data name="Resend" xml:space="preserve">
     <value>Resend</value>
   </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
 =======
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -991,8 +994,8 @@
   <data name="Send Mail" xml:space="preserve">
     <value>Send email</value>
   </data>
-  <data name="SendDate" xml:space="preserve">
-    <value>Created Date</value>
+  <data name="SentDate" xml:space="preserve">
+    <value>Sent Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
@@ -1135,8 +1138,11 @@
   <data name="Resend" xml:space="preserve">
     <value>Resend</value>
   </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
   </data>
->>>>>>> 000 - refactor and update admin layout
+>>>>>>> 000 - refactor code
 </root>
