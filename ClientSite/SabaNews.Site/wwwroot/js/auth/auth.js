@@ -175,19 +175,6 @@
         });
     }
 
-    function HandleLogout() {
-        $('.auth-input .auth-logout, .profile_logout').on('click', function () {
-            $.ajax({
-                url: '/Auth/Logout',
-                type: 'GET',
-                dataType: 'html',
-                success: function (response) {
-                    location.reload();
-                }
-            });
-        });
-    }
-
     function HandleModal() {
         $('.nav-title').on('click', function () {
             var self = $(this);
@@ -201,7 +188,7 @@
                     $('#nav-register').addClass('active')
                     $('#nav-login').removeClass('active')
                 }
-            } 
+            }
         });
     }
 
@@ -214,15 +201,13 @@
 
     function init() {
         HandleAuth();
-        HandleLogout();
     }
 
     return {
         init,
-        GetModalLogin, 
+        GetModalLogin,
         HandleForgotPassword
     }
-
 })(jQuery);
 
 $(document).ready(function () {

@@ -89,7 +89,7 @@
                                 <a class="item" href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a>
                             </li>
                             <li class="info-user auth-info"><a href="@Url.Action("Index", "Profile")" class="item">@ViewResources.MyAccount</a></li>
-                            <li class="info-user auth-logout"><a href="javascript:;" class="item">@ViewResources.Logout<i class="icon-logout"></i> </a></li>
+                            <li class="info-user auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path" class="item">@ViewResources.Logout<i class="icon-logout"></i> </a></li>
                         </ul>
                     }
                     else

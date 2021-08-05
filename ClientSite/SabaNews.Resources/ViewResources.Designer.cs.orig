@@ -1106,7 +1106,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SendTestEmailTo.
+        ///   Looks up a localized string similar to Send test email to.
         /// </summary>
         public static string SendTestEmailTo {
             get {
@@ -2690,6 +2690,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Post.
         /// </summary>
         public static string TotalPost {
@@ -2825,4 +2834,4 @@ namespace SabaNews.Resources {
         }
     }
 }
->>>>>>> 000 - refactor code
+>>>>>>> 000 - refactor and update admin layout

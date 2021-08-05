@@ -218,6 +218,12 @@ body {
   padding-left: 27rem; }
   .main-admin .page-content {
     padding: 2.4rem; }
+    .main-admin .page-content .error {
+      padding: 10px;
+      color: red;
+      border: 1px solid;
+      font-size: 13px;
+      margin-bottom: 20px; }
     .main-admin .page-content .form-horizontal {
       display: flex;
       align-items: flex-end; }

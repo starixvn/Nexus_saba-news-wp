@@ -289,6 +289,14 @@ body {
     .page-content {
         padding: 2.4rem;
 
+        .error {
+            padding: 10px;
+            color: red;
+            border: 1px solid;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
         .form-horizontal {
             display: flex;
             align-items: flex-end;

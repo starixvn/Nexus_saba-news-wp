@@ -443,7 +443,7 @@
     <value>Send email</value>
   </data>
   <data name="SendTestEmailTo" xml:space="preserve">
-    <value>SendTestEmailTo</value>
+    <value>Send test email to</value>
   </data>
   <data name="SendTo" xml:space="preserve">
     <value>Send To:</value>
@@ -1135,5 +1135,8 @@
   <data name="Resend" xml:space="preserve">
     <value>Resend</value>
   </data>
->>>>>>> 000 - refactor code
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+>>>>>>> 000 - refactor and update admin layout
 </root>

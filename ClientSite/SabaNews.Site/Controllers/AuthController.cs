@@ -7,7 +7,6 @@
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Mvc;
-    using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -120,10 +119,16 @@
             return Json(commandResult);
         }
 
-        public async Task Logout()
+        public async Task<IActionResult> Logout(string returnUrl)
         {
             sessionService.ClearAll();
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                returnUrl = "/";
+            }
+            return Redirect(returnUrl);
         }
 
         private async Task DoLoginAsync(string name, string email)
@@ -137,6 +142,5 @@
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
         }
-
     }
 }

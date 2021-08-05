@@ -1,9 +1,41 @@
 <<<<<<< HEAD
-﻿<div>
+﻿<div class="table-admin">
 =======
 ﻿@using SabaNews.Resources;
+
+<div class="card-view">
+    <div class="card-item">
+        <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@ViewResources.TotalPost</li>
+            <li class="cart-toal-count">@Model.TotalPost</li>
+        </ul>
+    </div>
+    <div class="card-item">
+        <div class="card-icon bg-green"><i class="icon-page icon-icon-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@ViewResources.TotalPostView</li>
+            <li class="cart-toal-count">@Model.TotalPostView</li>
+        </ul>
+    </div>
+    <div class="card-item">
+        <div class="card-icon bg-orange"><i class="icon-page icon-icon-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@ViewResources.TotalVideo</li>
+            <li class="cart-toal-count">@Model.TotalVideo</li>
+        </ul>
+    </div>
+    <div class="card-item">
+        <div class="card-icon bg-blue"><i class="icon-page icon-icon-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@ViewResources.TotalVideoView</li>
+            <li class="cart-toal-count">@Model.TotalVideoView</li>
+        </ul>
+    </div>
+</div>
+
 <div class="table-admin">
->>>>>>> 000 - add css page admin
+>>>>>>> 000 - refactor and update admin layout
     <table class="data-grid">
         <thead>
             <tr>
@@ -21,7 +53,7 @@
                     <tr>
                         <td class="text-center">@item.OnDate.ToString("dd MMM yyyy")</td>
                         <td class="text-right">@item.PostCount</td>
-                        <td class="text-right">item.PostView</td>
+                        <td class="text-right">@item.PostView</td>
                         <td class="text-right">@item.VideoCount</td>
                         <td class="text-right">@item.VideoView</td>
                     </tr>
@@ -30,7 +62,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td class="text-center">ToTal</td>
+                <td class="text-center">@ViewResources.Total</td>
                 <td class="text-right">@Model.TotalPost</td>
                 <td class="text-right">@Model.TotalPostView</td>
                 <td class="text-right">@Model.TotalVideo</td>
