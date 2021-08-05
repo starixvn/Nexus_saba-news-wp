@@ -15,7 +15,7 @@
 @section Scripts{
 	<script src="~/js/ckeditor5/build/ckeditor.js"></script>
 	<script src="~/js/lib/config_ckeditor.js"></script>
-	<script src="~/js/admin/email/edit.js" asp-append-version="true"></script>
+	<script src="~/js/admin/email/create.js" asp-append-version="true"></script>
 	
 }
 
@@ -55,8 +55,8 @@
 									<textarea id="emailContent" class="input-form">@Model.Email.EmailContent</textarea>
 									<p class="help-block"></p>
 								</div>
-								<button type="button" class="button btn-red btn-save-as-draft">@ViewResources.SaveEmail</button>
-								<button type="button" class="button btn-red btn-send-mail">@ViewResources.SaveAndSend</button>
+								<button type="button" class="button btn-red btn-save-as-draft-edit">@ViewResources.SaveEmail</button>
+								<button type="button" class="button btn-red btn-send-mail-edit">@ViewResources.SaveAndSend</button>
 								<button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
 							</form>
 						</div>

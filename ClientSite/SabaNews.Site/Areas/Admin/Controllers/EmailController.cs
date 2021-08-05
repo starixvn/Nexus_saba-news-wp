@@ -89,37 +89,16 @@
         [HttpPost]
         public async Task<ActionResult> SaveAndSendCreate(EmailModel model)
         {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
-            var userNumber = subscribedUsers.Count;
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
+            var userNumber = 0;
             var result = await emailService.CreateEmailAsync(model);
 
             if (result.IsSuccessful)
             {
-                foreach (var user in subscribedUsers)
-                {
-                    var token = Guid.NewGuid().ToString();
-                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
-                    var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
-                    var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
-                    var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
-                    var emailData = new EmailDetailModel
-                    {
-                        EmailId = model.Id,
-                        UserId = user.Id,
-                        EmailAddress = user.Email,
-                        EmailContent = emailContent,
-                        EmailTitle = model.EmailTitle,
-                        TokenId = token,
-                        SendTime = DateTime.Now,
-                        Status = resultSendMail.Code
-                    };
-                    await emailService.CreateEmailDetailAsync(emailData);
-                }
+                userNumber = await Send(model);
             }
             return Json(new { result, userNumber });
         }
@@ -138,6 +117,9 @@
         public async Task<ActionResult> Edit(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
+            if (email.Status == Constants.EmailSent) {
+                return Redirect(Url.Action("Index", "Email"));
+            }
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
             var originalUrl = email.EmbeddedLink[(indexString + 1)..];
@@ -154,9 +136,7 @@
 
         public async Task<ActionResult> SaveAndSendEdit(EmailModel model)
         {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
-            var userNumber = subscribedUsers.Count;
+            var userNumber = 0;
             model.CreatedBy = sessionService.User.Id;
             model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
@@ -165,26 +145,7 @@
 
             if (result.IsSuccessful)
             {
-                foreach (var user in subscribedUsers)
-                {
-                    var token = Guid.NewGuid().ToString();
-                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
-                    var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
-                    var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
-                    var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
-                    var emailData = new EmailDetailModel
-                    {
-                        EmailId = model.Id,
-                        UserId = user.Id,
-                        EmailAddress = user.Email,
-                        EmailContent = emailContent,
-                        EmailTitle = model.EmailTitle,
-                        TokenId = token,
-                        SendTime = DateTime.Now,
-                        Status = resultSendMail.Code
-                    };
-                    await emailService.CreateEmailDetailAsync(emailData);
-                }
+                userNumber = await Send(model);
             }
             return Json(new { result, userNumber });
         }
@@ -211,30 +172,12 @@
         public async Task<ActionResult> SendEmail(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
-            var userNumber = subscribedUsers.Count;
-            foreach (var user in subscribedUsers)
-            {
-                var token = Guid.NewGuid().ToString();
-                var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
-                var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
-                var emailContent = email.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
-                var resultSendMail = await emailService.SendMailWithTemplateAsync(email.EmailTitle, emailContent, user.Email, SendMailTemplates);
-                var emailData = new EmailDetailModel
-                {
-                    EmailId = email.Id,
-                    UserId = user.Id,
-                    EmailAddress = user.Email,
-                    EmailContent = emailContent,
-                    EmailTitle = email.EmailTitle,
-                    TokenId = token,
-                    SendTime = DateTime.Now,
-                    Status = resultSendMail.Code
-                };
-                await emailService.CreateEmailDetailAsync(emailData);
-            }
+            var userNumber = 0;
             var result = await emailService.UpdateStatusAsync(new UpdateStatusCommand { EmailId = emailId, Status = Constants.EmailSent });
+            if (result.IsSuccessful)
+            {
+                userNumber = await Send(email);
+            }
             return Json(new { result, userNumber });
         }
 
@@ -313,6 +256,35 @@
             var resultSendMail = await emailService.SendMailWithTemplateAsync(email.EmailTitle, email.EmailContent, email.EmailAddress, SendMailTemplates);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
             return Json(resultSendMail);
+        }
+
+        public async Task<int> Send(EmailModel model)
+        {
+            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
+            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
+            var userNumber = subscribedUsers.Count;
+            foreach (var user in subscribedUsers)
+            {
+                var token = Guid.NewGuid().ToString();
+                var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
+                var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
+                var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
+                var emailData = new EmailDetailModel
+                {
+                    EmailId = model.Id,
+                    UserId = user.Id,
+                    EmailAddress = user.Email,
+                    EmailContent = emailContent,
+                    EmailTitle = model.EmailTitle,
+                    TokenId = token,
+                    SendTime = DateTime.Now,
+                    Status = resultSendMail.Code
+                };
+                await emailService.CreateEmailDetailAsync(emailData);
+            }
+            return userNumber;
+           
         }
 
         private static string EnsureCorrectFilename(string filename)

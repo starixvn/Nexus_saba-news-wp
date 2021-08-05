@@ -75,6 +75,16 @@ var sendmailevent = (function ($) {
             e.preventDefault();
             HandleSubmit("/Admin/Email/SaveCreate");
         });
+
+        $('.btn-send-mail-edit').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveAndSendEdit");
+        });
+
+        $('.btn-save-as-draft-edit').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveEdit");
+        });
     }
 
     function HandleSubmit(url) {
