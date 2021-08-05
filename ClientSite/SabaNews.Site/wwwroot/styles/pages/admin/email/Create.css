@@ -531,41 +531,6 @@ footer {
   background: #fff;
   box-sizing: border-box; }
 
-.block-main .profile {
-  padding: .5rem; }
-  .block-main .profile__avatar {
-    width: 10rem;
-    height: 10rem;
-    background: #e5e5e5;
-    line-height: 10rem;
-    text-align: center;
-    color: #fff;
-    font-size: 4.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 2rem auto;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: center;
-    flex-direction: row; }
-  .block-main .profile__control, .block-main .profile__nav {
-    list-style: none;
-    margin-bottom: 0;
-    padding: 1rem 0; }
-    .block-main .profile__control .active-control, .block-main .profile__nav .active-control {
-      position: relative; }
-  .block-main .profile__nav {
-    border-bottom: none;
-    padding: 1rem 0 0 0; }
-    .block-main .profile__nav li {
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 1rem; }
-      .block-main .profile__nav li:last-child {
-        border-bottom: none; }
-
 .controls__sendmail {
   padding-bottom: 2.5rem; }
 
