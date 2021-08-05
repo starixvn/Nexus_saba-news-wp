@@ -49,9 +49,13 @@
                 <textarea id="emailContent" class="input-form"></textarea>
                 <p class="help-block"></p>
             </div>
-            <button type="button" class="button btn-red btn-save-as-draft">@ViewResources.SaveEmail</button>
-            <button type="button" class="button btn-red btn-send-mail">@ViewResources.SaveAndSend</button>
-            <button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
+            <div class="group-btn-admin">
+                <div class="left-btn">
+                    <button type="button" class="button btn-custom-admin btn-red btn-send-mail">@ViewResources.SaveAndSend</button>
+                    <button type="button" class="button btn-custom-outline  btn-red btn-save-as-draft">@ViewResources.SaveEmail</button>
+                </div>
+                <button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
+            </div>
         </form>
 
         <div class="modal" id="ViewEmailContent" style="display:none">
