@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?i7r56c');
-  src:  url('fonts/Fraud-Sensor.eot?i7r56c#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?i7r56c') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?i7r56c') format('woff'),
-    url('fonts/Fraud-Sensor.svg?i7r56c#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?rf4tbl');
+  src:  url('fonts/Fraud-Sensor.eot?rf4tbl#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?rf4tbl') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?rf4tbl') format('woff'),
+    url('fonts/Fraud-Sensor.svg?rf4tbl#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-error_outline:before {
+  content: "\e905";
+  color: #0052cc;
+}
+.icon-icon-admin:before {
+  content: "\e90b";
+  color: #5243aa;
+}
 .icon-list_alt-admin:before {
   content: "\e907";
   color: #9ea1d0;
@@ -52,10 +60,6 @@
 .icon-exit-admin:before {
   content: "\e904";
   color: #9193b8;
-}
-.icon-icon-admin:before {
-  content: "\e905";
-  color: #5243aa;
 }
 .icon-mail-admin:before {
   content: "\e906";
