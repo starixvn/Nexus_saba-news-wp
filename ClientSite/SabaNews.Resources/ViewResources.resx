@@ -564,22 +564,31 @@
   <data name="ListEmailDetail" xml:space="preserve">
     <value>List email details</value>
   </data>
-  <data name="ElectronicDirectMail" xml:space="preserve">
-    <value>Electronic Direct Mail</value>
+  <data name="CreateElectronicDirectMail" xml:space="preserve">
+    <value>Create Electronic Direct Mail </value>
   </data>
   <data name="SendStatus" xml:space="preserve">
     <value>Send Status</value>
-  </data>
-  <data name="EDMCreatePage" xml:space="preserve">
-    <value>EDMCreate</value>
-  </data>
-  <data name="EDMListPage" xml:space="preserve">
-    <value>EDMList</value>
   </data>
   <data name="PostViewStatisticPage" xml:space="preserve">
     <value>PostViewStatisticPage</value>
   </data>
   <data name="UserInteraction" xml:space="preserve">
     <value>User Interaction</value>
+  </data>
+  <data name="CreateEDM" xml:space="preserve">
+    <value>Create EDM</value>
+  </data>
+  <data name="EditElectronicDirectMail" xml:space="preserve">
+    <value>Edit Electronic Direct Mail</value>
+  </data>
+  <data name="ListDetailElectronicDirectMail" xml:space="preserve">
+    <value>List Detail Electronic Direct Mail</value>
+  </data>
+  <data name="ListEDM" xml:space="preserve">
+    <value>List EDM</value>
+  </data>
+  <data name="ListElectronicDirectMail" xml:space="preserve">
+    <value>List Electronic Direct Mail</value>
   </data>
 </root>

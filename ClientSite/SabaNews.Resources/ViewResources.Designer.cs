@@ -313,6 +313,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create EDM.
+        /// </summary>
+        public static string CreateEDM {
+            get {
+                return ResourceManager.GetString("CreateEDM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Electronic Direct Mail .
+        /// </summary>
+        public static string CreateElectronicDirectMail {
+            get {
+                return ResourceManager.GetString("CreateElectronicDirectMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -349,29 +367,11 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EDMCreate.
+        ///   Looks up a localized string similar to Edit Electronic Direct Mail.
         /// </summary>
-        public static string EDMCreatePage {
+        public static string EditElectronicDirectMail {
             get {
-                return ResourceManager.GetString("EDMCreatePage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EDMList.
-        /// </summary>
-        public static string EDMListPage {
-            get {
-                return ResourceManager.GetString("EDMListPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Electronic Direct Mail.
-        /// </summary>
-        public static string ElectronicDirectMail {
-            get {
-                return ResourceManager.GetString("ElectronicDirectMail", resourceCulture);
+                return ResourceManager.GetString("EditElectronicDirectMail", resourceCulture);
             }
         }
         
@@ -633,6 +633,33 @@ namespace SabaNews.Resources {
         public static string IsClicked {
             get {
                 return ResourceManager.GetString("IsClicked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Detail Electronic Direct Mail.
+        /// </summary>
+        public static string ListDetailElectronicDirectMail {
+            get {
+                return ResourceManager.GetString("ListDetailElectronicDirectMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List EDM.
+        /// </summary>
+        public static string ListEDM {
+            get {
+                return ResourceManager.GetString("ListEDM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List Electronic Direct Mail.
+        /// </summary>
+        public static string ListElectronicDirectMail {
+            get {
+                return ResourceManager.GetString("ListElectronicDirectMail", resourceCulture);
             }
         }
         
