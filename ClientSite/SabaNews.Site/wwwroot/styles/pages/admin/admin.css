@@ -302,3 +302,21 @@ body {
     padding: 0;
     color: transparent;
     background: transparent; }
+
+.tooltip-icon {
+  position: relative;
+  cursor: pointer; }
+  .tooltip-icon .tooltip-content {
+    display: none;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    max-width: 200px;
+    right: -200px;
+    top: -60px;
+    text-align: left;
+    border-radius: 5px; }
+  .tooltip-icon:hover .tooltip-content {
+    display: block; }

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?p4ccfe');
-  src:  url('fonts/Fraud-Sensor.eot?p4ccfe#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?p4ccfe') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?p4ccfe') format('woff'),
-    url('fonts/Fraud-Sensor.svg?p4ccfe#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?i7r56c');
+  src:  url('fonts/Fraud-Sensor.eot?i7r56c#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?i7r56c') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?i7r56c') format('woff'),
+    url('fonts/Fraud-Sensor.svg?i7r56c#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-list_alt-admin:before {
+  content: "\e907";
+  color: #9ea1d0;
+}
+.icon-post-view:before {
+  content: "\e908";
+  color: #00875a;
+}
+.icon-video-admin:before {
+  content: "\e909";
+  color: #de350b;
+}
+.icon-video-view-admin:before {
+  content: "\e90a";
+  color: #0052cc;
+}
 .icon-chart-admin:before {
   content: "\e902";
   color: #9193b8;
