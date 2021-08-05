@@ -5,6 +5,7 @@
 @import './_icon-admin.scss';
 @import './_custom-input.scss';
 @import './_card-admin.scss';
+@import './_tooltip-admin.scss';
 
 html {
     font-size: 10px;
@@ -154,41 +155,5 @@ body {
         padding: 0;
         color: transparent;
         background: transparent;
-    }
-}
-
-.warning-admin {
-    margin-bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1;
-
-    .tooltip-icon {
-        display: flex;
-        align-items: center;
-        position: relative;
-        cursor: pointer;
-        margin-left: .5rem;
-
-        .tooltip-content {
-            display: none;
-            padding: 10px;
-            background-color: #000;
-            color: #fff;
-            font-size: 12px;
-            position: absolute;
-            max-width: 200px;
-            right: -200px;
-            top: -60px;
-            text-align: left;
-            border-radius: 5px;
-        }
-
-        &:hover {
-            .tooltip-content {
-                display: block;
-            }
-        }
     }
 }
