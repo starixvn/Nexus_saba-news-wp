@@ -93,6 +93,11 @@ button {
   font-size: 2.4rem;
   color: #9193B8; }
 
+.label-admin {
+  margin-bottom: .6rem;
+  font-size: 1.4rem;
+  color: #444444; }
+
 .custom-input {
   height: 4rem;
   width: 22rem;
@@ -256,7 +261,14 @@ body {
       align-items: flex-end; }
       .main-admin .page-content .form-horizontal .form-input {
         margin-right: 2.4rem; }
-        .main-admin .page-content .form-horizontal .form-input .label-admin {
-          margin-bottom: .6rem;
-          font-size: 1.4rem;
-          color: #444444; }
+  .main-admin input[type="date"] {
+    position: relative; }
+  .main-admin input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent; }

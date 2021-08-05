@@ -1,277 +1,93 @@
 ﻿@import '../../../abstracts/variables';
-@import '../../../abstracts/mixins';
+@import '../_custom-input.scss';
 
-@import '../../../base/base';
-
-@import '../../../components/fonts';
-@import '../../../components/block';
-@import '../../../components/buttons';
-@import '../../../components/pagination';
-@import '../../../components/sub-structure';
 @import '../../../components/ckeditor';
 
 
-
-
-.controls__sendmail {
-    padding-bottom: 2.5rem;
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused), .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+    border-top: 1px solid #E4E4E4;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }
 
-.block-email {
-    display: block;
-
-    .controls {
-        padding: 2rem;
-        width: 50%;
-
-        .title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: $color-content;
-            margin-bottom: 2rem;
-        }
-
-        .line {
-            border-top: 1px solid $separator-color;
-            padding-top: 2.5rem;
-        }
-    }
-
-    .block__title {
-        margin-bottom: 3rem;
-    }
+.ck-toolbar {
+    border: none !important;
+    box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    background: $color-fff !important;
 }
 
-.social-network {
-    .label-fill {
-        display: flex;
-        align-items: center;
-
-        .icon-detail_facebook {
-            position: relative;
-            left: -10px;
-
-            &:before {
-                font-size: 24px;
-                color: #3b5999;
-            }
-        }
-
-        .txt-fb {
-            @include Mobile {
-                position: relative;
-                left: -8px;
-            }
-        }
-
-        .icon-google-color {
-            background: url("../../images/google-icon.svg") no-repeat;
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-
-            @include Mobile {
-                width: 14px;
-                height: 14px;
-                margin-right: 4px;
-                position: relative;
-                left: -4px;
-            }
-        }
-    }
+.ck-content {
+    font-size: 1.6rem;
+    padding: 0 1.2rem !important;
 }
 
-.profile-container .block-extension .block__title {
-    color: #f12f19;
-}
-
-
-.button {
-    color: #fff;
-    padding: 1rem 4rem;
-    border: none;
-    margin-top: 2rem;
-    font-weight: bold;
-    border-radius: 3px;
-}
-
-.button:disabled {
-    background: #dddddd;
-}
-
-.btn-red {
-    background: #9f224e;
-}
-
-.btn
-
-table {
-    margin-top: 1.5rem;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
+.main-list {
     width: 100%;
-}
+    max-width: 70rem;
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+    .form-input {
+        position: relative;
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
+        .custom-input {
+            width: 100%;
+            cursor: unset;
+        }
 
-.modal.show {
-    bottom: auto;
-    position: fixed;
-    z-index: 99999;
-    top: 50%;
-    background: #fff;
-    right: 50%;
-    transform: translate(50%,-50%);
-    width: 100%;
-    max-width: 84rem;
-    overflow-y: initial !important;
-}
+        .tip {
+            position: absolute;
+            z-index: 9999999999;
+            top: 7.5rem;
+            right: -5rem;
+            transform: translateX(-50%);
+            height: 2.5rem;
+            line-height: 2.5rem;
+            background: #17191a;
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            white-space: nowrap;
+            padding: 0 1rem;
+            border-radius: 3px;
+            display: none;
+        }
 
-.modal .modal-content {
-    border: none;
-    border-radius: 0;
-    position: relative;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-}
-
-.modal .close-login, .modal .close {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.4rem;
-    z-index: 999999;
-    cursor: pointer;
-    color: #fff;
-    width: 3.2rem;
-    height: 3.2rem;
-    background: transparent;
-    line-height: 3.2rem;
-    font-size: 3rem;
-    outline: none;
-}
-
-.modal .modal-body {
-    padding: 1rem;
-}
-
-.modal .modal-title {
-    color: #fff !important;
-    background-color: #009688 !important;
-    padding: 1rem 4rem 1rem 1rem;
-}
-
-.summary-eror {
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-.help-block {
-    color: red;
-}
-
-.has-error {
-    border: 1px solid red !important;
-}
-
-.form-group {
-    margin-bottom: 2rem;
-
-    .input-form {
-        width: 100%;
-        height: 4.8rem;
-        border: 1px solid #bdbdbd;
-        background: transparent;
-        border-radius: 3px;
-        font-size: 1.5rem;
-        color: #333;
-        padding: 0 1.5rem;
-        outline: none;
+        .help-block {
+            color: #ED3F2B;
+            font-size: 1.4rem;
+            margin-top: .5rem;
+        }
     }
-
-    label {
-        margin-bottom: 1rem;
-        font-weight: bold;
-    }
-}
-
-.email_link {
-    
-    word-break: break-all;
 }
 
 .group_raw_link {
     margin-top: 2rem;
     display: none;
-    position: relative;
 
     .raw_link {
-        padding: 1rem 5rem 1rem 1rem;
-        border: 1px solid #c4c4c4;
-
-
-        span {
-            font-weight: bold;
-        }
+        line-height: 2.5rem;
     }
 
     .copy-link {
         cursor: pointer;
         position: absolute;
-        top: 4.5rem;
-        right: 1.5rem;
+        top: 3.5rem;
+        right: 1rem;
         text-decoration: none
     }
 
-    .copy-link i {
-        text-decoration: none
+    .copy-link {
+        text-decoration: none;
+
+        .icon-link {
+            &:before {
+                font-size: 2rem;
+            }
+        }
     }
 }
-
-.send_to {
-    margin-left: 3rem;
-}
-
-.user_list {
-    display: none;
-}
-
-select.form-control {
-    height: 3.5rem;
-    font-size: 1.5rem;
-    padding: .5rem;
-}
-
-.tip {
-    position: absolute;
-    z-index: 9999999999;
-    top: 7.5rem;
-    right: -5rem;
-    transform: translateX(-50%);
-    height: 2.5rem;
-    line-height: 2.5rem;
-    background: #17191a;
-    color: #fff;
-    font-size: 1.2rem;
-    text-decoration: none;
-    white-space: nowrap;
-    padding: 0 1rem;
-    border-radius: 3px;
-    display: none;
-}
-
-.btn-test {
-    float: right;
-    background-color: blue;
-}
-
-
-
-
