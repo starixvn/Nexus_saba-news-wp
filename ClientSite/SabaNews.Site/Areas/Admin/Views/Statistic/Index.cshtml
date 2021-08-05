@@ -15,11 +15,13 @@
         <form class="form-horizontal" action="PostViewStatistic" method="post" id="filter">
             <div class="form-input">
                 <p class="label-admin">@ViewResources.From</p>
-                <input type="date" class="custom-input" id="FromDate" name="FromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")"/>
+                <input type="date" class="custom-input" id="FromDate" name="FromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+                <i class="icon-page icon-date_range"></i>
             </div>
             <div class="form-input">
                 <p class="label-admin">@ViewResources.To</p>
                 <input type="date" class="custom-input" id="ToDate" name="ToDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+                <i class="icon-page icon-date_range"></i>
             </div>
             <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
         </form>

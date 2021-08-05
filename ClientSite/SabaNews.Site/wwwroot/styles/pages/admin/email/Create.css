@@ -109,7 +109,8 @@ button {
   width: 100%;
   max-width: 70rem; }
   .main-list .form-input {
-    position: relative; }
+    position: relative;
+    margin-bottom: 2.4rem; }
     .main-list .form-input .custom-input {
       width: 100%;
       cursor: unset; }

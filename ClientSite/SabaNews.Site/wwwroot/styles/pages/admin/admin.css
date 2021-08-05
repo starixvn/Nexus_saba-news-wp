@@ -264,16 +264,33 @@ body {
   .main-admin .page-content {
     padding: 2.4rem; }
     .main-admin .page-content .error {
-      padding: 10px;
+      padding: 1rem;
       color: red;
       border: 1px solid;
-      font-size: 13px;
-      margin-bottom: 20px; }
+      font-size: 1.3rem;
+      margin-bottom: 2rem; }
     .main-admin .page-content .form-horizontal {
       display: flex;
       align-items: flex-end; }
       .main-admin .page-content .form-horizontal .form-input {
-        margin-right: 2.4rem; }
+        margin-right: 2.4rem;
+        position: relative; }
+        .main-admin .page-content .form-horizontal .form-input .icon-date_range {
+          display: flex;
+          width: 3rem;
+          height: 3rem;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          position: absolute;
+          right: .5rem;
+          bottom: .5rem;
+          cursor: pointer; }
+          .main-admin .page-content .form-horizontal .form-input .icon-date_range:before {
+            font-size: 1.8rem;
+            color: #1F2252; }
+          .main-admin .page-content .form-horizontal .form-input .icon-date_range:hover {
+            background: #E8E9FF; }
   .main-admin input[type="date"] {
     position: relative; }
   .main-admin input[type="date"]::-webkit-calendar-picker-indicator {
