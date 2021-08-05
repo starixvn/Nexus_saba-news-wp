@@ -45,16 +45,6 @@
 	</div>
 	<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
 	<script src="~/js/admin/admin.js" asp-append-version="true"></script>
-    <script>
-        $(document).ready(function () {
-            var currentPath = window.location.pathname;
-            $('.menu-item').each(function (i, e) {
-                if ($(e).find('a').attr('href').indexOf(currentPath) !== - 1) {
-                    $(e).addClass('active');
-                }
-            });
-        });
-    </script>
 	@RenderSection("Scripts", false)
 </body>
 </html>

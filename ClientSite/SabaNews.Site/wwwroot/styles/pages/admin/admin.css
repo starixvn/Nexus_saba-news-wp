@@ -80,10 +80,10 @@ button {
             color: #fff; }
         .slide-nav .menu-slide .menu-item a .icon-page {
           margin-right: 2.5rem; }
-      .slide-nav .menu-slide .menu-item .active {
+    .slide-nav .menu-slide .active a {
+      color: #fff; }
+      .slide-nav .menu-slide .active a .icon-page:before {
         color: #fff; }
-        .slide-nav .menu-slide .menu-item .active .icon-page:before {
-          color: #fff; }
 
 /*:root {
     --column : 12;
