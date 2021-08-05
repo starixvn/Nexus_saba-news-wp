@@ -37,13 +37,25 @@
                 <th>@ViewResources.CreatedDate</th>
                 <th>@ViewResources.Articles</th>
                 <th>
-                    @ViewResources.TotalViews
-                    <span class="tooltip-icon">@ViewResources.TooltipIcon<span class="tooltip-content">@ViewResources.ArticleTooltipContent</span></span>
+                    <p class="warning-admin">
+                        @ViewResources.TotalViews
+                        <span class="tooltip-icon">
+                            <i class="icon-error_outline"></i>
+                            <span class="tooltip-content">@ViewResources.ArticleTooltipContent</span>
+                        </span>
+                    </p>
                 </th>
                 <th>@ViewResources.Videos</th>
                 <th>
-                    @ViewResources.TotalViews
-                    <span class="tooltip-icon">@ViewResources.TooltipIcon<span class="tooltip-content">@ViewResources.VideoTooltipContent</span></span>
+                    <p class="warning-admin">
+                        @ViewResources.TotalViews
+                        <span class="tooltip-icon">
+                            <i class="icon-error_outline"></i>
+                            <span class="tooltip-content">
+                                @ViewResources.VideoTooltipContent
+                            </span>
+                        </span>
+                    </p>
                 </th>
             </tr>
         </thead>

@@ -303,20 +303,29 @@ body {
     color: transparent;
     background: transparent; }
 
-.tooltip-icon {
-  position: relative;
-  cursor: pointer; }
-  .tooltip-icon .tooltip-content {
-    display: none;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    font-size: 12px;
-    position: absolute;
-    max-width: 200px;
-    right: -200px;
-    top: -60px;
-    text-align: left;
-    border-radius: 5px; }
-  .tooltip-icon:hover .tooltip-content {
-    display: block; }
+.warning-admin {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1; }
+  .warning-admin .tooltip-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    margin-left: .5rem; }
+    .warning-admin .tooltip-icon .tooltip-content {
+      display: none;
+      padding: 10px;
+      background-color: #000;
+      color: #fff;
+      font-size: 12px;
+      position: absolute;
+      max-width: 200px;
+      right: -200px;
+      top: -60px;
+      text-align: left;
+      border-radius: 5px; }
+    .warning-admin .tooltip-icon:hover .tooltip-content {
+      display: block; }
