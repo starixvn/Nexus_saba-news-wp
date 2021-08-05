@@ -12,16 +12,12 @@ var email = (function ($) {
             data: { page: page, search: search, fromDate, toDate },
             success: function (res) {
                 $('.list_email_block').html(res);
-                HandleActionEmail();
+                HandleGridData();
             }
         });
     }
 
     function HandleSearch() {
-       
-
-       
-
         $('.search_list_email').on('click', function () {
             search = $('input[name=search]').val();
             fromDate = $('input[name=fromDate]').val();
@@ -30,13 +26,12 @@ var email = (function ($) {
             renderListEmail();
         });
 
-
         $('#NoticeModal').on('hidden.bs.modal', function () {
             renderListEmail();
         })
     }
 
-    function HandleActionEmail() {
+    function HandleGridData() {
         var emailId = 0;
         $('.view_content').click(function () {
             var content = $(this).parent().find('.email_content').val();

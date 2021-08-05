@@ -46,7 +46,6 @@
             {
                 FromDate = DateTime.Now.AddMonths(-6),
                 ToDate = DateTime.Now
-
             };
             return View(model);
         }
@@ -123,7 +122,7 @@
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var originalUrl = "";
             if (email.EmbeddedLink != null && email.EmbeddedLink.Contains(Constants.ReturnUrl)) {
-                var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
+                var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length;
                 originalUrl = email.EmbeddedLink[(indexString + 1)..];
             }
            
@@ -219,11 +218,11 @@
         public async Task<ActionResult> Detail(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
-            var Model = new EmailDetailViewModel
+            var model = new EmailDetailViewModel
             {
                 Email = email
             };
-            return View(Model);
+            return View(model);
         }
 
         public async Task<ActionResult> GetListEmailDetailData(EmailDetailFilterViewModel param)
@@ -273,7 +272,7 @@
                 var token = Guid.NewGuid().ToString();
                 var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
                 var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
-                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=" + token)) + messageUnsubcribe;
+                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token)) + messageUnsubcribe;
                 var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
                 var emailData = new EmailDetailModel
                 {

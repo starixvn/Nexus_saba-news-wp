@@ -13,7 +13,7 @@ var detail = (function ($) {
             data: { emailId, page, search, filterClicked, status },
             success: function (res) {
                 $('.list_detail_content').html(res);
-                HandleEmailDetailList();
+                HandleActionGridData();
             }
         });
     }
@@ -33,7 +33,7 @@ var detail = (function ($) {
         });
     }
 
-    function HandleEmailDetailList() {
+    function HandleActionGridData() {
         $('.resend-email').on('click', function () {
             var emailId = $(this).data('emailid');
             var userId = $(this).data('userid');
@@ -56,15 +56,11 @@ var detail = (function ($) {
         $('#NoticeModal').on('hidden.bs.modal', function () {
             renderList();
         });
-
-      
     }
-
  
     function init() {
         renderList();
         HandleSearch();
-        
     }
 
     return {

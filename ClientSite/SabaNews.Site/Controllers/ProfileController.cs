@@ -212,7 +212,7 @@
             var commandResult = await profileService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
-                linkPhoto = "upload/" + filename;
+                linkPhoto = "uploads/" + filename;
                 sessionService.User = user;
             }
             return Json( new { commandResult, linkPhoto, filePath });
