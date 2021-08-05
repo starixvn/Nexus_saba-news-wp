@@ -1186,20 +1186,20 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send email.
+        ///   Looks up a localized string similar to Send.
         /// </summary>
-        public static string Send_Mail {
+        public static string SendEmail {
             get {
-                return ResourceManager.GetString("Send Mail", resourceCulture);
+                return ResourceManager.GetString("SendEmail", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Send email.
         /// </summary>
-        public static string SendEmail {
+        public static string SendMail {
             get {
-                return ResourceManager.GetString("SendEmail", resourceCulture);
+                return ResourceManager.GetString("SendMail", resourceCulture);
             }
         }
         

@@ -532,6 +532,24 @@
   <data name="Administration" xml:space="preserve">
     <value>Administration</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Articles" xml:space="preserve">
+    <value>Articles</value>
+  </data>
+  <data name="TotalViews" xml:space="preserve">
+    <value>Total Views</value>
+  </data>
+  <data name="PostViewStatistic" xml:space="preserve">
+    <value>Post View Statistic</value>
+  </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
@@ -591,6 +609,24 @@
   </data>
   <data name="ListElectronicDirectMail" xml:space="preserve">
     <value>List Electronic Direct Mail</value>
+  </data>
+  <data name="ArticleViews" xml:space="preserve">
+    <value>Article views</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>Videos</value>
+  </data>
+  <data name="VideoViews" xml:space="preserve">
+    <value>Video views</value>
+  </data>
+  <data name="TooltipIcon" xml:space="preserve">
+    <value>(i)</value>
+  </data>
+  <data name="ArticleTooltipContent" xml:space="preserve">
+    <value>Views of articles published on the Created Date, and is accumulated to the present time.</value>
+  </data>
+  <data name="VideoTooltipContent" xml:space="preserve">
+    <value>Views of videos published on the Created Date, and is accumulated to the present time.</value>
   </data>
 =======
 ﻿<?xml version="1.0" encoding="utf-8"?>
@@ -1027,14 +1063,14 @@
   <data name="Send" xml:space="preserve">
     <value>Gửi</value>
   </data>
-  <data name="Send Mail" xml:space="preserve">
+  <data name="SendMail" xml:space="preserve">
     <value>Send email</value>
   </data>
   <data name="SentDate" xml:space="preserve">
     <value>Sent Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
-    <value>Send email</value>
+    <value>Send</value>
   </data>
   <data name="SendTestEmailTo" xml:space="preserve">
     <value>Send test email to</value>
@@ -1222,5 +1258,5 @@
   <data name="VideoTooltipContent" xml:space="preserve">
     <value>Views of videos published on the Created Date, and is accumulated to the present time.</value>
   </data>
->>>>>>> 000 - update text and fix UI
+>>>>>>> 000-refactor code
 </root>

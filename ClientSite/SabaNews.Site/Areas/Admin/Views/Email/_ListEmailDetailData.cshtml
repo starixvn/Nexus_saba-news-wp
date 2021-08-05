@@ -15,7 +15,7 @@
 		<tr>
 			<td>@stt</td>
 			<td>@detail.EmailAddress</td>
-			<td>@detail.SendTime.ToString("dd MMM yyyy hh:mm:ssss ")</td>
+			<td>@detail.SendTime.ToString("dd MMM yyyy HH:mm:ssss ")</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
 			<td>
 				@if (detail.Status == 0)

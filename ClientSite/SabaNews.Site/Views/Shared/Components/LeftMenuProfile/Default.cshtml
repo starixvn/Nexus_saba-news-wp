@@ -29,12 +29,6 @@
 		<li class="@(ViewBag.Page == Constants.ProfileIndexPage ? "active-control" : "")">
 			<a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount</a>
 		</li>
-
-		@if (Model.Role == Constants.AdministratorRole)
-		{
-			<li class="@(ViewBag.Page == Constants.ProfileSendMailPage ? "active-control" : "")"><a href="@Url.Action("Create", "Email")">@ViewResources.SendEmail</a></li>
-			<li class="@(ViewBag.Page == Constants.ProfileListSendMailPage ? "active-control" : "")"><a href="@Url.Action("Index", "Email")">@ViewResources.ListSentMail</a></li>
-		}
 		<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
 	</ul>
 </div>
