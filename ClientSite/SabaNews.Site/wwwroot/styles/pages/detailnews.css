@@ -958,9 +958,12 @@ button {
   font-size: 1.4rem;
   color: #fff;
   background: #E13C29;
-  font-weight: bold; }
+  font-weight: bold;
+  transition: box-shadow .3s ease-in-out; }
   .btn-custom-admin:focus {
     outline: none; }
+  .btn-custom-admin:hover {
+    box-shadow: 0px 1px 4px #E13C29; }
 
 .container {
   width: 100%;
