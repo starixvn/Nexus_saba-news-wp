@@ -41,7 +41,7 @@
 								<div class="form-group email_link">
 									<label>@ViewResources.OriginalUrl</label>
 									<input type="text" class="input-form" placeholder="" name="emailReturnLink"  value="@Model.OriginalUrl"/>
-									<div class="group_raw_link" style="display: block">
+									<div class="group_raw_link" style="display: @(Model.OriginalUrl != "" ? "block" : "none")">
 										<label>@ViewResources.EmbeddedUrl</label>
 										<p class="raw_link">@Model.Email.EmbeddedLink</p>
 										<a href="javascript:;" title="Copy raw link" class="copy-link"><span><i class="icon-link"></i></span></a>

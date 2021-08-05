@@ -15,6 +15,8 @@ namespace SabaNews.Criteria.Email
 
         public int IsClicked { get; set; }
 
+        public int Status { get; set; }
+
         public int Start { get; set; }
 
         public int End { get; set; }

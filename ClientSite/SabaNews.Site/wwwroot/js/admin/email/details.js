@@ -4,12 +4,13 @@ var detail = (function ($) {
     var emailId = eId;
     var search = "";
     var filterClicked = -1;
+    var status = -1;
 
     function renderList() {
         $.ajax({
             url: '/Admin/Email/GetListEmailDetailData',
             type: 'POST',
-            data: { emailId, page, search, filterClicked },
+            data: { emailId, page, search, filterClicked, status },
             success: function (res) {
                 $('.list_detail_content').html(res);
                 HandleEmailDetailList();
@@ -27,6 +28,7 @@ var detail = (function ($) {
         $('.search_email_detail').on('click', function () {
             search = $("input[name=search]").val();
             filterClicked = $("select[name=filterClicked]").val();
+            status = $("select[name=status]").val();
             renderList();
         });
     }

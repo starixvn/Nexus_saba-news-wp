@@ -349,6 +349,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Electronic Direct Mail.
+        /// </summary>
+        public static string ElectronicDirectMail {
+            get {
+                return ResourceManager.GetString("ElectronicDirectMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -610,11 +619,20 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List Email.
+        ///   Looks up a localized string similar to List Emails.
         /// </summary>
         public static string ListEmail {
             get {
                 return ResourceManager.GetString("ListEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List email details.
+        /// </summary>
+        public static string ListEmailDetail {
+            get {
+                return ResourceManager.GetString("ListEmailDetail", resourceCulture);
             }
         }
         
@@ -1209,6 +1227,15 @@ namespace SabaNews.Resources {
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successful.
+        /// </summary>
+        public static string Successful {
+            get {
+                return ResourceManager.GetString("Successful", resourceCulture);
             }
         }
         

@@ -9,5 +9,7 @@
         public string Search { get; set; }
 
         public int FilterClicked { get; set; }
+
+        public int Status { get; set; }
     }
 }

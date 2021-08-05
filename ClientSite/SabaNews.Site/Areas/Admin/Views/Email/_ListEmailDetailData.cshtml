@@ -5,7 +5,7 @@
 		<th width="5%">@ViewResources.STT</th>
 		<th>@ViewResources.Email</th>
 		<th width="20%">@ViewResources.SentDate</th>
-		<th width="20%">@ViewResources.IsClicked</th>
+		<th width="20%">User Interaction</th>
 		<th width="20%">@ViewResources.Status</th>
 	</tr>
 	@{ var stt = 0; }
@@ -20,7 +20,7 @@
 			<td>
 				@if (detail.Status == 0)
 				{
-					<p>@ViewResources.Success</p>
+					<p>@ViewResources.Successful</p>
 				}
 				else
 				{

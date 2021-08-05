@@ -280,7 +280,7 @@
     <value>IsClicked</value>
   </data>
   <data name="ListEmail" xml:space="preserve">
-    <value>List Email</value>
+    <value>List Emails</value>
   </data>
   <data name="ListSentEmailDetail" xml:space="preserve">
     <value>List sent email detail</value>
@@ -557,5 +557,14 @@
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="Successful" xml:space="preserve">
+    <value>Successful</value>
+  </data>
+  <data name="ListEmailDetail" xml:space="preserve">
+    <value>List email details</value>
+  </data>
+  <data name="ElectronicDirectMail" xml:space="preserve">
+    <value>Electronic Direct Mail</value>
   </data>
 </root>

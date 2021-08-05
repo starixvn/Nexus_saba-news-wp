@@ -121,8 +121,12 @@
                 return Redirect(Url.Action("Index", "Email"));
             }
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
-            var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
-            var originalUrl = email.EmbeddedLink[(indexString + 1)..];
+            var originalUrl = "";
+            if (email.EmbeddedLink != null && email.EmbeddedLink.Contains(Constants.ReturnUrl)) {
+                var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl) + Constants.ReturnUrl.Length;
+                originalUrl = email.EmbeddedLink[(indexString + 1)..];
+            }
+           
             var model = new EmailEditViewModel
             {
                 Email = email,
@@ -231,6 +235,7 @@
                 EmailID = param.EmailId,
                 Search = param.Search ??= "",
                 IsClicked = param.FilterClicked,
+                Status = param.Status,
                 Start = start,
                 End = perPage
             };

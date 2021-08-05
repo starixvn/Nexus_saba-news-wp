@@ -10,15 +10,9 @@ var sendmailevent = (function ($) {
         }
         if ($('input[name="emailTitle"]').val() === "") {
             $('input[name="emailTitle"]').addClass('has-error');
-            $('.email_title .help-block').html('Email Title is required');
+            $('.email_title .help-block').html('Subject is required');
             isValid = false;
         }
-        if ($('input[name="emailReturnLink"]').val() === "") {
-            $('input[name="emailReturnLink"]').addClass('has-error');
-            $('.email_link .help-block').html('Return Link is required');
-            isValid = false;
-        }
-        // $('.summary-eror').html(error);
         return isValid;
     }
 
@@ -128,11 +122,9 @@ var sendmailevent = (function ($) {
 
         $('input[name=sendTo]').on('change', function () {
             var type = $(this).val()
-            var email = $('.users').find(':selected').data('email');
             if (type === "email") {
                 $('.user_list').hide();
             } else {
-                $('#email').val(email);
                 $('.user_list').show();
             }
         });
