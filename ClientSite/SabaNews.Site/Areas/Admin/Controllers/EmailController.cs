@@ -116,7 +116,7 @@
         public async Task<ActionResult> Edit(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
-            if (email.Status == Constants.EmailSent) {
+            if (email.Status != Constants.EmailNew) {
                 return Redirect(Url.Action("Index", "Email"));
             }
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
