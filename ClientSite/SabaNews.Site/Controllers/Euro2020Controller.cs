@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SabaNews.Core.Constants;
-using SabaNews.Criteria;
-using SabaNews.Models;
-using SabaNews.Models.ViewModel;
-using SabaNews.Services.Interfaces;
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SabaNews.Site.Controllers
+﻿namespace SabaNews.Site.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
+    using SabaNews.Models;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Services.Interfaces;
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class Euro2020Controller : Controller
     {
         private readonly IDataControlService dataControlService;
@@ -27,8 +26,6 @@ namespace SabaNews.Site.Controllers
         public async Task<IActionResult> Index()
         {
             var Model = await dataControlService.GetEuro2020PageViewModel();
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020Slug;
             return View(Model);
         }
 
@@ -56,9 +53,6 @@ namespace SabaNews.Site.Controllers
                 Category = cate,
                 ViewData = viewData
             };
-
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020TeamSlug;
             return View(Model);
         }
 
@@ -97,8 +91,6 @@ namespace SabaNews.Site.Controllers
                 ViewData = viewData
 
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = slug;
             return View(Model);
         }
 
@@ -138,8 +130,6 @@ namespace SabaNews.Site.Controllers
                 ViewData = viewData
 
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020VideoSlug;
             return View(Model);
         }
 
@@ -172,8 +162,6 @@ namespace SabaNews.Site.Controllers
                 ViewData = viewData
 
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020ScheduleSlug;
             return View(Model);
         }
 
@@ -204,8 +192,6 @@ namespace SabaNews.Site.Controllers
                 ViewData = viewData
 
             };
-            ViewData[Constants.ViewDataCategorySlug] = Constants.Euro2020Slug;
-            ViewData[Constants.ViewDataActiveSubCate] = Constants.Euro2020RankingSlug;
             return View(Model);
         }
 

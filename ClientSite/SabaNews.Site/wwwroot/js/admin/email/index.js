@@ -1,5 +1,4 @@
-﻿
-var email = (function ($) {
+﻿var edmList = (function ($) {
     var page = 1;
     var search = "";
     var fromDate = $('input[name=fromDate]').val();
@@ -108,5 +107,5 @@ var email = (function ($) {
 
 
 $(document).ready(function () {
-    email.init();
+    edmList.init();
 });

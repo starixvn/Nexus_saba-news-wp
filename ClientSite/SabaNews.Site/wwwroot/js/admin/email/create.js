@@ -1,4 +1,4 @@
-﻿var sendmailevent = (function ($) {
+﻿var edmCreate = (function ($) {
     configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
     var form = 'form#form-sendmail';
     function HandleValidate() {
@@ -174,5 +174,5 @@
 
 
 $(document).ready(function () {
-    sendmailevent.init();
+    edmCreate.init();
 });

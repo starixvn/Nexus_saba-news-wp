@@ -17,7 +17,7 @@
 }
 
 <div class="page">
-    @(await Component.InvokeAsync("HeaderEvent"))
+    @(await Component.InvokeAsync("HeaderEvent", new { page = Model.ViewData.Slug }))
     <div class="main">
         <div class="container">
             <div class="block block-main">

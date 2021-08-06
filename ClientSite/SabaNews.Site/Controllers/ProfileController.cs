@@ -1,26 +1,22 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using BCrypt.Net;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Email;
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using BCrypt.Net;
-    using Microsoft.AspNetCore.Http;
-    using System.Net.Http.Headers;
     using System.IO;
-    using SabaNews.Core.Constants;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Authentication.Cookies;
-    using SabaNews.Models.Email;
-    using System.Linq;
-    using SabaNews.Criteria.Email;
-    using SabaNews.Models;
-    using System.Web;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
 
     public class ProfileController : Controller
     {

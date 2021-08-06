@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Models;
     using SabaNews.Services.Interfaces;
 
     public class HeaderEventViewComponent : ViewComponent
@@ -17,20 +18,20 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string page = "")
         {
-            var model = await dataControlService.GetMenuData();
-            var userAgent = Request.Headers["User-Agent"].ToString();
-            ViewBag.UserUgent = userAgent;
-            ViewBag.IsMobile = userAgent.Contains("mobile", System.StringComparison.OrdinalIgnoreCase);
-            ViewBag.IsIpad = userAgent.Contains("ipad", System.StringComparison.OrdinalIgnoreCase);
+            var menus = await dataControlService.GetMenuData();
             var isAuthenticated = sessionService.User != null;
-            ViewBag.IsAuthenticated = isAuthenticated;
-            ViewBag.IsAdmin = sessionService.User != null && sessionService.User.Metadata.Contains(Role.Administrator);
+            var model = new MenuViewModel
+            {
+                Menus = menus,
+                Page = page,
+                IsAuthenticated = isAuthenticated,
+                IsAdmin = isAuthenticated && sessionService.User.Metadata.Contains(Role.Administrator)
+            };
             if (isAuthenticated)
             {
-                ViewBag.DisplayName = sessionService.User.Name;
-                ViewBag.Photo = sessionService.User.Photo;
+                model.User = sessionService.User;
             }
             return View(model);
         }

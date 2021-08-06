@@ -1,5 +1,5 @@
 ﻿
-var detail = (function ($) {
+var edmDetail = (function ($) {
     var page = 1;
     var emailId = eId;
     var search = "";
@@ -71,5 +71,5 @@ var detail = (function ($) {
 
 
 $(document).ready(function () {
-    detail.init();
+    edmDetail.init();
 });
