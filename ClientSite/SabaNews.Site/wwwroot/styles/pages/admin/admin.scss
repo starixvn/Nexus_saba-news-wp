@@ -1,16 +1,12 @@
-﻿@import '../../abstracts/_variables.scss';
-@import '../../abstracts/_mixins.scss';
-@import '../../components/_buttons.scss';
-@import './_nav-admin.scss';
-@import './_icon-admin.scss';
-@import './_custom-input.scss';
-@import './_card-admin.scss';
-@import './_tooltip-admin.scss';
-
-html {
-    font-size: 10px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+﻿@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+@import '../../base/base';
+@import '../../components/buttons';
+@import './nav-admin';
+@import './icon-admin';
+@import './custom-input';
+@import './card-admin';
+@import './tooltip-admin';
 
 body {
     font-family: "Arial";
