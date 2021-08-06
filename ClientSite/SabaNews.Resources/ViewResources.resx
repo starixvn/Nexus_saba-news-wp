@@ -537,9 +537,6 @@
   <data name="To" xml:space="preserve">
     <value>To</value>
   </data>
-  <data name="Submit" xml:space="preserve">
-    <value>Submit</value>
-  </data>
   <data name="Articles" xml:space="preserve">
     <value>Articles</value>
   </data>
@@ -629,5 +626,8 @@
   </data>
   <data name="BackToEmailList" xml:space="preserve">
     <value>Back to email list</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
   </data>
 </root>
