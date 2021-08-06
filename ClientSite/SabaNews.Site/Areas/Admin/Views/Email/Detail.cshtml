@@ -14,17 +14,17 @@
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/email.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/admin_email.min.css" asp-append-version="true">
 }
 .
 @section Scripts{
-	<script src="~/js/admin/email/details.js" asp-append-version="true"></script>
+	<script src="~/minify/js/admin_email_detail.min.js" asp-append-version="true"></script>
 }
 <section>
 	<div class="block block-email">
 		<div class="controls">
 			<div class="constrols_list_sendmail line">
-				<p><a href="@Url.Action("Index", "Email")"><i class="icon-arrow-left"></i><span> Back to email list</span></a></p>
+				<p><a href="@Url.Action("Index", "Email")"><i class="icon-arrow-left"></i><span>@ViewResources.BackToEmailList</span></a></p>
 				<div class="form_search">
 					<div class="row">
 						<div class="col-md-3 form-group">

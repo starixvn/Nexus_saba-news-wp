@@ -627,4 +627,7 @@
   <data name="VideoTooltipContent" xml:space="preserve">
     <value>Views of videos published on the Created Date, and is accumulated to the present time.</value>
   </data>
+  <data name="BackToEmailList" xml:space="preserve">
+    <value>Back to email list</value>
+  </data>
 </root>

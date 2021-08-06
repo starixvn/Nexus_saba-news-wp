@@ -433,14 +433,14 @@
   <data name="Send" xml:space="preserve">
     <value>Gửi</value>
   </data>
-  <data name="Send Mail" xml:space="preserve">
+  <data name="SendMail" xml:space="preserve">
     <value>Send email</value>
   </data>
   <data name="SentDate" xml:space="preserve">
     <value>Sent Date</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
-    <value>Send email</value>
+    <value>Send</value>
   </data>
   <data name="SendTestEmailTo" xml:space="preserve">
     <value>Send test email to</value>
@@ -1258,5 +1258,8 @@
   <data name="VideoTooltipContent" xml:space="preserve">
     <value>Views of videos published on the Created Date, and is accumulated to the present time.</value>
   </data>
->>>>>>> 000-refactor code
+  <data name="BackToEmailList" xml:space="preserve">
+    <value>Back to email list</value>
+  </data>
+>>>>>>> 000 - update link resource
 </root>

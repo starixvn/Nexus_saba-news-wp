@@ -151,6 +151,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to email list.
+        /// </summary>
+        public static string BackToEmailList {
+            get {
+                return ResourceManager.GetString("BackToEmailList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng.
         /// </summary>
         public static string Ball {

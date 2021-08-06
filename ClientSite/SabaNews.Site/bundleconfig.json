@@ -22,14 +22,14 @@
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/email.min.css",
+        "outputFileName": "wwwroot/minify/styles/admin_email.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/admin/email/index.css"
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/email_create.min.css",
+        "outputFileName": "wwwroot/minify/styles/admin_email_create.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/admin/email/create.css"
@@ -209,8 +209,9 @@
     },
 
     {
-        "outputFileName": "wwwroot/minify/js/email.min.js",
+        "outputFileName": "wwwroot/minify/js/admin_email.min.js",
         "inputFiles": [
+            "wwwroot/lib/jquery-blockUI/jquery.blockUI.js",
             "wwwroot/js/admin/email/index.js"
         ],
         "minify": {
@@ -222,6 +223,7 @@
     {
         "outputFileName": "wwwroot/minify/js/admin_email_create.min.js",
         "inputFiles": [
+            "wwwroot/js/lib/config_ckeditor.js",
             "wwwroot/js/admin/email/create.js"
         ],
         "minify": {
@@ -233,7 +235,7 @@
     {
         "outputFileName": "wwwroot/minify/js/admin_email_detail.min.js",
         "inputFiles": [
-            "wwwroot/js/admin/email/detail.js"
+            "wwwroot/js/admin/email/details.js"
         ],
         "minify": {
             "enabled": true,
