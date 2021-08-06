@@ -79,48 +79,18 @@ BEGIN
     WHERE p.post_status = 'publish' AND p.post_type = 'post'
     AND p.post_date BETWEEN fromDate  AND toDate;
     
-    DROP TEMPORARY TABLE IF EXISTS tmpResult;
-    CREATE TEMPORARY TABLE tmpResult(OnDate DATE PRIMARY KEY, PostCount INT, VideoCount INT, PostView INT, VideoView INT);
-    INSERT INTO tmpResult(OnDate, PostCount, VideoCount)
-    SELECT p.PostDate
-            ,COUNT(IF (t.Name <> 'video', p.PostId, NULL)) As PostCount
-            ,COUNT(IF (t.Name = 'video', p.PostId, NULL)) As VideoCount
-    FROM tmpPosts p
+    SELECT p.PostDate as PostDate
+          ,COUNT(DISTINCT IF (t.Name <> 'video', p.PostId, NULL)) AS PostCount
+          ,SUM(CASE WHEN pd.is_video_post <> 1 THEN pd.view_count ELSE 0 END) AS PostView
+          ,COUNT(DISTINCT IF (t.Name = 'video', p.PostId, NULL)) AS VideoCount
+          ,SUM(CASE WHEN pd.is_video_post = 1 THEN pd.view_count ELSE 0 END) AS VideoView
+    FROM tmpPosts p 
     INNER JOIN wp_terms t ON p.RootCategoryId = t.term_id
+    LEFT JOIN wp_postview_details pd ON p.PostId = pd.post_id
     GROUP BY p.PostDate
-    ORDER BY p.PostDate;       
-
-    DROP TEMPORARY TABLE IF EXISTS tmpViews;
-    CREATE TEMPORARY TABLE tmpViews(OnDate DATE, PostView INT, VideoView INT);
-    INSERT INTO tmpViews(OnDate, PostView, VideoView)
-	SELECT pwd.view_date
-	   ,SUM(CASE WHEN pwd.is_video_post <> 1 THEN pwd.view_count ELSE 0 END) AS PostView
-       ,SUM(CASE WHEN pwd.is_video_post = 1 THEN pwd.video_view ELSE 0 END) As VideoView       
-    FROM wp_postview_details pwd 
-    INNER JOIN tmpPosts p ON pwd.post_id = p.PostId
-    WHERE pwd.view_date BETWEEN fromDate  AND toDate
-    GROUP BY pwd.view_date
-    ORDER BY pwd.view_date;
-
-	INSERT INTO tmpResult(OnDate, PostView, VideoView)
-    SELECT v.OnDate, v.PostView, v.VideoView
-    FROM tmpViews v
-    ON DUPLICATE KEY UPDATE
-        PostView = IFNULL(v.PostView,0)
-       ,VideoView = IFNULL(v.VideoView, 0);
-    
-    SELECT r.OnDate
-         ,IFNULL(r.PostCount, 0) AS PostCount
-         ,IFNULL(r.VideoCount, 0) AS VideoCount
-         ,IFNULL(r.VideoView, 0) AS VideoView
-         ,IFNULL(r.PostView, 0) AS PostView
-    FROM tmpResult r
-    ORDER BY r.OnDate;
+    ORDER BY p.PostDate;
     
     DROP TEMPORARY TABLE IF EXISTS tmpPosts;
-    DROP TEMPORARY TABLE IF EXISTS tmpResult;
-    DROP TEMPORARY TABLE IF EXISTS tmpViews;
-
 END
 //
 DELIMITER ;
