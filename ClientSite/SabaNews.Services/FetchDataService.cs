@@ -126,7 +126,7 @@
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020Slug);
             if (ranking.Any())
             {
-                ranking = ranking.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+                ranking = ranking.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             }
 
             var viewData = new ViewData

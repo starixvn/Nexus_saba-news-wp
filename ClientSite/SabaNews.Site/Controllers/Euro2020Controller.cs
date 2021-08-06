@@ -42,7 +42,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020TeamSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.OrderBy(item => item.PostSeoTitle);
+            var posts = postTemplate.Posts.OrderBy(item => item.PostExcerpt);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020TeamSlug);
             var viewData = new ViewData
             {
@@ -157,7 +157,7 @@ namespace SabaNews.Site.Controllers
             {
                 return View("~/Views/Home/EmptyBlog.cshtml");
             }
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
             {
@@ -187,7 +187,7 @@ namespace SabaNews.Site.Controllers
                 Slug = Constants.Euro2020RankingSlug
             };
             var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.Where(item => item.PostSeoTitle.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            var posts = postTemplate.Posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var thirdPlaceTable = await postService.GetPostDetailBySlugAsync(Constants.Euro2020FirstThirdPlaceTeamSlug, Constants.postType);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData

@@ -27,7 +27,7 @@
 				<div class="block__content">
 					@foreach (var post in Model.Posts)
 					{
-						var arrTeamInfo = post.PostSeoTitle.Split('-');
+						var arrTeamInfo = post.PostExcerpt.Split('-');
 						var teamName = arrTeamInfo[0];
 						var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
 

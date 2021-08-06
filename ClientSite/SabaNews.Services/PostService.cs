@@ -123,9 +123,13 @@
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
             if (post != null)
             {
-                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
-                post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
+                if (string.IsNullOrEmpty(post.PostExcerpt))
+                {
+                    var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                    var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
+                    post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
+                }
+                
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
                 post.CategoriesSlug ??= "";
                 post.CatesName ??= "";
@@ -240,9 +244,11 @@
         {
             foreach (var post in posts)
             {
-                var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
-                var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
-                post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
+                if (string.IsNullOrEmpty(post.PostExcerpt)) {
+                    var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
+                    var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
+                    post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
+                }
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
             }
             return posts;

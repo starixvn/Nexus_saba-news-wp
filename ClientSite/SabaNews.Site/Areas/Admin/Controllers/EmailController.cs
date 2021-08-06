@@ -42,7 +42,7 @@
 
         public IActionResult Index()
         {
-            var model = new PagingModel
+            var model = new EmailFilterViewModel
             {
                 FromDate = DateTime.Now.AddMonths(-6),
                 ToDate = DateTime.Now
@@ -134,6 +134,7 @@
                 Users = users
             };
             
+
             return View(model);
         }
 
@@ -175,8 +176,9 @@
         public async Task<ActionResult> SendEmail(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
-            var userNumber = 0;
             var result = await emailService.UpdateStatusAsync(new UpdateStatusCommand { EmailId = emailId, Status = Constants.EmailSent });
+            var userNumber = 0;
+            
             if (result.IsSuccessful)
             {
                 userNumber = await Send(email);

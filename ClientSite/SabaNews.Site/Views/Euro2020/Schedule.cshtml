@@ -32,7 +32,7 @@
 					@foreach (var post in Model.Posts)
 					{
 						var active = "";
-						if (post.PostSeoTitle == Constants.Active)
+						if (post.PostExcerpt == Constants.Active)
 						{
 							first = false;
 							active = "active";
@@ -44,7 +44,7 @@
 				<div class="post_content">
 					@foreach (var post in Model.Posts)
 					{
-						if (post.PostSeoTitle == Constants.Active)
+						if (post.PostExcerpt == Constants.Active)
 						{
 							@Html.Raw(post.PostContent)
 						}

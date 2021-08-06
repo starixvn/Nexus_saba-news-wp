@@ -14,7 +14,7 @@ namespace SabaNews.Criteria.Email
         public int UserId { get; set; }
 
 
-        public override string GetSettingKey() => "email_detail_get_detail";
+        public override string GetSettingKey() => "email_detail_get";
 
         public override bool IsValid() => true;
     }

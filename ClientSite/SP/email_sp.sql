@@ -110,7 +110,7 @@ END
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS email_detail_get_detail;
+DROP PROCEDURE IF EXISTS email_detail_get;
 
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `email_detail_get_detail`(
