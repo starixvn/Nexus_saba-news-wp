@@ -508,6 +508,9 @@ button {
   background: var(--ck-color-mention-background);
   color: var(--ck-color-mention-text); }
 
+.ck-content .table {
+  width: auto; }
+
 .block .profile, .block .controls {
   border: 1px solid #e5e5e5;
   background: #fff;

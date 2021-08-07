@@ -284,7 +284,7 @@
                     EmailContent = emailContent,
                     EmailTitle = model.EmailTitle,
                     TokenId = token,
-                    SendTime = DateTime.Now,
+                    SendTime = DateTime.UtcNow,
                     Status = resultSendMail.Code
                 };
                 await emailService.CreateEmailDetailAsync(emailData);

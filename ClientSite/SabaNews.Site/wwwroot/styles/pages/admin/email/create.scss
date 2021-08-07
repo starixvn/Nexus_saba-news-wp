@@ -29,9 +29,13 @@
     padding: 0 1.2rem !important;
 }
 
+.ck-content .table {
+    width: auto;
+}
+
 .main-list {
     width: 100%;
-    max-width: 70rem;
+    max-width: 80rem;
 
     .form-input {
         position: relative;

@@ -105,9 +105,12 @@ button {
   font-size: 1.6rem;
   padding: 0 1.2rem !important; }
 
+.ck-content .table {
+  width: auto; }
+
 .main-list {
   width: 100%;
-  max-width: 70rem; }
+  max-width: 80rem; }
   .main-list .form-input {
     position: relative;
     margin-bottom: 2.4rem; }
