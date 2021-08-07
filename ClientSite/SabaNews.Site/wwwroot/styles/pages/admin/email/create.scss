@@ -33,6 +33,11 @@
     width: auto;
 }
 
+.ck-content * {
+    margin: revert;
+    padding: revert;
+}
+
 .main-list {
     width: 100%;
     max-width: 80rem;
