@@ -17,7 +17,7 @@
 
         Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria);
 
-        Task<CommandResult> UnSubcriteUserAsync(int UserId);
+        Task<CommandResult> UnSubcriteUserAsync(int UserId, string token);
     }
 
 }

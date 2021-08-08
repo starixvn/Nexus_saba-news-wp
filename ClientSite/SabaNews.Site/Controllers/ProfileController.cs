@@ -225,9 +225,9 @@
             return Json(commandResult);
         }
 
-        public async Task<ActionResult> Unsubscribe(int UserId)
+        public async Task<ActionResult> Unsubscribe(int userId, string token)
         {
-            var result = await profileService.UnSubcriteUserAsync(UserId);
+            var result = await profileService.UnSubcriteUserAsync(userId, token);
             return View(result.IsSuccessful);
         }
 

@@ -223,6 +223,7 @@
     {
         "outputFileName": "wwwroot/minify/js/admin_email_create.min.js",
         "inputFiles": [
+            "wwwroot/lib/jquery-blockUI/jquery.blockUI.js",
             "wwwroot/js/lib/config_ckeditor.js",
             "wwwroot/js/admin/email/create.js"
         ],

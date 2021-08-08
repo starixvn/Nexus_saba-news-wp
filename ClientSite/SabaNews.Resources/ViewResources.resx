@@ -630,4 +630,7 @@
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
+  <data name="IncorrectLinkUnsubscribeUser" xml:space="preserve">
+    <value>Link unsubscribe user không đúng</value>
+  </data>
 </root>

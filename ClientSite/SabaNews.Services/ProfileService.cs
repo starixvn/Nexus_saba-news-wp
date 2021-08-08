@@ -53,11 +53,12 @@
             return await baseService.GetDataAsync<UserSession>(criteria);
         }
 
-        public async Task<CommandResult> UnSubcriteUserAsync(int UserId)
+        public async Task<CommandResult> UnSubcriteUserAsync(int UserId, string token)
         {
             var command = new UserUnsubribeCommand
             {
-                UserId = UserId
+                UserId = UserId,
+                Token = token
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }

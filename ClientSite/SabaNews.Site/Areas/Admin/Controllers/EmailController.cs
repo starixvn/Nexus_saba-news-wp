@@ -24,6 +24,7 @@
         private readonly IPathService pathService;
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
+        private readonly IAuthService authService;
         private const string SendMailTemplates = "EmailTemplates//SendMailEvent.txt";
 
         public EmailController(
@@ -31,13 +32,15 @@
             ISessionService sessionService,
             IPathService pathService,
             IEmailService emailService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IAuthService authService)
         {
             this.profileService = profileService;
             this.sessionService = sessionService;
             this.pathService = pathService;
             this.emailService = emailService;
             this.configuration = configuration;
+            this.authService = authService;
         }
 
         public IActionResult Index()
@@ -272,8 +275,14 @@
             foreach (var user in subscribedUsers)
             {
                 var token = Guid.NewGuid().ToString();
-                var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { UserId = user.Id, Area = "" }, Request.Scheme);
-                var messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                var messageUnsubcribe = "";
+                var createSubscribeTokenCommand = new CreateUserSubscribeTokenCommand { UserId = user.Id, Token = token };
+                var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
+                if (createSubscribeTokenResult.IsSuccessful)
+                {
+                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
+                    messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                }
                 var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token)) + messageUnsubcribe;
                 var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
                 var emailData = new EmailDetailModel

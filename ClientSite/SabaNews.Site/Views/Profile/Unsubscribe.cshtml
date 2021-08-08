@@ -10,7 +10,16 @@
 	<div class="container">
 		<div class="block block-main">
 			<div class="block__content block__title">
-				<h3>@ViewResources.UnsubscribeSuccessfully</h3>
+				@if (Model)
+				{
+					<h3>@ViewResources.UnsubscribeSuccessfully</h3>
+				}
+				else
+				{ 
+					<h3>@ViewResources.ExpiredLink</h3>
+					<div>@ViewResources.IncorrectLinkUnsubscribeUser</div>
+				}
+
 			</div>
 		</div>
 		@(await Component.InvokeAsync("Sidebar"))

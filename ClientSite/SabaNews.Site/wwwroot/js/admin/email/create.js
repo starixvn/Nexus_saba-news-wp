@@ -86,11 +86,13 @@
         var data = $(form).serialize();
         data += "&emailContent=" + encodeURIComponent(editorValue.getData());
         $('.button').prop('disabled', true);
+        $.blockUI({ message: '<h3>Processing...</h3>' });
         $.ajax({
             url: url,
             type: "POST",
             data: data,
             success: function (res) {
+                $.unblockUI();
                 result = res.result;
                 html = "";
                 if (result.isSuccessful && res.userNumber != null) {

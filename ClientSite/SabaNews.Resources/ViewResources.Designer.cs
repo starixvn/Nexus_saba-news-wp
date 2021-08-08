@@ -655,6 +655,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Link unsubscribe user không đúng.
+        /// </summary>
+        public static string IncorrectLinkUnsubscribeUser {
+            get {
+                return ResourceManager.GetString("IncorrectLinkUnsubscribeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nhập email của bạn để lấy lại mật khẩu.
         /// </summary>
         public static string InputEmailForResetPassword {

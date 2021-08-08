@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
+    using SabaNews.Criteria.Auth;
     using SabaNews.Models.Auth;
 
     public interface IAuthService
@@ -21,6 +22,8 @@
         Task<CommandResult> VerifyTokenResetPasswordAsync(int userId, string token);
 
         Task<CommandResult> ResetPasswordAsync(ResetPasswordModel model);
+
+        Task<CommandResult> CreateUserSubscribeToken(CreateUserSubscribeTokenCommand command);
 
         Task SendMailConfirmationAsync(string email, string url);
 

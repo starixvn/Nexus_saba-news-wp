@@ -111,6 +111,12 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
+        public async Task<CommandResult> CreateUserSubscribeToken(CreateUserSubscribeTokenCommand command)
+        {
+            var result = await baseService.ExecuteNonQueryAsync(command);
+            return result;
+        }
+
         public async Task SendMailConfirmationAsync(string email, string url)
         {
             var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, ConfirmEmailTemplates);
