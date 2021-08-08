@@ -32,7 +32,7 @@
         "outputFileName": "wwwroot/minify/styles/admin_email_create.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/admin/email/create.css"
+            "wwwroot/styles/pages/admin/email/update.css"
         ]
     },
     {

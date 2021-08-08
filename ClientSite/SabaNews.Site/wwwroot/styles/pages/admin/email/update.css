@@ -124,8 +124,8 @@ button {
     .main-list .form-input .tip {
       position: absolute;
       z-index: 9999999999;
-      top: 7.5rem;
-      right: -5rem;
+      top: 0;
+      right: -7rem;
       transform: translateX(-50%);
       height: 2.5rem;
       line-height: 2.5rem;

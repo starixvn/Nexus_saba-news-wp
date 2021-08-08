@@ -44,7 +44,8 @@
 
     .form-input {
         position: relative;
-        margin-bottom : 2.4rem;
+        margin-bottom: 2.4rem;
+
         .custom-input {
             width: 100%;
             cursor: unset;
@@ -53,8 +54,8 @@
         .tip {
             position: absolute;
             z-index: 9999999999;
-            top: 7.5rem;
-            right: -5rem;
+            top: 0;
+            right: -7rem;
             transform: translateX(-50%);
             height: 2.5rem;
             line-height: 2.5rem;
@@ -74,6 +75,7 @@
             margin-top: .5rem;
         }
     }
+
     .group-btn-admin {
         margin-top: 2.4rem;
         display: flex;
@@ -82,8 +84,9 @@
         .btn-custom-admin {
             margin-right: 2.4rem;
         }
+
         .btn-test {
-            cursor : pointer;
+            cursor: pointer;
             background: transparent;
             font-size: 1.4rem;
             color: #E13C29;
@@ -98,7 +101,7 @@
 
     .raw_link {
         line-height: 2.5rem;
-        height : auto;
+        height: auto;
     }
 
     .copy-link {
