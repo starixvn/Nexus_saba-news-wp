@@ -1,0 +1,104 @@
+﻿@using SabaNews.Resources;
+@{
+    Layout = "_AdminLayout";
+}
+
+@section TopHeader{
+    @ViewResources.ListElectronicDirectMail
+}
+
+
+@section Title{
+    @ViewResources.ListElectronicDirectMail
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/admin_email.min.css" asp-append-version="true">
+}
+
+@section Scripts{
+    <script src="~/minify/js/admin_email.min.js" asp-append-version="true"></script>
+}
+
+
+<section class="page-content">
+    <div class="page-table-control">
+        <div class="form-horizontal">
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input class="custom-input list-input" name="search" value="" placeholder="Search subject..." type="text" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.FromDate</p>
+                <input class="custom-input" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.ToDate</p>
+                <input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <button type="button" class="btn-custom-admin search_list_email">Submit</button>
+        </div>
+        <div class="list_email_block"></div>
+    </div>
+
+    <div class="modal" id="ViewEmailContent" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title"></h2>
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body ck-content">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title success-modal">
+                    <h2 class="title"><i class="icon-success-admin"></i> @ViewResources.Announcement</h2>
+
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal confirm" id="ConfirmModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Announcement</h2>
+<<<<<<< HEAD
+                    <button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+=======
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+>>>>>>> 000 - update new icon popup
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body"></div>
+                <div class="button-confirm">
+                    <button class="btn-custom-outline confirm-action">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
