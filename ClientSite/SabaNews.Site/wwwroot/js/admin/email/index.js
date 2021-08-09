@@ -54,13 +54,13 @@
 
         $('.confirm-action').on('click', function () {
             $('#ConfirmModal').modal('hide');
-            //$.blockUI({ message: '<h3>Processing...</h3>' });
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
             $.ajax({
                 url: "/Admin/Email/Delete",
                 type: "POST",
                 data: { emailId },
                 success: function (res) {
-                    //$.unblockUI();
+                    $.unblockUI();
                     if (res.isSuccessful) {
                         $('#NoticeModal .modal-body').html('Delete Email Successfully');
                     } else {
@@ -74,20 +74,20 @@
 
         $('.send-email').on('click', function () {
             emailId = $(this).data('emailid');
-            $.blockUI({ message: '<h3>Loading...</h3>' });
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
             $.ajax({
                 url: "/Admin/Email/SendEmail",
                 type: "POST",
                 data: { emailId },
                 success: function (res) {
-                   // $.unblockUI();
+                    $.unblockUI();
                     if (res.result.isSuccessful) {
                         $('#NoticeModal .modal-body').html('Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>');
                     } else {
                         $('#NoticeModal .modal-body').html('An error occurred while send email, please try again');
                     }
 
-                   // $('#NoticeModal').modal('show');
+                    $('#NoticeModal').modal('show');
                 }
             });
         });
