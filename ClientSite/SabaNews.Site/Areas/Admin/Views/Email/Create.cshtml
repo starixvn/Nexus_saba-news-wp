@@ -43,7 +43,7 @@
                     <p class="label-admin">@ViewResources.EmbeddedUrl</p>
                     <p class="custom-input raw_link"><span></span></p>
                     <a href="javascript:;" title="Copy embedded url" class="copy-link"><span><i class="icon-link"></i></span></a>
-					<span class="tip">Copied embedded url</span>
+                    <span class="tip">Copied embedded url</span>
                 </div>
 
                 <p class="help-block"></p>
@@ -62,6 +62,7 @@
                 <button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
             </div>
         </form>
+
 
         <div class="modal" id="ViewEmailContent" style="display:none">
             <div class="modal-content">
@@ -97,7 +98,7 @@
                                 <input type="radio" name="sendTo" class="send_to" value="user" /> User
                             </div>
 
-                            <div class="form-group user_list"   style="display: none">
+                            <div class="form-group user_list" style="display: none">
                                 <label>@ViewResources.ListUsers</label>
                                 <select name="user" class="form-control user">
                                     @foreach (var user in Model)
