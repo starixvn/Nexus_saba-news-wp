@@ -30,14 +30,16 @@
 
 @section Scripts {
 	<script>
-		$('#ConfirmUnSubscribe').modal('show');
-		$('#ConfirmUnSubscribe').on('hidden.bs.modal', function () {
-			window.location = "/";
-		});
+		var userId = '@Model.UserId';
+		var token = '@Model.Token';
 	</script>
+	<script src="~/js/profile/unsubscribe.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("Menu"))
 
+<section class="main content">
+	
+</section>
 <div class="auth-form">
 	<div class="modal" id="ConfirmUnSubscribe" style="display:none">
 		<div class="modal-content modal-auth">
@@ -48,7 +50,7 @@
 				<div class="modal-body modal-resetpass">
 					<h3 style="text-align:center">@ViewResources.ConfirmUnsubscribeUser</h3>
 					<div class="confirm" style="text-align: center">
-						<a class="btn-confirm" href="@Url.Action("Unsubscribe", "Profile", new { userId = Model.UserId, token =  Model.Token })">Yes</a>
+						<a class="btn-confirm unsubscribe" href="javascript:;">Yes</a>
 						<a class="btn-close" href="@Url.Action("Index", "Home")">No</a>
 					</div>
 				</div>

@@ -236,10 +236,11 @@
             return View(model);
         }
 
+        [HttpPost]
         public async Task<ActionResult> Unsubscribe(int userId, string token)
         {
             var result = await profileService.UnSubcriteUserAsync(userId, token);
-            return View(result.IsSuccessful);
+            return PartialView("_Unsubscribe", result.IsSuccessful);
         }
 
         [Route("VerifySendEmailLink")]
