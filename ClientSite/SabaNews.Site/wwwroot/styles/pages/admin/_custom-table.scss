@@ -16,52 +16,53 @@
     td {
         border: 1px solid $border-table;
         padding: .6rem 1rem;
-
-        .label {
-            font-size: 1.2rem;
-            border-radius: 3px;
-            padding: .3rem 1.2rem;
-            font-weight: bold;
-            margin: 0 .5rem;
-
-            &:hover {
-                text-decoration: none;
-                color: $color-fff;
-            }
-
-            &-blue {
-                background: #C4DDFA;
-                color: #5A86B8;
-                border: 1px solid #7CB2EF;
-
-                &:hover {
-                    background: #5A86B8;
-                    border: 1px solid #5A86B8;
-                }
-            }
-
-            &-green {
-                background: #E7FBD0;
-                border: 1px solid #96D152;
-                color: #77A83F;
-
-                &:hover {
-                    background: #77A83F;
-                    border: 1px solid #77A83F;
-                }
-            }
+    }
+}
 
 
-            &-red {
-                background: #FFD2CF;
-                border: 1px solid #FC9F99;
-                color: #CA5E57;
+.label {
+    font-size: 1.2rem;
+    border-radius: 3px;
+    padding: .3rem 1.2rem;
+    font-weight: bold;
+    margin: 0 .5rem;
 
-                &:hover {
-                    background: #CA5E57;
-                    border: 1px solid #CA5E57;
-                }
-            }
+    &:hover {
+        text-decoration: none;
+        color: $color-fff;
+    }
+
+    &-blue {
+        background: #C4DDFA;
+        color: #5A86B8;
+        border: 1px solid #7CB2EF;
+
+        &:hover {
+            background: #5A86B8;
+            border: 1px solid #5A86B8;
+        }
+    }
+
+    &-green {
+        background: #E7FBD0;
+        border: 1px solid #96D152;
+        color: #77A83F;
+
+        &:hover {
+            background: #77A83F;
+            border: 1px solid #77A83F;
+        }
+    }
+
+
+    &-red {
+        background: #FFD2CF;
+        border: 1px solid #FC9F99;
+        color: #CA5E57;
+
+        &:hover {
+            background: #CA5E57;
+            border: 1px solid #CA5E57;
         }
     }
 }

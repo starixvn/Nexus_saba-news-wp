@@ -548,36 +548,37 @@ button {
   .custom-table td {
     border: 1px solid #D7D7D7;
     padding: .6rem 1rem; }
-    .custom-table td .label {
-      font-size: 1.2rem;
-      border-radius: 3px;
-      padding: .3rem 1.2rem;
-      font-weight: bold;
-      margin: 0 .5rem; }
-      .custom-table td .label:hover {
-        text-decoration: none;
-        color: #fff; }
-      .custom-table td .label-blue {
-        background: #C4DDFA;
-        color: #5A86B8;
-        border: 1px solid #7CB2EF; }
-        .custom-table td .label-blue:hover {
-          background: #5A86B8;
-          border: 1px solid #5A86B8; }
-      .custom-table td .label-green {
-        background: #E7FBD0;
-        border: 1px solid #96D152;
-        color: #77A83F; }
-        .custom-table td .label-green:hover {
-          background: #77A83F;
-          border: 1px solid #77A83F; }
-      .custom-table td .label-red {
-        background: #FFD2CF;
-        border: 1px solid #FC9F99;
-        color: #CA5E57; }
-        .custom-table td .label-red:hover {
-          background: #CA5E57;
-          border: 1px solid #CA5E57; }
+
+.label {
+  font-size: 1.2rem;
+  border-radius: 3px;
+  padding: .3rem 1.2rem;
+  font-weight: bold;
+  margin: 0 .5rem; }
+  .label:hover {
+    text-decoration: none;
+    color: #fff; }
+  .label-blue {
+    background: #C4DDFA;
+    color: #5A86B8;
+    border: 1px solid #7CB2EF; }
+    .label-blue:hover {
+      background: #5A86B8;
+      border: 1px solid #5A86B8; }
+  .label-green {
+    background: #E7FBD0;
+    border: 1px solid #96D152;
+    color: #77A83F; }
+    .label-green:hover {
+      background: #77A83F;
+      border: 1px solid #77A83F; }
+  .label-red {
+    background: #FFD2CF;
+    border: 1px solid #FC9F99;
+    color: #CA5E57; }
+    .label-red:hover {
+      background: #CA5E57;
+      border: 1px solid #CA5E57; }
 
 .pagination {
   height: 4.1rem;
@@ -684,3 +685,19 @@ button {
 
 .page-table-control .list_email_block {
   margin-top: 2.5rem; }
+
+.back-parent-page {
+  margin-bottom: 2.6rem; }
+  .back-parent-page a {
+    color: #0052CC;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none; }
+
+.detail-header {
+  margin-top: 2.4rem; }
+  .detail-header .txt-content {
+    margin-bottom: 1.6rem;
+    font-size: 1.4rem;
+    color: #424242;
+    font-weight: bold; }
