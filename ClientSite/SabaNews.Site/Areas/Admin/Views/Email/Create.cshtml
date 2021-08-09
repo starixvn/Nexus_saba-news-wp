@@ -93,18 +93,18 @@
                     <div class="modal-body">
                         <form id="form_test_sendemail" class="form">
                             <div class="form-radio">
-                                <label class="label-admin">@ViewResources.SendTo</label>
+                                <label class="raido-custom label-admin">@ViewResources.SendTo</label>
                                 <div class="raido-custom">
-                                    <p class="label-admin">Email</p>
                                     <input type="radio" name="sendTo" class="send_to" value="email" checked />
+                                    <p class="label-admin">Email</p>
                                 </div>
                                 <div class="raido-custom">
-                                    <p class="label-admin">User</p>
                                     <input type="radio" name="sendTo" class="send_to" value="user" />
+                                    <p class="label-admin">User</p>
                                 </div>
                             </div>
 
-                            <div class="form-group user_list" style="display: none">
+                            <div class="form-input user_list" style="display: none">
                                 <label class="label-admin">@ViewResources.ListUsers</label>
                                 <select name="user" class="custom-input user">
                                     @foreach (var user in Model)
@@ -132,8 +132,8 @@
         <div class="modal" id="TestModal" style="display:none">
             <div class="modal-content">
                 <div class="modal-warning">
-                    <div class="modal-title success-modal">
-                        <h2 class="title"><i class="icon-success-admin"></i> @ViewResources.Announcement</h2>
+                    <div class="modal-title title-success">
+                        <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
                         <button type="button" class="close-login close-notice" data-dismiss="modal" aria-label="Close">
                             <i class="icon-close"></i>
                         </button>
@@ -149,8 +149,8 @@
         <div class="modal" id="NoticeModal" style="display:none">
             <div class="modal-content">
                 <div class="modal-warning">
-                    <div class="modal-title success-modal">
-                        <h2 class="title"><i class="icon-success-admin"></i> @ViewResources.Announcement</h2>
+                    <div class="modal-title title-success">
+                        <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
                         <button type="button" class="close-login close-notice" data-dismiss="modal" aria-label="Close">
                             <i class="icon-close"></i>
                         </button>

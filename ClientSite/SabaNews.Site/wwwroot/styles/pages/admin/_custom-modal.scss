@@ -18,6 +18,17 @@
             align-items: center;
             justify-content: space-between;
 
+            &.title-success {
+                background-color: #2270CE;
+            }
+
+            &.title-warning {
+                background-color: #A59A39;
+            }
+            .icon-title{
+                margin-right : 1.2rem;
+            }
+
             .title {
                 color: $color-fff;
                 font-size: 1.6rem;
@@ -42,13 +53,6 @@
                 }
             }
         }
-
-        .success-modal {
-            background-color: #2270CE;
-            .icon-success-admin {
-                margin-right: 1.2rem;
-            }
-        }
     }
 
     .modal-body {
@@ -56,6 +60,38 @@
 
         p {
             margin: 0;
+        }
+
+        .custom-input {
+            border: 1px solid #DDDDDD;
+        }
+
+        .user_list {
+            margin-bottom: 1.6rem;
+        }
+
+        .form-radio {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            margin-bottom: 1.6rem;
+
+            .raido-custom {
+                width: 5.5rem;
+                display: flex;
+                align-items: center;
+                margin-right: 1rem;
+                margin-bottom: 0;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                input[type=radio] {
+                    margin-right: .4rem;
+                    cursor: pointer;
+                }
+            }
         }
     }
 

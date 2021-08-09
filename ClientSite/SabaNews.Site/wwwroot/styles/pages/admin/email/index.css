@@ -613,6 +613,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between; }
+    .modal .modal-content .modal-title.title-success {
+      background-color: #2270CE; }
+    .modal .modal-content .modal-title.title-warning {
+      background-color: #A59A39; }
+    .modal .modal-content .modal-title .icon-title {
+      margin-right: 1.2rem; }
     .modal .modal-content .modal-title .title {
       color: #fff;
       font-size: 1.6rem;
@@ -627,15 +633,31 @@ button {
         outline: none; }
       .modal .modal-content .modal-title .close-login .icon-close:before {
         color: #fff; }
-  .modal .modal-content .success-modal {
-    background-color: #2270CE; }
-    .modal .modal-content .success-modal .icon-success-admin {
-      margin-right: 1.2rem; }
 
 .modal .modal-body {
   padding: 2.4rem 1.6rem; }
   .modal .modal-body p {
     margin: 0; }
+  .modal .modal-body .custom-input {
+    border: 1px solid #DDDDDD; }
+  .modal .modal-body .user_list {
+    margin-bottom: 1.6rem; }
+  .modal .modal-body .form-radio {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1.6rem; }
+    .modal .modal-body .form-radio .raido-custom {
+      width: 5.5rem;
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      margin-bottom: 0; }
+      .modal .modal-body .form-radio .raido-custom:last-child {
+        margin-right: 0; }
+      .modal .modal-body .form-radio .raido-custom input[type=radio] {
+        margin-right: .4rem;
+        cursor: pointer; }
 
 .modal .button-confirm {
   padding: 0 1.6rem 2.4rem 1.6rem;
