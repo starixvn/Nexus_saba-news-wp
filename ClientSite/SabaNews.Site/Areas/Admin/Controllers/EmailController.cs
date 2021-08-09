@@ -178,7 +178,7 @@
                 EmailTemplatePath = SendMailTemplate,
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
-                SubscribeLink = "",
+                SubscribeLink = "#",
                 BaseUrl = configuration.GetValue<string>("BaseUrl")
             };
             var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
@@ -308,7 +308,7 @@
                     EmailAddress = user.Email,
                     EmailTemplatePath = SendMailTemplate,
                     EmailTitle = model.EmailTitle,
-                    EmailContent = model.EmailContent,
+                    EmailContent = emailContent,
                     SubscribeLink = unsubcribeLink,
                     BaseUrl = configuration.GetValue<string>("BaseUrl")
                 };

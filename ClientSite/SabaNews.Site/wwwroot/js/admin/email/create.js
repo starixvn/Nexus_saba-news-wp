@@ -152,7 +152,7 @@
                 data: data,
                 success: function (res) {
                     if (res.isSuccessful) {
-                        $('#TestModal .modal-body').html('Send Email Successfully. Please check your mailbox~');
+                        $('#TestModal .modal-body').html('Send Email Successfully. Please check your mailbox!');
                     } else {
                         $('#TestModal .modal-body').html('An error occurred while send email, please try again');
                     }
