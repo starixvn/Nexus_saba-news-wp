@@ -86,7 +86,7 @@
         var data = $(form).serialize();
         data += "&emailContent=" + encodeURIComponent(editorValue.getData());
         $('.button').prop('disabled', true);
-        $.blockUI({ message: '<h3>Processing...</h3>' });
+        $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
         $.ajax({
             url: url,
             type: "POST",
