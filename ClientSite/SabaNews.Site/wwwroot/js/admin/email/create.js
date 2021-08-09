@@ -24,13 +24,13 @@
 
 
         $('input[name=emailReturnLink]').on('keyup', function () {
-            if ($(this).val().trim() !== "") {
+            var value = $(this).val();
+            var baseUrl = $('#baseUrl').val();
+            var rawLink = baseUrl + '&returnUrl=' + value;
+            $('#embeddedLink').val(rawLink);
+            $('.raw_link').html(rawLink);
+            if (value !== "") {
                 $('.group_raw_link').show()
-                var value = $(this).val();
-                var baseUrl = $('#baseUrl').val();
-                var rawLink = baseUrl + '&returnUrl=' + value;
-                $('#embeddedLink').val(rawLink);
-                $('.raw_link').html(rawLink);
             } else {
                 $('.group_raw_link').hide()
             }

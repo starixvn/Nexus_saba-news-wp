@@ -91,8 +91,9 @@
         [HttpPost]
         public async Task<ActionResult> SaveAndSendCreate(EmailModel model)
         {
+            var now = DateTime.Now;
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = DateTime.Now;
+            model.SendDate = now.ToLocalTime();
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
             var userNumber = 0;
@@ -299,7 +300,6 @@
                 await emailService.CreateEmailDetailAsync(emailData);
             }
             return userNumber;
-           
         }
 
         private static string EnsureCorrectFilename(string filename)
