@@ -208,6 +208,9 @@ button {
       color: #E13C29;
       font-weight: 700; }
 
+.button-confirm {
+  padding: 0 !important; }
+
 .group_raw_link {
   margin-top: 2rem;
   display: none; }
