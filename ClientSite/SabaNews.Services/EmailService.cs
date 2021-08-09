@@ -114,7 +114,7 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> SendMailWithTemplateAsync(string subject, string content, string email, string path)
+        public async Task<CommandResult> SendMailEDMWithTemplateAsync(string subject, string content, string email, string path)
         {
             var mailPath = pathService.MapPathContentRoot(path);
             var rawBody = baseMailService.ReadTextFile(mailPath);

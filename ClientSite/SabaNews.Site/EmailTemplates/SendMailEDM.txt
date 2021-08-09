@@ -408,12 +408,27 @@
                 display: none;
             }
         }
+        .footer {
+			text-align: center;
+			color: #6d6a6a;
+		}
+
+		.footer a {
+			text-decoration: none;
+			color: #6d6a6a;
+		}
+
+		.footer .action_link a {
+			text-decoration:underline
+        }
     </style>
 </head>
 <body>
 
 <div class="ck-content">
     {0}
+
+    <div style="clear:both"></div>
 </div>
 
 

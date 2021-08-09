@@ -1,0 +1,58 @@
+﻿@section Title{
+	@ViewResources.ConfirmEmail
+}
+
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
+	<style>
+		.modal {
+			text-align: center;
+		}
+		.confirm {
+			margin-top: 2rem;
+		}
+		.modal .confirm a {
+			text-decoration: none;
+			margin-left: 1rem;
+			padding: 1rem 2rem;
+			color: #fff;
+			border-radius: 5%;
+		}
+		.btn-confirm {
+			background: #9bc268;
+		}
+
+		.btn-close {
+			background: #d37c7c;
+		}
+	</style>
+}
+
+@section Scripts {
+	<script>
+		$('#ConfirmUnSubscribe').modal('show');
+		$('#ConfirmUnSubscribe').on('hidden.bs.modal', function () {
+			window.location = "/";
+		});
+	</script>
+}
+@(await Component.InvokeAsync("Menu"))
+
+<div class="auth-form">
+	<div class="modal" id="ConfirmUnSubscribe" style="display:none">
+		<div class="modal-content modal-auth">
+			<div class="modal-warning">
+				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modal-body modal-resetpass">
+					<h3 style="text-align:center">@ViewResources.ConfirmUnsubscribeUser</h3>
+					<div class="confirm" style="text-align: center">
+						<a class="btn-confirm" href="@Url.Action("Unsubscribe", "Profile", new { userId = Model.UserId, token =  Model.Token })">Yes</a>
+						<a class="btn-close" href="@Url.Action("Index", "Home")">No</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

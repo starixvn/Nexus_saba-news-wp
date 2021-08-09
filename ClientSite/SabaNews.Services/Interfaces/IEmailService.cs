@@ -26,7 +26,7 @@
 
         Task<EmailModel> GetEmailByIdAsync(GetEmailByIdCriteria criteria);
 
-        Task<CommandResult> SendMailWithTemplateAsync(string subject, string content, string email, string path);
+        Task<CommandResult> SendMailEDMWithTemplateAsync(string subject, string content, string email, string path);
 
         Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail);
 

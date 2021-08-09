@@ -633,4 +633,7 @@
   <data name="IncorrectLinkUnsubscribeUser" xml:space="preserve">
     <value>Link unsubscribe user không đúng</value>
   </data>
+  <data name="ConfirmUnsubscribeUser" xml:space="preserve">
+    <value>Bạn có chắc muốn bỏ theo dõi tin tức từ Saba Sports?</value>
+  </data>
 </root>

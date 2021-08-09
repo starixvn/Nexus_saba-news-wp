@@ -286,6 +286,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bạn có chắc muốn bỏ theo dõi tin tức từ Saba Sports?.
+        /// </summary>
+        public static string ConfirmUnsubscribeUser {
+            get {
+                return ResourceManager.GetString("ConfirmUnsubscribeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liên kết.
         /// </summary>
         public static string Connect {

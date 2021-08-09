@@ -25,7 +25,7 @@
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
-        private const string SendMailTemplates = "EmailTemplates//SendMailEvent.txt";
+        private const string SendMailTemplate = "EmailTemplates//SendMailEDM.txt";
 
         public EmailController(
             IProfileService profileService,
@@ -172,7 +172,7 @@
         [HttpPost]
         public async Task<ActionResult> TestSendEmail(EmailReviewModel model)
         {
-            var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplates);
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplate);
             return Json(resultSendMail);
         }
 
@@ -263,7 +263,7 @@
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
         {
             var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
-            var resultSendMail = await emailService.SendMailWithTemplateAsync(email.EmailTitle, email.EmailContent, email.EmailAddress, SendMailTemplates);
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(email.EmailTitle, email.EmailContent, email.EmailAddress, SendMailTemplate);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
             return Json(resultSendMail);
         }
@@ -281,11 +281,11 @@
                 var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
                 if (createSubscribeTokenResult.IsSuccessful)
                 {
-                    var unsubcribeLink = Url.Action("Unsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
-                    messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink);
+                    var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
+                    messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink, configuration.GetValue<string>("BaseUrl"));
                 }
                 var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token)) + messageUnsubcribe;
-                var resultSendMail = await emailService.SendMailWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplates);
+                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplate);
                 var emailData = new EmailDetailModel
                 {
                     EmailId = model.Id,

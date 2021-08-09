@@ -10,6 +10,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
+    using SabaNews.Models.ViewModel.Profile;
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
@@ -223,6 +224,16 @@
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             }
             return Json(commandResult);
+        }
+
+        public IActionResult ConfirmUnsubscribe(int userId, string token)
+        {
+            var model = new UnsubscribeViewModel
+            {
+                UserId = userId,
+                Token = token
+            };
+            return View(model);
         }
 
         public async Task<ActionResult> Unsubscribe(int userId, string token)

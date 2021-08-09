@@ -5,6 +5,7 @@
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
+
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
 	<div class="container">
@@ -12,12 +13,12 @@
 			<div class="block__content block__title">
 				@if (Model)
 				{
-					<h3>@ViewResources.UnsubscribeSuccessfully</h3>
+				<h3>@ViewResources.UnsubscribeSuccessfully</h3>
 				}
 				else
-				{ 
-					<h3>@ViewResources.ExpiredLink</h3>
-					<div>@ViewResources.IncorrectLinkUnsubscribeUser</div>
+				{
+				<h3>@ViewResources.ExpiredLink</h3>
+				<div>@ViewResources.IncorrectLinkUnsubscribeUser</div>
 				}
 
 			</div>
