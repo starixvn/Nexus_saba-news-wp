@@ -54,13 +54,13 @@
 
         $('.confirm-action').on('click', function () {
             $('#ConfirmModal').modal('hide');
-            $.blockUI({ message: '<h3>Processing...</h3>' });
+            //$.blockUI({ message: '<h3>Processing...</h3>' });
             $.ajax({
                 url: "/Admin/Email/Delete",
                 type: "POST",
                 data: { emailId },
                 success: function (res) {
-                    $.unblockUI();
+                    //$.unblockUI();
                     if (res.isSuccessful) {
                         $('#NoticeModal .modal-body').html('Delete Email Successfully');
                     } else {
