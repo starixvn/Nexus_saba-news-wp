@@ -617,6 +617,8 @@ button {
       background-color: #2270CE; }
     .modal .modal-content .modal-title.title-warning {
       background-color: #A59A39; }
+    .modal .modal-content .modal-title.title-error {
+      background-color: #FF5757; }
     .modal .modal-content .modal-title .icon-title {
       margin-right: 1.2rem; }
     .modal .modal-content .modal-title .title {
