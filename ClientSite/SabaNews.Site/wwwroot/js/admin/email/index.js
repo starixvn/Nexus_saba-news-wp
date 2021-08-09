@@ -80,14 +80,14 @@
                 type: "POST",
                 data: { emailId },
                 success: function (res) {
-                    $.unblockUI();
+                   // $.unblockUI();
                     if (res.result.isSuccessful) {
                         $('#NoticeModal .modal-body').html('Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>');
                     } else {
                         $('#NoticeModal .modal-body').html('An error occurred while send email, please try again');
                     }
 
-                    $('#NoticeModal').modal('show');
+                   // $('#NoticeModal').modal('show');
                 }
             });
         });
