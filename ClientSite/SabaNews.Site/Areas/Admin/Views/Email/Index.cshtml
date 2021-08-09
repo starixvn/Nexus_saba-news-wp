@@ -22,91 +22,79 @@
 
 
 <section class="page-content">
-	<div class="block block-email">
-		<div class="controls">
-			<div class="line">
-				<div class="form_search">
-					<div class="row">
-						<div class="col-md-3 form-group">
-							<label>@ViewResources.Subject</label>
-							<input class="form-control" name="search" value="" placeholder="Search subject..." type="text" />
-						</div>
-						<div class="col-md-3 form-group">
-							<label>@ViewResources.FromDate</label>
-							<input class="form-control" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
-						</div>
-						<div class="col-md-3 form-group">
-							<label>@ViewResources.ToDate</label>
-							<input class="form-control" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
-						</div>
+    <div class="page-table-control">
+        <div class="form-horizontal">
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input class="custom-input list-input" name="search" value="" placeholder="Search subject..." type="text" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.FromDate</p>
+                <input class="custom-input" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.ToDate</p>
+                <input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <button type="button" class="btn-custom-admin search_list_email">Submit</button>
+        </div>
+        <div class="list_email_block"></div>
+    </div>
 
-						<div class="col-xs-6 form-group">
-							<label>&nbsp;</label>
-							<button type="button" class="btn btn-primary search_list_email">Submit</button>
-						</div>
-					</div>
+    <div class="modal" id="ViewEmailContent" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title"></h2>
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-				</div>
-				<div class="list_email_block"></div>
-			</div>
-		</div>
+                <div class="modal-body ck-content">
+                </div>
+            </div>
+        </div>
+    </div>
 
-	</div>
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Announcement</h2>
+                    <button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-	<div class="modal" id="ViewEmailContent" style="display:none">
-		<div class="modal-content">
-			<div class="modal-warning">
-				<div class="modal-title">
-					<h2 class="title"></h2>
-					<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+                <div class="modal-body">
 
-				<div class="modal-body ck-content">
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="modal" id="NoticeModal" style="display:none">
-		<div class="modal-content">
-			<div class="modal-warning">
-				<div class="modal-title">
-					<h2 class="title">@ViewResources.Announcement</h2>
-					<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+    <div class="modal confirm" id="ConfirmModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Announcement</h2>
+                    <button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-				<div class="modal-body">
+                <div class="modal-body">
 
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
 
-	<div class="modal confirm" id="ConfirmModal" style="display:none">
-		<div class="modal-content">
-			<div class="modal-warning">
-				<div class="modal-title">
-					<h2 class="title">@ViewResources.Announcement</h2>
-					<button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-
-				</div>
-
-				<div class="button_confirm">
-					<button class="button confirm-action green">Yes</button>
-					<button data-dismiss="modal" aria-label="Close" class="button red">No</button>
-				</div>
-			</div>
-		</div>
-	</div>
+                <div class="button_confirm">
+                    <button class="button confirm-action green">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="button red">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>
 
