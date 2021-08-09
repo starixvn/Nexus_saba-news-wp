@@ -1,23 +1,23 @@
 ﻿@using SabaNews.Resources;
 @{
-	Layout = "_AdminLayout";
+    Layout = "_AdminLayout";
 }
 
 @section TopHeader{
-	@ViewResources.ListElectronicDirectMail
+    @ViewResources.ListElectronicDirectMail
 }
 
 
 @section Title{
-	@ViewResources.ListElectronicDirectMail
+    @ViewResources.ListElectronicDirectMail
 }
 
 @section Styles{
-	<link rel="stylesheet" href="~/minify/styles/admin_email.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/admin_email.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-	<script src="~/minify/js/admin_email.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/admin_email.min.js" asp-append-version="true"></script>
 }
 
 
@@ -47,7 +47,7 @@
                 <div class="modal-title">
                     <h2 class="title"></h2>
                     <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <i class="icon-close"></i>
                     </button>
                 </div>
 
@@ -57,13 +57,16 @@
         </div>
     </div>
 
+
+
     <div class="modal" id="NoticeModal" style="display:none">
         <div class="modal-content">
             <div class="modal-warning">
                 <div class="modal-title">
                     <h2 class="title">@ViewResources.Announcement</h2>
-                    <button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+
+                    <button type="button" class="close close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
                     </button>
                 </div>
 
@@ -80,17 +83,14 @@
                 <div class="modal-title">
                     <h2 class="title">@ViewResources.Announcement</h2>
                     <button type="button" class="close close-announcement" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <i class="icon-close"></i>
                     </button>
                 </div>
 
-                <div class="modal-body">
-
-                </div>
-
-                <div class="button_confirm">
-                    <button class="button confirm-action green">Yes</button>
-                    <button data-dismiss="modal" aria-label="Close" class="button red">No</button>
+                <div class="modal-body"></div>
+                <div class="button-confirm">
+                    <button class="btn-custom-admin confirm-action">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
                 </div>
             </div>
         </div>
