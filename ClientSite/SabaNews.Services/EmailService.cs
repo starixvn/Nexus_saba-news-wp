@@ -114,12 +114,14 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> SendMailEDMWithTemplateAsync(string subject, string content, string email, string path)
+        public async Task<CommandResult> SendMailEDMWithTemplateAsync(SendEDMModel model)
         {
-            var mailPath = pathService.MapPathContentRoot(path);
+            var mailPath = pathService.MapPathContentRoot(model.EmailTemplatePath);
             var rawBody = baseMailService.ReadTextFile(mailPath);
-            var body = rawBody.Replace("{0}", content);
-            return await SendMailAsync(subject, body, email);
+            var body = rawBody.Replace("{content}", model.EmailContent)
+                        .Replace("{unsubscribeLink}", model.SubscribeLink)
+                        .Replace("{baseUrl}", model.BaseUrl);
+            return await SendMailAsync(model.EmailTitle, body, model.EmailAddress);
         }
 
         public async Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail)

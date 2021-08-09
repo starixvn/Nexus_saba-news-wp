@@ -6,7 +6,8 @@
 		<th>@ViewResources.Email</th>
 		<th width="20%">@ViewResources.SentDate</th>
 		<th width="20%">@ViewResources.UserInteraction</th>
-		<th width="20%">@ViewResources.Status</th>
+		<th width="10%">@ViewResources.Status</th>
+		<th width="10%">@ViewResources.Action</th>
 	</tr>
 	@{ var stt = 0; }
 	@foreach (var detail in Model.ListEmailDetails)
@@ -17,15 +18,12 @@
 			<td>@detail.EmailAddress</td>
 			<td>@detail.SendTime.ToString("dd MMM yyyy HH:mm:ssss ")</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
+			<td>@(detail.Status == 0 ? ViewResources.Successful : ViewResources.Failed)
+			</td>
 			<td>
-				@if (detail.Status == 0)
+				@if (detail.Status != 0)
 				{
-					<p>@ViewResources.Successful</p>
-				}
-				else
-				{
-					<p>@ViewResources.Failed <span><a href="javascript:;" class="label color-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">@ViewResources.Resend</a></span></p>
-
+					<a href="javascript:;" class="label color-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">@ViewResources.Resend</a>
 				}
 			</td>
 		</tr>
@@ -36,9 +34,7 @@
 			<th class="nodata_table" colspan="6">@ViewResources.EmptyData</th>
 		</tr>
 	}
-
 	
-
 </table>
 @{
 	int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);

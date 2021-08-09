@@ -23,6 +23,8 @@
 
         public int Status { get; set; }
 
+        public string SubscribeToken { get; set; }
+
         public string SendMailTime
         {
             get

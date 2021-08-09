@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Models.Email
 {
-    public class SendEmailModel
+    public class SendEDMModel
     {
         public string EmailAddress { get; set; }
 
@@ -8,8 +8,10 @@
 
         public string EmailContent { get; set; }
 
-        public string EmailTemplate { get; set; }
+        public string EmailTemplatePath { get; set; }
 
         public string SubscribeLink { get; set; }
+
+        public string BaseUrl { get; set; }
     }
 }

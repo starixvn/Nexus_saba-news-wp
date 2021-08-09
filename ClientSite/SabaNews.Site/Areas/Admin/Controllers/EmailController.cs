@@ -172,7 +172,16 @@
         [HttpPost]
         public async Task<ActionResult> TestSendEmail(EmailReviewModel model)
         {
-            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(model.EmailTitle, model.EmailContent, model.EmailAddress, SendMailTemplate);
+            var sendEmailModel = new SendEDMModel
+            {
+                EmailAddress = model.EmailAddress,
+                EmailTemplatePath = SendMailTemplate,
+                EmailTitle = model.EmailTitle,
+                EmailContent = model.EmailContent,
+                SubscribeLink = "",
+                BaseUrl = configuration.GetValue<string>("BaseUrl")
+            };
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             return Json(resultSendMail);
         }
 
@@ -263,7 +272,17 @@
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
         {
             var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
-            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(email.EmailTitle, email.EmailContent, email.EmailAddress, SendMailTemplate);
+            var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
+            var sendEmailModel = new SendEDMModel
+            {
+                EmailAddress = email.EmailAddress,
+                EmailTemplatePath = SendMailTemplate,
+                EmailTitle = email.EmailTitle,
+                EmailContent = email.EmailContent,
+                SubscribeLink = unsubcribeLink,
+                BaseUrl = configuration.GetValue<string>("BaseUrl")
+            };
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
             return Json(resultSendMail);
         }
@@ -276,16 +295,24 @@
             foreach (var user in subscribedUsers)
             {
                 var token = Guid.NewGuid().ToString();
-                var messageUnsubcribe = "";
+                var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, Area = "" }, Request.Scheme);
                 var createSubscribeTokenCommand = new CreateUserSubscribeTokenCommand { UserId = user.Id, Token = token };
                 var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
                 if (createSubscribeTokenResult.IsSuccessful)
                 {
-                    var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
-                    messageUnsubcribe = string.Format(Constants.UnsubscribeTemplate, unsubcribeLink, configuration.GetValue<string>("BaseUrl"));
+                    unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
                 }
-                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token)) + messageUnsubcribe;
-                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(model.EmailTitle, emailContent, user.Email, SendMailTemplate);
+                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token));
+                var sendEmailModel = new SendEDMModel
+                {
+                    EmailAddress = user.Email,
+                    EmailTemplatePath = SendMailTemplate,
+                    EmailTitle = model.EmailTitle,
+                    EmailContent = model.EmailContent,
+                    SubscribeLink = unsubcribeLink,
+                    BaseUrl = configuration.GetValue<string>("BaseUrl")
+                };
+                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
                 var emailData = new EmailDetailModel
                 {
                     EmailId = model.Id,
