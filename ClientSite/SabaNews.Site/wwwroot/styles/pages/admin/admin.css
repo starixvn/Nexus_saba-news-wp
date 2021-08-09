@@ -335,7 +335,7 @@ button {
   height: 5rem;
   margin: 0 auto;
   padding: 1rem;
-  border: 7px dashed #ED3F2B;
+  border: 7px dashed #fff;
   border-radius: 100%;
   animation: loadingD 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite; }
 
