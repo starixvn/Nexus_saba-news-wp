@@ -36,8 +36,9 @@ BEGIN
 
 END
 
+
 //
-DELIMITER ;
+DELIMITER ;	
 
 
 DROP PROCEDURE IF EXISTS email_detail_create;
@@ -74,10 +75,33 @@ BEGIN
 	EmailContent,
 	SendTime,
     Status);
-
 END
+
 //
-DELIMITER ;
+DELIMITER ;	
+
+
+DROP PROCEDURE IF EXISTS email_detail_get;
+
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `email_detail_get`(
+	IN UserId INT,
+    IN EmailId INT
+)
+BEGIN
+	DECLARE SubscribeToken VARCHAR(200);
+    SELECT u.meta_value INTO SubscribeToken 
+    FROM wp_usermeta u 
+    WHERE u.meta_key = "subcribe_token" and u.user_id = UserId ;
+    
+	SELECT d.EmailId, d.TokenId, d.EmailAddress, d.EmailTitle, d.EmailContent, d.SendTime, d.IsUserClicked, d.Status, SubscribeToken
+    FROM wp_email_detail d
+    WHERE d.UserId = UserId AND d.EmailId = EmailId;
+END
+
+//
+DELIMITER ;	
+
 
 DROP PROCEDURE IF EXISTS email_detail_get_by_emailId;
 
@@ -107,24 +131,8 @@ BEGIN
     limit start, end;
 END
 //
-DELIMITER ;
+DELIMITER ;	
 
-
-DROP PROCEDURE IF EXISTS email_detail_get;
-
-DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `email_detail_get_detail`(
-	IN UserId INT,
-    IN EmailId INT
-)
-BEGIN
-	SELECT d.EmailId, d.TokenId, d.EmailAddress, d.EmailTitle, d.EmailContent, d.SendTime, d.IsUserClicked, d.Status
-    FROM wp_email_detail d
-    WHERE d.UserId = UserId AND d.EmailId = EmailId;
-END
-
-//
-DELIMITER ;
 
 DROP PROCEDURE IF EXISTS email_detail_update_status;
 
@@ -159,7 +167,6 @@ email_detail_update_status:BEGIN
     `Status` = status
 	WHERE `EmailId` = _EmailId AND `UserId` = _UserId;
 END
-
 //
 DELIMITER ;
 
@@ -198,7 +205,6 @@ email_detail_verify_token:BEGIN
     END IF;
 	
 END
-
 //
 DELIMITER ;
 
@@ -236,9 +242,9 @@ BEGIN
     ORDER BY e.CreatedDate desc
     limit start, end;
 END
-
 //
 DELIMITER ;
+
 
 DROP PROCEDURE IF EXISTS email_get_all_by_user;
 
@@ -271,11 +277,11 @@ BEGIN
     FROM wp_email e
     WHERE e.ID = Id;
 END
-
 //
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS email_get_by_user;
+
+DROP PROCEDURE IF EXISTS email_get_by_id;
 
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `email_get_by_user`(
@@ -305,6 +311,7 @@ BEGIN
 END
 //
 DELIMITER ;
+
 
 DROP PROCEDURE IF EXISTS email_update;
 
@@ -373,6 +380,7 @@ END
 //
 DELIMITER ;
 
+
 DROP PROCEDURE IF EXISTS user_get_all;
 
 DELIMITER //
@@ -407,23 +415,41 @@ END
 //
 DELIMITER ;
 
+
 DROP PROCEDURE IF EXISTS user_unsubscribe;
 
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_unsubscribe`(
 	IN userId INT,
+    IN token varchar(200),
     OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
 )
-BEGIN
-	declare checkSubscribe INT;
-    select count(*) INTO checkSubscribe from wp_usermeta where meta_key = 'is_subscribe' AND user_id = userId;
+user_unsubscribe:BEGIN
+	declare UMetaId INT;
+    declare checkExist INT;
+    SET checkExist = -1;
+    SET UMetaId = -1;
     
-    IF checkSubscribe > 0 THEN
+    select u.umeta_id INTO checkExist 
+    from wp_usermeta u
+    where u.user_id = userId AND u.meta_key = 'subcribe_token' AND u.meta_value = token;
+    
+     IF (checkExist = -1) THEN
+		SET ErrCode = 1,
+			ErrMsg = 'Token does not exist';
+        LEAVE user_unsubscribe;
+	END IF;
+    
+    select u.umeta_id INTO UMetaId 
+    from wp_usermeta u 
+    where u.meta_key = 'is_subscribe' AND u.user_id = userId; 
+    
+    IF UMetaId != -1 THEN
 		UPDATE `wp_usermeta`
 		SET
 		`meta_value` = 0
-		WHERE `meta_key` = 'is_subscribe' AND `user_id` = userId;
+		WHERE  `umeta_id` = UMetaId;
     ELSE
          INSERT INTO `wp_usermeta`
 		(`user_id`,
@@ -434,7 +460,46 @@ BEGIN
 		'is_subscribe',
 		0);
     END IF;
+    
+    DELETE FROM `wp_usermeta`
+    WHERE meta_key= 'subcribe_token' AND user_id = userId;
 END
 //
 DELIMITER ;
 
+
+DROP PROCEDURE IF EXISTS user_subscribe_create_token;
+
+DELIMITER //
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_subscribe_create_token`(
+	UserId INT,
+	Token VARCHAR(200),
+    OUT CurrentToken VARCHAR(200),
+	OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)
+)
+BEGIN
+    DECLARE SubscribeToken VARCHAR(200);
+    SET SubscribeToken = "";
+    
+    SELECT m.meta_value
+    INTO SubscribeToken
+    FROM `wp_usermeta` AS m
+    WHERE m.user_id = UserId AND m.meta_key = 'subcribe_token';
+    
+    IF (SubscribeToken = "") THEN
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserId,
+		'subcribe_token',
+		Token);
+        SET CurrentToken = Token;
+	ELSE 
+		SET CurrentToken = SubscribeToken;
+	END IF;
+END
+//
+DELIMITER ;
