@@ -42,14 +42,14 @@
 	var pageLast = Model.Paging.TotalPages;
 	var pageNext = CurrentPage + 1;
 	var pagePrev = CurrentPage - 1;
-	var checkPrev = CurrentPage > 1 ? "paging" : "0";
-	var checkNext = CurrentPage < TotalPages ? "paging" : "0";
+	var checkPrev = CurrentPage > 1 ? "paging" : "disabled";
+	var checkNext = CurrentPage < TotalPages ? "paging" : "disabled";
 }
 
 @if (TotalPages > 1)
 {
 	<div class="pagination">
-		<a href="javascript:;" data-page="1" class="icon-pagination icon-page-first paging"></a>
+		<a href="javascript:;" data-page="1" class="icon-pagination icon-page-first @checkPrev"></a>
 		<a href="javascript:;" data-page="@pagePrev" class="icon-pagination icon-chevron-left @checkPrev"></a>
 		<ul class="main-pagination">
 			@{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
@@ -76,6 +76,6 @@
 				} }
 		</ul>
 		<a href="javascript:;" data-page="@pageNext" class="icon-pagination icon-chevron-right @checkNext"></a>
-		<a href="javascript:;" data-page="@pageLast" class="icon-pagination icon-page-last paging"></a>
+		<a href="javascript:;" data-page="@pageLast" class="icon-pagination icon-page-last @checkNext"></a>
 	</div>
 }

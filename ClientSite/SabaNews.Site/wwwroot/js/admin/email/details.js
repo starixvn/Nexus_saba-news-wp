@@ -19,12 +19,6 @@ var edmDetail = (function ($) {
     }
 
     function HandleSearch() {
-        $('.paging').on('click', function () {
-            page = $(this).data('page');
-            renderList();
-
-        });
-
         $('.search_email_detail').on('click', function () {
             search = $("input[name=search]").val();
             filterClicked = $("select[name=filterClicked]").val();
@@ -34,6 +28,12 @@ var edmDetail = (function ($) {
     }
 
     function HandleActionGridData() {
+        $('.paging').on('click', function () {
+            page = $(this).data('page');
+            renderList();
+
+        });
+
         $('.resend-email').on('click', function () {
             var emailId = $(this).data('emailid');
             var userId = $(this).data('userid');
