@@ -86,7 +86,11 @@
 
     .icon-pagination {
         &:before {
-            color: #DADADA;
+            color: #444444;
+        }
+
+        &.disabled {
+            opacity: .5;
         }
     }
 

@@ -74,6 +74,10 @@ button {
       justify-content: center;
       margin-bottom: 3rem;
       padding: 1rem .3rem 0 0; } }
+  .pagination a:before {
+    color: #294579; }
+  .pagination a.disabled {
+    opacity: .5; }
   .pagination .icon-pagination {
     font-size: 2.4rem;
     width: 2.4rem;
@@ -591,7 +595,9 @@ button {
   padding: 0;
   background-color: #FBFBFB; }
   .pagination .icon-pagination:before {
-    color: #DADADA; }
+    color: #444444; }
+  .pagination .icon-pagination.disabled {
+    opacity: .5; }
   .pagination .main-pagination .items-pagination .item {
     color: #444444; }
   .pagination .main-pagination .active {
