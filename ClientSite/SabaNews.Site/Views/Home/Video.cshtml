@@ -68,19 +68,25 @@
                     </div>}
             </div>
             @{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-                int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-                var linkLast = Url.Action("Video", "Home", new { page = Model.ViewData.TotalPages });
-                var linkFirst = Url.Action("Video", "Home", new { page = 1 });
-                var linkNext = Url.Action("Video", "Home", new { page = CurrentPage + 1 });
-                var linkPrev = Url.Action("Video", "Home", new { page = CurrentPage - 1 });
+				int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
+				var linkLast = Url.Action("Video", "Home", new { page = Model.ViewData.TotalPages });
+				var linkFirst = Url.Action("Video", "Home", new { page = 1 });
+				var linkNext = Url.Action("Video", "Home", new { page = CurrentPage + 1 });
+				var linkPrev = Url.Action("Video", "Home", new { page = CurrentPage - 1 });
 
-                linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
-                linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;"; }
+				linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
+				linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
+				linkFirst = CurrentPage > 1 ? linkFirst : "javascript:;";
+				linkLast = CurrentPage < TotalPages ? linkLast : "javascript:;";
+				var disabledFirst = CurrentPage > 1 ? "" : "disabled";
+				var disabledLast = CurrentPage < TotalPages ? "" : "disabled";
+            }
+
             @if (TotalPages > 1)
             {
                 <div class="pagination">
-                    <a href="@linkFirst" class="icon-pagination icon-page-first"></a>
-                    <a href="@linkPrev" class="icon-pagination icon-chevron-left"></a>
+                    <a href="@linkFirst" class="icon-pagination icon-page-first @disabledFirst"></a>
+                    <a href="@linkPrev" class="icon-pagination icon-chevron-left @disabledFirst"></a>
                     <ul class="main-pagination">
                         @{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
                             front = (CurrentPage - 1 == 3) ? 3 : front;
@@ -107,8 +113,8 @@
                                 <li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
                             } }
                     </ul>
-                    <a href="@linkNext" class="icon-pagination icon-chevron-right"></a>
-                    <a href="@linkLast" class="icon-pagination icon-page-last"></a>
+                    <a href="@linkNext" class="icon-pagination icon-chevron-right @disabledLast"></a>
+                    <a href="@linkLast" class="icon-pagination icon-page-last @disabledLast"></a>
                 </div>}
         </div>
 
