@@ -100,9 +100,9 @@ BEGIN
     
     SELECT p.PostDate as PostDate
           ,COUNT(DISTINCT IF (t.Name <> 'video', p.PostId, NULL)) AS PostCount
-          ,SUM(CASE WHEN pd.is_video_post <> 1 THEN pd.view_count ELSE 0 END) AS PostView
+          ,SUM(CASE WHEN pd.is_video_post <> 1 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS PostView
           ,COUNT(DISTINCT IF (t.Name = 'video', p.PostId, NULL)) AS VideoCount
-          ,SUM(CASE WHEN pd.is_video_post = 1 THEN pd.view_count ELSE 0 END) AS VideoView
+          ,SUM(CASE WHEN pd.is_video_post = 1 THEN IFNULL(pd.view_count, 0) ELSE 0 END) AS VideoView
     FROM tmpPosts p 
     INNER JOIN wp_terms t ON p.RootCategoryId = t.term_id
     LEFT JOIN wp_postview_details pd ON p.PostId = pd.post_id
