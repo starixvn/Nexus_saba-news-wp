@@ -97,7 +97,8 @@ p.has-text-align-center {
   background-color: #081224;
   border-top: 4px solid #F12F19;
   padding: 3.6rem 0;
-  position: relative; }
+  position: relative;
+  margin-top: auto; }
   @media screen and (max-width: 1024px) {
     .footer {
       padding: .8rem 0; } }

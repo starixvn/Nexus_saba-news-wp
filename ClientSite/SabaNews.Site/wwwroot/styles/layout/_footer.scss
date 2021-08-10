@@ -6,7 +6,7 @@
     border-top: 4px solid $color-main-title;
     padding: 3.6rem 0;
     position: relative;
-
+    margin-top : auto;
     @include tableMobile {
         padding: .8rem 0;
     }

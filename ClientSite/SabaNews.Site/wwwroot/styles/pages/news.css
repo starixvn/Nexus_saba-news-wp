@@ -98,7 +98,8 @@ p.has-text-align-center {
   background-color: #081224;
   border-top: 4px solid #F12F19;
   padding: 3.6rem 0;
-  position: relative; }
+  position: relative;
+  margin-top: auto; }
   @media screen and (max-width: 1024px) {
     .footer {
       padding: .8rem 0; } }
@@ -1286,6 +1287,88 @@ button {
     .block-extension {
       padding: 0;
       padding-top: 2.4rem; } }
+
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
+button {
+  outline: none;
+  border: 0;
+  padding: 0; }
+
+.btn-play-video {
+  height: 8rem;
+  width: 8rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(50%, -50%);
+  right: 50%;
+  top: 50%;
+  cursor: pointer; }
+  @media screen and (max-width: 1024px) {
+    .btn-play-video {
+      height: 4.6rem;
+      width: 4.6rem; } }
+  .btn-play-video span {
+    font-size: 4.6rem;
+    color: #fff; }
+    @media screen and (max-width: 1024px) {
+      .btn-play-video span {
+        font-size: 2rem; } }
+
+.btn-custom-admin {
+  cursor: pointer;
+  width: 11.3rem;
+  height: 4rem;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  color: #fff;
+  background: #E13C29;
+  font-weight: bold;
+  transition: box-shadow .3s ease-in-out; }
+  .btn-custom-admin:focus {
+    outline: none; }
+  .btn-custom-admin:hover {
+    box-shadow: 0px 1px 4px #E13C29; }
+
+.btn-custom-outline {
+  cursor: pointer;
+  width: 10rem;
+  height: 4rem;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  background: transparent;
+  color: #E13C29;
+  font-weight: bold;
+  border: 1px solid; }
+  .btn-custom-outline:focus {
+    outline: none; }
+
+.modal.modal-page {
+  border: 1px solid #E5E5E5;
+  max-width: 40rem;
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.25); }
+  .modal.modal-page .modal-body-custom {
+    padding: 2.4rem 1.6rem; }
+    .modal.modal-page .modal-body-custom .heading-modal-page {
+      margin-bottom: 2.4rem;
+      line-height: 1.6rem;
+      color: #444444;
+      font-weight: 400;
+      font-size: 1.4rem; }
+    .modal.modal-page .modal-body-custom .button-confirm {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+      .modal.modal-page .modal-body-custom .button-confirm .unsubscribe {
+        margin-right: 2.4rem; }
 
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }
