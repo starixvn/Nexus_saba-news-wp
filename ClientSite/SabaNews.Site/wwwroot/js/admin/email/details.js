@@ -44,11 +44,10 @@ var edmDetail = (function ($) {
                 data: { emailId, userId },
                 success: function (response) {
                     if (response.isSuccessful) {
-                        $('#NoticeModal .modal-body').html('Resend email successful');
+                        GetSuccessPopup('#NoticeModal', 'Resend email successful');
                     } else {
-                        $('#NoticeModal .modal-body').html('An error occurred while send email, please try again');
+                        GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
                     }
-                    $('#NoticeModal').modal('show');
                 }
             })
         });
@@ -56,6 +55,20 @@ var edmDetail = (function ($) {
         $('#NoticeModal').on('hidden.bs.modal', function () {
             renderList();
         });
+    }
+
+    function GetErrorPopup(popupId, msg) {
+        $(popupId + ' .modal-title').removeClass('title-success').addClass('title-error');
+        $(popupId + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+        $(popupId + ' .modal-body').html(msg);
+        $(popupId).modal('show');
+    }
+
+    function GetSuccessPopup(popupId, msg) {
+        $(popupId + ' .modal-title').removeClass('title-error').addClass('title-success');
+        $(popupId + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+        $(popupId + ' .modal-body').html(msg);
+        $(popupId).modal('show');
     }
  
     function init() {

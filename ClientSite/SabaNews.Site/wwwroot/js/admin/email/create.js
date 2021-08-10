@@ -51,11 +51,6 @@
                 self.parent().find('.tip').hide();
             }, 1000);
         });
-
-
-        $('#NoticeModal').on('hidden.bs.modal', function () {
-            location.reload();
-        });
     }
 
     function HandleClick() {
@@ -97,15 +92,17 @@
                 html = "";
                 if (result.isSuccessful && res.userNumber != null) {
                     html = '<p>Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>';
-                    $('#NoticeModal .modal-body').html(html);
+                    GetSuccessPopup('#NoticeModal', html);
                 } else if (result.isSuccessful) {
                     html = '<p>Save Data Successfully<p>';
-                    $('#NoticeModal .modal-body').html(html);
+                    GetSuccessPopup('#NoticeModal', html);
                 } else {
-                    $(form).find('.summary-eror').text(result.message);
+                    GetErrorPopup('#NoticeModal', result.message);
                 }
-                //$('.btn-send-mail').prop('disabled', false);
-                $('#NoticeModal').modal('show');
+                $('#NoticeModal').bind('hidden.bs.modal', function () {
+                    location.reload();
+                });
+                
                 $('.group_raw_link').hide();
             },
 
@@ -152,15 +149,31 @@
                 data: data,
                 success: function (res) {
                     if (res.isSuccessful) {
-                        $('#TestModal .modal-body').html('Send Email Successfully. Please check your mailbox!');
+                        var msg = 'Send Email Successfully. Please check your mailbox!';
+                        GetSuccessPopup('#NoticeModal', msg);
                     } else {
-                        $('#TestModal .modal-body').html('An error occurred while send email, please try again');
+                        var msg = 'An error occurred while send email, please try again';
+                        GetErrorPopup('#NoticeModal', msg)
                     }
-                    $('#TestModal').modal('show');
+                    $('#NoticeModal').unbind('hidden.bs.modal');
                 }
             });
 
         });
+    }
+
+    function GetErrorPopup(popupId, msg) {
+        $(popupId + ' .modal-title').removeClass('title-success').addClass('title-error');
+        $(popupId + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
+        $(popupId + ' .modal-body').html(msg);
+        $(popupId).modal('show');
+    }
+
+    function GetSuccessPopup(popupId, msg) {
+        $(popupId + ' .modal-title').removeClass('title-error').addClass('title-success');
+        $(popupId + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
+        $(popupId + ' .modal-body').html(msg);
+        $(popupId).modal('show');
     }
    
     function init() {
