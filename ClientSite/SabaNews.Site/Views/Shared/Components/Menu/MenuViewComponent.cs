@@ -28,7 +28,8 @@
                 Page = page,
                 IsAuthenticated = isAuthenticated,
                 CategorySlug = categorySlug,
-                IsAdmin = isAuthenticated && sessionService.User.Metadata.Contains(Role.Administrator)
+                IsAdmin = isAuthenticated && !string.IsNullOrWhiteSpace(sessionService.User.Metadata)
+                        && sessionService.User.Metadata.Contains(Role.Administrator)
             };
             if (isAuthenticated)
             {
