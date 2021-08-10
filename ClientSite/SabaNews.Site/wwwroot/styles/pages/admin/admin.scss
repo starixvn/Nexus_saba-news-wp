@@ -64,6 +64,14 @@ body {
         background: $color-fff;
         border: 1px solid #D7D7D7;
 
+        tbody {
+            tr {
+                &:hover {
+                    background-color: #FEF3D6;
+                }
+            }
+        }
+
         th {
             padding: 1.3rem 0;
             border: 1px solid #D7D7D7;

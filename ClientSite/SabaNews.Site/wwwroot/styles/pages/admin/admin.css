@@ -390,6 +390,8 @@ body {
     text-align: center;
     background: #fff;
     border: 1px solid #D7D7D7; }
+    .table-admin table tbody tr:hover {
+      background-color: #FEF3D6; }
     .table-admin table th {
       padding: 1.3rem 0;
       border: 1px solid #D7D7D7;
