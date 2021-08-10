@@ -49,8 +49,8 @@
     height: 3.2rem;
     background: #fff;
     border-radius: 50%;
-    line-height: 3.2rem;
-    font-size: 3rem;
+    line-height: 0;
+    font-size: 2.4rem;
     outline: none; }
     @media screen and (max-width: 1024px) {
       .auth-form .modal-auth .close-login, .auth-form .modal-auth .close {
