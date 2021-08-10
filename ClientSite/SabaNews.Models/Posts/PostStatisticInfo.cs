@@ -4,7 +4,7 @@
 
     public class PostStatisticInfo
     {
-        public DateTime OnDate { get; set; }
+        public DateTime PostDate { get; set; }
 
         public int PostCount { get; set; }
 

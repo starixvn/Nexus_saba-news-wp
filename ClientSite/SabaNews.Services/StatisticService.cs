@@ -37,23 +37,23 @@
             double totalDays = (toDate - fromDate).TotalDays + 1;
             for (double i = 0; i < totalDays; i++)
             {
-                if (postStatistics.Any(s => s.OnDate.Date == fromDate.Date))
+                if (postStatistics.Any(s => s.PostDate.Date == fromDate.Date))
                 {
-                    var item = postStatistics.FirstOrDefault(i => i.OnDate.Date == fromDate.Date);
+                    var item = postStatistics.FirstOrDefault(i => i.PostDate.Date == fromDate.Date);
                     result.Add(item);
                 }
                 else
                 {
                     var filledItem = new PostStatisticInfo
                     {
-                        OnDate = fromDate
+                        PostDate = fromDate
                     };
                     result.Add(filledItem);
                 }
                 fromDate = fromDate.AddDays(1);
             }
 
-            return result.OrderBy(x => x.OnDate);
+            return result.OrderBy(x => x.PostDate);
         }
     }
 }
