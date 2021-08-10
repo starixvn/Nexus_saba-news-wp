@@ -92,6 +92,9 @@
             font-size: 1.4rem;
             color: #E13C29;
             font-weight: 700;
+            &:focus{
+                outline :none;
+            }
         }
     }
 }
