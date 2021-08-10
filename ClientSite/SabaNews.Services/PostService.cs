@@ -129,7 +129,7 @@
                     var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                     post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
                 }
-                
+
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
                 post.CategoriesSlug ??= "";
                 post.CatesName ??= "";
@@ -142,17 +142,6 @@
                 post.Type = isVideo ? Constants.VideoPostType : Constants.FootballPostType;
             }
             return post;
-        }
-
-        private async Task<CommandResult> UpdatePostView(int postId, bool isVideoPost)
-        {
-            var command = new UpdatePostViewCommand
-            {
-                PostId = postId,
-                IsVideoPost = isVideoPost
-            };
-
-            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task<PostTemplate> SearchPostAsync(string keyword, int start, int end)
@@ -244,7 +233,8 @@
         {
             foreach (var post in posts)
             {
-                if (string.IsNullOrEmpty(post.PostExcerpt)) {
+                if (string.IsNullOrEmpty(post.PostExcerpt))
+                {
                     var excerpt = Regex.Replace(post.PostContent, @"<[^>]+>|&nbsp;", "").Trim();
                     var subTitle = excerpt.IndexOf("\n", StringComparison.OrdinalIgnoreCase);
                     post.PostExcerpt = subTitle != -1 ? excerpt.Substring(0, subTitle) : excerpt;
@@ -338,11 +328,12 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> UpdateViewAsync(int postId)
+        public async Task<CommandResult> UpdateViewAsync(int postId, bool isVideo)
         {
             var command = new UpdateViewCommand
             {
-                PostId = postId
+                PostId = postId,
+                IsVideoPost = isVideo
             };
 
             return await baseService.ExecuteNonQueryAsync(command);

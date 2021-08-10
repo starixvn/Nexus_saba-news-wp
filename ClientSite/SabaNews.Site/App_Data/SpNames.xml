@@ -153,7 +153,7 @@
         <Setting Key="get_rss" SpName="get_rss" DbName="sabasports" Plain="0" />
         <Setting Key="post_update_viewcount" SpName="post_update_viewcount" DbName="sabasports" Plain="0" />
         <Setting Key="post_update_video_view" SpName="post_update_video_view" DbName="sabasports" Plain="0" />
-        <Setting Key="post_update_view" SpName="post_update_view" DbName="sabasports" Plain="0" />
+        <Setting Key="post_update_view" SpName="post_update_view_xtest" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">

@@ -1,5 +1,8 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -8,9 +11,6 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class PostController : Controller
     {
@@ -41,7 +41,6 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            await postService.UpdateViewAsync(post.ID);
             var postParam = new PostParam
             {
                 Slug = Constants.VideoSlug,
@@ -70,7 +69,8 @@
                 CateSlug = cateInfo.slug,
                 CateName = cateInfo.name
             };
-           
+            await postService.UpdateViewAsync(post.ID, post.Type == Constants.VideoPostType);
+
             return View(models);
         }
 

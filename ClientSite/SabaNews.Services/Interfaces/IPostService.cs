@@ -45,6 +45,6 @@
 
         Task<CommandResult> UpdateVideoView(int postId);
 
-        Task<CommandResult> UpdateViewAsync(int postId);
+        Task<CommandResult> UpdateViewAsync(int postId, bool isVideo);
     }
 }
