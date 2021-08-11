@@ -32,7 +32,7 @@
         public const string Football = "Bóng đá";
         public const string Video = "Video";
 
-        public const string EmptyBlogView = "EmptyBlog";
+        public const string EmptyBlogView = "~/Views/Home/EmptyBlog.cshtml";
         public const string BlogView = "Blog";
         public const string VideoView = "Video";
         public const string CategoryView = "Category";

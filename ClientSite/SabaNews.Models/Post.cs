@@ -3,6 +3,7 @@
     using SabaNews.Core.Constants;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
 
     public class Post
@@ -46,6 +47,14 @@
                 }
 
                 return PostDate.ToString("H:mm dd/MM/yyyy");
+            }
+        }
+
+        public string PostTimeFormatSingle
+        {
+            get
+            {
+                return PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi"));
             }
         }
 
