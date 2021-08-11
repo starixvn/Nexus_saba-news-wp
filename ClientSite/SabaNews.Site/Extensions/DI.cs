@@ -59,8 +59,6 @@
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            const int ExpireMinutes = 10;
-
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -68,7 +66,7 @@
             }).AddCookie(options =>
             {
                 options.Cookie.IsEssential = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(ExpireMinutes);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(int.Parse(configuration.GetSection("Authentication:SessionTimeOut").Value));
                 options.Cookie.Name = ".Sabasports.Auth.SharedCookie";
             }).AddGoogle(options =>
             {

@@ -544,7 +544,7 @@
     <value>Total Views</value>
   </data>
   <data name="PostViewStatistic" xml:space="preserve">
-    <value>Post View Statistic</value>
+    <value>Post Statistics</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -635,5 +635,8 @@
   </data>
   <data name="ConfirmUnsubscribeUser" xml:space="preserve">
     <value>Bạn có chắc muốn bỏ theo dõi tin tức từ Saba Sports?</value>
+  </data>
+  <data name="FilterStatisticDetail" xml:space="preserve">
+    <value>Please select the time period in which the articles and videos are published:</value>
   </data>
 </root>

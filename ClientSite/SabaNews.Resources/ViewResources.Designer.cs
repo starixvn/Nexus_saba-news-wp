@@ -529,6 +529,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the time period in which the articles and videos are published:.
+        /// </summary>
+        public static string FilterStatisticDetail {
+            get {
+                return ResourceManager.GetString("FilterStatisticDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng đá.
         /// </summary>
         public static string Football {
@@ -979,7 +988,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Post View Statistic.
+        ///   Looks up a localized string similar to Post Statistics.
         /// </summary>
         public static string PostViewStatistic {
             get {

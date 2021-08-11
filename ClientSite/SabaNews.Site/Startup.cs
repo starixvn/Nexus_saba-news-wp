@@ -95,6 +95,7 @@
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".SabaSports.Session";
+                options.IdleTimeout = TimeSpan.FromMinutes(int.Parse(Configuration.GetSection("Authentication:SessionTimeOut").Value));
                 options.Cookie.IsEssential = true;
             });
 
