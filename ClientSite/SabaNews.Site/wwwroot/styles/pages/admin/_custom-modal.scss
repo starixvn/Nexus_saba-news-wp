@@ -6,7 +6,7 @@
         border-radius: 0;
         max-width: 60rem;
         margin: 0 auto;
-        top: 10%;
+        top: 10rem;
         box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.25);
 
         .modal-title {
@@ -25,11 +25,13 @@
             &.title-warning {
                 background-color: #A59A39;
             }
-            &.title-error{
-                background-color : #FF5757;
+
+            &.title-error {
+                background-color: #FF5757;
             }
-            .icon-title{
-                margin-right : 1.2rem;
+
+            .icon-title {
+                margin-right: 1.2rem;
             }
 
             .title {
