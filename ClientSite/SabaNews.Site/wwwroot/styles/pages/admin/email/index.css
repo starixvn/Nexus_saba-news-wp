@@ -678,9 +678,6 @@ button {
   .modal .button-confirm .confirm-action {
     margin-right: 1rem; }
 
-.modal-backdrop.show {
-  opacity: .2; }
-
 .page-table-control .list-input {
   cursor: unset;
   font-weight: normal;

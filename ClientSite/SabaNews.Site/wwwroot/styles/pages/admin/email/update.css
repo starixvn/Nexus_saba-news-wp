@@ -156,9 +156,6 @@ button {
   .modal .button-confirm .confirm-action {
     margin-right: 1rem; }
 
-.modal-backdrop.show {
-  opacity: .2; }
-
 /**
  * @license Copyright (c) 2014-2021, CKSource - Frederico Knabben. All rights reserved.
  * This file is licensed under the terms of the MIT License (see LICENSE.md).
