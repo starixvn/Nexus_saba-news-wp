@@ -19,7 +19,7 @@
             var title = email.EmailTitle.Length > 50 ? email.EmailTitle.Substring(0, 50) + "..." : email.EmailTitle;
         <tr>
             <td>@stt</td>
-            <td class="text-right">@title</td>
+            <td class="text-left">@title</td>
             <td>
                 <input value="@email.EmailContent" type="hidden" class="email_content" />
                 <input value="@email.EmailTitle" type="hidden" class="email_title" />

@@ -89,15 +89,21 @@
 
 					<div class="modal-body">
 						<form id="form_test_sendemail" class="form">
-							<div class="form-group  option">
-								<label>@ViewResources.SendTo</label>
-								<input type="radio" name="sendTo" class="send_to" value="email" checked /> Email
-								<input type="radio" name="sendTo" class="send_to" value="user" /> User
+							<div class="form-radio">
+								<label class="raido-custom label-admin">@ViewResources.SendTo</label>
+								<div class="raido-custom">
+									<input type="radio" name="sendTo" class="send_to" value="email" checked />
+									<p class="label-admin">Email</p>
+								</div>
+								<div class="raido-custom">
+									<input type="radio" name="sendTo" class="send_to" value="user" />
+									<p class="label-admin">User</p>
+								</div>
 							</div>
 
-							<div class="form-group user_list"  style="display: none">
-								<label>@ViewResources.ListUsers</label>
-								<select name="user" class="form-control user">
+							<div class="form-input user_list" style="display: none">
+								<label class="label-admin">@ViewResources.ListUsers</label>
+								<select name="user" class="custom-input user">
 									@foreach (var user in Model.Users)
 									{
 										<option value="@user.Email" data-email="@user.Email">@user.Name</option>
@@ -105,15 +111,15 @@
 								</select>
 							</div>
 
-							<div class="form-group email">
-								<label>@ViewResources.Email</label>
-								<input type="text" class="form-control" id="email" placeholder="" name="emailAddress" />
+							<div class="form-input email">
+								<label class="label-admin">@ViewResources.Email</label>
+								<input type="text" class="custom-input" id="email" name="emailAddress" />
 								<p class="help-block"></p>
 							</div>
-							<div class="form-group">
-								<button type="button" class="btn btn-success submit-test-send-email">Send</button>
-							</div>
 						</form>
+						<div class="button-confirm">
+							<button type="button" class="btn-custom-admin submit-test-send-email">Send</button>
+						</div>
 
 					</div>
 				</div>
