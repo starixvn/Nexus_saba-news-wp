@@ -19,8 +19,6 @@ END
 //
 DELIMITER ;
 
-DROP FUNCTION IF EXISTS get_root_category;
-
 DROP PROCEDURE IF EXISTS post_view_statistic_get;
 DELIMITER //
 
