@@ -55,7 +55,7 @@ BEGIN
     INNER JOIN wp_term_relationships tr ON p.ID = tr.object_id
     INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id and tt.taxonomy = 'category'
     WHERE p.post_status = 'publish' AND p.post_type = 'post'
-    AND p.post_date BETWEEN fromDate  AND toDate;
+    AND DATE(p.post_date) BETWEEN fromDate  AND toDate;
     
     SELECT p.PostDate as PostDate
           ,COUNT(DISTINCT IF (p.IsVideoPost = 0, p.PostId, NULL)) AS PostCount
