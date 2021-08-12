@@ -9,7 +9,7 @@
 		<th width="8%">@ViewResources.Sendings</th>
 		<th width="10%">@ViewResources.Clicks / @ViewResources.Percentage</th>
 		<th width="5%">@ViewResources.Status</th>
-		<th width="13%">@ViewResources.Action</th>
+		<th width="10%">@ViewResources.Action</th>
 	</tr>
 
 	@{ var stt = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
@@ -53,9 +53,26 @@
 			<td>
 				@if (email.Status == 1)
 				{
-					<a href="@Url.Action("Edit", "Email", new { emailId = @email.Id })" class="label label-green edit-email" data-emailid="@email.Id">@ViewResources.Edit</a>
-					<a href="javascript:;" class="label label-red delete-email" data-emailid="@email.Id">@ViewResources.Delete</a>
-					<a href="javascript:;" class="label label-blue send-email" data-emailid="@email.Id">@ViewResources.SendEmail</a>
+					<p class="table-control">
+                        <a href="@Url.Action("Edit", "Email", new { emailId = @email.Id })" class="action action-edit edit-email" data-emailid="@email.Id">
+                            <i class="icon-edit-admin"></i>
+                            <span class="tooltip-menu">
+                                Edit
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="action action-delete delete-email" data-emailid="@email.Id">
+                            <i class="icon-delete-admin"></i>
+                            <span class="tooltip-menu">
+                                Delete
+                            </span>
+                        </a>
+                        <a href="javascript:;" class="action action-send send-email" data-emailid="@email.Id">
+                            <i class="icon-send-admin"></i>
+                            <span class="tooltip-menu">
+                                Send
+                            </span>
+                        </a>
+					</p>
 				}
 			</td>
 		</tr>

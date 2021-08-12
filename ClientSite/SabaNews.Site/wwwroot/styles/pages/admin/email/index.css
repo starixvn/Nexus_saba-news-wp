@@ -585,6 +585,40 @@ button {
       background: #CA5E57;
       border: 1px solid #CA5E57; }
 
+.table-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0; }
+  .table-control .action {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    margin: 0 .8rem;
+    text-decoration: none;
+    border-radius: 100%;
+    position: relative; }
+    .table-control .action:hover .tooltip-menu {
+      display: block;
+      left: -4rem;
+      top: 3rem;
+      z-index: 9999; }
+    .table-control .action.action-edit:hover {
+      background-color: #D7E9C2; }
+      .table-control .action.action-edit:hover i:before {
+        color: #00875A; }
+    .table-control .action.action-delete:hover {
+      background-color: #FFCBC8; }
+      .table-control .action.action-delete:hover i:before {
+        color: #DE350B; }
+    .table-control .action.action-send:hover {
+      background-color: #D4E6FF; }
+      .table-control .action.action-send:hover i:before {
+        color: #0052CC; }
+
 .pagination {
   height: 4.1rem;
   border-bottom: 1px solid #D7D7D7;
