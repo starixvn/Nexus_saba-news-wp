@@ -91,13 +91,14 @@
         margin: 0 .8rem;
         text-decoration: none;
         border-radius: 100%;
-        position : relative;
+        position: relative;
+
         &:hover {
-            .tooltip-menu{
-                display : block;
-                left : -4rem;
-                top : 3rem;
-                z-index : 9999;
+            .tooltip-menu {
+                display: block;
+                left: -4rem;
+                top: 3rem;
+                z-index: 9999;
             }
         }
 
@@ -126,6 +127,17 @@
         }
 
         &.action-send {
+            &:hover {
+                background-color: #D4E6FF;
+
+                i {
+                    &:before {
+                        color: #0052CC;
+                    }
+                }
+            }
+        }
+        &.action-resend {
             &:hover {
                 background-color: #D4E6FF;
 

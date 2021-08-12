@@ -618,6 +618,10 @@ button {
       background-color: #D4E6FF; }
       .table-control .action.action-send:hover i:before {
         color: #0052CC; }
+    .table-control .action.action-resend:hover {
+      background-color: #D4E6FF; }
+      .table-control .action.action-resend:hover i:before {
+        color: #0052CC; }
 
 .pagination {
   height: 4.1rem;

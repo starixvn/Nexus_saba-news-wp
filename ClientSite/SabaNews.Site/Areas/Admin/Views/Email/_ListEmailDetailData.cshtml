@@ -25,7 +25,14 @@
 			<td>
 				@if (detail.Status != 0)
 				{
-					<a href="javascript:;" class="label label-blue resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">@ViewResources.Resend</a>
+					<p class="table-control">
+						<a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
+							<i class="icon-resend-admin"></i>
+							<span class="tooltip-menu">
+								Resend
+							</span>
+						</a>
+					</p>
 				}
 			</td>
 		</tr>
