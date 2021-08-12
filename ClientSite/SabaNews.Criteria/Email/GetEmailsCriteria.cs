@@ -15,6 +15,10 @@
 
         public DateTime ToDate { get; set; }
 
+        public int Status { get; set; }
+
+        public int CreatedBy { get; set; }
+
         public int TotalItems { get; set; }
 
         public override string GetSettingKey() => "email_get_all";

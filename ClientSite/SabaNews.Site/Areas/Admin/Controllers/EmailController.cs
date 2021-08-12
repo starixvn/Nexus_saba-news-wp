@@ -43,12 +43,15 @@
             this.authService = authService;
         }
 
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
+            var adminUsers = users.Where(item => !string.IsNullOrWhiteSpace(item.Metadata) && item.Metadata.Contains(Role.Administrator)).ToList();
             var model = new EmailFilterViewModel
             {
                 FromDate = DateTime.Now.AddMonths(-6),
-                ToDate = DateTime.Now
+                ToDate = DateTime.Now,
+                Users = adminUsers
             };
             return View(model);
         }
@@ -61,7 +64,9 @@
             {
                 Search = param.Search ??= "", 
                 FromDate = param.FromDate,
-                ToDate = param.ToDate, 
+                ToDate = param.ToDate,
+                Status = param.Status,
+                CreatedBy = param.CreatedBy,
                 End = perPage,
                 Start = start 
             };

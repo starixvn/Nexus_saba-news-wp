@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Models.Email
 {
+    using SabaNews.Core.Models;
     using System;
+    using System.Collections.Generic;
 
     public class EmailFilterViewModel
     {
@@ -11,5 +13,12 @@
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }
+
+        public int Status { get; set; }
+
+        public int CreatedBy { get; set; }
+
+        public IEnumerable<UserSession> Users { get; set; }
+
     }
 }

@@ -3,12 +3,14 @@
     var search = "";
     var fromDate = $('input[name=fromDate]').val();
     var toDate = $('input[name=toDate]').val();
+    var status = -1;
+    var createdBy = -1;
 
     function renderListEmail() {
         $.ajax({
             url: "/Admin/Email/GetListEmailData",
             type: 'POST',
-            data: { page: page, search: search, fromDate, toDate },
+            data: { page, search, fromDate, toDate, status, createdBy },
             success: function (res) {
                 $('.list_email_block').html(res);
                 HandleGridData();
@@ -21,6 +23,8 @@
             search = $('input[name=search]').val();
             fromDate = $('input[name=fromDate]').val();
             toDate = $('input[name=toDate]').val();
+            status = $('select[name=status]').val();
+            createdBy = $('select[name=createdBy]').val();
             page = 1;
             renderListEmail();
         });
