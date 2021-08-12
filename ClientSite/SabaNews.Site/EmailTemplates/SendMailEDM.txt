@@ -421,6 +421,10 @@
 		.footer .action_link a {
 			text-decoration:underline
         }
+
+        .follow a {
+		    margin-right: 24px;
+        }
     </style>
 </head>
 <body>
