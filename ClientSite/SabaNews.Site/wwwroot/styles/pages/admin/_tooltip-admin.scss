@@ -55,28 +55,17 @@
 
 .tooltip-menu {
     padding: 1rem;
-    background-color: rgba(0,0,0,.8);
-    color: $color-fff;
-    left: -13rem;
+    background-color: $color-fff;
+    color: #424242;
+    left: -7rem;
     top: 3.5rem;
-    width: 16rem;
+    width: 10rem;
     position: absolute;
     display: none;
-    border-radius: 5px;
     font-family: Arial,sans-serif;
-    text-align : center;
-    &:after {
-        width: 1.5rem;
-        height: 1.5rem;
-        border: solid rgba(0,0,0,.8);
-        border-width: 0 1px 1px 0;
-        content: '';
-        position: absolute;
-        top: -.5rem;
-        right: 1rem;
-        background: rgba(0,0,0,.8);
-        -webkit-transform: rotate( 225deg );
-        -ms-transform: rotate(225deg);
-        transform: rotate( 225deg );
-    }
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
