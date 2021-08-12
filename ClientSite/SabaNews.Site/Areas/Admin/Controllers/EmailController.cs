@@ -91,9 +91,8 @@
         [HttpPost]
         public async Task<ActionResult> SaveAndSendCreate(EmailModel model)
         {
-            var now = DateTime.Now;
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = now.ToLocalTime();
+            model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
             var userNumber = 0;
@@ -321,7 +320,7 @@
                     EmailContent = emailContent,
                     EmailTitle = model.EmailTitle,
                     TokenId = token,
-                    SendTime = DateTime.UtcNow,
+                    SendTime = DateTime.Now,
                     Status = resultSendMail.Code
                 };
                 await emailService.CreateEmailDetailAsync(emailData);
