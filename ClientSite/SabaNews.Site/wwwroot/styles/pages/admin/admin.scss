@@ -104,8 +104,7 @@ body {
     padding-left: 27rem;
 
     .page-content {
-        padding: 2.4rem;
-
+        padding: 1.8rem 2.4rem;
         .error {
             padding: 1rem;
             color: red;
@@ -117,6 +116,7 @@ body {
         .form-horizontal {
             display: flex;
             align-items: flex-end;
+            flex-wrap: wrap;
 
             .form-input {
                 margin-right: 2.4rem;

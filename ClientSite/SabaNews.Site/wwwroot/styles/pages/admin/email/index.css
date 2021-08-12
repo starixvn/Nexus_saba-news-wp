@@ -516,7 +516,7 @@ button {
   width: auto; }
 
 .label-admin {
-  margin-bottom: .6rem;
+  margin: .6rem 0;
   font-size: 1.4rem;
   color: #444444; }
 
@@ -680,8 +680,7 @@ button {
 
 .page-table-control .list-input {
   cursor: unset;
-  font-weight: normal;
-  width: 30rem; }
+  font-weight: normal; }
   .page-table-control .list-input::placeholder {
     color: #979797;
     font-style: italic;
