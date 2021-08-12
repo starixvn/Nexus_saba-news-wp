@@ -288,8 +288,8 @@
   <data name="ListSentMail" xml:space="preserve">
     <value>List sent email</value>
   </data>
-  <data name="ListUsers" xml:space="preserve">
-    <value>List Users</value>
+  <data name="UserList" xml:space="preserve">
+    <value>User List</value>
   </data>
   <data name="LoadingAvatar" xml:space="preserve">
     <value>Đang tải ảnh đại diện</value>
@@ -336,11 +336,11 @@
   <data name="NotFoundPostMsg" xml:space="preserve">
     <value>Rất tiếc, chúng tôi không tìm thấy bài viết nào!</value>
   </data>
-  <data name="NumberClicked" xml:space="preserve">
-    <value>Click Number/ Rate</value>
+  <data name="Clicks" xml:space="preserve">
+    <value>Clicks</value>
   </data>
-  <data name="NumberSent" xml:space="preserve">
-    <value>Number Of Sending</value>
+  <data name="Sendings" xml:space="preserve">
+    <value>Sendings</value>
   </data>
   <data name="OriginalUrl" xml:space="preserve">
     <value>Original Url</value>
@@ -600,8 +600,8 @@
   <data name="ListDetailElectronicDirectMail" xml:space="preserve">
     <value>List Detail Electronic Direct Mail</value>
   </data>
-  <data name="ListEDM" xml:space="preserve">
-    <value>List EDM</value>
+  <data name="EDMList" xml:space="preserve">
+    <value>EDM List</value>
   </data>
   <data name="ListElectronicDirectMail" xml:space="preserve">
     <value>List Electronic Direct Mail</value>
@@ -638,5 +638,11 @@
   </data>
   <data name="FilterStatisticDetail" xml:space="preserve">
     <value>Please select the time period in which the articles and videos are published:</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
 </root>

@@ -205,6 +205,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clicks.
+        /// </summary>
+        public static string Clicks {
+            get {
+                return ResourceManager.GetString("Clicks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to close.
         /// </summary>
         public static string Close {
@@ -255,6 +264,15 @@ namespace SabaNews.Resources {
         public static string ConfirmAction {
             get {
                 return ResourceManager.GetString("ConfirmAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
             }
         }
         
@@ -417,6 +435,15 @@ namespace SabaNews.Resources {
         public static string EditElectronicDirectMail {
             get {
                 return ResourceManager.GetString("EditElectronicDirectMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDM List.
+        /// </summary>
+        public static string EDMList {
+            get {
+                return ResourceManager.GetString("EDMList", resourceCulture);
             }
         }
         
@@ -718,15 +745,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List EDM.
-        /// </summary>
-        public static string ListEDM {
-            get {
-                return ResourceManager.GetString("ListEDM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to List Electronic Direct Mail.
         /// </summary>
         public static string ListElectronicDirectMail {
@@ -768,15 +786,6 @@ namespace SabaNews.Resources {
         public static string ListSentMail {
             get {
                 return ResourceManager.GetString("ListSentMail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to List Users.
-        /// </summary>
-        public static string ListUsers {
-            get {
-                return ResourceManager.GetString("ListUsers", resourceCulture);
             }
         }
         
@@ -925,24 +934,6 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click Number/ Rate.
-        /// </summary>
-        public static string NumberClicked {
-            get {
-                return ResourceManager.GetString("NumberClicked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number Of Sending.
-        /// </summary>
-        public static string NumberSent {
-            get {
-                return ResourceManager.GetString("NumberSent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Original Url.
         /// </summary>
         public static string OriginalUrl {
@@ -984,6 +975,15 @@ namespace SabaNews.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage.
+        /// </summary>
+        public static string Percentage {
+            get {
+                return ResourceManager.GetString("Percentage", resourceCulture);
             }
         }
         
@@ -1245,6 +1245,15 @@ namespace SabaNews.Resources {
         public static string SendEmail {
             get {
                 return ResourceManager.GetString("SendEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sendings.
+        /// </summary>
+        public static string Sendings {
+            get {
+                return ResourceManager.GetString("Sendings", resourceCulture);
             }
         }
         
@@ -1515,6 +1524,15 @@ namespace SabaNews.Resources {
         public static string UserInteraction {
             get {
                 return ResourceManager.GetString("UserInteraction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User List.
+        /// </summary>
+        public static string UserList {
+            get {
+                return ResourceManager.GetString("UserList", resourceCulture);
             }
         }
         

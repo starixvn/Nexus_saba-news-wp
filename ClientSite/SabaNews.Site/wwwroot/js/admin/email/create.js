@@ -91,10 +91,10 @@
                 result = res.result;
                 html = "";
                 if (result.isSuccessful && res.userNumber != null) {
-                    html = '<p>Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>';
+                    html = '' + res.userNumber + ' emails have been sent successfully.';
                     GetSuccessPopup('#NoticeModal', html);
                 } else if (result.isSuccessful) {
-                    html = '<p>Save Data Successfully<p>';
+                    html = 'Email has been saved successfully.';
                     GetSuccessPopup('#NoticeModal', html);
                 } else {
                     GetErrorPopup('#NoticeModal', result.message);
@@ -149,7 +149,7 @@
                 data: data,
                 success: function (res) {
                     if (res.isSuccessful) {
-                        var msg = 'Send Email Successfully. Please check your mailbox!';
+                        var msg = 'Email has been sent successfully, please check your mailbox.';
                         GetSuccessPopup('#NoticeModal', msg);
                     } else {
                         var msg = 'An error occurred while send email, please try again';

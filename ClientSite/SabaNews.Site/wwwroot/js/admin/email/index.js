@@ -48,7 +48,7 @@
 
         $('.delete-email').on('click', function () {
             emailId = $(this).data('emailid');
-            $('#ConfirmModal .modal-body').html('Are you sure you would like to delete this email');
+            $('#ConfirmModal .modal-body').html('Are you sure you want to delete this email?');
             $('#ConfirmModal').modal('show');
         });
 
@@ -80,7 +80,7 @@
                 success: function (res) {
                     $.unblockUI();
                     if (res.result.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Send Email Successfully. There are ' + res.userNumber + ' emails have been sent<p>');
+                        GetSuccessPopup('#NoticeModal', '' + res.userNumber + ' emails have been sent successfully.');
                     } else {
                         GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
                     }

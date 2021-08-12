@@ -29,11 +29,11 @@
                 <input class="custom-input list-input" name="search" value="" placeholder="Search subject..." type="text" />
             </div>
             <div class="form-input">
-                <p class="label-admin">@ViewResources.FromDate</p>
+                <p class="label-admin">@ViewResources.From</p>
                 <input class="custom-input" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
             </div>
             <div class="form-input">
-                <p class="label-admin">@ViewResources.ToDate</p>
+                <p class="label-admin">@ViewResources.To</p>
                 <input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
             </div>
             <button type="button" class="btn-custom-admin search_list_email">Submit</button>
@@ -81,7 +81,7 @@
         <div class="modal-content">
             <div class="modal-warning">
                 <div class="modal-title">
-                    <h2 class="title">@ViewResources.Announcement</h2>
+                    <h2 class="title">@ViewResources.Confirmation</h2>
                     <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
                         <i class="icon-close"></i>
                     </button>
