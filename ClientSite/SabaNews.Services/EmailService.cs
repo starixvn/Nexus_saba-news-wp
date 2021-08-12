@@ -33,7 +33,7 @@
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 EmbeddedLink = model.EmbeddedLink,
-                SendDate = model.SendDate,
+                SendDate = DateTime.UtcNow,
                 CreatedBy = model.CreatedBy,
                 Status = model.Status,
                 CreatedDate = DateTime.UtcNow
@@ -53,7 +53,7 @@
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 EmailAddress = model.EmailAddress,
-                SendTime = model.SendTime,
+                SendTime = DateTime.UtcNow,
                 Status = model.Status,
             };
             return await baseService.ExecuteNonQueryAsync(command);
@@ -109,7 +109,7 @@
                 EmbeddedLink = model.EmbeddedLink,
                 Status = model.Status,
                 CreatedBy = model.CreatedBy,
-                SendDate = model.SendDate
+                SendDate = DateTime.UtcNow
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }

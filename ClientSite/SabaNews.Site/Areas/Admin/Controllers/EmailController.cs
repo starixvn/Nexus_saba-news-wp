@@ -92,7 +92,6 @@
         public async Task<ActionResult> SaveAndSendCreate(EmailModel model)
         {
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = DateTime.UtcNow;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
             var userNumber = 0;
@@ -145,7 +144,6 @@
         {
             var userNumber = 0;
             model.CreatedBy = sessionService.User.Id;
-            model.SendDate = DateTime.Now;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             model.Status = Constants.EmailSent;
             var result = await emailService.UpdateEmailAsync(model);
@@ -320,7 +318,6 @@
                     EmailContent = emailContent,
                     EmailTitle = model.EmailTitle,
                     TokenId = token,
-                    SendTime = DateTime.UtcNow,
                     Status = resultSendMail.Code
                 };
                 await emailService.CreateEmailDetailAsync(emailData);
