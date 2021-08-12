@@ -340,7 +340,8 @@ button {
   position: absolute;
   display: none;
   border-radius: 5px;
-  font-family: Arial,sans-serif; }
+  font-family: Arial,sans-serif;
+  text-align: center; }
   .tooltip-menu:after {
     width: 1.5rem;
     height: 1.5rem;
