@@ -150,6 +150,7 @@
         public const int EmailSent = 0;
         public const int EmailNew = 1;
         public const int EmailDestroy = 2;
+        public const int ServerTimeZone = 7;
         
     }
 }

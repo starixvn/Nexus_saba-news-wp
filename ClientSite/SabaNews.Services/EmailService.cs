@@ -36,7 +36,7 @@
                 SendDate = model.SendDate,
                 CreatedBy = model.CreatedBy,
                 Status = model.Status,
-                CreatedDate = DateTime.Now
+                CreatedDate = DateTime.UtcNow
             };
             var result =  await baseService.ExecuteNonQueryAsync(command);
             model.Id = command.Id;

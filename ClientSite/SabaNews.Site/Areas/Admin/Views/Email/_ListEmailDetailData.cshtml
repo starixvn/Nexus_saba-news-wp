@@ -12,11 +12,12 @@
 	@{ var stt = 0; }
 	@foreach (var detail in Model.ListEmailDetails)
 	{
+		var sendDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(detail.SendTime);
 		stt++;
 		<tr>
 			<td>@stt</td>
 			<td class="text-left">@detail.EmailAddress</td>
-			<td>@detail.SendTime.ToString("dd MMM yyyy HH:mm:ssss ")</td>
+			<td>@sendDate</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
 			<td>
 				@(detail.Status == 0 ? ViewResources.Successful : ViewResources.Failed)

@@ -18,6 +18,7 @@
 		stt++;
 		var rate = (email.TotalClicked > 0 ? Math.Round((double)email.TotalClicked / email.TotalSent * 100, 2) : 0) + "%";
 		var title = email.EmailTitle.Length > 50 ? email.EmailTitle.Substring(0, 50) + "..." : email.EmailTitle;
+		var createdDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(email.CreatedDate);
 		<tr>
 			<td>@stt</td>
 			<td class="text-left">@title</td>
@@ -26,7 +27,7 @@
 				<input value="@email.EmailTitle" type="hidden" class="email_title" />
 				<a href="javascript:;" class="label label-blue email view_content">View</a>
 			</td>
-			<td>@email.CreatedDate.ToString("dd MMM yyyy HH:mm:ssss")</td>
+			<td>@createdDate</td>
 			<td class="text-left">@email.CreatedName</td>
 			<td class="text-right">
 				@if (email.TotalSent > 0)
