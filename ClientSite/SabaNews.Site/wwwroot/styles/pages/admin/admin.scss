@@ -41,6 +41,7 @@ body {
 
             .icon-item {
                 margin-right: 3.2rem;
+                position: relative;
 
                 &:last-child {
                     margin-right: 0;
@@ -48,6 +49,12 @@ body {
 
                 a {
                     text-decoration: none;
+                }
+
+                &:hover {
+                    .tooltip-menu {
+                        display: block
+                    }
                 }
             }
         }

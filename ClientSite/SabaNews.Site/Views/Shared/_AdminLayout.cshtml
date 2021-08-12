@@ -22,8 +22,20 @@
             <div class="main-header">
                 <div class="title-page">@RenderSection("TopHeader", false)</div>
                 <ul class="control-header">
-                    <li class="icon-item"><a href="/"><i class="icon-page icon-home"></i></a></li>
-                    <li class="icon-item"><a href="~/Auth/Logout"><i class="icon-page icon-exit-admin"></i></a></li>
+                    <li class="icon-item">
+                        <a href="/">
+                            <i class="icon-page icon-home"></i>
+                        </a>
+                        <span class="tooltip-menu">
+                            SABA Sports Website
+                        </span>
+                    </li>
+                    <li class="icon-item">
+                        <a href="~/Auth/Logout"><i class="icon-page icon-exit-admin"></i></a>
+                        <span class="tooltip-menu">
+                            Sign Out
+                        </span>
+                    </li>
                 </ul>
             </div>
         </header>

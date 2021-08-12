@@ -330,6 +330,31 @@ button {
     .warning-admin .tooltip-icon:hover .tooltip-content {
       display: block; }
 
+.tooltip-menu {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  left: -13rem;
+  top: 3.5rem;
+  width: 16rem;
+  position: absolute;
+  display: none;
+  border-radius: 5px;
+  font-family: Arial,sans-serif; }
+  .tooltip-menu:after {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: solid rgba(0, 0, 0, 0.8);
+    border-width: 0 1px 1px 0;
+    content: '';
+    position: absolute;
+    top: -.5rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg); }
+
 .loading .ring {
   width: 5rem;
   height: 5rem;
@@ -376,11 +401,14 @@ body {
       display: flex;
       margin-bottom: 0; }
       .header-admin .main-header .control-header .icon-item {
-        margin-right: 3.2rem; }
+        margin-right: 3.2rem;
+        position: relative; }
         .header-admin .main-header .control-header .icon-item:last-child {
           margin-right: 0; }
         .header-admin .main-header .control-header .icon-item a {
           text-decoration: none; }
+        .header-admin .main-header .control-header .icon-item:hover .tooltip-menu {
+          display: block; }
 
 .table-admin {
   margin-top: 2.4rem;
