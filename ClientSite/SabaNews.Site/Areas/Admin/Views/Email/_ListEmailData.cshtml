@@ -2,14 +2,14 @@
 <table class="custom-table text-center">
 	<tr>
 		<th width="3%">@ViewResources.STT</th>
-		<th width="12%">@ViewResources.Subject</th>
-		<th width="10%">@ViewResources.Content</th>
-		<th width="15%">@ViewResources.CreatedDate</th>
+		<th width="18%">@ViewResources.Subject</th>
+		<th width="8%">@ViewResources.Content</th>
+		<th width="12%">@ViewResources.CreatedDate</th>
 		<th width="10%">@ViewResources.CreatedBy</th>
-		<th width="10%">@ViewResources.Sendings</th>
+		<th width="8%">@ViewResources.Sendings</th>
 		<th width="10%">@ViewResources.Clicks / @ViewResources.Percentage</th>
-		<th width="10%">@ViewResources.Status</th>
-		<th width="17%">@ViewResources.Action</th>
+		<th width="5%">@ViewResources.Status</th>
+		<th width="13%">@ViewResources.Action</th>
 	</tr>
 
 	@{ var stt = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
