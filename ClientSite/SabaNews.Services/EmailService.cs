@@ -69,7 +69,7 @@
             return await baseService.GetDataAsync<EmailModel>(criteria);
         }
 
-        public async Task<IEnumerable<EmailDetailModel>> GetEmailDetailByEmailIdAsync(GetEmailDetailByEmailIdCriteria criteria)
+        public async Task<IEnumerable<EmailDetailModel>> FilterEmailDetailAsync(FilterEmailDetailCriteria criteria)
         {
             return await baseService.GetDataAsync<EmailDetailModel>(criteria);
         }

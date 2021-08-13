@@ -125,7 +125,7 @@
         public async Task<ActionResult> Edit(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
-            if (email.Status != Constants.EmailNew) {
+            if (email == null || email.Status != Constants.EmailNew) {
                 return Redirect(Url.Action("Index", "Email"));
             }
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
@@ -237,9 +237,22 @@
         public async Task<ActionResult> Detail(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
+            if (email == null)
+            {
+                return Redirect(Url.Action("Index", "Email"));
+            }
+            var emailFailedParam = new FilterEmailDetailCriteria
+            {
+                EmailID = emailId,
+                Status = 1,
+                Start = Constants.FromFirstItem,
+                End = Constants.Total
+            };
+            var listEmailFailed = await emailService.FilterEmailDetailAsync(emailFailedParam);
             var model = new EmailDetailViewModel
             {
-                Email = email
+                Email = email,
+                NumberEmailFailed = listEmailFailed.Count()
             };
             return View(model);
         }
@@ -248,7 +261,7 @@
         {
             const int perPage = Constants.Perpage;
             var start = (param.Page - 1) * perPage;
-            var criteria = new GetEmailDetailByEmailIdCriteria
+            var criteria = new FilterEmailDetailCriteria
             {
                 EmailID = param.EmailId,
                 Search = param.Search ??= "",
@@ -257,7 +270,7 @@
                 Start = start,
                 End = perPage
             };
-            var listEmailDetails = await emailService.GetEmailDetailByEmailIdAsync(criteria);
+            var listEmailDetails = await emailService.FilterEmailDetailAsync(criteria);
             var paging = new PagingModel
             {
                 CurrentPage = param.Page,
@@ -289,6 +302,37 @@
             var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
             return Json(resultSendMail);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ResendAll(int emailId)
+        {
+            var param = new FilterEmailDetailCriteria
+            {
+                EmailID = emailId,
+                Status = 1,
+                Start = Constants.FromFirstItem,
+                End = Constants.Total
+            };
+            var emails = await emailService.FilterEmailDetailAsync(param);
+            var sentNumber = 0;
+            foreach (var email in emails)
+            {
+                var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
+                var sendEmailModel = new SendEDMModel
+                {
+                    EmailAddress = email.EmailAddress,
+                    EmailTemplatePath = SendMailTemplate,
+                    EmailTitle = email.EmailTitle,
+                    EmailContent = email.EmailContent,
+                    SubscribeLink = unsubcribeLink,
+                    BaseUrl = configuration.GetValue<string>("BaseUrl")
+                };
+                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+                await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = email.UserId });
+                sentNumber = resultSendMail.IsSuccessful ? sentNumber++ : sentNumber;
+            }
+            return Json(sentNumber);
         }
 
         public async Task<int> Send(EmailModel model)

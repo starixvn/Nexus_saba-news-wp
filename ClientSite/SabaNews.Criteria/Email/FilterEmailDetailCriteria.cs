@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace SabaNews.Criteria.Email
 {
-    public class GetEmailDetailByEmailIdCriteria : CriteriaBase
+    public class FilterEmailDetailCriteria : CriteriaBase
     {
         public int EmailID { get; set; }
 
-        public string Search { get; set; }
+        public string Search { get; set; } = "";
 
-        public int IsClicked { get; set; }
+        public int IsClicked { get; set; } = -1;
 
-        public int Status { get; set; }
+        public int Status { get; set; } = -1;
 
         public int Start { get; set; }
 

@@ -12,5 +12,7 @@
 
         public PagingModel Paging { get; set; }
 
+        public int NumberEmailFailed { get; set; }
+
     }
 }

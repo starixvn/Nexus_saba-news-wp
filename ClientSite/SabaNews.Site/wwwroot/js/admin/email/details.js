@@ -35,23 +35,42 @@ var edmDetail = (function ($) {
         });
 
         $('.resend-email').on('click', function () {
-            var emailId = $(this).data('emailid');
             var userId = $(this).data('userid');
-
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
             $.ajax({
                 url: "/Admin/Email/ResendEmail",
                 type: "POST",
                 data: { emailId, userId },
                 success: function (response) {
+                    $.unblockUI();
                     if (response.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Resend email successful');
+                        GetSuccessPopup('#NoticeModal', 'Email has been sent successfully.');
                     } else {
                         GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
                     }
                 }
             })
         });
+    }
 
+    function HandleResendAll() {
+        $('.resend-all').on('click', function () {
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
+            $.ajax({
+                url: "/Admin/Email/ResendAll",
+                type: "POST",
+                data: { emailId },
+                success: function (response) {
+                    $.unblockUI();
+                    var msg = response > 1 ? response + ' emails' : response + ' email'
+                    GetSuccessPopup('#NoticeModal', msg + ' has been sent successfully.');
+                }
+            });
+        });
+       
+    }
+
+    function CloseModalHandle() {
         $('#NoticeModal').on('hidden.bs.modal', function () {
             renderList();
         });
@@ -74,6 +93,8 @@ var edmDetail = (function ($) {
     function init() {
         renderList();
         HandleSearch();
+        HandleResendAll();
+        CloseModalHandle();
     }
 
     return {

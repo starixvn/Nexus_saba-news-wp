@@ -5,6 +5,7 @@
     var toDate = $('input[name=toDate]').val();
     var status = -1;
     var createdBy = -1;
+    var emailId = 0;
 
     function renderListEmail() {
         $.ajax({
@@ -29,13 +30,10 @@
             renderListEmail();
         });
 
-        $('#NoticeModal').on('hidden.bs.modal', function () {
-            renderListEmail();
-        })
+      
     }
 
     function HandleGridData() {
-        var emailId = 0;
         $('.view_content').click(function () {
             var content = $(this).parent().find('.email_content').val();
             var title = $(this).parent().find('.email_title').val();
@@ -56,6 +54,28 @@
             $('#ConfirmModal').modal('show');
         });
 
+       
+
+        $('.send-email').on('click', function () {
+            emailId = $(this).data('emailid');
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
+            $.ajax({
+                url: "/Admin/Email/SendEmail",
+                type: "POST",
+                data: { emailId },
+                success: function (res) {
+                    $.unblockUI();
+                    if (res.result.isSuccessful) {
+                        GetSuccessPopup('#NoticeModal', '' + res.userNumber + ' emails have been sent successfully.');
+                    } else {
+                        GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
+                    }
+                }
+            });
+        });
+    }
+
+    function HandleModal() {
         $('.confirm-action').on('click', function () {
             $('#ConfirmModal').modal('hide');
             $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
@@ -74,24 +94,8 @@
             });
         });
 
-        $('.send-email').on('click', function () {
-            emailId = $(this).data('emailid');
-            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
-            $.ajax({
-                url: "/Admin/Email/SendEmail",
-                type: "POST",
-                data: { emailId },
-                success: function (res) {
-                    $.unblockUI();
-                    if (res.result.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', '' + res.userNumber + ' emails have been sent successfully.');
-                    } else {
-                        GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
-                    }
-
-                    $('#NoticeModal').modal('show');
-                }
-            });
+        $('#NoticeModal').on('hidden.bs.modal', function () {
+            renderListEmail();
         });
     }
 
@@ -113,6 +117,7 @@
     function init() {
         HandleSearch();
         renderListEmail();
+        HandleModal();
     }
 
     return {

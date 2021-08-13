@@ -236,6 +236,7 @@
     {
         "outputFileName": "wwwroot/minify/js/admin_email_detail.min.js",
         "inputFiles": [
+            "wwwroot/lib/jquery-blockUI/jquery.blockUI.js",
             "wwwroot/js/admin/email/details.js"
         ],
         "minify": {
