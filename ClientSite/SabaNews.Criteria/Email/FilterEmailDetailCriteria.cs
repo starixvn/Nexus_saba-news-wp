@@ -23,7 +23,7 @@ namespace SabaNews.Criteria.Email
 
         public int TotalItems { get; set; }
 
-        public override string GetSettingKey() => "email_detail_get_by_emailId";
+        public override string GetSettingKey() => "email_detail_filter";
 
         public override bool IsValid() => true;
     }
