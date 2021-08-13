@@ -35,7 +35,8 @@ var configCkeditor = (function ($) {
                         'imageTextAlternative',
                         'imageStyle:inline',
                         'imageStyle:block',
-                        'imageStyle:side'
+                        'imageStyle:side',
+                        'linkImage'
                     ]
                 },
                 table: {
