@@ -421,9 +421,6 @@
 			text-decoration:underline
         }
 
-        .follow a {
-		    padding-right: 24px;
-        }
     </style>
 </head>
 <body>
@@ -433,17 +430,25 @@
     <div style="clear:both"></div>
     <div class="footer">
         <p>Email này được gửi đến bạn từ Saba Sports Việt Nam.</p>
-        <div class="follow">
-            <a href="https://www.facebook.com/sabasportsvietnam">
-                    <img src="{baseUrl}images/icon/social-facebook.png" alt="facebook" />
-                </a>
-                <a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ">
-                    <img src="{baseUrl}images/icon/social-youtube.png" alt="youtube" />
-                </a>
-                <a href="https://www.tiktok.com/@saba_sports">
-                    <img src="{baseUrl}images/icon/social-tiktok.png" alt="tiktok" />
-                </a>
-        </div>
+         <table style="margin: 0 auto">
+                <tr>
+                    <td style="border: solid 10px #ffffff">
+                        <a href="https://www.facebook.com/sabasportsvietnam">
+                            <img src="{baseUrl}/images/icon/social-facebook.png" alt="facebook" />
+                        </a>
+                    </td>
+                    <td style="border: solid 10px #ffffff">
+                        <a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ">
+                            <img src="{baseUrl}/images/icon/social-youtube.png" alt="youtube" />
+                        </a>
+                    </td>
+                    <td style="border: solid 10px #ffffff">
+                        <a href="https://www.tiktok.com/@saba_sports">
+                            <img src="{baseUrl}/images/icon/social-tiktok.png" alt="tiktok" />
+                        </a>
+                    </td>
+                </tr> 
+            </table>
         <p class="action_link">
             <a href="{unsubscribeLink}">Bỏ theo dõi</a> | 
             <a href="{baseUrl}">vn.sabasports.com</a>
