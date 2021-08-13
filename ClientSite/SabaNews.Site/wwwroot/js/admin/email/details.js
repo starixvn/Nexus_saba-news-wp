@@ -62,8 +62,8 @@ var edmDetail = (function ($) {
                 data: { emailId },
                 success: function (response) {
                     $.unblockUI();
-                    var msg = response > 1 ? response + ' emails' : response + ' email'
-                    GetSuccessPopup('#NoticeModal', msg + ' has been sent successfully.');
+                    var msg = response > 1 ? response + ' emails have' : 'Email has'
+                    GetSuccessPopup('#NoticeModal', msg + ' been sent successfully.');
                     $('#NoticeModal').bind('hidden.bs.modal', function () {
                         location.reload();
                     });
