@@ -106,7 +106,8 @@
             {
                 userNumber = await Send(model);
             }
-            return Json(new { result, userNumber });
+            var redirectLink = Url.Action("Index", "Email");
+            return Json(new { result, userNumber, redirectLink });
         }
 
         
@@ -117,7 +118,8 @@
             model.Status = Constants.EmailNew;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             var result = await emailService.CreateEmailAsync(model);
-            return Json(new { result });
+            var redirectLink = Url.Action("Edit", "Email", new { emailId = model.Id });
+            return Json(new { result, redirectLink });
         }
 
         public async Task<ActionResult> Edit(int emailId)

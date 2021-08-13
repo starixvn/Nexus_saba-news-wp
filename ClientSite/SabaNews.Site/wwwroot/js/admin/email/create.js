@@ -96,12 +96,19 @@
                 } else if (result.isSuccessful) {
                     html = 'Email has been saved successfully.';
                     GetSuccessPopup('#NoticeModal', html);
+                   
                 } else {
                     GetErrorPopup('#NoticeModal', result.message);
                 }
                 $('#NoticeModal').bind('hidden.bs.modal', function () {
-                    location.reload();
+                    if (typeof res.redirectLink !== "undefined") {
+                        window.location.href = res.redirectLink;
+                    } else {
+                        location.reload();
+                    }
                 });
+
+               
                 
                 $('.group_raw_link').hide();
             },
