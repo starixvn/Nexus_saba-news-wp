@@ -631,7 +631,8 @@ footer {
   display: none; }
   .group_raw_link .raw_link {
     line-height: 2.5rem;
-    height: auto; }
+    height: auto;
+    padding-right: 4rem; }
   .group_raw_link .icon-copy-admin {
     cursor: pointer;
     position: absolute;
