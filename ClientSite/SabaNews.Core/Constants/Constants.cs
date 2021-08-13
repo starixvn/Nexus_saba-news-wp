@@ -143,7 +143,6 @@
         public const string ProfileListPostsPage = "ListSavedPosts";
         public const string ProfileSendMailPage = "SendMail";
         public const string ProfileListSendMailPage = "ListSendMail";
-        public const string UnsubscribeTemplate = "<div class=\"footer\"><p>Email này được gửi đến bạn từ Saba Sports Việt Nam.</p><div class=\"follow\"><a href=\"https://www.facebook.com/sabasportsvietnam\">facebook</a><a href=\"https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ\">youtube</a><a href=\"https://www.tiktok.com/@@saba_sports\">tiktok</a></div><p class=\"action_link\"><a href=\"{0}\">Bỏ theo dõi</a> | <a href=\"{1}\">vn.sabasports.com</a></p></div>";
         public const string NotfoundView = "~/Views/Home/EmptyBlog.cshtml";
         public const string CustomerRole = "customer";
         public const string ReturnUrl = "returnUrl";

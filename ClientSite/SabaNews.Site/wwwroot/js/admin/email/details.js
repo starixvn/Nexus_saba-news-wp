@@ -64,6 +64,9 @@ var edmDetail = (function ($) {
                     $.unblockUI();
                     var msg = response > 1 ? response + ' emails' : response + ' email'
                     GetSuccessPopup('#NoticeModal', msg + ' has been sent successfully.');
+                    $('#NoticeModal').bind('hidden.bs.modal', function () {
+                        location.reload();
+                    });
                 }
             });
         });

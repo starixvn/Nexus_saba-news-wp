@@ -131,7 +131,7 @@
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var originalUrl = "";
             if (email.EmbeddedLink != null && email.EmbeddedLink.Contains(Constants.ReturnUrl)) {
-                var indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length;
+                int indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length;
                 originalUrl = email.EmbeddedLink[(indexString + 1)..];
             }
            
