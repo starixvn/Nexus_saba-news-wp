@@ -330,7 +330,7 @@
                 };
                 var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
                 await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = email.UserId });
-                sentNumber = resultSendMail.IsSuccessful ? sentNumber++ : sentNumber;
+                sentNumber = resultSendMail.IsSuccessful ? ++sentNumber : sentNumber;
             }
             return Json(sentNumber);
         }
