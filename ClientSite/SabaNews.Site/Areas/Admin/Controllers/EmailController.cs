@@ -26,7 +26,8 @@
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
         private const string SendMailTemplate = "EmailTemplates//SendMailEDM.txt";
-
+        private readonly string baseUrl;
+        private readonly string listEmailUrl;
         public EmailController(
             IProfileService profileService,
             ISessionService sessionService,
@@ -41,6 +42,7 @@
             this.emailService = emailService;
             this.configuration = configuration;
             this.authService = authService;
+            baseUrl = configuration.GetValue<string>("BaseUrl");
         }
 
         public async Task<ActionResult> Index()
@@ -87,7 +89,7 @@
 
         public async Task<ActionResult> Create()
         {
-            var rawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}");
+            var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             ViewBag.rawUrl = rawUrl;
             return View(users);
@@ -106,7 +108,7 @@
             {
                 userNumber = await Send(model);
             }
-            var redirectLink = Url.Action("Index", "Email");
+            var redirectLink = Url.Action("Index", Constants.Email);
             return Json(new { result, userNumber, redirectLink });
         }
 
@@ -118,7 +120,7 @@
             model.Status = Constants.EmailNew;
             model.EmailContent = HttpUtility.HtmlDecode(model.EmailContent);
             var result = await emailService.CreateEmailAsync(model);
-            var redirectLink = Url.Action("Edit", "Email", new { emailId = model.Id });
+            var redirectLink = Url.Action("Edit", Constants.Email, new { emailId = model.Id });
             return Json(new { result, redirectLink });
         }
 
@@ -126,7 +128,7 @@
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             if (email == null || email.Status != Constants.EmailNew) {
-                return Redirect(Url.Action("Index", "Email"));
+                return Redirect(Url.Action("Index", Constants.Email));
             }
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var originalUrl = "";
@@ -138,7 +140,7 @@
             var model = new EmailEditViewModel
             {
                 Email = email,
-                RawUrl = string.Concat($"{configuration.GetValue<string>("BaseUrl")}", "VerifySendEmailLink?{token}"),
+                RawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}"),
                 OriginalUrl = originalUrl,
                 Users = users
             };
@@ -183,7 +185,7 @@
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 SubscribeLink = "#",
-                BaseUrl = configuration.GetValue<string>("BaseUrl")
+                BaseUrl = baseUrl
             };
             var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             return Json(resultSendMail);
@@ -239,7 +241,7 @@
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             if (email == null)
             {
-                return Redirect(Url.Action("Index", "Email"));
+                return Redirect(Url.Action("Index", Constants.Email));
             }
             var emailFailedParam = new FilterEmailDetailCriteria
             {
@@ -289,7 +291,7 @@
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
         {
             var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
-            var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
+            var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
             var sendEmailModel = new SendEDMModel
             {
                 EmailAddress = email.EmailAddress,
@@ -297,7 +299,7 @@
                 EmailTitle = email.EmailTitle,
                 EmailContent = email.EmailContent,
                 SubscribeLink = unsubcribeLink,
-                BaseUrl = configuration.GetValue<string>("BaseUrl")
+                BaseUrl = baseUrl
             };
             var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
@@ -318,7 +320,7 @@
             var sentNumber = 0;
             foreach (var email in emails)
             {
-                var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
+                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
                 var sendEmailModel = new SendEDMModel
                 {
                     EmailAddress = email.EmailAddress,
@@ -326,7 +328,7 @@
                     EmailTitle = email.EmailTitle,
                     EmailContent = email.EmailContent,
                     SubscribeLink = unsubcribeLink,
-                    BaseUrl = configuration.GetValue<string>("BaseUrl")
+                    BaseUrl = baseUrl
                 };
                 var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
                 await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = email.UserId });
@@ -343,12 +345,12 @@
             foreach (var user in subscribedUsers)
             {
                 var token = Guid.NewGuid().ToString();
-                var unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, Area = "" }, Request.Scheme);
+                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, Area = "" }, Request.Scheme);
                 var createSubscribeTokenCommand = new CreateUserSubscribeTokenCommand { UserId = user.Id, Token = token };
                 var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
                 if (createSubscribeTokenResult.IsSuccessful)
                 {
-                    unsubcribeLink = Url.Action("ConfirmUnsubscribe", "Profile", new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
+                    unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
                 }
                 var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token));
                 var sendEmailModel = new SendEDMModel
@@ -358,7 +360,7 @@
                     EmailTitle = model.EmailTitle,
                     EmailContent = emailContent,
                     SubscribeLink = unsubcribeLink,
-                    BaseUrl = configuration.GetValue<string>("BaseUrl")
+                    BaseUrl = baseUrl
                 };
                 var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
                 var emailData = new EmailDetailModel
