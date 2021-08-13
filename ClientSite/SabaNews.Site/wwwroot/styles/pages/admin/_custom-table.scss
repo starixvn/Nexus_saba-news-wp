@@ -73,6 +73,24 @@
             border: 1px solid #CA5E57;
         }
     }
+
+    &.resend-all {
+        background: #DAEAFF;
+        color: #346CB5;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #8ABDFF;
+
+        &:hover {
+            background: #346CB5;
+            border: 1px solid #346CB5;
+            color: $color-fff;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
 }
 
 .table-control {
@@ -182,4 +200,15 @@
             background-color: #E0E1F0;
         }
     }
+}
+.resend-all-email {
+    border-top: 1px solid #E3E3E3;
+    border-right: 1px solid #E3E3E3;
+    border-left: 1px solid #E3E3E3;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #EDEDED;
+    padding: 0 1rem;
 }
