@@ -565,6 +565,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Theo dõi và nhận tin tức từ SABA Sports.
+        /// </summary>
+        public static string FollowSabaSports {
+            get {
+                return ResourceManager.GetString("FollowSabaSports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng đá.
         /// </summary>
         public static string Football {

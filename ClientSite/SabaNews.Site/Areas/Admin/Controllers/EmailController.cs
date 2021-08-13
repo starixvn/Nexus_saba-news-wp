@@ -27,7 +27,6 @@
         private readonly IAuthService authService;
         private const string SendMailTemplate = "EmailTemplates//SendMailEDM.txt";
         private readonly string baseUrl;
-        private readonly string listEmailUrl;
         public EmailController(
             IProfileService profileService,
             ISessionService sessionService,
@@ -340,7 +339,7 @@
         public async Task<int> Send(EmailModel model)
         {
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubcribe == 1).ToList();
+            var subscribedUsers = users.Where(item => item.IsSubscribe == 1).ToList();
             var userNumber = subscribedUsers.Count;
             foreach (var user in subscribedUsers)
             {

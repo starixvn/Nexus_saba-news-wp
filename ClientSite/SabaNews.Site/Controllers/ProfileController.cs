@@ -149,6 +149,9 @@
                 case "gender":
                     user.Gender = value;
                     break;
+                case "subscribe":
+                    user.IsSubscribe = int.Parse(value);
+                    break;
                 default:
                     throw new InvalidOperationException();
             }

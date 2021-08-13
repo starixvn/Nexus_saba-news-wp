@@ -645,4 +645,7 @@
   <data name="Percentage" xml:space="preserve">
     <value>Percentage</value>
   </data>
+  <data name="FollowSabaSports" xml:space="preserve">
+    <value>Theo dõi và nhận tin tức từ SABA Sports</value>
+  </data>
 </root>
