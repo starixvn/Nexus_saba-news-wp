@@ -229,7 +229,6 @@
                 error = ex.ToString();
             }
             string linkPhoto = "uploads/" + filename;
-            string baseUrl = configuration.GetValue<string>("BaseUrl");
             string url = string.Concat(baseUrl, linkPhoto);
             return Json(new { url, filePath, error });
         }

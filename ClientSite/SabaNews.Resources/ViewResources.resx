@@ -499,7 +499,7 @@
     <value>Thị trường chuyển nhượng</value>
   </data>
   <data name="UnsubscribeSuccessfully" xml:space="preserve">
-    <value>Unsubscribe thành công</value>
+    <value>Bỏ theo dõi thành công</value>
   </data>
   <data name="ValidateGender" xml:space="preserve">
     <value>Vui lòng chọn giới tính</value>
@@ -631,7 +631,7 @@
     <value>Submit</value>
   </data>
   <data name="IncorrectLinkUnsubscribeUser" xml:space="preserve">
-    <value>Link unsubscribe user không đúng</value>
+    <value>Link bỏ theo dõi không đúng</value>
   </data>
   <data name="ConfirmUnsubscribeUser" xml:space="preserve">
     <value>Bạn có chắc muốn bỏ theo dõi tin tức từ Saba Sports?</value>

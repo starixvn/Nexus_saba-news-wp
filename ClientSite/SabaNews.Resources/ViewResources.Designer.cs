@@ -709,7 +709,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Link unsubscribe user không đúng.
+        ///   Looks up a localized string similar to Link bỏ theo dõi không đúng.
         /// </summary>
         public static string IncorrectLinkUnsubscribeUser {
             get {
@@ -1519,7 +1519,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsubscribe thành công.
+        ///   Looks up a localized string similar to Bỏ theo dõi thành công.
         /// </summary>
         public static string UnsubscribeSuccessfully {
             get {
