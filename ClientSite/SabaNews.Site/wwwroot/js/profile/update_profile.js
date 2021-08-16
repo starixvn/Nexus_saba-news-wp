@@ -225,7 +225,7 @@
             var value = $('#isSubscribe').is(":checked") ? 1 : 0;
             var currentValue = $(this).data('current');
             if (value == currentValue) {
-                $('#resetPasswordSuccesful .modal-body').html("Cập nhập thông tin thành công!");
+                $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thành công!");
                 $('#resetPasswordSuccesful').modal('show');
                 return false;
             }
@@ -236,10 +236,10 @@
                 success: function (response) {
                     if (response.isSuccessful) {
                         self.data('current', value);
-                        $('#resetPasswordSuccesful .modal-body').html("Cập nhập thông tin thành công!");
+                        $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thành công!");
                         $('#resetPasswordSuccesful').modal('show');
                     } else {
-                        $('#resetPasswordSuccesful .modal-body').html("Cập nhập thông tin thất bại, vui lòng thử lại!");
+                        $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thất bại, vui lòng thử lại!");
                         $('#resetPasswordSuccesful').modal('show');
                         $('#isSubscribe').prop('checked', currentValue == 1 ? true : false);
                     }
