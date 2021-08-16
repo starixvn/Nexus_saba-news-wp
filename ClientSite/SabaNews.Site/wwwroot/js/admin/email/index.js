@@ -66,7 +66,8 @@
                 success: function (res) {
                     $.unblockUI();
                     if (res.result.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', '' + res.userNumber + ' emails have been sent successfully.');
+                        var msg = res.userNumber > 1 ? res.userNumber + ' emails have' : 'Email has'
+                        GetSuccessPopup('#NoticeModal', msg + ' been sent successfully.');
                     } else {
                         GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
                     }

@@ -91,7 +91,8 @@
                 result = res.result;
                 html = "";
                 if (result.isSuccessful && res.userNumber != null) {
-                    html = '' + res.userNumber + ' emails have been sent successfully.';
+                    var msg = res.userNumber > 1 ? res.userNumber + ' emails have' : 'Email has'
+                    html = msg + ' been sent successfully.';
                     GetSuccessPopup('#NoticeModal', html);
                 } else if (result.isSuccessful) {
                     html = 'Email has been saved successfully.';
