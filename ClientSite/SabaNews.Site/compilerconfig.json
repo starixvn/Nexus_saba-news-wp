@@ -82,5 +82,9 @@
   {
     "outputFile": "wwwroot/styles/pages/admin/email/update.css",
     "inputFile": "wwwroot/styles/pages/admin/email/update.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/profile/profile.css",
+    "inputFile": "wwwroot/styles/pages/profile/profile.scss"
   }
 ]
