@@ -220,23 +220,29 @@
             });
         });
 
-        $('.change-subscribe').on('click', function () {
-            var self = $(this);
+        $('#isSubscribe').on('change', function () {
             var value = $('#isSubscribe').is(":checked") ? 1 : 0;
-            var currentValue = $(this).data('current');
+            var currentValue = $('#current_subscribe').val();
             if (value == currentValue) {
                 $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thành công!");
                 $('#resetPasswordSuccesful').modal('show');
                 return false;
             }
+            
             $.ajax({
                 type: 'POST',
                 url: 'Profile/UpdateProfile',
                 data: { type: 'subscribe', value: value },
                 success: function (response) {
                     if (response.isSuccessful) {
-                        self.data('current', value);
-                        $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thành công!");
+                        var msg = "";
+                        if (value === 1) {
+                            msg = "Bạn đang theo dõi và nhận tin tức từ SABA Sports!"
+                        } else {
+                            msg = "Bạn đã bỏ theo dõi thành công!"
+                        }
+                        $('#current_subscribe').val(value);
+                        $('#resetPasswordSuccesful .modal-body').html(msg);
                         $('#resetPasswordSuccesful').modal('show');
                     } else {
                         $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thất bại, vui lòng thử lại!");
