@@ -52,27 +52,15 @@
             emailId = $(this).data('emailid');
             $('#ConfirmModal .modal-body').html('Are you sure you want to delete this email?');
             $('#ConfirmModal').modal('show');
+            $('#ConfirmModal .confirm-action').data('action', 'delete');
         });
-
        
 
         $('.send-email').on('click', function () {
             emailId = $(this).data('emailid');
-            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
-            $.ajax({
-                url: "/Admin/Email/SendEmail",
-                type: "POST",
-                data: { emailId },
-                success: function (res) {
-                    $.unblockUI();
-                    if (res.result.isSuccessful) {
-                        var msg = res.userNumber > 1 ? res.userNumber + ' emails have' : 'Email has'
-                        GetSuccessPopup('#NoticeModal', msg + ' been sent successfully.');
-                    } else {
-                        GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
-                    }
-                }
-            });
+            $('#ConfirmModal .modal-body').html('Are you sure you want to send this email to all members?');
+            $('#ConfirmModal').modal('show');
+            $('#ConfirmModal .confirm-action').data('action', 'send');
         });
     }
 
@@ -80,19 +68,37 @@
         $('.confirm-action').on('click', function () {
             $('#ConfirmModal').modal('hide');
             $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
-            $.ajax({
-                url: "/Admin/Email/Delete",
-                type: "POST",
-                data: { emailId },
-                success: function (res) {
-                    $.unblockUI();
-                    if (res.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Delete Email Successfully');
-                    } else {
-                        GetErrorPopup('#NoticeModal', 'An error occurred while delete email, please try again');
+            var action = $(this).data('action');
+            if (action === "delete") {
+                $.ajax({
+                    url: "/Admin/Email/Delete",
+                    type: "POST",
+                    data: { emailId },
+                    success: function (res) {
+                        $.unblockUI();
+                        if (res.isSuccessful) {
+                            GetSuccessPopup('#NoticeModal', 'Delete Email Successfully');
+                        } else {
+                            GetErrorPopup('#NoticeModal', 'An error occurred while delete email, please try again');
+                        }
                     }
-                }
-            });
+                });
+            } else if(action === "send") {
+                $.ajax({
+                    url: "/Admin/Email/SendEmail",
+                    type: "POST",
+                    data: { emailId },
+                    success: function (res) {
+                        $.unblockUI();
+                        if (res.result.isSuccessful) {
+                            var msg = res.userNumber > 1 ? res.userNumber + ' emails have' : 'Email has'
+                            GetSuccessPopup('#NoticeModal', msg + ' been sent successfully.');
+                        } else {
+                            GetErrorPopup('#NoticeModal', 'An error occurred while send email, please try again');
+                        }
+                    }
+                });
+            }
         });
 
         $('#NoticeModal').on('hidden.bs.modal', function () {
@@ -113,7 +119,6 @@
         $(popupId + ' .modal-body').html(msg);
         $(popupId).modal('show');
     }
-
     
     function init() {
         HandleSearch();
