@@ -162,16 +162,16 @@
             foreach (var post in posts)
             {
                 i++;
-                if (i == 3)
+                if (i == Constants.GetThreeItems)
                 {
                     var titleArr = post.PostTitle.Split(' ');
                     var title = titleArr.Length > 2 ? titleArr[0] + " " + titleArr[1] + "..." : post.PostTitle;
-                    description += title;
+                    description = string.Concat(description, title);
                     break;
                 }
                 else
                 {
-                    description += post.PostTitle + ";";
+                    description += string.Concat(post.PostTitle, ";");
                 }
             }
             var ViewData = new ViewData
