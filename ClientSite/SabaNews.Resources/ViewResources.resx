@@ -648,4 +648,7 @@
   <data name="FollowSabaSports" xml:space="preserve">
     <value>Theo dõi và nhận tin tức từ SABA Sports</value>
   </data>
+  <data name="Option" xml:space="preserve">
+    <value>Tùy chọn</value>
+  </data>
 </root>
