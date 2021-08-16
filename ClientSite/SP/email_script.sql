@@ -1,3 +1,21 @@
+DROP PROCEDURE IF EXISTS email_get_by_id;
+
+DELIMITER //
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `email_get_by_id`(
+	IN Id int
+)
+BEGIN
+	SELECT e.ID, e.EmailTitle, e.EmailContent, e.EmbeddedLink, e.CreatedBy, e.SendDate, e.Status, u.display_name as CreatedName
+    FROM wp_email e
+    LEFT JOIN wp_users u ON u.ID = e.CreatedBy 
+    WHERE e.ID = Id;
+END
+
+//
+DELIMITER ;	
+
+
 DROP PROCEDURE IF EXISTS email_detail_filter;
 
 DELIMITER //
@@ -114,10 +132,10 @@ END
 DELIMITER ;	
 
 
-DROP PROCEDURE IF EXISTS user_get_login_xtest;
+DROP PROCEDURE IF EXISTS user_get_login;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_login_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_login`(
 	email VARCHAR(100)
 )
 BEGIN
@@ -149,10 +167,10 @@ END
 //
 DELIMITER ;	
 
-DROP PROCEDURE IF EXISTS social_user_get_login_xtest;
+DROP PROCEDURE IF EXISTS social_user_get_login;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `social_user_get_login_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `social_user_get_login`(
 	identifier VARCHAR(200),
     loginType VARCHAR(200)
 )
@@ -176,10 +194,10 @@ END
 //
 DELIMITER ;	
 
-DROP PROCEDURE IF EXISTS user_get_by_id_xtest;
+DROP PROCEDURE IF EXISTS user_get_by_id;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_by_id_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_get_by_id`(
 	IN UserId INT
 )
 BEGIN
@@ -215,10 +233,10 @@ END
 DELIMITER ;	
 
 
-DROP PROCEDURE IF EXISTS user_update_info_xtest;
+DROP PROCEDURE IF EXISTS user_update_info;
 
 DELIMITER //
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info`(
 	IN UserID INT,
     IN _name varchar(200),
     IN _password varchar(200),
