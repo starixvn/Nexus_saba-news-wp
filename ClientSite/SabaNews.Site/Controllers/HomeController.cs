@@ -171,7 +171,7 @@
                 }
                 else
                 {
-                    description += string.Concat(post.PostTitle, ";");
+                    description = string.Concat(description, post.PostTitle, ";");
                 }
             }
             var ViewData = new ViewData

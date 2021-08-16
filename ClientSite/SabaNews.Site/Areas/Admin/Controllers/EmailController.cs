@@ -348,7 +348,8 @@
                 var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
                 if (createSubscribeTokenResult.IsSuccessful)
                 {
-                    unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, token = createSubscribeTokenCommand.CurrentToken, Area = "" }, Request.Scheme);
+                    var currentToken = createSubscribeTokenCommand.CurrentToken;
+                    unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, token = currentToken, Area = "" }, Request.Scheme);
                 }
                 var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token));
                 var sendEmailModel = new SendEDMModel
