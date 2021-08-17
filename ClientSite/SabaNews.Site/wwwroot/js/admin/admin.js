@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
-    var currentPath = window.location.pathname;
+    var activeMenu = $('input[name="activeMenu"]').val();
+    console.log(activeMenu);
     $('.menu-item').each(function (i, e) {
-        if (currentPath.indexOf($(e).find('a').attr('href')) !== - 1) {
+        console.log($(e).find('a').text());
+        if ($(e).find('a').text() === activeMenu) {
             $(e).addClass('active');
         }
     });
