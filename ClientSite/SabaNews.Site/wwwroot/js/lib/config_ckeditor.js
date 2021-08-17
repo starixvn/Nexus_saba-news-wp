@@ -17,16 +17,32 @@ var configCkeditor = (function ($) {
                         'bulletedList',
                         'numberedList',
                         '|',
+                        'alignment',
                         'outdent',
                         'indent',
                         '|',
                         'imageInsert',
                         'blockQuote',
                         'insertTable',
-                        'alignment',
+                        'redo',
                         'undo',
-                        'redo'
+                        'fontBackgroundColor',
+                        'fontColor',
+                        'fontSize',
+                        'sourceEditing'
                     ]
+                },
+                fontSize: {
+                    options: [
+                        9,
+                        11,
+                        13,
+                        'default',
+                        17,
+                        19,
+                        21,
+                    ],
+                    supportAllValues: true
                 },
                 language: 'en',
                 image: {
