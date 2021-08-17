@@ -54,9 +54,15 @@
     }
 
     function HandleClick() {
+        var saveAndSendUrl = "";
         $('.btn-send-mail').on('click', function (e) {
             e.preventDefault();
-            HandleSubmit("/Admin/Email/SaveAndSendCreate");
+            saveAndSendUrl = "/Admin/Email/SaveAndSendCreate";
+            var isValid = HandleValidate();
+            if (isValid) {
+                $('#ConfirmModal .modal-body').html('Are you sure you want to send this email to all members?');
+                $('#ConfirmModal').modal('show');
+            }
         });
 
         $('.btn-save-as-draft').on('click', function (e) {
@@ -66,12 +72,22 @@
 
         $('.btn-send-mail-edit').on('click', function (e) {
             e.preventDefault();
-            HandleSubmit("/Admin/Email/SaveAndSendEdit");
+            var isValid = HandleValidate();
+            saveAndSendUrl = "/Admin/Email/SaveAndSendEdit";
+            if (isValid) {
+                $('#ConfirmModal .modal-body').html('Are you sure you want to send this email to all members?');
+                $('#ConfirmModal').modal('show');
+            }
         });
 
         $('.btn-save-as-draft-edit').on('click', function (e) {
             e.preventDefault();
             HandleSubmit("/Admin/Email/SaveEdit");
+        });
+
+        $('.confirm-action').on('click', function () {
+            $('#ConfirmModal').modal('hide');
+            HandleSubmit(saveAndSendUrl);
         });
     }
 
