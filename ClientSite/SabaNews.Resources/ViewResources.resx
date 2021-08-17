@@ -651,4 +651,16 @@
   <data name="Option" xml:space="preserve">
     <value>Tùy chọn</value>
   </data>
+  <data name="Article" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="VideoDetails" xml:space="preserve">
+    <value>Video Details</value>
+  </data>
+  <data name="ArticleDetails" xml:space="preserve">
+    <value>Article Details</value>
+  </data>
+  <data name="CreatedTime" xml:space="preserve">
+    <value>Created Time</value>
+  </data>
 </root>

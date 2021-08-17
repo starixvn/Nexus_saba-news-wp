@@ -1,0 +1,56 @@
+DROP PROCEDURE IF EXISTS post_view_detail_get;
+DELIMITER //
+
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_detail_get`(
+	createdDate DATE,
+    isVideo BIT
+)
+BEGIN
+    DECLARE videoCategoryId INT;
+    SELECT t.term_id INTO videoCategoryId
+    FROM wp_terms t 
+    INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" 
+    WHERE t.slug = 'video' LIMIT 1;
+
+    DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
+    CREATE TEMPORARY TABLE tmpVideoChilds(CategoryId INT);
+    INSERT INTO tmpVideoChilds(CategoryId)
+    VALUES(videoCategoryId);
+
+    INSERT INTO tmpVideoChilds(CategoryId)
+    SELECT  term_id
+    FROM (SELECT * FROM wp_term_taxonomy
+            ORDER BY parent, term_id) wp_term_taxonomy,
+            (SELECT @pv := videoCategoryId) initialisation
+    WHERE   find_in_set(parent, @pv) > 0; 
+
+    DROP TEMPORARY TABLE IF EXISTS tmpPosts;
+    CREATE TEMPORARY TABLE tmpPosts(PostId BIGINT(20), IsVideo BIT);
+    INSERT INTO tmpPosts(PostId, IsVideo) 
+    SELECT DISTINCT  p.ID
+           ,(CASE 
+            WHEN tt.term_id IN (SELECT CategoryId FROM tmpVideoChilds) 
+            THEN 1 ELSE 0 END) As IsVideo      
+    FROM wp_posts p 
+    INNER JOIN wp_term_relationships tr ON p.ID = tr.object_id
+    INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id and tt.taxonomy = 'category'
+    WHERE p.post_status = 'publish' AND p.post_type = 'post'
+    AND DATE(p.post_date) = createdDate;
+
+    SELECT tmp_p.PostId
+          ,p.post_title As Title
+          ,p.post_name As Slug
+          ,p.post_date As CreatedDate
+          ,SUM(CASE WHEN tmp_p.IsVideo = 1 THEN pd.video_view ELSE pd.view_count END) As TotalViews
+    FROM tmpPosts tmp_p
+    INNER JOIN wp_posts p ON tmp_p.PostId = p.ID
+    LEFT JOIN wp_postview_details pd ON tmp_p.PostId = pd.post_id
+    WHERE tmp_p.IsVideo = IsVideo
+    GROUP BY tmp_p.PostId
+    ORDER BY p.post_date;
+
+    DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
+    DROP TEMPORARY TABLE IF EXISTS tmpPosts;
+END
+//
+DELIMITER ;

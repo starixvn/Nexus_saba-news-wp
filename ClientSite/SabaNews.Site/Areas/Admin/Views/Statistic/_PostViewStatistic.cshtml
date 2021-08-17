@@ -66,9 +66,29 @@
                 {
                     <tr>
                         <td class="text-center">@item.PostDate.ToString("dd MMM yyyy")</td>
-                        <td class="text-right">@item.PostCount</td>
+                        <td class="text-right">
+                            @if (item.PostCount > 0)
+                            {
+                                <a href="ViewDetails?createdDate=@item.PostDate.ToString("yyyy-MM-dd")&isVideoDetails=false">@item.PostCount</a>
+                            }
+                            else
+                            {
+                                @item.PostCount
+
+                            }
+                        </td>
                         <td class="text-right">@item.PostView</td>
-                        <td class="text-right">@item.VideoCount</td>
+                        <td class="text-right">
+                            @if (item.VideoCount > 0)
+                            {
+                                <a href="ViewDetails?createdDate=@item.PostDate.ToString("yyyy-MM-dd")&isVideoDetails=true">@item.VideoCount</a>
+                            }
+                            else
+                            {
+                                @item.VideoCount
+
+                            }
+                        </td>
                         <td class="text-right">@item.VideoView</td>
                     </tr>
                 }

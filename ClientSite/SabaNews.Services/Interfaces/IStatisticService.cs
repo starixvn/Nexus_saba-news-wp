@@ -8,5 +8,7 @@
     public interface IStatisticService
     {
         Task<IEnumerable<PostStatisticInfo>> GetPostViewStatistic(DateTime fromDate, DateTime toDate);
+
+        Task<IEnumerable<ViewDetails>> GetPostViewDetails(DateTime createdDate, bool isVideo);
     }
 }

@@ -1,0 +1,52 @@
+﻿@using SabaNews.Resources
+<div class="card-view">
+    <div class="card-item card-pupple">
+        <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@ViewResources.CreatedDate</li>
+            <li class="cart-toal-count">@Model.CreatedDate.ToString("dd MMM yyyy")</li>
+        </ul>
+    </div>
+    <div class="card-item card-green">
+        <div class="card-icon bg-green"><i class="icon-page icon-post-view"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@Model.Type</li>
+            <li class="cart-toal-count">@Model.Quantity</li>
+        </ul>
+    </div>
+    <div class="card-item card-orange">
+        <div class="card-icon bg-orange"><i class="icon-page icon-video-view-admin"></i></div>
+        <ul class="card-total">
+            <li class="cart-total-title">@Model.Type Views</li>
+            <li class="cart-toal-count">@Model.TotalView</li>
+        </ul>
+    </div>
+</div>
+
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>@ViewResources.CreatedTime</th>
+                <th>@ViewResources.Title</th>
+                <th>@ViewResources.TotalViews<i id="view-sort" class="fas fa-sort" sort-type="@Model.ViewSort" style="cursor: pointer; padding-left: 10px;">s</i></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                foreach (var item in Model.ViewDetails)
+                {
+                    <tr>
+                        <td class="text-center">@i</td>
+                        <td class="text-center">@item.CreatedDate.ToString("hh:mm")</td>
+                        <td><a href="~/@item.Slug">@item.Title</a></td>
+                        <td class="text-right">@item.TotalViews</td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>

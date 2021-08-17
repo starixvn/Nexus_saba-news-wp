@@ -209,6 +209,19 @@
     },
 
     {
+        "outputFileName": "wwwroot/minify/js/admin_statistic_view_detail.min.js",
+        "inputFiles": [
+            "wwwroot/lib/jquery/dist/jquery.min.js",
+            "wwwroot/js/admin/statistic/view-statistic-details.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+
+    {
         "outputFileName": "wwwroot/minify/js/admin_email.min.js",
         "inputFiles": [
             "wwwroot/lib/jquery-blockUI/jquery.blockUI.js",

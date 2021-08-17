@@ -106,6 +106,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Article.
+        /// </summary>
+        public static string Article {
+            get {
+                return ResourceManager.GetString("Article", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Article Details.
+        /// </summary>
+        public static string ArticleDetails {
+            get {
+                return ResourceManager.GetString("ArticleDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Articles.
         /// </summary>
         public static string Articles {
@@ -372,6 +390,15 @@ namespace SabaNews.Resources {
         public static string CreatedDate {
             get {
                 return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created Time.
+        /// </summary>
+        public static string CreatedTime {
+            get {
+                return ResourceManager.GetString("CreatedTime", resourceCulture);
             }
         }
         
@@ -1596,6 +1623,15 @@ namespace SabaNews.Resources {
         public static string Video {
             get {
                 return ResourceManager.GetString("Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Video Details.
+        /// </summary>
+        public static string VideoDetails {
+            get {
+                return ResourceManager.GetString("VideoDetails", resourceCulture);
             }
         }
         

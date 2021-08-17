@@ -215,6 +215,7 @@
     </Function>
     <Function Name="Statistics">
         <Setting Key="post_view_statistic_get" SpName="post_view_statistic_get" DbName="sabasports" Plain="0" />
+        <Setting Key="post_view_detail_get" SpName="post_view_detail_get" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="SendMail">
         <Setting Key="user_get_all" SpName="user_get_all" DbName="sabasports" Plain="0" />
