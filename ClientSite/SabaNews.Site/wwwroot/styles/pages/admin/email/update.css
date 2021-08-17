@@ -579,49 +579,51 @@ footer {
   margin: revert;
   padding: revert; }
 
-.main-list {
+.main-list .custom-with-input {
   width: 100%;
   max-width: 80rem; }
-  .main-list .form-input {
-    position: relative;
-    margin-bottom: 2.4rem; }
-    .main-list .form-input .custom-input {
-      width: 100%;
-      cursor: unset; }
-    .main-list .form-input .tip {
-      position: absolute;
-      z-index: 9999999999;
-      top: 7rem;
-      right: -7rem;
-      transform: translateX(-50%);
-      height: 2.5rem;
-      line-height: 2.5rem;
-      background: #17191a;
-      color: #fff;
-      font-size: 1.2rem;
-      text-decoration: none;
-      white-space: nowrap;
-      padding: 0 1rem;
-      border-radius: 3px;
-      display: none; }
-    .main-list .form-input .help-block {
-      color: #ED3F2B;
-      font-size: 1.4rem;
-      margin-top: .5rem; }
-  .main-list .group-btn-admin {
-    margin-top: 2.4rem;
-    display: flex;
-    justify-content: space-between; }
-    .main-list .group-btn-admin .btn-custom-admin {
-      margin-right: 2.4rem; }
-    .main-list .group-btn-admin .btn-test {
-      cursor: pointer;
-      background: transparent;
-      font-size: 1.4rem;
-      color: #E13C29;
-      font-weight: 700; }
-      .main-list .group-btn-admin .btn-test:focus {
-        outline: none; }
+
+.main-list .form-input {
+  position: relative;
+  margin-bottom: 2.4rem; }
+  .main-list .form-input .custom-input {
+    width: 100%;
+    cursor: unset; }
+  .main-list .form-input .tip {
+    position: absolute;
+    z-index: 9999999999;
+    top: 7rem;
+    right: -7rem;
+    transform: translateX(-50%);
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background: #17191a;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0 1rem;
+    border-radius: 3px;
+    display: none; }
+  .main-list .form-input .help-block {
+    color: #ED3F2B;
+    font-size: 1.4rem;
+    margin-top: .5rem; }
+
+.main-list .group-btn-admin {
+  margin-top: 2.4rem;
+  display: flex;
+  justify-content: space-between; }
+  .main-list .group-btn-admin .btn-custom-admin {
+    margin-right: 2.4rem; }
+  .main-list .group-btn-admin .btn-test {
+    cursor: pointer;
+    background: transparent;
+    font-size: 1.4rem;
+    color: #E13C29;
+    font-weight: 700; }
+    .main-list .group-btn-admin .btn-test:focus {
+      outline: none; }
 
 .group_raw_link {
   margin-top: 2rem;

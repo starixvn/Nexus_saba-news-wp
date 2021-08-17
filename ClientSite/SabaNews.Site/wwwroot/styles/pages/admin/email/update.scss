@@ -40,8 +40,10 @@
 }
 
 .main-list {
-    width: 100%;
-    max-width: 80rem;
+    .custom-with-input {
+        width: 100%;
+        max-width: 80rem;
+    }
 
     .form-input {
         position: relative;
@@ -92,8 +94,9 @@
             font-size: 1.4rem;
             color: #E13C29;
             font-weight: 700;
-            &:focus{
-                outline :none;
+
+            &:focus {
+                outline: none;
             }
         }
     }
