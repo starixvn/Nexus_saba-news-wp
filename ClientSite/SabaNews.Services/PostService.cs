@@ -144,21 +144,10 @@
             return post;
         }
 
-        public async Task<PostTemplate> SearchPostAsync(string keyword, int start, int end)
+        public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
-            var criteria = new SearchPostsCriteria
-            {
-                _Keyword = keyword,
-                _Start = start,
-                _End = end
-            };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            var postTemplate = new PostTemplate
-            {
-                Posts = FormatData(posts).ToArray(),
-                TotalItems = criteria.TotalItems
-            };
-            return postTemplate;
+            return FormatData(posts).ToArray();
         }
 
         public async Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end)

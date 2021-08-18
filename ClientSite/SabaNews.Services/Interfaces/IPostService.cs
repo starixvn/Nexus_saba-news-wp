@@ -21,7 +21,7 @@
 
         Task<Post> GetPostDetailBySlugAsync(string slug, string postType);
 
-        Task<PostTemplate> SearchPostAsync(string keyword, int start, int end);
+        Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria);
 
         Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end);
 

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Criteria;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
@@ -125,8 +126,9 @@
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var postTemplate = await postService.SearchPostAsync(keyword, start, Constants.Perpage);
-            var totalItems = postTemplate.TotalItems;
+            var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
+            var posts = await postService.SearchPostAsync(criteria);
+            var totalItems = criteria.TotalItems;
             var ViewData = new ViewData
             {
                 Title = Constants.SearchTitle + " '" + keyword + "'",
@@ -140,11 +142,11 @@
             };
             var Model = new CategoryViewModel
             {
-                Posts = postTemplate.Posts,
+                Posts = posts,
                 ViewData = ViewData
             };
 
-            var view = postTemplate.Posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
+            var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
         }
 
