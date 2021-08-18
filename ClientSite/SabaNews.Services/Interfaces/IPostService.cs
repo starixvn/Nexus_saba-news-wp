@@ -23,7 +23,7 @@
 
         Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria);
 
-        Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end);
+        Task<IEnumerable<Post>> GetPostByTagAsync(GetPostsByTagCriteria criteria);
 
         Task<IEnumerable<Post>> GetSavedPostsByUserID(string IDs);
 

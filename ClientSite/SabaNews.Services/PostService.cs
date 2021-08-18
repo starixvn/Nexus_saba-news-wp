@@ -150,21 +150,10 @@
             return FormatData(posts).ToArray();
         }
 
-        public async Task<PostTemplate> GetPostByTagAsync(string tag, int start, int end)
+        public async Task<IEnumerable<Post>> GetPostByTagAsync(GetPostsByTagCriteria criteria)
         {
-            var criteria = new GetPostsByTagCriteria
-            {
-                _Tag = tag.Trim(),
-                _Start = start,
-                _End = end
-            };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            var postTemplate = new PostTemplate
-            {
-                Posts = FormatData(posts).ToArray(),
-                TotalItems = criteria.TotalItems
-            };
-            return postTemplate;
+            return FormatData(posts).ToArray();
         }
 
         public async Task<IEnumerable<Post>> GetSavedPostsByUserID(string IDs)

@@ -155,9 +155,9 @@
         public async Task<IActionResult> Tag(string tagname, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var postTemplate = await postService.GetPostByTagAsync(tagname, start, Constants.Perpage);
-            var posts = postTemplate.Posts;
-            var totalItems = postTemplate.TotalItems;
+            var criteria = new GetPostsByTagCriteria { _Tag = tagname.Trim(), _Start = start, _End = Constants.Perpage };
+            var posts = await postService.GetPostByTagAsync(criteria);
+            var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
             var description = "MỚI NHẤT: ";
             int i = 0;
