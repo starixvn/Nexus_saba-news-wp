@@ -146,7 +146,27 @@
 
         public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
+            var words = criteria._Keyword.Split(" ");
+            var rawQuery = "(";
+            var i = 0;
+            foreach (var word in words)
+            {
+                if (!string.IsNullOrEmpty(word) && word.Length > 1)
+                {
+                    var OR = "";
+                    if (i > 0)
+                    {
+                        OR = "OR";
+                    }
+                    rawQuery = string.Concat(rawQuery, OR, " LOWER(p.post_title) like CONCAT('%',CONVERT('", word.ToLower(), "', BINARY), '%') ");
+                    i++;
+                }
+              
+            }
+            rawQuery = string.Concat(rawQuery, ")");
+            criteria._LikeKeyWord = rawQuery;
             var posts = await baseService.GetDataAsync<Post>(criteria);
+           
             return FormatData(posts).ToArray();
         }
 
