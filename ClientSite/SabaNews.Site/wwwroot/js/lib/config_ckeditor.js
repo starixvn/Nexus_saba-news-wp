@@ -70,7 +70,6 @@ var configCkeditor = (function ($) {
                         'linkImage'
                     ]
                 },
-               
                 table: {
                     contentToolbar: [
                         'tableColumn',

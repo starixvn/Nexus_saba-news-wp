@@ -15,7 +15,11 @@
 }
 
 /* --------- EDITOR STYLES  ---------------------------------------------------------------------------------------- */
+.table {
+    background-color: transparent !important;
+}
 .ck-content * {
+    all: revert;
     word-wrap: break-word;
     margin: revert;
     padding: revert;
