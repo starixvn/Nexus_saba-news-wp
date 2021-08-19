@@ -67,6 +67,17 @@ var configCkeditor = (function ($) {
                         'linkImage'
                     ]
                 },
+                //enable edit with class and inline css in sourceEditing tool
+                htmlSupport: {
+                    allow: [
+                        {
+                            name: /.*/,
+                            attributes: true,
+                            classes: true,
+                            styles: true
+                        }
+                    ]
+                },
                 table: {
                     contentToolbar: [
                         'tableColumn',
