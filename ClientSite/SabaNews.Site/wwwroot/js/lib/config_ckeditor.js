@@ -41,6 +41,9 @@ var configCkeditor = (function ($) {
                         17,
                         19,
                         21,
+                        23,
+                        25,
+                        27
                     ],
                     supportAllValues: true
                 },
@@ -67,6 +70,14 @@ var configCkeditor = (function ($) {
                         'linkImage'
                     ]
                 },
+               
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
                 //enable edit with class and inline css in sourceEditing tool
                 htmlSupport: {
                     allow: [
@@ -76,13 +87,6 @@ var configCkeditor = (function ($) {
                             classes: true,
                             styles: true
                         }
-                    ]
-                },
-                table: {
-                    contentToolbar: [
-                        'tableColumn',
-                        'tableRow',
-                        'mergeTableCells'
                     ]
                 },
                 licenseKey: '',
