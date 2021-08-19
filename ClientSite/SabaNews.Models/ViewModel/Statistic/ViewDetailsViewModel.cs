@@ -16,6 +16,8 @@
 
         public string ViewSort { get; set; }
 
+        public string Tooltip { get; set; }
+
         public IEnumerable<ViewDetails> ViewDetails { get; set; }
     }
 }

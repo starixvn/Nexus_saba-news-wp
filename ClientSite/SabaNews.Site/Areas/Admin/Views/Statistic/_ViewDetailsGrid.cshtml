@@ -30,7 +30,17 @@
                 <th>#</th>
                 <th>@ViewResources.CreatedTime</th>
                 <th>@ViewResources.Title</th>
-                <th>@ViewResources.TotalViews<i id="view-sort" class="fas fa-sort" sort-type="@Model.ViewSort" style="cursor: pointer; padding-left: 10px;">s</i></th>
+                <th>
+                    <p class="warning-admin">
+
+                        @ViewResources.TotalViews
+                        <span class="tooltip-icon">
+                            <i class="icon-error_outline"></i>
+                            <span class="tooltip-content">@Model.Tooltip</span>
+                        </span>
+                        <i id="view-sort" class="fas fa-sort" sort-type="@Model.ViewSort" style="cursor: pointer; padding-left: 10px;">s</i>
+                    </p>
+                </th>
             </tr>
         </thead>
         <tbody>

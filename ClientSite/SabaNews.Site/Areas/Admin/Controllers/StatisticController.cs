@@ -72,6 +72,7 @@
                 Type = isVideo ? ViewResources.Videos : ViewResources.Articles,
                 Quantity = viewDetails.Count(),
                 ViewSort = viewSort,
+                Tooltip = isVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
                 TotalView = viewDetails.Sum(x => x.TotalViews)
             };
 
