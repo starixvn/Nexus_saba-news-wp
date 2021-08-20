@@ -441,6 +441,9 @@ body {
       .table-admin table tfoot td {
         font-size: 1.8rem; }
 
+.table-detail-view table td {
+  width: auto; }
+
 .main-admin {
   padding-left: 27rem; }
   .main-admin .page-content {
