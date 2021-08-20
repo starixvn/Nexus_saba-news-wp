@@ -21,6 +21,23 @@
     margin: revert;
     padding: revert;
 }
+
+.table {
+    background-color: transparent !important;
+}
+
+.table td, .table th {
+    border: none !important;
+}
+
+.table table {
+    border: none !important;
+}
+
+.ck-content .table table {
+    border: none !important; 
+}
+
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-tiny {
     font-size: .7em;

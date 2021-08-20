@@ -18,12 +18,20 @@
 .table {
     background-color: transparent !important;
 }
+
+.table td, .table th {
+    border: none !important;
+}
+.table table {
+    border: none !important;
+}
 .ck-content * {
     all: revert;
     word-wrap: break-word;
     margin: revert;
     padding: revert;
 }
+
 .editor__editable,
 /* Classic build. */
 main .ck-editor[role='application'] .ck.ck-content,
