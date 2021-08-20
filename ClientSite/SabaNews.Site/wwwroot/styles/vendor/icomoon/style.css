@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?4efi7n');
-  src:  url('fonts/Fraud-Sensor.eot?4efi7n#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?4efi7n') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?4efi7n') format('woff'),
-    url('fonts/Fraud-Sensor.svg?4efi7n#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?nhdcyp');
+  src:  url('fonts/Fraud-Sensor.eot?nhdcyp#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?nhdcyp') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?nhdcyp') format('woff'),
+    url('fonts/Fraud-Sensor.svg?nhdcyp#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow_drop_up .path1:before {
+  content: "\e914";
+  color: rgb(107, 107, 107);
+}
+.icon-arrow_drop_up .path2:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
 .icon-copy-admin:before {
   content: "\e913";
   color: #666;
