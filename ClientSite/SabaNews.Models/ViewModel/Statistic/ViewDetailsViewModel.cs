@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using SabaNews.Core.Models;
     using SabaNews.Models.Posts;
 
     public class ViewDetailsViewModel
@@ -17,6 +18,10 @@
         public string ViewSort { get; set; }
 
         public string Tooltip { get; set; }
+
+        public bool IsVideo { get; set; }
+
+        public PagingModel Paging { get; set; }
 
         public IEnumerable<ViewDetails> ViewDetails { get; set; }
     }

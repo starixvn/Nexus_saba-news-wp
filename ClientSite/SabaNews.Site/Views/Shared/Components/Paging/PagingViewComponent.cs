@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Models;
-    using System.Threading.Tasks;
 
     public class PagingViewComponent : ViewComponent
     {

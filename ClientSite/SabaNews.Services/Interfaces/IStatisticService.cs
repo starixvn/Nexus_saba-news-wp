@@ -9,6 +9,6 @@
     {
         Task<IEnumerable<PostStatisticInfo>> GetPostViewStatistic(DateTime fromDate, DateTime toDate);
 
-        Task<IEnumerable<ViewDetails>> GetPostViewDetails(DateTime createdDate, bool isVideo);
+        Task<ValueTuple<IEnumerable<ViewDetails>, int>> GetPostViewDetails(DateTime createdDate, bool isVideo, int pageIndex, int pageSize);
     }
 }

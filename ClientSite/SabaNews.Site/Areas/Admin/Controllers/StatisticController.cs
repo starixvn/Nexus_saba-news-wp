@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Statistic;
     using SabaNews.Resources;
@@ -55,25 +56,32 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetViewDetails(DateTime? createdDate, bool isVideo = false, string viewSort = null)
+        public async Task<IActionResult> GetViewDetails(ViewDetailsQueryViewModel query)
         {
-            var viewDetails = await statisticService.GetPostViewDetails(createdDate.Value, isVideo);
+            var (viewDetails, totalItems) = await statisticService.GetPostViewDetails(query.CreatedDate.Value, query.IsVideo, query.PageIndex, query.PageSize);
 
-            if (!string.IsNullOrWhiteSpace(viewSort))
+            if (!string.IsNullOrWhiteSpace(query.ViewSort))
             {
-                viewDetails = viewSort == "desc" ? viewDetails.OrderByDescending(x => x.TotalViews) :
+                viewDetails = query.ViewSort == "desc" ? viewDetails.OrderByDescending(x => x.TotalViews) :
                     viewDetails.OrderBy(x => x.TotalViews);
             }
-
+            var paging = new PagingModel
+            {
+                CurrentPage = query.PageIndex,
+                PageSize = query.PageSize,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)query.PageSize)
+            };
             var viewModel = new ViewDetailsViewModel
             {
                 ViewDetails = viewDetails,
-                CreatedDate = createdDate.Value,
-                Type = isVideo ? ViewResources.Videos : ViewResources.Articles,
+                CreatedDate = query.CreatedDate.Value,
+                Type = query.IsVideo ? ViewResources.Videos : ViewResources.Articles,
                 Quantity = viewDetails.Count(),
-                ViewSort = viewSort,
-                Tooltip = isVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
-                TotalView = viewDetails.Sum(x => x.TotalViews)
+                ViewSort = query.ViewSort,
+                Tooltip = query.IsVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
+                IsVideo = query.IsVideo,
+                TotalView = viewDetails.Sum(x => x.TotalViews),
+                Paging = paging
             };
 
             return PartialView("_ViewDetailsGrid", viewModel);

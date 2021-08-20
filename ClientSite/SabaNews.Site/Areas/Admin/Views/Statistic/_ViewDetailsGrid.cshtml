@@ -3,7 +3,7 @@
 <p class="back-parent-page">
     <a href="~/Admin/Statistic/Index">
         <i class="icon-arrow-left"></i>
-        <span>Back to Post Statistic</span>
+        <span>@ViewResources.BackToPostStatistic</span>
     </a>
 </p>
 <div class="card-view">
@@ -14,15 +14,21 @@
             <li class="cart-toal-count date-detail-artical">@Model.CreatedDate.ToString("dd MMM yyyy")</li>
         </ul>
     </div>
-    <div class="card-item card-pupple">
-        <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i> <i class="icon-page icon-video-admin"></i></div>
+    @{
+        string countColor = Model.IsVideo ? "orange" : "pupple";
+        string viewColor = Model.IsVideo ? "blue" : "green";
+        string countIcon = Model.IsVideo ? "icon-video-admin" : "icon-icon-admin";
+        string viewIcon = Model.IsVideo ? "icon-video-view-admin" : "icon-post-view";
+    }
+    <div class="card-item card-@countColor">
+        <div class="card-icon bg-@countColor"><i class="icon-page @countIcon"></i></i></div>
         <ul class="card-total">
             <li class="cart-total-title">@Model.Type</li>
             <li class="cart-toal-count">@Model.Quantity</li>
         </ul>
     </div>
-    <div class="card-item card-green">
-        <div class="card-icon bg-green"><i class="icon-page icon-post-view"></i> <i class="icon-page icon-video-view-admin"></i></div>
+    <div class="card-item card-@viewColor">
+        <div class="card-icon bg-@viewColor"><i class="icon-page @viewIcon"></i></i></div>
         <ul class="card-total">
             <li class="cart-total-title">@Model.Type Views</li>
             <li class="cart-toal-count">@Model.TotalView</li>
@@ -58,7 +64,7 @@
                     <tr>
                         <td class="text-center">@i</td>
                         <td class="text-center">@item.CreatedDate.ToString("hh:mm")</td>
-                        <td><a href="~/@item.Slug">@item.Title</a></td>
+                        <td class="text-left"><a href="~/@item.Slug">@item.Title</a></td>
                         <td class="text-right">@item.TotalViews</td>
                     </tr>
                     i++;
@@ -66,4 +72,5 @@
             }
         </tbody>
     </table>
+    @(await Component.InvokeAsync("Paging", new { model = Model.Paging }))
 </div>

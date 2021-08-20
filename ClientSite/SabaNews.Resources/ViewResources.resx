@@ -663,4 +663,7 @@
   <data name="CreatedTime" xml:space="preserve">
     <value>Created Time</value>
   </data>
+  <data name="BackToPostStatistic" xml:space="preserve">
+    <value>Back to Post Statistic</value>
+  </data>
 </root>

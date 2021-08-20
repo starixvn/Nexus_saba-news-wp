@@ -178,6 +178,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to Post Statistic.
+        /// </summary>
+        public static string BackToPostStatistic {
+            get {
+                return ResourceManager.GetString("BackToPostStatistic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng.
         /// </summary>
         public static string Ball {
