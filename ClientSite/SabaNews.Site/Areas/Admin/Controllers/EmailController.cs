@@ -59,7 +59,7 @@
 
         public async Task<ActionResult> GetListEmailData(EmailFilterViewModel param)
         {
-            const int perPage = Constants.Perpage;
+            var perPage = param.PageSize;
             var start = (param.Page - 1) * perPage;
             var criteria = new GetEmailsCriteria 
             {
@@ -76,7 +76,7 @@
             {
                 CurrentPage = param.Page,
                 PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)perPage),
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)param.PageSize),
             };
             var model = new EmailViewModel
             {

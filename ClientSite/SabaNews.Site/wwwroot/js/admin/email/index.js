@@ -6,12 +6,13 @@
     var status = -1;
     var createdBy = -1;
     var emailId = 0;
+    var pageSize = 10;
 
     function renderListEmail() {
         $.ajax({
             url: "/Admin/Email/GetListEmailData",
             type: 'POST',
-            data: { page, search, fromDate, toDate, status, createdBy },
+            data: { page, search, fromDate, toDate, status, createdBy, pageSize },
             success: function (res) {
                 $('.list_email_block').html(res);
                 HandleGridData();
@@ -46,6 +47,11 @@
             page = $(this).data('page');
             renderListEmail();
 
+        });
+
+        $('#page-size').on('change', function () {
+            pageSize = $(this).val();
+            renderListEmail();
         });
 
         $('.delete-email').on('click', function () {

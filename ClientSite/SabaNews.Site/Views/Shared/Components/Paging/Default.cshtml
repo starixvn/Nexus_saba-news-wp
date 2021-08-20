@@ -10,6 +10,15 @@
 
 @if (TotalPages > 1)
 {
+	<div class="form-input">
+		<p class="label-admin">Page size</p>
+		<select class="custom-input" id="page-size">
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="50">50</option>
+			<option value="100">100</option>
+		</select>
+	</div>
 	<div class="pagination">
 		<a href="javascript:;" data-page="1" class="icon-pagination icon-page-first @checkPrev"></a>
 		<a href="javascript:;" data-page="@pagePrev" class="icon-pagination icon-chevron-left @checkPrev"></a>
