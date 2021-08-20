@@ -6,7 +6,13 @@
     justify-content: center;
     align-items: center;
     line-height: 1;
-
+    .table-sort{
+        padding-left : .3rem;
+        cursor : pointer;
+        &:before{
+            font-size: 1.8rem;
+        }
+    }
     .tooltip-icon {
         display: flex;
         align-items: center;

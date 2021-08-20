@@ -302,6 +302,11 @@ button {
   justify-content: center;
   align-items: center;
   line-height: 1; }
+  .warning-admin .table-sort {
+    padding-left: .3rem;
+    cursor: pointer; }
+    .warning-admin .table-sort:before {
+      font-size: 1.8rem; }
   .warning-admin .tooltip-icon {
     display: flex;
     align-items: center;
