@@ -30,6 +30,12 @@
         }
     }
 
+    .card-yellow {
+        &:hover {
+            border: 2px solid #8F730D;
+        }
+    }
+
 
 
     .card-item {
@@ -59,6 +65,16 @@
             .icon-page {
                 &:before {
                     font-size: 2rem;
+                }
+            }
+        }
+
+        .bg-yellow {
+            background: #EEE4C1;
+
+            .icon-page {
+                &:before {
+                    color: #8F730D;
                 }
             }
         }
@@ -120,6 +136,10 @@
                 font-weight: bold;
                 color: #042765;
                 font-size: 3rem;
+            }
+
+            .date-detail-artical{
+                font-size : 2.2rem;
             }
         }
     }

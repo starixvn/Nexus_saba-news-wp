@@ -1,21 +1,28 @@
 ﻿@using SabaNews.Resources
+
+<p class="back-parent-page">
+    <a href="~/Admin/Statistic/Index">
+        <i class="icon-arrow-left"></i>
+        <span>Back to Post Statistic</span>
+    </a>
+</p>
 <div class="card-view">
-    <div class="card-item card-pupple">
-        <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i></div>
+    <div class="card-item card-yellow">
+        <div class="card-icon bg-yellow"><i class="icon-page icon-date_range"></i></div>
         <ul class="card-total">
-            <li class="cart-total-title">@ViewResources.CreatedDate</li>
-            <li class="cart-toal-count">@Model.CreatedDate.ToString("dd MMM yyyy")</li>
+            <li class="cart-total-title">Date</li>
+            <li class="cart-toal-count date-detail-artical">@Model.CreatedDate.ToString("dd MMM yyyy")</li>
         </ul>
     </div>
-    <div class="card-item card-green">
-        <div class="card-icon bg-green"><i class="icon-page icon-post-view"></i></div>
+    <div class="card-item card-pupple">
+        <div class="card-icon bg-pupple"><i class="icon-page icon-icon-admin"></i></div>
         <ul class="card-total">
             <li class="cart-total-title">@Model.Type</li>
             <li class="cart-toal-count">@Model.Quantity</li>
         </ul>
     </div>
     <div class="card-item card-orange">
-        <div class="card-icon bg-orange"><i class="icon-page icon-video-view-admin"></i></div>
+        <div class="card-icon bg-orange"><i class="icon-page icon-post-view"></i></div>
         <ul class="card-total">
             <li class="cart-total-title">@Model.Type Views</li>
             <li class="cart-toal-count">@Model.TotalView</li>
@@ -23,7 +30,7 @@
     </div>
 </div>
 
-<div class="table-admin">
+<div class="table-admin table-detail-view">
     <table class="data-grid">
         <thead>
             <tr>

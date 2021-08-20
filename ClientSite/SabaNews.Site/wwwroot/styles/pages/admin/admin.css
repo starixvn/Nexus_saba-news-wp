@@ -231,6 +231,8 @@ button {
     border: 2px solid #E86747; }
   .card-view .card-blue:hover {
     border: 2px solid #3F7CD6; }
+  .card-view .card-yellow:hover {
+    border: 2px solid #8F730D; }
   .card-view .card-item {
     background: #fff;
     box-sizing: border-box;
@@ -253,6 +255,10 @@ button {
       margin-right: 2rem; }
       .card-view .card-item .card-icon .icon-page:before {
         font-size: 2rem; }
+    .card-view .card-item .bg-yellow {
+      background: #EEE4C1; }
+      .card-view .card-item .bg-yellow .icon-page:before {
+        color: #8F730D; }
     .card-view .card-item .bg-pupple {
       background: #EAE7FD; }
       .card-view .card-item .bg-pupple .icon-page:before {
@@ -283,6 +289,8 @@ button {
         font-weight: bold;
         color: #042765;
         font-size: 3rem; }
+      .card-view .card-item .card-total .date-detail-artical {
+        font-size: 2.2rem; }
 
 /*:root {
     --column : 12;
@@ -424,6 +432,9 @@ body {
       border: 1px solid #D7D7D7;
       padding: 1rem;
       width: 20%; }
+      .table-admin table td a {
+        text-decoration: none;
+        color: #0052CC; }
     .table-admin table tfoot {
       background: #FBFBFB;
       font-weight: bold; }
@@ -460,3 +471,17 @@ body {
     cursor: pointer;
     background-position: right 1rem center;
     background-size: 2rem; }
+
+.back-parent-page {
+  margin-bottom: 2.4rem; }
+  .back-parent-page a {
+    color: #0052CC;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none; }
+    .back-parent-page a .icon-arrow-left {
+      background: #0052CC;
+      padding: .3rem;
+      border-radius: 100%; }
+      .back-parent-page a .icon-arrow-left:before {
+        color: #fff; }

@@ -553,6 +553,12 @@ button {
   .custom-table tr td {
     border: 1px solid #D7D7D7;
     padding: .6rem 1rem; }
+    .custom-table tr td a {
+      text-decoration: none;
+      color: #0052CC; }
+
+.table-detail-view table td {
+  width: auto; }
 
 .label {
   font-size: 1.2rem;
@@ -757,17 +763,3 @@ button {
     font-size: 1.4rem;
     color: #424242;
     font-weight: bold; }
-
-.back-parent-page {
-  margin-bottom: 2.4rem; }
-  .back-parent-page a {
-    color: #0052CC;
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-decoration: none; }
-    .back-parent-page a .icon-arrow-left {
-      background: #0052CC;
-      padding: .3rem;
-      border-radius: 100%; }
-      .back-parent-page a .icon-arrow-left:before {
-        color: #fff; }

@@ -12,6 +12,7 @@
                 background-color: #FEF3D6;
             }
         }
+
         th {
             border: 1px solid $border-table;
             line-height: 1.6rem;
@@ -22,11 +23,22 @@
         td {
             border: 1px solid $border-table;
             padding: .6rem 1rem;
+
+            a {
+                text-decoration: none;
+                color: #0052CC;
+            }
         }
     }
 }
 
-
+.table-detail-view{
+    table{
+        td{
+            width : auto;
+        }
+    }
+}
 
 .label {
     font-size: 1.2rem;

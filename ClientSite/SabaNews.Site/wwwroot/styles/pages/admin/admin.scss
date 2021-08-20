@@ -94,6 +94,10 @@ body {
             border: 1px solid #D7D7D7;
             padding: 1rem;
             width: 20%;
+            a {
+                text-decoration: none;
+                color: #0052CC;
+            }
         }
 
         tfoot {
@@ -147,5 +151,25 @@ body {
         cursor: pointer;
         background-position: right 1rem center;
         background-size: 2rem;
+    }
+}
+.back-parent-page {
+    margin-bottom: 2.4rem;
+
+    a {
+        color: #0052CC;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: none;
+
+        .icon-arrow-left {
+            background: #0052CC;
+            padding: .3rem;
+            border-radius: 100%;
+
+            &:before {
+                color: $color-fff;
+            }
+        }
     }
 }
