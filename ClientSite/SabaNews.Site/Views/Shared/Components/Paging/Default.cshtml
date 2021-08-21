@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
 	int CurrentPage = Convert.ToInt32(Model.CurrentPage);
 	int TotalPages = Convert.ToInt32(Model.TotalPages);
 	var pageLast = Model.TotalPages;
@@ -13,10 +14,10 @@
 	<div class="form-input">
 		<p class="label-admin">Page size</p>
 		<select class="custom-input" id="page-size">
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
+			<!option value="10" @(Model.PageSize == 10 ? "selected" : "")>10</!option>
+			<!option value="20" @(Model.PageSize == 20 ? "selected" : "")>20</!option>
+			<!option value="50" @(Model.PageSize == 50 ? "selected" : "")>50</!option>
+			<!option value="100" @(Model.PageSize == 100 ? "selected" : "")>100</!option>
 		</select>
 	</div>
 	<div class="pagination">

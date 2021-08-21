@@ -51,6 +51,7 @@
 
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
+            page = 1;
             renderListEmail();
         });
 

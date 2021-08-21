@@ -259,7 +259,7 @@
 
         public async Task<ActionResult> GetListEmailDetailData(EmailDetailFilterViewModel param)
         {
-            const int perPage = Constants.Perpage;
+            int perPage = param.PageSize;
             var start = (param.Page - 1) * perPage;
             var criteria = new FilterEmailDetailCriteria
             {

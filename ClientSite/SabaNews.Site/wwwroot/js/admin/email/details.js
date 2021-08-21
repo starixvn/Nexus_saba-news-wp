@@ -5,12 +5,13 @@ var edmDetail = (function ($) {
     var search = "";
     var filterClicked = -1;
     var status = -1;
+    var pageSize = 10;
 
     function renderList() {
         $.ajax({
             url: '/Admin/Email/GetListEmailDetailData',
             type: 'POST',
-            data: { emailId, page, search, filterClicked, status },
+            data: { emailId, page, search, filterClicked, status, pageSize },
             success: function (res) {
                 $('.list_detail_content').html(res);
                 HandleActionGridData();
@@ -32,6 +33,12 @@ var edmDetail = (function ($) {
             page = $(this).data('page');
             renderList();
 
+        });
+
+        $('#page-size').on('change', function () {
+            pageSize = $(this).val();
+            page = 1;
+            renderListEmail();
         });
 
         $('.resend-email').on('click', function () {
