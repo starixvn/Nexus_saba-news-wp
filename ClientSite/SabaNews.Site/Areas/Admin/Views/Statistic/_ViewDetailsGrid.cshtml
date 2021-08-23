@@ -58,7 +58,8 @@
         </thead>
         <tbody>
             @{
-                int i = 1;
+                int i = ((Model.Paging.CurrentPage - 1) * Model.Paging.PageSize) + 1;
+
                 foreach (var item in Model.ViewDetails)
                 {
                     <tr>
