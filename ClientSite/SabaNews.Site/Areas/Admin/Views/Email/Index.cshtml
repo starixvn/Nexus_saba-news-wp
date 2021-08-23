@@ -12,6 +12,10 @@
     @ViewResources.ListElectronicDirectMail
 }
 
+@section ActiveMenu {
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.EDMList" />
+}
+
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/admin_email.min.css" asp-append-version="true">
 }
@@ -23,40 +27,40 @@
 
 <section class="page-content">
     <div class="page-table-control">
-		<div class="form-horizontal">
-			<div class="form-input">
-				<p class="label-admin">@ViewResources.Subject</p>
-				<input class="custom-input list-input" name="search" value="" placeholder="Search subject..." type="text" />
-			</div>
-			<div class="form-input">
-				<p class="label-admin">@ViewResources.From</p>
-				<input class="custom-input" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
-			</div>
-			<div class="form-input">
-				<p class="label-admin">@ViewResources.To</p>
-				<input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
-			</div>
-			<div class="form-input">
-				<p class="label-admin">@ViewResources.Status</p>
-				<select class="custom-input list-input" name="status" id="status">
-					<option value="-1">@ViewResources.All</option>
-					<option value="0">@ViewResources.Sent</option>
-					<option value="1">@ViewResources.New</option>
-				</select>
-			</div>
-			<div class="form-input">
-				<p class="label-admin">@ViewResources.CreatedBy</p>
-				<select class="custom-input list-input" name="createdBy">
-					<option value="-1">@ViewResources.All</option>
-					@foreach (var user in Model.Users)
-					{ 
+        <div class="form-horizontal">
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input class="custom-input list-input" name="search" value="" placeholder="Search subject..." type="text" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.From</p>
+                <input class="custom-input" type="date" id="fromDate" name="fromDate" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.To</p>
+                <input class="custom-input" type="date" id="toDate" name="toDate" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.Status</p>
+                <select class="custom-input list-input" name="status" id="status">
+                    <option value="-1">@ViewResources.All</option>
+                    <option value="0">@ViewResources.Sent</option>
+                    <option value="1">@ViewResources.New</option>
+                </select>
+            </div>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.CreatedBy</p>
+                <select class="custom-input list-input" name="createdBy">
+                    <option value="-1">@ViewResources.All</option>
+                    @foreach (var user in Model.Users)
+                    {
                         <option value="@user.Id">@user.Name</option>
                     }
-				</select>
-			</div>
+                </select>
+            </div>
 
-			<button type="button" class="btn-custom-admin search_list_email">Submit</button>
-		</div>
+            <button type="button" class="btn-custom-admin search_list_email">Submit</button>
+        </div>
         <div class="list_email_block"></div>
     </div>
 
