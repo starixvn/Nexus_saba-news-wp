@@ -538,6 +538,42 @@ button {
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
+/*:root {
+    --column : 12;
+    --padding-col : 0 1.5rem;
+}*/
+.pagination {
+  height: 4.1rem;
+  border-bottom: 1px solid #D7D7D7;
+  border-left: 1px solid #D7D7D7;
+  border-right: 1px solid #D7D7D7;
+  justify-content: center;
+  padding: 0;
+  background-color: #FBFBFB;
+  position: relative; }
+  .pagination .page-size {
+    position: absolute;
+    top: .7rem;
+    display: flex;
+    align-items: center;
+    left: 0; }
+    .pagination .page-size .label-admin {
+      margin: 0 1rem; }
+    .pagination .page-size #page-size {
+      height: 2.8rem;
+      border-radius: 2px;
+      border: 1px solid #C4C4C4; }
+      .pagination .page-size #page-size:focus {
+        outline: none; }
+  .pagination .icon-pagination:before {
+    color: #444444; }
+  .pagination .icon-pagination.disabled {
+    opacity: .5; }
+  .pagination .main-pagination .items-pagination .item {
+    color: #444444; }
+  .pagination .main-pagination .active {
+    background-color: #E0E1F0; }
+
 .custom-table {
   width: 100%;
   background: #FBFBFB;
