@@ -51,7 +51,6 @@
         public const int GetEightItems = 8;
         public const int GetTenItems = 10;
         public const int GetElevenItems = 11;
-        
 
         public const int FirstPage = 1;
         public const int Perpage = 10;
@@ -134,7 +133,6 @@
         public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
 
-
         public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
         public const string OlympicTokyoTag = "olympic-tokyo";
@@ -154,6 +152,5 @@
         public const int EmailNew = 1;
         public const int EmailDestroy = 2;
         public const int ServerTimeZone = 7;
-        
     }
 }
