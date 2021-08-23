@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Models;
@@ -58,19 +57,13 @@
         [HttpPost]
         public async Task<IActionResult> GetViewDetails(ViewDetailsQueryViewModel query)
         {
-            var (viewDetails, totalItems, totalViews) = await statisticService.GetPostViewDetails(query.CreatedDate.Value, query.IsVideo, query.PageIndex, query.PageSize);
+            var (viewDetails, totalItems, totalViews) = await statisticService.GetPostViewDetails(
+                query.CreatedDate.Value,
+                query.IsVideo,
+                query.PageIndex,
+                query.PageSize,
+                query.ViewSort);
 
-            if (!string.IsNullOrWhiteSpace(query.ViewSort))
-            {
-                viewDetails = query.ViewSort == "desc" ? viewDetails.OrderByDescending(x => x.TotalViews) :
-                    viewDetails.OrderBy(x => x.TotalViews);
-            }
-            var paging = new PagingModel
-            {
-                CurrentPage = query.PageIndex,
-                PageSize = query.PageSize,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)query.PageSize)
-            };
             var viewModel = new ViewDetailsViewModel
             {
                 ViewDetails = viewDetails,
@@ -81,7 +74,12 @@
                 Tooltip = query.IsVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
                 IsVideo = query.IsVideo,
                 TotalView = totalViews,
-                Paging = paging
+                Paging = new PagingModel
+                {
+                    CurrentPage = query.PageIndex,
+                    PageSize = query.PageSize,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)query.PageSize)
+                }
             };
 
             return PartialView("_ViewDetailsGrid", viewModel);

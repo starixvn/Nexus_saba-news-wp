@@ -4,11 +4,13 @@ DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_detail_get`(
 	createdDate DATE,
     isVideo BIT,
+    viewSortType VARCHAR(10),
     pageIndex INT,
     pageSize INT,
     OUT totalItems INT,
     OUT totalViews INT
 )
+
 BEGIN
     DECLARE startIndex INT DEFAULT 0;
     DECLARE videoCategoryId INT;
@@ -61,7 +63,9 @@ BEGIN
     INNER JOIN wp_posts p ON tmp_p.PostId = p.ID
     LEFT JOIN wp_postview_details pd ON tmp_p.PostId = pd.post_id
     GROUP BY tmp_p.PostId
-    ORDER BY p.post_date
+    ORDER BY CASE WHEN viewSortType = 'desc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END DESC
+			 ,CASE WHEN viewSortType = 'asc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END
+             ,CASE WHEN viewSortType = '' THEN p.post_date END
     LIMIT startIndex, pageSize;
 
     DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;

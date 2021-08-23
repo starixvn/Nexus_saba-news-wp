@@ -13,6 +13,8 @@
 
         public int PageSize { get; set; }
 
+        public string ViewSortType { get; set; }
+
         public int TotalItems { get; set; }
 
         public int TotalViews { get; set; }

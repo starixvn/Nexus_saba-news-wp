@@ -56,12 +56,17 @@
             return result.OrderBy(x => x.PostDate);
         }
 
-        public async Task<ValueTuple<IEnumerable<ViewDetails>, int, int>> GetPostViewDetails(DateTime createdDate, bool isVideo, int pageIndex, int pageSize)
+        public async Task<ValueTuple<IEnumerable<ViewDetails>, int, int>> GetPostViewDetails(DateTime createdDate,
+            bool isVideo,
+            int pageIndex,
+            int pageSize,
+            string viewSortType)
         {
             var criteria = new GetViewDetailOnDateCriteria
             {
                 CreatedDate = createdDate,
                 IsVideo = isVideo,
+                ViewSortType = viewSortType,
                 PageIndex = pageIndex,
                 PageSize = pageSize
             };
