@@ -65,8 +65,8 @@
                 foreach (var item in Model.PostViewDetails)
                 {
                     <tr>
-                        <td class="text-center">@item.PostDate.ToString("dd MMM yyyy")</td>
-                        <td class="text-right">
+                        <td class="text-center" width="20%">@item.PostDate.ToString("dd MMM yyyy")</td>
+                        <td class="text-right" width="20%">
                             @if (item.PostCount > 0)
                             {
                                 <a href="ViewDetails?createdDate=@item.PostDate.ToString("yyyy-MM-dd")&isVideoDetails=false">@item.PostCount</a>
@@ -77,8 +77,8 @@
 
                             }
                         </td>
-                        <td class="text-right">@item.PostView</td>
-                        <td class="text-right">
+                        <td class="text-right" width="20%">@item.PostView</td>
+                        <td class="text-right" width="20%">
                             @if (item.VideoCount > 0)
                             {
                                 <a href="ViewDetails?createdDate=@item.PostDate.ToString("yyyy-MM-dd")&isVideoDetails=true">@item.VideoCount</a>
@@ -89,18 +89,18 @@
 
                             }
                         </td>
-                        <td class="text-right">@item.VideoView</td>
+                        <td class="text-right" width="20%">@item.VideoView</td>
                     </tr>
                 }
             }
         </tbody>
         <tfoot>
             <tr>
-                <td class="text-center">@ViewResources.Total</td>
-                <td class="text-right">@Model.TotalPost</td>
-                <td class="text-right">@Model.TotalPostView</td>
-                <td class="text-right">@Model.TotalVideo</td>
-                <td class="text-right">@Model.TotalVideoView</td>
+                <td class="text-center" width="20%">@ViewResources.Total</td>
+                <td class="text-right" width="20%">@Model.TotalPost</td>
+                <td class="text-right" width="20%">@Model.TotalPostView</td>
+                <td class="text-right" width="20%">@Model.TotalVideo</td>
+                <td class="text-right" width="20%">@Model.TotalVideoView</td>
             </tr>
         </tfoot>
     </table>

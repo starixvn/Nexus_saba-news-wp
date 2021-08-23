@@ -95,7 +95,6 @@ body {
             font-size: 1.4rem;
             border: 1px solid #D7D7D7;
             padding: 1rem;
-            width: 20%;
             a {
                 text-decoration: none;
                 color: #0052CC;
@@ -113,13 +112,7 @@ body {
     }
 }
 
-.table-detail-view {
-    table {
-        td {
-            width: auto;
-        }
-    }
-}
+
 
 .main-admin {
     padding-left: 27rem;

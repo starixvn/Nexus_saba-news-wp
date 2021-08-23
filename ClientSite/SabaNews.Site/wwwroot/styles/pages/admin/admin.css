@@ -527,8 +527,7 @@ body {
       color: #424242;
       font-size: 1.4rem;
       border: 1px solid #D7D7D7;
-      padding: 1rem;
-      width: 20%; }
+      padding: 1rem; }
       .table-admin table td a {
         text-decoration: none;
         color: #0052CC; }
@@ -537,9 +536,6 @@ body {
       font-weight: bold; }
       .table-admin table tfoot td {
         font-size: 1.8rem; }
-
-.table-detail-view table td {
-  width: auto; }
 
 .main-admin {
   padding-left: 27rem; }

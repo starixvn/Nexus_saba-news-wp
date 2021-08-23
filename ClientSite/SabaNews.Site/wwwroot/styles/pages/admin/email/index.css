@@ -593,9 +593,6 @@ button {
       text-decoration: none;
       color: #0052CC; }
 
-.table-detail-view table td {
-  width: auto; }
-
 .label {
   font-size: 1.2rem;
   border-radius: 3px;
