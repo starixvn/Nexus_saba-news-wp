@@ -65,7 +65,7 @@ BEGIN
     GROUP BY tmp_p.PostId
     ORDER BY CASE WHEN viewSortType = 'desc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END DESC
 			 ,CASE WHEN viewSortType = 'asc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END
-             ,CASE WHEN viewSortType = '' THEN p.post_date END
+             ,p.post_date DESC
     LIMIT startIndex, pageSize;
 
     DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
