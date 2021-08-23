@@ -146,7 +146,7 @@
 
         public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
-            var rawQuery = string.Concat("(LOWER(p.post_title) like CONCAT('%',CONVERT('", criteria._Keyword.ToLower(), "', BINARY), '%')) ");
+            var rawQuery = string.Concat("(LOWER(p.post_title) like CONCAT('%',CONVERT('", criteria._Keyword.ToLower(), "', BINARY), ' %')) ");
             criteria._LikeKeyWord = rawQuery;
             var posts = await baseService.GetDataAsync<Post>(criteria);
            
