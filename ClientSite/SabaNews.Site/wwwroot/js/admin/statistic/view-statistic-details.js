@@ -43,15 +43,14 @@
         $("#view-sort").on("click", function () {
             var currentType = $(this).attr("sort-type");
             var pageSize = $('#page-size').val();
-            var currentPage = $('.items-pagination.active .paging').data('page');
             if (!currentType) {
                 currentType = "desc";
-                getViewDetails(currentType, currentPage, pageSize);
+                getViewDetails(currentType, 1, pageSize);
                 return;
             }
 
             currentType = currentType === "desc" ? "asc" : "desc";
-            getViewDetails(currentType, currentPage, pageSize);
+            getViewDetails(currentType, 1, pageSize);
         });
     }
 
