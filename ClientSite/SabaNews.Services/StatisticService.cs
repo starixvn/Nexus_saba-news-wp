@@ -56,7 +56,7 @@
             return result.OrderBy(x => x.PostDate);
         }
 
-        public async Task<ValueTuple<IEnumerable<ViewDetails>, int>> GetPostViewDetails(DateTime createdDate, bool isVideo, int pageIndex, int pageSize)
+        public async Task<ValueTuple<IEnumerable<ViewDetails>, int, int>> GetPostViewDetails(DateTime createdDate, bool isVideo, int pageIndex, int pageSize)
         {
             var criteria = new GetViewDetailOnDateCriteria
             {
@@ -68,7 +68,7 @@
 
             var details = await baseService.GetDataAsync<ViewDetails>(criteria);
 
-            return (details, criteria.TotalItems);
+            return (details, criteria.TotalItems, criteria.TotalViews);
         }
     }
 }

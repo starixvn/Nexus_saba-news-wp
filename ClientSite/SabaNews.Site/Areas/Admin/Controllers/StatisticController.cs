@@ -58,7 +58,7 @@
         [HttpPost]
         public async Task<IActionResult> GetViewDetails(ViewDetailsQueryViewModel query)
         {
-            var (viewDetails, totalItems) = await statisticService.GetPostViewDetails(query.CreatedDate.Value, query.IsVideo, query.PageIndex, query.PageSize);
+            var (viewDetails, totalItems, totalViews) = await statisticService.GetPostViewDetails(query.CreatedDate.Value, query.IsVideo, query.PageIndex, query.PageSize);
 
             if (!string.IsNullOrWhiteSpace(query.ViewSort))
             {
@@ -76,11 +76,11 @@
                 ViewDetails = viewDetails,
                 CreatedDate = query.CreatedDate.Value,
                 Type = query.IsVideo ? ViewResources.Videos : ViewResources.Articles,
-                Quantity = viewDetails.Count(),
+                Quantity = totalItems,
                 ViewSort = query.ViewSort,
                 Tooltip = query.IsVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
                 IsVideo = query.IsVideo,
-                TotalView = viewDetails.Sum(x => x.TotalViews),
+                TotalView = totalViews,
                 Paging = paging
             };
 

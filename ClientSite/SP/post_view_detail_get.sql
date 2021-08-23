@@ -6,7 +6,8 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_detail_get`(
     isVideo BIT,
     pageIndex INT,
     pageSize INT,
-    OUT totalItems INT
+    OUT totalItems INT,
+    OUT totalViews INT
 )
 BEGIN
     DECLARE startIndex INT DEFAULT 0;
@@ -44,6 +45,12 @@ BEGIN
             THEN 1 ELSE 0 END);
 	
     SELECT COUNT(*) FROM tmpPosts INTO totalItems; 
+
+    SELECT SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END)
+    FROM tmpPosts tmp_p
+    INNER JOIN wp_posts p ON tmp_p.PostId = p.ID
+    LEFT JOIN wp_postview_details pd ON tmp_p.PostId = pd.post_id
+    INTO totalViews; 
 
     SELECT tmp_p.PostId
           ,p.post_title As Title
