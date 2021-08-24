@@ -1,15 +1,15 @@
-DROP PROCEDURE IF EXISTS search_posts_xtest;
+DROP PROCEDURE IF EXISTS search_posts;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `search_posts_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `search_posts`(
 	_keyword TEXT,
     _likeKeyWord TEXT,
     _start INT,
     _end INT,
     OUT TotalItems INT
 )
-BEGIN
+search_posts:BEGIN
     DECLARE keyLength INT;
     DECLARE s TEXT;
     DROP TEMPORARY TABLE IF EXISTS tmpResult;
@@ -29,17 +29,37 @@ BEGIN
 	DROP TEMPORARY TABLE IF EXISTS tmpSearchLike;
 	CREATE TEMPORARY TABLE tmpSearchLike(ID INT, Score INT);
     
-	SELECT length(_keyword) INTO keyLength;
-    IF(keyLength > 1) THEN
-		SET @s = CONCAT("INSERT INTO tmpSearchLike(ID, Score)",
-						" SELECT p.ID,  3 as Score "
-						" FROM wp_posts p",
-						" WHERE ", _likeKeyWord ,
-						" AND p.post_type = 'post' AND p.post_status = 'publish'");
-		PREPARE stmt FROM @s;
-		EXECUTE stmt;
-		DEALLOCATE PREPARE stmt;
+	SELECT char_length(_keyword) INTO keyLength;
+
+    IF(keyLength <= 2) THEN
+		SELECT p.ID, p.post_title,p.post_date, p.post_date_gmt, p.post_content, p.post_name, pp.guid as feature_image, p.post_excerpt,pm.meta_value as metadata, p.comment_count
+		FROM wp_posts p
+		LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
+		LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value and pp.post_type = "attachment"
+		LEFT JOIN wp_postmeta as pm ON pm.post_id = m.meta_value AND pm.meta_key = "_wp_attachment_metadata"
+		WHERE (LOWER(p.post_title) like CONCAT('% ',CONVERT(LOWER(_keyword), BINARY), ' %'))
+		AND p.post_type = 'post' 
+		AND p.post_status = 'publish'
+        ORDER BY p.post_date desc
+        LIMIt _start, _end;
+        
+        SELECT count(*) 
+        INTO TotalItems
+        FROM wp_posts p 
+        WHERE (LOWER(p.post_title) like CONCAT('% ',CONVERT(LOWER(_keyword), BINARY), ' %'))
+		AND p.post_type = 'post' 
+		AND p.post_status = 'publish'; 
+        LEAVE search_posts;
     END IF;
+    
+	SET @s = CONCAT("INSERT INTO tmpSearchLike(ID, Score)",
+					" SELECT p.ID,  3 as Score "
+					" FROM wp_posts p",
+					" WHERE ", _likeKeyWord ,
+					" AND p.post_type = 'post' AND p.post_status = 'publish'");
+	PREPARE stmt FROM @s;
+	EXECUTE stmt;
+	DEALLOCATE PREPARE stmt;
     
     INSERT INTO tmpResult(ID, post_title, Score, post_date, post_date_gmt, post_content, post_name, feature_image, post_excerpt, metadata, comment_count)
 	SELECT p.ID, 
