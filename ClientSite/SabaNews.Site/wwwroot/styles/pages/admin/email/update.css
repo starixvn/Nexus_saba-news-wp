@@ -171,14 +171,21 @@ button {
   --ck-sample-editor-z-index: 10; }
 
 /* --------- EDITOR STYLES  ---------------------------------------------------------------------------------------- */
-.table {
+.template .table {
   background-color: transparent !important; }
 
-.table td, .table th {
+.template .table td, .template .table th {
   border: none !important; }
 
-.table table {
+.template .table table {
   border: none !important; }
+
+.template .ck-content .table table {
+  border: none !important; }
+
+.template figure {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important; }
 
 .ck-content * {
   all: revert;

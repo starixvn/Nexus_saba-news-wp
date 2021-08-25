@@ -139,17 +139,21 @@ button {
   margin: revert;
   padding: revert; }
 
-.table {
+.template .table {
   background-color: transparent !important; }
 
-.table td, .table th {
+.template .table td, .template .table th {
   border: none !important; }
 
-.table table {
+.template .table table {
   border: none !important; }
 
-.ck-content .table table {
+.template .ck-content .table table {
   border: none !important; }
+
+.template figure {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important; }
 
 /* ckeditor5-font/theme/fontsize.css */
 .ck-content .text-tiny {

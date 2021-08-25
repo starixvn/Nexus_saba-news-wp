@@ -15,15 +15,27 @@
 }
 
 /* --------- EDITOR STYLES  ---------------------------------------------------------------------------------------- */
-.table {
-    background-color: transparent !important;
-}
+.template {
+    .table {
+        background-color: transparent !important;
+    }
 
-.table td, .table th {
-    border: none !important;
-}
-.table table {
-    border: none !important;
+    .table td, .table th {
+        border: none !important;
+    }
+
+    .table table {
+        border: none !important;
+    }
+
+    .ck-content .table table {
+        border: none !important;
+    }
+
+    figure {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
 }
 .ck-content * {
     all: revert;
