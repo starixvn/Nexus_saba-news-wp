@@ -20,6 +20,7 @@
             --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2);
             --ck-todo-list-checkmark-size: 16px;
         }
+
 		.ck-content * {
 			word-wrap: break-word;
 			margin: revert;
@@ -397,6 +398,29 @@
             background: var(--ck-color-mention-background);
             color: var(--ck-color-mention-text);
         }
+
+		.template .table {
+			
+			background-color: transparent !important;
+		}
+
+		.template .table td, .table th {
+			border: none !important;
+		}
+
+		.template .table table {
+			border: none !important;
+		}
+
+		.ck-content .template .table table {
+			border: none !important;
+		}
+
+		.template figure {
+			margin-bottom: 0 !important;
+			margin-top: 0 !important;
+		}
+
 
 		.footer {
 			text-align: center;

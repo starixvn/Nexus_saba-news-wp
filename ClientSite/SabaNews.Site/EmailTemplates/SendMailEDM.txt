@@ -407,6 +407,27 @@
                 display: none;
             }
         }
+        .template .table {
+			
+			background-color: transparent !important;
+		}
+
+		.template .table td, .table th {
+			border: none !important;
+		}
+
+		.template .table table {
+			border: none !important;
+		}
+
+		.ck-content .template .table table {
+			border: none !important;
+		}
+
+		.template figure {
+			margin-bottom: 0 !important;
+			margin-top: 0 !important;
+		}
         .footer {
 			text-align: center;
 			color: #6d6a6a;
