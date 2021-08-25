@@ -73,7 +73,7 @@
 							<div class="card-title-wrapper card-item-@i">
 								<a class="title" href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
 								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-									@{ string featuredImg = Model.NewPosts[i].GetImageBySize(ImageWidth.Width500);
+									@{ string featuredImg = Model.NewPosts[i].FeatureImage;
 
 										<picture>
 											<source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
@@ -172,7 +172,7 @@
 					{
 						<div class="card-vertical">
 							<a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image">
-								@{ string footballImg = post.GetImageBySize(ImageWidth.Width500);
+								@{ string footballImg = post.FeatureImage;
 									<picture>
 										<source srcset="@Url.Content(footballImg)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(footballImg)" type="image/jpeg" class="img-res">
@@ -198,8 +198,8 @@
 					{
 						<div class="card-vertical">
 							<a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__image">
-								@{ short imgGuessSize =ImageWidth.Width500;
-									string guessImgUrl = post.GetImageBySize(imgGuessSize);
+								@{ //short imgGuessSize =ImageWidth.Width500;
+									string guessImgUrl = post.FeatureImage;
 
 									<picture>
 										<source srcset="@Url.Content(guessImgUrl)" type="image/webp" class="img-res">
@@ -227,8 +227,8 @@
 					<div class="block__content">
 						<div class="card-horizontal card-horizontal-highlight card-item-1">
 							<a href="@Url.Action("Single", "Post", new { slug = Model.BackstagePosts[0].Slug  })" class="card-horizontal__image">
-								@{ short backstageSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
-									string backstageImg = Model.BackstagePosts[0].GetImageBySize(backstageSize);
+								@{ //short backstageSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
+									string backstageImg = Model.BackstagePosts[0].FeatureImage;
 
 									<picture>
 										<source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
@@ -256,8 +256,8 @@
 						{
 							<div class="card-vertical card-vertical-highlight card-item-@(i+1)">
 								<a href="@Url.Action("Single", "Post", new { slug = Model.BackstagePosts[i].Slug  })" class="card-vertical__image">
-									@{ backstageSize = ImageWidth.Width500;
-										backstageImg = Model.BackstagePosts[i].GetImageBySize(backstageSize);
+									@{// backstageSize = ImageWidth.Width500;
+										backstageImg = Model.BackstagePosts[i].FeatureImage;
 
 										<picture>
 											<source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
@@ -283,7 +283,7 @@
 						{
 							<div class="card-horizontal">
 								<a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-horizontal__image">
-									@{ string transferImg = post.GetImageBySize(ImageWidth.Width500); }
+									@{ string transferImg = post.FeatureImage; }
 									<picture>
 										<source srcset="@Url.Content(transferImg)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(transferImg)" type="image/jpeg" class="img-res">
@@ -311,7 +311,7 @@
 					<div class="card-vertical card-vertical-highlight">
 						<a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__image">
 							@{ short otherImgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-								string otherFirstImgUrl = Model.OtherPosts[0].GetImageBySize(imgSize); }
+								string otherFirstImgUrl = Model.OtherPosts[0].FeatureImage; }
 							<picture>
 								<source srcset="@Url.Content(otherFirstImgUrl)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(otherFirstImgUrl)" type="image/jpeg" class="img-res">
@@ -325,7 +325,7 @@
 					<div class="list-card">
 						@for (int i = 1; i < Model.OtherPosts.Length; i++)
 						{
-							string otherImg = Model.OtherPosts[i].GetImageBySize(ImageWidth.Width500);
+							string otherImg = Model.OtherPosts[i].FeatureImage;
 							<div class="card-vertical">
 								<a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[i].Slug })" class="card-vertical__image">
 									<picture>
