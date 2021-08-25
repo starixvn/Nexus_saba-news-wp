@@ -44,8 +44,8 @@
 					</custom-image>
 					<div class="card-vertical card-vertical-highlight">
 						<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
-							@{ short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-								string firstImgUrl = Model.NewPosts[0].GetImageBySize(imgSize);
+							@{ //short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+								string firstImgUrl = Model.NewPosts[0].FeatureImage;
 
 								<picture>
 									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
