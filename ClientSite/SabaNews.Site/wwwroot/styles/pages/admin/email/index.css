@@ -139,16 +139,16 @@ button {
   margin: revert;
   padding: revert; }
 
-.template .table {
+.template .table, .table .table {
   background-color: transparent !important; }
 
-.template .table td, .template .table th {
+.template .table td, .table th {
   border: none !important; }
 
 .template .table table {
   border: none !important; }
 
-.template .ck-content .table table {
+.ck-content .template .table table {
   border: none !important; }
 
 .template figure {

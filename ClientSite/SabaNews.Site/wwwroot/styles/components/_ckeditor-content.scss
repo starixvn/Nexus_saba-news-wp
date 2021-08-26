@@ -22,28 +22,28 @@
     padding: revert;
 }
 
-.template {
-    .table {
-        background-color: transparent !important;
-    }
 
-    .table td, .table th {
-        border: none !important;
-    }
-
-    .table table {
-        border: none !important;
-    }
-
-    .ck-content .table table {
-        border: none !important;
-    }
-
-    figure {
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-    }
+.template .table, .table .table {
+    background-color: transparent !important;
 }
+
+.template .table td, .table th {
+    border: none !important;
+}
+
+.template .table table {
+    border: none !important;
+}
+
+.ck-content .template .table table {
+    border: none !important;
+}
+
+.template figure {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
 
 
 /* ckeditor5-font/theme/fontsize.css */

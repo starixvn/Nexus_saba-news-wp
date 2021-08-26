@@ -7,6 +7,8 @@ var configCkeditor = (function ($) {
             .create(document.querySelector(element), {
                 extraPlugins: [CustomUpload],
                 inlineStyles: true,
+                autoParagraph: false,
+                enterMode: 2,
                 toolbar: {
                     items: [
                         'heading',
