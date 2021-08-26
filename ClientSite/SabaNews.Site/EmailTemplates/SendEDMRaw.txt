@@ -3,6 +3,12 @@
 <head>
     <title>Send email event</title>
     <style>
+        * {
+			word-wrap: break-word;
+            margin: revert;
+            padding: revert;
+        }
+			
         .footer {
 			text-align: center;
 			color: #6d6a6a;
