@@ -146,6 +146,9 @@
 
         public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
+            if (string.IsNullOrEmpty(criteria._Keyword)) {
+                return null; 
+            }
             criteria._Keyword = Regex.Replace(criteria._Keyword, "[:!@#$%^&*()}{|:?><\\[\\]\\;'/,~]", string.Empty);
             var words = criteria._Keyword.Split(" ");
             var rawQuery = "(";
