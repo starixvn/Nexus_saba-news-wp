@@ -135,9 +135,7 @@
 
         public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
-        public const string OlympicTokyoTag = "olympic-tokyo";
-        public const string PremierLeagueTag = "ngoai-hang-anh-2021-22";
-        public const string SeriaA = "serie-a-2021-22";
+        public const string EventLink = "la-liga-2021-22";
         public const string ProfileIndexPage = "Index";
         public const string ProfileListPostsPage = "ListSavedPosts";
         public const string ProfileSendMailPage = "SendMail";
