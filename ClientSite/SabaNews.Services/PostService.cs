@@ -149,21 +149,17 @@
             if (string.IsNullOrEmpty(criteria._Keyword)) {
                 return null; 
             }
-            criteria._Keyword = Regex.Replace(criteria._Keyword, "[:!@#$%^&*()}{|:?><\\[\\]\\;'/,~]", string.Empty);
+            criteria._Keyword = criteria._Keyword.Replace("\\", "");
+            criteria._Keyword = Regex.Replace(criteria._Keyword, "[:!@#$%^&*()}{|:?><\\[\\]\\;'/,~/g]", string.Empty);
             var words = criteria._Keyword.Split(" ");
             var rawQuery = "(";
-            var i = 0;
+            var orClause = ""; 
             foreach (var word in words)
             {
                 if (!string.IsNullOrEmpty(word))
                 {
-                    var OR = "";
-                    if (i > 0)
-                    {
-                        OR = "OR";
-                    }
-                    rawQuery = string.Concat(rawQuery, OR, " LOWER(p.post_title) like CONCAT('%',CONVERT('", word.ToLower(), "', BINARY), '%') ");
-                    i++;
+                    rawQuery = string.Concat(rawQuery, orClause, " LOWER(p.post_title) like CONCAT('%',CONVERT('", word.ToLower().Trim(), "', BINARY), '%') ");
+                    orClause = "OR";
                 }
 
             }
