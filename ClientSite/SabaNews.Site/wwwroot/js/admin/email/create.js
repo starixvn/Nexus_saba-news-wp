@@ -1,12 +1,12 @@
 ﻿var edmCreate = (function ($) {
-    configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
+   // configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
     var form = 'form#form-sendmail';
     function HandleValidate() {
         var isValid = true;
-        if (editorValue.getData().trim() === "") {
-            $('.email_content .help-block').html('Email Content is required');
-            isValid = false;
-        }
+        //if (editorValue.getData().trim() === "") {
+        //    $('.email_content .help-block').html('Email Content is required');
+        //    isValid = false;
+        //}
         if ($('input[name="emailTitle"]').val() === "") {
             $('input[name="emailTitle"]').addClass('has-error');
             $('.email_title .help-block').html('Subject is required');
@@ -95,7 +95,8 @@
         var isValid = HandleValidate();
         if (!isValid) return false;
         var data = $(form).serialize();
-        data += "&emailContent=" + encodeURIComponent(editorValue.getData());
+        var emailContent = CKEDITOR.instances.emailContent.getData();
+        data += "&emailContent=" + encodeURIComponent(emailContent);
         $('.button').prop('disabled', true);
         $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
         $.ajax({

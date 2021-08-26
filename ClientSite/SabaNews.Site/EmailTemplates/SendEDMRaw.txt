@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Send email event</title>
+    <style>
+        .footer {
+			text-align: center;
+			color: #6d6a6a;
+		}
+
+		.footer a {
+			text-decoration: none;
+			color: #6d6a6a;
+		}
+
+		.footer .action_link a {
+			text-decoration:underline
+        }
+
+    </style>
+</head>
+<body>
+
+<div>
+    {content}
+    <div style="clear:both"></div>
+    <div class="footer">
+        <p>Email này được gửi đến bạn từ Saba Sports Việt Nam.</p>
+         <table style="margin: 0 auto">
+                <tr>
+                    <td style="border-left: solid 20px #ffffff">
+                        <a href="https://www.facebook.com/sabasportsvietnam">
+                            <img src="{baseUrl}/images/icon/social-facebook.png" alt="facebook" />
+                        </a>
+                    </td>
+                    <td style="border-left: solid 20px #ffffff">
+                        <a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ">
+                            <img src="{baseUrl}/images/icon/social-youtube.png" alt="youtube" />
+                        </a>
+                    </td>
+                    <td style="border-left: solid 20px #ffffff">
+                        <a href="https://www.tiktok.com/@saba_sports">
+                            <img src="{baseUrl}/images/icon/social-tiktok.png" alt="tiktok" />
+                        </a>
+                    </td>
+                </tr> 
+            </table>
+        <p class="action_link">
+            <a href="{unsubscribeLink}">Bỏ theo dõi</a> | 
+            <a href="{baseUrl}">vn.sabasports.com</a>
+        </p>
+    </div>
+</div>
+
+
+
+</body>
+</html>

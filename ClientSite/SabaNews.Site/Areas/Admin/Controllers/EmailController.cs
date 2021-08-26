@@ -25,7 +25,7 @@
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
-        private const string SendMailTemplate = "EmailTemplates//SendMailEDM.txt";
+        private const string SendMailTemplate = "EmailTemplates//SendEDMRaw.txt";
         private readonly string baseUrl;
         public EmailController(
             IProfileService profileService,
@@ -211,9 +211,10 @@
             return Json(result);
         }
 
-        public async Task<ActionResult> UploadImageSendMail(IFormFile file)
+        [HttpPost]
+        public async Task<ActionResult> UploadImageSendMail(IFormFile upload)
         {
-            string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+            string filename = ContentDispositionHeaderValue.Parse(upload.ContentDisposition).FileName.Trim('"');
             filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename;
             string filePath = "";
@@ -221,7 +222,7 @@
             try
             {
                 using FileStream output = System.IO.File.Create(GetPathAndFilename(filename));
-                await file.CopyToAsync(output);
+                await upload.CopyToAsync(output);
                 filePath = output.Name;
             }
             catch (Exception ex)
@@ -230,7 +231,20 @@
             }
             string linkPhoto = "uploads/" + filename;
             string url = string.Concat(baseUrl, linkPhoto);
-            return Json(new { url, filePath, error });
+            return new JsonResult(new { path = url });
+        }
+
+        [HttpGet]
+        public IActionResult FileBrowse()
+        {
+            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath("//uploads"));
+            var model = new FileBrowseViewModel
+            {
+                FileInfos = dir.GetFiles(),
+                BaseUrl = baseUrl
+            };
+            ViewBag.fileInfos = dir.GetFiles();
+            return View("FileBrowse", model);
         }
 
 

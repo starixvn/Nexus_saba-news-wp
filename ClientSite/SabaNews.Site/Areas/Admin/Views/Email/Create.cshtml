@@ -8,7 +8,16 @@
 }
 
 @section Scripts{
-    <script src="~/js/ckeditor5/build/ckeditor.js"></script>
+	<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+	<script>
+        CKEDITOR.replace('emailContent', {
+            allowedContent: true,
+            height: 400,
+            filebrowserUploadUrl: '/Admin/Email/UploadImageSendMail',
+            filebrowserUploadMethod: 'form',
+			filebrowserBrowseUrl: '/Admin/Email/FileBrowse'
+        });
+	</script>
     <script src="~/minify/js/admin_email_create.min.js" asp-append-version="true"></script>
 }
 

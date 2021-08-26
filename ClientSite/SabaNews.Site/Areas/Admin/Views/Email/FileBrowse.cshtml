@@ -1,0 +1,24 @@
+﻿
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		var funcNum = @(Context.Request.Query["CKEditorFuncNum"] + ";");
+		var baseUrl = '@(Model.BaseUrl)';
+		$('#fileExplorer').on('click', 'img', function () {
+			var fileUrl = baseUrl + '/uploads/' + $(this).attr('title');
+			window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+			window.close();
+		}).hover(function () {
+			$(this).css('cursor', 'pointer')
+		});
+	});
+</script>
+
+
+<div id="fileExplorer">
+	@foreach (var fileInfo in Model.FileInfos)
+	{ 
+		<img src="~/uploads/@fileInfo.Name" title="@fileInfo.Name" width="120" />
+	}
+</div>
