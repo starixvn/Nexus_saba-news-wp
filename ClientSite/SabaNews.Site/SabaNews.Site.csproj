@@ -102,6 +102,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Update="EmailTemplates\SendEDMRaw.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="EmailTemplates\SendMailEDM.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

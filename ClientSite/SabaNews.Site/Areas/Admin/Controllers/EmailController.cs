@@ -25,7 +25,7 @@
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
-        private const string SendMailTemplate = "EmailTemplates//SendMailEDM.txt";
+        private const string SendMailTemplate = "EmailTemplates//SendEDMRaw.txt";
         private readonly string baseUrl;
         public EmailController(
             IProfileService profileService,
