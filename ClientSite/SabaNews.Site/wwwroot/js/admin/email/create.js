@@ -166,7 +166,7 @@
             }
             $('#TestSendEmail').modal('hide');
             var data = $(form).serialize();
-            data += "&emailContent=" + encodeURIComponent(editorValue.getData());
+            data += "&emailContent=" + encodeURIComponent(CKEDITOR.instances.emailContent.getData());
             data += "&emailAddress=" + $('input[name=emailAddress]').val();
             $.ajax({
                 url: "/Admin/Email/TestSendEmail",
