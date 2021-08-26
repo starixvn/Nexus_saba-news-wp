@@ -12,5 +12,6 @@
         public string OgDescription { get; set; }
         public string OgTitle { get; set; }
         public string SEOTitle { get; set; }
+        public string Url { get; set; }
     }
 }

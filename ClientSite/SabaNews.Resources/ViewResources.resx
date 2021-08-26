@@ -666,4 +666,7 @@
   <data name="BackToPostStatistic" xml:space="preserve">
     <value>Back to Post Statistic</value>
   </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>SABA Sports</value>
+  </data>
 </root>

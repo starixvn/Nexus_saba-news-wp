@@ -1393,6 +1393,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SABA Sports.
+        /// </summary>
+        public static string SiteName {
+            get {
+                return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sân vận động.
         /// </summary>
         public static string Stadium {

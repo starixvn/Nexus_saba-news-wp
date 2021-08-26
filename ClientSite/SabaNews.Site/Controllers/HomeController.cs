@@ -173,7 +173,7 @@
                 }
                 else
                 {
-                    description = string.Concat(description, post.PostTitle, ";");
+                    description = string.Concat(description, post.PostTitle, "; ");
                 }
             }
             var ViewData = new ViewData
@@ -191,7 +191,8 @@
             {
                 OgDescription = description,
                 OgTitle = string.Concat(tag, " | ", Constants.SiteName),
-                OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg")
+                OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
+                Url = Url.Action("Tag", "Home", new { tagname = tagname }, Request.Scheme)
             };
             var Model = new CategoryViewModel
             {
