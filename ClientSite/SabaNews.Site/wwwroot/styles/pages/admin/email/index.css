@@ -778,7 +778,8 @@ button {
       display: flex;
       align-items: center;
       margin-right: 1rem;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      margin-top: 0; }
       .modal .modal-body .form-radio .raido-custom:last-child {
         margin-right: 0; }
       .modal .modal-body .form-radio .raido-custom input[type=radio] {
@@ -792,6 +793,9 @@ button {
   justify-content: flex-end; }
   .modal .button-confirm .confirm-action {
     margin-right: 1rem; }
+
+#TestSendEmail .button-confirm {
+  padding: 0; }
 
 .page-table-control .list-input {
   cursor: unset;

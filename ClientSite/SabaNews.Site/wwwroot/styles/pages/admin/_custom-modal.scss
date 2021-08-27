@@ -87,7 +87,7 @@
                 align-items: center;
                 margin-right: 1rem;
                 margin-bottom: 0;
-
+                margin-top : 0;
                 &:last-child {
                     margin-right: 0;
                 }
@@ -109,6 +109,11 @@
         .confirm-action {
             margin-right: 1rem;
         }
+    }
+}
+#TestSendEmail{
+    .button-confirm {
+        padding : 0;
     }
 }
 
