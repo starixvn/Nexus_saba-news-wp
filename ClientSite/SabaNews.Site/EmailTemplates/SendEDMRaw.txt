@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div>
+<div style="word-break:break-all;">
     {content}
     <div style="clear:both"></div>
     <div class="footer">
