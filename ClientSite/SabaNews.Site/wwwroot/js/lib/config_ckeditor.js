@@ -1,4 +1,5 @@
 ﻿var editorValue;
+//call configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
 var configCkeditor = (function ($) {
     var url = "";
     function configContentForm(element, urlUpload) {

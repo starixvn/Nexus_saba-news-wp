@@ -1,12 +1,20 @@
 ﻿var edmCreate = (function ($) {
-   // configCkeditor.configContentForm('#emailContent', '/Admin/Email/UploadImageSendMail');
     var form = 'form#form-sendmail';
+    function ConfigCkeditorContent() {
+        CKEDITOR.replace('emailContent', {
+            allowedContent: true,
+            height: 400,
+            filebrowserUploadUrl: '/Admin/Email/UploadImageSendMail',
+            filebrowserUploadMethod: 'form',
+            filebrowserBrowseUrl: '/Admin/Email/FileBrowse'
+        });
+    }
     function HandleValidate() {
         var isValid = true;
-        //if (editorValue.getData().trim() === "") {
-        //    $('.email_content .help-block').html('Email Content is required');
-        //    isValid = false;
-        //}
+        if (CKEDITOR.instances.emailContent.getData().trim() === "") {
+            $('.email_content .help-block').html('Email Content is required');
+            isValid = false;
+        }
         if ($('input[name="emailTitle"]').val() === "") {
             $('input[name="emailTitle"]').addClass('has-error');
             $('.email_title .help-block').html('Subject is required');
@@ -202,6 +210,7 @@
     }
    
     function init() {
+        ConfigCkeditorContent();
         HandleProcessForm();
         HandleClick();
         HandleTestSendEmail();

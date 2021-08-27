@@ -1,6 +1,6 @@
 ﻿
-<script src="/lib/jquery/dist/jquery.min.js"></script>
-<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/ckeditor4/ckeditor.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		var funcNum = @(Context.Request.Query["CKEditorFuncNum"] + ";");
@@ -19,6 +19,6 @@
 <div id="fileExplorer">
 	@foreach (var fileInfo in Model.FileInfos)
 	{ 
-		<img src="~/uploads/@fileInfo.Name" title="@fileInfo.Name" width="120" />
+		<img src="~/uploads/@fileInfo.Name" title="@fileInfo.Name" width="120" height="100" />
 	}
 </div>
