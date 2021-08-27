@@ -187,6 +187,9 @@ button {
     margin: revert;
     padding: revert;
 }*/
+* {
+  overflow-wrap: break-word; }
+
 .main-list .custom-with-input {
   width: 100%;
   max-width: 80rem; }

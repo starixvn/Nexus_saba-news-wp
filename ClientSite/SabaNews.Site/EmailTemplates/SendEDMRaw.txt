@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<div style="word-break:break-all;">
+<div style="hyphens: none;">
     {content}
     <div style="clear:both"></div>
     <div class="footer">
