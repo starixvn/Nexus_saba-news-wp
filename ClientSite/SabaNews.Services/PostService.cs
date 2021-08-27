@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -151,19 +152,7 @@
             }
             criteria._Keyword = criteria._Keyword.Replace("\\", "");
             criteria._Keyword = Regex.Replace(criteria._Keyword, "[:!@#$%^&*()}{|:?><\\[\\]\\;'/,~/g]", string.Empty);
-            var words = criteria._Keyword.Split(" ");
-            var rawQuery = "(";
-            var orClause = ""; 
-            foreach (var word in words)
-            {
-                if (!string.IsNullOrEmpty(word))
-                {
-                    rawQuery = string.Concat(rawQuery, orClause, " LOWER(p.post_title) like CONCAT('%',CONVERT('", word.ToLower().Trim(), "', BINARY), '%') ");
-                    orClause = "OR";
-                }
-
-            }
-            rawQuery = string.Concat("(LOWER(p.post_title) like CONCAT('%',CONVERT('", criteria._Keyword.ToLower(), "', BINARY), ' %')) ");
+            var rawQuery = string.Concat("(LOWER(p.post_title) like CONCAT('%',CONVERT('", criteria._Keyword.ToLower(CultureInfo.InvariantCulture), "', BINARY), ' %')) ");
             criteria._LikeKeyWord = rawQuery;
             var posts = await baseService.GetDataAsync<Post>(criteria);
            
