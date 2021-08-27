@@ -192,7 +192,7 @@
                 OgDescription = description,
                 OgTitle = string.Concat(tag, " | ", Constants.SiteName),
                 OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
-                Url = Url.Action("Tag", "Home", new { tagname = tagname }, Request.Scheme)
+                Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
             };
             var Model = new CategoryViewModel
             {

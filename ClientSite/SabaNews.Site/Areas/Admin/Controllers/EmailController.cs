@@ -217,13 +217,11 @@
             string filename = ContentDispositionHeaderValue.Parse(upload.ContentDisposition).FileName.Trim('"');
             filename = EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename;
-            string filePath = "";
             string error = "";
             try
             {
                 using FileStream output = System.IO.File.Create(GetPathAndFilename(filename));
                 await upload.CopyToAsync(output);
-                filePath = output.Name;
             }
             catch (Exception ex)
             {
@@ -231,7 +229,7 @@
             }
             string linkPhoto = "uploads/" + filename;
             string url = string.Concat(baseUrl, linkPhoto);
-            return new JsonResult(new { path = url });
+            return new JsonResult(new { path = url , error});
         }
 
         [HttpGet]
