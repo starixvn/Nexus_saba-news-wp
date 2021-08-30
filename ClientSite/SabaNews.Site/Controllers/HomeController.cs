@@ -146,7 +146,7 @@
                 ViewData = ViewData
             };
 
-            var view = posts != null ? Constants.BlogView : Constants.EmptyBlogView;
+            var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, Model);
         }
 
