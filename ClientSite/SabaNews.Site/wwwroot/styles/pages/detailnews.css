@@ -1991,6 +1991,9 @@ img {
     height: 4.7rem;
     line-height: 47px; }
 
+.instagram-media {
+  margin: 2rem auto !important; }
+
 @media screen and (min-width: 320px) {
   .detail-content-table ul {
     width: 100%;
