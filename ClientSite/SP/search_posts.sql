@@ -78,13 +78,13 @@ search_posts:BEGIN
     LEFT JOIN wp_postmeta as pm ON pm.post_id = m.meta_value AND pm.meta_key = "_wp_attachment_metadata"
     WHERE MATCH(p.post_title, p.post_content) AGAINST (_keyword IN NATURAL LANGUAGE MODE)
     AND p.post_type = 'post' 
-    AND p.post_status = 'publish';
+    AND p.post_status = 'publish'
+    ORDER BY Score desc, p.post_date desc;
     
     SELECT count(*) INTO TotalItems FROM tmpResult;
     
     SELECT * 
     FROM tmpResult t 
-    ORDER BY t.Score desc, t.post_date desc
     LIMIt _start, _end;
     
     DROP TEMPORARY TABLE IF EXISTS tmpResult;
