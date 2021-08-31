@@ -132,8 +132,7 @@
             var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
             var originalUrl = "";
             if (email.EmbeddedLink != null && email.EmbeddedLink.Contains(Constants.ReturnUrl)) {
-                int indexString = email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length;
-                originalUrl = email.EmbeddedLink[(indexString + 1)..];
+                originalUrl = email.EmbeddedLink[(email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length + 1)..];
             }
            
             var model = new EmailEditViewModel
