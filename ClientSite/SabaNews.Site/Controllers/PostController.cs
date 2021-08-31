@@ -10,6 +10,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
 
@@ -42,7 +43,7 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            var postParam = new PostParam
+            var postParam = new GetRecentPostsParam
             {
                 Slug = Constants.VideoSlug,
                 Start = Constants.FromFirstItem,
@@ -62,7 +63,7 @@
             var models = new SingleViewModel
             {
                 SinglePost = post,
-                RecentPosts = recentPosts.Posts,
+                RecentPosts = recentPosts,
                 IsLogin = isLogin,
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",

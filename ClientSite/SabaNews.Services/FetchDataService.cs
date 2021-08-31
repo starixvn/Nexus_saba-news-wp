@@ -8,6 +8,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Criteria;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
 
@@ -22,7 +23,7 @@
 
         public async Task<PostViewModel> GetHomePageViewModel()
         {
-            var paramGetRecent = new PostParam
+            var paramGetRecent = new GetRecentPostsParam
             {
                 Slug = Constants.VideoSlug,
                 Start = Constants.FromFirstItem,
@@ -40,7 +41,7 @@
 
             var viewModel = new PostViewModel
             {
-                NewPosts = (newPosts.Posts).ToArray(),
+                NewPosts = (newPosts).ToArray(),
                 FootballPosts = (footballPosts).ToArray(),
                 OtherPosts = (otherPosts).ToArray(),
                 TennisPosts = (tennisPosts).ToArray(),
@@ -63,31 +64,35 @@
                 controller = "video";
             }
             var start = (page - 1) * perPage;
-            var paramGetRecent = new PostParam
+            IEnumerable<Post> posts;
+            int totalItems;
+            if (slug == Constants.NewPostSlug)
             {
-                Slug = Constants.VideoSlug,
-                Start = start,
-                End = perPage
-            };
-            var paramGetCategory = new PostParam
-            { 
-                Slug = slug,
-                Start = start,
-                End = perPage
-            };
-            paramGetCategory.Slug = slug;
-            var postTemplate = slug == Constants.NewPostSlug ? 
-                await postService.GetRecentPostsAsync(paramGetRecent) : 
-                await postService.GetPostsByCateSlugAsync(paramGetCategory);
-            
-
-            if (!postTemplate.Posts.Any())
+                var paramGetRecent = new GetRecentPostsParam
+                {
+                    Slug = Constants.VideoSlug,
+                    Start = start,
+                    End = perPage
+                };
+                posts = await postService.GetRecentPostsAsync(paramGetRecent);
+                totalItems = paramGetRecent.TotalIItems;
+            }
+            else
+            {
+                var paramGetCategory = new GetPostsByCateSlugCriteria
+                {
+                    _CategorySlug = slug,
+                    _Start = start,
+                    _End = perPage
+                };
+                posts = await postService.GetPostsByCateSlugAsync(paramGetCategory);
+                totalItems = paramGetCategory.TotalItems;
+            }
+            if (!posts.Any())
             {
                 return null;
             }
             var cate = await postService.GetCateDetailAsync(slug);
-            var totalItems = postTemplate.TotalItems;
-
             var ViewData = new ViewData
             {
                 HeadTitle = cate.Title,
@@ -103,7 +108,7 @@
 
             var Model = new CategoryViewModel
             {
-                Posts = (postTemplate.Posts).ToArray(),
+                Posts = (posts).ToArray(),
                 Category = cate,
                 ViewData = ViewData
             };

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
     using System;
@@ -24,15 +25,14 @@
             if (string.IsNullOrWhiteSpace(cateSlug))
             {
                 var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postParam = new PostParam
+                var postParam = new GetRecentPostsParam
                 {
                     Slug = Constants.VideoSlug,
                     Start = Constants.FromFirstItem,
                     End = end,
                     PostID = postID
                 };
-                var postTemplate = await postService.GetRecentPostsAsync(postParam);
-                posts = postTemplate.Posts;
+                posts = await postService.GetRecentPostsAsync(postParam);
                 ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
             }
             else

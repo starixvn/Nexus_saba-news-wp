@@ -6,16 +6,17 @@
     using SabaNews.Core.Models;
     using SabaNews.Criteria;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
 
     public interface IPostService
     {
         Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
 
-        Task<PostTemplate> GetPostsByCateSlugAsync(PostParam postParam);
+        Task<IEnumerable<Post>> GetPostsByCateSlugAsync(GetPostsByCateSlugCriteria criteria);
 
         Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria);
 
-        Task<PostTemplate> GetRecentPostsAsync(PostParam postParam);
+        Task<IEnumerable<Post>> GetRecentPostsAsync(GetRecentPostsParam postParam);
 
         Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(PostParam postParam);
 

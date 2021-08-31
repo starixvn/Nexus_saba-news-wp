@@ -12,6 +12,7 @@
     using SabaNews.Criteria;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
@@ -40,21 +41,10 @@
             return FormatData(posts).ToList();
         }
 
-        public async Task<PostTemplate> GetPostsByCateSlugAsync(PostParam postParam)
+        public async Task<IEnumerable<Post>> GetPostsByCateSlugAsync(GetPostsByCateSlugCriteria criteria)
         {
-            var criteria = new GetPostsByCateSlugCriteria
-            {
-                _CategorySlug = postParam.Slug,
-                _Start = postParam.Start,
-                _End = postParam.End
-            };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            var postTemplate = new PostTemplate
-            {
-                Posts = FormatData(posts).ToList(),
-                TotalItems = criteria.TotalItems
-            };
-            return postTemplate;
+            return FormatData(posts).ToList();
         }
 
         public async Task<IEnumerable<Post>> GetPostsByCateSlugNotContainChidrenAsync(GetPostsByCateSlugNotContainChildrenCriteria criteria)
@@ -63,7 +53,7 @@
             return FormatData(posts).ToList();
         }
 
-        public async Task<PostTemplate> GetRecentPostsAsync(PostParam postParam)
+        public async Task<IEnumerable<Post>> GetRecentPostsAsync(GetRecentPostsParam postParam)
         {
             var criteria = new GetRecentPostsCriteria
             {
@@ -72,6 +62,7 @@
                 ExceptSlug = postParam.Slug.Trim()
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            postParam.TotalIItems = criteria.TotalItems;
             if (postParam.PostID != 0)
             {
                 var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
@@ -82,12 +73,7 @@
                     posts = excerptCurrentPost.Skip(postParam.Start).Take(totalRealItems).ToList();
                 }
             }
-            var postTemplate = new PostTemplate
-            {
-                Posts = FormatData(posts).ToList(),
-                TotalItems = criteria.TotalItems
-            };
-            return postTemplate;
+            return FormatData(posts).ToList();
         }
 
         public async Task<IEnumerable<Post>> GetTopPostsByCateSlugAsync(PostParam postParam)

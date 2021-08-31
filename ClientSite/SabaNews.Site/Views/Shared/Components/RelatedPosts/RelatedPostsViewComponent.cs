@@ -7,6 +7,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Linq;
+    using SabaNews.Models.Posts;
+    using SabaNews.Criteria;
 
     public class RelatedPostsViewComponent : ViewComponent
     {
@@ -23,18 +25,23 @@
             IEnumerable<Post> posts ;
             if (slug == "")
             {
-                var recentParam = new PostParam
+                var recentParam = new GetRecentPostsParam
                 {
                     Slug = Constants.VideoSlug,
                     Start = Constants.FromFirstItem,
                     End = Constants.GetElevenItems,
                     PostID = postID
                 };
-                var postTeamplate = await postService.GetRecentPostsAsync(recentParam);
-                posts = postTeamplate.Posts;
+                posts = await postService.GetRecentPostsAsync(recentParam);
             }
             else 
             {
+                var criteria = new GetPostsByCateSlugCriteria
+                {
+                    _CategorySlug = slug,
+                    _Start = Constants.FromFirstItem,
+                    _End = Constants.GetElevenItems,
+                };
                 var relatedParam = new PostParam
                 {
                     Slug = slug,
@@ -42,8 +49,8 @@
                     End = Constants.GetElevenItems,
                     PostID = postID
                 };
-                var postTeamplate = await postService.GetPostsByCateSlugAsync(relatedParam);
-                posts = GetPostsExcerptPostID(postTeamplate.Posts, relatedParam);
+                var allPosts = await postService.GetPostsByCateSlugAsync(criteria);
+                posts = GetPostsExcerptPostID(allPosts, relatedParam);
             }
             
             return View(posts);

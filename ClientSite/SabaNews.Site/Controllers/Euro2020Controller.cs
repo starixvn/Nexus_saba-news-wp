@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Criteria;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Services.Interfaces;
@@ -32,14 +33,14 @@
         [Route("/euro-2020/doi-tuyen-euro-2020")]
         public async Task<IActionResult> Team()
         {
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugCriteria
             {
-                Start = Constants.FromFirstItem,
-                End = Constants.Total,
-                Slug = Constants.Euro2020TeamSlug
+                _Start = Constants.FromFirstItem,
+                _End = Constants.Total,
+                _CategorySlug = Constants.Euro2020TeamSlug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.OrderBy(item => item.PostExcerpt);
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            posts = posts.OrderBy(item => item.PostExcerpt);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020TeamSlug);
             var viewData = new ViewData
             {
@@ -61,16 +62,16 @@
         public async Task<IActionResult> Category(string slug, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugCriteria
             {
-                Start = start,
-                End = Constants.Perpage,
-                Slug = slug
+                _Start = start,
+                _End = Constants.Perpage,
+                _CategorySlug = slug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            if (!postTemplate.Posts.Any())
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            if (!posts.Any())
             {
-                return View("~/Views/Home/EmptyBlog.cshtml");
+                return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(slug);
             var viewData = new ViewData
@@ -80,13 +81,13 @@
                 Description = cate.Description,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(postTemplate.TotalItems / (double)Constants.Perpage),
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage),
                 Controller = Constants.Euro2020Video,
                 Slug = slug
             };
             var Model = new CategoryViewModel
             {
-                Posts = postTemplate.Posts.ToArray(),
+                Posts = posts.ToArray(),
                 Category = cate,
                 ViewData = viewData
 
@@ -100,16 +101,16 @@
         {
 
             var start = (page - 1) * Constants.Perpage;
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugCriteria
             {
-                Start = start,
-                End = Constants.Perpage,
-                Slug = Constants.Euro2020VideoSlug
+                _Start = start,
+                _End = Constants.Perpage,
+                _CategorySlug = Constants.Euro2020VideoSlug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            if (!postTemplate.Posts.Any())
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            if (!posts.Any())
             {
-                return View();
+                return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020VideoSlug);
             var viewData = new ViewData
@@ -119,13 +120,13 @@
                 Description = cate.Description,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(postTemplate.TotalItems / (double)Constants.Perpage),
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage),
                 Controller = Constants.Euro2020Video
 
             };
             var Model = new CategoryViewModel
             {
-                Posts = postTemplate.Posts.ToArray(),
+                Posts = posts.ToArray(),
                 Category = cate,
                 ViewData = viewData
 
@@ -136,18 +137,18 @@
         [Route("/euro-2020/lich-thi-dau-euro-2020")]
         public async Task<IActionResult> Schedule()
         {
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugCriteria
             {
-                Start = 0,
-                End = Constants.Total,
-                Slug = Constants.Euro2020ScheduleSlug
+                _Start = 0,
+                _End = Constants.Total,
+                _CategorySlug = Constants.Euro2020ScheduleSlug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            if (!postTemplate.Posts.Any())
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            if (!posts.Any())
             {
-                return View("~/Views/Home/EmptyBlog.cshtml");
+                return View(Constants.EmptyBlogView);
             }
-            var posts = postTemplate.Posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            posts = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
             var viewData = new ViewData
             {
@@ -168,14 +169,14 @@
         [Route("/euro-2020/bang-xep-hang-euro-2020")]
         public async Task<IActionResult> Ranking()
         {
-            var postParam = new PostParam
+            var criteria = new GetPostsByCateSlugCriteria
             {
-                Start = 0,
-                End = Constants.Total,
-                Slug = Constants.Euro2020RankingSlug
+                _Start = 0,
+                _End = Constants.Total,
+                _CategorySlug = Constants.Euro2020RankingSlug
             };
-            var postTemplate = await postService.GetPostsByCateSlugAsync(postParam);
-            var posts = postTemplate.Posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            var posts = await postService.GetPostsByCateSlugAsync(criteria);
+            posts = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var thirdPlaceTable = await postService.GetPostDetailBySlugAsync(Constants.Euro2020FirstThirdPlaceTeamSlug, Constants.postType);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
             var viewData = new ViewData
