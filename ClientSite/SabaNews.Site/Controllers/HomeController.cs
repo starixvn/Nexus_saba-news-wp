@@ -167,9 +167,8 @@
                     var titleArr = post.PostTitle.Split(' ');
                     var title = titleArr.Length > 2 ? titleArr[0] + " " + titleArr[1] + "..." : post.PostTitle;
                     description = string.Concat(description, title);
-                    break;
                 }
-                else
+                else if(i <= 2)
                 {
                     description = string.Concat(description, post.PostTitle, "; ");
                 }
