@@ -1,4 +1,29 @@
-﻿@section Metadata {
+﻿@{
+	if (Model.ViewData.Controller == "Tag")
+	{
+		var description = "MỚI NHẤT: ";
+		int i = 0;
+		foreach (var post in Model.Posts)
+		{
+			i++;
+			if (i == 3)
+			{
+				var titleArr = post.PostTitle.Split(' ');
+				var title = titleArr.Length > 2 ? titleArr[0] + " " + titleArr[1] + "..." : post.PostTitle;
+				description = string.Concat(description, title);
+				break;
+			}
+			else
+			{
+				description = string.Concat(description, post.PostTitle, "; ");
+			}
+		}
+		Model.Category.OgDescription = description;
+		Model.ViewData.Description = description;
+	}
+}
+
+@section Metadata {
 	<meta name="description" content='@Model.ViewData.Description' />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="@ViewResources.SiteName" />

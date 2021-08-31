@@ -157,36 +157,19 @@
             var posts = await postService.GetPostByTagAsync(criteria);
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
-            var description = "MỚI NHẤT: ";
-            int i = 0;
-            foreach (var post in posts)
-            {
-                i++;
-                if (i == Constants.GetThreeItems)
-                {
-                    var titleArr = post.PostTitle.Split(' ');
-                    var title = titleArr.Length > 2 ? titleArr[0] + " " + titleArr[1] + "..." : post.PostTitle;
-                    description = string.Concat(description, title);
-                }
-                else if(i <= 2)
-                {
-                    description = string.Concat(description, post.PostTitle, "; ");
-                }
-            }
+           
             var viewData = new ViewData
             {
                 Title = string.Concat(tag, " | ", Constants.SiteName),
                 HeadTitle = "Tag: '" + tag + "'",
-                Description = description,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double )Constants.Perpage),
+                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
                 Tag = tagname,
                 Controller = Constants.Tag
             };
             var category = new Category
             {
-                OgDescription = description,
                 OgTitle = string.Concat(tag, " | ", Constants.SiteName),
                 OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
                 Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
