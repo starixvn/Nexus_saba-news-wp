@@ -237,7 +237,7 @@
             var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath("//uploads"));
             var model = new FileBrowseViewModel
             {
-                FileInfos = dir.GetFiles(),
+                FileInfos = dir.GetFiles().OrderByDescending(p => p.CreationTime).ToArray(),
                 BaseUrl = baseUrl
             };
             ViewBag.fileInfos = dir.GetFiles();
