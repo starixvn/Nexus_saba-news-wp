@@ -51,13 +51,16 @@
             {
                 return Redirect(Url.Action("Index", "Home"));
             }
-            ViewBag.Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName;
-            ViewBag.Page = Constants.ProfileIndexPage;
-            ViewBag.ErrorConnectEmail = sessionService.User.ErrorConnectWrongEmail;
-            var User = await profileService.GetUserByIdAsync(sessionService.User.Id);
-            sessionService.User = User;
-
-            return View(User);
+            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            sessionService.User = user;
+            var model = new ProfileViewModel
+            {
+                Title = Constants.Profile + sessionService.User.Name + Constants.ProfileSiteName,
+                Page = Constants.ProfileIndexPage,
+                ErrorConnectEmail = sessionService.User.ErrorConnectWrongEmail,
+                User = user
+            };
+            return View(model);
         }
 
         public async Task<IActionResult> SavePost(int postID)
@@ -69,7 +72,6 @@
             }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             List<SavePost> newListSavePosts = user.HandleSavePosts;
-            
             var savePost = newListSavePosts.Find(val => val.PostID == postID);
             if (savePost != null)
             {
@@ -111,22 +113,20 @@
             {
                 return Redirect(Url.Action("Index", "Home"));
             }
-            
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             var savedPosts = user.HandleSavePosts;
             var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
             var posts = await postService.GetSavedPostsByUserID(listPostID);
             var haveSavedToday = savedPosts.Find(val => val.Date == DateTime.Now.ToString("yyyy-MM-dd"));
-            var Model = new SavedPostViewModel
+            var model = new SavedPostViewModel
             {
                 Posts = posts,
                 ToDayPost = haveSavedToday,
-                User = user
+                User = user,
+                Title = Constants.Profile + user.Name + Constants.ProfileSiteName,
+                Page = Constants.ProfileListPostsPage
             };
-            ViewBag.Title = Constants.Profile + user.Name + Constants.ProfileSiteName;
-            ViewBag.Page = Constants.ProfileListPostsPage ;
-
-            return View(Model);
+            return View(model);
         }
 
         public async Task<ActionResult> UpdateProfile(string type, string value)
@@ -137,7 +137,6 @@
                 return Json(new { isSuccessful = false });
             }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-
             switch (type)
             {
                 case "phone":

@@ -11,5 +11,9 @@ namespace SabaNews.Models.ViewModels
 
         public UserSession User { get; set; }
 
+        public string Title { get; set; }
+
+        public string Page { get; set; }
+
     }
 }

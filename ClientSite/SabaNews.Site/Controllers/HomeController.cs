@@ -86,16 +86,15 @@
                 CategoryId = pageDetail.CatId,
                 Title = title,
                 Description = pageDetail.Description ??= title
-
             };
-            var Model = new PageViewModel
+            var model = new PageViewModel
             {
                 Post = post,
                 Category = pageDetail,
                 Header = header
             };
            
-            return View(Model);
+            return View(model);
         }
 
         [Route("warning")]
@@ -109,15 +108,14 @@
                 CategoryId = pageDetail.CatId,
                 Title = title,
                 Description = pageDetail.Description ??= title
-
             };
-            var Model = new PageViewModel
+            var model = new PageViewModel
             {
                 Category = pageDetail,
                 Header = header
             };
             
-            return View(Model);
+            return View(model);
         }
 
 
@@ -129,7 +127,7 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword ??= "", _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
-            var ViewData = new ViewData
+            var viewData = new ViewData
             {
                 Title = Constants.SearchTitle + " '" + keyword + "'",
                 HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
@@ -140,14 +138,14 @@
                 Keyword = keyword,
                 Controller = Constants.Search
             };
-            var Model = new CategoryViewModel
+            var model = new CategoryViewModel
             {
                 Posts = posts,
-                ViewData = ViewData
+                ViewData = viewData
             };
 
             var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Model);
+            return View(view, model);
         }
 
         [Route("tag/{tagname}/page/{page}")]
@@ -176,14 +174,14 @@
                     description = string.Concat(description, post.PostTitle, "; ");
                 }
             }
-            var ViewData = new ViewData
+            var viewData = new ViewData
             {
                 Title = string.Concat(tag, " | ", Constants.SiteName),
                 HeadTitle = "Tag: '" + tag + "'",
                 Description = description,
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
+                TotalPages = (int)Math.Ceiling(totalItems / (double )Constants.Perpage),
                 Tag = tagname,
                 Controller = Constants.Tag
             };
@@ -194,15 +192,15 @@
                 OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
                 Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
             };
-            var Model = new CategoryViewModel
+            var model = new CategoryViewModel
             {
                 Posts = posts,
-                ViewData = ViewData,
+                ViewData = viewData,
                 Category = category
             };
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
-            return View(view, Model);
+            return View(view, model);
         }
     }
 }

@@ -60,7 +60,7 @@
             }
             (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var domain = configuration.GetValue<string>("BaseUrl");
-            var models = new SingleViewModel
+            var model = new SingleViewModel
             {
                 SinglePost = post,
                 RecentPosts = recentPosts,
@@ -72,8 +72,7 @@
                 CateName = cateInfo.name
             };
             await postService.UpdateViewAsync(post.ID, post.Type == Constants.VideoPostType);
-
-            return View(models);
+            return View(model);
         }
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
