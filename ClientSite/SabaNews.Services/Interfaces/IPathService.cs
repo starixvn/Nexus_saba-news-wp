@@ -9,5 +9,9 @@
         string MapFullPath(string path);
 
         string MapAbsoluteRootPath(string path);
+
+        string EnsureCorrectFilename(string filename);
+
+        string GetPathAndFilenameUpload(string filename);
     }
 }

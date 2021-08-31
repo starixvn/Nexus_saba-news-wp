@@ -135,7 +135,7 @@
 
         public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
-        public const string EventLink = "la-liga-2021-22";
+        public const string EventLink = "bong-da-trong-nuoc";
         public const string ProfileIndexPage = "Index";
         public const string ProfileListPostsPage = "ListSavedPosts";
         public const string ProfileSendMailPage = "SendMail";

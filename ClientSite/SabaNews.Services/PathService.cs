@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Hosting;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.IO;
 
     public class PathService : IPathService
@@ -39,6 +40,18 @@
             string webRootPath = webHostEnvironment.WebRootPath;
             return Path.GetFullPath(webRootPath + path);
         }
+
+        public string EnsureCorrectFilename(string filename)
+        {
+            if (filename.Contains("\\"))
+            {
+                filename = filename[(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1)..];
+            }
+
+            return filename;
+        }
+
+        public string GetPathAndFilenameUpload(string filename) => this.MapAbsoluteRootPath("//uploads//" + filename);
 
     }
 }

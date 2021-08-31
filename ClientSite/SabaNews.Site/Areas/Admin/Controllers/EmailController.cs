@@ -143,7 +143,6 @@
                 OriginalUrl = originalUrl,
                 Users = users
             };
-            
 
             return View(model);
         }
@@ -215,12 +214,12 @@
         public async Task<ActionResult> UploadImageSendMail(IFormFile upload)
         {
             string filename = ContentDispositionHeaderValue.Parse(upload.ContentDisposition).FileName.Trim('"');
-            filename = EnsureCorrectFilename(filename);
+            filename = pathService.EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename;
             string error = "";
             try
             {
-                using FileStream output = System.IO.File.Create(GetPathAndFilename(filename));
+                using FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUpload(filename));
                 await upload.CopyToAsync(output);
             }
             catch (Exception ex)
@@ -388,18 +387,5 @@
             }
             return userNumber;
         }
-
-        private static string EnsureCorrectFilename(string filename)
-        {
-            if (filename.Contains("\\"))
-            {
-                filename = filename[(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1)..];
-            }
-
-            return filename;
-        }
-
-        private string GetPathAndFilename(string filename) => pathService.MapAbsoluteRootPath("//uploads//" + filename);
-
     }
 }
