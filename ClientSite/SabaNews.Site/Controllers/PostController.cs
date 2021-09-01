@@ -83,10 +83,10 @@
             {
                 var listCateSlug = cateSlug.Split(',');
                 var listCateName = cateName.Split(',');
-                var exceptCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-                var exceptCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-                slug = exceptCateSlug.Count > 0 ? exceptCateSlug[0] : listCateSlug[0];
-                name = exceptCateName.Count > 0 ? exceptCateName[0] : listCateName[0];
+                var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
+                var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+                slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
+                name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
             }
 
             return (slug.Trim(), name.Trim());
