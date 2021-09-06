@@ -24,24 +24,24 @@
 }
 
 @section Metadata {
-	<meta name="description" content='@Model.ViewData.Description' />
+	<meta name="description" content='@Html.Raw(Model.ViewData.Description)' />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-title" content="@ViewResources.SiteName" />
+	<meta name="apple-mobile-web-app-title" content="@Html.Raw(ViewResources.SiteName)" />
 	<meta http-equiv="REFRESH" content="1800" />
 	@if (Model.Category != null)
 	{
 		<meta name="robots" content="noarchive">
-		<meta property="og:site_name" content="@ViewResources.SiteName" />
+		<meta property="og:site_name" content="@Html.Raw(ViewResources.SiteName)" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" itemprop="url" content="@Model.Category.Url" />
-		<meta property="og:description" content='@Model.Category.OgDescription' />
-		<meta property="og:title" content='@Model.Category.OgTitle' />
-		<meta property="og:image" content='@Model.Category.OgImage' />
+		<meta property="og:url" itemprop="url" content="@Html.Raw(Model.Category.Url)" />
+		<meta property="og:description" content='@Html.Raw(Model.Category.OgDescription)' />
+		<meta property="og:title" content='@Html.Raw(Model.Category.OgTitle)' />
+		<meta property="og:image" content='@Html.Raw(Model.Category.OgImage)' />
 		<meta name="twitter:card" value="summary" />
 		<meta name="twitter:url" content="@Model.Category.Url" />
-		<meta name="twitter:title" content="@Model.Category.OgTitle">
-		<meta name="twitter:description" content="@Model.Category.OgDescription">
-		<meta name="twitter:image" content="@Model.Category.OgImage" />
+		<meta name="twitter:title" content="@Html.Raw(Model.Category.OgTitle)">
+		<meta name="twitter:description" content="@Html.Raw(Model.Category.OgDescription)">
+		<meta name="twitter:image" content="@Html.Raw(Model.Category.OgImage)" />
 	}
 	else if (Model.ViewData.Controller == "Tag")
 	{
@@ -54,7 +54,7 @@
 }
 
 @section Title{
-	@Model.ViewData.Title
+	@Html.Raw(Model.ViewData.Title)
 }
 
 @section Styles{

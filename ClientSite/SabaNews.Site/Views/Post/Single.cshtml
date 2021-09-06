@@ -9,16 +9,16 @@
 }
 
 @section Metadata {
-    <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&nbsp;" )' />
+    <meta name="description" content='@Html.Raw(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&nbsp;" )' />
     <meta property="og:description" content="&nbsp;" />
-    <meta property="og:title" content='@Model.SinglePost.PostTitle' />
+    <meta property="og:title" content='@Html.Raw(Model.SinglePost.PostTitle)' />
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@Model.AbsoluteUrl" />
     <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
 }
 
 @section Title{
-    @Model.SinglePost.PostTitle
+    @Html.Raw(Model.SinglePost.PostTitle)
 }
 
 @section Scripts{
