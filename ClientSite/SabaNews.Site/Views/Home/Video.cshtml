@@ -1,73 +1,73 @@
 ﻿@section Metadata {
-    <meta name="description" content='@Model.ViewData.Description' />
-    <meta property="og:description" content='@Model.Category.OgDescription' />
-    <meta property="og:title" content='@Model.Category.OgTitle' />
-    <meta property="og:image" content='@Model.Category.OgImage' />
-    <meta name="robots" content="noarchive">
+	<meta name="description" content='@Html.Raw(Model.ViewData.Description)' />
+	<meta property="og:description" content='@Html.Raw(Model.Category.OgDescription)' />
+	<meta property="og:title" content='@Html.Raw(Model.Category.OgTitle)' />
+	<meta property="og:image" content='@Html.Raw(Model.Category.OgImage)' />
+	<meta name="robots" content="noarchive">
 }
 
 @section Title{
-    @Model.ViewData.Title
+	@Html.Raw(Model.ViewData.Title)
 }
 
 @section Styles{
-    <link rel="stylesheet" href="~/minify/styles/video.min.css" asp-append-version="true">
+	<link rel="stylesheet" href="~/minify/styles/video.min.css" asp-append-version="true">
 }
 
 
 @(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.ViewData.Slug }))
 <section class="main">
-    <div class="container">
-        <div class="block block-main">
-            <h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories )</a></h2>
-            <div class="block__swipper">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="img-item">
-                                <input type="hidden" name="iframe_value" value="@Model.Posts[0].PostContent" />
-                                <picture>
-                                    <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp">
-                                    <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/jpeg">
-                                    <img loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle">
-                                </picture>
-                                <div class="btn-play-video" post-id="@Model.Posts[0].ID">
-                                    <span class="icon-play"></span>
-                                </div>
-                            </div>
-                            <div class="play_video"></div>
-                            <div class="content-box">
-                                <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="heading">@Model.Posts[0].PostTitle</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+	<div class="container">
+		<div class="block block-main">
+			<h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories )</a></h2>
+			<div class="block__swipper">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="img-item">
+								<input type="hidden" name="iframe_value" value="@Model.Posts[0].PostContent" />
+								<picture>
+									<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp">
+									<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/jpeg">
+									<img loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle">
+								</picture>
+								<div class="btn-play-video" post-id="@Model.Posts[0].ID">
+									<span class="icon-play"></span>
+								</div>
+							</div>
+							<div class="play_video"></div>
+							<div class="content-box">
+								<h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="heading">@Model.Posts[0].PostTitle</a></h4>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            <div class="block__video">
-                @for (int i = 1; i < Model.Posts.Length; i++)
-                {
-                    <div class="card-vertical card-vertical-highlight">
-                        <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image">
-                            <picture>
-                                <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
-                                <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
-                                <img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
-                            </picture>
-                        </a>
-                        <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
-                        <p class="card-vertical__datetime">
-                            <span>
-                                @Model.Posts[i].PostTime
-                                @if (Model.Posts[i].CommentCount > 0)
-                                {
-                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.Posts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
-                                }
-                            </span>
-                        </p>
-                    </div>}
-            </div>
-            @{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
+			<div class="block__video">
+				@for (int i = 1; i < Model.Posts.Length; i++)
+				{
+					<div class="card-vertical card-vertical-highlight">
+						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image">
+							<picture>
+								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
+								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
+								<img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
+							</picture>
+						</a>
+						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
+						<p class="card-vertical__datetime">
+							<span>
+								@Model.Posts[i].PostTime
+								@if (Model.Posts[i].CommentCount > 0)
+								{
+									<a href="@Url.Action("Single", "Post", new { slug =  Model.Posts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
+								}
+							</span>
+						</p>
+					</div>}
+			</div>
+			@{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
 				int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
 				var linkLast = Url.Action("Video", "Home", new { page = Model.ViewData.TotalPages });
 				var linkFirst = Url.Action("Video", "Home", new { page = 1 });
@@ -80,51 +80,51 @@
 				linkLast = CurrentPage < TotalPages ? linkLast : "javascript:;";
 				var disabledFirst = CurrentPage > 1 ? "" : "disabled";
 				var disabledLast = CurrentPage < TotalPages ? "" : "disabled";
-            }
+			}
 
-            @if (TotalPages > 1)
-            {
-                <div class="pagination">
-                    <a href="@linkFirst" class="icon-pagination icon-page-first @disabledFirst"></a>
-                    <a href="@linkPrev" class="icon-pagination icon-chevron-left @disabledFirst"></a>
-                    <ul class="main-pagination">
-                        @{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
-                            front = (CurrentPage - 1 == 3) ? 3 : front;
-                            var back = (TotalPages - CurrentPage > 2) ? 2 : TotalPages - CurrentPage;
-                            back = (TotalPages - CurrentPage == 3) ? 3 : back;
+			@if (TotalPages > 1)
+			{
+				<div class="pagination">
+					<a href="@linkFirst" class="icon-pagination icon-page-first @disabledFirst"></a>
+					<a href="@linkPrev" class="icon-pagination icon-chevron-left @disabledFirst"></a>
+					<ul class="main-pagination">
+						@{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
+							front = (CurrentPage - 1 == 3) ? 3 : front;
+							var back = (TotalPages - CurrentPage > 2) ? 2 : TotalPages - CurrentPage;
+							back = (TotalPages - CurrentPage == 3) ? 3 : back;
 
-                            if (CurrentPage - 4 >= 1)
-                            {
-                                <li class="items-pagination"><a href="@linkFirst" class="item">1</a></li>
-                                <li class="items-pagination"><a class="item">...</a></li>
-                            }
+							if (CurrentPage - 4 >= 1)
+							{
+								<li class="items-pagination"><a href="@linkFirst" class="item">1</a></li>
+								<li class="items-pagination"><a class="item">...</a></li>
+							}
 
-                            for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
-                            {
-                                var link = Url.Action("Video", "Home", new { page = i });
+							for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
+							{
+								var link = Url.Action("Video", "Home", new { page = i });
 
-                                var active = i == CurrentPage ? "active" : "";
-                                <li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
-                            }
+								var active = i == CurrentPage ? "active" : "";
+								<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
+							}
 
-                            if (CurrentPage + 4 <= TotalPages)
-                            {
-                                <li class="items-pagination"><a class="item">...</a></li>
-                                <li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
-                            } }
-                    </ul>
-                    <a href="@linkNext" class="icon-pagination icon-chevron-right @disabledLast"></a>
-                    <a href="@linkLast" class="icon-pagination icon-page-last @disabledLast"></a>
-                </div>}
-        </div>
+							if (CurrentPage + 4 <= TotalPages)
+							{
+								<li class="items-pagination"><a class="item">...</a></li>
+								<li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+							} }
+					</ul>
+					<a href="@linkNext" class="icon-pagination icon-chevron-right @disabledLast"></a>
+					<a href="@linkLast" class="icon-pagination icon-page-last @disabledLast"></a>
+				</div>}
+		</div>
 
-        @if (Model.ViewData.Slug != null)
-        {
-            @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
-        }
-        else
-        {
-            @(await Component.InvokeAsync("Sidebar"))
-        }
-    </div>
+		@if (Model.ViewData.Slug != null)
+		{
+			@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
+		}
+		else
+		{
+			@(await Component.InvokeAsync("Sidebar"))
+		}
+	</div>
 </section>
