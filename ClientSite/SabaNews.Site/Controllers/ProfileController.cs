@@ -63,6 +63,7 @@
             return View(model);
         }
 
+        [HttpPost]
         public async Task<IActionResult> SavePost(int postID)
         {
             var isAuthenticated = sessionService.User != null;
@@ -71,11 +72,11 @@
                 return Json(new { isSuccessful = false });
             }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
-            List<SavePost> newListSavePosts = user.HandleSavePosts;
-            var savePost = newListSavePosts.Find(val => val.PostID == postID);
-            if (savePost != null)
+            List<SavePost> listSavePosts = user.HandleSavePosts;
+            var post = listSavePosts.Find(val => val.PostID == postID);
+            if (post != null)
             {
-                newListSavePosts = newListSavePosts.FindAll(val => val.PostID != postID);
+                listSavePosts = listSavePosts.FindAll(val => val.PostID != postID);
             }
             else
             {
@@ -84,9 +85,9 @@
                     PostID = postID,
                     Date = DateTime.Now.ToString("yyyy-MM-dd")
                 };
-                newListSavePosts.Add(newSavePost);
+                listSavePosts.Add(newSavePost);
             }
-            var listPosts = JsonConvert.SerializeObject(newListSavePosts);
+            var listPosts = JsonConvert.SerializeObject(listSavePosts);
             var commandResult = await profileService.UpdateUserSavePostAsync(sessionService.User.Id, listPosts);
             if (commandResult.IsSuccessful)
             {
@@ -98,7 +99,7 @@
                     EmailConfirmed = sessionService.User.EmailConfirmed,
                     LoginType = sessionService.User.LoginType,
                     SavedPosts = listPosts,
-                    HandleSavePosts = newListSavePosts,
+                    HandleSavePosts = listSavePosts,
                     Password = sessionService.User.Password,
                     Photo =  sessionService.User.Photo
                 };
@@ -154,7 +155,6 @@
                 default:
                     throw new InvalidOperationException();
             }
-
             var commandResult =  await profileService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {

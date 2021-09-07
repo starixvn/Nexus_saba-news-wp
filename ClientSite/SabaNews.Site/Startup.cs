@@ -91,10 +91,7 @@
             });
 
             services.RegisterCookiePolicy();
-            services.AddSingleton<HtmlEncoder>(
-            HtmlEncoder.Create(allowedRanges: new[] {
-                UnicodeRanges.All
-            }));
+           
 
             services.RegisterAuthentication(Configuration);
 
@@ -119,6 +116,10 @@
             services.RegisterCoreDI();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddSingleton<HtmlEncoder>(
+            HtmlEncoder.Create(allowedRanges: new[] {
+                UnicodeRanges.All
+           }));
 
             services.RegisterServices();
             services.AddRazorPages();
