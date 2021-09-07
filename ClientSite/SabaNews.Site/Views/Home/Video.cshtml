@@ -1,13 +1,13 @@
 ﻿@section Metadata {
-	<meta name="description" content='@Html.Raw(Model.ViewData.Description)' />
-	<meta property="og:description" content='@Html.Raw(Model.Category.OgDescription)' />
-	<meta property="og:title" content='@Html.Raw(Model.Category.OgTitle)' />
-	<meta property="og:image" content='@Html.Raw(Model.Category.OgImage)' />
+	<meta name="description" content='@Model.ViewData.Description' />
+	<meta property="og:description" content='@Model.Category.OgDescription' />
+	<meta property="og:title" content='@Model.Category.OgTitle' />
+	<meta property="og:image" content='@Model.Category.OgImage' />
 	<meta name="robots" content="noarchive">
 }
 
 @section Title{
-	@Html.Raw(Model.ViewData.Title)
+	@Model.ViewData.Title
 }
 
 @section Styles{

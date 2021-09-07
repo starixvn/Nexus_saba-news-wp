@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.Encodings.Web;
+    using System.Text.Unicode;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
@@ -89,6 +91,10 @@
             });
 
             services.RegisterCookiePolicy();
+            services.AddSingleton<HtmlEncoder>(
+            HtmlEncoder.Create(allowedRanges: new[] {
+                UnicodeRanges.All
+            }));
 
             services.RegisterAuthentication(Configuration);
 
