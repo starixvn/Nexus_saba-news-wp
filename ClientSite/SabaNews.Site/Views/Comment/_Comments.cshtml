@@ -79,15 +79,15 @@
 		getMoreClass = "get_more";
 		<button type="button" class="show_get_more_comment">Xem thêm</button>
 	}
-	@if (Model.ViewData.TotalPages > 1)
+	@if (Model.Paging.TotalPages > 1)
 	{
-		var prev = Model.ViewData.CurrentPage - 1 >= 1 ? Model.ViewData.CurrentPage - 1 : 1;
-		var next = Model.ViewData.CurrentPage + 1 <= Model.ViewData.TotalPages ? Model.ViewData.CurrentPage + 1 : Model.ViewData.TotalPages;
-		var disabledPrev = Model.ViewData.CurrentPage == prev ? "" : "comment-pagination";
-		var disabledNext = Model.ViewData.CurrentPage == next ? "" : "comment-pagination";
-		<div class="pagination @getMoreClass" data-total="@Model.ViewData.TotalPages" data-current="@Model.ViewData.CurrentPage">
+		var prev = Model.Paging.CurrentPage - 1 >= 1 ? Model.Paging.CurrentPage - 1 : 1;
+		var next = Model.Paging.CurrentPage + 1 <= Model.Paging.TotalPages ? Model.Paging.CurrentPage + 1 : Model.Paging.TotalPages;
+		var disabledPrev = Model.Paging.CurrentPage == prev ? "" : "comment-pagination";
+		var disabledNext = Model.Paging.CurrentPage == next ? "" : "comment-pagination";
+		<div class="pagination @getMoreClass" data-total="@Model.Paging.TotalPages" data-current="@Model.Paging.CurrentPage">
 			<a class="@disabledPrev" href="javascript:;" data-page="@prev">❮</a>
-			<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.ViewData.CurrentPage" max-page="@Model.ViewData.TotalPages" />
+			<input type="text" name="inputPage" class="btn-page type_page paging_folder" value="@Model.Paging.CurrentPage" max-page="@Model.Paging.TotalPages" />
 			<a class="@disabledNext" href="javascript:;" data-page="@next">❯</a>
 		</div>
 	}

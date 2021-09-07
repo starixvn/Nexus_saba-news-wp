@@ -3,15 +3,15 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Models;
+    using SabaNews.Criteria;
     using SabaNews.Models.Comment;
     using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
-    using System.Threading.Tasks;
     using System.Linq;
-    using SabaNews.Criteria;
+    using System.Threading.Tasks;
 
     public class CommentController : Controller
     {
@@ -55,21 +55,21 @@
             {
                 getMore = false;
             }
-            var Data = new ViewData
+            var paging = new PagingModel
             {
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
                 TotalPages = (int)Math.Ceiling(criteria.TotalParentCmt / (double)Constants.Perpage)
             };
-            var Model = new CommentViewModel
+            var model = new CommentViewModel
             {
                 CommentTemplate = commentTemplate,
-                ViewData = Data,
+                Paging = paging,
                 FilterType  = filterType,
                 IsLogin = sessionService.User != null,
                 GetMore = getMore
             };
-            return PartialView("_Comments", Model);
+            return PartialView("_Comments", model);
         }
 
         [HttpPost]
