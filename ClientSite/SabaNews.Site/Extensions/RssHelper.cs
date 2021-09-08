@@ -1,11 +1,10 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using SabaNews.Core.Constants;
+    using SabaNews.Models.Posts;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Xml.Linq;
-    using SabaNews.Core.Constants;
-    using SabaNews.Models;
 
     public static class RssHelper
     {

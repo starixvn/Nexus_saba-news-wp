@@ -1,8 +1,9 @@
-﻿using SabaNews.Core.Models;
-using System.Collections.Generic;
-
-namespace SabaNews.Models.ViewModels
+﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Posts;
+    using System.Collections.Generic;
+
     public class SavedPostViewModel
     {
         public IEnumerable<Post> Posts { get; set; }

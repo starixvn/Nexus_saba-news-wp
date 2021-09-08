@@ -9,6 +9,7 @@
     using System.Linq;
     using SabaNews.Models.Posts;
     using SabaNews.Criteria;
+    using SabaNews.Criteria.Posts;
 
     public class RelatedPostsViewComponent : ViewComponent
     {

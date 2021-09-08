@@ -1,6 +1,6 @@
 ﻿using Fanex.Data.Repository;
 
-namespace SabaNews.Criteria
+namespace SabaNews.Criteria.Posts
 {
     public  class GetPostsByIDsCriteria : CriteriaBase
     {

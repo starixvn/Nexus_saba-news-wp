@@ -1,5 +1,6 @@
-﻿namespace SabaNews.Models.ViewModel
+﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Models.Posts;
     using System.Collections.Generic;
     public class SideBarViewModel
     {

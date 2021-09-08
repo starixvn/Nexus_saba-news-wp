@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace SabaNews.Models.ViewModel
+﻿namespace SabaNews.Models.ViewModel
 {
+    using SabaNews.Models.Posts;
+    using System.Collections.Generic;
+
     public class Euro2020ViewModel
     {
         public IEnumerable<Post> HotNews { get; set; }

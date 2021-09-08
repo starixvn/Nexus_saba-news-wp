@@ -4,7 +4,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Criteria;
+    using SabaNews.Criteria.Comment;
     using SabaNews.Models.Comment;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;

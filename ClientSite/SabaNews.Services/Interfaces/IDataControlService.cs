@@ -1,9 +1,11 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using SabaNews.Models;
+    using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SabaNews.Models;
-    using SabaNews.Models.ViewModel;
 
     public interface IDataControlService
     {

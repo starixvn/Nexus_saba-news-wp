@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Criteria
+﻿namespace SabaNews.Criteria.Comment
 {
     using SabaNews.Core.Models;
 

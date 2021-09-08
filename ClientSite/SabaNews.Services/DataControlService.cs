@@ -1,13 +1,15 @@
 ﻿namespace SabaNews.Services
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class DataControlService : IDataControlService
     {

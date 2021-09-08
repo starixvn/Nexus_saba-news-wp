@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Models
+﻿namespace SabaNews.Models.Posts
 {
     using System.Collections.Generic;
 

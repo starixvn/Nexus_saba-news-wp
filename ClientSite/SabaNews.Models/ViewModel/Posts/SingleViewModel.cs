@@ -1,7 +1,7 @@
-﻿namespace SabaNews.Models.ViewModel
+﻿namespace SabaNews.Models.ViewModel.Posts
 {
     using SabaNews.Core.Models;
-    using SabaNews.Models.Comment;
+    using SabaNews.Models.Posts;
     using System.Collections.Generic;
 
     public class SingleViewModel

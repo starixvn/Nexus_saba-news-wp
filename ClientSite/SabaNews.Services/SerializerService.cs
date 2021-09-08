@@ -1,13 +1,13 @@
 ﻿namespace SabaNews.Services
 {
+    using Fanex.Logging;
+    using SabaNews.Models.Posts;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Text;
-    using Fanex.Logging;
-    using SabaNews.Models;
 
     public interface ISerializerService
     {

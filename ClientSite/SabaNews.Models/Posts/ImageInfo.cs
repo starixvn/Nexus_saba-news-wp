@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Models
+﻿namespace SabaNews.Models.Posts
 {
     public class ImageInfo
     {

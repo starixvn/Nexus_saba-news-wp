@@ -2,11 +2,9 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
-    using SabaNews.Models;
     using SabaNews.Models.Posts;
-    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 

@@ -10,8 +10,8 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Email;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Models.ViewModel.Profile;
-    using SabaNews.Models.ViewModels;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;

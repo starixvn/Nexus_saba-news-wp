@@ -1,18 +1,16 @@
 ﻿namespace SabaNews.Site.Controllers
 {
-    using System;
-    using System.Globalization;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Models;
     using SabaNews.Models.Posts;
-    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class PostController : Controller
     {

@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
 
     public interface IFetchDataService
     {

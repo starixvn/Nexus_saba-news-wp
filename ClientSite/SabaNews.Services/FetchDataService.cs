@@ -1,16 +1,17 @@
 ﻿namespace SabaNews.Services
 {
+    using SabaNews.Core.Constants;
+    using SabaNews.Criteria.Posts;
+    using SabaNews.Models;
+    using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
-    using SabaNews.Core.Constants;
-    using SabaNews.Criteria;
-    using SabaNews.Models;
-    using SabaNews.Models.Posts;
-    using SabaNews.Models.ViewModel;
-    using SabaNews.Services.Interfaces;
 
     public class FetchDataService : IFetchDataService
     {

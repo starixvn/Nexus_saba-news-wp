@@ -1,12 +1,7 @@
-﻿using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Criteria
+﻿namespace SabaNews.Criteria.Comment
 {
+    using Fanex.Data.Repository;
+
     public class CmtGetLikeDataCriteria : CriteriaBase
     {
         public long CommentID { get; set; }

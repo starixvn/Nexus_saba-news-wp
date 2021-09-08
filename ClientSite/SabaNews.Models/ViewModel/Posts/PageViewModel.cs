@@ -1,5 +1,7 @@
-﻿namespace SabaNews.Models.ViewModel
+﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Models.Posts;
+
     public class PageViewModel
     {
         public Post Post { get; set; }
