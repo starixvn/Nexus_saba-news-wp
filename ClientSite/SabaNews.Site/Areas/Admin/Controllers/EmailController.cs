@@ -184,7 +184,7 @@
                 SubscribeLink = "#",
                 BaseUrl = baseUrl
             };
-            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+            var resultSendMail = await emailService.SendMailAsync(model.EmailTitle, model.EmailContent, model.EmailAddress);
             return Json(resultSendMail);
         }
 

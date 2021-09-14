@@ -2,6 +2,8 @@
     var form = 'form#form-sendmail';
     function ConfigCkeditorContent() {
         CKEDITOR.replace('emailContent', {
+            fullPage: true,
+            autoGrow_onStartup: true,
             allowedContent: true,
             height: 400,
             filebrowserUploadUrl: '/Admin/Email/UploadImageSendMail',
