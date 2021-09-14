@@ -116,6 +116,7 @@
             services.RegisterCoreDI();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddSingleton<ILogFileService, LogFileService>();
             services.AddSingleton<HtmlEncoder>(
             HtmlEncoder.Create(allowedRanges: new[] {
                 UnicodeRanges.All
