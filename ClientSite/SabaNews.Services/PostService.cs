@@ -21,12 +21,14 @@
         private readonly IBaseService baseService;
         private readonly ISerializerService serializerService;
         private readonly IConfiguration configuration;
+        private readonly ILogFileService logFileService;
 
-        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration)
+        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration, ILogFileService logFileService)
         {
             this.baseService = baseService;
             this.serializerService = serializerService;
             this.configuration = configuration;
+            this.logFileService = logFileService;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
@@ -38,6 +40,7 @@
                 _End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
+            logFileService.WriteLog(criteria.GetSettingKey(), "123");
 
             return FormatData(posts).ToList();
         }
