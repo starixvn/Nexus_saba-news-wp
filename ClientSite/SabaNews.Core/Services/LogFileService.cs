@@ -25,7 +25,7 @@ namespace SabaNews.Core.Services
             if (IsWiteLogFile)
             {
                 if (!File.Exists(filePath))
-                { // Create a file to write to   
+                {
                     using FileStream fs = File.Create(filePath);
                 }
                 using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
