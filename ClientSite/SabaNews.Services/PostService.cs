@@ -40,8 +40,6 @@
                 _End = end
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-            logFileService.WriteLog(criteria.GetSettingKey(), "123");
-
             return FormatData(posts).ToList();
         }
 

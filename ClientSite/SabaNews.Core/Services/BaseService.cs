@@ -3,6 +3,7 @@
     using Fanex.Data.Repository;
     using SabaNews.Core.Models;
     using SabaNews.Core.Repositories;
+    using SabaNews.Core.Services;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -11,20 +12,27 @@
     {
         private readonly IDynamicRepository dynamicRepository;
         private readonly IBaseRepository baseRepository;
+        private readonly ILogFileService logFileService;
 
         public BaseService(
             IDynamicRepository dynamicRepository,
-            IBaseRepository baseRepository)
+            IBaseRepository baseRepository,
+            ILogFileService logFileService)
         {
             this.dynamicRepository = dynamicRepository;
             this.baseRepository = baseRepository;
+            this.logFileService = logFileService;
         }
 
         public async Task<IEnumerable<T>> GetDataAsync<T>(ICriteria criteria)
         {
             if (criteria != null && criteria.IsValid())
             {
-                return await dynamicRepository.FetchAsync<T>(criteria);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var result =  await dynamicRepository.FetchAsync<T>(criteria);
+                watch.Stop();
+                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                return result;
             }
 
             return new List<T>();
@@ -34,7 +42,11 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                return await dynamicRepository.GetAsync<T>(criteria);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var result = await dynamicRepository.GetAsync<T>(criteria);
+                watch.Stop();
+                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                return result;
             }
 
             return default;
@@ -44,7 +56,11 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                return await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
+                watch.Stop();
+                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                return result;
             }
 
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>>(new List<TFirst>(), new List<TSecond>());
@@ -54,7 +70,11 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                return await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
+                watch.Stop();
+                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                return result;
             }
 
             return new ValueTuple<IEnumerable<TFirst>, IEnumerable<TSecond>, IEnumerable<TThird>>(new List<TFirst>(), new List<TSecond>(), new List<TThird>());
@@ -65,7 +85,10 @@
             var commandResult = new CommandResult();
             if (command != null && command.IsValid())
             {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
                 commandResult = await baseRepository.ExecuteNonQueryAsync(command);
+                watch.Stop();
+                logFileService.WriteLog(command.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
             }
 
             return commandResult;

@@ -16,7 +16,7 @@ namespace SabaNews.Core.Services
 
         public void WriteLog(string spName, string runtime)
         {
-            using StreamWriter w = File.AppendText("LogFiles/log.txt");
+            using StreamWriter w = File.AppendText("LogFiles/LogSP.txt");
             Log(spName, runtime, w);
         }
 

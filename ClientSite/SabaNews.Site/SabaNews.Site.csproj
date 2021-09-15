@@ -105,5 +105,8 @@
       <None Update="EmailTemplates\SendEDMRaw.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="LogFiles\LogSP.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>

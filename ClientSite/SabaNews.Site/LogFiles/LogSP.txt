@@ -1,0 +1,830 @@
+﻿
+Log Entry : 1:40:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 253ms
+-------------------------------
+
+Log Entry : 1:40:09 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 220ms
+-------------------------------
+
+Log Entry : 1:40:09 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 215ms
+-------------------------------
+
+Log Entry : 1:40:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 117ms
+-------------------------------
+
+Log Entry : 1:40:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:40:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:40:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 217ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_recent_posts
+Time: 252ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 138ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 132ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:40:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:40:12 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:40:12 PM Wednesday, September 15, 2021
+SP name: get_page_detail_by_slug
+Time: 220ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 259ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 130ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 108ms
+-------------------------------
+
+Log Entry : 1:40:13 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 148ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 117ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 122ms
+-------------------------------
+
+Log Entry : 1:40:14 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:42:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 484ms
+-------------------------------
+
+Log Entry : 1:42:04 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 240ms
+-------------------------------
+
+Log Entry : 1:42:04 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 232ms
+-------------------------------
+
+Log Entry : 1:42:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_menu
+Time: 261ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 123ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_menu
+Time: 235ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 232ms
+-------------------------------
+
+Log Entry : 1:42:05 PM Wednesday, September 15, 2021
+SP name: get_top_posts_by_cate_slug
+Time: 234ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 273ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 145ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:42:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 104ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:42:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_recent_posts
+Time: 245ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 135ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:42:35 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 108ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_recent_posts
+Time: 139ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_page_detail_by_slug
+Time: 214ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 140ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 138ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 121ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:42:36 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:42:37 PM Wednesday, September 15, 2021
+SP name: get_page_detail_by_slug
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:42:52 PM Wednesday, September 15, 2021
+SP name: get_top_posts_by_cate_slug
+Time: 424ms
+-------------------------------
+
+Log Entry : 1:42:52 PM Wednesday, September 15, 2021
+SP name: get_top_posts_by_cate_slug
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:42:53 PM Wednesday, September 15, 2021
+SP name: get_top_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:42:55 PM Wednesday, September 15, 2021
+SP name: post_view_statistic_get
+Time: 282ms
+-------------------------------
+
+Log Entry : 1:42:57 PM Wednesday, September 15, 2021
+SP name: user_get_all
+Time: 222ms
+-------------------------------
+
+Log Entry : 1:43:01 PM Wednesday, September 15, 2021
+SP name: email_create
+Time: 240ms
+-------------------------------
+
+Log Entry : 1:43:02 PM Wednesday, September 15, 2021
+SP name: email_get_by_id
+Time: 225ms
+-------------------------------
+
+Log Entry : 1:43:02 PM Wednesday, September 15, 2021
+SP name: user_get_all
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:43:03 PM Wednesday, September 15, 2021
+SP name: user_get_all
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:43:04 PM Wednesday, September 15, 2021
+SP name: email_get_all
+Time: 513ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 242ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 223ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 225ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:44:04 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:44:05 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 221ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 276ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 105ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:44:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 105ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 117ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 124ms
+-------------------------------
+
+Log Entry : 1:44:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 117ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 108ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:46:05 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:46:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:46:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 163ms
+-------------------------------
+
+Log Entry : 1:46:06 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:46:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 108ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 104ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:46:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:46:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 123ms
+-------------------------------
+
+Log Entry : 1:46:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:46:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:46:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:48:06 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:48:07 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 165ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:48:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 136ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 116ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:48:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 119ms
+-------------------------------
+
+Log Entry : 1:48:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 114ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_post_detail_by_slug
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: check_type_category
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 115ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_posts_by_slug
+Time: 111ms
+-------------------------------
+
+Log Entry : 1:50:08 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 107ms
+-------------------------------
+
+Log Entry : 1:50:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 166ms
+-------------------------------
+
+Log Entry : 1:50:09 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:50:09 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 117ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 109ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 118ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 113ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 144ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 106ms
+-------------------------------
+
+Log Entry : 1:50:10 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:50:11 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 110ms
+-------------------------------
+
+Log Entry : 1:50:11 PM Wednesday, September 15, 2021
+SP name: get_posts_by_cate_slug
+Time: 120ms
+-------------------------------
+
+Log Entry : 1:50:11 PM Wednesday, September 15, 2021
+SP name: get_category_detail
+Time: 112ms
+-------------------------------
