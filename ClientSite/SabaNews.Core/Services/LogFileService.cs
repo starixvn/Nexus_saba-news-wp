@@ -24,7 +24,7 @@ namespace SabaNews.Core.Services
             bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
             if (IsWiteLogFile)
             {
-                using StreamWriter w = File.AppendText("LogFiles/LogSP.txt");
+                using StreamWriter w = File.AppendText("LogFiles/LogTrackingSP.txt");
                 Log(spName, runtime, w);
             }
         }
