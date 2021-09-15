@@ -52,3 +52,4 @@ bower_components
 ClientSite/SabaNews.Site/sitemap.xml
 ClientSite/SabaNews.Site/wwwroot/uploads/
 ClientSite/SabaNews.Site/wwwroot/LogFiles/
+/ClientSite/SabaNews.Site/LogFiles/TrackingSP.txt
