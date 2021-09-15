@@ -1,11 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SabaNews.Core.Services
 {
     public interface ILogFileService
@@ -15,16 +11,24 @@ namespace SabaNews.Core.Services
     public class LogFileService : ILogFileService
     {
         private readonly IConfiguration configuration;
-        public LogFileService(IConfiguration configuration)
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public LogFileService(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             this.configuration = configuration;
+            this.webHostEnvironment = webHostEnvironment;
         }
         public void WriteLog(string spName, string runtime)
         {
+            var filePath = Path.Combine(webHostEnvironment.ContentRootPath, "LogFiles/TrackingSP.txt");
             bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
             if (IsWiteLogFile)
             {
-                using StreamWriter w = File.AppendText("LogFiles/LogTrackingSP.txt");
+                if (!File.Exists(filePath))
+                { // Create a file to write to   
+                    using FileStream fs = File.Create(filePath);
+                }
+                using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
                 Log(spName, runtime, w);
             }
         }
