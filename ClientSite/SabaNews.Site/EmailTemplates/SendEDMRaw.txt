@@ -1,287 +1,316 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Send email event</title>
-    <style>
-       
-		@media only screen and (min-width:480px) {
-			.column-per-100 { width:100% !important; max-width: 100%; }
-			.column-per-50 { width:50% !important; max-width: 50%; }
-			.column-px-90 { width:90px !important; max-width: 90px; }
-
-      }
-
-    </style>
+	<title>Send email event</title>
+	<style>
+	</style>
 </head>
 <body>
 
-<div style="hyphens: none;">
-    {content}
-    <div style="clear:both"></div>
-    <div class="footer">
-		<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+	<div style="hyphens: none;">
+		{content}
+		<div style="clear:both"></div>
+		<div class="footer">
+			<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 
-			<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
-				<tbody>
-					<tr>
-						<td style="border-top:3px solid #E13C29;direction:ltr;font-size:0px;padding:0px;text-align:center;">
-							<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
 
-							<div class="column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+			<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="background-color:#081224;vertical-align:top;padding:0px;">
+				<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+					<tbody>
+						<tr>
+							<td style="border-top:3px solid #E13C29;direction:ltr;font-size:0px;padding:0px;text-align:center;">
+								<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
+								<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:16px 30px 0 30px;word-break:break-word;">
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="background-color:#081224;vertical-align:top;padding:0px;">
 
-																<div style="font-family:Roboto;font-size:16px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;">Theo dõi Saba Sports trên</div>
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
 
-															</td>
-														</tr>
+															<tr>
+																<td align="center" style="font-size:0px;padding:16px 30px 0 30px;word-break:break-word;">
 
-													</tbody>
-												</table>
+																	<div style="font-family:Roboto;font-size:16px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;">Theo dõi Saba Sports trên</div>
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
+																</td>
+															</tr>
 
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+														</tbody>
+													</table>
 
-		</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 
+								</div>
 
-		<div style="background:#081224;background-color:#081224;margin:0px auto;max-width:600px;">
+								<!--[if mso | IE]></td></tr></table><![endif]-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-			<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#081224;background-color:#081224;width:100%;">
-				<tbody>
-					<tr>
-						<td style="direction:ltr;font-size:0px;padding:0px;padding-bottom:20px;padding-top:16px;text-align:center;">
-							<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:90px;" ><![endif]-->
+			</div>
 
-							<div class="mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:90px;">
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
+			<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
+			<div style="background:#081224;background-color:#081224;margin:0px auto;max-width:600px;">
 
-																<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-																	<tbody>
-																		<tr>
-																			<td style="width:42px;">
+				<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#081224;background-color:#081224;width:100%;">
+					<tbody>
+						<tr>
+							<td style="direction:ltr;font-size:0px;padding:0px;padding-bottom:20px;padding-top:16px;text-align:center;">
+								<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:90px;" ><![endif]-->
 
-																				<a href="https://www.facebook.com/sabasportsvietnam" target="_blank">
+								<div class="mj-column-px-90 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;">
 
-																					<img height="auto" src="https://vncdn.sabasports.com/2021/09/fb.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
 
-																				</a>
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
 
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
+															<tr>
+																<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
 
-															</td>
-														</tr>
+																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+																		<tbody>
+																			<tr>
+																				<td style="width:42px;">
 
-													</tbody>
-												</table>
+																					<a href="https://www.facebook.com/sabasportsvietnam" target="_blank">
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
+																						<img height="auto" src="https://vncdn.sabasports.com/2021/09/fb.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
 
-							</div>
+																					</a>
 
-							<div class="mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:90px;">
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
+																</td>
+															</tr>
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
+														</tbody>
+													</table>
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
+												</td>
+											</tr>
+										</tbody>
+									</table>
 
-																<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-																	<tbody>
-																		<tr>
-																			<td style="width:42px;">
+								</div>
 
-																				<a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ" target="_blank">
+								<!--[if mso | IE]></td><td class="" style="vertical-align:top;width:90px;" ><![endif]-->
 
-																					<img height="auto" src="https://vncdn.sabasports.com/2021/09/youtube.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
+								<div class="mj-column-px-90 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;">
 
-																				</a>
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
 
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
 
-															</td>
-														</tr>
+															<tr>
+																<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
 
-													</tbody>
-												</table>
+																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+																		<tbody>
+																			<tr>
+																				<td style="width:42px;">
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
+																					<a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ" target="_blank">
 
-							</div>
+																						<img height="auto" src="https://vncdn.sabasports.com/2021/09/youtube.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
 
-							<div class="mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:90px;">
+																					</a>
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
+																</td>
+															</tr>
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
+														</tbody>
+													</table>
 
-																<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-																	<tbody>
-																		<tr>
-																			<td style="width:42px;">
+												</td>
+											</tr>
+										</tbody>
+									</table>
 
-																				<a href="https://www.tiktok.com/@saba_sports" target="_blank">
+								</div>
 
-																					<img height="auto" src="https://vncdn.sabasports.com/2021/09/tiktok.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
+								<!--[if mso | IE]></td><td class="" style="vertical-align:top;width:90px;" ><![endif]-->
 
-																				</a>
+								<div class="mj-column-px-90 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;">
 
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</td>
-														</tr>
-													</tbody>
-												</table>
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="vertical-align:top;padding:0px;padding-bottom:4px;">
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
 
-		</div>
+															<tr>
+																<td align="center" style="font-size:0px;padding:0 24px;word-break:break-word;">
 
+																	<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+																		<tbody>
+																			<tr>
+																				<td style="width:42px;">
 
+																					<a href="https://www.tiktok.com/@saba_sports" target="_blank">
 
-		<div style="background:#081224;background-color:#081224;margin:0px auto;max-width:600px;  border-radius: 0px 0px 5px 5px;">
+																						<img height="auto" src="https://vncdn.sabasports.com/2021/09/tiktok.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
 
-			<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#081224;background-color:#081224;width:100%;  border-radius: 0px 0px 5px 5px;">
-				<tbody>
-					<tr>
-						<td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;">
-							<div class="column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+																					</a>
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="border-top:1px solid #575B62;vertical-align:top;padding:24px 0;">
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
+																</td>
+															</tr>
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
+														</tbody>
+													</table>
 
-																<div style="font-family:Roboto;font-size:16px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;">© 2021 Bản quyền thuộc về Saba Sports</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 
-															</td>
-														</tr>
+								</div>
 
-													</tbody>
-												</table>
+								<!--[if mso | IE]></td></tr></table><![endif]-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+			</div>
 
 
-		<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+			<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
 
-			<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
-				<tbody>
-					<tr>
-						<td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
 
-							<div class="column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+			<div style="background:#081224;background-color:#081224;margin:0px auto;max-width:600px;  border-radius: 0px 0px 5px 5px;">
 
-								<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-									<tbody>
-										<tr>
-											<td style="vertical-align:top;padding:0px;">
+				<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#081224;background-color:#081224;width:100%;  border-radius: 0px 0px 5px 5px;">
+					<tbody>
+						<tr>
+							<td style="direction:ltr;font-size:0px;padding:0 32px;text-align:center;">
+								<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:536px;" ><![endif]-->
 
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-													<tbody>
+								<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
 
-														<tr>
-															<td align="center" style="font-size:0px;padding:15px 0;word-break:break-word;">
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="border-top:1px solid #575B62;vertical-align:top;padding:24px 0;">
 
-																<div style="font-family:Roboto;font-size:14px;font-weight:400;line-height:34px;text-align:center;color:#333333;">
-																	Nếu bạn không muốn nhận email từ Saba Sports , hãy <a href="{unsubscribeLink}" style="text-decoration:
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
+
+															<tr>
+																<td align="center" style="font-size:0px;padding:0px;word-break:break-word;">
+
+																	<div style="font-family:Roboto;font-size:16px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;">© 2021 Bản quyền thuộc về Saba Sports</div>
+
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+
+								<!--[if mso | IE]></td></tr></table><![endif]-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+
+			<!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+
+
+			<div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;">
+
+				<table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;">
+					<tbody>
+						<tr>
+							<td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
+								<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+
+								<div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+									<table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+										<tbody>
+											<tr>
+												<td style="vertical-align:top;padding:0px;">
+
+													<table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+														<tbody>
+
+															<tr>
+																<td align="center" style="font-size:0px;padding:15px 0;word-break:break-word;">
+
+																	<div style="font-family:Roboto;font-size:14px;font-weight:400;line-height:34px;text-align:center;color:#333333;">
+																		Nếu bạn không muốn nhận email từ Saba Sports , hãy <a href="{unsubscribeLink}" style="text-decoration:
           none; font-style: italic">nhấn vào đây.</a>
-																</div>
+																	</div>
 
-															</td>
-														</tr>
-													</tbody>
-												</table>
+																</td>
+															</tr>
 
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+														</tbody>
+													</table>
+
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+								</div>
+
+								<!--[if mso | IE]></td></tr></table><![endif]-->
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+
+			<!--[if mso | IE]></td></tr></table><![endif]-->
 		</div>
-    </div>
-</div>
+	</div>
 
 
 
