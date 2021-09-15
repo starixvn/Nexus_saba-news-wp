@@ -1,34 +1,31 @@
 ﻿namespace SabaNews.Services
 {
+    using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Criteria;
+    using SabaNews.Criteria.Posts;
+    using SabaNews.Models;
+    using SabaNews.Models.Posts;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Configuration;
-    using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
-    using SabaNews.Core.Services;
-    using SabaNews.Criteria;
-    using SabaNews.Criteria.Posts;
-    using SabaNews.Models;
-    using SabaNews.Models.Posts;
-    using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
     {
         private readonly IBaseService baseService;
         private readonly ISerializerService serializerService;
         private readonly IConfiguration configuration;
-        private readonly ILogFileService logFileService;
 
-        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration, ILogFileService logFileService)
+        public PostService(IBaseService baseService, ISerializerService serializerService, IConfiguration configuration)
         {
             this.baseService = baseService;
             this.serializerService = serializerService;
             this.configuration = configuration;
-            this.logFileService = logFileService;
         }
 
         public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,11 +14,19 @@ namespace SabaNews.Core.Services
     }
     public class LogFileService : ILogFileService
     {
-
+        private readonly IConfiguration configuration;
+        public LogFileService(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
         public void WriteLog(string spName, string runtime)
         {
-            using StreamWriter w = File.AppendText("LogFiles/LogSP.txt");
-            Log(spName, runtime, w);
+            bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
+            if (IsWiteLogFile)
+            {
+                using StreamWriter w = File.AppendText("LogFiles/LogSP.txt");
+                Log(spName, runtime, w);
+            }
         }
 
         public static void Log(string spName, string runtime, TextWriter w)
