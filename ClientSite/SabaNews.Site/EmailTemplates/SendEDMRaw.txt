@@ -18,11 +18,6 @@
 		.footer .action_link a {
 			text-decoration:underline
         }
-		@media only screen and (min-width:480px) {
-			.column-per-100 { width:100% !important; max-width: 100%; }
-			.column-per-50 { width:50% !important; max-width: 50%; }
-			.column-px-90 { width:90px !important; max-width: 90px; }
-      }
 
     </style>
 </head>
@@ -259,7 +254,6 @@
 				<tbody>
 					<tr>
 						<td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
-							<!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
 
 							<div class="column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
 
