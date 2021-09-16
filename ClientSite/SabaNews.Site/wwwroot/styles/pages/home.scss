@@ -368,12 +368,7 @@
             }
 
             .card-vertical__image {
-                height: 17.2rem;
-
-                @include landscapeTablet {
-                    height: 13rem;
-                }
-
+                height: 15.2rem;
                 @include Mobile {
                     height: 20rem;
                 }

@@ -1508,10 +1508,7 @@ button {
         padding-bottom: 0;
         margin-bottom: 1.6rem; } }
   .main .block-soccer .block__content .card-vertical__image {
-    height: 17.2rem; }
-    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-      .main .block-soccer .block__content .card-vertical__image {
-        height: 13rem; } }
+    height: 15.2rem; }
     @media (max-device-width: 767px) {
       .main .block-soccer .block__content .card-vertical__image {
         height: 20rem; } }
