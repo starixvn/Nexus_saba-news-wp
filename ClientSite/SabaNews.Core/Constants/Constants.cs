@@ -150,5 +150,6 @@
         public const int EmailNew = 1;
         public const int EmailDestroy = 2;
         public const int ServerTimeZone = 7;
+        public const int StringLimitLength = 200;
     }
 }

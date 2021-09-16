@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Posts
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Constants;
 
     public class SearchPostsCriteria : CriteriaBase
     {
@@ -16,6 +17,6 @@
 
         public override string GetSettingKey() => "search_posts";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(_Keyword) && _Keyword.Length < 200;
+        public override bool IsValid() => !string.IsNullOrEmpty(_Keyword) && _Keyword.Length < Constants.StringLimitLength;
     }
 }

@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Posts
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Constants;
 
     public class GetPostsBySlugCriteria : CriteriaBase
     {
@@ -12,6 +13,6 @@
 
         public override string GetSettingKey() => "get_posts_by_slug";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(_CategorySlug) && _CategorySlug.Length < 200;
+        public override bool IsValid() => !string.IsNullOrEmpty(_CategorySlug) && _CategorySlug.Length < Constants.StringLimitLength;
     }
 }

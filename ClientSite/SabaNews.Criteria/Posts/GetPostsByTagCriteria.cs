@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Criteria.Posts
 {
     using Fanex.Data.Repository;
+    using SabaNews.Core.Constants;
 
     public class GetPostsByTagCriteria   : CriteriaBase
     {
@@ -14,7 +15,7 @@
 
         public override string GetSettingKey() => "get_posts_by_tag";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(_Tag) && _Tag.Length < 200;
+        public override bool IsValid() => !string.IsNullOrEmpty(_Tag) && _Tag.Length < Constants.StringLimitLength;
 
     }
 }
