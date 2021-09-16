@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "user_get_by_id";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserId > 0;
     }
 }

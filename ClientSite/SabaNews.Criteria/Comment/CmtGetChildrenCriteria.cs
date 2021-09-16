@@ -10,6 +10,6 @@
 
         public override string GetSettingKey() => "cmt_get_children";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => PostID > 0 && CmtID > 0;
     }
 }

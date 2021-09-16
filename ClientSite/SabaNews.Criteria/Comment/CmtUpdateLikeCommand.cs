@@ -10,6 +10,6 @@
         public string CommentLikeUsers { get; set; }
         public override string GetSettingKey() => "cmt_update_like";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => CommentID > 0;
     }
 }

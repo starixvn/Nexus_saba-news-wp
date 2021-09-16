@@ -10,6 +10,6 @@
 
         public override string GetSettingKey() => "user_subscribe_create_token";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserId > 0;
     }
 }

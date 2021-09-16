@@ -19,6 +19,6 @@
 
         public override string GetSettingKey() => "cmt_create";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => CommentID > 0 && CommentPostID > 0 && UserID > 0 && !string.IsNullOrEmpty(CommentAuthor) && !string.IsNullOrEmpty(CommentAuthorEmail) && !string.IsNullOrEmpty(CommentContent);
     }
 }

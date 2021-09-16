@@ -14,6 +14,6 @@ namespace SabaNews.Criteria.Auth
 
         public override string GetSettingKey() => "user_unsubscribe";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserId > 0;
     }
 }

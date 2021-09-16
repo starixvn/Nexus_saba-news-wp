@@ -9,6 +9,6 @@
         public string PostType { get; set; }
         public override string GetSettingKey() => "get_post_detail_by_slug";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(Slug) && Slug.Length < 200;
     }
 }

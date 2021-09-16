@@ -11,7 +11,7 @@
 
         public override string GetSettingKey() => "get_posts_by_cate_slug_not_contain_children";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(_CategorySlug) && _CategorySlug.Length < 200;
     }
     
 }

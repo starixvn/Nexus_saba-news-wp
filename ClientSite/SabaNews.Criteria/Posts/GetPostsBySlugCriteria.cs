@@ -12,6 +12,6 @@
 
         public override string GetSettingKey() => "get_posts_by_slug";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(_CategorySlug) && _CategorySlug.Length < 200;
     }
 }

@@ -12,6 +12,6 @@ namespace SabaNews.Criteria.Posts
 
         public override string GetSettingKey() => "get_top_posts_by_cate_slug";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(CateSlug) && CateSlug.Length < 200;
     }
 }

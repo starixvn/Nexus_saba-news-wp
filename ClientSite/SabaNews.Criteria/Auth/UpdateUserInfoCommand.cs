@@ -12,6 +12,6 @@
 
         public override string GetSettingKey() => "user_update_info";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserID > 0;
     }
 }

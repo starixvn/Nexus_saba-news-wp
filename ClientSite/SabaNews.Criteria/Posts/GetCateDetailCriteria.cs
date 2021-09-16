@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "get_category_detail";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(_Slug) && _Slug.Length < 200;
     }
 }

@@ -5,7 +5,7 @@
 
     public class DateTimeUtilize
     {
-        private TimeSpan _timeSpan;
+        private readonly TimeSpan _timeSpan;
 
         public DateTimeUtilize()
         {

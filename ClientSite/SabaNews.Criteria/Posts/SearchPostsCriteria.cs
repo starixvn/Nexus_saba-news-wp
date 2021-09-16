@@ -16,6 +16,6 @@
 
         public override string GetSettingKey() => "search_posts";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(_Keyword);
+        public override bool IsValid() => !string.IsNullOrEmpty(_Keyword) && _Keyword.Length < 200;
     }
 }

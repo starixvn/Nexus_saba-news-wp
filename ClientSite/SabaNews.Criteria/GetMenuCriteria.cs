@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "get_menu";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(_Menu_name);
     }
 }

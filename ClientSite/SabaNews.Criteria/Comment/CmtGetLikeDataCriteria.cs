@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "cmt_get_like_data_cmtId";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => CommentID > 0;
     }
 }

@@ -14,7 +14,7 @@
 
         public override string GetSettingKey() => "get_posts_by_tag";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => !string.IsNullOrEmpty(_Tag) && _Tag.Length < 200;
 
     }
 }

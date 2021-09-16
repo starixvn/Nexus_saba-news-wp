@@ -7,6 +7,6 @@
 
         public override string GetSettingKey() => "user_save_post";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserID > 0;
     }
 }

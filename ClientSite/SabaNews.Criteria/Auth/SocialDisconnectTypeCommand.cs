@@ -7,6 +7,6 @@
         public string NewLoginType { get; set; }
         public override string GetSettingKey() => "social_disconnect_type";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => UserId > 0;
     }
 }
