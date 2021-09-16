@@ -12,7 +12,7 @@
         {
             this.pathService = pathService;
         }
-        public IActionResult Index()
+        public IActionResult TrackingSP()
         {
             var filePath = pathService.MapPathContentRoot("LogFiles//TrackingSP.txt");
             if (System.IO.File.Exists(filePath))
