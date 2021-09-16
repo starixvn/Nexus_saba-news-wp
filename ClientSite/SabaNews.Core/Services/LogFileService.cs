@@ -35,11 +35,10 @@ namespace SabaNews.Core.Services
 
         public static void Log(string spName, string runtime, TextWriter w)
         {
-            w.Write("\r\nDate time : ");
-            w.WriteLine($"{Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)}");
-            w.WriteLine($"SP name: {spName}");
-            w.WriteLine($"Runtime: {runtime}");
-            w.WriteLine("-------------------------------");
+            w.Write("\r\nDate time: ");
+            w.Write($"{Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)}");
+            w.Write($" --- SP name: {spName} --- Runtime: {runtime}" );
+            w.Write("\r\n-------------------------------");
         }
     }
 }
