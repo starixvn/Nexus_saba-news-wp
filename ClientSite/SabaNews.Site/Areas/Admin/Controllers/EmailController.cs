@@ -386,5 +386,16 @@
             }
             return userNumber;
         }
+
+        public ActionResult Log()
+        {
+            var filePath = pathService.MapPathContentRoot("LogFiles//TrackingSP.txt");
+            if (System.IO.File.Exists(filePath))
+            {
+                using var sr = new StreamReader(filePath);
+                return Json(sr.ReadToEnd());
+            }
+            return Json(null);
+        }
     }
 }
