@@ -281,7 +281,7 @@
 															<tr>
 																<td align="center" style="font-size:0px;padding:15px 0;word-break:break-word;">
 
-																	<div style="font-family:Roboto;font-size:14px;font-weight:400;line-height:34px;text-align:center;color:#333333;">
+																	<div style="font-family:Roboto;font-size:13px;font-weight:400;line-height:34px;text-align:center;color:#333333;">
 																		Nếu bạn không muốn nhận email từ Saba Sports , hãy <a href="{unsubscribeLink}" style="text-decoration:
           none; font-style: italic">nhấn vào đây.</a>
 																	</div>
