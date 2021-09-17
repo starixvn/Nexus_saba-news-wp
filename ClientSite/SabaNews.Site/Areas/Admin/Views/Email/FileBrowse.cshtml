@@ -12,13 +12,31 @@
 		}).hover(function () {
 			$(this).css('cursor', 'pointer')
 		});
+
 	});
 </script>
 
+<style>
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.crop {
+		display: inline-block;
+		width: 180px;
+		height: 200px;
+		background-position: center center;
+		background-size: cover;
+		border: 1px solid #000;
+	}
+</style>
 
 <div id="fileExplorer">
 	@foreach (var fileInfo in Model.FileInfos)
-	{ 
-		<img src="~/uploads/@fileInfo.Name" title="@fileInfo.Name" width="120" height="100" />
+	{
+		<span class="crop" title="3rd Image" style="height:80px;background-image:url(@Model.BaseUrl/uploads/@fileInfo.Name)"></span>
 	}
+
+
 </div>
