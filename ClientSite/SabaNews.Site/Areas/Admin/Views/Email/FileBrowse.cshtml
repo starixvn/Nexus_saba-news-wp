@@ -5,8 +5,8 @@
 	$(document).ready(function () {
 		var funcNum = @(Context.Request.Query["CKEditorFuncNum"] + ";");
 		var baseUrl = '@(Model.BaseUrl)';
-		$('#fileExplorer').on('click', 'img', function () {
-			var fileUrl = baseUrl + '/uploads/' + $(this).attr('title');
+		$('.crop').on('click', function () {
+			var fileUrl = baseUrl + 'uploads/' + $(this).attr('title');
 			window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
 			window.close();
 		}).hover(function () {
@@ -35,7 +35,7 @@
 <div id="fileExplorer">
 	@foreach (var fileInfo in Model.FileInfos)
 	{
-		<span class="crop" title="3rd Image" style="height:80px;background-image:url(@Model.BaseUrl/uploads/@fileInfo.Name)"></span>
+		<span class="crop" title="@fileInfo.Name" style="height:100px;background-image:url(@Model.BaseUrl/uploads/@fileInfo.Name)"></span>
 	}
 
 
