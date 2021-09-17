@@ -43,6 +43,7 @@
 
         public string EnsureCorrectFilename(string filename)
         {
+            filename = filename.Replace(" ", "");
             if (filename.Contains("\\"))
             {
                 filename = filename[(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1)..];
