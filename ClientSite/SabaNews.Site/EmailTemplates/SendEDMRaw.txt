@@ -132,7 +132,7 @@
 																			<tr>
 																				<td style="width:42px;">
 
-																					<a href="https://www.youtube.com/channel/UCgAYnqc0rEZRNMtxA-QRsgQ" target="_blank">
+																					<a href="https://www.youtube.com/SABASportsVietnam" target="_blank">
 
 																						<img height="auto" src="https://vncdn.sabasports.com/2021/09/youtube.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="42" />
 
