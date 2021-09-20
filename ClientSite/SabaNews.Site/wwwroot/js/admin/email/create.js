@@ -6,9 +6,9 @@
             autoGrow_onStartup: true,
             allowedContent: true,
             height: 400,
-            filebrowserUploadUrl: '/Admin/Email/UploadImageSendMail',
+            filebrowserUploadUrl: '/Admin/UploadManagement/UploadImageSendMail',
             filebrowserUploadMethod: 'form',
-            filebrowserBrowseUrl: '/Admin/Email/FileBrowse'
+            filebrowserBrowseUrl: '/Admin/UploadManagement/FileBrowse'
         });
     }
     function HandleValidate() {
