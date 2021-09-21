@@ -10,6 +10,34 @@
             filebrowserUploadMethod: 'form',
             filebrowserBrowseUrl: '/Admin/UploadManagement/FileBrowse'
         });
+
+        CKEDITOR.on('instanceReady', function (ev) {
+            var editor = ev.editor,
+                dataProcessor = editor.dataProcessor,
+                htmlFilter = dataProcessor && dataProcessor.htmlFilter;
+
+            htmlFilter.addRules({
+                elements: {
+                    $: function (element) {
+                        // Output dimensions of images as width and height attributes on src
+                        if (element.name == 'img') {
+                            var style = element.attributes.style;
+                            if (style) {
+                                // Get the width from the style.
+                                var match = /(?:^|\s)width\s*:\s*(\d+)px/i.exec(style),
+                                    width = match && match[1];
+
+                                // Get the height from the style.
+                                match = /(?:^|\s)height\s*:\s*(\d+)px/i.exec(style);
+                                var height = match && match[1];
+                                element.attributes['width'] = width;
+                                element.attributes['height'] = height;
+                            }
+                        }
+                    }
+                }
+            });
+        });
     }
     function HandleValidate() {
         var isValid = true;
