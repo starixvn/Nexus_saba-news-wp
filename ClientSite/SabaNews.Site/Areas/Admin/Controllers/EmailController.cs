@@ -206,9 +206,6 @@
             return Json(result);
         }
 
-        
-
-
         public async Task<ActionResult> Detail(int emailId)
         {
             var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
