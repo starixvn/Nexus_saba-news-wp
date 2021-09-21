@@ -13,12 +13,14 @@
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Models.ViewModel.Profile;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Attributes;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
+    [SabaAuth]
     public class ProfileController : Controller
     {
         private readonly IProfileService profileService;
@@ -46,11 +48,6 @@
         [Route("Profile")]
         public async Task<IActionResult> Index()
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Redirect(Url.Action("Index", "Home"));
-            }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             sessionService.User = user;
             var model = new ProfileViewModel
@@ -66,11 +63,6 @@
         [HttpPost]
         public async Task<IActionResult> SavePost(int postID)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Json(new { isSuccessful = false });
-            }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             List<SavePost> listSavePosts = user.HandleSavePosts;
             var post = listSavePosts.Find(val => val.PostID == postID);
@@ -109,11 +101,6 @@
 
         public async Task<ActionResult> ListSavedPosts()
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Redirect(Url.Action("Index", "Home"));
-            }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             var savedPosts = user.HandleSavePosts;
             var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
@@ -132,11 +119,6 @@
 
         public async Task<ActionResult> UpdateProfile(string type, string value)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Json(new { isSuccessful = false });
-            }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             switch (type)
             {
@@ -166,11 +148,6 @@
 
         public async Task<ActionResult> UpdateProfilePassword(string oldPassword, string newPassword)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Json(new { isSuccessful = false });
-            }
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             if (!authService.ComparePassword(oldPassword, user.Password))
             {
@@ -188,12 +165,7 @@
 
         public async Task<ActionResult> UpdatePhoto(IFormFile file)
         {
-            var isAuthenticated = sessionService.User != null;
-            if (!isAuthenticated)
-            {
-                return Json(new { isSuccessful = false });
-            }
-
+           
             var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = pathService.EnsureCorrectFilename(filename);
