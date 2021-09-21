@@ -1,5 +1,5 @@
 ﻿@section Metadata {
-	<meta name="description" content='@Model.ViewData.Description' />
+	<meta name="description" content='@Model.Header.Description' />
 	<meta property="og:description" content='@Model.Category.OgDescription' />
 	<meta property="og:title" content='@Model.Category.OgTitle' />
 	<meta property="og:image" content='@Model.Category.OgImage' />
@@ -7,7 +7,7 @@
 }
 
 @section Title{
-	@Model.ViewData.Title
+	@Model.Header.Title
 }
 
 @section Styles{
@@ -15,11 +15,11 @@
 }
 
 
-@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.ViewData.Slug }))
+@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug }))
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories )</a></h2>
+			<h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories )</a></h2>
 			<div class="block__swipper">
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
@@ -67,9 +67,9 @@
 						</p>
 					</div>}
 			</div>
-			@{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-				int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-				var linkLast = Url.Action("Video", "Home", new { page = Model.ViewData.TotalPages });
+			@{ int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
+				int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
+				var linkLast = Url.Action("Video", "Home", new { page = Model.Paging.TotalPages });
 				var linkFirst = Url.Action("Video", "Home", new { page = 1 });
 				var linkNext = Url.Action("Video", "Home", new { page = CurrentPage + 1 });
 				var linkPrev = Url.Action("Video", "Home", new { page = CurrentPage - 1 });
@@ -110,7 +110,7 @@
 							if (CurrentPage + 4 <= TotalPages)
 							{
 								<li class="items-pagination"><a class="item">...</a></li>
-								<li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+								<li class="items-pagination"><a href="@linkLast" class="item">@Model.Paging.TotalPages</a></li>
 							} }
 					</ul>
 					<a href="@linkNext" class="icon-pagination icon-chevron-right @disabledLast"></a>
@@ -118,9 +118,9 @@
 				</div>}
 		</div>
 
-		@if (Model.ViewData.Slug != null)
+		@if (Model.Header.Slug != null)
 		{
-			@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
+			@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.Header.Slug }))
 		}
 		else
 		{
