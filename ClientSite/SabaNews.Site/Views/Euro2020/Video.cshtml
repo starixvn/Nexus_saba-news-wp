@@ -1,12 +1,12 @@
 ﻿@using SabaNews.Core.Constants;
-<meta name="description" content='@Model.ViewData.Description' />
+<meta name="description" content='@Model.Header.Description' />
 <meta name="robots" content="noarchive">
 <meta property="og:description" content='@Model.Category.OgDescription' />
 <meta property="og:title" content='@Model.Category.OgTitle' />
 <meta property="og:image" content='@Model.Category.OgImage' />
 
 @section Title{
-    @Model.ViewData.Title
+    @Model.Header.Title
 }
 
 @section Styles{
@@ -20,7 +20,7 @@
     @(await Component.InvokeAsync("HeaderEvent", new { page = Constants.Euro2020VideoSlug }))
     <div class="main-content">
         <div class="container">
-            <h2 class="block__title"><span class="text-title">@Model.ViewData.HeadTitle</span></h2>
+            <h2 class="block__title"><span class="text-title">@Model.Header.HeadTitle</span></h2>
             <div class="block__content">
                 <div class="block__swipper">
                     <div class="swiper-container">
@@ -71,9 +71,9 @@
                     }
                 </div>
 
-                @{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-                    int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-                    var linkLast = Url.Action("Video", "Euro2020", new { page = Model.ViewData.TotalPages });
+                @{ int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
+                    int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
+                    var linkLast = Url.Action("Video", "Euro2020", new { page = Model.Paging.TotalPages });
                     var linkFirst = Url.Action("Video", "Euro2020", new { page = 1 });
                     var linkNext = Url.Action("Video", "Euro2020", new { page = CurrentPage + 1 });
                     var linkPrev = Url.Action("Video", "Euro2020", new { page = CurrentPage - 1 });
@@ -108,7 +108,7 @@
                                 if (CurrentPage + 4 <= TotalPages)
                                 {
                                     <li class="items-pagination"><a class="item">...</a></li>
-                                    <li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+                                    <li class="items-pagination"><a href="@linkLast" class="item">@Model.Paging.TotalPages</a></li>
                                 } }
                         </ul>
                         <a href="@linkNext" class="icon-pagination icon-chevron-right"></a>

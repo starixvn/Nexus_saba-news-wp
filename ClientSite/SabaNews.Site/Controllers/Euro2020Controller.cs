@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
@@ -43,7 +44,7 @@
             var posts = await postService.GetPostsByCateSlugAsync(criteria);
             posts = posts.OrderBy(item => item.PostExcerpt);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020TeamSlug);
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
@@ -53,7 +54,7 @@
             {
                 Posts = posts,
                 Category = cate,
-                ViewData = viewData
+                Header = header
             };
             return View(Model);
         }
@@ -75,22 +76,26 @@
                 return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(slug);
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
                 Description = cate.Description,
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage),
                 Controller = Constants.Euro2020Video,
                 Slug = slug
+            };
+            var paging = new PagingModel
+            {
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage)
             };
             var Model = new CategoryViewModel
             {
                 Posts = posts.ToArray(),
                 Category = cate,
-                ViewData = viewData
+                Header = header,
+                Paging = paging
 
             };
             return View(Model);
@@ -114,22 +119,26 @@
                 return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020VideoSlug);
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
                 Description = cate.Description,
+                Controller = Constants.Euro2020Video
+            };
+            var paging = new PagingModel
+            {
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage),
-                Controller = Constants.Euro2020Video
-
+                TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.Perpage)
             };
+
             var Model = new CategoryViewModel
             {
                 Posts = posts.ToArray(),
                 Category = cate,
-                ViewData = viewData
+                Header = header,
+                Paging = paging
 
             };
             return View(Model);
@@ -151,7 +160,7 @@
             }
             posts = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
@@ -161,7 +170,7 @@
             {
                 Posts = posts,
                 Category = cate,
-                ViewData = viewData
+                Header = header
 
             };
             return View(Model);

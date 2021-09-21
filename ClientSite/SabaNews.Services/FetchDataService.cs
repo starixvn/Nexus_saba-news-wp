@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services
 {
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
@@ -94,26 +95,30 @@
                 return null;
             }
             var cate = await postService.GetCateDetailAsync(slug);
-            var ViewData = new ViewData
+            var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
                 Title = cate.SEOTitle ??= cate.Title,
                 Description = cate.Description,
-                CurrentPage = page,
-                PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage),
                 CategoryId = cate.CatId,
                 Controller = controller,
                 Slug = slug
             };
+            var paging = new PagingModel
+            {
+                CurrentPage = page,
+                PageSize = perPage,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage)
+            };
 
-            var Model = new CategoryViewModel
+            var model = new CategoryViewModel
             {
                 Posts = (posts).ToArray(),
                 Category = cate,
-                ViewData = ViewData
+                Header = header,
+                Paging = paging
             };
-            return Model;
+            return model;
         }
 
         public async Task<IEnumerable<Menu>> GetMenuData()

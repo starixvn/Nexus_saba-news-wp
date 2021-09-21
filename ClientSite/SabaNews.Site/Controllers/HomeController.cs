@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
@@ -56,12 +57,12 @@
                 return View(Constants.EmptyBlogView);
             }
 
-            viewModel.ViewData.ActiveCategory = slug;
+            viewModel.Header.ActiveCategory = slug;
             if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
             {
-                viewModel.ViewData.HeadTitle = viewModel.Posts.First().CategoryParent;
-                viewModel.ViewData.IsChildren = true;
-                viewModel.ViewData.ActiveCategory = Constants.FootballSlug;
+                viewModel.Header.HeadTitle = viewModel.Posts.First().CategoryParent;
+                viewModel.Header.IsChildren = true;
+                viewModel.Header.ActiveCategory = Constants.FootballSlug;
             }
             return View(Constants.BlogView, viewModel);
         }
@@ -128,21 +129,25 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword ??= "", _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 Title = Constants.SearchTitle + " '" + keyword + "'",
                 HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
                 Description = Constants.SearchTitle + " '" + keyword + "'",
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
                 Keyword = keyword,
                 Controller = Constants.Search
+            };
+            var paging = new PagingModel
+            {
+                CurrentPage = page,
+                PageSize = Constants.Perpage,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
             };
             var model = new CategoryViewModel
             {
                 Posts = posts,
-                ViewData = viewData
+                Header = header,
+                Paging = paging
             };
 
             var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
@@ -159,15 +164,18 @@
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
            
-            var viewData = new ViewData
+            var header = new HeaderViewModel
             {
                 Title = string.Concat(tag, " | ", Constants.SiteName),
                 HeadTitle = "Tag: '" + tag + "'",
+                Keyword = tagname,
+                Controller = Constants.Tag
+            };
+            var paging = new PagingModel
+            {
                 CurrentPage = page,
                 PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
-                Tag = tagname,
-                Controller = Constants.Tag
+                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
             };
             var category = new Category
             {
@@ -178,8 +186,9 @@
             var model = new CategoryViewModel
             {
                 Posts = posts,
-                ViewData = viewData,
-                Category = category
+                Header = header,
+                Category = category,
+                Paging = paging
             };
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;

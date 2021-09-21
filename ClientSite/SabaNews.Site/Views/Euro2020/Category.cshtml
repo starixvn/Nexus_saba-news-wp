@@ -1,12 +1,12 @@
 ﻿@using SabaNews.Core.Constants;
-<meta name="description" content='@Model.ViewData.Description' />
+<meta name="description" content='@Model.Header.Description' />
 <meta name="robots" content="noarchive">
 <meta property="og:description" content='@Model.Category.OgDescription' />
 <meta property="og:title" content='@Model.Category.OgTitle' />
 <meta property="og:image" content='@Model.Category.OgImage' />
 
 @section Title{
-    @Model.ViewData.Title
+    @Model.Header.Title
 }
 
 @section Styles{
@@ -17,11 +17,11 @@
 }
 
 <div class="page">
-    @(await Component.InvokeAsync("HeaderEvent", new { page = Model.ViewData.Slug }))
+    @(await Component.InvokeAsync("HeaderEvent", new { page = Model.Header.Slug }))
     <div class="main">
         <div class="container">
             <div class="block block-main">
-                <h2 class="block__title"><a href="">@Model.ViewData.HeadTitle</a></h2>
+                <h2 class="block__title"><a href="">@Model.Header.HeadTitle</a></h2>
                 <div class="block__content">
                     <div class="card-horizontal card-horizontal-highlight">
                         <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="card-horizontal__image thumb thumb-56">
@@ -68,9 +68,9 @@
                         </div>
                     }
                 </div>
-                @{ int CurrentPage = Convert.ToInt32(Model.ViewData.CurrentPage);
-                    int TotalPages = Convert.ToInt32(Model.ViewData.TotalPages);
-                    var linkLast = Url.Action("Category", "Euro2020", new { page = Model.ViewData.TotalPages });
+                @{ int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
+                    int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
+                    var linkLast = Url.Action("Category", "Euro2020", new { page = Model.Paging.TotalPages });
                     var linkFirst = Url.Action("Category", "Euro2020", new { page = 1 });
                     var linkNext = Url.Action("Category", "Euro2020", new { page = CurrentPage + 1 });
                     var linkPrev = Url.Action("Category", "Euro2020", new { page = CurrentPage - 1 });
@@ -105,7 +105,7 @@
                                 if (CurrentPage + 4 <= TotalPages)
                                 {
                                     <li class="items-pagination"><a class="item">...</a></li>
-                                    <li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+                                    <li class="items-pagination"><a href="@linkLast" class="item">@Model.Paging.TotalPages</a></li>
                                 } }
                         </ul>
                         <a href="@linkNext" class="icon-pagination icon-chevron-right"></a>
@@ -113,9 +113,9 @@
                     </div>
                 }
             </div>
-            @if (Model.ViewData.Slug != null)
+            @if (Model.Header.Slug != null)
             {
-                @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
+                @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.Header.Slug }))
             }
             else
             {

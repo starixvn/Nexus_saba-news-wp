@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Core.Models;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
 
@@ -7,6 +8,7 @@
     {
         public IEnumerable<Post> Posts { get; set; }
         public Category Category { get; set; }
-        public ViewData ViewData { get; set; }
+        public HeaderViewModel Header { get; set; }
+        public PagingModel Paging { get; set; }
     }
 }

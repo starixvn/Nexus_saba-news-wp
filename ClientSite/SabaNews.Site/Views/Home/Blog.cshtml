@@ -1,5 +1,5 @@
 ﻿@{
-	if (Model.ViewData.Controller == "Tag")
+	if (Model.Header.Controller == "Tag")
 	{
 		var description = "MỚI NHẤT: ";
 		int i = 0;
@@ -19,12 +19,12 @@
 			}
 		}
 		Model.Category.OgDescription = description;
-		Model.ViewData.Description = description;
+		Model.Header.Description = description;
 	}
 }
 
 @section Metadata {
-	<meta name="description" content='@Model.ViewData.Description' />
+	<meta name="description" content='@Model.Header.Description' />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="@ViewResources.SiteName" />
 	<meta http-equiv="REFRESH" content="1800" />
@@ -43,18 +43,18 @@
 		<meta name="twitter:description" content="@Model.Category.OgDescription">
 		<meta name="twitter:image" content="@Model.Category.OgImage" />
 	}
-	else if (Model.ViewData.Controller == "Tag")
+	else if (Model.Header.Controller == "Tag")
 	{
 		<meta name="robots" content="noarchive">
 	}
-	else if (Model.ViewData.Controller == "Search")
+	else if (Model.Header.Controller == "Search")
 	{
 		<meta name="robots" content="noindex,nofollow">
 	}
 }
 
 @section Title{
-	@Model.ViewData.Title
+	@Model.Header.Title
 }
 
 @section Styles{
@@ -62,16 +62,16 @@
 }
 
 
-@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.ViewData.ActiveCategory }))
+@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory }))
 <section class="main">
 	<div class="container">
 		<div class="block block-main">
-			<h2 class="block__title"><a>@(Model.ViewData.HeadTitle != null ? Model.ViewData.HeadTitle : Model.Posts[0].Categories)</a></h2>
-			@if (Model.ViewData.Slug == ViewResources.FootballSlug || Model.ViewData.IsChildren)
+			<h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
+			@if (Model.Header.Slug == ViewResources.FootballSlug || Model.Header.IsChildren)
 			{
 				<ul class="sub-category">
-					<li class="sub-item @(Model.ViewData.Slug == ViewResources.FootballInsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
-					<li class="sub-item @(Model.ViewData.Slug == ViewResources.FootballOutsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
+					<li class="sub-item @(Model.Header.Slug == ViewResources.FootballInsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballInsideSlug})">@ViewResources.FootballInside</a></li>
+					<li class="sub-item @(Model.Header.Slug == ViewResources.FootballOutsideSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug = ViewResources.FootballOutsideSlug})">@ViewResources.FootballOutside</a></li>
 				</ul>
 			}
 			<div class="block__content">
@@ -119,32 +119,25 @@
 					</div>
 				}
 				@{
-					int CurrentPage = Model.ViewData.CurrentPage;
-					int TotalPages = Model.ViewData.TotalPages;
-					var linkLast = Url.Action("Category", "Home", new { page = Model.ViewData.TotalPages });
+					int CurrentPage = Model.Paging.CurrentPage;
+					int TotalPages = Model.Paging.TotalPages;
+					var linkLast = Url.Action("Category", "Home", new { page = Model.Paging.TotalPages });
 					var linkFirst = Url.Action("Category", "Home", new { page = 1 });
 					var linkNext = Url.Action("Category", "Home", new { page = CurrentPage + 1 });
 					var linkPrev = Url.Action("Category", "Home", new { page = CurrentPage - 1 });
-					if (Model.ViewData.Controller == "Search")
+					if (Model.Header.Controller == "Search")
 					{
-						linkLast = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = Model.ViewData.TotalPages });
-						linkFirst = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = 1 });
-						linkNext = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = CurrentPage + 1 });
-						linkPrev = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = CurrentPage - 1 });
+						linkLast = Url.Action("Search", "Home", new { keyword = Model.Header.Keyword, page = Model.Paging.TotalPages });
+						linkFirst = Url.Action("Search", "Home", new { keyword = Model.Header.Keyword, page = 1 });
+						linkNext = Url.Action("Search", "Home", new { keyword = Model.Header.Keyword, page = CurrentPage + 1 });
+						linkPrev = Url.Action("Search", "Home", new { keyword = Model.Header.Keyword, page = CurrentPage - 1 });
 					}
-					else if (Model.ViewData.Controller == "Tag")
+					else if (Model.Header.Controller == "Tag")
 					{
-						linkLast = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = Model.ViewData.TotalPages });
-						linkFirst = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = 1 });
-						linkNext = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = CurrentPage + 1 });
-						linkPrev = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = CurrentPage - 1 });
-					}
-					else if (Model.ViewData.Controller == "DateSearch")
-					{
-						linkLast = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = Model.ViewData.TotalPages });
-						linkFirst = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = 1 });
-						linkNext = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = CurrentPage + 1 });
-						linkPrev = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = CurrentPage - 1 });
+						linkLast = Url.Action("Tag", "Home", new { tagname = Model.Header.Keyword, page = Model.Paging.TotalPages });
+						linkFirst = Url.Action("Tag", "Home", new { tagname = Model.Header.Keyword, page = 1 });
+						linkNext = Url.Action("Tag", "Home", new { tagname = Model.Header.Keyword, page = CurrentPage + 1 });
+						linkPrev = Url.Action("Tag", "Home", new { tagname = Model.Header.Keyword, page = CurrentPage - 1 });
 					}
 
 					linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
@@ -176,17 +169,13 @@
 								for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
 								{
 									var link = Url.Action("Category", "Home", new { page = i });
-									if (Model.ViewData.Controller == "Search")
+									if (Model.Header.Controller == "Search")
 									{
-										link = Url.Action("Search", "Home", new { keyword = Model.ViewData.Keyword, page = i });
+										link = Url.Action("Search", "Home", new { keyword = Model.Header.Keyword, page = i });
 									}
-									else if (Model.ViewData.Controller == "Tag")
+									else if (Model.Header.Controller == "Tag")
 									{
-										link = Url.Action("Tag", "Home", new { tagname = Model.ViewData.Tag, page = i });
-									}
-									else if (Model.ViewData.Controller == "DateSearch")
-									{
-										link = Url.Action("DateSearch", "Home", new { date = Model.ViewData.DateSearch, page = i });
+										link = Url.Action("Tag", "Home", new { tagname = Model.Header.Keyword, page = i });
 									}
 									var active = i == CurrentPage ? "active" : "";
 									<li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
@@ -195,7 +184,7 @@
 								if (CurrentPage + 4 <= TotalPages)
 								{
 									<li class="items-pagination"><a class="item">...</a></li>
-									<li class="items-pagination"><a href="@linkLast" class="item">@Model.ViewData.TotalPages</a></li>
+									<li class="items-pagination"><a href="@linkLast" class="item">@Model.Paging.TotalPages</a></li>
 								}
 							}
 						</ul>
@@ -205,9 +194,9 @@
 				}
 			</div>
 		</div>
-		@if (Model.ViewData.Slug != null)
+		@if (Model.Header.Slug != null)
 		{
-			@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.ViewData.Slug }))
+			@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.Header.Slug }))
 		}
 		else
 		{
