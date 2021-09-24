@@ -5,7 +5,7 @@
             fullPage: true,
             autoGrow_onStartup: true,
             allowedContent: true,
-            height: 400,
+            height: 1000,
             filebrowserUploadUrl: '/Admin/UploadManagement/UploadImageSendMail',
             filebrowserUploadMethod: 'form',
             filebrowserBrowseUrl: '/Admin/UploadManagement/FileBrowse'
