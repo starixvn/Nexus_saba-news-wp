@@ -816,3 +816,6 @@ button {
     font-size: 1.4rem;
     color: #424242;
     font-weight: bold; }
+
+#ViewEmailContent .modal-content {
+  max-width: 100rem; }
