@@ -77,6 +77,10 @@
         {
             var slug = cateSlug;
             var name = cateName;
+            if (cateSlug.Contains(Constants.CollectionSlug) || cateSlug.Contains(Constants.BasketballSlug) || cateSlug.Contains(Constants.TennisSlug))
+            {
+                return (Constants.OtherPostSlug, Constants.OtherPosts);
+            }
             if (cateSlug.Contains(","))
             {
                 var listCateSlug = cateSlug.Split(',');
@@ -85,9 +89,11 @@
                 var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
                 slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
                 name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
+                
             }
-
             return (slug.Trim(), name.Trim());
+
+
         }
 
         [HttpPost]

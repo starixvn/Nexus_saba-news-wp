@@ -19,6 +19,7 @@
         public const string FootballOutside = "bong-da-quoc-te";
         public const string FootballInside = "bong-da-trong-nuoc";
         public const string OtherPostSlug = "cac-mon-khac";
+        public const string CollectionSlug = "tong-hop";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
@@ -31,6 +32,7 @@
         public const string DateSearch = "DateSearch";
         public const string Football = "Bóng đá";
         public const string Video = "Video";
+        public const string OtherPosts = "Các môn khác"; 
 
         public const string EmptyBlogView = "~/Views/Home/EmptyBlog.cshtml";
         public const string BlogView = "Blog";
