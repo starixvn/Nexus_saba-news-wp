@@ -491,6 +491,11 @@ jQuery(document).ready(function(e) {
 	
 	private function update_poll($id){
 		global $wpdb;
+		if(empty($_POST['poll_name']) && empty($_POST['Question'])) 
+		{
+			echo "<script>location.href='admin.php?page=Polls';</script>";
+			exit ();
+		}
 		$wpdb->update( $wpdb->prefix.'polls_question', 
 			array( 
 				'question' => stripslashes($_POST['Question']),
