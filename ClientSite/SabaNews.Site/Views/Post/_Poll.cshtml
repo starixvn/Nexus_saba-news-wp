@@ -1,0 +1,46 @@
+﻿	<div class="poll_main_div_@Model.QuestionId poll_min_div_cur_answer_1 wpdevartpoll @(Model.IsUserVoted ? "hide_poll" : "show_poll")">
+		<div class="poll_question">Where are you now?</div>
+		@{
+			var i = 0;
+		}
+		@foreach (var poll in Model.Polls)
+		{
+			i++;
+			<div class="div_with_ceckbox_or_select poll_element_@i">
+				<span class="radio_or_select_span"><input class="poll_inputs" type="radio" name="poll_1" value="@poll.AnswerName"></span>
+				<div class="div_only_answer">
+					<div class="main_div_of_the_poll_answer" title="test">
+						<div class="pracents_of_the_poll colorwell" style="width: 33.333333333333%;"></div>
+						<div class="polllabel"><span class="poll_answer_title">@poll.Answer</span></div>
+						<div class="poll_div_voted_count"><span class="poll_span_voted_count"> 1 Vote</span></div>
+					</div>
+				</div>
+			</div>
+		}
+		<button data-questid="@Model.QuestionId" class="vote_answer">Bình chọn</button>
+		<button data-questid="@Model.QuestionId" class="view_result">Xem kết quả</button>
+	</div>
+
+
+	<div class="poll_result_@Model.QuestionId @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
+		<div class="poll_question">Where are you now?</div>
+		<table class="vote_result">
+			<tr>
+				<td width="30%"></td>
+				<td width="60%"></td>
+			</tr>
+			@foreach (var poll in Model.Polls)
+			{
+				var percent = Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2);
+				<tr>
+					<td align="right">@poll.Answer</td>
+					<td align="left"> @(percent + "% (" + poll.Vote + " phiếu)"  )</td>
+				</tr>
+			}
+		</table>
+		@if (!Model.IsUserVoted)
+		{
+			<button data-questid="@Model.QuestionId" class="vote_section">Bình Chọn</button>
+
+		}
+	</div>

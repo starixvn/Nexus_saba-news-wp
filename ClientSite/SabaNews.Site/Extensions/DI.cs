@@ -55,6 +55,7 @@
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IExternalAuthService, ExternalAuthService>();
             services.AddTransient<IStatisticService, StatisticService>();
+            services.AddTransient<IPollService, PollService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)

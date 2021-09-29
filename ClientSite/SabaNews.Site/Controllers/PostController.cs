@@ -5,7 +5,9 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Poll;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
     using System;
@@ -19,18 +21,21 @@
         private readonly ISessionService sessionService;
         private readonly IProfileService profileService;
         private readonly IStatisticService statisticService;
+        private readonly IPollService pollService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
             IProfileService profileService,
-            IStatisticService statisticService)
+            IStatisticService statisticService,
+            IPollService pollService)
         {
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
             this.profileService = profileService;
             this.statisticService = statisticService;
+            this.pollService = pollService;
         }
 
         [Route("{slug}")]
@@ -69,8 +74,56 @@
                 CateSlug = cateInfo.slug,
                 CateName = cateInfo.name
             };
+            if (post.PostContent.Contains("[wpdevart_poll"))
+            {
+                var test = post.PostContent.IndexOf("[wpdevart_poll");
+                var test1 = post.PostContent.IndexOf("]", test);
+            }
             await postService.UpdateViewAsync(post.ID, post.Type == Constants.VideoPostType);
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetPollData(int questId, int themeId, string attrClass)
+        {
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
+            {
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+            var criteria = new GetPollCriteria
+            {
+                QuestId = questId,
+                ThemeId = themeId,
+                UserIp = clientIP
+            };
+            var polls = await pollService.GetPollAsync(criteria);
+            var totalVotes = polls.Sum(item => item.Vote);
+
+            var model = new PollViewModel
+            {
+                IsUserVoted = criteria.IsVoted == 1,
+                Polls = polls,
+                TotalVotes = totalVotes,
+                QuestionId = questId
+            };
+            return PartialView("_Poll", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> VotePollSurvey(int questId, int answerId, int themeId, string attrClass)
+        {
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
+            {
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+            var result = await pollService.VotePollSurveyAsync(questId, answerId, clientIP);
+            if (result.IsSuccessful)
+            {
+                return await GetPollData(questId, themeId, attrClass);
+            }
+            return Json(result);
         }
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
