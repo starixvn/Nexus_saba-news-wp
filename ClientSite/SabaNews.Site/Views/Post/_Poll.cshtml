@@ -11,10 +11,7 @@
 			<div class="poll_element">
 				<span class="radio_or_select_span"><input class="poll_inputs" type="radio" name="poll_checkbox_@Model.Question.Id" value="@poll.AnswerName"></span>
 				<div class="div_only_answer">
-					<div class="main_div_of_the_poll_answer" title="test">
-						<div class="pracents_of_the_poll colorwell"></div>
-						<div class="polllabel"><span class="poll_answer_title">@poll.Answer</span></div>
-					</div>
+					<div class="polllabel"><span class="poll_answer_title">@poll.Answer</span></div>
 				</div>
 			</div>
 		}
@@ -37,7 +34,7 @@
 		</tr>
 		@foreach (var poll in Model.Polls)
 		{
-			var percent = Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2);
+			var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
 			<tr>
 				<td align="right">@poll.Answer</td>
 				<td align="left"> @(percent + "% (" + poll.Vote + " phiếu)"  )</td>

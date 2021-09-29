@@ -29,7 +29,7 @@
             return result;
         }
 
-        public async Task<CommandResult> VotePollSurveyAsync(int questId, int answerId, string userIp)
+        public async Task<CommandResult> VotePollAsync(int questId, int answerId, string userIp)
         {
             var command = new VotePollSurveyCommand
             {

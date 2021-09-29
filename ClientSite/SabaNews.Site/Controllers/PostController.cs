@@ -102,14 +102,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> VotePollSurvey(int questId, int answerId, int themeId)
+        public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId)
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             if (string.IsNullOrWhiteSpace(clientIP))
             {
                 clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
             }
-            var result = await pollService.VotePollSurveyAsync(questId, answerId, clientIP);
+            var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
                 return await GetPollData(questId, themeId);

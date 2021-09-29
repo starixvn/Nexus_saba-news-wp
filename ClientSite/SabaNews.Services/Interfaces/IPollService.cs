@@ -9,6 +9,6 @@
     {
         Task<PollViewModel> GetPollAsync(GetPollCriteria criteria);
 
-        Task<CommandResult> VotePollSurveyAsync(int questId, int answerId, string userIp);
+        Task<CommandResult> VotePollAsync(int questId, int answerId, string userIp);
     }
 }

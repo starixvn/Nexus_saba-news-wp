@@ -47,7 +47,7 @@
             var themeId = $('.question_' + questionId).data('theme');
             $.ajax({
                 type: "POST",
-                url: "Post/VotePollSurvey",
+                url: "Post/VotePoll",
                 data: { questId: questionId, answerId, themeId},
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
@@ -67,6 +67,9 @@
             questionId = $(this).data('questid');
             $('.poll_main_div_' + questionId).show();
             $('.poll_result_' + questionId).hide();
+        });
+        $(document).on('click', '.polllabel', function () {
+            $(this).parent().parent().find(".poll_inputs").prop('checked', true);
         });
     }
     function init() {
