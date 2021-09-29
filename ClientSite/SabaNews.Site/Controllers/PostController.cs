@@ -84,7 +84,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetPollData(int questId, int themeId, string attrClass)
+        public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             if (string.IsNullOrWhiteSpace(clientIP))
@@ -97,21 +97,12 @@
                 ThemeId = themeId,
                 UserIp = clientIP
             };
-            var polls = await pollService.GetPollAsync(criteria);
-            var totalVotes = polls.Sum(item => item.Vote);
-
-            var model = new PollViewModel
-            {
-                IsUserVoted = criteria.IsVoted == 1,
-                Polls = polls,
-                TotalVotes = totalVotes,
-                QuestionId = questId
-            };
+            var model = await pollService.GetPollAsync(criteria);
             return PartialView("_Poll", model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> VotePollSurvey(int questId, int answerId, int themeId, string attrClass)
+        public async Task<IActionResult> VotePollSurvey(int questId, int answerId, int themeId)
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             if (string.IsNullOrWhiteSpace(clientIP))
@@ -121,7 +112,7 @@
             var result = await pollService.VotePollSurveyAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
-                return await GetPollData(questId, themeId, attrClass);
+                return await GetPollData(questId, themeId);
             }
             return Json(result);
         }

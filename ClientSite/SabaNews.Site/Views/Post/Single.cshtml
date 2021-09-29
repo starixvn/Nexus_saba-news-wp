@@ -202,7 +202,7 @@
 	</div>
 </section>
 <div class="auth-form">
-	<div class="modal" id="requestLogin">
+	<div class="modal" id="announcement">
 		<div class="modal-content modal-auth">
 			<div class="modal-warning">
 				<button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
@@ -211,7 +211,7 @@
 				<div class="tab-content" id="nav-tabContent">
 					<h3 class="heading-warning">@ViewResources.Message</h3>
 					<hr />
-					<h3 class="slogan">@ViewResources.MessageRequestLogin</h3>
+					<h3 class="content">@ViewResources.MessageRequestLogin</h3>
 				</div>
 			</div>
 		</div>
@@ -219,7 +219,6 @@
 </div>
 
 <script>
-    var postContent = '@Model.SinglePost.PostContent';
     var checkScroll = function () {
         var el = document.querySelector('#comment');
         var main = document.querySelector('.fixed-social');

@@ -6,8 +6,8 @@
     public class PollViewModel
     {
         public IEnumerable<PollModel> Polls { get; set; }
-
-        public int QuestionId { get; set; }
+        
+        public QuestionModel Question { get; set; }
 
         public string ClassName { get; set; }
 
@@ -15,6 +15,5 @@
 
         public int TotalVotes { get; set; }
 
-        public bool isShowResult { get; set; }
     }
 }

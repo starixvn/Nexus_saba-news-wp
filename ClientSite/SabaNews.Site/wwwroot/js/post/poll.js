@@ -2,28 +2,29 @@
     var questionId = 0;
     var answerId = 0;
     function CheckAndInsertPoll() {
-        var poolKeyword = 'wpdevart_pol'
-        var re = new RegExp(poolKeyword, 'gi');
+        var pollKeyword = 'wpdevart_pol'
+        var re = new RegExp(pollKeyword, 'gi');
         var postContent = $('.content').html();
         var results = new Array();
         while (re.exec(postContent)) {
             results.push(re.lastIndex);
         }
         $.each(results, function (index, value) {
-            var test = postContent.indexOf("]", value);
-            var str = postContent.substring(value - poolKeyword.length - 1, test + 1);
+            var endPoll = postContent.indexOf("]", value);
+            var str = postContent.substring(value - pollKeyword.length - 1, endPoll + 1);
             var attrs = str.split('"');
             if (attrs.length >= 5) {
+                var attrClass = typeof attrs[5] != "undefined" ? attrs[5] : "";
                 $.ajax({
                     type: "POST",
                     url: "Post/GetPollData",
-                    data: { questID: attrs[1], themeID: attrs[3], attrClass: attrs[5] },
+                    data: { questID: attrs[1], themeID: attrs[3] },
                     success: function (res) {
-                        var html = '<div class="question_' + attrs[1] + '" data-theme="' + attrs[3] + '" data-class="' + attrs[5] + '">';
+                        var content = $('.content').html();
+                        var html = '<div class="pollevent ' + attrClass + ' question_' + attrs[1] + '" data-theme="' + attrs[3] + '" data-class="' + attrClass + '">';
                         html += res;
                         html += "</div>";
-                        postContent = postContent.replace(str, html);
-                        $('.content').html(postContent);
+                        $('.content').html(content.replace(str, html));
                     }
                 })
             }
@@ -36,15 +37,18 @@
         });
         $(document).on('click', '.vote_answer', function () {
             questionId = $(this).data('questid');
-            if (questionId == null || answerId == null) {
+            var checked = $(this).parent().parent().find('.poll_inputs:checked');
+            if (questionId <= 0 || answerId <= 0 || checked.length <= 0) {
+                $('#announcement .content').html('Bạn chưa chọn câu trả lời!');
+                $('#announcement').modal('show');
                 return false;
             }
+            console.log(questionId, answerId);
             var themeId = $('.question_' + questionId).data('theme');
-            var attrClass = $('.question_' + questionId).data('class');
             $.ajax({
                 type: "POST",
                 url: "Post/VotePollSurvey",
-                data: { questId: questionId, answerId, themeId, attrClass},
+                data: { questId: questionId, answerId, themeId},
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
                         $('.question_' + questionId).html(res);
@@ -72,7 +76,6 @@
 
     return {
         init
-
     }
     
 })(jQuery);

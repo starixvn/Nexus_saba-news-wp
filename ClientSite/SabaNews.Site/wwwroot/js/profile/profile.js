@@ -4,7 +4,8 @@
     function save_post() {
         $('.save_post').on('click', function () {
             if (!isLogin) {
-                $('#requestLogin').modal('show');
+                $('#announcement .content').html('Vui Lòng đăng nhập để thực hiện chức năng này!');
+                $('#announcement').modal('show');
                 return false;
             }
             var self = $(this);
