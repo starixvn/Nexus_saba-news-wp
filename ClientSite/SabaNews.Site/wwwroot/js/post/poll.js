@@ -37,7 +37,7 @@
         });
         $(document).on('click', '.vote_answer', function () {
             questionId = $(this).data('questid');
-            var checked = $(this).parent().parent().find('.poll_inputs:checked');
+            var checked = $('input[name="poll_radio_' + questionId + '"]:checked');
             if (questionId <= 0 || answerId <= 0 || checked.length <= 0) {
                 $('#announcement .content').html('Bạn chưa chọn câu trả lời!');
                 $('#announcement').modal('show');
