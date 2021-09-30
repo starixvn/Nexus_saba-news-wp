@@ -1,12 +1,12 @@
 ﻿.pollevent {
     width: 400px;
     margin: 0 auto;
+    font-size: 1.5rem;
 }
 .poll_name {
     background: #13B307;
     padding: 10px;
     color: #fff;
-    font-size: 17px;
     line-height: 21px;
     text-align: center;
     font-weight: 600;
@@ -14,7 +14,6 @@
 
 .poll_section {
     border: 2px solid #78B43D;
-    font-size: 16px;
     margin-bottom: 10px;
 }
 
@@ -30,7 +29,6 @@
     margin: 0px;
     float: left;
     width: 97%;
-    font-size: 15px;
     line-height: 25px;
 }
 
@@ -145,7 +143,9 @@
 .vote_result tr td {
     padding-right: 10px;
 }
-
+.vote_result .total {
+    font-weight: bold;
+}
 .hide_poll {
     display: none;
 }

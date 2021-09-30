@@ -1,6 +1,5 @@
 ﻿var poll = (function ($) {
     var questionId = 0;
-    var answerId = 0;
     function CheckAndInsertPoll() {
         var pollKeyword = 'wpdevart_pol'
         var re = new RegExp(pollKeyword, 'gi');
@@ -32,18 +31,15 @@
     }
 
     function UpdatePollData() {
-        $(document).on('click', '.poll_inputs', function () {
-            answerId = $(this).val();
-        });
         $(document).on('click', '.vote_answer', function () {
             questionId = $(this).data('questid');
             var checked = $('input[name="poll_radio_' + questionId + '"]:checked');
-            if (questionId <= 0 || answerId <= 0 || checked.length <= 0) {
+            if (questionId <= 0 || checked.length <= 0) {
                 $('#announcement .content').html('Bạn chưa chọn câu trả lời!');
                 $('#announcement').modal('show');
                 return false;
             }
-            console.log(questionId, answerId);
+            var answerId = checked.val();
             var themeId = $('.question_' + questionId).data('theme');
             $.ajax({
                 type: "POST",

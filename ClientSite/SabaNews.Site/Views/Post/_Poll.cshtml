@@ -27,32 +27,37 @@
 
 <div class="poll_result_@Model.Question.Id @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
 	<div class="poll_name">Kết quả bình chọn</div>
-	<table class="vote_result">
-		<tr>
-			<td width="40%"></td>
-			<td width="60%"></td>
-		</tr>
-		@foreach (var poll in Model.Polls)
-		{
-			var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
+	<div class="poll_content">
+		<div class="poll_question">@Model.Question.Question</div>
+		<table class="vote_result">
 			<tr>
-				<td align="right">@poll.Answer</td>
-				<td align="left"> @(percent + "% (" + poll.Vote + " phiếu)"  )</td>
+				<td width="40%"></td>
+				<td width="60%"></td>
 			</tr>
+			@foreach (var poll in Model.Polls)
+			{
+				var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
+				<tr>
+					<td align="right">@poll.Answer</td>
+					<td align="left"> @(percent + "% (" + poll.Vote + " phiếu)"  )</td>
+				</tr>
+			}
+			<tr class="total">
+				<td align="right">Tổng cộng</td>
+				<td align="left">@(Model.TotalVotes + " Phiếu")</td>
+			</tr>
+			<tr class="total">
+				<td align="right">Thời gian cập nhật</td>
+				<td align="left">@DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")</td>
+			</tr>
+		</table>
+		@if (!Model.IsUserVoted)
+		{
+			<div class="poll_action">
+				<button data-questid="@Model.Question.Id" class="btn_vote vote_section">Bình Chọn</button>
+			</div>
 		}
-		<tr class="total">
-			<td align="right">Tổng cộng</td>
-			<td align="left">@(Model.TotalVotes + " Phiếu")</td>
-		</tr>
-		<tr class="total">
-			<td align="right">Thời gian cập nhật</td>
-			<td align="left">@DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")</td>
-		</tr>
-	</table>
-	@if (!Model.IsUserVoted)
-	{
-		<div class="poll_action" >
-			<button data-questid="@Model.Question.Id" class="btn_vote vote_section">Bình Chọn</button>
-		</div>
-	}
+	</div>
+	
+	
 </div>
