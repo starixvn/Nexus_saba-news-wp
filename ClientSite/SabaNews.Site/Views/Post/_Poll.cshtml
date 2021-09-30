@@ -25,7 +25,7 @@
 </div>
 
 
-<div class="poll_result_@Model.Question.Id @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
+<div class="poll_result_@Model.Question.Id poll_section @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
 	<div class="poll_name">Kết quả bình chọn</div>
 	<div class="poll_content">
 		<div class="poll_question">@Model.Question.Question</div>
