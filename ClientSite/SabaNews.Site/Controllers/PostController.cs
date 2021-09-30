@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using Microsoft.AspNetCore.Http.Features;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -12,6 +13,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
     public class PostController : Controller
@@ -115,6 +117,21 @@
                 return await GetPollData(questId, themeId);
             }
             return Json(result);
+        }
+
+        public async Task<IActionResult> CheckClentIP()
+        {
+            var  test1 = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
+            var test2 = feature?.LocalIpAddress?.ToString();
+            //var test3 = await Dns.GetHostAddressesAsync(Dns.GetHostName());
+            var test4 = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            var addlist = Dns.GetHostEntry(Dns.GetHostName());
+            string GetHostName = addlist.HostName.ToString();
+            string GetIPV6 = addlist.AddressList[0].ToString();
+            string GetIPV4 = addlist.AddressList[1].ToString();
+
+            return Json(new { test1, test2, test4, GetIPV6, GetIPV4, GetHostName });
         }
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
