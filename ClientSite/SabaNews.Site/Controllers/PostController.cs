@@ -108,16 +108,16 @@
 
         public ActionResult CheckClentIP()
         {
-            var test1 = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var remoteIP = HttpContext.Connection.RemoteIpAddress?.ToString();
             var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
-            var test2 = feature?.LocalIpAddress?.ToString();
-            var test4 = HttpContext.Request.Headers["x-forwarded-for"].ToString();
+            var localIP = feature?.LocalIpAddress?.ToString();
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             var addlist = Dns.GetHostEntry(Dns.GetHostName());
             string GetHostName = addlist.HostName;
             string GetIPV6 = addlist.AddressList[0].ToString();
             string GetIPV4 = addlist.AddressList[1].ToString();
 
-            return Json(new { test1, test2, test4, GetIPV6, GetIPV4, GetHostName });
+            return Json(new { remoteIP, localIP, clientIP, GetIPV6, GetIPV4, GetHostName });
         }
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
