@@ -88,11 +88,7 @@
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
-            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            if (string.IsNullOrWhiteSpace(clientIP))
-            {
-                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
+            var clientIP = GetClientIP();
             var criteria = new GetPollCriteria
             {
                 QuestId = questId,
@@ -106,11 +102,7 @@
         [HttpPost]
         public async Task<IActionResult> VotePoll(int questId, int answerId, int themeId)
         {
-            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            if (string.IsNullOrWhiteSpace(clientIP))
-            {
-                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
+            var clientIP = GetClientIP();
             var result = await pollService.VotePollAsync(questId, answerId, clientIP);
             if (result.IsSuccessful)
             {
@@ -119,12 +111,11 @@
             return Json(result);
         }
 
-        public async Task<IActionResult> CheckClentIP()
+        public ActionResult CheckClentIP()
         {
-            var  test1 = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var test1 = HttpContext.Connection.RemoteIpAddress?.ToString();
             var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
             var test2 = feature?.LocalIpAddress?.ToString();
-            //var test3 = await Dns.GetHostAddressesAsync(Dns.GetHostName());
             var test4 = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             var addlist = Dns.GetHostEntry(Dns.GetHostName());
             string GetHostName = addlist.HostName.ToString();
@@ -171,6 +162,16 @@
         {
             var viewPostStatistic = await statisticService.GetPostViewStatistic(fromDate, toDate);
             return Ok(viewPostStatistic);
+        }
+
+        public string GetClientIP()
+        {
+            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString() + "-" + HttpContext.Connection.RemoteIpAddress.ToString();
+            if (string.IsNullOrWhiteSpace(clientIP))
+            {
+                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
+            }
+            return clientIP;
         }
     }
 }

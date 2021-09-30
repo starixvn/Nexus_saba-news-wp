@@ -48,7 +48,7 @@
 			</tr>
 			<tr class="total">
 				<td align="right">Thời gian cập nhật</td>
-				<td align="left">@DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss")</td>
+				<td align="left">@SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)</td>
 			</tr>
 		</table>
 		@if (!Model.IsUserVoted)
