@@ -669,8 +669,9 @@
   <data name="SiteName" xml:space="preserve">
     <value>SABA Sports</value>
   </data>
-  <data name="Author" xml:space="preserve">
+    <data name="Author" xml:space="preserve">
     <value>Author</value>
+      </data>
   <data name="Sum" xml:space="preserve">
     <value>Tổng cộng</value>
   </data>
