@@ -1,4 +1,9 @@
-﻿<div class="poll_main_div_@Model.Question.Id poll_section @(Model.IsUserVoted ? "hide_poll" : "show_poll")">
+﻿@{
+	string[] ListColors = new string[] { "#25A3B5", "#E1C0BF", "#CB2723", "#CB2723", "#2AD8C4" };
+	var colorIndex = -1;
+}
+
+<div class="poll_main_div_@Model.Question.Id poll_section @(Model.IsUserVoted ? "hide_poll" : "show_poll")">
 	<div class="poll_name">@Model.Question.Name</div>
 	<div class="poll_content">
 		<div class="poll_question">@Model.Question.Question</div>
@@ -36,10 +41,17 @@
 			</tr>
 			@foreach (var poll in Model.Polls)
 			{
+				colorIndex++;
+				if (colorIndex > ListColors.Length - 1)
+				{
+					colorIndex = 0; 
+				}
 				var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
 				<tr>
 					<td align="right">@poll.Answer</td>
-					<td align="left"> @(percent + "% (" + poll.Vote + " phiếu)"  )</td>
+					<td align="left">
+						<div style="background:@ListColors[colorIndex]; width:@(percent/2.0 + "%"); height: 13px; float: left; margin:10px 0;"></div>&nbsp;@(percent + "% (" + poll.Vote + " phiếu)"  )
+					</td>
 				</tr>
 			}
 			<tr class="total">
