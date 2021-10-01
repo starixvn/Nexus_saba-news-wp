@@ -671,5 +671,19 @@
   </data>
   <data name="Author" xml:space="preserve">
     <value>Author</value>
+  <data name="Sum" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
+  <data name="UpdateTime" xml:space="preserve">
+    <value>Thời gian cập nhật</value>
+  </data>
+  <data name="ViewResult" xml:space="preserve">
+    <value>Xem Kết quả</value>
+  </data>
+  <data name="Vote" xml:space="preserve">
+    <value>Bình chọn</value>
+  </data>
+  <data name="VoteResult" xml:space="preserve">
+    <value>Kết quả bình chọn</value>
   </data>
 </root>

@@ -21,8 +21,8 @@
 			</div>
 		}
 		<div class="poll_action" >
-			<button data-questid="@Model.Question.Id" class="btn_vote vote_answer">Bình chọn</button>
-			<button data-questid="@Model.Question.Id" class="btn_result view_result">Xem kết quả</button>
+			<button data-questid="@Model.Question.Id" class="btn_vote vote_answer">@ViewResources.Vote</button>
+			<button data-questid="@Model.Question.Id" class="btn_result view_result">@ViewResources.ViewResult</button>
 		</div>
 
 	</div>
@@ -31,7 +31,7 @@
 
 
 <div class="poll_result_@Model.Question.Id poll_section @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
-	<div class="poll_name">Kết quả bình chọn</div>
+	<div class="poll_name">@ViewResources.VoteResult</div>
 	<div class="poll_content">
 		<div class="poll_question">@Model.Question.Question</div>
 		<table class="vote_result">
@@ -55,18 +55,18 @@
 				</tr>
 			}
 			<tr class="total">
-				<td align="right">Tổng cộng</td>
+				<td align="right">@ViewResources.Sum</td>
 				<td align="left">@(Model.TotalVotes + " Phiếu")</td>
 			</tr>
 			<tr class="total">
-				<td align="right">Thời gian cập nhật</td>
-				<td align="left">@SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)</td>
+				<td align="right">@ViewResources.UpdateTime</td>
+				<td align="left">@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTimeByVNLanguage(DateTime.UtcNow)</td>
 			</tr>
 		</table>
 		@if (!Model.IsUserVoted)
 		{
 			<div class="poll_action">
-				<button data-questid="@Model.Question.Id" class="btn_vote vote_section">Bình Chọn</button>
+				<button data-questid="@Model.Question.Id" class="btn_vote vote_section">@ViewResources.Vote</button>
 			</div>
 		}
 	</div>

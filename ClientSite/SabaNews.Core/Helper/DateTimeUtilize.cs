@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Core.Helper
 {
     using System;
+    using System.Globalization;
     using SabaNews.Core.Constants;
 
     public class DateTimeUtilize
@@ -16,6 +17,12 @@
         {
             var timeSpan = new DateTimeUtilize();
             return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss");
+        }
+
+        public static string FormatDateTimeByVNLanguage(DateTime time)
+        {
+            var timeSpan = new DateTimeUtilize();
+            return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss", new CultureInfo("vi"));
         }
     }
 }

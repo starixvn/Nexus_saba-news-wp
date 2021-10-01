@@ -1474,6 +1474,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tổng cộng.
+        /// </summary>
+        public static string Sum {
+            get {
+                return ResourceManager.GetString("Sum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đội tuyển.
         /// </summary>
         public static string Team {
@@ -1587,6 +1596,15 @@ namespace SabaNews.Resources {
         public static string UnsubscribeSuccessfully {
             get {
                 return ResourceManager.GetString("UnsubscribeSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thời gian cập nhật.
+        /// </summary>
+        public static string UpdateTime {
+            get {
+                return ResourceManager.GetString("UpdateTime", resourceCulture);
             }
         }
         
@@ -1722,6 +1740,33 @@ namespace SabaNews.Resources {
         public static string ViewDataTitle {
             get {
                 return ResourceManager.GetString("ViewDataTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xem Kết quả.
+        /// </summary>
+        public static string ViewResult {
+            get {
+                return ResourceManager.GetString("ViewResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bình chọn.
+        /// </summary>
+        public static string Vote {
+            get {
+                return ResourceManager.GetString("Vote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kết quả bình chọn.
+        /// </summary>
+        public static string VoteResult {
+            get {
+                return ResourceManager.GetString("VoteResult", resourceCulture);
             }
         }
     }
