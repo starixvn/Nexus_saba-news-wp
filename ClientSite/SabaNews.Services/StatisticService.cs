@@ -60,7 +60,8 @@
             bool isVideo,
             int pageIndex,
             int pageSize,
-            string viewSortType)
+            string viewSortType,
+            string authorSortType)
         {
             var criteria = new GetViewDetailOnDateCriteria
             {
@@ -68,7 +69,8 @@
                 IsVideo = isVideo,
                 ViewSortType = viewSortType,
                 PageIndex = pageIndex,
-                PageSize = pageSize
+                PageSize = pageSize,
+                AuthorSortType = authorSortType
             };
 
             var details = await baseService.GetDataAsync<ViewDetails>(criteria);

@@ -43,6 +43,12 @@
                 <th>#</th>
                 <th>@ViewResources.CreatedTime</th>
                 <th>@ViewResources.Title</th>
+				<th>
+					<p class="warning-admin">
+						@ViewResources.Author
+						<i id="author-sort" class="table-sort icon-sort-admin" sort-type="@Model.AuthorSort"></i>
+					</p>
+				</th> 
                 <th>
                     <p class="warning-admin">
 
@@ -62,12 +68,13 @@
 
                 foreach (var item in Model.ViewDetails)
                 {
-                    <tr>
-                        <td class="text-center" width="5%">@i</td>
-                        <td class="text-center"  width="20%">@item.CreatedDate.ToString("HH:mm")</td>
-                        <td class="text-left"  width="55%"><a href="~/@item.Slug">@item.Title</a></td>
-                        <td class="text-right"  width="20%">@item.TotalViews</td>
-                    </tr>
+						<tr>
+							<td class="text-center" width="5%">@i</td>
+							<td class="text-center" width="15%">@item.CreatedDate.ToString("HH:mm")</td>
+							<td class="text-left" width="55%"><a href="~/@item.Slug">@item.Title</a></td>
+							<td class="text-center" width="15%">@item.Author</td>
+							<td class="text-right" width="20%">@item.TotalViews</td>
+						</tr>
                     i++;
                 }
             }

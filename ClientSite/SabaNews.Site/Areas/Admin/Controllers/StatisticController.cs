@@ -62,7 +62,8 @@
                 query.IsVideo,
                 query.PageIndex,
                 query.PageSize,
-                query.ViewSort);
+                query.ViewSort,
+                query.AuthorSort);
 
             var viewModel = new ViewDetailsViewModel
             {
@@ -71,6 +72,7 @@
                 Type = query.IsVideo ? ViewResources.Videos : ViewResources.Articles,
                 Quantity = totalItems,
                 ViewSort = query.ViewSort,
+                AuthorSort = query.AuthorSort,
                 Tooltip = query.IsVideo ? ViewResources.VideoTooltipContent : ViewResources.ArticleTooltipContent,
                 IsVideo = query.IsVideo,
                 TotalView = totalViews,

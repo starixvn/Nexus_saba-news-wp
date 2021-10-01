@@ -15,6 +15,8 @@
 
         public string ViewSortType { get; set; }
 
+        public string AuthorSortType { get; set; }
+
         public int TotalItems { get; set; }
 
         public int TotalViews { get; set; }

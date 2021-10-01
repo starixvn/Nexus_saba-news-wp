@@ -13,6 +13,7 @@
             bool isVideo,
             int pageIndex,
             int pageSize,
-            string viewSortType);
+            string viewSortType,
+            string authorSortType);
     }
 }

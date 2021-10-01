@@ -11,6 +11,8 @@
 
         public string ViewSort { get; set; }
 
+        public string AuthorSort { get; set; }
+
         public int PageIndex { get; set; } = Constants.FirstPage;
 
         public int PageSize { get; set; } = Constants.Perpage;

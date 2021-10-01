@@ -17,6 +17,8 @@
 
         public string ViewSort { get; set; }
 
+        public string AuthorSort { get; set; }
+
         public string Tooltip { get; set; }
 
         public bool IsVideo { get; set; }
