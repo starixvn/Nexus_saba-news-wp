@@ -1,16 +1,13 @@
-DROP PROCEDURE IF EXISTS post_view_detail_get;
-DELIMITER //
-
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_view_detail_get`(
 	createdDate DATE,
     isVideo BIT,
     viewSortType VARCHAR(10),
+    authorSortType VARCHAR(10),
     pageIndex INT,
     pageSize INT,
     OUT totalItems INT,
     OUT totalViews INT
 )
-
 BEGIN
     DECLARE startIndex INT DEFAULT 0;
     DECLARE videoCategoryId INT;
@@ -58,18 +55,20 @@ BEGIN
           ,p.post_title As Title
           ,p.post_name As Slug
           ,p.post_date As CreatedDate
+          ,u.display_name as Author
           ,SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) As TotalViews
     FROM tmpPosts tmp_p
     INNER JOIN wp_posts p ON tmp_p.PostId = p.ID
+    INNER JOIN wp_users u ON u.ID = p.post_author
     LEFT JOIN wp_postview_details pd ON tmp_p.PostId = pd.post_id
     GROUP BY tmp_p.PostId
     ORDER BY CASE WHEN viewSortType = 'desc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END DESC
 			 ,CASE WHEN viewSortType = 'asc' THEN SUM(CASE WHEN isVideo = 1 THEN pd.video_view ELSE pd.view_count END) END
+             ,CASE WHEN authorSortType = 'desc' THEN u.display_name END desc
+             ,CASE WHEN authorSortType = 'asc' THEN u.display_name END
              ,p.post_date DESC
     LIMIT startIndex, pageSize;
 
     DROP TEMPORARY TABLE IF EXISTS tmpVideoChilds;
     DROP TEMPORARY TABLE IF EXISTS tmpPosts;
 END
-//
-DELIMITER ;
