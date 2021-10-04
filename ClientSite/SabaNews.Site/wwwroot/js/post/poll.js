@@ -47,6 +47,7 @@
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
                         $('.question_' + questionId).html(res);
+                        $.cookie('poll' + questionId, answerId, { expires: 7, path: '/' });
                     } else {
                         $('#announcement .content').html('Đã có lỗi xảy ra, vui lòng thử lại!');
                         $('#announcement').modal('show');
