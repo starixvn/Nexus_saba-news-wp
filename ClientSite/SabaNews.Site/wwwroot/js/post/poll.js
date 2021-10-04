@@ -1,5 +1,4 @@
 ﻿var poll = (function ($) {
-    var questionId = 0;
     function CheckAndInsertPoll() {
         var pollKeyword = 'wpdevart_pol'
         var re = new RegExp(pollKeyword, 'gi');
@@ -32,7 +31,7 @@
 
     function UpdatePollData() {
         $(document).on('click', '.vote_answer', function () {
-            questionId = $(this).data('questid');
+            var questionId = $(this).data('questid');
             var checked = $('input[name="poll_radio_' + questionId + '"]:checked');
             if (questionId <= 0 || checked.length <= 0) {
                 $('#announcement .content').html('Bạn chưa chọn câu trả lời!');
@@ -57,13 +56,13 @@
         });
 
         $(document).on('click', '.view_result', function () {
-            questionId = $(this).data('questid');
+            var questionId = $(this).data('questid');
             $('.poll_main_div_' + questionId).hide();
             $('.poll_result_' + questionId).show();
         });
 
         $(document).on('click', '.vote_section', function () {
-            questionId = $(this).data('questid');
+            var questionId = $(this).data('questid');
             $('.poll_main_div_' + questionId).show();
             $('.poll_result_' + questionId).hide();
         });
