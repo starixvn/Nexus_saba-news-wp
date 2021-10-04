@@ -48,7 +48,10 @@
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
                         $('.question_' + questionId).html(res);
-                    } 
+                    } else {
+                        $('#announcement .content').html('Đã có lỗi xảy ra, vui lòng thử lại!');
+                        $('#announcement').modal('show');
+                    }
                 }
             });
         });

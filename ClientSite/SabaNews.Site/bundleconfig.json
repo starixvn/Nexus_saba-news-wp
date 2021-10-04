@@ -176,7 +176,8 @@
         "outputFileName": "wwwroot/minify/js/single.min.js",
         "inputFiles": [
             "wwwroot/js/profile/profile.js",
-            "wwwroot/js/comment.js"
+            "wwwroot/js/comment.js",
+            "wwwroot/js/post/poll.js"
         ],
         "minify": {
             "enabled": true,
