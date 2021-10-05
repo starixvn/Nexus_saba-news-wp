@@ -13,10 +13,6 @@ $('.submenu').click(function () {
     }
 })
 
-
-
-
-
 $(document).ready(function () {
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
@@ -52,10 +48,7 @@ $(document).ready(function () {
         }
     });
 
-
-
     //desktop
-
     if ($(window).innerWidth() < 1024) {
         $('.search-desktop').remove();
     }

@@ -44,7 +44,6 @@
         });
     }
 
-
     function init() {
         save_post();
     }

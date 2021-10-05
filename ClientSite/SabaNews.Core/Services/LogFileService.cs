@@ -20,17 +20,25 @@ namespace SabaNews.Core.Services
         }
         public void WriteLog(string spName, string runtime)
         {
-            var filePath = Path.Combine(webHostEnvironment.ContentRootPath, "LogFiles/TrackingSP.txt");
-            bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
-            if (IsWiteLogFile)
+            try
             {
-                if (!File.Exists(filePath))
+                var filePath = Path.Combine(webHostEnvironment.ContentRootPath, "LogFiles/TrackingSP.txt");
+                bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
+                if (IsWiteLogFile)
                 {
-                    File.Create(filePath).Dispose();
+                    if (!File.Exists(filePath))
+                    {
+                        File.Create(filePath).Dispose();
+                    }
+                    using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
+                    Log(spName, runtime, w);
                 }
-                using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
-                Log(spName, runtime, w);
             }
+            catch (Exception e)
+            {
+                _ = e.Message;
+            }
+            
         }
 
         public static void Log(string spName, string runtime, TextWriter w)
