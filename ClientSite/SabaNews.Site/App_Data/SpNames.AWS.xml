@@ -215,4 +215,8 @@
         <Setting Key="email_update_status" SpName="email_update_status" DbName="sabasports" Plain="0" />
         <Setting Key="email_update" SpName="email_update" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Poll">
+        <Setting Key="poll_get" SpName="poll_get" DbName="sabasports" Plain="0" />
+        <Setting Key="poll_vote" SpName="poll_vote" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>
