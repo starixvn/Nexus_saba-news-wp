@@ -162,7 +162,7 @@
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
             if (!string.IsNullOrWhiteSpace(clientIP))
             {
-                clientIP = clientIP.Split(',')[0]
+                clientIP = clientIP.Split(',')[0];
             }
             else
             {
