@@ -290,3 +290,32 @@ function render_post_view_column_value($column) {
 
 add_filter('manage_posts_columns', 'add_posts_views_column' );
 add_action('manage_posts_custom_column', 'render_post_view_column_value');
+
+function add_register_date_column($columns) {
+	$columns['RegisterDate'] = 'RegisterDate';
+	return $columns;
+}
+
+
+function modify_user_table_row( $row_output, $column_id_attr, $user ) {
+	
+	$date_format = 'j M, Y H:i';
+
+	switch ( $column_id_attr ) {
+		case 'RegisterDate' :
+			return date( $date_format, strtotime ('+7 hours', strtotime( get_the_author_meta( 'registered', $user ) )) );
+			break;
+		default:
+	}
+
+	return $row_output;
+
+}
+
+
+function make_registered_column_sortable( $columns ) {
+	return wp_parse_args( array( 'RegisterDate' => 'registered' ), $columns );
+}
+add_filter( 'manage_users_sortable_columns', 'make_registered_column_sortable' );
+add_filter('manage_users_columns', 'add_register_date_column' );
+add_filter( 'manage_users_custom_column', 'modify_user_table_row', 10, 3 );
