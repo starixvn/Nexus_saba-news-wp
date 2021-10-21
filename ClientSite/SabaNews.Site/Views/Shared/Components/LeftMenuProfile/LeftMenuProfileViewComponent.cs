@@ -8,19 +8,19 @@
     public class LeftMenuProfileViewComponent : ViewComponent
     {
         private readonly ISessionService sessionService;
-        private readonly IProfileService profileService;
+        private readonly IUserService userService;
 
         public LeftMenuProfileViewComponent(
             ISessionService sessionService,
-            IProfileService profileService)
+            IUserService userService)
         {
             this.sessionService = sessionService;
-            this.profileService = profileService;
+            this.userService = userService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string page = "")
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             ViewBag.Page = page;
             return View(user);
         }

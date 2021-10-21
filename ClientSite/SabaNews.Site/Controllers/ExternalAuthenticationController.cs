@@ -17,16 +17,16 @@
     {
         private readonly IExternalAuthService externalAuthService;
         private readonly ISessionService sessionService;
-        private readonly IProfileService profileService;
+        private readonly IUserService userService;
 
         public ExternalAuthenticationController(
             IExternalAuthService externalAuthService,
             ISessionService sessionService,
-            IProfileService profileService)
+            IUserService userService)
         {
             this.externalAuthService = externalAuthService;
             this.sessionService = sessionService;
-            this.profileService = profileService;
+            this.userService = userService;
         }
 
         public IActionResult Login(string provider = GoogleDefaults.AuthenticationScheme, string returnUrl = null)
@@ -81,7 +81,7 @@
             else
             {
                 CommandResult result = await externalAuthService.CreateUserAsync(userInfo);
-                user = await profileService.GetUserByIdAsync(userInfo.Id);
+                user = await userService.GetUserByIdAsync(userInfo.Id);
                 if (result.IsSuccessful)
                 {
                     sessionService.User = user;

@@ -23,7 +23,7 @@
     [SabaAuth]
     public class ProfileController : Controller
     {
-        private readonly IProfileService profileService;
+        private readonly IUserService userService;
         private readonly ISessionService sessionService;
         private readonly IPostService postService;
         private readonly IAuthService authService;
@@ -31,14 +31,14 @@
         private readonly IEmailService emailService;
 
         public ProfileController(
-            IProfileService profileService,
+            IUserService userService,
             ISessionService sessionService,
             IPostService postService,
             IAuthService authService,
             IPathService pathService,
             IEmailService emailService)
         {
-            this.profileService = profileService;
+            this.userService = userService;
             this.sessionService = sessionService;
             this.postService = postService;
             this.authService = authService;
@@ -48,7 +48,7 @@
         [Route("Profile")]
         public async Task<IActionResult> Index()
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             sessionService.User = user;
             var model = new ProfileViewModel
             {
@@ -63,7 +63,7 @@
         [HttpPost]
         public async Task<IActionResult> SavePost(int postID)
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             List<SavePost> listSavePosts = user.HandleSavePosts;
             var post = listSavePosts.Find(val => val.PostID == postID);
             if (post != null)
@@ -80,7 +80,7 @@
                 listSavePosts.Add(newSavePost);
             }
             var listPosts = JsonConvert.SerializeObject(listSavePosts);
-            var commandResult = await profileService.UpdateUserSavePostAsync(sessionService.User.Id, listPosts);
+            var commandResult = await userService.UpdateUserSavePostAsync(sessionService.User.Id, listPosts);
             if (commandResult.IsSuccessful)
             {
                 sessionService.User = new UserSession
@@ -101,7 +101,7 @@
 
         public async Task<ActionResult> ListSavedPosts()
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             var savedPosts = user.HandleSavePosts;
             var listPostID = string.Join(",", savedPosts.ConvertAll(val => val.PostID));
             var posts = await postService.GetSavedPostsByUserID(listPostID);
@@ -119,7 +119,7 @@
 
         public async Task<ActionResult> UpdateProfile(string type, string value)
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             switch (type)
             {
                 case "phone":
@@ -137,7 +137,7 @@
                 default:
                     throw new InvalidOperationException();
             }
-            var commandResult =  await profileService.UpdateUserInfoAsync(user);
+            var commandResult =  await userService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
                 sessionService.User = user;
@@ -148,13 +148,13 @@
 
         public async Task<ActionResult> UpdateProfilePassword(string oldPassword, string newPassword)
         {
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             if (!authService.ComparePassword(oldPassword, user.Password))
             {
                 return Json(new { isSuccessful = false, message = Constants.WrongPassword });
             }
             user.Password = BCrypt.HashPassword(newPassword);
-            var commandResult = await profileService.UpdateUserInfoAsync(user);
+            var commandResult = await userService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
                 sessionService.User = user;
@@ -166,7 +166,7 @@
         public async Task<ActionResult> UpdatePhoto(IFormFile file)
         {
            
-            var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+            var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = pathService.EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename ;
@@ -180,7 +180,7 @@
             }
             user.Photo = filename;
             var linkPhoto = "";
-            var commandResult = await profileService.UpdateUserInfoAsync(user);
+            var commandResult = await userService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
                 linkPhoto = "uploads/" + filename;
@@ -191,7 +191,7 @@
 
         public async Task<ActionResult> SocialDisconnect(int userId, string type)
         {
-            var commandResult = await profileService.DisconnectLoginTypeAsync(userId, type);
+            var commandResult = await userService.DisconnectLoginTypeAsync(userId, type);
             if (commandResult.IsSuccessful && string.IsNullOrEmpty(commandResult.Message) && string.IsNullOrEmpty(sessionService.User.Password))
             {
                 sessionService.ClearAll();
@@ -213,7 +213,7 @@
         [HttpPost]
         public async Task<ActionResult> Unsubscribe(int userId, string token)
         {
-            var result = await profileService.UnSubcriteUserAsync(userId, token);
+            var result = await userService.UnSubcriteUserAsync(userId, token);
             return PartialView("_Unsubscribe", result.IsSuccessful);
         }
 

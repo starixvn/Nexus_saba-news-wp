@@ -6,7 +6,7 @@
     using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.User;
 
-    public interface IProfileService
+    public interface IUserService
     {
         Task<CommandResult> UpdateUserSavePostAsync(int userID, string listPosts);
 

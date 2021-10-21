@@ -67,7 +67,7 @@
 
                 await mailclient.SendAsync(message);
                 logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
-                result = new CommandResult { Code = 0, Message = Message.SendEmailSuccessfully };
+                result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
             catch (AuthenticationException ex)
             {

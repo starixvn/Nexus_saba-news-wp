@@ -11,11 +11,11 @@
 
     public class UserController : AdminController
     {
-        private readonly IProfileService profileService;
+        private readonly IUserService userSerive;
 
-        public UserController(IProfileService profileService)
+        public UserController(IUserService userSerive)
         {
-            this.profileService = profileService;
+            this.userSerive = userSerive;
         }
         public async Task<ActionResult> Index()
         {
@@ -40,7 +40,7 @@
                 Start = (param.Page - 1) * param.PageSize,
                 End = param.PageSize
             };
-            var users = await profileService.GetUserReportAsync(criteria);
+            var users = await userSerive.GetUserReportAsync(criteria);
             var model = new UserGridViewModel
             {
                 Users = users,

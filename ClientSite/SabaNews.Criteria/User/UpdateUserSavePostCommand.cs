@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Criteria.Auth
+﻿namespace SabaNews.Criteria.User
 {
     public class UpdateUserSavePostCommand : BaseNonQueryCommand
     {

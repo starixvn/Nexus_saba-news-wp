@@ -148,6 +148,7 @@
         public const string Email = "Email";
         public const string ProfileAction = "Profile";
         public const string ConfirmUnsubscribe = "ConfirmUnsubscribe";
+        public const int SuccessCode = 0;
         public const int EmailSent = 0;
         public const int EmailNew = 1;
         public const int EmailDestroy = 2;

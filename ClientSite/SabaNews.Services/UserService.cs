@@ -1,18 +1,17 @@
 ﻿namespace SabaNews.Services
 {
     using SabaNews.Core.Models;
-    using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    
 
-    public class ProfileService : IProfileService
+
+    public class UserService : IUserService
     {
         private readonly IBaseService baseService;
             
-        public ProfileService(IBaseService baseService)
+        public UserService(IBaseService baseService)
         {
             this.baseService = baseService;
         }

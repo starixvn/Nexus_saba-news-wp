@@ -7,6 +7,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.Email;
+    using SabaNews.Criteria.User;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
     using System;
@@ -16,7 +17,7 @@
 
     public class EmailController : AdminController
     {
-        private readonly IProfileService profileService;
+        private readonly IUserService userService;
         private readonly ISessionService sessionService;
         private readonly IPathService pathService;
         private readonly IEmailService emailService;
@@ -25,14 +26,14 @@
         private const string SendMailTemplate = "EmailTemplates//SendEDM.html";
         private readonly string baseUrl;
         public EmailController(
-            IProfileService profileService,
+            IUserService userService,
             ISessionService sessionService,
             IPathService pathService,
             IEmailService emailService,
             IConfiguration configuration,
             IAuthService authService)
         {
-            this.profileService = profileService;
+            this.userService = userService;
             this.sessionService = sessionService;
             this.pathService = pathService;
             this.emailService = emailService;
@@ -43,7 +44,7 @@
 
         public async Task<ActionResult> Index()
         {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
+            var users = await userService.GetAllUserAsync(new GetAllUserCriteria());
             var adminUsers = users.Where(item => !string.IsNullOrWhiteSpace(item.Metadata) && item.Metadata.Contains(Role.Administrator)).ToList();
             var model = new EmailFilterViewModel
             {
@@ -86,7 +87,7 @@
         public async Task<ActionResult> Create()
         {
             var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
+            var users = await userService.GetAllUserAsync(new GetAllUserCriteria());
             ViewBag.rawUrl = rawUrl;
             return View(users);
         }
@@ -126,7 +127,7 @@
             if (email == null || email.Status != Constants.EmailNew) {
                 return Redirect(Url.Action("Index", Constants.Email));
             }
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria());
+            var users = await userService.GetAllUserAsync(new GetAllUserCriteria());
             var originalUrl = "";
             if (email.EmbeddedLink != null && email.EmbeddedLink.Contains(Constants.ReturnUrl)) {
                 originalUrl = email.EmbeddedLink[(email.EmbeddedLink.LastIndexOf(Constants.ReturnUrl, StringComparison.OrdinalIgnoreCase) + Constants.ReturnUrl.Length + 1)..];
@@ -309,7 +310,7 @@
 
         public async Task<int> Send(EmailModel model)
         {
-            var users = await profileService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
+            var users = await userService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
             var subscribedUsers = users.Where(item => item.IsSubscribe == 1).ToList();
             var userNumber = subscribedUsers.Count;
             foreach (var user in subscribedUsers)

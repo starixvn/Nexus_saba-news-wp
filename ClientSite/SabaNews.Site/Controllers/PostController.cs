@@ -20,21 +20,21 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
-        private readonly IProfileService profileService;
+        private readonly IUserService userService;
         private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
-            IProfileService profileService,
+            IUserService userService,
             IStatisticService statisticService,
             IPollService pollService)
         {
             this.postService = postService;
             this.configuration = configuration;
             this.sessionService = sessionService;
-            this.profileService = profileService;
+            this.userService = userService;
             this.statisticService = statisticService;
             this.pollService = pollService;
         }
@@ -59,7 +59,7 @@
             var isLogin = sessionService.User != null;
             if (isLogin)
             {
-                var user = await profileService.GetUserByIdAsync(sessionService.User.Id);
+                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
             (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
