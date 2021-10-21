@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Auth;
+    using SabaNews.Criteria.User;
 
     public interface IProfileService
     {
@@ -16,6 +17,8 @@
         Task<CommandResult> DisconnectLoginTypeAsync(int userId, string loginType);
 
         Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria);
+
+        Task<IEnumerable<UserSession>> GetUserReportAsync(GetUserReportCriteria criteria);
 
         Task<CommandResult> UnSubcriteUserAsync(int UserId, string token);
     }

@@ -669,9 +669,9 @@
   <data name="SiteName" xml:space="preserve">
     <value>SABA Sports</value>
   </data>
-    <data name="Author" xml:space="preserve">
+  <data name="Author" xml:space="preserve">
     <value>Author</value>
-      </data>
+  </data>
   <data name="Sum" xml:space="preserve">
     <value>Tổng cộng</value>
   </data>
@@ -686,5 +686,38 @@
   </data>
   <data name="VoteResult" xml:space="preserve">
     <value>Kết quả bình chọn</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="CustomerRole" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="RegisterDate" xml:space="preserve">
+    <value>Register Date</value>
+  </data>
+  <data name="SearchLabel" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="JoinedDate" xml:space="preserve">
+    <value>Joined Date</value>
+  </data>
+  <data name="Subscriber" xml:space="preserve">
+    <value>Subscriber</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UserReport" xml:space="preserve">
+    <value>User Report</value>
   </data>
 </root>

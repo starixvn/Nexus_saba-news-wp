@@ -87,6 +87,7 @@
     <ItemGroup>
         <Folder Include="wwwroot\minify\js\" />
         <Folder Include="wwwroot\minify\styles\" />
+        <Folder Include="wwwroot\styles\pages\admin\user\" />
         <Folder Include="wwwroot\uploads\" />
     </ItemGroup>
 

@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Auth;
+    using SabaNews.Criteria.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -50,6 +51,11 @@
         }
 
         public async Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria)
+        {
+            return await baseService.GetDataAsync<UserSession>(criteria);
+        }
+
+        public async Task<IEnumerable<UserSession>> GetUserReportAsync(GetUserReportCriteria criteria)
         {
             return await baseService.GetDataAsync<UserSession>(criteria);
         }

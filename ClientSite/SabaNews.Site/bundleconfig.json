@@ -273,5 +273,16 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/admin_user.min.js",
+        "inputFiles": [
+            "wwwroot/js/admin/user/user.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 ]

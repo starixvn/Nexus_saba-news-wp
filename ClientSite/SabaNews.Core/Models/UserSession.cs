@@ -31,7 +31,7 @@
 
         public DateTime RegisterDate { get; set; }
 
-        public string Role => Metadata != null && Metadata.Contains(Constants.AdministratorRole) ? Constants.AdministratorRole : Constants.NormalRole;
+        public string Role => Metadata != null && Metadata.Contains(Core.Constants.Role.Administrator) ? Core.Constants.Role.Administrator : Core.Constants.Role.Customer;
 
         public bool ErrorConnectWrongEmail { get; set; }
 
