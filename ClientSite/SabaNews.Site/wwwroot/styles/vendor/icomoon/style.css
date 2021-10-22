@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?3odt4q');
-  src:  url('fonts/Fraud-Sensor.eot?3odt4q#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?3odt4q') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?3odt4q') format('woff'),
-    url('fonts/Fraud-Sensor.svg?3odt4q#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?7xe8vr');
+  src:  url('fonts/Fraud-Sensor.eot?7xe8vr#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?7xe8vr') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?7xe8vr') format('woff'),
+    url('fonts/Fraud-Sensor.svg?7xe8vr#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-account_circle:before {
+  content: "\e915";
+  color: #fff;
+}
 .icon-sort-admin:before {
   content: "\e914";
 }
