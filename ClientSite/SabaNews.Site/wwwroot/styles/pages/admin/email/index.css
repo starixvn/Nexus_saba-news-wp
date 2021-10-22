@@ -569,10 +569,10 @@ button {
   position: relative; }
   .pagination .page-size {
     position: absolute;
-    top: .7rem;
     display: flex;
     align-items: center;
-    left: 0; }
+    left: 0;
+    font-size: 1.4rem; }
     .pagination .page-size .label-admin {
       margin: 0 1rem; }
     .pagination .page-size #page-size {

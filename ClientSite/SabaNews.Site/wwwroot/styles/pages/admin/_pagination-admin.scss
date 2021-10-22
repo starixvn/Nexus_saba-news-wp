@@ -12,10 +12,11 @@
 
     .page-size {
         position: absolute;
-        top: .7rem;
+        //top: .7rem;
         display: flex;
         align-items: center;
         left: 0;
+        font-size: 1.4rem;
 
         .label-admin {
             margin: 0 1rem;
