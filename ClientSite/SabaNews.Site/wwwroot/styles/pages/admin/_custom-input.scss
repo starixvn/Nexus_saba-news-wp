@@ -19,4 +19,15 @@
     &:focus {
         outline: none;
     }
+
+    &.list-input {
+        cursor: unset;
+        font-weight: normal;
+        &::placeholder {
+            color: #979797;
+            font-style: italic;
+            font-size: 1.4rem;
+            font-weight: normal;
+        }
+    }
 }
