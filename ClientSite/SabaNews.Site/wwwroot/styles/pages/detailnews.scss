@@ -456,13 +456,14 @@ img {
     margin: 1rem 0;
     display: flex;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     position: relative;
+    line-height: 1.5;
 
     &:after {
         content: '';
         background-color: #03647B;
-        width: 65px;
+        width: 62px;
         height: 100%;
         position: absolute;
         z-index: 0;
@@ -492,19 +493,32 @@ img {
             right: -26px;
         }
     }*/
+    span {
+        width: 90%;
+
+        @include Mobile {
+            width: 80%;
+        }
+    }
 
     .euro-number {
         color: #fff;
         // display: inline-block;
-        padding: 0 18px;
-        margin-right: 12px;
+        //  padding: 0 18px;
+        margin-right: 10px;
         // height: 4.7rem;
         line-height: 47px;
+        font-size: 2.4rem;
+        position: inherit;
+        z-index: 9999;
+        width: 10%;
         display: flex;
         align-items: center;
-        font-size: 2.4rem;
-        position : inherit;
-        z-index : 9999;
+        justify-content: center;
+
+        @include Mobile {
+            width: 20%;
+        }
     }
 }
 .instagram-media{
