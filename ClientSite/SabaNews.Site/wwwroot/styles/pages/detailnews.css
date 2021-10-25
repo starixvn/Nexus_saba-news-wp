@@ -2073,8 +2073,6 @@ img {
   margin-bottom: 0; }
 
 .euro-detail-title {
-  display: block;
-  height: 4.8rem;
   border: 1px solid #4DAEC6;
   color: #03647B;
   font-size: 2rem;
@@ -2082,6 +2080,8 @@ img {
   position: relative;
   text-transform: uppercase;
   margin: 1rem 0;
+  display: flex;
+  align-items: center;
   /*&:after {
         content: "";
         position: absolute;
@@ -2107,14 +2107,17 @@ img {
             right: -26px;
         }
     }*/ }
+  @media (max-device-width: 767px) {
+    .euro-detail-title {
+      align-items: unset; } }
   .euro-detail-title .euro-number {
     background-color: #03647B;
     color: #fff;
-    display: inline-block;
     padding: 0 18px;
     margin-right: 12px;
-    height: 4.7rem;
-    line-height: 47px; }
+    line-height: 47px;
+    display: flex;
+    align-items: center; }
 
 .instagram-media {
   margin: 2rem auto !important; }
