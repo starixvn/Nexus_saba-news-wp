@@ -236,4 +236,7 @@
         <Setting Key="poll_get" SpName="poll_get" DbName="sabasports" Plain="0" />
         <Setting Key="poll_vote" SpName="poll_vote" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="User">
+        <Setting Key="user_get_report" SpName="user_get_report" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>
