@@ -2082,6 +2082,7 @@ img {
   display: flex;
   align-items: center;
   font-size: 1.8rem;
+  position: relative;
   /*&:after {
         content: "";
         position: absolute;
@@ -2107,18 +2108,23 @@ img {
             right: -26px;
         }
     }*/ }
-  @media (max-device-width: 767px) {
-    .euro-detail-title {
-      align-items: unset; } }
-  .euro-detail-title .euro-number {
+  .euro-detail-title:after {
+    content: '';
     background-color: #03647B;
+    width: 65px;
+    height: 100%;
+    position: absolute;
+    z-index: 0; }
+  .euro-detail-title .euro-number {
     color: #fff;
     padding: 0 18px;
     margin-right: 12px;
     line-height: 47px;
     display: flex;
     align-items: center;
-    font-size: 2.2rem; }
+    font-size: 2.4rem;
+    position: inherit;
+    z-index: 9999; }
 
 .instagram-media {
   margin: 2rem auto !important; }

@@ -457,8 +457,15 @@ img {
     display: flex;
     align-items: center;
     font-size: 1.8rem;
-    @include Mobile {
-        align-items: unset;
+    position: relative;
+
+    &:after {
+        content: '';
+        background-color: #03647B;
+        width: 65px;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
     }
     /*&:after {
         content: "";
@@ -487,7 +494,6 @@ img {
     }*/
 
     .euro-number {
-        background-color: #03647B;
         color: #fff;
         // display: inline-block;
         padding: 0 18px;
@@ -496,7 +502,9 @@ img {
         line-height: 47px;
         display: flex;
         align-items: center;
-        font-size: 2.2rem;
+        font-size: 2.4rem;
+        position : inherit;
+        z-index : 9999;
     }
 }
 .instagram-media{
