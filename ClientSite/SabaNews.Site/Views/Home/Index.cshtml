@@ -30,11 +30,11 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
 	<div class="colums-main">
-		<div class="banner"><img loading="lazy" src="~/images/banner.jpg"></div>
+		<div class="banner"><img loading="lazy" src="~/images/banner.jpg" asp-append-version="true"></div>
 		@if (isMobile || isTablet)
 		{
 			<div class="banner-euro-mobile">
-				<a href="@Url.Action("Tag", "Home", new { tagname =  Constants.EventLink })"><img src="~/images/Mobile_375x200.png" /></a>
+				<a href="@Url.Action("Tag", "Home", new { tagname =  Constants.EventLink })"><img src="~/images/Mobile_375x200.png"  asp-append-version="true"/></a>
 			</div>}
 		<div class="block block-hot-news">
 			<div class="container">
