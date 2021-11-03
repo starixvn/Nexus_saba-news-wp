@@ -33,8 +33,8 @@
         public async Task<IActionResult> Index()
         {
             var banner = await bannerService.GetBannerInfoAsync();
-            banner.DesktopUrl ??= string.Concat(baseUrl, DefaultDestopUrl);
-            banner.MobileUrl ??= string.Concat(baseUrl, DefaultMobileUrl);
+            banner.DesktopUrl = string.IsNullOrEmpty(banner.DesktopUrl) ? string.Concat(baseUrl, DefaultDestopUrl) : banner.DesktopUrl;
+            banner.MobileUrl = string.IsNullOrEmpty(banner.MobileUrl) ? string.Concat(baseUrl, DefaultMobileUrl) : banner.MobileUrl;
 
             return View(banner);
         }
@@ -54,19 +54,23 @@
             var result = new CommandResult();
             try
             {
+                if (!Directory.Exists(pathService.GetPathAndFilenameUploadBanner("")))
+                {
+                    Directory.CreateDirectory(pathService.GetPathAndFilenameUploadBanner(""));
+                }
                 var banner = await bannerService.GetBannerInfoAsync();
                 string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                 filename = pathService.EnsureCorrectFilename(filename);
                 filename = DateTime.Now.Millisecond + '-' + filename;
-                var filePath = pathService.GetPathAndFilenameUpload(filename);
+                var filePath = pathService.GetPathAndFilenameUploadBanner(filename);
                 if (System.IO.File.Exists(filePath))
                 {
-                    System.IO.File.Delete(pathService.GetPathAndFilenameUpload(filePath));
+                    System.IO.File.Delete(pathService.GetPathAndFilenameUploadBanner(filePath));
                 }
-                using (FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUpload(filename)))
+                using (FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUploadBanner(filename)))
                     await file.CopyToAsync(output);
 
-                string linkPhoto = "uploads/" + filename;
+                string linkPhoto = "uploads/banner/" + filename;
                 string url = string.Concat(baseUrl, linkPhoto);
                 if (type == BannerType.Desktop)
                 {

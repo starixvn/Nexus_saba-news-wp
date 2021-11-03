@@ -13,5 +13,7 @@
         string EnsureCorrectFilename(string filename);
 
         string GetPathAndFilenameUpload(string filename);
+
+        string GetPathAndFilenameUploadBanner(string filename);
     }
 }
