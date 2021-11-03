@@ -86,5 +86,9 @@
   {
     "outputFile": "wwwroot/styles/pages/profile/profile.css",
     "inputFile": "wwwroot/styles/pages/profile/profile.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/admin/banner/index.css",
+    "inputFile": "wwwroot/styles/pages/admin/banner/index.scss"
   }
 ]

@@ -103,6 +103,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Update="wwwroot\uploads\DesktopBanner.png">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
       <None Update="EmailTemplates\SendEDM.html">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

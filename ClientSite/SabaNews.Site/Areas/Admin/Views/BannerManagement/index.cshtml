@@ -1,0 +1,139 @@
+﻿@using SabaNews.Resources
+@{
+	Layout = "_AdminLayout";
+}
+
+@section TopHeader{
+	BannerInfo
+}
+
+@section Title{
+	BannerInfo
+}
+@section Styles{
+	<link rel="stylesheet" href="~/minify/styles/admin_banner.min.css" asp-append-version="true">
+}
+@section Scripts{
+	<script src="~/minify/js/admin_banner.min.js" asp-append-version="true"></script>
+}
+@section ActiveMenu {
+	<input type="text" readonly hidden name="activeMenu" value="@ViewResources.BannerManagement" />
+}
+@{
+	var desktopUrl = Model.DesktopUrl == null ? "~/images/Desktop_320x70.png" : Model.DesktopUrl;
+
+}
+<section class="page-content banner-info-content">
+	<div id="error" class="error"></div>
+
+	<div class="main-list">
+		<div class="main">
+
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">Desktop Url</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild"><img src="@(Model.DesktopUrl == null ? "~/images/Desktop_320x70.png" : Model.DesktopUrl)" asp-append-version="true" width="200" /></li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.Change</a>
+					</div>
+					<div class="box-edit-form">
+						<div class="title">Desktop image</div>
+						<form enctype="multipart/form-data" method="post" id="uploadDesktop">
+							<div class="input-upload">
+								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
+								<span class="txt-img"><i class="icon-upload"></i> Upload new desktop banner</span>
+								<div class="img-upload">
+									<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+									<p class="error photo-error"></p>
+									<button type="submit" name="" class="save-img">Lưu hình ảnh</button>
+									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
+								</div>
+							</div>
+						</form>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">Banner display in desktop screen</p>
+				</div>
+			</div>
+
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">Mobile Url</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild"><img src="@(Model.MobileUrl == null ? "~/images/Desktop_320x70.png" : Model.MobileUrl)" asp-append-version="true" width="200" /></li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.Change</a>
+					</div>
+					<div class="box-edit-form">
+						<div class="title">Mobile image</div>
+						<form enctype="multipart/form-data" method="post" id="uploadMobile">
+							<div class="input-upload">
+								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
+								<span class="txt-img"><i class="icon-upload"></i> Upload new mobile banner</span>
+								<div class="img-upload">
+									<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+									<p class="error photo-error"></p>
+									<button type="submit" name="" class="save-img">Save</button>
+									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
+								</div>
+							</div>
+						</form>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">Banner display in mobile screen</p>
+				</div>
+			</div>
+
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">Navigation Url</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild">@Model.NavigationUrl</li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.Change</a>
+					</div>
+					<div class="box-edit-form" id="form_update_name">
+						<div class="title">Navigation Url</div>
+						<input type="text" name="NavigationUrl" value="@Model.NavigationUrl" class="input-edit" />
+						<p class="error navagation-error">Nagigation Url is required</p>
+						<button class="btn-submit-edit btn-save-navigation btn-disabled" disabled data-current="@Model.NavigationUrl">Save</button>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">Nagigate when click into banner</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="modal" id="NoticeModal" style="display:none">
+	<div class="modal-content">
+		<div class="modal-warning">
+			<div class="modal-title title-success">
+				<h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
+				<button type="button" class="close-login close-notice" data-dismiss="modal" aria-label="Close">
+					<i class="icon-close"></i>
+				</button>
+			</div>
+
+			<div class="modal-body">
+			</div>
+		</div>
+	</div>
+</div>

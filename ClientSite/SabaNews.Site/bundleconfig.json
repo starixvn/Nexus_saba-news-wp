@@ -134,6 +134,13 @@
             "wwwroot/styles/pages/admin/admin.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/admin_banner.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/admin/banner/index.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
@@ -278,6 +285,17 @@
         "outputFileName": "wwwroot/minify/js/admin_user.min.js",
         "inputFiles": [
             "wwwroot/js/admin/user/user.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/admin_banner.min.js",
+        "inputFiles": [
+            "wwwroot/js/admin/banner/index.js"
         ],
         "minify": {
             "enabled": true,

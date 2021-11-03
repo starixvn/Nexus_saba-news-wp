@@ -205,6 +205,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banner Management.
+        /// </summary>
+        public static string BannerManagement {
+            get {
+                return ResourceManager.GetString("BannerManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bóng rổ.
         /// </summary>
         public static string Basketball {
