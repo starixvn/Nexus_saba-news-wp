@@ -1640,9 +1640,39 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding-top: 2.4rem; } }
 
 .pollevent {
-  width: 400px;
-  margin: 0 auto;
-  font-size: 1.5rem; }
+  width: 40rem;
+  margin: 2.5rem auto;
+  font-size: 1.4rem; }
+
+.poll-element {
+  width: 100%;
+  background: #FFFDF9;
+  border: 1px solid #D1D1D1;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 0.1rem 0.8rem;
+  margin-bottom: 1rem; }
+
+.poll-section {
+  margin-bottom: 1rem; }
+  .poll-section .poll-content {
+    background: #FFFDF9;
+    padding: 1.6rem;
+    border: 1px solid #223453; }
+    .poll-section .poll-content .poll-question {
+      color: #4F4F4F;
+      font-weight: bold;
+      line-height: 2.4rem; }
+    .poll-section .poll-content .choose-poll {
+      margin-top: 1.2rem; }
+  .poll-section .poll-name {
+    background: #223453;
+    padding: 1.2rem 1rem;
+    color: #FFFDF9;
+    line-height: 2.4rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8rem; }
 
 .poll-name {
   background: #13B307;
@@ -1651,39 +1681,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   line-height: 21px;
   text-align: center;
   font-weight: 600; }
-
-.poll-section {
-  border: 2px solid #78B43D;
-  margin-bottom: 10px; }
-
-.poll-content {
-  background: #fff;
-  padding: 5px 8px;
-  text-align: left; }
-
-.poll-element {
-  vertical-align: middle;
-  padding: 0px;
-  margin: 0px;
-  float: left;
-  width: 97%;
-  line-height: 25px; }
-
-.poll-inputs {
-  margin-right: 10px; }
-
-.btn-vote {
-  color: #fff;
-  background-color: #12AD07;
-  padding: 5px 15px;
-  display: inline-block;
-  text-align: center;
-  border-radius: 3px;
-  font-size: 13px !important; }
-
-.view-result {
-  color: #12AD07;
-  text-decoration: underline; }
 
 .poll-action {
   margin-top: 10px;
@@ -1704,12 +1701,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   height: 100%;
   position: absolute; }
 
-.poll-answer-title {
-  position: relative; }
-
-.polllabel {
-  float: left; }
-
 .poll-div-voted-count {
   float: right;
   position: relative; }
@@ -1720,15 +1711,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .div-with-ceckbox-or-select {
   display: table; }
-
-.radio-or-select-span {
-  vertical-align: middle;
-  display: table-cell !important;
-  width: auto !important; }
-
-.div-only-answer {
-  display: table-cell !important;
-  width: 100%; }
 
 .wpdevartpoll > div {
   margin: 0px !important; }

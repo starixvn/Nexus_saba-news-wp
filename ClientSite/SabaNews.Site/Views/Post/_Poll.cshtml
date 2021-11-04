@@ -10,16 +10,22 @@
 		@{
 			var i = 0;
 		}
-		@foreach (var poll in Model.Polls)
-		{
-			i++;
-			<div class="poll-element">
-				<span class="radio-or-select-span"><input class="poll-inputs" type="radio" name="poll-radio-@Model.Question.Id" value="@poll.AnswerName"></span>
-				<div class="div-only-answer">
-					<div class="polllabel"><span class="poll-answer-title">@poll.Answer</span></div>
-				</div>
-			</div>
-		}
+    <div class="choose-poll">
+        @foreach (var poll in Model.Polls)
+        {
+            i++;
+        <div class="poll-element">
+            <input type=radio id="poll-radio-@poll.AnswerName" class="radio-input" name="poll-radio-@Model.Question.Id" value="@poll.AnswerName">
+            <label for="poll-radio-@poll.AnswerName" class="radio-label"> <span class="radio-border"></span> @poll.Answer </label>
+
+
+            @*<span class="radio-or-select-span"><input class="poll-inputs" type="radio" name="poll-radio-@Model.Question.Id" value="@poll.AnswerName"></span>
+        <div class="div-only-answer">
+            <div class="polllabel"><span class="poll-answer-title">@poll.Answer</span></div>
+        </div>*@
+        </div>
+        }
+    </div>
 		<div class="poll-action" >
 			<button data-questid="@Model.Question.Id" class="btn-vote vote-answer">@ViewResources.Vote</button>
 			<button data-questid="@Model.Question.Id" class="btn-result view-result">@ViewResources.ViewResult</button>
