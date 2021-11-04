@@ -3,26 +3,26 @@
 	var colorIndex = -1;
 }
 
-<div class="poll_main_div_@Model.Question.Id poll_section @(Model.IsUserVoted ? "hide_poll" : "show_poll")">
-	<div class="poll_name">@Model.Question.Name</div>
-	<div class="poll_content">
-		<div class="poll_question">@Model.Question.Question</div>
+<div class="poll-main-div-@Model.Question.Id poll-section @(Model.IsUserVoted ? "hide-poll" : "show-poll")">
+	<div class="poll-name">@Model.Question.Name</div>
+	<div class="poll-content">
+		<div class="poll-question">@Model.Question.Question</div>
 		@{
 			var i = 0;
 		}
 		@foreach (var poll in Model.Polls)
 		{
 			i++;
-			<div class="poll_element">
-				<span class="radio_or_select_span"><input class="poll_inputs" type="radio" name="poll_radio_@Model.Question.Id" value="@poll.AnswerName"></span>
-				<div class="div_only_answer">
-					<div class="polllabel"><span class="poll_answer_title">@poll.Answer</span></div>
+			<div class="poll-element">
+				<span class="radio-or-select-span"><input class="poll-inputs" type="radio" name="poll-radio-@Model.Question.Id" value="@poll.AnswerName"></span>
+				<div class="div-only-answer">
+					<div class="polllabel"><span class="poll-answer-title">@poll.Answer</span></div>
 				</div>
 			</div>
 		}
-		<div class="poll_action" >
-			<button data-questid="@Model.Question.Id" class="btn_vote vote_answer">@ViewResources.Vote</button>
-			<button data-questid="@Model.Question.Id" class="btn_result view_result">@ViewResources.ViewResult</button>
+		<div class="poll-action" >
+			<button data-questid="@Model.Question.Id" class="btn-vote vote-answer">@ViewResources.Vote</button>
+			<button data-questid="@Model.Question.Id" class="btn-result view-result">@ViewResources.ViewResult</button>
 		</div>
 
 	</div>
@@ -30,11 +30,11 @@
 </div>
 
 
-<div class="poll_result_@Model.Question.Id poll_section @(Model.IsUserVoted ? "show_poll" : "hide_poll")">
-	<div class="poll_name">@ViewResources.VoteResult</div>
-	<div class="poll_content">
-		<div class="poll_question">@Model.Question.Question</div>
-		<table class="vote_result">
+<div class="poll-result-@Model.Question.Id poll-section @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
+	<div class="poll-name">@ViewResources.VoteResult</div>
+	<div class="poll-content">
+		<div class="poll-question">@Model.Question.Question</div>
+		<table class="vote-result">
 			<tr>
 				<td width="40%"></td>
 				<td width="60%"></td>
@@ -65,8 +65,8 @@
 		</table>
 		@if (!Model.IsUserVoted)
 		{
-			<div class="poll_action">
-				<button data-questid="@Model.Question.Id" class="btn_vote vote_section">@ViewResources.Vote</button>
+			<div class="poll-action">
+				<button data-questid="@Model.Question.Id" class="btn-vote vote-section">@ViewResources.Vote</button>
 			</div>
 		}
 	</div>

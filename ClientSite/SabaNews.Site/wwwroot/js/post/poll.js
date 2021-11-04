@@ -19,7 +19,7 @@
                     data: { questID: attrs[1], themeID: attrs[3] },
                     success: function (res) {
                         var content = $('.content').html();
-                        var html = '<div class="pollevent ' + attrClass + ' question_' + attrs[1] + '" data-theme="' + attrs[3] + '" data-class="' + attrClass + '">';
+                        var html = '<div class="pollevent ' + attrClass + ' question-' + attrs[1] + '" data-theme="' + attrs[3] + '" data-class="' + attrClass + '">';
                         html += res;
                         html += "</div>";
                         $('.content').html(content.replace(str, html));
@@ -30,23 +30,23 @@
     }
 
     function UpdatePollData() {
-        $(document).on('click', '.vote_answer', function () {
+        $(document).on('click', '.vote-answer', function () {
             var questionId = $(this).data('questid');
-            var checked = $('input[name="poll_radio_' + questionId + '"]:checked');
+            var checked = $('input[name="poll-radio-' + questionId + '"]:checked');
             if (questionId <= 0 || checked.length <= 0) {
                 $('#announcement .content').html('Bạn chưa chọn câu trả lời!');
                 $('#announcement').modal('show');
                 return false;
             }
             var answerId = checked.val();
-            var themeId = $('.question_' + questionId).data('theme');
+            var themeId = $('.question-' + questionId).data('theme');
             $.ajax({
                 type: "POST",
                 url: "Post/VotePoll",
                 data: { questId: questionId, answerId, themeId},
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
-                        $('.question_' + questionId).html(res);
+                        $('.question-' + questionId).html(res);
                         $.cookie('poll' + questionId, answerId, { expires: 7, path: '/' });
                     } else {
                         $('#announcement .content').html('Đã có lỗi xảy ra, vui lòng thử lại!');
@@ -56,19 +56,19 @@
             });
         });
 
-        $(document).on('click', '.view_result', function () {
+        $(document).on('click', '.view-result', function () {
             var questionId = $(this).data('questid');
-            $('.poll_main_div_' + questionId).hide();
-            $('.poll_result_' + questionId).show();
+            $('.poll-main-div-' + questionId).hide();
+            $('.poll-result-' + questionId).show();
         });
 
-        $(document).on('click', '.vote_section', function () {
+        $(document).on('click', '.vote-section', function () {
             var questionId = $(this).data('questid');
-            $('.poll_main_div_' + questionId).show();
-            $('.poll_result_' + questionId).hide();
+            $('.poll-main-div-' + questionId).show();
+            $('.poll-result-' + questionId).hide();
         });
         $(document).on('click', '.polllabel', function () {
-            $(this).parent().parent().find(".poll_inputs").prop('checked', true);
+            $(this).parent().parent().find(".poll-inputs").prop('checked', true);
         });
     }
     function init() {
