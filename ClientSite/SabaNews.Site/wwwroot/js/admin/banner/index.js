@@ -29,7 +29,7 @@
             $.ajax({
                 type: 'POST',
                 url: '/Admin/BannerManagement/UpdateInfo',
-                data: { navigationUrl: value },
+                data: { value: value, type: 'navigation' },
                 success: function (res) {
                     if (res.isSuccessful) {
                         var msg = 'Update Info Succesfully'
@@ -68,7 +68,6 @@
             errorSection.show();
             return false;
         }
-
         return isValid;
     }
 
@@ -76,51 +75,90 @@
         $('#uploadDesktop').on('submit', function (e) {
             e.preventDefault();
             $('.photo-error').hide();
-            var files = $(this).parent().parent().find('.photo')[0].files[0];
-            UploadBanner(files, "desktop", $(this));
+            var action = $(this).data('action');
+            if (action === 'upload') {
+                UploadBanner("desktop", $(this));
+            } else if (action == 'update') {
+                UpdateBanner("desktop", $(this));
+            }
         });
 
         $('#uploadMobile').on('submit', function (e) {
             e.preventDefault();
             $('.photo-error').hide();
-            var files = $(this).parent().parent().find('.photo')[0].files[0];
-            UploadBanner(files, "mobile", $(this));
+            var action = $(this).data('action');
+            if (action === 'upload') {
+                UploadBanner("mobile", $(this));
+            } else if (action == 'update') {
+                UpdateBanner("mobile", $(this));
+            }
         });
 
         $('.photo').on('change', function (e) {
-            var self = $(this).parent();
-            self.find('.review_photo').attr('src', '');
-            self.find('.review_photo').hide();
-            self.find('.cancel-upload').show();
+            var form = '#' + $(this).parent().parent().attr('id');
             var files = $(this)[0].files[0];
             var isValid = validate_photo(files, $(this));
             if (!isValid) {
+                CancelUploadHandler(form);
                 return false;
             }
-            self.find('.save-img').css('display', 'block');
-            self.find('.txt-img').css('display', 'none');
+        
             var reader = new FileReader();
             reader.readAsDataURL(files);
             reader.onload = function (e) {
-                self.find('.review_photo').attr('src', e.target.result);
-                self.find('.review_photo').show();
-                self.find('.photo-error').hide();
+                $(form + ' .review_photo').attr('src', e.target.result);
+                $(form).attr('data-action', 'upload');
+                ChangePhotoHanlder(form);
             };
         });
 
         $('.cancel-upload').on('click', function () {
-            var self = $(this).parent();
-            self.parent().find('.photo').val('');
-            self.find('.review_photo').attr('src', '');
-            self.find('.review_photo').hide();
-            $(this).show();
-            self.find('.save-img').hide();
-            self.parent().find('.txt-img').css('display', 'flex');
+            var form = '#' + $(this).parent().parent().parent().attr('id');
+            CancelUploadHandler(form);
             $(this).hide();
+        });
+
+        $('.list-banner').on('click', function () {
+            var form = $(this).parent().parent().find('form').attr('id');
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/UploadManagement/ListBanner',
+                success: function (res) {
+                    $('#ListBannerModal .modal-body').html(res);
+                    $('#ListBannerModal .modal-body').attr('data-form', form);
+                    $('#ListBannerModal').modal('show');
+                }
+            });
+        });
+
+        $(document).on('click', '.crop', function () {
+            var form = "#" + $(this).parent().parent().data('form');
+            var url = $(this).data('url');
+            $(form + ' .review_photo').attr('src', url);
+            $(form).attr('data-action', 'update');
+            ChangePhotoHanlder(form);
+            $('#ListBannerModal').modal('hide');
         });
     };
 
-    function UploadBanner(files, type, self) {
+    function ChangePhotoHanlder(form) {
+        $(form + ' .review_photo').show();
+        $(form + ' .photo-error').hide();
+        $(form + ' .save-img').css('display', 'block');
+        $(form + ' .txt-img').css('display', 'none');
+        $(form + ' .cancel-upload').show();
+    }
+
+    function CancelUploadHandler(form) {
+        $(form + ' .review_photo').attr('src', '');
+        $(form + ' .review_photo').hide();
+        $(form + ' .save-img').hide();
+        $(form + ' .txt-img').css('display', 'flex');
+        $(form + ' .cancel-upload').hide();
+    }
+
+    function UploadBanner(type, self) {
+        var files = self.find('.photo')[0].files[0];
         var isValid = validate_photo(files, self);
         if (!isValid) {
             return false;
@@ -147,6 +185,29 @@
                 });
             }
         });
+    }
+
+    function UpdateBanner(type, self) {
+        var value = self.find('.review_photo').attr('src');
+        if (value.trim() === '' || value.trim() === '#') {
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/BannerManagement/UpdateInfo',
+            data: { value, type },
+            success: function (res) {
+                if (res.isSuccessful) {
+                    var msg = 'upload new banner Succesfully'
+                    GetSuccessPopup('#NoticeModal', msg);
+                } else {
+                    GetErrorPopup('#NoticeModal', res.message);
+                }
+                $('#NoticeModal').bind('hidden.bs.modal', function () {
+                    location.reload();
+                });
+            }
+        })
     }
     function GetErrorPopup(popupId, msg) {
         $(popupId + ' .modal-title').removeClass('title-success').addClass('title-error');

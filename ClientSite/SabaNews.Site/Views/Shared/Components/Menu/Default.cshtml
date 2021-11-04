@@ -10,7 +10,7 @@
     <div class="header-controls">
         <div class="container padding-mobile-none">
             <div class="banner-euro-desktop">
-                <a href="@Url.Action("Tag", "Home", new { tagname =  Constants.EventLink })"><img src="~/images/Desktop_320x70.png"  asp-append-version="true"/></a>
+                <a href="@Model.Banner.NavigationUrl"><img src="@Model.Banner.DesktopUrl"  asp-append-version="true" width="320" height="70"/></a>
             </div>
             <div class="logo">
                 <a href="@Url.Action("Index", "Home")">
@@ -57,7 +57,7 @@
                             }
                             else
                             {
-                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                <li class="avatar-user"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                             }
                             <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
                         </ul>
@@ -74,7 +74,7 @@
                                     }
                                     else
                                     {
-                                        <li class="avatar-user"><img class="profile_image" loading="lazy" src="/upload/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                                        <li class="avatar-user"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
                                     }
                                     <li class="auth-displayname"><a class="item display-user">@Model.User.Name</a></li>
                                 </ul>

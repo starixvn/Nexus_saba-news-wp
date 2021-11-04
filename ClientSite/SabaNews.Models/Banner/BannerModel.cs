@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Models.Banner
 {
-    public class Banner
+    public class BannerModel
     {
         public string NavigationUrl { get; set; }
 

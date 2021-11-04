@@ -167,7 +167,7 @@
                             if (comment.photo.indexOf("https://") >= 0 || comment.photo.indexOf("http://") >= 0) {
                                 photo = '<span><img class="profile_image" src="' + comment.photo + '" width="50" data-name="' + comment.commentAuthor.substr(0, 1) + '" /></span>'
                             } else {
-                                photo = '<span><img  class="profile_image"  src="/upload/' + comment.photo + '" width="50"  data-name="' + comment.commentAuthor.substr(0, 1) + '" /></span>'
+                                photo = '<span><img  class="profile_image"  src="/uploads/' + comment.photo + '" width="50"  data-name="' + comment.commentAuthor.substr(0, 1) + '" /></span>'
                             }
                         }
 
@@ -297,7 +297,7 @@
             if (val.photo.indexOf("https://") >= 0 || val.photo.indexOf("http://") >= 0) {
                 photo = '<span><img class="profile_image" src="' + val.photo + '" alt="Đang tải ảnh đại diện" width="50" data-name="' + val.commentAuthor.substr(0, 1) + '" /></span>'
             } else {
-                photo = '<span><img class="profile_image" src="/upload/' + val.photo + '" alt="Đang tải ảnh đại diện" width="50"data-name="' + val.commentAuthor.substr(0, 1) + '" /></span>'
+                photo = '<span><img class="profile_image" src="/uploads/' + val.photo + '" alt="Đang tải ảnh đại diện" width="50"data-name="' + val.commentAuthor.substr(0, 1) + '" /></span>'
             }
 
         }

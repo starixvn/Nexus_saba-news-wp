@@ -170,20 +170,21 @@
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             filename = pathService.EnsureCorrectFilename(filename);
             filename = DateTime.Now.Millisecond + filename ;
-            var filePath = pathService.GetPathAndFilenameUpload(filename);
-            using (FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUpload(filename)))
+            var filePath = pathService.MapAbsoluteRootPath(Constants.UploadFolder + filename);
+            using (FileStream output = System.IO.File.Create(filePath))
                 await file.CopyToAsync(output);
 
-            if (System.IO.File.Exists(pathService.GetPathAndFilenameUpload(user.Photo)))
+            var oldPhoto = pathService.MapAbsoluteRootPath(Constants.UploadFolder + user.Photo);
+            if (System.IO.File.Exists(oldPhoto))
             {
-                System.IO.File.Delete(pathService.GetPathAndFilenameUpload(user.Photo));
+                System.IO.File.Delete(oldPhoto);
             }
             user.Photo = filename;
             var linkPhoto = "";
             var commandResult = await userService.UpdateUserInfoAsync(user);
             if (commandResult.IsSuccessful)
             {
-                linkPhoto = "uploads/" + filename;
+                linkPhoto = Constants.UploadFolder + filename;
                 sessionService.User = user;
             }
             return Json( new { commandResult, linkPhoto, filePath });

@@ -205,6 +205,33 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banner display in desktop screen.
+        /// </summary>
+        public static string BannerDisplayInDesktopScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInDesktopScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banner display in mobile screen.
+        /// </summary>
+        public static string BannerDisplayInMobileScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInMobileScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banner Information.
+        /// </summary>
+        public static string BannerInfo {
+            get {
+                return ResourceManager.GetString("BannerInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banner Management.
         /// </summary>
         public static string BannerManagement {
@@ -228,6 +255,15 @@ namespace SabaNews.Resources {
         public static string Change {
             get {
                 return ResourceManager.GetString("Change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change.
+        /// </summary>
+        public static string ChangeAction {
+            get {
+                return ResourceManager.GetString("ChangeAction", resourceCulture);
             }
         }
         
@@ -466,6 +502,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desktop Image.
+        /// </summary>
+        public static string DesktopImage {
+            get {
+                return ResourceManager.GetString("DesktopImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop Url.
+        /// </summary>
+        public static string DesktopUrl {
+            get {
+                return ResourceManager.GetString("DesktopUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ngắt liên kết.
         /// </summary>
         public static string Disconnect {
@@ -615,6 +669,15 @@ namespace SabaNews.Resources {
         public static string Female {
             get {
                 return ResourceManager.GetString("Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Browser.
+        /// </summary>
+        public static string FileBrowser {
+            get {
+                return ResourceManager.GetString("FileBrowser", resourceCulture);
             }
         }
         
@@ -871,6 +934,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List Uploaded Banner.
+        /// </summary>
+        public static string ListUploadedBanner {
+            get {
+                return ResourceManager.GetString("ListUploadedBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đang tải ảnh đại diện.
         /// </summary>
         public static string LoadingAvatar {
@@ -952,6 +1024,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile image.
+        /// </summary>
+        public static string MobileImage {
+            get {
+                return ResourceManager.GetString("MobileImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Url.
+        /// </summary>
+        public static string MobileUrl {
+            get {
+                return ResourceManager.GetString("MobileUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tài khoản của tôi.
         /// </summary>
         public static string MyAccount {
@@ -975,6 +1065,33 @@ namespace SabaNews.Resources {
         public static string NameLabel {
             get {
                 return ResourceManager.GetString("NameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigation Url.
+        /// </summary>
+        public static string NavigationUrl {
+            get {
+                return ResourceManager.GetString("NavigationUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NavigationUrl is requred.
+        /// </summary>
+        public static string NavigationUrlRequired {
+            get {
+                return ResourceManager.GetString("NavigationUrlRequired", resourceCulture);
             }
         }
         
@@ -1299,6 +1416,15 @@ namespace SabaNews.Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveAction {
+            get {
+                return ResourceManager.GetString("SaveAction", resourceCulture);
             }
         }
         
@@ -1677,6 +1803,15 @@ namespace SabaNews.Resources {
         public static string UpdateTime {
             get {
                 return ResourceManager.GetString("UpdateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload new image.
+        /// </summary>
+        public static string UploadNewImage {
+            get {
+                return ResourceManager.GetString("UploadNewImage", resourceCulture);
             }
         }
         

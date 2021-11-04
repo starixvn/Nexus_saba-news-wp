@@ -60,10 +60,5 @@
             return filename;
         }
 
-        public string GetPathAndFilenameUpload(string filename) => this.MapAbsoluteRootPath("//uploads//" + filename);
-
-        public string GetPathAndFilenameUploadBanner(string filename) => this.MapAbsoluteRootPath("//uploads//banner//" + filename);
-
-
     }
 }

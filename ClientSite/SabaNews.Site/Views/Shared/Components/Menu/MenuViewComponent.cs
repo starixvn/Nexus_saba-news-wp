@@ -11,11 +11,13 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly ISessionService sessionService;
+        private readonly IBannerService bannerService;
 
-        public MenuViewComponent(IDataControlService dataControlService, ISessionService sessionService)
+        public MenuViewComponent(IDataControlService dataControlService, ISessionService sessionService, IBannerService bannerService)
         {
             this.dataControlService = dataControlService;
             this.sessionService = sessionService;
+            this.bannerService = bannerService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "")
@@ -29,7 +31,8 @@
                 IsAuthenticated = isAuthenticated,
                 CategorySlug = categorySlug,
                 IsAdmin = isAuthenticated && !string.IsNullOrWhiteSpace(sessionService.User.Metadata)
-                        && sessionService.User.Metadata.Contains(Role.Administrator)
+                        && sessionService.User.Metadata.Contains(Role.Administrator),
+                Banner = await bannerService.GetBannerInfoAsync()
             };
             if (isAuthenticated)
             {

@@ -1,7 +1,9 @@
 ﻿namespace SabaNews.Models.ViewModel.Banners
 {
+    using SabaNews.Models.Banner;
+
     public class BannerViewModel
     {
-        public Banner.Banner BannerInfo { get; set; }
+        public BannerModel BannerInfo { get; set; }
     }
 }

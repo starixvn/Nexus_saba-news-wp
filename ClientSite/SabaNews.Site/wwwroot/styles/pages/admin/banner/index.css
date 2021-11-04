@@ -143,7 +143,8 @@
       font-size: 1.3rem; }
     .group-table .right-table .error {
       color: #eb5342;
-      display: none; }
+      display: none;
+      margin-top: 1rem; }
     .group-table .right-table .box-edit-form {
       background: #f7f7f7;
       border: 1px solid #e5e5e5;
@@ -210,6 +211,8 @@
         background: #BDBDBD; }
     .group-table .right-table .toggle-active-form {
       display: block; }
+    .group-table .right-table .list-banner {
+      margin-left: 1rem; }
 
 .input-upload {
   border: 1px dashed #BDBDBD;
@@ -255,7 +258,16 @@
     font-weight: bold;
     border-radius: 3px;
     position: relative;
-    z-index: 999999999999;
+    z-index: 100;
     cursor: pointer;
     display: none;
     margin: 1rem auto; }
+
+.crop {
+  display: inline-block;
+  width: 180px;
+  height: 200px;
+  background-position: center center;
+  background-size: cover;
+  border: 1px solid #000;
+  cursor: pointer; }

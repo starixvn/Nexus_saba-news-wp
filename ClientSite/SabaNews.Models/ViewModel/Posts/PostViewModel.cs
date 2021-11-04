@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
 
@@ -17,6 +18,8 @@
         public string Url { get; set; }
         public string RSSUrl { get; set; }
         public HeaderViewModel Header { get; set; }
+
+        public BannerModel Banner { get; set; }
 
     }
 }

@@ -723,4 +723,49 @@
   <data name="BannerManagement" xml:space="preserve">
     <value>Banner Management</value>
   </data>
+  <data name="BannerDisplayInDesktopScreen" xml:space="preserve">
+    <value>Banner display in desktop screen</value>
+  </data>
+  <data name="BannerDisplayInMobileScreen" xml:space="preserve">
+    <value>Banner display in mobile screen</value>
+  </data>
+  <data name="BannerInfo" xml:space="preserve">
+    <value>Banner Information</value>
+  </data>
+  <data name="ChangeAction" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="DesktopImage" xml:space="preserve">
+    <value>Desktop Image</value>
+  </data>
+  <data name="DesktopUrl" xml:space="preserve">
+    <value>Desktop Url</value>
+  </data>
+  <data name="FileBrowser" xml:space="preserve">
+    <value>File Browser</value>
+  </data>
+  <data name="ListUploadedBanner" xml:space="preserve">
+    <value>List Uploaded Banner</value>
+  </data>
+  <data name="MobileImage" xml:space="preserve">
+    <value>Mobile image</value>
+  </data>
+  <data name="MobileUrl" xml:space="preserve">
+    <value>Mobile Url</value>
+  </data>
+  <data name="NavigateWhenClickIntoBanner" xml:space="preserve">
+    <value>Navigate when click into banner</value>
+  </data>
+  <data name="NavigationUrl" xml:space="preserve">
+    <value>Navigation Url</value>
+  </data>
+  <data name="NavigationUrlRequired" xml:space="preserve">
+    <value>NavigationUrl is requred</value>
+  </data>
+  <data name="SaveAction" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="UploadNewImage" xml:space="preserve">
+    <value>Upload new image</value>
+  </data>
 </root>

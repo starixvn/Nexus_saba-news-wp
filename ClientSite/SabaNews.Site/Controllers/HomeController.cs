@@ -19,14 +19,17 @@
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
+        private readonly IBannerService bannerService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IBannerService bannerService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
+            this.bannerService = bannerService;
         }
 
         public async Task<IActionResult> Index()
@@ -43,6 +46,7 @@
             viewModel.Header = header;
             viewModel.Url = domain;
             viewModel.RSSUrl = $"{domain}tin-moi-nhat.rss";
+            viewModel.Banner = await bannerService.GetBannerInfoAsync();
             return View(viewModel);
         }
 

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Constants;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
     using System;
@@ -33,22 +34,24 @@
             string error = "";
             try
             {
-                using FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUpload(filename));
+                using FileStream output = System.IO.File.Create(pathService.MapAbsoluteRootPath(Constants.UploadFolder + filename));
                 await upload.CopyToAsync(output);
             }
             catch (Exception ex)
             {
                 error = ex.ToString();
             }
-            string linkPhoto = "uploads/" + filename;
+            string linkPhoto = Constants.UploadFolder + filename;
             string url = string.Concat(baseUrl, linkPhoto);
             return new JsonResult(new { path = url, error });
         }
 
+
+
         [HttpGet]
         public IActionResult FileBrowse()
         {
-            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath("//uploads"));
+            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath(Constants.UploadFolder));
             var model = new FileBrowseViewModel
             {
                 FileInfos = dir.GetFiles().OrderByDescending(p => p.CreationTime).ToArray(),
@@ -56,6 +59,20 @@
             };
             ViewBag.fileInfos = dir.GetFiles();
             return View("FileBrowse", model);
+        }
+
+
+        [HttpPost]
+        public ActionResult ListBanner()
+        {
+            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder));
+            var model = new FileBrowseViewModel
+            {
+                FileInfos = dir.GetFiles().OrderByDescending(p => p.CreationTime).ToArray(),
+                BaseUrl = baseUrl + Constants.BannerUploadFolder
+            };
+            ViewBag.fileInfos = dir.GetFiles();
+            return View("_ListBanner", model);
         }
     }
 }

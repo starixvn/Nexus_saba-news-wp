@@ -5,7 +5,6 @@
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
-    using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using System;
     using System.IO;
@@ -18,8 +17,7 @@
         private readonly IPathService pathService;
         private readonly IConfiguration configuration;
         private readonly string baseUrl;
-        private const string DefaultDestopUrl = "images/Desktop_320x70.png";
-        private const string DefaultMobileUrl = "images/Mobile_375x200.png";
+        
         public BannerManagementController(
             IBannerService bannerService,
             IPathService pathService,
@@ -33,17 +31,28 @@
         public async Task<IActionResult> Index()
         {
             var banner = await bannerService.GetBannerInfoAsync();
-            banner.DesktopUrl = string.IsNullOrEmpty(banner.DesktopUrl) ? string.Concat(baseUrl, DefaultDestopUrl) : banner.DesktopUrl;
-            banner.MobileUrl = string.IsNullOrEmpty(banner.MobileUrl) ? string.Concat(baseUrl, DefaultMobileUrl) : banner.MobileUrl;
 
             return View(banner);
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateInfo(string navigationUrl)
+        public async Task<IActionResult> UpdateInfo(string value, string type)
         {
             var banner = await bannerService.GetBannerInfoAsync();
-            banner.NavigationUrl = navigationUrl;
+            switch (type)
+            {
+                case BannerType.Navigation:
+                    banner.NavigationUrl = value;
+                    break;
+                case BannerType.Desktop:
+                    banner.DesktopUrl = value;
+                    break;
+                case BannerType.Mobile:
+                    banner.MobileUrl = value;
+                    break;
+                default:
+                    throw new InvalidOperationException();
+            }
             var result = await bannerService.UpdateBannerInfoAsync(banner);
             return Json(result);
         }
@@ -54,23 +63,24 @@
             var result = new CommandResult();
             try
             {
-                if (!Directory.Exists(pathService.GetPathAndFilenameUploadBanner("")))
+                var bannerDir = pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder);
+                if (!Directory.Exists(bannerDir))
                 {
-                    Directory.CreateDirectory(pathService.GetPathAndFilenameUploadBanner(""));
+                    Directory.CreateDirectory(bannerDir);
                 }
                 var banner = await bannerService.GetBannerInfoAsync();
                 string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                 filename = pathService.EnsureCorrectFilename(filename);
-                filename = DateTime.Now.Millisecond + '-' + filename;
-                var filePath = pathService.GetPathAndFilenameUploadBanner(filename);
+                filename = DateTime.Now.Millisecond + filename;
+                var filePath = pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder + filename);
                 if (System.IO.File.Exists(filePath))
                 {
-                    System.IO.File.Delete(pathService.GetPathAndFilenameUploadBanner(filePath));
+                    System.IO.File.Delete(filePath);
                 }
-                using (FileStream output = System.IO.File.Create(pathService.GetPathAndFilenameUploadBanner(filename)))
+                using (FileStream output = System.IO.File.Create(filePath))
                     await file.CopyToAsync(output);
 
-                string linkPhoto = "uploads/banner/" + filename;
+                string linkPhoto = Constants.BannerUploadFolder + filename;
                 string url = string.Concat(baseUrl, linkPhoto);
                 if (type == BannerType.Desktop)
                 {
@@ -80,16 +90,13 @@
                 {
                     banner.MobileUrl = url;
                 }
-                
                 result = await bannerService.UpdateBannerInfoAsync(banner);
-
             }
             catch (Exception e)
             {
                 result.Message = e.Message;
             }
             return Json(result);
-            
         }
     }
 }

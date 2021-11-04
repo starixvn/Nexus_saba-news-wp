@@ -34,7 +34,7 @@
 		@if (isMobile || isTablet)
 		{
 			<div class="banner-euro-mobile">
-				<a href="@Url.Action("Tag", "Home", new { tagname =  Constants.EventLink })"><img src="~/images/Mobile_375x200.png"  asp-append-version="true"/></a>
+				<a href="@Model.Banner.NavigationUrl"><img src="@Model.Banner.MobileUrl"  asp-append-version="true" width="375"/></a>
 			</div>}
 		<div class="block block-hot-news">
 			<div class="container">

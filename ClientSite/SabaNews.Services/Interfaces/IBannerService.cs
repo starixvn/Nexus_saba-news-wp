@@ -6,8 +6,8 @@
 
     public interface IBannerService
     {
-        Task<Banner> GetBannerInfoAsync();
+        Task<BannerModel> GetBannerInfoAsync();
 
-        Task<CommandResult> UpdateBannerInfoAsync(Banner banner);
+        Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner);
     }
 }
