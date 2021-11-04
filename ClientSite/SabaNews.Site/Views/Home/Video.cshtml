@@ -29,7 +29,7 @@
 								<picture>
 									<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp">
 									<source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/jpeg">
-									<img loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle">
+									<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle">
 								</picture>
 								<div class="btn-play-video" post-id="@Model.Posts[0].ID">
 									<span class="icon-play"></span>
@@ -52,7 +52,7 @@
 							<picture>
 								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
-								<img loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
+								<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
 							</picture>
 						</a>
 						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>

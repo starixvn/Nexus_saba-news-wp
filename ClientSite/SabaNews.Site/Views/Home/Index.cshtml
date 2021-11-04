@@ -78,7 +78,7 @@
 										<picture>
 											<source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
-											<img loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+											<img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
 										</picture> }
 								</a>
 								<div class="sub-content">
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="banner-mobile"><img loading="lazy" src="~/images/banner-mobile.jpg"></div>
+		<div class="banner-mobile"><img asp-append-version="true" loading="lazy" src="~/images/banner-mobile.jpg"></div>
 		<div class="block block-video">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
@@ -117,7 +117,7 @@
 												<picture>
 													<source srcset="@Url.Content(videoImg)" type="image/webp">
 													<source srcset="@Url.Content(videoImg)" type="image/jpeg">
-													<img loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
+													<img asp-append-version="true" loading="lazy" src="@Url.Content(videoImg)" alt="@post.PostTitle">
 												</picture> }
 
 											<div class="btn-play-video">
@@ -145,7 +145,7 @@
 										<picture>
 											<source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
-											<img loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
+											<img asp-append-version="true" loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
 										</picture> }
 								</a>
 								<div class="card-horizontal__content">
@@ -176,7 +176,7 @@
 									<picture>
 										<source srcset="@Url.Content(footballImg)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(footballImg)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(footballImg)" alt="@post.PostTitle" class="img-res img-block">
+										<img asp-append-version="true" loading="lazy" src="@Url.Content(footballImg)" alt="@post.PostTitle" class="img-res img-block">
 									</picture> }
 							</a>
 							<p class="card-vertical__datetime">
@@ -204,7 +204,7 @@
 									<picture>
 										<source srcset="@Url.Content(guessImgUrl)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(guessImgUrl)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(guessImgUrl)" alt="@post.PostTitle" class="img-res img-block">
+										<img asp-append-version="true" loading="lazy" src="@Url.Content(guessImgUrl)" alt="@post.PostTitle" class="img-res img-block">
 									</picture> }
 							</a>
 							<div class="group group-mobile">
@@ -233,7 +233,7 @@
 									<picture>
 										<source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(backstageImg)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(backstageImg)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res img-block">
+										<img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)" alt="@Model.BackstagePosts[0].PostTitle" class="img-res img-block">
 									</picture> }
 							</a>
 							<div class="card-horizontal__content">
@@ -262,7 +262,7 @@
 										<picture>
 											<source srcset="@Url.Content(backstageImg)" type="image/webp" class="img-res">
 											<source srcset="@Url.Content(backstageImg)" type="image/jpeg" class="img-res">
-											<img loading="lazy" src="@Url.Content(backstageImg)" alt="@Model.BackstagePosts[i].PostTitle" class="img-res img-block">
+											<img asp-append-version="true" loading="lazy" src="@Url.Content(backstageImg)" alt="@Model.BackstagePosts[i].PostTitle" class="img-res img-block">
 										</picture> }
 								</a>
 								<p class="card-vertical__datetime">
@@ -287,7 +287,7 @@
 									<picture>
 										<source srcset="@Url.Content(transferImg)" type="image/webp" class="img-res">
 										<source srcset="@Url.Content(transferImg)" type="image/jpeg" class="img-res">
-										<img loading="lazy" src="@Url.Content(transferImg)" alt="@post.PostTitle" class="img-res img-block">
+										<img asp-append-version="true" loading="lazy" src="@Url.Content(transferImg)" alt="@post.PostTitle" class="img-res img-block">
 									</picture>
 								</a>
 								<div class="card-horizontal__content">

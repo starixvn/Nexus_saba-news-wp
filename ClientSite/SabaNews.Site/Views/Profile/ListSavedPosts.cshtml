@@ -46,7 +46,7 @@
                     <div class="controls__news">
                         <div class="card-horizontal">
                             <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})" class="card-horizontal__image">
-                                <img loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" />
+                                <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" />
                             </a>
                             <div class="card-horizontal__content">
                                 <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})" class="title">@post.PostTitle </a>

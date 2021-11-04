@@ -101,7 +101,7 @@
 						<picture>
 							<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
 							<source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-							<img loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
+							<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
 						</picture>
 						<div class="btn-play-video" post-id="@Model.SinglePost.ID">
 							<span class="icon-play"></span>
