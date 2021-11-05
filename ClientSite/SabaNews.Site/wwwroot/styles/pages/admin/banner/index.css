@@ -82,7 +82,7 @@
   padding: 0; }
 
 .banner-info-content {
-  max-width: 100rem; }
+  max-width: 80rem; }
 
 .group-table {
   display: flex;
@@ -96,6 +96,8 @@
     @media screen and (max-width: 1024px) {
       .group-table .left-table {
         width: 12rem; } }
+  .group-table .label-fill {
+    font-weight: bold; }
   .group-table .right-table {
     padding-bottom: 2rem;
     width: 100%; }
@@ -127,7 +129,6 @@
       .group-table .right-table .box-control .main-fill p {
         margin-bottom: 0; }
     .group-table .right-table .social-action {
-      color: #828282;
       border-bottom: 1px solid;
       font-size: 1.3rem;
       text-decoration: none; }

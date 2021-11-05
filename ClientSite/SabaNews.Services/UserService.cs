@@ -3,6 +3,7 @@
     using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;
     using SabaNews.Services.Interfaces;
@@ -14,11 +15,16 @@
     {
         private readonly IBaseService baseService;
         private readonly ILogService logService;
+        private readonly ISessionService sessionService;
 
-        public UserService(IBaseService baseService, ILogService logService)
+        public UserService(
+            IBaseService baseService, 
+            ILogService logService,
+            ISessionService sessionService)
         {
             this.baseService = baseService;
             this.logService = logService;
+            this.sessionService = sessionService;
         }
         public async Task<CommandResult> UpdateUserSavePostAsync(int userID, string listPosts)
         {
@@ -51,10 +57,13 @@
                 _photo = user.Photo,
                 _isSubscribe = user.IsSubscribe
             };
+            var oldData = sessionService.User;
             var logData = new WriteLogCommand
             {
+                ActorId = user.Id,
                 ActionId = LogAction.UpdateBanner,
-                Data = JsonConvert.SerializeObject(new { user.Id, user.Name, user.Phone, user.Gender, user.Photo, user.IsSubscribe })
+                Data = JsonConvert.SerializeObject(new { user.Id, user.Name, user.Phone, user.Gender, user.Photo, user.IsSubscribe }),
+                OldData = JsonConvert.SerializeObject(new { oldData.Id, oldData.Name, oldData.Phone, oldData.Gender, oldData.Photo, oldData.IsSubscribe })
             };
             var result = await baseService.ExecuteNonQueryAsync(command);
             await logService.WriteLog(logData);

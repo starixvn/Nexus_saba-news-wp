@@ -3,7 +3,7 @@
 @import '../custom-modal';
 
 .banner-info-content {
-    max-width: 100rem;
+    max-width: 80rem;
 }
 .group-table {
     @include flex(flex-start, nowrap, flex-start, row);
@@ -15,6 +15,9 @@
         @include tableMobile {
             width: 12rem;
         }
+    }
+    .label-fill {
+        font-weight: bold;
     }
 
     .right-table {
@@ -66,7 +69,6 @@
         }
 
         .social-action {
-            color: $color-input;
             border-bottom: 1px solid;
             font-size: 1.3rem;
             text-decoration: none;
