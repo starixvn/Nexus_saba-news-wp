@@ -32,44 +32,76 @@
 
 <div class="poll-result-@Model.Question.Id poll-section @(Model.IsUserVoted ? "show-poll" : "hide-poll")">
 	<div class="poll-name">@ViewResources.VoteResult</div>
-	<div class="poll-content">
-		<div class="poll-question">@Model.Question.Question</div>
-		<table class="vote-result">
-			<tr>
-				<td width="40%"></td>
-				<td width="60%"></td>
-			</tr>
-			@foreach (var poll in Model.Polls)
-			{
-				colorIndex++;
-				if (colorIndex > ListColors.Length - 1)
-				{
-					colorIndex = 0; 
-				}
-				var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
-				<tr>
-					<td align="right">@poll.Answer</td>
-					<td align="left">
-						<div style="background:@ListColors[colorIndex]; width:@(percent/2.0 + "%"); height: 13px; float: left; margin:10px 0;"></div>&nbsp;@(percent + "% (" + poll.Vote + " phiếu)"  )
-					</td>
-				</tr>
-			}
-			<tr class="total">
-				<td align="right">@ViewResources.Sum</td>
-				<td align="left">@(Model.TotalVotes + " Phiếu")</td>
-			</tr>
-			<tr class="total">
-				<td align="right">@ViewResources.UpdateTime</td>
-				<td align="left">@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTimeByVNLanguage(DateTime.UtcNow)</td>
-			</tr>
-		</table>
-		@if (!Model.IsUserVoted)
-		{
-			<div class="poll-action">
-				<button data-questid="@Model.Question.Id" class="btn-vote vote-section">@ViewResources.Vote</button>
-			</div>
-		}
-	</div>
+    <div class="poll-content">
+        <div class="poll-question">@Model.Question.Question</div>
+        @foreach (var poll in Model.Polls)
+        {
+            colorIndex++;
+            if (colorIndex > ListColors.Length - 1)
+            {
+                colorIndex = 0;
+            }
+            var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
+            <div class="list-result">
+                <div class="result-element">
+                    <div class="top-result">
+                        <span class="country-list">@poll.Answer</span>
+                        <span class="percent">@(percent + "% (" + poll.Vote + " phiếu)"  )</span>
+                    </div>
+                    <div class="bar">
+                        <div class="bar-inner" style="width:@(percent/2.0 + "%")"></div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="total-result">
+            <div class="total-count">
+                <p>@ViewResources.Sum :</p>
+                <p>@(Model.TotalVotes + " Phiếu")</p>
+            </div>
+            <div class="total-date">
+                <p>@ViewResources.UpdateTime : </p>
+                <p>@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTimeByVNLanguage(DateTime.UtcNow)</p>
+            </div>
+        </div>
+
+
+        @*<table class="vote-result">
+            <tr>
+                <td width="40%"></td>
+                <td width="60%"></td>
+            </tr>
+            @foreach (var poll in Model.Polls)
+            {
+                colorIndex++;
+                if (colorIndex > ListColors.Length - 1)
+                {
+                    colorIndex = 0;
+                }
+                var percent = Model.TotalVotes > 0 ? Math.Round(poll.Vote * 100.0 / Model.TotalVotes, 2) : 0;
+                <tr>
+                    <td align="right">@poll.Answer</td>
+                    <td align="left">
+                        <div style="background:@ListColors[colorIndex]; width:@(percent/2.0 + "%"); height: 13px; float: left; margin:10px 0;"></div>&nbsp;@(percent + "% (" + poll.Vote + " phiếu)"  )
+                    </td>
+                </tr>
+            }
+            <tr class="total">
+                <td align="right">@ViewResources.Sum</td>
+                <td align="left">@(Model.TotalVotes + " Phiếu")</td>
+            </tr>
+            <tr class="total">
+                <td align="right">@ViewResources.UpdateTime</td>
+                <td align="left">@SabaNews.Core.Helper.DateTimeUtilize.FormatDateTimeByVNLanguage(DateTime.UtcNow)</td>
+            </tr>
+        </table>*@
+        @if (!Model.IsUserVoted)
+        {
+            <div class="poll-action">
+                <button data-questid="@Model.Question.Id" class="btn-vote vote-section">@ViewResources.Vote</button>
+            </div>
+        }
+    </div>
 	
 	
 </div>

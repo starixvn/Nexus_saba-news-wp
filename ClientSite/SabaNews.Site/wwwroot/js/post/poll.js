@@ -71,6 +71,7 @@
             $(this).parent().parent().find(".poll-inputs").prop('checked', true);
         });
     }
+
     function init() {
         CheckAndInsertPoll();
         UpdatePollData();
@@ -85,4 +86,6 @@
 $(document).ready(function () {
     poll.init();
 });
+
+
 
