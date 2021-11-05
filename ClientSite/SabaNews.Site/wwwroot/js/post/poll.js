@@ -70,6 +70,11 @@
         $(document).on('click', '.polllabel', function () {
             $(this).parent().parent().find(".poll-inputs").prop('checked', true);
         });
+
+        $(document).on('change', '.radio-input', function () {
+            $('.poll-element').removeClass('active');
+            $(this).parent().addClass('active');
+        });
     }
 
     function init() {
