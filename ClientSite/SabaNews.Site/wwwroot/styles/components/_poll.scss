@@ -116,16 +116,16 @@
         }
 
         .total-result {
-            margin: 0.5rem 0;
+            margin: 1.5rem 0 .5rem 0;
             .total-count, .total-date {
                 display: flex;
 
                 p {
                     margin-bottom: 1rem;
-                    line-height : 1;
+                    line-height: 1;
                     color: #4F4F4F;
                     margin-right: .5rem;
-                    font-weight : bold;
+                    font-weight: bold;
                 }
             }
         }

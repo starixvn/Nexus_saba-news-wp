@@ -1733,7 +1733,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         font-size: 1.3rem;
         cursor: pointer; }
     .poll-section .poll-content .total-result {
-      margin: 0.5rem 0; }
+      margin: 1.5rem 0 .5rem 0; }
       .poll-section .poll-content .total-result .total-count, .poll-section .poll-content .total-result .total-date {
         display: flex; }
         .poll-section .poll-content .total-result .total-count p, .poll-section .poll-content .total-result .total-date p {
