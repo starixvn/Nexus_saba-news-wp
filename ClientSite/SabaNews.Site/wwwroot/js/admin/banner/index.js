@@ -45,7 +45,7 @@
         });
     }
 
-    function validate_photo(files, self) {
+    function ValidatePhoto(files, self) {
         var isValid = true;
         var errorSection = self.parent().find('.photo-error');
         if (typeof files === "undefined") {
@@ -97,7 +97,7 @@
         $('.photo').on('change', function (e) {
             var form = '#' + $(this).parent().parent().attr('id');
             var files = $(this)[0].files[0];
-            var isValid = validate_photo(files, $(this));
+            var isValid = ValidatePhoto(files, $(this));
             if (!isValid) {
                 CancelUploadHandler(form);
                 return false;
@@ -159,7 +159,7 @@
 
     function UploadBanner(type, self) {
         var files = self.find('.photo')[0].files[0];
-        var isValid = validate_photo(files, self);
+        var isValid = ValidatePhoto(files, self);
         if (!isValid) {
             return false;
         }
@@ -208,19 +208,6 @@
                 });
             }
         })
-    }
-    function GetErrorPopup(popupId, msg) {
-        $(popupId + ' .modal-title').removeClass('title-success').addClass('title-error');
-        $(popupId + ' .title').html('<i class="icon-title icon-error-admin"></i> Error');
-        $(popupId + ' .modal-body').html(msg);
-        $(popupId).modal('show');
-    }
-
-    function GetSuccessPopup(popupId, msg) {
-        $(popupId + ' .modal-title').removeClass('title-error').addClass('title-success');
-        $(popupId + ' .title').html('<i class="icon-title icon-success-admin"></i> Successful');
-        $(popupId + ' .modal-body').html(msg);
-        $(popupId).modal('show');
     }
 
     function init() {

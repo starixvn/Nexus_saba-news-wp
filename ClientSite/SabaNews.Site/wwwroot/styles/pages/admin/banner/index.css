@@ -92,7 +92,7 @@
   flex-direction: row;
   color: #828282; }
   .group-table .left-table {
-    width: 16rem; }
+    width: 25rem; }
     @media screen and (max-width: 1024px) {
       .group-table .left-table {
         width: 12rem; } }
