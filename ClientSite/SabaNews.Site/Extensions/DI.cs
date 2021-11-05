@@ -57,7 +57,8 @@
             services.AddTransient<IStatisticService, StatisticService>();
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IBannerService, BannerService>();
-            
+            services.AddTransient<ILogService, Services.LogService>();
+
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)

@@ -1,10 +1,9 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
+    using SabaNews.Core.Models;
+    using SabaNews.Criteria.User;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SabaNews.Core.Models;
-    using SabaNews.Criteria.Auth;
-    using SabaNews.Criteria.User;
 
     public interface IUserService
     {

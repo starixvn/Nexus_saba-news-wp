@@ -9,6 +9,8 @@
     using Microsoft.Extensions.Configuration;
     using NLog;
     using NLog.Web;
+    using SabaNews.Core.Models;
+    using SabaNews.Services;
 
     public class LogServiceProvider : ILogServiceProvider
     {
@@ -62,7 +64,7 @@
                         File.Create(filePath).Dispose();
                     }
                     using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
-                    Log(spName, runtime, w);
+                    LogSP(spName, runtime, w);
                 }
             }
             catch (Exception e)
@@ -72,7 +74,7 @@
 
         }
 
-        public static void Log(string spName, string runtime, TextWriter w)
+        public static void LogSP(string spName, string runtime, TextWriter w)
         {
             w.Write("\r\nDate time: ");
             w.Write($"{Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)}");

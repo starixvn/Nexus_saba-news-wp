@@ -2,11 +2,13 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.Email;
+    using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;
     using SabaNews.Models.Email;
     using SabaNews.Services.Interfaces;
@@ -23,6 +25,7 @@
         private readonly IEmailService emailService;
         private readonly IConfiguration configuration;
         private readonly IAuthService authService;
+        private readonly ILogService logService;
         private const string SendMailTemplate = "EmailTemplates//SendEDM.html";
         private readonly string baseUrl;
         public EmailController(
@@ -31,7 +34,8 @@
             IPathService pathService,
             IEmailService emailService,
             IConfiguration configuration,
-            IAuthService authService)
+            IAuthService authService,
+            ILogService logService)
         {
             this.userService = userService;
             this.sessionService = sessionService;
@@ -39,6 +43,7 @@
             this.emailService = emailService;
             this.configuration = configuration;
             this.authService = authService;
+            this.logService = logService;
             baseUrl = configuration.GetValue<string>("BaseUrl");
         }
 
@@ -183,6 +188,13 @@
                 BaseUrl = baseUrl
             };
             var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+            var logCommand = new WriteLogCommand
+            {
+                ActionId = LogAction.SendTestEDM,
+                ActorId = sessionService.User.Id,
+                Data = JsonConvert.SerializeObject(new { model.EmailAddress, model.EmailTitle, model.EmailContent }),
+            };
+            await logService.WriteLog(logCommand);
             return Json(resultSendMail);
         }
 

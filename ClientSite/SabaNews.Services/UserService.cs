@@ -1,6 +1,9 @@
 ﻿namespace SabaNews.Services
 {
+    using Newtonsoft.Json;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
@@ -10,10 +13,12 @@
     public class UserService : IUserService
     {
         private readonly IBaseService baseService;
-            
-        public UserService(IBaseService baseService)
+        private readonly ILogService logService;
+
+        public UserService(IBaseService baseService, ILogService logService)
         {
             this.baseService = baseService;
+            this.logService = logService;
         }
         public async Task<CommandResult> UpdateUserSavePostAsync(int userID, string listPosts)
         {
@@ -46,7 +51,14 @@
                 _photo = user.Photo,
                 _isSubscribe = user.IsSubscribe
             };
-            return await baseService.ExecuteNonQueryAsync(command);
+            var logData = new WriteLogCommand
+            {
+                ActionId = LogAction.UpdateBanner,
+                Data = JsonConvert.SerializeObject(new { user.Id, user.Name, user.Phone, user.Gender, user.Photo, user.IsSubscribe })
+            };
+            var result = await baseService.ExecuteNonQueryAsync(command);
+            await logService.WriteLog(logData);
+            return result;
         }
 
         public async Task<IEnumerable<UserSession>> GetAllUserAsync(GetAllUserCriteria criteria)
