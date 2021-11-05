@@ -1,7 +1,11 @@
-﻿.pollevent {
+﻿@import '../abstracts/mixins';
+.pollevent {
     width: 40rem;
     margin: 2.5rem auto;
     font-size: 1.4rem;
+    @include Mobile{
+        width : 100%;
+    }
 }
 
 .poll-element {
@@ -12,6 +16,57 @@
     border-radius: 3px;
     padding: 0.1rem 0.8rem;
     margin-bottom: 1rem;
+}
+.radio {
+    &-input {
+        visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &-label {
+        position: relative;
+        padding-left: 2.8rem;
+        cursor: pointer;
+        font-weight: bold;
+        color: #9EA2AB;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 6px;
+            top: 0;
+            width: .8rem;
+            height: 1.2rem;
+        }
+    }
+
+    &-border {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        border: 2px solid #9EA2AB;
+    }
+
+    &-input:checked + &-label .radio-border {
+        border: 2px solid #294579 !important;
+        background: #294579 !important;
+    }
+
+    &-input:checked + &-label {
+        color: #294579;
+    }
+
+    &-input:checked + &-label:after {
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate( 45deg);
+    }
 }
 
 .poll-section {
@@ -27,8 +82,37 @@
             font-weight: bold;
             line-height: 2.4rem;
         }
+
         .choose-poll {
-           margin-top: 1.2rem;
+            margin-top: 1.2rem;
+        }
+
+        .poll-action {
+            line-height: 1;
+            align-items : center;
+            display: flex;
+            justify-content: space-between;
+
+            .btn-vote {
+                background: #F12F19;
+                border-radius: 3px;
+                padding: 1rem 2rem;
+                color: #FFFFFF;
+                font-weight: bold;
+                font-size: 1.3rem;
+                line-height: 1.5rem;
+                cursor: pointer;
+            }
+
+            .btn-result {
+                background: transparent;
+                border-bottom: 1px solid;
+                height: 2rem;
+                color: #F12F19;
+                font-weight: bold;
+                font-size: 1.3rem;
+                cursor : pointer;
+            }
         }
     }
 
@@ -69,11 +153,7 @@
 
 
 
-.poll-action {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-}
+
 
 .total {
 

@@ -1643,6 +1643,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 40rem;
   margin: 2.5rem auto;
   font-size: 1.4rem; }
+  @media (max-device-width: 767px) {
+    .pollevent {
+      width: 100%; } }
 
 .poll-element {
   width: 100%;
@@ -1652,6 +1655,48 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   border-radius: 3px;
   padding: 0.1rem 0.8rem;
   margin-bottom: 1rem; }
+
+.radio-input {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.radio-label {
+  position: relative;
+  padding-left: 2.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  color: #9EA2AB; }
+  .radio-label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 6px;
+    top: 0;
+    width: .8rem;
+    height: 1.2rem; }
+
+.radio-border {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  border: 2px solid #9EA2AB; }
+
+.radio-input:checked + .radio-label .radio-border {
+  border: 2px solid #294579 !important;
+  background: #294579 !important; }
+
+.radio-input:checked + .radio-label {
+  color: #294579; }
+
+.radio-input:checked + .radio-label:after {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg); }
 
 .poll-section {
   margin-bottom: 1rem; }
@@ -1665,6 +1710,28 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       line-height: 2.4rem; }
     .poll-section .poll-content .choose-poll {
       margin-top: 1.2rem; }
+    .poll-section .poll-content .poll-action {
+      line-height: 1;
+      align-items: center;
+      display: flex;
+      justify-content: space-between; }
+      .poll-section .poll-content .poll-action .btn-vote {
+        background: #F12F19;
+        border-radius: 3px;
+        padding: 1rem 2rem;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+        cursor: pointer; }
+      .poll-section .poll-content .poll-action .btn-result {
+        background: transparent;
+        border-bottom: 1px solid;
+        height: 2rem;
+        color: #F12F19;
+        font-weight: bold;
+        font-size: 1.3rem;
+        cursor: pointer; }
   .poll-section .poll-name {
     background: #223453;
     padding: 1.2rem 1rem;
@@ -1681,11 +1748,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   line-height: 21px;
   text-align: center;
   font-weight: 600; }
-
-.poll-action {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center; }
 
 .main-div-of-the-poll-answer {
   vertical-align: top;
