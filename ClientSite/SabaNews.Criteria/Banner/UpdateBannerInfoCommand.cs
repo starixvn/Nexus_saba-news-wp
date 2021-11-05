@@ -1,4 +1,6 @@
-﻿namespace SabaNews.Criteria.Banner
+﻿using System;
+
+namespace SabaNews.Criteria.Banner
 {
     public class UpdateBannerInfoCommand : BaseNonQueryCommand
     {
@@ -8,8 +10,14 @@
 
         public string MobileUrl { get; set; }
 
+        public int ActionId { get; set; }
+
+        public int ActorId { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+
         public override string GetSettingKey() => "banner_update";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(NaviagationUrl);
+        public override bool IsValid() => true;
     }
 }

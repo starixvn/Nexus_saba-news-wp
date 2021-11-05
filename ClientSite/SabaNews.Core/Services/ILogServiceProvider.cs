@@ -10,5 +10,7 @@
         Task WriteMessageSentryErrorAsync(string logMessage);
 
         void WriteLogFileInfo(string logMessage);
+
+        void WriteLogFileTrackingSP(string spName, string runtime);
     }
 }

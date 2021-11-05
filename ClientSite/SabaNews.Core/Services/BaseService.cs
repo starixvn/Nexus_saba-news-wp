@@ -12,16 +12,16 @@
     {
         private readonly IDynamicRepository dynamicRepository;
         private readonly IBaseRepository baseRepository;
-        private readonly ILogFileService logFileService;
+        private readonly ILogServiceProvider logServiceProvider;
 
         public BaseService(
             IDynamicRepository dynamicRepository,
             IBaseRepository baseRepository,
-            ILogFileService logFileService)
+            ILogServiceProvider logServiceProvider)
         {
             this.dynamicRepository = dynamicRepository;
             this.baseRepository = baseRepository;
-            this.logFileService = logFileService;
+            this.logServiceProvider = logServiceProvider;
         }
 
         public async Task<IEnumerable<T>> GetDataAsync<T>(ICriteria criteria)
@@ -31,7 +31,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result =  await dynamicRepository.FetchAsync<T>(criteria);
                 watch.Stop();
-                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
                 return result;
             }
 
@@ -45,7 +45,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.GetAsync<T>(criteria);
                 watch.Stop();
-                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
                 return result;
             }
 
@@ -59,7 +59,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
                 watch.Stop();
-                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
                 return result;
             }
 
@@ -73,7 +73,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
                 watch.Stop();
-                logFileService.WriteLog(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
                 return result;
             }
 
@@ -88,7 +88,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 commandResult = await baseRepository.ExecuteNonQueryAsync(command);
                 watch.Stop();
-                logFileService.WriteLog(command.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(command.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
             }
 
             return commandResult;
