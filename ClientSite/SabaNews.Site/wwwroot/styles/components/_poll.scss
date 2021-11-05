@@ -3,19 +3,26 @@
     width: 40rem;
     margin: 2.5rem auto;
     font-size: 1.4rem;
-    @include Mobile{
-        width : 100%;
+
+    @include Mobile {
+        width: 100%;
     }
 }
 
 .poll-element {
     width: 100%;
+    cursor: pointer;
     background: #FFFDF9;
     border: 1px solid #D1D1D1;
     box-sizing: border-box;
     border-radius: 3px;
     padding: 0.1rem 0.8rem;
     margin-bottom: 1rem;
+    &.active {
+        border: 1px solid #294579;
+        box-sizing: border-box;
+        box-shadow: 3px 4px 9px 1px rgba(200, 200, 200, 0.25);
+    }
 }
 .radio {
     &-input {

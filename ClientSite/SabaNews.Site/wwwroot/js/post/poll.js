@@ -43,7 +43,7 @@
             $.ajax({
                 type: "POST",
                 url: "Post/VotePoll",
-                data: { questId: questionId, answerId, themeId},
+                data: { questId: questionId, answerId, themeId },
                 success: function (res) {
                     if (typeof res.isSuccessful == "undefined") {
                         $('.question-' + questionId).html(res);
@@ -70,6 +70,11 @@
         $(document).on('click', '.polllabel', function () {
             $(this).parent().parent().find(".poll-inputs").prop('checked', true);
         });
+
+        $(document).on('click', '.poll-element', function () {
+            $(this).find(".radio-input").prop('checked', true);
+        })
+
 
         $(document).on('change', '.radio-input', function () {
             $('.poll-element').removeClass('active');
