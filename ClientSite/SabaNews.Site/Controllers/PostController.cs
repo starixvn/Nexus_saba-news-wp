@@ -160,14 +160,7 @@
         public string GetClientIP()
         {
             var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            if (!string.IsNullOrWhiteSpace(clientIP))
-            {
-                clientIP = clientIP.Split(',')[0];
-            }
-            else
-            {
-                clientIP = HttpContext.Connection.RemoteIpAddress.ToString();
-            }
+            clientIP = !string.IsNullOrWhiteSpace(clientIP) ? clientIP.Split(',')[0] : HttpContext.Connection.RemoteIpAddress.ToString();
             return clientIP;
         }
     }

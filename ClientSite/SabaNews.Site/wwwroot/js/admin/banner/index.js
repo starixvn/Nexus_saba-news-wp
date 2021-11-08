@@ -77,7 +77,7 @@
             $('.photo-error').hide();
             var action = $(this).data('action');
             if (action === 'upload') {
-                UploadBanner("desktop", $(this));
+                UploadAndUpdateBanner("desktop", $(this));
             } else if (action == 'update') {
                 UpdateBanner("desktop", $(this));
             }
@@ -88,7 +88,7 @@
             $('.photo-error').hide();
             var action = $(this).data('action');
             if (action === 'upload') {
-                UploadBanner("mobile", $(this));
+                UploadAndUpdateBanner("mobile", $(this));
             } else if (action == 'update') {
                 UpdateBanner("mobile", $(this));
             }
@@ -157,7 +157,7 @@
         $(form + ' .cancel-upload').hide();
     }
 
-    function UploadBanner(type, self) {
+    function UploadAndUpdateBanner(type, self) {
         var files = self.find('.photo')[0].files[0];
         var isValid = ValidatePhoto(files, self);
         if (!isValid) {

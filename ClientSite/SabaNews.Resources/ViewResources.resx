@@ -768,4 +768,7 @@
   <data name="UploadNewImage" xml:space="preserve">
     <value>Upload new image</value>
   </data>
+  <data name="UploadedBanners" xml:space="preserve">
+    <value>Uploaded Banners</value>
+  </data>
 </root>

@@ -1807,6 +1807,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uploaded Banners.
+        /// </summary>
+        public static string UploadedBanners {
+            get {
+                return ResourceManager.GetString("UploadedBanners", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Upload new image.
         /// </summary>
         public static string UploadNewImage {

@@ -213,7 +213,8 @@
     .group-table .right-table .toggle-active-form {
       display: block; }
     .group-table .right-table .list-banner {
-      margin-left: 1rem; }
+      margin-left: 1rem;
+      width: 15rem; }
 
 .input-upload {
   border: 1px dashed #BDBDBD;
