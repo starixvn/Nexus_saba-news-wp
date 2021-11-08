@@ -1,4 +1,4 @@
-CREATE TABLE `wp_Log` (
+CREATE TABLE `sabasports`.`wp_Log` (
   `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ActorId` varchar(255) DEFAULT NULL,
   `ActionId` varchar(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE `wp_Log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-CREATE TABLE `wp_LogAction` (
+CREATE TABLE `sabasports`.`wp_LogAction` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `ActionName` varchar(255) NOT NULL,
   PRIMARY KEY (`Id`)
