@@ -132,7 +132,7 @@
         });
 
         $(document).on('click', '.crop', function () {
-            var form = "#" + $(this).parent().parent().data('form');
+            var form = "#" + $(this).parent().parent().attr('data-form');
             var url = $(this).data('url');
             $(form + ' .review_photo').attr('src', url);
             $(form).attr('data-action', 'update');
