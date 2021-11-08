@@ -20,31 +20,11 @@
         {
             try
             {
-                WriteAccessLog(context);
                 await next(context);
             }
             catch (Exception ex)
             {
                 await logService.WriteExceptionSentryErrorAsync(ex);
-            }
-        }
-
-        private void WriteAccessLog(HttpContext context)
-        {
-            try
-            {
-                var remoteIP = context.Request.Headers["x-forwarded-for"].ToString();
-                var logContent = $"- { DateTime.UtcNow }: , x-forwarded-for: {remoteIP}"
-                + $", Request-Path: {context.Request.Path}"
-                + $", User-Agent: {context.Request.Headers["User-Agent"]}";
-                if(!string.IsNullOrWhiteSpace(remoteIP))
-                {
-                    logService.WriteLogFileInfo(logContent);
-                }
-            }
-            catch (Exception ex)
-            {
-                logService.WriteLogFileInfo(ex.Message);
             }
         }
     }
