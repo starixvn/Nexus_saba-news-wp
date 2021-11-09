@@ -1,9 +1,11 @@
 ﻿namespace SabaNews.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Caching;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Services;
     using SabaNews.Services.Interfaces;
 
     public class RefreshCachingService : IRefreshCachingService
@@ -11,21 +13,37 @@
         private readonly IFetchDataService fetchDataService;
         private readonly ICacheService cacheService;
         private readonly IPostService postService;
+        private readonly ILogServiceProvider logService;
 
         public RefreshCachingService(IFetchDataService fetchDataService,
             ICacheService cacheService,
-            IPostService postService)
+            IPostService postService,
+            ILogServiceProvider logService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
             this.postService = postService;
+            this.logService = logService;
         }
 
         public async Task UpdateHomePageCaching()
         {
-            var data = await fetchDataService.GetHomePageViewModel();
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateHomePageCaching");
 
-            await cacheService.SetAsync(CacheKey.HomePageViewModel, data);
+            try
+            {
+                var data = await fetchDataService.GetHomePageViewModel();
+                logService.WriteLogFileInfo(string.Format("After GetHomePageViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.HomePageViewModel, data);
+            }
+            catch(Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateHomePageCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
         public async Task UpdateMenuCaching()
