@@ -48,54 +48,140 @@
 
         public async Task UpdateMenuCaching()
         {
-            var data = await fetchDataService.GetMenuData();
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateMenuCaching");
 
-            await cacheService.SetAsync(CacheKey.Menu, data);
+            try
+            {
+                var data = await fetchDataService.GetMenuData();
+                logService.WriteLogFileInfo(string.Format("After GetMenuData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.Menu, data);
+            }
+            catch(Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+            logService.WriteLogFileInfo(string.Format("Done UpdateMenuCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+            
         }
 
         public async Task UpdateCategoryCaching()
         {
-            var listCategoryCaching = new List<string>
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateCategoryCaching");
+
+            try
             {
-                Constants.FootballSlug,
-                Constants.GuessSlug,
-                Constants.BackstageSlug,
-                Constants.TransferSlug,
-                Constants.BasketballSlug,
-                Constants.TennisSlug,
-                Constants.VideoSlug
-            };
-            foreach (var slug in listCategoryCaching)
-            {
-                var key = CacheKey.CategoryViewModel + "-" + slug;
-                var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
-                await cacheService.SetAsync(key, data);
+                var listCategoryCaching = new List<string>
+                {
+                    Constants.FootballSlug,
+                    Constants.GuessSlug,
+                    Constants.BackstageSlug,
+                    Constants.TransferSlug,
+                    Constants.BasketballSlug,
+                    Constants.TennisSlug,
+                    Constants.VideoSlug
+                };
+                foreach (var slug in listCategoryCaching)
+                {
+                    var key = CacheKey.CategoryViewModel + "-" + slug;
+                    var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
+                    logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));
+                    await cacheService.SetAsync(key, data);
+                }
             }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateCategoryCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+
         }
 
         public async Task UpdateSitemapData()
         {
-            var result = await postService.GetSitemapDataAsync();
-            await cacheService.SetAsync(CacheKey.SitemapXml, result);
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateSitemapData");
+
+            try
+            {
+                var result = await postService.GetSitemapDataAsync();
+                logService.WriteLogFileInfo(string.Format("After GetSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.SitemapXml, result);
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateSitemapData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+
         }
 
         public async Task UpdateNewsSitemapData()
         {
-            var result = await postService.GetNewsSitemapDataAsync();
-            await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateNewsSitemapData");
+
+            try
+            {
+                var result = await postService.GetNewsSitemapDataAsync();
+                logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateNewsSitemapData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
         public async Task UpdateRSSData()
         {
-            var result = await postService.GetNewsSitemapDataAsync();
-            await cacheService.SetAsync(CacheKey.RSS, result);
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateRSSData");
+
+            try
+            {
+                var result = await postService.GetNewsSitemapDataAsync();
+                logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.RSS, result);
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateRSSData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
 
         public async Task UpdateEuro2020PageCaching()
         {
-            var data = await fetchDataService.GetEuro2020ViewModel();
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateEuro2020PageCaching");
 
-            await cacheService.SetAsync(CacheKey.Euro2020PageViewModel, data);
+            try
+            {
+                var data = await fetchDataService.GetEuro2020ViewModel();
+                logService.WriteLogFileInfo(string.Format("After GetEuro2020ViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.Euro2020PageViewModel, data);
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateEuro2020PageCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+
         }
     }
 }
