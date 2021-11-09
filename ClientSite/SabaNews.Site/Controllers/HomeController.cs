@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
@@ -20,20 +21,24 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly IBannerService bannerService;
+        private readonly ILogServiceProvider logService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IBannerService bannerService)
+            IBannerService bannerService,
+            ILogServiceProvider logService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
             this.bannerService = bannerService;
+            this.logService = logService;
         }
 
         public async Task<IActionResult> Index()
         {
+            logService.WriteLogFileInfo("Home");
             var viewModel = await dataControlService.GetHomePageViewModel();
             var banner = await bannerService.GetBannerInfoAsync();
             var domain = configuration.GetValue<string>("BaseUrl");
