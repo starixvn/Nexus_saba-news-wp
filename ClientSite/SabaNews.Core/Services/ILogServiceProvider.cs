@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Core.Services
 {
+    using Fanex.Data.Repository;
     using System;
     using System.Threading.Tasks;
 
@@ -11,6 +12,6 @@
 
         void WriteLogFileInfo(string logMessage);
 
-        void WriteLogFileTrackingSP(string spName, string runtime);
+        void WriteLogFileTrackingSP(ICriteria criteria, long runtime);
     }
 }

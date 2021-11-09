@@ -31,7 +31,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result =  await dynamicRepository.FetchAsync<T>(criteria);
                 watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
                 return result;
             }
 
@@ -45,7 +45,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.GetAsync<T>(criteria);
                 watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
                 return result;
             }
 
@@ -59,7 +59,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
                 watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
                 return result;
             }
 
@@ -73,7 +73,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
                 watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
                 return result;
             }
 
@@ -88,7 +88,7 @@
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 commandResult = await baseRepository.ExecuteNonQueryAsync(command);
                 watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(command.GetSettingKey(), watch.ElapsedMilliseconds.ToString() + "ms");
+                logServiceProvider.WriteLogFileTrackingSP(command, watch.ElapsedMilliseconds);
             }
 
             return commandResult;

@@ -38,7 +38,6 @@
 
         public async Task<IActionResult> Index()
         {
-            logService.WriteLogFileInfo("Home");
             var viewModel = await dataControlService.GetHomePageViewModel();
             var banner = await bannerService.GetBannerInfoAsync();
             var domain = configuration.GetValue<string>("BaseUrl");

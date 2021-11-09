@@ -1,16 +1,16 @@
 ﻿namespace SabaNews.Core.Services
 {
-    using System;
-    using System.IO;
-    using System.Threading.Tasks;
+    using Fanex.Data.Repository;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.Database;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
+    using Newtonsoft.Json;
     using NLog;
     using NLog.Web;
-    using SabaNews.Core.Models;
-    using SabaNews.Services;
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
 
     public class LogServiceProvider : ILogServiceProvider
     {
@@ -18,7 +18,7 @@
         private readonly Logger infoLogger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IConfiguration configuration;
-
+        private const int LowPerformanceRuntime = 2000;
         public LogServiceProvider(
             Fanex.Logging.ILogger logger, 
             IWebHostEnvironment webHostEnvironment,
@@ -51,20 +51,20 @@
         }
 
 
-        public void WriteLogFileTrackingSP (string spName, string runtime)
+        public void WriteLogFileTrackingSP (ICriteria criteria, long runtime)
         {
             try
             {
                 var filePath = Path.Combine(webHostEnvironment.ContentRootPath, "LogFiles/TrackingSP.txt");
-                bool IsWiteLogFile = configuration.GetValue<bool>("IsWriteLogFile");
-                if (IsWiteLogFile)
+                bool IsWiteLogFile = configuration.GetValue<bool>("IsEnableWriteLogSP");
+                if (IsWiteLogFile && runtime > LowPerformanceRuntime)
                 {
                     if (!File.Exists(filePath))
                     {
                         File.Create(filePath).Dispose();
                     }
                     using StreamWriter w = File.AppendText("LogFiles/TrackingSP.txt");
-                    LogSP(spName, runtime, w);
+                    LogSP(criteria, runtime, w);
                 }
             }
             catch (Exception e)
@@ -74,11 +74,13 @@
 
         }
 
-        public static void LogSP(string spName, string runtime, TextWriter w)
+        public static void LogSP(ICriteria criteria, long runtime, TextWriter w)
         {
+            var param = JsonConvert.SerializeObject(criteria);
             w.Write("\r\nDate time: ");
             w.Write($"{Helper.DateTimeUtilize.ChangeTimeZoneToClient(DateTime.UtcNow)}");
-            w.Write($" --- SP name: {spName} --- Runtime: {runtime}");
+            w.Write($" --- SP name: {criteria.GetSettingKey()} --- Runtime: {runtime} ms");
+            w.Write($" --- Params: {param}");
             w.Write("\r\n-------------------------------");
         }
     }
