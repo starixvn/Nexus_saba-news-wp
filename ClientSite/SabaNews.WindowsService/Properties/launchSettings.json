@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SabaNews.WindowsService": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
