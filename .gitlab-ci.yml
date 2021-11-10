@@ -3,7 +3,7 @@ include:
     ref: master
     file: 'gitlab-ci.yml'
 	
-	- project: 'ci/repos-ci/nexus_saba_sports_saba_news_win_service'
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_win_service'
     ref: master
-    file: 'gitlab-ci.yml'
+    file: 'gitlab-ci-mixing.yml'
     
