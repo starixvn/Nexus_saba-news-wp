@@ -4,8 +4,10 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Fanex.Caching;
+    using Fanex.Data.Repository;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Criteria.Banner;
     using SabaNews.Services.Interfaces;
 
     public class RefreshCachingService : IRefreshCachingService
@@ -30,7 +32,7 @@
         {
             var startTime = DateTime.Now;
             logService.WriteLogFileInfo("Start UpdateHomePageCaching");
-
+            logService.WriteLogFileTrackingSP(new GetBannerInfoCriteria(), 5000);
             try
             {
                 var data = await fetchDataService.GetHomePageViewModel();
