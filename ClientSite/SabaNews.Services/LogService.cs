@@ -8,17 +8,16 @@
     public class LogService : ILogService
     {
         private readonly IBaseService baseService;
-
-        public LogService(
-            IBaseService baseService)
+       
+        public LogService(IBaseService baseService)
         {
             this.baseService = baseService;
+       
         }
 
         public async Task<CommandResult> WriteLog(WriteLogCommand cmd)
         {
             return await baseService.ExecuteNonQueryAsync(cmd);
         }
-
     }
 }

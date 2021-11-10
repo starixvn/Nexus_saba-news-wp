@@ -1,9 +1,9 @@
-﻿namespace sabanews.Middlewares
+﻿namespace SabaNews.Core.Middlewares
 {
-    using Microsoft.AspNetCore.Http;
-    using SabaNews.Core.Services;
     using System;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using SabaNews.Core.Services;
 
     public class ErrorHandler
     {

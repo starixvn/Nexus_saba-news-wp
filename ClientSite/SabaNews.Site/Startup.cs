@@ -13,8 +13,6 @@
     using Fanex.Logging.Extensions.AspNetCore;
     using Fanex.Logging.Extensions.Database;
     using Fanex.Logging.Sentry;
-    using Hangfire;
-    using Hangfire.Redis;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
@@ -22,10 +20,9 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using sabanews.Middlewares;
+    using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
     using Sentry;
     using StackExchange.Redis;
@@ -123,17 +120,6 @@
 
             services.RegisterServices();
             services.AddRazorPages();
-
-            services.AddHangfire(x =>
-            {
-                x.UseRedisStorage(Redis, new RedisStorageOptions
-                {
-                    Prefix = Configuration.GetValue<string>("HangfireConfig:Prefix"),
-                    SucceededListSize = Configuration.GetValue<int>("HangfireConfig:SucceededListSize"),
-                    DeletedListSize = Configuration.GetValue<int>("HangfireConfig:DeletedListSize"),
-                    Db = Configuration.GetValue<int>("HangfireConfig:Db")
-                });
-            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -186,15 +172,6 @@
 
             app.UseHttpsRedirection();
 
-            if (Configuration.GetValue<bool>("HangfireConfig:IsUseDashboard"))
-            {
-                app.UseHangfireDashboard().UseHangfireServer(options: new BackgroundJobServerOptions
-                {
-                    WorkerCount = Configuration.GetValue<int>("HangfireConfig:WorkerCount"),
-                    ServerName = Environment.MachineName
-                });
-            }
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -205,15 +182,6 @@
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            RunHangfireJob(app);
-        }
-
-        private static void RunHangfireJob(IApplicationBuilder app)
-        {
-            var serviceProvider = app.ApplicationServices;
-            var backgroundService = serviceProvider.GetService<IBackgroundJobService>();
-            backgroundService.TriggerUpdateCaching();
         }
     }
 }

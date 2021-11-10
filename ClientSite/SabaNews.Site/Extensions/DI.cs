@@ -8,7 +8,6 @@
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
-    using Hangfire;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Facebook;
@@ -45,13 +44,11 @@
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();
-            services.AddTransient<IRecurringJobManager, RecurringJobManager>();
             services.AddTransient<IEmailService, EmailService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
             services.AddTransient<IDataControlService, DataControlService>();
-            services.AddTransient<IBackgroundJobService, BackgroundJobService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IExternalAuthService, ExternalAuthService>();
             services.AddTransient<IStatisticService, StatisticService>();
