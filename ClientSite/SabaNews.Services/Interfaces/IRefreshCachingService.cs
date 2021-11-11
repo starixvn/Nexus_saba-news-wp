@@ -15,7 +15,5 @@
         Task UpdateNewsSitemapData();
 
         Task UpdateRSSData();
-
-        Task UpdateEuro2020PageCaching();
     }
 }

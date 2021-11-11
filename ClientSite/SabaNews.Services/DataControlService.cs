@@ -9,6 +9,7 @@
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -43,7 +44,11 @@
                 {
                     logServiceProvider.WriteLogFileInfo("-------Get Homepage data from DB---------");
                     result = await fetchDataService.GetHomePageViewModel();
-                    await cacheService.SetAsync(CacheKey.HomePageViewModel, result);
+                    //await cacheService.SetAsync(CacheKey.HomePageViewModel, result,
+                    //    new CacheItemOptions
+                    //    {
+                    //        RelativeExpiration = TimeSpan.FromMinutes(20)
+                    //    });
                 }
                 else
                 {
@@ -68,10 +73,14 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from DB---------");
 
                     result = await fetchDataService.GetCategoryViewModel(slug, page);
-                    if (result != null)
-                    {
-                        await cacheService.SetAsync(cacheKey, result);
-                    }
+                    //if (result != null)
+                    //{
+                    //    await cacheService.SetAsync(cacheKey, result,
+                    //        new CacheItemOptions
+                    //        {
+                    //            RelativeExpiration = TimeSpan.FromMinutes(10)
+                    //        });
+                    //}
                 }
                 else
                 {
@@ -95,7 +104,11 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
 
                     result = await fetchDataService.GetMenuData();
-                    await cacheService.SetAsync(CacheKey.Menu, result);
+                    //await cacheService.SetAsync(CacheKey.Menu, result,
+                    //    new CacheItemOptions
+                    //    {
+                    //        RelativeExpiration = TimeSpan.FromMinutes(700)
+                    //    });
                 }
                 else
                 {
@@ -119,7 +132,11 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from DB---------");
 
                     result = await postService.GetSitemapDataAsync();
-                    await cacheService.SetAsync(CacheKey.SitemapXml, result);
+                    //await cacheService.SetAsync(CacheKey.SitemapXml, result,
+                    //    new CacheItemOptions
+                    //    {
+                    //        RelativeExpiration = TimeSpan.FromMinutes(30)
+                    //    });
                 }
                 else
                 {
@@ -143,7 +160,11 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get News Sitemap data from DB---------");
 
                     result = await postService.GetNewsSitemapDataAsync();
-                    await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+                    //await cacheService.SetAsync(CacheKey.NewsSitemapXml, result,
+                    //    new CacheItemOptions
+                    //    {
+                    //        RelativeExpiration = TimeSpan.FromMinutes(30)
+                    //    });
                 }
                 else
                 {
@@ -167,7 +188,11 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
 
                     result = await postService.GetRSSDataAsync();
-                    await cacheService.SetAsync(CacheKey.RSS, result);
+                    //await cacheService.SetAsync(CacheKey.RSS, result,
+                    //    new CacheItemOptions
+                    //    {
+                    //        RelativeExpiration = TimeSpan.FromMinutes(30)
+                    //    });
                 }
                 else
                 {
@@ -179,7 +204,6 @@
 
             return await postService.GetRSSDataAsync();
         }
-
 
         public async Task<Euro2020ViewModel> GetEuro2020PageViewModel()
         {

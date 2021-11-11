@@ -35,7 +35,12 @@
             {
                 var data = await fetchDataService.GetHomePageViewModel();
                 logService.WriteLogFileInfo(string.Format("After GetHomePageViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.HomePageViewModel, data);
+                await cacheService.SetAsync(CacheKey.HomePageViewModel, 
+                        data,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(20)
+                        });
             }
             catch(Exception ex)
             {
@@ -55,7 +60,12 @@
             {
                 var data = await fetchDataService.GetMenuData();
                 logService.WriteLogFileInfo(string.Format("After GetMenuData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.Menu, data);
+                await cacheService.SetAsync(CacheKey.Menu, 
+                        data, 
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(700)
+                        });
             }
             catch(Exception ex)
             {
@@ -88,7 +98,12 @@
                     var key = CacheKey.CategoryViewModel + "-" + slug;
                     var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
                     logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));
-                    await cacheService.SetAsync(key, data);
+                    await cacheService.SetAsync(key, 
+                        data,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(10)
+                        });
                 }
             }
             catch (Exception ex)
@@ -111,7 +126,12 @@
             {
                 var result = await postService.GetSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.SitemapXml, result);
+                await cacheService.SetAsync(CacheKey.SitemapXml, 
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                        });
             }
             catch (Exception ex)
             {
@@ -132,7 +152,12 @@
             {
                 var result = await postService.GetNewsSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+                await cacheService.SetAsync(CacheKey.NewsSitemapXml, 
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                        });
             }
             catch (Exception ex)
             {
@@ -152,7 +177,12 @@
             {
                 var result = await postService.GetNewsSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.RSS, result);
+                await cacheService.SetAsync(CacheKey.RSS, 
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                        });
             }
             catch (Exception ex)
             {
@@ -161,27 +191,6 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateRSSData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-        }
-
-        public async Task UpdateEuro2020PageCaching()
-        {
-            var startTime = DateTime.Now;
-            logService.WriteLogFileInfo("Start UpdateEuro2020PageCaching");
-
-            try
-            {
-                var data = await fetchDataService.GetEuro2020ViewModel();
-                logService.WriteLogFileInfo(string.Format("After GetEuro2020ViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.Euro2020PageViewModel, data);
-            }
-            catch (Exception ex)
-            {
-                await logService.WriteExceptionSentryErrorAsync(ex);
-                logService.WriteLogFileInfo(ex.ToString());
-            }
-
-            logService.WriteLogFileInfo(string.Format("Done UpdateEuro2020PageCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-
         }
     }
 }
