@@ -7,8 +7,6 @@
     {
         public string _Keyword { get; set; }
 
-        public string _LikeKeyWord { get; set; }
-
         public int _Start { get; set; }
 
         public int _End { get; set; }

@@ -91,18 +91,17 @@
             var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
-            var header = new HeaderViewModel
-            {
-                CategorySlug = Constants.MatchScheduleSlug,
-                CategoryId = pageDetail.CatId,
-                Title = title,
-                Description = pageDetail.Description ??= title
-            };
             var model = new PageViewModel
             {
                 Post = post,
                 Category = pageDetail,
-                Header = header
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = pageDetail.Description ??= title
+                }
             };
            
             return View(model);
@@ -113,17 +112,16 @@
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
             var title = pageDetail.SEOTitle ?? pageDetail.Title;
-            var header = new HeaderViewModel
-            {
-                CategorySlug = Constants.WarningSlug,
-                CategoryId = pageDetail.CatId,
-                Title = title,
-                Description = pageDetail.Description ??= title
-            };
             var model = new PageViewModel
             {
                 Category = pageDetail,
-                Header = header
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.WarningSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = pageDetail.Description ??= title
+                }
             };
             
             return View(model);
@@ -138,25 +136,23 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword ??= "", _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
-            var header = new HeaderViewModel
-            {
-                Title = Constants.SearchTitle + " '" + keyword + "'",
-                HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
-                Description = Constants.SearchTitle + " '" + keyword + "'",
-                Keyword = keyword,
-                Controller = Constants.Search
-            };
-            var paging = new PagingModel
-            {
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
-            };
             var model = new CategoryViewModel
             {
                 Posts = posts,
-                Header = header,
-                Paging = paging
+                Header = new HeaderViewModel
+                {
+                    Title = Constants.SearchTitle + " '" + keyword + "'",
+                    HeadTitle = Constants.SearchTitle + " '" + keyword + "'",
+                    Description = Constants.SearchTitle + " '" + keyword + "'",
+                    Keyword = keyword,
+                    Controller = Constants.Search
+                },
+                Paging = new PagingModel
+                {
+                    CurrentPage = page,
+                    PageSize = Constants.Perpage,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
+                }
             };
 
             var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
@@ -172,32 +168,28 @@
             var posts = await postService.GetPostByTagAsync(criteria);
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
-           
-            var header = new HeaderViewModel
-            {
-                Title = string.Concat(tag, " | ", Constants.SiteName),
-                HeadTitle = "Tag: '" + tag + "'",
-                Keyword = tagname,
-                Controller = Constants.Tag
-            };
-            var paging = new PagingModel
-            {
-                CurrentPage = page,
-                PageSize = Constants.Perpage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
-            };
-            var category = new Category
-            {
-                OgTitle = string.Concat(tag, " | ", Constants.SiteName),
-                OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
-                Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
-            };
             var model = new CategoryViewModel
             {
                 Posts = posts,
-                Header = header,
-                Category = category,
-                Paging = paging
+                Category = new Category
+                {
+                    OgTitle = string.Concat(tag, " | ", Constants.SiteName),
+                    OgImage = string.Concat(configuration.GetValue<string>("BaseUrl"), "images/sabasports.svg"),
+                    Url = Url.Action("Tag", "Home", new { tagname }, Request.Scheme)
+                },
+                Header = new HeaderViewModel
+                {
+                    Title = string.Concat(tag, " | ", Constants.SiteName),
+                    HeadTitle = "Tag: '" + tag + "'",
+                    Keyword = tagname,
+                    Controller = Constants.Tag
+                },
+                Paging = new PagingModel
+                {
+                    CurrentPage = page,
+                    PageSize = Constants.Perpage,
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
+                }
             };
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;

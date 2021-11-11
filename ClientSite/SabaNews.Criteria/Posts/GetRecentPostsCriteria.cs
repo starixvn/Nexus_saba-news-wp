@@ -4,8 +4,6 @@
 
     public class GetRecentPostsCriteria : CriteriaBase
     {
-        public string ExceptSlug { get; set; }
-
         public int Start { get; set; }
 
         public int End { get; set; }

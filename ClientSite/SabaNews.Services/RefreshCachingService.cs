@@ -32,7 +32,6 @@
         {
             var startTime = DateTime.Now;
             logService.WriteLogFileInfo("Start UpdateHomePageCaching");
-            logService.WriteLogFileTrackingSP(new GetBannerInfoCriteria(), 5000);
             try
             {
                 var data = await fetchDataService.GetHomePageViewModel();

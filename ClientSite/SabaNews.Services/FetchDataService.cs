@@ -27,7 +27,6 @@
         {
             var paramGetRecent = new GetRecentPostsParam
             {
-                Slug = Constants.VideoSlug,
                 Start = Constants.FromFirstItem,
                 End = Constants.GetFourItems
             };
@@ -72,7 +71,6 @@
             {
                 var paramGetRecent = new GetRecentPostsParam
                 {
-                    Slug = Constants.VideoSlug,
                     Start = start,
                     End = perPage
                 };

@@ -28,7 +28,6 @@
             {
                 var recentParam = new GetRecentPostsParam
                 {
-                    Slug = Constants.VideoSlug,
                     Start = Constants.FromFirstItem,
                     End = Constants.GetElevenItems,
                     PostID = postID

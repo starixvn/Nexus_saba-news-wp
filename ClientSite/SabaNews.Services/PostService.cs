@@ -57,8 +57,7 @@
             var criteria = new GetRecentPostsCriteria
             {
                 Start = postParam.Start,
-                End = postParam.End,
-                ExceptSlug = postParam.Slug.Trim()
+                End = postParam.End
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
             postParam.TotalIItems = criteria.TotalItems;
@@ -135,10 +134,6 @@
             if (string.IsNullOrEmpty(criteria._Keyword)) {
                 return null; 
             }
-            criteria._Keyword = criteria._Keyword.Replace("\\", "");
-            criteria._Keyword = Regex.Replace(criteria._Keyword, "[:!@#$%^&*()}{|:?><\\[\\]\\;'/,~]", string.Empty);
-            var rawQuery = string.Concat("(LOWER(p.post_title) like CONCAT('%',CONVERT('", criteria._Keyword.ToLower(CultureInfo.InvariantCulture), "', BINARY), ' %')) ");
-            criteria._LikeKeyWord = rawQuery;
             var posts = await baseService.GetDataAsync<Post>(criteria);
            
             return FormatData(posts).ToArray();

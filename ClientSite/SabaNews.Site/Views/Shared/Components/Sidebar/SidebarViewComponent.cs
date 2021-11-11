@@ -25,7 +25,6 @@
                 var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
                 var postParam = new GetRecentPostsParam
                 {
-                    Slug = Constants.VideoSlug,
                     Start = Constants.FromFirstItem,
                     End = end,
                     PostID = postID
