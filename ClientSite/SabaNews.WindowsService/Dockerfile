@@ -1,6 +1,6 @@
 FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
 
-WORKDIR /src/ClientSite
+WORKDIR /src
 
 COPY ["nuget.config", "."]
 COPY ["SabaNews.WindowsService/SabaNews.WindowsService.csproj", "SabaNews.WindowsService/"]
