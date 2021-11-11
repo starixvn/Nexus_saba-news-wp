@@ -25,9 +25,9 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Resources", "SabaNews.Resources\SabaNews.Resources.csproj", "{F5087F36-7C8B-463A-85FE-A8FCB69A5C10}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowServices", "WindowServices", "{263BA21E-FC6C-40AB-8798-A5C3182950FA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SabaNews.WindowsService", "SabaNews.WindowsService", "{263BA21E-FC6C-40AB-8798-A5C3182950FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.WindowsService", "SabaNews.WindowsService\SabaNews.WindowsService.csproj", "{6A4D047A-90B6-49D9-AE8C-07A8C2857844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.WindowsService", "SabaNews.WindowsService\SabaNews.WindowsService.csproj", "{6A4D047A-90B6-49D9-AE8C-07A8C2857844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

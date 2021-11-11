@@ -99,7 +99,6 @@
                 options.Cookie.IsEssential = true;
             });
 
-            services.Configure<List<JobSetting>>(options => Configuration.GetSection("HangfireConfig:JobSettings").Bind(options));
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
 
             services.Configure<MailConfigs>(options => Configuration.GetSection("MailConfigs").Bind(options));
