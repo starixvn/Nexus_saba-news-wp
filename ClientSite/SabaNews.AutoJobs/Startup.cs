@@ -27,6 +27,7 @@ namespace SabaNews.AutoJobs
     using SabaNews.AutoJobs.Workers;
     using Sentry;
     using StackExchange.Redis;
+    using Fanex.Caching.Redis;
 
     public class Startup
     {
@@ -110,6 +111,8 @@ namespace SabaNews.AutoJobs
 
             services.AddSingleton(configuration);
             services.Configure<List<JobSettings>>(configuration.GetSection("JobSettings"));
+
+            services.AddRedisCache(configuration.GetSection("RedisConfig"));
         }
 
         private static void AddDependencyInjection(IServiceCollection services)
