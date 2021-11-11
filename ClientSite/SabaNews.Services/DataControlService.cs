@@ -3,6 +3,7 @@
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Services;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
@@ -16,13 +17,19 @@
         private readonly IFetchDataService fetchDataService;
         private readonly ICacheService cacheService;
         private readonly IPostService postService;
+        private readonly ILogServiceProvider logServiceProvider;
         private readonly bool IsUsingCache;
 
-        public DataControlService(IFetchDataService fetchDataService, IConfiguration configuration, ICacheService cacheService, IPostService postService)
+        public DataControlService(IFetchDataService fetchDataService, 
+            IConfiguration configuration, 
+            ICacheService cacheService,
+            IPostService postService,
+            ILogServiceProvider logServiceProvider)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
             this.postService = postService;
+            this.logServiceProvider = logServiceProvider;
             IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 
@@ -31,9 +38,10 @@
             if (IsUsingCache)
             {
                 var result = await cacheService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
-
+                
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo("-------Get Homepage data from SP---------");
                     result = await fetchDataService.GetHomePageViewModel();
                     await cacheService.SetAsync(CacheKey.HomePageViewModel, result);
                 }
@@ -53,6 +61,8 @@
 
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from SP---------");
+
                     result = await fetchDataService.GetCategoryViewModel(slug, page);
                     if (result != null)
                     {
@@ -74,6 +84,8 @@
 
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from SP---------");
+
                     result = await fetchDataService.GetMenuData();
                     await cacheService.SetAsync(CacheKey.Menu, result);
                 }
@@ -92,6 +104,8 @@
 
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from SP---------");
+
                     result = await postService.GetSitemapDataAsync();
                     await cacheService.SetAsync(CacheKey.SitemapXml, result);
                 }
@@ -110,6 +124,8 @@
 
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo($"-------Get News Sitemap data from SP---------");
+
                     result = await postService.GetNewsSitemapDataAsync();
                     await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
                 }
@@ -128,6 +144,8 @@
 
                 if (result == null)
                 {
+                    logServiceProvider.WriteLogFileInfo($"-------Get RSS data from SP---------");
+
                     result = await postService.GetRSSDataAsync();
                     await cacheService.SetAsync(CacheKey.RSS, result);
                 }
