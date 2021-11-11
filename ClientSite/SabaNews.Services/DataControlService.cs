@@ -41,9 +41,13 @@
                 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo("-------Get Homepage data from SP---------");
+                    logServiceProvider.WriteLogFileInfo("-------Get Homepage data from DB---------");
                     result = await fetchDataService.GetHomePageViewModel();
                     await cacheService.SetAsync(CacheKey.HomePageViewModel, result);
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo("-------Get Homepage data from Caching---------");
                 }
 
                 return result;
@@ -61,13 +65,17 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from SP---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from DB---------");
 
                     result = await fetchDataService.GetCategoryViewModel(slug, page);
                     if (result != null)
                     {
                         await cacheService.SetAsync(cacheKey, result);
                     }
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from Caching---------");
                 }
 
                 return result;
@@ -84,10 +92,14 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from SP---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
 
                     result = await fetchDataService.GetMenuData();
                     await cacheService.SetAsync(CacheKey.Menu, result);
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo("-------Get Menu data from Caching---------");
                 }
 
                 return result;
@@ -104,10 +116,14 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from SP---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from DB---------");
 
                     result = await postService.GetSitemapDataAsync();
                     await cacheService.SetAsync(CacheKey.SitemapXml, result);
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo("-------Get Sitemap data from Caching---------");
                 }
 
                 return result;
@@ -124,10 +140,14 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get News Sitemap data from SP---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get News Sitemap data from DB---------");
 
                     result = await postService.GetNewsSitemapDataAsync();
                     await cacheService.SetAsync(CacheKey.NewsSitemapXml, result);
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo("-------Get News Sitemap data from Caching---------");
                 }
 
                 return result;
@@ -144,10 +164,14 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get RSS data from SP---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
 
                     result = await postService.GetRSSDataAsync();
                     await cacheService.SetAsync(CacheKey.RSS, result);
+                }
+                else
+                {
+                    logServiceProvider.WriteLogFileInfo("-------Get RSS data from Caching---------");
                 }
 
                 return result;
