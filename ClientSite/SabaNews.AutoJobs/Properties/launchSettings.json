@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SabaNews.WindowsService": {
+    "SabaNews.AutoJobs": {
       "commandName": "Project"
     },
     "Docker": {

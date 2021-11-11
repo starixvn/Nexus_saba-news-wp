@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
     using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Services;
-    using SabaNews.WindowsService.Models;
+    using SabaNews.AutoJobs.Models;
 
     public class BaseWorker : BackgroundService
     {

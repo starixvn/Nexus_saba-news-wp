@@ -1,5 +1,5 @@
 ﻿
-namespace SabaNews.WindowsService
+namespace SabaNews.AutoJobs
 {
     using System;
     using Microsoft.AspNetCore;

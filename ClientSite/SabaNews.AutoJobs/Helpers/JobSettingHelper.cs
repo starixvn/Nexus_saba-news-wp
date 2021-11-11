@@ -1,9 +1,9 @@
-﻿namespace SabaNews.WindowsService.Helpers
+﻿namespace SabaNews.AutoJobs.Helpers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using SabaNews.WindowsService.Models;
+    using SabaNews.AutoJobs.Models;
 
     public static class JobSettingHelper
     {

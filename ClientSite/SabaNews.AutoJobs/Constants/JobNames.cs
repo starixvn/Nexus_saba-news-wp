@@ -1,4 +1,4 @@
-﻿namespace SabaNews.WindowsService.Constants
+﻿namespace SabaNews.AutoJobs.Constants
 {
     public static class JobNames
     {

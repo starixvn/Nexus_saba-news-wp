@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Models;
-    using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.User;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
@@ -17,7 +16,7 @@
         {
             this.userSerive = userSerive;
         }
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             DateTime now = DateTime.Now;
             UserFilterViewModel viewModel = new()

@@ -1,13 +1,13 @@
-﻿namespace SabaNews.WindowsService.Workers
+﻿namespace SabaNews.AutoJobs.Workers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using SabaNews.Core.Services;
     using SabaNews.Services.Interfaces;
-    using SabaNews.WindowsService.Constants;
-    using SabaNews.WindowsService.Helpers;
-    using SabaNews.WindowsService.Models;
+    using SabaNews.AutoJobs.Constants;
+    using SabaNews.AutoJobs.Helpers;
+    using SabaNews.AutoJobs.Models;
     using SabaNews.WinowsService.Workers;
 
     public class RefreshCategoryCachingWorker : BaseWorker

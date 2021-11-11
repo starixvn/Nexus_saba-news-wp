@@ -1,20 +1,20 @@
-﻿namespace SabaNews.WindowsService.Workers
+﻿namespace SabaNews.AutoJobs.Workers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Options;
     using SabaNews.Core.Services;
     using SabaNews.Services.Interfaces;
-    using SabaNews.WindowsService.Constants;
-    using SabaNews.WindowsService.Helpers;
-    using SabaNews.WindowsService.Models;
+    using SabaNews.AutoJobs.Constants;
+    using SabaNews.AutoJobs.Helpers;
+    using SabaNews.AutoJobs.Models;
     using SabaNews.WinowsService.Workers;
 
-    public class RefreshEuro2020PageCachingWorker : BaseWorker
+    public class RefreshMenuCachingWorker : BaseWorker
     {
         private readonly IRefreshCachingService refreshCachingService;
 
-        public RefreshEuro2020PageCachingWorker(IRefreshCachingService refreshCachingService,
+        public RefreshMenuCachingWorker(IRefreshCachingService refreshCachingService,
             IOptions<List<JobSettings>> jobSettings,
             ILogServiceProvider logService) : base(logService)
         {
@@ -24,7 +24,7 @@
 
         public override async Task ExecuteJobAsync()
         {
-            await refreshCachingService.UpdateEuro2020PageCaching();
+            await refreshCachingService.UpdateMenuCaching();
         }
     }
 }

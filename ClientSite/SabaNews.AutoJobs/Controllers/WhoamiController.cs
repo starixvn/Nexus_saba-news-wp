@@ -1,4 +1,4 @@
-﻿namespace SabaNews.WindowsService.Controllers
+﻿namespace SabaNews.AutoJobs.Controllers
 {
     using System;
     using System.Text;

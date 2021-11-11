@@ -1,4 +1,4 @@
-﻿namespace SabaNews.WindowsService.Models
+﻿namespace SabaNews.AutoJobs.Models
 {
     public class JobSettings
     {

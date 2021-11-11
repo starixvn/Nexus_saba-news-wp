@@ -1,5 +1,5 @@
 ﻿
-namespace SabaNews.WindowsService
+namespace SabaNews.AutoJobs
 {
     using System;
     using System.Collections.Generic;
@@ -23,8 +23,8 @@ namespace SabaNews.WindowsService
     using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using SabaNews.WindowsService.Models;
-    using SabaNews.WindowsService.Workers;
+    using SabaNews.AutoJobs.Models;
+    using SabaNews.AutoJobs.Workers;
     using Sentry;
     using StackExchange.Redis;
 
@@ -134,11 +134,10 @@ namespace SabaNews.WindowsService
         {
             services.AddHostedService<RefreshHomePageCachingWorker>();
             services.AddHostedService<RefreshCategoryCachingWorker>();
-            services.AddHostedService<RefreshEuro2020PageCachingWorker>();
             services.AddHostedService<RefreshMenuCachingWorker>();
             services.AddHostedService<RefreshNewsSitemapXmlFileWorker>();
+            services.AddHostedService<RefreshRssWorker>();
             services.AddHostedService<RefreshSitemapXmlFileWorker>();
-            services.AddHostedService<RefreshEuro2020PageCachingWorker>();
         }
     }
 }
