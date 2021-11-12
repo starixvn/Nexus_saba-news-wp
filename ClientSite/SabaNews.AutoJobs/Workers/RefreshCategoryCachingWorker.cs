@@ -19,7 +19,7 @@
             ILogServiceProvider logService) : base(logService)
         {
             this.refreshCachingService = refreshCachingService;
-            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshMenuCaching);
+            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshCategoryCaching);
         }
 
         public override async Task ExecuteJobAsync()
