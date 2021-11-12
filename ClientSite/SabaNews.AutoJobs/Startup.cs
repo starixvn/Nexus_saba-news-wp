@@ -77,17 +77,9 @@ namespace SabaNews.AutoJobs
                     name: "default",
                     pattern: "{controller=Auth}/{action=Index}/{id?}");
             });
-
-            TestSentry(app);
         }
 
-        private static void TestSentry(IApplicationBuilder app)
-        {
-            var serviceProvider = app.ApplicationServices;
-            var logServiceProvider = serviceProvider.GetService<ILogServiceProvider>();
-
-            logServiceProvider.WriteExceptionSentryErrorAsync(new Exception("Test sentry work fine"));
-        }
+     
 
         private static void AddConfiguration(IServiceCollection services, IConfiguration configuration)
         {
