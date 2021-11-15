@@ -28,10 +28,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var startime = DateTime.UtcNow;
                 var result =  await dynamicRepository.FetchAsync<T>(criteria);
-                watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -42,10 +41,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var startime = DateTime.UtcNow;
                 var result = await dynamicRepository.GetAsync<T>(criteria);
-                watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -56,10 +54,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var startime = DateTime.UtcNow;
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond>(criteria);
-                watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -70,10 +67,9 @@
         {
             if (criteria != null && criteria.IsValid())
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var startime = DateTime.UtcNow;
                 var result = await dynamicRepository.FetchMultipleAsync<TFirst, TSecond, TThird>(criteria);
-                watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(criteria, watch.ElapsedMilliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
                 return result;
             }
 
@@ -85,10 +81,9 @@
             var commandResult = new CommandResult();
             if (command != null && command.IsValid())
             {
-                var watch = System.Diagnostics.Stopwatch.StartNew();
+                var startime = DateTime.UtcNow;
                 commandResult = await baseRepository.ExecuteNonQueryAsync(command);
-                watch.Stop();
-                logServiceProvider.WriteLogFileTrackingSP(command, watch.ElapsedMilliseconds);
+                logServiceProvider.WriteLogFileTrackingSP(command, DateTime.UtcNow.Subtract(startime).Milliseconds);
             }
 
             return commandResult;
