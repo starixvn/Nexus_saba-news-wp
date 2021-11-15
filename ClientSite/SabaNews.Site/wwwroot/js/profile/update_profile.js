@@ -108,6 +108,8 @@
                         $('#form_update_phone').removeClass('toggle-active-form');
                         var html = '<li class="txt-feild">' + phone + '</li>';
                         $('.phone-section').find('.txt-fill').html(html);
+                    } else {
+                        location.reload();
                     }
                 }
             });
@@ -134,6 +136,8 @@
                         $('#form_update_name').removeClass('toggle-active-form');
                         var html = '<li class="txt-feild">' + name + '</li>';
                         $('.name-section').find('.txt-fill').html(html);
+                    } else {
+                        location.reload();
                     }
                 }
             });
@@ -160,6 +164,8 @@
                         $('#form_update_gender').removeClass('toggle-active-form');
                         var html = '<li class="txt-feild">' + gender + '</li>';
                         $('.gender-section').find('.txt-fill').html(html);
+                    } else {
+                        location.reload();
                     }
                 }
             });
@@ -245,9 +251,7 @@
                         $('#resetPasswordSuccesful .modal-body').html(msg);
                         $('#resetPasswordSuccesful').modal('show');
                     } else {
-                        $('#resetPasswordSuccesful .modal-body').html("Cập nhật thông tin thất bại, vui lòng thử lại!");
-                        $('#resetPasswordSuccesful').modal('show');
-                        $('#isSubscribe').prop('checked', currentValue == 1 ? true : false);
+                        location.reload();
                     }
 
                 }
@@ -285,6 +289,8 @@
                         $('input[name=photo]').val(null);
                         var html = '<img src="'+ res.linkPhoto +'"  width="300"/>';
                         $('.profile__avatar').html(html);
+                    } else {
+                        location.reload();
                     }
                 }
             });
