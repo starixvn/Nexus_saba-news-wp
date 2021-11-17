@@ -55,17 +55,11 @@
 						</a>
 						<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
 						<p class="card-vertical__description text-description">
-							@Model.NewPosts[0].PostExcerpt
+							@Html.Raw(Model.NewPosts[0].PostExcerpt)
 							@if (Model.NewPosts[0].CommentCount > 0)
 							{
 								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>}
 						</p>
-						@*<p class="card-vertical__datetime">
-								@if (Model.NewPosts[0].CommentCount > 0)
-								{
-								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>
-								}
-							</p>*@
 					</div>
 					<div class="card-horizontal-section">
 						@for (int i = 1; i < Model.NewPosts.Length; i++)
@@ -83,17 +77,11 @@
 								</a>
 								<div class="sub-content">
 									<p class="description">
-										@Model.NewPosts[i].PostExcerpt
+										@Html.Raw(Model.NewPosts[i].PostExcerpt)
 										@if (Model.NewPosts[i].CommentCount > 0)
 										{
 											<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>}
 									</p>
-									@*<p class="datetime">
-											@if (Model.NewPosts[i].CommentCount > 0)
-												{
-											<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>
-												}
-										</p>*@
 								</div>
 							</div>}
 					</div>
@@ -239,17 +227,11 @@
 							<div class="card-horizontal__content">
 								<a class="title" href="@Url.Action("Single", "Post", new { slug = Model.BackstagePosts[0].Slug  })">@Model.BackstagePosts[0].PostTitle</a>
 								<p class="description">
-									@Model.BackstagePosts[0].PostExcerpt
+									@Html.Raw(Model.BackstagePosts[0].PostExcerpt)
 									@if (Model.BackstagePosts[0].CommentCount > 0)
 									{
 										<a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.BackstagePosts[0].CommentCount</i></a>}
 								</p>
-								@*<p class="datetime">
-										@if (Model.BackstagePosts[0].CommentCount > 0)
-										{
-										<a href="@Url.Action("Single", "Post", new { slug =  Model.BackstagePosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.BackstagePosts[0].CommentCount</i></a>
-										}
-									</p>*@
 							</div>
 						</div>
 						@for (int i = 1; i < Model.BackstagePosts.Length; i++)
