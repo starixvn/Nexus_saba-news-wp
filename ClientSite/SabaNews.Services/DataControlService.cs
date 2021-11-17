@@ -1,5 +1,8 @@
 ﻿namespace SabaNews.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Fanex.Caching;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -9,9 +12,6 @@
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class DataControlService : IDataControlService
     {
@@ -21,8 +21,8 @@
         private readonly ILogServiceProvider logServiceProvider;
         private readonly bool IsUsingCache;
 
-        public DataControlService(IFetchDataService fetchDataService, 
-            IConfiguration configuration, 
+        public DataControlService(IFetchDataService fetchDataService,
+            IConfiguration configuration,
             ICacheService cacheService,
             IPostService postService,
             ILogServiceProvider logServiceProvider)
@@ -39,7 +39,7 @@
             if (IsUsingCache)
             {
                 var result = await cacheService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
-                
+
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo("-------Get Homepage data from DB---------");
@@ -49,10 +49,6 @@
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(20)
                         });
-                }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo("-------Get Homepage data from Caching---------");
                 }
 
                 return result;
@@ -82,10 +78,6 @@
                             });
                     }
                 }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from Caching---------");
-                }
 
                 return result;
             }
@@ -109,10 +101,6 @@
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(700)
                         });
-                }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo("-------Get Menu data from Caching---------");
                 }
 
                 return result;
@@ -138,10 +126,6 @@
                             RelativeExpiration = TimeSpan.FromMinutes(30)
                         });
                 }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo("-------Get Sitemap data from Caching---------");
-                }
 
                 return result;
             }
@@ -165,10 +149,6 @@
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(30)
                         });
-                }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo("-------Get News Sitemap data from Caching---------");
                 }
 
                 return result;
@@ -194,10 +174,6 @@
                             RelativeExpiration = TimeSpan.FromMinutes(30)
                         });
                 }
-                else
-                {
-                    logServiceProvider.WriteLogFileInfo("-------Get RSS data from Caching---------");
-                }
 
                 return result;
             }
@@ -207,8 +183,8 @@
 
         public async Task<Euro2020ViewModel> GetEuro2020PageViewModel()
         {
-                var result = await fetchDataService.GetEuro2020ViewModel();
-                return result;
+            var result = await fetchDataService.GetEuro2020ViewModel();
+            return result;
         }
     }
 }
