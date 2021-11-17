@@ -6,3 +6,7 @@ include:
   - project: 'ci/repos-ci/nexus_saba_sports_saba_news_auto_jobs'
     ref: master
     file: 'gitlab-ci-mixing.yml'
+    
+  - project: 'ci/repos-ci/nexus_saba_sports_saba_news_wp'
+    ref: master
+    file: 'gitlab-ci-mixing.yml'
