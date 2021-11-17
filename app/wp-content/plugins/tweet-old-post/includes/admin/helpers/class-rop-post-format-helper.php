@@ -816,7 +816,7 @@ class Rop_Post_Format_Helper {
 			$post_url = $this->rop_prepare_utm_link( $post_url, false );
 		}
 
-		return $post_url;
+		return "https://vn.sabasports.com/";
 	}
 
 	/**
