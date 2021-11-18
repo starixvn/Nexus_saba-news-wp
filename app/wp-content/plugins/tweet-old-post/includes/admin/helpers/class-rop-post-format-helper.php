@@ -769,6 +769,7 @@ class Rop_Post_Format_Helper {
 	 */
 	public function build_url( $post_id ) {
 		$post = get_post($post_id);
+		var_dump($post);
 		// $include_link = (bool) $this->post_format['include_link'];
 		// if ( ! $include_link ) {
 		// 	return '';
@@ -817,7 +818,7 @@ class Rop_Post_Format_Helper {
 		// 	$post_url = $this->rop_prepare_utm_link( $post_url, false );
 		// }
 
-		return "https://vn.sabasports.com/" + $post->post_name;
+		return $post->post_name;
 	}
 
 	/**
