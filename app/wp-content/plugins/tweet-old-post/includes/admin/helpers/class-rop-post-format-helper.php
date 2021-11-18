@@ -817,7 +817,7 @@ class Rop_Post_Format_Helper {
 		// 	$post_url = $this->rop_prepare_utm_link( $post_url, false );
 		// }
 
-		return BASE_URL . $post->post_name;
+		return WEB_BASEURL . $post->post_name;
 	}
 
 	/**
