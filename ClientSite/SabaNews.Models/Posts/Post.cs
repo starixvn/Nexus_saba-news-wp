@@ -60,7 +60,7 @@
 
         public string GetImageBySize(int width)
         {
-            if (width > 0)
+            if (Images != null && width > 0)
             {
                 return Images.FirstOrDefault(i => i.Width == width)?.ImageUrl ?? FeatureImage;
             }
