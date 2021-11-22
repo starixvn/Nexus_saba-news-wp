@@ -40,7 +40,7 @@
                         data,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(20)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHomePageTimeoutMinutes)
                         });
             }
             catch(Exception ex)
@@ -65,7 +65,7 @@
                         data, 
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(700)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
                         });
             }
             catch(Exception ex)
@@ -103,7 +103,7 @@
                         data,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(10)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryTimeoutMinutes)
                         });
                 }
             }
@@ -131,7 +131,7 @@
                         result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSitemapTimeoutMinutes)
                         });
             }
             catch (Exception ex)
@@ -157,7 +157,7 @@
                         result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheNewSitemapTimeoutMinutes)
                         });
             }
             catch (Exception ex)
@@ -182,7 +182,7 @@
                         result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
                         });
             }
             catch (Exception ex)

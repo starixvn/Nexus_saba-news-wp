@@ -20,6 +20,7 @@
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly bool IsUsingCache;
+       
 
         public DataControlService(IFetchDataService fetchDataService,
             IConfiguration configuration,
@@ -47,7 +48,7 @@
                     await cacheService.SetAsync(CacheKey.HomePageViewModel, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(20)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHomePageTimeoutMinutes)
                         });
                 }
 
@@ -74,7 +75,7 @@
                         await cacheService.SetAsync(cacheKey, result,
                             new CacheItemOptions
                             {
-                                RelativeExpiration = TimeSpan.FromMinutes(10)
+                                RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryTimeoutMinutes)
                             });
                     }
                 }
@@ -99,7 +100,7 @@
                     await cacheService.SetAsync(CacheKey.Menu, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(700)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
                         });
                 }
 
@@ -123,7 +124,7 @@
                     await cacheService.SetAsync(CacheKey.SitemapXml, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSitemapTimeoutMinutes)
                         });
                 }
 
@@ -147,7 +148,7 @@
                     await cacheService.SetAsync(CacheKey.NewsSitemapXml, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheNewSitemapTimeoutMinutes)
                         });
                 }
 
@@ -171,7 +172,7 @@
                     await cacheService.SetAsync(CacheKey.RSS, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(30)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
                         });
                 }
 

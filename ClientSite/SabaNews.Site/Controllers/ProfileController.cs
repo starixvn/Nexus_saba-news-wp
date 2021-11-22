@@ -49,7 +49,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Constants.HomepageUrl);
             }
 
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
@@ -70,7 +70,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Constants.HomepageUrl);
             }
 
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
@@ -114,7 +114,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Constants.HomepageUrl);
             }
 
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
@@ -138,7 +138,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Constants.HomepageUrl);
             }
 
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
@@ -192,7 +192,7 @@
             var isAuthenticated = sessionService.User != null;
             if (!isAuthenticated)
             {
-                return Redirect(Url.Action("Index", "Home"));
+                return Redirect(Constants.HomepageUrl);
             }
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');

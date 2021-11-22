@@ -156,6 +156,14 @@
         public const int StringLimitLength = 200;
         public const string UploadFolder = "/uploads/";
         public const string BannerUploadFolder = "/uploads/banner/";
+        public const string HomepageUrl = "/";
+
+        public const int CacheHomePageTimeoutMinutes = 20;
+        public const int CacheCategoryTimeoutMinutes = 10;
+        public const int CacheMenuTimeoutMinutes = 700;
+        public const int CacheSitemapTimeoutMinutes = 30;
+        public const int CacheNewSitemapTimeoutMinutes = 30;
+        public const int CacheRSSTimeoutMinutes = 30;
 
     }
 }
