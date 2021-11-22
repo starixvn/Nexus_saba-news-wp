@@ -60,7 +60,7 @@
         [HttpPost]
         public async Task<IActionResult> UploadBanner(IFormFile file, string type)
         {
-            CommandResult result = new CommandResult();
+            CommandResult result;
             try
             {
                 var bannerDir = pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder);
@@ -94,7 +94,7 @@
             }
             catch (Exception e)
             {
-                result.Message = e.Message;
+                result = new CommandResult { Message = e.Message }; 
             }
             return Json(result);
         }
