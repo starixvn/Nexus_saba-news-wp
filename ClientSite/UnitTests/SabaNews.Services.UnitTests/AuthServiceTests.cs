@@ -232,6 +232,46 @@
         }
 
         [Fact]
+        public async Task SendMailResetPasswordAsync_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetAuthService();
+            var fixture = new Fixture();
+            var email = fixture.Create<string>();
+            var url = fixture.Create<string>();
+            var expected = fixture.Create<CommandResult>();
+            var model = new MailModel();
+            mailService.SendMailAsync(Arg.Do<MailModel>(x => model = x)).Returns(expected);
+            
+            //Act
+            await service.SendMailResetPasswordAsync(email, url);
+
+            //Assert
+            Assert.Equal(email, model.ReceiverEmail);
+            mailService.Received().ReadTextFile(Arg.Any<string>());
+        }
+
+        [Fact]
+        public async Task SendMailConfirmationAsync_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetAuthService();
+            var fixture = new Fixture();
+            var email = fixture.Create<string>();
+            var url = fixture.Create<string>();
+            var expected = fixture.Create<CommandResult>();
+            var model = new MailModel();
+            mailService.SendMailAsync(Arg.Do<MailModel>(x => model = x)).Returns(expected);
+
+            //Act
+            await service.SendMailResetPasswordAsync(email, url);
+
+            //Assert
+            Assert.Equal(email, model.ReceiverEmail);
+            mailService.Received().ReadTextFile(Arg.Any<string>());
+        }
+
+        [Fact]
         public async Task SendMailEventAsync_WhenCalled_ReturnExpectedCommandResult()
         {
             //Arrange

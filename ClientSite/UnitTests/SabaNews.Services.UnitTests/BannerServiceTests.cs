@@ -15,6 +15,8 @@
         private  IBaseService baseService;
         private  IConfiguration configuration;
         private  ISessionService sessionService;
+        private const string DefaultDestopUrl = "images/Desktop_320x70.png";
+        private const string DefaultMobileUrl = "images/Mobile_375x200.png";
 
         [Fact]
         public async Task GetBannerInfoAsync_WhenCalled_ReturnExpectedBannerModel()
@@ -31,6 +33,26 @@
 
             //Assert
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetBannerInfoAsync_WhenCalled_ReturnInitBannerInfo()
+        {
+            //Arrange
+            var service = GetBannerService();
+            var fixture = new Fixture();
+            var baseUrl = fixture.Create<string>();
+            var expected = new BannerModel { NavigationUrl = "NavigationUrl", MobileUrl = "", DesktopUrl = "" };
+            var criteria = new GetBannerInfoCriteria();
+            baseService.GetDataEntityAsync<BannerModel>(Arg.Do<GetBannerInfoCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetBannerInfoAsync();
+
+            //Assert
+            Assert.Equal(expected.NavigationUrl, actual.NavigationUrl);
+            Assert.Equal(DefaultMobileUrl, actual.MobileUrl);
+            Assert.Equal(DefaultDestopUrl, actual.DesktopUrl);
         }
 
         [Fact]

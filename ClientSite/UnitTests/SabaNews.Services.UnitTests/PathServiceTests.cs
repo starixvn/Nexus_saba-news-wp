@@ -80,7 +80,7 @@
         {
             //Arrange
             var service = GetPathService();
-            var filePath = "\\test_1.png";
+            var filePath = "\\ test_1.png";
 
             //Act
             var actual = service.EnsureCorrectFilename(filePath);
