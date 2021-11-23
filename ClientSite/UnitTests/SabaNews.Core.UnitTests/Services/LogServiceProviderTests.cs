@@ -21,24 +21,24 @@ namespace SabaNews.Core.UnitTests.Services
         private IConfiguration configuration;
         private const int LowPerformanceRuntime = 2000;
 
-        [Fact]
-        public async Task WriteExceptionSentryErrorAsync_CallExpectedData()
-        {
-            //Arrange
-            var logService = GetLogServiceProvider();
-            var exception = Substitute.For<Exception>();
-            var logMessage = new LogMessage(exception.Message)
-                      .AddSection("Database Info", DatabaseInfoGetters.GetDbExceptionInfo(exception))
-                      .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
-                      .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
-                      .ToString();
-            //Act
-            //await logService.WriteExceptionSentryErrorAsync(exception);
+        //[Fact]
+        //public async Task WriteExceptionSentryErrorAsync_CallExpectedData()
+        //{
+        //    //Arrange
+        //    var logService = GetLogServiceProvider();
+        //    var exception = Substitute.For<Exception>();
+        //    var logMessage = new LogMessage(exception.Message)
+        //              .AddSection("Database Info", DatabaseInfoGetters.GetDbExceptionInfo(exception))
+        //              .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
+        //              .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
+        //              .ToString();
+        //    //Act
+        //    //await logService.WriteExceptionSentryErrorAsync(exception);
 
-            //Assert
-            //await logger.Received().ErrorAsync(logMessage);
-            //infoLogger.Received().Error(logMessage);
-        }
+        //    //Assert
+        //    //await logger.Received().ErrorAsync(logMessage);
+        //    //infoLogger.Received().Error(logMessage);
+        //}
 
 
         #region Helpers
