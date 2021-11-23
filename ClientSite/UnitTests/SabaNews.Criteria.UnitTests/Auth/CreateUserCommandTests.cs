@@ -29,7 +29,8 @@
             {
                 _Email = email,
                 _Name = name,
-                _Password = password
+                _Password = password,
+                UserId = 1
             };
 
             // Act
@@ -48,7 +49,8 @@
             {
                 _Name = "Name",
                 _Email = "Email",
-                _Password = "password"
+                _Password = "password",
+                UserId = 1,
             };
 
             // Act

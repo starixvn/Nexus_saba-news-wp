@@ -30,7 +30,10 @@
                 PageIndex = 1,
                 PageSize = 10,
                 AuthorSortType = "desc",
-                ViewSortType = "asc"
+                ViewSortType = "asc",
+                IsVideo = false,
+                TotalItems = 10,
+                TotalViews = 100
             };
 
             // Act
@@ -51,7 +54,10 @@
                 PageIndex = 1,
                 PageSize = 10,
                 AuthorSortType = "desc",
-                ViewSortType = "asc"
+                ViewSortType = "asc",
+                IsVideo = false,
+                TotalItems = 10,
+                TotalViews = 100
             };
 
             // Act

@@ -34,7 +34,8 @@
                 CreatedDate = DateTime.Now,
                 SendDate = DateTime.Now,
                 Status = 0,
-                CreatedBy = 1
+                CreatedBy = 1,
+                EmbeddedLink = "embeddedLink"
             };
 
             // Act
@@ -57,7 +58,8 @@
                 CreatedDate = DateTime.Now,
                 SendDate = DateTime.Now,
                 Status = 0,
-                CreatedBy = 1
+                CreatedBy = 1,
+                EmbeddedLink = "embeddedLink"
             };
 
             // Act

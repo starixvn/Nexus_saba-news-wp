@@ -26,7 +26,10 @@
             // Arrange
             var criteria = new FilterEmailDetailCriteria()
             {
-                EmailID = 1
+                EmailID = 1,
+                Start = 0, 
+                End = 10,
+                TotalItems = 10
             };
 
             // Act

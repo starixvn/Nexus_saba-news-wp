@@ -33,7 +33,8 @@
                FromDate = DateTime.Now,
                ToDate = DateTime.Now,
                CreatedBy = 1,
-               Status = 0
+               Status = 0,
+               TotalItems = 10
             };
 
             // Act

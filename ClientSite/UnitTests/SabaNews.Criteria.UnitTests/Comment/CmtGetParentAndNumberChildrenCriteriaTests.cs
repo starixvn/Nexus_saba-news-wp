@@ -46,7 +46,9 @@
                 PostID = 1,
                 FilterType = "time",
                 Start = 0,
-                End = 10
+                End = 10,
+                TotalItems = 10,
+                TotalParentCmt = 10
             };
 
             // Act

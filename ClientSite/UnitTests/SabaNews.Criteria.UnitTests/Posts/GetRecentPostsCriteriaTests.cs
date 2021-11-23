@@ -28,6 +28,7 @@
             {
                 Start = 0,
                 End = 10,
+                TotalItems = 10
             };
 
             // Act

@@ -28,7 +28,8 @@
             {
                 _Tag = tag,
                 _Start = 0,
-                _End = 10
+                _End = 10,
+                TotalItems = 10
             };
 
             // Act
@@ -46,7 +47,8 @@
             {
                 _Tag = "tag",
                 _Start = 0,
-                _End = 10
+                _End = 10,
+                TotalItems = 10
             };
 
             // Act

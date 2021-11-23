@@ -31,7 +31,8 @@
                 DateSort = "asc",
                 Search = "search",
                 Start = 0,
-                End = 10
+                End = 10,
+                TotalItems = 10
             };
 
             // Act
@@ -52,7 +53,8 @@
                 DateSort = "asc",
                 Search = "search",
                 Start = 0,
-                End = 10
+                End = 10,
+                TotalItems = 10
             };
 
             // Act

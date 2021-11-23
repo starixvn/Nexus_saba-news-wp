@@ -25,7 +25,9 @@
             // Arrange
             var criteria = new CreateUserSubscribeTokenCommand()
             {
-                UserId = 0
+                UserId = 0,
+                Token = "token",
+                CurrentToken = "currentToken"
             };
 
             // Act
@@ -42,7 +44,9 @@
             // Arrange
             var criteria = new CreateUserSubscribeTokenCommand()
             {
-                UserId = 1
+                UserId = 1,
+                Token = "token",
+                CurrentToken = "currentToken"
             };
 
             // Act

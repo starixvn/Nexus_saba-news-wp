@@ -29,7 +29,8 @@
                 UserId = 1,
                 Search = "",
                 Start = 0,
-                End = 10
+                End = 10,
+                TotalItems = 10,
             };
 
             // Act

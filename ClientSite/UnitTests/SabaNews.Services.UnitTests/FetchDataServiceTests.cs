@@ -55,7 +55,7 @@
         {
             //Arrange
             var service = GetFetchDataService();
-            var slug = Constants.Video;
+            var slug = Constants.VideoSlug;
             var page = fixture.Create<int>();
 
             var param = fixture.Create<GetPostsByCateSlugCriteria>();
@@ -94,6 +94,9 @@
             //Assert
             Assert.Equal(posts.ToArray(), actual.Posts);
             Assert.Equal(category, actual.Category);
+            Assert.Equal(category.Title, actual.Header.HeadTitle);
+            Assert.Equal(category.Description, actual.Header.Description);
+            Assert.Equal(category.CatId, actual.Header.CategoryId);
         }
 
         [Fact]
@@ -161,6 +164,9 @@
             Assert.Equal(posts.ToArray(), actual.Videos);
             Assert.Equal(posts.ToArray(), actual.Identify);
             Assert.Equal(category, actual.Category);
+            Assert.Equal(category.Title, actual.ViewData.HeadTitle);
+            Assert.Equal(category.SEOTitle, actual.ViewData.Title);
+            Assert.Equal(category.Description, actual.ViewData.Description);
         }
 
         #region Helpers
