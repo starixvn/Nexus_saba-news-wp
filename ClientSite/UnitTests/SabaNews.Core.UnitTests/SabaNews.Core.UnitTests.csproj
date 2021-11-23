@@ -1,14 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <CodeAnalysisRuleSet>..\.sonarlint\sabanewscsharp.ruleset</CodeAnalysisRuleSet>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
-
     <ItemGroup>
-        <Content Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml">
-            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        </Content>
+        <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
     </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientSite\SabaNews.Core\SabaNews.Core.csproj" />
+    <ProjectReference Include="..\..\SabaNews.Core\SabaNews.Core.csproj" />
   </ItemGroup>
 
 </Project>

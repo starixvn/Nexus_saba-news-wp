@@ -1,0 +1,61 @@
+﻿namespace SabaNews.Criteria.UnitTests.Auth
+{
+    using Xunit;
+
+    public class CreateUserCommandTests
+    {
+        [Fact]
+        public void GetSettingKey_WhenCalled_ReturnExpectedSettingKey()
+        {
+            // Arrange
+            var criteria = new CreateUserCommand();
+            var expected = "user_create";
+
+            // Act
+            var actual = criteria.GetSettingKey();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("", "email", "password")]
+        [InlineData("name", "", "password")]
+        [InlineData("name", "email", "")]
+        public void IsValid_WhenCalled_ReturnFalse(string name, string email, string password)
+        {
+            // Arrange
+            var criteria = new CreateUserCommand()
+            {
+                _Email = email,
+                _Name = name,
+                _Password = password
+            };
+
+            // Act
+            var actual = criteria.IsValid();
+
+            // Assert
+            Assert.False(actual);
+        }
+
+
+        [Fact]
+        public void IsValid_WhenCalled_ReturnTrue()
+        {
+            // Arrange
+            var criteria = new CreateUserCommand()
+            {
+                _Name = "Name",
+                _Email = "Email",
+                _Password = "password"
+            };
+
+            // Act
+            var actual = criteria.IsValid();
+
+            // Assert
+            Assert.True(actual);
+        }
+    }
+}

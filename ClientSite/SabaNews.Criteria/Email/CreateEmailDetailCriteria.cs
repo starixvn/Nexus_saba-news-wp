@@ -22,6 +22,6 @@ namespace SabaNews.Criteria.Email
 
         public override string GetSettingKey() => "email_detail_create";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => EmailId > 0 && UserId > 0;
     }
 }

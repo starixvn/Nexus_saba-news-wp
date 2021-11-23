@@ -19,12 +19,6 @@
             return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss");
         }
 
-        public static string FormatDateTimeByVNLanguage(DateTime time)
-        {
-            var timeSpan = new DateTimeUtilize();
-            return time.Add(timeSpan._timeSpan).ToString("dd MMM yyyy HH:mm:ssss", new CultureInfo("vi"));
-        }
-
         public static string FormatDateTime(DateTime time, string Format)
         {
             var timeSpan = new DateTimeUtilize();

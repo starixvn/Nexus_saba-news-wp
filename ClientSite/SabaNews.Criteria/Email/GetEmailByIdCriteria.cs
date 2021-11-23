@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "email_get_by_id";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => Id > 0;
     }
 }

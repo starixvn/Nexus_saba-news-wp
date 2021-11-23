@@ -1,15 +1,15 @@
-﻿using AutoFixture;
-using Microsoft.AspNetCore.Http;
-using NSubstitute;
-using SabaNews.Core.Middlewares;
-using SabaNews.Core.Services;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace SabaNews.Core.UnitTests.Middlewares
+﻿namespace SabaNews.Core.UnitTests.Middlewares
 {
+    using AutoFixture;
+    using Microsoft.AspNetCore.Http;
+    using NSubstitute;
+    using SabaNews.Core.Middlewares;
+    using SabaNews.Core.Services;
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Xunit;
+
     public class ErrorHandlerTests
     {
         [Fact]

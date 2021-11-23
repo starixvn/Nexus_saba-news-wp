@@ -14,6 +14,6 @@ namespace SabaNews.Criteria.Email
 
         public override string GetSettingKey() => "email_update_status";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => EmailId > 0;
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Fanex.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SabaNews.Criteria.Email
 {
@@ -16,6 +11,6 @@ namespace SabaNews.Criteria.Email
 
         public override string GetSettingKey() => "email_detail_get";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => EmailId > 0;
     }
 }
