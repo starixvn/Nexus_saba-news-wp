@@ -8,7 +8,6 @@
     using Fanex.Caching;
     using Fanex.Data.Repository;
     using Fanex.Logging;
-    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Authentication.Google;
@@ -17,7 +16,6 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Newtonsoft.Json;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
     using SabaNews.Services;
@@ -55,7 +53,6 @@
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<ILogService, Services.LogService>();
-
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
@@ -71,10 +68,10 @@
                 options.Cookie.Name = ".Sabasports.Auth.SharedCookie";
             }).AddGoogle(options =>
             {
-                AddGoogleAuthenticateOptions(services, options, configuration);
+                AddGoogleAuthenticateOptions(options, configuration);
             }).AddFacebook(options =>
             {
-                AddFacebookAuthenticateOptions(services, options, configuration);
+                AddFacebookAuthenticateOptions(options, configuration);
             });
         }
 
@@ -156,22 +153,7 @@
             return httpClient;
         }
 
-        private static void RemoteFailureWriteLogAsync(RemoteFailureContext context, IServiceCollection services, string provider)
-        {
-            context.HandleResponse();
-            var logger = services.BuildServiceProvider().GetRequiredService<ILogger>();
-            var httpContext = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
-            var userAgent = httpContext.HttpContext.Request.Headers["User-Agent"].ToString();
-            var errorObject = new
-            {
-                Provider = provider,
-                UserAgent = userAgent,
-                ErrorMessage = context.Failure.Message,
-            };
-            logger.ErrorAsync(JsonConvert.SerializeObject(errorObject));
-        }
-
-        private static void AddGoogleAuthenticateOptions(IServiceCollection services, GoogleOptions options, IConfiguration configuration)
+        private static void AddGoogleAuthenticateOptions(GoogleOptions options, IConfiguration configuration)
         {
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.ClientId = configuration.GetValue<string>("Authentication:Google:ClientId");
@@ -194,13 +176,12 @@
                 },
                 OnRemoteFailure = context =>
                 {
-                    RemoteFailureWriteLogAsync(context, services, "Google");
                     return Task.CompletedTask;
                 }
             };
         }
 
-        private static void AddFacebookAuthenticateOptions(IServiceCollection services, FacebookOptions options, IConfiguration configuration)
+        private static void AddFacebookAuthenticateOptions(FacebookOptions options, IConfiguration configuration)
         {
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.ClientId = configuration.GetValue<string>("Authentication:Facebook:ClientId");
@@ -224,7 +205,6 @@
                 },
                 OnRemoteFailure = context =>
                 {
-                    RemoteFailureWriteLogAsync(context, services, "Facebook");
                     return Task.CompletedTask;
                 }
             };
