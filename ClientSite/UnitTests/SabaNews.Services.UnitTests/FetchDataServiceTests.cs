@@ -84,7 +84,7 @@
             var param = fixture.Create<GetRecentPostsParam>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
-            var category = fixture.Create<Category>();
+            var category = new Category { CatId = 1, Description = "description", Title = "title" };
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
 
@@ -96,6 +96,7 @@
             Assert.Equal(category, actual.Category);
             Assert.Equal(category.Title, actual.Header.HeadTitle);
             Assert.Equal(category.Description, actual.Header.Description);
+            Assert.Equal(category.Title, actual.Header.Title);
             Assert.Equal(category.CatId, actual.Header.CategoryId);
         }
 
@@ -139,7 +140,7 @@
         }
 
         [Fact]
-        public async Task GetEuro2020ViewModel_WhenCalled_Euro2020ViewModel()
+        public async Task GetEuro2020ViewModel_WhenCalled_ReturnExpectedEuro2020ViewModel()
         {
             //Arrange
             var service = GetFetchDataService();
@@ -166,6 +167,37 @@
             Assert.Equal(category, actual.Category);
             Assert.Equal(category.Title, actual.ViewData.HeadTitle);
             Assert.Equal(category.SEOTitle, actual.ViewData.Title);
+            Assert.Equal(category.Description, actual.ViewData.Description);
+        }
+
+        [Fact]
+        public async Task GetEuro2020ViewModel_WhenCategoryNotHaveSeoTitle_ReturnExpectedEuro2020ViewModel()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var slug = fixture.Create<string>();
+            var first = fixture.Create<int>();
+            var end = fixture.Create<int>();
+            var type = fixture.Create<string>();
+            var posts = fixture.Create<IEnumerable<Post>>();
+            var detail = fixture.Create<Post>();
+            var category = new Category { CatId = 1, Description = "description", Title = "title" };
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => first = x), Arg.Do<int>(x => end = x)).Returns(posts);
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<string>(x => type = x)).Returns(detail);
+            postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
+            var ranking = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
+            //Act
+            var actual = await service.GetEuro2020ViewModel();
+
+            //Assert
+            Assert.Equal(detail, actual.TotalRanking);
+            Assert.Equal(ranking.ToArray(), actual.Ranking);
+            Assert.Equal(posts.ToArray(), actual.HotNews);
+            Assert.Equal(posts.ToArray(), actual.Videos);
+            Assert.Equal(posts.ToArray(), actual.Identify);
+            Assert.Equal(category, actual.Category);
+            Assert.Equal(category.Title, actual.ViewData.HeadTitle);
+            Assert.Equal(category.Title, actual.ViewData.Title);
             Assert.Equal(category.Description, actual.ViewData.Description);
         }
 

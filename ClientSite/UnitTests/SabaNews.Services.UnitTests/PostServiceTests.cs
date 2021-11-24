@@ -96,6 +96,24 @@
         }
 
         [Fact]
+        public async Task GetRecentPostsAsync_WhenCallInSinglePage_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var param = new GetRecentPostsParam { PostID = 4, Start = 0, End = 3 };
+            var criteria = fixture.Create<GetRecentPostsCriteria>();
+            var expected = GetTestPost();
+            baseService.GetDataAsync<Post>(Arg.Do<GetRecentPostsCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetRecentPostsAsync(param);
+
+            //Assert
+            Assert.Equal(expected.First(), actual.First());
+        }
+        
+
+        [Fact]
         public async Task GetRecentPostsAsync_WhenDontHavePostID_ReturnExpectedPosts()
         {
             //Arrange
@@ -253,6 +271,40 @@
         }
 
         [Fact]
+        public async Task GetPageDetailBySlugAsync_WhenCalled_ReturnExpectedCategory()
+        {
+            //Arrange
+            var service = GetPostService();
+            var slug = fixture.Create<string>();
+            var criteria = fixture.Create<GetPageDetailBySlugCriteria>();
+            var expected = fixture.Create<Category>();
+            baseService.GetDataEntityAsync<Category>(Arg.Do<GetPageDetailBySlugCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPageDetailBySlugAsync(slug);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetPageDetailBySlugAsync_WhenCalled_ReturnNull()
+        {
+            //Arrange
+            var service = GetPostService();
+            var slug = fixture.Create<string>();
+            var criteria = fixture.Create<GetPageDetailBySlugCriteria>();
+            Category expected = null;
+            baseService.GetDataEntityAsync<Category>(Arg.Do<GetPageDetailBySlugCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPageDetailBySlugAsync(slug);
+
+            //Assert
+            Assert.Null(actual);
+        }
+
+        [Fact]
         public async Task CheckTypeCategoryAsync_WhenCalled_ReturnExpectedBoolean()
         {
             //Arrange
@@ -393,6 +445,23 @@
             Assert.Equal(expected, actual);
             Assert.Equal(postId, criteria.PostId);
             Assert.Equal(isVideo, criteria.IsVideoPost);
+        }
+
+        private static IEnumerable<Post> GetTestPost()
+        {
+            List<Post> expected = new List<Post>();
+            expected.Add(new Post { ID = 1, PostExcerpt = "", PostContent = "content", FeatureImage = "", Metadata = "" });
+            expected.Add(new Post { ID = 2, PostExcerpt = "", PostContent = "content \n content", FeatureImage = "", Metadata = "" });
+            expected.Add(new Post { ID = 3, PostExcerpt = "", PostContent = "content \n content", FeatureImage = "", Metadata = "" });
+            return (IEnumerable<Post>)expected;
+        }
+
+        private static IEnumerable<Post> GetExpectedPost()
+        {
+            List<Post> expected = new List<Post>();
+            expected.Add(new Post { ID = 1, PostExcerpt = "", PostContent = "content", FeatureImage = "", Metadata = "" });
+            expected.Add(new Post { ID = 2, PostExcerpt = "", PostContent = "content \n content", FeatureImage = "", Metadata = "" });
+            return (IEnumerable<Post>)expected;
         }
 
         #region Helpers

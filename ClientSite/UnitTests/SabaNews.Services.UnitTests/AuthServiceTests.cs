@@ -264,7 +264,7 @@
             mailService.SendMailAsync(Arg.Do<MailModel>(x => model = x)).Returns(expected);
 
             //Act
-            await service.SendMailResetPasswordAsync(email, url);
+            await service.SendMailConfirmationAsync(email, url);
 
             //Assert
             Assert.Equal(email, model.ReceiverEmail);
