@@ -1,0 +1,91 @@
+﻿namespace SabaNews.Site.UnitTests.Areas.Admin.Controller
+{
+    using AutoFixture;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using NSubstitute;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Banner;
+    using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Areas.Admin.Controllers;
+    using System;
+    using System.Threading.Tasks;
+    using Xunit;
+
+    public class BannerManagementControllerTests : AdminController
+    {
+        private IBannerService bannerService;
+        private IPathService pathService;
+        private IConfiguration configuration;
+        private string baseUrl;
+        private readonly IFixture fixture = new Fixture();
+
+        [Theory]
+        [InlineData(BannerType.Navigation)]
+        [InlineData(BannerType.Desktop)]
+        [InlineData(BannerType.Mobile)]
+        public async Task UpdateInfo_WhenCalled_ReturnExpectedData(string type)
+        {
+            // Arrange
+            var controller = GetController();
+            var value = fixture.Create<string>();
+            var expectedBanner = fixture.Create<BannerModel>();
+            var expectedCommand = fixture.Create<CommandResult>();
+            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
+            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner)).Returns(expectedCommand);
+
+            //Act
+            var actual = await controller.UpdateInfo(value, type);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var result = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(expectedCommand, result);
+        }
+
+        [Fact]
+        public void UpdateInfo_WhenCalled_ThrowException()
+        {
+            // Arrange
+            var controller = GetController();
+            var value = fixture.Create<string>();
+            var type = fixture.Create<string>();
+            var expectedBanner = fixture.Create<BannerModel>();
+            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
+
+            // Act&Assert
+            Assert.ThrowsAsync<InvalidOperationException>(() => controller.UpdateInfo(type, value));
+
+        }
+
+        [Fact]
+        public async Task Index_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<BannerModel>();
+            bannerService.GetBannerInfoAsync().Returns(expected);
+            //Act
+            var actual = await controller.Index();
+
+            //Assert
+            var viewResult = Assert.IsType<ViewResult>(actual);
+            var viewModel = Assert.IsType<BannerModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
+        #region Helpers
+        private BannerManagementController GetController()
+        {
+            bannerService = Substitute.For<IBannerService>();
+            pathService = Substitute.For<IPathService>();
+            configuration = Substitute.For<IConfiguration>();
+            var controller = new BannerManagementController(bannerService, pathService, configuration);
+
+            return controller;
+        }
+
+        #endregion Helpers
+    }
+}
