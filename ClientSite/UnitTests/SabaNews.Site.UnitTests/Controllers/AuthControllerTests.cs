@@ -14,7 +14,6 @@
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers;
     using System;
-    using System.Security.Claims;
     using System.Threading.Tasks;
     using Xunit;
 
