@@ -104,20 +104,6 @@
             return Json(result);
         }
 
-        public ActionResult CheckClentIP()
-        {
-            var remoteIP = HttpContext.Connection.RemoteIpAddress?.ToString();
-            var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
-            var localIP = feature?.LocalIpAddress?.ToString();
-            var clientIP = HttpContext.Request.Headers["x-forwarded-for"].ToString();
-            var remoteAddress = HttpContext.Request.Headers["REMOTE_ADDR"];
-            var addlist = Dns.GetHostEntry(Dns.GetHostName());
-            string GetHostName = addlist.HostName;
-            string GetIPV6 = addlist.AddressList[0].ToString();
-            string GetIPV4 = addlist.AddressList[1].ToString();
-
-            return Json(new { remoteIP, localIP, clientIP, remoteAddress, GetIPV6, GetIPV4, GetHostName });
-        }
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
         {
