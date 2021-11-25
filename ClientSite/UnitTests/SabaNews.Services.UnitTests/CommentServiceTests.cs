@@ -212,7 +212,7 @@
             var clientIp = fixture.Create<string>(); ;
             var type = "like";
             
-            var comment = new Comment { CommentID = 1, CommentLikeCount = 2, CommentLikeIPs = "[1,2]", CommentLikeUsers = "[2]", CommentDateGMT = DateTime.UtcNow.AddHours(-1) };
+            var comment = new Comment { CommentID = 1, CommentLikeCount = 2, CommentLikeIPs = "[1,2]", CommentLikeUsers = "[2]", CommentDateGMT = DateTime.UtcNow.AddHours(-2) };
             List<int> arrUsers = JsonConvert.DeserializeObject<List<int>>(comment.CommentLikeUsers);
             List<string> arrIPs = JsonConvert.DeserializeObject<List<string>>(comment.CommentLikeIPs);
             arrUsers.Add(sessionService.User.Id);
@@ -232,7 +232,7 @@
             Assert.Equal(expected, actual);
             Assert.Equal(commentId, criteria.CommentID);
             Assert.Equal(comment.CommentLikeCount + 1, criteria.CommentLikeCount);
-            Assert.Equal("1 giờ trước", comment.CommentTime);
+            Assert.Equal("2 giờ trước", comment.CommentTime);
         }
 
         [Fact]
