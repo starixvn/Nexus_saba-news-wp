@@ -98,7 +98,7 @@
         }
 
         [Fact]
-        public async Task GetRecentPostsAsync_WhenCallInSinglePage_ReturnExpectedPosts()
+        public async Task GetRecentPostsAsync_WhenCallFromSinglePage_ReturnExpectedPosts()
         {
             //Arrange
             var service = GetPostService();
@@ -111,12 +111,13 @@
             var actual = await service.GetRecentPostsAsync(param);
 
             //Assert
-            Assert.Equal(expected.First(), actual.First());
+            expected = expected.Skip(param.Start).Take(param.End - 1).ToList();
+            Assert.Equal(expected, actual);
         }
         
 
         [Fact]
-        public async Task GetRecentPostsAsync_WhenDontHavePostID_ReturnExpectedPosts()
+        public async Task GetRecentPostsAsync_WhenPostIdIsEmpty_ReturnExpectedPosts()
         {
             //Arrange
             var service = GetPostService();
@@ -151,7 +152,7 @@
         }
 
         [Fact]
-        public async Task GetTopPostsByCateSlugAsync_WhenDontHavePostID_ReturnExpectedPosts()
+        public async Task GetTopPostsByCateSlugAsync_WhenPostIdIsEmpty_ReturnExpectedPosts()
         {
             //Arrange
             var service = GetPostService();
@@ -169,7 +170,25 @@
         }
 
         [Fact]
-        public async Task GetPostDetailBySlugAsync_WhenDontHavePostID_ReturnExpectedPost()
+        public async Task GetTopPostsByCateSlugAsync_WhenCallFromSinglePage_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var param = new PostParam { PostID = 4, Start = 0, End = 3, Slug = "slug" };
+            var criteria = fixture.Create<GetTopPostsByCateSlugCriteria>();
+            var expected = GetTestPost();
+            baseService.GetDataAsync<Post>(Arg.Do<GetTopPostsByCateSlugCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetTopPostsByCateSlugAsync(param);
+
+            //Assert
+            expected = expected.Skip(param.Start).Take(param.End - 1).ToList();
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetPostDetailBySlugAsync_WhenHaveFullData_ReturnExpectedPost()
         {
             //Arrange
             var service = GetPostService();
@@ -184,6 +203,31 @@
 
             //Assert
             Assert.Equal(expected, actual);
+            Assert.Equal("sport-soccer", actual.Type);
+        }
+
+        [Fact]
+        public async Task GetPostDetailBySlugAsync_WhenExcerptIsEmpty_ReturnExpectedPost()
+        {
+            //Arrange
+            var service = GetPostService();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var criteria = fixture.Create<GetPostDetailBySlugCriteria>();
+            var checkIsVideoTypecriteria = fixture.Create<CheckTypeCategoryCriteria>();
+            var expected = fixture.Create<Post>();
+            var expectedCategory = fixture.Create<Category>(); ;
+            expected.PostExcerpt = null;
+            expected.CategoriesSlug = null;
+            expected.CatesName = null;
+            baseService.GetDataEntityAsync<Post>(Arg.Do<GetPostDetailBySlugCriteria>(x => criteria = x)).Returns(expected);
+            baseService.GetDataEntityAsync<Category>(Arg.Do<CheckTypeCategoryCriteria>(x => checkIsVideoTypecriteria = x)).Returns(expectedCategory);
+            //Act
+            var actual = await service.GetPostDetailBySlugAsync(slug, postType);
+
+            //Assert
+            Assert.Equal(expected, actual);
+            Assert.Equal("video", actual.Type);
         }
 
         [Fact]
@@ -347,7 +391,9 @@
             //Arrange
             var service = GetPostService();
             var criteria = fixture.Create<GetSitemapDataCriteria>();
-            var expected = fixture.Create<IEnumerable<SitemapModel>>();
+            var expected = new List<SitemapModel>();
+            expected.Add(new SitemapModel { ID = 1, Slug = "warning", PostType = "video" });
+            expected.Add(new SitemapModel { ID = 1, Slug = "slug", PostType = "category" });
             baseService.GetDataAsync<SitemapModel>(Arg.Do<GetSitemapDataCriteria>(x => criteria = x)).Returns(expected);
 
             //Act
@@ -356,6 +402,7 @@
             //Assert
             Assert.Equal(expected, actual);
         }
+
 
         [Fact]
         public void GetBlackListIPs_WhenCalled_ReturnExpectedData()
@@ -456,6 +503,7 @@
             var expectedInSecondPost = fixture.Create<Post>();
             var expectedInMunitePost = fixture.Create<Post>();
             var expectedInHourPost = fixture.Create<Post>();
+            var expectedNormalPost = fixture.Create<Post>();
             var Images = new List<ImageInfo>();
             Images.Add(new ImageInfo { ImageType = "jpg", Width = 100, Height = 100, ImageUrl = "url" });
             Images.Add(new ImageInfo { ImageType = "jpg", Width = 200, Height = 200, ImageUrl = "url" });
@@ -472,6 +520,8 @@
             Assert.Equal("10 giây trước", expectedInSecondPost.PostTime);
             Assert.Equal("10 phút trước", expectedInMunitePost.PostTime);
             Assert.Equal("1 giờ trước", expectedInHourPost.PostTime);
+            Assert.NotNull(expectedNormalPost.PostTime);
+
             Assert.Equal(expectedInSecondPost.PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi")), postDateFormat);
             Assert.Equal("url", imageSize100);
             Assert.Equal(expectedInSecondPost.FeatureImage, imageSize50);

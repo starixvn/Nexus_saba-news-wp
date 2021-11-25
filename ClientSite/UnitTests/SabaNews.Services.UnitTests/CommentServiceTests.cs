@@ -74,6 +74,7 @@
             //Assert
             Assert.Equal(expected, actual);
             Assert.Equal(commentID, criteria.CommentID);
+            Assert.NotNull(expected.CommentTime);
         }
 
 
