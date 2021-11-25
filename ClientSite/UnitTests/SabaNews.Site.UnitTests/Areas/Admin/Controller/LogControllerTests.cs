@@ -21,7 +21,7 @@
             var enviroment = System.Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
             var UnitTestDirectory = projectDirectory.Replace("\\bin", "");
-            var path = "FilesTest//TrackingSP.log";
+            var path = "FilesTest//TrackingSP.txt";
             var filePath =  Path.Combine(UnitTestDirectory, path);
             
             pathService.MapPathContentRoot(Arg.Do<string>(x => x = path)).Returns(filePath);
@@ -38,9 +38,8 @@
         {
             // Arrange
             var controller = GetController();
-            var filePath = pathService.MapPathContentRoot("LogFiles//TrackingSP.txt");
             var path = "LogFiles//TrackingSP.txt";
-            pathService.MapPathContentRoot(Arg.Do<string>(x => x = path)).Returns(filePath);
+            pathService.MapPathContentRoot(Arg.Do<string>(x => x = path)).Returns(path);
             //Act
             var actual = controller.TrackingSP();
 
