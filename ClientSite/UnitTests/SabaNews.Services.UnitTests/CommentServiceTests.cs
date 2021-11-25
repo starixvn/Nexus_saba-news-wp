@@ -171,7 +171,7 @@
         {
             baseService = Substitute.For<IBaseService>();
             sessionService = Substitute.For<ISessionService>();
-            sessionService.User = new UserSession { Id = 1 };
+            sessionService.User = new UserSession { Id = 1, Metadata = "customer" };
             var service = new CommentService(baseService, sessionService);
 
             return service;

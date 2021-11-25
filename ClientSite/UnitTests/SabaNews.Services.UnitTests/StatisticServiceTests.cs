@@ -20,8 +20,8 @@
         {
             //Arrange
             var service = GetStatisticServic();
-            var fromDate =  new DateTime(2021, 11, 22);
-            var toDate = new DateTime(2021, 11, 23);
+            var fromDate =  new DateTime(2021, 11, 21);
+            var toDate = new DateTime(2021, 11, 22);
             var criteria = fixture.Create<GetPostViewStatiscticCriteria>();
             var expected = GetPostStatisticInfo();
                 
@@ -30,7 +30,7 @@
             var actual = await service.GetPostViewStatistic(fromDate, toDate);
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(fromDate, actual.First().PostDate);
         }
 
         [Fact]
