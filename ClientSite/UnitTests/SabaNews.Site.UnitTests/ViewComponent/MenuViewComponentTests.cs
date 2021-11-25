@@ -1,21 +1,19 @@
-﻿using AutoFixture;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using NSubstitute;
-using SabaNews.Core.Models;
-using SabaNews.Core.Services;
-using SabaNews.Models;
-using SabaNews.Models.Banner;
-using SabaNews.Services.Interfaces;
-using SabaNews.Views.Shared.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace SabaNews.Site.UnitTests.ViewComponent
+﻿namespace SabaNews.Site.UnitTests.ViewComponent
 {
+    using AutoFixture;
+    using Microsoft.AspNetCore.Mvc.ViewComponents;
+    using NSubstitute;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
+    using SabaNews.Models;
+    using SabaNews.Models.Banner;
+    using SabaNews.Services.Interfaces;
+    using SabaNews.Views.Shared.Components;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Xunit;
+    using SabaNews.Core.Constants;
+
     public class MenuViewComponentTests
     {
         private IDataControlService dataControlService;
@@ -69,6 +67,7 @@ namespace SabaNews.Site.UnitTests.ViewComponent
             Assert.Equal(expectedMenu, viewModel.Menus);
             Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.False(viewModel.IsAdmin);
+            Assert.Equal(Constants.CustomerRole, sessionService.User.Role);
         }
 
         [Fact]
@@ -94,6 +93,7 @@ namespace SabaNews.Site.UnitTests.ViewComponent
             Assert.Equal(expectedMenu, viewModel.Menus);
             Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.True(viewModel.IsAdmin);
+            Assert.Equal(Constants.AdministratorRole, sessionService.User.Role);
         }
 
         #region Helpers

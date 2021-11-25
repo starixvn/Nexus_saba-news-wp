@@ -9,6 +9,7 @@
     using SabaNews.Site.Views.Shared.Components.LeftMenuProfile;
     using System.Threading.Tasks;
     using Xunit;
+    using SabaNews.Core.Constants;
 
     public class LeftMenuProfileViewComponentTests
     {
@@ -33,6 +34,7 @@
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<UserSession>(viewResult.ViewData.Model);
             Assert.Equal(expected, viewModel);
+            Assert.Equal(Constants.CustomerRole, sessionService.User.Role);
         }
         #region Helpers
         private LeftMenuProfileViewComponent GetViewComponent()
