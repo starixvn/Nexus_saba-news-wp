@@ -37,7 +37,7 @@
         {
             // Arrange
             var controller = GetController();
-            var param = fixture.Create<StatisticFilterViewModel>();
+            var param = new StatisticFilterViewModel { FromDate = DateTime.Now, ToDate = DateTime.Now };
             var expected = fixture.Create<IEnumerable<PostStatisticInfo>>();
 
             statisticService.GetPostViewStatistic(Arg.Do<DateTime>(x => param.FromDate = x), Arg.Do<DateTime>(x => param.ToDate = x)).Returns(expected);

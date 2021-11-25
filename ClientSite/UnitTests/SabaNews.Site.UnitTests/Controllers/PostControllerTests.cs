@@ -106,6 +106,100 @@
             await postService.Received().UpdateViewAsync(expected.ID, true);
         }
 
+        [Theory]
+        [InlineData(Constants.CollectionSlug)]
+        [InlineData(Constants.BasketballSlug)]
+        [InlineData(Constants.TennisSlug)]
+        public async Task Single_PostInOtherCategory_ReturnExpectedViewResult(string cateSlug)
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expected.Type = Constants.VideoPostType;
+            expected.CategoriesSlug = cateSlug;
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => x = param)).Returns(expectedRecentPosts);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
+            Assert.Equal(Constants.OtherPostSlug, viewModel.CateSlug);
+            await postService.Received().UpdateViewAsync(expected.ID, true);
+        }
+
+        [Fact]
+        public async Task Single_PostInSubCategory_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expected.CatesName = "schedule,transfer";
+            expected.CategoriesSlug = $"{ Constants.MatchScheduleSlug }, { Constants.TransferSlug}";
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => x = param)).Returns(expectedRecentPosts);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
+            Assert.Equal(Constants.MatchScheduleSlug, viewModel.CateSlug);
+        }
+
+        [Fact]
+        public async Task Single_PostInGeneralCategory_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expected.CatesName = $"{ Constants.Football }, { Constants.Video}";
+            expected.CategoriesSlug = $"{ Constants.FootballSlug }, { Constants.VideoSlug}";
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => x = param)).Returns(expectedRecentPosts);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.Single(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
+            Assert.Equal(Constants.FootballSlug, viewModel.CateSlug);
+        }
+
         [Fact]
         public async Task GetPollData_WhenCalled_ReturnExpectedData()
         {

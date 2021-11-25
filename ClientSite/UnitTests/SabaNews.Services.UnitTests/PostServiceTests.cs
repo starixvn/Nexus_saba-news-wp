@@ -8,7 +8,9 @@
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
+    using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
     using Xunit;
@@ -445,6 +447,36 @@
             Assert.Equal(expected, actual);
             Assert.Equal(postId, criteria.PostId);
             Assert.Equal(isVideo, criteria.IsVideoPost);
+        }
+
+        [Fact]
+        public void PostFunction_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var expectedInSecondPost = fixture.Create<Post>();
+            var expectedInMunitePost = fixture.Create<Post>();
+            var expectedInHourPost = fixture.Create<Post>();
+            var Images = new List<ImageInfo>();
+            Images.Add(new ImageInfo { ImageType = "jpg", Width = 100, Height = 100, ImageUrl = "url" });
+            Images.Add(new ImageInfo { ImageType = "jpg", Width = 200, Height = 200, ImageUrl = "url" });
+            expectedInSecondPost.Images = Images;
+            expectedInSecondPost.PostDateGMT = DateTime.UtcNow.AddSeconds(-10);
+            expectedInMunitePost.PostDateGMT = DateTime.UtcNow.AddMinutes(-10);
+            expectedInHourPost.PostDateGMT = DateTime.UtcNow.AddHours(-1);
+            var postDateFormat = expectedInSecondPost.PostTimeFormatSingle;
+            var imageSize100 = expectedInSecondPost.GetImageBySize(100);
+            var imageSize50 = expectedInSecondPost.GetImageBySize(50);
+            var imageSizeInValid = expectedInSecondPost.GetImageBySize(-1);
+            var imageSize = expectedInMunitePost.GetImageBySize(100);
+            //Act & Assert
+            Assert.Equal("10 giây trước", expectedInSecondPost.PostTime);
+            Assert.Equal("10 phút trước", expectedInMunitePost.PostTime);
+            Assert.Equal("1 giờ trước", expectedInHourPost.PostTime);
+            Assert.Equal(expectedInSecondPost.PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi")), postDateFormat);
+            Assert.Equal("url", imageSize100);
+            Assert.Equal(expectedInSecondPost.FeatureImage, imageSize50);
+            Assert.Equal(expectedInSecondPost.FeatureImage, imageSizeInValid);
+            Assert.Equal(expectedInMunitePost.FeatureImage, imageSize);
         }
 
         private static IEnumerable<Post> GetTestPost()
