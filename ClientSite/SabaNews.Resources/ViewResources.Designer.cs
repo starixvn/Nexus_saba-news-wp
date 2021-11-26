@@ -421,7 +421,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy clipboard thành công.
+        ///   Looks up a localized string similar to Copy link thành công.
         /// </summary>
         public static string CopyClipBoardSuccessfully {
             get {

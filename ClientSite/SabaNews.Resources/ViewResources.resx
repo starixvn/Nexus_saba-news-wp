@@ -181,7 +181,7 @@
     <value>Content</value>
   </data>
   <data name="CopyClipBoardSuccessfully" xml:space="preserve">
-    <value>Copy clipboard thành công</value>
+    <value>Copy link thành công</value>
   </data>
   <data name="CopyLink" xml:space="preserve">
     <value>Sao chép đường dẫn </value>

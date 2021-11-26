@@ -71,7 +71,7 @@ img {
 .tip {
     position: absolute;
     z-index: 9999999999;
-    top: -2.5rem;
+    top: -3.5rem;
     left: 1.5rem;
     transform: translateX(-50%);
     height: 2.5rem;
@@ -84,8 +84,10 @@ img {
     padding: 0 1rem;
     border-radius: 3px;
     display: none;
-    @include tableMobile{
-        top : 4rem;
+    font-family: Arial,sans-serif;
+    @include tableMobile {
+        left: -4rem;
+        top: 3.5rem;
     }
 }
 
