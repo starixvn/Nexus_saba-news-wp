@@ -88,7 +88,6 @@
             });
 
             services.RegisterCookiePolicy();
-           
 
             services.RegisterAuthentication(Configuration);
 
@@ -112,7 +111,7 @@
             services.RegisterCoreDI();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-            services.AddSingleton<HtmlEncoder>(
+            services.AddSingleton(
             HtmlEncoder.Create(allowedRanges: new[] {
                 UnicodeRanges.All
            }));

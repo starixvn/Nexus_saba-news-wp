@@ -177,6 +177,11 @@
                 OnRemoteFailure = context =>
                 {
                     return Task.CompletedTask;
+                },
+                OnAccessDenied = context =>
+                {
+                    context.HttpContext.Response.Redirect("~/");
+                    return Task.CompletedTask;
                 }
             };
         }
@@ -205,6 +210,11 @@
                 },
                 OnRemoteFailure = context =>
                 {
+                    return Task.CompletedTask;
+                },
+                OnAccessDenied = context =>
+                {
+                    context.HttpContext.Response.Redirect("~/");
                     return Task.CompletedTask;
                 }
             };
