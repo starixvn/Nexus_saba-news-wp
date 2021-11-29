@@ -74,7 +74,37 @@
             // Arrange
             var service = GetSerializerService();
             var featureImage = "http://10.18.200.141:8080/wp-content/uploads/2020/08/Saba20200805-Bernard-05.jpg";
-            string metadata = "a:5:{s:5:\"width\";i:1200;N:1;";
+            string metadata = "a:5:{s:40:\"0\";N:1;s:5:\"intt;\";a:1:;i:1200;";
+            //Act
+            var actual = service.GetListImageFromMetadata(featureImage, metadata);
+
+            // Assert
+
+            Assert.Equal(new List<ImageInfo>(), actual);
+        }
+
+        [Fact]
+        public void GetListImageFromMetadata_HandleArrayType_ReturnExpectedData()
+        {
+            // Arrange
+            var service = GetSerializerService();
+            var featureImage = "http://10.18.200.141:8080/wp-content/uploads/2020/08/Saba20200805-Bernard-05.jpg";
+            string metadata = "a:5:{s:1:\"0\";N:1;s:5:\"intt;\";a:1:;i:1200;";
+            //Act
+            var actual = service.GetListImageFromMetadata(featureImage, metadata);
+
+            // Assert
+
+            Assert.Equal(new List<ImageInfo>(), actual);
+        }
+
+        [Fact]
+        public void GetListImageFromMetadata_HandleTypeString_ReturnExpectedData()
+        {
+            // Arrange
+            var service = GetSerializerService();
+            var featureImage = "http://10.18.200.141:8080/wp-content/uploads/2020/08/Saba20200805-Bernard-05.jpg";
+            string metadata = "a:5:{s:5:\"11111\"";
             //Act
             var actual = service.GetListImageFromMetadata(featureImage, metadata);
 
