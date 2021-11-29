@@ -220,6 +220,7 @@
             expected.PostExcerpt = null;
             expected.CategoriesSlug = null;
             expected.CatesName = null;
+            expected.PostContent = "content\ncontent";
             baseService.GetDataEntityAsync<Post>(Arg.Do<GetPostDetailBySlugCriteria>(x => criteria = x)).Returns(expected);
             baseService.GetDataEntityAsync<Category>(Arg.Do<CheckTypeCategoryCriteria>(x => checkIsVideoTypecriteria = x)).Returns(expectedCategory);
             //Act
@@ -228,6 +229,30 @@
             //Assert
             Assert.Equal(expected, actual);
             Assert.Equal("video", actual.Type);
+        }
+
+        [Fact]
+        public async Task GetPostDetailBySlugAsync_PostTypeIsPage_ReturnExpectedPost()
+        {
+            //Arrange
+            var service = GetPostService();
+            var slug = fixture.Create<string>();
+            var postType = "page";
+            var criteria = fixture.Create<GetPostDetailBySlugCriteria>();
+            var checkIsVideoTypecriteria = fixture.Create<CheckTypeCategoryCriteria>();
+            var expected = fixture.Create<Post>();
+            var expectedCategory = fixture.Create<Category>(); ;
+            expected.PostExcerpt = null;
+            expected.CategoriesSlug = null;
+            expected.CatesName = null;
+            expected.PostContent = "content\ncontent";
+            baseService.GetDataEntityAsync<Post>(Arg.Do<GetPostDetailBySlugCriteria>(x => criteria = x)).Returns(expected);
+            baseService.GetDataEntityAsync<Category>(Arg.Do<CheckTypeCategoryCriteria>(x => checkIsVideoTypecriteria = x)).Returns(expectedCategory);
+            //Act
+            var actual = await service.GetPostDetailBySlugAsync(slug, postType);
+
+            //Assert
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -391,6 +416,22 @@
             //Arrange
             var service = GetPostService();
             var criteria = fixture.Create<GetSitemapDataCriteria>();
+            var expected = fixture.Create<IEnumerable<SitemapModel>>();
+            baseService.GetDataAsync<SitemapModel>(Arg.Do<GetSitemapDataCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetSitemapDataAsync();
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetSitemapDataAsync_WhenCheckPostType_ReturnExpectedSitemap()
+        {
+            //Arrange
+            var service = GetPostService();
+            var criteria = fixture.Create<GetSitemapDataCriteria>();
             var expected = new List<SitemapModel>();
             expected.Add(new SitemapModel { ID = 1, Slug = "warning", PostType = "video" });
             expected.Add(new SitemapModel { ID = 1, Slug = "slug", PostType = "category" });
@@ -403,29 +444,6 @@
             Assert.Equal(expected, actual);
         }
 
-
-        [Fact]
-        public void GetBlackListIPs_WhenCalled_ReturnExpectedData()
-        {
-            //Arrange
-            var service = GetPostService();
-            var blackList = new List<string>();
-            var blackListIPs = "";
-            configuration.GetValue<string>("BlackListIPs").Returns(blackListIPs);
-            if (!string.IsNullOrWhiteSpace(blackListIPs))
-            {
-                var blackListArr = blackListIPs.Split(",");
-                if (blackListArr != null && blackListArr.Any())
-                {
-                    blackList = blackListArr.Select(t => t.Trim()).ToList();
-                }
-            }
-            //Act
-            var actual =  service.GetBlackListIPs();
-
-            //Assert
-            Assert.Equal(blackList, actual);
-        }
 
         [Fact]
         public async Task GetNewsSitemapDataAsync_WhenCalled_ReturnExpectedNewsSitemapModel()

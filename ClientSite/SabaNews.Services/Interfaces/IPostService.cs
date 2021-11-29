@@ -38,8 +38,6 @@
 
         Task<IEnumerable<SitemapModel>> GetSitemapDataAsync();
 
-        IList<string> GetBlackListIPs();
-
         Task<IEnumerable<NewsSitemapModel>> GetNewsSitemapDataAsync();
 
         Task<IEnumerable<Post>> GetRSSDataAsync();

@@ -74,6 +74,8 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
+            Assert.Null(viewModel.ViewData);
+            Assert.Null(viewModel.RelatedPosts);
             await postService.Received().UpdateViewAsync(expected.ID, false);
         }
 

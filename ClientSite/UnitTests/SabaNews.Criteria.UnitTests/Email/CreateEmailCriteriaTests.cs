@@ -22,7 +22,7 @@
 
         [Theory]
         [InlineData("title", "")]
-        [InlineData("content", "")]
+        [InlineData("", "content")]
         public void IsValid_WhenCalled_ReturnFalse(string title, string content)
         {
             // Arrange

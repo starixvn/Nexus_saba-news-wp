@@ -12,14 +12,22 @@
 
     public class WhoamiControllerTests : Controller
     {
+        private readonly IFixture fixture = new Fixture();
+
         [Fact]
         public void Index_WhenCalled_ReturnExpectedData()
         {
             // Arrange
             var controller = new WhoamiController();
             var context = Substitute.For<HttpContext>();
-            var request = Substitute.For<HttpRequest>();
-            controller.ControllerContext = MockControllerContext();
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
+            controller.ControllerContext.HttpContext.Request.Path = $"/{fixture.Create<string>()}";
+            controller.ControllerContext.HttpContext.Request.Headers["device-id"] = "20317";
+
             var content = new StringBuilder();
             content.Append($"Web name: {context.Request.Host.Host}{Environment.NewLine}"
                 + $"Port: {context.Connection.LocalPort}{Environment.NewLine}"
@@ -42,6 +50,7 @@
 
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);
+            //Assert.Equal(expected, viewResult.Content);
         }
 
         private IServiceProvider MockServiceProvider()

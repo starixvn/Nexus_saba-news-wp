@@ -257,22 +257,6 @@
             return sitemap;
         }
 
-        public IList<string> GetBlackListIPs()
-        {
-            var blackListIPs = configuration.GetValue<string>("BlackListIPs");
-            var blackList = new List<string>();
-            if (!string.IsNullOrWhiteSpace(blackListIPs))
-            {
-                var blackListArr = blackListIPs.Split(",");
-                if (blackListArr != null && blackListArr.Any())
-                {
-                    blackList = blackListArr.Select(t => t.Trim()).ToList();
-                }
-            }
-
-            return blackList;
-        }
-
         public async Task<IEnumerable<NewsSitemapModel>> GetNewsSitemapDataAsync()
         {
             return await baseService.GetDataAsync<NewsSitemapModel>(new GetNewsSitemapCriteria());
