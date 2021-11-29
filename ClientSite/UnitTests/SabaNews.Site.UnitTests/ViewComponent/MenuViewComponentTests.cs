@@ -42,6 +42,7 @@
             Assert.Equal(expectedMenu, viewModel.Menus);
             Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.False(viewModel.IsAdmin);
+            Assert.Null(viewModel.UserUgent);
         }
 
         [Fact]

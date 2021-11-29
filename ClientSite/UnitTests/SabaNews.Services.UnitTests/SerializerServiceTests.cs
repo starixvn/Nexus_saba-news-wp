@@ -68,6 +68,22 @@
         }
 
 
+        [Fact]
+        public void GetListImageFromMetadata_WhenGoOnCatch_ReturnExpectedData()
+        {
+            // Arrange
+            var service = GetSerializerService();
+            var featureImage = "http://10.18.200.141:8080/wp-content/uploads/2020/08/Saba20200805-Bernard-05.jpg";
+            string metadata = "a:5:{s:5:\"width\";i:1200;N:1;";
+            //Act
+            var actual = service.GetListImageFromMetadata(featureImage, metadata);
+
+            // Assert
+
+            Assert.Equal(new List<ImageInfo>(), actual);
+        }
+
+
         #region Helpers
         private SerializerService GetSerializerService()
         {
