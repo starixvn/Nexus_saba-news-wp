@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.UnitTests.Controllers
 {
     using AutoFixture;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using NSubstitute;
@@ -17,11 +18,8 @@
             // Arrange
             var controller = new WhoamiController();
             var context = Substitute.For<HttpContext>();
-            controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext()
-            };
-            controller.ControllerContext.HttpContext = context;
+            var request = Substitute.For<HttpRequest>();
+            controller.ControllerContext = MockControllerContext();
             var content = new StringBuilder();
             content.Append($"Web name: {context.Request.Host.Host}{Environment.NewLine}"
                 + $"Port: {context.Connection.LocalPort}{Environment.NewLine}"
@@ -45,6 +43,30 @@
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);
         }
+
+        private IServiceProvider MockServiceProvider()
+        {
+            var authServiceMock = Substitute.For<IAuthenticationService>();
+            var serviceProviderMock = Substitute.For<IServiceProvider>();
+            serviceProviderMock.GetService(typeof(IAuthenticationService))
+                .Returns(authServiceMock);
+
+            return serviceProviderMock;
+        }
+
+        private ControllerContext MockControllerContext()
+        {
+            var request = Substitute.For<HttpRequest>();
+            request.Host.Returns(new HostString("localhost", 8081));
+            var httpContext = Substitute.For<HttpContext>();
+            httpContext.Request.Returns(request);
+            httpContext.RequestServices = MockServiceProvider();
+            return new ControllerContext()
+            {
+                HttpContext = httpContext
+            };
+        }
+
 
     }
 }

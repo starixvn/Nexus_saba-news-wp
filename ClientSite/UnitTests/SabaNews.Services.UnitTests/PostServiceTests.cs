@@ -510,7 +510,7 @@
             expectedInSecondPost.Images = Images;
             expectedInSecondPost.PostDateGMT = DateTime.UtcNow.AddSeconds(-10);
             expectedInMunitePost.PostDateGMT = DateTime.UtcNow.AddMinutes(-10);
-            expectedInHourPost.PostDateGMT = DateTime.UtcNow.AddHours(-1);
+            expectedInHourPost.PostDateGMT = DateTime.UtcNow.AddHours(-2);
             var postDateFormat = expectedInSecondPost.PostTimeFormatSingle;
             var imageSize100 = expectedInSecondPost.GetImageBySize(100);
             var imageSize50 = expectedInSecondPost.GetImageBySize(50);
@@ -519,7 +519,7 @@
             //Act & Assert
             Assert.Equal("10 giây trước", expectedInSecondPost.PostTime);
             Assert.Equal("10 phút trước", expectedInMunitePost.PostTime);
-            Assert.Equal("1 giờ trước", expectedInHourPost.PostTime);
+            Assert.Equal("2 giờ trước", expectedInHourPost.PostTime);
             Assert.NotNull(expectedNormalPost.PostTime);
 
             Assert.Equal(expectedInSecondPost.PostDate.ToString("dddd, dd/MM/yyyy, HH:mm", new CultureInfo("vi")), postDateFormat);

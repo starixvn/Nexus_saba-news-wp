@@ -9,6 +9,7 @@
     using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
+    using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
@@ -62,6 +63,24 @@
         }
 
         [Fact]
+        public async Task Sitemap_WhenMofidiedDateIsNull_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = new List<SitemapModel>();
+            expected.Add(new SitemapModel { ID = 1, Url = "url", ModifiedDate = DateTime.Now });
+            expected.Add(new SitemapModel { ID = 2, Url = "url" });
+            dataControlService.GenerateSitmapXmlData().Returns(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected);
+            //Act
+            var actual = await controller.Sitemap();
+
+            //Assert
+            var viewResult = Assert.IsType<ContentResult>(actual);
+            Assert.Equal(expectedSitemap, viewResult.Content);
+        }
+
+        [Fact]
         public async Task SitemapNews_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -82,7 +101,11 @@
         {
             // Arrange
             var controller = GetController();
-            var expected = fixture.Create<IEnumerable<Post>>();
+            var testPosts = fixture.Create<List<Post>>();
+            testPosts[0].Images = null;
+            testPosts[0].FeatureImage = null;
+            testPosts[0].PostDateGMT = DateTime.MinValue;
+            var expected = (IEnumerable<Post>)testPosts;
             dataControlService.GenerateRSSData().Returns(expected);
             var expectedSitemap = RssHelper.GetRSSDocument(expected, "");
             //Act
