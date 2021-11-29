@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
@@ -22,7 +22,7 @@
   
 
   <ItemGroup>
-    <ProjectReference Include="..\ClientSite\SabaNews.AutoJobs\SabaNews.AutoJobs.csproj" />
+    <ProjectReference Include="..\..\SabaNews.AutoJobs\SabaNews.AutoJobs.csproj" />
   </ItemGroup>
 
 </Project>
