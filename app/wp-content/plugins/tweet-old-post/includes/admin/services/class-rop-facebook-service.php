@@ -1109,7 +1109,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		} else {
 			$account['link'] = sprintf( 'https://instagram.com/%s', $account_username );
 		}
-		$this->logger->alert_error( 'populate_additional_data: ' . json_encode( $account ) );
+		//$this->logger->alert_error( 'populate_additional_data: ' . json_encode( $account ) );
 		return $account;
 	}
 
