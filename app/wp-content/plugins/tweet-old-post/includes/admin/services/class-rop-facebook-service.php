@@ -456,7 +456,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @throws \Facebook\Exceptions\FacebookSDKException Facebook library exception.
 	 */
 	public function share( $post_details, $args = array() ) {
-
+		$this->logger->alert_error( 'share'  );
 		if ( Rop_Admin::rop_site_is_staging( $post_details['post_id'] ) ) {
 			$this->logger->alert_error( Rop_I18n::get_labels( 'sharing.share_attempted_on_staging' ) );
 			return false;
@@ -533,6 +533,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		if ( $this->try_post( $sharing_data['post_data'], $args['id'], $args['access_token'], $post_id, $sharing_data['type'] ) ) {
+			$this->logger->alert_error( 'try_post' . '-' . $sharing_data['post_data']. '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
 			$this->logger->alert_success(
 				sprintf(
 					'Successfully shared %s to %s on %s ',
@@ -694,6 +695,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		if ( $this->get_api() && empty( $installed_with_app ) ) {
+			$this->logger->alert_error( 'has get_api && empty( $installed_with_app )'  );
 			// Page was added using user application (old method)
 			// Try post via Facebook Graph SDK
 			$api = $this->get_api();
@@ -705,7 +707,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				}
 
 				$api->post( $path, $new_post, $token );
-
+				$this->logger->alert_error( '$api->post( $path, $new_post, $token ) '.$path . '-' . $new_post . '-' . $token   );
 				return true;
 			} catch ( Facebook\Exceptions\FacebookResponseException $e ) {
 				$error_message = $e->getMessage();
@@ -729,7 +731,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 					try {
 						$api->post( $path, $new_post, $token );
-
+						$this->logger->alert_error( 'catch - try $api->post( $path, $new_post, $token ) '.$path . '-' . $new_post . '-' . $token   );
 						return true;
 					} catch ( Facebook\Exceptions\FacebookResponseException $e ) {
 						$this->logger->alert_error( 'Unable to share post for facebook. (FacebookResponseException) Error: ' . $e->getMessage() );
@@ -805,6 +807,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 					$sent_request = $this->remote_post_http( $url, $post_data );
 					$response     = $sent_request['response'];
 					$body         = $sent_request['body'];
+					$this->logger->alert_error( 'if Send the request via http request. '.$sent_request . '-' . $response . '-' . $body   );
 				}
 			} else {
 
@@ -815,6 +818,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$sent_request = $this->remote_post_http( $url, $post_data );
 				$response     = $sent_request['response'];
 				$body         = $sent_request['body'];
+				$this->logger->alert_error( 'else Send the request via http request. '.$sent_request . '-' . $response . '-' . $body   );
 			}
 
 			if ( ! empty( $body['id'] ) ) {
@@ -851,7 +855,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 						// Send the request via cURL
 						$body     = $this->remote_post_curl( $url, $post_data );
 						$response = $body; // Compatible with the code before.
-
+						$this->logger->alert_error( 'if the cURL library is installed and usable. ' . $response . '-' . $body   );
 						// If the previous request failed, let's try over HTTP request.
 						if ( isset( $body['error'] ) ) {
 							if ( ! empty( $attachment_url ) ) {
@@ -864,6 +868,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 							$sent_request = $this->remote_post_http( $url, $post_data );
 							$response     = $sent_request['response'];
 							$body         = $sent_request['body'];
+							$this->logger->alert_error( 'If the previous request failed, lets try over HTTP request.. '.$sent_request . '-' . $response . '-' . $body   );
 						}
 					} else {
 
