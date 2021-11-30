@@ -71,7 +71,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
         <PackageReference Include="TimeZoneConverter" Version="3.4.0" />
-        <PackageReference Include="Wangkanai.Detection" Version="3.0.0" />
+        <PackageReference Include="Wangkanai.Detection" Version="4.0.0-beta3" />
     </ItemGroup>
 
     <ItemGroup>
