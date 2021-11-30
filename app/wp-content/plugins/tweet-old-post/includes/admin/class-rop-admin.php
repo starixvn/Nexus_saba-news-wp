@@ -59,6 +59,7 @@ class Rop_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 		$this->set_allowed_screens();
+		$this->logger = new Rop_Logger();
 		add_action( 'admin_notices', array( &$this, 'display_global_status_warning' ) );
 	}
 

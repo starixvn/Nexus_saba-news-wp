@@ -53,6 +53,7 @@ class Rop_Cron_Core {
 		 * Register local end-points used by ROP Cron Service.
 		 */
 		add_action( 'init', array( &$this, 'init_endpoint_items' ) );
+		$this->logger = new Rop_Logger();
 
 	}
 

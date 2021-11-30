@@ -136,6 +136,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return \Facebook\Facebook
 	 */
 	public function get_api( $app_id = '', $secret = '' ) {
+		$this->logger->alert_error( 'get_api -'. $app_id. '-'. $secret );
 		if ( $this->api == null ) {
 			$this->set_api( $app_id, $secret );
 		}
@@ -155,6 +156,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return mixed
 	 */
 	public function set_api( $app_id = '', $secret = '' ) {
+		$this->logger->alert_error( 'set_api ' );
 		try {
 			if ( empty( $app_id ) || empty( $secret ) ) {
 				return false;
