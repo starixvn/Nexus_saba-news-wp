@@ -84,7 +84,7 @@ class Rop_Cron_Core {
 	 * @since 8.5.5
 	 */
 	public function server_start_share() {
-
+		$this->logger->alert_error( 'server_start_share'  );
 		$time_to_share = current_time( 'timestamp' ) + 30; // phpcs:ignore
 
 		$request_call = new Rop_Curl_Methods();
@@ -106,6 +106,7 @@ class Rop_Cron_Core {
 	 * @since 8.5.5
 	 */
 	public function server_stop_share() {
+		$this->logger->alert_error( 'server_stop_share'  );
 		$request_call = new Rop_Curl_Methods();
 
 		$arguments = array(

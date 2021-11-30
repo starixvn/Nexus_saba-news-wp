@@ -1005,6 +1005,7 @@ class Rop_Admin {
 	 * @param bool  $is_future_post Whether method was called by share_scheduled_future_post() method.
 	 */
 	public function rop_cron_job_publish_now( $post_id = '', $accounts_data = array(), $is_future_post = false ) {
+		$this->logger->alert_error( 'rop_cron_job_publish_now'  );
 		$queue           = new Rop_Queue_Model();
 		$services_model  = new Rop_Services_Model();
 		$logger          = new Rop_Logger();
@@ -1076,6 +1077,7 @@ class Rop_Admin {
 	 * @access  public
 	 */
 	public function rop_cron_job() {
+		$this->logger->alert_error( 'rop_cron_job'  );
 		$queue           = new Rop_Queue_Model();
 		$queue_stack     = $queue->build_queue();
 		$services_model  = new Rop_Services_Model();
