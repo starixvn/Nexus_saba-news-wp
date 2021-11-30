@@ -226,6 +226,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return bool
 	 */
 	public function authenticate( $args = array() ) {
+		$this->logger->alert_error( 'authenticate '  );
 		if ( ! $this->is_set_not_empty(
 			$args,
 			array(
@@ -254,6 +255,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 			// Returns a `Facebook\FacebookResponse` object
 			$response = $api->get( '/me?fields=id,name,email,picture', $token );
+			$this->logger->alert_error( 'authenticate - ' . $response );
 		} catch ( Facebook\Exceptions\FacebookResponseException $e ) {
 			$this->error->throw_exception( '400 Bad Request', 'Graph returned an error: ' . $e->getMessage() );
 
@@ -303,7 +305,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$this->get_pages( $user )
 			),
 		);
-
+		$this->logger->alert_error( 'authenticate - ' . json_encode($this->service)  );
 		return true;
 
 	}
@@ -333,6 +335,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array
 	 */
 	public function get_pages( $user ) {
+		$this->logger->alert_error( 'get_pages '  );
 		$pages_array = array();
 		$api         = $this->get_api();
 		try {
@@ -355,6 +358,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		} catch ( Exception $e ) {
 			$this->logger->alert_error( 'Can not fetch pages for facebook. Error: ' . $e->getMessage() );
 		}
+		$this->logger->alert_error( 'get_pages ' . json_encode($pages_array)  );
 
 		return $pages_array;
 	}
@@ -372,6 +376,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return mixed
 	 */
 	public function request_api_token( $token = '' ) {
+		$this->logger->alert_error( 'request_api_token '  );
 		$api = $this->get_api();
 
 		$helper = $api->getRedirectLoginHelper();
@@ -395,7 +400,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			$expires         = time() + ( 120 * 24 * 60 * 60 ); // 120 days; 24 hours; 60 minutes; 60 seconds.
 			$longAccessToken = new \Facebook\Authentication\AccessToken( $accessToken, $expires );
 			$token           = $longAccessToken->getValue();
-
+			$this->logger->alert_error( 'request_api_token ' . $longAccessToken . ' - ' .  $token );
 			return $token->getValue();
 		} catch ( Facebook\Exceptions\FacebookResponseException $e ) {
 			$this->error->throw_exception( '400 Bad Request', 'Graph returned an error: ' . $e->getMessage() );
@@ -538,7 +543,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			$this->logger->alert_error( 'try_post' . '-' . json_encode($sharing_data['post_data']). '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
 			$this->logger->alert_success(
 				sprintf(
-					'Successfully shared %s to %s on %s ',
+					'Successfullyyyy shared %s to %s on %s ',
 					html_entity_decode( get_the_title( $post_id ), ENT_QUOTES ), // TODO Set ENT_QUOTES for all other entity decode occurences in plugin
 					$args['user'],
 					$post_details['service']
@@ -564,7 +569,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array
 	 */
 	private function fb_article_post( $post_details, $hashtags ) {
-
+		$this->logger->alert_error( 'fb_article_post' . ' - ' . $post_details . ' - ' .  $hashtags );
 		$new_post = array();
 
 		$new_post['message'] = $this->strip_excess_blank_lines( $post_details['content'] ) . $hashtags;
@@ -921,7 +926,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array|mixed|object
 	 */
 	public function remote_post_curl( $url = '', $post_data = array() ) {
-
+		
 		$connection = curl_init();
 		curl_setopt( $connection, CURLOPT_URL, $url );
 		curl_setopt( $connection, CURLOPT_HTTPHEADER, array( 'Content-Type: multipart/form-data' ) );
@@ -929,7 +934,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		curl_setopt( $connection, CURLOPT_POST, true );
 		curl_setopt( $connection, CURLOPT_POSTFIELDS, $post_data );
 		$data = curl_exec( $connection );
-
+		$this->logger->alert_error( 'remote_post_curl: ' . json_encode( $data ) );
 		return json_decode( $data, true );
 	}
 
@@ -967,7 +972,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-
+		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) );
 		return array(
 			'response' => $response,
 			'body'     => $body,
@@ -1027,7 +1032,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			'credentials'        => $this->credentials,
 			'available_accounts' => $accounts,
 		);
-
+		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $this->service ) );
 		return true;
 	}
 
@@ -1071,7 +1076,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 				)
 			);
-
+			$this->logger->alert_error( 'rop_fb_scrape_url: ' . json_encode( $this->service ) );
 			if ( is_wp_error( $scrape_response ) ) {
 				$error_string = $scrape_response->get_error_message();
 				$this->logger->info( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
@@ -1079,7 +1084,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			}
 
 			$body = wp_remote_retrieve_body( $scrape_response );
-
+			$this->logger->alert_error( 'rop_fb_scrape_url: ' . json_encode( $scrape_response ) );
 			$this->logger->info( 'Scrape Info: ' . $body );
 
 		}
@@ -1104,6 +1109,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		} else {
 			$account['link'] = sprintf( 'https://instagram.com/%s', $account_username );
 		}
+		$this->logger->alert_error( 'populate_additional_data: ' . json_encode( $account ) );
 		return $account;
 	}
 

@@ -799,6 +799,7 @@ class Rop_Admin {
 	 * @param int $post_id The post ID.
 	 */
 	public function maybe_publish_now( $post_id ) {
+		this->logger->alert_error('maybe_publish_now');
 		if ( ! isset( $_POST['rop_publish_now_nonce'] ) || ! wp_verify_nonce( $_POST['rop_publish_now_nonce'], 'rop_publish_now_nonce' ) ) {
 			return;
 		}
