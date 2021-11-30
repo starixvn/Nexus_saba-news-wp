@@ -689,6 +689,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
+		$this->logger->alert_error( 'Error Posting to Facebook, response: test' . '-' . $path . '-' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
