@@ -214,7 +214,7 @@
                 },
                 OnAccessDenied = context =>
                 {
-                    context.HttpContext.Response.Redirect("~/");
+                    context.HttpContext.Response.Redirect("");
                     return Task.CompletedTask;
                 }
             };
