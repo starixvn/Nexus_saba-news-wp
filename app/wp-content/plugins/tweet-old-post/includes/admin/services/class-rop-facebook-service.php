@@ -533,7 +533,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		if ( $this->try_post( $sharing_data['post_data'], $args['id'], $args['access_token'], $post_id, $sharing_data['type'] ) ) {
-			$this->logger->alert_error( 'try_post' . '-' . $sharing_data['post_data']. '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
+			$this->logger->alert_error( 'try_post' . '-' . json_encode($sharing_data['post_data']). '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
 			$this->logger->alert_success(
 				sprintf(
 					'Successfully shared %s to %s on %s ',
@@ -674,7 +674,6 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return bool
 	 */
 	private function try_post( $new_post, $page_id, $token, $post_id, $posting_type ) {
-		$this->logger->alert_error( 'Error Posting to Facebook, response: test'  );
 
 		$installed_with_app = get_option( 'rop_facebook_via_rs_app' );
 
@@ -689,7 +688,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'Error Posting to Facebook, response: test' . '-' . $path . '-' . $installed_with_app );
+		$this->logger->alert_error( 'try_post function' . '-' . $path . '-' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
@@ -819,7 +818,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$sent_request = $this->remote_post_http( $url, $post_data );
 				$response     = $sent_request['response'];
 				$body         = $sent_request['body'];
-				$this->logger->alert_error( 'else Send the request via http request. '.$sent_request . '-' . $response . '-' . $body   );
+				$this->logger->alert_error( 'else Send the request via http request. '.json_encode($sent_request) . '-' . json_encode($response) . '-' . json_encode($body)   );
 			}
 
 			if ( ! empty( $body['id'] ) ) {
