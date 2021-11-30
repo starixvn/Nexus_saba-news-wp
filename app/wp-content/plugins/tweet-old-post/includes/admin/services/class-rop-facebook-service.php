@@ -673,6 +673,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return bool
 	 */
 	private function try_post( $new_post, $page_id, $token, $post_id, $posting_type ) {
+		$this->logger->alert_error( 'Error Posting to Facebook, response: test'  );
 
 		$installed_with_app = get_option( 'rop_facebook_via_rs_app' );
 
