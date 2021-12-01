@@ -950,34 +950,38 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array|mixed|object
 	 */
 	public function remote_post_http( $url = '', $post_data = array() ) {
-		$response = wp_remote_post(
-			$url,
-			array(
+		// $response = wp_remote_post(
+		// 	$url,
+		// 	array(
 
-				'body'    => $post_data,
-				'headers' => array(
-					'Content-Type' => 'application/x-www-form-urlencoded',
-				),
-				'timeout' => 60,
+		// 		'body'    => $post_data,
+		// 		'headers' => array(
+		// 			'Content-Type' => 'application/x-www-form-urlencoded',
+		// 		),
+		// 		'timeout' => 60,
 
-			)
-		);
-
-		if ( is_wp_error( $response ) ) {
-			$error_string = $response->get_error_message();
-			$this->logger->alert_error( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
-			return array(
-				'response' => '',
-				'body'     => '',
-			);
-		}
-
-		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response . ' - ' .$url) );
+		// 	)
+		// );
 		return array(
-			'response' => $response,
-			'body'     => $body,
+			'response' => '',
+			'body'     => '',
 		);
+
+		// if ( is_wp_error( $response ) ) {
+		// 	$error_string = $response->get_error_message();
+		// 	$this->logger->alert_error( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
+		// 	return array(
+		// 		'response' => '',
+		// 		'body'     => '',
+		// 	);
+		// }
+
+		// $body = json_decode( wp_remote_retrieve_body( $response ), true );
+		// $this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response . ' - ' .$url) );
+		// return array(
+		// 	'response' => $response,
+		// 	'body'     => $body,
+		// );
 	}
 
 	/**
