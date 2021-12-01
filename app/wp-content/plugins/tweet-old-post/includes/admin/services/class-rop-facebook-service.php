@@ -962,7 +962,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 			)
 		);
-		$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url) );
+		$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url );
 		return array(
 			'response' => '',
 			'body'     => '',
