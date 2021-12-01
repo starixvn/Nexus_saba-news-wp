@@ -796,7 +796,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			// If the cURL library is installed and usable
 			if ( $this->is_curl_active() && ! empty( $attachment_path ) && false === $this->is_remote_file( $attachment_path ) ) {
 				$post_data['source'] = new CurlFile( realpath( $attachment_path ), mime_content_type( $attachment_path ) );
-
+				$this->logger->alert_error( 'If the cURL library is installed and usable. '  );
 				// Send the request via cURL
 				$body     = $this->remote_post_curl( $url, $post_data );
 				$response = $body; // Compatible with the code before.
@@ -950,22 +950,24 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array|mixed|object
 	 */
 	public function remote_post_http( $url = '', $post_data = array() ) {
-		// $response = wp_remote_post(
-		// 	$url,
-		// 	array(
+		$response = wp_remote_post(
+			$url,
+			array(
 
-		// 		'body'    => $post_data,
-		// 		'headers' => array(
-		// 			'Content-Type' => 'application/x-www-form-urlencoded',
-		// 		),
-		// 		'timeout' => 60,
+				'body'    => $post_data,
+				'headers' => array(
+					'Content-Type' => 'application/x-www-form-urlencoded',
+				),
+				'timeout' => 60,
 
-		// 	)
-		// );
+			)
+		);
+		$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url) );
 		return array(
 			'response' => '',
 			'body'     => '',
 		);
+
 
 		// if ( is_wp_error( $response ) ) {
 		// 	$error_string = $response->get_error_message();
@@ -977,7 +979,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		// }
 
 		// $body = json_decode( wp_remote_retrieve_body( $response ), true );
-		// $this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response . ' - ' .$url) );
+		//$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) . ' - ' .$url) );
 		// return array(
 		// 	'response' => $response,
 		// 	'body'     => $body,
