@@ -1055,6 +1055,7 @@ class Rop_Admin {
 						$this->logger->alert_error('Posting...' . json_encode($service));
 						$logger->info( 'Posting', array( 'extra' => $post_data ) );
 						$service->share( $post_data, $account_data );
+						$this->logger->alert_error('Finish Posting...' . json_encode($service));
 						$this->logger->alert_error( 'scron job call share - ' . json_encode($post_data) . ' - ' . json_encode($account_data)  );
 					}
 				} catch ( Exception $exception ) {
