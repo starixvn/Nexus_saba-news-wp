@@ -973,7 +973,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) );
+		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response . ' - ' .$url) );
 		return array(
 			'response' => $response,
 			'body'     => $body,
