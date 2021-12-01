@@ -695,7 +695,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'try_post function' . '-' . $new_post . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type );
+		$this->logger->alert_error( 'try_post function' . '-' . $new_post . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type . ' - ' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
@@ -827,10 +827,11 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$body         = $sent_request['body'];
 				$this->logger->alert_error( 'else Send the request via http request. '.json_encode($sent_request) . '-' . json_encode($response) . '-' . json_encode($body)   );
 			}
-
+			
 			if ( ! empty( $body['id'] ) ) {
 				return true;
 			} elseif ( ! empty( $body['error']['message'] ) ) {
+				$this->logger->alert_error( 'post has message. '   );
 				if (
 					strpos( $body['error']['message'], '(#100)' ) !== false &&
 					(
@@ -972,7 +973,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) );
+		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) );
 		return array(
 			'response' => $response,
 			'body'     => $body,
@@ -1032,7 +1033,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			'credentials'        => $this->credentials,
 			'available_accounts' => $accounts,
 		);
-		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $this->service ) );
+		$this->logger->alert_error( 'add_account_with_app remote_post_http: ' . json_encode( $this->service ) );
 		return true;
 	}
 

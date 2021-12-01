@@ -1031,7 +1031,7 @@ class Rop_Admin {
 		} else {
 			$logger->info( 'Fetching publish now queue: ' . print_r( $queue_stack, true ) );
 		}
-
+		$this->logger->alert_error('queue_stack...' . json_encode($queue_stack));
 		foreach ( $queue_stack as $account => $events ) {
 			foreach ( $events as $index => $event ) {
 				$post    = $event['post'];
@@ -1055,8 +1055,8 @@ class Rop_Admin {
 						$this->logger->alert_error('Posting...' . json_encode($service));
 						$logger->info( 'Posting', array( 'extra' => $post_data ) );
 						$service->share( $post_data, $account_data );
-						$this->logger->alert_error('Finish Posting...' . json_encode($service));
 						$this->logger->alert_error( 'scron job call share - ' . json_encode($post_data) . ' - ' . json_encode($account_data)  );
+						$this->logger->alert_error('Finish Posting...' . json_encode($service));
 					}
 				} catch ( Exception $exception ) {
 					$error_message = sprintf( Rop_I18n::get_labels( 'accounts.service_error' ), $account_data['service'] );
