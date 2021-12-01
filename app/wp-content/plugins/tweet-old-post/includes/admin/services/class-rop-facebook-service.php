@@ -156,7 +156,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return mixed
 	 */
 	public function set_api( $app_id = '', $secret = '' ) {
-		$this->logger->alert_error( 'set_api ' );
+		$this->logger->alert_error( 'set_api - '. $app_id. ' - ' . $secret );
 		try {
 			if ( empty( $app_id ) || empty( $secret ) ) {
 				return false;
@@ -463,7 +463,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @throws \Facebook\Exceptions\FacebookSDKException Facebook library exception.
 	 */
 	public function share( $post_details, $args = array() ) {
-		$this->logger->alert_error( 'share'  );
+		$this->logger->alert_error( 'share - ' . json_encode($post_details) . ' - ' . json_encode($args)  );
 		if ( Rop_Admin::rop_site_is_staging( $post_details['post_id'] ) ) {
 			$this->logger->alert_error( Rop_I18n::get_labels( 'sharing.share_attempted_on_staging' ) );
 			return false;

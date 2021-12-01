@@ -799,7 +799,7 @@ class Rop_Admin {
 	 * @param int $post_id The post ID.
 	 */
 	public function maybe_publish_now( $post_id ) {
-		$this->logger->alert_error('maybe_publish_now');
+		
 		if ( ! isset( $_POST['rop_publish_now_nonce'] ) || ! wp_verify_nonce( $_POST['rop_publish_now_nonce'], 'rop_publish_now_nonce' ) ) {
 			return;
 		}
@@ -832,7 +832,7 @@ class Rop_Admin {
 		if ( ! is_array( $enabled ) ) {
 				$enabled = array();
 		}
-
+		$this->logger->alert_error('maybe_publish_now - ' .$enabled);
 		$services = new Rop_Services_Model();
 		$settings = new Rop_Settings_Model();
 
@@ -1024,7 +1024,7 @@ class Rop_Admin {
 		}
 
 		$queue_stack = $queue->build_queue_publish_now( $post_id, $accounts_data, $is_future_post, $settings->get_true_instant_share() );
-
+		$this->logger->alert_error( 'build_queue_publish_now - ' . json_encode($queue_stack)  );
 		if ( empty( $queue_stack ) ) {
 			$logger->info( 'Publish now queue stack is empty.' );
 		} else {
@@ -1053,6 +1053,7 @@ class Rop_Admin {
 						}
 						$logger->info( 'Posting', array( 'extra' => $post_data ) );
 						$service->share( $post_data, $account_data );
+						$this->logger->alert_error( 'scron job call share - ' . json_encode($post_data) . ' - ' . json_encode($account_data)  );
 					}
 				} catch ( Exception $exception ) {
 					$error_message = sprintf( Rop_I18n::get_labels( 'accounts.service_error' ), $account_data['service'] );

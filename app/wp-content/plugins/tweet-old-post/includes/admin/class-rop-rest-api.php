@@ -789,6 +789,7 @@ class Rop_Rest_Api {
 	 * @return mixed|null
 	 */
 	private function authenticate_service( $data ) {
+		$log->alert_error( 'authenticate_service' );
 		$new_service = array();
 		$factory     = new Rop_Services_Factory();
 		try {
