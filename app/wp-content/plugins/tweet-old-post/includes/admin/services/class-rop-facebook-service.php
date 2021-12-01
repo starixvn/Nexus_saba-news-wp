@@ -119,7 +119,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		$token = $longAccessToken->getValue();
 
 		$_SESSION['rop_facebook_token'] = $token;
-
+		$this->logger->alert_error( 'authorize: ' . json_encode($api) );
 		parent::authorize();
 		// echo '<script>window.setTimeout("window.close()", 500);</script>';
 	}
@@ -184,6 +184,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return mixed
 	 */
 	public function maybe_authenticate() {
+		$this->logger->alert_error( 'maybe_authenticate'  );
 		if ( ! session_id() ) {
 			session_start();
 		}
@@ -212,7 +213,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		$credentials['token'] = $token;
 		unset( $_SESSION['rop_facebook_credentials'] );
 		unset( $_SESSION['rop_facebook_token'] );
-
+		$this->logger->alert_error( 'maybe_authenticate: ' . json_encode($credentials) );
 		return $this->authenticate( $credentials );
 
 	}
@@ -695,7 +696,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'try_post function' . '-' . $new_post . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type . ' - ' . $installed_with_app );
+		$this->logger->alert_error( 'try_post function' . '-' . json_encode($new_post) . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type . ' - ' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
@@ -792,7 +793,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$attachment_path = $post_data['source'];
 				unset( $post_data['source'] ); // Remove image path as it's not needed and it might create an error.
 			}
-
+			$this->logger->alert_error( 'If the cURL library is installed and usable. ' . $this->is_curl_active() . ' - ' .  $attachment_path);
 			// If the cURL library is installed and usable
 			if ( $this->is_curl_active() && ! empty( $attachment_path ) && false === $this->is_remote_file( $attachment_path ) ) {
 				$post_data['source'] = new CurlFile( realpath( $attachment_path ), mime_content_type( $attachment_path ) );
@@ -879,7 +880,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 							$this->logger->alert_error( 'If the previous request failed, lets try over HTTP request.. '.$sent_request . '-' . $response . '-' . $body   );
 						}
 					} else {
-
+						$this->logger->alert_error( 'Send the request via http request again. '. json_encode($attachment_url)   );
 						if ( ! empty( $attachment_url ) ) {
 							$post_data['url'] = $attachment_url; // To use HTTP request, we need image url back.
 						}
@@ -950,6 +951,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array|mixed|object
 	 */
 	public function remote_post_http( $url = '', $post_data = array() ) {
+		$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url );
 		$response = wp_remote_post(
 			$url,
 			array(
@@ -962,28 +964,28 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 			)
 		);
-		$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url );
-		return array(
-			'response' => '',
-			'body'     => '',
-		);
-
-
-		// if ( is_wp_error( $response ) ) {
-		// 	$error_string = $response->get_error_message();
-		// 	$this->logger->alert_error( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
-		// 	return array(
-		// 		'response' => '',
-		// 		'body'     => '',
-		// 	);
-		// }
-
-		// $body = json_decode( wp_remote_retrieve_body( $response ), true );
-		//$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) . ' - ' .$url) );
+		
 		// return array(
-		// 	'response' => $response,
-		// 	'body'     => $body,
+		// 	'response' => '',
+		// 	'body'     => '',
 		// );
+
+
+		if ( is_wp_error( $response ) ) {
+			$error_string = $response->get_error_message();
+			$this->logger->alert_error( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
+			return array(
+				'response' => '',
+				'body'     => '',
+			);
+		}
+
+		$body = json_decode( wp_remote_retrieve_body( $response ), true );
+		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) . ' - ' .$url) );
+		return array(
+			'response' => $response,
+			'body'     => $body,
+		);
 	}
 
 	/**
