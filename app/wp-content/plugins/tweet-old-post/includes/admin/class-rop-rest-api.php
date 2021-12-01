@@ -1001,13 +1001,14 @@ class Rop_Rest_Api {
 	 * @return  array
 	 */
 	private function add_account_fb( $data ) {
+		$log = new Rop_Logger();
 		$services         = array();
 		$active_accounts  = array();
 		$facebook_service = new Rop_Facebook_Service();
 		$model            = new Rop_Services_Model();
 		$db               = new Rop_Db_Upgrade();
 
-		
+		$facebook_service->add_account_with_app( $data );
 
 		$services[ $facebook_service->get_service_id() ] = $facebook_service->get_service();
 		$active_accounts                                 = array_merge( $active_accounts, $facebook_service->get_service_active_accounts() );
@@ -1036,7 +1037,7 @@ class Rop_Rest_Api {
 		} else {
 			update_option( $rop_facebook_via_rs_app_option, 'true' );
 		}
-		$this->logger->alert_error( 'add_account_fb: ' . json_encode( $this->response ) . ' - ' . json_encode( $services ) );
+		$log->alert_error( 'add_account_fb - ' . json_encode( $services ) );
 		return $this->response->to_array();
 	}
 
@@ -1054,7 +1055,6 @@ class Rop_Rest_Api {
 	 * @return  array
 	 */
 	private function add_account_tw( $data ) {
-		
 		$services        = array();
 		$active_accounts = array();
 		$twitter_service = new Rop_Twitter_Service();
