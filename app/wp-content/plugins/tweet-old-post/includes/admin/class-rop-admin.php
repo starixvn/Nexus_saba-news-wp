@@ -832,7 +832,7 @@ class Rop_Admin {
 		if ( ! is_array( $enabled ) ) {
 				$enabled = array();
 		}
-		$this->logger->alert_error('maybe_publish_now - ' .$enabled);
+		$this->logger->alert_error('maybe_publish_now - ' . json_encode($enabled));
 		$services = new Rop_Services_Model();
 		$settings = new Rop_Settings_Model();
 
@@ -852,6 +852,7 @@ class Rop_Admin {
 		// If user wants to run this operation on page refresh instead of via Cron.
 		if ( $settings->get_true_instant_share() ) {
 			$this->rop_cron_job_publish_now( $post_id, $instant_share_custom_content );
+			$this->logger->alert_error('maybe_publish_now - get_true_instant_share - ' . json_encode($settings));
 			return;
 		}
 
@@ -1051,6 +1052,7 @@ class Rop_Admin {
 								$post_data['content'] = $custom_instant_share_message;
 							}
 						}
+						$this->logger->alert_error('Posting...' . json_encode($service));
 						$logger->info( 'Posting', array( 'extra' => $post_data ) );
 						$service->share( $post_data, $account_data );
 						$this->logger->alert_error( 'scron job call share - ' . json_encode($post_data) . ' - ' . json_encode($account_data)  );

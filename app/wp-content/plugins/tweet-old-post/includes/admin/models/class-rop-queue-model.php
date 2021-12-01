@@ -415,6 +415,7 @@ class Rop_Queue_Model extends Rop_Model_Abstract {
 				}
 				$index ++;
 			}
+			$this->logger->alert_error( 'build_queue_publish_now function - ' . json_encode($normalized_queue)  );
 
 			return $normalized_queue;
 

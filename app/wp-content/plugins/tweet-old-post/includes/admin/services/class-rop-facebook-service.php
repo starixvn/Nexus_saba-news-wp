@@ -695,7 +695,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'try_post function' . '-' . $path . '-' . $installed_with_app );
+		$this->logger->alert_error( 'try_post function' . '-' . $new_post . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );

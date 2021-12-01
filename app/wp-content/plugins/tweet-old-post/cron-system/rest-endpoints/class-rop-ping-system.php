@@ -88,6 +88,7 @@ class Rop_Ping_System extends Rop_System_Base {
 	 * @access public
 	 */
 	public function catch_authorization_data( WP_REST_Request $request ) {
+		$this->logger->alert_error( 'catch_authorization_data.' );
 		// Get the headers the client is sending.
 		$headers = Rop_Helpers::apache_request_headers();
 
