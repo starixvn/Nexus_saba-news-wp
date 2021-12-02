@@ -136,7 +136,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return \Facebook\Facebook
 	 */
 	public function get_api( $app_id = '', $secret = '' ) {
-		$this->logger->alert_error( 'get_api -'. $app_id. '-'. $secret );
+		//$this->logger->alert_error( 'get_api -'. $app_id. '-'. $secret );
 		if ( $this->api == null ) {
 			$this->set_api( $app_id, $secret );
 		}
@@ -156,7 +156,6 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return mixed
 	 */
 	public function set_api( $app_id = '', $secret = '' ) {
-		$this->logger->alert_error( 'set_api - '. $app_id. ' - ' . $secret );
 		try {
 			if ( empty( $app_id ) || empty( $secret ) ) {
 				return false;
@@ -168,6 +167,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 					'default_graph_version' => 'v7.0',
 				)
 			);
+			$this->logger->alert_error( 'set_api - '. $app_id. ' - ' . $secret );
 		} catch ( Exception $exception ) {
 			$this->logger->alert_error( 'Can not load Facebook api. Error: ' . $exception->getMessage() );
 		}
@@ -570,13 +570,12 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array
 	 */
 	private function fb_article_post( $post_details, $hashtags ) {
-		$this->logger->alert_error( 'fb_article_post' . ' - ' . json_encode($post_details) . ' - ' .  $hashtags );
 		$new_post = array();
 
 		$new_post['message'] = $this->strip_excess_blank_lines( $post_details['content'] ) . $hashtags;
 
 		$new_post['link'] = $this->get_url( $post_details );
-
+		$this->logger->alert_error( 'fb_article_post' . ' - ' . json_encode($new_post) );
 		return array(
 			'post_data' => $new_post,
 			'type'      => 'post',
@@ -793,7 +792,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$attachment_path = $post_data['source'];
 				unset( $post_data['source'] ); // Remove image path as it's not needed and it might create an error.
 			}
-			$this->logger->alert_error( 'If the cURL library is installed and usable. ' . $this->is_curl_active() . ' - ' .  $attachment_path);
+			//$this->logger->alert_error( 'If the cURL library is installed and usable. ' . $this->is_curl_active() . ' - ' .  $attachment_path);
 			// If the cURL library is installed and usable
 			if ( $this->is_curl_active() && ! empty( $attachment_path ) && false === $this->is_remote_file( $attachment_path ) ) {
 				$post_data['source'] = new CurlFile( realpath( $attachment_path ), mime_content_type( $attachment_path ) );
@@ -815,7 +814,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 					$sent_request = $this->remote_post_http( $url, $post_data );
 					$response     = $sent_request['response'];
 					$body         = $sent_request['body'];
-					$this->logger->alert_error( 'if Send the request via http request. '.$sent_request . '-' . $response . '-' . $body   );
+					//$this->logger->alert_error( 'if Send the request via http request. '.$sent_request . '-' . $response . '-' . $body   );
 				}
 			} else {
 
@@ -826,7 +825,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$sent_request = $this->remote_post_http( $url, $post_data );
 				$response     = $sent_request['response'];
 				$body         = $sent_request['body'];
-				$this->logger->alert_error( 'else Send the request via http request. '.json_encode($sent_request) . '-' . json_encode($response) . '-' . json_encode($body)   );
+				$this->logger->alert_error( 'End remote_post_http. '.json_encode($sent_request)   );
 			}
 			
 			if ( ! empty( $body['id'] ) ) {
@@ -983,7 +982,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: ' . json_encode( $body ) . ' - ' . json_encode($response) . ' - ' .$url );
+		$this->logger->alert_error( 'remote_post_http: - url:' . $url . ' - post body:'  . json_encode( $post_data ) . ' - response:' . json_encode($response)  );
 		return array(
 			'response' => $response,
 			'body'     => $body,
@@ -1087,7 +1086,6 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 
 				)
 			);
-			$this->logger->alert_error( 'rop_fb_scrape_url: ' . json_encode( $this->service ) );
 			if ( is_wp_error( $scrape_response ) ) {
 				$error_string = $scrape_response->get_error_message();
 				$this->logger->info( Rop_I18n::get_labels( 'errors.wordpress_api_error' ) . $error_string );
@@ -1095,7 +1093,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			}
 
 			$body = wp_remote_retrieve_body( $scrape_response );
-			$this->logger->alert_error( 'rop_fb_scrape_url: ' . json_encode( $scrape_response ) );
+			//$this->logger->alert_error( 'rop_fb_scrape_url: ' . json_encode( $scrape_response ) );
 			$this->logger->info( 'Scrape Info: ' . $body );
 
 		}
