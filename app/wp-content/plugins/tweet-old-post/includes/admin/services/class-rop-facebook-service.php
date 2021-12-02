@@ -464,7 +464,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @throws \Facebook\Exceptions\FacebookSDKException Facebook library exception.
 	 */
 	public function share( $post_details, $args = array() ) {
-		$this->logger->alert_error( 'share - ' . json_encode($post_details) . ' - ' . json_encode($args)  );
+		$this->logger->alert_error( 'sharing - ' . json_encode($post_details) . ' - ' . json_encode($args)  );
 		if ( Rop_Admin::rop_site_is_staging( $post_details['post_id'] ) ) {
 			$this->logger->alert_error( Rop_I18n::get_labels( 'sharing.share_attempted_on_staging' ) );
 			return false;
@@ -575,7 +575,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		$new_post['message'] = $this->strip_excess_blank_lines( $post_details['content'] ) . $hashtags;
 
 		$new_post['link'] = $this->get_url( $post_details );
-		$this->logger->alert_error( 'fb_article_post' . ' - ' . json_encode($new_post) );
+		//$this->logger->alert_error( 'fb_article_post' . ' - ' . json_encode($new_post) );
 		return array(
 			'post_data' => $new_post,
 			'type'      => 'post',
@@ -695,7 +695,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'try_post function' . '-' . json_encode($new_post) . '-' . $page_id . ' - ' . $token . ' - ' . $post_id . ' - ' . $posting_type . ' - ' . $installed_with_app );
+		$this->logger->alert_error( 'try_post function' . ' - post_id: ' . $post_id . ' - posting_type ' . $posting_type . ' - installed with app' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
@@ -982,7 +982,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: - url:' . $url . ' - post body:'  . json_encode( $post_data ) . ' - response:' . json_encode($response)  );
+		$this->logger->alert_error( 'remote_post_http: - url: ' . $url . ' - post body: '  . json_encode( $post_data ) );
 		return array(
 			'response' => $response,
 			'body'     => $body,
