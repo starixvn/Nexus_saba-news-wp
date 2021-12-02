@@ -1014,6 +1014,7 @@ class Rop_Rest_Api {
 		$active_accounts                                 = array_merge( $active_accounts, $facebook_service->get_service_active_accounts() );
 
 		if ( ! empty( $services ) ) {
+			$log->alert_error( 'add_authenticated_service - ' . json_encode( $services ) );
 			$model->add_authenticated_service( $services );
 		}
 

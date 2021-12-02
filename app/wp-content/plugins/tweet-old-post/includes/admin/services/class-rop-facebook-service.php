@@ -541,7 +541,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		if ( $this->try_post( $sharing_data['post_data'], $args['id'], $args['access_token'], $post_id, $sharing_data['type'] ) ) {
-			$this->logger->alert_error( 'try_post' . '-' . json_encode($sharing_data['post_data']). '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
+			//$this->logger->alert_error( 'try_post' . '-' . json_encode($sharing_data['post_data']). '-' .$args['id']. '-' . $args['access_token']. '-' . $post_id, $sharing_data['type']  );
 			$this->logger->alert_success(
 				sprintf(
 					'Successfullyyyy shared %s to %s on %s ',
@@ -830,7 +830,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			}
 			
 			if ( ! empty( $body['id'] ) ) {
-				$this->logger->alert_error( 'when done!. '   );
+				$this->logger->alert_error( 'share facebook successful. '   );
 				return true;
 			} elseif ( ! empty( $body['error']['message'] ) ) {
 				$this->logger->alert_error( 'when have error. '   );
