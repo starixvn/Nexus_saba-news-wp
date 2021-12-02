@@ -35787,7 +35787,7 @@ module.exports = {
 		},
 		openPopupFB: function openPopupFB() {
 			var _this8 = this;
-
+      console.log("111");
 			var loginUrl = this.appOrigin + this.appPathFB + '?callback_url=' + this.siteAdminUrl + '&token=' + this.appUniqueId + '&signature=' + this.appSignature + '&data=' + this.appAdminEmail;
 			try {
 				this.authPopupWindow.close();

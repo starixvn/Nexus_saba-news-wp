@@ -1002,6 +1002,7 @@ class Rop_Rest_Api {
 	 */
 	private function add_account_fb( $data ) {
 		$log = new Rop_Logger();
+		$log->alert_error( 'add_account_fb begin - ' . json_encode( $data ) );
 		$services         = array();
 		$active_accounts  = array();
 		$facebook_service = new Rop_Facebook_Service();
