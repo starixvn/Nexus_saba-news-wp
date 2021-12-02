@@ -570,7 +570,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array
 	 */
 	private function fb_article_post( $post_details, $hashtags ) {
-		$this->logger->alert_error( 'fb_article_post' . ' - ' . $post_details . ' - ' .  $hashtags );
+		$this->logger->alert_error( 'fb_article_post' . ' - ' . json_encode($post_details) . ' - ' .  $hashtags );
 		$new_post = array();
 
 		$new_post['message'] = $this->strip_excess_blank_lines( $post_details['content'] ) . $hashtags;

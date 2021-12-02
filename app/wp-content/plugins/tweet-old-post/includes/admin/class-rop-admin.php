@@ -1024,13 +1024,13 @@ class Rop_Admin {
 		}
 
 		$queue_stack = $queue->build_queue_publish_now( $post_id, $accounts_data, $is_future_post, $settings->get_true_instant_share() );
-		$this->logger->alert_error( 'build_queue_publish_now - ' . json_encode($queue_stack)  );
+		//$this->logger->alert_error( 'build_queue_publish_now - ' . json_encode($queue_stack)  );
 		if ( empty( $queue_stack ) ) {
 			$logger->info( 'Publish now queue stack is empty.' );
 		} else {
 			$logger->info( 'Fetching publish now queue: ' . print_r( $queue_stack, true ) );
 		}
-		$this->logger->alert_error('queue_stack...' . json_encode($queue_stack));
+		//$this->logger->alert_error('queue_stack...' . json_encode($queue_stack));
 		foreach ( $queue_stack as $account => $events ) {
 			foreach ( $events as $index => $event ) {
 				$post    = $event['post'];
