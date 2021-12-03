@@ -1040,7 +1040,6 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			'credentials'        => $this->credentials,
 			'available_accounts' => $accounts,
 		);
-		$this->logger->alert_error( 'add_account_with_app remote_post_http: ' . json_encode( $this->service ) );
 		return true;
 	}
 

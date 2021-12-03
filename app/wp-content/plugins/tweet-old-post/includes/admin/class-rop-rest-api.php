@@ -1002,7 +1002,6 @@ class Rop_Rest_Api {
 	 */
 	private function add_account_fb( $data ) {
 		$log = new Rop_Logger();
-		//$log->alert_error( 'add_account_fb begin - ' . json_encode( $data ) );
 		$services         = array();
 		$active_accounts  = array();
 		$facebook_service = new Rop_Facebook_Service();
@@ -1015,7 +1014,6 @@ class Rop_Rest_Api {
 		$active_accounts                                 = array_merge( $active_accounts, $facebook_service->get_service_active_accounts() );
 
 		if ( ! empty( $services ) ) {
-			$log->alert_error( 'add_authenticated_service - ' . json_encode( $services ) );
 			$model->add_authenticated_service( $services );
 		}
 
@@ -1039,7 +1037,7 @@ class Rop_Rest_Api {
 		} else {
 			update_option( $rop_facebook_via_rs_app_option, 'true' );
 		}
-		$log->alert_error( 'add_account_fb - ' . json_encode( $services ) . ' data: ' . json_encode($data));
+		//$log->alert_error( 'add_account_fb - ' . json_encode( $services ) . ' data: ' . json_encode($data));
 		return $this->response->to_array();
 	}
 
