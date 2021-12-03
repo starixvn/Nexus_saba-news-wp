@@ -86,7 +86,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 	$_SERVER['HTTPS'] = 'on';
 }
 
-define('WP_PROXY_HOST', '10.18.200.3');
+define('WP_PROXY_HOST', '10.18.200.333');
 define('WP_PROXY_PORT', '3128');
 /* That's all, stop editing! Happy publishing. */
 
