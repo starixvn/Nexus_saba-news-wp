@@ -86,6 +86,11 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 	$_SERVER['HTTPS'] = 'on';
 }
 
+//config proxy
+define('WP_PROXY_HOST', '10.2.252.100');
+define('WP_PROXY_PORT', '8801');
+define('WP_PROXY_BYPASS_HOSTS', 'localhost, *.wordpress.org, wordpress.org');
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */

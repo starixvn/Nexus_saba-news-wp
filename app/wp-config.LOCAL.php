@@ -85,7 +85,7 @@ define( 'WEB_BASEURL', 'https://saba-news-v1.nexdev.net/' );
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
 	$_SERVER['HTTPS'] = 'on';
 }
-
+//config proxy
 define('WP_PROXY_HOST', '10.18.200.3');
 define('WP_PROXY_PORT', '3128');
 define('WP_PROXY_BYPASS_HOSTS', 'localhost, *.wordpress.org, wordpress.org');

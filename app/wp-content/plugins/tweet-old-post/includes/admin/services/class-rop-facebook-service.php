@@ -464,7 +464,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @throws \Facebook\Exceptions\FacebookSDKException Facebook library exception.
 	 */
 	public function share( $post_details, $args = array() ) {
-		$this->logger->alert_error( 'sharing - ' . json_encode($post_details) . ' - ' . json_encode($args)  );
+		//$this->logger->alert_error( 'sharing - ' . json_encode($post_details) . ' - ' . json_encode($args)  );
 		if ( Rop_Admin::rop_site_is_staging( $post_details['post_id'] ) ) {
 			$this->logger->alert_error( Rop_I18n::get_labels( 'sharing.share_attempted_on_staging' ) );
 			return false;
@@ -695,7 +695,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 			default:
 				break;
 		}
-		$this->logger->alert_error( 'try_post function' . ' - post_id: ' . $post_id . ' - posting_type ' . $posting_type . ' - installed with app' . $installed_with_app );
+		//$this->logger->alert_error( 'try_post function' . ' - post_id: ' . $post_id . ' - posting_type ' . $posting_type . ' - installed with app' . $installed_with_app );
 
 		if ( empty( $installed_with_app ) ) {
 			$this->set_api( $this->credentials['app_id'], $this->credentials['secret'] );
@@ -825,11 +825,10 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 				$sent_request = $this->remote_post_http( $url, $post_data );
 				$response     = $sent_request['response'];
 				$body         = $sent_request['body'];
-				$this->logger->alert_error( 'End remote_post_http. '.json_encode($sent_request)   );
+				//$this->logger->alert_error( 'End remote_post_http. '.json_encode($sent_request)   );
 			}
-			
+			//Share successfully
 			if ( ! empty( $body['id'] ) ) {
-				$this->logger->alert_error( 'share facebook successful. '   );
 				return true;
 			} elseif ( ! empty( $body['error']['message'] ) ) {
 				$this->logger->alert_error( 'when have error. '   );
@@ -937,7 +936,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		curl_setopt( $connection, CURLOPT_POST, true );
 		curl_setopt( $connection, CURLOPT_POSTFIELDS, $post_data );
 		$data = curl_exec( $connection );
-		$this->logger->alert_error( 'remote_post_curl: ' . json_encode( $data ) );
+		//$this->logger->alert_error( 'remote_post_curl: ' . json_encode( $data ) );
 		return json_decode( $data, true );
 	}
 
@@ -952,7 +951,6 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 	 * @return array|mixed|object
 	 */
 	public function remote_post_http( $url = '', $post_data = array() ) {
-		//$this->logger->alert_error( 'remote_post_http: '  . json_encode($post_data) . ' - ' .$url );
 		$response = wp_remote_post(
 			$url,
 			array(
@@ -982,7 +980,7 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
-		$this->logger->alert_error( 'remote_post_http: - url: ' . $url . ' - post body: '  . json_encode( $post_data ) );
+		//$this->logger->alert_error( 'remote_post_http: - url: ' . $url . ' - post body: '  . json_encode( $post_data ) );
 		return array(
 			'response' => $response,
 			'body'     => $body,

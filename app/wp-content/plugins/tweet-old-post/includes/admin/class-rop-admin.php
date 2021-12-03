@@ -832,7 +832,7 @@ class Rop_Admin {
 		if ( ! is_array( $enabled ) ) {
 				$enabled = array();
 		}
-		$this->logger->alert_error('maybe_publish_now - ' . json_encode($enabled));
+		//$this->logger->alert_error('maybe_publish_now - ' . json_encode($enabled));
 		$services = new Rop_Services_Model();
 		$settings = new Rop_Settings_Model();
 
@@ -1007,7 +1007,7 @@ class Rop_Admin {
 	 * @param bool  $is_future_post Whether method was called by share_scheduled_future_post() method.
 	 */
 	public function rop_cron_job_publish_now( $post_id = '', $accounts_data = array(), $is_future_post = false ) {
-		$this->logger->alert_error( 'rop_cron_job_publish_now'  );
+		//$this->logger->alert_error( 'rop_cron_job_publish_now'  );
 		$queue           = new Rop_Queue_Model();
 		$services_model  = new Rop_Services_Model();
 		$logger          = new Rop_Logger();
@@ -1051,10 +1051,8 @@ class Rop_Admin {
 								$post_data['content'] = $custom_instant_share_message;
 							}
 						}
-						$this->logger->alert_error('Posting...' . json_encode($service));
 						$logger->info( 'Posting', array( 'extra' => $post_data ) );
 						$service->share( $post_data, $account_data );
-						$this->logger->alert_error('Finish Posting...' . json_encode($service));
 					}
 				} catch ( Exception $exception ) {
 					$error_message = sprintf( Rop_I18n::get_labels( 'accounts.service_error' ), $account_data['service'] );
