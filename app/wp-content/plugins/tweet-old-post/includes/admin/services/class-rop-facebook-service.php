@@ -822,9 +822,9 @@ class Rop_Facebook_Service extends Rop_Services_Abstract {
 					$post_data['url'] = $attachment_url; // To use HTTP request, we need image url back.
 				}
 				// Send the request via http request.
-				$sent_request = $this->remote_post_curl( $url, $post_data );
-				//$response     = $sent_request['response'];
-				$body         = $sent_request;
+				$sent_request = $this->remote_post_http( $url, $post_data );
+				$response     = $sent_request['response'];
+				$body         = $sent_request['body'];
 				$this->logger->alert_error( 'End remote_post_http. '.json_encode($sent_request)   );
 			}
 			
