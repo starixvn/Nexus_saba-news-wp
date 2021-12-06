@@ -164,4 +164,13 @@ $(document).ready(function () {
         }, 800);
     });
 
+
+    var banner = $('.banner').offset()
+    $(window).on('scroll', function () {
+        if ($(this).scrollTop() > banner.top + 20) {
+            $(".ads").addClass('active-ads');
+        } else {
+            $(".ads").removeClass('active-ads');
+        }
+    });
 });
