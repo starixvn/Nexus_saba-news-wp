@@ -1777,3 +1777,16 @@ button {
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
+
+.ads {
+  position: fixed;
+  top: 50%;
+  transform: translate(0%, -50%);
+  z-index: 99999999999; }
+  @media screen and (max-width: 1024px) {
+    .ads {
+      display: none; } }
+  .ads-left {
+    left: 0; }
+  .ads-right {
+    right: 0; }

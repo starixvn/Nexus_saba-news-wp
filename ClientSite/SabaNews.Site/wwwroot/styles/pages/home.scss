@@ -744,3 +744,21 @@
         z-index: 10004;
     }
 }
+
+.ads {
+    position: fixed;
+    top: 50%;
+    transform: translate(0%,-50%);
+    z-index: 99999999999;
+    @include tableMobile {
+        display: none;
+    }
+
+    &-left {
+        left: 0;
+    }
+
+    &-right {
+        right: 0;
+    }
+}
