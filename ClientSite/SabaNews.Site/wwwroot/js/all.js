@@ -166,11 +166,13 @@ $(document).ready(function () {
 
 
     var banner = $('.banner').offset()
-    $(window).on('scroll', function () {
-        if ($(this).scrollTop() > banner.top + 20) {
-            $(".ads").addClass('active-ads');
-        } else {
-            $(".ads").removeClass('active-ads');
-        }
-    });
+    if (banner) {
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > banner.top + 20) {
+                $(".ads").addClass('active-ads');
+            } else {
+                $(".ads").removeClass('active-ads');
+            }
+        });
+    }
 });
