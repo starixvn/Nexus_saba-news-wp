@@ -165,9 +165,9 @@ $(document).ready(function () {
     });
 
     var banner = $('.banner').offset();
-    var skip = (typeof banner != 'undefined') ? banner.top : 0;
+    var top = (typeof banner != 'undefined') ? banner.top : 152;
     $(window).on('scroll', function () {
-        if ($(this).scrollTop() > skip + 20) {
+        if ($(this).scrollTop() > top + 20) {
             $(".ads").addClass('active-ads');
         } else {
             $(".ads").removeClass('active-ads');
