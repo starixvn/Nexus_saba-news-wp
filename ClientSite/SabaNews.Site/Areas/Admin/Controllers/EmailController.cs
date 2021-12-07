@@ -323,7 +323,7 @@
         public async Task<int> Send(EmailModel model)
         {
             var users = await userService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubscribe == 1).ToList();
+            var subscribedUsers = users.Where(item => item.IsSubscribe == 1).GroupBy(p => p.Id).Select(g => g.FirstOrDefault()).ToList();
             var userNumber = subscribedUsers.Count;
             foreach (var user in subscribedUsers)
             {
