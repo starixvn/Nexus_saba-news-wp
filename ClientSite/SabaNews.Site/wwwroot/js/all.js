@@ -164,15 +164,13 @@ $(document).ready(function () {
         }, 800);
     });
 
-
-    var banner = $('.banner').offset()
-    if (banner) {
-        $(window).on('scroll', function () {
-            if ($(this).scrollTop() > banner.top + 20) {
-                $(".ads").addClass('active-ads');
-            } else {
-                $(".ads").removeClass('active-ads');
-            }
-        });
-    }
+    var banner = $('.banner').offset();
+    var skip = (typeof banner != 'undefined') ? banner.top : 0;
+    $(window).on('scroll', function () {
+        if ($(this).scrollTop() > skip + 20) {
+            $(".ads").addClass('active-ads');
+        } else {
+            $(".ads").removeClass('active-ads');
+        }
+    });
 });
