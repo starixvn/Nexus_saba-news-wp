@@ -46,7 +46,7 @@
             
             if (filename.Contains("\\"))
             {
-                filename = filename[(filename.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) + 1)..];
+                filename = filename.Replace("\\", "");
             }
             if (filename.Contains(" "))
             {
