@@ -251,7 +251,7 @@
         {
             if (token == "")
             {
-                return Redirect(returnUrl);
+                return Redirect(returnUrl ?? Constants.HomepageUrl);
             }
             var command = new VerifyTokenEmailDetailCommand
             {
