@@ -18,6 +18,7 @@
 
 @import '../components/_card-horizontal';
 @import '../components/card-vertical';
+@import '../components/ads';
 
 
 
@@ -745,36 +746,4 @@
     }
 }
 
-.ads {
-    position: absolute;
-    top: 24.5rem;
-    z-index: 99999999999;
 
-    &.active-ads {
-        top: 7.5rem;
-        position: fixed;
-    }
-
-    @include tableMobile {
-        display: none;
-    }
-
-
-    &-left {
-        left: 8.5%;
-
-        @media screen and (max-width : 1440px) {
-            left: 0;
-            max-width: 11rem;
-        }
-    }
-
-    &-right {
-        right: 8.5%;
-
-        @media screen and (max-width : 1440px) {
-            right: 0;
-            max-width: 11rem;
-        }
-    }
-}

@@ -151,19 +151,19 @@
 								</div>
 								<div class="box-edit-form" id="form_update_password">
 									<div class="title">@ViewResources.ChangePassword</div>
-                                    <div class="input-form">
-                                        <input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
-                                        <p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
-                                        <p class="error error-password old-password-error"></p>
-                                        <a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
-                                        <a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
-                                    </div>
-                                    <div class="input-form">
-                                        <input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
-                                        <p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
-                                        <a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
-                                        <a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
-                                    </div>
+									<div class="input-form">
+										<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
+										<p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
+										<p class="error error-password old-password-error"></p>
+										<a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
+										<a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
+									</div>
+									<div class="input-form">
+										<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
+										<p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
+										<a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
+										<a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
+									</div>
 									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
 									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
 									<span class="close-edit icon-close"></span>
@@ -303,10 +303,10 @@
 					</div>
 					<div class="group-table">
 						<div class="left-table">
-                            <div class="label-fill">
-                                <span class="icon-google-color"></span>
-                                <span class="txt">Google</span>
-                            </div>
+							<div class="label-fill">
+								<span class="icon-google-color"></span>
+								<span class="txt">Google</span>
+							</div>
 						</div>
 						<div class="right-table">
 							<div class="box-control">
@@ -319,10 +319,10 @@
 								{
 									<a href="javascript:;" class="social-action disconnect_social_login" data-id="@Model.User.Id" data-type="@ViewResources.Google">@ViewResources.Disconnect</a>
 								}
-								else 
+								else
 								{
-									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" class="social-action connect"  >@ViewResources.Connect</a>
-								} 
+									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" class="social-action connect">@ViewResources.Connect</a>
+								}
 							</div>
 						</div>
 					</div>
@@ -330,6 +330,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="ads ads-left"><a href="@Url.Action("ChangeDomain", "Home")"><img loading="lazy" src="~/images/ads.png" asp-append-version="true" class="img-res"></a></div>
 </section>
 
 <script>

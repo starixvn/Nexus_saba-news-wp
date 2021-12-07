@@ -127,6 +127,12 @@
             return View(model);
         }
 
+        [Route("thong-bao-thay-doi-ten-mien")]
+        public ActionResult ChangeDomain()
+        {
+            return View();
+        }
+
 
         [Route("Search/page/{page}")]
         [Route("Search")]

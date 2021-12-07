@@ -93,18 +93,9 @@
             var commandResult = await userService.UpdateUserSavePostAsync(sessionService.User.Id, listPosts);
             if (commandResult.IsSuccessful)
             {
-                sessionService.User = new UserSession
-                {
-                    Id = sessionService.User.Id,
-                    Email = sessionService.User.Email,
-                    Name = sessionService.User.Name,
-                    EmailConfirmed = sessionService.User.EmailConfirmed,
-                    LoginType = sessionService.User.LoginType,
-                    SavedPosts = listPosts,
-                    HandleSavePosts = listSavePosts,
-                    Password = sessionService.User.Password,
-                    Photo =  sessionService.User.Photo
-                };
+                user.SavedPosts = listPosts;
+                user.HandleSavePosts = listSavePosts;
+                sessionService.User = user;
             }
             return Json(commandResult);
         }

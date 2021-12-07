@@ -1262,6 +1262,29 @@ button {
     font-size: 1.3rem;
     margin-left: .3rem; }
 
+.ads {
+  position: absolute;
+  top: 24.5rem;
+  z-index: 99999999999; }
+  .ads.active-ads {
+    top: 7.5rem;
+    position: fixed; }
+  @media screen and (max-width: 1024px) {
+    .ads {
+      display: none; } }
+  .ads-left {
+    left: 8.5%; }
+    @media screen and (max-width: 1440px) {
+      .ads-left {
+        left: 0;
+        max-width: 11rem; } }
+  .ads-right {
+    right: 8.5%; }
+    @media screen and (max-width: 1440px) {
+      .ads-right {
+        right: 0;
+        max-width: 11rem; } }
+
 .main .block-hot-news .block__content {
   display: flex; }
   @media (max-device-width: 767px) {
@@ -1777,26 +1800,3 @@ button {
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
-
-.ads {
-  position: absolute;
-  top: 24.5rem;
-  z-index: 99999999999; }
-  .ads.active-ads {
-    top: 7.5rem;
-    position: fixed; }
-  @media screen and (max-width: 1024px) {
-    .ads {
-      display: none; } }
-  .ads-left {
-    left: 8.5%; }
-    @media screen and (max-width: 1440px) {
-      .ads-left {
-        left: 0;
-        max-width: 11rem; } }
-  .ads-right {
-    right: 8.5%; }
-    @media screen and (max-width: 1440px) {
-      .ads-right {
-        right: 0;
-        max-width: 11rem; } }
