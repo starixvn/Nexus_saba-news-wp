@@ -168,9 +168,9 @@ $(document).ready(function () {
     var top = (typeof banner != 'undefined') ? banner.top : 152;
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > top + 20) {
-            $(".ads").addClass('active-ads');
+            $(".banner-change-domain").addClass('active-ads');
         } else {
-            $(".ads").removeClass('active-ads');
+            $(".banner-change-domain").removeClass('active-ads');
         }
     });
 });

@@ -155,7 +155,7 @@
         public const int ServerTimeZone = 7;
         public const int StringLimitLength = 200;
         public const string UploadFolder = "/uploads/";
-        public const string BannerUploadFolder = "/uploads/banner/";
+        public const string BannerUploadFolder = "uploads/banner/";
         public const string HomepageUrl = "/";
 
         public const int CacheHomePageTimeoutMinutes = 20;

@@ -1262,33 +1262,33 @@ button {
     font-size: 1.3rem;
     margin-left: .3rem; }
 
-.ads {
+.banner-change-domain {
   position: absolute;
   top: 24.5rem;
   z-index: 99999999999; }
-  .ads.active-ads {
+  .banner-change-domain.active-ads {
     top: 7.5rem;
     position: fixed; }
   @media screen and (max-width: 1024px) {
-    .ads {
+    .banner-change-domain {
       display: none; } }
-  .ads-left {
+  .banner-change-domain.banner-left {
     left: 8.5%; }
     @media screen and (max-width: 1600px) {
-      .ads-left {
+      .banner-change-domain.banner-left {
         left: 0;
         max-width: 18rem; } }
     @media screen and (max-width: 1440px) {
-      .ads-left {
+      .banner-change-domain.banner-left {
         left: 0;
         max-width: 14rem; } }
     @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
-      .ads-left {
+      .banner-change-domain.banner-left {
         max-width: 10rem; } }
-  .ads-right {
+  .banner-change-domain-right {
     right: 8.5%; }
     @media screen and (max-width: 1600px) {
-      .ads-right {
+      .banner-change-domain-right {
         right: 0;
         max-width: 11rem; } }
 

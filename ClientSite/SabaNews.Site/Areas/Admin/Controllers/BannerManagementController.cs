@@ -72,7 +72,7 @@
                 string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                 filename = pathService.EnsureCorrectFilename(filename);
                 filename = DateTime.Now.Millisecond + filename;
-                var filePath = pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder + filename);
+                var filePath = pathService.MapAbsoluteRootPath("/" + Constants.BannerUploadFolder + filename);
                 if (System.IO.File.Exists(filePath))
                 {
                     System.IO.File.Delete(filePath);

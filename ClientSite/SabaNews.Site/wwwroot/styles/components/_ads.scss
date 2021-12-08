@@ -1,4 +1,4 @@
-﻿.ads {
+﻿.banner-change-domain {
     position: absolute;
     top: 24.5rem;
     z-index: 99999999999;
@@ -13,7 +13,7 @@
     }
 
 
-    &-left {
+    &.banner-left {
         left: 8.5%;
 
         @media screen and (max-width : 1600px) {

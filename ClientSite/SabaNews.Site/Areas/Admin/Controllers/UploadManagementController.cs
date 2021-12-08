@@ -65,7 +65,7 @@
         [HttpPost]
         public ActionResult ListBanner()
         {
-            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath(Constants.BannerUploadFolder));
+            var dir = new DirectoryInfo(pathService.MapAbsoluteRootPath("/" + Constants.BannerUploadFolder));
             var model = new FileBrowseViewModel
             {
                 FileInfos = dir.GetFiles().OrderByDescending(p => p.CreationTime).ToArray(),
