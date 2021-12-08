@@ -9,7 +9,7 @@
     }
 
     @media screen and (max-width: 1024px) {
-        display:none;
+        display: none;
     }
 
 
@@ -18,7 +18,16 @@
 
         @media screen and (max-width : 1600px) {
             left: 0;
-            max-width: 11rem;
+            max-width: 18rem;
+        }
+
+        @media screen and (max-width : 1440px) {
+            left: 0;
+            max-width: 14rem;
+        }
+
+        @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
+            max-width: 10rem;
         }
     }
 

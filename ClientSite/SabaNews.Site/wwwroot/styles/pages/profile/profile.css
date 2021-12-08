@@ -1306,7 +1306,14 @@ button {
     @media screen and (max-width: 1600px) {
       .ads-left {
         left: 0;
-        max-width: 11rem; } }
+        max-width: 18rem; } }
+    @media screen and (max-width: 1440px) {
+      .ads-left {
+        left: 0;
+        max-width: 14rem; } }
+    @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
+      .ads-left {
+        max-width: 10rem; } }
   .ads-right {
     right: 8.5%; }
     @media screen and (max-width: 1600px) {
