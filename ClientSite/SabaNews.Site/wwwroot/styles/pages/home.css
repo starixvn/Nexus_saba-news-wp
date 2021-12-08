@@ -1274,13 +1274,13 @@ button {
       display: none; } }
   .ads-left {
     left: 8.5%; }
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1600px) {
       .ads-left {
         left: 0;
         max-width: 11rem; } }
   .ads-right {
     right: 8.5%; }
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1600px) {
       .ads-right {
         right: 0;
         max-width: 11rem; } }
