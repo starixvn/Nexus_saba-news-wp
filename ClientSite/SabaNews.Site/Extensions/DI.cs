@@ -210,6 +210,8 @@
                 },
                 OnRemoteFailure = context =>
                 {
+                    context.Response.Redirect(context.Properties.GetString("/"));
+                    context.HandleResponse();
                     return Task.CompletedTask;
                 },
                 OnAccessDenied = context =>
