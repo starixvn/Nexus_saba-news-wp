@@ -19,8 +19,8 @@
     <ItemGroup>
       <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
       <PackageReference Include="AspNetCore.SEOHelper" Version="1.0.1" />
-      <PackageReference Include="Fanex.Caching" Version="2.2.2" />
-        <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.2" />
+      <PackageReference Include="Fanex.Caching" Version="2.2.3-beta1" />
+        <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.3-beta1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.12" />
         <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
