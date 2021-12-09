@@ -11,7 +11,7 @@
         private static readonly XNamespace xmlns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         private static readonly XNamespace xmlns_news = "http://www.google.com/schemas/sitemap-news/0.9";
 
-        public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes)
+        public static string GetSitemapDocument(IEnumerable<SitemapModel> sitemapNodes, string domain)
         {
             XElement root = new(xmlns + "urlset");
 
@@ -21,7 +21,7 @@
                 {
                     XElement urlElement = new(
                     xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString(sitemapNode.Url)),
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Slug}")),
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
                         DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)));

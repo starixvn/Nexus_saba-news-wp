@@ -242,7 +242,6 @@
 
         public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
         {
-            var domainName = configuration.GetValue<string>("BaseUrl");
             var sitemap = await baseService.GetDataAsync<SitemapModel>(new GetSitemapDataCriteria());
 
             foreach (var item in sitemap)
@@ -251,7 +250,7 @@
                 {
                     continue;
                 }
-                item.Url = item.PostType == "category" ? string.Format("{0}tin-the-thao/{1}", domainName, item.Slug) : string.Format("{0}{1}", domainName, item.Slug);
+                item.Url = item.PostType == "category" ? string.Format("tin-the-thao/{0}", item.Slug) : item.Slug;
             }
 
             return sitemap;

@@ -38,8 +38,9 @@
         [Route("sitemap.xml")]
         public async Task<ContentResult> Sitemap()
         {
+            var domain = configuration.GetValue<string>("BaseUrl");
             var data = await dataControlService.GenerateSitmapXmlData();
-            string sitemap = SitemapHelper.GetSitemapDocument(data);
+            string sitemap = SitemapHelper.GetSitemapDocument(data, domain);
             return Content(sitemap, "text/xml", Encoding.UTF8);
         }
 
