@@ -21,7 +21,7 @@
                 {
                     XElement urlElement = new(
                     xmlns + "url",
-                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Slug}")),
+                    new XElement(xmlns + "loc", Uri.EscapeUriString($"{domain}{sitemapNode.Url}")),
                     sitemapNode.ModifiedDate == null ? null : new XElement(
                         xmlns + "lastmod",
                         DateTimeExtensions.ToDateGMTSEAsia(sitemapNode.ModifiedDate.Value)));
