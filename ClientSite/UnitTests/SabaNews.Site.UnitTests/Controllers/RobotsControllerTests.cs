@@ -53,7 +53,7 @@
             var controller = GetController();
             var expected = fixture.Create<IEnumerable<SitemapModel>>();
             dataControlService.GenerateSitmapXmlData().Returns(expected);
-            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected, "");
             //Act
             var actual = await controller.Sitemap();
 
@@ -71,7 +71,7 @@
             expected.Add(new SitemapModel { ID = 1, Url = "url", ModifiedDate = DateTime.Now });
             expected.Add(new SitemapModel { ID = 2, Url = "url" });
             dataControlService.GenerateSitmapXmlData().Returns(expected);
-            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected);
+            var expectedSitemap = SitemapHelper.GetSitemapDocument(expected, "");
             //Act
             var actual = await controller.Sitemap();
 
