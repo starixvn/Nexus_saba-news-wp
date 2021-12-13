@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Google;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models.Auth;
@@ -47,7 +48,7 @@
                 var user = sessionService.User;
                 user.ErrorConnectWrongEmail = true;
                 sessionService.User = user;
-                return Redirect(returnUrl);
+                return Redirect(returnUrl ?? Constants.HomepageUrl);
             }
             var userInfo = new ExternalUser
             {

@@ -101,7 +101,7 @@
         {
             var criteria = new GetPostDetailBySlugCriteria
             {
-                Slug = slug.Trim(),
+                Slug = slug,
                 PostType = postType
             };
             var post = await baseService.GetDataEntityAsync<Post>(criteria);
