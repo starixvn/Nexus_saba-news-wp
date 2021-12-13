@@ -40,6 +40,7 @@
 
         public async Task<IActionResult> ExternalResponse(string provider, string returnUrl)
         {
+            returnUrl ??= Constants.HomepageUrl;
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             var claims = result.Principal.Identities.FirstOrDefault().Claims;
             var email = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
@@ -48,7 +49,7 @@
                 var user = sessionService.User;
                 user.ErrorConnectWrongEmail = true;
                 sessionService.User = user;
-                return Redirect(returnUrl ?? Constants.HomepageUrl);
+                return Redirect(returnUrl);
             }
             var userInfo = new ExternalUser
             {
@@ -69,7 +70,7 @@
                 return Redirect(returnUrl);
             }
 
-            return Redirect(returnUrl ?? Constants.HomepageUrl);
+            return Redirect(returnUrl);
         }
 
         private async Task SetSessionUserAsync(ExternalUser userInfo)
