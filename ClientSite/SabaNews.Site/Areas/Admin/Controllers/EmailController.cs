@@ -324,7 +324,7 @@
         {
             var users = await userService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
             var subscribedUsers = users.Where(item => item.IsSubscribe == 1).GroupBy(p => p.Id).Select(g => g.FirstOrDefault()).ToList();
-            var userNumber = subscribedUsers.Count;
+            var sentNumbers = 0;
             foreach (var user in subscribedUsers)
             {
                 var token = Guid.NewGuid().ToString();
@@ -357,9 +357,13 @@
                     TokenId = token,
                     Status = resultSendMail.Code
                 };
-                await emailService.CreateEmailDetailAsync(emailData);
+                var result =  await emailService.CreateEmailDetailAsync(emailData);
+                if (result.IsSuccessful)
+                {
+                    sentNumbers++;
+                }
             }
-            return userNumber;
+            return sentNumbers;
         }
 
       
