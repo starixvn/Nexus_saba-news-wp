@@ -69,7 +69,7 @@
                 return Redirect(returnUrl);
             }
 
-            return Redirect(returnUrl);
+            return Redirect(returnUrl ?? Constants.HomepageUrl);
         }
 
         private async Task SetSessionUserAsync(ExternalUser userInfo)
