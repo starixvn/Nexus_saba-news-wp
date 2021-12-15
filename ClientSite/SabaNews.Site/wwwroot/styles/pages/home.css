@@ -1387,7 +1387,6 @@ button {
   .main .banner-mobile {
     text-align: center; }
     .main .banner-mobile img {
-      border: 1px solid #e0e0e0;
       max-width: 100%; }
   .main .banner {
     display: none; } }
