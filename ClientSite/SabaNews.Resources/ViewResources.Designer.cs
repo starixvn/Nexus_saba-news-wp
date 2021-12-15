@@ -205,20 +205,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Banner display in desktop screen.
+        ///   Looks up a localized string similar to Banner display in desktop center screen.
         /// </summary>
-        public static string BannerDisplayInDesktopScreen {
+        public static string BannerDisplayInDesktopCenterScreen {
             get {
-                return ResourceManager.GetString("BannerDisplayInDesktopScreen", resourceCulture);
+                return ResourceManager.GetString("BannerDisplayInDesktopCenterScreen", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Banner display in mobile screen.
+        ///   Looks up a localized string similar to Banner display in desktop top screen.
         /// </summary>
-        public static string BannerDisplayInMobileScreen {
+        public static string BannerDisplayInDesktopTopScreen {
             get {
-                return ResourceManager.GetString("BannerDisplayInMobileScreen", resourceCulture);
+                return ResourceManager.GetString("BannerDisplayInDesktopTopScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banner display in mobile top screen.
+        /// </summary>
+        public static string BannerDisplayInMobileTopScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInMobileTopScreen", resourceCulture);
             }
         }
         
@@ -502,11 +511,20 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop Image.
+        ///   Looks up a localized string similar to Desktop center banner.
         /// </summary>
-        public static string DesktopImage {
+        public static string DesktopCenterBanner {
             get {
-                return ResourceManager.GetString("DesktopImage", resourceCulture);
+                return ResourceManager.GetString("DesktopCenterBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop top banner.
+        /// </summary>
+        public static string DesktopTopBanner {
+            get {
+                return ResourceManager.GetString("DesktopTopBanner", resourceCulture);
             }
         }
         
@@ -1069,11 +1087,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigate when click into banner.
+        ///   Looks up a localized string similar to Navigate when click into desktop center banner.
         /// </summary>
-        public static string NavigateWhenClickIntoBanner {
+        public static string NavigateWhenClickIntoDesktopCenterBanner {
             get {
-                return ResourceManager.GetString("NavigateWhenClickIntoBanner", resourceCulture);
+                return ResourceManager.GetString("NavigateWhenClickIntoDesktopCenterBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into desktop top banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoDesktopTopBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoDesktopTopBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into mobile top banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoMobileTopBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoMobileTopBanner", resourceCulture);
             }
         }
         

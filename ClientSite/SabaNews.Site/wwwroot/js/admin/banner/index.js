@@ -1,47 +1,35 @@
 ﻿var banner = (function ($) {
 
-    function ValidateForm() {
-        $('input[name=NavigationUrl]').on('keyup', function () {
-            var val = $(this).val();
-            if (val.trim() === "") {
-                $('.btn-save-navigation').prop('disabled', true);
-                $('.btn-save-navigation').addClass('btn-disabled');
-            } else {
-                $('.btn-save-navigation').prop('disabled', false);
-                $('.btn-save-navigation').removeClass('btn-disabled');
+    function UpdateBannerInfo() {
+        $('.btn-save-navigation').on('click', function () {
+            var value = $(this).parent().find('input[name=NavigationUrl]').val();
+            var current = $(this).data('current');
+            if (value === current) {
+                $(this).parent().removeClass('toggle-active-form');
+                return false;
             }
+            var type = $(this).data('type');
+            console.log(value, type);
+            SaveNavigationData(value, type);
         });
     }
 
-    function UpdateBannerInfo() {
-        $('.btn-save-navigation').on('click', function () {
-            var value = $('input[name=NavigationUrl]').val();
-            if (value.trim() === "") {
-                $('.navagation-error').show();
-                return false;
-            }
-            var current = $(this).data('current');
-            if (value === current) {
-                $('#form_update_phone').removeClass('toggle-active-form');
-                return false;
-            }
-
-            $.ajax({
-                type: 'POST',
-                url: '/Admin/BannerManagement/UpdateInfo',
-                data: { value: value, type: 'navigation' },
-                success: function (res) {
-                    if (res.isSuccessful) {
-                        var msg = 'Update Info Succesfully'
-                        GetSuccessPopup('#NoticeModal', msg);
-                    } else {
-                        GetErrorPopup('#NoticeModal', res.message);
-                    }
-                    $('#NoticeModal').bind('hidden.bs.modal', function () {
-                        location.reload();
-                    });
+    function SaveNavigationData(value, type) {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/BannerManagement/UpdateInfo',
+            data: { value: value, type: type },
+            success: function (res) {
+                if (res.isSuccessful) {
+                    var msg = 'Update Info Succesfully'
+                    GetSuccessPopup('#NoticeModal', msg);
+                } else {
+                    GetErrorPopup('#NoticeModal', res.message);
                 }
-            });
+                $('#NoticeModal').bind('hidden.bs.modal', function () {
+                    location.reload();
+                });
+            }
         });
     }
 
@@ -72,25 +60,15 @@
     }
 
     function UploadBannerProcess() {
-        $('#uploadDesktop').on('submit', function (e) {
+        $('.upload-banner').on('submit', function (e) {
             e.preventDefault();
             $('.photo-error').hide();
             var action = $(this).data('action');
+            var type = $(this).data('type');
             if (action === 'upload') {
-                UploadAndUpdateBanner("desktop", $(this));
+                UploadAndUpdateBanner(type, $(this));
             } else if (action == 'update') {
-                UpdateBanner("desktop", $(this));
-            }
-        });
-
-        $('#uploadMobile').on('submit', function (e) {
-            e.preventDefault();
-            $('.photo-error').hide();
-            var action = $(this).data('action');
-            if (action === 'upload') {
-                UploadAndUpdateBanner("mobile", $(this));
-            } else if (action == 'update') {
-                UpdateBanner("mobile", $(this));
+                UpdateBanner(type, $(this));
             }
         });
 
@@ -211,7 +189,6 @@
     }
 
     function init() {
-        ValidateForm();
         UpdateBannerInfo();
         UploadBannerProcess();
     }

@@ -41,14 +41,23 @@
             var banner = await bannerService.GetBannerInfoAsync();
             switch (type)
             {
-                case BannerType.Navigation:
-                    banner.NavigationUrl = value;
+                case BannerType.DesktopTopNavigation:
+                    banner.DesktopTopNavigationUrl = value;
                     break;
-                case BannerType.Desktop:
-                    banner.DesktopUrl = value;
+                case BannerType.MobileTopNavigation:
+                    banner.MobileTopNavigationUrl = value;
                     break;
-                case BannerType.Mobile:
-                    banner.MobileUrl = value;
+                case BannerType.DesktopTop:
+                    banner.DesktopTopUrl = value;
+                    break;
+                case BannerType.MobileTop:
+                    banner.MobileTopUrl = value;
+                    break;
+                case BannerType.DesktopCenter:
+                    banner.DesktopCenterUrl = value;
+                    break;
+                case BannerType.DesktopCenterNavigation:
+                    banner.DesktopCenterNavigationUrl = value;
                     break;
                 default:
                     throw new InvalidOperationException();
@@ -82,13 +91,19 @@
 
                 string linkPhoto = Constants.BannerUploadFolder + filename;
                 string url = string.Concat(baseUrl, linkPhoto);
-                if (type == BannerType.Desktop)
+                switch (type)
                 {
-                    banner.DesktopUrl = url;
-                }
-                else
-                {
-                    banner.MobileUrl = url;
+                    case BannerType.DesktopTop:
+                        banner.DesktopTopUrl = url;
+                        break;
+                    case BannerType.MobileTop:
+                        banner.MobileTopUrl = url;
+                        break;
+                    case BannerType.DesktopCenter:
+                        banner.DesktopCenterUrl = url;
+                        break;
+                    default:
+                        throw new InvalidOperationException();
                 }
                 result = await bannerService.UpdateBannerInfoAsync(banner);
             }

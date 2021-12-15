@@ -2,10 +2,16 @@
 {
     public class BannerModel
     {
-        public string NavigationUrl { get; set; }
+        public string DesktopTopUrl { get; set; }
 
-        public string DesktopUrl { get; set; }
+        public string DesktopTopNavigationUrl { get; set; }
 
-        public string MobileUrl { get; set; }
+        public string MobileTopUrl { get; set; }
+
+        public string MobileTopNavigationUrl { get; set; }
+
+        public string DesktopCenterUrl { get; set; }
+
+        public string DesktopCenterNavigationUrl { get; set; }
     }
 }

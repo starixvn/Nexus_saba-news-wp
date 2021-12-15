@@ -2,10 +2,16 @@
 {
     public static class BannerType
     {
-        public const string Desktop = "desktop";
+        public const string DesktopTop = "DesktopTop";
 
-        public const string Mobile = "mobile";
+        public const string DesktopTopNavigation = "DesktopTopBannerNavigation";
 
-        public const string Navigation = "navigation";
+        public const string DesktopCenter = "DesktopCenter";
+
+        public const string DesktopCenterNavigation = "DesktopCenterNavigation";
+
+        public const string MobileTop = "MobileTop";
+
+        public const string MobileTopNavigation = "MobileTopBannerNavigation";
     }
 }

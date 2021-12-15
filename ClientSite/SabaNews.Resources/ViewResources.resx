@@ -723,11 +723,11 @@
   <data name="BannerManagement" xml:space="preserve">
     <value>Banner Management</value>
   </data>
-  <data name="BannerDisplayInDesktopScreen" xml:space="preserve">
-    <value>Banner display in desktop screen</value>
+  <data name="BannerDisplayInDesktopTopScreen" xml:space="preserve">
+    <value>Banner display in desktop top screen</value>
   </data>
-  <data name="BannerDisplayInMobileScreen" xml:space="preserve">
-    <value>Banner display in mobile screen</value>
+  <data name="BannerDisplayInMobileTopScreen" xml:space="preserve">
+    <value>Banner display in mobile top screen</value>
   </data>
   <data name="BannerInfo" xml:space="preserve">
     <value>Banner Information</value>
@@ -735,8 +735,8 @@
   <data name="ChangeAction" xml:space="preserve">
     <value>Change</value>
   </data>
-  <data name="DesktopImage" xml:space="preserve">
-    <value>Desktop Image</value>
+  <data name="DesktopTopBanner" xml:space="preserve">
+    <value>Desktop top banner</value>
   </data>
   <data name="DesktopUrl" xml:space="preserve">
     <value>Desktop Url</value>
@@ -753,8 +753,8 @@
   <data name="MobileUrl" xml:space="preserve">
     <value>Mobile Url</value>
   </data>
-  <data name="NavigateWhenClickIntoBanner" xml:space="preserve">
-    <value>Navigate when click into banner</value>
+  <data name="NavigateWhenClickIntoDesktopTopBanner" xml:space="preserve">
+    <value>Navigate when click into desktop top banner</value>
   </data>
   <data name="NavigationUrl" xml:space="preserve">
     <value>Navigation Url</value>
@@ -770,5 +770,17 @@
   </data>
   <data name="UploadedBanners" xml:space="preserve">
     <value>Uploaded Banners</value>
+  </data>
+  <data name="NavigateWhenClickIntoMobileTopBanner" xml:space="preserve">
+    <value>Navigate when click into mobile top banner</value>
+  </data>
+  <data name="BannerDisplayInDesktopCenterScreen" xml:space="preserve">
+    <value>Banner display in desktop center screen</value>
+  </data>
+  <data name="DesktopCenterBanner" xml:space="preserve">
+    <value>Desktop center banner</value>
+  </data>
+  <data name="NavigateWhenClickIntoDesktopCenterBanner" xml:space="preserve">
+    <value>Navigate when click into desktop center banner</value>
   </data>
 </root>

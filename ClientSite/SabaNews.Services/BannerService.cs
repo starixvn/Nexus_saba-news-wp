@@ -29,8 +29,8 @@
         public async Task<BannerModel> GetBannerInfoAsync()
         {
             var banner =  await baseService.GetDataEntityAsync<BannerModel>(new GetBannerInfoCriteria());
-            banner.DesktopUrl = string.IsNullOrEmpty(banner.DesktopUrl) ? string.Concat(baseUrl, DefaultDestopUrl) : banner.DesktopUrl;
-            banner.MobileUrl = string.IsNullOrEmpty(banner.MobileUrl) ? string.Concat(baseUrl, DefaultMobileUrl) : banner.MobileUrl;
+            banner.DesktopTopUrl = string.IsNullOrEmpty(banner.DesktopTopUrl) ? string.Concat(baseUrl, DefaultDestopUrl) : banner.DesktopTopUrl;
+            banner.MobileTopUrl = string.IsNullOrEmpty(banner.MobileTopUrl) ? string.Concat(baseUrl, DefaultMobileUrl) : banner.MobileTopUrl;
             return banner;
 
         }
@@ -39,9 +39,12 @@
         {
             var criteria = new UpdateBannerInfoCommand
             {
-                NaviagationUrl = banner.NavigationUrl,
-                DesktopUrl = banner.DesktopUrl,
-                MobileUrl = banner.MobileUrl,
+                DesktopTopNavigationUrl = banner.DesktopTopNavigationUrl,
+                DesktopTopUrl = banner.DesktopTopUrl,
+                MobileTopUrl = banner.MobileTopUrl,
+                MobileTopNavigationUrl = banner.MobileTopNavigationUrl,
+                DesktopCenterUrl = banner.DesktopCenterUrl,
+                DesktopCenterNavigationUrl = banner.DesktopCenterNavigationUrl,
                 ActionId = LogAction.UpdateBanner,
                 UpdatedDate = DateTime.UtcNow,
                 ActorId = sessionService.User.Id
