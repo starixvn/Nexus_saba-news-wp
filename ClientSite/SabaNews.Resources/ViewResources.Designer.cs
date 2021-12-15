@@ -214,6 +214,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banner display in desktop left side.
+        /// </summary>
+        public static string BannerDisplayInDesktopLeftScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInDesktopLeftScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banner display in desktop right side.
+        /// </summary>
+        public static string BannerDisplayInDesktopRightScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInDesktopRightScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banner display in desktop top screen.
         /// </summary>
         public static string BannerDisplayInDesktopTopScreen {
@@ -516,6 +534,24 @@ namespace SabaNews.Resources {
         public static string DesktopCenterBanner {
             get {
                 return ResourceManager.GetString("DesktopCenterBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop left banner.
+        /// </summary>
+        public static string DesktopLeftBanner {
+            get {
+                return ResourceManager.GetString("DesktopLeftBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop right banner.
+        /// </summary>
+        public static string DesktopRightBanner {
+            get {
+                return ResourceManager.GetString("DesktopRightBanner", resourceCulture);
             }
         }
         

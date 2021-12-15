@@ -59,6 +59,18 @@
                 case BannerType.DesktopCenterNavigation:
                     banner.DesktopCenterNavigationUrl = value;
                     break;
+                case BannerType.DesktopLeft:
+                    banner.DesktopLeftUrl = value;
+                    break;
+                case BannerType.DesktopLeftNavigation:
+                    banner.DesktopLeftNavigationUrl = value;
+                    break;
+                case BannerType.DesktopRight:
+                    banner.DesktopRightUrl = value;
+                    break;
+                case BannerType.DesktopRightNavigation:
+                    banner.DesktopRightNavigationUrl = value;
+                    break;
                 default:
                     throw new InvalidOperationException();
             }
@@ -101,6 +113,12 @@
                         break;
                     case BannerType.DesktopCenter:
                         banner.DesktopCenterUrl = url;
+                        break;
+                    case BannerType.DesktopLeft:
+                        banner.DesktopLeftUrl = url;
+                        break;
+                    case BannerType.DesktopRight:
+                        banner.DesktopRightUrl = url;
                         break;
                     default:
                         throw new InvalidOperationException();

@@ -10,8 +10,18 @@
 
         public const string DesktopCenterNavigation = "DesktopCenterNavigation";
 
+        public const string DesktopLeft = "DesktopLeft";
+
+        public const string DesktopLeftNavigation = "DesktopLeftNavigation";
+
+        public const string DesktopRight = "DesktopRight";
+
+        public const string DesktopRightNavigation = "DesktopRightNavigation";
+
         public const string MobileTop = "MobileTop";
 
         public const string MobileTopNavigation = "MobileTopBannerNavigation";
+
+        
     }
 }

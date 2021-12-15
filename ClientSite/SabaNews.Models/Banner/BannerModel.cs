@@ -13,5 +13,13 @@
         public string DesktopCenterUrl { get; set; }
 
         public string DesktopCenterNavigationUrl { get; set; }
+
+        public string DesktopLeftUrl { get; set; }
+
+        public string DesktopLeftNavigationUrl { get; set; }
+
+        public string DesktopRightUrl { get; set; }
+
+        public string DesktopRightNavigationUrl { get; set; }
     }
 }

@@ -16,6 +16,14 @@ namespace SabaNews.Criteria.Banner
 
         public string DesktopCenterNavigationUrl { get; set; }
 
+        public string DesktopLeftUrl { get; set; }
+
+        public string DesktopLeftNavigationUrl { get; set; }
+
+        public string DesktopRightUrl { get; set; }
+
+        public string DesktopRightNavigationUrl { get; set; }
+
         public int ActionId { get; set; }
 
         public int ActorId { get; set; }

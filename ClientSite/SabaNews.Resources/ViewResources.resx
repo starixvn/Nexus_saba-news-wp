@@ -783,4 +783,16 @@
   <data name="NavigateWhenClickIntoDesktopCenterBanner" xml:space="preserve">
     <value>Navigate when click into desktop center banner</value>
   </data>
+  <data name="BannerDisplayInDesktopLeftScreen" xml:space="preserve">
+    <value>Banner display in desktop left side</value>
+  </data>
+  <data name="BannerDisplayInDesktopRightScreen" xml:space="preserve">
+    <value>Banner display in desktop right side</value>
+  </data>
+  <data name="DesktopLeftBanner" xml:space="preserve">
+    <value>Desktop left banner</value>
+  </data>
+  <data name="DesktopRightBanner" xml:space="preserve">
+    <value>Desktop right banner</value>
+  </data>
 </root>
