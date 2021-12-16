@@ -5,6 +5,7 @@
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using System;
     using System.IO;
@@ -39,48 +40,8 @@
         public async Task<IActionResult> UpdateInfo(string value, string type)
         {
             var banner = await bannerService.GetBannerInfoAsync();
-            switch (type)
-            {
-                case BannerType.DesktopTopNavigation:
-                    banner.DesktopTopNavigationUrl = value;
-                    break;
-                case BannerType.MobileTopNavigation:
-                    banner.MobileTopNavigationUrl = value;
-                    break;
-                case BannerType.DesktopTop:
-                    banner.DesktopTopUrl = value;
-                    break;
-                case BannerType.MobileTop:
-                    banner.MobileTopUrl = value;
-                    break;
-                case BannerType.DesktopCenter:
-                    banner.DesktopCenterUrl = value;
-                    break;
-                case BannerType.DesktopCenterNavigation:
-                    banner.DesktopCenterNavigationUrl = value;
-                    break;
-                case BannerType.DesktopLeft:
-                    banner.DesktopLeftUrl = value;
-                    break;
-                case BannerType.DesktopLeftNavigation:
-                    banner.DesktopLeftNavigationUrl = value;
-                    break;
-                case BannerType.DesktopRight:
-                    banner.DesktopRightUrl = value;
-                    break;
-                case BannerType.DesktopRightNavigation:
-                    banner.DesktopRightNavigationUrl = value;
-                    break;
-                case BannerType.MobileCenter:
-                    banner.MobileCenterUrl = value;
-                    break;
-                case BannerType.MobileCenterNavigation:
-                    banner.MobileCenterNavigationUrl = value;
-                    break;
-                default:
-                    throw new InvalidOperationException();
-            }
-            var result = await bannerService.UpdateBannerInfoAsync(banner);
+            var bannerUpdatedData = UpdateBannerData(banner, type, value);
+            var result = await bannerService.UpdateBannerInfoAsync(bannerUpdatedData);
             return Json(result);
         }
 
@@ -139,6 +100,63 @@
                 result = new CommandResult { Message = e.Message }; 
             }
             return Json(result);
+        }
+
+        private static BannerModel UpdateBannerData(BannerModel banner, string type, string value)
+        {
+            switch (type)
+            {
+                case BannerType.DesktopTopNavigation:
+                    banner.DesktopTopNavigationUrl = value;
+                    break;
+                case BannerType.DesktopTop:
+                    banner.DesktopTopUrl = value;
+                    break;
+                case BannerType.DesktopCenter:
+                    banner.DesktopCenterUrl = value;
+                    break;
+                case BannerType.DesktopCenterNavigation:
+                    banner.DesktopCenterNavigationUrl = value;
+                    break;
+                case BannerType.DesktopLeft:
+                    banner.DesktopLeftUrl = value;
+                    break;
+                case BannerType.DesktopLeftNavigation:
+                    banner.DesktopLeftNavigationUrl = value;
+                    break;
+                case BannerType.DesktopRight:
+                    banner.DesktopRightUrl = value;
+                    break;
+                case BannerType.DesktopRightNavigation:
+                    banner.DesktopRightNavigationUrl = value;
+                    break;
+                default:
+                    banner = UpdateBannerMobileData(banner, type, value);
+                    break;
+            }
+            return banner;
+        }
+
+        private static BannerModel UpdateBannerMobileData(BannerModel banner, string type, string value)
+        {
+            switch (type)
+            {
+                case BannerType.MobileTopNavigation:
+                    banner.MobileTopNavigationUrl = value;
+                    break;
+                case BannerType.MobileTop:
+                    banner.MobileTopUrl = value;
+                    break;
+                case BannerType.MobileCenter:
+                    banner.MobileCenterUrl = value;
+                    break;
+                case BannerType.MobileCenterNavigation:
+                    banner.MobileCenterNavigationUrl = value;
+                    break;
+                default:
+                    throw new InvalidOperationException();
+            }
+            return banner;
         }
     }
 }
