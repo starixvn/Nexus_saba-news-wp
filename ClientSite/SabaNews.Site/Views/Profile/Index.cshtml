@@ -116,11 +116,11 @@
 									<ul class="txt-fill">
 										@if (Model.User.Phone != null)
 										{
-											<li class="txt-feild">@Model.User.Phone</li>
+										<li class="txt-feild">@Model.User.Phone</li>
 										}
 										else
 										{
-											<li>@ViewResources.ProfilePhoneValidate</li>
+										<li>@ViewResources.ProfilePhoneValidate</li>
 										}
 
 									</ul>
@@ -140,36 +140,36 @@
 
 					@if (Model.User.Password != "")
 					{
-						<div class="group-table">
-							<div class="left-table">
-								<div class="label-fill">@ViewResources.Password</div>
+					<div class="group-table">
+						<div class="left-table">
+							<div class="label-fill">@ViewResources.Password</div>
+						</div>
+						<div class="right-table">
+							<div class="box-control">
+								<input type="password" name="password" readonly value="@Model.User.Password" class="input-password" />
+								<a href="#" class="action social-action">@ViewResources.ChangePassword</a>
 							</div>
-							<div class="right-table">
-								<div class="box-control">
-									<input type="password" name="password" readonly value="@Model.User.Password" class="input-password" />
-									<a href="#" class="action social-action">@ViewResources.ChangePassword</a>
+							<div class="box-edit-form" id="form_update_password">
+								<div class="title">@ViewResources.ChangePassword</div>
+								<div class="input-form">
+									<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
+									<p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
+									<p class="error error-password old-password-error"></p>
+									<a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
+									<a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
 								</div>
-								<div class="box-edit-form" id="form_update_password">
-									<div class="title">@ViewResources.ChangePassword</div>
-									<div class="input-form">
-										<input type="password" name="oldpassword" value="" class="input-edit" placeholder="Nhập mật khẩu cũ" />
-										<p class="error error-password old-password-length-error">@ViewResources.ValidateLengthOldPassword</p>
-										<p class="error error-password old-password-error"></p>
-										<a href="#" class="event-pass show-old-pass"><i class="icon-show"></i></a>
-										<a href="#" class="event-pass hide-old-pass" style="display: none"><i class="icon-hide"></i></a>
-									</div>
-									<div class="input-form">
-										<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
-										<p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
-										<a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
-										<a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
-									</div>
-									<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
-									<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
-									<span class="close-edit icon-close"></span>
+								<div class="input-form">
+									<input type="password" name="newpassword" value="" class="input-edit" placeholder="Tạo mật khẩu mới" />
+									<p class="error error-password new-password-length-error">@ViewResources.ValidateLengthNewPassword</p>
+									<a href="#" class="event-pass show-new-pass"><i class="icon-show"></i></a>
+									<a href="#" class="event-pass hide-new-pass" style="display: none"><i class="icon-hide"></i></a>
 								</div>
+								<button class="btn-submit-edit btn-save-password btn-disabled" disabled>@ViewResources.Save</button>
+								<p class="forgot-pass"><a href="javascript:;" id="profile-forgot-password">@ViewResources.ForgotPassword</a></p>
+								<span class="close-edit icon-close"></span>
 							</div>
 						</div>
+					</div>
 
 					}
 
@@ -215,11 +215,11 @@
 										@if (Model.User.Gender != null)
 										{
 											disabled = "";
-											<li class="txt-feild">@Model.User.Gender</li>
+										<li class="txt-feild">@Model.User.Gender</li>
 										}
 										else
 										{
-											<li>@ViewResources.ProfileNoSelected</li>
+										<li>@ViewResources.ProfileNoSelected</li>
 										}
 
 									</ul>
@@ -292,11 +292,11 @@
 								</div>
 								@if (isConnectFacebook)
 								{
-									<a href="javascript:;" data-id="@Model.User.Id" data-type="@ViewResources.Facebook" class="social-action disconnect_social_login">@ViewResources.Disconnect</a>
+								<a href="javascript:;" data-id="@Model.User.Id" data-type="@ViewResources.Facebook" class="social-action disconnect_social_login">@ViewResources.Disconnect</a>
 								}
 								else
 								{
-									<a href="ExternalAuthentication/Login?Provider=Facebook&returnUrl=/Profile" class="social-action connect">@ViewResources.Connect</a>
+								<a href="ExternalAuthentication/Login?Provider=Facebook&returnUrl=/Profile" class="social-action connect">@ViewResources.Connect</a>
 								}
 							</div>
 						</div>
@@ -317,11 +317,11 @@
 								</div>
 								@if (isConnectGoogle)
 								{
-									<a href="javascript:;" class="social-action disconnect_social_login" data-id="@Model.User.Id" data-type="@ViewResources.Google">@ViewResources.Disconnect</a>
+								<a href="javascript:;" class="social-action disconnect_social_login" data-id="@Model.User.Id" data-type="@ViewResources.Google">@ViewResources.Disconnect</a>
 								}
 								else
 								{
-									<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" class="social-action connect">@ViewResources.Connect</a>
+								<a href="ExternalAuthentication/Login?Provider=Google&returnUrl=/Profile" class="social-action connect">@ViewResources.Connect</a>
 								}
 							</div>
 						</div>
@@ -330,7 +330,7 @@
 			</div>
 		</div>
 	</div>
-	<partial name="_LayoutChangeDomain" />
+	@(await Component.InvokeAsync("BannerSidebar"))
 </section>
 
 <script>

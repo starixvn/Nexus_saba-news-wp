@@ -1314,10 +1314,10 @@ button {
     @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
       .banner-change-domain.banner-left {
         max-width: 10rem; } }
-  .banner-change-domain-right {
+  .banner-change-domain.banner-right {
     right: 8.5%; }
     @media screen and (max-width: 1600px) {
-      .banner-change-domain-right {
+      .banner-change-domain.banner-right {
         right: 0;
         max-width: 11rem; } }
 

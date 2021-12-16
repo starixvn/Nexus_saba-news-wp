@@ -33,11 +33,21 @@ namespace SabaNews.Criteria.UnitTests.Banner
             // Arrange
             var criteria = new UpdateBannerInfoCommand()
             {
-                NaviagationUrl = "url",
-                DesktopUrl = "url",
-                MobileUrl = "url",
+                DesktopTopNavigationUrl = "url",
+                DesktopCenterNavigationUrl = "url",
+                DesktopCenterUrl = "url",
+                DesktopLeftNavigationUrl = "url",
+                DesktopLeftUrl = "url",
+                DesktopRightNavigationUrl = "url",
+                DesktopRightUrl = "url",
+                DesktopTopUrl = "url",
+                MobileCenterUrl = "url",
+                MobileCenterNavigationUrl = "url",
+                MobileTopNavigationUrl = "url",
+                MobileTopUrl = "url",
                 ActionId = 1,
                 ActorId = 1,
+                LogData = "logdata",
                 UpdatedDate = DateTime.Now
             };
 

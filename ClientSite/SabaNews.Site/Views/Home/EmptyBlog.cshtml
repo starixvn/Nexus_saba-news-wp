@@ -17,5 +17,5 @@
 		</div>
 		@(await Component.InvokeAsync("Sidebar"))
 	</div>
-	<partial name="_LayoutChangeDomain" />
+	@(await Component.InvokeAsync("BannerSidebar"))
 </section>

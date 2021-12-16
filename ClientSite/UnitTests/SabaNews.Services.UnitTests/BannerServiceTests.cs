@@ -15,8 +15,12 @@
         private  IBaseService baseService;
         private  IConfiguration configuration;
         private  ISessionService sessionService;
-        private const string DefaultDestopUrl = "images/Desktop_320x70.png";
-        private const string DefaultMobileUrl = "images/Mobile_375x200.png";
+        private const string DefaultDestopTopUrl = "images/Desktop_320x70.png";
+        private const string DefaultMobileTopUrl = "images/Mobile_375x200.png";
+        private const string DefaultDesktopCenterUrl = "images/banner.jpg";
+        private const string DefaultDesktopLeftUrl = "images/ads.png";
+        private const string DefaultDesktopRightUrl = "images/ads.png";
+        private const string DefaultMobileCenterUrl = "images/banner_mobile_domain.png";
 
         [Fact]
         public async Task GetBannerInfoAsync_WhenCalled_ReturnExpectedBannerModel()
@@ -36,13 +40,13 @@
         }
 
         [Fact]
-        public async Task GetBannerInfoAsync_WhenCalled_ReturnInitBannerInfo()
+        public async Task GetBannerInfoAsync_WhenCalled_ReturnDefaultBannerUrl()
         {
             //Arrange
             var service = GetBannerService();
             var fixture = new Fixture();
             var baseUrl = fixture.Create<string>();
-            var expected = new BannerModel { NavigationUrl = "NavigationUrl", MobileUrl = "", DesktopUrl = "" };
+            var expected = new BannerModel {  };
             var criteria = new GetBannerInfoCriteria();
             baseService.GetDataEntityAsync<BannerModel>(Arg.Do<GetBannerInfoCriteria>(x => criteria = x)).Returns(expected);
 
@@ -50,9 +54,12 @@
             var actual = await service.GetBannerInfoAsync();
 
             //Assert
-            Assert.Equal(expected.NavigationUrl, actual.NavigationUrl);
-            Assert.Equal(DefaultMobileUrl, actual.MobileUrl);
-            Assert.Equal(DefaultDestopUrl, actual.DesktopUrl);
+            Assert.Equal(DefaultMobileTopUrl, actual.MobileTopUrl);
+            Assert.Equal(DefaultDestopTopUrl, actual.DesktopTopUrl);
+            Assert.Equal(DefaultDesktopCenterUrl, actual.DesktopCenterUrl);
+            Assert.Equal(DefaultDesktopLeftUrl, actual.DesktopLeftUrl);
+            Assert.Equal(DefaultDesktopRightUrl, actual.DesktopRightUrl);
+            Assert.Equal(DefaultMobileCenterUrl, actual.MobileCenterUrl);
         }
 
         [Fact]
@@ -71,9 +78,6 @@
 
             //Assert
             Assert.Equal(expected, actual);
-            Assert.Equal(model.DesktopUrl, command.DesktopUrl);
-            Assert.Equal(model.MobileUrl, command.MobileUrl);
-            Assert.Equal(model.NavigationUrl, command.NaviagationUrl);
 
         }
 

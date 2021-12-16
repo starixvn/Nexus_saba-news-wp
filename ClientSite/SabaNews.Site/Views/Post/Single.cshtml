@@ -202,7 +202,7 @@
 		</div>
 		@(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.CateSlug, postID = Model.SinglePost.ID }))
 	</div>
-	<partial name="_LayoutChangeDomain" />
+	@(await Component.InvokeAsync("BannerSidebar"))
 </section>
 <div class="auth-form">
 	<div class="modal" id="announcement">

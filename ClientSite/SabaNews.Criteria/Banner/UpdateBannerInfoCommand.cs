@@ -28,6 +28,8 @@ namespace SabaNews.Criteria.Banner
 
         public string MobileCenterNavigationUrl { get; set; }
 
+        public string LogData { get; set; }
+
         public int ActionId { get; set; }
 
         public int ActorId { get; set; }

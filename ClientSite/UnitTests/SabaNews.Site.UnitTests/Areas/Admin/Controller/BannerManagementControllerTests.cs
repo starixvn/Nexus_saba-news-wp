@@ -26,9 +26,18 @@
         private readonly IFixture fixture = new Fixture();
 
         [Theory]
-        [InlineData(BannerType.Navigation)]
-        [InlineData(BannerType.Desktop)]
-        [InlineData(BannerType.Mobile)]
+        [InlineData(BannerType.DesktopTop)]
+        [InlineData(BannerType.DesktopTopNavigation)]
+        [InlineData(BannerType.DesktopCenter)]
+        [InlineData(BannerType.DesktopCenterNavigation)]
+        [InlineData(BannerType.DesktopLeft)]
+        [InlineData(BannerType.DesktopLeftNavigation)]
+        [InlineData(BannerType.DesktopRight)]
+        [InlineData(BannerType.DesktopRightNavigation)]
+        [InlineData(BannerType.MobileTop)]
+        [InlineData(BannerType.MobileTopNavigation)]
+        [InlineData(BannerType.MobileCenter)]
+        [InlineData(BannerType.MobileCenterNavigation)]
         public async Task UpdateInfo_WhenCalled_ReturnExpectedData(string type)
         {
             // Arrange

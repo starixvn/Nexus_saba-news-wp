@@ -16,5 +16,5 @@
 			<p class="block__desc">Trang bạn muốn tìm hiện đang được bảo trì. Xin vui lòng quay lại sau!</p>
 		</div>
 	</div>
-	<partial name="_LayoutChangeDomain" />
+	@(await Component.InvokeAsync("BannerSidebar"))
 </section>
