@@ -22,6 +22,10 @@
 
         public const string MobileTopNavigation = "MobileTopBannerNavigation";
 
-        
+        public const string MobileCenter = "MobileCenter";
+
+        public const string MobileCenterNavigation = "MobileCenterNavigation";
+
+
     }
 }

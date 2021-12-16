@@ -241,6 +241,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banner display in mobile center screen.
+        /// </summary>
+        public static string BannerDisplayInMobileCenterScreen {
+            get {
+                return ResourceManager.GetString("BannerDisplayInMobileCenterScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banner display in mobile top screen.
         /// </summary>
         public static string BannerDisplayInMobileTopScreen {
@@ -1078,11 +1087,20 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile image.
+        ///   Looks up a localized string similar to Mobile center banner.
         /// </summary>
-        public static string MobileImage {
+        public static string MobileCenterBanner {
             get {
-                return ResourceManager.GetString("MobileImage", resourceCulture);
+                return ResourceManager.GetString("MobileCenterBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile top banner.
+        /// </summary>
+        public static string MobileTopBanner {
+            get {
+                return ResourceManager.GetString("MobileTopBanner", resourceCulture);
             }
         }
         
@@ -1132,11 +1150,38 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into desktop left banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoDesktopLeftBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoDesktopLeftBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into desktop right banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoDesktopRightBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoDesktopRightBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Navigate when click into desktop top banner.
         /// </summary>
         public static string NavigateWhenClickIntoDesktopTopBanner {
             get {
                 return ResourceManager.GetString("NavigateWhenClickIntoDesktopTopBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into mobile center banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoMobileCenterBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoMobileCenterBanner", resourceCulture);
             }
         }
         

@@ -49,6 +49,8 @@
                 DesktopLeftNavigationUrl = banner.DesktopLeftNavigationUrl,
                 DesktopRightUrl = banner.DesktopRightUrl,
                 DesktopRightNavigationUrl = banner.DesktopRightNavigationUrl,
+                MobileCenterNavigationUrl = banner.MobileCenterNavigationUrl,
+                MobileCenterUrl = banner.MobileCenterUrl,
                 ActionId = LogAction.UpdateBanner,
                 UpdatedDate = DateTime.UtcNow,
                 ActorId = sessionService.User.Id

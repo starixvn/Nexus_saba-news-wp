@@ -21,5 +21,9 @@
         public string DesktopRightUrl { get; set; }
 
         public string DesktopRightNavigationUrl { get; set; }
+
+        public string MobileCenterUrl { get; set; }
+
+        public string MobileCenterNavigationUrl { get; set; }
     }
 }

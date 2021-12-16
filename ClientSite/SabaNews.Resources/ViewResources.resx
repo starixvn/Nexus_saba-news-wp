@@ -747,8 +747,8 @@
   <data name="ListUploadedBanner" xml:space="preserve">
     <value>List Uploaded Banner</value>
   </data>
-  <data name="MobileImage" xml:space="preserve">
-    <value>Mobile image</value>
+  <data name="MobileTopBanner" xml:space="preserve">
+    <value>Mobile top banner</value>
   </data>
   <data name="MobileUrl" xml:space="preserve">
     <value>Mobile Url</value>
@@ -794,5 +794,20 @@
   </data>
   <data name="DesktopRightBanner" xml:space="preserve">
     <value>Desktop right banner</value>
+  </data>
+  <data name="BannerDisplayInMobileCenterScreen" xml:space="preserve">
+    <value>Banner display in mobile center screen</value>
+  </data>
+  <data name="MobileCenterBanner" xml:space="preserve">
+    <value>Mobile center banner</value>
+  </data>
+  <data name="NavigateWhenClickIntoDesktopLeftBanner" xml:space="preserve">
+    <value>Navigate when click into desktop left banner</value>
+  </data>
+  <data name="NavigateWhenClickIntoDesktopRightBanner" xml:space="preserve">
+    <value>Navigate when click into desktop right banner</value>
+  </data>
+  <data name="NavigateWhenClickIntoMobileCenterBanner" xml:space="preserve">
+    <value>Navigate when click into mobile center banner</value>
   </data>
 </root>

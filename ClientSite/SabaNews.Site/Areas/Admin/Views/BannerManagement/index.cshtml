@@ -22,7 +22,7 @@
 <section class="page-content banner-info-content">
 	<div class="main-list">
 		<div class="main">
-
+			@*---- Desktop top banner section-----*@
 			<div class="group-table">
 				<div class="left-table">
 					<div class="label-fill">@ViewResources.DesktopTopBanner</div>
@@ -83,65 +83,7 @@
 				</div>
 			</div>
 
-			<div class="group-table">
-				<div class="left-table">
-					<div class="label-fill">@ViewResources.MobileImage</div>
-				</div>
-				<div class="right-table">
-					<div class="box-control">
-						<div class="main-fill name-section">
-							<ul class="txt-fill">
-								<li class="txt-feild"><img src="@Model.MobileTopUrl" asp-append-version="true" width="200" /></li>
-							</ul>
-						</div>
-						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
-					</div>
-					<div class="box-edit-form">
-						<div class="title">
-							<span>@ViewResources.MobileImage</span>
-							<button type="button" class="button btn-custom-outline list-banner">@ViewResources.UploadedBanners</button>
-						</div>
-						<form enctype="multipart/form-data" method="post" data-type="MobileTop" class="upload-banner" id="uploadMobileTop">
-							<div class="input-upload">
-								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
-								<span class="txt-img"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
-								<div class="img-upload">
-									<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
-									<p class="error photo-error"></p>
-									<button type="submit" name="" class="save-img">@ViewResources.SaveAction</button>
-									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
-								</div>
-							</div>
-						</form>
-						<span class="close-edit icon-close"></span>
-					</div>
-					<p class="commitment">@ViewResources.BannerDisplayInMobileTopScreen</p>
-				</div>
-			</div>
-
-			<div class="group-table">
-				<div class="left-table">
-					<div class="label-fill">@ViewResources.NavigationUrl</div>
-				</div>
-				<div class="right-table">
-					<div class="box-control">
-						<div class="main-fill name-section">
-							<ul class="txt-fill">
-								<li class="txt-feild">@Model.MobileTopNavigationUrl</li>
-							</ul>
-						</div>
-						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
-					</div>
-					<div class="box-edit-form" id="form_update_name">
-						<div class="title">Navigation Url</div>
-						<input type="text" name="NavigationUrl" value="@Model.MobileTopNavigationUrl" class="input-edit" />
-						<p class="error navagation-error">@ViewResources.NavigationUrlRequired</p>
-						<button class="btn-submit-edit btn-save-navigation" data-type="MobileTopBannerNavigation" data-current="@Model.MobileTopNavigationUrl">@ViewResources.Save</button>
-						<span class="close-edit icon-close"></span>
-					</div>
-					<p class="commitment">@ViewResources.NavigateWhenClickIntoMobileTopBanner</p>
-				</div>
-			</div>
+			@*---- Desktop center banner section-----*@
 
 			<div class="group-table">
 				<div class="left-table">
@@ -202,6 +144,8 @@
 				</div>
 			</div>
 
+			@*---- Desktop left banner section-----*@
+
 			<div class="group-table">
 				<div class="left-table">
 					<div class="label-fill">@ViewResources.DesktopLeftBanner</div>
@@ -257,9 +201,11 @@
 						<button class="btn-submit-edit btn-save-navigation" data-type="DesktopLeftNavigation" data-current="@Model.DesktopLeftNavigationUrl">@ViewResources.Save</button>
 						<span class="close-edit icon-close"></span>
 					</div>
-					<p class="commitment">@ViewResources.NavigateWhenClickIntoDesktopCenterBanner</p>
+					<p class="commitment">@ViewResources.NavigateWhenClickIntoDesktopLeftBanner</p>
 				</div>
 			</div>
+
+			@*---- Desktop right banner section-----*@
 
 			<div class="group-table">
 				<div class="left-table">
@@ -279,7 +225,7 @@
 							<span>@ViewResources.DesktopRightBanner</span>
 							<button type="button" class="button btn-custom-outline list-banner">@ViewResources.UploadedBanners</button>
 						</div>
-						<form enctype="multipart/form-data" method="post" data-type="DesktopRight" class="upload-banner" id="uploadDesktopLeft">
+						<form enctype="multipart/form-data" method="post" data-type="DesktopRight" class="upload-banner" id="uploadDesktopRight">
 							<div class="input-upload">
 								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
 								<span class="txt-img"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
@@ -316,7 +262,128 @@
 						<button class="btn-submit-edit btn-save-navigation" data-type="DesktopRightNavigation" data-current="@Model.DesktopRightNavigationUrl">@ViewResources.Save</button>
 						<span class="close-edit icon-close"></span>
 					</div>
-					<p class="commitment">@ViewResources.NavigateWhenClickIntoDesktopCenterBanner</p>
+					<p class="commitment">@ViewResources.NavigateWhenClickIntoDesktopRightBanner</p>
+				</div>
+			</div>
+
+			@*---- Mobile top banner section-----*@
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">@ViewResources.MobileTopBanner</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild"><img src="@Model.MobileTopUrl" asp-append-version="true" width="200" /></li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+					</div>
+					<div class="box-edit-form">
+						<div class="title">
+							<span>@ViewResources.MobileTopBanner</span>
+							<button type="button" class="button btn-custom-outline list-banner">@ViewResources.UploadedBanners</button>
+						</div>
+						<form enctype="multipart/form-data" method="post" data-type="MobileTop" class="upload-banner" id="uploadMobileTop">
+							<div class="input-upload">
+								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
+								<span class="txt-img"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
+								<div class="img-upload">
+									<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+									<p class="error photo-error"></p>
+									<button type="submit" name="" class="save-img">@ViewResources.SaveAction</button>
+									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
+								</div>
+							</div>
+						</form>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">@ViewResources.BannerDisplayInMobileTopScreen</p>
+				</div>
+			</div>
+
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">@ViewResources.NavigationUrl</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild">@Model.MobileTopNavigationUrl</li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+					</div>
+					<div class="box-edit-form" id="form_update_name">
+						<div class="title">Navigation Url</div>
+						<input type="text" name="NavigationUrl" value="@Model.MobileTopNavigationUrl" class="input-edit" />
+						<p class="error navagation-error">@ViewResources.NavigationUrlRequired</p>
+						<button class="btn-submit-edit btn-save-navigation" data-type="MobileTopBannerNavigation" data-current="@Model.MobileTopNavigationUrl">@ViewResources.Save</button>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">@ViewResources.NavigateWhenClickIntoMobileTopBanner</p>
+				</div>
+			</div>
+
+			@*---- Mobile center banner section-----*@
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">@ViewResources.MobileCenterBanner</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild"><img src="@Model.MobileCenterUrl" asp-append-version="true" width="200" /></li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+					</div>
+					<div class="box-edit-form">
+						<div class="title">
+							<span>@ViewResources.MobileCenterBanner</span>
+							<button type="button" class="button btn-custom-outline list-banner">@ViewResources.UploadedBanners</button>
+						</div>
+						<form enctype="multipart/form-data" method="post" data-type="MobileCenter" class="upload-banner" id="uploadMobileCenter">
+							<div class="input-upload">
+								<input type="file" class="input-file photo" id="act-upload" name="desktop-photo">
+								<span class="txt-img"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
+								<div class="img-upload">
+									<img class="review_photo" src="#" alt="review photo" width="150" style="display:none" />
+									<p class="error photo-error"></p>
+									<button type="submit" name="" class="save-img">@ViewResources.SaveAction</button>
+									<button type="button" class="cancel-upload icon-close" style="display:none"></button>
+								</div>
+							</div>
+						</form>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">@ViewResources.BannerDisplayInMobileCenterScreen</p>
+				</div>
+			</div>
+			<div class="group-table">
+				<div class="left-table">
+					<div class="label-fill">@ViewResources.NavigationUrl</div>
+				</div>
+				<div class="right-table">
+					<div class="box-control">
+						<div class="main-fill name-section">
+							<ul class="txt-fill">
+								<li class="txt-feild">@Model.MobileCenterNavigationUrl</li>
+							</ul>
+						</div>
+						<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+					</div>
+					<div class="box-edit-form" id="form_update_name">
+						<div class="title">Navigation Url</div>
+						<input type="text" name="NavigationUrl" value="@Model.MobileCenterNavigationUrl" class="input-edit" />
+						<p class="error navagation-error">@ViewResources.NavigationUrlRequired</p>
+						<button class="btn-submit-edit btn-save-navigation" data-type="MobileCenterNavigation" data-current="@Model.MobileCenterNavigationUrl">@ViewResources.Save</button>
+						<span class="close-edit icon-close"></span>
+					</div>
+					<p class="commitment">@ViewResources.NavigateWhenClickIntoMobileCenterBanner</p>
 				</div>
 			</div>
 		</div>

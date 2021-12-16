@@ -71,6 +71,12 @@
                 case BannerType.DesktopRightNavigation:
                     banner.DesktopRightNavigationUrl = value;
                     break;
+                case BannerType.MobileCenter:
+                    banner.MobileCenterUrl = value;
+                    break;
+                case BannerType.MobileCenterNavigation:
+                    banner.MobileCenterNavigationUrl = value;
+                    break;
                 default:
                     throw new InvalidOperationException();
             }
@@ -119,6 +125,9 @@
                         break;
                     case BannerType.DesktopRight:
                         banner.DesktopRightUrl = url;
+                        break;
+                    case BannerType.MobileCenter:
+                        banner.MobileCenterUrl = url;
                         break;
                     default:
                         throw new InvalidOperationException();
