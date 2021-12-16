@@ -84,69 +84,73 @@
 .banner-info-content {
   max-width: 80rem; }
 
-.group-table {
+.block-extension.line {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 2.5rem; }
+
+.block-extension .group-table {
   display: flex;
   align-items: flex-start;
   flex-wrap: nowrap;
   justify-content: flex-start;
   flex-direction: row;
   color: #828282; }
-  .group-table .left-table {
+  .block-extension .group-table .left-table {
     width: 25rem; }
     @media screen and (max-width: 1024px) {
-      .group-table .left-table {
+      .block-extension .group-table .left-table {
         width: 12rem; } }
-  .group-table .label-fill {
+  .block-extension .group-table .label-fill {
     font-weight: bold; }
-  .group-table .right-table {
+  .block-extension .group-table .right-table {
     padding-bottom: 2rem;
     width: 100%; }
-    .group-table .right-table .box-control {
+    .block-extension .group-table .right-table .box-control {
       display: flex;
       align-items: flex-start;
       flex-wrap: nowrap;
       justify-content: space-between;
       flex-direction: row; }
-      .group-table .right-table .box-control .input-password {
+      .block-extension .group-table .right-table .box-control .input-password {
         border: 1px solid #BDBDBD;
         background-color: #fff !important; }
         @media (max-device-width: 767px) {
-          .group-table .right-table .box-control .input-password {
+          .block-extension .group-table .right-table .box-control .input-password {
             width: 15rem; } }
-      .group-table .right-table .box-control .main-fill .txt-fill {
+      .block-extension .group-table .right-table .box-control .main-fill .txt-fill {
         list-style: none;
         margin-bottom: 0;
         font-size: 1.5rem;
         color: #333; }
-        .group-table .right-table .box-control .main-fill .txt-fill li {
+        .block-extension .group-table .right-table .box-control .main-fill .txt-fill li {
           display: inline-block; }
-        .group-table .right-table .box-control .main-fill .txt-fill .txt-feild {
+        .block-extension .group-table .right-table .box-control .main-fill .txt-fill .txt-feild {
           margin-right: .5rem; }
-        .group-table .right-table .box-control .main-fill .txt-fill .validate {
+        .block-extension .group-table .right-table .box-control .main-fill .txt-fill .validate {
           color: #EB5342; }
-          .group-table .right-table .box-control .main-fill .txt-fill .validate .icon-validate:before {
+          .block-extension .group-table .right-table .box-control .main-fill .txt-fill .validate .icon-validate:before {
             color: #EB5342; }
-      .group-table .right-table .box-control .main-fill p {
+      .block-extension .group-table .right-table .box-control .main-fill p {
         margin-bottom: 0; }
-    .group-table .right-table .social-action {
+    .block-extension .group-table .right-table .social-action {
       border-bottom: 1px solid;
       font-size: 1.3rem;
       text-decoration: none; }
-      .group-table .right-table .social-action.connect {
+      .block-extension .group-table .right-table .social-action.connect {
         color: #1B71B2; }
-    .group-table .right-table .comfirm {
+    .block-extension .group-table .right-table .comfirm {
       margin-bottom: 0; }
-      .group-table .right-table .comfirm a {
+      .block-extension .group-table .right-table .comfirm a {
         color: #1B71B2; }
-    .group-table .right-table .commitment {
+    .block-extension .group-table .right-table .commitment {
       margin-bottom: 0;
       color: #828282;
       font-size: 1.3rem; }
-    .group-table .right-table .error {
+    .block-extension .group-table .right-table .error {
       color: #eb5342;
       display: none;
       margin-top: 1rem; }
-    .group-table .right-table .box-edit-form {
+    .block-extension .group-table .right-table .box-edit-form {
       background: #f7f7f7;
       border: 1px solid #e5e5e5;
       border-radius: 3px;
@@ -155,16 +159,16 @@
       margin-top: 1.5rem;
       position: relative;
       display: none; }
-      .group-table .right-table .box-edit-form .input-form {
+      .block-extension .group-table .right-table .box-edit-form .input-form {
         position: relative; }
-        .group-table .right-table .box-edit-form .input-form .event-pass {
+        .block-extension .group-table .right-table .box-edit-form .input-form .event-pass {
           text-decoration: none;
           position: absolute;
           top: 1.3rem;
           right: 1rem; }
-      .group-table .right-table .box-edit-form .title {
+      .block-extension .group-table .right-table .box-edit-form .title {
         margin-bottom: 1.5rem; }
-      .group-table .right-table .box-edit-form .close-edit {
+      .block-extension .group-table .right-table .box-edit-form .close-edit {
         position: absolute;
         top: 1rem;
         right: 1rem;
@@ -174,7 +178,7 @@
         text-align: center;
         line-height: 3rem;
         cursor: pointer; }
-      .group-table .right-table .box-edit-form .input-edit {
+      .block-extension .group-table .right-table .box-edit-form .input-edit {
         width: 100%;
         height: 4.8rem;
         border: 1px solid #BDBDBD;
@@ -185,14 +189,14 @@
         outline: none;
         background-color: #fff !important;
         margin-bottom: 1.5rem; }
-      .group-table .right-table .box-edit-form .forgot-pass {
+      .block-extension .group-table .right-table .box-edit-form .forgot-pass {
         float: right;
         margin-top: 1rem;
         margin-bottom: 0; }
         @media (max-device-width: 767px) {
-          .group-table .right-table .box-edit-form .forgot-pass {
+          .block-extension .group-table .right-table .box-edit-form .forgot-pass {
             float: none; } }
-      .group-table .right-table .box-edit-form .radio-group {
+      .block-extension .group-table .right-table .box-edit-form .radio-group {
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
@@ -200,7 +204,7 @@
         flex-direction: row;
         max-width: 35rem;
         margin-bottom: 2rem; }
-      .group-table .right-table .box-edit-form .btn-submit-edit {
+      .block-extension .group-table .right-table .box-edit-form .btn-submit-edit {
         color: #fff;
         padding: 1rem 4rem;
         background: #9f224e;
@@ -208,11 +212,11 @@
         font-weight: bold;
         border-radius: 3px;
         cursor: pointer; }
-      .group-table .right-table .box-edit-form .btn-disabled {
+      .block-extension .group-table .right-table .box-edit-form .btn-disabled {
         background: #BDBDBD; }
-    .group-table .right-table .toggle-active-form {
+    .block-extension .group-table .right-table .toggle-active-form {
       display: block; }
-    .group-table .right-table .list-banner {
+    .block-extension .group-table .right-table .list-banner {
       margin-left: 1rem;
       width: 15rem; }
 

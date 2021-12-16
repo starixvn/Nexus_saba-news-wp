@@ -5,192 +5,201 @@
 .banner-info-content {
     max-width: 80rem;
 }
-.group-table {
-    @include flex(flex-start, nowrap, flex-start, row);
-    color: $color-input;
-
-    .left-table {
-        width: 25rem;
-
-        @include tableMobile {
-            width: 12rem;
-        }
-    }
-    .label-fill {
-        font-weight: bold;
+.block-extension {
+    &.line {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 2.5rem;
     }
 
-    .right-table {
-        padding-bottom: 2rem;
-        width: 100%;
+    .group-table {
+        @include flex(flex-start, nowrap, flex-start, row);
+        color: $color-input;
 
-        .box-control {
-            @include flex(flex-start, nowrap, space-between, row);
+        .left-table {
+            width: 25rem;
 
-            .input-password {
-                border: 1px solid $border-heading;
-                background-color: $color-fff !important;
-
-                @include Mobile {
-                    width: 15rem;
-                }
+            @include tableMobile {
+                width: 12rem;
             }
+        }
 
-            .main-fill {
-                .txt-fill {
-                    list-style: none;
-                    margin-bottom: 0;
-                    font-size: 1.5rem;
-                    color: #333;
+        .label-fill {
+            font-weight: bold;
+        }
 
-                    li {
-                        display: inline-block;
+        .right-table {
+            padding-bottom: 2rem;
+            width: 100%;
+
+            .box-control {
+                @include flex(flex-start, nowrap, space-between, row);
+
+                .input-password {
+                    border: 1px solid $border-heading;
+                    background-color: $color-fff !important;
+
+                    @include Mobile {
+                        width: 15rem;
                     }
+                }
 
-                    .txt-feild {
-                        margin-right: .5rem;
-                    }
+                .main-fill {
+                    .txt-fill {
+                        list-style: none;
+                        margin-bottom: 0;
+                        font-size: 1.5rem;
+                        color: #333;
 
-                    .validate {
-                        color: $color-title-hover;
+                        li {
+                            display: inline-block;
+                        }
 
-                        .icon-validate {
-                            &:before {
-                                color: $color-title-hover;
+                        .txt-feild {
+                            margin-right: .5rem;
+                        }
+
+                        .validate {
+                            color: $color-title-hover;
+
+                            .icon-validate {
+                                &:before {
+                                    color: $color-title-hover;
+                                }
                             }
                         }
                     }
-                }
 
-                p {
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        .social-action {
-            border-bottom: 1px solid;
-            font-size: 1.3rem;
-            text-decoration: none;
-
-            &.connect {
-                color: #1B71B2;
-            }
-        }
-
-
-        .comfirm {
-            margin-bottom: 0;
-
-            a {
-                color: #1B71B2;
-            }
-        }
-
-        .commitment {
-            margin-bottom: 0;
-            color: $color-input;
-            font-size: 1.3rem;
-        }
-
-        .error {
-            color: #eb5342;
-            display: none;
-            margin-top: 1rem;
-        }
-
-        .box-edit-form {
-            background: #f7f7f7;
-            border: 1px solid $separator-color;
-            border-radius: 3px;
-            padding: 1.5rem 2rem 2rem 2rem;
-            box-sizing: border-box;
-            margin-top: 1.5rem;
-            position: relative;
-            display: none;
-
-            .input-form {
-                position: relative;
-
-                .event-pass {
-                    text-decoration: none;
-                    position: absolute;
-                    top: 1.3rem;
-                    right: 1rem;
+                    p {
+                        margin-bottom: 0;
+                    }
                 }
             }
 
-            .title {
-                margin-bottom: 1.5rem;
-            }
+            .social-action {
+                border-bottom: 1px solid;
+                font-size: 1.3rem;
+                text-decoration: none;
 
-            .close-edit {
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                color: $color-content;
-                width: 3rem;
-                height: 3rem;
-                text-align: center;
-                line-height: 3rem;
-                cursor: pointer;
-            }
-
-            .input-edit {
-                width: 100%;
-                height: 4.8rem;
-                border: 1px solid $border-heading;
-                border-radius: 3px;
-                font-size: 1.5rem;
-                color: $color-content;
-                padding: 0 1.5rem;
-                outline: none;
-                background-color: $color-fff !important;
-                margin-bottom: 1.5rem;
+                &.connect {
+                    color: #1B71B2;
+                }
             }
 
 
-            .forgot-pass {
-                float: right;
-                margin-top: 1rem;
+            .comfirm {
                 margin-bottom: 0;
 
-                @include Mobile {
-                    float: none;
+                a {
+                    color: #1B71B2;
                 }
             }
 
-            .radio-group {
-                @include flex(center, nowrap, space-between, row);
-                max-width: 35rem;
-                margin-bottom: 2rem;
+            .commitment {
+                margin-bottom: 0;
+                color: $color-input;
+                font-size: 1.3rem;
             }
 
-            .btn-submit-edit {
-                color: $color-fff;
-                padding: 1rem 4rem;
-                background: #9f224e;
-                border: none;
-                font-weight: bold;
+            .error {
+                color: #eb5342;
+                display: none;
+                margin-top: 1rem;
+            }
+
+            .box-edit-form {
+                background: #f7f7f7;
+                border: 1px solid $separator-color;
                 border-radius: 3px;
-                cursor: pointer;
+                padding: 1.5rem 2rem 2rem 2rem;
+                box-sizing: border-box;
+                margin-top: 1.5rem;
+                position: relative;
+                display: none;
+
+                .input-form {
+                    position: relative;
+
+                    .event-pass {
+                        text-decoration: none;
+                        position: absolute;
+                        top: 1.3rem;
+                        right: 1rem;
+                    }
+                }
+
+                .title {
+                    margin-bottom: 1.5rem;
+                }
+
+                .close-edit {
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                    color: $color-content;
+                    width: 3rem;
+                    height: 3rem;
+                    text-align: center;
+                    line-height: 3rem;
+                    cursor: pointer;
+                }
+
+                .input-edit {
+                    width: 100%;
+                    height: 4.8rem;
+                    border: 1px solid $border-heading;
+                    border-radius: 3px;
+                    font-size: 1.5rem;
+                    color: $color-content;
+                    padding: 0 1.5rem;
+                    outline: none;
+                    background-color: $color-fff !important;
+                    margin-bottom: 1.5rem;
+                }
+
+
+                .forgot-pass {
+                    float: right;
+                    margin-top: 1rem;
+                    margin-bottom: 0;
+
+                    @include Mobile {
+                        float: none;
+                    }
+                }
+
+                .radio-group {
+                    @include flex(center, nowrap, space-between, row);
+                    max-width: 35rem;
+                    margin-bottom: 2rem;
+                }
+
+                .btn-submit-edit {
+                    color: $color-fff;
+                    padding: 1rem 4rem;
+                    background: #9f224e;
+                    border: none;
+                    font-weight: bold;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .btn-disabled {
+                    background: $border-heading;
+                }
             }
 
-            .btn-disabled {
-                background: $border-heading;
+            .toggle-active-form {
+                display: block
             }
-        }
 
-        .toggle-active-form {
-            display: block
-        }
-
-        .list-banner {
-            margin-left: 1rem;
-            width: 15rem;
+            .list-banner {
+                margin-left: 1rem;
+                width: 15rem;
+            }
         }
     }
 }
+
 
 .input-upload {
     border: 1px dashed $border-heading;
