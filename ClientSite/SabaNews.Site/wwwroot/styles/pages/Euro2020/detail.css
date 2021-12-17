@@ -154,7 +154,7 @@ p.has-text-align-center {
     position: fixed;
     z-index: 99;
     bottom: 8.5rem;
-    right: 12.9rem;
+    right: 8rem;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;

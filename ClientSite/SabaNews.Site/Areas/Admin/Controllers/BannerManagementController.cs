@@ -39,6 +39,7 @@
         [HttpPost]
         public async Task<IActionResult> UpdateInfo(string value, string type)
         {
+            value ??= "";
             var banner = await bannerService.GetBannerInfoAsync();
             var bannerUpdatedData = UpdateBannerData(banner, type, value);
             var result = await bannerService.UpdateBannerInfoAsync(bannerUpdatedData);
