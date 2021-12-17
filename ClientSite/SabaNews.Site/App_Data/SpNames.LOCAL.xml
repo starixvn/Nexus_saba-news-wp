@@ -218,8 +218,8 @@
         <Setting Key="user_get_report" SpName="user_get_report" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Banner">
-        <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />
-        <Setting Key="banner_update" SpName="banner_update" DbName="sabasports" Plain="0" />
+        <Setting Key="banner_get_info" SpName="banner_get_info_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="banner_update" SpName="banner_update_xtest" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Log">
         <Setting Key="log_writelog" SpName="log_writelog" DbName="sabasports" Plain="0" />
