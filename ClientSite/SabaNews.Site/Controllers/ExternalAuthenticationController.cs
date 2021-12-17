@@ -65,10 +65,7 @@
             await SetSessionUserAsync(userInfo);
 
             await DoLoginAsync(userInfo.DisplayName, userInfo.Identifier);
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
+            
 
             return Redirect(returnUrl);
         }
