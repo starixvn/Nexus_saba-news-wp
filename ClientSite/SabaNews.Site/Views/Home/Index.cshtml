@@ -30,12 +30,19 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
 	<div class="colums-main">
-		<div class="banner"><a href="@Model.Banner.DesktopCenterNavigationUrl"><img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true"></a></div>
+		<div class="banner">
+			<a href="@(string.IsNullOrEmpty(Model.Banner.DesktopCenterNavigationUrl) ? "javascript:;" : Model.Banner.DesktopCenterNavigationUrl)">
+				<img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true">
+			</a>
+		</div>
 		@if (isMobile || isTablet)
 		{
 			<div class="banner-euro-mobile">
-				<a href="@Model.Banner.MobileTopNavigationUrl"><img src="@Model.Banner.MobileTopUrl" asp-append-version="true" width="375" /></a>
-			</div>}
+				<a href="@(string.IsNullOrEmpty(Model.Banner.MobileTopNavigationUrl) ? "javascript:;" : Model.Banner.MobileTopNavigationUrl)">
+					<img src="@Model.Banner.MobileTopUrl" asp-append-version="true" width="375" />
+				</a>
+			</div>
+		}
 		<div class="block block-hot-news">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
@@ -88,7 +95,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="banner-mobile"><a href="@Model.Banner.MobileCenterNavigationUrl"><img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl"></a></div>
+		<div class="banner-mobile">
+			<a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
+				<img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
+			</a>
+		</div>
 		<div class="block block-video">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
