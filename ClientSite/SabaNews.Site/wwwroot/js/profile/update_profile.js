@@ -144,6 +144,7 @@
         });
 
         $('.btn-save-gender').on('click', function () {
+            var self = $(this);
             var gender = $('input[name=gender]:checked').val();
             if (gender.trim() === "") {
                 $('.gender-error').show();
@@ -154,7 +155,6 @@
                 $('#form_update_gender').removeClass('toggle-active-form');
                 return false;
             }
-
             $.ajax({
                 type: 'POST',
                 url: 'Profile/UpdateProfile',
@@ -164,6 +164,7 @@
                         $('#form_update_gender').removeClass('toggle-active-form');
                         var html = '<li class="txt-feild">' + gender + '</li>';
                         $('.gender-section').find('.txt-fill').html(html);
+                        self.data('gender', gender);
                     } else {
                         location.reload();
                     }
