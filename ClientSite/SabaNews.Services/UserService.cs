@@ -57,16 +57,8 @@
                 _photo = user.Photo,
                 _isSubscribe = user.IsSubscribe
             };
-            var oldData = sessionService.User;
-            var logData = new WriteLogCommand
-            {
-                ActorId = user.Id,
-                ActionId = LogAction.UpdateProfile,
-                Data = JsonConvert.SerializeObject(new { user.Id, user.Name, user.Phone, user.Gender, user.Photo, user.IsSubscribe }),
-                OldData = JsonConvert.SerializeObject(new { oldData.Id, oldData.Name, oldData.Phone, oldData.Gender, oldData.Photo, oldData.IsSubscribe })
-            };
+            
             var result = await baseService.ExecuteNonQueryAsync(command);
-            await logService.WriteLog(logData);
             return result;
         }
 

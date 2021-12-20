@@ -1,14 +1,11 @@
 ﻿namespace SabaNews.Services
 {
     using Microsoft.Extensions.Configuration;
-    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Banner;
     using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Text.Json;
     using System.Threading.Tasks;
 
     public class BannerService : IBannerService
@@ -60,10 +57,7 @@
                 DesktopRightNavigationUrl = banner.DesktopRightNavigationUrl,
                 MobileCenterNavigationUrl = banner.MobileCenterNavigationUrl,
                 MobileCenterUrl = banner.MobileCenterUrl,
-                ActionId = LogAction.UpdateBanner,
-                UpdatedDate = DateTime.UtcNow,
                 ActorId = sessionService.User.Id,
-                LogData = JsonSerializer.Serialize(banner)
             };
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
