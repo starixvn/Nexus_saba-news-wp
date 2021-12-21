@@ -90,10 +90,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `banner_update`(
 	IN DesktopRightNavigationUrl VARCHAR(500),
     IN MobileCenterUrl VARCHAR(500),
 	IN MobileCenterNavigationUrl VARCHAR(500),
-    IN ActionId INT,
-    IN UpdatedDate DATETIME,
     IN ActorId INT,
-    IN LogData TEXT,
 	OUT ErrCode SMALLINT,
     OUT ErrMsg VARCHAR(100)
 )
@@ -110,7 +107,7 @@ BEGIN
     DECLARE DesktopRightNavigationUrlExist varchar(500);
     DECLARE MobileCenterUrlExist varchar(500);
     DECLARE MobileCenterNavigationUrlExist varchar(500);
-    
+    DECLARE LogData LONGTEXT;
     
     SELECT option_value INTO DesktopTopNavigationUrlExist FROM wp_options where  option_name = 'banner_navigation_url';
     SELECT option_value INTO DesktopTopUrlExist FROM wp_options where  option_name = 'banner_desktop_url';
@@ -292,7 +289,14 @@ BEGIN
 		('banner_mobile_center_navigation_url',
 		IFNULL(MobileCenterNavigationUrl, ''));
     END IF;
-    
+	
+    SET LogData = CONCAT('{"DesktopTopNavigationUrl":"', IFNULL(DesktopTopNavigationUrl, '') ,'","DesktopTopUrl":"', IFNULL(DesktopTopUrl, '') 
+    ,'","MobileTopUrl":"', IFNULL(MobileTopUrl, '') ,'","MobileTopNavigationUrl":"', IFNULL(MobileTopNavigationUrl, '') 
+    ,'","DesktopCenterUrl":"', IFNULL(DesktopCenterUrl, ''),'","DesktopCenterNavigationUrl":"', IFNULL(DesktopCenterNavigationUrl, '')
+    ,'","MobileCenterUrl":"', IFNULL(MobileCenterUrl, ''),'","MobileCenterNavigationUrl":"', IFNULL(MobileCenterNavigationUrl, '')
+    ,'","DesktopLeftUrl":"', IFNULL(DesktopLeftUrl, ''),'","DesktopLeftNavigationUrl":"', IFNULL(DesktopLeftNavigationUrl, '')
+    ,'","DesktopRightUrl":"', IFNULL(DesktopRightUrl	, ''),'","DesktopRightNavigationUrl":"', IFNULL(DesktopRightNavigationUrl, '')
+    ,'"}');
     
     INSERT INTO `wp_Log`
 	(`ActorId`,
@@ -302,11 +306,150 @@ BEGIN
     )
 	VALUES
 	(ActorId,
-     ActionId,
+     1,
      LogData,
-     UpdatedDate
+     LOCALTIME()
      );
+END
+//
+DELIMITER ;	
 
+DROP PROCEDURE IF EXISTS user_update_info;
+
+DELIMITER //	
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info`(
+	IN UserID INT,
+    IN _name varchar(200),
+    IN _password varchar(200),
+    IN _phone varchar(200),
+    IN _gender varchar(200),
+    IN _photo LONGTEXT,
+    IN _isSubscribe INT,
+	OUT ErrCode SMALLINT,
+    OUT ErrMsg VARCHAR(100)
+)
+user_update_info:BEGIN
+
+	DECLARE UserExists INT;
+    DECLARE checkPhoneExist INT;
+    DECLARE checkGenderExist INT;
+    DECLARE checkPhotoExist INT;
+    DECLARE checkIsSubscribe INT;
+    DECLARE checkName varchar(200);
+    DECLARE LogData LONGTEXT;
+    
+	SELECT 1, display_name 
+	INTO UserExists, checkName
+	FROM `wp_users`
+	WHERE ID = UserID;
+    
+    IF (UserExists != 1) THEN
+		SET ErrCode = 1,
+			ErrMsg = 'User does not exists';
+        LEAVE user_update_info;
+	END IF;
+    
+    
+    
+    UPDATE `wp_users`
+	SET
+	`user_pass` = _password,
+	`user_nicename` = _name,
+	`display_name` = _name
+	WHERE `ID` = UserID;
+    
+    IF(checkName != _name)
+    THEN
+		UPDATE `wp_comments`
+		SET
+		`comment_author` = _name
+		WHERE `user_id` = UserID;
+        
+    END IF;
+    
+    SELECT count(*) INTO checkPhoneExist FROM wp_usermeta where user_id = UserID AND meta_key = 'phone';
+    if(checkPhoneExist > 0)
+    THEN
+		UPDATE `wp_usermeta`
+        SET meta_value = _phone
+        WHERE user_id = UserID ANd meta_key = 'phone';
+	ELSE 
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserID,
+		'phone',
+		_phone);
+    END IF;
+    
+    SELECT count(*) INTO checkGenderExist FROM wp_usermeta where user_id = UserID AND meta_key = 'gender';
+    if(checkGenderExist > 0)
+    THEN
+		UPDATE `wp_usermeta`
+        SET meta_value = _gender
+        WHERE user_id = UserID ANd meta_key = 'gender';
+	ELSE 
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserID,
+		'gender',
+		_gender);
+    END IF;
+    
+    SELECT count(*) INTO checkPhotoExist FROM wp_usermeta where user_id = UserID AND meta_key = 'photo';
+    if(checkPhotoExist > 0)
+    THEN
+		UPDATE `wp_usermeta`
+        SET meta_value = _photo
+        WHERE user_id = UserID ANd meta_key = 'photo';
+	ELSE 
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserID,
+		'photo',
+		_photo);
+    END IF;
+    
+    SELECT count(*) INTO checkIsSubscribe FROM wp_usermeta where user_id = UserID AND meta_key = 'is_subscribe';
+    if(checkIsSubscribe > 0)
+    THEN
+		UPDATE `wp_usermeta`
+        SET meta_value = _isSubscribe
+        WHERE user_id = UserID AND meta_key = 'is_subscribe';
+	ELSE 
+		 INSERT INTO `wp_usermeta`
+		(`user_id`,
+		`meta_key`,
+		`meta_value`)
+		VALUES
+		(UserID,
+		'is_subscribe',
+		_isSubscribe);
+    END IF;
+    
+    SET LogData = CONCAT('{"Id":"', IFNULL(UserID, ''), '","Name":"', IFNULL(_name, ''), '","Gender":"', IFNULL(_gender, ''), '","Phone":"', IFNULL(_phone, ''), '","Photo":"', IFNULL(_photo, ''), '","IsSubscribe":"', IFNULL(_isSubscribe, ''),'"}');
+    
+     INSERT INTO `wp_Log`
+	(`ActorId`,
+	`ActionId`,
+	`Data`,
+    `LogDate`
+    )
+	VALUES
+	(UserID,
+     3,
+     LogData,
+     LOCALTIME()
+     );
+    
 END
 //
 DELIMITER ;	
