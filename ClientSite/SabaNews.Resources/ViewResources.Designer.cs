@@ -241,6 +241,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banner display in mobile between identify and backstage section.
+        /// </summary>
+        public static string BannerDisplayInMobileBetweenIdentifyAndBackstage {
+            get {
+                return ResourceManager.GetString("BannerDisplayInMobileBetweenIdentifyAndBackstage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Banner display in mobile center screen.
         /// </summary>
         public static string BannerDisplayInMobileCenterScreen {
@@ -1087,6 +1096,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mobile bottom banner.
+        /// </summary>
+        public static string MobileBottomBanner {
+            get {
+                return ResourceManager.GetString("MobileBottomBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile center banner.
         /// </summary>
         public static string MobileCenterBanner {
@@ -1173,6 +1191,15 @@ namespace SabaNews.Resources {
         public static string NavigateWhenClickIntoDesktopTopBanner {
             get {
                 return ResourceManager.GetString("NavigateWhenClickIntoDesktopTopBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Navigate when click into mobile bottom banner.
+        /// </summary>
+        public static string NavigateWhenClickIntoMobileBottomBanner {
+            get {
+                return ResourceManager.GetString("NavigateWhenClickIntoMobileBottomBanner", resourceCulture);
             }
         }
         

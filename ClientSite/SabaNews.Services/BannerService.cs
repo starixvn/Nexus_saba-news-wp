@@ -57,6 +57,8 @@
                 DesktopRightNavigationUrl = banner.DesktopRightNavigationUrl,
                 MobileCenterNavigationUrl = banner.MobileCenterNavigationUrl,
                 MobileCenterUrl = banner.MobileCenterUrl,
+                MobileBottomUrl = banner.MobileBottomUrl,
+                MobileBottomNavigationUrl = banner.MobileBottomNavigationUrl,
                 ActorId = sessionService.User.Id,
             };
             return await baseService.ExecuteNonQueryAsync(criteria);

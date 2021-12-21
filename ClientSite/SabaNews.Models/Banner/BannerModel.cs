@@ -25,5 +25,9 @@
         public string MobileCenterUrl { get; set; }
 
         public string MobileCenterNavigationUrl { get; set; }
+
+        public string MobileBottomUrl { get; set; }
+
+        public string MobileBottomNavigationUrl { get; set; }
     }
 }

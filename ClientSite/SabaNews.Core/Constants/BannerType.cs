@@ -26,6 +26,10 @@
 
         public const string MobileCenterNavigation = "MobileCenterNavigation";
 
+        public const string MobileBottom = "MobileBottom";
+
+        public const string MobileBottomNavigation = "MobileBottomNavigation";
+
 
     }
 }

@@ -91,6 +91,9 @@
                     case BannerType.MobileCenter:
                         banner.MobileCenterUrl = url;
                         break;
+                    case BannerType.MobileBottom:
+                        banner.MobileBottomUrl = url;
+                        break;
                     default:
                         throw new InvalidOperationException();
                 }
@@ -153,6 +156,12 @@
                     break;
                 case BannerType.MobileCenterNavigation:
                     banner.MobileCenterNavigationUrl = value;
+                    break;
+                case BannerType.MobileBottom:
+                    banner.MobileBottomUrl = value;
+                    break;
+                case BannerType.MobileBottomNavigation:
+                    banner.MobileBottomNavigationUrl = value;
                     break;
                 default:
                     throw new InvalidOperationException();

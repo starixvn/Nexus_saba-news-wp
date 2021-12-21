@@ -810,4 +810,13 @@
   <data name="NavigateWhenClickIntoMobileCenterBanner" xml:space="preserve">
     <value>Navigate when click into mobile center banner</value>
   </data>
+  <data name="BannerDisplayInMobileBetweenIdentifyAndBackstage" xml:space="preserve">
+    <value>Banner display in mobile between identify and backstage section</value>
+  </data>
+  <data name="MobileBottomBanner" xml:space="preserve">
+    <value>Mobile bottom banner</value>
+  </data>
+  <data name="NavigateWhenClickIntoMobileBottomBanner" xml:space="preserve">
+    <value>Navigate when click into mobile bottom banner</value>
+  </data>
 </root>

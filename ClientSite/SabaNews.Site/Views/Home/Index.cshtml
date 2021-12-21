@@ -218,7 +218,11 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="banner-mobile">
+			<a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
+				<img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
+			</a>
+		</div>
 		<div class="group-blocks group-change-column">
 			<div class="container">
 				<div class="block block-behind">
@@ -267,6 +271,7 @@
 							</div>}
 					</div>
 				</div>
+
 				<div class="block block-transfer">
 					<h2 class="block__title">
 						<a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">@ViewResources.Transfer</a>

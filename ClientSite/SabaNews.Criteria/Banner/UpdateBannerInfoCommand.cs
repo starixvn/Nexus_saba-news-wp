@@ -28,6 +28,10 @@ namespace SabaNews.Criteria.Banner
 
         public string MobileCenterNavigationUrl { get; set; }
 
+        public string MobileBottomUrl { get; set; }
+
+        public string MobileBottomNavigationUrl { get; set; }
+
         public int ActorId { get; set; }
 
         public override string GetSettingKey() => "banner_update";
