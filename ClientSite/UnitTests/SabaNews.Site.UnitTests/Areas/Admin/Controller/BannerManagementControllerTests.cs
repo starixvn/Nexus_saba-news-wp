@@ -38,6 +38,8 @@
         [InlineData(BannerType.MobileTopNavigation)]
         [InlineData(BannerType.MobileCenter)]
         [InlineData(BannerType.MobileCenterNavigation)]
+        [InlineData(BannerType.MobileBottom)]
+        [InlineData(BannerType.MobileBottomNavigation)]
         public async Task UpdateInfo_WhenCalled_ReturnExpectedData(string type)
         {
             // Arrange

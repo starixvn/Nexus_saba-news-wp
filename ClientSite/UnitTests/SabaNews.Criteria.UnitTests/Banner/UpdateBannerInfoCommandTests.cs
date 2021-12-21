@@ -45,10 +45,10 @@ namespace SabaNews.Criteria.UnitTests.Banner
                 MobileCenterNavigationUrl = "url",
                 MobileTopNavigationUrl = "url",
                 MobileTopUrl = "url",
-                ActionId = 1,
+                MobileBottomUrl = "url",
+                MobileBottomNavigationUrl = "url",
                 ActorId = 1,
-                LogData = "logdata",
-                UpdatedDate = DateTime.Now
+                
             };
 
             // Act
