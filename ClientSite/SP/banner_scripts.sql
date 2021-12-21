@@ -3,33 +3,33 @@ DROP PROCEDURE IF EXISTS banner_get_info;
 DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `banner_get_info`()
 BEGIN
-	DECLARE DesktopTopNavigationUrl varchar(500);
-    DECLARE DesktopTopUrl varchar(500);
-    DECLARE MobileTopUrl varchar(500);
-    DECLARE MobileTopNavigationUrl varchar(500);
-    DECLARE DesktopCenterUrl varchar(500);
-    DECLARE DesktopCenterNavigationUrl varchar(500);
-    DECLARE MobileCenterUrl varchar(500);
-    DECLARE MobileCenterNavigationUrl varchar(500);
-    DECLARE DesktopLeftUrl varchar(500);
-    DECLARE DesktopLeftNavigationUrl varchar(500);
-    DECLARE DesktopRightUrl varchar(500);
-    DECLARE DesktopRightNavigationUrl varchar(500);
+	DECLARE DesktopTopNavigationUrl VARCHAR(500);
+    DECLARE DesktopTopUrl VARCHAR(500);
+    DECLARE MobileTopUrl VARCHAR(500);
+    DECLARE MobileTopNavigationUrl VARCHAR(500);
+    DECLARE DesktopCenterUrl VARCHAR(500);
+    DECLARE DesktopCenterNavigationUrl VARCHAR(500);
+    DECLARE MobileCenterUrl VARCHAR(500);
+    DECLARE MobileCenterNavigationUrl VARCHAR(500);
+    DECLARE DesktopLeftUrl VARCHAR(500);
+    DECLARE DesktopLeftNavigationUrl VARCHAR(500);
+    DECLARE DesktopRightUrl VARCHAR(500);
+    DECLARE DesktopRightNavigationUrl VARCHAR(500);
    
     
-	select wo.option_value INTO DesktopTopNavigationUrl
+	SELECT wo.option_value INTO DesktopTopNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_navigation_url";
     
-    select wo.option_value INTO DesktopTopUrl
+    SELECT wo.option_value INTO DesktopTopUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_url";
     
-    select wo.option_value INTO MobileTopUrl
+    SELECT wo.option_value INTO MobileTopUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_mobile_url";
     
-    select wo.option_value INTO MobileTopNavigationUrl
+    SELECT wo.option_value INTO MobileTopNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_mobile_navigation_url";
     
@@ -37,35 +37,35 @@ BEGIN
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_center_url";
     
-    select wo.option_value INTO DesktopCenterNavigationUrl
+    SELECT wo.option_value INTO DesktopCenterNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_center_navigation_url";
     
-    select wo.option_value INTO MobileCenterUrl
+    SELECT wo.option_value INTO MobileCenterUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_mobile_center_url";
     
-    select wo.option_value INTO MobileCenterNavigationUrl
+    SELECT wo.option_value INTO MobileCenterNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_mobile_center_navigation_url";
     
-    select wo.option_value INTO DesktopLeftUrl
+    SELECT wo.option_value INTO DesktopLeftUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_left_url";
     
-    select wo.option_value INTO DesktopLeftNavigationUrl
+    SELECT wo.option_value INTO DesktopLeftNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_left_navigation_url";
     
-    select wo.option_value INTO DesktopRightUrl
+    SELECT wo.option_value INTO DesktopRightUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_right_url";
     
-    select wo.option_value INTO DesktopRightNavigationUrl
+    SELECT wo.option_value INTO DesktopRightNavigationUrl
     FROM wp_options wo 
     WHERE wo.option_name = "banner_desktop_right_navigation_url";
     
-    select DesktopTopNavigationUrl, DesktopTopUrl, MobileTopUrl, MobileTopNavigationUrl, DesktopCenterUrl, 
+    SELECT DesktopTopNavigationUrl, DesktopTopUrl, MobileTopUrl, MobileTopNavigationUrl, DesktopCenterUrl, 
 			DesktopCenterNavigationUrl, MobileCenterUrl, MobileCenterNavigationUrl, DesktopLeftUrl, DesktopLeftNavigationUrl,
             DesktopRightUrl, DesktopRightNavigationUrl, MobileCenterUrl, MobileCenterNavigationUrl;
 END
@@ -95,34 +95,34 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `banner_update`(
     OUT ErrMsg VARCHAR(100)
 )
 BEGIN
-	DECLARE DesktopTopNavigationUrlExist varchar(500);
-    DECLARE DesktopTopUrlExist varchar(500);
-    DECLARE MobileTopUrlExist varchar(500);
-    DECLARE MobileTopNavigationUrlExist varchar(500);
-    DECLARE DesktopCenterUrlExist varchar(500);
-    DECLARE DesktopCenterNavigationUrlExist varchar(500);
-    DECLARE DesktopLeftUrlExist varchar(500);
-    DECLARE DesktopLeftNavigationUrlExist varchar(500);
-    DECLARE DesktopRightUrlExist varchar(500);
-    DECLARE DesktopRightNavigationUrlExist varchar(500);
-    DECLARE MobileCenterUrlExist varchar(500);
-    DECLARE MobileCenterNavigationUrlExist varchar(500);
+	DECLARE DesktopTopNavigationUrlExist VARCHAR(500);
+    DECLARE DesktopTopUrlExist VARCHAR(500);
+    DECLARE MobileTopUrlExist VARCHAR(500);
+    DECLARE MobileTopNavigationUrlExist VARCHAR(500);
+    DECLARE DesktopCenterUrlExist VARCHAR(500);
+    DECLARE DesktopCenterNavigationUrlExist VARCHAR(500);
+    DECLARE DesktopLeftUrlExist VARCHAR(500);
+    DECLARE DesktopLeftNavigationUrlExist VARCHAR(500);
+    DECLARE DesktopRightUrlExist VARCHAR(500);
+    DECLARE DesktopRightNavigationUrlExist VARCHAR(500);
+    DECLARE MobileCenterUrlExist VARCHAR(500);
+    DECLARE MobileCenterNavigationUrlExist VARCHAR(500);
     DECLARE LogData LONGTEXT;
     
-    SELECT option_value INTO DesktopTopNavigationUrlExist FROM wp_options where  option_name = 'banner_navigation_url';
-    SELECT option_value INTO DesktopTopUrlExist FROM wp_options where  option_name = 'banner_desktop_url';
-    SELECT option_value INTO MobileTopUrlExist FROM wp_options where  option_name = 'banner_mobile_url';
-    SELECT option_value INTO MobileTopNavigationUrlExist FROM wp_options where  option_name = 'banner_mobile_navigation_url';
-    SELECT option_value INTO DesktopCenterUrlExist FROM wp_options where  option_name = 'banner_desktop_center_url';
-    SELECT option_value INTO DesktopCenterNavigationUrlExist FROM wp_options where  option_name = 'banner_desktop_center_navigation_url';
-    SELECT option_value INTO DesktopLeftUrlExist FROM wp_options where  option_name = 'banner_desktop_left_url';
-    SELECT option_value INTO DesktopLeftNavigationUrlExist FROM wp_options where  option_name = 'banner_desktop_left_navigation_url';
-    SELECT option_value INTO DesktopRightUrlExist FROM wp_options where  option_name = 'banner_desktop_right_url';
-    SELECT option_value INTO DesktopRightNavigationUrlExist FROM wp_options where  option_name = 'banner_desktop_right_navigation_url';
-    SELECT option_value INTO MobileCenterUrlExist FROM wp_options where  option_name = 'banner_mobile_center_url';
-    SELECT option_value INTO MobileCenterNavigationUrlExist FROM wp_options where  option_name = 'banner_mobile_center_navigation_url';
+    SELECT option_value INTO DesktopTopNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_navigation_url';
+    SELECT option_value INTO DesktopTopUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_url';
+    SELECT option_value INTO MobileTopUrlExist FROM wp_options WHERE  option_name = 'banner_mobile_url';
+    SELECT option_value INTO MobileTopNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_mobile_navigation_url';
+    SELECT option_value INTO DesktopCenterUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_center_url';
+    SELECT option_value INTO DesktopCenterNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_center_navigation_url';
+    SELECT option_value INTO DesktopLeftUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_left_url';
+    SELECT option_value INTO DesktopLeftNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_left_navigation_url';
+    SELECT option_value INTO DesktopRightUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_right_url';
+    SELECT option_value INTO DesktopRightNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_desktop_right_navigation_url';
+    SELECT option_value INTO MobileCenterUrlExist FROM wp_options WHERE  option_name = 'banner_mobile_center_url';
+    SELECT option_value INTO MobileCenterNavigationUrlExist FROM wp_options WHERE  option_name = 'banner_mobile_center_navigation_url';
     
-	IF(DesktopTopNavigationUrlExist is not null )
+	IF(DesktopTopNavigationUrlExist IS NOT NULL )
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopTopNavigationUrl
@@ -136,7 +136,7 @@ BEGIN
 		IFNULL(DesktopTopNavigationUrl, ''));
     END IF;
     
-    IF(DesktopTopUrlExist  is not null)
+    IF(DesktopTopUrlExist  IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopTopUrl
@@ -150,7 +150,7 @@ BEGIN
 		IFNULL(DesktopTopUrl, ''));
     END IF;
     
-    IF(MobileTopUrlExist  is not null)
+    IF(MobileTopUrlExist  IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = MobileTopUrl
@@ -164,7 +164,7 @@ BEGIN
 		IFNULL(MobileTopUrl, ''));
     END IF;
     
-    IF(MobileTopNavigationUrlExist is not null )
+    IF(MobileTopNavigationUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = MobileTopNavigationUrl
@@ -178,7 +178,7 @@ BEGIN
 		IFNULL(MobileTopNavigationUrl, ''));
     END IF;
     
-    IF(DesktopCenterUrlExist is not null )
+    IF(DesktopCenterUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopCenterUrl
@@ -192,7 +192,7 @@ BEGIN
 		IFNULL(DesktopCenterUrl, ''));
     END IF;
     
-    IF(DesktopCenterNavigationUrlExist is not null )
+    IF(DesktopCenterNavigationUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopCenterNavigationUrl
@@ -206,7 +206,7 @@ BEGIN
 		IFNULL(DesktopCenterNavigationUrl, ''));
     END IF;
     
-    IF(DesktopLeftUrlExist is not null )
+    IF(DesktopLeftUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopLeftUrl
@@ -220,7 +220,7 @@ BEGIN
 		IFNULL(DesktopLeftUrl, ''));
     END IF;
     
-    IF(DesktopLeftNavigationUrlExist is not null )
+    IF(DesktopLeftNavigationUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopLeftNavigationUrl
@@ -234,7 +234,7 @@ BEGIN
 		IFNULL(DesktopLeftNavigationUrl, ''));
     END IF;
     
-     IF(DesktopRightUrlExist is not null )
+     IF(DesktopRightUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopRightUrl
@@ -248,7 +248,7 @@ BEGIN
 		IFNULL(DesktopRightUrl, ''));
     END IF;
     
-    IF(DesktopRightNavigationUrlExist is not null )
+    IF(DesktopRightNavigationUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = DesktopRightNavigationUrl
@@ -262,7 +262,7 @@ BEGIN
 		IFNULL(DesktopRightNavigationUrl, ''));
     END IF;
     
-     IF(MobileCenterUrlExist is not null )
+     IF(MobileCenterUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = MobileCenterUrl
@@ -276,7 +276,7 @@ BEGIN
 		IFNULL(MobileCenterUrl, ''));
     END IF;
     
-    IF(MobileCenterNavigationUrlExist is not null )
+    IF(MobileCenterNavigationUrlExist IS NOT NULL)
     THEN
 		UPDATE `wp_options`
         SET option_value = MobileCenterNavigationUrl
@@ -319,10 +319,10 @@ DROP PROCEDURE IF EXISTS user_update_info;
 DELIMITER //	
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `user_update_info`(
 	IN UserID INT,
-    IN _name varchar(200),
-    IN _password varchar(200),
-    IN _phone varchar(200),
-    IN _gender varchar(200),
+    IN _name VARCHAR(200),
+    IN _password VARCHAR(200),
+    IN _phone VARCHAR(200),
+    IN _gender VARCHAR(200),
     IN _photo LONGTEXT,
     IN _isSubscribe INT,
 	OUT ErrCode SMALLINT,
@@ -335,7 +335,7 @@ user_update_info:BEGIN
     DECLARE checkGenderExist INT;
     DECLARE checkPhotoExist INT;
     DECLARE checkIsSubscribe INT;
-    DECLARE checkName varchar(200);
+    DECLARE checkName VARCHAR(200);
     DECLARE LogData LONGTEXT;
     
 	SELECT 1, display_name 
@@ -367,12 +367,12 @@ user_update_info:BEGIN
         
     END IF;
     
-    SELECT count(*) INTO checkPhoneExist FROM wp_usermeta where user_id = UserID AND meta_key = 'phone';
+    SELECT count(*) INTO checkPhoneExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'phone';
     if(checkPhoneExist > 0)
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _phone
-        WHERE user_id = UserID ANd meta_key = 'phone';
+        WHERE user_id = UserID AND meta_key = 'phone';
 	ELSE 
 		 INSERT INTO `wp_usermeta`
 		(`user_id`,
@@ -384,12 +384,12 @@ user_update_info:BEGIN
 		_phone);
     END IF;
     
-    SELECT count(*) INTO checkGenderExist FROM wp_usermeta where user_id = UserID AND meta_key = 'gender';
+    SELECT count(*) INTO checkGenderExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'gender';
     if(checkGenderExist > 0)
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _gender
-        WHERE user_id = UserID ANd meta_key = 'gender';
+        WHERE user_id = UserID AND meta_key = 'gender';
 	ELSE 
 		 INSERT INTO `wp_usermeta`
 		(`user_id`,
@@ -401,12 +401,12 @@ user_update_info:BEGIN
 		_gender);
     END IF;
     
-    SELECT count(*) INTO checkPhotoExist FROM wp_usermeta where user_id = UserID AND meta_key = 'photo';
+    SELECT count(*) INTO checkPhotoExist FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'photo';
     if(checkPhotoExist > 0)
     THEN
 		UPDATE `wp_usermeta`
         SET meta_value = _photo
-        WHERE user_id = UserID ANd meta_key = 'photo';
+        WHERE user_id = UserID AND meta_key = 'photo';
 	ELSE 
 		 INSERT INTO `wp_usermeta`
 		(`user_id`,
@@ -418,7 +418,7 @@ user_update_info:BEGIN
 		_photo);
     END IF;
     
-    SELECT count(*) INTO checkIsSubscribe FROM wp_usermeta where user_id = UserID AND meta_key = 'is_subscribe';
+    SELECT count(*) INTO checkIsSubscribe FROM wp_usermeta WHERE user_id = UserID AND meta_key = 'is_subscribe';
     if(checkIsSubscribe > 0)
     THEN
 		UPDATE `wp_usermeta`
