@@ -79,7 +79,6 @@
             Assert.Equal(param.Gender, command._gender);
             Assert.Equal(param.Photo, command._photo);
             Assert.Equal(param.IsSubscribe, command._isSubscribe);
-            await logService.Received().WriteLog(Arg.Any<WriteLogCommand>());
         }
 
         [Fact]
