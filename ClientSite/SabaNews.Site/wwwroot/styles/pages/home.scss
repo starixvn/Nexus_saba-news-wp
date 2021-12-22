@@ -18,6 +18,7 @@
 
 @import '../components/_card-horizontal';
 @import '../components/card-vertical';
+@import '../components/skeleton-loader';
 @import '../components/ads';
 
 
@@ -33,7 +34,7 @@
                 display: unset;
             }
 
-            .card-vertical {
+            .card-vertical, .skeleton-vertical {
                 background-color: $block-highlight-bgcolor;
                 width: 53rem;
 
@@ -69,6 +70,10 @@
                     }
                 }
             }
+
+
+
+
 
             .card-horizontal-section {
                 width: calc(100% - 53rem - .4rem);
@@ -369,6 +374,7 @@
 
             .card-vertical__image {
                 height: 15.2rem;
+
                 @include Mobile {
                     height: 20rem;
                 }
