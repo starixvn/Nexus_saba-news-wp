@@ -219,9 +219,12 @@
 			</div>
 		</div>
 		<div class="banner-mobile">
-			<a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
-				<img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
-			</a>
+			@if (!string.IsNullOrEmpty(Model.Banner.MobileBottomUrl))
+			{
+				<a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
+					<img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
+				</a>
+			}
 		</div>
 		<div class="group-blocks group-change-column">
 			<div class="container">
