@@ -4,6 +4,12 @@ namespace SabaNews.Criteria.Banner
 {
     public class UpdateBannerInfoCommand : BaseNonQueryCommand
     {
+        public int ActorId { get; set; }
+
+        public string MobileCenterUrl { get; set; }
+
+        public string MobileCenterNavigationUrl { get; set; }
+
         public string DesktopTopNavigationUrl { get; set; }
 
         public string DesktopTopUrl { get; set; }
@@ -24,15 +30,9 @@ namespace SabaNews.Criteria.Banner
 
         public string DesktopRightNavigationUrl { get; set; }
 
-        public string MobileCenterUrl { get; set; }
-
-        public string MobileCenterNavigationUrl { get; set; }
-
         public string MobileBottomUrl { get; set; }
 
         public string MobileBottomNavigationUrl { get; set; }
-
-        public int ActorId { get; set; }
 
         public override string GetSettingKey() => "banner_update";
 
