@@ -324,7 +324,6 @@
 						</a>
 						<a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__title">@Model.OtherPosts[0].PostTitle</a>
 
-						@*<p class="card-vertical__datetime">@Model.OtherPosts[0].PostTime</p>*@
 					</div>
 					<div class="list-card">
 						@for (int i = 1; i < Model.OtherPosts.Length; i++)
@@ -339,7 +338,8 @@
 									</picture>
 								</a>
 								<a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[i].Slug })" class="card-vertical__title">@Model.OtherPosts[i].PostTitle</a>
-							</div>}
+							</div>
+						}
 					</div>
 				</div>
 			</div>
