@@ -23,7 +23,7 @@
         color: $color-input;
 
         .left-table {
-            width: 25rem;
+            width: 20rem;
 
             @include tableMobile {
                 width: 12rem;
@@ -36,7 +36,7 @@
 
         .right-table {
             padding-bottom: 2rem;
-            width: 100%;
+            width: 55%;
 
             .box-control {
                 @include flex(flex-start, nowrap, space-between, row);
