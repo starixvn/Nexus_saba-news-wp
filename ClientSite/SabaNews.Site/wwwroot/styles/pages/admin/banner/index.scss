@@ -3,7 +3,7 @@
 @import '../custom-modal';
 
 .banner-info-content {
-    max-width: 80rem;
+    max-width: 65rem;
 }
 .block-extension {
     .group-title {
@@ -23,7 +23,7 @@
         color: $color-input;
 
         .left-table {
-            width: 20rem;
+            width: 25rem;
 
             @include tableMobile {
                 width: 12rem;
@@ -36,7 +36,7 @@
 
         .right-table {
             padding-bottom: 2rem;
-            width: 55%;
+            width: 100%;
 
             .box-control {
                 @include flex(flex-start, nowrap, space-between, row);

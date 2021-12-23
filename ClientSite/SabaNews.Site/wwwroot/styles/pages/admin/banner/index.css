@@ -82,7 +82,7 @@
   padding: 0; }
 
 .banner-info-content {
-  max-width: 80rem; }
+  max-width: 65rem; }
 
 .block-extension .group-title {
   font-size: 1.6rem;
@@ -102,7 +102,7 @@
   flex-direction: row;
   color: #828282; }
   .block-extension .group-table .left-table {
-    width: 20rem; }
+    width: 25rem; }
     @media screen and (max-width: 1024px) {
       .block-extension .group-table .left-table {
         width: 12rem; } }
@@ -110,7 +110,7 @@
     font-weight: bold; }
   .block-extension .group-table .right-table {
     padding-bottom: 2rem;
-    width: 55%; }
+    width: 100%; }
     .block-extension .group-table .right-table .box-control {
       display: flex;
       align-items: flex-start;
