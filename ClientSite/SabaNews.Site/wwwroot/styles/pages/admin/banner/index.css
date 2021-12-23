@@ -84,6 +84,12 @@
 .banner-info-content {
   max-width: 80rem; }
 
+.block-extension .title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #eb5342;
+  margin-bottom: 2rem; }
+
 .block-extension.line {
   border-top: 1px solid #e5e5e5;
   padding-top: 2.5rem; }

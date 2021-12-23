@@ -547,7 +547,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop center banner.
+        ///   Looks up a localized string similar to Center.
         /// </summary>
         public static string DesktopCenterBanner {
             get {
@@ -556,7 +556,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop left banner.
+        ///   Looks up a localized string similar to Left.
         /// </summary>
         public static string DesktopLeftBanner {
             get {
@@ -565,7 +565,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop right banner.
+        ///   Looks up a localized string similar to Right.
         /// </summary>
         public static string DesktopRightBanner {
             get {
@@ -574,7 +574,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Desktop top banner.
+        ///   Looks up a localized string similar to Top.
         /// </summary>
         public static string DesktopTopBanner {
             get {
@@ -1096,7 +1096,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile bottom banner.
+        ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string MobileBottomBanner {
             get {
@@ -1105,7 +1105,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile center banner.
+        ///   Looks up a localized string similar to Center.
         /// </summary>
         public static string MobileCenterBanner {
             get {
@@ -1114,7 +1114,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile top banner.
+        ///   Looks up a localized string similar to Top.
         /// </summary>
         public static string MobileTopBanner {
             get {
@@ -1222,7 +1222,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigation Url.
+        ///   Looks up a localized string similar to URL.
         /// </summary>
         public static string NavigationUrl {
             get {

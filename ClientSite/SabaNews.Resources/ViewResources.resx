@@ -736,7 +736,7 @@
     <value>Change</value>
   </data>
   <data name="DesktopTopBanner" xml:space="preserve">
-    <value>Desktop top banner</value>
+    <value>Top</value>
   </data>
   <data name="DesktopUrl" xml:space="preserve">
     <value>Desktop Url</value>
@@ -748,7 +748,7 @@
     <value>List Uploaded Banner</value>
   </data>
   <data name="MobileTopBanner" xml:space="preserve">
-    <value>Mobile top banner</value>
+    <value>Top</value>
   </data>
   <data name="MobileUrl" xml:space="preserve">
     <value>Mobile Url</value>
@@ -757,7 +757,7 @@
     <value>Navigate when click into desktop top banner</value>
   </data>
   <data name="NavigationUrl" xml:space="preserve">
-    <value>Navigation Url</value>
+    <value>URL</value>
   </data>
   <data name="NavigationUrlRequired" xml:space="preserve">
     <value>NavigationUrl is requred</value>
@@ -778,7 +778,7 @@
     <value>Banner display in desktop center screen</value>
   </data>
   <data name="DesktopCenterBanner" xml:space="preserve">
-    <value>Desktop center banner</value>
+    <value>Center</value>
   </data>
   <data name="NavigateWhenClickIntoDesktopCenterBanner" xml:space="preserve">
     <value>Navigate when click into desktop center banner</value>
@@ -790,16 +790,16 @@
     <value>Banner display in desktop right side</value>
   </data>
   <data name="DesktopLeftBanner" xml:space="preserve">
-    <value>Desktop left banner</value>
+    <value>Left</value>
   </data>
   <data name="DesktopRightBanner" xml:space="preserve">
-    <value>Desktop right banner</value>
+    <value>Right</value>
   </data>
   <data name="BannerDisplayInMobileCenterScreen" xml:space="preserve">
     <value>Banner display in mobile center screen</value>
   </data>
   <data name="MobileCenterBanner" xml:space="preserve">
-    <value>Mobile center banner</value>
+    <value>Center</value>
   </data>
   <data name="NavigateWhenClickIntoDesktopLeftBanner" xml:space="preserve">
     <value>Navigate when click into desktop left banner</value>
@@ -814,7 +814,7 @@
     <value>Banner display in mobile between identify and backstage section</value>
   </data>
   <data name="MobileBottomBanner" xml:space="preserve">
-    <value>Mobile bottom banner</value>
+    <value>Bottom</value>
   </data>
   <data name="NavigateWhenClickIntoMobileBottomBanner" xml:space="preserve">
     <value>Navigate when click into mobile bottom banner</value>
