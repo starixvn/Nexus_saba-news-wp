@@ -30,14 +30,18 @@
 @section Scripts {
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 }
-	$(window).on('load', function () {
-		$('.hide-homepage').show();
+	$(document).ready(function () {
 		$('.skeleton-vertical').hide();
+		$(window).on('load', function () {
+			$('.hide-homepage').show();
+			$('.skeleton-vertical').hide();
+		});
+		$(window).on('beforeunload', function () {
+			$('.hide-homepage').hide();
+			$('.skeleton-vertical').show();
+		});
 	});
-	$(window).on('beforeunload', function () {
-		$('.hide-homepage').hide();
-		$('.skeleton-vertical').show();
-	});
+	
 </script>
 	
 
