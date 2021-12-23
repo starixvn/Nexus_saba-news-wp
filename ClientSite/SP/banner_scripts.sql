@@ -360,4 +360,5 @@ BEGIN
      LOCALTIME()
      );
 END
+//
 DELIMITER ;	
