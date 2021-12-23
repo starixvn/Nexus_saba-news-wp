@@ -13,6 +13,7 @@
     using System;
     using System.Globalization;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
     public class HomeController : Controller
@@ -52,6 +53,7 @@
             viewModel.Url = domain;
             viewModel.RSSUrl = $"{domain}tin-moi-nhat.rss";
             viewModel.Banner = banner;
+            Thread.Sleep(1800);
             return View(viewModel);
         }
 

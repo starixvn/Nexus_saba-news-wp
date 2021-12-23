@@ -30,6 +30,19 @@
 @section Scripts {
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 }
+	$(window).on('load', function () {
+		$('.hide-homepage').show();
+		$('.skeleton-vertical').hide();
+	});
+	$(window).on('beforeunload', function () {
+		$('.hide-homepage').hide();
+		$('.skeleton-vertical').show();
+	});
+</script>
+	
+
+}
+
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
 	<div class="colums-main">
@@ -49,58 +62,60 @@
 		<div class="block block-hot-news">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
-                <div class="block__content">
-                    <custom-image>
-                    </custom-image>
-                    @*<div class="card-vertical card-vertical-highlight">
-            <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
-                @{ //short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-                    string firstImgUrl = Model.NewPosts[0].FeatureImage;
+				<div class="block__content">
+					<custom-image>
+					</custom-image>
+					<div class="card-vertical card-vertical-highlight hide-homepage">
+						<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})" class="card-vertical__image">
+							@{ //short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+								string firstImgUrl = Model.NewPosts[0].FeatureImage;
 
-                    <picture>
-                        <source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
-                        <source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
-                        <img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
-                    </picture> }
-            </a>
-            <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
-            <p class="card-vertical__description text-description">
-                @Html.Raw(Model.NewPosts[0].PostExcerpt)
-                @if (Model.NewPosts[0].CommentCount > 0)
-                {
-                    <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>}
-            </p>
-        </div>*@
-                    <div class="skeleton-vertical">
-                        <a class="skeleton-vertical__image"></a>
-                        <a class="skeleton-vertical__title"></a>
-                        <p class="skeleton-vertical__description text-description"></p>
-                    </div>
-                    <div class="card-horizontal-section">
-                        @for (int i = 1; i < Model.NewPosts.Length; i++)
-                        {
-                            <div class="card-title-wrapper card-item-@i">
-                                <a class="title" href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-                                <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-                                    @{ string featuredImg = Model.NewPosts[i].FeatureImage;
+								<picture>
+									<source srcset="@Url.Content(firstImgUrl)" type="image/webp" class="img-res">
+									<source srcset="@Url.Content(firstImgUrl)" type="image/jpeg" class="img-res">
+									<img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@Model.NewPosts[0].PostTitle" class="img-res img-block">
+								</picture> }
+						</a>
+						<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug })" class="card-vertical__title">@Model.NewPosts[0].PostTitle</a>
+						<p class="card-vertical__description text-description">
+							@Html.Raw(Model.NewPosts[0].PostExcerpt)
+							@if (Model.NewPosts[0].CommentCount > 0)
+							{
+								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[0].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[0].CommentCount</i></a>}
+						</p>
+					</div>
 
-                                        <picture>
-                                            <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
-                                            <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
-                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
-                                        </picture> }
-                                </a>
-                                <div class="sub-content">
-                                    <p class="description">
-                                        @Html.Raw(Model.NewPosts[i].PostExcerpt)
-                                        @if (Model.NewPosts[i].CommentCount > 0)
-                                        {
-                                            <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>}
-                                    </p>
-                                </div>
-                            </div>}
-                    </div>
-                </div>
+					<div class="skeleton-vertical">
+						<a class="skeleton-vertical__image"></a>
+						<a class="skeleton-vertical__title"></a>
+						<p class="skeleton-vertical__description text-description"></p>
+					</div>
+
+					<div class="card-horizontal-section">
+						@for (int i = 1; i < Model.NewPosts.Length; i++)
+						{
+							<div class="card-title-wrapper card-item-@i">
+								<a class="title" href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
+								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
+									@{ string featuredImg = Model.NewPosts[i].FeatureImage;
+
+										<picture>
+											<source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
+											<source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
+											<img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+										</picture> }
+								</a>
+								<div class="sub-content">
+									<p class="description">
+										@Html.Raw(Model.NewPosts[i].PostExcerpt)
+										@if (Model.NewPosts[i].CommentCount > 0)
+										{
+											<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>}
+									</p>
+								</div>
+							</div>}
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="banner-mobile">
