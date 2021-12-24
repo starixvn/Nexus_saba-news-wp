@@ -1,4 +1,5 @@
-﻿.banner-change-domain {
+﻿@import '../abstracts/mixins';
+.banner-change-domain {
     position: absolute;
     top: 24.5rem;
     z-index: 99999999999;
@@ -12,40 +13,13 @@
         display: none;
     }
 
-
     &.banner-left {
-        left: 1.5rem;
-
-        @media screen and (max-width : 1600px) {
-            left: 0;
-            max-width: 18rem;
-        }
-
-        @media screen and (max-width : 1440px) {
-            left: 0;
-            max-width: 14rem;
-        }
-
-        @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
-            max-width: 10rem;
-        }
+        right: 50%;
+        margin-right: 580px;
     }
 
     &.banner-right {
-        right: 1.5rem;
-
-        @media screen and (max-width : 1600px) {
-            right: 0;
-            max-width: 18rem;
-        }
-
-        @media screen and (max-width : 1440px) {
-            right: 0;
-            max-width: 14rem;
-        }
-
-        @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
-            max-width: 10rem;
-        }
+        left: 50%;
+        margin-left: 580px;
     }
 }

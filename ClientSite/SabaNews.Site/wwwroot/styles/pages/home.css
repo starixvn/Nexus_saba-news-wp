@@ -1273,31 +1273,11 @@ button {
     .banner-change-domain {
       display: none; } }
   .banner-change-domain.banner-left {
-    left: 1.5rem; }
-    @media screen and (max-width: 1600px) {
-      .banner-change-domain.banner-left {
-        left: 0;
-        max-width: 18rem; } }
-    @media screen and (max-width: 1440px) {
-      .banner-change-domain.banner-left {
-        left: 0;
-        max-width: 14rem; } }
-    @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
-      .banner-change-domain.banner-left {
-        max-width: 10rem; } }
+    right: 50%;
+    margin-right: 580px; }
   .banner-change-domain.banner-right {
-    right: 1.5rem; }
-    @media screen and (max-width: 1600px) {
-      .banner-change-domain.banner-right {
-        right: 0;
-        max-width: 18rem; } }
-    @media screen and (max-width: 1440px) {
-      .banner-change-domain.banner-right {
-        right: 0;
-        max-width: 14rem; } }
-    @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px) {
-      .banner-change-domain.banner-right {
-        max-width: 10rem; } }
+    left: 50%;
+    margin-left: 580px; }
 
 .main .block-hot-news .block__content {
   display: flex; }
