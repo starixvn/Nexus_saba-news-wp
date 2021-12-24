@@ -163,6 +163,18 @@ $(document).ready(function () {
             scrollLeft: leftPos + 200
         }, 800);
     });
+  
+    $('.search-input button').on('click', function (e) {
+        var keyword = $('input[name=keyword]').val();
+        if ($.trim(keyword) === '') {
+            e.preventDefault();
+            $('input[name=keyword]').focus();
+        }
+    });
+
+    if ($(window).innerWidth() < 768) {
+        $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
+    }
 
     var banner = $('.banner').offset();
     var top = (typeof banner != 'undefined') ? banner.top : 152;

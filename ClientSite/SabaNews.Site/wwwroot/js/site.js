@@ -84,26 +84,8 @@
             }
         });
     },
-    //Desktop & Mobile
-    HandleSearch: function () {
-        $('.search-input button').on('click', function (e) {
-            var keyword = $('input[name=keyword]').val();
-            if ($.trim(keyword) === '') {
-                e.preventDefault();
-                $('input[name=keyword]').focus();
-            }
-        });
-    },
-    //Desktop & Mobile
-    HandleUI: function () {
-        if ($(window).innerWidth() < 768) {
-            $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
-        }
-    },
     init: function () {
         this.HandleIframe();
-        this.HandleSearch();
-        this.HandleUI();
     }
 }
 

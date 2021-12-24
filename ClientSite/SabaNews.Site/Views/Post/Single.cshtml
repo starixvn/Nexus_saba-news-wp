@@ -1,13 +1,4 @@
-﻿@using Wangkanai.Detection.Services;
-@using Wangkanai.Detection.Models;
-
-@inject IDetectionService DetectionService
-@{
-	bool isMobile = DetectionService.Device.Type == Device.Mobile;
-	bool isTablet = DetectionService.Device.Type == Device.Tablet;
-	bool isDesktop = DetectionService.Device.Type == Device.Desktop;
-}
-
+﻿
 @section Metadata {
 	<meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&nbsp;" )' />
 	<meta property="og:url" content='@Model.AbsoluteUrl' />
