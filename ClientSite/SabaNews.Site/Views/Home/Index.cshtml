@@ -27,6 +27,9 @@
 	<link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
 }
 
+@section Scripts {
+	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+}
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
 	<div class="colums-main">

@@ -14,6 +14,10 @@
 	<link rel="stylesheet" href="~/minify/styles/video.min.css" asp-append-version="true">
 }
 
+@section Scripts {
+	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+}
+
 
 @(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug }))
 <section class="main">

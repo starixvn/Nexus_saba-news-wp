@@ -23,24 +23,8 @@
 }
 
 @section Scripts {
+	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
     <script src="~/js/euro2020/home.js" asp-append-version="true"></script>
-    <script>
-        if ($(window).innerWidth() > 500) {
-            var Swipes = new Swiper('.swiper-container.guess-section', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        }
-    </script>
 }
 
 <div class="page">
