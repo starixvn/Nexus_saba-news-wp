@@ -81,8 +81,8 @@
     .back-to-top-box {
         position: fixed;
         z-index: 99;
-        bottom: 8.5rem;
-        right: 8rem;
+        bottom: 3.5rem;
+        right: 3.5rem;
         @include flex(center,nowrap,center,column);
         width: 6rem;
         height: 6rem;
@@ -100,7 +100,7 @@
             transition: background-color .2s ease;
             @include flex(center,nowrap,center,column);
             cursor: pointer;
-
+ 
             &:hover {
                 background-color: #F2EFE9;
             }
