@@ -29,22 +29,20 @@
 
 @section Scripts {
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
-}
-	$(document).ready(function () {
-		$('.skeleton-vertical').hide();
-		$(window).on('load', function () {
-			$('.hide-homepage').show();
+	<script>
+		$(document).ready(function () {
 			$('.skeleton-vertical').hide();
+			$(window).on('load', function () {
+				$('.hide-homepage').show();
+				$('.skeleton-vertical').hide();
+			});
+			$(window).on('beforeunload', function () {
+				$('.hide-homepage').hide();
+				$('.skeleton-vertical').show();
+			});
 		});
-		$(window).on('beforeunload', function () {
-			$('.hide-homepage').hide();
-			$('.skeleton-vertical').show();
-		});
-	});
-	
-</script>
-	
-
+	</script>
+}
 }
 
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
