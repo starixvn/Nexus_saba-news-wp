@@ -150,7 +150,7 @@ p.has-text-align-center {
   .footer .back-to-top-box {
     position: fixed;
     z-index: 99;
-    bottom: 3.5rem;
+    bottom: 8.5rem;
     right: 8rem;
     display: flex;
     align-items: center;
