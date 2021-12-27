@@ -37,6 +37,13 @@ body {
     text-align :center;
     width : 100%;
 }
+
+main {
+    position: relative;
+    overflow-x: hidden;
+}
+
+
 .block {
     font-family: $font-title;
     margin-bottom: 0;

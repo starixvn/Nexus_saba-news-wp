@@ -3,6 +3,12 @@
 
 
 
+
+main {
+    position: relative;
+    overflow-x: hidden;
+}
+
 .auth-form {
     .show {
         position: fixed;

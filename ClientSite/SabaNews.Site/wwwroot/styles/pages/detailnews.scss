@@ -28,6 +28,11 @@ img {
     width: 100%;
 }
 
+main {
+    position: relative;
+    overflow-x: hidden;
+}
+
 .block-list {
     margin: 4rem 0;
 

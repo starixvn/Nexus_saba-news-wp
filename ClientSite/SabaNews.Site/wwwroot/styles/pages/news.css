@@ -1389,10 +1389,14 @@ button {
       display: none; } }
   .banner-change-domain.banner-left {
     right: 50%;
-    margin-right: 580px; }
+    margin-right: 58rem; }
   .banner-change-domain.banner-right {
     left: 50%;
-    margin-left: 580px; }
+    margin-left: 58rem; }
+
+main {
+  position: relative;
+  overflow-x: hidden; }
 
 .block-main .card-horizontal {
   margin-bottom: 1.6rem; }

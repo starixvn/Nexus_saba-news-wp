@@ -20,6 +20,12 @@
 @import '../components/ads';
 
 
+main {
+    position: relative;
+    overflow-x: hidden;
+}
+
+
 .block__swipper{
     margin-bottom: 4rem;
     .swiper-container {

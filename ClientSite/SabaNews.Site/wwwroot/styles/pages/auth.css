@@ -2,6 +2,10 @@
     --column : 12;
     --padding-col : 0 1.5rem;
 }*/
+main {
+  position: relative;
+  overflow-x: hidden; }
+
 .auth-form .show {
   position: fixed;
   z-index: 99999;
