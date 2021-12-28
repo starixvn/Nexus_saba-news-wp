@@ -1262,6 +1262,49 @@ button {
     font-size: 1.3rem;
     margin-left: .3rem; }
 
+.skeleton-swiper-slide .img-item {
+  margin-bottom: .8rem;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background: #d9d9d9;
+  position: relative; }
+  .skeleton-swiper-slide .img-item:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+    background-repeat: no-repeat;
+    background-size: 450px 400px;
+    animation: shimmer 1s linear infinite; }
+  .skeleton-swiper-slide .img-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; }
+
+.skeleton-swiper-slide .content-box {
+  margin: .3rem 0;
+  line-height: 1.9rem;
+  height: 2rem;
+  background: #d9d9d9;
+  width: 90%;
+  display: block;
+  border-radius: 20px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden; }
+  .skeleton-swiper-slide .content-box:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+    background-repeat: no-repeat;
+    background-size: 450px 400px;
+    animation: shimmer 1s linear infinite; }
+
 .skeleton-vertical {
   padding-bottom: 1.6rem;
   border-radius: 5px;
@@ -1677,26 +1720,29 @@ button {
     .main .block-guess .block__content .card-horizontal {
       border-color: #506180; }
     @media screen and (max-width: 1024px) {
-      .main .block-guess .block__content .card-vertical {
+      .main .block-guess .block__content .card-vertical, .main .block-guess .block__content .skeleton-vertical {
         padding-bottom: 0; } }
+    @media screen and (max-width: 1024px) {
+      .main .block-guess .block__content .skeleton-vertical {
+        display: none; } }
     .main .block-guess .block__content .card-vertical__title {
       color: #fff;
       font-weight: normal; }
     .main .block-guess .block__content .card-vertical__datetime {
       color: #cbcbcb; }
-    .main .block-guess .block__content .card-vertical__image {
+    .main .block-guess .block__content .card-vertical__image, .main .block-guess .block__content .skeleton-vertical__image {
       height: 20rem; }
       @media screen and (max-width: 1024px) {
-        .main .block-guess .block__content .card-vertical__image {
+        .main .block-guess .block__content .card-vertical__image, .main .block-guess .block__content .skeleton-vertical__image {
           height: 9rem; } }
       @media only screen and (min-width: 1024px) and (max-width: 1366px) {
-        .main .block-guess .block__content .card-vertical__image {
+        .main .block-guess .block__content .card-vertical__image, .main .block-guess .block__content .skeleton-vertical__image {
           height: 18rem; } }
       @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
-        .main .block-guess .block__content .card-vertical__image {
+        .main .block-guess .block__content .card-vertical__image, .main .block-guess .block__content .skeleton-vertical__image {
           height: 16rem; } }
       @media (max-device-width: 767px) {
-        .main .block-guess .block__content .card-vertical__image {
+        .main .block-guess .block__content .card-vertical__image, .main .block-guess .block__content .skeleton-vertical__image {
           margin-bottom: 0; } }
 
 .main .block-transfer {

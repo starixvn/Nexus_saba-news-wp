@@ -1,4 +1,58 @@
-﻿.skeleton-vertical {
+﻿.skeleton-swiper-slide {
+    .img-item {
+        margin-bottom: .8rem;
+        overflow: hidden;
+        display: block;
+        position: relative;
+        background: #d9d9d9;
+        position: relative;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+            background-repeat: no-repeat;
+            background-size: 450px 400px;
+            animation: shimmer 1s linear infinite;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+
+    .content-box {
+        margin: .3rem 0;
+        line-height: 1.9rem;
+        height: 2rem;
+        background: #d9d9d9;
+        width: 90%;
+        display: block;
+        border-radius: 20px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+            background-repeat: no-repeat;
+            background-size: 450px 400px;
+            animation: shimmer 1s linear infinite;
+        }
+    }
+}
+
+
+.skeleton-vertical {
     padding-bottom: 1.6rem;
     border-radius: 5px;
     overflow: hidden;
@@ -31,6 +85,7 @@
             background-size: 450px 400px;
             animation: shimmer 1s linear infinite;
         }
+
         img {
             width: 100%;
             height: 100%;
