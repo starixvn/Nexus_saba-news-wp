@@ -93,7 +93,7 @@
                     padding-left: 0;
                 }
 
-                .card-title-wrapper {
+                .card-title-wrapper, .skeleton-horizontal {
                     display: grid;
                     grid-template-columns: 14rem 1fr;
                     grid-gap: 8px;
@@ -107,11 +107,11 @@
                         padding-bottom: 0;
                     }
 
-                    .card-horizontal__image {
+                    .card-horizontal__image, .skeleton-horizontal__image {
                         height: 8rem;
                     }
 
-                    .title {
+                    .title, .skeleton-horizontal__title {
                         grid-column: 1/3;
                         grid-row: 1;
                         color: #333;

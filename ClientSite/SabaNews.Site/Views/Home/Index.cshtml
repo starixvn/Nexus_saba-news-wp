@@ -31,14 +31,14 @@
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 	<script>
 		$(document).ready(function () {
-			$('.skeleton-vertical, .skeleton-swiper-slide').hide();
+            $('.skeleton-vertical, .skeleton-swiper-slide,.skeleton-horizontal').hide();
 			$(window).on('load', function () {
 				$('.hide-homepage').show();
-                $('.skeleton-vertical, .skeleton-swiper-slide').hide();
+                $('.skeleton-vertical, .skeleton-swiper-slide,.skeleton-horizontal').hide();
 			});
 			$(window).on('beforeunload', function () {
 				$('.hide-homepage').hide();
-                $('.skeleton-vertical, .skeleton-swiper-slide').show();
+                $('.skeleton-vertical, .skeleton-swiper-slide,.skeleton-horizontal').show();
 			});
 		});
 	</script>
@@ -92,30 +92,37 @@
 						<p class="skeleton-vertical__description text-description"></p>
 					</div>
 
-					<div class="card-horizontal-section">
-						@for (int i = 1; i < Model.NewPosts.Length; i++)
-						{
-							<div class="card-title-wrapper card-item-@i">
-								<a class="title" href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
-								<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
-									@{ string featuredImg = Model.NewPosts[i].FeatureImage;
+                    <div class="card-horizontal-section">
+                        @for (int i = 1; i < Model.NewPosts.Length; i++)
+                        {
+                            <div class="card-title-wrapper card-item-@i hide-homepage">
+                                <a class="title" href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })">@Model.NewPosts[i].PostTitle</a>
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug })" class="card-horizontal__image">
+                                    @{ string featuredImg = Model.NewPosts[i].FeatureImage;
 
-										<picture>
-											<source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
-											<source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
-											<img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
-										</picture> }
-								</a>
-								<div class="sub-content">
-									<p class="description">
-										@Html.Raw(Model.NewPosts[i].PostExcerpt)
-										@if (Model.NewPosts[i].CommentCount > 0)
-										{
-											<a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>}
-									</p>
-								</div>
-							</div>}
-					</div>
+                                        <picture>
+                                            <source srcset="@Url.Content(featuredImg)" type="image/webp" class="img-res">
+                                            <source srcset="@Url.Content(featuredImg)" type="image/jpeg" class="img-res">
+                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(featuredImg)" alt="@Model.NewPosts[i].PostTitle" class="img-res img-block">
+                                        </picture> }
+                                </a>
+                                <div class="sub-content">
+                                    <p class="description">
+                                        @Html.Raw(Model.NewPosts[i].PostExcerpt)
+                                        @if (Model.NewPosts[i].CommentCount > 0)
+                                        {
+                                            <a href="@Url.Action("Single", "Post", new { slug =  Model.NewPosts[i].Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@Model.NewPosts[i].CommentCount</i></a>}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="skeleton-horizontal">
+                                <a class="skeleton-horizontal__image"></a>
+                                <a class="skeleton-horizontal__title"></a>
+                                <p class="skeleton-horizontal__description text-description"></p>
+                            </div>
+                        }
+                    </div>
 				</div>
 			</div>
 		</div>
