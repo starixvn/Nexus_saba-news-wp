@@ -31,7 +31,7 @@
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 	<script>
 		$(document).ready(function () {
-			$('.skeleton-vertical').hide();
+			//$('.skeleton-vertical').hide();
 			$(window).on('load', function () {
 				$('.hide-homepage').show();
 				$('.skeleton-vertical').hide();
@@ -190,26 +190,32 @@
 		<div class="block block-soccer">
 			<div class="container">
 				<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">@ViewResources.Football</a></h2>
-				<div class="block__content">
-					@foreach (var post in Model.FootballPosts)
-					{
-						<div class="card-vertical">
-							<a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image">
-								@{ string footballImg = post.FeatureImage;
-									<picture>
-										<source srcset="@Url.Content(footballImg)" type="image/webp" class="img-res">
-										<source srcset="@Url.Content(footballImg)" type="image/jpeg" class="img-res">
-										<img asp-append-version="true" loading="lazy" src="@Url.Content(footballImg)" alt="@post.PostTitle" class="img-res img-block">
-									</picture> }
-							</a>
-							<p class="card-vertical__datetime">
-								<a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
-								@if (post.CommentCount > 0)
-								{
-									<a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
-							</p>
-						</div>}
-				</div>
+                <div class="block__content">
+                    @foreach (var post in Model.FootballPosts)
+                    {
+                        <div class="card-vertical hide-homepage">
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image">
+                                @{ string footballImg = post.FeatureImage;
+                                    <picture>
+                                        <source srcset="@Url.Content(footballImg)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(footballImg)" type="image/jpeg" class="img-res">
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(footballImg)" alt="@post.PostTitle" class="img-res img-block">
+                                    </picture> }
+                            </a>
+                            <p class="card-vertical__datetime">
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__title">@post.PostTitle</a>
+                                @if (post.CommentCount > 0)
+                                {
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                            </p>
+                        </div>
+                        <div class="skeleton-vertical">
+                            <a class="skeleton-vertical__image"></a>
+                            <a class="skeleton-vertical__title"></a>
+                        </div>
+
+                    }
+                </div>
 			</div>
 		</div>
 

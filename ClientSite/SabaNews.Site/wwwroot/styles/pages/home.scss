@@ -57,7 +57,7 @@
                     display: block;
                 }
 
-                .card-vertical__image {
+                .card-vertical__image, .skeleton-vertical__image {
                     height: 25.5rem;
 
                     @include tableMobile {
@@ -363,7 +363,7 @@
                 display: block;
             }
 
-            .card-vertical {
+            .card-vertical, .skeleton-vertical {
                 padding-bottom: 0;
 
                 @include Mobile {
@@ -372,7 +372,7 @@
                 }
             }
 
-            .card-vertical__image {
+            .card-vertical__image, .skeleton-vertical__image {
                 height: 15.2rem;
 
                 @include Mobile {
