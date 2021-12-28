@@ -174,6 +174,7 @@ $(document).ready(function () {
 
     if ($(window).innerWidth() < 768) {
         $('.block-guess .block__content .card-vertical').addClass("card-horizontal").removeClass("card-vertical");
+        $('.block-guess .block__content .skeleton-vertical').addClass("skeleton-horizontal").removeClass("skeleton-vertical");
     }
 
     var banner = $('.banner').offset();
