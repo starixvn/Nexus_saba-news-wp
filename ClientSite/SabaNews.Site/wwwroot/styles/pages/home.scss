@@ -233,7 +233,7 @@
             .swiper-video {
                 overflow: hidden;
                 grid-column: 1;
-                position : relative;
+                position: relative;
 
                 .swiper-container {
                     height: 100%;
@@ -509,9 +509,39 @@
                 @include grid(repeat(4, 1fr), unset, #{$column-gap-mobile});
             }
 
-            .card-vertical {
+            .skeleton-vertical {
+                @include Mobile {
+                    grid-column: 1/5;
+                }
+            }
+
+            .card-vertical, .skeleton-vertical {
+                .skeleton-vertical__image {
+                    height: 15.2rem;
+
+                    @include landscapeTablet {
+                        height: 12.2rem;
+                    }
+
+                    @include Mobile {
+                        height: 20rem;
+                    }
+                }
+
                 &.card-vertical-highlight {
                     padding-bottom: .5rem;
+
+                    [class*="card-vertical__image"] {
+                        height: 15.2rem;
+
+                        @include landscapeTablet {
+                            height: 12.2rem;
+                        }
+
+                        @include Mobile {
+                            height: 20rem;
+                        }
+                    }
 
                     &:nth-child(1) {
                         [class*="card-vertical__image"] {
@@ -527,19 +557,6 @@
                         }
                     }
 
-                    &:nth-child(2), &:nth-child(3), &:nth-child(4) {
-                        [class*="card-vertical__image"] {
-                            height: 15.2rem;
-
-                            @include landscapeTablet {
-                                height: 12.2rem;
-                            }
-
-                            @include Mobile {
-                                height: 20rem;
-                            }
-                        }
-                    }
 
                     &:nth-child(n+1) {
                         [class*="card-vertical__"]:not(.card-vertical__image) {
@@ -716,8 +733,8 @@
             }
         }
 
-        .card-vertical-highlight {
-            .card-vertical__image {
+        .card-vertical-highlight, .skeleton-vertical {
+            .card-vertical__image, .skeleton-vertical__image {
                 height: 40rem;
 
                 @include Mobile {
@@ -737,14 +754,19 @@
 
             @include Mobile {
                 display: block;
+            }
 
-                .card-vertical__image {
+            .card-vertical__image, .skeleton-vertical__image {
+                height: 15rem;
+
+                @include Mobile {
                     height: 20rem;
                 }
             }
         }
     }
 }
+
 .banner-euro-mobile {
     text-align: center;
 }
@@ -765,5 +787,3 @@ main {
     position: relative;
     overflow-x: hidden;
 }
-
-

@@ -5,6 +5,7 @@
     position: absolute;
     background: #e8eaef;
     z-index: 9999999999;
+
     @include Mobile {
         height: 27rem;
         display: block;
