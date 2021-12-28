@@ -31,14 +31,14 @@
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 	<script>
 		$(document).ready(function () {
-			//$('.skeleton-vertical').hide();
+			$('.skeleton-vertical, .skeleton-swiper-slide').hide();
 			$(window).on('load', function () {
 				$('.hide-homepage').show();
-                $('.skeleton-vertical,.skeleton-swiper-slide').hide();
+                $('.skeleton-vertical, .skeleton-swiper-slide').hide();
 			});
 			$(window).on('beforeunload', function () {
 				$('.hide-homepage').hide();
-                $('.skeleton-vertical,.skeleton-swiper-slide').show();
+                $('.skeleton-vertical, .skeleton-swiper-slide').show();
 			});
 		});
 	</script>
