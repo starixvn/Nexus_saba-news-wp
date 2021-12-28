@@ -170,32 +170,39 @@
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-					<div class="slide-video">
-						@foreach (var post in Model.VideoPosts)
-						{
-							<div class="card-horizontal card-item">
-								<a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
-									@{ string videoDesktopImg = post.GetImageBySize(ImageWidth.Width500);
+                    <div class="slide-video">
+                        @foreach (var post in Model.VideoPosts)
+                        {
+                            <div class="card-horizontal card-item hide-homepage">
+                                <a href="javascript:;" data-id="@post.ID" class="image-slider card-horizontal__image">
+                                    @{ string videoDesktopImg = post.GetImageBySize(ImageWidth.Width500);
 
-										<picture>
-											<source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
-											<source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
-											<img asp-append-version="true" loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
-										</picture> }
-								</a>
-								<div class="card-horizontal__content">
-									<p class="datetime">
-										<a href="@Url.Action("Single", "Post", new { slug = post.Slug })" data-id="@post.ID" class="title">
-											@post.PostTitle
-										</a>
-										@if (post.CommentCount > 0)
-										{
-											<a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
-									</p>
-								</div>
-							</div>
-						}
-					</div>
+                                        <picture>
+                                            <source srcset="@Url.Content(videoDesktopImg)" type="image/webp" class="img-res">
+                                            <source srcset="@Url.Content(videoDesktopImg)" type="image/jpeg" class="img-res">
+                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(videoDesktopImg)" alt="@post.PostTitle" class="img-res img-block">
+                                        </picture> }
+                                </a>
+                                <div class="card-horizontal__content">
+                                    <p class="datetime">
+                                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" data-id="@post.ID" class="title">
+                                            @post.PostTitle
+                                        </a>
+                                        @if (post.CommentCount > 0)
+                                        {
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="skeleton-horizontal">
+                                <a class="skeleton-horizontal__image"></a>
+                                <div class="text-skeleton">
+                                    <a class="skeleton-horizontal__title"></a>
+                                    <p class="skeleton-horizontal__description text-description"></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -279,7 +286,14 @@
 				<div class="block block-behind">
 					<h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
                     <div class="block__content">
-                        <div class="card-horizontal card-horizontal-highlight card-item-1">
+                        <div class="skeleton-horizontal">
+                            <a class="skeleton-horizontal__image"></a>
+                            <div class="text-skeleton">
+                                <a class="skeleton-horizontal__title"></a>
+                                <p class="skeleton-horizontal__description text-description"></p>
+                            </div>
+                        </div>
+                        <div class="card-horizontal card-horizontal-highlight card-item-1 hide-homepage">
                             <a href="@Url.Action("Single", "Post", new { slug = Model.BackstagePosts[0].Slug  })" class="card-horizontal__image">
                                 @{ //short backstageSize = isDesktop ? ImageWidth.Width768 : ImageWidth.Width500;
                                     string backstageImg = Model.BackstagePosts[0].FeatureImage;
@@ -332,28 +346,36 @@
 					<h2 class="block__title">
 						<a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">@ViewResources.Transfer</a>
 					</h2>
-					<div class="block__content">
-						@foreach (var post in Model.TransferPosts)
-						{
-							<div class="card-horizontal">
-								<a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-horizontal__image">
-									@{ string transferImg = post.FeatureImage; }
-									<picture>
-										<source srcset="@Url.Content(transferImg)" type="image/webp" class="img-res">
-										<source srcset="@Url.Content(transferImg)" type="image/jpeg" class="img-res">
-										<img asp-append-version="true" loading="lazy" src="@Url.Content(transferImg)" alt="@post.PostTitle" class="img-res img-block">
-									</picture>
-								</a>
-								<div class="card-horizontal__content">
-									<p class="datetime">
-										<a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
-										@if (post.CommentCount > 0)
-										{
-											<a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
-									</p>
-								</div>
-							</div>}
-					</div>
+                    <div class="block__content">
+                        @foreach (var post in Model.TransferPosts)
+                        {
+                            <div class="card-horizontal hide-homepage">
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-horizontal__image">
+                                    @{ string transferImg = post.FeatureImage; }
+                                    <picture>
+                                        <source srcset="@Url.Content(transferImg)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(transferImg)" type="image/jpeg" class="img-res">
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(transferImg)" alt="@post.PostTitle" class="img-res img-block">
+                                    </picture>
+                                </a>
+                                <div class="card-horizontal__content">
+                                    <p class="datetime">
+                                        <a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">@post.PostTitle</a>
+                                        @if (post.CommentCount > 0)
+                                        {
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="skeleton-horizontal">
+                                <a class="skeleton-horizontal__image"></a>
+                                <div class="text-skeleton">
+                                    <a class="skeleton-horizontal__title"></a>
+                                    <p class="skeleton-horizontal__description text-description"></p>
+                                </div>
+                            </div>
+                        }
+                    </div>
 				</div>
 			</div>
 		</div>

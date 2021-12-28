@@ -1358,7 +1358,7 @@ button {
   .skeleton-horizontal__title {
     height: 2rem;
     background: #d9d9d9;
-    width: 100%;
+    width: 95%;
     display: block;
     border-radius: 20px;
     position: relative;
@@ -1373,14 +1373,13 @@ button {
       background-size: 450px 400px;
       animation: shimmer 1s linear infinite; }
   .skeleton-horizontal__description {
-    margin: .3rem 0;
+    margin: .5rem 0;
     line-height: 1.9rem;
     height: 2rem;
     background: #d9d9d9;
-    width: 90%;
+    width: 95%;
     display: block;
     border-radius: 20px;
-    margin: 0 auto;
     position: relative;
     overflow: hidden; }
     .skeleton-horizontal__description:before {
@@ -1696,17 +1695,19 @@ button {
     .main .block-video .block__content .slide-video::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.2);
       border-radius: 3px; }
-  .main .block-video .block__content .card-horizontal {
+  .main .block-video .block__content .card-horizontal, .main .block-video .block__content .skeleton-horizontal {
     grid-template-columns: 14rem 1fr;
     grid-template-rows: 8rem; }
-    .main .block-video .block__content .card-horizontal__image {
+    .main .block-video .block__content .card-horizontal__image, .main .block-video .block__content .skeleton-horizontal__image {
       height: 8rem; }
-    .main .block-video .block__content .card-horizontal .card-horizontal__content {
+    .main .block-video .block__content .card-horizontal .card-horizontal__content, .main .block-video .block__content .skeleton-horizontal .card-horizontal__content {
       padding: .4rem 0;
       line-height: 1.8rem; }
-    .main .block-video .block__content .card-horizontal.active .card-horizontal__image {
+    .main .block-video .block__content .card-horizontal .skeleton-horizontal__title, .main .block-video .block__content .card-horizontal .skeleton-horizontal__description, .main .block-video .block__content .skeleton-horizontal .skeleton-horizontal__title, .main .block-video .block__content .skeleton-horizontal .skeleton-horizontal__description {
+      height: 1.2rem; }
+    .main .block-video .block__content .card-horizontal.active .card-horizontal__image, .main .block-video .block__content .skeleton-horizontal.active .card-horizontal__image {
       position: relative; }
-      .main .block-video .block__content .card-horizontal.active .card-horizontal__image:after {
+      .main .block-video .block__content .card-horizontal.active .card-horizontal__image:after, .main .block-video .block__content .skeleton-horizontal.active .card-horizontal__image:after {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -1717,7 +1718,7 @@ button {
         text-align: center;
         top: 0;
         padding-top: 3rem; }
-    .main .block-video .block__content .card-horizontal .title {
+    .main .block-video .block__content .card-horizontal .title, .main .block-video .block__content .skeleton-horizontal .title {
       font-size: 1.4rem; }
 
 .main .block-video .play_video iframe {
@@ -1814,17 +1815,19 @@ button {
   @media screen and (max-width: 1024px) {
     .main .block-transfer {
       padding-bottom: .4rem; } }
-  .main .block-transfer .card-horizontal {
+  .main .block-transfer .card-horizontal, .main .block-transfer .skeleton-horizontal {
     margin-bottom: 1.6rem;
     grid-template-columns: 14rem 1fr; }
     @media screen and (max-width: 1024px) {
-      .main .block-transfer .card-horizontal {
+      .main .block-transfer .card-horizontal, .main .block-transfer .skeleton-horizontal {
         margin-bottom: 1.6rem; } }
     @media (max-device-width: 767px) {
-      .main .block-transfer .card-horizontal {
+      .main .block-transfer .card-horizontal, .main .block-transfer .skeleton-horizontal {
         margin-bottom: 1.2rem; } }
-    .main .block-transfer .card-horizontal__image {
+    .main .block-transfer .card-horizontal__image, .main .block-transfer .skeleton-horizontal__image {
       height: 8.5rem; }
+    .main .block-transfer .card-horizontal .skeleton-horizontal__title, .main .block-transfer .card-horizontal .skeleton-horizontal__description, .main .block-transfer .skeleton-horizontal .skeleton-horizontal__title, .main .block-transfer .skeleton-horizontal .skeleton-horizontal__description {
+      height: 1.2rem; }
 
 .main .block-behind {
   padding: 0;
@@ -1883,7 +1886,7 @@ button {
         /*@include Mobile {
                                 padding: 0 .8rem;
                             }*/ }
-    .main .block-behind .block__content .card-horizontal-highlight {
+    .main .block-behind .block__content .card-horizontal-highlight, .main .block-behind .block__content .skeleton-horizontal {
       height: 30rem;
       grid-template-columns: 44rem 1fr;
       grid-column-gap: 0;
@@ -1893,37 +1896,41 @@ button {
       padding-bottom: 0;
       margin-bottom: 0; }
       @media screen and (max-width: 1024px) {
-        .main .block-behind .block__content .card-horizontal-highlight {
+        .main .block-behind .block__content .card-horizontal-highlight, .main .block-behind .block__content .skeleton-horizontal {
           display: inherit;
           height: auto;
           grid-template-columns: 23rem 1fr; } }
       @media (max-device-width: 767px) {
-        .main .block-behind .block__content .card-horizontal-highlight {
+        .main .block-behind .block__content .card-horizontal-highlight, .main .block-behind .block__content .skeleton-horizontal {
           grid-template-columns: auto;
           background-color: transparent;
           border-bottom: none; } }
-      .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image {
+      .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image, .main .block-behind .block__content .card-horizontal-highlight .skeleton-horizontal__image, .main .block-behind .block__content .skeleton-horizontal .card-horizontal__image, .main .block-behind .block__content .skeleton-horizontal .skeleton-horizontal__image {
         height: 100%; }
         @media (max-device-width: 767px) {
-          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image {
+          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__image, .main .block-behind .block__content .card-horizontal-highlight .skeleton-horizontal__image, .main .block-behind .block__content .skeleton-horizontal .card-horizontal__image, .main .block-behind .block__content .skeleton-horizontal .skeleton-horizontal__image {
             height: 20rem; } }
-      .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content {
+      .main .block-behind .block__content .card-horizontal-highlight .text-skeleton, .main .block-behind .block__content .skeleton-horizontal .text-skeleton {
+        margin: 1rem; }
+        .main .block-behind .block__content .card-horizontal-highlight .text-skeleton .skeleton-horizontal__title, .main .block-behind .block__content .card-horizontal-highlight .text-skeleton .skeleton-horizontal__description, .main .block-behind .block__content .skeleton-horizontal .text-skeleton .skeleton-horizontal__title, .main .block-behind .block__content .skeleton-horizontal .text-skeleton .skeleton-horizontal__description {
+          width: 100%; }
+      .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content, .main .block-behind .block__content .skeleton-horizontal .card-horizontal__content {
         padding: 1.6rem; }
         @media screen and (max-width: 1024px) {
-          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content {
+          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content, .main .block-behind .block__content .skeleton-horizontal .card-horizontal__content {
             margin-top: 1rem; } }
         @media (max-device-width: 767px) {
-          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content {
+          .main .block-behind .block__content .card-horizontal-highlight .card-horizontal__content, .main .block-behind .block__content .skeleton-horizontal .card-horizontal__content {
             padding: .8rem 0;
             margin-top: 0; } }
-    .main .block-behind .block__content .card-item-1 {
+    .main .block-behind .block__content .card-item-1, .main .block-behind .block__content .skeleton-horizontal {
       grid-column: 1/4;
       background-color: #E8EAEF; }
       @media screen and (max-width: 1024px) {
-        .main .block-behind .block__content .card-item-1 {
+        .main .block-behind .block__content .card-item-1, .main .block-behind .block__content .skeleton-horizontal {
           grid-column: 1/5; } }
       @media (max-device-width: 767px) {
-        .main .block-behind .block__content .card-item-1 {
+        .main .block-behind .block__content .card-item-1, .main .block-behind .block__content .skeleton-horizontal {
           grid-gap: 0;
           background-color: transparent; } }
     @media screen and (max-width: 1024px) {

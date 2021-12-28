@@ -307,7 +307,7 @@
                 }
             }
 
-            .card-horizontal {
+            .card-horizontal, .skeleton-horizontal {
                 grid-template-columns: 14rem 1fr;
                 grid-template-rows: 8rem;
 
@@ -319,6 +319,11 @@
                     padding: .4rem 0;
                     line-height: 1.8rem;
                 }
+
+                .skeleton-horizontal__title, .skeleton-horizontal__description {
+                    height: 1.2rem;
+                }
+
 
                 &.active .card-horizontal__image {
                     position: relative;
@@ -472,7 +477,7 @@
             padding-bottom: .4rem;
         }
 
-        .card-horizontal {
+        .card-horizontal, .skeleton-horizontal {
             margin-bottom: $column-gap-tablet;
             grid-template-columns: 14rem 1fr;
 
@@ -486,6 +491,10 @@
 
             &__image {
                 height: 8.5rem;
+            }
+
+            .skeleton-horizontal__title, .skeleton-horizontal__description {
+                height: 1.2rem;
             }
         }
     }
@@ -569,7 +578,7 @@
                 }
             }
 
-            .card-horizontal-highlight {
+            .card-horizontal-highlight, .skeleton-horizontal {
                 height: 30rem;
                 grid-template-columns: 44rem 1fr;
                 grid-column-gap: 0;
@@ -591,11 +600,19 @@
                     border-bottom: none;
                 }
 
-                .card-horizontal__image {
+                .card-horizontal__image, .skeleton-horizontal__image {
                     height: 100%;
 
                     @include Mobile {
                         height: 20rem
+                    }
+                }
+
+                .text-skeleton {
+                    margin: 1rem;
+
+                    .skeleton-horizontal__title, .skeleton-horizontal__description {
+                        width: 100%;
                     }
                 }
 
@@ -613,7 +630,7 @@
                 }
             }
 
-            .card-item-1 {
+            .card-item-1, .skeleton-horizontal {
                 grid-column: 1/4;
                 background-color: $block-highlight-bgcolor;
 
