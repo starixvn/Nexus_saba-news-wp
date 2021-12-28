@@ -1,11 +1,25 @@
 ﻿.skeleton-swiper-slide {
+    height: 100%;
+    display: block;
+    width: 100%;
+    position: absolute;
+    background: #e8eaef;
+    z-index: 9999999999;
+    @include Mobile {
+        height: 27rem;
+        display: block;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
     .img-item {
         margin-bottom: .8rem;
         overflow: hidden;
         display: block;
         position: relative;
         background: #d9d9d9;
-        position: relative;
+        height: calc(100% - 6rem);
 
         &:before {
             position: absolute;
@@ -16,13 +30,6 @@
             background-repeat: no-repeat;
             background-size: 450px 400px;
             animation: shimmer 1s linear infinite;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
         }
     }
 

@@ -233,6 +233,7 @@
             .swiper-video {
                 overflow: hidden;
                 grid-column: 1;
+                position : relative;
 
                 .swiper-container {
                     height: 100%;
@@ -425,7 +426,7 @@
 
             .skeleton-vertical {
                 @include tableMobile {
-                    display:none;
+                    display: none;
                 }
             }
 
