@@ -1262,6 +1262,9 @@ button {
     font-size: 1.3rem;
     margin-left: .3rem; }
 
+.hide-section {
+  display: none !important; }
+
 .skeleton-swiper-slide {
   height: 100%;
   display: block;
