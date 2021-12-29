@@ -30,9 +30,6 @@
 @section Scripts {
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 	<script>
-		$("a").mousedown(function () {
-			$(window).unbind();
-		});
 		
         $(window).bind('beforeunload', function (e) {
             $('.hide-homepage').hide();

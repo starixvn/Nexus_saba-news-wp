@@ -13,6 +13,10 @@ $('.submenu').click(function () {
     }
 })
 
+$("a").mousedown(function () {
+    $(window).unbind();
+});
+
 $(document).ready(function () {
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')

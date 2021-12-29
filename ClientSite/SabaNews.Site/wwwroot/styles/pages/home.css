@@ -1269,7 +1269,6 @@ button {
   height: 100%;
   display: block;
   width: 100%;
-  position: absolute;
   background: #e8eaef;
   z-index: 9999999999; }
   @media (max-device-width: 767px) {
