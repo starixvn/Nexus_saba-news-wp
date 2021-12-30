@@ -2205,6 +2205,9 @@ main {
       .card-horizontal__image, .skeleton-horizontal__image {
         height: 9.3rem; } }
 
+.skeleton-vertical .skeleton-vertical__image {
+  height: 39.3rem; }
+
 #announcement {
   display: none; }
   #announcement .modal-auth {
