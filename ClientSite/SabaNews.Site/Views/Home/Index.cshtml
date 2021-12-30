@@ -29,17 +29,6 @@
 
 @section Scripts {
 	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
-	<script>
-		$(window).bind('beforeunload', function (e) {
-			$('.post').hide();
-			$('.skeleton').show();
-		});
-
-		$(document).ready(function () {
-			$('.post').show();
-			$('.skeleton').hide();
-		});
-	</script>
 }
 
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))

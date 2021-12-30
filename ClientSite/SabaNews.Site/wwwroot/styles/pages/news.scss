@@ -14,6 +14,7 @@
 @import '../components/img';
 @import '../components/card-horizontal';
 @import '../components/card-vertical';
+@import '../components/skeleton-loader';
 @import '../components/pagination';
 @import '../components/lazyload';
 @import '../components/sub-structure';
@@ -26,11 +27,15 @@ main {
 }
 
 .block-main {
-    .card-horizontal {
+    .card-horizontal, .skeleton-horizontal {
         margin-bottom: 1.6rem;
 
         @include Mobile {
             margin-bottom: 1.2rem;
+        }
+
+        .text-skeleton {
+            padding: 1rem 0 1rem 1rem;
         }
 
         &-highlight {
@@ -89,13 +94,27 @@ main {
                 }
             }
 
-            .card-horizontal__image {
+            .card-horizontal__image, .skeleton-horizontal__image {
                 height: 100%;
 
                 @include tableMobile {
                     max-height: 100% !important;
                 }
             }
+
+            .skeleton-horizontal__image {
+                @include tableMobile {
+                    height: 20rem;
+                }
+            }
+        }
+    }
+
+    .skeleton-horizontal__image {
+        height: 11rem;
+
+        @include tableMobile {
+            height: 9.3rem;
         }
     }
 }
@@ -177,6 +196,7 @@ main {
 
 .resetpass-container {
     display: inherit !important;
+
     .reset-page {
         p {
             margin-bottom: 1.5rem;
@@ -234,13 +254,3 @@ main {
         z-index: 10004;
     }
 }
-
-
-
-
-
-
-
-
-
-

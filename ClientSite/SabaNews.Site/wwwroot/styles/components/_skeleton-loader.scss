@@ -62,7 +62,7 @@
     }
 }
 
-.skeleton-horizontal {
+.skeleton-horizontal, skeleton-horizontal-highlight {
     @include grid(19.5rem 1fr, none, 1.2rem);
     overflow: hidden;
     border-bottom: 1px solid $separator-color;
@@ -86,7 +86,6 @@
         margin-bottom: .8rem;
         overflow: hidden;
         display: block;
-        position: relative;
         background: #d9d9d9;
         position: relative;
 

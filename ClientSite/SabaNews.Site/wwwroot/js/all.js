@@ -17,7 +17,14 @@ $("a").mousedown(function () {
     $(window).unbind();
 });
 
+$(window).bind('beforeunload', function (e) {
+    $('.post').hide();
+    $('.skeleton').show();
+});
+
 $(document).ready(function () {
+    $('.post').show();
+    $('.skeleton').hide();
     $('.language-select').click(function () {
         $(this).siblings('.languages-list').toggleClass('active')
     });
