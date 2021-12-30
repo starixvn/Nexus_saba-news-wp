@@ -770,22 +770,22 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 .overflow-modal {
   overflow: hidden; }
 
-.block-extension {
-  display: flex;
-  align-items: flex-start; }
-  .block-extension .block-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7rem; }
-  .block-extension .card-vertical {
-    margin-bottom: 1.2rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid #e5e5e5; }
-    .block-extension .card-vertical:not(:first-child) .card-vertical__title {
-      font-size: 1.4rem;
-      font-weight: normal; }
-    .block-extension .card-vertical:last-child {
-      border-bottom: none; }
+.block-extension .block-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7rem; }
+  .block-extension .block-sticky .skeleton-vertical .skeleton-vertical__image {
+    height: 20.1rem; }
+
+.block-extension .card-vertical {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid #e5e5e5; }
+  .block-extension .card-vertical:not(:first-child) .card-vertical__title {
+    font-size: 1.4rem;
+    font-weight: normal; }
+  .block-extension .card-vertical:last-child {
+    border-bottom: none; }
 
 /* vietnamese */
 @font-face {
