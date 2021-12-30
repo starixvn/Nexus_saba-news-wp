@@ -52,11 +52,11 @@
 				@for (int i = 1; i < Model.Posts.Length; i++)
 				{
 					<div class="card-vertical card-vertical-highlight">
-						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image">
+						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image thumb">
 							<picture>
 								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
 								<source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
-								<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block">
+								<img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block lazy">
 							</picture>
 						</a>
 						<a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
