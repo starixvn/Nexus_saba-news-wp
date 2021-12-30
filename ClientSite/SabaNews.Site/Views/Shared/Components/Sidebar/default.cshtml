@@ -34,7 +34,11 @@
                     </div>
 
                     <div class="skeleton skeleton-vertical">
-                        <a class="skeleton-vertical__image"></a>
+                        @{                            
+                            if (Model.Posts.IndexOf(post) == 0)
+                            {
+                                <a class="skeleton-vertical__image"></a>}
+                        }
                         <a class="skeleton-vertical__title"></a>
                         <p class="skeleton-vertical__description text-description"></p>
                     </div>
