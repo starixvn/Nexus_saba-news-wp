@@ -16,13 +16,14 @@ $('.submenu').click(function () {
 $("a").mousedown(function () {
     $(window).unbind();
 });
-
-if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
-    $(window).bind('beforeunload', function (e) {
-        $('.post').hide();
-        $('.skeleton').show();
-    });
-}
+$(window).bind('beforeunload', function (e) {
+    $('.post').hide();
+    $('.skeleton').show();
+});
+$(window).bind('unload', function (e) {
+    $('.post').show();
+    $('.skeleton').hide();
+});
 
 $(document).ready(function () {
     $('.post').show();
