@@ -106,13 +106,13 @@
                 <div class="single play_video"></div>
                 <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
                 <p class="card-vertical__datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                @if (!Model.IsVideo)
+                {
+                    <div class="content">
+                        @Html.Raw(Model.SinglePost.PostContent)
+                    </div>
+                }
             </div>
-            @if (!Model.IsVideo)
-            {
-                <div class="content">
-                    @Html.Raw(Model.SinglePost.PostContent)
-                </div>
-            }
 
             <div class="main-social">
                 <ul class="social left-social">

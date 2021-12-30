@@ -32,13 +32,15 @@
                                 <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
                         </p>
                     </div>
+
+                    <div class="skeleton skeleton-vertical">
+                        <a class="skeleton-vertical__image"></a>
+                        <a class="skeleton-vertical__title"></a>
+                        <p class="skeleton-vertical__description text-description"></p>
+                    </div>
                 }
             </div>
-            <div class="skeleton skeleton-vertical">
-                <a class="skeleton-vertical__image"></a>
-                <a class="skeleton-vertical__title"></a>
-                <p class="skeleton-vertical__description text-description"></p>
-            </div>
+
         </div>
 	</div>
 </div>

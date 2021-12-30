@@ -17,10 +17,12 @@ $("a").mousedown(function () {
     $(window).unbind();
 });
 
-$(window).bind('beforeunload', function (e) {
-    $('.post').hide();
-    $('.skeleton').show();
-});
+if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
+    $(window).bind('beforeunload', function (e) {
+        $('.post').hide();
+        $('.skeleton').show();
+    });
+}
 
 $(document).ready(function () {
     $('.post').show();
