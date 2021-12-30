@@ -1,6 +1,6 @@
 ﻿
 @section Metadata {
-	<meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt :  "&nbsp;" )' />
+	<meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
 	<meta property="og:url" content='@Model.AbsoluteUrl' />
 	<meta property="og:description" content="&nbsp;" />
 	<meta property="og:title" content='@Model.SinglePost.PostTitle' />
@@ -22,7 +22,7 @@
 }
 
 @{
-	var linkReturn = Url.Action("Category", "Home", new { slug = Model.CateSlug });
+    var linkReturn = Url.Action("Category", "Home", new { slug = Model.CateSlug });
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -65,43 +65,56 @@
 				</li>
 				<li class="item-social icon-mobile">
 					@if (Model.IsVideo)
-					{
+                    {
 						<a href="@Url.Action("Video", "Home")"
 						   class="item intent"
 						   title="@ViewResources.Back @ViewResources.Video">
 							<i class="icon-social icon-back"></i>
 						</a>
-					}
-					else
-					{
+                    }
+                    else
+                    {
 						<a href="@linkReturn"
 						   class="item intent"
 						   title="@ViewResources.Back @Model.CateName">
 							<i class="icon-social icon-back"></i>
 						</a>
-					}
+                    }
 				</li>
 			</ul>
 		</div>
         <div class="block block-main">
             <div class="card-vertical card-vertical-highlight">
                 <div class="single card-vertical__video">
-                    @if (Model.IsVideo)
-                    {
-                        <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
-                        <picture>
-                            <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
-                            <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
-                            <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
-                        </picture>
-                        <div class="btn-play-video" post-id="@Model.SinglePost.ID">
-                            <span class="icon-play"></span>
-                        </div>
+                    @{if (Model.IsVideo)
+                        {
+                            <div class="skeleton skeleton-vertical">
+                                <a class="skeleton-vertical__image"></a>
+                                <a class="skeleton-vertical__title"></a>
+                            </div>
+                            <div class="post">
+                                <input type="hidden" name="iframe_value" value="@Model.SinglePost.PostContent" />
+                                <picture>
+                                    <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/webp" class="img-res">
+                                    <source srcset="@Url.Content(Model.SinglePost.FeatureImage)" type="image/jpeg" class="img-res">
+                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.SinglePost.FeatureImage)" alt="@Model.SinglePost.PostTitle" class="img-res img-block">
+                                </picture>
+                                <div class="btn-play-video" post-id="@Model.SinglePost.ID">
+                                    <span class="icon-play"></span>
+                                </div>
+                                <div class="single play_video"></div>
+                                <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
+                                <p class="card-vertical__datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="single play_video"></div>
+                            <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
+                            <p class="card-vertical__datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                        }
                     }
-                </div>
-                <div class="single play_video"></div>
-                <a class="card-vertical__title">@Model.SinglePost.PostTitle</a>
-                <p class="card-vertical__datetime">@Model.SinglePost.PostTimeFormatSingle</p>
+                </div>                
                 @if (!Model.IsVideo)
                 {
                     <div class="content">
