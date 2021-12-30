@@ -53,7 +53,6 @@
             viewModel.Url = domain;
             viewModel.RSSUrl = $"{domain}tin-moi-nhat.rss";
             viewModel.Banner = banner;
-            Thread.Sleep(800);
             return View(viewModel);
         }
 
