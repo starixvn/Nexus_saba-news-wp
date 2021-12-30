@@ -1273,7 +1273,7 @@ button {
   z-index: 9999999999; }
   @media (max-device-width: 767px) {
     .skeleton-swiper-slide {
-      height: 27rem;
+      height: 27rem !important;
       display: block;
       width: 100%;
       top: 0;

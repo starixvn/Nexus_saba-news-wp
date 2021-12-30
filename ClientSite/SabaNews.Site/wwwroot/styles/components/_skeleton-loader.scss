@@ -10,7 +10,7 @@
     z-index: 9999999999;
 
     @include Mobile {
-        height: 27rem;
+        height: 27rem !important;
         display: block;
         width: 100%;
         top: 0;

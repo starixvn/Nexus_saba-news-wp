@@ -15,6 +15,7 @@
 @import '../components/pagination';
 @import '../components/swipper';
 @import '../components/card-vertical';
+@import '../components/skeleton-loader';
 @import '../components/sub-structure';
 @import '../components/lazyload';
 @import '../components/ads';
@@ -26,14 +27,20 @@ main {
 }
 
 
-.block__swipper{
+.block__swipper {
     margin-bottom: 4rem;
+
     .swiper-container {
-        .swiper-slide{
-            .img-item{
+        .skeleton-swiper-slide {
+            height: 49rem;
+        }
+
+        .swiper-slide {
+            .img-item {
                 max-height: 43rem;
                 overflow: hidden;
-                img{
+
+                img {
                     object-fit: cover;
                     width: 100%;
                 }
@@ -41,19 +48,24 @@ main {
         }
     }
 }
-.block__video{
+
+.block__video {
     @include grid(repeat(3, 1fr), unset, 1.6rem #{$column-gap});
-    @include tableMobile{
+
+    @include tableMobile {
         @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap-tablet});
     }
-    .card-vertical__image{
+
+    .card-vertical__image {
         margin-bottom: 1rem;
         height: 15rem;
-        overflow : hidden;
-        @include tableMobile{
+        overflow: hidden;
+
+        @include tableMobile {
             height: 13rem;
         }
     }
+
     .card-vertical-highlight {
         [class*="card-vertical__"]:not(.card-vertical__image) {
             padding: 0;
@@ -80,15 +92,3 @@ main {
         z-index: 10004;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
