@@ -1575,12 +1575,12 @@ main {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: unset;
       grid-gap: 1.6rem 1.6rem; } }
-  .block__video .card-vertical__image {
+  .block__video .card-vertical__image, .block__video .skeleton-vertical__image {
     margin-bottom: 1rem;
     height: 15rem;
     overflow: hidden; }
     @media screen and (max-width: 1024px) {
-      .block__video .card-vertical__image {
+      .block__video .card-vertical__image, .block__video .skeleton-vertical__image {
         height: 13rem; } }
   .block__video .card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0; }

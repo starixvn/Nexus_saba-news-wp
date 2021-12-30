@@ -56,7 +56,7 @@ main {
         @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet} #{$column-gap-tablet});
     }
 
-    .card-vertical__image {
+    .card-vertical__image, .skeleton-vertical__image {
         margin-bottom: 1rem;
         height: 15rem;
         overflow: hidden;
