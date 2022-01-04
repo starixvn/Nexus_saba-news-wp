@@ -81,55 +81,7 @@
                     </div>
                 }
             </div>
-            @{ int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
-                int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
-                var linkLast = Url.Action("Video", "Home", new { page = Model.Paging.TotalPages });
-                var linkFirst = Url.Action("Video", "Home", new { page = 1 });
-                var linkNext = Url.Action("Video", "Home", new { page = CurrentPage + 1 });
-                var linkPrev = Url.Action("Video", "Home", new { page = CurrentPage - 1 });
-
-                linkPrev = CurrentPage > 1 ? linkPrev : "javascript:;";
-                linkNext = CurrentPage < TotalPages ? linkNext : "javascript:;";
-                linkFirst = CurrentPage > 1 ? linkFirst : "javascript:;";
-                linkLast = CurrentPage < TotalPages ? linkLast : "javascript:;";
-                var disabledFirst = CurrentPage > 1 ? "" : "disabled";
-                var disabledLast = CurrentPage < TotalPages ? "" : "disabled";
-            }
-
-            @if (TotalPages > 1)
-            {
-                <div class="pagination">
-                    <a href="@linkFirst" class="icon-pagination icon-page-first @disabledFirst"></a>
-                    <a href="@linkPrev" class="icon-pagination icon-chevron-left @disabledFirst"></a>
-                    <ul class="main-pagination">
-                        @{ var front = (CurrentPage - 1 > 2) ? 2 : CurrentPage - 1;
-                            front = (CurrentPage - 1 == 3) ? 3 : front;
-                            var back = (TotalPages - CurrentPage > 2) ? 2 : TotalPages - CurrentPage;
-                            back = (TotalPages - CurrentPage == 3) ? 3 : back;
-
-                            if (CurrentPage - 4 >= 1)
-                            {
-                                <li class="items-pagination"><a href="@linkFirst" class="item">1</a></li>
-                                <li class="items-pagination"><a class="item">...</a></li>
-                            }
-
-                            for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
-                            {
-                                var link = Url.Action("Video", "Home", new { page = i });
-
-                                var active = i == CurrentPage ? "active" : "";
-                                <li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
-                            }
-
-                            if (CurrentPage + 4 <= TotalPages)
-                            {
-                                <li class="items-pagination"><a class="item">...</a></li>
-                                <li class="items-pagination"><a href="@linkLast" class="item">@Model.Paging.TotalPages</a></li>
-                            } }
-                    </ul>
-                    <a href="@linkNext" class="icon-pagination icon-chevron-right @disabledLast"></a>
-                    <a href="@linkLast" class="icon-pagination icon-page-last @disabledLast"></a>
-                </div>}
+            @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
         </div>
 
         @if (Model.Header.Slug != null)

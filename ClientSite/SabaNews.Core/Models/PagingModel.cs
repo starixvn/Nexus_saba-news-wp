@@ -11,6 +11,8 @@
 
         public int TotalPages { get; set; }
 
+        public string Href { get; set; }
+
         public string  SearchValue { get; set; }
 
         public DateTime FromDate { get; set; }

@@ -67,6 +67,7 @@
             }
 
             viewModel.Header.ActiveCategory = slug;
+            viewModel.Paging.Href = Url.Action("Category", "Home", new { slug, page = (int?)null });
             if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
             {
                 viewModel.Header.HeadTitle = viewModel.Posts.First().CategoryParent;
@@ -81,6 +82,7 @@
         public async Task<IActionResult> Video(int page = 1)
         {
             var viewModel = await dataControlService.GetCategoryViewModel(Constants.VideoSlug, page);
+            viewModel.Paging.Href = Url.Action("Video", "Home", new { page = (int?)null });
             var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }
@@ -134,8 +136,8 @@
         }
 
 
-        [Route("Search/page/{page}")]
-        [Route("Search")]
+        [Route("Search/{keyword}/page/{page}")]
+        [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
             var start = (page - 1) * Constants.Perpage;
@@ -157,7 +159,8 @@
                 {
                     CurrentPage = page,
                     PageSize = Constants.Perpage,
-                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
+                    Href = Url.Action("Search", "Home", new { keyword, page = (int?)null })
                 }
             };
 
@@ -194,7 +197,8 @@
                 {
                     CurrentPage = page,
                     PageSize = Constants.Perpage,
-                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage)
+                    TotalPages = (int)Math.Ceiling(totalItems / (double)Constants.Perpage),
+                    Href = Url.Action("Tag", "Home", new { tagname, page = (int?)null })
                 }
             };
 

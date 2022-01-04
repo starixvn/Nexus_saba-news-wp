@@ -16,6 +16,9 @@ $('.submenu').click(function () {
 $("a").mousedown(function () {
     $(window).unbind();
 });
+$("#search").submit(function () {
+    $(window).unbind();
+});
 $(window).bind('beforeunload', function (e) {
     $('.post').hide();
     $('.skeleton').show();
@@ -179,10 +182,16 @@ $(document).ready(function () {
     });
   
     $('.search-input button').on('click', function (e) {
-        var keyword = $('input[name=keyword]').val();
+        e.preventDefault();
+        var keyword = $('#search-keyword').val();
+        
         if ($.trim(keyword) === '') {
-            e.preventDefault();
-            $('input[name=keyword]').focus();
+            $('#search-keyword').focus();
+        } else {
+            form = $('#search');
+            form.trigger("reset");
+            form.attr('action', '/Search/' + keyword);
+            form.submit();
         }
     });
 
