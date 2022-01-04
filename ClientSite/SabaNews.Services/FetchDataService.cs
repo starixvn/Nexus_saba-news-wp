@@ -106,8 +106,7 @@
             {
                 CurrentPage = page,
                 PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage),
-                Href = slug == Constants.VideoSlug ? "/video" : "/tin-the-thao/" + slug
+                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage)
             };
 
             var model = new CategoryViewModel

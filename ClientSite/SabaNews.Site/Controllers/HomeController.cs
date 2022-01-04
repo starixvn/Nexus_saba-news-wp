@@ -67,6 +67,7 @@
             }
 
             viewModel.Header.ActiveCategory = slug;
+            viewModel.Paging.Href = Url.Action("Category", "Home", new { slug, page = (int?)null });
             if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
             {
                 viewModel.Header.HeadTitle = viewModel.Posts.First().CategoryParent;
@@ -81,6 +82,11 @@
         public async Task<IActionResult> Video(int page = 1)
         {
             var viewModel = await dataControlService.GetCategoryViewModel(Constants.VideoSlug, page);
+            if (viewModel == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            viewModel.Paging.Href = Url.Action("Video", "Home", new { page = (int?)null });
             var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }
