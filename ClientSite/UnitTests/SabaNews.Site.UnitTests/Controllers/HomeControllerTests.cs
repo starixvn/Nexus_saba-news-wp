@@ -258,6 +258,20 @@
         }
 
         [Fact]
+        public void ChangeDomain_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+           
+            //Act
+            var result =  controller.ChangeDomain();
+
+            // Assert
+            Assert.IsType<ViewResult>(result);
+           
+        }
+
+        [Fact]
         public async Task Search_WhenHaveFullData_ReturnExpectedViewResult()
         {
             // Arrange
