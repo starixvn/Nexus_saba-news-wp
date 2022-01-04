@@ -17,6 +17,7 @@
     using SabaNews.Criteria.Posts;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Routing;
 
     public class HomeControllerTests : Controller
     {
@@ -74,6 +75,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
             var expectedViewModel = fixture.Create<CategoryViewModel>();
@@ -96,6 +98,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             var page = fixture.Create<int>();
             var expectedViewModel = fixture.Create<CategoryViewModel>();
             dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
@@ -134,6 +137,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
             var expectedViewModel = fixture.Create<CategoryViewModel>();
@@ -153,6 +157,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
             CategoryViewModel expectedViewModel = null;
@@ -257,6 +262,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             string keyword = fixture.Create<string>();
             var page = fixture.Create<int>();
             var criteria = fixture.Create<SearchPostsCriteria>();
@@ -277,6 +283,7 @@
         {
             // Arrange
             var controller = GetController();
+            GetDefaultContext(controller);
             string keyword = null;
             var page = fixture.Create<int>();
             var criteria = fixture.Create<SearchPostsCriteria>();
@@ -358,6 +365,17 @@
             var controller = new HomeController(postService, dataControlService, configuration, bannerService, logService);
 
             return controller;
+        }
+        private void GetDefaultContext(HomeController controller)
+        {
+            var urlHelperMock = Substitute.For<IUrlHelper>();
+            controller.Url = urlHelperMock;
+            urlHelperMock.Action(Arg.Any<UrlActionContext>()).Returns("url");
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
         }
         #endregion Helpers
 
