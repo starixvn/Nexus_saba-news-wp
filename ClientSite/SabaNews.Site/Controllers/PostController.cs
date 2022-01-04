@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Controllers
 {
-    using Microsoft.AspNetCore.Http.Features;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -12,7 +11,6 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Linq;
-    using System.Net;
     using System.Threading.Tasks;
 
     public class PostController : Controller

@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Hosting;
     using SabaNews.Services.Interfaces;
-    using System;
     using System.IO;
 
     public class PathService : IPathService

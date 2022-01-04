@@ -1,14 +1,12 @@
 ﻿namespace SabaNews.Services
 {
+    using Fanex.Caching;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Services;
+    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Fanex.Caching;
-    using Fanex.Data.Repository;
-    using SabaNews.Core.Constants;
-    using SabaNews.Core.Services;
-    using SabaNews.Criteria.Banner;
-    using SabaNews.Services.Interfaces;
 
     public class RefreshCachingService : IRefreshCachingService
     {

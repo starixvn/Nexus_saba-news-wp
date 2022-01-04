@@ -1,10 +1,7 @@
 ﻿namespace SabaNews.Services
 {
-    using Newtonsoft.Json;
-    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;

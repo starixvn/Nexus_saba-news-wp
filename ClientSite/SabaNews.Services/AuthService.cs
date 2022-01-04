@@ -1,10 +1,7 @@
 ﻿namespace SabaNews.Services
 {
-    using System.IO;
-    using System.Threading.Tasks;
     using BCrypt.Net;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -12,6 +9,8 @@
     using SabaNews.Criteria.Auth;
     using SabaNews.Models.Auth;
     using SabaNews.Services.Interfaces;
+    using System.IO;
+    using System.Threading.Tasks;
 
     public class AuthService : IAuthService
     {
