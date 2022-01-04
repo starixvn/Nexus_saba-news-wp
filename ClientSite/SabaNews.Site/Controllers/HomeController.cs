@@ -87,7 +87,7 @@
                 return View(Constants.EmptyBlogView);
             }
             viewModel.Paging.Href = Url.Action("Video", "Home", new { page = (int?)null });
-            var view = (viewModel != null && viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
+            var view = (viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }
 
