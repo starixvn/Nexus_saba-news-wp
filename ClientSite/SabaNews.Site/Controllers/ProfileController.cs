@@ -135,16 +135,16 @@
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
             switch (type)
             {
-                case "phone":
+                case ProfileUpdateType.Phone:
                     user.Phone = value;
                     break;
-                case "name":
+                case ProfileUpdateType.Name:
                     user.Name = value;
                     break;
-                case "gender":
+                case ProfileUpdateType.Gender:
                     user.Gender = value;
                     break;
-                case "subscribe":
+                case ProfileUpdateType.IsSubscribe:
                     user.IsSubscribe = int.Parse(value);
                     break;
                 default:

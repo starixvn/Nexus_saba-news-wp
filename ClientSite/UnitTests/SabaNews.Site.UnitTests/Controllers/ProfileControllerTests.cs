@@ -172,10 +172,10 @@
         }
 
         [Theory]
-        [InlineData("phone", "phone")]
-        [InlineData("name", "name")]
-        [InlineData("gender", "name")]
-        [InlineData("subscribe", "1")]
+        [InlineData(ProfileUpdateType.Phone, "phone")]
+        [InlineData(ProfileUpdateType.Name, "name")]
+        [InlineData(ProfileUpdateType.Gender, "name")]
+        [InlineData(ProfileUpdateType.IsSubscribe, "1")]
         public async Task UpdateProfile_UpdateUserInfo_ReturnExpectedData(string type, string value)
         {
             // Arrange
