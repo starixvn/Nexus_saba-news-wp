@@ -14,10 +14,10 @@ $('.submenu').click(function () {
 })
 
 $("a").mousedown(function () {
-    $(window).unbind();
+    $(window).unbind('beforeunload');
 });
 $("#search").submit(function () {
-    $(window).unbind();
+    $(window).unbind('beforeunload');
 });
 $(window).bind('beforeunload', function (e) {
     $('.post').hide();
