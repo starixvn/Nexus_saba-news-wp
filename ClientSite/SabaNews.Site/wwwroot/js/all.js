@@ -70,15 +70,27 @@ $(document).ready(function () {
         $('.search-desktop').remove();
     }
 
-    //desktop
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.wapper').addClass('active-fixed');
+    var checkScrollHome = function () {
+        var main = document.querySelector('.wapper');
+        var top_of_obj = main.offsetTop;
+        var top_of_window = window.scrollY;
+        if (top_of_window > top_of_obj) {
+            main.classList.add('active-fixed');
         } else {
-            $('.wapper').removeClass('active-fixed');
+            main.classList.remove('active-fixed');
         }
+    }
+    window.addEventListener('scroll', function () { checkScrollHome() })
 
-    });
+    //desktop
+    //$(window).scroll(function () {
+       // if ($(this).scrollTop() > 100) {
+         //   $('.wapper').addClass('active-fixed');
+        //} else {
+         //   $('.wapper').removeClass('active-fixed');
+      //  }
+
+   // });
 
     //back to top mb and des
     $(window).scroll(function () {
