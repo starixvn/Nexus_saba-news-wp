@@ -1549,9 +1549,10 @@ button {
     left: 50%;
     margin-left: 58rem; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
+@media screen and (max-width: 1024px) {
+  main {
+    position: relative;
+    overflow-x: hidden; } }
 
 .block__swipper {
   margin-bottom: 4rem; }

@@ -1646,9 +1646,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     left: 50%;
     margin-left: 58rem; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
+@media screen and (max-width: 1024px) {
+  main {
+    position: relative;
+    overflow-x: hidden; } }
 
 .block-list {
   margin: 4rem 0; }

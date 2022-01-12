@@ -82,15 +82,7 @@ $(document).ready(function () {
     }
     window.addEventListener('scroll', function () { checkScrollHome() })
 
-    //desktop
-    //$(window).scroll(function () {
-       // if ($(this).scrollTop() > 100) {
-         //   $('.wapper').addClass('active-fixed');
-        //} else {
-         //   $('.wapper').removeClass('active-fixed');
-      //  }
 
-   // });
 
     //back to top mb and des
     $(window).scroll(function () {

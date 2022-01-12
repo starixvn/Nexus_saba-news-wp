@@ -1613,9 +1613,10 @@ button {
     left: 50%;
     margin-left: 58rem; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
+@media screen and (max-width: 1024px) {
+  main {
+    position: relative;
+    overflow-x: hidden; } }
 
 .block-main .card-horizontal, .block-main .skeleton-horizontal {
   margin-bottom: 1.6rem; }

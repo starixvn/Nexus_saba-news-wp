@@ -20,10 +20,11 @@
 @import '../components/lazyload';
 @import '../components/ads';
 
-
 main {
-    position: relative;
-    overflow-x: hidden;
+    @include tableMobile {
+        position: relative;
+        overflow-x: hidden;
+    }
 }
 
 

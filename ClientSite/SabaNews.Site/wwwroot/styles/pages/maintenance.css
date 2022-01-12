@@ -1227,9 +1227,10 @@ body {
   text-align: center;
   width: 100%; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
+@media screen and (max-width: 1024px) {
+  main {
+    position: relative;
+    overflow-x: hidden; } }
 
 .block {
   font-family: Arial, sans-serif;
