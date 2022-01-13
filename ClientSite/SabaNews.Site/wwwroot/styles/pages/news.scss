@@ -103,6 +103,9 @@ main {
                     max-height: 100% !important;
                 }
             }
+            .skeleton-horizontal__description{
+                height : 10rem;
+            }
 
             .skeleton-horizontal__image {
                 @include tableMobile {

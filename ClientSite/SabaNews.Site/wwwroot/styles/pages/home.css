@@ -1376,7 +1376,7 @@ button {
   .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
     height: 2rem;
     background: #d9d9d9;
-    width: 15%;
+    width: 8.5rem;
     display: block;
     border-radius: 20px;
     position: relative;
@@ -1393,7 +1393,7 @@ button {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
     margin: .5rem 0;
     line-height: 1.9rem;
-    height: 4rem;
+    height: 5rem;
     background: #d9d9d9;
     width: 95%;
     display: block;
@@ -1469,10 +1469,10 @@ button {
     line-height: 2rem;
     height: 2rem;
     background: #d9d9d9;
-    width: 15%;
+    width: 8.5rem;
     display: block;
     border-radius: 20px;
-    margin: 1rem auto;
+    margin-left: 1.5rem;
     position: relative;
     overflow: hidden; }
     .skeleton-vertical__datetime:before {
@@ -1973,7 +1973,7 @@ button {
         .main .block-behind .block__content .card-item-1, .main .block-behind .block__content .skeleton-horizontal {
           grid-gap: 0;
           background-color: transparent; } }
-      .main .block-behind .block__content .card-item-1 skeleton-horizontal__description, .main .block-behind .block__content .skeleton-horizontal skeleton-horizontal__description {
+      .main .block-behind .block__content .card-item-1 .skeleton-horizontal__description, .main .block-behind .block__content .skeleton-horizontal .skeleton-horizontal__description {
         height: 10rem !important; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content .card-item-2, .main .block-behind .block__content .card-item-4 {
