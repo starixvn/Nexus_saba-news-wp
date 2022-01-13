@@ -29,6 +29,6 @@
 		<li class="@(ViewBag.Page == Constants.ProfileIndexPage ? "active-control" : "")">
 			<a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount</a>
 		</li>
-		<li><a href="javascript:;" class="profile_logout">@ViewResources.Exit</a></li>
+		<li><a href="~/Auth/Logout?returnUrl=/" class="profile_logout">@ViewResources.Logout <i class="icon-logout"></i></a></li>
 	</ul>
 </div>
