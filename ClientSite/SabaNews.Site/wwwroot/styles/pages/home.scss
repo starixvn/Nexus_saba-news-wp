@@ -69,6 +69,10 @@
                         display: block;
                     }
                 }
+
+                .skeleton-vertical__description {
+                    height: 10rem;
+                }
             }
 
 
@@ -608,6 +612,7 @@
                     }
                 }
 
+
                 .text-skeleton {
                     margin: 1rem;
 
@@ -641,6 +646,10 @@
                 @include Mobile {
                     grid-gap: 0;
                     background-color: transparent;
+                }
+
+                skeleton-horizontal__description {
+                    height: 10rem !important;
                 }
             }
 
