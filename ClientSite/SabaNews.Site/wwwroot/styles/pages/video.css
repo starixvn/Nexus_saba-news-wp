@@ -1275,6 +1275,13 @@ button {
       background-size: 450px 400px;
       animation: shimmer 1s linear infinite; }
 
+.skeleton-sidebar .skeleton-vertical__title {
+  width: 100%;
+  margin-bottom: 0.5rem; }
+
+.skeleton-sidebar .skeleton-vertical__datetime {
+  margin-left: 0; }
+
 .skeleton-horizontal, skeleton-horizontal-highlight {
   display: grid;
   grid-template-columns: 19.5rem 1fr;
@@ -1335,7 +1342,7 @@ button {
   .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
     height: 2rem;
     background: #d9d9d9;
-    width: 8.5rem;
+    width: 7rem;
     display: block;
     border-radius: 20px;
     position: relative;
@@ -1352,11 +1359,11 @@ button {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
     margin: .5rem 0;
     line-height: 1.9rem;
-    height: 3rem;
+    height: 2rem;
     background: #d9d9d9;
     width: 95%;
     display: block;
-    border-radius: 5px;
+    border-radius: 20px;
     position: relative;
     overflow: hidden; }
     .skeleton-horizontal__description:before, skeleton-horizontal-highlight__description:before {
@@ -1411,7 +1418,6 @@ button {
     width: 90%;
     display: block;
     border-radius: 20px;
-    margin: 1rem auto;
     position: relative;
     overflow: hidden; }
     .skeleton-vertical__title:before {
@@ -1428,7 +1434,7 @@ button {
     line-height: 2rem;
     height: 2rem;
     background: #d9d9d9;
-    width: 8.5rem;
+    width: 7rem;
     display: block;
     border-radius: 20px;
     margin-left: 1.5rem;

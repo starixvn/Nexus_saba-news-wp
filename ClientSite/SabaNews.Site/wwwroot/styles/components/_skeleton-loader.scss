@@ -62,6 +62,20 @@
     }
 }
 
+.skeleton-sidebar {
+    .skeleton-vertical {
+
+        &__title {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        &__datetime {
+            margin-left: 0;
+        }
+    }
+}
+
 .skeleton-horizontal, skeleton-horizontal-highlight {
     @include grid(19.5rem 1fr, none, 1.2rem);
     overflow: hidden;
@@ -131,7 +145,7 @@
     &__datetime {
         height: 2rem;
         background: #d9d9d9;
-        width: 8.5rem;
+        width: 7rem;
         display: block;
         border-radius: 20px;
         position: relative;
@@ -153,11 +167,11 @@
     &__description {
         margin: .5rem 0;
         line-height: 1.9rem;
-        height: 3rem;
+        height: 2rem;
         background: #d9d9d9;
         width: 95%;
         display: block;
-        border-radius: 5px;
+        border-radius: 20px;
         position: relative;
         overflow: hidden;
 
@@ -230,9 +244,9 @@
         width: 90%;
         display: block;
         border-radius: 20px;
-        margin: 1rem auto;
         position: relative;
         overflow: hidden;
+        
 
         &:before {
             position: absolute;
@@ -251,7 +265,7 @@
         line-height: 2rem;
         height: 2rem;
         background: #d9d9d9;
-        width: 8.5rem;
+        width: 7rem;
         display: block;
         border-radius: 20px;
         margin-left: 1.5rem;

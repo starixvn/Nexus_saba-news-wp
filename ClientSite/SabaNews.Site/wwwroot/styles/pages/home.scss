@@ -70,8 +70,8 @@
                     }
                 }
 
-                .skeleton-vertical__description {
-                    height: 10rem;
+                .skeleton-vertical__title {
+                    margin: 1rem auto;
                 }
             }
 
@@ -496,10 +496,6 @@
             &__image {
                 height: 8.5rem;
             }
-
-            .skeleton-horizontal__title, .skeleton-horizontal__description {
-                height: 1.2rem;
-            }
         }
     }
     // block-behind
@@ -646,14 +642,6 @@
                 @include Mobile {
                     grid-gap: 0;
                     background-color: transparent;
-                }
-
-                .skeleton-horizontal__description {
-                    height: 10rem !important;
-                }
-
-                .skeleton-horizontal__title {
-                    height: 4rem !important;
                 }
             }
 

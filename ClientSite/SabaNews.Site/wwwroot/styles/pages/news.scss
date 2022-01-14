@@ -36,7 +36,9 @@ main {
             margin-bottom: 1.2rem;
         }
 
-
+        &__title {
+            width: 80%;
+        }
 
         &-highlight {
             height: 30rem;
@@ -98,6 +100,10 @@ main {
                 }
             }
 
+            .skeleton-horizontal__title {
+                width: 95%;
+            }
+
             .card-horizontal__image, .skeleton-horizontal__image {
                 height: 100%;
 
@@ -106,13 +112,6 @@ main {
                 }
             }
 
-            .skeleton-horizontal__description {
-                height: 8rem;
-            }
-
-            .skeleton-horizontal__title {
-                height: 4rem;
-            }
 
             .skeleton-horizontal__image {
                 @include tableMobile {

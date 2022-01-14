@@ -1201,6 +1201,13 @@ button {
       background-size: 450px 400px;
       animation: shimmer 1s linear infinite; }
 
+.skeleton-sidebar .skeleton-vertical__title {
+  width: 100%;
+  margin-bottom: 0.5rem; }
+
+.skeleton-sidebar .skeleton-vertical__datetime {
+  margin-left: 0; }
+
 .skeleton-horizontal, skeleton-horizontal-highlight {
   display: grid;
   grid-template-columns: 19.5rem 1fr;
@@ -1261,7 +1268,7 @@ button {
   .skeleton-horizontal__datetime, skeleton-horizontal-highlight__datetime {
     height: 2rem;
     background: #d9d9d9;
-    width: 8.5rem;
+    width: 7rem;
     display: block;
     border-radius: 20px;
     position: relative;
@@ -1278,11 +1285,11 @@ button {
   .skeleton-horizontal__description, skeleton-horizontal-highlight__description {
     margin: .5rem 0;
     line-height: 1.9rem;
-    height: 3rem;
+    height: 2rem;
     background: #d9d9d9;
     width: 95%;
     display: block;
-    border-radius: 5px;
+    border-radius: 20px;
     position: relative;
     overflow: hidden; }
     .skeleton-horizontal__description:before, skeleton-horizontal-highlight__description:before {
@@ -1337,7 +1344,6 @@ button {
     width: 90%;
     display: block;
     border-radius: 20px;
-    margin: 1rem auto;
     position: relative;
     overflow: hidden; }
     .skeleton-vertical__title:before {
@@ -1354,7 +1360,7 @@ button {
     line-height: 2rem;
     height: 2rem;
     background: #d9d9d9;
-    width: 8.5rem;
+    width: 7rem;
     display: block;
     border-radius: 20px;
     margin-left: 1.5rem;
@@ -1659,6 +1665,8 @@ button {
   @media (max-device-width: 767px) {
     .block-main .card-horizontal, .block-main .skeleton-horizontal {
       margin-bottom: 1.2rem; } }
+  .block-main .card-horizontal__title, .block-main .skeleton-horizontal__title {
+    width: 80%; }
   .block-main .card-horizontal-highlight, .block-main .skeleton-horizontal-highlight {
     height: 30rem;
     grid-template-columns: 44rem 1fr;
@@ -1703,15 +1711,13 @@ button {
         .block-main .card-horizontal-highlight .description, .block-main .skeleton-horizontal-highlight .description {
           font-size: 1.2rem;
           line-height: 2rem; } }
+    .block-main .card-horizontal-highlight .skeleton-horizontal__title, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__title {
+      width: 95%; }
     .block-main .card-horizontal-highlight .card-horizontal__image, .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .card-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
       height: 100%; }
       @media screen and (max-width: 1024px) {
         .block-main .card-horizontal-highlight .card-horizontal__image, .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .card-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
           max-height: 100% !important; } }
-    .block-main .card-horizontal-highlight .skeleton-horizontal__description, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__description {
-      height: 8rem; }
-    .block-main .card-horizontal-highlight .skeleton-horizontal__title, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__title {
-      height: 4rem; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
         height: 20rem; } }
