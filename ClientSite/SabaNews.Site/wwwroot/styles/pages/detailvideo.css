@@ -1399,12 +1399,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       background-size: 450px 400px;
       animation: shimmer 1s linear infinite; }
 
-.skeleton-sidebar .skeleton-vertical__title {
-  width: 100%;
-  margin-bottom: 0.5rem; }
-
-.skeleton-sidebar .skeleton-vertical__datetime {
-  margin-left: 0; }
+.skeleton-sidebar {
+  margin-bottom: .8rem; }
+  .skeleton-sidebar .skeleton-vertical__title {
+    width: 100%;
+    margin-bottom: 0.5rem; }
+  .skeleton-sidebar .skeleton-vertical__datetime {
+    margin-left: 0; }
 
 .skeleton-horizontal, skeleton-horizontal-highlight {
   display: grid;
