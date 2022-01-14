@@ -1337,7 +1337,6 @@ button {
       .skeleton-horizontal:last-child, skeleton-horizontal-highlight:last-child {
         margin-bottom: 0; } }
   .skeleton-horizontal__image, skeleton-horizontal-highlight__image {
-    margin-bottom: .8rem;
     overflow: hidden;
     display: block;
     background: #d9d9d9;
@@ -1975,6 +1974,8 @@ button {
           background-color: transparent; } }
       .main .block-behind .block__content .card-item-1 .skeleton-horizontal__description, .main .block-behind .block__content .skeleton-horizontal .skeleton-horizontal__description {
         height: 10rem !important; }
+      .main .block-behind .block__content .card-item-1 .skeleton-horizontal__title, .main .block-behind .block__content .skeleton-horizontal .skeleton-horizontal__title {
+        height: 4rem !important; }
     @media screen and (max-width: 1024px) {
       .main .block-behind .block__content .card-item-2, .main .block-behind .block__content .card-item-4 {
         grid-column: 1/3; } }

@@ -1223,7 +1223,6 @@ button {
       .skeleton-horizontal:last-child, skeleton-horizontal-highlight:last-child {
         margin-bottom: 0; } }
   .skeleton-horizontal__image, skeleton-horizontal-highlight__image {
-    margin-bottom: .8rem;
     overflow: hidden;
     display: block;
     background: #d9d9d9;
@@ -1660,8 +1659,6 @@ button {
   @media (max-device-width: 767px) {
     .block-main .card-horizontal, .block-main .skeleton-horizontal {
       margin-bottom: 1.2rem; } }
-  .block-main .card-horizontal .text-skeleton, .block-main .skeleton-horizontal .text-skeleton {
-    padding: 1rem 0 1rem 1rem; }
   .block-main .card-horizontal-highlight, .block-main .skeleton-horizontal-highlight {
     height: 30rem;
     grid-template-columns: 44rem 1fr;
@@ -1671,6 +1668,8 @@ button {
     margin-bottom: 1.6rem;
     background-color: #E8EAEF;
     padding-bottom: 0; }
+    .block-main .card-horizontal-highlight .text-skeleton, .block-main .skeleton-horizontal-highlight .text-skeleton {
+      padding: 16px; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight, .block-main .skeleton-horizontal-highlight {
         display: inherit;
@@ -1710,7 +1709,9 @@ button {
         .block-main .card-horizontal-highlight .card-horizontal__image, .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .card-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
           max-height: 100% !important; } }
     .block-main .card-horizontal-highlight .skeleton-horizontal__description, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__description {
-      height: 10rem; }
+      height: 8rem; }
+    .block-main .card-horizontal-highlight .skeleton-horizontal__title, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__title {
+      height: 4rem; }
     @media screen and (max-width: 1024px) {
       .block-main .card-horizontal-highlight .skeleton-horizontal__image, .block-main .skeleton-horizontal-highlight .skeleton-horizontal__image {
         height: 20rem; } }

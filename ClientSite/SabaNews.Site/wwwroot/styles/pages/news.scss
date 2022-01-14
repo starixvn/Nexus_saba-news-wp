@@ -36,9 +36,7 @@ main {
             margin-bottom: 1.2rem;
         }
 
-        .text-skeleton {
-            padding: 1rem 0 1rem 1rem;
-        }
+
 
         &-highlight {
             height: 30rem;
@@ -49,6 +47,10 @@ main {
             margin-bottom: $column-gap;
             background-color: $block-highlight-bgcolor;
             padding-bottom: 0;
+
+            .text-skeleton {
+                padding: 16px;
+            }
 
             @include tableMobile {
                 display: inherit;
@@ -103,8 +105,13 @@ main {
                     max-height: 100% !important;
                 }
             }
-            .skeleton-horizontal__description{
-                height : 10rem;
+
+            .skeleton-horizontal__description {
+                height: 8rem;
+            }
+
+            .skeleton-horizontal__title {
+                height: 4rem;
             }
 
             .skeleton-horizontal__image {
@@ -122,7 +129,6 @@ main {
             height: 9.3rem;
         }
     }
-
 }
 
 

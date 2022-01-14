@@ -1421,7 +1421,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       .skeleton-horizontal:last-child, skeleton-horizontal-highlight:last-child {
         margin-bottom: 0; } }
   .skeleton-horizontal__image, skeleton-horizontal-highlight__image {
-    margin-bottom: .8rem;
     overflow: hidden;
     display: block;
     background: #d9d9d9;
