@@ -1,0 +1,134 @@
+﻿
+@section Metadata {
+
+}
+
+@section Title{
+    MemberShip Event
+}
+
+@section Scripts{
+    <script src="~/js/post/membership-event.js" asp-append-version="true"></script>
+    <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
+}
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
+
+}
+
+@(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
+<section class="main">
+    <div class="container detail-container">
+        <div class="main-social fixed-social">
+            <ul class="social">
+                <li class="item-social icon-mobile">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
+                       data-count="facebook" target="_blank"
+                       rel="nofollow"
+                       class="item intent facebook"
+                       title="@ViewResources.ShareFacebook">
+                        <i class="icon-social icon-detail_facebook"></i>
+                    </a>
+                </li>
+                <li class="item-social icon-mobile">
+                    <a href="javascript:;"
+                       rel="nofollow"
+                       class="item intent copy-clipboard"
+                       title="@ViewResources.CopyLink">
+                        <i class="icon-social icon-link"></i>
+                    </a>
+                    <span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
+                </li>
+                <li class="item-social icon-mobile">
+                    <a href="#comment"
+                       class="item intent"
+                       title="@ViewResources.Comment">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-comment">
+                            <path d="M16.991 1.8V1.80056L16.9987 15.5844L15.1071 13.6929L14.8142 13.4H14.4H1.8C1.36228 13.4 1 13.0377 1 12.6V1.8C1 1.36228 1.36228 1 1.8 1H16.2C16.6312 1 16.991 1.35575 16.991 1.8Z" stroke="#999999" stroke-width="2" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="block block-main">
+
+            <div class="main-social">
+                <ul class="social right-social">
+                    <li class="item-social">Chia sẻ:</li>
+                    <li class="item-social">
+                        <a href="http://www.facebook.com/sharer/sharer.php?u=@Model.AbsoluteUrl"
+                           data-count="facebook" target="_blank"
+                           rel="nofollow"
+                           class="item intent facebook"
+                           title="@ViewResources.ShareFacebook">
+                            <i class="icon-social icon-detail_facebook"></i>
+                        </a>
+                    </li>
+                    <li class="item-social">
+                        <a href="javascript:;"
+                           onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&su=Membershipevent&body=@Model.AbsoluteUrl', '_blank')"
+                           rel="nofollow" class="item"
+                           title="@ViewResources.ShareMail">
+                            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-email">
+                                <path d="M16.2 0H1.8C0.81 0 0.00899999 0.7875 0.00899999 1.75L0 12.25C0 13.2125 0.81 14 1.8 14H16.2C17.19 14 18 13.2125 18 12.25V1.75C18 0.7875 17.19 0 16.2 0ZM16.2 3.5L9 7.875L1.8 3.5V1.75L9 6.125L16.2 1.75V3.5Z" fill="#999999" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="item-social">
+                        <a href="javascript:;"
+                           rel="nofollow"
+                           class="item intent copy-clipboard"
+                           title="@ViewResources.CopyLink">
+                            <i class="icon-social icon-link"></i>
+                        </a>
+                        <span class="tip">@ViewResources.CopyClipBoardSuccessfully</span>
+                    </li>
+                </ul>
+            </div>
+
+            <input name="postID" id="postID" type="hidden" value="@Model.Page.CatId" />
+            <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
+            <div class="comment-post event" id="comment">
+            </div>
+        </div>
+    </div>
+    @(await Component.InvokeAsync("BannerSidebar"))
+</section>
+<div class="auth-form">
+    <div class="modal" id="announcement">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tab-content" id="nav-tabContent">
+                    <h3 class="heading-warning">@ViewResources.Message</h3>
+                    <hr />
+                    <h3 class="content">@ViewResources.MessageRequestLogin</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var checkScroll = function () {
+        var el = document.querySelector('#comment');
+        var main = document.querySelector('.fixed-social');
+        var hambuger = document.querySelector('.button-mobile');
+        if (el !== null) {
+            var top_of_obj = el.offsetTop - 600;
+            var top_of_window = window.scrollY;
+            if (top_of_window > top_of_obj) {
+                main.classList.add('active-nav-socical');
+                hambuger.classList.add('active-nav-socical');
+            } else {
+                main.classList.remove('active-nav-socical');
+                hambuger.classList.remove('active-nav-socical');
+            }
+        }
+    }
+    if (window.innerWidth > 1024) {
+        window.addEventListener('scroll', function () { checkScroll() })
+    }
+</script>

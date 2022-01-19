@@ -139,6 +139,7 @@
         });
 
         $(document).on('click', '.add_comment', function () {
+            console.log(123);
             var self = $(this);
             var rex = /(<([^>]+)>)/ig;
             var commentContent = self.parent().find("textarea[name=comment_value]").val();
@@ -149,6 +150,10 @@
                 return false;
             }
             if (commentContent.length >= 1500) {
+                return false;
+            }
+            if (self.hasClass('error-comment')) {
+                self.removeClass('error-comment');
                 return false;
             }
             

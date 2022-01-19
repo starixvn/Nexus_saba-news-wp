@@ -76,6 +76,21 @@
             return View(model);
         }
 
+        [Route("/membership-event")]
+        public async Task<IActionResult> MembershipEvent()
+        {
+            var page = await postService.GetPageDetailBySlugAsync("membership-event");
+            var domain = configuration.GetValue<string>("BaseUrl");
+            var model = new MembershipEventViewModel
+            {   
+                Page = page,
+                IsLogin = sessionService.User != null,
+                AbsoluteUrl = $"{domain}membership-event"
+            };
+            return View(model);
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
