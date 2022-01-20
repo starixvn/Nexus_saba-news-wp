@@ -20,6 +20,7 @@
         public const string FootballInside = "bong-da-trong-nuoc";
         public const string OtherPostSlug = "cac-mon-khac";
         public const string CollectionSlug = "tong-hop";
+        public const string MembershipEventSlug = "membership-event";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";

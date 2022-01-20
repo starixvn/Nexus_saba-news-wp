@@ -1,7 +1,7 @@
 ﻿var comment = (function ($) {
     var postID = $('input[name=postID]').val();
     var filterType = 'like';
-
+    var listComment = [];
     function RenderListComment(postID, page, filterType, getMore = false) {
         $.ajax({
             type: "GET",
@@ -139,7 +139,6 @@
         });
 
         $(document).on('click', '.add_comment', function () {
-            console.log(123);
             var self = $(this);
             var rex = /(<([^>]+)>)/ig;
             var commentContent = self.parent().find("textarea[name=comment_value]").val();
@@ -215,6 +214,10 @@
                 return false;
             }
             if (commentContent.length >= 1500) {
+                return false;
+            }
+            if (self.hasClass('error-comment')) {
+                self.removeClass('error-comment');
                 return false;
             }
             var repForm = self.parent().parent();
@@ -337,6 +340,7 @@
         html += '<textarea rows="3" name="comment_value" id="comment_value" placeholder=" Ý kiến của bạn"></textarea>';
         html += '<span class="note-text-count" style="transform-origin: 0px 0px; opacity: 1; transform: scale(1, 1);"><span class="counter_word">0</span> / 1500 ký tự</span>';
         html += '</div>';
+        html += '<p class="error"></p>';
         html += replySubmit
         html += '</form>';
         html += '</div>';
