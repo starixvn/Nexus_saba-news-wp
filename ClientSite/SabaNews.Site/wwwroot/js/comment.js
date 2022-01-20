@@ -1,7 +1,6 @@
 ﻿var comment = (function ($) {
     var postID = $('input[name=postID]').val();
     var filterType = 'like';
-    var listComment = [];
     function RenderListComment(postID, page, filterType, getMore = false) {
         $.ajax({
             type: "GET",

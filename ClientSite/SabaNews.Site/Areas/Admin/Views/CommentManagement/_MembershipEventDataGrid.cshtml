@@ -1,0 +1,40 @@
+﻿@using SabaNews.Resources
+@{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>User Email</th>
+                <th>Comment Content</th>
+                <th>Comment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model.Comments)
+                {
+                    var commentDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(item.CommentDateGMT);
+                    count++;
+
+                        <tr>
+                            <td class="text-center" width="5%">@count</td>
+                            <td class="text-left" width="15%">@item.CommentAuthor</td>
+                            <td class="text-left" width="15%">@item.CommentAuthorEmail</td>
+                            <td class="text-left">@item.CommentContent</td>
+                            <td class="text-center" width="15%">@commentDate</td>
+                        </tr>
+                }
+            }
+            @if (Model.Comments.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    @(await Component.InvokeAsync("Paging", new { model = Model.Paging }))
+</div>
