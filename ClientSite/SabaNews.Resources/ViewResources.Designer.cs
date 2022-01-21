@@ -358,6 +358,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment Content.
+        /// </summary>
+        public static string CommentContent {
+            get {
+                return ResourceManager.GetString("CommentContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment Date.
+        /// </summary>
+        public static string CommentDate {
+            get {
+                return ResourceManager.GetString("CommentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quan tâm nhất.
         /// </summary>
         public static string CommentMostInterested {
@@ -1074,6 +1092,15 @@ namespace SabaNews.Resources {
         public static string MatchScheduleSlug {
             get {
                 return ResourceManager.GetString("MatchScheduleSlug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Membership Event.
+        /// </summary>
+        public static string MembershipEvent {
+            get {
+                return ResourceManager.GetString("MembershipEvent", resourceCulture);
             }
         }
         
@@ -1974,6 +2001,15 @@ namespace SabaNews.Resources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Email.
+        /// </summary>
+        public static string UserEmail {
+            get {
+                return ResourceManager.GetString("UserEmail", resourceCulture);
             }
         }
         

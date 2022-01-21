@@ -31,7 +31,8 @@
                 Slug = Constants.MembershipEventSlug,
                 PostType = Constants.pageType,
                 Start = (model.Page - 1) * model.PageSize,
-                End = model.PageSize
+                End = model.PageSize,
+                Search = model.Search
             };
             var comments = await commentService.GetCommentBySlug(criteria);
             var viewModel = new CommentGridViewModel

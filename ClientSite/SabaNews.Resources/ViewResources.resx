@@ -819,4 +819,16 @@
   <data name="NavigateWhenClickIntoMobileBottomBanner" xml:space="preserve">
     <value>Navigate when click into mobile bottom banner</value>
   </data>
+  <data name="CommentContent" xml:space="preserve">
+    <value>Comment Content</value>
+  </data>
+  <data name="CommentDate" xml:space="preserve">
+    <value>Comment Date</value>
+  </data>
+  <data name="MembershipEvent" xml:space="preserve">
+    <value>Membership Event</value>
+  </data>
+  <data name="UserEmail" xml:space="preserve">
+    <value>User Email</value>
+  </data>
 </root>

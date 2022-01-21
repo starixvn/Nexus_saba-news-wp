@@ -2,13 +2,16 @@
     var page = 1;
     var pageSize = 10;
     function GetDataCommentGrid() {
+        var search = $('#search').val();
+        console.log(search);
         $.ajax({
             url: "/Admin/CommentManagement/GetDataComment",
             type: 'POST',
-            data: {  page, pageSize },
+            data: { page, pageSize, search },
             success: function (res) {
                 $('.data-grid').html(res);
                 initPaging();
+                
             }
         });
     }
@@ -27,8 +30,16 @@
         });
     }
 
+    function initFilterBtn() {
+        $("#filter").on("submit", function (e) {
+            e.preventDefault();
+            GetDataCommentGrid();
+        });
+    }
+
     function init() {
         GetDataCommentGrid();
+        initFilterBtn();
     }
 
     return {

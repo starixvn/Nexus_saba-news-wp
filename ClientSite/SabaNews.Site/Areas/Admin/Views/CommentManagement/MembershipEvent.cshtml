@@ -4,11 +4,11 @@
 }
 
 @section TopHeader{
-    @ViewResources.User
+    @ViewResources.MembershipEvent
 }
 
 @section Title{
-    @ViewResources.User
+    @ViewResources.MembershipEvent
 }
 
 @section ActiveMenu {
@@ -18,10 +18,10 @@
 <section class="page-content">
     <div id="error" class="error"></div>
     <div class="form-filter">
-        <form class="form-horizontal" action="PostViewStatistic" method="post" id="filter">
+        <form class="form-horizontal" method="post" id="filter">
             <div class="form-input">
                 <p class="label-admin">@ViewResources.SearchLabel</p>
-                <input type="text" class="custom-input list-input" id="search" name="search" value="" placeholder="search by email or name..." />
+                <input type="number" class="custom-input list-input" id="search" name="search" value="" placeholder="search approximately result..." />
             </div>
 
             <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>

@@ -9,7 +9,7 @@
 	</div>
 	
 </div>
-@{ var count = Model; }
+@{ var count = 0; }
 <div class="table-admin">
 	<table class="data-grid">
 		<thead>
@@ -30,7 +30,7 @@
 			@{
 				foreach (var item in Model.Users)
 				{
-					count = ;
+					count++;
 					var registerDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(item.RegisterDate);
 					<tr>
 						<td class="text-center" width="5%">@count</td>
