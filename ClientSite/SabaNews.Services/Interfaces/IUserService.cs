@@ -20,6 +20,8 @@
         Task<IEnumerable<UserSession>> GetUserReportAsync(GetUserReportCriteria criteria);
 
         Task<CommandResult> UnSubcriteUserAsync(int UserId, string token);
+
+        Task<CommandResult> CreateUserMembershipEventDataAsync(CreateUserMembershipEventDataCommand command);
     }
 
 }

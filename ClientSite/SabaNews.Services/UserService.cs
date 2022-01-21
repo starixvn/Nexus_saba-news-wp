@@ -90,5 +90,10 @@
             result.Message = command.NewLoginType;
             return result;
         }
+
+        public async Task<CommandResult> CreateUserMembershipEventDataAsync(CreateUserMembershipEventDataCommand command)
+        {
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
     }
 }

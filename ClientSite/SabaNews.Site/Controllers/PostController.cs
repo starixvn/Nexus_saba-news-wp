@@ -6,6 +6,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
+    using SabaNews.Criteria.User;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -88,6 +89,21 @@
                 AbsoluteUrl = $"{domain}{Constants.MembershipEventSlug}"
             };
             return View(model);
+
+        }
+
+        [HttpPost]
+        [Route("/membership-event/create")]
+        public async Task<IActionResult> CreateMembershipEventData(int luckyNumber)
+        {
+            var command = new CreateUserMembershipEventDataCommand
+            {
+                LuckyNumber = luckyNumber,
+                UserId = sessionService.User.Id,
+                JoinDate = DateTime.UtcNow
+            };
+            var result = await userService.CreateUserMembershipEventDataAsync(command);
+            return Json(result);
 
         }
 
