@@ -10,6 +10,8 @@
 
         public string Search { get; set; }
 
+        public string DateSort { get; set; }
+
         public int Start { get; set; }
 
         public int End { get; set; }

@@ -1,16 +1,17 @@
 ﻿var adminMembershipEvent = (function ($) {
     var page = 1;
     var pageSize = 10;
-    function GetDataCommentGrid() {
+    function GetDataCommentGrid(dateSort) {
         var search = $('#search').val();
-        console.log(search);
+        console.log(dateSort);
         $.ajax({
             url: "/Admin/CommentManagement/GetDataComment",
             type: 'POST',
-            data: { page, pageSize, search },
+            data: { page, pageSize, search, dateSort },
             success: function (res) {
                 $('.data-grid').html(res);
                 initPaging();
+                initSortEvent();
                 
             }
         });
@@ -19,27 +20,45 @@
     function initPaging() {
         $('.paging').on('click', function () {
             page = $(this).data('page');
-            GetDataCommentGrid();
+            var dateSort = $("#date-sort").attr("sort-type");
+            GetDataCommentGrid(dateSort);
 
         });
 
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
             page = 1;
-            GetDataCommentGrid();
+            var dateSort = $("#date-sort").attr("sort-type");
+            GetDataCommentGrid(dateSort);
+        });
+    }
+
+    function initSortEvent() {
+        $("#date-sort").on("click", function () {
+            var dateType = $(this).attr("sort-type");
+            if (!dateType) {
+                dateType = "desc";
+                GetDataCommentGrid(dateType);
+                return;
+            }
+
+            dateType = dateType === "desc" ? "asc" : "desc";
+            GetDataCommentGrid(dateType);
         });
     }
 
     function initFilterBtn() {
         $("#filter").on("submit", function (e) {
             e.preventDefault();
-            GetDataCommentGrid();
+            var dateSort = $("#date-sort").attr("sort-type");
+            GetDataCommentGrid(dateSort);
         });
     }
 
     function init() {
         GetDataCommentGrid();
         initFilterBtn();
+        initSortEvent();
     }
 
     return {

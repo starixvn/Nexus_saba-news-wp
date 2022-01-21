@@ -8,7 +8,12 @@
                 <th>@ViewResources.Username</th>
                 <th>@ViewResources.UserEmail</th>
                 <th>@ViewResources.CommentContent</th>
-                <th>@ViewResources.CommentDate</th>
+                <th>
+                    <p class="warning-admin">
+                        @ViewResources.CommentDate
+                        <i id="date-sort" class="table-sort icon-sort-admin" sort-type="@Model.DateSort"></i>
+                    </p>
+                </th>
             </tr>
         </thead>
         <tbody>

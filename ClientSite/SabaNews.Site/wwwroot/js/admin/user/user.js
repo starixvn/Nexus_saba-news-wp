@@ -8,6 +8,7 @@
         if (!isValidFilter(fromDate, toDate)) {
             return false;
         }
+        console.log(dateSort);
         $.ajax({
             url: "/Admin/User/GetDataUser",
             type: 'POST',

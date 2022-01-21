@@ -32,12 +32,14 @@
                 PostType = Constants.pageType,
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                Search = model.Search
+                Search = model.Search,
+                DateSort = model.DateSort
             };
             var comments = await commentService.GetCommentBySlug(criteria);
             var viewModel = new CommentGridViewModel
             {
                 Comments = comments,
+                DateSort = model.DateSort,
                 Paging = new PagingModel
                 {
                     CurrentPage = model.Page,
