@@ -3,7 +3,6 @@
     var pageSize = 10;
     function GetDataCommentGrid(dateSort) {
         var search = $('#search').val();
-        console.log(dateSort);
         $.ajax({
             url: "/Admin/CommentManagement/GetDataComment",
             type: 'POST',
@@ -50,15 +49,13 @@
     function initFilterBtn() {
         $("#filter").on("submit", function (e) {
             e.preventDefault();
-            var dateSort = $("#date-sort").attr("sort-type");
-            GetDataCommentGrid(dateSort);
+            GetDataCommentGrid(null);
         });
     }
 
     function init() {
         GetDataCommentGrid();
         initFilterBtn();
-        initSortEvent();
     }
 
     return {
