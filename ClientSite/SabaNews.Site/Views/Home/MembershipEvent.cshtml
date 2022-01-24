@@ -1,4 +1,23 @@
-﻿<form action="@Url.Action("CreateMembershipEventData","Home")" method="post">
-    <input type="number" name="luckyNumber"  />
+﻿@section Scripts{
+    <script src="~/js/post/membership-event.js" asp-append-version="true"></script>
+}
+
+<form id="membership-event">
+    <input type="number" id="luckyNumber" name="luckyNumber" />
     <button type="submit">submit</button>
 </form>
+
+<div class="auth-form">
+    <div class="modal" id="Notice" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body modal-resetpass">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

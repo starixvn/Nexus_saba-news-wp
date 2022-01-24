@@ -241,6 +241,7 @@
             var result = new CommandResult();
             if (sessionService.User == null)
             {
+                result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
                 return Json(result);
             }
             var command = new CreateUserMembershipEventDataCommand

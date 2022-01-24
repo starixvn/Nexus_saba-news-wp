@@ -1,29 +1,36 @@
 ﻿var membershipEvent = (function ($) {
-    function HandleComment() {
-        $(document).on('click', '.add_comment', function (e) {
-            var self = $(this);
-            self.parent().find('.error').html("");
-            var commentContent = self.parent().find("textarea[name=comment_value]").val();
-            if (!$.isNumeric(commentContent)) {
-                self.parent().find('.error').html("Vui lòng nhập bình luận là số");
-                self.addClass('error-comment');
-
+    function HandleAction() {
+        $('#membership-event').on('submit', function (e) {
+            e.preventDefault();
+            var luckynumer = $('#luckyNumber').val();
+            if (luckynumer == "") {
+                return false;
             }
-        });
 
-        $(document).on('click', '.add_sub_comment', function (e) {
-            var self = $(this);
-            self.parent().find('.error').html("");
-            var commentContent = self.parent().find("textarea[name=comment_value]").val();
-            if (!$.isNumeric(commentContent)) {
-                self.parent().find('.error').html("Vui lòng nhập bình luận là số");
-                self.addClass('error-comment');
-
-            }
+            $.ajax({
+                method: 'POST',
+                url: '/membership-event/create',
+                data: { luckynumer },
+                success: function (res) {
+                    console.log(res);
+                    if (res.isSuccessful) {
+                        $('#Notice .modal-body').html("Bạn đã chọn số may mắn thành công");
+                        $('#Notice').bind('hidden.bs.modal', function () {
+                            location.reload();
+                        });
+                    } else {
+                        $('#Notice .modal-body').html(res.message);
+                        $('#Notice').unbind('hidden.bs.modal');
+                    }
+                    
+                    $('#Notice').modal('show');
+                   
+                }
+            });
         });
     }
     function init() {
-        HandleComment();
+        HandleAction();
     }
 
     return {
