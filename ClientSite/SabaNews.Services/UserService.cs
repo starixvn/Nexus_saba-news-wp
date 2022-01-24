@@ -3,6 +3,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -94,6 +95,11 @@
         public async Task<CommandResult> CreateUserMembershipEventDataAsync(CreateUserMembershipEventDataCommand command)
         {
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IEnumerable<MembershipEventModel>> GetUserMembershipEventDataAsync(GetMembershipEventDataCriteria criteria)
+        {
+            return await baseService.GetDataAsync<MembershipEventModel>(criteria);
         }
     }
 }

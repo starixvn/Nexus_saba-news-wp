@@ -1,0 +1,21 @@
+﻿namespace SabaNews.Criteria.User
+{
+    using Fanex.Data.Repository;
+
+    public class GetMembershipEventDataCriteria : CriteriaBase
+    {
+        public string Search { get; set; }
+
+        public string DateSort { get; set; }
+
+        public int Start { get; set; }
+
+        public int End { get; set; }
+
+        public int TotalItems { get; set; }
+
+        public override string GetSettingKey() => "user_get_membership_event_data";
+
+        public override bool IsValid() => true;
+    }
+}

@@ -173,7 +173,6 @@
         </Setting>
         <Setting Key="cmt_create" SpName="cmt_create" DbName="sabasports" />
         <Setting Key="cmt_update_like" SpName="cmt_update_like" DbName="sabasports" />
-        <Setting Key="cmt_get_by_slug" SpName="cmt_get_by_slug" DbName="sabasports" />
     </Function>
     <Function Name="Auth">
         <Setting Key="user_create" SpName="user_create" DbName="sabasports" Plain="0" />
@@ -219,6 +218,7 @@
     <Function Name="User">
         <Setting Key="user_get_report" SpName="user_get_report" DbName="sabasports" Plain="0" />
         <Setting Key="user_create_membership_event_data" SpName="user_create_membership_event_data" DbName="sabasports" Plain="0" />
+        <Setting Key="user_get_membership_event_data" SpName="user_get_membership_event_data" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Banner">
         <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />

@@ -155,7 +155,6 @@
         </Setting>
         <Setting Key="cmt_create" SpName="cmt_create" DbName="sabasports" />
         <Setting Key="cmt_update_like" SpName="cmt_update_like" DbName="sabasports" />
-        <Setting Key="cmt_get_by_slug" SpName="cmt_get_by_slug" DbName="sabasports" />
     </Function>
     <Function Name="Auth">
         <Setting Key="user_create" SpName="user_create" DbName="sabasports" Plain="0" />

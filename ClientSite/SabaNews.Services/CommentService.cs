@@ -114,10 +114,6 @@
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
 
-        public async Task<IEnumerable<Comment>> GetCommentBySlug(CmtGetBySlugCriteria criteria)
-        {
-            return await baseService.GetDataAsync<Comment>(criteria);
-        }
 
         private IEnumerable<Comment> UpdateLikeComment(IEnumerable<Comment> comments)
         {

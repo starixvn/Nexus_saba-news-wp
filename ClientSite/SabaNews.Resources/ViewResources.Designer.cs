@@ -1069,6 +1069,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to số may mắn.
+        /// </summary>
+        public static string Luckynumber {
+            get {
+                return ResourceManager.GetString("Luckynumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lucky number.
+        /// </summary>
+        public static string LuckynumberAdmin {
+            get {
+                return ResourceManager.GetString("LuckynumberAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nam.
         /// </summary>
         public static string Male {
@@ -1371,6 +1389,15 @@ namespace SabaNews.Resources {
         public static string Percentage {
             get {
                 return ResourceManager.GetString("Percentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
             }
         }
         

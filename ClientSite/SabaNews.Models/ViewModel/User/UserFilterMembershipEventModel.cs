@@ -1,6 +1,6 @@
-﻿namespace SabaNews.Models.Comment
+﻿namespace SabaNews.Models.ViewModel.User
 {
-    public class CommentFilterModel
+    public class UserFilterMembershipEventModel
     {
         public int Page { get; set; }
 

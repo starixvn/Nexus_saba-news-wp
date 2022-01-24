@@ -96,13 +96,18 @@
         [Route("/membership-event/create")]
         public async Task<IActionResult> CreateMembershipEventData(int luckyNumber)
         {
+            var result = new CommandResult();
+            if (sessionService.User == null)
+            {
+                return Json(result);
+            }
             var command = new CreateUserMembershipEventDataCommand
             {
                 LuckyNumber = luckyNumber,
                 UserId = sessionService.User.Id,
                 JoinDate = DateTime.UtcNow
             };
-            var result = await userService.CreateUserMembershipEventDataAsync(command);
+            result = await userService.CreateUserMembershipEventDataAsync(command);
             return Json(result);
 
         }

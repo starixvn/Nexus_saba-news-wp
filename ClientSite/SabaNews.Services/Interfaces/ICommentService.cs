@@ -13,6 +13,5 @@
         Task<Comment> GetLikeDataAsync(long commentID);
         Task<long> CreateCommentAsync(CreateComment model);
         Task<CommandResult> UpdateLikeDataAsync(long commentID, string ipClient, string type);
-        Task<IEnumerable<Comment>> GetCommentBySlug(CmtGetBySlugCriteria criteria);
     }
 }

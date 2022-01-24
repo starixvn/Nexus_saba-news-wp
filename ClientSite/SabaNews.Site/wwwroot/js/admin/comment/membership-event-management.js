@@ -4,7 +4,7 @@
     function GetDataCommentGrid(dateSort) {
         var search = $('#search').val();
         $.ajax({
-            url: "/Admin/CommentManagement/GetDataComment",
+            url: "/Admin/User/GetMembershipEventData",
             type: 'POST',
             data: { page, pageSize, search, dateSort },
             success: function (res) {

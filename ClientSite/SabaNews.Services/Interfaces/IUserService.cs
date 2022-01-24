@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.ViewModel.User;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -22,6 +23,8 @@
         Task<CommandResult> UnSubcriteUserAsync(int UserId, string token);
 
         Task<CommandResult> CreateUserMembershipEventDataAsync(CreateUserMembershipEventDataCommand command);
+
+        Task<IEnumerable<MembershipEventModel>> GetUserMembershipEventDataAsync(GetMembershipEventDataCriteria criteria);
     }
 
 }

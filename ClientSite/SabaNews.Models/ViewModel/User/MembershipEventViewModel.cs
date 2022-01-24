@@ -1,12 +1,11 @@
-﻿namespace SabaNews.Models.ViewModel.Comment
+﻿namespace SabaNews.Models.ViewModel.User
 {
     using SabaNews.Core.Models;
     using System.Collections.Generic;
-    using SabaNews.Models.Comment;
 
-    public class CommentGridViewModel
+    public class MembershipEventViewModel
     {
-        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<MembershipEventModel> Users { get; set; }
 
         public PagingModel Paging { get; set; }
 
