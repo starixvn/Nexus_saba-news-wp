@@ -14,7 +14,7 @@
 
         public int TotalItems { get; set; }
 
-        public override string GetSettingKey() => "user_get_membership_event_data";
+        public override string GetSettingKey() => "user_membership_event_get_data";
 
         public override bool IsValid() => true;
     }
