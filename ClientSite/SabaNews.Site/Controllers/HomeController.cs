@@ -6,6 +6,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Criteria.User;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
@@ -22,18 +23,24 @@
         private readonly IConfiguration configuration;
         private readonly IBannerService bannerService;
         private readonly ILogServiceProvider logService;
+        private readonly ISessionService sessionService;
+        private readonly IUserService userService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
             IBannerService bannerService,
-            ILogServiceProvider logService)
+            ILogServiceProvider logService,
+            ISessionService sessionService,
+            IUserService userService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
             this.bannerService = bannerService;
             this.logService = logService;
+            this.sessionService = sessionService;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> Index()
@@ -91,53 +98,7 @@
             return View(view, viewModel);
         }
 
-        [Route("lich-thi-dau")]
-        public async Task<IActionResult> MatchSchedule()
-        {
-            var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
-            var model = new PageViewModel
-            {
-                Post = post,
-                Category = pageDetail,
-                Header = new HeaderViewModel
-                {
-                    CategorySlug = Constants.MatchScheduleSlug,
-                    CategoryId = pageDetail.CatId,
-                    Title = title,
-                    Description = pageDetail.Description ??= title
-                }
-            };
-           
-            return View(model);
-        }
-
-        [Route("warning")]
-        public async Task<IActionResult> Warning()
-        {
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
-            var title = pageDetail.SEOTitle ?? pageDetail.Title;
-            var model = new PageViewModel
-            {
-                Category = pageDetail,
-                Header = new HeaderViewModel
-                {
-                    CategorySlug = Constants.WarningSlug,
-                    CategoryId = pageDetail.CatId,
-                    Title = title,
-                    Description = pageDetail.Description ??= title
-                }
-            };
-            
-            return View(model);
-        }
-
-        [Route("thong-bao-thay-doi-ten-mien")]
-        public ActionResult ChangeDomain()
-        {
-            return View();
-        }
+        
 
 
         [Route("Search/{keyword}/page/{page}")]
@@ -208,6 +169,89 @@
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, model);
+        }
+
+        [Route("lich-thi-dau")]
+        public async Task<IActionResult> MatchSchedule()
+        {
+            var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
+            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+            var model = new PageViewModel
+            {
+                Post = post,
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = pageDetail.Description ??= title
+                }
+            };
+
+            return View(model);
+        }
+
+        [Route("warning")]
+        public async Task<IActionResult> Warning()
+        {
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
+            var title = pageDetail.SEOTitle ?? pageDetail.Title;
+            var model = new PageViewModel
+            {
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.WarningSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = pageDetail.Description ??= title
+                }
+            };
+
+            return View(model);
+        }
+
+        [Route("thong-bao-thay-doi-ten-mien")]
+        public ActionResult ChangeDomain()
+        {
+            return View();
+        }
+
+        [Route("/membership-event")]
+        public async Task<IActionResult> MembershipEvent()
+        {
+            var page = await postService.GetPageDetailBySlugAsync(Constants.MembershipEventSlug);
+            var domain = configuration.GetValue<string>("BaseUrl");
+            var model = new MembershipEventViewModel
+            {
+                Page = page,
+                IsLogin = sessionService.User != null,
+                AbsoluteUrl = $"{domain}{Constants.MembershipEventSlug}"
+            };
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [Route("/membership-event/create")]
+        public async Task<IActionResult> CreateMembershipEventData(int luckyNumber)
+        {
+            var result = new CommandResult();
+            if (sessionService.User == null)
+            {
+                return Json(result);
+            }
+            var command = new CreateUserMembershipEventDataCommand
+            {
+                LuckyNumber = luckyNumber,
+                UserId = sessionService.User.Id,
+                JoinDate = DateTime.UtcNow
+            };
+            result = await userService.CreateUserMembershipEventDataAsync(command);
+            return Json(result);
+
         }
 
 

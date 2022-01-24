@@ -6,7 +6,6 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
-    using SabaNews.Criteria.User;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -77,40 +76,7 @@
             return View(model);
         }
 
-        [Route("/membership-event")]
-        public async Task<IActionResult> MembershipEvent()
-        {
-            var page = await postService.GetPageDetailBySlugAsync(Constants.MembershipEventSlug);
-            var domain = configuration.GetValue<string>("BaseUrl");
-            var model = new MembershipEventViewModel
-            {   
-                Page = page,
-                IsLogin = sessionService.User != null,
-                AbsoluteUrl = $"{domain}{Constants.MembershipEventSlug}"
-            };
-            return View(model);
-
-        }
-
-        [HttpPost]
-        [Route("/membership-event/create")]
-        public async Task<IActionResult> CreateMembershipEventData(int luckyNumber)
-        {
-            var result = new CommandResult();
-            if (sessionService.User == null)
-            {
-                return Json(result);
-            }
-            var command = new CreateUserMembershipEventDataCommand
-            {
-                LuckyNumber = luckyNumber,
-                UserId = sessionService.User.Id,
-                JoinDate = DateTime.UtcNow
-            };
-            result = await userService.CreateUserMembershipEventDataAsync(command);
-            return Json(result);
-
-        }
+        
 
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
