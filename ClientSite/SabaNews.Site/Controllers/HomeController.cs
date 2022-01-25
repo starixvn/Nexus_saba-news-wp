@@ -222,15 +222,7 @@
         [Route("/membership-event")]
         public async Task<IActionResult> MembershipEvent()
         {
-            var page = await postService.GetPageDetailBySlugAsync(Constants.MembershipEventSlug);
-            var domain = configuration.GetValue<string>("BaseUrl");
-            var model = new MembershipEventViewModel
-            {
-                Page = page,
-                IsLogin = sessionService.User != null,
-                AbsoluteUrl = $"{domain}{Constants.MembershipEventSlug}"
-            };
-            return View(model);
+            return View();
 
         }
 
