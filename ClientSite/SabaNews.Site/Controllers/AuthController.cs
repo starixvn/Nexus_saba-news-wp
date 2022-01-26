@@ -79,7 +79,10 @@
         public async Task<IActionResult> ConfirmEmail(int userId, string token)
         {
             CommandResult commandResult = await authService.ConfirmEmailAsync(userId, token);
-            ViewBag.IsLogin = sessionService.User != null;
+            if (!commandResult.IsSuccessful && sessionService.User != null)
+            {
+                return Redirect("/");
+            }
             return View(commandResult.IsSuccessful);
         }
 
