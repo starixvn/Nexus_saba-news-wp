@@ -53,6 +53,10 @@
             }
 
             var user = await userService.GetUserByIdAsync(sessionService.User.Id);
+            if (user == null)
+            {
+                return Redirect(Constants.HomepageUrl);
+            }
             sessionService.User = user;
             var model = new ProfileViewModel
             {

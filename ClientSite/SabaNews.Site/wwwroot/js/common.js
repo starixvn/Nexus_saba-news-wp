@@ -11,8 +11,8 @@
 var _htmlResource = {
     ButtonCloseModal: '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
     ForgotPassword: '<div>Hãy kiểm tra email <b>{0}</b></div><div>Để xem hướng dẫn lấy lại mật khẩu.</div>',
-    RegisterSuccessfully: '<h3>Đăng ký thành công</h3><div>Hãy kiểm tra email <b>{0}</b> để xác thực email.</div>',
-    RemindCheckMail: '<div>Nhớ kiểm tra thư rác nhé.</div>',
+    RegisterSuccessfully: '<h3>Đăng ký thành công</h3><div>Cảm ơn Quý độc giả đã đăng ký tài khoản tại <a href="https://saba.vn/">Saba.vn</a>. Chúng tôi đã gửi email đến địa chỉ {0} để xác thực và kích hoạt tài khoản.</div>',
+    RemindCheckMail: '<div>Vui lòng kiểm tra cả phần Thư rác/Spam nhé.</div>',
     ResetPasswordSuccessfully: '<h3>Đổi mật khẩu thành công</h3>'
 };
 

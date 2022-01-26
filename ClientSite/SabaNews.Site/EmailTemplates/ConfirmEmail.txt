@@ -2,12 +2,12 @@
     <p>Xin chào <strong>{0}</strong>,</p>
 </div>
 <p>
-    Để đảm bảo an toàn cho tài khoản và để có thể lấy lại mật khẩu bằng email, hãy xác thực email này là của bạn.
+    Để hoàn tất quá trình khởi tạo tài khoản tại <a href="https://saba.vn/">Saba.vn</a>, vui lòng nhấn vào <a href="{1}">đây</a> để xác thực địa chỉ email này là của bạn.
     <br />
-    Hãy nhấn vào <a href="{1}">đây</a> để xác thực email.
+    Nếu bạn không thực hiện yêu cầu tạo tài khoản, xin bỏ qua email này.
     <br />
     <br />
-    Cảm ơn.
+    Cảm ơn,
     <br />
     Saba Sports
 </p>
