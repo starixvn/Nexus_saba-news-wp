@@ -90,5 +90,9 @@
   {
     "outputFile": "wwwroot/styles/pages/admin/banner/index.css",
     "inputFile": "wwwroot/styles/pages/admin/banner/index.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/membership-event.css",
+    "inputFile": "wwwroot/styles/pages/membership-event.scss"
   }
 ]

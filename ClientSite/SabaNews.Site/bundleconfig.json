@@ -127,6 +127,13 @@
         ]
     },
     {
+        "outputFileName": "wwwroot/minify/styles/membership-event.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/membership-event.css"
+        ]
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/admin.min.css",
         "inputFiles": [
             "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
@@ -208,6 +215,17 @@
         "outputFileName": "wwwroot/minify/js/update_profile.min.js",
         "inputFiles": [
             "wwwroot/js/profile/update_profile.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/membership-event.min.js",
+        "inputFiles": [
+            "wwwroot/js/post/membership-event.js"
         ],
         "minify": {
             "enabled": true,
