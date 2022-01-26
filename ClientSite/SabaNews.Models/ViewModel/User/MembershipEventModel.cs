@@ -10,6 +10,8 @@
 
         public string Phone { get; set; }
 
+        public string Email { get; set; }
+
         public DateTime JoinDate { get; set; }
 
         public int LuckyNumber { get; set; }

@@ -1,4 +1,5 @@
 ﻿@using SabaNews.Resources
+@using System.Text;
 @{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 <div class="table-admin">
     <table class="data-grid">
@@ -7,6 +8,7 @@
                 <th>#</th>
                 <th>@ViewResources.Username</th>
                 <th>@ViewResources.Phone</th>
+                <th>@ViewResources.Email</th>
                 <th>@ViewResources.Luckynumber</th>
                 <th>
                     <p class="warning-admin">
@@ -20,16 +22,35 @@
             @{
                 foreach (var user in Model.Users)
                 {
-                    var JoinDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(user.JoinDate);
                     count++;
+                    var joinDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(user.JoinDate);
 
-                        <tr>
-                            <td class="text-center" width="5%">@count</td>
-                            <td class="text-left" width="15%">@user.Name</td>
-                            <td class="text-left" width="15%">@user.Phone</td>
-                            <td class="text-center">@user.LuckyNumber</td>
-                            <td class="text-center" width="15%">@JoinDate</td>
-                        </tr>
+                    var emailFormat = user.Email;
+                    var emailSplit = user.Email.Split('@');
+                    var first = 3;
+                    var end = 0;
+                    if (emailSplit[0].Length > 6)
+                    {
+                        end = emailSplit[0].Length - 3;
+                    }
+                    else {
+                        end = emailSplit[0].Length;
+                    }
+                    var str = new StringBuilder(emailSplit[0]);
+                    for (var i = first; i < end; i++)
+                    {
+                        str[i] = '*';
+                    }
+                    emailFormat = str.ToString() + "@" + emailSplit[1];
+
+                    <tr>
+                        <td class="text-center" width="5%">@count</td>
+                        <td class="text-left" width="15%">@user.Name</td>
+                        <td class="text-left" width="15%">@user.Phone</td>
+                        <td class="text-left" width="15%">@emailFormat</td>
+                        <td class="text-center">@user.LuckyNumber</td>
+                        <td class="text-center" width="15%">@joinDate</td>
+                    </tr>
                 }
             }
             @if (Model.Users.Count == 0)
