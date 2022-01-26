@@ -23,6 +23,8 @@
   position: relative; }
   .auth-form .modal-auth .modal-body {
     padding: 0; }
+  .auth-form .modal-auth .modal-title {
+    margin-bottom: 1.5rem; }
   .auth-form .modal-auth .modal-resetpass, .auth-form .modal-auth .modal-body {
     padding: 3rem; }
     .auth-form .modal-auth .modal-resetpass .form-resetpass, .auth-form .modal-auth .modal-body .form-resetpass {

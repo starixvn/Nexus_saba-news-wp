@@ -108,6 +108,7 @@
                             const email = $(form).find('input[name="email"]').val();
                             const html = _htmlResource.ButtonCloseModal + _htmlResource.RegisterSuccessfully + _htmlResource.RemindCheckMail;
                             const bodyModal = formatString(html, email);
+                            $('#authModal').css("max-width", "63rem");
                             $('#authModal .modal-body').html(bodyModal);
                             HandleCloseModal();
                         } else {
