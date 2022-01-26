@@ -3,7 +3,7 @@
         $('#membership-event').on('submit', function (e) {
             e.preventDefault();
             var luckyNumber = $('#luckyNumber').val();
-            if (luckyNumber == "") {
+            if (luckyNumber == "" && luckyNumber < 0) {
                 return false;
             }
             $.ajax({
