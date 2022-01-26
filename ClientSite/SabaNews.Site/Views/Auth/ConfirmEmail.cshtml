@@ -7,6 +7,15 @@
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
 }
+@section Scripts {
+	<script>
+		var isLogin = '@ViewBag.IsLogin';
+		if (isLogin === 'True') {
+			location.href = "/"
+		} 
+	</script>
+
+}
 @(await Component.InvokeAsync("Menu"))
 <section class="main">
 	<div class="container">
@@ -15,7 +24,7 @@
 				@if (Model)
 				{
 					<h3>@ViewResources.ConfirmEmailSuccessfully</h3>
-					<div class="auth-input">Bấm vào <span style="color:rgb(0,0,255); cursor: pointer; text-decoration:underline" class="auth-login">đây</span> để đăng nhập</div>
+					<div class="auth-input">Bấm vào <span style="color:rgb(0,0,255); cursor: pointer; text-decoration:underline" class="auth-login" data-returnUrl="/">đây</span> để đăng nhập</div>
 				}
 				else
 				{

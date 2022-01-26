@@ -1,5 +1,5 @@
 ﻿var auth = (function ($) {
-    function GetModalLogin() {
+    function GetModalLogin(returnUrl) {
         $.ajax({
             url: '/Auth/Index',
             type: 'GET',
@@ -8,7 +8,7 @@
                 $('#auth-form').html(response);
                 $('#authModal').modal('show');
                 AddEmailValidation();
-                HandleLogin();
+                HandleLogin(returnUrl);
                 HandleRegister();
                 HandleForgotPassword();
                 HandleModal();
@@ -18,13 +18,13 @@
 
     function HandleAuth() {
         $('.auth-input .auth-login').on('click', function () {
-            GetModalLogin();
+            var returnUrl = $(this).data('returnurl');
+            GetModalLogin(returnUrl);
         });
     }
 
-    function HandleLogin() {
+    function HandleLogin(returnUrl) {
         const element = '#authModal form#form-login';
-
         $(element).validate({
             rules: {
                 email: {
@@ -47,7 +47,12 @@
                     data: $(form).serialize(),
                     success: function (res) {
                         if (res.isSuccessful) {
-                            location.reload();
+                            if (typeof returnUrl === "undefined") {
+                                location.reload();
+                            } else {
+                                location.href = returnUrl;
+                            }
+                            
                         } else {
                             $(form).find('.summary-eror').text(res.message);
                         }
