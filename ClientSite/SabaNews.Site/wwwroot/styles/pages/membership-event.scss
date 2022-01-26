@@ -7,7 +7,6 @@
 @import '../components/fonts';
 @import '../components/block';
 @import '../components/buttons';
-@import '../components/container';
 @import '../components/card-horizontal';
 @import '../components/card-vertical';
 @import '../components/pagination';
@@ -15,3 +14,49 @@
 @import '../components/sub-structure';
 @import '../components/modal';
 @import '../components/ads';
+
+
+
+$event-bg: #790202;
+
+body {
+    background-color: $event-bg;
+    overflow-x: hidden;
+}
+.footer {
+    border-top: 4px solid #6D0202;
+    background-color: #9F0303;
+
+    .copy-right {
+        @include Mobile {
+            border-top: 1px solid #6D0202;
+        }
+    }
+}
+.back-to-top{
+    background-color : #fff;
+}
+.container {
+    width: 100%;
+    padding: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include tableMobile {
+        padding: 0 1.2rem;
+    }
+
+    @media (min-width : 1280px) {
+        max-width: 93rem;
+    }
+}
+
+
+.wrapper-header {
+    background: url('../../images/event/top-banner.png');
+    height: 40vw;
+    background-size: 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+

@@ -976,18 +976,6 @@ button {
   .btn-custom-outline:focus {
     outline: none; }
 
-.container {
-  width: 100%;
-  padding: 0 1rem;
-  margin-right: auto;
-  margin-left: auto; }
-  @media screen and (max-width: 1024px) {
-    .container {
-      padding: 0 1.2rem; } }
-  @media (min-width: 1280px) {
-    .container {
-      max-width: 114rem; } }
-
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1376,3 +1364,36 @@ button {
   .banner-change-domain.banner-right {
     left: 50%;
     margin-left: 58rem; }
+
+body {
+  background-color: #790202;
+  overflow-x: hidden; }
+
+.footer {
+  border-top: 4px solid #6D0202;
+  background-color: #9F0303; }
+  @media (max-device-width: 767px) {
+    .footer .copy-right {
+      border-top: 1px solid #6D0202; } }
+
+.back-to-top {
+  background-color: #fff; }
+
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin-right: auto;
+  margin-left: auto; }
+  @media screen and (max-width: 1024px) {
+    .container {
+      padding: 0 1.2rem; } }
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 93rem; } }
+
+.wrapper-header {
+  background: url("../../images/event/top-banner.png");
+  height: 40vw;
+  background-size: 100%;
+  background-position: top center;
+  background-repeat: no-repeat; }
