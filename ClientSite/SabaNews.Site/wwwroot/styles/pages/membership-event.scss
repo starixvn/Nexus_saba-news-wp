@@ -152,7 +152,7 @@ body {
 .header-menu {
     display: flex;
     justify-content: space-between;
-    align-items : center;
+    align-items: center;
     padding: 3rem 4rem;
 
     @include Mobile {
@@ -160,11 +160,15 @@ body {
     }
 
     .logo-event {
+        @include Mobile {
+            margin-left: 5rem;
+        }
+
         img {
-            display : block;
+            display: block;
+
             @include Mobile {
-                width : 8rem;
-                margin-left : 5rem;
+                width: 8rem;
             }
         }
     }

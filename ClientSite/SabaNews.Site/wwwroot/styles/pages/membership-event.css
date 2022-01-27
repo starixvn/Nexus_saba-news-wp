@@ -1475,12 +1475,14 @@ body {
   @media (max-device-width: 767px) {
     .header-menu {
       padding: 1.8rem 2.4rem; } }
+  @media (max-device-width: 767px) {
+    .header-menu .logo-event {
+      margin-left: 5rem; } }
   .header-menu .logo-event img {
     display: block; }
     @media (max-device-width: 767px) {
       .header-menu .logo-event img {
-        width: 8rem;
-        margin-left: 5rem; } }
+        width: 8rem; } }
 
 .header-control {
   position: absolute;

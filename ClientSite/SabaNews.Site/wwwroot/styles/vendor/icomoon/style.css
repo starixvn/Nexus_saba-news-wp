@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?vxalrj');
-  src:  url('fonts/Fraud-Sensor.eot?vxalrj#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?vxalrj') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?vxalrj') format('woff'),
-    url('fonts/Fraud-Sensor.svg?vxalrj#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?li49ko');
+  src:  url('fonts/Fraud-Sensor.eot?li49ko#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?li49ko') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?li49ko') format('woff'),
+    url('fonts/Fraud-Sensor.svg?li49ko#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,38 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-event-home:before {
+  content: "\e919";
+}
 .icon-close-event:before {
   content: "\e918";
   color: #fde9b2;
-}
-.icon-event-home .path1:before {
-  content: "\e919";
-  color: none;
-}
-.icon-event-home .path2:before {
-  content: "\e91a";
-  margin-left: -1em;
-  color: none;
-}
-.icon-event-home .path3:before {
-  content: "\e91b";
-  margin-left: -1em;
-  color: rgb(253, 233, 178);
-}
-.icon-event-home .path4:before {
-  content: "\e91c";
-  margin-left: -1em;
-  color: none;
-}
-.icon-event-home .path5:before {
-  content: "\e91d";
-  margin-left: -1em;
-  color: rgb(121, 2, 2);
-}
-.icon-event-home .path6:before {
-  content: "\e91e";
-  margin-left: -1em;
-  color: rgb(253, 233, 178);
 }
 .icon-field-number:before {
   content: "\e91f";
