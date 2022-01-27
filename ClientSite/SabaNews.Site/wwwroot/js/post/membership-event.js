@@ -26,6 +26,12 @@
                 }
             });
         });
+        $('.toggle-mobile-event').click(function () {
+            $('.header-nav-event,.wrapper-menu-event').toggleClass('active')
+        })
+        $('.header-nav-event li a, .wrapper-menu-event').click(function () {
+            $('.header-nav-event,.wrapper-menu-event').removeClass('active')
+        })
     }
     function init() {
         HandleAction();

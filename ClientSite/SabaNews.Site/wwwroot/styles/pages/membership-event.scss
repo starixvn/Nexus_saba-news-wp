@@ -36,6 +36,20 @@ body {
 .back-to-top{
     background-color : #fff;
 }
+.wrapper-menu-event {
+    background: #081224;
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: none;
+    &.active{
+        display : block;
+    }
+}
 .container {
     width: 100%;
     padding: 0 1rem;
@@ -50,6 +64,11 @@ body {
         max-width: 93rem;
     }
 }
+.icon {
+    &::before {
+        font-size: 4rem;
+    }
+}
 
 
 .wrapper-header {
@@ -58,8 +77,52 @@ body {
     background-size: 100%;
     background-position: top center;
     background-repeat: no-repeat;
-    position : relative;
+    position: relative;
+
+
+
+    @include Mobile {
+        background: url('../../images/event/top-banner-mobile.png');
+        height: auto;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-repeat: no-repeat;
+        background-position: top center;
+        padding-bottom: 51rem;
+    }
+
+    @include iphone5 {
+        height: 72vh;
+    }
+
+    @include iphoneXR {
+        padding-bottom: 56rem;
+    }
+
+    @include iphone1213 {
+        padding-bottom: 53rem !important;
+    }
+
+    .toggle-mobile-event {
+        cursor: pointer;
+        position: fixed;
+        top: 2.4rem;
+        left: 1.5rem;
+        z-index: 8;
+
+        .icon {
+            display: none;
+
+            @include Mobile {
+                display: block;
+            }
+            &::before {
+                font-size: 2.4rem;
+            }
+        }
+    }
 }
+
 
 .btn {
     &.btn-event {
@@ -111,13 +174,25 @@ body {
     position: absolute;
     top: 65%;
     left: 26%;
+
+    @include Mobile {
+        left: 0;
+        top: auto;
+        bottom: 3rem;
+        width : 100%;
+    }
+
     ul {
         list-style: none;
         padding-left: 0;
         display: flex;
-
+        justify-content: center;
         li {
             margin-right: 3.2rem;
+
+            @include Mobile {
+                margin-right: 2.4rem;
+            }
 
             &:last-child {
                 margin-right: 0;
@@ -137,6 +212,113 @@ body {
                         padding: .8rem 2.4rem;
                     }
                 }
+            }
+        }
+    }
+}
+
+
+.header-nav-event {
+    width: 7.2rem;
+    background: #fde9b2;
+    border: 2px solid #b44414;
+    position: fixed;
+    border-radius: 8px;
+    left: 4rem;
+    top: 16rem;
+    list-style: none;
+    transition: all ease-in-out .3s;
+    z-index : 9;
+    @include Mobile {
+        left: 1.2rem;
+        top: 1.2rem;
+        width: 32.2rem;
+        transform: translateX(-200%);
+    }
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    li {
+        a {
+            font-size: 1.6rem;
+            color: #B44414;
+            text-decoration: none;
+            font-size: 1.6rem;
+            line-height: 4rem;
+            display: flex;
+            padding: 2rem 1.6rem;
+            font-weight: bold;
+            position: relative;
+
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: 0;
+                height: .1rem;
+                background-color: #B44414;
+                width: 56%;
+                transition: all ease-in-out .3s;
+
+                @include Mobile {
+                    width: 90%;
+                }
+            }
+
+            &.active, &:hover {
+                color: #EC500E;
+
+                .icon {
+                    &:before {
+                        color: #EC500E;
+                    }
+                }
+            }
+
+            span {
+                margin-left: 1.4rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all ease-in-out .3s;
+                position: absolute;
+                width: 20rem;
+                left: 5.5rem;
+
+                @include Mobile {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        &:last-child {
+            a {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        width: 28rem;
+        transition: all ease-in-out .3s;
+
+        li {
+            a {
+                &::after {
+                    width: 90%;
+                    transition: all ease-in-out .3s;
+                }
+            }
+
+            span {
+                opacity: 1;
+                visibility: visible;
+                transition: all ease-in-out .3s;
             }
         }
     }

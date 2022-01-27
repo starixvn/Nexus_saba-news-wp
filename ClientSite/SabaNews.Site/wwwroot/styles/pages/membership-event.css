@@ -1379,6 +1379,19 @@ body {
 .back-to-top {
   background-color: #fff; }
 
+.wrapper-menu-event {
+  background: #081224;
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: none; }
+  .wrapper-menu-event.active {
+    display: block; }
+
 .container {
   width: 100%;
   padding: 0 1rem;
@@ -1391,6 +1404,9 @@ body {
     .container {
       max-width: 93rem; } }
 
+.icon::before {
+  font-size: 4rem; }
+
 .wrapper-header {
   background: url("../../images/event/top-banner.png");
   height: 40vw;
@@ -1398,6 +1414,37 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
   position: relative; }
+  @media (max-device-width: 767px) {
+    .wrapper-header {
+      background: url("../../images/event/top-banner-mobile.png");
+      height: auto;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      background-position: top center;
+      padding-bottom: 51rem; } }
+  @media screen and (device-aspect-ratio: 40 / 71) {
+    .wrapper-header {
+      height: 72vh; } }
+  @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    .wrapper-header {
+      padding-bottom: 56rem; } }
+  @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .wrapper-header {
+      padding-bottom: 53rem !important; } }
+  .wrapper-header .toggle-mobile-event {
+    cursor: pointer;
+    position: fixed;
+    top: 2.4rem;
+    left: 1.5rem;
+    z-index: 8; }
+    .wrapper-header .toggle-mobile-event .icon {
+      display: none; }
+      @media (max-device-width: 767px) {
+        .wrapper-header .toggle-mobile-event .icon {
+          display: block; } }
+      .wrapper-header .toggle-mobile-event .icon::before {
+        font-size: 2.4rem; }
 
 .btn.btn-event {
   background: #B44414;
@@ -1439,12 +1486,22 @@ body {
   position: absolute;
   top: 65%;
   left: 26%; }
+  @media (max-device-width: 767px) {
+    .header-control {
+      left: 0;
+      top: auto;
+      bottom: 3rem;
+      width: 100%; } }
   .header-control ul {
     list-style: none;
     padding-left: 0;
-    display: flex; }
+    display: flex;
+    justify-content: center; }
     .header-control ul li {
       margin-right: 3.2rem; }
+      @media (max-device-width: 767px) {
+        .header-control ul li {
+          margin-right: 2.4rem; } }
       .header-control ul li:last-child {
         margin-right: 0; }
       .header-control ul li a.btn-event {
@@ -1458,3 +1515,73 @@ body {
             font-size: 1.6rem;
             line-height: 1.8rem;
             padding: .8rem 2.4rem; } }
+
+.header-nav-event {
+  width: 7.2rem;
+  background: #fde9b2;
+  border: 2px solid #b44414;
+  position: fixed;
+  border-radius: 8px;
+  left: 4rem;
+  top: 16rem;
+  list-style: none;
+  transition: all ease-in-out .3s;
+  z-index: 9; }
+  @media (max-device-width: 767px) {
+    .header-nav-event {
+      left: 1.2rem;
+      top: 1.2rem;
+      width: 32.2rem;
+      transform: translateX(-200%); } }
+  .header-nav-event.active {
+    transform: translateX(0); }
+  .header-nav-event li a {
+    font-size: 1.6rem;
+    color: #B44414;
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 4rem;
+    display: flex;
+    padding: 2rem 1.6rem;
+    font-weight: bold;
+    position: relative; }
+    .header-nav-event li a::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      height: .1rem;
+      background-color: #B44414;
+      width: 56%;
+      transition: all ease-in-out .3s; }
+      @media (max-device-width: 767px) {
+        .header-nav-event li a::after {
+          width: 90%; } }
+    .header-nav-event li a.active, .header-nav-event li a:hover {
+      color: #EC500E; }
+      .header-nav-event li a.active .icon:before, .header-nav-event li a:hover .icon:before {
+        color: #EC500E; }
+    .header-nav-event li a span {
+      margin-left: 1.4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all ease-in-out .3s;
+      position: absolute;
+      width: 20rem;
+      left: 5.5rem; }
+      @media (max-device-width: 767px) {
+        .header-nav-event li a span {
+          opacity: 1;
+          visibility: visible; } }
+  .header-nav-event li:last-child a::after {
+    display: none; }
+  .header-nav-event:hover {
+    width: 28rem;
+    transition: all ease-in-out .3s; }
+    .header-nav-event:hover li a::after {
+      width: 90%;
+      transition: all ease-in-out .3s; }
+    .header-nav-event:hover li span {
+      opacity: 1;
+      visibility: visible;
+      transition: all ease-in-out .3s; }
