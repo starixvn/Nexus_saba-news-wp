@@ -24,7 +24,7 @@
             <div class="login">
                 <a href="#" class="btn btn-event">Đăng Nhập</a>
             </div>
-        </div>
+        </div> 
         <div class="header-control">
             <ul>
                 <li><a href="#" class="btn btn-event">Thể Lệ</a></li>
@@ -76,12 +76,53 @@
                     <img src="~/images/event/line.png" class="img-res" />
                     <span>Nhập Số May Mắn</span>
                 </div>
-                <form class="field-nulber">
-                    <input type="number" class="input-field-event" />
-                    <input type="number" class="input-field-event" />
-                    <input type="number" class="input-field-event" />
-                    <button type="submit" class="btn btn-event active">Gửi</button>
-                </form>
+                <div class="field-number field-number-default">
+                    <form class="form-event">
+                        <div class="form-input">
+                            <input type="number" min="1" max="9" class="input-field-event" />
+                            <input type="number" min="1" max="9" class="input-field-event" />
+                            <input type="number" min="1" max="9" class="input-field-event" />
+                        </div>
+                        <button type="submit" class="btn btn-event active">Gửi</button>
+                    </form>
+                    <span><img src="~/images/event/dot-input.png" /></span>
+                </div>
+
+                <div class="field-number field-number-result">
+                    <div class="form-event">
+                        <div class="form-input">
+                            <div class="dots">
+                                <input type="number" value="9" class="input-field-event" />
+                            </div>
+                            <div class="dots">
+                                <input type="number" value="9" class="input-field-event" />
+                            </div>
+                            <div class="dots">
+                                <input type="number" value="9" class="input-field-event" />
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <div class="result">Chín</div>
+                            <div class="result">Chín</div>
+                            <div class="result">Chín</div>
+                        </div>
+                    </div>
+                    <span><img src="~/images/event/dot-input.png" /></span>
+                </div>
+
+                <div class="field-number field-number-validate">
+                    <div class="validate-vent-input">
+                        <div class="warning-event">
+                            Vui lòng đăng nhập hoặc đăng ký
+                            để tham gia
+                        </div>
+                        <ul class="flex-btn">
+                            <li><a href="#" class="btn btn-event">Đăng nhập</a></li>
+                            <li><a href="#" class="btn btn-event active">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <span><img src="~/images/event/dot-input.png" /></span>
+                </div>
             </div>
             <div class="block-list-connect" ></div>
         </div>
