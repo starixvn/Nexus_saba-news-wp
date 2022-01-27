@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?7xe8vr');
-  src:  url('fonts/Fraud-Sensor.eot?7xe8vr#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?7xe8vr') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?7xe8vr') format('woff'),
-    url('fonts/Fraud-Sensor.svg?7xe8vr#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?vxalrj');
+  src:  url('fonts/Fraud-Sensor.eot?vxalrj#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?vxalrj') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?vxalrj') format('woff'),
+    url('fonts/Fraud-Sensor.svg?vxalrj#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close-event:before {
+  content: "\e918";
+  color: #fde9b2;
+}
+.icon-event-home .path1:before {
+  content: "\e919";
+  color: none;
+}
+.icon-event-home .path2:before {
+  content: "\e91a";
+  margin-left: -1em;
+  color: none;
+}
+.icon-event-home .path3:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(253, 233, 178);
+}
+.icon-event-home .path4:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: none;
+}
+.icon-event-home .path5:before {
+  content: "\e91d";
+  margin-left: -1em;
+  color: rgb(121, 2, 2);
+}
+.icon-event-home .path6:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: rgb(253, 233, 178);
+}
+.icon-field-number:before {
+  content: "\e91f";
+  color: #b44414;
+}
+.icon-list-event:before {
+  content: "\e920";
+  color: #b44414;
+}
+.icon-list-event-true:before {
+  content: "\e921";
+  color: #b44414;
+}
+.icon-menu-event:before {
+  content: "\e922";
+  color: #fff;
+}
+.icon-next-event:before {
+  content: "\e923";
+  color: #fde9b2;
+}
+.icon-prev-event:before {
+  content: "\e924";
+  color: #fde9b2;
+}
 .icon-account_circle:before {
   content: "\e915";
   color: #fff;
@@ -90,7 +147,7 @@
 }
 .icon-chart-admin:before {
   content: "\e902";
-  color: #9193b8;
+  color: #fff;
 }
 .icon-date_range:before {
   content: "\e903";
