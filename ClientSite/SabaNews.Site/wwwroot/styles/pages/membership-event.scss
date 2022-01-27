@@ -90,7 +90,7 @@ input[type=number] {
 .title-event {
     text-align: center;
     position: relative;
-    margin: -6rem 0 2.4rem 0;
+    margin: 12rem 0 2.4rem 0;
 
     @include Mobile {
         margin: 6rem 0 1.2rem 0;
@@ -225,6 +225,71 @@ input[type=number] {
 
             @include Mobile {
                 width: 8rem;
+            }
+        }
+    }
+
+    .after-login {
+        cursor: pointer;
+        display : none;
+        .users {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                margin-right: .8rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            .avatar {
+                width: 4rem;
+                height: 4rem;
+                border: 1px solid #FFFFFF;
+                border-radius: 50%;
+                overflow: hidden;
+
+                @include Mobile {
+                    width: 2rem;
+                    height: 2rem;
+                }
+
+                img {
+                    object-fit: cover;
+                }
+            }
+
+            .name {
+                color: #fff;
+                font-weight: bold;
+                font-size: 1.8rem;
+                line-height: 2.4rem;
+                text-transform: uppercase;
+                position: relative;
+
+                &:after {
+                    width: 0;
+                    height: 0;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-top: 5px solid #fff;
+                    content: '';
+                    position: absolute;
+                    right: -20px;
+                    top: 10px;
+                    @include Mobile{
+                        right : -15px;
+                    }
+                }
+
+                @include Mobile {
+                    font-size: 1.4rem;
+                }
             }
         }
     }
@@ -430,6 +495,28 @@ input[type=number] {
     }
 }
 .block-group {
+    position: relative;
+
+    .flower {
+        position: absolute;
+        z-index: 0;
+        width: 22vw;
+
+        @include Mobile {
+            display: none;
+        }
+
+        &-left {
+            left: 0;
+            top : 35%;
+        }
+
+        &-right {
+            right: 0;
+        }
+    }
+
+
     .block-field-number {
         .title-event {
             margin: -6rem 0 2.4rem 0;
@@ -508,6 +595,7 @@ input[type=number] {
 
         &.field-number-validate {
             display: none;
+
             .warning-event {
                 text-align: center;
                 color: #FCDE9D;
@@ -613,7 +701,7 @@ input[type=number] {
                         background: #FDE9B2;
                         transform: rotate(-45deg);
                         position: absolute;
-                        right: -20px;
+                        right: -18px;
                     }
                 }
             }
@@ -638,6 +726,135 @@ input[type=number] {
             }
         }
     }
+
+    .block-list-connect {
+        .list-user {
+            width: 100%;
+            max-width: 85rem;
+            margin: auto;
+
+            @include Mobile {
+                padding: 0 1rem;
+            }
+
+            .heading-table {
+                list-style: none;
+                padding-left: 0;
+                display: flex;
+                justify-content: space-between;
+                background: #940303;
+                border: 1px solid #FCDC93;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 23px;
+                padding: 1.1rem 3rem;
+                margin-bottom: 1.6rem;
+
+                @include Mobile {
+                    padding: 0.5rem 1.6rem;
+                }
+
+                li {
+                    color: #FDE9B2;
+                    font-weight: bold;
+                    font-size: 2.2rem;
+                    line-height: 2.4rem;
+                    width: 33.3%;
+
+                    @include Mobile {
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+
+            .table {
+                width: 100%;
+                padding: 0 1rem;
+
+                @include Mobile {
+                    padding: 0 .5rem;
+                }
+
+                .child-table {
+                    width: 33.3%;
+                    font-size: 2.2rem;
+                    line-height: 4.2rem;
+                    color: #FDE9B2;
+
+                    @include Mobile {
+                        font-size: 1.1rem;
+                        line-height: 1.8rem;
+                    }
+                }
+            }
+        }
+
+        .pagination-event {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2.4rem;
+
+            .pre, .next {
+                margin: 0 .5rem;
+
+                a {
+                    text-decoration: none;
+
+                    .icon {
+                        &::before {
+                            font-size: 1.8rem;
+                        }
+                    }
+                }
+            }
+
+            .number {
+                margin: 0 .5rem;
+                width: 3.2rem;
+                height: 3.2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #FCDE9D;
+                border-radius: 2px;
+                background: #B44414;
+                padding: .2rem;
+
+                @include Mobile {
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #FCDE9D;
+                    border: 1px solid #FCDE9D;
+                    border-radius: 2px;
+                    background: #B44414;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                &.active {
+                    background: #FDE9B2;
+                    border: 1px solid #B44414;
+
+                    a {
+                        background: #FDE9B2;
+                        color: #B44414;
+                        border: 1px solid #B44414;
+                    }
+                }
+            }
+        }
+    }
 }
+
+
 
 
