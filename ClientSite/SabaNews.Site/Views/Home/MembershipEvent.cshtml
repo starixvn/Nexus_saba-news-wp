@@ -14,7 +14,7 @@
 
 <body>
     <div class="wrapper-menu-event"></div>
-    <section class="wrapper-header">
+    <div class="wrapper-header">
         <div class="header-menu">
             <div class="logo-event">
                 <a href="@Url.Action("Index", "Home")">
@@ -60,9 +60,31 @@
         <div class="toggle-mobile-event">
             <i class="icon icon-menu-event"></i>
         </div>
-    </section>
+    </div>
     <main role="main">
-           
+        <div class="block-men-event">
+            <div class="img-event img-left"><img src="~/images/event/img6.png" class="img-res" /></div>
+            <div class="img-event img-right"><img src="~/images/event/img1.png" class="img-res" /></div>
+            <div class="main-event-img">
+                <img src="~/images/event/gif.png" class="img-res img-event-desktop" />
+                <img src="~/images/event/gif-mobile.png" class="img-res img-event-mobile" />
+            </div>
+        </div>
+        <div class="block-group">
+            <div class="block-field-number">
+                <div class="title-event">
+                    <img src="~/images/event/line.png" class="img-res" />
+                    <span>Nhập Số May Mắn</span>
+                </div>
+                <form class="field-nulber">
+                    <input type="number" class="input-field-event" />
+                    <input type="number" class="input-field-event" />
+                    <input type="number" class="input-field-event" />
+                    <button type="submit" class="btn btn-event active">Gửi</button>
+                </form>
+            </div>
+            <div class="block-list-connect" ></div>
+        </div>
     </main>
 </body>
 

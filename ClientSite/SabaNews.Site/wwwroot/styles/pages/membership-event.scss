@@ -30,6 +30,11 @@ main {
 .footer {
     border-top: 4px solid #6D0202;
     background-color: #9F0303;
+    margin-top: 12rem;
+
+    @include Mobile {
+        margin-top: 4rem;
+    }
 
     .copy-right {
         @include Mobile {
@@ -73,6 +78,45 @@ main {
         font-size: 4rem;
     }
 }
+
+.title-event {
+    text-align: center;
+    position: relative;
+    margin: -6rem 0 2.4rem 0;
+
+    @include Mobile {
+        margin: 6rem 0 1.2rem 0;
+    }
+
+    img {
+        width: 35vw;
+        display: block;
+        margin: auto;
+
+        @include Mobile {
+            width: 28rem;
+        }
+    }
+
+    span {
+        font-weight: bold;
+        font-size: 2.2vw;
+        line-height: 7.4rem;
+        color: #FCDC93;
+        text-shadow: 0px 2px 1px rgba(122, 5, 0, 0.35);
+        text-transform: uppercase;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%,-50%);
+
+        @include Mobile {
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+        }
+    }
+}
+
 
 
 .wrapper-header {
@@ -331,4 +375,61 @@ main {
         }
     }
 }
+
+.block-men-event {
+    position: relative;
+
+    .img-event {
+        position: absolute;
+        width: 17vw;
+
+        @include Mobile {
+            display: none;
+        }
+
+        &.img-right {
+            top: -9%;
+            right: 0;
+        }
+
+        &.img-left {
+            left: 0;
+        }
+    }
+
+    .main-event-img {
+        width: 70vw;
+        margin: auto;
+
+        @include Mobile {
+            width: 100%;
+            margin-top : 3.8rem;
+        }
+        .img-event-mobile {
+            display: none;
+            @include Mobile {
+                display: block;
+                margin : 0 auto;
+            }
+        }
+
+        .img-event-desktop {
+            display: block;
+            @include Mobile {
+                display: none;
+            }
+        }
+    }
+}
+.block-group {
+    .block-field-number {
+        .title-event {
+            margin: -6rem 0 2.4rem 0;
+            @include Mobile {
+                margin: 6rem 0 1.2rem 0;
+            }
+        }
+    }
+}
+
 
