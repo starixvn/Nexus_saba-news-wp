@@ -32,6 +32,29 @@
         $('.header-nav-event li a, .wrapper-menu-event').click(function () {
             $('.header-nav-event,.wrapper-menu-event').removeClass('active')
         })
+        $('#btn-register').on('click', function () {
+            $('#register').modal('show');
+        })
+        $('#btn-guide').on('click', function () {
+            $('#guide').modal('show');
+        })
+
+        $(".btn-accept,.click-number-event").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#field-number-event").offset().top
+            }, 500);
+        });
+        $('.click-list-rigister').click(function () {
+            $('html, body').animate({
+                scrollTop: $("#list-rigister-event").offset().top
+            }, 500);
+        })
+
+
+        $('.btn-accept,.btn-outline-event').click(function () {
+            $('#register').modal('hide');
+        })
+
     }
     function init() {
         HandleAction();

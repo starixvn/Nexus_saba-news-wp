@@ -30,11 +30,11 @@
                     <li class="name">Saba Sport</li>
                 </ul>
             </div>
-        </div> 
+        </div>
         <div class="header-control">
             <ul>
-                <li><a href="#" class="btn btn-event">Thể Lệ</a></li>
-                <li><a href="#" class="btn btn-event active">Tham Gia</a></li>
+                <li><a href="#" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
+                <li><a href="#" class="btn btn-event" id="btn-register">Tham Gia</a></li>
             </ul>
         </div>
         <ul class="header-nav-event">
@@ -45,13 +45,13 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#nhap-so-may-man" class="click-number-event">
                     <i class="icon icon-field-number"></i>
                     <span>Nhập Số May Mắn</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#danh-sach-tham-gia" class="click-list-rigister">
                     <i class="icon icon-list-event"></i>
                     <span>Danh Sách Tham Gia</span>
                 </a>
@@ -76,7 +76,7 @@
                 <img src="~/images/event/gif-mobile.png" class="img-res img-event-mobile" />
             </div>
         </div>
-        <div class="block-group">
+        <div class="block-group" id="field-number-event">
             <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
             <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
             <div class="block-field-number">
@@ -132,7 +132,7 @@
                     <span><img src="~/images/event/dot-input.png" /></span>
                 </div>
             </div>
-            <div class="block-list-connect">
+            <div class="block-list-connect" id="list-rigister-event">
                 <div class="title-event">
                     <img src="~/images/event/line.png" class="img-res" />
                     <span>DANH SÁCH THAM GIA</span>
@@ -218,26 +218,80 @@
 
 
 
-
-@*<div class="main">
-    <form id="membership-event">
-        <input type="number" id="luckyNumber" name="luckyNumber" />
-        <button type="submit">submit</button>
-    </form>
-</div>
-
-
 <div class="auth-form">
-    <div class="modal" id="Notice" style="display:none">
+    <div class="modal" id="register" style="display:none">
         <div class="modal-content modal-auth">
             <div class="modal-warning">
-                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
                 </button>
-                <div class="modal-body modal-resetpass">
+                <div class="modal-body register">
+                    <div class="heading-modal-event">nhập số may mắn</div>
+                    <p class="text-event-modal">Bạn có muốn nhập con số may mắn này không ?</p>
+                    <ul>
+                        <li><a href="#nhap-so-may-man" class="btn btn-event btn-accept active">đồng ý</a></li>
+                        <li><a href="#" class="btn btn-event btn-outline-event">bỏ qua</a></li>
+                    </ul>
                 </div>
             </div>
 
         </div>
     </div>
-</div>*@
+</div>
+
+<div class="auth-form event-guide">
+    <div class="modal" id="guide" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body guide">
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>THỂ LỆ</span>
+                    </div>
+                    <div class="main-guide scooped-corners">
+                        <div class="txt-guide">
+                            <div class="event-txt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien .
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien..
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<div class="main">
+        <form id="membership-event">
+            <input type="number" id="luckyNumber" name="luckyNumber" />
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+
+    <div class="auth-form">
+        <div class="modal" id="Notice" style="display:none">
+            <div class="modal-content modal-auth">
+                <div class="modal-warning">
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body modal-resetpass">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
