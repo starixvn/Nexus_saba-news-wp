@@ -982,6 +982,12 @@ button {
   .btn-custom-outline:focus {
     outline: none; }
 
+@keyframes dhBlink {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.1); } }
+
 .swiper-container {
   width: 100%;
   max-width: 100%;

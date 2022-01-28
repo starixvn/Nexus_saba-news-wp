@@ -89,6 +89,12 @@ button {
   .btn-custom-outline:focus {
     outline: none; }
 
+@keyframes dhBlink {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.1); } }
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;

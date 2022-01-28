@@ -50,6 +50,10 @@
             }, 500);
         })
 
+        $('.header-control ul li a').click(function () {
+            $('.header-control ul li a').removeClass("active");
+            $(this).addClass("active");
+        });
 
         $('.btn-accept,.btn-outline-event').click(function () {
             $('#register').modal('hide');

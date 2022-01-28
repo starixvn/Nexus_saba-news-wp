@@ -976,6 +976,12 @@ button {
   .btn-custom-outline:focus {
     outline: none; }
 
+@keyframes dhBlink {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.1); } }
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;
@@ -1323,6 +1329,12 @@ button {
   .btn-custom-outline:focus {
     outline: none; }
 
+@keyframes dhBlink {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.1); } }
+
 .modal.modal-page {
   border: 1px solid #E5E5E5;
   max-width: 40rem;
@@ -1550,6 +1562,13 @@ input[type=number] {
     @media (max-device-width: 767px) {
       .header-menu .logo-event img {
         width: 8rem; } }
+  .header-menu .login a {
+    display: block;
+    animation: dhBlink .4s infinite alternate;
+    padding: .6rem 2.4rem; }
+    @media (max-device-width: 767px) {
+      .header-menu .login a {
+        padding: .3rem 2.4rem; } }
   .header-menu .after-login {
     cursor: pointer;
     display: none; }
@@ -2063,7 +2082,11 @@ input[type=number] {
 
 .event-guide .show {
   max-width: 112rem;
-  background: #FFF3DD;
+  background: url(../../images/event/bg-popup.png) #FFF3DD;
+  border: 4px solid #fcde9d;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
   border: 4px solid #FCDE9D; }
   @media (max-device-width: 767px) {
     .event-guide .show {
