@@ -1397,10 +1397,6 @@ body {
   background-color: #790202;
   overflow-x: hidden; }
 
-main {
-  position: relative;
-  overflow-x: hidden; }
-
 .footer {
   border-top: 4px solid #6D0202;
   background-color: #9F0303;
