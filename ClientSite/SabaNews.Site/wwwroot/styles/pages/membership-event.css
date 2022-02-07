@@ -1528,6 +1528,38 @@ input[type=number] {
           display: block; } }
       .wrapper-header .toggle-mobile-event .icon::before {
         font-size: 2.4rem; }
+  .wrapper-header .flower-result {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 9rem;
+    z-index: 3;
+    width: 100%; }
+    @media (max-device-width: 767px) {
+      .wrapper-header .flower-result {
+        top: 45rem; } }
+    .wrapper-header .flower-result-img {
+      width: 18vw;
+      margin: 0 8vw; }
+      @media (max-device-width: 767px) {
+        .wrapper-header .flower-result-img:nth-child(2) {
+          margin: 2.5rem -4rem 0 -4rem; } }
+      @media (max-device-width: 767px) {
+        .wrapper-header .flower-result-img {
+          width: 11rem;
+          margin: 0px -4rem 0 -4rem; } }
+      .wrapper-header .flower-result-img img {
+        width: 100%; }
+  .wrapper-header .banner-result {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%); }
+    @media (max-device-width: 767px) {
+      .wrapper-header .banner-result {
+        width: 90%;
+        text-align: center;
+        top: 60%; } }
 
 .btn.btn-event {
   background: #B44414;
@@ -1559,7 +1591,9 @@ input[type=number] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 4rem; }
+  padding: 3rem 4rem;
+  position: relative;
+  z-index: 3; }
   @media (max-device-width: 767px) {
     .header-menu {
       padding: 1.8rem 2.4rem; } }
@@ -2163,3 +2197,71 @@ input[type=number] {
     .event-guide .modal-auth .main-guide .txt-guide::-webkit-scrollbar-thumb {
       background: #B44414;
       border-radius: 12px; }
+
+.main-result {
+  width: 100%;
+  max-width: 90rem;
+  margin: auto; }
+  @media (max-device-width: 767px) {
+    .main-result {
+      padding: 0 1.2rem; } }
+  .main-result .thank-users {
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    color: #FFE6AE; }
+    @media (max-device-width: 767px) {
+      .main-result .thank-users {
+        font-size: 1.4rem;
+        line-height: 2.2rem; } }
+    .main-result .thank-users a {
+      color: #E6FF4A;
+      text-decoration-line: underline; }
+  .main-result .last-result-event {
+    margin-top: 5.8rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; }
+    @media (max-device-width: 767px) {
+      .main-result .last-result-event {
+        margin-top: 1.6rem;
+        flex-wrap: wrap; } }
+    .main-result .last-result-event .item-result {
+      margin: 0 2.5rem; }
+      @media (max-device-width: 767px) {
+        .main-result .last-result-event .item-result {
+          margin: 1.6rem 2rem; } }
+      .main-result .last-result-event .item-result:first-child .user-final:after {
+        display: none; }
+      @media (max-device-width: 767px) {
+        .main-result .last-result-event .item-result:first-child {
+          width: 42%; } }
+      @media (max-device-width: 767px) {
+        .main-result .last-result-event .item-result:nth-child(2), .main-result .last-result-event .item-result:nth-child(3) {
+          width: 38%; } }
+      .main-result .last-result-event .item-result:nth-child(2) .user-final:last-child:after, .main-result .last-result-event .item-result:nth-child(3) .user-final:last-child:after {
+        display: none; }
+      .main-result .last-result-event .item-result .user-final {
+        margin-top: 1.6rem;
+        padding-bottom: 1rem;
+        position: relative; }
+        .main-result .last-result-event .item-result .user-final:after {
+          content: "";
+          width: 80%;
+          height: .1rem;
+          background: #A73C3C;
+          position: absolute;
+          bottom: 0;
+          right: 50%;
+          transform: translate(50%, -50%); }
+        .main-result .last-result-event .item-result .user-final p {
+          font-size: 1.8rem;
+          line-height: 2.8rem;
+          margin-bottom: 0;
+          color: #FFE6AE;
+          text-align: center; }
+          @media (max-device-width: 767px) {
+            .main-result .last-result-event .item-result .user-final p {
+              font-size: 1.2rem; } }
+        .main-result .last-result-event .item-result .user-final .name {
+          font-size: 1.4rem; }

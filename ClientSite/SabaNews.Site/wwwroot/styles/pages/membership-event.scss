@@ -190,6 +190,53 @@ input[type=number] {
             }
         }
     }
+
+    .flower-result {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 9rem;
+        z-index: 3;
+        width: 100%;
+
+        @include Mobile {
+            top: 45rem;
+        }
+
+        &-img {
+            width: 18vw;
+            margin: 0 8vw;
+
+            &:nth-child(2) {
+                @include Mobile {
+                    margin: 2.5rem -4rem 0 -4rem;
+                }
+            }
+
+            @include Mobile {
+                width: 11rem;
+                margin: 0px -4rem 0 -4rem;
+            }
+
+
+            img {
+                width: 100%
+            }
+        }
+    }
+
+    .banner-result {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%,-50%);
+
+        @include Mobile {
+            width: 90%;
+            text-align: center;
+            top: 60%;
+        }
+    }
 }
 
 
@@ -229,6 +276,8 @@ input[type=number] {
     justify-content: space-between;
     align-items: center;
     padding: 3rem 4rem;
+    position: relative;
+    z-index: 3;
 
     @include Mobile {
         padding: 1.8rem 2.4rem;
@@ -263,9 +312,11 @@ input[type=number] {
     .after-login {
         cursor: pointer;
         display: none;
-        &.result-login{
-            display : block;
+
+        &.result-login {
+            display: block;
         }
+
         .users {
             padding-left: 0;
             list-style: none;
@@ -1089,6 +1140,115 @@ input[type=number] {
                 &::-webkit-scrollbar-thumb {
                     background: #B44414;
                     border-radius: 12px;
+                }
+            }
+        }
+    }
+}
+
+
+
+//result
+
+.main-result {
+    width: 100%;
+    max-width: 90rem;
+    margin: auto;
+
+    @include Mobile {
+        padding: 0 1.2rem;
+    }
+
+    .thank-users {
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 3.6rem;
+        color: #FFE6AE;
+
+        @include Mobile {
+            font-size: 1.4rem;
+            line-height: 2.2rem;
+        }
+
+        a {
+            color: #E6FF4A;
+            text-decoration-line: underline;
+        }
+    }
+
+    .last-result-event {
+        margin-top: 5.8rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: nowrap;
+
+        @include Mobile {
+            margin-top: 1.6rem;
+            flex-wrap: wrap;
+        }
+
+        .item-result {
+            margin: 0 2.5rem;
+
+            @include Mobile {
+                margin: 1.6rem 2rem;
+            }
+
+            &:first-child {
+                .user-final {
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                @include Mobile {
+                    width: 42%;
+                }
+            }
+
+
+            &:nth-child(2), &:nth-child(3) {
+                @include Mobile {
+                    width: 38%;
+                }
+
+                .user-final {
+                    &:last-child {
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            .user-final {
+                margin-top: 1.6rem;
+                padding-bottom: 1rem;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    width: 80%;
+                    height: .1rem;
+                    background: #A73C3C;
+                    position: absolute;
+                    bottom: 0;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    line-height: 2.8rem;
+                    margin-bottom: 0;
+                    color: #FFE6AE;
+                    text-align: center;
+                    @include Mobile {
+                        font-size : 1.2rem;
+                    }
+                }
+                .name{
+                    font-size : 1.4rem;
                 }
             }
         }
