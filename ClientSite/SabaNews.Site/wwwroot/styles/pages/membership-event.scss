@@ -25,7 +25,9 @@ body {
     background-color: $event-bg;
     overflow-x: hidden;
 }
-
+.main{
+    position : relative;
+}
 
 .footer {
     border-top: 4px solid #6D0202;
