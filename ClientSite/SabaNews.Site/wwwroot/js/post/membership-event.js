@@ -1,5 +1,5 @@
 ﻿var membershipEvent = (function ($) {
-    var isLogin = checkLogin.toLowerCase() === 'true';
+    var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
     function HandleSubmitNumber() {
         $('#membership-event-form').on('submit', function (e) {
             e.preventDefault();
@@ -112,6 +112,12 @@
 
         $('.btn-home').click(function () {
             $('html, body').animate({ scrollTop: 0 }, 1000);
+        });
+
+        $('.btn-event-register').on('click', function () {
+            console.log(123);
+            $('#nav-register-tab').addClass('active');
+            $('#nav-register').addClass('active')
         });
     }
 
