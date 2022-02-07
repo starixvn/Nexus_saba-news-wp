@@ -221,7 +221,7 @@
         }
 
         [Route("/membership-event")]
-        public async Task<ActionResult> MembershipEvent()
+        public ActionResult MembershipEvent()
         {
             var model = new MembershipEventViewModel
             {
