@@ -1,0 +1,151 @@
+﻿
+@section Title{
+    MembershipEvent Result
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
+
+}
+@section Scripts{
+    <script src="~/minify/js/membership-event.min.js" asp-append-version="true"></script>
+}
+
+
+<body>
+    <div class="wrapper-menu-event"></div>
+    <div class="wrapper-header">
+        <div class="header-menu">
+            <div class="logo-event">
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/images/event/logo.png" alt="saba-sports" asp-append-version="true">
+                </a>
+            </div>
+            <div class="login">
+                <a href="#" class="btn btn-event">Đăng Nhập</a>
+            </div>
+            <div class="after-login">
+                <ul class="users">
+                    <li class="avatar"><img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true"></li>
+                    <li class="name">Saba Sport</li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-control">
+            <ul>
+                <li><a href="#" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
+                <li><a href="#" class="btn btn-event active" id="btn-register">Tham Gia</a></li>
+            </ul>
+        </div>
+        <ul class="header-nav-event">
+            <li>
+                <a href="#" class="active">
+                    <i class="icon icon-event-home"></i>
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="#nhap-so-may-man" class="click-number-event">
+                    <i class="icon icon-field-number"></i>
+                    <span>Nhập Số May Mắn</span>
+                </a>
+            </li>
+            <li>
+                <a href="#danh-sach-tham-gia" class="click-list-rigister">
+                    <i class="icon icon-list-event"></i>
+                    <span>Danh Sách Tham Gia</span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("MembershipEventResult", "Home")">
+                    <i class="icon icon-list-event-true"></i>
+                    <span>Danh Sách Trúng Giải</span>
+                </a>
+            </li>
+        </ul>
+        <div class="toggle-mobile-event">
+            <i class="icon icon-menu-event"></i>
+        </div>
+    </div>
+    <main></main>
+</body>
+
+
+
+<div class="auth-form">
+    <div class="modal" id="register" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body register">
+                    <div class="heading-modal-event">nhập số may mắn</div>
+                    <p class="text-event-modal">Bạn có muốn nhập con số may mắn này không ?</p>
+                    <ul>
+                        <li><a href="#nhap-so-may-man" class="btn btn-event btn-accept active">đồng ý</a></li>
+                        <li><a href="#" class="btn btn-event btn-outline-event">bỏ qua</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="auth-form event-guide">
+    <div class="modal" id="guide" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body guide">
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>THỂ LỆ</span>
+                    </div>
+                    <div class="main-guide scooped-corners">
+                        <div class="txt-guide">
+                            <div class="event-txt">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien .
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Convallis in erat lectus arcu, a odio. Turpis diam ultricies egestas feugiat ligula ultrices ac. Cras cras nisl ornare tristique nunc, convallis ut condimentum malesuada. Lectus bibendum quam porta tellus. Turpis non magna eu netus. Nulla lectus in nec fermentum. Rutrum volutpat sit commodo pulvinar nibh ipsum. Ultricies nisl, turpis ut rutrum sed fermentum rhoncus at enim. Et et, quis sed ullamcorper massa sed curabitur sit ac. Duis id sagittis, dolor ultricies tincidunt mi lorem in dignissim. Convallis augue lorem ultricies congue cursus nisl turpis lorem pellentesque. Ultricies lorem senectus curabitur semper nulla duis tincidunt. Erat enim, posuere sagittis, viverra vel, viverra ornare sit. Sapien, tellus sapien eget nunc. Turpis diam ipsum in a nec tellus, sed interdum malesuada. Fames aliquet quis ullamcorper vestibulum et duis sit fringilla gravida. Habitant rhoncus risus ut mi semper sit enim, semper varius. In mi turpis eget fermentum iaculis in turpis facilisi. Pulvinar vitae ac sit in sapien..
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<div class="main">
+        <form id="membership-event">
+            <input type="number" id="luckyNumber" name="luckyNumber" />
+            <button type="submit">submit</button>
+        </form>
+    </div>
+
+
+    <div class="auth-form">
+        <div class="modal" id="Notice" style="display:none">
+            <div class="modal-content modal-auth">
+                <div class="modal-warning">
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body modal-resetpass">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>*@

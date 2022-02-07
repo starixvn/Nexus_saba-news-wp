@@ -220,7 +220,14 @@
         }
 
         [Route("/membership-event")]
-        public async Task<IActionResult> MembershipEvent()
+        public ActionResult MembershipEvent()
+        {
+            return View();
+
+        }
+
+        [Route("/membership-event/result")]
+        public ActionResult MembershipEventResult()
         {
             return View();
 
