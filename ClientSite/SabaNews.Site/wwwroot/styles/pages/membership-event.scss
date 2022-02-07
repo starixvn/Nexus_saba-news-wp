@@ -697,7 +697,6 @@ input[type=number] {
         }
 
         &.field-number-validate {
-            display: none;
 
             .warning-event {
                 text-align: center;
@@ -743,8 +742,6 @@ input[type=number] {
         }
 
         &.field-number-result {
-            display: none;
-
             .form-input {
                 .dots {
                     position: relative;

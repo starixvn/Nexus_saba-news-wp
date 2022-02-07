@@ -7,5 +7,7 @@ namespace SabaNews.Models.ViewModel.User
         public UserSession User { get; set; }
 
         public bool IsLogin { get; set; }
+
+        public MembershipEventModel MembershipEventDetail { get; set; }
     }
 }

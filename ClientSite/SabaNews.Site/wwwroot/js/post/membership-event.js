@@ -47,7 +47,7 @@
         });
        
 
-        $('.input-field-event').keypress(function () {
+        $('.input-event-number').keypress(function () {
             var maxlength = $(this).attr("maxlength");
             this.value = this.value.substring(0, maxlength - 1);
         })
@@ -109,6 +109,10 @@
         $('.btn-accept,.btn-outline-event').click(function () {
             $('#register').modal('hide');
         })
+
+        $('.btn-home').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
+        });
     }
 
     var page = 1;

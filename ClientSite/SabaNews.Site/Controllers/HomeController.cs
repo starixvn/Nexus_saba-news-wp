@@ -221,7 +221,7 @@
         }
 
         [Route("/membership-event")]
-        public ActionResult MembershipEvent()
+        public async Task<ActionResult> MembershipEvent()
         {
             var model = new MembershipEventViewModel
             {
@@ -230,6 +230,7 @@
             if (sessionService.User != null)
             {
                 model.User = sessionService.User;
+                model.MembershipEventDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
             }
             return View(model);
 

@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Text;
 @section Title{
     MembershipEvent
 }
@@ -46,13 +46,13 @@
                 </div>
             }
             else
-            { 
+            {
                 <div class="login auth-input">
                     <a href="javascript:;" class="btn btn-event auth-login">Đăng Nhập</a>
                 </div>
             }
-            
-            
+
+
         </div>
         <div class="header-control">
             <ul>
@@ -62,7 +62,7 @@
         </div>
         <ul class="header-nav-event">
             <li>
-                <a href="#" class="active">
+                <a href="#" class="active btn-home">
                     <i class="icon icon-event-home"></i>
                     <span>Trang Chủ</span>
                 </a>
@@ -107,53 +107,67 @@
                     <img src="~/images/event/line.png" class="img-res" />
                     <span>Nhập Số May Mắn</span>
                 </div>
-                <div class="field-number field-number-default">
-                    <form class="form-event" id="membership-event-form">
-                        <div class="form-input">
-                            <input type="number" min="0" max="9" maxlength="1" id="number1" class="input-field-event" />
-                            <input type="number" min="0" max="9" maxlength="1" id="number2" class="input-field-event" />
-                            <input type="number" min="0" max="9" maxlength="1" id="number3" class="input-field-event" />
-                        </div>
-                        <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
-                    </form>
-                    <span><img src="~/images/event/dot-input.png" /></span>
-                </div>
 
-                <div class="field-number field-number-result">
-                    <div class="form-event">
-                        <div class="form-input">
-                            <div class="dots">
-                                <input type="number" value="9" class="input-field-event" />
-                            </div>
-                            <div class="dots">
-                                <input type="number" value="9" class="input-field-event" />
-                            </div>
-                            <div class="dots">
-                                <input type="number" value="9" class="input-field-event" />
-                            </div>
-                        </div>
-                        <div class="form-input">
-                            <div class="result">Chín</div>
-                            <div class="result">Chín</div>
-                            <div class="result">Chín</div>
-                        </div>
-                    </div>
-                    <span><img src="~/images/event/dot-input.png" /></span>
-                </div>
 
-                <div class="field-number field-number-validate">
-                    <div class="validate-vent-input">
-                        <div class="warning-event">
-                            Vui lòng đăng nhập hoặc đăng ký
-                            để tham gia
+
+                @if (!Model.IsLogin && Model.MembershipEventDetail == null)
+                {
+                    <div class="field-number field-number-validate">
+                        <div class="validate-vent-input">
+                            <div class="warning-event">
+                                Vui lòng đăng nhập hoặc đăng ký
+                                để tham gia
+                            </div>
+                            <ul class="flex-btn auth-input">
+                                <li><a href="javascript:;" class="btn btn-event auth-login">Đăng nhập</a></li>
+                                <li><a href="javascript:;" class="btn btn-event  auth-login active">Đăng ký</a></li>
+                            </ul>
                         </div>
-                        <ul class="flex-btn">
-                            <li><a href="#" class="btn btn-event">Đăng nhập</a></li>
-                            <li><a href="#" class="btn btn-event active">Đăng ký</a></li>
-                        </ul>
+                        <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
-                    <span><img src="~/images/event/dot-input.png" /></span>
-                </div>
+                }
+                else if (Model.IsLogin && Model.MembershipEventDetail != null && Model.MembershipEventDetail.LuckyNumber != null)
+                {
+                    var luckyNumber = Model.MembershipEventDetail.LuckyNumber.Trim();
+                    var arrNumber = new StringBuilder(luckyNumber);
+                    string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín"};
+                    <div class="field-number field-number-result @arrNumberAsWord[0]">
+                        <div class="form-event">
+                            <div class="form-input">
+                                @for (var i = 0; i < arrNumber.Length; i++)
+                                {
+                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
+                                    <div class="dots">
+                                        <input type="number" readonly value="@number" class="input-field-event" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-input">
+                                @for (var i = 0; i < arrNumber.Length; i++)
+                                {
+                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
+                                    <div class="result">@arrNumberAsWord[number]</div>
+                                }
+                            </div>
+                        </div>
+                        <span><img src="~/images/event/dot-input.png" /></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="field-number field-number-default">
+                        <form class="form-event" id="membership-event-form">
+                            <div class="form-input">
+                                <input type="number" min="0" max="9" maxlength="1" id="number1" class="input-field-event input-event-number" />
+                                <input type="number" min="0" max="9" maxlength="1" id="number2" class="input-field-event input-event-number" />
+                                <input type="number" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                            </div>
+                            <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
+                        </form>
+                        <span><img src="~/images/event/dot-input.png" /></span>
+                    </div>
+                }
+
             </div>
             <div class="block-list-connect" id="list-rigister-event">
                 <div class="title-event">

@@ -25,6 +25,8 @@
         Task<CommandResult> CreateUserMembershipEventDataAsync(CreateUserMembershipEventDataCommand command);
 
         Task<IEnumerable<MembershipEventModel>> GetUserMembershipEventDataAsync(GetMembershipEventDataCriteria criteria);
+
+        Task<MembershipEventModel> GetDetailMembershipEventDataAsync(GetDetailMembershipEventCriteria criteria);
     }
 
 }
