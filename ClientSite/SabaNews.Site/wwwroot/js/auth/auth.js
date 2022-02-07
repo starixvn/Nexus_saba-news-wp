@@ -1,5 +1,5 @@
 ﻿var auth = (function ($) {
-    function GetModalLogin(returnUrl) {
+    function GetModalLogin(returnUrl, openForm) {
         $.ajax({
             url: '/Auth/Index',
             type: 'GET',
@@ -11,7 +11,7 @@
                 HandleLogin(returnUrl);
                 HandleRegister();
                 HandleForgotPassword();
-                HandleModal();
+                HandleModal(openForm);
             }
         });
     }
@@ -19,7 +19,8 @@
     function HandleAuth() {
         $('.auth-input .auth-login').on('click', function () {
             var returnUrl = $(this).data('returnurl');
-            GetModalLogin(returnUrl);
+            var openForm = $(this).data('form');
+            GetModalLogin(returnUrl, openForm);
         });
     }
 
@@ -181,7 +182,18 @@
         });
     }
 
-    function HandleModal() {
+    function HandleModal(openForm) {
+        if (openForm === 'register') {
+            $('.nav-title').removeClass('active');
+            $('#nav-register-tab').addClass('active');
+            $('#nav-register').addClass('active');
+            $('#nav-login').removeClass('active')
+        } else {
+            $('.nav-title').removeClass('active');
+            $('#nav-register').removeClass('active');
+            $('#nav-login').addClass('active')
+            $('#nav-login-tab').addClass('active');
+        }
         $('.nav-title').on('click', function () {
             var self = $(this);
             if (!self.hasClass('active')) {

@@ -113,12 +113,6 @@
         $('.btn-home').click(function () {
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
-
-        $('.btn-event-register').on('click', function () {
-            console.log(123);
-            $('#nav-register-tab').addClass('active');
-            $('#nav-register').addClass('active')
-        });
     }
 
     var page = 1;
