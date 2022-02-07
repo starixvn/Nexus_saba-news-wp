@@ -1,14 +1,11 @@
-﻿namespace SabaNews.Models.ViewModel.User
-{
-    using SabaNews.Core.Models;
-    using System.Collections.Generic;
+﻿using SabaNews.Core.Models;
 
+namespace SabaNews.Models.ViewModel.User
+{
     public class MembershipEventViewModel
     {
-        public IEnumerable<MembershipEventModel> Users { get; set; }
+        public UserSession User { get; set; }
 
-        public PagingModel Paging { get; set; }
-
-        public string DateSort { get; set; }
+        public bool IsLogin { get; set; }
     }
 }

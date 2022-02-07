@@ -10,6 +10,7 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Globalization;
@@ -220,10 +221,41 @@
         }
 
         [Route("/membership-event")]
-        public ActionResult MembershipEvent()
+        public async Task<ActionResult> MembershipEvent()
         {
-            return View();
+            var model = new MembershipEventViewModel
+            {
+                IsLogin = sessionService.User != null
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
+            }
+            return View(model);
 
+        }
+
+        [Route("/membership-event/getdata")]
+        public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
+        {
+            var criteria = new GetMembershipEventDataCriteria
+            {
+                Start = (model.Page - 1) * model.PageSize,
+                End = model.PageSize
+            };
+            var users = await userService.GetUserMembershipEventDataAsync(criteria);
+            var viewModel = new MembershipEventGridViewModel
+            {
+                Users = users,
+                Paging = new PagingModel
+                {
+                    CurrentPage = model.Page,
+                    PageSize = model.PageSize,
+                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)model.PageSize),
+                }
+            };
+
+            return PartialView("_MembershipEventGridView", viewModel);
         }
 
         [Route("/membership-event/result")]
@@ -235,7 +267,7 @@
 
         [HttpPost]
         [Route("/membership-event/create")]
-        public async Task<IActionResult> CreateMembershipEventData(int luckyNumber)
+        public async Task<IActionResult> CreateMembershipEventData(string luckyNumber)
         {
             var result = new CommandResult();
             if (sessionService.User == null)

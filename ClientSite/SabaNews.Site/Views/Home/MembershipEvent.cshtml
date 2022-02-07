@@ -21,15 +21,35 @@
                     <img src="~/images/event/logo.png" alt="saba-sports" asp-append-version="true">
                 </a>
             </div>
-            <div class="login">
-                <a href="#" class="btn btn-event">Đăng Nhập</a>
-            </div>
-            <div class="after-login">
-                <ul class="users">
-                    <li class="avatar"><img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true"></li>
-                    <li class="name">Saba Sport</li>
-                </ul>
-            </div>
+            @if (Model.IsLogin)
+            {
+                <div class="after-login">
+                    <ul class="users">
+                        @if (Model.User.Photo == null)
+                        {
+                            <li class="avatar">@Model.User.Name.Substring(0, 1)</li>
+                        }
+                        else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+                        {
+                            <li class="avatar"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                        }
+                        else
+                        {
+                            <li class="avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                        }
+                        @*<li class="avatar"><img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true"></li>*@
+                        <li class="name">@Model.User.Name</li>
+                    </ul>
+                </div>
+            }
+            else
+            { 
+                <div class="login auth-input">
+                    <a href="javascript:;" class="btn btn-event auth-login">Đăng Nhập</a>
+                </div>
+            }
+            
+            
         </div>
         <div class="header-control">
             <ul>
@@ -85,13 +105,13 @@
                     <span>Nhập Số May Mắn</span>
                 </div>
                 <div class="field-number field-number-default">
-                    <form class="form-event">
+                    <form class="form-event" id="membership-event-form">
                         <div class="form-input">
-                            <input type="number" min="1" max="9" class="input-field-event" />
-                            <input type="number" min="1" max="9" class="input-field-event" />
-                            <input type="number" min="1" max="9" class="input-field-event" />
+                            <input type="number" min="0" max="9" maxlength="1" id="number1" class="input-field-event" />
+                            <input type="number" min="0" max="9" maxlength="1" id="number2" class="input-field-event" />
+                            <input type="number" min="0" max="9" maxlength="1" id="number3" class="input-field-event" />
                         </div>
-                        <button type="submit" class="btn btn-event active">Gửi</button>
+                        <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
                     </form>
                     <span><img src="~/images/event/dot-input.png" /></span>
                 </div>
@@ -137,80 +157,79 @@
                     <img src="~/images/event/line.png" class="img-res" />
                     <span>DANH SÁCH THAM GIA</span>
                 </div>
-                <div class="list-user">
-                    <ul class="heading-table">
-                        <li class="text-left">Email</li>
-                        <li class="text-center">Số may mắn</li>
-                        <li class="text-center">Thời gian tham dự</li>
+                <div class="data-grid">
+                    <div class="list-user">
+                        <ul class="heading-table">
+                            <li class="text-left">Email</li>
+                            <li class="text-center">Số may mắn</li>
+                            <li class="text-center">Thời gian tham dự</li>
+                        </ul>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                                <tr>
+                                    <td class="child-table child-first">abc******xyz@gmail.com</td>
+                                    <td class="child-table child-two text-center font-weight-bold">999</td>
+                                    <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination-event">
+                        <li class="pre"><a href="#" class="paging"><i class="icon icon-prev-event"></i></a></li>
+                        <li class="number active"><a href="#" class="paging">1</a></li>
+                        <li class="number"><a href="#" class="paging">2</a></li>
+                        <li class="number"><a href="#" class="paging">3</a></li>
+                        <li class="number"><a href="#" class="paging">4</a></li>
+                        <li class="number"><a href="#" class="paging">5</a></li>
+                        <li class="number"><a href="#" class="paging">6</a></li>
+                        <li class="next"><a href="#" class="paging"><i class="icon icon-next-event"></i></a></li>
                     </ul>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                            <tr>
-                                <td class="child-table child-first">abc******xyz@gmail.com</td>
-                                <td class="child-table child-two text-center font-weight-bold">999</td>
-                                <td class="child-table child-three text-center">01-Jan-2022 20:02:49</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-
-                <ul class="pagination-event">
-                    <li class="pre"><a href="#"><i class="icon icon-prev-event"></i></a></li>
-                    <li class="number active"><a href="#">1</a></li>
-                    <li class="number"><a href="#">2</a></li>
-                    <li class="number"><a href="#">3</a></li>
-                    <li class="number"><a href="#">4</a></li>
-                    <li class="number"><a href="#">5</a></li>
-                    <li class="number"><a href="#">6</a></li>
-                    <li class="next"><a href="#"><i class="icon icon-next-event"></i></a></li>
-                </ul>
-
-
             </div>
         </div>
     </main>
@@ -232,6 +251,21 @@
                         <li><a href="#nhap-so-may-man" class="btn btn-event btn-accept active">đồng ý</a></li>
                         <li><a href="#" class="btn btn-event btn-outline-event">bỏ qua</a></li>
                     </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="notice" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body register">
+                    <div class="heading-modal-event">nhập số may mắn</div>
+                    <p class="text-event-modal"></p>
                 </div>
             </div>
 

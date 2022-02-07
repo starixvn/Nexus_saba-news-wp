@@ -70,7 +70,7 @@
                 DateSort = model.DateSort
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
-            var viewModel = new MembershipEventViewModel
+            var viewModel = new MembershipEventGridViewModel
             {
                 Users = users,
                 DateSort = model.DateSort,

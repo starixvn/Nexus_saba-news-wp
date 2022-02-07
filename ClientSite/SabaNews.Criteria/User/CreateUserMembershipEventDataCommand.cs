@@ -6,7 +6,7 @@
     {
         public int UserId { get; set; }
 
-        public int LuckyNumber { get; set; }
+        public string LuckyNumber { get; set; }
 
         public DateTime JoinDate { get; set; }
 
