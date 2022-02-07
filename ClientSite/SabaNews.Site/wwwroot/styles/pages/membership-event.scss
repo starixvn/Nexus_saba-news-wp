@@ -25,10 +25,12 @@ body {
     background-color: $event-bg;
     overflow-x: hidden;
 }
+
 main {
     position: relative;
     overflow-x: hidden;
 }
+
 .footer {
     border-top: 4px solid #6D0202;
     background-color: #9F0303;
@@ -44,17 +46,21 @@ main {
         }
     }
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type=number] {
     -moz-appearance: textfield;
 }
-.back-to-top{
-    background-color : #fff;
+
+.back-to-top {
+    background-color: #fff;
 }
+
 .wrapper-menu-event {
     background: #081224;
     opacity: 0.6;
@@ -65,10 +71,12 @@ input[type=number] {
     top: 0;
     left: 0;
     display: none;
-    &.active{
-        display : block;
+
+    &.active {
+        display: block;
     }
 }
+
 .container {
     width: 100%;
     padding: 0 1rem;
@@ -83,6 +91,7 @@ input[type=number] {
         max-width: 93rem;
     }
 }
+
 .icon {
     &::before {
         font-size: 4rem;
@@ -204,12 +213,15 @@ input[type=number] {
         }
 
         &-img {
-            width: 18vw;
+            width: 16vw;
             margin: 0 8vw;
 
             &:nth-child(2) {
+                width: 14vw;
+
                 @include Mobile {
                     margin: 2.5rem -4rem 0 -4rem;
+                    width: 10rem;
                 }
             }
 
@@ -271,6 +283,7 @@ input[type=number] {
         color: #790202;
     }
 }
+
 .header-menu {
     display: flex;
     justify-content: space-between;
@@ -311,6 +324,7 @@ input[type=number] {
 
     .after-login {
         cursor: pointer;
+        display: none;
 
         &.result-login {
             display: block;
@@ -389,7 +403,7 @@ input[type=number] {
         left: 0;
         top: auto;
         bottom: 3rem;
-        width : 100%;
+        width: 100%;
     }
 
     ul {
@@ -397,6 +411,7 @@ input[type=number] {
         padding-left: 0;
         display: flex;
         justify-content: center;
+
         li {
             margin-right: 3.2rem;
 
@@ -438,7 +453,8 @@ input[type=number] {
     top: 16rem;
     list-style: none;
     transition: all ease-in-out .3s;
-    z-index : 9;
+    z-index: 9;
+
     @include Mobile {
         left: 1.2rem;
         top: 1.2rem;
@@ -561,24 +577,28 @@ input[type=number] {
 
         @include Mobile {
             width: 100%;
-            margin-top : 3.8rem;
+            margin-top: 3.8rem;
         }
+
         .img-event-mobile {
             display: none;
+
             @include Mobile {
                 display: block;
-                margin : 0 auto;
+                margin: 0 auto;
             }
         }
 
         .img-event-desktop {
             display: block;
+
             @include Mobile {
                 display: none;
             }
         }
     }
 }
+
 .block-group {
     position: relative;
 
@@ -593,7 +613,7 @@ input[type=number] {
 
         &-left {
             left: 0;
-            top : 35%;
+            top: 35%;
         }
 
         &-right {
@@ -939,6 +959,7 @@ input[type=number] {
         }
     }
 }
+
 .auth-form {
     .show {
         max-width: 63rem;
@@ -976,6 +997,7 @@ input[type=number] {
                 }
             }
         }
+
         .modal-body {
             padding: 3rem 3rem 4rem 3rem;
         }
@@ -1242,17 +1264,164 @@ input[type=number] {
                     margin-bottom: 0;
                     color: #FFE6AE;
                     text-align: center;
+
                     @include Mobile {
-                        font-size : 1.2rem;
+                        font-size: 1.2rem;
                     }
                 }
-                .name{
-                    font-size : 1.4rem;
+
+                .name {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+
+    .result-noted {
+        margin-top: 5rem;
+        padding: 0 2.5rem;
+
+        @include Mobile {
+            margin-top: 2.4rem;
+            padding: 0 .5rem;
+        }
+
+        .heading-noted {
+            color: #B60E0A;
+            text-shadow: 0px 2px 1px rgba(122, 5, 0, 0.35);
+            font-weight: bold;
+            font-size: 2rem;
+            line-height: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            width: 20rem;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #FFEFB3 11.46%, #FFCD7D 76.16%);
+            border-radius: 13px;
+            padding: 1rem 0;
+            position: relative;
+            border: 1px solid #F3BF48;
+            margin-bottom: 1.2rem;
+
+            @include Mobile {
+                padding: .5rem 0;
+            }
+
+            &:after, &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 2.5rem;
+                height: 2.5rem;
+                background: url("../../images//event/dot-line.png");
+                background-size: 100%;
+                top: 50%;
+                left: -1rem;
+                transform: translate(0%,-50%);
+
+                @include Mobile {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
+            }
+
+            &:before {
+                left: auto;
+                right: -1rem;
+            }
+
+            @include Mobile {
+                font-size: 1.4rem;
+                line-height: 2.2rem;
+                width: 10rem;
+            }
+        }
+
+        .main-noted {
+            background: linear-gradient(180deg, #EB1D13 15.14%, #B60E0A 64.2%);
+            padding: .4rem;
+            border-radius: 20px;
+
+            .txt-noted {
+                font-size: 2.2rem;
+                line-height: 2.8rem;
+                color: #121212;
+                padding: 3.2rem;
+
+                @include Mobile {
+                    font-size: 1.4rem;
+                    line-height: 2.2rem;
+                    padding: 1.6rem;
+                }
+
+                p {
+                    margin-bottom: 1.2rem;
+
+                    @include Mobile {
+                        margin-bottom: .8rem;
+                    }
+                }
+
+                &:first-child {
+                    background: linear-gradient(88.27deg, #EEB859 3.13%, #FDE8A5 42.9%);
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+
+                    a {
+                        text-decoration-line: underline;
+                        color: #BA0900;
+                    }
+                }
+
+                &:nth-child(2) {
+                    color: #FFE6AE;
+
+                    a {
+                        text-decoration-line: underline;
+                        color: #E6FF4A;
+                    }
                 }
             }
         }
     }
 }
 
+.img-event-position {
+    position: absolute;
 
+    @include Mobile {
+        display: none;
+    }
 
+    img {
+        width: 17vw;
+    }
+
+    &-1 {
+        top: 35rem;
+        right: 0;
+    }
+
+    &-2 {
+        top: 0;
+        left: 0;
+    }
+
+    &-3 {
+        top: 45%;
+        right: -15%;
+
+        img {
+            width: 35vw;
+        }
+    }
+
+    &-4 {
+        top: 50%;
+        left: 0%;
+
+        img {
+            width: 20vw;
+        }
+    }
+}
