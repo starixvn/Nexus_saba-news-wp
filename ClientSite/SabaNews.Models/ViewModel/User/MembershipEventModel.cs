@@ -14,6 +14,6 @@
 
         public DateTime JoinDate { get; set; }
 
-        public int LuckyNumber { get; set; }
+        public string LuckyNumber { get; set; }
     }
 }

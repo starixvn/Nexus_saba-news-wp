@@ -1,22 +1,16 @@
 ﻿var membershipEvent = (function ($) {
+    var isLogin = checkLogin.toLowerCase() === 'true';
     function HandleSubmitNumber() {
         $('#membership-event-form').on('submit', function (e) {
             e.preventDefault();
             var number1 = $('#number1').val();
             var number2 = $('#number2').val();
             var number3 = $('#number3').val();
-            if (!$.isNumeric(number1) || !$.isNumeric(number2) || !$.isNumeric(number3)) {
-                console.log("invalid number");
+            var isValid = ValidateFormEnterLuckynumber(number1, number2, number3);
+            if (!isValid) {
                 return false;
             }
             var luckyNumber = number1 + number2 + number3;
-            if (!$.isNumeric(luckyNumber)) {
-                console.log("luckynumber không phải số");
-            }
-            if (luckyNumber < 0 && luckyNumber > 999) {
-                console.log("số quá nhỏ hoặc quá lớn");
-                return false;
-            }
             $.ajax({
                 method: 'POST',
                 url: '/membership-event/create',
@@ -39,6 +33,13 @@
         });
 
         $('.btn-submit-number').on('click', function () {
+            var number1 = $('#number1').val();
+            var number2 = $('#number2').val();
+            var number3 = $('#number3').val();
+            var isValid = ValidateFormEnterLuckynumber(number1, number2, number3);
+            if (!isValid) {
+                return false;
+            }
             $('#register').modal('show');
         });
         $('#register .btn-accept').on('click', function () {
@@ -83,6 +84,29 @@
             
             
         })
+    }
+
+    function ValidateFormEnterLuckynumber(number1, number2, number3) {
+        var luckyNumber = number1 + number2 + number3;
+        if (!isLogin) {
+            $('#notice .modal-body  .text-event-modal').html("Vui lòng đăng nhập để tham gia sự kiện");
+            $('#notice').unbind('hidden.bs.modal');
+            $('#notice').modal('show');
+            return false;
+        }
+        if (!$.isNumeric(number1) || !$.isNumeric(number2) || !$.isNumeric(number3) || !$.isNumeric(luckyNumber)) {
+            $('#notice .modal-body  .text-event-modal').html("Vui lòng nhập số may mắn là số!");
+            $('#notice').unbind('hidden.bs.modal');
+            $('#notice').modal('show');
+            return false;
+        }
+        if (luckyNumber < 0 && luckyNumber > 999) {
+            $('#notice .modal-body  .text-event-modal').html("Số may mắn phải là số nằm trong khoảng từ 000 đến 999");
+            $('#notice').unbind('hidden.bs.modal');
+            $('#notice').modal('show');
+            return false;
+        }
+        return true;
     }
 
     var page = 1;

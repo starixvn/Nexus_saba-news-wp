@@ -8,6 +8,9 @@
 
 }
 @section Scripts{
+    <script>
+        var checkLogin = '@Model.IsLogin';
+    </script>
     <script src="~/minify/js/membership-event.min.js" asp-append-version="true"></script>
 }
 
@@ -296,7 +299,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

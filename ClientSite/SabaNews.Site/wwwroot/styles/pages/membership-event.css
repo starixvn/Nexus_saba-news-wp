@@ -1613,8 +1613,7 @@ input[type=number] {
       .header-menu .login a {
         padding: .3rem 2.4rem; } }
   .header-menu .after-login {
-    cursor: pointer;
-    display: none; }
+    cursor: pointer; }
     .header-menu .after-login.result-login {
       display: block; }
     .header-menu .after-login .users {
