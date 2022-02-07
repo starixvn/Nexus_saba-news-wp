@@ -28,6 +28,12 @@ body {
 .main{
     position : relative;
 }
+.result-page {
+    main {
+        overflow-x: hidden;
+    }
+}
+
 
 .footer {
     border-top: 4px solid #6D0202;
