@@ -136,10 +136,7 @@ input[type=number] {
     background-position: top center;
     background-repeat: no-repeat;
     position: relative;
-    &.wrapper-result{
-        background : none;
-        height : auto;
-    }
+
     @include Mobile {
         background: url('../../images/event/top-banner-mobile.png');
         height: auto;
@@ -160,6 +157,18 @@ input[type=number] {
 
     @include iphone1213 {
         padding-bottom: 53rem !important;
+    }
+
+    &.wrapper-result {
+        background: url('../../images/event/wrapper-result.png');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        height: 30vw;
+
+        @include Mobile {
+            padding-bottom: 30rem;
+        }
     }
 
     .toggle-mobile-event {

@@ -1488,9 +1488,6 @@ input[type=number] {
   background-position: top center;
   background-repeat: no-repeat;
   position: relative; }
-  .wrapper-header.wrapper-result {
-    background: none;
-    height: auto; }
   @media (max-device-width: 767px) {
     .wrapper-header {
       background: url("../../images/event/top-banner-mobile.png");
@@ -1509,6 +1506,15 @@ input[type=number] {
   @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
       padding-bottom: 53rem !important; } }
+  .wrapper-header.wrapper-result {
+    background: url("../../images/event/wrapper-result.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 30vw; }
+    @media (max-device-width: 767px) {
+      .wrapper-header.wrapper-result {
+        padding-bottom: 30rem; } }
   .wrapper-header .toggle-mobile-event {
     cursor: pointer;
     position: fixed;
