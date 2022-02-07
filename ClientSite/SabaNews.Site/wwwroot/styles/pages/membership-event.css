@@ -1488,6 +1488,9 @@ input[type=number] {
   background-position: top center;
   background-repeat: no-repeat;
   position: relative; }
+  .wrapper-header.wrapper-result {
+    background: none;
+    height: auto; }
   @media (max-device-width: 767px) {
     .wrapper-header {
       background: url("../../images/event/top-banner-mobile.png");
@@ -1572,6 +1575,8 @@ input[type=number] {
   .header-menu .after-login {
     cursor: pointer;
     display: none; }
+    .header-menu .after-login.result-login {
+      display: block; }
     .header-menu .after-login .users {
       padding-left: 0;
       list-style: none;

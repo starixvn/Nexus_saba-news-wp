@@ -136,9 +136,10 @@ input[type=number] {
     background-position: top center;
     background-repeat: no-repeat;
     position: relative;
-
-
-
+    &.wrapper-result{
+        background : none;
+        height : auto;
+    }
     @include Mobile {
         background: url('../../images/event/top-banner-mobile.png');
         height: auto;
@@ -174,6 +175,7 @@ input[type=number] {
             @include Mobile {
                 display: block;
             }
+
             &::before {
                 font-size: 2.4rem;
             }
@@ -252,7 +254,9 @@ input[type=number] {
     .after-login {
         cursor: pointer;
         display: none;
-
+        &.result-login{
+            display : block;
+        }
         .users {
             padding-left: 0;
             list-style: none;
