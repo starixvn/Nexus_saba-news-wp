@@ -267,7 +267,18 @@
         [Route("/membership-event/result")]
         public ActionResult MembershipEventResult()
         {
-            return View();
+            var isLogin = sessionService.User != null;
+            var model = new MembershipEventViewModel
+            {
+                IsLogin = isLogin,
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
+
+            }
+            return View(model);
 
         }
 

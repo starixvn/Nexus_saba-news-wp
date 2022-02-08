@@ -26,52 +26,52 @@
             </div>
             @if (Model.IsLogin)
             {
-        <div class="after-login">
-            <ul class="users auth-section">
-                @if (Model.User.Photo == null)
-                {
-                    <li class="avatar">@Model.User.Name.Substring(0, 1)</li>
-                }
-                else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
-                {
-                    <li class="avatar"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
-                }
-                else
-                {
-                    <li class="avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
-                }
-                @*<li class="avatar"><img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true"></li>*@
-                <li class="name">@Model.User.Name</li>
-            </ul>
-            <div class="profile-login">
-                <ul class="users-login-review">
-                    @if (Model.User.Photo == null)
-                    {
-                        <li class="users-login-avatar">@Model.User.Name.Substring(0, 1)</li>
-                    }
-                    else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
-                    {
-                        <li class="users-login-avatar"><img loading="lazy" src="@Model.User.Photo" data-name="@Model.User.Name.Substring(0, 1)" asp-append-version="true"/></li>
-                    }
-                    else
-                    {
-                        <li class="users-login-avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" asp-append-version="true"/></li>
-                    }
-                    <li class="users-name"><a href="#">@Model.User.Name</a></li>
-                </ul>
-                <ul class="list-profile">
-                    @if (Model.IsAdmin)
-                    {
-                        <li>
-                            <a class="item" href="~/Admin/Statistic/Index">@ViewResources.Administration</a>
-                        </li>
-                    }
-                    <li><a href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a></li>
-                    <li><a href="@Url.Action("Index", "Profile")">Tài Khoản của tôi</a></li>
-                    <li class="auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path">Đăng xuất <i class="icon-logout"></i></a></li>
-                </ul>
-            </div>
-        </div>
+                <div class="after-login">
+                    <ul class="users auth-section">
+                        @if (Model.User.Photo == null)
+                        {
+                            <li class="avatar">@Model.User.Name.Substring(0, 1)</li>
+                        }
+                        else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+                        {
+                            <li class="avatar"><img class="profile_image" loading="lazy" src="@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                        }
+                        else
+                        {
+                            <li class="avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" /></li>
+                        }
+                        @*<li class="avatar"><img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true"></li>*@
+                        <li class="name">@Model.User.Name</li>
+                    </ul>
+                    <div class="profile-login">
+                        <ul class="users-login-review">
+                            @if (Model.User.Photo == null)
+                            {
+                                <li class="users-login-avatar">@Model.User.Name.Substring(0, 1)</li>
+                            }
+                            else if (Model.User.Photo.ToLower().Contains("https://") || Model.User.Photo.ToLower().Contains("http://"))
+                            {
+                                <li class="users-login-avatar"><img loading="lazy" src="@Model.User.Photo" data-name="@Model.User.Name.Substring(0, 1)" asp-append-version="true" /></li>
+                            }
+                            else
+                            {
+                                <li class="users-login-avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.User.Photo" width="300" data-name="@Model.User.Name.Substring(0, 1)" asp-append-version="true" /></li>
+                            }
+                            <li class="users-name"><a href="#">@Model.User.Name</a></li>
+                        </ul>
+                        <ul class="list-profile">
+                            @if (Model.IsAdmin)
+                            {
+                                <li>
+                                    <a class="item" href="~/Admin/Statistic/Index">@ViewResources.Administration</a>
+                                </li>
+                            }
+                            <li><a href="@Url.Action("ListSavedPosts", "Profile")">Tin đã lưu</a></li>
+                            <li><a href="@Url.Action("Index", "Profile")">Tài Khoản của tôi</a></li>
+                            <li class="auth-logout"><a href="~/Auth/Logout?returnUrl=@Context.Request.Path">Đăng xuất <i class="icon-logout"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             }
             else
             {
@@ -85,7 +85,7 @@
         <div class="header-control">
             <ul>
                 <li><a href="#" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
-                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event" >Tham Gia</a></li>
+                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
             </ul>
         </div>
         <ul class="header-nav-event">
@@ -158,7 +158,7 @@
                 {
                     var luckyNumber = Model.MembershipEventDetail.LuckyNumber.Trim();
                     var arrNumber = new StringBuilder(luckyNumber);
-                    string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín"};
+                    string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
                     <div class="field-number field-number-result @arrNumberAsWord[0]">
                         <div class="form-event">
                             <div class="form-input">
