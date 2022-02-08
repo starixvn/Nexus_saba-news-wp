@@ -1643,7 +1643,16 @@ input[type=number] {
           height: 4rem;
           overflow: hidden;
           border-radius: 50%;
-          margin-right: 1rem; }
+          margin-right: 1rem;
+          background: #D9C386;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-transform: uppercase;
+          color: #B44414;
+          font-size: 1.8rem;
+          line-height: 2.1rem;
+          font-weight: bold; }
           .header-menu .after-login .profile-login .users-login-review .users-login-avatar img {
             object-fit: cover;
             width: 100%;
@@ -1688,7 +1697,16 @@ input[type=number] {
         height: 4rem;
         border: 1px solid #FFFFFF;
         border-radius: 50%;
-        overflow: hidden; }
+        overflow: hidden;
+        background: #D9C386;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        color: #B44414;
+        font-size: 1.8rem;
+        line-height: 2.1rem;
+        font-weight: bold; }
         @media (max-device-width: 767px) {
           .header-menu .after-login .users .avatar {
             width: 2rem;

@@ -360,7 +360,15 @@ input[type=number] {
                     overflow: hidden;
                     border-radius: 50%;
                     margin-right: 1rem;
-
+                    background: #D9C386;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-transform: uppercase;
+                    color: #B44414;
+                    font-size: 1.8rem;
+                    line-height: 2.1rem;
+                    font-weight: bold;
                     img {
                         object-fit: cover;
                         width: 100%;
@@ -430,6 +438,15 @@ input[type=number] {
                 border: 1px solid #FFFFFF;
                 border-radius: 50%;
                 overflow: hidden;
+                background: #D9C386;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                color: #B44414;
+                font-size: 1.8rem;
+                line-height: 2.1rem;
+                font-weight: bold;
 
                 @include Mobile {
                     width: 2rem;
