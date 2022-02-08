@@ -113,6 +113,22 @@
         $('.btn-home').click(function () {
             $('html, body').animate({ scrollTop: 0 }, 1000);
         });
+
+        $('.auth-section').click(function (e) {
+            $('.profile-login').toggleClass('active-login-review');
+
+        });
+
+        $(window).click(function (e) {
+            var elmClass = e.target.className;
+
+            var elmAuth = $(e.target).parent().parent();
+            if (!elmAuth.is('.after-login') && !elmAuth.is('.auth-section')) {
+                if ($('.profile-login').hasClass('active-login-review')) {
+                    $('.profile-login').removeClass('active-login-review');
+                }
+            }
+        });
     }
 
     var page = 1;

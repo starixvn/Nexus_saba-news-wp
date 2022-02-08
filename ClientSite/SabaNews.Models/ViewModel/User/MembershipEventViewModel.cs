@@ -8,6 +8,8 @@ namespace SabaNews.Models.ViewModel.User
 
         public bool IsLogin { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         public MembershipEventModel MembershipEventDetail { get; set; }
     }
 }
