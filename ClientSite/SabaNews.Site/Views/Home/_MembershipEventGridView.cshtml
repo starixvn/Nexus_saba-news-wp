@@ -45,7 +45,12 @@
                     <td class="child-table child-three text-center">@joinDate</td>
                 </tr>
             }
-
+            @if (Model.Users.Count == 0)
+            {
+                <tr>
+                    <td class="child-table text-center nodata_table" colspan="3">@ViewResources.EmptyData</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

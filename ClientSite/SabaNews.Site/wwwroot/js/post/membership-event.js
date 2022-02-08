@@ -90,7 +90,7 @@
             $('#guide').modal('show');
         })
 
-        $(".btn-accept,.click-number-event").click(function () {
+        $(".btn-accept,.click-number-event ").click(function () {
             $('html, body').animate({
                 scrollTop: $("#field-number-event").offset().top
             }, 500);
