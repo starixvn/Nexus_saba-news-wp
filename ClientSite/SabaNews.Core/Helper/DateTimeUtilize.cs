@@ -25,5 +25,11 @@
             return time.Add(timeSpan._timeSpan).ToString(Format, new CultureInfo("vi"));
         }
 
+        public static DateTime TransformDatetimeToGMT(DateTime time)
+        {
+            var timeSpan = new DateTimeUtilize();
+            return time.Subtract(timeSpan._timeSpan);
+        }
+
     }
 }

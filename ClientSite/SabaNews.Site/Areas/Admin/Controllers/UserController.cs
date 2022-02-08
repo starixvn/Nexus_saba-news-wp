@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
     using SabaNews.Models.ViewModel.User;
@@ -67,7 +68,8 @@
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
                 Search = model.Search,
-                DateSort = model.DateSort
+                DateSort = model.DateSort,
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel

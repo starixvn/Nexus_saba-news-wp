@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
@@ -245,7 +246,8 @@
             var criteria = new GetMembershipEventDataCriteria
             {
                 Start = (model.Page - 1) * model.PageSize,
-                End = model.PageSize
+                End = model.PageSize,
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
             };
             var users = await userService.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
