@@ -149,7 +149,6 @@
             <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
             <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
             <Mapping DataField="comment_number_children" ObjectProperty="CommentNumberChildren" class="Comment" />
-            <Mapping DataField="comment_number_children" ObjectProperty="CommentNumberChildren" class="Comment" />
         </Setting>
         <Setting Key="cmt_get_children" SpName="cmt_get_children" DbName="sabasports" Plain="0">
             <Mapping DataField="comment_ID" ObjectProperty="CommentID" class="Comment" />

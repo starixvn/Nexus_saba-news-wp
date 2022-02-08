@@ -3,15 +3,11 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
-    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
-    using SabaNews.Criteria.User;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
-    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System;
     using System.Globalization;
@@ -24,25 +20,16 @@
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
         private readonly IBannerService bannerService;
-        private readonly ILogServiceProvider logService;
-        private readonly ISessionService sessionService;
-        private readonly IUserService userService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
             IConfiguration configuration,
-            IBannerService bannerService,
-            ILogServiceProvider logService,
-            ISessionService sessionService,
-            IUserService userService)
+            IBannerService bannerService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
             this.bannerService = bannerService;
-            this.logService = logService;
-            this.sessionService = sessionService;
-            this.userService = userService;
         }
 
         public async Task<IActionResult> Index()
@@ -220,89 +207,5 @@
         {
             return View();
         }
-
-        [Route("/membership-event")]
-        public async Task<ActionResult> MembershipEvent()
-        {
-            var isLogin = sessionService.User != null;
-            var model = new MembershipEventViewModel
-            {
-                IsLogin = isLogin,
-                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
-            };
-            if (sessionService.User != null)
-            {
-                model.User = sessionService.User;
-                model.MembershipEventDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
-                
-            }
-            return View(model);
-
-        }
-
-        [Route("/membership-event/getdata")]
-        public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
-        {
-            var criteria = new GetMembershipEventDataCriteria
-            {
-                Start = (model.Page - 1) * model.PageSize,
-                End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
-            };
-            var users = await userService.GetUserMembershipEventDataAsync(criteria);
-            var viewModel = new MembershipEventGridViewModel
-            {
-                Users = users,
-                Paging = new PagingModel
-                {
-                    CurrentPage = model.Page,
-                    PageSize = model.PageSize,
-                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)model.PageSize),
-                }
-            };
-
-            return PartialView("_MembershipEventGridView", viewModel);
-        }
-
-        [Route("/membership-event/result")]
-        public ActionResult MembershipEventResult()
-        {
-            var isLogin = sessionService.User != null;
-            var model = new MembershipEventViewModel
-            {
-                IsLogin = isLogin,
-                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
-            };
-            if (sessionService.User != null)
-            {
-                model.User = sessionService.User;
-
-            }
-            return View(model);
-
-        }
-
-        [HttpPost]
-        [Route("/membership-event/create")]
-        public async Task<IActionResult> CreateMembershipEventData(string luckyNumber)
-        {
-            var result = new CommandResult();
-            if (sessionService.User == null)
-            {
-                result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
-                return Json(result);
-            }
-            var command = new CreateUserMembershipEventDataCommand
-            {
-                LuckyNumber = luckyNumber,
-                UserId = sessionService.User.Id,
-                JoinDate = DateTime.UtcNow
-            };
-            result = await userService.CreateUserMembershipEventDataAsync(command);
-            return Json(result);
-
-        }
-
-
     }
 }

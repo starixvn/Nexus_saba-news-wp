@@ -67,15 +67,12 @@
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                Search = model.Search,
-                DateSort = model.DateSort,
                 ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
             {
                 Users = users,
-                DateSort = model.DateSort,
                 Paging = new PagingModel
                 {
                     CurrentPage = model.Page,

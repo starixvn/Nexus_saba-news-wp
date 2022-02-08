@@ -149,7 +149,6 @@
             <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
             <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
             <Mapping DataField="comment_number_children" ObjectProperty="CommentNumberChildren" class="Comment" />
-            <Mapping DataField="Photo" ObjectProperty="Photo" class="Comment" />
         </Setting>
         <Setting Key="cmt_get_children" SpName="cmt_get_children" DbName="sabasports" Plain="0">
             <Mapping DataField="comment_ID" ObjectProperty="CommentID" class="Comment" />
@@ -165,7 +164,6 @@
             <Mapping DataField="comment_like_count" ObjectProperty="CommentLikeCount" class="Comment" />
             <Mapping DataField="comment_like_ips" ObjectProperty="CommentLikeIPs" class="Comment" />
             <Mapping DataField="comment_like_users" ObjectProperty="CommentLikeUsers" class="Comment" />
-            <Mapping DataField="Photo" ObjectProperty="Photo" class="Comment" />
         </Setting>
         <Setting  Key="cmt_get_like_data_cmtId" SpName="cmt_get_like_data_cmtId" DbName="sabasports" Plain="0">
             <Mapping DataField="comment_like_count" ObjectProperty="CommentLikeCount" class="Comment" />
@@ -218,6 +216,9 @@
     </Function>
     <Function Name="User">
         <Setting Key="user_get_report" SpName="user_get_report" DbName="sabasports" Plain="0" />
+        <Setting Key="user_membership_event_create_data" SpName="user_membership_event_create_data" DbName="sabasports" Plain="0" />
+        <Setting Key="user_membership_event_get_data" SpName="user_membership_event_get_data" DbName="sabasports" Plain="0" />
+        <Setting Key="user_membership_event_get_detail" SpName="user_membership_event_get_detail" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Banner">
         <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />

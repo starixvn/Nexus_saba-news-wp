@@ -56,19 +56,19 @@
     function ValidateFormEnterLuckynumber(number1, number2, number3) {
         var luckyNumber = number1 + number2 + number3;
         if (!isLogin) {
-            $('#notice .modal-body  .text-event-modal').html("Vui lòng đăng nhập để tham gia sự kiện");
+            $('#notice .modal-body  .text-event-modal').html("Vui lòng đăng nhập để tham gia sự kiện!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
         }
         if (!$.isNumeric(number1) || !$.isNumeric(number2) || !$.isNumeric(number3) || !$.isNumeric(luckyNumber)) {
-            $('#notice .modal-body  .text-event-modal').html("Vui lòng nhập số may mắn là số!");
+            $('#notice .modal-body  .text-event-modal').html("Số may mắn không hợp lệ, vui lòng kiểm tra lại!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
         }
         if (luckyNumber < 0 && luckyNumber > 999) {
-            $('#notice .modal-body  .text-event-modal').html("Số may mắn phải là số nằm trong khoảng từ 000 đến 999");
+            $('#notice .modal-body  .text-event-modal').html("Số may mắn phải là số nằm trong khoảng từ 000 đến 999!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
