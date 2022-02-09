@@ -1563,3 +1563,28 @@ input[type=number] {
         }
     }
 }
+.event-txt {
+    h2 {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+
+        @include Mobile {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .text-event-section {
+        margin-bottom: 2rem;
+    }
+
+    .event-text-header {
+        margin-bottom: .5rem;
+        font-weight: bold;
+    }
+}

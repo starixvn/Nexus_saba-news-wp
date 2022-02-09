@@ -2471,3 +2471,22 @@ input[type=number] {
     left: 0%; }
     .img-event-position-4 img {
       width: 20vw; }
+
+.event-txt h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem; }
+  @media (max-device-width: 767px) {
+    .event-txt h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      line-height: 1.5; } }
+
+.event-txt p {
+  margin-bottom: 1rem; }
+
+.event-txt .text-event-section {
+  margin-bottom: 2rem; }
+
+.event-txt .event-text-header {
+  margin-bottom: .5rem;
+  font-weight: bold; }
