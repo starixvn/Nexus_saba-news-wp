@@ -74,6 +74,11 @@
             $(this).select();
         });
 
+        $('.btn-reset-number').on('click', function () {
+            $('.input-event-number').val('');
+            $('#number1')..focus();
+        });
+
 
     }
 
