@@ -2490,3 +2490,6 @@ input[type=number] {
 .event-txt .event-text-header {
   margin-bottom: .5rem;
   font-weight: bold; }
+
+.event-txt a {
+  color: #ba0900; }

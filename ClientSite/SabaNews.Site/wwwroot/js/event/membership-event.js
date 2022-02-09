@@ -76,7 +76,7 @@
 
         $('.btn-reset-number').on('click', function () {
             $('.input-event-number').val('');
-            $('#number1')..focus();
+            $('#number1').focus();
         });
 
 
