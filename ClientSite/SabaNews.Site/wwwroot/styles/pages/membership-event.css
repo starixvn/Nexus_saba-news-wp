@@ -1598,6 +1598,15 @@ input[type=number] {
     border: 1px solid #FFE5AD;
     color: #790202; }
 
+.btn.btn-btn-skip {
+  border: 1px solid #4F4F4F;
+  background: #DCE1E5;
+  color: #828282; }
+  .btn.btn-btn-skip:hover {
+    border: 1px solid #4F4F4F;
+    background: #DCE1E5;
+    color: #828282; }
+
 .btn.active {
   background: #FCDE9D;
   border: 1px solid #FCDE9D;
@@ -1756,7 +1765,7 @@ input[type=number] {
 .header-control {
   position: absolute;
   top: 65%;
-  left: 26%; }
+  left: 28%; }
   @media (max-device-width: 767px) {
     .header-control {
       left: 0;
@@ -1778,7 +1787,7 @@ input[type=number] {
       .header-control ul li a.btn-event {
         box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
         padding: 0.4vw 2vw;
-        font-size: 1.7vw;
+        font-size: 1.4vw;
         line-height: 3.7rem;
         border-radius: 38px; }
         @media (max-device-width: 767px) {

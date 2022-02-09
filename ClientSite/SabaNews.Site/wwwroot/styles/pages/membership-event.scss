@@ -292,8 +292,20 @@ input[type=number] {
 
         &:hover {
             background: #FFE5AD;
-            border: 1px solid #FFE5AD ;
+            border: 1px solid #FFE5AD;
             color: #790202;
+        }
+    }
+
+    &.btn-btn-skip {
+        border: 1px solid #4F4F4F;
+        background: #DCE1E5;
+        color: #828282;
+
+        &:hover {
+            border: 1px solid #4F4F4F;
+            background: #DCE1E5;
+            color: #828282;
         }
     }
 
@@ -516,7 +528,7 @@ input[type=number] {
 .header-control {
     position: absolute;
     top: 65%;
-    left: 26%;
+    left: 28%;
 
     @include Mobile {
         left: 0;
@@ -546,7 +558,7 @@ input[type=number] {
                 &.btn-event {
                     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
                     padding: 0.4vw 2vw;
-                    font-size: 1.7vw;
+                    font-size: 1.4vw;
                     line-height: 3.7rem;
                     border-radius: 38px;
 
