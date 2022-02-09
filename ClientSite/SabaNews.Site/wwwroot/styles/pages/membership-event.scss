@@ -25,8 +25,10 @@ body {
     background-color: $event-bg;
     overflow-x: hidden;
 }
+
 .main{
     position : relative;
+    padding-top : 0;
 }
 .result-page {
     main {
@@ -261,29 +263,36 @@ input[type=number] {
         background: #B44414;
         border-radius: 20px;
         padding: .8rem 2.4rem;
-        color: #FCDE9D;
+        color: #FDE9B2;
         font-size: 1.8rem;
         line-height: 2.4rem;
         border: 1px solid #FCDE9D;
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
-
+        transition: all ease-in-out .2s;
         @include Mobile {
             font-size: 1.4rem;
             box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
         }
+
+        &:hover {
+            background: #FCDE9D;
+            border: 1px solid #FCDE9D;
+            color: #790202;
+            transition: all ease-in-out .2s;
+        }
     }
 
     &.btn-outline-event {
-        background: #DCE1E5;
-        border: 1px solid #4F4F4F;
-        color: #828282;
+        background: #FCDE9D;
+        border: 1px solid #FCDE9D;
+        color: #790202;
     }
 
     &.active {
-        background: #FDE9B2;
-        border: 1px solid #B44414;
+        background: #FCDE9D;
+        border: 1px solid #FCDE9D;
         color: #790202;
     }
 }
@@ -317,7 +326,6 @@ input[type=number] {
     .login {
         a {
             display: block;
-            animation: dhBlink .4s infinite alternate;
             padding: .6rem 2.4rem;
 
             @include Mobile {
@@ -1381,57 +1389,6 @@ input[type=number] {
             padding: 0 .5rem;
         }
 
-        .heading-noted {
-            color: #B60E0A;
-            text-shadow: 0px 2px 1px rgba(122, 5, 0, 0.35);
-            font-weight: bold;
-            font-size: 2rem;
-            line-height: 3rem;
-            text-align: center;
-            text-transform: uppercase;
-            width: 20rem;
-            margin: 0 auto;
-            background: linear-gradient(180deg, #FFEFB3 11.46%, #FFCD7D 76.16%);
-            border-radius: 13px;
-            padding: 1rem 0;
-            position: relative;
-            border: 1px solid #F3BF48;
-            margin-bottom: 1.2rem;
-
-            @include Mobile {
-                padding: .5rem 0;
-            }
-
-            &:after, &:before {
-                content: "";
-                display: block;
-                position: absolute;
-                width: 2.5rem;
-                height: 2.5rem;
-                background: url("../../images//event/dot-line.png");
-                background-size: 100%;
-                top: 50%;
-                left: -1rem;
-                transform: translate(0%,-50%);
-
-                @include Mobile {
-                    width: 1.8rem;
-                    height: 1.8rem;
-                }
-            }
-
-            &:before {
-                left: auto;
-                right: -1rem;
-            }
-
-            @include Mobile {
-                font-size: 1.4rem;
-                line-height: 2.2rem;
-                width: 10rem;
-            }
-        }
-
         .main-noted {
             background: linear-gradient(180deg, #EB1D13 15.14%, #B60E0A 64.2%);
             padding: .4rem;
@@ -1470,10 +1427,72 @@ input[type=number] {
 
                 &:nth-child(2) {
                     color: #FFE6AE;
+                    padding: 4.8rem 3.2rem 3.2rem 3.2rem;
+                    position: relative;
+
+                    @include Mobile {
+                        padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+                    }
 
                     a {
                         text-decoration-line: underline;
                         color: #E6FF4A;
+                    }
+                }
+            }
+
+            .parent-heading {
+                .heading-noted {
+                    color: #B60E0A;
+                    text-shadow: 0px 2px 1px rgba(122, 5, 0, 0.35);
+                    font-weight: bold;
+                    font-size: 2rem;
+                    line-height: 3rem;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 20rem;
+                    margin: 0 auto;
+                    background: linear-gradient(180deg, #FFEFB3 11.46%, #FFCD7D 76.16%);
+                    border-radius: 13px;
+                    padding: 1rem 0;
+                    position: absolute;
+                    border: 1px solid #F3BF48;
+                    margin-bottom: 1.2rem;
+                    top: 0;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+
+                    @include Mobile {
+                        padding: .5rem 0;
+                    }
+
+                    &:after, &:before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        width: 2.5rem;
+                        height: 2.5rem;
+                        background: url("../../images//event/dot-line.png");
+                        background-size: 100%;
+                        top: 50%;
+                        left: -1rem;
+                        transform: translate(0%,-50%);
+
+                        @include Mobile {
+                            width: 1.8rem;
+                            height: 1.8rem;
+                        }
+                    }
+
+                    &:before {
+                        left: auto;
+                        right: -1rem;
+                    }
+
+                    @include Mobile {
+                        font-size: 1.4rem;
+                        line-height: 1.5rem;
+                        width: 10rem;
                     }
                 }
             }
