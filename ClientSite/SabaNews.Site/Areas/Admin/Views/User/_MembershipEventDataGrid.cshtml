@@ -27,21 +27,13 @@
 
                     var emailFormat = user.Email;
                     var emailSplit = user.Email.Split('@');
-                    var first = 3;
-                    var end = 0;
+                    var first = emailSplit[0].Length >= 3 ? emailSplit[0].Substring(0, 3) : emailSplit[0].Substring(0, emailSplit[0].Length);
+                    var last = "";
                     if (emailSplit[0].Length > 6)
                     {
-                        end = emailSplit[0].Length - 3;
+                        last = emailSplit[0].Substring(emailSplit[0].Length - 3);
                     }
-                    else {
-                        end = emailSplit[0].Length;
-                    }
-                    var str = new StringBuilder(emailSplit[0]);
-                    for (var i = first; i < end; i++)
-                    {
-                        str[i] = '*';
-                    }
-                    emailFormat = str.ToString() + "@" + emailSplit[1];
+                    emailFormat = first + "***" + last + "@" + emailSplit[1];
 
                     <tr>
                         <td class="text-center" width="5%">@count</td>

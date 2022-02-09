@@ -1,6 +1,4 @@
-﻿@using System.Text;
-
-@{
+﻿@{
     int CurrentPage = Convert.ToInt32(Model.Paging.CurrentPage);
     int TotalPages = Convert.ToInt32(Model.Paging.TotalPages);
     var pageNext = CurrentPage + 1;
@@ -22,23 +20,14 @@
                 var joinDate = SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
 
                 var emailFormat = user.Email;
-                var emailSplit = user.Email.Split('@');
-                var first = 3;
-                var end = 0;
+                var emailSplit = emailFormat.Split('@');
+                var first = emailSplit[0].Length >= 3 ? emailSplit[0].Substring(0, 3) : emailSplit[0].Substring(0, emailSplit[0].Length);
+                var last = "";
                 if (emailSplit[0].Length > 6)
                 {
-                    end = emailSplit[0].Length - 3;
+                    last = emailSplit[0].Substring(emailSplit[0].Length - 3);
                 }
-                else
-                {
-                    end = emailSplit[0].Length;
-                }
-                var str = new StringBuilder(emailSplit[0]);
-                for (var i = first; i < end; i++)
-                {
-                    str[i] = '*';
-                }
-                emailFormat = str.ToString() + "@" + emailSplit[1];
+                emailFormat = first + "***" + last + "@" + emailSplit[1];
                 <tr>
                     <td class="child-table child-first">@emailFormat</td>
                     <td class="child-table child-two text-center font-weight-bold">@user.LuckyNumber</td>

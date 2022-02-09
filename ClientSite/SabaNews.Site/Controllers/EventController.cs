@@ -21,7 +21,7 @@
             this.sessionService = sessionService;
             this.userService = userService;
         }
-        [Route("/membership-event")]
+        [Route("/su-kien-ruoc-loc-tan-nien")]
         public async Task<ActionResult> MembershipEvent()
         {
             var isLogin = sessionService.User != null;
@@ -37,10 +37,26 @@
 
             }
             return View(model);
-
         }
 
-        [Route("/membership-event/getdata")]
+        [Route("/su-kien-ruoc-loc-tan-nien/ket-qua")]
+        public ActionResult MembershipEventResult()
+        {
+            var isLogin = sessionService.User != null;
+            var model = new MembershipEventViewModel
+            {
+                IsLogin = isLogin,
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
+
+            }
+            return View(model);
+        }
+
+        
         public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
         {
             var criteria = new GetMembershipEventDataCriteria
@@ -65,7 +81,6 @@
         }
 
         [HttpPost]
-        [Route("/membership-event/create")]
         public async Task<IActionResult> CreateMembershipEventData(string luckyNumber)
         {
             var result = new CommandResult();
@@ -85,21 +100,6 @@
 
         }
 
-        [Route("/membership-event/result")]
-        public ActionResult MembershipEventResult()
-        {
-            var isLogin = sessionService.User != null;
-            var model = new MembershipEventViewModel
-            {
-                IsLogin = isLogin,
-                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
-            };
-            if (sessionService.User != null)
-            {
-                model.User = sessionService.User;
-
-            }
-            return View(model);
-        }
+       
     }
 }

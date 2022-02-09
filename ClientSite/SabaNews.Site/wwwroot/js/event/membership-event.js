@@ -13,7 +13,7 @@
             var luckyNumber = number1 + number2 + number3;
             $.ajax({
                 method: 'POST',
-                url: '/membership-event/create',
+                url: '/Event/CreateMembershipEventData',
                 data: { luckyNumber },
                 success: function (res) {
                     if (res.isSuccessful) {
@@ -49,7 +49,6 @@
         $(".input-event-number").keydown(function (e) {
             if (e.key === "Tab") {
                 var numAttr = $(this).attr('id');
-                console.log(numAttr);
                 var num = parseInt(numAttr[numAttr.length - 1]);
                 if (num == 3) {
                     $('#number1').focus();
@@ -62,33 +61,14 @@
             if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
                 e.preventDefault();
             }
-            var keyCode = e.keyCode || e.which;
-            console.log(keyCode);
-            if (keyCode == 9) {
-                e.preventDefault();
-                alert('Tab Pressed');
+        });
+
+        $('.input-event-number').on("input", function () {
+            if ($(this).val().length == $(this).attr("maxlength")) {
+                $(this).next().focus();
             }
         });
-        $('.input-event-number').unbind('keyup input').bind('keyup input', function (e) {
-            var val = $(this).val();
-            var maxlength = $(this).attr("maxlength");
-            var val = $(this).val();
-            var valLength = val.length;
-            if (valLength >= maxlength) {
-                $(this).val($(this).val().substring(0, maxlength));
-                //var num = $(this).attr('id') ;
-                //console.log('#number' + num);
-                //var tmp = parseInt(num[num.length - 1]) + 1;
-                //console.log(tmp)
-                //$('#number' + tmp).focus();
-            }
-        })
-        //    .keyup(function () {
-        //        console.log(321);
-        //    if ($.isNumeric($(this).val())){
-        //        $(this).next(':input').focus();
-        //    }
-        //});
+
 
         $('.input-event-number').on("click focus", function () {
             $(this).select();
@@ -164,8 +144,6 @@
         });
 
         $(window).click(function (e) {
-            var elmClass = e.target.className;
-
             var elmAuth = $(e.target).parent().parent();
             if (!elmAuth.is('.after-login') && !elmAuth.is('.auth-section')) {
                 if ($('.profile-login').hasClass('active-login-review')) {
@@ -180,7 +158,7 @@
     function GetDataMembershipEvent() {
         $.ajax({
             type: "GET",
-            url: "/membership-event/getdata",
+            url: "/Event/GetMembershipEventData",
             data: { page, pageSize },
             success: function (res) {
                 $('.data-grid').html(res);
