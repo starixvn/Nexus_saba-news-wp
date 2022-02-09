@@ -46,11 +46,55 @@
             $('#membership-event-form').submit();
         });
        
-
-        $('.input-event-number').keypress(function () {
+        $(".input-event-number").keydown(function (e) {
+            if (e.key === "Tab") {
+                var numAttr = $(this).attr('id');
+                console.log(numAttr);
+                var num = parseInt(numAttr[numAttr.length - 1]);
+                if (num == 3) {
+                    $('#number1').focus();
+                    e.preventDefault();
+                }
+            }
+        });
+        $('.input-event-number').on('keypress', function (e) {
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
+                e.preventDefault();
+            }
+            var keyCode = e.keyCode || e.which;
+            console.log(keyCode);
+            if (keyCode == 9) {
+                e.preventDefault();
+                alert('Tab Pressed');
+            }
+        });
+        $('.input-event-number').unbind('keyup input').bind('keyup input', function (e) {
+            var val = $(this).val();
             var maxlength = $(this).attr("maxlength");
-            this.value = this.value.substring(0, maxlength - 1);
+            var val = $(this).val();
+            var valLength = val.length;
+            if (valLength >= maxlength) {
+                $(this).val($(this).val().substring(0, maxlength));
+                //var num = $(this).attr('id') ;
+                //console.log('#number' + num);
+                //var tmp = parseInt(num[num.length - 1]) + 1;
+                //console.log(tmp)
+                //$('#number' + tmp).focus();
+            }
         })
+        //    .keyup(function () {
+        //        console.log(321);
+        //    if ($.isNumeric($(this).val())){
+        //        $(this).next(':input').focus();
+        //    }
+        //});
+
+        $('.input-event-number').on("click focus", function () {
+            $(this).select();
+        });
+
+
     }
 
     function ValidateFormEnterLuckynumber(number1, number2, number3) {
