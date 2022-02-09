@@ -1574,7 +1574,7 @@ input[type=number] {
   color: #FDE9B2;
   font-size: 1.8rem;
   line-height: 2.4rem;
-  border: 1px solid #FCDE9D;
+  border: 1px solid #FDE9B2;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
@@ -1584,20 +1584,28 @@ input[type=number] {
       font-size: 1.4rem;
       box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25); } }
   .btn.btn-event:hover {
-    background: #FCDE9D;
-    border: 1px solid #FCDE9D;
-    color: #790202;
+    background: #CF4E17;
+    border: 1px solid #FDE9B2;
+    color: #FDE9B2;
     transition: all ease-in-out .2s; }
 
 .btn.btn-outline-event {
   background: #FCDE9D;
   border: 1px solid #FCDE9D;
   color: #790202; }
+  .btn.btn-outline-event:hover {
+    background: #FFE5AD;
+    border: 1px solid #FFE5AD;
+    color: #790202; }
 
 .btn.active {
   background: #FCDE9D;
   border: 1px solid #FCDE9D;
   color: #790202; }
+  .btn.active:hover {
+    background: #FFE5AD;
+    border: 1px solid #FFE5AD;
+    color: #790202; }
 
 .header-menu {
   display: flex;
@@ -1916,7 +1924,6 @@ input[type=number] {
         padding: 2rem 1.5rem; } }
     .block-group .field-number .form-event .btn-event {
       padding: .8rem 4.8rem;
-      border: 1px solid #FFBB00;
       box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       margin-top: 3.3rem; }
