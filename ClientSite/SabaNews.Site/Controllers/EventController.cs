@@ -39,22 +39,22 @@
             return View(model);
         }
 
-        //[Route("/su-kien-ruoc-loc-tan-nien/ket-qua")]
-        //public ActionResult MembershipEventResult()
-        //{
-        //    var isLogin = sessionService.User != null;
-        //    var model = new MembershipEventViewModel
-        //    {
-        //        IsLogin = isLogin,
-        //        IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
-        //    };
-        //    if (sessionService.User != null)
-        //    {
-        //        model.User = sessionService.User;
+        [Route("/su-kien-ruoc-loc-tan-nien/ket-qua")]
+        public ActionResult MembershipEventResult()
+        {
+            var isLogin = sessionService.User != null;
+            var model = new MembershipEventViewModel
+            {
+                IsLogin = isLogin,
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
 
-        //    }
-        //    return View(model);
-        //}
+            }
+            return View(model);
+        }
 
 
         public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
