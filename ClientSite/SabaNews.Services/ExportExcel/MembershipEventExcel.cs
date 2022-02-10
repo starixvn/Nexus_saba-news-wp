@@ -12,6 +12,7 @@
         private const byte TotalColumnsHeader = 5;
         private const byte ColIndexLuckynumber = 4;
         private const byte ColIndexCount = 1;
+        private const byte ColEmail = 3;
 
         private readonly IEnumerable<MembershipEventModel> users;
 
@@ -53,7 +54,8 @@
 
         protected internal override void ProcessUI(ExcelWorksheet worksheet)
         {
-            worksheet.DefaultColWidth = 15;
+            worksheet.DefaultColWidth = 20;
+            worksheet.Column(ColEmail).Width = 35;
         }
     }
 }
