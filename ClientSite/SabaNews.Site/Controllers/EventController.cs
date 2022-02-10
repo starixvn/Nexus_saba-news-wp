@@ -56,14 +56,14 @@
         //    return View(model);
         //}
 
-        
+
         public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
         {
             var criteria = new GetMembershipEventDataCriteria
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
             };
             var users = await userService.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
@@ -87,6 +87,12 @@
             if (sessionService.User == null)
             {
                 result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
+                return Json(result);
+            }
+            var endDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28));
+            if (DateTime.UtcNow > endDate)
+            {
+                result.Message = "Minigame hiện tại đã kết thúc";
                 return Json(result);
             }
             var command = new CreateUserMembershipEventDataCommand
