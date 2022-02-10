@@ -618,7 +618,7 @@ input[type=number] {
                 height: .1rem;
                 background-color: #B44414;
                 width: 56%;
-                transition: all ease-in-out .3s;
+                transition: all ease-in-out .1s;
 
                 @include Mobile {
                     width: 90%;
@@ -639,7 +639,7 @@ input[type=number] {
                 margin-left: 1.4rem;
                 opacity: 0;
                 visibility: hidden;
-                transition: all ease-in-out .3s;
+                transition: all ease-in-out .1s;
                 position: absolute;
                 width: 20rem;
                 left: 5.5rem;
