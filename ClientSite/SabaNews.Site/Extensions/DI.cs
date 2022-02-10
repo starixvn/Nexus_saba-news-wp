@@ -19,6 +19,7 @@
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
     using SabaNews.Services;
+    using SabaNews.Services.ExportExcel;
     using SabaNews.Services.Interfaces;
 
     public static class DI
@@ -53,6 +54,7 @@
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<ILogService, Services.LogService>();
+            services.AddTransient<IExportExcelService, ExportExcelService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)

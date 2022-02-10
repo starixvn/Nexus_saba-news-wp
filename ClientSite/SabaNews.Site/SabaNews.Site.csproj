@@ -104,6 +104,9 @@
       <None Update="EmailTemplates\SendEDM.html">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="ExcelTemplates\Event.xlsx">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="LogFiles\logs.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

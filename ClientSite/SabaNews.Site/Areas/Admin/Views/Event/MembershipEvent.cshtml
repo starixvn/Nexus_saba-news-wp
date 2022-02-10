@@ -12,12 +12,11 @@
 }
 
 @section ActiveMenu {
-    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.User" />
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.MembershipEvent" />
 }
 
 <section class="page-content">
-    <div id="error" class="error"></div>
-    <div class="form-filter">
+    @*<div class="form-filter">
         <form class="form-horizontal" method="post" id="filter">
             <div class="form-input">
                 <p class="label-admin">@ViewResources.SearchLabel</p>
@@ -26,13 +25,15 @@
 
             <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
         </form>
-    </div>
+    </div>*@
+
 
     <div class="content">
+        <div class="export-excel"><a href="@Url.Action("ExportExcel", "Event", new { Area = "Admin" })" class="label label-blue">Export excel</a></div>
         <div class="data-grid" id="data-grid"></div>
     </div>
 </section>
 
 @section Scripts {
-    <script src="~/js/admin/user/membership-event-management.js" asp-append-version="true"></script>
+    <script src="~/js/admin/event/membership-event-management.js" asp-append-version="true"></script>
 }

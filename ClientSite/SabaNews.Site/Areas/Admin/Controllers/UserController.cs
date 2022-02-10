@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
     using SabaNews.Models.ViewModel.User;
@@ -56,32 +55,6 @@
             return PartialView("_UserDataGrid", model);
         }
 
-        public ActionResult MembershipEvent()
-        {
-            return View();
-        }
-
-        public async Task<ActionResult> GetMembershipEventData(UserFilterMembershipEventModel model)
-        {
-            var criteria = new GetMembershipEventDataCriteria
-            {
-                Start = (model.Page - 1) * model.PageSize,
-                End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
-            };
-            var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
-            var viewModel = new MembershipEventGridViewModel
-            {
-                Users = users,
-                Paging = new PagingModel
-                {
-                    CurrentPage = model.Page,
-                    PageSize = model.PageSize,
-                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)model.PageSize),
-                }
-            };
-
-            return PartialView("_MembershipEventDataGrid", viewModel);
-        }
+        
     }
 }

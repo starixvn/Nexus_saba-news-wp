@@ -42,24 +42,27 @@
         </header>
         <div class="slide-nav">
             <div class="logo-admin"><img loading="lazy" src="~/images/logo-admin.png"></div>
-			<ul class="menu-slide">
-				<li class="menu-item">
-					<a href="~/Admin/Statistic/Index"><i class="icon-page icon-chart-admin"></i>@ViewResources.PostViewStatistic</a>
-				</li>
-				<li class="menu-item">
-					<a href="~/Admin/User/Index"><i class="icon-page icon-account_circle"></i>@ViewResources.User</a>
-				</li>
-				<li class="menu-item">
-					<a href="~/Admin/BannerManagement/Index"><i class="icon-page icon-mail-admin"></i>@ViewResources.BannerInfo</a>
-				</li>
-				<li class="menu-item">
-					<a href="~/Admin/Email/Index"><i class="icon-page icon-list_alt-admin"></i>@ViewResources.EDMList</a>
-				</li>
-				<li class="menu-item">
-					<a href="~/Admin/Email/Create"><i class="icon-page icon-mail-admin"></i>@ViewResources.CreateEDM</a>
-				</li>
+            <ul class="menu-slide">
+                <li class="menu-item">
+                    <a href="~/Admin/Statistic/Index"><i class="icon-page icon-chart-admin"></i>@ViewResources.PostViewStatistic</a>
+                </li>
+                <li class="menu-item">
+                    <a href="~/Admin/User/Index"><i class="icon-page icon-account_circle"></i>@ViewResources.User</a>
+                </li>
+                <li class="menu-item">
+                    <a href="~/Admin/BannerManagement/Index"><i class="icon-page icon-mail-admin"></i>@ViewResources.BannerInfo</a>
+                </li>
+                <li class="menu-item">
+                    <a href="~/Admin/Event/MembershipEvent"><i class="icon-page icon-list_alt-admin"></i>@ViewResources.MembershipEvent</a>
+                </li>
+                <li class="menu-item">
+                    <a href="~/Admin/Email/Index"><i class="icon-page icon-list_alt-admin"></i>@ViewResources.EDMList</a>
+                </li>
+                <li class="menu-item">
+                    <a href="~/Admin/Email/Create"><i class="icon-page icon-mail-admin"></i>@ViewResources.CreateEDM</a>
+                </li>
 
-			</ul>
+            </ul>
         </div>
         <div class="main-admin">
             @RenderBody()
