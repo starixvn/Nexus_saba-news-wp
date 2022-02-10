@@ -54,7 +54,6 @@
         protected internal override void ProcessUI(ExcelWorksheet worksheet)
         {
             worksheet.DefaultColWidth = 15;
-            worksheet.Cells.AutoFitColumns();
         }
     }
 }
