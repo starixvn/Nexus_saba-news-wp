@@ -119,11 +119,25 @@
             $('#guide').modal('show');
         })
 
-        $(".btn-accept,.click-number-event ").click(function () {
+        $(".btn-accept ").click(function () {
             $('html, body').animate({
                 scrollTop: $("#field-number-event").offset().top
             }, 500);
         });
+
+
+        $('.click-number-event').click(function () {
+            const windowHeight = window.innerHeight;
+            const blockNumber = $('.field-number');
+            const blockNumberHeight = blockNumber.innerHeight();
+            const heightElement = windowHeight / 2 - blockNumberHeight / 3;
+            $('html, body').animate({
+                scrollTop: blockNumber.offset().top - heightElement
+            } , 500)
+        })
+
+
+
         $('.click-list-rigister').click(function () {
             $('html, body').animate({
                 scrollTop: $("#list-rigister-event").offset().top
