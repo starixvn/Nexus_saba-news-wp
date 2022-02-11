@@ -106,5 +106,10 @@
         {
             return await baseService.GetDataEntityAsync<MembershipEventModel>(criteria);
         }
+
+        public async Task<IEnumerable<MembershipEventModel>> GetMembershipEventResultAsync(GetMembershipEventResultCriteria criteria)
+        {
+            return await baseService.GetDataAsync<MembershipEventModel>(criteria);
+        }
     }
 }

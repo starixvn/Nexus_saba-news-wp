@@ -1,5 +1,4 @@
 ﻿@using SabaNews.Resources
-@using System.Text;
 @{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 <div class="table-admin">
     <table class="data-grid">
@@ -22,7 +21,7 @@
                 foreach (var user in Model.Users)
                 {
                     count++;
-                    var joinDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(user.JoinDate);
+                    var joinDate = SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
                     <tr>
                         <td class="text-center" width="5%">@count</td>
                         <td class="text-left" width="20%">@user.Name</td>

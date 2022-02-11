@@ -1,7 +1,7 @@
-﻿
-namespace SabaNews.Site.Areas.Admin.Controllers
+﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
@@ -31,7 +31,7 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var viewModel = new MembershipEventGridViewModel
@@ -48,13 +48,27 @@ namespace SabaNews.Site.Areas.Admin.Controllers
             return PartialView("_MembershipEventDataGrid", viewModel);
         }
 
+        public async Task<ActionResult> MembershipEventResult(int resultNumber)
+        {
+            var criteria = new GetMembershipEventResultCriteria
+            {
+                Start = Constants.FromFirstItem,
+                End = Constants.GetFiveItems,
+                ResultNumber = resultNumber,
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
+            };
+            var users = await userSerive.GetMembershipEventResultAsync(criteria);
+            ViewBag.ResultNumber = resultNumber;
+            return View(users);
+        }
+
         public async Task<ActionResult> ExportExcel()
         {
             var criteria = new GetMembershipEventDataCriteria
             {
-                Start = 0,
-                End = 100,
-                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 27))
+                Start = Constants.FromFirstItem,
+                End = Constants.Total,
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28))
             };
             var users = await userSerive.GetUserMembershipEventDataAsync(criteria);
             var bytes = excelService.ExportMembershipEvent(users);

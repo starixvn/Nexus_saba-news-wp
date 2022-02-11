@@ -219,6 +219,7 @@
         <Setting Key="user_membership_event_create_data" SpName="user_membership_event_create_data" DbName="sabasports" Plain="0" />
         <Setting Key="user_membership_event_get_data" SpName="user_membership_event_get_data" DbName="sabasports" Plain="0" />
         <Setting Key="user_membership_event_get_detail" SpName="user_membership_event_get_detail" DbName="sabasports" Plain="0" />
+        <Setting Key="user_membership_event_get_result" SpName="user_membership_event_get_result" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Banner">
         <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />
