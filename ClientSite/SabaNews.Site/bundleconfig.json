@@ -303,7 +303,6 @@
             "wwwroot/lib/jquery/dist/jquery.min.js",
             "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
             "wwwroot/js/common.js",
-            "wwwroot/js/all.js",
             "wwwroot/js/admin/admin.js"
         ],
         "minify": {
