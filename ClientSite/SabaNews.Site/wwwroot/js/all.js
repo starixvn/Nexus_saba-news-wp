@@ -215,4 +215,6 @@ $(document).ready(function () {
             $(".banner-change-domain").removeClass('active-ads');
         }
     });
+
+    $('#EventModal').modal('show');
 });
