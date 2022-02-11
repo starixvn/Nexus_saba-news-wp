@@ -1123,6 +1123,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Membership Event Winner.
+        /// </summary>
+        public static string MembershipEventWinner {
+            get {
+                return ResourceManager.GetString("MembershipEventWinner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thông Báo.
         /// </summary>
         public static string Message {
