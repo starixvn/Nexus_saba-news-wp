@@ -2144,6 +2144,54 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     left: 50%;
     margin-left: 58rem; }
 
+.event-modal-home .modal {
+  background: none; }
+  .event-modal-home .modal.show {
+    max-width: 63rem; }
+  .event-modal-home .modal .modal-body {
+    padding: 0 !important;
+    position: relative; }
+    .event-modal-home .modal .modal-body .img-pc {
+      display: block; }
+      @media (max-device-width: 767px) {
+        .event-modal-home .modal .modal-body .img-pc {
+          display: none; } }
+    .event-modal-home .modal .modal-body .img-mobile {
+      display: none;
+      text-align: center; }
+      @media (max-device-width: 767px) {
+        .event-modal-home .modal .modal-body .img-mobile {
+          display: block; } }
+    .event-modal-home .modal .modal-body .control-event {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      transform: translate(50%, -50%); }
+      @media (max-device-width: 767px) {
+        .event-modal-home .modal .modal-body .control-event {
+          bottom: 37%;
+          right: 50%;
+          left: auto; } }
+      .event-modal-home .modal .modal-body .control-event p {
+        font-size: 1.6rem;
+        color: #FDE9B2;
+        line-height: 2.8rem;
+        margin-left: .7rem;
+        position: relative;
+        cursor: pointer; }
+  .event-modal-home .modal .close-login {
+    top: 0 !important;
+    right: 0 !important;
+    background: none !important; }
+    @media (max-device-width: 767px) {
+      .event-modal-home .modal .close-login {
+        right: 1rem !important; } }
+    .event-modal-home .modal .close-login span {
+      color: #FDE9B2;
+      font-size: 3.8rem; }
+
 img {
   width: 100%; }
 

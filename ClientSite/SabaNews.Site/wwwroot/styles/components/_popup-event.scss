@@ -1,0 +1,74 @@
+﻿
+
+.event-modal-home {
+    .modal {
+        background: none;
+
+        &.show {
+            max-width: 63rem;
+        }
+
+        .modal-body {
+            padding: 0 !important;
+            position: relative;
+
+            .img-pc {
+                display: block;
+
+                @include Mobile {
+                    display: none;
+                }
+            }
+
+            .img-mobile {
+                display: none;
+                text-align: center;
+
+                @include Mobile {
+                    display: block;
+                }
+            }
+
+            .control-event {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                bottom: 0;
+                left: 5%;
+                transform: translate(50%,-50%);
+
+                @include Mobile {
+                    bottom: 37%;
+                    right: 50%;
+                    left: auto;
+                }
+
+
+
+                p {
+                    font-size: 1.6rem;
+                    color: #FDE9B2;
+                    line-height: 2.8rem;
+                    margin-left: .7rem;
+                    position: relative;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .close-login {
+            top: 0 !important;
+            right: 0 !important;
+            background: none !important;
+
+            @include Mobile {
+                right: 1rem !important;
+            }
+
+            span {
+                color: #FDE9B2;
+                font-size: 3.8rem;
+            }
+        }
+    }
+}

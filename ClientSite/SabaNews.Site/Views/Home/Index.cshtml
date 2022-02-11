@@ -415,16 +415,22 @@
     @(await Component.InvokeAsync("BannerSidebar"))
 </section>
 
-<div class="auth-form">
+
+
+<div class="auth-form event-modal-home">
     <div class="modal" id="EventModal" style="display:none">
-        <div class="modal-content modal-auth">
+        <div class="modal-content modal-auth event-modal-home">
             <div class="modal-warning">
                 <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-body">
-                    <p>Event</p>
-                   <input type="checkbox" id="isHidePopupEvent"/>
+                    <div class="img-pc"><img src="~/images/event/popup-home-pc.png" alt="Alternate Text" class="img-res" /></div>
+                    <div class="img-mobile"><img src="~/images/event/popup-home-mobile.png" alt="Alternate Text" class="img-res" /></div>
+                    <div class="control-event">
+                        <input type="checkbox" id="isHidePopupEvent" />
+                        <p>Không hiển thị nửa</p>
+                    </div>
                 </div>
             </div>
 

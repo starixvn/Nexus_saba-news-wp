@@ -19,6 +19,7 @@
 @import '../components/sub-structure';
 @import '../components/lazyload';
 @import '../components/ads';
+@import '../components/_popup-event';
 
 main {
     @include tableMobile {
