@@ -75,51 +75,52 @@
 </head>
 
 <body>
-	@{
-		if (configuration.GetValue<bool>("IsShowGoogleAnalytics"))
-		{
-			<!-- Google Tag Manager (noscript) -->
-			<noscript>
-				<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBMWSGP"
-						height="0" width="0" style="display:none;visibility:hidden"></iframe>
-			</noscript>
-			<!-- End Google Tag Manager (noscript) -->
+    @{
+        if (configuration.GetValue<bool>("IsShowGoogleAnalytics"))
+        {
+            <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBMWSGP"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <!-- End Google Tag Manager (noscript) -->
 
 
-			<!-- Google Tag Manager (noscript) -->
-			<noscript>
-				<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ5FTSD"
-						height="0" width="0" style="display:none;visibility:hidden"></iframe>
-			</noscript>
-			<!-- End Google Tag Manager (noscript) -->
+            <!-- Google Tag Manager (noscript) -->
+            <noscript>
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZ5FTSD"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            </noscript>
+            <!-- End Google Tag Manager (noscript) -->
 
-			<!-- TikTok Pixel Code Start -->
-			<script>
-				!function (w, d, t) {
-					w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) {
-						for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++
-						)ttq.setAndDefer(e, ttq.methods[n]); return e
-					}, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; n = document.createElement("script"); n.type = "text/javascript", n.async = !0, n.src = i + "?sdkid=" + e + "&lib=" + t; e = document.getElementsByTagName("script")[0]; e.parentNode.insertBefore(n, e) };
-
-
-					ttq.load('C34TFOFG09FF9DMC5C2G');
-					ttq.page();
-				}(window, document, 'ttq');
-			</script>
-			<!-- TikTok Pixel Code End -->
-		}
-	}
+            <!-- TikTok Pixel Code Start -->
+            <script>
+                !function (w, d, t) {
+                    w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || []; ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }; for (var i = 0; i < ttq.methods.length; i++)ttq.setAndDefer(ttq, ttq.methods[i]); ttq.instance = function (t) {
+                        for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++
+                        )ttq.setAndDefer(e, ttq.methods[n]); return e
+                    }, ttq.load = function (e, n) { var i = "https://analytics.tiktok.com/i18n/pixel/events.js"; ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {}; n = document.createElement("script"); n.type = "text/javascript", n.async = !0, n.src = i + "?sdkid=" + e + "&lib=" + t; e = document.getElementsByTagName("script")[0]; e.parentNode.insertBefore(n, e) };
 
 
-	<div class="wapper">
-		<partial name="_CookieConsentPartial" />
-		<main role="main" class="pb-3">
-			@RenderBody()
-		</main>
-		<div class="auth-form" id="auth-form"></div>
-	</div>
-	<section class="footer">
-		<div class="container">
+                    ttq.load('C34TFOFG09FF9DMC5C2G');
+                    ttq.page();
+                }(window, document, 'ttq');
+            </script>
+            <!-- TikTok Pixel Code End -->
+        }
+    }
+
+
+    <div class="wapper">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <div class="auth-form" id="auth-form"></div>
+
+    </div>
+    <section class="footer">
+        <div class="container">
             <div class="copy-right">
                 © @DateTime.Now.Year Bản quyền thuộc về Saba Sports
                 <div class="ex">
@@ -127,20 +128,20 @@
                     <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
                 </div>
             </div>
-			<div class="follow">
-				Theo dõi Saba Sports trên
-				<a class="icon-social-facebook" href="https://www.facebook.com/sabasportsvietnam"></a>
-				<a class="icon-social-youtube" href="https://www.youtube.com/SABASportsVietnam"></a>
-				<a class="icon-tiktok" href="https://www.tiktok.com/@@saba_sports"></a>
-			</div>
-		</div>
-		<div class="back-to-top-box">
-			<div class="back-to-top"><span class="icon-chevron-right"></span></div>
-		</div>
-	</section>
-	<div id="auth-form"></div>
-	<script src="~/minify/js/site.min.js" asp-append-version="true"></script>
-	@RenderSection("Scripts", false)
-	
+            <div class="follow">
+                Theo dõi Saba Sports trên
+                <a class="icon-social-facebook" href="https://www.facebook.com/sabasportsvietnam"></a>
+                <a class="icon-social-youtube" href="https://www.youtube.com/SABASportsVietnam"></a>
+                <a class="icon-tiktok" href="https://www.tiktok.com/@@saba_sports"></a>
+            </div>
+        </div>
+        <div class="back-to-top-box">
+            <div class="back-to-top"><span class="icon-chevron-right"></span></div>
+        </div>
+    </section>
+    <div id="auth-form"></div>
+    <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", false)
+
 </body>
 </html>

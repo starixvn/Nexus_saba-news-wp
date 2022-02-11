@@ -155,6 +155,7 @@
             "wwwroot/lib/jquery/dist/jquery.min.js",
             "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
             "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+            "wwwroot/js/lib/jquery.cookie.js",
             "wwwroot/js/common.js",
             "wwwroot/js/site.js",
             "wwwroot/js/all.js",
