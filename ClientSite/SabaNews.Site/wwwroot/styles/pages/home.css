@@ -1565,9 +1565,12 @@ button {
     .event-modal-home .modal .modal-body .img-mobile {
       display: none;
       text-align: center; }
+      .event-modal-home .modal .modal-body .img-mobile img {
+        width: 100%; }
       @media (max-device-width: 767px) {
         .event-modal-home .modal .modal-body .img-mobile {
-          display: block; } }
+          display: block;
+          padding: 0 1rem; } }
     .event-modal-home .modal .modal-body .control-event {
       display: flex;
       align-items: center;

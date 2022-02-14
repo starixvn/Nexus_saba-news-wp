@@ -23,9 +23,12 @@
             .img-mobile {
                 display: none;
                 text-align: center;
-
+                img{
+                    width : 100%;
+                }
                 @include Mobile {
                     display: block;
+                    padding : 0 1rem;
                 }
             }
 
