@@ -1128,8 +1128,9 @@ input[type=number] {
 
         .modal-body {
             padding: 3rem;
-            @include Mobile{
-                padding : 1rem;
+
+            @include Mobile {
+                padding: 1rem;
             }
         }
 
@@ -1196,12 +1197,12 @@ input[type=number] {
             display: flex;
 
             .group-tab {
-                padding: 0 1rem !important;
+                padding: 0 2rem;
                 border-right: 1px solid $border-calendar;
                 width: 55%;
 
                 @include tableMobile {
-                    padding: 0 2rem;
+                    padding: 0 1rem !important;
                 }
 
                 #forgot-password {
@@ -1214,8 +1215,12 @@ input[type=number] {
             }
 
             .login-fb-google {
-                padding: 0 1rem;
+                padding: 0 2rem;
                 width: 45%;
+
+                @include Mobile {
+                    padding: 0 1rem;
+                }
 
                 .social-login {
                     text-decoration: none;

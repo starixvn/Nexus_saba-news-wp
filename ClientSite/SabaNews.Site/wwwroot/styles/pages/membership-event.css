@@ -2224,12 +2224,12 @@ input[type=number] {
   padding: 3rem 0;
   display: flex; }
   .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
-    padding: 0 1rem !important;
+    padding: 0 2rem;
     border-right: 1px solid #E0E0E0;
     width: 55%; }
     @media screen and (max-width: 1024px) {
       .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
-        padding: 0 2rem; } }
+        padding: 0 1rem !important; } }
     .auth-form .modal-auth .login-tab .group-tab #forgot-password, .auth-form .modal-auth .register-tab .group-tab #forgot-password {
       text-decoration: none;
       text-align: center;
@@ -2237,8 +2237,11 @@ input[type=number] {
       margin-top: 1.5rem;
       color: #828282; }
   .auth-form .modal-auth .login-tab .login-fb-google, .auth-form .modal-auth .register-tab .login-fb-google {
-    padding: 0 1rem;
+    padding: 0 2rem;
     width: 45%; }
+    @media (max-device-width: 767px) {
+      .auth-form .modal-auth .login-tab .login-fb-google, .auth-form .modal-auth .register-tab .login-fb-google {
+        padding: 0 1rem; } }
     .auth-form .modal-auth .login-tab .login-fb-google .social-login, .auth-form .modal-auth .register-tab .login-fb-google .social-login {
       text-decoration: none;
       width: 100%;
