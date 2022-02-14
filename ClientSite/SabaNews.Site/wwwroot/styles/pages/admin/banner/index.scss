@@ -80,6 +80,18 @@
                         margin-bottom: 0;
                     }
                 }
+
+                .action-banner-admin {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    list-style: none;
+                    padding-left: 0;
+
+                    li {
+                        margin: 0 0.5rem;
+                    }
+                }
             }
 
             .social-action {
@@ -281,3 +293,4 @@
     border: 1px solid #000;
     cursor: pointer;
 }
+

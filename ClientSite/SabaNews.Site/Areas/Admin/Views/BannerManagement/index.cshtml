@@ -36,11 +36,18 @@
                                     <li class="txt-feild"><img src="@Model.DesktopTopUrl" asp-append-version="true" width="200" /></li>
                                 </ul>
                             </div>
-                            <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
-							@if (!string.IsNullOrEmpty(Model.DesktopTopUrl))
-                            { 
-								<a href="javascipt:;" class="social-action remove" data-type="DesktopTop">Remove</a>
-							}
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+								<li>/</li>
+                                @if (!string.IsNullOrEmpty(Model.DesktopTopUrl))
+                                {
+								<li>
+									<a href="javascipt:;" class="social-action remove" data-type="DesktopTop">Remove</a>
+								</li>
+                                }
+                            </ul>
                         </div>
 						<div class="box-edit-form">
 							<div class="title">
