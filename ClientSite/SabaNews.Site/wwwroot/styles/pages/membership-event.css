@@ -2172,7 +2172,10 @@ input[type=number] {
       line-height: 2; }
 
 .auth-form .modal-auth .modal-body {
-  padding: 1rem; }
+  padding: 3rem; }
+  @media (max-device-width: 767px) {
+    .auth-form .modal-auth .modal-body {
+      padding: 1rem; } }
 
 .auth-form .modal-auth .register .heading-modal-event {
   text-transform: uppercase;

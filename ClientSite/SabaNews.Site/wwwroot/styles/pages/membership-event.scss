@@ -1127,7 +1127,10 @@ input[type=number] {
         }
 
         .modal-body {
-            padding: 1rem;
+            padding: 3rem;
+            @include Mobile{
+                padding : 1rem;
+            }
         }
 
         .register {
