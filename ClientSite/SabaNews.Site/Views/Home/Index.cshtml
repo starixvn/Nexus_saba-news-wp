@@ -34,12 +34,16 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
     <div class="colums-main">
-        @*<div class="banner">
-            <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopCenterNavigationUrl) ? "javascript:;" : Model.Banner.DesktopCenterNavigationUrl)">
-                <img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true">
-            </a>
-        </div>*@
-        @if (isMobile || isTablet)
+        @if (!string.IsNullOrEmpty(Model.Banner.DesktopCenterUrl))
+        { 
+            <div class="banner">
+                <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopCenterNavigationUrl) ? "javascript:;" : Model.Banner.DesktopCenterNavigationUrl)">
+                    <img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true">
+                </a>
+            </div>
+        }
+        
+        @if ((isMobile || isTablet) && !string.IsNullOrEmpty(Model.Banner.MobileTopUrl))
         {
             <div class="banner-euro-mobile">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileTopNavigationUrl) ? "javascript:;" : Model.Banner.MobileTopNavigationUrl)">
@@ -113,11 +117,15 @@
                 </div>
             </div>
         </div>
-        <div class="banner-mobile">
-            <a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
-                <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
-            </a>
-        </div>
+        @if (!string.IsNullOrEmpty(Model.Banner.MobileCenterUrl))
+        { 
+            <div class="banner-mobile">
+                <a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
+                    <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
+                </a>
+            </div>
+        }
+        
         <div class="block block-video">
             <div class="container">
                 <h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
@@ -259,14 +267,15 @@
                 </div>
             </div>
         </div>
-        <div class="banner-mobile">
-            @if (!string.IsNullOrEmpty(Model.Banner.MobileBottomUrl))
-            {
+        @if (!string.IsNullOrEmpty(Model.Banner.MobileBottomUrl))
+        { 
+            <div class="banner-mobile">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
                     <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
                 </a>
-            }
-        </div>
+            </div>
+        }
+        
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">

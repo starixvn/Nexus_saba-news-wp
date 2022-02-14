@@ -144,6 +144,8 @@
       text-decoration: none; }
       .block-extension .group-table .right-table .social-action.connect {
         color: #1B71B2; }
+    .block-extension .group-table .right-table .remove {
+      color: red; }
     .block-extension .group-table .right-table .comfirm {
       margin-bottom: 0; }
       .block-extension .group-table .right-table .comfirm a {

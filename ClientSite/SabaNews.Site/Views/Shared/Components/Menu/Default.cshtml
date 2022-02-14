@@ -9,11 +9,15 @@
     </div>
     <div class="header-controls">
         <div class="container padding-mobile-none">
-			<div class="banner-euro-desktop">
-				<a href="@(string.IsNullOrEmpty(Model.Banner.DesktopTopNavigationUrl) ? "javascript:;" : Model.Banner.DesktopTopNavigationUrl)">
-					<img loading="lazy" src="@Model.Banner.DesktopTopUrl" asp-append-version="true" width="320" height="70" />
-				</a>
-			</div>
+            @if(!string.IsNullOrEmpty(Model.Banner.DesktopTopUrl))
+            {
+                <div class="banner-euro-desktop">
+                    <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopTopNavigationUrl) ? "javascript:;" : Model.Banner.DesktopTopNavigationUrl)">
+                        <img loading="lazy" src="@Model.Banner.DesktopTopUrl" asp-append-version="true" width="320" height="70" />
+                    </a>
+                </div>
+            }
+			
             <div class="logo">
                 <a href="@Url.Action("Index", "Home")">
                     <img src="~/images/sabasports.svg" alt="saba-sports" asp-append-version="true">

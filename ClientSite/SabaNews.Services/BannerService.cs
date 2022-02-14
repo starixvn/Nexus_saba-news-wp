@@ -31,12 +31,6 @@
         public async Task<BannerModel> GetBannerInfoAsync()
         {
             var banner =  await baseService.GetDataEntityAsync<BannerModel>(new GetBannerInfoCriteria());
-            banner.DesktopTopUrl = string.IsNullOrEmpty(banner.DesktopTopUrl) ? string.Concat(baseUrl, DefaultDestopTopUrl) : banner.DesktopTopUrl;
-            banner.MobileTopUrl = string.IsNullOrEmpty(banner.MobileTopUrl) ? string.Concat(baseUrl, DefaultMobileTopUrl) : banner.MobileTopUrl;
-            banner.DesktopCenterUrl = string.IsNullOrEmpty(banner.DesktopCenterUrl) ? string.Concat(baseUrl, DefaultDesktopCenterUrl) : banner.DesktopCenterUrl;
-            banner.DesktopLeftUrl = string.IsNullOrEmpty(banner.DesktopLeftUrl) ? string.Concat(baseUrl, DefaultDesktopLeftUrl) : banner.DesktopLeftUrl;
-            banner.DesktopRightUrl = string.IsNullOrEmpty(banner.DesktopRightUrl) ? string.Concat(baseUrl, DefaultDesktopRightUrl) : banner.DesktopRightUrl;
-            banner.MobileCenterUrl = string.IsNullOrEmpty(banner.MobileCenterUrl) ? string.Concat(baseUrl, DefaultMobileCenterUrl) : banner.MobileCenterUrl;
             return banner;
 
         }

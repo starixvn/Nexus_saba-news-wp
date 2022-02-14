@@ -30,14 +30,18 @@
 						<div class="label-fill">@ViewResources.DesktopTopBanner</div>
 					</div>
 					<div class="right-table">
-						<div class="box-control">
-							<div class="main-fill name-section">
-								<ul class="txt-fill">
-									<li class="txt-feild"><img src="@Model.DesktopTopUrl" asp-append-version="true" width="200" /></li>
-								</ul>
-							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
-						</div>
+                        <div class="box-control">
+                            <div class="main-fill name-section">
+                                <ul class="txt-fill">
+                                    <li class="txt-feild"><img src="@Model.DesktopTopUrl" asp-append-version="true" width="200" /></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+							@if (!string.IsNullOrEmpty(Model.DesktopTopUrl))
+                            { 
+								<a href="javascipt:;" class="social-action remove" data-type="DesktopTop">Remove</a>
+							}
+                        </div>
 						<div class="box-edit-form">
 							<div class="title">
 								<span>@ViewResources.DesktopTopBanner</span>
@@ -65,14 +69,14 @@
 						<div class="label-fill">@ViewResources.NavigationUrl</div>
 					</div>
 					<div class="right-table">
-						<div class="box-control">
-							<div class="main-fill name-section">
-								<ul class="txt-fill">
-									<li class="txt-feild">@Model.DesktopTopNavigationUrl</li>
-								</ul>
-							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
-						</div>
+                        <div class="box-control">
+                            <div class="main-fill name-section">
+                                <ul class="txt-fill">
+                                    <li class="txt-feild">@Model.DesktopTopNavigationUrl</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                        </div>
 						<div class="box-edit-form" id="form_update_name">
 							<div class="title">@ViewResources.NavigationUrl</div>
 							<input type="text" name="NavigationUrl" value="@Model.DesktopTopNavigationUrl" class="input-edit" />
@@ -484,4 +488,23 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="modal confirm" id="ConfirmModal" style="display:none">
+    <div class="modal-content">
+        <div class="modal-warning">
+            <div class="modal-title">
+                <h2 class="title">@ViewResources.Confirmation</h2>
+                <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                    <i class="icon-close"></i>
+                </button>
+            </div>
+
+            <div class="modal-body"></div>
+            <div class="button-confirm">
+                <button class="btn-custom-outline confirm-action">Yes</button>
+                <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
+            </div>
+        </div>
+    </div>
 </div>

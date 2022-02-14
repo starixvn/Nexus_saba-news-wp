@@ -188,9 +188,43 @@
         })
     }
 
+    function RemoveBanner() {
+        $('.remove').on('click', function () {
+            var type = $(this).data("type");
+            $('#ConfirmModal .confirm-action').data('type', type);
+            $('#ConfirmModal .modal-body').html('Are you sure you want to remove this banner?');
+            $('#ConfirmModal').modal('show');
+        });
+
+        $('.confirm-action').on('click', function () {
+            $('#ConfirmModal').modal('hide');
+            var type = $(this).data("type");
+            if (type == null || type.trim() === "") {
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/BannerManagement/UpdateInfo',
+                data: { type, value: "" },
+                success: function (res) {
+                    if (res.isSuccessful) {
+                        var msg = 'upload new banner Succesfully'
+                        GetSuccessPopup('#NoticeModal', msg);
+                    } else {
+                        GetErrorPopup('#NoticeModal', res.message);
+                    }
+                    $('#NoticeModal').bind('hidden.bs.modal', function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    }
+
     function init() {
         UpdateBannerInfo();
         UploadBannerProcess();
+        RemoveBanner();
     }
     return {
         init
