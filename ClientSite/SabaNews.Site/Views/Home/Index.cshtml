@@ -34,11 +34,11 @@
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <section class="main">
     <div class="colums-main">
-        <div class="banner">
+        @*<div class="banner">
             <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopCenterNavigationUrl) ? "javascript:;" : Model.Banner.DesktopCenterNavigationUrl)">
                 <img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true">
             </a>
-        </div>
+        </div>*@
         @if (isMobile || isTablet)
         {
             <div class="banner-euro-mobile">
