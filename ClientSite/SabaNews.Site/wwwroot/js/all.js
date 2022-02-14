@@ -217,7 +217,8 @@ $(document).ready(function () {
     });
 
     var hidePopupEvent = $.cookie('sabasports-hide-popup-event');
-    if (hidePopupEvent !== "1") {
+    var page = $('body').attr("id");
+    if (hidePopupEvent !== "1" && page != "event") {
         setTimeout(function () {
             $('#EventModal').modal('show');
         }, 3000);
