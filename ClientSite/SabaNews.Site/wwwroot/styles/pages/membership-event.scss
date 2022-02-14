@@ -26,10 +26,11 @@ body {
     overflow-x: hidden;
 }
 
-.main{
-    position : relative;
-    padding-top : 0;
+.main {
+    position: relative;
+    padding-top: 0;
 }
+
 .result-page {
     main {
         overflow-x: hidden;
@@ -402,6 +403,7 @@ input[type=number] {
                     font-size: 1.8rem;
                     line-height: 2.1rem;
                     font-weight: bold;
+
                     img {
                         object-fit: cover;
                         width: 100%;
@@ -1090,7 +1092,6 @@ input[type=number] {
 .auth-form {
     .show {
         max-width: 63rem;
-        background: #FFF3DD;
         border-radius: 20px;
 
         @include Mobile {
@@ -1126,7 +1127,7 @@ input[type=number] {
         }
 
         .modal-body {
-            padding: 3rem 3rem 4rem 3rem;
+            padding: 1rem;
         }
 
         .register {
@@ -1140,8 +1141,7 @@ input[type=number] {
                 text-align: center;
 
                 @include Mobile {
-                    font-size: 1.6rem;
-                    line-height: 1.8rem;
+                    font-size: 1.4rem;
                 }
             }
 
@@ -1184,6 +1184,76 @@ input[type=number] {
                     a {
                         box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
                     }
+                }
+            }
+        }
+
+        .login-tab, .register-tab {
+            padding: 3rem 0;
+            display: flex;
+
+            .group-tab {
+                padding: 0 1rem !important;
+                border-right: 1px solid $border-calendar;
+                width: 55%;
+
+                @include tableMobile {
+                    padding: 0 2rem;
+                }
+
+                #forgot-password {
+                    text-decoration: none;
+                    text-align: center;
+                    display: block;
+                    margin-top: 1.5rem;
+                    color: $color-input;
+                }
+            }
+
+            .login-fb-google {
+                padding: 0 1rem;
+                width: 45%;
+
+                .social-login {
+                    text-decoration: none;
+                    width: 100%;
+                    max-width: 24.2rem;
+                    margin: 0 auto;
+                    display: block;
+                    text-align: center;
+                    height: 4.8rem;
+                    line-height: 4.8rem;
+                    margin-bottom: 2rem;
+                    border-radius: 3px;
+                    position: relative;
+
+                    .icon-social {
+                        font-size: 2.4rem;
+                        position: absolute;
+                        left: 1rem;
+                        top: 1rem;
+                    }
+                }
+
+                .login-facebook {
+                    border: 1px solid #3B5999;
+                    color: #3B5999;
+                    font-weight: 700;
+
+                    @include Mobile {
+                        font-size: 1.2rem;
+                    }
+
+                    .icon-social {
+                        &:before {
+                            color: #3B5999;
+                        }
+                    }
+                }
+
+                .login-google {
+                    color: #4688F1;
+                    border: 1px solid #4688F1;
                 }
             }
         }
@@ -1563,6 +1633,7 @@ input[type=number] {
         }
     }
 }
+
 .event-txt {
     h2 {
         font-size: 2.2rem;

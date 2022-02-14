@@ -39,6 +39,10 @@ main {
         .modal-resetpass, .modal-body {
             padding: 3rem;
 
+            @include Mobile {
+                padding: 1rem;
+            }
+
             .form-resetpass {
                 max-width: 42rem;
                 margin: 0 auto;
@@ -64,11 +68,15 @@ main {
             font-size: 1.6rem;
             color: $color-title;
             margin-bottom: 2rem;
+
+            @include Mobile {
+                font-size: 1.4rem;
+            }
         }
 
         .close-login, .close {
             position: absolute;
-            top: -1.6rem;
+            top: -1.2rem;
             right: -1.6rem;
             z-index: 999999;
             cursor: pointer;
@@ -179,6 +187,10 @@ main {
                     color: #3B5999;
                     font-weight: 700;
 
+                    @include Mobile {
+                        font-size: 1.2rem;
+                    }
+
                     .icon-social {
                         &:before {
                             color: #3B5999;
@@ -249,7 +261,11 @@ main {
     z-index: 9999;
 }
 
-
+.form-modal input::placeholder {
+    @include Mobile {
+        font-size: 1.1rem !important;
+    }
+}
 
 
 .error {
@@ -264,6 +280,7 @@ input.error {
 .tab-pane {
     display: none;
 }
+
 .tab-pane.active {
     display: block;
 }

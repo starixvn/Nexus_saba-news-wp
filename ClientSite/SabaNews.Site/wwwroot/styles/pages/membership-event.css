@@ -2145,7 +2145,6 @@ input[type=number] {
 
 .auth-form .show {
   max-width: 63rem;
-  background: #FFF3DD;
   border-radius: 20px; }
   @media (max-device-width: 767px) {
     .auth-form .show {
@@ -2173,7 +2172,7 @@ input[type=number] {
       line-height: 2; }
 
 .auth-form .modal-auth .modal-body {
-  padding: 3rem 3rem 4rem 3rem; }
+  padding: 1rem; }
 
 .auth-form .modal-auth .register .heading-modal-event {
   text-transform: uppercase;
@@ -2185,8 +2184,7 @@ input[type=number] {
   text-align: center; }
   @media (max-device-width: 767px) {
     .auth-form .modal-auth .register .heading-modal-event {
-      font-size: 1.6rem;
-      line-height: 1.8rem; } }
+      font-size: 1.4rem; } }
 
 .auth-form .modal-auth .register .text-event-modal {
   font-size: 2.1rem;
@@ -2218,6 +2216,55 @@ input[type=number] {
       margin-right: 0; }
     .auth-form .modal-auth .register ul li a {
       box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25); }
+
+.auth-form .modal-auth .login-tab, .auth-form .modal-auth .register-tab {
+  padding: 3rem 0;
+  display: flex; }
+  .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
+    padding: 0 1rem !important;
+    border-right: 1px solid #E0E0E0;
+    width: 55%; }
+    @media screen and (max-width: 1024px) {
+      .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
+        padding: 0 2rem; } }
+    .auth-form .modal-auth .login-tab .group-tab #forgot-password, .auth-form .modal-auth .register-tab .group-tab #forgot-password {
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      margin-top: 1.5rem;
+      color: #828282; }
+  .auth-form .modal-auth .login-tab .login-fb-google, .auth-form .modal-auth .register-tab .login-fb-google {
+    padding: 0 1rem;
+    width: 45%; }
+    .auth-form .modal-auth .login-tab .login-fb-google .social-login, .auth-form .modal-auth .register-tab .login-fb-google .social-login {
+      text-decoration: none;
+      width: 100%;
+      max-width: 24.2rem;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+      height: 4.8rem;
+      line-height: 4.8rem;
+      margin-bottom: 2rem;
+      border-radius: 3px;
+      position: relative; }
+      .auth-form .modal-auth .login-tab .login-fb-google .social-login .icon-social, .auth-form .modal-auth .register-tab .login-fb-google .social-login .icon-social {
+        font-size: 2.4rem;
+        position: absolute;
+        left: 1rem;
+        top: 1rem; }
+    .auth-form .modal-auth .login-tab .login-fb-google .login-facebook, .auth-form .modal-auth .register-tab .login-fb-google .login-facebook {
+      border: 1px solid #3B5999;
+      color: #3B5999;
+      font-weight: 700; }
+      @media (max-device-width: 767px) {
+        .auth-form .modal-auth .login-tab .login-fb-google .login-facebook, .auth-form .modal-auth .register-tab .login-fb-google .login-facebook {
+          font-size: 1.2rem; } }
+      .auth-form .modal-auth .login-tab .login-fb-google .login-facebook .icon-social:before, .auth-form .modal-auth .register-tab .login-fb-google .login-facebook .icon-social:before {
+        color: #3B5999; }
+    .auth-form .modal-auth .login-tab .login-fb-google .login-google, .auth-form .modal-auth .register-tab .login-fb-google .login-google {
+      color: #4688F1;
+      border: 1px solid #4688F1; }
 
 .event-guide .show {
   max-width: 112rem;
