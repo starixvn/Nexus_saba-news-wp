@@ -193,7 +193,7 @@
 
 @media (max-device-width: 767px) {
   .form-modal input::placeholder {
-    font-size: 1.1rem !important; } }
+    font-size: 1.3rem !important; } }
 
 .error {
   color: red;

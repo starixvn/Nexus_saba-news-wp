@@ -2148,7 +2148,7 @@ input[type=number] {
   border-radius: 20px; }
   @media (max-device-width: 767px) {
     .auth-form .show {
-      max-width: 35.1rem; } }
+      max-width: 39rem; } }
 
 .auth-form .modal-auth .close-event {
   position: absolute;
