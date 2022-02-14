@@ -109,7 +109,7 @@
       width: 55%; }
       @media screen and (max-width: 1024px) {
         .auth-form .modal-auth .login-tab .group-tab, .auth-form .modal-auth .register-tab .group-tab {
-          padding: 0 2rem; } }
+          padding: 0 1.5rem; } }
       .auth-form .modal-auth .login-tab .group-tab #forgot-password, .auth-form .modal-auth .register-tab .group-tab #forgot-password {
         text-decoration: none;
         text-align: center;
