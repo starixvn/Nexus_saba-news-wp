@@ -843,4 +843,7 @@
   <data name="MembershipEventWinner" xml:space="preserve">
     <value>Membership Event Winner</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
 </root>

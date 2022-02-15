@@ -208,7 +208,7 @@
                 data: { type, value: "" },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        var msg = 'upload new banner Succesfully'
+                        var msg = 'remove banner succesfully';
                         GetSuccessPopup('#NoticeModal', msg);
                     } else {
                         GetErrorPopup('#NoticeModal', res.message);

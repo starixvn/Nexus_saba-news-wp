@@ -40,12 +40,12 @@
                                 <li>
                                     <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
                                 </li>
-								<li>/</li>
                                 @if (!string.IsNullOrEmpty(Model.DesktopTopUrl))
                                 {
-								<li>
-									<a href="javascipt:;" class="social-action remove" data-type="DesktopTop">Remove</a>
-								</li>
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="DesktopTop">@ViewResources.Remove</a>
+                                    </li>
                                 }
                             </ul>
                         </div>
