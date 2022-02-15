@@ -109,7 +109,18 @@
 									<li class="txt-feild"><img src="@Model.DesktopCenterUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.DesktopCenterUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="DesktopCenter">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">
@@ -170,7 +181,18 @@
 									<li class="txt-feild"><img src="@Model.DesktopLeftUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.DesktopLeftUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="DesktopLeft">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">
@@ -231,7 +253,18 @@
 									<li class="txt-feild"><img src="@Model.DesktopRightUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.DesktopRightUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="DesktopRight">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">
@@ -293,7 +326,18 @@
 									<li class="txt-feild"><img src="@Model.MobileTopUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.MobileTopUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="MobileTop">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">
@@ -354,7 +398,18 @@
 									<li class="txt-feild"><img src="@Model.MobileCenterUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.MobileCenterUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="MobileCenter">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">
@@ -414,7 +469,18 @@
 									<li class="txt-feild"><img src="@Model.MobileBottomUrl" asp-append-version="true" width="200" /></li>
 								</ul>
 							</div>
-							<a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                            <ul class="action-banner-admin">
+                                <li>
+                                    <a href="#" class="action social-action">@ViewResources.ChangeAction</a>
+                                </li>
+                                @if (!string.IsNullOrEmpty(Model.MobileBottomUrl))
+                                {
+                                    <li>/</li>
+                                    <li>
+                                        <a href="javascipt:;" class="social-action remove" data-type="MobileBottom">@ViewResources.Remove</a>
+                                    </li>
+                                }
+                            </ul>
 						</div>
 						<div class="box-edit-form">
 							<div class="title">

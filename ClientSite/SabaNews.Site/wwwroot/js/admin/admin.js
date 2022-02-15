@@ -23,7 +23,12 @@
 
     $('.action').click(function (e) {
         e.preventDefault();
-        $(this).parent().parent().parent('.box-control').next().toggleClass('toggle-active-form');
+        if ($(this).parent().hasClass('box-control')) {
+            $(this).parent('.box-control').next().toggleClass('toggle-active-form');
+        } else {
+            $(this).parent().parent().parent('.box-control').next().toggleClass('toggle-active-form');
+        }
+        
     })
 
     $('.close-edit').click(function (e) {
