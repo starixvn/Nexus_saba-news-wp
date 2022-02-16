@@ -44,8 +44,7 @@
             message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
             message.Subject = email.Subject;
             message.Priority = mailConfigs.MailPriority;
-            message.XPriority = XMessagePriority.High;
-            message.Importance = MessageImportance.High;
+          
 
             var builder = new BodyBuilder
             {
