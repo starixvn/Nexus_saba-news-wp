@@ -130,15 +130,12 @@
             <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
             <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
             <div class="block-field-number">
-                <div class="title-event">
-                    <img src="~/images/event/line.png" class="img-res" />
-                    <span>Nhập Số May Mắn</span>
-                </div>
-
-
-
                 @if (!Model.IsLogin && Model.MembershipEventDetail == null)
                 {
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Nhập Số May Mắn</span>
+                    </div>
                     <div class="field-number field-number-validate">
                         <div class="validate-vent-input">
                             <div class="warning-event">
@@ -158,6 +155,10 @@
                     var luckyNumber = Model.MembershipEventDetail.LuckyNumber.Trim();
                     var arrNumber = new StringBuilder(luckyNumber);
                     string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Số may mắn của bạn</span>
+                    </div>
                     <div class="field-number field-number-result @arrNumberAsWord[0]">
                         <div class="form-event">
                             <div class="form-input">
@@ -182,6 +183,10 @@
                 }
                 else
                 {
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Nhập Số May Mắn</span>
+                    </div>
                     <div class="field-number field-number-default">
                         <form class="form-event" id="membership-event-form">
                             <div class="form-input">
