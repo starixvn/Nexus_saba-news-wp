@@ -40,6 +40,8 @@
             if (!isValid) {
                 return false;
             }
+            var luckyNumber = number1 + number2 + number3;
+            $('#register .review-number').html(luckyNumber)
             $('#register').modal('show');
         });
         $('#register .btn-accept').on('click', function () {

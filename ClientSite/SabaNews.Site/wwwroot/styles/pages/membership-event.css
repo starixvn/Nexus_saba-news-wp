@@ -2190,6 +2190,13 @@ input[type=number] {
     .auth-form .modal-auth .register .heading-modal-event {
       font-size: 1.4rem; } }
 
+.auth-form .modal-auth .register .review-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #B44414;
+  text-align: center;
+  margin-top: 2.9rem; }
+
 .auth-form .modal-auth .register .text-event-modal {
   font-size: 2.1rem;
   line-height: 3.2rem;
