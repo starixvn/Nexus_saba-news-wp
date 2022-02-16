@@ -89,7 +89,7 @@
                 result = new CommandResult { Message = ex.Message };
             }
 
-            await mailclient.DisconnectAsync(true);
+            
             return result;
         }
 
