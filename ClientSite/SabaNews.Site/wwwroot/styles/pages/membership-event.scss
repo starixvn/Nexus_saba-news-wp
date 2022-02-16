@@ -139,7 +139,7 @@ input[type=number] {
         @include Mobile {
             font-size: 1.6rem;
             line-height: 1.8rem;
-            width : 100%;
+            width: 100%;
         }
     }
 }
@@ -156,24 +156,30 @@ input[type=number] {
 
     @include Mobile {
         background: url('../../images/event/top-banner-mobile.png');
-        height: auto;
+        height: 73vh;
         background-size: 100%;
         background-repeat: no-repeat;
         background-repeat: no-repeat;
         background-position: top center;
-        padding-bottom: 51rem;
+        /*  padding-bottom: 51rem;*/
+    }
+
+    @include iphone6 {
+        height: 88vh;
     }
 
     @include iphone5 {
-        height: 72vh;
+        height: 88vh !important;
     }
 
     @include iphoneXR {
-        padding-bottom: 56rem;
+        height: 72vh;
+        /*padding-bottom: 56rem;*/
     }
 
     @include iphone1213 {
-        padding-bottom: 53rem !important;
+        height: 72vh;
+        /*padding-bottom: 53rem !important;*/
     }
 
     &.wrapper-result {
@@ -537,9 +543,11 @@ input[type=number] {
     @include Mobile {
         left: 0;
         top: auto;
-        bottom: 1.5rem;
+        bottom: 3rem;
         width: 100%;
     }
+
+
 
     ul {
         list-style: none;

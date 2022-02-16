@@ -19,6 +19,11 @@
         @content;
     }
 }
+@mixin iphone6 {
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+        @content;
+    }
+}
 
 @mixin iphone1213 {
     @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {

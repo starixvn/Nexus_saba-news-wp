@@ -1495,21 +1495,26 @@ input[type=number] {
   @media (max-device-width: 767px) {
     .wrapper-header {
       background: url("../../images/event/top-banner-mobile.png");
-      height: auto;
+      height: 73vh;
       background-size: 100%;
       background-repeat: no-repeat;
       background-repeat: no-repeat;
       background-position: top center;
-      padding-bottom: 51rem; } }
+      /*  padding-bottom: 51rem;*/ } }
+  @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+    .wrapper-header {
+      height: 88vh; } }
   @media screen and (device-aspect-ratio: 40 / 71) {
     .wrapper-header {
-      height: 72vh; } }
+      height: 88vh !important; } }
   @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
     .wrapper-header {
-      padding-bottom: 56rem; } }
+      height: 72vh;
+      /*padding-bottom: 56rem;*/ } }
   @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
-      padding-bottom: 53rem !important; } }
+      height: 72vh;
+      /*padding-bottom: 53rem !important;*/ } }
   .wrapper-header.wrapper-result {
     background: url("../../images/event/wrapper-result.png");
     background-size: cover;
@@ -1772,7 +1777,7 @@ input[type=number] {
     .header-control {
       left: 0;
       top: auto;
-      bottom: 1.5rem;
+      bottom: 3rem;
       width: 100%; } }
   .header-control ul {
     list-style: none;
