@@ -17,17 +17,15 @@
                 data: { luckyNumber },
                 success: function (res) {
                     if (res.isSuccessful) {
-                        $('#notice .modal-body .text-event-modal').html("Bạn đã chọn số may mắn thành công");
-                        $('#notice').bind('hidden.bs.modal', function () {
+                        $('#success').bind('hidden.bs.modal', function () {
                             location.reload();
                         });
+                        $('#success').modal('show');
                     } else {
                         $('#notice .modal-body  .text-event-modal').html(res.message);
                         $('#notice').unbind('hidden.bs.modal');
+                        $('#notice').modal('show');
                     }
-                    
-                    $('#notice').modal('show');
-                   
                 }
             });
         });
