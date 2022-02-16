@@ -1891,7 +1891,8 @@ input[type=number] {
       @media (max-device-width: 767px) {
         .block-men-event .main-event-img .img-event-mobile {
           display: block;
-          margin: 0 auto; } }
+          margin: 0 auto;
+          padding: 0 1.2rem; } }
     .block-men-event .main-event-img .img-event-desktop {
       display: block; }
       @media (max-device-width: 767px) {
