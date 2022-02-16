@@ -1495,26 +1495,27 @@ input[type=number] {
   @media (max-device-width: 767px) {
     .wrapper-header {
       background: url("../../images/event/top-banner-mobile.png");
-      height: 73vh;
+      height: auto;
       background-size: 100%;
       background-repeat: no-repeat;
       background-repeat: no-repeat;
       background-position: top center;
-      /*  padding-bottom: 51rem;*/ } }
+      padding-bottom: 56rem; } }
   @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
     .wrapper-header {
-      height: 88vh; } }
+      padding-bottom: 52rem !important; } }
   @media screen and (device-aspect-ratio: 40 / 71) {
     .wrapper-header {
-      height: 88vh !important; } }
+      padding-bottom: 44rem !important; } }
+  @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
+    .wrapper-header {
+      padding-bottom: 52rem; } }
   @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
     .wrapper-header {
-      height: 72vh;
-      /*padding-bottom: 56rem;*/ } }
+      padding-bottom: 56rem; } }
   @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
     .wrapper-header {
-      height: 72vh;
-      /*padding-bottom: 53rem !important;*/ } }
+      padding-bottom: 53rem !important; } }
   .wrapper-header.wrapper-result {
     background: url("../../images/event/wrapper-result.png");
     background-size: cover;

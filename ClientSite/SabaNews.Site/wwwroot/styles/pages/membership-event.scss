@@ -156,30 +156,32 @@ input[type=number] {
 
     @include Mobile {
         background: url('../../images/event/top-banner-mobile.png');
-        height: 73vh;
+        height: auto;
         background-size: 100%;
         background-repeat: no-repeat;
         background-repeat: no-repeat;
         background-position: top center;
-        /*  padding-bottom: 51rem;*/
+        padding-bottom: 56rem;
     }
 
     @include iphone6 {
-        height: 88vh;
+        padding-bottom: 52rem !important;
     }
 
     @include iphone5 {
-        height: 88vh !important;
+        padding-bottom: 44rem !important;
+    }
+
+    @include iphoneX {
+        padding-bottom: 52rem;
     }
 
     @include iphoneXR {
-        height: 72vh;
-        /*padding-bottom: 56rem;*/
+        padding-bottom: 56rem;
     }
 
     @include iphone1213 {
-        height: 72vh;
-        /*padding-bottom: 53rem !important;*/
+        padding-bottom: 53rem !important;
     }
 
     &.wrapper-result {
