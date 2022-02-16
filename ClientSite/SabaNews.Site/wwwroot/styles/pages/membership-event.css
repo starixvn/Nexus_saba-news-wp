@@ -2177,7 +2177,7 @@ input[type=number] {
   padding: 3rem; }
   @media (max-device-width: 767px) {
     .auth-form .modal-auth .modal-body {
-      padding: 1rem; } }
+      padding: 2rem; } }
 
 .auth-form .modal-auth .register .heading-modal-event {
   text-transform: uppercase;
@@ -2189,7 +2189,8 @@ input[type=number] {
   text-align: center; }
   @media (max-device-width: 767px) {
     .auth-form .modal-auth .register .heading-modal-event {
-      font-size: 1.4rem; } }
+      font-size: 1.6rem;
+      line-height: 1.8rem; } }
 
 .auth-form .modal-auth .register .review-number {
   font-size: 3rem;
@@ -2203,7 +2204,7 @@ input[type=number] {
   line-height: 3.2rem;
   color: #B44414;
   text-align: center;
-  margin-top: 2.9rem; }
+  margin-top: 2.4rem; }
   @media (max-device-width: 767px) {
     .auth-form .modal-auth .register .text-event-modal {
       margin-top: 1.6rem;
@@ -2218,7 +2219,7 @@ input[type=number] {
   margin-top: 3.9rem; }
   @media (max-device-width: 767px) {
     .auth-form .modal-auth .register ul {
-      margin-top: 2.8rem; } }
+      margin-top: 2.2rem; } }
   .auth-form .modal-auth .register ul li {
     margin-right: 3.2rem; }
     @media (max-device-width: 767px) {
