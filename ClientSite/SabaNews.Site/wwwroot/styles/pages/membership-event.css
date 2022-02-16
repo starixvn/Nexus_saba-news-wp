@@ -1482,7 +1482,8 @@ input[type=number] {
     @media (max-device-width: 767px) {
       .title-event span {
         font-size: 1.6rem;
-        line-height: 1.8rem; } }
+        line-height: 1.8rem;
+        width: 100%; } }
 
 .wrapper-header {
   background: url("../../images/event/top-banner.png");
