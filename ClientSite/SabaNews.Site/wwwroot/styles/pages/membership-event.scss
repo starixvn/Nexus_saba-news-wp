@@ -1163,11 +1163,30 @@ input[type=number] {
             }
 
             .review-number {
-                font-size: 3rem;
-                font-weight: bold;
-                color: #B44414;
-                text-align: center;
-                margin-top: 2.9rem;
+                margin-top: 2.4rem;
+                list-style: none;
+                padding-left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include Mobile {
+                    margin-top: 1.2rem;
+                }
+
+                li {
+                    font-size: 5.6rem;
+                    font-weight: bold;
+                    line-height: 8.6rem;
+                    color: #BE0000;
+                    text-align: center;
+                    text-shadow: 0px 2px 4px rgba(120, 2, 2, 0.47);
+
+                    @include Mobile {
+                        font-size: 2.8rem;
+                        line-height: 4.2rem;
+                    }
+                }
             }
 
             .text-event-modal {
@@ -1178,7 +1197,7 @@ input[type=number] {
                 margin-top: 2.4rem;
 
                 @include Mobile {
-                    margin-top: 1.6rem;
+                    margin-top: 1.2rem;
                     font-size: 1.4rem;
                     line-height: 2.2rem;
                     padding: 0 1rem;
@@ -1193,7 +1212,7 @@ input[type=number] {
                 margin-top: 3.9rem;
 
                 @include Mobile {
-                    margin-top: 2.2rem;
+                    margin-top: 1.2rem;
                 }
 
                 li {
@@ -1481,6 +1500,7 @@ input[type=number] {
 
                 &:after {
                     content: "";
+                    content: "";
                     width: 80%;
                     height: .1rem;
                     background: #A73C3C;
@@ -1503,7 +1523,11 @@ input[type=number] {
                 }
 
                 .name {
-                    font-size: 1.4rem;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    @include Mobile {
+                        font-size: 1.4rem;
+                    }
                 }
             }
         }
