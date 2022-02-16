@@ -38,8 +38,10 @@
             if (!isValid) {
                 return false;
             }
-            var luckyNumber = number1 + number2 + number3;
-            $('#register .review-number').html(luckyNumber)
+            var html = "<li>" + number1 + "</li>";
+            html += "<li>" + number2 + "</li>";
+            html += "<li>" + number3 + "</li>";
+            $('#register .review-number').html(html);
             $('#register').modal('show');
         });
         $('#register .btn-accept').on('click', function () {
