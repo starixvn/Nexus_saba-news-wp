@@ -192,7 +192,7 @@
             {
                 ActionId = LogAction.SendTestEDM,
                 ActorId = sessionService.User.Id,
-                Data = JsonConvert.SerializeObject(new { model.EmailAddress, model.EmailTitle, model.EmailContent }),
+                Data = JsonConvert.SerializeObject(new { isSuccessful = resultSendMail.IsSuccessful, message = resultSendMail.Message, model.EmailAddress, model.EmailTitle, model.EmailContent }),
             };
             await logService.WriteLog(logCommand);
             return Json(resultSendMail);
