@@ -4,6 +4,8 @@
     using System.IO;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using Fanex.MailDeliver.MailClient.API;
+    using Fanex.MailDeliver.Model;
     using MailKit.Net.Smtp;
     using MailKit.Security;
     using Microsoft.Extensions.Logging;
@@ -38,50 +40,19 @@
             {
                 return new CommandResult { Message = Message.InvalidEmail  };
             }
-
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.Username));
-            message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
-            message.Subject = email.Subject;
-            message.Priority = mailConfigs.MailPriority;
-          
-
-            var builder = new BodyBuilder
-            {
-                HtmlBody = email.Body
-            };
-            message.Body = builder.ToMessageBody();
             CommandResult result;
-
-            using var mailclient = new SmtpClient();
             try
             {
-                mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
-                mailclient.CheckCertificateRevocation = false;
-                await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
-                if (mailConfigs.EnableSsl)
+                var mailItem = new MailRecord
                 {
-                    await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
-                }
+                    MailTo = email.ReceiverEmail,
+                    Subject = email.Subject,
+                    Body = email.Body
+                };
 
-                await mailclient.SendAsync(message);
-                logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
+                using var client = new MailDeliver();
+                client.SendMail(mailItem);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
-            }
-            catch (AuthenticationException ex)
-            {
-                WriteLogError(email, ex);
-                result = new CommandResult { Message = ex.Message };
-            }
-            catch (SmtpCommandException ex)
-            {
-                WriteLogError(email, ex);
-                result = new CommandResult { Message = ex.Message };
-            }
-            catch (SmtpProtocolException ex)
-            {
-                WriteLogError(email, ex);
-                result = new CommandResult { Message = ex.Message };
             }
             catch (Exception ex)
             {
@@ -89,7 +60,58 @@
                 result = new CommandResult { Message = ex.Message };
             }
 
-            
+            //var message = new MimeMessage();
+            //message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.Username));
+            //message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
+            //message.Subject = email.Subject;
+            //message.Priority = mailConfigs.MailPriority;
+            //message.XPriority = XMessagePriority.High;
+            //message.Importance = MessageImportance.High;
+
+            //var builder = new BodyBuilder
+            //{
+            //    HtmlBody = email.Body
+            //};
+            //message.Body = builder.ToMessageBody();
+            //CommandResult result;
+
+            //using var mailclient = new SmtpClient();
+            //try
+            //{
+            //    mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+            //    mailclient.CheckCertificateRevocation = false;
+            //    await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+            //    if (mailConfigs.EnableSsl)
+            //    {
+            //        await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
+            //    }
+
+            //    await mailclient.SendAsync(message);
+            //    logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
+            //    result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
+            //}
+            //catch (AuthenticationException ex)
+            //{
+            //    WriteLogError(email, ex);
+            //    result = new CommandResult { Message = ex.Message };
+            //}
+            //catch (SmtpCommandException ex)
+            //{
+            //    WriteLogError(email, ex);
+            //    result = new CommandResult { Message = ex.Message };
+            //}
+            //catch (SmtpProtocolException ex)
+            //{
+            //    WriteLogError(email, ex);
+            //    result = new CommandResult { Message = ex.Message };
+            //}
+            //catch (Exception ex)
+            //{
+            //    WriteLogError(email, ex);
+            //    result = new CommandResult { Message = ex.Message };
+            //}
+
+            //await mailclient.DisconnectAsync(true);
             return result;
         }
 
