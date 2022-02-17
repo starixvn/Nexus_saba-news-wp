@@ -1,4 +1,7 @@
 ﻿@using System.Text;
+@section Metadata {
+    <meta property="og:image" content='@(Model.BaseUrl + "images/event/GDN_1200x1200.jpg")' />
+}
 @section Title{
     Sự kiện Rước Lộc Tân Niên
 }
@@ -7,6 +10,7 @@
     <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
 
 }
+
 @section Scripts{
     <script>
         var checkLogin = '@Model.IsLogin';
@@ -224,9 +228,8 @@
                 </button>
                 <div class="modal-body register">
                     <div class="heading-modal-event">Bạn đã chọn số</div>
-                     
+
                     <ul class="review-number">
-                       
                     </ul>
 
                     <p class="text-event-modal">Số may mắn sẽ không thể thay đổi, bạn đã chắc chắn chứ?</p>

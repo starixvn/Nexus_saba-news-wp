@@ -10,6 +10,7 @@ namespace SabaNews.Models.ViewModel.User
 
         public bool IsAdmin { get; set; }
 
+        public string BaseUrl { get; set; }
         public MembershipEventModel MembershipEventDetail { get; set; }
     }
 }

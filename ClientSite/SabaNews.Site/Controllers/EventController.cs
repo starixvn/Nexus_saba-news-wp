@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
@@ -15,11 +16,15 @@
     {
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
+        private readonly IConfiguration configuration;
 
-        public EventController(ISessionService sessionService, IUserService userService)
+        public EventController(ISessionService sessionService, 
+            IUserService userService, 
+            IConfiguration configuration)
         {
             this.sessionService = sessionService;
             this.userService = userService;
+            this.configuration = configuration;
         }
         [Route("/su-kien-ruoc-loc-tan-nien")]
         public async Task<ActionResult> MembershipEvent()
@@ -28,7 +33,8 @@
             var model = new MembershipEventViewModel
             {
                 IsLogin = isLogin,
-                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator)
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
+                BaseUrl = configuration.GetValue<string>("BaseUrl")
             };
             if (sessionService.User != null)
             {
