@@ -45,7 +45,7 @@
             try
             {
                 AppSettings.AppMailId = "76";
-                AppSettings.AppMailAddress = "et.tcp://10.18.200.103:8787/MailService";
+                AppSettings.AppMailAddress = "http://10.18.200.131:8787/";
                 var mailItem = new MailRecord
                 {
                     MailTo = email.ReceiverEmail,
