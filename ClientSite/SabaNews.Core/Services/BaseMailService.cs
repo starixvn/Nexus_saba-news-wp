@@ -4,6 +4,7 @@
     using System.IO;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using Fanex.MailDeliver.MailClient;
     using Fanex.MailDeliver.MailClient.API;
     using Fanex.MailDeliver.Model;
     using MailKit.Net.Smtp;
@@ -43,9 +44,12 @@
             CommandResult result;
             try
             {
+                AppSettings.AppMailId = "76";
+                AppSettings.AppMailAddress = "et.tcp://10.18.200.103:8787/MailService";
                 var mailItem = new MailRecord
                 {
                     MailTo = email.ReceiverEmail,
+                    Title = "hank test",
                     Subject = email.Subject,
                     Body = email.Body
                 };
