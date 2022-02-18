@@ -25,12 +25,12 @@
 
         Task<CommandResult> CreateUserSubscribeToken(CreateUserSubscribeTokenCommand command);
 
-        Task SendMailConfirmationAsync(string email, string url);
+        public void SendMailConfirmation(string email, string url);
 
-        Task SendMailResetPasswordAsync(string email, string url);
+        void SendMailResetPassword(string email, string url);
 
-        Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail);
+        CommandResult SendMail(string subject, string body, string receiverEmail);
 
-        Task<CommandResult> SendMailEventAsync(string subject, string content, string email);
+        CommandResult SendMailEvent(string subject, string content, string email);
     }
 }

@@ -17,7 +17,7 @@
 
     public interface IBaseMailService
     {
-        Task<CommandResult> SendMailAsync(MailModel email);
+        CommandResult SendMail(MailModel email);
 
         string ReadTextFile(string filePath);
     }
@@ -35,7 +35,7 @@
             this.logger = logger;
         }
 
-        public async Task<CommandResult> SendMailAsync(MailModel email)
+        public CommandResult SendMail(MailModel email)
         {
             if (email == null || !IsValidEmail(email.ReceiverEmail) || !mailConfigs.Enabled)
             {
@@ -44,12 +44,12 @@
             CommandResult result;
             try
             {
-                AppSettings.AppMailId = "76";
-                AppSettings.AppMailAddress = "http://10.18.200.131:8787/";
+                AppSettings.AppMailId = mailConfigs.AppMailId;
+                AppSettings.AppMailAddress = mailConfigs.AppMailAddress;
                 var mailItem = new MailRecord
                 {
                     MailTo = email.ReceiverEmail,
-                    Title = "hank test",
+                    Title = mailConfigs.SenderName,
                     Subject = email.Subject,
                     Body = email.Body
                 };
@@ -64,58 +64,6 @@
                 result = new CommandResult { Message = ex.Message };
             }
 
-            //var message = new MimeMessage();
-            //message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.Username));
-            //message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
-            //message.Subject = email.Subject;
-            //message.Priority = mailConfigs.MailPriority;
-            //message.XPriority = XMessagePriority.High;
-            //message.Importance = MessageImportance.High;
-
-            //var builder = new BodyBuilder
-            //{
-            //    HtmlBody = email.Body
-            //};
-            //message.Body = builder.ToMessageBody();
-            //CommandResult result;
-
-            //using var mailclient = new SmtpClient();
-            //try
-            //{
-            //    mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
-            //    mailclient.CheckCertificateRevocation = false;
-            //    await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
-            //    if (mailConfigs.EnableSsl)
-            //    {
-            //        await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
-            //    }
-
-            //    await mailclient.SendAsync(message);
-            //    logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
-            //    result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
-            //}
-            //catch (AuthenticationException ex)
-            //{
-            //    WriteLogError(email, ex);
-            //    result = new CommandResult { Message = ex.Message };
-            //}
-            //catch (SmtpCommandException ex)
-            //{
-            //    WriteLogError(email, ex);
-            //    result = new CommandResult { Message = ex.Message };
-            //}
-            //catch (SmtpProtocolException ex)
-            //{
-            //    WriteLogError(email, ex);
-            //    result = new CommandResult { Message = ex.Message };
-            //}
-            //catch (Exception ex)
-            //{
-            //    WriteLogError(email, ex);
-            //    result = new CommandResult { Message = ex.Message };
-            //}
-
-            //await mailclient.DisconnectAsync(true);
             return result;
         }
 

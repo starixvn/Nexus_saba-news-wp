@@ -187,7 +187,7 @@
                 SubscribeLink = "#",
                 BaseUrl = baseUrl
             };
-            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
             var logCommand = new WriteLogCommand
             {
                 ActionId = LogAction.SendTestEDM,
@@ -284,7 +284,7 @@
                 SubscribeLink = unsubcribeLink,
                 BaseUrl = baseUrl
             };
-            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
             await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
             return Json(resultSendMail);
         }
@@ -313,7 +313,7 @@
                     SubscribeLink = unsubcribeLink,
                     BaseUrl = baseUrl
                 };
-                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+                var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
                 await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = email.UserId });
                 sentNumber = resultSendMail.IsSuccessful ? ++sentNumber : sentNumber;
             }
@@ -346,7 +346,7 @@
                     SubscribeLink = unsubcribeLink,
                     BaseUrl = baseUrl
                 };
-                var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
+                var resultSendMail =  emailService.SendMailEDMWithTemplate(sendEmailModel);
                 var emailData = new EmailDetailModel
                 {
                     EmailId = model.Id,

@@ -116,7 +116,7 @@
             return result;
         }
 
-        public async Task SendMailConfirmationAsync(string email, string url)
+        public void SendMailConfirmation(string email, string url)
         {
             var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, ConfirmEmailTemplates);
             const string subject = Constants.SubjectConfirmation;
@@ -124,10 +124,10 @@
                 mailService.ReadTextFile(mailPath),
                 email,
                 url);
-            await SendMailAsync(subject, body, email);
+            SendMail(subject, body, email);
         }
 
-        public async Task SendMailResetPasswordAsync(string email, string url)
+        public void SendMailResetPassword(string email, string url)
         {
             var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, ResetPasswordTemplates);
             const string subject = Constants.SubjectResetPassword;
@@ -135,18 +135,18 @@
                 mailService.ReadTextFile(mailPath),
                 email,
                 url);
-            await SendMailAsync(subject, body, email);
+            SendMail(subject, body, email);
         }
 
-        public async Task<CommandResult> SendMailEventAsync(string subject, string content, string email)
+        public CommandResult SendMailEvent(string subject, string content, string email)
         {
             var mailPath = Path.Combine(webHostEnvironment.ContentRootPath, SendMailEventTemplates);
             var rawBody = mailService.ReadTextFile(mailPath);
             var body = rawBody.Replace("{0}", content);
-            return await SendMailAsync(subject, body, email);
+            return SendMail(subject, body, email);
         }
 
-        public async Task<CommandResult> SendMailAsync(string subject, string body, string receiverEmail)
+        public CommandResult SendMail(string subject, string body, string receiverEmail)
         {
             var email = new MailModel
             {
@@ -154,7 +154,7 @@
                 Body = body,
                 ReceiverEmail = receiverEmail
             };
-            return await mailService.SendMailAsync(email);
+            return mailService.SendMail(email);
         }
 
       
