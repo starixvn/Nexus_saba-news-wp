@@ -34,23 +34,24 @@
                 <p class="help-block"></p>
             </div>
 
-            <div class="form-input custom-with-input  email_title">
+            <div class="form-input custom-with-input users-block">
                 <p class="label-admin">Send to users</p>
                 <select class="send-multiple-select" id="users" multiple="multiple">
                     @foreach (var user in Model.UsersForSend)
                     {
-						var selected = "";
-						@foreach(var item in Model.UsersSelected)
+                        var selected = "";
+                        @foreach (var item in Model.UsersSelected)
                         {
                             if (user.Id == item.UserId)
                             {
                                 selected = "selected";
-								break;
+                                break;
                             }
                         }
-						<option value="@user.Id" @selected data-email="@user.Email">@user.Name</option>
+                        <option value="@user.Id" @selected data-email="@user.Email">@user.Name</option>
                     }
                 </select>
+                <p class="help-block"></p>
             </div>
 
             <div class="form-input custom-with-input email_link">

@@ -311,12 +311,13 @@
             foreach (var email in emails)
             {
                 var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
+                var emailContent = email.EmailContent.Replace("{token}", string.Concat("token=", email.TokenId));
                 var sendEmailModel = new SendEDMModel
                 {
                     EmailAddress = email.EmailAddress,
                     EmailTemplatePath = SendMailTemplate,
                     EmailTitle = email.EmailTitle,
-                    EmailContent = email.EmailContent,
+                    EmailContent = emailContent,
                     SubscribeLink = unsubcribeLink,
                     BaseUrl = baseUrl
                 };

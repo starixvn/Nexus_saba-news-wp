@@ -42,6 +42,7 @@
     function HandleValidate() {
         var isValid = true;
         var users = $("#users").val();
+        console.log(users.length);
         if (CKEDITOR.instances.emailContent.getData().trim() === "") {
             $('.email_content .help-block').html('Email Content is required');
             isValid = false;
