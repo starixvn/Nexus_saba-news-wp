@@ -23,43 +23,63 @@
 }
 <section class="page-content">
 	<div class="main-list">
-		<form id="form-sendmail" class="form-main">
-			<input type="hidden" name="Id" value="@Model.Email.Id" />
-			<input type="hidden" name="rawUrl" id="baseUrl" value="@Model.RawUrl" />
-			<input type="hidden" name="embeddedLink" id="embeddedLink" value="@Model.Email.EmbeddedLink" />
+        <form id="form-sendmail" class="form-main">
+            <input type="hidden" name="Id" value="@Model.Email.Id" />
+            <input type="hidden" name="rawUrl" id="baseUrl" value="@Model.RawUrl" />
+            <input type="hidden" name="embeddedLink" id="embeddedLink" value="@Model.Email.EmbeddedLink" />
 
-			<div class="form-input custom-with-input email_title">
-				<p class="label-admin">@ViewResources.Subject</p>
-				<input type="text" class="custom-input" placeholder="" name="emailTitle" value="@Model.Email.EmailTitle" />
-				<p class="help-block"></p>
-			</div>
+            <div class="form-input custom-with-input email_title">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input type="text" class="custom-input" placeholder="" name="emailTitle" value="@Model.Email.EmailTitle" />
+                <p class="help-block"></p>
+            </div>
 
-			<div class="form-input custom-with-input email_link">
-				<p class="label-admin">@ViewResources.OriginalUrl</p>
-				<input type="text" class="custom-input" placeholder="" name="emailReturnLink" value="@Model.OriginalUrl" />
-				<div class="form-input group_raw_link" style="display: @(Model.OriginalUrl != "" ? "block" : "none")">
-					<p class="label-admin">@ViewResources.EmbeddedUrl</p>
-					<p class="custom-input raw_link">@Model.Email.EmbeddedLink</p>
-					<a href="javascript:;" title="Copy embedded url" class="copy-link"><span><i class="icon-copy-admin"></i></span></a>
-					<span class="tip">Copied embedded url</span>
-				</div>
-				<p class="help-block"></p>
-			</div>
+            <div class="form-input custom-with-input  email_title">
+                <p class="label-admin">Send to users</p>
+                <select class="send-multiple-select" id="users" multiple="multiple">
+                    @foreach (var user in Model.UsersForSend)
+                    {
+						var selected = "";
+						@foreach(var item in Model.UsersSelected)
+                        {
+                            if (user.Id == item.UserId)
+                            {
+                                selected = "selected";
+								break;
+                            }
+                        }
+						<option value="@user.Id" @selected data-email="@user.Email">@user.Name</option>
+                    }
+                </select>
+            </div>
 
-			<div class="form-input email_content">
-				<p class="label-admin">@ViewResources.EmailContent</p>
-				<textarea id="emailContent" class="input-form">@Model.Email.EmailContent</textarea>
-				<p class="help-block"></p>
-			</div>
+            <div class="form-input custom-with-input email_link">
+                <p class="label-admin">@ViewResources.OriginalUrl</p>
+                <input type="text" class="custom-input" placeholder="" name="emailReturnLink" value="@Model.OriginalUrl" />
+                <div class="form-input group_raw_link" style="display: @(Model.OriginalUrl != "" ? "block" : "none")">
+                    <p class="label-admin">@ViewResources.EmbeddedUrl</p>
+                    <p class="custom-input raw_link">@Model.Email.EmbeddedLink</p>
+                    <a href="javascript:;" title="Copy embedded url" class="copy-link"><span><i class="icon-copy-admin"></i></span></a>
+                    <span class="tip">Copied embedded url</span>
+                </div>
+                <p class="help-block"></p>
+            </div>
 
-			<div class="group-btn-admin">
-				<div class="left-btn">
-					<button type="button" class="button btn-custom-admin btn-red btn-send-mail-edit">@ViewResources.SaveAndSend</button>
-					<button type="button" class="button btn-custom-outline  btn-red btn-save-as-draft-edit">@ViewResources.SaveEmail</button>
-				</div>
-				<button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
-			</div>
-		</form>
+
+            <div class="form-input email_content">
+                <p class="label-admin">@ViewResources.EmailContent</p>
+                <textarea id="emailContent" class="input-form">@Model.Email.EmailContent</textarea>
+                <p class="help-block"></p>
+            </div>
+
+            <div class="group-btn-admin">
+                <div class="left-btn">
+                    <button type="button" class="button btn-custom-admin btn-red btn-send-mail-edit">@ViewResources.SaveAndSend</button>
+                    <button type="button" class="button btn-custom-outline  btn-red btn-save-as-draft-edit">@ViewResources.SaveEmail</button>
+                </div>
+                <button type="button" class="button btn-test">@ViewResources.SendTestEmailTo</button>
+            </div>
+        </form>
 
 		<div class="modal" id="ViewEmailContent" style="display:none">
 			<div class="modal-content">
@@ -104,7 +124,7 @@
 							<div class="form-input user_list" style="display: none">
 								<label class="label-admin">@ViewResources.UserList</label>
 								<select name="user" class="custom-input user">
-									@foreach (var user in Model.Users)
+									@foreach (var user in Model.UsersForTest)
 									{
 										<option value="@user.Email" data-email="@user.Email">@user.Name</option>
 									}

@@ -33,5 +33,7 @@
         Task<CommandResult> UpdateStatusAsync(UpdateStatusCommand criteria);
 
         Task<CommandResult> UpdateEmailAsync(EmailModel model);
+
+        Task<IEnumerable<EmailSendData>> GetEmailForSend(GetEmailForSendCriteria criteria);
     }
 }

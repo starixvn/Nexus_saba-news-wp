@@ -4,11 +4,12 @@
 }
 
 @section Styles{
+
     <link rel="stylesheet" href="~/minify/styles/admin_email_create.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-	<script src="~/lib/ckeditor4/ckeditor.js"></script>
+    <script src="~/lib/ckeditor4/ckeditor.js"></script>
     <script src="~/minify/js/admin_email_create.min.js" asp-append-version="true"></script>
 }
 
@@ -26,6 +27,8 @@
 
 <section class="page-content">
     <div class="main-list">
+        
+
         <form id="form-sendmail" class="form-main">
             <input type="hidden" name="rawUrl" id="baseUrl" value="@ViewBag.rawUrl" />
             <input type="hidden" name="embeddedLink" id="embeddedLink" value="" />
@@ -35,6 +38,19 @@
                 <input type="text" class="custom-input" placeholder="" name="emailTitle" />
                 <p class="help-block"></p>
             </div>
+
+
+            <div class="form-input custom-with-input users-block">
+                <p class="label-admin">Send to users</p>
+                <select class="send-multiple-select" id="users" multiple="multiple">
+                    @foreach (var user in Model.UsersForSend)
+                    {
+                        <option value="@user.Id" selected data-email="@user.Email">@user.Name</option>
+                    }
+                </select>
+                <p class="help-block"></p>
+            </div>
+            
 
             <div class="form-input custom-with-input email_link">
                 <p class="label-admin">@ViewResources.OriginalUrl</p>
@@ -106,7 +122,7 @@
                             <div class="form-input user_list" style="display: none">
                                 <label class="label-admin">@ViewResources.UserList</label>
                                 <select name="user" class="custom-input user">
-                                    @foreach (var user in Model)
+                                    @foreach (var user in Model.UsersForTest)
                                     {
                                         <option value="@user.Email" data-email="@user.Email">@user.Name</option>
                                     }

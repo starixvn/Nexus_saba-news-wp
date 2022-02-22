@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Models;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.User;
     using SabaNews.Models.ViewModel.User;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -29,6 +30,8 @@
         Task<MembershipEventModel> GetDetailMembershipEventDataAsync(GetDetailMembershipEventCriteria criteria);
 
         Task<IEnumerable<MembershipEventModel>> GetMembershipEventResultAsync(GetMembershipEventResultCriteria criteria);
+
+        Task<IEnumerable<UserSendEmail>> GetUserForSendEmail(GetUserForSendEmailCriteria criteria);
     }
 
 }

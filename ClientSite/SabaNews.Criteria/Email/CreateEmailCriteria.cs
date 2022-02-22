@@ -20,6 +20,8 @@ namespace SabaNews.Criteria.Email
         
         public DateTime CreatedDate { get; set; }
 
+        public string Users { get; set; }
+
         public override string GetSettingKey() => "email_create";
 
         public override bool IsValid() => !string.IsNullOrEmpty(EmailTitle) && !string.IsNullOrEmpty(EmailContent);

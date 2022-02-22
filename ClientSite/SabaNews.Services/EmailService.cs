@@ -36,7 +36,8 @@
                 SendDate = DateTime.UtcNow,
                 CreatedBy = model.CreatedBy,
                 Status = model.Status,
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow,
+                Users  = model.Users
             };
             var result =  await baseService.ExecuteNonQueryAsync(command);
             model.Id = command.Id;
@@ -103,15 +104,21 @@
         {
             var command = new UpdateEmailCommand
             {
-                EmailId = model.Id,
+                _EmailId = model.Id,
                 EmailTitle = model.EmailTitle,
                 EmailContent = model.EmailContent,
                 EmbeddedLink = model.EmbeddedLink,
                 Status = model.Status,
                 CreatedBy = model.CreatedBy,
-                SendDate = DateTime.UtcNow
+                SendDate = DateTime.UtcNow,
+                Users = model.Users
             };
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IEnumerable<EmailSendData>> GetEmailForSend(GetEmailForSendCriteria criteria)
+        {
+            return await baseService.GetDataAsync<EmailSendData>(criteria);
         }
 
         public CommandResult SendMailEDMWithTemplate(SendEDMModel model)

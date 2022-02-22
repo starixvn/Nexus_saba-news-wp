@@ -32,6 +32,7 @@
         "outputFileName": "wwwroot/minify/styles/admin_email_create.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/lib/bootstrap/multiselect/css/bootstrap-multiselect.css",
             "wwwroot/styles/pages/admin/email/update.css"
         ]
     },
@@ -277,6 +278,7 @@
         "inputFiles": [
             "wwwroot/lib/jquery-blockUI/jquery.blockUI.js",
             "wwwroot/js/lib/config_ckeditor.js",
+            "wwwroot/lib/bootstrap/multiselect/js/bootstrap-multiselect.js",
             "wwwroot/js/admin/email/create.js"
         ],
         "minify": {
@@ -301,7 +303,7 @@
         "outputFileName": "wwwroot/minify/js/admin.min.js",
         "inputFiles": [
             "wwwroot/lib/jquery/dist/jquery.min.js",
-            "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+            "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
             "wwwroot/js/common.js",
             "wwwroot/js/admin/admin.js"
         ],

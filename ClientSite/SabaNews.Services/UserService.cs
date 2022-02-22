@@ -3,6 +3,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.User;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
@@ -110,6 +111,11 @@
         public async Task<IEnumerable<MembershipEventModel>> GetMembershipEventResultAsync(GetMembershipEventResultCriteria criteria)
         {
             return await baseService.GetDataAsync<MembershipEventModel>(criteria);
+        }
+
+        public async Task<IEnumerable<UserSendEmail>> GetUserForSendEmail(GetUserForSendEmailCriteria criteria)
+        {
+            return await baseService.GetDataAsync<UserSendEmail>(criteria);
         }
     }
 }

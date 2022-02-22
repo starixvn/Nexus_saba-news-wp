@@ -19,9 +19,20 @@
 			<td class="text-left">@detail.EmailAddress</td>
 			<td>@sendDate</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
-			<td>
-				@(detail.Status == 0 ? ViewResources.Successful : ViewResources.Failed)
-			</td>
+            <td>
+                @if (detail.Status == 0)
+				{
+					@ViewResources.Successful;
+				}
+				else if (detail.Status == 1)
+				{
+					@ViewResources.Failed;
+				} 
+				else if (detail.Status == 2)
+				{
+					@ViewResources.New;
+				}
+            </td>
 			<td>
 				@if (detail.Status != 0)
 				{
@@ -29,7 +40,7 @@
 						<a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
 							<i class="icon-resend-admin"></i>
 							<span class="tooltip-menu">
-								Resend
+								@(detail.Status == 1 ? "Resend" : "Send")
 							</span>
 						</a>
 					</p>

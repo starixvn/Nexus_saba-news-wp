@@ -92,9 +92,14 @@
         public async Task<ActionResult> Create()
         {
             var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
-            var users = await userService.GetAllUserAsync(new GetAllUserCriteria());
+            
+            var model = new EmaiCreateViewModel
+            {
+                UsersForTest = await userService.GetAllUserAsync(new GetAllUserCriteria()),
+                UsersForSend = await userService.GetUserForSendEmail(new GetUserForSendEmailCriteria())
+            };
             ViewBag.rawUrl = rawUrl;
-            return View(users);
+            return View(model);
         }
 
         [HttpPost]
@@ -143,7 +148,9 @@
                 Email = email,
                 RawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}"),
                 OriginalUrl = originalUrl,
-                Users = users
+                UsersForTest = users,
+                UsersForSend = await userService.GetUserForSendEmail(new GetUserForSendEmailCriteria()),
+                UsersSelected = await emailService.GetEmailForSend(new GetEmailForSendCriteria{ EmailId = emailId })
             };
 
             return View(model);
@@ -322,24 +329,16 @@
 
         public async Task<int> Send(EmailModel model)
         {
-            var users = await userService.GetAllUserAsync(new GetAllUserCriteria { UserRole = Constants.CustomerRole });
-            var subscribedUsers = users.Where(item => item.IsSubscribe == 1).GroupBy(p => p.Id).Select(g => g.FirstOrDefault()).ToList();
+            var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = model.Id });
             var sentNumbers = 0;
-            foreach (var user in subscribedUsers)
+            foreach (var email in emails)
             {
-                var token = Guid.NewGuid().ToString();
-                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, Area = "" }, Request.Scheme);
-                var createSubscribeTokenCommand = new CreateUserSubscribeTokenCommand { UserId = user.Id, Token = token };
-                var createSubscribeTokenResult = await authService.CreateUserSubscribeToken(createSubscribeTokenCommand);
-                if (createSubscribeTokenResult.IsSuccessful)
-                {
-                    var currentToken = createSubscribeTokenCommand.CurrentToken;
-                    unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = user.Id, token = currentToken, Area = "" }, Request.Scheme);
-                }
-                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", token));
+                var tokenSubscribe = email.SubscribeToken;
+                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = email.UserId, Area = "" }, Request.Scheme);
+                var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", email.EmailToken));
                 var sendEmailModel = new SendEDMModel
                 {
-                    EmailAddress = user.Email,
+                    EmailAddress = email.Email,
                     EmailTemplatePath = SendMailTemplate,
                     EmailTitle = model.EmailTitle,
                     EmailContent = emailContent,
@@ -347,17 +346,13 @@
                     BaseUrl = baseUrl
                 };
                 var resultSendMail =  emailService.SendMailEDMWithTemplate(sendEmailModel);
-                var emailData = new EmailDetailModel
+                var updateStatusCmd = new UpdateEmailStatusCommand
                 {
-                    EmailId = model.Id,
-                    UserId = user.Id,
-                    EmailAddress = user.Email,
-                    EmailContent = emailContent,
-                    EmailTitle = model.EmailTitle,
-                    TokenId = token,
+                    _EmailId = model.Id,
+                    _UserId = email.UserId,
                     Status = resultSendMail.Code
                 };
-                var result =  await emailService.CreateEmailDetailAsync(emailData);
+                var result =  await emailService.UpdateEmailStatusAsync(updateStatusCmd);
                 if (result.IsSuccessful)
                 {
                     sentNumbers++;

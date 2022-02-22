@@ -120,4 +120,24 @@
     }
 }
 
+.send-multiple-select {
+    max-height: 10rem;
+}
+
+.multiselect-container {
+    width: 100% !important;
+}
+
+.multiselect-native-select .multiselect {
+    height: 4rem;
+    padding: 0.8rem;
+}
+
+.multiselect-option, .multiselect-all {
+    .form-check-label {
+        padding-left: 0.8rem;
+        font-size: 1.4rem;
+    }
+}
+
 

@@ -41,6 +41,7 @@
     }
     function HandleValidate() {
         var isValid = true;
+        var users = $("#users").val();
         if (CKEDITOR.instances.emailContent.getData().trim() === "") {
             $('.email_content .help-block').html('Email Content is required');
             isValid = false;
@@ -50,10 +51,24 @@
             $('.email_title .help-block').html('Subject is required');
             isValid = false;
         }
+        if (typeof users !== "undefined" && users.length === 0) {
+            $('.users-block .help-block').html('Select users to send');
+            isValid = false;
+        }
         return isValid;
     }
 
     function HandleProcessForm() {
+        $('#users').multiselect({
+            includeSelectAllOption: true, // add select all option as usual
+            filterPlaceholder: 'Search',
+            enableCaseInsensitiveFiltering: true,
+            enableFiltering: true,
+            maxHeight: 200,
+            buttonWidth: '80rem',
+            buttomPadding: '10rem',
+            numberDisplayed: 6
+        });
         $('input[name="emailTitle"], input[name="emailReturnLink"]').on('keyup', function () {
             $(this).parent().find('.help-block').html('');
             $(this).removeClass('has-error');
@@ -137,6 +152,11 @@
         data += "&emailContent=" + encodeURIComponent(emailContent);
         $('.button').prop('disabled', true);
         $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
+        var users = $("#users").val();
+        if (typeof users !== "undefined") {
+            data += "&users=" + users.toString();
+        }
+        
         $.ajax({
             url: url,
             type: "POST",

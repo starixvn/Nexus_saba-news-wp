@@ -4,7 +4,7 @@
 
     public class UpdateEmailCommand : BaseNonQueryCommand
     {
-        public int EmailId { get; set; }
+        public int _EmailId { get; set; }
 
         public string EmailTitle { get; set; }
 
@@ -18,8 +18,10 @@
 
         public int Status { get; set; }
 
+        public string Users { get; set; }
+
         public override string GetSettingKey() => "email_update";
 
-        public override bool IsValid() => EmailId > 0;
+        public override bool IsValid() => _EmailId > 0;
     }
 }

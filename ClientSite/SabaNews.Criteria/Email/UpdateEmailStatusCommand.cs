@@ -10,6 +10,6 @@
 
         public override string GetSettingKey() => "email_detail_update_status";
 
-        public override bool IsValid() => _EmailId > 0;
+        public override bool IsValid() => true;
     }
 }
