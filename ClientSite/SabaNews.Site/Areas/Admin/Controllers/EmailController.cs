@@ -336,7 +336,7 @@
             foreach (var email in emails)
             {
                 var tokenSubscribe = email.SubscribeToken;
-                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = email.UserId, Area = "" }, Request.Scheme);
+                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
                 var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", email.EmailToken));
                 var sendEmailModel = new SendEDMModel
                 {
