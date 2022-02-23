@@ -1,5 +1,5 @@
 ﻿@using SabaNews.Resources;
-
+@using SabaNews.Core.Constants;
 <table class="custom-table detail-table text-center">
     <tr>
         <th width="3%">@ViewResources.STT</th>
@@ -22,21 +22,21 @@
 			<td>@sendDate</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
             <td>
-                @if (detail.Status == 0)
+                @if (detail.Status == EDMStatus.EmailDetailSentSuccessful)
 				{
 					@ViewResources.Successful;
 				}
-				else if (detail.Status == 1)
+				else if (detail.Status == EDMStatus.EmailDetailSentFailed)
 				{
 					@ViewResources.Failed;
 				} 
-				else if (detail.Status == 2)
+				else if (detail.Status == EDMStatus.EmailDetailNew)
 				{
 					@ViewResources.New;
 				}
             </td>
 			<td>
-				@if (detail.Status != 0)
+				@if (detail.Status != EDMStatus.EmailDetailSentSuccessful)
 				{
 					<p class="table-control">
 						<a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">

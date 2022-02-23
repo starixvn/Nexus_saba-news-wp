@@ -236,7 +236,7 @@
             var emailFailedParam = new FilterEmailDetailCriteria
             {
                 EmailID = emailId,
-                Status = 1,
+                Status = EDMStatus.EmailDetailSentFailed,
                 Start = Constants.FromFirstItem,
                 End = Constants.Total
             };
