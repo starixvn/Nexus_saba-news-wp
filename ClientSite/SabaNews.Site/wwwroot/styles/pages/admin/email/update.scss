@@ -134,10 +134,12 @@
 }
 
 .multiselect-option, .multiselect-all {
+    margin: 0.5rem 0;
     .form-check-label {
         padding-left: 0.8rem;
         font-size: 1.4rem;
     }
+
 }
 
 .multiselect-search {

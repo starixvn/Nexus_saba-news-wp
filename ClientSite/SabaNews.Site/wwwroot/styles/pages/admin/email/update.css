@@ -269,9 +269,11 @@ button {
   height: 4rem;
   padding: 0.8rem; }
 
-.multiselect-option .form-check-label, .multiselect-all .form-check-label {
-  padding-left: 0.8rem;
-  font-size: 1.4rem; }
+.multiselect-option, .multiselect-all {
+  margin: 0.5rem 0; }
+  .multiselect-option .form-check-label, .multiselect-all .form-check-label {
+    padding-left: 0.8rem;
+    font-size: 1.4rem; }
 
 .multiselect-search {
   font-size: 1.4rem;
