@@ -1,14 +1,15 @@
 ﻿@using SabaNews.Resources;
 
 <table class="custom-table detail-table text-center">
-	<tr>
-		<th width="3%">@ViewResources.STT</th>
-		<th>@ViewResources.Email</th>
-		<th width="15%">@ViewResources.SentDate</th>
-		<th width="15%">@ViewResources.UserInteraction</th>
-		<th width="15%">@ViewResources.Status</th>
-		<th width="15%">@ViewResources.Action</th>
-	</tr>
+    <tr>
+        <th width="3%">@ViewResources.STT</th>
+        <th width="15%">@ViewResources.Username</th>
+        <th>@ViewResources.Email</th>
+        <th width="15%">@ViewResources.SentDate</th>
+        <th width="15%">@ViewResources.UserInteraction</th>
+        <th width="15%">@ViewResources.Status</th>
+        <th width="15%">@ViewResources.Action</th>
+    </tr>
 	@{ var stt = 0; }
 	@foreach (var detail in Model.ListEmailDetails)
 	{
@@ -16,6 +17,7 @@
 		stt++;
 		<tr>
 			<td>@stt</td>
+			<td class="text-left">@detail.Username</td>
 			<td class="text-left">@detail.EmailAddress</td>
 			<td>@sendDate</td>
 			<td>@Html.Raw(detail.IsUserClicked == 1 ? "<b>Clicked</b>" : "None")</td>
