@@ -13,7 +13,7 @@
 	@{ var stt = 0; }
 	@foreach (var detail in Model.ListEmailDetails)
 	{
-		var sendDate = SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(detail.SendTime);
+		var sendDate = detail.SendTime == DateTime.MinValue ? "None" : SabaNews.Core.Helper.DateTimeUtilize.ChangeTimeZoneToClient(detail.SendTime);
 		stt++;
 		<tr>
 			<td>@stt</td>
