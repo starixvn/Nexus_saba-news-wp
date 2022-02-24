@@ -202,11 +202,11 @@
         <Setting Key="email_detail_create" SpName="email_detail_create" DbName="sabasports" Plain="0" />
         <Setting Key="email_detail_verify_token" SpName="email_detail_verify_token" DbName="sabasports" Plain="0" />
         <Setting Key="email_get_by_user" SpName="email_get_by_user" DbName="sabasports" Plain="0" />
-        <Setting Key="email_detail_filter" SpName="email_detail_filter" DbName="sabasports" Plain="0" />
-        <Setting Key="email_detail_get" SpName="email_detail_get" DbName="sabasports" Plain="0" />
-        <Setting Key="email_detail_update_status" SpName="email_detail_update_status" DbName="sabasports" Plain="0" />
-        <Setting Key="email_get_by_id" SpName="email_get_by_id" DbName="sabasports" Plain="0" />
-        <Setting Key="email_get_all" SpName="email_get_all" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_filter" SpName="email_detail_filter_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_get" SpName="email_detail_get_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_update_status" SpName="email_detail_update_status_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="email_get_by_id" SpName="email_get_by_id_xtest" DbName="sabasports" Plain="0" />
+        <Setting Key="email_get_all" SpName="email_get_all_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="email_update_status" SpName="email_update_status" DbName="sabasports" Plain="0" />
         <Setting Key="email_update" SpName="email_update_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="email_get_for_send" SpName="email_get_for_send" DbName="sabasports" Plain="0" />
