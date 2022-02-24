@@ -41,14 +41,7 @@
 				}
 			</td>
 			<td class="text-right">
-				@if (email.TotalSent > 0)
-				{
-					<a href="@Url.Action("Detail", "Email", new { emailId = email.Id })">@email.TotalSent</a>
-				}
-				else
-				{
 					@email.TotalSent
-				}
 			</td>
 			<td class="text-right">@email.TotalClicked / @rate</td>
 			<td>
