@@ -113,7 +113,7 @@
 
             if (result.IsSuccessful)
             {
-                userNumber = await SendMultiple(model);
+                userNumber = await SendMultiple(model.Id);
             }
             var redirectLink = Url.Action("Index", Constants.Email);
             return Json(new { result, userNumber, redirectLink });
@@ -166,7 +166,7 @@
 
             if (result.IsSuccessful)
             {
-                userNumber = await SendMultiple(model);
+                userNumber = await SendMultiple(model.Id);
             }
             return Json(new { result, userNumber });
         }
@@ -208,13 +208,12 @@
         [HttpPost]
         public async Task<ActionResult> SendEmail(int emailId)
         {
-            var email = await emailService.GetEmailByIdAsync(new GetEmailByIdCriteria { Id = emailId });
             var result = await emailService.UpdateStatusAsync(new UpdateStatusCommand { EmailId = emailId, Status = Constants.EmailSent });
             var userNumber = 0;
             
             if (result.IsSuccessful)
             {
-                userNumber = await SendMultiple(email);
+                userNumber = await SendMultiple(emailId);
             }
             return Json(new { result, userNumber });
         }
@@ -321,7 +320,8 @@
                     SubscribeToken = detail.SubscribeToken,
                     EmailToken = detail.TokenId
                 };
-                await Send(sendModel);
+                var resultSend = await Send(sendModel);
+                result.Message = result.Message + " - " + resultSend.Message;
             }
             return Json(new { result });
         }
@@ -331,6 +331,81 @@
         {
             var result = await emailService.RemoveEmailDetailAsync(new RemoveEmailDetailCommand { EmailId = emailId, UserId = userId });
             return Json(result);
+        }
+
+        
+
+        public async Task<ActionResult> ResendEmail(int userId, int emailId)
+        {
+            var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
+            var sendModel = new SendEmailDetailModel
+            {
+                EmailId = emailId,
+                UserId = email.UserId,
+                EmailContent = email.EmailContent,
+                EmailAddress = email.EmailAddress,
+                EmailTitle = email.EmailTitle,
+                SubscribeToken = email.SubscribeToken,
+                EmailToken = email.TokenId
+            };
+            var resultSend = await Send(sendModel);
+            return Json(resultSend);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ResendAll(int emailId)
+        {
+            var param = new FilterEmailDetailCriteria
+            {
+                EmailID = emailId,
+                Status = 1,
+                Start = Constants.FromFirstItem,
+                End = Constants.Total
+            };
+            var emails = await emailService.FilterEmailDetailAsync(param);
+            var sentNumber = 0;
+            foreach (var email in emails)
+            {
+                var sendModel = new SendEmailDetailModel
+                {
+                    EmailId = emailId,
+                    UserId = email.UserId,
+                    EmailContent = email.EmailContent,
+                    EmailAddress = email.EmailAddress,
+                    EmailTitle = email.EmailTitle,
+                    SubscribeToken = email.SubscribeToken,
+                    EmailToken = email.TokenId
+                };
+                var resultSend = await Send(sendModel);
+                sentNumber = resultSend.IsSuccessful ? ++sentNumber : sentNumber;
+            }
+            return Json(sentNumber);
+        }
+
+        public async Task<int> SendMultiple(int emailId)
+        {
+            var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = emailId });
+            var sentNumbers = 0;
+            foreach (var email in emails)
+            {
+                var sendModel = new SendEmailDetailModel
+                {
+                    EmailId = emailId,
+                    UserId = email.UserId,
+                    EmailContent = email.EmailContent,
+                    EmailAddress = email.Email,
+                    EmailTitle = email.EmailTitle,
+                    SubscribeToken = email.SubscribeToken,
+                    EmailToken = email.EmailToken
+                };
+                var resultSend = await Send(sendModel);
+                
+                if (resultSend.IsSuccessful)
+                {
+                    sentNumbers++;
+                }
+            }
+            return sentNumbers;
         }
 
         public async Task<CommandResult> Send(SendEmailDetailModel model)
@@ -354,94 +429,10 @@
                 Status = resultSendMail.Code
             };
             var result = await emailService.UpdateEmailStatusAsync(updateStatusCmd);
+            result.Message = result.Message + " - " + resultSendMail.Message;
             return result;
         }
 
-        public async Task<ActionResult> ResendEmail(int userId, int emailId)
-        {
-            var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
-            var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
-            var emailContent = email.EmailContent.Replace("{token}", string.Concat("token=", email.TokenId));
-            var sendEmailModel = new SendEDMModel
-            {
-                EmailAddress = email.EmailAddress,
-                EmailTemplatePath = SendMailTemplate,
-                EmailTitle = email.EmailTitle,
-                EmailContent = emailContent,
-                SubscribeLink = unsubcribeLink,
-                BaseUrl = baseUrl
-            };
-            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
-            await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = userId });
-            return Json(resultSendMail);
-        }
 
-        [HttpPost]
-        public async Task<ActionResult> ResendAll(int emailId)
-        {
-            var param = new FilterEmailDetailCriteria
-            {
-                EmailID = emailId,
-                Status = 1,
-                Start = Constants.FromFirstItem,
-                End = Constants.Total
-            };
-            var emails = await emailService.FilterEmailDetailAsync(param);
-            var sentNumber = 0;
-            foreach (var email in emails)
-            {
-                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
-                var emailContent = email.EmailContent.Replace("{token}", string.Concat("token=", email.TokenId));
-                var sendEmailModel = new SendEDMModel
-                {
-                    EmailAddress = email.EmailAddress,
-                    EmailTemplatePath = SendMailTemplate,
-                    EmailTitle = email.EmailTitle,
-                    EmailContent = emailContent,
-                    SubscribeLink = unsubcribeLink,
-                    BaseUrl = baseUrl
-                };
-                var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
-                await emailService.UpdateEmailStatusAsync(new UpdateEmailStatusCommand { Status = resultSendMail.Code, _EmailId = emailId, _UserId = email.UserId });
-                sentNumber = resultSendMail.IsSuccessful ? ++sentNumber : sentNumber;
-            }
-            return Json(sentNumber);
-        }
-
-        public async Task<int> SendMultiple(EmailModel model)
-        {
-            var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = model.Id });
-            var sentNumbers = 0;
-            foreach (var email in emails)
-            {
-                var tokenSubscribe = email.SubscribeToken;
-                var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = email.UserId, token = email.SubscribeToken, Area = "" }, Request.Scheme);
-                var emailContent = email.EmailContent.Replace("{token}", string.Concat("token=", email.EmailToken));
-                var sendEmailModel = new SendEDMModel
-                {
-                    EmailAddress = email.Email,
-                    EmailTemplatePath = SendMailTemplate,
-                    EmailTitle = email.EmailTitle,
-                    EmailContent = emailContent,
-                    SubscribeLink = unsubcribeLink,
-                    BaseUrl = baseUrl
-                };
-                var resultSendMail =  emailService.SendMailEDMWithTemplate(sendEmailModel);
-                var updateStatusCmd = new UpdateEmailStatusCommand
-                {
-                    _EmailId = model.Id,
-                    _UserId = email.UserId,
-                    Status = resultSendMail.Code
-                };
-                var result =  await emailService.UpdateEmailStatusAsync(updateStatusCmd);
-                if (result.IsSuccessful)
-                {
-                    sentNumbers++;
-                }
-            }
-            return sentNumbers;
-        }
-
-      
     }
 }
