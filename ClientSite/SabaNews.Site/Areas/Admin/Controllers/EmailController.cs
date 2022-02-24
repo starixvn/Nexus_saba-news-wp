@@ -421,7 +421,7 @@
                 {
                     EmailAddress = email.Email,
                     EmailTemplatePath = SendMailTemplate,
-                    EmailTitle = model.EmailTitle,
+                    EmailTitle = email.EmailTitle,
                     EmailContent = emailContent,
                     SubscribeLink = unsubcribeLink,
                     BaseUrl = baseUrl
