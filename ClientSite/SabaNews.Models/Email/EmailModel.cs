@@ -25,6 +25,8 @@ namespace SabaNews.Models.Email
 
         public int TotalSent { get; set; }
 
+        public int TotalCreate { get; set; }
+
         public int TotalClicked { get; set; }
 
         public DateTime CreatedDate { get; set; }

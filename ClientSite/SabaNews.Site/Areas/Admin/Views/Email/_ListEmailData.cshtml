@@ -1,16 +1,17 @@
 ﻿@using SabaNews.Resources;
 <table class="custom-table text-center">
-	<tr>
-		<th width="3%">@ViewResources.STT</th>
-		<th width="18%">@ViewResources.Subject</th>
-		<th width="8%">@ViewResources.Content</th>
-		<th width="12%">@ViewResources.CreatedDate</th>
-		<th width="10%">@ViewResources.CreatedBy</th>
-		<th width="8%">@ViewResources.Sendings</th>
-		<th width="10%">@ViewResources.Clicks / @ViewResources.Percentage</th>
-		<th width="5%">@ViewResources.Status</th>
-		<th width="10%">@ViewResources.Action</th>
-	</tr>
+    <tr>
+        <th width="3%">@ViewResources.STT</th>
+        <th width="18%">@ViewResources.Subject</th>
+        <th width="8%">@ViewResources.Content</th>
+        <th width="12%">@ViewResources.CreatedDate</th>
+        <th width="10%">@ViewResources.CreatedBy</th>
+        <th width="6%">Total Create</th>
+        <th width="6%">@ViewResources.Sendings</th>
+        <th width="10%">@ViewResources.Clicks / @ViewResources.Percentage</th>
+        <th width="5%">@ViewResources.Status</th>
+        <th width="10%">@ViewResources.Action</th>
+    </tr>
 
 	@{ var stt = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
 	@foreach (var email in Model.Emails)
@@ -29,6 +30,16 @@
 			</td>
 			<td>@createdDate</td>
 			<td class="text-left">@email.CreatedName</td>
+			<td class="text-right">
+				@if (email.TotalCreate > 0)
+				{
+					<a href="@Url.Action("Detail", "Email", new { emailId = email.Id })">@email.TotalCreate</a>
+				}
+				else
+				{
+					@email.TotalCreate
+				}
+			</td>
 			<td class="text-right">
 				@if (email.TotalSent > 0)
 				{
