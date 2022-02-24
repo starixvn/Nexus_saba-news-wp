@@ -113,7 +113,7 @@
 
             if (result.IsSuccessful)
             {
-                userNumber = await Send(model);
+                userNumber = await SendMultiple(model);
             }
             var redirectLink = Url.Action("Index", Constants.Email);
             return Json(new { result, userNumber, redirectLink });
@@ -166,7 +166,7 @@
 
             if (result.IsSuccessful)
             {
-                userNumber = await Send(model);
+                userNumber = await SendMultiple(model);
             }
             return Json(new { result, userNumber });
         }
@@ -214,7 +214,7 @@
             
             if (result.IsSuccessful)
             {
-                userNumber = await Send(email);
+                userNumber = await SendMultiple(email);
             }
             return Json(new { result, userNumber });
         }
@@ -278,6 +278,85 @@
             return PartialView("_ListEmailDetailData", model);
         }
 
+        public async Task<ActionResult> EditDetail(int emailId, int userId)
+        {
+            var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
+            if (email == null || email.Status != EDMStatus.EmailDetailNew)
+            {
+                return Redirect(Url.Action("Detail", Constants.Email, new { emailId }));
+            }
+            var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
+
+            var model = new EmailDetailEditViewModel
+            {
+                Email = email,
+                RawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}"),
+                UsersForTest = await userService.GetAllUserAsync(new GetAllUserCriteria())
+            };
+            ViewBag.rawUrl = rawUrl;
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveEditDetail(UpdateEmailDetailCommand param)
+        {
+            var result = await emailService.UpdateEmailDetailAsync(param);
+            return Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SaveAndSendEditDetail(UpdateEmailDetailCommand param)
+        {
+            var result = await emailService.UpdateEmailDetailAsync(param);
+            if (result.IsSuccessful)
+            {
+                var detail = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { EmailId = param.EmailId, UserId = param.UserId });
+                var sendModel = new SendEmailDetailModel
+                {
+                    EmailId = detail.EmailId,
+                    UserId = detail.UserId,
+                    EmailContent = detail.EmailContent,
+                    EmailAddress = detail.EmailAddress,
+                    EmailTitle = detail.EmailTitle,
+                    SubscribeToken = detail.SubscribeToken,
+                    EmailToken = detail.TokenId
+                };
+                await Send(sendModel);
+            }
+            return Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteDetail(int emailId, int userId)
+        {
+            var result = await emailService.RemoveEmailDetailAsync(new RemoveEmailDetailCommand { EmailId = emailId, UserId = userId });
+            return Json(result);
+        }
+
+        public async Task<CommandResult> Send(SendEmailDetailModel model)
+        {
+            var unsubcribeLink = Url.Action(Constants.ConfirmUnsubscribe, Constants.ProfileAction, new { userId = model.UserId, token = model.SubscribeToken, Area = "" }, Request.Scheme);
+            var emailContent = model.EmailContent.Replace("{token}", string.Concat("token=", model.EmailToken));
+            var sendEmailModel = new SendEDMModel
+            {
+                EmailAddress = model.EmailAddress,
+                EmailTemplatePath = SendMailTemplate,
+                EmailTitle = model.EmailTitle,
+                EmailContent = emailContent,
+                SubscribeLink = unsubcribeLink,
+                BaseUrl = baseUrl
+            };
+            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
+            var updateStatusCmd = new UpdateEmailStatusCommand
+            {
+                _EmailId = model.EmailId,
+                _UserId = model.UserId,
+                Status = resultSendMail.Code
+            };
+            var result = await emailService.UpdateEmailStatusAsync(updateStatusCmd);
+            return result;
+        }
+
         public async Task<ActionResult> ResendEmail(int userId, int emailId)
         {
             var email = await emailService.GetEmailDetailAsync(new GetDetailEmailDetailCriteria { UserId = userId, EmailId = emailId });
@@ -329,7 +408,7 @@
             return Json(sentNumber);
         }
 
-        public async Task<int> Send(EmailModel model)
+        public async Task<int> SendMultiple(EmailModel model)
         {
             var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = model.Id });
             var sentNumbers = 0;

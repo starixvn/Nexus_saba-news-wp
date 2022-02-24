@@ -42,7 +42,6 @@
     function HandleValidate() {
         var isValid = true;
         var users = $("#users").val();
-        console.log(users.length);
         if (CKEDITOR.instances.emailContent.getData().trim() === "") {
             $('.email_content .help-block').html('Email Content is required');
             isValid = false;
@@ -95,6 +94,7 @@
             var dummy = document.createElement('input'),
                 text = $('#embeddedLink').val();
 
+            console.log(text);
             document.body.appendChild(dummy);
             dummy.value = text;
             dummy.select();
@@ -138,6 +138,22 @@
             e.preventDefault();
             HandleSubmit("/Admin/Email/SaveEdit");
         });
+
+        $('.btn-save-as-edit').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveEdit");
+        });
+
+        $('.btn-save-edit-detail').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveEditDetail");
+        });
+
+        $('.btn-save-and-send-edit-detail').on('click', function (e) {
+            e.preventDefault();
+            HandleSubmit("/Admin/Email/SaveAndSendEditDetail");
+        });
+
 
         $('.confirm-action').on('click', function () {
             $('#ConfirmModal').modal('hide');

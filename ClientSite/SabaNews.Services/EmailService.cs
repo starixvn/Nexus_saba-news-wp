@@ -116,9 +116,19 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
+        public async Task<CommandResult> UpdateEmailDetailAsync(UpdateEmailDetailCommand command)
+        {
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
         public async Task<IEnumerable<EmailSendData>> GetEmailForSend(GetEmailForSendCriteria criteria)
         {
             return await baseService.GetDataAsync<EmailSendData>(criteria);
+        }
+
+        public async Task<CommandResult> RemoveEmailDetailAsync(RemoveEmailDetailCommand command)
+        {
+            return await baseService.ExecuteNonQueryAsync(command);
         }
 
         public CommandResult SendMailEDMWithTemplate(SendEDMModel model)

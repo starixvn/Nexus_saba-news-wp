@@ -34,6 +34,10 @@
 
         Task<CommandResult> UpdateEmailAsync(EmailModel model);
 
+        Task<CommandResult> UpdateEmailDetailAsync(UpdateEmailDetailCommand command);
+
+        Task<CommandResult> RemoveEmailDetailAsync(RemoveEmailDetailCommand command);
+
         Task<IEnumerable<EmailSendData>> GetEmailForSend(GetEmailForSendCriteria criteria);
     }
 }

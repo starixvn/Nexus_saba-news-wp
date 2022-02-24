@@ -2,6 +2,7 @@
 var edmDetail = (function ($) {
     var page = 1;
     var emailId = eId;
+    var currentUserId = 0;
     var search = "";
     var filterClicked = -1;
     var status = -1;
@@ -29,6 +30,14 @@ var edmDetail = (function ($) {
     }
 
     function HandleActionGridData() {
+        $('.view_content').click(function () {
+            var content = $(this).parent().find('.email_content').val();
+            var title = $(this).parent().find('.email_title').val();
+            $('#ViewEmailContent .modal-body').html(content);
+            $('#ViewEmailContent .title').html(title);
+            $('#ViewEmailContent').modal('show');
+        });
+
         $('.paging').on('click', function () {
             page = $(this).data('page');
             renderList();
@@ -39,6 +48,36 @@ var edmDetail = (function ($) {
             pageSize = $(this).val();
             page = 1;
             renderListEmail();
+        });
+
+        $('.delete-detail').on('click', function () {
+            console.log(123);
+            emailId = $(this).data('emailid');
+            currentUserId = $(this).data('userid');
+            $('#ConfirmModal .modal-body').html('Are you sure you want to delete this email?');
+            $('#ConfirmModal').modal('show');
+            $('#ConfirmModal .confirm-action').data('action', 'delete');
+        });
+
+        $('.confirm-action').on('click', function () {
+            $('#ConfirmModal').modal('hide');
+            $.blockUI({ message: '<div class="loading"><div class="ring"></div></div>' });
+            var action = $(this).data('action');
+            if (action === "delete") {
+                $.ajax({
+                    url: "/Admin/Email/DeleteDetail",
+                    type: "POST",
+                    data: { emailId, userId: currentUserId },
+                    success: function (res) {
+                        $.unblockUI();
+                        if (res.isSuccessful) {
+                            GetSuccessPopup('#NoticeModal', 'Delete Email Successfully');
+                        } else {
+                            GetErrorPopup('#NoticeModal', 'An error occurred while delete email, please try again');
+                        }
+                    }
+                });
+            } 
         });
 
         $('.resend-email').on('click', function () {

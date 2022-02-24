@@ -210,6 +210,8 @@
         <Setting Key="email_update_status" SpName="email_update_status" DbName="sabasports" Plain="0" />
         <Setting Key="email_update" SpName="email_update_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="email_get_for_send" SpName="email_get_for_send" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_update" SpName="email_detail_update" DbName="sabasports" Plain="0" />
+        <Setting Key="email_detail_remove" SpName="email_detail_remove" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Poll">
         <Setting Key="poll_get" SpName="poll_get" DbName="sabasports" Plain="0" />
