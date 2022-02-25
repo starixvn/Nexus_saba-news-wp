@@ -14,12 +14,6 @@
         private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly string baseUrl;
-        private const string DefaultDestopTopUrl = "images/Desktop_320x70.png";
-        private const string DefaultMobileTopUrl = "images/Mobile_375x200.png";
-        private const string DefaultDesktopCenterUrl = "images/banner.jpg";
-        private const string DefaultDesktopLeftUrl = "images/ads.png";
-        private const string DefaultDesktopRightUrl = "images/ads.png";
-        private const string DefaultMobileCenterUrl = "images/banner_mobile_domain.png";
 
         public BannerService(IBaseService baseService, IConfiguration configuration, ISessionService sessionService)
         {

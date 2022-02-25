@@ -6,7 +6,6 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Criteria.Auth;
     using SabaNews.Criteria.Email;
     using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;

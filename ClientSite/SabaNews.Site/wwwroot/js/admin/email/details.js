@@ -51,7 +51,6 @@ var edmDetail = (function ($) {
         });
 
         $('.delete-detail').on('click', function () {
-            console.log(123);
             emailId = $(this).data('emailid');
             currentUserId = $(this).data('userid');
             $('#ConfirmModal .modal-body').html('Are you sure you want to delete this email?');
