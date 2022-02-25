@@ -47,7 +47,7 @@ var edmDetail = (function ($) {
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
             page = 1;
-            renderListEmail();
+            renderList();
         });
 
         $('.delete-detail').on('click', function () {
