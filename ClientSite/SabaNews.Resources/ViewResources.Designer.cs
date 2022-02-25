@@ -1762,6 +1762,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send to users.
+        /// </summary>
+        public static string SendToUsers {
+            get {
+                return ResourceManager.GetString("SendToUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sent.
         /// </summary>
         public static string Sent {
@@ -1983,6 +1992,15 @@ namespace SabaNews.Resources {
         public static string Total {
             get {
                 return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Users.
+        /// </summary>
+        public static string TotalUsers {
+            get {
+                return ResourceManager.GetString("TotalUsers", resourceCulture);
             }
         }
         

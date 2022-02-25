@@ -28,14 +28,8 @@
             <input type="hidden" name="rawUrl" id="baseUrl" value="@Model.RawUrl" />
             <input type="hidden" name="embeddedLink" id="embeddedLink" value="@Model.Email.EmbeddedLink" />
 
-            <div class="form-input custom-with-input email_title">
-                <p class="label-admin">@ViewResources.Subject</p>
-                <input type="text" class="custom-input" placeholder="" name="emailTitle" value="@Model.Email.EmailTitle" />
-                <p class="help-block"></p>
-            </div>
-
             <div class="form-input custom-with-input users-block">
-                <p class="label-admin">Send to users</p>
+                <p class="label-admin">@ViewResources.SendToUsers</p>
                 <select class="send-multiple-select" id="users" multiple="multiple">
                     @foreach (var user in Model.UsersForSend)
                     {
@@ -51,6 +45,12 @@
                         <option value="@user.Id" @selected data-email="@user.Email">@user.Name</option>
                     }
                 </select>
+                <p class="help-block"></p>
+            </div>
+
+            <div class="form-input custom-with-input email_title">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input type="text" class="custom-input" placeholder="" name="emailTitle" value="@Model.Email.EmailTitle" />
                 <p class="help-block"></p>
             </div>
 

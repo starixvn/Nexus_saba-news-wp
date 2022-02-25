@@ -846,4 +846,10 @@
   <data name="Remove" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="SendToUsers" xml:space="preserve">
+    <value>Send to users</value>
+  </data>
+  <data name="TotalUsers" xml:space="preserve">
+    <value>Total Users</value>
+  </data>
 </root>

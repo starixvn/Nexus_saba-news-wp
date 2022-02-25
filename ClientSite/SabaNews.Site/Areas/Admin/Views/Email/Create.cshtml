@@ -27,21 +27,12 @@
 
 <section class="page-content">
     <div class="main-list">
-        
-
         <form id="form-sendmail" class="form-main">
             <input type="hidden" name="rawUrl" id="baseUrl" value="@ViewBag.rawUrl" />
             <input type="hidden" name="embeddedLink" id="embeddedLink" value="" />
 
-            <div class="form-input custom-with-input  email_title">
-                <p class="label-admin">@ViewResources.Subject</p>
-                <input type="text" class="custom-input" placeholder="" name="emailTitle" />
-                <p class="help-block"></p>
-            </div>
-
-
             <div class="form-input custom-with-input users-block">
-                <p class="label-admin">Send to users</p>
+                <p class="label-admin">@ViewResources.SendToUsers </p>
                 <select class="send-multiple-select" id="users" multiple="multiple">
                     @foreach (var user in Model.UsersForSend)
                     {
@@ -50,7 +41,12 @@
                 </select>
                 <p class="help-block"></p>
             </div>
-            
+
+            <div class="form-input custom-with-input  email_title">
+                <p class="label-admin">@ViewResources.Subject</p>
+                <input type="text" class="custom-input" placeholder="" name="emailTitle" />
+                <p class="help-block"></p>
+            </div>
 
             <div class="form-input custom-with-input email_link">
                 <p class="label-admin">@ViewResources.OriginalUrl</p>
