@@ -41,32 +41,43 @@
 					@ViewResources.New;
 				}
             </td>
-			<td>
-				@if (detail.Status != EDMStatus.EmailDetailSentSuccessful)
-				{
-					<p class="table-control">
-						<a href="@Url.Action("EditDetail", "Email", new { emailId = detail.EmailId, userId = detail.UserId })" class="action action-edit edit-email" data-emailid="@detail.EmailId">
+            <td>
+                @if (detail.Status == EDMStatus.EmailDetailNew)
+                {
+                    <p class="table-control">
+                        <a href="@Url.Action("EditDetail", "Email", new { emailId = detail.EmailId, userId = detail.UserId })" class="action action-edit edit-email" data-emailid="@detail.EmailId">
                             <i class="icon-edit-admin"></i>
                             <span class="tooltip-menu">
                                 Edit
                             </span>
                         </a>
 
-						<a href="javascript:;" class="action action-delete delete-detail" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
+                        <a href="javascript:;" class="action action-delete delete-detail" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
                             <i class="icon-delete-admin"></i>
                             <span class="tooltip-menu">
                                 Delete
                             </span>
                         </a>
-						<a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
-							<i class="icon-resend-admin"></i>
-							<span class="tooltip-menu">
-								@(detail.Status == 1 ? "Resend" : "Send")
-							</span>
-						</a>
-					</p>
-				}
-			</td>
+                        <a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
+                            <i class="icon-send-admin"></i>
+                            <span class="tooltip-menu">
+                                Send
+                            </span>
+                        </a>
+                    </p>
+                }
+                else if (detail.Status == EDMStatus.EmailDetailSentFailed)
+                {
+                    <p class="table-control">
+                        <a href="javascript:;" class="action action-resend resend-email" data-emailid="@detail.EmailId" data-userid="@detail.UserId">
+                            <i class="icon-resend-admin"></i>
+                            <span class="tooltip-menu">
+                                Resend
+                            </span>
+                        </a>
+                    </p>
+                }
+            </td>
 		</tr>
 	}
 	@if (Model.ListEmailDetails.Count == 0)
