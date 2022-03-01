@@ -42,7 +42,7 @@
                 model.MembershipEventDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
 
             }
-            return View(model);
+            return View("~/Views/Event/MembershipEventResult.cshtml", model);
         }
 
         //[Route("/su-kien-ruoc-loc-tan-nien/ket-qua")]
