@@ -189,16 +189,16 @@
                 {
                     <div class="title-event">
                         <img src="~/images/event/line.png" class="img-res" />
-                        <span>Nhập Số May Mắn</span>
+                        <span>Sự kiện đã kết thúc</span>
                     </div>
                     <div class="field-number field-number-default">
                         <form class="form-event" id="membership-event-form">
                             <div class="form-input">
-                                <input type="text" min="0" max="9" maxlength="1" id="number1" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number2" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                                <input type="text" readonly min="0" max="9" maxlength="1" id="number1" class="input-field-event input-event-number" />
+                                <input type="text" readonly min="0" max="9" maxlength="1" id="number2" class="input-field-event input-event-number" />
+                                <input type="text" readonly min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
                             </div>
-                            <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
+                            <button type="button" disabled class="btn btn-event btn-submit-number active">Gửi</button>
                         </form>
                         <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
