@@ -2060,6 +2060,10 @@ input[type=number] {
         @media (max-device-width: 767px) {
           .block-group .field-number span img {
             width: 9.4rem; } }
+    .block-group .field-number.field-number-default {
+      opacity: .5; }
+      .block-group .field-number.field-number-default input, .block-group .field-number.field-number-default button {
+        cursor: not-allowed !important; }
   .block-group .block-list-connect .list-user {
     width: 100%;
     max-width: 85rem;

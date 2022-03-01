@@ -972,6 +972,14 @@ input[type=number] {
                 }
             }
         }
+
+        &.field-number-default {
+            opacity: .5;
+
+            input, button {
+                cursor: not-allowed !important;
+            }
+        }
     }
 
     .block-list-connect {
