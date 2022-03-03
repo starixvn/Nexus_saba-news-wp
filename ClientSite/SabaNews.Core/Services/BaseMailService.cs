@@ -26,6 +26,13 @@
     {
         private readonly MailConfigs mailConfigs;
         private readonly ILogger logger;
+        public const string SMTPServer = "smtp-broadcasts.postmarkapp.com";//"smtppro.zoho.com";
+        public const int Port = 587;
+        public const string Username = "PM-B-broadcast-pLXq-G2SplfOokpARLWq1";//"info@saba.vn";
+        public const string Password = "Hn8hAYM8QbXtPJb6DTv78BrQplnA5rrkTFIe";//"xj1cPe4fS4s4";
+        public const bool IsEnableSSL = false;
+        public const string MailFrom = "notifications@mailer.saba.vn";
+        public const string ReceiverEmail = "sabasports5@gmail.com";
 
         public BaseMailService(
             IOptionsSnapshot<MailConfigs> mailConfigs,
@@ -42,22 +49,29 @@
                 return new CommandResult { Message = Message.InvalidEmail  };
             }
             CommandResult result;
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("SABA Sports", MailFrom));
+            message.To.Add(new MailboxAddress(string.Empty, ReceiverEmail));
+            message.Subject = email.Subject;
+            //message.Headers.Add("X-PM-Message-Stream", "broadcast");
+            var builder = new BodyBuilder
+            {
+                HtmlBody = email.Body
+            };
+            message.Body = builder.ToMessageBody();
+
+            using var mailclient = new SmtpClient();
             try
             {
-                AppSettings.AppMailId = mailConfigs.AppMailId;
-                AppSettings.AppMailAddress = mailConfigs.AppMailAddress;
-                var mailItem = new MailRecord
-                {
-                    MailTo = email.ReceiverEmail,
-                    Title = mailConfigs.SenderName,
-                    Subject = email.Subject,
-                    Body = email.Body
-                };
+                mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+                mailclient.CheckCertificateRevocation = false;
+                mailclient.Connect(SMTPServer, Port, IsEnableSSL);
+                mailclient.Authenticate(Username, Password);
 
-                using var client = new MailDeliver();
-                client.SendMail(mailItem);
+                mailclient.Send(message);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
+
             catch (Exception ex)
             {
                 WriteLogError(email, ex);
