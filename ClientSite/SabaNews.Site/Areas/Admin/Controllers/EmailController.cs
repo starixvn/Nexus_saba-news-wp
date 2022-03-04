@@ -13,6 +13,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using System.Web;
 
@@ -385,6 +386,9 @@
         {
             var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = emailId });
             var sentNumbers = 0;
+            var batchCount = 1;
+            var batch = configuration.GetValue<int>("EDMSetting:Batch");
+            var delayEachBatch = configuration.GetValue<int>("EDMSetting:Delay");
             foreach (var email in emails)
             {
                 var sendModel = new SendEmailDetailModel
@@ -403,6 +407,12 @@
                 {
                     sentNumbers++;
                 }
+                if (batchCount == batch)
+                {
+                    Thread.Sleep(delayEachBatch);
+                    batchCount = 1;
+                }
+                batchCount++;
             }
             return sentNumbers;
         }
