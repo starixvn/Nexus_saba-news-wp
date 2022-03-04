@@ -138,16 +138,17 @@
             var body = rawBody.Replace("{content}", model.EmailContent)
                         .Replace("{unsubscribeLink}", model.SubscribeLink)
                         .Replace("{baseUrl}", model.BaseUrl);
-            return SendMail(model.EmailTitle, body, model.EmailAddress);
+            return SendEDM(model.EmailTitle, body, model.EmailAddress);
         }
 
-        public CommandResult SendMail(string subject, string body, string receiverEmail)
+        public CommandResult SendEDM(string subject, string body, string receiverEmail)
         {
             var email = new MailModel
             {
                 Subject = subject,
                 Body = body,
-                ReceiverEmail = receiverEmail
+                ReceiverEmail = receiverEmail,
+                IsSendEDM = true
             };
             return baseMailService.SendMail(email);
         }

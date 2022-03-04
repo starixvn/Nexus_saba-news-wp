@@ -14,5 +14,6 @@
         public string Password { get; set; }
         public string AppMailId { get; set; }
         public string AppMailAddress { get; set; }
+        public string MailFrom { get; set; }
     }
 }

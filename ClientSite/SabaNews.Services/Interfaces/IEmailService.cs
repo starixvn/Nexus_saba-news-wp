@@ -28,7 +28,7 @@
 
         CommandResult SendMailEDMWithTemplate(SendEDMModel model);
 
-        CommandResult SendMail(string subject, string body, string receiverEmail);
+        CommandResult SendEDM(string subject, string body, string receiverEmail);
 
         Task<CommandResult> UpdateStatusAsync(UpdateStatusCommand criteria);
 

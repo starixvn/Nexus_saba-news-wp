@@ -9,6 +9,7 @@
     using Fanex.MailDeliver.Model;
     using MailKit.Net.Smtp;
     using MailKit.Security;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using MimeKit;
@@ -24,34 +25,38 @@
 
     public class BaseMailService : IBaseMailService
     {
-        private readonly MailConfigs mailConfigs;
         private readonly ILogger logger;
-        public const string SMTPServer = "smtp-broadcasts.postmarkapp.com";//"smtppro.zoho.com";
-        public const int Port = 587;
-        public const string Username = "PM-B-broadcast-pLXq-G2SplfOokpARLWq1";//"info@saba.vn";
-        public const string Password = "Hn8hAYM8QbXtPJb6DTv78BrQplnA5rrkTFIe";//"xj1cPe4fS4s4";
-        public const bool IsEnableSSL = false;
-        public const string MailFrom = "notifications@mailer.saba.vn";
-        public const string ReceiverEmail = "sabasports5@gmail.com";
+        private readonly IConfiguration configuration;
 
         public BaseMailService(
-            IOptionsSnapshot<MailConfigs> mailConfigs,
-            ILogger<BaseMailService> logger)
+            ILogger<BaseMailService> logger,
+            IConfiguration configuration)
         {
-            this.mailConfigs = mailConfigs.Value;
             this.logger = logger;
+            this.configuration = configuration;
         }
 
         public CommandResult SendMail(MailModel email)
         {
+            MailConfigs mailConfigs;
+            if (email.IsSendEDM)
+            {
+                mailConfigs = configuration.GetSection("MailConfigsForBroadcast").Get<MailConfigs>();
+            }
+            else
+            {
+                mailConfigs = configuration.GetSection("MailConfigsForTransactional").Get<MailConfigs>();
+            }
+            
             if (email == null || !IsValidEmail(email.ReceiverEmail) || !mailConfigs.Enabled)
             {
-                return new CommandResult { Message = Message.InvalidEmail  };
+                return new CommandResult { Message = Message.InvalidEmail };
             }
+
             CommandResult result;
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("SABA Sports", MailFrom));
-            message.To.Add(new MailboxAddress(string.Empty, ReceiverEmail));
+            message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.MailFrom));
+            message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
             message.Subject = email.Subject;
             //message.Headers.Add("X-PM-Message-Stream", "broadcast");
             var builder = new BodyBuilder
@@ -65,9 +70,8 @@
             {
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
                 mailclient.CheckCertificateRevocation = false;
-                mailclient.Connect(SMTPServer, Port, IsEnableSSL);
-                mailclient.Authenticate(Username, Password);
-
+                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+                mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
                 mailclient.Send(message);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
@@ -77,7 +81,7 @@
                 WriteLogError(email, ex);
                 result = new CommandResult { Message = ex.Message };
             }
-
+            mailclient.Disconnect(true);
             return result;
         }
 
