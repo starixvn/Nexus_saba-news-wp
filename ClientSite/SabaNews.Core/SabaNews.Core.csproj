@@ -16,7 +16,7 @@
         <PackageReference Include="Fanex.Logging.Extensions.AspNetCore" Version="1.0.0" />
         <PackageReference Include="Fanex.Logging.Sentry" Version="1.0.6" />
         <PackageReference Include="Fanex.MailDeliver.MailClient" Version="2.0.4" />
-        <PackageReference Include="MailKit" Version="2.15.0" />
+        <PackageReference Include="MailKit" Version="3.1.1" />
         <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
         <PackageReference Include="Fanex.Logging.Extensions.Database" Version="1.0.8" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
