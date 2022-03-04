@@ -65,6 +65,7 @@
             try
             {
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+                mailclient.CheckCertificateRevocation = false;
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, SecureSocketOptions.StartTls);
                 if (mailConfigs.IsAuthenticate)
                 {
