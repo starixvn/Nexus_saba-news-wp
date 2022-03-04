@@ -8,7 +8,6 @@
     using SabaNews.Core.Models;
     using System;
     using System.IO;
-    using System.Net.Mail;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
@@ -50,33 +49,33 @@
             }
 
             CommandResult result;
-            var message = new MailMessage();
-            message.From = new MailAddress(mailConfigs.MailFrom, mailConfigs.SenderName);
-            message.To.Add(email.ReceiverEmail);
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.MailFrom));
+            message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
             message.Subject = email.Subject;
-            message.Body = email.Body;
-            message.IsBodyHtml = true;
-            message.BodyEncoding = System.Text.Encoding.UTF8;
-            message.SubjectEncoding = System.Text.Encoding.Default;
+            //message.Headers.Add("X-PM-Message-Stream", "broadcast");
+            var builder = new BodyBuilder
+            {
+                HtmlBody = email.Body
+            };
+            message.Body = builder.ToMessageBody();
 
-
-            var smtp = new System.Net.Mail.SmtpClient(mailConfigs.SmtpServer, mailConfigs.SmtpPort);
+            using var mailclient = new SmtpClient();
             try
             {
-                //if (mailConfigs.EnableSsl)
-                //{
-                    smtp.Credentials = new System.Net.NetworkCredential(mailConfigs.Username, mailConfigs.Password);
-                //}
-                smtp.Send(message);
-                logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
-                result = new CommandResult { Code = 0, Message = "Gửi Email thành công" };
-            }
-            catch (Exception e)
-            {
-                WriteLogError(email, e);
-                result = new CommandResult { Code = 1, Message = e.Message };
+                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+                mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
+                await mailclient.SendAsync(message);
+                //mailclient.Disconnect(true);
+                result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
 
+            catch (Exception ex)
+            {
+                WriteLogError(email, ex);
+                result = new CommandResult { Message = ex.Message };
+            }
+            
             return result;
         }
 
