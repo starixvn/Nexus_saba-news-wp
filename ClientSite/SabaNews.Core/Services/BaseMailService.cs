@@ -18,7 +18,7 @@
 
     public interface IBaseMailService
     {
-        CommandResult SendMail(MailModel email);
+        Task<CommandResult> SendMailAsync(MailModel email);
 
         string ReadTextFile(string filePath);
     }
@@ -36,7 +36,7 @@
             this.configuration = configuration;
         }
 
-        public CommandResult SendMail(MailModel email)
+        public async Task<CommandResult> SendMailAsync(MailModel email)
         {
             MailConfigs mailConfigs;
             if (email.IsSendEDM)
@@ -70,9 +70,9 @@
             {
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
                 mailclient.CheckCertificateRevocation = false;
-                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
-                mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
-                mailclient.Send(message);
+                await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+                await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
+                await mailclient.SendAsync(message);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
 
@@ -81,7 +81,7 @@
                 WriteLogError(email, ex);
                 result = new CommandResult { Message = ex.Message };
             }
-            mailclient.Disconnect(true);
+            await mailclient.DisconnectAsync(true);
             return result;
         }
 

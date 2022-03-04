@@ -193,7 +193,7 @@
                 SubscribeLink = "#",
                 BaseUrl = baseUrl
             };
-            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             var logCommand = new WriteLogCommand
             {
                 ActionId = LogAction.SendTestEDM,
@@ -420,7 +420,7 @@
                 SubscribeLink = unsubcribeLink,
                 BaseUrl = baseUrl
             };
-            var resultSendMail = emailService.SendMailEDMWithTemplate(sendEmailModel);
+            var resultSendMail = await emailService.SendMailEDMWithTemplateAsync(sendEmailModel);
             var updateStatusCmd = new UpdateEmailStatusCommand
             {
                 _EmailId = model.EmailId,

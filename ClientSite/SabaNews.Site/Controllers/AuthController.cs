@@ -70,7 +70,7 @@
                     return Json(commandResult);
                 }
                 string url = Url.Action("ConfirmEmail", "Auth", new { UserId = model.Id, token }, Request.Scheme);
-                authService.SendMailConfirmation(model.Email, url);
+                await authService.SendMailConfirmationAsync(model.Email, url);
             }
             return Json(commandResult);
         }
@@ -103,7 +103,7 @@
             }
             UserSession user = await authService.GetUserAsync(email);
             string url = Url.Action("ResetPassword", "Auth", new { UserId = user.Id, token }, Request.Scheme);
-            authService.SendMailResetPassword(user.Email, url);
+            await authService.SendMailResetPasswordAsync(user.Email, url);
             return Json(commandResult);
         }
 
