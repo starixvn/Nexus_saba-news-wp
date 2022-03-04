@@ -15,5 +15,6 @@
         public string AppMailId { get; set; }
         public string AppMailAddress { get; set; }
         public string MailFrom { get; set; }
+        public bool IsAuthenticate { get; set; }
     }
 }

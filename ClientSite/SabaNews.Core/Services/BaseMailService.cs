@@ -66,7 +66,10 @@
             {
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, SecureSocketOptions.StartTls);
-                mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
+                if (mailConfigs.IsAuthenticate)
+                {
+                    mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
+                }
                 await mailclient.SendAsync(message);
                 mailclient.Disconnect(true);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
