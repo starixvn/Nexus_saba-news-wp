@@ -76,13 +76,12 @@
                 await mailclient.SendAsync(message);
                 mailclient.Disconnect(true);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
-                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Message: {Message.SendEmailSuccessfully}"  );
+                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Subject: {email.Subject} - Message: {Message.SendEmailSuccessfully}"  );
             }
 
             catch (Exception ex)
             {
-                WriteLogError(email, ex);
-                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Message: {ex.Message}");
+                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Subject: {email.Subject} - Message: {ex.Message}");
                 result = new CommandResult { Message = ex.Message };
             }
             
