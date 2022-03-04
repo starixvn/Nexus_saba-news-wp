@@ -1,20 +1,15 @@
 ﻿namespace SabaNews.Core.Services
 {
+    using MailKit.Net.Smtp;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+    using MimeKit;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using System;
     using System.IO;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
-    using Fanex.MailDeliver.MailClient;
-    using Fanex.MailDeliver.MailClient.API;
-    using Fanex.MailDeliver.Model;
-    using MailKit.Net.Smtp;
-    using MailKit.Security;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    using MimeKit;
-    using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
 
     public interface IBaseMailService
     {
