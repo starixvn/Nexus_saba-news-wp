@@ -60,7 +60,7 @@
             message.SubjectEncoding = System.Text.Encoding.Default;
 
 
-            using System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(mailConfigs.SmtpServer, mailConfigs.SmtpPort);
+            var smtp = new System.Net.Mail.SmtpClient(mailConfigs.SmtpServer, mailConfigs.SmtpPort);
             try
             {
                 //if (mailConfigs.EnableSsl)
@@ -70,7 +70,6 @@
                 smtp.Send(message);
                 logger.LogInformation(string.Format("Receiver: {0}\n\tSubject: {1}", email.ReceiverEmail, email.Subject));
                 result = new CommandResult { Code = 0, Message = "Gửi Email thành công" };
-                message.Dispose();
             }
             catch (Exception e)
             {
