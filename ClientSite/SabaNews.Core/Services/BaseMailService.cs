@@ -63,9 +63,11 @@
             using var mailclient = new SmtpClient();
             try
             {
-                await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
-                await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
+                mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+                mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
                 await mailclient.SendAsync(message);
+                mailclient.Disconnect(true);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
 
@@ -74,7 +76,7 @@
                 WriteLogError(email, ex);
                 result = new CommandResult { Message = ex.Message };
             }
-            await mailclient.DisconnectAsync(true);
+            
             return result;
         }
 
