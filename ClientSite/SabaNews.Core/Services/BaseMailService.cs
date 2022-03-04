@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Core.Services
 {
     using MailKit.Net.Smtp;
+    using MailKit.Security;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using MimeKit;
@@ -64,8 +65,7 @@
             try
             {
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
-                mailclient.CheckCertificateRevocation = false;
-                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
+                mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, SecureSocketOptions.StartTls);
                 mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
                 await mailclient.SendAsync(message);
                 mailclient.Disconnect(true);
