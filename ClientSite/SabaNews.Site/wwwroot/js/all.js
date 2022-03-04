@@ -216,21 +216,5 @@ $(document).ready(function () {
         }
     });
 
-    var hidePopupEvent = localStorage.getItem('sabasports-hide-popup-event');
-    if (hidePopupEvent !== "1") {
-        setTimeout(function () {
-            $('#EventModal').modal('show');
-        }, 3000);
-    }
-    
-
-    $('#isHidePopupEvent').on('change', function () {
-        if ($(this).is(':checked')) {
-            localStorage.setItem("sabasports-hide-popup-event", "1");
-            $('#EventModal').modal('hide');
-        } else {
-            localStorage.setItem("sabasports-hide-popup-event", "0");
-
-        }
-    });
+    $('#EventModal').modal('hide');
 });
