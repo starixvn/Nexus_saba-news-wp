@@ -252,6 +252,10 @@ main {
     height: 4.8rem;
 }
 
+.btn-disabled {
+    background: #e0d3d3;
+}
+
 .modal-backdrop.show {
     position: fixed;
     top: 0;

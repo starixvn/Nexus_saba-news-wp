@@ -160,6 +160,8 @@
                 }
             },
             submitHandler: function (form) {
+                $("#form-forgot-password .btn-resetpass").prop('disabled', true);
+                $("#form-forgot-password .btn-resetpass").addClass('btn-disabled');
                 $.ajax({
                     url: '/Auth/ForgotPassword',
                     method: "POST",
@@ -172,6 +174,8 @@
                             $('#authModal .modal-body').html(bodyModal);
                         } else {
                             $(form).find('.summary-eror').text(res.message);
+                            $("#form-forgot-password .btn-resetpass").prop('disabled', false);
+                            $("#form-forgot-password .btn-resetpass").removeClass('btn-disabled');
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
