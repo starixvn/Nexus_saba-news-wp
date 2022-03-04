@@ -385,7 +385,7 @@
         public async Task<int> SendMultiple(int emailId)
         {
             var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = emailId });
-            var sentNumbers = 0;
+            var sentCount = 0;
             var batchCount = 1;
             var batch = configuration.GetValue<int>("EDMSetting:Batch");
             var delayEachBatch = configuration.GetValue<int>("EDMSetting:Delay");
@@ -405,7 +405,7 @@
                 
                 if (resultSend.IsSuccessful)
                 {
-                    sentNumbers++;
+                    sentCount++;
                 }
                 if (batchCount == batch)
                 {
@@ -414,7 +414,7 @@
                 }
                 batchCount++;
             }
-            return sentNumbers;
+            return sentCount;
         }
 
         public async Task<CommandResult> Send(SendEmailDetailModel model)
