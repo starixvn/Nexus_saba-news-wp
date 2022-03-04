@@ -63,8 +63,6 @@
             using var mailclient = new SmtpClient();
             try
             {
-                mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
-                mailclient.CheckCertificateRevocation = false;
                 await mailclient.ConnectAsync(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
                 await mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
                 await mailclient.SendAsync(message);
