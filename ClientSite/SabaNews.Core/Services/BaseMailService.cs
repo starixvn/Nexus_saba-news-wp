@@ -68,7 +68,7 @@
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
                 mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
                 await mailclient.SendAsync(message);
-                //mailclient.Disconnect(true);
+                mailclient.Disconnect(true);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
 
