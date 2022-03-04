@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Core.Services
 {
     using MailKit.Net.Smtp;
-    using MailKit.Security;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Logging;
     using MimeKit;
@@ -22,14 +21,17 @@
     public class BaseMailService : IBaseMailService
     {
         private readonly ILogger logger;
+        private readonly ILogServiceProvider logService;
         private readonly IConfiguration configuration;
 
         public BaseMailService(
             ILogger<BaseMailService> logger,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            ILogServiceProvider logService)
         {
             this.logger = logger;
             this.configuration = configuration;
+            this.logService = logService;
         }
 
         public async Task<CommandResult> SendMailAsync(MailModel email)
@@ -74,11 +76,13 @@
                 await mailclient.SendAsync(message);
                 mailclient.Disconnect(true);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
+                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Message: {Message.SendEmailSuccessfully}"  );
             }
 
             catch (Exception ex)
             {
                 WriteLogError(email, ex);
+                logService.WriteLogFileInfo($"Receiver: {email.ReceiverEmail} - Message: {ex.Message}");
                 result = new CommandResult { Message = ex.Message };
             }
             
