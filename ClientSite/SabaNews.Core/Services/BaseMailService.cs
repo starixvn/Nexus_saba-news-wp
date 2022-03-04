@@ -71,7 +71,7 @@
                 mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
                 mailclient.CheckCertificateRevocation = false;
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
-                mailclient.AuthenticateAsync(mailConfigs.Username, mailConfigs.Password);
+                mailclient.Authenticate(mailConfigs.Username, mailConfigs.Password);
                 mailclient.Send(message);
                 result = new CommandResult { Code = Constants.SuccessCode, Message = Message.SendEmailSuccessfully };
             }
