@@ -386,11 +386,12 @@
         {
             var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = emailId });
             var sentCount = 0;
-            var batchCount = 1;
+            var batchCount = 0;
             var batch = configuration.GetValue<int>("EDMSetting:Batch");
             var delayEachBatch = configuration.GetValue<int>("EDMSetting:Delay");
             foreach (var email in emails)
             {
+                batchCount++;
                 var sendModel = new SendEmailDetailModel
                 {
                     EmailId = emailId,
@@ -410,9 +411,8 @@
                 if (batchCount == batch)
                 {
                     Thread.Sleep(delayEachBatch);
-                    batchCount = 1;
+                    batchCount = 0;
                 }
-                batchCount++;
             }
             return sentCount;
         }
