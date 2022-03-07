@@ -102,8 +102,8 @@
         public const string CommentFilterLike = "like";
         public const bool IsLogin = true;
 
-        public const string SubjectConfirmation = "Kích hoạt tài khoản Saba Sports";
-        public const string SubjectResetPassword = "Hướng dẫn lấy lại mất khẩu tài khoản Saba Sports";
+        public const string SubjectConfirmation = "Kích hoạt tài khoản SABA Sports";
+        public const string SubjectResetPassword = "Hướng dẫn lấy lại mất khẩu tài khoản SABA Sports";
         public const string Profile = "Trang cá nhân của ";
         public const string ProfileSiteName = " trên SABA Sports";
         public const string EmptyProfile = "EmptyProfile";
