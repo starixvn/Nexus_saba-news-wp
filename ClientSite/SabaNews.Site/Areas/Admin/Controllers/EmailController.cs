@@ -387,8 +387,8 @@
             var emails = await emailService.GetEmailForSend(new GetEmailForSendCriteria { EmailId = emailId });
             var sentCount = 0;
             var batchCount = 0;
-            var batch = configuration.GetValue<int>("EDMSetting:Batch");
-            var delayEachBatch = configuration.GetValue<int>("EDMSetting:Delay");
+            var batchSetting = configuration.GetValue<int>("EDMSetting:Batch");
+            var delayBatch = configuration.GetValue<int>("EDMSetting:Delay");
             foreach (var email in emails)
             {
                 batchCount++;
@@ -408,9 +408,9 @@
                 {
                     sentCount++;
                 }
-                if (batchCount == batch)
+                if (batchCount == batchSetting)
                 {
-                    Thread.Sleep(delayEachBatch);
+                    Thread.Sleep(delayBatch);
                     batchCount = 0;
                 }
             }

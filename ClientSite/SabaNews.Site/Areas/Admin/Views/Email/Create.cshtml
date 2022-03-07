@@ -36,7 +36,7 @@
                 <select class="send-multiple-select" id="users" multiple="multiple">
                     @foreach (var user in Model.UsersForSend)
                     {
-                        <option value="@user.Id" selected data-email="@user.Email">@user.Name</option>
+                        <option value="@user.Id" selected data-email="@user.Email">@user.Email (@user.Name)</option>
                     }
                 </select>
                 <p class="help-block"></p>
