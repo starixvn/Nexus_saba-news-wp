@@ -213,7 +213,7 @@
 
             //Assert
             Assert.Equal(expected, actual);
-            Assert.Equal(model.Id, criteria.EmailId);
+            Assert.Equal(model.Id, criteria._EmailId);
             Assert.Equal(model.EmailTitle, criteria.EmailTitle);
             Assert.Equal(model.EmailContent, criteria.EmailContent);
             Assert.Equal(model.EmbeddedLink, criteria.EmbeddedLink);
@@ -235,7 +235,7 @@
             var expected = fixture.Create<CommandResult>();
             baseMailService.SendMailAsync(Arg.Do<MailModel>(x => model = x)).Returns(expected);
             //Act
-            var actual = await service.SendMailAsync(subject, body, email);
+            var actual = await service.SendEDMAsync(subject, body, email);
 
             //Assert
             Assert.Equal(expected, actual);

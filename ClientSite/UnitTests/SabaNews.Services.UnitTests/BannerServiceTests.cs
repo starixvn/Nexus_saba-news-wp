@@ -40,29 +40,6 @@
         }
 
         [Fact]
-        public async Task GetBannerInfoAsync_WhenCalled_ReturnDefaultBannerUrl()
-        {
-            //Arrange
-            var service = GetBannerService();
-            var fixture = new Fixture();
-            var baseUrl = fixture.Create<string>();
-            var expected = new BannerModel {  };
-            var criteria = new GetBannerInfoCriteria();
-            baseService.GetDataEntityAsync<BannerModel>(Arg.Do<GetBannerInfoCriteria>(x => criteria = x)).Returns(expected);
-
-            //Act
-            var actual = await service.GetBannerInfoAsync();
-
-            //Assert
-            Assert.Equal(DefaultMobileTopUrl, actual.MobileTopUrl);
-            Assert.Equal(DefaultDestopTopUrl, actual.DesktopTopUrl);
-            Assert.Equal(DefaultDesktopCenterUrl, actual.DesktopCenterUrl);
-            Assert.Equal(DefaultDesktopLeftUrl, actual.DesktopLeftUrl);
-            Assert.Equal(DefaultDesktopRightUrl, actual.DesktopRightUrl);
-            Assert.Equal(DefaultMobileCenterUrl, actual.MobileCenterUrl);
-        }
-
-        [Fact]
         public async Task UpdateBannerInfoAsync_WhenCalled_ReturnExpectedCommandResult()
         {
             //Arrange

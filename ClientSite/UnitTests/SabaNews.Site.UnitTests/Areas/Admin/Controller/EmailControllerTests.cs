@@ -20,6 +20,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Criteria.Logs;
     using System.Linq;
+    using SabaNews.Models.User;
 
     public class EmailControllerTests : AdminController
     {
@@ -110,17 +111,21 @@
             var controller = GetController();
             var value = fixture.Create<string>();
             var type = fixture.Create<string>();
-            var criteria = fixture.Create<GetAllUserCriteria>();
-            var expectedUsers = fixture.Create<IEnumerable<UserSession>>();
-            userService.GetAllUserAsync(Arg.Do<GetAllUserCriteria>(x => criteria = x)).Returns(expectedUsers);
+            var criteriaAllUsers = fixture.Create<GetAllUserCriteria>();
+            var criteriaSendUsers = fixture.Create<GetUserForSendEmailCriteria>();
+            var expectedAllUsers = fixture.Create<IEnumerable<UserSession>>();
+            var expectedSendUsers = fixture.Create<IEnumerable<UserSendEmail>>();
+            userService.GetAllUserAsync(Arg.Do<GetAllUserCriteria>(x => criteriaAllUsers = x)).Returns(expectedAllUsers);
+            userService.GetUserForSendEmail(Arg.Do<GetUserForSendEmailCriteria>(x => criteriaSendUsers = x)).Returns(expectedSendUsers);
 
             //Act
             var actual = await controller.Create();
 
             // Act&Assert
             var viewResult = Assert.IsType<ViewResult>(actual);
-            var viewModel = Assert.IsAssignableFrom<IEnumerable<UserSession>>(viewResult.Model);
-            Assert.Equal(expectedUsers, viewModel);
+            var viewModel = Assert.IsAssignableFrom<EmaiCreateViewModel>(viewResult.Model);
+            Assert.Equal(expectedAllUsers, viewModel.UsersForTest);
+            Assert.Equal(expectedSendUsers, viewModel.UsersForSend);
         }
 
         [Fact]
@@ -134,22 +139,22 @@
             var value = fixture.Create<string>();
             var type = fixture.Create<string>();
             var criteria = fixture.Create<EmailModel>();
-            var getUserCriteria = fixture.Create<GetAllUserCriteria>();
+            var getUserCriteria = fixture.Create<GetEmailForSendCriteria>();
             var createTokenCmd = fixture.Create<CreateUserSubscribeTokenCommand>();
+            var updateStatusCmd = fixture.Create<UpdateEmailStatusCommand>();
             var sendEmailModel = fixture.Create<SendEDMModel>();
             var emailDetailModel = fixture.Create<EmailDetailModel>();
 
-            var expectedUsers = new List<UserSession>();
-            expectedUsers.Add(new UserSession { Id = 1, IsSubscribe = 1, Email = "email1@gmail.com" });
-            expectedUsers.Add(new UserSession { Id = 2, IsSubscribe = 1, Email = "email2@gmail.com" });
-            var expectedCommand = new CommandResult { Code = 0 };
-            var expectedSendCommand = new CommandResult { Code = 0 };
+            var expectedUsers = new List<EmailSendData>();
+            expectedUsers.Add(new EmailSendData { UserId = 1, Email = "email1@gmail.com", SubscribeToken ="123", Name = "user1", EmailContent="content", EmailTitle="title", EmailToken="123" });
+            expectedUsers.Add(new EmailSendData { UserId = 2, Email = "email1@gmail.com", SubscribeToken = "1234", Name = "user1", EmailContent = "content", EmailTitle = "title", EmailToken = "1235" });
+            var expectedCommand = new CommandResult { Code = 0, Message = "successful" };
+            var expectedSendCommand = new CommandResult { Code = 0, Message = "successful" };
 
             emailService.CreateEmailAsync(Arg.Do<EmailModel>(x => criteria = x)).Returns(expectedCommand);
-            userService.GetAllUserAsync(Arg.Do<GetAllUserCriteria>(x => getUserCriteria = x)).Returns(expectedUsers);
-            authService.CreateUserSubscribeToken(Arg.Do<CreateUserSubscribeTokenCommand>(x => createTokenCmd = x)).Returns(expectedSendCommand);
+            emailService.GetEmailForSend(Arg.Do<GetEmailForSendCriteria>(x => getUserCriteria = x)).Returns(expectedUsers);
             emailService.SendMailEDMWithTemplateAsync(Arg.Do<SendEDMModel>(x => sendEmailModel = x)).Returns(expectedSendCommand);
-            emailService.CreateEmailDetailAsync(Arg.Do<EmailDetailModel>(x => emailDetailModel = x)).Returns(expectedSendCommand);
+            emailService.UpdateEmailStatusAsync(Arg.Do<UpdateEmailStatusCommand>(x => updateStatusCmd = x)).Returns(expectedSendCommand);
             //Act
             var actual = await controller.SaveAndSendCreate(param);
 
@@ -292,7 +297,6 @@
             var viewResult = Assert.IsType<ViewResult>(actual);
             var viewModel = Assert.IsType<EmailEditViewModel>(viewResult.Model);
             Assert.Equal(expectedEmail, viewModel.Email);
-            Assert.Equal(expectedUsers, viewModel.Users);
         }
 
         [Fact]
@@ -524,6 +528,131 @@
         }
 
         [Fact]
+        public async Task EditDetail_EmailIsNull_RedirectUrl()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            var emailId = fixture.Create<int>();
+            var userId = fixture.Create<int>();
+            var criteria = fixture.Create<GetDetailEmailDetailCriteria>();
+
+            var expectedCommand = new CommandResult { Code = 0 };
+            EmailDetailModel expectedEmail = null;
+
+            emailService.GetEmailDetailAsync(Arg.Do<GetDetailEmailDetailCriteria>(x => criteria = x)).Returns(expectedEmail);
+
+            //Act
+            var actual = await controller.EditDetail(emailId, userId);
+
+            // Act&Assert
+            var viewResult = Assert.IsType<RedirectResult>(actual);
+            Assert.Equal("url", viewResult.Url);
+        }
+
+        [Fact]
+        public async Task SaveEditDetail_Whencalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            var emailId = fixture.Create<int>();
+            var cmd = fixture.Create<UpdateEmailDetailCommand>();
+
+            var expectedCommand = new CommandResult { Code = 0 };
+
+            emailService.UpdateEmailDetailAsync(Arg.Do<UpdateEmailDetailCommand>(x => cmd = x)).Returns(expectedCommand);
+
+            //Act
+            var actual = await controller.SaveEditDetail(cmd);
+
+            // Act&Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var command = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value.GetType().GetProperty("result").GetValue(jsonResult.Value));
+            Assert.Equal(expectedCommand, command);
+        }
+
+        [Fact]
+        public async Task SaveAndSendEditDetail_Whencalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            var emailId = fixture.Create<int>();
+            var cmd = fixture.Create<UpdateEmailDetailCommand>();
+            var criteria = fixture.Create<GetDetailEmailDetailCriteria>();
+            var sendEmailModel = fixture.Create<SendEDMModel>();
+            var updateStatusCmd = fixture.Create<UpdateEmailStatusCommand>();
+
+            var expectedDetail = fixture.Create<EmailDetailModel>();
+            var expectedCommand = new CommandResult { Code = 0, Message = "successful" };
+
+            emailService.UpdateEmailDetailAsync(Arg.Do<UpdateEmailDetailCommand>(x => cmd = x)).Returns(expectedCommand);
+            emailService.GetEmailDetailAsync(Arg.Do<GetDetailEmailDetailCriteria>(x => criteria = x)).Returns(expectedDetail);
+            emailService.SendMailEDMWithTemplateAsync(Arg.Do<SendEDMModel>(x => sendEmailModel = x)).Returns(expectedCommand);
+            emailService.UpdateEmailStatusAsync(Arg.Do<UpdateEmailStatusCommand>(x => updateStatusCmd = x)).Returns(expectedCommand);
+            //Act
+            var actual = await controller.SaveAndSendEditDetail(cmd);
+
+            // Act&Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var command = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value.GetType().GetProperty("result").GetValue(jsonResult.Value));
+            Assert.Equal(expectedCommand, command);
+        }
+
+        [Fact]
+        public async Task EditDetail_WhenCalled_ReturnExpectedViewResult()
+        {
+            //Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            sessionService.User = fixture.Create<UserSession>();
+            var emailId = fixture.Create<int>();
+            var userId = fixture.Create<int>();
+            var criteria = fixture.Create<GetDetailEmailDetailCriteria>();
+            var criteriaGetUser = fixture.Create<GetAllUserCriteria>();
+
+            var expectedCommand = new CommandResult { Code = 0 };
+            var expectedUsers = fixture.Create<IEnumerable<UserSession>>();
+            var expectedEmail = new EmailDetailModel { Status = 2 } ;
+
+            emailService.GetEmailDetailAsync(Arg.Do<GetDetailEmailDetailCriteria>(x => criteria = x)).Returns(expectedEmail);
+            userService.GetAllUserAsync(Arg.Do<GetAllUserCriteria>(x => criteriaGetUser = x)).Returns(expectedUsers);
+            //Act
+            var actual = await controller.EditDetail(emailId, userId);
+
+            //Assert
+            var viewResult = Assert.IsType<ViewResult>(actual);
+            var viewModel = Assert.IsType<EmailDetailEditViewModel>(viewResult.Model);
+            Assert.Equal(expectedEmail, viewModel.Email);
+            Assert.Equal(expectedUsers, viewModel.UsersForTest);
+        }
+
+        [Fact]
+        public async Task DeleteDetail_Whencalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContent(controller);
+            var emailId = fixture.Create<int>();
+            var userId = fixture.Create<int>();
+            var cmd = fixture.Create<RemoveEmailDetailCommand>();
+
+            var expectedCommand = new CommandResult { Code = 0 };
+
+            emailService.RemoveEmailDetailAsync(Arg.Do<RemoveEmailDetailCommand>(x => cmd = x)).Returns(expectedCommand);
+
+            //Act
+            var actual = await controller.DeleteDetail(userId, emailId);
+
+            // Act&Assert
+            var jsonResult = Assert.IsType<JsonResult>(actual);
+            var command = Assert.IsAssignableFrom<CommandResult>(jsonResult.Value);
+            Assert.Equal(expectedCommand, command);
+        }
+
+        [Fact]
         public async Task GetListEmailDetailData_WhenCalled_ReturnExpectedViewResult()
         {
             //Arrange
@@ -632,11 +761,17 @@
         #region Helpers
         private EmailController GetController()
         {
+            var edmSettings = new Dictionary<string, string> {
+                {"EDMSetting:Batch", "1"},
+                {"EDMSetting:Delay", "2000"}
+            };
+            IConfiguration configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(edmSettings)
+            .Build();
             userService = Substitute.For<IUserService>();
             sessionService = Substitute.For<ISessionService>();
             pathService = Substitute.For<IPathService>();
             emailService = Substitute.For<IEmailService>();
-            configuration = Substitute.For<IConfiguration>();
             authService = Substitute.For<IAuthService>();
             logService = Substitute.For<ILogService>();
             var controller = new EmailController(userService, sessionService, pathService, emailService, configuration, authService, logService);

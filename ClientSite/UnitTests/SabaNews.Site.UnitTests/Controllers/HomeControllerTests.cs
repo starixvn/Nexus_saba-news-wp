@@ -25,9 +25,6 @@
         private IPostService postService;
         private IConfiguration configuration;
         private IBannerService bannerService;
-        private ILogServiceProvider logService;
-        private ISessionService sessionService;
-        private IUserService userService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -377,11 +374,8 @@
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
             bannerService = Substitute.For<IBannerService>();
-            logService = Substitute.For<ILogServiceProvider>();
             bannerService = Substitute.For<IBannerService>();
-            sessionService = Substitute.For<ISessionService>();
-            userService = Substitute.For<IUserService>();
-            var controller = new HomeController(postService, dataControlService, configuration, bannerService, logService, sessionService, userService);
+            var controller = new HomeController(postService, dataControlService, configuration, bannerService);
 
             return controller;
         }

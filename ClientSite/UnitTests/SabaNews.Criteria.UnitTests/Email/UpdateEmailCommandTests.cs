@@ -31,7 +31,7 @@ namespace SabaNews.Criteria.UnitTests.Email
             // Arrange
             var criteria = new UpdateEmailCommand()
             {
-                EmailId = id,
+                _EmailId = id,
                 EmailContent = "content",
                 EmailTitle = "title",
                 EmbeddedLink = "link",
@@ -54,7 +54,7 @@ namespace SabaNews.Criteria.UnitTests.Email
             // Arrange
             var criteria = new UpdateEmailCommand()
             {
-                EmailId = 1,
+                _EmailId = 1,
                 EmailContent = "content",
                 EmailTitle = "title",
                 EmbeddedLink = "link",
