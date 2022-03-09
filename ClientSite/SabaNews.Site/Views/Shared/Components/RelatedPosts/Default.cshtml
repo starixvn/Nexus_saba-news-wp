@@ -11,7 +11,7 @@
 <div class="block__content">
     @foreach (var post in Model)
     {
-        string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width300) : post.FeatureImage;
+        string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
         <div class="post card-horizontal card-horizontal-highlight">
             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image">
                 <picture>
