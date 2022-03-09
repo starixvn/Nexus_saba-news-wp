@@ -1,12 +1,12 @@
-﻿@using Wangkanai.Detection.Services;
-@using Wangkanai.Detection.Models;
-@using SabaNews.Core.Constants;
+﻿@using SabaNews.Core.Constants;
+@using DeviceDetectorNET;
 
-@inject IDetectionService DetectionService
 @{
-    bool isMobile = DetectionService.Device.Type == Device.Mobile;
-    bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+    bool isTablet = detector.IsTablet();
 }
 
 @section Metadata {

@@ -1,9 +1,11 @@
-﻿@using Wangkanai.Detection.Services;
-@using Wangkanai.Detection.Models;
-@using SabaNews.Core.Constants;
-@inject IDetectionService DetectionService
+﻿@using SabaNews.Core.Constants;
+@using DeviceDetectorNET;
+
 @{
-    bool isMobile = DetectionService.Device.Type == Device.Mobile;
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+
 }
 
 <div class="block block-extension">

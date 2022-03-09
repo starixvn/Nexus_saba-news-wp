@@ -1,12 +1,12 @@
 ﻿@using SabaNews.Core.Constants;
-@using Wangkanai.Detection.Services;
-@using Wangkanai.Detection.Models;
-@inject IDetectionService DetectionService
-@{
-    bool isMobile = DetectionService.Device.Type == Device.Mobile;
-    bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop;
+@using DeviceDetectorNET;
 
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+    bool isTablet = detector.IsTablet();
 }
 <meta name="description" content='@Model.ViewData.Description' />
 <meta name="robots" content="noarchive">
@@ -23,7 +23,7 @@
 }
 
 @section Scripts {
-	<script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
     <script src="~/js/euro2020/home.js" asp-append-version="true"></script>
 }
 
@@ -36,28 +36,28 @@
                     <h2 class="block__title"><a href="@Url.Action("Category", "Euro2020", new { slug =  Constants.Euro2020HotNewsSlug})">@ViewResources.HotNews</a></h2>
                     <div class="block__content">
 
-						<div class="card-vertical card-highlight">
-							@if (Model.HotNews.Length > 0)
-							{
-								<a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card-vertical__image">
-									@{
-										short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
-										string firstImgUrl = Model.HotNews[0].GetImageBySize(imgSize);
-									}
-									<picture>
-										<source srcset="@firstImgUrl" type="image/webp" class="img-res">
-										<source srcset="@firstImgUrl" type="image/jpeg" class="img-res">
-										<img asp-append-version="true" loading="lazy" src="@firstImgUrl" alt="" class="img-res img-block">
-									</picture>
-								</a>
-								<div class="card-content">
-									<a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card__title">@Model.HotNews[0].PostTitle</a>
-									<p class="card__description text-description">@Model.HotNews[0].PostExcerpt</p>
-									<p class="card__datetime">@Model.HotNews[0].PostTime</p>
-								</div>
-							}
+                        <div class="card-vertical card-highlight">
+                            @if (Model.HotNews.Length > 0)
+                            {
+                                <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card-vertical__image">
+                                    @{
+                                        short imgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+                                        string firstImgUrl = Model.HotNews[0].GetImageBySize(imgSize);
+                                    }
+                                    <picture>
+                                        <source srcset="@firstImgUrl" type="image/webp" class="img-res">
+                                        <source srcset="@firstImgUrl" type="image/jpeg" class="img-res">
+                                        <img asp-append-version="true" loading="lazy" src="@firstImgUrl" alt="" class="img-res img-block">
+                                    </picture>
+                                </a>
+                                <div class="card-content">
+                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.HotNews[0].Slug})" class="card__title">@Model.HotNews[0].PostTitle</a>
+                                    <p class="card__description text-description">@Model.HotNews[0].PostExcerpt</p>
+                                    <p class="card__datetime">@Model.HotNews[0].PostTime</p>
+                                </div>
+                            }
 
-						</div>
+                        </div>
                         @for (int i = 1; i < Model.HotNews.Length; i++)
                         {
                             var card = isMobile || isTablet ? "horizontal" : "vertical";

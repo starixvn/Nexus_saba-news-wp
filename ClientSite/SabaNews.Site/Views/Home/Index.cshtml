@@ -1,10 +1,11 @@
 ﻿@using SabaNews.Core.Constants;
-@using Wangkanai.Detection.Services;
-@using Wangkanai.Detection.Models;
-@inject IDetectionService DetectionService
-@{ bool isMobile = DetectionService.Device.Type == Device.Mobile;
-    bool isTablet = DetectionService.Device.Type == Device.Tablet;
-    bool isDesktop = DetectionService.Device.Type == Device.Desktop; }
+@using DeviceDetectorNET;
+@{ 
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
 
 @section Metadata {
     <meta name="robots" content="noarchive">
@@ -35,15 +36,15 @@
 <section class="main">
     <div class="colums-main">
         @if (!string.IsNullOrEmpty(Model.Banner.DesktopCenterUrl))
-        { 
+        {
             <div class="banner">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopCenterNavigationUrl) ? "javascript:;" : Model.Banner.DesktopCenterNavigationUrl)">
                     <img loading="lazy" src="@Model.Banner.DesktopCenterUrl" asp-append-version="true">
                 </a>
             </div>
         }
-        
-        @if ((isMobile || isTablet) && !string.IsNullOrEmpty(Model.Banner.MobileTopUrl))
+
+        @if ((isMobile) && !string.IsNullOrEmpty(Model.Banner.MobileTopUrl))
         {
             <div class="banner-euro-mobile">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileTopNavigationUrl) ? "javascript:;" : Model.Banner.MobileTopNavigationUrl)">
@@ -53,7 +54,7 @@
         }
         <div class="block block-hot-news">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home")">@ViewResources.RecentsPost </a></h2>
                 <div class="block__content">
                     <custom-image>
                     </custom-image>
@@ -118,14 +119,14 @@
             </div>
         </div>
         @if (!string.IsNullOrEmpty(Model.Banner.MobileCenterUrl))
-        { 
+        {
             <div class="banner-mobile">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
                     <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
                 </a>
             </div>
         }
-        
+
         <div class="block block-video">
             <div class="container">
                 <h2 class="block__title"><a href="@Url.Action("Video", "Home")">@ViewResources.Video</a></h2>
@@ -268,14 +269,14 @@
             </div>
         </div>
         @if (!string.IsNullOrEmpty(Model.Banner.MobileBottomUrl))
-        { 
+        {
             <div class="banner-mobile">
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
                     <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
                 </a>
             </div>
         }
-        
+
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
@@ -380,7 +381,7 @@
                 <div class="block__content">
                     <div class="post card-vertical card-vertical-highlight">
                         <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__image">
-                            @{ short otherImgSize = isMobile || isTablet ? ImageWidth.Width500 : ImageWidth.Width768;
+                            @{ short otherImgSize = isMobile ? ImageWidth.Width500 : ImageWidth.Width768;
                                 string otherFirstImgUrl = Model.OtherPosts[0].FeatureImage; }
                             <picture>
                                 <source srcset="@Url.Content(otherFirstImgUrl)" type="image/webp" class="img-res">

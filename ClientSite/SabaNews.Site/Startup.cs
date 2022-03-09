@@ -104,7 +104,6 @@
 
             services.AddResponseCompression();
             services.AddResponseCaching();
-            services.AddDetection();
             services.AddControllersWithViews();
             services.AddSingleton(Configuration);
 
