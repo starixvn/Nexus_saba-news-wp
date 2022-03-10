@@ -95,12 +95,12 @@
                 result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
                 return Json(result);
             }
-            //var endDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28));
-            //if (DateTime.UtcNow > endDate)
-            //{
-            //    result.Message = "Minigame hiện tại đã kết thúc";
-            //    return Json(result);
-            //}
+            var endDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 2, 28));
+            if (DateTime.UtcNow > endDate)
+            {
+                result.Message = "Minigame hiện tại đã kết thúc";
+                return Json(result);
+            }
             var command = new CreateUserMembershipEventDataCommand
             {
                 LuckyNumber = luckyNumber,

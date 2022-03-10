@@ -44,10 +44,11 @@
             var posts = await postService.GetPostsByCateSlugAsync(criteria);
             posts = posts.OrderBy(item => item.PostExcerpt);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020TeamSlug);
+            var title = cate.SEOTitle ??= cate.Title;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description
             };
             var Model = new CategoryViewModel
@@ -76,10 +77,11 @@
                 return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(slug);
+            var title = cate.SEOTitle ??= cate.Title;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description,
                 Controller = Constants.Euro2020Video,
                 Slug = slug
@@ -119,10 +121,11 @@
                 return View(Constants.EmptyBlogView);
             }
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020VideoSlug);
+            var title = cate.SEOTitle ??= cate.Title;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description,
                 Controller = Constants.Euro2020Video
             };
@@ -160,10 +163,11 @@
             }
             posts = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020ScheduleSlug);
+            var title = cate.SEOTitle ??= cate.Title;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description
             };
             var Model = new CategoryViewModel
@@ -189,10 +193,11 @@
             posts = posts.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             var thirdPlaceTable = await postService.GetPostDetailBySlugAsync(Constants.Euro2020FirstThirdPlaceTeamSlug, Constants.postType);
             var cate = await postService.GetCateDetailAsync(Constants.Euro2020RankingSlug);
+            var title = cate.SEOTitle ??= cate.Title;
             var viewData = new ViewData
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description
             };
             var Model = new Euro2020RankingViewModel

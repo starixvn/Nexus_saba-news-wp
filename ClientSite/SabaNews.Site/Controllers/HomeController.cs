@@ -37,11 +37,12 @@
             var viewModel = await dataControlService.GetHomePageViewModel();
             var banner = await bannerService.GetBannerInfoAsync();
             var domain = configuration.GetValue<string>("BaseUrl");
+            var title = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
             var header = new HeaderViewModel
             {
                 CategoryId = Constants.Home,
                 CategorySlug = Constants.Empty,
-                Title = viewModel.Category.SEOTitle ??= viewModel.Category.Title,
+                Title = title,
                 Description = viewModel.Category.Description
             };
             viewModel.Header = header;
@@ -94,8 +95,9 @@
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
+            keyword ??= "";
             var start = (page - 1) * Constants.Perpage;
-            var criteria = new SearchPostsCriteria { _Keyword = keyword ??= "", _Start = start, _End = Constants.Perpage };
+            var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
             var model = new CategoryViewModel
@@ -166,6 +168,7 @@
             var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+            var description = pageDetail.Description ??= title;
             var model = new PageViewModel
             {
                 Post = post,
@@ -175,7 +178,7 @@
                     CategorySlug = Constants.MatchScheduleSlug,
                     CategoryId = pageDetail.CatId,
                     Title = title,
-                    Description = pageDetail.Description ??= title
+                    Description = description
                 }
             };
 
@@ -187,6 +190,7 @@
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.WarningSlug);
             var title = pageDetail.SEOTitle ?? pageDetail.Title;
+            var description = pageDetail.Description ??= title;
             var model = new PageViewModel
             {
                 Category = pageDetail,
@@ -195,7 +199,7 @@
                     CategorySlug = Constants.WarningSlug,
                     CategoryId = pageDetail.CatId,
                     Title = title,
-                    Description = pageDetail.Description ??= title
+                    Description = description
                 }
             };
 

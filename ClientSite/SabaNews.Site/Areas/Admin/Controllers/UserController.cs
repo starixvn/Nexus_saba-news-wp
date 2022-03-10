@@ -30,11 +30,12 @@
         [HttpPost]
         public async Task<ActionResult> GetDataUser(UserFilterViewModel param)
         {
+            var search = param.Search ??= "";
             var criteria = new GetUserReportCriteria
             {
                 FromDate = param.FromDate,
                 ToDate = param.ToDate,
-                Search = param.Search ??= "",
+                Search = search,
                 DateSort = param.DateSort,
                 Start = (param.Page - 1) * param.PageSize,
                 End = param.PageSize

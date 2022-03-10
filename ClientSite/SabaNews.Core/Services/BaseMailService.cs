@@ -23,6 +23,8 @@
         private readonly ILogger logger;
         private readonly ILogServiceProvider logService;
         private readonly IConfiguration configuration;
+        private const string MailConfigsForBroadcast = "MailConfigsForBroadcast";
+        private const string MailConfigsForTransactional = "MailConfigsForTransactional";
 
         public BaseMailService(
             ILogger<BaseMailService> logger,
@@ -36,15 +38,8 @@
 
         public async Task<CommandResult> SendMailAsync(MailModel email)
         {
-            MailConfigs mailConfigs;
-            if (email.IsSendEDM)
-            {
-                mailConfigs = configuration.GetSection("MailConfigsForBroadcast").Get<MailConfigs>();
-            }
-            else
-            {
-                mailConfigs = configuration.GetSection("MailConfigsForTransactional").Get<MailConfigs>();
-            }
+            var mailConfigsKey = email.IsSendEDM ? MailConfigsForBroadcast : MailConfigsForTransactional;
+            MailConfigs mailConfigs = configuration.GetSection(mailConfigsKey).Get<MailConfigs>();
             
             if (email == null || !IsValidEmail(email.ReceiverEmail) || !mailConfigs.Enabled)
             {
@@ -56,7 +51,6 @@
             message.From.Add(new MailboxAddress(mailConfigs.SenderName, mailConfigs.MailFrom));
             message.To.Add(new MailboxAddress(string.Empty, email.ReceiverEmail));
             message.Subject = email.Subject;
-            //message.Headers.Add("X-PM-Message-Stream", "broadcast");
             var builder = new BodyBuilder
             {
                 HtmlBody = email.Body
@@ -66,7 +60,7 @@
             using var mailclient = new SmtpClient();
             try
             {
-                mailclient.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+                mailclient.ServerCertificateValidationCallback += (_, _, _, _) => true;
                 mailclient.CheckCertificateRevocation = false;
                 mailclient.Connect(mailConfigs.SmtpServer, mailConfigs.SmtpPort, mailConfigs.EnableSsl);
                 if (mailConfigs.IsAuthenticate)
@@ -103,11 +97,6 @@
 
             var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
             return regex.IsMatch(email);
-        }
-
-        private void WriteLogError(MailModel email, Exception ex)
-        {
-            logger.LogError(ex, string.Format("Receiver: {0}\n\tSubject: {1}\n\tErrorMessage: {2}", email.ReceiverEmail, email.Subject, ex.Message));
         }
     }
 }

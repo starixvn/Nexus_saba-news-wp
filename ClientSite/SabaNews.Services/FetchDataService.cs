@@ -93,10 +93,11 @@
                 return null;
             }
             var cate = await postService.GetCateDetailAsync(slug);
+            var title = cate.SEOTitle ??= cate.Title;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description,
                 CategoryId = cate.CatId,
                 Controller = controller,
@@ -137,11 +138,11 @@
             {
                 ranking = ranking.Where(item => item.PostExcerpt.Trim().ToLower(CultureInfo.InvariantCulture) != Constants.TemplatePost).OrderBy(item => item.PostDate).ToList();
             }
-
+            var title = cate.SEOTitle ??= cate.Title;
             var viewData = new ViewData
             {
                 HeadTitle = cate.Title,
-                Title = cate.SEOTitle ??= cate.Title,
+                Title = title,
                 Description = cate.Description
             };
             var Model = new Euro2020ViewModel

@@ -13,6 +13,8 @@
         private const byte ColIndexLuckynumber = 4;
         private const byte ColIndexCount = 1;
         private const byte ColEmail = 3;
+        private const byte DefaultColWidth = 20;
+        private const byte EmailColWidth = 35;
 
         private readonly IEnumerable<MembershipEventModel> users;
 
@@ -56,8 +58,8 @@
 
         protected internal override void ProcessUI(ExcelWorksheet worksheet)
         {
-            worksheet.DefaultColWidth = 20;
-            worksheet.Column(ColEmail).Width = 35;
+            worksheet.DefaultColWidth = DefaultColWidth;
+            worksheet.Column(ColEmail).Width = EmailColWidth;
         }
     }
 }

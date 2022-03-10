@@ -27,6 +27,7 @@
         private readonly IAuthService authService;
         private readonly ILogService logService;
         private const string SendMailTemplate = "EmailTemplates//SendEDM.html";
+        private const string verifySendEmailLink = "VerifySendEmailLink?{token}";
         private readonly string baseUrl;
         public EmailController(
             IUserService userService,
@@ -64,9 +65,10 @@
         {
             var perPage = param.PageSize;
             var start = (param.Page - 1) * perPage;
+            var search = param.Search ??= "";
             var criteria = new GetEmailsCriteria 
             {
-                Search = param.Search ??= "", 
+                Search = search, 
                 FromDate = param.FromDate,
                 ToDate = param.ToDate,
                 Status = param.Status,
@@ -91,7 +93,7 @@
 
         public async Task<ActionResult> Create()
         {
-            var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
+            var rawUrl = string.Concat($"{baseUrl}", verifySendEmailLink);
             
             var model = new EmaiCreateViewModel
             {
@@ -146,7 +148,7 @@
             var model = new EmailEditViewModel
             {
                 Email = email,
-                RawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}"),
+                RawUrl = string.Concat($"{baseUrl}", verifySendEmailLink),
                 OriginalUrl = originalUrl,
                 UsersForTest = users,
                 UsersForSend = await userService.GetUserForSendEmail(new GetUserForSendEmailCriteria()),
@@ -252,10 +254,11 @@
         {
             int perPage = param.PageSize;
             var start = (param.Page - 1) * perPage;
+            var search = param.Search ??= "";
             var criteria = new FilterEmailDetailCriteria
             {
                 EmailID = param.EmailId,
-                Search = param.Search ??= "",
+                Search = search,
                 IsClicked = param.FilterClicked,
                 Status = param.Status,
                 Start = start,
@@ -284,12 +287,12 @@
             {
                 return Redirect(Url.Action("Detail", Constants.Email, new { emailId }));
             }
-            var rawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}");
+            var rawUrl = string.Concat($"{baseUrl}", verifySendEmailLink);
 
             var model = new EmailDetailEditViewModel
             {
                 Email = email,
-                RawUrl = string.Concat($"{baseUrl}", "VerifySendEmailLink?{token}"),
+                RawUrl = string.Concat($"{baseUrl}", verifySendEmailLink),
                 UsersForTest = await userService.GetAllUserAsync(new GetAllUserCriteria())
             };
             ViewBag.rawUrl = rawUrl;
@@ -410,7 +413,7 @@
                 }
                 if (batchCount == batchSetting)
                 {
-                    Thread.Sleep(delayBatch);
+                    await Task.Delay(delayBatch);
                     batchCount = 0;
                 }
             }
