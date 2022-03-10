@@ -40,7 +40,7 @@
             }
         }
 
-        private static void RenderRow(ExcelWorksheet worksheet, MembershipEventModel user, int index, int rowIndex)
+        protected internal virtual void RenderRow(ExcelWorksheet worksheet, MembershipEventModel user, int index, int rowIndex)
         {
             var colIndex = 1;
             worksheet.Cells[rowIndex, colIndex++].Value = index;
