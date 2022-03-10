@@ -49,7 +49,7 @@
             worksheet.Cells[rowIndex, colIndex++].Value = user.Name;
             worksheet.Cells[rowIndex, colIndex++].Value = user.Email;
             worksheet.Cells[rowIndex, colIndex++].Value = user.LuckyNumber;
-            worksheet.Cells[rowIndex, colIndex++].Value = DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
+            worksheet.Cells[rowIndex, colIndex].Value = DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
             worksheet.Cells[rowIndex, ColIndexCount].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             worksheet.Cells[rowIndex, ColIndexLuckynumber].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
         }
