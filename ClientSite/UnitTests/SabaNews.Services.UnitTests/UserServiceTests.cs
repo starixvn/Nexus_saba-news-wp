@@ -6,6 +6,8 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Logs;
     using SabaNews.Criteria.User;
+    using SabaNews.Models.User;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -154,6 +156,86 @@
             //Assert
             Assert.Equal(expected, actual);
             Assert.Equal(loginType, command.LoginType);
+        }
+
+        [Fact]
+        public async Task CreateUserMembershipEventDataAsync_WhenCalled_ReturnExpectedCommandResult()
+        {
+            //Arrange
+            var service = GetUserService();
+            var command = fixture.Create<CreateUserMembershipEventDataCommand>();
+            var expected = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<CreateUserMembershipEventDataCommand>(x => command = x)).Returns(expected);
+
+            //Act
+            var actual = await service.CreateUserMembershipEventDataAsync(command);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task GetUserMembershipEventDataAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetUserService();
+            var criteria = fixture.Create<GetMembershipEventDataCriteria>();
+            var expected = fixture.Create<IEnumerable<MembershipEventModel>>();
+            baseService.GetDataAsync<MembershipEventModel>(Arg.Do<GetMembershipEventDataCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var actual = await service.GetUserMembershipEventDataAsync(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetDetailMembershipEventDataAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetUserService();
+            var criteria = fixture.Create<GetDetailMembershipEventCriteria>();
+            var expected = fixture.Create<MembershipEventModel>();
+            baseService.GetDataEntityAsync<MembershipEventModel>(Arg.Do<GetDetailMembershipEventCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var actual = await service.GetDetailMembershipEventDataAsync(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetMembershipEventResultAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetUserService();
+            var criteria = fixture.Create<GetMembershipEventResultCriteria>();
+            var expected = fixture.Create<IEnumerable<MembershipEventModel>>();
+            baseService.GetDataAsync<MembershipEventModel>(Arg.Do<GetMembershipEventResultCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var actual = await service.GetMembershipEventResultAsync(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetUserForSendEmail_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetUserService();
+            var criteria = fixture.Create<GetUserForSendEmailCriteria>();
+            var expected = fixture.Create<IEnumerable<UserSendEmail>>();
+            baseService.GetDataAsync<UserSendEmail>(Arg.Do<GetUserForSendEmailCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var actual = await service.GetUserForSendEmail(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
         }
 
         #region Helpers

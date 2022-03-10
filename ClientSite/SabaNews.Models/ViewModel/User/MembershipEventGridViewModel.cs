@@ -8,7 +8,5 @@
         public IEnumerable<MembershipEventModel> Users { get; set; }
 
         public PagingModel Paging { get; set; }
-
-        public string DateSort { get; set; }
     }
 }

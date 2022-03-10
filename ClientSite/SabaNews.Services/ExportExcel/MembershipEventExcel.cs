@@ -52,6 +52,8 @@
             worksheet.Cells[rowIndex, ColIndexLuckynumber].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
         }
 
+
+
         protected internal override void ProcessUI(ExcelWorksheet worksheet)
         {
             worksheet.DefaultColWidth = 20;

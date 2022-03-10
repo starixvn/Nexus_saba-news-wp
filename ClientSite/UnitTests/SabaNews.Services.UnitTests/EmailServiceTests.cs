@@ -222,6 +222,55 @@
 
         }
 
+        [Fact]
+        public async Task UpdateEmailDetailAsync_WhenCalled_ReturnExpectedCommandResult()
+        {
+            //Arrange
+            var service = GetEmailService();
+            var param = fixture.Create<UpdateEmailDetailCommand>();
+            var expected = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateEmailDetailCommand>(x => param = x)).Returns(expected);
+            //Act
+            var actual = await service.UpdateEmailDetailAsync(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetEmailForSend_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetEmailService();
+            var param = fixture.Create<GetEmailForSendCriteria>();
+            var expected = fixture.Create<IEnumerable<EmailSendData>>();
+            baseService.GetDataAsync<EmailSendData>(Arg.Do<GetEmailForSendCriteria>(x => param = x)).Returns(expected);
+            //Act
+            var actual = await service.GetEmailForSend(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task RemoveEmailDetailAsync_WhenCalled_ReturnExpectedCommandResult()
+        {
+            //Arrange
+            var service = GetEmailService();
+            var param = fixture.Create<RemoveEmailDetailCommand>();
+            var expected = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<RemoveEmailDetailCommand>(x => param = x)).Returns(expected);
+            //Act
+            var actual = await service.RemoveEmailDetailAsync(param);
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+
 
         [Fact]
         public async Task SendMailAsync_WhenCalled_ReturnExpectedCommandResult()

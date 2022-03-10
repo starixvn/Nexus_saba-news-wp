@@ -9,7 +9,6 @@
 
         public string RawUrl { get; set; }
 
-        public string OriginalUrl { get; set; }
 
         public IEnumerable<UserSession> UsersForTest { get; set; }
 

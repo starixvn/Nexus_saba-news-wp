@@ -52,6 +52,44 @@
             service.Received(2).Protected("RenderRow", worksheet, Arg.Any<MembershipEventModel>(), Arg.Any<int>(), Arg.Any<int>());
         }
 
+        [Fact]
+        public void RenderRow_WhenCalled_ExpectedCellValue()
+        {
+            // Arrange
+            var worksheet = excelPackage.Worksheets.Add("data");
+            var service = CreateExcel();
+            var colIndex = 1;
+            var rowIndex = 1;
+            var index = 0;
+            var user = users.FirstOrDefault();
+
+            // Act
+            service.Public_RenderRow(worksheet, user, index, rowIndex);
+
+            // Assert
+            Assert.Equal(worksheet.Cells[rowIndex, colIndex++].Value, index);
+            Assert.Equal(worksheet.Cells[rowIndex, colIndex++].Value, user.Name);
+            Assert.Equal(worksheet.Cells[rowIndex, colIndex++].Value, user.Email);
+            Assert.Equal(worksheet.Cells[rowIndex, colIndex++].Value, user.LuckyNumber);
+          
+        }
+
+        [Fact]
+        public void ProcessUI_WhenCalled_CallExpectedMethod()
+        {
+            //Arrange
+            var worksheet = excelPackage.Worksheets.Add("data");
+            var service = CreateExcel();
+
+            // Act
+            service.Public_ProcessUI(worksheet);
+
+            // Assert
+            Assert.Equal(20, worksheet.DefaultColWidth);
+            Assert.Equal(35, worksheet.Column(ColEmail).Width);
+
+        }
+
         #region Helpers
 
         private MembershipEventExcelTestable CreateExcel()
