@@ -152,6 +152,27 @@
         }
 
         [Fact]
+        public async Task Video_WhenPostIsEmpty_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            GetDefaultContext(controller);
+            string slug = null;
+            var page = fixture.Create<int>();
+            var expectedViewModel = fixture.Create<CategoryViewModel>();
+            expectedViewModel.Posts = new List<Post>();
+            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+
+            //Act
+            var result = await controller.Video(page);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
         public async Task Video_WhenDataIsNull_ReturnExpectedViewResult()
         {
             // Arrange

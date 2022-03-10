@@ -226,6 +226,26 @@
         }
 
         [Fact]
+        public async Task ConfirmEmail_WhenFailAction_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var userId = fixture.Create<int>();
+            var token = fixture.Create<string>();
+            var expected = new CommandResult { Code = 1 };
+            sessionService.User = new UserSession { Id = 1 };
+            authService.ConfirmEmailAsync(Arg.Do<int>(x => userId = x), Arg.Do<string>(x => token = x)).Returns(expected);
+
+            //Act
+            var result = await controller.ConfirmEmail(userId, token);
+
+            // Assert
+
+            var viewResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("/", viewResult.Url);
+        }
+
+        [Fact]
         public void ForgotPassword_WhenCalled_ReturnExpectedViewResult()
         {
             // Arrange
