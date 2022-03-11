@@ -61,6 +61,7 @@
             $(this).parent().addClass("active");
 
             if (!slide.hasClass("active")) {
+                console.log("active");
                 $('.play_video').html('');
                 $('.swiper-slide').removeClass("active");
                 var iframe = slide.find("input[name=iframe_value]").val();
@@ -81,6 +82,21 @@
 
                 iframe.attr('src', src);
                 slide.find('.play_video').html(iframe);
+
+                if (id) {
+                    $.ajax({
+                        url: "/api/post/view-video",
+                        method: "POST",
+                        data: {
+                            postId: id
+                        },
+                        success: function (response) {
+                            if (response.IsSuccessful) {
+                                $(this).removeAttr("post-id");
+                            }
+                        }
+                    });
+                }
             }
         });
     },
@@ -93,20 +109,5 @@ $(document).ready(function () {
     setUp.init();
 })
 
-//document.onreadystatechange = function () {
-//    if (document.readyState !== "complete") {
-//        console.log("loading")
-//        $('.main').hide();
-//        $('.skeleton-vertical').show();
-//    } else {
-//        $('.main').show();
-//        $('.skeleton-vertical').hide();
-        
-//        console.log("complete")
-//    }
-//};
 
-//$(window).load(function () {
-
-//});
 
