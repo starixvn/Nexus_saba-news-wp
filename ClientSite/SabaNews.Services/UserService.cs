@@ -7,6 +7,7 @@
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
 
@@ -115,7 +116,9 @@
 
         public async Task<IEnumerable<UserSendEmail>> GetUserForSendEmail(GetUserForSendEmailCriteria criteria)
         {
-            return await baseService.GetDataAsync<UserSendEmail>(criteria);
+            var result = await baseService.GetDataAsync<UserSendEmail>(criteria);
+            result = result.OrderBy(x => x.Email);
+            return result;
         }
     }
 }

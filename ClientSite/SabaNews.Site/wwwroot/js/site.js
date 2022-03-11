@@ -61,7 +61,6 @@
             $(this).parent().addClass("active");
 
             if (!slide.hasClass("active")) {
-                console.log("active");
                 $('.play_video').html('');
                 $('.swiper-slide').removeClass("active");
                 var iframe = slide.find("input[name=iframe_value]").val();
