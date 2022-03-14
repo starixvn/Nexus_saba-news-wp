@@ -100,6 +100,8 @@
                 }
             },
             submitHandler: function (form) {
+                $(element + " .btn-register").prop('disabled', true);
+                $(element + " .btn-register").addClass('btn-disabled');
                 $.ajax({
                     url: '/Auth/Register',
                     method: "POST",
@@ -114,6 +116,8 @@
                             HandleCloseModal();
                         } else {
                             $(form).find('.summary-eror').text(res.message);
+                            $(element + " .btn-register").prop('disabled', false);
+                            $(element + " .btn-register").removeClass('btn-disabled');
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
