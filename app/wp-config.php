@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress');
+define( 'DB_NAME', 'sabasports');
 
 /** MySQL database username */
 define( 'DB_USER', 'root');
@@ -29,7 +29,7 @@ define( 'DB_USER', 'root');
 define( 'DB_PASSWORD', '1234aa');
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql');
+define( 'DB_HOST', '10.18.200.83:3336');
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8');
