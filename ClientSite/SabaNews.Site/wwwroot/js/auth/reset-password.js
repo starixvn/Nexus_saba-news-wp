@@ -29,8 +29,8 @@
                     data: $(form).serialize(),
                     success: function (res) {
                         if (res.isSuccessful) {
-                            let bodyModal = _htmlResource.ResetPasswordSuccessfully;
-                            $('.reset-page').html(bodyModal);
+                            $('.reset-success').show();
+                            $('.reset-action').hide();
                         } else {
                             $(form).find('.summary-eror').text(res.message);
                         }
