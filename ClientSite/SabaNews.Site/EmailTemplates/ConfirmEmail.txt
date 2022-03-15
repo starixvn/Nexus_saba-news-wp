@@ -2,9 +2,8 @@
     <p>Xin chào <strong>{0}</strong>,</p>
 </div>
 <p>
-    Để hoàn tất quá trình khởi tạo tài khoản tại <a href="https://saba.vn/">Saba.vn</a>, vui lòng nhấn vào <a href="{1}">đây</a> để xác thực địa chỉ email này là của bạn.
-    <br />
-    Nếu bạn không thực hiện yêu cầu tạo tài khoản, xin bỏ qua email này.
+    Để hoàn tất quá trình tạo tài khoản, vui lòng nhấn vào <a href="{1}">ĐÂY</a> để xác thực địa chỉ email này là của bạn.
+   
     <br />
     <br />
     Cảm ơn,
