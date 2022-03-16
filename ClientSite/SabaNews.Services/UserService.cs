@@ -116,9 +116,7 @@
 
         public async Task<IEnumerable<UserSendEmail>> GetUserForSendEmail(GetUserForSendEmailCriteria criteria)
         {
-            var result = await baseService.GetDataAsync<UserSendEmail>(criteria);
-            result = result.OrderBy(x => x.Email);
-            return result;
+            return await baseService.GetDataAsync<UserSendEmail>(criteria);
         }
     }
 }
