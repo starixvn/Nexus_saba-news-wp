@@ -1,10 +1,9 @@
-﻿
-namespace SabaNews.AutoJobs
+﻿namespace SabaNews.AutoJobs
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Fanex.Caching;
+    using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
     using Fanex.Data.Repository;
@@ -18,16 +17,15 @@ namespace SabaNews.AutoJobs
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using SabaNews.AutoJobs.Models;
+    using SabaNews.AutoJobs.Workers;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using SabaNews.AutoJobs.Models;
-    using SabaNews.AutoJobs.Workers;
     using Sentry;
     using StackExchange.Redis;
-    using Fanex.Caching.Redis;
 
     public class Startup
     {
@@ -38,6 +36,7 @@ namespace SabaNews.AutoJobs
             Configuration = configuration;
             Redis = ConnectionMultiplexer.Connect(Configuration.GetSection("RedisConfig:ConnectionString").Value);
         }
+
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
@@ -51,7 +50,6 @@ namespace SabaNews.AutoJobs
 
         private void AddRedisConfiguration(IServiceCollection services)
         {
-
             services.AddDataProtection()
                 .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
                 .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
@@ -65,7 +63,6 @@ namespace SabaNews.AutoJobs
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
             app.UseMiddleware<ErrorHandler>();
             app.UseHsts();
 
@@ -78,8 +75,6 @@ namespace SabaNews.AutoJobs
                     pattern: "{controller=Auth}/{action=Index}/{id?}");
             });
         }
-
-     
 
         private static void AddConfiguration(IServiceCollection services, IConfiguration configuration)
         {
@@ -110,8 +105,6 @@ namespace SabaNews.AutoJobs
             ExceptionHandler
                 .UseConfig(new LoggingConfiguration())
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
-
-            
 
             services.AddSingleton(configuration);
             services.Configure<List<JobSettings>>(configuration.GetSection("JobSettings"));
