@@ -131,4 +131,7 @@
         <Setting Key="get_sitemap_news" SpName="get_sitemap_news" DbName="sabasports" Plain="0" />
         <Setting Key="get_rss" SpName="get_rss" DbName="sabasports" Plain="0" />
     </Function>
+    <Function Name="Banner">
+        <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>

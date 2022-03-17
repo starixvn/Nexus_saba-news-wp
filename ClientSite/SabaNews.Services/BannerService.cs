@@ -1,8 +1,6 @@
 ﻿namespace SabaNews.Services
 {
-    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Models;
-    using SabaNews.Core.Services;
     using SabaNews.Criteria.Banner;
     using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
