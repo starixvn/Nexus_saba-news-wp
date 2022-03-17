@@ -11,12 +11,10 @@
     public class BannerService : IBannerService
     {
         private readonly IBaseService baseService;
-        private readonly ISessionService sessionService;
 
-        public BannerService(IBaseService baseService, ISessionService sessionService)
+        public BannerService(IBaseService baseService)
         {
             this.baseService = baseService;
-            this.sessionService = sessionService;
         }
         public async Task<BannerModel> GetBannerInfoAsync()
         {
