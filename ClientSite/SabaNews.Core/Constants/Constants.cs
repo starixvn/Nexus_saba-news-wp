@@ -165,6 +165,7 @@
         public const int CacheSitemapTimeoutMinutes = 30;
         public const int CacheNewSitemapTimeoutMinutes = 30;
         public const int CacheRSSTimeoutMinutes = 30;
+        public const int CacheBannerTimeoutMinutes = 20;
 
     }
 }

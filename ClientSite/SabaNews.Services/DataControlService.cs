@@ -200,7 +200,7 @@
                     await cacheService.SetAsync(CacheKey.Banner, result,
                         new CacheItemOptions
                         {
-                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheBannerTimeoutMinutes)
                         });
                 }
 
