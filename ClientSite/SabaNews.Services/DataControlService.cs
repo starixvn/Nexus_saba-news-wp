@@ -197,7 +197,7 @@
                     logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
 
                     result = await bannerService.GetBannerInfoAsync();
-                    await cacheService.SetAsync(CacheKey.RSS, result,
+                    await cacheService.SetAsync(CacheKey.Banner, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
