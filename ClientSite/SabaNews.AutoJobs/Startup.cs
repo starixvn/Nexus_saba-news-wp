@@ -145,6 +145,7 @@ namespace SabaNews.AutoJobs
             services.AddHostedService<RefreshNewsSitemapXmlFileWorker>();
             services.AddHostedService<RefreshRssWorker>();
             services.AddHostedService<RefreshSitemapXmlFileWorker>();
+            services.AddHostedService<RefreshBannerWorker>();
         }
     }
 }
