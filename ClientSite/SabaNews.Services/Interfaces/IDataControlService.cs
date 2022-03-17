@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Services.Interfaces
 {
     using SabaNews.Models;
+    using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
@@ -22,5 +23,7 @@
         Task<IEnumerable<Post>> GenerateRSSData();
 
         Task<Euro2020ViewModel> GetEuro2020PageViewModel();
+
+        Task<BannerModel> GetBannerData();
     }
 }

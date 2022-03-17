@@ -15,5 +15,7 @@
         Task UpdateNewsSitemapData();
 
         Task UpdateRSSData();
+
+        Task UpdateBannerCaching();
     }
 }

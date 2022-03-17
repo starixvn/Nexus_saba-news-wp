@@ -13,17 +13,20 @@
         private readonly IFetchDataService fetchDataService;
         private readonly ICacheService cacheService;
         private readonly IPostService postService;
+        private readonly IBannerService bannerService;
         private readonly ILogServiceProvider logService;
 
         public RefreshCachingService(IFetchDataService fetchDataService,
             ICacheService cacheService,
             IPostService postService,
-            ILogServiceProvider logService)
+            ILogServiceProvider logService,
+            IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
             this.postService = postService;
             this.logService = logService;
+            this.bannerService = bannerService;
         }
 
         public async Task UpdateHomePageCaching()
@@ -190,6 +193,31 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateRSSData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
+
+        public async Task UpdateBannerCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start UpdateBannerCaching");
+
+            try
+            {
+                var result = await bannerService.GetBannerInfoAsync();
+                logService.WriteLogFileInfo(string.Format("After UpdateBannerCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheService.SetAsync(CacheKey.Banner,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done UpdateBannerCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
     }
 }

@@ -8,6 +8,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Models;
+    using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
@@ -19,6 +20,7 @@
         private readonly ICacheService cacheService;
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
+        private readonly IBannerService bannerService;
         private readonly bool IsUsingCache;
        
 
@@ -26,12 +28,14 @@
             IConfiguration configuration,
             ICacheService cacheService,
             IPostService postService,
-            ILogServiceProvider logServiceProvider)
+            ILogServiceProvider logServiceProvider,
+            IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
             this.cacheService = cacheService;
             this.postService = postService;
             this.logServiceProvider = logServiceProvider;
+            this.bannerService = bannerService;
             IsUsingCache = configuration.GetValue<bool>("IsEnabledUseFanexCaching");
         }
 
@@ -180,6 +184,30 @@
             }
 
             return await postService.GetRSSDataAsync();
+        }
+
+        public async Task<BannerModel> GetBannerData()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheService.GetAsync<BannerModel>(CacheKey.Banner);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
+
+                    result = await bannerService.GetBannerInfoAsync();
+                    await cacheService.SetAsync(CacheKey.RSS, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await bannerService.GetBannerInfoAsync();
         }
 
         public async Task<Euro2020ViewModel> GetEuro2020PageViewModel()
