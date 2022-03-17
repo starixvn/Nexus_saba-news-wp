@@ -11,16 +11,12 @@
     public class BannerService : IBannerService
     {
         private readonly IBaseService baseService;
-        private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
-        private readonly string baseUrl;
 
-        public BannerService(IBaseService baseService, IConfiguration configuration, ISessionService sessionService)
+        public BannerService(IBaseService baseService, ISessionService sessionService)
         {
             this.baseService = baseService;
-            this.configuration = configuration;
             this.sessionService = sessionService;
-            baseUrl = configuration.GetValue<string>("BaseUrl");
         }
         public async Task<BannerModel> GetBannerInfoAsync()
         {
@@ -29,7 +25,7 @@
 
         }
 
-        public async Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner)
+        public async Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner, int ActorId)
         {
             var criteria = new UpdateBannerInfoCommand
             {
@@ -47,7 +43,7 @@
                 MobileCenterUrl = banner.MobileCenterUrl,
                 MobileBottomUrl = banner.MobileBottomUrl,
                 MobileBottomNavigationUrl = banner.MobileBottomNavigationUrl,
-                ActorId = sessionService.User.Id,
+                ActorId = ActorId,
             };
             return await baseService.ExecuteNonQueryAsync(criteria);
         }

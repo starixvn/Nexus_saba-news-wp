@@ -8,6 +8,6 @@
     {
         Task<BannerModel> GetBannerInfoAsync();
 
-        Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner);
+        Task<CommandResult> UpdateBannerInfoAsync(BannerModel banner, int ActorId);
     }
 }

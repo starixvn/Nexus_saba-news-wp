@@ -5,6 +5,7 @@
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using System;
@@ -17,16 +18,19 @@
         private readonly IBannerService bannerService;
         private readonly IPathService pathService;
         private readonly IConfiguration configuration;
+        private readonly ISessionService sessionService;
         private readonly string baseUrl;
         
         public BannerManagementController(
             IBannerService bannerService,
             IPathService pathService,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            ISessionService sessionService)
         {
             this.bannerService = bannerService;
             this.pathService = pathService;
             this.configuration = configuration;
+            this.sessionService = sessionService;
             baseUrl = configuration.GetValue<string>("BaseUrl");
         }
         public async Task<IActionResult> Index()
@@ -42,7 +46,7 @@
             value ??= "";
             var banner = await bannerService.GetBannerInfoAsync();
             var bannerUpdatedData = UpdateBannerData(banner, type, value);
-            var result = await bannerService.UpdateBannerInfoAsync(bannerUpdatedData);
+            var result = await bannerService.UpdateBannerInfoAsync(bannerUpdatedData, sessionService.User.Id);
             return Json(result);
         }
 
@@ -97,7 +101,7 @@
                     default:
                         throw new InvalidOperationException();
                 }
-                result = await bannerService.UpdateBannerInfoAsync(banner);
+                result = await bannerService.UpdateBannerInfoAsync(banner, sessionService.User.Id);
             }
             catch (Exception e)
             {
