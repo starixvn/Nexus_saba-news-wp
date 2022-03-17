@@ -11,19 +11,17 @@
     {
         private readonly IDataControlService dataControlService;
         private readonly ISessionService sessionService;
-        private readonly IBannerService bannerService;
 
-        public MenuViewComponent(IDataControlService dataControlService, ISessionService sessionService, IBannerService bannerService)
+        public MenuViewComponent(IDataControlService dataControlService, ISessionService sessionService)
         {
             this.dataControlService = dataControlService;
             this.sessionService = sessionService;
-            this.bannerService = bannerService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "")
         {
             var menus = await dataControlService.GetMenuData();
-            var banner = await bannerService.GetBannerInfoAsync();
+            var banner = await dataControlService.GetBannerData();
             var isAuthenticated = sessionService.User != null;
             var model = new MenuViewModel
             {

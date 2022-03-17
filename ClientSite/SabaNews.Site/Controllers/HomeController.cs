@@ -19,17 +19,14 @@
         private readonly IDataControlService dataControlService;
         private readonly IPostService postService;
         private readonly IConfiguration configuration;
-        private readonly IBannerService bannerService;
 
         public HomeController(IPostService postService,
             IDataControlService dataControlService,
-            IConfiguration configuration,
-            IBannerService bannerService)
+            IConfiguration configuration)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.configuration = configuration;
-            this.bannerService = bannerService;
         }
 
         public async Task<IActionResult> Index()

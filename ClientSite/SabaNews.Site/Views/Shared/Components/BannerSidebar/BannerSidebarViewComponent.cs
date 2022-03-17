@@ -6,16 +6,16 @@
 
     public class BannerSidebarViewComponent : ViewComponent
     {
-        private readonly IBannerService bannerService;
+        private readonly IDataControlService dataControlService;
 
-        public BannerSidebarViewComponent(IBannerService bannerService)
+        public BannerSidebarViewComponent(IDataControlService dataControlService)
         {
-            this.bannerService = bannerService;
+            this.dataControlService = dataControlService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var banner = await bannerService.GetBannerInfoAsync();
+            var banner = await dataControlService.GetBannerData();
             return View(banner);
         }
     }
