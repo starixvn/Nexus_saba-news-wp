@@ -127,10 +127,12 @@ namespace SabaNews.AutoJobs
             services.AddSingleton<IBaseService, BaseService>();
             services.AddSingleton<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<IBaseRepository, BaseRepository>();
+            services.AddTransient<ISessionService, SessionService>();
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IBannerService, BannerService>();
+
             services.AddTransient<ICacheService, CacheService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
