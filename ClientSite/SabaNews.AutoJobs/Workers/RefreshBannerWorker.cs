@@ -19,7 +19,7 @@ namespace SabaNews.AutoJobs.Workers
             ILogServiceProvider logService) : base(logService)
         {
             this.refreshCachingService = refreshCachingService;
-            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshBanner);
+            jobSetting = JobSettingHelper.GetJobConfig(jobSettings.Value, JobNames.RefreshBannerCaching);
         }
 
         public override async Task ExecuteJobAsync()

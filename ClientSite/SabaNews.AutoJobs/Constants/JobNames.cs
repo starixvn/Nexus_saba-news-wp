@@ -8,6 +8,6 @@
         public const string RefreshSitemapXmlFile = "RefreshSitemapXmlFile";
         public const string RefreshNewsSitemapXmlFile = "RefreshNewsSitemapXmlFile";
         public const string RefreshRSS = "RefreshRSS";
-        public const string RefreshBanner = "RefreshBanner";
+        public const string RefreshBannerCaching = "RefreshBannerCaching";
     }
 }

@@ -16,6 +16,6 @@
 
         public const string Euro2020PageViewModel = "Euro2020PageViewModel";
 
-        public const string Banner = "Banner";
+        public const string Banner = "BannerInfo";
     }
 }

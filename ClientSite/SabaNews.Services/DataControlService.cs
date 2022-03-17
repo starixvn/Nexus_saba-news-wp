@@ -194,7 +194,7 @@
 
                 if (result == null)
                 {
-                    logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
+                    logServiceProvider.WriteLogFileInfo($"-------Get Banner data from DB---------");
 
                     result = await bannerService.GetBannerInfoAsync();
                     await cacheService.SetAsync(CacheKey.Banner, result,
