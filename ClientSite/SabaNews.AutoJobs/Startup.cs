@@ -130,6 +130,7 @@ namespace SabaNews.AutoJobs
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<ICacheService, CacheService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
