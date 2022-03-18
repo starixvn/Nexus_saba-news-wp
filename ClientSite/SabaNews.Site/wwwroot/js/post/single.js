@@ -6,7 +6,9 @@
         type: "POST",
         data: { postId, isVideo },
         success: function (res) {
-            console.log(res);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus + ': ' + errorThrown);
         }
     });
 })
