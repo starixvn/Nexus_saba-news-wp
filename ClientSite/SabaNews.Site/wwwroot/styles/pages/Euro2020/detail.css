@@ -1726,7 +1726,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0; } }
 
 .block-extension {
-  padding-left: 2.8rem; }
+  padding-left: 2.8rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7rem; }
   @media screen and (max-width: 1024px) {
     .block-extension {
       padding-left: 1rem; } }
