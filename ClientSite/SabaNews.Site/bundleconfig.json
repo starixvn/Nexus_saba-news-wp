@@ -205,7 +205,8 @@
         "inputFiles": [
             "wwwroot/js/profile/profile.js",
             "wwwroot/js/comment.js",
-            "wwwroot/js/post/poll.js"
+            "wwwroot/js/post/poll.js",
+            "wwwroot/js/post/single.js"
         ],
         "minify": {
             "enabled": true,

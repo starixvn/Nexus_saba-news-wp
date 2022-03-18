@@ -72,7 +72,7 @@
                 CateSlug = cateInfo.slug,
                 CateName = cateInfo.name
             };
-            await postService.UpdateViewAsync(post.ID, post.Type == Constants.VideoPostType);
+            
             return View(model);
         }
 
@@ -124,6 +124,14 @@
                 
             }
             return (slug.Trim(), name.Trim());
+        }
+
+        [HttpPost]
+        [Route("api/post/update-post-view")]
+        public async Task<IActionResult> UpdatePostView(int postId, bool isVideo)
+        {
+            var result = await postService.UpdateViewAsync(postId, isVideo);
+            return Ok(result);
         }
 
         [HttpPost]
