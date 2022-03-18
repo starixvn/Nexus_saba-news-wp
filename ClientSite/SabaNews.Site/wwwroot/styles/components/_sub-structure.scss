@@ -17,6 +17,7 @@
 
 .main .detail-container {
     @include grid(5% 65% 30%, unset, 0);
+    align-items : start;
 
     @include tableMobile {
         grid-template-columns: 60% 40%;

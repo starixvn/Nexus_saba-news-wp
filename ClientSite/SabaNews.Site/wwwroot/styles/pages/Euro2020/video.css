@@ -1366,7 +1366,8 @@ button {
   display: grid;
   grid-template-columns: 5% 65% 30%;
   grid-template-rows: unset;
-  grid-gap: 0; }
+  grid-gap: 0;
+  align-items: start; }
   @media screen and (max-width: 1024px) {
     .main .detail-container {
       grid-template-columns: 60% 40%; } }
