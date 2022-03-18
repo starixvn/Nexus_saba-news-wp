@@ -1,0 +1,148 @@
+﻿namespace SabaNews.Livescore.Core.Services
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Fanex.Caching;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Constants;
+    using SabaNews.Livescore.Core.Models;
+    using SabaNews.Livescore.Core.Services.Interfaces;
+
+    public class HttpClientService : IHttpClientService
+    {
+        private const string ContentType = "application/json";
+        private readonly IHttpClientFactory clientFactory;
+        private readonly ICacheService cacheService;
+        private readonly ILogServiceProvider logService;
+        private readonly ApiConfiguration config;
+
+        public HttpClientService(IHttpClientFactory clientFactory,
+            ICacheService cacheService,
+            ILogServiceProvider logService,
+            ApiConfiguration config)
+        {
+            this.clientFactory = clientFactory;
+            this.cacheService = cacheService;
+            this.logService = logService;
+            this.config = config;
+        }
+
+        public async Task<T> ExecuteGetAsync<T>(string endPoint, IDictionary<string, object> data = null) where T : new()
+                 => await SendHttpClientAsync<T>(endPoint, HttpMethod.Get, data);
+
+        public async Task<T> ExecutePostAsync<T>(string endPoint, IDictionary<string, object> data) where T : new()
+         => await SendHttpClientAsync<T>(endPoint, HttpMethod.Post, data);
+
+        public async Task RefreshTokenAsync()
+        {
+            var tokenModel = await AuthenticateAsync();
+
+            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel);
+        }
+
+        private async Task<T> SendHttpClientAsync<T>(string endPoint, HttpMethod method, IDictionary<string, object> data, bool isAuthentication = false)
+            where T : new()
+        {
+            ValidateEndPoint(endPoint);
+
+            using var request = CreateRequest(endPoint, method);
+            StringContent content = await InitStringContent(data, isAuthentication);
+            request.Content = content;
+            var client = clientFactory.CreateClient(HttpClientName.DefaultHttpClientWithProxy);
+
+            using var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = await response.Content.ReadAsStringAsync();
+
+                var result = HandleDataResponse<T>(jsonResult);
+
+                return result;
+            }
+
+            return default;
+        }
+
+        private async Task<StringContent> InitStringContent(IDictionary<string, object> data, bool isAuthentication)
+        {
+            if (data == null)
+            {
+                data = new Dictionary<string, object>();
+            }
+
+            if (!isAuthentication)
+            {
+                string token = await GetTokenAsync();
+                data.Add("token", token);
+            }
+
+            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, ContentType);
+            return content;
+        }
+
+        private HttpRequestMessage CreateRequest(string endPointPath, HttpMethod method)
+        {
+            Uri url = new($"{config.Endpoint}{endPointPath}");
+            var request = new HttpRequestMessage(method, url);
+
+            return request;
+        }
+
+        private static void ValidateEndPoint(string endPoint)
+        {
+            if (string.IsNullOrWhiteSpace(endPoint))
+            {
+                throw new ArgumentNullException(nameof(endPoint));
+            }
+        }
+
+        private T HandleDataResponse<T>(string json)
+        {
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                return default;
+            }
+            JObject jsonObject = JObject.Parse(json);
+            if (IsSuccess(jsonObject))
+            {
+                var jToken = jsonObject["data"];
+                var result = jToken.ToObject<T>();
+                return result;
+            }
+
+            logService.WriteMessageSentryErrorAsync(json);
+            return default;
+        }
+
+        private static bool IsSuccess(JObject jObject) => (int)jObject["code"] == 0;
+
+        private async Task<string> GetTokenAsync()
+        {
+            var tokenModel = await cacheService.GetAsync<AuthToken>(CachingKeys.APITokenCacheKey);
+
+            if (tokenModel is null)
+            {
+                tokenModel = await AuthenticateAsync();
+            }
+
+            return tokenModel?.Token;
+        }
+
+        private async Task<AuthToken> AuthenticateAsync()
+        {
+            var authData = new Dictionary<string, object>
+                {
+                    {"project", config.Project},
+                    {"secret", config.Secret}
+                };
+            var tokenModel = await SendHttpClientAsync<AuthToken>(config.LoginPath, HttpMethod.Post, authData, true);
+
+            return tokenModel;
+        }
+    }
+}

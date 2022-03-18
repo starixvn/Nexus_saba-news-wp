@@ -6,6 +6,12 @@
 
         public string Endpoint { get; set; }
 
-        public string ApiKey { get; set; }
+        public string Project { get; set; }
+
+        public string Secret { get; set; }
+
+        public string LoginPath { get; set; }
+
+        public int TokenExpired { get; set; }
     }
 }

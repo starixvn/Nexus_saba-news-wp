@@ -26,7 +26,7 @@
         public static void RegisterDI(this IServiceCollection services, IConfiguration configuration)
         {
             CoreDIHelpers.RegisterServices(services, configuration);
-            ProviderApiExtensions.RegisterDI(services);
+            ProviderApiHelpers.RegisterDI(services);
         }
     }
 }

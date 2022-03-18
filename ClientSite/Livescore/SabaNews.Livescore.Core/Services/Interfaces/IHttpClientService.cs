@@ -8,5 +8,7 @@
         Task<T> ExecuteGetAsync<T>(string endPoint, IDictionary<string, object> data = null) where T : new();
 
         Task<T> ExecutePostAsync<T>(string endPoint, IDictionary<string, object> data) where T : new();
+
+        Task RefreshTokenAsync();
     }
 }

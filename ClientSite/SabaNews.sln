@@ -43,21 +43,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livescore", "Livescore", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Hubs", "SabaNews.Hubs\SabaNews.Hubs.csproj", "{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Models", "..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj", "{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Models", "Livescore\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj", "{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API", "..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj", "{C26374D4-B684-4D85-BC0C-E1DC45F597A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API", "Livescore\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj", "{C26374D4-B684-4D85-BC0C-E1DC45F597A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Cache", "..\SabaNews.Livescore.Cache\SabaNews.Livescore.Cache.csproj", "{0D3C74E2-B098-48E7-9C74-9F420C18797F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Cache", "Livescore\SabaNews.Livescore.Cache\SabaNews.Livescore.Cache.csproj", "{0D3C74E2-B098-48E7-9C74-9F420C18797F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Core", "..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj", "{2FA37F03-9A9E-428A-82FA-64E56D866D42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Core", "Livescore\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj", "{2FA37F03-9A9E-428A-82FA-64E56D866D42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.ApiTest", "..\SabaNews.Livescore.ApiTest\SabaNews.Livescore.ApiTest.csproj", "{4B45E106-4CB5-46BF-AAF7-EE2490D75F66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.ApiTest", "Livescore\SabaNews.Livescore.ApiTest\SabaNews.Livescore.ApiTest.csproj", "{4B45E106-4CB5-46BF-AAF7-EE2490D75F66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.DatabaseStorage", "..\SabaNews.Livescore.DatabaseStorage\SabaNews.Livescore.DatabaseStorage.csproj", "{048109CA-B899-41A8-8786-D947266686C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.DatabaseStorage", "Livescore\SabaNews.Livescore.DatabaseStorage\SabaNews.Livescore.DatabaseStorage.csproj", "{048109CA-B899-41A8-8786-D947266686C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Services", "..\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj", "{06836F80-8F6A-4BC4-8C7E-420095C92BA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Services", "Livescore\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj", "{06836F80-8F6A-4BC4-8C7E-420095C92BA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks", "..\SabaNews.Livescore.ScheduledTasks\SabaNews.Livescore.ScheduledTasks.csproj", "{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks", "Livescore\SabaNews.Livescore.ScheduledTasks\SabaNews.Livescore.ScheduledTasks.csproj", "{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,6 +9,8 @@
     {
         Task<MatchResponse> FetchMatchByIdAync(int matchId);
 
-        Task<List<MatchResponse>> FetchMatchListByDateAsync(DateTime date);
+        Task<List<MatchResponse>> FetchMatchesByDateAsync(DateTime date);
+
+        Task<List<MatchResponse>> FetchMatchesByDateRangeAsync(DateTime from, DateTime to);
     }
 }
