@@ -11,6 +11,7 @@
     using SabaNews.Services.Interfaces;
     using System;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
     public class PostController : Controller
@@ -148,6 +149,20 @@
         {
             var viewPostStatistic = await statisticService.GetPostViewStatistic(fromDate, toDate);
             return Ok(viewPostStatistic);
+        }
+
+        [HttpPost]
+        [Route("api/post/related-posts")]
+        public IActionResult GetRelatedPosts(string cateSlug, int postID)
+        {
+            return ViewComponent("RelatedPosts", new { cateSlug, postID });
+        }
+
+        [HttpPost]
+        [Route("api/post/sidebar-posts")]
+        public IActionResult GetSidebarPosts(string cateSlug, int postID)
+        {
+            return ViewComponent("Sidebar", new { cateSlug, postID });
         }
 
         public string GetClientIP()

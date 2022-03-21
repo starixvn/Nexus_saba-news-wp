@@ -2,14 +2,12 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
-    using SabaNews.Models;
+    using SabaNews.Criteria.Posts;
+    using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
     using System.Linq;
-    using SabaNews.Models.Posts;
-    using SabaNews.Criteria;
-    using SabaNews.Criteria.Posts;
+    using System.Threading.Tasks;
 
     public class RelatedPostsViewComponent : ViewComponent
     {

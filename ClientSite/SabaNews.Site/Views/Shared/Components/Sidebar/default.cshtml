@@ -34,17 +34,6 @@
                                 <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>}
                         </p>
                     </div>
-
-                    <div class="skeleton skeleton-sidebar skeleton-vertical">
-                        @{
-                            if (Model.Posts.IndexOf(post) == 0)
-                            {
-                                <a class="skeleton-vertical__image"></a>
-                            }
-                        }
-                        <a class="skeleton-vertical__title"></a>
-                        <p class="skeleton-vertical__datetime"></p>
-                    </div>
                 }
             </div>
 
