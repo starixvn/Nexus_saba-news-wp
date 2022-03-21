@@ -90,6 +90,9 @@ body {
 p.has-text-align-center {
   line-height: 1.3; }
 
+.overflow-section {
+  overflow-x: hidden; }
+
 /*:root {
     --column : 12;
     --padding-col : 0 1.5rem;

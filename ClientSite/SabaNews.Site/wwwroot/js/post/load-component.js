@@ -32,11 +32,17 @@
     }
 
     function LoadBanner() {
+        $("body").addClass("overflow-section");
         $.ajax({
             url: "/api/banner",
             type: "POST",
             success: function (res) {
-                $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl))
+                $("body").removeClass("overflow-section");
+                $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl));
+                $(".banner-right").html(GeneralBannerHtml(res.desktopRightUrl, res.desktopRightNavigationUrl));
+                $(".banner-desktop-top").html(GeneralBannerHtml(res.desktopTopUrl, res.desktopTopNavigationUrl));
+                $(".banner-mobile-top").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
+                $(".banner-desktop-center").html(GeneralBannerHtml(res.mobileTopUrl, res.mobileTopNavigationUrl));
                 console.log(res);
                 console.log(res.desktopCenterNavigationUrl);
             }
