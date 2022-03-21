@@ -1409,10 +1409,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .skeleton-banner-align {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0; }
+  height: 100%; }
   .skeleton-banner-align .skeleton-banner {
     overflow: hidden;
     display: block;
@@ -1746,28 +1743,32 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0;
       padding-top: 2.4rem; } }
 
-.banner-change-domain {
+.banner-change-domain, .skeleton-banner-align {
   position: absolute;
   top: 24.5rem;
   z-index: 99999999999; }
-  .banner-change-domain.active-ads {
+  .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
     top: 7.5rem;
     position: fixed; }
   @media screen and (max-width: 1024px) {
-    .banner-change-domain {
+    .banner-change-domain, .skeleton-banner-align {
       display: none; } }
   @media screen and (max-width: 1280px) {
-    .banner-change-domain {
+    .banner-change-domain, .skeleton-banner-align {
       display: none; } }
   @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-    .banner-change-domain {
+    .banner-change-domain, .skeleton-banner-align {
       display: none; } }
-  .banner-change-domain.banner-left {
+  .banner-change-domain.banner-left, .banner-change-domain.skeleton-banner-align-left, .skeleton-banner-align.banner-left, .skeleton-banner-align.skeleton-banner-align-left {
     right: 50%;
     margin-right: 58rem; }
-  .banner-change-domain.banner-right {
+  .banner-change-domain.banner-right, .banner-change-domain.skeleton-banner-align-right, .skeleton-banner-align.banner-right, .skeleton-banner-align.skeleton-banner-align-right {
     left: 50%;
     margin-left: 58rem; }
+
+.skeleton-banner-align {
+  width: 100%;
+  max-width: 20rem; }
 
 .event-modal-home .modal {
   background: none; }

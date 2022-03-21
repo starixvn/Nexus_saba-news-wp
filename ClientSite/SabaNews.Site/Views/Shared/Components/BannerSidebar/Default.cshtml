@@ -4,9 +4,9 @@
     <a href="@(string.IsNullOrEmpty(Model.DesktopLeftNavigationUrl) ? "javascript:;" : Model.DesktopLeftNavigationUrl)">
         <img loading="lazy" src="@Model.DesktopLeftUrl" asp-append-version="true" class="img-res">
     </a>
-    <div class="skeleton skeleton-banner-align">
-        <div class="skeleton-banner"></div>
-    </div>
+</div>
+<div class="skeleton skeleton-banner-align skeleton-banner-align-left">
+    <div class="skeleton-banner "></div>
 </div>
 }
 @if (!string.IsNullOrEmpty(Model.DesktopRightUrl))
@@ -15,8 +15,8 @@
     <a href="@(string.IsNullOrEmpty(Model.DesktopRightNavigationUrl)? "javascript:;" : Model.DesktopRightNavigationUrl)">
         <img loading="lazy" src="@Model.DesktopRightUrl" asp-append-version="true" class="img-res">
     </a>
-    <div class="skeleton skeleton-banner-align">
-        <div class="skeleton-banner"></div>
-    </div>
+</div>
+<div class="skeleton skeleton-banner-align skeleton-banner-align-right">
+    <div class="skeleton-banner "></div>
 </div>
 }

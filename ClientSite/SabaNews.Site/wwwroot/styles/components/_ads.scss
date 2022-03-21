@@ -1,5 +1,5 @@
 ﻿@import '../abstracts/mixins';
-.banner-change-domain {
+.banner-change-domain, .skeleton-banner-align {
     position: absolute;
     top: 24.5rem;
     z-index: 99999999999;
@@ -13,8 +13,8 @@
         display: none;
     }
 
-    @media screen and (max-width: 1280px){
-        display : none;
+    @media screen and (max-width: 1280px) {
+        display: none;
     }
 
     @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
@@ -22,13 +22,17 @@
     }
 
 
-    &.banner-left {
+    &.banner-left, &.skeleton-banner-align-left {
         right: 50%;
         margin-right: 58rem;
     }
 
-    &.banner-right {
+    &.banner-right, &.skeleton-banner-align-right {
         left: 50%;
         margin-left: 58rem;
     }
+}
+.skeleton-banner-align{
+    width : 100%;
+    max-width : 20rem;
 }
