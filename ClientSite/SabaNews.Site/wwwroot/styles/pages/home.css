@@ -259,6 +259,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         @media screen and (max-width: 1024px) {
           .header .header-controls .container .banner-euro-desktop {
             display: none; } }
+        .header .header-controls .container .banner-euro-desktop img {
+          display: block; }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
@@ -1321,6 +1323,74 @@ button {
       background-size: 450px 400px;
       animation: shimmer 1s linear infinite; }
 
+.skeleton-banner-align {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  .skeleton-banner-align .skeleton-banner {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    background: #d9d9d9;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999999999999999;
+    width: 100%; }
+    .skeleton-banner-align .skeleton-banner:before {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+      background-repeat: no-repeat;
+      background-size: 450px 400px;
+      animation: shimmer 1s linear infinite; }
+
+.skeleton-banner-euro-desktop {
+  overflow: hidden;
+  display: block;
+  background: #d9d9d9;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 999999999999999;
+  width: 100%; }
+  @media screen and (max-width: 1024px) {
+    .skeleton-banner-euro-desktop {
+      display: none; } }
+  .skeleton-banner-euro-desktop:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+    background-repeat: no-repeat;
+    background-size: 450px 400px;
+    animation: shimmer 1s linear infinite; }
+
+.skeleton-banner-mobile {
+  overflow: hidden;
+  background: #d9d9d9;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 999999999999999;
+  width: 100%; }
+  .skeleton-banner-mobile:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+    background-repeat: no-repeat;
+    background-size: 450px 400px;
+    animation: shimmer 1s linear infinite; }
+
 .skeleton-sidebar {
   margin-bottom: .8rem; }
   .skeleton-sidebar .skeleton-vertical__title {
@@ -1758,9 +1828,12 @@ button {
 
 @media (max-device-width: 768px) {
   .main .banner-mobile {
+    position: relative;
     text-align: center; }
     .main .banner-mobile img {
-      max-width: 100%; }
+      max-width: 100%;
+      display: block;
+      margin-bottom: .8rem; }
   .main .banner {
     display: none; } }
 
@@ -2194,7 +2267,11 @@ button {
         height: 20rem; } }
 
 .banner-euro-mobile {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
+  .banner-euro-mobile img {
+    display: block;
+    margin-bottom: .8rem; }
 
 .wapper.active-fixed .child-mobile-menu, .wapper.active-fixed .button-mobile, .wapper.active-fixed .top-header {
   position: fixed;

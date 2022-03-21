@@ -11,11 +11,12 @@
         <div class="container padding-mobile-none">
             @if(!string.IsNullOrEmpty(Model.Banner.DesktopTopUrl))
             {
-                <div class="banner-euro-desktop">
-                    <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopTopNavigationUrl) ? "javascript:;" : Model.Banner.DesktopTopNavigationUrl)">
-                        <img loading="lazy" src="@Model.Banner.DesktopTopUrl" asp-append-version="true" width="320" height="70" />
-                    </a>
-                </div>
+            <div class="banner-euro-desktop">
+                <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopTopNavigationUrl) ? "javascript:;" : Model.Banner.DesktopTopNavigationUrl)">
+                    <img loading="lazy" src="@Model.Banner.DesktopTopUrl" asp-append-version="true" width="320" height="70" />
+                </a>
+                <div class="skeleton skeleton-banner-euro-desktop"></div>
+            </div>
             }
 			
             <div class="logo">

@@ -1,16 +1,22 @@
 ﻿@if (!string.IsNullOrEmpty(Model.DesktopLeftUrl))
 {
-    <div class="banner-change-domain banner-left">
-        <a href="@(string.IsNullOrEmpty(Model.DesktopLeftNavigationUrl) ? "javascript:;" : Model.DesktopLeftNavigationUrl)">
-            <img loading="lazy" src="@Model.DesktopLeftUrl" asp-append-version="true" class="img-res">
-        </a>
+<div class="banner-change-domain banner-left">
+    <a href="@(string.IsNullOrEmpty(Model.DesktopLeftNavigationUrl) ? "javascript:;" : Model.DesktopLeftNavigationUrl)">
+        <img loading="lazy" src="@Model.DesktopLeftUrl" asp-append-version="true" class="img-res">
+    </a>
+    <div class="skeleton skeleton-banner-align">
+        <div class="skeleton-banner"></div>
     </div>
+</div>
 }
 @if (!string.IsNullOrEmpty(Model.DesktopRightUrl))
 {
-    <div class="banner-change-domain banner-right">
-        <a href="@(string.IsNullOrEmpty(Model.DesktopRightNavigationUrl)? "javascript:;" : Model.DesktopRightNavigationUrl)">
-            <img loading="lazy" src="@Model.DesktopRightUrl" asp-append-version="true" class="img-res">
-        </a>
+<div class="banner-change-domain banner-right">
+    <a href="@(string.IsNullOrEmpty(Model.DesktopRightNavigationUrl)? "javascript:;" : Model.DesktopRightNavigationUrl)">
+        <img loading="lazy" src="@Model.DesktopRightUrl" asp-append-version="true" class="img-res">
+    </a>
+    <div class="skeleton skeleton-banner-align">
+        <div class="skeleton-banner"></div>
     </div>
+</div>
 }

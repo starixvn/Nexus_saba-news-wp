@@ -169,10 +169,13 @@
 
     @media (max-device-width: 768px) {
         .banner-mobile {
+            position: relative;
             text-align: center;
 
             img {
                 max-width: 100%;
+                display: block;
+                margin-bottom: .8rem;
             }
         }
 
@@ -787,6 +790,11 @@
 
 .banner-euro-mobile {
     text-align: center;
+    position : relative;
+    img {
+        display: block;
+        margin-bottom: .8rem;
+    }
 }
 
 .wapper.active-fixed {

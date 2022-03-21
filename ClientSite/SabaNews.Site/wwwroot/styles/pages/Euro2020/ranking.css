@@ -272,6 +272,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         @media screen and (max-width: 1024px) {
           .header .header-controls .container .banner-euro-desktop {
             display: none; } }
+        .header .header-controls .container .banner-euro-desktop img {
+          display: block; }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
