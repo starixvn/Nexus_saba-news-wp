@@ -22,13 +22,15 @@
         private readonly IUserService userService;
         private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
+        private readonly IDataControlService dataControlService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
             ISessionService sessionService,
             IUserService userService,
             IStatisticService statisticService,
-            IPollService pollService)
+            IPollService pollService,
+            IDataControlService dataControlService)
         {
             this.postService = postService;
             this.configuration = configuration;
@@ -36,6 +38,7 @@
             this.userService = userService;
             this.statisticService = statisticService;
             this.pollService = pollService;
+            this.dataControlService = dataControlService;
         }
 
         [Route("{slug}")]
@@ -164,6 +167,15 @@
         {
             return ViewComponent("Sidebar", new { cateSlug, postID });
         }
+
+        [HttpPost]
+        [Route("api/banner")]
+        public async Task<IActionResult> GetBanner()
+        {
+            var banner = await dataControlService.GetBannerData();
+            return Ok(banner);
+        }
+
 
         public string GetClientIP()
         {

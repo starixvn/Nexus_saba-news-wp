@@ -32,7 +32,30 @@
     }
 
     function LoadBanner() {
+        $.ajax({
+            url: "/api/banner",
+            type: "POST",
+            success: function (res) {
+                $(".banner-left").html(GeneralBannerHtml(res.desktopLeftUrl, res.desktopLeftNavigationUrl))
+                console.log(res);
+                console.log(res.desktopCenterNavigationUrl);
+            }
+        });
+    }
 
+    function GeneralBannerHtml(src, link) {
+        var html = "";
+        //<a href="@(string.IsNullOrEmpty(Model.DesktopRightNavigationUrl)? " javascript:; " : Model.DesktopRightNavigationUrl)" >
+        //    <img loading="lazy" src="@Model.DesktopRightUrl" asp-append-version="true" class="img-res">
+        //</a>
+        if (src !== "") {
+            link = link === "" ? "javascript:;" : link;
+            html += '<a href="' + link + '">';
+            html += '<img loading="lazy test" src="' + src + '" asp-append-version="true" class="img-res">';
+            html += '</a>';
+        }
+       
+        return html;
     }
     function init() {
         LoadRelatedPosts();

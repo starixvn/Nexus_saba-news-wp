@@ -93,7 +93,7 @@
                 </div>
             }
 
-            <div class="post card-vertical card-vertical-highlight">
+            <div class="@(Model.IsVideo ? "post" : "") card-vertical card-vertical-highlight">
                 <div class="single card-vertical__video">
                     @if (Model.IsVideo)
                     {
