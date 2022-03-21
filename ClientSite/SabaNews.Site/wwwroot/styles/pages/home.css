@@ -94,7 +94,7 @@ p.has-text-align-center {
   line-height: 1.3; }
 
 .overflow-section {
-  overflow-x: hidden; }
+  overflow-x: hidden !important; }
 
 /*:root {
     --column : 12;
@@ -255,15 +255,21 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .header-controls .container {
           position: relative; } }
-      .header .header-controls .container .banner-euro-desktop {
+      .header .header-controls .container .banner-euro-desktop, .header .header-controls .container .skeleton-desktop {
         position: absolute;
         left: 240px;
         top: -8px; }
         @media screen and (max-width: 1024px) {
-          .header .header-controls .container .banner-euro-desktop {
+          .header .header-controls .container .banner-euro-desktop, .header .header-controls .container .skeleton-desktop {
             display: none; } }
-        .header .header-controls .container .banner-euro-desktop img {
+        .header .header-controls .container .banner-euro-desktop img, .header .header-controls .container .skeleton-desktop img {
           display: block; }
+      .header .header-controls .container .skeleton-banner-euro-desktop {
+        width: 32rem;
+        height: 7rem; }
+        @media screen and (max-width: 1024px) {
+          .header .header-controls .container .skeleton-banner-euro-desktop {
+            display: none; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;
@@ -1353,12 +1359,7 @@ button {
   overflow: hidden;
   display: block;
   background: #d9d9d9;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  z-index: 999999999999999;
-  width: 100%; }
+  z-index: 999999999999999; }
   @media screen and (max-width: 1024px) {
     .skeleton-banner-euro-desktop {
       display: none; } }
@@ -1372,24 +1373,28 @@ button {
     background-size: 450px 400px;
     animation: shimmer 1s linear infinite; }
 
-.skeleton-banner-mobile {
-  overflow: hidden;
-  background: #d9d9d9;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  z-index: 999999999999999;
-  width: 100%; }
-  .skeleton-banner-mobile:before {
-    position: absolute;
-    content: "";
-    height: 100%;
+.skeleton-mobile {
+  display: none; }
+  @media screen and (max-width: 1024px) {
+    .skeleton-mobile {
+      display: block; } }
+  .skeleton-mobile .skeleton-banner-mobile {
+    overflow: hidden;
+    background: #d9d9d9;
+    height: 20rem;
+    z-index: 999999999999999;
     width: 100%;
-    background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
-    background-repeat: no-repeat;
-    background-size: 450px 400px;
-    animation: shimmer 1s linear infinite; }
+    position: relative;
+    margin-bottom: .8rem; }
+    .skeleton-mobile .skeleton-banner-mobile:before {
+      position: absolute;
+      content: "";
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0, 0, 0, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+      background-repeat: no-repeat;
+      background-size: 450px 400px;
+      animation: shimmer 1s linear infinite; }
 
 .skeleton-sidebar {
   margin-bottom: .8rem; }
@@ -1622,7 +1627,8 @@ button {
 
 .skeleton-banner-align {
   width: 100%;
-  max-width: 20rem; }
+  max-width: 20rem;
+  max-height: 60rem; }
 
 .event-modal-home .modal {
   background: none; }

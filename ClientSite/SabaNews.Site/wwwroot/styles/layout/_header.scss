@@ -49,15 +49,26 @@
                 position: relative;
             }
 
-            .banner-euro-desktop {
+            .banner-euro-desktop, .skeleton-desktop {
                 position: absolute;
                 left: 240px;
                 top: -8px;
+
                 @include tableMobile {
                     display: none;
                 }
-                img{
-                    display : block;
+
+                img {
+                    display: block;
+                }
+            }
+
+            .skeleton-banner-euro-desktop {
+                width: 32rem;
+                height: 7rem;
+
+                @include tableMobile {
+                    display: none;
                 }
             }
         }

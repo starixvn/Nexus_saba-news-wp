@@ -91,7 +91,7 @@ p.has-text-align-center {
   line-height: 1.3; }
 
 .overflow-section {
-  overflow-x: hidden; }
+  overflow-x: hidden !important; }
 
 /*:root {
     --column : 12;
@@ -252,15 +252,21 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .header .header-controls .container {
           position: relative; } }
-      .header .header-controls .container .banner-euro-desktop {
+      .header .header-controls .container .banner-euro-desktop, .header .header-controls .container .skeleton-desktop {
         position: absolute;
         left: 240px;
         top: -8px; }
         @media screen and (max-width: 1024px) {
-          .header .header-controls .container .banner-euro-desktop {
+          .header .header-controls .container .banner-euro-desktop, .header .header-controls .container .skeleton-desktop {
             display: none; } }
-        .header .header-controls .container .banner-euro-desktop img {
+        .header .header-controls .container .banner-euro-desktop img, .header .header-controls .container .skeleton-desktop img {
           display: block; }
+      .header .header-controls .container .skeleton-banner-euro-desktop {
+        width: 32rem;
+        height: 7rem; }
+        @media screen and (max-width: 1024px) {
+          .header .header-controls .container .skeleton-banner-euro-desktop {
+            display: none; } }
     .header .header-controls .header-auth-provider {
       list-style: none;
       display: flex;

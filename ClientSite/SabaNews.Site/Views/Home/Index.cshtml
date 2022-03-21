@@ -50,6 +50,8 @@
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileTopNavigationUrl) ? "javascript:;" : Model.Banner.MobileTopNavigationUrl)">
                     <img src="@Model.Banner.MobileTopUrl" asp-append-version="true" width="375" />
                 </a>
+            </div>
+            <div class="skeleton-mobile">
                 <div class="skeleton skeleton-banner-mobile"></div>
             </div>
         }
@@ -121,12 +123,14 @@
         </div>
         @if (!string.IsNullOrEmpty(Model.Banner.MobileCenterUrl))
         {
-    <div class="banner-mobile">
-        <a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
-            <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
-        </a>
-        <div class="skeleton skeleton-banner-mobile"></div>
-    </div>
+            <div class="banner-mobile">
+                <a href="@(string.IsNullOrEmpty(Model.Banner.MobileCenterNavigationUrl) ? "javascript:;" : Model.Banner.MobileCenterNavigationUrl)">
+                    <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileCenterUrl">
+                </a>
+            </div>
+            <div class="skeleton-mobile">
+                <div class="skeleton skeleton-banner-mobile"></div>
+            </div>
         }
 
         <div class="block block-video">
@@ -276,6 +280,9 @@
                 <a href="@(string.IsNullOrEmpty(Model.Banner.MobileBottomNavigationUrl) ? "javascript:;" : Model.Banner.MobileBottomNavigationUrl)">
                     <img asp-append-version="true" loading="lazy" src="@Model.Banner.MobileBottomUrl">
                 </a>
+            </div>
+            <div class="skeleton-mobile">
+                <div class="skeleton skeleton-banner-mobile"></div>
             </div>
         }
 

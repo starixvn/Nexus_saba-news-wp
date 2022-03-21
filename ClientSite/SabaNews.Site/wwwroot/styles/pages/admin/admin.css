@@ -90,7 +90,7 @@ p.has-text-align-center {
   line-height: 1.3; }
 
 .overflow-section {
-  overflow-x: hidden; }
+  overflow-x: hidden !important; }
 
 button {
   outline: none;

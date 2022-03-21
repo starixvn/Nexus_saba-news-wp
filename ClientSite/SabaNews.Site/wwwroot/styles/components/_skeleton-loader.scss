@@ -93,13 +93,7 @@
     overflow: hidden;
     display: block;
     background: #d9d9d9;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
     z-index: 999999999999999;
-    width: 100%;
-
     @include tableMobile {
         display: none;
     }
@@ -116,26 +110,37 @@
     }
 }
 
-.skeleton-banner-mobile {
-    overflow: hidden;
-    background: #d9d9d9;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    z-index: 999999999999999;
-    width: 100%;
-    &:before {
-        position: absolute;
-        content: "";
-        height: 100%;
+.skeleton-mobile {
+    display: none;
+
+    @include tableMobile {
+        display: block;
+    }
+
+    .skeleton-banner-mobile {
+        overflow: hidden;
+        background: #d9d9d9;
+        height: 20rem;
+        z-index: 999999999999999;
         width: 100%;
-        background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
-        background-repeat: no-repeat;
-        background-size: 450px 400px;
-        animation: shimmer 1s linear infinite;
+        position: relative;
+        margin-bottom: .8rem;
+
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+            background-repeat: no-repeat;
+            background-size: 450px 400px;
+            animation: shimmer 1s linear infinite;
+        }
     }
 }
+
+
 
 
 .skeleton-sidebar {
