@@ -1,0 +1,556 @@
+﻿$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+$input-btn-focus-box-shadow: unset;
+$fa-font-path: "../../../../fonts";
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/scss/font-awesome';
+
+body {
+    font-size: 1.4rem;
+}
+
+.livescore-soccer {
+    max-width: 660px;
+    position: relative;
+    padding: 10px;
+    padding-top: 7rem;
+    box-sizing: border-box;
+    font-size: 11px;
+    margin-right: auto;
+    margin-left: auto;
+
+    .tournament-header {
+        align-items: center;
+        background: #e9e9e9;
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        line-height: 17px;
+        padding: 5px 10px;
+    }
+
+    .duel-participant {
+        display: grid;
+        grid-template-rows: max-content 5px max-content 5px;
+        grid-template-columns: minmax(110px, 250px) minmax(80px, 150px) minmax(110px, 250px);
+        grid-template-areas: "time time time" ". . ." "home score away" ". . .";
+        margin: 10px 10px 0;
+
+        &-start-time {
+            color: #b0b0b0;
+            grid-area: time;
+            text-align: center;
+        }
+
+        &-home {
+            display: grid;
+            grid-area: home;
+            grid-template-rows: max-content max-content max-content;
+            grid-template-columns: 1fr 26px min-content 26px 1fr;
+            grid-template-areas: ". . image . ." "name name name name name" "rank rank rank rank rank";
+            justify-content: center;
+        }
+
+        .participant-image {
+            background: #fff;
+            border-radius: 4px;
+            grid-area: image;
+
+            a {
+                display: flex;
+            }
+
+            img {
+                height: 50px;
+                width: 50px;
+            }
+        }
+
+        .participant-name-wrapper {
+            font: normal 700 14px Arial,Helvetica,sans-serif;
+            grid-area: name;
+            padding-top: 5px;
+            text-align: center;
+
+            .participant-name {
+                display: inline-block;
+                word-break: break-word;
+                font: normal 700 14px Arial,Helvetica,sans-serif;
+                color: #656565;
+                text-align: center;
+            }
+        }
+
+        &-away {
+            display: grid;
+            grid-area: away;
+            grid-template-rows: max-content max-content max-content;
+            grid-template-columns: 1fr 26px min-content 26px 1fr;
+            grid-template-areas:
+                ". . image . ." "name name name name name" "rank rank rank rank rank";
+            justify-content: center;
+        }
+
+        &-score {
+            display: grid;
+            grid-area: score;
+
+            .detail-score {
+                &-match-info {
+                    align-items: center;
+                    display: flex;
+                    flex: 1 1;
+                    flex-flow: column;
+                    margin-top: 5px;
+
+                    &.live {
+                        color: #c00;
+                    }
+                }
+
+                &-wrapper {
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: center;
+                    font: normal 700 32px Arial,Helvetica,sans-serif;
+                    color: #085f00;
+
+                    &.live {
+                        color: #c00;
+                    }
+                }
+
+                &-divider {
+                    padding: 0 5px;
+                }
+
+                &-status {
+                    font-weight: 700;
+                    padding-top: 8px;
+                    text-align: center;
+
+                    .blink {
+                        animation: blink 2s infinite;
+                    }
+                }
+            }
+        }
+    }
+
+    .lineups-header {
+        background-color: #e9e9e9;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        display: flex;
+        font-weight: 700;
+        justify-content: center;
+        line-height: 14px;
+        text-align: center;
+
+        &.lineups-title {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .lineups-header-part, .lineups-header-title {
+            padding: 0 10px;
+        }
+
+        .lineups-header-part {
+            width: 35%;
+        }
+
+        .lineups-header-title {
+            white-space: nowrap;
+            width: 30%;
+        }
+    }
+
+    .lineups-title {
+        align-items: center;
+        background-color: #e9e9e9;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        display: flex;
+        font-weight: 700;
+        margin-top: -1px;
+        padding: 6px 10px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    .lineups-field-wrap {
+        background-color: green;
+
+        .lineups-field {
+            height: 320px;
+            width: 540px;
+            display: flex;
+            margin: 0 auto;
+            position: relative;
+
+            &:before {
+                background: green url(../../../../images/field_soccer_540x320.gif) no-repeat;
+                content: "";
+                height: 100%;
+                position: absolute;
+                width: 100%;
+            }
+
+            &-formation {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                margin-right: 10px;
+            }
+
+            &-formation-away {
+                flex-direction: row-reverse;
+                margin-left: 10px;
+                margin-right: 0;
+
+                .lineups-field-player-jersey {
+                    background-image: url(../../../../images/dress-blue.gif);
+                }
+            }
+
+            &-line {
+                align-items: center;
+                display: flex;
+                flex-direction: column-reverse;
+                height: 100%;
+                justify-content: space-evenly;
+                width: 100%;
+            }
+
+            &-participant-incidents {
+                --color-background-1: #fff;
+                --color-penalty: #cd0200;
+                --color-floorballGoal: #2d2d2d;
+                --color-footballGoal: #2d2d2d;
+                align-items: center;
+                display: flex;
+                top: -4px;
+                left: -5px;
+                position: absolute;
+                z-index: 1;
+            }
+
+            &-player, &-player-jersey {
+                align-items: center;
+                display: flex;
+                position: relative;
+            }
+
+            &-player {
+                flex-direction: column;
+                height: 50px;
+            }
+
+            &-player-jersey {
+                background-image: url(../../../../images/dress-white.gif);
+                background-position: center 6px;
+                background-repeat: no-repeat;
+                color: #353535;
+                font-size: 11px;
+                font-weight: 700;
+                height: 36px;
+                justify-content: center;
+                width: 31px;
+
+                &.lineups-field-goalkeeper {
+                    background-image: url(../../../../images/dress-yellow.gif);
+                }
+            }
+
+            &-player-name {
+                background-color: #353535;
+                color: #fff;
+                left: 50%;
+                line-height: 1.3;
+                position: absolute;
+                transform: translate(-50%,36px);
+                white-space: nowrap;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            &-player-name-inner {
+                font-size: 11px;
+                padding: 1px 3px;
+            }
+
+            &-formation-dense {
+                .lineups-field-player-name {
+                    font-size: 9px;
+                    max-width: 70px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    transform: translate(-50%,36px);
+                }
+            }
+        }
+    }
+
+    .field-lineup {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        grid-auto-columns: minmax(400px,1fr);
+        overflow-x: auto;
+
+        .section {
+            &-title {
+                align-items: center;
+                background-color: #e9e9e9;
+                border-bottom: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+                display: flex;
+                font-weight: 700;
+                margin-top: -1px;
+                padding: 6px 10px;
+                justify-content: center;
+                line-height: 14px;
+                text-align: center;
+                padding-left: 0;
+                padding-right: 0;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+
+            .sides {
+                display: flex;
+
+                .side {
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+
+                    .participant {
+                        align-items: center;
+                        display: flex;
+                        flex-wrap: wrap;
+                        line-height: 20px;
+                        min-height: 20px;
+                        padding: 4px 10px;
+
+                        &.reversed {
+                            flex-direction: row-reverse;
+                        }
+
+                        .participant-number {
+                            margin-top: -1px;
+                            min-width: 16px;
+                        }
+
+                        .participant-name {
+                            margin-top: -1px;
+                            padding-right: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.summary-match {
+    border-bottom: 1px solid #e5e5e5;
+
+    .section-title {
+        align-items: center;
+        background-color: #e9e9e9;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        font-weight: 700;
+        margin-top: 0;
+        padding: 6px 10px;
+        box-sizing: border-box;
+        min-height: 26px;
+    }
+
+    .participant-row {
+        display: flex;
+        padding: 7px 10px;
+
+        &.home-participant {
+            justify-content: flex-start;
+
+            .incident {
+                flex-flow: row wrap;
+            }
+        }
+
+        &.away-participant {
+            justify-content: flex-end;
+
+            .incident {
+                flex-flow: row-reverse wrap;
+            }
+
+            .time-box {
+                text-align: right;
+            }
+        }
+
+        .incident {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            line-height: 13px;
+        }
+
+        .time-box {
+            min-width: 16px;
+        }
+
+        .incident-icon {
+            display: flex;
+            line-height: 1;
+
+            svg {
+                margin-left: 6px;
+                margin-right: 6px;
+                min-width: 16px;
+            }
+
+            .yellow-card-icon {
+                color: #f9c91e;
+                /*fill: #f9c91e;*/
+                height: 12px;
+                margin: 2px 4px;
+                width: 8px;
+            }
+        }
+
+        .incident-icon-sub {
+            margin: 0 9px;
+        }
+
+        .arrow-up-icon {
+            color: #3fbd40;
+            height: 10px;
+            width: 8px;
+        }
+
+        .incident-side-away {
+            flex-flow: row-reverse;
+        }
+
+        .incident-sub-out {
+            display: flex;
+        }
+
+        .incident-icon-sub-out {
+            margin: 0 6px;
+        }
+
+        .arrow-down-icon {
+            color: #d42e2f;
+            height: 10px;
+            transform: rotate(180deg);
+            width: 8px;
+        }
+
+        .football-goal-icon {
+            color: #2d2d2d;
+            height: 16px;
+            width: 16px;
+        }
+
+        .sub-down, .sub-incident {
+            color: #b0b0b0;
+        }
+
+        .sub-incident {
+            margin: 0 3px;
+        }
+
+        .assist {
+            color: #b0b0b0;
+            padding: 0 3px;
+
+            a {
+                color: #b0b0b0;
+            }
+        }
+    }
+}
+
+.statistices {
+    &-row {
+        padding: 5px 10px 10px;
+    }
+
+    &-category {
+        display: flex;
+        flex-flow: row nowrap;
+        padding-bottom: 5px;
+    }
+
+    &-home-value {
+        flex: 0 0 80px;
+        justify-content: flex-start;
+        padding-right: 5px;
+        text-align: left;
+    }
+
+    &-away-value {
+        flex: 0 0 80px;
+        justify-content: flex-end;
+        padding-left: 5px;
+        text-align: right;
+    }
+
+    &-category-name {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &-bar {
+        display: flex;
+        height: 9px;
+    }
+
+    &-barBg {
+        background-color: #e9e9e9;
+        display: flex;
+        margin: 0 1px;
+        width: 100%;
+
+        &.statistices-home {
+            border-bottom-left-radius: 3px;
+            border-top-left-radius: 3px;
+            justify-content: flex-end;
+
+            div {
+                background-color: #c00;
+                border-bottom-left-radius: 3px;
+                border-top-left-radius: 3px;
+            }
+        }
+
+        &.statistices-away {
+            border-bottom-right-radius: 3px;
+            border-top-right-radius: 3px;
+
+            div {
+                background-color: #2d2d2d;
+                border-bottom-right-radius: 3px;
+                border-top-right-radius: 3px;
+            }
+        }
+    }
+}

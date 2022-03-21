@@ -157,28 +157,29 @@
             return View(view, model);
         }
 
-        [Route("lich-thi-dau")]
-        public async Task<IActionResult> MatchSchedule()
-        {
-            var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
-            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
-            var description = pageDetail.Description ??= title;
-            var model = new PageViewModel
-            {
-                Post = post,
-                Category = pageDetail,
-                Header = new HeaderViewModel
-                {
-                    CategorySlug = Constants.MatchScheduleSlug,
-                    CategoryId = pageDetail.CatId,
-                    Title = title,
-                    Description = description
-                }
-            };
+        //[Route("lich-thi-dau")]
+        //public async Task<IActionResult> MatchSchedule()
+        //{
+        //    var post = await postService.GetPostDetailBySlugAsync(Constants.MatchScheduleSlug, Constants.pageType);
+        //    var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
+        //    var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, DateTime.UtcNow.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+        //    var description = pageDetail.Description ??= title;
+        //    var model = new PageViewModel
+        //    {
+        //        Post = post,
+        //        Category = pageDetail,
+        //        Header = new HeaderViewModel
+        //        {
+        //            CategorySlug = Constants.MatchScheduleSlug,
+        //            CategoryId = pageDetail.CatId,
+        //            Title = title,
+        //            Description = description
+        //        }
+        //    };
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
+
 
         [Route("warning")]
         public async Task<IActionResult> Warning()

@@ -1,0 +1,28 @@
+﻿@model DateTime
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/index.chunk.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/index.chunk.css" asp-append-version="true" />
+    </environment>
+}
+@section Scripts{
+    <script type="text/javascript">
+        window.selectedEventDate = '@Model.ToString("yyyy-MM-dd")';
+        window.isLiveMatch = false;
+    </script>
+    <environment include="Development">
+        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/index.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/index.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@(await Component.InvokeAsync("Menu", new { page = "home-page" }))
+<div id="app-container"></div>

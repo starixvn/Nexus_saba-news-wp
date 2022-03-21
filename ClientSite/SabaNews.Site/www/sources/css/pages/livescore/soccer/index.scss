@@ -1,0 +1,354 @@
+﻿$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+$input-btn-focus-box-shadow: unset;
+$fa-font-path: "../../../../fonts";
+@import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/scss/font-awesome';
+@import '../../../components/date-picker';
+
+body {
+    font-size: 1.4rem;
+}
+
+.livescore-soccer {
+    max-width: 114rem;
+    position: relative;
+    padding: 10px;
+    padding-top: 7rem;
+    box-sizing: border-box;
+    font-size: 13px;
+    order: 1;
+    display: grid;
+    grid-template-rows: minmax(calc(100vh - 125px), 1fr);
+    grid-template-columns: 688px 172px auto;
+    margin-right: auto;
+    margin-left: auto;
+
+    .livescore-soccer-right {
+        background-color: #fff;
+        margin-left: 10px;
+
+        .leagues {
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            .leagues-title {
+                display: flex;
+                align-items: center;
+                background-color: #ffe1af;
+                border-bottom: 1px solid rgba(0,0,0,.1);
+                border-top: 1px solid rgba(0,0,0,.1);
+                box-sizing: border-box;
+                line-height: 25px;
+                padding: 0 10px;
+                font-weight: 700;
+            }
+
+            .leagues-items {
+                .leagues-item {
+                    align-items: center;
+                    display: flex;
+                    min-height: 25px;
+                    overflow: hidden;
+                    border-bottom: 1px solid #fff;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, .05);
+                        cursor: pointer;
+                    }
+
+                    .leagues-name {
+                        align-items: center;
+                        display: flex;
+                        flex: 1;
+                        line-height: 19px;
+                        min-height: 25px;
+                        overflow: hidden;
+                        padding: 0 8px;
+
+                        .logo {
+                            flex: 0 0 18px;
+                            height: 13px;
+                            margin-right: 8px;
+                        }
+
+                        .text {
+                            line-height: 18px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+
+                    .toggle-league {
+                        cursor: pointer;
+                        margin-right: 8px;
+                        order: 2;
+                        color: #ffcd00;
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+
+    .livescore-soccer-main {
+        .livescore-soccer-date-bar {
+            min-height: 23px;
+            display: grid;
+            grid-template-rows: minmax(23px, auto);
+            grid-template-columns: 1fr 60px 1fr 60px 1fr;
+            grid-template-areas: ". live weekbar datepicker .";
+            column-gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-live {
+            grid-area: live;
+            background-color: #f0f0f0;
+            width: 60px;
+            padding: 12px 6px;
+            text-align: center;
+            line-height: 1.6;
+            border-right: solid 1px #fff;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, .1);
+            }
+
+            &.active {
+                background-color: rgba(0, 0, 0, .2);
+            }
+        }
+
+        .livescore-soccer-week-bar {
+            grid-area: weekbar;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .week-date {
+                background-color: #f0f0f0;
+                width: 70px;
+                padding: 12px 6px;
+                text-align: center;
+                line-height: 1.6;
+                border-right: solid 1px #fff;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, .1);
+                }
+
+                .date {
+                    font-weight: bold;
+                }
+
+                &.active {
+                    background-color: rgba(0, 0, 0, .2);
+                }
+            }
+
+            .btn-prev-date, .btn-next-date {
+                border-radius: 50%;
+                padding: 10px;
+                background: #f0f0f0;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, .1);
+                }
+
+                &:disabled, &[disabled] {
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .date-picker {
+            grid-area: datepicker;
+        }
+
+        .livescore-soccer-search-bar {
+            max-width: 480px;
+            margin: auto;
+            margin-bottom: 1rem;
+            position: relative;
+
+            .livescore-soccer-searchbox {
+                height: 36px;
+                padding-left: 16px;
+                width: 100%;
+                padding-right: 40px;
+                font-size: 13px;
+            }
+
+            .btn-search-match {
+                position: absolute;
+                float: right;
+                right: 8px;
+                cursor: pointer;
+                margin-top: 3px;
+                z-index: 9;
+                color: #7e7e7e;
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                top: 1px;
+                font-size: 13px;
+            }
+        }
+
+        .events-grid {
+            .events-grid-item {
+                &-header {
+                    align-items: center;
+                    background-color: #e9e9e9;
+                    border-top: 1px solid rgba(0, 0, 0, .1);
+                    border-bottom: 1px solid rgba(0, 0, 0, .1);
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-template-columns: 1fr 40px 40px 40px 25px;
+                    height: 36px;
+                    justify-content: flex-start;
+                    position: relative;
+                    padding: 0;
+
+                    .events-grid-item {
+                        &-star-icon {
+                            cursor: pointer;
+                            text-align: center;
+                        }
+
+                        &-league {
+                            margin-left: 5px;
+                            align-items: center;
+                            display: flex;
+                            flex: 1;
+                            flex-direction: row;
+                            justify-content: flex-start;
+                            line-height: 1.1;
+                            max-width: 100%;
+                            overflow: hidden;
+                            position: relative;
+                            white-space: nowrap;
+                            font-weight: 700;
+
+                            .logo {
+                                flex: 0 0 18px;
+                                height: 20px;
+                                margin-right: 8px;
+                            }
+                        }
+
+                        &-schedule, &-result, &-standings {
+                            border-right: 1px solid rgba(0, 0, 0, .1);
+                            text-align: center;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                &-body {
+                    padding: 0;
+
+                    .events-match {
+                        min-height: 32px;
+                        display: grid;
+                        grid-template-rows: minmax(32px, auto);
+                        grid-template-columns: max-content 1fr max-content 60px max-content 1fr 25px;
+                        grid-template-areas: "stageOrTime homeParticipant homeLogo scores awayLogo awayParticipant check";
+                        cursor: pointer;
+
+                        &.live {
+                            .events-match-stage, .events-match-scores {
+                                color: #c00;
+                            }
+                        }
+
+                        &-star-icon {
+                            grid-area: check;
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+
+                            .fa {
+                                cursor: pointer;
+                            }
+                        }
+
+                        &-stage {
+                            grid-area: stageOrTime;
+                            justify-content: center;
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                            line-height: 15px;
+                            padding: 2px 0;
+                            text-align: center;
+                            width: 69px;
+                            margin-left: 0;
+                        }
+
+                        &-participant-home, &-participant-away {
+                            align-self: center;
+                            line-height: 19px;
+                            padding: 0 10px;
+                            flex: 1;
+                            hyphens: auto;
+                        }
+
+                        &-participant-home {
+                            grid-area: homeParticipant;
+                            justify-content: flex-end;
+                            text-align: right;
+                        }
+
+                        &-participant-away {
+                            grid-area: awayParticipant;
+                        }
+
+                        &-participant-home-logo {
+                            grid-area: homeLogo;
+                            margin-right: 8px;
+                        }
+
+                        &-participant-away-logo {
+                            grid-area: awayLogo;
+                            margin-left: 8px;
+                        }
+
+                        &-participant-home-logo, &-participant-away-logo {
+                            width: 18px;
+                            height: 18px;
+                            align-self: center;
+                        }
+
+                        &-scores {
+                            font-size: 11px;
+                            grid-area: scores;
+                            align-items: center;
+                            justify-content: center;
+                            display: flex;
+                            flex-wrap: wrap;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.events-grid-item-tooltip {
+    opacity: 1 !important;
+
+    .tooltip-inner {
+        padding: 6px;
+    }
+}

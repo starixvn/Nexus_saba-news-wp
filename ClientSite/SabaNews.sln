@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Services.UnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Site.UnitTests", "UnitTests\SabaNews.Site.UnitTests\SabaNews.Site.UnitTests.csproj", "{B7E549D6-E224-4472-8338-4D40F39A4DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.AutoJobs.UnitTests", "UnitTests\SabaNews.AutoJobs.UnitTests\SabaNews.AutoJobs.UnitTests.csproj", "{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.AutoJobs.UnitTests", "UnitTests\SabaNews.AutoJobs.UnitTests\SabaNews.AutoJobs.UnitTests.csproj", "{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Hubs", "SabaNews.Hubs\SabaNews.Hubs.csproj", "{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,6 +98,10 @@ Global
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
