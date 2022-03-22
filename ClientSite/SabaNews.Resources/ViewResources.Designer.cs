@@ -1564,6 +1564,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ~/Views/Component/_RelatedPosts.cshtml.
+        /// </summary>
+        public static string RelatedPostView {
+            get {
+                return ResourceManager.GetString("RelatedPostView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove.
         /// </summary>
         public static string Remove {
@@ -1812,6 +1821,24 @@ namespace SabaNews.Resources {
         public static string ShareMail {
             get {
                 return ResourceManager.GetString("ShareMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~/Views/Component/_SidebarBanner.cshtml.
+        /// </summary>
+        public static string SidebarBannerView {
+            get {
+                return ResourceManager.GetString("SidebarBannerView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ~/Views/Component/_SidebarPosts.cshtml.
+        /// </summary>
+        public static string SidebarPostView {
+            get {
+                return ResourceManager.GetString("SidebarPostView", resourceCulture);
             }
         }
         

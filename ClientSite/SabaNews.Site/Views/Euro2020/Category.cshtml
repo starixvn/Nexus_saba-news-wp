@@ -113,14 +113,7 @@
                     </div>
                 }
             </div>
-            @if (Model.Header.Slug != null)
-            {
-                @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.Header.Slug }))
-            }
-            else
-            {
-                @(await Component.InvokeAsync("Sidebar"))
-            }
+            @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
         </div>
     </div>
 </div>

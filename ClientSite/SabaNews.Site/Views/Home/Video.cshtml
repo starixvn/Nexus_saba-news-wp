@@ -83,15 +83,7 @@
             </div>
             @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
         </div>
-
-        @if (Model.Header.Slug != null)
-        {
-            @(await Component.InvokeAsync("Sidebar", new { cateSlug = Model.Header.Slug }))
-        }
-        else
-        {
-            @(await Component.InvokeAsync("Sidebar"))
-        }
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
     </div>
-    @(await Component.InvokeAsync("BannerSidebar"))
+    @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>

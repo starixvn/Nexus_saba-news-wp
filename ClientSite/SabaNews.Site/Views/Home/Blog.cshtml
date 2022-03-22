@@ -1,5 +1,4 @@
-﻿@using SabaNews.Models.ViewModel.Posts;
-@{
+﻿@{
 	if (Model.Header.Controller == "Tag")
 	{
 		var description = "MỚI NHẤT: ";
@@ -60,9 +59,6 @@
 
 @section Styles{
 	<link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
-}
-@section Scripts{
-    <script src="~/js/post/load-component.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory }))
@@ -141,8 +137,8 @@
         </div>
 		</div>
 		
-		@await Html.PartialAsync("~/Views/Component/_SidebarPosts.cshtml", new PostComponentViewModel { CateSlug = @Model.Header.Slug })
+		@await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.Slug })
 		
 	</div>
-	@(await Component.InvokeAsync("BannerSidebar"))
+	@await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>

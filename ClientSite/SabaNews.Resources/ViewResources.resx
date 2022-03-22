@@ -852,4 +852,13 @@
   <data name="TotalUsers" xml:space="preserve">
     <value>Total Users</value>
   </data>
+  <data name="RelatedPostView" xml:space="preserve">
+    <value>~/Views/Component/_RelatedPosts.cshtml</value>
+  </data>
+  <data name="SidebarBannerView" xml:space="preserve">
+    <value>~/Views/Component/_SidebarBanner.cshtml</value>
+  </data>
+  <data name="SidebarPostView" xml:space="preserve">
+    <value>~/Views/Component/_SidebarPosts.cshtml</value>
+  </data>
 </root>

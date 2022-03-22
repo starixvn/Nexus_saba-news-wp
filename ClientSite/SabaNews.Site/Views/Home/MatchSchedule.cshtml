@@ -15,16 +15,16 @@
 
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
 <section class="main">
-	<div class="container">
-		<div class="block block-main">
-			<h2 class="block__title"><a>Lịch Thi Đấu</a></h2>
-			<div class="block__content">
-				<div class="match-schedule">@Html.Raw(@Model.Post.PostContent)</div>
-			</div>
-		</div>
-		@(await Component.InvokeAsync("Sidebar"))
-	</div>
-	@(await Component.InvokeAsync("BannerSidebar"))
+    <div class="container">
+        <div class="block block-main">
+            <h2 class="block__title"><a>Lịch Thi Đấu</a></h2>
+            <div class="block__content">
+                <div class="match-schedule">@Html.Raw(@Model.Post.PostContent)</div>
+            </div>
+        </div>
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
+    </div>
+    @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
 
 <div class="auth-form event-modal-home">

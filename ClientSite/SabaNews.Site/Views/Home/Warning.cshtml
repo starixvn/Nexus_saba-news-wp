@@ -78,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-		@(await Component.InvokeAsync("Sidebar"))
+		@await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { })
 	</div>
-	@(await Component.InvokeAsync("BannerSidebar"))
+	@await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>

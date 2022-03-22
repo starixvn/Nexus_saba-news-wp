@@ -9,17 +9,10 @@
     </div>
     <div class="header-controls">
         <div class="container padding-mobile-none">
-            @if (!string.IsNullOrEmpty(Model.Banner.DesktopTopUrl))
-            {
-                <div class="banner-euro-desktop">
-                    <a href="@(string.IsNullOrEmpty(Model.Banner.DesktopTopNavigationUrl) ? "javascript:;" : Model.Banner.DesktopTopNavigationUrl)">
-                        <img loading="lazy" src="@Model.Banner.DesktopTopUrl" asp-append-version="true" width="320" height="70" />
-                    </a>
-                </div>
-                <div class="skeleton-desktop">
-                    <div class="skeleton skeleton-banner-euro-desktop"></div>
-                </div>
-            }
+            <div class="banner-euro-desktop banner-desktop-top"></div>
+            <div class="skeleton-desktop skeleton-banner">
+                <div class="skeleton-banner-euro-desktop"></div>
+            </div>
 
             <div class="logo">
                 <a href="@Url.Action("Index", "Home")">

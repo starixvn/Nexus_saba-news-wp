@@ -32,7 +32,6 @@
         public async Task<IActionResult> Index()
         {
             var viewModel = await dataControlService.GetHomePageViewModel();
-            var banner = await dataControlService.GetBannerData();
             var domain = configuration.GetValue<string>("BaseUrl");
             var title = viewModel.Category.SEOTitle ??= viewModel.Category.Title;
             var header = new HeaderViewModel
@@ -45,7 +44,6 @@
             viewModel.Header = header;
             viewModel.Url = domain;
             viewModel.RSSUrl = $"{domain}tin-moi-nhat.rss";
-            viewModel.Banner = banner;
             return View(viewModel);
         }
 

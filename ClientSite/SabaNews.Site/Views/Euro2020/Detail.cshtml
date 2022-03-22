@@ -1,6 +1,6 @@
 ﻿@using SabaNews.Core.Constants;
 @using DeviceDetectorNET;
-
+@using SabaNews.Models.ViewModel.Posts;
 @{
     var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
     detector.Parse();
@@ -213,9 +213,9 @@
             <div class="comment-post" id="comment">
             </div>
             <h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
-            @(await Component.InvokeAsync("RelatedPosts", new { postID = Model.SinglePost.ID, slug = Constants.Euro2020Slug }))
+            @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = Constants.Euro2020Slug })
         </div>
-        @(await Component.InvokeAsync("Sidebar", new { cateSlug = ViewData["cateSlug"], postID = Model.SinglePost.ID }))
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = ViewData["cateSlug"].ToString() })
     </div>
 </section>
 <div class="auth-form">

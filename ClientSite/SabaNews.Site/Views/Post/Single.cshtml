@@ -1,5 +1,4 @@
-﻿@using SabaNews.Models.ViewModel.Posts;
-@section Metadata {
+﻿@section Metadata {
     <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
     <meta property="og:description" content="&nbsp;" />
@@ -15,7 +14,7 @@
 
 @section Scripts{
     <script src="~/minify/js/single.min.js" asp-append-version="true"></script>
-    <script src="~/js/post/load-component.js" asp-append-version="true"></script>
+    
 }
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
@@ -197,13 +196,13 @@
             <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
             <div class="comment-post" id="comment">
             </div>
-            @await Html.PartialAsync("~/Views/Component/_RelatedPosts.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID })
+            @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        @await Html.PartialAsync("~/Views/Component/_SidebarPosts.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateSlug })
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateSlug })
 
     </div>
-    @(await Component.InvokeAsync("BannerSidebar"))
+    @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
 <div class="auth-form">
     <div class="modal" id="announcement">

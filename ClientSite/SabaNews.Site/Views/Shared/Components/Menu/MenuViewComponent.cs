@@ -21,7 +21,7 @@
         public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "")
         {
             var menus = await dataControlService.GetMenuData();
-            var banner = await dataControlService.GetBannerData();
+            
             var isAuthenticated = sessionService.User != null;
             var model = new MenuViewModel
             {
@@ -30,8 +30,7 @@
                 IsAuthenticated = isAuthenticated,
                 CategorySlug = categorySlug,
                 IsAdmin = isAuthenticated && !string.IsNullOrWhiteSpace(sessionService.User.Metadata)
-                        && sessionService.User.Metadata.Contains(Role.Administrator),
-                Banner = banner
+                        && sessionService.User.Metadata.Contains(Role.Administrator)
             };
             if (isAuthenticated)
             {
