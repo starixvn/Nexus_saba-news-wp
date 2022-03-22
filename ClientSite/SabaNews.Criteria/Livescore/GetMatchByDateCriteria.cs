@@ -6,7 +6,7 @@
     public class GetMatchByDateCriteria : CriteriaBase
     {
         public DateTime EventDate { get; set; }
-        public int SportId { get; set; }
+        public short SportId { get; set; }
 
         public override string GetSettingKey() => "Livescore_Match_GetByDate";
 

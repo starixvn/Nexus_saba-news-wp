@@ -1,13 +1,10 @@
-﻿namespace SabaNews.Site.Controllers.LiveScore
+﻿namespace SabaNews.Site.Controllers.Livescore
 {
     using System;
     using System.Net.Http;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.SignalR;
-    using Newtonsoft.Json;
     using SabaNews.Hubs;
-    using SabaNews.Models.LiveScore;
 
     public class SoccerController : Controller
     {
@@ -55,36 +52,6 @@
         public IActionResult Detail(long id)
         {
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", id);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetSoccerMatches()
-        {
-            var httpClient = httpClientFactory.CreateClient();
-            httpClient.DefaultRequestHeaders.Add("Key", "EDA8F37E5E644977BB5358217A605757");
-            var url = new Uri("https://api-dot-sabasport-com.df.r.appspot.com/api/1.0/Match/Soccer/Today");
-            HttpResponseMessage response = await httpClient.PostAsync(url, null);
-            response.EnsureSuccessStatusCode();
-            var responseData = await response.Content.ReadAsStringAsync();
-            var responseResult = JsonConvert.DeserializeObject<SoccerMatchQueryResponseResult>(responseData);
-            ////await hubContext.Clients.All.UpdateLiveSoccer(responseResult.Result.Match);
-
-            return Json(responseResult.Result.Match);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetLiveSoccerMatches()
-        {
-            var httpClient = httpClientFactory.CreateClient();
-            httpClient.DefaultRequestHeaders.Add("Key", "EDA8F37E5E644977BB5358217A605757");
-            var url = new Uri("https://api-dot-sabasport-com.df.r.appspot.com/api/1.0/Match/Live");
-            HttpResponseMessage response = await httpClient.PostAsync(url, null);
-            response.EnsureSuccessStatusCode();
-            var responseData = await response.Content.ReadAsStringAsync();
-            var responseResult = JsonConvert.DeserializeObject<LiveMatchQueryResponseResult>(responseData);
-            await hubContext.Clients.All.UpdateLiveSoccer(responseResult.Result.SoccerMatch);
-
-            return Ok();
         }
     }
 }

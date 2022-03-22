@@ -1,13 +1,12 @@
-﻿namespace SabaNews.AutoJobs.Helpers
+﻿namespace SabaNews.Livescore.ScheduledTasks.Helpers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using SabaNews.AutoJobs.Models;
-    using SabaNews.Livescore.Core.Helpers;
     using SabaNews.Livescore.Provider.API.Helpers;
+    using SabaNews.Livescore.ScheduledTasks.Models;
 
     public static class ScheduledTaskHelper
     {
@@ -25,7 +24,6 @@
 
         public static void RegisterDI(this IServiceCollection services, IConfiguration configuration)
         {
-            CoreDIHelpers.RegisterServices(services, configuration);
             ProviderApiHelpers.RegisterDI(services);
         }
     }

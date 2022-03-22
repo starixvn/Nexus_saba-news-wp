@@ -2,9 +2,12 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
+    using System.Net.Http;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
+    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -15,11 +18,15 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using SabaNews.AutoJobs.Models;
     using SabaNews.Core.Middlewares;
-    using SabaNews.Livescore.Core.Helpers;
+    using SabaNews.Core.Repositories;
+    using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Constants;
+    using SabaNews.Livescore.Provider.API.Models;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
+    using SabaNews.Livescore.ScheduledTasks.Models;
+    using SabaNews.Services;
     using Sentry;
     using StackExchange.Redis;
 
@@ -40,7 +47,6 @@
             services.AddControllers();
             AddConfiguration(services, Configuration);
             AddRedisConfiguration(services);
-            CoreDIHelpers.RegisterServices(services, Configuration);
             AddDependencyInjection(services);
             AddWorker(services);
         }
@@ -118,6 +124,36 @@
         {
             var apiService = services.BuildServiceProvider().GetRequiredService<IFetchMatchService>();
             var res = apiService.FetchMatchByIdAync(6227352).Result;
+        }
+
+        public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
+        {
+            RegisterHttpClientService(services, configuration);
+            RegisterConfiguration(services, configuration);
+
+            services.AddSingleton<ILogger, Logger>();
+            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.AddSingleton<IBaseService, BaseService>();
+            services.AddSingleton<IDynamicRepository, DynamicRepository>();
+            services.AddSingleton<IBaseRepository, BaseRepository>();
+        }
+
+        private static void RegisterHttpClientService(IServiceCollection services, IConfiguration configuration)
+        {
+            var httpConfig = configuration.GetSection(HttpClientConfigurations.ConfigurationKey).Get<HttpClientConfigurations>();
+            services.AddHttpClient(HttpClientName.DefaultHttpClientWithProxy).ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            {
+                UseProxy = httpConfig.IsUseProxy,
+                Proxy = new WebProxy(httpConfig.Proxy, httpConfig.ByPassLocal)
+            });
+
+            services.AddSingleton<IHttpClientService, HttpClientService>();
+        }
+
+        private static void RegisterConfiguration(IServiceCollection services, IConfiguration configuration)
+        {
+            var apiConfiguration = configuration.GetSection(ApiConfiguration.ConfigurationKeyName).Get<ApiConfiguration>();
+            services.AddSingleton(apiConfiguration);
         }
     }
 }

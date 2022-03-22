@@ -1,20 +1,18 @@
 ﻿namespace SabaNews.Hubs
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.SignalR;
-    using SabaNews.Models.LiveScore;
 
     public class LiveScoreHub : Hub<ILiveScoreClient>
     {
-        public async Task UpdateLiveSoccer(IList<SoccerMatch> soccerMatches)
+        public async Task UpdateLiveSoccer()
         {
-            await Clients.All.UpdateLiveSoccer(soccerMatches);
+            await Clients.All.UpdateLiveSoccer();
         }
 
-        public async Task UpdateLiveSoccerCommentary(long matchId, IList<SoccerMatchCommentary> commentaries)
+        public async Task UpdateLiveSoccerCommentary(long matchId)
         {
-            await Clients.Group(matchId.ToString()).UpdateLiveSoccerCommentary(commentaries);
+            await Clients.Group(matchId.ToString()).UpdateLiveSoccerCommentary();
         }
 
         public async Task AddNewSoccerGroup(long matchId)

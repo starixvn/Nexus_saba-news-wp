@@ -2,26 +2,26 @@
 {
     using System.ComponentModel;
 
-    public enum EventReason
+    public enum EventReasonStatus
     {
+        Unknown,
+
         [Description("Foul")]
-        Foul = 1,
+        Foul,
 
         [Description("PersonalFoul")]
-        PersonalFoul = 2,
+        PersonalFoul,
 
         [Description("Violation of opponent/injured substitution")]
-        InjuredSubstitution = 3,
+        InjuredSubstitution,
 
         [Description("Tactical foul/tactical substitution")]
-        TacticalSubstitution = 4,
+        TacticalSubstitution,
 
         [Description("Offensive Foul")]
-        OffensiveFoul = 5,
+        OffensiveFoul,
 
         [Description("Off the Ball Foul")]
-        OffTheBallFoul = 6,
-
-        unknown = 0
+        OffTheBallFoul
     }
 }

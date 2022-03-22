@@ -3,8 +3,24 @@
     public enum MatchStatus
     {
         NotStarted = 0,
-        Living = 10,
-        Finished = 50,
-        Cancelled = 63
+        FirstHalf = 10,
+        Section1,
+        EndOfTheFirstQuater,
+        Section2,
+        EndOfTheSecondQuater,
+        Midfield = 20,
+        SecondHalf = 30,
+        Section3,
+        EndOfTheThirdQuater,
+        Section4,
+        Overtime = 40,
+        PenaltyShootout,
+        Finish = 50,
+        Postponed = 60,
+        Interrupt,
+        CutInHalf,
+        Postponement,
+        Cancel,
+        TBD = 99
     }
 }

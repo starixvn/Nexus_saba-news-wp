@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.Core.Services
+﻿namespace SabaNews.Livescore.Provider.API.Services
 {
     using System;
     using System.Collections.Generic;
@@ -10,8 +10,7 @@
     using Newtonsoft.Json.Linq;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Constants;
-    using SabaNews.Livescore.Core.Models;
-    using SabaNews.Livescore.Core.Services.Interfaces;
+    using SabaNews.Livescore.Provider.API.Models;
 
     public class HttpClientService : IHttpClientService
     {

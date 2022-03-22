@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.Core.Models
+﻿namespace SabaNews.Livescore.Provider.API.Models
 {
     public class ApiConfiguration
     {

@@ -1,8 +1,6 @@
-﻿namespace SabaNews.Livescore.Services.Services
+﻿namespace SabaNews.Livescore.Services
 {
-    using SabaNews.Livescore.Services.Interfaces;
-
-    class MatchService : IMatchService
+    public class MatchService : IMatchService
     {
     }
 }

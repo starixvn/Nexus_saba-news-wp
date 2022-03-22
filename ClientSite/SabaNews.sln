@@ -41,13 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.AutoJobs.UnitTests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livescore", "Livescore", "{F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Hubs", "SabaNews.Hubs\SabaNews.Hubs.csproj", "{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Hubs", "SabaNews.Hubs\SabaNews.Hubs.csproj", "{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Models", "Livescore\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj", "{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API", "Livescore\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj", "{C26374D4-B684-4D85-BC0C-E1DC45F597A0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Cache", "Livescore\SabaNews.Livescore.Cache\SabaNews.Livescore.Cache.csproj", "{0D3C74E2-B098-48E7-9C74-9F420C18797F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Core", "Livescore\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj", "{2FA37F03-9A9E-428A-82FA-64E56D866D42}"
 EndProject
@@ -55,9 +53,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.ApiTest"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.DatabaseStorage", "Livescore\SabaNews.Livescore.DatabaseStorage\SabaNews.Livescore.DatabaseStorage.csproj", "{048109CA-B899-41A8-8786-D947266686C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Services", "Livescore\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj", "{06836F80-8F6A-4BC4-8C7E-420095C92BA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Services", "Livescore\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj", "{06836F80-8F6A-4BC4-8C7E-420095C92BA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.ScheduledTasks", "Livescore\SabaNews.Livescore.ScheduledTasks\SabaNews.Livescore.ScheduledTasks.csproj", "{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.ScheduledTasks", "Livescore\SabaNews.Livescore.ScheduledTasks\SabaNews.Livescore.ScheduledTasks.csproj", "{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Hubs", "Livescore\SabaNews.Livescore.Hubs\SabaNews.Livescore.Hubs.csproj", "{ACA69633-940F-428C-B786-C1903FA2D2B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,10 +128,6 @@ Global
 		{C26374D4-B684-4D85-BC0C-E1DC45F597A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C26374D4-B684-4D85-BC0C-E1DC45F597A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C26374D4-B684-4D85-BC0C-E1DC45F597A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D3C74E2-B098-48E7-9C74-9F420C18797F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D3C74E2-B098-48E7-9C74-9F420C18797F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D3C74E2-B098-48E7-9C74-9F420C18797F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D3C74E2-B098-48E7-9C74-9F420C18797F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FA37F03-9A9E-428A-82FA-64E56D866D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FA37F03-9A9E-428A-82FA-64E56D866D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA37F03-9A9E-428A-82FA-64E56D866D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -152,6 +148,10 @@ Global
 		{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54871CD7-BD07-4B5D-8FAA-6DF8322050DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA69633-940F-428C-B786-C1903FA2D2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA69633-940F-428C-B786-C1903FA2D2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA69633-940F-428C-B786-C1903FA2D2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA69633-940F-428C-B786-C1903FA2D2B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,12 +164,12 @@ Global
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB} = {372CA7FB-9DB9-4410-953A-3BE40850ED27}
 		{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{C26374D4-B684-4D85-BC0C-E1DC45F597A0} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
-		{0D3C74E2-B098-48E7-9C74-9F420C18797F} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{2FA37F03-9A9E-428A-82FA-64E56D866D42} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{4B45E106-4CB5-46BF-AAF7-EE2490D75F66} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{048109CA-B899-41A8-8786-D947266686C6} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{06836F80-8F6A-4BC4-8C7E-420095C92BA8} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{54871CD7-BD07-4B5D-8FAA-6DF8322050DA} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
+		{ACA69633-940F-428C-B786-C1903FA2D2B3} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65F3DDDD-509D-408F-83E6-FA3E192D5ABB}

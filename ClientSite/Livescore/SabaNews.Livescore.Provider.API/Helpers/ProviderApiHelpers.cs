@@ -7,7 +7,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Provider.API.Constants;
+    using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
     using SabaNews.Services;
@@ -34,7 +34,7 @@
             var param = new Dictionary<string, object>();
             if (isIncludeSportId)
             {
-                param.Add("sportId", CommonConstants.SoccerSportId);
+                param.Add("sportId", (short)SportType.Soccer);
             }
             return param;
         }

@@ -1,9 +1,12 @@
 ﻿namespace SabaNews.Livescore.Models.Team
 {
-    using SabaNews.Livescore.Core;
-
-    public class Player : BaseModel
+    public class Player
     {
+        public long PlayerId { get; set; }
+
+        public string NameEN { get; set; }
+        public string FullNameEN { get; set; }
+
         public string Position { get; set; }
 
         public int JerseyNumner { get; set; }

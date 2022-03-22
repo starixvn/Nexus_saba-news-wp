@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using SabaNews.Livescore.Core.Services.Interfaces;
     using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Helpers;
     using SabaNews.Livescore.Provider.API.Models.Matches;

@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.Core.Models
+﻿namespace SabaNews.Livescore.ScheduledTasks.Models
 {
     internal class HttpClientConfigurations
     {

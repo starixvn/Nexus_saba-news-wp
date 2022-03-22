@@ -1,29 +1,22 @@
 ﻿namespace SabaNews.Livescore.Models.League
 {
-    using SabaNews.Livescore.Core;
-
-    public class League : BaseModel
+    public class League
     {
-        public bool IsMajor { get; set; }
+        public long LeagueId { get; set; }
 
-        public int Level { get; set; }
+        public string LeagueNameEN { get; set; }
+        public string LeagueFullNameEN { get; set; }
 
         public string Icon { get; set; }
 
-        public int LeagugeType { get; set; }
+        public byte LeagugeType { get; set; }
 
-        public int CurrentRound { get; set; }
-
-        public long CategoryId { get; set; }
+        public short CurrentRound { get; set; }
+        public short RoundCount { get; set; }
 
         public long CurrentStageId { get; set; }
+        public string CurrentStageNameEN { get; set; }
 
-        public string CurrentStageName { get; set; }
-
-        public string Country { get; set; }
-
-        public string City { get; set; }
-
-        public LeagueSession Seasion { get; set; }
+        public bool IsMajor { get; set; }
     }
 }

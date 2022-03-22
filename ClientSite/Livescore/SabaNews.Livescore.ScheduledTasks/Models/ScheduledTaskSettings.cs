@@ -1,4 +1,4 @@
-﻿namespace SabaNews.AutoJobs.Models
+﻿namespace SabaNews.Livescore.ScheduledTasks.Models
 {
     public class ScheduledTaskSettings
     {

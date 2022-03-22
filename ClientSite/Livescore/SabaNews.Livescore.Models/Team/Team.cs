@@ -1,19 +1,12 @@
 ﻿namespace SabaNews.Livescore.Models.Team
 {
-    using SabaNews.Livescore.Core;
-
-    public class Team : BaseModel
+    public class Team
     {
-        public bool isHomeTeam { get; set; }
+        public long TeamId { get; set; }
 
-        public string Country { get; set; }
+        public string TeamNameEN { get; set; }
+        public string TeamFullNameEN { get; set; }
 
-        public string Abbreviation { get; set; }
-
-        public string Logo { get; set; }
-
-        public TeamStatistic Statistics { get; set; }
-
-        public TeamLineups Lineups { get; set; }
+        public string Icon { get; set; }
     }
 }

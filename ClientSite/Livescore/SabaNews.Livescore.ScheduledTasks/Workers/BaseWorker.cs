@@ -1,11 +1,11 @@
-﻿namespace SabaNews.WinowsService.Workers
+﻿namespace SabaNews.Livescore.ScheduledTasks.Workers
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Extensions.Hosting;
-    using SabaNews.AutoJobs.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.ScheduledTasks.Models;
 
     public class BaseWorker : BackgroundService
     {
