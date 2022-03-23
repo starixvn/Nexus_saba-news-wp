@@ -18,7 +18,7 @@
             this.httpClient = httpClient;
         }
 
-        public async Task<MatchResponse> FetchMatchByIdAync(int matchId)
+        public async Task<MatchResponse> FetchMatchByIdAync(long matchId)
         {
             var param = ProviderApiHelpers.InitParams();
             param.Add("matchId", matchId);

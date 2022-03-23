@@ -7,7 +7,7 @@
 
     public interface IFetchMatchService
     {
-        Task<MatchResponse> FetchMatchByIdAync(int matchId);
+        Task<MatchResponse> FetchMatchByIdAync(long matchId);
 
         Task<List<MatchResponse>> FetchMatchesByDateAsync(DateTime date);
 
