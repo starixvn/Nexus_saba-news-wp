@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.DatabaseStorage.Criteria.Matches
+﻿namespace SabaNews.Livescore.SyncData.Criteria.Matches
 {
     using SabaNews.Core.Models;
 

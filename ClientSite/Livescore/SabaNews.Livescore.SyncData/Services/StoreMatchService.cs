@@ -1,9 +1,9 @@
-﻿namespace SabaNews.Livescore.DatabaseStorage.Services
+﻿namespace SabaNews.Livescore.SyncData.Services
 {
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
-    using SabaNews.Livescore.DatabaseStorage.Criteria.Matches;
-    using SabaNews.Livescore.DatabaseStorage.Services.Interfaces;
+    using SabaNews.Livescore.SyncData.Criteria.Matches;
+    using SabaNews.Livescore.SyncData.Services.Interfaces;
     using SabaNews.Services;
 
     public class StoreMatchService : IStoreMatchService

@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.DatabaseStorage.Services.Interfaces
+﻿namespace SabaNews.Livescore.SyncData.Services.Interfaces
 {
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
