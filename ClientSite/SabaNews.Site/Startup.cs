@@ -16,7 +16,6 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +23,6 @@
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Hubs;
     using SabaNews.Site.Extensions;
     using Sentry;
     using StackExchange.Redis;
@@ -119,10 +117,6 @@
 
             services.RegisterServices();
             services.AddRazorPages();
-            services.AddSignalR(hubOptions =>
-            {
-                hubOptions.EnableDetailedErrors = true;
-            });
             services.AddHttpClient();
         }
 
@@ -178,11 +172,6 @@
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<LiveScoreHub>("/livescorehub", options =>
-                {
-                    options.Transports = HttpTransportType.LongPolling;
-                });
-
                 endpoints.MapControllerRoute(
                    name: "Admin",
                    pattern: "{area:exists}/{controller=Statistic}/{action=Index}/{id?}");

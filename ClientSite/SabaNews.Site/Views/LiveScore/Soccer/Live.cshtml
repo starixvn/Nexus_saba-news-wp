@@ -1,4 +1,6 @@
-﻿@model DateTime
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model DateTime
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -10,6 +12,7 @@
 }
 @section Scripts{
     <script type="text/javascript">
+        window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
         window.selectedEventDate = '@Model.ToString("yyyy-MM-dd")';
         window.isLiveMatch = true;
     </script>

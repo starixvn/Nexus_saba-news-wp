@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
 namespace SabaNews.Livescore.Hubs
 {
+    using System.Linq;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http.Connections;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -25,8 +20,16 @@ namespace SabaNews.Livescore.Hubs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+
+            var redisConfig = Configuration.GetSection("RedisConnectionString").Value;
+            services.AddSignalR(hubOptions =>
+            {
+                hubOptions.EnableDetailedErrors = true;
+            }).AddStackExchangeRedis(redisConfig, options =>
+            {
+                options.Configuration.ChannelPrefix = "Sabanews:Livescore:SignalR";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,15 +40,26 @@ namespace SabaNews.Livescore.Hubs
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins(Configuration.GetSection("AllowedHosts").GetChildren().Select(x => x.Value).ToArray())
+                    .AllowAnyHeader()
+                    .WithMethods("GET", "POST")
+                    .AllowCredentials();
+            });
+
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapHub<LivescoreHub>("/livescore/hubs", options =>
+                {
+                    options.Transports = HttpTransportType.LongPolling;
+                });
             });
         }
     }

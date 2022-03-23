@@ -1,24 +1,10 @@
 ﻿namespace SabaNews.Site.Controllers.Livescore
 {
     using System;
-    using System.Net.Http;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.SignalR;
-    using SabaNews.Hubs;
 
     public class SoccerController : Controller
     {
-        private readonly IHubContext<LiveScoreHub, ILiveScoreClient> hubContext;
-        private readonly IHttpClientFactory httpClientFactory;
-
-        public SoccerController(
-            IHubContext<LiveScoreHub, ILiveScoreClient> hubContext,
-            IHttpClientFactory httpClientFactory)
-        {
-            this.hubContext = hubContext;
-            this.httpClientFactory = httpClientFactory;
-        }
-
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
         public IActionResult Index(DateTime? eventDate)
         {
@@ -39,19 +25,19 @@
                 }
             }
 
-            return View("~/Views/LiveScore/Soccer/Index.cshtml", eventDate);
+            return View("~/Views/Livescore/Soccer/Index.cshtml", eventDate);
         }
 
         [Route("lich-thi-dau/bong-da/truc-tiep")]
         public IActionResult Live()
         {
-            return View("~/Views/LiveScore/Soccer/Live.cshtml", DateTime.Today);
+            return View("~/Views/Livescore/Soccer/Live.cshtml", DateTime.Today);
         }
 
-        [Route("lich-thi-dau/bong-da/detail/{id:long}")]
+        [Route("lich-thi-dau/bong-da/chi-tiet/{id:long}")]
         public IActionResult Detail(long id)
         {
-            return View("~/Views/LiveScore/Soccer/Detail.cshtml", id);
+            return View("~/Views/Livescore/Soccer/Detail.cshtml", id);
         }
     }
 }

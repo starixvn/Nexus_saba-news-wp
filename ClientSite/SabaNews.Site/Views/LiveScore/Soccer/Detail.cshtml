@@ -1,4 +1,6 @@
-﻿@model long
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model long
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -10,6 +12,7 @@
 }
 @section Scripts{
     <script>
+        window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
         window.selectedMatchId = @Model;
     </script>
     <environment include="Development">
