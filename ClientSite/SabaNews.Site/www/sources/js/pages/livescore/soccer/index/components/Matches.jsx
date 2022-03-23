@@ -4,11 +4,7 @@ import { bindActionCreators } from 'redux';
 import EventItem from './EventItem';
 import { ActionCreators } from '../actions';
 
-export class Events extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+export class Matches extends Component {
     groupBy = (array, f) => {
         var groups = {};
         array.forEach(o => {
@@ -22,12 +18,12 @@ export class Events extends Component {
     }
 
     render() {
-        if (!this.props.soccerMatches || this.props.soccerMatches.length === 0) {
+        if (!this.props.matches || this.props.matches.length === 0) {
             return null;
         }
 
         const helper = {};
-        const soccerMatches = this.props.soccerMatches.reduce((previousItem, currentItem) => {
+        const matches = this.props.matches.reduce((previousItem, currentItem) => {
             const key = currentItem.leagueId;
             if (!helper[key]) {
                 helper[key] = { leagueId: currentItem.leagueId, leagueEn: currentItem.leagueEn, matches: [{ ...currentItem }] };
@@ -42,7 +38,7 @@ export class Events extends Component {
         return (
             <div className="events-grid">
                 {
-                    soccerMatches.map((league, index) => <EventItem key={index} league={league} />)
+                    matches.map((league, index) => <EventItem key={index} league={league} />)
                 }
             </div>
         );

@@ -1,10 +1,7 @@
-﻿import React, { Component } from 'react';
+﻿import React, { PureComponent } from 'react';
+import LangHelper from '@jsroot/common/langHelper';
 
-export default class Leagues extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+export default class Leagues extends PureComponent {
     render() {
         const leagues = [
             { leagueId: 1, name: 'Champions League' },
@@ -20,7 +17,7 @@ export default class Leagues extends Component {
         ];
         return (
             <div className="leagues">
-                <div className="leagues-title">Giải nổi bật</div>
+                <div className="leagues-title">{LangHelper.getResource('HotLeague')}</div>
                 <div className="leagues-items">
                     {
                         leagues.map(league => {

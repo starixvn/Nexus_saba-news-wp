@@ -14,6 +14,7 @@ function generateConfig(environment) {
         },
         entry: {
             /*js*/
+            [`${jsPath}/lib/lang-vi-VN`]: pathConfig.scriptPaths.language,
             [`${jsPath}/pages/main`]: pathConfig.scriptPaths.main,
             [`${jsPath}/pages/livescore/soccer/index`]: pathConfig.scriptPaths.livescore_soccer_index,
             [`${jsPath}/pages/livescore/soccer/detail`]: pathConfig.scriptPaths.livescore_soccer_detail,

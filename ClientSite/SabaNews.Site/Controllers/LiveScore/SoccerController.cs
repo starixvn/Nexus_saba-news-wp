@@ -1,10 +1,23 @@
 ﻿namespace SabaNews.Site.Controllers.Livescore
 {
     using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Match;
 
     public class SoccerController : Controller
     {
+        private readonly IMatchService matchService;
+
+        public SoccerController(IMatchService matchService)
+        {
+            this.matchService = matchService;
+        }
+
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
         public IActionResult Index(DateTime? eventDate)
         {
@@ -38,6 +51,14 @@
         public IActionResult Detail(long id)
         {
             return View("~/Views/Livescore/Soccer/Detail.cshtml", id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMatches([FromBody] GetMatchByEventDateCriteria criteria)
+        {
+            criteria.SportId = (short)SportType.Soccer;
+            IEnumerable<Match> matches = await matchService.GetMatchByEventDateAsync(criteria);
+            return Json(matches);
         }
     }
 }

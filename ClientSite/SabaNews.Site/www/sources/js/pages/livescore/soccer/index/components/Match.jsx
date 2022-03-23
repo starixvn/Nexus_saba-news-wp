@@ -1,34 +1,37 @@
 ﻿import React, { PureComponent } from 'react';
+import LangHelper from '@jsroot/common/langHelper';
+import { MatchStatus } from '@jsroot/common/constants';
 
 export default class Match extends PureComponent {
-
     getMatchStage = match => {
         switch (match.status) {
-            case 0:
+            case MatchStatus.NotStarted:
                 return <span>{match.schedule}</span>;
                 break;
-            case 10:
-            case 30:
+
+            case MatchStatus.FirstHalf:
+            case MatchStatus.SecondHalf:
                 return <span>{match.matchTime}</span>;
                 break;
+
             default:
-                return <span>Kết thúc</span>;
+                return <span>{LangHelper.getResource('Finish')}</span>;
                 break;
         }
     };
 
     getMatchScores = match => {
         switch (match.status) {
-            case 0:
+            case MatchStatus.NotStarted:
                 return <span>&nbsp; - &nbsp;</span>;
                 break;
             default:
                 return <>
                     <div className="font-weight-bold">
-                        <span>{match.homeTeam.fullScore}</span>&nbsp; - &nbsp;<span>{match.awayTeam.fullScore}</span>
+                        <span>{match.homeTeamTotalScore}</span>&nbsp; - &nbsp;<span>{match.awayTeamTotalScore}</span>
                     </div>
                     <div>
-                        H1: <span>{match.homeTeam.halfScore}</span>&nbsp; - &nbsp;<span>{match.awayTeam.halfScore}</span>
+                        H1: <span>{match.homeTeamHalfScore}</span>&nbsp; - &nbsp;<span>{match.awayTeamHalfScore}</span>
                     </div>
                 </>;
                 break;

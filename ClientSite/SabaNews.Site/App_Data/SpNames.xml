@@ -233,7 +233,8 @@
     <Function Name="Log">
         <Setting Key="log_writelog" SpName="log_writelog" DbName="sabasports" Plain="0" />
     </Function>
-    <Function Name="Match">
-        <Setting Key="Livescore_Match_GetByDate" SpName="Livescore_Match_GetByDate" DbName="sabasports" Plain="0" />
-    </Function>
+    <Setting Key="Livescore_Match_GetByDate" SpName="Livescore_Match_GetByDate" DbName="sabasports" Plain="0">
+        <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
+        <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
+    </Setting>
 </Functions>

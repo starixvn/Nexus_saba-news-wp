@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import Leagues from './Leagues';
 import DateBar from './DateBar';
 import SearchBar from './SearchBar';
-import Events from './Events';
+import Matches from './Matches';
 import LiveMatch from './LiveMatch';
 import SignalR from './SignalR';
 import { ActionCreators } from '../actions';
 
 export class AppContainer extends Component {
-    constructor(props) {
-        super(props);
+    componentDidMount() {
+        this.props.getMatches({ eventDate: window.selectedEventDate });
     }
 
     render() {
@@ -24,7 +24,7 @@ export class AppContainer extends Component {
                         <SearchBar />
                         {
                             !window.isLiveMatch &&
-                            <Events soccerMatches={this.props.soccerMatches} />
+                            <Matches matches={this.props.matches} />
                         }
                         {
                             window.isLiveMatch &&
@@ -43,9 +43,9 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { soccerMatches } = state;
+    const { matches } = state;
     return {
-        soccerMatches
+        matches
     };
 };
 

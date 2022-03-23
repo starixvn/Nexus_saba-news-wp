@@ -61,13 +61,6 @@ export default class WeekBar extends PureComponent {
     };
 
     render() {
-        moment.updateLocale('vi-VN', {
-            weekdays: [
-                'Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'
-            ]
-        });
-        moment.locale('vi-VN');
-
         const dateRanges = this.state.dateRanges;
         const date = moment(window.selectedEventDate);
         const minDate = moment(this.props.minDate);

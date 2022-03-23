@@ -6,6 +6,12 @@ import Site from '@jsroot/common/site';
 
 export default class DateBar extends PureComponent {
     render() {
+        moment.updateLocale('vi', {
+            weekdays: [
+                'Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'
+            ]
+        });
+        moment.locale('vi');
         const today = new Date();
         const minDate = new Date(2021, 0, 1);
         const maxDate = new Date(today.getFullYear() + 1, 12, 0);

@@ -1,0 +1,22 @@
+﻿export const MatchStatus = {
+    NotStarted: 0,
+    FirstHalf: 10,
+    Section1: 11,
+    EndOfTheFirstQuater: 12,
+    Section2: 13,
+    EndOfTheSecondQuater: 14,
+    Midfield: 20,
+    SecondHalf: 30,
+    Section3: 31,
+    EndOfTheThirdQuater: 32,
+    Section4: 33,
+    Overtime: 40,
+    PenaltyShootout: 41,
+    Finish: 50,
+    Postponed: 60,
+    Interrupt: 61,
+    CutInHalf: 62,
+    Postponement: 63,
+    Cancel: 64,
+    TBD: 99
+};

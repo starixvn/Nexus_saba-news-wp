@@ -23,6 +23,7 @@
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Services;
     using SabaNews.Site.Extensions;
     using Sentry;
     using StackExchange.Redis;
@@ -110,6 +111,7 @@
             services.RegisterCoreDI();
             services.AddSingleton<ILogger, Logger>();
             services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            services.ResolveLivescoreServiceDI();
             services.AddSingleton(
             HtmlEncoder.Create(allowedRanges: new[] {
                 UnicodeRanges.All

@@ -1,15 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
-
     <ItemGroup>
-        <ProjectReference Include="..\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
-        <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\Interfaces\" />
+      <ProjectReference Include="..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj" />
+      <ProjectReference Include="..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj" />
+      <ProjectReference Include="..\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj" />
     </ItemGroup>
 </Project>

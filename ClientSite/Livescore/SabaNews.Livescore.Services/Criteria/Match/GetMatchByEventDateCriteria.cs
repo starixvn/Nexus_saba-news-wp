@@ -1,9 +1,9 @@
-﻿namespace SabaNews.Criteria.Livescore
+﻿namespace SabaNews.Livescore.Services.Criteria.Match
 {
     using System;
     using Fanex.Data.Repository;
 
-    public class GetMatchByDateCriteria : CriteriaBase
+    public class GetMatchByEventDateCriteria : CriteriaBase
     {
         public DateTime EventDate { get; set; }
         public short SportId { get; set; }
