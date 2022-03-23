@@ -48,9 +48,9 @@
         public int First { get; set; }
         public int Follow { get; set; }
         public int Foul { get; set; }
-        public int Grade { get; set; }
+        public string Grade { get; set; }
         public int HalfConner { get; set; }
-        public int HalfPossession { get; set; }
+        public string HalfPossession { get; set; }
         public int Head { get; set; }
         public int HeadSuccess { get; set; }
         public int Intercept { get; set; }

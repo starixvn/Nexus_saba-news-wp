@@ -37,13 +37,6 @@
         public async Task<T> ExecutePostAsync<T>(string endPoint, IDictionary<string, object> data) where T : new()
          => await SendHttpClientAsync<T>(endPoint, HttpMethod.Post, data);
 
-        public async Task RefreshTokenAsync()
-        {
-            var tokenModel = await AuthenticateAsync();
-
-            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel);
-        }
-
         private async Task<T> SendHttpClientAsync<T>(string endPoint, HttpMethod method, IDictionary<string, object> data, bool isAuthentication = false)
             where T : new()
         {
@@ -126,10 +119,18 @@
 
             if (tokenModel is null)
             {
-                tokenModel = await AuthenticateAsync();
+                tokenModel = await RefreshTokenAsync();
             }
 
             return tokenModel?.Token;
+        }
+
+        private async Task<AuthToken> RefreshTokenAsync()
+        {
+            var tokenModel = await AuthenticateAsync();
+
+            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel);
+            return tokenModel;
         }
 
         private async Task<AuthToken> AuthenticateAsync()

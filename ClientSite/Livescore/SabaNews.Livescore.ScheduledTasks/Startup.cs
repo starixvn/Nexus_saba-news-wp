@@ -45,21 +45,26 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            RegisterServices(services, Configuration);
             AddConfiguration(services, Configuration);
-            AddRedisConfiguration(services);
+            AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
             AddWorker(services);
         }
 
-        private void AddRedisConfiguration(IServiceCollection services)
+        private void AddRedisConfiguration(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddRedisCache(configuration.GetSection("RedisConfig"));
+
+            var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
+            var redis = ConnectionMultiplexer.Connect(redisConfig);
             services.AddDataProtection()
                 .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
-                .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
+                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
 
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = Configuration.GetSection("RedisConfig:ConnectionString").Value;
+                options.Configuration = redisConfig;
                 options.InstanceName = $"SabaSports.Session-";
             });
         }
@@ -111,8 +116,6 @@
 
             services.AddSingleton(configuration);
             services.Configure<List<ScheduledTaskSettings>>(configuration.GetSection("JobSettings"));
-
-            services.AddRedisCache(configuration.GetSection("RedisConfig"));
         }
 
         private static void AddDependencyInjection(IServiceCollection services)

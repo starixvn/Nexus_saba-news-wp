@@ -48,9 +48,9 @@
         public int[] First { get; set; }
         public int[] Follow { get; set; }
         public int[] Foul { get; set; }
-        public int[] Grade { get; set; }
+        public string[] Grade { get; set; }
         public int[] HalfConner { get; set; }
-        public int[] HalfPossession { get; set; }
+        public string[] HalfPossession { get; set; }
         public int[] Head { get; set; }
         public int[] HeadSuccess { get; set; }
         public int[] Intercept { get; set; }
@@ -91,9 +91,9 @@
                 First = First is not null ? First[0] : 0,
                 Follow = Follow is not null ? Follow[0] : 0,
                 Foul = Foul is not null ? Foul[0] : 0,
-                Grade = Grade is not null ? Grade[0] : 0,
+                Grade = Grade.Length > 0 ? Grade[0] : string.Empty,
                 HalfConner = HalfConner is not null ? HalfConner[0] : 0,
-                HalfPossession = HalfPossession is not null ? HalfPossession[0] : 0,
+                HalfPossession = HalfPossession.Length > 0 ? HalfPossession[0] : string.Empty,
                 Head = Head is not null ? Head[0] : 0,
                 HeadSuccess = HeadSuccess is not null ? HeadSuccess[0] : 0,
                 Intercept = Intercept is not null ? Intercept[0] : 0,
@@ -135,9 +135,9 @@
                 First = First is not null ? First[1] : 0,
                 Follow = Follow is not null ? Follow[1] : 0,
                 Foul = Foul is not null ? Foul[1] : 0,
-                Grade = Grade is not null ? Grade[1] : 0,
+                Grade = Grade.Length > 0 ? Grade[1] : string.Empty,
                 HalfConner = HalfConner is not null ? HalfConner[1] : 0,
-                HalfPossession = HalfPossession is not null ? HalfPossession[1] : 0,
+                HalfPossession = HalfPossession.Length > 0 ? HalfPossession[1] : string.Empty,
                 Head = Head is not null ? Head[1] : 0,
                 HeadSuccess = HeadSuccess is not null ? HeadSuccess[1] : 0,
                 Intercept = Intercept is not null ? Intercept[1] : 0,
