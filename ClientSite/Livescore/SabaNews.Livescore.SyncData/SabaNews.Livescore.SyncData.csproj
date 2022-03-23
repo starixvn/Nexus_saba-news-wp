@@ -6,5 +6,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SabaNews.Livescore.Core\SabaNews.Livescore.Core.csproj" />
+        <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
     </ItemGroup>
 </Project>

@@ -2,11 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
-    using SabaNews.Livescore.Provider.API.Models.Matches.Params;
 
     public interface IFetchMatchService
     {
-        Task<List<MatchResponse>> FetchMatchListAsync(FetchMatchParams parameters);
+        Task<List<MatchResponse>> FetchMatchListAsync(SyncMatchParams paramModel);
     }
 }
