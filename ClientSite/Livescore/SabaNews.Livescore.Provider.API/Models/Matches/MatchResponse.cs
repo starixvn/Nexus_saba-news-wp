@@ -29,11 +29,5 @@
         public bool IsLineUp { get; set; }
         public bool IsIntelligence { get; set; }
         public int GameType { get; set; }
-        public MatchExtraData ExtraData { get; set; }
-        public MatchDetail HomeTeamStatistic => ExtraData?.ToHomeTeamDetails();
-        public MatchDetail AwayTeamStatistic => ExtraData?.ToAwayTeamDetails();
-        public int[] FootballAddStartTime { get; set; }
-        public int FirstExtraTime => FootballAddStartTime is not null && FootballAddStartTime.Length > 0 ? FootballAddStartTime[0] : 0;
-        public int SeccondExtraTime => FootballAddStartTime is not null && FootballAddStartTime.Length > 0 ? FootballAddStartTime[1] : 0;
     }
 }

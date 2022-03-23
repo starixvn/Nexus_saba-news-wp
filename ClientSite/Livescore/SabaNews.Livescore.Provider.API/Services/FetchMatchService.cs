@@ -1,12 +1,11 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Services
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Helpers;
     using SabaNews.Livescore.Provider.API.Models.Matches;
+    using SabaNews.Livescore.Provider.API.Models.Matches.Params;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
 
     public class FetchMatchService : IFetchMatchService
@@ -18,33 +17,19 @@
             this.httpClient = httpClient;
         }
 
-        public async Task<MatchResponse> FetchMatchByIdAync(long matchId)
+        public async Task<List<MatchResponse>> FetchMatchListAsync(FetchMatchParams parameters)
         {
             var param = ProviderApiHelpers.InitParams();
-            param.Add("matchId", matchId);
+            param.Add("matchId", parameters.MatchIds);
+            param.Add("leagueId", parameters.LeagueId);
+            param.Add("timeGte", parameters.LastUpdatedTime.HasValue ? parameters.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
+            param.Add("startTime", parameters.StartTime.HasValue ? parameters.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
+            param.Add("endTime", parameters.EndTime.HasValue ? parameters.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
 
-            var match = await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
-            return match.FirstOrDefault();
-        }
-
-        public async Task<List<MatchResponse>> FetchMatchesByDateAsync(DateTime date)
-        {
-            var param = ProviderApiHelpers.InitParams();
-            var startTime = date.Date;
-            var endTime = date.Date.AddDays(1).AddSeconds(-1);
-            param.Add("startTime", startTime.ToString(CommonConstants.OutgoingDatetimeFormat));
-            param.Add("endTime", endTime.ToString(CommonConstants.OutgoingDatetimeFormat));
-            var matches = await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
-
-            return matches;
-        }
-
-        public async Task<List<MatchResponse>> FetchMatchesByDateRangeAsync(DateTime from, DateTime to)
-        {
-            var param = ProviderApiHelpers.InitParams();
-            to = to.Date.AddDays(1).AddSeconds(-1);
-            param.Add("startTime", from.Date.ToString(CommonConstants.OutgoingDatetimeFormat));
-            param.Add("endTime", to.ToString(CommonConstants.OutgoingDatetimeFormat));
+            if (parameters.RowLimit is not null)
+            {
+                param.Add("rowLimit", parameters.RowLimit);
+            }
 
             var matches = await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
 

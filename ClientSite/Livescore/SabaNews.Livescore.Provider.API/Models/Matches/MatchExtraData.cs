@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Models.Matches
 {
     using Newtonsoft.Json;
+    using SabaNews.Livescore.Provider.API.Models.Team;
 
     public class MatchExtraData
     {
@@ -65,7 +66,7 @@
         public int[] Slide { get; set; }
         public int[] Steals { get; set; }
 
-        public MatchDetail ToHomeTeamDetails() =>
+        public TeamStatistic ToHomeTeamDetails() =>
             new()
             {
                 Goal = Goal is not null ? Goal[0] : 0,
@@ -109,7 +110,7 @@
                 Steals = Steals is not null ? Steals[0] : 0
             };
 
-        public MatchDetail ToAwayTeamDetails() =>
+        public TeamStatistic ToAwayTeamDetails() =>
             new()
             {
                 Goal = Goal is not null ? Goal[1] : 0,

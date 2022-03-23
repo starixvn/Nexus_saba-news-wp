@@ -126,7 +126,6 @@
         private static void AddWorker(IServiceCollection services)
         {
             var apiService = services.BuildServiceProvider().GetRequiredService<IFetchMatchService>();
-            var res = apiService.FetchMatchByIdAync(6227352).Result;
         }
 
         public static void RegisterServices(IServiceCollection services, IConfiguration configuration)

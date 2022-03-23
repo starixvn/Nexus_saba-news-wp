@@ -8,4 +8,8 @@
         <ProjectReference Include="..\SabaNews.Livescore.DatabaseStorage\SabaNews.Livescore.DatabaseStorage.csproj" />
         <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\Interfaces\" />
+    </ItemGroup>
 </Project>

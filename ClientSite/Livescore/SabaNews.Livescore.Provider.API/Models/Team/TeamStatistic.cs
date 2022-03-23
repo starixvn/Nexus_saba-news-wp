@@ -1,8 +1,8 @@
-﻿namespace SabaNews.Livescore.Provider.API.Models.Matches
+﻿namespace SabaNews.Livescore.Provider.API.Models.Team
 {
     using Newtonsoft.Json;
 
-    public class MatchDetail
+    public class TeamStatistic
     {
         public int Goal { get; set; }
 
