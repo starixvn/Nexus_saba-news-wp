@@ -66,9 +66,11 @@
         public int[] Slide { get; set; }
         public int[] Steals { get; set; }
 
-        public TeamStatistic ToHomeTeamDetails() =>
+        public TeamStatistic ToHomeTeamDetails(long matchId) =>
             new()
             {
+                MatchId = matchId,
+                IsHomeTeam = true,
                 Goal = Goal is not null ? Goal[0] : 0,
                 ConnerKick = ConnerKick is not null ? ConnerKick[0] : 0,
                 YellowCard = YellowCard is not null ? YellowCard[0] : 0,
@@ -110,9 +112,11 @@
                 Steals = Steals is not null ? Steals[0] : 0
             };
 
-        public TeamStatistic ToAwayTeamDetails() =>
+        public TeamStatistic ToAwayTeamDetails(long matchId) =>
             new()
             {
+                MatchId = matchId,
+                IsHomeTeam = false,
                 Goal = Goal is not null ? Goal[1] : 0,
                 ConnerKick = ConnerKick is not null ? ConnerKick[1] : 0,
                 YellowCard = YellowCard is not null ? YellowCard[1] : 0,

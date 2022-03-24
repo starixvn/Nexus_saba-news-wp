@@ -2,6 +2,8 @@
 {
     public class ScheduledTaskSettings
     {
+        public const string ConfigurationKey = "JobSettings";
+
         public string Name { get; set; }
 
         public bool Enabled { get; set; }

@@ -4,6 +4,8 @@
 
     public class TeamStatistic
     {
+        public bool IsHomeTeam { get; set; }
+        public long MatchId { get; set; }
         public int Goal { get; set; }
 
         [JsonProperty("cKick")]

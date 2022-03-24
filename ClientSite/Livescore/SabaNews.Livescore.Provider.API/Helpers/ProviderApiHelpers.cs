@@ -1,42 +1,40 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Helpers
 {
-    using System.Collections.Generic;
-    using Fanex.Data.Repository;
-    using Fanex.Logging;
-    using Microsoft.AspNetCore.Http;
+    using System.Net;
+    using System.Net.Http;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using SabaNews.Core.Repositories;
-    using SabaNews.Core.Services;
-    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Core.Constants;
+    using SabaNews.Livescore.Provider.API.Models;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
-    using SabaNews.Services;
 
     public static class ProviderApiHelpers
     {
-        public static void RegisterDI(IServiceCollection services)
+        public static void RegisterDI(IServiceCollection services, IConfiguration configuration)
         {
+            RegisterHttpClientService(services, configuration);
+            RegisterConfiguration(services, configuration);
+
             services.AddTransient<IFetchMatchService, FetchMatchService>();
         }
 
-        public static void RegisterCoreDI(this IServiceCollection services)
+        private static void RegisterHttpClientService(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<IBaseService, BaseService>();
-            services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ILogger, Logger>();
-            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            var httpConfig = configuration.GetSection(HttpClientConfigurations.ConfigurationKey).Get<HttpClientConfigurations>();
+            services.AddHttpClient(HttpClientName.DefaultHttpClientWithProxy).ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            {
+                UseProxy = httpConfig.IsUseProxy,
+                Proxy = new WebProxy(httpConfig.Proxy, httpConfig.ByPassLocal)
+            });
+
+            services.AddSingleton<IHttpClientService, HttpClientService>();
         }
 
-        public static Dictionary<string, object> InitParams(bool isIncludeSportId = true)
+        private static void RegisterConfiguration(IServiceCollection services, IConfiguration configuration)
         {
-            var param = new Dictionary<string, object>();
-            if (isIncludeSportId)
-            {
-                param.Add("sportId", (short)SportType.Soccer);
-            }
-            return param;
+            var apiConfiguration = configuration.GetSection(ApiConfiguration.ConfigurationKeyName).Get<ApiConfiguration>();
+            services.AddSingleton(apiConfiguration);
         }
     }
 }

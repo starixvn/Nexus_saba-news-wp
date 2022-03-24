@@ -2,12 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
-    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -19,14 +16,11 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Middlewares;
-    using SabaNews.Core.Repositories;
-    using SabaNews.Core.Services;
-    using SabaNews.Livescore.Core.Constants;
-    using SabaNews.Livescore.Provider.API.Models;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
     using SabaNews.Livescore.ScheduledTasks.Models;
-    using SabaNews.Services;
+    using SabaNews.Livescore.ScheduledTasks.Workers;
+    using SabaNews.Livescore.SyncData.Helpers;
     using Sentry;
     using StackExchange.Redis;
 
@@ -45,7 +39,8 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            RegisterServices(services, Configuration);
+            SyncDataDI.RegisterDI(services, Configuration);
+
             AddConfiguration(services, Configuration);
             AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
@@ -56,15 +51,13 @@
         {
             services.AddRedisCache(configuration.GetSection("RedisConfig"));
 
-            var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
-            var redis = ConnectionMultiplexer.Connect(redisConfig);
             services.AddDataProtection()
                 .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
-                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
+                .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
 
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = redisConfig;
+                options.Configuration = Configuration.GetSection("RedisConfig:ConnectionString").Value;
                 options.InstanceName = $"SabaSports.Session-";
             });
         }
@@ -115,7 +108,9 @@
                 .UseGetDbExceptionInfo(DatabaseInfoGetters.GetDbExceptionInfo);
 
             services.AddSingleton(configuration);
-            services.Configure<List<ScheduledTaskSettings>>(configuration.GetSection("JobSettings"));
+
+            var jobSettings = configuration.GetSection(ScheduledTaskSettings.ConfigurationKey).Get<List<ScheduledTaskSettings>>();
+            services.AddSingleton(jobSettings);
         }
 
         private static void AddDependencyInjection(IServiceCollection services)
@@ -125,37 +120,7 @@
 
         private static void AddWorker(IServiceCollection services)
         {
-            var apiService = services.BuildServiceProvider().GetRequiredService<IFetchMatchService>();
-        }
-
-        public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
-        {
-            RegisterHttpClientService(services, configuration);
-            RegisterConfiguration(services, configuration);
-
-            services.AddSingleton<ILogger, Logger>();
-            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-            services.AddSingleton<IBaseService, BaseService>();
-            services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
-        }
-
-        private static void RegisterHttpClientService(IServiceCollection services, IConfiguration configuration)
-        {
-            var httpConfig = configuration.GetSection(HttpClientConfigurations.ConfigurationKey).Get<HttpClientConfigurations>();
-            services.AddHttpClient(HttpClientName.DefaultHttpClientWithProxy).ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
-            {
-                UseProxy = httpConfig.IsUseProxy,
-                Proxy = new WebProxy(httpConfig.Proxy, httpConfig.ByPassLocal)
-            });
-
-            services.AddSingleton<IHttpClientService, HttpClientService>();
-        }
-
-        private static void RegisterConfiguration(IServiceCollection services, IConfiguration configuration)
-        {
-            var apiConfiguration = configuration.GetSection(ApiConfiguration.ConfigurationKeyName).Get<ApiConfiguration>();
-            services.AddSingleton(apiConfiguration);
+            services.AddHostedService<SyncMatchWorker>();
         }
     }
 }

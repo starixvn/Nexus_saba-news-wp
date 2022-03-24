@@ -105,7 +105,7 @@ CREATE TABLE `livescore_match` (
   `EndTime` datetime,
   `HomeTeamId` bigint NOT NULL,
   `AwayTeamId` bigint NOT NULL,
-  `Status` int NOT NULL,
+  `Status` int,
   `IsLineUp` bit,
   `IsIntelligence` bit,
   `SyncedDate` datetime NOT NULL,
@@ -221,6 +221,10 @@ CREATE TABLE `livescore_player` (
   `Description` varchar(100),
   `UpdatedAt` datetime DEFAULT NULL,
   `SyncedDate` datetime NOT NULL
+);
+
+CREATE TABLE `livescore_temporary_match` (
+  `MatchId` bigint PRIMARY KEY NOT NULL
 );
 
 CREATE INDEX `headtohead_match_id_index` ON `livescore_head_to_head` (`MatchId`);

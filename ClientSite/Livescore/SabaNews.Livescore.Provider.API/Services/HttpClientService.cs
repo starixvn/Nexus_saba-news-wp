@@ -103,8 +103,15 @@
             if (IsSuccess(jsonObject))
             {
                 var jToken = jsonObject["data"];
-                var result = jToken.ToObject<T>();
-                return result;
+                try
+                {
+                    var result = jToken.ToObject<T>();
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
 
             logService.WriteMessageSentryErrorAsync(json);

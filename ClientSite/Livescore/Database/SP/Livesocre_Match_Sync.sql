@@ -3,12 +3,14 @@ DELIMITER //
 
 CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Sync(
     IN matchListJson JSON
+    ,OUT errCode SMALLINT
+	,OUT errMsg VARCHAR(100)
     /*
 		Creator: Oliver@20220318
         Param: - matchListJson: in JSON format
 						[{"matchId": 6227374,
                         "combinedId": null,
-                        "SportId": 1,
+                        "sportId": 1,
                         "leagueId": 52689,
                         "seasonId": 10538,
                         "stageId": 30352,
@@ -18,8 +20,8 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Sync(
                         "gameStartTime": "2022-03-17T16:00:00.000Z",
                         "gameEndTime": "2022-03-17T18:25:00.000Z",
                         "updatedAt": "2022-03-18T04:23:51.000Z",
-                        "HomeTeamId": 38946,
-                        "AwayTeamId": 39545,
+                        "HId": 38946,
+                        "AId": 39545,
                         "venueId": null,
                         "relatedId": null,
                         "isLineUp": 1,
@@ -34,7 +36,7 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Sync(
 SQL SECURITY DEFINER
 BEGIN
  # Variables
-	DECLARE iLoop INT;
+    SET errCode=0, errMsg='';
     
     DROP TEMPORARY TABLE IF EXISTS tmp_Match;
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Match(MatchId bigint PRIMARY KEY NOT NULL,
@@ -52,9 +54,12 @@ BEGIN
                                                     EndTime datetime,
                                                     HomeTeamId bigint NOT NULL,
                                                     AwayTeamId bigint NOT NULL,
-                                                    Status int NOT NULL,
+                                                    Status int NULL,
                                                     IsLineUp bit,
                                                     IsIntelligence bit,
+                                                    FootballAddStartTime datetime,
+                                                    FootballStartTime datetime,
+                                                    FootballNextHalfStartTime datetime,
                                                     UpdatedAt datetime DEFAULT NULL);
     
 	INSERT INTO tmp_Match(MatchId,
@@ -75,6 +80,9 @@ BEGIN
                         Status,
                         IsLineUp,
                         IsIntelligence,
+                        FootballAddStartTime,
+                        FootballStartTime,
+                        FootballNextHalfStartTime,
                         UpdatedAt)
     SELECT m.MatchId,
             m.CombinedId,
@@ -94,6 +102,9 @@ BEGIN
             m.Status,
             m.IsLineUp,
             m.IsIntelligence,
+            m.FootballAddStartTime,
+            m.FootballStartTime,
+            m.FootballNextHalfStartTime,
             m.UpdatedAt
     FROM 
 		JSON_TABLE
@@ -113,13 +124,16 @@ BEGIN
                 RelatedId bigint PATH "$.RelatedId",
                 Round int PATH "$.Round",
                 Neutral int PATH "$.Neutral",
-                StartTime datetime PATH "$.StartTime",
-                EndTime datetime PATH "$.EndTime",
-                HomeTeamId bigint PATH "$.HomeTeamId",
-                AwayTeamId bigint PATH "$.AwayTeamId",
-                Status int PATH "$.Status",
+                StartTime datetime PATH "$.GameStartTime",
+                EndTime datetime PATH "$.GameEndTime",
+                HomeTeamId bigint PATH "$.HId",
+                AwayTeamId bigint PATH "$.AId",
+                Status int PATH "$.GameType",
                 IsLineUp bit PATH "$.IsLineUp",
                 IsIntelligence bit PATH "$.IsIntelligence",
+                FootballAddStartTime datetime PATH "$.FootballAddStartTime",
+                FootballStartTime datetime PATH "$.FootballStartTime",
+                FootballNextHalfStartTime datetime PATH "$.FootballNextHalfStartTime",
                 UpdatedAt datetime PATH "$.UpdatedAt"
             )
         ) AS m;
@@ -142,6 +156,9 @@ BEGIN
                         Status,
                         IsLineUp,
                         IsIntelligence,
+                        FootballAddStartTime,
+                        FootballStartTime,
+                        FootballNextHalfStartTime,
                         SyncedDate,
                         UpdatedAt)
         SELECT m.MatchId,
@@ -162,6 +179,9 @@ BEGIN
                 m.Status,
                 m.IsLineUp,
                 m.IsIntelligence,
+                m.FootballAddStartTime,
+                m.FootballStartTime,
+                m.FootballNextHalfStartTime,
                 NOW(),
                 m.UpdatedAt
         FROM tmp_Match m
@@ -171,7 +191,7 @@ BEGIN
             RoundId = m.SeasonId,
             StageId = m.StageId,
             GroupNum = m.GroupNum,
-            RelatedI = m.RelatedI,
+            RelatedId = m.RelatedId,
             Round = m.Round,
             Neutral = m.Neutral,
             StartTime = m.StartTime,
@@ -181,9 +201,10 @@ BEGIN
             Status = m.Status,
             IsLineUp = m.IsLineUp,
             IsIntelligence = m.IsIntelligence,
+            FootballAddStartTime = m.FootballAddStartTime,
+            FootballStartTime = m.FootballStartTime,
+            FootballNextHalfStartTime = m.FootballNextHalfStartTime,
             UpdatedAt = m.UpdatedAt;
-
-	
 END;
 
 //

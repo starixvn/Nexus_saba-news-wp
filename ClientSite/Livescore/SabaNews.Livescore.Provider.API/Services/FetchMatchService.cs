@@ -1,10 +1,10 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Constants;
-    using SabaNews.Livescore.Provider.API.Helpers;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services.Interfaces;
 
@@ -19,12 +19,15 @@
 
         public async Task<List<MatchResponse>> FetchMatchListAsync(SyncMatchParams paramModel)
         {
-            var param = ProviderApiHelpers.InitParams();
-            param.Add("matchId", paramModel.MatchIds);
-            param.Add("leagueId", paramModel.LeagueId);
-            param.Add("timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
-            param.Add("startTime", paramModel.StartTime.HasValue ? paramModel.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
-            param.Add("endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null);
+            var param = new Dictionary<string, object>
+            {
+                { "sportId", paramModel.SportId },
+                { "matchId", paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
+                { "leagueId", paramModel.LeagueId },
+                { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "startTime", paramModel.StartTime.HasValue ? paramModel.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null }
+            };
 
             if (paramModel.RowLimit is not null)
             {
@@ -36,9 +39,26 @@
             return matches;
         }
 
+        public async Task<List<MatchDetailResponse>> FetchMatchDetailAsync(SyncMatchParams paramModel)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "sportId", paramModel.SportId },
+                { "matchId", paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
+                { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "rowLimit", paramModel.RowLimit }
+            };
+
+            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetMatchDetailApiPath, param);
+
+            return matcheDetails;
+        }
+
         private static class ApiPath
         {
-            public const string GetMatchListApiPath = "/match/list";
+            internal const string GetMatchListApiPath = "/match/list";
+            internal const string GetMatchDetailApiPath = "/match/detail";
+            internal const string GetMatchLineupApiPath = "/lineup/list";
         }
     }
 }

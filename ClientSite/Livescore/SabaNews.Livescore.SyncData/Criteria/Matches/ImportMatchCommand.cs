@@ -2,11 +2,11 @@
 {
     using SabaNews.Core.Models;
 
-    internal class InsertUpdateMatchCommand : BaseNonQueryCommand
+    internal class ImportMatchCommand : BaseNonQueryCommand
     {
         public string MatchListJson { get; set; }
 
-        public override string GetSettingKey() => "Livesocre_MatchInfo_Sync";
+        public override string GetSettingKey() => "Livescore_Match_Sync";
 
         public override bool IsValid() => !string.IsNullOrWhiteSpace(MatchListJson);
     }
