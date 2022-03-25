@@ -9,7 +9,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Helpers;
     using SabaNews.Livescore.SyncData.Services;
-    using SabaNews.Livescore.SyncData.Services.Interfaces;
     using SabaNews.Services;
 
     public static class SyncDataDI
@@ -23,6 +22,7 @@
 
         private static void RegisterServices(IServiceCollection services)
         {
+            services.AddTransient<ISyncLeagueService, SyncLeagueService>();
             services.AddTransient<ISyncMatchService, SyncMatchService>();
         }
 

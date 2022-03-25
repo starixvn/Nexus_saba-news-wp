@@ -7,7 +7,6 @@
     using SabaNews.Livescore.Core.Constants;
     using SabaNews.Livescore.Provider.API.Models;
     using SabaNews.Livescore.Provider.API.Services;
-    using SabaNews.Livescore.Provider.API.Services.Interfaces;
 
     public static class ProviderApiHelpers
     {
@@ -16,6 +15,7 @@
             RegisterHttpClientService(services, configuration);
             RegisterConfiguration(services, configuration);
 
+            services.AddTransient<IFetchLeagueService, FetchLeagueService>();
             services.AddTransient<IFetchMatchService, FetchMatchService>();
         }
 

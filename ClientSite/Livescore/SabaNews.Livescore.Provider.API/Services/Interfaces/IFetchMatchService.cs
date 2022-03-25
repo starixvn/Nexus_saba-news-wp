@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Livescore.Provider.API.Services.Interfaces
+﻿namespace SabaNews.Livescore.Provider.API.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

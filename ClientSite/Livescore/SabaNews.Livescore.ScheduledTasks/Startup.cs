@@ -1,4 +1,4 @@
-﻿namespace SabaNews.AutoJobs
+﻿namespace SabaNews.Livescore.ScheduledTasks
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -16,8 +16,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Middlewares;
+    using SabaNews.Core.Models;
     using SabaNews.Livescore.Provider.API.Services;
-    using SabaNews.Livescore.Provider.API.Services.Interfaces;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.SyncData.Helpers;
@@ -80,28 +80,28 @@
         private static void AddConfiguration(IServiceCollection services, IConfiguration configuration)
         {
             var connections = configuration.GetSection("ConnectionStrings")
-                                    .GetChildren()
-                                    .AsEnumerable()
-                                    .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
-                                    .ToDictionary(x => x.GetValue<string>("Name"),
-                                    y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
+                .GetChildren()
+                .AsEnumerable()
+                .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
+                .ToDictionary(x => x.GetValue<string>("Name"),
+                y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
 
             DbSettingProviderManager
-                       .StartNewSession()
-                       .Use(connections)
-                       .WithMySql()
-                       .UseDefaultDbSettingProvider("~/App_Data/SpNames.xml")
-                       .Run();
+                .StartNewSession()
+                .Use(connections)
+                .WithMySql()
+                .UseDefaultDbSettingProvider("~/App_Data/SpNames.xml")
+                .Run();
 
             LogManager
-            .SetDefaultLogCategory(configuration.GetSection("LogCategory").Value)
-            .Use(new List<ILogEngine>
-            {
-                new SentryLogging(new SentryEngineOptions
+                .SetDefaultLogCategory(configuration.GetSection("LogCategory").Value)
+                .Use(new List<ILogEngine>
                 {
-                    Dsn = new Dsn(configuration.GetSection("SentryEngineOptions:Dsn").Value)
-                })
-            });
+                    new SentryLogging(new SentryEngineOptions
+                    {
+                        Dsn = new Dsn(configuration.GetSection("SentryEngineOptions:Dsn").Value)
+                    })
+                });
 
             ExceptionHandler
                 .UseConfig(new LoggingConfiguration())
@@ -111,6 +111,9 @@
 
             var jobSettings = configuration.GetSection(ScheduledTaskSettings.ConfigurationKey).Get<List<ScheduledTaskSettings>>();
             services.AddSingleton(jobSettings);
+
+            var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
+            services.AddSingleton(appSettings);
         }
 
         private static void AddDependencyInjection(IServiceCollection services)
@@ -120,6 +123,7 @@
 
         private static void AddWorker(IServiceCollection services)
         {
+            services.AddHostedService<SyncLeagueWorker>();
             services.AddHostedService<SyncMatchWorker>();
         }
     }

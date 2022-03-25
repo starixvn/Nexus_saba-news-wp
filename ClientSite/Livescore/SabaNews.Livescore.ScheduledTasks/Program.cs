@@ -1,5 +1,4 @@
-﻿
-namespace SabaNews.AutoJobs
+﻿namespace SabaNews.Livescore.ScheduledTasks
 {
     using System;
     using Microsoft.AspNetCore;

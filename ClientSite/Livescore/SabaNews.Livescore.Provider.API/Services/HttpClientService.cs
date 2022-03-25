@@ -20,7 +20,8 @@
         private readonly ILogServiceProvider logService;
         private readonly ApiConfiguration config;
 
-        public HttpClientService(IHttpClientFactory clientFactory,
+        public HttpClientService(
+            IHttpClientFactory clientFactory,
             ICacheService cacheService,
             ILogServiceProvider logService,
             ApiConfiguration config)
@@ -103,15 +104,8 @@
             if (IsSuccess(jsonObject))
             {
                 var jToken = jsonObject["data"];
-                try
-                {
-                    var result = jToken.ToObject<T>();
-                    return result;
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                var result = jToken.ToObject<T>();
+                return result;
             }
 
             logService.WriteMessageSentryErrorAsync(json);
@@ -123,7 +117,6 @@
         private async Task<string> GetTokenAsync()
         {
             var tokenModel = await cacheService.GetAsync<AuthToken>(CachingKeys.APITokenCacheKey);
-
             if (tokenModel is null)
             {
                 tokenModel = await RefreshTokenAsync();
@@ -143,13 +136,11 @@
         private async Task<AuthToken> AuthenticateAsync()
         {
             var authData = new Dictionary<string, object>
-                {
-                    {"project", config.Project},
-                    {"secret", config.Secret}
-                };
-            var tokenModel = await SendHttpClientAsync<AuthToken>(config.LoginPath, HttpMethod.Post, authData, true);
-
-            return tokenModel;
+            {
+                {"project", config.Project},
+                {"secret", config.Secret}
+            };
+            return await SendHttpClientAsync<AuthToken>(config.LoginPath, HttpMethod.Post, authData, true);
         }
     }
 }

@@ -6,9 +6,8 @@
     using Newtonsoft.Json;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
-    using SabaNews.Livescore.Provider.API.Services.Interfaces;
+    using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
-    using SabaNews.Livescore.SyncData.Services.Interfaces;
     using SabaNews.Services;
 
     public class SyncMatchService : ISyncMatchService

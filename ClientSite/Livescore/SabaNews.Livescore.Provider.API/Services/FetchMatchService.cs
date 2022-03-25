@@ -6,7 +6,6 @@
     using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Models.Matches;
-    using SabaNews.Livescore.Provider.API.Services.Interfaces;
 
     public class FetchMatchService : IFetchMatchService
     {

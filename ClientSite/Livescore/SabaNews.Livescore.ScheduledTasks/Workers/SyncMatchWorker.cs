@@ -6,13 +6,14 @@
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
     using SabaNews.Livescore.ScheduledTasks.Models;
-    using SabaNews.Livescore.SyncData.Services.Interfaces;
+    using SabaNews.Livescore.SyncData.Services;
 
     internal class SyncMatchWorker : BaseWorker
     {
         private readonly ISyncMatchService syncMatchService;
 
-        public SyncMatchWorker(ISyncMatchService syncMatchService,
+        public SyncMatchWorker(
+            ISyncMatchService syncMatchService,
             List<ScheduledTaskSettings> jobSettings,
             ILogServiceProvider logService)
                 : base(logService)

@@ -34,5 +34,6 @@
     <ItemGroup>
       <ProjectReference Include="..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj" />
       <ProjectReference Include="..\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj" />
+      <ProjectReference Include="..\SabaNews.Livescore.SyncData\SabaNews.Livescore.SyncData.csproj" />
     </ItemGroup>
 </Project>

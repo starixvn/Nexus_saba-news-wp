@@ -31,7 +31,7 @@
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            logService.WriteLogFileInfo($"{jobSetting.Name}: Service Starting");
+            logService.WriteLogFileInfo($"{jobSetting.Name}: Service starting");
             return base.StartAsync(cancellationToken);
         }
 
@@ -64,7 +64,7 @@
 
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
-            logService.WriteLogFileInfo($"{jobSetting.Name}: Stopping Service");
+            logService.WriteLogFileInfo($"{jobSetting.Name}: Stopping service");
             timer?.Change(Timeout.Infinite, 0);
 
             await base.StopAsync(cancellationToken);
@@ -72,7 +72,7 @@
 
         public override void Dispose()
         {
-            logService.WriteLogFileInfo($"{jobSetting.Name}: Disposing Service");
+            logService.WriteLogFileInfo($"{jobSetting.Name}: Disposing service");
             timer.Dispose();
             GC.SuppressFinalize(this);
             base.Dispose();
