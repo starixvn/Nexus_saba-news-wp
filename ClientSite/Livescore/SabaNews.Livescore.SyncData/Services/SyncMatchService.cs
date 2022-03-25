@@ -7,6 +7,7 @@
     using Newtonsoft.Json;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
