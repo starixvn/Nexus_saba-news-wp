@@ -8,4 +8,8 @@
     <ProjectReference Include="..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Team\" />
+  </ItemGroup>
+
 </Project>

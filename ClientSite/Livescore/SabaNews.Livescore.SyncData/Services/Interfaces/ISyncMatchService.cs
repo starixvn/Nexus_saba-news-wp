@@ -6,6 +6,6 @@
     {
         Task SyncAllMatchAsync();
 
-        Task SyncMatchDetailAsync();
+        Task SyncMatchDetailByIdsAsync(long[] matchIds);
     }
 }
