@@ -22,6 +22,9 @@ export default class DateBar extends PureComponent {
                     onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`)}
                 >
                     <div>Live</div>
+                    {
+                        window.isLiveMatch && this.props.matches.length > 0 && <span>{this.props.matches.length}</span>
+                    }
                 </div>
                 <WeekBar minDate={minDate} maxDate={maxDate} />
                 <div className="date-picker">

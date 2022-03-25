@@ -1,13 +1,13 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 import Leagues from './Leagues';
 import DateBar from './DateBar';
 import SearchBar from './SearchBar';
-import Matches from './Matches';
-import LiveMatch from './LiveMatch';
+import MatchGrid from './match-grid/index';
 import SignalR from './SignalR';
-import { ActionCreators } from '../actions';
+import { MatchStatus } from '@jsroot/common/constants';
 
 export class AppContainer extends Component {
     componentDidMount() {
@@ -15,21 +15,22 @@ export class AppContainer extends Component {
     }
 
     render() {
+        let matches = this.props.matches;
+        if (window.isLiveMatch) {
+            matches = matches.filter(match => match.status === MatchStatus.FirstHalf
+                || match.status === MatchStatus.SecondHalf
+                || match.status === MatchStatus.Overtime
+                || match.status === MatchStatus.PenaltyShootout);
+        }
+
         return (
             <>
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar />
+                        <DateBar matches={matches} />
                         <SearchBar />
-                        {
-                            !window.isLiveMatch &&
-                            <Matches matches={this.props.matches} />
-                        }
-                        {
-                            window.isLiveMatch &&
-                            <LiveMatch />
-                        }
+                        <MatchGrid matches={matches} />
                     </div>
                     <div className="livescore-soccer-right">
                         <Leagues />
@@ -44,9 +45,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 
 const mapStateToProps = state => {
     const { matches } = state;
-    return {
-        matches
-    };
+    return { matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

@@ -15,7 +15,7 @@
         Section4,
         Overtime = 40,
         PenaltyShootout,
-        Finish = 50,
+        Finished = 50,
         Postponed = 60,
         Interrupt,
         CutInHalf,

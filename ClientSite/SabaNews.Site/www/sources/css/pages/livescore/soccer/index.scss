@@ -205,8 +205,12 @@ body {
             }
         }
 
-        .events-grid {
-            .events-grid-item {
+        .soccer-match-grid {
+            &-item {
+                .text-matched {
+                    color: #3399FF;
+                }
+
                 &-header {
                     align-items: center;
                     background-color: #e9e9e9;
@@ -220,7 +224,7 @@ body {
                     position: relative;
                     padding: 0;
 
-                    .events-grid-item {
+                    .soccer-match-grid-item {
                         &-star-icon {
                             cursor: pointer;
                             text-align: center;
@@ -258,7 +262,7 @@ body {
                 &-body {
                     padding: 0;
 
-                    .events-match {
+                    .soccer-match {
                         min-height: 32px;
                         display: grid;
                         grid-template-rows: minmax(32px, auto);
@@ -267,7 +271,7 @@ body {
                         cursor: pointer;
 
                         &.live {
-                            .events-match-stage, .events-match-scores {
+                            .soccer-match-stage, .soccer-match-scores {
                                 color: #c00;
                             }
                         }
@@ -342,13 +346,5 @@ body {
                 }
             }
         }
-    }
-}
-
-.events-grid-item-tooltip {
-    opacity: 1 !important;
-
-    .tooltip-inner {
-        padding: 6px;
     }
 }

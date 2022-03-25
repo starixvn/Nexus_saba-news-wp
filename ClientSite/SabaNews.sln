@@ -41,8 +41,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.AutoJobs.UnitTests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livescore", "Livescore", "{F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Hubs", "SabaNews.Hubs\SabaNews.Hubs.csproj", "{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Models", "Livescore\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj", "{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Provider.API", "Livescore\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.csproj", "{C26374D4-B684-4D85-BC0C-E1DC45F597A0}"
@@ -57,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Schedule
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Hubs", "Livescore\SabaNews.Livescore.Hubs\SabaNews.Livescore.Hubs.csproj", "{ACA69633-940F-428C-B786-C1903FA2D2B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Repositories", "Livescore\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj", "{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Repositories", "Livescore\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj", "{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,10 +114,6 @@ Global
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6999D0F6-D5BC-4101-B2D7-5AE094409EEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A539FF47-50CC-4ACF-9447-C3F6EB1B10CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7BC9CB9-8DE6-4C0A-A1E6-8F5281BCDA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU

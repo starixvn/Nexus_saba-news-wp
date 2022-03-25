@@ -94,7 +94,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Livescore\SabaNews.Livescore.Services\SabaNews.Livescore.Services.csproj" />
-        <ProjectReference Include="..\SabaNews.Hubs\SabaNews.Hubs.csproj" />
         <ProjectReference Include="..\SabaNews.Resources\SabaNews.Resources.csproj" />
         <ProjectReference Include="..\SabaNews.Core\SabaNews.Core.csproj" />
         <ProjectReference Include="..\SabaNews.Models\SabaNews.Models.csproj" />

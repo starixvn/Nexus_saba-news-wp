@@ -1,6 +1,7 @@
 ﻿import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import {
+    setSearchKey,
     setMatches
 } from './soccerMatchSlice';
 
@@ -13,6 +14,7 @@ const getMatches = (params) => async dispatch => {
 };
 
 export const ActionCreators = {
+    setSearchKey,
     setMatches,
     getMatches
 };

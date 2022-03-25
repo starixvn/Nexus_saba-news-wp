@@ -39,18 +39,22 @@ export default class Match extends PureComponent {
     };
 
     render() {
-        const match = this.props.match;
+        const { match, searchKey } = this.props;
+        const reg = new RegExp(`(${searchKey})`, 'gi');
+        const displayHomeTeamValue = match.homeTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
+        const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
+
         return (
-            <div className={`events-match border-bottom ${match.status === 10 || match.status === 30 ? 'live' : ''}`}>
-                <div className="events-match-stage">{this.getMatchStage(match)}</div>
-                <div className="events-match-participant-home">{match.homeTeam.nameEn}</div>
-                <img className="events-match-participant-home-logo" loading="lazy"
+            <div className={`soccer-match border-bottom ${match.status === MatchStatus.FirstHalf || match.status === MatchStatus.SecondHalf ? 'live' : ''}`}>
+                <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
+                <div className="soccer-match-participant-home" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
+                <img className="soccer-match-participant-home-logo" loading="lazy"
                     src={match.homeTeam.icon} />
-                <div className="events-match-participant-away">{match.awayTeam.nameEn}</div>
-                <img className="events-match-participant-away-logo" loading="lazy"
+                <div className="soccer-match-participant-away" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
+                <img className="soccer-match-participant-away-logo" loading="lazy"
                     src={match.awayTeam.icon} />
-                <div className="events-match-scores">{this.getMatchScores(match)}</div>
-                <div className="events-match-star-icon">
+                <div className="soccer-match-scores">{this.getMatchScores(match)}</div>
+                <div className="soccer-match-star-icon">
                     <span className="fa fa-star-o" />
                 </div>
             </div>

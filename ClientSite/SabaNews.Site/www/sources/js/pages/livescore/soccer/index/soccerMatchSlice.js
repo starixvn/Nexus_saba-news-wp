@@ -3,9 +3,13 @@
 const soccerMatchSlice = createSlice({
     name: 'soccerMatchSlice',
     initialState: {
+        searchKey: '',
         matches: []
     },
     reducers: {
+        setSearchKey: (state, action) => {
+            state.searchKey = action.payload;
+        },
         setMatches: (state, action) => {
             state.matches = action.payload;
         }
@@ -15,6 +19,7 @@ const soccerMatchSlice = createSlice({
 const { actions, reducer } = soccerMatchSlice;
 
 export const {
+    setSearchKey,
     setMatches
 } = actions;
 
