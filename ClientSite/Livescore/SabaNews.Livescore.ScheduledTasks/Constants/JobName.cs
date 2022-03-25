@@ -3,7 +3,7 @@
     public static class JobName
     {
         public const string SyncAllMatchByUpdatedTime = "SyncAllMatchByUpdatedTime";
-
         public const string SyncLeagueList = "SyncLeagueList";
+        public const string SyncTeamList = "SyncTeamList";
     }
 }

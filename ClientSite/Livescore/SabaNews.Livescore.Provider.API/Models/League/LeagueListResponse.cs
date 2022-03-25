@@ -2,11 +2,13 @@
 {
     using System;
 
-    public class LeagueResponse
+    public class LeagueListResponse
     {
         public long LeagueId { get; set; }
         public long? CombinedId { get; set; }
         public short SportId { get; set; }
+        public string LeagueName { get; set; }
+        public string LeagueFullName { get; set; }
         public string LeagueNameEN { get; set; }
         public string LeagueFullNameEN { get; set; }
         public DateTime UpdatedAt { get; set; }

@@ -1,15 +1,14 @@
-﻿namespace SabaNews.Livescore.Provider.API.Models.League
+﻿namespace SabaNews.Livescore.Provider.API.Models.Team
 {
     using System;
 
-    public class FetchLeagueParams
+    public class FetchTeamListParams
     {
         public short? SportId { get; set; }
         public string Token { get; set; }
-        public long?[] LeagueIds { get; set; }
+        public long?[] TeamIds { get; set; }
         public long? IdGte { get; set; }
         public DateTime? LastUpdatedTime { get; set; }
         public int RowLimit { get; set; }
-        public string IncludeRule { get; set; }
     }
 }

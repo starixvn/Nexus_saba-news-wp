@@ -23,6 +23,7 @@
         private static void RegisterServices(IServiceCollection services)
         {
             services.AddTransient<ISyncLeagueService, SyncLeagueService>();
+            services.AddTransient<ISyncTeamService, SyncTeamService>();
             services.AddTransient<ISyncMatchService, SyncMatchService>();
         }
 

@@ -14,7 +14,7 @@
             this.httpClient = httpClient;
         }
 
-        public async Task<List<LeagueResponse>> FetchLeagueListAsync(FetchLeagueParams leagueParams)
+        public async Task<List<LeagueListResponse>> FetchLeagueListAsync(FetchLeagueListParams leagueParams)
         {
             var param = new Dictionary<string, object>
             {
@@ -25,7 +25,7 @@
                 { "rowLimit", leagueParams.RowLimit },
                 { "includeRule", leagueParams.IncludeRule }
             };
-            return await httpClient.ExecutePostAsync<List<LeagueResponse>>(ApiPath.GetLeagueListApiPath, param);
+            return await httpClient.ExecutePostAsync<List<LeagueListResponse>>(ApiPath.GetLeagueListApiPath, param);
         }
 
         private static class ApiPath

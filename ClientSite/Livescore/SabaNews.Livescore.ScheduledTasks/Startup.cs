@@ -125,6 +125,7 @@
         private static void AddWorker(IServiceCollection services)
         {
             services.AddHostedService<SyncLeagueWorker>();
+            services.AddHostedService<SyncTeamWorker>();
             services.AddHostedService<SyncMatchWorker>();
         }
 

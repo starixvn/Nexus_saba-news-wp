@@ -16,6 +16,7 @@
             RegisterConfiguration(services, configuration);
 
             services.AddTransient<IFetchLeagueService, FetchLeagueService>();
+            services.AddTransient<IFetchTeamService, FetchTeamService>();
             services.AddTransient<IFetchMatchService, FetchMatchService>();
         }
 

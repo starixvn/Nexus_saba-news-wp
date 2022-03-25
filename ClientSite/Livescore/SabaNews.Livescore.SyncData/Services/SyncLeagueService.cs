@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.SyncData.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -29,15 +30,15 @@
 
         public async Task SyncLeagueListAsync()
         {
-            const short RowLimit = 1000;
             var lastUpdatedTime = await GetLastUpdatedTimeAsync();
-            var param = new FetchLeagueParams
+            var param = new FetchLeagueListParams
             {
                 SportId = (short)SportType.Soccer,
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
-                RowLimit = RowLimit
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
-            var leagues = await fetchLeagueService.FetchLeagueListAsync(param);
+            List<LeagueListResponse> leagues = await fetchLeagueService.FetchLeagueListAsync(param);
+            ////leagues = leagues.Where(x => !string.IsNullOrWhiteSpace(x.LeagueNameEN) || !string.IsNullOrWhiteSpace(x.LeagueFullNameEN)).ToList();
             if (leagues.Any())
             {
                 var json = JsonConvert.SerializeObject(leagues);
@@ -45,12 +46,11 @@
                 {
                     LeagueListJson = json
                 };
-
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
 
         protected internal virtual async Task<DateTime?> GetLastUpdatedTimeAsync()
-               => await baseService.GetDataEntityAsync<DateTime?>(new GetLeagueLastUpdatedTimeCriteria());
+            => await baseService.GetDataEntityAsync<DateTime?>(new GetLeagueLastUpdatedTimeCriteria());
     }
 }

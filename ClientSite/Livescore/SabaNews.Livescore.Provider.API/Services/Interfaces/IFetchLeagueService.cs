@@ -6,6 +6,6 @@
 
     public interface IFetchLeagueService
     {
-        Task<List<LeagueResponse>> FetchLeagueListAsync(FetchLeagueParams leagueParams);
+        Task<List<LeagueListResponse>> FetchLeagueListAsync(FetchLeagueListParams leagueParams);
     }
 }
