@@ -53,6 +53,18 @@
             return matcheDetails;
         }
 
+        public async Task<List<MatchLineupResponse>> FetchMatchLineupAsync(long[] matchIds)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "matchId", matchIds.Any() ? matchIds : null },
+            };
+
+            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchLineupResponse>>(ApiPath.GetMatchLineupApiPath, param);
+
+            return matcheDetails;
+        }
+
         private static class ApiPath
         {
             internal const string GetMatchListApiPath = "/match/list";

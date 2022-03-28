@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_Match_DeleteTemporaryMatchIds;
+DROP PROCEDURE IF EXISTS Livescore_Match_TemporaryMatchIds_Delete;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_DeleteTemporaryMatchIds(
+CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_TemporaryMatchIds_Delete(
     IN matchIds TEXT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
@@ -36,4 +36,4 @@ END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_DeleteTemporaryMatchIds TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_Match_TemporaryMatchIds_Delete TO 'sabasports'@'%';

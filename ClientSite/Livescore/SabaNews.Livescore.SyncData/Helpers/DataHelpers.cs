@@ -1,11 +1,74 @@
 ﻿namespace SabaNews.Livescore.SyncData.Helpers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.SyncData.Models.Matches;
 
     internal static class DataHelpers
     {
-        public static MatchTeamStatistic ConvertToTeamStatistic(MatchExtraData extraData, long matchId, bool isHome)
+        internal static (List<MatchScoreInput>, List<MatchTeamStatistic>) GenerateMatchDetailInput(List<MatchDetailResponse> matches)
+        {
+            var matchScoreList = new List<MatchScoreInput>();
+            var statisticList = new List<MatchTeamStatistic>();
+            foreach (var match in matches)
+            {
+                var matchScore = new MatchScoreInput
+                {
+                    MatchId = match.MatchId,
+                    HomeHalfScore = match.HHalfScore ?? 0,
+                    AwayHalfScore = match.AHalfScore ?? 0,
+                    HomeTotalScore = match.HTotalScore ?? 0,
+                    AwayTotalScore = match.ATotalScore ?? 0,
+                    HomeAggregateScore = match.HomeAggScore,
+                    AwayAggregateScore = match.AwayAggScore
+                };
+                matchScoreList.Add(matchScore);
+                var homeStatistic = ConvertToTeamStatistic(match.ExtraData, match.MatchId, true);
+                var awayStatistic = ConvertToTeamStatistic(match.ExtraData, match.MatchId, false);
+                statisticList.Add(homeStatistic);
+                statisticList.Add(awayStatistic);
+            }
+            return (matchScoreList, statisticList);
+        }
+
+        internal static (List<MatchLineup>, List<PlayerLineup>) GenerateMatchLineupInput(List<MatchLineupResponse> lineups)
+        {
+            var matchLineups = new List<MatchLineup>();
+            var players = new List<PlayerLineup>();
+            foreach (var lineup in lineups)
+            {
+                var matchLineup = new MatchLineup
+                {
+                    MatchId = lineup.MatchId,
+                    HomeFormation = lineup.HFormation,
+                    AwayFormation = lineup.AFormation
+                };
+                matchLineups.Add(matchLineup);
+
+                players = players.Concat(ToPlayerList(lineup.MatchId, lineup.HLineup, true)).ToList();
+                players = players.Concat(ToPlayerList(lineup.MatchId, lineup.HBench, true, true)).ToList();
+                players = players.Concat(ToPlayerList(lineup.MatchId, lineup.ALineup)).ToList();
+                players = players.Concat(ToPlayerList(lineup.MatchId, lineup.ABench, isSubstitute: true)).ToList();
+            }
+            return (matchLineups, players);
+        }
+
+        private static List<PlayerLineup> ToPlayerList(long matchId, List<TeamLineupResponse> lineups, bool isHome = false, bool isSubstitute = false)
+            => lineups.Select(p => new PlayerLineup
+            {
+                MatchId = matchId,
+                PlayerId = p.PlayerId,
+                IsHomeTeam = isHome,
+                IsSubstitute = isSubstitute,
+                CoordinateX = p.Coordinate is not null ? p.Coordinate.X : 0,
+                CoordinateY = p.Coordinate is not null ? p.Coordinate.Y : 0,
+                PlayerName = p.PlayerName,
+                PlayerNumber = p.PlayerNumber,
+                Position = p.Position
+            }).ToList();
+
+        private static MatchTeamStatistic ConvertToTeamStatistic(MatchExtraData extraData, long matchId, bool isHome)
         {
             int index = isHome ? 0 : 1;
             return new MatchTeamStatistic()

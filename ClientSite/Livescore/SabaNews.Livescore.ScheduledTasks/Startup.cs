@@ -21,6 +21,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.SyncData.Helpers;
+    using SabaNews.Livescore.SyncData.Services;
     using Sentry;
     using StackExchange.Redis;
 
@@ -131,6 +132,8 @@
 
         private static void TestService(IServiceCollection services)
         {
+            var service = services.BuildServiceProvider().GetService<ISyncMatchService>();
+            var lineups = service.SyncMatchLineupByIdsAsync(new long[] { 5857563, 5857564, 6193879, 6224851, 6224874, 6224880 });
         }
     }
 }

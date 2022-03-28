@@ -7,5 +7,9 @@
         Task SyncAllMatchAsync();
 
         Task SyncMatchDetailByIdsAsync(long[] matchIds);
+
+        Task SyncMatchLineupByIdsAsync(long[] matchIds);
+
+        Task SyncMatchTextLiveAsync(long matchId);
     }
 }
