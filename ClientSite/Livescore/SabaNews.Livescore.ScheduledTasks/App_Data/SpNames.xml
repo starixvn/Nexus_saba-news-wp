@@ -7,6 +7,8 @@
         <Setting Key="Livescore_Match_DeleteTemporaryMatchIds" SpName="Livescore_Match_DeleteTemporaryMatchIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Detail_Sync" SpName="Livescore_Match_Detail_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Lineup_Sync" SpName="Livescore_Match_Lineup_Sync" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Commentary_Sync" SpName="Livescore_Match_Commentary_Sync" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Incident_Sync" SpName="Livescore_Match_Incident_Sync" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Match">
         <Setting Key="Livescore_Sync_League_GetLastUpdatedTime" SpName="Livescore_Sync_League_GetLastUpdatedTime" DbName="sabasports" Plain="0" />

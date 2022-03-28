@@ -72,21 +72,32 @@
                 { "matchId", matchId },
             };
 
-            var commentaries = await httpClient.ExecutePostAsync<List<MatchCommentary>>(ApiPath.GetMatchCommentaryApiPath, param);
+            var commentary = await httpClient.ExecutePostAsync<MatchCommentaryResponse>(ApiPath.GetMatchCommentaryApiPath, param);
 
-            return commentaries;
+            if (commentary is not null)
+            {
+                return commentary.Commentaries;
+            }
+
+            return new List<MatchCommentary>();
         }
 
-        public async Task<List<MatchIncidentResponse>> FetchMatchIncidentAsync(long matchId)
+        public async Task<List<MatchIncident>> FetchMatchIncidentAsync(int sportId, long matchId)
         {
             var param = new Dictionary<string, object>
             {
+                { "sportId", sportId },
                 { "matchId", matchId },
             };
 
-            var incidents = await httpClient.ExecutePostAsync<List<MatchIncidentResponse>>(ApiPath.GetMatchIncidentApiPath, param);
+            var incidents = await httpClient.ExecutePostAsync<MatchIncidentResponse>(ApiPath.GetMatchIncidentApiPath, param);
 
-            return incidents;
+            if (incidents is not null)
+            {
+                return incidents.Incidents;
+            }
+
+            return new List<MatchIncident>();
         }
 
         private static class ApiPath

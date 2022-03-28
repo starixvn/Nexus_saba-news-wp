@@ -1,9 +1,11 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Models.Matches
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     public class MatchIncidentResponse
     {
+        [JsonProperty("incidents")]
         public List<MatchIncident> Incidents { get; set; }
     }
 

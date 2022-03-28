@@ -3,10 +3,10 @@
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class MatchCommentaryReponse
+    public class MatchCommentaryResponse
     {
         [JsonProperty("tliveFt")]
-        public List<MatchCommentary> Incidents { get; set; }
+        public List<MatchCommentary> Commentaries { get; set; }
     }
 
     public class MatchCommentary

@@ -32,7 +32,7 @@
                 LastUpdatedTime = lastUpdatedTime,
                 RowLimit = 200
             };
-            await SyncMatchAsync(param);
+            await SyncMatchesAsync(param);
         }
 
         public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
@@ -65,7 +65,46 @@
             await baseService.ExecuteNonQueryAsync(command);
         }
 
-        private async Task SyncMatchAsync(SyncMatchParams syncMatchParams)
+        public async Task SyncMatchCommentaryAsync(long matchId)
+        {
+            var commetaries = await fetchMatchService.FetchMatchCommentaryAsync(matchId);
+            if (commetaries.Any())
+            {
+                var command = new ImportCommentaryCommand
+                {
+                    MatchId = matchId,
+                    CommentaryJson = JsonConvert.SerializeObject(commetaries)
+                };
+
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncMatchIncidentAsync(int sportId, long matchId)
+        {
+            var incidents = await fetchMatchService.FetchMatchIncidentAsync(sportId, matchId);
+            if (incidents.Any())
+            {
+                var command = new ImportIncidentCommand
+                {
+                    MatchId = matchId,
+                    IncidentJson = JsonConvert.SerializeObject(incidents)
+                };
+                try
+                {
+                    await baseService.ExecuteNonQueryAsync(command);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        private async Task<DateTime?> GetMatchLastUpdatedTime()
+            => await baseService.GetDataEntityAsync<DateTime?>(new GetMatchLastUpdatedTimeCriteria());
+
+        private async Task SyncMatchesAsync(SyncMatchParams syncMatchParams)
         {
             var matches = await fetchMatchService.FetchMatchListAsync(syncMatchParams);
 
@@ -80,13 +119,5 @@
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
-
-        public Task SyncMatchCommentaryAsync(long matchId)
-        {
-            throw new NotImplementedException();
-        }
-
-        private async Task<DateTime?> GetMatchLastUpdatedTime()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetMatchLastUpdatedTimeCriteria());
     }
 }

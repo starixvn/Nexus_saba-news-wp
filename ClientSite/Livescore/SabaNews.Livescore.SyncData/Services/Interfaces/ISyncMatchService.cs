@@ -11,5 +11,7 @@
         Task SyncMatchLineupByIdsAsync(long[] matchIds);
 
         Task SyncMatchCommentaryAsync(long matchId);
+
+        Task SyncMatchIncidentAsync(int sportId, long matchId);
     }
 }
