@@ -4,6 +4,8 @@
 
     public interface ISyncTeamService
     {
-        Task SyncTeamListAsync();
+        Task SyncTeamListByLastUpdatedTimeAsync();
+
+        Task SyncTeamListGreaterThanTeamIdAsync();
     }
 }

@@ -8,22 +8,22 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncLeagueWorker : BaseWorker
+    public class SyncTeamListGreaterThanTeamIdWorker : BaseWorker
     {
-        private readonly ISyncLeagueService syncLeagueService;
+        private readonly ISyncTeamService syncTeamService;
 
-        public SyncLeagueWorker(
-            ISyncLeagueService syncLeagueService,
+        public SyncTeamListGreaterThanTeamIdWorker(
+            ISyncTeamService syncTeamService,
             List<ScheduledTaskSettings> jobSettings,
             ILogServiceProvider logService) : base(logService)
         {
-            this.syncLeagueService = syncLeagueService;
-            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLeagueList);
+            this.syncTeamService = syncTeamService;
+            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncTeamListGreaterThanTeamId);
         }
 
         public override async Task ExecuteJobAsync()
         {
-            await syncLeagueService.SyncLeagueListAsync();
+            await syncTeamService.SyncTeamListGreaterThanTeamIdAsync();
         }
     }
 }

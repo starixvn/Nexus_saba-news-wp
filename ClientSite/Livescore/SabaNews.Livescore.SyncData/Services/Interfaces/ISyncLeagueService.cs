@@ -4,6 +4,8 @@
 
     public interface ISyncLeagueService
     {
-        Task SyncLeagueListAsync();
+        Task SyncLeagueListByLastUpdatedTimeAsync();
+
+        Task SyncLeagueListGreaterThanLeagueIdAsync();
     }
 }

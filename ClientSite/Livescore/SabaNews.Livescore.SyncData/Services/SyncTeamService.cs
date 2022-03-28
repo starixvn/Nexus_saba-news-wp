@@ -28,9 +28,9 @@
             this.fetchTeamService = fetchTeamService;
         }
 
-        public async Task SyncTeamListAsync()
+        public async Task SyncTeamListByLastUpdatedTimeAsync()
         {
-            var lastUpdatedTime = await GetLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await GetLastUpdatedTimeAsync();
             var param = new FetchTeamListParams
             {
                 SportId = (short)SportType.Soccer,
@@ -50,7 +50,32 @@
             }
         }
 
+        public async Task SyncTeamListGreaterThanTeamIdAsync()
+        {
+            long? maxId = await GetMaxTeamIdAsync();
+            var param = new FetchTeamListParams
+            {
+                SportId = (short)SportType.Soccer,
+                IdGte = maxId ?? 0,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<TeamListResponse> teams = await fetchTeamService.FetchTeamListAsync(param);
+            ////teams = teams.Where(x => !string.IsNullOrWhiteSpace(x.TeamNameEN) || !string.IsNullOrWhiteSpace(x.TeamFullNameEN)).ToList();
+            if (teams.Any())
+            {
+                var json = JsonConvert.SerializeObject(teams);
+                var command = new ImportTeamCommand
+                {
+                    TeamListJson = json
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
         protected internal virtual async Task<DateTime?> GetLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetTeamLastUpdatedTimeCriteria());
+
+        protected internal virtual async Task<long?> GetMaxTeamIdAsync()
+            => await baseService.GetDataEntityAsync<long?>(new GetMaxTeamIdCriteria());
     }
 }
