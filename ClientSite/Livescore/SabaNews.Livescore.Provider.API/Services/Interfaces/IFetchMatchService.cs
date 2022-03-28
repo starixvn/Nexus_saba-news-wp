@@ -9,6 +9,8 @@
     {
         Task<List<MatchResponse>> FetchMatchListAsync(SyncMatchParams paramModel);
 
+        Task<List<MatchDetailResponse>> FetchLiveMatchListAsync(SyncMatchParams paramModel);
+
         Task<List<MatchDetailResponse>> FetchMatchDetailAsync(SyncMatchParams paramModel);
 
         Task<List<MatchLineupResponse>> FetchMatchLineupAsync(long[] matchIds);

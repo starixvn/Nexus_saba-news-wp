@@ -43,10 +43,14 @@
             var param = new Dictionary<string, object>
             {
                 { "sportId", paramModel.SportId },
-                { "matchId", paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
                 { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "rowLimit", paramModel.RowLimit }
             };
+
+            if (paramModel.MatchIds.Length > 0)
+            {
+                param.Add("matchId", paramModel.MatchIds);
+            }
 
             var matcheDetails = await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetMatchDetailApiPath, param);
 
@@ -100,6 +104,23 @@
             return new List<MatchIncident>();
         }
 
+        public async Task<List<MatchDetailResponse>> FetchLiveMatchListAsync(SyncMatchParams paramModel)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "sportId", paramModel.SportId }
+            };
+
+            if (paramModel.MatchIds is not null && paramModel.MatchIds.Length > 0)
+            {
+                param.Add("matchId", paramModel.MatchIds);
+            }
+
+            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetLiveMatchApiPath, param);
+
+            return matcheDetails;
+        }
+
         private static class ApiPath
         {
             internal const string GetMatchListApiPath = "/match/list";
@@ -107,6 +128,7 @@
             internal const string GetMatchLineupApiPath = "/lineup/list";
             internal const string GetMatchIncidentApiPath = "/match/textlive";
             internal const string GetMatchCommentaryApiPath = "/match/textlive_en";
+            internal const string GetLiveMatchApiPath = "/match/lives";
         }
     }
 }

@@ -90,14 +90,7 @@
                     MatchId = matchId,
                     IncidentJson = JsonConvert.SerializeObject(incidents)
                 };
-                try
-                {
-                    await baseService.ExecuteNonQueryAsync(command);
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                await baseService.ExecuteNonQueryAsync(command);
             }
         }
 

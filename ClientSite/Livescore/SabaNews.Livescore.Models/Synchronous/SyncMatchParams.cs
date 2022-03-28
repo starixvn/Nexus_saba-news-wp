@@ -1,10 +1,11 @@
 ﻿namespace SabaNews.Livescore.Models.Synchronous
 {
     using System;
+    using SabaNews.Livescore.Core.Enum;
 
     public class SyncMatchParams
     {
-        public int SportId { get; set; } = 1;
+        public int SportId { get; set; } = (int)SportType.Soccer;
         public long[] MatchIds { get; set; }
         public long? LeagueId { get; set; }
         public DateTime? StartTime { get; set; }

@@ -44,25 +44,25 @@
         [JsonProperty("pScore")]
         public int[] PenaltyShootoutScore { get; set; }
 
-        public int[] Assists { get; set; }
-        public int[] First { get; set; }
-        public int[] Follow { get; set; }
-        public int[] Foul { get; set; }
+        public int?[] Assists { get; set; }
+        public int?[] First { get; set; }
+        public int?[] Follow { get; set; }
+        public int?[] Foul { get; set; }
         public string[] Grade { get; set; }
-        public int[] HalfConner { get; set; }
+        public int?[] HalfConner { get; set; }
         public string[] HalfPossession { get; set; }
-        public int[] Head { get; set; }
-        public int[] HeadSuccess { get; set; }
-        public int[] Intercept { get; set; }
-        public int[] OffSide { get; set; }
-        public int[] OnDoor { get; set; }
-        public int[] Pass { get; set; }
+        public int?[] Head { get; set; }
+        public int?[] HeadSuccess { get; set; }
+        public int?[] Intercept { get; set; }
+        public int?[] OffSide { get; set; }
+        public int?[] OnDoor { get; set; }
+        public int?[] Pass { get; set; }
         public string[] PassSuccess { get; set; }
-        public int[] Past { get; set; }
-        public int[] Shoot { get; set; }
-        public int[] ShootOut { get; set; }
-        public int[] ShootStop { get; set; }
-        public int[] Slide { get; set; }
-        public int[] Steals { get; set; }
+        public int?[] Past { get; set; }
+        public int?[] Shoot { get; set; }
+        public int?[] ShootOut { get; set; }
+        public int?[] ShootStop { get; set; }
+        public int?[] Slide { get; set; }
+        public int?[] Steals { get; set; }
     }
 }

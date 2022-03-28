@@ -17,12 +17,11 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
-    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.SyncData.Helpers;
-    using SabaNews.Livescore.SyncData.Services;
     using Sentry;
     using StackExchange.Redis;
 
@@ -136,9 +135,9 @@
 
         private static void TestService(IServiceCollection services)
         {
-            var service = services.BuildServiceProvider().GetService<ISyncMatchService>();
+            var service = services.BuildServiceProvider().GetService<IFetchMatchService>();
             var matchIds = new long[] { 5857563, 5857564, 6193879, 6224851, 6224874, 6224880 };
-            service.SyncMatchIncidentAsync((int)SportType.Soccer, matchIds[0]);
+            var liveMatches = service.FetchLiveMatchListAsync(new SyncMatchParams());
             //service.SyncMatchIncidentAsync(matchIds[0]);
         }
     }
