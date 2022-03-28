@@ -47,7 +47,7 @@
             AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
             AddWorker(services);
-            TestService(services);
+            //TestService(services);
         }
 
         private void AddRedisConfiguration(IServiceCollection services, IConfiguration configuration)
@@ -127,8 +127,10 @@
         private static void AddWorker(IServiceCollection services)
         {
             services.AddHostedService<SyncLeagueListByLastUpdatedTimeWorker>();
+            services.AddHostedService<SyncLeagueListGreaterThanLeagueIdWorker>();
             services.AddHostedService<SyncTeamListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncTeamListGreaterThanTeamIdWorker>();
+            services.AddHostedService<SyncSeasonListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchWorker>();
         }
 

@@ -24,6 +24,7 @@
         {
             services.AddTransient<ISyncLeagueService, SyncLeagueService>();
             services.AddTransient<ISyncTeamService, SyncTeamService>();
+            services.AddTransient<ISyncSeasonService, SyncSeasonService>();
             services.AddTransient<ISyncMatchService, SyncMatchService>();
         }
 
