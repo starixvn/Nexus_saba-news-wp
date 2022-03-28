@@ -30,7 +30,7 @@
 
         public async Task SyncSeasonListByLastUpdatedTimeAsync()
         {
-            DateTime? lastUpdatedTime = await GetLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await GetSeasonLastUpdatedTimeAsync();
             var param = new FetchSeasonListParams
             {
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
@@ -48,7 +48,30 @@
             }
         }
 
-        protected internal virtual async Task<DateTime?> GetLastUpdatedTimeAsync()
+        public async Task SyncStageListByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await GetStageLastUpdatedTimeAsync();
+            var param = new FetchSeasonListParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<StageListResponse> seasons = await fetchSeasonService.FetchStageListAsync(param);
+            if (seasons.Any(x => x.SportId == (short)SportType.Soccer))
+            {
+                var json = JsonConvert.SerializeObject(seasons.Where(x => x.SportId == (short)SportType.Soccer).ToList());
+                var command = new ImportStageCommand
+                {
+                    StageListJson = json
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        protected internal virtual async Task<DateTime?> GetSeasonLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonLastUpdatedTimeCriteria());
+
+        protected internal virtual async Task<DateTime?> GetStageLastUpdatedTimeAsync()
+            => await baseService.GetDataEntityAsync<DateTime?>(new GetStageLastUpdatedTimeCriteria());
     }
 }

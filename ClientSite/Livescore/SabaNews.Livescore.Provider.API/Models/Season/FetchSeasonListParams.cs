@@ -4,7 +4,6 @@
 
     public class FetchSeasonListParams
     {
-        public string Token { get; set; }
         public long? IdGte { get; set; }
         public DateTime? LastUpdatedTime { get; set; }
         public int RowLimit { get; set; }

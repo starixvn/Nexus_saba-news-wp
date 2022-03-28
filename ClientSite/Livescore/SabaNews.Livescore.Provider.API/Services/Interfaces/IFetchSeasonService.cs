@@ -7,5 +7,7 @@
     public interface IFetchSeasonService
     {
         Task<List<SeasonListResponse>> FetchSeasonListAsync(FetchSeasonListParams seasonParams);
+
+        Task<List<StageListResponse>> FetchStageListAsync(FetchSeasonListParams seasonParams);
     }
 }

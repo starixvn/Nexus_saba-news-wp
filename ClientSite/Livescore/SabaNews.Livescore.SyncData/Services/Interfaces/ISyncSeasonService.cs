@@ -5,5 +5,7 @@
     public interface ISyncSeasonService
     {
         Task SyncSeasonListByLastUpdatedTimeAsync();
+
+        Task SyncStageListByLastUpdatedTimeAsync();
     }
 }

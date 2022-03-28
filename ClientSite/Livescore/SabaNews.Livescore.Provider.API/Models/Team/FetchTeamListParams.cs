@@ -5,7 +5,6 @@
     public class FetchTeamListParams
     {
         public short? SportId { get; set; }
-        public string Token { get; set; }
         public long?[] TeamIds { get; set; }
         public long? IdGte { get; set; }
         public DateTime? LastUpdatedTime { get; set; }
