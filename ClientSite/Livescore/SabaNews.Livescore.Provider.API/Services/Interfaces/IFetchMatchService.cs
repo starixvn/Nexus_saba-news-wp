@@ -12,5 +12,9 @@
         Task<List<MatchDetailResponse>> FetchMatchDetailAsync(SyncMatchParams paramModel);
 
         Task<List<MatchLineupResponse>> FetchMatchLineupAsync(long[] matchIds);
+
+        Task<List<MatchCommentary>> FetchMatchCommentaryAsync(long matchId);
+
+        Task<List<MatchIncidentResponse>> FetchMatchIncidentAsync(long matchId);
     }
 }

@@ -65,11 +65,37 @@
             return matcheDetails;
         }
 
+        public async Task<List<MatchCommentary>> FetchMatchCommentaryAsync(long matchId)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "matchId", matchId },
+            };
+
+            var commentaries = await httpClient.ExecutePostAsync<List<MatchCommentary>>(ApiPath.GetMatchCommentaryApiPath, param);
+
+            return commentaries;
+        }
+
+        public async Task<List<MatchIncidentResponse>> FetchMatchIncidentAsync(long matchId)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "matchId", matchId },
+            };
+
+            var incidents = await httpClient.ExecutePostAsync<List<MatchIncidentResponse>>(ApiPath.GetMatchIncidentApiPath, param);
+
+            return incidents;
+        }
+
         private static class ApiPath
         {
             internal const string GetMatchListApiPath = "/match/list";
             internal const string GetMatchDetailApiPath = "/match/detail";
             internal const string GetMatchLineupApiPath = "/lineup/list";
+            internal const string GetMatchIncidentApiPath = "/match/textlive";
+            internal const string GetMatchCommentaryApiPath = "/match/textlive_en";
         }
     }
 }

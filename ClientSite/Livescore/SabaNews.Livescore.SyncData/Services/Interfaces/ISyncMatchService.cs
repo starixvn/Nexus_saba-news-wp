@@ -10,6 +10,6 @@
 
         Task SyncMatchLineupByIdsAsync(long[] matchIds);
 
-        Task SyncMatchTextLiveAsync(long matchId);
+        Task SyncMatchCommentaryAsync(long matchId);
     }
 }

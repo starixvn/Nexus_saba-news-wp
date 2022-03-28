@@ -81,7 +81,7 @@
             }
         }
 
-        public Task SyncMatchTextLiveAsync(long matchId)
+        public Task SyncMatchCommentaryAsync(long matchId)
         {
             throw new NotImplementedException();
         }
