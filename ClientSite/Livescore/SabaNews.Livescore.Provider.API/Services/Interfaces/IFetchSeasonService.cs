@@ -9,5 +9,7 @@
         Task<List<SeasonListResponse>> FetchSeasonListAsync(FetchSeasonListParams seasonParams);
 
         Task<List<StageListResponse>> FetchStageListAsync(FetchSeasonListParams seasonParams);
+
+        Task<List<T>> FetchSeasonStandingsAsync<T>(FetchSeasonStandingsParams seasonStadingsParams);
     }
 }

@@ -38,10 +38,22 @@
             return await httpClient.ExecutePostAsync<List<StageListResponse>>(ApiPath.GetStageListApiPath, param);
         }
 
+        public async Task<List<T>> FetchSeasonStandingsAsync<T>(FetchSeasonStandingsParams seasonStadingsParams)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "sportId", seasonStadingsParams.SportId },
+                { "seasonId", seasonStadingsParams.SeasonId },
+                { "timeGte", seasonStadingsParams.LastUpdatedTime.HasValue ? seasonStadingsParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+            };
+            return await httpClient.ExecutePostAsync<List<T>>(ApiPath.GetSeasonStandingsApiPath, param);
+        }
+
         private static class ApiPath
         {
             internal const string GetSeasonListApiPath = "/season/list";
             internal const string GetStageListApiPath = "/stage/list";
+            internal const string GetSeasonStandingsApiPath = "/season/board/team";
         }
     }
 }

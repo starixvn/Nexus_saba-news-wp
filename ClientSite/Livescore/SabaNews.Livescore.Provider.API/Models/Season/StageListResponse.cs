@@ -10,9 +10,9 @@
         public string StageName { get; set; }
         public string StageNameEN { get; set; }
         public byte StageFashion { get; set; }
-        public short GroupCount { get; set; }
+        public short? GroupCount { get; set; }
         public short? RoundCount { get; set; }
-        public int OrderIndex { get; set; }
+        public short OrderIndex { get; set; }
         public bool IsDelete { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

@@ -130,6 +130,7 @@
             services.AddHostedService<SyncTeamListGreaterThanTeamIdWorker>();
             services.AddHostedService<SyncSeasonListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncStageListByLastUpdatedTimeWorker>();
+            services.AddHostedService<SyncSeasonStandingsByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
         }

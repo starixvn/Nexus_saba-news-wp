@@ -7,5 +7,7 @@
         Task SyncSeasonListByLastUpdatedTimeAsync();
 
         Task SyncStageListByLastUpdatedTimeAsync();
+
+        Task SyncSeasonStandingsByLastUpdatedTimeAsync();
     }
 }

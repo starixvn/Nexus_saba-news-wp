@@ -25,5 +25,7 @@
         <Setting Key="Livescore_Sync_Season_Import" SpName="Livescore_Sync_Season_Import" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Stage_GetLastUpdatedTime" SpName="Livescore_Sync_Stage_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Stage_Import" SpName="Livescore_Sync_Stage_Import" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Sync_SeasonStandings_GetLastUpdatedTime" SpName="Livescore_Sync_SeasonStandings_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Sync_SeasonStandings_Import" SpName="Livescore_Sync_SeasonStandings_Import" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

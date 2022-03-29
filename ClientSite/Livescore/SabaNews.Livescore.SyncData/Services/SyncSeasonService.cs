@@ -10,6 +10,7 @@
     using SabaNews.Livescore.Provider.API.Models.Season;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Season;
+    using SabaNews.Livescore.SyncData.Models.Season;
     using SabaNews.Services;
 
     public class SyncSeasonService : ISyncSeasonService
@@ -56,10 +57,10 @@
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
-            List<StageListResponse> seasons = await fetchSeasonService.FetchStageListAsync(param);
-            if (seasons.Any(x => x.SportId == (short)SportType.Soccer))
+            List<StageListResponse> stages = await fetchSeasonService.FetchStageListAsync(param);
+            if (stages.Any(x => x.SportId == (short)SportType.Soccer))
             {
-                var json = JsonConvert.SerializeObject(seasons.Where(x => x.SportId == (short)SportType.Soccer).ToList());
+                var json = JsonConvert.SerializeObject(stages.Where(x => x.SportId == (short)SportType.Soccer).ToList());
                 var command = new ImportStageCommand
                 {
                     StageListJson = json
@@ -68,10 +69,116 @@
             }
         }
 
+        public async Task SyncSeasonStandingsByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await GetSeasonStandingsLastUpdatedTimeAsync();
+            lastUpdatedTime = FirstDayOfWeek(lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData);
+            var today = DateTime.Now;
+            for(var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
+            {
+                var param = new FetchSeasonStandingsParams
+                {
+                    SportId = (short)SportType.Soccer,
+                    LastUpdatedTime = date
+                };
+                var updatedSeasonIds = await fetchSeasonService.FetchSeasonStandingsAsync<UpdatedSeasonIdListResponse>(param);
+                if (updatedSeasonIds.Any(x => x.UpdatedSeasonIdList.Any()))
+                {
+                    foreach(var item in updatedSeasonIds)
+                    {
+                        foreach(var seasonId in item.UpdatedSeasonIdList)
+                        {
+                            var seasonStandings = await GetSeasonStandingsAsync(seasonId);
+                            await ImportSeasonStandingsAsync(seasonId, seasonStandings);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected internal virtual async Task<List<SeasonStandingsResponse>> GetSeasonStandingsAsync(long seasonId)
+        {
+            var param = new FetchSeasonStandingsParams
+            {
+                SportId = (short)SportType.Soccer,
+                SeasonId = seasonId
+            };
+            return await fetchSeasonService.FetchSeasonStandingsAsync<SeasonStandingsResponse>(param);
+        }
+
+        protected internal virtual async Task ImportSeasonStandingsAsync(long seasonId, IList<SeasonStandingsResponse> seasonStandings)
+        {
+            var records = new List<SeasonStandings>();
+            foreach(var seasonStanding in seasonStandings)
+            {
+                foreach (var group in seasonStanding.Group)
+                {
+                    foreach(var rank in group.Rank)
+                    {
+                        var record = new SeasonStandings
+                        {
+                            StageId = seasonStanding.StageId ?? 0,
+                            StageName = seasonStanding.StageName,
+                            GroupName = group.GroupName,
+                            Conference = group.Conference,
+                            TeamId = rank.TeamId ?? 0,
+                            Position = rank.Position,
+                            PositionHome = rank.PositionHome,
+                            PositionAway = rank.PositionAway,
+                            Total = rank.Total,
+                            TotalHome = rank.TotalHome,
+                            TotalAway = rank.TotalAway,
+                            Won = rank.Won,
+                            WonHome = rank.WonHome,
+                            WonAway = rank.WonAway,
+                            Loss = rank.Loss,
+                            LossHome = rank.LossHome,
+                            LossAway = rank.LossAway,
+                            Draw = rank.Draw,
+                            DrawHome = rank.DrawHome,
+                            DrawAway = rank.DrawAway,
+                            Promotion = rank.Promotion,
+                            Points = rank.Points,
+                            PointsHome = rank.PointsHome,
+                            PointsAway = rank.PointsAway,
+                            DeductPoints = rank.DeductPoints,
+                            Goals = rank.Goals,
+                            GoalsHome = rank.GoalsHome,
+                            GoalsAway = rank.GoalsAway,
+                            GoalAgainsts = rank.GoalAgainsts,
+                            GoalsAgainstHome = rank.GoalsAgainstHome,
+                            GoalsAgainstAway = rank.GoalsAgainstAway,
+                            GoalDiff = rank.GoalDiff,
+                            GoalDiffHome = rank.GoalDiffHome,
+                            GoalDiffAway = rank.GoalDiffAway,
+                            UpdatedAt = group.UpdatedAt
+                        };
+                        records.Add(record);
+                    }
+                }
+            }
+
+            var command = new ImportSeasonStandingsCommand
+            {
+                SeasonId = seasonId,
+                SeasonStandingsJson = JsonConvert.SerializeObject(records)
+            };
+            await baseService.ExecuteNonQueryAsync(command);
+        }
+
         protected internal virtual async Task<DateTime?> GetSeasonLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonLastUpdatedTimeCriteria());
 
         protected internal virtual async Task<DateTime?> GetStageLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetStageLastUpdatedTimeCriteria());
+
+        protected internal virtual async Task<DateTime?> GetSeasonStandingsLastUpdatedTimeAsync()
+            => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
+
+        private static DateTime FirstDayOfWeek(DateTime date)
+        {
+            int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
+            return date.AddDays(-1 * diff).Date;
+        }
     }
 }

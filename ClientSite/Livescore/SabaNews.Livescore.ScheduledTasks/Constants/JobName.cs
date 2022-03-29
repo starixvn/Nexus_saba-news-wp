@@ -10,5 +10,6 @@
         public const string SyncTeamListGreaterThanTeamId = "SyncTeamListGreaterThanTeamId";
         public const string SyncSeasonListByLastUpdatedTime = "SyncSeasonListByLastUpdatedTime";
         public const string SyncStageListByLastUpdatedTime = "SyncStageListByLastUpdatedTime";
+        public const string SyncSeasonStandingsByLastUpdatedTime = "SyncSeasonStandingsByLastUpdatedTime";
     }
 }
