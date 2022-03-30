@@ -44,9 +44,20 @@
             {
                 { "sportId", seasonStadingsParams.SportId },
                 { "seasonId", seasonStadingsParams.SeasonId },
-                { "timeGte", seasonStadingsParams.LastUpdatedTime.HasValue ? seasonStadingsParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "timeGte", seasonStadingsParams.LastUpdatedTime.HasValue ? seasonStadingsParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null }
             };
             return await httpClient.ExecutePostAsync<List<T>>(ApiPath.GetSeasonStandingsApiPath, param);
+        }
+
+        public async Task<List<TeamHonorResponse>> FetchTeamHonorAsync(FetchTeamHonorParams teamHonorParams)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "idGte", teamHonorParams.IdGte },
+                { "timeGte", teamHonorParams.LastUpdatedTime.HasValue ? teamHonorParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "rowLimit", teamHonorParams.RowLimit }
+            };
+            return await httpClient.ExecutePostAsync<List<TeamHonorResponse>>(ApiPath.GetSeasonTeamHonorApiPath, param);
         }
 
         private static class ApiPath
@@ -54,6 +65,7 @@
             internal const string GetSeasonListApiPath = "/season/list";
             internal const string GetStageListApiPath = "/stage/list";
             internal const string GetSeasonStandingsApiPath = "/season/board/team";
+            internal const string GetSeasonTeamHonorApiPath = "/season/honor/team/football";
         }
     }
 }

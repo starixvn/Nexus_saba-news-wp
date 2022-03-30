@@ -96,6 +96,32 @@
             }
         }
 
+        public async Task SyncSeasonTeamHonorByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await GetSeasonTeamHonorLastUpdatedTimeAsync();
+            var param = new FetchTeamHonorParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            try
+            {
+                List<TeamHonorResponse> honors = await fetchSeasonService.FetchTeamHonorAsync(param);
+                if (honors.Any())
+                {
+                    var command = new ImportSeasonTeamHonorCommand
+                    {
+                        TeamHonorListJson = JsonConvert.SerializeObject(honors)
+                    };
+                    await baseService.ExecuteNonQueryAsync(command);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         protected internal virtual async Task<List<SeasonStandingsResponse>> GetSeasonStandingsAsync(long seasonId)
         {
             var param = new FetchSeasonStandingsParams
@@ -174,6 +200,9 @@
 
         protected internal virtual async Task<DateTime?> GetSeasonStandingsLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
+
+        protected internal virtual async Task<DateTime?> GetSeasonTeamHonorLastUpdatedTimeAsync()
+            => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonTeamHonorLastUpdatedTimeCriteria());
 
         private static DateTime FirstDayOfWeek(DateTime date)
         {

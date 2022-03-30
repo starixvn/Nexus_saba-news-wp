@@ -11,5 +11,7 @@
         Task<List<StageListResponse>> FetchStageListAsync(FetchSeasonListParams seasonParams);
 
         Task<List<T>> FetchSeasonStandingsAsync<T>(FetchSeasonStandingsParams seasonStadingsParams);
+
+        Task<List<TeamHonorResponse>> FetchTeamHonorAsync(FetchTeamHonorParams teamHonorParams);
     }
 }

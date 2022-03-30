@@ -131,6 +131,7 @@
             services.AddHostedService<SyncSeasonListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncStageListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncSeasonStandingsByLastUpdatedTimeWorker>();
+            services.AddHostedService<SyncSeasonTeamHonorByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
         }

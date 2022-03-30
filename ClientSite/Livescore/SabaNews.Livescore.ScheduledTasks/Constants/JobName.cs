@@ -11,5 +11,6 @@
         public const string SyncSeasonListByLastUpdatedTime = "SyncSeasonListByLastUpdatedTime";
         public const string SyncStageListByLastUpdatedTime = "SyncStageListByLastUpdatedTime";
         public const string SyncSeasonStandingsByLastUpdatedTime = "SyncSeasonStandingsByLastUpdatedTime";
+        public const string SyncSeasonTeamHonorByLastUpdatedTime = "SyncSeasonTeamHonorByLastUpdatedTime";
     }
 }

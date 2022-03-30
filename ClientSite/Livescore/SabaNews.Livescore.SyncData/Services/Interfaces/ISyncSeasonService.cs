@@ -9,5 +9,7 @@
         Task SyncStageListByLastUpdatedTimeAsync();
 
         Task SyncSeasonStandingsByLastUpdatedTimeAsync();
+
+        Task SyncSeasonTeamHonorByLastUpdatedTimeAsync();
     }
 }
