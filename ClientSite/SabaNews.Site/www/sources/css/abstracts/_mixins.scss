@@ -1,68 +1,61 @@
-﻿@mixin css3-prefix($property, $value) {
-    -webkit-#{$property}: #{$value};
-    -khtml-#{$property}: #{$value};
-    -moz-#{$property}: #{$value};
-    -ms-#{$property}: #{$value};
-    -o-#{$property}: #{$value};
-    #{$property}: #{$value};
+﻿@mixin iphone5 {
+    @media screen and (device-aspect-ratio: 40/71) {
+        @content;
+    }
 }
 
-@mixin border-radius($radius: 4px) {
-    @include css3-prefix('border-radius', $radius);
+@mixin tableMobile {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
 }
 
-// Box sizing
-@mixin box-sizing($boxmodel) {
-    -webkit-box-sizing: $boxmodel;
-    -moz-box-sizing: $boxmodel;
-    box-sizing: $boxmodel;
+@mixin Mobile {
+    @media (max-device-width : 767px) {
+        @content;
+    }
 }
 
-// Drop shadows
-@mixin box-shadow($shadow...) {
-    -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
-    box-shadow: $shadow;
+@mixin iphoneXR {
+    @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+        @content;
+    }
 }
 
-// Transitions
-@mixin transition($transition...) {
-    -webkit-transition: $transition;
-    -o-transition: $transition;
-    -moz-transition: $transition;
-    transition: $transition;
+@mixin iphone6 {
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+        @content;
+    }
 }
 
-@mixin transition-property($transition-property...) {
-    -webkit-transition-property: $transition-property;
-    -moz-transition-property: $transition-property;
-    -o-transition-property: $transition-property;
-    transition-property: $transition-property;
+@mixin iphone1213 {
+    @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+        @content;
+    }
 }
 
-@mixin transition-delay($transition-delay) {
-    -webkit-transition-delay: $transition-delay;
-    -moz-transition-delay: $transition-delay;
-    -o-transition-delay: $transition-delay;
-    transition-delay: $transition-delay;
+@mixin iphoneX {
+    @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3) {
+        @content;
+    }
 }
 
-@mixin transition-duration($transition-duration...) {
-    -webkit-transition-duration: $transition-duration;
-    -moz-transition-duration: $transition-duration;
-    -o-transition-duration: $transition-duration;
-    transition-duration: $transition-duration;
+@mixin creen1199px {
+    @media screen and (min-width : 1199px) {
+        @content;
+    }
 }
 
-@mixin transition-timing-function($timing-function) {
-    -webkit-transition-timing-function: $timing-function;
-    -moz-transition-timing-function: $timing-function;
-    -o-transition-timing-function: $timing-function;
-    transition-timing-function: $timing-function;
+@mixin portraitTablet {
+    @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+        @content;
+    }
 }
 
-@mixin transition-transform($transition...) {
-    -webkit-transition: -webkit-transform $transition;
-    -moz-transition: -moz-transform $transition;
-    -o-transition: -o-transform $transition;
-    transition: transform $transition;
+@mixin landscapeTablet {
+    @media only screen and (min-width : 1024px) and (max-width : 1366px) {
+        @content;
+    }
 }
+
+

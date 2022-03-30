@@ -1,9 +1,5 @@
-﻿$border-radius: 0;
-$border-radius-lg: 0;
-$border-radius-sm: 0;
-$input-btn-focus-box-shadow: unset;
-$fa-font-path: "../../../../fonts";
-@import '~bootstrap/scss/bootstrap';
+﻿@import '../../../abstracts/variables';
+@import '../../../abstracts/mixins';
 @import '~font-awesome/scss/font-awesome';
 @import '../../../components/date-picker';
 
