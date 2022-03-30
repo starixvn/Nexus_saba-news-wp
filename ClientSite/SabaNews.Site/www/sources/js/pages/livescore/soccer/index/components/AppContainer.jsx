@@ -24,7 +24,7 @@ export class AppContainer extends Component {
         }
 
         return (
-            <>
+            <div className="container">
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
@@ -32,11 +32,11 @@ export class AppContainer extends Component {
                         <SearchBar />
                         <MatchGrid matches={matches} />
                     </div>
-                    <div className="livescore-soccer-right">
+                    <div className="livescore-soccer-extension">
                         <Leagues />
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

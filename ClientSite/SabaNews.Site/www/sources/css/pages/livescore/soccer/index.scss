@@ -1,5 +1,8 @@
 ﻿@import '../../../abstracts/variables';
 @import '../../../abstracts/mixins';
+@import '../../../base/base';
+@import '../../../components/block-extension';
+@import '../../../components/container';
 @import '~font-awesome/scss/font-awesome';
 @import '../../../components/date-picker';
 
@@ -8,91 +11,17 @@ body {
 }
 
 .livescore-soccer {
-    max-width: 114rem;
-    position: relative;
-    padding: 10px;
-    padding-top: 7rem;
-    box-sizing: border-box;
-    font-size: 13px;
-    order: 1;
-    display: grid;
-    grid-template-rows: minmax(calc(100vh - 125px), 1fr);
-    grid-template-columns: 688px 172px auto;
-    margin-right: auto;
-    margin-left: auto;
-
-    .livescore-soccer-right {
-        background-color: #fff;
-        margin-left: 10px;
-
-        .leagues {
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #e5e5e5;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-
-            .leagues-title {
-                display: flex;
-                align-items: center;
-                background-color: #ffe1af;
-                border-bottom: 1px solid rgba(0,0,0,.1);
-                border-top: 1px solid rgba(0,0,0,.1);
-                box-sizing: border-box;
-                line-height: 25px;
-                padding: 0 10px;
-                font-weight: 700;
-            }
-
-            .leagues-items {
-                .leagues-item {
-                    align-items: center;
-                    display: flex;
-                    min-height: 25px;
-                    overflow: hidden;
-                    border-bottom: 1px solid #fff;
-
-                    &:hover {
-                        background-color: rgba(0, 0, 0, .05);
-                        cursor: pointer;
-                    }
-
-                    .leagues-name {
-                        align-items: center;
-                        display: flex;
-                        flex: 1;
-                        line-height: 19px;
-                        min-height: 25px;
-                        overflow: hidden;
-                        padding: 0 8px;
-
-                        .logo {
-                            flex: 0 0 18px;
-                            height: 13px;
-                            margin-right: 8px;
-                        }
-
-                        .text {
-                            line-height: 18px;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                        }
-                    }
-
-                    .toggle-league {
-                        cursor: pointer;
-                        margin-right: 8px;
-                        order: 2;
-                        color: #ffcd00;
-                        display: flex;
-                    }
-                }
-            }
-        }
-    }
-
     .livescore-soccer-main {
+        @include grid(60% 40%, unset, 0);
+        align-items: start;
+        @include tableMobile {
+            grid-template-columns: 60% 40%;
+        }
+
+        @include Mobile {
+            display: inherit;
+        }
+
         .livescore-soccer-date-bar {
             min-height: 23px;
             display: grid;
