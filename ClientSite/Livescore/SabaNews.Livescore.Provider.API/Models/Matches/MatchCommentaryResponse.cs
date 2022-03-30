@@ -11,6 +11,7 @@
 
     public class MatchCommentary
     {
+        public long MatchId { get; set; }
         public string Time { get; set; }
         public string Data { get; set; }
     }

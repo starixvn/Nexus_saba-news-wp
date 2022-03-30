@@ -1,14 +1,16 @@
 ﻿namespace SabaNews.Livescore.SyncData.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
+    using SabaNews.Livescore.SyncData.Models.Matches;
     using SabaNews.Services;
 
     public class SyncMatchService : ISyncMatchService
@@ -23,23 +25,29 @@
             this.fetchMatchService = fetchMatchService;
         }
 
-        public async Task SyncAllMatchAsync()
+        public async Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches)
         {
-            var lastUpdatedTime = await GetMatchLastUpdatedTime();
-            var param = new SyncMatchParams
+            if (matches.Any())
             {
-                SportId = (int)SportType.Soccer,
-                LastUpdatedTime = lastUpdatedTime,
-                RowLimit = 200
-            };
-            await SyncMatchesAsync(param);
+                var json = JsonConvert.SerializeObject(matches);
+                var command = new ImportMatchCommand
+                {
+                    MatchListJson = json
+                };
+
+                await baseService.ExecuteNonQueryAsync(command);
+            }
         }
 
         public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
         {
             if (matchIds.Any())
             {
-                var matches = await fetchMatchService.FetchMatchDetailAsync(new SyncMatchParams { MatchIds = matchIds.ToArray() });
+                var fetchMatchDetailParam = new SyncMatchParams
+                {
+                    MatchIds = matchIds
+                };
+                var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
 
                 var (matchScoreList, statisticList) = DataHelpers.GenerateMatchDetailInput(matches);
                 var command = new ImportMatchDetailCommand
@@ -55,62 +63,80 @@
         {
             var matchLineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
 
-            var (lineups, players) = DataHelpers.GenerateMatchLineupInput(matchLineups);
-            var command = new ImportMatchLineupCommand
+            if (matchLineups is not null && matchLineups.Any())
             {
-                MatchLineupJson = JsonConvert.SerializeObject(lineups),
-                LineupPlayerJson = JsonConvert.SerializeObject(players)
-            };
-
-            await baseService.ExecuteNonQueryAsync(command);
-        }
-
-        public async Task SyncMatchCommentaryAsync(long matchId)
-        {
-            var commetaries = await fetchMatchService.FetchMatchCommentaryAsync(matchId);
-            if (commetaries.Any())
-            {
-                var command = new ImportCommentaryCommand
+                var (lineups, players) = DataHelpers.GenerateMatchLineupInput(matchLineups);
+                var command = new ImportMatchLineupCommand
                 {
-                    MatchId = matchId,
-                    CommentaryJson = JsonConvert.SerializeObject(commetaries)
+                    MatchLineupJson = JsonConvert.SerializeObject(lineups),
+                    LineupPlayerJson = JsonConvert.SerializeObject(players)
                 };
 
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
 
-        public async Task SyncMatchIncidentAsync(int sportId, long matchId)
+        public async Task SyncMultipleMatchCommentaryAsync(List<MatchCommentary> commentaries)
         {
-            var incidents = await fetchMatchService.FetchMatchIncidentAsync(sportId, matchId);
+            if (commentaries.Any())
+            {
+                var command = new ImportCommentaryCommand
+                {
+                    CommentaryJson = JsonConvert.SerializeObject(commentaries)
+                };
+
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents)
+        {
             if (incidents.Any())
             {
                 var command = new ImportIncidentCommand
                 {
-                    MatchId = matchId,
                     IncidentJson = JsonConvert.SerializeObject(incidents)
                 };
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
 
-        private async Task<DateTime?> GetMatchLastUpdatedTime()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetMatchLastUpdatedTimeCriteria());
-
-        private async Task SyncMatchesAsync(SyncMatchParams syncMatchParams)
+        public async Task<IEnumerable<TemporaryMatch>> GetTemporaryMatchToFetchInfo(int rowLimit)
         {
-            var matches = await fetchMatchService.FetchMatchListAsync(syncMatchParams);
-
-            if (matches.Any())
-            {
-                var json = JsonConvert.SerializeObject(matches);
-                var command = new ImportMatchCommand
+            var tmpMatches = await baseService.GetDataAsync<TemporaryMatch>(
+                new GetTemporayMatchesCriteria
                 {
-                    MatchListJson = json
+                    RowLimit = rowLimit
+                });
+            return tmpMatches;
+        }
+
+        public async Task RemoveMatchesFromTemporaryTable(long[] matchIds)
+        {
+            if (matchIds.Length > 0)
+            {
+                var command = new DeleteTemporaryMatchIdCommand
+                {
+                    MatchIds = string.Join(",", matchIds)
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task InsertTemporaryMatch(long[] matchIds)
+        {
+            if (matchIds.Length > 0)
+            {
+                var command = new InsertTemporaryMatchCommand
+                {
+                    MatchIds = string.Join(",", matchIds)
                 };
 
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
+
+        public async Task<DateTime> GetMatchLastUpdatedTime()
+            => await baseService.GetDataEntityAsync<DateTime>(new GetMatchLastUpdatedTimeCriteria());
     }
 }

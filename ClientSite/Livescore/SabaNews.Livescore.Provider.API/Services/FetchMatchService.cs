@@ -21,17 +21,13 @@
             var param = new Dictionary<string, object>
             {
                 { "sportId", paramModel.SportId },
-                { "matchId", paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
+                { "matchId", paramModel.MatchIds is not null && paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
                 { "leagueId", paramModel.LeagueId },
                 { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "startTime", paramModel.StartTime.HasValue ? paramModel.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null }
+                { "endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { "rowLimit", paramModel.RowLimit }
             };
-
-            if (paramModel.RowLimit is not null)
-            {
-                param.Add("rowLimit", paramModel.RowLimit);
-            }
 
             var matches = await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
 
@@ -61,7 +57,7 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "matchId", matchIds.Any() ? matchIds : null },
+                { "matchId", matchIds.Length > 0 ? matchIds : null },
             };
 
             var matcheDetails = await httpClient.ExecutePostAsync<List<MatchLineupResponse>>(ApiPath.GetMatchLineupApiPath, param);
@@ -80,6 +76,11 @@
 
             if (commentary is not null)
             {
+                foreach (var item in commentary.Commentaries)
+                {
+                    item.MatchId = matchId;
+                }
+
                 return commentary.Commentaries;
             }
 
@@ -96,8 +97,13 @@
 
             var incidents = await httpClient.ExecutePostAsync<MatchIncidentResponse>(ApiPath.GetMatchIncidentApiPath, param);
 
-            if (incidents is not null)
+            if (incidents is not null && incidents.Incidents is not null)
             {
+                foreach (var item in incidents.Incidents)
+                {
+                    item.MatchId = matchId;
+                }
+
                 return incidents.Incidents;
             }
 

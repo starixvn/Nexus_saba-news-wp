@@ -104,15 +104,8 @@
             if (IsSuccess(jsonObject))
             {
                 var jToken = jsonObject["data"];
-                try
-                {
-                    var result = jToken.ToObject<T>();
-                    return result;
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
+                var result = jToken.ToObject<T>();
+                return result;
             }
 
             logService.WriteMessageSentryErrorAsync(json);
@@ -136,7 +129,11 @@
         {
             var tokenModel = await AuthenticateAsync();
 
-            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel);
+            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel,
+                new CacheItemOptions
+                {
+                    AbsoluteExpiration = tokenModel.TokenExpired
+                });
             return tokenModel;
         }
 

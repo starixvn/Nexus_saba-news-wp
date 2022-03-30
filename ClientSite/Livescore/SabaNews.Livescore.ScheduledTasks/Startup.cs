@@ -17,7 +17,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
-    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
@@ -131,15 +130,8 @@
             services.AddHostedService<SyncTeamListGreaterThanTeamIdWorker>();
             services.AddHostedService<SyncSeasonListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncStageListByLastUpdatedTimeWorker>();
-            services.AddHostedService<SyncMatchWorker>();
-        }
-
-        private static void TestService(IServiceCollection services)
-        {
-            var service = services.BuildServiceProvider().GetService<IFetchMatchService>();
-            var matchIds = new long[] { 5857563, 5857564, 6193879, 6224851, 6224874, 6224880 };
-            var liveMatches = service.FetchLiveMatchListAsync(new SyncMatchParams());
-            //service.SyncMatchIncidentAsync(matchIds[0]);
+            services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
+            services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
         }
     }
 }

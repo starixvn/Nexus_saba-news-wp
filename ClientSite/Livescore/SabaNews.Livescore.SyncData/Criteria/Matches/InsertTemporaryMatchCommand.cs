@@ -2,11 +2,11 @@
 {
     using SabaNews.Core.Models;
 
-    public class DeleteTemporaryMatchIdCriteria : BaseNonQueryCommand
+    internal class InsertTemporaryMatchCommand : BaseNonQueryCommand
     {
         public string MatchIds { get; set; }
 
-        public override string GetSettingKey() => "Livescore_Match_DeleteTemporaryMatchIds";
+        public override string GetSettingKey() => "Livescore_Match_Temporary_Insert";
 
         public override bool IsValid() => !string.IsNullOrWhiteSpace(MatchIds);
     }

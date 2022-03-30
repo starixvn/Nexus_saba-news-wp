@@ -3,12 +3,13 @@
     <Function Name="Match">
         <Setting Key="Livescore_Match_GetLastUpdatedTime" SpName="Livescore_Match_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Sync" SpName="Livescore_Match_Sync" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetTemporaryIds" SpName="Livescore_Match_GetTemporaryIds" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_DeleteTemporaryMatchIds" SpName="Livescore_Match_DeleteTemporaryMatchIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Detail_Sync" SpName="Livescore_Match_Detail_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Lineup_Sync" SpName="Livescore_Match_Lineup_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Commentary_Sync" SpName="Livescore_Match_Commentary_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Incident_Sync" SpName="Livescore_Match_Incident_Sync" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Temporary_Insert" SpName="Livescore_Match_Temporary_Insert" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Temporary_Get" SpName="Livescore_Match_Temporary_Get" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_Temporary_Delete" SpName="Livescore_Match_Temporary_Delete" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Match">
         <Setting Key="Livescore_Sync_League_GetLastUpdatedTime" SpName="Livescore_Sync_League_GetLastUpdatedTime" DbName="sabasports" Plain="0" />

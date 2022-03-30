@@ -11,7 +11,5 @@
         public string Secret { get; set; }
 
         public string LoginPath { get; set; }
-
-        public int TokenExpired { get; set; }
     }
 }

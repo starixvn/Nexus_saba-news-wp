@@ -11,6 +11,7 @@
 
     public class MatchIncident
     {
+        public long MatchId { get; set; }
         public int Type { get; set; }
         public int Position { get; set; }
         public int Time { get; set; }

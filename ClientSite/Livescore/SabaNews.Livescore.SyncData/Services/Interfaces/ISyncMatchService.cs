@@ -1,17 +1,29 @@
 ﻿namespace SabaNews.Livescore.SyncData.Services
 {
+    using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
+    using SabaNews.Livescore.SyncData.Models.Matches;
 
     public interface ISyncMatchService
     {
-        Task SyncAllMatchAsync();
+        Task<DateTime> GetMatchLastUpdatedTime();
+
+        Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches);
 
         Task SyncMatchDetailByIdsAsync(long[] matchIds);
 
         Task SyncMatchLineupByIdsAsync(long[] matchIds);
 
-        Task SyncMatchCommentaryAsync(long matchId);
+        Task SyncMultipleMatchCommentaryAsync(List<MatchCommentary> commentaries);
 
-        Task SyncMatchIncidentAsync(int sportId, long matchId);
+        Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents);
+
+        Task InsertTemporaryMatch(long[] matchIds);
+
+        Task<IEnumerable<TemporaryMatch>> GetTemporaryMatchToFetchInfo(int rowLimit);
+
+        Task RemoveMatchesFromTemporaryTable(long[] matchIds);
     }
 }

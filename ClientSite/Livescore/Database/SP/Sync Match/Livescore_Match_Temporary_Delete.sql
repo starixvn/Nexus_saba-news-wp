@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_Match_TemporaryMatchIds_Delete;
+DROP PROCEDURE IF EXISTS Livescore_Match_Temporary_Delete;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_TemporaryMatchIds_Delete(
+CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Temporary_Delete(
     IN matchIds TEXT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
@@ -12,7 +12,6 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_TemporaryMatchIds_Delete(
 )
 SQL SECURITY DEFINER
 BEGIN
-    DECLARE iLoop INT DEFAULT 0;
     SET errCode=0, errMsg='';
     
     DROP TEMPORARY TABLE IF EXISTS tmp_Match;
@@ -29,11 +28,11 @@ BEGIN
 	END IF;
 
     DELETE m 
-    FROM livescore_temporary_match m
+    FROM livescore_match_temporary m
     INNER JOIN tmp_Match tmp ON m.MatchId = tmp.MatchId;
 
 END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_TemporaryMatchIds_Delete TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_Match_Temporary_Delete TO 'sabasports'@'%';
