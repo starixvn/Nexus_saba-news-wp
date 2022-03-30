@@ -6,5 +6,7 @@
     {
         public DateTime MinDateSyncLivescoreData { get; set; }
         public int BatchSizeSyncLivescoreData { get; set; }
+        public int BatchSizeSyncMatches { get; set; }
+        public bool IsSkipSyncFinishedMatches { get; set; }
     }
 }

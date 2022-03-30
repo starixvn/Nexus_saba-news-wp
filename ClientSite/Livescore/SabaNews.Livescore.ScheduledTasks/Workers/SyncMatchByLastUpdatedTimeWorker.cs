@@ -3,11 +3,11 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
-    using SabaNews.Livescore.Provider.API.Constants;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -18,19 +18,19 @@
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly ISyncMatchService syncMatchService;
-        private readonly IConfiguration configuration;
+        private readonly AppSettings appSettings;
 
         public SyncMatchByLastUpdatedTimeWorker(
             ISyncMatchService syncMatchService,
             IFetchMatchService fetchMatchService,
-            IConfiguration configuration,
+            AppSettings appSettings,
             List<ScheduledTaskSettings> jobSettings,
             ILogServiceProvider logService)
                 : base(logService)
         {
             this.fetchMatchService = fetchMatchService;
             this.syncMatchService = syncMatchService;
-            this.configuration = configuration;
+            this.appSettings = appSettings;
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncAllMatchByUpdatedTime);
         }
 
@@ -41,10 +41,14 @@
             {
                 SportId = (int)SportType.Soccer,
                 LastUpdatedTime = lastUpdatedTime,
-                RowLimit = configuration.GetValue<int>("SyncMatchRowLimit") > 0 ?
-                            configuration.GetValue<int>("SyncMatchRowLimit") : CommonConstants.MaxRowLimit
+                RowLimit = appSettings.BatchSizeSyncMatches
             };
             var matches = await fetchMatchService.FetchMatchListAsync(param);
+
+            if (appSettings.IsSkipSyncFinishedMatches)
+            {
+                ExecludeFinishedMatches(matches);
+            }
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 
             var tasks = new List<Task>
@@ -54,6 +58,11 @@
             };
 
             await Task.WhenAll(tasks);
+        }
+
+        private void ExecludeFinishedMatches(List<MatchResponse> matches)
+        {
+            matches.RemoveAll(m => m.GameType != (int)MatchStatus.Finished);
         }
     }
 }
