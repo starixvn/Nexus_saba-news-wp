@@ -9,7 +9,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80%;
+        width: 75%;
 
         .week-date {
             margin: 0 1.5rem;
@@ -52,12 +52,25 @@
 
     .btn-live {
         text-align: center;
-        width: 15%;
-        border-right : 1px solid #ddd
+        width: 20%;
+        border-right: 1px solid #E4E4E4;
+        cursor: pointer;
+        padding: 0 1.3rem;
+
+        .btn-live-realtime {
+            background: #E13C29;
+            border: 1px solid #E13C29;
+            border-radius: 5px;
+            line-height: 1;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            color: $primary-bg;
+            padding : .5rem;
+        }
     }
 
-    .date-picker{
-        text-align : center;
-        width : 5%;
+    .date-picker {
+        text-align: center;
+        width: 5%;
     }
 }

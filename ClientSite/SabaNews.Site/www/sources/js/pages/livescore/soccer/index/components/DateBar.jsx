@@ -21,10 +21,11 @@ export default class DateBar extends PureComponent {
                 <div className={`btn-live ${window.isLiveMatch ? 'active' : ''}`}
                     onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`)}
                 >
-                    <div>Live</div>
+                    <i className="icon-livescore icon-live-realtime"></i>
                     {
                         window.isLiveMatch && this.props.matches.length > 0 && <span>{this.props.matches.length}</span>
                     }
+                    <div className="btn-live-realtime">Trực tiếp</div>
                 </div>
                 <WeekBar minDate={minDate} maxDate={maxDate} />
                 <div className="date-picker">
