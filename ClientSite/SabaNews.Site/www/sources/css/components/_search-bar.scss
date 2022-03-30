@@ -1,0 +1,81 @@
+﻿.group-searchbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 1.2rem;
+
+    .livescore-soccer-search-bar {
+        position: relative;
+        width: 75%;
+        margin-right: .6rem;
+
+        @include tableMobile {
+            width: 85%;
+        }
+
+        .livescore-soccer-searchbox {
+            width: 100%;
+            border: 1px solid $border-color;
+            background: transparent;
+            height: 4rem;
+            padding: 1.2rem;
+            border-radius: 3px;
+            font-size: 1.4rem;
+        }
+
+        .btn-search-match {
+            position: absolute;
+            float: right;
+            right: 10px;
+            cursor: pointer;
+            color: #7e7e7e;
+            top: 10px;
+        }
+    }
+
+    .livescore-like {
+        width: 25%;
+        display: flex;
+        cursor: pointer;
+        border: 1px solid $border-color;
+        margin-left: .6rem;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: center;
+
+        @include tableMobile {
+            width: 15%;
+        }
+
+        span {
+            margin-right: 1.2rem;
+            font-weight: bold;
+
+            @include tableMobile {
+                display: none;
+            }
+        }
+
+        .count-start {
+            position: relative;
+            margin-top: .5rem;
+
+            span {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                margin-right: 0;
+                background: #E13C29;
+                border: 1px solid #FFFFFF;
+                font-size: 1.1rem;
+                line-height: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.2rem;
+                border-radius: 50%;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@
     align-items: center;
     border: 1px solid #DFDFDF;
     padding: .7rem;
+    border-radius: 3px;
 
     .livescore-soccer-week-bar {
         display: flex;
@@ -65,7 +66,7 @@
             text-transform: uppercase;
             font-size: 1.2rem;
             color: $primary-bg;
-            padding : .5rem;
+            padding: .5rem;
         }
     }
 

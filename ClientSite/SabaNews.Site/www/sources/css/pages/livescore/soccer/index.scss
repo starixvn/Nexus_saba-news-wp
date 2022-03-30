@@ -4,6 +4,7 @@
 @import '../../../components/block-extension';
 @import '../../../components/container';
 @import '../../../components/date-bar';
+@import '../../../components/search-bar';
 @import '~font-awesome/scss/font-awesome';
 @import '../../../components/date-picker';
 
@@ -24,39 +25,12 @@ body {
     }
 
     &-main {
-       
-        .livescore-soccer-search-bar {
-            max-width: 480px;
-            margin: auto;
-            margin-bottom: 1rem;
-            position: relative;
 
-            .livescore-soccer-searchbox {
-                height: 36px;
-                padding-left: 16px;
-                width: 100%;
-                padding-right: 40px;
-                font-size: 13px;
-            }
 
-            .btn-search-match {
-                position: absolute;
-                float: right;
-                right: 8px;
-                cursor: pointer;
-                margin-top: 3px;
-                z-index: 9;
-                color: #7e7e7e;
-                width: 30px;
-                height: 30px;
-                text-align: center;
-                line-height: 30px;
-                top: 1px;
-                font-size: 13px;
-            }
-        }
 
         .soccer-match-grid {
+            margin-top: 1.2rem;
+
             &-item {
                 .text-matched {
                     color: #3399FF;
