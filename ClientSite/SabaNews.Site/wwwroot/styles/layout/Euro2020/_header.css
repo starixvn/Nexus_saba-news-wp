@@ -323,7 +323,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               display: none;
               background-color: #FFFDF9;
               overflow: auto;
-              -webkit-overflow-scrolling: touch; } }
+              -webkit-overflow-scrolling: touch;
+              justify-content: inherit; } }
           @media only screen and (min-width: 1024px) and (max-width: 1366px) {
             .header .top-header .group-menu .nav-menu .main-menu {
               display: flex;

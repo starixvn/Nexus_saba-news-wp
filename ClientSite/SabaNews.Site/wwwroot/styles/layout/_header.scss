@@ -421,6 +421,7 @@
                         background-color: $bg-nav;
                         overflow: auto;
                         -webkit-overflow-scrolling: touch;
+                        justify-content : inherit;
                     }
 
                     @include landscapeTablet {

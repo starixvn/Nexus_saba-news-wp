@@ -16,7 +16,7 @@ body {
     align-items: start;
 
     @include tableMobile {
-        grid-template-columns: 70% 30%;
+        grid-template-columns: 100%;
     }
 
     @include Mobile {
