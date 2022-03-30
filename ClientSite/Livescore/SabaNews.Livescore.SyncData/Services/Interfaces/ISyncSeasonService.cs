@@ -11,5 +11,7 @@
         Task SyncSeasonStandingsByLastUpdatedTimeAsync();
 
         Task SyncSeasonTeamHonorByLastUpdatedTimeAsync();
+
+        Task SyncSeasonPlayerHonorByLastUpdatedTimeAsync();
     }
 }

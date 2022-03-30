@@ -45,7 +45,6 @@
             AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
             AddWorker(services);
-            //TestService(services);
         }
 
         private void AddRedisConfiguration(IServiceCollection services, IConfiguration configuration)
@@ -132,6 +131,7 @@
             services.AddHostedService<SyncStageListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncSeasonStandingsByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncSeasonTeamHonorByLastUpdatedTimeWorker>();
+            services.AddHostedService<SyncSeasonPlayerHonorByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
         }

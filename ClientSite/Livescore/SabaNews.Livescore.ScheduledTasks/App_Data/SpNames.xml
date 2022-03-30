@@ -29,5 +29,7 @@
         <Setting Key="Livescore_Sync_SeasonStandings_Import" SpName="Livescore_Sync_SeasonStandings_Import" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_SeasonTeamHonor_GetLastUpdatedTime" SpName="Livescore_Sync_SeasonTeamHonor_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_SeasonTeamHonor_Import" SpName="Livescore_Sync_SeasonTeamHonor_Import" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Sync_SeasonPlayerHonor_GetLastUpdatedTime" SpName="Livescore_Sync_SeasonPlayerHonor_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Sync_SeasonPlayerHonor_Import" SpName="Livescore_Sync_SeasonPlayerHonor_Import" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

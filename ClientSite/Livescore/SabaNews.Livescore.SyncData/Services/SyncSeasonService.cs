@@ -31,7 +31,7 @@
 
         public async Task SyncSeasonListByLastUpdatedTimeAsync()
         {
-            DateTime? lastUpdatedTime = await GetSeasonLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonLastUpdatedTimeCriteria());
             var param = new FetchSeasonListParams
             {
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
@@ -51,7 +51,7 @@
 
         public async Task SyncStageListByLastUpdatedTimeAsync()
         {
-            DateTime? lastUpdatedTime = await GetStageLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetStageLastUpdatedTimeCriteria());
             var param = new FetchSeasonListParams
             {
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
@@ -71,7 +71,7 @@
 
         public async Task SyncSeasonStandingsByLastUpdatedTimeAsync()
         {
-            DateTime? lastUpdatedTime = await GetSeasonStandingsLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
             lastUpdatedTime = FirstDayOfWeek(lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData);
             var today = DateTime.Now;
             for(var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
@@ -98,27 +98,39 @@
 
         public async Task SyncSeasonTeamHonorByLastUpdatedTimeAsync()
         {
-            DateTime? lastUpdatedTime = await GetSeasonTeamHonorLastUpdatedTimeAsync();
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonTeamHonorLastUpdatedTimeCriteria());
             var param = new FetchTeamHonorParams
             {
                 LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
-            try
+            List<TeamHonorResponse> honors = await fetchSeasonService.FetchTeamHonorAsync(param);
+            if (honors.Any())
             {
-                List<TeamHonorResponse> honors = await fetchSeasonService.FetchTeamHonorAsync(param);
-                if (honors.Any())
+                var command = new ImportSeasonTeamHonorCommand
                 {
-                    var command = new ImportSeasonTeamHonorCommand
-                    {
-                        TeamHonorListJson = JsonConvert.SerializeObject(honors)
-                    };
-                    await baseService.ExecuteNonQueryAsync(command);
-                }
+                    TeamHonorListJson = JsonConvert.SerializeObject(honors)
+                };
+                await baseService.ExecuteNonQueryAsync(command);
             }
-            catch (Exception ex)
+        }
+
+        public async Task SyncSeasonPlayerHonorByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonPlayerHonorLastUpdatedTimeCriteria());
+            var param = new FetchTeamHonorParams
             {
-                throw;
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<PlayerHonorResponse> honors = await fetchSeasonService.FetchPlayerHonorAsync(param);
+            if (honors.Any())
+            {
+                var command = new ImportSeasonPlayerHonorCommand
+                {
+                    PlayerHonorListJson = JsonConvert.SerializeObject(honors)
+                };
+                await baseService.ExecuteNonQueryAsync(command);
             }
         }
 
@@ -191,18 +203,6 @@
             };
             await baseService.ExecuteNonQueryAsync(command);
         }
-
-        protected internal virtual async Task<DateTime?> GetSeasonLastUpdatedTimeAsync()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonLastUpdatedTimeCriteria());
-
-        protected internal virtual async Task<DateTime?> GetStageLastUpdatedTimeAsync()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetStageLastUpdatedTimeCriteria());
-
-        protected internal virtual async Task<DateTime?> GetSeasonStandingsLastUpdatedTimeAsync()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
-
-        protected internal virtual async Task<DateTime?> GetSeasonTeamHonorLastUpdatedTimeAsync()
-            => await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonTeamHonorLastUpdatedTimeCriteria());
 
         private static DateTime FirstDayOfWeek(DateTime date)
         {
