@@ -13,7 +13,7 @@ export class SearchBar extends PureComponent {
                     value={this.props.searchKey}
                     onChange={event => this.props.setSearchKey(event.target.value)}
                 />
-                <span className="btn-search-match"><i className="fa fa-search" /></span>
+                <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
             </div>
         );
     }
