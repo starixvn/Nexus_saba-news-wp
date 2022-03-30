@@ -11,13 +11,14 @@ export default class League extends PureComponent {
             <div className="soccer-match-grid-item">
                 <div className="soccer-match-grid-item-header">
                     <div className="soccer-match-grid-item-league">
-                        <img className="logo" loading="lazy" src={league.icon} />
+                        <i className="icon-livescore icon-live-start start-active" />
+                        <div className="livescore-logo-team"><img loading="lazy" src={league.icon} /></div>
                         <span dangerouslySetInnerHTML={{ __html: displayValue }} />
                     </div>
                     <div className="soccer-match-grid-item-schedule">LTĐ</div>
                     <div className="soccer-match-grid-item-result">KQ</div>
                     <div className="soccer-match-grid-item-standings">BXH</div>
-                    <div className="soccer-match-grid-item-star-icon"><span className="fa fa-star-o" /></div>
+                    <span className="icon-hidden icon-livescore icon-back" />
                 </div>
                 <div className="soccer-match-grid-item-body">
                     {

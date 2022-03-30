@@ -1,10 +1,8 @@
 ﻿.livescore-soccer-extension {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7rem;
     padding-left: 1.6rem;
-    @include tableMobile{
-        display : none;
+
+    @include tableMobile {
+        display: none;
     }
 
     .leagues {
@@ -57,6 +55,8 @@
 
             &:hover {
                 background: #F5F5F5;
+                .start-active {
+                    display: block;
             }
 
             &:last-child {

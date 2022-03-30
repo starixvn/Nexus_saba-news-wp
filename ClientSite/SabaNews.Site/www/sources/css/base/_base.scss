@@ -48,4 +48,18 @@ body {
     }
 }
 
+.start-active {
+    &:before {
+        color: #EF9123;
+    }
+}
 
+
+.icon-back {
+    transform: rotate(180deg);
+    display: none;
+
+    @include tableMobile {
+        display: block;
+    }
+}
