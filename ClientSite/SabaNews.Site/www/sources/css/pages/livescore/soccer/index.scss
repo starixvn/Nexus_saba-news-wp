@@ -11,17 +11,18 @@ body {
 }
 
 .livescore-soccer {
-    .livescore-soccer-main {
-        @include grid(60% 40%, unset, 0);
-        align-items: start;
-        @include tableMobile {
-            grid-template-columns: 60% 40%;
-        }
+    @include grid(72% 28%, unset, 0);
+    align-items: start;
 
-        @include Mobile {
-            display: inherit;
-        }
+    @include tableMobile {
+        grid-template-columns: 70% 30%;
+    }
 
+    @include Mobile {
+        display: inherit;
+    }
+
+    &-main {
         .livescore-soccer-date-bar {
             min-height: 23px;
             display: grid;

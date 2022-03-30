@@ -17,8 +17,8 @@ export default class Leagues extends PureComponent {
         ];
         return (
             <div className="leagues">
-                <div className="leagues-title">{LangHelper.getResource('HotLeague')}</div>
-                <div className="leagues-items">
+                <div className="leagues-title"><span>{LangHelper.getResource('HotLeague')}</span></div>
+                <div className="leagues-main">
                     {
                         leagues.map(league => {
                             return (
@@ -28,7 +28,7 @@ export default class Leagues extends PureComponent {
                                             src={'https://apimanager.ydssp.com/uploads/teamIcon/1540/9b6c2MOb6oQ.png'} />
                                         <span className="text">{league.name}</span>
                                     </div>
-                                    <span className="toggle-league"><span className="fa fa-star" /></span>
+                                    <div className="toggle-league"><span className="fa fa-star" /></div>
                                 </div>
                             );
                         })
