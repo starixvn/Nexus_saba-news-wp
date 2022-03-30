@@ -20,7 +20,7 @@ export default class DatePickerField extends React.PureComponent {
         const { ...rest } = this.props;
 
         const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-            <i className='date-picker-icon fa fa-calendar' onClick={onClick} ref={ref} />
+            <i className='date-picker-icon icon-livescore icon-live-calender' onClick={onClick} ref={ref} />
         ));
 
         return (

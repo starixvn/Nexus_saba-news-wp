@@ -69,7 +69,7 @@ export default class WeekBar extends PureComponent {
         return (
             <div className="livescore-soccer-week-bar">
                 <button className="btn-prev-date" onClick={this.onPrev} disabled={dateRanges.length > 0 && dateRanges[0].isSame(minDate)}>
-                    <i className="fa fa-chevron-left" />
+                    <i className="icon-livescore icon-chevron-left" />
                 </button>
                 {
                     this.state.dateRanges.map((item, index) => {
@@ -84,7 +84,7 @@ export default class WeekBar extends PureComponent {
                     })
                 }
                 <button className="btn-next-date" onClick={this.onNext} disabled={dateRanges.length > 0 && dateRanges[4].isSame(maxDate)}>
-                    <i className="fa fa-chevron-right" />
+                    <i className="icon-livescore icon-chevron-right" />
                 </button>
             </div>
         );

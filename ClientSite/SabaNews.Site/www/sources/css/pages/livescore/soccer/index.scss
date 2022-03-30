@@ -3,6 +3,7 @@
 @import '../../../base/base';
 @import '../../../components/block-extension';
 @import '../../../components/container';
+@import '../../../components/date-bar';
 @import '~font-awesome/scss/font-awesome';
 @import '../../../components/date-picker';
 
@@ -23,83 +24,7 @@ body {
     }
 
     &-main {
-        .livescore-soccer-date-bar {
-            min-height: 23px;
-            display: grid;
-            grid-template-rows: minmax(23px, auto);
-            grid-template-columns: 1fr 60px 1fr 60px 1fr;
-            grid-template-areas: ". live weekbar datepicker .";
-            column-gap: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .btn-live {
-            grid-area: live;
-            background-color: #f0f0f0;
-            width: 60px;
-            padding: 12px 6px;
-            text-align: center;
-            line-height: 1.6;
-            border-right: solid 1px #fff;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgba(0, 0, 0, .1);
-            }
-
-            &.active {
-                background-color: rgba(0, 0, 0, .2);
-            }
-        }
-
-        .livescore-soccer-week-bar {
-            grid-area: weekbar;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .week-date {
-                background-color: #f0f0f0;
-                width: 70px;
-                padding: 12px 6px;
-                text-align: center;
-                line-height: 1.6;
-                border-right: solid 1px #fff;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: rgba(0, 0, 0, .1);
-                }
-
-                .date {
-                    font-weight: bold;
-                }
-
-                &.active {
-                    background-color: rgba(0, 0, 0, .2);
-                }
-            }
-
-            .btn-prev-date, .btn-next-date {
-                border-radius: 50%;
-                padding: 10px;
-                background: #f0f0f0;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: rgba(0, 0, 0, .1);
-                }
-
-                &:disabled, &[disabled] {
-                    cursor: not-allowed;
-                }
-            }
-        }
-
-        .date-picker {
-            grid-area: datepicker;
-        }
-
+       
         .livescore-soccer-search-bar {
             max-width: 480px;
             margin: auto;
