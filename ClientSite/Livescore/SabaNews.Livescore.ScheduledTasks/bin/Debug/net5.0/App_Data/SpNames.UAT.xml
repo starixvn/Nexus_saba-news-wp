@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+    <Function>
+        <Setting Key="key" SpName="name" DbName="sabasports" Plain="0" />
+    </Function>
+</Functions>

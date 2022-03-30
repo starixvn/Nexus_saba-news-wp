@@ -1,0 +1,23 @@
+2022-03-29 13:07:59.3889|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListByLastUpdatedTime: Service starting
+2022-03-29 13:07:59.4360|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListGreaterThanLeagueId: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListByLastUpdatedTime: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListGreaterThanTeamId: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonListByLastUpdatedTime: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Service starting
+2022-03-29 13:07:59.4392|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Doing...
+2022-03-29 13:08:00.0560|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Done.
+2022-03-29 13:10:27.5859|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListByLastUpdatedTime: Stopping service
+2022-03-29 13:10:27.5859|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListGreaterThanLeagueId: Stopping service
+2022-03-29 13:10:27.5859|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListByLastUpdatedTime: Stopping service
+2022-03-29 13:10:27.5859|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListGreaterThanTeamId: Stopping service
+2022-03-29 13:10:27.5859|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonListByLastUpdatedTime: Stopping service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Stopping service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Stopping service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Disposing service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Disposing service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonListByLastUpdatedTime: Disposing service
+2022-03-29 13:10:27.5985|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListGreaterThanTeamId: Disposing service
+2022-03-29 13:10:27.6154|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListByLastUpdatedTime: Disposing service
+2022-03-29 13:10:27.6154|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListGreaterThanLeagueId: Disposing service
+2022-03-29 13:10:27.6154|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListByLastUpdatedTime: Disposing service

@@ -1,0 +1,11 @@
+D:\Project\sabanews\ClientSite\SabaNews.Core\bin\Debug\net5.0\SabaNews.Core.deps.json
+D:\Project\sabanews\ClientSite\SabaNews.Core\bin\Debug\net5.0\SabaNews.Core.dll
+D:\Project\sabanews\ClientSite\SabaNews.Core\bin\Debug\net5.0\ref\SabaNews.Core.dll
+D:\Project\sabanews\ClientSite\SabaNews.Core\bin\Debug\net5.0\SabaNews.Core.pdb
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.AssemblyInfoInputs.cache
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.AssemblyInfo.cs
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.csproj.CoreCompileInputs.cache
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.dll
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\ref\SabaNews.Core.dll
+D:\Project\sabanews\ClientSite\SabaNews.Core\obj\Debug\net5.0\SabaNews.Core.pdb

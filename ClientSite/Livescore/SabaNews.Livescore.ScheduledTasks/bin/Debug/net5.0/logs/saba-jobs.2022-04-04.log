@@ -1,0 +1,69 @@
+2022-04-04 17:42:07.9786|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListGreaterThanLeagueId: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListGreaterThanTeamId: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncPlayerListByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonListByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncStageListByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0174|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonStandingsByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonTeamHonorByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonPlayerHonorByLastUpdatedTime: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncHeadToHeadFromCurrentToFuture: Service starting
+2022-04-04 17:42:08.0273|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncHeadToHeadFromCurrentToFuture: Doing...
+2022-04-04 17:42:16.3555|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncHeadToHeadFromCurrentToFuture: Done.
+2022-04-04 17:42:55.7866|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:42:57.3731|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:02.0178|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10004ms"}
+2022-04-04 17:43:02.6781|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10004ms"}
+2022-04-04 17:43:06.5477|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:06.5477|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:06.6481|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:06.5477|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:06.6481|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:06.6481|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:06.6481|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:06.8296|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:07.1116|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.0570|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:06.9640|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.2801|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:07.3316|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:07.3316|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.5042|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.3871|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.7542|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10003ms"}
+2022-04-04 17:43:07.5724|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:07.7542|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.1702|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.1192|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.1702|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.2261|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.2261|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.4395|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:08.3892|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:08.5779|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:08.5779|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:08.7858|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:08.8377|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:09.1351|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.3089|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.2302|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:09.2302|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.2302|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.2302|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.3089|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:09.4957|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.3089|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.6670|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.7807|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:09.5547|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:09.9686|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:09.9686|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:10.2570|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:10.1906|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:10.1344|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}
+2022-04-04 17:43:10.5962|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:10.5962|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10001ms"}
+2022-04-04 17:43:10.5962|ERROR|SabaNews.Core.Services.LogServiceProvider|{"code":"ER_GET_CONNECTION_TIMEOUT","message":"(conn=-1, no: 45028, SQLState: HY000) retrieve connection from pool timeout after 10000ms"}

@@ -1,0 +1,13 @@
+services:
+  sabanews.site:
+    build:
+      context: D:\Project\sabanews\ClientSite
+      dockerfile: SabaNews.Site/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: sabanewssite
+    ports:
+    - target: 80
+    volumes:
+    - C:\Users\oliver.dang\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

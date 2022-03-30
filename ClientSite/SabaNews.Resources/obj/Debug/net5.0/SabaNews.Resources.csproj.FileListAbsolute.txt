@@ -1,0 +1,13 @@
+D:\Project\sabanews\ClientSite\SabaNews.Resources\bin\Debug\net5.0\SabaNews.Resources.deps.json
+D:\Project\sabanews\ClientSite\SabaNews.Resources\bin\Debug\net5.0\SabaNews.Resources.dll
+D:\Project\sabanews\ClientSite\SabaNews.Resources\bin\Debug\net5.0\ref\SabaNews.Resources.dll
+D:\Project\sabanews\ClientSite\SabaNews.Resources\bin\Debug\net5.0\SabaNews.Resources.pdb
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.ViewResources.resources
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.csproj.GenerateResource.cache
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.AssemblyInfoInputs.cache
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.AssemblyInfo.cs
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.csproj.CoreCompileInputs.cache
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.dll
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\ref\SabaNews.Resources.dll
+D:\Project\sabanews\ClientSite\SabaNews.Resources\obj\Debug\net5.0\SabaNews.Resources.pdb

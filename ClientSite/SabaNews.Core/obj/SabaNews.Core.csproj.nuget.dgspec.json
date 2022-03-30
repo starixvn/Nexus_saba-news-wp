@@ -1,0 +1,121 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj": {}
+  },
+  "projects": {
+    "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj",
+        "projectName": "SabaNews.Core",
+        "projectPath": "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj",
+        "packagesPath": "C:\\Users\\oliver.dang\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "D:\\Project\\sabanews\\ClientSite\\NuGet.Config",
+          "C:\\Users\\oliver.dang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.nexdev.net/api/v2/": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Fanex.Data.MySql": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "Fanex.Data.Repository": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
+            "Fanex.Logging": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "Fanex.Logging.Extensions.AspNetCore": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Fanex.Logging.Extensions.Database": {
+              "target": "Package",
+              "version": "[1.0.8, )"
+            },
+            "Fanex.Logging.Sentry": {
+              "target": "Package",
+              "version": "[1.0.6, )"
+            },
+            "Fanex.MailDeliver.MailClient": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.10.1, )"
+            },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[4.11.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

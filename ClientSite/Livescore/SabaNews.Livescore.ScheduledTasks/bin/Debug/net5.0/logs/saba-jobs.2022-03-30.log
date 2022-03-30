@@ -1,0 +1,10 @@
+2022-03-30 14:52:02.9544|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListByLastUpdatedTime: Service starting
+2022-03-30 14:52:03.0046|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueListGreaterThanLeagueId: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListByLastUpdatedTime: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamListGreaterThanTeamId: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncSeasonListByLastUpdatedTime: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncStageListByLastUpdatedTime: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncMatchInfoByMatchIds: Service starting
+2022-03-30 14:52:03.0083|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Doing...
+2022-03-30 14:52:03.9400|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Done.
