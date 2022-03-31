@@ -11,14 +11,14 @@ export default class Match extends PureComponent {
 
             case MatchStatus.FirstHalf:
             case MatchStatus.SecondHalf:
-                return <span>{match.matchTime}</span>;
+                return <span>72'</span>;
                 break;
 
             case MatchStatus.Delay:
                 return <span>{LangHelper.getResource('Delay')}</span>;
                 break;
 
-            case MatchStatus.Postponed:
+            case MatchStatus.Postpone:
                 return <span>{LangHelper.getResource('Postponed')}</span>;
                 break;
 

@@ -1,6 +1,7 @@
 ﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
 import Site from '@jsroot/common/site';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class WeekBar extends PureComponent {
     constructor(props) {
@@ -90,6 +91,7 @@ export default class WeekBar extends PureComponent {
 
     render() {
         const dateRanges = this.state.dateRanges;
+        const today = moment(window.today);
         const date = moment(window.selectedEventDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
@@ -100,18 +102,20 @@ export default class WeekBar extends PureComponent {
                     <i className="icon-livescore icon-chevron-left" />
                 </button>
                 {
-                    this.state.dateRanges.map((item, index) => {
+                    dateRanges.map((item, index) => {
                         return (
                             <div key={index} className={`week-date ${date.isSame(item) && !window.isLiveMatch ? 'active' : ''}`}
                                 onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/${item.format('YYYY-MM-DD')}`)}
                             >
-                                <div className="day-of-week">{item.format('dddd')}</div>
+                                <div className="day-of-week">{item.isSame(today) ? LangHelper.getResource('Today') : item.format('dddd')}</div>
                                 <div className="date">{item.format('DD/MM')}</div>
                             </div>
                         );
                     })
                 }
-                <button className="btn-next-date" onClick={this.onNext} disabled={dateRanges.length > 0 && dateRanges[dateRanges.length - 1].isSame(maxDate)}>
+                <button className="btn-next-date" onClick={this.onNext}
+                    disabled={dateRanges.length > 0 && dateRanges[dateRanges.length - 1].isSame(maxDate)}
+                >
                     <i className="icon-livescore icon-chevron-right" />
                 </button>
             </div>

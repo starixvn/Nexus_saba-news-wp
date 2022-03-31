@@ -3,6 +3,7 @@ import moment from 'moment';
 import DatePickerField from './DatePickerField';
 import WeekBar from './WeekBar';
 import Site from '@jsroot/common/site';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class DateBar extends PureComponent {
     render() {
@@ -12,9 +13,10 @@ export default class DateBar extends PureComponent {
             ]
         });
         moment.locale('vi');
-        const today = new Date();
+        const today = new Date(window.today);
         const minDate = new Date(2021, 0, 1);
         const maxDate = new Date(today.getFullYear() + 1, 12, 0);
+        const matches = this.props.matches;
 
         return (
             <div className="livescore-soccer-date-bar">
@@ -23,9 +25,9 @@ export default class DateBar extends PureComponent {
                 >
                     <i className="icon-livescore icon-live-realtime"></i>
                     {
-                        window.isLiveMatch && this.props.matches.length > 0 && <span>{this.props.matches.length}</span>
+                        window.isLiveMatch && matches.length > 0 && <span>{matches.length}</span>
                     }
-                    <div className="btn-live-realtime">Trực tiếp</div>
+                    <div className="btn-live-realtime">{LangHelper.getResource('Live')}</div>
                 </div>
                 <WeekBar minDate={minDate} maxDate={maxDate} />
                 <div className="date-picker">

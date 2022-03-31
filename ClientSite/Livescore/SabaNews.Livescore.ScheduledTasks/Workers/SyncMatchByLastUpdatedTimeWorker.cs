@@ -62,7 +62,7 @@
 
         private void ExecludeFinishedMatches(List<MatchResponse> matches)
         {
-            matches.RemoveAll(m => m.GameType != (int)MatchStatus.Finished);
+            matches.RemoveAll(m => m.GameType == (int)MatchStatus.Finished);
         }
     }
 }

@@ -13,6 +13,7 @@
 @section Scripts{
     <script type="text/javascript">
         window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
+        window.today = '@DateTime.Today.ToString("yyyy-MM-dd")';
         window.selectedEventDate = '@Model.ToString("yyyy-MM-dd")';
         window.isLiveMatch = false;
     </script>

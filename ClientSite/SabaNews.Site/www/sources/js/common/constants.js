@@ -10,13 +10,13 @@
     Section3: 31,
     EndOfTheThirdQuater: 32,
     Section4: 33,
-    Overtime: 40,
+    ExtraTime: 40,
     PenaltyShootout: 41,
     Finished: 50,
     Delay: 60,
     Interrupt: 61,
     CutInHalf: 62,
-    Postponed: 63,
+    Postpone: 63,
     Cancel: 64,
     TBD: 99
 };
