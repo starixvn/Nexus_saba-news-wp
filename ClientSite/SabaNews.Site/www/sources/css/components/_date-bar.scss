@@ -12,13 +12,21 @@
         justify-content: center;
         width: 75%;
 
+        @include tableMobile {
+            width: 70%;
+            justify-content: space-around;
+        }
+
         .week-date {
             margin: 0 1.5rem;
             text-align: center;
             cursor: pointer;
+
             @include tableMobile {
                 font-size: 1.1rem;
+                margin: 0 .5rem;
             }
+
             .date {
                 font-weight: bold;
             }
@@ -46,10 +54,18 @@
 
         .btn-prev-date {
             margin-right: 1rem;
+
+            @include tableMobile {
+                margin-right: 0;
+            }
         }
 
         .btn-next-date {
             margin-left: 1rem;
+
+            @include tableMobile {
+                margin-left: 0;
+            }
         }
     }
 
@@ -65,6 +81,10 @@
         cursor: pointer;
         padding: 0 1.3rem;
 
+        @include tableMobile {
+            padding: 0 .5rem 0 0;
+        }
+
         .btn-live-realtime {
             background: #E13C29;
             border: 1px solid #E13C29;
@@ -74,11 +94,20 @@
             font-size: 1.2rem;
             color: $primary-bg;
             padding: .5rem;
+
+            @include tableMobile {
+                font-size: .8rem;
+                line-height: .9rem;
+            }
         }
     }
 
     .date-picker {
         text-align: center;
         width: 5%;
+
+        @include tableMobile {
+            width: 10%
+        }
     }
 }
