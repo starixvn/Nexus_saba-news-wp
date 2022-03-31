@@ -1,4 +1,5 @@
-﻿.group-searchbar {
+﻿
+.group-searchbar {
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -21,7 +22,17 @@
             padding: 1.2rem;
             border-radius: 3px;
             font-size: 1.4rem;
+
+            &::placeholder {
+                font-style : italic;
+                font-size : 1.4rem !important;
+                @include tableMobile{
+                   font-size : 1.2rem !important;
+                }
+            }
         }
+
+
 
         .btn-search-match {
             position: absolute;
@@ -32,6 +43,8 @@
             top: 10px;
         }
     }
+
+
 
     .livescore-like {
         width: 25%;

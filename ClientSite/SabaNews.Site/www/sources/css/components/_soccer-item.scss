@@ -25,6 +25,7 @@
             @include tableMobile {
                 @include grid( 1fr 3rem, unset, 0);
                 padding: 0 1.6rem;
+                height: 4.4rem;
             }
 
             .soccer-match-grid-item {
@@ -125,6 +126,7 @@
                 padding: 1rem 1.1rem;
                 margin-top: .6rem;
                 transition: all .1s ease-in-out;
+                cursor : pointer;
 
                 &:first-child {
                     margin-top: 0;
@@ -141,6 +143,7 @@
 
                 .soccer-match-team {
                     width: 75%;
+                    padding: 0 1.2rem;
 
                     .group-team {
                         .soccer-team {
@@ -150,6 +153,10 @@
                             &-name {
                                 font-size: 1.4rem;
                                 line-height: 1.6rem;
+
+                                @include Mobile {
+                                    max-width: 12rem;
+                                }
                             }
 
                             &-logo {
@@ -161,8 +168,9 @@
                             &-result {
                                 position: absolute;
                                 right: 0;
-                                .total-score{
-                                    font-weight : bold;
+
+                                .total-score {
+                                    font-weight: bold;
                                 }
                             }
                         }
@@ -179,10 +187,25 @@
                         }
                     }
                 }
+
+                .soccer-match-stage {
+                    @include tableMobile {
+                        order: 3;
+                    }
+
+                    span {
+                        font-size: 1.2rem;
+                        line-height: 1.4rem;
+                    }
+                }
             }
 
             .icon-live-right {
                 font-size: 1.5rem;
+
+                @include tableMobile {
+                    display: none;
+                }
             }
         }
     }
