@@ -9,6 +9,7 @@
         {
             services.AddScoped<IMatchRepository, MatchRepository>();
 
+            services.AddScoped<ILeagueService, LeagueService>();
             services.AddScoped<IMatchService, MatchService>();
         }
     }

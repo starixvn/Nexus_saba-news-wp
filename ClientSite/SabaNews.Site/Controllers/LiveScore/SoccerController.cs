@@ -5,16 +5,21 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
 
     public class SoccerController : Controller
     {
+        private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
 
-        public SoccerController(IMatchService matchService)
+        public SoccerController(
+            ILeagueService leagueService,
+            IMatchService matchService)
         {
+            this.leagueService = leagueService;
             this.matchService = matchService;
         }
 
@@ -59,6 +64,13 @@
             criteria.SportId = (short)SportType.Soccer;
             IEnumerable<Match> matches = await matchService.GetMatchByEventDateAsync(criteria);
             return Json(matches);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMajorLeagues()
+        {
+            IEnumerable<League> leagues = await leagueService.GetMajorLeagueAsync();
+            return Json(leagues);
         }
     }
 }

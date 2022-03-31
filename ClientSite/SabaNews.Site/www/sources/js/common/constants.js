@@ -13,10 +13,10 @@
     Overtime: 40,
     PenaltyShootout: 41,
     Finished: 50,
-    Postponed: 60,
+    Delay: 60,
     Interrupt: 61,
     CutInHalf: 62,
-    Postponement: 63,
+    Postponed: 63,
     Cancel: 64,
     TBD: 99
 };

@@ -6,9 +6,35 @@ export default class WeekBar extends PureComponent {
     constructor(props) {
         super(props);
 
+        this.mobileMaxWidth = 768;
+
         this.state = {
+            isMobile: false,
             dateRanges: this.getDateRanges()
         };
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const dateRanges = [...this.state.dateRanges];
+        if (window.innerWidth <= this.mobileMaxWidth && dateRanges.length === 5) {
+            dateRanges.shift();
+            dateRanges.shift();
+            this.setState({ dateRanges });
+        } else {
+            if (window.innerWidth > this.mobileMaxWidth && dateRanges.length === 3) {
+                dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
+                dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
+                this.setState({ dateRanges });
+            }
+        }
     }
 
     getDateRanges = () => {
@@ -16,27 +42,29 @@ export default class WeekBar extends PureComponent {
         const date = moment(window.selectedEventDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
+        let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
 
         if (date.isSame(minDate)) {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < totalItems; i++) {
                 dates.push(moment(date).add(i, 'days'));
             }
         } else if (date.isSame(maxDate)) {
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < totalItems; i++) {
                 dates.unshift(moment(date).subtract(i, 'days'));
             }
         } else {
             dates.push(date);
             if (date.isSame(minDate.add(1, 'days'))) {
-                for (let i = 1; i < 5; i++) {
+                for (let i = 1; i < totalItems; i++) {
                     dates.push(moment(date).add(i, 'days'));
                 }
             } else if (date.isSame(maxDate.subtract(1, 'days'))) {
-                for (let i = 1; i < 5; i++) {
+                for (let i = 1; i < totalItems; i++) {
                     dates.unshift(moment(date).subtract(i, 'days'));
                 }
             } else {
-                for (let i = 1; i < 3; i++) {
+                totalItems = window.innerWidth <= this.mobileMaxWidth ? 2 : 3;
+                for (let i = 1; i < totalItems; i++) {
                     dates.push(moment(date).add(i, 'days'));
                     dates.unshift(moment(date).subtract(i, 'days'));
                 }
@@ -56,7 +84,7 @@ export default class WeekBar extends PureComponent {
     onNext = () => {
         const dateRanges = [...this.state.dateRanges];
         dateRanges.shift();
-        dateRanges.push(moment(dateRanges[3]).add(1, 'days'));
+        dateRanges.push(moment(dateRanges[dateRanges.length - 1]).add(1, 'days'));
         this.setState({ dateRanges });
     };
 
@@ -83,7 +111,7 @@ export default class WeekBar extends PureComponent {
                         );
                     })
                 }
-                <button className="btn-next-date" onClick={this.onNext} disabled={dateRanges.length > 0 && dateRanges[4].isSame(maxDate)}>
+                <button className="btn-next-date" onClick={this.onNext} disabled={dateRanges.length > 0 && dateRanges[dateRanges.length - 1].isSame(maxDate)}>
                     <i className="icon-livescore icon-chevron-right" />
                 </button>
             </div>

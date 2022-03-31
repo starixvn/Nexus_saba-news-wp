@@ -14,6 +14,18 @@ export default class Match extends PureComponent {
                 return <span>{match.matchTime}</span>;
                 break;
 
+            case MatchStatus.Delay:
+                return <span>{LangHelper.getResource('Delay')}</span>;
+                break;
+
+            case MatchStatus.Postponed:
+                return <span>{LangHelper.getResource('Postponed')}</span>;
+                break;
+
+            case MatchStatus.TBD:
+                return <span>{LangHelper.getResource('TBD')}</span>;
+                break;
+
             default:
                 return <span>{LangHelper.getResource('Finish')}</span>;
                 break;
@@ -23,6 +35,10 @@ export default class Match extends PureComponent {
     getMatchScores = match => {
         switch (match.status) {
             case MatchStatus.NotStarted:
+            case MatchStatus.Delay:
+            case MatchStatus.Postponed:
+            case MatchStatus.Cancel:
+            case MatchStatus.TBD:
                 return <span>&nbsp; - &nbsp;</span>;
                 break;
             default:

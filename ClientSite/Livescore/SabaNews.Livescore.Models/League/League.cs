@@ -9,13 +9,10 @@
 
         public string Icon { get; set; }
 
-        public byte LeagugeType { get; set; }
+        public byte LeagueType { get; set; }
 
         public short CurrentRound { get; set; }
         public short RoundCount { get; set; }
-
-        public long CurrentStageId { get; set; }
-        public string CurrentStageNameEN { get; set; }
 
         public bool IsMajor { get; set; }
     }

@@ -11,6 +11,7 @@ import { MatchStatus } from '@jsroot/common/constants';
 
 export class AppContainer extends Component {
     componentDidMount() {
+        this.props.getMajorLeagues();
         this.props.getMatches({ eventDate: window.selectedEventDate });
     }
 
@@ -33,7 +34,7 @@ export class AppContainer extends Component {
                         <MatchGrid matches={matches} />
                     </div>
                     <div className="livescore-soccer-extension">
-                        <Leagues />
+                        <Leagues leagues={this.props.majorLeagues} />
                     </div>
                 </div>
             </div>
@@ -44,8 +45,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches } = state;
-    return { matches };
+    const { majorLeagues, matches } = state;
+    return { majorLeagues, matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
