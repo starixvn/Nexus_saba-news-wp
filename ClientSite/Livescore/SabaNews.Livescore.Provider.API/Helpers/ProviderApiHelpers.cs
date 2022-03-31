@@ -17,6 +17,7 @@
 
             services.AddTransient<IFetchLeagueService, FetchLeagueService>();
             services.AddTransient<IFetchTeamService, FetchTeamService>();
+            services.AddTransient<IFetchPlayerService, FetchPlayerService>();
             services.AddTransient<IFetchSeasonService, FetchSeasonService>();
             services.AddTransient<IFetchMatchService, FetchMatchService>();
         }

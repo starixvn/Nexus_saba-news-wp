@@ -14,6 +14,10 @@ export default class Match extends PureComponent {
                 return <span>72'</span> ;
                 break;
 
+            case MatchStatus.Intermission:
+                return <span>{LangHelper.getResource('Intermission')}</span>;
+                break;
+
             case MatchStatus.Delay:
                 return <span>{LangHelper.getResource('Delay')}</span>;
                 break;

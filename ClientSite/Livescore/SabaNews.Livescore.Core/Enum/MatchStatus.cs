@@ -8,7 +8,7 @@
         EndOfTheFirstQuater,
         Section2,
         EndOfTheSecondQuater,
-        Midfield = 20,
+        Intermission = 20,
         SecondHalf = 30,
         Section3,
         EndOfTheThirdQuater,

@@ -8,6 +8,7 @@
         public const string SyncLeagueListGreaterThanLeagueId = "SyncLeagueListGreaterThanLeagueId";
         public const string SyncTeamListByLastUpdatedTime = "SyncTeamListByLastUpdatedTime";
         public const string SyncTeamListGreaterThanTeamId = "SyncTeamListGreaterThanTeamId";
+        public const string SyncPlayerListByLastUpdatedTime = "SyncPlayerListByLastUpdatedTime";
         public const string SyncSeasonListByLastUpdatedTime = "SyncSeasonListByLastUpdatedTime";
         public const string SyncStageListByLastUpdatedTime = "SyncStageListByLastUpdatedTime";
         public const string SyncSeasonStandingsByLastUpdatedTime = "SyncSeasonStandingsByLastUpdatedTime";

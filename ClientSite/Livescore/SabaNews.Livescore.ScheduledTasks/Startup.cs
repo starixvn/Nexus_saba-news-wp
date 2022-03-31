@@ -127,6 +127,7 @@
             services.AddHostedService<SyncLeagueListGreaterThanLeagueIdWorker>();
             services.AddHostedService<SyncTeamListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncTeamListGreaterThanTeamIdWorker>();
+            services.AddHostedService<SyncPlayerListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncSeasonListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncStageListByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncSeasonStandingsByLastUpdatedTimeWorker>();

@@ -5,7 +5,7 @@
     EndOfTheFirstQuater: 12,
     Section2: 13,
     EndOfTheSecondQuater: 14,
-    Midfield: 20,
+    Intermission: 20,
     SecondHalf: 30,
     Section3: 31,
     EndOfTheThirdQuater: 32,
