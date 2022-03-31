@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #DFDFDF;
-    padding: .7rem;
+    padding: .6rem;
     border-radius: 3px;
 
     .livescore-soccer-week-bar {
@@ -27,8 +27,14 @@
                 margin: 0 .5rem;
             }
 
+            .day-of-week {
+                line-height: 1;
+            }
+
             .date {
+                line-height: 1;
                 font-weight: bold;
+                margin-top: .4rem;
             }
 
             &.active {
@@ -98,6 +104,7 @@
             @include tableMobile {
                 font-size: .8rem;
                 line-height: .9rem;
+                padding: .3rem;
             }
         }
     }

@@ -24,4 +24,10 @@ body {
     @include Mobile {
         display: inherit;
     }
+
+    .icon-live-realtime {
+        @include tableMobile {
+            font-size: 1.3rem;
+        }
+    }
 }
