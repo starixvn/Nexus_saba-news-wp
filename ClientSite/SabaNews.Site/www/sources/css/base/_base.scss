@@ -53,9 +53,13 @@ body {
         color: #EF9123;
     }
 }
-.icon-hidden{
-    display : none;
-    @include tableMobile{
-        display : block;
+.font-weight-bold{
+    font-weight : bold;
+}
+.icon-hidden {
+    display: none;
+
+    @include tableMobile {
+        display: block;
     }
 }

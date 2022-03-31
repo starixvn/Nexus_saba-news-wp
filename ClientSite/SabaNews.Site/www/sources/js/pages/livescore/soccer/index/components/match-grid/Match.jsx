@@ -6,7 +6,7 @@ export default class Match extends PureComponent {
     getMatchStage = match => {
         switch (match.status) {
             case MatchStatus.NotStarted:
-                return <span>{match.schedule}</span>;
+                return <span className="font-weight-bold">{match.schedule}</span>;
                 break;
 
             case MatchStatus.FirstHalf:
