@@ -7,11 +7,11 @@
     url('fonts/Fraud-Sensor.woff?asi5jr') format('woff'),
     url('fonts/Fraud-Sensor.svg?asi5jr#Fraud-Sensor') format('svg');
 =======
-  src:  url('fonts/Fraud-Sensor.eot?swel6r');
-  src:  url('fonts/Fraud-Sensor.eot?swel6r#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?swel6r') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?swel6r') format('woff'),
-    url('fonts/Fraud-Sensor.svg?swel6r#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?9r85rz');
+  src:  url('fonts/Fraud-Sensor.eot?9r85rz#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?9r85rz') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?9r85rz') format('woff'),
+    url('fonts/Fraud-Sensor.svg?9r85rz#Fraud-Sensor') format('svg');
 >>>>>>> feat: add style main live score
   font-weight: normal;
   font-style: normal;
@@ -33,28 +33,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
-=======
+.icon-live-start-outline:before {
+  content: "\e925";
+  color: #ef9123;
+}
 .icon-live-right:before {
   content: "\e91d";
 }
-.icon-live-realtime:before {
-  content: "\e91e";
-  color: #e13c29;
-}
-.icon-live-calender:before {
-  content: "\e91c";
-  color: #6f6f6f;
-}
-.icon-live-up:before {
-  content: "\e91a";
-  color: #4e7cb1;
-}
-.icon-live-start:before {
-  content: "\e91b";
-  color: #6f6f6f;
-}
->>>>>>> feat: add style main live score
 .icon-event-home:before {
   content: "\e919";
   color: #b44414;

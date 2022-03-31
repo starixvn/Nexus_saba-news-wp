@@ -47,13 +47,25 @@ export default class Match extends PureComponent {
         return (
             <div className={`soccer-match border-bottom ${match.status === MatchStatus.FirstHalf || match.status === MatchStatus.SecondHalf ? 'live' : ''}`}>
                 <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
+
+
+                <ul className="soccer-match">
+                    <li></li>
+                </ul>
+
                 <div className="soccer-match-participant-home" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
                 <img className="soccer-match-participant-home-logo" loading="lazy"
                     src={match.homeTeam.icon} />
                 <div className="soccer-match-participant-away" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
                 <img className="soccer-match-participant-away-logo" loading="lazy"
                     src={match.awayTeam.icon} />
+
+
+
                 <div className="soccer-match-scores">{this.getMatchScores(match)}</div>
+
+
+
                 <div className="soccer-match-star-icon">
                     <span className="fa fa-star-o" />
                 </div>
