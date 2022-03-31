@@ -22,7 +22,7 @@
         public int DangerAttack { get; set; }
         public int ControlRate { get; set; }
         public int ExtraScore { get; set; }
-        public int PenaltyShootoutScore { get; set; }
+        public int PenaltyScore { get; set; }
         public int? Assists { get; set; }
         public int? First { get; set; }
         public int? Follow { get; set; }

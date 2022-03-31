@@ -42,7 +42,7 @@
         public int[] ExtraScore { get; set; }
 
         [JsonProperty("pScore")]
-        public int[] PenaltyShootoutScore { get; set; }
+        public int[] PenaltyScore { get; set; }
 
         public int?[] Assists { get; set; }
         public int?[] First { get; set; }

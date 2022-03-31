@@ -38,7 +38,7 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Detail_Sync(
                         "DangerAttack" = 10,
                         "ControlRate" = 10,
                         "ExtraScore" = 10,
-                        "PenaltyShootoutScore" = 10,
+                        "PenaltyScore" = 10,
                         "Assists" = 10,
                         "First" = 10,
                         "Follow" = 10,
@@ -130,7 +130,7 @@ BEGIN
                         DangerAttack SMALLINT,
                         ControlRate SMALLINT,
                         ExtraScore SMALLINT,
-                        PenaltyShootoutScore SMALLINT,
+                        PenaltyScore SMALLINT,
                         Assists SMALLINT,
                         First SMALLINT,
                         Follow SMALLINT,
@@ -154,13 +154,13 @@ BEGIN
     
 	INSERT INTO tmp_Detail(MatchId, IsHomeTeam, Goal, CornerKick, YellowCard, RedCard, OutBall, 
     FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
-    MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyShootoutScore, Assists, 
+    MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyScore, Assists, 
     First, Follow, Foul, Grade, HalfCorner, HalfPossession, Head, HeadSuccess, Intercept, 
     OffSide, OnDoor, Pass, PassSuccess, Past, Shoot, ShootOut, ShootStop, Slide, Steals)
 
     SELECT md.MatchId, md.IsHomeTeam, md.Goal, md.CornerKick, md.YellowCard, md.RedCard, md.OutBall, 
     md.FreeKick, md.GoalKick, md.PenaltyKick, md.YellowToRed, md.FailPenaltyKick, md.OwnGoal, md.InjuryTime, md.OnGoal, 
-    md.MissGoal, md.Attack, md.DangerAttack, md.ControlRate, md.ExtraScore, md.PenaltyShootoutScore, md.Assists, 
+    md.MissGoal, md.Attack, md.DangerAttack, md.ControlRate, md.ExtraScore, md.PenaltyScore, md.Assists, 
     md.First, md.Follow, md.Foul, md.Grade, md.HalfCorner, md.HalfPossession, md.Head, md.HeadSuccess, md.Intercept,
     md.OffSide, md.OnDoor, md.Pass, md.PassSuccess, md.Past, md.Shoot, md.ShootOut, md.ShootStop, md.Slide, md.Steals 
     FROM 
@@ -190,7 +190,7 @@ BEGIN
                 DangerAttack SMALLINT PATH "$.DangerAttack",
                 ControlRate SMALLINT PATH "$.ControlRate",
                 ExtraScore SMALLINT PATH "$.ExtraScore",
-                PenaltyShootoutScore SMALLINT PATH "$.PenaltyShootoutScore",
+                PenaltyScore SMALLINT PATH "$.PenaltyScore",
                 Assists SMALLINT PATH "$.Assists",
                 First SMALLINT PATH "$.First",
                 Follow SMALLINT PATH "$.Follow",
@@ -216,12 +216,12 @@ BEGIN
 
         INSERT INTO livescore_match_statistic(MatchId, TeamId, Goal, CornerKick, YellowCard, RedCard, OutBall, 
             FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
-            MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyShootoutScore, Assists, 
+            MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyScore, Assists, 
             First, Follow, Foul, Grade, HalfCorner, HalfPossession, Head, HeadSuccess, Intercept, 
             OffSide, OnDoor, Pass, PassSuccess, Past, Shoot, ShootOut, ShootStop, Slide, Steals)
         SELECT td.MatchId, (CASE WHEN td.IsHomeTeam = 1 THEN m.HomeTeamId ELSE m.AwayTeamId END) As TeamId, td.Goal, td.CornerKick, td.YellowCard, td.RedCard, td.OutBall, 
             td.FreeKick, td.GoalKick, td.PenaltyKick, td.YellowToRed, td.FailPenaltyKick, td.OwnGoal, td.InjuryTime, td.OnGoal, 
-            td.MissGoal, td.Attack, td.DangerAttack, td.ControlRate, td.ExtraScore, td.PenaltyShootoutScore, td.Assists, 
+            td.MissGoal, td.Attack, td.DangerAttack, td.ControlRate, td.ExtraScore, td.PenaltyScore, td.Assists, 
             td.First, td.Follow, td.Foul, td.Grade, td.HalfCorner, td.HalfPossession, td.Head, td.HeadSuccess, td.Intercept,
             td.OffSide, td.OnDoor, td.Pass, td.PassSuccess, td.Past, td.Shoot, td.ShootOut, td.ShootStop, td.Slide, td.Steals 
         FROM tmp_Detail td
@@ -245,7 +245,7 @@ BEGIN
             DangerAttack = td.DangerAttack,
             ControlRate = td.ControlRate,
             ExtraScore = td.ExtraScore,
-            PenaltyShootoutScore = td.PenaltyShootoutScore,
+            PenaltyScore = td.PenaltyScore,
             Assists = td.Assists,
             First = td.First,
             Follow = td.Follow,

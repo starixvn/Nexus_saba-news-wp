@@ -93,7 +93,7 @@
                 DangerAttack = extraData.DangerAttack is not null ? extraData.DangerAttack[index] : 0,
                 ControlRate = extraData.ControlRate is not null ? extraData.ControlRate[index] : 0,
                 ExtraScore = extraData.ExtraScore is not null ? extraData.ExtraScore[index] : 0,
-                PenaltyShootoutScore = extraData.PenaltyShootoutScore is not null ? extraData.PenaltyShootoutScore[index] : 0,
+                PenaltyScore = extraData.PenaltyScore is not null ? extraData.PenaltyScore[index] : 0,
                 Assists = extraData.Assists is not null ? extraData.Assists[index] : 0,
                 First = extraData.First is not null ? extraData.First[index] : 0,
                 Follow = extraData.Follow is not null ? extraData.Follow[index] : 0,
