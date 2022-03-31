@@ -1,18 +1,35 @@
 ﻿import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import {
-    setSoccerMatch
+    setSoccerMatch,
+    setLineup,
+    setIsLiveMatch
 } from './soccerMatchDetailSlice';
 
 const getSoccerMatchDetail = () => async dispatch => {
-    //Site.blockUI();
-    const url = Site.resolveClientUrl('soccer/getSoccerMatchDetail');
-    await DataService.postDataAsync(url).then(response => {
+    var params = {
+        matchId: window.selectedMatchId
+    };
+    const url = Site.resolveClientUrl('soccer/GetSoccerMatchDetail');
+    await DataService.postDataAsync(url, params).then(response => {
         dispatch(setSoccerMatch(response.data));
+    }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
+};
+
+const getLineupDetail = () => async dispatch => {
+    var params = {
+        matchId: window.selectedMatchId
+    };
+    const url = Site.resolveClientUrl('soccer/GetLineupDetail');
+    await DataService.postDataAsync(url, params).then(response => {
+        dispatch(setLineup(response.data));
     }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
 };
 
 export const ActionCreators = {
     setSoccerMatch,
-    getSoccerMatchDetail
+    setLineup,
+    setIsLiveMatch,
+    getSoccerMatchDetail,
+    getLineupDetail
 };

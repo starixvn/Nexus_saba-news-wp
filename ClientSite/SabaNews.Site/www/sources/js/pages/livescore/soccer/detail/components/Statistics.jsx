@@ -6,21 +6,31 @@ export default class Statistics extends Component {
     }
 
     render() {
-        const statistices = [
-            { categoryId: 1, categoryName: 'Kiểm soát bóng', homeValue: 57, awayValue: 43, unit: '%' },
-            { categoryId: 2, categoryName: 'Số lần dứt điểm', homeValue: 14, awayValue: 2, unit: '' },
-            { categoryId: 3, categoryName: 'Sút trúng đích', homeValue: 6, awayValue: 0, unit: '' },
-            { categoryId: 4, categoryName: 'Dứt điểm ra ngoài', homeValue: 8, awayValue: 2, unit: '' },
-            { categoryId: 5, categoryName: 'Phạt góc', homeValue: 5, awayValue: 2, unit: '' },
-            { categoryId: 6, categoryName: 'Việt vị', homeValue: 1, awayValue: 2, unit: '' },
-            { categoryId: 7, categoryName: 'Thủ môn Cứu thua', homeValue: 0, awayValue: 1, unit: '' },
-            { categoryId: 8, categoryName: 'Phạm lỗi', homeValue: 11, awayValue: 6, unit: '' },
-            { categoryId: 9, categoryName: 'Thẻ Vàng', homeValue: 1, awayValue: 1, unit: '' },
-            { categoryId: 10, categoryName: 'Tổng số đường chuyền', homeValue: 360, awayValue: 268, unit: '' },
-            { categoryId: 11, categoryName: 'Số đường chuyền hoàn thành', homeValue: 300, awayValue: 237, unit: '' },
-            { categoryId: 12, categoryName: 'Tấn công', homeValue: 72, awayValue: 83, unit: '' },
-            { categoryId: 13, categoryName: 'Tấn công nguy hiểm', homeValue: 49, awayValue: 40, unit: '' }
-        ];
+        if (!this.props.soccerMatch || !this.props.soccerMatch.homeTeam || !this.props.soccerMatch.awayTeam) {
+            return null;
+        }
+        const match = this.props.soccerMatch;
+        let statistices  = [];
+        if(match !== null) {
+            const homeTeam = match.homeTeam;
+            const awayTeam = match.awayTeam
+            statistices = [
+                { categoryId: 1, categoryName: 'Kiểm soát bóng', homeValue: homeTeam.controlRate, awayValue: awayTeam.controlRate, unit: '%' },
+                { categoryId: 2, categoryName: 'Số lần dứt điểm', homeValue: homeTeam.shoot, awayValue: awayTeam.shoot, unit: '' },
+                { categoryId: 3, categoryName: 'Dứt điểm chính xác', homeValue: homeTeam.onGoal, awayValue: awayTeam.onGoal, unit: '' },
+                { categoryId: 4, categoryName: 'Phạm lỗi', homeValue: homeTeam.foul, awayValue: homeTeam.foul, unit: '' },
+                { categoryId: 5, categoryName: 'Thẻ Vàng', homeValue: homeTeam.yellowCard, awayValue: awayTeam.yellowCard, unit: '' },
+                { categoryId: 6, categoryName: 'Thẻ Đỏ', homeValue: homeTeam.redCard, awayValue: awayTeam.redCard, unit: '' },
+                { categoryId: 7, categoryName: 'Việt vị', homeValue: homeTeam.OffSide, awayValue: awayTeam.OffSide, unit: '' },
+                { categoryId: 8, categoryName: 'Ném biên', homeValue: homeTeam.outBall, awayValue: awayTeam.outBall, unit: '' },
+                { categoryId: 9, categoryName: 'Phạt góc', homeValue: homeTeam.cornerKick, awayValue: awayTeam.cornerKick, unit: '' },
+                { categoryId: 10, categoryName: 'Đá phạt', homeValue: homeTeam.freeKick, awayValue: awayTeam.freeKick, unit: '' },
+                { categoryId: 11, categoryName: 'Phạt đền', homeValue: homeTeam.penaltyKick, awayValue: awayTeam.penaltyKick, unit: '' },
+                { categoryId: 12, categoryName: 'Chăm sóc y tế', homeValue: homeTeam.injuryTime, awayValue: awayTeam.injuryTime, unit: '' },
+                
+            ];
+        }
+        
         return (
             <div className="statistices">
                 {

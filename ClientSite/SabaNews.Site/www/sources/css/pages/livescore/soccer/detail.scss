@@ -48,8 +48,15 @@ body {
             grid-area: home;
             grid-template-rows: max-content max-content max-content;
             grid-template-columns: 1fr 26px min-content 26px 1fr;
-            grid-template-areas: ". . image . ." "name name name name name" "rank rank rank rank rank";
+            grid-template-areas: ". . image . ." "name name name name name" "detail detail detail detail detail";
             justify-content: center;
+        }
+
+        .participant-detail {
+            font: normal 700 14px Arial,Helvetica,sans-serif;
+            grid-area: detail;
+            padding-top: 5px;
+            text-align: center;
         }
 
         .participant-image {
@@ -88,7 +95,7 @@ body {
             grid-template-rows: max-content max-content max-content;
             grid-template-columns: 1fr 26px min-content 26px 1fr;
             grid-template-areas:
-                ". . image . ." "name name name name name" "rank rank rank rank rank";
+                ". . image . ." "name name name name name" "detail detail detail detail detail" ;
             justify-content: center;
         }
 
@@ -414,59 +421,7 @@ body {
             min-width: 16px;
         }
 
-        .incident-icon {
-            display: flex;
-            line-height: 1;
-
-            svg {
-                margin-left: 6px;
-                margin-right: 6px;
-                min-width: 16px;
-            }
-
-            .yellow-card-icon {
-                color: #f9c91e;
-                /*fill: #f9c91e;*/
-                height: 12px;
-                margin: 2px 4px;
-                width: 8px;
-            }
-        }
-
-        .incident-icon-sub {
-            margin: 0 9px;
-        }
-
-        .arrow-up-icon {
-            color: #3fbd40;
-            height: 10px;
-            width: 8px;
-        }
-
-        .incident-side-away {
-            flex-flow: row-reverse;
-        }
-
-        .incident-sub-out {
-            display: flex;
-        }
-
-        .incident-icon-sub-out {
-            margin: 0 6px;
-        }
-
-        .arrow-down-icon {
-            color: #d42e2f;
-            height: 10px;
-            transform: rotate(180deg);
-            width: 8px;
-        }
-
-        .football-goal-icon {
-            color: #2d2d2d;
-            height: 16px;
-            width: 16px;
-        }
+        
 
         .sub-down, .sub-incident {
             color: #b0b0b0;
@@ -554,3 +509,215 @@ body {
         }
     }
 }
+
+.red-card {
+    background: red;
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    padding: 4px 4px;
+}
+
+.yellow-card {
+    background: rgb(238, 235, 78);
+    color: white;
+    text-align: center;
+    margin-right: 10px;
+    padding: 4px 4px;
+}
+
+
+
+.block {
+    margin-bottom: 8px;
+    color: #38404D;
+    background: #fff;
+    width: 100%;
+    padding: 12px;
+}
+.width_common {
+    width: 100%;
+    float: left;
+}
+
+.head-top-team {
+    padding: 4px 15px 15px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    max-width: 510px;
+    margin: 0 auto;
+
+    .head-team {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-size: 14px;
+        line-height: 21px;
+        color: #38404D;
+        width: 50%;
+    }
+
+    .head-team.team-away {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+    }
+}
+
+.flexbox {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.block-detail-trandau .head-top-team .head-team {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+}
+
+.box-dienbien {
+    padding-top: 10px;
+    padding-bottom: 25px;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 1px;
+        height: 48px;
+        background: #AEB4C4;
+        position: absolute;
+        left: 50%;
+        top: -38px;
+        z-index: 0;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
+.item-dienbien {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+
+
+    .inner-item-db {
+        width: calc((100% - 24px)/2);
+        padding-left: 10px;
+        margin-top: 0;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-item-align: center;
+        align-self: center;
+
+        &.item-th-home {
+            padding-right: 10px;
+            padding-left: 0;
+
+            .item-th {
+                -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                justify-content: flex-end;
+            }
+
+            .icon-th {
+                -webkit-box-ordinal-group: 3;
+                -ms-flex-order: 2;
+                order: 2;
+                margin-right: 0;
+                margin-left: 5px;
+            }
+            
+        }
+        .item-th {
+            margin-top: 0;
+            width: 100%;
+        }
+
+        .icon-th {
+            margin-right: 5px;
+        }
+    }
+
+    .item-mins {
+        width: 60px;
+        background: #59C541;
+        text-align: center;
+        min-height: 48px;
+        font-weight: bold;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        font-size: 12px;
+        padding: 0 2px;
+        color: #fff;
+        border-top: 1px solid #fff;
+    }
+    .name-th.out {
+        color: #A4ABB6;
+    }
+}
+
+.item-th {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 10px;
+
+    .icon-th {
+        width: 16px;
+        margin-top: -1px;
+        text-align: center;
+
+        .ic {
+            max-width: 16px;
+        }
+    }
+}
+
+.time-event {
+    justify-content: center;
+}
+svg.arrowupgreen {
+    fill: #59C541 !important;
+}
+
+svg.arrowdownred {
+    fill: #F34848 !important;
+}
+svg.fill-red {
+    fill: #F34848 !important;
+}
+
+.ic {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ic-red-card {
+    background: red;
+    color: white;
+    text-align: center;
+    padding: 4px 8px;
+}
+
+.ic-yellow-card {
+    background: rgb(238, 235, 78);
+    color: white;
+    text-align: center;
+    padding: 4px 8px;
+}
+

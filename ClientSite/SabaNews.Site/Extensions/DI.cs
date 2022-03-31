@@ -55,6 +55,7 @@
             services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<ILogService, Services.LogService>();
             services.AddTransient<IExportExcelService, ExportExcelService>();
+            services.AddTransient<ILiveScoreService, LivescoreService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
