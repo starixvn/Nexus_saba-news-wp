@@ -150,6 +150,7 @@
                             font-size: 1.3rem;
                             line-height: 1.5rem;
                             position: relative;
+                            font-weight: 700;
 
                             &:before {
                                 content: "";
@@ -210,6 +211,26 @@
 
                                 .total-score {
                                     font-weight: bold;
+                                }
+                            }
+
+                            &-status {
+                                list-style: none;
+                                padding-left: 0;
+                                display: flex;
+                                align-items: center;
+
+                                li {
+                                    margin-left: 1.4rem;
+                                    text-transform: uppercase;
+                                    background: #E9EEF4;
+                                    border: 1px solid #ABC4E1;
+                                    border-radius: 5px;
+                                    color: #4E7CB1;
+                                    font-weight: 700;
+                                    font-size: 1rem;
+                                    line-height: 1.1rem;
+                                    padding :.3rem .5rem;
                                 }
                             }
                         }

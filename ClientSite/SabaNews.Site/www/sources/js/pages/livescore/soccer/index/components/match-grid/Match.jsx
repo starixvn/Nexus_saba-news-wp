@@ -11,7 +11,7 @@ export default class Match extends PureComponent {
 
             case MatchStatus.FirstHalf:
             case MatchStatus.SecondHalf:
-                return <span>72'</span>;
+                return <span>72'</span> ;
                 break;
 
             case MatchStatus.Delay:
@@ -70,6 +70,10 @@ export default class Match extends PureComponent {
                             <img className="soccer-team-logo" loading="lazy"
                                 src={match.homeTeam.icon} />
                             <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
+                            <ul className="soccer-team-status">
+                                <li>PEN</li>
+                                <li><i className="icon-live-up" /></li>
+                            </ul>
                             <div className="soccer-team-result">
                                 {match ? (<div><span className="total-score">{match.homeTeamTotalScore}</span> <span className="heft-score">({match.homeTeamHalfScore})</span></div>) : null}
                             </div>
@@ -84,24 +88,6 @@ export default class Match extends PureComponent {
                         </div>
                     </div>
                 </div>
-
-
-
-
-                {/*<div className="soccer-match-participant-home" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />*/}
-                {/*<img className="soccer-match-participant-home-logo" loading="lazy"*/}
-                {/*    src={match.homeTeam.icon} />*/}
-                {/*<div className="soccer-match-participant-away" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />*/}
-                {/*<img className="soccer-match-participant-away-logo" loading="lazy"*/}
-                {/*    src={match.awayTeam.icon} />*/}
-
-
-
-                {/* <div className="soccer-match-scores">{this.getMatchScores(match)}</div>*/}
-
-
-
-
                 <div className="soccer-match-star-icon">
                     <i className="icon-livescore icon-live-right" />
                 </div>
