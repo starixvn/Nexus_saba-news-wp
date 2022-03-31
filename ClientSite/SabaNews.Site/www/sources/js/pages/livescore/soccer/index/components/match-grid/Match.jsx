@@ -71,7 +71,6 @@ export default class Match extends PureComponent {
                                 src={match.homeTeam.icon} />
                             <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
                             <ul className="soccer-team-status">
-                                <li>PEN</li>
                                 <li><i className="icon-live-up" /></li>
                             </ul>
                             <div className="soccer-team-result">

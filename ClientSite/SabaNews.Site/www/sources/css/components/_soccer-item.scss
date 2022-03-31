@@ -195,7 +195,7 @@
                                 line-height: 1.6rem;
 
                                 @include Mobile {
-                                    max-width: 12rem;
+                                    max-width: 10rem;
                                 }
                             }
 
@@ -203,6 +203,9 @@
                                 width: 2.4rem;
                                 height: 2.4rem;
                                 margin-right: 1.6rem;
+                                @include tableMobile{
+                                    margin-right : .7rem;
+                                }
                             }
 
                             &-result {
