@@ -71,6 +71,16 @@
                             object-fit: cover;
                         }
                     }
+
+                    .livescore-name-team {
+                        font-size: 1.6rem;
+                        line-height: 2.4rem;
+
+                        @include tableMobile {
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                        }
+                    }
                 }
 
 
@@ -87,6 +97,11 @@
                         display: none;
                     }
                 }
+            }
+
+            .icon-live-right {
+                font-size: 1.5rem;
+                text-align: right;
             }
         }
 

@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-live-right:before {
+  content: "\e91d";
+}
 .icon-event-home:before {
   content: "\e919";
   color: #b44414;

@@ -53,13 +53,9 @@ body {
         color: #EF9123;
     }
 }
-
-
-.icon-back {
-    transform: rotate(180deg);
-    display: none;
-
-    @include tableMobile {
-        display: block;
+.icon-hidden{
+    display : none;
+    @include tableMobile{
+        display : block;
     }
 }
