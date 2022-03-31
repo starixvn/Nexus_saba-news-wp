@@ -17,6 +17,10 @@
             text-align: center;
             cursor: pointer;
 
+            @include tableMobile {
+                font-size: 1.1rem;
+            }
+
             &:hover {
             }
 
@@ -25,6 +29,13 @@
             }
 
             &.active {
+                background: #E9EEF4;
+                border: 1px solid #D8E1ED;
+                border-radius: 5px;
+                padding: .6rem 1rem;
+                @include tableMobile {
+                    padding: .5rem;
+                }
             }
         }
 
