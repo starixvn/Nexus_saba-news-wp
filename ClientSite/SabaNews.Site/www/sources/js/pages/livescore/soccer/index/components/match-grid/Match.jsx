@@ -61,29 +61,49 @@ export default class Match extends PureComponent {
         const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
 
         return (
-            <div className={`soccer-match border-bottom ${match.status === MatchStatus.FirstHalf || match.status === MatchStatus.SecondHalf ? 'live' : ''}`}>
+            <div className={`soccer-match-item ${match.status === MatchStatus.FirstHalf || match.status === MatchStatus.SecondHalf ? 'live' : ''}`}>
+                <i className="icon-livescore icon-live-start-outline" />
                 <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
+                <div className="soccer-match-team">
+                    <div className="group-team">
+                        <div className="soccer-team home-team">
+                            <img className="soccer-team-logo" loading="lazy"
+                                src={match.homeTeam.icon} />
+                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
+                            <div className="soccer-team-result">
+                                {match ? (<div><span className="total-score">{match.homeTeamTotalScore}</span> <span className="heft-score">({match.homeTeamHalfScore})</span></div>) : null}
+                            </div>
+                        </div>
+                        <div className="soccer-team away-team">
+                            <img className="soccer-team-logo" loading="lazy"
+                                src={match.awayTeam.icon} />
+                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
+                            <div className="soccer-team-result">
+                                {match ? (<div><span className="total-score">{match.awayTeamTotalScore}</span> <span className="heft-score">({match.awayTeamHalfScore})</span></div>) : null}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-                <ul className="soccer-match">
-                    <li></li>
-                </ul>
 
-                <div className="soccer-match-participant-home" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
-                <img className="soccer-match-participant-home-logo" loading="lazy"
-                    src={match.homeTeam.icon} />
-                <div className="soccer-match-participant-away" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
-                <img className="soccer-match-participant-away-logo" loading="lazy"
-                    src={match.awayTeam.icon} />
+
+                {/*<div className="soccer-match-participant-home" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />*/}
+                {/*<img className="soccer-match-participant-home-logo" loading="lazy"*/}
+                {/*    src={match.homeTeam.icon} />*/}
+                {/*<div className="soccer-match-participant-away" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />*/}
+                {/*<img className="soccer-match-participant-away-logo" loading="lazy"*/}
+                {/*    src={match.awayTeam.icon} />*/}
 
 
 
-                <div className="soccer-match-scores">{this.getMatchScores(match)}</div>
+                {/* <div className="soccer-match-scores">{this.getMatchScores(match)}</div>*/}
+
 
 
 
                 <div className="soccer-match-star-icon">
-                    <span className="fa fa-star-o" />
+                    <i className="icon-livescore icon-live-right" />
                 </div>
             </div>
         );

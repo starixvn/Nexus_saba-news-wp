@@ -59,8 +59,8 @@
 
                         @include tableMobile {
                             margin-right: .6rem;
-                            width : 2.4rem;
-                            height : 2.4rem;
+                            width: 2.4rem;
+                            height: 2.4rem;
                         }
 
                         img {
@@ -108,88 +108,72 @@
         }
 
         &-body {
-            padding: 0;
+            padding: 1.2rem;
 
-            .soccer-match {
-               /* min-height: 32px;
-                display: grid;
-                grid-template-rows: minmax(32px, auto);
-                grid-template-columns: max-content 1fr max-content 60px max-content 1fr 25px;
-                grid-template-areas: "stageOrTime homeParticipant homeLogo scores awayLogo awayParticipant check";
-                cursor: pointer;
+            @include tableMobile {
+                padding: .6rem;
+            }
 
-                &.live {
-                    .soccer-match-stage, .soccer-match-scores {
-                        color: #c00;
+            .soccer-match-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: $bg-soccer-item;
+                border: 1px solid $border-soccer-item;
+                box-sizing: border-box;
+                border-radius: 5px;
+                padding: 1rem 1.1rem;
+                margin-top: .6rem;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                @include tableMobile {
+                    padding: .8rem;
+                }
+
+                .soccer-match-team {
+                    width: 75%;
+
+                    .group-team {
+                        .soccer-team {
+                            display: flex;
+                            align-items: center;
+
+                            &-name {
+                                font-size: 1.4rem;
+                                line-height: 1.6rem;
+                            }
+
+                            &-logo {
+                                width: 2.4rem;
+                                height: 2.4rem;
+                                margin-right: 1.6rem;
+                            }
+
+                            &-result {
+                                position: absolute;
+                                right: 0;
+                            }
+                        }
+
+                        .home-team {
+                            padding-bottom: .6rem;
+                            border-bottom: 1px solid #E8E8E8;
+                            position: relative;
+                        }
+
+                        .away-team {
+                            padding-top: .6rem;
+                            position: relative;
+                        }
                     }
                 }
+            }
 
-                &-star-icon {
-                    grid-area: check;
-                    align-items: center;
-                    display: flex;
-                    justify-content: center;
-
-                    .fa {
-                        cursor: pointer;
-                    }
-                }
-
-                &-stage {
-                    grid-area: stageOrTime;
-                    justify-content: center;
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: wrap;
-                    line-height: 15px;
-                    padding: 2px 0;
-                    text-align: center;
-                    width: 69px;
-                    margin-left: 0;
-                }
-
-                &-participant-home, &-participant-away {
-                    align-self: center;
-                    line-height: 19px;
-                    padding: 0 10px;
-                    flex: 1;
-                    hyphens: auto;
-                }
-
-                &-participant-home {
-                    grid-area: homeParticipant;
-                    justify-content: flex-end;
-                    text-align: right;
-                }
-
-                &-participant-away {
-                    grid-area: awayParticipant;
-                }
-
-                &-participant-home-logo {
-                    grid-area: homeLogo;
-                    margin-right: 8px;
-                }
-
-                &-participant-away-logo {
-                    grid-area: awayLogo;
-                    margin-left: 8px;
-                }
-
-                &-participant-home-logo, &-participant-away-logo {
-                    width: 18px;
-                    height: 18px;
-                    align-self: center;
-                }
-
-                &-scores {
-                    font-size: 11px;
-                    grid-area: scores;
-                    align-items: center;
-                    justify-content: center;
-                    display: flex;
-                    flex-wrap: wrap;
-                }*/
+            .icon-live-right {
+                font-size: 1.5rem;
             }
         }
     }
