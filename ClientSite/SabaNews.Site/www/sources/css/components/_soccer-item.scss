@@ -1,4 +1,5 @@
-﻿.soccer-match-grid {
+﻿
+.soccer-match-grid {
     margin-top: 1.2rem;
 
     &-item {
@@ -126,7 +127,7 @@
                 padding: 1rem 1.1rem;
                 margin-top: .6rem;
                 transition: all .1s ease-in-out;
-                cursor : pointer;
+                cursor: pointer;
 
                 &:first-child {
                     margin-top: 0;
@@ -137,8 +138,46 @@
                     background: $white;
                 }
 
+
                 @include tableMobile {
                     padding: .8rem;
+                }
+
+                &.live {
+                    .soccer-match-stage {
+                        span {
+                            color: #E13C29;
+                            font-size: 1.3rem;
+                            line-height: 1.5rem;
+                            position: relative;
+
+                            &:before {
+                                content: "";
+                                display: block;
+                                width: .6rem;
+                                height: .6rem;
+                                background: #E13C29;
+                                border-radius: 100%;
+                                left: -15px;
+                                top: 4px;
+                                position: absolute;
+                            }
+
+                            &:after {
+                                content: "";
+                                display: block;
+                                width: 1.4rem;
+                                height: 1.4rem;
+                                background: #E13C29;
+                                opacity: 0.3;
+                                border-radius: 100%;
+                                left: -19px;
+                                top: 0px;
+                                position: absolute;
+                                animation: live 2s ease-in-out infinite;
+                            }
+                        }
+                    }
                 }
 
                 .soccer-match-team {
@@ -208,5 +247,17 @@
                 }
             }
         }
+    }
+}
+
+
+@keyframes live {
+    0% {
+        transform: scale(1,1);
+    }
+
+    100% {
+        transform: scale(1.5);
+        background-color: rgba(red,0);
     }
 }
