@@ -84,7 +84,7 @@ BEGIN
             ti.HomeScore,
             ti.AwayScore,
             ti.PlayerId,
-            ti.PlayerName,
+            p.PlayerName,
             ti.AssistId,
             ti.AssistName,
             ti.InPlayerId,
@@ -120,8 +120,11 @@ BEGIN
                 VarResult SMALLINT PATH "$.VarResult",
                 ReasonType SMALLINT PATH "$.ReasonType"
             )
-        ) AS ti;
-
+        ) AS ti
+    LEFT JOIN livescore_player p ON ti.PlayerId = p.PlayerId
+    LEFT JOIN livescore_player a ON ti.AssistId = a.PlayerId
+    LEFT JOIN livescore_player i ON ti.InPlayerId = i.PlayerId
+    LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId;
 
     DELETE FROM livescore_match_incident lmi
     WHERE lmi.MatchId IN (SELECT MatchId FROM tmp_incident);

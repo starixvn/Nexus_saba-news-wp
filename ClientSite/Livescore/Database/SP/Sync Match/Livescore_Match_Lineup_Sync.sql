@@ -82,7 +82,7 @@ BEGIN
                 ELSE m.AwayTeamId
             END) As TeamId 
            ,tpl.PlayerId 
-           ,tpl.PlayerName 
+           ,p.NameEN 
            ,tpl.Position 
            ,tpl.PlayerNumber 
            ,tpl.IsSubstitute 
@@ -105,7 +105,8 @@ BEGIN
                 CoordinateY INT PATH "$.CoordinateY"
             )
         ) AS tpl
-    INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId;
+    INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId
+    
 
     DELETE FROM livescore_team_lineup tlu
     WHERE tlu.MatchId IN (SELECT DISTINCT MatchId FROM tmp_playerLineup);
@@ -120,7 +121,9 @@ BEGIN
            ,tpl.Position
            ,tpl.CoordinateX
            ,tpl.CoordinateY
-    FROM tmp_playerLineup AS tpl;
+    FROM tmp_playerLineup AS tpl
+    LEFT JOIN livescore_player p ON tpl.PlayerId = p.PlayerId 
+        AND p.TeamId = tpl.TeamId;
         
 END;
 
