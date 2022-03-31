@@ -24,10 +24,11 @@
             font-size: 1.4rem;
 
             &::placeholder {
-                font-style : italic;
-                font-size : 1.4rem !important;
-                @include tableMobile{
-                   font-size : 1.2rem !important;
+                font-style: italic;
+                font-size: 1.4rem !important;
+
+                @include tableMobile {
+                    font-size: 1.2rem !important;
                 }
             }
         }
@@ -73,21 +74,24 @@
             position: relative;
             margin-top: .5rem;
 
-            span {
-                position: absolute;
-                top: -5px;
-                right: -5px;
-                margin-right: 0;
-                background: #E13C29;
-                border: 1px solid #FFFFFF;
-                font-size: 1.1rem;
-                line-height: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0.2rem;
-                border-radius: 50%;
-                color: #fff;
+            [data-badge] {
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    right: -5px;
+                    top: -5px;
+                    min-width: 1rem;
+                    min-height: 1rem;
+                    line-height: 1rem;
+                    padding: .3rem;
+                    color: $white;
+                    border: 1px solid #FFFFFF;
+                    background: #E13C29;
+                    font-size: 1rem;
+                    border-radius: 20px;
+                    content: attr(data-badge);
+                }
             }
         }
     }

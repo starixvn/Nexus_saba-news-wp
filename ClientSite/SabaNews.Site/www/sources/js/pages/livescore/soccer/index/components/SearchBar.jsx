@@ -20,8 +20,7 @@ export class SearchBar extends PureComponent {
                 <div className="livescore-like">
                     <span>Trận đấu quan tâm</span>
                     <div className="count-start">
-                        <i className="icon-livescore icon-live-start"></i>
-                        <span>11</span>
+                        <i className="icon-livescore icon-live-start" data-badge="11"></i>
                     </div>
                 </div>
 
