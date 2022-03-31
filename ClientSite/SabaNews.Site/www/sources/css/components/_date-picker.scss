@@ -116,9 +116,10 @@
 
     &:before {
         display: inline-block;
-        content: '\f105';
-        color: #767678;
-        font: normal normal normal 14px/1 FontAwesome;
+        top: -5px;
+        margin-left: -4px;
+        font-family: "Fraud-Sensor";
+        content: '\e97d';
     }
 
     &.react-datepicker__navigation--next {
@@ -145,6 +146,9 @@
 
 .date-picker-icon {
     cursor: pointer;
+}
+.react-datepicker__navigation-icon{
+    display : none;
 }
 
 .react-datepicker-wrapper-container {
