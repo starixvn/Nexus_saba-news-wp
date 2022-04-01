@@ -221,7 +221,7 @@
     margin : 0;
 }
 .react-datepicker-popper[data-placement^=bottom] {
-    inset: 10px auto auto -20% !important;
+    inset: 10px auto auto -27rem !important;
 
     @include tableMobile {
         inset: 5px 0px auto auto !important;
@@ -229,6 +229,6 @@
 
     @include Mobile {
         transform: translate3d(0px, 159px, 31px) !important;
-        width : 100%;
+        width: 100%;
     }
 }
