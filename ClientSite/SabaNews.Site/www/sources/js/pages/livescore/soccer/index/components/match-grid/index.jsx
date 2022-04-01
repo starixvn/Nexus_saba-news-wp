@@ -7,7 +7,7 @@ import { ActionCreators } from '../../actions';
 export class MatchGrid extends Component {
     render() {
         if (!this.props.matches || this.props.matches.length === 0) {
-            return <div>Không có trận đấu nào</div>;
+            return <div className="none-livescore">Không có trận đấu nào</div>;
         }
 
         const helper = {};
