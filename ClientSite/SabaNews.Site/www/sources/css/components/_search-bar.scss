@@ -5,6 +5,10 @@
     justify-content: center;
     margin-top: 1.2rem;
 
+    @include tableMobile {
+        margin-top: .8rem;
+    }
+
     .livescore-soccer-search-bar {
         position: relative;
         width: 75%;
@@ -12,6 +16,7 @@
 
         @include tableMobile {
             width: 85%;
+            margin-right: .4rem;
         }
 
         .livescore-soccer-searchbox {
@@ -58,7 +63,8 @@
         justify-content: center;
 
         @include tableMobile {
-            width: 15%;
+            width: 13%;
+            margin-left: .4rem;
         }
 
         span {

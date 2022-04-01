@@ -2,12 +2,20 @@
 .soccer-match-grid {
     margin-top: 1.2rem;
 
+    @include tableMobile {
+        margin-top: .8rem;
+    }
+
     &-item {
         background: $primary-bg;
         border: 1px solid $border-color;
         box-sizing: border-box;
         border-radius: 5px;
         margin-bottom: 1.2rem;
+
+        @include tableMobile {
+            margin-bottom: .8rem;
+        }
 
         .text-matched {
             color: #3399FF;
@@ -20,7 +28,7 @@
             @include grid( 1fr 4.5rem 4.5rem 4.5rem, unset, 0);
             grid-auto-flow: column;
             height: 6rem;
-            padding: 0 2.4rem;
+            padding: 0 2.6rem;
             cursor: pointer;
 
             @include tableMobile {
@@ -110,8 +118,9 @@
             .icon-live-right {
                 font-size: 1.5rem;
                 text-align: right;
-                @include iphone5{
-                    font-size : 1.2rem;
+
+                @include iphone5 {
+                    font-size: 1.2rem;
                 }
             }
         }
@@ -131,7 +140,7 @@
                 border: 1px solid $border-soccer-item;
                 box-sizing: border-box;
                 border-radius: 5px;
-                padding: 1rem 1.1rem;
+                padding: 1rem 1.4rem;
                 margin-top: .6rem;
                 transition: all .1s ease-in-out;
                 cursor: pointer;
@@ -147,7 +156,7 @@
 
 
                 @include tableMobile {
-                    padding: .8rem;
+                    padding: .8rem 1rem;
                 }
 
                 &.live {
@@ -192,6 +201,10 @@
                     width: 75%;
                     padding: 0 1.2rem;
 
+                    @include tableMobile {
+                        padding: 0 0 0 1.2rem;
+                    }
+
                     .group-team {
                         .soccer-team {
                             display: flex;
@@ -201,8 +214,11 @@
                                 font-size: 1.4rem;
                                 line-height: 1.6rem;
 
+
                                 @include Mobile {
-                                    max-width: 10rem;
+                                    max-width: 14.2rem;
+                                    font-size: 1.1rem;
+                                    line-height: 1.3rem;
                                 }
 
                                 @include iphone5 {
@@ -217,7 +233,7 @@
                                 margin-right: 1.6rem;
 
                                 @include tableMobile {
-                                    margin-right: .7rem;
+                                    margin-right: .6rem;
                                 }
                             }
 
@@ -275,11 +291,18 @@
                 .soccer-match-stage {
                     @include tableMobile {
                         order: 3;
+                        width: 4.1rem;
+                        line-height: 1;
+                        text-align: center;
                     }
 
                     span {
-                        font-size: 1.2rem;
+                        font-size: 1.3rem;
                         line-height: 1.4rem;
+
+                        @include tableMobile {
+                            font-size: 1.1rem;
+                        }
                     }
                 }
             }
