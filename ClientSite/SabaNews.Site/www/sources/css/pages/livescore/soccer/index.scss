@@ -12,6 +12,13 @@ body {
     font-size: 1.4rem;
 }
 
+main {
+    @include tableMobile {
+        position: relative;
+        overflow-x: inherit;
+    }
+}
+
 .livescore-soccer {
     @include grid(72% 28%, unset, 0);
     align-items: start;
