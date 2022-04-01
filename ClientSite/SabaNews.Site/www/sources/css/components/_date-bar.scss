@@ -131,7 +131,7 @@
         .icon-live-calender {
             font-size: 1.6rem;
 
-            &:active {
+            &.active {
                 &:before {
                     color: #E13C29;
                 }
