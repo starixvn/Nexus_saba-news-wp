@@ -15,16 +15,16 @@ export class PostMatch extends Component {
             return null;
         }
         const {generalInfo, incidents} = this.props.soccerMatch;
-        var goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
+        let goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
         const homeGoals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString())  && item.position === 1 && (item.homeScore !== 0 || item.awayScore !== 0));
         const awayGoals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString()) && item.position === 2 && (item.homeScore !== 0 || item.awayScore !== 0));
-        var numberHomeRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === 1).length;
-        var numberHomeYellowCard = incidents.filter(item => item.type ===  IncidentStatus.YellowCard && item.position === 1).length;
-        var numberHomePenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 1 && (item.homeScore === 0 && item.awayScore === 0)).length;
+        const numberHomeRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === 1).length;
+        const numberHomeYellowCard = incidents.filter(item => item.type ===  IncidentStatus.YellowCard && item.position === 1).length;
+        const numberHomePenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 1 && (item.homeScore === 0 && item.awayScore === 0)).length;
         
-        var numberAwayRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === 2).length;
-        var numberAwayYellowCard = incidents.filter(item => item.type ===  IncidentStatus.YellowCard && item.position === 2).length;
-        var numberAwayPenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 2 && (item.homeScore === 0 && item.awayScore === 0)).length;
+        const numberAwayRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === 2).length;
+        const numberAwayYellowCard = incidents.filter(item => item.type ===  IncidentStatus.YellowCard && item.position === 2).length;
+        const numberAwayPenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 2 && (item.homeScore === 0 && item.awayScore === 0)).length;
         return (
             <>
                 <div className="duel-participant">
@@ -32,7 +32,7 @@ export class PostMatch extends Component {
                     <div className="duel-participant-home">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt="Barcelona" loading="lazy"
+                                <img width="58" height="58" alt={generalInfo.homeTeamNameEN} loading="lazy"
                                     src={generalInfo.homeTeamIcon} />
                             </a>
                         </div>
@@ -83,7 +83,7 @@ export class PostMatch extends Component {
                     <div className="duel-participant-away">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt="Ath Bilbao" loading="lazy"
+                                <img width="58" height="58" alt={generalInfo.awayTeamNameEN} loading="lazy"
                                     src={generalInfo.awayTeamIcon} />
                             </a>
                         </div>

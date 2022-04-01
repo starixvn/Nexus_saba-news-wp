@@ -11,7 +11,7 @@ export default class GeneralIncident extends Component {
         if (!this.props.incident) {
             return null;
         }
-        const {incident,hasInjuryTime, processScore} = this.props;
+        const {incident, hasInjuryTime, processScore} = this.props;
         let time = incident.time + "'";
         if(hasInjuryTime) {
             if(incident.time >= 45 && incident.time < 90) {

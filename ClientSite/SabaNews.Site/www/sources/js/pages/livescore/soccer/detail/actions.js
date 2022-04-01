@@ -7,7 +7,7 @@ import {
 } from './soccerMatchDetailSlice';
 
 const getSoccerMatchDetail = () => async dispatch => {
-    var params = {
+    let params = {
         matchId: window.selectedMatchId
     };
     const url = Site.resolveClientUrl('soccer/GetSoccerMatchDetail');
@@ -17,7 +17,7 @@ const getSoccerMatchDetail = () => async dispatch => {
 };
 
 const getLineupDetail = () => async dispatch => {
-    var params = {
+    let params = {
         matchId: window.selectedMatchId
     };
     const url = Site.resolveClientUrl('soccer/GetLineupDetail');

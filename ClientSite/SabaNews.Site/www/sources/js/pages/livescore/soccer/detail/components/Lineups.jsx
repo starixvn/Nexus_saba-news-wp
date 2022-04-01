@@ -28,7 +28,7 @@ export class Lineups extends Component {
         let indexHome = 1;
         homeInfoArray.map((line) => {
             let lineArray = [];
-            for(var i = 0; i < line; i++) {
+            for(let i = 0; i < line; i++) {
                 lineArray.push({number: homePlayers[indexHome].playerNumber, name: homePlayers[indexHome].playerName, isGoalKeeper: false});
                 indexHome++;
             }
@@ -40,7 +40,7 @@ export class Lineups extends Component {
         let indexAway = 1;
         awayInfoArray.map((line) => {
             let lineArray = [];
-            for(var i = 0; i < line; i++) {
+            for(let i = 0; i < line; i++) {
                 lineArray.push({number: awayPlayers[indexAway].playerNumber, name: awayPlayers[indexAway].playerName, isGoalKeeper: false});
                 indexAway++;
             }

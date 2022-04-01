@@ -23,7 +23,7 @@ export default class MatchSummary extends Component {
         let penaltyShootoutScore = "[0 - 0]";
         let halfTimeScore = "[0 - 0]";
         let processScore = "[0 - 0]";
-        var penaltyShootOutData = {
+        let penaltyShootOutData = {
             homeType: null,
             homePlayerName: null,
             awayType: null,
@@ -107,7 +107,7 @@ export default class MatchSummary extends Component {
                             } else if (hasPenaltyShootout && penaltyShootOutData !== null && penaltyShootOutData.awayType !== null && penaltyShootOutData.homeType !== null) {
                                 penaltyShootOutData.score = penaltyShootoutScore;
                                 hasPenaltyShootout = false;
-                                var component = <PenaltyShootOut key = {key} penaltyShootOutData = {penaltyShootOutData} />
+                                let component = <PenaltyShootOut key = {key} penaltyShootOutData = {penaltyShootOutData} />
                                 penaltyShootOutData = {
                                     homeType: null,
                                     homePlayerName: null,

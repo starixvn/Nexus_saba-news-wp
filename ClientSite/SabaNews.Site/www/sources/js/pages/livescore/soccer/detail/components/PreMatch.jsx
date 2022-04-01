@@ -22,7 +22,7 @@ export class LiveMatch extends Component {
                     <div className="duel-participant-home">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt="Barcelona" loading="lazy"
+                                <img width="58" height="58" alt={soccerMatch.generalInfo.homeTeamNameEN} loading="lazy"
                                     src={soccerMatch.generalInfo.homeTeamIcon} />
                             </a>
                         </div>
@@ -40,7 +40,7 @@ export class LiveMatch extends Component {
                     <div className="duel-participant-away">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt="Ath Bilbao" loading="lazy"
+                                <img width="58" height="58" alt={soccerMatch.generalInfo.awayTeamNameEN} loading="lazy"
                                     src={soccerMatch.generalInfo.awayTeamIcon} />
                             </a>
                         </div>
