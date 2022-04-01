@@ -22,42 +22,42 @@ export const MatchStatus = {
 };
 
 export const IncidentPosition = {
-    'Neutral': 0,
-    'Home': 1,
-    'Away': 2
+    Neutral: 0,
+    Home: 1,
+    Away: 2
 }
 
 export const VARResultCode = {
-    'Unknown': 0,
-    'GoalValid': 1,
-    'GoalInValid': 2,
-    'PenaltyValid': 3,
-    'PenaltyCancelled': 4,
-    'RedCardValid': 5,
-    'RedCardCanlled': 6,
-    'PlayPenaltyVerification': 7,
-    'PlayPenaltyChange': 8,
-    'MaintainOriginalJudgment': 9,
-    'SendPenaltyChange': 10
+    Unknown: 0,
+    GoalValid: 1,
+    GoalInValid: 2,
+    PenaltyValid: 3,
+    PenaltyCancelled: 4,
+    RedCardValid: 5,
+    RedCardCanlled: 6,
+    PlayPenaltyVerification: 7,
+    PlayPenaltyChange: 8,
+    MaintainOriginalJudgment: 9,
+    SendPenaltyChange: 10
 }
 
 export const IncidentStatus = {
-    'Goal': 1,
-    'YellowCard': 3,
-    'RedCard': 4,
-    'Penalty': 8,
-    'Substitution': 9,
-    'GameStart': 10,
-    'Halftime': 11,
-    'End': 12,
-    'HalftimeScore': 13,
-    'YellowTurnRedCard': 15,
-    'PenaltyMissed': 16,
-    'OwnGoal': 17,
-    'InjuryTime':  19,
-    'ExtraTimeEnd': 26,
-    'PenaltyShootoutEnd': 27,
-    'VAR': 28,
-    'PenaltyShootOut': 29,
-    'PenaltyShootOutMissed': 30
+    Goal: 1,
+    YellowCard: 3,
+    RedCard: 4,
+    Penalty: 8,
+    Substitution: 9,
+    GameStart: 10,
+    Halftime: 11,
+    End: 12,
+    HalftimeScore: 13,
+    YellowTurnRedCard: 15,
+    PenaltyMissed: 16,
+    OwnGoal: 17,
+    InjuryTime:  19,
+    ExtraTimeEnd: 26,
+    PenaltyShootoutEnd: 27,
+    VAR: 28,
+    PenaltyShootOut: 29,
+    PenaltyShootOutMissed: 30
 };

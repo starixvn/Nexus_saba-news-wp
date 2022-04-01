@@ -9,13 +9,18 @@
         public int Second { get; set; }
         public int HomeScore { get; set; }
         public int AwayScore { get; set; }
+        public int PlayerId { get; set; }
         public string PlayerName { get; set; }
         public string Content { get; set; }
         public int VarReason { get; set; }
         public int VarResult { get; set; }
         public int ReasonType { get; set; }
+        public int AssistId { get; set; }
         public string AssistName { get; set; }
+        public int InPlayerId { get; set; }
         public string InPlayerName { get; set; }
-        public string OutPlayerName { get; set; }
+        public int OutPlayerId { get; set; }
+        public string OutPlayerName { get; set; 
+        }
     }
 }

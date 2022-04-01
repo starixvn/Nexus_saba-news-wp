@@ -20,19 +20,19 @@ export class AppContainer extends Component {
     }
     componentDidMount() {
         this.props.getSoccerMatchDetail()
-        // .then(() => {
-        //     if (this.props.soccerMatch.Status !== 50 && !this.props.isLiveMatch) {
-        //         this.setState({
-        //             isDisabledTabMatchSummary: true,
-        //             isDisabledTabStatistics: true
-        //         });
-        //     } 
-        //     if (!this.props.soccerMatch.generalInfo.isLineup) {
-        //         this.setState = ({
-        //             isDisabledTabLineUp: true
-        //         });
-        //     }
-        // });
+        .then(() => {
+            if (this.props.soccerMatch.generalInfo.status !== 50 && !this.props.isLiveMatch) {
+                this.setState({
+                    isDisabledTabMatchSummary: true,
+                    isDisabledTabStatistics: true
+                });
+            } 
+            if (!this.props.soccerMatch.generalInfo.isLineup) {
+                this.setState = ({
+                    isDisabledTabLineUp: true
+                });
+            }
+        });
     }
 
     render() {
@@ -47,7 +47,7 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <MatchGenetalInfo soccerMatch = {this.props.soccerMatch} isLiveMatch = {this.props.isLiveMatch} />
-                    <Tabs defaultActiveKey="MatchSummary" id="soccer-match-detail-tabs">
+                    <Tabs  id="soccer-match-detail-tabs">
                         <Tab eventKey="MatchSummary" title="Tóm tắt Trận đấu" disabled={this.state.isDisabledTabMatchSummary}>
                             <MatchSummary soccerMatch = {this.props.soccerMatch}/>
                         </Tab>

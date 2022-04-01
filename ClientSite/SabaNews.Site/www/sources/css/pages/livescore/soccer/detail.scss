@@ -721,3 +721,29 @@ svg.fill-red {
     padding: 4px 8px;
 }
 
+.lineup-table {
+    width: 100%;
+    float: left;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    .table-paticipant {
+        margin: 0;
+        padding: 0;
+        width: 46%;
+        float: left;
+        margin-right: 4%;
+        border: 1px solid #a5aaa5;
+        &.away {
+            float: right;
+            margin: 0;
+        }
+        tr {
+            border: 1px solid #a5aaa5;
+            th,td {
+                padding: 5px;
+            }
+        }
+        
+    }
+    
+}
