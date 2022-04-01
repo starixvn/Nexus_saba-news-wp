@@ -130,6 +130,12 @@
 
         .icon-live-calender {
             font-size: 1.6rem;
+
+            &:active {
+                &:before {
+                    color: #E13C29;
+                }
+            }
         }
     }
 }
