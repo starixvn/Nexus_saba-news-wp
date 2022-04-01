@@ -1,4 +1,4 @@
-﻿import React, { PureComponent } from 'react';
+﻿import React, { PureComponent, Fragment } from 'react';
 import LangHelper from '@jsroot/common/langHelper';
 import { MatchStatus } from '@jsroot/common/constants';
 
@@ -27,7 +27,7 @@ export default class Match extends PureComponent {
                 break;
 
             case MatchStatus.TBD:
-                return <span>{LangHelper.getResource('TBD')}</span>;
+                return <span>{LangHelper.getResource('ToBeDecided')}</span>;
                 break;
 
             default:
@@ -36,8 +36,30 @@ export default class Match extends PureComponent {
         }
     };
 
-    getMatchScores = match => {
-        switch (match.status) {
+    getTeamStatus = (match, isHomeTeam) => {
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = !isHomeTeam ? 'awayTeam' : 'homeTeam';
+        switch (status) {
+            case MatchStatus.Finished:
+                if (match[`${homeFieldName}PenaltyScore`]
+                    && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                    return <li>PEN</li>;
+                } else if (match[`${homeFieldName}AggregateScore`]
+                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                    return <li><i className="icon-live-up" /></li>;
+                } else {
+                    return <Fragment />;
+                }
+                break;
+
+            default:
+                return <Fragment />;
+                break;
+        }
+    };
+
+    getTeamScore = (status, totalScore, halfScore) => {
+        switch (status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
             case MatchStatus.Postponed:
@@ -45,15 +67,9 @@ export default class Match extends PureComponent {
             case MatchStatus.TBD:
                 return <span>&nbsp; - &nbsp;</span>;
                 break;
+
             default:
-                return <>
-                    <div className="font-weight-bold">
-                        <span>{match.homeTeamTotalScore}</span>&nbsp; - &nbsp;<span>{match.awayTeamTotalScore}</span>
-                    </div>
-                    <div>
-                        H1: <span>{match.homeTeamHalfScore}</span>&nbsp; - &nbsp;<span>{match.awayTeamHalfScore}</span>
-                    </div>
-                </>;
+                return <div><span className="total-score">{totalScore}</span> <span className="half-score">({halfScore})</span></div>;
                 break;
         }
     };
@@ -65,28 +81,29 @@ export default class Match extends PureComponent {
         const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
 
         return (
-            <div className={`soccer-match-item ${match.status === MatchStatus.FirstHalf || match.status === MatchStatus.SecondHalf ? 'live' : ''}`}>
+            <div className="soccer-match-item">
                 <i className="icon-livescore icon-live-start-outline" />
                 <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
                 <div className="soccer-match-team">
                     <div className="group-team">
                         <div className="soccer-team home-team">
-                            <img className="soccer-team-logo" loading="lazy"
-                                src={match.homeTeam.icon} />
+                            <img className="soccer-team-logo" loading="lazy" src={match.homeTeam.icon} />
                             <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
                             <ul className="soccer-team-status">
-                                <li><i className="icon-live-up" /></li>
+                                {this.getTeamStatus(match, true)}
                             </ul>
                             <div className="soccer-team-result">
-                                {match ? (<div><span className="total-score">{match.homeTeamTotalScore}</span> <span className="heft-score">({match.homeTeamHalfScore})</span></div>) : null}
+                                {this.getTeamScore(match.status, match.homeTeamTotalScore, match.homeTeamHalfScore)}
                             </div>
                         </div>
                         <div className="soccer-team away-team">
-                            <img className="soccer-team-logo" loading="lazy"
-                                src={match.awayTeam.icon} />
+                            <img className="soccer-team-logo" loading="lazy" src={match.awayTeam.icon} />
                             <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
+                            <ul className="soccer-team-status">
+                                {this.getTeamStatus(match, false)}
+                            </ul>
                             <div className="soccer-team-result">
-                                {match ? (<div><span className="total-score">{match.awayTeamTotalScore}</span> <span className="heft-score">({match.awayTeamHalfScore})</span></div>) : null}
+                                {this.getTeamScore(match.status, match.awayTeamTotalScore, match.awayTeamHalfScore)}
                             </div>
                         </div>
                     </div>

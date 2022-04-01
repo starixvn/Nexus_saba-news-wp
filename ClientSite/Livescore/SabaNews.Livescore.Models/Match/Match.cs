@@ -10,7 +10,7 @@
 
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public string Schedule => StartTime.ToString("hh:mm");
+        public string Schedule => StartTime.ToString("HH:mm");
 
         public League League { get; set; }
 
@@ -25,7 +25,10 @@
         public short HomeTeamTotalScore { get; set; }
         public short AwayTeamTotalScore { get; set; }
 
-        public short HomeTeamAggregateScore { get; set; }
-        public short AwayTeamAggregateScore { get; set; }
+        public short? HomeTeamAggregateScore { get; set; }
+        public short? AwayTeamAggregateScore { get; set; }
+
+        public short? HomeTeamPenaltyScore { get; set; }
+        public short? AwayTeamPenaltyScore { get; set; }
     }
 }
