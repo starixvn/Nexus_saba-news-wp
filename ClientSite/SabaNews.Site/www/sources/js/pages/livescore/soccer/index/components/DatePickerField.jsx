@@ -1,5 +1,7 @@
 ﻿import React from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import vi from 'date-fns/locale/vi';
+registerLocale('vi', vi);
 
 export default class DatePickerField extends React.PureComponent {
     constructor(props) {
@@ -27,6 +29,7 @@ export default class DatePickerField extends React.PureComponent {
             <DatePicker
                 className={`datetime-picker`}
                 dateFormat={'MMM dd, yyyy'}
+                locale="vi"
                 customInput={<CustomInput />}
                 selected={this.state.date}
                 {...rest}

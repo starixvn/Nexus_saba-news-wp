@@ -6,8 +6,10 @@ import { ActionCreators } from '../../actions';
 
 export class MatchGrid extends Component {
     render() {
-        if (!this.props.matches || this.props.matches.length === 0) {
-            return <div className="none-livescore">Không có trận đấu nào</div>;
+        if (this.props.matches.length === 0) {
+            return <div className="none-livescore">
+                { !window.isLiveMatch ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
+            </div>;
         }
 
         const helper = {};
@@ -20,7 +22,7 @@ export class MatchGrid extends Component {
         }
 
         if (matches.length === 0 && searchKey.length > 0) {
-            return <div>Không tìm thấy trận đấu nào phù hợp.</div>;
+            return <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>;
         }
 
         matches = matches.reduce((previousItem, currentItem) => {

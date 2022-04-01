@@ -17,10 +17,15 @@ export class AppContainer extends Component {
 
     render() {
         let matches = this.props.matches;
+        if (matches === null) {
+            return null;
+        }
+
         if (window.isLiveMatch) {
             matches = matches.filter(match => match.status === MatchStatus.FirstHalf
+                || match.status === MatchStatus.Intermission
                 || match.status === MatchStatus.SecondHalf
-                || match.status === MatchStatus.Overtime
+                || match.status === MatchStatus.ExtraTime
                 || match.status === MatchStatus.PenaltyShootout);
         }
 

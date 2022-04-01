@@ -5,7 +5,7 @@ const soccerMatchSlice = createSlice({
     initialState: {
         searchKey: '',
         majorLeagues: [],
-        matches: []
+        matches: null
     },
     reducers: {
         setSearchKey: (state, action) => {
