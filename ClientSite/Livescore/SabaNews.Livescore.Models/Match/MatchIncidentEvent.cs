@@ -1,6 +1,6 @@
-﻿namespace SabaNews.Models.LiveScore
+﻿namespace SabaNews.Livescore.Models.Match
 {
-    public class SoccerMatchCommentaryEvent
+    public class MatchIncidentEvent
     {
         public int MatchId { get; set; }
         public int Type { get; set; }

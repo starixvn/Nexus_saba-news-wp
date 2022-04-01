@@ -1,33 +1,27 @@
 ﻿namespace SabaNews.Site.Controllers.Livescore
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Extensions;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
-    using SabaNews.Criteria.Livescore;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
-    using SabaNews.Services.Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class SoccerController : Controller
     {
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
-        private readonly ILiveScoreService livescoreService;
 
         public SoccerController(
             ILeagueService leagueService,
             IMatchService matchService)
-            IHttpClientFactory httpClientFactory,
-            ILiveScoreService livescoreService)
         {
             this.leagueService = leagueService;
             this.matchService = matchService;
-            this.livescoreService = livescoreService;
         }
 
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
@@ -85,16 +79,16 @@
         [HttpPost]
         public async Task<IActionResult> GetLineupDetail([FromBody] GetMatchLineupCriteria criteria)
         {
-            var lineup = await livescoreService.GetLineupAsync(criteria);
+            var lineup = await matchService.GetLineupAsync(criteria);
             return Ok(lineup);
         }
 
         [HttpPost]
         public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
         {
-            var generalInfo = await livescoreService.GetMatchDetailAsync(criteria);
-            var postMatchInfo = await livescoreService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
-            var result = new SoccerMatchDetail
+            var generalInfo = await matchService.GetMatchDetailAsync(criteria);
+            var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
+            var result = new MatchDetail
             {
                 GeneralInfo = generalInfo,
                 AwayTeam = postMatchInfo.AwayStatistic,

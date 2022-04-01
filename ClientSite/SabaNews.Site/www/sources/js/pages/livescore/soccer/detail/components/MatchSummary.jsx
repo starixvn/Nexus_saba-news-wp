@@ -15,6 +15,7 @@ export default class MatchSummary extends Component {
             return null;
         }
         const incidents = this.props.soccerMatch.incidents;
+        console.log(incidents);
         let lastIncident = incidents[incidents.length - 1];
         let hasInjuryTime = false;
         let hasPenaltyShootout = false;

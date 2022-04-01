@@ -1,8 +1,8 @@
-﻿namespace SabaNews.Models.LiveScore
+﻿namespace SabaNews.Livescore.Models.Match
 {
     using System;
 
-    public class SoccerMathGeneralInfo
+    public class MathGeneralInfo
     {
         public int MatchId { get; set; }
         public int LeagueId { get; set; }

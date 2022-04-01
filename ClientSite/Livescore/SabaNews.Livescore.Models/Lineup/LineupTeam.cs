@@ -1,6 +1,6 @@
-﻿namespace SabaNews.Models.LiveScore
+﻿namespace SabaNews.Livescore.Models.Lineup
 {
-    public class SoccerMatchLineupTeam
+    public class LineupTeam
     {
         public int MatchId { get; set; }
         public int TeamId { get; set; }

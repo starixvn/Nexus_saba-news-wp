@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Models.LiveScore
+﻿namespace SabaNews.Livescore.Models.Lineup
 {
-    public class SoccerMatchLineup
+    public class Lineup
     {
         public int MatchId { get; set; }
         public string HomeFormation { get; set; }

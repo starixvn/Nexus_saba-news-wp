@@ -51,8 +51,8 @@ export default class Site {
     static MappingStatusMatchText(status) {
         switch(status) {
             case MatchStatus.PenaltyShootout: return "Penalty";
-            case MatchStatus.Finish: return "Kết thúc";
-            case MatchStatus.Postponed: return "Hoãn";
+            case MatchStatus.Finished: return "Kết thúc";
+            case MatchStatus.Postpone: return "Hoãn";
             case MatchStatus.Interrupt: return "Gián đoạn";
             case MatchStatus.Postponement: return "Hoãn";
             case MatchStatus.Cancel: "Hủy";

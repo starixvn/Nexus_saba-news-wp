@@ -40,3 +40,24 @@ export const VARResultCode = {
     'MaintainOriginalJudgment': 9,
     'SendPenaltyChange': 10
 }
+
+export const IncidentStatus = {
+    'Goal': 1,
+    'YellowCard': 3,
+    'RedCard': 4,
+    'Penalty': 8,
+    'Substitution': 9,
+    'GameStart': 10,
+    'Halftime': 11,
+    'End': 12,
+    'HalftimeScore': 13,
+    'YellowTurnRedCard': 15,
+    'PenaltyMissed': 16,
+    'OwnGoal': 17,
+    'InjuryTime':  19,
+    'ExtraTimeEnd': 26,
+    'PenaltyShootoutEnd': 27,
+    'VAR': 28,
+    'PenaltyShootOut': 29,
+    'PenaltyShootOutMissed': 30
+};
