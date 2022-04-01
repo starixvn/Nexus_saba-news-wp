@@ -7,5 +7,7 @@
         Task SyncTeamListByLastUpdatedTimeAsync();
 
         Task SyncTeamListGreaterThanTeamIdAsync();
+
+        Task SyncHeadToHeadAsync(long homeTeamId, long awayTeamId);
     }
 }

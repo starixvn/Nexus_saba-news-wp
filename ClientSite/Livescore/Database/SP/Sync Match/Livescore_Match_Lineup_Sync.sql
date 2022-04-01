@@ -105,9 +105,8 @@ BEGIN
                 CoordinateY INT PATH "$.CoordinateY"
             )
         ) AS tpl
-    INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId
+    INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId;
     
-
     DELETE FROM livescore_team_lineup tlu
     WHERE tlu.MatchId IN (SELECT DISTINCT MatchId FROM tmp_playerLineup);
 

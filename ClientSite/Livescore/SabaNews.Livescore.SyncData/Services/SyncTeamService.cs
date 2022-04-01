@@ -10,6 +10,7 @@
     using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Team;
+    using SabaNews.Livescore.SyncData.Helpers;
     using SabaNews.Services;
 
     public class SyncTeamService : ISyncTeamService
@@ -26,6 +27,18 @@
             this.appSettings = appSettings;
             this.baseService = baseService;
             this.fetchTeamService = fetchTeamService;
+        }
+
+        public async Task SyncHeadToHeadAsync(long homeTeamId, long awayTeamId)
+        {
+            var teamHistoryRecords = await fetchTeamService.FetchHeadToHeadAsync(homeTeamId, awayTeamId);
+            var dataToImport = DataHelpers.GenerateTeamHistoryToImport(teamHistoryRecords);
+            var command = new ImportHeadToHeadCommand
+            {
+                HeadToHeadJson = JsonConvert.SerializeObject(dataToImport)
+            };
+
+            await baseService.ExecuteNonQueryAsync(command);
         }
 
         public async Task SyncTeamListByLastUpdatedTimeAsync()

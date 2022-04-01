@@ -2,6 +2,9 @@
 {
     public static class CachingKeys
     {
-        public const string APITokenCacheKey = "APITokenCacheKey";
+        public const string APITokenKey = "APITokenCacheKey";
+        public const string LiveMatchProgressKey = "LiveMatch_Progress";
+        public const string LiveMatchLineUpKey = "LiveMatch_LineUp";
+        public const string LiveMatchIncidentKey = "LiveMatch_Incident";
     }
 }

@@ -32,22 +32,29 @@
 
         public override async Task ExecuteJobAsync()
         {
-            var temporayMatches = await syncMatchService.GetTemporaryMatchToFetchInfo(CommonConstants.MaxMatchDetailRowLimit);
-
-            if (temporayMatches.Any())
+            try
             {
-                var matchIds = temporayMatches.Select(m => m.MatchId).ToArray();
+                var temporayMatches = await syncMatchService.GetTemporaryMatchToFetchInfo(CommonConstants.MaxMatchDetailRowLimit);
 
-                var syncLiveTextMatchIds = temporayMatches.Where(i => i.IsStarted).Select(m => m.MatchId).ToArray();
-                var syncLineupMatchIds = temporayMatches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
+                if (temporayMatches.Any())
+                {
+                    var matchIds = temporayMatches.Select(m => m.MatchId).ToArray();
 
-                await syncMatchService.SyncMatchDetailByIdsAsync(matchIds);
-                await syncMatchService.SyncMatchLineupByIdsAsync(syncLineupMatchIds);
+                    var syncLiveTextMatchIds = temporayMatches.Where(i => i.IsStarted).Select(m => m.MatchId).ToArray();
+                    var syncLineupMatchIds = temporayMatches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
-                await SyncCommentary(syncLiveTextMatchIds);
-                await SyncIncidents(syncLiveTextMatchIds);
+                    await syncMatchService.SyncMatchDetailByIdsAsync(matchIds);
+                    await syncMatchService.SyncMatchLineupByIdsAsync(syncLineupMatchIds);
 
-                await syncMatchService.RemoveMatchesFromTemporaryTable(matchIds);
+                    await SyncCommentary(syncLiveTextMatchIds);
+                    await SyncIncidents(syncLiveTextMatchIds);
+
+                    await syncMatchService.RemoveMatchesFromTemporaryTable(matchIds);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                throw;
             }
         }
 

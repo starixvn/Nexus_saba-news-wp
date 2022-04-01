@@ -7,5 +7,7 @@
     public interface IFetchTeamService
     {
         Task<List<TeamListResponse>> FetchTeamListAsync(FetchTeamListParams teamParams);
+
+        Task<HeadToHeadResponse> FetchHeadToHeadAsync(long homeTeamId, long awayTeamId);
     }
 }

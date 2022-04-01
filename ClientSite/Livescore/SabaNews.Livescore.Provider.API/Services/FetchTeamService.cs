@@ -14,6 +14,16 @@
             this.httpClient = httpClient;
         }
 
+        public async Task<HeadToHeadResponse> FetchHeadToHeadAsync(long homeTeamId, long awayTeamId)
+        {
+            var param = new Dictionary<string, object>
+            {
+                { "teamId", new long[] { homeTeamId, awayTeamId} }
+            };
+
+            return await httpClient.ExecutePostAsync<HeadToHeadResponse>(ApiPath.GetTeamHeadToHeadApiPath, param);
+        }
+
         public async Task<List<TeamListResponse>> FetchTeamListAsync(FetchTeamListParams teamParams)
         {
             var param = new Dictionary<string, object>
@@ -30,6 +40,7 @@
         private static class ApiPath
         {
             internal const string GetTeamListApiPath = "/team/list";
+            internal const string GetTeamHeadToHeadApiPath = "/team/history";
         }
     }
 }

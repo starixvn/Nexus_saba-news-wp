@@ -3,7 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using SabaNews.Livescore.Provider.API.Models.Matches;
+    using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.SyncData.Models.Matches;
+    using SabaNews.Livescore.SyncData.Models.Team;
 
     internal static class DataHelpers
     {
@@ -116,5 +118,48 @@
                 Steals = extraData.Steals is not null ? extraData.Steals[index] : 0
             };
         }
+
+        internal static List<TeamHistory> GenerateTeamHistoryToImport(HeadToHeadResponse h2h)
+        {
+            var results = new List<TeamHistory>();
+
+            foreach (var hr in h2h.HomeTeamRecord)
+            {
+                results.Add(GenerateTeamHistory(h2h.HomeTeamId, hr));
+            }
+
+            foreach (var ar in h2h.AwayTeamRecord)
+            {
+                results.Add(GenerateTeamHistory(h2h.AwayTeamId, ar));
+            }
+
+            foreach (var ag in h2h.AgainstRecord)
+            {
+                results.Add(new TeamHistory
+                {
+                    MatchId = ag.MatchId,
+                    HomeTeamId = ag.HomeIdVsAwayId[0],
+                    AwayTeamId = ag.HomeIdVsAwayId[1],
+                    HalfHomeScore = ag.HalfScores[0],
+                    HalfAwayScore = ag.HalfScores[1],
+                    TotalHomeScore = ag.TotalScores[0],
+                    TotalAwayScore = ag.TotalScores[1]
+                });
+            }
+
+            return results;
+        }
+
+        private static TeamHistory GenerateTeamHistory(long teamId, TeamHistoryRecord r)
+            => new TeamHistory
+            {
+                MatchId = r.MatchId,
+                HomeTeamId = r.IsHost ? teamId : r.EnemyId,
+                AwayTeamId = r.IsHost ? r.EnemyId : teamId,
+                TotalHomeScore = r.IsHost ? r.TotalScores[0] : r.TotalScores[1],
+                TotalAwayScore = r.IsHost ? r.TotalScores[1] : r.TotalScores[0],
+                HalfHomeScore = r.IsHost ? r.HalfScores[0] : r.HalfScores[1],
+                HalfAwayScore = r.IsHost ? r.HalfScores[1] : r.HalfScores[0]
+            };
     }
 }

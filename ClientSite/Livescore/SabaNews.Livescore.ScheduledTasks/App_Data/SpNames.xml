@@ -19,6 +19,7 @@
         <Setting Key="Livescore_Sync_Team_GetLastUpdatedTime" SpName="Livescore_Sync_Team_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Team_GetMaxId" SpName="Livescore_Sync_Team_GetMaxId" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Team_Import" SpName="Livescore_Sync_Team_Import" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_Sync_HeadToHead" SpName="Livescore_Sync_HeadToHead" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Player">
         <Setting Key="Livescore_Sync_Player_GetLastUpdatedTime" SpName="Livescore_Sync_Player_GetLastUpdatedTime" DbName="sabasports" Plain="0" />

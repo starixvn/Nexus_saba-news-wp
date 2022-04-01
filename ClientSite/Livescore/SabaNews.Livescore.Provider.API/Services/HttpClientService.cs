@@ -116,7 +116,7 @@
 
         private async Task<string> GetTokenAsync()
         {
-            var tokenModel = await cacheService.GetAsync<AuthToken>(CachingKeys.APITokenCacheKey);
+            var tokenModel = await cacheService.GetAsync<AuthToken>(CachingKeys.APITokenKey);
             if (tokenModel is null)
             {
                 tokenModel = await RefreshTokenAsync();
@@ -129,7 +129,7 @@
         {
             var tokenModel = await AuthenticateAsync();
 
-            await cacheService.SetAsync(CachingKeys.APITokenCacheKey, tokenModel,
+            await cacheService.SetAsync(CachingKeys.APITokenKey, tokenModel,
                 new CacheItemOptions
                 {
                     AbsoluteExpiration = tokenModel.TokenExpired
