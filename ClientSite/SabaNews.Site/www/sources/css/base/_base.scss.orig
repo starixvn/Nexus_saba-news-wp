@@ -52,18 +52,21 @@ body {
 =======
 .icon-livescore {
     font-size: 2rem;
+    @include iphone5{
+        font-size : 1.8rem;
+    }
 }
 
+>>>>>>> feat: add style calendar live score
 .start-active {
     &:before {
         color: #EF9123;
     }
 }
-
->>>>>>> feat: add style main live score
-
-.icon-back {
-    transform: rotate(180deg);
+.font-weight-bold{
+    font-weight : bold;
+}
+.icon-hidden {
     display: none;
 
     @include tableMobile {

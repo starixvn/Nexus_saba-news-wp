@@ -48,6 +48,9 @@ body {
     }
 }
 
+    @include iphone5{
+        font-size : 1.8rem;
+    }
 .start-active {
     &:before {
         color: #EF9123;

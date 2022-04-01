@@ -22,9 +22,15 @@
             text-align: center;
             cursor: pointer;
 
+
+
             @include tableMobile {
                 font-size: 1.1rem;
                 margin: 0 .5rem;
+            }
+
+            @include iphone5 {
+                font-size: .9rem;
             }
 
             .day-of-week {
@@ -105,6 +111,9 @@
                 font-size: .8rem;
                 line-height: .9rem;
                 padding: .3rem;
+            }
+            @include iphone5{
+                font-size : .7rem;
             }
         }
     }

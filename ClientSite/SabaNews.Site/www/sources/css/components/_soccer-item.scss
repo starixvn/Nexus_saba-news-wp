@@ -84,6 +84,10 @@
                             font-size: 1.2rem;
                             line-height: 1.6rem;
                         }
+
+                        @include iphone5 {
+                            font-size: 1.1rem;
+                        }
                     }
                 }
 
@@ -106,6 +110,9 @@
             .icon-live-right {
                 font-size: 1.5rem;
                 text-align: right;
+                @include iphone5{
+                    font-size : 1.2rem;
+                }
             }
         }
 
@@ -197,20 +204,30 @@
                                 @include Mobile {
                                     max-width: 10rem;
                                 }
+
+                                @include iphone5 {
+                                    font-size: 1rem;
+                                    max-width: 6rem;
+                                }
                             }
 
                             &-logo {
                                 width: 2.4rem;
                                 height: 2.4rem;
                                 margin-right: 1.6rem;
-                                @include tableMobile{
-                                    margin-right : .7rem;
+
+                                @include tableMobile {
+                                    margin-right: .7rem;
                                 }
                             }
 
                             &-result {
                                 position: absolute;
                                 right: 0;
+
+                                @include iphone5 {
+                                    font-size: 1.2rem;
+                                }
 
                                 .total-score {
                                     font-weight: bold;
@@ -233,9 +250,10 @@
                                     font-weight: 700;
                                     font-size: 1rem;
                                     line-height: 1.1rem;
-                                    padding :.3rem .5rem;
-                                    @include tableMobile{
-                                        margin-left : 1rem;
+                                    padding: .3rem .5rem;
+
+                                    @include tableMobile {
+                                        margin-left: 1rem;
                                     }
                                 }
                             }
