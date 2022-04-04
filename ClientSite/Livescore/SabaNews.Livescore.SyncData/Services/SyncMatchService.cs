@@ -36,7 +36,7 @@
             }
         }
 
-        public async Task SyncMatchDetailByIdsAsync(List<MatchDetailResponse> matchDetails)
+        public async Task SyncMatchDetailsAsync(List<MatchDetailResponse> matchDetails)
         {
             if (matchDetails.Any())
             {

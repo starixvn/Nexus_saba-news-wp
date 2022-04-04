@@ -12,7 +12,7 @@
 
         Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches);
 
-        Task SyncMatchDetailByIdsAsync(List<MatchDetailResponse> matchDetails);
+        Task SyncMatchDetailsAsync(List<MatchDetailResponse> matchDetails);
 
         Task SyncMatchLineupByIdsAsync(List<MatchLineupResponse> matchLineups);
 

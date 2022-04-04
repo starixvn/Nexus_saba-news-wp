@@ -37,6 +37,7 @@
             var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
             if (liveMatches.Any())
             {
+                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
                 var matchIds = liveMatches.Select(m => m.MatchId).ToArray();
                 await InsertTemporaryLiveMatch(matchIds);
                 var liveMatchLineup = await SyncMatchLineUpAsync(matchIds);

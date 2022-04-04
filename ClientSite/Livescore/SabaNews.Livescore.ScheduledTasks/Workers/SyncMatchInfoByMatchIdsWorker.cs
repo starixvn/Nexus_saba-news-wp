@@ -59,7 +59,7 @@
             };
             var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
 
-            await syncMatchService.SyncMatchDetailByIdsAsync(matches);
+            await syncMatchService.SyncMatchDetailsAsync(matches);
         }
 
         private async Task SyncCommentary(long[] matchIds)
