@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Extensions;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
@@ -61,6 +62,8 @@
         [HttpPost]
         public async Task<IActionResult> GetMatches([FromBody] GetMatchByEventDateCriteria criteria)
         {
+            criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC();
+            criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC();
             criteria.SportId = (short)SportType.Soccer;
             IEnumerable<Match> matches = await matchService.GetMatchByEventDateAsync(criteria);
             return Json(matches);
