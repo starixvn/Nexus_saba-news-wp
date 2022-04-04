@@ -1,6 +1,8 @@
 ﻿namespace SabaNews.Livescore.SyncData.Services
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Provider.API.Models.Team;
 
     public interface ISyncTeamService
     {
@@ -8,6 +10,6 @@
 
         Task SyncTeamListGreaterThanTeamIdAsync();
 
-        Task SyncHeadToHeadAsync(long homeTeamId, long awayTeamId);
+        Task SyncHeadToHeadAsync(List<HeadToHeadResponse> h2hResponseList);
     }
 }

@@ -25,15 +25,18 @@
         public bool IsHost { get; set; }
         public long MatchId { get; set; }
         public long EnemyId { get; set; }
-        public int[] TotalScores { get; set; }
-        public int[] HalfScores { get; set; }
+        public int?[] TotalScores { get; set; }
+        public int?[] HalfScores { get; set; }
     }
 
     public class TeamAgainstRecord
     {
         public long MatchId { get; set; }
+
+        [JsonProperty("hIdVsAid")]
         public long[] HomeIdVsAwayId { get; set; }
-        public int[] TotalScores { get; set; }
-        public int[] HalfScores { get; set; }
+
+        public int?[] TotalScores { get; set; }
+        public int?[] HalfScores { get; set; }
     }
 }

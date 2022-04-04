@@ -135,6 +135,7 @@
             services.AddHostedService<SyncSeasonPlayerHonorByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
+            services.AddHostedService<SyncHeadToHeadFromCurrentDateToFutureWorker>();
         }
     }
 }

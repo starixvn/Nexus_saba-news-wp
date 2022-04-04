@@ -32,29 +32,22 @@
 
         public override async Task ExecuteJobAsync()
         {
-            try
+            var temporayMatches = await syncMatchService.GetTemporaryMatchToFetchInfo(CommonConstants.MaxMatchDetailRowLimit);
+
+            if (temporayMatches.Any())
             {
-                var temporayMatches = await syncMatchService.GetTemporaryMatchToFetchInfo(CommonConstants.MaxMatchDetailRowLimit);
+                var matchIds = temporayMatches.Select(m => m.MatchId).ToArray();
 
-                if (temporayMatches.Any())
-                {
-                    var matchIds = temporayMatches.Select(m => m.MatchId).ToArray();
+                var syncLiveTextMatchIds = temporayMatches.Where(i => i.IsStarted).Select(m => m.MatchId).ToArray();
+                var syncLineupMatchIds = temporayMatches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
-                    var syncLiveTextMatchIds = temporayMatches.Where(i => i.IsStarted).Select(m => m.MatchId).ToArray();
-                    var syncLineupMatchIds = temporayMatches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
+                await syncMatchService.SyncMatchDetailByIdsAsync(matchIds);
+                await syncMatchService.SyncMatchLineupByIdsAsync(syncLineupMatchIds);
 
-                    await syncMatchService.SyncMatchDetailByIdsAsync(matchIds);
-                    await syncMatchService.SyncMatchLineupByIdsAsync(syncLineupMatchIds);
+                await SyncCommentary(syncLiveTextMatchIds);
+                await SyncIncidents(syncLiveTextMatchIds);
 
-                    await SyncCommentary(syncLiveTextMatchIds);
-                    await SyncIncidents(syncLiveTextMatchIds);
-
-                    await syncMatchService.RemoveMatchesFromTemporaryTable(matchIds);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                throw;
+                await syncMatchService.RemoveMatchesFromTemporaryTable(matchIds);
             }
         }
 

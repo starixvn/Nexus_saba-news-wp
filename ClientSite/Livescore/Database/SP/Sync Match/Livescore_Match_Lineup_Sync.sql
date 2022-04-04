@@ -107,10 +107,10 @@ BEGIN
         ) AS tpl
     INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId;
     
-    DELETE FROM livescore_team_lineup tlu
+    DELETE FROM livescore_lineup_detail tlu
     WHERE tlu.MatchId IN (SELECT DISTINCT MatchId FROM tmp_playerLineup);
 
-    INSERT INTO livescore_team_lineup(MatchId, TeamId, PlayerId, PlayerName, IsSubstitute, PlayerNumber, Position, CoordinateX, CoordinateY)
+    INSERT INTO livescore_lineup_detail(MatchId, TeamId, PlayerId, PlayerName, IsSubstitute, PlayerNumber, Position, CoordinateX, CoordinateY)
     SELECT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId

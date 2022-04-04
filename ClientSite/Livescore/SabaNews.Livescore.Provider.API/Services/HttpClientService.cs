@@ -100,6 +100,7 @@
             {
                 return default;
             }
+
             JObject jsonObject = JObject.Parse(json);
             if (IsSuccess(jsonObject))
             {

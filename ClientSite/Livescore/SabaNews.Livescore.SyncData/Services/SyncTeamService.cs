@@ -11,6 +11,7 @@
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Team;
     using SabaNews.Livescore.SyncData.Helpers;
+    using SabaNews.Livescore.SyncData.Models.Team;
     using SabaNews.Services;
 
     public class SyncTeamService : ISyncTeamService
@@ -29,13 +30,17 @@
             this.fetchTeamService = fetchTeamService;
         }
 
-        public async Task SyncHeadToHeadAsync(long homeTeamId, long awayTeamId)
+        public async Task SyncHeadToHeadAsync(List<HeadToHeadResponse> h2hResponseList)
         {
-            var teamHistoryRecords = await fetchTeamService.FetchHeadToHeadAsync(homeTeamId, awayTeamId);
-            var dataToImport = DataHelpers.GenerateTeamHistoryToImport(teamHistoryRecords);
+            var dataImport = new List<TeamHistory>();
+            foreach (var item in h2hResponseList)
+            {
+                dataImport.AddRange(DataHelpers.GenerateTeamHistoryToImport(item));
+            }
+
             var command = new ImportHeadToHeadCommand
             {
-                HeadToHeadJson = JsonConvert.SerializeObject(dataToImport)
+                HeadToHeadJson = JsonConvert.SerializeObject(dataImport)
             };
 
             await baseService.ExecuteNonQueryAsync(command);

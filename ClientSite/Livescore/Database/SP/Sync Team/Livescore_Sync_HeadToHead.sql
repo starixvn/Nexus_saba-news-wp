@@ -25,8 +25,8 @@ BEGIN
  # Variables
     SET errCode=0, errMsg='';
     
-    DROP TEMPORARY TABLE IF EXISTS tmp_match;
-    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_match(
+    DROP TEMPORARY TABLE IF EXISTS tmp_h2h;
+    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_h2h(
                         MatchId BIGINT NOT NULL,
                         HomeTeamId BIGINT NOT NULL,
                         AwayTeamId BIGINT NOT NULL,
@@ -35,7 +35,7 @@ BEGIN
                         HalfHomeScore SMALLINT,
                         HalfAwayScore SMALLINT);
     
-	INSERT INTO tmp_match(
+	INSERT INTO tmp_h2h(
         MatchId,
         HomeTeamId,
         AwayTeamId,
@@ -65,27 +65,33 @@ BEGIN
                 HalfHomeScore SMALLINT PATH "$.HalfHomeScore",
                 HalfAwayScore SMALLINT PATH "$.HalfAwayScore"
             )
-        ) AS m
-        LEFT JOIN livescore_match lm ON m.MatchId = lm.MatchId
-        WHERE lm.MatchId = NULL;
+        ) AS m;
 
-    INSERT INTO livescore_match(
+    INSERT INTO livescore_head_to_head(
         MatchId,
         HomeTeamId,
         AwayTeamId,
-        HomeTeamHalfScore,
-        AwayTeamHalfScore,
-        HomeTeamTotalScore,
-        AwayTeamTotalScore)
-    SELECT m.MatchId,
-            m.HomeTeamId,
-            m.AwayTeamId,
-            m.TotalHomeScore,
-            m.TotalAwayScore,
-            m.HalfHomeScore,
-            m.HalfAwayScore
-    FROM tmp_match m;
-        
+        HomeHalfScore,
+        AwayHalfScore,
+        HomeTotalScore,
+        AwayTotalScore,
+        EventDate)
+    SELECT h.MatchId,
+            h.HomeTeamId,
+            h.AwayTeamId,
+            h.HalfHomeScore,
+            h.HalfAwayScore,
+            h.TotalHomeScore,
+            h.TotalAwayScore,
+            m.StartTime
+    FROM tmp_h2h h
+    INNER JOIN livescore_match m ON h.MatchId = m.MatchId
+    ON DUPLICATE KEY UPDATE
+            HomeHalfScore = h.HomeHalfScore,
+            AwayHalfScore = h.AwayHalfScore,
+            HomeTotalScore = h.HomeTotalScore,
+            AwayTotalScore = h.AwayTotalScore
+            EventDate = m.StartTime;
 END;
 
 //

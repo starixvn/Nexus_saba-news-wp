@@ -60,7 +60,7 @@
             await Task.WhenAll(tasks);
         }
 
-        private void ExecludeFinishedMatches(List<MatchResponse> matches)
+        private static void ExecludeFinishedMatches(List<MatchResponse> matches)
         {
             matches.RemoveAll(m => m.GameType == (int)MatchStatus.Finished);
         }
