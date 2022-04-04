@@ -30,13 +30,11 @@ export default class DateBar extends PureComponent {
                     <div className="btn-live-realtime">{LangHelper.getResource('Live')}</div>
                 </div>
                 <WeekBar minDate={minDate} maxDate={maxDate} />
-                <div className="date-picker">
-                    <DatePickerField date={new Date(window.selectedEventDate)}
-                        minDate={minDate}
-                        maxDate={maxDate}
-                        onChange={date => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/${moment(date).format('YYYY-MM-DD')}`)}
-                    />
-                </div>
+                <DatePickerField date={new Date(window.selectedEventDate)}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    onChange={date => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/${moment(date).format('YYYY-MM-DD')}`)}
+                />
             </div>
         );
     }
