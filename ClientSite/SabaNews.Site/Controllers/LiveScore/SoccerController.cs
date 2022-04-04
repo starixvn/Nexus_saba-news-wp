@@ -1,32 +1,41 @@
 ﻿namespace SabaNews.Site.Controllers.Livescore
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services.Interfaces;
 
     public class SoccerController : Controller
     {
+        private readonly IPostService postService;
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
 
         public SoccerController(
+            IPostService postService,
             ILeagueService leagueService,
             IMatchService matchService)
         {
+            this.postService = postService;
             this.leagueService = leagueService;
             this.matchService = matchService;
         }
 
         [Route("lich-thi-dau/bong-da/{eventDate?}")]
-        public IActionResult Index(DateTime? eventDate)
+        public async Task<IActionResult> Index(DateTime? eventDate)
         {
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var today = DateTime.Today;
             var minDate = new DateTime(2020, 1, 1);
             var maxDate = new DateTime(today.Year + 2, 1, 1).AddYears(1).AddDays(-1);
@@ -44,7 +53,22 @@
                 }
             }
 
-            return View("~/Views/Livescore/Soccer/Index.cshtml", eventDate);
+            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, eventDate.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+            var description = pageDetail.Description ??= title;
+            var model = new PageViewModel
+            {
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = description
+                }
+            };
+            ViewBag.EventDate = eventDate;
+
+            return View("~/Views/Livescore/Soccer/Index.cshtml", model);
         }
 
         [Route("lich-thi-dau/bong-da/truc-tiep")]
