@@ -35,6 +35,12 @@ export default class DatePickerField extends PureComponent {
         });
     };
 
+    closeOnScroll = () => {
+        if (this.state.open) {
+            this.setState({ open: false });
+        }
+    };
+
     render() {
         const { ...rest } = this.props;
         const open = this.state.open;
@@ -53,6 +59,7 @@ export default class DatePickerField extends PureComponent {
                     selected={this.props.date}
                     {...rest}
                     open={open}
+                    closeOnScroll={this.closeOnScroll}
                 />
                 <span className={`date-picker-icon icon-livescore icon-live-calender ${open ? 'active' : ''}`}
                     onClick={this.handleToggle}

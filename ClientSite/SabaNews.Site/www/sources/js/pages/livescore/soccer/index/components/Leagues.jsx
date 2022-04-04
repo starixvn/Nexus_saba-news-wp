@@ -10,7 +10,7 @@ export default class Leagues extends PureComponent {
                     {
                         this.props.leagues.map(league => {
                             return (
-                                <div key={league.leagueId} className="leagues-item" title={league.leagueFullNameEN}>
+                                <div key={league.leagueId} className="leagues-item">
                                     <div className="leagues-name">
                                         <img className="logo" loading="lazy" src={league.icon} />
                                         <span className="text">{league.leagueFullNameEN}</span>
