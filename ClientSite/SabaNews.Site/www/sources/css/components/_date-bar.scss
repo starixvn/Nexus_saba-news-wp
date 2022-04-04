@@ -52,6 +52,16 @@
                 @include tableMobile {
                     padding: .5rem 0;
                 }
+
+                .day-of-week {
+                    color: #223453;
+                    font-weight: 600;
+                }
+
+                .date {
+                    font-weight: 700;
+                    color: #223453;
+                }
             }
         }
 
@@ -139,7 +149,7 @@
 
             &.active {
                 &:before {
-                    color: #E13C29;
+                    color: $color-title;
                 }
             }
         }

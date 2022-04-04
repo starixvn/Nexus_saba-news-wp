@@ -87,7 +87,7 @@
                     .livescore-name-team {
                         font-size: 1.6rem;
                         line-height: 2.4rem;
-
+                        color :$color-title;
                         @include tableMobile {
                             font-size: 1.2rem;
                             line-height: 1.6rem;
