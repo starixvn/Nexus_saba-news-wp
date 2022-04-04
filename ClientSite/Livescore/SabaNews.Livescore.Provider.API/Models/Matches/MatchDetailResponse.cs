@@ -1,9 +1,11 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Models.Matches
 {
+    using SabaNews.Livescore.Core.Enum;
+
     public class MatchDetailResponse
     {
         public long MatchId { get; set; }
-        public int SportId { get; set; } = 1;
+        public int SportId { get; set; } = (int)SportType.Soccer;
         public int? HTotalScore { get; set; } //Home total score
         public int? ATotalScore { get; set; } //Away total score
         public int? HHalfScore { get; set; } //Home half score

@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
     using Fanex.Caching;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Core.Constants;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
@@ -17,9 +16,9 @@
 
     internal class SyncLiveMatchWorker : BaseWorker
     {
-        private IFetchMatchService fetchMatchService;
-        private ICacheService cacheService;
-        private ISyncMatchService syncMatchService;
+        private readonly IFetchMatchService fetchMatchService;
+        private readonly ICacheService cacheService;
+        private readonly ISyncMatchService syncMatchService;
 
         public SyncLiveMatchWorker(IFetchMatchService fetchMatchService,
             ICacheService cacheService,
@@ -30,34 +29,57 @@
             this.fetchMatchService = fetchMatchService;
             this.cacheService = cacheService;
             this.syncMatchService = syncMatchService;
-            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLeagueListGreaterThanLeagueId);
+            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatch);
         }
 
         public override async Task ExecuteJobAsync()
         {
             var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
-            ExecludeNotStartMatches(liveMatches);
-
             if (liveMatches.Any())
             {
-                var previousLiveMatches = await GetPreviousLiveMatchIds();
+                var matchIds = liveMatches.Select(m => m.MatchId).ToArray();
+                await InsertTemporaryLiveMatch(matchIds);
+                var liveMatchLineup = await SyncMatchLineUpAsync(matchIds);
+                var liveMatchIncidents = await SyncLiveMatchIncidents(matchIds);
             }
+
+            //Convert to domain models
+            //Save to cache
+            //Push to Hub SignalR
         }
 
-        private async Task<List<MatchDetailResponse>> GetPreviousLiveMatchIds()
+        private Task InsertTemporaryLiveMatch(long[] matchIds)
         {
-            var preLiveMatches = await cacheService.GetAsync<List<MatchDetailResponse>>(CachingKeys.LiveMatchProgressKey);
+            throw new System.NotImplementedException();
+        }
 
-            if (preLiveMatches is null)
+        private async Task<List<MatchLineupResponse>> SyncMatchLineUpAsync(long[] matchIds)
+        {
+            var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
+            await syncMatchService.SyncMatchLineupByIdsAsync(liveMatchLineup);
+            return liveMatchLineup;
+        }
+
+        private async Task<List<MatchIncident>> SyncLiveMatchIncidents(long[] matchIds)
+        {
+            var tasks = new List<Task<List<MatchIncident>>>();
+            var incidents = new List<MatchIncident>();
+
+            foreach (var matchId in matchIds)
             {
+                tasks.Add(
+                    Task.Run(() => fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId))
+                    );
+            }
+            var incidentListTask = (await Task.WhenAll(tasks)).ToList();
+
+            foreach (var item in incidentListTask)
+            {
+                incidents.AddRange(item);
             }
 
-            return preLiveMatches;
-        }
-
-        private void ExecludeNotStartMatches(List<MatchDetailResponse> liveMatches)
-        {
-            liveMatches.RemoveAll(m => m.GameType is null || m.GameType == (int)MatchStatus.NotStarted);
+            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
+            return incidents;
         }
     }
 }

@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
@@ -16,13 +15,11 @@
     public class SyncMatchService : ISyncMatchService
     {
         private readonly IBaseService baseService;
-        private readonly IFetchMatchService fetchMatchService;
 
         public SyncMatchService(IBaseService baseService,
             IFetchMatchService fetchMatchService)
         {
             this.baseService = baseService;
-            this.fetchMatchService = fetchMatchService;
         }
 
         public async Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches)
@@ -39,17 +36,11 @@
             }
         }
 
-        public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
+        public async Task SyncMatchDetailByIdsAsync(List<MatchDetailResponse> matchDetails)
         {
-            if (matchIds.Any())
+            if (matchDetails.Any())
             {
-                var fetchMatchDetailParam = new SyncMatchParams
-                {
-                    MatchIds = matchIds
-                };
-                var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
-
-                var (matchScoreList, statisticList) = DataHelpers.GenerateMatchDetailInput(matches);
+                var (matchScoreList, statisticList) = DataHelpers.GenerateMatchDetailInput(matchDetails);
                 var command = new ImportMatchDetailCommand
                 {
                     MatchScoreJson = JsonConvert.SerializeObject(matchScoreList),
@@ -59,10 +50,8 @@
             }
         }
 
-        public async Task SyncMatchLineupByIdsAsync(long[] matchIds)
+        public async Task SyncMatchLineupByIdsAsync(List<MatchLineupResponse> matchLineups)
         {
-            var matchLineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
-
             if (matchLineups is not null && matchLineups.Any())
             {
                 var (lineups, players) = DataHelpers.GenerateMatchLineupInput(matchLineups);

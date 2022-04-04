@@ -12,9 +12,9 @@
 
         Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches);
 
-        Task SyncMatchDetailByIdsAsync(long[] matchIds);
+        Task SyncMatchDetailByIdsAsync(List<MatchDetailResponse> matchDetails);
 
-        Task SyncMatchLineupByIdsAsync(long[] matchIds);
+        Task SyncMatchLineupByIdsAsync(List<MatchLineupResponse> matchLineups);
 
         Task SyncMultipleMatchCommentaryAsync(List<MatchCommentary> commentaries);
 

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
@@ -41,14 +42,24 @@
                 var syncLiveTextMatchIds = temporayMatches.Where(i => i.IsStarted).Select(m => m.MatchId).ToArray();
                 var syncLineupMatchIds = temporayMatches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
 
-                await syncMatchService.SyncMatchDetailByIdsAsync(matchIds);
-                await syncMatchService.SyncMatchLineupByIdsAsync(syncLineupMatchIds);
-
+                await SyncMatchDetailByIdsAsync(matchIds);
+                await SyncLinupAsync(syncLineupMatchIds);
                 await SyncCommentary(syncLiveTextMatchIds);
                 await SyncIncidents(syncLiveTextMatchIds);
 
                 await syncMatchService.RemoveMatchesFromTemporaryTable(matchIds);
             }
+        }
+
+        public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
+        {
+            var fetchMatchDetailParam = new SyncMatchParams
+            {
+                MatchIds = matchIds
+            };
+            var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
+
+            await syncMatchService.SyncMatchDetailByIdsAsync(matches);
         }
 
         private async Task SyncCommentary(long[] matchIds)
@@ -70,6 +81,13 @@
             }
 
             await syncMatchService.SyncMultipleMatchCommentaryAsync(commentaries);
+        }
+
+        private async Task SyncLinupAsync(long[] matchIds)
+        {
+            var lineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
+
+            await syncMatchService.SyncMatchLineupByIdsAsync(lineups);
         }
 
         private async Task SyncIncidents(long[] matchIds)
