@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
-    <Function Name="Match">
+    <Function Name="Sync Match">
         <Setting Key="Livescore_Match_GetLastUpdatedTime" SpName="Livescore_Match_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Sync" SpName="Livescore_Match_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Detail_Sync" SpName="Livescore_Match_Detail_Sync" DbName="sabasports" Plain="0" />
@@ -14,6 +14,10 @@
     <Function Name="Match">
         <Setting Key="Livescore_Sync_League_GetLastUpdatedTime" SpName="Livescore_Sync_League_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_League_Import" SpName="Livescore_Sync_League_Import" DbName="sabasports" Plain="0" />
+    </Function>
+    <Function Name="Live match">
+        <Setting Key="Livescore_LiveMatch_Get" SpName="Livescore_LiveMatch_Get" DbName ="sabasports" Plain="0" />
+        <Setting Key="Livescore_Livematch_Temporary_Insert" SpName="Livescore_Livematch_Temporary_Insert" DbName ="sabasports" Plain="0" />
     </Function>
     <Function Name="Team">
         <Setting Key="Livescore_Sync_Team_GetLastUpdatedTime" SpName="Livescore_Sync_Team_GetLastUpdatedTime" DbName="sabasports" Plain="0" />

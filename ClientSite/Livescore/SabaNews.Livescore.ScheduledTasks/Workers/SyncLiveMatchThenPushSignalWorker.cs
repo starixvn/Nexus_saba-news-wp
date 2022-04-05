@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Fanex.Caching;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
@@ -12,56 +11,57 @@
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
     using SabaNews.Livescore.ScheduledTasks.Models;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncLiveMatchWorker : BaseWorker
+    internal class SyncLiveMatchThenPushSignalWorker : BaseWorker
     {
         private readonly IFetchMatchService fetchMatchService;
-        private readonly ICacheService cacheService;
+        private readonly IPushSignalService pushSignalService;
         private readonly ISyncMatchService syncMatchService;
+        private readonly ILiveMatchService liveMatchService;
+        private readonly IMatchService matchService;
 
-        public SyncLiveMatchWorker(IFetchMatchService fetchMatchService,
-            ICacheService cacheService,
+        public SyncLiveMatchThenPushSignalWorker(IFetchMatchService fetchMatchService,
+            IPushSignalService pushSignalService,
             ISyncMatchService syncMatchService,
+            ILiveMatchService liveMatchService,
+            IMatchService matchService,
             List<ScheduledTaskSettings> jobSettings,
             ILogServiceProvider logService) : base(logService)
         {
             this.fetchMatchService = fetchMatchService;
-            this.cacheService = cacheService;
+            this.pushSignalService = pushSignalService;
             this.syncMatchService = syncMatchService;
+            this.liveMatchService = liveMatchService;
+            this.matchService = matchService;
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatch);
         }
 
         public override async Task ExecuteJobAsync()
         {
             var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
-            if (liveMatches.Any())
+
+            var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
+
+            await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
+
+            if (matchIds is not null && matchIds.Length > 0)
             {
                 await syncMatchService.SyncMatchDetailsAsync(liveMatches);
-                var matchIds = liveMatches.Select(m => m.MatchId).ToArray();
-                await InsertTemporaryLiveMatch(matchIds);
-                var liveMatchLineup = await SyncMatchLineUpAsync(matchIds);
-                var liveMatchIncidents = await SyncLiveMatchIncidents(matchIds);
+                await SyncMatchLineUpAsync(matchIds);
+                await SyncLiveMatchIncidents(matchIds);
             }
-
-            //Convert to domain models
-            //Save to cache
-            //Push to Hub SignalR
         }
 
-        private Task InsertTemporaryLiveMatch(long[] matchIds)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private async Task<List<MatchLineupResponse>> SyncMatchLineUpAsync(long[] matchIds)
+        private async Task SyncMatchLineUpAsync(long[] matchIds)
         {
             var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
             await syncMatchService.SyncMatchLineupByIdsAsync(liveMatchLineup);
-            return liveMatchLineup;
         }
 
-        private async Task<List<MatchIncident>> SyncLiveMatchIncidents(long[] matchIds)
+        private async Task SyncLiveMatchIncidents(long[] matchIds)
         {
             var tasks = new List<Task<List<MatchIncident>>>();
             var incidents = new List<MatchIncident>();
@@ -80,7 +80,6 @@
             }
 
             await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
-            return incidents;
         }
     }
 }

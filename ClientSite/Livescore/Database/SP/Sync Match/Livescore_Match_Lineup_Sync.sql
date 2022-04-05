@@ -82,7 +82,7 @@ BEGIN
                 ELSE m.AwayTeamId
             END) As TeamId 
            ,tpl.PlayerId 
-           ,p.NameEN 
+           ,''
            ,tpl.Position 
            ,tpl.PlayerNumber 
            ,tpl.IsSubstitute 
@@ -114,7 +114,7 @@ BEGIN
     SELECT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId
-           ,tpl.PlayerName
+           ,p.NameEN
            ,tpl.IsSubstitute
            ,tpl.PlayerNumber
            ,tpl.Position

@@ -17,6 +17,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
+    using SabaNews.Livescore.Core.Models;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
@@ -114,6 +115,9 @@
 
             var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
             services.AddSingleton(appSettings);
+
+            var signalRSettings = configuration.GetSection(PushSignalSettings.ConfigurationKey).Get<PushSignalSettings>();
+            services.AddSingleton(signalRSettings);
         }
 
         private static void AddDependencyInjection(IServiceCollection services)

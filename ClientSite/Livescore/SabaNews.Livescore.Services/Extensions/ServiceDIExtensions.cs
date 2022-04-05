@@ -2,6 +2,7 @@
 {
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.Livescore.Repositories;
+    using SabaNews.Livescore.Services.Interfaces;
 
     public static class ServiceDIExtensions
     {
@@ -11,6 +12,7 @@
 
             services.AddScoped<ILeagueService, LeagueService>();
             services.AddScoped<IMatchService, MatchService>();
+            services.AddScoped<IPushSignalService, PushSignalService>();
         }
     }
 }
