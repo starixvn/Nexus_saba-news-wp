@@ -1860,7 +1860,8 @@
         "dependencies": {
           "SabaNews.Core": "1.0.0",
           "SabaNews.Livescore.Core": "1.0.0",
-          "SabaNews.Livescore.Provider.API": "1.0.0"
+          "SabaNews.Livescore.Provider.API": "1.0.0",
+          "SabaNews.Livescore.Repositories": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SabaNews.Livescore.SyncData.dll": {}

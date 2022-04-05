@@ -1834,6 +1834,20 @@
         "runtime": {
           "bin/placeholder/SabaNews.Livescore.Provider.API.dll": {}
         }
+      },
+      "SabaNews.Livescore.Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "SabaNews.Livescore.Core": "1.0.0",
+          "SabaNews.Livescore.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SabaNews.Livescore.Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SabaNews.Livescore.Repositories.dll": {}
+        }
       }
     }
   },
@@ -5228,13 +5242,19 @@
       "type": "project",
       "path": "../SabaNews.Livescore.Provider.API/SabaNews.Livescore.Provider.API.csproj",
       "msbuildProject": "../SabaNews.Livescore.Provider.API/SabaNews.Livescore.Provider.API.csproj"
+    },
+    "SabaNews.Livescore.Repositories/1.0.0": {
+      "type": "project",
+      "path": "../SabaNews.Livescore.Repositories/SabaNews.Livescore.Repositories.csproj",
+      "msbuildProject": "../SabaNews.Livescore.Repositories/SabaNews.Livescore.Repositories.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "SabaNews.Core >= 1.0.0",
       "SabaNews.Livescore.Core >= 1.0.0",
-      "SabaNews.Livescore.Provider.API >= 1.0.0"
+      "SabaNews.Livescore.Provider.API >= 1.0.0",
+      "SabaNews.Livescore.Repositories >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5275,6 +5295,9 @@
             },
             "D:\\Project\\sabanews\\ClientSite\\Livescore\\SabaNews.Livescore.Provider.API\\SabaNews.Livescore.Provider.API.csproj": {
               "projectPath": "D:\\Project\\sabanews\\ClientSite\\Livescore\\SabaNews.Livescore.Provider.API\\SabaNews.Livescore.Provider.API.csproj"
+            },
+            "D:\\Project\\sabanews\\ClientSite\\Livescore\\SabaNews.Livescore.Repositories\\SabaNews.Livescore.Repositories.csproj": {
+              "projectPath": "D:\\Project\\sabanews\\ClientSite\\Livescore\\SabaNews.Livescore.Repositories\\SabaNews.Livescore.Repositories.csproj"
             },
             "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj": {
               "projectPath": "D:\\Project\\sabanews\\ClientSite\\SabaNews.Core\\SabaNews.Core.csproj"
