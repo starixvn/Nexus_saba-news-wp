@@ -1,6 +1,4 @@
-﻿@using Microsoft.Extensions.Configuration
-@using SabaNews.Models.ViewModel.Posts
-@inject IConfiguration Configuration
+﻿@using SabaNews.Models.ViewModel.Posts
 @model PageViewModel
 @{ 
     var selectedEventDate = (DateTime?)ViewBag.EventDate;
@@ -16,7 +14,6 @@
 }
 @section Scripts{
     <script type="text/javascript">
-        window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
         window.selectedEventDate = '@selectedEventDate?.ToString("yyyy-MM-dd")';
         window.isLiveMatch = false;
     </script>

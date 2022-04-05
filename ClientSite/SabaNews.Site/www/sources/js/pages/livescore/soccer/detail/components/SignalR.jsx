@@ -21,7 +21,7 @@ export class SignalR extends Component {
         };
 
         this.connection = new signalR.HubConnectionBuilder()
-            .withUrl(window.signalRHubUrl, options)
+            .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
             .withAutomaticReconnect()
             .build();

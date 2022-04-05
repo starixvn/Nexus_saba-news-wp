@@ -16,6 +16,7 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Services;
     using SabaNews.Site.Extensions;
+    using SabaNews.Site.Hubs;
     using Sentry;
     using StackExchange.Redis;
 
@@ -86,6 +88,11 @@
             {
                 options.Configuration = redisConfig;
                 options.InstanceName = $"SabaSports.Session-";
+            });
+
+            services.AddSignalR(hubOptions =>
+            {
+                hubOptions.EnableDetailedErrors = true;
             });
 
             services.RegisterCookiePolicy();
@@ -181,6 +188,11 @@
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapHub<LivescoreHub>("/livescore/hubs", options =>
+                {
+                    options.Transports = HttpTransportType.LongPolling;
+                });
             });
         }
     }

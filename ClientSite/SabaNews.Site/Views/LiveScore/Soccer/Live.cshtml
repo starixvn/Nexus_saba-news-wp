@@ -1,6 +1,4 @@
-﻿@using Microsoft.Extensions.Configuration
-@inject IConfiguration Configuration
-@using SabaNews.Models.ViewModel.Posts
+﻿@using SabaNews.Models.ViewModel.Posts
 @model PageViewModel
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
@@ -13,7 +11,6 @@
 }
 @section Scripts{
     <script type="text/javascript">
-        window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
         window.selectedEventDate = '';
         window.isLiveMatch = true;
     </script>
