@@ -7,6 +7,7 @@ COPY ["SabaNews.Services", "SabaNews.Services"]
 COPY ["SabaNews.Criteria", "SabaNews.Criteria"]
 COPY ["SabaNews.Core", "SabaNews.Core"]
 COPY ["SabaNews.Resources", "SabaNews.Resources"]
+COPY ["SabaNews.Livescore.Services", "SabaNews.Livescore.Services"]
 COPY ["SabaNews.Site/SabaNews.Site.csproj", "SabaNews.Site/"]
 COPY ["nuget.config", ""]
 
