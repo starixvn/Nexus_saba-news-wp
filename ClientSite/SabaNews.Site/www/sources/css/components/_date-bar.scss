@@ -6,6 +6,10 @@
     padding: .6rem;
     border-radius: 3px;
 
+    @include tableMobile {
+        justify-content: space-between;
+    }
+
     .livescore-soccer-week-bar {
         display: flex;
         align-items: center;
@@ -13,6 +17,11 @@
         width: 80%;
 
         @include tableMobile {
+            justify-content: space-between;
+            width: 60%;
+        }
+
+        @include Mobile {
             width: 70%;
             justify-content: space-around;
         }
