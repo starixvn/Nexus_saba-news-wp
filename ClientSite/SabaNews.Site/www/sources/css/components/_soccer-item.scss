@@ -1,5 +1,4 @@
-﻿
-.soccer-match-grid {
+﻿.soccer-match-grid {
     margin-top: 1.2rem;
 
     @include tableMobile {
@@ -25,7 +24,7 @@
             align-items: center;
             background-color: #e9e9e9;
             border-bottom: 1px solid $border-color;
-            @include grid( 1fr 4.5rem 4.5rem 4.5rem, unset, 0);
+            @include grid(1fr 4.5rem, unset, 0);
             grid-auto-flow: column;
             height: 6rem;
             padding: 0 2.6rem;

@@ -12,4 +12,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SabaNews.Livescore.Models\SabaNews.Livescore.Models.csproj" />
+  </ItemGroup>
+
 </Project>

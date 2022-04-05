@@ -242,5 +242,9 @@
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
+        <Setting Key="Livescore_Match_GetLiveMatch" SpName="Livescore_Match_GetLiveMatch" DbName="sabasports" Plain="0">
+            <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
+            <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
+        </Setting>
     </Function>
 </Functions>

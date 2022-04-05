@@ -7,6 +7,6 @@
 
     public interface IMatchRepository
     {
-        Task<IEnumerable<Match>> GetMatchByEventDateAsync(ICriteria criteria);
+        Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria);
     }
 }

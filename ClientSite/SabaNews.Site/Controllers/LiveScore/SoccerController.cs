@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
@@ -36,24 +35,7 @@
         public async Task<IActionResult> Index(DateTime? eventDate)
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var today = DateTime.Today;
-            var minDate = new DateTime(2020, 1, 1);
-            var maxDate = new DateTime(today.Year + 2, 1, 1).AddYears(1).AddDays(-1);
-            eventDate = eventDate.HasValue ? eventDate.Value.Date : DateTime.Today;
-
-            if(eventDate.Value < minDate.Date)
-            {
-                eventDate = minDate;
-            }
-            else
-            {
-                if(eventDate.Value > maxDate)
-                {
-                    eventDate = maxDate;
-                }
-            }
-
-            var title = pageDetail.SEOTitle != null ? pageDetail.SEOTitle.Replace(Constants.CurrentDateVar, eventDate.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)) : pageDetail.Title;
+            var title = pageDetail.Title;
             var description = pageDetail.Description ??= title;
             var model = new PageViewModel
             {
@@ -72,9 +54,23 @@
         }
 
         [Route("lich-thi-dau/bong-da/truc-tiep")]
-        public IActionResult Live()
+        public async Task<IActionResult> Live()
         {
-            return View("~/Views/Livescore/Soccer/Live.cshtml", DateTime.Today);
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
+            var title = pageDetail.Title;
+            var description = pageDetail.Description ??= title;
+            var model = new PageViewModel
+            {
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = description
+                }
+            };
+            return View("~/Views/Livescore/Soccer/Live.cshtml", model);
         }
 
         [Route("lich-thi-dau/bong-da/detail/{matchId:long}")]
@@ -84,19 +80,26 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMatches([FromBody] GetMatchByEventDateCriteria criteria)
+        public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
         {
-            criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC();
-            criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC();
+            criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC(criteria.Timezone);
+            criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC(criteria.Timezone);
             criteria.SportId = (short)SportType.Soccer;
-            IEnumerable<Match> matches = await matchService.GetMatchByEventDateAsync(criteria);
+            IList<Match> matches = await matchService.GetMatchByDateAsync(criteria);
+            return Json(matches);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetLiveMatches()
+        {
+            IList<Match> matches = await matchService.GetLiveMatchAsync();
             return Json(matches);
         }
 
         [HttpPost]
         public async Task<IActionResult> GetMajorLeagues()
         {
-            IEnumerable<League> leagues = await leagueService.GetMajorLeagueAsync();
+            IList<League> leagues = await leagueService.GetMajorLeagueAsync();
             return Json(leagues);
         }
 

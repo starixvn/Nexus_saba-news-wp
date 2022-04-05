@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Fanex.Data;
     using Fanex.Data.Repository;
@@ -11,11 +12,11 @@
 
     public class MatchRepository : IMatchRepository
     {
-        public async Task<IEnumerable<Match>> GetMatchByEventDateAsync(ICriteria criteria)
+        public async Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                return await db.QueryAsync<Match, League, Team, Team, Match>(
+                var matches = await db.QueryAsync<Match, League, Team, Team, Match>(
                         (match, league, home, away) =>
                         {
                             match.League = league;
@@ -26,6 +27,7 @@
                         },
                         splitOn: "LeagueId, HomeTeamId, AwayTeamId",
                         parameterSet: criteria);
+                return matches.ToList();
             }
         }
     }

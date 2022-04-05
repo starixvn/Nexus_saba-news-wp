@@ -1,6 +1,7 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
-@model DateTime
+@using SabaNews.Models.ViewModel.Posts
+@model PageViewModel
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -13,8 +14,7 @@
 @section Scripts{
     <script type="text/javascript">
         window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
-        window.today = '@DateTime.Today.ToString("yyyy-MM-dd")';
-        window.selectedEventDate = '@Model.ToString("yyyy-MM-dd")';
+        window.selectedEventDate = '';
         window.isLiveMatch = true;
     </script>
     <environment include="Development">
@@ -30,5 +30,14 @@
         <script src="~/js/pro/pages/livescore/soccer/index.chunk.js" asp-append-version="true"></script>
     </environment>
 }
-@(await Component.InvokeAsync("Menu", new { page = "home-page" }))
+@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Category.OgDescription' />
+    <meta property="og:title" content='@Model.Category.OgTitle' />
+    <meta property="og:image" content='@Model.Category.OgImage' />
+}
+@section Title {
+    @Model.Header.Title
+}
+@(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
 <div id="app-container"></div>

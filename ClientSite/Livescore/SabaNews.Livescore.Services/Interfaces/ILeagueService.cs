@@ -6,6 +6,6 @@
 
     public interface ILeagueService
     {
-        Task<IEnumerable<League>> GetMajorLeagueAsync();
+        Task<IList<League>> GetMajorLeagueAsync();
     }
 }

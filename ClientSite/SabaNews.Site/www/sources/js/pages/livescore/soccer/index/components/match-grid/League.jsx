@@ -15,9 +15,6 @@ export default class League extends PureComponent {
                         <div className="livescore-logo-team"><img loading="lazy" src={league.icon} /></div>
                         <span className="livescore-name-team" dangerouslySetInnerHTML={{ __html: displayValue }} />
                     </div>
-                    <div className="soccer-match-grid-item-schedule">LTĐ</div>
-                    <div className="soccer-match-grid-item-result">KQ</div>
-                    <div className="soccer-match-grid-item-standings">BXH</div>
                     <span className="icon-hidden icon-livescore icon-live-right" />
                 </div>
                 <div className="soccer-match-grid-item-body">

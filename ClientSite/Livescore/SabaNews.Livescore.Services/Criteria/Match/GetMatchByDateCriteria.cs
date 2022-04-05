@@ -4,10 +4,13 @@
     using Fanex.Data;
     using Fanex.Data.Repository;
 
-    public class GetMatchByEventDateCriteria : CriteriaBase
+    public class GetMatchByDateCriteria : CriteriaBase
     {
         [SpParam(Ignored = true)]
         public DateTime EventDate { get; set; }
+
+        [SpParam(Ignored = true)]
+        public float Timezone { get; set; }
 
         public DateTime FromTime { get; set; }
         public DateTime ToTime { get; set; }

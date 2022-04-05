@@ -1,12 +1,14 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
 import LangHelper from '@jsroot/common/langHelper';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
 
 export default class Match extends PureComponent {
     getMatchStage = match => {
         switch (match.status) {
             case MatchStatus.NotStarted:
-                return <span className="font-weight-bold">{match.schedule}</span>;
+                const startTime = DateTimeService.convertFromUTC(match.startTime);
+                return <span className="font-weight-bold">{DateTimeService.toShortTimeFormat(startTime)}</span>;
                 break;
 
             case MatchStatus.FirstHalf:

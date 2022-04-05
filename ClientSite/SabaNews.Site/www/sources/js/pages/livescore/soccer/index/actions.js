@@ -7,19 +7,24 @@ import {
 } from './soccerMatchSlice';
 
 const getMajorLeagues = () => async dispatch => {
-    //Site.blockUI();
     const url = Site.resolveClientUrl('soccer/getMajorLeagues');
     await DataService.postDataAsync(url).then(response => {
         dispatch(setMajorLeagues(response.data));
-    }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
+    }).catch(Site.handleAxiosError);
 };
 
 const getMatches = params => async dispatch => {
-    //Site.blockUI();
     const url = Site.resolveClientUrl('soccer/getMatches');
     await DataService.postDataAsync(url, params).then(response => {
         dispatch(setMatches(response.data));
-    }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
+    }).catch(Site.handleAxiosError);
+};
+
+const getLiveMatches = () => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getLiveMatches');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setMatches(response.data));
+    }).catch(Site.handleAxiosError);
 };
 
 export const ActionCreators = {
@@ -27,5 +32,6 @@ export const ActionCreators = {
     setMajorLeagues,
     setMatches,
     getMajorLeagues,
-    getMatches
+    getMatches,
+    getLiveMatches
 };

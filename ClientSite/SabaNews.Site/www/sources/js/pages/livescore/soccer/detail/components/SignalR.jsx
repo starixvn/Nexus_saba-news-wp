@@ -31,13 +31,16 @@ export class SignalR extends Component {
         });
 
         this.connection.start().then(() => {
-            this.connection.invoke('AddNewSoccerGroup', window.selectedMatchId)
+            this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
                 .then(() => console.log(`join group ${window.selectedMatchId}`))
                 .catch(err => console.error(err.toString()));
         }).catch(err => console.error(err.toString()));
     }
 
     componentWillUnmount() {
+        this.connection.invoke('LeaveSoccerGroup', window.selectedMatchId)
+            .then(() => console.log(`leave group ${window.selectedMatchId}`))
+            .catch(err => console.error(err.toString()));
         this.connection.stop();
     }
 

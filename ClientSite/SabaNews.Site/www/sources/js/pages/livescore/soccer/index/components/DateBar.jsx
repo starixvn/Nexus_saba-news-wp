@@ -3,6 +3,7 @@ import moment from 'moment';
 import DatePickerField from './DatePickerField';
 import WeekBar from './WeekBar';
 import Site from '@jsroot/common/site';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class DateBar extends PureComponent {
@@ -13,7 +14,8 @@ export default class DateBar extends PureComponent {
             ]
         });
         moment.locale('vi');
-        const today = new Date(window.today);
+        const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
+        const today = new Date(DateTimeService.getCurrentClientDateTime());
         const minDate = new Date(2021, 0, 1);
         const maxDate = new Date(today.getFullYear() + 1, 12, 0);
         const matches = this.props.matches;
@@ -30,7 +32,7 @@ export default class DateBar extends PureComponent {
                     <div className="btn-live-realtime">{LangHelper.getResource('Live')}</div>
                 </div>
                 <WeekBar minDate={minDate} maxDate={maxDate} />
-                <DatePickerField date={new Date(window.selectedEventDate)}
+                <DatePickerField date={new Date(selectedEventDate)}
                     minDate={minDate}
                     maxDate={maxDate}
                     onChange={date => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/${moment(date).format('YYYY-MM-DD')}`)}

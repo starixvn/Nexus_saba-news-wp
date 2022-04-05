@@ -8,7 +8,9 @@
 
     public interface IMatchService
     {
-        Task<IEnumerable<Match>> GetMatchByEventDateAsync(GetMatchByEventDateCriteria criteria);
+        Task<IList<Match>> GetMatchByDateAsync(GetMatchByDateCriteria criteria);
+
+        Task<IList<Match>> GetLiveMatchAsync();
 
         Task<MathGeneralInfo> GetMatchDetailAsync(GetMatchDetailCriteria criteria);
 

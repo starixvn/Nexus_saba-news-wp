@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -15,10 +16,11 @@
             this.baseService = baseService;
         }
 
-        public async Task<IEnumerable<League>> GetMajorLeagueAsync()
+        public async Task<IList<League>> GetMajorLeagueAsync()
         {
             var criteria = new GetMajorLeagueCriteria();
-            return await baseService.GetDataAsync<League>(criteria);
+            var leagues = await baseService.GetDataAsync<League>(criteria);
+            return leagues.ToList();
         }
     }
 }

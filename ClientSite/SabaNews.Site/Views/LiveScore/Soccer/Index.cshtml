@@ -2,6 +2,9 @@
 @using SabaNews.Models.ViewModel.Posts
 @inject IConfiguration Configuration
 @model PageViewModel
+@{ 
+    var selectedEventDate = (DateTime?)ViewBag.EventDate;
+}
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -14,8 +17,7 @@
 @section Scripts{
     <script type="text/javascript">
         window.signalRHubUrl = '@Configuration["SignalRHubUrl"]';
-        window.today = '@DateTime.Today.ToString("yyyy-MM-dd")';
-        window.selectedEventDate = '@ViewBag.EventDate.ToString("yyyy-MM-dd")';
+        window.selectedEventDate = '@selectedEventDate?.ToString("yyyy-MM-dd")';
         window.isLiveMatch = false;
     </script>
     <environment include="Development">

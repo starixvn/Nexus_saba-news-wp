@@ -7,26 +7,27 @@ import DateBar from './DateBar';
 import SearchBar from './SearchBar';
 import MatchGrid from './match-grid/index';
 import SignalR from './SignalR';
-import { MatchStatus } from '@jsroot/common/constants';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export class AppContainer extends Component {
     componentDidMount() {
         this.props.getMajorLeagues();
-        this.props.getMatches({ eventDate: window.selectedEventDate });
+
+        if (window.isLiveMatch) {
+            this.props.getLiveMatches();
+        } else {
+            const eventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
+            this.props.getMatches({
+                eventDate: DateTimeService.formatDateTime(eventDate, 'YYYY-MM-DD'),
+                timezone: DateTimeService.getClientTimezone()
+            });
+        }
     }
 
     render() {
         let matches = this.props.matches;
         if (matches === null) {
             return null;
-        }
-
-        if (window.isLiveMatch) {
-            matches = matches.filter(match => match.status === MatchStatus.FirstHalf
-                || match.status === MatchStatus.Intermission
-                || match.status === MatchStatus.SecondHalf
-                || match.status === MatchStatus.ExtraTime
-                || match.status === MatchStatus.PenaltyShootout);
         }
 
         return (

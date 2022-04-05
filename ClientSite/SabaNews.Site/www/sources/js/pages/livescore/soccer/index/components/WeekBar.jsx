@@ -1,6 +1,7 @@
 ﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
 import Site from '@jsroot/common/site';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class WeekBar extends PureComponent {
@@ -40,7 +41,8 @@ export default class WeekBar extends PureComponent {
 
     getDateRanges = () => {
         const dates = [];
-        const date = moment(window.selectedEventDate);
+        const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
+        const date = moment(selectedEventDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
         let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
@@ -90,9 +92,10 @@ export default class WeekBar extends PureComponent {
     };
 
     render() {
+        const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
         const dateRanges = this.state.dateRanges;
-        const today = moment(window.today);
-        const date = moment(window.selectedEventDate);
+        const today = moment(DateTimeService.getCurrentClientDateTime());
+        const date = moment(selectedEventDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
 

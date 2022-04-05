@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using SabaNews.Core.Extensions;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Repositories;
@@ -21,18 +20,16 @@
             this.baseService = baseService;
         }
 
-        public async Task<IEnumerable<Match>> GetMatchByEventDateAsync(GetMatchByEventDateCriteria criteria)
+        public async Task<IList<Match>> GetMatchByDateAsync(GetMatchByDateCriteria criteria)
         {
-            IEnumerable<Match> matches = await matchRepository.GetMatchByEventDateAsync(criteria);
-            foreach(var match in matches)
-            {
-                match.StartTime = match.StartTime.ConvertFromUTC();
-                match.EndTime = match.EndTime.ConvertFromUTC();
-            }
-
-            return matches;
+            return await matchRepository.GetMatchByDateAsync(criteria);
         }
 
+        public async Task<IList<Match>> GetLiveMatchAsync()
+        {
+            var criteria = new GetLiveMatchCriteria();
+            return await matchRepository.GetMatchByDateAsync(criteria);
+        }
 
         public async Task<MathGeneralInfo> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
         {
