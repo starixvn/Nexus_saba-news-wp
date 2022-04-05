@@ -116,6 +116,11 @@
         padding: 0 1.5rem;
 
         @include tableMobile {
+            padding: 0 1.5rem 0 0;
+            width: 15%;
+        }
+
+        @include Mobile {
             padding: 0 .5rem 0 0;
             width: 20%;
         }
@@ -131,6 +136,12 @@
             padding: .5rem 0;
 
             @include tableMobile {
+                font-size: 1.2rem;
+                line-height: .9rem;
+                padding: .6rem 0;
+            }
+
+            @include Mobile {
                 font-size: .8rem;
                 line-height: .9rem;
                 padding: .3rem 0;
