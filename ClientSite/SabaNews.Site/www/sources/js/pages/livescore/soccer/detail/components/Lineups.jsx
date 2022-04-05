@@ -371,6 +371,7 @@ export class Lineups extends Component {
 
 
     render() {
+        console.log("lineup");
         if (!this.props.lineup || !this.props.lineup.generalInfo) {
             return null;
         }

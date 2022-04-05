@@ -5,7 +5,12 @@ const soccerMatchDetailSlice = createSlice({
     initialState: {
         soccerMatch: null,
         lineup: null,
-        isLiveMatch: false
+        isLiveMatch: false,
+        loadTabStatus: {
+            enableTabMatchSummary: true,
+            enableTabStatistics: true,
+            enableTabLineUp: true
+        }
     },
     reducers: {
         setSoccerMatch: (state, action) => {
@@ -16,6 +21,9 @@ const soccerMatchDetailSlice = createSlice({
         },
         setIsLiveMatch: (state, action) => {
             state.isLiveMatch = action.payload;
+        },
+        setloadTabStatus: (state, action) => {
+            state.loadTabStatus = action.payload;
         }
     }
 });
@@ -25,7 +33,8 @@ const { actions, reducer } = soccerMatchDetailSlice;
 export const {
     setSoccerMatch,
     setLineup,
-    setIsLiveMatch
+    setIsLiveMatch,
+    setloadTabStatus
 } = actions;
 
 export default reducer;

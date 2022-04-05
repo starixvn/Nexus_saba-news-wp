@@ -759,6 +759,7 @@ svg.fill-red {
     border: solid 1px #e0e0e0;
     border-radius: 12px;
     overflow: hidden;
+    margin-top: 2rem;
 }
 
 .lineup-head {
@@ -792,7 +793,7 @@ svg.fill-red {
     width: 100%;
     float: left;
     height: 720px;
-    background: url(../../../../images/pitch.jpg) repeat-y;
+    background: url(../../../../images/pitch-vertical.jpg) repeat-y;
     background-size: 100% 720px;
     background-color: #6d9b50;
 }
@@ -842,7 +843,8 @@ svg.fill-red {
     line-height: 18px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    color: #ffffff;
+    color: #ffffffa1;
+    font-weight: bold;
 }
 
 .team-ao {

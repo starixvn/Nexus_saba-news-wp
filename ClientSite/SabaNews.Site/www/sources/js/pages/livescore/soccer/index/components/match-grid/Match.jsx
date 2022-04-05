@@ -2,6 +2,7 @@
 import LangHelper from '@jsroot/common/langHelper';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
+import Site from '@jsroot/common/site';
 
 export default class Match extends PureComponent {
     getMatchStage = match => {
@@ -83,7 +84,7 @@ export default class Match extends PureComponent {
         const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
 
         return (
-            <div className="soccer-match-item">
+            <div className="soccer-match-item" onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}>
                 <i className="icon-livescore icon-live-start-outline" />
                 <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
                 <div className="soccer-match-team">

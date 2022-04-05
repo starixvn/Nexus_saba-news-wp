@@ -8,7 +8,6 @@ export default class PenaltyShootOut extends Component {
     
     render() {
         const {penaltyShootOutData} = this.props;
-        
         return (
             <>
                 <div className="item-dienbien flexbox">

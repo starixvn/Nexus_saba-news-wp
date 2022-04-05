@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Site from '@jsroot/common/site';
-import moment from 'moment';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
         super(props);
     }
-    
     getMatchScores = (match, incidents) => {
         if(!incidents) {
             return (<div className="detail-score-wrapper live">
@@ -39,7 +38,6 @@ export default class MatchGenetalInfo extends Component {
                                 (numberHomePenaltyShootOut !== 0 || numberAwayPenaltyShootOut !== 0) &&
                                 <p>Pen: {numberHomePenaltyShootOut} - {numberAwayPenaltyShootOut}</p>
                             }
-                            
                         </div>
                 </>;
         }
@@ -74,23 +72,20 @@ export default class MatchGenetalInfo extends Component {
                         <span className="yellow-card">{numberYellowCard}</span>
                     </>
                 }
-                            
             </div>
         )
-        
     }
 
     render() {
         if (!this.props.soccerMatch || !this.props.soccerMatch.generalInfo) {
             return null;
         }
-        
         const { generalInfo, incidents } = this.props.soccerMatch;
-        const startTime = moment(generalInfo.startTime);
+        const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>
-                <div className="tournament-header">{generalInfo.leagueNameEN} 
-                - {startTime.format("DD/MM/YYYY")} 
+                <div className="tournament-header">{generalInfo.leagueFullNameEN}
+                - {startTime.format("DD/MM/YYYY")}
                 { generalInfo.round !== null ? " - Vòng " + generalInfo.round : "" }
                 </div>
 
@@ -99,12 +94,12 @@ export default class MatchGenetalInfo extends Component {
                     <div className="duel-participant-home">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt={generalInfo.homeTeamNameEN} loading="lazy"
+                                <img width="58" height="58" alt={generalInfo.homeTeamFullNameEN} loading="lazy"
                                     src={generalInfo.homeTeamIcon} />
                             </a>
                         </div>
                         <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.homeTeamNameEN}</div>
+                            <div className="participant-name">{generalInfo.homeTeamFullNameEN}</div>
                             {this.getBallAndCardNumber(incidents, IncidentPosition.Home)}
                         </div>
                     </div>
@@ -114,12 +109,12 @@ export default class MatchGenetalInfo extends Component {
                     <div className="duel-participant-away">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt={generalInfo.awayTeamNameEN} loading="lazy"
+                                <img width="58" height="58" alt={generalInfo.awayTeamFullNameEN} loading="lazy"
                                     src={generalInfo.awayTeamIcon} />
                             </a>
                         </div>
                         <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.awayTeamNameEN}</div>
+                            <div className="participant-name">{generalInfo.awayTeamFullNameEN}</div>
                             {this.getBallAndCardNumber(incidents, IncidentPosition.Away)}
                         </div>
                     </div>

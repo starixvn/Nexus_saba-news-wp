@@ -10,11 +10,11 @@
         public string LeagueFullNameEN { get; set; }
         public int HomeTeamId { get; set; }
         public string HomeTeamNameEN { get; set; }
-        public string TeamFullNameEN { get; set; }
+        public string HomeTeamFullNameEN { get; set; }
         public string HomeTeamIcon { get; set; }
         public int AwayTeamId { get; set; }
         public string AwayTeamNameEN { get; set; }
-        public string AwayFullNameEN { get; set; }
+        public string AwayTeamFullNameEN { get; set; }
         public string AwayTeamIcon { get; set; }
         public string Stage { get; set; }
         public int CurrentRound { get; set; }

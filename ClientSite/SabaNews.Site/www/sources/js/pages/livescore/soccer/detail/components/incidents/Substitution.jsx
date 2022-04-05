@@ -13,9 +13,9 @@ export default class Substitution extends Component {
         let time = incident.time + "'";
         if(hasInjuryTime) {
             if(incident.time >= 45 && incident.time < 90) {
-                time = "45" + "+" + (incident.time - 45) + "'"; 
+                time = "45" + "+" + (incident.time - 45) + "'";
             } else {
-                time = "90" + "+" + (incident.time - 90) + "'"; 
+                time = "90" + "+" + (incident.time - 90) + "'";
             }
         }
         return (

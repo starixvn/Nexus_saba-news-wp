@@ -32,14 +32,12 @@ export default class MatchSummary extends Component {
         }
         return (
             <div className="block width_common block-detail-trandau">
-                
                 <div className="width_common box-dienbien">
                     <div className="head-top-team">
                         <div className="flexbox time-event">
                             <p>Bắt đầu</p>
                         </div>
                     </div>
-                    
                     {
                         incidents.map((incident, key) => {
                             if(Site.CheckIncidentTypeToUpdateScore(incident.type)) {
@@ -77,22 +75,21 @@ export default class MatchSummary extends Component {
 
                             if(incident.type === IncidentStatus.Substitution) {
                                 return (
-                                    <Substitution 
+                                    <Substitution
                                         key={key}
-                                        incident = {incident} 
+                                        incident = {incident}
                                         hasInjuryTime = {hasInjuryTime}
                                     />
                                 )
                             } else if(Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
                                 return (
-                                    <GeneralIncident 
+                                    <GeneralIncident
                                         key={key}
-                                        incident = {incident} 
+                                        incident = {incident}
                                         processScore = {processScore}
                                         hasInjuryTime = {hasInjuryTime}
                                     />
                                 )
-                                
                             } else if(Site.CheckIncidentTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
                                 return (
                                     <div className="head-top-team" key={key}>
