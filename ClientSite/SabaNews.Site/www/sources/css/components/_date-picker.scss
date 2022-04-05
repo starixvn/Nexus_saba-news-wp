@@ -129,9 +129,10 @@
     border: none;
     text-indent: 0;
     top: 22px;
-    font-size : 2rem;
-    width : auto;
-    height : auto;
+    font-size: 2rem;
+    width: auto;
+    height: auto;
+
     &:focus {
         outline: none;
     }
@@ -142,10 +143,11 @@
         margin-left: -4px;
         font-family: "Fraud-Sensor";
         content: '\e97d';
+        color: #848A95;
     }
 
     &.react-datepicker__navigation--next {
-        right: 40px;
+        right: 25px;
     }
 
     &.react-datepicker__navigation--next.react-datepicker__navigation--next--with-time {
@@ -154,7 +156,8 @@
 
     &.react-datepicker__navigation--previous {
         left: auto;
-        right : 70px;
+        right: 65px;
+
         &:before {
             transform: rotate(180deg);
         }
