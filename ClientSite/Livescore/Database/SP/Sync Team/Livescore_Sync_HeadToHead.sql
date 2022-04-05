@@ -12,10 +12,10 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Sync_HeadToHead(
                             "MatchId": 6227374,
                             "HomeTeamId": 52733,
                             "AwayTeamId": 58293,
-                            "TotalHomeScore": 1,
-                            "TotalAwayScore": 0,
-                            "HalfHomeScore": 0,
-                            "HalfAwayScore": 0,
+                            "HomeTotalScore": 1,
+                            "AwayTotalScore": 0,
+                            "HomeHalfScore": 0,
+                            "AwayHalfScore": 0,
                         }]
         Revisions: - 20220328@Oliver: init
     */
@@ -30,26 +30,26 @@ BEGIN
                         MatchId BIGINT NOT NULL,
                         HomeTeamId BIGINT NOT NULL,
                         AwayTeamId BIGINT NOT NULL,
-                        TotalHomeScore SMALLINT,
-                        TotalAwayScore SMALLINT,
-                        HalfHomeScore SMALLINT,
-                        HalfAwayScore SMALLINT);
+                        HomeTotalScore SMALLINT,
+                        AwayTotalScore SMALLINT,
+                        HomeHalfScore SMALLINT,
+                        AwayHalfScore SMALLINT);
     
 	INSERT INTO tmp_h2h(
         MatchId,
         HomeTeamId,
         AwayTeamId,
-        TotalHomeScore,
-        TotalAwayScore,
-        HalfHomeScore,
-        HalfAwayScore)
+        HomeTotalScore,
+        AwayTotalScore,
+        HomeHalfScore,
+        AwayHalfScore)
     SELECT  m.MatchId,
             m.HomeTeamId,
             m.AwayTeamId,
-            m.TotalHomeScore,
-            m.TotalAwayScore,
-            m.HalfHomeScore,
-            m.HalfAwayScore
+            m.HomeTotalScore,
+            m.AwayTotalScore,
+            m.HomeHalfScore,
+            m.AwayHalfScore
     FROM 
 		JSON_TABLE
         (
@@ -60,10 +60,10 @@ BEGIN
                 MatchId BIGINT PATH "$.MatchId",
                 HomeTeamId BIGINT PATH "$.HomeTeamId",
                 AwayTeamId BIGINT PATH "$.AwayTeamId",
-                TotalHomeScore SMALLINT PATH "$.TotalHomeScore",
-                TotalAwayScore SMALLINT PATH "$.TotalAwayScore",
-                HalfHomeScore SMALLINT PATH "$.HalfHomeScore",
-                HalfAwayScore SMALLINT PATH "$.HalfAwayScore"
+                HomeTotalScore SMALLINT PATH "$.HomeTotalScore",
+                AwayTotalScore SMALLINT PATH "$.AwayTotalScore",
+                HomeHalfScore SMALLINT PATH "$.HomeHalfScore",
+                AwayHalfScore SMALLINT PATH "$.AwayHalfScore"
             )
         ) AS m;
 
@@ -79,18 +79,18 @@ BEGIN
     SELECT h.MatchId,
             h.HomeTeamId,
             h.AwayTeamId,
-            h.HalfHomeScore,
-            h.HalfAwayScore,
-            h.TotalHomeScore,
-            h.TotalAwayScore,
+            h.HomeHalfScore,
+            h.AwayHalfScore,
+            h.HomeTotalScore,
+            h.AwayTotalScore,
             m.StartTime
     FROM tmp_h2h h
-    INNER JOIN livescore_match m ON h.MatchId = m.MatchId
+    LEFT JOIN livescore_match m ON h.MatchId = m.MatchId
     ON DUPLICATE KEY UPDATE
             HomeHalfScore = h.HomeHalfScore,
             AwayHalfScore = h.AwayHalfScore,
             HomeTotalScore = h.HomeTotalScore,
-            AwayTotalScore = h.AwayTotalScore
+            AwayTotalScore = h.AwayTotalScore,
             EventDate = m.StartTime;
 END;
 

@@ -49,6 +49,9 @@
 
             if (matchIds is not null && matchIds.Length > 0)
             {
+                var liveMatchList = await matchService.GetLiveMatchAsync();
+                await pushSignalService.PushToMatchListAsync(liveMatchList);
+
                 await syncMatchService.SyncMatchDetailsAsync(liveMatches);
                 await SyncMatchLineUpAsync(matchIds);
                 await SyncLiveMatchIncidents(matchIds);

@@ -21,6 +21,8 @@
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Helpers;
     using Sentry;
     using StackExchange.Redis;
@@ -45,6 +47,7 @@
             AddConfiguration(services, Configuration);
             AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
+            services.ResolveLivescoreServiceDI();
             AddWorker(services);
         }
 
@@ -123,6 +126,7 @@
         private static void AddDependencyInjection(IServiceCollection services)
         {
             services.AddSingleton<IFetchMatchService, FetchMatchService>();
+            services.AddSingleton<ILiveMatchService, LiveMatchService>();
         }
 
         private static void AddWorker(IServiceCollection services)
@@ -139,6 +143,7 @@
             services.AddHostedService<SyncSeasonPlayerHonorByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncMatchInfoByMatchIdsWorker>();
+            services.AddHostedService<SyncLiveMatchThenPushSignalWorker>();
             services.AddHostedService<SyncHeadToHeadFromCurrentDateToFutureWorker>();
         }
     }

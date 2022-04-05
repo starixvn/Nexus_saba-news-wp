@@ -16,7 +16,10 @@
         <Setting Key="Livescore_Sync_League_Import" SpName="Livescore_Sync_League_Import" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Live match">
-        <Setting Key="Livescore_LiveMatch_Get" SpName="Livescore_LiveMatch_Get" DbName ="sabasports" Plain="0" />
+        <Setting Key="Livescore_Match_GetLiveMatch" SpName="Livescore_Match_GetLiveMatch" DbName="sabasports" Plain="0">
+            <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
+            <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
+        </Setting>
         <Setting Key="Livescore_Livematch_Temporary_Insert" SpName="Livescore_Livematch_Temporary_Insert" DbName ="sabasports" Plain="0" />
     </Function>
     <Function Name="Team">

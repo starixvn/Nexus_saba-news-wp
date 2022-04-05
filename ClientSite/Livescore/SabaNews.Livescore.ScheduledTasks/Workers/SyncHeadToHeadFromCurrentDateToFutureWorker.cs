@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -40,13 +39,13 @@
         {
             var matches = await GetCurrentToFutureMatchesAsync();
 
-            var tasks = new List<Task<HeadToHeadResponse>>();
+            var h2hList = new List<HeadToHeadResponse>();
 
             foreach (var m in matches)
             {
-                tasks.Add(fetchTeamService.FetchHeadToHeadAsync(m.HId, m.AId));
+                var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.HId, m.AId);
+                h2hList.Add(h2h);
             }
-            var h2hList = (await Task.WhenAll(tasks)).ToList();
 
             h2hList.RemoveAll(i => i is null);
             await syncTeamService.SyncHeadToHeadAsync(h2hList);
@@ -61,7 +60,7 @@
                 {
                     StartTime = from,
                     EndTime = to,
-                    RowLimit = 100
+                    RowLimit = 10
                 });
             return matches;
         }

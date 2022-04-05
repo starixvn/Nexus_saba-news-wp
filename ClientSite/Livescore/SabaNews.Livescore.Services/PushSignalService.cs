@@ -36,7 +36,7 @@
                 { "matches", matches }
             };
 
-            await PostAsync(signalRSettings.PushMatchListUrl, data);
+            await PostAsync(signalRSettings.UpdateLiveSoccerUrl, data);
         }
 
         private async Task PostAsync(string endPoint, IDictionary<string, object> data)

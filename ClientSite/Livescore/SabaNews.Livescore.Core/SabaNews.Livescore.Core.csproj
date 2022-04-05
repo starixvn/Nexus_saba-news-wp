@@ -18,8 +18,4 @@
     <ItemGroup>
         <ProjectReference Include="..\..\SabaNews.Core\SabaNews.Core.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\" />
-    </ItemGroup>
 </Project>

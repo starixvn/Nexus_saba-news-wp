@@ -140,10 +140,10 @@
                     MatchId = ag.MatchId,
                     HomeTeamId = ag.HomeIdVsAwayId[0],
                     AwayTeamId = ag.HomeIdVsAwayId[1],
-                    HalfHomeScore = ag.HalfScores[0],
-                    HalfAwayScore = ag.HalfScores[1],
-                    TotalHomeScore = ag.TotalScores[0],
-                    TotalAwayScore = ag.TotalScores[1]
+                    HomeHalfScore = ag.HalfScores[0],
+                    AwayHalfScore = ag.HalfScores[1],
+                    HomeTotalScore = ag.TotalScores[0],
+                    AwayTotalScore = ag.TotalScores[1]
                 });
             }
 
@@ -156,10 +156,10 @@
                 MatchId = r.MatchId,
                 HomeTeamId = r.IsHost ? teamId : r.EnemyId,
                 AwayTeamId = r.IsHost ? r.EnemyId : teamId,
-                TotalHomeScore = r.IsHost ? r.TotalScores[0] : r.TotalScores[1],
-                TotalAwayScore = r.IsHost ? r.TotalScores[1] : r.TotalScores[0],
-                HalfHomeScore = r.IsHost ? r.HalfScores[0] : r.HalfScores[1],
-                HalfAwayScore = r.IsHost ? r.HalfScores[1] : r.HalfScores[0]
+                HomeTotalScore = r.IsHost ? r.TotalScores[0] : r.TotalScores[1],
+                AwayTotalScore = r.IsHost ? r.TotalScores[1] : r.TotalScores[0],
+                HomeHalfScore = r.IsHost ? r.HalfScores[0] : r.HalfScores[1],
+                AwayHalfScore = r.IsHost ? r.HalfScores[1] : r.HalfScores[0]
             };
     }
 }
