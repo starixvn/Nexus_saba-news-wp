@@ -26,9 +26,9 @@ export class AppContainer extends Component {
                     isDisabledTabMatchSummary: true,
                     isDisabledTabStatistics: true
                 });
-            } 
-            if (!this.props.soccerMatch.generalInfo.isLineup) {
-                this.setState = ({
+            }
+            if (this.props.soccerMatch.generalInfo.isLineUp === 0) {
+                this.setState({
                     isDisabledTabLineUp: true
                 });
             }
@@ -41,7 +41,6 @@ export class AppContainer extends Component {
                 <h1 className="livescore-soccer">Trận đấu bạn tìm không có</h1>
             );
         }
-        console.log(this.props.soccerMatch);
         return (
             <>
                 <SignalR />
@@ -55,7 +54,7 @@ export class AppContainer extends Component {
                             <Statistics soccerMatch = {this.props.soccerMatch}  />
                         </Tab>
                         <Tab eventKey="Lineups" title="Đội hình" disabled={this.state.isDisabledTabLineUp}>
-                            <Lineups/>
+                            <Lineups />
                         </Tab>
                     </Tabs>
                 </div>

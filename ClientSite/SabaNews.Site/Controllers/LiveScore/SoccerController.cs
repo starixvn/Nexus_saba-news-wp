@@ -73,7 +73,7 @@
             return View("~/Views/Livescore/Soccer/Live.cshtml", model);
         }
 
-        [Route("lich-thi-dau/bong-da/detail/{matchId:long}")]
+        [Route("lich-thi-dau/bong-da/chi-tiet/{matchId:long}")]
         public IActionResult Detail(long matchId)
         {
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
@@ -114,14 +114,17 @@
         public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
         {
             var generalInfo = await matchService.GetMatchDetailAsync(criteria);
-            var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
             var result = new MatchDetail
             {
-                GeneralInfo = generalInfo,
-                AwayTeam = postMatchInfo.AwayStatistic,
-                HomeTeam = postMatchInfo.HomeStatistic,
-                Incidents = postMatchInfo.Incidents,
+                GeneralInfo = generalInfo
             };
+            if (generalInfo.Status == 50) {
+                var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
+                result.AwayTeam = postMatchInfo.AwayStatistic;
+                result.HomeTeam = postMatchInfo.HomeStatistic;
+                result.Incidents = postMatchInfo.Incidents;
+            }
+           
             return Ok(result);
         }
     }

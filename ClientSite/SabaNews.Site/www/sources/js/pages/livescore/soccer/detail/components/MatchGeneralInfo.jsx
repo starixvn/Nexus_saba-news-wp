@@ -10,6 +10,11 @@ export default class MatchGenetalInfo extends Component {
     }
     
     getMatchScores = (match, incidents) => {
+        if(!incidents) {
+            return (<div className="detail-score-wrapper live">
+                        <span>VS</span>
+                    </div>);
+        }
         const numberHomePenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 1 && (item.homeScore === 0 && item.awayScore === 0)).length;
         const numberAwayPenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 2 && (item.homeScore === 0 && item.awayScore === 0)).length;
         switch (match.status) {
@@ -41,6 +46,9 @@ export default class MatchGenetalInfo extends Component {
     };
 
     getBallAndCardNumber = (incidents, position) => {
+        if(!incidents) {
+            return null;
+        }
         let goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
         const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString())  && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
         const numberRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === position).length;
