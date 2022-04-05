@@ -66,7 +66,7 @@ body {
 .main {
     padding-top: 7rem;
 
-    @media (max-device-width: 1024px) {
+    @include tableMobile {
         padding-top: 1rem;
     }
 }
