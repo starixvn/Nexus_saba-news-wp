@@ -47,26 +47,11 @@
             margin-top: 1.6rem;
         }
 
-<<<<<<< HEAD
-=======
-        .toggle-league {
-            span {
-                position: absolute;
-                right: 13px;
-                top: 15px;
-            }
-
-            .start-active {
-                display: none;
-            }
-        }
-
->>>>>>> feat: add style main live score
         &-item {
             margin-bottom: 1.2rem;
             position: relative;
             cursor: pointer;
-            padding: .8rem .8rem .8rem 2.8rem;
+            padding: .8rem .8rem .8rem 2.4rem;
 
             &:hover {
                 background: #F5F5F5;
@@ -74,14 +59,21 @@
 =======
 
                 .leagues-name {
-                    color: #E13C29;
+                    color: $color-active-icon;
                 }
 
+>>>>>>> feat: add style live score
                 .start-active {
                     display: block;
-                }
->>>>>>> feat: add style main live score
             }
+
+            .leagues-name {
+                .text {
+                    font-weight: 600;
+                }
+            }
+
+
 
             &:last-child {
                 margin-bottom: 0;
@@ -94,7 +86,7 @@
 
             .logo {
                 height: 3.6rem;
-                width: 3rem;
+                width: 3.6rem;
                 object-fit: cover;
                 margin-right: 1.3rem;
             }

@@ -69,6 +69,18 @@
             background: transparent;
             cursor: pointer;
 
+            .icon-livescore {
+                &:before {
+                    color: #7C7C7C;
+                }
+
+                &:hover {
+                    &:before {
+                        color: #223453;
+                    }
+                }
+            }
+
             &:disabled, &[disabled] {
                 cursor: not-allowed;
             }
@@ -145,7 +157,7 @@
         }
 
         .icon-live-calender {
-            font-size: 1.6rem;
+            font-size: 2rem;
 
             &.active {
                 &:before {

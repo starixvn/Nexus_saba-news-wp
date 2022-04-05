@@ -70,6 +70,11 @@
         span {
             margin-right: 1.2rem;
             font-weight: bold;
+            color: $color-title;
+
+            &:hover {
+                color: $color-active-icon;
+            }
 
             @include tableMobile {
                 display: none;

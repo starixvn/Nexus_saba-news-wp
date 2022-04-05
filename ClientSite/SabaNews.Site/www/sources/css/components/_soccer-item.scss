@@ -86,7 +86,12 @@
                     .livescore-name-team {
                         font-size: 1.6rem;
                         line-height: 2.4rem;
-                        color :$color-title;
+                        color: $color-title;
+
+                        &:hover {
+                            color: $color-active-icon;
+                        }
+
                         @include tableMobile {
                             font-size: 1.2rem;
                             line-height: 1.6rem;
@@ -141,7 +146,7 @@
                 border-radius: 5px;
                 padding: 1rem 1.4rem;
                 margin-top: .6rem;
-                transition: all .1s ease-in-out;
+                transition: all .2s ease-in-out;
                 cursor: pointer;
 
                 &:first-child {
@@ -212,7 +217,7 @@
                             &-name {
                                 font-size: 1.4rem;
                                 line-height: 1.6rem;
-                                font-weight : 600;
+                                font-weight: 600;
 
                                 @include Mobile {
                                     max-width: 14.2rem;

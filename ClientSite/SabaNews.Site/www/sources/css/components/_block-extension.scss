@@ -55,6 +55,11 @@
 
             &:hover {
                 background: #F5F5F5;
+
+                .leagues-name {
+                    color: $color-active-icon;
+                }
+
                 .start-active {
                     display: block;
             }
