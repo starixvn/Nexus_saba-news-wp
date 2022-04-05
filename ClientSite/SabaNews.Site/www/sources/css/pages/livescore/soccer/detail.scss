@@ -747,3 +747,140 @@ svg.fill-red {
     }
     
 }
+
+//pitch view
+.lineup {
+    display: inline-block;
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+    border: solid 1px #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.lineup-head {
+    float: left;
+    width: 100%;
+    padding: 12px;
+    position: relative;
+}
+.team-name {
+    float: left;
+}
+.club-logo-img {
+    float: left;
+    height: 24px;
+    width: 24px;
+    margin-right: 16px;
+}
+
+.club-logo-text {
+    display: grid;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.f-right-text {
+    float: right;
+}
+
+.team-body {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: 720px;
+    background: url(../../../../images/pitch.jpg) repeat-y;
+    background-size: 100% 720px;
+    background-color: #6d9b50;
+}
+
+.team-content {
+    height: 50%;
+    display: flex;
+    position: relative;
+    line-height: normal;
+    z-index: 20;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+}
+.pitch-row {
+    align-items: flex-start;
+    display: flex;
+}
+
+.pitch-item {
+    flex: 1 1;
+}
+
+.team-player {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.team-player-img {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    text-align: center;
+}
+.text-name {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.25rem;
+    padding: 0 3px;
+    text-align: center;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-height: 18px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    color: #ffffff;
+}
+
+.team-ao {
+    width: 2rem;
+    height: 2rem;
+    fill: #333;
+    display: inline-block;
+    text-align: center;
+}
+
+.team-number {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    width: 2rem;
+    justify-content: center;
+    font-weight: bold;
+    font-size: .85rem;
+    position: absolute;
+    color: #353535;
+}
+
+
+.icon_f {
+    position: absolute;
+    width: 14px;
+    right: -7px;
+    bottom: -4px;
+    &.ic_bong {
+        left: -5px;
+        top: -5px;
+    }
+    &.ic_penalty {
+        left: -5px;
+        top: 10px;
+    }
+}
+
+.icon_f.ic_the_vang, .icon_f.ic_the_do {
+    right: -5px;
+    top: -5px;
+}
+
