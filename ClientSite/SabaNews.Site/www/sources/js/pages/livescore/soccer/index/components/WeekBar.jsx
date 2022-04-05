@@ -42,7 +42,7 @@ export default class WeekBar extends PureComponent {
     getDateRanges = () => {
         const dates = [];
         const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
-        const date = moment(selectedEventDate);
+        const date = moment(DateTimeService.formatDateTime(selectedEventDate, 'YYYY-MM-DD'));
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
         let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
@@ -94,8 +94,8 @@ export default class WeekBar extends PureComponent {
     render() {
         const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
         const dateRanges = this.state.dateRanges;
-        const today = moment(DateTimeService.getCurrentClientDateTime());
-        const date = moment(selectedEventDate);
+        const today = moment(DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD'));
+        const date = moment(DateTimeService.formatDateTime(selectedEventDate, 'YYYY-MM-DD'));
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
 
