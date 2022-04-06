@@ -1,0 +1,51 @@
+.block {
+    margin-bottom: 2rem;
+
+    @include tableMobile {
+        margin-bottom: 0;
+        padding-bottom: 1.6rem;
+    }
+
+    &__title {
+        margin-bottom: 1.2rem;
+        position: relative;
+        padding-left: 1rem;
+
+        @include tableMobile {
+            margin-bottom: .9rem;
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            background: #F12F19;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: .3rem;
+            height: 2rem;
+            z-index: 0;
+        }
+
+        a {
+            font-weight: bold;
+            font-size: 2rem;
+            line-height: 2.7rem;
+            color: $color-main-title;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: $bg-nav;
+            position: relative;
+            z-index: 9;
+            padding-right: 1rem;
+
+            &:hover {
+                color: darken($color-main-title, 10%);
+            }
+
+            @include tableMobile {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+﻿@using SabaNews.Core.Constants;
+@using DeviceDetectorNET;
+
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+   
+}
+
+<div class="block__content">
+    <h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
+    @foreach (var post in Model)
+    {
+        string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
+        <div class="post card-horizontal card-horizontal-highlight">
+            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image">
+                <picture>
+                    <source srcset="@Url.Content(featureImg)" type="image/webp" class="img-res">
+                    <source srcset="@Url.Content(featureImg)" type="image/jpeg" class="img-res">
+                    <img loading="lazy" src="@Url.Content(featureImg)" alt="@post.PostTitle" class="img-res img-block">
+                </picture>
+            </a>
+            <div class="card-horizontal__content">
+                <a class="title" href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a>
+                <p class="datetime">
+                    <span>@post.PostTime</span>
+                    @if (post.CommentCount > 0)
+                    {
+                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
+                    }
+                </p>
+                <p class="description">@post.PostExcerpt</p>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,88 @@
+.swiper-container {
+    width: 100%;
+    max-width: 100% !important;
+    margin: 0 !important;
+    .swiper-button-prev,.swiper-button-next{
+        outline: none;
+    }
+    .swiper-button-prev,.swiper-button-next{
+        background-image: none;
+        .icon-slide{
+            &::before{
+                font-size: 3.2rem;
+                color: $color-fff;
+                opacity: .7;
+            }
+        }
+    }
+    .swiper-pagination-bullet{
+        background-color: rgba($color: $color-fff, $alpha: .2);
+        height: .8rem;
+        width: .8rem;
+        border-radius: .3rem;
+        opacity: 1;
+        outline: none;
+        margin:  0 .5rem !important;
+    }
+    .swiper-pagination-bullet-active{
+        background-color: $color-active;
+        width: 2rem;
+    }
+    .swiper-pagination-bullets{
+        bottom: 6.9rem;
+        @include tableMobile{
+            bottom: 3.5rem;
+        }
+    }
+    .swiper-slide{
+        background-color: $color-pagination;
+
+        .img-item{
+            margin-right: 0;
+            border-radius : 0;
+            position: relative;
+            //max-height: 34rem;
+            overflow: hidden;
+            height: calc(100% - 6rem);
+            @include tableMobile {
+                height: calc(100% - 4rem);
+            }
+            // @include Mobile{
+            //     height: 15rem;
+            // }
+            // @include tableMobile{
+            //     width: 100%;
+            // }
+            img{
+                border-radius : 0;
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+        .content-box{
+            height: 6rem;
+            @include tableMobile {
+                height: 4rem;
+            }
+            .title-box{
+                text-align: center;
+                padding: 1.6rem 0;
+                @include tableMobile{
+                    padding: .7rem 0;
+                }
+                a{
+                    color: $color-fff;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 27px;
+                    text-decoration: none;
+                    padding: 1.7rem 0;
+                    @include tableMobile{
+                        font-size: 1.4rem;
+                        line-height: 1.9rem;
+                    }
+                }
+            }
+        }
+    }
+}

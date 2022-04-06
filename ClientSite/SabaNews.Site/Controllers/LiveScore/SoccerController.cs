@@ -1,0 +1,132 @@
+﻿namespace SabaNews.Site.Controllers.Livescore
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Extensions;
+    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services.Interfaces;
+
+    public class SoccerController : Controller
+    {
+        private readonly IPostService postService;
+        private readonly ILeagueService leagueService;
+        private readonly IMatchService matchService;
+
+        public SoccerController(
+            IPostService postService,
+            ILeagueService leagueService,
+            IMatchService matchService)
+        {
+            this.postService = postService;
+            this.leagueService = leagueService;
+            this.matchService = matchService;
+        }
+
+        [Route("lich-thi-dau/bong-da/{eventDate?}")]
+        public async Task<IActionResult> Index(DateTime? eventDate)
+        {
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
+            var title = pageDetail.Title;
+            var description = pageDetail.Description ??= title;
+            var model = new PageViewModel
+            {
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = description
+                }
+            };
+            ViewBag.EventDate = eventDate;
+
+            return View("~/Views/Livescore/Soccer/Index.cshtml", model);
+        }
+
+        [Route("lich-thi-dau/bong-da/truc-tiep")]
+        public async Task<IActionResult> Live()
+        {
+            var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
+            var title = pageDetail.Title;
+            var description = pageDetail.Description ??= title;
+            var model = new PageViewModel
+            {
+                Category = pageDetail,
+                Header = new HeaderViewModel
+                {
+                    CategorySlug = Constants.MatchScheduleSlug,
+                    CategoryId = pageDetail.CatId,
+                    Title = title,
+                    Description = description
+                }
+            };
+            return View("~/Views/Livescore/Soccer/Live.cshtml", model);
+        }
+
+        [Route("lich-thi-dau/bong-da/chi-tiet/{matchId:long}")]
+        public IActionResult Detail(long matchId)
+        {
+            return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
+        {
+            criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC(criteria.Timezone);
+            criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC(criteria.Timezone);
+            criteria.SportId = (short)SportType.Soccer;
+            IList<Match> matches = await matchService.GetMatchByDateAsync(criteria);
+            return Json(matches);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetLiveMatches()
+        {
+            IList<Match> matches = await matchService.GetLiveMatchAsync();
+            return Json(matches);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMajorLeagues()
+        {
+            IList<League> leagues = await leagueService.GetMajorLeagueAsync();
+            return Json(leagues);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetLineupDetail([FromBody] GetMatchLineupCriteria criteria)
+        {
+            var lineup = await matchService.GetLineupAsync(criteria);
+            return Ok(lineup);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
+        {
+            var generalInfo = await matchService.GetMatchDetailAsync(criteria);
+            var result = new MatchDetail
+            {
+                GeneralInfo = generalInfo
+            };
+            if (generalInfo.Status == 50)
+            {
+                var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
+                result.AwayTeam = postMatchInfo.AwayStatistic;
+                result.HomeTeam = postMatchInfo.HomeStatistic;
+                result.Incidents = postMatchInfo.Incidents;
+            }
+
+            return Ok(result);
+        }
+    }
+}

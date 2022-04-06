@@ -1,0 +1,89 @@
+﻿@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Category.OgDescription' />
+    <meta property="og:title" content='@Model.Category.OgTitle' />
+    <meta property="og:image" content='@Model.Category.OgImage' />
+    <meta name="robots" content="noarchive">
+}
+
+@section Title{
+    @Model.Header.Title
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/video.min.css" asp-append-version="true">
+}
+
+@section Scripts {
+    <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+}
+
+
+@(await Component.InvokeAsync("Menu", new { page = "video-page", CategorySlug = Model.Header.Slug }))
+<section class="main">
+    <div class="container">
+        <div class="block block-main">
+            <h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories )</a></h2>
+            <div class="block__swipper">
+                <div class="swiper-container">
+                    <div class="skeleton skeleton-swiper-slide">
+                        <div class="img-item"></div>
+                        <div class="content-box"></div>
+                    </div>
+                    <div class="post swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="img-item">
+                                <input type="hidden" name="iframe_value" value="@Model.Posts[0].PostContent" />
+                                <picture>
+                                    <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/webp">
+                                    <source srcset="@Url.Content(Model.Posts[0].FeatureImage)" type="image/jpeg">
+                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle">
+                                </picture>
+                                <div class="btn-play-video" post-id="@Model.Posts[0].ID">
+                                    <span class="icon-play"></span>
+                                </div>
+                            </div>
+                            <div class="play_video"></div>
+                            <div class="content-box">
+                                <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })" class="heading">@Model.Posts[0].PostTitle</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block__video">
+                @for (int i = 1; i < Model.Posts.Length; i++)
+                {
+                    <div class="post card-vertical card-vertical-highlight">
+                        <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__image thumb">
+                            <picture>
+                                <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/webp" class="img-res">
+                                <source srcset="@Url.Content(Model.Posts[i].FeatureImage)" type="image/jpeg" class="img-res">
+                                <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Posts[i].FeatureImage)" alt="@Model.Posts[i].PostTitle" class="img-res img-block lazy">
+                            </picture>
+                        </a>
+                        <a href="@Url.Action("Single", "Post", new { slug = Model.Posts[i].Slug })" class="card-vertical__title text-description">@Model.Posts[i].PostTitle</a>
+                        <p class="card-vertical__datetime">
+                            <span>
+                                @Model.Posts[i].PostTime
+                                @if (Model.Posts[i].CommentCount > 0)
+                                {
+                                    <a href="@Url.Action("Single", "Post", new { slug =  Model.Posts[i].Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Posts[i].CommentCount</i></a>
+                                }
+                            </span>
+                        </p>
+                    </div>
+                    <div class="skeleton skeleton-vertical">
+                        <a class="skeleton-vertical__image"></a>
+                        <a class="skeleton-vertical__title"></a>
+                        <p class="skeleton-vertical__description text-description"></p>
+                    </div>
+                }
+            </div>
+            @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
+        </div>
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
+    </div>
+    @await Html.PartialAsync(ViewResources.SidebarBannerView)
+</section>

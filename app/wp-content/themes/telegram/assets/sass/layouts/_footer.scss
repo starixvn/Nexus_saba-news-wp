@@ -1,0 +1,75 @@
+.#{$prefix}-site-footer{
+    background-color: rgba($color_black,0.9);
+    color: $color_white;
+    padding: 15px 0;
+    a{
+        color: $color-white;
+        &:hover{
+            color: $primary_color;
+        }
+    }
+    .#{$prefix}-footer-widget{
+        @include border-bottom();
+        border-color: rgba($color_shade,0.29);
+        padding: 15px 30px 30px;
+        .widget{
+            margin-top: 0;
+            margin-bottom: 0;
+            .#{$prefix}-post-with-box-shadow{
+                box-shadow: none;
+                border-color: rgba($color_light_gray,0.4);
+                @include border();
+            }
+        }
+        .custom-html-widget{
+            ul{
+                li{
+                    border: 0;
+                    padding-bottom: 0;
+                    a{
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+       
+    }
+    
+    .twp-copyright-section{
+        .twp-footer-menu{
+            margin-top: 5px;
+            justify-content: center;
+            @include media(lg){
+                justify-content: flex-start;
+            }
+            li{
+                margin-top: 10px;
+            }
+        }
+        .site-info{
+            padding-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            &.twp-right{
+                @include media(lg){
+                    justify-content: flex-end;
+                }
+            }
+            a,
+            span,
+            strong{
+                display: inline-block;
+                padding: 0 5px;
+            }
+            a{
+                color: $primary_color;
+                &:hover{
+                    color: $color_white;
+                }
+            }
+        }
+    }
+    
+
+}

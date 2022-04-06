@@ -1,0 +1,99 @@
+﻿@using SabaNews.Core.Constants;
+
+<div class="modal" id="authModal">
+    <div class="modal-content modal-auth">
+        <div class="modal-body">
+            <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <nav>
+                <ul class="nav-login" id="nav-tab">
+                    <li>
+                        <a class="nav-title active" id="nav-login-tab">@ViewResources.Login</a>
+                    </li>
+                    <li>
+                        <a class="nav-title" id="nav-register-tab">@ViewResources.Register</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane active" id="nav-login">
+                    <div class="login-tab">
+                        <div class="group-tab">
+                            <h3 class="headig-modal">@ViewResources.LoginWithEmail</h3>
+                            <form id="form-login">
+                                <p class="error summary-eror"></p>
+                                <div class="form-modal">
+                                    <input type="email" name="email" class="input-form" placeholder="@ViewResources.Email">
+                                </div>
+                                <div class="form-modal">
+                                    <input type="password" name="password" class="input-form" placeholder="@ViewResources.Password">
+                                    <span class="toggle-pass">
+                                        <i class="icon-form icon-show"></i>
+                                        <i class="icon-form icon-hide" style="display: none"></i>
+                                    </span>
+                                </div>
+                                <button type="submit" class="btn-login">@ViewResources.Login</button>
+                                <a href="javascript:;" id="forgot-password">@ViewResources.ForgotPassword</a>
+                            </form>
+                        </div>
+                        <div class="login-fb-google">
+                            <h3 class="headig-modal">Đăng nhập với</h3>
+                            <a class="social-login login-google" href="/ExternalAuthentication/Login?Provider=@LoginType.Google&returnUrl="><span class="icon-social"><img src="~/images/icon/google-icon.svg" alt="Alternate Text" /></span> Google</a>
+                            <a class="social-login login-facebook" href="/ExternalAuthentication/Login?Provider=@LoginType.Facebook&returnUrl="><i class="icon-social icon-detail_facebook"></i> Facebook</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane" id="nav-register">
+                    <div class="register-tab">
+                        <div class="group-tab">
+                            <h3 class="headig-modal">@ViewResources.Register</h3>
+                            <form id="form-register">
+                                <p class="error summary-eror"></p>
+                                <div class="form-modal">
+                                    <input type="text" class="input-form" placeholder="@ViewResources.Name" name="name" />
+                                </div>
+                                <div class="form-modal">
+                                    <input type="email" class="input-form" placeholder="@ViewResources.Email" name="email" />
+                                </div>
+                                <div class="form-modal">
+                                    <input type="password" id="password" class="input-form" placeholder="@ViewResources.Password" name="password" />
+                                    <span class="toggle-pass">
+                                        <i class="icon-form icon-show"></i>
+                                        <i class="icon-form icon-hide" style="display: none"></i>
+                                    </span>
+                                </div>
+                                <div class="form-modal">
+                                    <input type="password" class="input-form" placeholder="@ViewResources.ConfirmPassword" name="confirmPassword" />
+                                    <span class="toggle-pass">
+                                        <i class="icon-form icon-show"></i>
+                                        <i class="icon-form icon-hide" style="display: none"></i>
+                                    </span>
+                                </div>
+                                <button type="submit" class="btn-register">@ViewResources.Register</button>
+                            </form>
+                        </div>
+                        <div class="login-fb-google">
+                            <h3 class="headig-modal">Tạo tài khoản với</h3>
+                            <a class="social-login login-google" href="ExternalAuthentication/Login?Provider=@LoginType.Google&returnUrl=">
+                                <span class="icon-social"><img src="~/images/icon/google-icon.svg" alt="Alternate Text" /></span>
+                                Google
+                            </a>
+                            <a class="social-login login-facebook" href="ExternalAuthentication/Login?Provider=@LoginType.Facebook&returnUrl="><i class="icon-social icon-detail_facebook"></i> Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.social-login').each(function (i, v) {
+            var href = $(this).attr("href") + window.location.pathname;
+            $(this).attr("href", href);
+        });
+    });
+</script>

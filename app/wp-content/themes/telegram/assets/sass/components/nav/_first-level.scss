@@ -1,0 +1,36 @@
+
+.desktop ul.#{$prefix}-nav-menu,
+.desktop div.#{$prefix}-nav-menu ul{
+    display: flex;
+    flex-wrap: wrap;
+    @extend %reset-ul;
+}
+
+.desktop ul.#{$prefix}-nav-menu a,
+.desktop div.#{$prefix}-nav-menu ul a{
+    text-transform: uppercase;
+    font-size: 90%;
+}
+.desktop ul.#{$prefix}-nav-menu>li a,
+.desktop div.#{$prefix}-nav-menu>ul>li a{
+    position: relative;
+    display: block;
+    color: $primary_bg_text_color;
+}
+.desktop ul.#{$prefix}-nav-menu>li>a,
+.desktop div.#{$prefix}-nav-menu>ul>li>a{
+    @extend %first-level; 
+    &:hover,
+    &:focus-within{
+        background-color: $color_white;
+        color: $primary_color;
+        border-color: $color_black;
+    }
+    
+}
+.desktop ul.#{$prefix}-nav-menu>li>a .menu-description,
+.desktop div.#{$prefix}-nav-menu>ul>li>a .menu-description{ 
+    position: absolute;
+    right: -15px;
+    bottom: 30px;
+}

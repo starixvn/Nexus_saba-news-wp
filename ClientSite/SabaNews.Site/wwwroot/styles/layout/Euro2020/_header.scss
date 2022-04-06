@@ -1,0 +1,126 @@
+﻿@import '../../abstracts/mixins';
+@import '../header.scss';
+
+$main-color: #03647B;
+$border-block-color: #4DAEC6;
+.header {
+    .top-header {
+        background: url(../../../images/euro2020/banner-menu.png) #0084A4 top center no-repeat;
+        height: 16rem;
+        box-shadow: none;
+        padding: 0;
+
+        @include Mobile {
+            display: block;
+            top: 11rem;
+            background: none;
+            height: unset;
+        }
+
+        .logo-euro {
+            background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+            width: 6.8rem;
+            height: 7.8rem;
+            margin: 2.1rem auto 2.1rem;
+
+            @include Mobile {
+                display: none;
+            }
+        }
+
+        .group-menu .nav-menu {
+            .main-menu {
+                display: none;
+            }
+        }
+    }
+
+    .child-mobile-menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 19rem;
+        background-color: $main-color;
+
+        @include Mobile {
+            position: relative;
+            top: unset;
+        }
+
+        .icon-arrow {
+            display: none;
+            background-image: url(../../../images/icon/arrow.svg);
+
+            @include Mobile {
+                display: block;
+            }
+        }
+
+        .main-child-menu {
+            border: none;
+            overflow-x: auto;
+            justify-content: center;
+            width: 112rem;
+            margin: 0 auto;
+            background-color: inherit;
+
+            @include Mobile {
+                width: 100%;
+                background-color: #fff;
+                justify-content: flex-start;
+            }
+        }
+
+        .menu-item {
+            display: inline-block;
+            padding: 11px 30px 9px;
+
+            @include Mobile {
+                padding: 0;
+            }
+
+            &:hover, &.active {
+                background-color: #fff;
+
+                .item {
+                    color: #F12F19;
+                }
+            }
+
+            .item {
+                color: #FFFDF9;
+                font-size: 1.4rem;
+                padding: 0;
+
+                @include Mobile {
+                    color: #4f4f4f;
+                    padding: 0 1.2rem;
+                }
+            }
+        }
+    }
+
+    .header-controls {
+        $languages: en, cn, vn;
+
+        @each $language in $languages {
+            .languages-box .flag-#{$language} {
+                background: url("../../../images/flag/icon-#{$language}.svg") no-repeat;
+            }
+        }
+    }
+
+    .background-euro-mobile {
+        background: url(../../../images/euro2020/banner-euro-mobile.png) #0084A4 top center no-repeat;
+        height: 12rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo-euro {
+            background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
+            width: 6.8rem;
+            height: 7.8rem;
+        }
+    }
+}

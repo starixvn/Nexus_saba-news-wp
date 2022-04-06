@@ -1,0 +1,54 @@
+.footer{
+    background-color: $color-pagination;
+    border-top: 4px solid $color-active;
+    padding: 1.2rem 0;
+    margin-top: 4rem;
+    @include tableMobile{
+        padding: .6rem 0;
+        margin-top: 2.7rem;
+    }
+    .copy-right{
+        font-size: 1.6rem;
+        color: #a6a6a6;
+        text-align: center;
+        line-height: 2.4rem;
+        @include tableMobile{
+            font-size: 1.2rem;
+        }
+    }
+    .back-to-top{
+        position: fixed;
+        z-index: 99;
+        bottom: 8.5rem;
+        right: 12.9rem;
+        background: $bg-back-top;
+        font-size: 1.6rem;
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        transition: background-color .2s ease;
+        @include flex(center,nowrap,center,column);
+        cursor: pointer;
+        &:hover{
+            background-color: darken($color: $color-title, $amount: 10%);
+        }
+        span{
+            font-size: 4rem;
+            transform: rotate(270deg);
+            font-weight: bold;
+            &::before{
+                color: $color-fff;
+            }
+            @include tableMobile{
+                font-size: 2rem;
+            }
+        }
+        @include tableMobile{
+            right: 1.5rem;
+            bottom: 1.5rem;
+            font-size: 1.2rem;
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+}

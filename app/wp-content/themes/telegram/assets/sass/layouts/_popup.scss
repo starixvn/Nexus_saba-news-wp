@@ -1,0 +1,17 @@
+.#{$prefix}-popup-section{
+    @include transform(translateZ(-1400px) translateY(-800px));
+    height: 0;
+    overflow: hidden;
+    &.open{
+        position: fixed;
+        height: 100%;
+        z-index: 10;
+        width: 100%;
+        top: 0;
+        left: 0;
+        @include animation(scale-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both);
+        &.close{
+            @include animation(scale-out 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both);
+        }
+    }
+}

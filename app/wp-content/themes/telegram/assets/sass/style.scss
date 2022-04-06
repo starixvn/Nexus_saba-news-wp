@@ -1,0 +1,20 @@
+@import 'default';
+@import 'helpers/master';
+@import 'base/master';
+@import 'components/master';
+@import 'layouts/master';
+@import 'pages/master';
+@import 'dark-mode';
+a.skip-link-search-end, a.skip-link-search-start, a.skip-link-search-start-1, a.skip-link-search-start-2 {
+    display: none;
+}
+body.search-reveal a.skip-link-search-end, body.search-reveal a.skip-link-search-start, body.search-reveal a.skip-link-search-start-1, body.search-reveal a.skip-link-search-start-2 {
+    display: block; 
+}
+
+a.skip-link-menu-start, a.skip-link-menu-end {
+    display: none;
+}
+.twp-mobile-menu-section.open a.skip-link-menu-start, .twp-mobile-menu-section.open a.skip-link-menu-end {
+    display: block;
+}

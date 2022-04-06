@@ -1,0 +1,351 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../abstracts/functions';
+
+@import '../base/typhography';
+
+@import '../base/base';
+
+@import '../layout/footer';
+@import '../layout/header';
+
+@import '../components/block';
+@import '../components/img';
+@import '../components/buttons';
+@import '../components/swipper';
+@import '../components/container';
+@import '../components/list-content';
+
+@import '../components/_card-horizontal';
+@import '../components/card-vertical';
+
+
+
+.main {
+    // block-hot-news
+    .block-hot-news {
+        .block__content {
+            @include grid(42% calc(58% - #{$column-gap}), repeat(3, 11rem), #{$padding-main} #{$column-gap});
+
+            @include tableMobile {
+                @include grid(42% calc(58% - 1.6rem), none, #{$padding-main} 1.6rem);
+            }
+            @include Mobile{
+                display: inherit;
+            }
+
+            .card-vertical {
+                grid-column: 1;
+                grid-row: 1/4;
+                background-color: $block-highlight-bgcolor;
+                @include Mobile{
+                    margin-bottom: 1.2rem;
+                }
+                .card-vertical__image {
+                    @include landscapeTablet{
+                        max-height: 20rem;
+                    }
+                    @include Mobile{
+                        max-height: 20rem;
+                    }
+                }
+
+            }
+            .card-horizontal{
+                @include landscapeTablet{
+                    @include grid(17.5rem 1fr, none , 1.2rem);
+                }
+            }
+
+            [class*="card-item-"] {
+                grid-column: 2;
+            }
+
+            @for $i from 1 through 3 {
+                .card-item-#{$i} {
+                    grid-row: $i;
+                }
+            }
+        }
+    }
+
+
+
+    .group-blocks {
+        .container {
+            @include grid(repeat(2, 1fr), none, #{$column-gap});
+            .block-transfer {
+                grid-gap: 0;
+            }
+
+            @include Mobile {
+                display: inherit;
+            }
+        }
+
+        .col-left {
+            padding-right: 1.5rem;
+
+            @include tableMobile {
+                padding: 0;
+            }
+        }
+    }
+    // block-video
+    .block-video {
+        .block__content {
+            @include grid(58% calc(42% - #{$column-gap}), 40rem, #{$column-gap});
+
+            @include tableMobile {
+                @include grid(58% calc(42% - 1.6rem), 28rem , 1.6rem);
+            }
+
+            @include Mobile{
+                display: inherit;
+            }
+
+            .swiper-video {
+                overflow: hidden;
+                grid-column: 1;
+                .swiper-container {
+                    height: 100%;
+                    .img-item{
+                        img{
+                            width: 100%;
+                        }
+                    }
+                }
+                // .play_video {
+                //     iframe {
+                //         @include tableMobile {
+                //             height: 19rem;
+                //         }
+
+                //         @include ipadpro {
+                //             height: 30rem;
+                //         }
+
+                //         @include landscapeTablet {
+                //             height: 26rem;
+                //         }
+
+                //         @include portraitTablet {
+                //             height: 26rem;
+                //         }
+                //     }
+                // }
+
+                .swiper-button-next, .swiper-button-prev {
+                    display: none;
+
+                    @include Mobile {
+                        display: block;
+                    }
+                }
+
+                .btn-play-video {
+                    display: none;
+
+                    @include Mobile {
+                        display: flex;
+                    }
+                }
+            }
+
+            .slide-video {
+                grid-column: 2;
+                overflow: auto;
+                // @include tableMobile{
+                //     max-height: 22.5rem;
+                // }
+                // @include landscapeTablet{
+                //     max-height: 29.5rem !important;
+                // }
+                // @include portraitTablet{
+                //     max-height: 29.5rem;
+                // }
+                // @include ipadpro{
+                //     max-height: 36.5rem;
+                // }
+                @include Mobile {
+                    display: none;
+                }
+
+                .card-horizontal {
+                    margin-bottom: 1rem;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                &::-webkit-scrollbar {
+                    width: .6rem;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: rgba($color-000, .2);
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+    // block-soccer
+    .block-soccer {
+        .block__content {
+            @include grid(repeat(4, 1fr), unset, #{$column-gap} #{$column-gap});
+            @include tableMobile{
+                @include grid(repeat(4, 1fr), unset, #{$column-gap-tablet});
+            }
+            @include Mobile{
+                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+            }
+            .card-vertical{
+                @include Mobile{
+                    padding-bottom: 0;
+                }
+            }
+            .card-vertical__image {
+                height: 17.2rem;
+                @include landscapeTablet{
+                    max-height: 13rem;
+                }
+            }
+        }
+    }
+    // block-guess
+    .block-guess {
+        padding: 5rem 0 6.2rem 0;
+        background: $bg-block;
+        margin-bottom: 6rem;
+
+        @include tableMobile {
+            padding: 1.9rem 0 1rem 0;
+            margin-bottom: 2.1rem;
+        }
+
+        .block__title a {
+            background-color: $bg-block;
+            color: #fff;
+        }
+
+        .block__content {
+            @include grid(repeat(3, 1fr), 1fr, #{$column-gap});
+            @include tableMobile{
+                @include grid(repeat(3, 1fr), 1fr, #{$column-gap-tablet});
+            }
+            @include Mobile{
+                @include grid(repeat(2, 1fr), 1fr, #{$column-gap-mobile});
+            }
+            .card-vertical__title {
+                color: #fff;
+            }
+            .card-vertical{
+                @include Mobile{
+                    padding-bottom: 0;
+                }
+            }
+            .card-vertical__image{
+                @include landscapeTablet{
+                    max-height: 18rem;
+                }
+            }
+        }
+    }
+    // block-transfer
+    .block-transfer {
+        padding-bottom: 0;
+
+        @include tableMobile {
+            padding-bottom: 1rem;
+        }
+
+        .card-horizontal {
+            margin-bottom: $column-gap;
+            @include tableMobile{
+                margin-bottom: $column-gap-tablet;
+            }
+            @include Mobile{
+                margin-bottom: $column-gap-mobile;
+            }
+        }
+    }
+    // block-behind
+    .block-behind {
+        padding: 0 0 2.2rem 0;
+
+        @include tableMobile {
+            padding: 0 0 .6rem 0;
+        }
+
+        .block__content {
+            @include grid(repeat(2, 1fr), unset, #{$column-gap});
+            @include tableMobile{
+                @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
+            }
+            @include Mobile{
+                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+            }
+            .card-item-1 {
+                grid-column: 1/3;
+                background-color: $block-highlight-bgcolor;
+            }
+            .card-vertical__image{
+                @include tableMobile{
+                    max-height: 20rem;
+                }
+            }
+        }      
+    }
+
+
+    // block-basketball
+    .block-basketball {
+        padding: 0 0 3.9rem 0;
+        border: none;
+
+        @include tableMobile {
+            padding: 0 0 2.2rem 0;
+        }
+
+        .block__content {
+            @include grid(repeat(2, 1fr), unset, #{$column-gap});
+            @include tableMobile{
+                @include grid(repeat(2, 1fr), unset, #{$column-gap-tablet});
+            }
+            @include Mobile{
+                @include grid(repeat(2, 1fr), unset, #{$column-gap-mobile});
+            }
+            .card-vertical{
+                @include Mobile{
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .block-tennis {
+        .block-list {
+            margin-top: 3rem;
+            @include tableMobile{
+                margin-top: 0;
+            }
+        }
+        .card-vertical__image{
+            @include tableMobile{
+                max-height: 20rem;
+            }
+            @include landscapeTablet{
+                max-height: 30rem;
+            }
+        }
+        .card-vertical__description {
+            margin-top: .8rem;
+        }
+    }
+}
+
+

@@ -1,0 +1,35 @@
+.#{$prefix}-meta-tag{
+    font-size: 14px;
+    font-weight: $font_weight_semi_bold;
+    line-height: 1;
+    align-items: center;
+    span{
+        display: inline-block;
+    }
+    .#{$prefix}-icon{
+        font-size: 20px;
+    }
+    .#{$prefix}-icon,
+    .#{$prefix}-caption{
+        padding: 0 5px;
+    }
+    .entry-meta-date{
+        .#{$prefix}-icon{
+            position: relative;
+            top: 2px;
+        }
+
+    }
+    &.#{$prefix}-meta-tag-lg{
+        font-size: 16px;
+        margin-left: -10px;
+        margin-right: -10px;
+        .#{$prefix}-icon{
+            font-size: 25px;
+        }
+        .entry-meta-item{
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+}

@@ -1,0 +1,204 @@
+
+
+.#{$prefix}-post{
+    p,
+    .entry-title,
+    .#{$prefix}-post-title{
+        margin: 0;
+        padding-top: 10px;
+    }
+    .entry-title{
+        line-height: 1.2;
+    }
+    .#{$prefix}-meta-tag{
+        .entry-meta-item,
+        .#{$prefix}-social-share-section{
+            margin-top: 10px;
+        }
+    }
+    .#{$prefix}-category{
+        li{
+            margin-top: 10px;
+        }
+    }
+}
+.#{$prefix}-breaking-post{
+    padding: 0 7.5px;
+    @extend %clearfix;
+    height: 50px;
+    overflow: hidden; 
+    .#{$prefix}-image-section{
+        float: left;
+        width:  50px;
+        background-color: $color_shade;
+        height: 50px;
+        border-radius: 100%;
+    }
+    .#{$prefix}-desc{
+        padding-left: 10px;
+        float: left;
+        width: calc( 100% - 50px);
+        .#{$prefix}-post-title{
+            margin: 0;
+            padding-top: 10px;
+            line-height: 1.2;
+            font-size: 14px;
+        }
+        a{
+            @include limitation;
+        }
+    }
+}
+.#{$prefix}-post-style-1{
+    display: flex;
+    flex-wrap: wrap;
+    .#{$prefix}-image-section{
+        flex: 0 0 100px;
+        max-width: 100px;
+        .#{$prefix}-post-format-wrapper{
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            z-index: 1;
+        }
+    }
+    .#{$prefix}-desc{
+        flex: 0 0 calc(100% - 100px);
+        max-width: calc(100% - 100px);
+        padding: 0 10px;
+
+    }
+    .#{$prefix}-post-title{
+        padding-top: 5px;
+    }
+    .#{$prefix}-meta-tag{
+        .entry-meta-item{
+            margin-top: 3px;
+        }
+    }
+    .#{$prefix}-meta-wrapper{
+        align-items: center;
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        .#{$prefix}-category{
+            li{
+                margin-top: 5px;
+            }
+        }
+        .entry-meta-item{
+            margin-top: 5px;
+            padding-left: 7.5px;
+            padding-right: 7.5px;
+        }
+    }
+    
+}
+.#{$prefix}-post-style-2{
+    color: $color_white;
+    a{
+        color: $color_white;
+        &:hover{
+            color: $primary_color;
+        }
+    }
+    &:hover{
+        .#{$prefix}-post-format-wrapper{
+            opacity: 0;
+        }
+    }
+}
+.#{$prefix}-post-style-3{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    .#{$prefix}-image-section{
+        flex: 0 0 70px;
+        max-width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        overflow: hidden;
+    }
+    .#{$prefix}-desc{
+        flex: 0 0 calc(100% - 70px);
+        max-width: calc(100% - 70px);
+        padding: 0 30px 0 10px;
+    }
+    .#{$prefix}-post-count{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        @include transform(translateY(-50%));
+        font-size: 30px;
+        opacity: 0.63;
+    }
+}
+.#{$prefix}-post-style-4{
+    .#{$prefix}-desc{
+        padding: 5px 10px 10px;
+    }
+    &.#{$prefix}-post-with-box-shadow{
+        padding: 10px 10px 15px;
+        box-shadow: 0 0 4px 4px rgba($color_light_gray,0.63);
+    }
+    &.#{$prefix}-post-with-border{
+        padding: 15px 10px 15px;
+        @include border();
+        border-color: rgba($color_light_gray,0.63);
+    }
+}
+.#{$prefix}-post-style-5{
+    display: flex;
+    flex-wrap: wrap;
+    .#{$prefix}-desc,
+    .#{$prefix}-image-section{
+        flex: 0 0 100%;
+        max-width: 100%;
+        @include media(md){
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+    .#{$prefix}-image-section{
+        .#{$prefix}-post-format-wrapper{
+            padding:15px
+        }
+    }
+    .#{$prefix}-desc{
+        padding: 15px 30px;
+        background-color: $color_light_gray;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        .#{$prefix}-wrapper{
+            @include media(lg){
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+   
+    .#{$prefix}-meta-tag{
+        .entry-meta-item{
+            margin-top: 10px;
+        }
+
+    }
+    .#{$prefix}-social-share-section{
+        padding-top: 10px;
+        .#{$prefix}-social-share-layout-2{
+            align-items: center;
+        } 
+        .#{$prefix}-social-icons{
+            margin-top: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        .twp-toggle-share{
+            i{
+                margin-top: 15px;
+            }
+        }
+    }
+}

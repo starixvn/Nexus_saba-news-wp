@@ -1,0 +1,168 @@
+.#{$prefix}-pagination{
+    .navigation{
+        margin: 0;
+        padding-top: 15px;
+        .nav-next,
+        .nav-previous{
+            margin-top: 15px;
+        }
+    }
+}
+
+.posts-navigation{
+    .nav-links{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        align-items: center;
+    }
+    .nav-next,
+    .nav-previous{
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+    a{
+        display: inline-block;
+        background-color: $color_black;
+        color: $color_white;
+        padding: 10px 15px;
+        line-height: 1;
+        font-size: 14px;
+        font-weight: $font_weight_semi_bold;
+        border-radius: 3px;
+        &:before,
+        &:after{
+            @extend %ionicons;
+            display: inline-block;
+            height: 15px;
+            width: 15px;
+            line-height: 15px;
+            text-align: center;
+            font-size: 12px;
+            background-color: $color_white;
+            color: $color_black;
+            border-radius: 100%;
+        }
+        &:hover{
+            background-color: $primary_color;
+            color: $primary_bg_text_color;
+            border-radius: 0;
+            &:before,
+            &:after{
+                background-color: $primary_bg_text_color;
+                color: $primary_color;
+            }
+
+        }
+    }
+    .nav-previous{
+        a{
+            &:before{
+                margin-right: 7.5px;
+                content:'\f288';
+            }
+        }
+    }
+    .nav-next{
+        a{
+            &:after{
+                margin-left: 7.5px;
+                content:'\f28a';
+            }
+        }
+    }
+}
+.post-navigation{
+    .nav-links{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 15px;
+        @include media(xs){
+            padding: 0 7.5px;
+        }
+    }
+    .nav-next,
+    .nav-previous{
+        background-color: $color_black;
+        text-align: center;
+        @include transition();
+        border-radius: 5px;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 15px 30px;
+        @include media(xs){
+            flex: 0 0 calc(50% - 15px);
+            max-width: calc(50% - 15px);
+            margin-left: 7.5px;
+            margin-right: 7.5px;
+        }
+        a{
+            color: $color_white;
+        }
+        &:hover{
+            background-color: $primary_color;
+            a{
+                color: $primary_bg_text_color;
+            }
+            .#{$prefix}-icon{
+                background-color: $primary_bg_text_color;
+                color: $primary_color;
+            }
+        }
+    }
+    .#{$prefix}-icon{
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 12px;
+        background-color: $color_white;
+        color: $color_black;
+        border-radius: 100%;
+    }
+    .nav-title{
+        padding-top: 10px;
+        @include limitation();
+    }
+}
+.#{$prefix}-pagination-numeric{
+    padding-top: 15px;
+    .nav-links{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a,
+        span{
+            display: inline-block;
+            padding: 3px 15px;
+            @include border-top();
+            @include border-bottom();
+            @include border-left();
+            border-color: $color_light_gray;
+            background-color: $color_white;
+            font-weight: $font_weight_semi_bold;
+            color: $color_black;
+            &:hover{
+                background-color: $color_black;
+                color: $color_white;
+                border-color: $color_black;
+            }
+            &.current{
+                background-color: $primary_color;
+                color: $primary_bg_text_color;
+                border-color: $primary_color;
+            }
+        }
+        a{
+            &:last-child{
+                @include border-right();
+            }
+        }
+    }
+}
+

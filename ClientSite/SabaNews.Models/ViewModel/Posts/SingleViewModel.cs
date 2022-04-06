@@ -1,0 +1,20 @@
+﻿namespace SabaNews.Models.ViewModel.Posts
+{
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Posts;
+    using System.Collections.Generic;
+
+    public class SingleViewModel
+    {
+        public Post SinglePost { get; set; }
+        public IEnumerable<Post> RelatedPosts { get; set; }
+        public IEnumerable<Post> RecentPosts { get; set; }
+        public ViewData ViewData { get; set; }
+        public bool IsLogin { get; set; }
+        public SavePost SavePost { get; set; }
+        public string AbsoluteUrl { get; set; }
+        public bool IsVideo { get; set; }
+        public string CateSlug { get; set; }
+        public string CateName { get; set; }
+    }
+}

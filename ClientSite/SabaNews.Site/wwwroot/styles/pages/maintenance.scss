@@ -1,0 +1,90 @@
+﻿@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+@import '../base/base';
+
+@import '../layout/footer';
+@import '../layout/header';
+
+@import '../components/fonts';
+@import '../components/block';
+@import '../components/buttons';
+@import '../components/container';
+@import '../components/img';
+@import '../components/card-horizontal';
+@import '../components/card-vertical';
+@import '../components/pagination';
+@import '../components/ads';
+@import '../components/_popup-event';
+
+body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.main {
+    padding-top : 0;
+    .container {
+        display: inherit;
+    }
+}
+
+.wapper{
+    position : absolute;
+    top: 45%;
+    right : 50%;
+    transform : translate(50%,-50%);
+    text-align :center;
+    width : 100%;
+}
+
+main {
+    @include tableMobile {
+        position: relative;
+        overflow-x: hidden;
+    }
+}
+
+
+.block {
+    font-family: $font-title;
+    margin-bottom: 0;
+
+    .img-res {
+        @include tableMobile {
+            width: 250px;
+        }
+    }
+
+    &__heading {
+        font-weight: bold;
+        font-size: 3.2rem;
+        line-height: 3.9rem;
+        letter-spacing: 2px;
+        color: $color-pagination;
+        text-transform: uppercase;
+        margin-top: 10rem;
+
+        @include tableMobile {
+            font-size: 2.2rem;
+            margin-top: 5rem;
+        }
+    }
+
+    &__desc {
+        padding-top: 1.7rem;
+        color: $color-input;
+        font-size: 2rem;
+        line-height: 3.2rem;
+        max-width: 45rem;
+        margin: 0 auto;
+
+        @include tableMobile {
+            font-size: 1.6rem;
+        }
+    }
+}
+.footer{
+    margin-top : auto;
+    width : 100%;
+}

@@ -1,0 +1,55 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 10px;
+}
+body{
+    font-size: 1.4rem;
+    font-family: $font-body;
+    color: $color-content;
+    line-height: 2.2rem;
+    background-color:#FFFDF9;
+}
+.img-res{
+    max-width: 100%;
+    height: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 100%;
+    margin: 0;
+}
+.align-items-center{
+    align-items: center;
+}
+.hidden-body{
+    overflow: hidden;
+}
+.pd-column-left{
+    padding-right: 1.5rem;
+    @include tableMobile{
+        padding: 0;
+    }
+}
+.pd-column-right{
+    padding-left: 2rem;
+    @include tableMobile{
+        padding-left: 2rem;
+    }
+    @include Mobile{
+        padding: 0;
+    }
+}
+
+.main {
+    padding-top: 12rem;
+    @include tableMobile{
+        padding-top: 7rem;
+    }
+}

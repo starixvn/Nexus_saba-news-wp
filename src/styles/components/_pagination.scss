@@ -1,0 +1,45 @@
+
+.pagination{
+    text-align: center;
+    @include flex(center, nowrap, flex-end, row);
+    padding: 2rem .3rem 6rem 0;
+    @include tableMobile{
+        @include flex(center, nowrap, center, row);
+        margin-bottom: 3rem;
+        padding: 1rem .3rem 0 0;
+    }
+    .icon-pagination{
+        font-size: 2.4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        cursor: pointer;
+    }
+    .main-pagination{
+        list-style: none;
+        @include flex(center, nowrap, center, row);
+        margin: 0 1.1rem;
+        .items-pagination{
+            width: 2.4rem;
+            height: 2.4rem;
+            @include flex(center, nowrap, center, row);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            &:last-child{
+                margin-right: 0;
+            }
+            .item{
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.4rem;
+                line-height: 2.4rem;
+                color: $color-pagination-2;
+            }
+        }
+        .active{
+            background-color: $color-pagination-2;
+            .item{
+                color: $color-fff;
+            }
+        }
+    }
+}

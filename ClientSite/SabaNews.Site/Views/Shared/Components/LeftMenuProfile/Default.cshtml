@@ -1,0 +1,34 @@
+﻿@using SabaNews.Core.Constants;
+
+@{
+	ViewBag.Page = ViewBag.Page != null ? ViewBag.Page : "";
+}
+
+<div class="profile">
+	@if (Model.Photo == null)
+	{
+		<div class="profile__avatar">@Model.Name.Substring(0, 1) </div>
+	}
+	else if (Model.Photo.ToLower().Contains("https://") || Model.Photo.ToLower().Contains("http://"))
+	{
+		<div class="profile__avatar"><img class="profile_image" loading="lazy" src="@Model.Photo" width="300" data-name="@Model.Name.Substring(0, 1)" /></div>
+	}
+	else
+	{
+		<div class="profile__avatar"><img class="profile_image" loading="lazy" src="/uploads/@Model.Photo" width="300" data-name="@Model.Name.Substring(0, 1)" /></div>
+	}
+
+	<div class="profile__name">@Model.Name</div>
+	<div class="profile__date">
+		<p>Tham gia từ @Model.RegisterDate.ToString("dd/MM/yyyy")</p>
+	</div>
+	<ul class="profile__control">
+		<li class="@(ViewBag.Page == Constants.ProfileListPostsPage ? "active-control" : "")">
+			<a href="@Url.Action("ListSavedPosts", "Profile")">@ViewResources.SavedPost @(@Model.HandleSavePosts.Count > 0 ? "(" + @Model.HandleSavePosts.Count + ")" : "" )</a>
+		</li>
+		<li class="@(ViewBag.Page == Constants.ProfileIndexPage ? "active-control" : "")">
+			<a href="@Url.Action("Index", "Profile")">@ViewResources.MyAccount</a>
+		</li>
+		<li><a href="~/Auth/Logout?returnUrl=/" class="profile_logout">@ViewResources.Logout <i class="icon-logout"></i></a></li>
+	</ul>
+</div>

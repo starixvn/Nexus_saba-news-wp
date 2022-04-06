@@ -1,0 +1,115 @@
+﻿
+.group-searchbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin-top: 1.2rem;
+
+    @include tableMobile {
+        margin-top: .8rem;
+    }
+
+    .livescore-soccer-search-bar {
+        position: relative;
+        width: 75%;
+        margin-right: .6rem;
+
+        @include tableMobile {
+            width: 85%;
+            margin-right: .4rem;
+        }
+
+        .livescore-soccer-searchbox {
+            width: 100%;
+            border: 1px solid $border-color;
+            background: transparent;
+            height: 4rem;
+            padding: 1.2rem;
+            border-radius: 3px;
+            font-size: 1.4rem;
+
+            &::placeholder {
+                font-style: italic;
+                font-size: 1.4rem !important;
+
+                @include tableMobile {
+                    font-size: 1.2rem !important;
+                }
+            }
+        }
+
+
+
+        .btn-search-match {
+            position: absolute;
+            float: right;
+            right: 10px;
+            cursor: pointer;
+            color: #7e7e7e;
+            top: 10px;
+        }
+    }
+
+
+
+    .livescore-like {
+        width: 25%;
+        display: flex;
+        cursor: pointer;
+        border: 1px solid $border-color;
+        margin-left: .6rem;
+        border-radius: 3px;
+        align-items: center;
+        justify-content: center;
+
+        @include tableMobile {
+            width: 13%;
+            margin-left: .4rem;
+        }
+
+        span {
+            margin-right: 1.2rem;
+            font-weight: bold;
+            color: $color-title;
+
+            &:hover {
+                color: $color-active-icon;
+            }
+
+            @include tableMobile {
+                display: none;
+            }
+        }
+
+        .count-start {
+            position: relative;
+            margin-top: .5rem;
+
+            [data-badge] {
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    right: -5px;
+                    top: -5px;
+                    min-width: 1rem;
+                    min-height: 1rem;
+                    line-height: 1rem;
+                    padding: .3rem;
+                    color: $white;
+                    border: 1px solid #FFFFFF;
+                    background: #E13C29;
+                    font-size: 1rem;
+                    border-radius: 20px;
+                    content: attr(data-badge);
+                }
+            }
+
+            .icon-live-start {
+                &:before {
+                    color: #324A75;
+                }
+            }
+        }
+    }
+}

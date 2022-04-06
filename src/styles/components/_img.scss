@@ -1,0 +1,18 @@
+.card-horizontal__image,.card-vertical__image{
+    overflow: hidden;
+    &:hover{
+        img{
+            transition: all 0.5s ease;
+            transform: scale(1.02); 
+        }
+    }
+    img{
+        transition: all 0.5s ease;
+        width: 100%;
+        display: block;
+    }
+    source{
+        width: 100%;
+        height: auto;
+    }
+}

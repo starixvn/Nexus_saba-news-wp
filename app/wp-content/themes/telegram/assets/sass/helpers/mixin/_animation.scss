@@ -1,0 +1,46 @@
+
+@mixin animation($animation){
+    -webkit-animation:$animation;
+    -o-animation:$animation;
+    -moz-animation:$animation;
+    animation:$animation;
+}
+@include keyframes (spin) {
+    100% {
+     transform: rotate(360deg);
+    }
+}
+  
+
+@include keyframes (hover) {
+    100% {
+        left: 125%;
+    }
+}
+@include keyframes( scale-in ){
+    0% {
+        @include transform(scale(0));
+        opacity: 1;
+    }
+    100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+}
+
+@include keyframes (scale-out) {
+    0% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+    50% {
+        @include transform(scale(0.5));
+        opacity: 1;
+    }
+    100% {
+        @include transform(scale(0));
+        opacity: 1;
+    }
+}
+
+

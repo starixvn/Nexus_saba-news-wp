@@ -1,0 +1,213 @@
+﻿namespace SabaNews.Livescore.SyncData.Services
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using SabaNews.Core.Models;
+    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Provider.API.Models.Season;
+    using SabaNews.Livescore.Provider.API.Services;
+    using SabaNews.Livescore.SyncData.Criteria.Season;
+    using SabaNews.Livescore.SyncData.Models.Season;
+    using SabaNews.Services;
+
+    public class SyncSeasonService : ISyncSeasonService
+    {
+        private readonly AppSettings appSettings;
+        private readonly IBaseService baseService;
+        private readonly IFetchSeasonService fetchSeasonService;
+
+        public SyncSeasonService(
+            AppSettings appSettings,
+            IBaseService baseService,
+            IFetchSeasonService fetchSeasonService)
+        {
+            this.appSettings = appSettings;
+            this.baseService = baseService;
+            this.fetchSeasonService = fetchSeasonService;
+        }
+
+        public async Task SyncSeasonListByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonLastUpdatedTimeCriteria());
+            var param = new FetchSeasonListParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<SeasonListResponse> seasons = await fetchSeasonService.FetchSeasonListAsync(param);
+            if (seasons.Any(x => x.SportId == (short)SportType.Soccer))
+            {
+                var json = JsonConvert.SerializeObject(seasons.Where(x => x.SportId == (short)SportType.Soccer).ToList());
+                var command = new ImportSeasonCommand
+                {
+                    SeasonListJson = json
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncStageListByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetStageLastUpdatedTimeCriteria());
+            var param = new FetchSeasonListParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<StageListResponse> stages = await fetchSeasonService.FetchStageListAsync(param);
+            if (stages.Any(x => x.SportId == (short)SportType.Soccer))
+            {
+                var json = JsonConvert.SerializeObject(stages.Where(x => x.SportId == (short)SportType.Soccer).ToList());
+                var command = new ImportStageCommand
+                {
+                    StageListJson = json
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncSeasonStandingsByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
+            lastUpdatedTime = FirstDayOfWeek(lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData);
+            var today = DateTime.Now;
+            for(var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
+            {
+                var param = new FetchSeasonStandingsParams
+                {
+                    SportId = (short)SportType.Soccer,
+                    LastUpdatedTime = date
+                };
+                var updatedSeasonIds = await fetchSeasonService.FetchSeasonStandingsAsync<UpdatedSeasonIdListResponse>(param);
+                if (updatedSeasonIds.Any(x => x.UpdatedSeasonIdList.Any()))
+                {
+                    foreach(var item in updatedSeasonIds)
+                    {
+                        foreach(var seasonId in item.UpdatedSeasonIdList)
+                        {
+                            var seasonStandings = await GetSeasonStandingsAsync(seasonId);
+                            await ImportSeasonStandingsAsync(seasonId, seasonStandings);
+                        }
+                    }
+                }
+            }
+        }
+
+        public async Task SyncSeasonTeamHonorByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonTeamHonorLastUpdatedTimeCriteria());
+            var param = new FetchTeamHonorParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<TeamHonorResponse> honors = await fetchSeasonService.FetchTeamHonorAsync(param);
+            if (honors.Any())
+            {
+                var command = new ImportSeasonTeamHonorCommand
+                {
+                    TeamHonorListJson = JsonConvert.SerializeObject(honors)
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncSeasonPlayerHonorByLastUpdatedTimeAsync()
+        {
+            DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonPlayerHonorLastUpdatedTimeCriteria());
+            var param = new FetchTeamHonorParams
+            {
+                LastUpdatedTime = lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData,
+                RowLimit = appSettings.BatchSizeSyncLivescoreData
+            };
+            List<PlayerHonorResponse> honors = await fetchSeasonService.FetchPlayerHonorAsync(param);
+            if (honors.Any())
+            {
+                var command = new ImportSeasonPlayerHonorCommand
+                {
+                    PlayerHonorListJson = JsonConvert.SerializeObject(honors)
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        protected internal virtual async Task<List<SeasonStandingsResponse>> GetSeasonStandingsAsync(long seasonId)
+        {
+            var param = new FetchSeasonStandingsParams
+            {
+                SportId = (short)SportType.Soccer,
+                SeasonId = seasonId
+            };
+            return await fetchSeasonService.FetchSeasonStandingsAsync<SeasonStandingsResponse>(param);
+        }
+
+        protected internal virtual async Task ImportSeasonStandingsAsync(long seasonId, IList<SeasonStandingsResponse> seasonStandings)
+        {
+            var records = new List<SeasonStandings>();
+            foreach(var seasonStanding in seasonStandings)
+            {
+                foreach (var group in seasonStanding.Group)
+                {
+                    foreach(var rank in group.Rank)
+                    {
+                        var record = new SeasonStandings
+                        {
+                            StageId = seasonStanding.StageId ?? 0,
+                            StageName = seasonStanding.StageName,
+                            GroupName = group.GroupName,
+                            Conference = group.Conference,
+                            TeamId = rank.TeamId ?? 0,
+                            Position = rank.Position,
+                            PositionHome = rank.PositionHome,
+                            PositionAway = rank.PositionAway,
+                            Total = rank.Total,
+                            TotalHome = rank.TotalHome,
+                            TotalAway = rank.TotalAway,
+                            Won = rank.Won,
+                            WonHome = rank.WonHome,
+                            WonAway = rank.WonAway,
+                            Loss = rank.Loss,
+                            LossHome = rank.LossHome,
+                            LossAway = rank.LossAway,
+                            Draw = rank.Draw,
+                            DrawHome = rank.DrawHome,
+                            DrawAway = rank.DrawAway,
+                            Promotion = rank.Promotion,
+                            Points = rank.Points,
+                            PointsHome = rank.PointsHome,
+                            PointsAway = rank.PointsAway,
+                            DeductPoints = rank.DeductPoints,
+                            Goals = rank.Goals,
+                            GoalsHome = rank.GoalsHome,
+                            GoalsAway = rank.GoalsAway,
+                            GoalAgainsts = rank.GoalAgainsts,
+                            GoalsAgainstHome = rank.GoalsAgainstHome,
+                            GoalsAgainstAway = rank.GoalsAgainstAway,
+                            GoalDiff = rank.GoalDiff,
+                            GoalDiffHome = rank.GoalDiffHome,
+                            GoalDiffAway = rank.GoalDiffAway,
+                            UpdatedAt = group.UpdatedAt
+                        };
+                        records.Add(record);
+                    }
+                }
+            }
+
+            var command = new ImportSeasonStandingsCommand
+            {
+                SeasonId = seasonId,
+                SeasonStandingsJson = JsonConvert.SerializeObject(records)
+            };
+            await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        private static DateTime FirstDayOfWeek(DateTime date)
+        {
+            int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
+            return date.AddDays(-1 * diff).Date;
+        }
+    }
+}

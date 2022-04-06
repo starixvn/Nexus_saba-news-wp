@@ -1,0 +1,23 @@
+.#{$prefix}-scroll-top{
+    position: fixed;
+    bottom: -70px;
+    right: 60px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: $color_black;
+    color: $color_white;
+    cursor: pointer;
+    @include transition();
+    &.show{
+        bottom: 60px;
+    }
+    &:hover{
+        background-color: $primary_color;
+        color: $primary_bg_text_color;
+    }
+}
