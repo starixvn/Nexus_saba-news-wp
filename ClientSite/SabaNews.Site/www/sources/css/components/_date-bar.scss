@@ -179,6 +179,10 @@
         .icon-live-calender {
             font-size: 2rem;
 
+            &:before {
+                color: $color-title;
+            }
+
             &:hover {
                 &:before {
                     color: $color-active-icon;
