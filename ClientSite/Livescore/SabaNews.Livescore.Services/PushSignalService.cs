@@ -13,7 +13,7 @@
     public class PushSignalService : IPushSignalService
     {
         private readonly PushSignalSettings signalRSettings;
-        private HubConnection hubConnection;
+        private readonly HubConnection hubConnection;
         private readonly ILogServiceProvider logger;
 
         public PushSignalService(
@@ -31,23 +31,26 @@
 
         public async Task PushMatchListAsync(IEnumerable<Match> matches)
         {
-            await hubConnection.StartAsync();
-            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchMethod, matches);
+            if (hubConnection.State == HubConnectionState.Disconnected)
+            {
+                await hubConnection.StartAsync();
+            }
+            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchMethod, matches).ContinueWith(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    logger.WriteLogFileInfo(task.Exception.Message);
+                }
+            });
         }
 
-        public async Task PushMatchStatisticAsync(long matchId, Statistic statistic)
+        public async Task PushMatchDetailcAsync(long matchId, Statistic statistic, LineupDetail lineup, IEnumerable<MatchIncident> incidents)
         {
-            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchMethod, matchId, statistic);
-        }
-
-        public async Task PushMatchLineupAsync(long matchId, LineupDetail lineup)
-        {
-            await hubConnection.InvokeAsync(signalRSettings.UpdateLineupMethod, matchId, lineup);
-        }
-
-        public async Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncident> incidents)
-        {
-            await hubConnection.InvokeAsync(signalRSettings.UpdateIncidentMethod, matchId, incidents);
+            if (hubConnection.State == HubConnectionState.Disconnected)
+            {
+                await hubConnection.StartAsync();
+            }
+            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, statistic, lineup, incidents);
         }
     }
 }

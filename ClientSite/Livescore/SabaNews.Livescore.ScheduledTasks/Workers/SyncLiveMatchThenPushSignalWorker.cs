@@ -51,43 +51,28 @@
             if (matchIds is not null && matchIds.Length > 0)
             {
                 var liveMatchList = await matchService.GetLiveMatchAsync();
+                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
-                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
-                await PushSignalRMatchStatistic(matchIds);
-
                 await SyncMatchLineUpAsync(matchIds);
-                await PushSignalRMatchLineup(matchIds);
-
                 await SyncLiveMatchIncidents(matchIds);
-                await PushSignalRMatchIncidents(matchIds);
+
+                await GetMatchDetailThenPushSignalToHubAsync(matchIds);
             }
         }
 
-        private async Task PushSignalRMatchIncidents(long[] matchIds)
+        private async Task GetMatchDetailThenPushSignalToHubAsync(long[] matchIds)
         {
             foreach (var matchId in matchIds)
             {
-                var incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
-                await pushSignalService.PushMatchIncidentAsync(matchId, incidents);
-            }
-        }
+                var statistic = matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
+                var incidents = matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
+                var lineups = matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
 
-        private async Task PushSignalRMatchStatistic(long[] matchIds)
-        {
-            foreach (var matchId in matchIds)
-            {
-                var matchDetails = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
-                await pushSignalService.PushMatchStatisticAsync(matchId, matchDetails);
-            }
-        }
+                await Task.WhenAll(statistic, incidents, lineups);
 
-        private async Task PushSignalRMatchLineup(long[] matchIds)
-        {
-            foreach (var matchId in matchIds)
-            {
-                var lineups = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
-                await pushSignalService.PushMatchLineupAsync(matchId, lineups);
+                await pushSignalService.PushMatchStatisticAsync(matchId, await statistic, await lineups, await incidents);
             }
         }
 

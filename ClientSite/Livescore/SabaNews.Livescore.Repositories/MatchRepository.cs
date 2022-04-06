@@ -31,30 +31,38 @@
             }
         }
 
-        public async Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria)
+        public async Task<LiveMatchDetail> GetMatchDetaiAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var multi = await db.QueryMultipleAsync())
                 {
-                    var match = multi.Read<Match, League, Team, Team, Match>((match, league, home, away) =>
-                   {
-                       match.League = league;
-                       match.HomeTeam = home;
-                       match.AwayTeam = away;
-                       return match;
-                   }, splitOn: "LeagueId, HomeTeamId, AwayTeamId");
+                    var match = multi.Read<Match, League, Team, Team, Match>(
+                        (match, league, home, away) =>
+                        {
+                            match.League = league;
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
 
-                    var statistic = await multi.ReadAsync<Statistic>();
-                    var lineup = await multi.ReadAsync<LineupDetail>();
+                            return match;
+                        },
+                        splitOn: "LeagueId, HomeTeamId, AwayTeamId");
+
+                    var homeStatistic = await multi.ReadFirstAsync<TeamStatistic>();
+                    var awayStatistic = await multi.ReadFirstAsync<TeamStatistic>();
                     var incidents = await multi.ReadAsync<MatchIncident>();
-
-                    return new MatchDetail
+                    var lineupSumary = await multi.ReadFirstAsync<Lineup>();
+                    var homeLineup = await multi.ReadAsync<LineupTeam>();
+                    var awayLineup = await multi.ReadAsync<LineupTeam>();
+                    return new LiveMatchDetail
                     {
-                        GeneralInfo = match.FirstOrDefault(),
-                        Statistic = statistic.FirstOrDefault(),
-                        Lineup = lineup.FirstOrDefault(),
-                        Incidents = incidents
+                        MatchInfo = match.FirstOrDefault(),
+                        HomeStatistic = homeStatistic,
+                        AwayStatistic = awayStatistic,
+                        Incidents = incidents,
+                        Lineup = lineupSumary,
+                        HomeLineup = homeLineup,
+                        AwayLineup = awayLineup
                     };
                 }
             }
