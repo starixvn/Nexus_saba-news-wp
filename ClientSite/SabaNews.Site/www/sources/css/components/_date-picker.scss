@@ -95,9 +95,6 @@
     font-weight: 400;
 }
 
-.react-datepicker__day--outside-month, .react-datepicker__day--disabled {
-    color: rgba(15, 37, 82, 0.4);
-}
 
 .react-datepicker__day-name {
     font-size: 1rem;
@@ -118,6 +115,9 @@
     color: #FDFDFD;
 }
 
+.react-datepicker__day--outside-month, .react-datepicker__day--disabled {
+    color: rgba(15, 37, 82, 0.4);
+}
 
 .react-datepicker__day--keyboard-selected {
 }
