@@ -1,3 +1,0 @@
-2022-03-23 18:18:59.0172|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service Starting
-2022-03-23 18:18:59.0619|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Doing...
-2022-03-23 18:18:59.7013|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Done.

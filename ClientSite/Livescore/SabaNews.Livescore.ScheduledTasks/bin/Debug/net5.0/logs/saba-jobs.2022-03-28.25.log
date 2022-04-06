@@ -1,3 +1,0 @@
-2022-03-28 16:22:06.9181|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueList: Service starting
-2022-03-28 16:22:06.9714|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncTeamList: Service starting
-2022-03-28 16:22:06.9714|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service starting

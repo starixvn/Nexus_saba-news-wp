@@ -1,6 +1,0 @@
-2022-03-25 17:23:24.2110|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueList: Service starting
-2022-03-25 17:23:24.2688|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Service starting
-2022-03-25 17:24:27.0116|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueList: Stopping service
-2022-03-25 17:24:27.0116|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Stopping service
-2022-03-25 17:24:27.0116|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncAllMatchByUpdatedTime: Disposing service
-2022-03-25 17:24:27.0116|ERROR|SabaNews.Core.Services.LogServiceProvider|SyncLeagueList: Disposing service

@@ -1,5 +1,0 @@
-D:\Project\sabanews\ClientSite\UnitTests\SabaNews.Services.UnitTests\obj\Debug\net5.0\SabaNews.Services.UnitTests.csprojAssemblyReference.cache
-D:\Project\sabanews\ClientSite\UnitTests\SabaNews.Services.UnitTests\obj\Debug\net5.0\SabaNews.Services.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
-D:\Project\sabanews\ClientSite\UnitTests\SabaNews.Services.UnitTests\obj\Debug\net5.0\SabaNews.Services.UnitTests.AssemblyInfoInputs.cache
-D:\Project\sabanews\ClientSite\UnitTests\SabaNews.Services.UnitTests\obj\Debug\net5.0\SabaNews.Services.UnitTests.AssemblyInfo.cs
-D:\Project\sabanews\ClientSite\UnitTests\SabaNews.Services.UnitTests\obj\Debug\net5.0\SabaNews.Services.UnitTests.csproj.CoreCompileInputs.cache
