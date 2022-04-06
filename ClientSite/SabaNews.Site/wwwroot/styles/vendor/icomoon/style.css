@@ -32,6 +32,22 @@
 .icon-live-right:before {
   content: "\e91d";
 }
+.icon-live-realtime:before {
+  content: "\e91e";
+  color: #e13c29;
+}
+.icon-live-calender:before {
+  content: "\e91c";
+  color: #6f6f6f;
+}
+.icon-live-up:before {
+  content: "\e91a";
+  color: #4e7cb1;
+}
+.icon-live-start:before {
+  content: "\e91b";
+  color: #6f6f6f;
+}
 .icon-event-home:before {
   content: "\e919";
   color: #b44414;

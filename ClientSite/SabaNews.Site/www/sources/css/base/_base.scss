@@ -56,8 +56,17 @@ body {
         color: #EF9123;
     }
 }
-.font-weight-bold{
-    font-weight : bold;
+
+.icon-livescore {
+    font-size: 2rem;
+
+    @include tableMobile {
+        font-size: 1.8rem;
+    }
+}
+
+.font-weight-bold {
+    font-weight: bold;
 }
 .icon-hidden {
     display: none;

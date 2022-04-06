@@ -15,7 +15,7 @@ export default class Leagues extends PureComponent {
                                         <img className="logo" loading="lazy" src={league.icon} />
                                         <span className="text">{league.leagueFullNameEN}</span>
                                     </div>
-                                    <div className="toggle-league"><span className="fa fa-star" /></div>
+                                    <div className="toggle-league"><span className="icon-livescore icon-live-start start-active" /></div>
                                 </div>
                             );
                         })
