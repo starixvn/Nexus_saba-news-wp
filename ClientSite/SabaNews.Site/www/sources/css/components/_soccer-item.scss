@@ -224,11 +224,13 @@
                                 font-size: 1.4rem;
                                 line-height: 1.6rem;
                                 font-weight: 600;
+                                padding-right: 1rem;
 
                                 @include Mobile {
-                                    max-width: 14.2rem;
+                                    max-width: 12.2rem;
                                     font-size: 1.1rem;
                                     line-height: 1.3rem;
+                                    padding-right: .3rem;
                                 }
 
                                 @include iphone5 {
@@ -267,7 +269,6 @@
                                 align-items: center;
 
                                 li {
-                                    margin-left: 1.4rem;
                                     text-transform: uppercase;
                                     background: #E9EEF4;
                                     border: 1px solid #ABC4E1;
@@ -279,7 +280,7 @@
                                     padding: .3rem .5rem;
 
                                     @include tableMobile {
-                                        margin-left: 1rem;
+                                        padding: .1rem .3rem;
                                     }
                                 }
                             }
