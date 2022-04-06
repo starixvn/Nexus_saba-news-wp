@@ -68,6 +68,8 @@
         {
             foreach (var matchId in matchIds)
             {
+                var incidents = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = matchId });
+                await pushSignalService.PushMatchIncidentAsync(matchId, incidents.Incidents);
             }
         }
 
@@ -76,6 +78,7 @@
             foreach (var matchId in matchIds)
             {
                 var matchDetails = await matchService.GetMatchDetailAsync(new GetMatchDetailCriteria { MatchId = matchId });
+                await pushSignalService.PushMatchStatisticAsync(matchId, matchDetails);
             }
         }
 
@@ -83,7 +86,8 @@
         {
             foreach (var matchId in matchIds)
             {
-                var linups = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
+                var lineups = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
+                await pushSignalService.PushMatchLineupAsync(matchId, lineups);
             }
         }
 
