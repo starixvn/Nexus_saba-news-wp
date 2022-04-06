@@ -4,9 +4,9 @@
     {
         public const string ConfigurationKey = "PushSignalSettings";
         public string Endpoint { get; set; }
-        public string UpdateLiveSoccerUrl { get; set; }
-        public string UpdateLiveMatchLineupUrl { get; set; }
-        public string UpdateLiveMatchStatisticUrl { get; set; }
-        public string UpdateLiveMatchIncidentUrl { get; set; }
+        public string UpdateLiveMatchMethod { get; set; }
+        public string UpdateLineupMethod { get; set; }
+        public string UpdateStatisticMethod { get; set; }
+        public string UpdateIncidentMethod { get; set; }
     }
 }

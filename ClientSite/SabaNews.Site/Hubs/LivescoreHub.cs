@@ -7,14 +7,14 @@
 
     public class LivescoreHub : Hub<ILivescoreClient>
     {
-        public async Task UpdateLiveSoccer(IList<Match> matches)
+        public async Task UpdateListLiveMatch(IList<Match> matches)
         {
-            await Clients.All.UpdateLiveSoccer(matches);
+            await Clients.All.UpdateLiveMatches(matches);
         }
 
-        public async Task UpdateLiveSoccerCommentary(long matchId)
+        public async Task UpdateMatchStatistic(long matchId, Statistic statistic)
         {
-            await Clients.Group(matchId.ToString()).UpdateLiveSoccerCommentary();
+            await Clients.Group(matchId.ToString()).UpdateLiveMatchStatistic(statistic);
         }
 
         public async Task JoinSoccerGroup(long matchId)

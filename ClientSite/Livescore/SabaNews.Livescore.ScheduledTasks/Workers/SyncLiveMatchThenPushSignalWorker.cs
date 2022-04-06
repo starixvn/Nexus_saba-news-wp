@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
-    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
@@ -37,39 +36,42 @@
             this.syncMatchService = syncMatchService;
             this.liveMatchService = liveMatchService;
             this.matchService = matchService;
-            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatch);
+            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatchAndPushSignalR);
         }
 
         public override async Task ExecuteJobAsync()
         {
-            var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
+            var liveMatchList = await matchService.GetLiveMatchAsync();
+            await pushSignalService.PushMatchListAsync(liveMatchList);
 
-            var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
+            //var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
 
-            await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
+            //var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
 
-            if (matchIds is not null && matchIds.Length > 0)
-            {
-                var liveMatchList = await matchService.GetLiveMatchAsync();
-                await pushSignalService.PushMatchListAsync(liveMatchList);
+            //await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
 
-                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
-                await PushSignalRMatchDetail(matchIds);
+            //if (matchIds is not null && matchIds.Length > 0)
+            //{
+            //    var liveMatchList = await matchService.GetLiveMatchAsync();
+            //    await pushSignalService.PushMatchListAsync(liveMatchList);
 
-                await SyncMatchLineUpAsync(matchIds);
-                await PushSignalRMatchLineup(matchIds);
+            //    await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+            //    await PushSignalRMatchDetail(matchIds);
 
-                await SyncLiveMatchIncidents(matchIds);
-                await PushSignalRMatchIncidents(matchIds);
-            }
+            //    await SyncMatchLineUpAsync(matchIds);
+            //    await PushSignalRMatchLineup(matchIds);
+
+            //    await SyncLiveMatchIncidents(matchIds);
+            //    await PushSignalRMatchIncidents(matchIds);
+            //}
         }
 
         private async Task PushSignalRMatchIncidents(long[] matchIds)
         {
             foreach (var matchId in matchIds)
             {
-                var incidents = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = matchId });
-                await pushSignalService.PushMatchIncidentAsync(matchId, incidents.Incidents);
+                var incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
+                await pushSignalService.PushMatchIncidentAsync(matchId, incidents);
             }
         }
 
@@ -77,7 +79,7 @@
         {
             foreach (var matchId in matchIds)
             {
-                var matchDetails = await matchService.GetMatchDetailAsync(new GetMatchDetailCriteria { MatchId = matchId });
+                var matchDetails = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
                 await pushSignalService.PushMatchStatisticAsync(matchId, matchDetails);
             }
         }

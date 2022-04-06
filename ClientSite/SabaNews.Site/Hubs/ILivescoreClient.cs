@@ -6,8 +6,8 @@
 
     public interface ILivescoreClient
     {
-        Task UpdateLiveSoccer(IList<Match> matches);
+        Task UpdateLiveMatches(IList<Match> matches);
 
-        Task UpdateLiveSoccerCommentary();
+        Task UpdateLiveMatchStatistic(Statistic statistic);
     }
 }
