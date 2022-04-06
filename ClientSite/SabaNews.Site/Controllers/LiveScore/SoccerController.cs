@@ -118,13 +118,14 @@
             {
                 GeneralInfo = generalInfo
             };
-            if (generalInfo.Status == 50) {
+            if (generalInfo.Status == 50)
+            {
                 var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
                 result.AwayTeam = postMatchInfo.AwayStatistic;
                 result.HomeTeam = postMatchInfo.HomeStatistic;
                 result.Incidents = postMatchInfo.Incidents;
             }
-           
+
             return Ok(result);
         }
     }

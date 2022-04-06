@@ -4,7 +4,7 @@
 
     public class GetMatchDetailPostMatchCriteria : CriteriaBase
     {
-        public int MatchId { get; set; }
+        public long MatchId { get; set; }
 
         public int SportId { get; set; } = 1;
 

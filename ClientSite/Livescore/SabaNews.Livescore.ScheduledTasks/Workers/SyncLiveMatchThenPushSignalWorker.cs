@@ -12,6 +12,7 @@
     using SabaNews.Livescore.ScheduledTasks.Helpers;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
 
@@ -50,11 +51,39 @@
             if (matchIds is not null && matchIds.Length > 0)
             {
                 var liveMatchList = await matchService.GetLiveMatchAsync();
-                await pushSignalService.PushToMatchListAsync(liveMatchList);
+                await pushSignalService.PushMatchListAsync(liveMatchList);
 
                 await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+                await PushSignalRMatchDetail(matchIds);
+
                 await SyncMatchLineUpAsync(matchIds);
+                await PushSignalRMatchLineup(matchIds);
+
                 await SyncLiveMatchIncidents(matchIds);
+                await PushSignalRMatchIncidents(matchIds);
+            }
+        }
+
+        private async Task PushSignalRMatchIncidents(long[] matchIds)
+        {
+            foreach (var matchId in matchIds)
+            {
+            }
+        }
+
+        private async Task PushSignalRMatchDetail(long[] matchIds)
+        {
+            foreach (var matchId in matchIds)
+            {
+                var matchDetails = await matchService.GetMatchDetailAsync(new GetMatchDetailCriteria { MatchId = matchId });
+            }
+        }
+
+        private async Task PushSignalRMatchLineup(long[] matchIds)
+        {
+            foreach (var matchId in matchIds)
+            {
+                var linups = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
             }
         }
 

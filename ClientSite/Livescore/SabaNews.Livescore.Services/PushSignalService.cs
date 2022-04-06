@@ -8,6 +8,7 @@
     using Newtonsoft.Json;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
+    using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Interfaces;
 
@@ -29,7 +30,7 @@
             this.logger = logger;
         }
 
-        public async Task PushToMatchListAsync(IEnumerable<Match> matches)
+        public async Task PushMatchListAsync(IEnumerable<Match> matches)
         {
             var data = new Dictionary<string, object>
             {
@@ -37,6 +38,39 @@
             };
 
             await PostAsync(signalRSettings.UpdateLiveSoccerUrl, data);
+        }
+
+        public async Task PushMatchStatisticAsync(long matchId, MathGeneralInfo details)
+        {
+            var data = new Dictionary<string, object>
+            {
+                { "statistic", details }
+            };
+            string url = string.Format("{0}/{1}", signalRSettings.UpdateLiveMatchStatisticUrl, matchId);
+
+            await PostAsync(url, data);
+        }
+
+        public async Task PushMatchLineupAsync(long matchId, LineupDetail lineup)
+        {
+            var data = new Dictionary<string, object>
+            {
+                { "lineup", lineup }
+            };
+            string url = string.Format("{0}/{1}", signalRSettings.UpdateLiveMatchLineupUrl, matchId);
+
+            await PostAsync(url, data);
+        }
+
+        public async Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncidentEvent> incidents)
+        {
+            var data = new Dictionary<string, object>
+            {
+                { "incidents", incidents }
+            };
+            string url = string.Format("{0}/{1}", signalRSettings.UpdateLiveMatchIncidentUrl, matchId);
+
+            await PostAsync(url, data);
         }
 
         private async Task PostAsync(string endPoint, IDictionary<string, object> data)

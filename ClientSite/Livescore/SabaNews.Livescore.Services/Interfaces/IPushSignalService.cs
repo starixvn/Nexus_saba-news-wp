@@ -2,10 +2,17 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
 
     public interface IPushSignalService
     {
-        public Task PushToMatchListAsync(IEnumerable<Match> matches);
+        public Task PushMatchListAsync(IEnumerable<Match> matches);
+
+        public Task PushMatchStatisticAsync(long matchId, MathGeneralInfo details);
+
+        public Task PushMatchLineupAsync(long matchId, LineupDetail lineup);
+
+        public Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncidentEvent> incidents);
     }
 }

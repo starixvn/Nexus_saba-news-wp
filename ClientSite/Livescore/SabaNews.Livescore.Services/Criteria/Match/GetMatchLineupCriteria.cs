@@ -4,7 +4,7 @@
 
     public class GetMatchLineupCriteria : CriteriaBase
     {
-        public int MatchId { get; set; }
+        public long MatchId { get; set; }
 
         public override string GetSettingKey() => "Livescore_Match_GetLineup";
 
