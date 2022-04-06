@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 import { ActionCreators } from '../actions';
 import Leagues from './Leagues';
 import DateBar from './DateBar';
@@ -10,22 +11,68 @@ import SignalR from './SignalR';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 export class AppContainer extends Component {
-    componentDidMount() {
-        this.props.getMajorLeagues();
+    constructor(props) {
+        super(props);
 
+        this.mobileMaxWidth = 768;
+    }
+
+    componentDidMount() {
+        this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
+        this.props.getMajorLeagues();
+        this.getMatches(this.props.selectedDate);
+    }
+
+    getDateRanges = selectedDate => {
+        const dates = [];
+        selectedDate = moment(selectedDate);
+        const minDate = moment(this.props.minDate);
+        const maxDate = moment(this.props.maxDate);
+        let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
+
+        if (selectedDate.isSame(minDate)) {
+            for (let i = 0; i < totalItems; i++) {
+                dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
+            }
+        } else if (selectedDate.isSame(maxDate)) {
+            for (let i = 0; i < totalItems; i++) {
+                dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
+            }
+        } else {
+            dates.push(DateTimeService.formatDateTime(selectedDate, 'YYYY-MM-DD'));
+            if (selectedDate.isSame(minDate.add(1, 'days'))) {
+                for (let i = 1; i < totalItems; i++) {
+                    dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
+                }
+            } else if (selectedDate.isSame(maxDate.subtract(1, 'days'))) {
+                for (let i = 1; i < totalItems; i++) {
+                    dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
+                }
+            } else {
+                totalItems = window.innerWidth <= this.mobileMaxWidth ? 2 : 3;
+                for (let i = 1; i < totalItems; i++) {
+                    dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
+                    dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
+                }
+            }
+        }
+
+        return dates;
+    }
+
+    getMatches = selectedDate => {
         if (window.isLiveMatch) {
             this.props.getLiveMatches();
         } else {
-            const eventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
             this.props.getMatches({
-                eventDate: DateTimeService.formatDateTime(eventDate, 'YYYY-MM-DD'),
+                eventDate: selectedDate,
                 timezone: DateTimeService.getClientTimezone()
             });
         }
-    }
+    };
 
     render() {
-        let matches = this.props.matches;
+        const { matches } = this.props;
         if (matches === null) {
             return null;
         }
@@ -35,7 +82,10 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar matches={matches} />
+                        <DateBar
+                            getDateRanges={this.getDateRanges}
+                            onClick={this.getMatches}
+                        />
                         <SearchBar />
                         <MatchGrid matches={matches} />
                     </div>
@@ -51,8 +101,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, matches } = state;
-    return { majorLeagues, matches };
+    const { minDate, maxDate, selectedDate, majorLeagues, matches } = state;
+    return { minDate, maxDate, selectedDate, majorLeagues, matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

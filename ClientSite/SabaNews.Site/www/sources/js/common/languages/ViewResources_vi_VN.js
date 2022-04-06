@@ -4,6 +4,7 @@
     HotLeague: 'Giải nổi bật',
     Intermission: 'Nghỉ giữa hiệp',
     Live: 'Trực tiếp',
+    Penalty: 'Penalty',
     Postponed: 'Dời lịch',
     ToBeDecided: 'Chờ quyết định',
     Today: 'Hôm nay'

@@ -2,6 +2,8 @@
 import DataService from '@jsroot/common/dataService';
 import {
     setSearchKey,
+    setSelectedDate,
+    setDateRanges,
     setMajorLeagues,
     setMatches
 } from './soccerMatchSlice';
@@ -29,6 +31,8 @@ const getLiveMatches = () => async dispatch => {
 
 export const ActionCreators = {
     setSearchKey,
+    setSelectedDate,
+    setDateRanges,
     setMajorLeagues,
     setMatches,
     getMajorLeagues,

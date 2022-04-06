@@ -77,14 +77,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\minify\js\" />
-        <Folder Include="wwwroot\minify\styles\" />
-        <Folder Include="wwwroot\styles\pages\admin\user\" />
-        <Folder Include="wwwroot\uploads\" />
-        <Folder Include="www\sources\js\components\" />
-    </ItemGroup>
-
-    <ItemGroup>
         <None Include="compilerconfig.json" />
         <None Include="wwwroot\lib\bootstrap\multiselect\js\bootstrap-multiselect.js" />
         <None Include="wwwroot\lib\bootstrap\multiselect\js\bootstrap-multiselect.min.js" />

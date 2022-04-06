@@ -21,6 +21,10 @@ export default class Match extends PureComponent {
                 return <span>{LangHelper.getResource('Intermission')}</span>;
                 break;
 
+            case MatchStatus.PenaltyShootout:
+                return <span>{LangHelper.getResource('Penalty')}</span>;
+                break;
+
             case MatchStatus.Delay:
                 return <span>{LangHelper.getResource('Delay')}</span>;
                 break;
@@ -82,9 +86,16 @@ export default class Match extends PureComponent {
         const reg = new RegExp(`(${searchKey})`, 'gi');
         const displayHomeTeamValue = match.homeTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
         const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
+        const isLiveMatch = match.status === MatchStatus.FirstHalf
+            || match.status === MatchStatus.SecondHalf
+            || match.status === MatchStatus.Intermission
+            || match.status === MatchStatus.ExtraTime
+            || match.status === MatchStatus.PenaltyShootout;
 
         return (
-            <div className="soccer-match-item" onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}>
+            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''}`}
+                onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
+            >
                 <i className="icon-livescore icon-live-start-outline" />
                 <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
                 <div className="soccer-match-team">

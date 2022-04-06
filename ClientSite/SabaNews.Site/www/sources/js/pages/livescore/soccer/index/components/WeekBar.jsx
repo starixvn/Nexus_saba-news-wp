@@ -1,18 +1,25 @@
 ﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
-export default class WeekBar extends PureComponent {
+export const withNavigation = Component => {
+    return props => <Component {...props} navigate={useNavigate()} />;
+}
+
+class WeekBar extends PureComponent {
     constructor(props) {
         super(props);
 
         this.mobileMaxWidth = 768;
 
         this.state = {
-            isMobile: false,
-            dateRanges: this.getDateRanges()
+            isMobile: false
         };
     }
 
@@ -25,99 +32,67 @@ export default class WeekBar extends PureComponent {
     }
 
     handleResize = () => {
-        const dateRanges = [...this.state.dateRanges];
+        const dateRanges = [...this.props.dateRanges];
         if (window.innerWidth <= this.mobileMaxWidth && dateRanges.length === 5) {
             dateRanges.shift();
             dateRanges.shift();
-            this.setState({ dateRanges });
+            this.props.setDateRanges(dateRanges);
         } else {
             if (window.innerWidth > this.mobileMaxWidth && dateRanges.length === 3) {
                 dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
                 dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
-                this.setState({ dateRanges });
+                this.props.setDateRanges(dateRanges);
             }
         }
-    }
-
-    getDateRanges = () => {
-        const dates = [];
-        const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
-        const date = moment(DateTimeService.formatDateTime(selectedEventDate, 'YYYY-MM-DD'));
-        const minDate = moment(this.props.minDate);
-        const maxDate = moment(this.props.maxDate);
-        let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
-
-        if (date.isSame(minDate)) {
-            for (let i = 0; i < totalItems; i++) {
-                dates.push(moment(date).add(i, 'days'));
-            }
-        } else if (date.isSame(maxDate)) {
-            for (let i = 0; i < totalItems; i++) {
-                dates.unshift(moment(date).subtract(i, 'days'));
-            }
-        } else {
-            dates.push(date);
-            if (date.isSame(minDate.add(1, 'days'))) {
-                for (let i = 1; i < totalItems; i++) {
-                    dates.push(moment(date).add(i, 'days'));
-                }
-            } else if (date.isSame(maxDate.subtract(1, 'days'))) {
-                for (let i = 1; i < totalItems; i++) {
-                    dates.unshift(moment(date).subtract(i, 'days'));
-                }
-            } else {
-                totalItems = window.innerWidth <= this.mobileMaxWidth ? 2 : 3;
-                for (let i = 1; i < totalItems; i++) {
-                    dates.push(moment(date).add(i, 'days'));
-                    dates.unshift(moment(date).subtract(i, 'days'));
-                }
-            }
-        }
-
-        return dates;
     }
 
     onPrev = () => {
-        const dateRanges = [...this.state.dateRanges];
+        const dateRanges = [...this.props.dateRanges];
         dateRanges.pop();
-        dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
-        this.setState({ dateRanges });
+        dateRanges.unshift(DateTimeService.formatDateTime(moment(dateRanges[0]).subtract(1, 'days'), 'YYYY-MM-DD'));
+        this.props.setDateRanges(dateRanges);
     };
 
     onNext = () => {
-        const dateRanges = [...this.state.dateRanges];
+        const dateRanges = [...this.props.dateRanges];
         dateRanges.shift();
-        dateRanges.push(moment(dateRanges[dateRanges.length - 1]).add(1, 'days'));
-        this.setState({ dateRanges });
+        dateRanges.push(DateTimeService.formatDateTime(moment(dateRanges[dateRanges.length - 1]).add(1, 'days'), 'YYYY-MM-DD'));
+        this.props.setDateRanges(dateRanges);
+    };
+
+    onSelectDate = date => {
+        window.isLiveMatch = false;
+        this.props.setSelectedDate(date);
+        this.props.setDateRanges(this.props.getDateRanges(date));
+        this.props.onClick(date);
+        this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/${date}`));
     };
 
     render() {
-        const selectedEventDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
-        const dateRanges = this.state.dateRanges;
-        const today = moment(DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD'));
-        const date = moment(DateTimeService.formatDateTime(selectedEventDate, 'YYYY-MM-DD'));
-        const minDate = moment(this.props.minDate);
-        const maxDate = moment(this.props.maxDate);
+        const { today, minDate, maxDate, selectedDate, dateRanges } = this.props;
 
         return (
             <div className="livescore-soccer-week-bar">
-                <button className="btn-prev-date" onClick={this.onPrev} disabled={dateRanges.length > 0 && dateRanges[0].isSame(minDate)}>
+                <button className="btn-prev-date" onClick={this.onPrev}
+                    disabled={dateRanges.length > 0 && moment(dateRanges[0]).isSame(minDate)}
+                >
                     <i className="icon-livescore icon-chevron-left" />
                 </button>
                 {
                     dateRanges.map((item, index) => {
+                        const date = moment(item);
                         return (
-                            <div key={index} className={`week-date ${date.isSame(item) && !window.isLiveMatch ? 'active' : ''}`}
-                                onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/${item.format('YYYY-MM-DD')}`)}
+                            <div key={index} className={`week-date ${moment(selectedDate).isSame(date) && !window.isLiveMatch ? 'active' : ''}`}
+                                onClick={() => this.onSelectDate(item)}
                             >
-                                <div className="day-of-week">{item.isSame(today) ? LangHelper.getResource('Today') : item.format('dddd')}</div>
-                                <div className="date">{item.format('DD/MM')}</div>
+                                <div className="day-of-week">{date.isSame(today) ? LangHelper.getResource('Today') : date.format('dddd')}</div>
+                                <div className="date">{date.format('DD/MM')}</div>
                             </div>
                         );
                     })
                 }
                 <button className="btn-next-date" onClick={this.onNext}
-                    disabled={dateRanges.length > 0 && dateRanges[dateRanges.length - 1].isSame(maxDate)}
+                    disabled={dateRanges.length > 0 && moment(dateRanges[dateRanges.length - 1]).isSame(maxDate)}
                 >
                     <i className="icon-livescore icon-chevron-right" />
                 </button>
@@ -125,3 +100,14 @@ export default class WeekBar extends PureComponent {
         );
     }
 }
+
+const WeekBarComponent = withNavigation(WeekBar);
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+const mapStateToProps = state => {
+    const { today, minDate, maxDate, selectedDate, dateRanges } = state;
+    return { today, minDate, maxDate, selectedDate, dateRanges };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeekBarComponent);
