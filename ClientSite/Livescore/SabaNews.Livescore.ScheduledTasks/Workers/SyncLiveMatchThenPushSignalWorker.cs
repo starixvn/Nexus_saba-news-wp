@@ -72,7 +72,7 @@
 
                 await Task.WhenAll(statistic, incidents, lineups);
 
-                await pushSignalService.PushMatchStatisticAsync(matchId, await statistic, await lineups, await incidents);
+                await pushSignalService.PushMatchDetailcAsync(matchId, await statistic, await lineups, await incidents);
             }
         }
 
