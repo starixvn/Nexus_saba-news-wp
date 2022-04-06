@@ -118,7 +118,8 @@
             {
                 //GeneralInfo = await matchService.GetMatchDetailAsync(criteria),
                 Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
-                Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
+                Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
+                HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { HomeTeamId = 35313, AwayTeamId = 41021 })
             };
 
             return Ok(result);

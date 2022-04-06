@@ -9,5 +9,6 @@
         public Statistic Statistic { get; set; }
         public IEnumerable<MatchIncident> Incidents { get; set; }
         public LineupDetail Lineup { get; set; }
+        public HeadToHead HeadToHead { get; set; }
     }
 }

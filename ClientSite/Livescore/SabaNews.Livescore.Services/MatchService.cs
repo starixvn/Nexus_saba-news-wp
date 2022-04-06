@@ -68,5 +68,17 @@
             };
             return data;
         }
+
+        public async Task<HeadToHead> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria)
+        {
+            var (common, home, away) = await baseService.FetchMultipleAsync<MatchHeadToHead, MatchHeadToHead, MatchHeadToHead>(criteria);
+            var data = new HeadToHead
+            {
+                Common = common,
+                Home = home,
+                Away = away
+            };
+            return data;
+        }
     }
 }

@@ -20,6 +20,9 @@
         Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria);
 
         Task<Statistic> GetMatchStatisticAsync(GetMatchStatisticCriteria criteria);
-       
+
+        Task<HeadToHead> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria);
+
+
     }
 }
