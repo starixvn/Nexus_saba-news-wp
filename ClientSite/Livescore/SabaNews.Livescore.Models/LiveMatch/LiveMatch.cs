@@ -8,7 +8,7 @@
     {
         public TeamStatistic HomeStatistic { get; set; }
         public TeamStatistic AwayStatistic { get; set; }
-        public IEnumerable<MatchIncidentEvent> Incidents { get; set; }
+        public IEnumerable<MatchIncident> Incidents { get; set; }
         public LineupDetail Lineup { get; set; }
     }
 }

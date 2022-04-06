@@ -16,6 +16,10 @@
 
         Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria);
 
-        Task<MatchDetailPostMatch> GetMatchDetailPostMatch(GetMatchDetailPostMatchCriteria criteria);
+
+        Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria);
+
+        Task<Statistic> GetMatchStatisticAsync(GetMatchStatisticCriteria criteria);
+       
     }
 }

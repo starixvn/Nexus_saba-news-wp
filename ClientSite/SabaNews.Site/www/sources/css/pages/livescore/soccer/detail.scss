@@ -893,3 +893,130 @@ svg.fill-red {
     top: -5px;
 }
 
+//head to head
+
+.hth-section {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+.f-row {
+    float: left;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: solid 1px #eaeaea;
+}
+
+.football-match {
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    float: left;
+    display: table;
+}
+.football-match > div {
+    vertical-align: top;
+    display: table-cell;
+    position: relative;
+}
+.w_col1 {
+    width: 15%;
+}
+.columns-time {
+    width: 27%;
+}
+.columns-match{
+    &.w_col2 {
+        width: 70%;
+        .columns-club {
+            width: 40%;
+        }
+        .columns-number {
+            width: 20%;
+        }
+    }
+}
+.row-teams {
+    display: table;
+    width: 100%;
+
+    & > div {
+        display: table-cell;
+        position: relative;
+        vertical-align: top;
+    }
+}
+
+.club1 {
+    text-align: right;
+    padding-right: 26px;
+    .logo-club {
+        right: 0;
+    }
+}
+
+.club2 {
+    text-align: left;
+    padding-left: 26px;
+    .logo-club {
+        left: 0;
+    }
+}
+
+.name-club {
+    display: block;
+    position: relative;
+}
+
+.logo-club {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 0;
+    border-radius: 100%;
+}
+.columns-number {
+    text-align: center;
+    padding: 0 6px;
+    width: 14%;
+}
+.soccer-scores {
+    display: inline-block;
+    background: #37b349;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    width: 48px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.row_match_info {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    float: left;
+    padding-top: 12px;
+}
+
+.item_ktv {
+    color: #666;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.btn-f-more {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    width: 18px;
+    text-align: center;
+    position: relative;
+    background: #f2f2f2;
+    border-radius: 100%;
+}

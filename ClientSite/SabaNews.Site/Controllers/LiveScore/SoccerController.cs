@@ -113,18 +113,13 @@
         [HttpPost]
         public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
         {
-            var generalInfo = await matchService.GetMatchDetailAsync(criteria);
+            var matchId = criteria.MatchId;
             var result = new MatchDetail
             {
-                GeneralInfo = generalInfo
+                GeneralInfo = await matchService.GetMatchDetailAsync(criteria),
+                Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
+                Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
             };
-            if (generalInfo.Status == 50)
-            {
-                var postMatchInfo = await matchService.GetMatchDetailPostMatch(new GetMatchDetailPostMatchCriteria { MatchId = criteria.MatchId });
-                result.AwayTeam = postMatchInfo.AwayStatistic;
-                result.HomeTeam = postMatchInfo.HomeStatistic;
-                result.Incidents = postMatchInfo.Incidents;
-            }
 
             return Ok(result);
         }

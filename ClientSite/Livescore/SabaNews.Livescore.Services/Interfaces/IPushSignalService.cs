@@ -13,6 +13,6 @@
 
         public Task PushMatchLineupAsync(long matchId, LineupDetail lineup);
 
-        public Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncidentEvent> incidents);
+        public Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncident> incidents);
     }
 }

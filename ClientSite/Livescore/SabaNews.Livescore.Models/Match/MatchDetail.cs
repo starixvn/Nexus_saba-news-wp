@@ -6,9 +6,8 @@
     public class MatchDetail
     {
         public MathGeneralInfo GeneralInfo { get; set; }
-        public TeamStatistic HomeTeam { get; set; }
-        public TeamStatistic AwayTeam { get; set; }
-        public IEnumerable<MatchIncidentEvent> Incidents { get; set; }
+        public Statistic Statistic { get; set; }
+        public IEnumerable<MatchIncident> Incidents { get; set; }
         public LineupDetail Lineup { get; set; }
     }
 }

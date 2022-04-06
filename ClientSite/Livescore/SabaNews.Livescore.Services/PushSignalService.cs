@@ -62,7 +62,7 @@
             await PostAsync(url, data);
         }
 
-        public async Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncidentEvent> incidents)
+        public async Task PushMatchIncidentAsync(long matchId, IEnumerable<MatchIncident> incidents)
         {
             var data = new Dictionary<string, object>
             {

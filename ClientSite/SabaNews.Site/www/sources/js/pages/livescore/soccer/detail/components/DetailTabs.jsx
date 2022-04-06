@@ -6,6 +6,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import MatchSummary from './MatchSummary';
 import Lineups from './Lineups';
 import Statistics from './Statistics';
+import HeadToHead from './HeadToHead';
 
 export class DetailTabs extends Component {
     constructor(props) {
@@ -25,7 +26,6 @@ export class DetailTabs extends Component {
             this.props.setloadTabStatus(status)
         }
     }
-    
     render() {
         const loadTabStatus = this.props.loadTabStatus;
         return (
@@ -38,6 +38,9 @@ export class DetailTabs extends Component {
                 </Tab>
                 <Tab eventKey="Lineups" title="Đội hình" disabled={!loadTabStatus.enableTabLineUp}>
                     <Lineups />
+                </Tab>
+                <Tab eventKey="HeadToHead" title="Đối đầu" disabled={!loadTabStatus.enableTabLineUp}>
+                    <HeadToHead />
                 </Tab>
             </Tabs>
         );

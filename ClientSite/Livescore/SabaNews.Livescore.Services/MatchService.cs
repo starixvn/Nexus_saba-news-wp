@@ -38,6 +38,24 @@
             return result;
         }
 
+        public async Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<MatchIncident>(criteria);
+
+            return result;
+        }
+
+        public async Task<Statistic> GetMatchStatisticAsync(GetMatchStatisticCriteria criteria)
+        {
+            var (homeStatictis, awayStatistic) = await baseService.FetchMultipleAsync<TeamStatistic, TeamStatistic>(criteria);
+            var data = new Statistic
+            {
+                HomeStatistic = homeStatictis.FirstOrDefault(),
+                AwayStatistic = awayStatistic.FirstOrDefault()
+            };
+            return data;
+        }
+
 
         public async Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria)
         {
@@ -47,18 +65,6 @@
                 GeneralInfo = generalInfo.FirstOrDefault(),
                 Home = home.ToList(),
                 Away = away.ToList()
-            };
-            return data;
-        }
-
-        public async Task<MatchDetailPostMatch> GetMatchDetailPostMatch(GetMatchDetailPostMatchCriteria criteria)
-        {
-            var (incidents, homeStatictis, awayStatistic) = await baseService.FetchMultipleAsync<MatchIncidentEvent, TeamStatistic, TeamStatistic>(criteria);
-            var data = new MatchDetailPostMatch
-            {
-                Incidents = incidents,
-                HomeStatistic = homeStatictis.FirstOrDefault(),
-                AwayStatistic = awayStatistic.FirstOrDefault()
             };
             return data;
         }
