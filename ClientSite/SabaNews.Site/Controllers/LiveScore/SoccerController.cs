@@ -116,9 +116,9 @@
             var matchId = criteria.MatchId;
             var result = new MatchDetail
             {
-                GeneralInfo = await matchService.GetMatchDetailAsync(criteria),
+                //GeneralInfo = await matchService.GetMatchDetailAsync(criteria),
                 Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
-                Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
+                Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
             };
 
             return Ok(result);

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
@@ -41,29 +42,26 @@
 
         public override async Task ExecuteJobAsync()
         {
-            var liveMatchList = await matchService.GetLiveMatchAsync();
-            await pushSignalService.PushMatchListAsync(liveMatchList);
+            var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
 
-            //var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
+            var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
 
-            //var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
+            await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
 
-            //await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
+            if (matchIds is not null && matchIds.Length > 0)
+            {
+                var liveMatchList = await matchService.GetLiveMatchAsync();
+                await pushSignalService.PushMatchListAsync(liveMatchList);
 
-            //if (matchIds is not null && matchIds.Length > 0)
-            //{
-            //    var liveMatchList = await matchService.GetLiveMatchAsync();
-            //    await pushSignalService.PushMatchListAsync(liveMatchList);
+                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+                await PushSignalRMatchStatistic(matchIds);
 
-            //    await syncMatchService.SyncMatchDetailsAsync(liveMatches);
-            //    await PushSignalRMatchDetail(matchIds);
+                await SyncMatchLineUpAsync(matchIds);
+                await PushSignalRMatchLineup(matchIds);
 
-            //    await SyncMatchLineUpAsync(matchIds);
-            //    await PushSignalRMatchLineup(matchIds);
-
-            //    await SyncLiveMatchIncidents(matchIds);
-            //    await PushSignalRMatchIncidents(matchIds);
-            //}
+                await SyncLiveMatchIncidents(matchIds);
+                await PushSignalRMatchIncidents(matchIds);
+            }
         }
 
         private async Task PushSignalRMatchIncidents(long[] matchIds)
@@ -75,7 +73,7 @@
             }
         }
 
-        private async Task PushSignalRMatchDetail(long[] matchIds)
+        private async Task PushSignalRMatchStatistic(long[] matchIds)
         {
             foreach (var matchId in matchIds)
             {
