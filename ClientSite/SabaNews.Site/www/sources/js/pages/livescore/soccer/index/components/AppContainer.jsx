@@ -61,7 +61,7 @@ export class AppContainer extends Component {
     }
 
     getMatches = selectedDate => {
-        if (window.isLiveMatch) {
+        if (window.isLiveMatchPage) {
             this.props.getLiveMatches();
         } else {
             this.props.getMatches({

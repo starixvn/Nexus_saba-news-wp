@@ -8,7 +8,7 @@ export class MatchGrid extends Component {
     render() {
         if (this.props.matches.length === 0) {
             return <div className="none-livescore">
-                { !window.isLiveMatch ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
+                { !window.isLiveMatchPage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
             </div>;
         }
 

@@ -5,7 +5,8 @@ import {
     setSelectedDate,
     setDateRanges,
     setMajorLeagues,
-    setMatches
+    setMatches,
+    setLiveMatches
 } from './soccerMatchSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -37,5 +38,6 @@ export const ActionCreators = {
     setMatches,
     getMajorLeagues,
     getMatches,
-    getLiveMatches
+    getLiveMatches,
+    setLiveMatches
 };

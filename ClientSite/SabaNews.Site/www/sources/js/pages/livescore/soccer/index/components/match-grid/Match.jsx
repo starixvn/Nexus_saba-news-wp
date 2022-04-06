@@ -1,48 +1,9 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
-import LangHelper from '@jsroot/common/langHelper';
-import DateTimeService from '@jsroot/common/dateTimeService';
+import MatchStage from './MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
 import Site from '@jsroot/common/site';
 
 export default class Match extends PureComponent {
-    getMatchStage = match => {
-        switch (match.status) {
-            case MatchStatus.NotStarted:
-                const startTime = DateTimeService.convertFromUTC(match.startTime);
-                return <span className="font-weight-bold">{DateTimeService.toShortTimeFormat(startTime)}</span>;
-                break;
-
-            case MatchStatus.FirstHalf:
-            case MatchStatus.SecondHalf:
-                return <span>72'</span> ;
-                break;
-
-            case MatchStatus.Intermission:
-                return <span>{LangHelper.getResource('Intermission')}</span>;
-                break;
-
-            case MatchStatus.PenaltyShootout:
-                return <span>{LangHelper.getResource('Penalty')}</span>;
-                break;
-
-            case MatchStatus.Delay:
-                return <span>{LangHelper.getResource('Delay')}</span>;
-                break;
-
-            case MatchStatus.Postpone:
-                return <span>{LangHelper.getResource('Postponed')}</span>;
-                break;
-
-            case MatchStatus.TBD:
-                return <span>{LangHelper.getResource('ToBeDecided')}</span>;
-                break;
-
-            default:
-                return <span>{LangHelper.getResource('Finish')}</span>;
-                break;
-        }
-    };
-
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = !isHomeTeam ? 'awayTeam' : 'homeTeam';
@@ -97,7 +58,7 @@ export default class Match extends PureComponent {
                 onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
             >
                 <i className="icon-livescore icon-live-start-outline" />
-                <div className="soccer-match-stage">{this.getMatchStage(match)}</div>
+                <MatchStage match={match} />
                 <div className="soccer-match-team">
                     <div className="group-team">
                         <div className="soccer-team home-team">

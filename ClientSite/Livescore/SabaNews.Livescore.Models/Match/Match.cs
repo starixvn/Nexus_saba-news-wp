@@ -22,5 +22,8 @@
         public short? AwayTeamAggregateScore { get; set; }
         public short? HomeTeamPenaltyScore { get; set; }
         public short? AwayTeamPenaltyScore { get; set; }
+        public DateTime? FootballStartTime { get; set; }
+        public DateTime? FootballNextHalfStartTime { get; set; }
+        public DateTime? FootballAddStartTime { get; set; }
     }
 }

@@ -61,7 +61,7 @@ class WeekBar extends PureComponent {
     };
 
     onSelectDate = date => {
-        window.isLiveMatch = false;
+        window.isLiveMatchPage = false;
         this.props.setSelectedDate(date);
         this.props.setDateRanges(this.props.getDateRanges(date));
         this.props.onClick(date);
@@ -82,7 +82,7 @@ class WeekBar extends PureComponent {
                     dateRanges.map((item, index) => {
                         const date = moment(item);
                         return (
-                            <div key={index} className={`week-date ${moment(selectedDate).isSame(date) && !window.isLiveMatch ? 'active' : ''}`}
+                            <div key={index} className={`week-date ${moment(selectedDate).isSame(date) && !window.isLiveMatchPage ? 'active' : ''}`}
                                 onClick={() => this.onSelectDate(item)}
                             >
                                 <div className="day-of-week">{date.isSame(today) ? LangHelper.getResource('Today') : date.format('dddd')}</div>

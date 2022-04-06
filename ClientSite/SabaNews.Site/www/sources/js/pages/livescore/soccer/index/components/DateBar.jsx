@@ -25,16 +25,16 @@ class DateBar extends PureComponent {
 
         return (
             <div className="livescore-soccer-date-bar">
-                <div className={`btn-live ${window.isLiveMatch ? 'active' : ''}`}
+                <div className={`btn-live ${window.isLiveMatchPage ? 'active' : ''}`}
                     onClick={() => {
-                        window.isLiveMatch = true;
+                        window.isLiveMatchPage = true;
                         this.props.onClick();
                         this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`));
                     }}
                 >
                     <i className="icon-livescore icon-live-realtime"></i>
                     {
-                        window.isLiveMatch && matches.length > 0 && <span>{matches.length}</span>
+                        window.isLiveMatchPage && matches.length > 0 && <span>{matches.length}</span>
                     }
                     <div className="btn-live-realtime">{LangHelper.getResource('Live')}</div>
                 </div>
@@ -46,7 +46,7 @@ class DateBar extends PureComponent {
                     minDate={minDate}
                     maxDate={maxDate}
                     onChange={date => {
-                        window.isLiveMatch = false;
+                        window.isLiveMatchPage = false;
                         this.props.setSelectedDate(moment(date).format('YYYY-MM-DD'));
                         this.props.setDateRanges(this.props.getDateRanges(moment(date).format('YYYY-MM-DD')));
                         this.props.onClick(moment(date).format('YYYY-MM-DD'));

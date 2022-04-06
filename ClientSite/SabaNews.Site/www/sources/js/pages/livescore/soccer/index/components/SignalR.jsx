@@ -26,16 +26,25 @@ export class SignalR extends Component {
             .withAutomaticReconnect()
             .build();
 
-        this.connection.on('UpdateLiveSoccer', soccerMatches => {
-            this.props.setLiveSoccerMatches(soccerMatches);
+        this.connection.on('UpdateLiveMatches', matches => {
+            this.props.setLiveMatches(matches);
         });
 
-        this.connection.start().then().catch(err => console.error(err.toString()));
+        this.start();
     }
 
     componentWillUnmount() {
         this.connection.stop();
     }
+
+    start = () => {
+        try {
+            this.connection.start();
+        } catch (err) {
+            console.log(err);
+            setTimeout(start, 5000);
+        }
+    };
 
     render() {
         return <span />;

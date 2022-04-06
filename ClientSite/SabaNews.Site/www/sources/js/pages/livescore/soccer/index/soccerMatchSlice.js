@@ -33,6 +33,24 @@ const soccerMatchSlice = createSlice({
         },
         setMatches: (state, action) => {
             state.matches = action.payload;
+        },
+        setLiveMatches: (state, action) => {
+            const liveMatches = action.payload;
+            if (state.today === state.selectedDate) {
+                if (window.isLiveMatchPage) {
+                    state.matches = liveMatches;
+                } else {
+                    const totalItems = liveMatches.length;
+                    for (let i = 0; i < totalItems; i++) {
+                        const index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                        if (index >= 0) {
+                            state.matches[index] = liveMatches[i];
+                        } else {
+                            state.matches.push(liveMatches[i]);
+                        }
+                    }
+                }
+            }
         }
     }
 });
@@ -44,7 +62,8 @@ export const {
     setSelectedDate,
     setDateRanges,
     setMajorLeagues,
-    setMatches
+    setMatches,
+    setLiveMatches
 } = actions;
 
 export default reducer;
