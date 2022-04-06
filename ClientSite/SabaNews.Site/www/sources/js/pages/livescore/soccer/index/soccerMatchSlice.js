@@ -3,7 +3,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 
 const selectedDate = window.selectedEventDate ? window.selectedEventDate : DateTimeService.getCurrentClientDateTime();
 const today = new Date(DateTimeService.getCurrentClientDateTime());
-const minDate = new Date(2021, 0, 1);
+const minDate = new Date(2020, 0, 1);
 const maxDate = new Date(today.getFullYear() + 1, 12, 0);
 
 const soccerMatchSlice = createSlice({

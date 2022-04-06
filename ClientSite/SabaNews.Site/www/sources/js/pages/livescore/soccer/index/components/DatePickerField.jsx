@@ -42,7 +42,7 @@ export default class DatePickerField extends PureComponent {
     };
 
     render() {
-        const { ...rest } = this.props;
+        const { selectedDate, minDate, maxDate } = this.props;
         const open = this.state.open;
 
         const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
@@ -56,8 +56,10 @@ export default class DatePickerField extends PureComponent {
                     dateFormat={'MMM dd, yyyy'}
                     locale="vi"
                     customInput={<CustomInput />}
-                    selected={this.props.date}
-                    {...rest}
+                    selected={new Date(selectedDate)}
+                    minDate={new Date(minDate)}
+                    maxDate={new Date(maxDate)}
+                    onChange={date => this.props.onChange(date)}
                     open={open}
                     closeOnScroll={this.closeOnScroll}
                 />
