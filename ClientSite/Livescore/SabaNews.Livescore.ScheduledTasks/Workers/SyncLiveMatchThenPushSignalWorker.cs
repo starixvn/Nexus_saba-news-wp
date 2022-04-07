@@ -50,8 +50,9 @@
 
             if (matchIds is not null && matchIds.Length > 0)
             {
-                var liveMatchList = await matchService.GetLiveMatchAsync();
                 await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+
+                var liveMatchList = await matchService.GetLiveMatchAsync();
 
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
@@ -66,13 +67,13 @@
         {
             foreach (var matchId in matchIds)
             {
-                var statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
-                var incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
-                var lineups = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
+                var statistic = matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
+                var incidents = matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
+                var lineups = matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
 
-                //await Task.WhenAll(statistic, incidents, lineups);
+                await Task.WhenAll(statistic, incidents, lineups);
 
-                await pushSignalService.PushMatchDetailcAsync(matchId, statistic, lineups, incidents);
+                await pushSignalService.PushMatchDetailcAsync(matchId, await statistic, await lineups, await incidents);
             }
         }
 

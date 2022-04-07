@@ -74,7 +74,7 @@
         private static MatchTeamStatistic ConvertToTeamStatistic(MatchExtraData extraData, long matchId, bool isHome)
         {
             int index = isHome ? 0 : 1;
-            return new MatchTeamStatistic()
+            var result = new MatchTeamStatistic()
             {
                 MatchId = matchId,
                 IsHomeTeam = isHome,
@@ -118,6 +118,8 @@
                 Slide = extraData.Slide is not null ? extraData.Slide[index] : 0,
                 Steals = extraData.Steals is not null ? extraData.Steals[index] : 0
             };
+
+            return result;
         }
 
         internal static List<TeamHistory> GenerateTeamHistoryToImport(HeadToHeadResponse h2h)

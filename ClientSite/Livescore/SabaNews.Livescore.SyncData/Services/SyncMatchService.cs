@@ -46,6 +46,7 @@
                     MatchScoreJson = JsonConvert.SerializeObject(matchScoreList),
                     MatchDetailJson = JsonConvert.SerializeObject(statisticList)
                 };
+
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }

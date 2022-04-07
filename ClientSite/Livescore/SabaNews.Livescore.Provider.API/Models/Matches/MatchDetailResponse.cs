@@ -14,6 +14,7 @@
         public int[] AggScore { get; set; }
         public int HomeAggScore => AggScore is not null && AggScore.Length > 0 ? AggScore[0] : 0;
         public int AwayAggScore => AggScore is not null && AggScore.Length > 0 ? AggScore[1] : 0;
+
         public MatchExtraData ExtraData { get; set; }
     }
 }

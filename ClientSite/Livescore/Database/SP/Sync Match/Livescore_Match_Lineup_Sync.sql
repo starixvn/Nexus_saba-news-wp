@@ -114,7 +114,7 @@ BEGIN
     SELECT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId
-           ,p.NameEN
+           ,IFNULL(p.NameEN, "")
            ,tpl.IsSubstitute
            ,tpl.PlayerNumber
            ,tpl.Position

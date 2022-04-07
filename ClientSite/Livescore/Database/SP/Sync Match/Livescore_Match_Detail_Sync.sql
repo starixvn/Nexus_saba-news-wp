@@ -114,8 +114,8 @@ BEGIN
 
     DROP TEMPORARY TABLE IF EXISTS tmp_Detail;
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Detail(
-                        MatchId bigint NOT NULL,
-                        IsHomeTeam SMALLINT,
+                        MatchId BIGINT NOT NULL,
+                        TeamId BIGINT NOT NULL,
                         Goal SMALLINT,
                         CornerKick SMALLINT,
                         YellowCard SMALLINT,
@@ -156,21 +156,21 @@ BEGIN
                         Slide SMALLINT,
                         Steals SMALLINT);
     
-	INSERT INTO tmp_Detail(MatchId, IsHomeTeam, Goal, CornerKick, YellowCard, RedCard, OutBall, 
+	INSERT INTO tmp_Detail(MatchId, TeamId, Goal, CornerKick, YellowCard, RedCard, OutBall, 
     FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
     MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyScore, Assists, 
     First, Follow, Foul, Grade, HalfCorner, HalfPossession, Head, HeadSuccess, Intercept, 
     OffSide, OnDoor, Pass, PassSuccess, Past, Shoot, ShootOut, ShootStop, Slide, Steals)
 
-    SELECT md.MatchId, md.IsHomeTeam, md.Goal, md.CornerKick, md.YellowCard, md.RedCard, md.OutBall, 
+    SELECT md.MatchId, (CASE WHEN md.IsHomeTeam = 1 THEN m.HomeTeamId ELSE m.AwayTeamId END) As TeamId, md.Goal, md.CornerKick, md.YellowCard, md.RedCard, md.OutBall, 
     md.FreeKick, md.GoalKick, md.PenaltyKick, md.YellowToRed, md.FailPenaltyKick, md.OwnGoal, md.InjuryTime, md.OnGoal, 
     md.MissGoal, md.Attack, md.DangerAttack, md.ControlRate, md.ExtraScore, md.PenaltyScore, md.Assists, 
     md.First, md.Follow, md.Foul, md.Grade, md.HalfCorner, md.HalfPossession, md.Head, md.HeadSuccess, md.Intercept,
-    md.OffSide, md.OnDoor, md.Pass, md.PassSuccess, md.Past, md.Shoot, md.ShootOut, md.ShootStop, md.Slide, md.Steals 
+    md.OffSide, md.OnDoor, md.Pass, md.PassSuccess, md.Past, md.Shoot, md.ShootOut, md.ShootStop, md.Slide, md.Steals
     FROM 
 		JSON_TABLE
         (
-			MatchScoreJson,
+			MatchDetailJson,
             "$[*]"
             COLUMNS
             (
@@ -216,18 +216,19 @@ BEGIN
                 Slide SMALLINT PATH "$.Slide",
                 Steals SMALLINT PATH "$.Steals"
             )
-        ) AS md;
+        ) AS md
+        INNER JOIN livescore_match m ON md.MatchId = m.MatchId;
 
         INSERT INTO livescore_match_statistic(MatchId, TeamId, Goal, CornerKick, YellowCard, RedCard, OutBall, 
             FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
             MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyScore, Assists, 
             First, Follow, Foul, Grade, HalfCorner, HalfPossession, Head, HeadSuccess, Intercept, 
             OffSide, OnDoor, Pass, PassSuccess, Past, Shoot, ShootOut, ShootStop, Slide, Steals)
-        SELECT td.MatchId, (CASE WHEN td.IsHomeTeam = 1 THEN m.HomeTeamId ELSE m.AwayTeamId END) As TeamId, td.Goal, td.CornerKick, td.YellowCard, td.RedCard, td.OutBall, 
+        SELECT td.MatchId, td.TeamId, td.Goal, td.CornerKick, td.YellowCard, td.RedCard, td.OutBall, 
             td.FreeKick, td.GoalKick, td.PenaltyKick, td.YellowToRed, td.FailPenaltyKick, td.OwnGoal, td.InjuryTime, td.OnGoal, 
             td.MissGoal, td.Attack, td.DangerAttack, td.ControlRate, td.ExtraScore, td.PenaltyScore, td.Assists, 
             td.First, td.Follow, td.Foul, td.Grade, td.HalfCorner, td.HalfPossession, td.Head, td.HeadSuccess, td.Intercept,
-            td.OffSide, td.OnDoor, td.Pass, td.PassSuccess, td.Past, td.Shoot, td.ShootOut, td.ShootStop, td.Slide, td.Steals 
+            td.OffSide, td.OnDoor, td.Pass, td.PassSuccess, td.Past, td.Shoot, td.ShootOut, td.ShootStop, td.Slide, td.Steals
         FROM tmp_Detail td
         INNER JOIN livescore_match m ON td.MatchId = m.MatchId
         ON DUPLICATE KEY UPDATE
