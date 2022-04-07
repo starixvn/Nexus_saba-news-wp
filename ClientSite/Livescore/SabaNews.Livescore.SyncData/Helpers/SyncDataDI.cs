@@ -9,6 +9,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Helpers;
     using SabaNews.Livescore.SyncData.Services;
+    using SabaNews.Livescore.SyncData.Services.Interfaces;
     using SabaNews.Services;
 
     public static class SyncDataDI
@@ -27,6 +28,7 @@
             services.AddTransient<ISyncPlayerService, SyncPlayerService>();
             services.AddTransient<ISyncSeasonService, SyncSeasonService>();
             services.AddTransient<ISyncMatchService, SyncMatchService>();
+            services.AddTransient<ISyncHeadToHeadService, SyncHeadToHeadService>();
         }
 
         private static void RegisterCoreDI(IServiceCollection services)

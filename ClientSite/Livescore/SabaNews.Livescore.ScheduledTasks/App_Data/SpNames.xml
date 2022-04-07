@@ -26,7 +26,6 @@
         <Setting Key="Livescore_Sync_Team_GetLastUpdatedTime" SpName="Livescore_Sync_Team_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Team_GetMaxId" SpName="Livescore_Sync_Team_GetMaxId" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_Team_Import" SpName="Livescore_Sync_Team_Import" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Sync_HeadToHead" SpName="Livescore_Sync_HeadToHead" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Player">
         <Setting Key="Livescore_Sync_Player_GetLastUpdatedTime" SpName="Livescore_Sync_Player_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
@@ -43,5 +42,10 @@
         <Setting Key="Livescore_Sync_SeasonTeamHonor_Import" SpName="Livescore_Sync_SeasonTeamHonor_Import" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_SeasonPlayerHonor_GetLastUpdatedTime" SpName="Livescore_Sync_SeasonPlayerHonor_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Sync_SeasonPlayerHonor_Import" SpName="Livescore_Sync_SeasonPlayerHonor_Import" DbName="sabasports" Plain="0" />
+    </Function>
+    <Function>
+        <Setting Key="Livescore_SyncHeadToHead_UpdateSyncedMatches" SpName="Livescore_SyncHeadToHead_UpdateSyncedMatches" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_SyncHeadToHead_GetMatchToSync" SpName="Livescore_SyncHeadToHead_GetMatchToSync" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_SyncHeadToHead_Import" SpName="Livescore_SyncHeadToHead_Import" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>

@@ -9,5 +9,6 @@
         public int BatchSizeSyncMatches { get; set; }
         public bool IsSkipSyncFinishedMatches { get; set; }
         public int HeadToHeadMaxFutureDays { get; set; }
+        public int SyncHeadToHeadRowLimit { get; set; }
     }
 }

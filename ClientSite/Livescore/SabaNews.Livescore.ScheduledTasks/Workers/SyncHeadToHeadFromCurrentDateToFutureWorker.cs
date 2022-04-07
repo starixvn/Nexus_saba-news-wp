@@ -2,66 +2,63 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Models.Synchronous;
-    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
     using SabaNews.Livescore.ScheduledTasks.Models;
-    using SabaNews.Livescore.SyncData.Services;
+    using SabaNews.Livescore.SyncData.Models.HeadToHead;
+    using SabaNews.Livescore.SyncData.Services.Interfaces;
 
     internal class SyncHeadToHeadFromCurrentDateToFutureWorker : BaseWorker
     {
+        private readonly ISyncHeadToHeadService synch2hService;
         private readonly IFetchTeamService fetchTeamService;
-        private readonly IFetchMatchService fetchMatchService;
-        private readonly ISyncTeamService syncTeamService;
         private readonly AppSettings appSettings;
 
-        public SyncHeadToHeadFromCurrentDateToFutureWorker(IFetchTeamService fetchTeamService,
-            IFetchMatchService fetchMatchService,
-            ISyncTeamService syncTeamService,
+        public SyncHeadToHeadFromCurrentDateToFutureWorker(
+            ISyncHeadToHeadService synch2hService,
+            IFetchTeamService fetchTeamService,
             List<ScheduledTaskSettings> jobSettings,
             AppSettings appSettings,
             ILogServiceProvider logService) : base(logService)
         {
+            this.synch2hService = synch2hService;
             this.fetchTeamService = fetchTeamService;
-            this.fetchMatchService = fetchMatchService;
-            this.syncTeamService = syncTeamService;
             this.appSettings = appSettings;
+
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncHeadToHeadFromCurrentToFuture);
         }
 
         public override async Task ExecuteJobAsync()
         {
-            var matches = await GetCurrentToFutureMatchesAsync();
+            var h2hMatches = await GetMatchToSyncHeadToHead();
 
-            var h2hList = new List<HeadToHeadResponse>();
-
-            foreach (var m in matches)
+            if (h2hMatches.Any())
             {
-                var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.HId, m.AId);
-                h2hList.Add(h2h);
-            }
+                var h2hList = new List<HeadToHeadResponse>();
 
-            h2hList.RemoveAll(i => i is null);
-            await syncTeamService.SyncHeadToHeadAsync(h2hList);
+                foreach (var m in h2hMatches)
+                {
+                    var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.HomeTeamId, m.AwayTeamId);
+                    h2hList.Add(h2h);
+                }
+
+                await synch2hService.SyncHeadToHeadAsync(h2hList);
+                await synch2hService.UpdateSyncCompletedHeadToHead(h2hMatches.Select(m => m.MatchId).ToArray());
+            }
         }
 
-        private async Task<List<MatchResponse>> GetCurrentToFutureMatchesAsync()
+        private async Task<IEnumerable<MatchToGetH2H>> GetMatchToSyncHeadToHead()
         {
-            var from = DateTime.UtcNow.Date;
-            var to = from.AddDays(appSettings.HeadToHeadMaxFutureDays).Date.AddDays(1).AddSeconds(-1);
-            var matches = await fetchMatchService.FetchMatchListAsync(
-                new SyncMatchParams
-                {
-                    StartTime = from,
-                    EndTime = to,
-                    RowLimit = 10
-                });
+            var fromDate = DateTime.UtcNow.Date;
+            var toDate = fromDate.AddDays(appSettings.HeadToHeadMaxFutureDays + 1).AddSeconds(-1);
+
+            var matches = await synch2hService.GetMatchToSyncHeadToHeadByDateRange(fromDate, toDate, appSettings.SyncHeadToHeadRowLimit);
             return matches;
         }
     }
