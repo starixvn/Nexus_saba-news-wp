@@ -10,18 +10,35 @@ export class HeadToHead extends Component {
         super(props);
     }
 
-    renderBody = matchs =>  {
+    renderBody = (matchs, teamId) =>  {
+        if(matchs.length === 0) {
+            return null;
+        }
         return (
             <div className="hth-section">
                  {
                     matchs.map((match, key) => {
                         let homeWinclass = "";
                         let awayWinClass = "";
+                        let matchStatus = 0;
                         if(match.homeTotalScore > match.awayTotalScore) {
                             homeWinclass = "win";
+                            if(match.homeTeamId === teamId) {
+                                matchStatus = 1;
+                            } else {
+                                matchStatus = 2;
+                            }
                         }
                         if(match.homeTotalScore < match.awayTotalScore) {
                             awayWinClass = "win";
+                            if(match.awayTeamId === teamId) {
+                                matchStatus = 1;
+                            } else {
+                                matchStatus = 2;
+                            }
+                        }
+                        if(!teamId) {
+                            matchStatus = -1;
                         }
                         const time = DateTimeService.convertFromUTC(match.eventDate);
                         return (
@@ -50,10 +67,22 @@ export class HeadToHead extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="row_match_info"><span className="item_ktv">H1: {match.homeHalfScore}-{match.awayHalfScore}</span></div>
+                                        <div className="row_match_info"><span className="item_ktv">HT: {match.homeHalfScore}-{match.awayHalfScore}</span></div>
                                     </div>
                                     <div className="columns-other w-col1">
                                         <a rel="nofollow" className="btn-f-more more-right" href="/truc-tiep-ket-qua/man-city-vs-atletico-105945.html">{'>'}</a>
+                                        {
+                                            matchStatus === 0 &&
+                                            <span className="bg-color  bgyelow more-right btn-f-more" title="Hòa">D</span>
+                                        }
+                                        {
+                                            matchStatus === 1 &&
+                                            <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>
+                                        }
+                                        {
+                                            matchStatus === 2 &&
+                                            <span className="bg-color bgred more-right btn-f-more" title="Bại">L</span>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +118,7 @@ export class HeadToHead extends Component {
                         </div>
                         <div className="columns-other w-col1">
                             <a rel="nofollow" className="btn-f-more more-right" href="/truc-tiep-ket-qua/man-city-vs-atletico-105945.html">{'>'}</a>
+                            <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>
                         </div>
                     </div>
                 </div>
@@ -97,18 +127,22 @@ export class HeadToHead extends Component {
     }
 
     render() {
-        const {home, away, common} = this.props.soccerMatch.headToHead;
+        const { headToHead } = this.props.soccerMatch;
+        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+            return null;
+        }
+        const { home, away, common } = this.props.soccerMatch.headToHead;
         const generalInfo = this.props.soccerMatch.generalInfo;
         return (
             <Tabs  id="head-to-head-tabs" className="head-to-head">
                 <Tab eventKey="Home" title={generalInfo.homeTeam.teamFullNameEN} >
-                   {this.renderBody(home)}
+                   {this.renderBody(home, generalInfo.homeTeam.teamId)}
                 </Tab>
                 <Tab eventKey="Chung" title="Chung">
-                    {this.renderBody(away)}
+                    {this.renderBody(common)}
                 </Tab>
                 <Tab eventKey="Away" title={generalInfo.awayTeam.teamFullNameEN}>
-                    {this.renderBody(common)}
+                    {this.renderBody(away, generalInfo.awayTeam.teamId)}
                 </Tab>
             </Tabs>
         );

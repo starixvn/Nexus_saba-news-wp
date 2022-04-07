@@ -4,9 +4,9 @@
 
     public class GetHeadToHeadCriteria : CriteriaBase
     {
-        public int HomeTeamId { get; set; }
+        public long HomeTeamId { get; set; }
 
-        public int AwayTeamId { get; set; }
+        public long AwayTeamId { get; set; }
 
         public override string GetSettingKey() => "Livescore_Match_GetHeadToHead";
 

@@ -1039,3 +1039,27 @@ svg.fill-red {
         margin-right: 6px;
     }
 }
+.bg-color {
+    background: #333;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.bgred {
+    background: #ed4349;
+}
+
+.bggreen {
+    background: #37b349;
+}
+
+.bgyelow {
+    background: #ffae00;
+}
+

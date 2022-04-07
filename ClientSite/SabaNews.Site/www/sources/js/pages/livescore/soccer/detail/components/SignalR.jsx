@@ -26,8 +26,8 @@ export class SignalR extends Component {
             .withAutomaticReconnect()
             .build();
 
-        this.connection.on('UpdateLiveSoccerCommentary', () => {
-            console.log('UpdateLiveSoccerCommentary');
+        this.connection.on('UpdateLiveMatchDetail', () => {
+            console.log('UpdateLiveMatchDetail');
         });
 
         this.connection.start().then(() => {

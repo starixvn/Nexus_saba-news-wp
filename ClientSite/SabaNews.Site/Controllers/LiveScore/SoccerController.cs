@@ -114,12 +114,13 @@
         public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
         {
             var matchId = criteria.MatchId;
+            var generalInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId });
             var result = new MatchDetail
             {
-                GeneralInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId }),
+                GeneralInfo = generalInfo,
                 Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
                 Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId }),
-                HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { HomeTeamId = 35313, AwayTeamId = 41021 })
+                HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { HomeTeamId = generalInfo.HomeTeam.TeamId, AwayTeamId = generalInfo.AwayTeam.TeamId })
             };
 
             return Ok(result);

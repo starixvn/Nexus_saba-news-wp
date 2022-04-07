@@ -370,8 +370,28 @@ export class Lineups extends Component {
     }
 
 
+    renderSubstitution = position => {
+        const incidents = this.props.soccerMatch.incidents;
+        const lineup = this.props.lineup;
+        const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
+        const substitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === position);
+        return (
+            substitution.map((incident, key) => {
+                const inPlayer = players.find(item => item.playerId === incident.inPlayerId);
+                const outPlayer = players.find(item => item.playerId === incident.outPlayerId)
+                return (
+                    <tr key={key}>
+                        <td>{incident.time}</td>
+                        <td>{inPlayer.playerNumber || 0} - {incident.inPlayerName}</td>
+                        <td>{outPlayer.playerNumber || 0} - {incident.outPlayerName}</td>
+                    </tr>
+                )
+            })
+        )
+    }
+
+
     render() {
-        console.log("lineup");
         if (!this.props.lineup || !this.props.lineup.generalInfo) {
             return null;
         }
@@ -384,8 +404,6 @@ export class Lineups extends Component {
         const homeSubPlayers = lineup.home.filter(player => player.position === 0);
         const awaySubPlayers = lineup.away.filter(player => player.position === 0);
 
-        const homeSubstitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === IncidentPosition.Home);
-        const awaySubstitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === IncidentPosition.Away);
         return (
             <>
                 {this.renderPitchView()}
@@ -413,15 +431,7 @@ export class Lineups extends Component {
 
                                 <tbody>
                                     {
-                                        homeSubstitution.map((incident, key) => {
-                                            return (
-                                                <tr key={key}>
-                                                    <td>{incident.time}</td>
-                                                    <td>{incident.inPlayerName}</td>
-                                                    <td>{incident.outPlayerName}</td>
-                                                </tr>
-                                            )
-                                        })
+                                        this.renderSubstitution(IncidentPosition.Home)
                                     }
                                 </tbody>
                             </table>
@@ -435,15 +445,7 @@ export class Lineups extends Component {
                                 </thead>
                                 <tbody>
                                     {
-                                        awaySubstitution.map((incident, key) => {
-                                            return (
-                                                <tr key={key}>
-                                                    <td>{incident.time}</td>
-                                                    <td>{incident.inPlayerName}</td>
-                                                    <td>{incident.outPlayerName}</td>
-                                                </tr>
-                                            )
-                                        })
+                                        this.renderSubstitution(IncidentPosition.Away)
                                     }
                                 </tbody>
                             </table>
