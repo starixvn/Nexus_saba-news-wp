@@ -96,7 +96,7 @@ BEGIN
                 AwayHalfScore INT PATH "$.AwayHalfScore",
                 HomeAggregateScore INT PATH "$.HomeAggregateScore",
                 AwayAggregateScore INT PATH "$.AwayAggregateScore",
-                Status SMALLINT PATH "$.Status",
+                Status SMALLINT PATH "$.Status"
             )
         ) AS m;
 
@@ -107,7 +107,7 @@ BEGIN
          m.HomeTeamHalfScore = m_tpm.HomeHalfScore,
          m.AwayTeamHalfScore = m_tpm.AwayHalfScore,
          m.HomeTeamAggregateScore = m_tpm.HomeAggregateScore,
-         m.AwayTeamAggregateScore = m_tpm.AwayAggregateScore;
+         m.AwayTeamAggregateScore = m_tpm.AwayAggregateScore,
          m.Status = m_tpm.Status;
 
 /* End handle update score------------------ */
