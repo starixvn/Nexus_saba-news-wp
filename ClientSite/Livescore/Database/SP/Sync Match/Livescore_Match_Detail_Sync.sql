@@ -15,7 +15,8 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Detail_Sync(
                         "HomeHalfScore": 1,
                         "AwayHalfScore": 1,
                         "HomeAggregateScore": 3,
-                        "AwayAggregateScore": 5}]
+                        "AwayAggregateScore": 5,
+                        "Status": 20}]
                 - matchDetailJson: in JSON format
                     [{
                         "IsHomeTeam" = 10,
@@ -76,7 +77,8 @@ BEGIN
                         HomeHalfScore INT,
                         AwayHalfScore INT,
                         HomeAggregateScore INT,
-                        AwayAggregateScore INT);
+                        AwayAggregateScore INT,
+                        Status SMALLINT);
     
 	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, HomeAggregateScore, AwayAggregateScore)
     SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore
@@ -93,7 +95,8 @@ BEGIN
                 HomeHalfScore INT PATH "$.HomeHalfScore",
                 AwayHalfScore INT PATH "$.AwayHalfScore",
                 HomeAggregateScore INT PATH "$.HomeAggregateScore",
-                AwayAggregateScore INT PATH "$.AwayAggregateScore"
+                AwayAggregateScore INT PATH "$.AwayAggregateScore",
+                Status SMALLINT PATH "$.Status",
             )
         ) AS m;
 
@@ -105,6 +108,7 @@ BEGIN
          m.AwayTeamHalfScore = m_tpm.AwayHalfScore,
          m.HomeTeamAggregateScore = m_tpm.HomeAggregateScore,
          m.AwayTeamAggregateScore = m_tpm.AwayAggregateScore;
+         m.Status = m_tpm.Status;
 
 /* End handle update score------------------ */
 

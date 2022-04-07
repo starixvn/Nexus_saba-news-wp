@@ -9,5 +9,6 @@
         public int AwayHalfScore { get; set; }
         public int HomeAggregateScore { get; set; }
         public int AwayAggregateScore { get; set; }
+        public int? Status { get; set; }
     }
 }
