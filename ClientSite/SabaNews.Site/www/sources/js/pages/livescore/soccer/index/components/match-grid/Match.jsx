@@ -42,6 +42,12 @@ export default class Match extends PureComponent {
         }
     };
 
+    getTeamName = (team, searchKey) => {
+        const reg = new RegExp(`(${searchKey})`, 'gi');
+        return team.teamFullNameEN ? team.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>")
+            : team.teamNameEN.replace(reg, "<span class='text-matched'>$1</span>");
+    };
+
     render() {
         const { match, searchKey } = this.props;
         const reg = new RegExp(`(${searchKey})`, 'gi');
@@ -63,7 +69,7 @@ export default class Match extends PureComponent {
                     <div className="group-team">
                         <div className="soccer-team home-team">
                             <img className="soccer-team-logo" loading="lazy" src={match.homeTeam.icon} />
-                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayHomeTeamValue }} />
+                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.homeTeam, searchKey) }} />
                             <ul className="soccer-team-status">
                                 {this.getTeamStatus(match, true)}
                             </ul>
@@ -73,7 +79,7 @@ export default class Match extends PureComponent {
                         </div>
                         <div className="soccer-team away-team">
                             <img className="soccer-team-logo" loading="lazy" src={match.awayTeam.icon} />
-                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: displayAwayTeamValue }} />
+                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.awayTeam, searchKey) }} />
                             <ul className="soccer-team-status">
                                 {this.getTeamStatus(match, false)}
                             </ul>
