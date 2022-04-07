@@ -42,16 +42,10 @@ class DateBar extends PureComponent {
                     getDateRanges={this.props.getDateRanges}
                     onClick={this.props.onClick}
                 />
-                <DatePickerField selectedDate={selectedDate}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    onChange={date => {
-                        window.isLiveMatchPage = false;
-                        this.props.setSelectedDate(moment(date).format('YYYY-MM-DD'));
-                        this.props.setDateRanges(this.props.getDateRanges(moment(date).format('YYYY-MM-DD')));
-                        this.props.onClick(moment(date).format('YYYY-MM-DD'));
-                        this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/${moment(date).format('YYYY-MM-DD')}`));
-                    }}
+                <DatePickerField
+                    getDateRanges={this.props.getDateRanges}
+                    onChange={this.props.onClick}
+                    navigate={this.props.navigate}
                 />
             </div>
         );

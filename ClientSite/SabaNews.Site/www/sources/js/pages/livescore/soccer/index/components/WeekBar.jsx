@@ -63,7 +63,6 @@ class WeekBar extends PureComponent {
     onSelectDate = date => {
         window.isLiveMatchPage = false;
         this.props.setSelectedDate(date);
-        this.props.setDateRanges(this.props.getDateRanges(date));
         this.props.onClick(date);
         this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/${date}`));
     };
