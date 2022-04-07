@@ -101,13 +101,13 @@ export class HeadToHead extends Component {
         const generalInfo = this.props.soccerMatch.generalInfo;
         return (
             <Tabs  id="head-to-head-tabs" className="head-to-head">
-                <Tab eventKey="Home" title={generalInfo.homeTeamFullNameEN} >
+                <Tab eventKey="Home" title={generalInfo.homeTeam.teamFullNameEN} >
                    {this.renderBody(home)}
                 </Tab>
                 <Tab eventKey="Chung" title="Chung">
                     {this.renderBody(away)}
                 </Tab>
-                <Tab eventKey="Away" title={generalInfo.awayTeamFullNameEN}>
+                <Tab eventKey="Away" title={generalInfo.awayTeam.teamFullNameEN}>
                     {this.renderBody(common)}
                 </Tab>
             </Tabs>

@@ -23,6 +23,8 @@
 
         Task<HeadToHead> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria);
 
+        Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria);
+
 
     }
 }

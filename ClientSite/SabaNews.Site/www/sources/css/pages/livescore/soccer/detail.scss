@@ -979,6 +979,10 @@ svg.fill-red {
 .name-club {
     display: block;
     position: relative;
+
+    &.win {
+        font-weight: bold;
+    }
 }
 
 .logo-club {

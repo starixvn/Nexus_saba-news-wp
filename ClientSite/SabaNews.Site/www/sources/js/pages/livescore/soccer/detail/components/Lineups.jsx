@@ -285,7 +285,7 @@ export class Lineups extends Component {
         )
     }
 
-    renderLineup = () => {
+    renderPitchView = () => {
         const lineup = this.props.lineup;
         const matchInfo = this.props.soccerMatch.generalInfo;
         if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation) {
@@ -298,8 +298,8 @@ export class Lineups extends Component {
             <div className="lineup">
                 <div className="lineup-head">
                     <div className="team-name">
-                        <img className="club-logo-img" src={matchInfo.homeTeamIcon} alt="" />
-                        <div className="club-logo-text">{matchInfo.homeTeamNameEN}</div>
+                        <img className="club-logo-img" src={matchInfo.homeTeam.icon} alt="" />
+                        <div className="club-logo-text">{matchInfo.homeTeam.teamFullNameEN}</div>
                     </div>
                     <div className="f-right-text">{lineup.generalInfo.homeFormation}</div>
                 </div>
@@ -360,8 +360,8 @@ export class Lineups extends Component {
                 </div>
                 <div className="lineup-head">
                     <div className="team-name">
-                        <img className="club-logo-img" src={matchInfo.awayTeamIcon} alt="" />
-                        <div className="club-logo-text">{matchInfo.awayTeamNameEN}</div>
+                        <img className="club-logo-img" src={matchInfo.awayTeam.icon} alt="" />
+                        <div className="club-logo-text">{matchInfo.awayTeam.teamFullNameEN}</div>
                     </div>
                     <div className="f-right-text">{lineup.generalInfo.awayFormation}</div>
                 </div>
@@ -388,7 +388,7 @@ export class Lineups extends Component {
         const awaySubstitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === IncidentPosition.Away);
         return (
             <>
-                {this.renderLineup()}
+                {this.renderPitchView()}
                 <div className="field-lineup">
                     <div className="section">
                         <div className="section-title">Đội hình ra sân</div>

@@ -25,5 +25,8 @@
         <script src="~/js/pro/pages/livescore/soccer/detail.chunk.js" asp-append-version="true"></script>
     </environment>
 }
+@section Title{
+    Chi tiết lịch thi đấu
+}
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <div id="app-container"></div>

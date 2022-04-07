@@ -31,6 +31,13 @@
             return await matchRepository.GetMatchByDateAsync(criteria);
         }
 
+        public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)
+        {
+            var result = await matchRepository.GetMatchByIdAsync(criteria);
+
+            return result;
+        }
+
         public async Task<MathGeneralInfo> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
         {
             var result = await baseService.GetDataEntityAsync<MathGeneralInfo>(criteria);

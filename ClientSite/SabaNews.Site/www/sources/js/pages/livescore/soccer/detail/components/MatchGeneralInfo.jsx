@@ -84,9 +84,9 @@ export default class MatchGenetalInfo extends Component {
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>
-                <div className="tournament-header">{generalInfo.leagueFullNameEN}
+                <div className="tournament-header">{generalInfo.league.leagueFullNameEN}
                 - {startTime.format("DD/MM/YYYY")}
-                { generalInfo.round !== null ? " - Vòng " + generalInfo.round : "" }
+                { !generalInfo.league.currentRound ? " - Vòng " + generalInfo.league.currentRound : "" }
                 </div>
 
                 <div className="duel-participant">
@@ -94,12 +94,12 @@ export default class MatchGenetalInfo extends Component {
                     <div className="duel-participant-home">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt={generalInfo.homeTeamFullNameEN} loading="lazy"
-                                    src={generalInfo.homeTeamIcon} />
+                                <img width="58" height="58" alt={generalInfo.homeTeam.teamFullNameEN} loading="lazy"
+                                    src={generalInfo.homeTeam.icon} />
                             </a>
                         </div>
                         <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.homeTeamFullNameEN}</div>
+                            <div className="participant-name">{generalInfo.homeTeam.teamFullNameEN}</div>
                             {this.getBallAndCardNumber(incidents, IncidentPosition.Home)}
                         </div>
                     </div>
@@ -109,12 +109,12 @@ export default class MatchGenetalInfo extends Component {
                     <div className="duel-participant-away">
                         <div className="participant-image">
                             <a>
-                                <img width="58" height="58" alt={generalInfo.awayTeamFullNameEN} loading="lazy"
-                                    src={generalInfo.awayTeamIcon} />
+                                <img width="58" height="58" alt={generalInfo.awayTeam.teamFullNameEN} loading="lazy"
+                                    src={generalInfo.awayTeam.icon} />
                             </a>
                         </div>
                         <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.awayTeamFullNameEN}</div>
+                            <div className="participant-name">{generalInfo.awayTeam.teamFullNameEN}</div>
                             {this.getBallAndCardNumber(incidents, IncidentPosition.Away)}
                         </div>
                     </div>
