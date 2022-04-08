@@ -62,6 +62,7 @@
             var matches = apiService.FetchLiveMatchListAsync(new SyncMatchParams()).Result;
             var logger = services.BuildServiceProvider().GetRequiredService<ILogServiceProvider>();
             logger.WriteLogFileInfo(JsonConvert.SerializeObject(matches));
+            logger.WriteMessageSentryErrorAsync(JsonConvert.SerializeObject(matches)).Wait();
             var pushSignalService = services.BuildServiceProvider().GetRequiredService<IPushSignalService>();
             pushSignalService.PushMatchListAsync(new List<Match>());
         }
