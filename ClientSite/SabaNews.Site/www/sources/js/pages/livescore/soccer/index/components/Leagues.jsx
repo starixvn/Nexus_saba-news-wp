@@ -5,7 +5,7 @@ export default class Leagues extends PureComponent {
     render() {
         return (
             <div className="leagues">
-                <div className="leagues-title"><span>{LangHelper.getResource('HotLeague')}</span></div>
+                <div className="leagues-title"> <i className="icon-livescore icon-live-start" /> <span>{LangHelper.getResource('HotLeague')}</span></div>
                 <div className="leagues-main">
                     {
                         this.props.leagues.map(league => {
