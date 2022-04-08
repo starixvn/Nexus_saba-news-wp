@@ -43,32 +43,53 @@
 
             .day-of-week {
                 line-height: 1;
+                margin-bottom: .2rem;
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+                text-transform: uppercase;
+
+                @include tableMobile {
+                    font-weight: 600;
+                    font-size: .9rem;
+                    line-height: 1.2rem;
+                }
             }
 
             .date {
                 line-height: 1;
                 font-weight: bold;
-                margin-top: .4rem;
+                width: 4.4rem;
+                font-size: 1.3rem;
+                line-height: 1.8rem;
+                margin: 0 auto;
+                padding: 0.3rem 0.4rem;
+
+                @include tableMobile {
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                    font-weight: 700;
+                }
+            }
+
+            &.today {
+                .date {
+                    background: $bg-today;
+                    border: 1px solid $border-today;
+                    border-radius: 5px;
+                }
             }
 
             &.active {
-                background: #E9EEF4;
-                border: 1px solid #D8E1ED;
-                border-radius: 5px;
-                padding: .6rem 0;
-
-                @include tableMobile {
-                    padding: .5rem 0;
-                }
-
                 .day-of-week {
-                    color: #223453;
-                    font-weight: 600;
+                    color: $color-title;
+                    font-weight: 700;
                 }
 
                 .date {
-                    font-weight: 700;
-                    color: #223453;
+                    background: $color-title;
+                    border: 1px solid $color-title;
+                    border-radius: 5px;
+                    color: $white;
                 }
             }
         }

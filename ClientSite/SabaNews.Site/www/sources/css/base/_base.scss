@@ -70,10 +70,3 @@ body {
     font-weight: bold;
 }
 
-.icon-hidden {
-    display: none;
-
-    @include tableMobile {
-        display: block;
-    }
-}

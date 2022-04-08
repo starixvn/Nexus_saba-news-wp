@@ -13,7 +13,7 @@ const League = ({ league, searchKey }) => {
                     <div className="livescore-logo-team"><img loading="lazy" src={league.icon} /></div>
                     <span className="livescore-name-team" dangerouslySetInnerHTML={{ __html: displayValue }} />
                 </div>
-                <span className="icon-hidden icon-livescore icon-live-right" />
+                <span className="icon-livescore icon-live-right" />
             </div>
             <div className="soccer-match-grid-item-body">
                 {

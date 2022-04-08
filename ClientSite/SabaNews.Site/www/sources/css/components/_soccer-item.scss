@@ -116,15 +116,6 @@
                     }
                 }
             }
-
-            .icon-live-right {
-                font-size: 1.5rem;
-                text-align: right;
-
-                @include iphone5 {
-                    font-size: 1.2rem;
-                }
-            }
         }
 
         &-body {
@@ -336,7 +327,14 @@
         }
     }
 }
+.icon-live-right {
+    font-size: 1.2rem;
+    text-align: right;
 
+    @include iphone5 {
+        font-size: 1.2rem;
+    }
+}
 
 @keyframes live {
     0% {
