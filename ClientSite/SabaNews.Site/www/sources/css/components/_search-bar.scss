@@ -11,7 +11,7 @@
         margin-right: 0;
 
         @include tableMobile {
-            width: 85%;
+            width: 90%;
             margin-right: .4rem;
         }
 
@@ -23,6 +23,10 @@
             padding: 1.2rem;
             border-radius: 3px;
             font-size: 1.4rem;
+
+            @include Mobile {
+                height: 3.4rem;
+            }
 
             &::placeholder {
                 font-style: italic;
@@ -61,10 +65,11 @@
         display: none;
 
         @include tableMobile {
-            width: 13%;
+            width: 10%;
             margin-left: .4rem;
             display: flex;
         }
+
 
         span {
             margin-right: 1.2rem;
@@ -101,6 +106,12 @@
                     font-size: 1rem;
                     border-radius: 3px;
                     content: attr(data-badge);
+
+                    @include tableMobile {
+                        right: -5px;
+                        top: -5px;
+                        padding: .2rem;
+                    }
                 }
             }
 
