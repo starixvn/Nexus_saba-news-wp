@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { Tabs, Tab } from 'react-bootstrap';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import Site from '@jsroot/common/site';
 
 export class HeadToHead extends Component {
     constructor(props) {
@@ -70,7 +71,7 @@ export class HeadToHead extends Component {
                                         <div className="row_match_info"><span className="item_ktv">HT: {match.homeHalfScore}-{match.awayHalfScore}</span></div>
                                     </div>
                                     <div className="columns-other w-col1">
-                                        <a rel="nofollow" className="btn-f-more more-right" href="/truc-tiep-ket-qua/man-city-vs-atletico-105945.html">{'>'}</a>
+                                        <a rel="nofollow" className="btn-f-more more-right" href={Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}>{'>'}</a>
                                         {
                                             matchStatus === 0 &&
                                             <span className="bg-color  bgyelow more-right btn-f-more" title="Hòa">D</span>
@@ -89,39 +90,6 @@ export class HeadToHead extends Component {
                         )
                     })
                 }
-                <div className="f-row">
-                    <div className="football-match">
-                        <div className="columns-time w-col1">
-                            <span className="time">06/03/2022</span>
-                        </div>
-                        <div className="columns-match w-col2">
-                            <div className="row-teams">
-                                <div className="columns-club">
-                                    <div className="name-club club1" >
-                                        Man City
-                                        <img className="logo-club" alt="Man City" src="https://static.bongda24h.vn/Medias/icon/2017/6/26/manchester-city.jpg" />
-                                    </div>
-                                </div>
-                                <div className="columns-number">
-                                    <p>
-                                        <span className="soccer-scores">1 - 0</span>
-                                    </p>
-                                </div>
-                                <div className="columns-club">
-                                    <div className="name-club club2">
-                                        <img className="logo-club" alt="Atletico" src="https://static.bongda24h.vn/Medias/icon/2020/7/23/AleticoMadrid.png" />
-                                        Atletico
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row_match_info"><span className="item_ktv">H1: 0-0</span></div>
-                        </div>
-                        <div className="columns-other w-col1">
-                            <a rel="nofollow" className="btn-f-more more-right" href="/truc-tiep-ket-qua/man-city-vs-atletico-105945.html">{'>'}</a>
-                            <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         )
     }
