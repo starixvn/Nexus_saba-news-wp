@@ -15,9 +15,13 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
@@ -49,6 +53,17 @@
             AddDependencyInjection(services);
             services.ResolveLivescoreServiceDI();
             AddWorker(services);
+            TestCallAPIService(services);
+        }
+
+        private void TestCallAPIService(IServiceCollection services)
+        {
+            var apiService = services.BuildServiceProvider().GetRequiredService<IFetchMatchService>();
+            var matches = apiService.FetchLiveMatchListAsync(new SyncMatchParams()).Result;
+            var logger = services.BuildServiceProvider().GetRequiredService<ILogServiceProvider>();
+            logger.WriteLogFileInfo(JsonConvert.SerializeObject(matches));
+            var pushSignalService = services.BuildServiceProvider().GetRequiredService<IPushSignalService>();
+            pushSignalService.PushMatchListAsync(new List<Match>());
         }
 
         private void AddRedisConfiguration(IServiceCollection services, IConfiguration configuration)
