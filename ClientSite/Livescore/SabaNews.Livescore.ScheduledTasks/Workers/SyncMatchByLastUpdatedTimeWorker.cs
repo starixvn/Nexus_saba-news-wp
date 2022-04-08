@@ -7,7 +7,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
-    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -45,24 +44,15 @@
             };
             var matches = await fetchMatchService.FetchMatchListAsync(param);
 
-            if (appSettings.IsSkipSyncFinishedMatches)
-            {
-                ExecludeFinishedMatches(matches);
-            }
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 
             var tasks = new List<Task>
             {
                 syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches),
-                syncMatchService.InsertTemporaryMatch(matchIds)
+                syncMatchService.InsertTemporaryMatch(matchIds, appSettings.IsSkipSyncFinishedMatches)
             };
 
             await Task.WhenAll(tasks);
-        }
-
-        private static void ExecludeFinishedMatches(List<MatchResponse> matches)
-        {
-            matches.RemoveAll(m => m.GameType == (int)MatchStatus.Finished);
         }
     }
 }

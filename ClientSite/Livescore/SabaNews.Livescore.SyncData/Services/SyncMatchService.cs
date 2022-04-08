@@ -113,13 +113,14 @@
             }
         }
 
-        public async Task InsertTemporaryMatch(long[] matchIds)
+        public async Task InsertTemporaryMatch(long[] matchIds, bool IsSkipSyncFinishedMatches)
         {
             if (matchIds.Length > 0)
             {
                 var command = new InsertTemporaryMatchCommand
                 {
-                    MatchIds = string.Join(",", matchIds)
+                    MatchIds = string.Join(",", matchIds),
+                    IsSkipSyncFinishedMatches = IsSkipSyncFinishedMatches
                 };
 
                 await baseService.ExecuteNonQueryAsync(command);

@@ -20,7 +20,7 @@
 
         Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents);
 
-        Task InsertTemporaryMatch(long[] matchIds);
+        Task InsertTemporaryMatch(long[] matchIds, bool IsSkipSyncFinishedMatches);
 
         Task<IEnumerable<TemporaryMatch>> GetTemporaryMatchToFetchInfo(int rowLimit);
 
