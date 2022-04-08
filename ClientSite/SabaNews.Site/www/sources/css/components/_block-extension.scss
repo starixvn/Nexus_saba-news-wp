@@ -5,6 +5,49 @@
         display: none;
     }
 
+    .livescore-like {
+        background: $border-soccer-item;
+        padding: 1rem 1.2rem;
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+        border: 1px solid #E6E6E6;
+        margin-bottom: .8rem;
+        position: relative;
+
+        @include tableMobile {
+            display: none;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+            color: $color-active-icon;
+            padding-left: 1.6rem;
+            text-transform: uppercase;
+        }
+
+        .icon-livescore {
+            &:before {
+                color: $aciive-icon;
+            }
+        }
+
+        .number-like {
+            background: $color-active-icon;
+            padding: .3rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 1;
+            color: $white;
+            border-radius: 3px;
+            position: absolute;
+            right: 10px;
+            top: 13px;
+        }
+    }
+
     .leagues {
         background: $primary-bg;
         border: 1px solid $border-color;

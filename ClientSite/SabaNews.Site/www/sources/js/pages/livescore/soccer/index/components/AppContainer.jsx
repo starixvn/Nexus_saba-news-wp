@@ -101,6 +101,10 @@ export class AppContainer extends Component {
                         <MatchGrid matches={matches} />
                     </div>
                     <div className="livescore-soccer-extension">
+                        <div className="livescore-like">
+                            <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
+                            <span className="number-like">98</span>
+                        </div>
                         <Leagues leagues={this.props.majorLeagues} />
                     </div>
                 </div>
