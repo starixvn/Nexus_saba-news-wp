@@ -1,9 +1,5 @@
 ﻿.soccer-match-grid {
-    margin-top: 1.2rem;
-
-    @include tableMobile {
-        margin-top: .8rem;
-    }
+    margin-top: .8rem;
 
     &-item {
         background: $primary-bg;

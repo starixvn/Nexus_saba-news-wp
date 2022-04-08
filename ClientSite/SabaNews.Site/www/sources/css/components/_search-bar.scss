@@ -3,16 +3,12 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
-    margin-top: 1.2rem;
-
-    @include tableMobile {
-        margin-top: .8rem;
-    }
+    margin-top: .8rem;
 
     .livescore-soccer-search-bar {
         position: relative;
-        width: 75%;
-        margin-right: .6rem;
+        width: 100%;
+        margin-right: 0;
 
         @include tableMobile {
             width: 85%;
@@ -56,15 +52,18 @@
         width: 25%;
         display: flex;
         cursor: pointer;
-        border: 1px solid $border-color;
+        background: #EDEDED;
+        border: 1px solid #E6E6E6;
         margin-left: .6rem;
         border-radius: 3px;
         align-items: center;
         justify-content: center;
+        display: none;
 
         @include tableMobile {
             width: 13%;
             margin-left: .4rem;
+            display: flex;
         }
 
         span {
@@ -90,8 +89,8 @@
 
                 &:after {
                     position: absolute;
-                    right: -5px;
-                    top: -5px;
+                    right: -7px;
+                    top: -7px;
                     min-width: 1rem;
                     min-height: 1rem;
                     line-height: 1rem;
@@ -100,7 +99,7 @@
                     border: 1px solid #FFFFFF;
                     background: #E13C29;
                     font-size: 1rem;
-                    border-radius: 20px;
+                    border-radius: 3px;
                     content: attr(data-badge);
                 }
             }
