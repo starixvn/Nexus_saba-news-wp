@@ -1,10 +1,10 @@
-﻿import React, { Component } from 'react';
+﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
 import LangHelper from '@jsroot/common/langHelper';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
 
-export default class MatchStage extends Component {
+export default class MatchStage extends PureComponent {
     constructor(props) {
         super(props);
 

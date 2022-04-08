@@ -1,3 +1,5 @@
+export const MobileMaxWidth = 768;
+
 export const MatchStatus = {
     NotStarted: 0,
     FirstHalf: 10,

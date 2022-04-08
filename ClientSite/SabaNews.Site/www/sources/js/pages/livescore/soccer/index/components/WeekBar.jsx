@@ -13,39 +13,6 @@ export const withNavigation = Component => {
 }
 
 class WeekBar extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.mobileMaxWidth = 768;
-
-        this.state = {
-            isMobile: false
-        };
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    handleResize = () => {
-        const dateRanges = [...this.props.dateRanges];
-        if (window.innerWidth <= this.mobileMaxWidth && dateRanges.length === 5) {
-            dateRanges.shift();
-            dateRanges.shift();
-            this.props.setDateRanges(dateRanges);
-        } else {
-            if (window.innerWidth > this.mobileMaxWidth && dateRanges.length === 3) {
-                dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
-                dateRanges.unshift(moment(dateRanges[0]).subtract(1, 'days'));
-                this.props.setDateRanges(dateRanges);
-            }
-        }
-    }
-
     onPrev = () => {
         const dateRanges = [...this.props.dateRanges];
         dateRanges.pop();
@@ -61,14 +28,14 @@ class WeekBar extends PureComponent {
     };
 
     onSelectDate = date => {
-        window.isLiveMatchPage = false;
+        window.isLivePage = false;
         this.props.setSelectedDate(date);
         this.props.onClick(date);
         this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/${date}`));
     };
 
     render() {
-        const { today, minDate, maxDate, selectedDate, dateRanges } = this.props;
+        const { isMobile, today, minDate, maxDate, selectedDate, dateRanges } = this.props;
 
         return (
             <div className="livescore-soccer-week-bar">
@@ -80,11 +47,15 @@ class WeekBar extends PureComponent {
                 {
                     dateRanges.map((item, index) => {
                         const date = moment(item);
+                        const isActive = moment(selectedDate).isSame(date) && !window.isLivePage;
+                        const isToday = date.isSame(today);
                         return (
-                            <div key={index} className={`week-date ${moment(selectedDate).isSame(date) && !window.isLiveMatchPage ? 'active' : ''}`}
+                            <div key={index} className={`week-date ${isActive ? 'active' : ''} ${isToday ? 'today' : ''}`}
                                 onClick={() => this.onSelectDate(item)}
                             >
-                                <div className="day-of-week">{date.isSame(today) ? LangHelper.getResource('Today') : date.format('dddd')}</div>
+                                <div className="day-of-week">
+                                    {date.isSame(today) ? LangHelper.getResource('Today') : isMobile ? date.format('ddd') : date.format('dddd')}
+                                </div>
                                 <div className="date">{date.format('DD/MM')}</div>
                             </div>
                         );
@@ -105,8 +76,8 @@ const WeekBarComponent = withNavigation(WeekBar);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { today, minDate, maxDate, selectedDate, dateRanges } = state;
-    return { today, minDate, maxDate, selectedDate, dateRanges };
+    const { isMobile, today, minDate, maxDate, selectedDate, dateRanges } = state;
+    return { isMobile, today, minDate, maxDate, selectedDate, dateRanges };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeekBarComponent);

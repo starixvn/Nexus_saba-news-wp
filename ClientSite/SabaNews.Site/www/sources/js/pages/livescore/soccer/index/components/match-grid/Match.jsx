@@ -50,9 +50,6 @@ export default class Match extends PureComponent {
 
     render() {
         const { match, searchKey } = this.props;
-        const reg = new RegExp(`(${searchKey})`, 'gi');
-        const displayHomeTeamValue = match.homeTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
-        const displayAwayTeamValue = match.awayTeam.teamFullNameEN.replace(reg, "<span class='text-matched'>$1</span>");
         const isLiveMatch = match.status === MatchStatus.FirstHalf
             || match.status === MatchStatus.SecondHalf
             || match.status === MatchStatus.Intermission

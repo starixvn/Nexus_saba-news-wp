@@ -1,14 +1,14 @@
-﻿import React, { Component } from 'react';
+﻿import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import League from './League';
 import { ActionCreators } from '../../actions';
 
-export class MatchGrid extends Component {
+export class MatchGrid extends PureComponent {
     render() {
         if (this.props.matches.length === 0) {
             return <div className="none-livescore">
-                { !window.isLiveMatchPage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
+                { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
             </div>;
         }
 

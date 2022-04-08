@@ -1,6 +1,7 @@
 ﻿import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import {
+    setIsMobile,
     setSearchKey,
     setSelectedDate,
     setDateRanges,
@@ -31,6 +32,7 @@ const getLiveMatches = () => async dispatch => {
 };
 
 export const ActionCreators = {
+    setIsMobile,
     setSearchKey,
     setSelectedDate,
     setDateRanges,

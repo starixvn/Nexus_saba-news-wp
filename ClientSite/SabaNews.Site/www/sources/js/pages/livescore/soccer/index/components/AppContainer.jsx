@@ -9,26 +9,37 @@ import SearchBar from './SearchBar';
 import MatchGrid from './match-grid/index';
 import SignalR from './SignalR';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import { MobileMaxWidth } from '@jsroot/common/constants';
+moment.updateLocale('vi', {
+    weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
+    weekdaysShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
+});
+moment.locale('vi');
 
 export class AppContainer extends Component {
-    constructor(props) {
-        super(props);
-
-        this.mobileMaxWidth = 768;
-    }
-
     componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+
+        this.props.setIsMobile(window.innerWidth <= MobileMaxWidth ? true : false);
         this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
         this.props.getMajorLeagues();
         this.getMatches(this.props.selectedDate);
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        this.props.setIsMobile(window.innerWidth <= MobileMaxWidth ? true : false);
+    }
+
     getDateRanges = selectedDate => {
         const dates = [];
+        let totalItems = 5;
         selectedDate = moment(selectedDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
-        let totalItems = window.innerWidth <= this.mobileMaxWidth ? 3 : 5;
 
         if (selectedDate.isSame(minDate)) {
             for (let i = 0; i < totalItems; i++) {
@@ -49,7 +60,7 @@ export class AppContainer extends Component {
                     dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
                 }
             } else {
-                totalItems = window.innerWidth <= this.mobileMaxWidth ? 2 : 3;
+                totalItems = 3;
                 for (let i = 1; i < totalItems; i++) {
                     dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
                     dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
@@ -61,7 +72,7 @@ export class AppContainer extends Component {
     }
 
     getMatches = selectedDate => {
-        if (window.isLiveMatchPage) {
+        if (window.isLivePage) {
             this.props.getLiveMatches();
         } else {
             this.props.getMatches({
@@ -101,8 +112,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { minDate, maxDate, selectedDate, majorLeagues, matches } = state;
-    return { minDate, maxDate, selectedDate, majorLeagues, matches };
+    const { minDate, maxDate, selectedDate, dateRanges, majorLeagues, matches } = state;
+    return { minDate, maxDate, selectedDate, dateRanges, majorLeagues, matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

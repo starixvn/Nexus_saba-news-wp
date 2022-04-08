@@ -9,6 +9,7 @@ const maxDate = new Date(today.getFullYear() + 1, 12, 0);
 const soccerMatchSlice = createSlice({
     name: 'soccerMatchSlice',
     initialState: {
+        isMobile: false,
         today: DateTimeService.formatDateTime(today, 'YYYY-MM-DD'),
         minDate: DateTimeService.formatDateTime(minDate, 'YYYY-MM-DD'),
         maxDate: DateTimeService.formatDateTime(maxDate, 'YYYY-MM-DD'),
@@ -19,6 +20,9 @@ const soccerMatchSlice = createSlice({
         matches: null
     },
     reducers: {
+        setIsMobile: (state, action) => {
+            state.isMobile = action.payload;
+        },
         setSearchKey: (state, action) => {
             state.searchKey = action.payload;
         },
@@ -37,7 +41,7 @@ const soccerMatchSlice = createSlice({
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
             if (state.today === state.selectedDate) {
-                if (window.isLiveMatchPage) {
+                if (window.isLivePage) {
                     state.matches = liveMatches;
                 } else {
                     const totalItems = liveMatches.length;
@@ -58,6 +62,7 @@ const soccerMatchSlice = createSlice({
 const { actions, reducer } = soccerMatchSlice;
 
 export const {
+    setIsMobile,
     setSearchKey,
     setSelectedDate,
     setDateRanges,

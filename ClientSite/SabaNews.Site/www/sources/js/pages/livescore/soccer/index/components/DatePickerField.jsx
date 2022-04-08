@@ -6,6 +6,7 @@ import { ActionCreators } from '../actions';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi';
 import Site from '@jsroot/common/site';
+registerLocale('vi', vi);
 
 export class DatePickerField extends PureComponent {
     constructor(props) {
@@ -19,7 +20,6 @@ export class DatePickerField extends PureComponent {
     }
 
     componentDidMount() {
-        registerLocale('vi', vi);
         document.addEventListener('click', this.handleClickOutside);
     }
 
@@ -49,7 +49,7 @@ export class DatePickerField extends PureComponent {
     onChange = date => {
         this.setState({ open: false });
         date = moment(date).format('YYYY-MM-DD');
-        window.isLiveMatchPage = false;
+        window.isLivePage = false;
         this.props.setSelectedDate(date);
 
         if (this.props.dateRanges.findIndex(x => x === date) === -1) {
