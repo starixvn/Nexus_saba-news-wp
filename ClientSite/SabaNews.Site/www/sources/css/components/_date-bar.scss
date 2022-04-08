@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #DFDFDF;
-    padding: .6rem;
     border-radius: 3px;
 
     @include tableMobile {
@@ -120,18 +119,20 @@
     .btn-live {
         text-align: center;
         width: 15%;
-        border-right: 1px solid #E4E4E4;
         cursor: pointer;
-        padding: 0 1.5rem;
+        padding: .6rem 1rem;
+        background: #F1F1F1;
+        border-right: 1px solid $border-color;
+        border-radius: 3px;
 
         @include tableMobile {
-            padding: 0 1.5rem 0 0;
+            padding: .8rem .5rem;
             width: 20%;
         }
 
         @include Mobile {
-            padding: 0 .5rem 0 0;
-            width: 20%;
+            padding: .8rem .5rem;
+            width: 14%;
         }
 
         .btn-live-realtime {
@@ -153,7 +154,7 @@
             @include Mobile {
                 font-size: .8rem;
                 line-height: .9rem;
-                padding: .3rem 0;
+                padding: .2rem 0;
             }
 
             @include iphone5 {
@@ -166,7 +167,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 5%;
+        width: 7%;
 
         .react-datepicker-wrapper {
             width: 1px;
