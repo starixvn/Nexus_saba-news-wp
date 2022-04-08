@@ -92,8 +92,9 @@
     line-height: 2.5rem;
     margin: 0;
     color: #0F2552;
-    font-weight: 400;
+    
 }
+
 
 
 .react-datepicker__day-name {
@@ -109,10 +110,10 @@
 .react-datepicker__month-text--in-selecting-range,
 .react-datepicker__month-text--in-range, .react-datepicker__day:hover,
 .react-datepicker__month-text:hover {
-    border-radius: 50%;
     outline: none;
-    background: #E13C29;
-    color: #FDFDFD;
+    background: $color-title;
+    color: #FDFDFD !important;
+    border-radius: 5px;
 }
 
 .react-datepicker__day--outside-month, .react-datepicker__day--disabled {
@@ -120,6 +121,9 @@
 }
 
 .react-datepicker__day--keyboard-selected {
+    background: #E9EEF4;
+    border: 1px solid #D8E1ED;
+    border-radius: 5px;
 }
 
 .react-datepicker__time-list::-webkit-scrollbar {
