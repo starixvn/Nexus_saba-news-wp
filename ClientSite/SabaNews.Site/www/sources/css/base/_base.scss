@@ -41,16 +41,17 @@ body {
 }
 
 #app-container {
-    padding-top: 7rem;
+    padding-top: 6.5rem;
 
     @include tableMobile {
         padding-top: 1rem;
     }
 }
 
-    @include iphone5{
-        font-size : 1.8rem;
-    }
+@include iphone5 {
+    font-size: 1.8rem;
+}
+
 .start-active {
     &:before {
         color: #EF9123;
@@ -68,6 +69,7 @@ body {
 .font-weight-bold {
     font-weight: bold;
 }
+
 .icon-hidden {
     display: none;
 

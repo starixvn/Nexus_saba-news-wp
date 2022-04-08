@@ -20,7 +20,7 @@ main {
 }
 
 .livescore-soccer {
-    @include grid(72% 28%, unset, 0);
+    @include grid(70% 30%, unset, 0);
     align-items: start;
 
     @include tableMobile {
@@ -37,8 +37,8 @@ main {
         }
     }
 
-    .none-livescore{
-        margin-top : 1.2rem;
-        font-size : 1.4rem;
+    .none-livescore {
+        margin-top: 1.2rem;
+        font-size: 1.4rem;
     }
 }
