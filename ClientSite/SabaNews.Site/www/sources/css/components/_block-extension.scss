@@ -67,8 +67,9 @@
 
                 span {
                     position: absolute;
-                    right: 13px;
-                    top: 13px;
+                    right: 10px;
+                    top: 50%;
+                    transform: translate(0,-50%);
                 }
             }
 
