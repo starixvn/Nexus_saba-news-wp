@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SabaNews.Livescore.ScheduledTasks": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
