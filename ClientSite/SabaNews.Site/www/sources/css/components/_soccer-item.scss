@@ -46,7 +46,7 @@
                     font-weight: 700;
 
                     .start-active {
-                        margin-right: 2rem;
+                        margin-right: 1.7rem;
                         font-size: 2.5rem;
 
                         @include tableMobile {
@@ -320,13 +320,13 @@
 
             .soccer-match-star-icon {
                 width: 8%;
-
+                text-align : right;
                 @include tableMobile {
                     width: auto;
                 }
 
                 .icon-live-right {
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
 
                     @include tableMobile {
                         display: none;
