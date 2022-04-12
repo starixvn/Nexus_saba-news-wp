@@ -108,6 +108,10 @@
             background: transparent;
             cursor: pointer;
 
+            @include iphone5 {
+                display: none;
+            }
+
             .icon-livescore {
                 &:before {
                     color: #7C7C7C;
@@ -145,7 +149,6 @@
     .btn-live, .date-picker {
         text-align: center;
         width: 20%;
-
     }
 
     .btn-live {
@@ -197,12 +200,17 @@
 
     .date-picker {
         width: 7%;
+
         @include tableMobile {
             width: 10%
         }
 
         .icon-live-calender {
             font-size: 2rem;
+
+            @include iphone5 {
+                font-size: 1.6rem;
+            }
 
             &:before {
                 color: $color-title;
