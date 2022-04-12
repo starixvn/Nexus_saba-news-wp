@@ -66,7 +66,8 @@
         {
             var fetchMatchDetailParam = new SyncMatchParams
             {
-                MatchIds = matchIds
+                MatchIds = matchIds,
+                RowLimit = appSettings.BatchSizeSyncMatches
             };
             var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
 
