@@ -7,6 +7,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -44,15 +45,60 @@
             };
             var matches = await fetchMatchService.FetchMatchListAsync(param);
 
+            await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
+
+            await SyncMatchDetais(matches);
+        }
+
+        private async Task SyncMatchDetais(List<MatchResponse> matches)
+        {
             var matchIds = matches.Select(m => m.MatchId).ToArray();
 
-            var tasks = new List<Task>
-            {
-                syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches),
-                syncMatchService.InsertTemporaryMatch(matchIds, appSettings.IsSkipSyncFinishedMatches)
-            };
+            await SyncMatchDetailByIdsAsync(matchIds);
 
-            await Task.WhenAll(tasks);
+            var syncLineupMatchIds = matches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
+
+            await SyncLinupAsync(syncLineupMatchIds);
+            await SyncIncidents(matchIds);
+        }
+
+        public async Task SyncMatchDetailByIdsAsync(long[] matchIds)
+        {
+            var fetchMatchDetailParam = new SyncMatchParams
+            {
+                MatchIds = matchIds
+            };
+            var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
+
+            await syncMatchService.SyncMatchDetailsAsync(matches);
+        }
+
+        private async Task SyncLinupAsync(long[] matchIds)
+        {
+            var lineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
+
+            await syncMatchService.SyncMatchLineupByIdsAsync(lineups);
+        }
+
+        private async Task SyncIncidents(long[] matchIds)
+        {
+            var tasks = new List<Task<List<MatchIncident>>>();
+            var incidents = new List<MatchIncident>();
+
+            foreach (var matchId in matchIds)
+            {
+                tasks.Add(
+                    Task.Run(() => fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId))
+                    );
+            }
+            var incidentListTask = (await Task.WhenAll(tasks)).ToList();
+
+            foreach (var item in incidentListTask)
+            {
+                incidents.AddRange(item);
+            }
+
+            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
         }
     }
 }
