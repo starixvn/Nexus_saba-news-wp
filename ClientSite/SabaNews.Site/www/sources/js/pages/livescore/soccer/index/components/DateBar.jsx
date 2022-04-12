@@ -25,10 +25,12 @@ const DateBar = props => {
                 }}
             >
                 <i className="icon-livescore icon-live-realtime"></i>
-                {
-                    window.isLivePage && matches.length > 0 && <span>{matches.length}</span>
-                }
-                <div className="btn-live-realtime">{isMobile ? 'Live' : LangHelper.getResource('Live')}</div>
+                <div className="btn-live-realtime">
+                    {isMobile ? 'Live' : LangHelper.getResource('Live')}
+                    {
+                        window.isLivePage && matches.length > 0 && <span className="number-live">{matches.length}</span>
+                    }
+                </div>
             </div>
             <WeekBar
                 getDateRanges={props.getDateRanges}
