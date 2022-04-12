@@ -9,7 +9,6 @@
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
-    using SabaNews.Livescore.SyncData.Models.Matches;
     using SabaNews.Services;
 
     public class SyncMatchService : ISyncMatchService
@@ -87,42 +86,6 @@
                 {
                     IncidentJson = JsonConvert.SerializeObject(incidents)
                 };
-                await baseService.ExecuteNonQueryAsync(command);
-            }
-        }
-
-        public async Task<IEnumerable<TemporaryMatch>> GetTemporaryMatchToFetchInfo(int rowLimit)
-        {
-            var tmpMatches = await baseService.GetDataAsync<TemporaryMatch>(
-                new GetTemporayMatchesCriteria
-                {
-                    RowLimit = rowLimit
-                });
-            return tmpMatches;
-        }
-
-        public async Task RemoveMatchesFromTemporaryTable(long[] matchIds)
-        {
-            if (matchIds.Length > 0)
-            {
-                var command = new DeleteTemporaryMatchIdCommand
-                {
-                    MatchIds = string.Join(",", matchIds)
-                };
-                await baseService.ExecuteNonQueryAsync(command);
-            }
-        }
-
-        public async Task InsertTemporaryMatch(long[] matchIds, bool IsSkipSyncFinishedMatches)
-        {
-            if (matchIds.Length > 0)
-            {
-                var command = new InsertTemporaryMatchCommand
-                {
-                    MatchIds = string.Join(",", matchIds),
-                    IsSkipSyncFinishedMatches = IsSkipSyncFinishedMatches
-                };
-
                 await baseService.ExecuteNonQueryAsync(command);
             }
         }
