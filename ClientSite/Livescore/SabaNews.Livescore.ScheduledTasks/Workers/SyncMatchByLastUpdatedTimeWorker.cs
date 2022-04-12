@@ -89,8 +89,7 @@
             foreach (var matchId in matchIds)
             {
                 tasks.Add(
-                    Task.Run(() => fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId))
-                    );
+                    fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId));
             }
             var incidentListTask = (await Task.WhenAll(tasks)).ToList();
 
