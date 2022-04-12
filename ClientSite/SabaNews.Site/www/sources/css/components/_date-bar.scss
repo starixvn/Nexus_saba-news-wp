@@ -145,6 +145,7 @@
     .btn-live, .date-picker {
         text-align: center;
         width: 20%;
+
     }
 
     .btn-live {
@@ -195,15 +196,7 @@
     }
 
     .date-picker {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 7%;
-
-        .react-datepicker-wrapper {
-            width: 1px;
-        }
-
         @include tableMobile {
             width: 10%
         }
@@ -228,4 +221,7 @@
             }
         }
     }
+}
+.react-datepicker__input-container{
+    text-align : center;
 }
