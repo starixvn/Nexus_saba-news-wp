@@ -153,7 +153,7 @@
 
     .btn-live {
         text-align: center;
-        width: 15%;
+        width: 16%;
         cursor: pointer;
         padding: .6rem 1rem;
         background: #F1F1F1;
@@ -179,7 +179,7 @@
             font-size: 1.2rem;
             color: $primary-bg;
             padding: .3rem 0;
-
+            font-weight : 700;
             @include tableMobile {
                 font-size: 1.1rem;
                 line-height: .9rem;
