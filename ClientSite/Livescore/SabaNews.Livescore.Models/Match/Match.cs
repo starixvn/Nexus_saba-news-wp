@@ -9,7 +9,6 @@
         public long MatchId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public string Schedule => StartTime.ToString("HH:mm");
         public League League { get; set; }
         public Team HomeTeam { get; set; }
         public Team AwayTeam { get; set; }

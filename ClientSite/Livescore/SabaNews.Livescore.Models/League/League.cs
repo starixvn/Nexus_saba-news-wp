@@ -15,5 +15,8 @@
         public short RoundCount { get; set; }
 
         public bool IsMajor { get; set; }
+
+        public Season Season { get; set; }
+        public SeasonStage Stage { get; set; }
     }
 }

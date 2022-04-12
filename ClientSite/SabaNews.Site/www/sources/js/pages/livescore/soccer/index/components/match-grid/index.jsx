@@ -26,14 +26,18 @@ export class MatchGrid extends PureComponent {
         }
 
         matches = matches.reduce((previousItem, currentItem) => {
-            const key = currentItem.league.leagueId;
+            const key = currentItem.league.leagueId
+                + `-${currentItem.league.season ? currentItem.league.season.seasonId : 0}`
+                + `-${currentItem.league.stage ? currentItem.league.stage.stageId : 0}`;
             if (!helper[key]) {
                 helper[key] = {
                     leagueId: currentItem.league.leagueId,
                     leagueNameEN: currentItem.league.leagueNameEN,
                     leagueFullNameEN: currentItem.league.leagueFullNameEN,
                     icon: currentItem.league.icon,
-                    currentRound: currentItem.league.currentRound,
+                    leagueType: currentItem.league.leagueType,
+                    season: currentItem.league.season,
+                    stage: currentItem.league.stage,
                     matches: [{ ...currentItem }]
                 };
                 previousItem.push(helper[key]);

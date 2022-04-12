@@ -1,5 +1,12 @@
 export const MobileMaxWidth = 768;
 
+export const LeagueType = {
+    Unknown: 0,
+    League: 1,
+    Cup: 2,
+    Friendly: 3
+};
+
 export const MatchStatus = {
     NotStarted: 0,
     FirstHalf: 10,
