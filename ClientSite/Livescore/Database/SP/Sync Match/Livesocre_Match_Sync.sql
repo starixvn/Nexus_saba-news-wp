@@ -180,6 +180,7 @@ BEGIN
                 m.UpdatedAt
         FROM tmp_Match m
         ON DUPLICATE KEY UPDATE
+            CombinedId = m.CombinedId,
             LeagueId = m.LeagueId,
             SeasonId = m.SeasonId,
             StageId = m.StageId,
