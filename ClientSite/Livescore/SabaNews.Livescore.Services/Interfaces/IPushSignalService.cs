@@ -9,6 +9,6 @@
     {
         public Task PushMatchListAsync(IEnumerable<Match> matches);
 
-        public Task PushMatchDetailcAsync(long matchId, Statistic statistic, LineupDetail lineup, IEnumerable<MatchIncident> incidents);
+        public Task PushMatchDetailcAsync(long matchId, MatchDetail detail);
     }
 }

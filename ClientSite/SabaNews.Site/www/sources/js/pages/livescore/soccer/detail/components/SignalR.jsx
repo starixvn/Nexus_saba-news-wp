@@ -26,9 +26,17 @@ export class SignalR extends Component {
             .withAutomaticReconnect()
             .build();
 
-        this.connection.on('UpdateLiveMatchDetail', () => {
-            console.log('UpdateLiveMatchDetail');
+        // this.connection.on('UpdateMatchDetail', (data) => {
+        //     console.log('UpdateMatchDetail');
+        //     console.log(data);
+        //     this.props.setSoccerMatch(data);
+        // });
+
+        this.connection.on('UpdateMatchDetail', (data) => {
+            console.log('UpdateMatchDetail');
+            this.props.setMatch(data);
         });
+
 
         this.connection.start().then(() => {
             this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)

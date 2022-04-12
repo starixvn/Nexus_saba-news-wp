@@ -11,21 +11,24 @@ export class AppContainer extends Component {
         super(props);
     }
     componentDidMount() {
-        this.props.getSoccerMatchDetail();
+        this.props.getMatchDetail();
+    }
+    updateData = () => {
+        this.props.updateData();
     }
 
     render() {
-        if (!this.props.soccerMatch || !this.props.soccerMatch.generalInfo ) {
+        if (!this.props.match || !this.props.match.generalInfo ) {
             return (
                 <h1 className="livescore-soccer">Trận đấu bạn tìm không có</h1>
             );
         }
-        console.log(this.props.soccerMatch);
+        console.log('app');
         return (
             <>
                 <SignalR />
                 <div className="livescore-soccer">
-                    <MatchGenetalInfo soccerMatch = {this.props.soccerMatch} isLiveMatch = {this.props.isLiveMatch} />
+                    <MatchGenetalInfo match = {this.props.match} isLiveMatch = {this.props.isLiveMatch} />
                     <DetailTabs />
                 </div>
             </>
@@ -36,9 +39,9 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { soccerMatch, isLiveMatch } = state;
+    const { match, isLiveMatch } = state;
     return {
-        soccerMatch,
+        match,
         isLiveMatch
     };
 };

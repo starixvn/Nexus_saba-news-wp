@@ -11,6 +11,10 @@ export class HeadToHead extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getHeadToHead();
+    }
+
     renderBody = (matchs, teamId) =>  {
         if(matchs.length === 0) {
             return null;
@@ -41,7 +45,7 @@ export class HeadToHead extends Component {
                         if(!teamId) {
                             matchStatus = -1;
                         }
-                        const time = DateTimeService.convertFromUTC(match.eventDate);
+                        const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
                                 <div className="football-match">
@@ -95,12 +99,13 @@ export class HeadToHead extends Component {
     }
 
     render() {
-        const { headToHead } = this.props.soccerMatch;
+        const headToHead = this.props.headToHead;
+        console.log("head to head");
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             return null;
         }
-        const { home, away, common } = this.props.soccerMatch.headToHead;
-        const generalInfo = this.props.soccerMatch.generalInfo;
+        const { home, away, common } = this.props.headToHead;
+        const generalInfo = this.props.match.generalInfo;
         return (
             <Tabs  id="head-to-head-tabs" className="head-to-head">
                 <Tab eventKey="Home" title={generalInfo.homeTeam.teamFullNameEN} >
@@ -120,9 +125,10 @@ export class HeadToHead extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { soccerMatch } = state;
+    const { match, headToHead } = state;
     return {
-        soccerMatch,
+        match,
+        headToHead
     };
 };
 

@@ -11,6 +11,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -111,7 +112,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetSoccerMatchDetail([FromBody] GetMatchDetailCriteria criteria)
+        public async Task<IActionResult> GetHeadToHead([FromBody] GetHeadToHeadCriteria criteria)
+        {
+            var headToHead = await matchService.GetHeadToHeadAsync(criteria);
+            return Ok(headToHead);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateDetailData([FromBody] GetMatchDetailCriteria criteria)
         {
             var matchId = criteria.MatchId;
             var generalInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId });
@@ -119,8 +127,22 @@
             {
                 GeneralInfo = generalInfo,
                 Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
+                Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
+            };
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchDetailCriteria criteria)
+        {
+            var matchId = criteria.MatchId;
+            var result = new MatchDetail
+            {
+                GeneralInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId }),
+                Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
                 Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId }),
-                HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { HomeTeamId = generalInfo.HomeTeam.TeamId, AwayTeamId = generalInfo.AwayTeam.TeamId })
+                HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { MatchId = matchId }),
+                Lineup = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId })
             };
 
             return Ok(result);

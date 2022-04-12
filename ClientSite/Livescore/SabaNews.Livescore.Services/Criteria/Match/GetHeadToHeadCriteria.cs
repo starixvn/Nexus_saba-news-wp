@@ -4,13 +4,11 @@
 
     public class GetHeadToHeadCriteria : CriteriaBase
     {
-        public long HomeTeamId { get; set; }
-
-        public long AwayTeamId { get; set; }
+        public long MatchId { get; set; }
 
         public override string GetSettingKey() => "Livescore_Match_GetHeadToHead";
 
-        public override bool IsValid() => HomeTeamId > 0 && AwayTeamId > 0;
+        public override bool IsValid() => MatchId > 0;
 
 
     }

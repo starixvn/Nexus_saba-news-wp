@@ -9,6 +9,10 @@
     {
         Task UpdateLiveMatches(IList<Match> matches);
 
-        Task UpdateLiveMatchStatistic(Statistic statistic, LineupDetail lineup, IEnumerable<MatchIncident> incidents);
+        Task UpdateLiveMatchDetail(MatchDetail detail);
+
+        Task SendAsync(string data);
+
+        Task UpdateMatchDetail(MatchDetail matchDetail);
     }
 }

@@ -17,6 +17,6 @@
         public string AwayTeamNameEN { get; set; }
         public string AwayTeamFullNameEN { get; set; }
         public string AwayTeamIcon { get; set; }
-        public DateTime EventDate { get; set; }
+        public DateTime StartTime { get; set; }
     }
 }

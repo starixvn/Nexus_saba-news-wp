@@ -3,8 +3,8 @@
 const soccerMatchDetailSlice = createSlice({
     name: 'soccerMatchDetailSlice',
     initialState: {
-        soccerMatch: null,
-        lineup: null,
+        match: null,
+        headToHead: null,
         isLiveMatch: false,
         loadTabStatus: {
             enableTabMatchSummary: true,
@@ -13,11 +13,11 @@ const soccerMatchDetailSlice = createSlice({
         }
     },
     reducers: {
-        setSoccerMatch: (state, action) => {
-            state.soccerMatch = action.payload;
+        setMatch: (state, action) => {
+            state.match = action.payload;
         },
-        setLineup: (state, action) => {
-            state.lineup = action.payload;
+        setHeadToHead: (state, action) => {
+            state.headToHead = action.payload;
         },
         setIsLiveMatch: (state, action) => {
             state.isLiveMatch = action.payload;
@@ -31,8 +31,8 @@ const soccerMatchDetailSlice = createSlice({
 const { actions, reducer } = soccerMatchDetailSlice;
 
 export const {
-    setSoccerMatch,
-    setLineup,
+    setMatch,
+    setHeadToHead,
     setIsLiveMatch,
     setloadTabStatus
 } = actions;

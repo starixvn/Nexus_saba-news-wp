@@ -10,12 +10,9 @@ export class Lineups extends Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount() {
-        this.props.getLineupDetail();
-    }
 
     getPlayerIncident = playerId => {
-        const incidents = this.props.soccerMatch.incidents;
+        const incidents = this.props.match.incidents;
         let playerIncident = {
             goals: 0,
             ownGoals: 0,
@@ -286,8 +283,8 @@ export class Lineups extends Component {
     }
 
     renderPitchView = () => {
-        const lineup = this.props.lineup;
-        const matchInfo = this.props.soccerMatch.generalInfo;
+        const lineup = this.props.match.lineup;
+        const matchInfo = this.props.match.generalInfo;
         if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation) {
             return null;
         }
@@ -371,8 +368,8 @@ export class Lineups extends Component {
 
 
     renderSubstitution = position => {
-        const incidents = this.props.soccerMatch.incidents;
-        const lineup = this.props.lineup;
+        const incidents = this.props.match.incidents;
+        const lineup = this.props.match.lineup;
         const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
         const substitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === position);
         return (
@@ -392,11 +389,10 @@ export class Lineups extends Component {
 
 
     render() {
-        if (!this.props.lineup || !this.props.lineup.generalInfo) {
+        const { lineup, incidents }  = this.props.match;
+        if (!this.props.match.lineup || !this.props.match.lineup.generalInfo) {
             return null;
         }
-        const lineup = this.props.lineup;
-        const incidents = this.props.soccerMatch.incidents;
 
         const homePlayers = lineup.home.filter(player => player.position !== 0);
         const awayPlayers = lineup.away.filter(player => player.position !== 0);
@@ -459,9 +455,9 @@ export class Lineups extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { lineup, soccerMatch } = state;
+    const { lineup, match } = state;
     return {
-        lineup, soccerMatch
+        lineup, match
     };
 };
 

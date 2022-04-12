@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
@@ -15,6 +16,7 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
+    using MatchIncident = Provider.API.Models.Matches.MatchIncident;
 
     internal class SyncLiveMatchThenPushSignalWorker : BaseWorker
     {
@@ -67,13 +69,16 @@
         {
             foreach (var matchId in matchIds)
             {
-                var statistic = matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId });
-                var incidents = matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId });
-                var lineups = matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId });
+                var detail = new MatchDetail
+                {
+                    GeneralInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId }),
+                    Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
+                    Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId }),
+                    HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { MatchId = matchId }),
+                    Lineup = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId })
+                };
 
-                await Task.WhenAll(statistic, incidents, lineups);
-
-                await pushSignalService.PushMatchDetailcAsync(matchId, await statistic, await lineups, await incidents);
+                await pushSignalService.PushMatchDetailcAsync(matchId, detail);
             }
         }
 

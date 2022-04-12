@@ -77,10 +77,7 @@ export default class MatchGenetalInfo extends Component {
     }
 
     render() {
-        if (!this.props.soccerMatch || !this.props.soccerMatch.generalInfo) {
-            return null;
-        }
-        const { generalInfo, incidents } = this.props.soccerMatch;
+        const { generalInfo, incidents } = this.props.match;
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>

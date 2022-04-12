@@ -11,10 +11,10 @@ export default class MatchSummary extends Component {
     }
 
     render() {
-        if (!this.props.soccerMatch || !this.props.soccerMatch.incidents || this.props.soccerMatch.incidents.length === 0) {
+        if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
             return null;
         }
-        const incidents = this.props.soccerMatch.incidents;
+        const incidents = this.props.match.incidents;
         let lastIncident = incidents[incidents.length - 1];
         let hasInjuryTime = false;
         let hasPenaltyShootout = false;

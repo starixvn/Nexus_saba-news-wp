@@ -44,13 +44,13 @@
             });
         }
 
-        public async Task PushMatchDetailcAsync(long matchId, Statistic statistic, LineupDetail lineup, IEnumerable<MatchIncident> incidents)
+        public async Task PushMatchDetailcAsync(long matchId, MatchDetail detail)
         {
             if (hubConnection.State == HubConnectionState.Disconnected)
             {
                 await hubConnection.StartAsync();
             }
-            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, statistic, lineup, incidents);
+            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, detail);
         }
     }
 }

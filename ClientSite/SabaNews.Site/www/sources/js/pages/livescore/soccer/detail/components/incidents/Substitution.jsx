@@ -4,7 +4,6 @@ export default class Substitution extends Component {
     constructor(props) {
         super(props);
     }
-    
     render() {
         if (!this.props.incident) {
             return null;
@@ -24,7 +23,7 @@ export default class Substitution extends Component {
                         <div className="inner-item-db flexbox item-th-home">
                             {
                                 incident.position === IncidentPosition.Home &&
-                                <>                                
+                                <>
                                     <div className="item-th flexbox">
                                         <span className="icon-th">
                                             <svg className="ic ic-arrow arrowupgreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -48,7 +47,7 @@ export default class Substitution extends Component {
                         <div className="inner-item-db flexbox">
                             {
                                 incident.position === IncidentPosition.Away &&
-                                <>                                
+                                <>
                                     <div className="item-th flexbox">
                                         <span className="icon-th">
                                             <svg className="ic ic-arrow arrowupgreen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

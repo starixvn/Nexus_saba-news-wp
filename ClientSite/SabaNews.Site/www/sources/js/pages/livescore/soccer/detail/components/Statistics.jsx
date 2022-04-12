@@ -6,14 +6,14 @@ export default class Statistics extends Component {
     }
 
     render() {
-        const {homeStatistic, awayStatistic} = this.props.soccerMatch.statistic;
-        if (!this.props.soccerMatch.statistic || !homeStatistic || !awayStatistic) {
+        const {homeStatistic, awayStatistic} = this.props.match.statistic;
+        if (!this.props.match.statistic || !homeStatistic || !awayStatistic) {
             return null;
         }
-        const match = this.props.soccerMatch;
+        const match = this.props.match;
         let statistices  = [];
         if(match !== null) {
-            const {homeStatistic, awayStatistic} = this.props.soccerMatch.statistic;
+            const {homeStatistic, awayStatistic} = this.props.match.statistic;
             statistices = [
                 { categoryId: 1, categoryName: 'Kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
                 { categoryId: 2, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.shoot, awayValue: awayStatistic.shoot, unit: '' },

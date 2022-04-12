@@ -14,13 +14,13 @@ export class DetailTabs extends Component {
     }
 
     componentDidMount() {
-        if (this.props.soccerMatch.generalInfo.status !== 50 && !this.props.isLiveMatch) {
+        if (this.props.match.generalInfo.status !== 50 && !this.props.isLiveMatch) {
             const loadStatus = { ...this.props.loadTabStatus };
             loadStatus["enableTabMatchSummary"] = false;
             loadStatus["enableTabStatistics"] = false;
             this.props.setloadTabStatus(loadStatus)
         }
-        if (this.props.soccerMatch.generalInfo.isLineUp === 0) {
+        if (this.props.match.generalInfo.isLineUp === 0) {
             const status = { ...this.props.loadTabStatus };
             status["enableTabLineUp"] = false;
             this.props.setloadTabStatus(status)
@@ -31,10 +31,10 @@ export class DetailTabs extends Component {
         return (
             <Tabs  id="soccer-match-detail-tabs">
                 <Tab eventKey="MatchSummary" title="Diễn biến" disabled={!loadTabStatus.enableTabMatchSummary}>
-                    <MatchSummary soccerMatch = {this.props.soccerMatch}/>
+                    <MatchSummary match = {this.props.match}/>
                 </Tab>
                 <Tab eventKey="Statistics" title="Thống kê"  disabled={!loadTabStatus.enableTabStatistics}>
-                    <Statistics soccerMatch = {this.props.soccerMatch}  />
+                    <Statistics match = {this.props.match}  />
                 </Tab>
                 <Tab eventKey="Lineups" title="Đội hình" disabled={!loadTabStatus.enableTabLineUp}>
                     <Lineups />
@@ -50,9 +50,9 @@ export class DetailTabs extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { soccerMatch, loadTabStatus } = state;
+    const { match, loadTabStatus } = state;
     return {
-        soccerMatch,
+        match,
         loadTabStatus
     };
 };
