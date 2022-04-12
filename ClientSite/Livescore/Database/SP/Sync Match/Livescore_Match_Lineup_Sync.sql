@@ -73,9 +73,10 @@ BEGIN
                         PlayerNumber INT NOT NULL,
                         IsSubstitute BIT,
                         CoordinateX INT NOT NULL,
-                        CoordinateY INT NOT NULL);
+                        CoordinateY INT NOT NULL,
+                        Role VARCHAR(20));
     
-	INSERT INTO tmp_playerLineup(MatchId, TeamId, PlayerId, PlayerName, Position, PlayerNumber, IsSubstitute, CoordinateX, CoordinateY)
+	INSERT INTO tmp_playerLineup(MatchId, TeamId, PlayerId, PlayerName, Position, PlayerNumber, IsSubstitute, CoordinateX, CoordinateY, Role)
     SELECT tpl.MatchId 
            ,(CASE WHEN tpl.IsHomeTeam = 1
                 THEN m.HomeTeamId
@@ -88,6 +89,7 @@ BEGIN
            ,tpl.IsSubstitute 
            ,tpl.CoordinateX 
            ,tpl.CoordinateY 
+           ,tpl.Role
     FROM JSON_TABLE
         (
 			lineupPlayerJson,
@@ -102,7 +104,8 @@ BEGIN
                 IsHomeTeam TINYINT(4) PATH "$.IsHomeTeam",
                 IsSubstitute TINYINT(4) PATH "$.IsSubstitute",
                 CoordinateX INT PATH "$.CoordinateX",
-                CoordinateY INT PATH "$.CoordinateY"
+                CoordinateY INT PATH "$.CoordinateY",
+                Role VARCHAR(20) PATH "$.Role"
             )
         ) AS tpl
     INNER JOIN livescore_match m ON tpl.MatchId = m.MatchId;
@@ -110,7 +113,7 @@ BEGIN
     DELETE FROM livescore_lineup_detail tlu
     WHERE tlu.MatchId IN (SELECT DISTINCT MatchId FROM tmp_playerLineup);
 
-    INSERT INTO livescore_lineup_detail(MatchId, TeamId, PlayerId, PlayerName, IsSubstitute, PlayerNumber, Position, CoordinateX, CoordinateY)
+    INSERT INTO livescore_lineup_detail(MatchId, TeamId, PlayerId, PlayerName, IsSubstitute, PlayerNumber, Position, CoordinateX, CoordinateY, Role)
     SELECT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId
@@ -120,6 +123,7 @@ BEGIN
            ,tpl.Position
            ,tpl.CoordinateX
            ,tpl.CoordinateY
+           ,tpl.Role
     FROM tmp_playerLineup AS tpl
     LEFT JOIN livescore_player p ON tpl.PlayerId = p.PlayerId 
         AND p.TeamId = tpl.TeamId;

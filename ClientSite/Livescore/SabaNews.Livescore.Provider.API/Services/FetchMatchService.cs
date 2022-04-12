@@ -23,6 +23,7 @@
                 { "sportId", paramModel.SportId },
                 { "matchId", paramModel.MatchIds is not null && paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
                 { "leagueId", paramModel.LeagueId },
+                { "idGte", paramModel.MaxMatchId },
                 { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "startTime", paramModel.StartTime.HasValue ? paramModel.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },

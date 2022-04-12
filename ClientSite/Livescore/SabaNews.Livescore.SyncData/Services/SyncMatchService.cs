@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using SabaNews.Livescore.Provider.API.Models.Matches;
-    using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
     using SabaNews.Services;
@@ -15,8 +14,7 @@
     {
         private readonly IBaseService baseService;
 
-        public SyncMatchService(IBaseService baseService,
-            IFetchMatchService fetchMatchService)
+        public SyncMatchService(IBaseService baseService)
         {
             this.baseService = baseService;
         }
@@ -90,7 +88,10 @@
             }
         }
 
-        public async Task<DateTime> GetMatchLastUpdatedTime()
+        public async Task<DateTime> GetMatchLastUpdatedTimeAsync()
             => await baseService.GetDataEntityAsync<DateTime>(new GetMatchLastUpdatedTimeCriteria());
+
+        public async Task<long> GetMaxMatchIdAsync()
+        => await baseService.GetDataEntityAsync<long>(new GatMatchMaxIdCriteria());
     }
 }

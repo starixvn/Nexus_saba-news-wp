@@ -68,7 +68,8 @@
                 CoordinateY = p.Coordinate is not null ? p.Coordinate.Y : 0,
                 PlayerName = p.PlayerName,
                 PlayerNumber = p.PlayerNumber,
-                Position = p.Position
+                Position = p.Position,
+                Role = p.Role
             }).ToList();
 
         private static MatchTeamStatistic ConvertToTeamStatistic(MatchExtraData extraData, long matchId, bool isHome)

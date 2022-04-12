@@ -7,7 +7,9 @@
 
     public interface ISyncMatchService
     {
-        Task<DateTime> GetMatchLastUpdatedTime();
+        Task<DateTime> GetMatchLastUpdatedTimeAsync();
+
+        Task<long> GetMaxMatchIdAsync();
 
         Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches);
 

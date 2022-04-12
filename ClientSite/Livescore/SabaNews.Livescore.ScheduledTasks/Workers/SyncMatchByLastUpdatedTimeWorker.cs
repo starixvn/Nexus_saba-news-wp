@@ -36,7 +36,7 @@
 
         public override async Task ExecuteJobAsync()
         {
-            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTime();
+            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeAsync();
             var param = new SyncMatchParams
             {
                 SportId = (int)SportType.Soccer,

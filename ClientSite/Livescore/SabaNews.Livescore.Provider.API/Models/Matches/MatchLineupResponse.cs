@@ -20,6 +20,7 @@
         public string PlayerName { get; set; }
         public int PlayerNumber { get; set; }
         public LineupCoordinate Coordinate { get; set; }
+        public string Role { get; set; }
     }
 
     public class LineupCoordinate

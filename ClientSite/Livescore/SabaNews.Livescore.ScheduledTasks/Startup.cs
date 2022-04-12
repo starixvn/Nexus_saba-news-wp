@@ -144,6 +144,7 @@
             services.AddHostedService<SyncMatchByLastUpdatedTimeWorker>();
             services.AddHostedService<SyncLiveMatchThenPushSignalWorker>();
             services.AddHostedService<SyncHeadToHeadFromCurrentDateToFutureWorker>();
+            services.AddHostedService<SyncMatchByMaxMatchIdWorker>();
         }
     }
 }
