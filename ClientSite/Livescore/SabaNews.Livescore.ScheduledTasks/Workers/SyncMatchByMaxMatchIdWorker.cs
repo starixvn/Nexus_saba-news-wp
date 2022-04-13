@@ -83,22 +83,11 @@
 
         private async Task SyncIncidents(long[] matchIds)
         {
-            var tasks = new List<Task<List<MatchIncident>>>();
-            var incidents = new List<MatchIncident>();
-
             foreach (var matchId in matchIds)
             {
-                tasks.Add(
-                    fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId));
+                var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
+                await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
             }
-            var incidentListTask = (await Task.WhenAll(tasks)).ToList();
-
-            foreach (var item in incidentListTask)
-            {
-                incidents.AddRange(item);
-            }
-
-            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
         }
     }
 }
