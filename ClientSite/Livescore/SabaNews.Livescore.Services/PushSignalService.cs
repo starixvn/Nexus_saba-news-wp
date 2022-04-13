@@ -6,7 +6,6 @@
     using Microsoft.AspNetCore.SignalR.Client;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
-    using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Interfaces;
 
@@ -39,7 +38,7 @@
             {
                 if (task.IsFaulted)
                 {
-                    logger.WriteLogFileInfo(task.Exception.Message);
+                    logger.WriteExceptionSentryErrorAsync(task.Exception);
                 }
             });
         }
@@ -50,7 +49,14 @@
             {
                 await hubConnection.StartAsync();
             }
-            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, detail);
+
+            await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, detail).ContinueWith(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    logger.WriteExceptionSentryErrorAsync(task.Exception);
+                }
+            });
         }
     }
 }
