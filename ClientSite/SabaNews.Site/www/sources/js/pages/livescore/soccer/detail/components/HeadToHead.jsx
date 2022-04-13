@@ -11,10 +11,6 @@ export class HeadToHead extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.props.getHeadToHead();
-    }
-
     renderBody = (matchs, teamId) =>  {
         if(matchs.length === 0) {
             return null;
@@ -99,12 +95,13 @@ export class HeadToHead extends Component {
     }
 
     render() {
-        const headToHead = this.props.headToHead;
-        console.log("head to head");
+        console.log("headtohead");
+        const headToHead = this.props.match.headToHead;
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             return null;
         }
-        const { home, away, common } = this.props.headToHead;
+        
+        const { home, away, common } = this.props.match.headToHead;
         const generalInfo = this.props.match.generalInfo;
         return (
             <Tabs  id="head-to-head-tabs" className="head-to-head">

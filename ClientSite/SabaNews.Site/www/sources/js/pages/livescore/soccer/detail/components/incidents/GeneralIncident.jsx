@@ -6,7 +6,6 @@ export default class GeneralIncident extends Component {
     constructor(props) {
         super(props);
     }
-    
     render() {
         if (!this.props.incident) {
             return null;

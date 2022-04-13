@@ -38,9 +38,9 @@
             return result;
         }
 
-        public async Task<MathGeneralInfo> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
+        public async Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
         {
-            var result = await baseService.GetDataEntityAsync<MathGeneralInfo>(criteria);
+            var result = await matchRepository.GetMatchDetaiAsync(criteria);
 
             return result;
         }
@@ -76,10 +76,10 @@
             return data;
         }
 
-        public async Task<HeadToHead> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria)
+        public async Task<HeadToHeadDetail> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria)
         {
             var (common, home, away) = await baseService.FetchMultipleAsync<MatchHeadToHead, MatchHeadToHead, MatchHeadToHead>(criteria);
-            var data = new HeadToHead
+            var data = new HeadToHeadDetail
             {
                 Common = common,
                 Home = home,

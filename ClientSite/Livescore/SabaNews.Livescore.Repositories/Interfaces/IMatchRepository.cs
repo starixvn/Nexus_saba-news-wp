@@ -9,7 +9,7 @@
     {
         Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria);
 
-        Task<LiveMatchDetail> GetMatchDetaiAsync(ICriteria criteria);
+        Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria);
 
         Task<Match> GetMatchByIdAsync(ICriteria criteria);
     }

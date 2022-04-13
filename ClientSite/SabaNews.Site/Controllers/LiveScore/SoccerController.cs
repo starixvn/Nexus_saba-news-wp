@@ -122,13 +122,7 @@
         public async Task<IActionResult> UpdateDetailData([FromBody] GetMatchDetailCriteria criteria)
         {
             var matchId = criteria.MatchId;
-            var generalInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId });
-            var result = new MatchDetail
-            {
-                GeneralInfo = generalInfo,
-                Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
-                Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId })
-            };
+            var result = await matchService.GetMatchDetailAsync(criteria);
             return Ok();
         }
 
@@ -139,10 +133,10 @@
             var result = new MatchDetail
             {
                 GeneralInfo = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria { MatchId = matchId }),
-                Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId }),
-                Statistic  = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId }),
+                Statistic = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria { MatchId = matchId }),
                 HeadToHead = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria { MatchId = matchId }),
-                Lineup = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId })
+                Lineup = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId }),
+                Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId })
             };
 
             return Ok(result);

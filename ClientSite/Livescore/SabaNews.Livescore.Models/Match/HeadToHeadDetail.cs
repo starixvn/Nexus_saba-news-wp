@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class HeadToHead
+    public class HeadToHeadDetail
     {
         public IEnumerable<MatchHeadToHead> Common { get; set; }
 

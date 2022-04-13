@@ -6,7 +6,7 @@ export default class Statistics extends Component {
     }
 
     render() {
-        const {homeStatistic, awayStatistic} = this.props.match.statistic;
+        const { homeStatistic, awayStatistic } = this.props.match.statistic;
         if (!this.props.match.statistic || !homeStatistic || !awayStatistic) {
             return null;
         }

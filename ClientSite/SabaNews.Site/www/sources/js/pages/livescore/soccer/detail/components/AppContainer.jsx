@@ -23,11 +23,12 @@ export class AppContainer extends Component {
                 <h1 className="livescore-soccer">Trận đấu bạn tìm không có</h1>
             );
         }
-        console.log('app');
+        console.log("app");
         return (
             <>
                 <SignalR />
                 <div className="livescore-soccer">
+                    <h1 onClick={this.updateData}>Update data</h1>
                     <MatchGenetalInfo match = {this.props.match} isLiveMatch = {this.props.isLiveMatch} />
                     <DetailTabs />
                 </div>

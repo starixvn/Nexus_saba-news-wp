@@ -34,11 +34,11 @@
             }
         }
 
-        public async Task<LiveMatchDetail> GetMatchDetaiAsync(ICriteria criteria)
+        public async Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                using (var multi = await db.QueryMultipleAsync())
+                using (var multi = await db.QueryMultipleAsync(criteria))
                 {
                     var match = multi.Read<Match, League, Team, Team, Match>(
                         (match, league, home, away) =>
@@ -49,23 +49,36 @@
 
                             return match;
                         },
-                        splitOn: "LeagueId, HomeTeamId, AwayTeamId");
+                        "LeagueId, HomeTeamId, AwayTeamId");
 
-                    var homeStatistic = await multi.ReadFirstAsync<TeamStatistic>();
-                    var awayStatistic = await multi.ReadFirstAsync<TeamStatistic>();
                     var incidents = await multi.ReadAsync<MatchIncident>();
-                    var lineupSumary = await multi.ReadFirstAsync<Lineup>();
+                    var homeStatistic = await multi.ReadAsync<TeamStatistic>();
+                    var awayStatistic = await multi.ReadAsync<TeamStatistic>();
+                    var lineupSumary = await multi.ReadAsync<Lineup>();
                     var homeLineup = await multi.ReadAsync<LineupTeam>();
                     var awayLineup = await multi.ReadAsync<LineupTeam>();
-                    return new LiveMatchDetail
+                    var headToHead = new HeadToHeadDetail
                     {
-                        MatchInfo = match.FirstOrDefault(),
-                        HomeStatistic = homeStatistic,
-                        AwayStatistic = awayStatistic,
+                        Common = await multi.ReadAsync<MatchHeadToHead>(),
+                        Home = await multi.ReadAsync<MatchHeadToHead>(),
+                        Away = await multi.ReadAsync<MatchHeadToHead>()
+                    };
+                    return new MatchDetail
+                    {
+                        GeneralInfo = match.FirstOrDefault(),
+                        Statistic = new Statistic
+                        {
+                            HomeStatistic = homeStatistic.FirstOrDefault(),
+                            AwayStatistic = awayStatistic.FirstOrDefault()
+                        },
                         Incidents = incidents,
-                        Lineup = lineupSumary,
-                        HomeLineup = homeLineup,
-                        AwayLineup = awayLineup
+                        Lineup = new LineupDetail
+                        {
+                            GeneralInfo = lineupSumary.FirstOrDefault(),
+                            Home = homeLineup,
+                            Away = awayLineup
+                        },
+                        HeadToHead = headToHead
                     };
                 }
             }
@@ -88,6 +101,5 @@
                 return matches;
             }
         }
-
     }
 }

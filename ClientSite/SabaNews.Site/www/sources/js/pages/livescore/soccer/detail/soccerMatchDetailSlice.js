@@ -9,7 +9,8 @@ const soccerMatchDetailSlice = createSlice({
         loadTabStatus: {
             enableTabMatchSummary: true,
             enableTabStatistics: true,
-            enableTabLineUp: true
+            enableTabLineUp: true,
+            enabledTabH2H: true
         }
     },
     reducers: {

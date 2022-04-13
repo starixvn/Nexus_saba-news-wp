@@ -12,7 +12,7 @@
 
         Task<IList<Match>> GetLiveMatchAsync();
 
-        Task<MathGeneralInfo> GetMatchDetailAsync(GetMatchDetailCriteria criteria);
+        Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria);
 
         Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria);
 
@@ -21,7 +21,7 @@
 
         Task<Statistic> GetMatchStatisticAsync(GetMatchStatisticCriteria criteria);
 
-        Task<HeadToHead> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria);
+        Task<HeadToHeadDetail> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria);
 
         Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria);
 

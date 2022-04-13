@@ -26,11 +26,6 @@ export class SignalR extends Component {
             .withAutomaticReconnect()
             .build();
 
-        // this.connection.on('UpdateMatchDetail', (data) => {
-        //     console.log('UpdateMatchDetail');
-        //     console.log(data);
-        //     this.props.setSoccerMatch(data);
-        // });
 
         this.connection.on('UpdateMatchDetail', (data) => {
             console.log('UpdateMatchDetail');

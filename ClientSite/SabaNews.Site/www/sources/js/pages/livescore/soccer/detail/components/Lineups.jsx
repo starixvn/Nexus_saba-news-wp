@@ -23,6 +23,9 @@ export class Lineups extends Component {
             outSubsitution: 0,
             inSubsitution: 0
         }
+        if(!incidents) {
+            return playerIncident;
+        }
 
         incidents.map(item => {
             if (item.playerId === playerId) {
@@ -231,14 +234,15 @@ export class Lineups extends Component {
         )
     }
 
-    returnListPlayer = (home, away) => {
+    renderListPlayer = (home, away) => {
         return (
             <div className="lineup-table">
                 <table className="table-paticipant">
                     <thead>
                         <tr>
-                            <th>Số áo</th>
-                            <th>tên cầu thủ</th>
+                            <th width="10%">Số áo</th>
+                            <th width="40%">tên cầu thủ</th>
+                            <th width="30%">vị trí</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -249,6 +253,7 @@ export class Lineups extends Component {
                                     <tr key={pIndex}>
                                         <td>{player.playerNumber}</td>
                                         <td>{player.playerName}</td>
+                                        <td>{player.role}</td>
                                         <td>{this.renderIconListPlayer(player)}</td>
                                     </tr>
                                 )
@@ -259,8 +264,9 @@ export class Lineups extends Component {
                 <table className="table-paticipant away">
                     <thead>
                         <tr>
-                            <th>Số áo</th>
-                            <th>tên cầu thủ</th>
+                            <th width="10%">Số áo</th>
+                            <th width="40%">tên cầu thủ</th>
+                            <th width="30%">vị trí</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -271,6 +277,7 @@ export class Lineups extends Component {
                                     <tr key={pIndex}>
                                         <td>{player.playerNumber}</td>
                                         <td>{player.playerName}</td>
+                                        <td>{player.role}</td>
                                         <td>{this.renderIconListPlayer(player)}</td>
                                     </tr>
                                 )
@@ -368,6 +375,10 @@ export class Lineups extends Component {
 
 
     renderSubstitution = position => {
+        if(!this.props.match.incidents) {
+            return null;
+        }
+        
         const incidents = this.props.match.incidents;
         const lineup = this.props.match.lineup;
         const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
@@ -389,11 +400,10 @@ export class Lineups extends Component {
 
 
     render() {
-        const { lineup, incidents }  = this.props.match;
+        const { lineup }  = this.props.match;
         if (!this.props.match.lineup || !this.props.match.lineup.generalInfo) {
             return null;
         }
-
         const homePlayers = lineup.home.filter(player => player.position !== 0);
         const awayPlayers = lineup.away.filter(player => player.position !== 0);
 
@@ -406,11 +416,11 @@ export class Lineups extends Component {
                 <div className="field-lineup">
                     <div className="section">
                         <div className="section-title">Đội hình ra sân</div>
-                        {this.returnListPlayer(homePlayers, awayPlayers, incidents)}
+                        {this.renderListPlayer(homePlayers, awayPlayers)}
                     </div>
                     <div className="section">
                         <div className="section-title">Dự bị</div>
-                        {this.returnListPlayer(homeSubPlayers, awaySubPlayers, incidents)}
+                        {this.renderListPlayer(homeSubPlayers, awaySubPlayers)}
                     </div>
 
                     <div className="section">
