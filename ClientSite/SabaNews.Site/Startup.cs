@@ -93,6 +93,7 @@
             services.AddSignalR(hubOptions =>
             {
                 hubOptions.EnableDetailedErrors = true;
+                hubOptions.MaximumReceiveMessageSize = int.Parse(Configuration.GetSection("SignalRMaximumReceiveMessageSize").Value);
             });
 
             services.RegisterCookiePolicy();

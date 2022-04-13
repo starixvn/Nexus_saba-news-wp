@@ -114,7 +114,7 @@ BEGIN
     WHERE tlu.MatchId IN (SELECT DISTINCT MatchId FROM tmp_playerLineup);
 
     INSERT INTO livescore_lineup_detail(MatchId, TeamId, PlayerId, PlayerName, IsSubstitute, PlayerNumber, Position, CoordinateX, CoordinateY, Role)
-    SELECT tpl.MatchId
+    SELECT DISTINCT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId
            ,IFNULL(p.NameEN, "")
@@ -125,8 +125,7 @@ BEGIN
            ,tpl.CoordinateY
            ,tpl.Role
     FROM tmp_playerLineup AS tpl
-    LEFT JOIN livescore_player p ON tpl.PlayerId = p.PlayerId 
-        AND p.TeamId = tpl.TeamId;
+    LEFT JOIN livescore_player p ON tpl.PlayerId = p.PlayerId;
         
 END;
 
