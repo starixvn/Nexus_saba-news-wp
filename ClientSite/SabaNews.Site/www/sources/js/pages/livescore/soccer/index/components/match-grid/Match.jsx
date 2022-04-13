@@ -6,8 +6,9 @@ import Site from '@jsroot/common/site';
 export default class Match extends PureComponent {
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        const awayFieldName = !isHomeTeam ? 'awayTeam' : 'homeTeam';
-        switch (status) {
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+
+        switch (match.status) {
             case MatchStatus.Finished:
                 if (match[`${homeFieldName}PenaltyScore`]
                     && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
@@ -26,8 +27,9 @@ export default class Match extends PureComponent {
         }
     };
 
-    getTeamScore = (status, totalScore, halfScore) => {
-        switch (status) {
+    getTeamScore = (match, isHomeTeam) => {
+        const fieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
             case MatchStatus.Postponed:
@@ -37,7 +39,10 @@ export default class Match extends PureComponent {
                 break;
 
             default:
-                return <div><span className="total-score">{totalScore}</span> <span className="half-score">({halfScore})</span></div>;
+                const totalScore = match[`${fieldName}ExtraScore`] ? match[`${fieldName}ExtraScore`] : match[`${fieldName}TotalScore`];
+                const halfScore = match[`${fieldName}HalfScore`];
+                return <div>
+                    <span className="total-score">{totalScore}</span> <span className="half-score">({halfScore})</span></div>;
                 break;
         }
     };
@@ -72,7 +77,7 @@ export default class Match extends PureComponent {
                                 {this.getTeamStatus(match, true)}
                             </ul>
                             <div className="soccer-team-result">
-                                {this.getTeamScore(match.status, match.homeTeamTotalScore, match.homeTeamHalfScore)}
+                                {this.getTeamScore(match, true)}
                             </div>
                         </div>
                         <div className="soccer-team away-team">
@@ -82,7 +87,7 @@ export default class Match extends PureComponent {
                                 {this.getTeamStatus(match, false)}
                             </ul>
                             <div className="soccer-team-result">
-                                {this.getTeamScore(match.status, match.awayTeamTotalScore, match.awayTeamHalfScore)}
+                                {this.getTeamScore(match, false)}
                             </div>
                         </div>
                     </div>

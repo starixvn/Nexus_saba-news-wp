@@ -17,6 +17,8 @@
         public short AwayTeamHalfScore { get; set; }
         public short HomeTeamTotalScore { get; set; }
         public short AwayTeamTotalScore { get; set; }
+        public short HomeTeamExtraScore { get; set; }
+        public short AwayTeamExtraScore { get; set; }
         public short? HomeTeamAggregateScore { get; set; }
         public short? AwayTeamAggregateScore { get; set; }
         public short? HomeTeamPenaltyScore { get; set; }
