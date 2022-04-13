@@ -76,7 +76,7 @@ BEGIN
         HomeTotalScore,
         AwayTotalScore,
         EventDate)
-    SELECT h.MatchId,
+    SELECT DISTINCT h.MatchId,
             h.HomeTeamId,
             h.AwayTeamId,
             h.HomeHalfScore,
