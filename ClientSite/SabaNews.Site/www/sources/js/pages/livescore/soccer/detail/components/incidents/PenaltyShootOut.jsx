@@ -5,7 +5,6 @@ export default class PenaltyShootOut extends Component {
     constructor(props) {
         super(props);
     }
-    
     render() {
         const {penaltyShootOutData} = this.props;
         return (

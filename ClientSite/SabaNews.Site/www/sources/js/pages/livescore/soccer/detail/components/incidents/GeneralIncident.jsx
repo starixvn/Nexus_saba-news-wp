@@ -11,12 +11,12 @@ export default class GeneralIncident extends Component {
             return null;
         }
         const {incident, hasInjuryTime, processScore} = this.props;
-        let time = incident.time + "'";
+        let time = incident.time + (incident.second % 60 > 0 ? 1 : 0);
         if(hasInjuryTime) {
-            if(incident.time >= 45 && incident.time < 90) {
-                time = "45" + "+" + (incident.time - 45) + "'";
+            if(time > 45 && time < 90) {
+                time = "45" + "+" + (time - 45);
             } else {
-                time = "90" + "+" + (incident.time - 90) + "'";
+                time = "90" + "+" + (time - 90);
             }
         }
         return (
@@ -37,7 +37,7 @@ export default class GeneralIncident extends Component {
                                 </div>
                             }
                         </div>
-                        <span className="item-mins flexbox">{time}</span>
+                        <span className="item-mins flexbox">{time + "'"}</span>
                         <div className="inner-item-db flexbox">
                             {
                                 incident.position === IncidentPosition.Away &&

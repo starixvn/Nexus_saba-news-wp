@@ -7,5 +7,12 @@
     Penalty: 'Penalty',
     Postponed: 'Dời lịch',
     ToBeDecided: 'Chờ quyết định',
-    Today: 'Hôm nay'
+    Today: 'Hôm nay',
+    LineupPlayer: 'Đội hình ra sân',
+    LineupSubtitudePlayer: "Dự bị",
+    LineupSubtitude: "Thay người",
+    Striker: "Tiền đạo",
+    Midfielder: "Trung vệ",
+    Defender: "Hậu vệ",
+    Goalkeeper: "Thủ môn"
 };

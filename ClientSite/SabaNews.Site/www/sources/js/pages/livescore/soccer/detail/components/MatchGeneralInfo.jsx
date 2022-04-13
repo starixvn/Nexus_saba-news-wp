@@ -3,19 +3,21 @@ import Site from '@jsroot/common/site';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
 import CommonFunctions from '@jsroot/common/common-functions';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
         super(props);
     }
-    getMatchScores = (match, incidents) => {
-        if(!incidents) {
+    getMatchScores = match => {
+        const { statistic } = this.props.match;
+        if(!statistic) {
             return (<div className="detail-score-wrapper live">
                         <span>VS</span>
                     </div>);
         }
-        const numberHomePenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 1 && (item.homeScore === 0 && item.awayScore === 0)).length;
-        const numberAwayPenaltyShootOut = incidents.filter(item => item.type ===  IncidentStatus.Penalty && item.position === 2 && (item.homeScore === 0 && item.awayScore === 0)).length;
+        const numberHomePenaltyShootOut = statistic.homeStatistic.penaltyScore
+        const numberAwayPenaltyShootOut = statistic.awayStatistic.penaltyScore;
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -43,14 +45,22 @@ export default class MatchGenetalInfo extends Component {
         }
     };
 
-    getBallAndCardNumber = (incidents, position) => {
+    getBallAndCardNumber = (position) => {
+        const { incidents, statistic } = this.props.match;
         if(!incidents) {
             return null;
         }
         let goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
         const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString())  && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
-        const numberRedCard = incidents.filter(item => (item.type ===  IncidentStatus.RedCard || item.type === IncidentStatus.YellowTurnRedCard) && item.position === position).length;
-        const numberYellowCard = incidents.filter(item => item.type ===  IncidentStatus.YellowCard && item.position === position).length;
+        let numberRedCard = 0;
+        let numberYellowCard = 0;
+        if(position === IncidentPosition.Home) {
+            numberRedCard = statistic.homeStatistic.redCard;
+            numberYellowCard = statistic.homeStatistic.yellowCard
+        } else {
+            numberRedCard = statistic.awayStatistic.redCard;
+            numberYellowCard = statistic.awayStatistic.yellowCard
+        }
         return (
             <div className="participant-detail">
                 {
@@ -77,12 +87,12 @@ export default class MatchGenetalInfo extends Component {
     }
 
     render() {
-        const { generalInfo, incidents } = this.props.match;
+        const { generalInfo, incidents, statistic } = this.props.match;
         const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
+        const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>
-                <div className="tournament-header">{leagueName}</div>
-
+                <div className="tournament-header">{leagueName} - {startTime.format("DD/MM/YYYY")}</div>
                 <div className="duel-participant">
                     <div className="duel-participant-start-time">{generalInfo.status === 0 ? startTime.format("HH:mm") : Site.MappingStatusMatchText(generalInfo.status)}</div>
                     <div className="duel-participant-home">
@@ -94,11 +104,11 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                         <div className="participant-name-wrapper">
                             <div className="participant-name">{generalInfo.homeTeam.teamFullNameEN}</div>
-                            {this.getBallAndCardNumber(incidents, IncidentPosition.Home)}
+                            {this.getBallAndCardNumber(IncidentPosition.Home)}
                         </div>
                     </div>
                     <div className="duel-participant-score">
-                        {this.getMatchScores(generalInfo, incidents)}
+                        {this.getMatchScores(generalInfo)}
                     </div>
                     <div className="duel-participant-away">
                         <div className="participant-image">
@@ -109,7 +119,7 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                         <div className="participant-name-wrapper">
                             <div className="participant-name">{generalInfo.awayTeam.teamFullNameEN}</div>
-                            {this.getBallAndCardNumber(incidents, IncidentPosition.Away)}
+                            {this.getBallAndCardNumber(IncidentPosition.Away)}
                         </div>
                     </div>
                 </div>

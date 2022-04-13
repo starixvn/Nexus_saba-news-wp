@@ -3,14 +3,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
-import IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
 import Site from '@jsroot/common/site';
+import LangHelper from '@jsroot/common/langHelper';
 
 export class Lineups extends Component {
     constructor(props) {
         super(props);
     }
 
+    getPlayerRole = role => {
+        switch (role) {
+            case "F":
+                return LangHelper.getResource('Striker');
+            case "M":
+                return LangHelper.getResource('Midfielder');
+            case "D":
+                return LangHelper.getResource('Defender');
+            case "G":
+                return LangHelper.getResource('Goalkeeper');
+            default:
+                return "";
+        }
+    }
     getPlayerIncident = playerId => {
         const incidents = this.props.match.incidents;
         let playerIncident = {
@@ -134,6 +148,9 @@ export class Lineups extends Component {
             formation = lineup.generalInfo.awayFormation;
             players = lineup.away.filter(player => player.position !== 0);
         }
+        if(players.length === 0) {
+            return null;
+        }
         const formationArray = formation.split("-");
         var goalKeeperIncident = this.getPlayerIncident(players[0].playerId);
         let playersInfo = [[
@@ -234,70 +251,73 @@ export class Lineups extends Component {
         )
     }
 
-    renderListPlayer = (home, away) => {
+    renderListPlayer = (title, home, away) => {
         return (
-            <div className="lineup-table">
-                <table className="table-paticipant">
-                    <thead>
-                        <tr>
-                            <th width="10%">Số áo</th>
-                            <th width="40%">tên cầu thủ</th>
-                            <th width="30%">vị trí</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            home.map((player, pIndex) => {
-                                return (
-                                    <tr key={pIndex}>
-                                        <td>{player.playerNumber}</td>
-                                        <td>{player.playerName}</td>
-                                        <td>{player.role}</td>
-                                        <td>{this.renderIconListPlayer(player)}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-                <table className="table-paticipant away">
-                    <thead>
-                        <tr>
-                            <th width="10%">Số áo</th>
-                            <th width="40%">tên cầu thủ</th>
-                            <th width="30%">vị trí</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            away.map((player, pIndex) => {
-                                return (
-                                    <tr key={pIndex}>
-                                        <td>{player.playerNumber}</td>
-                                        <td>{player.playerName}</td>
-                                        <td>{player.role}</td>
-                                        <td>{this.renderIconListPlayer(player)}</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
+            <>
+                <div className="section-title">{title}</div>
+                <div className="lineup-table">
+                    <table className="table-paticipant">
+                        <thead>
+                            <tr>
+                                <th width="10%">Số áo</th>
+                                <th width="40%">tên cầu thủ</th>
+                                <th width="30%">vị trí</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                home.map((player, pIndex) => {
+                                    return (
+                                        <tr key={pIndex}>
+                                            <td>{player.playerNumber}</td>
+                                            <td>{player.playerName}</td>
+                                            <td>{this.getPlayerRole(player.role)}</td>
+                                            <td>{this.renderIconListPlayer(player)}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                    <table className="table-paticipant away">
+                        <thead>
+                            <tr>
+                                <th width="10%">Số áo</th>
+                                <th width="40%">tên cầu thủ</th>
+                                <th width="30%">vị trí</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                away.map((player, pIndex) => {
+                                    return (
+                                        <tr key={pIndex}>
+                                            <td>{player.playerNumber}</td>
+                                            <td>{player.playerName}</td>
+                                            <td>{this.getPlayerRole(player.role)}</td>
+                                            <td>{this.renderIconListPlayer(player)}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </>
         )
     }
 
     renderPitchView = () => {
         const lineup = this.props.match.lineup;
         const matchInfo = this.props.match.generalInfo;
-        if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation) {
+        if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation ) {
             return null;
         }
         let homeLineup = this.getListLineup(lineup, IncidentPosition.Home);
         let awayLineup = this.getListLineup(lineup, IncidentPosition.Away);
-        let awayLineupReverse = awayLineup.reverse();
+        awayLineup = awayLineup.reverse();
         return (
             <div className="lineup">
                 <div className="lineup-head">
@@ -337,7 +357,7 @@ export class Lineups extends Component {
                     </div>
                     <div className="team-content">
                         {
-                            awayLineupReverse.map((line, lineIndex) => {
+                            awayLineup.map((line, lineIndex) => {
                                 return (
                                     <div className="pitch-row" key={lineIndex}>
                                         {
@@ -378,7 +398,6 @@ export class Lineups extends Component {
         if(!this.props.match.incidents) {
             return null;
         }
-        
         const incidents = this.props.match.incidents;
         const lineup = this.props.match.lineup;
         const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
@@ -401,7 +420,8 @@ export class Lineups extends Component {
 
     render() {
         const { lineup }  = this.props.match;
-        if (!this.props.match.lineup || !this.props.match.lineup.generalInfo) {
+        console.log(lineup);
+        if (!this.props.match.lineup || !this.props.match.lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
             return null;
         }
         const homePlayers = lineup.home.filter(player => player.position !== 0);
@@ -415,12 +435,10 @@ export class Lineups extends Component {
                 {this.renderPitchView()}
                 <div className="field-lineup">
                     <div className="section">
-                        <div className="section-title">Đội hình ra sân</div>
-                        {this.renderListPlayer(homePlayers, awayPlayers)}
+                        {this.renderListPlayer(LangHelper.getResource('LineupPlayer'), homePlayers, awayPlayers)}
                     </div>
                     <div className="section">
-                        <div className="section-title">Dự bị</div>
-                        {this.renderListPlayer(homeSubPlayers, awaySubPlayers)}
+                        {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
                     </div>
 
                     <div className="section">
