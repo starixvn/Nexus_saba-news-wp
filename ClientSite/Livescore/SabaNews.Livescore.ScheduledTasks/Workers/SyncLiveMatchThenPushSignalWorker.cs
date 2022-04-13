@@ -7,7 +7,6 @@
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Synchronous;
-    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -16,7 +15,6 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
-    using MatchIncident = Provider.API.Models.Matches.MatchIncident;
 
     internal class SyncLiveMatchThenPushSignalWorker : BaseWorker
     {
@@ -90,23 +88,11 @@
 
         private async Task SyncLiveMatchIncidents(long[] matchIds)
         {
-            var tasks = new List<Task<List<MatchIncident>>>();
-            var incidents = new List<MatchIncident>();
-
             foreach (var matchId in matchIds)
             {
-                tasks.Add(
-                    Task.Run(() => fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId))
-                    );
+                var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
+                await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
             }
-            var incidentListTask = (await Task.WhenAll(tasks)).ToList();
-
-            foreach (var item in incidentListTask)
-            {
-                incidents.AddRange(item);
-            }
-
-            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
         }
     }
 }
