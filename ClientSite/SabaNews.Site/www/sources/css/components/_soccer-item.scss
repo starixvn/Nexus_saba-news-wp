@@ -83,7 +83,8 @@
                         font-size: 1.4rem;
                         line-height: 2.4rem;
                         color: $color-title;
-                        width : 85%;
+                        width: 85%;
+
                         &:hover {
                             color: $color-active-icon;
                         }
@@ -220,6 +221,10 @@
                     @include tableMobile {
                         width: 70%;
                         /*padding: 0 0 0 1.2rem;*/
+                    }
+
+                    @include iphone5 {
+                        width: 60%
                     }
 
                     .group-team {
