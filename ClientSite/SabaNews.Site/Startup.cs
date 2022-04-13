@@ -79,9 +79,9 @@
             });
 
             var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
-
+            var appName = Configuration.GetSection("RedisConfig:ApplicationName").Value;
             services.AddDataProtection()
-                .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
+                .SetApplicationName(appName)
                 .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
 
             services.AddStackExchangeRedisCache(options =>
@@ -94,7 +94,10 @@
             {
                 hubOptions.EnableDetailedErrors = true;
                 hubOptions.MaximumReceiveMessageSize = int.Parse(Configuration.GetSection("SignalRMaximumReceiveMessageSize").Value);
-            });
+            }).AddStackExchangeRedis(redisConfig, options =>
+            {
+                options.Configuration.ChannelPrefix = appName;
+            }); ;
 
             services.RegisterCookiePolicy();
 
