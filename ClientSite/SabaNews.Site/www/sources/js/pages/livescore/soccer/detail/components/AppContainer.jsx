@@ -13,9 +13,6 @@ export class AppContainer extends Component {
     componentDidMount() {
         this.props.getMatchDetail();
     }
-    updateData = () => {
-        this.props.updateData();
-    }
 
     render() {
         if (!this.props.match || !this.props.match.generalInfo ) {
@@ -28,7 +25,6 @@ export class AppContainer extends Component {
             <>
                 <SignalR />
                 <div className="livescore-soccer">
-                    <h1 onClick={this.updateData}>Update data</h1>
                     <MatchGenetalInfo match = {this.props.match} isLiveMatch = {this.props.isLiveMatch} />
                     <DetailTabs />
                 </div>
