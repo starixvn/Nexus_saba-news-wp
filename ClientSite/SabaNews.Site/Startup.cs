@@ -79,10 +79,10 @@
             });
 
             var redisConfig = Configuration.GetSection("RedisConfig:ConnectionString").Value;
-            var redis = ConnectionMultiplexer.Connect(redisConfig);
+
             services.AddDataProtection()
                 .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
-                .PersistKeysToStackExchangeRedis(redis, "SabaSports-Keys");
+                .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
 
             services.AddStackExchangeRedisCache(options =>
             {
