@@ -21,7 +21,7 @@ export default class Statistics extends Component {
                 { categoryId: 4, categoryName: 'Phạm lỗi', homeValue: homeStatistic.foul, awayValue: awayStatistic.foul, unit: '' },
                 { categoryId: 5, categoryName: 'Thẻ Vàng', homeValue: homeStatistic.yellowCard, awayValue: awayStatistic.yellowCard, unit: '' },
                 { categoryId: 6, categoryName: 'Thẻ Đỏ', homeValue: homeStatistic.redCard, awayValue: awayStatistic.redCard, unit: '' },
-                { categoryId: 7, categoryName: 'Việt vị', homeValue: homeStatistic.OffSide, awayValue: awayStatistic.OffSide, unit: '' },
+                { categoryId: 7, categoryName: 'Việt vị', homeValue: homeStatistic.offSide, awayValue: awayStatistic.offSide, unit: '' },
                 { categoryId: 8, categoryName: 'Ném biên', homeValue: homeStatistic.outBall, awayValue: awayStatistic.outBall, unit: '' },
                 { categoryId: 9, categoryName: 'Phạt góc', homeValue: homeStatistic.cornerKick, awayValue: awayStatistic.cornerKick, unit: '' },
                 { categoryId: 10, categoryName: 'Đá phạt', homeValue: homeStatistic.freeKick, awayValue: awayStatistic.freeKick, unit: '' },

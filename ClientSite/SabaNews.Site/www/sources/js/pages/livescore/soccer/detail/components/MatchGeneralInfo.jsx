@@ -16,8 +16,8 @@ export default class MatchGenetalInfo extends Component {
                         <span>VS</span>
                     </div>);
         }
-        const numberHomePenaltyShootOut = statistic.homeStatistic.penaltyScore
-        const numberAwayPenaltyShootOut = statistic.awayStatistic.penaltyScore;
+        const numberHomePenaltyShootOut = statistic.homeStatistic?.penaltyScore
+        const numberAwayPenaltyShootOut = statistic.awayStatistic?.penaltyScore;
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -30,9 +30,9 @@ export default class MatchGenetalInfo extends Component {
             default:
                 return <>
                         <div className="detail-score-wrapper live">
-                            <span>{match.homeTeamTotalScore}</span>
+                            <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
                             <span className="detail-score-divider">-</span>
-                            <span>{match.awayTeamTotalScore}</span>
+                            <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
                         </div>
                         <div className="detail-score-status">
                             <p>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</p>
@@ -54,10 +54,10 @@ export default class MatchGenetalInfo extends Component {
         const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString())  && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
         let numberRedCard = 0;
         let numberYellowCard = 0;
-        if(position === IncidentPosition.Home) {
+        if(position === IncidentPosition.Home && statistic.homeStatistic) {
             numberRedCard = statistic.homeStatistic.redCard;
             numberYellowCard = statistic.homeStatistic.yellowCard
-        } else {
+        } else if(position === IncidentPosition.Away && statistic.awayStatistic) {
             numberRedCard = statistic.awayStatistic.redCard;
             numberYellowCard = statistic.awayStatistic.yellowCard
         }
