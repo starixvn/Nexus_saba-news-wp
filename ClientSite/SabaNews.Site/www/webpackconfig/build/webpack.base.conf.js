@@ -17,10 +17,12 @@ function generateConfig(environment) {
             [`${jsPath}/lib/lang-vi-VN`]: pathConfig.scriptPaths.language,
             [`${jsPath}/pages/main`]: pathConfig.scriptPaths.main,
             [`${jsPath}/pages/livescore/soccer/index`]: pathConfig.scriptPaths.livescore_soccer_index,
+            [`${jsPath}/pages/livescore/soccer/league-detail`]: pathConfig.scriptPaths.livescore_soccer_league_detail,
             [`${jsPath}/pages/livescore/soccer/detail`]: pathConfig.scriptPaths.livescore_soccer_detail,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
+            [`${cssPath}/pages/livescore/soccer/league-detail`]: pathConfig.cssPaths.livescore_soccer_league_detail,
             [`${cssPath}/pages/livescore/soccer/detail`]: pathConfig.cssPaths.livescore_soccer_detail
         },
         output: {

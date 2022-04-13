@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import LangHelper from '@jsroot/common/langHelper';
 
-const Leagues = ({ leagues }) => {
+const FavoriteLeagues = ({ leagues }) => {
     return (
         <div className="leagues">
             <div className="leagues-title">
@@ -28,4 +28,4 @@ const Leagues = ({ leagues }) => {
     );
 };
 
-export default Leagues;
+export default FavoriteLeagues;

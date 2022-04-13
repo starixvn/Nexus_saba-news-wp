@@ -13,7 +13,7 @@ export class MatchGrid extends PureComponent {
         }
 
         const helper = {};
-        const searchKey = this.props.searchKey;
+        const { selectedDate, searchKey } = this.props;
         let matches = this.props.matches;
         if (searchKey.length > 0) {
             matches = matches.filter(match => match.league.leagueFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
@@ -51,7 +51,7 @@ export class MatchGrid extends PureComponent {
         return (
             <div className="soccer-match-grid">
                 {
-                    matches.map((league, index) => <League key={index} searchKey={searchKey} league={league} />)
+                    matches.map((league, index) => <League key={index} selectedDate={selectedDate} searchKey={searchKey} league={league} />)
                 }
             </div>
         );
@@ -61,10 +61,8 @@ export class MatchGrid extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { searchKey } = state;
-    return {
-        searchKey
-    };
+    const { selectedDate, searchKey } = state;
+    return { selectedDate, searchKey };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchGrid);

@@ -1,15 +1,27 @@
 ﻿import React from 'react';
 import Match from './Match';
+import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-const League = ({ league, searchKey }) => {
+const League = ({ league, selectedDate, searchKey }) => {
     const leagueName = CommonFunctions.getLeagueName(league);
     const reg = new RegExp(`(${searchKey})`, 'gi');
     const displayValue = leagueName.replace(reg, "<span class='text-matched'>$1</span>");
 
+    const handleClick = event => {
+        const seasonId = league.season ? league.season.seasonId : 0;
+        const stageId = league.stage ? league.stage.stageId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${selectedDate}/${league.leagueId}/${league.leagueType}/${seasonId}/${stageId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     return (
         <div className="soccer-match-grid-item">
-            <div className="soccer-match-grid-item-header">
+            <div className="soccer-match-grid-item-header" onClick={handleClick}>
                 <div className="soccer-match-grid-item-league">
                     <i className="icon-livescore icon-live-start start-active" />
                     <div className="livescore-logo-team"><img loading="lazy" src={league.icon} /></div>

@@ -80,8 +80,8 @@
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{leagueId:long}/{leagueType}/{seasonId:long}/{stageId:long}/{date:datetime}")]
-        public IActionResult LeagueDetail(long leagueId, byte leagueType, long seasonId, long stageId, DateTime date)
+        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{leagueType}/{seasonId:long}/{stageId:long}")]
+        public IActionResult LeagueDetail(DateTime date, long leagueId, byte leagueType, long seasonId, long stageId)
         {
             var model = new GetMatchByStageParams
             {
@@ -91,7 +91,7 @@
                 StageId = stageId,
                 Date = date
             };
-            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml");
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
         [HttpPost]

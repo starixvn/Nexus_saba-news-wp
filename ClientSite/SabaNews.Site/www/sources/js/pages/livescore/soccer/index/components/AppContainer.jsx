@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
 import { ActionCreators } from '../actions';
-import Leagues from './Leagues';
+import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
+import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import DateBar from './DateBar';
 import SearchBar from './SearchBar';
 import MatchGrid from './match-grid/index';
@@ -101,11 +102,8 @@ export class AppContainer extends Component {
                         <MatchGrid matches={matches} />
                     </div>
                     <div className="livescore-soccer-extension">
-                        <div className="livescore-like">
-                            <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
-                            <span className="number-like">98</span>
-                        </div>
-                        <Leagues leagues={this.props.majorLeagues} />
+                        <FavoriteMatches />
+                        <FavoriteLeagues leagues={this.props.majorLeagues} />
                     </div>
                 </div>
             </div>
