@@ -3,7 +3,7 @@
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/index.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/league-detail.chunk.css" asp-append-version="true" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/index.chunk.css" asp-append-version="true" />
@@ -14,7 +14,6 @@
         window.getMatchByStageParams = {
             date: '@Model.Date.ToString("yyyy-MM-dd")',
             leagueId: @Model.LeagueId,
-            leagueType: @Model.LeagueType,
             seasonId: @Model.SeasonId,
             stageId: @Model.StageId
         };
@@ -32,5 +31,6 @@
         <script src="~/js/pro/pages/livescore/soccer/league-detail.chunk.js" asp-append-version="true"></script>
     </environment>
 }
+@section Title { Lịch thi đấu }
 @(await Component.InvokeAsync("Menu", new { page = "home-page" }))
 <div id="app-container"></div>

@@ -2,7 +2,9 @@
 import DataService from '@jsroot/common/dataService';
 import {
     setSearchKey,
-    setMajorLeagues
+    setMajorLeagues,
+    setLeague,
+    setMatches
 } from './leagueDetailSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -12,8 +14,20 @@ const getMajorLeagues = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
+const getMatchesByStage = params => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getMatchesByStage');
+    await DataService.postDataAsync(url, params).then(response => {
+        const { league, matches } = response.data;
+        dispatch(setLeague(league));
+        dispatch(setMatches(matches));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setSearchKey,
     setMajorLeagues,
-    getMajorLeagues
+    setLeague,
+    setMatches,
+    getMajorLeagues,
+    getMatchesByStage
 };

@@ -80,13 +80,12 @@
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{leagueType}/{seasonId:long}/{stageId:long}")]
-        public IActionResult LeagueDetail(DateTime date, long leagueId, byte leagueType, long seasonId, long stageId)
+        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}/{stageId:long}")]
+        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId, long stageId)
         {
             var model = new GetMatchByStageParams
             {
                 LeagueId = leagueId,
-                LeagueType = leagueType,
                 SeasonId = seasonId,
                 StageId = stageId,
                 Date = date
@@ -109,6 +108,27 @@
         {
             IList<Match> matches = await matchService.GetLiveMatchAsync();
             return Json(matches);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMatchesByStage([FromBody] GetMatchByStageParams model)
+        {
+            var criteria = new GetMatchByStageCriteria
+            {
+                SportId = (short)SportType.Soccer,
+                LeagueId = model.LeagueId,
+                SeasonId = model.SeasonId,
+                StageId = model.StageId
+            };
+            if (criteria.StageId == 0)
+            {
+                const byte TotalDays = 7;
+                criteria.FromTime = model.Date.AddDays(-TotalDays).ToStartOfDay().ConvertToUTC(model.Timezone);
+                criteria.ToTime = model.Date.AddDays(TotalDays).ToStartOfDay().ConvertToUTC(model.Timezone);
+            }
+
+            (League league, IList<Match> matches) = await matchService.GetMatchByStageAsync(criteria);
+            return Json(new { league, matches });
         }
 
         [HttpPost]

@@ -74,6 +74,7 @@ export class AppContainer extends Component {
 
     getMatches = selectedDate => {
         if (window.isLivePage) {
+            this.props.setMatches([]);
             this.props.getLiveMatches();
         } else {
             this.props.getMatches({
