@@ -55,7 +55,7 @@
 
         private async Task<IEnumerable<MatchToGetH2H>> GetMatchToSyncHeadToHead()
         {
-            var fromDate = DateTime.UtcNow.Date;
+            var fromDate = DateTime.UtcNow.AddDays(-1).Date;
             var toDate = fromDate.AddDays(appSettings.HeadToHeadMaxFutureDays + 1).AddSeconds(-1);
 
             var matches = await synch2hService.GetMatchToSyncHeadToHeadByDateRange(fromDate, toDate, appSettings.SyncHeadToHeadRowLimit);
