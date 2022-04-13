@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Site from '@jsroot/common/site';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
-import DateTimeService from '@jsroot/common/dateTimeService';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
@@ -78,13 +78,10 @@ export default class MatchGenetalInfo extends Component {
 
     render() {
         const { generalInfo, incidents } = this.props.match;
-        const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
+        const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
         return (
             <>
-                <div className="tournament-header">{generalInfo.league.leagueFullNameEN}
-                - {startTime.format("DD/MM/YYYY")}
-                { !generalInfo.league.currentRound ? " - Vòng " + generalInfo.league.currentRound : "" }
-                </div>
+                <div className="tournament-header">{leagueName}</div>
 
                 <div className="duel-participant">
                     <div className="duel-participant-start-time">{generalInfo.status === 0 ? startTime.format("HH:mm") : Site.MappingStatusMatchText(generalInfo.status)}</div>
