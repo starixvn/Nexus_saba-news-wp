@@ -80,8 +80,8 @@ BEGIN
                         AwayAggregateScore INT,
                         Status SMALLINT);
     
-	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, HomeAggregateScore, AwayAggregateScore)
-    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore
+	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, HomeAggregateScore, AwayAggregateScore, Status)
+    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore, m.Status
     FROM 
 		JSON_TABLE
         (

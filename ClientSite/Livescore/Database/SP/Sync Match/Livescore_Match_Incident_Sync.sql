@@ -127,7 +127,7 @@ BEGIN
     LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId;
 
     DELETE FROM livescore_match_incident lmi
-    WHERE lmi.MatchId IN (SELECT MatchId FROM tmp_incident);
+    WHERE lmi.MatchId IN (SELECT DISTINCT MatchId FROM tmp_incident);
 
     INSERT INTO livescore_match_incident(
         MatchId,
@@ -148,7 +148,7 @@ BEGIN
         VarReason,
         VarResult,
         ReasonType)
-    SELECT ti.matchId,
+    SELECT DISTINCT ti.matchId,
             ti.Type,
             ti.Position,
             ti.Time,
