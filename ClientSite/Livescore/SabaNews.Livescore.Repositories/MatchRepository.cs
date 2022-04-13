@@ -34,6 +34,38 @@
             }
         }
 
+        public async Task<(League, IList<Match>)> GetMatchByStageAsync(ICriteria criteria)
+        {
+            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                using (IMultiResultReader multi = await db.QueryMultipleAsync())
+                {
+                    var league = multi.Read<League, Season, SeasonStage, League>(
+                        (league, season, stage) =>
+                        {
+                            league.Season = season;
+                            league.Stage = stage;
+
+                            return league;
+                        },
+                        splitOn: "SeasonId, StageId").FirstOrDefault();
+
+                    var matches = multi.Read<Match, Team, Team, Match>(
+                        (match, home, away) =>
+                        {
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+
+                            return match;
+                        },
+                        splitOn: "HomeTeamId, AwayTeamId");
+
+                    return (league, matches.ToList());
+                }
+            }
+        }
+
+
         public async Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Repositories;
@@ -29,6 +30,11 @@
         {
             var criteria = new GetLiveMatchCriteria();
             return await matchRepository.GetMatchByDateAsync(criteria);
+        }
+
+        public async Task<(League, IList<Match>)> GetMatchByStageAsync(GetMatchByStageCriteria criteria)
+        {
+            return await matchRepository.GetMatchByStageAsync(criteria);
         }
 
         public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)

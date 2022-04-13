@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Criteria.Match;
@@ -14,8 +15,10 @@
 
         Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria);
 
-        Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria);
+        Task<(League, IList<Match>)> GetMatchByStageAsync(GetMatchByStageCriteria criteria);
 
+
+        Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria);
 
         Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria);
 

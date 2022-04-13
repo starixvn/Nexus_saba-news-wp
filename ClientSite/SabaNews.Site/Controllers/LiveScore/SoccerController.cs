@@ -80,6 +80,20 @@
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
+        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{leagueId:long}/{leagueType}/{seasonId:long}/{stageId:long}/{date:datetime}")]
+        public IActionResult LeagueDetail(long leagueId, byte leagueType, long seasonId, long stageId, DateTime date)
+        {
+            var model = new GetMatchByStageParams
+            {
+                LeagueId = leagueId,
+                LeagueType = leagueType,
+                SeasonId = seasonId,
+                StageId = stageId,
+                Date = date
+            };
+            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml");
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
         {
