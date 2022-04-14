@@ -24,7 +24,10 @@
                     AwayTotalScore = match.ATotalScore ?? 0,
                     HomeAggregateScore = match.HomeAggScore,
                     AwayAggregateScore = match.AwayAggScore,
-                    Status = match.GameType
+                    Status = match.GameType,
+                    GameStartTime = match.GameStartTime,
+                    GameEndTime = match.GameEndTime,
+                    UpdatedAt = match.UpdatedAt
                 };
                 matchScoreList.Add(matchScore);
                 var homeStatistic = ConvertToTeamStatistic(match.ExtraData, match.MatchId, true);

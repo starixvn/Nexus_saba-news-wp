@@ -78,10 +78,16 @@ BEGIN
                         AwayHalfScore INT,
                         HomeAggregateScore INT,
                         AwayAggregateScore INT,
-                        Status SMALLINT);
+                        Status SMALLINT,
+                        GameStartTime DATETIME,
+                        GameEndTime DATETIME,
+                        UpdatedAt DATETIME
+                        );
     
-	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, HomeAggregateScore, AwayAggregateScore, Status)
-    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore, m.Status
+	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, 
+                        HomeAggregateScore, AwayAggregateScore, Status, GameStartTime, GameEndTime, UpdatedAt)
+    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore,
+             m.Status, m.GameStartTime, m.GameEndTime, m.UpdatedAt
     FROM 
 		JSON_TABLE
         (
@@ -96,7 +102,10 @@ BEGIN
                 AwayHalfScore INT PATH "$.AwayHalfScore",
                 HomeAggregateScore INT PATH "$.HomeAggregateScore",
                 AwayAggregateScore INT PATH "$.AwayAggregateScore",
-                Status SMALLINT PATH "$.Status"
+                Status SMALLINT PATH "$.Status",
+                GameStartTime DATETIME PATH "$.GameStartTime",
+                GameEndTime DATETIME PATH "$.GameEndTime",
+                UpdatedAt datetime PATH "$.UpdatedAt"
             )
         ) AS m;
 
@@ -108,7 +117,10 @@ BEGIN
          m.AwayTeamHalfScore = m_tpm.AwayHalfScore,
          m.HomeTeamAggregateScore = m_tpm.HomeAggregateScore,
          m.AwayTeamAggregateScore = m_tpm.AwayAggregateScore,
-         m.Status = m_tpm.Status;
+         m.Status = m_tpm.Status,
+         m.StartTime = m_tpm.GameStartTime,
+         m.EndTime = m_tpm.GameEndTime,
+         m.UpdatedAt = m_tpm.UpdatedAt;
 
 /* End handle update score------------------ */
 
