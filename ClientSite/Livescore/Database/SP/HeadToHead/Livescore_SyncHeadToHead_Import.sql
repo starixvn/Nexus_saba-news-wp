@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_Import_xtest;
+DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_Import;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_Import_xtest(
+CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_Import(
     IN headToHeadJson JSON
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
@@ -98,4 +98,4 @@ END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_Import_xtest TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_Import TO 'sabasports'@'%';
