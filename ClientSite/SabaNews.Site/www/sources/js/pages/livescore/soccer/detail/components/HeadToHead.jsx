@@ -59,8 +59,8 @@ export class HeadToHead extends Component {
                                         <div className="row-teams">
                                             <div className="columns-club">
                                                 <div className={`name-club club1 ${homeWinclass}`} >
-                                                    {match.homeTeam.teamFullNameEN}
-                                                    <img className="logo-club" alt={match.homeTeam.teamFullNameEN} src={match.homeTeam.icon} />
+                                                    {match.homeTeam.teamNameEN}
+                                                    <img className="logo-club" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />
                                                 </div>
                                             </div>
                                             <div className="columns-number">
@@ -70,8 +70,8 @@ export class HeadToHead extends Component {
                                             </div>
                                             <div className="columns-club">
                                                 <div className={`name-club club2 ${awayWinClass}`} >
-                                                    <img className="logo-club" alt={match.awayTeam.teamFullNameEN} src={match.awayTeam.icon} />
-                                                    {match.awayTeam.teamFullNameEN}
+                                                    <img className="logo-club" alt={match.awayTeam.teamNameEN} src={match.awayTeam.icon} />
+                                                    {match.awayTeam.teamNameEN}
                                                 </div>
                                             </div>
                                         </div>
@@ -156,13 +156,13 @@ export class HeadToHead extends Component {
         const generalInfo = this.props.match.generalInfo;
         return (
             <Tabs  id="head-to-head-tabs" className="head-to-head" defaultActiveKey="Common">
-                <Tab eventKey="Home" title={generalInfo.homeTeam.teamFullNameEN} >
+                <Tab eventKey="Home" title={generalInfo.homeTeam.teamNameEN} >
                    {this.renderBody(home, generalInfo.homeTeam.teamId)}
                 </Tab>
                 <Tab eventKey="Common" title="Chung">
                     {this.renderBody(common)}
                 </Tab>
-                <Tab eventKey="Away" title={generalInfo.awayTeam.teamFullNameEN}>
+                <Tab eventKey="Away" title={generalInfo.awayTeam.teamNameEN}>
                     {this.renderBody(away, generalInfo.awayTeam.teamId)}
                 </Tab>
             </Tabs>

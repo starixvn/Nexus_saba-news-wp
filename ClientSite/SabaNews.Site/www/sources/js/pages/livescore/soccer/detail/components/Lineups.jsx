@@ -323,7 +323,7 @@ export class Lineups extends Component {
                 <div className="lineup-head">
                     <div className="team-name">
                         <img className="club-logo-img" src={matchInfo.homeTeam.icon} alt="" />
-                        <div className="club-logo-text">{matchInfo.homeTeam.teamFullNameEN}</div>
+                        <div className="club-logo-text">{matchInfo.homeTeam.teamNameEN}</div>
                     </div>
                     <div className="f-right-text">{lineup.generalInfo.homeFormation}</div>
                 </div>
@@ -385,7 +385,7 @@ export class Lineups extends Component {
                 <div className="lineup-head">
                     <div className="team-name">
                         <img className="club-logo-img" src={matchInfo.awayTeam.icon} alt="" />
-                        <div className="club-logo-text">{matchInfo.awayTeam.teamFullNameEN}</div>
+                        <div className="club-logo-text">{matchInfo.awayTeam.teamNameEN}</div>
                     </div>
                     <div className="f-right-text">{lineup.generalInfo.awayFormation}</div>
                 </div>
