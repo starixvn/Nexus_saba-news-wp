@@ -20,15 +20,8 @@ export class DetailTabs extends Component {
             enableTabLineUp: true,
             enableTabH2H: true
         }
-        if (this.props.match.generalInfo.status !== 50 && !this.props.isLiveMatch) {
-            loadTabStatus["enableTabMatchSummary"] = false;
-            loadTabStatus["enableTabStatistics"] = false;
-        }
         if (this.props.match.generalInfo.isLineUp === 0) {
             loadTabStatus["enableTabLineUp"] = false;
-        }
-        if (!this.props.match.incidents) {
-            loadTabStatus["enableTabMatchSummary"] = false;
         }
         const { homeStatistic, awayStatistic } = this.props.match.statistic;
         if (!homeStatistic || !awayStatistic) {
@@ -38,12 +31,38 @@ export class DetailTabs extends Component {
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             loadTabStatus["enableTabH2H"] = false;
         }
+        if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
+            loadTabStatus["enableTabMatchSummary"] = false;
+        }
+        const { lineup }  = this.props.match;
+        console.log(lineup);
+        if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
+            loadTabStatus["enableTabLineUp"] = false;
+        }
         return loadTabStatus;
+    }
+
+    getDefaultActiveKey = loadTabStatus => {
+        let defaultTab = "";
+        if(loadTabStatus.enableTabH2H) {
+            defaultTab = "HeadToHead";
+        }
+        if(loadTabStatus.enableTabLineUp) {
+            defaultTab = "Lineups";
+        }
+        if(loadTabStatus.enableTabStatistics) {
+            defaultTab = "Statistics";
+        }
+        if(loadTabStatus.enableTabMatchSummary) {
+            defaultTab = "MatchSummary";
+        }
+        return defaultTab;
     }
     render() {
         const loadTabStatus = this.getTabStatus();
+        let defaultTab = this.getDefaultActiveKey(loadTabStatus);
         return (
-            <Tabs  id="soccer-match-detail-tabs">
+            <Tabs  id="soccer-match-detail-tabs" defaultActiveKey={defaultTab}>
                 <Tab eventKey="MatchSummary" title="Diễn biến" disabled={!loadTabStatus.enableTabMatchSummary}>
                     <MatchSummary match = {this.props.match}/>
                 </Tab>

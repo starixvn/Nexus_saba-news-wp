@@ -15,5 +15,7 @@
         Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria);
 
         Task<Match> GetMatchByIdAsync(ICriteria criteria);
+
+        Task<HeadToHeadDetail> GetHeadToHeadAsync(ICriteria criteria);
     }
 }

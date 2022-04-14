@@ -65,6 +65,55 @@
             }
         }
 
+        public async Task<HeadToHeadDetail> GetHeadToHeadAsync(ICriteria criteria)
+        {
+            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                using (var multi = await db.QueryMultipleAsync(criteria))
+                {
+                    var common = multi.Read<Match, League, Team, Team, Match>(
+                        (match, league, home, away) =>
+                        {
+                            match.League = league;
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+
+                            return match;
+                        },
+                        "LeagueId, HomeTeamId, AwayTeamId");
+
+                    var home = multi.Read<Match, League, Team, Team, Match>(
+                        (match, league, home, away) =>
+                        {
+                            match.League = league;
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+
+                            return match;
+                        },
+                        "LeagueId, HomeTeamId, AwayTeamId");
+
+                    var away = multi.Read<Match, League, Team, Team, Match>(
+                        (match, league, home, away) =>
+                        {
+                            match.League = league;
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+
+                            return match;
+                        },
+                        "LeagueId, HomeTeamId, AwayTeamId");
+
+                    return new HeadToHeadDetail
+                    {
+                        Common = common,
+                        Home = home,
+                        Away = away
+                    };
+                    
+                }
+            }
+        }
 
         public async Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria)
         {
@@ -91,9 +140,9 @@
                     var awayLineup = await multi.ReadAsync<LineupTeam>();
                     var headToHead = new HeadToHeadDetail
                     {
-                        Common = await multi.ReadAsync<MatchHeadToHead>(),
-                        Home = await multi.ReadAsync<MatchHeadToHead>(),
-                        Away = await multi.ReadAsync<MatchHeadToHead>()
+                        Common = await multi.ReadAsync<Match>(),
+                        Home = await multi.ReadAsync<Match>(),
+                        Away = await multi.ReadAsync<Match>()
                     };
                     return new MatchDetail
                     {

@@ -84,13 +84,7 @@
 
         public async Task<HeadToHeadDetail> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria)
         {
-            var (common, home, away) = await baseService.FetchMultipleAsync<MatchHeadToHead, MatchHeadToHead, MatchHeadToHead>(criteria);
-            var data = new HeadToHeadDetail
-            {
-                Common = common,
-                Home = home,
-                Away = away
-            };
+            var data = await matchRepository.GetHeadToHeadAsync(criteria);
             return data;
         }
     }

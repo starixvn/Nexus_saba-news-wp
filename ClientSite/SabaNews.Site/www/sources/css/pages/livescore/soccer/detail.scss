@@ -909,6 +909,7 @@ svg.fill-red {
     position: relative;
     margin-bottom: 24px;
     font-size: 15px;
+    margin-top: 24px;
 }
 .f-row {
     float: left;
@@ -935,12 +936,12 @@ svg.fill-red {
 }
 
 .w-col1 {
-    width: 15%;
+    width: 10%;
 }
 
 .columns-match {
     &.w-col2 {
-        width: 70%;
+        width: 60%;
         .columns-club {
             width: 40%;
         }
@@ -948,6 +949,9 @@ svg.fill-red {
             width: 20%;
         }
     }
+}
+.w-col3 {
+    width: 30%;
 }
 .row-teams {
     display: table;
@@ -1029,7 +1033,7 @@ svg.fill-red {
     display: inline-block;
     height: 18px;
     line-height: 18px;
-    width: 18px;
+    max-width: 100px;
     text-align: center;
     position: relative;
     background: #f2f2f2;
@@ -1061,5 +1065,19 @@ svg.fill-red {
 
 .bgyelow {
     background: #ffae00;
+}
+
+.h2h-statistic ul {
+    display: flex;
+    li {
+        width: 33%;
+        text-align: center;
+        list-style: none;
+        border-right: 1px solid #cccc;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
 }
 

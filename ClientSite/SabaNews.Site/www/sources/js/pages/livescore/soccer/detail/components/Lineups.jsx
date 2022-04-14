@@ -420,7 +420,6 @@ export class Lineups extends Component {
 
     render() {
         const { lineup }  = this.props.match;
-        console.log(lineup);
         if (!this.props.match.lineup || !this.props.match.lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
             return null;
         }

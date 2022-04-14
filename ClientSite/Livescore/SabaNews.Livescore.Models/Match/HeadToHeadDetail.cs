@@ -4,10 +4,10 @@
 
     public class HeadToHeadDetail
     {
-        public IEnumerable<MatchHeadToHead> Common { get; set; }
+        public IEnumerable<Match> Common { get; set; }
 
-        public IEnumerable<MatchHeadToHead> Home { get; set; }
+        public IEnumerable<Match> Home { get; set; }
 
-        public IEnumerable<MatchHeadToHead> Away { get; set; }
+        public IEnumerable<Match> Away { get; set; }
     }
 }

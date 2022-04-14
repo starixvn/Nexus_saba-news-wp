@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { IncidentPosition, IncidentStatus } from '@jsroot/common/constants';
+import { IncidentPosition, IncidentStatus, MatchStatus } from '@jsroot/common/constants';
 import Substitution from './incidents/Substitution';
 import GeneralIncident from './incidents/GeneralIncident';
 import PenaltyShootOut from './incidents/PenaltyShootOut';
@@ -14,7 +14,7 @@ export default class MatchSummary extends Component {
         if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
             return null;
         }
-        const incidents = this.props.match.incidents;
+        const { incidents, generalInfo } = this.props.match;
         let lastIncident = incidents[incidents.length - 1];
         let hasInjuryTime = false;
         let hasPenaltyShootout = false;
@@ -116,15 +116,17 @@ export default class MatchSummary extends Component {
                             }
                         })
                     }
-
-                    <div className="head-top-team" >
-                        <div className="flexbox time-event">
-                            <p>Trận Đấu kết thúc</p>
-                        </div>
-                        <div className="flexbox time-event">
-                            <p>{(homePenaltyShootoutScore !== 0 ||  homePenaltyShootoutScore !== 0)? "PEN: " + penaltyShootoutScore : processScore}</p>
-                        </div>
-                        </div>
+                        {
+                            generalInfo.status === MatchStatus.Finished &&
+                            <div className="head-top-team" >
+                                <div className="flexbox time-event">
+                                    <p>Trận Đấu kết thúc</p>
+                                </div>
+                                <div className="flexbox time-event">
+                                    <p>{(homePenaltyShootoutScore !== 0 ||  homePenaltyShootoutScore !== 0)? "PEN: " + penaltyShootoutScore : processScore}</p>
+                                </div>
+                            </div>
+                        }
                     </div>
             </div>
         );
