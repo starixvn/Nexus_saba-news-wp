@@ -132,19 +132,20 @@
 
             foreach (var hr in h2h.HomeTeamRecord)
             {
-                results.Add(GenerateTeamHistory(h2h.HomeTeamId, hr));
+                results.Add(GenerateTeamHistory(h2h.SourceMatchId, h2h.HomeTeamId, hr));
             }
 
             foreach (var ar in h2h.AwayTeamRecord)
             {
-                results.Add(GenerateTeamHistory(h2h.AwayTeamId, ar));
+                results.Add(GenerateTeamHistory(h2h.SourceMatchId, h2h.AwayTeamId, ar));
             }
 
             foreach (var ag in h2h.AgainstRecord)
             {
                 results.Add(new TeamHistory
                 {
-                    MatchId = ag.MatchId,
+                    MatchId = h2h.SourceMatchId,
+                    ReferenceMatchId = ag.MatchId,
                     HomeTeamId = ag.HomeIdVsAwayId[0],
                     AwayTeamId = ag.HomeIdVsAwayId[1],
                     HomeHalfScore = ag.HalfScores[0],
@@ -157,10 +158,11 @@
             return results;
         }
 
-        private static TeamHistory GenerateTeamHistory(long teamId, TeamHistoryRecord r)
-            => new TeamHistory
+        private static TeamHistory GenerateTeamHistory(long sourceMatchId, long teamId, TeamHistoryRecord r)
+            => new()
             {
-                MatchId = r.MatchId,
+                MatchId = sourceMatchId,
+                ReferenceMatchId = r.MatchId,
                 HomeTeamId = r.IsHost ? teamId : r.EnemyId,
                 AwayTeamId = r.IsHost ? r.EnemyId : teamId,
                 HomeTotalScore = r.IsHost ? r.TotalScores[0] : r.TotalScores[1],

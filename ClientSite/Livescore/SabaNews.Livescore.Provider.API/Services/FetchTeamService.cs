@@ -17,14 +17,16 @@
             this.logServiceProvider = logServiceProvider;
         }
 
-        public async Task<HeadToHeadResponse> FetchHeadToHeadAsync(long homeTeamId, long awayTeamId)
+        public async Task<HeadToHeadResponse> FetchHeadToHeadAsync(long matchId, long homeTeamId, long awayTeamId)
         {
             var param = new Dictionary<string, object>
                 {
-                    { "teamId", new long[] { homeTeamId, awayTeamId} }
+                    { "teamId", new[] { homeTeamId, awayTeamId} }
                 };
 
-            return await httpClient.ExecutePostAsync<HeadToHeadResponse>(ApiPath.GetTeamHeadToHeadApiPath, param);
+            var h2h = await httpClient.ExecutePostAsync<HeadToHeadResponse>(ApiPath.GetTeamHeadToHeadApiPath, param);
+            h2h.SourceMatchId = matchId;
+            return h2h;
         }
 
         public async Task<List<TeamListResponse>> FetchTeamListAsync(FetchTeamListParams teamParams)

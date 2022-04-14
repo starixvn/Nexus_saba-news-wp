@@ -3,6 +3,7 @@
     internal class TeamHistory
     {
         public long MatchId { get; set; }
+        public long ReferenceMatchId { get; set; }
         public long HomeTeamId { get; set; }
         public long AwayTeamId { get; set; }
         public int? HomeTotalScore { get; set; }

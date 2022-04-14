@@ -5,6 +5,8 @@
 
     public class HeadToHeadResponse
     {
+        public long SourceMatchId { get; set; }
+
         [JsonProperty("hTeamId")]
         public long HomeTeamId { get; set; }
 

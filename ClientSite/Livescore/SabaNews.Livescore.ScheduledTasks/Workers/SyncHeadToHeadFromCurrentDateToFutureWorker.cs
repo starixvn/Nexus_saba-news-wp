@@ -44,7 +44,7 @@
 
                 foreach (var m in h2hMatches)
                 {
-                    var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.HomeTeamId, m.AwayTeamId);
+                    var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.MatchId, m.HomeTeamId, m.AwayTeamId);
                     h2hList.Add(h2h);
                 }
 

@@ -8,6 +8,6 @@
     {
         Task<List<TeamListResponse>> FetchTeamListAsync(FetchTeamListParams teamParams);
 
-        Task<HeadToHeadResponse> FetchHeadToHeadAsync(long homeTeamId, long awayTeamId);
+        Task<HeadToHeadResponse> FetchHeadToHeadAsync(long matchId, long homeTeamId, long awayTeamId);
     }
 }

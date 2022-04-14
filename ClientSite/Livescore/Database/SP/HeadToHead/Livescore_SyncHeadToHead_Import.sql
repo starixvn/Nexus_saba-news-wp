@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_Import;
+DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_Import_xtest;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_Import(
+CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_Import_xtest(
     IN headToHeadJson JSON
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
@@ -12,6 +12,7 @@ CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_Import(
                             "MatchId": 6227374,
                             "HomeTeamId": 52733,
                             "AwayTeamId": 58293,
+                            "ReferenceMatchId": 6227374,
                             "HomeTotalScore": 1,
                             "AwayTotalScore": 0,
                             "HomeHalfScore": 0,
@@ -30,6 +31,7 @@ BEGIN
                         MatchId BIGINT NOT NULL,
                         HomeTeamId BIGINT NOT NULL,
                         AwayTeamId BIGINT NOT NULL,
+                        ReferenceMatchId BIGINT NOT NULL,
                         HomeTotalScore SMALLINT,
                         AwayTotalScore SMALLINT,
                         HomeHalfScore SMALLINT,
@@ -39,6 +41,7 @@ BEGIN
         MatchId,
         HomeTeamId,
         AwayTeamId,
+        ReferenceMatchId,
         HomeTotalScore,
         AwayTotalScore,
         HomeHalfScore,
@@ -46,6 +49,7 @@ BEGIN
     SELECT  m.MatchId,
             m.HomeTeamId,
             m.AwayTeamId,
+            m.ReferenceMatchId,
             m.HomeTotalScore,
             m.AwayTotalScore,
             m.HomeHalfScore,
@@ -60,6 +64,7 @@ BEGIN
                 MatchId BIGINT PATH "$.MatchId",
                 HomeTeamId BIGINT PATH "$.HomeTeamId",
                 AwayTeamId BIGINT PATH "$.AwayTeamId",
+                ReferenceMatchId BIGINT PATH "$.ReferenceMatchId",
                 HomeTotalScore SMALLINT PATH "$.HomeTotalScore",
                 AwayTotalScore SMALLINT PATH "$.AwayTotalScore",
                 HomeHalfScore SMALLINT PATH "$.HomeHalfScore",
@@ -71,6 +76,7 @@ BEGIN
         MatchId,
         HomeTeamId,
         AwayTeamId,
+        ReferenceMatchId,
         HomeHalfScore,
         AwayHalfScore,
         HomeTotalScore,
@@ -79,21 +85,17 @@ BEGIN
     SELECT DISTINCT h.MatchId,
             h.HomeTeamId,
             h.AwayTeamId,
+            h.ReferenceMatchId,
             h.HomeHalfScore,
             h.AwayHalfScore,
             h.HomeTotalScore,
             h.AwayTotalScore,
             m.StartTime
     FROM tmp_h2h h
-    LEFT JOIN livescore_match m ON h.MatchId = m.MatchId
-    ON DUPLICATE KEY UPDATE
-            HomeHalfScore = h.HomeHalfScore,
-            AwayHalfScore = h.AwayHalfScore,
-            HomeTotalScore = h.HomeTotalScore,
-            AwayTotalScore = h.AwayTotalScore,
-            EventDate = m.StartTime;
+    LEFT JOIN livescore_match m ON h.ReferenceMatchId = m.MatchId
+    WHERE h.MatchId <> h.ReferenceMatchId;
 END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_Import TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_Import_xtest TO 'sabasports'@'%';
