@@ -27,12 +27,11 @@ class FunctionBar extends PureComponent {
             enableTabLineups: true,
             enableTabHeadtohead: true
         }
-        const { generalInfo, incidents, lineup, headToHead } = this.props.match;
+        const { generalInfo, incidents, lineup, headToHead, statistic } = this.props.match;
         if (generalInfo.isLineUp === 0) {
             tabStatus["enableTabLineups"] = false;
         }
-        const { homeStatistic, awayStatistic } = this.props.match.statistic;
-        if (!homeStatistic || !awayStatistic) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic) {
             tabStatus["enableTabStatistics"] = false;
         }
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {

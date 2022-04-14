@@ -47,7 +47,7 @@ body {
             grid-area: home;
             grid-template-rows: max-content max-content max-content;
             grid-template-columns: 1fr 26px min-content 26px 1fr;
-            grid-template-areas: ". . image . ." "name name name name name" "detail detail detail detail detail";
+            grid-template-areas: "status status image . ." "name name name name name" "detail detail detail detail detail";
             justify-content: center;
         }
 
@@ -73,6 +73,19 @@ body {
             }
         }
 
+        .participant-status {
+            background: #fff;
+            border-radius: 4px;
+            grid-area: status;
+            margin: auto 0;
+            span {
+                margin-right: 5px;
+                background: #cccc;
+                padding: 2px 5px;
+                font-weight: bold;
+            }
+        }
+
         .participant-name-wrapper {
             font: normal 700 14px Arial,Helvetica,sans-serif;
             grid-area: name;
@@ -94,8 +107,12 @@ body {
             grid-template-rows: max-content max-content max-content;
             grid-template-columns: 1fr 26px min-content 26px 1fr;
             grid-template-areas:
-                ". . image . ." "name name name name name" "detail detail detail detail detail" ;
+                ". . image status status" "name name name name name" "detail detail detail detail detail" ;
             justify-content: center;
+
+            .participant-status {
+                text-align: right;
+            }
         }
 
         &-score {
