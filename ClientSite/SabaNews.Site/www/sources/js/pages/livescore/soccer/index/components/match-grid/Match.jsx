@@ -65,8 +65,7 @@ export default class Match extends PureComponent {
             <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''}`}
                 onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
             >
-                <i className="icon-livescore icon-live-start start-active" />
-                <i className="icon-livescore icon-live-start-outline" />
+                <i className="icon-livescore icon-favourite-outline" />
                 <MatchStage match={match} />
                 <div className="soccer-match-team">
                     <div className="group-team">
