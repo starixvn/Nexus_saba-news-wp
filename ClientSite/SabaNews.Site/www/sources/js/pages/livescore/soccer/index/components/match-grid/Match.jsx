@@ -60,9 +60,10 @@ export default class Match extends PureComponent {
             || match.status === MatchStatus.Intermission
             || match.status === MatchStatus.ExtraTime
             || match.status === MatchStatus.PenaltyShootout;
+        const isIntermission = match.status === MatchStatus.Intermission;
 
         return (
-            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''}`}
+            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'intermission' : ''}`}
                 onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
             >
                 <i className="icon-livescore icon-favourite-outline" />

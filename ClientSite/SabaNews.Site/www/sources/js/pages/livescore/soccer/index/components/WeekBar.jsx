@@ -54,7 +54,11 @@ class WeekBar extends PureComponent {
                                 onClick={() => this.onSelectDate(item)}
                             >
                                 <div className="day-of-week">
-                                    {date.isSame(today) ? LangHelper.getResource('Today') : isMobile ? date.format('ddd') : date.format('dddd')}
+                                    {
+                                        (date.isSame(today) && !isMobile)
+                                            ? LangHelper.getResource('Today')
+                                            : isMobile ? date.format('ddd') : date.format('dddd')
+                                    }
                                 </div>
                                 <div className="date">{date.format('DD/MM')}</div>
                             </div>
