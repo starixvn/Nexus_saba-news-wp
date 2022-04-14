@@ -1,4 +1,4 @@
-﻿﻿@using SabaNews.Livescore.Models.Match
+﻿@using SabaNews.Livescore.Models.Match
 @model GetMatchByStageParams
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
@@ -31,6 +31,5 @@
         <script src="~/js/pro/pages/livescore/soccer/league-detail.chunk.js" asp-append-version="true"></script>
     </environment>
 }
-@section Title { Lịch thi đấu }
-@(await Component.InvokeAsync("Menu", new { page = "home-page" }))
+@(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))
 <div id="app-container"></div>
