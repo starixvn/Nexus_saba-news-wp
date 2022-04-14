@@ -1,29 +1,29 @@
 ﻿namespace SabaNews.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class RefreshCachingService : IRefreshCachingService
     {
         private readonly IFetchDataService fetchDataService;
-        private readonly ICacheService cacheService;
+        private readonly ICacheWrapperService cacheWrapperService;
         private readonly IPostService postService;
         private readonly IBannerService bannerService;
         private readonly ILogServiceProvider logService;
 
         public RefreshCachingService(IFetchDataService fetchDataService,
-            ICacheService cacheService,
+            ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logService,
             IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
-            this.cacheService = cacheService;
+            this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logService = logService;
             this.bannerService = bannerService;
@@ -37,14 +37,14 @@
             {
                 var data = await fetchDataService.GetHomePageViewModel();
                 logService.WriteLogFileInfo(string.Format("After GetHomePageViewModel - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.HomePageViewModel, 
+                await cacheWrapperService.SetAsync(CacheKey.HomePageViewModel,
                         data,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHomePageTimeoutMinutes)
                         });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await logService.WriteExceptionSentryErrorAsync(ex);
                 logService.WriteLogFileInfo(ex.ToString());
@@ -62,20 +62,19 @@
             {
                 var data = await fetchDataService.GetMenuData();
                 logService.WriteLogFileInfo(string.Format("After GetMenuData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.Menu, 
-                        data, 
+                await cacheWrapperService.SetAsync(CacheKey.Menu,
+                        data,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
                         });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await logService.WriteExceptionSentryErrorAsync(ex);
                 logService.WriteLogFileInfo(ex.ToString());
             }
             logService.WriteLogFileInfo(string.Format("Done UpdateMenuCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-            
         }
 
         public async Task UpdateCategoryCaching()
@@ -100,7 +99,7 @@
                     var key = CacheKey.CategoryViewModel + "-" + slug;
                     var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
                     logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));
-                    await cacheService.SetAsync(key, 
+                    await cacheWrapperService.SetAsync(key,
                         data,
                         new CacheItemOptions
                         {
@@ -112,11 +111,9 @@
             {
                 await logService.WriteExceptionSentryErrorAsync(ex);
                 logService.WriteLogFileInfo(ex.ToString());
-
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateCategoryCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-
         }
 
         public async Task UpdateSitemapData()
@@ -128,7 +125,7 @@
             {
                 var result = await postService.GetSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.SitemapXml, 
+                await cacheWrapperService.SetAsync(CacheKey.SitemapXml,
                         result,
                         new CacheItemOptions
                         {
@@ -142,7 +139,6 @@
             }
 
             logService.WriteLogFileInfo(string.Format("Done UpdateSitemapData - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-
         }
 
         public async Task UpdateNewsSitemapData()
@@ -154,7 +150,7 @@
             {
                 var result = await postService.GetNewsSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.NewsSitemapXml, 
+                await cacheWrapperService.SetAsync(CacheKey.NewsSitemapXml,
                         result,
                         new CacheItemOptions
                         {
@@ -179,7 +175,7 @@
             {
                 var result = await postService.GetNewsSitemapDataAsync();
                 logService.WriteLogFileInfo(string.Format("After GetNewsSitemapDataAsync - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.RSS, 
+                await cacheWrapperService.SetAsync(CacheKey.RSS,
                         result,
                         new CacheItemOptions
                         {
@@ -204,7 +200,7 @@
             {
                 var result = await bannerService.GetBannerInfoAsync();
                 logService.WriteLogFileInfo(string.Format("After UpdateBannerCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
-                await cacheService.SetAsync(CacheKey.Banner,
+                await cacheWrapperService.SetAsync(CacheKey.Banner,
                         result,
                         new CacheItemOptions
                         {

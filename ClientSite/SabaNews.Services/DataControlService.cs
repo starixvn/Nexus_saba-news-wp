@@ -17,22 +17,21 @@
     public class DataControlService : IDataControlService
     {
         private readonly IFetchDataService fetchDataService;
-        private readonly ICacheService cacheService;
+        private readonly ICacheWrapperService cacheWrapperService;
         private readonly IPostService postService;
         private readonly ILogServiceProvider logServiceProvider;
         private readonly IBannerService bannerService;
         private readonly bool IsUsingCache;
-       
 
         public DataControlService(IFetchDataService fetchDataService,
             IConfiguration configuration,
-            ICacheService cacheService,
+            ICacheWrapperService cacheWrapperService,
             IPostService postService,
             ILogServiceProvider logServiceProvider,
             IBannerService bannerService)
         {
             this.fetchDataService = fetchDataService;
-            this.cacheService = cacheService;
+            this.cacheWrapperService = cacheWrapperService;
             this.postService = postService;
             this.logServiceProvider = logServiceProvider;
             this.bannerService = bannerService;
@@ -43,13 +42,13 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
+                var result = await cacheWrapperService.GetAsync<PostViewModel>(CacheKey.HomePageViewModel);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo("-------Get Homepage data from DB---------");
                     result = await fetchDataService.GetHomePageViewModel();
-                    await cacheService.SetAsync(CacheKey.HomePageViewModel, result,
+                    await cacheWrapperService.SetAsync(CacheKey.HomePageViewModel, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheHomePageTimeoutMinutes)
@@ -67,7 +66,7 @@
             if (IsUsingCache && page == Constants.FirstPage)
             {
                 var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
-                var result = await cacheService.GetAsync<CategoryViewModel>(cacheKey);
+                var result = await cacheWrapperService.GetAsync<CategoryViewModel>(cacheKey);
 
                 if (result == null)
                 {
@@ -76,7 +75,7 @@
                     result = await fetchDataService.GetCategoryViewModel(slug, page);
                     if (result != null)
                     {
-                        await cacheService.SetAsync(cacheKey, result,
+                        await cacheWrapperService.SetAsync(cacheKey, result,
                             new CacheItemOptions
                             {
                                 RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheCategoryTimeoutMinutes)
@@ -94,14 +93,14 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Menu>>(CacheKey.Menu);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get Menu data from DB---------");
 
                     result = await fetchDataService.GetMenuData();
-                    await cacheService.SetAsync(CacheKey.Menu, result,
+                    await cacheWrapperService.SetAsync(CacheKey.Menu, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheMenuTimeoutMinutes)
@@ -118,14 +117,14 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<IEnumerable<SitemapModel>>(CacheKey.SitemapXml);
+                var result = await cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(CacheKey.SitemapXml);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get Sitemap data from DB---------");
 
                     result = await postService.GetSitemapDataAsync();
-                    await cacheService.SetAsync(CacheKey.SitemapXml, result,
+                    await cacheWrapperService.SetAsync(CacheKey.SitemapXml, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheSitemapTimeoutMinutes)
@@ -142,14 +141,14 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<IEnumerable<NewsSitemapModel>>(CacheKey.NewsSitemapXml);
+                var result = await cacheWrapperService.GetAsync<IEnumerable<NewsSitemapModel>>(CacheKey.NewsSitemapXml);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get News Sitemap data from DB---------");
 
                     result = await postService.GetNewsSitemapDataAsync();
-                    await cacheService.SetAsync(CacheKey.NewsSitemapXml, result,
+                    await cacheWrapperService.SetAsync(CacheKey.NewsSitemapXml, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheNewSitemapTimeoutMinutes)
@@ -166,14 +165,14 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<IEnumerable<Post>>(CacheKey.RSS);
+                var result = await cacheWrapperService.GetAsync<IEnumerable<Post>>(CacheKey.RSS);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get RSS data from DB---------");
 
                     result = await postService.GetRSSDataAsync();
-                    await cacheService.SetAsync(CacheKey.RSS, result,
+                    await cacheWrapperService.SetAsync(CacheKey.RSS, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheRSSTimeoutMinutes)
@@ -190,14 +189,14 @@
         {
             if (IsUsingCache)
             {
-                var result = await cacheService.GetAsync<BannerModel>(CacheKey.Banner);
+                var result = await cacheWrapperService.GetAsync<BannerModel>(CacheKey.Banner);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get Banner data from DB---------");
 
                     result = await bannerService.GetBannerInfoAsync();
-                    await cacheService.SetAsync(CacheKey.Banner, result,
+                    await cacheWrapperService.SetAsync(CacheKey.Banner, result,
                         new CacheItemOptions
                         {
                             RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheBannerTimeoutMinutes)

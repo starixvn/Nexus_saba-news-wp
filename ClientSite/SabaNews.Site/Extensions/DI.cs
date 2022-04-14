@@ -43,6 +43,7 @@
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPathService, PathService>();
             services.AddTransient<ICacheService, CacheService>();
+            services.AddTransient<ICacheWrapperService, CacheWrapperService>();
             services.AddTransient<IEmailService, EmailService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
