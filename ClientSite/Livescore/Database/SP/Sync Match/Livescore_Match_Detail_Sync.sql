@@ -120,7 +120,7 @@ BEGIN
          m.Status = m_tpm.Status,
          m.StartTime = m_tpm.GameStartTime,
          m.EndTime = m_tpm.GameEndTime,
-         m.UpdatedAt = m_tpm.UpdatedAt;
+         m.UpdatedAt = IFNULL(m_tpm.UpdatedAt, m.UpdatedAt);
 
 /* End handle update score------------------ */
 

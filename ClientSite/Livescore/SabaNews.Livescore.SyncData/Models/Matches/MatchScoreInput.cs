@@ -14,6 +14,6 @@
         public int? Status { get; set; }
         public DateTime GameStartTime { get; set; }
         public DateTime GameEndTime { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
