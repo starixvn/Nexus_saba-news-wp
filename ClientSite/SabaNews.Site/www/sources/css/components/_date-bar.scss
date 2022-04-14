@@ -33,7 +33,11 @@
 
             @include tableMobile {
                 margin: 0 .3rem;
-                width : 3.8rem;
+                width: auto;
+            }
+
+            @include Mobile {
+                width: 3.8rem;
             }
 
             @include iphone5 {
@@ -157,9 +161,9 @@
         width: 16%;
         cursor: pointer;
         padding: .6rem;
-        background: #F1F1F1;
+        /*        background: #F1F1F1;
         border-right: 1px solid $border-color;
-        border-radius: 3px;
+        border-radius: 3px;*/
 
         @include tableMobile {
             padding: .8rem .5rem;
@@ -167,11 +171,11 @@
         }
 
         @include Mobile {
-            padding: .8rem .5rem;
+            padding: 0 .5rem .5rem;
             width: 15%;
-            background : none;
-            border : none;
-            border-radius : 0;
+            background: none;
+            border: none;
+            border-radius: 0;
         }
 
         .btn-live-realtime {
@@ -183,7 +187,8 @@
             font-size: 1.2rem;
             color: $primary-bg;
             padding: .4rem 0;
-            font-weight : 700;
+            font-weight: 700;
+
             @include tableMobile {
                 font-size: 1.1rem;
                 line-height: .9rem;
@@ -194,6 +199,7 @@
                 font-size: .8rem;
                 line-height: .9rem;
                 padding: .3rem 0;
+                line-height: 1;
             }
 
             @include iphone5 {
@@ -208,8 +214,9 @@
                 border-radius: 3px;
                 font-weight: bold;
                 margin-left: .4rem;
-                @include Mobile{
-                    display : none;
+
+                @include Mobile {
+                    display: none;
                 }
             }
         }
