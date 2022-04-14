@@ -49,7 +49,7 @@ export default class Match extends PureComponent {
 
     getTeamName = (team, searchKey) => {
         const reg = new RegExp(`(${searchKey})`, 'gi');
-        const teamName = team.teamFullNameEN ? team.teamFullNameEN : team.teamNameEN;
+        const teamName = team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
         return searchKey.length > 0 ? teamName.replace(reg, "<span class='text-matched'>$1</span>") : teamName;
     };
 
