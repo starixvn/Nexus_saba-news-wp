@@ -97,7 +97,7 @@
             }).AddStackExchangeRedis(redisConfig, options =>
             {
                 options.Configuration.ChannelPrefix = appName;
-            }); ;
+            });
 
             services.RegisterCookiePolicy();
 
