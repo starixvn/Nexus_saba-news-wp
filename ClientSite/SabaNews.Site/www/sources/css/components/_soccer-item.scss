@@ -285,16 +285,18 @@
 
                                 li {
                                     text-transform: uppercase;
-                                    background: #E9EEF4;
+                                    background: #7297C1;
                                     border: 1px solid #ABC4E1;
-                                    border-radius: 5px;
-                                    color: #4E7CB1;
+                                    border-radius: 3px;
+                                    color: $white;
                                     font-weight: 700;
                                     font-size: 1rem;
                                     line-height: 1.1rem;
                                     padding: .3rem .5rem;
 
                                     @include tableMobile {
+                                        font-size: .8rem;
+                                        line-height : 1;
                                         padding: .1rem .3rem;
                                     }
                                 }
