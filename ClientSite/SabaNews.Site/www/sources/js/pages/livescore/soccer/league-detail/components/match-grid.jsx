@@ -1,7 +1,8 @@
 ﻿import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ActionCreators } from '../../actions';
+import { ActionCreators } from '../actions';
+import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 export class MatchGrid extends PureComponent {
@@ -41,9 +42,15 @@ export class MatchGrid extends PureComponent {
         return (
             <div className="soccer-match-grid">
                 {
-                    matches.map((date, index) => {
+                    matches.map((item, index) => {
                         return (
                             <div key={index}>
+                                <div>{item.date}</div>
+                                <div>
+                                    {
+                                        item.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
+                                    }
+                                </div>
                             </div>
                         );
                     })

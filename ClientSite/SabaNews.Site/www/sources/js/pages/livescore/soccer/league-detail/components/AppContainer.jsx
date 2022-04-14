@@ -7,7 +7,9 @@ import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import SignalR from './SignalR';
 import League from './League';
+import MatchGrid from './match-grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import { MatchStatus } from '@jsroot/common/constants';
 
 export class AppContainer extends Component {
     componentDidMount() {
@@ -24,7 +26,19 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { majorLeagues, league } = this.props;
+        const { majorLeagues, league, matches } = this.props;
+        let preMatches = [];
+        let postMatches = [];
+        if (matches && matches.length > 0) {
+            preMatches = matches.filter(match => match.status === MatchStatus.NotStarted
+                || match.status === MatchStatus.FirstHalf
+                || match.status === MatchStatus.SecondHalf
+                || match.status === MatchStatus.Intermission
+                || match.status === MatchStatus.ExtraTime
+                || match.status === MatchStatus.PenaltyShootout);
+            postMatches = matches.filter(match => match.status === MatchStatus.Finished);
+        }
+
         return (
             <div className="container livescore-container">
                 <SignalR />
@@ -36,8 +50,10 @@ export class AppContainer extends Component {
                         }
                         <Tabs defaultActiveKey="schedule" id="livescore-tab-league-detail">
                             <Tab eventKey="schedule" title="Lịch thi đấu">
+                                <MatchGrid matches={preMatches} />
                             </Tab>
                             <Tab eventKey="result" title="Kết quả">
+                                <MatchGrid matches={postMatches} />
                             </Tab>
                             <Tab eventKey="stadings" title="BXH">
                             </Tab>
@@ -56,8 +72,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, league } = state;
-    return { majorLeagues, league };
+    const { majorLeagues, league, matches } = state;
+    return { majorLeagues, league, matches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
