@@ -25,18 +25,24 @@ export class AppContainer extends Component {
         this.props.getMatchesByStage(params);
     };
 
+    getPreMatches = matches => {
+        return matches.filter(match => match.status === MatchStatus.NotStarted
+            || match.status === MatchStatus.FirstHalf
+            || match.status === MatchStatus.SecondHalf
+            || match.status === MatchStatus.Intermission
+            || match.status === MatchStatus.ExtraTime
+            || match.status === MatchStatus.PenaltyShootout);
+    };
+
+    getPostMatches = matches => matches.filter(match => match.status === MatchStatus.Finished);
+
     render() {
         const { majorLeagues, league, matches } = this.props;
-        let preMatches = [];
-        let postMatches = [];
+        let preMatches = [],
+            postMatches = [];
         if (matches && matches.length > 0) {
-            preMatches = matches.filter(match => match.status === MatchStatus.NotStarted
-                || match.status === MatchStatus.FirstHalf
-                || match.status === MatchStatus.SecondHalf
-                || match.status === MatchStatus.Intermission
-                || match.status === MatchStatus.ExtraTime
-                || match.status === MatchStatus.PenaltyShootout);
-            postMatches = matches.filter(match => match.status === MatchStatus.Finished);
+            preMatches = this.getPreMatches(matches);
+            postMatches = this.getPostMatches(matches);
         }
 
         return (
@@ -55,7 +61,7 @@ export class AppContainer extends Component {
                             <Tab eventKey="result" title="Kết quả">
                                 <MatchGrid matches={postMatches} />
                             </Tab>
-                            <Tab eventKey="stadings" title="BXH">
+                            <Tab eventKey="stadings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
                             </Tab>
                         </Tabs>
                     </div>

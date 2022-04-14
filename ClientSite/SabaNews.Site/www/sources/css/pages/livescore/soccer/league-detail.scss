@@ -4,6 +4,7 @@
 @import '../../../base/base';
 @import '../../../components/block-extension';
 @import '../../../components/container';
+@import '../../../components/soccer-item';
 
 body {
     font-size: 1.4rem;
@@ -37,5 +38,10 @@ main {
     .none-livescore {
         margin-top: 1.2rem;
         font-size: 1.4rem;
+    }
+
+    .livescore-league-detail-header {
+        display: flex;
+        align-items: center;
     }
 }

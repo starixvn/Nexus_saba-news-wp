@@ -44,12 +44,14 @@ export class MatchGrid extends PureComponent {
                 {
                     matches.map((item, index) => {
                         return (
-                            <div key={index}>
-                                <div>{item.date}</div>
-                                <div>
-                                    {
-                                        item.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
-                                    }
+                            <div className="soccer-match-grid" key={index}>
+                                <div className="soccer-match-grid-item">
+                                    <div className="soccer-match-grid-item-header">{item.date}</div>
+                                    <div className="soccer-match-grid-item-body">
+                                        {
+                                            item.matches.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         );

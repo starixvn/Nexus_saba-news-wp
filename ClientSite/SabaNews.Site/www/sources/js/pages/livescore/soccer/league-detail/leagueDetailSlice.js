@@ -20,6 +20,16 @@ const leagueDetailSlice = createSlice({
         },
         setMatches: (state, action) => {
             state.matches = action.payload;
+        },
+        setLiveMatches: (state, action) => {
+            const liveMatches = action.payload;
+            const totalItems = liveMatches.length;
+            for (let i = 0; i < totalItems; i++) {
+                const index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                if (index >= 0) {
+                    state.matches[index] = liveMatches[i];
+                }
+            }
         }
     }
 });
@@ -30,7 +40,8 @@ export const {
     setSearchKey,
     setMajorLeagues,
     setLeague,
-    setMatches
+    setMatches,
+    setLiveMatches
 } = actions;
 
 export default reducer;

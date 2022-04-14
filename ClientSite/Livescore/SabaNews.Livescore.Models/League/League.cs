@@ -16,6 +16,8 @@
 
         public bool IsMajor { get; set; }
 
+        public bool HasSeasonStandings { get; set; }
+
         public Season Season { get; set; }
         public SeasonStage Stage { get; set; }
     }

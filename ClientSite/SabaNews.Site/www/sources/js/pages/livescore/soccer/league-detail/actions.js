@@ -4,7 +4,8 @@ import {
     setSearchKey,
     setMajorLeagues,
     setLeague,
-    setMatches
+    setMatches,
+    setLiveMatches
 } from './leagueDetailSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -28,6 +29,7 @@ export const ActionCreators = {
     setMajorLeagues,
     setLeague,
     setMatches,
+    setLiveMatches,
     getMajorLeagues,
     getMatchesByStage
 };
