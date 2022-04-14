@@ -168,7 +168,10 @@
 
         @include Mobile {
             padding: .8rem .5rem;
-            width: 17%;
+            width: 15%;
+            background : none;
+            border : none;
+            border-radius : 0;
         }
 
         .btn-live-realtime {
@@ -188,13 +191,13 @@
             }
 
             @include Mobile {
-                font-size: .9rem;
+                font-size: .8rem;
                 line-height: .9rem;
                 padding: .3rem 0;
             }
 
             @include iphone5 {
-                font-size: .7rem;
+                font-size: .8rem;
             }
 
             .badge-live {
@@ -205,6 +208,9 @@
                 border-radius: 3px;
                 font-weight: bold;
                 margin-left: .4rem;
+                @include Mobile{
+                    display : none;
+                }
             }
         }
     }

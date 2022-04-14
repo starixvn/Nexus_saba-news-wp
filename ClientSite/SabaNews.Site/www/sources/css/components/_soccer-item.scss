@@ -157,6 +157,10 @@
                 .icon-livescore {
                     font-size: 2.4rem;
 
+                    @include tableMobile {
+                        font-size: 1.8rem;
+                    }
+
                     &.disabled {
                         &:before {
                             color: $disabled-icon;
