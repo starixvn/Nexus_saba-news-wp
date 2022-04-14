@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SignalR from './SignalR';
-import DetailTabs from './DetailTabs';
+import FunctionBar from './FunctionBar';
 import { ActionCreators } from '../actions';
 import MatchGenetalInfo from './MatchGeneralInfo';
 
@@ -20,13 +20,12 @@ export class AppContainer extends Component {
                 <h1 className="livescore-soccer">Trận đấu bạn tìm không có</h1>
             );
         }
-        console.log("app");
         return (
             <>
                 <SignalR />
                 <div className="livescore-soccer">
                     <MatchGenetalInfo match = {this.props.match} isLiveMatch = {this.props.isLiveMatch} />
-                    <DetailTabs />
+                    <FunctionBar />
                 </div>
             </>
         );
