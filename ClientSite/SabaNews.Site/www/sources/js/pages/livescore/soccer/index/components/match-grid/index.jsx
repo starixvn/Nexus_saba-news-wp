@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import League from './League';
 import { ActionCreators } from '../../actions';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export class MatchGrid extends PureComponent {
     render() {
@@ -17,8 +18,8 @@ export class MatchGrid extends PureComponent {
         let matches = this.props.matches;
         if (searchKey.length > 0) {
             matches = matches.filter(match => match.league.leagueFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || match.homeTeam.teamFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || match.awayTeam.teamFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+                || CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+                || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
         }
 
         if (matches.length === 0 && searchKey.length > 0) {

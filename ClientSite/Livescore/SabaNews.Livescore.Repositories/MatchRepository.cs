@@ -34,21 +34,20 @@
             }
         }
 
-        public async Task<(League, IList<Match>)> GetMatchByStageAsync(ICriteria criteria)
+        public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (IMultiResultReader multi = await db.QueryMultipleAsync())
                 {
-                    var league = multi.Read<League, Season, SeasonStage, League>(
-                        (league, season, stage) =>
+                    var league = multi.Read<League, Season, League>(
+                        (league, season) =>
                         {
                             league.Season = season;
-                            league.Stage = stage;
 
                             return league;
                         },
-                        splitOn: "SeasonId, StageId").FirstOrDefault();
+                        splitOn: "SeasonId").FirstOrDefault();
 
                     var matches = multi.Read<Match, Team, Team, Match>(
                         (match, home, away) =>

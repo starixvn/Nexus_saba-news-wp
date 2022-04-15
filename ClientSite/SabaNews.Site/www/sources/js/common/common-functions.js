@@ -48,4 +48,8 @@ export default class CommonFunctions {
         });
         return summary;
     }
+
+    static getTeamName(team) {
+        return team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
+    }
 }

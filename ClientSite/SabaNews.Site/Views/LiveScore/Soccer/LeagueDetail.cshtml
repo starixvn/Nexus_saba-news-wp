@@ -1,5 +1,5 @@
 ﻿@using SabaNews.Livescore.Models.Match
-@model GetMatchByStageParams
+@model GetMatchBySeasonParams
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true" />
     <environment include="Development">
@@ -14,8 +14,7 @@
         window.getMatchByStageParams = {
             date: '@Model.Date.ToString("yyyy-MM-dd")',
             leagueId: @Model.LeagueId,
-            seasonId: @Model.SeasonId,
-            stageId: @Model.StageId
+            seasonId: @Model.SeasonId
         };
     </script>
     <environment include="Development">

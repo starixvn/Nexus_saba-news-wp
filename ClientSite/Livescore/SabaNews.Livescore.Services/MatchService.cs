@@ -32,9 +32,9 @@
             return await matchRepository.GetMatchByDateAsync(criteria);
         }
 
-        public async Task<(League, IList<Match>)> GetMatchByStageAsync(GetMatchByStageCriteria criteria)
+        public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
-            return await matchRepository.GetMatchByStageAsync(criteria);
+            return await matchRepository.GetMatchBySeasonAsync(criteria);
         }
 
         public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)

@@ -15,8 +15,8 @@ const getMajorLeagues = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
-const getMatchesByStage = params => async dispatch => {
-    const url = Site.resolveClientUrl('soccer/getMatchesByStage');
+const getMatchesBySeason = params => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getMatchesBySeason');
     await DataService.postDataAsync(url, params).then(response => {
         const { league, matches } = response.data;
         dispatch(setLeague(league));
@@ -31,5 +31,5 @@ export const ActionCreators = {
     setMatches,
     setLiveMatches,
     getMajorLeagues,
-    getMatchesByStage
+    getMatchesBySeason
 };

@@ -10,8 +10,7 @@ const League = ({ league, selectedDate, searchKey }) => {
 
     const handleClick = event => {
         const seasonId = league.season ? league.season.seasonId : 0;
-        const stageId = league.stage ? league.stage.stageId : 0;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${selectedDate}/${league.leagueId}/${seasonId}/${stageId}`);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${selectedDate}/${league.leagueId}/${seasonId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

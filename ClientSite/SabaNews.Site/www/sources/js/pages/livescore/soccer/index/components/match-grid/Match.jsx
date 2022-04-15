@@ -2,6 +2,7 @@
 import MatchStage from './MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
 import Site from '@jsroot/common/site';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class Match extends PureComponent {
     getTeamStatus = (match, isHomeTeam) => {
@@ -15,7 +16,7 @@ export default class Match extends PureComponent {
                     return <li>PEN</li>;
                 } else if (match[`${homeFieldName}AggregateScore`]
                     && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                    return <li><i className="icon-live-up" /></li>;
+                    return <li>AGG</li>;
                 } else {
                     return <Fragment />;
                 }
@@ -49,7 +50,7 @@ export default class Match extends PureComponent {
 
     getTeamName = (team, searchKey) => {
         const reg = new RegExp(`(${searchKey})`, 'gi');
-        const teamName = team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
+        const teamName = CommonFunctions.getTeamName(team);
         return searchKey.length > 0 ? teamName.replace(reg, "<span class='text-matched'>$1</span>") : teamName;
     };
 

@@ -10,7 +10,7 @@
     {
         Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria);
 
-        Task<(League, IList<Match>)> GetMatchByStageAsync(ICriteria criteria);
+        Task<(League, IList<Match>)> GetMatchBySeasonAsync(ICriteria criteria);
 
         Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria);
 

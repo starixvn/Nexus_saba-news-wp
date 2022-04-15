@@ -80,14 +80,13 @@
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}/{stageId:long}")]
-        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId, long stageId)
+        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}")]
+        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId)
         {
-            var model = new GetMatchByStageParams
+            var model = new GetMatchBySeasonParams
             {
                 LeagueId = leagueId,
                 SeasonId = seasonId,
-                StageId = stageId,
                 Date = date
             };
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
@@ -111,23 +110,22 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMatchesByStage([FromBody] GetMatchByStageParams model)
+        public async Task<IActionResult> GetMatchesBySeason([FromBody] GetMatchBySeasonParams model)
         {
-            var criteria = new GetMatchByStageCriteria
+            var criteria = new GetMatchBySeasonCriteria
             {
                 SportId = (short)SportType.Soccer,
                 LeagueId = model.LeagueId,
-                SeasonId = model.SeasonId,
-                StageId = model.StageId
+                SeasonId = model.SeasonId
             };
-            if (criteria.StageId == 0)
+            if (criteria.SeasonId == 0)
             {
-                const byte TotalDays = 7;
-                criteria.FromTime = model.Date.AddDays(-TotalDays).ToStartOfDay().ConvertToUTC(model.Timezone);
-                criteria.ToTime = model.Date.AddDays(TotalDays).ToStartOfDay().ConvertToUTC(model.Timezone);
+                const byte TotalMonths = 6;
+                criteria.FromTime = model.Date.AddMonths(-TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
+                criteria.ToTime = model.Date.AddMonths(TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
             }
 
-            (League league, IList<Match> matches) = await matchService.GetMatchByStageAsync(criteria);
+            (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
             return Json(new { league, matches });
         }
 

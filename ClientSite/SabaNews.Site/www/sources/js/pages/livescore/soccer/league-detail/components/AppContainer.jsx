@@ -22,27 +22,16 @@ export class AppContainer extends Component {
             ...window.getMatchByStageParams,
             timezone: DateTimeService.getClientTimezone()
         };
-        this.props.getMatchesByStage(params);
+        this.props.getMatchesBySeason(params);
     };
-
-    getPreMatches = matches => {
-        return matches.filter(match => match.status === MatchStatus.NotStarted
-            || match.status === MatchStatus.FirstHalf
-            || match.status === MatchStatus.SecondHalf
-            || match.status === MatchStatus.Intermission
-            || match.status === MatchStatus.ExtraTime
-            || match.status === MatchStatus.PenaltyShootout);
-    };
-
-    getPostMatches = matches => matches.filter(match => match.status === MatchStatus.Finished);
 
     render() {
         const { majorLeagues, league, matches } = this.props;
         let preMatches = [],
             postMatches = [];
         if (matches && matches.length > 0) {
-            preMatches = this.getPreMatches(matches);
-            postMatches = this.getPostMatches(matches);
+            preMatches = matches.filter(match => match.status !== MatchStatus.Finished);
+            postMatches = matches.filter(match => match.status === MatchStatus.Finished);
         }
 
         return (

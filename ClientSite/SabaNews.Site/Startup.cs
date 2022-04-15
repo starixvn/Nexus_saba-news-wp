@@ -190,10 +190,7 @@
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapHub<LivescoreHub>("/livescore/hubs", options =>
-                {
-                    options.Transports = HttpTransportType.LongPolling;
-                });
+                endpoints.MapHub<LivescoreHub>("/livescore/hubs");
             });
         }
     }
