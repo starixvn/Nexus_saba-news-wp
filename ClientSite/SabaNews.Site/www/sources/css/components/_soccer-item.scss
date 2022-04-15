@@ -147,14 +147,14 @@
                     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
                     background: $white;
 
-                    .icon-livescore {
+                    .icon-favourite-outline {
                         &:before {
                             color: $fav-icon;
                         }
                     }
                 }
 
-                .icon-livescore {
+                .icon-favourite-outline {
                     font-size: 2.4rem;
 
                     @include tableMobile {
@@ -296,7 +296,7 @@
 
                                     @include tableMobile {
                                         font-size: .8rem;
-                                        line-height : 1;
+                                        line-height: 1;
                                         padding: .1rem .3rem;
                                     }
                                 }
