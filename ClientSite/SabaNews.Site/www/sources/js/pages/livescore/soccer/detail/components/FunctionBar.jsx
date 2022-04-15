@@ -93,7 +93,7 @@ class FunctionBar extends PureComponent {
                 <Tab eventKey="doi-hinh" title="Đội hình" disabled={!tabStatus.enableTabLineups}>
                     <Lineups />
                 </Tab>
-                <Tab eventKey="doi-dau" title="Đối đầu" disabled={!tabStatus.enableTabH2H}>
+                <Tab eventKey="doi-dau" title="Đối đầu" disabled={!tabStatus.enableTabHeadtohead}>
                     <HeadToHead />
                 </Tab>
             </Tabs>
