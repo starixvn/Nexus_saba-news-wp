@@ -1,4 +1,4 @@
-﻿import React, { PureComponent } from 'react';
+﻿import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form } from 'react-bootstrap';
@@ -20,13 +20,72 @@ export class MatchGrid extends PureComponent {
         this.setState({ searchKey: event.target.value });
     };
 
+    groupMatchesByDate = matches => {
+        const helper = {};
+        return matches.reduce((previousItem, currentItem) => {
+            const key = DateTimeService.formatDateTime(currentItem.startTime, 'YYYY-MM-DD');
+            if (!helper[key]) {
+                helper[key] = {
+                    key: key,
+                    text: key,
+                    childs: [{ ...currentItem }]
+                };
+                previousItem.push(helper[key]);
+            } else {
+                helper[key].childs.push(currentItem);
+            }
+
+            return previousItem;
+        }, []);
+    };
+
+    groupMatchesByStage = matches => {
+        const helper = {};
+        matches = matches.reduce((previousItem, currentItem) => {
+            const key = currentItem.stage ? currentItem.stage.stageId : 0;
+            if (!helper[key]) {
+                helper[key] = {
+                    key: key,
+                    text: currentItem.stage ? currentItem.stage.stageNameEN : '',
+                    orderIndex: currentItem.stage.orderIndex,
+                    childs: [{ ...currentItem }]
+                };
+                previousItem.push(helper[key]);
+            } else {
+                helper[key].childs.push(currentItem);
+            }
+
+            return previousItem;
+        }, []);
+
+        matches.sort((item1, item2) => item2.orderIndex - item1.orderIndex);
+        const totalItems = matches.length;
+        for (let i = 0; i < totalItems; i++) {
+            matches[i] = { ...matches[i], childs: this.groupMatchesByDate(matches[i].childs) }
+        }
+
+        return matches;
+    };
+
+    groupMatches = matches => {
+        let stageIds = matches.map(item => item.stage ? item.stage.stageId : 0);
+        stageIds = stageIds.filter((value, index, self) => {
+            return self.indexOf(value) === index;
+        });
+
+        if (stageIds.length > 1) {
+            return this.groupMatchesByStage(matches);
+        } else {
+            return this.groupMatchesByDate(matches);
+        }
+    };
+
     render() {
         let matches = this.props.matches;
         if (matches.length === 0) {
             return <div className="none-livescore">Không có trận đấu nào.</div>;
         }
 
-        const helper = {};
         const searchKey = this.state.searchKey;
         if (searchKey.length > 0) {
             matches = matches.filter(match =>
@@ -35,25 +94,11 @@ export class MatchGrid extends PureComponent {
         }
 
         if (matches.length > 0) {
-            matches = matches.reduce((previousItem, currentItem) => {
-                const key = DateTimeService.formatDateTime(currentItem.startTime, 'YYYY-MM-DD');
-                if (!helper[key]) {
-                    helper[key] = {
-                        date: key,
-                        matches: [{ ...currentItem }]
-                    };
-                    previousItem.push(helper[key]);
-                } else {
-                    helper[key].matches.push(currentItem);
-                }
-
-                return previousItem;
-            }, []);
+            matches = this.groupMatches(matches);
         }
 
         return (
             <>
-
                 <div className="group-searchbar">
                     <div className="livescore-soccer-search-bar">
                         <Form.Control type="text" placeholder="Tìm kiếm đội bóng..."
@@ -64,23 +109,33 @@ export class MatchGrid extends PureComponent {
                         <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
                     </div>
                 </div>
-                
                 {
                     matches.length === 0 && searchKey.length > 0
                     && <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>
                 }
                 <div className="soccer-match-grid">
                     {
-                        matches.map((item, index) => {
+                        matches.map(item => {
                             return (
-                                <div className="soccer-match-grid" key={index}>
+                                <div className="soccer-match-grid" key={item.key}>
                                     <div className="soccer-match-grid-item">
-                                        <div className="soccer-match-grid-item-header">{item.date}</div>
+                                        <div className="soccer-match-grid-item-header">{item.text}</div>
                                         <div className="soccer-match-grid-item-body">
                                             <div className="group-match-item">
                                                 <div className="group-match-item-slogan">Tứ kết</div>
                                                 {
-                                                    item.matches.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
+                                                item.childs.map(child => {
+                                                    if (child.key) {
+                                                        return <Fragment key={child.key}>
+                                                            <div className="soccer-match-grid-item-body-slogan">{child.text}</div>
+                                                            {
+                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
+                                                            }
+                                                        </Fragment>;
+                                                    } else {
+                                                        return <Match key={child.matchId} searchKey={searchKey} match={child} />;
+                                                    }
+                                                })
                                                 }
                                             </div>
                                         </div>
