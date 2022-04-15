@@ -5,9 +5,25 @@
 @import '../../../components/container';
 @import '../../../components/soccer-item';
 @import '../../../components/league-header-detail';
-
+@import '../../../components/nav-tab';
 
 
 .livescore-soccer {
-    
+    .soccer-match-grid {
+        &-item {
+            .soccer-match-grid-item-header {
+                padding: 1rem 1.2rem;
+                color: $color-title;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+
+                @include tableMobile {
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                    padding: 1rem .8rem;
+                }
+            }
+        }
+    }
 }

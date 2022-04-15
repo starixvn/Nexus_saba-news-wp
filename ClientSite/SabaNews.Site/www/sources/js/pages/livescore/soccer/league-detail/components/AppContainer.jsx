@@ -54,7 +54,7 @@ export class AppContainer extends Component {
                             league &&
                             <League league={league} />
                         }
-                        <Tabs defaultActiveKey="schedule" id="livescore-tab-league-detail">
+                        <Tabs defaultActiveKey="schedule" id="livescore-tab-league-detail" className="live-score-nav">
                             <Tab eventKey="schedule" title="Lịch thi đấu">
                                 <MatchGrid matches={preMatches} />
                             </Tab>

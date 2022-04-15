@@ -124,6 +124,23 @@
                 padding: .6rem;
             }
 
+            &-slogan {
+                background: $slogan-bg;
+                border-radius: 3px;
+                font-weight: 600;
+                font-size: 1.3rem;
+                line-height: 1.8rem;
+                padding: .6rem 1.2rem;
+                text-transform: uppercase;
+
+                @include tableMobile {
+                    font-size: 1.1rem;
+                    line-height: 1.5rem;
+                    padding: .4rem .8rem;
+                }
+            }
+
+
             .soccer-match-item {
                 display: flex;
                 justify-content: space-between;

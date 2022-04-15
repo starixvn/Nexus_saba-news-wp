@@ -48,6 +48,7 @@ export class MatchGrid extends PureComponent {
                                 <div className="soccer-match-grid-item">
                                     <div className="soccer-match-grid-item-header">{item.date}</div>
                                     <div className="soccer-match-grid-item-body">
+                                        <div className="soccer-match-grid-item-body-slogan">Tứ kết</div>
                                         {
                                             item.matches.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
                                         }
