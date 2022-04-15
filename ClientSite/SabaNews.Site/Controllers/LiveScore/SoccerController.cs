@@ -90,7 +90,7 @@
                 StageId = stageId,
                 Date = date
             };
-            return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
+            return View("~/Views/Livescore/Soccer/Testing.cshtml", model);
         }
 
         [HttpPost]
