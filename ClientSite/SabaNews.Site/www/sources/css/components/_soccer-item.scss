@@ -130,10 +130,12 @@
             }
 
             .group-match-item {
-                margin-bottom : .6rem;
-                &:last-child{
-                    margin-bottom : 0;
+                margin-bottom: .6rem;
+
+                &:last-child {
+                    margin-bottom: 0;
                 }
+
                 &-slogan {
                     background: $slogan-bg;
                     border-radius: 3px;
@@ -142,7 +144,7 @@
                     line-height: 1.8rem;
                     padding: .6rem 1.2rem;
                     text-transform: uppercase;
-
+                    margin-bottom: .6rem;
                     @include tableMobile {
                         font-size: 1.1rem;
                         line-height: 1.5rem;
