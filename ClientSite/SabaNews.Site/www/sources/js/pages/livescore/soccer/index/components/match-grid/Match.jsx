@@ -64,39 +64,42 @@ export default class Match extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
 
         return (
-            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
-                onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
-            >
-                <i className="icon-livescore icon-favourite-outline" />
-                <MatchStage match={match} />
-                <div className="soccer-match-team">
-                    <div className="group-team">
-                        <div className="soccer-team home-team">
-                            <img className="soccer-team-logo" loading="lazy" src={match.homeTeam.icon} />
-                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.homeTeam, searchKey) }} />
-                            <ul className="soccer-team-status">
-                                {this.getTeamStatus(match, true)}
-                            </ul>
-                            <div className="soccer-team-result">
-                                {this.getTeamScore(match, true)}
+            <div className="group-match-item">
+                <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
+                    onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
+                >
+                    <i className="icon-livescore icon-favourite-outline" />
+                    <MatchStage match={match} />
+                    <div className="soccer-match-team">
+                        <div className="group-team">
+                            <div className="soccer-team home-team">
+                                <img className="soccer-team-logo" loading="lazy" src={match.homeTeam.icon} />
+                                <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.homeTeam, searchKey) }} />
+                                <ul className="soccer-team-status">
+                                    {this.getTeamStatus(match, true)}
+                                </ul>
+                                <div className="soccer-team-result">
+                                    {this.getTeamScore(match, true)}
+                                </div>
                             </div>
-                        </div>
-                        <div className="soccer-team away-team">
-                            <img className="soccer-team-logo" loading="lazy" src={match.awayTeam.icon} />
-                            <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.awayTeam, searchKey) }} />
-                            <ul className="soccer-team-status">
-                                {this.getTeamStatus(match, false)}
-                            </ul>
-                            <div className="soccer-team-result">
-                                {this.getTeamScore(match, false)}
+                            <div className="soccer-team away-team">
+                                <img className="soccer-team-logo" loading="lazy" src={match.awayTeam.icon} />
+                                <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.awayTeam, searchKey) }} />
+                                <ul className="soccer-team-status">
+                                    {this.getTeamStatus(match, false)}
+                                </ul>
+                                <div className="soccer-team-result">
+                                    {this.getTeamScore(match, false)}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="soccer-match-star-icon">
-                    <i className="icon-livescore icon-live-right" />
+                    <div className="soccer-match-star-icon">
+                        <i className="icon-livescore icon-live-right" />
+                    </div>
                 </div>
             </div>
+            
         );
     }
 }
