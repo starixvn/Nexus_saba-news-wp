@@ -1,45 +1,13 @@
-﻿@import '~bootstrap/scss/bootstrap';
-@import '../../../abstracts/variables';
+﻿@import '../../../abstracts/variables';
 @import '../../../abstracts/mixins';
 @import '../../../base/base';
 @import '../../../components/block-extension';
 @import '../../../components/container';
 @import '../../../components/soccer-item';
 
-body {
-    font-size: 1.4rem;
-}
 
-main {
-    @include tableMobile {
-        position: relative;
-        overflow-x: inherit;
-    }
-}
 
 .livescore-soccer {
-    @include grid(70% 30%, unset, 0);
-    align-items: start;
-
-    @include tableMobile {
-        grid-template-columns: 100%;
-    }
-
-    @include Mobile {
-        display: inherit;
-    }
-
-    .icon-live-realtime {
-        @include tableMobile {
-            font-size: 1.3rem;
-        }
-    }
-
-    .none-livescore {
-        margin-top: 1.2rem;
-        font-size: 1.4rem;
-    }
-
     .livescore-league-detail-header {
         display: flex;
         align-items: center;
