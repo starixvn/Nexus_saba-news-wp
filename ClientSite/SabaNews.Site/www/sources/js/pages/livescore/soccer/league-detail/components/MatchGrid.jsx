@@ -53,14 +53,18 @@ export class MatchGrid extends PureComponent {
 
         return (
             <>
-                <div className="livescore-soccer-search-bar">
-                    <Form.Control type="text" placeholder="Tìm kiếm đội bóng..."
-                        id="livescore-soccer-searchbox" className="livescore-soccer-searchbox"
-                        value={searchKey}
-                        onChange={this.handleChangeSearchKey}
-                    />
-                    <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
+
+                <div className="group-searchbar">
+                    <div className="livescore-soccer-search-bar">
+                        <Form.Control type="text" placeholder="Tìm kiếm đội bóng..."
+                            id="livescore-soccer-searchbox" className="livescore-soccer-searchbox"
+                            value={searchKey}
+                            onChange={this.handleChangeSearchKey}
+                        />
+                        <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
+                    </div>
                 </div>
+                
                 {
                     matches.length === 0 && searchKey.length > 0
                     && <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>
