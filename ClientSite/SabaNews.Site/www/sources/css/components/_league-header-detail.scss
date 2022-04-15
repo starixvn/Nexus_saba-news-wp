@@ -1,0 +1,49 @@
+﻿.livescore-league-header-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    @include tableMobile {
+        margin-bottom: 1.6rem;
+    }
+
+    &-logo {
+        width: 4.4rem;
+        height: 4.4rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+
+        @include tableMobile {
+            width: 3rem;
+            height: 3rem;
+            margin-right: .8rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &-name {
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        color: $color-title;
+        width: 85%;
+        display: flex;
+        align-items: center;
+
+        @include tableMobile {
+            font-size: 1.3rem;
+        }
+
+        i {
+            margin-left: 1.1rem;
+
+            @include tableMobile {
+                margin-left: .9rem;
+            }
+        }
+    }
+}
