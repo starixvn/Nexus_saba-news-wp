@@ -121,23 +121,20 @@ export class MatchGrid extends PureComponent {
                                     <div className="soccer-match-grid-item">
                                         <div className="soccer-match-grid-item-header">{item.text}</div>
                                         <div className="soccer-match-grid-item-body">
-                                            <div className="group-match-item">
-                                                <div className="group-match-item-slogan">Tứ kết</div>
-                                                {
+                                            {
                                                 item.childs.map(child => {
                                                     if (child.key) {
-                                                        return <Fragment key={child.key}>
-                                                            <div className="soccer-match-grid-item-body-slogan">{child.text}</div>
+                                                        return <div className="group-match-item" key={child.key}>
+                                                            <div className="group-match-item-slogan">{child.text}</div>
                                                             {
                                                                 child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
                                                             }
-                                                        </Fragment>;
+                                                        </div>;
                                                     } else {
                                                         return <Match key={child.matchId} searchKey={searchKey} match={child} />;
                                                     }
                                                 })
-                                                }
-                                            </div>
+                                            }
                                         </div>
                                     </div>
                                 </div>
