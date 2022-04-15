@@ -31,7 +31,7 @@ class FunctionBar extends PureComponent {
         if (generalInfo.isLineUp === 0) {
             tabStatus["enableTabLineups"] = false;
         }
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || !statistic.homeStatistic.controlRate || !statistic.awayStatistic.controlRate) {
             tabStatus["enableTabStatistics"] = false;
         }
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
@@ -59,6 +59,7 @@ class FunctionBar extends PureComponent {
             defaultTab = params["tab"].toLowerCase();
         }
         if(!defaultTab || (defaultTab && !tabStatus[`enableTab${mapTabStatusKey[defaultTab]}`])) {
+            defaultTab = ""
             if(tabStatus.enableTabHeadtohead) {
                 defaultTab = "doi-dau";
             }

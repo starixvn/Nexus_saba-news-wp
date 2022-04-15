@@ -16,7 +16,7 @@ export default class Statistics extends Component {
             const {homeStatistic, awayStatistic} = this.props.match.statistic;
             statistices = [
                 { categoryId: 1, categoryName: 'Kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
-                { categoryId: 2, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.shoot, awayValue: awayStatistic.shoot, unit: '' },
+                { categoryId: 2, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.onGoal + homeStatistic.missGoal, awayValue: awayStatistic.onGoal + awayStatistic.missGoal, unit: '' },
                 { categoryId: 3, categoryName: 'Dứt điểm chính xác', homeValue: homeStatistic.onGoal, awayValue: awayStatistic.onGoal, unit: '' },
                 { categoryId: 4, categoryName: 'Phạm lỗi', homeValue: homeStatistic.foul, awayValue: awayStatistic.foul, unit: '' },
                 { categoryId: 5, categoryName: 'Thẻ Vàng', homeValue: homeStatistic.yellowCard, awayValue: awayStatistic.yellowCard, unit: '' },
