@@ -1,7 +1,6 @@
 ﻿import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import {
-    setSearchKey,
     setMajorLeagues,
     setLeague,
     setMatches,
@@ -25,7 +24,6 @@ const getMatchesBySeason = params => async dispatch => {
 };
 
 export const ActionCreators = {
-    setSearchKey,
     setMajorLeagues,
     setLeague,
     setMatches,

@@ -13,9 +13,7 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const protocol = new signalR.JsonHubProtocol();
-        const transport = signalR.HttpTransportType.LongPolling;
         const options = {
-            transport,
             logMessageContent: false,
             logger: signalR.LogLevel.None
         };

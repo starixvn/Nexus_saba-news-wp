@@ -7,7 +7,7 @@ import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import SignalR from './SignalR';
 import League from './League';
-import MatchGrid from './match-grid';
+import MatchGrid from './MatchGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
 

@@ -40,24 +40,18 @@
             {
                 using (IMultiResultReader multi = await db.QueryMultipleAsync())
                 {
-                    var league = multi.Read<League, Season, League>(
-                        (league, season) =>
-                        {
-                            league.Season = season;
+                    var league = multi.Read<League>().FirstOrDefault();
 
-                            return league;
-                        },
-                        splitOn: "SeasonId").FirstOrDefault();
-
-                    var matches = multi.Read<Match, Team, Team, Match>(
-                        (match, home, away) =>
+                    var matches = multi.Read<Match, Team, Team, SeasonStage, Match>(
+                        (match, home, away, stage) =>
                         {
                             match.HomeTeam = home;
                             match.AwayTeam = away;
+                            match.Stage = stage;
 
                             return match;
                         },
-                        splitOn: "HomeTeamId, AwayTeamId");
+                        splitOn: "HomeTeamId, AwayTeamId, StageId");
 
                     return (league, matches.ToList());
                 }

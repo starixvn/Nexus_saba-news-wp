@@ -4,5 +4,6 @@
     {
         public long StageId { get; set; }
         public string StageNameEN { get; set; }
+        public short OrderIndex { get; set; }
     }
 }

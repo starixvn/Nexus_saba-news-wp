@@ -12,6 +12,10 @@
         public League League { get; set; }
         public Team HomeTeam { get; set; }
         public Team AwayTeam { get; set; }
+
+        public Season Season { get; set; }
+        public SeasonStage Stage { get; set; }
+
         public short Status { get; set; }
         public short HomeTeamHalfScore { get; set; }
         public short AwayTeamHalfScore { get; set; }

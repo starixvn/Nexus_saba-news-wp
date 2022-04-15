@@ -3,15 +3,11 @@
 const leagueDetailSlice = createSlice({
     name: 'leagueDetailSlice',
     initialState: {
-        searchKey: '',
         majorLeagues: [],
         league: null,
         matches: null
     },
     reducers: {
-        setSearchKey: (state, action) => {
-            state.searchKey = action.payload;
-        },
         setMajorLeagues: (state, action) => {
             state.majorLeagues = action.payload;
         },
@@ -37,7 +33,6 @@ const leagueDetailSlice = createSlice({
 const { actions, reducer } = leagueDetailSlice;
 
 export const {
-    setSearchKey,
     setMajorLeagues,
     setLeague,
     setMatches,
