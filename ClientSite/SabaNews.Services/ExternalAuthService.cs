@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Auth;
     using SabaNews.Models.Auth;
     using SabaNews.Services.Interfaces;
@@ -25,7 +26,7 @@
                 Identifier = user.Identifier,
                 LastName = user.LastName,
                 LoginType = user.LoginType,
-                Photo  = user.Avatar
+                Photo = user.Avatar
             };
             CommandResult result = await baseService.ExecuteNonQueryAsync(command);
             user.Id = command.UserId;

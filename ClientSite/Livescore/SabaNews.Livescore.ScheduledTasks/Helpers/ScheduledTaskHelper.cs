@@ -24,7 +24,7 @@
 
         public static void RegisterDI(this IServiceCollection services, IConfiguration configuration)
         {
-            ProviderApiHelpers.RegisterDI(services, configuration);
+            ProviderApiHelpers.RegisterServices(services, configuration);
         }
     }
 }

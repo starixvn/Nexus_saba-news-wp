@@ -6,8 +6,6 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
     using Fanex.Caching;
-    using Fanex.Data.Repository;
-    using Fanex.Logging;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Authentication.Google;
@@ -16,7 +14,6 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using SabaNews.Core.Repositories;
     using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.ExportExcel;
@@ -24,17 +21,6 @@
 
     public static class DI
     {
-        public static void RegisterCoreDI(this IServiceCollection services)
-        {
-            services.AddSingleton<IBaseService, BaseService>();
-            services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ILogger, Logger>();
-            services.AddScoped<IBaseMailService, BaseMailService>();
-            services.AddScoped<ISessionService, SessionService>();
-        }
-
         public static void RegisterServices(this IServiceCollection services)
         {
             services.AddTransient<ISerializerService, SerializerService>();
@@ -54,7 +40,7 @@
             services.AddTransient<IStatisticService, StatisticService>();
             services.AddTransient<IPollService, PollService>();
             services.AddTransient<IBannerService, BannerService>();
-            services.AddTransient<ILogService, Services.LogService>();
+            services.AddTransient<ILogService, LogService>();
             services.AddTransient<IExportExcelService, ExportExcelService>();
         }
 

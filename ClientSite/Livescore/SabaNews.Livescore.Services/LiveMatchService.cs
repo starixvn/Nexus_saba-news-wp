@@ -1,9 +1,9 @@
 ﻿namespace SabaNews.Livescore.Services
 {
     using System.Threading.Tasks;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Services.Criteria.LiveMatch;
     using SabaNews.Livescore.Services.Interfaces;
-    using SabaNews.Services;
 
     public class LiveMatchService : ILiveMatchService
     {

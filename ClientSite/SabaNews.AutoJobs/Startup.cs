@@ -2,11 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Fanex.Caching;
     using Fanex.Caching.Redis;
     using Fanex.Data;
     using Fanex.Data.MySql;
-    using Fanex.Data.Repository;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -19,9 +17,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using SabaNews.AutoJobs.Models;
     using SabaNews.AutoJobs.Workers;
+    using SabaNews.Core.Extensions;
     using SabaNews.Core.Middlewares;
-    using SabaNews.Core.Repositories;
-    using SabaNews.Core.Services;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using Sentry;
@@ -53,12 +50,6 @@
             services.AddDataProtection()
                 .SetApplicationName(Configuration.GetSection("RedisConfig:ApplicationName").Value)
                 .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
-
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = Configuration.GetSection("RedisConfig:ConnectionString").Value;
-                options.InstanceName = $"SabaSports.Session-";
-            });
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -114,19 +105,11 @@
 
         private static void AddDependencyInjection(IServiceCollection services)
         {
-            services.AddSingleton<ILogger, Logger>();
-            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
-
-            services.AddSingleton<IBaseService, BaseService>();
-            services.AddSingleton<IDynamicRepository, DynamicRepository>();
-            services.AddSingleton<IBaseRepository, BaseRepository>();
+            CoreDI.RegisterService(services);
 
             services.AddTransient<ISerializerService, SerializerService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IBannerService, BannerService>();
-
-            services.AddTransient<ICacheService, CacheService>();
-            services.AddTransient<ICacheWrapperService, CacheWrapperService>();
 
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();

@@ -18,7 +18,6 @@
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Core.Models;
-    using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.Services;
@@ -125,7 +124,6 @@
 
         private static void AddDependencyInjection(IServiceCollection services)
         {
-            services.AddSingleton<IFetchMatchService, FetchMatchService>();
             services.AddSingleton<ILiveMatchService, LiveMatchService>();
         }
 

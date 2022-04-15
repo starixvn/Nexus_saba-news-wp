@@ -21,9 +21,9 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using SabaNews.Core.Extensions;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
-    using SabaNews.Core.Services;
     using SabaNews.Livescore.Services;
     using SabaNews.Site.Extensions;
     using SabaNews.Site.Hubs;
@@ -119,9 +119,7 @@
             services.AddControllersWithViews();
             services.AddSingleton(Configuration);
 
-            services.RegisterCoreDI();
-            services.AddSingleton<ILogger, Logger>();
-            services.AddSingleton<ILogServiceProvider, LogServiceProvider>();
+            CoreDI.RegisterService(services);
             services.ResolveLivescoreServiceDI();
             services.AddSingleton(
             HtmlEncoder.Create(allowedRanges: new[] {

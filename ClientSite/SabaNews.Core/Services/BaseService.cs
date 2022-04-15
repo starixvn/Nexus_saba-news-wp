@@ -1,12 +1,11 @@
-﻿namespace SabaNews.Services
+﻿namespace SabaNews.Core.Services
 {
-    using Fanex.Data.Repository;
-    using SabaNews.Core.Models;
-    using SabaNews.Core.Repositories;
-    using SabaNews.Core.Services;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Fanex.Data.Repository;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Repositories;
 
     public class BaseService : IBaseService
     {
@@ -29,7 +28,7 @@
             if (criteria != null && criteria.IsValid())
             {
                 var startime = DateTime.UtcNow;
-                var result =  await dynamicRepository.FetchAsync<T>(criteria);
+                var result = await dynamicRepository.FetchAsync<T>(criteria);
                 logServiceProvider.WriteLogFileTrackingSP(criteria, DateTime.UtcNow.Subtract(startime).Milliseconds);
                 return result;
             }

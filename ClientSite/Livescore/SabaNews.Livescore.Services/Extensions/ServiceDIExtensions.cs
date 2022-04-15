@@ -9,7 +9,6 @@
         public static void ResolveLivescoreServiceDI(this IServiceCollection services)
         {
             services.AddScoped<IMatchRepository, MatchRepository>();
-
             services.AddScoped<ILeagueService, LeagueService>();
             services.AddScoped<IMatchService, MatchService>();
             services.AddScoped<IPushSignalService, PushSignalService>();

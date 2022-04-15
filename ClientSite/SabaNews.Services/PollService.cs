@@ -1,12 +1,13 @@
 ﻿namespace SabaNews.Services
 {
+    using System.Linq;
+    using System.Threading.Tasks;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
     using SabaNews.Models.Poll;
     using SabaNews.Models.ViewModel.Poll;
     using SabaNews.Services.Interfaces;
-    using System.Threading.Tasks;
-    using System.Linq;
 
     public class PollService : IPollService
     {
@@ -16,6 +17,7 @@
         {
             this.baseService = baseService;
         }
+
         public async Task<PollViewModel> GetPollAsync(GetPollCriteria criteria)
         {
             var (polls, question) = await baseService.FetchMultipleAsync<PollModel, QuestionModel>(criteria);

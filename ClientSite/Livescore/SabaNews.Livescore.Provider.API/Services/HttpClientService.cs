@@ -118,10 +118,7 @@
         private async Task<string> GetTokenAsync()
         {
             var tokenModel = await cacheWrapperService.GetAsync<AuthToken>(CachingKeys.APITokenKey);
-            if (tokenModel is null)
-            {
-                tokenModel = await RefreshTokenAsync();
-            }
+            tokenModel ??= await RefreshTokenAsync();
 
             return tokenModel?.Token;
         }

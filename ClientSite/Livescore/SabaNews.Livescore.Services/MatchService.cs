@@ -3,12 +3,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Repositories;
     using SabaNews.Livescore.Services.Criteria.Match;
-    using SabaNews.Services;
 
     public class MatchService : IMatchService
     {
@@ -68,7 +68,6 @@
             };
             return data;
         }
-
 
         public async Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria)
         {

@@ -1,18 +1,19 @@
 ﻿namespace SabaNews.Services
 {
-    using Microsoft.Extensions.Configuration;
-    using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
-    using SabaNews.Criteria;
-    using SabaNews.Criteria.Posts;
-    using SabaNews.Models;
-    using SabaNews.Models.Posts;
-    using SabaNews.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Configuration;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
+    using SabaNews.Criteria;
+    using SabaNews.Criteria.Posts;
+    using SabaNews.Models;
+    using SabaNews.Models.Posts;
+    using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
     {
@@ -130,11 +131,12 @@
 
         public async Task<IEnumerable<Post>> SearchPostAsync(SearchPostsCriteria criteria)
         {
-            if (string.IsNullOrEmpty(criteria._Keyword)) {
-                return null; 
+            if (string.IsNullOrEmpty(criteria._Keyword))
+            {
+                return null;
             }
             var posts = await baseService.GetDataAsync<Post>(criteria);
-           
+
             return FormatData(posts).ToArray();
         }
 

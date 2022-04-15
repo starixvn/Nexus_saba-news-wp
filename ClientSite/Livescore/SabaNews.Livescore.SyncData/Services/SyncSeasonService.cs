@@ -1,18 +1,18 @@
-﻿namespace SabaNews.Livescore.SyncData.Services
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-    using SabaNews.Core.Models;
-    using SabaNews.Livescore.Core.Enum;
-    using SabaNews.Livescore.Provider.API.Models.Season;
-    using SabaNews.Livescore.Provider.API.Services;
-    using SabaNews.Livescore.SyncData.Criteria.Season;
-    using SabaNews.Livescore.SyncData.Models.Season;
-    using SabaNews.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SabaNews.Core.Models;
+using SabaNews.Core.Services;
+using SabaNews.Livescore.Core.Enum;
+using SabaNews.Livescore.Provider.API.Models.Season;
+using SabaNews.Livescore.Provider.API.Services;
+using SabaNews.Livescore.SyncData.Criteria.Season;
+using SabaNews.Livescore.SyncData.Models.Season;
 
+namespace SabaNews.Livescore.SyncData.Services
+{
     public class SyncSeasonService : ISyncSeasonService
     {
         private readonly AppSettings appSettings;
@@ -74,7 +74,7 @@
             DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
             lastUpdatedTime = FirstDayOfWeek(lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData);
             var today = DateTime.Now;
-            for(var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
+            for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
             {
                 var param = new FetchSeasonStandingsParams
                 {
@@ -84,9 +84,9 @@
                 var updatedSeasonIds = await fetchSeasonService.FetchSeasonStandingsAsync<UpdatedSeasonIdListResponse>(param);
                 if (updatedSeasonIds.Any(x => x.UpdatedSeasonIdList.Any()))
                 {
-                    foreach(var item in updatedSeasonIds)
+                    foreach (var item in updatedSeasonIds)
                     {
-                        foreach(var seasonId in item.UpdatedSeasonIdList)
+                        foreach (var seasonId in item.UpdatedSeasonIdList)
                         {
                             var seasonStandings = await GetSeasonStandingsAsync(seasonId);
                             await ImportSeasonStandingsAsync(seasonId, seasonStandings);
@@ -147,11 +147,11 @@
         protected internal virtual async Task ImportSeasonStandingsAsync(long seasonId, IList<SeasonStandingsResponse> seasonStandings)
         {
             var records = new List<SeasonStandings>();
-            foreach(var seasonStanding in seasonStandings)
+            foreach (var seasonStanding in seasonStandings)
             {
                 foreach (var group in seasonStanding.Group)
                 {
-                    foreach(var rank in group.Rank)
+                    foreach (var rank in group.Rank)
                     {
                         var record = new SeasonStandings
                         {

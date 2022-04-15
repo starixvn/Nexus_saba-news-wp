@@ -1,10 +1,10 @@
-﻿namespace SabaNews.Services
+﻿namespace SabaNews.Core.Services
 {
-    using Fanex.Data.Repository;
-    using SabaNews.Core.Models;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Fanex.Data.Repository;
+    using SabaNews.Core.Models;
 
     public interface IBaseService
     {

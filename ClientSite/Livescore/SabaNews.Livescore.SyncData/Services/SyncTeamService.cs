@@ -6,11 +6,11 @@
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Team;
-    using SabaNews.Services;
 
     public class SyncTeamService : ISyncTeamService
     {

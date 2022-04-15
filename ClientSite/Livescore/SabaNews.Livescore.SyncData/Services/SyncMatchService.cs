@@ -5,10 +5,10 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
-    using SabaNews.Services;
 
     public class SyncMatchService : ISyncMatchService
     {

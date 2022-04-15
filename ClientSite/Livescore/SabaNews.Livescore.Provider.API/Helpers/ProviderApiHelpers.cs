@@ -10,7 +10,7 @@
 
     public static class ProviderApiHelpers
     {
-        public static void RegisterDI(IServiceCollection services, IConfiguration configuration)
+        public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
         {
             RegisterHttpClientService(services, configuration);
             RegisterConfiguration(services, configuration);

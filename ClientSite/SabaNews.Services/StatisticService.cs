@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
