@@ -46,7 +46,7 @@ export default class MatchStage extends PureComponent {
                 break;
 
             case MatchStatus.Intermission:
-                stage = <span>{LangHelper.getResource('Intermission')}</span>;
+                stage = <p>{LangHelper.getResource('Intermission')}</p>;
                 break;
 
             case MatchStatus.PenaltyShootout:

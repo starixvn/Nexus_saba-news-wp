@@ -63,7 +63,7 @@ export default class Match extends PureComponent {
         const isIntermission = match.status === MatchStatus.Intermission;
 
         return (
-            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'intermission' : ''}`}
+            <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                 onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
             >
                 <i className="icon-livescore icon-favourite-outline" />

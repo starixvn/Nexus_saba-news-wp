@@ -179,7 +179,7 @@
 
                 &.live {
                     .soccer-match-stage {
-                        span {
+                        p, span {
                             color: #E13C29;
                             font-size: 1.3rem;
                             line-height: 1.5rem;
@@ -216,7 +216,7 @@
                 }
 
                 .soccer-match-team {
-                    width: 70%;
+                    width: 66%;
                     /*padding: 0 1.2rem;*/
 
                     @include tableMobile {
@@ -324,12 +324,45 @@
                         text-align: center;
                     }
 
-                    span {
+                    p, span {
                         font-size: 1.3rem;
                         line-height: 1.4rem;
 
                         @include tableMobile {
                             font-size: 1.1rem;
+                        }
+                    }
+                }
+
+                &.live-intermission {
+                    .soccer-match-stage {
+                        p {
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                            padding-top: .5rem;
+
+                            @include tableMobile {
+                                font-size: .9rem;
+                                line-height: 1.5rem;
+                            }
+
+                            &:before {
+                                left: auto;
+                                right: 50%;
+                                top: 0;
+                                transform: translate(50%,-50%);
+                            }
+
+                            &:after {
+                                left: auto;
+                                right: 42%;
+                                top: -7px;
+                                transform: translate(50%, -50%);
+
+                                @include tableMobile {
+                                    right: 35%;
+                                }
+                            }
                         }
                     }
                 }
