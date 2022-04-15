@@ -16,18 +16,18 @@
     {
         private const string ContentType = "application/json";
         private readonly IHttpClientFactory clientFactory;
-        private readonly ICacheService cacheService;
+        private readonly ICacheWrapperService cacheWrapperService;
         private readonly ILogServiceProvider logService;
         private readonly ApiConfiguration config;
 
         public HttpClientService(
             IHttpClientFactory clientFactory,
-            ICacheService cacheService,
+            ICacheWrapperService cacheWrapperService,
             ILogServiceProvider logService,
             ApiConfiguration config)
         {
             this.clientFactory = clientFactory;
-            this.cacheService = cacheService;
+            this.cacheWrapperService = cacheWrapperService;
             this.logService = logService;
             this.config = config;
         }
@@ -117,7 +117,7 @@
 
         private async Task<string> GetTokenAsync()
         {
-            var tokenModel = await cacheService.GetAsync<AuthToken>(CachingKeys.APITokenKey);
+            var tokenModel = await cacheWrapperService.GetAsync<AuthToken>(CachingKeys.APITokenKey);
             if (tokenModel is null)
             {
                 tokenModel = await RefreshTokenAsync();
@@ -130,7 +130,7 @@
         {
             var tokenModel = await AuthenticateAsync();
 
-            await cacheService.SetAsync(CachingKeys.APITokenKey, tokenModel,
+            await cacheWrapperService.SetAsync(CachingKeys.APITokenKey, tokenModel,
                 new CacheItemOptions
                 {
                     AbsoluteExpiration = tokenModel.TokenExpired

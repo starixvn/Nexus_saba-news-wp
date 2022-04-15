@@ -10,7 +10,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fanex.Caching" Version="2.2.2" />
         <PackageReference Include="Fanex.Caching.Redis.AspNetCore" Version="2.2.2.1" />
         <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="5.0.15" />
         <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />

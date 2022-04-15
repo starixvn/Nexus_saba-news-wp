@@ -1,9 +1,8 @@
-﻿namespace SabaNews.Services
+﻿namespace SabaNews.Core.Services
 {
     using System.Threading.Tasks;
     using Fanex.Caching;
     using Newtonsoft.Json;
-    using SabaNews.Services.Interfaces;
 
     public class CacheWrapperService : ICacheWrapperService
     {

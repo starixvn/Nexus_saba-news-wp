@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Services.Interfaces
+﻿namespace SabaNews.Core.Services
 {
     using System.Threading.Tasks;
     using Fanex.Caching;

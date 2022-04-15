@@ -126,8 +126,8 @@
             services.AddTransient<IBannerService, BannerService>();
 
             services.AddTransient<ICacheService, CacheService>();
+            services.AddTransient<ICacheWrapperService, CacheWrapperService>();
 
-            services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IFetchDataService, FetchDataService>();
             services.AddTransient<IRefreshCachingService, RefreshCachingService>();
         }
