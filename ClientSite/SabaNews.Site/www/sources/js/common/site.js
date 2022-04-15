@@ -61,8 +61,8 @@ export default class Site {
     }
 
     static CheckIncidentGeneralType(type) {
-       if(type === IncidentStatus.Goal || type ===  IncidentStatus.YellowCard || type === IncidentStatus.RedCard || type === IncidentStatus.OvertimeEnds || type === IncidentStatus.PenaltyShootout
-        || type === IncidentStatus.PenaltyMissed || type === IncidentStatus.OwnGoal || type === IncidentStatus.VAR || type === IncidentStatus.Penalty) {
+       if(type === IncidentStatus.Goal || type ===  IncidentStatus.YellowCard || type === IncidentStatus.RedCard || type === IncidentStatus.YellowTurnRedCard || type === IncidentStatus.OvertimeEnds
+        || type === IncidentStatus.PenaltyMissed || type === IncidentStatus.OwnGoal || type === IncidentStatus.VAR || type === IncidentStatus.Penalty || type === IncidentStatus.Substitution) {
             return true;
         }
         return false;

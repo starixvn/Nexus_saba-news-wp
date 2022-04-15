@@ -47,10 +47,9 @@ export default class MatchGenetalInfo extends Component {
     };
 
     getBallAndCardNumber = (position) => {
-        const { incidents, statistic } = this.props.match;
-        if(!incidents) {
-            return null;
-        }
+        const { statistic } = this.props.match;
+        const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
+        console.log(incidents);
         let goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
         const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString())  && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
         let numberRedCard = 0;
@@ -72,7 +71,7 @@ export default class MatchGenetalInfo extends Component {
                                 <span className="icon-th">
                                     <IncidentIcon type = {goal.type}/>
                                 </span>
-                                <span>({goal.time}') - {goal.playerName}</span>
+                                <span>({goal.timeShow}') - {goal.playerName}</span>
                             </div>
                         )
                     })

@@ -30,7 +30,6 @@ export default class IncidentIcon extends Component {
                     </svg>
                 </span>
             </>
-            
         );
     }
 
@@ -59,7 +58,10 @@ export default class IncidentIcon extends Component {
 
     renderYellowTurnRedCardIcon = () => {
         return (
-            <div>Yellow Turn Red Card</div>
+            <div className="pr-30">
+                <span className="ic-yellow-card"></span>
+                <span className="ic-red-card"></span>
+            </div>
         );
     }
 
@@ -107,7 +109,6 @@ export default class IncidentIcon extends Component {
                 icon
             }
             </>
-            
         );
     }
 }

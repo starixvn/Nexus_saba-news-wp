@@ -5,6 +5,7 @@ import { ActionCreators } from '../actions';
 import { IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export class Lineups extends Component {
     constructor(props) {
@@ -398,7 +399,7 @@ export class Lineups extends Component {
         if(!this.props.match.incidents) {
             return null;
         }
-        const incidents = this.props.match.incidents;
+        const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         const lineup = this.props.match.lineup;
         const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
         const substitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === position);
@@ -408,9 +409,9 @@ export class Lineups extends Component {
                 const outPlayer = players.find(item => item.playerId === incident.outPlayerId)
                 return (
                     <tr key={key}>
-                        <td>{incident.time}</td>
-                        <td>{inPlayer.playerNumber || 0} - {incident.inPlayerName}</td>
-                        <td>{outPlayer.playerNumber || 0} - {incident.outPlayerName}</td>
+                        <td>{incident.timeShow}</td>
+                        <td>{inPlayer?.playerNumber || 0} - {incident.inPlayerName}</td>
+                        <td>{outPlayer?.playerNumber || 0} - {incident.outPlayerName}</td>
                     </tr>
                 )
             })

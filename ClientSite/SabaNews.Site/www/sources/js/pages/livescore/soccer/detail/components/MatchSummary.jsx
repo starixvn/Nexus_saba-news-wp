@@ -1,9 +1,9 @@
 ﻿import React, { Component } from 'react';
 import { IncidentPosition, IncidentStatus, MatchStatus } from '@jsroot/common/constants';
-import Substitution from './incidents/Substitution';
 import GeneralIncident from './incidents/GeneralIncident';
 import PenaltyShootOut from './incidents/PenaltyShootOut';
 import Site from '@jsroot/common/site';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class MatchSummary extends Component {
     constructor(props) {
@@ -14,14 +14,13 @@ export default class MatchSummary extends Component {
         if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
             return null;
         }
-        const { incidents, generalInfo } = this.props.match;
+        const { generalInfo } = this.props.match;
+        const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         let lastIncident = incidents[incidents.length - 1];
-        let hasInjuryTime = false;
         let hasPenaltyShootout = false;
         let homePenaltyShootoutScore = 0;
         let awayPenaltyShootoutScore = 0;
         let penaltyShootoutScore = "[0 - 0]";
-        let halfTimeScore = "[0 - 0]";
         let processScore = "[0 - 0]";
         let penaltyShootOutData = {
             homeType: null,
@@ -40,19 +39,7 @@ export default class MatchSummary extends Component {
                     </div>
                     {
                         incidents.map((incident, key) => {
-                            if(Site.CheckIncidentTypeToUpdateScore(incident.type)) {
-                                processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
-                            }
-                            if(incident.type === IncidentStatus.InjuryTime && (incident.time >= 45 && incident.time < 105)) {
-                                hasInjuryTime = true;
-                            }
-                            if(incident.type ===  IncidentStatus.Halftime) {
-                                hasInjuryTime = false;
-                                halfTimeScore = processScore;
-                            }
-                            if(incident.type ===  IncidentStatus.End) {
-                                hasInjuryTime = false;
-                            }
+                            processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
                             if((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed) && (incident.homeScore === 0 && incident.awayScore === 0)) {
                                 hasPenaltyShootout = true;
                                 if(incident.position === IncidentPosition.Home) {
@@ -72,22 +59,11 @@ export default class MatchSummary extends Component {
                                     penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
                                 }
                             }
-
-                            if(incident.type === IncidentStatus.Substitution) {
-                                return (
-                                    <Substitution
-                                        key={key}
-                                        incident = {incident}
-                                        hasInjuryTime = {hasInjuryTime}
-                                    />
-                                )
-                            } else if(Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
+                            if(Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
                                 return (
                                     <GeneralIncident
                                         key={key}
                                         incident = {incident}
-                                        processScore = {processScore}
-                                        hasInjuryTime = {hasInjuryTime}
                                     />
                                 )
                             } else if(Site.CheckIncidentTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
@@ -116,18 +92,18 @@ export default class MatchSummary extends Component {
                             }
                         })
                     }
-                        {
-                            generalInfo.status === MatchStatus.Finished &&
-                            <div className="head-top-team" >
-                                <div className="flexbox time-event">
-                                    <p>Trận Đấu kết thúc</p>
-                                </div>
-                                <div className="flexbox time-event">
-                                    <p>{(homePenaltyShootoutScore !== 0 ||  homePenaltyShootoutScore !== 0)? "PEN: " + penaltyShootoutScore : processScore}</p>
-                                </div>
+                    {
+                        generalInfo.status === MatchStatus.Finished &&
+                        <div className="head-top-team" >
+                            <div className="flexbox time-event">
+                                <p>Trận Đấu kết thúc</p>
                             </div>
-                        }
-                    </div>
+                            <div className="flexbox time-event">
+                                <p>{(homePenaltyShootoutScore !== 0 ||  homePenaltyShootoutScore !== 0)? "PEN: " + penaltyShootoutScore : processScore}</p>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

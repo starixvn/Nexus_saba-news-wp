@@ -648,10 +648,8 @@ body {
                 -webkit-box-ordinal-group: 3;
                 -ms-flex-order: 2;
                 order: 2;
-                margin-right: 0;
                 margin-left: 5px;
             }
-            
         }
         .item-th {
             margin-top: 0;
@@ -695,7 +693,6 @@ body {
 
     .icon-th {
         width: 16px;
-        margin-top: -1px;
         text-align: center;
 
         .ic {
@@ -897,6 +894,9 @@ svg.fill-red {
         left: -5px;
         top: 10px;
     }
+}
+.pr-30 {
+    padding-right: 30px;
 }
 
 .icon_f.ic_the_vang, .icon_f.ic_the_do {
