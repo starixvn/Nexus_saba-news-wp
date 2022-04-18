@@ -23,7 +23,8 @@
         public short DrawHome { get; set; }
         public short DrawAway { get; set; }
 
-        public object Promotion { get; set; }
+        public int? PromotionId => Promotion?.Id;
+        public PromotionRankingResponse Promotion { get; set; }
 
         public short Points { get; set; }
         public short PointsHome { get; set; }
