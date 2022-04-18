@@ -14,7 +14,7 @@
 
         public async Task UpdateLiveMatchDetail(long matchId, MatchDetail detail)
         {
-            await Clients.All.UpdateMatchDetail(detail);
+            await Clients.Group(matchId.ToString()).UpdateMatchDetail(detail);
         }
 
         public async Task JoinSoccerGroup(long matchId)

@@ -16,9 +16,7 @@ export class AppContainer extends Component {
 
     render() {
         if (!this.props.match || !this.props.match.generalInfo ) {
-            return (
-                <h1 className="livescore-soccer">Trận đấu bạn tìm không có</h1>
-            );
+            return null;
         }
         return (
             <>
