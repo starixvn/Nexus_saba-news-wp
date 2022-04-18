@@ -43,6 +43,7 @@ export class SignalR extends Component {
     start = () => {
         try {
             this.connection.start().then(() => {
+                console.log("connect successful");
                 this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
                     .then(() => console.log(`join group ${window.selectedMatchId}`))
                     .catch(err => console.error(err.toString()));

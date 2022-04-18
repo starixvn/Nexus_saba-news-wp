@@ -4,6 +4,7 @@ import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/co
 import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import  MatchStage from '@jsroot/components/MatchStage'
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
@@ -115,7 +116,9 @@ export default class MatchGenetalInfo extends Component {
             <>
                 <div className="tournament-header">{leagueName} - {startTime.format("DD/MM/YYYY")}</div>
                 <div className="duel-participant">
-                    <div className="duel-participant-start-time">{generalInfo.status === 0 ? startTime.format("HH:mm") : Site.MappingStatusMatchText(generalInfo.status)}</div>
+                    <div className="duel-participant-start-time">
+                        <MatchStage match={generalInfo} />
+                    </div>
                     <div className="duel-participant-home">
                         <div className="participant-status">
                             {this.getTeamStatus(true)}
