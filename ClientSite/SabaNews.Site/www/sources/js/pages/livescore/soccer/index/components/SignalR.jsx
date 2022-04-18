@@ -18,6 +18,7 @@ export class SignalR extends Component {
         const options = {
             transport,
             logMessageContent: false,
+            skipNegotiation: true,
             logger: signalR.LogLevel.None
         };
 
