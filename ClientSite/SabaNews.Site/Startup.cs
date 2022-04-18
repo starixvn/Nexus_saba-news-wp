@@ -16,7 +16,6 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.DataProtection;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.HttpOverrides;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -191,10 +190,7 @@
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                endpoints.MapHub<LivescoreHub>("/livescore/hubs", options =>
-                {
-                    options.Transports = HttpTransportType.LongPolling;
-                });
+                endpoints.MapHub<LivescoreHub>("/livescore/hubs");
             });
         }
     }
