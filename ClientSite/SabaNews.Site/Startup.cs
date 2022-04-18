@@ -82,12 +82,12 @@
             var appName = Configuration.GetSection("RedisConfig:ApplicationName").Value;
             services.AddDataProtection()
                 .SetApplicationName(appName)
-                .PersistKeysToStackExchangeRedis(Redis, "SabaSports-Keys");
+                .PersistKeysToStackExchangeRedis(Redis, $"{appName}:DataProtection:Keys");
 
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = redisConfig;
-                options.InstanceName = $"SabaSports.Session-";
+                options.InstanceName = $"{appName}:Session:";
             });
 
             services.AddSignalR(hubOptions =>
@@ -96,7 +96,7 @@
                 hubOptions.MaximumReceiveMessageSize = int.Parse(Configuration.GetSection("SignalRMaximumReceiveMessageSize").Value);
             }).AddStackExchangeRedis(redisConfig, options =>
             {
-                options.Configuration.ChannelPrefix = appName;
+                options.Configuration.ChannelPrefix = $"{appName}:SignalR";
             });
 
             services.RegisterCookiePolicy();
