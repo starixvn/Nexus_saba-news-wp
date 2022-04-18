@@ -30,12 +30,7 @@ export class SignalR extends Component {
             this.props.setMatch(data);
         });
 
-
-        this.connection.start().then(() => {
-            this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
-                .then(() => console.log(`join group ${window.selectedMatchId}`))
-                .catch(err => console.error(err.toString()));
-        }).catch(err => console.error(err.toString()));
+        this.start();
     }
 
     componentWillUnmount() {
@@ -44,6 +39,19 @@ export class SignalR extends Component {
             .catch(err => console.error(err.toString()));
         this.connection.stop();
     }
+
+    start = () => {
+        try {
+            this.connection.start().then(() => {
+                this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
+                    .then(() => console.log(`join group ${window.selectedMatchId}`))
+                    .catch(err => console.error(err.toString()));
+            }).catch(err => console.error(err.toString()));
+        } catch (err) {
+            console.log(err);
+            setTimeout(start, 5000);
+        }
+    };
 
     render() {
         return null;
