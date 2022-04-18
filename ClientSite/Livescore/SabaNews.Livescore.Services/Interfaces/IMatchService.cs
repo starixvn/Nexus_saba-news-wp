@@ -17,6 +17,7 @@
 
         Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria);
 
+        Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria);
 
         Task<LineupDetail> GetLineupAsync(GetMatchLineupCriteria criteria);
 

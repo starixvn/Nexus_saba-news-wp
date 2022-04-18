@@ -35,3 +35,18 @@
         }
     }
 }
+
+.season-standings {
+    .table {
+        .soccer-team {
+            display: flex;
+            align-items: center;
+
+            .soccer-team-logo {
+                width: 2.4rem;
+                height: 2.4rem;
+                margin-right: 1.6rem;
+            }
+        }
+    }
+}

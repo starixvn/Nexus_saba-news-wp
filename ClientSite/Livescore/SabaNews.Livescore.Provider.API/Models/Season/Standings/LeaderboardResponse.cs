@@ -34,7 +34,7 @@
         public short GoalsHome { get; set; }
         public short GoalsAway { get; set; }
 
-        public short GoalAgainsts { get; set; }
+        public short GoalsAgainst { get; set; }
         public short GoalsAgainstHome { get; set; }
         public short GoalsAgainstAway { get; set; }
 

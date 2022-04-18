@@ -37,6 +37,12 @@
             return await matchRepository.GetMatchBySeasonAsync(criteria);
         }
 
+        public async Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria)
+        {
+            var standings = await baseService.GetDataAsync<SeasonStandings>(criteria);
+            return standings.ToList();
+        }
+
         public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)
         {
             var result = await matchRepository.GetMatchByIdAsync(criteria);

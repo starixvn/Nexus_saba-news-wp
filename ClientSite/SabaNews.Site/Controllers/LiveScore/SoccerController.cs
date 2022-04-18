@@ -130,6 +130,13 @@
         }
 
         [HttpPost]
+        public async Task<IActionResult> GetSeasonStandings([FromBody] GetSeasonStandingsCriteria criteria)
+        {
+            IList<SeasonStandings> standings = await matchService.GetSeasonStandingsAsync(criteria);
+            return Json(standings);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> GetMajorLeagues()
         {
             IList<League> leagues = await leagueService.GetMajorLeagueAsync();

@@ -15,6 +15,7 @@
         public short RoundCount { get; set; }
 
         public bool IsMajor { get; set; }
+        public int Priority { get; set; }
 
         public bool HasSeasonStandings { get; set; }
 

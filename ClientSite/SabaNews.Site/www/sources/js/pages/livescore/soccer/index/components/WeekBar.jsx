@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import LangHelper from '@jsroot/common/langHelper';
 
 export const withNavigation = Component => {
     return props => <Component {...props} navigate={useNavigate()} />;

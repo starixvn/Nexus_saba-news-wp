@@ -4,7 +4,8 @@ import {
     setMajorLeagues,
     setLeague,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setSeasonStandings
 } from './leagueDetailSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -23,11 +24,20 @@ const getMatchesBySeason = params => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
+const getSeasonStandings = params => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getSeasonStandings');
+    await DataService.postDataAsync(url, params).then(response => {
+        dispatch(setSeasonStandings(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setMajorLeagues,
     setLeague,
     setMatches,
     setLiveMatches,
+    setSeasonStandings,
     getMajorLeagues,
-    getMatchesBySeason
+    getMatchesBySeason,
+    getSeasonStandings
 };

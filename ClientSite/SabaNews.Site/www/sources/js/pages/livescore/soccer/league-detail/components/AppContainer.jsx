@@ -2,16 +2,29 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Tabs, Tab } from 'react-bootstrap';
+import moment from 'moment';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import SignalR from './SignalR';
 import League from './League';
 import MatchGrid from './MatchGrid';
+import SeasonStandings from './SeasonStandings';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import { MatchStatus } from '@jsroot/common/constants';
+moment.updateLocale('vi', {
+    weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
+});
+moment.locale('vi');
 
 export class AppContainer extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedTab: 'stadings'
+        };
+    }
+
     componentDidMount() {
         this.props.getMajorLeagues();
         this.getMatches();
@@ -25,14 +38,13 @@ export class AppContainer extends Component {
         this.props.getMatchesBySeason(params);
     };
 
+    handleSelectTab = key => {
+        this.setState({ selectedTab: key });
+    };
+
     render() {
-        const { majorLeagues, league, matches } = this.props;
-        let preMatches = [],
-            postMatches = [];
-        if (matches && matches.length > 0) {
-            preMatches = matches.filter(match => match.status !== MatchStatus.Finished);
-            postMatches = matches.filter(match => match.status === MatchStatus.Finished);
-        }
+        const selectedTab = this.state.selectedTab;
+        const { majorLeagues, league, preMatches, postMatches } = this.props;
 
         return (
             <div className="container livescore-container">
@@ -43,7 +55,10 @@ export class AppContainer extends Component {
                             league &&
                             <League league={league} />
                         }
-                        <Tabs defaultActiveKey="schedule" id="livescore-tab-league-detail" className="live-score-nav">
+                        <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
+                            className="live-score-nav"
+                            onSelect={this.handleSelectTab}
+                        >
                             <Tab eventKey="schedule" title="Lịch thi đấu">
                                 <MatchGrid matches={preMatches} />
                             </Tab>
@@ -51,6 +66,7 @@ export class AppContainer extends Component {
                                 <MatchGrid matches={postMatches} />
                             </Tab>
                             <Tab eventKey="stadings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
+                                <SeasonStandings />
                             </Tab>
                         </Tabs>
                     </div>
@@ -67,8 +83,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, league, matches } = state;
-    return { majorLeagues, league, matches };
+    const { majorLeagues, league, preMatches, postMatches } = state;
+    return { majorLeagues, league, preMatches, postMatches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

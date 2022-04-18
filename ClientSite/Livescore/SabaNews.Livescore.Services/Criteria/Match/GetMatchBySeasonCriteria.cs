@@ -13,6 +13,6 @@
 
         public override string GetSettingKey() => "Livescore_Match_GetBySeason";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => LeagueId > 0;
     }
 }

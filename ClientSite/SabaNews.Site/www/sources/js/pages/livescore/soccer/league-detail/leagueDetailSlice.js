@@ -1,11 +1,14 @@
 ﻿import { createSlice } from '@reduxjs/toolkit';
+import { MatchStatus } from '@jsroot/common/constants';
 
 const leagueDetailSlice = createSlice({
     name: 'leagueDetailSlice',
     initialState: {
         majorLeagues: [],
         league: null,
-        matches: null
+        preMatches: [],
+        postMatches: [],
+        seasonStandings: []
     },
     reducers: {
         setMajorLeagues: (state, action) => {
@@ -15,17 +18,26 @@ const leagueDetailSlice = createSlice({
             state.league = action.payload;
         },
         setMatches: (state, action) => {
-            state.matches = action.payload;
+            state.preMatches = action.payload.filter(match => match.status !== MatchStatus.Finished);
+            state.postMatches = action.payload.filter(match => match.status === MatchStatus.Finished);
         },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
             const totalItems = liveMatches.length;
             for (let i = 0; i < totalItems; i++) {
-                const index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                let index = state.preMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
-                    state.matches[index] = liveMatches[i];
+                    state.preMatches[index] = liveMatches[i];
+                }
+
+                index = state.postMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                if (index >= 0) {
+                    state.postMatches[index] = liveMatches[i];
                 }
             }
+        },
+        setSeasonStandings: (state, action) => {
+            state.seasonStandings = action.payload;
         }
     }
 });
@@ -36,7 +48,8 @@ export const {
     setMajorLeagues,
     setLeague,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setSeasonStandings
 } = actions;
 
 export default reducer;

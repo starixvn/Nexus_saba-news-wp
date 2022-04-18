@@ -1,13 +1,10 @@
-﻿import React, { PureComponent, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+﻿import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
-import { ActionCreators } from '../actions';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-export class MatchGrid extends PureComponent {
+export default class MatchGrid extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -27,7 +24,7 @@ export class MatchGrid extends PureComponent {
             if (!helper[key]) {
                 helper[key] = {
                     key: key,
-                    text: key,
+                    text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
                     childs: [{ ...currentItem }]
                 };
                 previousItem.push(helper[key]);
@@ -146,12 +143,3 @@ export class MatchGrid extends PureComponent {
         );
     }
 }
-
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
-
-const mapStateToProps = state => {
-    const { searchKey } = state;
-    return { searchKey };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(MatchGrid);
