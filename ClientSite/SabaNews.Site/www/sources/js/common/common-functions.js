@@ -32,7 +32,7 @@ export default class CommonFunctions {
             if(isInjurytime) {
                 if(time > 45 && time < 90) {
                     time = "45" + "+" + (time - 45);
-                } else {
+                } else if(time > 90 && time < 105) {
                     time = "90" + "+" + (time - 90);
                 }
             }
