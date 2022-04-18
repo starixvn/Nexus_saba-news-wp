@@ -13,7 +13,9 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const protocol = new signalR.JsonHubProtocol();
+        const transport = signalR.HttpTransportType.LongPolling;
         const options = {
+            transport,
             logMessageContent: false,
             logger: signalR.LogLevel.None
         };
@@ -23,7 +25,6 @@ export class SignalR extends Component {
             .withHubProtocol(protocol)
             .withAutomaticReconnect()
             .build();
-
 
         this.connection.on('UpdateMatchDetail', (data) => {
             console.log('UpdateMatchDetail');

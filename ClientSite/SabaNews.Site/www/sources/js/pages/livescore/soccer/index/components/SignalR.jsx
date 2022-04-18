@@ -13,7 +13,9 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const protocol = new signalR.JsonHubProtocol();
+        const transport = signalR.HttpTransportType.LongPolling;
         const options = {
+            transport,
             logMessageContent: false,
             logger: signalR.LogLevel.None
         };
@@ -38,6 +40,7 @@ export class SignalR extends Component {
     start = () => {
         try {
             this.connection.start();
+            console.log('Signal R started successful!!!');
         } catch (err) {
             console.log(err);
             setTimeout(start, 5000);
