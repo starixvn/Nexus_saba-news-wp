@@ -114,7 +114,6 @@
         {
             var criteria = new GetMatchBySeasonCriteria
             {
-                SportId = (short)SportType.Soccer,
                 LeagueId = model.LeagueId,
                 SeasonId = model.SeasonId
             };

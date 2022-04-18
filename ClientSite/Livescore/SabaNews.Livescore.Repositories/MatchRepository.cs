@@ -34,30 +34,6 @@
             }
         }
 
-        public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(ICriteria criteria)
-        {
-            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (IMultiResultReader multi = await db.QueryMultipleAsync())
-                {
-                    var league = multi.Read<League>().FirstOrDefault();
-
-                    var matches = multi.Read<Match, Team, Team, SeasonStage, Match>(
-                        (match, home, away, stage) =>
-                        {
-                            match.HomeTeam = home;
-                            match.AwayTeam = away;
-                            match.Stage = stage;
-
-                            return match;
-                        },
-                        splitOn: "HomeTeamId, AwayTeamId, StageId");
-
-                    return (league, matches.ToList());
-                }
-            }
-        }
-
         public async Task<HeadToHeadDetail> GetHeadToHeadAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))

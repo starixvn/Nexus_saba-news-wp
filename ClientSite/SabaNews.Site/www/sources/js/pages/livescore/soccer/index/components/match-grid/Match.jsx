@@ -1,5 +1,5 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
-import MatchStage from './MatchStage';
+import MatchStage from '@jsroot/components/MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';

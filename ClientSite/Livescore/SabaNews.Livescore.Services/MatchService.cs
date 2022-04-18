@@ -7,6 +7,7 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Repositories;
     using SabaNews.Livescore.Services.Criteria.Match;
 
@@ -34,7 +35,54 @@
 
         public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
-            return await matchRepository.GetMatchBySeasonAsync(criteria);
+            (IEnumerable<League> leagues, IEnumerable<FloatMatchModel> floatMatches)
+                = await baseService.FetchMultipleAsync<League, FloatMatchModel>(criteria);
+            var matches = new List<Match>();
+            foreach(FloatMatchModel match in floatMatches)
+            {
+                var stage = match.StageId.HasValue
+                    ? new SeasonStage
+                    {
+                        StageId = match.StageId.Value,
+                        StageNameEN = match.StageNameEN,
+                        OrderIndex = match.OrderIndex
+                    }
+                    : null;
+                matches.Add(new Match
+                {
+                    MatchId = match.MatchId,
+                    StartTime = match.StartTime,
+                    EndTime = match.EndTime,
+                    Status = match.Status,
+                    HomeTeamHalfScore = match.HomeTeamHalfScore,
+                    AwayTeamHalfScore = match.AwayTeamHalfScore,
+                    HomeTeamTotalScore = match.HomeTeamTotalScore,
+                    AwayTeamTotalScore = match.AwayTeamTotalScore,
+                    HomeTeamAggregateScore = match.HomeTeamAggregateScore,
+                    AwayTeamAggregateScore = match.AwayTeamAggregateScore,
+                    HomeTeamExtraScore = match.HomeTeamExtraScore,
+                    AwayTeamExtraScore = match.AwayTeamExtraScore,
+                    HomeTeamPenaltyScore = match.HomeTeamPenaltyScore,
+                    AwayTeamPenaltyScore = match.AwayTeamPenaltyScore,
+                    HomeTeam = new Team
+                    {
+                        TeamId = match.HomeTeamId,
+                        TeamNameEN = match.HomeTeamNameEN,
+                        TeamFullNameEN = match.HomeTeamFullNameEN,
+                        Icon = match.HomeTeamIcon
+                    },
+                    AwayTeam = new Team
+                    {
+                        TeamId = match.AwayTeamId,
+                        TeamNameEN = match.AwayTeamNameEN,
+                        TeamFullNameEN = match.AwayTeamFullNameEN,
+                        Icon = match.AwayTeamIcon
+                    },
+                    Stage = stage
+                });
+            }
+
+            return (leagues.FirstOrDefault(), matches);
         }
 
         public async Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria)

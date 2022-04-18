@@ -5,7 +5,6 @@
 
     public class GetMatchBySeasonCriteria : CriteriaBase
     {
-        public short SportId { get; set; }
         public long LeagueId { get; set; }
         public long SeasonId { get; set; }
         public DateTime? FromTime { get; set; }

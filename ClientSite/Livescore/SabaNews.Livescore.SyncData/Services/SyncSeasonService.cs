@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using SabaNews.Core.Models;
-using SabaNews.Core.Services;
-using SabaNews.Livescore.Core.Enum;
-using SabaNews.Livescore.Provider.API.Models.Season;
-using SabaNews.Livescore.Provider.API.Services;
-using SabaNews.Livescore.SyncData.Criteria.Season;
-using SabaNews.Livescore.SyncData.Models.Season;
-
-namespace SabaNews.Livescore.SyncData.Services
+﻿namespace SabaNews.Livescore.SyncData.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Provider.API.Models.Season;
+    using SabaNews.Livescore.Provider.API.Services;
+    using SabaNews.Livescore.SyncData.Criteria.Season;
+    using SabaNews.Livescore.SyncData.Models.Season;
+
     public class SyncSeasonService : ISyncSeasonService
     {
         private readonly AppSettings appSettings;
@@ -183,7 +183,7 @@ namespace SabaNews.Livescore.SyncData.Services
                             Goals = rank.Goals,
                             GoalsHome = rank.GoalsHome,
                             GoalsAway = rank.GoalsAway,
-                            GoalAgainsts = rank.GoalAgainsts,
+                            GoalsAgainst = rank.GoalsAgainst,
                             GoalsAgainstHome = rank.GoalsAgainstHome,
                             GoalsAgainstAway = rank.GoalsAgainstAway,
                             GoalDiff = rank.GoalDiff,
