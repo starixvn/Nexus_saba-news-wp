@@ -26,7 +26,8 @@ export class SignalR extends Component {
 
         this.connection.on('UpdateMatchDetail', (data) => {
             console.log('UpdateMatchDetail');
-            this.props.setMatch(data);
+            console.log(data);
+            //this.props.setMatch(data);
         });
 
         this.start();
