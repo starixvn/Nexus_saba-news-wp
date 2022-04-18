@@ -27,7 +27,6 @@
                     Status = match.GameType,
                     GameStartTime = match.GameStartTime,
                     GameEndTime = match.GameEndTime,
-                    UpdatedAt = match.UpdatedAt
                 };
                 matchScoreList.Add(matchScore);
                 var homeStatistic = ConvertToTeamStatistic(match.ExtraData, match.MatchId, true);

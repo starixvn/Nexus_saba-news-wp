@@ -80,14 +80,13 @@ BEGIN
                         AwayAggregateScore INT,
                         Status SMALLINT,
                         GameStartTime DATETIME,
-                        GameEndTime DATETIME,
-                        UpdatedAt DATETIME
+                        GameEndTime DATETIME
                         );
     
 	INSERT INTO tmp_Match(MatchId, HomeTotalScore, AwayTotalScore, HomeHalfScore, AwayHalfScore, 
-                        HomeAggregateScore, AwayAggregateScore, Status, GameStartTime, GameEndTime, UpdatedAt)
-    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, m.HomeAggregateScore, m.AwayAggregateScore,
-             m.Status, m.GameStartTime, m.GameEndTime, m.UpdatedAt
+                        HomeAggregateScore, AwayAggregateScore, Status, GameStartTime, GameEndTime)
+    SELECT m.MatchId, m.HomeTotalScore, m.AwayTotalScore, m.HomeHalfScore, m.AwayHalfScore, 
+            m.HomeAggregateScore, m.AwayAggregateScore, m.Status, m.GameStartTime, m.GameEndTime
     FROM 
 		JSON_TABLE
         (
@@ -104,8 +103,7 @@ BEGIN
                 AwayAggregateScore INT PATH "$.AwayAggregateScore",
                 Status SMALLINT PATH "$.Status",
                 GameStartTime DATETIME PATH "$.GameStartTime",
-                GameEndTime DATETIME PATH "$.GameEndTime",
-                UpdatedAt datetime PATH "$.UpdatedAt"
+                GameEndTime DATETIME PATH "$.GameEndTime"
             )
         ) AS m;
 
@@ -119,8 +117,7 @@ BEGIN
          m.AwayTeamAggregateScore = m_tpm.AwayAggregateScore,
          m.Status = m_tpm.Status,
          m.StartTime = m_tpm.GameStartTime,
-         m.EndTime = m_tpm.GameEndTime,
-         m.UpdatedAt = IFNULL(m_tpm.UpdatedAt, m.UpdatedAt);
+         m.EndTime = m_tpm.GameEndTime;
 
 /* End handle update score------------------ */
 
