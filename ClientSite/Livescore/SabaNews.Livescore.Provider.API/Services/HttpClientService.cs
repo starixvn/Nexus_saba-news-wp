@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
-    using System.Threading;
     using System.Threading.Tasks;
     using System.Web.Http;
     using Fanex.Caching;
@@ -61,9 +60,7 @@
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 if (config.IsWriteLogRequest)
                 {
-                    var thread = new Thread(async () =>
-                    await AddLogSendRequestonDB($"{config.Endpoint}{endPoint}", JsonConvert.SerializeObject(content), config.IsWriteResponse ? jsonResult : "{}"));
-                    thread.Start();
+                    await AddLogSendRequestonDB($"{config.Endpoint}{endPoint}", JsonConvert.SerializeObject(content), config.IsWriteResponse ? jsonResult : "{}");
                 }
 
                 var result = HandleDataResponse<T>(jsonResult);
@@ -78,13 +75,20 @@
 
         private async Task AddLogSendRequestonDB(string url, string param, string response)
         {
-            var command = new InsertSendHttpRequestLogCommand
+            try
             {
-                RequestUrl = url,
-                Param = param,
-                Response = response
-            };
-            await baseService.ExecuteNonQueryAsync(command);
+                var command = new InsertSendHttpRequestLogCommand
+                {
+                    RequestUrl = url,
+                    Param = param,
+                    Response = response
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+            }
         }
 
         private async Task<StringContent> InitStringContent(IDictionary<string, object> data, bool isAuthentication)
