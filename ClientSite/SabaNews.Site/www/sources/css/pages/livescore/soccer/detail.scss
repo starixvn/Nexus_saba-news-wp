@@ -12,6 +12,19 @@ $fa-font-path: "../../../../fonts";
 
 
 .livescore-soccer {
+    .livescore-league-header-detail {
+
+    }
+
+    .icon-livescore {
+        font-size: 1.6rem;
+    }
+
+
+
+
+
+
     .tournament-header {
         align-items: center;
         background: #e9e9e9;
@@ -71,6 +84,7 @@ $fa-font-path: "../../../../fonts";
             border-radius: 4px;
             grid-area: status;
             margin: auto 0;
+
             span {
                 margin-right: 5px;
                 background: #cccc;
@@ -100,7 +114,7 @@ $fa-font-path: "../../../../fonts";
             grid-template-rows: max-content max-content max-content;
             grid-template-columns: 1fr 26px min-content 26px 1fr;
             grid-template-areas:
-                ". . image status status" "name name name name name" "detail detail detail detail detail" ;
+                ". . image status status" "name name name name name" "detail detail detail detail detail";
             justify-content: center;
 
             .participant-status {

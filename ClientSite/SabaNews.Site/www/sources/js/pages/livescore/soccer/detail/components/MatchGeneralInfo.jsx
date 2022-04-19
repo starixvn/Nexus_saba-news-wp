@@ -114,7 +114,12 @@ export default class MatchGenetalInfo extends Component {
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>
-                <div className="tournament-header">{leagueName} - {startTime.format("DD/MM/YYYY")}</div>
+                <div className="livescore-league-header-detail">
+                    <div className="livescore-league-header-detail-logo"><img loading="lazy"/></div>
+                    <div className="livescore-league-header-detail-name">
+                        {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span> <i className="icon-livescore icon-live-start start-active" />
+                    </div>
+                </div>
                 <div className="duel-participant">
                     <div className="duel-participant-start-time">
                         <MatchStage match={generalInfo} />
