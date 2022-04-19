@@ -5,6 +5,7 @@ import SignalR from './SignalR';
 import FunctionBar from './FunctionBar';
 import { ActionCreators } from '../actions';
 import MatchGenetalInfo from './MatchGeneralInfo';
+import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 export class AppContainer extends Component {
@@ -13,6 +14,7 @@ export class AppContainer extends Component {
     }
     componentDidMount() {
         this.props.getMatchDetail();
+        this.props.getMajorLeagues();
     }
 
     render() {
@@ -30,9 +32,9 @@ export class AppContainer extends Component {
                         </div>
                         <div className="livescore-soccer-extension">
                             <FavoriteMatches />
+                            <FavoriteLeagues leagues={this.props.majorLeagues} />
                         </div>
                     </div>
-                    
                 </div>
             </>
         );
@@ -42,10 +44,9 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { match, isLiveMatch } = state;
+    const { match, isLiveMatch, majorLeagues } = state;
     return {
-        match,
-        isLiveMatch
+        match, isLiveMatch, majorLeagues
     };
 };
 

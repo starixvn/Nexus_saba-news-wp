@@ -5,9 +5,13 @@ const soccerMatchDetailSlice = createSlice({
     initialState: {
         match: null,
         headToHead: null,
-        isLiveMatch: false
+        isLiveMatch: false,
+        majorLeagues: [],
     },
     reducers: {
+        setMajorLeagues: (state, action) => {
+            state.majorLeagues = action.payload;
+        },
         setMatch: (state, action) => {
             state.match = action.payload;
         },
@@ -23,6 +27,7 @@ const soccerMatchDetailSlice = createSlice({
 const { actions, reducer } = soccerMatchDetailSlice;
 
 export const {
+    setMajorLeagues,
     setMatch,
     setHeadToHead,
     setIsLiveMatch,

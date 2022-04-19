@@ -3,7 +3,8 @@ import DataService from '@jsroot/common/dataService';
 import {
     setMatch,
     setIsLiveMatch,
-    setHeadToHead
+    setHeadToHead,
+    setMajorLeagues
 } from './soccerMatchDetailSlice';
 
 const getMatchDetail = () => async dispatch => {
@@ -27,20 +28,19 @@ const getHeadToHead = () => async dispatch => {
     }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
 };
 
-const updateData = () => async dispatch => {
-    let params = {
-        matchId: window.selectedMatchId
-    };
-    const url = Site.resolveClientUrl('soccer/UpdateDetailData');
-    await DataService.postDataAsync(url, params).then(response => {
-    }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
+const getMajorLeagues = () => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getMajorLeagues');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setMajorLeagues(response.data));
+    }).catch(Site.handleAxiosError);
 };
 
 export const ActionCreators = {
     setMatch,
     setIsLiveMatch,
     setHeadToHead,
+    setMajorLeagues,
     getMatchDetail,
     getHeadToHead,
-    updateData
+    getMajorLeagues
 };
