@@ -5,6 +5,7 @@ import SignalR from './SignalR';
 import FunctionBar from './FunctionBar';
 import { ActionCreators } from '../actions';
 import MatchGenetalInfo from './MatchGeneralInfo';
+import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ export class AppContainer extends Component {
                             <FunctionBar />
                         </div>
                         <div className="livescore-soccer-extension">
-                            ssassda
+                            <FavoriteMatches />
                         </div>
                     </div>
                     
