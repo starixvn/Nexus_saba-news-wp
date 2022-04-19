@@ -20,10 +20,18 @@ export class AppContainer extends Component {
         }
         return (
             <>
+                <div className="container livescore-container">
                 <SignalR />
-                <div className="livescore-soccer">
-                    <MatchGenetalInfo match = {this.props.match} isLiveMatch = {this.props.isLiveMatch} />
-                    <FunctionBar />
+                    <div className="livescore-soccer">
+                        <div className="livescore-soccer-main">
+                            <MatchGenetalInfo match={this.props.match} isLiveMatch={this.props.isLiveMatch} />
+                            <FunctionBar />
+                        </div>
+                        <div className="livescore-soccer-extension">
+                            ssassda
+                        </div>
+                    </div>
+                    
                 </div>
             </>
         );
