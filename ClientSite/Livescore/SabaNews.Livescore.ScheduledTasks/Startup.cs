@@ -15,8 +15,10 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using SabaNews.Core.Middlewares;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
@@ -48,6 +50,10 @@
             AddDependencyInjection(services);
             services.ResolveLivescoreServiceDI();
             AddWorker(services);
+
+            var logService = services.BuildServiceProvider().GetRequiredService<ILogServiceProvider>();
+            logService.WriteExceptionSentryErrorAsync(new System.Exception("Test method write sentry exception"));
+            logService.WriteMessageSentryErrorAsync("Test method write message sentry exception");
         }
 
         private void AddRedisConfiguration(IServiceCollection services, IConfiguration configuration)
@@ -67,8 +73,15 @@
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMiddleware<ErrorHandler>();
-            app.UseHsts();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseMiddleware<ErrorHandler>();
+                app.UseHsts();
+            }
 
             app.UseStaticFiles();
             app.UseRouting();
