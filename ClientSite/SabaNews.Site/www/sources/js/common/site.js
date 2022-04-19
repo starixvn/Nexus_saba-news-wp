@@ -3,10 +3,6 @@ let _xsrfToken = null;
 import { MatchStatus, IncidentStatus, VARResultCode } from './constants';
 
 export default class Site {
-    static blockUI() {
-        document.getElementById('loadingProcess').style.display = 'block';
-    }
-
     static getXsrfToken() {
         if (!_xsrfToken && document.querySelector('input[name=__RequestVerificationToken]')) {
             _xsrfToken = document.querySelector('input[name=__RequestVerificationToken]').value;
@@ -42,10 +38,6 @@ export default class Site {
 
     static resolveClientUrl(relativeUrl) {
         return _rootUrl + relativeUrl;
-    }
-
-    static unblockUI() {
-        document.getElementById('loadingProcess').style.display = 'none';
     }
 
     static MappingStatusMatchText(status) {

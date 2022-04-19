@@ -6,7 +6,7 @@
     Live: 'Trực tiếp',
     Penalty: 'Penalty',
     Postponed: 'Dời lịch',
-    ToBeDecided: 'Chờ quyết định',
+    ToBeDecided: 'Chờ xác định',
     Today: 'Hôm nay',
     LineupPlayer: 'Đội hình ra sân',
     LineupSubtitudePlayer: "Dự bị",

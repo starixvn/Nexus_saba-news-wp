@@ -14,6 +14,7 @@ export const withNavigation = Component => {
 
 const DateBar = props => {
     const { isMobile, matches } = props;
+    const totalMatches = matches.length;
 
     return (
         <div className="livescore-soccer-date-bar">
@@ -28,7 +29,8 @@ const DateBar = props => {
                 <div className="btn-live-realtime">
                     {isMobile ? 'Live' : LangHelper.getResource('Live')}
                     {
-                        window.isLivePage && matches.length > 0 && <span className="badge-live">{matches.length}</span>
+                        window.isLivePage && totalMatches > 0 &&
+                        <span className="badge-live">{totalMatches > 99 ? '99+' : totalMatches}</span>
                     }
                 </div>
             </div>

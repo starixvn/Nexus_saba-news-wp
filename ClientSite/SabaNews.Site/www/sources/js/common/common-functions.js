@@ -3,7 +3,12 @@ import Site from '@jsroot/common/site';
 
 export default class CommonFunctions {
     static getLeagueName(league) {
-        let leagueName = league.leagueFullNameEN;
+        let leagueName = '';
+        if (league.leagueNameVN) {
+            leagueName = league.leagueNameVN;
+        } else {
+            leagueName = league.leagueNameEN ? league.leagueNameEN : league.leagueFullNameEN;
+        }
 
         if (league.leagueType !== LeagueType.League && league.stage && league.stage.stageNameEN) {
             leagueName += ` :: ${league.stage.stageNameEN}`;

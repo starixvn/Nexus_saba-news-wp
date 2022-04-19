@@ -13,20 +13,37 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const protocol = new signalR.JsonHubProtocol();
+        const transport = signalR.HttpTransportType.WebSockets;
         const options = {
+            transport,
             logMessageContent: false,
+            skipNegotiation: true,
             logger: signalR.LogLevel.None
         };
 
         this.connection = new signalR.HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
-            .withAutomaticReconnect()
             .build();
 
         this.connection.on('UpdateLiveMatches', matches => {
             this.props.setLiveMatches(matches);
         });
+
+        this.connection.onclose(async () => {
+            await start();
+        });
+
+        let lockResolver;
+        if (navigator && navigator.locks && navigator.locks.request) {
+            const promise = new Promise(res => {
+                lockResolver = res;
+            });
+
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
+                return promise;
+            });
+        }
 
         this.start();
     }
@@ -35,12 +52,18 @@ export class SignalR extends Component {
         this.connection.stop();
     }
 
-    start = () => {
+    start = async () => {
         try {
-            this.connection.start();
+            await this.connection.start().then(() => {
+                console.log('SignalR connected!!!');
+            });
         } catch (err) {
             console.log(err);
-            setTimeout(start, 5000);
+
+            setTimeout(() => {
+                this.props.getMatches();
+                this.start();
+            }, 60 * 1000);
         }
     };
 

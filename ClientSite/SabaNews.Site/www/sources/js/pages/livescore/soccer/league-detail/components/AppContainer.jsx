@@ -48,7 +48,7 @@ export class AppContainer extends Component {
 
         return (
             <div className="container livescore-container">
-                <SignalR />
+                <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {

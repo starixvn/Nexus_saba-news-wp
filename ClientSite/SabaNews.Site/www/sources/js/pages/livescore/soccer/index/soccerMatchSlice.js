@@ -49,8 +49,6 @@ const soccerMatchSlice = createSlice({
                         const index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
                         if (index >= 0) {
                             state.matches[index] = liveMatches[i];
-                        } else {
-                            state.matches.push(liveMatches[i]);
                         }
                     }
                 }

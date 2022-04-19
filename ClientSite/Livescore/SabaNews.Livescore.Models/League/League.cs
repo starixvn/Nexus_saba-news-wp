@@ -6,6 +6,7 @@
 
         public string LeagueNameEN { get; set; }
         public string LeagueFullNameEN { get; set; }
+        public string LeagueNameVN { get; set; }
 
         public string Icon { get; set; }
 

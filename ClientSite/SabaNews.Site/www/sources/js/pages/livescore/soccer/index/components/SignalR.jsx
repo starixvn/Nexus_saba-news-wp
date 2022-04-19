@@ -14,7 +14,6 @@ export class SignalR extends Component {
     componentDidMount() {
         const protocol = new signalR.JsonHubProtocol();
         const transport = signalR.HttpTransportType.WebSockets;
-
         const options = {
             transport,
             logMessageContent: false,
@@ -25,13 +24,27 @@ export class SignalR extends Component {
         this.connection = new signalR.HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
-            .withAutomaticReconnect()
             .build();
 
         this.connection.on('UpdateLiveMatches', matches => {
             console.log('UpdateLiveMatches');
             this.props.setLiveMatches(matches);
         });
+
+        this.connection.onclose(async () => {
+            await start();
+        });
+
+        let lockResolver;
+        if (navigator && navigator.locks && navigator.locks.request) {
+            const promise = new Promise(res => {
+                lockResolver = res;
+            });
+
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
+                return promise;
+            });
+        }
 
         this.start();
     }
@@ -40,14 +53,22 @@ export class SignalR extends Component {
         this.connection.stop();
     }
 
-    start = () => {
+    start = async () => {
         try {
-            this.connection.start().then(() => {
+            await this.connection.start().then(() => {
                 console.log('SignalR connected!!!');
             });
         } catch (err) {
             console.log(err);
-            setTimeout(start, 5000);
+
+            setTimeout(() => {
+                const { today, selectedDate } = this.props;
+                if (window.isLivePage || today === selectedDate) {
+                    this.props.getMatches(selectedDate);
+                }
+
+                this.start();
+            }, 60 * 1000);
         }
     };
 
@@ -58,4 +79,9 @@ export class SignalR extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
-export default connect(null, mapDispatchToProps)(SignalR);
+const mapStateToProps = state => {
+    const { today, selectedDate } = state;
+    return { today, selectedDate };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignalR);
