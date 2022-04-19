@@ -21,7 +21,7 @@ export class AppContainer extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'stadings'
+            selectedTab: 'schedule'
         };
     }
 

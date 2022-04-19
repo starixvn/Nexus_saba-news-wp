@@ -10,6 +10,12 @@ export default class CommonFunctions {
             leagueName = league.leagueNameEN ? league.leagueNameEN : league.leagueFullNameEN;
         }
 
+        return leagueName;
+    }
+
+    static getLeagueNameWithStage(league) {
+        let leagueName = this.getLeagueName(league);
+
         if (league.leagueType !== LeagueType.League && league.stage && league.stage.stageNameEN) {
             leagueName += ` :: ${league.stage.stageNameEN}`;
         }

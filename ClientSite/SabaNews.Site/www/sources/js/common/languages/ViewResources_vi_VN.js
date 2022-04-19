@@ -1,4 +1,5 @@
 ﻿window._language_vi_VN = {
+    Cancel: 'Hủy',
     Delay: 'Tạm hoãn',
     Finish: 'Kết thúc',
     HotLeague: 'Giải nổi bật',

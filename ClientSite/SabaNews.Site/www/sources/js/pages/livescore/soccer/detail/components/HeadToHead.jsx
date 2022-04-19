@@ -91,7 +91,7 @@ export class HeadToHead extends Component {
                                             matchStatus === 2 &&
                                             <span className="bg-color bgred more-right btn-f-more" title="Bại">L</span>
                                         }
-                                        <span className="more-right">{CommonFunctions.getLeagueName(match.league)}</span>
+                                        <span className="more-right">{CommonFunctions.getLeagueNameWithStage(match.league)}</span>
                                     </div>
                                 </div>
                             </div>

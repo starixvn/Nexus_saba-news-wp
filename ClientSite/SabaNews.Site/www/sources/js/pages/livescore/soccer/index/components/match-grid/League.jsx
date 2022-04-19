@@ -4,7 +4,7 @@ import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 const League = ({ league, selectedDate, searchKey }) => {
-    const leagueName = CommonFunctions.getLeagueName(league);
+    const leagueName = CommonFunctions.getLeagueNameWithStage(league);
     const reg = new RegExp(`(${searchKey})`, 'gi');
     const displayValue = searchKey.length > 0 ? leagueName.replace(reg, "<span class='text-matched'>$1</span>") : leagueName;
 

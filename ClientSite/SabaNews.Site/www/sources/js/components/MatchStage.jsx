@@ -61,6 +61,10 @@ export default class MatchStage extends PureComponent {
                 stage = <span>{LangHelper.getResource('Postponed')}</span>;
                 break;
 
+            case MatchStatus.Cancel:
+                stage = <span>{LangHelper.getResource('Cancel')}</span>;
+                break;
+
             case MatchStatus.TBD:
                 stage = <span>{LangHelper.getResource('ToBeDecided')}</span>;
                 break;

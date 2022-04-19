@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import LangHelper from '@jsroot/common/langHelper';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 const FavoriteLeagues = ({ leagues }) => {
     return (
@@ -14,7 +15,7 @@ const FavoriteLeagues = ({ leagues }) => {
                             <div key={league.leagueId} className="leagues-item">
                                 <div className="leagues-name">
                                     <img className="logo" loading="lazy" src={league.icon} />
-                                    <span className="text">{league.leagueFullNameEN}</span>
+                                    <span className="text">{CommonFunctions.getLeagueName(league)}</span>
                                 </div>
                                 <div className="toggle-league">
                                     <span className="icon-livescore icon-live-start start-active" />

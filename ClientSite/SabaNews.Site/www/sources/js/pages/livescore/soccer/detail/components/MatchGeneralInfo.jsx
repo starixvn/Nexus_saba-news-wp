@@ -110,7 +110,7 @@ export default class MatchGenetalInfo extends Component {
 
     render() {
         const { generalInfo } = this.props.match;
-        const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
+        const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
             <>
