@@ -4,12 +4,15 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
+    using System.Web.Http;
     using Fanex.Caching;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Constants;
+    using SabaNews.Livescore.Provider.API.Criteria;
     using SabaNews.Livescore.Provider.API.Models;
 
     public class HttpClientService : IHttpClientService
@@ -18,17 +21,20 @@
         private readonly IHttpClientFactory clientFactory;
         private readonly ICacheWrapperService cacheWrapperService;
         private readonly ILogServiceProvider logService;
+        private readonly IBaseService baseService;
         private readonly ApiConfiguration config;
 
         public HttpClientService(
             IHttpClientFactory clientFactory,
             ICacheWrapperService cacheWrapperService,
             ILogServiceProvider logService,
+            IBaseService baseService,
             ApiConfiguration config)
         {
             this.clientFactory = clientFactory;
             this.cacheWrapperService = cacheWrapperService;
             this.logService = logService;
+            this.baseService = baseService;
             this.config = config;
         }
 
@@ -49,24 +55,41 @@
             var client = clientFactory.CreateClient(HttpClientName.DefaultHttpClientWithProxy);
 
             using var response = await client.SendAsync(request);
+
             if (response.IsSuccessStatusCode)
             {
                 var jsonResult = await response.Content.ReadAsStringAsync();
+                if (config.IsWriteLogRequest)
+                {
+                    var thread = new Thread(async () =>
+                    await AddLogSendRequestonDB($"{config.Endpoint}{endPoint}", JsonConvert.SerializeObject(content), config.IsWriteResponse ? jsonResult : "{}"));
+                    thread.Start();
+                }
 
                 var result = HandleDataResponse<T>(jsonResult);
 
                 return result;
             }
 
+            var err = await response.Content.ReadAsAsync<HttpError>();
+            await logService.WriteMessageSentryErrorAsync(err.Message);
             return default;
+        }
+
+        private async Task AddLogSendRequestonDB(string url, string param, string response)
+        {
+            var command = new InsertSendHttpRequestLogCommand
+            {
+                RequestUrl = url,
+                Param = param,
+                Response = response
+            };
+            await baseService.ExecuteNonQueryAsync(command);
         }
 
         private async Task<StringContent> InitStringContent(IDictionary<string, object> data, bool isAuthentication)
         {
-            if (data == null)
-            {
-                data = new Dictionary<string, object>();
-            }
+            data ??= new Dictionary<string, object>();
 
             if (!isAuthentication)
             {

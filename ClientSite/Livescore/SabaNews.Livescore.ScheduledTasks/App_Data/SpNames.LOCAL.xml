@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Functions>
+    <Function Name="Log">
+        <Setting Key="Livescore_HttpRequestLog_Insert" SpName="Livescore_HttpRequestLog_Insert" DbName="sabasports" Plain="0" />
+    </Function>
     <Function Name="Sync Match">
         <Setting Key="Livescore_Match_GetLastUpdatedTime" SpName="Livescore_Match_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Sync" SpName="Livescore_Match_Sync" DbName="sabasports" Plain="0" />
@@ -51,13 +54,13 @@
         <Setting Key="Livescore_Match_GetDetail" SpName="Livescore_Match_GetDetail" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetLineup" SpName="Livescore_Match_GetLineup" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetDetail_PostMatch" SpName="Livescore_Match_GetDetail_PostMatch" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead" DbName="sabasports" Plain="0" >
+        <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead" DbName="sabasports" Plain="0">
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
         <Setting Key="Livescore_Match_GetStatistic" SpName="Livescore_Match_GetStatistic" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetIncident" SpName="Livescore_Match_GetIncident" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetById" SpName="Livescore_Match_GetById" DbName="sabasports" Plain="0" >
+        <Setting Key="Livescore_Match_GetById" SpName="Livescore_Match_GetById" DbName="sabasports" Plain="0">
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>

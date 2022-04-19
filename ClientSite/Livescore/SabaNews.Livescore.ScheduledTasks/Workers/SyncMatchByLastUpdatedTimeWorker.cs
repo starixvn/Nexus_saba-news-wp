@@ -47,7 +47,7 @@
 
             await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
 
-            await SyncMatchDetais(matches);
+            //await SyncMatchDetais(matches);
         }
 
         private async Task SyncMatchDetais(List<MatchResponse> matches)
