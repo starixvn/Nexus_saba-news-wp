@@ -3,11 +3,13 @@ $border-radius-lg: 0;
 $border-radius-sm: 0;
 $input-btn-focus-box-shadow: unset;
 $fa-font-path: "../../../../fonts";
-@import '~bootstrap/scss/bootstrap';
+@import '../../../abstracts/variables';
+@import '../../../abstracts/mixins';
+@import '../../../base/base';
+@import '../../../components/block-extension';
+@import '../../../components/container';
 
-body {
-    font-size: 1.4rem;
-}
+
 
 .livescore-soccer {
     max-width: 660px;
