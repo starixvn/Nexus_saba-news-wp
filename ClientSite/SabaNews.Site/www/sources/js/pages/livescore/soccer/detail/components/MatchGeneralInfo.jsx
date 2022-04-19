@@ -121,18 +121,18 @@ export default class MatchGenetalInfo extends Component {
                     </div>
                 </div>
                 <div className="duel-participant">
-                    <div className="duel-participant-home">
-                        <div className="duel-participant-home-status">
+                    <div className="duel-participant-home-wrapper">
+                        <div className="duel-participant-home-wrapper-status">
                             {this.getTeamStatus(true)}
                         </div>
-                        <div className="duel-participant-home-image">
-                            <a>
+                        <div className="duel-participant-home-wrapper-image">
+                            <div className="duel-participant-home-wrapper-name">{generalInfo.homeTeam.teamNameEN}</div>
+                            <a className="duel-participant-home-wrapper-logo">
                                 <img alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
                                     src={generalInfo.homeTeam.icon} />
                             </a>
                         </div>
-                        <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.homeTeam.teamNameEN}</div>
+                        <div className="duel-participant-number">
                             {this.getBallAndCardNumber(IncidentPosition.Home)}
                         </div>
                     </div>
@@ -146,15 +146,15 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                     </div>
 
-                    <div className="duel-participant-away">
-                        <div className="participant-image">
+                    <div className="duel-participant-away-wrapper">
+                        <div className="duel-participant-away-wrapper-image">
                             <a>
                                 <img width="58" height="58" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
                                     src={generalInfo.awayTeam.icon} />
                             </a>
+                            <div className="duel-participant-away-wrapper-name">{generalInfo.awayTeam.teamNameEN}</div>
                         </div>
-                        <div className="participant-name-wrapper">
-                            <div className="participant-name">{generalInfo.awayTeam.teamNameEN}</div>
+                        <div className="duel-participant-number">
                             {this.getBallAndCardNumber(IncidentPosition.Away)}
                         </div>
                         <div className="participant-status">

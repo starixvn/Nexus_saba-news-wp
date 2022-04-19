@@ -6,6 +6,10 @@
     justify-content: center;
     padding: 2rem 1.3rem;
 
+    &-number {
+        margin-top: 1.3rem;
+    }
+
     &-result {
         margin: 0 4rem;
         text-align: center;
@@ -45,4 +49,52 @@
             }
         }
     }
+
+    &-home-wrapper {
+        &-image {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 5rem;
+                height: 5rem;
+                margin-left: 1.1rem;
+                display: block;
+            }
+        }
+
+        &-name {
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 2.4rem;
+            color: $color-title;
+        }
+    }
+
+    &-away-wrapper {
+        &-image {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 5rem;
+                height: 5rem;
+                margin-right: 1.1rem;
+                display: block;
+            }
+        }
+
+        &-name {
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 2.4rem;
+            color: $color-title;
+        }
+    }
+}
+
+
+
+.participant-detail{
+
 }
