@@ -4,4 +4,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1.3rem;
+
+    &-result {
+        margin: 0 4rem;
+        text-align: center;
+
+        .soccer-match-stage {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 2.4rem;
+
+            span {
+                color: $color-detail-league;
+            }
+        }
+
+        &-score {
+            .detail-score-wrapper {
+                margin: 1rem 0;
+                background: $bg-score-detail;
+                border-radius: 15px;
+                padding: 1rem 1.8rem;
+                font-weight: 700;
+                font-size: 4.2rem;
+
+
+                span {
+                    color: $color-title;
+                    line-height: 1;
+                }
+            }
+
+            .detail-score-status {
+                color: $color-detail-league;
+                font-weight: 600;
+                font-size: 1.3rem;
+                line-height: 1.8rem;
+            }
+        }
+    }
 }
