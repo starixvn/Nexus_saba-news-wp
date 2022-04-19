@@ -34,7 +34,7 @@ export class SeasonStandings extends PureComponent {
         const promotions = [];
         for (let i = 0; i < totalItems; i++) {
             const promotion = seasonStandings[i].promotion ? JSON.parse(seasonStandings[i].promotion) : null;
-            if (promotion && promotions.findIndex(item => item.id === promotion.id) === -1) {
+            if (promotion && promotions.findIndex(item => item.Id === promotion.Id) === -1) {
                 promotions.push(promotion);
             }
         }
@@ -74,7 +74,7 @@ export class SeasonStandings extends PureComponent {
                                             return (
                                                 <tr key={item.teamId}>
                                                     <td>
-                                                        <div style={{ backgroundColor: promotion ? promotion.color : '' }}>
+                                                        <div style={{ backgroundColor: promotion ? promotion.Color : '' }}>
                                                             {item.position}
                                                         </div>
                                                         <div className="soccer-team">
@@ -105,7 +105,7 @@ export class SeasonStandings extends PureComponent {
                     <div className="promotion">
                         {
                             promotions.map(item => {
-                                return <div key={item.id} style={{ backgroundColor: item.color }}>{item.nameEN}</div>
+                                return <div key={item.Id} style={{ backgroundColor: item.Color }}>{item.NameEN}</div>
                             })
                         }
                     </div>

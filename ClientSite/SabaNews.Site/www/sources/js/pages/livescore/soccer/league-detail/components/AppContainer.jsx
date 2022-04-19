@@ -44,7 +44,7 @@ export class AppContainer extends Component {
 
     render() {
         const selectedTab = this.state.selectedTab;
-        const { majorLeagues, league, preMatches, postMatches } = this.props;
+        const { majorLeagues, league, stages, preMatches, postMatches } = this.props;
 
         return (
             <div className="container livescore-container">
@@ -60,10 +60,10 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="schedule" title="Lịch thi đấu">
-                                <MatchGrid matches={preMatches} />
+                                {preMatches && <MatchGrid sortAsc stages={stages} matches={preMatches} />}
                             </Tab>
                             <Tab eventKey="result" title="Kết quả">
-                                <MatchGrid matches={postMatches} />
+                                {postMatches && <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />}
                             </Tab>
                             <Tab eventKey="stadings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
                                 <SeasonStandings />
@@ -83,8 +83,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, league, preMatches, postMatches } = state;
-    return { majorLeagues, league, preMatches, postMatches };
+    const { majorLeagues, league, stages, preMatches, postMatches } = state;
+    return { majorLeagues, league, stages, preMatches, postMatches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

@@ -1,5 +1,6 @@
 ﻿import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
+import moment from 'moment';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -20,7 +21,8 @@ export default class MatchGrid extends PureComponent {
     groupMatchesByDate = matches => {
         const helper = {};
         return matches.reduce((previousItem, currentItem) => {
-            const key = DateTimeService.formatDateTime(currentItem.startTime, 'YYYY-MM-DD');
+            const startTime = DateTimeService.convertFromUTC(currentItem.startTime);
+            const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
             if (!helper[key]) {
                 helper[key] = {
                     key: key,
@@ -64,34 +66,42 @@ export default class MatchGrid extends PureComponent {
         return matches;
     };
 
-    groupMatches = matches => {
-        let stageIds = matches.map(item => item.stage ? item.stage.stageId : 0);
-        stageIds = stageIds.filter((value, index, self) => {
-            return self.indexOf(value) === index;
-        });
-
-        if (stageIds.length > 1) {
+    groupMatches = (stages, matches) => {
+        if (stages.length > 1) {
             return this.groupMatchesByStage(matches);
         } else {
             return this.groupMatchesByDate(matches);
         }
     };
 
+    sortMatches = (matches, sortAsc) => {
+        if (sortAsc) {
+            return matches.sort((item1, item2) => moment(item1.startTime).diff(moment(item2.startTime)));
+        } else {
+            return matches.sort((item1, item2) => moment(item2.startTime).diff(moment(item1.startTime)));
+        }
+    };
+
+    filterMatches = (matches, searchKey) => {
+        return matches.filter(match =>
+            CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+            || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+    };
+
     render() {
-        let matches = this.props.matches;
+        let { stages, matches, sortAsc } = this.props;
         if (matches.length === 0) {
             return <div className="none-livescore">Không có trận đấu nào.</div>;
         }
 
+        matches = this.sortMatches([...matches], sortAsc);
         const searchKey = this.state.searchKey;
         if (searchKey.length > 0) {
-            matches = matches.filter(match =>
-                CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+            matches = this.filterMatches(matches, searchKey);
         }
 
         if (matches.length > 0) {
-            matches = this.groupMatches(matches);
+            matches = this.groupMatches(stages, matches);
         }
 
         return (

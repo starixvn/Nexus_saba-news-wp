@@ -6,8 +6,9 @@ const leagueDetailSlice = createSlice({
     initialState: {
         majorLeagues: [],
         league: null,
-        preMatches: [],
-        postMatches: [],
+        stages: [],
+        preMatches: null,
+        postMatches: null,
         seasonStandings: []
     },
     reducers: {
@@ -18,8 +19,21 @@ const leagueDetailSlice = createSlice({
             state.league = action.payload;
         },
         setMatches: (state, action) => {
-            state.preMatches = action.payload.filter(match => match.status !== MatchStatus.Finished);
-            state.postMatches = action.payload.filter(match => match.status === MatchStatus.Finished);
+            const matches = action.payload;
+
+            const helper = {};
+            state.stages = matches.reduce((previousItem, currentItem) => {
+                const key = currentItem.stage ? currentItem.stage.stageId : 0;
+                if (key > 0 && !helper[key]) {
+                    helper[key] = currentItem.stage;
+                    previousItem.push(helper[key]);
+                }
+
+                return previousItem;
+            }, []);
+
+            state.preMatches = matches.filter(match => match.status !== MatchStatus.Finished);
+            state.postMatches = matches.filter(match => match.status === MatchStatus.Finished);
         },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
