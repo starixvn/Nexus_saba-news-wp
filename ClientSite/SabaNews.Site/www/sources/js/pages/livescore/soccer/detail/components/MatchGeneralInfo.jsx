@@ -115,15 +115,12 @@ export default class MatchGenetalInfo extends Component {
         return (
             <>
                 <div className="livescore-league-header-detail">
-                    <div className="livescore-league-header-detail-logo"><img loading="lazy"/></div>
+                    <div className="livescore-league-header-detail-logo"><img loading="lazy" src={generalInfo.league.icon}/></div>
                     <div className="livescore-league-header-detail-name">
                         {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span> <i className="icon-livescore icon-live-start start-active" />
                     </div>
                 </div>
                 <div className="duel-participant">
-                    <div className="duel-participant-start-time">
-                        <MatchStage match={generalInfo} />
-                    </div>
                     <div className="duel-participant-home">
                         <div className="participant-status">
                             {this.getTeamStatus(true)}
@@ -139,9 +136,16 @@ export default class MatchGenetalInfo extends Component {
                             {this.getBallAndCardNumber(IncidentPosition.Home)}
                         </div>
                     </div>
-                    <div className="duel-participant-score">
-                        {this.getMatchScores()}
+
+                    <div clasName="duel-participant-result">
+                        <div className="duel-participant-result-time">
+                            <MatchStage match={generalInfo} />
+                        </div>
+                        <div className="duel-participant-result-score">
+                            {this.getMatchScores()}
+                        </div>
                     </div>
+                    
                     <div className="duel-participant-away">
                         <div className="participant-image">
                             <a>
