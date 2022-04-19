@@ -4,41 +4,25 @@ import { bindActionCreators } from 'redux';
 import League from './League';
 import { ActionCreators } from '../../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { LeagueType } from '@jsroot/common/constants';
 
 export class MatchGrid extends PureComponent {
-    render() {
-        if (this.props.matches.length === 0) {
-            return <div className="none-livescore">
-                { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
-            </div>;
-        }
+    filterMatches = (matches, searchKey) => {
+        return matches.filter(match => CommonFunctions.getLeagueName(match.league).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+            || CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+            || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+    };
 
+    groupMatchesByStage = matches => {
         const helper = {};
-        const { selectedDate, searchKey } = this.props;
-        let matches = this.props.matches;
-        if (searchKey.length > 0) {
-            matches = matches.filter(match => match.league.leagueFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
-        }
-
-        if (matches.length === 0 && searchKey.length > 0) {
-            return <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>;
-        }
-
-        matches = matches.reduce((previousItem, currentItem) => {
-            const key = currentItem.league.leagueId
-                + `-${currentItem.league.season ? currentItem.league.season.seasonId : 0}`
-                + `-${currentItem.league.stage ? currentItem.league.stage.stageId : 0}`;
+        return matches.reduce((previousItem, currentItem) => {
+            const league = currentItem.league;
+            const key = league.leagueId
+                + `-${league.season ? league.season.seasonId : 0}`
+                + `-${league.leagueType !== LeagueType.League && league.stage ? league.stage.stageId : 0}`;
             if (!helper[key]) {
                 helper[key] = {
-                    leagueId: currentItem.league.leagueId,
-                    leagueNameEN: currentItem.league.leagueNameEN,
-                    leagueFullNameEN: currentItem.league.leagueFullNameEN,
-                    icon: currentItem.league.icon,
-                    leagueType: currentItem.league.leagueType,
-                    season: currentItem.league.season,
-                    stage: currentItem.league.stage,
+                    ...league,
                     matches: [{ ...currentItem }]
                 };
                 previousItem.push(helper[key]);
@@ -48,6 +32,26 @@ export class MatchGrid extends PureComponent {
 
             return previousItem;
         }, []);
+    };
+
+    render() {
+        if (this.props.matches.length === 0) {
+            return <div className="none-livescore">
+                { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
+            </div>;
+        }
+
+        const { selectedDate, searchKey } = this.props;
+        let matches = this.props.matches;
+        if (searchKey.length > 0) {
+            matches = this.filterMatches(matches, searchKey);
+        }
+
+        if (matches.length === 0 && searchKey.length > 0) {
+            return <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>;
+        }
+
+        matches = this.groupMatchesByStage(matches);
 
         return (
             <div className="soccer-match-grid">

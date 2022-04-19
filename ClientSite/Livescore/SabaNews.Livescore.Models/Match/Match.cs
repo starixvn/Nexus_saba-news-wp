@@ -16,6 +16,8 @@
         public Season Season { get; set; }
         public SeasonStage Stage { get; set; }
 
+        public short? GroupNum { get; set; }
+        public short? Round { get; set; }
         public short Status { get; set; }
         public short HomeTeamHalfScore { get; set; }
         public short AwayTeamHalfScore { get; set; }

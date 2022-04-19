@@ -54,6 +54,8 @@
                     StartTime = match.StartTime,
                     EndTime = match.EndTime,
                     Status = match.Status,
+                    GroupNum = match.GroupNum,
+                    Round = match.Round,
                     HomeTeamHalfScore = match.HomeTeamHalfScore,
                     AwayTeamHalfScore = match.AwayTeamHalfScore,
                     HomeTeamTotalScore = match.HomeTeamTotalScore,

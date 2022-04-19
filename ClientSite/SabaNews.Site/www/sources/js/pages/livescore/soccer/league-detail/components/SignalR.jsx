@@ -31,7 +31,7 @@ export class SignalR extends Component {
         });
 
         this.connection.onclose(async () => {
-            await start();
+            await this.start();
         });
 
         let lockResolver;
