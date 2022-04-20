@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { Tabs, Tab } from 'react-bootstrap';
 import MatchSummary from './MatchSummary';
 import Lineups from './Lineups';
 import Statistics from './Statistics';
@@ -16,6 +15,22 @@ export const withNavigation = Component => {
 }
 
 class FunctionBar extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeTab: "dien-bien"
+        };
+    }
+
+    componentDidMount() {
+        const tabStatus = this.updateTabStatus();
+        let defaultTab = this.getDefaultActiveKey(tabStatus);
+        this.scrollToTab(defaultTab);
+        this.setState({
+            activeTab: defaultTab
+        });
+    }
+
     updateTabStatus = () => {
         let tabStatus = {
             enableTabSummary: true,
@@ -80,35 +95,37 @@ class FunctionBar extends PureComponent {
             left: 0,
             behavior: 'smooth'
         });
+        this.setState({
+            activeTab: tab
+        })
         this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${tab}`));
     }
 
     render() {
         const tabStatus = this.updateTabStatus();
-        let defaultTab = this.getDefaultActiveKey(tabStatus);
-        this.scrollToTab(defaultTab)
+        const { activeTab } = this.state;
         return (
             <>
                 <div className="detail-function-bar">
                     <ul>
-                        <li><a onClick={() => this.scrollToTab("dien-bien")} className="active">Diễn biến</a></li>
-                        <li><a onClick={() => this.scrollToTab("thong-ke")}>Thống kê</a></li>
-                        <li><a onClick={() => this.scrollToTab("doi-hinh")}>Đội hình</a></li>
-                        <li><a onClick={() => this.scrollToTab("doi-dau")}>Đối đầu</a></li>
+                        <li><a onClick={() => this.scrollToTab("dien-bien")} className={`${activeTab === "dien-bien" ? "active" : ""} ${!tabStatus.enableTabSummary ? "disabled": ""}`}>Diễn biến</a></li>
+                        <li><a onClick={() => this.scrollToTab("thong-ke")} className={`${activeTab === "thong-ke" ? "active" : ""} ${!tabStatus.enableTabStatistics ? "disabled": ""}`}>Thống kê</a></li>
+                        <li><a onClick={() => this.scrollToTab("doi-hinh")} className={`${activeTab === "doi-hinh" ? "active" : ""} ${!tabStatus.enableTabLineups ? "disabled": ""}`}>Đội hình</a></li>
+                        <li><a onClick={() => this.scrollToTab("doi-dau")} className={`${activeTab === "doi-dau" ? "active" : ""} ${!tabStatus.enableTabHeadtohead ? "disabled": ""}`}>Đối đầu</a></li>
                     </ul>
                 </div>
                 <div className="line-up-content">
                     <div id="dien-bien">
-                        <MatchSummary match = {this.props.match} />
+                        <MatchSummary />
                     </div>
                     <div id="thong-ke">
-                        <Statistics match = {this.props.match}/>
+                        <Statistics />
                     </div>
                     <div id="doi-hinh">
-                        <Lineups/>
+                        <Lineups />
                     </div>
                     <div id="doi-dau">
-                        <HeadToHead/>
+                        <HeadToHead />
                     </div>
                 </div>
             </>

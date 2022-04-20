@@ -472,9 +472,9 @@ export class Lineups extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { lineup, match } = state;
+    const { match } = state;
     return {
-        lineup, match
+        match
     };
 };
 

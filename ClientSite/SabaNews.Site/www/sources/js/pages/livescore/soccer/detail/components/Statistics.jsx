@@ -1,6 +1,9 @@
 ﻿import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 
-export default class Statistics extends Component {
+export class Statistics extends Component {
     constructor(props) {
         super(props);
     }
@@ -61,3 +64,14 @@ export default class Statistics extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+const mapStateToProps = state => {
+    const { match } = state;
+    return {
+        match
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Statistics);

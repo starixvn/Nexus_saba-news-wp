@@ -4,13 +4,17 @@ import GeneralIncident from './incidents/GeneralIncident';
 import PenaltyShootOut from './incidents/PenaltyShootOut';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
 
-export default class MatchSummary extends Component {
+export class MatchSummary extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+        console.log("dien bien");
         if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
             return null;
         }
@@ -108,3 +112,14 @@ export default class MatchSummary extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+const mapStateToProps = state => {
+    const { match } = state;
+    return {
+        match
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MatchSummary);
