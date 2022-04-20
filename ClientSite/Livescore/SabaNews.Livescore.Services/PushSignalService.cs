@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.SignalR.Client;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
@@ -23,7 +24,7 @@
             this.signalRSettings = signalRSettings;
             this.logger = logger;
             hubConnection = new HubConnectionBuilder()
-                           .WithUrl(new Uri(signalRSettings.Endpoint))
+                           .WithUrl(new Uri(signalRSettings.Endpoint), HttpTransportType.WebSockets)
                            .WithAutomaticReconnect()
                            .Build();
         }
