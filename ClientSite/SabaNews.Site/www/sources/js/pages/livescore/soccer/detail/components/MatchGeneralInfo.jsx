@@ -77,11 +77,12 @@ export default class MatchGenetalInfo extends Component {
                     })
                 }
                 {
-                    (numberRedCard !== 0 || numberYellowCard !== 0) &&
-                    <>
-                        <span className="card-league red-card">{numberRedCard}</span>
-                        <span className="card-league yellow-card">{numberYellowCard}</span>
-                    </>
+                    numberRedCard !== 0 &&
+                    <span className="card-league red-card">{numberRedCard}</span>
+                }
+                {
+                    numberYellowCard !== 0 &&
+                    <span className="card-league yellow-card">{numberYellowCard}</span>
                 }
             </div>
         )
