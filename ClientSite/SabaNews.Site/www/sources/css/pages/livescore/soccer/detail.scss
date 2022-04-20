@@ -357,7 +357,6 @@ $fa-font-path: "../../../../fonts";
 }
 .width_common {
     width: 100%;
-    float: left;
 }
 
 .head-top-team {
@@ -571,7 +570,6 @@ svg.fill-red {
 .lineup {
     display: inline-block;
     width: 100%;
-    max-width: 640px;
     position: relative;
     border: solid 1px #e0e0e0;
     border-radius: 12px;
