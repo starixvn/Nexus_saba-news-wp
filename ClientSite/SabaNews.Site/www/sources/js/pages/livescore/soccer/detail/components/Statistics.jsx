@@ -30,6 +30,7 @@ export default class Statistics extends Component {
         }
         return (
             <div className="statistices">
+                <h2 className="heading-tab">Thống kê</h2>
                 {
                     statistices.map(item => {
                         const homePercentage = (item.homeValue / (item.homeValue + item.awayValue)) * 100;
