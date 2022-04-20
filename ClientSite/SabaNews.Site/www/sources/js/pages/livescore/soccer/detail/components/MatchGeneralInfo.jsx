@@ -67,11 +67,9 @@ export default class MatchGenetalInfo extends Component {
                 {
                     goals.map((goal, gkey) => {
                         return (
-                            <div key={gkey}>
-                                <span className="icon-th">
-                                    <IncidentIcon type={goal.type} />
-                                </span>
-                                <span>({goal.timeShow}') - {goal.playerName}</span>
+                            <div key={gkey} className="participant-detail-group">
+                                <IncidentIcon type={goal.type} />
+                                <span className="name-player">({goal.timeShow}') - {goal.playerName}</span>
                             </div>
                         )
                     })

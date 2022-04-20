@@ -76,9 +76,18 @@
         }
 
         .participant-detail {
-            display: flex;
             justify-content: flex-end;
-            flex-wrap: wrap;
+
+            &-group {
+                .name-player {
+                    order: 1;
+                    margin-right: 1.2rem;
+                }
+
+                i {
+                    order: 2;
+                }
+            }
         }
     }
 
@@ -105,9 +114,13 @@
         }
 
         .participant-detail {
-            display: flex;
             justify-content: flex-start;
-            flex-wrap: wrap;
+
+            &-group {
+                .name-player {
+                    margin-left: 1.2rem;
+                }
+            }
         }
     }
 }
@@ -115,6 +128,20 @@
 
 
 .participant-detail {
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+
+    &-group {
+        display : flex;
+        align-items :center;
+        .name-player {
+            font-weight: 400;
+            font-size: 1.4rem;
+            line-height: 2.4rem;
+        }
+    }
+
     .card-league {
         padding: .4rem;
         font-weight: 700;
