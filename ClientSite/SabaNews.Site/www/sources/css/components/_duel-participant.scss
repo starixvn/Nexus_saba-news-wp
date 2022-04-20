@@ -79,6 +79,8 @@
             justify-content: flex-end;
 
             &-group {
+                justify-content: flex-end;
+
                 .name-player {
                     order: 1;
                     margin-right: 1.2rem;
@@ -86,6 +88,14 @@
 
                 i {
                     order: 2;
+                }
+            }
+
+            .card-league {
+                margin-left: .8rem;
+
+                &:first-child {
+                    margin-left: 0;
                 }
             }
         }
@@ -121,6 +131,14 @@
                     margin-left: 1.2rem;
                 }
             }
+
+            .card-league {
+                margin-right: .8rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
         }
     }
 }
@@ -133,8 +151,15 @@
     display: flex;
 
     &-group {
-        display : flex;
-        align-items :center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         .name-player {
             font-weight: 400;
             font-size: 1.4rem;
@@ -148,11 +173,7 @@
         font-size: 1.2rem;
         line-height: 1;
         border-radius: 3px;
-        margin-left: .8rem;
-
-        &:first-child {
-            margin-left: 0;
-        }
+        margin-bottom : .8rem;
     }
 
     .red-card {
