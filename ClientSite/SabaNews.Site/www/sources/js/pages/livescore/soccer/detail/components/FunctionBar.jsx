@@ -91,7 +91,7 @@ class FunctionBar extends PureComponent {
             <>
                 <div className="detail-function-bar">
                     <ul>
-                        <li><a onClick={() => this.scrollToTab("dien-bien")}>Diễn biến</a></li>
+                        <li><a onClick={() => this.scrollToTab("dien-bien")} className="active">Diễn biến</a></li>
                         <li><a onClick={() => this.scrollToTab("thong-ke")}>Thống kê</a></li>
                         <li><a onClick={() => this.scrollToTab("doi-hinh")}>Đội hình</a></li>
                         <li><a onClick={() => this.scrollToTab("doi-dau")}>Đối đầu</a></li>
