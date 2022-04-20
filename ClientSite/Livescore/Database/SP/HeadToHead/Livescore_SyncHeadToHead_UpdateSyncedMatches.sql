@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_UpdateSyncedMatch;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatch(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatch(
     matchId BIGINT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
