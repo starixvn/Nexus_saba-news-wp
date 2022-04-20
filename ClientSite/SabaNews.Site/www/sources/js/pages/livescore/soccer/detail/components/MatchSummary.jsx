@@ -33,8 +33,8 @@ export class MatchSummary extends Component {
             score: null
         }
         return (
-            <div className="block width_common block-detail-trandau" id="dien-bien">
-                <div className="width_common box-dienbien">
+            <div className="line-up-main" id="dien-bien">
+                <div className="line-up-live">
                     <div className="head-top-team">
                         <div className="flexbox time-event">
                             <p>Bắt đầu</p>
