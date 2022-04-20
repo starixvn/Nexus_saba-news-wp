@@ -32,7 +32,7 @@ export class Statistics extends Component {
             ];
         }
         return (
-            <>
+            <div id="thong-ke">
                 <h2 className="heading-tab">Thống kê</h2>
                 <div className="statistices">
                     {
@@ -60,7 +60,7 @@ export class Statistics extends Component {
                         })
                     }
                 </div>
-            </>
+            </div>
         );
     }
 }

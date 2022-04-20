@@ -25,7 +25,6 @@ class FunctionBar extends PureComponent {
     componentDidMount() {
         const tabStatus = this.updateTabStatus();
         let defaultTab = this.getDefaultActiveKey(tabStatus);
-        this.scrollToTab(defaultTab);
         this.setState({
             activeTab: defaultTab
         });
@@ -113,20 +112,6 @@ class FunctionBar extends PureComponent {
                         <li><a onClick={() => this.scrollToTab("doi-hinh")} className={`${activeTab === "doi-hinh" ? "active" : ""} ${!tabStatus.enableTabLineups ? "disabled": ""}`}>Đội hình</a></li>
                         <li><a onClick={() => this.scrollToTab("doi-dau")} className={`${activeTab === "doi-dau" ? "active" : ""} ${!tabStatus.enableTabHeadtohead ? "disabled": ""}`}>Đối đầu</a></li>
                     </ul>
-                </div>
-                <div className="line-up-content">
-                    <div id="dien-bien">
-                        <MatchSummary />
-                    </div>
-                    <div id="thong-ke">
-                        <Statistics />
-                    </div>
-                    <div id="doi-hinh">
-                        <Lineups />
-                    </div>
-                    <div id="doi-dau">
-                        <HeadToHead />
-                    </div>
                 </div>
             </>
         );

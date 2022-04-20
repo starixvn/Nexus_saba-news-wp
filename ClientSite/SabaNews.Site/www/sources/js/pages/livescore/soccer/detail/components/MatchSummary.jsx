@@ -14,7 +14,6 @@ export class MatchSummary extends Component {
     }
 
     render() {
-        console.log("dien bien");
         if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
             return null;
         }
@@ -34,7 +33,7 @@ export class MatchSummary extends Component {
             score: null
         }
         return (
-            <div className="block width_common block-detail-trandau">
+            <div className="block width_common block-detail-trandau" id="dien-bien">
                 <div className="width_common box-dienbien">
                     <div className="head-top-team">
                         <div className="flexbox time-event">

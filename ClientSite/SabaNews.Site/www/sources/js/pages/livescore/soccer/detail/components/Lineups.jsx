@@ -417,7 +417,7 @@ export class Lineups extends Component {
         const awaySubPlayers = lineup.away.filter(player => player.position === 0);
 
         return (
-            <>
+            <div id="doi-hinh">
                 {this.renderPitchView()}
                 <div className="line-up-main">
                     <div className="line-up-team">
@@ -447,7 +447,7 @@ export class Lineups extends Component {
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
