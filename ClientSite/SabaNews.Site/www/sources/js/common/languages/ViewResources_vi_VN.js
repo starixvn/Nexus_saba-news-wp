@@ -1,19 +1,20 @@
 ﻿window._language_vi_VN = {
     Cancel: 'Hủy',
+    Defender: 'Hậu vệ',
     Delay: 'Tạm hoãn',
     Finish: 'Kết thúc',
+    Goalkeeper: 'Thủ môn',
     HotLeague: 'Giải nổi bật',
     Intermission: 'Nghỉ giữa hiệp',
+    LineupPlayer: 'Đội hình ra sân',
+    LineupSubtitude: 'Thay người',
+    LineupSubtitudePlayer: 'Dự bị',
     Live: 'Trực tiếp',
+    Midfielder: 'Trung vệ',
     Penalty: 'Penalty',
     Postponed: 'Dời lịch',
+    Round: 'Vòng',
+    Striker: 'Tiền đạo',
     ToBeDecided: 'Chờ xác định',
-    Today: 'Hôm nay',
-    LineupPlayer: 'Đội hình ra sân',
-    LineupSubtitudePlayer: "Dự bị",
-    LineupSubtitude: "Thay người",
-    Striker: "Tiền đạo",
-    Midfielder: "Trung vệ",
-    Defender: "Hậu vệ",
-    Goalkeeper: "Thủ môn"
+    Today: 'Hôm nay'
 };

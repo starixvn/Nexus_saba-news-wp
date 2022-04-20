@@ -4,6 +4,7 @@ import moment from 'moment';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class MatchGrid extends PureComponent {
     constructor(props) {
@@ -17,6 +18,10 @@ export default class MatchGrid extends PureComponent {
     handleChangeSearchKey = event => {
         this.setState({ searchKey: event.target.value });
     };
+
+    getRoundName = round => `${LangHelper.getResource('Round')} ${round}`;
+
+    getStageName = stage => stage ? stage.stageNameEN : '';
 
     groupMatchesByDate = matches => {
         const helper = {};
@@ -38,69 +43,47 @@ export default class MatchGrid extends PureComponent {
         }, []);
     };
 
-    groupMatchesByStage = matches => {
-        const helper = {};
-        matches = matches.reduce((previousItem, currentItem) => {
-            const key = currentItem.stage ? currentItem.stage.stageId : 0;
-            if (!helper[key]) {
-                helper[key] = {
-                    key: key,
-                    text: currentItem.stage ? currentItem.stage.stageNameEN : '',
-                    orderIndex: currentItem.stage.orderIndex,
-                    childs: [{ ...currentItem }]
-                };
-                previousItem.push(helper[key]);
-            } else {
-                helper[key].childs.push(currentItem);
-            }
-
-            return previousItem;
-        }, []);
-
-        matches.sort((item1, item2) => item2.orderIndex - item1.orderIndex);
-        const totalItems = matches.length;
-        for (let i = 0; i < totalItems; i++) {
-            matches[i] = { ...matches[i], childs: this.groupMatchesByDate(matches[i].childs) }
-        }
-
-        return matches;
-    };
-
-    groupMatchesByRound = matches => {
-        const helper = {};
-        matches = matches.reduce((previousItem, currentItem) => {
-            const key = currentItem.round ? currentItem.round : 999999;
-            if (!helper[key]) {
-                helper[key] = {
-                    key: key,
-                    text: currentItem.round ? `Round ${currentItem.round}` : '',
-                    orderIndex: key,
-                    childs: [{ ...currentItem }]
-                };
-                previousItem.push(helper[key]);
-            } else {
-                helper[key].childs.push(currentItem);
-            }
-
-            return previousItem;
-        }, []);
-
-        const totalItems = matches.length;
-        for (let i = 0; i < totalItems; i++) {
-            matches[i] = { ...matches[i], childs: this.groupMatchesByDate(matches[i].childs) }
-        }
-
-        return matches;
-    };
-
     groupMatches = (stages, matches) => {
-        if (stages.length > 1) {
-            return this.groupMatchesByStage(matches);
-        } else if (matches.filter(item => item.round).length > 0) {
-            return this.groupMatchesByRound(matches);
-        } else {
+        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0) {
             return this.groupMatchesByDate(matches);
         }
+
+        let totalItems = matches.length;
+        const tempMatches = [];
+        for (let i = 0; i < totalItems; i++) {
+            const match = matches[i];
+            const stage = match.stage;
+            const stageId = stage ? stage.stageId : 0;
+            const round = match.round ? match.round : 0;
+            const item = {
+                stageId, stage, round,
+                matches: [match]
+            };
+
+            if (tempMatches.length === 0) {
+                tempMatches.push(item);
+            } else {
+                const index = tempMatches.findIndex(x => stageId === x.stageId && round === x.round);
+                if (index === - 1) {
+                    tempMatches.push(item);
+                } else {
+                    tempMatches[index].matches.push(match);
+                }
+            }
+        }
+
+        totalItems = tempMatches.length;
+        const result = [];
+        for (let i = 0; i < totalItems; i++) {
+            const item = tempMatches[i];
+            result.push({
+                key: i,
+                text: item.round > 0 ? this.getRoundName(item.round) : this.getStageName(item.stage),
+                childs: this.groupMatchesByDate(item.matches)
+            });
+        }
+
+        return result;
     };
 
     sortMatches = (matches, sortAsc) => {
