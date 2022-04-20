@@ -2,6 +2,11 @@
     margin-bottom: .8rem;
     padding-bottom: .4rem;
     border-bottom: 1px solid $border-color;
+    padding-top: 2.4rem;
+    position: sticky;
+    top: 26.9rem;
+    background: $primary-bg;
+    z-index: 99999;
 
     ul {
         list-style: none;

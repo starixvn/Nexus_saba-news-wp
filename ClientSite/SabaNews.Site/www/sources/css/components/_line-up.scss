@@ -66,12 +66,15 @@
                             font-size: 1.4rem;
                             line-height: 1.9rem;
                         }
+
                         .name-player {
                             width: 85%;
-                            p{
-                                margin-bottom : 1rem;
-                                &:last-child{
-                                    margin-bottom : 0;
+
+                            p {
+                                margin-bottom: 1rem;
+
+                                &:last-child {
+                                    margin-bottom: 0;
                                 }
                             }
                         }
