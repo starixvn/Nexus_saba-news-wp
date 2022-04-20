@@ -45,7 +45,7 @@
                             color: $color-detail-league;
                             padding: .6rem 0;
                             width: 70%;
-                            text-align : left;
+                            text-align: left;
                         }
 
                         .number-player {
@@ -54,6 +54,26 @@
 
                         .action-player {
                             width: 15%;
+                            text-align: right;
+                        }
+                    }
+
+                    .list-change-main {
+                        justify-content: space-between;
+
+                        .number-player {
+                            font-weight: 700;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+                        }
+                        .name-player {
+                            width: 85%;
+                            p{
+                                margin-bottom : 1rem;
+                                &:last-child{
+                                    margin-bottom : 0;
+                                }
+                            }
                         }
                     }
                 }

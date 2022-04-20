@@ -281,11 +281,6 @@ export class Lineups extends Component {
                                             <li className="name-player">{player.playerName}</li>
                                             <li className="action-player">{this.renderIconListPlayer(player)}</li>
                                         </ul>
-                                        //<tr key={pIndex}>
-                                        //    <td>{player.playerNumber}</td>
-                                        //    <td className="name-player">{player.playerName}</td>
-                                        //    <td>{this.renderIconListPlayer(player)}</td>
-                                        //</tr>
                                     )
                                 })
                             }
@@ -395,11 +390,13 @@ export class Lineups extends Component {
                 const inPlayer = players.find(item => item.playerId === incident.inPlayerId);
                 const outPlayer = players.find(item => item.playerId === incident.outPlayerId)
                 return (
-                    <tr key={key}>
-                        <td>{incident.timeShow}</td>
-                        <td>{inPlayer?.playerNumber || 0} - {incident.inPlayerName}</td>
-                        <td>{outPlayer?.playerNumber || 0} - {incident.outPlayerName}</td>
-                    </tr>
+                    <ul key={key} className="list-paticipant list-change-main">
+                        <li className="number-player">{incident.timeShow}'</li>
+                        <li className="name-player">
+                            <p>{inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
+                            <p>{outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
+                         </li>
+                     </ul>
                 )
             })
         )
@@ -432,35 +429,18 @@ export class Lineups extends Component {
                         <div className="line-up-title">Thay người</div>
                         <div className="line-up">
                             <div className="line-up-table">
-                                <table className="table-paticipant">
-                                    <thead>
-                                        <tr>
-                                            <th>Số phút</th>
-                                            <th>vào sân</th>
-                                            <th>ra sân</th>
-                                        </tr>
-                                    </thead>
+                                <div className="table-paticipant home-team">
 
-                                    <tbody>
-                                        {
-                                            this.renderSubstitution(IncidentPosition.Home)
-                                        }
-                                    </tbody>
-                                </table>
-                                <table className="table-paticipant away">
-                                    <thead>
-                                        <tr>
-                                            <th>Số phút</th>
-                                            <th>vào sân</th>
-                                            <th>ra sân</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            this.renderSubstitution(IncidentPosition.Away)
-                                        }
-                                    </tbody>
-                                </table>
+                                    {
+                                        this.renderSubstitution(IncidentPosition.Home)
+                                    }
+                                </div>
+                                <div className="table-paticipant away-team">
+                                    {
+                                        this.renderSubstitution(IncidentPosition.Away)
+                                    }
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
