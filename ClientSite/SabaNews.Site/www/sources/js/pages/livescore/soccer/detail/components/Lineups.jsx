@@ -427,7 +427,7 @@ export class Lineups extends Component {
                         {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
                     </div>
 
-                    <div className="change-men">
+                    <div className="line-up-change-men">
                         <div className="line-up-title">Thay người</div>
                         <div className="line-up">
                             <div className="line-up-table">
