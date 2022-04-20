@@ -95,10 +95,10 @@ export default class MatchGenetalInfo extends Component {
             case MatchStatus.Finished:
                 if (generalInfo[`${homeFieldName}PenaltyScore`]
                     && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
-                    return <span>PEN</span>;
+                    return <li>PEN</li>;
                 } else if (generalInfo[`${homeFieldName}AggregateScore`]
                     && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
-                    return <span>AGG</span>;
+                    return <li>AGG</li>;
                 } else {
                     return <Fragment />;
                 }
@@ -121,9 +121,10 @@ export default class MatchGenetalInfo extends Component {
                 </div>
                 <div className="duel-participant">
                     <div className="duel-participant-home-wrapper">
-                        <div className="duel-participant-home-wrapper-status">
-                            {this.getTeamStatus(true)}
-                        </div>
+                        <ul className="soccer-team-status">
+                            {/*{this.getTeamStatus(true)}*/}
+                            <li>Pen</li>
+                        </ul>
                         <div className="duel-participant-home-wrapper-image">
                             <div className="duel-participant-home-wrapper-name">{generalInfo.homeTeam.teamNameEN}</div>
                             <a className="duel-participant-home-wrapper-logo">
