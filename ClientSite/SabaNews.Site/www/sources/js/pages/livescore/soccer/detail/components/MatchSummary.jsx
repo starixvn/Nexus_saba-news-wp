@@ -13,8 +13,29 @@ export class MatchSummary extends Component {
         super(props);
     }
 
+    renderFinishStatus = () => {
+        const { generalInfo } = this.props.match;
+        const homeFinalScore = generalInfo.homeTeamExtraScore ? generalInfo.homeTeamExtraScore : generalInfo.homeTeamTotalScore;
+        const awayFinalScore = generalInfo.awayTeamExtraScore ? generalInfo.awayTeamExtraScore : generalInfo.awayTeamTotalScore;
+        const homeFinalPenalty = generalInfo.homeTeamPenaltyScore;
+        const awayFinalPenalty = generalInfo.awayTeamPenaltyScore;
+        const finalScore = "[" + homeFinalScore + " - " + awayFinalScore + "]";
+        const finalPenalty = "[" + homeFinalPenalty + " - " + awayFinalPenalty + "]";
+        return (
+            <div className="head-top-team" >
+                <div className="flexbox time-event">
+                    <p>Trận Đấu kết thúc</p>
+                </div>
+                <div className="flexbox time-event">
+                    <p>{(homeFinalPenalty !== 0 ||  awayFinalPenalty !== 0)? "PEN: " + finalPenalty : finalScore}</p>
+                </div>
+            </div>
+        )
+    }
+
     render() {
-        if (!this.props.match.incidents || this.props.match.incidents.length === 0) {
+        const { match } =  this.props;
+        if (!match.incidents || match.incidents.length === 0 || Site.CheckPostMatchStatus(match.generalInfo.status)) {
             return null;
         }
         const { generalInfo } = this.props.match;
@@ -69,14 +90,20 @@ export class MatchSummary extends Component {
                                         incident = {incident}
                                     />
                                 )
-                            } else if(Site.CheckIncidentTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
+                            } else if(Site.CheckIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
+                                let score = processScore;
+                                if(incident.type === IncidentStatus.Halftime) {
+                                    score = "[" + generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore + "]";
+                                } else if (incident.type === IncidentStatus.End){
+                                    score = "[" + generalInfo.homeTeamTotalScore + " - " + generalInfo.awayTeamTotalScore + "]";
+                                }
                                 return (
                                     <div className="head-top-team" key={key}>
                                         <div className="flexbox time-event">
                                             <p>{Site.MappingIncidentTimeEventType(incident.type)}</p>
                                         </div>
                                         <div className="flexbox time-event">
-                                            <p>{processScore}</p>
+                                            <p>{score}</p>
                                         </div>
                                     </div>
                                 )
@@ -97,14 +124,7 @@ export class MatchSummary extends Component {
                     }
                     {
                         generalInfo.status === MatchStatus.Finished &&
-                        <div className="head-top-team" >
-                            <div className="flexbox time-event">
-                                <p>Trận Đấu kết thúc</p>
-                            </div>
-                            <div className="flexbox time-event">
-                                <p>{(homePenaltyShootoutScore !== 0 ||  homePenaltyShootoutScore !== 0)? "PEN: " + penaltyShootoutScore : processScore}</p>
-                            </div>
-                        </div>
+                        this.renderFinishStatus()
                     }
                 </div>
             </div>

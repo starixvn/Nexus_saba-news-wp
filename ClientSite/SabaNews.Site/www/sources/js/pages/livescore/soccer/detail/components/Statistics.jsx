@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import Site from '@jsroot/common/site';
 
 export class Statistics extends Component {
     constructor(props) {
@@ -9,11 +10,11 @@ export class Statistics extends Component {
     }
 
     render() {
+        const match = this.props.match;
         const { statistic } = this.props.match;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || Site.CheckPostMatchStatus(match.generalInfo.status)) {
             return null;
         }
-        const match = this.props.match;
         let statistices  = [];
         if(match !== null) {
             const {homeStatistic, awayStatistic} = this.props.match.statistic;

@@ -12,7 +12,7 @@ export default class MatchGenetalInfo extends Component {
     }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
-        const homePenaltyShootOut = match.homeTeamPenaltyScore
+        const homePenaltyShootOut = match.homeTeamPenaltyScore;
         const awayPenaltyShootOut = match.awayTeamPenaltyScore;
         const homeAGG = match.homeTeamAggregateScore;
         const awayAGG = match.awayTeamAggregateScore;

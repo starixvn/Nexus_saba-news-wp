@@ -3,10 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import MatchSummary from './MatchSummary';
-import Lineups from './Lineups';
-import Statistics from './Statistics';
-import HeadToHead from './HeadToHead';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 
@@ -41,13 +37,13 @@ class FunctionBar extends PureComponent {
         if (generalInfo.isLineUp === 0) {
             tabStatus["enableTabLineups"] = false;
         }
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || !statistic.homeStatistic.controlRate || !statistic.awayStatistic.controlRate) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || !statistic.homeStatistic.controlRate || Site.CheckPostMatchStatus(generalInfo.status)) {
             tabStatus["enableTabStatistics"] = false;
         }
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             tabStatus["enableTabHeadtohead"] = false;
         }
-        if (!incidents || incidents.length === 0) {
+        if (!incidents || incidents.length === 0 || Site.CheckPostMatchStatus(generalInfo.status)) {
             tabStatus["enableTabSummary"] = false;
         }
         if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {

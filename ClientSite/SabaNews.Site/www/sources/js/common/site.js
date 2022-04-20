@@ -40,6 +40,13 @@ export default class Site {
         return _rootUrl + relativeUrl;
     }
 
+    static CheckPostMatchStatus(status) {
+        if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone || status === MatchStatus.Delay || status === MatchStatus.Cancel || status.TBD)  {
+            return true;
+        }
+        return false;
+    }
+
     static MappingStatusMatchText(status) {
         switch(status) {
             case MatchStatus.PenaltyShootout: return "Penalty";
@@ -60,13 +67,14 @@ export default class Site {
         return false;
     }
 
-    static CheckIncidentTimeEventType(type) {
-        if(type === IncidentStatus.End || type === IncidentStatus.OvertimeEnds 
+    static CheckIncidentMainTimeEventType(type) {
+        if(type === IncidentStatus.End || type === IncidentStatus.OvertimeEnds
             || type === IncidentStatus.PenaltyShootoutEnd || type === IncidentStatus.Halftime) {
              return true;
          }
          return false;
     }
+
 
     static MappingIncidentTimeEventType(type) {
         switch(type) {

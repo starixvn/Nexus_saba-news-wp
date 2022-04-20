@@ -442,7 +442,6 @@ export class Lineups extends Component {
                                         this.renderSubstitution(IncidentPosition.Away)
                                     }
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
