@@ -174,8 +174,8 @@ BEGIN
     SELECT md.MatchId, (CASE WHEN md.IsHomeTeam = 1 THEN m.HomeTeamId ELSE m.AwayTeamId END) As TeamId, md.Goal, md.CornerKick, md.YellowCard, md.RedCard, md.OutBall, 
     md.FreeKick, md.GoalKick, md.PenaltyKick, md.YellowToRed, md.FailPenaltyKick, md.OwnGoal, md.InjuryTime, md.OnGoal, 
     md.MissGoal, md.Attack, md.DangerAttack, md.ControlRate, md.ExtraScore, md.PenaltyScore, md.Assists, 
-    md.First, md.Follow, md.Foul, md.Grade, md.HalfCorner, md.HalfPossession, md.Head, md.HeadSuccess, md.Intercept,
-    md.OffSide, md.OnDoor, md.Pass, md.PassSuccess, md.Past, md.Shoot, md.ShootOut, md.ShootStop, md.Slide, md.Steals
+    md.First, md.Follow, md.Foul, NULLIF(md.Grade, 'NULL'), md.HalfCorner, NULLIF(md.HalfPossession, 'NULL'), md.Head, md.HeadSuccess, md.Intercept,
+    md.OffSide, md.OnDoor, md.Pass, NULLIF(md.PassSuccess, 'NULL'), md.Past, md.Shoot, md.ShootOut, md.ShootStop, md.Slide, md.Steals
     FROM 
 		JSON_TABLE
         (
