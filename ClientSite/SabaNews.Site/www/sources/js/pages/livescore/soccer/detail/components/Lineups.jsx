@@ -259,83 +259,37 @@ export class Lineups extends Component {
                 <div className="line-up">
                     <div className="line-up-table">
                         <div className="table-paticipant home-team">
-                            <table>
-                                {
-                                    home.map((player, pIndex) => {
-                                        return (
-                                            <tr key={pIndex}>
-                                                <td>{player.playerNumber}</td>
-                                                <td className="name-player">{player.playerName}</td>
-                                                <td>{this.renderIconListPlayer(player)}</td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </table>
+                           
+                            {
+                                home.map((player, pIndex) => {
+                                    return (
+                                        <ul key={pIndex} className="list-paticipant">
+                                            <li className="number-player">{player.playerNumber}</li>
+                                            <li className="name-player">{player.playerName}</li>
+                                            <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                        </ul>
+                                    )
+                                })
+                            }
                         </div>
                         <div className="table-paticipant away-team">
-                            <table>
-                                {
-                                    away.map((player, pIndex) => {
-                                        return (
-                                            <tr key={pIndex}>
-                                                <td>{player.playerNumber}</td>
-                                                <td className="name-player">{player.playerName}</td>
-                                                <td>{this.renderIconListPlayer(player)}</td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </table>
+                            {
+                                away.map((player, pIndex) => {
+                                    return (
+                                         <ul key={pIndex} className="list-paticipant">
+                                            <li className="number-player">{player.playerNumber}</li>
+                                            <li className="name-player">{player.playerName}</li>
+                                            <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                        </ul>
+                                        //<tr key={pIndex}>
+                                        //    <td>{player.playerNumber}</td>
+                                        //    <td className="name-player">{player.playerName}</td>
+                                        //    <td>{this.renderIconListPlayer(player)}</td>
+                                        //</tr>
+                                    )
+                                })
+                            }
                         </div>
-                        {/*<table className="table-paticipant home-team">*/}
-                        {/*    <thead>*/}
-                        {/*        <tr>*/}
-                        {/*            <th width="10%">Số áo</th>*/}
-                        {/*            <th width="40%">tên cầu thủ</th>*/}
-                        {/*            <th width="30%">vị trí</th>*/}
-                        {/*            <th></th>*/}
-                        {/*        </tr>*/}
-                        {/*    </thead>*/}
-                        {/*    <tbody>*/}
-                        {/*        {*/}
-                        {/*            home.map((player, pIndex) => {*/}
-                        {/*                return (*/}
-                        {/*                    <tr key={pIndex}>*/}
-                        {/*                        <td>{player.playerNumber}</td>*/}
-                        {/*                        <td>{player.playerName}</td>*/}
-                        {/*                        <td>{this.getPlayerRole(player.role)}</td>*/}
-                        {/*                        <td>{this.renderIconListPlayer(player)}</td>*/}
-                        {/*                    </tr>*/}
-                        {/*                )*/}
-                        {/*            })*/}
-                        {/*        }*/}
-                        {/*    </tbody>*/}
-                        {/*</table>*/}
-                        {/*<table className="table-paticipant away-team">*/}
-                        {/*    <thead>*/}
-                        {/*        <tr>*/}
-                        {/*            <th width="10%">Số áo</th>*/}
-                        {/*            <th width="40%">tên cầu thủ</th>*/}
-                        {/*            <th width="30%">vị trí</th>*/}
-                        {/*            <th></th>*/}
-                        {/*        </tr>*/}
-                        {/*    </thead>*/}
-                        {/*    <tbody>*/}
-                        {/*        {*/}
-                        {/*            away.map((player, pIndex) => {*/}
-                        {/*                return (*/}
-                        {/*                    <tr key={pIndex}>*/}
-                        {/*                        <td>{player.playerNumber}</td>*/}
-                        {/*                        <td>{player.playerName}</td>*/}
-                        {/*                        <td>{this.getPlayerRole(player.role)}</td>*/}
-                        {/*                        <td>{this.renderIconListPlayer(player)}</td>*/}
-                        {/*                    </tr>*/}
-                        {/*                )*/}
-                        {/*            })*/}
-                        {/*        }*/}
-                        {/*    </tbody>*/}
-                        {/*</table>*/}
                     </div>
                 </div>
             </>

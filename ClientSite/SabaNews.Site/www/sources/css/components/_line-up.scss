@@ -27,24 +27,33 @@
                         padding-left: 1.2rem;
                     }
 
-                    table {
-                        border-collapse: collapse;
-                        width: 100%;
+                    .list-paticipant {
+                        list-style: none;
+                        display: flex;
+                        border-bottom: 1px solid #EAEAEA;
+                        align-items: center;
+                        justify-content: space-between;
 
-                        tr {
-                            border-bottom: 1px solid #EAEAEA;
-                            height: 3.2rem;
+                        &:last-child {
+                            border-bottom: none;
+                        }
 
-                            .name-player {
-                                font-weight: 600;
-                                font-size: 1.3rem;
-                                line-height: 1.8rem;
-                                color: $color-detail-league;
-                            }
+                        .name-player {
+                            font-weight: 600;
+                            font-size: 1.3rem;
+                            line-height: 1.8rem;
+                            color: $color-detail-league;
+                            padding: .6rem 0;
+                            width: 70%;
+                            text-align : left;
+                        }
 
-                            &:last-child {
-                                border-bottom: none;
-                            }
+                        .number-player {
+                            width: 15%;
+                        }
+
+                        .action-player {
+                            width: 15%;
                         }
                     }
                 }
