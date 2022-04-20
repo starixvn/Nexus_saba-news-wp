@@ -18,7 +18,7 @@ export class MatchGrid extends PureComponent {
         return matches.reduce((previousItem, currentItem) => {
             const league = currentItem.league;
             const key = league.leagueId
-                + `-${league.season ? league.season.seasonId : 0}`
+                + `-${league.leagueType !== LeagueType.League && league.season ? league.season.seasonId : 0}`
                 + `-${league.leagueType !== LeagueType.League && league.stage ? league.stage.stageId : 0}`;
             if (!helper[key]) {
                 helper[key] = {

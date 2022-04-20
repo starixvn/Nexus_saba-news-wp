@@ -66,9 +66,38 @@ export default class MatchGrid extends PureComponent {
         return matches;
     };
 
+    groupMatchesByRound = matches => {
+        const helper = {};
+        matches = matches.reduce((previousItem, currentItem) => {
+            const key = currentItem.round ? currentItem.round : 999999;
+            if (!helper[key]) {
+                helper[key] = {
+                    key: key,
+                    text: currentItem.round ? `Round ${currentItem.round}` : '',
+                    orderIndex: key,
+                    childs: [{ ...currentItem }]
+                };
+                previousItem.push(helper[key]);
+            } else {
+                helper[key].childs.push(currentItem);
+            }
+
+            return previousItem;
+        }, []);
+
+        const totalItems = matches.length;
+        for (let i = 0; i < totalItems; i++) {
+            matches[i] = { ...matches[i], childs: this.groupMatchesByDate(matches[i].childs) }
+        }
+
+        return matches;
+    };
+
     groupMatches = (stages, matches) => {
         if (stages.length > 1) {
             return this.groupMatchesByStage(matches);
+        } else if (matches.filter(item => item.round).length > 0) {
+            return this.groupMatchesByRound(matches);
         } else {
             return this.groupMatchesByDate(matches);
         }
