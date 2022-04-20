@@ -1,3 +1,45 @@
-﻿.statistices{
+﻿.statistices {
+    &-category {
+        display: flex;
+        flex-flow: row nowrap;
+        padding-bottom: .9rem;
+        color: $color-detail-league;
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+    }
 
+    &-bar {
+        display: flex;
+        height: .6rem;
+    }
+
+    &-barBg {
+        background-color: $bg-table-title-grey;
+        display: flex;
+        margin: 0 1px;
+        width: 100%;
+
+        &.statistices-home {
+            justify-content: flex-end;
+
+            div {
+                background-color: $color-active-icon;
+            }
+        }
+
+        &.statistices-away {
+            div {
+                background-color: $color-title;
+            }
+        }
+    }
+
+    &-row {
+        margin-top: 2rem;
+
+        &:first-child {
+            margin-top: 2.6rem;
+        }
+    }
 }

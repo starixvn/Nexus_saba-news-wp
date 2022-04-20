@@ -16,6 +16,7 @@ $fa-font-path: "../../../../fonts";
 
 
 .livescore-soccer {
+    padding-bottom :5rem;
     .livescore-league-header-detail {
         margin-bottom : 1.2rem;
     }
@@ -329,16 +330,6 @@ $fa-font-path: "../../../../fonts";
 }
 
 .statistices {
-    &-row {
-        padding: 5px 10px 10px;
-    }
-
-    &-category {
-        display: flex;
-        flex-flow: row nowrap;
-        padding-bottom: 5px;
-    }
-
     &-home-value {
         flex: 0 0 80px;
         justify-content: flex-start;
@@ -360,40 +351,6 @@ $fa-font-path: "../../../../fonts";
         text-align: center;
     }
 
-    &-bar {
-        display: flex;
-        height: 9px;
-    }
-
-    &-barBg {
-        background-color: #e9e9e9;
-        display: flex;
-        margin: 0 1px;
-        width: 100%;
-
-        &.statistices-home {
-            border-bottom-left-radius: 3px;
-            border-top-left-radius: 3px;
-            justify-content: flex-end;
-
-            div {
-                background-color: #c00;
-                border-bottom-left-radius: 3px;
-                border-top-left-radius: 3px;
-            }
-        }
-
-        &.statistices-away {
-            border-bottom-right-radius: 3px;
-            border-top-right-radius: 3px;
-
-            div {
-                background-color: #2d2d2d;
-                border-bottom-right-radius: 3px;
-                border-top-right-radius: 3px;
-            }
-        }
-    }
 }
 
 
