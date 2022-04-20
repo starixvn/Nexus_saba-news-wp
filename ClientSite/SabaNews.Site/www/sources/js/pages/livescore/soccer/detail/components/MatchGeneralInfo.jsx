@@ -22,7 +22,7 @@ export default class MatchGenetalInfo extends Component {
             case MatchStatus.Postponed:
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
-                return (<div className="detail-score-wrapper live">
+                return (<div className="detail-score-wrapper live before-score">
                     <span>VS</span>
                 </div>)
             default:
@@ -79,8 +79,8 @@ export default class MatchGenetalInfo extends Component {
                 {
                     (numberRedCard !== 0 || numberYellowCard !== 0) &&
                     <>
-                        <span className="red-card">{numberRedCard}</span>
-                        <span className="yellow-card">{numberYellowCard}</span>
+                        <span className="card-league red-card">{numberRedCard}</span>
+                        <span className="card-league yellow-card">{numberYellowCard}</span>
                     </>
                 }
             </div>

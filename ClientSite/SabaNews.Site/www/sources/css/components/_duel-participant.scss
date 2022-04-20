@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 1.3rem;
-
+    margin-bottom : 2.4rem;
     &-number {
         margin-top: 1.3rem;
     }
@@ -69,6 +69,11 @@
             line-height: 2.4rem;
             color: $color-title;
         }
+
+        .participant-detail {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
     &-away-wrapper {
@@ -90,11 +95,37 @@
             line-height: 2.4rem;
             color: $color-title;
         }
+
+        .participant-detail {
+            display: flex;
+            justify-content: flex-start;
+        }
     }
 }
 
 
 
-.participant-detail{
+.participant-detail {
+    .card-league {
+        padding: .4rem;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+        border-radius: 3px;
+        margin-left: .8rem;
 
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .red-card {
+        background: $red-card;
+        color: $color-red-card;
+    }
+
+    .yellow-card {
+        background: $yellow-card;
+        color: $color-yellow-card;
+    }
 }
