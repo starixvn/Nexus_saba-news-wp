@@ -1,5 +1,8 @@
 ﻿namespace SabaNews.Core.Services
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
     using Fanex.Data.Repository;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.Database;
@@ -8,9 +11,6 @@
     using Newtonsoft.Json;
     using NLog;
     using NLog.Web;
-    using System;
-    using System.IO;
-    using System.Threading.Tasks;
 
     public class LogServiceProvider : ILogServiceProvider
     {
@@ -19,8 +19,9 @@
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IConfiguration configuration;
         private const int LowPerformanceRuntime = 2000;
+
         public LogServiceProvider(
-            Fanex.Logging.ILogger logger, 
+            Fanex.Logging.ILogger logger,
             IWebHostEnvironment webHostEnvironment,
             IConfiguration configuration)
         {
@@ -50,8 +51,7 @@
             infoLogger.Error(logMessage);
         }
 
-
-        public void WriteLogFileTrackingSP (ICriteria criteria, long runtime)
+        public void WriteLogFileTrackingSP(ICriteria criteria, long runtime)
         {
             try
             {
@@ -70,8 +70,8 @@
             catch (Exception e)
             {
                 _ = e.Message;
+                WriteLogFileInfo(e.Message);
             }
-
         }
 
         public static void LogSP(ICriteria criteria, long runtime, TextWriter w)
