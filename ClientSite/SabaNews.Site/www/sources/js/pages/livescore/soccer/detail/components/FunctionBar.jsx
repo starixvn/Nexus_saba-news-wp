@@ -97,7 +97,7 @@ class FunctionBar extends PureComponent {
                         <li><a onClick={() => this.scrollToTab("doi-dau")}>Đối đầu</a></li>
                     </ul>
                 </div>
-                <div className="content">
+                <div className="line-up-content">
                     <div id="dien-bien">
                         <MatchSummary match = {this.props.match} />
                     </div>

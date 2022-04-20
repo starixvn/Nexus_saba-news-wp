@@ -5,16 +5,54 @@
         border: 1px solid $border-color;
         margin-bottom: 1.2rem;
         border-radius: 3px;
+        background: $border-soccer-item;
 
         .line-up {
             .line-up-table {
                 display: flex;
+                justify-content: center;
+                align-items: center;
+                background: $primary-bg;
+                padding: 1.2rem;
+
+                .table-paticipant {
+                    width: 50%;
+
+                    &.home-team {
+                        padding-right: 1.2rem;
+                        border-right: 1px solid $border-soccer-item;
+                    }
+
+                    &.away-team {
+                        padding-left: 1.2rem;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+
+                        tr {
+                            border-bottom: 1px solid #EAEAEA;
+                            height: 3.2rem;
+
+                            .name-player {
+                                font-weight: 600;
+                                font-size: 1.3rem;
+                                line-height: 1.8rem;
+                                color: $color-detail-league;
+                            }
+
+                            &:last-child {
+                                border-bottom: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
 
     .line-up-title {
-        background: $border-soccer-item;
         border-bottom: 1px solid $border-color;
         text-align: center;
         font-weight: 700;
