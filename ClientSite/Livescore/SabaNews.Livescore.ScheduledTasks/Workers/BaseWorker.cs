@@ -60,7 +60,16 @@
 
         public virtual async Task ExecuteJobAsync()
         {
-            await Task.CompletedTask;
+            try
+            {
+                await Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteMessageSentryErrorAsync(ex.Message);
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                throw;
+            }
         }
 
         public override async Task StopAsync(CancellationToken cancellationToken)
