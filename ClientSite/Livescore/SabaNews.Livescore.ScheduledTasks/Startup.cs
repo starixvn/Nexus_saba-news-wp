@@ -70,6 +70,8 @@
         {
             if (env.IsDevelopment())
             {
+                app.UseMiddleware<ErrorHandler>();
+
                 app.UseDeveloperExceptionPage();
             }
             else

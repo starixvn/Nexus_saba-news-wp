@@ -36,7 +36,6 @@
         public override async Task ExecuteJobAsync()
         {
             var h2hMatches = await GetMatchToSyncHeadToHead();
-
             if (h2hMatches.Any())
             {
                 foreach (var m in h2hMatches)
