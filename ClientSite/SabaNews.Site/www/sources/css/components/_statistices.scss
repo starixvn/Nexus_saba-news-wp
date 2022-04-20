@@ -40,6 +40,16 @@
 
         &:first-child {
             margin-top: 2.6rem;
+
+            .statistices-bar {
+                height: 1.2rem;
+            }
+
+            .statistices-category {
+                font-weight: 600;
+                font-size: 1.8rem;
+                line-height: 2.5rem;
+            }
         }
     }
 }
