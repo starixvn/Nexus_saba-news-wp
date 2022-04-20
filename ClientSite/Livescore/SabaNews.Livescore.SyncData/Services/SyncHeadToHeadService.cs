@@ -44,11 +44,11 @@
             await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task UpdateSyncCompletedHeadToHead(long[] matchIds)
+        public async Task UpdateSyncCompletedHeadToHead(long matchId)
         {
             var command = new UpdateSyncedH2HMatchList
             {
-                MatchIds = string.Join(",", matchIds)
+                MatchId = matchId
             };
 
             await baseService.ExecuteNonQueryAsync(command);

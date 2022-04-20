@@ -10,7 +10,7 @@
     {
         public Task<IEnumerable<MatchToGetH2H>> GetMatchToSyncHeadToHeadByDateRange(DateTime from, DateTime to, int limit);
 
-        public Task UpdateSyncCompletedHeadToHead(long[] matchIds);
+        public Task UpdateSyncCompletedHeadToHead(long matchId);
 
         Task SyncHeadToHeadAsync(HeadToHeadResponse h2hResponse);
     }

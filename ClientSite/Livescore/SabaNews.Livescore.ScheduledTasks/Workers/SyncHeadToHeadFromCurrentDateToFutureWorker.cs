@@ -43,9 +43,8 @@
                 {
                     var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.MatchId, m.HomeTeamId, m.AwayTeamId);
                     await synch2hService.SyncHeadToHeadAsync(h2h);
+                    await synch2hService.UpdateSyncCompletedHeadToHead(m.MatchId);
                 }
-
-                await synch2hService.UpdateSyncCompletedHeadToHead(h2hMatches.Select(m => m.MatchId).ToArray());
             }
         }
 

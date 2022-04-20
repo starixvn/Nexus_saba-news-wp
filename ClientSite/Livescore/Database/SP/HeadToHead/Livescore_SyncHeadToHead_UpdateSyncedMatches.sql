@@ -1,8 +1,8 @@
-DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_UpdateSyncedMatches;
+DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_UpdateSyncedMatch;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatches(
-    matchIds TEXT
+CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatch(
+    matchId BIGINT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
     /*
@@ -15,26 +15,13 @@ SQL SECURITY DEFINER
 BEGIN
 
     SET errCode=0, errMsg='';
-    DROP TEMPORARY TABLE IF EXISTS tmp_Match;
-    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Match(MatchId bigint PRIMARY KEY NOT NULL);
 
-    IF IFNULL(matchIds,'') <> ''THEN
-		SET @sqlCommand = REPLACE(matchIds, ',', '),(');
-		SET @sqlCommand = CONCAT('(', @sqlCommand, ')');
-		SET @sqlCommand = CONCAT('INSERT INTO tmp_Match VALUES', @sqlCommand); 
-                                                            
-		PREPARE stmt FROM  @sqlCommand;
-		EXECUTE stmt;
-		DEALLOCATE PREPARE stmt;
-
-        INSERT INTO livescore_match_extra(MatchId, IsSyncedHeadToHead)
-        SELECT m.MatchId, 1
-        FROM tmp_Match m
-        ON DUPLICATE KEY UPDATE
-            IsSyncedHeadToHead = 1;
-	END IF;
+    INSERT INTO livescore_match_extra(MatchId, IsSyncedHeadToHead)
+    VALUES(matchId, 1)
+    ON DUPLICATE KEY UPDATE
+        IsSyncedHeadToHead = 1;
 END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatches TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_SyncHeadToHead_UpdateSyncedMatch TO 'sabasports'@'%';

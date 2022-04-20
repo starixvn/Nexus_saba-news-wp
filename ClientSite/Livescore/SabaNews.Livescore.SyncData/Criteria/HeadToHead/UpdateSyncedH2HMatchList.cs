@@ -4,10 +4,10 @@
 
     internal class UpdateSyncedH2HMatchList : BaseNonQueryCommand
     {
-        public string MatchIds { get; set; }
+        public long MatchId { get; set; }
 
-        public override string GetSettingKey() => "Livescore_SyncHeadToHead_UpdateSyncedMatches";
+        public override string GetSettingKey() => "Livescore_SyncHeadToHead_UpdateSyncedMatch";
 
-        public override bool IsValid() => !string.IsNullOrWhiteSpace(MatchIds);
+        public override bool IsValid() => MatchId > 0;
     }
 }
