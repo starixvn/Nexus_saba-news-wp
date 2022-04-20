@@ -122,8 +122,7 @@ export default class MatchGenetalInfo extends Component {
                 <div className="duel-participant">
                     <div className="duel-participant-home-wrapper">
                         <ul className="soccer-team-status">
-                            {/*{this.getTeamStatus(true)}*/}
-                            <li>Pen</li>
+                            {this.getTeamStatus(true)}
                         </ul>
                         <div className="duel-participant-home-wrapper-image">
                             <div className="duel-participant-home-wrapper-name">{generalInfo.homeTeam.teamNameEN}</div>
@@ -147,6 +146,9 @@ export default class MatchGenetalInfo extends Component {
                     </div>
 
                     <div className="duel-participant-away-wrapper">
+                        <ul className="soccer-team-status">
+                            {this.getTeamStatus(false)}
+                        </ul>
                         <div className="duel-participant-away-wrapper-image">
                             <a>
                                 <img width="58" height="58" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
@@ -156,9 +158,6 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                         <div className="duel-participant-number">
                             {this.getBallAndCardNumber(IncidentPosition.Away)}
-                        </div>
-                        <div className="participant-status">
-                            {this.getTeamStatus(false)}
                         </div>
                     </div>
                 </div>

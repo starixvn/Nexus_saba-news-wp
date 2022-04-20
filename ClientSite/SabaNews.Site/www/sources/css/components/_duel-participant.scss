@@ -54,7 +54,9 @@
 
     &-home-wrapper {
         width: 40%;
-
+        .soccer-team-status{
+            justify-content : flex-end;
+        }
         &-image {
             display: flex;
             align-items: center;
