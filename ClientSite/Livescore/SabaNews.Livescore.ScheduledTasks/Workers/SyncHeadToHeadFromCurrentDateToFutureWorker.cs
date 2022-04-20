@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
-    using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -40,15 +39,12 @@
 
             if (h2hMatches.Any())
             {
-                var h2hList = new List<HeadToHeadResponse>();
-
                 foreach (var m in h2hMatches)
                 {
                     var h2h = await fetchTeamService.FetchHeadToHeadAsync(m.MatchId, m.HomeTeamId, m.AwayTeamId);
-                    h2hList.Add(h2h);
+                    await synch2hService.SyncHeadToHeadAsync(h2h);
                 }
 
-                await synch2hService.SyncHeadToHeadAsync(h2hList);
                 await synch2hService.UpdateSyncCompletedHeadToHead(h2hMatches.Select(m => m.MatchId).ToArray());
             }
         }

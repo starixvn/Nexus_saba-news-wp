@@ -9,7 +9,6 @@
     using SabaNews.Livescore.SyncData.Criteria.HeadToHead;
     using SabaNews.Livescore.SyncData.Helpers;
     using SabaNews.Livescore.SyncData.Models.HeadToHead;
-    using SabaNews.Livescore.SyncData.Models.Team;
     using SabaNews.Livescore.SyncData.Services.Interfaces;
 
     public class SyncHeadToHeadService : ISyncHeadToHeadService
@@ -33,13 +32,9 @@
             return await baseService.GetDataAsync<MatchToGetH2H>(criteria);
         }
 
-        public async Task SyncHeadToHeadAsync(List<HeadToHeadResponse> h2hResponseList)
+        public async Task SyncHeadToHeadAsync(HeadToHeadResponse h2hResponse)
         {
-            var dataImport = new List<TeamHistory>();
-            foreach (var item in h2hResponseList)
-            {
-                dataImport.AddRange(DataHelpers.GenerateTeamHistoryToImport(item));
-            }
+            var dataImport = DataHelpers.GenerateTeamHistoryToImport(h2hResponse);
 
             var command = new ImportHeadToHeadCommand
             {

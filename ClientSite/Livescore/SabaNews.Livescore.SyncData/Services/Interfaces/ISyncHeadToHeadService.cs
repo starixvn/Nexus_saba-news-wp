@@ -12,6 +12,6 @@
 
         public Task UpdateSyncCompletedHeadToHead(long[] matchIds);
 
-        Task SyncHeadToHeadAsync(List<HeadToHeadResponse> h2hResponseList);
+        Task SyncHeadToHeadAsync(HeadToHeadResponse h2hResponse);
     }
 }
