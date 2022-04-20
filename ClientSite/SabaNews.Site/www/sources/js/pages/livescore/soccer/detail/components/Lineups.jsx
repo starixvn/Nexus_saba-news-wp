@@ -254,10 +254,10 @@ export class Lineups extends Component {
 
     renderListPlayer = (title, home, away) => {
         return (
-            <>
-                <div className="section-title">{title}</div>
-                <div className="lineup-table">
-                    <table className="table-paticipant">
+            <div className="line-up">
+                <div className="line-up-title">{title}</div>
+                <div className="line-up-table">
+                    <table className="table-paticipant home-team">
                         <thead>
                             <tr>
                                 <th width="10%">Số áo</th>
@@ -281,7 +281,7 @@ export class Lineups extends Component {
                             }
                         </tbody>
                     </table>
-                    <table className="table-paticipant away">
+                    <table className="table-paticipant away-team">
                         <thead>
                             <tr>
                                 <th width="10%">Số áo</th>
@@ -306,7 +306,7 @@ export class Lineups extends Component {
                         </tbody>
                     </table>
                 </div>
-            </>
+            </div>
         )
     }
 
@@ -320,7 +320,8 @@ export class Lineups extends Component {
         let awayLineup = this.getListLineup(lineup, IncidentPosition.Away);
         awayLineup = awayLineup.reverse();
         return (
-            <div className="lineup">
+            //map
+            <div className="line-up-map">
                 <div className="lineup-head">
                     <div className="team-name">
                         <img className="club-logo-img" src={matchInfo.homeTeam.icon} alt="" />
@@ -433,17 +434,17 @@ export class Lineups extends Component {
         return (
             <>
                 {this.renderPitchView()}
-                <div className="field-lineup">
-                    <div className="section">
+                <div className="line-up">
+                    <div className="line-up-team">
                         {this.renderListPlayer(LangHelper.getResource('LineupPlayer'), homePlayers, awayPlayers)}
                     </div>
-                    <div className="section">
+                    <div className="line-up-team">
                         {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
                     </div>
 
-                    <div className="section">
-                        <div className="section-title">Thay người</div>
-                        <div className="lineup-table">
+                    <div className="change-men">
+                        <div className="line-up-title">Thay người</div>
+                        <div className="line-up-table">
                             <table className="table-paticipant">
                                 <thead>
                                     <tr>
