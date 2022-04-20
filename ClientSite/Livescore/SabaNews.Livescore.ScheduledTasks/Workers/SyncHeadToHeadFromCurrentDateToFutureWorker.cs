@@ -13,7 +13,7 @@
     using SabaNews.Livescore.SyncData.Models.HeadToHead;
     using SabaNews.Livescore.SyncData.Services.Interfaces;
 
-    internal class SyncHeadToHeadFromCurrentDateToFutureWorker : BaseWorker
+    public class SyncHeadToHeadFromCurrentDateToFutureWorker : BaseWorker
     {
         private readonly ISyncHeadToHeadService synch2hService;
         private readonly IFetchTeamService fetchTeamService;

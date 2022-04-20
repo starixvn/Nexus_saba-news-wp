@@ -50,7 +50,7 @@
             catch (Exception ex)
             {
                 logService.WriteExceptionSentryErrorAsync(ex);
-                logService.WriteLogFileInfo($"{jobSetting.Name}: Error - {ex}");
+                logService.WriteLogFileInfo($"{jobSetting.Name}: Error - {ex.Message}");
             }
             finally
             {

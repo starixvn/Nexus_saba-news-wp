@@ -16,7 +16,7 @@
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncLiveMatchThenPushSignalWorker : BaseWorker
+    public class SyncLiveMatchThenPushSignalWorker : BaseWorker
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly IPushSignalService pushSignalService;

@@ -14,7 +14,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncMatchByMaxMatchIdWorker : BaseWorker
+    public class SyncMatchByMaxMatchIdWorker : BaseWorker
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly ISyncMatchService syncMatchService;
