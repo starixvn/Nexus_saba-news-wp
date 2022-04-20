@@ -84,20 +84,30 @@ class FunctionBar extends PureComponent {
         const tabStatus = this.updateTabStatus();
         let defaultTab = this.getDefaultActiveKey(tabStatus);
         return (
-            <Tabs id="soccer-match-detail-tabs" className="live-score-nav" defaultActiveKey={defaultTab}  onSelect={(key) => this.handleSelectTab(key)} >
-                <Tab eventKey="dien-bien" title="Diễn biến" disabled={!tabStatus.enableTabSummary}>
-                    <MatchSummary match = {this.props.match}/>
-                </Tab>
-                <Tab eventKey="thong-ke" title="Thống kê"  disabled={!tabStatus.enableTabStatistics}>
-                    <Statistics match = {this.props.match}  />
-                </Tab>
-                <Tab eventKey="doi-hinh" title="Đội hình" disabled={!tabStatus.enableTabLineups}>
-                    <Lineups />
-                </Tab>
-                <Tab eventKey="doi-dau" title="Đối đầu" disabled={!tabStatus.enableTabHeadtohead}>
-                    <HeadToHead />
-                </Tab>
-            </Tabs>
+            <>
+                <div className="detail-function-bar">
+                    <ul>
+                        <li><a href="#dien-bien">Diễn biến</a></li>
+                        <li><a href="#thong-ke">Thống kê</a></li>
+                        <li><a href="#doi-hinh">Đội hình</a></li>
+                        <li><a href="#doi-dau">Đối đầu</a></li>
+                    </ul>
+                </div>
+                <div className="content">
+                    <div id="dien-bien">
+                        <MatchSummary match = {this.props.match} />
+                    </div>
+                    <div id="thong-ke">
+                        <Statistics match = {this.props.match}/>
+                    </div>
+                    <div id="doi-hinh">
+                        <Lineups/>
+                    </div>
+                    <div id="doi-dau">
+                        <HeadToHead/>
+                    </div>
+                </div>
+            </>
         );
     }
 }
