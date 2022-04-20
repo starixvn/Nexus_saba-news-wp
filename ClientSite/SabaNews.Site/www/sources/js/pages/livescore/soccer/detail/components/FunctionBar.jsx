@@ -84,7 +84,7 @@ class FunctionBar extends PureComponent {
         const tabStatus = this.updateTabStatus();
         let defaultTab = this.getDefaultActiveKey(tabStatus);
         return (
-             <Tabs  id="soccer-match-detail-tabs" defaultActiveKey={defaultTab}  onSelect={(key) => this.handleSelectTab(key)} >
+            <Tabs id="soccer-match-detail-tabs" className="live-score-nav" defaultActiveKey={defaultTab}  onSelect={(key) => this.handleSelectTab(key)} >
                 <Tab eventKey="dien-bien" title="Diễn biến" disabled={!tabStatus.enableTabSummary}>
                     <MatchSummary match = {this.props.match}/>
                 </Tab>

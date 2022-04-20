@@ -10,6 +10,7 @@ $fa-font-path: "../../../../fonts";
 @import '../../../components/container';
 @import '../../../components/league-header-detail';
 @import '../../../components/duel-participant';
+@import '../../../components/nav-tab';
 
 
 .livescore-soccer {
@@ -19,6 +20,12 @@ $fa-font-path: "../../../../fonts";
 
     .icon-livescore {
         font-size: 1.6rem;
+    }
+
+    .live-score-nav{
+        display : flex;
+        justify-content : center;
+        padding-bottom : 0;
     }
 
 
