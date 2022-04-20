@@ -14,6 +14,7 @@ $fa-font-path: "../../../../fonts";
 @import '../../../components/statistices';
 @import '../../../components/detail-bar';
 @import '../../../components/soccer-staus';
+@import '../../../components/line-up';
 
 
 .livescore-soccer {
@@ -584,7 +585,6 @@ svg.fill-red {
 }
 
 .lineup-head {
-    float: left;
     width: 100%;
     padding: 12px;
     position: relative;
@@ -612,7 +612,6 @@ svg.fill-red {
 .team-body {
     position: relative;
     width: 100%;
-    float: left;
     height: 720px;
     background: url(../../../../images/pitch-vertical.jpg) repeat-y;
     background-size: 100% 720px;

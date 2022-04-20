@@ -1,0 +1,26 @@
+﻿.line-up-main {
+    margin-top: 1.8rem;
+
+    .line-up-team, .change-men {
+        border: 1px solid $border-color;
+        margin-bottom: 1.2rem;
+        border-radius: 3px;
+
+        .line-up {
+            .line-up-table {
+                display: flex;
+            }
+        }
+    }
+
+    .line-up-title {
+        background: $border-soccer-item;
+        border-bottom: 1px solid $border-color;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        color: $color-title;
+        padding: 1rem 0;
+    }
+}

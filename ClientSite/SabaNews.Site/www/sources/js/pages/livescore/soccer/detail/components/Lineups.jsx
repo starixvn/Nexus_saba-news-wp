@@ -254,59 +254,61 @@ export class Lineups extends Component {
 
     renderListPlayer = (title, home, away) => {
         return (
-            <div className="line-up">
+            <>
                 <div className="line-up-title">{title}</div>
-                <div className="line-up-table">
-                    <table className="table-paticipant home-team">
-                        <thead>
-                            <tr>
-                                <th width="10%">Số áo</th>
-                                <th width="40%">tên cầu thủ</th>
-                                <th width="30%">vị trí</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                home.map((player, pIndex) => {
-                                    return (
-                                        <tr key={pIndex}>
-                                            <td>{player.playerNumber}</td>
-                                            <td>{player.playerName}</td>
-                                            <td>{this.getPlayerRole(player.role)}</td>
-                                            <td>{this.renderIconListPlayer(player)}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                    <table className="table-paticipant away-team">
-                        <thead>
-                            <tr>
-                                <th width="10%">Số áo</th>
-                                <th width="40%">tên cầu thủ</th>
-                                <th width="30%">vị trí</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                away.map((player, pIndex) => {
-                                    return (
-                                        <tr key={pIndex}>
-                                            <td>{player.playerNumber}</td>
-                                            <td>{player.playerName}</td>
-                                            <td>{this.getPlayerRole(player.role)}</td>
-                                            <td>{this.renderIconListPlayer(player)}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
+                <div className="line-up">
+                    <div className="line-up-table">
+                        <table className="table-paticipant home-team">
+                            <thead>
+                                <tr>
+                                    <th width="10%">Số áo</th>
+                                    <th width="40%">tên cầu thủ</th>
+                                    <th width="30%">vị trí</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    home.map((player, pIndex) => {
+                                        return (
+                                            <tr key={pIndex}>
+                                                <td>{player.playerNumber}</td>
+                                                <td>{player.playerName}</td>
+                                                <td>{this.getPlayerRole(player.role)}</td>
+                                                <td>{this.renderIconListPlayer(player)}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                        <table className="table-paticipant away-team">
+                            <thead>
+                                <tr>
+                                    <th width="10%">Số áo</th>
+                                    <th width="40%">tên cầu thủ</th>
+                                    <th width="30%">vị trí</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    away.map((player, pIndex) => {
+                                        return (
+                                            <tr key={pIndex}>
+                                                <td>{player.playerNumber}</td>
+                                                <td>{player.playerName}</td>
+                                                <td>{this.getPlayerRole(player.role)}</td>
+                                                <td>{this.renderIconListPlayer(player)}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 
@@ -434,7 +436,7 @@ export class Lineups extends Component {
         return (
             <>
                 {this.renderPitchView()}
-                <div className="line-up">
+                <div className="line-up-main">
                     <div className="line-up-team">
                         {this.renderListPlayer(LangHelper.getResource('LineupPlayer'), homePlayers, awayPlayers)}
                     </div>
@@ -444,36 +446,38 @@ export class Lineups extends Component {
 
                     <div className="change-men">
                         <div className="line-up-title">Thay người</div>
-                        <div className="line-up-table">
-                            <table className="table-paticipant">
-                                <thead>
-                                    <tr>
-                                        <th>Số phút</th>
-                                        <th>vào sân</th>
-                                        <th>ra sân</th>
-                                    </tr>
-                                </thead>
+                        <div className="line-up">
+                            <div className="line-up-table">
+                                <table className="table-paticipant">
+                                    <thead>
+                                        <tr>
+                                            <th>Số phút</th>
+                                            <th>vào sân</th>
+                                            <th>ra sân</th>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    {
-                                        this.renderSubstitution(IncidentPosition.Home)
-                                    }
-                                </tbody>
-                            </table>
-                            <table className="table-paticipant away">
-                                <thead>
-                                    <tr>
-                                        <th>Số phút</th>
-                                        <th>vào sân</th>
-                                        <th>ra sân</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.renderSubstitution(IncidentPosition.Away)
-                                    }
-                                </tbody>
-                            </table>
+                                    <tbody>
+                                        {
+                                            this.renderSubstitution(IncidentPosition.Home)
+                                        }
+                                    </tbody>
+                                </table>
+                                <table className="table-paticipant away">
+                                    <thead>
+                                        <tr>
+                                            <th>Số phút</th>
+                                            <th>vào sân</th>
+                                            <th>ra sân</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            this.renderSubstitution(IncidentPosition.Away)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
