@@ -16,10 +16,6 @@ export const withNavigation = Component => {
 }
 
 class FunctionBar extends PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
     updateTabStatus = () => {
         let tabStatus = {
             enableTabSummary: true,
@@ -76,21 +72,29 @@ class FunctionBar extends PureComponent {
         return defaultTab;
     }
 
-    handleSelectTab = (key) => {
-        this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${key}`));
+    scrollToTab = tab =>  {
+        var section = document.getElementById(tab);
+        if(!section) return null;
+        window.scroll({
+            top: section.offsetTop,
+            left: 0,
+            behavior: 'smooth'
+        });
+        this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${tab}`));
     }
 
     render() {
         const tabStatus = this.updateTabStatus();
         let defaultTab = this.getDefaultActiveKey(tabStatus);
+        this.scrollToTab(defaultTab)
         return (
             <>
                 <div className="detail-function-bar">
                     <ul>
-                        <li><a href="#dien-bien">Diễn biến</a></li>
-                        <li><a href="#thong-ke">Thống kê</a></li>
-                        <li><a href="#doi-hinh">Đội hình</a></li>
-                        <li><a href="#doi-dau">Đối đầu</a></li>
+                        <li><a onClick={() => this.scrollToTab("dien-bien")}>Diễn biến</a></li>
+                        <li><a onClick={() => this.scrollToTab("thong-ke")}>Thống kê</a></li>
+                        <li><a onClick={() => this.scrollToTab("doi-hinh")}>Đội hình</a></li>
+                        <li><a onClick={() => this.scrollToTab("doi-dau")}>Đối đầu</a></li>
                     </ul>
                 </div>
                 <div className="content">
