@@ -35,7 +35,7 @@ export default class GeneralIncident extends Component {
                         }
                     </div>
                     <span className="item-mins flexbox">{incident.timeShow + "'"}</span>
-                    <div className="inner-item-db flexbox">
+                    <div className="inner-item-db flexbox item-th-away">
                         {
                             incident.position === IncidentPosition.Away &&
                             <>
@@ -85,19 +85,23 @@ export default class GeneralIncident extends Component {
                         }
                     </div>
                     <span className="item-mins flexbox">{incident.timeShow + "'"}</span>
-                    <div className="inner-item-db flexbox">
+                    <div className="inner-item-db flexbox item-th-away">
                         {
                             incident.position === IncidentPosition.Away &&
-                            <div className="item-th flexbox">
-                                <span className="icon-th">
-                                    <IncidentIcon type={incident.type} />
-                                </span>
-                                <span className="name-th">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
-                                {
-                                    Site.CheckIncidentTypeToShowScore(incident.type) &&
-                                    <span className="name-th">({processScore}) <span className="noted"></span></span>
-                                }
-                            </div>
+                            <ul className="item-th flexbox">
+                                <li className="item-th-time">{incident.timeShow + "'"}</li>
+                                <li>
+                                    
+                                     <span className="icon-th">
+                                         <IncidentIcon type={incident.type} />
+                                    </span>
+                                    <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
+                                    {
+                                        Site.CheckIncidentTypeToShowScore(incident.type) &&
+                                        <span className="name-th">({processScore}) <span className="noted"></span></span>
+                                    }
+                                </li>
+                            </ul>
                         }
                     </div>
                 </div>

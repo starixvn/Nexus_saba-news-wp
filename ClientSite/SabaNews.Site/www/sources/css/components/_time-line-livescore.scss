@@ -1,4 +1,29 @@
-﻿.time-line {
+﻿.flexbox {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.item-th {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 10px;
+
+    .icon-th {
+        width: 16px;
+        text-align: center;
+
+        .ic {
+            max-width: 16px;
+        }
+    }
+}
+.time-line {
     &-start {
         text-align: center;
         padding-top: 1.4rem;
@@ -29,16 +54,44 @@
 
                 .inner-item-db {
                     width: calc((100% - 2.4rem)/2);
-                    padding-left: 10px;
                     margin-top: 0;
                     -ms-flex-wrap: wrap;
                     flex-wrap: wrap;
                     -ms-flex-item-align: center;
                     align-self: center;
 
+                    .item-th {
+                        margin-top: 0;
+                        width: 100%;
+                        flex-wrap: wrap;
+                        list-style: none;
+
+                        li {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: .5rem;
+                            font-weight: 400;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+
+                        &-name {
+                            font-weight: 700;
+                        }
+                    }
+
+                    .icon-th {
+                        margin-right: 5px;
+                    }
+
                     &.item-th-home {
-                        padding-right: 10px;
-                        padding-left: 0;
+                        padding-right: 2rem;
+                        border-right: 1px solid $border-color;
 
                         .item-th {
                             -webkit-box-pack: end;
@@ -54,21 +107,16 @@
                         }
                     }
 
-                    .item-th {
-                        margin-top: 0;
-                        width: 100%;
-                    }
-
-                    .icon-th {
-                        margin-right: 5px;
+                    &.item-th-away {
+                        padding-left: 2rem;
+                        border-left: 1px solid $border-color;
                     }
                 }
 
                 .item-mins {
-                    width: 60px;
-                    background: #59C541;
+                    width: 6rem;
                     text-align: center;
-                    min-height: 48px;
+                    min-height: 5rem;
                     font-weight: bold;
                     -webkit-box-pack: center;
                     -ms-flex-pack: center;
@@ -77,10 +125,8 @@
                     -webkit-box-direction: normal;
                     -ms-flex-direction: column;
                     flex-direction: column;
-                    font-size: 12px;
-                    padding: 0 2px;
-                    color: #fff;
-                    border-top: 1px solid #fff;
+                    font-size: 1.4rem;
+                    color: $color-detail-league;
                 }
 
                 .name-th.out {
@@ -121,28 +167,4 @@
 }
 
 
-.flexbox {
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
 
-.item-th {
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    font-size: 14px;
-    line-height: 21px;
-    margin-top: 10px;
-
-    .icon-th {
-        width: 16px;
-        text-align: center;
-
-        .ic {
-            max-width: 16px;
-        }
-    }
-}

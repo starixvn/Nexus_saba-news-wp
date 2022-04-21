@@ -19,8 +19,8 @@ export class MatchSummary extends Component {
         const awayFinalScore = generalInfo.awayTeamExtraScore ? generalInfo.awayTeamExtraScore : generalInfo.awayTeamTotalScore;
         const homeFinalPenalty = generalInfo.homeTeamPenaltyScore;
         const awayFinalPenalty = generalInfo.awayTeamPenaltyScore;
-        const finalScore = "[" + homeFinalScore + " - " + awayFinalScore + "]";
-        const finalPenalty = "[" + homeFinalPenalty + " - " + awayFinalPenalty + "]";
+        const finalScore = homeFinalScore + " - " + awayFinalScore;
+        const finalPenalty = homeFinalPenalty + " - " + awayFinalPenalty;
         return (
             <div className="head-top-team" >
                 <div className="flexbox time-event">
@@ -96,9 +96,9 @@ export class MatchSummary extends Component {
                                         } else if (Site.CheckIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
                                             let score = processScore;
                                             if (incident.type === IncidentStatus.Halftime) {
-                                                score = "[" + generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore + "]";
+                                                score = generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore;
                                             } else if (incident.type === IncidentStatus.End) {
-                                                score = "[" + generalInfo.homeTeamTotalScore + " - " + generalInfo.awayTeamTotalScore + "]";
+                                                score = generalInfo.homeTeamTotalScore + " - " + generalInfo.awayTeamTotalScore;
                                             }
                                             return (
                                                 <div className="head-top-team" key={key}>
