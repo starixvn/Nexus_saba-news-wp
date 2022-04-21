@@ -46,6 +46,7 @@
 
         public async Task PushMatchDetailcAsync(long matchId, MatchDetail detail)
         {
+            logger.WriteLogFileInfo("begin push detail match");
             if (hubConnection.State == HubConnectionState.Disconnected)
             {
                 await hubConnection.StartAsync();
@@ -58,6 +59,7 @@
                     logger.WriteExceptionSentryErrorAsync(task.Exception);
                 }
             });
+            logger.WriteLogFileInfo("end push detail match");
         }
     }
 }
