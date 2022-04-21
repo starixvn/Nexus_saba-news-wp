@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?9xpji5');
-  src:  url('fonts/Fraud-Sensor.eot?9xpji5#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?9xpji5') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?9xpji5') format('woff'),
-    url('fonts/Fraud-Sensor.svg?9xpji5#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?se5tlw');
+  src:  url('fonts/Fraud-Sensor.eot?se5tlw#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?se5tlw') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?se5tlw') format('woff'),
+    url('fonts/Fraud-Sensor.svg?se5tlw#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,28 +25,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-change .path1:before {
+.icon-shoes:before {
   content: "\e928";
-  color: rgb(3, 167, 0);
+  color: #555;
 }
-.icon-change .path2:before {
+.icon-var:before {
   content: "\e929";
-  margin-left: -1em;
-  color: rgb(255, 87, 68);
-}
-.icon-goal .path1:before {
-  content: "\e92a";
-  color: rgb(255, 255, 255);
-}
-.icon-goal .path2:before {
-  content: "\e92b";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-goal .path3:before {
-  content: "\e92c";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
+  color: #324a75;
 }
 .icon-in:before {
   content: "\e92d";
@@ -60,134 +45,9 @@
   content: "\e92f";
   color: #ff5744;
 }
-.icon-own-goal .path1:before {
-  content: "\e930";
-  color: rgb(255, 255, 255);
-}
-.icon-own-goal .path2:before {
-  content: "\e931";
-  margin-left: -1.2919921875em;
-  color: rgb(238, 35, 22);
-}
-.icon-own-goal .path3:before {
-  content: "\e932";
-  margin-left: -1.2919921875em;
-  color: rgb(238, 35, 22);
-}
-.icon-own-goal .path4:before {
-  content: "\e933";
-  margin-left: -1.2919921875em;
-  color: rgb(255, 255, 255);
-}
-.icon-own-goal .path5:before {
-  content: "\e934";
-  margin-left: -1.2919921875em;
-  color: rgb(238, 35, 22);
-}
-.icon-penfail .path1:before {
-  content: "\e935";
-  color: rgb(255, 255, 255);
-}
-.icon-penfail .path2:before {
-  content: "\e936";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-penfail .path3:before {
-  content: "\e937";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-penfail .path4:before {
-  content: "\e938";
-  margin-left: -1em;
-  color: rgb(236, 28, 36);
-}
-.icon-penfail .path5:before {
-  content: "\e939";
-  margin-left: -1em;
-  color: rgb(255, 253, 249);
-}
-.icon-penfail .path6:before {
-  content: "\e93a";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-penfail .path7:before {
-  content: "\e93b";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-pensuccess .path1:before {
-  content: "\e93c";
-  color: rgb(255, 255, 255);
-}
-.icon-pensuccess .path2:before {
-  content: "\e93d";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-pensuccess .path3:before {
-  content: "\e93e";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
-.icon-pensuccess .path4:before {
-  content: "\e93f";
-  margin-left: -1em;
-  color: rgb(3, 167, 0);
-}
-.icon-pensuccess .path5:before {
-  content: "\e940";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-pensuccess .path6:before {
-  content: "\e941";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-}
-.icon-pensuccess .path7:before {
-  content: "\e942";
-  margin-left: -1em;
-  color: rgb(50, 74, 117);
-}
 .icon-red-card:before {
   content: "\e943";
   color: #ff5057;
-}
-.icon-red-yellow-card .path1:before {
-  content: "\e944";
-  color: rgb(249, 201, 30);
-}
-.icon-red-yellow-card .path2:before {
-  content: "\e945";
-  margin-left: -1em;
-  color: rgb(255, 87, 68);
-}
-.icon-var .path1:before {
-  content: "\e946";
-  color: rgb(50, 74, 117);
-}
-.icon-var .path2:before {
-  content: "\e947";
-  margin-left: -1.6669921875em;
-  color: rgb(255, 253, 249);
-}
-.icon-var .path3:before {
-  content: "\e948";
-  margin-left: -1.6669921875em;
-  color: rgb(50, 74, 117);
-}
-.icon-var .path4:before {
-  content: "\e949";
-  margin-left: -1.6669921875em;
-  color: rgb(50, 74, 117);
-}
-.icon-var .path5:before {
-  content: "\e94a";
-  margin-left: -1.6669921875em;
-  color: rgb(50, 74, 117);
 }
 .icon-yellow-card:before {
   content: "\e94b";
