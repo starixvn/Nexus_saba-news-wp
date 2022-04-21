@@ -53,7 +53,7 @@ export default class IncidentIcon extends Component {
 
     renderVARIcon = () => {
         return (
-            <div>VAR</div>
+            <span className="icon-livescore icon-var"></span>
         );
     }
 
