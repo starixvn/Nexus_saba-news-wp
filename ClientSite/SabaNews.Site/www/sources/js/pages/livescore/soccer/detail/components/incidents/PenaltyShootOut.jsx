@@ -25,12 +25,11 @@ export default class PenaltyShootOut extends Component {
                         <div className="inner-item-db flexbox item-th-away">
                             <div className="item-th flexbox">
                                 
-                            <span className="name-th">{penaltyShootOutData.awayPlayerName} <span className="noted"></span></span>
-                                    <IncidentIcon type = {awayType}/>
-                            <span className="icon-th in-out-icon">
-                                    <IncidentIcon type = {penaltyShootOutData.awayType}/>
-                                <IncidentIcon type={penaltyShootOutData.awayType} />
-                            </span>
+                                <span className="name-th">{penaltyShootOutData.awayPlayerName} <span className="noted"></span></span>
+                                        
+                                <span className="icon-th in-out-icon">
+                                    <IncidentIcon type={awayType} />
+                                </span>
                             </div>
                         </div>
                     </div>
