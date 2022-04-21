@@ -15,7 +15,106 @@
             color: $color-title;
         }
     }
-    &-main{
-        margin-top : 1rem;
+
+    &-main {
+        margin-top: 1rem;
+        padding-bottom: 1.2rem;
+
+        .line-up-live {
+            &-item {
+                -ms-flex-wrap: nowrap;
+                flex-wrap: nowrap;
+                position: relative;
+                z-index: 1;
+
+                .inner-item-db {
+                    width: calc((100% - 2.4rem)/2);
+                    padding-left: 10px;
+                    margin-top: 0;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                    -ms-flex-item-align: center;
+                    align-self: center;
+
+                    &.item-th-home {
+                        padding-right: 10px;
+                        padding-left: 0;
+
+                        .item-th {
+                            -webkit-box-pack: end;
+                            -ms-flex-pack: end;
+                            justify-content: flex-end;
+                        }
+
+                        .icon-th {
+                            -webkit-box-ordinal-group: 3;
+                            -ms-flex-order: 2;
+                            order: 2;
+                            margin-left: 5px;
+                        }
+                    }
+
+                    .item-th {
+                        margin-top: 0;
+                        width: 100%;
+                    }
+
+                    .icon-th {
+                        margin-right: 5px;
+                    }
+                }
+
+                .item-mins {
+                    width: 60px;
+                    background: #59C541;
+                    text-align: center;
+                    min-height: 48px;
+                    font-weight: bold;
+                    -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                    flex-direction: column;
+                    font-size: 12px;
+                    padding: 0 2px;
+                    color: #fff;
+                    border-top: 1px solid #fff;
+                }
+
+                .name-th.out {
+                    color: #A4ABB6;
+                }
+            }
+        }
+    }
+}
+
+
+
+.flexbox {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.item-th {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 10px;
+
+    .icon-th {
+        width: 16px;
+        text-align: center;
+
+        .ic {
+            max-width: 16px;
+        }
     }
 }

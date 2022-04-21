@@ -10,7 +10,7 @@ export default class GeneralIncident extends Component {
         const { incident } = this.props;
         return (
             <div className="line-up-live">
-                <div className="item-dienbien flexbox">
+                <div className="line-up-live-item flexbox">
                     <div className="inner-item-db flexbox item-th-home">
                         {
                             incident.position === IncidentPosition.Home &&
@@ -68,7 +68,7 @@ export default class GeneralIncident extends Component {
         const processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
         return (
             <div className="line-up-live">
-                <div className="item-dienbien flexbox">
+                <div className="line-up-live-item flexbox">
                     <div className="inner-item-db flexbox item-th-home">
                         {
                             incident.position === IncidentPosition.Home &&
