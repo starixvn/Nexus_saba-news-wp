@@ -21,7 +21,9 @@ export class AppContainer extends Component {
         super(props);
 
         this.state = {
-            selectedTab: 'schedule'
+            selectedTab: 'schedule',
+            selectedResultTab: false,
+            selectedStadingsTab: false
         };
     }
 
@@ -39,11 +41,26 @@ export class AppContainer extends Component {
     };
 
     handleSelectTab = key => {
-        this.setState({ selectedTab: key });
+        let { selectedResultTab, selectedStadingsTab } = this.state;
+
+        switch (key) {
+            case 'result':
+                if (!selectedResultTab) {
+                    selectedResultTab = true;
+                }
+                break;
+            case 'stadings':
+                if (!selectedStadingsTab) {
+                    selectedStadingsTab = true;
+                }
+                break;
+        }
+
+        this.setState({ selectedTab: key, selectedResultTab, selectedStadingsTab });
     };
 
     render() {
-        const selectedTab = this.state.selectedTab;
+        const { selectedTab, selectedResultTab, selectedStadingsTab } = this.state;
         const { majorLeagues, league, stages, preMatches, postMatches } = this.props;
 
         return (
@@ -63,10 +80,16 @@ export class AppContainer extends Component {
                                 {preMatches && <MatchGrid sortAsc stages={stages} matches={preMatches} />}
                             </Tab>
                             <Tab eventKey="result" title="Kết quả">
-                                {postMatches && <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />}
+                                {
+                                    selectedResultTab && postMatches &&
+                                    <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
+                                }
                             </Tab>
                             <Tab eventKey="stadings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
-                                <SeasonStandings />
+                                {
+                                    selectedStadingsTab &&
+                                    <SeasonStandings />
+                                }
                             </Tab>
                         </Tabs>
                     </div>

@@ -4,6 +4,9 @@
     {
         public long StageId { get; set; }
         public string StageNameEN { get; set; }
+        public byte Mode { get; set; }
+        public short GroupCount { get; set; }
+        public short RoundCount { get; set; }
         public short OrderIndex { get; set; }
     }
 }

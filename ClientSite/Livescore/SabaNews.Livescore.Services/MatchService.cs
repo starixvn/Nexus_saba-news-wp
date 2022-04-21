@@ -45,6 +45,9 @@
                     {
                         StageId = match.StageId.Value,
                         StageNameEN = match.StageNameEN,
+                        Mode = match.StageMode,
+                        GroupCount = match.GroupCount,
+                        RoundCount = match.RoundCount,
                         OrderIndex = match.OrderIndex
                     }
                     : null;
