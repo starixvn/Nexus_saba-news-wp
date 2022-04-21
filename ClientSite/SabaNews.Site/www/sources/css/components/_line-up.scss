@@ -1,10 +1,5 @@
 ﻿.line-up-main {
     .line-up-team, .line-up-change-men, .line-up-live {
-        /* border: 1px solid $border-color;
-        margin-bottom: 1.2rem;
-        border-radius: 3px;
-        background: $border-soccer-item;*/
-
         .line-up {
             .line-up-table {
                 display: flex;
@@ -82,13 +77,4 @@
             }
         }
     }
-    /*.line-up-title {
-        border-bottom: 1px solid $border-color;
-        text-align: center;
-        font-weight: 700;
-        font-size: 1.6rem;
-        line-height: 2.2rem;
-        color: $color-title;
-        padding: 1rem 0;
-    }*/
 }

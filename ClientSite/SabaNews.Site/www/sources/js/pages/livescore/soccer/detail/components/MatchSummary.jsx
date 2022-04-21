@@ -63,72 +63,76 @@ export class MatchSummary extends Component {
                                 <p className="icon-start"><i className="icon-livescore icon-mdi_whistle" /></p>
                                 <p className="txt-start">Bắt đầu</p>
                             </div>
+                            <div className="time-line-main">
+                                {
+                                    incidents.map((incident, key) => {
+                                        processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
+                                        if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed) && (incident.homeScore === 0 && incident.awayScore === 0)) {
+                                            hasPenaltyShootout = true;
+                                            if (incident.position === IncidentPosition.Home) {
+                                                penaltyShootOutData.homeType = incident.type;
+                                                penaltyShootOutData.homePlayerName = incident.playerName;
+                                            }
+                                            if (incident.position === IncidentPosition.Away) {
+                                                penaltyShootOutData.awayType = incident.type;
+                                                penaltyShootOutData.awayPlayerName = incident.playerName;
+                                            }
+                                            if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
+                                                homePenaltyShootoutScore++;
+                                                penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
+                                            }
+                                            if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
+                                                awayPenaltyShootoutScore++;
+                                                penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
+                                            }
+                                        }
+                                        if (Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
+                                            return (
+                                                <GeneralIncident
+                                                    key={key}
+                                                    incident={incident}
+                                                />
+                                            )
+                                        } else if (Site.CheckIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
+                                            let score = processScore;
+                                            if (incident.type === IncidentStatus.Halftime) {
+                                                score = "[" + generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore + "]";
+                                            } else if (incident.type === IncidentStatus.End) {
+                                                score = "[" + generalInfo.homeTeamTotalScore + " - " + generalInfo.awayTeamTotalScore + "]";
+                                            }
+                                            return (
+                                                <div className="head-top-team" key={key}>
+                                                    <div className="flexbox time-event">
+                                                        <p>{Site.MappingIncidentTimeEventType(incident.type)}</p>
+                                                    </div>
+                                                    <div className="flexbox time-event">
+                                                        <p>{score}</p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        } else if (hasPenaltyShootout && penaltyShootOutData !== null && penaltyShootOutData.awayType !== null && penaltyShootOutData.homeType !== null) {
+                                            penaltyShootOutData.score = penaltyShootoutScore;
+                                            hasPenaltyShootout = false;
+                                            let component = <PenaltyShootOut key={key} penaltyShootOutData={penaltyShootOutData} />
+                                            penaltyShootOutData = {
+                                                homeType: null,
+                                                homePlayerName: null,
+                                                awayType: null,
+                                                awayPlayerName: null,
+                                                score: null
+                                            };
+                                            return (component)
+                                        }
+                                    })
+                                }
+                                {
+                                    generalInfo.status === MatchStatus.Finished &&
+                                    this.renderFinishStatus()
+                                }
+                             </div>
                         </div>
-                        {
-                            incidents.map((incident, key) => {
-                                processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
-                                if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed) && (incident.homeScore === 0 && incident.awayScore === 0)) {
-                                    hasPenaltyShootout = true;
-                                    if (incident.position === IncidentPosition.Home) {
-                                        penaltyShootOutData.homeType = incident.type;
-                                        penaltyShootOutData.homePlayerName = incident.playerName;
-                                    }
-                                    if (incident.position === IncidentPosition.Away) {
-                                        penaltyShootOutData.awayType = incident.type;
-                                        penaltyShootOutData.awayPlayerName = incident.playerName;
-                                    }
-                                    if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
-                                        homePenaltyShootoutScore++;
-                                        penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
-                                    }
-                                    if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
-                                        awayPenaltyShootoutScore++;
-                                        penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
-                                    }
-                                }
-                                if (Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
-                                    return (
-                                        <GeneralIncident
-                                            key={key}
-                                            incident={incident}
-                                        />
-                                    )
-                                } else if (Site.CheckIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
-                                    let score = processScore;
-                                    if (incident.type === IncidentStatus.Halftime) {
-                                        score = "[" + generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore + "]";
-                                    } else if (incident.type === IncidentStatus.End) {
-                                        score = "[" + generalInfo.homeTeamTotalScore + " - " + generalInfo.awayTeamTotalScore + "]";
-                                    }
-                                    return (
-                                        <div className="head-top-team" key={key}>
-                                            <div className="flexbox time-event">
-                                                <p>{Site.MappingIncidentTimeEventType(incident.type)}</p>
-                                            </div>
-                                            <div className="flexbox time-event">
-                                                <p>{score}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                } else if (hasPenaltyShootout && penaltyShootOutData !== null && penaltyShootOutData.awayType !== null && penaltyShootOutData.homeType !== null) {
-                                    penaltyShootOutData.score = penaltyShootoutScore;
-                                    hasPenaltyShootout = false;
-                                    let component = <PenaltyShootOut key={key} penaltyShootOutData={penaltyShootOutData} />
-                                    penaltyShootOutData = {
-                                        homeType: null,
-                                        homePlayerName: null,
-                                        awayType: null,
-                                        awayPlayerName: null,
-                                        score: null
-                                    };
-                                    return (component)
-                                }
-                            })
-                        }
-                        {
-                            generalInfo.status === MatchStatus.Finished &&
-                            this.renderFinishStatus()
-                        }
+
+                        
                     </div>
                 </div>
             </div>
