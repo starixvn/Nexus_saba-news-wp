@@ -169,6 +169,9 @@ export class Lineups extends Component {
         formationArray.map((line) => {
             let lineArray = [];
             for (let i = 0; i < line; i++) {
+                if(!players[index]) {
+                    break;
+                }
                 let incident = this.getPlayerIncident(players[index].playerId)
                 lineArray.push({
                     number: players[index].playerNumber,
@@ -415,8 +418,8 @@ export class Lineups extends Component {
         const homePlayers = lineup.home.filter(player => player.position !== 0);
         const awayPlayers = lineup.away.filter(player => player.position !== 0);
 
-        const homeSubPlayers = lineup.home.filter(player => player.position === 0);
-        const awaySubPlayers = lineup.away.filter(player => player.position === 0);
+        const homeSubPlayers = lineup.home.filter(player => player.position === 0).sort((a, b) => (a.playerNumber - b.playerNumber));
+        const awaySubPlayers = lineup.away.filter(player => player.position === 0).sort((a, b) => (a.playerNumber - b.playerNumber));
 
         return (
             <div id="doi-hinh">
