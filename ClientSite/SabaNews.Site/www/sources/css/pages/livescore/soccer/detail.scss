@@ -31,12 +31,11 @@ $fa-font-path: "../../../../fonts";
     .soccer-team-status {
         margin-bottom: 1.8rem;
     }
-
-    .sticky-header {
+    /*  .sticky-header {
         position: sticky;
         top: 5rem;
         z-index: 9999999;
-    }
+    }*/
 }
 
 
@@ -162,6 +161,7 @@ $fa-font-path: "../../../../fonts";
                 margin-left: 5px;
             }
         }
+
         .item-th {
             margin-top: 0;
             width: 100%;
@@ -190,6 +190,7 @@ $fa-font-path: "../../../../fonts";
         color: #fff;
         border-top: 1px solid #fff;
     }
+
     .name-th.out {
         color: #A4ABB6;
     }
@@ -215,6 +216,7 @@ $fa-font-path: "../../../../fonts";
 .time-event {
     justify-content: center;
 }
+
 svg.arrowupgreen {
     fill: #59C541 !important;
 }
@@ -222,6 +224,7 @@ svg.arrowupgreen {
 svg.arrowdownred {
     fill: #F34848 !important;
 }
+
 svg.fill-red {
     fill: #F34848 !important;
 }
@@ -252,6 +255,7 @@ svg.fill-red {
     float: left;
     margin-bottom: 24px;
     margin-top: 24px;
+
     .table-paticipant {
         margin: 0;
         padding: 0;
@@ -259,19 +263,20 @@ svg.fill-red {
         float: left;
         margin-right: 4%;
         border: 1px solid #a5aaa5;
+
         &.away {
             float: right;
             margin: 0;
         }
+
         tr {
             border: 1px solid #a5aaa5;
-            th,td {
+
+            th, td {
                 padding: 5px;
             }
         }
-        
     }
-    
 }
 
 //pitch view
@@ -290,6 +295,7 @@ svg.fill-red {
     padding: 12px;
     position: relative;
 }
+
 .club-logo-img {
     float: left;
     height: 24px;
@@ -325,6 +331,7 @@ svg.fill-red {
     width: 100%;
     padding: 0.5rem;
 }
+
 .pitch-row {
     align-items: flex-start;
     display: flex;
@@ -346,6 +353,7 @@ svg.fill-red {
     justify-content: center;
     text-align: center;
 }
+
 .text-name {
     display: flex;
     justify-content: center;
@@ -389,15 +397,18 @@ svg.fill-red {
     width: 14px;
     right: -7px;
     bottom: -4px;
+
     &.ic_bong {
         left: -5px;
         top: -5px;
     }
+
     &.ic_penalty {
         left: -5px;
         top: 10px;
     }
 }
+
 .pr-30 {
     padding-right: 30px;
 }
@@ -415,6 +426,7 @@ svg.fill-red {
 //head to head
 .head-to-head {
     margin-top: 2rem;
+
     a {
         width: 33%;
         text-align: center;
@@ -423,6 +435,7 @@ svg.fill-red {
         background-color: #e9dddd;
     }
 }
+
 .hth-section {
     width: 100%;
     float: left;
@@ -431,6 +444,7 @@ svg.fill-red {
     font-size: 15px;
     margin-top: 24px;
 }
+
 .f-row {
     float: left;
     width: 100%;
@@ -445,6 +459,7 @@ svg.fill-red {
     float: left;
     display: table;
 }
+
 .football-match > div {
     vertical-align: top;
     display: table-cell;
@@ -462,17 +477,21 @@ svg.fill-red {
 .columns-match {
     &.w-col2 {
         width: 60%;
+
         .columns-club {
             width: 40%;
         }
+
         .columns-number {
             width: 20%;
         }
     }
 }
+
 .w-col3 {
     width: 30%;
 }
+
 .row-teams {
     display: table;
     width: 100%;
@@ -488,6 +507,7 @@ svg.fill-red {
 .club1 {
     text-align: right;
     padding-right: 26px;
+
     .logo-club {
         right: 0;
     }
@@ -496,6 +516,7 @@ svg.fill-red {
 .club2 {
     text-align: left;
     padding-left: 26px;
+
     .logo-club {
         left: 0;
     }
@@ -517,11 +538,13 @@ svg.fill-red {
     top: 0;
     border-radius: 100%;
 }
+
 .columns-number {
     text-align: center;
     padding: 0 6px;
     width: 14%;
 }
+
 .soccer-scores {
     display: inline-block;
     background: #37b349;
@@ -559,11 +582,13 @@ svg.fill-red {
     position: relative;
     background: #f2f2f2;
     border-radius: 100%;
+
     &.more-right {
         float: right;
         margin-right: 6px;
     }
 }
+
 .bg-color {
     background: #333;
     display: inline-block;
@@ -590,6 +615,7 @@ svg.fill-red {
 
 .h2h-statistic ul {
     display: flex;
+
     li {
         width: 33%;
         text-align: center;
@@ -609,5 +635,3 @@ svg.fill-red {
     position: relative;
     font-weight: 700;
 }
-
-
