@@ -1,6 +1,23 @@
 ﻿.line-up-main {
     .line-up-team, .line-up-change-men, .line-up-live {
         .line-up {
+            .icon-livescore {
+                font-size: 1.6rem;
+            }
+
+            .icon-line-up {
+                margin-right: .8rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                svg {
+                    width: 2rem;
+                }
+            }
+
+
             .line-up-table {
                 display: flex;
                 justify-content: center;
@@ -48,7 +65,10 @@
                         .action-player {
                             width: 25%;
                             text-align: right;
-                            line-height : 1;
+                            line-height: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
                         }
                     }
 
