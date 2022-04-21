@@ -58,8 +58,9 @@ export class MatchSummary extends Component {
                 <div className="block-line-up-main">
                     <div className="block-line-up-title">Diễn Biến</div>
                     <div className="block-line-up-body">
-                        <div className="head-top-team">
-                            <div className="flexbox time-event">
+                        <div className="time-line">
+                            <div className="time-line-start">
+                                <p className="icon-start"><i className="icon-livescore icon-mdi_whistle" /></p>
                                 <p>Bắt đầu</p>
                             </div>
                         </div>
