@@ -10,7 +10,7 @@ export default class GeneralIncident extends Component {
         const { incident } = this.props;
         return (
             <div className="line-up-live">
-                <div className="line-up-live-item flexbox">
+                <div className="line-up-live-item flexbox ">
                     <div className="inner-item-db flexbox item-th-home">
                         {
                             incident.position === IncidentPosition.Home &&
