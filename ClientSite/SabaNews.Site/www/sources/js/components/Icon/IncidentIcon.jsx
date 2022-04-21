@@ -32,13 +32,13 @@ export default class IncidentIcon extends Component {
 
     renderRedCardIcon = () => {
         return (
-            <span className="ic-red-card"></span>
+            <span className="icon-livescore icon-red-card"></span>
         );
     }
 
     renderYellowCardIcon = () => {
         return (
-            <span className="ic-yellow-card"></span>
+            <span className="icon-livescore icon-yellow-card"></span>
         );
     }
 
