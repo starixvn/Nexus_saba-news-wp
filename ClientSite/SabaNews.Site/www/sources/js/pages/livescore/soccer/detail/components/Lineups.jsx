@@ -12,20 +12,6 @@ export class Lineups extends Component {
         super(props);
     }
 
-    getPlayerRole = role => {
-        switch (role) {
-            case "F":
-                return LangHelper.getResource('Striker');
-            case "M":
-                return LangHelper.getResource('Midfielder');
-            case "D":
-                return LangHelper.getResource('Defender');
-            case "G":
-                return LangHelper.getResource('Goalkeeper');
-            default:
-                return "";
-        }
-    }
     getPlayerIncident = playerId => {
         const incidents = this.props.match.incidents;
         let playerIncident = {
@@ -259,7 +245,6 @@ export class Lineups extends Component {
                 <div className="line-up">
                     <div className="line-up-table">
                         <div className="table-paticipant home-team">
-                           
                             {
                                 home.map((player, pIndex) => {
                                     return (
