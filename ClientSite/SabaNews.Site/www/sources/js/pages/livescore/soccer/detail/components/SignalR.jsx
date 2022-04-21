@@ -57,9 +57,9 @@ export class SignalR extends Component {
         this.connection.stop();
     }
 
-    start = () => {
+    start = async () => {
         try {
-            this.connection.start().then(() => {
+            await this.connection.start().then(() => {
                 console.log("connect successful");
                 this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
                     .then(() => console.log(`join group ${window.selectedMatchId}`))
