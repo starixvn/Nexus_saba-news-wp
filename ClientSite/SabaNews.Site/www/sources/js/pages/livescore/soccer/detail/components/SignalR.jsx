@@ -24,7 +24,6 @@ export class SignalR extends Component {
         this.connection = new signalR.HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
-            .withAutomaticReconnect()
             .build();
 
         this.connection.on('UpdateMatchDetail', (data) => {
