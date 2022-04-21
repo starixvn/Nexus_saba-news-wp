@@ -15,6 +15,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Home &&
                             <>
+                                <div className="item-th-time">{incident.timeShow + "'"}</div>
                                 <div className="item-th flexbox">
                                     <i className="in-out-icon icon-livescore icon-in"/>
                                     <span className="name-th">{incident.inPlayerName} <span className="noted"></span></span>
@@ -36,6 +37,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Away &&
                             <>
+                                <div className="item-th-time">{incident.timeShow + "'"}</div>
                                 <div className="item-th flexbox">
                                     <span className="name-th">{incident.inPlayerName} <span className="noted"></span></span>
                                     <i className="in-out-icon icon-livescore icon-in" />

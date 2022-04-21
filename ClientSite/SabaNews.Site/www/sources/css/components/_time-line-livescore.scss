@@ -97,7 +97,7 @@
                     &.item-th-home {
                         padding-right: 2rem;
                         border-right: 1px solid $border-color;
-
+                        justify-content : flex-end;
                         .item-th {
                             -webkit-box-pack: end;
                             -ms-flex-pack: end;
