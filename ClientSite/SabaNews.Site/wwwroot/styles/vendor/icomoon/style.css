@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?pc5fbk');
-  src:  url('fonts/Fraud-Sensor.eot?pc5fbk#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?pc5fbk') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?pc5fbk') format('woff'),
-    url('fonts/Fraud-Sensor.svg?pc5fbk#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?fd25hc');
+  src:  url('fonts/Fraud-Sensor.eot?fd25hc#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?fd25hc') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?fd25hc') format('woff'),
+    url('fonts/Fraud-Sensor.svg?fd25hc#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-red-card:before {
+  content: "\e92a";
+  color: #ff5057;
+}
+.icon-yellow-card:before {
+  content: "\e92b";
+  color: #ffc000;
+}
 .icon-var:before {
   content: "\e929";
   color: #324a75;
@@ -44,14 +52,6 @@
 .icon-out:before {
   content: "\e92f";
   color: #ff5744;
-}
-.icon-red-card:before {
-  content: "\e943";
-  color: #ff5057;
-}
-.icon-yellow-card:before {
-  content: "\e94b";
-  color: #f9c91e;
 }
 .icon-ball:before {
   content: "\e927";
