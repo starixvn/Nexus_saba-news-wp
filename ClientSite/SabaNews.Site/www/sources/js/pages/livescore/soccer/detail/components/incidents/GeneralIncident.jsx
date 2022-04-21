@@ -54,7 +54,7 @@ export default class GeneralIncident extends Component {
 
     renderGeneral = () =>  {
         const { incident } = this.props;
-        const processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
+        const processScore = incident.homeScore + " - " + incident.awayScore;
         return (
             <div className="line-up-live">
                 <div className="line-up-live-item flexbox">
@@ -66,7 +66,6 @@ export default class GeneralIncident extends Component {
                                 <li>
                                     <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
                                 </li>
-                                
                             </ul>
                         }
                     </div>
@@ -74,7 +73,7 @@ export default class GeneralIncident extends Component {
                         <li>
                             {
                                 Site.CheckIncidentTypeToShowScore(incident.type) &&
-                                <span className="name-th">({processScore}) <span className="noted"></span></span>
+                                <span className="name-th">{processScore} <span className="noted"></span></span>
                             }
                         </li>
                         <li className="icon-th">
@@ -94,7 +93,6 @@ export default class GeneralIncident extends Component {
                     </div>
                 </div>
             </div>
-                
         )
     }
     render() {

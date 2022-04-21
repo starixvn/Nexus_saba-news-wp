@@ -6,34 +6,35 @@ import { Tabs, Tab } from 'react-bootstrap';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { MatchStatus } from '@jsroot/common/constants';
 
 export class HeadToHead extends Component {
     constructor(props) {
         super(props);
     }
 
-    getTeamStatus = (isHomeTeam) => {
-        const { generalInfo } = this.props.match;
+    getTeamStatus = (isHomeTeam, match) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        switch (generalInfo.status) {
+        switch (match.status) {
             case MatchStatus.Finished:
-                if (generalInfo[`${homeFieldName}PenaltyScore`]
-                    && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
-                    return <li>PEN</li>;
-                } else if (generalInfo[`${homeFieldName}AggregateScore`]
-                    && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
-                    return <li>AGG</li>;
+                if (match[`${homeFieldName}PenaltyScore`]
+                    && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                    return "PEN";
+                } else if (match[`${homeFieldName}AggregateScore`]
+                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                    return "AGG";
                 } else {
-                    return <Fragment />;
+                    return null;
                 }
             default:
-                return <Fragment />;
+                return null;
         }
     }
 
     renderBody = (matchs, teamId) =>  {
+        const generalInfo = this.props.match.generalInfo;
         if(matchs.length === 0) {
             return null;
         }
@@ -49,16 +50,17 @@ export class HeadToHead extends Component {
                         let awayWinClass = "";
                         const homeTeamScore = match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore;
                         const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
-                        let result = this.getTeamResult(teamId, match);
+                        const teamCheck = teamId ? teamId : generalInfo.homeTeam.teamId;
+                        let result = this.getTeamResult(teamCheck, match);
                         if(result === 1) {
-                            if(teamId === match.homeTeam.teamId) {
+                            if(teamCheck === match.homeTeam.teamId) {
                                 homeWinclass = "win";
-                            } else if(teamId === match.awayTeam.teamId) {
+                            } else if(teamCheck === match.awayTeam.teamId) {
                                 awayWinClass = "win";
                             }
                         }
                         if(result === 2) {
-                            if(teamId === match.homeTeam.teamId) {
+                            if(teamCheck === match.homeTeam.teamId) {
                                 awayWinClass = "win";
                             } else if(teamId === match.awayTeam.teamId) {
                                 homeWinclass = "win";
@@ -125,31 +127,31 @@ export class HeadToHead extends Component {
         const isHomeTeam = match.homeTeam.teamId === teamId;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
-        let status = 0;
+        let result = 0;
         const homeTeamScore = match[`${homeFieldName}ExtraScore`] ? match[`${homeFieldName}ExtraScore`] : match[`${homeFieldName}TotalScore`];
         const awayTeamScore = match[`${awayFieldName}ExtraScore`] ? match[`${awayFieldName}ExtraScore`] : match[`${awayFieldName}TotalScore`];
         if(homeTeamScore > awayTeamScore) {
-           status = 1;
+            result = 1;
         } else if (homeTeamScore < awayTeamScore) {
-            status = 2;
+            result = 2;
         }
         else {
-            status = 0;
+            result = 0;
         }
         if (match[`${homeFieldName}PenaltyScore`]) {
             if(match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
-                status = 1;
+                result = 1;
             } else if (match[`${homeFieldName}PenaltyScore`] < match[`${awayFieldName}PenaltyScore`])  {
-                status = 2;
+                result = 2;
             }
         } else if (match[`${homeFieldName}AggregateScore`]) {
             if(match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                status = 1;
+                result = 1;
             } else if (match[`${homeFieldName}AggregateScore`] < match[`${awayFieldName}AggregateScore`])  {
-                status = 2;
+                result = 2;
             }
         }
-        return status;
+        return result;
     }
 
     renderStatistic = matchs => {
@@ -205,7 +207,7 @@ export class HeadToHead extends Component {
             <div id="doi-dau">
                 <Tabs  id="head-to-head-tabs" className="head-to-head" defaultActiveKey="Common">
                     <Tab eventKey="Home" title={generalInfo.homeTeam.teamNameEN} >
-                    {this.renderBody(home, generalInfo.homeTeam.teamId)}
+                        {this.renderBody(home, generalInfo.homeTeam.teamId)}
                     </Tab>
                     <Tab eventKey="Common" title="Chung">
                         {this.renderBody(common)}

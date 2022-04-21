@@ -44,8 +44,8 @@ export class MatchSummary extends Component {
         let hasPenaltyShootout = false;
         let homePenaltyShootoutScore = 0;
         let awayPenaltyShootoutScore = 0;
-        let penaltyShootoutScore = "[0 - 0]";
-        let processScore = "[0 - 0]";
+        let penaltyShootoutScore = "0 - 0";
+        let processScore = "0 - 0";
         let penaltyShootOutData = {
             homeType: null,
             homePlayerName: null,
@@ -66,7 +66,7 @@ export class MatchSummary extends Component {
                             <div className="time-line-main">
                                 {
                                     incidents.map((incident, key) => {
-                                        processScore = "[" + incident.homeScore + " - " + incident.awayScore + "]";
+                                        processScore = incident.homeScore + " - " + incident.awayScore;
                                         if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed) && (incident.homeScore === 0 && incident.awayScore === 0)) {
                                             hasPenaltyShootout = true;
                                             if (incident.position === IncidentPosition.Home) {
@@ -79,11 +79,11 @@ export class MatchSummary extends Component {
                                             }
                                             if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
                                                 homePenaltyShootoutScore++;
-                                                penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
+                                                penaltyShootoutScore =  homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore;
                                             }
                                             if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
                                                 awayPenaltyShootoutScore++;
-                                                penaltyShootoutScore = "[" + homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore + "]";
+                                                penaltyShootoutScore = homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore;
                                             }
                                         }
                                         if (Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
