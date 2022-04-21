@@ -32,6 +32,21 @@ export class SignalR extends Component {
             this.props.setMatch(data);
         });
 
+        this.connection.onclose(async () => {
+            await this.start();
+        });
+
+        let lockResolver;
+        if (navigator && navigator.locks && navigator.locks.request) {
+            const promise = new Promise(res => {
+                lockResolver = res;
+            });
+
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
+                return promise;
+            });
+        }
+
         this.start();
     }
 
@@ -52,12 +67,15 @@ export class SignalR extends Component {
             }).catch(err => console.error(err.toString()));
         } catch (err) {
             console.log(err);
-            setTimeout(start, 5000);
+            setTimeout(() => {
+                this.getMatchDetail();
+                this.start();
+            }, 60 * 1000);
         }
     };
 
     render() {
-        return null;
+        return <span />;
     }
 }
 
