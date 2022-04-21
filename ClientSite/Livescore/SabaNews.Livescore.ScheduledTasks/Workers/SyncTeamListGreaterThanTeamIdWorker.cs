@@ -8,7 +8,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncTeamListGreaterThanTeamIdWorker : BaseWorker
+    public class SyncTeamListGreaterThanTeamIdWorker : WorkerBase
     {
         private readonly ISyncTeamService syncTeamService;
 
@@ -21,7 +21,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncTeamListGreaterThanTeamId);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             await syncTeamService.SyncTeamListGreaterThanTeamIdAsync();
         }

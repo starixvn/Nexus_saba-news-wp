@@ -14,7 +14,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncMatchByLastUpdatedTimeWorker : BaseWorker
+    public class SyncMatchByLastUpdatedTimeWorker : WorkerBase
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly ISyncMatchService syncMatchService;
@@ -34,7 +34,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncAllMatchByUpdatedTime);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeAsync();
             var param = new SyncMatchParams

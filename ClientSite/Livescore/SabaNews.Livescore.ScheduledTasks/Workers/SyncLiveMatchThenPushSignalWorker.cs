@@ -16,7 +16,7 @@
     using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncLiveMatchThenPushSignalWorker : BaseWorker
+    public class SyncLiveMatchThenPushSignalWorker : WorkerBase
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly IPushSignalService pushSignalService;
@@ -40,7 +40,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatchAndPushSignalR);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
 

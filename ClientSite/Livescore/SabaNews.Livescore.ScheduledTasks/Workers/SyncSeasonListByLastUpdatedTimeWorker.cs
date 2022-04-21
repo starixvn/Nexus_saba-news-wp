@@ -8,7 +8,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncSeasonListByLastUpdatedTimeWorker : BaseWorker
+    public class SyncSeasonListByLastUpdatedTimeWorker : WorkerBase
     {
         private readonly ISyncSeasonService syncSeasonService;
 
@@ -21,7 +21,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncSeasonListByLastUpdatedTime);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             await syncSeasonService.SyncSeasonListByLastUpdatedTimeAsync();
         }

@@ -13,7 +13,7 @@
     using SabaNews.Livescore.SyncData.Models.HeadToHead;
     using SabaNews.Livescore.SyncData.Services.Interfaces;
 
-    public class SyncHeadToHeadFromCurrentDateToFutureWorker : BaseWorker
+    public class SyncHeadToHeadFromCurrentDateToFutureWorker : WorkerBase
     {
         private readonly ISyncHeadToHeadService synch2hService;
         private readonly IFetchTeamService fetchTeamService;
@@ -33,7 +33,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncHeadToHeadFromCurrentToFuture);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             var h2hMatches = await GetMatchToSyncHeadToHead();
             if (h2hMatches.Any())

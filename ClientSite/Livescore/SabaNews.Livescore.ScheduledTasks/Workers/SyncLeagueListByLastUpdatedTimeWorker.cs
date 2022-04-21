@@ -8,7 +8,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    public class SyncLeagueListByLastUpdatedTimeWorker : BaseWorker
+    public class SyncLeagueListByLastUpdatedTimeWorker : WorkerBase
     {
         private readonly ISyncLeagueService syncLeagueService;
 
@@ -21,7 +21,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLeagueListByLastUpdatedTime);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             await syncLeagueService.SyncLeagueListByLastUpdatedTimeAsync();
         }
