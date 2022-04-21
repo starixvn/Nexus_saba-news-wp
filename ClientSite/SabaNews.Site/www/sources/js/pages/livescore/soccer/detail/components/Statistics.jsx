@@ -9,7 +9,6 @@ export class Statistics extends Component {
         super(props);
     }
 
-    
     render() {
         const match = this.props.match;
         const { statistic } = this.props.match;
