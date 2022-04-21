@@ -66,6 +66,12 @@ export default class GeneralIncident extends Component {
                                 <li>
                                     <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
                                 </li>
+                                {
+                                    (incident.type === IncidentStatus.Goal && incident.assistName) &&
+                                    <li>
+                                        <span className="item-th-name">{incident.assistName} <span className="noted"></span></span>
+                                    </li>
+                                }
                             </ul>
                         }
                     </div>
@@ -88,6 +94,12 @@ export default class GeneralIncident extends Component {
                                 <li>
                                     <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
                                 </li>
+                                {
+                                    (incident.type === IncidentStatus.Goal && incident.assistName) &&
+                                    <li>
+                                        <span className="item-th-name">{incident.assistName} <span className="noted"></span></span>
+                                    </li>
+                                }
                             </ul>
                         }
                     </div>
