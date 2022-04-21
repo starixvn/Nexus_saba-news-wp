@@ -19,7 +19,8 @@ export class Statistics extends Component {
         if(match !== null) {
             const {homeStatistic, awayStatistic} = this.props.match.statistic;
             statistices = [
-                { categoryId: 1, categoryName: 'Kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
+                { categoryId: 1, categoryName: 'Tỉ lệ kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
+                { categoryId: 2, categoryName: 'Tình huống tấn công nguy hiểm', homeValue: homeStatistic.dangerAttack, awayValue: awayStatistic.dangerAttack, unit: '' },
                 { categoryId: 3, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.shoot, awayValue: awayStatistic.shoot, unit: '' },
                 { categoryId: 4, categoryName: 'Dứt điểm chính xác', homeValue: homeStatistic.onGoal, awayValue: awayStatistic.onGoal, unit: '' },
                 { categoryId: 5, categoryName: 'Phạm lỗi', homeValue: homeStatistic.foul, awayValue: awayStatistic.foul, unit: '' },
@@ -30,8 +31,6 @@ export class Statistics extends Component {
                 { categoryId: 10, categoryName: 'Phạt góc', homeValue: homeStatistic.cornerKick, awayValue: awayStatistic.cornerKick, unit: '' },
                 { categoryId: 11, categoryName: 'Đá phạt', homeValue: homeStatistic.freeKick, awayValue: awayStatistic.freeKick, unit: '' },
                 { categoryId: 12, categoryName: 'Phạt đền', homeValue: homeStatistic.penaltyKick, awayValue: awayStatistic.penaltyKick, unit: '' },
-                { categoryId: 13, categoryName: 'Tình huống tấn công nguy hiểm', homeValue: homeStatistic.dangerAttack, awayValue: awayStatistic.dangerAttack, unit: '' },
-                { categoryId: 14, categoryName: 'Cướp bóng thành công', homeValue: homeStatistic.steals, awayValue: awayStatistic.steals, unit: '' }
             ];
         }
         return (

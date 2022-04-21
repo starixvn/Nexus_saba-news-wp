@@ -12,6 +12,27 @@ export class HeadToHead extends Component {
         super(props);
     }
 
+    getTeamStatus = (isHomeTeam) => {
+        const { generalInfo } = this.props.match;
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+
+        switch (generalInfo.status) {
+            case MatchStatus.Finished:
+                if (generalInfo[`${homeFieldName}PenaltyScore`]
+                    && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
+                    return <li>PEN</li>;
+                } else if (generalInfo[`${homeFieldName}AggregateScore`]
+                    && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
+                    return <li>AGG</li>;
+                } else {
+                    return <Fragment />;
+                }
+            default:
+                return <Fragment />;
+        }
+    }
+
     renderBody = (matchs, teamId) =>  {
         if(matchs.length === 0) {
             return null;
@@ -26,27 +47,25 @@ export class HeadToHead extends Component {
                     matchs.map((match, key) => {
                         let homeWinclass = "";
                         let awayWinClass = "";
-                        let matchStatus = 0;
                         const homeTeamScore = match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore;
                         const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
-                        if(homeTeamScore > awayTeamScore) {
-                            homeWinclass = "win";
-                            if(match.homeTeam.teamId === teamId) {
-                                matchStatus = 1;
-                            } else {
-                                matchStatus = 2;
+                        let result = this.getTeamResult(teamId, match);
+                        if(result === 1) {
+                            if(teamId === match.homeTeam.teamId) {
+                                homeWinclass = "win";
+                            } else if(teamId === match.awayTeam.teamId) {
+                                awayWinClass = "win";
                             }
                         }
-                        if(homeTeamScore < awayTeamScore) {
-                            awayWinClass = "win";
-                            if(match.awayTeam.teamId === teamId) {
-                                matchStatus = 1;
-                            } else {
-                                matchStatus = 2;
+                        if(result === 2) {
+                            if(teamId === match.homeTeam.teamId) {
+                                awayWinClass = "win";
+                            } else if(teamId === match.awayTeam.teamId) {
+                                homeWinclass = "win";
                             }
                         }
                         if(!teamId) {
-                            matchStatus = -1;
+                            result = -1;
                         }
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
@@ -80,15 +99,15 @@ export class HeadToHead extends Component {
                                     <div className="columns-other w-col3">
                                         <a rel="nofollow" className="btn-f-more more-right" href={Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}>{'>'}</a>
                                         {
-                                            matchStatus === 0 &&
+                                            result === 0 &&
                                             <span className="bg-color  bgyelow more-right btn-f-more" title="Hòa">D</span>
                                         }
                                         {
-                                            matchStatus === 1 &&
+                                            result === 1 &&
                                             <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>
                                         }
                                         {
-                                            matchStatus === 2 &&
+                                            result === 2 &&
                                             <span className="bg-color bgred more-right btn-f-more" title="Bại">L</span>
                                         }
                                         <span className="more-right">{CommonFunctions.getLeagueNameWithStage(match.league)}</span>
@@ -102,30 +121,57 @@ export class HeadToHead extends Component {
         )
     }
 
+    getTeamResult = (teamId, match) => {
+        const isHomeTeam = match.homeTeam.teamId === teamId;
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+        let status = 0;
+        const homeTeamScore = match[`${homeFieldName}ExtraScore`] ? match[`${homeFieldName}ExtraScore`] : match[`${homeFieldName}TotalScore`];
+        const awayTeamScore = match[`${awayFieldName}ExtraScore`] ? match[`${awayFieldName}ExtraScore`] : match[`${awayFieldName}TotalScore`];
+        if(homeTeamScore > awayTeamScore) {
+           status = 1;
+        } else if (homeTeamScore < awayTeamScore) {
+            status = 2;
+        }
+        else {
+            status = 0;
+        }
+        if (match[`${homeFieldName}PenaltyScore`]) {
+            if(match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                status = 1;
+            } else if (match[`${homeFieldName}PenaltyScore`] < match[`${awayFieldName}PenaltyScore`])  {
+                status = 2;
+            }
+        } else if (match[`${homeFieldName}AggregateScore`]) {
+            if(match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                status = 1;
+            } else if (match[`${homeFieldName}AggregateScore`] < match[`${awayFieldName}AggregateScore`])  {
+                status = 2;
+            }
+        }
+        return status;
+    }
+
     renderStatistic = matchs => {
         const generalInfo = this.props.match.generalInfo;
         let homeWins = 0;
         let draws = 0;
         let awayWins = 0;
         matchs.map(match => {
-            const homeTeamScore = match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore;
-            const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
-            if(match.homeTeam.teamId === generalInfo.homeTeam.teamId && homeTeamScore > awayTeamScore) {
-                homeWins++;
-            }
-            if(match.awayTeam.teamId === generalInfo.homeTeam.teamId && homeTeamScore < awayTeamScore) {
-                homeWins++;
-            }
-            if(match.homeTeam.teamId === generalInfo.awayTeam.teamId && homeTeamScore > awayTeamScore) {
-                awayWins++;
-            }
-            if(match.awayTeam.teamId === generalInfo.awayTeam.teamId && homeTeamScore < awayTeamScore) {
-                awayWins++;
-            }
-            if(homeTeamScore === awayTeamScore) {
-                draws++;
+            const result = this.getTeamResult(generalInfo.homeTeam.teamId, match);
+            switch (result) {
+                case 0:
+                    draws++;
+                    break;
+                case 1:
+                    homeWins++;
+                    break;
+                case 2:
+                    awayWins++;
+                    break;
             }
         });
+
         return (
             <div className="h2h-statistic">
                 <ul>
@@ -146,6 +192,7 @@ export class HeadToHead extends Component {
             </div>
         )
     }
+
 
     render() {
         const headToHead = this.props.match.headToHead;
