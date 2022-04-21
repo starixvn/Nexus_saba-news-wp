@@ -204,18 +204,23 @@ export class HeadToHead extends Component {
         const { home, away, common } = this.props.match.headToHead;
         const generalInfo = this.props.match.generalInfo;
         return (
-            <div id="doi-dau">
-                <Tabs  id="head-to-head-tabs" className="head-to-head" defaultActiveKey="Common">
-                    <Tab eventKey="Home" title={generalInfo.homeTeam.teamNameEN} >
-                        {this.renderBody(home, generalInfo.homeTeam.teamId)}
-                    </Tab>
-                    <Tab eventKey="Common" title="Chung">
-                        {this.renderBody(common)}
-                    </Tab>
-                    <Tab eventKey="Away" title={generalInfo.awayTeam.teamNameEN}>
-                        {this.renderBody(away, generalInfo.awayTeam.teamId)}
-                    </Tab>
-                </Tabs>
+            <div className="block-line-up" id="doi-dau">
+                <div className="block-line-up-main">
+                    <div className="block-line-up-title">Đối đầu</div>
+                    <div className="block-line-up-body">
+                        <Tabs id="head-to-head-tabs" className="head-to-head" defaultActiveKey="Common">
+                            <Tab eventKey="Home" title={generalInfo.homeTeam.teamNameEN} >
+                                {this.renderBody(home, generalInfo.homeTeam.teamId)}
+                            </Tab>
+                            <Tab eventKey="Common" title="Chung">
+                                {this.renderBody(common)}
+                            </Tab>
+                            <Tab eventKey="Away" title={generalInfo.awayTeam.teamNameEN}>
+                                {this.renderBody(away, generalInfo.awayTeam.teamId)}
+                            </Tab>
+                        </Tabs>
+                    </div>
+                </div>
             </div>
         );
     }
