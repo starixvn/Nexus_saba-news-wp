@@ -2,7 +2,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SignalR from './SignalR';
-import FunctionBar from './FunctionBar';
 import Details from './Details';
 import { ActionCreators } from '../actions';
 import MatchGenetalInfo from './MatchGeneralInfo';
@@ -29,7 +28,6 @@ export class AppContainer extends Component {
                     <div className="livescore-soccer">
                         <div className="livescore-soccer-main">
                             <MatchGenetalInfo match={this.props.match} isLiveMatch={this.props.isLiveMatch} />
-                            <FunctionBar />
                             <Details />
                         </div>
                         <div className="livescore-soccer-extension">

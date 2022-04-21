@@ -18,16 +18,24 @@ $fa-font-path: "../../../../fonts";
 
 
 .livescore-soccer {
-    padding-bottom :5rem;
+    padding-bottom: 5rem;
+
     .livescore-league-header-detail {
-        margin-bottom : 1.2rem;
+        margin-bottom: 1.2rem;
     }
 
     .icon-livescore {
         font-size: 1.6rem;
     }
-    .soccer-team-status{
-        margin-bottom : 1.8rem;
+
+    .soccer-team-status {
+        margin-bottom: 1.8rem;
+    }
+
+    .sticky-header {
+        position: sticky;
+        top: 5rem;
+        z-index: 9999999;
     }
 }
 
