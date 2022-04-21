@@ -124,6 +124,9 @@
                     &.item-th-away {
                         padding-left: 2rem;
                         border-left: 1px solid $border-color;
+                        .in-out-icon{
+                            margin-left : 1rem;
+                        }
                     }
                 }
 
