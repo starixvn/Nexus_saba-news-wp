@@ -12,6 +12,20 @@ export class Lineups extends Component {
         super(props);
     }
 
+    getPlayerRole = role => {
+        switch (role) {
+            case "F":
+                return LangHelper.getResource('Striker');
+            case "M":
+                return LangHelper.getResource('Midfielder');
+            case "D":
+                return LangHelper.getResource('Defender');
+            case "G":
+                return LangHelper.getResource('Goalkeeper');
+            default:
+                return "";
+        }
+    }
     getPlayerIncident = playerId => {
         const incidents = this.props.match.incidents;
         let playerIncident = {
@@ -24,7 +38,7 @@ export class Lineups extends Component {
             outSubsitution: 0,
             inSubsitution: 0
         }
-        if(!incidents) {
+        if (!incidents) {
             return playerIncident;
         }
 
@@ -135,7 +149,7 @@ export class Lineups extends Component {
             formation = lineup.generalInfo.awayFormation;
             players = lineup.away.filter(player => player.position !== 0);
         }
-        if(players.length === 0) {
+        if (players.length === 0) {
             return null;
         }
         const formationArray = formation.split("-");
@@ -241,34 +255,41 @@ export class Lineups extends Component {
     renderListPlayer = (title, home, away) => {
         return (
             <>
-                <div className="line-up-title">{title}</div>
-                <div className="line-up">
-                    <div className="line-up-table">
-                        <div className="table-paticipant home-team">
-                            {
-                                home.map((player, pIndex) => {
-                                    return (
-                                        <ul key={pIndex} className="list-paticipant">
-                                            <li className="number-player">{player.playerNumber}</li>
-                                            <li className="name-player">{player.playerName}</li>
-                                            <li className="action-player">{this.renderIconListPlayer(player)}</li>
-                                        </ul>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className="table-paticipant away-team">
-                            {
-                                away.map((player, pIndex) => {
-                                    return (
-                                         <ul key={pIndex} className="list-paticipant">
-                                            <li className="number-player">{player.playerNumber}</li>
-                                            <li className="name-player">{player.playerName}</li>
-                                            <li className="action-player">{this.renderIconListPlayer(player)}</li>
-                                        </ul>
-                                    )
-                                })
-                            }
+                <div className="line-up-change-men block-line-up" id="thong-ke">
+                    <div className="block-line-up-main">
+                        <div className="block-line-up-title">{title}</div>
+                        <div className="block-line-up-body">
+                            <div className="line-up">
+                                <div className="line-up-table">
+                                    <div className="table-paticipant home-team">
+
+                                        {
+                                            home.map((player, pIndex) => {
+                                                return (
+                                                    <ul key={pIndex} className="list-paticipant">
+                                                        <li className="number-player">{player.playerNumber}</li>
+                                                        <li className="name-player">{player.playerName}</li>
+                                                        <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div className="table-paticipant away-team">
+                                        {
+                                            away.map((player, pIndex) => {
+                                                return (
+                                                    <ul key={pIndex} className="list-paticipant">
+                                                        <li className="number-player">{player.playerNumber}</li>
+                                                        <li className="name-player">{player.playerName}</li>
+                                                        <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,7 +300,7 @@ export class Lineups extends Component {
     renderPitchView = () => {
         const lineup = this.props.match.lineup;
         const matchInfo = this.props.match.generalInfo;
-        if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation ) {
+        if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation) {
             return null;
         }
         let homeLineup = this.getListLineup(lineup, IncidentPosition.Home);
@@ -365,7 +386,7 @@ export class Lineups extends Component {
 
 
     renderSubstitution = position => {
-        if(!this.props.match.incidents) {
+        if (!this.props.match.incidents) {
             return null;
         }
         const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
@@ -382,8 +403,8 @@ export class Lineups extends Component {
                         <li className="name-player">
                             <p>{inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
                             <p>{outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
-                         </li>
-                     </ul>
+                        </li>
+                    </ul>
                 )
             })
         )
@@ -391,8 +412,8 @@ export class Lineups extends Component {
 
 
     render() {
-        const { lineup }  = this.props.match;
-        if (!this.props.match.lineup || !this.props.match.lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
+        const { lineup } = this.props.match;
+        if (!this.props.match.lineup || !this.props.match.lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0)) {
             return null;
         }
         const homePlayers = lineup.home.filter(player => player.position !== 0);
@@ -411,21 +432,24 @@ export class Lineups extends Component {
                     <div className="line-up-team">
                         {this.renderListPlayer(LangHelper.getResource('LineupSubtitudePlayer'), homeSubPlayers, awaySubPlayers)}
                     </div>
+                    <div className="line-up-change-men block-line-up">
+                        <div className="block-line-up-main">
+                            <div className="block-line-up-title">Thay người</div>
+                            <div className="block-line-up-body">
+                                <div className="line-up">
+                                    <div className="line-up-table">
+                                        <div className="table-paticipant home-team">
 
-                    <div className="line-up-change-men">
-                        <div className="line-up-title">Thay người</div>
-                        <div className="line-up">
-                            <div className="line-up-table">
-                                <div className="table-paticipant home-team">
-
-                                    {
-                                        this.renderSubstitution(IncidentPosition.Home)
-                                    }
-                                </div>
-                                <div className="table-paticipant away-team">
-                                    {
-                                        this.renderSubstitution(IncidentPosition.Away)
-                                    }
+                                            {
+                                                this.renderSubstitution(IncidentPosition.Home)
+                                            }
+                                        </div>
+                                        <div className="table-paticipant away-team">
+                                            {
+                                                this.renderSubstitution(IncidentPosition.Away)
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
