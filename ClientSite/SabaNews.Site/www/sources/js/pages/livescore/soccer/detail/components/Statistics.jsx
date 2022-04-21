@@ -46,7 +46,7 @@ export class Statistics extends Component {
                                     const awayPercentage = (item.awayValue / (item.homeValue + item.awayValue)) * 100;
 
                                     return (
-                                <div key={item.categoryId}>
+                                        <div className="statistices-items" key={item.categoryId}>
                                             {
                                                 (item.homeValue !== null && item.awayValue !== null) &&
                                                 <div key={item.categoryId} className="statistices-row">

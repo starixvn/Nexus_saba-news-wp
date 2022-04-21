@@ -1,5 +1,6 @@
 ﻿.statistices {
     padding: 0 1.3rem 2.4rem;
+
     &-category {
         display: flex;
         flex-flow: row nowrap;
@@ -37,21 +38,23 @@
         }
     }
 
-    &-row {
+    &-items {
         margin-top: 2rem;
 
         &:first-child {
             padding-top: 2.6rem;
             margin-top: 0;
 
-            .statistices-bar {
-                height: 1.2rem;
-            }
+            .statistices-row {
+                .statistices-bar {
+                    height: 1.2rem;
+                }
 
-            .statistices-category {
-                font-weight: 600;
-                font-size: 1.8rem;
-                line-height: 2.5rem;
+                .statistices-category {
+                    font-weight: 600;
+                    font-size: 1.8rem;
+                    line-height: 2.5rem;
+                }
             }
         }
     }

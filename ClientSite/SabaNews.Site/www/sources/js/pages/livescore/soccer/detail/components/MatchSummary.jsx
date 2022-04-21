@@ -61,7 +61,7 @@ export class MatchSummary extends Component {
                         <div className="time-line">
                             <div className="time-line-start">
                                 <p className="icon-start"><i className="icon-livescore icon-mdi_whistle" /></p>
-                                <p>Bắt đầu</p>
+                                <p className="txt-start">Bắt đầu</p>
                             </div>
                         </div>
                         {

@@ -1,5 +1,18 @@
-﻿.time-line{
-    &-start{
-        text-align : center;
+﻿.time-line {
+    &-start {
+        text-align: center;
+        padding-top: 1.4rem;
+
+        .icon-livescore {
+            font-size: 2rem !important;
+        }
+
+        .txt-start {
+            margin-top: .7rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+            line-height: 1.9rem;
+            color: $color-title;
+        }
     }
 }
