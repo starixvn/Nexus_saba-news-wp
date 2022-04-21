@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
+import { IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 
 export default class PenaltyShootOut extends Component {
     constructor(props) {
@@ -7,13 +8,15 @@ export default class PenaltyShootOut extends Component {
     }
     render() {
         const {penaltyShootOutData} = this.props;
+        const homeType = penaltyShootOutData.homeType === IncidentStatus.Penalty ? IncidentStatus.PenaltyShootOutSuccess : penaltyShootOutData.homeType;
+        const awayType = penaltyShootOutData.awayType === IncidentStatus.Penalty ? IncidentStatus.PenaltyShootOutSuccess : penaltyShootOutData.awayType;
         return (
             <>
                 <div className="line-up-live-item flexbox">
                         <div className="inner-item-db flexbox item-th-home">
                             <div className="item-th flexbox">
                             <span className="icon-th in-out-icon">
-                                    <IncidentIcon type = {penaltyShootOutData.homeType}/>
+                                    <IncidentIcon type = {homeType}/>
                                 </span>
                                 <span className="name-th">{penaltyShootOutData.homePlayerName} <span className="noted"></span></span>
                             </div>
@@ -23,7 +26,9 @@ export default class PenaltyShootOut extends Component {
                             <div className="item-th flexbox">
                                 
                             <span className="name-th">{penaltyShootOutData.awayPlayerName} <span className="noted"></span></span>
+                                    <IncidentIcon type = {awayType}/>
                             <span className="icon-th in-out-icon">
+                                    <IncidentIcon type = {penaltyShootOutData.awayType}/>
                                 <IncidentIcon type={penaltyShootOutData.awayType} />
                             </span>
                             </div>

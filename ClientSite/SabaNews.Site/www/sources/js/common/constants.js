@@ -1,4 +1,4 @@
-export const MobileMaxWidth = 768;
+﻿export const MobileMaxWidth = 768;
 
 export const LeagueType = {
     Unknown: 0,
@@ -68,5 +68,6 @@ export const IncidentStatus = {
     PenaltyShootoutEnd: 27,
     VAR: 28,
     PenaltyShootOut: 29,
-    PenaltyShootOutMissed: 30
+    PenaltyShootOutMissed: 30,
+    PenaltyShootOutSuccess:31
 };
