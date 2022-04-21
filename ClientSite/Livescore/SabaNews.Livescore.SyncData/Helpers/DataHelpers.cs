@@ -68,7 +68,7 @@
                 IsSubstitute = isSubstitute,
                 CoordinateX = p.Coordinate is not null ? p.Coordinate.X : 0,
                 CoordinateY = p.Coordinate is not null ? p.Coordinate.Y : 0,
-                PlayerName = p.PlayerName,
+                PlayerName = string.Empty,
                 PlayerNumber = p.PlayerNumber,
                 Position = p.Position,
                 Role = p.Role

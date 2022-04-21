@@ -53,7 +53,7 @@
 
             if (matchIds is not null && matchIds.Length > 0)
             {
-                await syncMatchService.SyncMatchDetailsAsync(liveMatches);
+                await syncMatchService.SyncMatchStatisticAsync(liveMatches);
 
                 var liveMatchList = await matchService.GetLiveMatchAsync();
 

@@ -71,7 +71,7 @@
             };
             var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
 
-            await syncMatchService.SyncMatchDetailsAsync(matches);
+            await syncMatchService.SyncMatchStatisticAsync(matches);
         }
 
         private async Task SyncLinupAsync(long[] matchIds)
