@@ -57,6 +57,10 @@ export default class MatchStage extends PureComponent {
                 stage = <span>{LangHelper.getResource('Delay')}</span>;
                 break;
 
+            case MatchStatus.Interrupt:
+                stage = <span>{LangHelper.getResource('Interrupt')}</span>;
+                break;
+
             case MatchStatus.Postpone:
                 stage = <span>{LangHelper.getResource('Postponed')}</span>;
                 break;
@@ -83,7 +87,7 @@ export default class MatchStage extends PureComponent {
             : moment(DateTimeService.convertFromUTC(match.startTime));
         const currentTime = moment(DateTimeService.getCurrentClientDateTime());
         const minutes = currentTime.diff(startTime, 'minutes');
-        return minutes <= 45 ? `${minutes}'` : '45+';
+        return minutes <= 45 ? `${minutes}'` : `45'+`;
     };
 
     getSecondHalfTimeMinutes = match => {
@@ -92,7 +96,7 @@ export default class MatchStage extends PureComponent {
             : moment(DateTimeService.convertFromUTC(match.startTime)).add(1, 'hours');
         const currentTime = moment(DateTimeService.getCurrentClientDateTime());
         const minutes = currentTime.diff(startTime, 'minutes');
-        return minutes <= 45 ? `${45 + minutes}'` : '90+';
+        return minutes <= 45 ? `${45 + minutes}'` : `90'+`;
     };
 
     getExtraTimeMinutes = match => {

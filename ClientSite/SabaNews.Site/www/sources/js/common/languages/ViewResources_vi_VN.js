@@ -6,6 +6,7 @@
     Goalkeeper: 'Thủ môn',
     HotLeague: 'Giải nổi bật',
     Intermission: 'Nghỉ giữa hiệp',
+    Interrupt: 'Gián đoạn',
     LineupPlayer: 'Đội hình ra sân',
     LineupSubtitude: 'Thay người',
     LineupSubtitudePlayer: 'Dự bị',

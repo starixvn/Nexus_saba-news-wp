@@ -24,23 +24,30 @@ export default class MatchGrid extends PureComponent {
     getStageName = stage => stage ? stage.stageNameEN : '';
 
     groupMatchesByDate = matches => {
-        const helper = {};
-        return matches.reduce((previousItem, currentItem) => {
-            const startTime = DateTimeService.convertFromUTC(currentItem.startTime);
+        const totalItems = matches.length;
+        const tempMatches = [];
+        for (let i = 0; i < totalItems; i++) {
+            const match = matches[i];
+            const startTime = DateTimeService.convertFromUTC(match.startTime);
             const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
-            if (!helper[key]) {
-                helper[key] = {
-                    key: key,
-                    text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
-                    childs: [{ ...currentItem }]
-                };
-                previousItem.push(helper[key]);
+            const item = {
+                key,
+                text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
+                childs: [match]
+            };
+            if (tempMatches.length === 0) {
+                tempMatches.push(item);
             } else {
-                helper[key].childs.push(currentItem);
+                const index = tempMatches.findIndex(x => x.key === key);
+                if (index === - 1) {
+                    tempMatches.push(item);
+                } else {
+                    tempMatches[index].childs.push(match);
+                }
             }
+        }
 
-            return previousItem;
-        }, []);
+        return tempMatches;
     };
 
     groupMatches = (stages, matches) => {

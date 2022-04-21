@@ -14,24 +14,32 @@ export class MatchGrid extends PureComponent {
     };
 
     groupMatchesByStage = matches => {
-        const helper = {};
-        return matches.reduce((previousItem, currentItem) => {
-            const league = currentItem.league;
+        const totalItems = matches.length;
+        const tempMatches = [];
+        for (let i = 0; i < totalItems; i++) {
+            const match = matches[i];
+            const league = match.league;
             const key = league.leagueId
                 + `-${league.leagueType !== LeagueType.League && league.season ? league.season.seasonId : 0}`
                 + `-${league.leagueType !== LeagueType.League && league.stage ? league.stage.stageId : 0}`;
-            if (!helper[key]) {
-                helper[key] = {
-                    ...league,
-                    matches: [{ ...currentItem }]
-                };
-                previousItem.push(helper[key]);
+            const item = {
+                key,
+                ...league,
+                matches: [match]
+            };
+            if (tempMatches.length === 0) {
+                tempMatches.push(item);
             } else {
-                helper[key].matches.push(currentItem);
+                const index = tempMatches.findIndex(x => x.key === key);
+                if (index === - 1) {
+                    tempMatches.push(item);
+                } else {
+                    tempMatches[index].matches.push(match);
+                }
             }
+        }
 
-            return previousItem;
-        }, []);
+        return tempMatches;
     };
 
     render() {

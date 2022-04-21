@@ -54,6 +54,16 @@ export default class Match extends PureComponent {
         return searchKey.length > 0 ? teamName.replace(reg, "<span class='text-matched'>$1</span>") : teamName;
     };
 
+    handleClick = event => {
+        const matchId = this.props.match.matchId;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     render() {
         const { match, searchKey } = this.props;
         const isLiveMatch = match.status === MatchStatus.FirstHalf
@@ -66,7 +76,7 @@ export default class Match extends PureComponent {
         return (
             <div className="group-match-item">
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
-                    onClick={() => window.location = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}
+                    onClick={this.handleClick}
                 >
                     <i className="icon-livescore icon-favourite-outline" />
                     <MatchStage match={match} />

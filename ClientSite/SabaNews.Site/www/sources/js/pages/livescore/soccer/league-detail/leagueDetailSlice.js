@@ -1,4 +1,6 @@
 ﻿import { createSlice } from '@reduxjs/toolkit';
+import moment from 'moment';
+import DateTimeService from '@jsroot/common/dateTimeService';
 import { MatchStatus } from '@jsroot/common/constants';
 
 const leagueDetailSlice = createSlice({
@@ -19,21 +21,34 @@ const leagueDetailSlice = createSlice({
             state.league = action.payload;
         },
         setMatches: (state, action) => {
-            const matches = action.payload;
-
-            const helper = {};
-            state.stages = matches.reduce((previousItem, currentItem) => {
-                const key = currentItem.stage ? currentItem.stage.stageId : 0;
-                if (key > 0 && !helper[key]) {
-                    helper[key] = currentItem.stage;
-                    previousItem.push(helper[key]);
+            const matches = action.payload,
+                totalItems = matches.length,
+                stages = [],
+                preMatches = [],
+                postMatches = [];
+            for (let i = 0; i < totalItems; i++) {
+                const match = matches[i];
+                const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
+                const startTime = moment(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
+                const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+                if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
+                    stages.push(match.stage);
                 }
 
-                return previousItem;
-            }, []);
+                if (match.status !== MatchStatus.Finished
+                    && match.status !== MatchStatus.Cancel
+                    && (moment(startTime).isSameOrAfter(today) || moment(endTime).isSameOrAfter(today))) {
+                    preMatches.push(match);
+                }
 
-            state.preMatches = matches.filter(match => match.status !== MatchStatus.Finished);
-            state.postMatches = matches.filter(match => match.status === MatchStatus.Finished);
+                if (match.status === MatchStatus.Finished) {
+                    postMatches.push(match);
+                }
+            }
+
+            state.stages = stages;
+            state.preMatches = preMatches;
+            state.postMatches = postMatches;
         },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
