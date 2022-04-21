@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_LiveMatch_GetMatchDetails;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_LiveMatch_GetMatchDetails(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_LiveMatch_GetMatchDetails(
     IN matchId BIGINT
     /*
 		Creator: Oliver@20220406

@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Livematch_Temporary_Insert;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Livematch_Temporary_Insert(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Livematch_Temporary_Insert(
     IN matchIds TEXT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)

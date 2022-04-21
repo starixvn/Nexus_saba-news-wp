@@ -16,5 +16,6 @@
         public const string SyncSeasonPlayerHonorByLastUpdatedTime = "SyncSeasonPlayerHonorByLastUpdatedTime";
         public const string SyncHeadToHeadFromCurrentToFuture = "SyncHeadToHeadFromCurrentToFuture";
         public const string SyncAllMatchByMaxId = "SyncAllMatchByMaxId";
+        public const string SyncDeletedMatchesInTwoWeek = "SyncDeletedMatchesInTwoWeek";
     }
 }

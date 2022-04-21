@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_Incident_Sync;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Incident_Sync(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Incident_Sync(
     IN incidentJson JSON
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)

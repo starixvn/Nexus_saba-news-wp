@@ -153,6 +153,7 @@
             services.AddHostedService<SyncLiveMatchThenPushSignalWorker>();
             services.AddHostedService<SyncHeadToHeadFromCurrentDateToFutureWorker>();
             services.AddHostedService<SyncMatchByMaxMatchIdWorker>();
+            services.AddHostedService<SyncDeleledMatchesWorker>();
         }
     }
 }

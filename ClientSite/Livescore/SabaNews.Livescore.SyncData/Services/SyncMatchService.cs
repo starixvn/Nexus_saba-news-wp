@@ -93,5 +93,18 @@
 
         public async Task<long> GetMaxMatchIdAsync()
         => await baseService.GetDataEntityAsync<long>(new GatMatchMaxIdCriteria());
+
+        public async Task SyncDeletedMatchesAsync(List<DeletedMatch> delMatches)
+        {
+            if (delMatches.Any())
+            {
+                var command = new ImportDeletedMatchCommand
+                {
+                    DeletedMatchJson = JsonConvert.SerializeObject(delMatches)
+                };
+
+                await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
     }
 }

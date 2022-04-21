@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_Temporary_Get;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Temporary_Get(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Temporary_Get(
     IN rowLimit INT
     /*
 		Creator: Oliver@20220324

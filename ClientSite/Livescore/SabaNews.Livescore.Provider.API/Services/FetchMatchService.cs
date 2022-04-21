@@ -128,6 +128,13 @@
             return matcheDetails;
         }
 
+        public async Task<List<DeletedMatch>> FetchDeletedMatchAsync()
+        {
+            var delMatches = await httpClient.ExecutePostAsync<List<DeletedMatch>>(ApiPath.GetDeletedMatchApiPath, null);
+
+            return delMatches;
+        }
+
         private static class ApiPath
         {
             internal const string GetMatchListApiPath = "/match/list";
@@ -136,6 +143,7 @@
             internal const string GetMatchIncidentApiPath = "/match/textlive";
             internal const string GetMatchCommentaryApiPath = "/match/textlive_en";
             internal const string GetLiveMatchApiPath = "/match/lives";
+            internal const string GetDeletedMatchApiPath = "/match/deleted_list";
         }
     }
 }

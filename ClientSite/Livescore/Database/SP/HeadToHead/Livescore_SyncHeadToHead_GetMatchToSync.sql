@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_SyncHeadToHead_GetMatchToSync;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_SyncHeadToHead_GetMatchToSync(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_SyncHeadToHead_GetMatchToSync(
     IN fromDate DATETIME
     ,IN toDate DATETIME
     ,IN rowLimit INT
