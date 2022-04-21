@@ -9,7 +9,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncDeleledMatchesWorker : BaseWorker
+    internal class SyncDeleledMatchesWorker : WorkerBase
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly ISyncMatchService syncMatchService;
@@ -26,7 +26,7 @@
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncDeletedMatchesInTwoWeek);
         }
 
-        public override async Task ExecuteJobAsync()
+        public override async Task DoWorkAsync()
         {
             var delMatches = await fetchMatchService.FetchDeletedMatchAsync();
 

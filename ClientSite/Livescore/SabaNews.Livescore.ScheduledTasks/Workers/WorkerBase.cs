@@ -48,7 +48,7 @@
                         logService.WriteLogFileInfo($"{jobSetting.Name}: Error - {ex.Message}");
                     }
 
-                    await Task.Delay(jobSetting.Interval * 60000, stoppingToken);
+                    await Task.Delay(TimeSpan.FromMinutes(jobSetting.Interval), stoppingToken);
                 }
 
                 logService.WriteLogFileInfo($"Execution ended. Cancelation token cancelled = {stoppingToken.IsCancellationRequested}");
@@ -56,7 +56,6 @@
             catch (Exception ex) when (stoppingToken.IsCancellationRequested)
             {
                 logService.WriteLogFileInfo("Execution Cancelled");
-                await logService.WriteExceptionSentryErrorAsync(ex);
             }
             catch (Exception ex)
             {
