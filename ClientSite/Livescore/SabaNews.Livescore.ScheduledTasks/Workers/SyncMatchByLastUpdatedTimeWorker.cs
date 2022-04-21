@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.ScheduledTasks.Workers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -78,7 +79,24 @@
         {
             var lineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
 
-            await syncMatchService.SyncMatchLineupByIdsAsync(lineups);
+            var batches = DivideMatchLineUpToImport(lineups);
+
+            foreach (var batch in batches)
+            {
+                await syncMatchService.SyncMatchLineupByIdsAsync(batch);
+            }
+        }
+
+        private List<List<MatchLineupResponse>> DivideMatchLineUpToImport(List<MatchLineupResponse> lineups)
+        {
+            var lineupBatches = new List<List<MatchLineupResponse>>();
+            int totalBatch = (int)Math.Ceiling((double)lineups.Count / appSettings.BatchSizeImportLineup);
+            for (int i = 0; i < totalBatch; i++)
+            {
+                lineupBatches.Add(lineups.Skip(i * appSettings.BatchSizeImportLineup).Take(appSettings.BatchSizeImportLineup).ToList());
+            }
+
+            return lineupBatches;
         }
 
         private async Task SyncIncidents(long[] matchIds)

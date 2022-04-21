@@ -121,10 +121,10 @@ BEGIN
                 ReasonType SMALLINT PATH "$.ReasonType"
             )
         ) AS ti
-    LEFT JOIN livescore_player p ON ti.PlayerId = p.PlayerId
-    LEFT JOIN livescore_player a ON ti.AssistId = a.PlayerId
-    LEFT JOIN livescore_player i ON ti.InPlayerId = i.PlayerId
-    LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId;
+    LEFT JOIN livescore_player p ON ti.PlayerId = p.PlayerId AND p.TeamId > 0
+    LEFT JOIN livescore_player a ON ti.AssistId = a.PlayerId AND a.TeamId > 0
+    LEFT JOIN livescore_player i ON ti.InPlayerId = i.PlayerId AND i.TeamId > 0
+    LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId AND o.TeamId > 0;
 
     DELETE FROM livescore_match_incident lmi
     WHERE lmi.MatchId IN (SELECT DISTINCT MatchId FROM tmp_incident);
