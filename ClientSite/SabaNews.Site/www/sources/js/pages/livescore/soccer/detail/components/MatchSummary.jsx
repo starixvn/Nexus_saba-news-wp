@@ -24,10 +24,10 @@ export class MatchSummary extends Component {
         return (
             <div className="head-top-team" >
                 <div className="flexbox time-event">
-                    <p>Trận Đấu kết thúc</p>
+                    <p className="time-event-title">Trận Đấu kết thúc</p>
                 </div>
                 <div className="flexbox time-event">
-                    <p>{(homeFinalPenalty !== 0 || awayFinalPenalty !== 0) ? "PEN: " + finalPenalty : finalScore}</p>
+                    <p className="time-event-score">{(homeFinalPenalty !== 0 || awayFinalPenalty !== 0) ? "PEN: " + finalPenalty : finalScore}</p>
                 </div>
             </div>
         )
@@ -103,10 +103,10 @@ export class MatchSummary extends Component {
                                             return (
                                                 <div className="head-top-team" key={key}>
                                                     <div className="flexbox time-event">
-                                                        <p>{Site.MappingIncidentTimeEventType(incident.type)}</p>
+                                                        <p className="time-event-title">{Site.MappingIncidentTimeEventType(incident.type)}</p>
                                                     </div>
                                                     <div className="flexbox time-event">
-                                                        <p>{score}</p>
+                                                        <p className="time-event-score">{score}</p>
                                                     </div>
                                                 </div>
                                             )
