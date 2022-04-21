@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.ScheduledTasks.Workers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -7,6 +8,7 @@
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Synchronous;
+    using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Helpers;
@@ -23,6 +25,7 @@
         private readonly ISyncMatchService syncMatchService;
         private readonly ILiveMatchService liveMatchService;
         private readonly IMatchService matchService;
+        private const int lineupBatchSize = 10;
 
         public SyncLiveMatchThenPushSignalWorker(IFetchMatchService fetchMatchService,
             IPushSignalService pushSignalService,
@@ -83,7 +86,24 @@
         private async Task SyncMatchLineUpAsync(long[] matchIds)
         {
             var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
-            await syncMatchService.SyncMatchLineupByIdsAsync(liveMatchLineup);
+            var batches = DivideMatchLineUpToImport(liveMatchLineup);
+
+            foreach (var batch in batches)
+            {
+                await syncMatchService.SyncMatchLineupByIdsAsync(batch);
+            }
+        }
+
+        private List<List<MatchLineupResponse>> DivideMatchLineUpToImport(List<MatchLineupResponse> lineups)
+        {
+            var lineupBatches = new List<List<MatchLineupResponse>>();
+            int totalBatch = (int)Math.Ceiling((double)lineups.Count / lineupBatchSize);
+            for (int i = 0; i < totalBatch; i++)
+            {
+                lineupBatches.Add(lineups.Skip(i * lineupBatchSize).Take(lineupBatchSize).ToList());
+            }
+
+            return lineupBatches;
         }
 
         private async Task SyncLiveMatchIncidents(long[] matchIds)
