@@ -453,6 +453,27 @@ export class Lineups extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="line-up-change-men block-line-up">
+                        <div className="block-line-up-main">
+                            <div className="block-line-up-title">Huấn luyện viên</div>
+                            <div className="block-line-up-body">
+                                <div className="line-up">
+                                    <div className="line-up-table">
+                                        <div className="table-paticipant home-team">
+                                        <ul className="list-paticipant">
+                                            <li className="name-player">{ lineup.generalInfo.homeCoach }</li>
+                                        </ul>
+                                        </div>
+                                        <div className="table-paticipant away-team">
+                                            <ul className="list-paticipant">
+                                                <li className="name-player">{ lineup.generalInfo.awayCoach }</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
