@@ -72,8 +72,11 @@ export class HeadToHead extends Component {
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
+
                                 <div className="name-league">
-                                    {CommonFunctions.getLeagueNameWithStage(match.league)}
+                                    <div className="name-league-img"><img src={match.league.icon} /></div>
+
+                                    <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
                                 <div className="group-match-item">
                                     <div className="soccer-match-item">
@@ -83,12 +86,25 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-team">
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
-                                                    sasadsdadas
-                                                    <span className="team-status">{this.getTeamStatus(true, match)}</span>
+                                                    <img className="soccer-team-logo" loading="lazy" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />
+                                                    <div className="soccer-team-name">{match.homeTeam.teamNameEN}</div>
+                                                    <ul className="soccer-team-status">
+                                                        <li>{this.getTeamStatus(true, match)}</li>
+                                                    </ul>
+                                                    <div className="soccer-team-result">
+                                                        {homeTeamScore}
+                                                    </div>
+
                                                 </div>
                                                 <div className="soccer-team away-team">
-                                                    sasdadsa
-                                                    <span className="team-status">{this.getTeamStatus(false, match)}</span>
+                                                    <img className="soccer-team-logo" loading="lazy" alt={match.awayTeam.teamNameEN} src={match.awayTeam.icon} />
+                                                    <div className="soccer-team-name">{match.awayTeam.teamNameEN}</div>
+                                                    <ul className="soccer-team-status">
+                                                        <li>{this.getTeamStatus(false, match)}</li>
+                                                    </ul>
+                                                    <div className="soccer-team-result">
+                                                        {awayTeamScore}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
