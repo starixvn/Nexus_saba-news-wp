@@ -119,15 +119,15 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-star-icon">
                                             {
                                                 result === 0 &&
-                                                <span className="bg-color  bgyelow more-right btn-f-more" title="Hòa">D</span>
+                                                <span className="bg-color  bgyelow" title="Hòa">D</span>
                                             }
                                             {
                                                 result === 1 &&
-                                                <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>
+                                                <span className="bg-color bggreen" title="Thắng">W</span>
                                             }
                                             {
                                                 result === 2 &&
-                                                <span className="bg-color bgred more-right btn-f-more" title="Bại">L</span>
+                                                <span className="bg-color bgred" title="Bại">L</span>
                                             }
                                             <i className="icon-livescore icon-live-right" />
                                         </div>

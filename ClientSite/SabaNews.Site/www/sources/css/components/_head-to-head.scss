@@ -103,10 +103,10 @@
     }
 
     .group-match-item .soccer-match-item .soccer-match-team {
-        width: 75%;
+        width: 70%;
 
         @include tableMobile {
-            width: 70%;
+            width: 60%;
         }
     }
 
@@ -145,7 +145,39 @@
     }
 
     .soccer-match-star-icon {
-        width: 5%;
-        text-align: right;
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        @include tableMobile {
+            width: 15%;
+        }
+
+        .bg-color {
+            width: 2.4rem;
+            height: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1.9rem;
+            color: $white;
+            margin-right: 1.5rem;
+
+            &.bgred {
+                background: #FF5744;
+            }
+
+            &.bggreen {
+                background: #42AD40;
+            }
+
+            &.bgyelow {
+                background: #F09700;
+            }
+        }
     }
 }
