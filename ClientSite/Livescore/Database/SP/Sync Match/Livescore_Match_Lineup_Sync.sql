@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_Lineup_Sync;
 DELIMITER //
 
-CREATE DEFINER = 'root'@'%' PROCEDURE Livescore_Match_Lineup_Sync(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Lineup_Sync(
     IN matchLineupJson JSON
     ,IN lineupPlayerJson JSON
     ,OUT errCode SMALLINT
@@ -37,7 +37,8 @@ BEGIN
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Lineup(
                         MatchId BIGINT PRIMARY KEY NOT NULL,
                         HomeFormation VARCHAR(50),
-                        AwayFormation VARCHAR(50));
+                        AwayFormation VARCHAR(50),
+                        IsExisted BIT);
     
 	INSERT INTO tmp_Lineup(MatchId, HomeFormation, AwayFormation)
     SELECT m.MatchId, m.HomeFormation, m.AwayFormation
@@ -54,12 +55,24 @@ BEGIN
             )
         ) AS m;
 
+    UPDATE tmp_Lineup tl
+    LEFT JOIN livescore_lineup l ON tl.MatchId = l.MatchId
+    SET tl.IsExisted = (
+        CASE 
+            WHEN l.MatchId IS NOT NULL 
+            THEN 1 
+            ELSE 0 END
+    );
+
+
     INSERT INTO livescore_lineup(MatchId, HomeFormation, AwayFormation, SyncedDate)
     SELECT tl.MatchId, tl.HomeFormation, tl.AwayFormation, NOW()
-    FROM tmp_Lineup tl
-    ON DUPLICATE KEY UPDATE
-        HomeFormation = tl.HomeFormation,
-        AwayFormation = tl.AwayFormation;
+    FROM tmp_Lineup tl WHERE tl.IsExisted = 0;
+
+    UPDATE livescore_lineup l
+    INNER JOIN tmp_Lineup tl ON l.MatchId = tl.MatchId AND tl.IsExisted = 1
+    SET l.HomeFormation = tl.HomeFormation,
+        l.AwayFormation = tl.AwayFormation;
 
 /* End handle update score------------------ */
 

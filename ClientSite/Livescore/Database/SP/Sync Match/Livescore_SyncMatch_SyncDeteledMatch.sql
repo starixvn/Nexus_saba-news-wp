@@ -31,14 +31,13 @@ BEGIN
             (
 				MatchId bigint PATH "$.MatchId"
             )
-        ) AS m;
-
+        ) AS m
+    LEFT JOIN livescore_match_deleted md ON m.MatchId = md.MatchId
+    WHERE md.MatchId IS NULL;
 
     INSERT INTO livescore_match_deleted(MatchId)
     SELECT m.MatchId
-    FROM tmp_Match m
-    ON DUPLICATE KEY UPDATE
-        MatchId = m.MatchId;
+    FROM tmp_Match m;
 END;
 
 //

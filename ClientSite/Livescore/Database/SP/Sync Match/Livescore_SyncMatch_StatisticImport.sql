@@ -163,7 +163,8 @@ BEGIN
                         ShootOut SMALLINT,
                         ShootStop SMALLINT,
                         Slide SMALLINT,
-                        Steals SMALLINT);
+                        Steals SMALLINT,
+                        IsExisted BIT);
     
 	INSERT INTO tmp_Detail(MatchId, TeamId, Goal, CornerKick, YellowCard, RedCard, OutBall, 
     FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
@@ -228,6 +229,15 @@ BEGIN
         ) AS md
         INNER JOIN livescore_match m ON md.MatchId = m.MatchId;
 
+        UPDATE tmp_Detail td
+        LEFT JOIN livescore_match_statistic lms ON td.MatchId = lms.MatchId AND td.TeamId = lms.TeamId
+        SET td.IsExisted = (
+            CASE 
+                WHEN lms.MatchId IS NOT NULL 
+                THEN 1 
+                ELSE 0 END
+        );
+
         INSERT INTO livescore_match_statistic(MatchId, TeamId, Goal, CornerKick, YellowCard, RedCard, OutBall, 
             FreeKick, GoalKick, PenaltyKick, YellowToRed, FailPenaltyKick, OwnGoal, InjuryTime, OnGoal, 
             MissGoal, Attack, DangerAttack, ControlRate, ExtraScore, PenaltyScore, Assists, 
@@ -238,48 +248,49 @@ BEGIN
             td.MissGoal, td.Attack, td.DangerAttack, td.ControlRate, td.ExtraScore, td.PenaltyScore, td.Assists, 
             td.First, td.Follow, td.Foul, td.Grade, td.HalfCorner, td.HalfPossession, td.Head, td.HeadSuccess, td.Intercept,
             td.OffSide, td.OnDoor, td.Pass, td.PassSuccess, td.Past, td.Shoot, td.ShootOut, td.ShootStop, td.Slide, td.Steals
-        FROM tmp_Detail td
-        INNER JOIN livescore_match m ON td.MatchId = m.MatchId
-        ON DUPLICATE KEY UPDATE
-            Goal = td.Goal,
-            CornerKick = td.CornerKick,
-            YellowCard = td.YellowCard,
-            RedCard = td.RedCard,
-            OutBall = td.OutBall,
-            FreeKick = td.FreeKick,
-            GoalKick = td.GoalKick,
-            PenaltyKick = td.PenaltyKick,
-            YellowToRed = td.YellowToRed,
-            FailPenaltyKick = td.FailPenaltyKick,
-            OwnGoal = td.OwnGoal,
-            InjuryTime = td.InjuryTime,
-            OnGoal = td.OnGoal,
-            MissGoal = td.MissGoal,
-            Attack = td.Attack,
-            DangerAttack = td.DangerAttack,
-            ControlRate = td.ControlRate,
-            ExtraScore = td.ExtraScore,
-            PenaltyScore = td.PenaltyScore,
-            Assists = td.Assists,
-            First = td.First,
-            Follow = td.Follow,
-            Foul = td.Foul,
-            Grade = td.Grade,
-            HalfCorner = td.HalfCorner,
-            HalfPossession = td.HalfPossession,
-            Head = td.Head,
-            HeadSuccess = td.HeadSuccess,
-            Intercept = td.Intercept,
-            OffSide = td.OffSide,
-            OnDoor = td.OnDoor,
-            Pass = td.Pass,
-            PassSuccess = td.PassSuccess,
-            Past = td.Past,
-            Shoot = td.Shoot,
-            ShootOut = td.ShootOut,
-            ShootStop = td.ShootStop,
-            Slide = td.Slide,
-            Steals = td.Steals;
+        FROM tmp_Detail td WHERE td.IsExisted = 0;
+
+        UPDATE livescore_match_statistic lms
+        INNER JOIN tmp_Detail td ON lms.MatchId = td.MatchId AND lms.TeamId = td.TeamId AND td.IsExisted = 1
+        SET lms.Goal = td.Goal,
+            lms.CornerKick = td.CornerKick,
+            lms.YellowCard = td.YellowCard,
+            lms.RedCard = td.RedCard,
+            lms.OutBall = td.OutBall,
+            lms.FreeKick = td.FreeKick,
+            lms.GoalKick = td.GoalKick,
+            lms.PenaltyKick = td.PenaltyKick,
+            lms.YellowToRed = td.YellowToRed,
+            lms.FailPenaltyKick = td.FailPenaltyKick,
+            lms.OwnGoal = td.OwnGoal,
+            lms.InjuryTime = td.InjuryTime,
+            lms.OnGoal = td.OnGoal,
+            lms.MissGoal = td.MissGoal,
+            lms.Attack = td.Attack,
+            lms.DangerAttack = td.DangerAttack,
+            lms.ControlRate = td.ControlRate,
+            lms.ExtraScore = td.ExtraScore,
+            lms.PenaltyScore = td.PenaltyScore,
+            lms.Assists = td.Assists,
+            lms.First = td.First,
+            lms.Follow = td.Follow,
+            lms.Foul = td.Foul,
+            lms.Grade = td.Grade,
+            lms.HalfCorner = td.HalfCorner,
+            lms.HalfPossession = td.HalfPossession,
+            lms.Head = td.Head,
+            lms.HeadSuccess = td.HeadSuccess,
+            lms.Intercept = td.Intercept,
+            lms.OffSide = td.OffSide,
+            lms.OnDoor = td.OnDoor,
+            lms.Pass = td.Pass,
+            lms.PassSuccess = td.PassSuccess,
+            lms.Past = td.Past,
+            lms.Shoot = td.Shoot,
+            lms.ShootOut = td.ShootOut,
+            lms.ShootStop = td.ShootStop,
+            lms.Slide = td.Slide,
+            lms.Steals = td.Steals;
 END;
 
 //
