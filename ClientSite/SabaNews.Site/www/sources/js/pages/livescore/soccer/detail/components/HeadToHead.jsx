@@ -33,6 +33,15 @@ export class HeadToHead extends Component {
         }
     }
 
+    handleClick = (event, matchId) => {
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     renderBody = (matchs, teamId) =>  {
         const generalInfo = this.props.match.generalInfo;
         if(matchs.length === 0) {
@@ -62,7 +71,7 @@ export class HeadToHead extends Component {
                         if(result === 2) {
                             if(teamCheck === match.homeTeam.teamId) {
                                 awayWinClass = "win";
-                            } else if(teamId === match.awayTeam.teamId) {
+                            } else if(teamCheck === match.awayTeam.teamId) {
                                 homeWinclass = "win";
                             }
                         }
@@ -83,7 +92,7 @@ export class HeadToHead extends Component {
                                             <span>{time.format("DD/MM/YYYY")}</span>
                                         </div>
                                         <div className="soccer-match-team">
-                                            <div className="group-team">
+                                            <div className="group-team" onClick={() => this.handleClick(event, match.matchId)}>
                                                 <div className="soccer-team home-team">
                                                     <img className="soccer-team-logo" loading="lazy" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />
                                                     <div className={`soccer-team-name ${homeWinclass}` }>{match.homeTeam.teamNameEN}</div>
