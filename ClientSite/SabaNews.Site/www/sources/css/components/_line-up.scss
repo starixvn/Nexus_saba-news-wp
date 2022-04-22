@@ -122,13 +122,14 @@
     }
 
     &-body {
-         position: relative;
+        position: relative;
         width: 100%;
         height: 117.4rem;
-        background: url(../../../../images/soccer-img.jpg) repeat-y;
+        background: url(../../../../images/soccer-img-item.jpg) repeat-y;
         background-size: 100% 117.4rem;
         flex-direction: column;
         justify-content: space-between;
+
         .team-content {
             height: 50%;
             display: flex;
@@ -139,6 +140,41 @@
             justify-content: space-around;
             width: 100%;
             padding: 0.5rem;
+
+            .pitch-row {
+                .pitch-item {
+                    .team-player-img {
+                        .team-number {
+                            align-items: center;
+                            display: flex;
+                            height: 3rem;
+                            width: 2rem;
+                            justify-content: center;
+                            font-weight: 700;
+                            font-size: 1.1rem;
+                            position: absolute;
+                            color: $white;
+                        }
+                    }
+
+                    .text-name {
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 0.25rem;
+                        padding: 0 3px;
+                        text-align: center;
+                        font-size: 13px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 2;
+                        line-height: 18px;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        color: $white;
+                        font-weight: bold;
+                    }
+                }
+            }
         }
     }
 }
