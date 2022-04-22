@@ -59,7 +59,7 @@
 
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
-                await SyncMatchLineUpAsync(matchIds);
+                //await SyncMatchLineUpAsync(matchIds);
                 await SyncLiveMatchIncidents(matchIds);
 
                 await GetMatchDetailThenPushSignalToHubAsync(matchIds);
