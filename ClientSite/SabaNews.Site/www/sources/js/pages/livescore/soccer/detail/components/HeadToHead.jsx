@@ -81,7 +81,7 @@ export class HeadToHead extends Component {
                                 <div className="group-match-item">
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
-                                            {time.format("DD/MM/YYYY")}
+                                            <span>{time.format("DD/MM/YYYY")}</span>
                                         </div>
                                         <div className="soccer-match-team">
                                             <div className="group-team">

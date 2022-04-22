@@ -1,5 +1,6 @@
 ﻿.head-to-head {
     padding: 1.2rem;
+    color: $color-detail-league;
 
     &-nav {
         background: $head-to-head-bg-nav;
@@ -83,9 +84,10 @@
                     height: 1.6rem;
                     overflow: hidden;
                     border-radius: 50px;
-                    img{
-                        width : 100%;
-                        height : auto;
+
+                    img {
+                        width: 100%;
+                        height: auto;
                     }
                 }
 
@@ -112,6 +114,18 @@
 
     .soccer-team-status {
         margin-bottom: 0 !important;
+    }
+
+    .group-team {
+        .home-team {
+            .soccer-team-name {
+                font-weight: 700 !important;
+            }
+        }
+
+        .soccer-team-result {
+            font-weight: 700;
+        }
     }
 
     .soccer-match-star-icon {
