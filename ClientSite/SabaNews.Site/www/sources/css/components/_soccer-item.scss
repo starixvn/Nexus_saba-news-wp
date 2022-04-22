@@ -128,278 +128,6 @@
             @include tableMobile {
                 padding: .6rem;
             }
-
-            .group-match-item {
-                margin-bottom: .6rem;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                &-slogan {
-                    background: $slogan-bg;
-                    border-radius: 3px;
-                    font-weight: 600;
-                    font-size: 1.3rem;
-                    line-height: 1.8rem;
-                    padding: .6rem 1.2rem;
-                    text-transform: uppercase;
-                    margin-bottom: .6rem;
-                    @include tableMobile {
-                        font-size: 1.1rem;
-                        line-height: 1.5rem;
-                        padding: .4rem .8rem;
-                    }
-                }
-
-
-                .soccer-match-item {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    background: $bg-soccer-item;
-                    border: 1px solid $border-soccer-item;
-                    box-sizing: border-box;
-                    border-radius: 5px;
-                    padding: .6rem 1.4rem;
-                    margin-top: .6rem;
-                    transition: all .2s ease-in-out;
-                    cursor: pointer;
-
-                    &:first-child {
-                        margin-top: 0;
-                    }
-
-
-
-                    &:hover {
-                        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-                        background: $white;
-
-                        .icon-favourite-outline {
-                            &:before {
-                                color: $fav-icon;
-                            }
-                        }
-                    }
-
-                    .icon-favourite-outline {
-                        font-size: 2.4rem;
-
-                        @include tableMobile {
-                            font-size: 1.8rem;
-                        }
-
-                        &.disabled {
-                            &:before {
-                                color: $disabled-icon;
-                            }
-                        }
-                    }
-
-                    @include tableMobile {
-                        padding: .6rem 1rem;
-                    }
-
-                    .soccer-match-stage {
-                        width: 9rem;
-                        text-align: center;
-                    }
-
-                    &.live {
-                        .soccer-match-stage {
-                            p, span {
-                                color: #E13C29;
-                                font-size: 1.3rem;
-                                line-height: 1.5rem;
-                                position: relative;
-                                font-weight: 700;
-
-                                &:before {
-                                    content: "";
-                                    display: block;
-                                    width: .6rem;
-                                    height: .6rem;
-                                    background: #E13C29;
-                                    border-radius: 100%;
-                                    left: -15px;
-                                    top: 6px;
-                                    position: absolute;
-                                }
-
-                                &:after {
-                                    content: "";
-                                    display: block;
-                                    width: 1.4rem;
-                                    height: 1.4rem;
-                                    background: #E13C29;
-                                    opacity: 0.3;
-                                    border-radius: 100%;
-                                    left: -19px;
-                                    top: 2px;
-                                    position: absolute;
-                                    animation: live 2s ease-in-out infinite;
-                                }
-                            }
-                        }
-                    }
-
-                    .soccer-match-team {
-                        width: 66%;
-                        /*padding: 0 1.2rem;*/
-
-                        @include tableMobile {
-                            width: 70%;
-                            /*padding: 0 0 0 1.2rem;*/
-                        }
-
-                        @include iphone5 {
-                            width: 60%
-                        }
-
-                        .group-team {
-                            .soccer-team {
-                                display: flex;
-                                align-items: center;
-
-                                &-name {
-                                    font-size: 1.4rem;
-                                    line-height: 1.6rem;
-                                    font-weight: 600;
-                                    padding-right: 1rem;
-
-                                    @include Mobile {
-                                        max-width: 12.2rem;
-                                        font-size: 1.1rem;
-                                        line-height: 1.3rem;
-                                        padding-right: .3rem;
-                                    }
-
-                                    @include iphone5 {
-                                        font-size: 1rem;
-                                        max-width: 6rem;
-                                    }
-                                }
-
-                                &-logo {
-                                    width: 2.4rem;
-                                    height: 2.4rem;
-                                    margin-right: 1.6rem;
-
-                                    @include tableMobile {
-                                        width: 2rem;
-                                        height: 2rem;
-                                        margin-right: .6rem;
-                                    }
-                                }
-
-                                &-result {
-                                    position: absolute;
-                                    right: 0;
-
-                                    @include iphone5 {
-                                        font-size: 1.2rem;
-                                    }
-
-                                    .total-score {
-                                        font-weight: bold;
-                                    }
-                                }
-
-                                &-status {
-                                    list-style: none;
-                                    padding-left: 0;
-                                    display: flex;
-                                    align-items: center;
-
-                                    li {
-                                        text-transform: uppercase;
-                                        background: #7297C1;
-                                        border: 1px solid #ABC4E1;
-                                        border-radius: 3px;
-                                        color: $white;
-                                        font-weight: 700;
-                                        font-size: 1rem;
-                                        line-height: 1.1rem;
-                                        padding: .3rem .5rem;
-
-                                        @include tableMobile {
-                                            font-size: .8rem;
-                                            line-height: 1;
-                                            padding: .1rem .3rem;
-                                        }
-                                    }
-                                }
-                            }
-
-                            .home-team {
-                                padding-bottom: .6rem;
-                                border-bottom: 1px solid #E8E8E8;
-                                position: relative;
-                            }
-
-                            .away-team {
-                                padding-top: .6rem;
-                                position: relative;
-                            }
-                        }
-                    }
-
-                    .soccer-match-stage {
-                        @include tableMobile {
-                            order: 3;
-                            width: 4.4rem;
-                            line-height: 1;
-                            text-align: center;
-                        }
-
-                        p, span {
-                            font-size: 1.3rem;
-                            line-height: 1.4rem;
-
-                            @include tableMobile {
-                                font-size: 1.1rem;
-                            }
-                        }
-                    }
-
-                    &.live-intermission {
-                        .soccer-match-stage {
-                            p {
-                                font-size: 1.2rem;
-                                line-height: 1.6rem;
-                                padding-top: .5rem;
-
-                                @include tableMobile {
-                                    font-size: .9rem;
-                                    line-height: 1.5rem;
-                                }
-
-                                &:before {
-                                    left: auto;
-                                    right: 50%;
-                                    top: 0;
-                                    transform: translate(50%,-50%);
-                                }
-
-                                &:after {
-                                    left: auto;
-                                    right: 42%;
-                                    top: -7px;
-                                    transform: translate(50%, -50%);
-
-                                    @include tableMobile {
-                                        right: 35%;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
             .soccer-match-star-icon {
                 width: 8%;
                 text-align: right;
@@ -413,6 +141,278 @@
 
                     @include tableMobile {
                         display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.group-match-item {
+    margin-bottom: .6rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &-slogan {
+        background: $slogan-bg;
+        border-radius: 3px;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        padding: .6rem 1.2rem;
+        text-transform: uppercase;
+        margin-bottom: .6rem;
+
+        @include tableMobile {
+            font-size: 1.1rem;
+            line-height: 1.5rem;
+            padding: .4rem .8rem;
+        }
+    }
+
+
+    .soccer-match-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $bg-soccer-item;
+        border: 1px solid $border-soccer-item;
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: .6rem 1.4rem;
+        margin-top: .6rem;
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+
+
+        &:hover {
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+            background: $white;
+
+            .icon-favourite-outline {
+                &:before {
+                    color: $fav-icon;
+                }
+            }
+        }
+
+        .icon-favourite-outline {
+            font-size: 2.4rem;
+
+            @include tableMobile {
+                font-size: 1.8rem;
+            }
+
+            &.disabled {
+                &:before {
+                    color: $disabled-icon;
+                }
+            }
+        }
+
+        @include tableMobile {
+            padding: .6rem 1rem;
+        }
+
+        .soccer-match-stage {
+            width: 9rem;
+            text-align: center;
+        }
+
+        &.live {
+            .soccer-match-stage {
+                p, span {
+                    color: #E13C29;
+                    font-size: 1.3rem;
+                    line-height: 1.5rem;
+                    position: relative;
+                    font-weight: 700;
+
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: .6rem;
+                        height: .6rem;
+                        background: #E13C29;
+                        border-radius: 100%;
+                        left: -15px;
+                        top: 6px;
+                        position: absolute;
+                    }
+
+                    &:after {
+                        content: "";
+                        display: block;
+                        width: 1.4rem;
+                        height: 1.4rem;
+                        background: #E13C29;
+                        opacity: 0.3;
+                        border-radius: 100%;
+                        left: -19px;
+                        top: 2px;
+                        position: absolute;
+                        animation: live 2s ease-in-out infinite;
+                    }
+                }
+            }
+        }
+
+        .soccer-match-team {
+            width: 66%;
+            /*padding: 0 1.2rem;*/
+
+            @include tableMobile {
+                width: 70%;
+                /*padding: 0 0 0 1.2rem;*/
+            }
+
+            @include iphone5 {
+                width: 60%
+            }
+
+            .group-team {
+                .soccer-team {
+                    display: flex;
+                    align-items: center;
+
+                    &-name {
+                        font-size: 1.4rem;
+                        line-height: 1.6rem;
+                        font-weight: 600;
+                        padding-right: 1rem;
+
+                        @include Mobile {
+                            max-width: 12.2rem;
+                            font-size: 1.1rem;
+                            line-height: 1.3rem;
+                            padding-right: .3rem;
+                        }
+
+                        @include iphone5 {
+                            font-size: 1rem;
+                            max-width: 6rem;
+                        }
+                    }
+
+                    &-logo {
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        margin-right: 1.6rem;
+
+                        @include tableMobile {
+                            width: 2rem;
+                            height: 2rem;
+                            margin-right: .6rem;
+                        }
+                    }
+
+                    &-result {
+                        position: absolute;
+                        right: 0;
+
+                        @include iphone5 {
+                            font-size: 1.2rem;
+                        }
+
+                        .total-score {
+                            font-weight: bold;
+                        }
+                    }
+
+                    &-status {
+                        list-style: none;
+                        padding-left: 0;
+                        display: flex;
+                        align-items: center;
+
+                        li {
+                            text-transform: uppercase;
+                            background: #7297C1;
+                            border: 1px solid #ABC4E1;
+                            border-radius: 3px;
+                            color: $white;
+                            font-weight: 700;
+                            font-size: 1rem;
+                            line-height: 1.1rem;
+                            padding: .3rem .5rem;
+
+                            @include tableMobile {
+                                font-size: .8rem;
+                                line-height: 1;
+                                padding: .1rem .3rem;
+                            }
+                        }
+                    }
+                }
+
+                .home-team {
+                    padding-bottom: .6rem;
+                    border-bottom: 1px solid #E8E8E8;
+                    position: relative;
+                }
+
+                .away-team {
+                    padding-top: .6rem;
+                    position: relative;
+                }
+            }
+        }
+
+        .soccer-match-stage {
+            @include tableMobile {
+                order: 3;
+                width: 4.4rem;
+                line-height: 1;
+                text-align: center;
+            }
+
+            p, span {
+                font-size: 1.3rem;
+                line-height: 1.4rem;
+
+                @include tableMobile {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        &.live-intermission {
+            .soccer-match-stage {
+                p {
+                    font-size: 1.2rem;
+                    line-height: 1.6rem;
+                    padding-top: .5rem;
+
+                    @include tableMobile {
+                        font-size: .9rem;
+                        line-height: 1.5rem;
+                    }
+
+                    &:before {
+                        left: auto;
+                        right: 50%;
+                        top: 0;
+                        transform: translate(50%,-50%);
+                    }
+
+                    &:after {
+                        left: auto;
+                        right: 42%;
+                        top: -7px;
+                        transform: translate(50%, -50%);
+
+                        @include tableMobile {
+                            right: 35%;
+                        }
                     }
                 }
             }
