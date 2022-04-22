@@ -228,38 +228,3 @@ svg.fill-red {
     display: inline-block;
     text-align: center;
 }
-
-
-
-
-.icon_f {
-    position: absolute;
-    width: 14px;
-    right: -7px;
-    bottom: -4px;
-
-    &.ic_bong {
-        left: -5px;
-        top: -5px;
-    }
-
-    &.ic_penalty {
-        left: -5px;
-        top: 10px;
-    }
-}
-
-.pr-30 {
-    padding-right: 30px;
-}
-
-.icon_f.ic_the_vang, .icon_f.ic_the_do {
-    right: -5px;
-    top: -5px;
-}
-
-.ic_the_vang_do {
-    right: -5px;
-    top: -5px;
-}
-

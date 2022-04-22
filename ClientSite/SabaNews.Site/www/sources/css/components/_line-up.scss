@@ -189,3 +189,32 @@
         }
     }
 }
+.icon_f {
+    position: absolute;
+    width: 14px;
+    right: -7px;
+    bottom: -4px;
+    width: 24px;
+    height: 24px;
+
+    &.ic_bong, &.ic_penalty {
+        left: -23px;
+        top: -10px;
+    }
+}
+
+
+.icon_f.ic_the_vang, .icon_f.ic_the_do, .ic_the_vang_do {
+    right: -23px;
+    top: -10px;
+}
+
+.ic_thay_nguoi {
+    bottom: -15px;
+    right: -20px;
+}
+
+.ic_ownbong {
+    bottom: -15px;
+    right: 20px;
+}
