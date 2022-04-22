@@ -6,7 +6,7 @@
     <Function Name="Sync Match">
         <Setting Key="Livescore_Match_GetLastUpdatedTime" SpName="Livescore_Match_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Sync" SpName="Livescore_Match_Sync" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_Detail_Sync" SpName="Livescore_Match_Detail_Sync" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_SyncMatch_StatisticImport" SpName="Livescore_SyncMatch_StatisticImport" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Lineup_Sync" SpName="Livescore_Match_Lineup_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Commentary_Sync" SpName="Livescore_Match_Commentary_Sync" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_Incident_Sync" SpName="Livescore_Match_Incident_Sync" DbName="sabasports" Plain="0" />

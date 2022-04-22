@@ -38,7 +38,7 @@
             if (matchDetails.Any())
             {
                 var (matchScoreList, statisticList) = DataHelpers.GenerateMatchDetailInput(matchDetails);
-                var command = new ImportMatchDetailCommand
+                var command = new ImportMatchStatisticCommand
                 {
                     MatchScoreJson = JsonConvert.SerializeObject(matchScoreList),
                     MatchDetailJson = JsonConvert.SerializeObject(statisticList)

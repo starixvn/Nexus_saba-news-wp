@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_Match_Detail_Sync;
+DROP PROCEDURE IF EXISTS Livescore_SyncMatch_StatisticImport;
 DELIMITER //
 
-CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Detail_Sync(
+CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_SyncMatch_StatisticImport(
     IN MatchScoreJson JSON
     ,IN MatchDetailJson JSON
     ,OUT errCode SMALLINT
@@ -284,4 +284,4 @@ END;
 
 //
 DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_Detail_Sync TO 'sabasports'@'%';
+GRANT EXECUTE ON PROCEDURE Livescore_SyncMatch_StatisticImport TO 'sabasports'@'%';

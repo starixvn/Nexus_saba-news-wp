@@ -2,13 +2,13 @@
 {
     using SabaNews.Core.Models;
 
-    public class ImportMatchDetailCommand : BaseNonQueryCommand
+    public class ImportMatchStatisticCommand : BaseNonQueryCommand
     {
         public string MatchScoreJson { get; set; }
 
         public string MatchDetailJson { get; set; }
 
-        public override string GetSettingKey() => "Livescore_Match_Detail_Sync";
+        public override string GetSettingKey() => "Livescore_SyncMatch_StatisticImport";
 
         public override bool IsValid() => !string.IsNullOrWhiteSpace(MatchDetailJson) && !string.IsNullOrWhiteSpace(MatchScoreJson);
     }
