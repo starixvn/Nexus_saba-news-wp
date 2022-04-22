@@ -13,7 +13,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_HttpRequestLog_Insert`(
 )
 BEGIN
     SET errCode=0, errMsg='';
-    INSERT INTO livescore_http_request_log
+    INSERT INTO livescore_api_logs
     (LogDateUTC,
     RequestUrl,
     RequestParams,
