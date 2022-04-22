@@ -84,9 +84,11 @@ export class HeadToHead extends Component {
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
                                                     sasadsdadas
+                                                    <span className="team-status">{this.getTeamStatus(true, match)}</span>
                                                 </div>
                                                 <div className="soccer-team away-team">
                                                     sasdadsa
+                                                    <span className="team-status">{this.getTeamStatus(false, match)}</span>
                                                 </div>
                                             </div>
                                         </div>
