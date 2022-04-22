@@ -178,16 +178,15 @@ export class HeadToHead extends Component {
             <div className="h2h-statistic">
                 <ul>
                     <li>
-                        <p>{homeWins}</p>
+                        <p className="h2h-score">{homeWins}</p>
                         <p>Thắng</p>
                     </li>
                     <li>
-                        <p>{draws}</p>
+                        <p className="h2h-score">{draws}</p>
                         <p>Hòa</p>
                     </li>
                     <li>
-                    <p>
-                        {awayWins}</p>
+                        <p className="h2h-score">{awayWins}</p>
                         <p>Thắng</p>
                     </li>
                 </ul>

@@ -19,14 +19,49 @@
             font-size: 1.4rem;
             line-height: 1;
             color: $color-detail-league;
-            height : 2.4rem;
-            display : flex;
-            align-items : center;
-            justify-content :center;
+            height: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             &.active {
                 background: $color-active-icon;
                 border-radius: 5px;
                 color: $white;
+            }
+        }
+    }
+
+    .hth-section {
+        .h2h-statistic {
+            ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 1.6rem 0;
+
+                li {
+                    width: 33%;
+                    text-align: center;
+                    border-right: 1px solid $border-color;
+
+                    &:last-child {
+                        border: none;
+                    }
+
+                    p {
+                        font-weight: 600;
+                        font-size: 1.3rem;
+                        line-height: 1.8rem;
+                    }
+
+                    .h2h-score {
+                        font-weight: 700;
+                        font-size: 1.6rem;
+                        line-height: 2.2rem;
+                    }
+                }
             }
         }
     }
