@@ -72,8 +72,14 @@ export class HeadToHead extends Component {
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
+                                <div className="name-league">
+                                    {CommonFunctions.getLeagueNameWithStage(match.league)}
+                                </div>
                                 <div className="group-match-item">
                                     <div className="soccer-match-item">
+                                        <div className="soccer-match-stage">
+                                            {time.format("DD/MM/YYYY")}
+                                        </div>
                                         <div className="soccer-match-team">
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
