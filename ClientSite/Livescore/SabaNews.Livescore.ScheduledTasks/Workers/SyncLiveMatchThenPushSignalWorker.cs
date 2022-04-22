@@ -85,12 +85,15 @@
 
         private async Task SyncMatchLineUpAsync(long[] matchIds)
         {
-            var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
-            var batches = DivideMatchLineUpToImport(liveMatchLineup);
-
-            foreach (var batch in batches)
+            if (matchIds.Any())
             {
-                await syncMatchService.SyncMatchLineupByIdsAsync(batch);
+                var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
+                var batches = DivideMatchLineUpToImport(liveMatchLineup);
+
+                foreach (var batch in batches)
+                {
+                    await syncMatchService.SyncMatchLineupByIdsAsync(batch);
+                }
             }
         }
 

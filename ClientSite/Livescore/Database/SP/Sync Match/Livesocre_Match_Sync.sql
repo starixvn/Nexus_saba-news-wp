@@ -59,7 +59,8 @@ BEGIN
                                                     FootballAddStartTime datetime,
                                                     FootballStartTime datetime,
                                                     FootballNextHalfStartTime datetime,
-                                                    UpdatedAt datetime DEFAULT NULL);
+                                                    UpdatedAt datetime DEFAULT NULL,
+                                                    IsExisted BIT);
     
 	INSERT INTO tmp_Match(MatchId,
                         CombinedId,
@@ -134,6 +135,14 @@ BEGIN
             )
         ) AS m;
 
+        UPDATE tmp_Match tmp
+        LEFT JOIN livescore_match m ON tmp.MatchId = m.MatchId
+        SET tmp.IsExisted = (
+            CASE WHEN m.MatchId IS NOT NULL THEN 1
+            ELSE 0 END
+        );
+
+
         INSERT INTO livescore_match(MatchId,
                         CombinedId,
                         SportId,
@@ -176,29 +185,32 @@ BEGIN
                 m.FootballAddStartTime,
                 m.FootballStartTime,
                 m.FootballNextHalfStartTime,
-                NOW(),
+                utc_timestamp(),
                 m.UpdatedAt
         FROM tmp_Match m
-        ON DUPLICATE KEY UPDATE
-            CombinedId = m.CombinedId,
-            LeagueId = m.LeagueId,
-            SeasonId = m.SeasonId,
-            StageId = m.StageId,
-            GroupNum = m.GroupNum,
-            RelatedId = m.RelatedId,
-            Round = m.Round,
-            Neutral = m.Neutral,
-            StartTime = m.StartTime,
-            EndTime = m.EndTime,
-            HomeTeamId = m.HomeTeamId,
-            AwayTeamId = m.AwayTeamId,
-            Status = m.Status,
-            IsLineUp = m.IsLineUp,
-            IsIntelligence = m.IsIntelligence,
-            FootballAddStartTime = m.FootballAddStartTime,
-            FootballStartTime = m.FootballStartTime,
-            FootballNextHalfStartTime = m.FootballNextHalfStartTime,
-            UpdatedAt = m.UpdatedAt;
+        WHERE m.IsExisted = 0;
+
+        UPDATE livescore_match m
+        INNER JOIN tmp_Match tmp ON m.MatchId = tmp.MatchId AND tmp.IsExisted = 1
+        SET m.CombinedId = tmp.CombinedId,
+            m.LeagueId = tmp.LeagueId,
+            m.SeasonId = tmp.SeasonId,
+            m.StageId = tmp.StageId,
+            m.GroupNum = tmp.GroupNum,
+            m.RelatedId = tmp.RelatedId,
+            m.Round = tmp.Round,
+            m.Neutral = tmp.Neutral,
+            m.StartTime = tmp.StartTime,
+            m.EndTime = tmp.EndTime,
+            m.HomeTeamId = tmp.HomeTeamId,
+            m.AwayTeamId = tmp.AwayTeamId,
+            m.Status = tmp.Status,
+            m.IsLineUp = tmp.IsLineUp,
+            m.IsIntelligence = tmp.IsIntelligence,
+            m.FootballAddStartTime = tmp.FootballAddStartTime,
+            m.FootballStartTime = tmp.FootballStartTime,
+            m.FootballNextHalfStartTime = tmp.FootballNextHalfStartTime,
+            m.UpdatedAt = tmp.UpdatedAt;
 END;
 
 //
