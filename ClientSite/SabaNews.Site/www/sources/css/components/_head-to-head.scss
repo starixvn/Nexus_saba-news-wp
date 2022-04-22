@@ -104,11 +104,21 @@
 
     .group-match-item .soccer-match-item .soccer-match-team {
         width: 75%;
+
+        @include tableMobile {
+            width: 70%;
+        }
     }
 
     .group-match-item .soccer-match-item .soccer-match-stage {
         @include tableMobile {
             order: 0;
+        }
+
+        span {
+            @include tableMobile {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -125,6 +135,10 @@
 
         .soccer-team-result {
             font-weight: 700;
+
+            @include tableMobile {
+                font-size: 1.2rem;
+            }
         }
     }
 
