@@ -9,5 +9,6 @@
         public long SeasonId { get; set; }
         public DateTime Date { get; set; }
         public float Timezone { get; set; }
+        public string SelectedTab { get; set; }
     }
 }

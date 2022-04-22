@@ -15,9 +15,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Routes>
-                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da`)} element={<AppContainer />} />
-                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/:eventDate`)} element={<AppContainer />} />
-                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`)} element={<AppContainer />} />
+                <Route path={Site.resolveClientUrl('lich-thi-dau/bong-da')} element={<AppContainer />} />
+                <Route path={Site.resolveClientUrl('lich-thi-dau/bong-da/:eventDate')} element={<AppContainer />} />
+                <Route path={Site.resolveClientUrl('lich-thi-dau/bong-da/truc-tiep')} element={<AppContainer />} />
             </Routes>
         </BrowserRouter>
     </Provider>,

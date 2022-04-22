@@ -14,7 +14,8 @@
         window.getMatchByStageParams = {
             date: '@Model.Date.ToString("yyyy-MM-dd")',
             leagueId: @Model.LeagueId,
-            seasonId: @Model.SeasonId
+            seasonId: @Model.SeasonId,
+            selectedTab: '@Model.SelectedTab'
         };
     </script>
     <environment include="Development">

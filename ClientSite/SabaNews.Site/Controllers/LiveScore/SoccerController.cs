@@ -80,14 +80,15 @@
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}")]
-        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId)
+        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}/{selectedTab?}")]
+        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId, string selectedTab)
         {
             var model = new GetMatchBySeasonParams
             {
                 LeagueId = leagueId,
                 SeasonId = seasonId,
-                Date = date
+                Date = date,
+                SelectedTab = selectedTab
             };
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }

@@ -1,10 +1,12 @@
 ﻿import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 import League from './League';
 import { ActionCreators } from '../../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
-import { LeagueType } from '@jsroot/common/constants';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import { LeagueType, MatchStatus } from '@jsroot/common/constants';
 
 export class MatchGrid extends PureComponent {
     filterMatches = (matches, searchKey) => {
@@ -43,14 +45,21 @@ export class MatchGrid extends PureComponent {
     };
 
     render() {
-        if (this.props.matches.length === 0) {
+        let { matches, selectedDate, today, searchKey } = this.props;
+        if (moment(selectedDate).isBefore(today)) {
+            matches = matches.filter(match => {
+                const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
+                return match.status !== MatchStatus.NotStarted
+                    && moment(endTime).isBefore(today);
+            });
+        }
+
+        if (matches.length === 0) {
             return <div className="none-livescore">
                 { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
             </div>;
         }
 
-        const { selectedDate, searchKey } = this.props;
-        let matches = this.props.matches;
         if (searchKey.length > 0) {
             matches = this.filterMatches(matches, searchKey);
         }
@@ -74,8 +83,8 @@ export class MatchGrid extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { selectedDate, searchKey } = state;
-    return { selectedDate, searchKey };
+    const { selectedDate, today, searchKey } = state;
+    return { selectedDate, today, searchKey };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchGrid);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Tabs, Tab } from 'react-bootstrap';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
@@ -10,20 +11,42 @@ import SignalR from './SignalR';
 import League from './League';
 import MatchGrid from './MatchGrid';
 import SeasonStandings from './SeasonStandings';
+import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
 moment.locale('vi');
 
-export class AppContainer extends Component {
+export const withNavigation = Component => {
+    return props => <Component {...props} navigate={useNavigate()} />;
+}
+
+class AppContainer extends Component {
     constructor(props) {
         super(props);
 
+        const tabs = ['fixtures', 'results', 'standings'];
+        let selectedTab = window.getMatchByStageParams.selectedTab.toLowerCase(),
+            selectedResultsTab = false,
+            selectedStandingsTab = true;
+        if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
+            selectedTab = 'fixtures';
+        }
+
+        switch (selectedTab) {
+            case 'results':
+                selectedResultsTab = true;
+                break;
+            case 'standings':
+                selectedStandingsTab = true;
+                break;
+        }
+
         this.state = {
-            selectedTab: 'schedule',
-            selectedResultTab: false,
-            selectedStadingsTab: false
+            selectedTab,
+            selectedResultsTab,
+            selectedStandingsTab
         };
     }
 
@@ -41,26 +64,30 @@ export class AppContainer extends Component {
     };
 
     handleSelectTab = key => {
-        let { selectedResultTab, selectedStadingsTab } = this.state;
+        let { selectedResultsTab, selectedStandingsTab } = this.state;
 
         switch (key) {
-            case 'result':
-                if (!selectedResultTab) {
-                    selectedResultTab = true;
+            case 'results':
+                if (!selectedResultsTab) {
+                    selectedResultsTab = true;
                 }
                 break;
-            case 'stadings':
-                if (!selectedStadingsTab) {
-                    selectedStadingsTab = true;
+            case 'standings':
+                if (!selectedStandingsTab) {
+                    selectedStandingsTab = true;
                 }
                 break;
         }
 
-        this.setState({ selectedTab: key, selectedResultTab, selectedStadingsTab });
+        this.setState({ selectedTab: key, selectedResultsTab, selectedStandingsTab });
+
+        const params = window.getMatchByStageParams;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${params.date}/${params.leagueId}/${params.seasonId}/${key}`);
+        this.props.navigate(url);
     };
 
     render() {
-        const { selectedTab, selectedResultTab, selectedStadingsTab } = this.state;
+        const { selectedTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { majorLeagues, league, stages, preMatches, postMatches } = this.props;
 
         return (
@@ -76,18 +103,18 @@ export class AppContainer extends Component {
                             className="live-score-nav"
                             onSelect={this.handleSelectTab}
                         >
-                            <Tab eventKey="schedule" title="Lịch thi đấu">
+                            <Tab eventKey="fixtures" title="Lịch thi đấu">
                                 {preMatches && <MatchGrid sortAsc stages={stages} matches={preMatches} />}
                             </Tab>
-                            <Tab eventKey="result" title="Kết quả">
+                            <Tab eventKey="results" title="Kết quả">
                                 {
-                                    selectedResultTab && postMatches &&
+                                    selectedResultsTab && postMatches &&
                                     <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
                                 }
                             </Tab>
-                            <Tab eventKey="stadings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
+                            <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
                                 {
-                                    selectedStadingsTab &&
+                                    selectedStandingsTab &&
                                     <SeasonStandings />
                                 }
                             </Tab>
@@ -103,6 +130,8 @@ export class AppContainer extends Component {
     }
 }
 
+const AppContainerComponent = withNavigation(AppContainer);
+
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
@@ -110,4 +139,4 @@ const mapStateToProps = state => {
     return { majorLeagues, league, stages, preMatches, postMatches };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainerComponent);

@@ -90,21 +90,23 @@ export class AppContainer extends Component {
 
     render() {
         const { matches } = this.props;
-        if (matches === null) {
-            return null;
-        }
 
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar
-                            getDateRanges={this.getDateRanges}
-                            onClick={this.getMatches}
-                        />
-                        <SearchBar />
-                        <MatchGrid matches={matches} />
+                        {
+                            matches !== null &&
+                            <>
+                                <DateBar
+                                    getDateRanges={this.getDateRanges}
+                                    onClick={this.getMatches}
+                                />
+                                <SearchBar />
+                                <MatchGrid matches={matches} />
+                            </>
+                        }
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
