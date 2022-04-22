@@ -94,25 +94,25 @@ export default class Site {
     static MappingVarResultText(status) {
         switch(status) {
             case VARResultCode.Unknown:
-                return "Unknown";
+                return "Không xác định";
             case VARResultCode.GoalValid:
                 return "Bàn thắng hợp lệ";
             case VARResultCode.GoalInValid: 
                 return "Bàn thắng không hợp lệ";
             case  VARResultCode.PenaltyValid:
-                return "Penalty hợp lệ";
+                return "Phạt đền";
             case VARResultCode.PenaltyCancelled:
-                return "Penalty không hợp lệ";
+                return "Hủy phạt đền";
             case VARResultCode.RedCardValid:
-                return "Thẻ đỏ hợp lệ";
+                return "Thẻ đỏ";
             case VARResultCode.RedCardCanlled:
-                return "Thẻ đỏ bị hủy bỏ";
+                return "Hủy thẻ đỏ";
             case VARResultCode.PlayPenaltyVerification:
                 return "Play penalty verification";
             case VARResultCode.PlayPenaltyChange:
                 return "Play penalty change";
             case VARResultCode.MaintainOriginalJudgment:
-                return "Maintain original judgment";
+                return "Giữ nguyên quyết định";
             case VARResultCode.SendPenaltyChange:
                 return "Send penalty change";
 
