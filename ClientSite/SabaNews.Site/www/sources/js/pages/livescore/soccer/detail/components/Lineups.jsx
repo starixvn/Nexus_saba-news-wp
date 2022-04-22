@@ -432,7 +432,7 @@ export class Lineups extends Component {
     renderSubstitution = () => {
         const homeSub = this.getTeamSubstitution(IncidentPosition.Home);
         const awaySub = this.getTeamSubstitution(IncidentPosition.Away);
-        if (!homeSub && !awaySub) {
+        if (homeSub.length === 0 && awaySub.length === 0) {
             return null;
         }
         return (

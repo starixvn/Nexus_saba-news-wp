@@ -46,24 +46,21 @@ export class Statistics extends Component {
 
                                     return (
                                         <div className="statistices-items" key={item.categoryId}>
-                                            {
-                                                (item.homeValue !== null && item.awayValue !== null) &&
-                                                <div key={item.categoryId} className="statistices-row">
-                                                    <div className="statistices-category">
-                                                        <div className="statistices-home-value">{item.homeValue}{item.unit}</div>
-                                                        <div className="statistices-category-name">{item.categoryName}</div>
-                                                        <div className="statistices-away-value">{item.awayValue}{item.unit}</div>
+                                            <div key={item.categoryId} className="statistices-row">
+                                                <div className="statistices-category">
+                                                    <div className="statistices-home-value">{item.homeValue}{item.unit}</div>
+                                                    <div className="statistices-category-name">{item.categoryName}</div>
+                                                    <div className="statistices-away-value">{item.awayValue}{item.unit}</div>
+                                                </div>
+                                                <div className="statistices-bar">
+                                                    <div className="statistices-barBg statistices-home">
+                                                        <div style={{ width: `${homePercentage}%` }} />
                                                     </div>
-                                                    <div className="statistices-bar">
-                                                        <div className="statistices-barBg statistices-home">
-                                                            <div style={{ width: `${homePercentage}%` }} />
-                                                        </div>
-                                                        <div className="statistices-barBg statistices-away">
-                                                            <div style={{ width: `${awayPercentage}%` }} />
-                                                        </div>
+                                                    <div className="statistices-barBg statistices-away">
+                                                        <div style={{ width: `${awayPercentage}%` }} />
                                                     </div>
                                                 </div>
-                                            }
+                                            </div>
                                 </div>
                                     );
                                 })
