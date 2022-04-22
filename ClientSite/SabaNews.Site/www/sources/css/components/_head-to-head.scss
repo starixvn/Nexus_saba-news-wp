@@ -1,3 +1,24 @@
-﻿.head-to-head{
+﻿.head-to-head {
+    padding: 1.2rem;
 
+    &-nav {
+        background: $head-to-head-bg-nav;
+        border: 1px solid $border-soccer-item;
+        box-sizing: border-box;
+        border-radius: 3px;
+        padding: .6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            width: 33%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1.9rem;
+            color: $color-detail-league;
+        }
+    }
 }
