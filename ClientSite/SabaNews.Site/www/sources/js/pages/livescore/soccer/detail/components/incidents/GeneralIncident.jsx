@@ -71,7 +71,7 @@ export default class GeneralIncident extends Component {
                                 {
                                     (incident.type === IncidentStatus.Goal && incident.assistName) &&
                                     <li>
-                                        <span className="item-th-name">{incident.assistName} <span className="noted"></span></span>
+                                        <i className="icon-livescore icon-shoes" /> <span className="item-th-name">{incident.assistName} <span className="noted"></span></span>
                                     </li>
                                 }
                             </ul>
@@ -99,7 +99,7 @@ export default class GeneralIncident extends Component {
                                 {
                                     (incident.type === IncidentStatus.Goal && incident.assistName) &&
                                     <li>
-                                        <span className="item-th-name">{incident.assistName} <span className="noted"></span></span>
+                                        <span className="item-th-name">{incident.assistName} <span className="noted"></span></span> <i className="icon-livescore icon-shoes" />
                                     </li>
                                 }
                             </ul>

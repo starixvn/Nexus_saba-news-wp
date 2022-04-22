@@ -12,22 +12,27 @@
     flex-wrap: nowrap;
     font-size: 14px;
     line-height: 21px;
-    margin-bottom : .4rem;
+    margin-bottom: .4rem;
+
     .icon-th {
         width: 16px;
         text-align: center;
-        margin-bottom : .4rem;
-        &:last-child{
-            margin-bottom : 0;
+        margin-bottom: .4rem;
+
+        &:last-child {
+            margin-bottom: 0;
         }
+
         .ic {
             max-width: 16px;
         }
     }
-    .name-th{
-        font-weight : 700;
+
+    .name-th {
+        font-weight: 700;
     }
 }
+
 .time-line {
     &-start {
         text-align: center;
@@ -51,7 +56,8 @@
         padding-bottom: 1.2rem;
 
         .line-up-live {
-            margin : 1.2rem 0;
+            margin: 1.2rem 0;
+
             &-item {
                 -ms-flex-wrap: nowrap;
                 flex-wrap: nowrap;
@@ -98,7 +104,8 @@
                     &.item-th-home {
                         padding-right: 2rem;
                         border-right: 1px solid $border-color;
-                        justify-content : flex-end;
+                        justify-content: flex-end;
+
                         .item-th {
                             -webkit-box-pack: end;
                             -ms-flex-pack: end;
@@ -106,6 +113,10 @@
 
                             li {
                                 justify-content: flex-end;
+
+                                .icon-livescore {
+                                    margin-right: 1rem;
+                                }
                             }
                         }
 
@@ -124,8 +135,13 @@
                     &.item-th-away {
                         padding-left: 2rem;
                         border-left: 1px solid $border-color;
-                        .in-out-icon{
-                            margin-left : 1rem;
+
+                        .in-out-icon {
+                            margin-left: 1rem;
+                        }
+
+                        .icon-livescore {
+                            margin-left: 1rem;
                         }
                     }
                 }
@@ -150,8 +166,9 @@
                     li {
                         margin-bottom: .4rem;
                     }
-                    svg{
-                        width : 100%;
+
+                    svg {
+                        width: 100%;
                     }
                 }
 
@@ -186,13 +203,8 @@
             font-weight: 700;
             font-size: 1.6rem;
             line-height: 2.2rem;
-            margin-top : .5rem;
+            margin-top: .5rem;
             color: $color-title;
         }
     }
 }
-
-
-
-
-
