@@ -22,5 +22,7 @@
 
         public Season Season { get; set; }
         public SeasonStage Stage { get; set; }
+
+        public long? CurrentSeasonId { get; set; }
     }
 }

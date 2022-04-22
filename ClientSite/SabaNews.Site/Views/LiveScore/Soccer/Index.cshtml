@@ -36,8 +36,6 @@
     <meta property="og:title" content='@Model.Category.OgTitle' />
     <meta property="og:image" content='@Model.Category.OgImage' />
 }
-@section Title {
-    @Model.Header.Title
-}
+@section Title {@Model.Header.Title}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
 <div id="app-container"></div>
