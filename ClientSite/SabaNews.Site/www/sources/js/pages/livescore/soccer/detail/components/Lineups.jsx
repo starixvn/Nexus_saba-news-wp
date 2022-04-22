@@ -272,6 +272,12 @@ export class Lineups extends Component {
                     </>
                 }
                 {
+                    player.inSubsitution > 0 &&
+                    <span className="icon-line-up">
+                        <i className="icon-livescore icon-in" />
+                    </span>
+                }
+                {
                     player.outSubsitution > 0 &&
                     <span className="icon_f ic_thay_nguoi">
                         <svg className="ic ic-arrow arrowdownred" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
