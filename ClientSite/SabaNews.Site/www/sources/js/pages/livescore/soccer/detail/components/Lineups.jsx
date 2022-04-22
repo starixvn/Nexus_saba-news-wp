@@ -344,7 +344,7 @@ export class Lineups extends Component {
                                                 return (
                                                     <div className="pitch-item" key={pindex}>
                                                         <div className="team-player-img">
-                                                            <img src={Site.resolveClientUrl(`css/images/dress-white.gif`)} alt="" />
+                                                            <img src={Site.resolveClientUrl(`css/images/red.png`)} alt="" />
                                                             <div className="team-number">
                                                                 {player.number}
                                                                 {this.renderIconLineup(player)}
@@ -371,7 +371,7 @@ export class Lineups extends Component {
                                                 return (
                                                     <div className="pitch-item" key={pindex}>
                                                         <div className="team-player-img">
-                                                            <img src={Site.resolveClientUrl(`css/images/dress-blue.gif`)} alt="" />
+                                                            <img src={Site.resolveClientUrl(`css/images/blue.png`)} alt="" />
                                                             <div className="team-number">
                                                                 {player.number}
                                                                 {this.renderIconLineup(player)}
