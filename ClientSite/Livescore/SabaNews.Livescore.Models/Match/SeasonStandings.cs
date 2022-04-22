@@ -1,7 +1,10 @@
-﻿namespace SabaNews.Livescore.Models.Match
+﻿using System.Collections.Generic;
+
+namespace SabaNews.Livescore.Models.Match
 {
     public class SeasonStandings
     {
+        public long StageId { get; set; }
         public long TeamId { get; set; }
         public string TeamNameEN { get; set; }
         public string TeamFullNameEN { get; set; }
@@ -18,7 +21,9 @@
 
         public short Points { get; set; }
         public short Goals { get; set; }
-        public short GoalAgainsts { get; set; }
+        public short GoalsAgainst { get; set; }
         public short GoalDiff { get; set; }
+
+        public IList<FloatMatchModel> Matches { get; set; }
     }
 }

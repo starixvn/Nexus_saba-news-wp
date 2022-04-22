@@ -35,8 +35,7 @@
 
         public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
-            (IEnumerable<League> leagues, IEnumerable<FloatMatchModel> floatMatches)
-                = await baseService.FetchMultipleAsync<League, FloatMatchModel>(criteria);
+            (var leagues, var floatMatches) = await baseService.FetchMultipleAsync<League, FloatMatchModel>(criteria);
             var matches = new List<Match>();
             foreach(FloatMatchModel match in floatMatches)
             {
@@ -92,7 +91,13 @@
 
         public async Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria)
         {
-            var standings = await baseService.GetDataAsync<SeasonStandings>(criteria);
+            (var standings, var floatMatches) = await baseService.FetchMultipleAsync<SeasonStandings, FloatMatchModel>(criteria);
+            foreach(var item in standings)
+            {
+                item.Matches = floatMatches.Where(match => match.StageId == item.StageId
+                    && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId)).ToList();
+            }
+
             return standings.ToList();
         }
 

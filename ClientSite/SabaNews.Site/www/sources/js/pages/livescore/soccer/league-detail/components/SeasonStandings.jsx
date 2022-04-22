@@ -12,22 +12,70 @@ export class SeasonStandings extends PureComponent {
     }
 
     groupSeasonStandings = seasonStandings => {
-        const helper = {};
-        return seasonStandings.reduce((previousItem, currentItem) => {
-            const key = currentItem.groupName;
-            if (!helper[key]) {
-                helper[key] = {
-                    key: key,
-                    childs: [{ ...currentItem }]
-                };
-                previousItem.push(helper[key]);
+        const totalItems = seasonStandings.length;
+        const standings = [];
+        for (let i = 0; i < totalItems; i++) {
+            const temp = seasonStandings[i];
+            const key = temp.groupName;
+            const item = {
+                key,
+                childs: [temp]
+            };
+            if (standings.length === 0) {
+                standings.push(item);
             } else {
-                helper[key].childs.push(currentItem);
+                const index = standings.findIndex(x => x.key === key);
+                if (index === - 1) {
+                    standings.push(item);
+                } else {
+                    standings[index].childs.push(temp);
+                }
             }
+        }
 
-            return previousItem;
-        }, []);
+        return standings;
     };
+
+    getMatchResult = (teamId, match) => {
+        const isHomeTeam = match.homeTeamId === teamId;
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+        let result = <div />;
+        const win = <div className="wld win">W</div>;
+        const loss = <div className="wld loss">L</div>;
+        const draw = <div className="wld draw">D</div>;
+        if (match[`${homeFieldName}PenaltyScore`]) {
+            if (match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                result = win;
+            } else {
+                result = loss;
+            }
+        } else if (match[`${homeFieldName}AggregateScore`]) {
+            if (match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                result = win;
+            } else {
+                result = loss;
+            }
+        } else if (match[`${homeFieldName}ExtraScore`]) {
+            if (match[`${homeFieldName}ExtraScore`] > match[`${awayFieldName}ExtraScore`]) {
+                result = win;
+            } else if (match[`${homeFieldName}ExtraScore`] < match[`${awayFieldName}ExtraScore`]) {
+                result = loss;
+            } else {
+                result = draw;
+            }
+        } else {
+            if (match[`${homeFieldName}TotalScore`] > match[`${awayFieldName}TotalScore`]) {
+                result = win;
+            } else if (match[`${homeFieldName}TotalScore`] < match[`${awayFieldName}TotalScore`]) {
+                result = loss;
+            } else {
+                result = draw;
+            }
+        }
+
+        return result;
+    }
 
     getPromotionStandings = seasonStandings => {
         const totalItems = seasonStandings.length;
@@ -55,6 +103,7 @@ export class SeasonStandings extends PureComponent {
                             <table className="table table-bordered" key={index}>
                                 <thead>
                                     <tr>
+                                        <th />
                                         <th>{totalItems > 1 ? group.key : 'Thứ hạng'}</th>
                                         <th>Trận</th>
                                         <th>Thắng</th>
@@ -74,9 +123,11 @@ export class SeasonStandings extends PureComponent {
                                             return (
                                                 <tr key={item.teamId}>
                                                     <td>
-                                                        <div style={{ backgroundColor: promotion ? promotion.Color : '' }}>
+                                                        <div className="position" style={{ backgroundColor: promotion ? promotion.Color : '' }}>
                                                             {item.position}
                                                         </div>
+                                                    </td>
+                                                    <td>
                                                         <div className="soccer-team">
                                                             <img className="soccer-team-logo" loading="lazy" src={item.icon} />
                                                             <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
@@ -90,7 +141,14 @@ export class SeasonStandings extends PureComponent {
                                                     <td>{item.goalsAgainst}</td>
                                                     <td>{item.goalDiff}</td>
                                                     <td>{item.points}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <div className="wld-wrapper">
+                                                            {
+                                                                item.matches.map(match =>
+                                                                    <div key={match.matchId}>{this.getMatchResult(item.teamId, match)}</div>)
+                                                            }
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             );
                                         })
