@@ -325,7 +325,7 @@ export class Lineups extends Component {
         return (
             //map
             <div className="line-up-map">
-                <h2 className="heading-tab">Đội hình</h2>
+                <h2 className="title-custom">Đội hình</h2>
 
                 <div className="lineup-head">
                     <div className="team-name">
