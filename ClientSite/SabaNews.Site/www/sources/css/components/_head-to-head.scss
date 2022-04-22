@@ -127,10 +127,12 @@
     }
 
     .group-team {
-        .home-team {
-            /*.soccer-team-name {
-                font-weight: 700 !important;
-            }*/
+        .home-team, .away-team {
+            .soccer-team-name {
+                &.win {
+                    font-weight: 700 !important;
+                }
+            }
         }
 
         .soccer-team-result {
