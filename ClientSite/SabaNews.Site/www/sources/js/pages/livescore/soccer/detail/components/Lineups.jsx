@@ -334,58 +334,60 @@ export class Lineups extends Component {
                             <div className="team-head-number">{lineup.generalInfo.homeFormation}</div>
                         </div>
                     </div>
-                    <div className="team-content">
-                        {
-                            homeLineup.map((line, lineIndex) => {
-                                return (
-                                    <div className="pitch-row" key={lineIndex}>
-                                        {
-                                            line.map((player, pindex) => {
-                                                return (
-                                                    <div className="pitch-item" key={pindex}>
-                                                        <div className="team-player-img">
-                                                            <img src={Site.resolveClientUrl(`css/images/red.png`)} alt="" />
-                                                            <div className="team-number">
-                                                                {player.number}
-                                                                {this.renderIconLineup(player)}
-                                                            </div>
+                    <div className="line-up-map-body">
+                        <div className="team-content">
+                            {
+                                homeLineup.map((line, lineIndex) => {
+                                    return (
+                                        <div className="pitch-row" key={lineIndex}>
+                                            {
+                                                line.map((player, pindex) => {
+                                                    return (
+                                                        <div className="pitch-item" key={pindex}>
+                                                            <div className="team-player-img">
+                                                                <img src={Site.resolveClientUrl(`css/images/red.png`)} alt="" />
+                                                                <div className="team-number">
+                                                                    {player.number}
+                                                                    {this.renderIconLineup(player)}
+                                                                </div>
 
-                                                        </div>
-                                                        <div className="text-name">{player.name}</div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <div className="team-content">
-                        {
-                            awayLineup.map((line, lineIndex) => {
-                                return (
-                                    <div className="pitch-row" key={lineIndex}>
-                                        {
-                                            line.map((player, pindex) => {
-                                                return (
-                                                    <div className="pitch-item" key={pindex}>
-                                                        <div className="team-player-img">
-                                                            <img src={Site.resolveClientUrl(`css/images/blue.png`)} alt="" />
-                                                            <div className="team-number">
-                                                                {player.number}
-                                                                {this.renderIconLineup(player)}
                                                             </div>
+                                                            <div className="text-name">{player.name}</div>
                                                         </div>
-                                                        <div className="text-name">{player.name}</div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                )
-                            })
-                        }
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <div className="team-content">
+                            {
+                                awayLineup.map((line, lineIndex) => {
+                                    return (
+                                        <div className="pitch-row" key={lineIndex}>
+                                            {
+                                                line.map((player, pindex) => {
+                                                    return (
+                                                        <div className="pitch-item" key={pindex}>
+                                                            <div className="team-player-img">
+                                                                <img src={Site.resolveClientUrl(`css/images/blue.png`)} alt="" />
+                                                                <div className="team-number">
+                                                                    {player.number}
+                                                                    {this.renderIconLineup(player)}
+                                                                </div>
+                                                            </div>
+                                                            <div className="text-name">{player.name}</div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                     <div className="line-up-map-head">
                         <div className="team">

@@ -100,13 +100,45 @@
 }
 
 .line-up-map {
+    color: $white;
+
     &-main {
         margin-top: 1.6rem;
-        position: relative;
+        background-color: #618514;
+        padding: 0 1rem;
+
+        .line-up-map-head {
+            .team {
+                display: flex;
+                justify-content: space-between;
+
+                &-head-name, &-head-number {
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    line-height: 1.9rem;
+                }
+            }
+        }
+    }
+
+    &-body {
+         position: relative;
         width: 100%;
         height: 117.4rem;
         background: url(../../../../images/soccer-img.jpg) repeat-y;
         background-size: 100% 117.4rem;
-        background-color: #618514;
+        flex-direction: column;
+        justify-content: space-between;
+        .team-content {
+            height: 50%;
+            display: flex;
+            position: relative;
+            line-height: normal;
+            z-index: 20;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            padding: 0.5rem;
+        }
     }
 }
