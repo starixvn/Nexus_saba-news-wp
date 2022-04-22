@@ -21,10 +21,10 @@ export class HeadToHead extends Component {
             case MatchStatus.Finished:
                 if (match[`${homeFieldName}PenaltyScore`]
                     && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
-                    return "PEN";
+                    return <li>PEN</li>;
                 } else if (match[`${homeFieldName}AggregateScore`]
                     && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                    return "AGG";
+                    return <li>AGG</li>;
                 } else {
                     return null;
                 }
@@ -72,7 +72,6 @@ export class HeadToHead extends Component {
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
-
                                 <div className="name-league">
                                     <div className="name-league-img"><img src={match.league.icon} /></div>
 
@@ -89,7 +88,7 @@ export class HeadToHead extends Component {
                                                     <img className="soccer-team-logo" loading="lazy" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />
                                                     <div className={`soccer-team-name ${homeWinclass}` }>{match.homeTeam.teamNameEN}</div>
                                                     <ul className="soccer-team-status">
-                                                        <li>{this.getTeamStatus(true, match)}</li>
+                                                        {this.getTeamStatus(true, match)}
                                                     </ul>
                                                     <div className="soccer-team-result">
                                                         {homeTeamScore}
@@ -100,7 +99,7 @@ export class HeadToHead extends Component {
                                                     <img className="soccer-team-logo" loading="lazy" alt={match.awayTeam.teamNameEN} src={match.awayTeam.icon} />
                                                     <div className={`soccer-team-name ${awayWinClass}`}>{match.awayTeam.teamNameEN}</div>
                                                     <ul className="soccer-team-status">
-                                                        <li>{this.getTeamStatus(false, match)}</li>
+                                                        {this.getTeamStatus(false, match)}
                                                     </ul>
                                                     <div className="soccer-team-result">
                                                         {awayTeamScore}
