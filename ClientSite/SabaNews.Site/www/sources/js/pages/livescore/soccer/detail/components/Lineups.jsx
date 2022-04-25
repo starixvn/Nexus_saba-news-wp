@@ -86,11 +86,11 @@ export class Lineups extends Component {
                 {
                     playerIncident.goals > 0 &&
                     <>
-                    {
-                        playerIncident.goals > 1 &&
-                        <span>{playerIncident.goals}</span>
-                    }
                         <span className="icon-line-up">
+                            {
+                                playerIncident.goals > 1 &&
+                                <span className="number-position">{playerIncident.goals}</span>
+                            }
                             <i className="icon-livescore icon-ball" />
                         </span>
                     </>
@@ -551,7 +551,7 @@ export class Lineups extends Component {
                     {this.renderSubstitution()}
                     {
                         (lineup.generalInfo.homeCoach || lineup.generalInfo.awayCoach) &&
-                        <div className="line-up-change-men block-line-up">
+                        <div className="line-up-change-men block-line-up perent-men">
                             <div className="block-line-up-main">
                                 <div className="block-line-up-title">Huấn luyện viên</div>
                                 <div className="block-line-up-body">
