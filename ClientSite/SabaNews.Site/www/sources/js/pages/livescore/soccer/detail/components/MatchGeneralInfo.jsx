@@ -13,10 +13,6 @@ export default class MatchGenetalInfo extends Component {
     }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
-        const homePenaltyShootOut = match.homeTeamPenaltyScore;
-        const awayPenaltyShootOut = match.awayTeamPenaltyScore;
-        const homeAGG = match.homeTeamAggregateScore;
-        const awayAGG = match.awayTeamAggregateScore;
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -33,20 +29,30 @@ export default class MatchGenetalInfo extends Component {
                         <span className="detail-score-divider"> - </span>
                         <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
                     </div>
-                    <div className="detail-score-status">
-                        <p>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</p>
-                        {
-                            (homeAGG !== 0 || awayAGG !== 0) &&
-                            <p>AGG: {homeAGG} - {awayAGG}</p>
-                        }
-                        {
-                            (homePenaltyShootOut !== 0 || awayPenaltyShootOut !== 0) &&
-                            <p>Pen: {homePenaltyShootOut} - {awayPenaltyShootOut}</p>
-                        }
-                    </div>
                 </>;
         }
     };
+
+    getSubScore = () => {
+        const match = this.props.match.generalInfo;
+        const homePenaltyShootOut = match.homeTeamPenaltyScore;
+        const awayPenaltyShootOut = match.awayTeamPenaltyScore;
+        const homeAGG = match.homeTeamAggregateScore;
+        const awayAGG = match.awayTeamAggregateScore;
+        return (
+            <>
+                <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
+                {
+                    (homeAGG !== 0 || awayAGG !== 0) &&
+                    <li>AGG: {homeAGG} - {awayAGG}</li>
+                }
+                {
+                    (homePenaltyShootOut !== 0 || awayPenaltyShootOut !== 0) &&
+                    <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
+                }
+            </>
+        )
+    }
 
     getBallAndCardNumber = (position) => {
         const { statistic } = this.props.match;
@@ -128,13 +134,13 @@ export default class MatchGenetalInfo extends Component {
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">
-                                    <li>Pen</li>
+                                    {this.getTeamStatus(true)}
                                 </ul>
                             </div>
                             <div className="column column-center"><MatchStage match={generalInfo} /></div>
                             <div className="column column-right away-team">
                                 <ul className="soccer-team-status">
-                                    <li>Pen</li>
+                                {this.getTeamStatus(false)}
                                 </ul>
                             </div>
                         </div>
@@ -171,7 +177,9 @@ export default class MatchGenetalInfo extends Component {
                                     {this.getBallAndCardNumber(IncidentPosition.Home)}
                                 </div>
                             </div>
-                            <div className="column column-center detail-score-status">H1: 2 - 2</div>
+                            <ul className="column column-center detail-score-status">
+                                {this.getSubScore()}
+                            </ul>
                             <div className="column column-right away-team">
                                 <div className="duel-participant-number">
                                     {this.getBallAndCardNumber(IncidentPosition.Away)}
