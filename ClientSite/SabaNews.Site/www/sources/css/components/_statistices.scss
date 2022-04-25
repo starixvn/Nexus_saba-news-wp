@@ -10,6 +10,11 @@
         font-size: 1.4rem;
         line-height: 1.9rem;
         justify-content: space-between;
+
+        @include Mobile {
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+        }
     }
 
     &-bar {
@@ -54,6 +59,11 @@
                     font-weight: 600;
                     font-size: 1.8rem;
                     line-height: 2.5rem;
+
+                    @include Mobile {
+                        font-size: 1.6rem;
+                        line-height: 1.2rem;
+                    }
                 }
             }
         }
