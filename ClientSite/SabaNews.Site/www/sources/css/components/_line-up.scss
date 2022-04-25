@@ -77,10 +77,10 @@
                         }
 
                         .number-player {
-                            width: 15%;
+                            width: auto;
 
                             @include Mobile {
-                                width: 5%;
+                                width: auto;
                                 font-size: 1rem;
                                 line-height: 1.4rem;
                             }
@@ -116,14 +116,17 @@
 
                             p {
                                 margin-bottom: 1rem;
-                                display : flex;
-                                align-items :center;
-                                i{
-                                    margin-right : .9rem;
-                                    @include Mobile{
-                                        margin-right : .4rem;
+                                display: flex;
+                                align-items: center;
+
+                                i {
+                                    margin-right: .9rem;
+
+                                    @include Mobile {
+                                        margin-right: .4rem;
                                     }
                                 }
+
                                 &:last-child {
                                     margin-bottom: 0;
                                 }
@@ -136,8 +139,8 @@
     }
 
     .perent-men {
-        .name-player{
-            width : 100% !important;
+        .name-player {
+            width: 100% !important;
         }
     }
 }
