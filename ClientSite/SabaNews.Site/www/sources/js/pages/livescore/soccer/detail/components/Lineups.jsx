@@ -489,8 +489,8 @@ export class Lineups extends Component {
                     <ul key={key} className="list-paticipant list-change-main">
                         <li className="number-player">{incident.timeShow}'</li>
                         <li className="name-player">
-                            <p><i class="icon-livescore icon-in"></i> {inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
-                            <p> <i class="icon-livescore icon-out"></i> {outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
+                            <p><i className="icon-livescore icon-in"></i> {inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
+                            <p> <i className="icon-livescore icon-out"></i> {outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
                         </li>
                     </ul>
                 )

@@ -43,11 +43,11 @@ export default class MatchGenetalInfo extends Component {
             <>
                 <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 {
-                    (homeAGG !== 0 || awayAGG !== 0) &&
+                    (homeAGG > 0 || awayAGG > 0) &&
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {
-                    (homePenaltyShootOut !== 0 || awayPenaltyShootOut !== 0) &&
+                     (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0) &&
                     <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
                 }
             </>
