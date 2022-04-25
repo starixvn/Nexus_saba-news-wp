@@ -2,13 +2,183 @@
     border: 1px solid $border-color;
     border-radius: 3px;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     justify-content: center;
     padding: 2rem 1.3rem;
     background: $primary-bg;
 
-    &-number {
-        margin-top: 1.3rem;
+    .flex-league {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.first-league {
+            align-items: center;
+        }
+
+        .column {
+            text-align: center;
+
+            .team {
+                display: flex;
+                align-items: flex-start;
+                list-style: none;
+                padding-left: 0;
+                margin-bottom: 0;
+                width: 100%;
+
+                &-logo {
+                    overflow: hidden;
+                    position: relative;
+                    width: 30%;
+                    img {
+                        max-width: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            &.home-team {
+                text-align: right;
+
+                .participant-detail {
+                    justify-content: flex-end;
+
+                    &-group {
+                        justify-content: flex-end;
+
+                        li {
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .name-player {
+                            order: 1;
+                            margin-right: 1.2rem;
+                        }
+
+                        i, svg {
+                            order: 2;
+                        }
+
+                        svg {
+                            width: 1.6rem;
+                        }
+                    }
+
+                    .card-league {
+                        margin-left: .8rem;
+
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            &.away-team {
+                text-align: left;
+
+                .participant-detail {
+                    justify-content: flex-start;
+
+                    &-group {
+                        li {
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .name-player {
+                            margin-left: 1.2rem;
+                        }
+
+                        svg {
+                            width: 1.6rem;
+                        }
+                    }
+
+                    .card-league {
+                        margin-right: .8rem;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            &-right {
+                width: 30%;
+                display: flex;
+                justify-content: flex-start;
+
+                ul {
+                    margin-bottom: 1rem;
+                }
+
+                .team-name {
+                    margin-left: 20px;
+                    width: 70%;
+                }
+            }
+
+            &-left {
+                width: 30%;
+                display: flex;
+                justify-content: flex-end;
+
+                ul {
+                    margin-bottom: 1rem;
+                }
+
+                .team-name {
+                    margin-right: 20px;
+                    width: 70%;
+                }
+            }
+
+            &-center {
+                margin: 0 4rem;
+                text-align: center;
+                width: 20%;
+
+                &.result-league {
+                    .detail-score-wrapper {
+                        background: $bg-score-detail;
+                        border-radius: 15px;
+                        padding: 1rem 1.8rem;
+                        font-weight: 700;
+                        font-size: 4.2rem;
+
+                        span {
+                            color: $color-title;
+                            line-height: 1;
+                        }
+                    }
+                }
+            }
+
+            .soccer-match-stage {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 1.3rem;
+                line-height: 2.4rem;
+
+                span {
+                    color: $color-detail-league;
+                }
+            }
+        }
     }
 
     &-result {
@@ -154,7 +324,12 @@
         }
     }
 }
-
+.detail-score-status {
+    color: $color-detail-league;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+}
 
 
 .participant-detail {
@@ -197,4 +372,8 @@
         background: $yellow-card;
         color: $color-yellow-card;
     }
+}
+
+.soccer-team-status{
+    margin-bottom : 0 !important;
 }

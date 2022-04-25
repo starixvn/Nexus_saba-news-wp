@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+﻿import React, { Component, Fragment } from 'react';
 import Site from '@jsroot/common/site';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
@@ -68,10 +68,10 @@ export default class MatchGenetalInfo extends Component {
                 {
                     goals.map((goal, gkey) => {
                         return (
-                            <div key={gkey} className="participant-detail-group">
-                                <IncidentIcon type={goal.type} />
-                                <span className="name-player">({goal.timeShow}') - {goal.playerName}</span>
-                            </div>
+                            <ul key={gkey} className="participant-detail-group name-player-goal">
+                                    <li><IncidentIcon type={goal.type} />
+                                    <span className="name-player">({goal.timeShow}') - {goal.playerName}</span></li>
+                             </ul>
                         )
                     })
                 }
@@ -121,45 +121,61 @@ export default class MatchGenetalInfo extends Component {
                     </div>
                 </div>
                 <div className="sticky-header">
+
+
+
                     <div className="duel-participant">
-                        <div className="duel-participant-home-wrapper">
-                            <ul className="soccer-team-status">
-                                {this.getTeamStatus(true)}
-                            </ul>
-                            <div className="duel-participant-home-wrapper-image">
-                                <div className="duel-participant-home-wrapper-name">{generalInfo.homeTeam.teamNameEN}</div>
-                                <a className="duel-participant-home-wrapper-logo">
-                                    <img alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
-                                        src={generalInfo.homeTeam.icon} />
-                                </a>
+                        <div className="flex-league first-league">
+                            <div className="column column-left home-team">
+                                <ul className="soccer-team-status">
+                                    <li>Pen</li>
+                                </ul>
                             </div>
-                            <div className="duel-participant-number">
-                                {this.getBallAndCardNumber(IncidentPosition.Home)}
+                            <div className="column column-center"><MatchStage match={generalInfo} /></div>
+                            <div className="column column-right away-team">
+                                <ul className="soccer-team-status">
+                                    <li>Pen</li>
+                                </ul>
                             </div>
                         </div>
-
-                        <div className="duel-participant-result">
-                            <div className="duel-participant-result-time">
-                                <MatchStage match={generalInfo} />
+                        <div className="flex-league">
+                            <div className="column column-left home-team">
+                                <ul className="team">
+                                    <li className="team-name">
+                                        {generalInfo.homeTeam.teamNameEN}
+                                    </li>
+                                    <li className="team-logo">
+                                        <a className="duel-participant-home-wrapper-logo">
+                                            <img width="50" height="50" alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
+                                                src={generalInfo.homeTeam.icon} />
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div className="duel-participant-result-score">
-                                {this.getMatchScores()}
+                            <div className="column column-center result-league"> {this.getMatchScores()}</div>
+                            <div className="column column-right away-team">
+                                <ul className="team">
+                                    <li className="team-logo">
+                                        <a>
+                                            <img width="50" height="50" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
+                                                src={generalInfo.awayTeam.icon} />
+                                        </a>
+                                    </li>
+                                    <li className="team-name">{generalInfo.awayTeam.teamNameEN}</li>
+                                </ul>
                             </div>
                         </div>
-
-                        <div className="duel-participant-away-wrapper">
-                            <ul className="soccer-team-status">
-                                {this.getTeamStatus(false)}
-                            </ul>
-                            <div className="duel-participant-away-wrapper-image">
-                                <a>
-                                    <img width="58" height="58" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
-                                        src={generalInfo.awayTeam.icon} />
-                                </a>
-                                <div className="duel-participant-away-wrapper-name">{generalInfo.awayTeam.teamNameEN}</div>
+                        <div className="flex-league">
+                            <div className="column column-left home-team">
+                                <div className="duel-participant-number">
+                                    {this.getBallAndCardNumber(IncidentPosition.Home)}
+                                </div>
                             </div>
-                            <div className="duel-participant-number">
-                                {this.getBallAndCardNumber(IncidentPosition.Away)}
+                            <div className="column column-center detail-score-status">H1: 2 - 2</div>
+                            <div className="column column-right away-team">
+                                <div className="duel-participant-number">
+                                    {this.getBallAndCardNumber(IncidentPosition.Away)}
+                                </div>
                             </div>
                         </div>
                     </div>
