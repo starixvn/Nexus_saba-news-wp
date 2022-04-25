@@ -5,7 +5,6 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http.Connections;
     using Microsoft.AspNetCore.SignalR.Client;
-    using Newtonsoft.Json;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Models;
     using SabaNews.Livescore.Models.Match;
@@ -47,9 +46,6 @@
 
         public async Task PushMatchDetailcAsync(long matchId, MatchDetail detail)
         {
-            logger.WriteLogFileInfo("begin push detail match");
-            logger.WriteLogFileInfo($"matchId: {matchId}");
-            logger.WriteLogFileInfo($"detail: {JsonConvert.SerializeObject(detail)}");
             if (hubConnection.State == HubConnectionState.Disconnected)
             {
                 await hubConnection.StartAsync();
@@ -62,7 +58,6 @@
                     logger.WriteExceptionSentryErrorAsync(task.Exception);
                 }
             });
-            logger.WriteLogFileInfo("end push detail match");
         }
     }
 }

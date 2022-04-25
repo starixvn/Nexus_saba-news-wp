@@ -53,10 +53,6 @@
 
                 logService.WriteLogFileInfo($"Execution ended. Cancelation token cancelled = {stoppingToken.IsCancellationRequested}");
             }
-            catch (Exception ex) when (stoppingToken.IsCancellationRequested)
-            {
-                logService.WriteLogFileInfo("Execution Cancelled");
-            }
             catch (Exception ex)
             {
                 logService.WriteLogFileInfo("Unhandeled exception. Execution Stopping");
