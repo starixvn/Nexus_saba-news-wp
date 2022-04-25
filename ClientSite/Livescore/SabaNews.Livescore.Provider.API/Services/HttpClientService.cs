@@ -5,7 +5,6 @@
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using System.Web.Http;
     using Fanex.Caching;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -68,8 +67,8 @@
                 return result;
             }
 
-            var err = await response.Content.ReadAsAsync<HttpError>();
-            await logService.WriteMessageSentryErrorAsync(err.Message);
+            var err = await response.Content.ReadAsStringAsync();
+            await logService.WriteMessageSentryErrorAsync(err);
             return default;
         }
 
