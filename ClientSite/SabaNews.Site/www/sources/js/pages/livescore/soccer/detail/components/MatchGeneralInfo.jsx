@@ -152,10 +152,8 @@ export default class MatchGenetalInfo extends Component {
                                         {generalInfo.homeTeam.teamNameEN}
                                     </li>
                                     <li className="team-logo">
-                                        <a className="duel-participant-home-wrapper-logo">
-                                            <img width="50" height="50" alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
-                                                src={generalInfo.homeTeam.icon} />
-                                        </a>
+                                        <img width="50" height="50" alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
+                                            src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
                                     </li>
                                 </ul>
                             </div>
@@ -163,10 +161,8 @@ export default class MatchGenetalInfo extends Component {
                             <div className="column column-right away-team">
                                 <ul className="team">
                                     <li className="team-logo">
-                                        <a>
-                                            <img width="50" height="50" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
-                                                src={generalInfo.awayTeam.icon} />
-                                        </a>
+                                        <img width="50" height="50" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
+                                            src={generalInfo.awayTeam.icon} />
                                     </li>
                                     <li className="team-name">{generalInfo.awayTeam.teamNameEN}</li>
                                 </ul>

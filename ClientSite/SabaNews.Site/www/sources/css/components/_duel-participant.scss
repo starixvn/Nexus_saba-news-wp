@@ -60,7 +60,7 @@
                 &-logo {
                     overflow: hidden;
                     position: relative;
-                    width: 30%;
+                    width: 20%;
 
                     @include Mobile {
                         order: 1;
@@ -71,6 +71,8 @@
                     img {
                         max-width: 100%;
                         object-fit: cover;
+                        display: block;
+                        margin: 0 auto;
                     }
                 }
 
