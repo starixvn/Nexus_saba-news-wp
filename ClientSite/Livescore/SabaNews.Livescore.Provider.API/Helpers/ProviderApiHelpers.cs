@@ -28,7 +28,7 @@
             services.AddHttpClient(HttpClientName.DefaultHttpClientWithProxy).ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
             {
                 UseProxy = httpConfig.IsUseProxy,
-                Proxy = new WebProxy(httpConfig.Proxy, httpConfig.ByPassLocal)
+                Proxy = new WebProxy(httpConfig.ProxyAddress, httpConfig.ByPassLocal)
             });
 
             services.AddSingleton<IHttpClientService, HttpClientService>();

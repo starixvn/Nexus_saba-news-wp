@@ -6,7 +6,7 @@
 
         public bool IsUseProxy { get; set; }
 
-        public string Proxy { get; set; }
+        public string ProxyAddress { get; set; }
 
         public bool ByPassLocal { get; set; }
     }
