@@ -38,7 +38,7 @@ $fa-font-path: "../../../../fonts";
 }
 
 
-/*.fixed-nav-league {
+.fixed-nav-league {
     .sticky-header {
         position: sticky;
         top: 5rem;
@@ -46,14 +46,50 @@ $fa-font-path: "../../../../fonts";
 
         @include tableMobile {
             position: fixed;
-            top: 4rem;
+            top: 14.6rem;
+            right: 50%;
+            transform: translate(50%, -50%);
+            width: 94%;
+            background: $primary-bg;
         }
 
         .sticky-position {
             display: none;
         }
+
+        .duel-participant {
+            padding: 1rem;
+
+            .flex-league {
+                margin-bottom: 1rem;
+                align-items: center;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                .team {
+                    align-items: center;
+
+                    &-logo {
+                        width: 3rem;
+                        height: 3rem;
+
+                        img {
+                            width: 3rem;
+                            height: 3rem;
+                        }
+                    }
+                }
+
+                .detail-score-wrapper {
+                    font-size: 3.2rem;
+                    padding: 0.6rem 1.8rem;
+                }
+            }
+        }
     }
-}*/
+}
 
 
 
