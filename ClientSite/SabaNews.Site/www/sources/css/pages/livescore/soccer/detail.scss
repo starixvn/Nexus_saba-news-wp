@@ -46,7 +46,7 @@ $fa-font-path: "../../../../fonts";
 
         @include tableMobile {
             position: fixed;
-            top: 14.6rem;
+            top: 11.5rem;
             right: 50%;
             transform: translate(50%, -50%);
             width: 94%;
@@ -64,27 +64,91 @@ $fa-font-path: "../../../../fonts";
                 margin-bottom: 1rem;
                 align-items: center;
 
+                @include Mobile {
+                    margin-bottom: .6rem;
+                }
+
                 &:last-child {
                     margin-bottom: 0;
+                }
+
+                .column-center {
+                    @include Mobile {
+                        margin: 0 1rem;
+                    }
+                }
+
+                .home-team {
+                    .team-logo {
+                        @include Mobile {
+                            order: 2;
+                        }
+                    }
+
+                    .team-name {
+                        @include Mobile {
+                            text-align: right;
+                            margin-right: .4rem !important;
+                        }
+                    }
+                }
+
+                .away-team {
+                    .team-name {
+                        @include Mobile {
+                            text-align: left;
+                            margin-left: .4rem !important;
+                        }
+                    }
                 }
 
                 .team {
                     align-items: center;
 
+                    @include Mobile {
+                        flex-wrap: nowrap;
+                    }
+
                     &-logo {
                         width: 3rem;
                         height: 3rem;
 
+                        @include Mobile {
+                            width: 4rem;
+                            height: 3rem;
+                        }
+
                         img {
                             width: 3rem;
                             height: 3rem;
+
+                            @include Mobile {
+                                width: 3rem;
+                                height: 3rem;
+                                max-width: none;
+                            }
                         }
+                    }
+
+                    &-name {
                     }
                 }
 
                 .detail-score-wrapper {
                     font-size: 3.2rem;
-                    padding: 0.6rem 1.8rem;
+                    padding: .6rem 1.8rem;
+
+                    @include Mobile {
+                        padding: .6rem .8rem;
+                        font-size: 2rem;
+                        line-height: 2.4rem;
+                    }
+                }
+
+                .soccer-match-stage {
+                    @include Mobile {
+                        line-height: 1;
+                    }
                 }
             }
         }
