@@ -41,16 +41,20 @@ $fa-font-path: "../../../../fonts";
 .fixed-nav-league {
     .sticky-header {
         position: sticky;
-        top: 5rem;
+        top: 5.1rem;
         z-index: 99999;
-
+        background: $primary-bg;
         @include tableMobile {
             position: fixed;
             top: 4rem;
             left: 0;
             width: 100%;
             z-index: 10005;
-            background: $primary-bg;
+        }
+
+        .livescore-league-header-detail {
+            margin-bottom: .5rem;
+            margin-left: 1rem;
         }
 
         .sticky-position {
