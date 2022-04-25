@@ -118,6 +118,11 @@
                     font-weight: 700;
                     font-size: 1.6rem;
                     line-height: 1.9rem;
+
+                    @include Mobile {
+                        font-size: 1.2rem;
+                        line-height: 1.4rem;
+                    }
                 }
             }
         }
@@ -143,6 +148,9 @@
             width: 80%;
             margin: 0 auto;
 
+            @include Mobile {
+                width: 100%;
+            }
 
             .pitch-row {
                 align-items: flex-start;
@@ -156,6 +164,12 @@
                         flex: 1 1;
                         justify-content: center;
                         text-align: center;
+
+                        img {
+                            @include Mobile {
+                                width: 3rem;
+                            }
+                        }
 
                         .team-number {
                             align-items: center;
@@ -185,6 +199,11 @@
                         color: $white;
                         font-weight: bold;
                         margin-top: .4rem;
+
+                        @include Mobile {
+                            font-size: 1rem;
+                            line-height: 1.4rem;
+                        }
                     }
                 }
             }

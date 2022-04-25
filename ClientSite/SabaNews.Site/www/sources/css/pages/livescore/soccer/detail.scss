@@ -35,11 +35,6 @@ $fa-font-path: "../../../../fonts";
     .soccer-team-status {
         margin-bottom: 1.8rem;
     }
-    /*  .sticky-header {
-        position: sticky;
-        top: 5rem;
-        z-index: 9999999;
-    }*/
 }
 
 
@@ -66,7 +61,7 @@ $fa-font-path: "../../../../fonts";
 
 
 
-
+/*
 svg.arrowupgreen {
     fill: #59C541 !important;
 }
@@ -127,10 +122,10 @@ svg.fill-red {
             }
         }
     }
-}
+}*/
 
 //pitch view
-.lineup {
+/*.lineup {
     display: inline-block;
     width: 100%;
     position: relative;
@@ -158,30 +153,6 @@ svg.fill-red {
     font-size: 16px;
     font-weight: bold;
 }
-
-
-
-/*.team-body {
-    position: relative;
-    width: 100%;
-    height: 720px;
-    background: url(../../../../images/soccer-img.jpg) repeat-y;
-    background-size: 100% 720px;
-    background-color: #6d9b50;
-}
-
-.team-content {
-    height: 50%;
-    display: flex;
-    position: relative;
-    line-height: normal;
-    z-index: 20;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.5rem;
-}*/
-
 .pitch-row {
     align-items: flex-start;
     display: flex;
@@ -227,4 +198,4 @@ svg.fill-red {
     fill: #333;
     display: inline-block;
     text-align: center;
-}
+}*/
