@@ -127,14 +127,17 @@ export default class MatchGenetalInfo extends Component {
                             <div className="livescore-league-header-detail-name">
                                 {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
                             </div>
+                            <i className="icon-livescore icon-live-start start-active" />
                         </div>
-                        <i className="icon-livescore icon-live-start start-active" />
-                    </div>
-                    <div className="livescore-like">
-                        <span>Trận đấu quan tâm</span>
-                        <div className="count-start">
-                            <i className="icon-livescore icon-live-start" data-badge="11"></i>
+                        <div className="group-searchbar">
+                            <div className="livescore-like">
+                                <span>Trận đấu quan tâm</span>
+                                <div className="count-start">
+                                    <i className="icon-livescore icon-live-start" data-badge="11"></i>
+                                </div>
+                            </div>
                         </div>
+                        
                     </div>
                     <div className="duel-participant">
                         <i className="icon-livescore icon-live-start start-active" />

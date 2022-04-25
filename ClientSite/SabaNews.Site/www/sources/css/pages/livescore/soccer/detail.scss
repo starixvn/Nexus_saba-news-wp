@@ -19,6 +19,7 @@ $fa-font-path: "../../../../fonts";
 @import '../../../components/soccer-item';
 @import '../../../components/head-to-head';
 @import '../../../components/tile-custom';
+@import '../../../components/search-bar';
 
 
 .livescore-soccer {
@@ -36,6 +37,20 @@ $fa-font-path: "../../../../fonts";
         margin-bottom: 1.8rem;
     }
 }
+.group-searchbar {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    margin-top : 0;
+    i {
+        margin-left: 0;
+    }
+
+    .livescore-like {
+        width: 100%;
+        width : 3rem;
+    }
+}
 
 
 .fixed-nav-league {
@@ -44,6 +59,7 @@ $fa-font-path: "../../../../fonts";
         top: 5.1rem;
         z-index: 99999;
         background: $primary-bg;
+
         @include tableMobile {
             position: fixed;
             top: 4rem;
@@ -51,6 +67,11 @@ $fa-font-path: "../../../../fonts";
             width: 100%;
             z-index: 10005;
         }
+
+         .group-searchbar{
+             margin-top : .5rem;
+             margin-right : 1rem;
+         }
 
         .livescore-league-header-detail {
             margin-bottom: .5rem;
