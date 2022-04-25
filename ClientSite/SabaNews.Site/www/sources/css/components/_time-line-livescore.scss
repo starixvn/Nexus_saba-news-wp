@@ -48,6 +48,11 @@
             font-size: 1.4rem;
             line-height: 1.9rem;
             color: $color-title;
+
+            @include Mobile {
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+            }
         }
     }
 
@@ -57,6 +62,12 @@
 
         .line-up-live {
             margin: 1.2rem 0;
+
+            @include Mobile {
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+                margin: 1rem 0;
+            }
 
             &-item {
                 -ms-flex-wrap: nowrap;
@@ -87,6 +98,11 @@
                             font-size: 1.4rem;
                             line-height: 1.9rem;
 
+                            @include Mobile {
+                                font-size: 1.2rem;
+                                line-height: 1.6rem;
+                            }
+
                             &:last-child {
                                 margin-bottom: 0;
                             }
@@ -113,9 +129,13 @@
 
                             li {
                                 justify-content: flex-end;
+                            }
 
-                                .icon-livescore {
-                                    margin-right: 1rem;
+                            .icon-livescore {
+                                margin-right: 1rem;
+
+                                @include Mobile {
+                                    font-size: 1.6rem !important;
                                 }
                             }
                         }
@@ -142,6 +162,10 @@
 
                         .icon-livescore {
                             margin-left: 1rem;
+
+                            @include Mobile {
+                                font-size: 1.6rem;
+                            }
                         }
                     }
                 }
@@ -165,10 +189,20 @@
 
                     li {
                         margin-bottom: .4rem;
+
+                        @include Mobile {
+                            font-size: 1.2rem;
+                            line-height: 1.6rem;
+                        }
                     }
 
                     svg {
                         width: 100%;
+
+                        @include Mobile {
+                            width: 2rem;
+                            margin: 0 auto;
+                        }
                     }
                 }
 
@@ -182,12 +216,16 @@
 
 
 .head-top-team {
-    margin: 15px auto;
+    margin: 1.5rem auto;
     background: $bg-today;
     border: 1px solid $border-today;
     border-radius: 5px;
     max-width: 15rem;
     padding: .6rem 1.3rem;
+
+    @include Mobile {
+        margin: 1rem auto;
+    }
 
     .time-event {
         justify-content: center;
@@ -197,6 +235,11 @@
             font-size: 1.4rem;
             line-height: 1.9rem;
             color: $color-title;
+
+            @include Mobile {
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+            }
         }
 
         &-score {
@@ -205,6 +248,11 @@
             line-height: 2.2rem;
             margin-top: .5rem;
             color: $color-title;
+
+            @include Mobile {
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+            }
         }
     }
 }

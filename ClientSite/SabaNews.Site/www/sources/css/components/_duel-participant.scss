@@ -110,6 +110,10 @@
                                 line-height: 1;
                                 max-width: 9rem;
                             }
+
+                            @include iphone5 {
+                                max-width: 7rem;
+                            }
                         }
 
                         i, svg {
@@ -156,6 +160,10 @@
                                 margin-left: .6rem;
                                 line-height: 1;
                                 max-width: 9rem;
+                            }
+
+                            @include iphone5 {
+                                max-width: 7rem;
                             }
                         }
 
@@ -247,7 +255,9 @@
                             font-size: 2rem;
                             border-radius: 5px;
                         }
-
+                        @include iphone5{
+                            font-size : 1.6rem;
+                        }
                         span {
                             color: $color-title;
                             line-height: 1;
