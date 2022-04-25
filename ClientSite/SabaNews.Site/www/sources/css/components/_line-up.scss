@@ -3,10 +3,17 @@
         .line-up {
             .icon-livescore {
                 font-size: 1.6rem;
+
+                @include Mobile {
+                    font-size: 1.2rem;
+                }
             }
 
             .icon-line-up {
                 margin-right: .8rem;
+                @include Mobile{
+                    margin-right : .4rem;
+                }
 
                 &:last-child {
                     margin-right: 0;
@@ -14,6 +21,9 @@
 
                 svg {
                     width: 2rem;
+                    @include Mobile{
+                        width : 1.2rem;
+                    }
                 }
             }
 
@@ -56,10 +66,21 @@
                             padding: .6rem 0;
                             width: 55%;
                             text-align: left;
+
+                            @include Mobile {
+                                font-size: 1rem;
+                                line-height: 1.4rem;
+                            }
                         }
 
                         .number-player {
                             width: 15%;
+
+                            @include Mobile {
+                                width: 5%;
+                                font-size: 1rem;
+                                line-height: 1.4rem;
+                            }
                         }
 
                         .action-player {
@@ -187,6 +208,10 @@
                             font-size: 1.1rem;
                             position: absolute;
                             color: $white;
+                            @include Mobile{
+                                height : 2rem;
+                                font-size : 1rem;
+                            }
                         }
                     }
 
@@ -225,9 +250,26 @@
     width: 24px;
     height: 24px;
 
+    @include Mobile {
+        width: 14px;
+        width: 14px;
+    }
+
+    svg {
+        @include Mobile {
+            width: 14px;
+            width: 14px;
+        }
+    }
+
     &.ic_bong, &.ic_penalty {
         left: -23px;
         top: -10px;
+
+        @include Mobile {
+            left: -10px;
+            top: -10px;
+        }
     }
 }
 
@@ -235,16 +277,30 @@
 .icon_f.ic_the_vang, .icon_f.ic_the_do, .ic_the_vang_do {
     right: -23px;
     top: -10px;
+
+    @include Mobile {
+        right: -10px;
+        top: -10px;
+    }
 }
 
 .ic_thay_nguoi {
     bottom: -15px;
     right: -20px;
+
+    @include Mobile {
+        bottom: -13px;
+        right: -7px;
+    }
 }
 
 .ic_ownbong {
     bottom: -15px;
     right: 20px;
+    @include Mobile {
+        bottom: -13px;
+        right: -7px;
+    }
 }
 
 .number-goal {
@@ -252,4 +308,8 @@
     color: #fff;
     left: -5px;
     font-size: 1.2rem;
+    @include Mobile{
+        font-size :1rem;
+        top : 4px;
+    }
 }

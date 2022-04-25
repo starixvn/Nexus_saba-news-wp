@@ -11,5 +11,11 @@
     font-size: 1.6rem;
     line-height: 2.2rem;
     color: $color-title;
-    margin-top : 1.2rem;
+    margin-top: 1.2rem;
+
+    @include Mobile {
+        height: 3rem;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+    }
 }
