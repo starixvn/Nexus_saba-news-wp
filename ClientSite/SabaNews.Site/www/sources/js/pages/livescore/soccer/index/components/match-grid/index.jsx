@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
-import League from './League';
+import Grid from './Grid';
 import { ActionCreators } from '../../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -46,7 +46,7 @@ export class MatchGrid extends PureComponent {
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
-        if (moment(selectedDate).isBefore(today)) {
+        if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
             matches = matches.filter(match => {
                 const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
                 return match.status !== MatchStatus.NotStarted
@@ -68,14 +68,10 @@ export class MatchGrid extends PureComponent {
             return <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>;
         }
 
-        matches = this.groupMatchesByStage(matches);
+        const leagues = this.groupMatchesByStage(matches);
 
         return (
-            <div className="soccer-match-grid">
-                {
-                    matches.map((league, index) => <League key={index} selectedDate={selectedDate} searchKey={searchKey} league={league} />)
-                }
-            </div>
+            <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} />
         );
     }
 }

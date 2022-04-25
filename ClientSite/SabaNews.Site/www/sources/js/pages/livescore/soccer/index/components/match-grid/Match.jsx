@@ -109,7 +109,6 @@ export default class Match extends PureComponent {
                     </div>
                 </div>
             </div>
-            
         );
     }
 }

@@ -14,7 +14,7 @@ export const withNavigation = Component => {
 
 const DateBar = props => {
     const { isMobile, matches } = props;
-    const totalMatches = matches.length;
+    const totalMatches = matches ? matches.length : 0;
 
     return (
         <div className="livescore-soccer-date-bar">

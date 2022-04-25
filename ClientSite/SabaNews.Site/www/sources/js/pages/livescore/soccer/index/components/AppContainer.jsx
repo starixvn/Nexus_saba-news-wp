@@ -96,13 +96,13 @@ export class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        <DateBar
+                            getDateRanges={this.getDateRanges}
+                            onClick={this.getMatches}
+                        />
                         {
                             matches !== null &&
                             <>
-                                <DateBar
-                                    getDateRanges={this.getDateRanges}
-                                    onClick={this.getMatches}
-                                />
                                 <SearchBar />
                                 <MatchGrid matches={matches} />
                             </>

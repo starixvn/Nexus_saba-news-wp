@@ -70,11 +70,11 @@ export default class MatchGrid extends PureComponent {
             if (tempMatches.length === 0) {
                 tempMatches.push(item);
             } else {
-                const index = tempMatches.findIndex(x => stageId === x.stageId && round === x.round);
-                if (index === - 1) {
-                    tempMatches.push(item);
+                const lastItem = tempMatches[tempMatches.length - 1];
+                if (stageId === lastItem.stageId && round === lastItem.round) {
+                    tempMatches[tempMatches.length - 1].matches.push(match);
                 } else {
-                    tempMatches[index].matches.push(match);
+                    tempMatches.push(item);
                 }
             }
         }
