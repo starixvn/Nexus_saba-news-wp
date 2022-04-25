@@ -130,9 +130,6 @@ export default class MatchGenetalInfo extends Component {
                     <i className="icon-livescore icon-live-start start-active" />
                 </div>
                 <div className="sticky-header">
-
-
-
                     <div className="duel-participant">
                         <i className="icon-livescore icon-live-start start-active" />
                         <div className="flex-league first-league">
@@ -175,8 +172,8 @@ export default class MatchGenetalInfo extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="flex-league">
-                            <div className="column column-left home-team">
+                        <div className="flex-league"> 
+                            <div className="column column-left home-team sticky-position">
                                 <div className="duel-participant-number">
                                     {this.getBallAndCardNumber(IncidentPosition.Home)}
                                 </div>
@@ -184,7 +181,7 @@ export default class MatchGenetalInfo extends Component {
                             <ul className="column column-center detail-score-status">
                                 {this.getSubScore()}
                             </ul>
-                            <div className="column column-right away-team">
+                            <div className="column column-right away-team sticky-position">
                                 <div className="duel-participant-number">
                                     {this.getBallAndCardNumber(IncidentPosition.Away)}
                                 </div>

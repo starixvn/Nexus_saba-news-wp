@@ -38,6 +38,23 @@ $fa-font-path: "../../../../fonts";
 }
 
 
+/*.fixed-nav-league {
+    .sticky-header {
+        position: sticky;
+        top: 5rem;
+        z-index: 99999;
+
+        @include tableMobile {
+            position: fixed;
+            top: 4rem;
+        }
+
+        .sticky-position {
+            display: none;
+        }
+    }
+}*/
+
 
 
 
