@@ -488,6 +488,20 @@ export class Lineups extends Component {
                 return (
                     <ul key={key} className="list-paticipant list-change-main">
                         <li className="number-player">{incident.timeShow}'</li>
+                        <li className="icon-player">
+                            <p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" fill="white" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM14.3143 11.9308V16.5H9.68574V11.9308H6.60003L12 6.60001L17.4 11.9308H14.3143Z" fill="#42AD40" />
+                                </svg>
+                            </p>
+                            <p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" fill="white" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3ZM9.68571 12.0692L9.68571 7.5L14.3143 7.5L14.3143 12.0692L17.4 12.0692L12 17.4L6.6 12.0692L9.68571 12.0692Z" fill="#FF5744" />
+                                </svg>
+                            </p>
+                        </li>
                         <li className="name-player">
                             <p>{inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
                             <p>{outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
