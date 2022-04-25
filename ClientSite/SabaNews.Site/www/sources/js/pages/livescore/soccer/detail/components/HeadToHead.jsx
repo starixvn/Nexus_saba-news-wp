@@ -89,6 +89,21 @@ export class HeadToHead extends Component {
                                 <div className="group-match-item">
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
+                                            <div className="soccer-match-star-icon soccer-match-star-hidden-pc">
+                                                {
+                                                    result === 0 &&
+                                                    <span className="bg-color  bgyelow" title="Hòa">D</span>
+                                                }
+                                                {
+                                                    result === 1 &&
+                                                    <span className="bg-color bggreen" title="Thắng">W</span>
+                                                }
+                                                {
+                                                    result === 2 &&
+                                                    <span className="bg-color bgred" title="Bại">L</span>
+                                                }
+                                                <i className="icon-livescore icon-live-right" />
+                                            </div>
                                             <span>{time.format("DD/MM/YYYY")}</span>
                                         </div>
                                         <div className="soccer-match-team">
@@ -133,49 +148,6 @@ export class HeadToHead extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                {/*<div className="football-match">*/}
-                                {/*    <div className="columns-time w-col1">*/}
-                                {/*        <span className="time">{time.format("DD/MM/YYYY")}</span>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="columns-match w-col2">*/}
-                                {/*        <div className="row-teams">*/}
-                                {/*            <div className="columns-club">*/}
-                                {/*                <div className={`name-club club1 ${homeWinclass}`} >*/}
-                                {/*                    {match.homeTeam.teamNameEN}*/}
-                                {/*                    <img className="logo-club" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />*/}
-                                {/*                </div>*/}
-                                {/*            </div>*/}
-                                {/*            <div className="columns-number">*/}
-                                {/*                <p>*/}
-                                {/*                    <span className="soccer-scores">{homeTeamScore} - {awayTeamScore}</span>*/}
-                                {/*                </p>*/}
-                                {/*            </div>*/}
-                                {/*            <div className="columns-club">*/}
-                                {/*                <div className={`name-club club2 ${awayWinClass}`} >*/}
-                                {/*                    <img className="logo-club" alt={match.awayTeam.teamNameEN} src={match.awayTeam.icon} />*/}
-                                {/*                    {match.awayTeam.teamNameEN}*/}
-                                {/*                </div>*/}
-                                {/*            </div>*/}
-                                {/*        </div>*/}
-                                {/*        <div className="row_match_info"><span className="item_ktv">HT: {match.homeTeamHalfScore}-{match.awayTeamHalfScore}</span></div>*/}
-                                {/*    </div>*/}
-                                {/*    <div className="columns-other w-col3">*/}
-                                {/*        <a rel="nofollow" className="btn-f-more more-right" href={Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${match.matchId}`)}>{'>'}</a>*/}
-                                {/*        {*/}
-                                {/*            result === 0 &&*/}
-                                {/*            <span className="bg-color  bgyelow more-right btn-f-more" title="Hòa">D</span>*/}
-                                {/*        }*/}
-                                {/*        {*/}
-                                {/*            result === 1 &&*/}
-                                {/*            <span className="bg-color bggreen more-right btn-f-more" title="Thắng">W</span>*/}
-                                {/*        }*/}
-                                {/*        {*/}
-                                {/*            result === 2 &&*/}
-                                {/*            <span className="bg-color bgred more-right btn-f-more" title="Bại">L</span>*/}
-                                {/*        }*/}
-                                {/*        <span className="more-right">{CommonFunctions.getLeagueNameWithStage(match.league)}</span>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                             </div>
                         )
                     })

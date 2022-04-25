@@ -26,6 +26,11 @@
             align-items: center;
             justify-content: center;
 
+            @include Mobile {
+                font-size: .9rem;
+                line-height: 1.2rem;
+            }
+
             &.active {
                 background: $color-active-icon;
                 border-radius: 5px;
@@ -56,12 +61,22 @@
                         font-weight: 600;
                         font-size: 1.3rem;
                         line-height: 1.8rem;
+
+                        @include Mobile {
+                            font-size: 1.1rem;
+                            line-height: 1.5rem;
+                        }
                     }
 
                     .h2h-score {
                         font-weight: 700;
                         font-size: 1.6rem;
                         line-height: 2.2rem;
+
+                        @include Mobile {
+                            font-size: 1.3rem;
+                            line-height: 1.8rem;
+                        }
                     }
                 }
             }
@@ -106,13 +121,18 @@
         width: 70%;
 
         @include tableMobile {
-            width: 60%;
+            width: 75%;
         }
     }
 
     .group-match-item .soccer-match-item .soccer-match-stage {
         @include tableMobile {
             order: 0;
+        }
+
+        @include Mobile {
+            order: 3;
+            width: 5.4rem;
         }
 
         span {
@@ -154,30 +174,61 @@
             width: 15%;
         }
 
-        .bg-color {
-            width: 2.4rem;
-            height: 2.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 3px;
-            font-weight: 700;
-            font-size: 1.4rem;
-            line-height: 1.9rem;
-            color: $white;
-            margin-right: 1.5rem;
+        @include Mobile {
+            display: none;
+        }
+    }
+}
 
-            &.bgred {
-                background: #FF5744;
-            }
 
-            &.bggreen {
-                background: #42AD40;
-            }
+.bg-color {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: $white;
+    margin-right: 1.5rem;
 
-            &.bgyelow {
-                background: #F09700;
-            }
+    @include Mobile {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+
+    &.bgred {
+        background: #FF5744;
+    }
+
+    &.bggreen {
+        background: #42AD40;
+    }
+
+    &.bgyelow {
+        background: #F09700;
+    }
+}
+
+.soccer-match-star-hidden-pc {
+    display: none !important;
+    @include Mobile {
+        width : 100% !important;
+        display: flex !important;
+        justify-content :center;
+    }
+
+    i {
+        display: none;
+    }
+
+    .bg-color{
+        @include Mobile{
+            margin : 0 auto;
         }
     }
 }
