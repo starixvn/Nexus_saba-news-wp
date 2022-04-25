@@ -46,10 +46,10 @@ $fa-font-path: "../../../../fonts";
 
         @include tableMobile {
             position: fixed;
-            top: 11.5rem;
-            right: 50%;
-            transform: translate(50%, -50%);
-            width: 94%;
+            top: 4rem;
+            left: 0;
+            width: 100%;
+            z-index: 10005;
             background: $primary-bg;
         }
 
@@ -57,8 +57,20 @@ $fa-font-path: "../../../../fonts";
             display: none;
         }
 
+        .detail-function-bar {
+            padding-top: .4rem;
+
+            @include tableMobile {
+                margin: 0 1.2rem;
+            }
+        }
+
         .duel-participant {
             padding: 1rem;
+
+            @include tableMobile {
+                margin: 0 1rem;
+            }
 
             .flex-league {
                 margin-bottom: 1rem;
