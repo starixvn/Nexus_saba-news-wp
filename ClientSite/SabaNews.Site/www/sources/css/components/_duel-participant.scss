@@ -32,13 +32,34 @@
                 margin-bottom: 0;
                 width: 100%;
 
+                @include Mobile {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+
                 &-logo {
                     overflow: hidden;
                     position: relative;
                     width: 30%;
+
+                    @include Mobile {
+                        order: 1;
+                    }
+
                     img {
                         max-width: 100%;
                         object-fit: cover;
+                    }
+                }
+
+                &-name {
+                    font-weight: 600;
+                    font-size: 2rem;
+                    line-height: 2.4rem;
+                    color: $color-title;
+
+                    @include Mobile {
+                        order: 2;
                     }
                 }
             }
