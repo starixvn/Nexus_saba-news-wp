@@ -6,6 +6,18 @@
     justify-content: center;
     padding: 2rem 1.3rem;
     background: $primary-bg;
+    position: relative;
+
+    .start-active {
+        position: absolute;
+        right: 12px;
+        top: 12px;
+
+        @include Mobile {
+            right: 6px;
+            top: 6px;
+        }
+    }
 
     .flex-league {
         display: flex;
@@ -255,9 +267,11 @@
                             font-size: 2rem;
                             border-radius: 5px;
                         }
-                        @include iphone5{
-                            font-size : 1.6rem;
+
+                        @include iphone5 {
+                            font-size: 1.6rem;
                         }
+
                         span {
                             color: $color-title;
                             line-height: 1;

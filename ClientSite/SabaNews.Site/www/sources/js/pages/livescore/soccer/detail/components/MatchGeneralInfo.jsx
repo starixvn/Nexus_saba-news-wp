@@ -131,6 +131,7 @@ export default class MatchGenetalInfo extends Component {
 
 
                     <div className="duel-participant">
+                        <i className="icon-livescore icon-live-start start-active" />
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">
