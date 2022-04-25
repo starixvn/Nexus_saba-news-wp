@@ -7,6 +7,12 @@
         margin-bottom: 1.6rem;
     }
 
+    &-group {
+        display: flex;
+        align-items: center;
+    }
+
+
     &-logo {
         width: 4.4rem;
         height: 4.4rem;
@@ -30,25 +36,27 @@
         font-size: 1.6rem;
         line-height: 2.4rem;
         color: $color-title;
-        width: 85%;
-        display: flex;
-        align-items: center;
 
         @include tableMobile {
             font-size: 1.3rem;
             line-height: 1.8rem;
         }
-
-        i {
-            margin-left: 1.1rem;
-
-            @include tableMobile {
-                margin-left: .9rem;
-            }
+        @include Mobile{
+            max-width : 28rem;
         }
-        span{
-            font-weight : 400;
-            margin-left : .3rem;
+
+
+        span {
+            font-weight: 400;
+            margin-left: .3rem;
+        }
+    }
+
+    i {
+        margin-left: 1.1rem;
+
+        @include tableMobile {
+            margin-left: .9rem;
         }
     }
 }

@@ -121,10 +121,13 @@ export default class MatchGenetalInfo extends Component {
         return (
             <>
                 <div className="livescore-league-header-detail">
-                    <div className="livescore-league-header-detail-logo"><img loading="lazy" src={generalInfo.league.icon} /></div>
-                    <div className="livescore-league-header-detail-name">
-                        {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span> <i className="icon-livescore icon-live-start start-active" />
+                    <div className="livescore-league-header-detail-group">
+                        <div className="livescore-league-header-detail-logo"><img loading="lazy" src={generalInfo.league.icon} /></div>
+                        <div className="livescore-league-header-detail-name">
+                            {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
+                        </div>
                     </div>
+                    <i className="icon-livescore icon-live-start start-active" />
                 </div>
                 <div className="sticky-header">
 

@@ -137,6 +137,12 @@
         flex-direction: column;
         justify-content: space-between;
 
+        @include Mobile {
+            height: 52rem;
+            background: url(../../../../images/soccer-img-item.jpg) no-repeat;
+            background-size: 100% 52rem;
+        }
+
         .team-content {
             height: 50%;
             display: flex;
