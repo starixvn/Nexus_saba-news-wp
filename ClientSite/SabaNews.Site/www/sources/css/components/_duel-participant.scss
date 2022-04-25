@@ -64,7 +64,8 @@
 
                     @include Mobile {
                         order: 1;
-                        width: 100%;
+                        width: 3.2rem;
+                        height: 3.2rem;
                         text-align: center;
                     }
 
@@ -73,6 +74,11 @@
                         object-fit: cover;
                         display: block;
                         margin: 0 auto;
+
+                        @include Mobile {
+                            width: 3.2rem;
+                            height: 3.2rem;
+                        }
                     }
                 }
 
