@@ -41,7 +41,7 @@ export default class Site {
     }
 
     static CheckPostMatchStatus(status) {
-        if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone || status === MatchStatus.Delay || status === MatchStatus.Cancel || status.TBD)  {
+        if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone  || status === MatchStatus.Cancel || status.TBD)  {
             return true;
         }
         return false;
