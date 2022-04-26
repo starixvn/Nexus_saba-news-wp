@@ -1,4 +1,5 @@
-﻿.soccer-match-grid {
+﻿@import "./dot_live";
+.soccer-match-grid {
     margin-top: .8rem;
 
     &-item {
@@ -229,7 +230,7 @@
             text-align: center;
         }
 
-        &.live {
+        /*&.live {
             .soccer-match-stage {
                 p, span {
                     color: #E13C29;
@@ -265,7 +266,7 @@
                     }
                 }
             }
-        }
+        }*/
 
         .soccer-match-team {
             width: 66%;
@@ -427,6 +428,46 @@
         font-size: 1.2rem;
     }
 }
+/*
+.live {
+    .soccer-match-stage {
+        p, span {
+            color: #E13C29;
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+            position: relative;
+            font-weight: 700;
+
+            &:before {
+                content: "";
+                display: block;
+                width: .6rem;
+                height: .6rem;
+                background: #E13C29;
+                border-radius: 100%;
+                left: -15px;
+                top: 6px;
+                position: absolute;
+            }
+
+            &:after {
+                content: "";
+                display: block;
+                width: 1.4rem;
+                height: 1.4rem;
+                background: #E13C29;
+                opacity: 0.3;
+                border-radius: 100%;
+                left: -19px;
+                top: 2px;
+                position: absolute;
+                animation: live 2s ease-in-out infinite;
+            }
+        }
+    }
+}
+
+
 
 @keyframes live {
     0% {
@@ -437,4 +478,4 @@
         transform: scale(1.5);
         background-color: rgba(red,0);
     }
-}
+}*/
