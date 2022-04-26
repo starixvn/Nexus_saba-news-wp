@@ -5,7 +5,7 @@ import Match from './Match';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-const League = ({ league, selectedDate, searchKey }) => {
+const League = ({ league, selectedDate, searchKey, onUpdateFavouriteMatch }) => {
     const leagueName = CommonFunctions.getLeagueNameWithStage(league);
     const reg = new RegExp(`(${searchKey})`, 'gi');
     const displayValue = searchKey.length > 0 ? leagueName.replace(reg, "<span class='text-matched'>$1</span>") : leagueName;
@@ -33,7 +33,7 @@ const League = ({ league, selectedDate, searchKey }) => {
             <div className="soccer-match-grid-item-body">
                 {
                     league.matches.map(match =>
-                        <Match key={match.matchId} searchKey={searchKey} match={match} /> || <SkeletonMatch key={match.matchId} />
+                        <Match key={match.matchId} searchKey={searchKey} match={match} onUpdateFavouriteMatch={onUpdateFavouriteMatch}/> || <SkeletonMatch key={match.matchId} />
                     )
                 }
             </div>

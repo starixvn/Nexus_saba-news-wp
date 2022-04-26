@@ -43,6 +43,9 @@ export class MatchGrid extends PureComponent {
 
         return tempMatches;
     };
+    onUpdateFavouriteMatch = () => {
+        this.props.getFavouriteMatches();
+    }
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
