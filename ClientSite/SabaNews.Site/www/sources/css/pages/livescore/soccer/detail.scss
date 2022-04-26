@@ -52,6 +52,10 @@ $fa-font-path: "../../../../fonts";
     }
 }
 
+.livescore-league-header-detail{
+    justify-content : space-between;
+}
+
 
 .fixed-nav-league {
     .sticky-header {
@@ -68,10 +72,10 @@ $fa-font-path: "../../../../fonts";
             z-index: 10005;
         }
 
-         .group-searchbar{
-             margin-top : .5rem;
-             margin-right : 1rem;
-         }
+        .group-searchbar {
+            margin-top: .5rem;
+            margin-right: 1rem;
+        }
 
         .livescore-league-header-detail {
             margin-bottom: .5rem;
