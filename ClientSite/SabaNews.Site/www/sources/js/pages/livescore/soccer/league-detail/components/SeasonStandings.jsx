@@ -100,7 +100,7 @@ export class SeasonStandings extends PureComponent {
                 {
                     seasonStandings.map((group, index) => {
                         return (
-                            <table className="table table-bordered" key={index}>
+                            <table className="table table-bordered table-custom" key={index}>
                                 <thead>
                                     <tr>
                                         <th />
