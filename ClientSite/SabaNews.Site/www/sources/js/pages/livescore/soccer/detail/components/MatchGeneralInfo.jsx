@@ -136,6 +136,11 @@ export default class MatchGenetalInfo extends Component {
         const { isFavourite } = this.state;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
+        const isLiveMatch = generalInfo.status === MatchStatus.FirstHalf
+            || generalInfo.status === MatchStatus.SecondHalf
+            || generalInfo.status === MatchStatus.Intermission
+            || generalInfo.status === MatchStatus.ExtraTime
+            || generalInfo.status === MatchStatus.PenaltyShootout;
         return (
             <>
                 <div className="sticky-header">
@@ -164,7 +169,7 @@ export default class MatchGenetalInfo extends Component {
                                     {this.getTeamStatus(true)}
                                 </ul>
                             </div>
-                            <div className="column column-center"><MatchStage match={generalInfo} /></div>
+                            <div className={`column column-center ${isLiveMatch ? 'live': ''}`}><MatchStage match={generalInfo} /></div>
                             <div className="column column-right away-team">
                                 <ul className="soccer-team-status">
                                 {this.getTeamStatus(false)}
