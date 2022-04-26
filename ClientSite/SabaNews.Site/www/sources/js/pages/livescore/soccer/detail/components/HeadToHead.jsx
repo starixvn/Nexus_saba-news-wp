@@ -86,7 +86,7 @@ export class HeadToHead extends Component {
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
-                                <div className="group-match-item">
+                                <div className="group-match-item"  onClick={() => this.handleClick(event, match.matchId)}>
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
                                             <div className="soccer-match-star-icon soccer-match-star-hidden-pc">
@@ -107,7 +107,7 @@ export class HeadToHead extends Component {
                                             <span>{time.format("DD/MM/YYYY")}</span>
                                         </div>
                                         <div className="soccer-match-team">
-                                            <div className="group-team" onClick={() => this.handleClick(event, match.matchId)}>
+                                            <div className="group-team">
                                                 <div className="soccer-team home-team">
                                                     <img className="soccer-team-logo" loading="lazy" alt={CommonFunctions.getTeamName(match.homeTeam)} src={match.homeTeam.icon} />
                                                     <div className={`soccer-team-name ${homeWinclass}` }>{CommonFunctions.getTeamName(match.homeTeam)}</div>
