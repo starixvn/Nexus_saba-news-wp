@@ -53,6 +53,8 @@
 }
 
 
+
+
 .fixed-nav-league {
     .sticky-header {
         position: sticky;
@@ -192,3 +194,20 @@
     }
 }
 
+.live {
+    .soccer-match-stage {
+        span, p {
+            font-size: 1.5rem;
+
+            &:before {
+                left: -15px;
+                top: 8px;
+            }
+
+            &:after {
+                left: -19px;
+                top: 4px;
+            }
+        }
+    }
+}
