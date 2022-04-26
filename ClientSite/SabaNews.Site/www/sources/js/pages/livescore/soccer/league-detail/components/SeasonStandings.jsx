@@ -103,17 +103,17 @@ export class SeasonStandings extends PureComponent {
                             <table className="table table-bordered table-custom" key={index}>
                                 <thead>
                                     <tr>
-                                        <th/>
-                                        <th>{totalItems > 1 ? group.key : 'Thứ hạng'}</th>
-                                        <th>Trận</th>
-                                        <th>Thắng</th>
-                                        <th>Hòa</th>
-                                        <th>Bại</th>
-                                        <th>Bàn thắng</th>
-                                        <th>Bàn bại</th>
-                                        <th>+/-</th>
-                                        <th>Điểm</th>
-                                        <th>Phong độ</th>
+                                        <th style={{ width: "4%" }} />
+                                        <th style={{ width: "26%" }}>{totalItems > 1 ? group.key : 'Thứ hạng'}</th>
+                                        <th style={{ width: "5%" }}>Trận</th>
+                                        <th style={{ width: "5%" }}>Thắng</th>
+                                        <th style={{ width: "5%" }}>Hòa</th>
+                                        <th style={{ width: "5%" }}>Bại</th>
+                                        <th style={{ width: "5%" }}>Bàn thắng</th>
+                                        <th style={{ width: "5%" }}>Bàn bại</th>
+                                        <th style={{ width: "5%" }}>+/-</th>
+                                        <th style={{ width: "5%" }}>Điểm</th>
+                                        <th style={{ width: "30%" }}>Phong độ</th>
                                     </tr>
                                 </thead>
                                 <tbody>

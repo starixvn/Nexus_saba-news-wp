@@ -7,12 +7,13 @@
     padding: 2rem 1.3rem;
     background: $primary-bg;
     position: relative;
-
+    transition: all .3s ease-in-out;
     .icon-live-start {
         position: absolute;
         right: 12px;
         top: 12px;
-        font-size : 1.6rem;
+        font-size: 1.6rem;
+
         @include Mobile {
             right: 6px;
             top: 6px;
