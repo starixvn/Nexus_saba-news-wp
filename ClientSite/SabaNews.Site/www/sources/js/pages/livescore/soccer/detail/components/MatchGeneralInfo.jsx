@@ -141,7 +141,6 @@ export default class MatchGenetalInfo extends Component {
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
                     <div className="duel-participant">
                         <i className="icon-livescore icon-live-start start-active" />
@@ -162,10 +161,10 @@ export default class MatchGenetalInfo extends Component {
                             <div className="column column-left home-team">
                                 <ul className="team">
                                     <li className="team-name">
-                                        {generalInfo.homeTeam.teamNameEN}
+                                        {CommonFunctions.getTeamName(generalInfo.homeTeam)}
                                     </li>
                                     <li className="team-logo">
-                                        <img width="50" height="50" alt={generalInfo.homeTeam.teamNameEN} loading="lazy"
+                                        <img width="50" height="50" alt={CommonFunctions.getTeamName(generalInfo.awayTeam)} loading="lazy"
                                             src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
                                     </li>
                                 </ul>
@@ -174,10 +173,10 @@ export default class MatchGenetalInfo extends Component {
                             <div className="column column-right away-team">
                                 <ul className="team">
                                     <li className="team-logo">
-                                        <img width="50" height="50" alt={generalInfo.awayTeam.teamNameEN} loading="lazy"
+                                        <img width="50" height="50" alt={CommonFunctions.getTeamName(generalInfo.awayTeam)} loading="lazy"
                                             src={generalInfo.awayTeam.icon} />
                                     </li>
-                                    <li className="team-name">{generalInfo.awayTeam.teamNameEN}</li>
+                                    <li className="team-name">{CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
                                 </ul>
                             </div>
                         </div>

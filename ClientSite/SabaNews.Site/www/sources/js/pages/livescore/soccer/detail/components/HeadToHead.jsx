@@ -109,8 +109,8 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-team">
                                             <div className="group-team" onClick={() => this.handleClick(event, match.matchId)}>
                                                 <div className="soccer-team home-team">
-                                                    <img className="soccer-team-logo" loading="lazy" alt={match.homeTeam.teamNameEN} src={match.homeTeam.icon} />
-                                                    <div className={`soccer-team-name ${homeWinclass}` }>{match.homeTeam.teamNameEN}</div>
+                                                    <img className="soccer-team-logo" loading="lazy" alt={CommonFunctions.getTeamName(match.homeTeam)} src={match.homeTeam.icon} />
+                                                    <div className={`soccer-team-name ${homeWinclass}` }>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(true, match)}
                                                     </ul>
@@ -120,8 +120,8 @@ export class HeadToHead extends Component {
 
                                                 </div>
                                                 <div className="soccer-team away-team">
-                                                    <img className="soccer-team-logo" loading="lazy" alt={match.awayTeam.teamNameEN} src={match.awayTeam.icon} />
-                                                    <div className={`soccer-team-name ${awayWinClass}`}>{match.awayTeam.teamNameEN}</div>
+                                                    <img className="soccer-team-logo" loading="lazy" alt={CommonFunctions.getTeamName(match.awayTeam)} src={match.awayTeam.icon} />
+                                                    <div className={`soccer-team-name ${awayWinClass}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(false, match)}
                                                     </ul>
@@ -242,13 +242,13 @@ export class HeadToHead extends Component {
                     <div className="block-line-up-body">
                         <div className="head-to-head">
                             <Tabs id="head-to-head-tabs" className="head-to-head-nav" defaultActiveKey="Common">
-                                <Tab eventKey="Home" title={generalInfo.homeTeam.teamNameEN} >
+                                <Tab eventKey="Home" title={CommonFunctions.getTeamName(generalInfo.homeTeam)} >
                                     {this.renderBody(home, generalInfo.homeTeam.teamId)}
                                 </Tab>
                                 <Tab eventKey="Common" title="Chung">
                                     {this.renderBody(common)}
                                 </Tab>
-                                <Tab eventKey="Away" title={generalInfo.awayTeam.teamNameEN}>
+                                <Tab eventKey="Away" title={CommonFunctions.getTeamName(generalInfo.awayTeam)}>
                                     {this.renderBody(away, generalInfo.awayTeam.teamId)}
                                 </Tab>
                             </Tabs>

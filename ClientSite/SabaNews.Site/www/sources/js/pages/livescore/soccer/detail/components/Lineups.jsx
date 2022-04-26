@@ -399,7 +399,7 @@ export class Lineups extends Component {
                 <div className="line-up-map-main">
                     <div className="line-up-map-head">
                         <div className="team">
-                            <div className="team-head-name">{matchInfo.homeTeam.teamNameEN}</div>
+                            <div className="team-head-name">{CommonFunctions.getTeamName(matchInfo.homeTeam)}</div>
                             <div className="team-head-number">{lineup.generalInfo.homeFormation}</div>
                         </div>
                     </div>
@@ -460,7 +460,7 @@ export class Lineups extends Component {
                     </div>
                     <div className="line-up-map-head">
                         <div className="team">
-                            <div className="team-head-name">{matchInfo.awayTeam.teamNameEN}</div>
+                            <div className="team-head-name">{CommonFunctions.getTeamName(matchInfo.awayTeam)}</div>
                             <div className="team-head-number">{lineup.generalInfo.awayFormation}</div>
                         </div>
                     </div>
