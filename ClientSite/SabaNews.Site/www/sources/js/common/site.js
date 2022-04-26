@@ -108,13 +108,13 @@ export default class Site {
             case VARResultCode.RedCardCanlled:
                 return "Hủy thẻ đỏ";
             case VARResultCode.PlayPenaltyVerification:
-                return "Play penalty verification";
+                return "Phạt đền, Thẻ vàng";
             case VARResultCode.PlayPenaltyChange:
-                return "Play penalty change";
+                return "Hủy phạt đền, Xóa thẻ vàng";
             case VARResultCode.MaintainOriginalJudgment:
                 return "Giữ nguyên quyết định";
             case VARResultCode.SendPenaltyChange:
-                return "Send penalty change";
+                return "Nâng mức thẻ";
 
         }
     }
