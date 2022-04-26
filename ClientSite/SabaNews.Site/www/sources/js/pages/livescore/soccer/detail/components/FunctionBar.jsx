@@ -85,8 +85,9 @@ class FunctionBar extends PureComponent {
     scrollToTab = tab =>  {
         var section = document.getElementById(tab);
         if(!section) return null;
+        var headerHeight = document.querySelector(".sticky-header").offsetHeight;
         window.scroll({
-            top: section.offsetTop,
+            top: section.offsetTop - headerHeight,
             left: 0,
             behavior: 'smooth'
         });
