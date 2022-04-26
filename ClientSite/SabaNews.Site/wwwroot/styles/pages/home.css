@@ -59,7 +59,7 @@ body {
       padding: 0; } }
 
 .main {
-  padding-top: 7rem; }
+  padding-top: 2rem; }
   @media screen and (max-width: 1024px) {
     .main {
       padding-top: 1rem; } }
@@ -473,7 +473,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         padding: 0 1.2rem;
         font-weight: bold; }
   .header .top-header {
-    position: absolute;
+    /*position: absolute;*/
     width: 100%;
     padding: .5rem 0;
     background-color: #FFFDF9;
