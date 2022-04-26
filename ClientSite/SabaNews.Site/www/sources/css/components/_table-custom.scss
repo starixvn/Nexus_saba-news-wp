@@ -1,3 +1,49 @@
-﻿.table-custom{
-    //...
+﻿.table-custom {
+    .position {
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .soccer-team {
+        display: flex;
+        align-items: center;
+
+        .soccer-team-logo {
+            width: 2.4rem;
+            height: 2.4rem;
+            margin-right: 1.6rem;
+        }
+    }
+
+    .wld-wrapper {
+        display: flex;
+
+        > div {
+            margin-right: 4px;
+        }
+
+        .wld {
+            border-radius: 4px;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+
+            &.win {
+                background-color: #14dc4b;
+            }
+
+            &.loss {
+                background-color: #dc0000;
+            }
+
+            &.draw {
+                background-color: #ffcd00;
+            }
+        }
+    }
 }
