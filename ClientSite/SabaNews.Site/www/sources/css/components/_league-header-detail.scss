@@ -35,7 +35,8 @@
         font-size: 1.6rem;
         line-height: 2.4rem;
         color: $color-title;
-
+        display : flex;
+        align-items : center;
         @include tableMobile {
             font-size: 1.3rem;
             line-height: 1.8rem;
