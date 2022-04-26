@@ -82,7 +82,10 @@ export default class Match extends PureComponent {
     };
 
     handleClick = event => {
-        console.log(123);
+        const className = event.target.className;
+        if(className.includes("icon-livescore")) {
+            return;
+        }
         const matchId = this.props.match.matchId;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
         if (event.ctrlKey) {
@@ -92,7 +95,8 @@ export default class Match extends PureComponent {
         }
     };
 
-    handleUpdatefavourite = matchId => {
+    handleUpdatefavourite = () => {
+        const matchId = this.props.match.matchId;
         let favouriteMatches =  this.getFavouriteList();
         const isFavourite = favouriteMatches.find(item => item === matchId);
         if(isFavourite) {
@@ -123,7 +127,7 @@ export default class Match extends PureComponent {
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <i className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">

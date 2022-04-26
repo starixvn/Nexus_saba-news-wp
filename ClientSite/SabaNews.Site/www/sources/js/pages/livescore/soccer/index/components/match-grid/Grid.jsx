@@ -51,7 +51,7 @@ export default class Grid extends PureComponent {
                 >
                     {
                         leagues.map((league, index) =>
-                            <League key={index} selectedDate={selectedDate} searchKey={searchKey} league={league} />)
+                            <League key={index} selectedDate={selectedDate} searchKey={searchKey} league={league} onUpdateFavouriteMatch={this.props.onUpdateFavouriteMatch} />)
                     }
                 </InfiniteScroll>
             </div>

@@ -74,7 +74,7 @@ export class MatchGrid extends PureComponent {
         const leagues = this.groupMatchesByStage(matches);
 
         return (
-            <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} />
+            <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
         );
     }
 }
