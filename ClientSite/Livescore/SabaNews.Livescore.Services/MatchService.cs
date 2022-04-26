@@ -95,7 +95,8 @@
             foreach(var item in standings)
             {
                 item.Matches = floatMatches.Where(match => match.StageId == item.StageId
-                    && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId)).ToList();
+                    && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId))
+                    .OrderByDescending(x => x.StartTime).ToList();
             }
 
             return standings.ToList();

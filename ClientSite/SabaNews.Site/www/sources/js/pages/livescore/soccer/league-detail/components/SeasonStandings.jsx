@@ -41,9 +41,9 @@ export class SeasonStandings extends PureComponent {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
         let result = <div />;
-        const win = <div className="wld win">W</div>;
-        const loss = <div className="wld loss">L</div>;
-        const draw = <div className="wld draw">D</div>;
+        const win = <div className="wld win">T</div>;
+        const loss = <div className="wld loss">B</div>;
+        const draw = <div className="wld draw">H</div>;
         if (match[`${homeFieldName}PenaltyScore`]) {
             if (match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 result = win;
@@ -144,7 +144,7 @@ export class SeasonStandings extends PureComponent {
                                                     <td>
                                                         <div className="wld-wrapper">
                                                             {
-                                                                item.matches.map(match =>
+                                                                item.matches.slice(0, 5).map(match =>
                                                                     <div key={match.matchId}>{this.getMatchResult(item.teamId, match)}</div>)
                                                             }
                                                         </div>
