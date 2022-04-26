@@ -7,7 +7,7 @@
             console.log(headerHeight);
             wapper.addClass('fixed-nav-league');
         } else {
-            wapper.addClass('fixed-nav-league');
+            wapper.removeClass('fixed-nav-league');
         }
     }
     window.addEventListener('scroll', function () { checkScroll() })
