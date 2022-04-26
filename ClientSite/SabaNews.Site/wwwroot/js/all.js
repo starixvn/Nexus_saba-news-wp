@@ -72,9 +72,10 @@ $(document).ready(function () {
     if (document.querySelector('.wapper') != null) {
         var checkScrollHome = function () {
             var main = document.querySelector('.wapper');
-            var top_of_obj = main.offsetTop;
+            //var top_of_obj = main.offsetTop;
+            var heightSection = $(".header-controls").innerHeight();
             var top_of_window = window.scrollY;
-            if (top_of_window > top_of_obj) {
+            if (top_of_window > heightSection) {
                 main.classList.add('active-fixed');
             } else {
                 main.classList.remove('active-fixed');
