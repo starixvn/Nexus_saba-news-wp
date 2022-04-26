@@ -1,4 +1,75 @@
 ﻿.table-custom {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    margin-bottom: 1.4rem;
+    background: $border-soccer-item;
+    margin-top: .8rem;
+
+    .table-custom-cell {
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+
+        &.cell-rank {
+            width: 4rem;
+        }
+
+        &.cell-participant {
+            align-self: center;
+            display: block;
+            flex: 1 0 15rem;
+            justify-content: flex-start;
+            left: 32px;
+            overflow: hidden;
+            position: sticky;
+            text-overflow: ellipsis;
+            top: 0;
+            white-space: nowrap;
+            width: 15rem;
+            z-index: 1;
+        }
+
+        &.cell-form {
+            width: 18rem;
+        }
+    }
+
+    &-header {
+        display: flex;
+        height: 4rem;
+        user-select: none;
+        align-items: center;
+
+        .table-custom-cell {
+            color: $color-title;
+        }
+    }
+
+    &-body {
+        background: $primary-bg;
+        display: grid;
+        grid-auto-rows: 3.6rem;
+
+        .table-custom-row {
+            border-bottom: 1px solid $bg-table-title-grey;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    tbody {
+        padding: .8rem;
+    }
+
     .position {
         border-radius: 4px;
         width: 20px;

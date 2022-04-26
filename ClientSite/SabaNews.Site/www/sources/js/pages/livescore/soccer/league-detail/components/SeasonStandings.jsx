@@ -100,61 +100,97 @@ export class SeasonStandings extends PureComponent {
                 {
                     seasonStandings.map((group, index) => {
                         return (
-                            <table className="table table-bordered table-custom" key={index}>
-                                <thead>
-                                    <tr>
-                                        <th style={{ width: "4%" }} />
-                                        <th style={{ width: "26%" }}>{totalItems > 1 ? group.key : 'Thứ hạng'}</th>
-                                        <th style={{ width: "5%" }}>Trận</th>
-                                        <th style={{ width: "5%" }}>Thắng</th>
-                                        <th style={{ width: "5%" }}>Hòa</th>
-                                        <th style={{ width: "5%" }}>Bại</th>
-                                        <th style={{ width: "5%" }}>Bàn thắng</th>
-                                        <th style={{ width: "5%" }}>Bàn bại</th>
-                                        <th style={{ width: "5%" }}>+/-</th>
-                                        <th style={{ width: "5%" }}>Điểm</th>
-                                        <th style={{ width: "30%" }}>Phong độ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        group.childs.map(item => {
-                                            const promotion = item.promotion ? JSON.parse(item.promotion) : null;
-                                            return (
-                                                <tr key={item.teamId}>
-                                                    <td>
-                                                        <div className="position" style={{ backgroundColor: promotion ? promotion.Color : '' }}>
-                                                            {item.position}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div className="soccer-team">
-                                                            <img className="soccer-team-logo" loading="lazy" src={item.icon} />
-                                                            <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>{item.total}</td>
-                                                    <td>{item.won}</td>
-                                                    <td>{item.draw}</td>
-                                                    <td>{item.loss}</td>
-                                                    <td>{item.goals}</td>
-                                                    <td>{item.goalsAgainst}</td>
-                                                    <td>{item.goalDiff}</td>
-                                                    <td>{item.points}</td>
-                                                    <td>
-                                                        <div className="wld-wrapper">
-                                                            {
-                                                                item.matches.slice(0, 5).map(match =>
-                                                                    <div key={match.matchId}>{this.getMatchResult(item.teamId, match)}</div>)
-                                                            }
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })
-                                    }
-                                </tbody>
-                            </table>
+                            <>
+                                <div className="table-custom">
+                                    <div className="table-custom-header ">
+                                        <div className="table-custom-cell cell-rank">#</div>
+                                        <div className="table-custom-cell cell-participant">{totalItems > 1 ? group.key : 'Đội'}</div>
+                                        <div className="table-custom-cell cell-rank">Trận</div>
+                                        <div className="table-custom-cell cell-rank">Thắng</div>
+                                        <div className="table-custom-cell cell-rank">Hòa</div>
+                                        <div className="table-custom-cell cell-rank">Bại</div>
+                                        <div className="table-custom-cell cell-rank">Bàn thắng</div>
+                                        <div className="table-custom-cell cell-rank">Bàn bại</div>
+                                        <div className="table-custom-cell cell-rank">+/-</div>
+                                        <div className="table-custom-cell cell-rank">Điểm</div>
+                                        <div className="table-custom-cell cell-rank cell-form">Phong độ</div>
+                                    </div>
+                                    <div className="table-custom-body">
+                                        <div className="table-custom-row">
+                                            <div className="table-custom-cell cell-rank">#</div>
+                                            <div className="table-custom-cell cell-participant">{totalItems > 1 ? group.key : 'Đội'}</div>
+                                            <div className="table-custom-cell cell-rank">Trận</div>
+                                            <div className="table-custom-cell cell-rank">Thắng</div>
+                                            <div className="table-custom-cell cell-rank">Hòa</div>
+                                            <div className="table-custom-cell cell-rank">Bại</div>
+                                            <div className="table-custom-cell cell-rank">Bàn thắng</div>
+                                            <div className="table-custom-cell cell-rank">Bàn bại</div>
+                                            <div className="table-custom-cell cell-rank">+/-</div>
+                                            <div className="table-custom-cell cell-rank">Điểm</div>
+                                            <div className="table-custom-cell cell-rank cell-form">Phong độ</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <table className="table table-bordered table-custom" key={index}>
+                                    <thead>
+                                        <tr>
+                                            <th style={{ width: "4%" }}>#</th>
+                                            <th style={{ width: "26%" }}>{totalItems > 1 ? group.key : 'Đội'}</th>
+                                            <th style={{ width: "5%" }}>Trận</th>
+                                            <th style={{ width: "5%" }}>Thắng</th>
+                                            <th style={{ width: "5%" }}>Hòa</th>
+                                            <th style={{ width: "5%" }}>Bại</th>
+                                            <th style={{ width: "5%" }}>Bàn thắng</th>
+                                            <th style={{ width: "5%" }}>Bàn bại</th>
+                                            <th style={{ width: "5%" }}>+/-</th>
+                                            <th style={{ width: "5%" }}>Điểm</th>
+                                            <th style={{ width: "30%" }}>Phong độ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            group.childs.map(item => {
+                                                const promotion = item.promotion ? JSON.parse(item.promotion) : null;
+                                                return (
+                                                    <tr key={item.teamId}>
+                                                        <td>
+                                                            <div className="position" style={{ backgroundColor: promotion ? promotion.Color : '' }}>
+                                                                {item.position}
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div className="soccer-team">
+                                                                <img className="soccer-team-logo" loading="lazy" src={item.icon} />
+                                                                <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>{item.total}</td>
+                                                        <td>{item.won}</td>
+                                                        <td>{item.draw}</td>
+                                                        <td>{item.loss}</td>
+                                                        <td>{item.goals}</td>
+                                                        <td>{item.goalsAgainst}</td>
+                                                        <td>{item.goalDiff}</td>
+                                                        <td>{item.points}</td>
+                                                        <td>
+                                                            <div className="wld-wrapper">
+                                                                {
+                                                                    item.matches.slice(0, 5).map(match =>
+                                                                        <div key={match.matchId}>{this.getMatchResult(item.teamId, match)}</div>)
+                                                                }
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })
+                                        }
+                                    </tbody>
+                                </table>
+                            </>
                         );
                     })
                 }
