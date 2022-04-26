@@ -69,7 +69,7 @@ export default class CommonFunctions {
         if(!matchIds) {
             matchIds = [];
         } else {
-            matchIds = JSON.parse(matchIds);
+            matchIds = JSON.parse(matchIds.toString());
             matchIds = matchIds.filter(match => match !== null);
         }
         return matchIds;
@@ -80,6 +80,7 @@ export default class CommonFunctions {
     }
 
     static updateFavouriteMatch(matchId) {
+        if(!matchId) return null;
         let favouriteMatches =  this.getFavouriteMatches();
         const favourite = favouriteMatches.find(item => item === matchId);
         let isFavourite = false;

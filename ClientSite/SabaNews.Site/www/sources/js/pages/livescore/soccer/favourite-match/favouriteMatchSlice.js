@@ -57,29 +57,29 @@ const favouriteMatchSlice = createSlice({
 
         },
         setLiveMatches: (state, action) => {
-            liveMatches = [];
-            const liveMatchesTmp = action.payload;
+            const liveMatches = action.payload;
             const totalItems = liveMatches.length;
             for (let i = 0; i < totalItems; i++) {
-                let index = state.preMatches.findIndex(item => item.matchId === liveMatchesTmp[i].matchId);
+                let index = state.preMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
                     state.preMatches[index] = liveMatches[i];
                 }
 
-                index = state.matches.findIndex(item => item.matchId === liveMatchesTmp[i].matchId);
+                index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
                     state.matches[index] = liveMatches[i];
                 }
 
-                index = state.postMatches.findIndex(item => item.matchId === liveMatchesTmp[i].matchId);
+                index = state.postMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
                     state.postMatches[index] = liveMatches[i];
                 }
 
-                index = state.liveMatches.findIndex(item => item.matchId === liveMatchesTmp[i].matchId);
+                index = state.liveMatches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
                     state.liveMatches[index] = liveMatches[i];
                 }
+                console.log(liveMatches[i]);
             }
         }
     }

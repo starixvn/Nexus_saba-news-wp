@@ -1,5 +1,7 @@
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
+import CommonFunctions from '@jsroot/common/common-functions';
+
 import {
     setMajorLeagues,
     setMatches,
@@ -14,9 +16,9 @@ const getMajorLeagues = () => async dispatch => {
 };
 
 const getMatches = () => async dispatch => {
-    const matchIds = localStorage.getItem("favourite-matches");
+    const matchIds = CommonFunctions.getFavouriteMatches();
     const param = {
-        matchIds: matchIds
+        matchIds: JSON.stringify(matchIds)
     };
     const url = Site.resolveClientUrl('soccer/GetMatchByIds');
     await DataService.postDataAsync(url, param).then(response => {
