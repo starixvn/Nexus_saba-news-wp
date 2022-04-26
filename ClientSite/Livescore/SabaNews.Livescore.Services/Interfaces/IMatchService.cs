@@ -29,6 +29,8 @@
 
         Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria);
 
+        Task<IList<Match>> GetMatchByIdsAsync(GetMatchByIdsCriteria criteria);
+
 
     }
 }

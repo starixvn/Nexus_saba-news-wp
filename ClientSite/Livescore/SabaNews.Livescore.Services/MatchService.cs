@@ -147,8 +147,12 @@
 
         public async Task<HeadToHeadDetail> GetHeadToHeadAsync(GetHeadToHeadCriteria criteria)
         {
-            var data = await matchRepository.GetHeadToHeadAsync(criteria);
-            return data;
+            return await matchRepository.GetHeadToHeadAsync(criteria);
+        }
+
+        public async Task<IList<Match>> GetMatchByIdsAsync(GetMatchByIdsCriteria criteria)
+        {
+            return await matchRepository.GetMatchByIdsAsync(criteria);
         }
     }
 }

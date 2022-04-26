@@ -1,10 +1,37 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
-import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
+import Site from '@jsroot/common/site';
 
 export default class Match extends PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isFavourite: false
+        };
+    }
+    componentDidMount() {
+        const match = this.props.match;
+        let matchIds = this.getFavouriteList();
+        const matchIndex = matchIds.findIndex(item => item === match.matchId);
+        const isFavourite = matchIndex !== -1 ;
+        this.setState({ isFavourite: isFavourite });
+    }
+
+    getFavouriteList = () => {
+        let matchIds = localStorage.getItem("favourite-matches");
+        if(!matchIds) {
+            matchIds = [];
+        } else {
+            matchIds = JSON.parse(matchIds);
+        }
+        return matchIds;
+    }
+
+
+
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
@@ -55,6 +82,7 @@ export default class Match extends PureComponent {
     };
 
     handleClick = event => {
+        console.log(123);
         const matchId = this.props.match.matchId;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
         if (event.ctrlKey) {
@@ -64,6 +92,22 @@ export default class Match extends PureComponent {
         }
     };
 
+    handleUpdatefavourite = matchId => {
+        let favouriteMatches =  this.getFavouriteList();
+        const isFavourite = favouriteMatches.find(item => item === matchId);
+        if(isFavourite) {
+            favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
+            this.setState({ isFavourite: false });
+        } else {
+            favouriteMatches = [...favouriteMatches, matchId];
+            this.setState({ isFavourite: true });
+        }
+        localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
+        if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
+            this.props.onUpdateFavouriteMatch();
+        }
+    }
+
     render() {
         const { match, searchKey } = this.props;
         const isLiveMatch = match.status === MatchStatus.FirstHalf
@@ -72,13 +116,14 @@ export default class Match extends PureComponent {
             || match.status === MatchStatus.ExtraTime
             || match.status === MatchStatus.PenaltyShootout;
         const isIntermission = match.status === MatchStatus.Intermission;
+        const { isFavourite } = this.state;
 
         return (
             <div className="group-match-item">
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <i className="icon-livescore icon-favourite-outline" />
+                    <i className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">

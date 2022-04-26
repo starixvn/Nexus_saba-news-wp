@@ -93,6 +93,12 @@
             return View("~/Views/Livescore/Soccer/LeagueDetail.cshtml", model);
         }
 
+        [Route("lich-thi-dau/bong-da/tran-dau-quan-tam")]
+        public IActionResult FavouriteMatch()
+        {
+            return View("~/Views/Livescore/Soccer/FavouriteMatch.cshtml");
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
         {
@@ -158,14 +164,6 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateDetailData([FromBody] GetMatchDetailCriteria criteria)
-        {
-            var matchId = criteria.MatchId;
-            var result = await matchService.GetMatchDetailAsync(criteria);
-            return Ok();
-        }
-
-        [HttpPost]
         public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchDetailCriteria criteria)
         {
             var matchId = criteria.MatchId;
@@ -180,5 +178,17 @@
 
             return Ok(result);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetMatchByIds([FromBody] GetMatchByIdsCriteria model)
+        {
+            var result = new MatchFavourite
+            {
+                Matches = await matchService.GetMatchByIdsAsync(model),
+                LiveMatches = await matchService.GetLiveMatchAsync()
+            };
+            return Ok(result);
+        }
+
     }
 }

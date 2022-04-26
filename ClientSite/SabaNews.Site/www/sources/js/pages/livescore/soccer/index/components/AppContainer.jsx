@@ -24,6 +24,7 @@ export class AppContainer extends Component {
         this.props.setIsMobile(window.innerWidth <= MobileMaxWidth ? true : false);
         this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
         this.props.getMajorLeagues();
+        this.props.getFavouriteMatches();
         this.getMatches(this.props.selectedDate);
     }
 
@@ -109,7 +110,7 @@ export class AppContainer extends Component {
                         }
                     </div>
                     <div className="livescore-soccer-extension">
-                        <FavoriteMatches />
+                        <FavoriteMatches matches={this.props.favouriteMatches} />
                         <FavoriteLeagues leagues={this.props.majorLeagues} />
                     </div>
                 </div>
@@ -121,8 +122,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches } = state;
-    return { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches };
+    const { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches, favouriteMatches } = state;
+    return { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches, favouriteMatches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
