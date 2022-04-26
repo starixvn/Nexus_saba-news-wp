@@ -8,11 +8,11 @@
     background: $primary-bg;
     position: relative;
 
-    .start-active {
+    .icon-live-start {
         position: absolute;
         right: 12px;
         top: 12px;
-
+        font-size : 1.6rem;
         @include Mobile {
             right: 6px;
             top: 6px;

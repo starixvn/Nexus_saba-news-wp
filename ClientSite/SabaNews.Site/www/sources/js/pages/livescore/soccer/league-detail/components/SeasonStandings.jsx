@@ -103,7 +103,7 @@ export class SeasonStandings extends PureComponent {
                             <table className="table table-bordered table-custom" key={index}>
                                 <thead>
                                     <tr>
-                                        <th />
+                                        <th/>
                                         <th>{totalItems > 1 ? group.key : 'Thứ hạng'}</th>
                                         <th>Trận</th>
                                         <th>Thắng</th>
