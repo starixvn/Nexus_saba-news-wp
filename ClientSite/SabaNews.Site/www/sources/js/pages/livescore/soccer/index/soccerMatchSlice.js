@@ -54,9 +54,6 @@ const soccerMatchSlice = createSlice({
                     }
                 }
             }
-        },
-        setFavouriteMatches: (state, action) => {
-            state.favouriteMatches = action.payload;
         }
     }
 });
@@ -70,8 +67,7 @@ export const {
     setDateRanges,
     setMajorLeagues,
     setMatches,
-    setLiveMatches,
-    setFavouriteMatches
+    setLiveMatches
 } = actions;
 
 export default reducer;

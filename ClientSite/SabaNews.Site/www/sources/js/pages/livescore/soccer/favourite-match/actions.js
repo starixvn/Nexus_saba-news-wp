@@ -3,8 +3,7 @@ import DataService from '@jsroot/common/dataService';
 import {
     setMajorLeagues,
     setMatches,
-    setLiveMatches,
-    setFavouriteMatches
+    setLiveMatches
 } from './favouriteMatchSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -32,18 +31,11 @@ const getLiveMatches = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
-const getFavouriteMatches = () => async dispatch => {
-    const matchIds = localStorage.getItem("favourite-matches");
-    dispatch(setFavouriteMatches(JSON.parse(matchIds)))
-}
-
 export const ActionCreators = {
     setMajorLeagues,
     setMatches,
     setLiveMatches,
-    setFavouriteMatches,
     getMajorLeagues,
     getMatches,
-    getLiveMatches,
-    getFavouriteMatches
+    getLiveMatches
 };

@@ -1,8 +1,9 @@
 ﻿import React from 'react';
 import { ThemeProvider } from 'react-bootstrap';
 import Site from '@jsroot/common/site';
+import CommonFunctions from '@jsroot/common/common-functions';
 
-const FavoriteMatches = ({ matches }) => {
+const FavoriteMatches = () => {
 
     const handleClick = event => {
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam`);
@@ -12,10 +13,11 @@ const FavoriteMatches = ({ matches }) => {
             window.location = url;
         }
     }
+    const matches = CommonFunctions.getFavouriteMatches();
     return (
         <div className="livescore-like" onClick={handleClick}>
             <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
-            <span className="number-like">{ matches ? matches.length: 0}</span>
+            <span className="number-like">{ matches.length }</span>
         </div>
     );
 };

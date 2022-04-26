@@ -63,4 +63,18 @@ export default class CommonFunctions {
     static getTeamName(team) {
         return team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
     }
+
+    static getFavouriteMatches() {
+        let matchIds = localStorage.getItem("favourite-matches");
+        if(!matchIds) {
+            matchIds = [];
+        } else {
+            matchIds = JSON.parse(matchIds);
+        }
+        return matchIds;
+    }
+
+    static updateFavouriteMatches(matches) {
+        document.querySelector('.number-like').innerHTML = matches.length;
+    }
 }

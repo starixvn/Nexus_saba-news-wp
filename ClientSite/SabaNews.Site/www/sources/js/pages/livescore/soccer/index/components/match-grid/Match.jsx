@@ -8,28 +8,14 @@ export default class Match extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = {
-            isFavourite: false
-        };
-    }
-    componentDidMount() {
         const match = this.props.match;
-        let matchIds = this.getFavouriteList();
+        let matchIds = CommonFunctions.getFavouriteMatches();
         const matchIndex = matchIds.findIndex(item => item === match.matchId);
         const isFavourite = matchIndex !== -1 ;
-        this.setState({ isFavourite: isFavourite });
+        this.state = {
+            isFavourite: isFavourite
+        };
     }
-
-    getFavouriteList = () => {
-        let matchIds = localStorage.getItem("favourite-matches");
-        if(!matchIds) {
-            matchIds = [];
-        } else {
-            matchIds = JSON.parse(matchIds);
-        }
-        return matchIds;
-    }
-
 
 
     getTeamStatus = (match, isHomeTeam) => {
@@ -83,7 +69,7 @@ export default class Match extends PureComponent {
 
     handleClick = event => {
         const className = event.target.className;
-        if(className.includes("icon-livescore")) {
+        if(className.includes('icon-livescore')) {
             return;
         }
         const matchId = this.props.match.matchId;
@@ -97,19 +83,17 @@ export default class Match extends PureComponent {
 
     handleUpdatefavourite = () => {
         const matchId = this.props.match.matchId;
-        let favouriteMatches =  this.getFavouriteList();
+        let favouriteMatches =  CommonFunctions.getFavouriteMatches();
         const isFavourite = favouriteMatches.find(item => item === matchId);
         if(isFavourite) {
             favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
             this.setState({ isFavourite: false });
         } else {
-            favouriteMatches = [...favouriteMatches, matchId];
+            favouriteMatches.push(matchId);
             this.setState({ isFavourite: true });
         }
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
-        if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
-            this.props.onUpdateFavouriteMatch();
-        }
+        CommonFunctions.updateFavouriteMatches(favouriteMatches);
     }
 
     render() {

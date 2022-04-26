@@ -7,7 +7,6 @@ const favouriteMatchSlice = createSlice({
     name: 'favouriteMatchSlice',
     initialState: {
         majorLeagues: [],
-        favouriteMatches: [],
         matches: null,
         preMatches: null,
         postMatches: null,
@@ -82,9 +81,6 @@ const favouriteMatchSlice = createSlice({
                     state.liveMatches[index] = liveMatches[i];
                 }
             }
-        },
-        setFavouriteMatches: (state, action) => {
-            state.favouriteMatches = action.payload;
         }
     }
 });
@@ -94,8 +90,7 @@ const { actions, reducer } = favouriteMatchSlice;
 export const {
     setMajorLeagues,
     setMatches,
-    setLiveMatches,
-    setFavouriteMatches
+    setLiveMatches
 } = actions;
 
 export default reducer;

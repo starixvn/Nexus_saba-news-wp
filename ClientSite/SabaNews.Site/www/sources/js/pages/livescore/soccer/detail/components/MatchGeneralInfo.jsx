@@ -10,6 +10,13 @@ import FunctionBar from './FunctionBar';
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
         super(props);
+        const match = this.props.match.generalInfo;
+        let matchIds = CommonFunctions.getFavouriteMatches();
+        const matchIndex = matchIds.findIndex(item => item === match.matchId);
+        const isFavourite = matchIndex !== -1 ;
+        this.state = {
+            isFavourite: isFavourite
+        };
     }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
@@ -118,8 +125,25 @@ export default class MatchGenetalInfo extends Component {
         }
     }
 
+    handleUpdateFavourite = () => {
+        console.log(123);
+        const matchId = this.props.match.matchId;
+        let favouriteMatches =  CommonFunctions.getFavouriteMatches();
+        const isFavourite = favouriteMatches.find(item => item === matchId);
+        if(isFavourite) {
+            favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
+            this.setState({ isFavourite: false });
+        } else {
+            favouriteMatches.push(matchId);
+            this.setState({ isFavourite: true });
+        }
+        localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
+        CommonFunctions.updateFavouriteMatches(favouriteMatches);
+    }
+
     render() {
         const { generalInfo } = this.props.match;
+        const { isFavourite } = this.state;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         return (
@@ -131,7 +155,7 @@ export default class MatchGenetalInfo extends Component {
                             <div className="livescore-league-header-detail-name">
                                 {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
                             </div>
-                            <i className="icon-livescore icon-live-start start-active" />
+                            <i  className="icon-livescore icon-live-start start-active" />
                         </div>
                         <div className="group-searchbar">
                             <div className="livescore-like">
@@ -143,7 +167,7 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                     </div>
                     <div className="duel-participant">
-                        <i className="icon-livescore icon-live-start start-active" />
+                        <i  onClick={this.handleUpdateFavourite} className="icon-livescore icon-live-start"/>
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">

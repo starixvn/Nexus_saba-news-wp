@@ -96,12 +96,6 @@ export default class MatchGrid extends PureComponent {
         }
     }
 
-    onUpdateFavouriteMatch = () => {
-        this.props.onUpdateFavouriteMatch();
-    }
-
-
-
     render() {
         let { matches, sortAsc } = this.props;
         if (matches.length === 0) {
@@ -146,19 +140,11 @@ export default class MatchGrid extends PureComponent {
                                                         return <div className="group-match-item" key={child.key}>
                                                             <div className="group-match-item-slogan">{child.text}</div>
                                                             {
-                                                                child.childs.map(match => <Match
-                                                                                        key={match.matchId}
-                                                                                        searchKey={searchKey}
-                                                                                        match={match}
-                                                                                        onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>)
+                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match}/>)
                                                             }
                                                         </div>;
                                                     } else {
-                                                        return <Match
-                                                            key={child.matchId}
-                                                            searchKey={searchKey}
-                                                            match={child}
-                                                            onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}  />;
+                                                        return <Match key={child.matchId} searchKey={searchKey} match={child} />;
                                                     }
                                                 })
                                             }

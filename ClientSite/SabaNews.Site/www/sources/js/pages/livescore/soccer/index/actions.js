@@ -7,8 +7,7 @@ import {
     setDateRanges,
     setMajorLeagues,
     setMatches,
-    setLiveMatches,
-    setFavouriteMatches
+    setLiveMatches
 } from './soccerMatchSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -32,16 +31,6 @@ const getLiveMatches = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
-const getFavouriteMatches = () => async dispatch => {
-    let matchIds = localStorage.getItem("favourite-matches");
-    if(!matchIds) {
-        matchIds = [];
-    } else {
-        matchIds = JSON.parse(matchIds);
-    }
-    dispatch(setFavouriteMatches(matchIds))
-}
-
 export const ActionCreators = {
     setIsMobile,
     setSearchKey,
@@ -49,10 +38,8 @@ export const ActionCreators = {
     setDateRanges,
     setMajorLeagues,
     setMatches,
-    setFavouriteMatches,
     getMajorLeagues,
     getMatchesByDate,
     getLiveMatches,
-    getFavouriteMatches,
     setLiveMatches
 };
