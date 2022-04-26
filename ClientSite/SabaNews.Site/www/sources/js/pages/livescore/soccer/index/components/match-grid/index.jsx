@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
+import SearchBar from '../SearchBar';
 import Grid from './Grid';
 import { ActionCreators } from '../../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -67,14 +68,20 @@ export class MatchGrid extends PureComponent {
             matches = this.filterMatches(matches, searchKey);
         }
 
-        if (matches.length === 0 && searchKey.length > 0) {
-            return <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>;
-        }
-
         const leagues = this.groupMatchesByStage(matches);
 
         return (
-            <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+            <>
+                <SearchBar />
+                {
+                    matches.length === 0 && searchKey.length > 0 &&
+                    <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>
+                }
+                {
+                    matches.length > 0 &&
+                    <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                }
+            </>
         );
     }
 }

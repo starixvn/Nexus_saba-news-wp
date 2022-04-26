@@ -6,9 +6,9 @@ import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import DateBar from './DateBar';
-import SearchBar from './SearchBar';
 import MatchGrid from './match-grid/index';
 import SignalR from './SignalR';
+import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MobileMaxWidth } from '@jsroot/common/constants';
 moment.updateLocale('vi', {
@@ -78,8 +78,8 @@ export class AppContainer extends Component {
             this.props.setSearchKey('');
         }
 
+        this.props.setMatches(null);
         if (window.isLivePage) {
-            this.props.setMatches([]);
             this.props.getLiveMatches();
         } else {
             this.props.getMatchesByDate({
@@ -90,7 +90,7 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { matches } = this.props;
+        const { matches, favouriteMatches, majorLeagues } = this.props;
 
         return (
             <div className="container livescore-container">
@@ -102,16 +102,17 @@ export class AppContainer extends Component {
                             onClick={this.getMatches}
                         />
                         {
+                            matches === null &&
+                            <SkeletonGrid />
+                        }
+                        {
                             matches !== null &&
-                            <>
-                                <SearchBar />
-                                <MatchGrid matches={matches} />
-                            </>
+                            <MatchGrid matches={matches} />
                         }
                     </div>
                     <div className="livescore-soccer-extension">
-                        <FavoriteMatches matches={this.props.favouriteMatches} />
-                        <FavoriteLeagues leagues={this.props.majorLeagues} />
+                        <FavoriteMatches matches={favouriteMatches} />
+                        <FavoriteLeagues leagues={majorLeagues} />
                     </div>
                 </div>
             </div>
