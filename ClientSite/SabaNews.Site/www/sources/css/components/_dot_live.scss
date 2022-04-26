@@ -24,8 +24,8 @@
                 display: block;
                 width: 1.4rem;
                 height: 1.4rem;
-                background: #E13C29;
-                opacity: 0.3;
+                background-color: #E13C29;
+                opacity: 0.7;
                 border-radius: 100%;
                 left: -19px;
                 top: 2px;
@@ -37,14 +37,13 @@
 }
 
 
-
 @keyframes live {
     0% {
-        transform: scale(1,1);
+        transform: scale(0);
     }
 
     100% {
         transform: scale(1.5);
-        background-color: rgba(red,0);
+        background-color: rgba(#E13C29,0);
     }
 }
