@@ -70,11 +70,28 @@ export default class CommonFunctions {
             matchIds = [];
         } else {
             matchIds = JSON.parse(matchIds);
+            matchIds = matchIds.filter(match => match !== null);
         }
         return matchIds;
     }
 
-    static updateFavouriteMatches(matches) {
+    static updateFavouriteMatchesCount(matches) {
         document.querySelector('.number-like').innerHTML = matches.length;
+    }
+
+    static updateFavouriteMatch(matchId) {
+        let favouriteMatches =  this.getFavouriteMatches();
+        const favourite = favouriteMatches.find(item => item === matchId);
+        let isFavourite = false;
+        if(favourite) {
+            favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
+            isFavourite = false;
+        } else {
+            favouriteMatches.push(matchId);
+            isFavourite = true;
+        }
+        localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
+        this.updateFavouriteMatchesCount(favouriteMatches);
+        return isFavourite;
     }
 }

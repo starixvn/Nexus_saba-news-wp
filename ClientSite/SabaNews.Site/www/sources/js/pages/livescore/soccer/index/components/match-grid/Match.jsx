@@ -83,17 +83,8 @@ export default class Match extends PureComponent {
 
     handleUpdatefavourite = () => {
         const matchId = this.props.match.matchId;
-        let favouriteMatches =  CommonFunctions.getFavouriteMatches();
-        const isFavourite = favouriteMatches.find(item => item === matchId);
-        if(isFavourite) {
-            favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
-            this.setState({ isFavourite: false });
-        } else {
-            favouriteMatches.push(matchId);
-            this.setState({ isFavourite: true });
-        }
-        localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
-        CommonFunctions.updateFavouriteMatches(favouriteMatches);
+        const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
+        this.setState({ isFavourite: isFavourite });
     }
 
     render() {

@@ -126,19 +126,9 @@ export default class MatchGenetalInfo extends Component {
     }
 
     handleUpdateFavourite = () => {
-        console.log(123);
-        const matchId = this.props.match.matchId;
-        let favouriteMatches =  CommonFunctions.getFavouriteMatches();
-        const isFavourite = favouriteMatches.find(item => item === matchId);
-        if(isFavourite) {
-            favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
-            this.setState({ isFavourite: false });
-        } else {
-            favouriteMatches.push(matchId);
-            this.setState({ isFavourite: true });
-        }
-        localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
-        CommonFunctions.updateFavouriteMatches(favouriteMatches);
+        const matchId = this.props.match.generalInfo.matchId;
+        const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
+        this.setState({ isFavourite: isFavourite });
     }
 
     render() {
@@ -167,7 +157,7 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                     </div>
                     <div className="duel-participant">
-                        <i  onClick={this.handleUpdateFavourite} className="icon-livescore icon-live-start"/>
+                        <i  onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-live-start"}`}/>
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">
@@ -204,7 +194,7 @@ export default class MatchGenetalInfo extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="flex-league"> 
+                        <div className="flex-league">
                             <div className="column column-left home-team sticky-position">
                                 <div className="duel-participant-number">
                                     {this.getBallAndCardNumber(IncidentPosition.Home)}
