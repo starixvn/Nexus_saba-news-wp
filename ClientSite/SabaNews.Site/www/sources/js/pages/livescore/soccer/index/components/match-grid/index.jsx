@@ -75,7 +75,7 @@ export class MatchGrid extends PureComponent {
                 <SearchBar />
                 {
                     matches.length === 0 && searchKey.length > 0 &&
-                    <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>
+                    <div className="none-livescore">Không tìm thấy giải đấu hoặc trận đấu nào phù hợp.</div>
                 }
                 {
                     matches.length > 0 &&
