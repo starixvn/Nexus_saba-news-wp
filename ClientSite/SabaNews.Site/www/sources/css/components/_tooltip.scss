@@ -16,8 +16,15 @@
         text-decoration: none;
         color: #fff;
         margin-left: 5px;
+        font-weight: bold;
         &:hover {
             text-decoration: underline;
         }
     }
+}
+.Toastify__toast {
+    min-height: 20px !important;
+    padding: 4px !important;
+    border-radius: 10px;
+    text-align: center;
 }

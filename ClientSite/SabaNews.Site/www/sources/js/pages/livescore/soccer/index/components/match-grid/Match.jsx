@@ -7,7 +7,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
 import Tooltip from 'react-bootstrap/Tooltip';
 import LangHelper from '@jsroot/common/langHelper';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 toast.configure()
 
 
@@ -94,9 +94,9 @@ export default class Match extends PureComponent {
         let message = "";
         if(isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = <div className="fav-match-add"><span>Thêm vào danh sách quan tâm</span> | <a href={url}>HIỂN THỊ</a></div>;
+            message = <div className="fav-match-add"><span>Thêm vào Trận đấu quan tâm</span> | <a href={url}>HIỂN THỊ</a></div>;
         } else {
-            message = <div className="fav-match-remove"><span>Xóa khỏi trận đấu quan tâm</span></div>;
+            message = <div className="fav-match-remove"><span>Xóa khỏi Trận đấu quan tâm</span></div>;
         }
         const toastId = toast.dark(message, {
             toastId: 'fav',
