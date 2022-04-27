@@ -1,11 +1,12 @@
 ﻿import React from 'react';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 const League = ({ league }) => {
     return (
         <div className="livescore-league-header-detail">
             <div className="livescore-league-header-detail-group">
-                <div className="livescore-league-header-detail-logo"><img loading="lazy" src={league.icon} /></div>
+                <div className="livescore-league-header-detail-logo"><TeamIcon src={league.icon} /></div>
                 <div className="livescore-league-header-detail-name">
                     {CommonFunctions.getLeagueName(league)} <i className="icon-livescore icon-live-start start-active" />
                 </div>

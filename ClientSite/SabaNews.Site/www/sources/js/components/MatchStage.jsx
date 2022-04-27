@@ -11,8 +11,13 @@ export default class MatchStage extends PureComponent {
         this.intervalId = null;
 
         this.state = {
-            minutes: `0'`
+            stage: '',
+            className: ''
         };
+    }
+
+    componentDidMount() {
+        this.getMatchStage();
     }
 
     componentWillUnmount() {
@@ -23,62 +28,64 @@ export default class MatchStage extends PureComponent {
 
     getMatchStage = () => {
         const match = this.props.match;
-        let stage = null;
+        let className = '';
+        let stage = '';
         switch (match.status) {
             case MatchStatus.NotStarted:
                 const startTime = DateTimeService.convertFromUTC(match.startTime);
-                stage = <span className="font-weight-bold">{DateTimeService.toShortTimeFormat(startTime)}</span>;
+                className = 'font-weight-bold';
+                stage = DateTimeService.toShortTimeFormat(startTime);
                 break;
 
             case MatchStatus.FirstHalf:
-                this.intervalId = setInterval(() => this.setState({ minutes: this.getFirstHalfTimeMinutes(match) }), 1000 * 60);
-                stage = <span>{this.getFirstHalfTimeMinutes(match)}</span>;
+                this.intervalId = setInterval(() => this.setState({ stage: this.getFirstHalfTimeMinutes(match) }), 1000 * 60);
+                stage = this.getFirstHalfTimeMinutes(match);
                 break;
 
             case MatchStatus.SecondHalf:
-                this.intervalId = setInterval(() => this.setState({ minutes: this.getSecondHalfTimeMinutes(match) }), 1000 * 60);
-                stage = <span>{this.getSecondHalfTimeMinutes(match)}</span>;
+                this.intervalId = setInterval(() => this.setState({ stage: this.getSecondHalfTimeMinutes(match) }), 1000 * 60);
+                stage = this.getSecondHalfTimeMinutes(match);
                 break;
 
             case MatchStatus.ExtraTime:
-                this.intervalId = setInterval(() => this.setState({ minutes: this.getExtraTimeMinutes(match) }), 1000 * 60);
-                stage = <span>{this.getExtraTimeMinutes(match)}</span>;
+                this.intervalId = setInterval(() => this.setState({ stage: this.getExtraTimeMinutes(match) }), 1000 * 60);
+                stage = this.getExtraTimeMinutes(match);
                 break;
 
             case MatchStatus.Intermission:
-                stage = <p>{LangHelper.getResource('Intermission')}</p>;
+                stage = LangHelper.getResource('Intermission');
                 break;
 
             case MatchStatus.PenaltyShootout:
-                stage = <span>{LangHelper.getResource('Penalty')}</span>;
+                stage = LangHelper.getResource('Penalty');
                 break;
 
             case MatchStatus.Delay:
-                stage = <span>{LangHelper.getResource('Delay')}</span>;
+                stage = LangHelper.getResource('Delay');
                 break;
 
             case MatchStatus.Interrupt:
-                stage = <span>{LangHelper.getResource('Interrupt')}</span>;
+                stage = LangHelper.getResource('Interrupt');
                 break;
 
             case MatchStatus.Postpone:
-                stage = <span>{LangHelper.getResource('Postponed')}</span>;
+                stage = LangHelper.getResource('Postponed');
                 break;
 
             case MatchStatus.Cancel:
-                stage = <span>{LangHelper.getResource('Cancel')}</span>;
+                stage = LangHelper.getResource('Cancel');
                 break;
 
             case MatchStatus.TBD:
-                stage = <span>{LangHelper.getResource('ToBeDecided')}</span>;
+                stage = LangHelper.getResource('ToBeDecided');
                 break;
 
             default:
-                stage = <span>{LangHelper.getResource('Finish')}</span>;
+                stage = LangHelper.getResource('Finish');
                 break;
         }
 
-        return stage;
+        this.setState({ stage, className });
     };
 
     getFirstHalfTimeMinutes = match => {
@@ -109,8 +116,9 @@ export default class MatchStage extends PureComponent {
     };
 
     render() {
+        const { stage, className } = this.state;
         return (
-            <div className="soccer-match-stage">{this.getMatchStage()}</div>
+            <div className="soccer-match-stage"><span className={className}>{stage}</span></div>
         );
     }
 }

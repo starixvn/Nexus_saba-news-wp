@@ -1,10 +1,11 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import MatchStage from '@jsroot/components/MatchStage';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
 import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class Match extends PureComponent {
@@ -123,7 +124,7 @@ export default class Match extends PureComponent {
                     <div className="soccer-match-team">
                         <div className="group-team">
                             <div className="soccer-team home-team">
-                                <img className="soccer-team-logo" loading="lazy" src={match.homeTeam.icon} />
+                                <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
                                 <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.homeTeam, searchKey) }} />
                                 <ul className="soccer-team-status">
                                     {this.getTeamStatus(match, true)}
@@ -133,7 +134,7 @@ export default class Match extends PureComponent {
                                 </div>
                             </div>
                             <div className="soccer-team away-team">
-                                <img className="soccer-team-logo" loading="lazy" src={match.awayTeam.icon} />
+                                <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
                                 <div className="soccer-team-name" dangerouslySetInnerHTML={{ __html: this.getTeamName(match.awayTeam, searchKey) }} />
                                 <ul className="soccer-team-status">
                                     {this.getTeamStatus(match, false)}

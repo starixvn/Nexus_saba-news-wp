@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import Match from './Match';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
@@ -23,7 +24,7 @@ const League = ({ league, selectedDate, searchKey, onUpdateFavouriteMatch }) => 
             <div className="soccer-match-grid-item-header" onClick={handleClick}>
                 <div className="soccer-match-grid-item-league">
                     <i className="icon-livescore icon-live-start start-active" />
-                    <div className="livescore-logo-team"><img loading="lazy" src={league.icon} /></div>
+                    <div className="livescore-logo-team"><TeamIcon src={league.icon} /></div>
                     <span className="livescore-name-team" dangerouslySetInnerHTML={{ __html: displayValue }} />
                 </div>
                 <span className="icon-livescore icon-live-right" />

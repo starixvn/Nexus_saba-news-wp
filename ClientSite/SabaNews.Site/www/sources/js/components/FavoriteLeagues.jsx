@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import LangHelper from '@jsroot/common/langHelper';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -27,7 +28,7 @@ const FavoriteLeagues = ({ leagues }) => {
                         return (
                             <div key={league.leagueId} className="leagues-item" onClick={event => handleClick(event, league)}>
                                 <div className="leagues-name">
-                                    <img className="logo" loading="lazy" src={league.icon} />
+                                    <TeamIcon className="logo" src={league.icon} />
                                     <span className="text">{CommonFunctions.getLeagueName(league)}</span>
                                 </div>
                                 <div className="toggle-league">
