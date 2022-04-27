@@ -1,3 +1,23 @@
+@import '~react-toastify/scss/main';
+
 .tooltip-add-favourite-match [class$="inner"] {
-    background: #cccc;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.fav-match-add {
+    display: flex;
+    span {
+        margin-right: 5px;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+        margin-left: 5px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

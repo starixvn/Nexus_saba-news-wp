@@ -7,6 +7,9 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
 import Tooltip from 'react-bootstrap/Tooltip';
 import LangHelper from '@jsroot/common/langHelper';
+import { ToastContainer, toast } from "react-toastify";
+toast.configure()
+
 
 export default class Match extends PureComponent {
     constructor(props) {
@@ -87,13 +90,27 @@ export default class Match extends PureComponent {
     handleUpdateFavourite = () => {
         const matchId = this.props.match.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
-        this.setState({ isFavourite: isFavourite });
+        this.setState({ isFavourite: isFavourite});
+        let message = "";
+        if(isFavourite) {
+            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
+            message = <div className="fav-match-add"><span>Thêm vào danh sách quan tâm</span> | <a href={url}>HIỂN THỊ</a></div>;
+        } else {
+            message = <div className="fav-match-remove"><span>Xóa khỏi trận đấu quan tâm</span></div>;
+        }
+        const toastId = toast.dark(message, {
+            toastId: 'fav',
+            position: toast.POSITION.BOTTOM_CENTER,
+            hideProgressBar: true,
+            autoClose: 3000
+        });
+        toast.update(toastId, { render: () => message });
     }
 
     renderTooltip = () => {
         const { isFavourite } = this.state;
         return (
-            <Tooltip id="tooltip-customers" className="tooltip-add-favourite-match" >
+            <Tooltip className="tooltip-add-favourite-match" >
             { isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') :  LangHelper.getResource('AddFavouriteMatchTooltip')}
             </Tooltip>
         )

@@ -96,4 +96,13 @@ export default class CommonFunctions {
         this.updateFavouriteMatchesCount(favouriteMatches);
         return isFavourite;
     }
+
+    static messageUpdateFavMatches(isFavourite) {
+        if(isFavourite) {
+            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
+            return (`<div><span>Thêm vài danh sách quan tâm</span> | <a href=${url}>HIỂN THỊ</a></div>`);
+        } else {
+            return (`<div><span>Xóa khỏi trận đấu quan tâm</span></div>`);
+        }
+    }
 }

@@ -44,9 +44,6 @@ export class MatchGrid extends PureComponent {
 
         return tempMatches;
     };
-    onUpdateFavouriteMatch = () => {
-        this.props.getFavouriteMatches();
-    }
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
@@ -79,7 +76,7 @@ export class MatchGrid extends PureComponent {
                 }
                 {
                     matches.length > 0 &&
-                    <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                    <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} />
                 }
             </>
         );
