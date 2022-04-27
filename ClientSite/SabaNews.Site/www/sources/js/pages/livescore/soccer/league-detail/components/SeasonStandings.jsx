@@ -2,14 +2,15 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export class SeasonStandings extends PureComponent {
     constructor(props) {
         super(props);
 
+        this.MobileMaxWidth = 580;
+
         this.state = {
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            isMobile: window.innerWidth <= this.MobileMaxWidth ? true : false
         };
     }
 
@@ -28,10 +29,10 @@ export class SeasonStandings extends PureComponent {
 
     handleResize = () => {
         const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+        if (!isMobile && window.innerWidth <= this.MobileMaxWidth) {
             this.setState({ isMobile: true });
         } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
+            if (isMobile && window.innerWidth > this.MobileMaxWidth) {
                 this.setState({ isMobile: false });
             }
         }
