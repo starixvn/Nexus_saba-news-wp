@@ -15,7 +15,6 @@
         font-weight: 400;
         font-size: 1.3rem;
         line-height: 1.8rem;
-        font-weight: 600;
 
         @include iphone5 {
             font-size: 1rem;
@@ -55,6 +54,7 @@
 
         .table-custom-cell {
             color: $color-title;
+            font-weight: 600;
         }
     }
 
