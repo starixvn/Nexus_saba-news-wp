@@ -32,7 +32,14 @@ export class AppContainer extends Component {
     }
 
     handleResize = () => {
-        this.props.setIsMobile(window.innerWidth <= MobileMaxWidth ? true : false);
+        const isMobile = this.props.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.props.setIsMobile(true);
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.props.setIsMobile(false);
+            }
+        }
     }
 
     getDateRanges = selectedDate => {
@@ -122,8 +129,14 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches } = state;
-    return { minDate, maxDate, selectedDate, dateRanges, searchKey, majorLeagues, matches };
+    const {
+        minDate, maxDate, selectedDate, dateRanges,
+        searchKey, majorLeagues, matches, isMobile
+    } = state;
+    return {
+        minDate, maxDate, selectedDate, dateRanges,
+        searchKey, majorLeagues, matches, isMobile
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

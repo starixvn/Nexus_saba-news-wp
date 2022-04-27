@@ -5,18 +5,16 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
 
 export default class Match extends PureComponent {
-
     constructor(props) {
         super(props);
+
         const match = this.props.match;
-        let matchIds = CommonFunctions.getFavouriteMatches();
+        const matchIds = CommonFunctions.getFavouriteMatches();
         const matchIndex = matchIds.findIndex(item => item === match.matchId);
-        const isFavourite = matchIndex !== -1 ;
         this.state = {
-            isFavourite: isFavourite
+            isFavourite: matchIndex >= 0
         };
     }
-
 
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
@@ -72,6 +70,7 @@ export default class Match extends PureComponent {
         if(className.includes('icon-livescore')) {
             return;
         }
+
         const matchId = this.props.match.matchId;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
         if (event.ctrlKey) {
@@ -81,7 +80,7 @@ export default class Match extends PureComponent {
         }
     };
 
-    handleUpdatefavourite = () => {
+    handleUpdateFavourite = () => {
         const matchId = this.props.match.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
         this.setState({ isFavourite: isFavourite });
@@ -102,7 +101,7 @@ export default class Match extends PureComponent {
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    <i onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">

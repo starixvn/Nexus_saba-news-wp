@@ -17,8 +17,7 @@ const soccerMatchSlice = createSlice({
         selectedDate: DateTimeService.formatDateTime(selectedDate, 'YYYY-MM-DD'),
         dateRanges: [],
         majorLeagues: [],
-        matches: null,
-        favouriteMatches: []
+        matches: null
     },
     reducers: {
         setIsMobile: (state, action) => {

@@ -2,13 +2,39 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export class SeasonStandings extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+        };
+    }
+
     componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+
         this.props.getSeasonStandings({
             leagueId: window.getMatchByStageParams.leagueId,
             seasonId: window.getMatchByStageParams.seasonId
         });
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
     }
 
     groupSeasonStandings = seasonStandings => {
@@ -94,84 +120,91 @@ export class SeasonStandings extends PureComponent {
         const seasonStandings = this.groupSeasonStandings(this.props.seasonStandings);
         const promotions = this.getPromotionStandings(this.props.seasonStandings);
         const totalItems = seasonStandings.length;
+        const isMobile = this.state.isMobile;
 
         return (
             <div className="season-standings">
                 {
                     seasonStandings.map((group, index) => {
                         return (
-                            <>
-                                <div className="table-custom">
-                                    <div className="table-custom-header ">
-                                        <div className="table-custom-cell cell-rank">#</div>
-                                        <div className="table-custom-cell cell-participant">{totalItems > 1 ? group.key : 'Đội'}</div>
-                                        <div className="table-custom-cell cell-rank">Trận</div>
-                                        <div className="table-custom-cell cell-rank">Thắng</div>
-                                        <div className="table-custom-cell cell-rank">Hòa</div>
-                                        <div className="table-custom-cell cell-rank">Bại</div>
-                                        <div className="table-custom-cell cell-rank">Bàn thắng</div>
-                                        <div className="table-custom-cell cell-rank">Bàn bại</div>
-                                        <div className="table-custom-cell cell-rank">+/-</div>
-                                        <div className="table-custom-cell cell-rank">Điểm</div>
-                                        <div className="table-custom-cell cell-rank cell-form">Phong độ</div>
-                                    </div>
-                                    <div className="table-custom-body">
-                                        {
-                                            group.childs.map(item => {
-                                                const promotion = item.promotion ? JSON.parse(item.promotion) : null;
-                                                return (
-                                                    <div className="table-custom-row" key={item.teamId}>
+                            <div key={index} className="table-custom">
+                                <div className="table-custom-header ">
+                                    <div className="table-custom-cell cell-rank">#</div>
+                                    <div className="table-custom-cell cell-participant">{totalItems > 1 ? group.key : 'Đội'}</div>
+                                    <div className="table-custom-cell cell-rank">Trận</div>
+                                    {!isMobile && <div className="table-custom-cell cell-rank">Thắng</div>}
+                                    {!isMobile && <div className="table-custom-cell cell-rank">Hòa</div>}
+                                    {!isMobile && <div className="table-custom-cell cell-rank">Bại</div>}
+                                    {!isMobile && <div className="table-custom-cell cell-rank">Bàn thắng</div>}
+                                    {!isMobile && <div className="table-custom-cell cell-rank">Bàn bại</div>}
+                                    <div className="table-custom-cell cell-rank">+/-</div>
+                                    <div className="table-custom-cell cell-rank">Điểm</div>
+                                    {!isMobile && <div className="table-custom-cell cell-rank cell-form">Phong độ</div>}
+                                </div>
+                                <div className="table-custom-body">
+                                    {
+                                        group.childs.map(item => {
+                                            const promotion = item.promotion ? JSON.parse(item.promotion) : null;
+                                            return (
+                                                <div className="table-custom-row" key={item.teamId}>
+                                                    <div className="table-custom-cell cell-rank">
+                                                        <div className={`position ${promotion ? 'postition-color' : ''}`} style={{ backgroundColor: promotion ? promotion.Color : '' }}>
+                                                            {item.position}
+                                                        </div>
+                                                    </div>
+                                                    <div className="table-custom-cell cell-participant">
+                                                        <div className="soccer-team">
+                                                            <img className="soccer-team-logo" loading="lazy" src={item.icon} />
+                                                            <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="table-custom-cell cell-rank">
+                                                        <span>
+                                                            {item.total}
+                                                        </span>
+                                                    </div>
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank">
-                                                            <div className={`position ${promotion ? 'postition-color' : ''}`} style={{ backgroundColor: promotion ? promotion.Color : '' }}>
-                                                                {item.position}
-                                                            </div>
+                                                            <span>{item.won}</span>
                                                         </div>
-                                                        <div className="table-custom-cell cell-participant">
-                                                            <div className="soccer-team">
-                                                                <img className="soccer-team-logo" loading="lazy" src={item.icon} />
-                                                                <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
-                                                            </div>
-                                                        </div>
+                                                    }
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.total}
-                                                            </span>
+                                                            <span>{item.draw}</span>
                                                         </div>
+                                                    }
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.won}
-                                                            </span>
+                                                            <span>{item.loss}</span>
                                                         </div>
+                                                    }
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.draw}
-                                                            </span>
+                                                            <span>{item.goals}</span>
                                                         </div>
+                                                    }
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.loss}
-                                                            </span>
+                                                            <span>{item.goalsAgainst}</span>
                                                         </div>
-                                                        <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.goals}
-                                                            </span>
-                                                        </div>
-                                                        <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.goalsAgainst}
-                                                            </span>
-                                                        </div>
-                                                        <div className="table-custom-cell cell-rank">
-                                                            <span>
-                                                                {item.goalDiff}
-                                                            </span>
-                                                        </div>
-                                                        <div className="table-custom-cell cell-rank">
-                                                            <span className="table-bold">
-                                                                {item.points}
-                                                            </span>
-                                                        </div>
+                                                    }
+                                                    <div className="table-custom-cell cell-rank">
+                                                        <span>
+                                                            {item.goalDiff}
+                                                        </span>
+                                                    </div>
+                                                    <div className="table-custom-cell cell-rank">
+                                                        <span className="table-bold">
+                                                            {item.points}
+                                                        </span>
+                                                    </div>
+                                                    {
+                                                        !isMobile &&
                                                         <div className="table-custom-cell cell-rank cell-form">
                                                             <div className="wld-wrapper">
                                                                 {
@@ -180,14 +213,14 @@ export class SeasonStandings extends PureComponent {
                                                                 }
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                )
-                                                
-                                            })
-                                        }
-                                    </div>
+                                                    }
+                                                </div>
+                                            )
+
+                                        })
+                                    }
                                 </div>
-                            </>
+                            </div>
                         );
                     })
                 }
