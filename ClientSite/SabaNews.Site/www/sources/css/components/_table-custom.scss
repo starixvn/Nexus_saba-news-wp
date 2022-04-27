@@ -111,6 +111,11 @@
         line-height: 2rem;
         text-align: center;
         margin: 0 auto;
+
+        &.postition-color {
+            color: $white;
+            font-weight : 700;
+        }
     }
 
     .soccer-team {
@@ -122,5 +127,31 @@
             height: 2.4rem;
             margin-right: 1.6rem;
         }
+    }
+}
+
+.promotion {
+    &-flex {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom : 1.6rem;
+        &:last-child{
+            margin-bottom : 0;
+        }
+    }
+
+    &-color {
+        width: 2rem;
+        height: 2rem;
+        display: block;
+        margin-right: 1.4rem;
+        border-radius: 3px;
+    }
+
+    &-name {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.9rem;
     }
 }

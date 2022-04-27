@@ -122,7 +122,7 @@ export class SeasonStandings extends PureComponent {
                                                 return (
                                                     <div className="table-custom-row" key={item.teamId}>
                                                         <div className="table-custom-cell cell-rank">
-                                                            <div className="position" style={{ backgroundColor: promotion ? promotion.Color : '' }}>
+                                                            <div className={`position ${promotion ? 'postition-color' : ''}`} style={{ backgroundColor: promotion ? promotion.Color : '' }}>
                                                                 {item.position}
                                                             </div>
                                                         </div>
@@ -196,7 +196,12 @@ export class SeasonStandings extends PureComponent {
                     <div className="promotion">
                         {
                             promotions.map(item => {
-                                return <div key={item.Id} style={{ backgroundColor: item.Color }}>{item.NameEN}</div>
+                                return (
+                                    <div key={item.Id} className="promotion-flex">
+                                        <div className="promotion-color" style={{ backgroundColor: item.Color }}/>
+                                        <div className="promation-name">{item.NameEN}</div>
+                                    </div>
+                                )
                             })
                         }
                     </div>
