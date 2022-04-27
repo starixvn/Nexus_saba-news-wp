@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?fd25hc');
-  src:  url('fonts/Fraud-Sensor.eot?fd25hc#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?fd25hc') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?fd25hc') format('woff'),
-    url('fonts/Fraud-Sensor.svg?fd25hc#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?7mxm87');
+  src:  url('fonts/Fraud-Sensor.eot?7mxm87#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?7mxm87') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?7mxm87') format('woff'),
+    url('fonts/Fraud-Sensor.svg?7mxm87#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-favourite-outline:before {
+  content: "\e925";
+  color: #a8a8a8;
+}
 .icon-red-card:before {
   content: "\e92a";
   color: #ff5057;
@@ -57,14 +61,6 @@
   content: "\e927";
   color: #324a75;
 }
-.icon-favourite-outline:before {
-  content: "\e926";
-  color: #a8a8a8;
-}
-.icon-live-start-outline:before {
-  content: "\e925";
-  color: #ef9123;
-}
 .icon-live-right:before {
   content: "\e91d";
 }
@@ -82,7 +78,6 @@
 }
 .icon-live-start:before {
   content: "\e91b";
-  color: #6f6f6f;
 }
 .icon-event-home:before {
   content: "\e919";
