@@ -9,12 +9,12 @@ export default class Grid extends PureComponent {
         this.batchSize = 50;
 
         const matches = props.matches;
-        const groupIndex = this.getGroupIndex(0);
-        const items = matches.slice(0, groupIndex + 1);
+        const groupIndex = this.getGroupIndex(0) + 1;
+        const items = matches.slice(0, groupIndex);
         this.state = ({
             groupIndex,
             pageIndex: 0,
-            hasMore: groupIndex + 1 < matches.length,
+            hasMore: groupIndex < matches.length,
             matches: items
         });
     }
@@ -39,12 +39,12 @@ export default class Grid extends PureComponent {
 
     loadMore = pageIndex => {
         const matches = this.props.matches;
-        const groupIndex = this.getGroupIndex(this.state.groupIndex);
-        const items = matches.slice(0, groupIndex + 1);
+        const groupIndex = this.getGroupIndex(this.state.groupIndex) + 1;
+        const items = matches.slice(0, groupIndex);
         this.setState({
             groupIndex,
             pageIndex,
-            hasMore: groupIndex + 1 < matches.length,
+            hasMore: groupIndex < matches.length,
             matches: items
         });
     }
