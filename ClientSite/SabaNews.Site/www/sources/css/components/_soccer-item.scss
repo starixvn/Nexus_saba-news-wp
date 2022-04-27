@@ -1,4 +1,5 @@
 ﻿@import "./dot_live";
+
 .soccer-match-grid {
     margin-top: .8rem;
 
@@ -56,19 +57,16 @@
                     }
 
                     .livescore-logo-team {
-                        width: 3.2rem;
-                        height: 3.2rem;
-                        border-radius: 50%;
-                        border: 1px solid #DDDDDD;
+                        width: 3rem;
+                        height: 3rem;
                         position: relative;
                         overflow: hidden;
                         margin-right: 1.2rem;
-                        background: $white;
 
                         @include tableMobile {
                             margin-right: .6rem;
-                            width: 2.4rem;
-                            height: 2.4rem;
+                            width: 2.2rem;
+                            height: 2.2rem;
                         }
 
                         img {
@@ -229,6 +227,7 @@
             width: 9rem;
             text-align: center;
         }
+
         .soccer-match-team {
             width: 66%;
 
@@ -265,8 +264,8 @@
                     }
 
                     &-logo {
-                        width: 2.4rem;
-                        height: 2.4rem;
+                        width: 2.2rem;
+                        height: 2.2rem;
                         margin-right: 1.6rem;
 
                         @include tableMobile {
