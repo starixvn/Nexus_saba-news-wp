@@ -154,7 +154,7 @@ export class SeasonStandings extends PureComponent {
                                                     </div>
                                                     <div className="table-custom-cell cell-participant">
                                                         <div className="soccer-team">
-                                                            <img className="soccer-team-logo" loading="lazy" src={item.icon} />
+                                                            <div className="soccer-team-logo"><img className="soccer-team-logo" loading="lazy" src={item.icon} /></div>
                                                             <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
                                                         </div>
                                                     </div>
@@ -232,7 +232,7 @@ export class SeasonStandings extends PureComponent {
                                 return (
                                     <div key={item.Id} className="promotion-flex">
                                         <div className="promotion-color" style={{ backgroundColor: item.Color }}/>
-                                        <div className="promation-name">{item.NameEN}</div>
+                                        <div className="promotion-name">{item.NameEN}</div>
                                     </div>
                                 )
                             })

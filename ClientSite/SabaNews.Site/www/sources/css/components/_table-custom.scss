@@ -11,8 +11,16 @@
         font-size: 1.3rem;
         line-height: 1.8rem;
 
+        @include iphone5 {
+            font-size: 1rem;
+        }
+
         &.cell-rank {
             width: 4rem;
+
+            @include iphone5 {
+                width: 3rem;
+            }
         }
 
         &.cell-participant {
@@ -20,12 +28,6 @@
             display: block;
             flex: 1 0 15rem;
             justify-content: flex-start;
-            left: 32px;
-            overflow: hidden;
-            position: sticky;
-            text-overflow: ellipsis;
-            top: 0;
-            white-space: nowrap;
             width: 15rem;
             z-index: 1;
         }
@@ -114,7 +116,7 @@
 
         &.postition-color {
             color: $white;
-            font-weight : 700;
+            font-weight: 700;
         }
     }
 
@@ -122,23 +124,31 @@
         display: flex;
         align-items: center;
 
-        .soccer-team-logo {
-            width: 2.4rem;
-            height: 2.4rem;
-            margin-right: 1.6rem;
+        &-logo {
+            width: 2.2rem;
+            height: 2.2rem;
+            margin-right: 1rem;
+        }
+
+        &-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 }
 
 .promotion {
-    padding-left : 1.1rem;
+    padding-left: 1.1rem;
+
     &-flex {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        margin-bottom : 1.6rem;
-        &:last-child{
-            margin-bottom : 0;
+        margin-bottom: 1.6rem;
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 
@@ -154,5 +164,8 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.9rem;
+        @include iphone5 {
+            font-size: 1.2rem;
+        }
     }
 }
