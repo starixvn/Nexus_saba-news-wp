@@ -55,27 +55,62 @@
             border-bottom: 1px solid $bg-table-title-grey;
             display: flex;
             align-items: center;
+
+            span {
+                color: $color-detail-league;
+            }
+
+            .table-bold {
+                font-weight: 700;
+            }
+
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .wld-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                > div {
+                    margin-right: 4px;
+                }
+
+                .wld {
+                    border-radius: 3px;
+                    color: $white;
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    line-height: 1.6rem;
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+
+                    &.win {
+                        background-color: $win;
+                    }
+
+                    &.loss {
+                        background-color: $loss;
+                    }
+
+                    &.draw {
+                        background-color: $draw;
+                    }
+                }
+            }
         }
     }
 
-
-
-
-
-
-
-
-
-    tbody {
-        padding: .8rem;
-    }
-
     .position {
-        border-radius: 4px;
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
+        border-radius: 3px;
+        width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
         text-align: center;
+        margin: 0 auto;
     }
 
     .soccer-team {
@@ -86,35 +121,6 @@
             width: 2.4rem;
             height: 2.4rem;
             margin-right: 1.6rem;
-        }
-    }
-
-    .wld-wrapper {
-        display: flex;
-
-        > div {
-            margin-right: 4px;
-        }
-
-        .wld {
-            border-radius: 4px;
-            color: #fff;
-            width: 20px;
-            height: 20px;
-            line-height: 20px;
-            text-align: center;
-
-            &.win {
-                background-color: #14dc4b;
-            }
-
-            &.loss {
-                background-color: #dc0000;
-            }
-
-            &.draw {
-                background-color: #ffcd00;
-            }
         }
     }
 }
