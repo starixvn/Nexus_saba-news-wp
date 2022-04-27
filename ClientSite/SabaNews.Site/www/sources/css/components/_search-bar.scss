@@ -108,9 +108,11 @@
                     content: attr(data-badge);
 
                     @include tableMobile {
-                        right: -5px;
-                        top: -5px;
+                        right: -2px;
+                        top: -2px;
                         padding: .2rem;
+                        font-size: .8rem;
+                        line-height: 1;
                     }
                 }
             }
