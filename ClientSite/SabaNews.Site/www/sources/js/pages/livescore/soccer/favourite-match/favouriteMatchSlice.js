@@ -79,7 +79,6 @@ const favouriteMatchSlice = createSlice({
                 if (index >= 0) {
                     state.liveMatches[index] = liveMatches[i];
                 }
-                console.log(liveMatches[i]);
             }
         }
     }

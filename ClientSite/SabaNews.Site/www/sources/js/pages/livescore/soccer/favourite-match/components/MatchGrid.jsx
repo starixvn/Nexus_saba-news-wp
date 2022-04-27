@@ -33,7 +33,7 @@ export default class MatchGrid extends PureComponent {
             const key = match.league.leagueId;
             const item = {
                 key,
-                text: CommonFunctions.getLeagueName(match.league),
+                league: match.league,
                 childs: [match]
             }
             if (tempMatches.length === 0) {
@@ -138,7 +138,7 @@ export default class MatchGrid extends PureComponent {
                                                 item.childs.map(child => {
                                                     if (child.key) {
                                                         return <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan">{child.text}</div>
+                                                            <div className="group-match-item-slogan">{CommonFunctions.getLeagueName(child.league)}</div>
                                                             {
                                                                 child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match}/>)
                                                             }

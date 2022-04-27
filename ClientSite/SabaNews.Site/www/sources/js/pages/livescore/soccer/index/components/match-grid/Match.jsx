@@ -3,6 +3,9 @@ import MatchStage from '@jsroot/components/MatchStage';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class Match extends PureComponent {
     constructor(props) {
@@ -86,6 +89,15 @@ export default class Match extends PureComponent {
         this.setState({ isFavourite: isFavourite });
     }
 
+    renderTooltip = () => {
+        const { isFavourite } = this.state;
+        return (
+            <Tooltip id="tooltip-customers" className="tooltip-add-favourite-match" >
+            { isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') :  LangHelper.getResource('AddFavouriteMatchTooltip')}
+            </Tooltip>
+        )
+    };
+
     render() {
         const { match, searchKey } = this.props;
         const isLiveMatch = match.status === MatchStatus.FirstHalf
@@ -102,6 +114,12 @@ export default class Match extends PureComponent {
                     onClick={this.handleClick}
                 >
                     <i onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                        placement="bottom"
+                        overlay={this.renderTooltip()}
+                    >
+                        <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    </OverlayTrigger>
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">

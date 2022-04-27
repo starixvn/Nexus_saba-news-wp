@@ -17,5 +17,7 @@
     Round: 'Vòng',
     Striker: 'Tiền đạo',
     ToBeDecided: 'Chờ xác định',
-    Today: 'Hôm nay'
+    Today: 'Hôm nay',
+    AddFavouriteMatchTooltip: 'Thêm vào "Trận Đấu Quan Tâm"',
+    RemoveFavouriteMatchTooltip: 'Xóa khỏi "Trận Đấu Quan Tâm"'
 };

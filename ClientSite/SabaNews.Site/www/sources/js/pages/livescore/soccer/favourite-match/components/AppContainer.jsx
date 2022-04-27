@@ -113,16 +113,16 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="tat-ca" title="Tất cả">
-                                {matches  && <MatchGrid sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}  />}
+                                {matches  && <MatchGrid sortAsc matches={matches} />}
                             </Tab>
                             <Tab eventKey="truc-tiep" title="Trực tiếp">
-                                {liveMatches && <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />}
+                                {liveMatches && <MatchGrid sortAsc matches={liveMatches} />}
                             </Tab>
                             <Tab eventKey="chua-dien-ra" title="Chưa diễn ra">
-                                {preMatches && <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />}
+                                {preMatches && <MatchGrid sortAsc matches={preMatches} />}
                             </Tab>
                             <Tab eventKey="da-dien-ra" title="Đã diễn ra">
-                                {postMatches && <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />}
+                                {postMatches && <MatchGrid sortAsc={false} matches={postMatches} />}
                             </Tab>
                         </Tabs>
                     </div>
