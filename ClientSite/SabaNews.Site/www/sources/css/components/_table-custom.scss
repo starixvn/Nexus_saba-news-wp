@@ -20,6 +20,10 @@
             font-size: 1rem;
         }
 
+        @include Mobile {
+            font-size: 1.2rem;
+        }
+
         &.cell-rank {
             width: 4rem;
 
@@ -35,14 +39,11 @@
             justify-content: flex-start;
             width: 15rem;
             z-index: 1;
-
-            @include tableMobile {
-                text-align: left;
-            }
+            text-align: left;
         }
 
         &.cell-form {
-            width: 18rem;
+            width: 11rem;
         }
     }
 
@@ -55,6 +56,10 @@
         .table-custom-cell {
             color: $color-title;
             font-weight: 600;
+
+            @include Mobile {
+                font-size: 1.1rem;
+            }
         }
     }
 
@@ -172,7 +177,8 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.9rem;
-        @include iphone5 {
+
+        @include Mobile {
             font-size: 1.2rem;
         }
     }

@@ -1,5 +1,4 @@
-﻿@import '~react-loading-skeleton/dist/skeleton.css';
-@import '../../../abstracts/variables';
+﻿@import '../../../abstracts/variables';
 @import '../../../abstracts/mixins';
 @import '../../../base/base';
 @import '../../../components/block-extension';
@@ -31,9 +30,18 @@
     }
 
     .group-searchbar {
-        .livescore-soccer-search-bar {
+        display: inherit;
+        justify-content: inherit;
+        align-items: inherit;
+        margin-top: 0;
+
+        i {
+            margin-left: 0;
+        }
+
+        .livescore-like {
             width: 100%;
-            margin-right: 0;
+            width: 3rem;
         }
     }
 
@@ -49,4 +57,3 @@
         justify-content: space-between;
     }
 }
-

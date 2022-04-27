@@ -10,6 +10,14 @@ const League = ({ league }) => {
                     {CommonFunctions.getLeagueName(league)} <i className="icon-livescore icon-live-start start-active" />
                 </div>
             </div>
+            <div className="group-searchbar">
+                <div className="livescore-like">
+                    <span>Trận đấu quan tâm</span>
+                    <div className="count-start">
+                        <i className="icon-livescore icon-live-start" data-badge="1"></i>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
