@@ -77,6 +77,7 @@ export default class CommonFunctions {
 
     static updateFavouriteMatchesCount(matches) {
         document.querySelector('.number-like').innerHTML = matches.length;
+        document.querySelector('.livescore-like .icon-livescore').setAttribute('data-badge', matches.length);
     }
 
     static updateFavouriteMatch(matchId) {

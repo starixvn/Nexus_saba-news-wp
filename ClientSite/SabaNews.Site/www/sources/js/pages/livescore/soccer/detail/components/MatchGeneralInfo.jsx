@@ -136,6 +136,7 @@ export default class MatchGenetalInfo extends Component {
         const { isFavourite } = this.state;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
+        const favMatches = CommonFunctions.getFavouriteMatches();
         const isLiveMatch = generalInfo.status === MatchStatus.FirstHalf
             || generalInfo.status === MatchStatus.SecondHalf
             || generalInfo.status === MatchStatus.Intermission
@@ -156,7 +157,7 @@ export default class MatchGenetalInfo extends Component {
                             <div className="livescore-like">
                                 <span>Trận đấu quan tâm</span>
                                 <div className="count-start">
-                                    <i className="icon-livescore icon-live-start" data-badge="11"></i>
+                                    <i className="icon-livescore icon-live-start" data-badge={favMatches.length}></i>
                                 </div>
                             </div>
                         </div>

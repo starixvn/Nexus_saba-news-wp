@@ -3,8 +3,10 @@ import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 const SearchBar = props => {
+    const favMatches = CommonFunctions.getFavouriteMatches();
     return (
         <div className="group-searchbar">
             <div className="livescore-soccer-search-bar">
@@ -18,7 +20,7 @@ const SearchBar = props => {
             <div className="livescore-like">
                 <span>Trận đấu quan tâm</span>
                 <div className="count-start">
-                    <i className="icon-livescore icon-live-start" data-badge="11"></i>
+                    <i className="icon-livescore icon-live-start" data-badge={favMatches.length}></i>
                 </div>
             </div>
         </div>
