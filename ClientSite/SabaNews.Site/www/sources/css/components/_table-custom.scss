@@ -4,12 +4,18 @@
     margin-bottom: 1.4rem;
     background: $border-soccer-item;
     margin-top: 1.6rem;
+    overflow: hidden;
+
+    @include Mobile {
+        border-radius: 5px;
+    }
 
     .table-custom-cell {
         text-align: center;
         font-weight: 400;
         font-size: 1.3rem;
         line-height: 1.8rem;
+        font-weight: 600;
 
         @include iphone5 {
             font-size: 1rem;
@@ -30,6 +36,10 @@
             justify-content: flex-start;
             width: 15rem;
             z-index: 1;
+
+            @include Mobile {
+                text-align: left;
+            }
         }
 
         &.cell-form {
@@ -139,8 +149,6 @@
 }
 
 .promotion {
-    padding-left: 1.1rem;
-
     &-flex {
         display: flex;
         align-items: center;
