@@ -108,12 +108,10 @@ export class AppContainer extends Component {
                             onClick={this.getMatches}
                         />
                         {
-                            matches === null &&
-                            <SkeletonGrid />
+                            matches === null && <SkeletonGrid />
                         }
                         {
-                            matches !== null &&
-                            <MatchGrid matches={matches} />
+                            matches !== null && <MatchGrid matches={matches} />
                         }
                     </div>
                     <div className="livescore-soccer-extension">

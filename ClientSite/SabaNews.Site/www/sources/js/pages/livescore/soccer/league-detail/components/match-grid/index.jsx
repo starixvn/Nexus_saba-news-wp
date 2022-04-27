@@ -1,7 +1,7 @@
 ﻿import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
 import moment from 'moment';
-import Match from '../../index/components/match-grid/Match';
+import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
@@ -148,37 +148,12 @@ export default class MatchGrid extends PureComponent {
                 </div>
                 {
                     matches.length === 0 && searchKey.length > 0
-                    && <div className="none-livescore">Không tìm thấy trận đấu nào phù hợp.</div>
+                    && <div className="none-livescore">Không tìm thấy đội bóng nào phù hợp.</div>
                 }
-                <div className="soccer-match-grid">
-                    {
-                        matches.map(item => {
-                            return (
-                                <div className="soccer-match-grid" key={item.key}>
-                                    <div className="soccer-match-grid-item">
-                                        <div className="soccer-match-grid-item-header">{item.text}</div>
-                                        <div className="soccer-match-grid-item-body">
-                                            {
-                                                item.childs.map(child => {
-                                                    if (child.key) {
-                                                        return <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan">{child.text}</div>
-                                                            {
-                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
-                                                            }
-                                                        </div>;
-                                                    } else {
-                                                        return <Match key={child.matchId} searchKey={searchKey} match={child} />;
-                                                    }
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
-                </div>
+                {
+                    matches.length > 0 &&
+                    <Grid matches={matches} searchKey={searchKey} />
+                }
             </>
         );
     }

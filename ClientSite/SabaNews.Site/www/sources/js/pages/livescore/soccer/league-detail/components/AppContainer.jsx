@@ -9,8 +9,10 @@ import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import SignalR from './SignalR';
 import League from './League';
-import MatchGrid from './MatchGrid';
+import MatchGrid from './match-grid/index';
 import SeasonStandings from './SeasonStandings';
+import SkeletonLeague from './SkeletonLeague';
+import SkeletonGrid from './match-grid/SkeletonGrid';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 moment.updateLocale('vi', {
@@ -96,19 +98,29 @@ class AppContainer extends Component {
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
-                            league &&
-                            <League league={league} />
+                            league === null && <SkeletonLeague />
+                        }
+                        {
+                            league !== null && <League league={league} />
                         }
                         <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
                             className="live-score-nav"
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="fixtures" title="Lịch thi đấu">
-                                {preMatches && <MatchGrid sortAsc stages={stages} matches={preMatches} />}
+                                {
+                                    preMatches === null && <SkeletonGrid />
+                                }
+                                {
+                                    preMatches !== null && <MatchGrid sortAsc stages={stages} matches={preMatches} />
+                                }
                             </Tab>
                             <Tab eventKey="results" title="Kết quả">
                                 {
-                                    selectedResultsTab && postMatches &&
+                                    selectedResultsTab && postMatches === null && <SkeletonGrid />
+                                }
+                                {
+                                    selectedResultsTab && postMatches !== null &&
                                     <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
                                 }
                             </Tab>

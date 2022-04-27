@@ -116,6 +116,8 @@ export class SeasonStandings extends PureComponent {
         return promotions;
     };
 
+    getGroupName = groupName => `Bảng ${groupName.charAt(0)}`;
+
     render() {
         const seasonStandings = this.groupSeasonStandings(this.props.seasonStandings);
         const promotions = this.getPromotionStandings(this.props.seasonStandings);
@@ -130,7 +132,9 @@ export class SeasonStandings extends PureComponent {
                             <div key={index} className="table-custom">
                                 <div className="table-custom-header ">
                                     <div className="table-custom-cell cell-rank">#</div>
-                                    <div className="table-custom-cell cell-participant">{totalItems > 1 ? group.key : 'Đội'}</div>
+                                    <div className="table-custom-cell cell-participant">
+                                        {totalItems > 1 ? this.getGroupName(group.key) : 'Đội'}
+                                    </div>
                                     <div className="table-custom-cell cell-rank">Trận</div>
                                     {!isMobile && <div className="table-custom-cell cell-rank">Thắng</div>}
                                     {!isMobile && <div className="table-custom-cell cell-rank">Hòa</div>}
