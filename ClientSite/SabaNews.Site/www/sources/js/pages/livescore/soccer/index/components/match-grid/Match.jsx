@@ -113,12 +113,11 @@ export default class Match extends PureComponent {
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <i onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    <OverlayTrigger
                         placement="bottom"
                         overlay={this.renderTooltip()}
                     >
                         <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
-                    <i onClick={this.handleUpdatefavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
                     </OverlayTrigger>
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
