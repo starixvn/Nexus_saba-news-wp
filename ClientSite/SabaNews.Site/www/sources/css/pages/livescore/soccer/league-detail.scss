@@ -50,7 +50,11 @@
     }
 
     .icon-live-start {
-        font-size: 1.6rem;
+        font-size: 2.4rem;
+
+        @include Mobile {
+            font-size: 2rem;
+        }
     }
 
     .livescore-league-header-detail {
