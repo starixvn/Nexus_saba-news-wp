@@ -20,12 +20,16 @@ const FavoriteMatches = ({isMobile}) => {
                     !isMobile ?
                     <>
                         <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
-                        <span className="number-like">{ count }</span>
+                        <span className={`like-count ${count > 0 ? 'number-like' : ''}`}>{ count }</span>
                     </> :
                     <>
                         <span>Trận đấu quan tâm</span>
                         <div className="count-start">
-                            <i className="icon-livescore icon-live-start" data-badge={ count }></i>
+                            {
+                                count > 0 ?
+                                <i className="icon-livescore icon-live-start" data-badge={ count }></i> :
+                                <i className="icon-livescore icon-live-start"></i>
+                            }
                         </div>
                     </>
                 }

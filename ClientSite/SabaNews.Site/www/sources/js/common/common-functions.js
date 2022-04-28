@@ -81,14 +81,24 @@ export default class CommonFunctions {
     }
 
     static updateFavouriteMatchesCount(matches) {
-        const count = matches.length > 0 ? matches.length : "";
-        let favCountDesktop = document.querySelector('.livescore-like .number-like');
+        const count = matches.length;
+        let favCountDesktop = document.querySelector('.livescore-like .like-count');
         let favCountMobile = document.querySelector('.livescore-like .icon-livescore');
         if(favCountDesktop) {
-            favCountDesktop.innerHTML = count;
+            if(count > 0) {
+                favCountDesktop.classList.add('number-like');
+                favCountDesktop.innerHTML = count;
+            } else {
+                favCountDesktop.classList.remove('number-like');
+                favCountDesktop.innerHTML = "";
+            }
         }
         if(favCountMobile) {
-            favCountMobile.setAttribute('data-badge', count);
+            if(count > 0) {
+                favCountMobile.setAttribute('data-badge', count);
+            } else {
+                favCountMobile.removeAttribute('data-badge');
+            }
         }
     }
 
@@ -107,14 +117,5 @@ export default class CommonFunctions {
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
         this.updateFavouriteMatchesCount(favouriteMatches);
         return isFavourite;
-    }
-
-    static messageUpdateFavMatches(isFavourite) {
-        if(isFavourite) {
-            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            return (`<div><span>Thêm vài danh sách quan tâm</span> | <a href=${url}>HIỂN THỊ</a></div>`);
-        } else {
-            return (`<div><span>Xóa khỏi trận đấu quan tâm</span></div>`);
-        }
     }
 }
