@@ -97,8 +97,11 @@ export default class MatchGrid extends PureComponent {
     }
 
     render() {
-        let { matches, sortAsc } = this.props;
+        let { matches, sortAsc, isAllMatches } = this.props;
         if (matches.length === 0) {
+            if(isAllMatches) {
+                return  <div className="none-livescore">Không có trận đấu nào. Nhấn vào biểu tượng <i class="icon-livescore icon-favourite-outline"></i> để thêm trận đấu quan tâm</div>;
+            }
             return <div className="none-livescore">Không có trận đấu nào.</div>;
         }
         const searchKey = this.state.searchKey;

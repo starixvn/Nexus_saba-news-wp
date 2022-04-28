@@ -91,7 +91,6 @@ export default class Match extends PureComponent {
     handleUpdateFavourite = () => {
         const matchId = this.props.match.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
-        this.setState({ isFavourite: isFavourite});
         let message = "";
         if(isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
@@ -105,8 +104,8 @@ export default class Match extends PureComponent {
             hideProgressBar: true,
             autoClose: 3000
         });
-        toast.update(toastId, { render: () => message });
-        this.setState({isShowTooltip: false});
+        toast.update(toastId, { render: () => message, autoClose: 3000 });
+        this.setState({ isFavourite: isFavourite, isShowTooltip: false});
     }
 
     renderTooltip = () => {

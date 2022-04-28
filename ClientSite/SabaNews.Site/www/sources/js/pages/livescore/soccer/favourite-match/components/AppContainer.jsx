@@ -113,7 +113,7 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="tat-ca" title="Tất cả">
-                                {matches  && <MatchGrid sortAsc matches={matches} />}
+                                {matches  && <MatchGrid isAllMatches sortAsc matches={matches} />}
                             </Tab>
                             <Tab eventKey="truc-tiep" title="Trực tiếp">
                                 {liveMatches && <MatchGrid sortAsc matches={liveMatches} />}
