@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
+import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 const League = ({ league }) => {
     return (
@@ -12,12 +13,7 @@ const League = ({ league }) => {
                 </div>
             </div>
             <div className="group-searchbar">
-                <div className="livescore-like">
-                    <span>Trận đấu quan tâm</span>
-                    <div className="count-start">
-                        <i className="icon-livescore icon-live-start" data-badge="1"></i>
-                    </div>
-                </div>
+                <FavoriteMatches isMobile />
             </div>
         </div>
     );

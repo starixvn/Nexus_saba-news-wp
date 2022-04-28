@@ -7,6 +7,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import MatchStage from '@jsroot/components/MatchStage';
 import FunctionBar from './FunctionBar';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
+import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
@@ -155,12 +156,7 @@ export default class MatchGenetalInfo extends Component {
                             <i  className="icon-livescore icon-live-start start-active" />
                         </div>
                         <div className="group-searchbar">
-                            <div className="livescore-like">
-                                <span>Trận đấu quan tâm</span>
-                                <div className="count-start">
-                                    <i className="icon-livescore icon-live-start" data-badge={favMatches.length}></i>
-                                </div>
-                            </div>
+                            <FavoriteMatches isMobile />
                         </div>
                     </div>
                     <div className="duel-participant">

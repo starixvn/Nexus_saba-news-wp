@@ -28,6 +28,7 @@ const favouriteMatchSlice = createSlice({
             if(matchIds) {
                 liveMatches = currenLiveMatches.filter(item => listLiveFilter.includes(item.matchId.toString()));
             }
+            console.log(liveMatches);
             const totalItem = data.matches.length;
             for (let i = 0; i < totalItem; i++) {
                 const match = matchesTmp[i];
@@ -38,10 +39,10 @@ const favouriteMatchSlice = createSlice({
                     stages.push(match.stage);
                 }
 
-                if (match.status !== MatchStatus.Finished
+                if (match.status === MatchStatus.NotStarted
                     && (moment(startTime).isSameOrAfter(today) || moment(endTime).isSameOrAfter(today))) {
                     //const liveIndex = liveMatches.findIndex(item => item.matchId === match.matchId);
-                    //if(liveIndex === -1 ) {
+                    //if(liveIndex >= 0 && match.status === MatchStatus.NotStarted) {
                     preMatches.push(match);
                     //}
                 }

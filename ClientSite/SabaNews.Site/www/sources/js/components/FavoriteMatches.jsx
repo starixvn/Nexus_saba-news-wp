@@ -2,7 +2,7 @@
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-const FavoriteMatches = () => {
+const FavoriteMatches = ({isMobile}) => {
     const handleClick = event => {
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam`);
         if (event.ctrlKey) {
@@ -13,10 +13,22 @@ const FavoriteMatches = () => {
     }
 
     const matches = CommonFunctions.getFavouriteMatches();
+    const count = matches.length > 0 ? matches.length : "";
     return (
         <div className="livescore-like" onClick={handleClick}>
-            <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
-            <span className="number-like">{ matches.length > 0 ? matches.length : "" }</span>
+            {
+                    !isMobile ?
+                    <>
+                        <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
+                        <span className="number-like">{ count }</span>
+                    </> :
+                    <>
+                        <span>Trận đấu quan tâm</span>
+                        <div className="count-start">
+                            <i className="icon-livescore icon-live-start" data-badge={ count }></i>
+                        </div>
+                    </>
+                }
         </div>
     );
 };

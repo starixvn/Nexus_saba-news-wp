@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
+import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 const SearchBar = props => {
     const favMatches = CommonFunctions.getFavouriteMatches();
@@ -17,12 +18,7 @@ const SearchBar = props => {
                 />
                 <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
             </div>
-            <div className="livescore-like">
-                <span>Trận đấu quan tâm</span>
-                <div className="count-start">
-                    <i className="icon-livescore icon-live-start" data-badge={favMatches.length}></i>
-                </div>
-            </div>
+            <FavoriteMatches isMobile />
         </div>
     );
 }

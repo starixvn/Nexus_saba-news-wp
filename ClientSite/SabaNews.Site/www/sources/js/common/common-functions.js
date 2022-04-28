@@ -77,8 +77,14 @@ export default class CommonFunctions {
 
     static updateFavouriteMatchesCount(matches) {
         const count = matches.length > 0 ? matches.length : "";
-        document.querySelector('.number-like').innerHTML = count;
-        document.querySelector('.livescore-like .icon-livescore').setAttribute('data-badge', count);
+        let favCountDesktop = document.querySelector('.livescore-like .number-like');
+        let favCountMobile = document.querySelector('.livescore-like .icon-livescore');
+        if(favCountDesktop) {
+            favCountDesktop.innerHTML = count;
+        }
+        if(favCountMobile) {
+            favCountMobile.setAttribute('data-badge', count);
+        }
     }
 
     static updateFavouriteMatch(matchId) {
