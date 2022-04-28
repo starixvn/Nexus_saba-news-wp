@@ -19,7 +19,8 @@ export default class Match extends PureComponent {
         const matchIds = CommonFunctions.getFavouriteMatches();
         const matchIndex = matchIds.findIndex(item => item === match.matchId);
         this.state = {
-            isFavourite: matchIndex >= 0
+            isFavourite: matchIndex >= 0,
+            isShowTooltip: true
         };
     }
 
@@ -94,7 +95,7 @@ export default class Match extends PureComponent {
         let message = "";
         if(isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = <div className="fav-match-add"><span>Thêm vào Trận đấu quan tâm</span> | <a href={url}>HIỂN THỊ</a></div>;
+            message = <div className="fav-match-add"><span>Thêm vào Trận đấu quan tâm</span> | <a href={url}>hiển thị</a></div>;
         } else {
             message = <div className="fav-match-remove"><span>Xóa khỏi Trận đấu quan tâm</span></div>;
         }
@@ -105,6 +106,7 @@ export default class Match extends PureComponent {
             autoClose: 3000
         });
         toast.update(toastId, { render: () => message });
+        this.setState({isShowTooltip: false});
     }
 
     renderTooltip = () => {
@@ -116,6 +118,13 @@ export default class Match extends PureComponent {
         )
     };
 
+    onMouseOut = () => {
+        const isShowTooltip = this.state.isShowTooltip;
+        if(!isShowTooltip) {
+            this.setState({isShowTooltip: true});
+        }
+    }
+
     render() {
         const { match, searchKey } = this.props;
         const isLiveMatch = match.status === MatchStatus.FirstHalf
@@ -124,19 +133,24 @@ export default class Match extends PureComponent {
             || match.status === MatchStatus.ExtraTime
             || match.status === MatchStatus.PenaltyShootout;
         const isIntermission = match.status === MatchStatus.Intermission;
-        const { isFavourite } = this.state;
+        const { isFavourite, isShowTooltip } = this.state;
 
         return (
             <div className="group-match-item">
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <OverlayTrigger
-                        placement="bottom"
-                        overlay={this.renderTooltip()}
-                    >
-                        <i onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
-                    </OverlayTrigger>
+                    {
+                        isShowTooltip ?
+                        <OverlayTrigger
+                            placement="bottom"
+                            trigger={['hover', 'focus']}
+                            overlay={this.renderTooltip()}
+                        >
+                            <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                        </OverlayTrigger> :
+                        <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    }
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">
