@@ -7,6 +7,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { MatchStatus } from '@jsroot/common/constants';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 
 export class HeadToHead extends Component {
     constructor(props) {
@@ -82,7 +83,7 @@ export class HeadToHead extends Component {
                         return (
                             <div className="f-row" key={key}>
                                 <div className="name-league">
-                                    <div className="name-league-img"><img src={match.league.icon} /></div>
+                                    <div className="name-league-img"><TeamIcon src={match.league.icon} /></div>
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
@@ -109,7 +110,7 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-team">
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
-                                                    <img className="soccer-team-logo" loading="lazy" alt={CommonFunctions.getTeamName(match.homeTeam)} src={match.homeTeam.icon} />
+                                                    <TeamIcon src={match.homeTeam.icon} className="soccer-team-logo" />
                                                     <div className={`soccer-team-name ${homeWinclass}` }>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(true, match)}
@@ -120,7 +121,7 @@ export class HeadToHead extends Component {
 
                                                 </div>
                                                 <div className="soccer-team away-team">
-                                                    <img className="soccer-team-logo" loading="lazy" alt={CommonFunctions.getTeamName(match.awayTeam)} src={match.awayTeam.icon} />
+                                                    <TeamIcon src={match.awayTeam.icon} className="soccer-team-logo" />
                                                     <div className={`soccer-team-name ${awayWinClass}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(false, match)}

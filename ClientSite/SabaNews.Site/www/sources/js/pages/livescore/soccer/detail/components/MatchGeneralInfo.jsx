@@ -6,6 +6,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import MatchStage from '@jsroot/components/MatchStage';
 import FunctionBar from './FunctionBar';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
@@ -147,7 +148,7 @@ export default class MatchGenetalInfo extends Component {
                 <div className="sticky-header">
                     <div className="livescore-league-header-detail">
                         <div className="livescore-league-header-detail-group">
-                            <div className="livescore-league-header-detail-logo"><img loading="lazy" src={generalInfo.league.icon} /></div>
+                            <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>
                             <div className="livescore-league-header-detail-name">
                                 {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
                             </div>
@@ -184,8 +185,7 @@ export default class MatchGenetalInfo extends Component {
                                         {CommonFunctions.getTeamName(generalInfo.homeTeam)}
                                     </li>
                                     <li className="team-logo">
-                                        <img width="50" height="50" alt={CommonFunctions.getTeamName(generalInfo.awayTeam)} loading="lazy"
-                                            src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
+                                        <TeamIcon src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
                                     </li>
                                 </ul>
                             </div>
@@ -193,8 +193,7 @@ export default class MatchGenetalInfo extends Component {
                             <div className="column column-right away-team">
                                 <ul className="team">
                                     <li className="team-logo">
-                                        <img width="50" height="50" alt={CommonFunctions.getTeamName(generalInfo.awayTeam)} loading="lazy"
-                                            src={generalInfo.awayTeam.icon} />
+                                        <TeamIcon src={generalInfo.awayTeam.icon} />
                                     </li>
                                     <li className="team-name">{CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
                                 </ul>
