@@ -1,5 +1,6 @@
 ﻿import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
+import TeamScore from './TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -32,26 +33,6 @@ export default class Match extends PureComponent {
 
             default:
                 return <Fragment />;
-                break;
-        }
-    };
-
-    getTeamScore = (match, isHomeTeam) => {
-        const fieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        switch (match.status) {
-            case MatchStatus.NotStarted:
-            case MatchStatus.Delay:
-            case MatchStatus.Postponed:
-            case MatchStatus.Cancel:
-            case MatchStatus.TBD:
-                return <span>&nbsp; - &nbsp;</span>;
-                break;
-
-            default:
-                const totalScore = match[`${fieldName}ExtraScore`] ? match[`${fieldName}ExtraScore`] : match[`${fieldName}TotalScore`];
-                const halfScore = match[`${fieldName}HalfScore`];
-                return <div>
-                    <span className="total-score">{totalScore}</span> <span className="half-score">({halfScore})</span></div>;
                 break;
         }
     };
@@ -102,9 +83,7 @@ export default class Match extends PureComponent {
                                 <ul className="soccer-team-status">
                                     {this.getTeamStatus(match, true)}
                                 </ul>
-                                <div className="soccer-team-result">
-                                    {this.getTeamScore(match, true)}
-                                </div>
+                                <TeamScore match={match} isHomeTeam />
                             </div>
                             <div className="soccer-team away-team">
                                 <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
@@ -112,9 +91,7 @@ export default class Match extends PureComponent {
                                 <ul className="soccer-team-status">
                                     {this.getTeamStatus(match, false)}
                                 </ul>
-                                <div className="soccer-team-result">
-                                    {this.getTeamScore(match, false)}
-                                </div>
+                                <TeamScore match={match} />
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,10 @@ export default class MatchStage extends PureComponent {
 
     componentDidUpdate(prevProps) {
         if (prevProps.match !== this.props.match) {
+            if (this.intervalId) {
+                clearInterval(this.intervalId);
+            }
+
             this.getMatchStage();
         }
     }

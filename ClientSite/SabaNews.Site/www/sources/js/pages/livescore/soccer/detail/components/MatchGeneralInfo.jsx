@@ -21,7 +21,7 @@ export default class MatchGenetalInfo extends Component {
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
-            case MatchStatus.Postponed:
+            case MatchStatus.Postpone:
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
                 return (<div className="detail-score-wrapper live before-score">
