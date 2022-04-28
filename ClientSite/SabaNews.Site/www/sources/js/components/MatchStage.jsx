@@ -26,6 +26,12 @@ export default class MatchStage extends PureComponent {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match !== this.props.match) {
+            this.getMatchStage();
+        }
+    }
+
     getMatchStage = () => {
         const match = this.props.match;
         let className = '';
