@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?7mxm87');
-  src:  url('fonts/Fraud-Sensor.eot?7mxm87#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?7mxm87') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?7mxm87') format('woff'),
-    url('fonts/Fraud-Sensor.svg?7mxm87#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?fxf6ka');
+  src:  url('fonts/Fraud-Sensor.eot?fxf6ka#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?fxf6ka') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?fxf6ka') format('woff'),
+    url('fonts/Fraud-Sensor.svg?fxf6ka#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,40 +25,39 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-favourite-outline:before {
-  content: "\e925";
-  color: #a8a8a8;
+.icon-ball:before {
+  content: "\e927";
+  color: #324a75;
+}
+.icon-in:before {
+  content: "\e926";
+  color: #319c2f;
+}
+.icon-out:before {
+  content: "\e928";
+  color: #e94633;
 }
 .icon-red-card:before {
   content: "\e92a";
-  color: #ff5057;
+  color: #e94633;
+}
+.icon-shoes:before {
+  content: "\e92b";
 }
 .icon-yellow-card:before {
-  content: "\e92b";
-  color: #ffc000;
+  content: "\e92c";
+  color: #f9c91e;
+}
+.icon-favourite-outline:before {
+  content: "\e925";
+  color: #a8a8a8;
 }
 .icon-var:before {
   content: "\e929";
   color: #324a75;
 }
-.icon-shoes:before {
-  content: "\e928";
-  color: #555;
-}
-.icon-in:before {
-  content: "\e92d";
-  color: #42ad40;
-}
 .icon-mdi_whistle:before {
   content: "\e92e";
-  color: #324a75;
-}
-.icon-out:before {
-  content: "\e92f";
-  color: #ff5744;
-}
-.icon-ball:before {
-  content: "\e927";
   color: #324a75;
 }
 .icon-live-right:before {
