@@ -2,7 +2,7 @@
     .line-up-team, .line-up-change-men, .line-up-live {
         .line-up {
             .icon-livescore {
-                font-size: 2rem;
+                font-size: 2.2rem;
 
                 @include Mobile {
                     font-size: 1.4rem;
@@ -22,10 +22,12 @@
                 }
 
                 svg {
-                    width: 2rem;
+                    width: 2.2rem;
+                    height: 2.2rem;
 
                     @include Mobile {
-                        width: 1.2rem;
+                        width: 1.4rem;
+                        height: 1.4rem;
                     }
                 }
             }
