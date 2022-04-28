@@ -54,19 +54,44 @@
 
 .Toastify__toast {
     background: $color-title;
-    padding : 0;
-    min-height : 4rem !important;
-    padding : .9rem 1.2rem !important;
-    margin-bottom : 0 !important;
+    padding: 0;
+    min-height: 4rem !important;
+    padding: .9rem 1.2rem !important;
+    margin-bottom: 0 !important;
+
+    @include tableMobile {
+        border-radius: 3px !important;
+    }
 }
-.Toastify__toast-container{
-    width : auto !important;
+
+.Toastify__toast-container {
+    width: auto !important;
+
+    @include tableMobile {
+        bottom: 1em !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .show-link-toastify {
+        @include tableMobile {
+            width: 6rem;
+        }
+    }
+
+    .text-fav {
+
+        @include tableMobile {
+            width: 22rem;
+        }
+    }
 }
 
 .Toastify__close-button {
     display: none;
 }
-.Toastify__toast-body{
-    padding : 0;
-    margin : 0;
+
+.Toastify__toast-body {
+    padding: 0;
+    margin: 0;
 }
