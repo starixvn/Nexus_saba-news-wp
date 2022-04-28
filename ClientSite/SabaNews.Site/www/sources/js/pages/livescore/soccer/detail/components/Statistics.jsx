@@ -12,7 +12,7 @@ export class Statistics extends Component {
     render() {
         const match = this.props.match;
         const { statistic } = this.props.match;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || Site.CheckPostMatchStatus(match.generalInfo.status)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || Site.CheckPreMatchStatus(match.generalInfo.status)) {
             return null;
         }
         let statistices  = [];

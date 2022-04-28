@@ -37,13 +37,13 @@ class FunctionBar extends PureComponent {
         if (generalInfo.isLineUp === 0) {
             tabStatus["enableTabLineups"] = false;
         }
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || !statistic.homeStatistic.controlRate || Site.CheckPostMatchStatus(generalInfo.status)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || !statistic.homeStatistic.controlRate || Site.CheckPreMatchStatus(generalInfo.status)) {
             tabStatus["enableTabStatistics"] = false;
         }
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             tabStatus["enableTabHeadtohead"] = false;
         }
-        if (!incidents || incidents.length === 0 || Site.CheckPostMatchStatus(generalInfo.status)) {
+        if (!incidents || incidents.length === 0 || Site.CheckPreMatchStatus(generalInfo.status)) {
             tabStatus["enableTabSummary"] = false;
         }
         if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {

@@ -34,16 +34,11 @@ const favouriteMatchSlice = createSlice({
                 const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD');
                 const startTime = moment(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
                 const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
-                if (match.stage && stages.findIndex(item => item.stageId === match.stage.stageId) === -1) {
-                    stages.push(match.stage);
-                }
 
-                if (match.status === MatchStatus.NotStarted
+                if (match.status === MatchStatus.NotStarted || match.status === MatchStatus.Delay
+                    || match.status === MatchStatus.Postpone || match.status === MatchStatus.TBD
                     && (moment(startTime).isSameOrAfter(today) || moment(endTime).isSameOrAfter(today))) {
-                    //const liveIndex = liveMatches.findIndex(item => item.matchId === match.matchId);
-                    //if(liveIndex >= 0 && match.status === MatchStatus.NotStarted) {
                     preMatches.push(match);
-                    //}
                 }
 
                 if (match.status === MatchStatus.Finished) {

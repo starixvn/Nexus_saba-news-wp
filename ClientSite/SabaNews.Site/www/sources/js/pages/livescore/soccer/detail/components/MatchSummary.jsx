@@ -35,7 +35,7 @@ export class MatchSummary extends Component {
 
     render() {
         const { match } = this.props;
-        if (!match.incidents || match.incidents.length === 0 || Site.CheckPostMatchStatus(match.generalInfo.status)) {
+        if (!match.incidents || match.incidents.length === 0 || Site.CheckPreMatchStatus(match.generalInfo.status)) {
             return null;
         }
         const { generalInfo } = this.props.match;

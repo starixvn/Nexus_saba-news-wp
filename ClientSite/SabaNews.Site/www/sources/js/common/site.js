@@ -40,7 +40,7 @@ export default class Site {
         return _rootUrl + relativeUrl;
     }
 
-    static CheckPostMatchStatus(status) {
+    static CheckPreMatchStatus(status) {
         if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone  || status === MatchStatus.Cancel || status.TBD)  {
             return true;
         }

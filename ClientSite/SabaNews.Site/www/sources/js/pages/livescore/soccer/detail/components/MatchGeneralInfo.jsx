@@ -48,7 +48,7 @@ export default class MatchGenetalInfo extends Component {
         const awayPenaltyShootOut = match.awayTeamPenaltyScore;
         const homeAGG = match.homeTeamAggregateScore;
         const awayAGG = match.awayTeamAggregateScore;
-        const isPreMatch = Site.CheckPostMatchStatus(match.status);
+        const isPreMatch = Site.CheckPreMatchStatus(match.status);
         return (
             <>
                 {
