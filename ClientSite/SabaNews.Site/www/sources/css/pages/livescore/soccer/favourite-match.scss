@@ -56,3 +56,14 @@
         text-transform: uppercase;
     }
 }
+
+.group-match-item-slogan {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: 1rem;
+    }
+}
