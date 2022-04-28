@@ -150,6 +150,8 @@
     .group-team {
         .home-team, .away-team {
             .soccer-team-name {
+                font-weight: 400 !important;
+
                 &.win {
                     font-weight: 700 !important;
                 }
@@ -217,19 +219,20 @@
 
 .soccer-match-star-hidden-pc {
     display: none !important;
+
     @include Mobile {
-        width : 100% !important;
+        width: 100% !important;
         display: flex !important;
-        justify-content :center;
+        justify-content: center;
     }
 
     i {
         display: none;
     }
 
-    .bg-color{
-        @include Mobile{
-            margin : 0 auto;
+    .bg-color {
+        @include Mobile {
+            margin: 0 auto;
         }
     }
 }

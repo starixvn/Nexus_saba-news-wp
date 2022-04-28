@@ -4,12 +4,25 @@
     border-bottom: 1px solid $border-color;
     padding-top: 2.4rem;
     background: $primary-bg;
+
     ul {
         list-style: none;
         display: flex;
         justify-content: center;
 
+        @include Mobile {
+            justify-content: space-between;
+        }
+
         li {
+            &:last-child {
+                a {
+                    @include Mobile {
+                        margin-right: 0;
+                    }
+                }
+            }
+
             a {
                 margin-right: 3rem;
                 padding-bottom: .7rem;
@@ -26,6 +39,8 @@
                     font-size: 1.1rem;
                     line-height: 1.5rem;
                 }
+
+
 
                 &:hover {
                     color: $color-active-icon;
@@ -48,6 +63,7 @@
                 }
 
                 &.disabled {
+                    color: $disable-nav;
                 }
 
                 &:last-child {
