@@ -44,7 +44,9 @@ export class SeasonStandings extends PureComponent {
         const totalItems = seasonStandings.length;
         const standings = [];
         for (let i = 0; i < totalItems; i++) {
-            const temp = seasonStandings[i];
+            let temp = { ...seasonStandings[i] };
+            temp.promotion = JSON.parse(temp.promotion);
+            temp.promotion = temp.promotion && temp.promotion.Color ? temp.promotion : null;
             const key = temp.groupName;
             const item = {
                 key,
@@ -110,8 +112,8 @@ export class SeasonStandings extends PureComponent {
         const totalItems = seasonStandings.length;
         const promotions = [];
         for (let i = 0; i < totalItems; i++) {
-            const promotion = seasonStandings[i].promotion ? JSON.parse(seasonStandings[i].promotion) : null;
-            if (promotion && promotions.findIndex(item => item.Id === promotion.Id) === -1) {
+            const promotion = JSON.parse(seasonStandings[i].promotion);
+            if (promotion && promotion.Color && promotions.findIndex(item => item.Id === promotion.Id) === -1) {
                 promotions.push(promotion);
             }
         }
@@ -151,12 +153,11 @@ export class SeasonStandings extends PureComponent {
                                 <div className="table-custom-body">
                                     {
                                         group.childs.map(item => {
-                                            const promotion = item.promotion ? JSON.parse(item.promotion) : null;
                                             return (
                                                 <div className="table-custom-row" key={item.teamId}>
                                                     <div className="table-custom-cell cell-rank">
-                                                        <div className={`position ${promotion ? 'postition-color' : ''}`}
-                                                            style={{ backgroundColor: promotion ? promotion.Color : '' }}
+                                                        <div className={`position ${item.promotion ? 'postition-color' : ''}`}
+                                                            style={{ backgroundColor: item.promotion ? item.promotion.Color : '' }}
                                                         >
                                                             {item.position}
                                                         </div>
