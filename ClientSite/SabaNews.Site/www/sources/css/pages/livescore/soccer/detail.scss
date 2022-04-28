@@ -64,10 +64,9 @@
 
 .sticky-header {
     position: sticky;
-    top: 5.1rem;
-    z-index: 99999;
+    top: 5rem;
+    z-index: 99;
     background: $primary-bg;
-
     @include tableMobile {
         position: unset;
     }
@@ -77,10 +76,10 @@
 .active-fixed {
     .sticky-header {
         position: sticky;
-        top: 5.1rem;
-        z-index: 99999;
+        top: 5rem;
+        z-index: 99;
         background: $primary-bg;
-
+        padding-top : .5rem;
         @include tableMobile {
             position: fixed;
             top: 4rem;
