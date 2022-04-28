@@ -8,6 +8,11 @@ import MatchStage from '@jsroot/components/MatchStage';
 import FunctionBar from './FunctionBar';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import LangHelper from '@jsroot/common/langHelper';
+import { toast } from "react-toastify";
+toast.configure()
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
@@ -17,7 +22,8 @@ export default class MatchGenetalInfo extends Component {
         const matchIndex = matchIds.findIndex(item => item === match.matchId);
         const isFavourite = matchIndex !== -1 ;
         this.state = {
-            isFavourite: isFavourite
+            isFavourite: isFavourite,
+            isShowTooltip: true
         };
     }
     getMatchScores = () => {
@@ -130,15 +136,45 @@ export default class MatchGenetalInfo extends Component {
     handleUpdateFavourite = () => {
         const matchId = this.props.match.generalInfo.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
-        this.setState({ isFavourite: isFavourite });
+        let message = "";
+        if(isFavourite) {
+            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
+            message = <div className="fav-match-add"><span>Thêm vào Trận đấu quan tâm</span> | <a href={url}>hiển thị</a></div>;
+        } else {
+            message = <div className="fav-match-remove"><span>Xóa khỏi Trận đấu quan tâm</span></div>;
+        }
+        const toastId = toast.dark(message, {
+            toastId: 'fav',
+            position: toast.POSITION.BOTTOM_CENTER,
+            hideProgressBar: true,
+            autoClose: 3000
+        });
+        toast.update(toastId, { render: () => message, autoClose: 3000 });
+        this.setState({ isFavourite: isFavourite, isShowTooltip: false});
     }
+
+    onMouseOutFavIon = () => {
+        const isShowTooltip = this.state.isShowTooltip;
+        if(!isShowTooltip) {
+            this.setState({isShowTooltip: true});
+        }
+    }
+
+    renderTooltip = () => {
+        const { isFavourite } = this.state;
+        return (
+            <Tooltip className="tooltip-add-favourite-match" >
+            { isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') :  LangHelper.getResource('AddFavouriteMatchTooltip')}
+            </Tooltip>
+        )
+    };
+
 
     render() {
         const { generalInfo } = this.props.match;
-        const { isFavourite } = this.state;
+        const { isFavourite, isShowTooltip } = this.state;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
-        const favMatches = CommonFunctions.getFavouriteMatches();
         const isLiveMatch = generalInfo.status === MatchStatus.FirstHalf
             || generalInfo.status === MatchStatus.SecondHalf
             || generalInfo.status === MatchStatus.Intermission
@@ -160,7 +196,17 @@ export default class MatchGenetalInfo extends Component {
                         </div>
                     </div>
                     <div className="duel-participant">
-                        <i  onClick={this.handleUpdateFavourite} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-live-start"}`}/>
+                        {
+                            isShowTooltip ?
+                            <OverlayTrigger
+                                placement="bottom"
+                                trigger={['hover', 'focus']}
+                                overlay={this.renderTooltip()}
+                            >
+                                <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                            </OverlayTrigger> :
+                            <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                        }
                         <div className="flex-league first-league">
                             <div className="column column-left home-team">
                                 <ul className="soccer-team-status">

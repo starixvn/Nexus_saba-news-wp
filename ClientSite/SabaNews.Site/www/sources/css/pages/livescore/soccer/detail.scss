@@ -241,3 +241,7 @@
         }
     }
 }
+
+.tooltip-add-favourite-match [class$="inner"] {
+   z-index: 99999999;
+}
