@@ -21,8 +21,6 @@ export default class MatchGrid extends PureComponent {
 
     getRoundName = round => `${LangHelper.getResource('Round')} ${round}`;
 
-    getStageName = stage => stage ? stage.stageNameEN : '';
-
     groupMatchesByDate = matches => {
         const totalItems = matches.length;
         const tempMatches = [];
@@ -88,10 +86,10 @@ export default class MatchGrid extends PureComponent {
                 if (item.stage && item.stage.roundCount > 1) {
                     text = this.getRoundName(item.round);
                 } else {
-                    text = this.getStageName(item.stage);
+                    text = CommonFunctions.getStageName(item.stage);
                 }
             } else {
-                text = this.getStageName(item.stage);
+                text = CommonFunctions.getStageName(item.stage);
             }
 
             result.push({

@@ -18,10 +18,14 @@ export default class CommonFunctions {
         const stage = league.stage;
 
         if (league.leagueType !== LeagueType.League && stage) {
-            leagueName += ` :: ${stage.stageNameVN ? stage.stageNameVN : stage.stageNameEN}`;
+            leagueName += ` :: ${this.getStageName(stage)}`;
         }
 
         return leagueName;
+    }
+
+    static getStageName(stage) {
+        return stage.stageNameVN ? stage.stageNameVN : stage.stageNameEN;
     }
 
     static produceIncidents(incidents) {

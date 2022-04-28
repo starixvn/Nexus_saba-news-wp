@@ -20,6 +20,7 @@
 
         public long? StageId { get; set; }
         public string StageNameEN { get; set; }
+        public string StageNameVN { get; set; }
         public byte StageMode { get; set; }
         public short GroupCount { get; set; }
         public short RoundCount { get; set; }

@@ -7,9 +7,8 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
 import Tooltip from 'react-bootstrap/Tooltip';
 import LangHelper from '@jsroot/common/langHelper';
-import { toast } from "react-toastify";
-toast.configure()
-
+import { toast } from 'react-toastify';
+toast.configure();
 
 export default class Match extends PureComponent {
     constructor(props) {
