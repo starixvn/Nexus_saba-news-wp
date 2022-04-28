@@ -6,33 +6,56 @@ export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
 
-        this.itemPerPage = 10;
-        const items = props.leagues.slice(0, 1 * this.itemPerPage);
-
-        this.state = {
+        this.batchSize = 50;
+        const leagues = props.leagues;
+        const groupIndex = this.getGroupIndex(0) + 1;
+        const items = leagues.slice(0, groupIndex);
+        this.state = ({
+            groupIndex,
             pageIndex: 0,
-            hasMore: items.length < props.leagues.length,
+            hasMore: groupIndex < leagues.length,
             leagues: items
-        };
+        });
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.leagues !== prevProps.leagues) {
-            const items = this.props.leagues.slice(0, 1 * this.itemPerPage);
+            const leagues = this.props.leagues;
+            const groupIndex = this.getGroupIndex(0) + 1;
+            const items = leagues.slice(0, groupIndex);
             this.setState({
+                groupIndex,
                 pageIndex: 0,
-                hasMore: items.length < this.props.leagues.length,
+                hasMore: groupIndex < leagues.length,
                 leagues: items
             });
         }
     }
 
+    getGroupIndex = currentIndex => {
+        const leagues = this.props.leagues;
+        const totalItems = leagues.length;
+        let count = 0;
+        let index = currentIndex;
+        for (index; index < totalItems; index++) {
+            count += leagues[index].matches.length;
+
+            if (count >= this.batchSize) {
+                break;
+            }
+        }
+
+        return index;
+    };
+
     loadMore = pageIndex => {
         const leagues = this.props.leagues;
-        const items = leagues.slice(0, pageIndex * this.itemPerPage);
+        const groupIndex = this.getGroupIndex(this.state.groupIndex) + 1;
+        const items = leagues.slice(0, groupIndex);
         this.setState({
+            groupIndex,
             pageIndex,
-            hasMore: items.length < leagues.length,
+            hasMore: groupIndex < leagues.length,
             leagues: items
         });
     }

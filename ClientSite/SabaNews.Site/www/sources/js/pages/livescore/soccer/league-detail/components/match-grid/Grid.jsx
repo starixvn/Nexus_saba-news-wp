@@ -7,7 +7,6 @@ export default class Grid extends PureComponent {
         super(props);
 
         this.batchSize = 50;
-
         const matches = props.matches;
         const groupIndex = this.getGroupIndex(0) + 1;
         const items = matches.slice(0, groupIndex);
@@ -17,6 +16,20 @@ export default class Grid extends PureComponent {
             hasMore: groupIndex < matches.length,
             matches: items
         });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.matches !== prevProps.matches) {
+            const matches = this.props.matches;
+            const groupIndex = this.getGroupIndex(0) + 1;
+            const items = matches.slice(0, groupIndex);
+            this.setState({
+                groupIndex,
+                pageIndex: 0,
+                hasMore: groupIndex < matches.length,
+                matches: items
+            });
+        }
     }
 
     getGroupIndex = currentIndex => {
