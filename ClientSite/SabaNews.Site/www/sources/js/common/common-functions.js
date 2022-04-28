@@ -76,8 +76,9 @@ export default class CommonFunctions {
     }
 
     static updateFavouriteMatchesCount(matches) {
-        document.querySelector('.number-like').innerHTML = matches.length;
-        document.querySelector('.livescore-like .icon-livescore').setAttribute('data-badge', matches.length);
+        const count = matches.length > 0 ? matches.length : "";
+        document.querySelector('.number-like').innerHTML = count;
+        document.querySelector('.livescore-like .icon-livescore').setAttribute('data-badge', count);
     }
 
     static updateFavouriteMatch(matchId) {

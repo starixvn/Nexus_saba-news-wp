@@ -16,7 +16,7 @@ const FavoriteMatches = () => {
     return (
         <div className="livescore-like" onClick={handleClick}>
             <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
-            <span className="number-like">{ matches.length }</span>
+            <span className="number-like">{ matches.length > 0 ? matches.length : "" }</span>
         </div>
     );
 };
