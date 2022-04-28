@@ -28,7 +28,6 @@ const favouriteMatchSlice = createSlice({
             if(matchIds) {
                 liveMatches = currenLiveMatches.filter(item => listLiveFilter.includes(item.matchId.toString()));
             }
-            console.log(liveMatches);
             const totalItem = data.matches.length;
             for (let i = 0; i < totalItem; i++) {
                 const match = matchesTmp[i];
