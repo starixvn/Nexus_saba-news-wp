@@ -4,6 +4,7 @@ import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 
 export default class MatchGrid extends PureComponent {
 
@@ -141,6 +142,7 @@ export default class MatchGrid extends PureComponent {
                                                 item.childs.map(child => {
                                                     if (child.key) {
                                                         return <div className="group-match-item" key={child.key}>
+                                                            <TeamIcon src={child.league.icon} />
                                                             <div className="group-match-item-slogan">{CommonFunctions.getLeagueName(child.league)}</div>
                                                             {
                                                                 child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match}/>)
