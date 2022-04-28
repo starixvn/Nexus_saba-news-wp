@@ -103,11 +103,14 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                    <div className="livescore-league-header-detail">
-                        <div className="livescore-league-header-detail-name">
-                            Trận đấu quan tâm
+                        <div className="livescore-league-header-detail">
+                            <div className="livescore-league-header-detail-group">
+                                <div className="livescore-league-header-detail-icon"><i class="icon-livescore icon-live-start" /></div>
+                                <div className="livescore-league-header-detail-name">
+                                    Trận đấu quan tâm
+                                </div>
+                            </div>
                         </div>
-                    </div>
                         <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
                             className="live-score-nav"
                             onSelect={this.handleSelectTab}
