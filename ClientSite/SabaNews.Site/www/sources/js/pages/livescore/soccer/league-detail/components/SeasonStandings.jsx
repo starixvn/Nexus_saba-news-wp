@@ -2,6 +2,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export class SeasonStandings extends PureComponent {
     constructor(props) {
@@ -153,20 +155,20 @@ export class SeasonStandings extends PureComponent {
                                             return (
                                                 <div className="table-custom-row" key={item.teamId}>
                                                     <div className="table-custom-cell cell-rank">
-                                                        <div className={`position ${promotion ? 'postition-color' : ''}`} style={{ backgroundColor: promotion ? promotion.Color : '' }}>
+                                                        <div className={`position ${promotion ? 'postition-color' : ''}`}
+                                                            style={{ backgroundColor: promotion ? promotion.Color : '' }}
+                                                        >
                                                             {item.position}
                                                         </div>
                                                     </div>
                                                     <div className="table-custom-cell cell-participant">
                                                         <div className="soccer-team">
-                                                            <div className="soccer-team-logo"><img className="soccer-team-logo" loading="lazy" src={item.icon} /></div>
-                                                            <div className="soccer-team-name">{item.teamNameEN ? item.teamNameEN : item.teamFullNameEN}</div>
+                                                            <div className="soccer-team-logo"><TeamIcon className="soccer-team-logo" src={item.icon} /></div>
+                                                            <div className="soccer-team-name">{CommonFunctions.getTeamName(item)}</div>
                                                         </div>
                                                     </div>
                                                     <div className="table-custom-cell cell-rank">
-                                                        <span>
-                                                            {item.total}
-                                                        </span>
+                                                        <span>{item.total}</span>
                                                     </div>
                                                     {
                                                         !isMobile &&
@@ -199,14 +201,10 @@ export class SeasonStandings extends PureComponent {
                                                         </div>
                                                     }
                                                     <div className="table-custom-cell cell-rank">
-                                                        <span>
-                                                            {item.goalDiff}
-                                                        </span>
+                                                        <span>{item.goalDiff}</span>
                                                     </div>
                                                     <div className="table-custom-cell cell-rank">
-                                                        <span className="table-bold">
-                                                            {item.points}
-                                                        </span>
+                                                        <span className="table-bold">{item.points}</span>
                                                     </div>
                                                     {
                                                         !isMobile &&

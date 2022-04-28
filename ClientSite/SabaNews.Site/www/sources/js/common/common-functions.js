@@ -1,5 +1,5 @@
 ﻿import { LeagueType, IncidentStatus } from './constants';
-import Site from '@jsroot/common/site';
+import Site from './site';
 
 export default class CommonFunctions {
     static getLeagueName(league) {
@@ -15,9 +15,10 @@ export default class CommonFunctions {
 
     static getLeagueNameWithStage(league) {
         let leagueName = this.getLeagueName(league);
+        const stage = league.stage;
 
-        if (league.leagueType !== LeagueType.League && league.stage && league.stage.stageNameEN) {
-            leagueName += ` :: ${league.stage.stageNameEN}`;
+        if (league.leagueType !== LeagueType.League && stage) {
+            leagueName += ` :: ${stage.stageNameVN ? stage.stageNameVN : stage.stageNameEN}`;
         }
 
         return leagueName;
