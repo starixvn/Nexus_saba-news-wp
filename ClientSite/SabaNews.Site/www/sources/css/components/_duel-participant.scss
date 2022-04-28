@@ -8,6 +8,7 @@
     background: $primary-bg;
     position: relative;
     transition: all .3s ease-in-out;
+
     .icon-live-start {
         position: absolute;
         right: 12px;
@@ -142,7 +143,7 @@
                         }
 
                         svg {
-                            width: 1.6rem;
+                            width: 2rem;
 
                             @include Mobile {
                                 width: 1.2rem;
@@ -189,7 +190,7 @@
                         }
 
                         svg {
-                            width: 1.6rem;
+                            width: 2rem;
 
                             @include Mobile {
                                 width: 1.2rem;
