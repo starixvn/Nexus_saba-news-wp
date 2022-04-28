@@ -9,11 +9,11 @@
     position: relative;
     transition: all .3s ease-in-out;
 
-    .icon-live-start {
+    .icon-live-start, .icon-favourite-outline {
         position: absolute;
         right: 12px;
         top: 12px;
-        font-size: 1.6rem;
+        font-size: 2rem;
 
         @include Mobile {
             right: 6px;
