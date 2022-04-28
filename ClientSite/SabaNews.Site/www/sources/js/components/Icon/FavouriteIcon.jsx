@@ -26,9 +26,9 @@ export default class FavouriteIcon extends PureComponent {
         let message = "";
         if(isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = <div className="fav-match-add"><span>Thêm vào Trận đấu quan tâm</span> | <a href={url}>hiển thị</a></div>;
+            message = <div className="fav-match fav-match-add"><ul><li><i class="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li><li className="show-link-toastify"><a href={url}>hiển thị</a></li></ul> </div>;
         } else {
-            message = <div className="fav-match-remove"><span>Xóa khỏi Trận đấu quan tâm</span></div>;
+            message = <div className="fav-match fav-match-remove"><ul><li><i class="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li></ul></div>;
         }
         const toastId = toast.dark(message, {
             toastId: 'fav',

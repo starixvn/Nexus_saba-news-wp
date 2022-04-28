@@ -242,22 +242,3 @@
     }
 }
 
-.tooltip-add-favourite-match {
-    z-index: 99999999;
-}
-
-.tooltip-add-favourite-match [class$="inner"] {
-    background: rgba(41, 41, 41, 0.9);
-    color: #FFFFFF;
-    padding: .6rem 1.2rem;
-    border-radius: 5px;
-    font-weight: 400;
-    font-size: 1.2rem;
-    line-height: 2.4rem;
-}
-.Toastify__toast{
-    background : $color-title;
-}
-.Toastify__close-button{
-    display : none;
-}
