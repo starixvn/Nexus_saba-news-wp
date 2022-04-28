@@ -34,12 +34,35 @@
             div {
                 background-color: $color-active-icon;
             }
+            /*&.short {
+                div {
+                    background-color: $color-title;
+                }
+            }
+
+            &.long {
+                div {
+                    background-color: $color-active-icon;
+                }
+            }*/
         }
 
         &.statistices-away {
             div {
                 background-color: $color-title;
             }
+
+           /* &.short {
+                div {
+                    background-color: $color-title;
+                }
+            }
+
+            &.long {
+                div {
+                    background-color: $color-active-icon;
+                }
+            }*/
         }
     }
 
