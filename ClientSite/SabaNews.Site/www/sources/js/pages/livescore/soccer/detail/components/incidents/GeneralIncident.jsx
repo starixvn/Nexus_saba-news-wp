@@ -1,11 +1,47 @@
 import React, { Component } from 'react';
-import { IncidentPosition, IncidentStatus } from '@jsroot/common/constants';
-import Site from '@jsroot/common/site';
-import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
+import { IncidentPosition, IncidentStatus, VARResultCode } from '@jsroot/common/constants';
+import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
+import LangHelper from '@jsroot/common/langHelper';
+
 export default class GeneralIncident extends Component {
     constructor(props) {
         super(props);
     }
+    checkIncidentTypeToShowScore = type => {
+        if (type === IncidentStatus.Halftime || type == IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal) {
+            return true;
+        }
+        return false;
+    }
+
+    mappingVarResultText = status => {
+        switch (status) {
+            case VARResultCode.Unknown:
+                return LangHelper.getResource('Unknown');
+            case VARResultCode.GoalValid:
+                return LangHelper.getResource('GoalValid');
+            case VARResultCode.GoalInValid:
+                return LangHelper.getResource('GoalInValid');
+            case VARResultCode.PenaltyValid:
+                return LangHelper.getResource('PenaltyValid');
+            case VARResultCode.PenaltyCancelled:
+                return LangHelper.getResource('PenaltyCancelled');
+            case VARResultCode.RedCardValid:
+                return LangHelper.getResource('RedCardValid');
+            case VARResultCode.RedCardCancelled:
+                return LangHelper.getResource('RedCardCancelled');
+            case VARResultCode.PlayPenaltyVerification:
+                return LangHelper.getResource('PlayPenaltyVerification');
+            case VARResultCode.PlayPenaltyChange:
+                return LangHelper.getResource('PlayPenaltyChange');
+            case VARResultCode.MaintainOriginalJudgment:
+                return LangHelper.getResource('MaintainOriginalJudgment');
+            case VARResultCode.SendPenaltyChange:
+                return LangHelper.getResource('SendPenaltyChange');
+
+        }
+    }
+
     renderSubsitution = () => {
         const { incident } = this.props;
         return (
@@ -66,7 +102,7 @@ export default class GeneralIncident extends Component {
                             <ul className="item-th flexbox">
                                 <li className="item-th-time">{incident.timeShow + "'"}</li>
                                 <li>
-                                    <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
+                                    <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : this.mappingVarResultText(incident.varResult)} <span className="noted"></span></span>
                                 </li>
                                 {
                                     (incident.type === IncidentStatus.Goal && incident.assistName) &&
@@ -80,7 +116,7 @@ export default class GeneralIncident extends Component {
                     <ul className="item-mins flexbox">
                         <li>
                             {
-                                Site.CheckIncidentTypeToShowScore(incident.type) &&
+                                this.checkIncidentTypeToShowScore(incident.type) &&
                                 <span className="name-th">{processScore} <span className="noted"></span></span>
                             }
                         </li>
@@ -94,7 +130,7 @@ export default class GeneralIncident extends Component {
                             <ul className="item-th flexbox">
                                 <li className="item-th-time">{incident.timeShow + "'"}</li>
                                 <li>
-                                    <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : Site.MappingVarResultText(incident.varResult)} <span className="noted"></span></span>
+                                    <span className="item-th-name">{incident.varResult === 0 ? incident.playerName : this.mappingVarResultText(incident.varResult)} <span className="noted"></span></span>
                                 </li>
                                 {
                                     (incident.type === IncidentStatus.Goal && incident.assistName) &&

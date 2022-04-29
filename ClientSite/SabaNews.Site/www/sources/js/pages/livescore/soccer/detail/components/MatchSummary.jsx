@@ -2,16 +2,49 @@
 import { IncidentPosition, IncidentStatus, MatchStatus } from '@jsroot/common/constants';
 import GeneralIncident from './incidents/GeneralIncident';
 import PenaltyShootOut from './incidents/PenaltyShootOut';
-import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import LangHelper from '@jsroot/common/langHelper';
 
 export class MatchSummary extends Component {
     constructor(props) {
         super(props);
     }
+
+    checkIncidentGeneralType = type => {
+        if (type === IncidentStatus.Goal || type === IncidentStatus.YellowCard || type === IncidentStatus.RedCard || type === IncidentStatus.YellowTurnRedCard || type === IncidentStatus.OvertimeEnds
+            || type === IncidentStatus.PenaltyMissed || type === IncidentStatus.OwnGoal || type === IncidentStatus.VAR || type === IncidentStatus.Penalty || type === IncidentStatus.Substitution) {
+            return true;
+        }
+        return false;
+    }
+
+    checkIncidentMainTimeEventType = type => {
+        if (type === IncidentStatus.End || type === IncidentStatus.OvertimeEnds
+            || type === IncidentStatus.PenaltyShootoutEnd || type === IncidentStatus.Halftime) {
+            return true;
+        }
+        return false;
+    }
+
+
+    mappingIncidentTimeEventType = type => {
+        switch (type) {
+            case IncidentStatus.GameStart:
+                return LangHelper.getResource('GameStart');
+            case IncidentStatus.Halftime:
+                return LangHelper.getResource('HalftimeEnd');
+            case IncidentStatus.End:
+                return LangHelper.getResource('FullTimeEnd');
+            case IncidentStatus.ExtraTimeEnd:
+                return LangHelper.getResource('ExtraTimeEnd');
+            case IncidentStatus.PenaltyShootoutEnd:
+                return LangHelper.getResource('PenaltyShootoutEnd')
+        }
+    }
+
 
     renderFinishStatus = () => {
         const { generalInfo } = this.props.match;
@@ -35,7 +68,7 @@ export class MatchSummary extends Component {
 
     render() {
         const { match } = this.props;
-        if (!match.incidents || match.incidents.length === 0 || Site.CheckPreMatchStatus(match.generalInfo.status)) {
+        if (!match.incidents || match.incidents.length === 0 || CommonFunctions.checkPreMatchStatus(match.generalInfo.status)) {
             return null;
         }
         const { generalInfo } = this.props.match;
@@ -79,21 +112,21 @@ export class MatchSummary extends Component {
                                             }
                                             if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
                                                 homePenaltyShootoutScore++;
-                                                penaltyShootoutScore =  homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore;
+                                                penaltyShootoutScore = homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore;
                                             }
                                             if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
                                                 awayPenaltyShootoutScore++;
                                                 penaltyShootoutScore = homePenaltyShootoutScore + " - " + awayPenaltyShootoutScore;
                                             }
                                         }
-                                        if (Site.CheckIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
+                                        if (this.checkIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
                                             return (
                                                 <GeneralIncident
                                                     key={key}
                                                     incident={incident}
                                                 />
                                             )
-                                        } else if (Site.CheckIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
+                                        } else if (this.checkIncidentMainTimeEventType(incident.type) && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
                                             let score = processScore;
                                             if (incident.type === IncidentStatus.Halftime) {
                                                 score = generalInfo.homeTeamHalfScore + " - " + generalInfo.awayTeamHalfScore;
@@ -103,7 +136,7 @@ export class MatchSummary extends Component {
                                             return (
                                                 <div className="head-top-team" key={key}>
                                                     <div className="flexbox time-event">
-                                                        <p className="time-event-title">{Site.MappingIncidentTimeEventType(incident.type)}</p>
+                                                        <p className="time-event-title">{this.mappingIncidentTimeEventType(incident.type)}</p>
                                                     </div>
                                                     <div className="flexbox time-event">
                                                         <p className="time-event-score">{score}</p>
@@ -129,7 +162,7 @@ export class MatchSummary extends Component {
                                     generalInfo.status === MatchStatus.Finished &&
                                     this.renderFinishStatus()
                                 }
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>

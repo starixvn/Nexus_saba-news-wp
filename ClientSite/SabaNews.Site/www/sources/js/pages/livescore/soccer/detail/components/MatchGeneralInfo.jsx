@@ -1,5 +1,4 @@
 ﻿import React, { Component, Fragment } from 'react';
-import Site from '@jsroot/common/site';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -45,7 +44,7 @@ export default class MatchGenetalInfo extends Component {
         const awayPenaltyShootOut = match.awayTeamPenaltyScore;
         const homeAGG = match.homeTeamAggregateScore;
         const awayAGG = match.awayTeamAggregateScore;
-        const isPreMatch = Site.CheckPreMatchStatus(match.status);
+        const isPreMatch = CommonFunctions.checkPreMatchStatus(match.status);
         return (
             <>
                 {
@@ -53,11 +52,11 @@ export default class MatchGenetalInfo extends Component {
                     <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 }
                 {
-                    (homeAGG > 0 || awayAGG > 0) &&
+                    (match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0)) &&
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {
-                     (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0) &&
+                     (match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0)) &&
                     <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
                 }
             </>

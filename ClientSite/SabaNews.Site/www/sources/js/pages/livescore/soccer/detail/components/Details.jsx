@@ -17,11 +17,11 @@ class Details extends PureComponent {
     componentDidMount() {
         let defaultTab = "";
         let params = queryString.parse(window.location.search);
-        if(params["tab"]) {
+        if (params["tab"]) {
             defaultTab = params["tab"].toLowerCase();
         }
         var section = document.getElementById(defaultTab);
-        if(!section) return null;
+        if (!section) return null;
         window.scroll({
             top: section.offsetTop,
             left: 0,

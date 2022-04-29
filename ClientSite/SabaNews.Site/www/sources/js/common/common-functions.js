@@ -1,4 +1,4 @@
-﻿import { LeagueType, IncidentStatus } from './constants';
+﻿import { LeagueType, IncidentStatus, MatchStatus } from './constants';
 import Site from './site';
 
 export default class CommonFunctions {
@@ -52,7 +52,7 @@ export default class CommonFunctions {
                     time = "90" + "+" + (time - 90);
                 }
             }
-            if(Site.CheckIncidentTypeToUpdateScore(item.type)) {
+            if(this.checkIncidentTypeToUpdateScore(item.type)) {
                 homeScore = item.homeScore;
                 awayScore = item.awayScore;
             } else {
@@ -117,5 +117,19 @@ export default class CommonFunctions {
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
         this.updateFavouriteMatchesCount(favouriteMatches);
         return isFavourite;
+    }
+
+    static checkPreMatchStatus(status) {
+        if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone  || status === MatchStatus.Cancel || status.TBD)  {
+            return true;
+        }
+        return false;
+    }
+
+    static checkIncidentTypeToUpdateScore(type) {
+        if(type === IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal) {
+            return true;
+        }
+        return false;
     }
 }

@@ -43,9 +43,9 @@ export class HeadToHead extends Component {
         }
     };
 
-    renderBody = (matchs, teamId) =>  {
+    renderBody = (matchs, teamId) => {
         const generalInfo = this.props.match.generalInfo;
-        if(matchs.length === 0) {
+        if (matchs.length === 0) {
             return null;
         }
         return (
@@ -62,21 +62,21 @@ export class HeadToHead extends Component {
                         const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
                         const teamCheck = teamId ? teamId : generalInfo.homeTeam.teamId;
                         let result = this.getTeamResult(teamCheck, match);
-                        if(result === 1) {
-                            if(teamCheck === match.homeTeam.teamId) {
+                        if (result === 1) {
+                            if (teamCheck === match.homeTeam.teamId) {
                                 homeWinclass = "win";
-                            } else if(teamCheck === match.awayTeam.teamId) {
+                            } else if (teamCheck === match.awayTeam.teamId) {
                                 awayWinClass = "win";
                             }
                         }
-                        if(result === 2) {
-                            if(teamCheck === match.homeTeam.teamId) {
+                        if (result === 2) {
+                            if (teamCheck === match.homeTeam.teamId) {
                                 awayWinClass = "win";
-                            } else if(teamCheck === match.awayTeam.teamId) {
+                            } else if (teamCheck === match.awayTeam.teamId) {
                                 homeWinclass = "win";
                             }
                         }
-                        if(!teamId) {
+                        if (!teamId) {
                             result = -1;
                         }
                         const time = DateTimeService.convertFromUTC(match.startTime);
@@ -87,7 +87,7 @@ export class HeadToHead extends Component {
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
-                                <div className="group-match-item"  onClick={() => this.handleClick(event, match.matchId)}>
+                                <div className="group-match-item" onClick={() => this.handleClick(event, match.matchId)}>
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
                                             <div className="soccer-match-star-icon soccer-match-star-hidden-pc">
@@ -111,7 +111,7 @@ export class HeadToHead extends Component {
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
                                                     <TeamIcon src={match.homeTeam.icon} className="soccer-team-logo" />
-                                                    <div className={`soccer-team-name ${homeWinclass}` }>{CommonFunctions.getTeamName(match.homeTeam)}</div>
+                                                    <div className={`soccer-team-name ${homeWinclass}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(true, match)}
                                                     </ul>
@@ -164,7 +164,7 @@ export class HeadToHead extends Component {
         let result = 0;
         const homeTeamScore = match[`${homeFieldName}ExtraScore`] ? match[`${homeFieldName}ExtraScore`] : match[`${homeFieldName}TotalScore`];
         const awayTeamScore = match[`${awayFieldName}ExtraScore`] ? match[`${awayFieldName}ExtraScore`] : match[`${awayFieldName}TotalScore`];
-        if(homeTeamScore > awayTeamScore) {
+        if (homeTeamScore > awayTeamScore) {
             result = 1;
         } else if (homeTeamScore < awayTeamScore) {
             result = 2;
@@ -173,15 +173,15 @@ export class HeadToHead extends Component {
             result = 0;
         }
         if (match[`${homeFieldName}PenaltyScore`]) {
-            if(match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+            if (match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 result = 1;
-            } else if (match[`${homeFieldName}PenaltyScore`] < match[`${awayFieldName}PenaltyScore`])  {
+            } else if (match[`${homeFieldName}PenaltyScore`] < match[`${awayFieldName}PenaltyScore`]) {
                 result = 2;
             }
         } else if (match[`${homeFieldName}AggregateScore`]) {
-            if(match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+            if (match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
                 result = 1;
-            } else if (match[`${homeFieldName}AggregateScore`] < match[`${awayFieldName}AggregateScore`])  {
+            } else if (match[`${homeFieldName}AggregateScore`] < match[`${awayFieldName}AggregateScore`]) {
                 result = 2;
             }
         }
@@ -231,7 +231,7 @@ export class HeadToHead extends Component {
 
     render() {
         const headToHead = this.props.match.headToHead;
-        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+        if (!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             return null;
         }
         const { home, away, common } = this.props.match.headToHead;

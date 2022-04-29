@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Site from '@jsroot/common/site';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export class Statistics extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ export class Statistics extends Component {
     render() {
         const match = this.props.match;
         const { statistic } = this.props.match;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || Site.CheckPreMatchStatus(match.generalInfo.status)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(match.generalInfo.status)) {
             return null;
         }
         let statistices  = [];

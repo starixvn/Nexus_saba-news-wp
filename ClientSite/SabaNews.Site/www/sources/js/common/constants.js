@@ -43,7 +43,7 @@ export const VARResultCode = {
     PenaltyValid: 3,
     PenaltyCancelled: 4,
     RedCardValid: 5,
-    RedCardCanlled: 6,
+    RedCardCancelled: 6,
     PlayPenaltyVerification: 7,
     PlayPenaltyChange: 8,
     MaintainOriginalJudgment: 9,

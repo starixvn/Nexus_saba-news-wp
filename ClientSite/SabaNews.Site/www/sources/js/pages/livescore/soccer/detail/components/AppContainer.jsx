@@ -18,13 +18,13 @@ export class AppContainer extends Component {
     }
 
     render() {
-        if (!this.props.match || !this.props.match.generalInfo ) {
+        if (!this.props.match || !this.props.match.generalInfo) {
             return null;
         }
         return (
             <>
                 <div className="container livescore-container">
-                <SignalR />
+                    <SignalR />
                     <div className="livescore-soccer">
                         <div className="livescore-soccer-main">
                             <MatchGenetalInfo match={this.props.match} />
