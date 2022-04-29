@@ -27,7 +27,7 @@ export class AppContainer extends Component {
 
         let selectedTab = '';
         let params = queryString.parse(window.location.search);
-        if(params['tab']) {
+        if (params['tab']) {
             selectedTab = params["tab"].toLowerCase();
         }
         const tabs = ['tat-ca', 'truc-tiep', 'chua-dien-ra', 'da-dien-ra'];
@@ -96,7 +96,7 @@ export class AppContainer extends Component {
     };
 
     render() {
-        let { selectedTab, selectedAllTab,selectedLiveTab, selectedPreTab, selectedPostTab } = this.state;
+        let { selectedTab, selectedAllTab, selectedLiveTab, selectedPreTab, selectedPostTab } = this.state;
         const { majorLeagues, matches, postMatches, preMatches, liveMatches, favouriteMatches } = this.props;
         return (
             <div className="container livescore-container">
@@ -116,7 +116,7 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="tat-ca" title="Tất cả">
-                                {matches  && <MatchGrid isAllMatches sortAsc matches={matches} />}
+                                {matches && <MatchGrid isAllMatches sortAsc matches={matches} />}
                             </Tab>
                             <Tab eventKey="truc-tiep" title="Trực tiếp">
                                 {liveMatches && <MatchGrid sortAsc matches={liveMatches} />}
@@ -143,7 +143,7 @@ const AppContainerComponent = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, matches, postMatches, preMatches, liveMatches  } = state;
+    const { majorLeagues, matches, postMatches, preMatches, liveMatches } = state;
     return { majorLeagues, matches, postMatches, preMatches, liveMatches };
 };
 

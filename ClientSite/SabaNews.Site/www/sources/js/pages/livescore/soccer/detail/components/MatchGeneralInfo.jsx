@@ -56,7 +56,7 @@ export default class MatchGenetalInfo extends Component {
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {
-                     (match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0)) &&
+                    (match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0)) &&
                     <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
                 }
             </>
@@ -84,9 +84,10 @@ export default class MatchGenetalInfo extends Component {
                     goals.map((goal, gkey) => {
                         return (
                             <ul key={gkey} className="participant-detail-group name-player-goal">
-                                    <li><IncidentIcon type={goal.type} />
-                                    <span className="name-player">({goal.timeShow}') - {goal.playerName}</span></li>
-                             </ul>
+                                <li><IncidentIcon type={goal.type} />
+                                    <span className="name-player">({goal.timeShow}') - {goal.playerName}</span>
+                                </li>
+                            </ul>
                         )
                     })
                 }
@@ -141,7 +142,7 @@ export default class MatchGenetalInfo extends Component {
                             <div className="livescore-league-header-detail-name">
                                 {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
                             </div>
-                            <i  className="icon-livescore icon-live-start start-active" />
+                            <i className="icon-livescore icon-live-start start-active" />
                         </div>
                         <div className="group-searchbar">
                             <FavoriteMatches isMobile />
@@ -155,14 +156,14 @@ export default class MatchGenetalInfo extends Component {
                                     {this.getTeamStatus(true)}
                                 </ul>
                             </div>
-                            <div className={`column column-center ${isLiveMatch ? 'live': ''}`}>
+                            <div className={`column column-center ${isLiveMatch ? 'live' : ''}`}>
                                 {
                                     generalInfo.status !== MatchStatus.NotStarted && <MatchStage match={generalInfo} />
                                 }
                             </div>
                             <div className="column column-right away-team">
                                 <ul className="soccer-team-status">
-                                {this.getTeamStatus(false)}
+                                    {this.getTeamStatus(false)}
                                 </ul>
                             </div>
                         </div>

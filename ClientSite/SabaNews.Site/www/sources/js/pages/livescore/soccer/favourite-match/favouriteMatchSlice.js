@@ -25,7 +25,7 @@ const favouriteMatchSlice = createSlice({
             let currenLiveMatches = data.liveMatches;
             const matchIds = JSON.parse(localStorage.getItem("favourite-matches"));
             const listLiveFilter = matchIds?.join(',');
-            if(matchIds) {
+            if (matchIds) {
                 liveMatches = currenLiveMatches.filter(item => listLiveFilter.includes(item.matchId.toString()));
             }
             const totalItem = data.matches.length;

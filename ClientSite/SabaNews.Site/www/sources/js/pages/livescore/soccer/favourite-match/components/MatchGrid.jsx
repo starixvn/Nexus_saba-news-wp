@@ -100,8 +100,8 @@ export default class MatchGrid extends PureComponent {
     render() {
         let { matches, sortAsc, isAllMatches } = this.props;
         if (matches.length === 0) {
-            if(isAllMatches) {
-                return  <div className="none-livescore">Không có trận đấu nào. Nhấn vào biểu tượng <i class="icon-livescore icon-favourite-outline"></i> để thêm trận đấu quan tâm</div>;
+            if (isAllMatches) {
+                return <div className="none-livescore">Không có trận đấu nào. Nhấn vào biểu tượng <i class="icon-livescore icon-favourite-outline"></i> để thêm trận đấu quan tâm</div>;
             }
             return <div className="none-livescore">Không có trận đấu nào.</div>;
         }
@@ -144,7 +144,7 @@ export default class MatchGrid extends PureComponent {
                                                         return <div className="group-match-item" key={child.key}>
                                                             <div className="group-match-item-slogan"> <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}</div>
                                                             {
-                                                                child.childs.map(match =><Match key={match.matchId} searchKey={searchKey} match={match}/>)
+                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
                                                             }
                                                         </div>;
                                                     } else {
