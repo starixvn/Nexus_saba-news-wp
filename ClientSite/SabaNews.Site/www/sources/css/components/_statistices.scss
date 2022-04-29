@@ -34,7 +34,7 @@
             div {
                 background-color: $color-active-icon;
             }
-            /*&.short {
+            &.short {
                 div {
                     background-color: $color-title;
                 }
@@ -44,7 +44,7 @@
                 div {
                     background-color: $color-active-icon;
                 }
-            }*/
+            }
         }
 
         &.statistices-away {
@@ -52,7 +52,7 @@
                 background-color: $color-title;
             }
 
-           /* &.short {
+           &.short {
                 div {
                     background-color: $color-title;
                 }
@@ -62,7 +62,7 @@
                 div {
                     background-color: $color-active-icon;
                 }
-            }*/
+            }
         }
     }
 

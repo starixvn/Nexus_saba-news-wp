@@ -12,7 +12,7 @@ const getMatchDetail = () => async dispatch => {
     const url = Site.resolveClientUrl('soccer/GetMatchDetail');
     await DataService.postDataAsync(url, params).then(response => {
         dispatch(setMatch(response.data));
-    }).catch(Site.handleAxiosError);//.then(() => Site.unblockUI());
+    }).catch(Site.handleAxiosError);
 };
 
 

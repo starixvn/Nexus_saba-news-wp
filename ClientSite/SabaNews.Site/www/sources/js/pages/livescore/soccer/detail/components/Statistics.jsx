@@ -43,7 +43,6 @@ export class Statistics extends Component {
                                 statistices.map(item => {
                                     const homePercentage = (item.homeValue / (item.homeValue + item.awayValue)) * 100;
                                     const awayPercentage = (item.awayValue / (item.homeValue + item.awayValue)) * 100;
-
                                     return (
                                         <div className="statistices-items" key={item.categoryId}>
                                             <div key={item.categoryId} className="statistices-row">
@@ -53,15 +52,15 @@ export class Statistics extends Component {
                                                     <div className="statistices-away-value">{item.awayValue}{item.unit}</div>
                                                 </div>
                                                 <div className="statistices-bar">
-                                                    <div className="statistices-barBg statistices-home">
+                                                    <div className={`statistices-barBg statistices-home ${homePercentage > awayPercentage ? "long" : "short"}`}>
                                                         <div style={{ width: `${homePercentage}%` }} />
                                                     </div>
-                                                    <div className="statistices-barBg statistices-away">
+                                                    <div className={`statistices-barBg statistices-away ${homePercentage > awayPercentage ? "short" : "long"}`}>
                                                         <div style={{ width: `${awayPercentage}%` }} />
                                                     </div>
                                                 </div>
                                             </div>
-                                </div>
+                                        </div>
                                     );
                                 })
                             }
