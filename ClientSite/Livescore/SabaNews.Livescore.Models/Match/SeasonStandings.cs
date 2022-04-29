@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
-
-namespace SabaNews.Livescore.Models.Match
+﻿namespace SabaNews.Livescore.Models.Match
 {
+    using System.Collections.Generic;
+
     public class SeasonStandings
     {
         public long StageId { get; set; }
+        public string StageNameEN { get; set; }
+        public string StageNameVN { get; set; }
+        public short OrderIndex { get; set; }
+
         public long TeamId { get; set; }
         public string TeamNameEN { get; set; }
         public string TeamFullNameEN { get; set; }

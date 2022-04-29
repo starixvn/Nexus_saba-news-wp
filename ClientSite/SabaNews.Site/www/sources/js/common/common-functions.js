@@ -69,6 +69,14 @@ export default class CommonFunctions {
         return team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
     }
 
+    static isLiveMatch(statusId) {
+        return statusId === MatchStatus.FirstHalf
+            || statusId === MatchStatus.SecondHalf
+            || statusId === MatchStatus.Intermission
+            || statusId === MatchStatus.ExtraTime
+            || statusId === MatchStatus.PenaltyShootout;
+    }
+
     static getFavouriteMatches() {
         let matchIds = localStorage.getItem("favourite-matches");
         if(!matchIds) {

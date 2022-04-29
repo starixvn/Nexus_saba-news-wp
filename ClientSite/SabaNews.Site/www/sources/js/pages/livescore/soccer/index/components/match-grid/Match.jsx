@@ -53,11 +53,7 @@ export default class Match extends PureComponent {
 
     render() {
         const { match, searchKey } = this.props;
-        const isLiveMatch = match.status === MatchStatus.FirstHalf
-            || match.status === MatchStatus.SecondHalf
-            || match.status === MatchStatus.Intermission
-            || match.status === MatchStatus.ExtraTime
-            || match.status === MatchStatus.PenaltyShootout;
+        const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
 
         return (

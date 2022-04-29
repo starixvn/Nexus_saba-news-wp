@@ -10,7 +10,7 @@ import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import SignalR from './SignalR';
 import League from './League';
 import MatchGrid from './match-grid/index';
-import SeasonStandings from './SeasonStandings';
+import SeasonStandings from './standings/index';
 import SkeletonLeague from './SkeletonLeague';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import Site from '@jsroot/common/site';

@@ -1,72 +1,8 @@
 ﻿import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { ActionCreators } from '../actions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-export class SeasonStandings extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.MobileMaxWidth = 580;
-
-        this.state = {
-            isMobile: window.innerWidth <= this.MobileMaxWidth ? true : false
-        };
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-
-        this.props.getSeasonStandings({
-            leagueId: window.getMatchByStageParams.leagueId,
-            seasonId: window.getMatchByStageParams.seasonId
-        });
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    handleResize = () => {
-        const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= this.MobileMaxWidth) {
-            this.setState({ isMobile: true });
-        } else {
-            if (isMobile && window.innerWidth > this.MobileMaxWidth) {
-                this.setState({ isMobile: false });
-            }
-        }
-    }
-
-    groupSeasonStandings = seasonStandings => {
-        const totalItems = seasonStandings.length;
-        const standings = [];
-        for (let i = 0; i < totalItems; i++) {
-            let temp = { ...seasonStandings[i] };
-            temp.promotion = JSON.parse(temp.promotion);
-            temp.promotion = temp.promotion && temp.promotion.Color ? temp.promotion : null;
-            const key = temp.groupName;
-            const item = {
-                key,
-                childs: [temp]
-            };
-            if (standings.length === 0) {
-                standings.push(item);
-            } else {
-                const index = standings.findIndex(x => x.key === key);
-                if (index === - 1) {
-                    standings.push(item);
-                } else {
-                    standings[index].childs.push(temp);
-                }
-            }
-        }
-
-        return standings;
-    };
-
+export default class Grid extends PureComponent {
     getMatchResult = (teamId, match) => {
         const isHomeTeam = match.homeTeamId === teamId;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
@@ -108,31 +44,16 @@ export class SeasonStandings extends PureComponent {
         return result;
     }
 
-    getPromotionStandings = seasonStandings => {
-        const totalItems = seasonStandings.length;
-        const promotions = [];
-        for (let i = 0; i < totalItems; i++) {
-            const promotion = JSON.parse(seasonStandings[i].promotion);
-            if (promotion && promotion.Color && promotions.findIndex(item => item.Id === promotion.Id) === -1) {
-                promotions.push(promotion);
-            }
-        }
-
-        return promotions;
-    };
-
     getGroupName = groupName => `Bảng ${groupName.charAt(0)}`;
 
     render() {
-        const seasonStandings = this.groupSeasonStandings(this.props.seasonStandings);
-        const promotions = this.getPromotionStandings(this.props.seasonStandings);
-        const totalItems = seasonStandings.length;
-        const isMobile = this.state.isMobile;
+        const { standings, isMobile } = this.props;
+        const totalItems = standings.length;
 
         return (
-            <div className="season-standings">
+            <>
                 {
-                    seasonStandings.map((group, index) => {
+                    standings.map((group, index) => {
                         return (
                             <div key={index} className="table-custom">
                                 <div className="table-custom-header ">
@@ -228,31 +149,7 @@ export class SeasonStandings extends PureComponent {
                         );
                     })
                 }
-                {
-                    promotions.length > 0 &&
-                    <div className="promotion">
-                        {
-                            promotions.map(item => {
-                                return (
-                                    <div key={item.Id} className="promotion-flex">
-                                        <div className="promotion-color" style={{ backgroundColor: item.Color }}/>
-                                        <div className="promotion-name">{item.NameEN}</div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                }
-            </div>
+            </>
         );
     }
 }
-
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
-
-const mapStateToProps = state => {
-    const { seasonStandings } = state;
-    return { seasonStandings };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SeasonStandings);
