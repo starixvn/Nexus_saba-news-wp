@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Livescore.Provider.API.Models
 {
-    internal class HttpClientConfigurations
+    public class HttpClientConfigurations
     {
         public const string ConfigurationKey = "HttpClientConfigurations";
 

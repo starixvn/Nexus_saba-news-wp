@@ -4,6 +4,7 @@
 
     public class AppSettings
     {
+        public const string ConfigurationKey = "AppSettings";
         public DateTime MinDateSyncLivescoreData { get; set; }
         public int BatchSizeSyncLivescoreData { get; set; }
         public int BatchSizeSyncMatches { get; set; }

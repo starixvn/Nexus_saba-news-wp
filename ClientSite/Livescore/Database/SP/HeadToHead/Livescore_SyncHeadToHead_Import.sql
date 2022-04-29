@@ -70,7 +70,8 @@ BEGIN
                 HomeHalfScore SMALLINT PATH "$.HomeHalfScore",
                 AwayHalfScore SMALLINT PATH "$.AwayHalfScore"
             )
-        ) AS m;
+        ) AS m
+    WHERE m.MatchId <> m.ReferenceMatchId;
 
     INSERT INTO livescore_head_to_head(
         MatchId,
@@ -81,19 +82,22 @@ BEGIN
         AwayHalfScore,
         HomeTotalScore,
         AwayTotalScore,
-        EventDate)
+        EventDate,
+        SyncedDate)
     SELECT DISTINCT h.MatchId,
             h.HomeTeamId,
             h.AwayTeamId,
             h.ReferenceMatchId,
-            h.HomeHalfScore,
-            h.AwayHalfScore,
-            h.HomeTotalScore,
-            h.AwayTotalScore,
-            m.StartTime
+            m.HomeTeamHalfScore,
+            m.AwayTeamHalfScore,
+            m.HomeTeamTotalScore,
+            m.AwayTeamTotalScore,
+            m.StartTime,
+            utc_timestamp()
     FROM tmp_h2h h
-    LEFT JOIN livescore_match m ON h.ReferenceMatchId = m.MatchId
-    WHERE h.MatchId <> h.ReferenceMatchId;
+    INNER JOIN livescore_match m ON h.MatchId = m.MatchId
+    ON DUPLICATE KEY UPDATE
+        SyncedDate = utc_timestamp();
 END;
 
 //

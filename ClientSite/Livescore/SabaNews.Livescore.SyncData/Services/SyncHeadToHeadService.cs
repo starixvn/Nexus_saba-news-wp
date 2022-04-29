@@ -34,14 +34,17 @@
 
         public async Task SyncHeadToHeadAsync(HeadToHeadResponse h2hResponse)
         {
-            var dataImport = DataHelpers.GenerateTeamHistoryToImport(h2hResponse);
-
-            var command = new ImportHeadToHeadCommand
+            if (h2hResponse is not null)
             {
-                HeadToHeadJson = JsonConvert.SerializeObject(dataImport)
-            };
+                var dataImport = DataHelpers.GenerateTeamHistoryToImport(h2hResponse);
 
-            await baseService.ExecuteNonQueryAsync(command);
+                var command = new ImportHeadToHeadCommand
+                {
+                    HeadToHeadJson = JsonConvert.SerializeObject(dataImport)
+                };
+
+                await baseService.ExecuteNonQueryAsync(command);
+            }
         }
 
         public async Task UpdateSyncCompletedHeadToHead(long matchId)

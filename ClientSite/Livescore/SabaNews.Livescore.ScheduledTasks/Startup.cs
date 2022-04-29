@@ -20,6 +20,8 @@
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Core.Models;
     using SabaNews.Livescore.ScheduledTasks.Models;
+    using SabaNews.Livescore.ScheduledTasks.MqttClient.Extensions;
+    using SabaNews.Livescore.ScheduledTasks.MqttClient.Services;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Interfaces;
@@ -48,6 +50,7 @@
             AddRedisConfiguration(services, Configuration);
             AddDependencyInjection(services);
             services.ResolveLivescoreServiceDI();
+            ConfigureMqttService(services);
             AddWorker(services);
         }
 
@@ -70,15 +73,14 @@
         {
             if (env.IsDevelopment())
             {
-                app.UseMiddleware<ErrorHandler>();
-
                 app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseMiddleware<ErrorHandler>();
                 app.UseHsts();
             }
+
+            app.UseMiddleware<ErrorHandler>();
 
             app.UseStaticFiles();
             app.UseRouting();
@@ -125,7 +127,7 @@
             var jobSettings = configuration.GetSection(ScheduledTaskSettings.ConfigurationKey).Get<List<ScheduledTaskSettings>>();
             services.AddSingleton(jobSettings);
 
-            var appSettings = configuration.GetSection("AppSettings").Get<AppSettings>();
+            var appSettings = configuration.GetSection(AppSettings.ConfigurationKey).Get<AppSettings>();
             services.AddSingleton(appSettings);
 
             var signalRSettings = configuration.GetSection(PushSignalSettings.ConfigurationKey).Get<PushSignalSettings>();
@@ -135,6 +137,12 @@
         private static void AddDependencyInjection(IServiceCollection services)
         {
             services.AddSingleton<ILiveMatchService, LiveMatchService>();
+            services.AddSingleton<IMqttClientService, MqttClientService>();
+        }
+
+        private void ConfigureMqttService(IServiceCollection services)
+        {
+            services.AddMqttClientHostedService(Configuration);
         }
 
         private static void AddWorker(IServiceCollection services)

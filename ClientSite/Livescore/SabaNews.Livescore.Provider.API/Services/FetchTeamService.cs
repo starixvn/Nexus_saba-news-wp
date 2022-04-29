@@ -22,7 +22,11 @@
             };
 
             var h2h = await httpClient.ExecutePostAsync<HeadToHeadResponse>(ApiPath.GetTeamHeadToHeadApiPath, param);
-            h2h.SourceMatchId = matchId;
+
+            if (h2h is not null)
+            {
+                h2h.SourceMatchId = matchId;
+            }
             return h2h;
         }
 

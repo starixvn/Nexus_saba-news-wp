@@ -1,0 +1,48 @@
+﻿namespace SabaNews.Livescore.ScheduledTasks.MqttClient.Extensions
+{
+    using System;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
+    using SabaNews.Livescore.ScheduledTasks.MqttClient.Services;
+
+    internal static class MqttServiceCollectionExtension
+    {
+        public static IServiceCollection AddMqttClientHostedService(this IServiceCollection services, IConfiguration configuration)
+        {
+            var mqttSettings = configuration.GetSection(MqttSettings.ConfigurationKey).Get<MqttSettings>();
+            services.AddSingleton(mqttSettings);
+
+            services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
+            {
+                aspOptionBuilder.WithTcpServer(mqttSettings.Host, mqttSettings.Port);
+                if (mqttSettings.UseProxy)
+                {
+                    aspOptionBuilder.WithProxy(
+                        address: mqttSettings.ProxyAddress,
+                        bypassOnLocal: mqttSettings.ByPassLocal
+                        );
+                }
+            });
+            return services;
+        }
+
+        private static IServiceCollection AddMqttClientServiceWithConfig(this IServiceCollection services, Action<AspNetCoreMqttClientOptionBuilder> configure)
+        {
+            services.AddSingleton(serviceProvider =>
+            {
+                var optionBuilder = new AspNetCoreMqttClientOptionBuilder(serviceProvider);
+                configure(optionBuilder);
+                return optionBuilder.Build();
+            });
+            services.AddSingleton<MqttClientService>();
+            services.AddSingleton<IHostedService>(serviceProvider =>
+            {
+                return serviceProvider.GetService<MqttClientService>();
+            });
+
+            return services;
+        }
+    }
+}
