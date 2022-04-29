@@ -40,7 +40,7 @@
             {
                 using (var multi = await db.QueryMultipleAsync(criteria))
                 {
-                    var common = multi.Read<Match, League, Team, Team, Match>(
+                    var matches = multi.Read<Match, League, Team, Team, Match>(
                         (match, league, home, away) =>
                         {
                             match.League = league;
@@ -51,33 +51,25 @@
                         },
                         "LeagueId, HomeTeamId, AwayTeamId");
 
-                    var home = multi.Read<Match, League, Team, Team, Match>(
-                        (match, league, home, away) =>
-                        {
-                            match.League = league;
-                            match.HomeTeam = home;
-                            match.AwayTeam = away;
+                    var team = await multi.ReadFirstAsync<H2HTeam>();
+                    var common = new List<Match>();
+                    var home = new List<Match>();
+                    var away = new List<Match>();
+                    if (matches.Any() && team != null) {
+                        common = matches.Where(item => (item.HomeTeam.TeamId == team.HomeId && item.AwayTeam.TeamId == team.AwayId)
+                                                   || (item.HomeTeam.TeamId == team.AwayId && item.AwayTeam.TeamId == team.HomeId)).Skip(0).Take(5).ToList();
 
-                            return match;
-                        },
-                        "LeagueId, HomeTeamId, AwayTeamId");
+                        home = matches.Where(item => item.HomeTeam.TeamId == team.HomeId || item.AwayTeam.TeamId == team.HomeId).Skip(0).Take(5).ToList();
 
-                    var away = multi.Read<Match, League, Team, Team, Match>(
-                        (match, league, home, away) =>
-                        {
-                            match.League = league;
-                            match.HomeTeam = home;
-                            match.AwayTeam = away;
-
-                            return match;
-                        },
-                        "LeagueId, HomeTeamId, AwayTeamId");
+                        away = matches.Where(item => item.HomeTeam.TeamId == team.AwayId || item.AwayTeam.TeamId == team.AwayId).Skip(0).Take(5).ToList();
+                    }
 
                     return new HeadToHeadDetail
                     {
                         Common = common,
                         Home = home,
                         Away = away
+
                     };
                     
                 }
