@@ -35,6 +35,6 @@
     Striker: 'Tiền đạo',
     SendPenaltyChange: 'Nâng mức thẻ',
     ToBeDecided: 'Chờ xác định',
-    Today: 'Hôm nay'
+    Today: 'Hôm nay',
     Unknown: 'Không xác định',
 };
