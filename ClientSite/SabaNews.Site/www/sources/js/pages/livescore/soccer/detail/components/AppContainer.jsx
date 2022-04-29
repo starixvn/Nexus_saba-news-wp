@@ -27,7 +27,7 @@ export class AppContainer extends Component {
                 <SignalR />
                     <div className="livescore-soccer">
                         <div className="livescore-soccer-main">
-                            <MatchGenetalInfo match={this.props.match} isLiveMatch={this.props.isLiveMatch} />
+                            <MatchGenetalInfo match={this.props.match} />
                             <Details />
                         </div>
                         <div className="livescore-soccer-extension">
@@ -44,9 +44,9 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { match, isLiveMatch, majorLeagues } = state;
+    const { match, majorLeagues } = state;
     return {
-        match, isLiveMatch, majorLeagues
+        match, majorLeagues
     };
 };
 

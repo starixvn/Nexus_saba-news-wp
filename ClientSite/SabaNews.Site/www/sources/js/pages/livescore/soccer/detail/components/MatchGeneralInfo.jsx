@@ -18,6 +18,7 @@ export default class MatchGenetalInfo extends Component {
     }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
         switch (match.status) {
             case MatchStatus.NotStarted:
             case MatchStatus.Delay:
@@ -25,7 +26,7 @@ export default class MatchGenetalInfo extends Component {
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
                 return (<div className="detail-score-wrapper live before-score">
-                    <span>VS</span>
+                    <span>{DateTimeService.toShortTimeFormat(startTime)}</span>
                 </div>)
             default:
                 return <>
@@ -91,11 +92,11 @@ export default class MatchGenetalInfo extends Component {
                     })
                 }
                 {
-                    numberRedCard !== 0 &&
+                    numberRedCard > 0 &&
                     <span className="card-league red-card">{numberRedCard}</span>
                 }
                 {
-                    numberYellowCard !== 0 &&
+                    numberYellowCard > 0 &&
                     <span className="card-league yellow-card">{numberYellowCard}</span>
                 }
             </div>
@@ -155,7 +156,11 @@ export default class MatchGenetalInfo extends Component {
                                     {this.getTeamStatus(true)}
                                 </ul>
                             </div>
-                            <div className={`column column-center ${isLiveMatch ? 'live': ''}`}><MatchStage match={generalInfo} /></div>
+                            <div className={`column column-center ${isLiveMatch ? 'live': ''}`}>
+                                {
+                                    generalInfo.status !== MatchStatus.NotStarted && <MatchStage match={generalInfo} />
+                                }
+                            </div>
                             <div className="column column-right away-team">
                                 <ul className="soccer-team-status">
                                 {this.getTeamStatus(false)}
