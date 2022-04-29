@@ -3,11 +3,9 @@ import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import CommonFunctions from '@jsroot/common/common-functions';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 const SearchBar = props => {
-    const favMatches = CommonFunctions.getFavouriteMatches();
     return (
         <div className="group-searchbar">
             <div className="livescore-soccer-search-bar">

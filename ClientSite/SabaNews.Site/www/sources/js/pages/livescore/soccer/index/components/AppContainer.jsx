@@ -18,10 +18,17 @@ moment.updateLocale('vi', {
 moment.locale('vi');
 
 export class AppContainer extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+        };
+    }
+
     componentDidMount() {
         window.addEventListener('resize', this.handleResize);
 
-        this.props.setIsMobile(window.innerWidth <= MobileMaxWidth ? true : false);
         this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
         this.props.getMajorLeagues();
         this.getMatches(this.props.selectedDate);
@@ -32,12 +39,12 @@ export class AppContainer extends Component {
     }
 
     handleResize = () => {
-        const isMobile = this.props.isMobile;
+        const isMobile = this.state.isMobile;
         if (!isMobile && window.innerWidth <= MobileMaxWidth) {
-            this.props.setIsMobile(true);
+            this.setState({ isMobile: true});
         } else {
             if (isMobile && window.innerWidth > MobileMaxWidth) {
-                this.props.setIsMobile(false);
+                this.setState({ isMobile: false });
             }
         }
     }
@@ -96,14 +103,16 @@ export class AppContainer extends Component {
     };
 
     render() {
+        const isMobile = this.state.isMobile;
         const { matches, majorLeagues } = this.props;
+        const totalMatches = matches ? matches.length : 0;
 
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar
+                        <DateBar isMobile={isMobile} totalMatches={totalMatches}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}
                         />
@@ -129,11 +138,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 const mapStateToProps = state => {
     const {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches, isMobile
+        searchKey, majorLeagues, matches
     } = state;
     return {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches, isMobile
+        searchKey, majorLeagues, matches
     };
 };
 

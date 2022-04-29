@@ -15,7 +15,6 @@ const scriptPaths = {
     build: 'wwwroot/js',
 
     language: ['./www/sources/js/common/languages/ViewResources_vi_VN.js'],
-    main: ['./www/sources/js/pages/main.jsx'],
     livescore_soccer_index: ['./www/sources/js/pages/livescore/soccer/index/index.jsx'],
     livescore_soccer_league_detail: ['./www/sources/js/pages/livescore/soccer/league-detail/index.jsx'],
     livescore_soccer_detail: ['./www/sources/js/pages/livescore/soccer/detail/index.jsx'],

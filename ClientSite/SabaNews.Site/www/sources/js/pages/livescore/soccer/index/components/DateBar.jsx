@@ -1,8 +1,5 @@
 ﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { ActionCreators } from '../actions';
 import DatePickerField from './DatePickerField';
 import WeekBar from './WeekBar';
 import Site from '@jsroot/common/site';
@@ -13,8 +10,7 @@ export const withNavigation = Component => {
 }
 
 const DateBar = props => {
-    const { isMobile, matches } = props;
-    const totalMatches = matches ? matches.length : 0;
+    const { isMobile, totalMatches } = props;
 
     return (
         <div className="livescore-soccer-date-bar">
@@ -34,7 +30,7 @@ const DateBar = props => {
                     }
                 </div>
             </div>
-            <WeekBar
+            <WeekBar isMobile={isMobile}
                 getDateRanges={props.getDateRanges}
                 onClick={props.onClick}
             />
@@ -49,11 +45,4 @@ const DateBar = props => {
 
 const DateBarComponent = withNavigation(DateBar);
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
-
-const mapStateToProps = state => {
-    const { isMobile, matches } = state;
-    return { isMobile, matches };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DateBarComponent);
+export default DateBarComponent;

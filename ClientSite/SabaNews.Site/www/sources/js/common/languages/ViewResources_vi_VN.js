@@ -1,4 +1,5 @@
 ﻿window._language_vi_VN = {
+    AddFavouriteMatchTooltip: 'Thêm vào "Trận Đấu Quan Tâm"',
     Cancel: 'Hủy',
     Defender: 'Hậu vệ',
     Delay: 'Tạm hoãn',
@@ -14,10 +15,9 @@
     Midfielder: 'Trung vệ',
     Penalty: 'Penalty',
     Postponed: 'Dời lịch',
+    RemoveFavouriteMatchTooltip: 'Xóa khỏi "Trận Đấu Quan Tâm"',
     Round: 'Vòng',
     Striker: 'Tiền đạo',
     ToBeDecided: 'Chờ xác định',
-    Today: 'Hôm nay',
-    AddFavouriteMatchTooltip: 'Thêm vào "Trận Đấu Quan Tâm"',
-    RemoveFavouriteMatchTooltip: 'Xóa khỏi "Trận Đấu Quan Tâm"'
+    Today: 'Hôm nay'
 };

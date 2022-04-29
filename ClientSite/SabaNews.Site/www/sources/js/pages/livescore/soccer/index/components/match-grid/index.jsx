@@ -55,7 +55,8 @@ export class MatchGrid extends PureComponent {
             });
         }
 
-        if (matches.length === 0) {
+        const totalMatches = matches.length;
+        if (totalMatches === 0) {
             return <div className="none-livescore">
                 { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
             </div>;
@@ -71,11 +72,11 @@ export class MatchGrid extends PureComponent {
             <>
                 <SearchBar />
                 {
-                    matches.length === 0 && searchKey.length > 0 &&
+                    totalMatches === 0 && searchKey.length > 0 &&
                     <div className="none-livescore">Không tìm thấy giải đấu hoặc trận đấu nào phù hợp.</div>
                 }
                 {
-                    matches.length > 0 &&
+                    totalMatches > 0 &&
                     <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} />
                 }
             </>

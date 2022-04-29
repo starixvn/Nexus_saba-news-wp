@@ -10,31 +10,23 @@ import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 toast.configure();
 
 export default class Match extends PureComponent {
-    constructor(props) {
-        super(props);
-    }
-
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        switch (match.status) {
-            case MatchStatus.Finished:
-                if (match[`${homeFieldName}PenaltyScore`]
-                    && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
-                    return <li>PEN</li>;
-                } else if (match[`${homeFieldName}AggregateScore`]
+        if (match.status === MatchStatus.Finished) {
+            if (match[`${homeFieldName}PenaltyScore`]
+                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                return <li>PEN</li>;
+            } else {
+                if (match[`${homeFieldName}AggregateScore`]
                     && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
                     return <li>AGG</li>;
-                } else {
-                    return <Fragment />;
                 }
-                break;
-
-            default:
-                return <Fragment />;
-                break;
+            }
         }
+
+        return <Fragment />;
     };
 
     getTeamName = (team, searchKey) => {

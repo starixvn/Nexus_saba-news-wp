@@ -75,8 +75,8 @@ const WeekBarComponent = withNavigation(WeekBar);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { isMobile, today, minDate, maxDate, selectedDate, dateRanges } = state;
-    return { isMobile, today, minDate, maxDate, selectedDate, dateRanges };
+    const { today, minDate, maxDate, selectedDate, dateRanges } = state;
+    return { today, minDate, maxDate, selectedDate, dateRanges };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeekBarComponent);
