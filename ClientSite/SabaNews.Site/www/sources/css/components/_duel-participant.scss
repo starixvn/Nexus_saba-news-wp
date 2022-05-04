@@ -258,27 +258,21 @@
             &-center {
                 margin: 0 4rem;
                 text-align: center;
-                width: 15%;
-
-                @include iphone5 {
-                    width: 18%;
-                }
-
+                width: 18%;
                 @include Mobile {
                     margin: 0 1.5rem;
-                    width: 18%;
                 }
 
                 &.result-league {
                     .detail-score-wrapper {
                         background: $bg-score-detail;
                         border-radius: 15px;
-                        padding: 1rem 1.8rem;
+                        padding: 1rem 1.4rem;
                         font-weight: 700;
                         font-size: 4rem;
                         display: flex;
                         align-items: center;
-                        justify-content: space-between;
+                        justify-content: space-evenly;
 
                         @include Mobile {
                             padding: 0.5rem;
