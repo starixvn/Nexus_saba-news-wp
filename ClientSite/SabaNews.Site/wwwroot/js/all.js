@@ -75,7 +75,9 @@ $(document).ready(function () {
             //var top_of_obj = main.offsetTop;
             var heightSection = $(".header-controls").innerHeight();
             var top_of_window = window.scrollY;
-            if (top_of_window > heightSection) {
+            const { scrollHeight, clientHeight } = document.documentElement;
+            const canScrollHeight = scrollHeight - clientHeight;
+            if (top_of_window > heightSection && canScrollHeight > 150) {
                 main.classList.add('active-fixed');
             } else {
                 main.classList.remove('active-fixed');
