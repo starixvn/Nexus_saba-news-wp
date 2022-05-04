@@ -37,6 +37,7 @@ export default class Match extends Component {
 
     handleClick = event => {
         const className = event.target.className;
+        console.log(className);
         if(className.includes('icon-livescore')) {
             return;
         }
@@ -63,9 +64,8 @@ export default class Match extends Component {
         const isIntermission = match.status === MatchStatus.Intermission;
 
         return (
-            <div className="group-match-item">
+            <div className="group-match-item"  onClick={this.handleClick}>
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
-                    onClick={this.handleClick}
                 >
                     <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch} />
                     <MatchStage match={match} />
@@ -90,7 +90,7 @@ export default class Match extends Component {
                         </div>
                     </div>
                     <div className="soccer-match-star-icon">
-                        <i className="icon-livescore icon-live-right" />
+                        <i className="icon-live-right" />
                     </div>
                 </div>
             </div>
