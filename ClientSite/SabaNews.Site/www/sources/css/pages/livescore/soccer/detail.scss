@@ -177,7 +177,9 @@
                     }
 
                     &-name {
-                        max-width: 9rem;
+                        @include Mobile {
+                            max-width: 9rem;
+                        }
                     }
                 }
 
