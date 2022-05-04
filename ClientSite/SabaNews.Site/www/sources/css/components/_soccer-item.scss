@@ -338,7 +338,7 @@
                 text-align: center;
             }
 
-            p, span {
+            span {
                 font-size: 1.3rem;
                 line-height: 1.4rem;
 
@@ -350,7 +350,7 @@
 
         &.live-intermission {
             .soccer-match-stage {
-                p {
+                span {
                     font-size: 1.2rem;
                     line-height: 1.6rem;
                     padding-top: .5rem;

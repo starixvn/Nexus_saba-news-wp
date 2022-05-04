@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
 import LangHelper from '@jsroot/common/langHelper';
 import DateTimeService from '@jsroot/common/dateTimeService';
