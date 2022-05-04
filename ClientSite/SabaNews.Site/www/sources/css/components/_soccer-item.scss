@@ -288,12 +288,13 @@
                         .total-score {
                             font-weight: bold;
                             margin-right: .6rem;
-                            width : 1.8rem;
-                            display : block;
-                            text-align : center;
-                            @include Mobile{
-                                margin-right : .3rem;
+                            width: 1.8rem;
+                            display: block;
+                            text-align: center;
+                            border-radius: 3px;
 
+                            @include Mobile {
+                                margin-right: .3rem;
                             }
                         }
                     }
@@ -372,6 +373,10 @@
                         right: 50%;
                         top: 0;
                         transform: translate(50%,-50%);
+
+                        @include tableMobile {
+                            right: 35%;
+                        }
                     }
 
                     &:after {
@@ -381,7 +386,7 @@
                         transform: translate(50%, -50%);
 
                         @include tableMobile {
-                            right: 35%;
+                            right: 13%;
                         }
                     }
                 }
@@ -397,4 +402,8 @@
     @include iphone5 {
         font-size: 1.2rem;
     }
+}
+.rc-highlight {
+    background-color: #FCDE9D !important;
+    color: #2F2F2F !important;
 }
