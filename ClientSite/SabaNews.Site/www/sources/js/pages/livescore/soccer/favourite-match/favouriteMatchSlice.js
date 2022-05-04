@@ -35,8 +35,8 @@ const favouriteMatchSlice = createSlice({
                 const startTime = moment(DateTimeService.convertFromUTC(match.startTime)).format('YYYY-MM-DD');
                 const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
 
-                if (match.status === MatchStatus.NotStarted || match.status === MatchStatus.Delay
-                    || match.status === MatchStatus.Postpone || match.status === MatchStatus.TBD
+                if ((match.status === MatchStatus.NotStarted || match.status === MatchStatus.Delay
+                    || match.status === MatchStatus.Postpone || match.status === MatchStatus.TBD)
                     && (moment(startTime).isSameOrAfter(today) || moment(endTime).isSameOrAfter(today))) {
                     preMatches.push(match);
                 }
@@ -75,8 +75,27 @@ const favouriteMatchSlice = createSlice({
                     state.liveMatches[index] = liveMatches[i];
                 }
             }
+        },
+        setFavouriteMatches: (state, action) => {
+            const matchId = action.payload.matchId;
+            let index = state.preMatches.findIndex(item => item.matchId === matchId);
+            if (index >= 0) {
+                state.preMatches[index].isFavourite = !state.preMatches[index].isFavourite;
+            }
+            index = state.matches.findIndex(item => item.matchId === matchId);
+            if (index >= 0) {
+                state.matches[index].isFavourite = !state.matches[index].isFavourite;
+            }
+            index = state.postMatches.findIndex(item => item.matchId === matchId);
+            if (index >= 0) {
+                state.postMatches[index].isFavourite = !state.postMatches[index].isFavourite;
+            }
+            index = state.liveMatches.findIndex(item => item.matchId === matchId);
+            if (index >= 0) {
+                state.liveMatches[index].isFavourite = !state.liveMatches[index].isFavourite;
+            }
         }
-    }
+    },
 });
 
 const { actions, reducer } = favouriteMatchSlice;
@@ -84,7 +103,8 @@ const { actions, reducer } = favouriteMatchSlice;
 export const {
     setMajorLeagues,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setFavouriteMatches
 } = actions;
 
 export default reducer;

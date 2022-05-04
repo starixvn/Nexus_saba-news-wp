@@ -5,7 +5,8 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import {
     setMajorLeagues,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setFavouriteMatches
 } from './favouriteMatchSlice';
 
 const getMajorLeagues = () => async dispatch => {
@@ -37,6 +38,7 @@ export const ActionCreators = {
     setMajorLeagues,
     setMatches,
     setLiveMatches,
+    setFavouriteMatches,
     getMajorLeagues,
     getMatches,
     getLiveMatches

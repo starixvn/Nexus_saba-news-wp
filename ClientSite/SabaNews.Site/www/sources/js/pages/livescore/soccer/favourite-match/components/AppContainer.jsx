@@ -95,9 +95,14 @@ export class AppContainer extends Component {
         this.props.navigate(url);
     };
 
+
+    onUpdateFavouriteMatch = matchId => {
+        this.props.setFavouriteMatches({matchId: matchId});
+    }
+
     render() {
-        let { selectedTab, selectedAllTab, selectedLiveTab, selectedPreTab, selectedPostTab } = this.state;
-        const { majorLeagues, matches, postMatches, preMatches, liveMatches, favouriteMatches } = this.props;
+        let { selectedTab } = this.state;
+        const { majorLeagues, matches, postMatches, preMatches, liveMatches } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR />
@@ -105,7 +110,7 @@ export class AppContainer extends Component {
                     <div className="livescore-soccer-main">
                         <div className="livescore-league-header-detail">
                             <div className="livescore-league-header-detail-group">
-                                <div className="livescore-league-header-detail-icon"><i class="icon-livescore icon-live-start" /></div>
+                                <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start" /></div>
                                 <div className="livescore-league-header-detail-name">
                                     Trận đấu quan tâm
                                 </div>
@@ -116,16 +121,16 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey="tat-ca" title="Tất cả">
-                                {matches && <MatchGrid isAllMatches sortAsc matches={matches} />}
+                                {matches && <MatchGrid isAllMatches sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
                             <Tab eventKey="truc-tiep" title="Trực tiếp">
-                                {liveMatches && <MatchGrid sortAsc matches={liveMatches} />}
+                                {liveMatches && <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
                             <Tab eventKey="chua-dien-ra" title="Chưa diễn ra">
-                                {preMatches && <MatchGrid sortAsc matches={preMatches} />}
+                                {preMatches && <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
                             <Tab eventKey="da-dien-ra" title="Đã diễn ra">
-                                {postMatches && <MatchGrid sortAsc={false} matches={postMatches} />}
+                                {postMatches && <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
                         </Tabs>
                     </div>

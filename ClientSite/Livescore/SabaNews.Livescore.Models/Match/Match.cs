@@ -32,5 +32,6 @@
         public DateTime? FootballStartTime { get; set; }
         public DateTime? FootballNextHalfStartTime { get; set; }
         public DateTime? FootballAddStartTime { get; set; }
+        public bool IsFavourite { get; set; }
     }
 }

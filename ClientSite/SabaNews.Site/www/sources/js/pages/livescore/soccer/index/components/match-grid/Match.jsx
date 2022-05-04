@@ -1,4 +1,4 @@
-﻿import React, { PureComponent, Fragment } from 'react';
+﻿import React, { Component, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from './TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 toast.configure();
 
-export default class Match extends PureComponent {
+export default class Match extends Component {
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
@@ -50,6 +50,12 @@ export default class Match extends PureComponent {
         }
     };
 
+    onUpdateFavouriteMatch = (matchId) => {
+        if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
+            this.props.onUpdateFavouriteMatch(matchId);
+        }
+    }
+
 
     render() {
         const { match, searchKey } = this.props;
@@ -61,7 +67,7 @@ export default class Match extends PureComponent {
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                     onClick={this.handleClick}
                 >
-                    <FavouriteIcon matchId={match.matchId} />
+                    <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">

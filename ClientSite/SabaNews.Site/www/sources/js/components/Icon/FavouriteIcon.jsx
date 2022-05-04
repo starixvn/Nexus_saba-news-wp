@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import LangHelper from '@jsroot/common/langHelper';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -7,10 +7,9 @@ import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 toast.configure();
 
-export default class FavouriteIcon extends PureComponent {
+export default class FavouriteIcon extends Component {
     constructor(props) {
         super(props);
-
         const matchId = this.props.matchId;
         const favMatches = CommonFunctions.getFavouriteMatches();
         const matchIndex = favMatches.findIndex(item => item === matchId);
@@ -20,15 +19,27 @@ export default class FavouriteIcon extends PureComponent {
         };
     }
 
+    componentDidUpdate() {
+        const matchId = this.props.matchId;
+        const favMatches = CommonFunctions.getFavouriteMatches();
+        const matchIndex = favMatches.findIndex(item => item === matchId);
+        const currentFavourite = this.state.isFavourite;
+        const isFavourite = matchIndex >= 0;
+        if(isFavourite !== currentFavourite) {
+            this.setState({isFavourite: isFavourite});
+        }
+
+    }
+
     handleUpdateFavourite = () => {
         const matchId = this.props.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
         let message = "";
         if (isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = <div className="fav-match fav-match-add"><ul><li className="text-fav"><i class="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li><li className="show-link-toastify"><a href={url}>hiển thị</a></li></ul> </div>;
+            message = <div className="fav-match fav-match-add"><ul><li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li><li className="show-link-toastify"><a href={url}>hiển thị</a></li></ul> </div>;
         } else {
-            message = <div className="fav-match fav-match-remove"><ul><li className="text-fav"><i class="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li></ul></div>;
+            message = <div className="fav-match fav-match-remove"><ul><li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li></ul></div>;
         }
         const toastId = toast.dark(message, {
             toastId: 'fav',
@@ -38,6 +49,7 @@ export default class FavouriteIcon extends PureComponent {
         });
         toast.update(toastId, { render: () => message, autoClose: 3000 });
         this.setState({ isFavourite: isFavourite, isShowTooltip: false});
+        this.onUpdateFavouriteMatch();
     }
 
     renderTooltip = () => {
@@ -53,6 +65,13 @@ export default class FavouriteIcon extends PureComponent {
         const isShowTooltip = this.state.isShowTooltip;
         if(!isShowTooltip) {
             this.setState({isShowTooltip: true});
+        }
+    }
+
+    onUpdateFavouriteMatch = () => {
+        const matchId = this.props.matchId;
+        if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
+            this.props.onUpdateFavouriteMatch(matchId);
         }
     }
 
