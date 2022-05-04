@@ -287,7 +287,14 @@
 
                         .total-score {
                             font-weight: bold;
-                            margin-right: 3px;
+                            margin-right: .6rem;
+                            width : 1.8rem;
+                            display : block;
+                            text-align : center;
+                            @include Mobile{
+                                margin-right : .3rem;
+
+                            }
                         }
                     }
 
