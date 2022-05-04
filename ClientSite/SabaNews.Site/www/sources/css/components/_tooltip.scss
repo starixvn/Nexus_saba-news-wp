@@ -2,6 +2,27 @@
 
 .tooltip-add-favourite-match {
     z-index: 99999999;
+    padding: .4rem 0;
+
+    .arrow {
+        display: block;
+        width: .8rem;
+        height: .4rem;
+        position: absolute;
+        left: -2px !important;
+        top: 0;
+
+        &:before {
+            position: absolute;
+            content: "";
+            border-color: transparent;
+            border-style: solid;
+            display: block;
+            bottom: 0;
+            border-width: 0 5px 5px;
+            border-bottom-color: rgba(41, 41, 41, 0.9);
+        }
+    }
 }
 
 .tooltip-add-favourite-match [class$="inner"] {
