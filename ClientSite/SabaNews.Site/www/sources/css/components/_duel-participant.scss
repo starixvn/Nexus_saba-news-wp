@@ -24,15 +24,17 @@
     .flex-league {
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         margin-bottom: 1.2rem;
 
         @include Mobile {
             margin-bottom: .6rem;
+            align-items: flex-start;
         }
 
         &:last-child {
             margin-bottom: 0;
+            align-items: flex-start;
         }
 
         &.first-league {
@@ -62,12 +64,11 @@
                 &-logo {
                     overflow: hidden;
                     position: relative;
-                    width: 30%;
+                    width: 5rem;
 
                     @include Mobile {
                         order: 1;
                         width: 3.2rem;
-                        height: 3.2rem;
                         text-align: center;
                     }
 
@@ -76,11 +77,6 @@
                         object-fit: cover;
                         display: block;
                         margin: 0 auto;
-
-                        @include Mobile {
-                            width: 3.2rem;
-                            height: 3.2rem;
-                        }
                     }
                 }
 
@@ -227,8 +223,8 @@
                 }
 
                 .team-name {
-                    margin-left: 20px;
-                    width: 80%;
+                    margin-left: 2rem;
+                    max-width: 15rem;
                 }
             }
 
@@ -243,6 +239,7 @@
 
                 ul {
                     margin-bottom: 1rem;
+                    justify-content: flex-end;
 
                     @include Mobile {
                         margin-bottom: .6rem;
@@ -250,8 +247,8 @@
                 }
 
                 .team-name {
-                    margin-right: 20px;
-                    width: 80%;
+                    margin-right: 2rem;
+                    max-width: 15rem;
                 }
             }
 
@@ -259,6 +256,7 @@
                 margin: 0 4rem;
                 text-align: center;
                 width: 18%;
+
                 @include Mobile {
                     margin: 0 1.5rem;
                 }

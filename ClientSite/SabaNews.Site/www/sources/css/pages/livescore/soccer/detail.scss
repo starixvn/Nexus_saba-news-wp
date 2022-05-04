@@ -67,6 +67,7 @@
     top: 5rem;
     z-index: 99;
     background: $primary-bg;
+
     @include tableMobile {
         position: unset;
     }
@@ -79,7 +80,8 @@
         top: 5rem;
         z-index: 99;
         background: $primary-bg;
-        padding-top : .5rem;
+        padding-top: .5rem;
+
         @include tableMobile {
             position: fixed;
             top: 4rem;
@@ -167,27 +169,15 @@
                     }
 
                     &-logo {
-                        width: 3rem;
-                        height: 3rem;
+                        width: 3.2rem;
 
                         @include Mobile {
-                            width: 4rem;
-                            height: 3rem;
-                        }
-
-                        img {
-                            width: 3rem;
-                            height: 3rem;
-
-                            @include Mobile {
-                                width: 3rem;
-                                height: 3rem;
-                                max-width: none;
-                            }
+                            width: 2.4rem;
                         }
                     }
 
                     &-name {
+                        max-width: 9rem;
                     }
                 }
 
@@ -241,4 +231,3 @@
         }
     }
 }
-
