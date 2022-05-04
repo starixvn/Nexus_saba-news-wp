@@ -70,10 +70,11 @@ export default class IncidentIcon extends Component {
 
     renderYellowTurnRedCardIcon = () => {
         return (
-            <div className="pr-30">
-                <span className="ic-yellow-card"></span>
-                <span className="ic-red-card"></span>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="5" width="16" height="18" rx="3" fill="#F9C91E"/>
+                <rect x="2" y="1" width="16" height="19" rx="3" fill="#E94633"/>
+            </svg>
+
         );
     }
 

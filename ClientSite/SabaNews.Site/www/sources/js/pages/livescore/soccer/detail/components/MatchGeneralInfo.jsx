@@ -8,8 +8,6 @@ import FunctionBar from './FunctionBar';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
-import { toast } from "react-toastify";
-toast.configure()
 
 export default class MatchGenetalInfo extends Component {
     constructor(props) {
