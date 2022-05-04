@@ -1,8 +1,7 @@
 ﻿if (document.querySelector('.header') != null) {
     var checkScroll = function (e) {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const { scrollHeight, clientHeight } = document.documentElement;
         const canScrollHeight = scrollHeight - clientHeight;
-        console.log(canScrollHeight);
         var main = document.querySelector('.wapper');
         var heightSection = $(".header-controls").innerHeight();
         var top_of_window = window.pageYOffset;
