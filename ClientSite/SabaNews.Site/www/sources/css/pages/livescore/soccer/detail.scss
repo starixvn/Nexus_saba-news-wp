@@ -201,35 +201,49 @@
                 }
             }
         }
-    }
-}
 
-.live {
-    .soccer-match-stage {
-        span {
-            font-size: 1.5rem;
-
-            @include Mobile {
-                font-size: 1.1rem;
-            }
-
-            &:before {
-                left: -15px;
-                top: 8px;
-
-                @include Mobile {
-                    top: 5px;
-                }
-            }
-
-            &:after {
-                left: -19px;
-                top: 4px;
-
-                @include Mobile {
-                    top: 1px;
+        .duel-participant {
+            .flex-league {
+                .column {
+                    .team {
+                        &-logo {
+                            @include Mobile {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 }
+
+    .live {
+        .soccer-match-stage {
+            span {
+                font-size: 1.5rem;
+
+                @include Mobile {
+                    font-size: 1.1rem;
+                }
+
+                &:before {
+                    left: -15px;
+                    top: 8px;
+
+                    @include Mobile {
+                        top: 5px;
+                    }
+                }
+
+                &:after {
+                    left: -19px;
+                    top: 4px;
+
+                    @include Mobile {
+                        top: 1px;
+                    }
+                }
+            }
+        }
+    }
