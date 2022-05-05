@@ -30,9 +30,7 @@
                 { "rowLimit", paramModel.RowLimit }
             };
 
-            var matches = await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
-
-            return matches;
+            return await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
         }
 
         public async Task<List<MatchDetailResponse>> FetchMatchDetailAsync(SyncMatchParams paramModel)
@@ -49,9 +47,7 @@
                 param.Add("matchId", paramModel.MatchIds);
             }
 
-            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetMatchDetailApiPath, param);
-
-            return matcheDetails;
+            return await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetMatchDetailApiPath, param);
         }
 
         public async Task<List<MatchLineupResponse>> FetchMatchLineupAsync(long[] matchIds)
@@ -61,9 +57,7 @@
                 { "matchId", matchIds.Length > 0 ? matchIds : null },
             };
 
-            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchLineupResponse>>(ApiPath.GetMatchLineupApiPath, param);
-
-            return matcheDetails;
+            return await httpClient.ExecutePostAsync<List<MatchLineupResponse>>(ApiPath.GetMatchLineupApiPath, param);
         }
 
         public async Task<List<MatchCommentary>> FetchMatchCommentaryAsync(long matchId)
@@ -123,16 +117,12 @@
                 param.Add("matchId", paramModel.MatchIds);
             }
 
-            var matcheDetails = await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetLiveMatchApiPath, param);
-
-            return matcheDetails;
+            return await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetLiveMatchApiPath, param);
         }
 
         public async Task<List<DeletedMatch>> FetchDeletedMatchAsync()
         {
-            var delMatches = await httpClient.ExecutePostAsync<List<DeletedMatch>>(ApiPath.GetDeletedMatchApiPath, null);
-
-            return delMatches;
+            return await httpClient.ExecutePostAsync<List<DeletedMatch>>(ApiPath.GetDeletedMatchApiPath, null);
         }
 
         private static class ApiPath

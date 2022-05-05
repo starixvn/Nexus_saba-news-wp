@@ -7,7 +7,7 @@
         public int[] Goal { get; set; }
 
         [JsonProperty("cKick")]
-        public int[] ConnerKick { get; set; }
+        public int[] CornerKick { get; set; }
 
         [JsonProperty("yCard")]
         public int[] YellowCard { get; set; }
@@ -36,7 +36,7 @@
         public int[] InjuryTime { get; set; }
         public int[] OnGoal { get; set; }
         public int[] MissGoal { get; set; }
-        public int[] Attck { get; set; }
+        public int[] Attack { get; set; }
         public int[] DangerAttack { get; set; }
         public int[] ControlRate { get; set; }
         public int[] ExtraScore { get; set; }
@@ -49,7 +49,7 @@
         public int?[] Follow { get; set; }
         public int?[] Foul { get; set; }
         public string[] Grade { get; set; }
-        public int?[] HalfConner { get; set; }
+        public int?[] HalfCorner { get; set; }
         public string[] HalfPossession { get; set; }
         public int?[] Head { get; set; }
         public int?[] HeadSuccess { get; set; }

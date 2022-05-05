@@ -76,50 +76,50 @@
 
         private static MatchTeamStatistic ConvertToTeamStatistic(MatchExtraData extraData, long matchId, bool isHome)
         {
-            int index = isHome ? 0 : 1;
-            var result = new MatchTeamStatistic()
+            byte index = (byte)(isHome ? 0 : 1);
+            var result = new MatchTeamStatistic
             {
                 MatchId = matchId,
                 IsHomeTeam = isHome,
-                Goal = extraData.Goal is not null ? extraData.Goal[index] : null,
-                CornerKick = extraData.ConnerKick is not null ? extraData.ConnerKick[index] : null,
-                YellowCard = extraData.YellowCard is not null ? extraData.YellowCard[index] : null,
-                RedCard = extraData.RedCard is not null ? extraData.RedCard[index] : null,
-                OutBall = extraData.OutBall is not null ? extraData.OutBall[index] : null,
-                FreeKick = extraData.FreeKick is not null ? extraData.FreeKick[index] : null,
-                GoalKick = extraData.GoalKick is not null ? extraData.GoalKick[index] : null,
-                PenaltyKick = extraData.PenaltyKick is not null ? extraData.PenaltyKick[index] : null,
-                YellowToRed = extraData.YellowToRed is not null ? extraData.YellowToRed[index] : null,
-                FailPenaltyKick = extraData.FailedPenalty is not null ? extraData.FailedPenalty[index] : null,
-                OwnGoal = extraData.OwnGoal is not null ? extraData.OwnGoal[index] : null,
-                InjuryTime = extraData.InjuryTime is not null ? extraData.InjuryTime[index] : null,
-                OnGoal = extraData.OnGoal is not null ? extraData.OnGoal[index] : null,
-                MissGoal = extraData.MissGoal is not null ? extraData.MissGoal[index] : null,
-                Attack = extraData.Attck is not null ? extraData.Attck[index] : null,
-                DangerAttack = extraData.DangerAttack is not null ? extraData.DangerAttack[index] : null,
-                ControlRate = extraData.ControlRate is not null ? extraData.ControlRate[index] : null,
-                ExtraScore = extraData.ExtraScore is not null ? extraData.ExtraScore[index] : null,
-                PenaltyScore = extraData.PenaltyScore is not null ? extraData.PenaltyScore[index] : null,
-                Assists = extraData.Assists is not null ? extraData.Assists[index] : null,
-                First = extraData.First is not null ? extraData.First[index] : null,
-                Follow = extraData.Follow is not null ? extraData.Follow[index] : null,
-                Foul = extraData.Foul is not null ? extraData.Foul[index] : null,
-                Grade = extraData.Grade is not null && extraData.Grade.Length > 0 ? extraData.Grade[index] : string.Empty,
-                HalfCorner = extraData.HalfConner is not null ? extraData.HalfConner[index] : null,
-                HalfPossession = extraData.HalfPossession is not null && extraData.HalfPossession.Length > 0 ? extraData.HalfPossession[index] : string.Empty,
-                Head = extraData.Head is not null ? extraData.Head[index] : null,
-                HeadSuccess = extraData.HeadSuccess is not null ? extraData.HeadSuccess[index] : null,
-                Intercept = extraData.Intercept is not null ? extraData.Intercept[index] : null,
-                OffSide = extraData.OffSide is not null ? extraData.OffSide[index] : null,
-                OnDoor = extraData.OnDoor is not null ? extraData.OnDoor[index] : null,
-                Pass = extraData.Pass is not null ? extraData.Pass[index] : null,
-                PassSuccess = extraData.PassSuccess is not null && extraData.PassSuccess.Length > 0 ? extraData.PassSuccess[index] : string.Empty,
-                Past = extraData.Past is not null ? extraData.Past[index] : null,
-                Shoot = extraData.Shoot is not null ? extraData.Shoot[index] : null,
-                ShootOut = extraData.ShootOut is not null ? extraData.ShootOut[index] : null,
-                ShootStop = extraData.ShootStop is not null ? extraData.ShootStop[index] : null,
-                Slide = extraData.Slide is not null ? extraData.Slide[index] : null,
-                Steals = extraData.Steals is not null ? extraData.Steals[index] : null
+                Goal = GetGoal(extraData, index),
+                CornerKick = GetCornerKick(extraData, index),
+                YellowCard = GetYellowCard(extraData, index),
+                RedCard = GetRedCard(extraData, index),
+                OutBall = GetOutBall(extraData, index),
+                FreeKick = GetFreeKick(extraData, index),
+                GoalKick = GetGoalKick(extraData, index),
+                PenaltyKick = GetPenaltyKick(extraData, index),
+                YellowToRed = GetYellowToRed(extraData, index),
+                FailPenaltyKick = GetFailPenaltyKick(extraData, index),
+                OwnGoal = GetOwnGoal(extraData, index),
+                InjuryTime = GetInjuryTime(extraData, index),
+                OnGoal = GetOnGoal(extraData, index),
+                MissGoal = GetMissGoal(extraData, index),
+                Attack = GetAttack(extraData, index),
+                DangerAttack = GetDangerAttack(extraData, index),
+                ControlRate = GetControlRate(extraData, index),
+                ExtraScore = GetExtraScore(extraData, index),
+                PenaltyScore = GetPenaltyScore(extraData, index),
+                Assists = GetAssists(extraData, index),
+                First = GetFirst(extraData, index),
+                Follow = GetFollow(extraData, index),
+                Foul = GetFoul(extraData, index),
+                Grade = GetGrade(extraData, index),
+                HalfCorner = GetHalfCorner(extraData, index),
+                HalfPossession = GetHalfPossession(extraData, index),
+                Head = GetHead(extraData, index),
+                HeadSuccess = GetHeadSuccess(extraData, index),
+                Intercept = GetIntercept(extraData, index),
+                OffSide = GetOffSide(extraData, index),
+                OnDoor = GetOnDoor(extraData, index),
+                Pass = GetPass(extraData, index),
+                PassSuccess = GetPassSuccess(extraData, index),
+                Past = GetPast(extraData, index),
+                Shoot = GetShoot(extraData, index),
+                ShootOut = GetShootOut(extraData, index),
+                ShootStop = GetShootStop(extraData, index),
+                Slide = GetSlide(extraData, index),
+                Steals = GetSteals(extraData, index),
             };
 
             return result;
@@ -169,5 +169,86 @@
                 HomeHalfScore = r.IsHost ? r.HalfScores[0] : r.HalfScores[1],
                 AwayHalfScore = r.IsHost ? r.HalfScores[1] : r.HalfScores[0]
             };
+
+        private static int? GetGoal(MatchExtraData data, byte index) => data.Goal is not null ? data.Goal[index] : null;
+
+        private static int? GetCornerKick(MatchExtraData data, byte index) => data.CornerKick is not null ? data.CornerKick[index] : null;
+
+        private static int? GetYellowCard(MatchExtraData data, byte index) => data.YellowCard is not null ? data.YellowCard[index] : null;
+
+        private static int? GetRedCard(MatchExtraData data, byte index) => data.RedCard is not null ? data.RedCard[index] : null;
+
+        private static int? GetOutBall(MatchExtraData data, byte index) => data.OutBall is not null ? data.OutBall[index] : null;
+
+        private static int? GetFreeKick(MatchExtraData data, byte index) => data.FreeKick is not null ? data.FreeKick[index] : null;
+
+        private static int? GetGoalKick(MatchExtraData data, byte index) => data.GoalKick is not null ? data.GoalKick[index] : null;
+
+        private static int? GetPenaltyKick(MatchExtraData data, byte index) => data.PenaltyKick is not null ? data.PenaltyKick[index] : null;
+
+        private static int? GetYellowToRed(MatchExtraData data, byte index) => data.YellowToRed is not null ? data.YellowToRed[index] : null;
+
+        private static int? GetFailPenaltyKick(MatchExtraData data, byte index) => data.FailedPenalty is not null ? data.FailedPenalty[index] : null;
+
+        private static int? GetOwnGoal(MatchExtraData data, byte index) => data.OwnGoal is not null ? data.OwnGoal[index] : null;
+
+        private static int? GetInjuryTime(MatchExtraData data, byte index) => data.InjuryTime is not null ? data.InjuryTime[index] : null;
+
+        private static int? GetOnGoal(MatchExtraData data, byte index) => data.OnGoal is not null ? data.OnGoal[index] : null;
+
+        private static int? GetMissGoal(MatchExtraData data, byte index) => data.MissGoal is not null ? data.MissGoal[index] : null;
+
+        private static int? GetAttack(MatchExtraData data, byte index) => data.Attack is not null ? data.Attack[index] : null;
+
+        private static int? GetDangerAttack(MatchExtraData data, byte index) => data.DangerAttack is not null ? data.DangerAttack[index] : null;
+
+        private static int? GetControlRate(MatchExtraData data, byte index) => data.ControlRate is not null ? data.ControlRate[index] : null;
+
+        private static int? GetExtraScore(MatchExtraData data, byte index) => data.ExtraScore is not null ? data.ExtraScore[index] : null;
+
+        private static int? GetPenaltyScore(MatchExtraData data, byte index) => data.PenaltyScore is not null ? data.PenaltyScore[index] : null;
+
+        private static int? GetAssists(MatchExtraData data, byte index) => data.Assists is not null ? data.Assists[index] : null;
+
+        private static int? GetFirst(MatchExtraData data, byte index) => data.First is not null ? data.First[index] : null;
+
+        private static int? GetFollow(MatchExtraData data, byte index) => data.Follow is not null ? data.Follow[index] : null;
+
+        private static int? GetFoul(MatchExtraData data, byte index) => data.Foul is not null ? data.Foul[index] : null;
+
+        private static string GetGrade(MatchExtraData data, byte index)
+            => data.Grade is not null && data.Grade.Length > 0 ? data.Grade[index] : string.Empty;
+
+        private static int? GetHalfCorner(MatchExtraData data, byte index) => data.HalfCorner is not null ? data.HalfCorner[index] : null;
+
+        private static string GetHalfPossession(MatchExtraData data, byte index)
+            => data.HalfPossession is not null && data.HalfPossession.Length > 0 ? data.HalfPossession[index] : string.Empty;
+
+        private static int? GetHead(MatchExtraData data, byte index) => data.Head is not null ? data.Head[index] : null;
+
+        private static int? GetHeadSuccess(MatchExtraData data, byte index) => data.HeadSuccess is not null ? data.HeadSuccess[index] : null;
+
+        private static int? GetIntercept(MatchExtraData data, byte index) => data.Intercept is not null ? data.Intercept[index] : null;
+
+        private static int? GetOffSide(MatchExtraData data, byte index) => data.OffSide is not null ? data.OffSide[index] : null;
+
+        private static int? GetOnDoor(MatchExtraData data, byte index) => data.OnDoor is not null ? data.OnDoor[index] : null;
+
+        private static int? GetPass(MatchExtraData data, byte index) => data.Pass is not null ? data.Pass[index] : null;
+
+        private static string GetPassSuccess(MatchExtraData data, byte index)
+            => data.PassSuccess is not null && data.PassSuccess.Length > 0 ? data.PassSuccess[index] : string.Empty;
+
+        private static int? GetPast(MatchExtraData data, byte index) => data.Past is not null ? data.Past[index] : null;
+
+        private static int? GetShoot(MatchExtraData data, byte index) => data.Shoot is not null ? data.Shoot[index] : null;
+
+        private static int? GetShootOut(MatchExtraData data, byte index) => data.ShootOut is not null ? data.ShootOut[index] : null;
+
+        private static int? GetShootStop(MatchExtraData data, byte index) => data.ShootStop is not null ? data.ShootStop[index] : null;
+
+        private static int? GetSlide(MatchExtraData data, byte index) => data.Slide is not null ? data.Slide[index] : null;
+
+        private static int? GetSteals(MatchExtraData data, byte index) => data.Steals is not null ? data.Steals[index] : null;
     }
 }
