@@ -1,12 +1,11 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { Form } from 'react-bootstrap';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
-import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import Site from '@jsroot/common/site';
-
 
 export default class MatchGrid extends PureComponent {
 
@@ -29,7 +28,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     groupMatchesByLeague = matches => {
-        let totalItems = matches.length;
+        const totalItems = matches.length;
         const tempMatches = [];
         for (let i = 0; i < totalItems; i++) {
             const match = matches[i];
@@ -38,7 +37,7 @@ export default class MatchGrid extends PureComponent {
                 key,
                 league: match.league,
                 childs: [match]
-            }
+            };
             if (tempMatches.length === 0) {
                 tempMatches.push(item);
             } else {
@@ -51,7 +50,7 @@ export default class MatchGrid extends PureComponent {
             }
         }
         return tempMatches;
-    }
+    };
 
     groupMatchesByDate = matches => {
         let totalItems = matches.length;
@@ -97,11 +96,11 @@ export default class MatchGrid extends PureComponent {
         } else {
             return matches.sort((item1, item2) => moment(item2.key).diff(moment(item1.key)));
         }
-    }
+    };
 
-    onUpdateFavouriteMatch = (matchId) => {
+    onUpdateFavouriteMatch = matchId => {
         this.props.onUpdateFavouriteMatch(matchId);
-    }
+    };
 
     handleClickLeague = (event, league) => {
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
@@ -118,7 +117,9 @@ export default class MatchGrid extends PureComponent {
         let { matches, sortAsc, isAllMatches } = this.props;
         if (matches.length === 0) {
             if (isAllMatches) {
-                return <div className="none-livescore">Không có trận đấu nào. Nhấn vào biểu tượng <i className="icon-livescore icon-favourite-outline"></i> để thêm trận đấu quan tâm</div>;
+                return (<div className="none-livescore">
+                            Không có trận đấu nào. Nhấn vào biểu tượng <i className="icon-livescore icon-favourite-outline"></i> để thêm trận đấu quan tâm
+                        </div>);
             }
             return <div className="none-livescore">Không có trận đấu nào.</div>;
         }
@@ -159,9 +160,14 @@ export default class MatchGrid extends PureComponent {
                                                 item.childs.map(child => {
                                                     if (child.key) {
                                                         return <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan" onClick={(event) => this.handleClickLeague(event, child.league)}> <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}</div>
+                                                            <div className="group-match-item-slogan"
+                                                                onClick={event => this.handleClickLeague(event, child.league)}>
+                                                                <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
+                                                            </div>
                                                             {
-                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>)
+                                                                child.childs.map(match => <Match key={match.matchId}
+                                                                                                searchKey={searchKey} match={match}
+                                                                                                onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>)
                                                             }
                                                         </div>;
                                                     } else {

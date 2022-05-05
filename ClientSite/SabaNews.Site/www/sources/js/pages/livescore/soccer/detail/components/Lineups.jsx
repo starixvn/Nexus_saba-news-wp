@@ -12,23 +12,9 @@ export class Lineups extends Component {
         super(props);
     }
 
-    getPlayerRole = role => {
-        switch (role) {
-            case "F":
-                return LangHelper.getResource('Striker');
-            case "M":
-                return LangHelper.getResource('Midfielder');
-            case "D":
-                return LangHelper.getResource('Defender');
-            case "G":
-                return LangHelper.getResource('Goalkeeper');
-            default:
-                return "";
-        }
-    }
     getPlayerIncident = playerId => {
         const incidents = this.props.match.incidents;
-        let playerIncident = {
+        const playerIncident = {
             goals: 0,
             ownGoals: 0,
             penalty: 0,
@@ -37,7 +23,7 @@ export class Lineups extends Component {
             yellowTurnRedCard: 0,
             outSubsitution: 0,
             inSubsitution: 0
-        }
+        };
         if (!incidents) {
             return playerIncident;
         }
@@ -50,7 +36,7 @@ export class Lineups extends Component {
                         break;
                     case IncidentStatus.OwnGoal:
                         playerIncident.ownGoals++;
-                        break
+                        break;
                     case IncidentStatus.Penalty:
                         if (item.homeScore !== 0 || item.awayScore !== 0) {
                             playerIncident.penalty++;
@@ -63,24 +49,24 @@ export class Lineups extends Component {
                         playerIncident.yellowCard++;
                         break;
                     case IncidentStatus.YellowTurnRedCard:
-                        playerIncident.yellowTurnRedCard++
-                        break
+                        playerIncident.yellowTurnRedCard++;
+                        break;
                 }
             }
             if (item.type === IncidentStatus.Substitution) {
                 if (item.outPlayerId === playerId) {
-                    playerIncident.outSubsitution++
+                    playerIncident.outSubsitution++;
                 }
                 if (item.inPlayerId === playerId) {
-                    playerIncident.inSubsitution++
+                    playerIncident.inSubsitution++;
                 }
             }
         });
         return playerIncident;
-    }
+    };
 
     renderIconListPlayer = player => {
-        var playerIncident = this.getPlayerIncident(player.playerId);
+        const playerIncident = this.getPlayerIncident(player.playerId);
         return (
             <>
                 {
@@ -161,8 +147,8 @@ export class Lineups extends Component {
                     </span>
                 }
             </>
-        )
-    }
+        );
+    };
 
     getListLineup = (lineup, teamType) => {
         let formation;
@@ -177,9 +163,9 @@ export class Lineups extends Component {
         if (players.length === 0) {
             return null;
         }
-        const formationArray = formation.split("-");
-        var goalKeeperIncident = this.getPlayerIncident(players[0].playerId);
-        let playersInfo = [[
+        const formationArray = formation.split('-');
+        const goalKeeperIncident = this.getPlayerIncident(players[0].playerId);
+        const playersInfo = [[
             {
                 number: players[0].playerNumber,
                 name: players[0].playerName,
@@ -195,13 +181,13 @@ export class Lineups extends Component {
             }
         ]];
         let index = 1;
-        formationArray.map((line) => {
-            let lineArray = [];
+        formationArray.map(line => {
+            const lineArray = [];
             for (let i = 0; i < line; i++) {
                 if (!players[index]) {
                     break;
                 }
-                let incident = this.getPlayerIncident(players[index].playerId)
+                const incident = this.getPlayerIncident(players[index].playerId);
                 lineArray.push({
                     number: players[index].playerNumber,
                     name: players[index].playerName,
@@ -221,7 +207,7 @@ export class Lineups extends Component {
         });
         return playersInfo;
 
-    }
+    };
 
     renderIconLineup = player => {
         return (
@@ -328,8 +314,8 @@ export class Lineups extends Component {
                     </span>
                 }
             </>
-        )
-    }
+        );
+    };
 
     renderListPlayer = (title, home, away) => {
         return (
@@ -350,7 +336,7 @@ export class Lineups extends Component {
                                                         <li className="name-player">{player.playerName}</li>
                                                         <li className="action-player">{this.renderIconListPlayer(player)}</li>
                                                     </ul>
-                                                )
+                                                );
                                             })
                                         }
                                     </div>
@@ -363,7 +349,7 @@ export class Lineups extends Component {
                                                         <li className="name-player">{player.playerName}</li>
                                                         <li className="action-player">{this.renderIconListPlayer(player)}</li>
                                                     </ul>
-                                                )
+                                                );
                                             })
                                         }
                                     </div>
@@ -373,8 +359,8 @@ export class Lineups extends Component {
                     </div>
                 </div>
             </>
-        )
-    }
+        );
+    };
 
     renderPitchView = () => {
         const lineup = this.props.match.lineup;
@@ -382,7 +368,7 @@ export class Lineups extends Component {
         if (!lineup.generalInfo || !lineup.generalInfo.homeFormation || !lineup.generalInfo.awayFormation) {
             return null;
         }
-        let homeLineup = this.getListLineup(lineup, IncidentPosition.Home);
+        const homeLineup = this.getListLineup(lineup, IncidentPosition.Home);
         let awayLineup = this.getListLineup(lineup, IncidentPosition.Away);
         awayLineup = awayLineup.reverse();
         return (
@@ -417,7 +403,7 @@ export class Lineups extends Component {
                                                             </div>
                                                             <div className="text-name">{player.name}</div>
                                                         </div>
-                                                    )
+                                                    );
                                                 })
                                             }
                                         </div>
@@ -443,11 +429,11 @@ export class Lineups extends Component {
                                                             </div>
                                                             <div className="text-name">{player.name}</div>
                                                         </div>
-                                                    )
+                                                    );
                                                 })
                                             }
                                         </div>
-                                    )
+                                    );
                                 })
                             }
                         </div>
@@ -460,8 +446,8 @@ export class Lineups extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
 
     getTeamSubstitution = position => {
@@ -478,7 +464,7 @@ export class Lineups extends Component {
         return (
             substitution.map((incident, key) => {
                 const inPlayer = players.find(item => item.playerId === incident.inPlayerId);
-                const outPlayer = players.find(item => item.playerId === incident.outPlayerId)
+                const outPlayer = players.find(item => item.playerId === incident.outPlayerId);
                 return (
                     <ul key={key} className="list-paticipant list-change-main">
                         <li className="number-player">{incident.timeShow}'</li>
@@ -487,10 +473,10 @@ export class Lineups extends Component {
                             <p> <i className="icon-livescore icon-out"></i> {outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>
                         </li>
                     </ul>
-                )
+                );
             })
-        )
-    }
+        );
+    };
 
     renderSubstitution = () => {
         const homeSub = this.getTeamSubstitution(IncidentPosition.Home);

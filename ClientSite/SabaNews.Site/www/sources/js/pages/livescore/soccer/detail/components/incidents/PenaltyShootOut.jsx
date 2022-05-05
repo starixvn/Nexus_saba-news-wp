@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
-import { IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
+import IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
+import { IncidentStatus } from '@jsroot/common/constants';
 
 export default class PenaltyShootOut extends Component {
     constructor(props) {

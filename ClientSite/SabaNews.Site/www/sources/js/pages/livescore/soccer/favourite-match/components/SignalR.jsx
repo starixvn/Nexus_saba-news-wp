@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import * as signalR from '@microsoft/signalr';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import * as signalR from '@microsoft/signalr';
+import { connect } from 'react-redux';
 
 export class SignalR extends Component {
     constructor(props) {
@@ -40,9 +40,7 @@ export class SignalR extends Component {
                 lockResolver = res;
             });
 
-            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
-                return promise;
-            });
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => promise );
         }
 
         this.start();

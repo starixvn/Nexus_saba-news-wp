@@ -7,9 +7,7 @@ import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-export const withNavigation = Component => {
-    return props => <Component {...props} navigate={useNavigate()} />;
-}
+export const withNavigation = Component => props => <Component {...props} navigate={useNavigate()} />;
 
 class FunctionBar extends PureComponent {
     constructor(props) {
@@ -66,7 +64,7 @@ class FunctionBar extends PureComponent {
             defaultTab = params['tab'].toLowerCase();
         }
         if(!defaultTab || (defaultTab && !tabStatus[`enableTab${mapTabStatusKey[defaultTab]}`])) {
-            defaultTab = ''
+            defaultTab = '';
             if(tabStatus.enableTabHeadtohead) {
                 defaultTab = 'doi-dau';
             }
@@ -96,7 +94,7 @@ class FunctionBar extends PureComponent {
                 activeTab: tab
             });
             this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${tab}`));
-        };
+        }
     };
 
     render() {
@@ -125,8 +123,9 @@ class FunctionBar extends PureComponent {
                             </a>
                         </li>
                         <li>
-                            <a onClick={() => this.scrollToTab("doi-dau")}
-                                className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled': ''}`}>Đối đầu
+                            <a onClick={() => this.scrollToTab('doi-dau')}
+                                className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled': ''}`}>
+                                Đối đầu
                             </a>
                         </li>
                     </ul>

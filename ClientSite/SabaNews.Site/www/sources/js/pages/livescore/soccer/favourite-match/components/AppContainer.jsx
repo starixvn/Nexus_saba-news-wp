@@ -17,22 +17,20 @@ moment.updateLocale('vi', {
 });
 moment.locale('vi');
 
-export const withNavigation = Component => {
-    return props => <Component {...props} navigate={useNavigate()} />;
-}
+export const withNavigation = Component => props => <Component {...props} navigate={useNavigate()} />;
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
 
         let selectedTab = '';
-        let params = queryString.parse(window.location.search);
+        const params = queryString.parse(window.location.search);
         if (params['tab']) {
-            selectedTab = params["tab"].toLowerCase();
+            selectedTab = params['tab'].toLowerCase();
         }
         const tabs = ['tat-ca', 'truc-tiep', 'chua-dien-ra', 'da-dien-ra'];
-        let selectedAllTab = false,
-            selectedLiveTab = false,
+        const selectedAllTab = false;
+        let selectedLiveTab = false,
             selectedPreTab = false,
             selectedPostTab = false;
         if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
@@ -98,10 +96,10 @@ export class AppContainer extends Component {
 
     onUpdateFavouriteMatch = matchId => {
         this.props.setFavouriteMatches({matchId: matchId});
-    }
+    };
 
     render() {
-        let { selectedTab } = this.state;
+        const { selectedTab } = this.state;
         const { majorLeagues, matches, postMatches, preMatches, liveMatches } = this.props;
         return (
             <div className="container livescore-container">

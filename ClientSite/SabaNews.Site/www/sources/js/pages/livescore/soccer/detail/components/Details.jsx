@@ -28,7 +28,7 @@ class Details extends PureComponent {
                 left: 0,
                 behavior: 'smooth'
             });
-        };
+        }
     }
 
     render() {

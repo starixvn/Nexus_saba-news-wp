@@ -1,6 +1,6 @@
 ﻿import React, { Component, Fragment } from 'react';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
-import IncidentIcon from '@jsroot/components/Icon/IncidentIcon'
+import IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import MatchStage from '@jsroot/components/MatchStage';
@@ -9,7 +9,7 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 
-export default class MatchGenetalInfo extends Component {
+export default class MatchGeneralInfo extends Component {
     constructor(props) {
         super(props);
     }
@@ -24,7 +24,7 @@ export default class MatchGenetalInfo extends Component {
             case MatchStatus.TBD:
                 return (<div className="detail-score-wrapper live before-score">
                     <span>{DateTimeService.toShortTimeFormat(startTime)}</span>
-                </div>)
+                </div>);
             default:
                 return <>
                     <div className="detail-score-wrapper live">
@@ -58,23 +58,23 @@ export default class MatchGenetalInfo extends Component {
                     <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
                 }
             </>
-        )
-    }
+        );
+    };
 
-    getBallAndCardNumber = (position) => {
+    getBallAndCardNumber = position => {
         const { statistic } = this.props.match;
         const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
-        let goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
+        const goalsStatusSelected = [IncidentStatus.Goal, IncidentStatus.Penalty, IncidentStatus.OwnGoal].join(',');
         const goals = incidents.filter(item => goalsStatusSelected.includes(item.type.toString()) && item.position === position && (item.homeScore !== 0 || item.awayScore !== 0));
         let numberRedCard = 0;
         let numberYellowCard = 0;
         if (position === IncidentPosition.Home && statistic.homeStatistic) {
             numberRedCard = statistic.homeStatistic.redCard;
-            numberYellowCard = statistic.homeStatistic.yellowCard
+            numberYellowCard = statistic.homeStatistic.yellowCard;
         }
         if (position === IncidentPosition.Away && statistic.awayStatistic) {
             numberRedCard = statistic.awayStatistic.redCard;
-            numberYellowCard = statistic.awayStatistic.yellowCard
+            numberYellowCard = statistic.awayStatistic.yellowCard;
         }
         return (
             <div className="participant-detail">
@@ -86,7 +86,7 @@ export default class MatchGenetalInfo extends Component {
                                     <span className="name-player">({goal.timeShow}') - {goal.playerName}</span>
                                 </li>
                             </ul>
-                        )
+                        );
                     })
                 }
                 {
@@ -98,39 +98,34 @@ export default class MatchGenetalInfo extends Component {
                     <span className="card-league yellow-card">{numberYellowCard}</span>
                 }
             </div>
-        )
-    }
+        );
+    };
 
-    getTeamStatus = (isHomeTeam) => {
+    getTeamStatus = isHomeTeam => {
         const { generalInfo } = this.props.match;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        switch (generalInfo.status) {
-            case MatchStatus.Finished:
-                if (generalInfo[`${homeFieldName}PenaltyScore`]
-                    && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
-                    return <li>PEN</li>;
-                } else if (generalInfo[`${homeFieldName}AggregateScore`]
-                    && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
-                    return <li>AGG</li>;
-                } else {
-                    return <Fragment />;
-                }
-            default:
+        if (generalInfo.status === MatchStatus.Finished) {
+            if (generalInfo[`${homeFieldName}PenaltyScore`]
+            && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
+                return <li>PEN</li>;
+            } else if (generalInfo[`${homeFieldName}AggregateScore`]
+                && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
+                return <li>AGG</li>;
+            } else {
                 return <Fragment />;
+            }
+        } else {
+            return <Fragment />;
         }
-    }
+    };
 
     render() {
         const { generalInfo } = this.props.match;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
-        const isLiveMatch = generalInfo.status === MatchStatus.FirstHalf
-            || generalInfo.status === MatchStatus.SecondHalf
-            || generalInfo.status === MatchStatus.Intermission
-            || generalInfo.status === MatchStatus.ExtraTime
-            || generalInfo.status === MatchStatus.PenaltyShootout;
+        const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
         return (
             <>
                 <div className="sticky-header">
@@ -138,7 +133,7 @@ export default class MatchGenetalInfo extends Component {
                         <div className="livescore-league-header-detail-group">
                             <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>
                             <div className="livescore-league-header-detail-name">
-                                {leagueName} - <span>{startTime.format("DD/MM/YYYY")}</span>
+                                {leagueName} - <span>{startTime.format('DD/MM/YYYY')}</span>
                             </div>
                             <i className="icon-livescore icon-live-start start-active" />
                         </div>

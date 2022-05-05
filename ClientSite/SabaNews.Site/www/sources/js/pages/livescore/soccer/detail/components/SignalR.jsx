@@ -1,8 +1,9 @@
 ﻿import React, { Component } from 'react';
-import * as signalR from '@microsoft/signalr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import * as signalR from '@microsoft/signalr';
+
 
 export class SignalR extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export class SignalR extends Component {
             .withHubProtocol(protocol)
             .build();
 
-        this.connection.on('UpdateMatchDetail', (data) => {
+        this.connection.on('UpdateMatchDetail', data => {
             this.props.setMatch(data);
         });
 
@@ -40,9 +41,7 @@ export class SignalR extends Component {
                 lockResolver = res;
             });
 
-            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
-                return promise;
-            });
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => promise );
         }
 
         this.start();
@@ -58,13 +57,11 @@ export class SignalR extends Component {
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                console.log("connect successful");
                 this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
                     .then(() => console.log(`join group ${window.selectedMatchId}`))
                     .catch(err => console.error(err.toString()));
             }).catch(err => console.error(err.toString()));
         } catch (err) {
-            console.log(err);
             setTimeout(() => {
                 this.getMatchDetail();
                 this.start();

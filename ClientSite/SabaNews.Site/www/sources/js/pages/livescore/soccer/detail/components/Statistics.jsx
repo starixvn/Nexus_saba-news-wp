@@ -30,7 +30,7 @@ export class Statistics extends Component {
                 { categoryId: 9, categoryName: 'Ném biên', homeValue: homeStatistic.outBall, awayValue: awayStatistic.outBall, unit: '' },
                 { categoryId: 10, categoryName: 'Phạt góc', homeValue: homeStatistic.cornerKick, awayValue: awayStatistic.cornerKick, unit: '' },
                 { categoryId: 11, categoryName: 'Đá phạt', homeValue: homeStatistic.freeKick, awayValue: awayStatistic.freeKick, unit: '' },
-                { categoryId: 12, categoryName: 'Phạt đền', homeValue: homeStatistic.penaltyKick, awayValue: awayStatistic.penaltyKick, unit: '' },
+                { categoryId: 12, categoryName: 'Phạt đền', homeValue: homeStatistic.penaltyKick, awayValue: awayStatistic.penaltyKick, unit: '' }
             ];
         }
         return (

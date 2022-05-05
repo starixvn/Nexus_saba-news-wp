@@ -1,4 +1,5 @@
-﻿import { LeagueType, IncidentStatus, MatchStatus } from './constants';
+﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode } from './constants';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class CommonFunctions {
     static getLeagueName(league) {
@@ -138,5 +139,40 @@ export default class CommonFunctions {
             return true;
         }
         return false;
+    }
+    static checkIncidentGeneralType(type) {
+        return type === IncidentStatus.Goal || type === IncidentStatus.YellowCard || type === IncidentStatus.RedCard || type === IncidentStatus.YellowTurnRedCard
+            || type === IncidentStatus.OvertimeEnds || type === IncidentStatus.PenaltyMissed || type === IncidentStatus.OwnGoal || type === IncidentStatus.VAR
+            || type === IncidentStatus.Penalty || type === IncidentStatus.Substitution;
+    }
+
+    static mappingVarResultText(status) {
+        switch (status) {
+            case VARResultCode.Unknown:
+                return LangHelper.getResource('Unknown');
+            case VARResultCode.GoalValid:
+                return LangHelper.getResource('GoalValid');
+            case VARResultCode.GoalInValid:
+                return LangHelper.getResource('GoalInValid');
+            case VARResultCode.PenaltyValid:
+                return LangHelper.getResource('PenaltyValid');
+            case VARResultCode.PenaltyCancelled:
+                return LangHelper.getResource('PenaltyCancelled');
+            case VARResultCode.RedCardValid:
+                return LangHelper.getResource('RedCardValid');
+            case VARResultCode.RedCardCancelled:
+                return LangHelper.getResource('RedCardCancelled');
+            case VARResultCode.PlayPenaltyVerification:
+                return LangHelper.getResource('PlayPenaltyVerification');
+            case VARResultCode.PlayPenaltyChange:
+                return LangHelper.getResource('PlayPenaltyChange');
+            case VARResultCode.MaintainOriginalJudgment:
+                return LangHelper.getResource('MaintainOriginalJudgment');
+            case VARResultCode.SendPenaltyChange:
+                return LangHelper.getResource('SendPenaltyChange');
+            default:
+                return '';
+
+        }
     }
 }

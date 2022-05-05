@@ -88,7 +88,6 @@ export default class FavouriteIcon extends Component {
     render() {
         const { isFavourite, isShowTooltip } = this.state;
         const favIconClass = isFavourite ? 'icon-live-start start-active' : 'icon-favourite-outline';
-        console.log("icon");
         return (
             <>
                 {

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import SignalR from './SignalR';
 import Details from './Details';
 import { ActionCreators } from '../actions';
-import MatchGenetalInfo from './MatchGeneralInfo';
+import MatchGeneralInfo from './MatchGeneralInfo';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
@@ -27,7 +27,7 @@ export class AppContainer extends Component {
                     <SignalR />
                     <div className="livescore-soccer">
                         <div className="livescore-soccer-main">
-                            <MatchGenetalInfo match={this.props.match} />
+                            <MatchGeneralInfo match={this.props.match} />
                             <Details />
                         </div>
                         <div className="livescore-soccer-extension">
