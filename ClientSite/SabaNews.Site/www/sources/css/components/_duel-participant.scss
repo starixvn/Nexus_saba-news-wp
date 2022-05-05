@@ -7,7 +7,6 @@
     padding: 2rem 1.3rem;
     background: $primary-bg;
     position: relative;
-    transition: all .3s ease-in-out;
     @include Mobile{
         padding : 1rem;
     }
