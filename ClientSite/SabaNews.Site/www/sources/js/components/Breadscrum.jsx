@@ -12,7 +12,7 @@ const Breadscrum = ({ currentPage }) => {
     };
 
     return (
-        <ul>
+        <ul className="breadcrumb">
             <li onClick={event => handleClick(event)}>LTĐ / </li>
             <li className="current">{currentPage}</li>
         </ul>
