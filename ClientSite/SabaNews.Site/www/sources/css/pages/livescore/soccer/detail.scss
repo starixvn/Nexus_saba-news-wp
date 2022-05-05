@@ -91,6 +91,12 @@
             z-index: 10005;
         }
 
+        .breadcrumb {
+            @include Mobile {
+                padding-left: 1rem;
+            }
+        }
+
         .group-searchbar {
             margin-top: .5rem;
             margin-right: 1rem;

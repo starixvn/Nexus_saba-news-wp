@@ -2,9 +2,39 @@
     display: flex;
     align-items: center;
     list-style: none;
-    margin-bottom : 1.6rem;
-    li{
-        margin-right : 1.7rem;
-        color : #4B4B4B;
+    margin-bottom: 1.6rem;
+    flex-wrap: wrap;
+    li {
+        color: #7D7D7D;
+        font-weight: 400;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+
+        @include Mobile {
+            font-size: 1.1rem;
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }
+
+        &.current {
+            color: #0066CC;
+        }
+
+        &:after {
+            display: inline-block;
+            font-family: "Fraud-Sensor";
+            content: '\e97d';
+            font-weight: normal;
+            margin: 0 1rem;
+
+            @include Mobile {
+                margin: 0 .4rem;
+            }
+        }
     }
 }

@@ -148,7 +148,7 @@ export default class MatchGeneralInfo extends Component {
             <>
                 <div className="sticky-header">
                     <ul className="breadcrumb">
-                        <li onClick={this.handleClick}>LTĐ / </li>
+                        <li onClick={this.handleClick}>LTĐ </li>
                         <li onClick={event => this.handleClickLeague(event, generalInfo.league)}>{leagueName} </li>
                         <li className="current">{CommonFunctions.getTeamName(generalInfo.homeTeam)} - {CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
                     </ul>
