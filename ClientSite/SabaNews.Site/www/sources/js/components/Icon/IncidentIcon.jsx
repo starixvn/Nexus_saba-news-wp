@@ -56,17 +56,9 @@ export default class IncidentIcon extends Component {
         );
     };
 
-    renderRedCardIcon = () => {
-        return (
-            <span className="icon-livescore icon-red-card"></span>
-        );
-    };
+    renderRedCardIcon = () => <span className="icon-livescore icon-red-card"></span>
 
-    renderYellowCardIcon = () => {
-        return (
-            <span className="icon-livescore icon-yellow-card"></span>
-        );
-    };
+    renderYellowCardIcon = () => <span className="icon-livescore icon-yellow-card"></span>;
 
     renderYellowTurnRedCardIcon = () => {
         return (
@@ -78,9 +70,7 @@ export default class IncidentIcon extends Component {
         );
     };
 
-    renderVARIcon = () => {
-        return <span className="icon-livescore icon-var"></span>;
-    };
+    renderVARIcon = () => <span className="icon-livescore icon-var"></span>;
 
 
     render() {

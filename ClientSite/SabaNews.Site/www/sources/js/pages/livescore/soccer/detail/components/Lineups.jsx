@@ -403,7 +403,7 @@ export class Lineups extends Component {
                                                 })
                                             }
                                         </div>
-                                    )
+                                    );
                                 })
                             }
                         </div>
@@ -498,8 +498,8 @@ export class Lineups extends Component {
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
 
 

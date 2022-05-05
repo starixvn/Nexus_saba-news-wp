@@ -21,7 +21,7 @@ const FavoriteMatches = ({ isMobile }) => {
                 <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
                 <span className={`like-count ${count > 0 ? 'number-like' : ''}`}>{count}</span>
             </>
-        )
+        );
     };
 
     const mobileIcon = () => {
@@ -36,7 +36,7 @@ const FavoriteMatches = ({ isMobile }) => {
                     }
                 </div>
             </>
-        )
+        );
     };
 
     return (

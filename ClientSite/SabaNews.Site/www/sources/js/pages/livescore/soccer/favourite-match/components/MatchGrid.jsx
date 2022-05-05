@@ -53,7 +53,7 @@ export default class MatchGrid extends PureComponent {
 
     groupMatchesByDate = matches => {
         let totalItems = matches.length;
-        const tempMatches = [];
+        const tmpMatches = [];
         for (let i = 0; i < totalItems; i++) {
             const match = matches[i];
             const startTime = DateTimeService.convertFromUTC(match.startTime);
@@ -63,22 +63,22 @@ export default class MatchGrid extends PureComponent {
                 text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
                 childs: [match]
             };
-            if (tempMatches.length === 0) {
-                tempMatches.push(item);
+            if (tmpMatches.length === 0) {
+                tmpMatches.push(item);
             } else {
-                const index = tempMatches.findIndex(x => x.key === key);
+                const index = tmpMatches.findIndex(x => x.key === key);
                 if (index === - 1) {
-                    tempMatches.push(item);
+                    tmpMatches.push(item);
                 } else {
-                    tempMatches[index].childs.push(match);
+                    tmpMatches[index].childs.push(match);
                 }
             }
         }
 
-        totalItems = tempMatches.length;
+        totalItems = tmpMatches.length;
         const result = [];
         for (let i = 0; i < totalItems; i++) {
-            const item = tempMatches[i];
+            const item = tmpMatches[i];
             result.push({
                 key: item.key,
                 text: item.text,
@@ -173,7 +173,9 @@ export default class MatchGrid extends PureComponent {
                                                             }
                                                         </div>;
                                                     } else {
-                                                        return <Match key={child.matchId} searchKey={searchKey}  match={child} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>;
+                                                        return <Match key={child.matchId}
+                                                                    searchKey={searchKey}
+                                                                    match={child} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>;
                                                     }
                                                 })
                                             }

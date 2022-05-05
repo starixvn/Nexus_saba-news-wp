@@ -29,15 +29,6 @@ export class HeadToHead extends Component {
         }
     };
 
-    handleClick = (event, matchId) => {
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
-
     handleClickLeague = (event, league) => {
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
@@ -48,6 +39,16 @@ export class HeadToHead extends Component {
             window.location = url;
         }
     };
+
+    handleClick = (event, matchId) => {
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
 
     renderBody = (matchs, teamId) => {
         const generalInfo = this.props.match.generalInfo;
@@ -160,7 +161,7 @@ export class HeadToHead extends Component {
                     })
                 }
             </div>
-        )
+        );
     };
 
     getTeamResult = (teamId, match) => {
@@ -175,9 +176,13 @@ export class HeadToHead extends Component {
         } else if (homeTeamScore < awayTeamScore) {
             result = 2;
         }
-        else {
-            result = 0;
-        }
+        const subResult = this.getSubScoreResult(match, homeFieldName, awayFieldName);
+        result = subResult === 0 ? result : subResult;
+        return result;
+    };
+
+    getSubScoreResult = (match, homeFieldName, awayFieldName) => {
+        let result = 0;
         if (match[`${homeFieldName}PenaltyScore`]) {
             if (match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 result = 1;
@@ -192,7 +197,7 @@ export class HeadToHead extends Component {
             }
         }
         return result;
-    };
+    }
 
     renderStatistic = matchs => {
         const generalInfo = this.props.match.generalInfo;
