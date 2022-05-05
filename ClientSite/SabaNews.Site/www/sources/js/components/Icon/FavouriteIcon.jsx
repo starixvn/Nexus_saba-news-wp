@@ -34,12 +34,21 @@ export default class FavouriteIcon extends Component {
     handleUpdateFavourite = () => {
         const matchId = this.props.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
-        let message = "";
+        let message = '';
         if (isFavourite) {
             const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = <div className="fav-match fav-match-add"><ul><li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li><li className="show-link-toastify"><a href={url}>hiển thị</a></li></ul> </div>;
+            message = (<div className="fav-match fav-match-add">
+                            <ul>
+                                <li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li>
+                                <li className="show-link-toastify"><a href={url}>hiển thị</a></li>
+                            </ul>
+                        </div>);
         } else {
-            message = <div className="fav-match fav-match-remove"><ul><li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li></ul></div>;
+            message = (<div className="fav-match fav-match-remove">
+                            <ul>
+                                <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li>
+                            </ul>
+                        </div>);
         }
         const toastId = toast.dark(message, {
             toastId: 'fav',
@@ -50,7 +59,7 @@ export default class FavouriteIcon extends Component {
         toast.update(toastId, { render: () => message, autoClose: 3000 });
         this.setState({ isFavourite: isFavourite, isShowTooltip: false});
         this.onUpdateFavouriteMatch();
-    }
+    };
 
     renderTooltip = () => {
         const { isFavourite } = this.state;
@@ -58,7 +67,7 @@ export default class FavouriteIcon extends Component {
             <Tooltip className="tooltip-add-favourite-match" >
             { isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') :  LangHelper.getResource('AddFavouriteMatchTooltip')}
             </Tooltip>
-        )
+        );
     };
 
     onMouseOut = () => {
@@ -66,18 +75,20 @@ export default class FavouriteIcon extends Component {
         if(!isShowTooltip) {
             this.setState({isShowTooltip: true});
         }
-    }
+    };
 
     onUpdateFavouriteMatch = () => {
         const matchId = this.props.matchId;
         if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
             this.props.onUpdateFavouriteMatch(matchId);
         }
-    }
+    };
 
 
     render() {
         const { isFavourite, isShowTooltip } = this.state;
+        const favIconClass = isFavourite ? 'icon-live-start start-active' : 'icon-favourite-outline';
+        console.log("icon");
         return (
             <>
                 {
@@ -87,9 +98,11 @@ export default class FavouriteIcon extends Component {
                         trigger={['hover', 'focus']}
                         overlay={this.renderTooltip()}
                     >
-                        <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                        <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
+                            className={`icon-livescore ${favIconClass}`} />
                     </OverlayTrigger> :
-                    <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut} className={`icon-livescore ${isFavourite ? "icon-live-start start-active" : "icon-favourite-outline"}`} />
+                    <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
+                        className={`icon-livescore ${favIconClass}`} />
                 }
             </>
         );

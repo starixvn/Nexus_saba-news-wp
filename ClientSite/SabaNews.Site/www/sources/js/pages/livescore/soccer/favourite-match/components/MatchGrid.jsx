@@ -5,6 +5,8 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
+import Site from '@jsroot/common/site';
+
 
 export default class MatchGrid extends PureComponent {
 
@@ -101,6 +103,17 @@ export default class MatchGrid extends PureComponent {
         this.props.onUpdateFavouriteMatch(matchId);
     }
 
+    handleClickLeague = (event, league) => {
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${today}/${league.leagueId}/${seasonId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     render() {
         let { matches, sortAsc, isAllMatches } = this.props;
         if (matches.length === 0) {
@@ -146,7 +159,7 @@ export default class MatchGrid extends PureComponent {
                                                 item.childs.map(child => {
                                                     if (child.key) {
                                                         return <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan"> <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}</div>
+                                                            <div className="group-match-item-slogan" onClick={(event) => this.handleClickLeague(event, child.league)}> <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}</div>
                                                             {
                                                                 child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>)
                                                             }

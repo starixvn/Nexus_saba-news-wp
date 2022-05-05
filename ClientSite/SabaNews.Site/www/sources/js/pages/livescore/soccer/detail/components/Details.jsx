@@ -15,18 +15,20 @@ class Details extends PureComponent {
     }
 
     componentDidMount() {
-        let defaultTab = "";
-        let params = queryString.parse(window.location.search);
-        if (params["tab"]) {
-            defaultTab = params["tab"].toLowerCase();
+        let defaultTab = '';
+        const params = queryString.parse(window.location.search);
+        if (params['tab']) {
+            defaultTab = params['tab'].toLowerCase();
         }
-        var section = document.getElementById(defaultTab);
-        if (!section) return null;
-        window.scroll({
-            top: section.offsetTop,
-            left: 0,
-            behavior: 'smooth'
-        });
+        const section = document.getElementById(defaultTab);
+        if (section) {
+            const headerHeight = document.querySelector('.sticky-header').offsetHeight;
+            window.scroll({
+                top: section.offsetTop - headerHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
+        };
     }
 
     render() {

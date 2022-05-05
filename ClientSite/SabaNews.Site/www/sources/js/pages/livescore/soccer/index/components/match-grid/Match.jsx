@@ -54,7 +54,7 @@ export default class Match extends Component {
         if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
             this.props.onUpdateFavouriteMatch(matchId);
         }
-    }
+    };
 
 
     render() {
