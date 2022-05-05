@@ -43,19 +43,35 @@ export class Statistics extends Component {
                                 statistices.map(item => {
                                     const homePercentage = (item.homeValue / (item.homeValue + item.awayValue)) * 100;
                                     const awayPercentage = (item.awayValue / (item.homeValue + item.awayValue)) * 100;
+                                    let homeLength = '',
+                                        awayLength = '',
+                                        homeWin = '',
+                                        awayWin = '';
+                                    if (homePercentage > awayPercentage) {
+                                        homeLength = 'long';
+                                        awayLength = 'short';
+                                        homeWin = 'win';
+                                    } else if (homePercentage < awayPercentage) {
+                                        homeLength = 'short';
+                                        awayLength = 'long';
+                                        awayWin = 'win';
+                                    } else {
+                                        homeLength = 'long';
+                                        awayLength = 'short';
+                                    }
                                     return (
                                         <div className="statistices-items" key={item.categoryId}>
                                             <div key={item.categoryId} className="statistices-row">
                                                 <div className="statistices-category">
-                                                    <div className="statistices-home-value">{item.homeValue}{item.unit}</div>
+                                                    <div className={`statistices-home-value ${homeWin}`}>{item.homeValue}{item.unit}</div>
                                                     <div className="statistices-category-name">{item.categoryName}</div>
-                                                    <div className="statistices-away-value">{item.awayValue}{item.unit}</div>
+                                                    <div className={`statistices-away-value ${awayWin}`}>{item.awayValue}{item.unit}</div>
                                                 </div>
                                                 <div className="statistices-bar">
-                                                    <div className={`statistices-barBg statistices-home ${homePercentage > awayPercentage ? "long" : "short"}`}>
+                                                    <div className={`statistices-barBg statistices-home ${homeLength}`}>
                                                         <div style={{ width: `${homePercentage}%` }} />
                                                     </div>
-                                                    <div className={`statistices-barBg statistices-away ${homePercentage > awayPercentage ? "short" : "long"}`}>
+                                                    <div className={`statistices-barBg statistices-away ${awayLength}`}>
                                                         <div style={{ width: `${awayPercentage}%` }} />
                                                     </div>
                                                 </div>

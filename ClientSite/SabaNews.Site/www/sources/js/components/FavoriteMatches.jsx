@@ -13,7 +13,7 @@ const FavoriteMatches = ({ isMobile }) => {
     }
 
     const matches = CommonFunctions.getFavouriteMatches();
-    const count = matches.length > 0 ? matches.length : "";
+    const count = matches.length > 0 ? matches.length : '';
     return (
         <div className="livescore-like" onClick={handleClick}>
             {

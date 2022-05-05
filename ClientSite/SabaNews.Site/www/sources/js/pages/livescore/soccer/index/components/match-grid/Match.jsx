@@ -37,7 +37,6 @@ export default class Match extends Component {
 
     handleClick = event => {
         const className = event.target.className;
-        console.log(className);
         if(className.includes('icon-livescore')) {
             return;
         }
