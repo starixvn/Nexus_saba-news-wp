@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
+import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';
-
-export const withNavigation = Component => props => <Component {...props} navigate={useNavigate()} />;
 
 class FunctionBar extends PureComponent {
     constructor(props) {
@@ -135,7 +133,7 @@ class FunctionBar extends PureComponent {
     }
 }
 
-const FunctionBarComponent = withNavigation(FunctionBar);
+const FunctionBarWithNavigation = withNavigation(FunctionBar);
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
@@ -144,4 +142,4 @@ const mapStateToProps = state => {
     return { match };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FunctionBarComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(FunctionBarWithNavigation);

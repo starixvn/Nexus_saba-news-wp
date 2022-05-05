@@ -5,10 +5,6 @@ import { ActionCreators } from '../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export class Statistics extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const match = this.props.match;
         const { statistic } = this.props.match;

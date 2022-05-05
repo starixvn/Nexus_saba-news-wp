@@ -9,10 +9,6 @@ import { ActionCreators } from '../actions';
 import LangHelper from '@jsroot/common/langHelper';
 
 export class MatchSummary extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     checkIncidentMainTimeEventType = type => {
         if (type === IncidentStatus.End || type === IncidentStatus.OvertimeEnds
             || type === IncidentStatus.PenaltyShootoutEnd || type === IncidentStatus.Halftime) {
@@ -38,7 +34,6 @@ export class MatchSummary extends Component {
                 return '';
         }
     };
-
 
     renderFinishStatus = () => {
         const { generalInfo } = this.props.match;
@@ -172,9 +167,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 
 const mapStateToProps = state => {
     const { match } = state;
-    return {
-        match
-    };
+    return { match };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatchSummary);

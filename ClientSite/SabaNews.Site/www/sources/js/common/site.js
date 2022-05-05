@@ -1,6 +1,5 @@
 ﻿const _rootUrl = document.getElementById('RootUrl') ? document.getElementById('RootUrl').value : '/';
 let _xsrfToken = null;
-import { MatchStatus, IncidentStatus, VARResultCode } from './constants';
 
 export default class Site {
     static getXsrfToken() {

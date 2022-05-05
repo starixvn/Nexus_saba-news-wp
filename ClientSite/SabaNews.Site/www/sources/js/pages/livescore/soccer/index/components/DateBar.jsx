@@ -1,13 +1,9 @@
 ﻿import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import DatePickerField from './DatePickerField';
 import WeekBar from './WeekBar';
+import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
-
-export const withNavigation = Component => {
-    return props => <Component {...props} navigate={useNavigate()} />;
-}
 
 const DateBar = props => {
     const { isMobile, totalMatches } = props;
@@ -43,6 +39,6 @@ const DateBar = props => {
     );
 };
 
-const DateBarComponent = withNavigation(DateBar);
+const DateBarWithNavigation = withNavigation(DateBar);
 
-export default DateBarComponent;
+export default DateBarWithNavigation;

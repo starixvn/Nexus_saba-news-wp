@@ -9,7 +9,7 @@ import Breadscrum from '@jsroot/components/Breadscrum';
 import MatchGrid from './MatchGrid';
 import moment from 'moment';
 import SignalR from './SignalR';
-import { useNavigate } from 'react-router-dom';
+import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 
@@ -17,8 +17,6 @@ moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
 moment.locale('vi');
-
-export const withNavigation = Component => props => <Component {...props} navigate={useNavigate()} />;
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -144,7 +142,7 @@ export class AppContainer extends Component {
         );
     }
 }
-const AppContainerComponent = withNavigation(AppContainer);
+const AppContainerWithNavigation = withNavigation(AppContainer);
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
@@ -153,4 +151,4 @@ const mapStateToProps = state => {
     return { majorLeagues, matches, postMatches, preMatches, liveMatches };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainerComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

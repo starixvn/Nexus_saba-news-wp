@@ -4,9 +4,6 @@ import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class GeneralIncident extends Component {
-    constructor(props) {
-        super(props);
-    }
     checkIncidentTypeToShowScore = type => {
         if (type === IncidentStatus.Halftime || type === IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal) {
             return true;

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Tabs, Tab } from 'react-bootstrap';
 import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
@@ -14,6 +13,7 @@ import MatchGrid from './match-grid/index';
 import SeasonStandings from './standings/index';
 import SkeletonLeague from './SkeletonLeague';
 import SkeletonGrid from './match-grid/SkeletonGrid';
+import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -22,10 +22,6 @@ moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
 moment.locale('vi');
-
-export const withNavigation = Component => {
-    return props => <Component {...props} navigate={useNavigate()} />;
-}
 
 class AppContainer extends Component {
     constructor(props) {
@@ -148,7 +144,7 @@ class AppContainer extends Component {
     }
 }
 
-const AppContainerComponent = withNavigation(AppContainer);
+const AppContainerWithNavigation = withNavigation(AppContainer);
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
@@ -157,4 +153,4 @@ const mapStateToProps = state => {
     return { majorLeagues, league, stages, preMatches, postMatches };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainerComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

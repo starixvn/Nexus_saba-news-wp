@@ -11,9 +11,6 @@ import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 import Site from '@jsroot/common/site';
 
 export default class MatchGeneralInfo extends Component {
-    constructor(props) {
-        super(props);
-    }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
         const startTime = DateTimeService.convertFromUTC(match.startTime);

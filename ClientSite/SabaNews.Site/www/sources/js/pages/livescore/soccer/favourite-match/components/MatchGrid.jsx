@@ -8,7 +8,6 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
 
 export default class MatchGrid extends PureComponent {
-
     constructor(props) {
         super(props);
 
@@ -165,9 +164,12 @@ export default class MatchGrid extends PureComponent {
                                                                 <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
                                                             </div>
                                                             {
-                                                                child.childs.map(match => <Match key={match.matchId}
-                                                                                                searchKey={searchKey} match={match}
-                                                                                                onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>)
+                                                                child.childs.map(match =>
+                                                                    <Match key={match.matchId}
+                                                                        searchKey={searchKey} match={match}
+                                                                        onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}
+                                                                    />
+                                                                )
                                                             }
                                                         </div>;
                                                     } else {
@@ -186,4 +188,3 @@ export default class MatchGrid extends PureComponent {
         );
     }
 }
-

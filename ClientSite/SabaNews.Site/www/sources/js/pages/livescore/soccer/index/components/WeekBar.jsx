@@ -1,15 +1,11 @@
 ﻿import React, { PureComponent } from 'react';
 import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
+import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
-
-export const withNavigation = Component => {
-    return props => <Component {...props} navigate={useNavigate()} />;
-}
 
 class WeekBar extends PureComponent {
     onPrev = () => {
@@ -70,7 +66,7 @@ class WeekBar extends PureComponent {
     }
 }
 
-const WeekBarComponent = withNavigation(WeekBar);
+const WeekBarWithNavigation = withNavigation(WeekBar);
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
@@ -79,4 +75,4 @@ const mapStateToProps = state => {
     return { today, minDate, maxDate, selectedDate, dateRanges };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeekBarComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(WeekBarWithNavigation);

@@ -8,10 +8,6 @@ import LangHelper from '@jsroot/common/langHelper';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export class Lineups extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     getPlayerIncident = playerId => {
         const incidents = this.props.match.incidents;
         const playerIncident = {

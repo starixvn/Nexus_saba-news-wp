@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import * as signalR from '@microsoft/signalr';
 
-
 export class SignalR extends Component {
     constructor(props) {
         super(props);

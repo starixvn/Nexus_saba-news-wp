@@ -9,11 +9,6 @@ import HeadToHead from './HeadToHead';
 import queryString from 'query-string';
 
 class Details extends PureComponent {
-
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         let defaultTab = '';
         const params = queryString.parse(window.location.search);
@@ -42,7 +37,6 @@ class Details extends PureComponent {
         );
     }
 }
-
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 

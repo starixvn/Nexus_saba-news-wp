@@ -10,10 +10,6 @@ import { MatchStatus } from '@jsroot/common/constants';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 
 export class HeadToHead extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     getTeamStatus = (isHomeTeam, match) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';

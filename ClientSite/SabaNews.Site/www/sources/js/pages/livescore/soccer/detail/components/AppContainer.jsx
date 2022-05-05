@@ -9,9 +9,6 @@ import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
 export class AppContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         this.props.getMatchDetail();
         this.props.getMajorLeagues();
@@ -45,9 +42,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 
 const mapStateToProps = state => {
     const { match, majorLeagues } = state;
-    return {
-        match, majorLeagues
-    };
+    return { match, majorLeagues };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

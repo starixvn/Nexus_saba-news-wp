@@ -3,9 +3,6 @@ import IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
 import { IncidentStatus } from '@jsroot/common/constants';
 
 export default class PenaltyShootOut extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const { penaltyShootOutData } = this.props;
         const homeType = penaltyShootOutData.homeType === IncidentStatus.Penalty ? IncidentStatus.PenaltyShootOutSuccess : penaltyShootOutData.homeType;
