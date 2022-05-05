@@ -39,13 +39,13 @@ export class SeasonStandings extends PureComponent {
                 this.setState({ isMobile: false });
             }
         }
-    }
+    };
 
     groupStandingsByGroupName = seasonStandings => {
         const totalItems = seasonStandings.length;
         const standings = [];
         for (let i = 0; i < totalItems; i++) {
-            let temp = seasonStandings[i];
+            const temp = seasonStandings[i];
             const key = temp.groupName;
             const item = {
                 key,

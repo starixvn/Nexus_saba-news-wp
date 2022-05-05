@@ -9,6 +9,11 @@
 
         public static DateTime ToStartOfDay(this DateTime date) => new(date.Year, date.Month, date.Day);
 
-        public static DateTime ToEndOfDay(this DateTime date) => new(date.Year, date.Month, date.Day, 23, 59, 59);
+        public static DateTime ToEndOfDay(this DateTime date)
+        {
+            const byte Hour = 23;
+            const byte Minute = 59;
+            return new(date.Year, date.Month, date.Day, Hour, Minute, Minute);
+        }
     }
 }

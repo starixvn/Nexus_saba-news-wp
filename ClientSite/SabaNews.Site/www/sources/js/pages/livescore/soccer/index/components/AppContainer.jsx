@@ -41,13 +41,13 @@ export class AppContainer extends Component {
     handleResize = () => {
         const isMobile = this.state.isMobile;
         if (!isMobile && window.innerWidth <= MobileMaxWidth) {
-            this.setState({ isMobile: true});
+            this.setState({ isMobile: true });
         } else {
             if (isMobile && window.innerWidth > MobileMaxWidth) {
                 this.setState({ isMobile: false });
             }
         }
-    }
+    };
 
     getDateRanges = selectedDate => {
         const dates = [];
@@ -84,7 +84,7 @@ export class AppContainer extends Component {
         }
 
         return dates;
-    }
+    };
 
     getMatches = selectedDate => {
         if (this.props.searchKey.length > 0) {

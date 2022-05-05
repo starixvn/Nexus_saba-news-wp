@@ -19,7 +19,7 @@ const SearchBar = props => {
             <FavoriteMatches isMobile />
         </div>
     );
-}
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 

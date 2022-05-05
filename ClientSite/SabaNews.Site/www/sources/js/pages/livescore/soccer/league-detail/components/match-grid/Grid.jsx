@@ -60,7 +60,7 @@ export default class Grid extends PureComponent {
             hasMore: groupIndex < matches.length,
             matches: items
         });
-    }
+    };
 
     render() {
         const { hasMore, matches } = this.state;

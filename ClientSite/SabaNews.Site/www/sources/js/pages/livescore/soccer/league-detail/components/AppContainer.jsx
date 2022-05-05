@@ -31,7 +31,7 @@ class AppContainer extends Component {
         const tabs = ['fixtures', 'results', 'standings'];
         let selectedTab = window.getMatchByStageParams.selectedTab.toLowerCase(),
             selectedResultsTab = false,
-            selectedStandingsTab = true;
+            selectedStandingsTab = false;
         if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
             selectedTab = 'fixtures';
         }

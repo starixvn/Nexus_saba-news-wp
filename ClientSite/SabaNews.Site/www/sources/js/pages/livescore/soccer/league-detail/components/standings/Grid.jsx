@@ -7,7 +7,7 @@ export default class Grid extends PureComponent {
         const isHomeTeam = match.homeTeamId === teamId;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
-        let result = <div />;
+        let result;
         const win = <div className="wld win">T</div>;
         const loss = <div className="wld loss">B</div>;
         const draw = <div className="wld draw">H</div>;
@@ -42,7 +42,7 @@ export default class Grid extends PureComponent {
         }
 
         return result;
-    }
+    };
 
     getGroupName = groupName => `Bảng ${groupName.charAt(0)}`;
 

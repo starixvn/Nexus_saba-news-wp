@@ -72,25 +72,25 @@
         public async Task SyncSeasonStandingsByLastUpdatedTimeAsync()
         {
             DateTime? lastUpdatedTime = await baseService.GetDataEntityAsync<DateTime?>(new GetSeasonStandingsLastUpdatedTimeCriteria());
-            lastUpdatedTime = FirstDayOfWeek(lastUpdatedTime ?? appSettings.MinDateSyncLivescoreData);
-            var today = DateTime.Now;
-            for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(7))
+            if (lastUpdatedTime.HasValue)
             {
-                var param = new FetchSeasonStandingsParams
+                lastUpdatedTime = lastUpdatedTime.Value.AddMilliseconds(1);
+            } else
+            {
+                lastUpdatedTime = appSettings.MinDateSyncLivescoreData;
+            }
+
+            var today = DateTime.Now;
+            const byte TotalDaysOfWeek = 7;
+            for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(TotalDaysOfWeek))
+            {
+                IList<UpdatedSeasonIdListResponse> updatedSeasonIds = await GetSeasonStandingsAsync(date);
+                foreach (var item in updatedSeasonIds)
                 {
-                    SportId = (short)SportType.Soccer,
-                    LastUpdatedTime = date
-                };
-                var updatedSeasonIds = await fetchSeasonService.FetchSeasonStandingsAsync<UpdatedSeasonIdListResponse>(param);
-                if (updatedSeasonIds.Any(x => x.UpdatedSeasonIdList.Any()))
-                {
-                    foreach (var item in updatedSeasonIds)
+                    foreach (var seasonId in item.UpdatedSeasonIdList)
                     {
-                        foreach (var seasonId in item.UpdatedSeasonIdList)
-                        {
-                            var seasonStandings = await GetSeasonStandingsAsync(seasonId);
-                            await ImportSeasonStandingsAsync(seasonId, seasonStandings);
-                        }
+                        var seasonStandings = await GetSeasonStandingsByIdAsync(seasonId);
+                        await ImportSeasonStandingsAsync(seasonId, seasonStandings);
                     }
                 }
             }
@@ -134,7 +134,17 @@
             }
         }
 
-        protected internal virtual async Task<List<SeasonStandingsResponse>> GetSeasonStandingsAsync(long seasonId)
+        protected internal virtual async Task<IList<UpdatedSeasonIdListResponse>> GetSeasonStandingsAsync(DateTime lastUpdatedTime)
+        {
+            var param = new FetchSeasonStandingsParams
+            {
+                SportId = (short)SportType.Soccer,
+                LastUpdatedTime = lastUpdatedTime
+            };
+            return await fetchSeasonService.FetchSeasonStandingsAsync<UpdatedSeasonIdListResponse>(param);
+        }
+
+        protected internal virtual async Task<List<SeasonStandingsResponse>> GetSeasonStandingsByIdAsync(long seasonId)
         {
             var param = new FetchSeasonStandingsParams
             {
@@ -202,12 +212,6 @@
                 SeasonStandingsJson = JsonConvert.SerializeObject(records)
             };
             await baseService.ExecuteNonQueryAsync(command);
-        }
-
-        private static DateTime FirstDayOfWeek(DateTime date)
-        {
-            int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
-            return date.AddDays(-1 * diff).Date;
         }
     }
 }

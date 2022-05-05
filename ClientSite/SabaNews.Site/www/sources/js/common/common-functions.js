@@ -1,5 +1,4 @@
 ﻿import { LeagueType, IncidentStatus, MatchStatus } from './constants';
-import Site from './site';
 
 export default class CommonFunctions {
     static getLeagueName(league) {

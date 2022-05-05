@@ -50,8 +50,8 @@ export default class Match extends Component {
         }
     };
 
-    onUpdateFavouriteMatch = (matchId) => {
-        if(typeof(this.props.onUpdateFavouriteMatch) === 'function') {
+    onUpdateFavouriteMatch = matchId => {
+        if (typeof (this.props.onUpdateFavouriteMatch) === 'function') {
             this.props.onUpdateFavouriteMatch(matchId);
         }
     };
@@ -66,7 +66,7 @@ export default class Match extends Component {
             <div className="group-match-item"  onClick={this.handleClick}>
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                 >
-                    <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch} />
+                    <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">
