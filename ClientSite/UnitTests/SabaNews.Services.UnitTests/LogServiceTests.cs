@@ -3,6 +3,7 @@
     using AutoFixture;
     using NSubstitute;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Logs;
     using System.Threading.Tasks;
     using Xunit;

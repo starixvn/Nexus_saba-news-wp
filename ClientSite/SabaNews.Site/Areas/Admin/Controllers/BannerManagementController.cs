@@ -17,10 +17,9 @@
     {
         private readonly IBannerService bannerService;
         private readonly IPathService pathService;
-        private readonly IConfiguration configuration;
         private readonly ISessionService sessionService;
         private readonly string baseUrl;
-        
+
         public BannerManagementController(
             IBannerService bannerService,
             IPathService pathService,
@@ -29,7 +28,6 @@
         {
             this.bannerService = bannerService;
             this.pathService = pathService;
-            this.configuration = configuration;
             this.sessionService = sessionService;
             baseUrl = configuration.GetValue<string>("BaseUrl");
         }

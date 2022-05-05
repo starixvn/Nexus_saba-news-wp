@@ -3,6 +3,7 @@
     using AutoFixture;
     using NSubstitute;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Poll;
     using SabaNews.Models.Poll;
     using System;

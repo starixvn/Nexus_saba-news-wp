@@ -7,6 +7,7 @@
     using AutoFixture;
     using NSubstitute;
     using SabaNews.Models.Auth;
+    using SabaNews.Core.Services;
 
     public class ExternalAuthServiceTests
     {

@@ -5,7 +5,6 @@
     using Microsoft.Extensions.Configuration;
     using NSubstitute;
     using SabaNews.Controllers;
-    using SabaNews.Core.Services;
     using SabaNews.Models.Banner;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
@@ -24,7 +23,6 @@
         private IDataControlService dataControlService;
         private IPostService postService;
         private IConfiguration configuration;
-        private IBannerService bannerService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -33,10 +31,7 @@
             // Arrange
             var controller = GetController();
             var expectedViewModel = fixture.Create<PostViewModel>();
-            var banner = fixture.Create<BannerModel>(); 
-
             dataControlService.GetHomePageViewModel().Returns(expectedViewModel);
-            bannerService.GetBannerInfoAsync().Returns(banner);
 
             //Act
             var result = await controller.Index();
@@ -44,7 +39,6 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<PostViewModel>(viewResult.Model);
-            Assert.Equal(banner, viewModel.Banner);
             Assert.Equal(expectedViewModel.Category.SEOTitle, viewModel.Header.Title);
         }
 
@@ -54,10 +48,8 @@
             // Arrange
             var controller = GetController();
             var expectedViewModel = fixture.Create<PostViewModel>();
-            var banner = fixture.Create<BannerModel>();
             expectedViewModel.Category.SEOTitle = null;
             dataControlService.GetHomePageViewModel().Returns(expectedViewModel);
-            bannerService.GetBannerInfoAsync().Returns(banner);
 
             //Act
             var result = await controller.Index();
@@ -65,7 +57,6 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var viewModel = Assert.IsType<PostViewModel>(viewResult.Model);
-            Assert.Equal(banner, viewModel.Banner);
             Assert.Equal(expectedViewModel.Category.Title, viewModel.Header.Title);
         }
 
@@ -192,58 +183,11 @@
         }
 
         [Fact]
-        public async Task MatchSchedule_WhenHaveFullData_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var controller = GetController();
-            string slug = fixture.Create<string>();
-            var type = fixture.Create<string>();
-            var expectedPost = fixture.Create<Post>();
-            var expectedPage = fixture.Create<Category>();
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<string>(x => type = x)).Returns(expectedPost);
-            postService.GetPageDetailBySlugAsync(Arg.Do<string>(x => slug = x)).Returns(expectedPage);
-            //Act
-            var result = await controller.MatchSchedule();
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
-            Assert.Equal(expectedPost, viewModel.Post);
-            Assert.Equal(expectedPage, viewModel.Category);
-            Assert.Equal(expectedPage.Description, viewModel.Header.Description);
-        }
-
-        [Fact]
-        public async Task MatchSchedule_WhenDescriptionIsNull_ReturnExpectedViewResult()
-        {
-            // Arrange
-            var controller = GetController();
-            string slug = fixture.Create<string>();
-            var type = fixture.Create<string>();
-            var expectedPost = fixture.Create<Post>();
-            var expectedPage = fixture.Create<Category>();
-            expectedPage.Description = null;
-            expectedPage.SEOTitle = null;
-            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<string>(x => type = x)).Returns(expectedPost);
-            postService.GetPageDetailBySlugAsync(Arg.Do<string>(x => slug = x)).Returns(expectedPage);
-            //Act
-            var result = await controller.MatchSchedule();
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<PageViewModel>(viewResult.Model);
-            Assert.Equal(expectedPost, viewModel.Post);
-            Assert.Equal(expectedPage, viewModel.Category);
-            Assert.Equal(expectedPage.Title, viewModel.Header.Description);
-        }
-
-        [Fact]
         public async Task Warning_WhenHaveFullData_ReturnExpectedViewResult()
         {
             // Arrange
             var controller = GetController();
             string slug = fixture.Create<string>();
-            var type = fixture.Create<string>();
             var expectedPage = fixture.Create<Category>();
             postService.GetPageDetailBySlugAsync(Arg.Do<string>(x => slug = x)).Returns(expectedPage);
             //Act
@@ -387,19 +331,17 @@
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
 
-
         #region Helpers
         private HomeController GetController()
         {
             dataControlService = Substitute.For<IDataControlService>();
             postService = Substitute.For<IPostService>();
             configuration = Substitute.For<IConfiguration>();
-            bannerService = Substitute.For<IBannerService>();
-            bannerService = Substitute.For<IBannerService>();
-            var controller = new HomeController(postService, dataControlService, configuration, bannerService);
+            var controller = new HomeController(postService, dataControlService, configuration);
 
             return controller;
         }
+
         private void GetDefaultContext(HomeController controller)
         {
             var urlHelperMock = Substitute.For<IUrlHelper>();

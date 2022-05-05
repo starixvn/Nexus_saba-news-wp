@@ -2,6 +2,7 @@
 {
     using AutoFixture;
     using NSubstitute;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
     using System;

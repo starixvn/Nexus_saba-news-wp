@@ -28,6 +28,7 @@
         private IUserService userService;
         private IStatisticService statisticService;
         private IPollService pollService;
+        private IDataControlService dataControlService;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -339,7 +340,8 @@
             userService = Substitute.For<IUserService>();
             sessionService = Substitute.For<ISessionService>();
             statisticService = Substitute.For<IStatisticService>();
-            var controller = new PostController(postService, configuration, sessionService, userService, statisticService, pollService);
+            dataControlService = Substitute.For<IDataControlService>();
+            var controller = new PostController(postService, configuration, sessionService, userService, statisticService, pollService, dataControlService);
 
             return controller;
         }

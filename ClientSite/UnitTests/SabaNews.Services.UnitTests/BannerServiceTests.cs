@@ -1,7 +1,6 @@
 ﻿namespace SabaNews.Services.UnitTests
 {
     using AutoFixture;
-    using Microsoft.Extensions.Configuration;
     using NSubstitute;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
@@ -13,14 +12,6 @@
     public class BannerServiceTests
     {
         private  IBaseService baseService;
-        private  IConfiguration configuration;
-        private  ISessionService sessionService;
-        private const string DefaultDestopTopUrl = "images/Desktop_320x70.png";
-        private const string DefaultMobileTopUrl = "images/Mobile_375x200.png";
-        private const string DefaultDesktopCenterUrl = "images/banner.jpg";
-        private const string DefaultDesktopLeftUrl = "images/ads.png";
-        private const string DefaultDesktopRightUrl = "images/ads.png";
-        private const string DefaultMobileCenterUrl = "images/banner_mobile_domain.png";
 
         [Fact]
         public async Task GetBannerInfoAsync_WhenCalled_ReturnExpectedBannerModel()
@@ -51,7 +42,7 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateBannerInfoCommand>(x => command = x)).Returns(expected);
 
             //Act
-            var actual = await service.UpdateBannerInfoAsync(model);
+            var actual = await service.UpdateBannerInfoAsync(model, 1);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -62,10 +53,7 @@
         private BannerService GetBannerService()
         {
             baseService = Substitute.For<IBaseService>();
-            configuration = Substitute.For<IConfiguration>();
-            sessionService = Substitute.For<ISessionService>();
-            sessionService.User = new UserSession { Id = 1 };
-            var service = new BannerService(baseService, configuration, sessionService);
+            var service = new BannerService(baseService);
 
             return service;
         }

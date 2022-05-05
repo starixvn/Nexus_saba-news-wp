@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Configuration;
     using NSubstitute;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;

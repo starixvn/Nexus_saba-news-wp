@@ -11,7 +11,7 @@
 
     public class BannerSidebarViewComponentTests
     {
-        private IBannerService bannerService;
+        private IDataControlService dataControlService;
 
         [Fact]
         public async Task InvokeAsync_WhenCalled_ReturnExpectedViewResult()
@@ -20,7 +20,7 @@
             var component = GetViewComponent();
             var fixture = new Fixture();
             var expectedBanner = fixture.Create<BannerModel>();
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
+            dataControlService.GetBannerData().Returns(expectedBanner);
             //Act
             var actual = await component.InvokeAsync();
 
@@ -33,9 +33,9 @@
         #region Helpers
         private BannerSidebarViewComponent GetViewComponent()
         {
-            bannerService = Substitute.For<IBannerService>();
+            dataControlService = Substitute.For<IDataControlService>();
 
-            var component = new BannerSidebarViewComponent(bannerService);
+            var component = new BannerSidebarViewComponent(dataControlService);
 
             return component;
         }

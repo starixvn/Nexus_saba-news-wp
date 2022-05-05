@@ -7,11 +7,11 @@
     using NSubstitute;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Areas.Admin.Controllers;
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -22,7 +22,7 @@
         private IBannerService bannerService;
         private IPathService pathService;
         private IConfiguration configuration;
-        private string baseUrl;
+        private ISessionService sessionService;
         private readonly IFixture fixture = new Fixture();
 
         [Theory]
@@ -44,11 +44,13 @@
         {
             // Arrange
             var controller = GetController();
+            var user = fixture.Create<UserSession>();
             var value = fixture.Create<string>();
             var expectedBanner = fixture.Create<BannerModel>();
             var expectedCommand = fixture.Create<CommandResult>();
+            sessionService.User.Returns(user);
             bannerService.GetBannerInfoAsync().Returns(expectedBanner);
-            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner)).Returns(expectedCommand);
+            bannerService.UpdateBannerInfoAsync(Arg.Do<BannerModel>(x => x = expectedBanner), user.Id).Returns(expectedCommand);
 
             //Act
             var actual = await controller.UpdateInfo(value, type);
@@ -132,7 +134,8 @@
             bannerService = Substitute.For<IBannerService>();
             pathService = Substitute.For<IPathService>();
             configuration = Substitute.For<IConfiguration>();
-            var controller = new BannerManagementController(bannerService, pathService, configuration);
+            sessionService = Substitute.For<ISessionService>();
+            var controller = new BannerManagementController(bannerService, pathService, configuration, sessionService);
 
             return controller;
         }

@@ -15,9 +15,10 @@
     public class RefreshCachingServiceTests
     {
         private IFetchDataService fetchDataService;
-        private ICacheService cacheService;
+        private ICacheWrapperService cacheWrapperService;
         private IPostService postService;
         private ILogServiceProvider logService;
+        private IBannerService bannerService;
         private IFixture fixture = new Fixture();
 
         [Fact]
@@ -37,7 +38,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -77,7 +78,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -119,7 +120,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -161,7 +162,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -201,7 +202,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -241,7 +242,7 @@
 
             //Assert
             logService.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
         }
 
         [Fact]
@@ -269,10 +270,11 @@
         private RefreshCachingService GetRefreshCachingService()
         {
             fetchDataService = Substitute.For<IFetchDataService>();
-            cacheService = Substitute.For<ICacheService>();
+            cacheWrapperService = Substitute.For<ICacheWrapperService>();
             postService = Substitute.For<IPostService>();
             logService = Substitute.For<ILogServiceProvider>();
-            var service = new RefreshCachingService(fetchDataService, cacheService, postService, logService);
+            bannerService = Substitute.For<IBannerService>();
+            var service = new RefreshCachingService(fetchDataService, cacheWrapperService, postService, logService, bannerService);
 
             return service;
         }

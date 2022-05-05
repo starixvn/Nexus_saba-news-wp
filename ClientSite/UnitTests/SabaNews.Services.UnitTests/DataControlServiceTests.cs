@@ -22,10 +22,11 @@ namespace SabaNews.Services.UnitTests
     {
 
         private IFetchDataService fetchDataService;
-        private ICacheService cacheService;
+        private ICacheWrapperService cacheWrapperService;
         private IPostService postService;
         private ILogServiceProvider logServiceProvider;
         private IConfiguration configuration;
+        private IBannerService bannerService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -36,7 +37,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var expected = fixture.Create<PostViewModel>();
-            cacheService.GetAsync<PostViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<PostViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GetHomePageViewModel();
 
@@ -53,7 +54,7 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             PostViewModel expectedFromCache = null;
             var expected = fixture.Create<PostViewModel>();
-            cacheService.GetAsync<PostViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<PostViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             fetchDataService.GetHomePageViewModel().Returns(expected);
 
             //Act
@@ -62,7 +63,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<PostViewModel>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<PostViewModel>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -91,7 +92,7 @@ namespace SabaNews.Services.UnitTests
             var page = 1;
             var key = fixture.Create<string>();
             var expected = fixture.Create<CategoryViewModel>();
-            cacheService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GetCategoryViewModel(slug, page);
 
@@ -109,7 +110,7 @@ namespace SabaNews.Services.UnitTests
             var page = 1;
             CategoryViewModel expectedFromCache = null;
             var expected = fixture.Create<CategoryViewModel>();
-            cacheService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             fetchDataService.GetCategoryViewModel(Arg.Do<string>(x => x = slug), Arg.Do<int>(x => x = page)).Returns(expected);
 
             //Act
@@ -118,7 +119,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<CategoryViewModel>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<CategoryViewModel>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -147,7 +148,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Menu>>();
-            cacheService.GetAsync<IEnumerable<Menu>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<IEnumerable<Menu>>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GetMenuData();
 
@@ -164,7 +165,7 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             IEnumerable<Menu> expectedFromCache = null;
             var expected = fixture.Create<IEnumerable<Menu>>();
-            cacheService.GetAsync<IEnumerable<Menu>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<IEnumerable<Menu>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             fetchDataService.GetMenuData().Returns(expected);
 
             //Act
@@ -173,7 +174,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Menu>>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Menu>>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -201,7 +202,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            cacheService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GenerateSitmapXmlData();
 
@@ -218,7 +219,7 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             IEnumerable<SitemapModel> expectedFromCache = null;
             var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            cacheService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<IEnumerable<SitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             postService.GetSitemapDataAsync().Returns(expected);
 
             //Act
@@ -227,7 +228,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<SitemapModel>>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<SitemapModel>>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -256,7 +257,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<NewsSitemapModel>>();
-            cacheService.GetAsync<IEnumerable<NewsSitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<IEnumerable<NewsSitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GenerateNewsSitmapXmlData();
 
@@ -273,7 +274,7 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             IEnumerable<NewsSitemapModel> expectedFromCache = null;
             var expected = fixture.Create<IEnumerable<NewsSitemapModel>>();
-            cacheService.GetAsync<IEnumerable<NewsSitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<IEnumerable<NewsSitemapModel>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             postService.GetNewsSitemapDataAsync().Returns(expected);
 
             //Act
@@ -282,7 +283,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<NewsSitemapModel>>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<NewsSitemapModel>>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -310,7 +311,7 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var expected = fixture.Create<IEnumerable<Post>>();
-            cacheService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expected);
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
             var actual = await service.GenerateRSSData();
 
@@ -327,7 +328,7 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             IEnumerable<Post> expectedFromCache = null;
             var expected = fixture.Create<IEnumerable<Post>>();
-            cacheService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            cacheWrapperService.GetAsync<IEnumerable<Post>>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
             postService.GetRSSDataAsync().Returns(expected);
 
             //Act
@@ -336,7 +337,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Post>>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IEnumerable<Post>>(), Arg.Any<CacheItemOptions>());
 
         }
 
@@ -379,16 +380,16 @@ namespace SabaNews.Services.UnitTests
             var inMemorySettings = new Dictionary<string, string> {
                 {"IsEnabledUseFanexCaching", "true"}
             };
-            IConfiguration configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(inMemorySettings)
-            .Build();
+            configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
             fetchDataService = Substitute.For<IFetchDataService>();
-            cacheService = Substitute.For<ICacheService>();
+            cacheWrapperService = Substitute.For<ICacheWrapperService>();
             postService = Substitute.For<IPostService>();
             logServiceProvider = Substitute.For<ILogServiceProvider>();
-            
-            
-            var service = new DataControlService(fetchDataService, configuration, cacheService, postService, logServiceProvider);
+            bannerService = Substitute.For<IBannerService>();
+
+            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService);
 
             return service;
         }
@@ -398,16 +399,16 @@ namespace SabaNews.Services.UnitTests
             var inMemorySettings = new Dictionary<string, string> {
                 {"IsEnabledUseFanexCaching", "false"}
             };
-            IConfiguration configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(inMemorySettings)
-            .Build();
+            configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
             fetchDataService = Substitute.For<IFetchDataService>();
-            cacheService = Substitute.For<ICacheService>();
+            cacheWrapperService = Substitute.For<ICacheWrapperService>();
             postService = Substitute.For<IPostService>();
             logServiceProvider = Substitute.For<ILogServiceProvider>();
+            bannerService = Substitute.For<IBannerService>();
 
-
-            var service = new DataControlService(fetchDataService, configuration, cacheService, postService, logServiceProvider);
+            var service = new DataControlService(fetchDataService, configuration, cacheWrapperService, postService, logServiceProvider, bannerService);
 
             return service;
         }

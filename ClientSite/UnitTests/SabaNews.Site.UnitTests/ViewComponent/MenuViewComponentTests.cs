@@ -6,7 +6,6 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Models;
-    using SabaNews.Models.Banner;
     using SabaNews.Services.Interfaces;
     using SabaNews.Views.Shared.Components;
     using System.Collections.Generic;
@@ -18,7 +17,6 @@
     {
         private IDataControlService dataControlService;
         private ISessionService sessionService;
-        private IBannerService bannerService;
 
         [Fact]
         public async Task InvokeAsync_IsNotAuthenticate_ReturnExpectedViewResult()
@@ -29,9 +27,7 @@
             var cateSlug = fixture.Create<string>();
             var page = fixture.Create<string>();
             var expectedMenu = fixture.Create<IEnumerable<Menu>>();
-            var expectedBanner = fixture.Create<BannerModel>();
             dataControlService.GetMenuData().Returns(expectedMenu);
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
 
             //Act
             var actual = await component.InvokeAsync(cateSlug, page);
@@ -40,7 +36,6 @@
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<MenuViewModel>(viewResult.ViewData.Model);
             Assert.Equal(expectedMenu, viewModel.Menus);
-            Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.False(viewModel.IsAdmin);
             Assert.Null(viewModel.UserUgent);
         }
@@ -55,9 +50,7 @@
             var cateSlug = fixture.Create<string>();
             var page = fixture.Create<string>();
             var expectedMenu = fixture.Create<IEnumerable<Menu>>();
-            var expectedBanner = fixture.Create<BannerModel>();
             dataControlService.GetMenuData().Returns(expectedMenu);
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
 
             //Act
             var actual = await component.InvokeAsync(cateSlug, page);
@@ -66,7 +59,6 @@
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<MenuViewModel>(viewResult.ViewData.Model);
             Assert.Equal(expectedMenu, viewModel.Menus);
-            Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.False(viewModel.IsAdmin);
             Assert.Equal(Constants.CustomerRole, sessionService.User.Role);
         }
@@ -81,9 +73,7 @@
             var cateSlug = fixture.Create<string>();
             var page = fixture.Create<string>();
             var expectedMenu = fixture.Create<IEnumerable<Menu>>();
-            var expectedBanner = fixture.Create<BannerModel>();
             dataControlService.GetMenuData().Returns(expectedMenu);
-            bannerService.GetBannerInfoAsync().Returns(expectedBanner);
 
             //Act
             var actual = await component.InvokeAsync(cateSlug, page);
@@ -92,7 +82,6 @@
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
             var viewModel = Assert.IsType<MenuViewModel>(viewResult.ViewData.Model);
             Assert.Equal(expectedMenu, viewModel.Menus);
-            Assert.Equal(expectedBanner, viewModel.Banner);
             Assert.True(viewModel.IsAdmin);
             Assert.Equal(Constants.AdministratorRole, sessionService.User.Role);
         }
@@ -102,8 +91,7 @@
         {
             dataControlService = Substitute.For<IDataControlService>();
             sessionService = Substitute.For<ISessionService>();
-            bannerService = Substitute.For<IBannerService>();
-            var component = new MenuViewComponent(dataControlService, sessionService, bannerService);
+            var component = new MenuViewComponent(dataControlService, sessionService);
 
             return component;
         }
