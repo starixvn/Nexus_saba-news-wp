@@ -22,6 +22,39 @@
         height: .6rem;
     }
 
+    &-items {
+        margin-top: 2rem;
+
+        &:first-child {
+            padding-top: 2.6rem;
+            margin-top: 0;
+            /*.statistices-row {
+                .statistices-bar {
+                    height: 1.2rem;
+                }
+
+                .statistices-category {
+                    font-weight: 600;
+                    font-size: 1.8rem;
+                    line-height: 2.5rem;
+
+                    @include Mobile {
+                        font-size: 1.6rem;
+                        line-height: 1.2rem;
+                    }
+                }
+            }*/
+        }
+
+        .statistices-category {
+            font-weight: 600;
+
+            .win {
+                font-weight: 700;
+            }
+        }
+    }
+
     &-barBg {
         background-color: $bg-table-title-grey;
         display: flex;
@@ -34,6 +67,7 @@
             div {
                 background-color: $color-active-icon;
             }
+
             &.short {
                 div {
                     background-color: $color-title;
@@ -52,7 +86,7 @@
                 background-color: $color-title;
             }
 
-           &.short {
+            &.short {
                 div {
                     background-color: $color-title;
                 }
@@ -61,32 +95,6 @@
             &.long {
                 div {
                     background-color: $color-active-icon;
-                }
-            }
-        }
-    }
-
-    &-items {
-        margin-top: 2rem;
-
-        &:first-child {
-            padding-top: 2.6rem;
-            margin-top: 0;
-
-            .statistices-row {
-                .statistices-bar {
-                    height: 1.2rem;
-                }
-
-                .statistices-category {
-                    font-weight: 600;
-                    font-size: 1.8rem;
-                    line-height: 2.5rem;
-
-                    @include Mobile {
-                        font-size: 1.6rem;
-                        line-height: 1.2rem;
-                    }
                 }
             }
         }

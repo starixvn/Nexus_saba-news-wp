@@ -5,6 +5,10 @@
     padding-top: 2.4rem;
     background: $primary-bg;
 
+    @include Mobile {
+        padding-top: 1.6rem;
+    }
+
     ul {
         list-style: none;
         display: flex;

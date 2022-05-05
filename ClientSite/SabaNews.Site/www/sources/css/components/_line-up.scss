@@ -14,7 +14,7 @@
                 position: relative;
 
                 @include Mobile {
-                    margin-right: .4rem;
+                    margin-right: .3rem;
                 }
 
                 &:last-child {
@@ -258,9 +258,10 @@ span.number-position {
                             font-size: 1.1rem;
                             position: absolute;
                             color: $white;
-                            @include Mobile{
-                                height : 2rem;
-                                font-size : 1rem;
+
+                            @include Mobile {
+                                height: 2rem;
+                                font-size: 1rem;
                             }
                         }
                     }
@@ -347,6 +348,7 @@ span.number-position {
 .ic_ownbong {
     bottom: -15px;
     right: 15px;
+
     @include Mobile {
         bottom: -13px;
         right: -7px;
@@ -358,8 +360,9 @@ span.number-position {
     color: #fff;
     left: -5px;
     font-size: 1.2rem;
-    @include Mobile{
-        font-size :1rem;
-        top : 4px;
+
+    @include Mobile {
+        font-size: 1rem;
+        top: 4px;
     }
 }
