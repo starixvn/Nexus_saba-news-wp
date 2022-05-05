@@ -8,7 +8,9 @@
     background: $primary-bg;
     position: relative;
     transition: all .3s ease-in-out;
-
+    @include Mobile{
+        padding : 1rem;
+    }
     .icon-live-start, .icon-favourite-outline {
         position: absolute;
         right: 12px;
@@ -505,7 +507,7 @@
         font-size: 1.2rem;
         line-height: 1;
         border-radius: 3px;
-        margin-bottom: .8rem;
+        margin-bottom: .2rem;
 
         @include Mobile {
             font-size: .9rem;
