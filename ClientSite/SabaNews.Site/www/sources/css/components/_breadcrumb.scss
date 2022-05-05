@@ -1,3 +1,10 @@
-﻿.breadcrumb{
-
+﻿.breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-bottom : 1.6rem;
+    li{
+        margin-right : 1.7rem;
+        color : #4B4B4B;
+    }
 }
