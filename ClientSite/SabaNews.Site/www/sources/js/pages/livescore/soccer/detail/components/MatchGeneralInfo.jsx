@@ -8,6 +8,7 @@ import FunctionBar from './FunctionBar';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
+import Site from '@jsroot/common/site';
 
 export default class MatchGeneralInfo extends Component {
     constructor(props) {
@@ -121,6 +122,26 @@ export default class MatchGeneralInfo extends Component {
         }
     };
 
+    handleClick = event => {
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
+    handleClickLeague = (event, league) => {
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${today}/${league.leagueId}/${seasonId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     render() {
         const { generalInfo } = this.props.match;
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
@@ -129,6 +150,11 @@ export default class MatchGeneralInfo extends Component {
         return (
             <>
                 <div className="sticky-header">
+                    <ul>
+                        <li onClick={this.handleClick}>LTĐ / </li>
+                        <li onClick={event => this.handleClickLeague(event, generalInfo.league)}>{leagueName} / </li>
+                        <li className="current">{CommonFunctions.getTeamName(generalInfo.homeTeam)} - {CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
+                    </ul>
                     <div className="livescore-league-header-detail">
                         <div className="livescore-league-header-detail-group">
                             <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>

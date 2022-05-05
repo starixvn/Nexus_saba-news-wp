@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ActionCreators } from '../actions';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import Breadscrum from '@jsroot/components/Breadscrum';
 import SignalR from './SignalR';
 import League from './League';
 import MatchGrid from './match-grid/index';
@@ -15,6 +16,8 @@ import SkeletonLeague from './SkeletonLeague';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import CommonFunctions from '@jsroot/common/common-functions';
+
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
 });
@@ -97,6 +100,9 @@ class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        {
+                            league !== null && <Breadscrum currentPage = {CommonFunctions.getLeagueName(league)} />
+                        }
                         {
                             league === null && <SkeletonLeague />
                         }

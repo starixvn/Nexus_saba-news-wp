@@ -42,6 +42,17 @@ export class HeadToHead extends Component {
         }
     };
 
+    handleClickLeague = (event, league) => {
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${today}/${league.leagueId}/${seasonId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     renderBody = (matchs, teamId) => {
         const generalInfo = this.props.match.generalInfo;
         if (matchs.length === 0) {
@@ -81,7 +92,7 @@ export class HeadToHead extends Component {
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
-                                <div className="name-league">
+                                <div className="name-league" onClick={event => this.handleClickLeague(event, match.league)}>
                                     <div className="name-league-img"><TeamIcon src={match.league.icon} /></div>
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>

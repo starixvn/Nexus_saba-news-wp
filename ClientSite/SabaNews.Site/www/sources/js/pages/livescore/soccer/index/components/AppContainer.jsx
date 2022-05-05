@@ -11,6 +11,8 @@ import SignalR from './SignalR';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MobileMaxWidth } from '@jsroot/common/constants';
+import Breadscrum from '@jsroot/components/Breadscrum';
+
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
     weekdaysShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
@@ -112,6 +114,9 @@ export class AppContainer extends Component {
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        {
+                            window.isLivePage && matches !== null && <Breadscrum currentPage = 'Trực tiếp' />
+                        }
                         <DateBar isMobile={isMobile} totalMatches={totalMatches}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}

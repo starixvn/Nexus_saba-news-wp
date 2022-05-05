@@ -5,6 +5,7 @@ import { ActionCreators } from '../actions';
 import { Tabs, Tab } from 'react-bootstrap';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import Breadscrum from '@jsroot/components/Breadscrum';
 import MatchGrid from './MatchGrid';
 import moment from 'moment';
 import SignalR from './SignalR';
@@ -98,6 +99,7 @@ export class AppContainer extends Component {
         this.props.setFavouriteMatches({matchId: matchId});
     };
 
+
     render() {
         const { selectedTab } = this.state;
         const { majorLeagues, matches, postMatches, preMatches, liveMatches } = this.props;
@@ -106,6 +108,7 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
+                        <Breadscrum currentPage = 'Trận đấu quan tâm' />
                         <div className="livescore-league-header-detail">
                             <div className="livescore-league-header-detail-group">
                                 <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start" /></div>
