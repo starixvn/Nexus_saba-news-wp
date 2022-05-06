@@ -44,7 +44,7 @@ class FunctionBar extends PureComponent {
             isEnable = false;
         }
         return isEnable;
-    }
+    };
 
     checkEnableStatistics = (generalInfo, statistic) => {
         let isEnable = true;
@@ -52,7 +52,7 @@ class FunctionBar extends PureComponent {
             isEnable = false;
         }
         return isEnable;
-    }
+    };
 
     checkEnableLineup = (generalInfo, lineup) => {
         let isEnable = true;
@@ -63,7 +63,7 @@ class FunctionBar extends PureComponent {
             isEnable = false;
         }
         return isEnable;
-    }
+    };
 
     checkEnableH2H = headToHead => {
         let isEnable = true;
@@ -71,7 +71,7 @@ class FunctionBar extends PureComponent {
             isEnable = false;
         }
         return isEnable;
-    }
+    };
 
 
     getDefaultActiveKey = tabStatus => {
