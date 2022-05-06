@@ -373,8 +373,8 @@ export class Lineups extends Component {
                         </div>
                     </div>
                     <div className="line-up-map-body">
-                        {this.renderTeamLineup(homeLineup)}
-                        {this.renderTeamLineup(awayLineup)}
+                        {this.renderTeamLineup(homeLineup, true)}
+                        {this.renderTeamLineup(awayLineup, false)}
                     </div>
                     <div className="line-up-map-head">
                         <div className="team">
@@ -387,7 +387,7 @@ export class Lineups extends Component {
         );
     };
 
-    renderTeamLineup = lineups => {
+    renderTeamLineup = (lineups, isHome) => {
         return (
             <div className="team-content">
                 {
@@ -399,7 +399,7 @@ export class Lineups extends Component {
                                         return (
                                             <div className="pitch-item" key={pindex}>
                                                 <div className="team-player-img">
-                                                    <img src={Site.resolveClientUrl(`css/images/blue.png`)} alt="" />
+                                                    <img src={Site.resolveClientUrl(`css/images/${isHome ? 'red.png' : 'blue.png'}`)} alt="" />
                                                     <div className="team-number">
                                                         {player.number}
                                                         {this.renderIconLineup(player)}
