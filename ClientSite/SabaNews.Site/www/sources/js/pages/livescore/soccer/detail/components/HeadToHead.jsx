@@ -49,9 +49,34 @@ export class HeadToHead extends Component {
         }
     };
 
+    getMatchStatus = (teamId, match) => {
+        const generalInfo = this.props.match.generalInfo;
+        let homeWinclass = '';
+        let awayWinClass = '';
+        const teamCheck = teamId ? teamId : generalInfo.homeTeam.teamId;
+        let result = this.getTeamResult(teamCheck, match);
+        if (result === 1) {
+            if (teamCheck === match.homeTeam.teamId) {
+                homeWinclass = 'win';
+            } else if (teamCheck === match.awayTeam.teamId) {
+                awayWinClass = 'win';
+            }
+        }
+        if (result === 2) {
+            if (teamCheck === match.homeTeam.teamId) {
+                awayWinClass = 'win';
+            } else if (teamCheck === match.awayTeam.teamId) {
+                homeWinclass = 'win';
+            }
+        }
+        if (!teamId) {
+            result = -1;
+        }
+        return {result: result, homeWinclass: homeWinclass, awayWinClass: awayWinClass};
+    };
+
 
     renderBody = (matchs, teamId) => {
-        const generalInfo = this.props.match.generalInfo;
         if (matchs.length === 0) {
             return null;
         }
@@ -63,29 +88,9 @@ export class HeadToHead extends Component {
                 }
                 {
                     matchs.map((match, key) => {
-                        let homeWinclass = '';
-                        let awayWinClass = '';
                         const homeTeamScore = match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore;
                         const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
-                        const teamCheck = teamId ? teamId : generalInfo.homeTeam.teamId;
-                        let result = this.getTeamResult(teamCheck, match);
-                        if (result === 1) {
-                            if (teamCheck === match.homeTeam.teamId) {
-                                homeWinclass = 'win';
-                            } else if (teamCheck === match.awayTeam.teamId) {
-                                awayWinClass = 'win';
-                            }
-                        }
-                        if (result === 2) {
-                            if (teamCheck === match.homeTeam.teamId) {
-                                awayWinClass = 'win';
-                            } else if (teamCheck === match.awayTeam.teamId) {
-                                homeWinclass = 'win';
-                            }
-                        }
-                        if (!teamId) {
-                            result = -1;
-                        }
+                        const matchStatus = this.getMatchStatus(teamId, match);
                         const time = DateTimeService.convertFromUTC(match.startTime);
                         return (
                             <div className="f-row" key={key}>
@@ -99,15 +104,15 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-stage">
                                             <div className="soccer-match-star-icon soccer-match-star-hidden-pc">
                                                 {
-                                                    result === 0 &&
+                                                    matchStatus.result === 0 &&
                                                     <span className="bg-color  bgyelow" title="Hòa">D</span>
                                                 }
                                                 {
-                                                    result === 1 &&
+                                                    matchStatus.result === 1 &&
                                                     <span className="bg-color bggreen" title="Thắng">W</span>
                                                 }
                                                 {
-                                                    result === 2 &&
+                                                    matchStatus.result === 2 &&
                                                     <span className="bg-color bgred" title="Bại">L</span>
                                                 }
                                                 <i className="icon-livescore icon-live-right" />
@@ -118,7 +123,7 @@ export class HeadToHead extends Component {
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
                                                     <TeamIcon src={match.homeTeam.icon} className="soccer-team-logo" />
-                                                    <div className={`soccer-team-name ${homeWinclass}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
+                                                    <div className={`soccer-team-name ${matchStatus.homeWinclass}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(true, match)}
                                                     </ul>
@@ -129,7 +134,7 @@ export class HeadToHead extends Component {
                                                 </div>
                                                 <div className="soccer-team away-team">
                                                     <TeamIcon src={match.awayTeam.icon} className="soccer-team-logo" />
-                                                    <div className={`soccer-team-name ${awayWinClass}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
+                                                    <div className={`soccer-team-name ${matchStatus.awayWinClass}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(false, match)}
                                                     </ul>
@@ -141,15 +146,15 @@ export class HeadToHead extends Component {
                                         </div>
                                         <div className="soccer-match-star-icon">
                                             {
-                                                result === 0 &&
+                                                matchStatus.result === 0 &&
                                                 <span className="bg-color  bgyelow" title="Hòa">H</span>
                                             }
                                             {
-                                                result === 1 &&
+                                                matchStatus.result === 1 &&
                                                 <span className="bg-color bggreen" title="Thắng">T</span>
                                             }
                                             {
-                                                result === 2 &&
+                                                matchStatus.result === 2 &&
                                                 <span className="bg-color bgred" title="Bại">B</span>
                                             }
                                             <i className="icon-livescore icon-live-right" />
@@ -197,7 +202,7 @@ export class HeadToHead extends Component {
             }
         }
         return result;
-    }
+    };
 
     renderStatistic = matchs => {
         const generalInfo = this.props.match.generalInfo;
@@ -242,7 +247,7 @@ export class HeadToHead extends Component {
 
     render() {
         const headToHead = this.props.match.headToHead;
-        if (!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+        if (!CommonFunctions.checkEnableH2H(headToHead)) {
             return null;
         }
         const { home, away, common } = this.props.match.headToHead;
