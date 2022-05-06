@@ -92,19 +92,24 @@
         }
 
         .breadcrumb {
+            margin-top: 1.3rem;
+
             @include Mobile {
-                padding-left: 1rem;
+                padding: 0 1.2rem;
+                margin-top: 0;
             }
         }
 
         .group-searchbar {
             margin-top: .5rem;
-            margin-right: 1rem;
+            margin-right: 1.2rem;
         }
 
         .livescore-league-header-detail {
-            margin-bottom: .5rem;
-            margin-left: 1rem;
+            @include Mobile {
+                margin-bottom: .5rem;
+                margin-left: 1rem;
+            }
         }
 
         .sticky-position {
@@ -123,7 +128,7 @@
             padding: 1rem;
 
             @include tableMobile {
-                margin: 0 1rem;
+                margin: 0 1.2rem;
             }
 
             .flex-league {
