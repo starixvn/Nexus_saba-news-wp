@@ -150,7 +150,7 @@ export default class MatchGeneralInfo extends Component {
                     <ul className="breadcrumb">
                         <li onClick={this.handleClick}>LTĐ </li>
                         <li onClick={event => this.handleClickLeague(event, generalInfo.league)}>{leagueName} </li>
-                        <li className="current">{CommonFunctions.getTeamName(generalInfo.homeTeam)} - {CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
+                        <li>{CommonFunctions.getTeamName(generalInfo.homeTeam)} - {CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
                     </ul>
                     <div className="livescore-league-header-detail">
                         <div className="livescore-league-header-detail-group">
