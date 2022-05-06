@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import LangHelper from '@jsroot/common/langHelper';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -7,9 +7,10 @@ import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 toast.configure();
 
-export default class FavouriteIcon extends Component {
+export default class FavouriteIcon extends PureComponent {
     constructor(props) {
         super(props);
+
         const matchId = this.props.matchId;
         const favMatches = CommonFunctions.getFavouriteMatches();
         const matchIndex = favMatches.findIndex(item => item === matchId);
@@ -19,37 +20,26 @@ export default class FavouriteIcon extends Component {
         };
     }
 
-    componentDidUpdate() {
-        const matchId = this.props.matchId;
-        const favMatches = CommonFunctions.getFavouriteMatches();
-        const matchIndex = favMatches.findIndex(item => item === matchId);
-        const currentFavourite = this.state.isFavourite;
-        const isFavourite = matchIndex >= 0;
-        if(isFavourite !== currentFavourite) {
-            this.setState({isFavourite: isFavourite});
-        }
-
-    }
-
     handleUpdateFavourite = () => {
         const matchId = this.props.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);
         let message = '';
         if (isFavourite) {
-            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/tran-dau-quan-tam/`);
-            message = (<div className="fav-match fav-match-add">
-                            <ul>
-                                <li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li>
-                                <li className="show-link-toastify"><a href={url}>hiển thị</a></li>
-                            </ul>
-                        </div>);
+            const url = Site.resolveClientUrl('lich-thi-dau/bong-da/tran-dau-quan-tam');
+            message = <div className="fav-match fav-match-add">
+                <ul>
+                    <li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Thêm vào trận đấu quan tâm</li>
+                    <li className="show-link-toastify"><a href={url}>hiển thị</a></li>
+                </ul>
+            </div>;
         } else {
-            message = (<div className="fav-match fav-match-remove">
-                            <ul>
-                                <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li>
-                            </ul>
-                        </div>);
+            message = <div className="fav-match fav-match-remove">
+                <ul>
+                    <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Xóa khỏi Trận đấu quan tâm</li>
+                </ul>
+            </div>;
         }
+
         const toastId = toast.dark(message, {
             toastId: 'fav',
             position: toast.POSITION.BOTTOM_CENTER,
@@ -65,7 +55,7 @@ export default class FavouriteIcon extends Component {
         const { isFavourite } = this.state;
         return (
             <Tooltip className="tooltip-add-favourite-match" >
-            { isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') :  LangHelper.getResource('AddFavouriteMatchTooltip')}
+                {isFavourite ? LangHelper.getResource('RemoveFavouriteMatchTooltip') : LangHelper.getResource('AddFavouriteMatchTooltip')}
             </Tooltip>
         );
     };
@@ -84,24 +74,25 @@ export default class FavouriteIcon extends Component {
         }
     };
 
-
     render() {
         const { isFavourite, isShowTooltip } = this.state;
         const favIconClass = isFavourite ? 'icon-live-start start-active' : 'icon-favourite-outline';
+
         return (
             <>
                 {
                     isShowTooltip ?
-                    <OverlayTrigger
-                        placement="bottom"
-                        trigger={['hover', 'focus']}
-                        overlay={this.renderTooltip()}
-                    >
+                        <OverlayTrigger
+                            placement="bottom"
+                            overlay={this.renderTooltip()}
+                        >
+                            <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
+                                className={`icon-livescore ${favIconClass}`}
+                            />
+                        </OverlayTrigger> :
                         <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                            className={`icon-livescore ${favIconClass}`} />
-                    </OverlayTrigger> :
-                    <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                        className={`icon-livescore ${favIconClass}`} />
+                            className={`icon-livescore ${favIconClass}`}
+                        />
                 }
             </>
         );

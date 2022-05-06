@@ -51,7 +51,7 @@ export class AppContainer extends Component {
         }
     };
 
-    getDateRanges = selectedDate => { // NOSONAR
+    getDateRanges = selectedDate => {
         const dates = [];
         let totalItems = 5;
         selectedDate = moment(selectedDate);
