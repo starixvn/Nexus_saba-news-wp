@@ -175,39 +175,4 @@ export default class CommonFunctions {
 
         }
     }
-
-    static checkEnableIncident(generalInfo, incidents) {
-        let isEnable = true;
-        if (!incidents || incidents.length === 0 || this.checkPreMatchStatus(generalInfo.status)) {
-            isEnable = false;
-        }
-        return isEnable;
-    }
-
-    static checkEnableStatistics(generalInfo, statistic) {
-        let isEnable = true;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || this.checkPreMatchStatus(generalInfo.status)) {
-            isEnable = false;
-        }
-        return isEnable;
-    }
-
-    static checkEnableH2H(headToHead) {
-        let isEnable = true;
-        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
-            isEnable = false;
-        }
-        return isEnable;
-    }
-
-    static checkEnableLineup(generalInfo, lineup) {
-        let isEnable = true;
-        if (generalInfo.isLineUp === 0) {
-            isEnable = false;
-        }
-        if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
-            isEnable = false;
-        }
-        return isEnable;
-    }
 }

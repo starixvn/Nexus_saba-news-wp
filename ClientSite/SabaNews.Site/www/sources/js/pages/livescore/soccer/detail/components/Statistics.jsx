@@ -8,7 +8,7 @@ export class Statistics extends Component {
     render() {
         const match = this.props.match;
         const { generalInfo, statistic } = this.props.match;
-        if (!CommonFunctions.checkEnableStatistics(generalInfo, statistic)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
             return null;
         }
         let statistices  = [];

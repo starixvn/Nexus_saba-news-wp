@@ -100,7 +100,7 @@ export class MatchSummary extends Component {
 
     render() {
         const { match } = this.props;
-        if (!CommonFunctions.checkEnableIncident(match.generalInfo, match.incidents)) {
+        if (!match.incidents || match.incidents.length === 0 || CommonFunctions.checkPreMatchStatus(match.generalInfo.status)) {
             return null;
         }
         const { generalInfo } = this.props.match;

@@ -26,7 +26,7 @@ export class AppContainer extends Component {
             live: 'truc-tiep',
             pre: 'chua-dien-ra',
             post: 'da-dien-ra'
-        }
+        };
         let selectedTab = '';
         const params = queryString.parse(window.location.search);
         if (params['tab']) {

@@ -247,7 +247,7 @@ export class HeadToHead extends Component {
 
     render() {
         const headToHead = this.props.match.headToHead;
-        if (!CommonFunctions.checkEnableH2H(headToHead)) {
+        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             return null;
         }
         const { home, away, common } = this.props.match.headToHead;

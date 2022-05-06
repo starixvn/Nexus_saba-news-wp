@@ -31,12 +31,47 @@ class FunctionBar extends PureComponent {
             enableTabHeadtohead: true
         };
         const { generalInfo, incidents, lineup, headToHead, statistic } = this.props.match;
-        tabStatus['enableTabLineups'] = CommonFunctions.checkEnableLineup(generalInfo, lineup);
-        tabStatus['enableTabHeadtohead'] = CommonFunctions.checkEnableH2H(headToHead);
-        tabStatus['enableTabStatistics'] = CommonFunctions.checkEnableStatistics(generalInfo, statistic);
-        tabStatus['enableTabSummary'] = CommonFunctions.checkEnableIncident(generalInfo, incidents);
+        tabStatus['enableTabLineups'] = this.checkEnableLineup(generalInfo, lineup);
+        tabStatus['enableTabHeadtohead'] = this.checkEnableH2H(headToHead);
+        tabStatus['enableTabStatistics'] = this.checkEnableStatistics(generalInfo, statistic);
+        tabStatus['enableTabSummary'] = this.checkEnableIncident(generalInfo, incidents);
         return tabStatus;
     };
+
+    checkEnableIncident = (generalInfo, incidents) => {
+        let isEnable = true;
+        if (!incidents || incidents.length === 0 || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
+            isEnable = false;
+        }
+        return isEnable;
+    }
+
+    checkEnableStatistics = (generalInfo, statistic) => {
+        let isEnable = true;
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
+            isEnable = false;
+        }
+        return isEnable;
+    }
+
+    checkEnableLineup = (generalInfo, lineup) => {
+        let isEnable = true;
+        if (generalInfo.isLineUp === 0) {
+            isEnable = false;
+        }
+        if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
+            isEnable = false;
+        }
+        return isEnable;
+    }
+
+    checkEnableH2H = headToHead => {
+        let isEnable = true;
+        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+            isEnable = false;
+        }
+        return isEnable;
+    }
 
 
     getDefaultActiveKey = tabStatus => {

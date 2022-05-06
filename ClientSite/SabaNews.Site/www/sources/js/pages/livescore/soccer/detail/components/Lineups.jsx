@@ -477,8 +477,8 @@ export class Lineups extends Component {
 
 
     render() {
-        const { lineup, generalInfo } = this.props.match;
-        if (!CommonFunctions.checkEnableLineup(generalInfo, lineup)) {
+        const { lineup } = this.props.match;
+        if (!lineup || !lineup.generalInfo || (lineup.home.length === 0 && lineup.away.length === 0 )) {
             return null;
         }
         const homePlayers = lineup.home.filter(player => player.position !== 0);
