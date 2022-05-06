@@ -4,6 +4,11 @@
     list-style: none;
     margin-bottom: 1.6rem;
     flex-wrap: wrap;
+    @include Mobile{
+        margin-bottom : 1rem;
+        display : inherit;
+        line-height : 1;
+    }
     li {
         color: #7D7D7D;
         font-weight: 400;
@@ -13,6 +18,7 @@
 
         @include Mobile {
             font-size: 1.1rem;
+            display : contents;
         }
 
         &:last-child {
@@ -33,7 +39,8 @@
             margin: 0 1rem;
 
             @include Mobile {
-                margin: 0 .4rem;
+                margin: 0 .2rem;
+                line-height : 1;
             }
         }
     }
