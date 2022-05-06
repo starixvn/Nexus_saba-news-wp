@@ -61,7 +61,7 @@ export class Lineups extends Component {
                 break;
         }
         return playerIncident;
-    }
+    };
 
     getGoalsNumber = (goals, className) => {
         return (
@@ -316,7 +316,6 @@ export class Lineups extends Component {
                             <div className="line-up">
                                 <div className="line-up-table">
                                     <div className="table-paticipant home-team">
-
                                         {
                                             home.map((player, pIndex) => {
                                                 return (
@@ -361,7 +360,6 @@ export class Lineups extends Component {
         let awayLineup = this.getListLineup(lineup, IncidentPosition.Away);
         awayLineup = awayLineup.reverse();
         return (
-            //map
             <div className="line-up-map">
                 <h2 className="title-custom">Đội hình</h2>
 
@@ -415,8 +413,8 @@ export class Lineups extends Component {
                     })
                 }
             </div>
-        )
-    }
+        );
+    };
 
 
     getTeamSubstitution = position => {

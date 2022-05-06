@@ -55,6 +55,49 @@ export class MatchSummary extends Component {
         );
     };
 
+    getPenaltyShootout = (incident, penaltyShootOutData, homePenaltyShootoutScore, awayPenaltyShootoutScore) => {
+        if (incident.position === IncidentPosition.Home) {
+            penaltyShootOutData.homeType = incident.type;
+            penaltyShootOutData.homePlayerName = incident.playerName;
+        }
+        if (incident.position === IncidentPosition.Away) {
+            penaltyShootOutData.awayType = incident.type;
+            penaltyShootOutData.awayPlayerName = incident.playerName;
+        }
+        if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
+            homePenaltyShootoutScore++;
+        }
+        if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
+            awayPenaltyShootoutScore++;
+        }
+        return {
+                penaltyShootOutData: penaltyShootOutData,
+                homePenaltyShootoutScore: homePenaltyShootoutScore,
+                awayPenaltyShootoutScore: awayPenaltyShootoutScore
+            };
+    };
+
+    checkRenderPenaltyShootout = (penaltyShootOutData, hasPenaltyShootout) => {
+        return hasPenaltyShootout && penaltyShootOutData !== null
+            && penaltyShootOutData.awayType !== null && penaltyShootOutData.homeType !== null;
+    };
+
+    getMainTimeScore = (type, score) => {
+        const { generalInfo } = this.props.match;
+        if (type === IncidentStatus.Halftime) {
+            score = `${generalInfo.homeTeamHalfScore} -  ${ generalInfo.awayTeamHalfScore}`;
+        } else if (type === IncidentStatus.End) {
+            score = `${generalInfo.homeTeamTotalScore} -  ${ generalInfo.awayTeamTotalScore}`;
+        }
+        return score;
+    };
+
+    checkRenderMainTimeEvent = (incident, lastIncident) => {
+        return this.checkIncidentMainTimeEventType(incident.type)
+            && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End);
+    }
+
+
     render() {
         const { match } = this.props;
         if (!CommonFunctions.checkEnableIncident(match.generalInfo, match.incidents)) {
@@ -66,7 +109,6 @@ export class MatchSummary extends Component {
         let hasPenaltyShootout = false;
         let homePenaltyShootoutScore = 0;
         let awayPenaltyShootoutScore = 0;
-        let penaltyShootoutScore = '0 - 0';
         let processScore = '0 - 0';
         let penaltyShootOutData = {
             homeType: null,
@@ -92,22 +134,11 @@ export class MatchSummary extends Component {
                                         if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
                                             && (incident.homeScore === 0 && incident.awayScore === 0)) {
                                             hasPenaltyShootout = true;
-                                            if (incident.position === IncidentPosition.Home) {
-                                                penaltyShootOutData.homeType = incident.type;
-                                                penaltyShootOutData.homePlayerName = incident.playerName;
-                                            }
-                                            if (incident.position === IncidentPosition.Away) {
-                                                penaltyShootOutData.awayType = incident.type;
-                                                penaltyShootOutData.awayPlayerName = incident.playerName;
-                                            }
-                                            if (incident.position === IncidentPosition.Home && incident.type === IncidentStatus.Penalty) {
-                                                homePenaltyShootoutScore++;
-                                                penaltyShootoutScore = `${homePenaltyShootoutScore} -  ${awayPenaltyShootoutScore}`;
-                                            }
-                                            if (incident.position === IncidentPosition.Away && incident.type === IncidentStatus.Penalty) {
-                                                awayPenaltyShootoutScore++;
-                                                penaltyShootoutScore = `${homePenaltyShootoutScore} -  ${awayPenaltyShootoutScore}`;
-                                            }
+                                            var shootoutResult = this.getPenaltyShootout(incident, penaltyShootOutData, homePenaltyShootoutScore, awayPenaltyShootoutScore);
+                                            penaltyShootOutData = shootoutResult.penaltyShootOutData;
+                                            homePenaltyShootoutScore = shootoutResult.homePenaltyShootoutScore;
+                                            awayPenaltyShootoutScore = shootoutResult.awayPenaltyShootoutScore;
+
                                         }
                                         if (CommonFunctions.checkIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
                                             return (
@@ -116,14 +147,8 @@ export class MatchSummary extends Component {
                                                     incident={incident}
                                                 />
                                             );
-                                        } else if (this.checkIncidentMainTimeEventType(incident.type)
-                                                && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End)) {
-                                            let score = processScore;
-                                            if (incident.type === IncidentStatus.Halftime) {
-                                                score = `${generalInfo.homeTeamHalfScore} -  ${ generalInfo.awayTeamHalfScore}`;
-                                            } else if (incident.type === IncidentStatus.End) {
-                                                score = `${generalInfo.homeTeamTotalScore} -  ${ generalInfo.awayTeamTotalScore}`;
-                                            }
+                                        } else if (this.checkRenderMainTimeEvent(incident, lastIncident)) {
+                                            const score = this.getMainTimeScore(incident.type, processScore);
                                             return (
                                                 <div className="head-top-team" key={key}>
                                                     <div className="flexbox time-event">
@@ -134,9 +159,8 @@ export class MatchSummary extends Component {
                                                     </div>
                                                 </div>
                                             );
-                                        } else if (hasPenaltyShootout && penaltyShootOutData !== null
-                                            && penaltyShootOutData.awayType !== null && penaltyShootOutData.homeType !== null) {
-                                            penaltyShootOutData.score = penaltyShootoutScore;
+                                        } else if (this.checkRenderPenaltyShootout(penaltyShootOutData, hasPenaltyShootout)) {
+                                            penaltyShootOutData.score = `${homePenaltyShootoutScore} -  ${awayPenaltyShootoutScore}`;
                                             hasPenaltyShootout = false;
                                             const component = <PenaltyShootOut key={key} penaltyShootOutData={penaltyShootOutData} />;
                                             penaltyShootOutData = {
@@ -147,6 +171,8 @@ export class MatchSummary extends Component {
                                                 score: null
                                             };
                                             return (component);
+                                        } else {
+                                            return <></>;
                                         }
                                     })
                                 }
