@@ -20,14 +20,14 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", paramModel.SportId },
-                { "matchId", paramModel.MatchIds is not null && paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
-                { "leagueId", paramModel.LeagueId },
-                { "idGte", paramModel.MaxMatchId },
-                { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.SportId, paramModel.SportId },
+                { ApiParams.MatchId, paramModel.MatchIds is not null && paramModel.MatchIds.Any() ? paramModel.MatchIds : null },
+                { ApiParams.LeagueId, paramModel.LeagueId },
+                { ApiParams.IdGte, paramModel.MaxMatchId },
+                { ApiParams.TimeGte, paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "startTime", paramModel.StartTime.HasValue ? paramModel.StartTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
                 { "endTime", paramModel.EndTime.HasValue ? paramModel.EndTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", paramModel.RowLimit }
+                { ApiParams.RowLimit, paramModel.RowLimit }
             };
 
             return await httpClient.ExecutePostAsync<List<MatchResponse>>(ApiPath.GetMatchListApiPath, param);
@@ -37,14 +37,13 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", paramModel.SportId },
-                { "timeGte", paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", paramModel.RowLimit }
+                { ApiParams.SportId, paramModel.SportId },
+                { ApiParams.TimeGte, paramModel.LastUpdatedTime.HasValue ? paramModel.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, paramModel.RowLimit }
             };
-
             if (paramModel.MatchIds.Length > 0)
             {
-                param.Add("matchId", paramModel.MatchIds);
+                param.Add(ApiParams.MatchId, paramModel.MatchIds);
             }
 
             return await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetMatchDetailApiPath, param);
@@ -54,9 +53,8 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "matchId", matchIds.Length > 0 ? matchIds : null },
+                { ApiParams.MatchId, matchIds.Length > 0 ? matchIds : null },
             };
-
             return await httpClient.ExecutePostAsync<List<MatchLineupResponse>>(ApiPath.GetMatchLineupApiPath, param);
         }
 
@@ -64,11 +62,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "matchId", matchId },
+                { ApiParams.MatchId, matchId },
             };
-
             var commentary = await httpClient.ExecutePostAsync<MatchCommentaryResponse>(ApiPath.GetMatchCommentaryApiPath, param);
-
             if (commentary is not null)
             {
                 foreach (var item in commentary.Commentaries)
@@ -86,12 +82,10 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", sportId },
-                { "matchId", matchId },
+                { ApiParams.SportId, sportId },
+                { ApiParams.MatchId, matchId },
             };
-
             var incidents = await httpClient.ExecutePostAsync<MatchIncidentResponse>(ApiPath.GetMatchIncidentApiPath, param);
-
             if (incidents is not null && incidents.Incidents is not null)
             {
                 foreach (var item in incidents.Incidents)
@@ -109,12 +103,11 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", paramModel.SportId }
+                { ApiParams.SportId, paramModel.SportId }
             };
-
             if (paramModel.MatchIds is not null && paramModel.MatchIds.Length > 0)
             {
-                param.Add("matchId", paramModel.MatchIds);
+                param.Add(ApiParams.MatchId, paramModel.MatchIds);
             }
 
             return await httpClient.ExecutePostAsync<List<MatchDetailResponse>>(ApiPath.GetLiveMatchApiPath, param);

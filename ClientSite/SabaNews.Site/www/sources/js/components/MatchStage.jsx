@@ -36,8 +36,7 @@ export default class MatchStage extends PureComponent {
         }
     }
 
-    // NOSONAR
-    getMatchStage = () => {
+    getMatchStage = () => { // NOSONAR
         const match = this.props.match;
         let className = '';
         let stage = '';

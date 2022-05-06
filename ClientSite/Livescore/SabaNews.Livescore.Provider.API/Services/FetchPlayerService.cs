@@ -18,12 +18,12 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", playerParams.SportId },
+                { ApiParams.SportId, playerParams.SportId },
                 { "playerId", playerParams.PlayerIds },
-                { "teamId", playerParams.TeamId },
-                { "idGte", playerParams.IdGte },
-                { "timeGte", playerParams.LastUpdatedTime.HasValue ? playerParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", playerParams.RowLimit }
+                { ApiParams.TeamId, playerParams.TeamId },
+                { ApiParams.IdGte, playerParams.IdGte },
+                { ApiParams.TimeGte, playerParams.LastUpdatedTime.HasValue ? playerParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, playerParams.RowLimit }
             };
             return await httpClient.ExecutePostAsync<Dictionary<string, List<PlayerListResponse>>>(ApiPath.GetPlayerListApiPath, param);
         }

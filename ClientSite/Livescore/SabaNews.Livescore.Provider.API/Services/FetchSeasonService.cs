@@ -18,9 +18,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "idGte", seasonParams.IdGte ?? 1 },
-                { "timeGte", seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", seasonParams.RowLimit },
+                { ApiParams.IdGte, seasonParams.IdGte ?? 1 },
+                { ApiParams.TimeGte, seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, seasonParams.RowLimit },
                 { "isDelete", seasonParams.IsDeleted ? 1 : 0 }
             };
             return await httpClient.ExecutePostAsync<List<SeasonListResponse>>(ApiPath.GetSeasonListApiPath, param);
@@ -30,9 +30,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "idGte", seasonParams.IdGte ?? 1 },
-                { "timeGte", seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", seasonParams.RowLimit },
+                { ApiParams.IdGte, seasonParams.IdGte ?? 1 },
+                { ApiParams.TimeGte, seasonParams.LastUpdatedTime.HasValue ? seasonParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, seasonParams.RowLimit },
                 { "isDelete", seasonParams.IsDeleted ? 1 : 0 }
             };
             return await httpClient.ExecutePostAsync<List<StageListResponse>>(ApiPath.GetStageListApiPath, param);
@@ -42,9 +42,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", seasonStadingsParams.SportId },
+                { ApiParams.SportId, seasonStadingsParams.SportId },
                 { "seasonId", seasonStadingsParams.SeasonId },
-                { "timeGte", seasonStadingsParams.LastUpdatedTime.HasValue ? seasonStadingsParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null }
+                { ApiParams.TimeGte, seasonStadingsParams.LastUpdatedTime.HasValue ? seasonStadingsParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null }
             };
             return await httpClient.ExecutePostAsync<List<T>>(ApiPath.GetSeasonStandingsApiPath, param);
         }
@@ -53,9 +53,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "idGte", teamHonorParams.IdGte },
-                { "timeGte", teamHonorParams.LastUpdatedTime.HasValue ? teamHonorParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", teamHonorParams.RowLimit }
+                { ApiParams.IdGte, teamHonorParams.IdGte },
+                { ApiParams.TimeGte, teamHonorParams.LastUpdatedTime.HasValue ? teamHonorParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, teamHonorParams.RowLimit }
             };
             return await httpClient.ExecutePostAsync<List<TeamHonorResponse>>(ApiPath.GetSeasonTeamHonorApiPath, param);
         }
@@ -64,9 +64,9 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "idGte", teamHonorParams.IdGte },
-                { "timeGte", teamHonorParams.LastUpdatedTime.HasValue ? teamHonorParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", teamHonorParams.RowLimit }
+                { ApiParams.IdGte, teamHonorParams.IdGte },
+                { ApiParams.TimeGte, teamHonorParams.LastUpdatedTime.HasValue ? teamHonorParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, teamHonorParams.RowLimit }
             };
             return await httpClient.ExecutePostAsync<List<PlayerHonorResponse>>(ApiPath.GetSeasonPlayerHonorApiPath, param);
         }

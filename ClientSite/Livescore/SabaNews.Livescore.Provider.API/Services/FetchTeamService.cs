@@ -2,27 +2,24 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Models.Team;
 
     public class FetchTeamService : IFetchTeamService
     {
         private readonly IHttpClientService httpClient;
-        private readonly ILogServiceProvider logServiceProvider;
 
-        public FetchTeamService(IHttpClientService httpClient, ILogServiceProvider logServiceProvider)
+        public FetchTeamService(IHttpClientService httpClient)
         {
             this.httpClient = httpClient;
-            this.logServiceProvider = logServiceProvider;
         }
 
         public async Task<HeadToHeadResponse> FetchHeadToHeadAsync(long matchId, long homeTeamId, long awayTeamId)
         {
             var param = new Dictionary<string, object>
-                {
-                    { "teamId", new[] { homeTeamId, awayTeamId} }
-                };
+            {
+                { ApiParams.TeamId, new[] {homeTeamId, awayTeamId} }
+            };
 
             var h2h = await httpClient.ExecutePostAsync<HeadToHeadResponse>(ApiPath.GetTeamHeadToHeadApiPath, param);
             h2h.SourceMatchId = matchId;
@@ -33,11 +30,11 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", teamParams.SportId },
-                { "teamId", teamParams.TeamIds },
-                { "idGte", teamParams.IdGte },
-                { "timeGte", teamParams.LastUpdatedTime.HasValue ? teamParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", teamParams.RowLimit }
+                { ApiParams.SportId, teamParams.SportId },
+                { ApiParams.TeamId, teamParams.TeamIds },
+                { ApiParams.IdGte, teamParams.IdGte },
+                { ApiParams.TimeGte, teamParams.LastUpdatedTime.HasValue ? teamParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, teamParams.RowLimit }
             };
             return await httpClient.ExecutePostAsync<List<TeamListResponse>>(ApiPath.GetTeamListApiPath, param);
         }

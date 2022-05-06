@@ -18,11 +18,11 @@
         {
             var param = new Dictionary<string, object>
             {
-                { "sportId", leagueParams.SportId },
-                { "leagueId", leagueParams.LeagueIds },
-                { "idGte", leagueParams.IdGte },
-                { "timeGte", leagueParams.LastUpdatedTime.HasValue ? leagueParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
-                { "rowLimit", leagueParams.RowLimit },
+                { ApiParams.SportId, leagueParams.SportId },
+                { ApiParams.LeagueId, leagueParams.LeagueIds },
+                { ApiParams.IdGte, leagueParams.IdGte },
+                { ApiParams.TimeGte, leagueParams.LastUpdatedTime.HasValue ? leagueParams.LastUpdatedTime.Value.ToString(CommonConstants.OutgoingDatetimeFormat) : null },
+                { ApiParams.RowLimit, leagueParams.RowLimit },
                 { "includeRule", leagueParams.IncludeRule }
             };
             return await httpClient.ExecutePostAsync<List<LeagueListResponse>>(ApiPath.GetLeagueListApiPath, param);

@@ -51,7 +51,7 @@ export class AppContainer extends Component {
         }
     };
 
-    getDateRanges = selectedDate => {
+    getDateRanges = selectedDate => { // NOSONAR
         const dates = [];
         let totalItems = 5;
         selectedDate = moment(selectedDate);
@@ -115,7 +115,7 @@ export class AppContainer extends Component {
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
-                            window.isLivePage && matches !== null && <Breadscrum currentPage = 'Trực tiếp' />
+                            window.isLivePage && <Breadscrum currentPage='Trực tiếp' />
                         }
                         <DateBar isMobile={isMobile} totalMatches={totalMatches}
                             getDateRanges={this.getDateRanges}
