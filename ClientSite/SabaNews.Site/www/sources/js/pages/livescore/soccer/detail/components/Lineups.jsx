@@ -76,13 +76,14 @@ export class Lineups extends Component {
 
     renderIconListPlayer = player => {
         const playerIncident = this.getPlayerIncident(player.playerId);
+        const goalsClass = 'number-position';
         return (
             <>
                 {
                     playerIncident.goals > 0 &&
                     <>
                         <span className="icon-line-up">
-                            {this.getGoalsNumber(playerIncident.goals, 'number-position')}
+                            {this.getGoalsNumber(playerIncident.goals, goalsClass)}
                             <i className="icon-livescore icon-ball" />
                         </span>
                     </>
@@ -90,7 +91,7 @@ export class Lineups extends Component {
                 {
                     playerIncident.ownGoals > 0 &&
                     <>
-                        {this.getGoalsNumber(playerIncident.ownGoals, 'number-position')}
+                        {this.getGoalsNumber(playerIncident.ownGoals, goalsClass)}
                         <span className="icon-line-up">
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" clipRule="evenodd" d="M8.71102 18.3582C7.16785 16.817 6.30302 14.851 6.11652 12.8336H8.37438L8.00241 13.329C8.21924 14.492 8.72132 15.5832 9.46374 16.5049H11.4761L12.6061 18.7574C13.3976 19.0497 14.2346 19.2001 15.0786 19.2016C15.9209 19.1999 16.7564 19.0498 17.5465 18.7583L18.6792 16.4959H20.6988C21.4375 15.5762 21.9371 14.4882 22.1529 13.329L20.48 11.1008L21.5749 8.91038C21.2255 8.16924 20.7509 7.49368 20.1721 6.91328C19.3606 6.10124 18.3666 5.49453 17.2728 5.14368L15.0777 6.60486L15.0102 6.55989C14.797 5.22349 14.0939 4.0442 13.0913 3.21989C13.7419 3.07307 14.4084 2.99897 15.0786 3.00001C16.2618 2.99805 17.4338 3.23054 18.5265 3.68402C19.6192 4.13749 20.6109 4.80294 21.4443 5.64183C24.9558 9.14867 24.9558 14.854 21.4452 18.3591C20.6117 19.1978 19.6199 19.8631 18.5273 20.3164C17.4346 20.7697 16.2627 21.0021 15.0795 21C13.8958 21.0021 12.7234 20.7697 11.6302 20.3162C10.5371 19.8628 9.54486 19.1972 8.71102 18.3582ZM13.3636 15L12.3608 12.1202C13.4655 11.4824 14.3251 10.4617 14.7615 9.24332L15.0778 9L18.0778 11.3077L16.7921 15H13.3636ZM6.4248 10.3832C6.96191 9.80135 7.23047 8.96883 7.23047 7.88566C7.23047 6.79951 6.9634 5.96699 6.42928 5.3881C5.89814 4.80922 5.12977 4.51978 4.12419 4.51978C3.1186 4.51978 2.34576 4.80773 1.80566 5.38363C1.26855 5.95654 1 6.78757 1 7.87671C1 8.96585 1.26855 9.80135 1.80566 10.3832C2.34277 10.9651 3.11263 11.256 4.11523 11.256C5.11784 11.256 5.88769 10.9651 6.4248 10.3832ZM2.87093 9.53727C2.59342 9.16726 2.45467 8.61673 2.45467 7.88566C2.45467 7.15459 2.59492 6.60406 2.87541 6.23405C3.1559 5.86106 3.57216 5.67456 4.12419 5.67456C5.22526 5.67456 5.7758 6.41159 5.7758 7.88566C5.7758 9.35674 5.22228 10.0923 4.11523 10.0923C3.5632 10.0923 3.14844 9.90728 2.87093 9.53727ZM13.1168 7.49178H10.5208V8.64656H11.7606V10.0117C11.4622 10.0714 11.1683 10.1012 10.8789 10.1012C10.3239 10.1012 9.90014 9.91474 9.60771 9.54175C9.31827 9.16577 9.17355 8.62269 9.17355 7.91252C9.17355 7.23218 9.35408 6.69059 9.71513 6.28776C10.0762 5.88493 10.5566 5.68351 11.1564 5.68351C11.6726 5.68351 12.1694 5.80287 12.6469 6.04158L13.1079 4.93156C12.4842 4.663 11.8367 4.52873 11.1653 4.52873C10.0941 4.52873 9.25561 4.82414 8.64987 5.41496C8.04711 6.00578 7.74573 6.82935 7.74573 7.88566C7.74573 8.97181 8.00534 9.80583 8.52454 10.3877C9.04673 10.9666 9.80167 11.256 10.7894 11.256C11.1773 11.256 11.5562 11.2277 11.9262 11.171C12.2992 11.1173 12.6961 11.0218 13.1168 10.8845V7.49178Z" fill="#EE2316" />
@@ -101,7 +102,7 @@ export class Lineups extends Component {
                 {
                     playerIncident.penalty > 0 &&
                     <>
-                        {this.getGoalsNumber(playerIncident.penalty, 'number-position')}
+                        {this.getGoalsNumber(playerIncident.penalty, goalsClass)}
                         <span className="icon-line-up">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.61549 7.76471H7.16084C7.67054 7.76471 8.05193 7.68427 8.305 7.5234C8.55807 7.35965 8.6846 7.12264 8.6846 6.81238C8.6846 6.49925 8.57767 6.26799 8.36381 6.11861C8.15351 5.96922 7.82203 5.89453 7.36936 5.89453H6.61549V7.76471ZM10.3581 6.76498C10.3581 7.44296 10.0943 7.96149 9.56678 8.32059C9.04282 8.67969 8.29609 8.85924 7.32658 8.85924H6.61549V11.1H4.95807V4.8H7.4549C8.40302 4.8 9.12302 4.96519 9.6149 5.29556C10.1103 5.62305 10.3581 6.11286 10.3581 6.76498Z" fill="#324A75" />
@@ -208,13 +209,14 @@ export class Lineups extends Component {
     };
 
     renderIconLineup = player => {
+        const goalClass = 'number-goal';
         return (
             <>
                 {
                     player.goals > 0 &&
                     <>
                         <span className="icon_f ic_bong">
-                            {this.getGoalsNumber(player.goals, 'number-goal')}
+                            {this.getGoalsNumber(player.goals, goalClass)}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="10" fill="white" />
                                 <path d="M18.3662 5.64183C17.5328 4.80294 16.5411 4.13749 15.4484 3.68402C14.3557 3.23054 13.1838 2.99805 12.0005 3.00001C10.8169 2.99816 9.64478 3.23069 8.55181 3.68415C7.45884 4.13762 6.46675 4.803 5.63293 5.64183C2.12232 9.14687 2.12232 14.8522 5.63293 18.3582C6.46677 19.1972 7.45899 19.8628 8.55214 20.3162C9.6453 20.7697 10.8177 21.0021 12.0014 21C13.1846 21.0021 14.3565 20.7697 15.4492 20.3164C16.5419 19.8631 17.5337 19.1978 18.3671 18.3591C21.8777 14.854 21.8777 9.14867 18.3662 5.64183ZM17.6207 16.4959H15.6011L14.4684 18.7583C13.6783 19.0498 12.8428 19.1999 12.0005 19.2016C11.1566 19.2001 10.3196 19.0497 9.52801 18.7574L8.39802 16.5049H6.38565C5.64323 15.5832 5.14115 14.492 4.92432 13.329L6.59725 11.1008L5.50237 8.91308C5.85173 8.17088 6.32659 7.49438 6.90608 6.91328C7.71714 6.10047 8.71126 5.49338 9.80533 5.14278L11.9996 6.60486L14.1947 5.14368C15.2885 5.49453 16.2825 6.10124 17.094 6.91328C17.6728 7.49368 18.1474 8.16924 18.4968 8.91038L17.4019 11.1008L19.0748 13.329C18.859 14.4882 18.3595 15.5762 17.6207 16.4959Z" fill="#324A75" />
@@ -227,7 +229,7 @@ export class Lineups extends Component {
                     player.ownGoals > 0 &&
                     <>
                         <span className="icon_f ic_ownbong">
-                            {this.getGoalsNumber(player.ownGoals, 'number-goal')}
+                            {this.getGoalsNumber(player.ownGoals, goalClass)}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="14" cy="12" r="10" fill="white" />
                                 <path d="M20.3663 5.64183C19.5329 4.80294 18.5411 4.13749 17.4484 3.68402C16.3558 3.23054 15.1838 2.99805 14.0005 3.00001C12.817 2.99816 11.6449 3.23069 10.5519 3.68416C9.45891 4.13762 8.46681 4.80301 7.63299 5.64183C4.12238 9.14688 4.12238 14.8522 7.63299 18.3582C8.46683 19.1972 9.45905 19.8628 10.5522 20.3162C11.6454 20.7697 12.8177 21.0021 14.0014 21C15.1847 21.0021 16.3566 20.7697 17.4492 20.3164C18.5419 19.8631 19.5337 19.1978 20.3672 18.3591C23.8778 14.854 23.8778 9.14868 20.3663 5.64183ZM19.6208 16.496H17.6012L16.4685 18.7583C15.6784 19.0499 14.8429 19.1999 14.0005 19.2016C13.1566 19.2001 12.3196 19.0497 11.5281 18.7574L10.3981 16.505H8.38572C7.64329 15.5832 7.14121 14.492 6.92439 13.329L8.59731 11.1008L7.50244 8.91309C7.85179 8.17089 8.32665 7.49438 8.90614 6.91329C9.7172 6.10047 10.7113 5.49339 11.8054 5.14278L13.9996 6.60487L16.1948 5.14368C17.2885 5.49453 18.2825 6.10124 19.094 6.91329C19.6729 7.49369 20.1474 8.16925 20.4969 8.91039L19.402 11.1008L21.0749 13.329C20.8591 14.4882 20.3595 15.5762 19.6208 16.496Z" fill="#EE2316" />
@@ -243,7 +245,7 @@ export class Lineups extends Component {
                     player.penalty > 0 &&
                     <>
                         <span className="icon_f ic_penalty">
-                            {this.getGoalsNumber(player.penalty, 'number-goal')}
+                            {this.getGoalsNumber(player.penalty, goalClass)}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="12" cy="12" r="10" fill="white" />
                                 <path d="M18.3663 5.64183C17.5329 4.80294 16.5411 4.13749 15.4484 3.68402C14.3557 3.23054 13.1838 2.99805 12.0005 3.00001C10.817 2.99816 9.64481 3.23069 8.55184 3.68415C7.45887 4.13762 6.46678 4.803 5.63296 5.64183C2.12235 9.14687 2.12235 14.8522 5.63296 18.3582C6.4668 19.1972 7.45902 19.8628 8.55217 20.3162C9.64533 20.7697 10.8177 21.0021 12.0014 21C13.1846 21.0021 14.3565 20.7697 15.4492 20.3164C16.5419 19.8631 17.5337 19.1978 18.3672 18.3591C21.8778 14.854 21.8778 9.14867 18.3663 5.64183ZM17.6207 16.4959H15.6012L14.4685 18.7583C13.6783 19.0498 12.8429 19.1999 12.0005 19.2016C11.1566 19.2001 10.3196 19.0497 9.52804 18.7574L8.39805 16.5049H6.38568C5.64326 15.5832 5.14118 14.492 4.92436 13.329L6.59728 11.1008L5.5024 8.91308C5.85176 8.17088 6.32662 7.49438 6.90611 6.91328C7.71717 6.10047 8.71129 5.49338 9.80536 5.14278L11.9996 6.60486L14.1948 5.14368C15.2885 5.49453 16.2825 6.10124 17.094 6.91328C17.6729 7.49368 18.1474 8.16924 18.4968 8.91038L17.4019 11.1008L19.0749 13.329C18.859 14.4882 18.3595 15.5762 17.6207 16.4959Z" fill="#324A75" />
@@ -317,12 +319,12 @@ export class Lineups extends Component {
                                 <div className="line-up-table">
                                     <div className="table-paticipant home-team">
                                         {
-                                            home.map((player, pIndex) => {
+                                            home.map((homePlayer, hIndex) => {
                                                 return (
-                                                    <ul key={pIndex} className="list-paticipant">
-                                                        <li className="number-player">{player.playerNumber}</li>
-                                                        <li className="name-player">{player.playerName}</li>
-                                                        <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                                    <ul key={hIndex} className="list-paticipant">
+                                                        <li className="number-player">{homePlayer.playerNumber}</li>
+                                                        <li className="name-player">{homePlayer.playerName}</li>
+                                                        <li className="action-player">{this.renderIconListPlayer(homePlayer)}</li>
                                                     </ul>
                                                 );
                                             })
@@ -330,12 +332,12 @@ export class Lineups extends Component {
                                     </div>
                                     <div className="table-paticipant away-team">
                                         {
-                                            away.map((player, pIndex) => {
+                                            away.map((awayPlayer, aIndex) => {
                                                 return (
-                                                    <ul key={pIndex} className="list-paticipant">
-                                                        <li className="number-player">{player.playerNumber}</li>
-                                                        <li className="name-player">{player.playerName}</li>
-                                                        <li className="action-player">{this.renderIconListPlayer(player)}</li>
+                                                    <ul key={aIndex} className="list-paticipant away-paticipant">
+                                                        <li className="number-player">{awayPlayer.playerNumber}</li>
+                                                        <li className="name-player">{awayPlayer.playerName}</li>
+                                                        <li className="action-player">{this.renderIconListPlayer(awayPlayer)}</li>
                                                     </ul>
                                                 );
                                             })

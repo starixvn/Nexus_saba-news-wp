@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component, Fragment } from 'react';
 import { IncidentPosition, IncidentStatus, MatchStatus } from '@jsroot/common/constants';
 import GeneralIncident from './incidents/GeneralIncident';
 import PenaltyShootOut from './incidents/PenaltyShootOut';
@@ -95,7 +95,7 @@ export class MatchSummary extends Component {
     checkRenderMainTimeEvent = (incident, lastIncident) => {
         return this.checkIncidentMainTimeEventType(incident.type)
             && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End);
-    }
+    };
 
 
     render() {
@@ -134,7 +134,7 @@ export class MatchSummary extends Component {
                                         if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
                                             && (incident.homeScore === 0 && incident.awayScore === 0)) {
                                             hasPenaltyShootout = true;
-                                            var shootoutResult = this.getPenaltyShootout(incident, penaltyShootOutData, homePenaltyShootoutScore, awayPenaltyShootoutScore);
+                                            const shootoutResult = this.getPenaltyShootout(incident, penaltyShootOutData, homePenaltyShootoutScore, awayPenaltyShootoutScore);
                                             penaltyShootOutData = shootoutResult.penaltyShootOutData;
                                             homePenaltyShootoutScore = shootoutResult.homePenaltyShootoutScore;
                                             awayPenaltyShootoutScore = shootoutResult.awayPenaltyShootoutScore;
@@ -172,7 +172,7 @@ export class MatchSummary extends Component {
                                             };
                                             return (component);
                                         } else {
-                                            return <></>;
+                                            return <Fragment key={key} />;
                                         }
                                     })
                                 }

@@ -21,29 +21,34 @@ moment.locale('vi');
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
-
+        this.tabsParam = {
+            all: 'tat-ca',
+            live: 'truc-tiep',
+            pre: 'chua-dien-ra',
+            post: 'da-dien-ra'
+        }
         let selectedTab = '';
         const params = queryString.parse(window.location.search);
         if (params['tab']) {
             selectedTab = params['tab'].toLowerCase();
         }
-        const tabs = ['tat-ca', 'truc-tiep', 'chua-dien-ra', 'da-dien-ra'];
+        const tabs = [this.tabsParam.all, this.tabsParam.live, this.tabsParam.pre, this.tabsParam.post];
         const selectedAllTab = false;
         let selectedLiveTab = false,
             selectedPreTab = false,
             selectedPostTab = false;
         if (selectedTab.length === 0 || tabs.findIndex(tab => tab === selectedTab) === -1) {
-            selectedTab = 'tat-ca';
+            selectedTab = this.tabsParam.all;
         }
 
         switch (selectedTab) {
-            case 'truc-tiep':
+            case this.tabsParam.live:
                 selectedLiveTab = true;
                 break;
-            case 'chua-dien-ra':
+            case this.tabsParam.pre:
                 selectedPreTab = true;
                 break;
-            case 'da-dien-ra':
+            case this.tabsParam.post:
                 selectedPostTab = true;
                 break;
         }
@@ -64,22 +69,22 @@ export class AppContainer extends Component {
         let { selectedAllTab, selectedLiveTab, selectedPreTab, selectedPostTab } = this.state;
 
         switch (key) {
-            case 'tat-ca':
+            case this.tabsParam.all:
                 if (!selectedAllTab) {
                     selectedAllTab = true;
                 }
                 break;
-            case 'truc-tiep':
+            case this.tabsParam.live:
                 if (!selectedLiveTab) {
                     selectedLiveTab = true;
                 }
                 break;
-            case 'chua-dien-ra':
+            case this.tabsParam.pre:
                 if (!selectedPreTab) {
                     selectedPreTab = true;
                 }
                 break;
-            case 'da-dien-ra':
+            case this.tabsParam.post:
                 if (!selectedPostTab) {
                     selectedPostTab = true;
                 }
@@ -119,16 +124,16 @@ export class AppContainer extends Component {
                             className="live-score-nav"
                             onSelect={this.handleSelectTab}
                         >
-                            <Tab eventKey="tat-ca" title="Tất cả">
+                            <Tab eventKey={this.tabsParam.all} title="Tất cả">
                                 {matches && <MatchGrid isAllMatches sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
-                            <Tab eventKey="truc-tiep" title="Trực tiếp">
+                            <Tab eventKey={this.tabsParam.live} title="Trực tiếp">
                                 {liveMatches && <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
-                            <Tab eventKey="chua-dien-ra" title="Chưa diễn ra">
+                            <Tab eventKey={this.tabsParam.pre} title="Chưa diễn ra">
                                 {preMatches && <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
-                            <Tab eventKey="da-dien-ra" title="Đã diễn ra">
+                            <Tab eventKey={this.tabsParam.post} title="Đã diễn ra">
                                 {postMatches && <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
                             </Tab>
                         </Tabs>
