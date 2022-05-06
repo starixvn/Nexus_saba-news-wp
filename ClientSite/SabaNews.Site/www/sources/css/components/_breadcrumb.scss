@@ -4,11 +4,13 @@
     list-style: none;
     margin-bottom: 1.6rem;
     flex-wrap: wrap;
-    @include Mobile{
-        margin-bottom : 1rem;
-        display : inherit;
-        line-height : 1;
+
+    @include Mobile {
+        margin-bottom: 1rem;
+        display: inherit;
+        line-height: 1;
     }
+
     li {
         color: #7D7D7D;
         font-weight: 400;
@@ -16,9 +18,20 @@
         line-height: 1;
         cursor: pointer;
 
+        span {
+            &:hover {
+                color: #0066CC;
+                text-decoration: underline;
+
+                &:after {
+                    color: inherit;
+                }
+            }
+        }
+
         @include Mobile {
             font-size: 1.1rem;
-            display : contents;
+            display: contents;
         }
 
         &:last-child {
@@ -28,7 +41,13 @@
         }
 
         &.current {
-            color: #0066CC;
+            span {
+                color: #454545;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
         }
 
         &:after {
@@ -36,11 +55,11 @@
             font-family: "Fraud-Sensor";
             content: '\e97d';
             font-weight: normal;
-            margin: 0 1rem;
+            margin: 0 .5rem;
 
             @include Mobile {
                 margin: 0 .2rem;
-                line-height : 1;
+                line-height: 1;
             }
         }
     }
