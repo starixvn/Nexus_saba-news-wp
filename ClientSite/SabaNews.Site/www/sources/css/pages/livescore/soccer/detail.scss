@@ -81,7 +81,7 @@
         top: 5rem;
         z-index: 99;
         background: $primary-bg;
-        padding-top: .5rem;
+        padding-top: 1rem;
 
         @include tableMobile {
             position: fixed;

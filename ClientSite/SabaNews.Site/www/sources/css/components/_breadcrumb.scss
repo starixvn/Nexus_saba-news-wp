@@ -6,7 +6,8 @@
     flex-wrap: wrap;
 
     @include Mobile {
-        margin-bottom: 1rem;
+        margin-top : .3rem;
+        margin-bottom: 1.2rem;
         display: inherit;
         line-height: 1;
     }
