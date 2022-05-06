@@ -68,6 +68,7 @@
 
                 &.disabled {
                     color: $disable-nav;
+                    cursor: no-drop;
                 }
 
                 &:last-child {
