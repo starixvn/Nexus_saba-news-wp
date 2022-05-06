@@ -82,11 +82,14 @@
 
                     <div class="card-horizontal-section">
                         @{
-                            int newPostIndex = 1;
+                            int newPostIndex = 0;
                             foreach (var item in Model.NewPosts)
                             {
                                 {
                                     newPostIndex++;
+                                    if (newPostIndex <= 1) {
+                                        continue;
+                                    }
                                 }
                                 <div class="post card-title-wrapper card-item-@newPostIndex">
                                     <a class="title" href="@Url.Action("Single", "Post", new { slug =  item.Slug })">@item.PostTitle</a>
@@ -310,10 +313,18 @@
                             </div>
                         </div>
                         @{
-                            int backstagePostIndex = 1;
+                            int backstagePostIndex = 0;
                             foreach (var post in Model.BackstagePosts)
                             {
-                                <div class="post card-vertical card-vertical-highlight card-item-@(backstagePostIndex + 1) ">
+                                {
+                                    backstagePostIndex++;
+                                    if (backstagePostIndex <= 1)
+                                    {
+                                        continue;
+                                    }
+                                }
+                                
+                                <div class="post card-vertical card-vertical-highlight card-item-@backstagePostIndex ">
                                     <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })" class="card-vertical__image">
                                         @{// backstageSize = ImageWidth.Width500;
                                             backstageImg = post.FeatureImage;
@@ -400,24 +411,35 @@
                     </div>
 
                     <div class="list-card">
-                        @foreach (var post in Model.OtherPosts)
-                        {
-                            string otherImg = post.FeatureImage;
-                            <div class="post card-vertical">
-                                <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__image">
-                                    <picture>
-                                        <source srcset="@Url.Content(otherImg)" type="image/webp" class="img-res">
-                                        <source srcset="@Url.Content(otherImg)" type="image/jpeg" class="img-res">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(otherImg)" alt="@post.PostTitle" class="img-res img-block">
-                                    </picture>
-                                </a>
-                                <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__title">@post.PostTitle</a>
-                            </div>
-                            <div class="skeleton skeleton-vertical">
-                                <a class="skeleton-vertical__image"></a>
-                                <a class="skeleton-vertical__title"></a>
-                            </div>
+                        @{
+                            var OtherPostIndex = 0;
+                            foreach (var post in Model.OtherPosts)
+                            {
+                                {
+                                    OtherPostIndex++;
+                                    if (OtherPostIndex <= 1)
+                                    {
+                                        continue;
+                                    }
+                                }
+                                string otherImg = post.FeatureImage;
+                                <div class="post card-vertical">
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__image">
+                                        <picture>
+                                            <source srcset="@Url.Content(otherImg)" type="image/webp" class="img-res">
+                                            <source srcset="@Url.Content(otherImg)" type="image/jpeg" class="img-res">
+                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(otherImg)" alt="@post.PostTitle" class="img-res img-block">
+                                        </picture>
+                                    </a>
+                                    <a href="@Url.Action("Single", "Post", new { slug =  post.Slug })" class="card-vertical__title">@post.PostTitle</a>
+                                </div>
+                                <div class="skeleton skeleton-vertical">
+                                    <a class="skeleton-vertical__image"></a>
+                                    <a class="skeleton-vertical__title"></a>
+                                </div>
+                            }
                         }
+
                     </div>
                 </div>
             </div>
