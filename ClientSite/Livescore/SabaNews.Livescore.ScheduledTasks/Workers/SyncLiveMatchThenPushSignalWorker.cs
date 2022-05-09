@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Match;
@@ -23,6 +24,7 @@
         private readonly ISyncMatchService syncMatchService;
         private readonly ILiveMatchService liveMatchService;
         private readonly IMatchService matchService;
+        private readonly AppSettings appSettings;
 
         public SyncLiveMatchThenPushSignalWorker(IFetchMatchService fetchMatchService,
             IPushSignalService pushSignalService,
@@ -30,6 +32,7 @@
             ILiveMatchService liveMatchService,
             IMatchService matchService,
             List<ScheduledTaskSettings> jobSettings,
+            AppSettings appSettings,
             ILogServiceProvider logService) : base(logService)
         {
             this.fetchMatchService = fetchMatchService;
@@ -37,6 +40,7 @@
             this.syncMatchService = syncMatchService;
             this.liveMatchService = liveMatchService;
             this.matchService = matchService;
+            this.appSettings = appSettings;
             jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncLiveMatchAndPushSignalR);
         }
 
@@ -49,6 +53,7 @@
 
             if (matchIds is not null && matchIds.Length > 0)
             {
+                await SyncMatchInfoAsync(matchIds);
                 await syncMatchService.SyncMatchStatisticAsync(liveMatches);
 
                 var liveMatchList = await matchService.GetLiveMatchAsync();
@@ -59,6 +64,23 @@
                 await SyncLiveMatchIncidents(matchIds);
 
                 await GetMatchDetailThenPushSignalToHubAsync(matchIds);
+            }
+        }
+
+        private async Task SyncMatchInfoAsync(long[] matchIds)
+        {
+            var param = new SyncMatchParams
+            {
+                SportId = (int)SportType.Soccer,
+                MatchIds = matchIds,
+                RowLimit = appSettings.BatchSizeSyncMatches
+            };
+
+            var matches = await fetchMatchService.FetchMatchListAsync(param);
+
+            if (matches is not null && matches.Any())
+            {
+                await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
             }
         }
 
