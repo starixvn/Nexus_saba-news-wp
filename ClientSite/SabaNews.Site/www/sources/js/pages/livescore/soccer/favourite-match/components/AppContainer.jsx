@@ -111,7 +111,7 @@ export class AppContainer extends Component {
                 <SignalR />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <Breadscrum currentPage = 'Trận đấu quan tâm' />
+                        <Breadscrum currentPage = 'Trận đấu quan tâm' currentPageUrl={window.location.href} />
                         <div className="livescore-league-header-detail">
                             <div className="livescore-league-header-detail-group">
                                 <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start" /></div>

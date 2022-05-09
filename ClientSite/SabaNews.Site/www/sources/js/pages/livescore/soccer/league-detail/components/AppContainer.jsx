@@ -87,17 +87,17 @@ class AppContainer extends Component {
         this.props.navigate(url);
     };
 
+
     render() {
         const { selectedTab, selectedResultsTab, selectedStandingsTab } = this.state;
         const { majorLeagues, league, stages, preMatches, postMatches } = this.props;
-
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
-                            league !== null && <Breadscrum currentPage = {CommonFunctions.getLeagueName(league)} />
+                            league !== null && <Breadscrum currentPage = {CommonFunctions.getLeagueName(league)} currentPageUrl = {window.location.href} />
                         }
                         {
                             league === null && <SkeletonLeague />
