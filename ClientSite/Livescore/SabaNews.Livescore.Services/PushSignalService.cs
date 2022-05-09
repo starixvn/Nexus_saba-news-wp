@@ -18,13 +18,17 @@
 
         public PushSignalService(
             ILogServiceProvider logger,
-            PushSignalSettings signalRSettings
-            )
+            PushSignalSettings signalRSettings)
         {
             this.signalRSettings = signalRSettings;
             this.logger = logger;
             hubConnection = new HubConnectionBuilder()
-                           .WithUrl(new Uri(signalRSettings.Endpoint), HttpTransportType.WebSockets)
+                           .WithUrl(new Uri(signalRSettings.Endpoint),
+                                HttpTransportType.WebSockets,
+                                options =>
+                                {
+                                    options.SkipNegotiation = true;
+                                })
                            .WithAutomaticReconnect()
                            .Build();
         }
