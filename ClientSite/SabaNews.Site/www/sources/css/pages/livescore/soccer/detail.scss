@@ -61,7 +61,7 @@
     justify-content: space-between;
 }
 
-
+/*
 
 .sticky-header {
     position: sticky;
@@ -72,25 +72,34 @@
     @include tableMobile {
         position: unset;
     }
-}
+}*/
 
 
 .detail-fixed {
-    .sticky-header {
-        position: sticky;
-        top: 5rem;
-        z-index: 99;
-        background: $primary-bg;
-        padding-top: 1rem;
+    position: fixed;
+    top: 4.9rem;
+    z-index: 99;
+    background: $primary-bg;
+    z-index: 99;
+    width: 100%;
+    max-width: 71.4rem;
+    opacity: 0;
+    transition: .2s all ease;
 
-        @include tableMobile {
-            position: fixed;
-            top: 4rem;
-            left: 0;
-            width: 100%;
-            z-index: 10005;
-        }
+    @include tableMobile {
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        z-index: 10005;
+    }
 
+    &.active-scroll {
+        opacity: 1;
+        transition: .2s all ease;
+    }
+
+    .sticky-header-scroll {
         .breadcrumb {
             margin-top: 1.2rem;
 
@@ -230,32 +239,32 @@
     }
 }
 
-    .live {
-        .soccer-match-stage {
-            span {
-                font-size: 1.5rem;
+.live {
+    .soccer-match-stage {
+        span {
+            font-size: 1.5rem;
+
+            @include Mobile {
+                font-size: 1.1rem;
+            }
+
+            &:before {
+                left: -15px;
+                top: 8px;
 
                 @include Mobile {
-                    font-size: 1.1rem;
+                    top: 5px;
                 }
+            }
 
-                &:before {
-                    left: -15px;
-                    top: 8px;
+            &:after {
+                left: -19px;
+                top: 4px;
 
-                    @include Mobile {
-                        top: 5px;
-                    }
-                }
-
-                &:after {
-                    left: -19px;
-                    top: 4px;
-
-                    @include Mobile {
-                        top: 1px;
-                    }
+                @include Mobile {
+                    top: 1px;
                 }
             }
         }
     }
+}

@@ -221,6 +221,83 @@ export default class MatchGeneralInfo extends Component {
                     </div>
                     <FunctionBar />
                 </div>
+                <div className="detail-fixed">
+                    <div className="sticky-header-scroll">
+                        <ul className="breadcrumb">
+                            <li onClick={this.handleClick}><span>LTĐ</span> </li>
+                            <li onClick={event => this.handleClickLeague(event, generalInfo.league)}> <span>{leagueName}</span>  </li>
+                        </ul>
+                        <div className="livescore-league-header-detail">
+                            <div className="livescore-league-header-detail-group">
+                                <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>
+                                <div className="livescore-league-header-detail-name">
+                                    {leagueName} - <span>{startTime.format('DD/MM/YYYY')}</span>
+                                </div>
+                                <i className="icon-livescore icon-live-start start-active" />
+                            </div>
+                            <div className="group-searchbar">
+                                <FavoriteMatches isMobile />
+                            </div>
+                        </div>
+                        <div className="duel-participant">
+                            <FavouriteIcon matchId={generalInfo.matchId} />
+                            <div className="flex-league first-league">
+                                <div className="column column-left home-team">
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(true)}
+                                    </ul>
+                                </div>
+                                <div className={`column column-center ${isLiveMatch ? 'live' : ''}`}>
+                                    {
+                                        generalInfo.status !== MatchStatus.NotStarted && <MatchStage match={generalInfo} />
+                                    }
+                                </div>
+                                <div className="column column-right away-team">
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(false)}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="flex-league">
+                                <div className="column column-left home-team">
+                                    <ul className="team">
+                                        <li className="team-name">
+                                            {CommonFunctions.getTeamName(generalInfo.homeTeam)}
+                                        </li>
+                                        <li className="team-logo">
+                                            <TeamIcon src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="column column-center result-league"> {this.getMatchScores()}</div>
+                                <div className="column column-right away-team">
+                                    <ul className="team">
+                                        <li className="team-logo">
+                                            <TeamIcon src={generalInfo.awayTeam.icon} />
+                                        </li>
+                                        <li className="team-name">{CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="flex-league">
+                                <div className="column column-left home-team sticky-position">
+                                    <div className="duel-participant-number">
+                                        {this.getBallAndCardNumber(IncidentPosition.Home)}
+                                    </div>
+                                </div>
+                                <ul className="column column-center detail-score-status">
+                                    {this.getSubScore()}
+                                </ul>
+                                <div className="column column-right away-team sticky-position">
+                                    <div className="duel-participant-number">
+                                        {this.getBallAndCardNumber(IncidentPosition.Away)}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <FunctionBar />
+                    </div>
+                </div>
             </>
         );
     }
