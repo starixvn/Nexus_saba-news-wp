@@ -71,3 +71,20 @@ export const IncidentStatus = {
     PenaltyShootOutMissed: 30,
     PenaltyShootOutSuccess:31
 };
+
+export const IncidentIconType = {
+    Goal: 1,
+    YellowCard: 3,
+    RedCard: 4,
+    Penalty: 8,
+    YellowTurnRedCard: 15,
+    PenaltyMissed: 16,
+    OwnGoal: 17,
+    VAR: 28,
+    PenaltyShootOut: 29,
+    PenaltyShootOutMissed: 30,
+    PenaltyShootOutSuccess:31,
+    outSubsitution: 32,
+    inSubsitution: 33
+};
+

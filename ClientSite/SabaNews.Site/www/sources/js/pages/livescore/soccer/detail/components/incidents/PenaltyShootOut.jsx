@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
-import { IncidentStatus } from '@jsroot/common/constants';
+import { IncidentIconType } from '@jsroot/common/constants';
 
 export default class PenaltyShootOut extends Component {
     render() {
         const { penaltyShootOutData } = this.props;
-        const homeType = penaltyShootOutData.homeType === IncidentStatus.Penalty ? IncidentStatus.PenaltyShootOutSuccess : penaltyShootOutData.homeType;
-        const awayType = penaltyShootOutData.awayType === IncidentStatus.Penalty ? IncidentStatus.PenaltyShootOutSuccess : penaltyShootOutData.awayType;
+        const homeType = penaltyShootOutData.homeType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : penaltyShootOutData.homeType;
+        const awayType = penaltyShootOutData.awayType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : penaltyShootOutData.awayType;
         return (
             <>
                 <div className="line-up-live-item flexbox">

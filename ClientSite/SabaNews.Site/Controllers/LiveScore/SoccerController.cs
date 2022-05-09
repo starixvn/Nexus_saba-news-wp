@@ -149,19 +149,6 @@
             return Json(leagues);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetLineupDetail([FromBody] GetMatchLineupCriteria criteria)
-        {
-            var lineup = await matchService.GetLineupAsync(criteria);
-            return Ok(lineup);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetHeadToHead([FromBody] GetHeadToHeadCriteria criteria)
-        {
-            var headToHead = await matchService.GetHeadToHeadAsync(criteria);
-            return Ok(headToHead);
-        }
 
         [HttpPost]
         public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchDetailCriteria criteria)
