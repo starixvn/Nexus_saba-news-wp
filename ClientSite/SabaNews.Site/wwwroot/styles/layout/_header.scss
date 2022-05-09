@@ -33,12 +33,6 @@
             border-bottom: none;
             height: 7rem;
         }
-        /*@include landscapeTablet {
-            padding: .8rem 0;
-            border-bottom: 1px solid $separator-color;
-        }*/
-
-
         .container {
             display: flex;
             justify-content: space-between;
@@ -89,9 +83,7 @@
                 @include tableMobile {
                     display: none;
                 }
-                /*@include landscapeTablet {
-                    display: block;
-                }*/
+
 
                 form {
                     position: relative;
@@ -312,222 +304,216 @@
             }
         }
     }
+}
 
+.child-mobile-menu {
+    display: none;
 
-    .child-mobile-menu {
-        display: none;
+    @include tableMobile {
+        width: 100%;
+        display: block;
+        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 99999;
+    }
 
-        @include tableMobile {
-            width: 100%;
-            display: block;
-            position: relative;
-        }
+    .icon-arrow {
+        display: block;
+        width: 5rem;
+        height: 3rem;
+        background: url(../../images/icon/arrow.svg) no-repeat;
+        position: absolute;
+        top: .7rem;
+        right: -.1rem;
+    }
 
-        .icon-arrow {
-            display: block;
-            width: 5rem;
-            height: 3rem;
-            background: url(../../images/icon/arrow.svg) no-repeat;
-            position: absolute;
-            top: .7rem;
-            right: -.1rem;
-        }
+    .main-child-menu {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #e7e7e7;
+        border-bottom: 1px solid #e7e7e7;
+        height: 4rem;
+        background: $color-fff;
+        padding: 0;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        list-style: none;
 
-        .main-child-menu {
-            display: flex;
-            align-items: center;
-            border-top: 1px solid #e7e7e7;
-            border-bottom: 1px solid #e7e7e7;
-            height: 4rem;
-            background: $color-fff;
-            padding: 0;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-            list-style: none;
+        li {
+            &:last-of-type {
+                padding-right: 3rem;
+            }
 
-            li {
-                //display: table-cell;
-
-                &:last-of-type {
-                    padding-right: 3rem;
-                }
-
-                a {
-                    display: block;
-                    text-decoration: none;
-                    color: #4f4f4f;
-                    padding: 0 1.2rem;
-                    font-weight: bold;
-                }
+            a {
+                display: block;
+                text-decoration: none;
+                color: #4f4f4f;
+                padding: 0 1.2rem;
+                font-weight: bold;
             }
         }
     }
+}
 
 
-    .top-header {
-        /*position: absolute;*/
-        width: 100%;
-        padding: .5rem 0;
-        background-color: $bg-nav;
-        box-shadow: (0px 4px 5px rgba(0, 0, 0, 0.16));
-        transition: .3s ease-in-out;
+.top-header {
+    width: 100%;
+    padding: .5rem 0;
+    background-color: $bg-nav;
+    box-shadow: (0px 4px 5px rgba(0, 0, 0, 0.16));
+    transition: .3s ease-in-out;
+    position: sticky;
+    top: 0;
+    z-index : 99999;
+
+    @include tableMobile {
+        display: none;
+    }
+    .group-menu {
+        @include flex(center,nowrap, flex-start,row);
 
         @include tableMobile {
-            display: none;
+            padding: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
         }
 
         @include landscapeTablet {
-            overflow: inherit;
+            z-index: 1;
         }
 
-        .group-menu {
-            @include flex(center,nowrap, flex-start,row);
+        .nav-menu {
+            width: 100%;
 
-            @include tableMobile {
-                padding: 0;
-                flex-wrap: wrap;
-                justify-content: center;
-                position: relative;
-            }
 
             @include landscapeTablet {
-                z-index: 1;
+                width: calc(100% - 120px);
             }
 
-            .nav-menu {
+
+            .main-menu {
+                position: relative;
+                list-style: none;
                 width: 100%;
+                @include flex(center, nowrap, space-around,row);
+                height: 4rem;
 
-
-                @include landscapeTablet {
-                    width: calc(100% - 120px);
+                @include tableMobile {
+                    margin: 0;
+                    flex-direction: column;
+                    height: 100%;
+                    z-index: 999;
+                    display: none;
+                    background-color: $bg-nav;
+                    overflow: auto;
+                    -webkit-overflow-scrolling: touch;
+                    justify-content: inherit;
                 }
-
-
-                .main-menu {
-                    position: relative;
-                    list-style: none;
-                    width: 100%;
-                    @include flex(center, nowrap, space-around,row);
-                    height: 4rem;
-
-                    @include tableMobile {
-                        margin: 0;
-                        flex-direction: column;
-                        height: 100%;
-                        z-index: 999;
-                        display: none;
-                        background-color: $bg-nav;
-                        overflow: auto;
-                        -webkit-overflow-scrolling: touch;
-                        justify-content: inherit;
-                    }
-                    /*@include landscapeTablet {
+                /*@include landscapeTablet {
                         display: flex;
                         flex-direction: inherit;
                         height: 4rem;
                         padding-bottom: 0;
                     }*/
 
-                    .menu-item {
-                        position: relative;
+                .menu-item {
+                    position: relative;
 
-                        &:first-child {
-                            @include tableMobile {
-                                border-top: 1px solid $border-calendar;
-                            }
-                            /*@include landscapeTablet {
-                                border: none
-                            }*/
-                        }
-
+                    &:first-child {
                         @include tableMobile {
-                            width: 100%;
-                            order: 2;
-                            border-bottom: 1px solid $border-calendar;
-                            margin-right: 0;
+                            border-top: 1px solid $border-calendar;
                         }
                         /*@include landscapeTablet {
+                                border: none
+                            }*/
+                    }
+
+                    @include tableMobile {
+                        width: 100%;
+                        order: 2;
+                        border-bottom: 1px solid $border-calendar;
+                        margin-right: 0;
+                    }
+                    /*@include landscapeTablet {
                             border: none;
                             order: unset;
                             width: auto;
                         }*/
 
-                        &:nth-last-child(2) {
-                            border-bottom: none;
+                    &:nth-last-child(2) {
+                        border-bottom: none;
 
-                            a {
-                                border: none;
-                            }
+                        a {
+                            border: none;
+                        }
+                    }
+
+
+
+                    .item {
+                        text-decoration: none;
+                        display: inline-block;
+                        font-weight: 600;
+                        transition: color .2s ease;
+                        color: $color-content;
+
+                        @include tableMobile {
+                            padding: 1.6rem 1.2rem;
+                            margin-right: 0;
                         }
 
-
-
-                        .item {
-                            text-decoration: none;
-                            display: inline-block;
-                            font-weight: 600;
-                            transition: color .2s ease;
-                            color: $color-content;
-
-                            @include tableMobile {
-                                padding: 1.6rem 1.2rem;
-                                margin-right: 0;
-                            }
-
-                            &:hover {
-                                color: $color-main-title;
-                            }
-                        }
-
-                        .active {
+                        &:hover {
                             color: $color-main-title;
                         }
                     }
-                }
 
-                .active-main-menu {
-                    display: flex;
-
-                    @include Mobile {
-                        display: block;
-                        padding-top: 6.6rem;
+                    .active {
+                        color: $color-main-title;
                     }
                 }
             }
 
-            .active-nav {
-                @include tableMobile {
-                    width: 100%;
+            .active-main-menu {
+                display: flex;
+
+                @include Mobile {
+                    display: block;
+                    padding-top: 6.6rem;
                 }
             }
         }
-    }
 
-
-    .padding-mobile-none {
-        @include tableMobile {
-            padding: 0;
+        .active-nav {
+            @include tableMobile {
+                width: 100%;
+            }
         }
     }
+}
 
-    .right-header-section {
-        display: none;
 
-        @include tableMobile {
-            width: 100%;
-            padding: 0 1.2rem;
-            margin: 1rem 0 2rem 0;
-            display: block;
-        }
+.padding-mobile-none {
+    @include tableMobile {
+        padding: 0;
+    }
+}
 
-        @include Mobile {
-            position: absolute;
-            top: 0;
-        }
-        /* @include landscapeTablet {
-            display: none;
-        }*/
+.right-header-section {
+    display: none;
+
+    @include tableMobile {
+        width: 100%;
+        padding: 0 1.2rem;
+        margin: 1rem 0 2rem 0;
+        display: block;
+    }
+
+    @include Mobile {
+        position: absolute;
+        top: 0;
     }
 }
 
@@ -588,9 +574,6 @@
         left: 1.2rem;
         z-index: 9999;
     }
-    /*@include landscapeTablet{
-        display : none;
-    }*/
     .line-mb {
         display: block;
         position: absolute;
@@ -753,16 +736,6 @@
         top: -2px;
     }
 }
-
-/*@keyframes skew {
-    0% {
-        transform: skewX(8deg);
-    }
-
-    100% {
-        transform: skewX(-8deg);
-    }
-}*/
 
 .hidden-body {
     @include tableMobile {

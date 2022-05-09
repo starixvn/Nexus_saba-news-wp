@@ -22,7 +22,7 @@
 @import '../components/ads';
 @import '../components/_popup-event';
 
-main {
+.main {
     @include tableMobile {
         position: relative;
         overflow-x: hidden;
@@ -263,7 +263,7 @@ main {
         }
     }
 }
-
+/*
 .wapper.active-fixed {
     .child-mobile-menu, .button-mobile, .top-header {
         position: fixed;
@@ -275,3 +275,4 @@ main {
         z-index: 10004;
     }
 }
+*/

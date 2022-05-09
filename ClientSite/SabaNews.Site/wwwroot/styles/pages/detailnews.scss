@@ -30,7 +30,7 @@ img {
     width: 100%;
 }
 
-main {
+.main {
     @include tableMobile {
         position: relative;
         overflow-x: hidden;
@@ -569,7 +569,7 @@ main {
 }
 
 
-.wapper.active-fixed {
+/*.wapper.active-fixed {
     .fixed-social {
         @include Mobile {
             z-index: 10008;
@@ -602,7 +602,7 @@ main {
     .hidden-body .wapper.active-fixed .top-header {
         height: calc(100% - 44px);
     }
-}
+}*/
 
 .wrapper-embed {
     position: relative;

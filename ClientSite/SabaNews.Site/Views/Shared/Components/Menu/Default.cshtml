@@ -1,7 +1,7 @@
 ﻿@using SabaNews.Core.Constants;
 @model MenuViewModel;
 
-<section class="header @Model.Page">
+<div class="header @Model.Page">
     <div class="button-mobile">
         <span class="line-mb"></span>
         <span class="line-mb"></span>
@@ -11,8 +11,8 @@
         <div class="container padding-mobile-none">
             <div class="banner-euro-desktop banner-desktop-top"></div>
             @*<div class="skeleton-desktop skeleton-banner">
-                <div class="skeleton-banner-euro-desktop"></div>
-            </div>*@
+                    <div class="skeleton-banner-euro-desktop"></div>
+                </div>*@
 
             <div class="logo">
                 <a href="@Url.Action("Index", "Home")">
@@ -103,95 +103,97 @@
         </div>
     </div>
 
-    <div class="top-header">
-        <div class="container padding-mobile-none">
-            <div class="group-menu">
-                <div class="nav-menu">
-                    <ul class="main-menu">
-                        @{ var VideoParentId = 0; }
-                        @foreach (var menu in Model.Menus)
+
+</div>
+
+<div class="top-header">
+    <div class="container padding-mobile-none">
+        <div class="group-menu">
+            <div class="nav-menu">
+                <ul class="main-menu">
+                    @{ var VideoParentId = 0; }
+                    @foreach (var menu in Model.Menus)
+                    {
+
+                        var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                        if (menu.PageSlug == Constants.MatchScheduleSlug)
                         {
-
-                            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-                            if (menu.PageSlug == Constants.MatchScheduleSlug)
-                            {
-                                menu.Slug = menu.PageSlug;
-                                link = Url.Action("Index", "Soccer");
-                            }
-                            else if (menu.PageSlug == Constants.WarningSlug)
-                            {
-                                menu.Slug = menu.PageSlug;
-                                link = Url.Action("Warning", "Home");
-                            }
-                            else if (menu.Slug == Constants.VideoSlug)
-                            {
-                                VideoParentId = menu.ID;
-                                link = Url.Action("Video", "Home", new { slug = (int?)null });
-                            }
-                            else if (menu.Slug == Constants.Euro2020Slug)
-                            {
-                                link = Url.Action("index", "Euro2020");
-                            }
-                            if (menu.CatId != Constants.Home)
-                            {
-                                var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
-                                <li class="menu-item">
-                                    <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
-                                    @if (menu.Slug == Constants.GuessSlug)
-                                    {
-                                        <span class="marked-icon"></span>
-                                    }
-                                </li>
-                            }
-
+                            menu.Slug = menu.PageSlug;
+                            link = Url.Action("Index", "Soccer");
                         }
-                        <li class="right-header-section search-input">
-                            <form action="/Search" method="post" id="search">
-                                <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">
-                                <button type="submit" class="btn btn-search" aria-label="search">
-                                    <i class="icon-search"></i>
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                        else if (menu.PageSlug == Constants.WarningSlug)
+                        {
+                            menu.Slug = menu.PageSlug;
+                            link = Url.Action("Warning", "Home");
+                        }
+                        else if (menu.Slug == Constants.VideoSlug)
+                        {
+                            VideoParentId = menu.ID;
+                            link = Url.Action("Video", "Home", new { slug = (int?)null });
+                        }
+                        else if (menu.Slug == Constants.Euro2020Slug)
+                        {
+                            link = Url.Action("index", "Euro2020");
+                        }
+                        if (menu.CatId != Constants.Home)
+                        {
+                            var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
+                            <li class="menu-item">
+                                <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
+                                @if (menu.Slug == Constants.GuessSlug)
+                                {
+                                    <span class="marked-icon"></span>
+                                }
+                            </li>
+                        }
+
+                    }
+                    <li class="right-header-section search-input">
+                        <form action="/Search" method="post" id="search">
+                            <input class="keyword-input search-box" id="search-keyword" type="text" placeholder="Tìm kiếm...">
+                            <button type="submit" class="btn btn-search" aria-label="search">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="child-mobile-menu">
-        <ul class="main-child-menu">
-            @foreach (var menu in Model.Menus)
+<div class="child-mobile-menu">
+    <ul class="main-child-menu">
+        @foreach (var menu in Model.Menus)
+        {
+
+            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+            if (menu.PageSlug == Constants.MatchScheduleSlug)
             {
-
-                var link = Url.Action("Category", "Home", new { slug = menu.Slug });
-                if (menu.PageSlug == Constants.MatchScheduleSlug)
-                {
-                    menu.Slug = menu.PageSlug;
-                    link = Url.Action("Index", "Soccer");
-                }
-                if (menu.PageSlug == Constants.WarningSlug)
-                {
-                    menu.Slug = menu.PageSlug;
-                    link = Url.Action("Warning", "Home");
-                }
-                else if (menu.Slug == Constants.VideoSlug)
-                {
-                    VideoParentId = menu.ID;
-                    link = Url.Action("Video", "Home", new { slug = (int?)null });
-                }
-                else if (menu.Slug == Constants.Euro2020Slug)
-                {
-                    link = Url.Action("index", "Euro2020");
-                }
-                if (menu.CatId != Constants.Home)
-                {
-                    var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
-                    <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
-                }
-
+                menu.Slug = menu.PageSlug;
+                link = Url.Action("Index", "Soccer");
             }
-        </ul>
-        <span class="icon-arrow scroll-mobile-menu"></span>
-    </div>
-</section>
+            if (menu.PageSlug == Constants.WarningSlug)
+            {
+                menu.Slug = menu.PageSlug;
+                link = Url.Action("Warning", "Home");
+            }
+            else if (menu.Slug == Constants.VideoSlug)
+            {
+                VideoParentId = menu.ID;
+                link = Url.Action("Video", "Home", new { slug = (int?)null });
+            }
+            else if (menu.Slug == Constants.Euro2020Slug)
+            {
+                link = Url.Action("index", "Euro2020");
+            }
+            if (menu.CatId != Constants.Home)
+            {
+                var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
+                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+            }
+
+        }
+    </ul>
+    <span class="icon-arrow scroll-mobile-menu"></span>
+</div>

@@ -25,7 +25,7 @@
 @import '../components/_popup-event';
 
 
-main {
+.main {
     @include tableMobile {
         position: relative;
         overflow-x: hidden;

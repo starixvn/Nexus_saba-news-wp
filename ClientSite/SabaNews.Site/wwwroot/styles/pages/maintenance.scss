@@ -38,7 +38,7 @@ body {
     width : 100%;
 }
 
-main {
+.main {
     @include tableMobile {
         position: relative;
         overflow-x: hidden;
