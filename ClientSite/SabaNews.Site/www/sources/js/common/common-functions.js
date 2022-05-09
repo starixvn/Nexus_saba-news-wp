@@ -172,7 +172,6 @@ export default class CommonFunctions {
                 return LangHelper.getResource('SendPenaltyChange');
             default:
                 return '';
-
         }
     }
 }

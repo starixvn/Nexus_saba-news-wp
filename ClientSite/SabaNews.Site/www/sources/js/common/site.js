@@ -38,4 +38,15 @@ export default class Site {
     static resolveClientUrl(relativeUrl) {
         return _rootUrl + relativeUrl;
     }
+
+    static lockNavigator() {
+        let lockResolver;
+        if (navigator && navigator.locks && navigator.locks.request) {
+            const promise = new Promise(res => {
+                lockResolver = res;
+            });
+
+            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => promise);
+        }
+    }
 }

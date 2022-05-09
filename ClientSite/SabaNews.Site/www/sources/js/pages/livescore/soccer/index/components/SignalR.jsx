@@ -1,8 +1,9 @@
 ﻿import React, { Component } from 'react';
-import * as signalR from '@microsoft/signalr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { JsonHubProtocol, HubConnectionBuilder, HttpTransportType, LogLevel } from '@microsoft/signalr';
 import { ActionCreators } from '../actions';
+import Site from '@jsroot/common/site';
 
 export class SignalR extends Component {
     constructor(props) {
@@ -12,16 +13,16 @@ export class SignalR extends Component {
     }
 
     componentDidMount() {
-        const protocol = new signalR.JsonHubProtocol();
-        const transport = signalR.HttpTransportType.WebSockets;
+        const protocol = new JsonHubProtocol();
+        const transport = HttpTransportType.WebSockets;
         const options = {
             transport,
             logMessageContent: false,
             skipNegotiation: true,
-            logger: signalR.LogLevel.None
+            logger: LogLevel.None
         };
 
-        this.connection = new signalR.HubConnectionBuilder()
+        this.connection = new HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
             .build();
@@ -34,16 +35,7 @@ export class SignalR extends Component {
             await this.start();
         });
 
-        let lockResolver;
-        if (navigator && navigator.locks && navigator.locks.request) {
-            const promise = new Promise(res => {
-                lockResolver = res;
-            });
-
-            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => {
-                return promise;
-            });
-        }
+        Site.lockNavigator();
 
         this.start();
     }
@@ -55,10 +47,10 @@ export class SignalR extends Component {
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                console.log('SignalR connected!!!');
+                console.log('SignalR connected!!!'); //NOSONAR
             });
         } catch (err) {
-            console.log(err);
+            console.log(err); //NOSONAR
 
             setTimeout(() => {
                 const { today, selectedDate } = this.props;

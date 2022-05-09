@@ -1,8 +1,9 @@
 ﻿import React, { Component } from 'react';
+import { JsonHubProtocol, HubConnectionBuilder, HttpTransportType, LogLevel } from '@microsoft/signalr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import * as signalR from '@microsoft/signalr';
+import Site from '@jsroot/common/site';
 
 export class SignalR extends Component {
     constructor(props) {
@@ -12,16 +13,16 @@ export class SignalR extends Component {
     }
 
     componentDidMount() {
-        const protocol = new signalR.JsonHubProtocol();
-        const transport = signalR.HttpTransportType.WebSockets;
+        const protocol = new JsonHubProtocol();
+        const transport = HttpTransportType.WebSockets;
         const options = {
             transport,
             logMessageContent: false,
             skipNegotiation: true,
-            logger: signalR.LogLevel.None
+            logger: LogLevel.None
         };
 
-        this.connection = new signalR.HubConnectionBuilder()
+        this.connection = new HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(protocol)
             .build();
@@ -34,22 +35,18 @@ export class SignalR extends Component {
             await this.start();
         });
 
-        let lockResolver;
-        if (navigator && navigator.locks && navigator.locks.request) {
-            const promise = new Promise(res => {
-                lockResolver = res;
-            });
-
-            navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => promise );
-        }
+        Site.lockNavigator();
 
         this.start();
     }
 
     componentWillUnmount() {
         this.connection.invoke('LeaveSoccerGroup', window.selectedMatchId)
-            .then(() => console.log(`leave group ${window.selectedMatchId}`))
-            .catch(err => console.error(err.toString()));
+            .then(() => {
+                console.log(`leave group ${window.selectedMatchId}`);
+            }).catch(err => {
+                console.error(err.toString()); //NOSONAR
+            });
         this.connection.stop();
     }
 
@@ -57,10 +54,17 @@ export class SignalR extends Component {
         try {
             await this.connection.start().then(() => {
                 this.connection.invoke('JoinSoccerGroup', window.selectedMatchId)
-                    .then(() => console.log(`join group ${window.selectedMatchId}`))
-                    .catch(err => console.error(err.toString()));
-            }).catch(err => console.error(err.toString()));
+                    .then(() => {
+                        console.log(`join group ${window.selectedMatchId}`); //NOSONAR
+                    }).catch(err => {
+                        console.error(err.toString()); //NOSONAR
+                    });
+            }).catch(err => {
+                console.error(err.toString()); //NOSONAR
+            });
         } catch (err) {
+            console.log(err); //NOSONAR
+
             setTimeout(() => {
                 this.getMatchDetail();
                 this.start();
