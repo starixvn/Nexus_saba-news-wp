@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../../actions';
-import Grid from './Grid';
+import Grid from './grid/index';
 import Promotion from './Promotion';
 import CommonFunctions from '@jsroot/common/common-functions';
 
@@ -70,7 +70,7 @@ export class SeasonStandings extends PureComponent {
         let totalItems = seasonStandings.length;
         const standings = [];
         for (let i = 0; i < totalItems; i++) {
-            let temp = { ...seasonStandings[i] };
+            const temp = { ...seasonStandings[i] };
             temp.promotion = JSON.parse(temp.promotion);
             temp.promotion = temp.promotion && temp.promotion.Color ? temp.promotion : null;
             const item = {

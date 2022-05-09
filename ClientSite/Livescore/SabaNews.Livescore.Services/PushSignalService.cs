@@ -24,9 +24,9 @@
             this.logger = logger;
             hubConnection = new HubConnectionBuilder()
                            .WithUrl(new Uri(signalRSettings.Endpoint),
-                                HttpTransportType.WebSockets,
                                 options =>
                                 {
+                                    options.Transports = HttpTransportType.WebSockets;
                                     options.SkipNegotiation = true;
                                 })
                            .WithAutomaticReconnect()
