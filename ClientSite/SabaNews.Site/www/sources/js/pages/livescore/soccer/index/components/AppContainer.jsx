@@ -104,14 +104,14 @@ export class AppContainer extends Component {
 
     render() {
         const isMobile = this.state.isMobile;
-        const { matches, majorLeagues, totalLiveMatches } = this.props;
+        const { matches, majorLeagues, liveMatches } = this.props;
 
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar isMobile={isMobile} totalMatches={totalLiveMatches}
+                        <DateBar isMobile={isMobile} totalMatches={liveMatches.length}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}
                         />
@@ -137,11 +137,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 const mapStateToProps = state => {
     const {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches, totalLiveMatches
+        searchKey, majorLeagues, matches, liveMatches
     } = state;
     return {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches, totalLiveMatches
+        searchKey, majorLeagues, matches, liveMatches
     };
 };
 
