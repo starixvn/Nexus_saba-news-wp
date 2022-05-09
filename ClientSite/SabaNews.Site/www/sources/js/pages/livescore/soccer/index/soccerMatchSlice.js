@@ -17,7 +17,7 @@ const soccerMatchSlice = createSlice({
         dateRanges: [],
         majorLeagues: [],
         matches: null,
-        liveMatches: []
+        totalLiveMatches: 0
     },
     reducers: {
         setSearchKey: (state, action) => {
@@ -37,12 +37,12 @@ const soccerMatchSlice = createSlice({
         },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
-            state.liveMatches = liveMatches;
+            state.totalLiveMatches = liveMatches.length;
 
             if (window.isLivePage) {
                 state.matches = liveMatches;
             } else {
-                if (state.today === state.selectedDate) {
+                if (state.today === state.selectedDate && state.matches) {
                     for (const match of liveMatches) {
                         const index = state.matches.findIndex(m => m.matchId === match.matchId);
                         if (index >= 0) {
