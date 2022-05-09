@@ -93,9 +93,8 @@ export class AppContainer extends Component {
         }
 
         this.props.setMatches(null);
-        if (window.isLivePage) {
-            this.props.getLiveMatches();
-        } else {
+        this.props.getLiveMatches();
+        if (!window.isLivePage) {
             this.props.getMatchesByDate({
                 eventDate: selectedDate,
                 timezone: DateTimeService.getClientTimezone()
@@ -105,15 +104,14 @@ export class AppContainer extends Component {
 
     render() {
         const isMobile = this.state.isMobile;
-        const { matches, majorLeagues } = this.props;
-        const totalMatches = matches ? matches.length : 0;
+        const { matches, majorLeagues, totalLiveMatches } = this.props;
 
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
-                        <DateBar isMobile={isMobile} totalMatches={totalMatches}
+                        <DateBar isMobile={isMobile} totalMatches={totalLiveMatches}
                             getDateRanges={this.getDateRanges}
                             onClick={this.getMatches}
                         />
@@ -139,11 +137,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 const mapStateToProps = state => {
     const {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches
+        searchKey, majorLeagues, matches, totalLiveMatches
     } = state;
     return {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, majorLeagues, matches
+        searchKey, majorLeagues, matches, totalLiveMatches
     };
 };
 

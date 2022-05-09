@@ -26,7 +26,7 @@ const getMatchesByDate = params => async dispatch => {
 const getLiveMatches = () => async dispatch => {
     const url = Site.resolveClientUrl('soccer/getLiveMatches');
     await DataService.postDataAsync(url).then(response => {
-        dispatch(setMatches(response.data));
+        dispatch(setLiveMatches(response.data));
     }).catch(Site.handleAxiosError);
 };
 

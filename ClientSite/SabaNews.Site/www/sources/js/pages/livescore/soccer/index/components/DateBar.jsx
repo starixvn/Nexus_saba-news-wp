@@ -21,7 +21,7 @@ const DateBar = props => {
                 <div className="btn-live-realtime">
                     {isMobile ? 'Live' : LangHelper.getResource('Live')}
                     {
-                        window.isLivePage && totalMatches > 0 &&
+                        totalMatches > 0 &&
                         <span className="badge-live">{totalMatches > 99 ? '99+' : totalMatches}</span>
                     }
                 </div>
