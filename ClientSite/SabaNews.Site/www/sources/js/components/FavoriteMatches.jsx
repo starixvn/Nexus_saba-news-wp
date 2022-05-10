@@ -31,9 +31,10 @@ const FavoriteMatches = ({ isMobile }) => {
                 <div className="count-start">
                     {
                         count > 0
-                            ? <i className="icon-livescore icon-live-start" data-badge={count} />
+                            ? <i className="icon-livescore icon-live-start"/>
                             : <i className="icon-livescore icon-live-start" />
                     }
+                    <i className="count-number">{count}</i>
                 </div>
             </>
         );
