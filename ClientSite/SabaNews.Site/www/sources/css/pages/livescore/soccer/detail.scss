@@ -60,21 +60,6 @@
 .livescore-league-header-detail {
     justify-content: space-between;
 }
-
-/*
-
-.sticky-header {
-    position: sticky;
-    top: 5rem;
-    z-index: 99;
-    background: $primary-bg;
-
-    @include tableMobile {
-        position: unset;
-    }
-}*/
-
-
 .detail-fixed {
     position: fixed;
     top: 4.9rem;
