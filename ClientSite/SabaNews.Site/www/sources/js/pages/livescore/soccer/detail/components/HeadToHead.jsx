@@ -250,7 +250,7 @@ export class HeadToHead extends Component {
         if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
             return null;
         }
-        const { home, away, common } = this.props.match.headToHead;
+        const { home, away, common } = headToHead;
         const generalInfo = this.props.match.generalInfo;
         return (
             <div className="block-line-up" id="doi-dau">

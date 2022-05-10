@@ -20,7 +20,7 @@ class Details extends PureComponent {
             const isMobile = window.innerWidth < 768;
             const generalHeight = document.querySelector('.detail-fixed').offsetHeight;
             const headerHeight = document.querySelector('.header').offsetHeight;
-            const tmpHeight = isMobile ? headerHeight : 0;
+            const tmpHeight = isMobile ? headerHeight : - headerHeight;
             window.scroll({
                 top: section.offsetTop - generalHeight + tmpHeight,
                 left: 0,
