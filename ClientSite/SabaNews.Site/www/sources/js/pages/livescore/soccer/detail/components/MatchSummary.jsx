@@ -100,23 +100,13 @@ export class MatchSummary extends Component {
 
     render() {
         const { match } = this.props;
-        if (!match.incidents || match.incidents.length === 0 || CommonFunctions.checkPreMatchStatus(match.generalInfo.status)) {
+        if (!match.incidents || match.incidents.length === 0 || CommonFunctions.isPreMatch(match.generalInfo.status)) {
             return null;
         }
+
         const { generalInfo } = this.props.match;
         const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         const lastIncident = incidents[incidents.length - 1];
-        let hasPenaltyShootout = false;
-        let homePenaltyShootoutScore = 0;
-        let awayPenaltyShootoutScore = 0;
-        let processScore = '0 - 0';
-        let penaltyShootOutData = {
-            homeType: null,
-            homePlayerName: null,
-            awayType: null,
-            awayPlayerName: null,
-            score: null
-        };
         return (
             <div className="block-line-up" id="dien-bien">
                 <div className="block-line-up-main">
@@ -130,7 +120,17 @@ export class MatchSummary extends Component {
                             <div className="time-line-main">
                                 {
                                     incidents.map((incident, key) => {
-                                        processScore = `${incident.homeScore} -  ${incident.awayScore}`;
+                                        let hasPenaltyShootout = false;
+                                        let homePenaltyShootoutScore = 0;
+                                        let awayPenaltyShootoutScore = 0;
+                                        let processScore = `${incident.homeScore} - ${incident.awayScore}`;
+                                        let penaltyShootOutData = {
+                                            homeType: null,
+                                            homePlayerName: null,
+                                            awayType: null,
+                                            awayPlayerName: null,
+                                            score: null
+                                        };
                                         if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
                                             && (incident.homeScore === 0 && incident.awayScore === 0)) {
                                             hasPenaltyShootout = true;
@@ -138,15 +138,10 @@ export class MatchSummary extends Component {
                                             penaltyShootOutData = shootoutResult.penaltyShootOutData;
                                             homePenaltyShootoutScore = shootoutResult.homePenaltyShootoutScore;
                                             awayPenaltyShootoutScore = shootoutResult.awayPenaltyShootoutScore;
-
                                         }
+
                                         if (CommonFunctions.checkIncidentGeneralType(incident.type) && !hasPenaltyShootout) {
-                                            return (
-                                                <GeneralIncident
-                                                    key={key}
-                                                    incident={incident}
-                                                />
-                                            );
+                                            return <GeneralIncident key={key} incident={incident} />;
                                         } else if (this.checkRenderMainTimeEvent(incident, lastIncident)) {
                                             const score = this.getMainTimeScore(incident.type, processScore);
                                             return (
@@ -160,17 +155,8 @@ export class MatchSummary extends Component {
                                                 </div>
                                             );
                                         } else if (this.checkRenderPenaltyShootout(penaltyShootOutData, hasPenaltyShootout)) {
-                                            penaltyShootOutData.score = `${homePenaltyShootoutScore} -  ${awayPenaltyShootoutScore}`;
-                                            hasPenaltyShootout = false;
-                                            const component = <PenaltyShootOut key={key} penaltyShootOutData={penaltyShootOutData} />;
-                                            penaltyShootOutData = {
-                                                homeType: null,
-                                                homePlayerName: null,
-                                                awayType: null,
-                                                awayPlayerName: null,
-                                                score: null
-                                            };
-                                            return (component);
+                                            penaltyShootOutData.score = `${homePenaltyShootoutScore} - ${awayPenaltyShootoutScore}`;
+                                            return <PenaltyShootOut key={key} data={penaltyShootOutData} />;
                                         } else {
                                             return <Fragment key={key} />;
                                         }

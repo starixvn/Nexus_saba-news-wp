@@ -11,7 +11,6 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
-    using SabaNews.Livescore.Services.Interfaces;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;

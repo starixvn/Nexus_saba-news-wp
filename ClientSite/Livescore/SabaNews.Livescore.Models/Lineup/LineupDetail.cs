@@ -9,7 +9,5 @@
         public IEnumerable<LineupTeam> Home { get; set; }
 
         public IEnumerable<LineupTeam> Away { get; set; }
-
-
     }
 }

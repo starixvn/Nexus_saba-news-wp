@@ -35,7 +35,7 @@ class FunctionBar extends Component {
 
     checkEnableIncident = (generalInfo, incidents) => {
         let isEnable = true;
-        if (!incidents || incidents.length === 0 || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
+        if (!incidents || incidents.length === 0 || CommonFunctions.isPreMatch(generalInfo.status)) {
             isEnable = false;
         }
         return isEnable;
@@ -43,7 +43,7 @@ class FunctionBar extends Component {
 
     checkEnableStatistics = (generalInfo, statistic) => {
         let isEnable = true;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.isPreMatch(generalInfo.status)) {
             isEnable = false;
         }
         return isEnable;

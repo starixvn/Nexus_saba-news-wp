@@ -77,14 +77,22 @@ export default class CommonFunctions {
             || statusId === MatchStatus.PenaltyShootout;
     }
 
+    static isPreMatch(statusId) {
+        return statusId === MatchStatus.NotStarted
+            || statusId === MatchStatus.Postpone
+            || statusId === MatchStatus.Cancel
+            || statusId === MatchStatus.TBD;
+    }
+
     static getFavouriteMatches() {
-        let matchIds = localStorage.getItem("favourite-matches");
+        let matchIds = localStorage.getItem('favourite-matches');
         if(!matchIds) {
             matchIds = [];
         } else {
             matchIds = JSON.parse(matchIds.toString());
             matchIds = matchIds.filter(match => match !== null);
         }
+
         return matchIds;
     }
 
@@ -111,35 +119,29 @@ export default class CommonFunctions {
     }
 
     static updateFavouriteMatch(matchId) {
-        if(!matchId) return null;
+        if (!matchId) {
+            return null;
+        }
+
         let favouriteMatches =  this.getFavouriteMatches();
         const favourite = favouriteMatches.find(item => item === matchId);
         let isFavourite = false;
         if(favourite) {
             favouriteMatches = favouriteMatches.filter(item =>  item !== matchId);
-            isFavourite = false;
         } else {
             favouriteMatches.push(matchId);
             isFavourite = true;
         }
+
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
         this.updateFavouriteMatchesCount(favouriteMatches);
         return isFavourite;
     }
 
-    static checkPreMatchStatus(status) {
-        if(status === MatchStatus.NotStarted || status === MatchStatus.Postpone  || status === MatchStatus.Cancel || status.TBD)  {
-            return true;
-        }
-        return false;
+    static checkIncidentTypeToUpdateScore(type) {
+        return type === IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal;
     }
 
-    static checkIncidentTypeToUpdateScore(type) {
-        if(type === IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal) {
-            return true;
-        }
-        return false;
-    }
     static checkIncidentGeneralType(type) {
         return type === IncidentStatus.Goal || type === IncidentStatus.YellowCard || type === IncidentStatus.RedCard || type === IncidentStatus.YellowTurnRedCard
             || type === IncidentStatus.OvertimeEnds || type === IncidentStatus.PenaltyMissed || type === IncidentStatus.OwnGoal || type === IncidentStatus.VAR

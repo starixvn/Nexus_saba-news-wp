@@ -87,4 +87,3 @@ export const IncidentIconType = {
     outSubsitution: 32,
     inSubsitution: 33
 };
-

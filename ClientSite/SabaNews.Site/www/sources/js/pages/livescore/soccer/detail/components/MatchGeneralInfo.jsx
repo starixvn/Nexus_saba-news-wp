@@ -20,17 +20,15 @@ export default class MatchGeneralInfo extends Component {
             case MatchStatus.Postpone:
             case MatchStatus.Cancel:
             case MatchStatus.TBD:
-                return (<div className="detail-score-wrapper live before-score">
+                return <div className="detail-score-wrapper live before-score">
                     <span>{DateTimeService.toShortTimeFormat(startTime)}</span>
-                </div>);
+                </div>;
             default:
-                return <>
-                    <div className="detail-score-wrapper live">
-                        <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
-                        <span className="detail-score-divider"> - </span>
-                        <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
-                    </div>
-                </>;
+                return <div className="detail-score-wrapper live">
+                    <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
+                    <span className="detail-score-divider"> - </span>
+                    <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
+                </div>;
         }
     };
 
@@ -40,7 +38,7 @@ export default class MatchGeneralInfo extends Component {
         const awayPenaltyShootOut = match.awayTeamPenaltyScore;
         const homeAGG = match.homeTeamAggregateScore;
         const awayAGG = match.awayTeamAggregateScore;
-        const isPreMatch = CommonFunctions.checkPreMatchStatus(match.status);
+        const isPreMatch = CommonFunctions.isPreMatch(match.status);
         return (
             <>
                 {

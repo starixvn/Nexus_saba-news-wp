@@ -7,9 +7,10 @@ import CommonFunctions from '@jsroot/common/common-functions';
 export class Statistics extends Component {
     render() {
         const { generalInfo, statistic } = this.props.match;
-        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
+        if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.isPreMatch(generalInfo.status)) {
             return null;
         }
+
         let statistices  = [];
         const { homeStatistic, awayStatistic } = statistic;
         statistices = [
