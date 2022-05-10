@@ -58,7 +58,7 @@ export default class Grid extends PureComponent {
             hasMore: groupIndex < leagues.length,
             leagues: items
         });
-    }
+    };
 
     render() {
         const { hasMore, leagues } = this.state;

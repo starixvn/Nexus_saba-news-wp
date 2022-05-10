@@ -87,10 +87,43 @@ class AppContainer extends Component {
         this.props.navigate(url);
     };
 
+    renderTabs = () => {
+        const { selectedTab, selectedResultsTab, selectedStandingsTab } = this.state;
+        const { league, stages, preMatches, postMatches } = this.props;
+
+        return (
+            <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
+                className="live-score-nav"
+                onSelect={this.handleSelectTab}
+            >
+                <Tab eventKey="fixtures" title="Lịch thi đấu">
+                    {
+                        preMatches === null && <SkeletonGrid />
+                    }
+                    {
+                        preMatches !== null && <MatchGrid sortAsc stages={stages} matches={preMatches} />
+                    }
+                </Tab>
+                <Tab eventKey="results" title="Kết quả">
+                    {
+                        selectedResultsTab && postMatches === null && <SkeletonGrid />
+                    }
+                    {
+                        selectedResultsTab && postMatches !== null &&
+                        <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
+                    }
+                </Tab>
+                <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
+                    {
+                        selectedStandingsTab &&
+                        <SeasonStandings />
+                    }
+                </Tab>
+            </Tabs>);
+    };
 
     render() {
-        const { selectedTab, selectedResultsTab, selectedStandingsTab } = this.state;
-        const { majorLeagues, league, stages, preMatches, postMatches } = this.props;
+        const { majorLeagues, league } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
@@ -105,34 +138,7 @@ class AppContainer extends Component {
                         {
                             league !== null && <League league={league} />
                         }
-                        <Tabs activeKey={selectedTab} id="livescore-tab-league-detail"
-                            className="live-score-nav"
-                            onSelect={this.handleSelectTab}
-                        >
-                            <Tab eventKey="fixtures" title="Lịch thi đấu">
-                                {
-                                    preMatches === null && <SkeletonGrid />
-                                }
-                                {
-                                    preMatches !== null && <MatchGrid sortAsc stages={stages} matches={preMatches} />
-                                }
-                            </Tab>
-                            <Tab eventKey="results" title="Kết quả">
-                                {
-                                    selectedResultsTab && postMatches === null && <SkeletonGrid />
-                                }
-                                {
-                                    selectedResultsTab && postMatches !== null &&
-                                    <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
-                                }
-                            </Tab>
-                            <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
-                                {
-                                    selectedStandingsTab &&
-                                    <SeasonStandings />
-                                }
-                            </Tab>
-                        </Tabs>
+                        {this.renderTabs()}
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />

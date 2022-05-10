@@ -22,8 +22,7 @@ export class MatchGrid extends PureComponent {
         for (let i = 0; i < totalItems; i++) {
             const match = matches[i];
             const league = match.league;
-            const key = league.leagueId
-                + `-${league.leagueType !== LeagueType.League && league.season ? league.season.seasonId : 0}`
+            const key = `${league.leagueId}-${league.leagueType !== LeagueType.League && league.season ? league.season.seasonId : 0}`
                 + `-${league.leagueType !== LeagueType.League && league.stage ? league.stage.stageId : 0}`;
             const item = {
                 key,
