@@ -17,9 +17,12 @@ class Details extends PureComponent {
         }
         const section = document.getElementById(defaultTab);
         if (section) {
-            const headerHeight = document.querySelector('.sticky-header').offsetHeight;
+            const isMobile = window.innerWidth < 768;
+            const generalHeight = document.querySelector('.detail-fixed').offsetHeight;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const tmpHeight = isMobile ? headerHeight : 0;
             window.scroll({
-                top: section.offsetTop - headerHeight,
+                top: section.offsetTop - generalHeight + tmpHeight,
                 left: 0,
                 behavior: 'smooth'
             });

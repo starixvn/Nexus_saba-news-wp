@@ -6,29 +6,26 @@ import CommonFunctions from '@jsroot/common/common-functions';
 
 export class Statistics extends Component {
     render() {
-        const match = this.props.match;
         const { generalInfo, statistic } = this.props.match;
         if (!statistic || !statistic.homeStatistic || !statistic.awayStatistic || CommonFunctions.checkPreMatchStatus(generalInfo.status)) {
             return null;
         }
         let statistices  = [];
-        if(match !== null) {
-            const {homeStatistic, awayStatistic} = this.props.match.statistic;
-            statistices = [
-                { categoryId: 1, categoryName: 'Tỉ lệ kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
-                { categoryId: 2, categoryName: 'Tình huống tấn công nguy hiểm', homeValue: homeStatistic.dangerAttack, awayValue: awayStatistic.dangerAttack, unit: '' },
-                { categoryId: 3, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.shoot, awayValue: awayStatistic.shoot, unit: '' },
-                { categoryId: 4, categoryName: 'Dứt điểm chính xác', homeValue: homeStatistic.onGoal, awayValue: awayStatistic.onGoal, unit: '' },
-                { categoryId: 5, categoryName: 'Phạm lỗi', homeValue: homeStatistic.foul, awayValue: awayStatistic.foul, unit: '' },
-                { categoryId: 6, categoryName: 'Thẻ Vàng', homeValue: homeStatistic.yellowCard, awayValue: awayStatistic.yellowCard, unit: '' },
-                { categoryId: 7, categoryName: 'Thẻ Đỏ', homeValue: homeStatistic.redCard, awayValue: awayStatistic.redCard, unit: '' },
-                { categoryId: 8, categoryName: 'Việt vị', homeValue: homeStatistic.offSide, awayValue: awayStatistic.offSide, unit: '' },
-                { categoryId: 9, categoryName: 'Ném biên', homeValue: homeStatistic.outBall, awayValue: awayStatistic.outBall, unit: '' },
-                { categoryId: 10, categoryName: 'Phạt góc', homeValue: homeStatistic.cornerKick, awayValue: awayStatistic.cornerKick, unit: '' },
-                { categoryId: 11, categoryName: 'Đá phạt', homeValue: homeStatistic.freeKick, awayValue: awayStatistic.freeKick, unit: '' },
-                { categoryId: 12, categoryName: 'Phạt đền', homeValue: homeStatistic.penaltyKick, awayValue: awayStatistic.penaltyKick, unit: '' }
-            ];
-        }
+        const { homeStatistic, awayStatistic } = statistic;
+        statistices = [
+            { categoryId: 1, categoryName: 'Tỉ lệ kiểm soát bóng', homeValue: homeStatistic.controlRate, awayValue: awayStatistic.controlRate, unit: '%' },
+            { categoryId: 2, categoryName: 'Tình huống tấn công nguy hiểm', homeValue: homeStatistic.dangerAttack, awayValue: awayStatistic.dangerAttack, unit: '' },
+            { categoryId: 3, categoryName: 'Số lần dứt điểm', homeValue: homeStatistic.shoot, awayValue: awayStatistic.shoot, unit: '' },
+            { categoryId: 4, categoryName: 'Dứt điểm chính xác', homeValue: homeStatistic.onGoal, awayValue: awayStatistic.onGoal, unit: '' },
+            { categoryId: 5, categoryName: 'Phạm lỗi', homeValue: homeStatistic.foul, awayValue: awayStatistic.foul, unit: '' },
+            { categoryId: 6, categoryName: 'Thẻ Vàng', homeValue: homeStatistic.yellowCard, awayValue: awayStatistic.yellowCard, unit: '' },
+            { categoryId: 7, categoryName: 'Thẻ Đỏ', homeValue: homeStatistic.redCard, awayValue: awayStatistic.redCard, unit: '' },
+            { categoryId: 8, categoryName: 'Việt vị', homeValue: homeStatistic.offSide, awayValue: awayStatistic.offSide, unit: '' },
+            { categoryId: 9, categoryName: 'Ném biên', homeValue: homeStatistic.outBall, awayValue: awayStatistic.outBall, unit: '' },
+            { categoryId: 10, categoryName: 'Phạt góc', homeValue: homeStatistic.cornerKick, awayValue: awayStatistic.cornerKick, unit: '' },
+            { categoryId: 11, categoryName: 'Đá phạt', homeValue: homeStatistic.freeKick, awayValue: awayStatistic.freeKick, unit: '' },
+            { categoryId: 12, categoryName: 'Phạt đền', homeValue: homeStatistic.penaltyKick, awayValue: awayStatistic.penaltyKick, unit: '' }
+        ];
         return (
             <div className="block-line-up" id="thong-ke">
                 <div className="block-line-up-main">
