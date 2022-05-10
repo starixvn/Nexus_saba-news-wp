@@ -60,6 +60,15 @@
 .livescore-league-header-detail {
     justify-content: space-between;
 }
+
+.sticky-header {
+    opacity: 1;
+    &.active-scroll {
+        opacity: 0;
+    }
+}
+
+
 .detail-fixed {
     position: fixed;
     top: 4.9rem;

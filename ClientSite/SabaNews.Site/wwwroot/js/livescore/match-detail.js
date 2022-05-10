@@ -19,10 +19,12 @@
 var checkScroll = function (e) {
     var heightSection = $(".sticky-header").innerHeight();
     var top_of_window = window.scrollY;
-    if (top_of_window > heightSection) {
+    if (top_of_window > (heightSection / 2)) {
         $('.detail-fixed').addClass('active-scroll');
+        $('.sticky-header').addClass('active-scroll');
     } else {
         $('.detail-fixed').removeClass('active-scroll');
+        $('.sticky-header').removeClass('active-scroll');
     }
 }
 
