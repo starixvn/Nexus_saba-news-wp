@@ -105,7 +105,7 @@ class FunctionBar extends Component {
             const isMobile = window.innerWidth < 768;
             const generalHeight = document.querySelector('.detail-fixed').offsetHeight;
             const headerHeight = document.querySelector('.header').offsetHeight;
-            const tmpHeight = isMobile ? headerHeight : - headerHeight;
+            const tmpHeight = isMobile ? headerHeight + document.querySelector('.block-line-up-title').offsetHeight : 0;
             window.scroll({
                 top: section.offsetTop - generalHeight + tmpHeight,
                 left: 0,

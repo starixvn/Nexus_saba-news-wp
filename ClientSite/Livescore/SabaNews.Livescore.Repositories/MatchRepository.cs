@@ -51,7 +51,7 @@
                         },
                         "LeagueId, HomeTeamId, AwayTeamId");
 
-                    var team = await multi.ReadFirstAsync<H2HTeam>();
+                    var team = await multi.ReadFirstOrDefaultAsync<H2HTeam>();
                     var common = new List<Match>();
                     var home = new List<Match>();
                     var away = new List<Match>();
@@ -94,9 +94,9 @@
                         "LeagueId, HomeTeamId, AwayTeamId");
 
                     var incidents = await multi.ReadAsync<MatchIncident>();
-                    var homeStatistic = await multi.ReadAsync<TeamStatistic>();
-                    var awayStatistic = await multi.ReadAsync<TeamStatistic>();
-                    var lineupSumary = await multi.ReadAsync<Lineup>();
+                    var homeStatistic = await multi.ReadFirstOrDefaultAsync<TeamStatistic>();
+                    var awayStatistic = await multi.ReadFirstOrDefaultAsync<TeamStatistic>();
+                    var lineupSumary = await multi.ReadFirstOrDefaultAsync<Lineup>();
                     var homeLineup = await multi.ReadAsync<LineupTeam>();
                     var awayLineup = await multi.ReadAsync<LineupTeam>();
                     var headToHead = new HeadToHeadDetail
@@ -110,13 +110,13 @@
                         GeneralInfo = match.FirstOrDefault(),
                         Statistic = new Statistic
                         {
-                            HomeStatistic = homeStatistic.FirstOrDefault(),
-                            AwayStatistic = awayStatistic.FirstOrDefault()
+                            HomeStatistic = homeStatistic,
+                            AwayStatistic = awayStatistic
                         },
                         Incidents = incidents,
                         Lineup = new LineupDetail
                         {
-                            GeneralInfo = lineupSumary.FirstOrDefault(),
+                            GeneralInfo = lineupSumary,
                             Home = homeLineup,
                             Away = awayLineup
                         },

@@ -105,23 +105,17 @@
 
         public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)
         {
-            var result = await matchRepository.GetMatchByIdAsync(criteria);
-
-            return result;
+            return await matchRepository.GetMatchByIdAsync(criteria);
         }
 
         public async Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
         {
-            var result = await matchRepository.GetMatchDetaiAsync(criteria);
-
-            return result;
+            return await matchRepository.GetMatchDetaiAsync(criteria);
         }
 
         public async Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria)
         {
-            var result = await baseService.GetDataAsync<MatchIncident>(criteria);
-
-            return result;
+            return await baseService.GetDataAsync<MatchIncident>(criteria);
         }
 
         public async Task<Statistic> GetMatchStatisticAsync(GetMatchStatisticCriteria criteria)
