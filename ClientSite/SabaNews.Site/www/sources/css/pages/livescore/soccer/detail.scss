@@ -92,6 +92,11 @@
         z-index: 99;
     }
 
+    .duel-participant .icon-live-start, .duel-participant .icon-favourite-outline{
+        top : 3px;
+        right : 3px;
+    }
+
     .sticky-header-scroll {
         .breadcrumb {
             margin-top: 1.3rem;
@@ -154,7 +159,7 @@
 
                 .column-center {
                     @include Mobile {
-                        margin: 0 1rem;
+                        margin: 0 .8rem;
                     }
                 }
 
@@ -166,18 +171,24 @@
                     }
 
                     .team-name {
+                        font-size: 1.6rem;
+
                         @include Mobile {
                             text-align: right;
-                            margin-right: .4rem !important;
+                            margin-right: .6rem !important;
+                            font-size: 1.2rem;
                         }
                     }
                 }
 
                 .away-team {
                     .team-name {
+                        font-size: 1.6rem;
+
                         @include Mobile {
                             text-align: left;
-                            margin-left: .4rem !important;
+                            margin-left: .6rem !important;
+                            font-size: 1.2rem;
                         }
                     }
                 }
@@ -205,12 +216,13 @@
                 }
 
                 .detail-score-wrapper {
-                    font-size: 3.2rem;
-                    padding: .6rem 1.4rem;
+                    font-size: 2.4rem;
+                    padding: .4rem 1.4rem;
+                    border-radius: 5px;
 
                     @include Mobile {
-                        padding: .6rem .8rem;
-                        font-size: 1.4rem;
+                        padding: .4rem .8rem;
+                        font-size: 1.6rem;
                         line-height: 2.4rem;
                     }
                 }

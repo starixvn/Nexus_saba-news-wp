@@ -192,8 +192,8 @@
                             width: 2rem;
 
                             @include Mobile {
-                                width: 1.2rem;
-                                height: 1.2rem;
+                                width: 1.8rem;
+                                height: 1.8rem;
                             }
                         }
                     }
@@ -262,6 +262,7 @@
 
                 @include Mobile {
                     margin: 0 1.5rem;
+                    width: 20%;
                 }
 
                 &.result-league {
