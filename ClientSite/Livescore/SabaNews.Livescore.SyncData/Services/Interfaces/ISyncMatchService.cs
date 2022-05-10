@@ -22,5 +22,7 @@
         Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents);
 
         Task SyncDeletedMatchesAsync(List<DeletedMatch> delMatches);
+
+        Task SyncAllMatchInfoByStartTimeRangeAsync(DateTime? startTime, DateTime? endTime);
     }
 }

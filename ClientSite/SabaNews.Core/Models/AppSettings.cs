@@ -10,5 +10,7 @@
         public bool IsSkipSyncFinishedMatches { get; set; }
         public int HeadToHeadMaxFutureDays { get; set; }
         public int SyncHeadToHeadRowLimit { get; set; }
+        public int NumOfDayPastToSyncMatch { get; set; }
+        public int NumOfDayFutureToSyncMatch { get; set; }
     }
 }

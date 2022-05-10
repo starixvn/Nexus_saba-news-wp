@@ -1,0 +1,38 @@
+﻿namespace SabaNews.Livescore.ScheduledTasks.Workers
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
+    using SabaNews.Livescore.ScheduledTasks.Constants;
+    using SabaNews.Livescore.ScheduledTasks.Helpers;
+    using SabaNews.Livescore.ScheduledTasks.Models;
+    using SabaNews.Livescore.SyncData.Services;
+
+    internal class SyncMatchByUpdatedTimeInPastWorker : WorkerBase
+    {
+        private readonly ISyncMatchService syncMatchService;
+        private readonly AppSettings appSettings;
+
+        public SyncMatchByUpdatedTimeInPastWorker(
+            ISyncMatchService syncMatchService,
+            List<ScheduledTaskSettings> jobSettings,
+            AppSettings appSettings,
+            ILogServiceProvider logService)
+                : base(logService)
+        {
+            this.syncMatchService = syncMatchService;
+            this.appSettings = appSettings;
+            jobSetting = ScheduledTaskHelper.GetJobConfig(jobSettings, JobName.SyncMatchByUpdatedTimeInPast);
+        }
+
+        public override async Task DoWorkAsync()
+        {
+            var endTime = DateTime.UtcNow.Date.AddSeconds(-1);
+            var startTime = endTime.AddDays(appSettings.NumOfDayPastToSyncMatch);
+
+            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAsync(startTime, endTime);
+        }
+    }
+}

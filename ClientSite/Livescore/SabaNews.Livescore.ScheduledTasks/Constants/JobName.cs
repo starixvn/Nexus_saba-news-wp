@@ -3,6 +3,8 @@
     public static class JobName
     {
         public const string SyncAllMatchByUpdatedTime = "SyncAllMatchByUpdatedTime";
+        public const string SyncMatchByUpdatedTimeInPast = "SyncMatchByUpdatedTimeInPast";
+        public const string SyncMatchByUpdatedTimeFromCurrentToFuture = "SyncMatchByUpdatedTimeFromCurrentToFuture";
         public const string SyncLeagueListByLastUpdatedTime = "SyncLeagueListByLastUpdatedTime";
         public const string SyncLeagueListGreaterThanLeagueId = "SyncLeagueListGreaterThanLeagueId";
         public const string SyncTeamListByLastUpdatedTime = "SyncTeamListByLastUpdatedTime";

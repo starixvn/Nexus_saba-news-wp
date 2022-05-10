@@ -5,18 +5,26 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Enum;
+    using SabaNews.Livescore.Models.Synchronous;
     using SabaNews.Livescore.Provider.API.Models.Matches;
+    using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.SyncData.Criteria.Matches;
     using SabaNews.Livescore.SyncData.Helpers;
 
     public class SyncMatchService : ISyncMatchService
     {
         private readonly IBaseService baseService;
+        private readonly IFetchMatchService fetchMatchService;
+        private readonly AppSettings appSettings;
 
-        public SyncMatchService(IBaseService baseService)
+        public SyncMatchService(IBaseService baseService, IFetchMatchService fetchMatchService, AppSettings appSettings)
         {
             this.baseService = baseService;
+            this.fetchMatchService = fetchMatchService;
+            this.appSettings = appSettings;
         }
 
         public async Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches)
@@ -104,6 +112,81 @@
                 };
 
                 await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        public async Task SyncAllMatchInfoByStartTimeRangeAsync(DateTime? startTime, DateTime? endTime)
+        {
+            var lastUpdatedTime = await GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime);
+            var param = new SyncMatchParams
+            {
+                SportId = (int)SportType.Soccer,
+                StartTime = startTime,
+                EndTime = endTime,
+                LastUpdatedTime = lastUpdatedTime,
+                RowLimit = appSettings.BatchSizeSyncMatches
+            };
+            var matches = await fetchMatchService.FetchMatchListAsync(param);
+
+            if (matches is not null && matches.Any())
+            {
+                await SyncMatchByLastUpdatedTimeAsync(matches);
+
+                await SyncMatchDetais(matches);
+            }
+        }
+
+        private async Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime)
+        {
+            var criteria = new GetLastUpdatedTimeInDateRangeCriteria
+            {
+                StartTime = startTime,
+                EndTime = endTime
+            };
+
+            return await baseService.GetDataEntityAsync<DateTime>(criteria);
+        }
+
+        private async Task SyncMatchDetais(List<MatchResponse> matches)
+        {
+            var matchIds = matches.Select(m => m.MatchId).ToArray();
+
+            await SyncMatchDetailByIdsAsync(matchIds);
+
+            var syncLineupMatchIds = matches.Where(m => m.IsLineUp).Select(i => i.MatchId).ToArray();
+
+            await SyncLinupAsync(syncLineupMatchIds);
+            await SyncIncidents(matchIds);
+        }
+
+        private async Task SyncMatchDetailByIdsAsync(long[] matchIds)
+        {
+            var fetchMatchDetailParam = new SyncMatchParams
+            {
+                MatchIds = matchIds,
+                RowLimit = appSettings.BatchSizeSyncMatches
+            };
+            var matches = await fetchMatchService.FetchMatchDetailAsync(fetchMatchDetailParam);
+
+            await SyncMatchStatisticAsync(matches);
+        }
+
+        private async Task SyncLinupAsync(long[] matchIds)
+        {
+            if (matchIds is not null && matchIds.Any())
+            {
+                var lineups = await fetchMatchService.FetchMatchLineupAsync(matchIds);
+
+                await SyncMatchLineupByIdsAsync(lineups);
+            }
+        }
+
+        private async Task SyncIncidents(long[] matchIds)
+        {
+            foreach (var matchId in matchIds)
+            {
+                var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
+                await SyncMultipleMatchIncidentAsync(incidents);
             }
         }
     }
