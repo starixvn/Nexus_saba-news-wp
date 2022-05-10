@@ -29,7 +29,7 @@
     }
 
     .name-th {
-        font-weight: 700;
+        font-weight: 600;
 
         @include Mobile {
             font-size: 1.2rem;
@@ -41,7 +41,11 @@
 }
 
 .item-th-time {
-    font-size: 1.4rem !important
+    font-size: 1.4rem !important;
+
+    @include Mobile {
+        font-size: 1.2rem !important;
+    }
 }
 
 .time-line {
@@ -69,15 +73,15 @@
 
     &-main {
         margin-top: 1rem;
-        padding-bottom: 1.2rem;
+        padding-bottom: .2rem;
 
         .line-up-live {
-            margin: 1.2rem 0;
+            margin: 1rem 0;
 
             @include Mobile {
                 font-size: 1.2rem;
                 line-height: 1.6rem;
-                margin: 1rem 0;
+                margin: .8rem 0;
             }
 
             &-item {
@@ -120,7 +124,7 @@
                         }
 
                         &-name {
-                            font-weight: 700;
+                            font-weight: 600;
                         }
 
                         .sp-score {
@@ -135,7 +139,7 @@
                     }
 
                     &.item-th-home {
-                        padding-right: 2rem;
+                        padding-right: 1rem;
                         border-right: 1px solid $border-color;
                         justify-content: flex-end;
 
@@ -171,7 +175,7 @@
                     }
 
                     &.item-th-away {
-                        padding-left: 2rem;
+                        padding-left: 1rem;
                         border-left: 1px solid $border-color;
 
                         .in-out-icon {
@@ -240,7 +244,7 @@
 
 
 .head-top-team {
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     background: $bg-today;
     border: 1px solid $border-today;
     border-radius: 5px;
@@ -248,7 +252,7 @@
     padding: .6rem 1.3rem;
 
     @include Mobile {
-        margin: 1rem auto;
+        margin: .4rem auto;
     }
 
     .time-event {
@@ -275,7 +279,7 @@
 
             @include Mobile {
                 font-size: 1.4rem;
-                line-height: 1.9rem;
+                line-height: 1rem;
             }
         }
     }
