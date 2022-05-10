@@ -2,7 +2,8 @@
 import DataService from '@jsroot/common/dataService';
 import {
     setMatch,
-    setMajorLeagues
+    setMajorLeagues,
+    setActiveTab
 } from './soccerMatchDetailSlice';
 
 const getMatchDetail = () => async dispatch => {
@@ -27,5 +28,6 @@ export const ActionCreators = {
     setMatch,
     setMajorLeagues,
     getMatchDetail,
-    getMajorLeagues
+    getMajorLeagues,
+    setActiveTab
 };

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -7,20 +7,15 @@ import queryString from 'query-string';
 import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-class FunctionBar extends PureComponent {
+class FunctionBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            activeTab: 'dien-bien'
-        };
     }
 
     componentDidMount() {
         const tabStatus = this.updateTabStatus();
         const defaultTab = this.getDefaultActiveKey(tabStatus);
-        this.setState({
-            activeTab: defaultTab
-        });
+        this.props.setActiveTab(defaultTab);
     }
 
     updateTabStatus = () => {
@@ -113,16 +108,14 @@ class FunctionBar extends PureComponent {
                 left: 0,
                 behavior: 'smooth'
             });
-            this.setState({
-                activeTab: tab
-            });
+            this.props.setActiveTab(tab);
             this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${tab}`));
         }
     };
 
     render() {
         const tabStatus = this.updateTabStatus();
-        const { activeTab } = this.state;
+        const { activeTab } = this.props;
         return (
             <>
                 <div className="detail-function-bar">
@@ -163,8 +156,8 @@ const FunctionBarWithNavigation = withNavigation(FunctionBar);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { match } = state;
-    return { match };
+    const { match, activeTab } = state;
+    return { match, activeTab };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FunctionBarWithNavigation);
