@@ -67,7 +67,65 @@
         opacity: 0;
     }
 }
+.live {
+    .soccer-match-stage {
+        span {
+            font-size: 1.5rem;
 
+            @include Mobile {
+                font-size: 1.1rem;
+            }
+
+            &:before {
+                left: -15px;
+                top: 8px;
+
+                @include Mobile {
+                    top: 5px;
+                }
+            }
+
+            &:after {
+                left: -19px;
+                top: 4px;
+
+                @include Mobile {
+                    top: 1px;
+                }
+            }
+        }
+    }
+}
+
+.live-midle {
+    .soccer-match-stage {
+        span {
+            font-size: 1.2rem;
+
+            @include Mobile {
+                font-size: .8rem;
+            }
+
+            &:before {
+                left: -15px;
+                top: 5px;
+
+                @include Mobile {
+                    top: 2px;
+                }
+            }
+
+            &:after {
+                left: -19px;
+                top: 1px;
+
+                @include Mobile {
+                    top: -2px;
+                }
+            }
+        }
+    }
+}
 
 .detail-fixed {
     position: fixed;
@@ -91,6 +149,7 @@
         transition: .2s all ease;
         z-index: 99;
     }
+
 
     .duel-participant .icon-live-start, .duel-participant .icon-favourite-outline{
         top : 3px;
@@ -251,32 +310,4 @@
     }
 }
 
-.live {
-    .soccer-match-stage {
-        span {
-            font-size: 1.5rem;
 
-            @include Mobile {
-                font-size: 1.1rem;
-            }
-
-            &:before {
-                left: -15px;
-                top: 8px;
-
-                @include Mobile {
-                    top: 5px;
-                }
-            }
-
-            &:after {
-                left: -19px;
-                top: 4px;
-
-                @include Mobile {
-                    top: 1px;
-                }
-            }
-        }
-    }
-}
