@@ -650,7 +650,7 @@
         left: -.8rem;
         top: 3rem;
         transition: opacity .3s;
-
+        z-index : 999999;
         @include Mobile {
             left: 2.2rem;
         }

@@ -703,7 +703,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     border-radius: 4px;
     left: -.8rem;
     top: 3rem;
-    transition: opacity .3s; }
+    transition: opacity .3s;
+    z-index: 999999; }
     @media (max-device-width: 767px) {
       .languages-box .languages-list {
         left: 2.2rem; } }
