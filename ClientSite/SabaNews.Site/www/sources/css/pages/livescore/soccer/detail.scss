@@ -78,9 +78,8 @@
 .detail-fixed {
     position: fixed;
     top: 4.9rem;
-    z-index: 99;
+    z-index: -1;
     background: $primary-bg;
-    z-index: 99;
     width: 100%;
     max-width: 71.4rem;
     opacity: 0;
@@ -97,6 +96,7 @@
     &.active-scroll {
         opacity: 1;
         transition: .2s all ease;
+        z-index: 99;
     }
 
     .sticky-header-scroll {
@@ -127,7 +127,8 @@
 
         .detail-function-bar {
             padding-top: .4rem;
-            margin-bottom : 0;
+            margin-bottom: 0;
+
             @include tableMobile {
                 margin: 0 1.2rem;
             }
