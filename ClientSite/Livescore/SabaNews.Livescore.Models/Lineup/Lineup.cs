@@ -2,7 +2,7 @@
 {
     public class Lineup
     {
-        public int MatchId { get; set; }
+        public long MatchId { get; set; }
         public string HomeFormation { get; set; }
         public string AwayFormation { get; set; }
         public string HomeCoach { get; set; }

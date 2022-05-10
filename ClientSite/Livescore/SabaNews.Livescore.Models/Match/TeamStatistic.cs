@@ -2,48 +2,48 @@
 {
     public class TeamStatistic
     {
-        public int TeamId { get; set; }
+        public long TeamId { get; set; }
         public string TeamNameEN { get; set; }
         public string TeamFullNameEN { get; set; }
         public string Icon { get; set; }
-        public int Goal { get; set; }
-        public int CornerKick { get; set; }
-        public int YellowCard { get; set; }
-        public int RedCard { get; set; }
-        public int OutBall { get; set; }
-        public int FreeKick { get; set; }
-        public int GoalKick { get; set; }
-        public int PenaltyKick { get; set; }
-        public int YellowToRed { get; set; }
-        public int FailPenaltyKick { get; set; }
-        public int OwnGoal { get; set; }
-        public int InjuryTime { get; set; }
-        public int OnGoal { get; set; }
-        public int MissGoal { get; set; }
-        public int Attack { get; set; }
-        public int DangerAttack { get; set; }
-        public int ControlRate { get; set; }
-        public int ExtraScore { get; set; }
-        public int PenaltyScore { get; set; }
-        public int Assists { get; set; }
-        public int First { get; set; }
-        public int Follow { get; set; }
-        public int Foul { get; set; }
+        public short Goal { get; set; }
+        public short CornerKick { get; set; }
+        public short YellowCard { get; set; }
+        public short RedCard { get; set; }
+        public short OutBall { get; set; }
+        public short FreeKick { get; set; }
+        public short GoalKick { get; set; }
+        public short PenaltyKick { get; set; }
+        public short YellowToRed { get; set; }
+        public short FailPenaltyKick { get; set; }
+        public short OwnGoal { get; set; }
+        public short InjuryTime { get; set; }
+        public short OnGoal { get; set; }
+        public short MissGoal { get; set; }
+        public short Attack { get; set; }
+        public short DangerAttack { get; set; }
+        public short ControlRate { get; set; }
+        public short ExtraScore { get; set; }
+        public short PenaltyScore { get; set; }
+        public short Assists { get; set; }
+        public short First { get; set; }
+        public short Follow { get; set; }
+        public short Foul { get; set; }
         public string Grade { get; set; }
-        public int HalfCorner { get; set; }
+        public short HalfCorner { get; set; }
         public string HalfPossession { get; set; }
-        public int Head { get; set; }
-        public int HeadSuccess { get; set; }
-        public int Intercept { get; set; }
-        public int OffSide { get; set; }
-        public int OnDoor { get; set; }
-        public int Pass { get; set; }
+        public short Head { get; set; }
+        public short HeadSuccess { get; set; }
+        public short Intercept { get; set; }
+        public short OffSide { get; set; }
+        public short OnDoor { get; set; }
+        public short Pass { get; set; }
         public string PassSuccess { get; set; }
-        public int Past { get; set; }
-        public int Shoot { get; set; }
-        public int ShootOut { get; set; }
-        public int ShootStop { get; set; }
-        public int Slide { get; set; }
-        public int Steals { get; set; }
+        public short Past { get; set; }
+        public short Shoot { get; set; }
+        public short ShootOut { get; set; }
+        public short ShootStop { get; set; }
+        public short Slide { get; set; }
+        public short Steals { get; set; }
     }
 }
