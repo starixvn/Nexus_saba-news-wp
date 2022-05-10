@@ -247,7 +247,42 @@ BEGIN
 		,GoalDiffAway
 		,UpdatedAt
 		,NOW()
-	FROM tmp_SeasonStandings ss;
+	FROM tmp_SeasonStandings ss
+	ON DUPLICATE KEY UPDATE
+		GroupName = ss.GroupName
+		,Conference = ss.Conference
+		,Position = ss.Position
+		,PositionHome = ss.PositionHome
+		,PositionAway = ss.PositionAway
+		,Total = ss.Total
+		,TotalHome = ss.TotalHome
+		,TotalAway = ss.TotalAway
+		,Won = ss.Won
+		,WonHome = ss.WonHome
+		,WonAway = ss.WonAway
+		,Loss = ss.Loss
+		,LossHome = ss.LossHome
+		,LossAway = ss.LossAway
+		,Draw = ss.Draw
+		,DrawHome = ss.DrawHome
+		,DrawAway = ss.DrawAway
+		,PromotionId = ss.PromotionId
+		,Promotion = ss.Promotion
+		,Points = ss.Points
+		,PointsHome = ss.PointsHome
+		,PointsAway = ss.PointsAway
+		,DeductPoints = ss.DeductPoints
+		,Goals = ss.Goals
+		,GoalsHome = ss.GoalsHome
+		,GoalsAway = ss.GoalsAway
+		,GoalsAgainst = ss.GoalsAgainst
+		,GoalsAgainstHome = ss.GoalsAgainstHome
+		,GoalsAgainstAway = ss.GoalsAgainstAway
+		,GoalDiff = ss.GoalDiff
+		,GoalDiffHome = ss.GoalDiffHome
+		,GoalDiffAway = ss.GoalDiffAway
+		,UpdatedAt = ss.UpdatedAt
+		,SyncedDate = NOW();
 END;
 
 //
