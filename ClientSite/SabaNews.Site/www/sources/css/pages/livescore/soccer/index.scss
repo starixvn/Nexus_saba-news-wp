@@ -27,8 +27,9 @@ main {
         @include tableMobile {
             font-size: 1.2rem;
         }
-        @include iphone5{
-            font-size : 1rem;
+
+        @include iphone5 {
+            font-size: 1rem;
         }
     }
 
@@ -37,6 +38,7 @@ main {
         font-size: 1.4rem;
     }
 }
+
 .count-start {
     .icon-live-start {
         @include Mobile {
@@ -45,4 +47,8 @@ main {
     }
 }
 
-
+.livescore-like {
+    @include tableMobile {
+        width: 4rem !important;
+    }
+}

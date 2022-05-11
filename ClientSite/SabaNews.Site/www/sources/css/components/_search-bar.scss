@@ -7,11 +7,10 @@
 
     .livescore-soccer-search-bar {
         position: relative;
-        width: 100%;
         margin-right: 0;
 
         @include tableMobile {
-            width: 90%;
+            width: 100%;
             margin-right: .4rem;
         }
 
@@ -53,6 +52,7 @@
 
 
     .livescore-like {
+        position: relative;
         width: 25%;
         display: flex;
         cursor: pointer;
@@ -65,7 +65,7 @@
         display: none;
 
         @include tableMobile {
-            width: 10%;
+            width: 3rem;
             margin-left: .4rem;
             display: flex;
         }
@@ -86,7 +86,6 @@
         }
 
         .count-start {
-            position: relative;
             margin-top: .5rem;
             /*[data-badge] {
                 position: relative;
@@ -129,8 +128,8 @@
                 border-radius: 3px;
 
                 @include tableMobile {
-                    right: -3px;
-                    top: -3px;
+                    right: 1px;
+                    top: 1px;
                     padding: .2rem;
                     font-size: .8rem;
                     line-height: 1;
