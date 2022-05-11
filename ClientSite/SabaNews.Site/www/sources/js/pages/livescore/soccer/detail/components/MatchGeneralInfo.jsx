@@ -142,7 +142,7 @@ export default class MatchGeneralInfo extends Component {
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
-        const isIntermission = generalInfo.status === MatchStatus.Intermission
+        const isIntermission = generalInfo.status === MatchStatus.Intermission;
         const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
         return (
             <>

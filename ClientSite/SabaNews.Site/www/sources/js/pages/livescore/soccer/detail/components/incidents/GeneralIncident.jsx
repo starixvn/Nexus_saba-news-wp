@@ -11,12 +11,22 @@ export default class GeneralIncident extends Component {
         return false;
     };
 
+    getBorder = (incident, position) => {
+        let style = null;
+        if(incident.position !== IncidentPosition.Home && position === IncidentPosition.Home ) {
+            style = { borderRight: '1px solid red'};
+        } else if(incident.position !== IncidentPosition.Away && position === IncidentPosition.Away) {
+            style = { borderLeft: '1px solid red'};
+        }
+        return style;
+    }
+
     renderSubsitution = () => {
         const { incident } = this.props;
         return (
             <div className="line-up-live">
                 <div className="line-up-live-item flexbox ">
-                    <div className="inner-item-db flexbox item-th-home">
+                    <div className="inner-item-db flexbox item-th-home" style={this.getBorder(incident, IncidentPosition.Home)}>
                         {
                             incident.position === IncidentPosition.Home &&
                             <>
@@ -40,7 +50,7 @@ export default class GeneralIncident extends Component {
                             3.62148 15.15 5.36148 16.71L3.06148 19H11.0615V11L8.76148 13.3C6.80148 11.84 5.52148 9.52 5.52148 6.88Z" fill="#E94633" />
                         </svg>
                     </div>
-                    <div className="inner-item-db flexbox item-th-away">
+                    <div className="inner-item-db flexbox item-th-away" style={this.getBorder(incident, IncidentPosition.Away)}>
                         {
                             incident.position === IncidentPosition.Away &&
                             <>
@@ -67,7 +77,7 @@ export default class GeneralIncident extends Component {
         return (
             <div className="line-up-live">
                 <div className="line-up-live-item flexbox">
-                    <div className="inner-item-db flexbox item-th-home">
+                    <div className="inner-item-db flexbox item-th-home" style={this.getBorder(incident, IncidentPosition.Home)}>
                         {
                             incident.position === IncidentPosition.Home &&
                             <ul className="item-th flexbox">
@@ -98,7 +108,7 @@ export default class GeneralIncident extends Component {
                             <IncidentIcon type={incident.type} />
                         </li>
                     </ul>
-                    <div className="inner-item-db flexbox item-th-away">
+                    <div className="inner-item-db flexbox item-th-away" style={this.getBorder(incident, IncidentPosition.Away)}>
                         {
                             incident.position === IncidentPosition.Away &&
                             <ul className="item-th flexbox">

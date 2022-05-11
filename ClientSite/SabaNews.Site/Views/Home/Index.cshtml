@@ -32,7 +32,7 @@
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 }
 
-@(await Component.InvokeAsync("Menu", new { page = "home-page" }))
+@(await Component.InvokeAsync("Menu", new { page = "home-page", CategorySlug = "/" }))
 <section class="main">
     <div class="colums-main">
 
