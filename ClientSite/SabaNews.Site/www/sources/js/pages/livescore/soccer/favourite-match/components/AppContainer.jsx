@@ -114,7 +114,7 @@ export class AppContainer extends Component {
                         <Breadscrum currentPage = 'Trận đấu quan tâm' currentPageUrl={window.location.href} />
                         <div className="livescore-league-header-detail">
                             <div className="livescore-league-header-detail-group">
-                                <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start" /></div>
+                                <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start favoroute-icon" /></div>
                                 <div className="livescore-league-header-detail-name">
                                     Trận đấu quan tâm
                                 </div>
