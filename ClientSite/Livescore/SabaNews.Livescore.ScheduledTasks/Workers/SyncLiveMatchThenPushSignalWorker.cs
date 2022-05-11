@@ -53,7 +53,7 @@
 
             if (matchIds is not null && matchIds.Length > 0)
             {
-                await SyncMatchInfoAsync(matchIds);
+                await SyncMatchInfoAsync();
                 await syncMatchService.SyncMatchStatisticAsync(liveMatches);
 
                 var liveMatchList = await matchService.GetLiveMatchAsync();
@@ -67,20 +67,24 @@
             }
         }
 
-        private async Task SyncMatchInfoAsync(long[] matchIds)
+        private async Task SyncMatchInfoAsync()
         {
-            var param = new SyncMatchParams
+            var notExistedMatches = await liveMatchService.GetNotExistedMatchAsyc();
+            if (notExistedMatches.Any())
             {
-                SportId = (int)SportType.Soccer,
-                MatchIds = matchIds,
-                RowLimit = appSettings.BatchSizeSyncMatches
-            };
+                var param = new SyncMatchParams
+                {
+                    SportId = (int)SportType.Soccer,
+                    MatchIds = notExistedMatches.ToArray(),
+                    RowLimit = appSettings.BatchSizeSyncMatches
+                };
 
-            var matches = await fetchMatchService.FetchMatchListAsync(param);
+                var matches = await fetchMatchService.FetchMatchListAsync(param);
 
-            if (matches is not null && matches.Any())
-            {
-                await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
+                if (matches is not null && matches.Any())
+                {
+                    await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
+                }
             }
         }
 

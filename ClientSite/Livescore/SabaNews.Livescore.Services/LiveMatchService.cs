@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Services
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Services.Criteria.LiveMatch;
@@ -12,6 +13,12 @@
         public LiveMatchService(IBaseService baseService)
         {
             this.baseService = baseService;
+        }
+
+        public async Task<IEnumerable<long>> GetNotExistedMatchAsyc()
+        {
+            var criteria = new GetNotExistedMatchCriteria();
+            return await baseService.GetDataAsync<long>(criteria);
         }
 
         public async Task InsertLiveMatchToTemporaryTable(long[] matchIds)

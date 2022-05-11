@@ -25,6 +25,7 @@
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
         <Setting Key="Livescore_Livematch_Temporary_Insert" SpName="Livescore_Livematch_Temporary_Insert" DbName ="sabasports" Plain="0" />
+        <Setting Key="Livescore_Livematch_GetNotExistedMatch" SpName="Livescore_Livematch_GetNotExistedMatch" DbName ="sabasports" Plain="0" />
     </Function>
     <Function Name="Team">
         <Setting Key="Livescore_Sync_Team_GetLastUpdatedTime" SpName="Livescore_Sync_Team_GetLastUpdatedTime" DbName="sabasports" Plain="0" />
