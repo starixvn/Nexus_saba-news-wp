@@ -33,6 +33,7 @@
             border-bottom: none;
             height: 7rem;
         }
+
         .container {
             display: flex;
             justify-content: space-between;
@@ -423,13 +424,14 @@
 
                 .menu-item {
                     position: relative;
-                    display : flex;
-                    align-items : center;
+                    display: flex;
+                    align-items: center;
+
                     [class*="icon-"] {
                         font-size: 2.4rem;
                         cursor: pointer;
                         text-decoration: none;
-                        display : block;
+                        display: block;
                     }
 
                     &:first-child {
@@ -576,6 +578,7 @@
         left: 1.2rem;
         z-index: 9999;
     }
+
     .line-mb {
         display: block;
         position: absolute;
@@ -652,7 +655,8 @@
         left: -.8rem;
         top: 3rem;
         transition: opacity .3s;
-        z-index : 999999;
+        z-index: 999999;
+
         @include Mobile {
             left: 2.2rem;
         }
@@ -730,7 +734,8 @@
     background: url("../../images/man.png") no-repeat;
     width: 36px;
     height: 36px;
-    margin-left : .3rem;
+    margin-left: .3rem;
+
     @include Mobile {
         position: relative;
         top: -2px;
@@ -745,16 +750,21 @@
 
         .top-header {
             width: 100%;
-            z-index: 10000;
+            z-index: 99999999;
             display: block;
             overflow: auto;
             height: calc(100vh - 7rem);
             top: 7rem;
             bottom: 0;
+            position: fixed;
         }
 
         .header .child-mobile-menu {
             display: none;
+        }
+
+        .child-mobile-menu {
+            position: relative;
         }
     }
 }

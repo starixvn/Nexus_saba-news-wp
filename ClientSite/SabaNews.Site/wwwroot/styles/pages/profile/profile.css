@@ -752,14 +752,17 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     height: 100%; }
   .hidden-body .top-header {
     width: 100%;
-    z-index: 10000;
+    z-index: 99999999;
     display: block;
     overflow: auto;
     height: calc(100vh - 7rem);
     top: 7rem;
-    bottom: 0; }
+    bottom: 0;
+    position: fixed; }
   .hidden-body .header .child-mobile-menu {
-    display: none; } }
+    display: none; }
+  .hidden-body .child-mobile-menu {
+    position: relative; } }
 
 .overflow-modal {
   overflow: hidden; }
