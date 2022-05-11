@@ -40,11 +40,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-
-    @include tableMobile {
-        overflow-x: hidden;
-        overflow-x: hidden;
-    }
 }
 
 .hidden-body {

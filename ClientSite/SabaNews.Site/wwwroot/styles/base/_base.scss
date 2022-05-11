@@ -42,11 +42,6 @@ body {
 .hidden-body, .overflow-modal {
     overflow: hidden;
 }
-.wapper {
-    @include tableMobile {
-        overflow-x: hidden;
-    }
-}
 
 .hidden-body {
     main {
