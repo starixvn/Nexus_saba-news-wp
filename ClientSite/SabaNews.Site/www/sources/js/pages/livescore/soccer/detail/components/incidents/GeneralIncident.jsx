@@ -14,9 +14,9 @@ export default class GeneralIncident extends Component {
     getBorder = (incident, position) => {
         let style = null;
         if(incident.position !== IncidentPosition.Home && position === IncidentPosition.Home ) {
-            style = { borderRight: '1px solid red'};
+            style = { borderRight: 'none'};
         } else if(incident.position !== IncidentPosition.Away && position === IncidentPosition.Away) {
-            style = { borderLeft: '1px solid red'};
+            style = { borderLeft: 'none'};
         }
         return style;
     }
