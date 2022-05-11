@@ -14,14 +14,6 @@
 body {
     font-size: 1.4rem;
 }
-
-main {
-    @include tableMobile {
-        position: relative;
-        overflow-x: inherit;
-    }
-}
-
 .livescore-soccer {
     .icon-live-realtime {
         @include tableMobile {
