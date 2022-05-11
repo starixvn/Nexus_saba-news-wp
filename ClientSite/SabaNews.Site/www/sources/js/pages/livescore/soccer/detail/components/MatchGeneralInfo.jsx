@@ -142,6 +142,8 @@ export default class MatchGeneralInfo extends Component {
         const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
+        const isIntermission = generalInfo.status === MatchStatus.Intermission
+        const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
         return (
             <>
                 <div className="sticky-header">
@@ -163,23 +165,26 @@ export default class MatchGeneralInfo extends Component {
                     </div>
                     <div className="duel-participant">
                         <FavouriteIcon matchId={generalInfo.matchId} />
-                        <div className="flex-league first-league">
-                            <div className="column column-left home-team">
-                                <ul className="soccer-team-status">
-                                    {this.getTeamStatus(true)}
-                                </ul>
+                        {
+                            !isPreMatch &&
+                            <div className="flex-league first-league">
+                                <div className="column column-left home-team">
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(true)}
+                                    </ul>
+                                </div>
+                                <div className={`column column-center ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-middle' : ''}`}>
+                                    {
+                                        generalInfo.status !== MatchStatus.NotStarted && <MatchStage match={generalInfo} />
+                                    }
+                                </div>
+                                <div className="column column-right away-team">
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(false)}
+                                    </ul>
+                                </div>
                             </div>
-                            <div className={`column column-center ${isLiveMatch ? 'live' : ''}`}>
-                                {
-                                    generalInfo.status !== MatchStatus.NotStarted && <MatchStage match={generalInfo} />
-                                }
-                            </div>
-                            <div className="column column-right away-team">
-                                <ul className="soccer-team-status">
-                                    {this.getTeamStatus(false)}
-                                </ul>
-                            </div>
-                        </div>
+                        }
                         <div className="flex-league">
                             <div className="column column-left home-team">
                                 <ul className="team">
@@ -201,21 +206,24 @@ export default class MatchGeneralInfo extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="flex-league">
-                            <div className="column column-left home-team sticky-position">
-                                <div className="duel-participant-number">
-                                    {this.getBallAndCardNumber(IncidentPosition.Home)}
+                        {
+                            !isPreMatch &&
+                            <div className="flex-league">
+                                <div className="column column-left home-team sticky-position">
+                                    <div className="duel-participant-number">
+                                        {this.getBallAndCardNumber(IncidentPosition.Home)}
+                                    </div>
+                                </div>
+                                <ul className="column column-center detail-score-status">
+                                    {this.getSubScore()}
+                                </ul>
+                                <div className="column column-right away-team sticky-position">
+                                    <div className="duel-participant-number">
+                                        {this.getBallAndCardNumber(IncidentPosition.Away)}
+                                    </div>
                                 </div>
                             </div>
-                            <ul className="column column-center detail-score-status">
-                                {this.getSubScore()}
-                            </ul>
-                            <div className="column column-right away-team sticky-position">
-                                <div className="duel-participant-number">
-                                    {this.getBallAndCardNumber(IncidentPosition.Away)}
-                                </div>
-                            </div>
-                        </div>
+                        }
                     </div>
                     <FunctionBar />
                 </div>
