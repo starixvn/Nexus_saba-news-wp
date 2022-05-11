@@ -14,6 +14,7 @@
     {
         private const int fiveItem = 5;
         private const int firstItem = 0;
+        private const string splitOnMatch = "LeagueId, HomeTeamId, AwayTeamId";
         public async Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
@@ -51,7 +52,7 @@
 
                             return match;
                         },
-                        "LeagueId, HomeTeamId, AwayTeamId");
+                        splitOnMatch);
 
                     var team = await multi.ReadFirstOrDefaultAsync<H2HTeam>();
                     var common = new List<Match>();
@@ -93,7 +94,7 @@
 
                             return match;
                         },
-                        "LeagueId, HomeTeamId, AwayTeamId");
+                        splitOnMatch);
 
                     var incidents = await multi.ReadAsync<MatchIncident>();
                     var homeStatistic = await multi.ReadFirstOrDefaultAsync<TeamStatistic>();
@@ -140,7 +141,7 @@
 
                             return match;
                         },
-                        splitOn: "LeagueId, HomeTeamId, AwayTeamId",
+                        splitOn: splitOnMatch,
                         parameterSet: criteria);
                 return matches;
             }
@@ -159,7 +160,7 @@
 
                             return match;
                         },
-                        splitOn: "LeagueId, HomeTeamId, AwayTeamId",
+                        splitOn: splitOnMatch,
                         parameterSet: criteria);
                 return matches.ToList();
             }

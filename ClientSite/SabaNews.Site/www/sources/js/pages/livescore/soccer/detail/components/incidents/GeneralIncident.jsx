@@ -19,7 +19,7 @@ export default class GeneralIncident extends Component {
             style = { borderLeft: 'none'};
         }
         return style;
-    }
+    };
 
     renderSubsitution = () => {
         const { incident } = this.props;
