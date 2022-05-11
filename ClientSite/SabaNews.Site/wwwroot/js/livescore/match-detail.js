@@ -31,7 +31,7 @@ var checkScroll = function (e) {
         $('.sticky-header').removeClass('active-scroll');
     }
 }
-function setMainWidth() {
+var setMainWidth = function () {
     var mainWidth = $('.livescore-soccer-main').width();
     $('.detail-fixed').css('max-width', mainWidth)
 }
