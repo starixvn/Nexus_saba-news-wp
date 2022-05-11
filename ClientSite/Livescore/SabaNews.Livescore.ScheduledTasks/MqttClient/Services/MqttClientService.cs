@@ -94,27 +94,25 @@
         {
             var topic = eventArgs.ApplicationMessage.Topic;
             var json = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
-            if (topic.StartsWith("tlive"))
+            if (topic.StartsWith("/tlive"))
             {
                 var textLiveData = JsonConvert.DeserializeObject<MqttTextLiveIncidents>(json);
                 await HandleTextLiveMessageResponse(textLiveData);
             }
 
-            if (topic.StartsWith("stats"))
+            if (topic.StartsWith("/stats"))
             {
-                var match = JsonConvert.DeserializeObject<MqttMatch>(json);
-                await HandleTextLiveMessageResponse(match);
+                var match = JsonConvert.DeserializeObject<MqttLiveMatch>(json);
+                await HandleMatchDetailResponse(match);
             }
         }
 
-        private Task HandleTextLiveMessageResponse(MqttMatch match)
+        private async Task HandleMatchDetailResponse(MqttLiveMatch match)
         {
-            throw new System.NotImplementedException();
         }
 
-        private Task HandleTextLiveMessageResponse(MqttTextLiveIncidents textLiveData)
+        private async Task HandleTextLiveMessageResponse(MqttTextLiveIncidents textLiveData)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

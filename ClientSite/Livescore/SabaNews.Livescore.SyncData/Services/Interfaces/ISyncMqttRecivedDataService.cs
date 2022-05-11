@@ -5,7 +5,7 @@
 
     public interface ISyncMqttRecivedDataService
     {
-        Task ReceivedLiveMatchStatistic(MqttMatch match);
+        Task ReceivedLiveMatchStatistic(MqttLiveMatch match);
 
         Task ReceivedLiveMatchTextLive(MqttTextLiveIncidents textLive);
     }

@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Livescore.Models.Mqtt
 {
-    public class MqttMatch
+    public class MqttLiveMatch
     {
         public long MatchId { get; set; }
         public int MatchStatus { get; set; }

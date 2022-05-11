@@ -21,7 +21,7 @@
             await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task ReceivedLiveMatchStatistic(MqttMatch match)
+        public async Task ReceivedLiveMatchStatistic(MqttLiveMatch match)
         {
             var command = new SyncMqttMatchResponseCommand
             {
