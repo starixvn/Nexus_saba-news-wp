@@ -35,9 +35,22 @@ body {
     margin: 0;
 }
 
-
 .hidden-body, .overflow-modal {
     overflow: hidden;
+}
+
+.wapper {
+    @include tableMobile {
+        overflow-x: hidden;
+    }
+}
+
+.hidden-body {
+    main {
+        @include tableMobile {
+            overflow: hidden;
+        }
+    }
 }
 
 #app-container {
