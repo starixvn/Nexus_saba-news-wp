@@ -99,7 +99,7 @@ export default class CommonFunctions {
     static updateFavouriteMatchesCount(matches) {
         const count = matches.length;
         let favCountDesktop = document.querySelector('.livescore-like .like-count');
-        let favCountMobile = document.querySelector('.livescore-like .icon-livescore');
+        let favCountMobile = document.querySelector('.livescore-like .count-start .mobile-count');
         if(favCountDesktop) {
             if(count > 0) {
                 favCountDesktop.classList.add('number-like');
@@ -111,9 +111,11 @@ export default class CommonFunctions {
         }
         if(favCountMobile) {
             if(count > 0) {
-                favCountMobile.setAttribute('data-badge', count);
+                favCountMobile.classList.add('count-number');
+                favCountMobile.innerHTML = count;
             } else {
-                favCountMobile.removeAttribute('data-badge');
+                favCountMobile.classList.remove('count-number');
+                favCountMobile.innerHTML = "";
             }
         }
     }

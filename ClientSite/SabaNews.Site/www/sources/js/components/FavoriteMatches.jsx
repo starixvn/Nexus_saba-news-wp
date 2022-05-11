@@ -29,12 +29,11 @@ const FavoriteMatches = ({ isMobile }) => {
             <>
                 <span>Trận đấu quan tâm</span>
                 <div className="count-start">
+                    <i className="icon-livescore icon-live-start" />
                     {
-                        count > 0
-                            ? <i className="icon-livescore icon-live-start"/>
-                            : <i className="icon-livescore icon-live-start" />
+                        count > 0 &&
+                        <i className={`mobile-count ${count > 0 ? 'count-number' : ''}`}>{count}</i>
                     }
-                    <i className="count-number">{count}</i>
                 </div>
             </>
         );
