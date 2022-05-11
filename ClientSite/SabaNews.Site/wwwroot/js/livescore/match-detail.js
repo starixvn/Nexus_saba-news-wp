@@ -16,6 +16,10 @@
 ////}
 
 
+
+
+
+
 var checkScroll = function (e) {
     var heightSection = $(".sticky-header").innerHeight();
     var top_of_window = window.scrollY;
@@ -27,6 +31,13 @@ var checkScroll = function (e) {
         $('.sticky-header').removeClass('active-scroll');
     }
 }
+function setMainWidth() {
+    var mainWidth = $('.livescore-soccer-main').width();
+    $('.detail-fixed').css('max-width', mainWidth)
+}
+$(window).on("load scroll resize", function () {
+    setMainWidth();
+});
 
 window.addEventListener('scroll', function () { checkScroll() })
 

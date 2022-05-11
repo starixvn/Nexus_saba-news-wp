@@ -135,13 +135,8 @@
     z-index: -1;
     background: $primary-bg;
     width: 100%;
-    max-width: 71.4rem;
     opacity: 0;
     transition: .2s all ease;
-    /*@media screen and (max-width: 1279px) {
-        max-width: 88.1rem;
-    }*/
-
     @include tableMobile {
         position: fixed;
         top: 3.9rem;
