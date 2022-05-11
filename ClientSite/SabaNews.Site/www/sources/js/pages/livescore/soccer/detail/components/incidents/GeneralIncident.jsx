@@ -5,10 +5,10 @@ import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class GeneralIncident extends Component {
     checkIncidentTypeToShowScore = type => {
-        if (type === IncidentStatus.Halftime || type === IncidentStatus.Penalty || type === IncidentStatus.Goal || type === IncidentStatus.OwnGoal) {
-            return true;
-        }
-        return false;
+        return type === IncidentStatus.Halftime
+        || type === IncidentStatus.Penalty
+        || type === IncidentStatus.Goal
+        || type === IncidentStatus.OwnGoal;
     };
 
     getBorder = (incident, position) => {

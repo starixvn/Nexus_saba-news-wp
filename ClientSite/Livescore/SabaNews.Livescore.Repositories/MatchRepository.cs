@@ -12,6 +12,8 @@
 
     public class MatchRepository : IMatchRepository
     {
+        private const int fiveItem = 5;
+        private const int firstItem = 0;
         public async Task<IList<Match>> GetMatchByDateAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
@@ -57,11 +59,11 @@
                     var away = new List<Match>();
                     if (matches.Any() && team != null) {
                         common = matches.Where(item => (item.HomeTeam.TeamId == team.HomeId && item.AwayTeam.TeamId == team.AwayId)
-                                                   || (item.HomeTeam.TeamId == team.AwayId && item.AwayTeam.TeamId == team.HomeId)).Skip(0).Take(5).ToList();
+                                                   || (item.HomeTeam.TeamId == team.AwayId && item.AwayTeam.TeamId == team.HomeId)).Skip(firstItem).Take(fiveItem).ToList();
 
-                        home = matches.Where(item => item.HomeTeam.TeamId == team.HomeId || item.AwayTeam.TeamId == team.HomeId).Skip(0).Take(5).ToList();
+                        home = matches.Where(item => item.HomeTeam.TeamId == team.HomeId || item.AwayTeam.TeamId == team.HomeId).Skip(firstItem).Take(fiveItem).ToList();
 
-                        away = matches.Where(item => item.HomeTeam.TeamId == team.AwayId || item.AwayTeam.TeamId == team.AwayId).Skip(0).Take(5).ToList();
+                        away = matches.Where(item => item.HomeTeam.TeamId == team.AwayId || item.AwayTeam.TeamId == team.AwayId).Skip(firstItem).Take(fiveItem).ToList();
                     }
 
                     return new HeadToHeadDetail

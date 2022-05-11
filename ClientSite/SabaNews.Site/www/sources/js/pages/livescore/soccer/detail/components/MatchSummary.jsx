@@ -10,11 +10,10 @@ import LangHelper from '@jsroot/common/langHelper';
 
 export class MatchSummary extends Component {
     checkIncidentMainTimeEventType = type => {
-        if (type === IncidentStatus.End || type === IncidentStatus.OvertimeEnds
-            || type === IncidentStatus.PenaltyShootoutEnd || type === IncidentStatus.Halftime) {
-            return true;
-        }
-        return false;
+        return type === IncidentStatus.End
+            || type === IncidentStatus.OvertimeEnds
+            || type === IncidentStatus.PenaltyShootoutEnd
+            || type === IncidentStatus.Halftime;
     };
 
 
