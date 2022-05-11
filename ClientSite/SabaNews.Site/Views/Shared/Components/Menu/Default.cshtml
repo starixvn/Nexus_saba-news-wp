@@ -112,7 +112,7 @@
             <div class="nav-menu">
                 <ul class="main-menu">
                     <li class="menu-item">
-                        <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")">Home</a>
+                        <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i  class="icon-home"></i></a>
                     </li>
                     @{ var VideoParentId = 0; }
                     @foreach (var menu in Model.Menus)
@@ -168,7 +168,7 @@
 <div class="child-mobile-menu">
     <ul class="main-child-menu">
         <li class="menu-item">
-            <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")">Home</a>
+            <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
         @foreach (var menu in Model.Menus)
         {

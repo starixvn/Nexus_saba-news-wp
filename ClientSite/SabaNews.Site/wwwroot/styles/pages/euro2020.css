@@ -465,6 +465,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       color: #4f4f4f;
       padding: 0 1.2rem;
       font-weight: bold; }
+      .child-mobile-menu .main-child-menu li a [class*="icon-"] {
+        font-size: 2rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: block; }
 
 .top-header {
   width: 100%;
@@ -507,13 +512,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         flex-wrap: nowrap;
         justify-content: space-around;
         flex-direction: row;
-        height: 4rem;
-        /*@include landscapeTablet {
-                        display: flex;
-                        flex-direction: inherit;
-                        height: 4rem;
-                        padding-bottom: 0;
-                    }*/ }
+        height: 4rem; }
         @media screen and (max-width: 1024px) {
           .top-header .group-menu .nav-menu .main-menu {
             margin: 0;
@@ -527,18 +526,16 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             justify-content: inherit; } }
         .top-header .group-menu .nav-menu .main-menu .menu-item {
           position: relative;
-          /*@include landscapeTablet {
-                            border: none;
-                            order: unset;
-                            width: auto;
-                        }*/ }
-          .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
-            /*@include landscapeTablet {
-                                border: none
-                            }*/ }
-            @media screen and (max-width: 1024px) {
-              .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
-                border-top: 1px solid #E0E0E0; } }
+          display: flex;
+          align-items: center; }
+          .top-header .group-menu .nav-menu .main-menu .menu-item [class*="icon-"] {
+            font-size: 2.4rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: block; }
+          @media screen and (max-width: 1024px) {
+            .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
+              border-top: 1px solid #E0E0E0; } }
           @media screen and (max-width: 1024px) {
             .top-header .group-menu .nav-menu .main-menu .menu-item {
               width: 100%;
@@ -743,10 +740,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .marked-icon {
   background: url("../../images/man.png") no-repeat;
-  display: inline-block;
   width: 36px;
   height: 36px;
-  vertical-align: middle; }
+  margin-left: .3rem; }
   @media (max-device-width: 767px) {
     .marked-icon {
       position: relative;
