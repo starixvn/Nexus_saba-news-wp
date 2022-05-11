@@ -129,11 +129,13 @@
             }
 
             .soccer-match-star-icon {
-                width: 8%;
                 text-align: right;
+                position: absolute;
+                right: 13px;
 
                 @include tableMobile {
                     width: auto;
+                    position: unset
                 }
 
                 .icon-live-right {
@@ -177,7 +179,6 @@
 
     .soccer-match-item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         background: $bg-soccer-item;
         border: 1px solid $border-soccer-item;
@@ -187,6 +188,11 @@
         margin-top: .6rem;
         transition: all .2s ease-in-out;
         cursor: pointer;
+        position: relative;
+
+        @include tableMobile {
+            justify-content: space-between;
+        }
 
         &:first-child {
             margin-top: 0;
@@ -218,6 +224,15 @@
                 }
             }
         }
+
+        .icon-livescore, .soccer-match-stage {
+            margin-right: 1.2rem;
+
+            @include tableMobile {
+                margin-right: 0;
+            }
+        }
+
 
         @include tableMobile {
             padding: .6rem 1rem;
@@ -403,6 +418,7 @@
         font-size: 1.2rem;
     }
 }
+
 .rc-highlight {
     background-color: #FCDE9D !important;
     color: #2F2F2F !important;
