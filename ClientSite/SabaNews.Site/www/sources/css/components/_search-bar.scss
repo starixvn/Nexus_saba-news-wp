@@ -8,9 +8,8 @@
     .livescore-soccer-search-bar {
         position: relative;
         margin-right: 0;
-
+        width: 100%;
         @include tableMobile {
-            width: 100%;
             margin-right: .4rem;
         }
 
