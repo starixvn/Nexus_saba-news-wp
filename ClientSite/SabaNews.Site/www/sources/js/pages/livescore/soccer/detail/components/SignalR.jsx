@@ -43,7 +43,7 @@ export class SignalR extends Component {
     componentWillUnmount() {
         this.connection.invoke('LeaveSoccerGroup', window.selectedMatchId)
             .then(() => {
-                console.log(`leave group ${window.selectedMatchId}`);
+                console.log(`leave group ${window.selectedMatchId}`); //NOSONAR
             }).catch(err => {
                 console.error(err.toString()); //NOSONAR
             });
