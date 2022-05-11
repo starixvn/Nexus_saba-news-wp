@@ -2,8 +2,8 @@
 import { JsonHubProtocol, HubConnectionBuilder, HttpTransportType, LogLevel } from '@microsoft/signalr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ActionCreators } from '../actions';
 import Site from '@jsroot/common/site';
+import { ActionCreators } from '../actions';
 
 export class SignalR extends Component {
     constructor(props) {
@@ -13,14 +13,13 @@ export class SignalR extends Component {
     }
 
     componentDidMount() {
-        const protocol = new JsonHubProtocol();
-        const transport = HttpTransportType.WebSockets;
         const options = {
-            transport,
+            transport: HttpTransportType.WebSockets,
             logMessageContent: false,
             skipNegotiation: true,
             logger: LogLevel.None
         };
+        const protocol = new JsonHubProtocol();
 
         this.connection = new HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)

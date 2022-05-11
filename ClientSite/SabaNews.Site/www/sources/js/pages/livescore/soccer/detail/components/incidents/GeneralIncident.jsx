@@ -4,20 +4,19 @@ import  IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class GeneralIncident extends Component {
-    checkIncidentTypeToShowScore = type => {
-        return type === IncidentStatus.Halftime
+    checkIncidentTypeToShowScore = type => type === IncidentStatus.Halftime
         || type === IncidentStatus.Penalty
         || type === IncidentStatus.Goal
         || type === IncidentStatus.OwnGoal;
-    };
 
     getBorder = (incident, position) => {
         let style = null;
-        if(incident.position !== IncidentPosition.Home && position === IncidentPosition.Home ) {
-            style = { borderRight: 'none'};
-        } else if(incident.position !== IncidentPosition.Away && position === IncidentPosition.Away) {
-            style = { borderLeft: 'none'};
+        if (incident.position !== IncidentPosition.Home && position === IncidentPosition.Home) {
+            style = { borderRight: 'none' };
+        } else if (incident.position !== IncidentPosition.Away && position === IncidentPosition.Away) {
+            style = { borderLeft: 'none' };
         }
+
         return style;
     };
 

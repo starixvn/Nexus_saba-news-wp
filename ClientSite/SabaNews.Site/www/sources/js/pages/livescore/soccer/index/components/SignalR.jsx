@@ -14,9 +14,8 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const protocol = new JsonHubProtocol();
-        const transport = HttpTransportType.WebSockets;
         const options = {
-            transport,
+            transport: HttpTransportType.WebSockets,
             logMessageContent: false,
             skipNegotiation: true,
             logger: LogLevel.None
@@ -50,8 +49,6 @@ export class SignalR extends Component {
                 console.log('SignalR connected!!!'); //NOSONAR
             });
         } catch (err) {
-            console.log(err); //NOSONAR
-
             setTimeout(() => {
                 const { today, selectedDate } = this.props;
                 if (window.isLivePage || today === selectedDate) {
@@ -60,6 +57,8 @@ export class SignalR extends Component {
 
                 this.start();
             }, 60 * 1000);
+
+            console.log(err); //NOSONAR
         }
     };
 

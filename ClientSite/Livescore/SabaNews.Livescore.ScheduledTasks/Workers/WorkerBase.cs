@@ -27,7 +27,8 @@
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            await Task.Delay(10).ConfigureAwait(false);
+            const byte MillisecondsDelay = 10;
+            await Task.Delay(MillisecondsDelay).ConfigureAwait(false);
 
             try
             {

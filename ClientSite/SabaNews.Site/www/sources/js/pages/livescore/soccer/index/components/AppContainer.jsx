@@ -56,31 +56,22 @@ export class AppContainer extends Component {
         selectedDate = moment(selectedDate);
         const minDate = moment(this.props.minDate);
         const maxDate = moment(this.props.maxDate);
+        const shortDateFormat = 'YYYY-MM-DD';
 
-        if (selectedDate.isSame(minDate)) {
+        if (selectedDate.isSame(minDate) || selectedDate.isSame(minDate.clone().add(1, 'days'))) {
             for (let i = 0; i < totalItems; i++) {
-                dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
+                dates.push(DateTimeService.formatDateTime(minDate.clone().add(i, 'days'), shortDateFormat));
             }
-        } else if (selectedDate.isSame(maxDate)) {
+        } else if (selectedDate.isSame(maxDate) || selectedDate.isSame(maxDate.clone().subtract(1, 'days'))) {
             for (let i = 0; i < totalItems; i++) {
-                dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
+                dates.unshift(DateTimeService.formatDateTime(maxDate.clone().subtract(i, 'days'), shortDateFormat));
             }
         } else {
-            dates.push(DateTimeService.formatDateTime(selectedDate, 'YYYY-MM-DD'));
-            if (selectedDate.isSame(minDate.add(1, 'days'))) {
-                for (let i = 1; i < totalItems; i++) {
-                    dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
-                }
-            } else if (selectedDate.isSame(maxDate.subtract(1, 'days'))) {
-                for (let i = 1; i < totalItems; i++) {
-                    dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
-                }
-            } else {
-                totalItems = 3;
-                for (let i = 1; i < totalItems; i++) {
-                    dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), 'YYYY-MM-DD'));
-                    dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), 'YYYY-MM-DD'));
-                }
+            totalItems = 3;
+            dates.push(DateTimeService.formatDateTime(selectedDate, shortDateFormat));
+            for (let i = 1; i < totalItems; i++) {
+                dates.push(DateTimeService.formatDateTime(selectedDate.clone().add(i, 'days'), shortDateFormat));
+                dates.unshift(DateTimeService.formatDateTime(selectedDate.clone().subtract(i, 'days'), shortDateFormat));
             }
         }
 
