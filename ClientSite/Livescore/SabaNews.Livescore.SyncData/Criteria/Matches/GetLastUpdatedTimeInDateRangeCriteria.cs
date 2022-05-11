@@ -9,6 +9,8 @@
 
         public DateTime? EndTime { get; set; }
 
+        public bool ExcludeLiveMatch { get; set; }
+
         public override string GetSettingKey() => "Livescore_SyncMatch_GetLastUpdatedTimeByDateRange";
 
         public override bool IsValid() => StartTime.HasValue && EndTime.HasValue;

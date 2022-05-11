@@ -30,10 +30,11 @@
         public override async Task DoWorkAsync()
         {
             var startTime = DateTime.UtcNow.Date;
-
             var endTime = startTime.AddDays(appSettings.NumOfDayFutureToSyncMatch + 1).AddSeconds(-1);
 
-            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAsync(startTime, endTime);
+            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime);
+
+            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
         }
     }
 }

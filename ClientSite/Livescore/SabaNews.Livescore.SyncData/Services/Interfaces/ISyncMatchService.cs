@@ -23,6 +23,8 @@
 
         Task SyncDeletedMatchesAsync(List<DeletedMatch> delMatches);
 
-        Task SyncAllMatchInfoByStartTimeRangeAsync(DateTime? startTime, DateTime? endTime);
+        Task SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(DateTime? startTime, DateTime? endTime, DateTime? lastUpdatedTime);
+
+        Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime, bool isExcludeLiveMatch = false);
     }
 }

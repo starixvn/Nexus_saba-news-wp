@@ -115,9 +115,8 @@
             }
         }
 
-        public async Task SyncAllMatchInfoByStartTimeRangeAsync(DateTime? startTime, DateTime? endTime)
+        public async Task SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(DateTime? startTime, DateTime? endTime, DateTime? lastUpdatedTime)
         {
-            var lastUpdatedTime = await GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime);
             var param = new SyncMatchParams
             {
                 SportId = (int)SportType.Soccer,
@@ -136,12 +135,13 @@
             }
         }
 
-        private async Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime)
+        public async Task<DateTime> GetMatchLastUpdatedTimeInDateRangeAsync(DateTime? startTime, DateTime? endTime, bool isExcludeLiveMatch = false)
         {
             var criteria = new GetLastUpdatedTimeInDateRangeCriteria
             {
                 StartTime = startTime,
-                EndTime = endTime
+                EndTime = endTime,
+                ExcludeLiveMatch = isExcludeLiveMatch
             };
 
             return await baseService.GetDataEntityAsync<DateTime>(criteria);

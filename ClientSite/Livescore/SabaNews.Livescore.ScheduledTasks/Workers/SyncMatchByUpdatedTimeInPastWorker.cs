@@ -32,7 +32,8 @@
             var endTime = DateTime.UtcNow.Date.AddSeconds(-1);
             var startTime = endTime.AddDays(appSettings.NumOfDayPastToSyncMatch);
 
-            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAsync(startTime, endTime);
+            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime, true);
+            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
         }
     }
 }
