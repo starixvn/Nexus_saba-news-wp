@@ -63,10 +63,12 @@
 
 .sticky-header {
     opacity: 1;
+
     &.active-scroll {
         opacity: 0;
     }
 }
+
 .live {
     .soccer-match-stage {
         span {
@@ -136,13 +138,18 @@
     max-width: 71.4rem;
     opacity: 0;
     transition: .2s all ease;
+    /*@media screen and (max-width: 1279px) {
+        max-width: 88.1rem;
+    }*/
 
     @include tableMobile {
         position: fixed;
         top: 3.9rem;
         left: 0;
         width: 100%;
+        max-width: 100%;
     }
+
 
     &.active-scroll {
         opacity: 1;
@@ -151,16 +158,16 @@
     }
 
 
-    .duel-participant .icon-live-start, .duel-participant .icon-favourite-outline{
-        top : 3px;
-        right : 3px;
+    .duel-participant .icon-live-start, .duel-participant .icon-favourite-outline {
+        top: 3px;
+        right: 3px;
     }
 
     .sticky-header-scroll {
         .breadcrumb {
             margin-top: 1.3rem;
 
-            @include Mobile {
+            @include tableMobile {
                 padding: 0 1.2rem;
                 margin-top: 1.3rem;
             }
@@ -171,7 +178,7 @@
         }
 
         .livescore-league-header-detail {
-            @include Mobile {
+            @include tableMobile {
                 margin-bottom: .5rem;
                 margin-left: 1.2rem;
             }
@@ -308,5 +315,3 @@
         }
     }
 }
-
-
