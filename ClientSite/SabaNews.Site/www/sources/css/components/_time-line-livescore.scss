@@ -217,6 +217,13 @@
                         width: 5rem;
                     }
 
+                    .icon-th {
+                        margin-bottom: .4rem;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+
                     li {
                         margin-bottom: .4rem;
                         line-height: 1;
