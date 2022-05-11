@@ -62,7 +62,7 @@ class FunctionBar extends Component {
 
     checkEnableH2H = headToHead => {
         let isEnable = true;
-        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+        if(!headToHead || headToHead.common.length === 0) {
             isEnable = false;
         }
         return isEnable;
@@ -116,9 +116,18 @@ class FunctionBar extends Component {
         }
     };
 
+    checkTabEnable = tabStatus => {
+        return tabStatus.enableTabSummary
+            || tabStatus.enableTabStatistics
+            || tabStatus.enableTabLineups
+            || tabStatus.enableTabHeadtohead
+    }
+
     render() {
         const tabStatus = this.updateTabStatus();
         const { activeTab } = this.props;
+        const isTabEnable = this.checkTabEnable(tabStatus);
+        console.log(isTabEnable);
         return (
             <>
                 <div className="detail-function-bar">
@@ -148,6 +157,10 @@ class FunctionBar extends Component {
                             </a>
                         </li>
                     </ul>
+                    {
+                        !isTabEnable &&
+                        <div className="none-livescore">Đang cập nhật dữ liệu...</div>
+                    }
                 </div>
             </>
         );

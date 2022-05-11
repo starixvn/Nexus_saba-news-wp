@@ -247,7 +247,7 @@ export class HeadToHead extends Component {
 
     render() {
         const headToHead = this.props.match.headToHead;
-        if(!headToHead || (headToHead.home.length === 0 && headToHead.away.length === 0 && headToHead.common.length === 0)) {
+        if(!headToHead || headToHead.common.length === 0) {
             return null;
         }
         const { home, away, common } = headToHead;
@@ -257,23 +257,19 @@ export class HeadToHead extends Component {
                 <div className="block-line-up-main">
                     <div className="block-line-up-title">Đối đầu</div>
                     <div className="block-line-up-body">
-                        {
-                            headToHead.common.length === 0
-                            ? <div className="none-livescore">Đang cập nhật dữ liệu...</div>
-                            : <div className="head-to-head">
-                                <Tabs id="head-to-head-tabs" className="head-to-head-nav" defaultActiveKey="Common">
-                                    <Tab eventKey="Home" title={CommonFunctions.getTeamName(generalInfo.homeTeam)} >
-                                        {this.renderBody(home, generalInfo.homeTeam.teamId)}
-                                    </Tab>
-                                    <Tab eventKey="Common" title="Chung">
-                                        {this.renderBody(common)}
-                                    </Tab>
-                                    <Tab eventKey="Away" title={CommonFunctions.getTeamName(generalInfo.awayTeam)}>
-                                        {this.renderBody(away, generalInfo.awayTeam.teamId)}
-                                    </Tab>
-                                </Tabs>
-                            </div>
-                        }
+                        <div className="head-to-head">
+                            <Tabs id="head-to-head-tabs" className="head-to-head-nav" defaultActiveKey="Common">
+                                <Tab eventKey="Home" title={CommonFunctions.getTeamName(generalInfo.homeTeam)} >
+                                    {this.renderBody(home, generalInfo.homeTeam.teamId)}
+                                </Tab>
+                                <Tab eventKey="Common" title="Chung">
+                                    {this.renderBody(common)}
+                                </Tab>
+                                <Tab eventKey="Away" title={CommonFunctions.getTeamName(generalInfo.awayTeam)}>
+                                    {this.renderBody(away, generalInfo.awayTeam.teamId)}
+                                </Tab>
+                            </Tabs>
+                        </div>
                     </div>
                 </div>
             </div>
