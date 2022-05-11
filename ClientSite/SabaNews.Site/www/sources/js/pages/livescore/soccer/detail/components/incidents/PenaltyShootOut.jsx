@@ -4,9 +4,9 @@ import { IncidentIconType } from '@jsroot/common/constants';
 
 export default class PenaltyShootOut extends PureComponent {
     render() {
-        const { data } = this.props;
-        const homeType = data.homeType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : data.homeType;
-        const awayType = data.awayType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : data.awayType;
+        const { penaltyShootOutData } = this.props;
+        const homeType = penaltyShootOutData.homeType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : penaltyShootOutData.homeType;
+        const awayType = penaltyShootOutData.awayType === IncidentIconType.Penalty ? IncidentIconType.PenaltyShootOutSuccess : penaltyShootOutData.awayType;
         return (
             <div className="line-up-live-item flexbox">
                 <div className="inner-item-db flexbox item-th-home">
@@ -14,13 +14,13 @@ export default class PenaltyShootOut extends PureComponent {
                         <span className="icon-th in-out-icon">
                             <IncidentIcon type={homeType} />
                         </span>
-                        <span className="name-th">{data.homePlayerName} <span className="noted" /></span>
+                        <span className="name-th">{penaltyShootOutData.homePlayerName} <span className="noted" /></span>
                     </div>
                 </div>
-                <span className="item-mins flexbox">{data.score}</span>
+                <span className="item-mins flexbox">{penaltyShootOutData.score}</span>
                 <div className="inner-item-db flexbox item-th-away">
                     <div className="item-th flexbox">
-                        <span className="name-th">{data.awayPlayerName} <span className="noted" /></span>
+                        <span className="name-th">{penaltyShootOutData.awayPlayerName} <span className="noted" /></span>
                         <span className="icon-th in-out-icon">
                             <IncidentIcon type={awayType} />
                         </span>
