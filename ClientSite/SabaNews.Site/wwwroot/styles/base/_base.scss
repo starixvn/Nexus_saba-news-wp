@@ -42,6 +42,19 @@ body {
 .hidden-body, .overflow-modal {
     overflow: hidden;
 }
+.wapper {
+    @include tableMobile {
+        overflow-x: hidden;
+    }
+}
+
+.hidden-body {
+    main {
+        @include tableMobile {
+            overflow: hidden;
+        }
+    }
+}
 
 .pd-column-left {
     padding-right: 1.5rem;
