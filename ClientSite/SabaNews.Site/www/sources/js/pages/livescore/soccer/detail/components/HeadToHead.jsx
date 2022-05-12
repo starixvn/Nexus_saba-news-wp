@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -16,17 +16,17 @@ export class HeadToHead extends Component {
 
         if (MatchStatus.Finished) {
             if (match[`${homeFieldName}PenaltyScore`]
-            && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
-            } else if (match[`${homeFieldName}AggregateScore`]
-                && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                return <li>AGG</li>;
             } else {
-                return null;
+                if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
+                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                    return <li>AGG</li>;
+                }
             }
-        } else {
-            return null;
         }
+
+        return <Fragment />;
     };
 
     handleClickLeague = (event, league) => {

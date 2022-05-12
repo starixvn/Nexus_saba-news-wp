@@ -19,7 +19,7 @@ export default class Match extends Component {
                 && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
             } else {
-                if (match[`${homeFieldName}AggregateScore`]
+                if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
                     && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
                     return <li>AGG</li>;
                 }

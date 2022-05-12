@@ -83,7 +83,8 @@
                         TeamFullNameEN = match.AwayTeamFullNameEN,
                         Icon = match.AwayTeamIcon
                     },
-                    Stage = stage
+                    Stage = stage,
+                    IsSecondLeg = match.IsSecondLeg
                 });
             }
 

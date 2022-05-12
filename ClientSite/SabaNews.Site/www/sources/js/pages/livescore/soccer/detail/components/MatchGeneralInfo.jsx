@@ -42,15 +42,15 @@ export default class MatchGeneralInfo extends Component {
         return (
             <>
                 {
-                    (!isPreMatch) &&
+                    !isPreMatch &&
                     <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 }
                 {
-                    (match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0)) &&
+                    match.isSecondLeg && match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0) &&
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {
-                    (match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0)) &&
+                    match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0) &&
                     <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
                 }
             </>
@@ -98,23 +98,23 @@ export default class MatchGeneralInfo extends Component {
     };
 
     getTeamStatus = isHomeTeam => {
-        const { generalInfo } = this.props.match;
+        const match = this.props.match.generalInfo;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        if (generalInfo.status === MatchStatus.Finished) {
-            if (generalInfo[`${homeFieldName}PenaltyScore`]
-            && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
+        if (match.status === MatchStatus.Finished) {
+            if (match[`${homeFieldName}PenaltyScore`]
+                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
-            } else if (generalInfo[`${homeFieldName}AggregateScore`]
-                && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
-                return <li>AGG</li>;
             } else {
-                return <Fragment />;
+                if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
+                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                    return <li>AGG</li>;
+                }
             }
-        } else {
-            return <Fragment />;
         }
+
+        return <Fragment />;
     };
 
     handleClick = event => {

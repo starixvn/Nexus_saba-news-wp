@@ -9,7 +9,5 @@
         public override string GetSettingKey() => "Livescore_Match_GetHeadToHead";
 
         public override bool IsValid() => MatchId > 0;
-
-
     }
 }
