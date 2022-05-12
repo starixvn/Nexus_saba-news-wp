@@ -157,11 +157,11 @@ class FunctionBar extends Component {
                             </a>
                         </li>
                     </ul>
-                    {
-                        !isTabEnable &&
-                        <div className="none-livescore">Đang cập nhật dữ liệu...</div>
-                    }
                 </div>
+                {
+                    !isTabEnable &&
+                    <div className="none-livescore">Đang cập nhật dữ liệu...</div>
+                }
             </>
         );
     }
