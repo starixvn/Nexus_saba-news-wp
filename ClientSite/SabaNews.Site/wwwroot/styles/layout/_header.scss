@@ -316,7 +316,7 @@
         position: relative;
         position: sticky;
         top: 0;
-        z-index: 99999;
+        z-index: 99;
     }
 
     .icon-arrow {
@@ -374,7 +374,7 @@
     transition: .3s ease-in-out;
     position: sticky;
     top: 0;
-    z-index: 99999;
+    z-index: 10;
 
     @include tableMobile {
         display: none;
@@ -647,7 +647,6 @@
         list-style: none;
         display: none;
         position: absolute;
-        z-index: 10008;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         background: $color-fff;
         min-width: 120px;
@@ -655,7 +654,7 @@
         left: -.8rem;
         top: 3rem;
         transition: opacity .3s;
-        z-index: 999999;
+        z-index: 1000;
 
         @include Mobile {
             left: 2.2rem;
@@ -750,7 +749,7 @@
 
         .top-header {
             width: 100%;
-            z-index: 99999999;
+            z-index: 100;
             display: block;
             overflow: auto;
             height: calc(100vh - 7rem);

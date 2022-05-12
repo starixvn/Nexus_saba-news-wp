@@ -62,7 +62,6 @@ $(document).ready(function () {
             $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
             $('body').toggleClass('hidden-body');
-            $('.wapper').toggleClass('hidden-body');
         }
     });
 

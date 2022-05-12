@@ -11,7 +11,8 @@
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden; }
 
 body {
   font-size: 1.4rem;

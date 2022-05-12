@@ -11,7 +11,8 @@
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden; }
 
 body {
   font-size: 1.4rem;
@@ -444,7 +445,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       position: relative;
       position: sticky;
       top: 0;
-      z-index: 99999; } }
+      z-index: 99; } }
   .child-mobile-menu .icon-arrow {
     display: block;
     width: 5rem;
@@ -487,7 +488,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   transition: .3s ease-in-out;
   position: sticky;
   top: 0;
-  z-index: 99999; }
+  z-index: 10; }
   @media screen and (max-width: 1024px) {
     .top-header {
       display: none; } }
@@ -685,7 +686,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     list-style: none;
     display: none;
     position: absolute;
-    z-index: 10008;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     background: #fff;
     min-width: 120px;
@@ -693,7 +693,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     left: -.8rem;
     top: 3rem;
     transition: opacity .3s;
-    z-index: 999999; }
+    z-index: 1000; }
     @media (max-device-width: 767px) {
       .languages-box .languages-list {
         left: 2.2rem; } }
@@ -761,7 +761,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     height: 100%; }
   .hidden-body .top-header {
     width: 100%;
-    z-index: 99999999;
+    z-index: 100;
     display: block;
     overflow: auto;
     height: calc(100vh - 7rem);
