@@ -52,33 +52,45 @@
             </div>
 
             <div class="block__video">
-                @foreach (var post in Model.Posts)
-                {
-                    <div class="post card-vertical card-vertical-highlight">
-                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb">
-                            <picture>
+                @{
+                    int postIndex = 0;
+                    foreach (var post in Model.Posts)
+                    {
+                        {
+                            postIndex++;
+                            if (postIndex <= 1)
+                            {
+                                continue;
+                            }
+                        }
+                        <div class="post card-vertical card-vertical-highlight">
+                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb">
+                                <picture>
                                 <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
                                 <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
                                 <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
-                            </picture>
-                        </a>
+                                </picture>
+                            </a>
                         <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a>
-                        <p class="card-vertical__datetime">
-                            <span>
+                            <p class="card-vertical__datetime">
+                                <span>
                                 @post.PostTime
                                 @if (post.CommentCount > 0)
-                                {
+                                    {
                                     <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
-                                }
-                            </span>
-                        </p>
-                    </div>
-                    <div class="skeleton skeleton-vertical">
-                        <a class="skeleton-vertical__image"></a>
-                        <a class="skeleton-vertical__title"></a>
-                        <p class="skeleton-vertical__description text-description"></p>
-                    </div>
+                                    }
+                                </span>
+                            </p>
+                        </div>
+                        <div class="skeleton skeleton-vertical">
+                            <a class="skeleton-vertical__image"></a>
+                            <a class="skeleton-vertical__title"></a>
+                            <p class="skeleton-vertical__description text-description"></p>
+                        </div>
+                    }
                 }
+
+
             </div>
             @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
         </div>
