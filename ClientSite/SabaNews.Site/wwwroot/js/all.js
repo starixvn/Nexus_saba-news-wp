@@ -55,14 +55,22 @@ $(document).ready(function () {
     })
 
 
+   
     //mobile
     $('.button-mobile').click(function () {
+        var windowWidth = window.innerWidth;
         if ($(window).innerWidth() <= 1024) {
             $('.main-menu').toggleClass('active-main-menu');
             $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
             $('body').toggleClass('hidden-body');
+            $('.header-controls').css('width', windowWidth);
         }
+    });
+
+    $(window).on("load resize", function (e) {
+        var windowWidth = window.innerWidth;
+        $('.header-controls').css('width', windowWidth);
     });
 
     //desktop

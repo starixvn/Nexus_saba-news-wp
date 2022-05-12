@@ -40,9 +40,13 @@ body {
 .hidden-body, .overflow-modal {
   overflow: hidden; }
 
-@media screen and (max-width: 1024px) {
-  .hidden-body main {
-    overflow: hidden; } }
+.hidden-body {
+  position: fixed;
+  height: 100%;
+  overflow: hidden; }
+  @media screen and (max-width: 1024px) {
+    .hidden-body main {
+      overflow: hidden; } }
 
 .wapper {
   display: flex;

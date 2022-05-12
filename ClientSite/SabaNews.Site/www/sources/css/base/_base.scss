@@ -45,6 +45,9 @@ body {
 }
 
 .hidden-body {
+    position: fixed;
+    height: 100%;
+    overflow: hidden;
     main {
         @include tableMobile {
             overflow: hidden;
