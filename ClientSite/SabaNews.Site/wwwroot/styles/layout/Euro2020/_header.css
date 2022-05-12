@@ -513,6 +513,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     background: url(../../images/flag/icon-cn.svg) no-repeat; }
   .languages-box .flag-en {
     background: url(../../images/flag/icon-en.svg) no-repeat; }
+  .languages-box .flag-in {
+    background: url(../../images/flag/icon-in.svg) no-repeat; }
   .languages-box .language-select {
     cursor: pointer;
     display: flex;
