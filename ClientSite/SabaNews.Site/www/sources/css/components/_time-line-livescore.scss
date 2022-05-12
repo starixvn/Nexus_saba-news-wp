@@ -219,6 +219,7 @@
 
                     .icon-th {
                         margin-bottom: .4rem;
+
                         &:last-child {
                             margin-bottom: 0;
                         }
@@ -234,12 +235,21 @@
                         }
                     }
 
-                    svg {
-                        width: 100%;
+                    .icon-livescore {
+                        font-size: 2.4rem;
 
                         @include Mobile {
                             width: 2rem;
-                            margin: 0 auto;
+                        }
+                    }
+
+                    svg {
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        margin: 0 auto;
+                        @include Mobile {
+                            width: 2rem;
+                            height: 2rem;
                         }
                     }
                 }
