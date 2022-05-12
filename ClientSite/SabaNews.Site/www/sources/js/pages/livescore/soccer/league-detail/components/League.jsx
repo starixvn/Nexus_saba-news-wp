@@ -9,7 +9,7 @@ const League = ({ league }) => {
             <div className="livescore-league-header-detail-group">
                 <div className="livescore-league-header-detail-logo"><TeamIcon src={league.icon} /></div>
                 <div className="livescore-league-header-detail-name">
-                    {CommonFunctions.getLeagueName(league)} 
+                    {CommonFunctions.getLeagueName(league)}
                 </div>
                 <i className="icon-livescore icon-live-start start-active" />
             </div>

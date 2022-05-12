@@ -226,8 +226,8 @@ export default class MatchGeneralInfo extends Component {
                 </div>
                 <FunctionBar />
             </>
-        )
-    }
+        );
+    };
 
     render() {
         return (

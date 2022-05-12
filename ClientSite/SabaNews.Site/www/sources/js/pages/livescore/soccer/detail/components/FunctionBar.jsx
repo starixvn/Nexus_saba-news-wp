@@ -8,10 +8,6 @@ import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 class FunctionBar extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         const tabStatus = this.updateTabStatus();
         const defaultTab = this.getDefaultActiveKey(tabStatus);
@@ -68,7 +64,6 @@ class FunctionBar extends Component {
         return isEnable;
     };
 
-
     getDefaultActiveKey = tabStatus => {
         const mapTabStatusKey = {
             'dien-bien': 'Summary',
@@ -81,6 +76,7 @@ class FunctionBar extends Component {
         if(params['tab']) {
             defaultTab = params['tab'].toLowerCase();
         }
+
         if(!defaultTab || (defaultTab && !tabStatus[`enableTab${mapTabStatusKey[defaultTab]}`])) {
             defaultTab = '';
             if(tabStatus.enableTabHeadtohead) {
@@ -120,49 +116,42 @@ class FunctionBar extends Component {
         return tabStatus.enableTabSummary
             || tabStatus.enableTabStatistics
             || tabStatus.enableTabLineups
-            || tabStatus.enableTabHeadtohead
-    }
+            || tabStatus.enableTabHeadtohead;
+    };
 
     render() {
         const tabStatus = this.updateTabStatus();
         const { activeTab } = this.props;
         const isTabEnable = this.checkTabEnable(tabStatus);
-        console.log(isTabEnable);
         return (
-            <>
-                <div className="detail-function-bar">
-                    <ul>
-                        <li>
-                            <a onClick={() => this.scrollToTab('dien-bien')}
-                                className={`${activeTab === 'dien-bien' ? 'active' : ''} ${!tabStatus.enableTabSummary ? 'disabled': ''}`}>
-                                Diễn biến
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('thong-ke')}
-                                className={`${activeTab === 'thong-ke' ? 'active' : ''} ${!tabStatus.enableTabStatistics ? 'disabled': ''}`}>
-                                Thống kê
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('doi-hinh')}
-                                className={`${activeTab === 'doi-hinh' ? 'active' : ''} ${!tabStatus.enableTabLineups ? 'disabled': ''}`}>
-                                Đội hình
-                            </a>
-                        </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('doi-dau')}
-                                className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled': ''}`}>
-                                Đối đầu
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div className="detail-function-bar">
+                <ul>
+                    <li>
+                        <a onClick={() => this.scrollToTab('dien-bien')}
+                            className={`${activeTab === 'dien-bien' ? 'active' : ''} ${!tabStatus.enableTabSummary ? 'disabled' : ''}`}
+                        >Diễn biến</a>
+                    </li>
+                    <li>
+                        <a onClick={() => this.scrollToTab('thong-ke')}
+                            className={`${activeTab === 'thong-ke' ? 'active' : ''} ${!tabStatus.enableTabStatistics ? 'disabled' : ''}`}
+                        >Thống kê</a>
+                    </li>
+                    <li>
+                        <a onClick={() => this.scrollToTab('doi-hinh')}
+                            className={`${activeTab === 'doi-hinh' ? 'active' : ''} ${!tabStatus.enableTabLineups ? 'disabled' : ''}`}
+                        >Đội hình</a>
+                    </li>
+                    <li>
+                        <a onClick={() => this.scrollToTab('doi-dau')}
+                            className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled' : ''}`}
+                        >Đối đầu</a>
+                    </li>
+                </ul>
                 {
                     !isTabEnable &&
                     <div className="none-livescore">Đang cập nhật dữ liệu...</div>
                 }
-            </>
+            </div>
         );
     }
 }
