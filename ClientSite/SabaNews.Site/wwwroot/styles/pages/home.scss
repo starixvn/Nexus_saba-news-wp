@@ -273,6 +273,8 @@
             .slide-video {
                 grid-column: 2;
                 overflow: auto;
+                scrollbar-color: rgba($color-000, .2);
+                scrollbar-width: thin;
 
                 @include Mobile {
                     display: none;
@@ -299,6 +301,8 @@
                         margin-bottom: 0;
                     }
                 }
+
+
 
                 &::-webkit-scrollbar {
                     width: .6rem;

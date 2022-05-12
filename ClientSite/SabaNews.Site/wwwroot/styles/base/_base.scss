@@ -11,6 +11,20 @@ html {
     font-size: 10px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     overflow-x: hidden;
+    scrollbar-color: rgba($color-000, .2);
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba($color-000, .2);
+    }
 }
 
 body {
