@@ -119,7 +119,7 @@ export default class MatchGrid extends PureComponent {
     render() {
         let { stages, matches, sortAsc } = this.props;
         if (matches.length === 0) {
-            return <div className="none-livescore">Không có trận đấu nào.</div>;
+            return <div className="none-livescore">Đang cập nhật dữ liệu...</div>;
         }
 
         matches = this.sortMatches([...matches], sortAsc);
