@@ -78,7 +78,7 @@
             return new List<MatchCommentary>();
         }
 
-        public async Task<List<MatchIncident>> FetchMatchIncidentAsync(int sportId, long matchId)
+        public async Task<List<MatchIncident>> FetchMatchIncidentAsync(short sportId, long matchId)
         {
             var param = new Dictionary<string, object>
             {

@@ -17,7 +17,7 @@
 
         Task<List<MatchCommentary>> FetchMatchCommentaryAsync(long matchId);
 
-        Task<List<MatchIncident>> FetchMatchIncidentAsync(int sportId, long matchId);
+        Task<List<MatchIncident>> FetchMatchIncidentAsync(short sportId, long matchId);
 
         Task<List<DeletedMatch>> FetchDeletedMatchAsync();
     }

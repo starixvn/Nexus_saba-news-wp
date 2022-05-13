@@ -5,7 +5,7 @@
 
     public class SyncMatchParams
     {
-        public int SportId { get; set; } = (int)SportType.Soccer;
+        public short SportId { get; set; } = (short)SportType.Soccer;
         public long[] MatchIds { get; set; }
         public long? LeagueId { get; set; }
         public long? MaxMatchId { get; set; }
