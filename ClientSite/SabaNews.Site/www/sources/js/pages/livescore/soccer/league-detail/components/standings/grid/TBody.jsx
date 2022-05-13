@@ -17,7 +17,7 @@ export default class TBody extends PureComponent {
             } else {
                 result = loss;
             }
-        } else if (match[`${homeFieldName}AggregateScore`]) {
+        } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]) {
             if (match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
                 result = win;
             } else {
