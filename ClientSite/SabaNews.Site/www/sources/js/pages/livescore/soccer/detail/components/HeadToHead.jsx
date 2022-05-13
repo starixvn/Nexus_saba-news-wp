@@ -194,7 +194,7 @@ export class HeadToHead extends Component {
             } else if (match[`${homeFieldName}PenaltyScore`] < match[`${awayFieldName}PenaltyScore`]) {
                 result = 2;
             }
-        } else if (match[`${homeFieldName}AggregateScore`]) {
+        } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]) {
             if (match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
                 result = 1;
             } else if (match[`${homeFieldName}AggregateScore`] < match[`${awayFieldName}AggregateScore`]) {
