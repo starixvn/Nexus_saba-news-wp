@@ -41,8 +41,11 @@ export default class Match extends Component {
             return;
         }
 
-        const matchId = this.props.match.matchId;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
+        const { matchId, league, homeTeam, awayTeam } = this.props.match;
+        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(' ', '-');
+        const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(' ', '-');
+        const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(' ', '-');
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -55,7 +58,6 @@ export default class Match extends Component {
             this.props.onUpdateFavouriteMatch(matchId);
         }
     };
-
 
     render() {
         const { match, searchKey } = this.props;

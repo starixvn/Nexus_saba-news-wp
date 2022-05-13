@@ -11,8 +11,7 @@ const store = configureStore({
     reducer: leagueDetailSlice
 });
 
-const params = window.getMatchByStageParams;
-const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${params.date}/${params.leagueId}/${params.seasonId}`);
+const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/:name/:seasonId/:selectedDate/:leagueId`);
 
 ReactDOM.render(
     <Provider store={store}>

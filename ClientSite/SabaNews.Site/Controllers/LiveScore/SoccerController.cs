@@ -73,14 +73,14 @@
             return View("~/Views/Livescore/Soccer/Live.cshtml", model);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet/{matchId:long}")]
-        public IActionResult Detail(long matchId)
+        [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
+        public IActionResult MatchResult(string league, string match, long matchId)
         {
             return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
         }
 
-        [Route("lich-thi-dau/bong-da/chi-tiet-giai-dau/{date:datetime}/{leagueId:long}/{seasonId:long}/{selectedTab?}")]
-        public IActionResult LeagueDetail(DateTime date, long leagueId, long seasonId, string selectedTab)
+        [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
+        public IActionResult LeagueDetail(string league, long seasonId, DateTime date, long leagueId, string selectedTab)
         {
             var model = new GetMatchBySeasonParams
             {

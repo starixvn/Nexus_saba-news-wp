@@ -117,7 +117,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     render() {
-        let { stages, matches, sortAsc } = this.props;
+        let { league, stages, matches, sortAsc } = this.props;
         if (matches.length === 0) {
             return <div className="none-livescore">Đang cập nhật dữ liệu...</div>;
         }
@@ -150,7 +150,7 @@ export default class MatchGrid extends PureComponent {
                 }
                 {
                     matches.length > 0 &&
-                    <Grid matches={matches} searchKey={searchKey} />
+                    <Grid league={league} matches={matches} searchKey={searchKey} />
                 }
             </>
         );

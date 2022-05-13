@@ -7,6 +7,7 @@ import { ActionCreators } from '../actions';
 import MatchGeneralInfo from './MatchGeneralInfo';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 export class AppContainer extends Component {
     componentDidMount() {
@@ -15,25 +16,29 @@ export class AppContainer extends Component {
     }
 
     render() {
-        if (!this.props.match || !this.props.match.generalInfo) {
+        const { match, majorLeagues } = this.props;
+        if (!match || !match.generalInfo) {
             return null;
         }
+
+        const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
+        const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
+        document.title = `${homeTeamName} vs ${awayTeamName}`;
+
         return (
-            <>
-                <div className="container livescore-container">
-                    <SignalR />
-                    <div className="livescore-soccer">
-                        <div className="livescore-soccer-main">
-                            <MatchGeneralInfo match={this.props.match} />
-                            <Details />
-                        </div>
-                        <div className="livescore-soccer-extension">
-                            <FavoriteMatches />
-                            <FavoriteLeagues leagues={this.props.majorLeagues} />
-                        </div>
+            <div className="container livescore-container">
+                <SignalR />
+                <div className="livescore-soccer">
+                    <div className="livescore-soccer-main">
+                        <MatchGeneralInfo match={match} />
+                        <Details />
+                    </div>
+                    <div className="livescore-soccer-extension">
+                        <FavoriteMatches />
+                        <FavoriteLeagues leagues={majorLeagues} />
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

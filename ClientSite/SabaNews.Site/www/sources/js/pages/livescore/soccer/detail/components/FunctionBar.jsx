@@ -97,7 +97,7 @@ class FunctionBar extends Component {
 
     scrollToTab = tab =>  {
         const section = document.getElementById(tab);
-        if(section) {
+        if (section) {
             const isMobile = window.innerWidth < 768;
             const generalHeight = document.querySelector('.detail-fixed').offsetHeight;
             const headerHeight = document.querySelector('.header').offsetHeight;
@@ -108,7 +108,13 @@ class FunctionBar extends Component {
                 behavior: 'smooth'
             });
             this.props.setActiveTab(tab);
-            this.props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${window.selectedMatchId}/?tab=${tab}`));
+
+            const { matchId, league, homeTeam, awayTeam } = this.props.match.generalInfo;
+            const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(' ', '-');
+            const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(' ', '-');
+            const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(' ', '-');
+            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}/?tab=${tab}`);
+            this.props.navigate(url);
         }
     };
 

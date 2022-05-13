@@ -15,8 +15,8 @@ ReactDOM.render(
     <Provider store={store}>
          <BrowserRouter>
             <Routes>
-                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/:matchId`)} element={<AppContainer />} />
-                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/:matchId/:activeTab`)} element={<AppContainer />} />
+                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/:league/:match/:matchId`)} element={<AppContainer />} />
+                <Route path={Site.resolveClientUrl(`lich-thi-dau/bong-da/:league/:match/:matchId/:activeTab`)} element={<AppContainer />} />
             </Routes>
         </BrowserRouter>
     </Provider>,

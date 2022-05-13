@@ -30,9 +30,10 @@ export class HeadToHead extends Component {
     };
 
     handleClickLeague = (event, league) => {
+        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(' ', '-');
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${today}/${league.leagueId}/${seasonId}`);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -40,8 +41,12 @@ export class HeadToHead extends Component {
         }
     };
 
-    handleClick = (event, matchId) => {
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
+    handleClick = (event, match) => {
+        const { matchId, league, homeTeam, awayTeam } = match;
+        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(' ', '-');
+        const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(' ', '-');
+        const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(' ', '-');
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -75,7 +80,6 @@ export class HeadToHead extends Component {
         return {result: result, homeWinclass: homeWinclass, awayWinClass: awayWinClass};
     };
 
-
     renderBody = (matchs, teamId) => {
         if (matchs.length === 0) {
             return null;
@@ -99,7 +103,7 @@ export class HeadToHead extends Component {
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
-                                <div className="group-match-item" onClick={() => this.handleClick(event, match.matchId)}>
+                                <div className="group-match-item" onClick={() => this.handleClick(event, match)}>
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
                                             <div className="soccer-match-star-icon soccer-match-star-hidden-pc">

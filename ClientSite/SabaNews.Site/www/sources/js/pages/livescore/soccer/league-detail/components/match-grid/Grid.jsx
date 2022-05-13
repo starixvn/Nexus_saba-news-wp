@@ -64,7 +64,7 @@ export default class Grid extends PureComponent {
 
     render() {
         const { hasMore, matches } = this.state;
-        const { searchKey } = this.props;
+        const { searchKey, league } = this.props;
 
         return (
             <InfiniteScroll initialLoad={false}
@@ -87,12 +87,13 @@ export default class Grid extends PureComponent {
                                                         <div className="group-match-item" key={child.key}>
                                                             <div className="group-match-item-slogan">{child.text}</div>
                                                             {
-                                                                child.childs.map(match => <Match key={match.matchId} searchKey={searchKey} match={match} />)
+                                                                child.childs.map(match =>
+                                                                    <Match key={match.matchId} searchKey={searchKey} match={{ ...match, league }} />)
                                                             }
                                                         </div>
                                                     );
                                                 } else {
-                                                    return <Match key={child.matchId} searchKey={searchKey} match={child} />;
+                                                    return <Match key={child.matchId} searchKey={searchKey} match={{ ...child, league }} />;
                                                 }
                                             })
                                         }
