@@ -28,6 +28,10 @@
             height: 100%;
             object-fit: cover;
             object-position: top;
+            -webkit-backface-visibility: hidden;
+            -ms-transform: translateZ(0); 
+            -webkit-transform: translateZ(0); 
+            transform: translateZ(0);
         }
     }
 
@@ -39,7 +43,7 @@
         text-decoration: none;
         transition: color .3s ease;
         /*display: block;*/
-        display : initial;
+        display: initial;
         line-height: 2rem;
 
         &:hover {

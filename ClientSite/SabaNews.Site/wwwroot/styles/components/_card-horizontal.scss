@@ -38,6 +38,10 @@
             height: 100%;
             object-fit: cover;
             object-position: top;
+            -webkit-backface-visibility: hidden;
+            -ms-transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
         }
     }
 
@@ -49,7 +53,7 @@
             color: $color-text;
             transition: color .3s ease;
             /*display: block;*/
-            display : initial;
+            display: initial;
 
             &:hover {
                 color: $color-title-hover;
