@@ -92,8 +92,9 @@ export class Lineups extends Component {
                 {
                     playerIncident.ownGoals > 0 &&
                     <>
-                        {this.getGoalsNumber(playerIncident.ownGoals, goalsClass)}
+                        
                         <span className="icon-line-up">
+                            {this.getGoalsNumber(playerIncident.ownGoals, goalsClass)}
                             <IncidentIcon type={IncidentIconType.OwnGoal} />
                         </span>
                     </>
@@ -101,8 +102,8 @@ export class Lineups extends Component {
                 {
                     playerIncident.penalty > 0 &&
                     <>
-                        {this.getGoalsNumber(playerIncident.penalty, goalsClass)}
                         <span className="icon-line-up">
+                            {this.getGoalsNumber(playerIncident.penalty, goalsClass)}
                             <IncidentIcon type={IncidentIconType.Penalty} />
                         </span>
                     </>
@@ -297,7 +298,7 @@ export class Lineups extends Component {
     getIconGoalLineup = player => {
         const goalClass = 'number-goal';
         const goal = (
-            <span className="icon_f ic_bong">
+            <span className="icon_f ic_bong" style={{ marginRight : player.goals > 1 ? "7px" : "0px" }}>
                 {this.getGoalsNumber(player.goals, goalClass)}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="10" fill="white" />
