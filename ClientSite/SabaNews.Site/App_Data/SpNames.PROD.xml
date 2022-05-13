@@ -234,7 +234,6 @@
     </Function>
     <Function Name="Livescore">
         <Setting Key="Livescore_League_GetMajorLeague" SpName="Livescore_League_GetMajorLeague" DbName="sabasports" Plain="0" />
-        <Setting Key="Livescore_Match_GetDetail" SpName="Livescore_Match_GetDetail" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetLineup" SpName="Livescore_Match_GetLineup" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead" DbName="sabasports" Plain="0" >
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />

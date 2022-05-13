@@ -13,8 +13,6 @@
 
         Task<IList<Match>> GetLiveMatchAsync();
 
-        Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria);
-
         Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria);
 
         Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria);

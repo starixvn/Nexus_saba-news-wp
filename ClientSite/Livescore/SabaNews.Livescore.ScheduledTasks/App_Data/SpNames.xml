@@ -54,7 +54,6 @@
         <Setting Key="Livescore_SyncHeadToHead_Import" SpName="Livescore_SyncHeadToHead_Import" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Detail match">
-        <Setting Key="Livescore_Match_GetDetail" SpName="Livescore_Match_GetDetail" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetLineup" SpName="Livescore_Match_GetLineup" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetHeadToHead" SpName="Livescore_Match_GetHeadToHead" DbName="sabasports" Plain="0">
             <Mapping DataField="HomeTeamId" ObjectProperty="TeamId" class="Team" />

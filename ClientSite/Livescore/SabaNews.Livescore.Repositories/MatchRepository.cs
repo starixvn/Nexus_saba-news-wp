@@ -80,55 +80,6 @@
             }
         }
 
-        public async Task<MatchDetail> GetMatchDetaiAsync(ICriteria criteria)
-        {
-            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
-            {
-                using (var multi = await db.QueryMultipleAsync(criteria))
-                {
-                    var match = multi.Read<Match, League, Team, Team, Match>(
-                        (match, league, home, away) =>
-                        {
-                            match.League = league;
-                            match.HomeTeam = home;
-                            match.AwayTeam = away;
-
-                            return match;
-                        },
-                        splitOnMatch);
-
-                    var incidents = await multi.ReadAsync<MatchIncident>();
-                    var homeStatistic = await multi.ReadFirstOrDefaultAsync<TeamStatistic>();
-                    var awayStatistic = await multi.ReadFirstOrDefaultAsync<TeamStatistic>();
-                    var lineupSumary = await multi.ReadFirstOrDefaultAsync<Lineup>();
-                    var homeLineup = await multi.ReadAsync<LineupTeam>();
-                    var awayLineup = await multi.ReadAsync<LineupTeam>();
-                    var headToHead = new HeadToHeadDetail
-                    {
-                        Common = await multi.ReadAsync<Match>(),
-                        Home = await multi.ReadAsync<Match>(),
-                        Away = await multi.ReadAsync<Match>()
-                    };
-                    return new MatchDetail
-                    {
-                        GeneralInfo = match.FirstOrDefault(),
-                        Statistic = new Statistic
-                        {
-                            HomeStatistic = homeStatistic,
-                            AwayStatistic = awayStatistic
-                        },
-                        Incidents = incidents,
-                        Lineup = new LineupDetail
-                        {
-                            GeneralInfo = lineupSumary,
-                            Home = homeLineup,
-                            Away = awayLineup
-                        },
-                        HeadToHead = headToHead
-                    };
-                }
-            }
-        }
         public async Task<Match> GetMatchByIdAsync(ICriteria criteria)
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))

@@ -150,7 +150,7 @@
 
 
         [HttpPost]
-        public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchDetailCriteria criteria)
+        public async Task<IActionResult> GetMatchDetail([FromBody] GetMatchByIdCriteria criteria)
         {
             var matchId = criteria.MatchId;
             var result = new MatchDetail

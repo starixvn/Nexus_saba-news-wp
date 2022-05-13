@@ -46,7 +46,8 @@ export default class MatchGeneralInfo extends Component {
                     <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 }
                 {
-                    match.isSecondLeg && match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0) &&
+                    match.isSecondLeg && match.status === MatchStatus.Finished
+                    && (homeAGG > 0 || awayAGG > 0) &&
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {
@@ -98,17 +99,17 @@ export default class MatchGeneralInfo extends Component {
     };
 
     getTeamStatus = isHomeTeam => {
-        const match = this.props.match.generalInfo;
+        const generalInfo = this.props.match.generalInfo;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        if (match.status === MatchStatus.Finished) {
-            if (match[`${homeFieldName}PenaltyScore`]
-                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+        if (generalInfo.status === MatchStatus.Finished) {
+            if (generalInfo[`${homeFieldName}PenaltyScore`]
+                && generalInfo[`${homeFieldName}PenaltyScore`] > generalInfo[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
             } else {
-                if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
-                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                if (generalInfo.isSecondLeg && generalInfo[`${homeFieldName}AggregateScore`]
+                    && generalInfo[`${homeFieldName}AggregateScore`] > generalInfo[`${awayFieldName}AggregateScore`]) {
                     return <li>AGG</li>;
                 }
             }
@@ -159,7 +160,7 @@ export default class MatchGeneralInfo extends Component {
                         <i className="icon-livescore icon-live-start start-active" />
                     </div>
                     <div className="group-searchbar">
-                        <FavoriteMatches isMobile />
+                        <FavoriteMatches isMobile  />
                     </div>
                 </div>
                 <div className="duel-participant">

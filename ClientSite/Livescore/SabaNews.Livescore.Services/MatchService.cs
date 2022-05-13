@@ -109,10 +109,6 @@
             return await matchRepository.GetMatchByIdAsync(criteria);
         }
 
-        public async Task<MatchDetail> GetMatchDetailAsync(GetMatchDetailCriteria criteria)
-        {
-            return await matchRepository.GetMatchDetaiAsync(criteria);
-        }
 
         public async Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria)
         {
