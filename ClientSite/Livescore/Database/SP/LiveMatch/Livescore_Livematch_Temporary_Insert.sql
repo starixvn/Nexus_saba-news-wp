@@ -22,7 +22,7 @@ BEGIN
         DELETE l 
         FROM livescore_match_live l;
         LEAVE Livescore_Livematch_Temporary_Insert;
-    END IF:
+    END IF;
 
     SET @sqlCommand = REPLACE(matchIds, ',', '),(');
     SET @sqlCommand = CONCAT('(', @sqlCommand, ')');
