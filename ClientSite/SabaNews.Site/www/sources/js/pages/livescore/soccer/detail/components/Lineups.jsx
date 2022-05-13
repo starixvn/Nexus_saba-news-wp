@@ -298,7 +298,7 @@ export class Lineups extends Component {
     getIconGoalLineup = player => {
         const goalClass = 'number-goal';
         const goal = (
-            <span className="icon_f ic_bong" style={{ marginRight : player.goals > 1 ? "7px" : "0px" }}>
+            <span className="icon_f ic_bong" style={{ marginRight : player.goals > 1 ? '7px' : '0px' }}>
                 {this.getGoalsNumber(player.goals, goalClass)}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="10" fill="white" />
