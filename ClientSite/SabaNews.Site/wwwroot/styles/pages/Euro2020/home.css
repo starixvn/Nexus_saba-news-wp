@@ -1165,7 +1165,7 @@ button {
       -webkit-backface-visibility: hidden;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
-      transform: translateZ(0); }
+      transform: translateZ(0) scale(1, 1); }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -1229,7 +1229,7 @@ button {
       -webkit-backface-visibility: hidden;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
-      transform: translateZ(0); }
+      transform: translateZ(0) scale(1, 1); }
   .card-vertical__title {
     color: #333;
     font-weight: bold;

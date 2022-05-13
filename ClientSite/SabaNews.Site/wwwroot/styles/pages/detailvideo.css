@@ -1334,7 +1334,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       -webkit-backface-visibility: hidden;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
-      transform: translateZ(0); }
+      transform: translateZ(0) scale(1, 1); }
   .card-vertical__title {
     color: #333;
     font-weight: bold;
