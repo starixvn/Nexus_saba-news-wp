@@ -43,13 +43,16 @@
 
         public async Task UpdateLiveMatchStartTimeAsync(long matchId, DateTime? startTime, long startTimeStamp)
         {
-            var command = new UpdateLiveMatchStartTimeCommand
+            if (matchId > 0 && startTime.HasValue)
             {
-                MatchId = matchId,
-                StartTime = startTime,
-                StartTimeStamp = startTimeStamp
-            };
-            await baseService.ExecuteNonQueryAsync(command);
+                var command = new UpdateLiveMatchStartTimeCommand
+                {
+                    MatchId = matchId,
+                    StartTime = startTime,
+                    StartTimeStamp = startTimeStamp
+                };
+                await baseService.ExecuteNonQueryAsync(command);
+            }
         }
     }
 }
