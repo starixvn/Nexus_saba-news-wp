@@ -1,7 +1,7 @@
 ﻿@import '../abstracts/mixins';
 .banner-change-domain, .skeleton-banner-align {
     position: absolute;
-    top: 19.1rem;
+    top: 18rem;
     z-index: 99999999999;
 
     &.active-ads {

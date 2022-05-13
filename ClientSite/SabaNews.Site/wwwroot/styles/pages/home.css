@@ -1631,7 +1631,7 @@ button {
 
 .banner-change-domain, .skeleton-banner-align {
   position: absolute;
-  top: 19.1rem;
+  top: 18rem;
   z-index: 99999999999; }
   .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
     top: 7.5rem;
@@ -1853,7 +1853,7 @@ button {
 
 @media (min-width: 1024px) {
   .main .banner {
-    margin: 12px auto;
+    /*margin: 12px auto;*/
     max-width: 1120px;
     max-height: 80px; }
     .main .banner img {
