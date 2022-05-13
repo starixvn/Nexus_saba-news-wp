@@ -27,14 +27,15 @@
             this.appSettings = appSettings;
         }
 
-        public async Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches)
+        public async Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches, bool skipUpdatedAt = false)
         {
             if (matches.Any())
             {
                 var json = JsonConvert.SerializeObject(matches);
                 var command = new ImportMatchCommand
                 {
-                    MatchListJson = json
+                    MatchListJson = json,
+                    SkipSyncUpdatedTime = skipUpdatedAt
                 };
 
                 await baseService.ExecuteNonQueryAsync(command);

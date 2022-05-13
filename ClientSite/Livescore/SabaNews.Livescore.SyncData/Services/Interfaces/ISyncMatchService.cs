@@ -11,7 +11,7 @@
 
         Task<long> GetMaxMatchIdAsync();
 
-        Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches);
+        Task SyncMatchByLastUpdatedTimeAsync(List<MatchResponse> matches, bool skipUpdatedAt = false);
 
         Task SyncMatchStatisticAsync(List<MatchDetailResponse> matchDetails);
 

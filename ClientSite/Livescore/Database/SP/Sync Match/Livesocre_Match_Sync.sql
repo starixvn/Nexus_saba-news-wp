@@ -3,6 +3,7 @@ DELIMITER //
 
 CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Sync(
     IN matchListJson JSON
+    ,IN skipSyncUpdatedTime BIT
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
     /*
@@ -210,7 +211,7 @@ BEGIN
             m.FootballAddStartTime = tmp.FootballAddStartTime,
             m.FootballStartTime = tmp.FootballStartTime,
             m.FootballNextHalfStartTime = tmp.FootballNextHalfStartTime,
-            m.UpdatedAt = tmp.UpdatedAt;
+            m.UpdatedAt = (CASE WHEN skipSyncUpdatedTime = 1 THEN m.UpdatedAt ELSE tmp.UpdatedAt END);
 END;
 
 //

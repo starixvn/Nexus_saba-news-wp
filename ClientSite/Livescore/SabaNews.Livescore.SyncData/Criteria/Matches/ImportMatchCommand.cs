@@ -6,6 +6,8 @@
     {
         public string MatchListJson { get; set; }
 
+        public bool SkipSyncUpdatedTime { get; set; }
+
         public override string GetSettingKey() => "Livescore_Match_Sync";
 
         public override bool IsValid() => !string.IsNullOrWhiteSpace(MatchListJson);

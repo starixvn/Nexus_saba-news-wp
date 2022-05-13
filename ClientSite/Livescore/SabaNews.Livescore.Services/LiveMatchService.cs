@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.Services
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Services.Criteria.LiveMatch;
@@ -29,6 +30,14 @@
             };
 
             await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IEnumerable<long>> GetCurrentLiveMatchAsync()
+        {
+            var critria = new GetCurrentLiveMatchCriteria();
+
+            var result = await baseService.GetDataAsync<long>(critria);
+            return result.ToArray();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.ScheduledTasks.Workers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -7,6 +8,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.Synchronous;
+    using SabaNews.Livescore.Provider.API.Constants;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.Constants;
@@ -47,10 +49,39 @@
 
             if (matches is not null && matches.Any())
             {
-                await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
+                var maxUpdatedTime = matches.Select(x => x.UpdatedAt).Max();
 
-                await SyncMatchDetais(matches);
+                if (lastUpdatedTime.ToString(CommonConstants.OutgoingDatetimeFormat) == maxUpdatedTime.ToString(CommonConstants.OutgoingDatetimeFormat))
+                {
+                    await SyncMatchInPastAsync();
+                    await SyncMatchFutureAsync();
+                }
+                else
+                {
+                    await syncMatchService.SyncMatchByLastUpdatedTimeAsync(matches);
+
+                    await SyncMatchDetais(matches);
+                }
             }
+        }
+
+        private async Task SyncMatchFutureAsync()
+        {
+            var startTime = DateTime.UtcNow.Date;
+            var endTime = startTime.AddDays(appSettings.NumOfDayFutureToSyncMatch + 1).AddSeconds(-1);
+
+            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime);
+
+            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
+        }
+
+        private async Task SyncMatchInPastAsync()
+        {
+            var endTime = DateTime.UtcNow.Date.AddSeconds(-1);
+            var startTime = endTime.AddDays(appSettings.NumOfDayPastToSyncMatch);
+
+            var lastUpdatedTime = await syncMatchService.GetMatchLastUpdatedTimeInDateRangeAsync(startTime, endTime, isExcludeLiveMatch: true);
+            await syncMatchService.SyncAllMatchInfoByStartTimeRangeAndUpdatedTimeAsync(startTime, endTime, lastUpdatedTime);
         }
 
         private async Task SyncMatchDetais(List<MatchResponse> matches)

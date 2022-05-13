@@ -8,5 +8,7 @@
         public Task InsertLiveMatchToTemporaryTable(long[] matchIds);
 
         public Task<IEnumerable<long>> GetNotExistedMatchAsyc();
+
+        public Task<IEnumerable<long>> GetCurrentLiveMatchAsync();
     }
 }
