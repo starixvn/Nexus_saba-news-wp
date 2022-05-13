@@ -8,7 +8,9 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
     ,IN toTime DATETIME
     /*
 		Creator: Tim@20220412
-        Revisions: - 20220412@Tim: init
+        Revisions:
+			- 20220412@Tim: init
+			- 202200512@Tim: check 2nd leg
     */
 )
 BEGIN    
@@ -33,6 +35,7 @@ BEGIN
 	WHERE l.LeagueId = leagueId;
     
     SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum
+		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
@@ -47,6 +50,7 @@ BEGIN
         LEFT JOIN livescore_match_statistic sa ON m.MatchId = sa.MatchId AND m.AwayTeamId = sa.TeamId
         LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
+        LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
 	WHERE EXISTS (SELECT tmp_m.MatchId FROM tmp_MatchIds tmp_m WHERE m.MatchId = tmp_m.MatchId)
     ORDER BY m.StartTime ASC
 		,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN

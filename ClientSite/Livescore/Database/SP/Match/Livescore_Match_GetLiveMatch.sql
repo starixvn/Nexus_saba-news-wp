@@ -4,11 +4,14 @@ DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetLiveMatch`(
     /*
 		Creator: Tim@20220405
-        Revisions: - 20220405@Tim: init
+        Revisions:
+			- 20220405@Tim: init
+			- 202200512@Tim: check 2nd leg
     */
 )
 BEGIN
     SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum
+		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
@@ -28,6 +31,7 @@ BEGIN
         LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_league_extra le ON l.LeagueId = le.LeagueId
+        LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
 	WHERE m.Status IS NOT NULL
     ORDER BY CASE WHEN le.LeagueId IS NOT NULL THEN le.Priority ELSE 999999 END ASC
         ,CASE WHEN l.LeagueNameVN IS NOT NULL THEN l.LeagueNameVN
