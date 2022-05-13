@@ -144,7 +144,7 @@
         .name-player {
             width: 100% !important;
         }
-    }  
+    }
 }
 
 
@@ -373,5 +373,24 @@ span.number-position {
     @include Mobile {
         font-size: 1rem;
         top: 4px;
+    }
+}
+
+.lineup-goals {
+    display: flex;
+    position: absolute;
+    right: 19px;
+    top: -10px;
+
+    @include Mobile {
+        right: 16px;
+        top: -10px;
+    }
+
+    .icon_f {
+        position: relative;
+        margin-right: 7px;
+        top: auto;
+        left: auto;
     }
 }
