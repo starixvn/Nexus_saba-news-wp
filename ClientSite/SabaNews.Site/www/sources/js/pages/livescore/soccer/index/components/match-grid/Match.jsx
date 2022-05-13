@@ -42,9 +42,9 @@ export default class Match extends Component {
         }
 
         const { matchId, league, homeTeam, awayTeam } = this.props.match;
-        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(' ', '-');
-        const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(' ', '-');
-        const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(' ', '-');
+        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(/ /g, '-');
+        const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(/ /g, '-');
+        const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(/ /g, '-');
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
