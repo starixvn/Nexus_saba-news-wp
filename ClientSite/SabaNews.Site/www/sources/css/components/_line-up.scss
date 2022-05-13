@@ -61,7 +61,7 @@
                             color: $color-detail-league;
                             padding: .6rem 0;
                             width: 55%;
-                            text-align: center;
+                            text-align: left;
 
                             @include Mobile {
                                 font-size: 1rem;
@@ -144,6 +144,14 @@
         .name-player {
             width: 100% !important;
         }
+    }  
+}
+
+
+
+.perent-men {
+    .name-player {
+        text-align: center !important;
     }
 }
 
@@ -291,6 +299,8 @@ span.number-position {
         }
     }
 }
+
+
 
 .icon_f {
     position: absolute;
