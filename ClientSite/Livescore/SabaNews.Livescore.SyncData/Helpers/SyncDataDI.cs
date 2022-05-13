@@ -24,7 +24,6 @@
             services.AddTransient<ISyncSeasonService, SyncSeasonService>();
             services.AddTransient<ISyncMatchService, SyncMatchService>();
             services.AddTransient<ISyncHeadToHeadService, SyncHeadToHeadService>();
-            services.AddTransient<ISyncMqttRecivedDataService, SyncMqttRecivedDataService>();
         }
     }
 }

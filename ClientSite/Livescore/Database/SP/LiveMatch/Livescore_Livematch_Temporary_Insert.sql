@@ -15,24 +15,33 @@ SQL SECURITY DEFINER
 BEGIN
     SET errCode=0, errMsg='';
     
-    TRUNCATE TABLE livescore_match_live;
-
     DROP TEMPORARY TABLE IF EXISTS tmp_Match;
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Match(MatchId bigint PRIMARY KEY NOT NULL);
 
-    IF IFNULL(matchIds,'') <> ''THEN
-		SET @sqlCommand = REPLACE(matchIds, ',', '),(');
-		SET @sqlCommand = CONCAT('(', @sqlCommand, ')');
-		SET @sqlCommand = CONCAT('INSERT INTO tmp_Match VALUES', @sqlCommand); 
-                                                            
-		PREPARE stmt FROM  @sqlCommand;
-		EXECUTE stmt;
-		DEALLOCATE PREPARE stmt;
+    IF IFNULL(matchIds,'') = ''THEN
+        DELETE l 
+        FROM livescore_match_live l;
+        LEAVE Livescore_Livematch_Temporary_Insert;
+    END IF:
 
-        INSERT INTO livescore_match_live(MatchId)
-        SELECT m.MatchId
-        FROM tmp_Match m;
-	END IF;
+    SET @sqlCommand = REPLACE(matchIds, ',', '),(');
+    SET @sqlCommand = CONCAT('(', @sqlCommand, ')');
+    SET @sqlCommand = CONCAT('INSERT INTO tmp_Match VALUES', @sqlCommand); 
+                                                        
+    PREPARE stmt FROM  @sqlCommand;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+
+    DELETE l 
+    FROM livescore_match_live l
+    LEFT JOIN tmp_Match m ON l.MatchId = m.MatchId
+    WHERE m.MatchId IS NULL;
+
+    INSERT INTO livescore_match_live(MatchId)
+    SELECT m.MatchId
+    FROM tmp_Match m
+    ON DUPLICATE KEY UPDATE
+        MatchId = m.MatchId;
 END;
 
 //

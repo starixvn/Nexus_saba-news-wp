@@ -11,20 +11,24 @@
     using MQTTnet.Client.Options;
     using Newtonsoft.Json;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Extensions;
     using SabaNews.Livescore.Models.Mqtt;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
+    using SabaNews.Livescore.Services.Interfaces;
 
     internal class MqttClientService : IMqttClientService
     {
         private readonly IMqttClient mqttClient;
         private readonly ILogServiceProvider logger;
         private readonly IMqttClientOptions options;
+        private readonly ILiveMatchService liveMatchService;
         private readonly string[] subscribedTopics;
 
-        public MqttClientService(ILogServiceProvider logger, IMqttClientOptions options, MqttSettings settings)
+        public MqttClientService(ILogServiceProvider logger, IMqttClientOptions options, MqttSettings settings, ILiveMatchService liveMatchService)
         {
             this.options = options;
             this.logger = logger;
+            this.liveMatchService = liveMatchService;
             subscribedTopics = settings.SubscribedTopics;
             mqttClient = new MqttFactory().CreateMqttClient();
             ConfigureMqttClient();
@@ -59,8 +63,13 @@
 
         public async Task HandleDisconnectedAsync(MqttClientDisconnectedEventArgs eventArgs)
         {
-            await logger.WriteExceptionSentryErrorAsync(eventArgs.Exception);
-            logger.WriteLogFileInfo(eventArgs.Exception.Message);
+            await mqttClient.ReconnectAsync();
+
+            if (eventArgs.Exception is not null)
+            {
+                await logger.WriteExceptionSentryErrorAsync(eventArgs.Exception);
+                logger.WriteLogFileInfo(eventArgs.Exception.Message);
+            }
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -94,11 +103,6 @@
         {
             var topic = eventArgs.ApplicationMessage.Topic;
             var json = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
-            if (topic.StartsWith("/tlive"))
-            {
-                var textLiveData = JsonConvert.DeserializeObject<MqttTextLiveIncidents>(json);
-                await HandleTextLiveMessageResponse(textLiveData);
-            }
 
             if (topic.StartsWith("/stats"))
             {
@@ -109,10 +113,8 @@
 
         private async Task HandleMatchDetailResponse(MqttLiveMatch match)
         {
-        }
-
-        private async Task HandleTextLiveMessageResponse(MqttTextLiveIncidents textLiveData)
-        {
+            var startTime = DateTimeHelper.UnixTimeStampToDateTime(match.StartTimeStamp);
+            await liveMatchService.UpdateLiveMatchStartTimeAsync(match.MatchId, startTime, match.StartTimeStamp);
         }
     }
 }

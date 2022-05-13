@@ -14,17 +14,21 @@
             var mqttSettings = configuration.GetSection(MqttSettings.ConfigurationKey).Get<MqttSettings>();
             services.AddSingleton(mqttSettings);
 
-            services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
+            if (mqttSettings.Enabled)
             {
-                aspOptionBuilder.WithTcpServer(mqttSettings.Host, mqttSettings.Port);
-                if (mqttSettings.UseProxy)
+                services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
                 {
-                    aspOptionBuilder.WithProxy(
-                        address: mqttSettings.ProxyAddress,
-                        bypassOnLocal: mqttSettings.ByPassLocal
-                        );
-                }
-            });
+                    aspOptionBuilder.WithTcpServer(mqttSettings.Host, mqttSettings.Port);
+                    if (mqttSettings.UseProxy)
+                    {
+                        aspOptionBuilder.WithProxy(
+                            address: mqttSettings.ProxyAddress,
+                            bypassOnLocal: mqttSettings.ByPassLocal
+                            );
+                    }
+                });
+            }
+
             return services;
         }
 
