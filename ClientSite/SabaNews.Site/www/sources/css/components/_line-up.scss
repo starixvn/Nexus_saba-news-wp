@@ -11,6 +11,7 @@
 
             .icon-line-up {
                 position: relative;
+
                 svg {
                     width: 2.2rem;
                     height: 2.2rem;
@@ -83,8 +84,17 @@
                             text-align: right;
                             line-height: 1;
                             display: flex;
-                            align-items: center;
                             justify-content: flex-end;
+
+                            svg {
+                                width: 2rem;
+                                height: 2rem;
+
+                                @include Mobile {
+                                    width: 1.4rem;
+                                    height: 1.4rem;
+                                }
+                            }
                         }
                     }
 
