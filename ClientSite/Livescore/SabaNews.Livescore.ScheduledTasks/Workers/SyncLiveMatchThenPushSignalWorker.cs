@@ -48,11 +48,11 @@
         {
             var liveMatches = await fetchMatchService.FetchLiveMatchListAsync(new SyncMatchParams());
             var matchIds = liveMatches?.Select(m => m.MatchId).ToArray();
-            var currentLiveMatches = await liveMatchService.GetCurrentLiveMatchAsync();
+            var prevLiveMatches = await liveMatchService.GetCurrentLiveMatchAsync();
 
             await liveMatchService.InsertLiveMatchToTemporaryTable(matchIds);
 
-            var removedFromLiveMatches = currentLiveMatches.Where(id => matchIds.All(i => i != id));
+            var removedFromLiveMatches = prevLiveMatches.Where(id => matchIds.All(i => i != id));
             var notExistedMatches = await liveMatchService.GetNotExistedMatchAsyc();
 
             await SyncMatchInfoAdditionalAsync(removedFromLiveMatches.Concat(notExistedMatches));
