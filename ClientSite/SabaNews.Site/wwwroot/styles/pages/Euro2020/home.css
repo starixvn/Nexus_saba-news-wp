@@ -1165,7 +1165,12 @@ button {
       -webkit-backface-visibility: hidden;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
-      transform: translateZ(0) scale(1, 1); }
+      transform: translateZ(0) scale(1, 1);
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor; }
   .card-horizontal__content .title {
     font-weight: bold;
     font-size: 1.6rem;
@@ -1229,7 +1234,12 @@ button {
       -webkit-backface-visibility: hidden;
       -ms-transform: translateZ(0);
       -webkit-transform: translateZ(0);
-      transform: translateZ(0) scale(1, 1); }
+      transform: translateZ(0) scale(1, 1);
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor; }
   .card-vertical__title {
     color: #333;
     font-weight: bold;
