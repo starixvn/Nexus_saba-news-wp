@@ -12,16 +12,19 @@ CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Livematch_Temporary_Insert
     */
 )
 SQL SECURITY DEFINER
-BEGIN
+Livescore_Livematch_Temporary_Insert:BEGIN
     SET errCode=0, errMsg='';
     
     DROP TEMPORARY TABLE IF EXISTS tmp_Match;
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_Match(MatchId bigint PRIMARY KEY NOT NULL);
 
     IF IFNULL(matchIds,'') = ''THEN
-        DELETE l 
-        FROM livescore_match_live l;
-        LEAVE Livescore_Livematch_Temporary_Insert;
+		BEGIN
+			DELETE l 
+			FROM livescore_match_live l;
+
+			LEAVE Livescore_Livematch_Temporary_Insert;
+        END;
     END IF;
 
     SET @sqlCommand = REPLACE(matchIds, ',', '),(');
