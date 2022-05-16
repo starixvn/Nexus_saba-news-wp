@@ -182,5 +182,11 @@
         {
             return View();
         }
+
+        [Route("lich-thi-dau")]
+        public ActionResult RedirectLivescorePage()
+        {
+            return Redirect("/lich-thi-dau/bong-da");
+        }
     }
 }
