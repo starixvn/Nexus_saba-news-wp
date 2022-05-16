@@ -18,13 +18,17 @@
             {
                 services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
                 {
-                    if (mqttSettings.UseProxy)
+                    if (mqttSettings.Mode == MqttClientMode.WebSocket)
                     {
-                        aspOptionBuilder.WithWebSocketServer(mqttSettings.Host)
-                        .WithProxy(
-                            address: mqttSettings.ProxyAddress,
-                            bypassOnLocal: mqttSettings.ByPassLocal
+                        aspOptionBuilder.WithWebSocketServer(mqttSettings.WebSocketHost);
+
+                        if (mqttSettings.UseProxy)
+                        {
+                            aspOptionBuilder.WithProxy(
+                                address: mqttSettings.ProxyAddress,
+                                bypassOnLocal: mqttSettings.ByPassLocal
                             );
+                        }
                     }
                     else
                     {
