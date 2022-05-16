@@ -20,7 +20,6 @@ BEGIN
     UPDATE livescore_match_live l
     SET
     l.StartTime = startTime
-    ,l.StartTimeStamp = startTimeStamp
     WHERE l.MatchId = matchId;
 
 END;
