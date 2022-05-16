@@ -97,11 +97,9 @@ export class AppContainer extends Component {
         this.props.navigate(url);
     };
 
-
     onUpdateFavouriteMatch = matchId => {
         this.props.setFavouriteMatches({matchId: matchId});
     };
-
 
     render() {
         const { selectedTab } = this.state;
@@ -114,7 +112,9 @@ export class AppContainer extends Component {
                         <Breadscrum currentPage = 'Trận đấu quan tâm' currentPageUrl={window.location.href} />
                         <div className="livescore-league-header-detail">
                             <div className="livescore-league-header-detail-group">
-                                <div className="livescore-league-header-detail-icon"><i className="icon-livescore icon-live-start favoroute-icon" /></div>
+                                <div className="livescore-league-header-detail-icon">
+                                    <i className="icon-livescore icon-live-start favoroute-icon" />
+                                </div>
                                 <div className="livescore-league-header-detail-name">
                                     Trận đấu quan tâm
                                 </div>
@@ -125,16 +125,28 @@ export class AppContainer extends Component {
                             onSelect={this.handleSelectTab}
                         >
                             <Tab eventKey={this.tabsParam.all} title="Tất cả">
-                                {matches && <MatchGrid isAllMatches sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
+                                {
+                                    matches &&
+                                    <MatchGrid isAllMatches sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                }
                             </Tab>
                             <Tab eventKey={this.tabsParam.live} title="Trực tiếp">
-                                {liveMatches && <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
+                                {
+                                    liveMatches &&
+                                    <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                }
                             </Tab>
                             <Tab eventKey={this.tabsParam.pre} title="Chưa diễn ra">
-                                {preMatches && <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
+                                {
+                                    preMatches &&
+                                    <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                }
                             </Tab>
                             <Tab eventKey={this.tabsParam.post} title="Đã diễn ra">
-                                {postMatches && <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}/>}
+                                {
+                                    postMatches &&
+                                    <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                }
                             </Tab>
                         </Tabs>
                     </div>

@@ -30,7 +30,7 @@ export class HeadToHead extends Component {
     };
 
     handleClickLeague = (event, league) => {
-        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(/ /g, '-');
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
@@ -43,9 +43,9 @@ export class HeadToHead extends Component {
 
     handleClick = (event, match) => {
         const { matchId, league, homeTeam, awayTeam } = match;
-        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(/ /g, '-');
-        const homeTeamName = CommonFunctions.getTeamName(homeTeam).toLowerCase().replace(/ /g, '-');
-        const awayTeamName = CommonFunctions.getTeamName(awayTeam).toLowerCase().replace(/ /g, '-');
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
+        const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');

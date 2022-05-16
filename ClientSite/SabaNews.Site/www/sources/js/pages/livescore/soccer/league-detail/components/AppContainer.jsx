@@ -83,7 +83,7 @@ class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const leagueName = CommonFunctions.getLeagueName(this.props.league).toLowerCase().replace(/ /g, '-');
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(this.props.league));
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
         this.props.navigate(url);
     };

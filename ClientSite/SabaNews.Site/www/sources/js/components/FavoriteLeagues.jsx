@@ -7,7 +7,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 
 const FavoriteLeagues = ({ leagues }) => {
     const handleClick = (event, league) => {
-        const leagueName = CommonFunctions.getLeagueName(league).toLowerCase().replace(/ /g, '-');
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
