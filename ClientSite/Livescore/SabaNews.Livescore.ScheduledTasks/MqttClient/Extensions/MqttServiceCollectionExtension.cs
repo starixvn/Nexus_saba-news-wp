@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using MQTTnet.Client.Options;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Services;
 
@@ -18,15 +19,18 @@
             {
                 services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
                 {
-                    aspOptionBuilder.WithWebSocketServer(mqttSettings.WebSocketHost);
-
-                    if (mqttSettings.UseProxy)
+                    aspOptionBuilder.WithWebSocketServer(o =>
                     {
-                        aspOptionBuilder.WithProxy(
-                            address: mqttSettings.ProxyAddress,
-                            bypassOnLocal: mqttSettings.ByPassLocal
-                        );
-                    }
+                        o.Uri = mqttSettings.WebSocketHost;
+                        if (mqttSettings.UseProxy)
+                        {
+                            o.ProxyOptions = new MqttClientWebSocketProxyOptions
+                            {
+                                Address = mqttSettings.ProxyAddress,
+                                BypassOnLocal = mqttSettings.ByPassLocal
+                            };
+                        }
+                    });
                 });
             }
 
