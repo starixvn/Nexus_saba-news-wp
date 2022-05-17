@@ -225,10 +225,15 @@ $(document).ready(function () {
         $('.block-guess .block__content .skeleton-vertical').addClass("skeleton-horizontal").removeClass("skeleton-vertical");
     }
 
-    var banner = $('.banner').offset();
-    var top = (typeof banner != 'undefined') ? banner.top : 152;
+    
+    
     $(window).on('scroll', function () {
-        if ($(this).scrollTop() > top + 20) {
+        var banner = $('.banner').offset();
+        const header = $('.header-controls').innerHeight();
+        const topHeader = $('.top-header').innerHeight();
+        const top = header + topHeader - 15;
+        console.log($(this).scrollTop(), top);
+        if ($(this).scrollTop() > top ) {
             $(".banner-change-domain").addClass('active-ads');
         } else {
             $(".banner-change-domain").removeClass('active-ads');
