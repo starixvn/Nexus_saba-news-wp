@@ -775,6 +775,7 @@
 }
 
 .hidden-detail {
+    overflow : hidden;
     @include tableMobile {
         .group-menu, .padding-mobile-none, .top-header, .nav-menu {
             height: 100%;

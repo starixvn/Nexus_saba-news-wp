@@ -24,6 +24,14 @@
 @import '../components/ads';
 @import '../components/_popup-event';
 
+html {
+    overflow-x: unset;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .main {
     @include tableMobile {
         position: relative;
