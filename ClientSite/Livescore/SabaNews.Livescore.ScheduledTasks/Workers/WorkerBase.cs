@@ -57,7 +57,7 @@
             catch (Exception ex)
             {
                 logService.WriteLogFileInfo("Unhandeled exception. Execution Stopping");
-                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.Message);
             }
         }
 

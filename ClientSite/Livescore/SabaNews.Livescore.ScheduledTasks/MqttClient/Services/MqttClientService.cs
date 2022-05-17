@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.ScheduledTasks.MqttClient.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Text;
     using System.Threading;
@@ -74,14 +75,21 @@
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            logger.WriteLogFileInfo("Starting connect MQTT");
-            await mqttClient.ConnectAsync(options);
-
-            if (!mqttClient.IsConnected)
+            try
             {
-                await mqttClient.ReconnectAsync();
+                logger.WriteLogFileInfo("Starting connect MQTT");
+                await mqttClient.ConnectAsync(options);
+
+                if (!mqttClient.IsConnected)
+                {
+                    await mqttClient.ReconnectAsync();
+                }
+                logger.WriteLogFileInfo("Connected to MQTT");
             }
-            logger.WriteLogFileInfo("Connected to MQTT");
+            catch (Exception ex)
+            {
+                await logger.WriteExceptionSentryErrorAsync(ex);
+            }
         }
 
         public async Task StopAsync(CancellationToken cancellationToken)
