@@ -3,9 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Extensions;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
@@ -17,15 +21,21 @@
 
     public class SoccerController : Controller
     {
+        private readonly LivescoreMainPageCacheConfig cacheConfigs;
+        private readonly ICacheWrapperService cacheService;
         private readonly IPostService postService;
         private readonly ILeagueService leagueService;
         private readonly IMatchService matchService;
 
         public SoccerController(
+            IOptionsSnapshot<LivescoreMainPageCacheConfig> cacheConfigs,
+            ICacheWrapperService cacheService,
             IPostService postService,
             ILeagueService leagueService,
             IMatchService matchService)
         {
+            this.cacheConfigs = cacheConfigs.Value;
+            this.cacheService = cacheService;
             this.postService = postService;
             this.leagueService = leagueService;
             this.matchService = matchService;
@@ -104,14 +114,60 @@
             criteria.FromTime = criteria.EventDate.ToStartOfDay().ConvertToUTC(criteria.Timezone);
             criteria.ToTime = criteria.EventDate.ToEndOfDay().ConvertToUTC(criteria.Timezone);
             criteria.SportId = (short)SportType.Soccer;
-            IList<Match> matches = await matchService.GetMatchByDateAsync(criteria);
+            IList<Match> matches;
+            if (cacheConfigs.Enabled)
+            {
+                var cacheKey = string.Format("{0}{1}", CacheKey.LivescoreMainPage, criteria.EventDate.ToString("ddMMyyyy"));
+                matches = await cacheService.GetAsync<IList<Match>>(cacheKey);
+                if (matches is null)
+                {
+                    matches = await matchService.GetMatchByDateAsync(criteria);
+
+                    var today = DateTime.UtcNow.Date;
+                    byte timeout = 1;
+                    if (criteria.EventDate.Date < today.AddDays(-cacheConfigs.DateRange)
+                        || criteria.EventDate.Date > today.AddDays(cacheConfigs.DateRange))
+                    {
+                        timeout = cacheConfigs.OutOfRangeTimeout;
+                    }
+
+                    await cacheService.SetAsync(cacheKey, matches,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(timeout)
+                        });
+                }
+            }
+            else
+            {
+                matches = await matchService.GetMatchByDateAsync(criteria);
+            }
+
             return Json(matches);
         }
 
         [HttpPost]
         public async Task<IActionResult> GetLiveMatches()
         {
-            IList<Match> matches = await matchService.GetLiveMatchAsync();
+            IList<Match> matches;
+            if (cacheConfigs.Enabled)
+            {
+                matches = await cacheService.GetAsync<IList<Match>>(CacheKey.LivescoreLiveMatch);
+                if (matches is null)
+                {
+                    matches = await matchService.GetLiveMatchAsync();
+                    await cacheService.SetAsync(CacheKey.LivescoreLiveMatch, matches,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(1)
+                        });
+                }
+            }
+            else
+            {
+                matches = await matchService.GetLiveMatchAsync();
+            }
+
             return Json(matches);
         }
 

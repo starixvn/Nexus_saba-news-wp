@@ -113,6 +113,7 @@
             services.AddRedisCache(Configuration.GetSection("RedisConfig"));
 
             services.Configure<MailConfigs>(options => Configuration.GetSection("MailConfigs").Bind(options));
+            services.Configure<LivescoreMainPageCacheConfig>(options => Configuration.GetSection("LivescoreMainPageCacheConfig").Bind(options));
 
             services.AddResponseCompression();
             services.AddResponseCaching();
@@ -121,10 +122,7 @@
 
             CoreDI.RegisterService(services);
             services.ResolveLivescoreServiceDI();
-            services.AddSingleton(
-            HtmlEncoder.Create(allowedRanges: new[] {
-                UnicodeRanges.All
-           }));
+            services.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
 
             services.RegisterServices();
             services.AddRazorPages();
