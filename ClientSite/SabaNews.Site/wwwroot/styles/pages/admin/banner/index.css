@@ -120,7 +120,7 @@
       .block-extension .group-table .right-table .box-control .input-password {
         border: 1px solid #BDBDBD;
         background-color: #fff !important; }
-        @media (max-device-width: 767px) {
+        @media (max-width: 767px) {
           .block-extension .group-table .right-table .box-control .input-password {
             width: 15rem; } }
       .block-extension .group-table .right-table .box-control .main-fill .txt-fill {
@@ -209,7 +209,7 @@
         float: right;
         margin-top: 1rem;
         margin-bottom: 0; }
-        @media (max-device-width: 767px) {
+        @media (max-width: 767px) {
           .block-extension .group-table .right-table .box-edit-form .forgot-pass {
             float: none; } }
       .block-extension .group-table .right-table .box-edit-form .radio-group {

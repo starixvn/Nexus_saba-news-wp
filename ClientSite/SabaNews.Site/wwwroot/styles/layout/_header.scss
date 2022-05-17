@@ -342,6 +342,19 @@
         white-space: nowrap;
         list-style: none;
 
+        &::-webkit-scrollbar {
+            height: .4rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color-000, .2);
+            border-radius: 3px;
+        }
+
         li {
             &:last-of-type {
                 padding-right: 3rem;

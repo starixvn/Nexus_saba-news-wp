@@ -75,7 +75,7 @@ body {
   @media screen and (max-width: 1024px) {
     .pd-column-right {
       padding-left: 2rem; } }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .pd-column-right {
       padding: 0; } }
 
@@ -89,7 +89,7 @@ body {
   line-height: 3.2rem;
   margin: 0;
   font-size: 1.8rem; }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .content {
       font-size: 1.6rem;
       line-height: 2.8rem; } }
@@ -146,7 +146,7 @@ p.has-text-align-center {
   .footer .copy-right {
     display: flex;
     align-items: center; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .footer .copy-right {
         border-top: 1px solid #1B263A;
         padding-top: .8rem;
@@ -155,7 +155,7 @@ p.has-text-align-center {
   .footer .follow {
     display: flex;
     align-items: center; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .footer .follow {
         padding-bottom: .8rem; } }
     .footer .follow [class*="icon-"] {
@@ -172,7 +172,7 @@ p.has-text-align-center {
     position: relative;
     top: 3px;
     left: 3px; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .footer .ex {
         left: 0; } }
   .footer .back-to-top-box {
@@ -187,7 +187,7 @@ p.has-text-align-center {
     flex-direction: column;
     width: 6rem;
     height: 6rem; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .footer .back-to-top-box {
         display: none; } }
     .footer .back-to-top-box .back-to-top {
@@ -481,6 +481,13 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     overflow-y: hidden;
     white-space: nowrap;
     list-style: none; }
+    .child-mobile-menu .main-child-menu::-webkit-scrollbar {
+      height: .4rem; }
+    .child-mobile-menu .main-child-menu::-webkit-scrollbar-track {
+      background: #f1f1f1; }
+    .child-mobile-menu .main-child-menu::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 3px; }
     .child-mobile-menu .main-child-menu li:last-of-type {
       padding-right: 3rem; }
     .child-mobile-menu .main-child-menu li a {
@@ -585,7 +592,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             color: #F12F19; }
       .top-header .group-menu .nav-menu .active-main-menu {
         display: flex; }
-        @media (max-device-width: 767px) {
+        @media (max-width: 767px) {
           .top-header .group-menu .nav-menu .active-main-menu {
             display: block;
             padding-top: 6.6rem; } }
@@ -605,7 +612,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding: 0 1.2rem;
       margin: 1rem 0 2rem 0;
       display: block; } }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .right-header-section {
       position: absolute;
       top: 0; } }
@@ -698,7 +705,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-width: 1024px) {
     .languages-box {
       padding-left: 30px; } }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .languages-box {
       width: 70px; } }
   .languages-box .languages-list {
@@ -713,7 +720,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     top: 3rem;
     transition: opacity .3s;
     z-index: 1000; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .languages-box .languages-list {
         left: 2.2rem; } }
     .languages-box .languages-list .lang-item {
@@ -772,7 +779,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 36px;
   height: 36px;
   margin-left: .3rem; }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .marked-icon {
       position: relative;
       top: -2px; } }
@@ -1067,7 +1074,7 @@ button {
       grid-template-columns: 13.5rem 1fr;
       grid-template-rows: none;
       grid-gap: 1.2rem; } }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .card-horizontal {
       margin-bottom: 1.2rem;
       padding-bottom: 1.2rem; }
@@ -1134,7 +1141,7 @@ button {
   padding-bottom: 1.6rem; }
   .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
     padding: 0 1.6rem; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .card-vertical.card-vertical-highlight [class*="card-vertical__"]:not(.card-vertical__image) {
         padding: 0 .8rem; } }
   .card-vertical__image {
@@ -1295,7 +1302,7 @@ button {
     position: relative; }
     .event-modal-home .modal .modal-body .img-pc {
       display: block; }
-      @media (max-device-width: 767px) {
+      @media (max-width: 767px) {
         .event-modal-home .modal .modal-body .img-pc {
           display: none; } }
     .event-modal-home .modal .modal-body .img-mobile {
@@ -1303,7 +1310,7 @@ button {
       text-align: center; }
       .event-modal-home .modal .modal-body .img-mobile img {
         width: 100%; }
-      @media (max-device-width: 767px) {
+      @media (max-width: 767px) {
         .event-modal-home .modal .modal-body .img-mobile {
           display: block;
           padding: 0 1rem; } }
@@ -1314,7 +1321,7 @@ button {
       bottom: 0;
       left: 5%;
       transform: translate(50%, -50%); }
-      @media (max-device-width: 767px) {
+      @media (max-width: 767px) {
         .event-modal-home .modal .modal-body .control-event {
           bottom: 37%;
           right: 50%;
@@ -1330,7 +1337,7 @@ button {
     top: 0 !important;
     right: 0 !important;
     background: none !important; }
-    @media (max-device-width: 767px) {
+    @media (max-width: 767px) {
       .event-modal-home .modal .close-login {
         right: 1rem !important; } }
     .event-modal-home .modal .close-login span {
@@ -1354,7 +1361,7 @@ button {
   bottom: 0;
   left: 5%;
   transform: translate(50%, -50%); }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .modal-body .custom-checkbox-container {
       bottom: 37%;
       right: 50%;

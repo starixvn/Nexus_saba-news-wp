@@ -75,7 +75,7 @@ body {
   @media screen and (max-width: 1024px) {
     .pd-column-right {
       padding-left: 2rem; } }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .pd-column-right {
       padding: 0; } }
 
@@ -89,7 +89,7 @@ body {
   line-height: 3.2rem;
   margin: 0;
   font-size: 1.8rem; }
-  @media (max-device-width: 767px) {
+  @media (max-width: 767px) {
     .content {
       font-size: 1.6rem;
       line-height: 2.8rem; } }
