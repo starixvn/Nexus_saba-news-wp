@@ -335,7 +335,7 @@
         border-top: 1px solid #e7e7e7;
         border-bottom: 1px solid #e7e7e7;
         height: 4rem;
-        background: $color-fff;
+        background: $bg-nav;
         padding: 0;
         overflow-x: scroll;
         overflow-y: hidden;
@@ -776,8 +776,6 @@
 
 .hidden-detail {
     @include tableMobile {
-        overflow: hidden;
-
         .group-menu, .padding-mobile-none, .top-header, .nav-menu {
             height: 100%;
         }
@@ -787,8 +785,8 @@
             z-index: 99999;
             display: block;
             overflow: auto;
-            height: calc(100vh - 4.4rem);
-            top: 4.5rem !important;
+            height: calc(100vh - 4rem);
+            top: 4.4rem !important;
             bottom: 0;
             position: fixed;
         }
