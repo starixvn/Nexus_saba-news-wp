@@ -1898,7 +1898,7 @@ button {
   .main .banner-mobile {
     display: none; } }
 
-@media (max-device-width: 768px) {
+@media (max-width: 768px) {
   .main .banner-mobile {
     position: relative;
     text-align: center; }

@@ -1992,7 +1992,7 @@ body {
       .block__video .card-vertical__image {
         max-height: 13rem; } }
 
-@media (max-device-width: 767px) {
+@media (max-width: 767px) {
   .hidden-body .top-header {
     top: 44px; } }
 
