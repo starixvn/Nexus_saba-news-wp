@@ -34,3 +34,4 @@
 @section Title{Chi tiết giải đấu}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = "home-page" }))
 <div id="app-container"></div>
+@await Html.PartialAsync(ViewResources.SidebarBannerView)

@@ -1,6 +1,6 @@
 ﻿@using SabaNews.Models.ViewModel.Posts
 @model PageViewModel
-@{ 
+@{
     var selectedEventDate = (DateTime?)ViewBag.EventDate;
 }
 @section Styles{
@@ -39,3 +39,4 @@
 @section Title {@Model.Header.Title}
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.CategorySlug }))
 <div id="app-container"></div>
+@await Html.PartialAsync(ViewResources.SidebarBannerView)
