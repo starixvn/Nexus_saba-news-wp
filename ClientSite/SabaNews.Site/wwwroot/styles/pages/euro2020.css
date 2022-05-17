@@ -803,7 +803,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     z-index: 99999;
     display: block;
     overflow: auto;
-    height: calc(100vh - 4rem);
+    height: 100vh;
     top: 4.4rem !important;
     bottom: 0;
     position: fixed; }
