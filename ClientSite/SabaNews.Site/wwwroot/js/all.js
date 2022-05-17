@@ -232,7 +232,6 @@ $(document).ready(function () {
         const header = $('.header-controls').innerHeight();
         const topHeader = $('.top-header').innerHeight();
         const top = header + topHeader - 15;
-        console.log($(this).scrollTop(), top);
         if ($(this).scrollTop() > top ) {
             $(".banner-change-domain").addClass('active-ads');
         } else {
