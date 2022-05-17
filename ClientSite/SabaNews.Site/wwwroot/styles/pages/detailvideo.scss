@@ -24,7 +24,6 @@
 @import '../components/ads';
 @import '../components/_popup-event';
 
-
 .main {
     @include tableMobile {
         position: relative;
@@ -73,6 +72,42 @@
 @media (max-device-width: 767px) {
     .hidden-body .top-header {
         top: 44px;
+    }
+}
+
+.wapper.active-fixed, .wapper.active-fixed {
+    .fixed-social {
+        @include Mobile {
+            z-index: 10008;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .top-header {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+    }
+}
+
+.hidden-detail {
+    .fixed-social {
+        @include Mobile {
+            z-index: 10008;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .top-header {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+
+        .main-menu {
+            display: flex;
+        }
     }
 }
 

@@ -58,15 +58,22 @@ body {
     overflow: hidden;
 }
 
-.hidden-body {
+.hidden-body,.detail-hidden {
     position: fixed;
     height: 100%;
     overflow: hidden;
+
     main {
         @include tableMobile {
             overflow: hidden;
         }
     }
+}
+
+
+
+.width-100-saba {
+    width: 100% !important;
 }
 
 

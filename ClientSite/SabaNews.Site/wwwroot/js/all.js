@@ -64,13 +64,21 @@ $(document).ready(function () {
             $('.nav-menu').toggleClass('active-nav');
             $(this).toggleClass('open');
             $('body').toggleClass('hidden-body');
+            $('.header-controls').removeClass('width-100-saba');
             $('.header-controls').css('width', windowWidth);
         }
     });
 
+
+    $('.button-detail-page').click(function () {
+        if ($(window).innerWidth() <= 1024) {
+            $(this).toggleClass('open');
+            $('body').toggleClass('hidden-detail');
+        }
+    });
+
     $(window).on("load resize", function (e) {
-        var windowWidth = window.innerWidth;
-        $('.header-controls').css('width', windowWidth);
+        $('.header-controls').addClass('width-100-saba');
     });
 
     //desktop

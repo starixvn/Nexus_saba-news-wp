@@ -26,6 +26,8 @@
 @import '../components/ads';
 @import '../components/_popup-event';
 
+
+
 img {
     width: 100%;
 }
@@ -569,19 +571,13 @@ img {
 }
 
 
-/*.wapper.active-fixed {
+.wapper.active-fixed, .wapper.active-fixed {
     .fixed-social {
         @include Mobile {
             z-index: 10008;
             display: flex;
             justify-content: flex-end;
         }
-    }
-
-    .button-mobile {
-        z-index: 10009;
-        top: .8rem;
-        position: fixed;
     }
 
     .top-header {
@@ -591,7 +587,33 @@ img {
     }
 }
 
-@media (max-device-width: 767px) {
+.hidden-detail {
+    .fixed-social {
+        @include Mobile {
+            z-index: 10008;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .top-header {
+        position: fixed;
+        z-index: 10005;
+        top: 0;
+        .group-menu {
+            .nav-menu {
+                .main-menu {
+                    display: flex;
+                    padding-top: 6.6rem;
+                }
+            }
+        }
+    }
+}
+
+
+
+/*@media (max-device-width: 767px) {
     .wapper.active-fixed {
         .top-header {
             position: fixed;
