@@ -150,7 +150,6 @@
                     context.Response.Headers.Remove("X-Frame-Options");
                     context.Response.Headers["X-Frame-Options"] = "AllowAll";
 
-                    //context.Request.Headers[]("X-Frame-Options", "AllowAll");
                     if (context.Request.Headers["x-forwarded-proto"] == "https")
                     {
                         context.Request.Scheme = "https";
