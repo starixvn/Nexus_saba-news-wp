@@ -46,8 +46,7 @@ export default class MatchGeneralInfo extends Component {
                     <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 }
                 {
-                    match.isSecondLeg && match.status === MatchStatus.Finished
-                    && (homeAGG > 0 || awayAGG > 0) &&
+                    match.isSecondLeg && match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0) &&
                     <li>AGG: {homeAGG} - {awayAGG}</li>
                 }
                 {

@@ -92,7 +92,6 @@ export class Lineups extends Component {
                 {
                     playerIncident.ownGoals > 0 &&
                     <>
-                        
                         <span className="icon-line-up">
                             {this.getGoalsNumber(playerIncident.ownGoals, goalsClass)}
                             <IncidentIcon type={IncidentIconType.OwnGoal} />
@@ -298,7 +297,7 @@ export class Lineups extends Component {
     getIconGoalLineup = player => {
         const goalClass = 'number-goal';
         const goal = (
-            <span className="icon_f ic_bong" style={{ marginRight : player.goals > 1 ? '7px' : '0px' }}>
+            <span className="icon_f ic_bong" style={{ marginRight: player.goals > 1 ? '7px' : '0px' }}>
                 {this.getGoalsNumber(player.goals, goalClass)}
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="10" fill="white" />
@@ -339,17 +338,17 @@ export class Lineups extends Component {
                 </svg>
             </span>
         );
-        let Icon = '';
+        let icon = '';
         if (player.goals > 0 && player.penalty > 0) {
-            Icon = <div className="lineup-goals">{goal} {penalty}</div>
+            icon = <div className="lineup-goals">{goal} {penalty}</div>;
         } else if (player.goals > 0) {
-            Icon = goal;
+            icon = goal;
         } else if (player.penalty > 0) {
-            Icon = penalty;
+            icon = penalty;
         }
 
-        return Icon;
-    }
+        return icon;
+    };
 
     renderListPlayer = (title, home, away) => {
         return (

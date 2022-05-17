@@ -29,18 +29,16 @@ const SkeletonGrid = () => {
                                         <div className="soccer-match-team">
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
-                                                    <Skeleton circle className="soccer-team-logo" />
+                                                    <Skeleton className="soccer-team-logo" circle />
                                                     <Skeleton className="soccer-team-name" width={100} />
                                                 </div>
                                                 <div className="soccer-team away-team">
-                                                    <Skeleton circle className="soccer-team-logo" />
+                                                    <Skeleton className="soccer-team-logo" circle />
                                                     <Skeleton className="soccer-team-name" width={100} />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="soccer-match-star-icon">
-                                            <Skeleton />
-                                        </div>
+                                        <div className="soccer-match-star-icon"><Skeleton /></div>
                                     </div>
                                 </div>
                             </div>
