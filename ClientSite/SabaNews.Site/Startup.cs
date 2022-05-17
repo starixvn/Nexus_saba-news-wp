@@ -147,8 +147,8 @@
 
                 app.Use((context, next) =>
                 {
-                    context.Request.Headers.Remove("X-Frame-Options");
-                    context.Request.Headers["X-Frame-Options"] = "AllowAll";
+                    context.Response.Headers.Remove("X-Frame-Options");
+                    context.Response.Headers["X-Frame-Options"] = "AllowAll";
 
                     //context.Request.Headers[]("X-Frame-Options", "AllowAll");
                     if (context.Request.Headers["x-forwarded-proto"] == "https")
