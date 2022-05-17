@@ -10,6 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByDate`(
         Revisions:
 			- 20220322@Tim: init
 			- 202200512@Tim: check 2nd leg
+			- 202200517@Tim: get start time for live match
     */
 )
 BEGIN
@@ -33,7 +34,9 @@ BEGIN
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
-        ,m.FootballAddStartTime, m.FootballStartTime, m.FootballNextHalfStartTime
+        ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
+        ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
+        ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
 		,m.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, le.IsMajor, le.Priority
         ,s.SeasonId, s.Year
         ,ss.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
@@ -50,6 +53,7 @@ BEGIN
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_league_extra le ON l.LeagueId = le.LeagueId
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
+        LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
 	WHERE EXISTS (SELECT tmp_m.MatchId FROM tmp_MatchIds tmp_m WHERE m.MatchId = tmp_m.MatchId)
     ORDER BY CASE WHEN le.LeagueId IS NOT NULL THEN le.Priority ELSE 999999 END ASC
         ,CASE WHEN l.LeagueNameVN IS NOT NULL THEN l.LeagueNameVN

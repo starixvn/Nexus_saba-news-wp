@@ -7,6 +7,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetLiveMatch`(
         Revisions:
 			- 20220405@Tim: init
 			- 202200512@Tim: check 2nd leg
+			- 202200517@Tim: get start time for live match
     */
 )
 BEGIN
@@ -15,13 +16,16 @@ BEGIN
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
+        ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
+        ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
+        ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
 		,m.LeagueId, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueNameVN, l.CurrentRound, l.LeagueType, l.Icon, le.IsMajor, le.Priority
         ,s.SeasonId, s.Year
 		,ss.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
 		,m.HomeTeamId, h.TeamNameEN, h.TeamFullNameEN, h.Icon
         ,m.AwayTeamId, a.TeamNameEN, a.TeamFullNameEN, a.Icon
     FROM livescore_match m
-        INNER JOIN livescore_match_live lm ON m.MatchId = lm.MatchId
+        INNER JOIN livescore_match_live live ON m.MatchId = live.MatchId
         INNER JOIN livescore_league l ON m.LeagueId = l.LeagueId
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
         INNER JOIN livescore_team a ON m.AwayTeamId = a.TeamId

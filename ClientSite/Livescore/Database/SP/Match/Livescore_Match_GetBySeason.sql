@@ -11,6 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
         Revisions:
 			- 20220412@Tim: init
 			- 202200512@Tim: check 2nd leg
+			- 202200517@Tim: get start time for live match
     */
 )
 BEGIN    
@@ -39,7 +40,9 @@ BEGIN
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
         ,sh.PenaltyScore AS HomeTeamPenaltyScore, sa.PenaltyScore AS AwayTeamPenaltyScore
-        ,m.FootballAddStartTime, m.FootballStartTime, m.FootballNextHalfStartTime
+        ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
+        ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
+        ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
         ,m.HomeTeamId, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon
         ,m.AwayTeamId, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon
         ,m.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode AS StageMode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
@@ -51,6 +54,7 @@ BEGIN
         LEFT JOIN livescore_season_stage ss ON m.StageId = ss.StageId
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
+        LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
 	WHERE EXISTS (SELECT tmp_m.MatchId FROM tmp_MatchIds tmp_m WHERE m.MatchId = tmp_m.MatchId)
     ORDER BY m.StartTime ASC
 		,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
