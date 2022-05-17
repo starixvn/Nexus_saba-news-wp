@@ -133,6 +133,7 @@
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -146,6 +147,10 @@
 
                 app.Use((context, next) =>
                 {
+                    context.Request.Headers.Remove("X-Frame-Options");
+                    context.Request.Headers["X-Frame-Options"] = "AllowAll";
+
+                    //context.Request.Headers[]("X-Frame-Options", "AllowAll");
                     if (context.Request.Headers["x-forwarded-proto"] == "https")
                     {
                         context.Request.Scheme = "https";
