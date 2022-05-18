@@ -151,7 +151,6 @@
 
     @media (min-width: 1024px) {
         .banner {
-            /*margin: 12px auto;*/
             max-width: 1120px;
             max-height: 80px;
             img {
@@ -576,9 +575,6 @@
                     &:nth-child(n+1) {
                         [class*="card-vertical__"]:not(.card-vertical__image) {
                             padding: 0;
-                            /*@include Mobile {
-                                padding: 0 .8rem;
-                            }*/
                         }
                     }
                 }

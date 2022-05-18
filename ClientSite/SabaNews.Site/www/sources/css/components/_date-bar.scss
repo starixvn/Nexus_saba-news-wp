@@ -161,10 +161,6 @@
         width: 16%;
         cursor: pointer;
         padding: .6rem;
-        /*        background: #F1F1F1;
-        border-right: 1px solid $border-color;
-        border-radius: 3px;*/
-
         @include tableMobile {
             padding: .8rem .5rem;
             width: 20%;
