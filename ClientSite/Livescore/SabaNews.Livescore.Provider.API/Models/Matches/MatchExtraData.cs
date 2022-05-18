@@ -4,45 +4,45 @@
 
     public class MatchExtraData
     {
-        public int[] Goal { get; set; }
+        public int?[] Goal { get; set; }
 
         [JsonProperty("cKick")]
         public int?[] CornerKick { get; set; }
 
         [JsonProperty("yCard")]
-        public int[] YellowCard { get; set; }
+        public int?[] YellowCard { get; set; }
 
         [JsonProperty("rCard")]
-        public int[] RedCard { get; set; }
+        public int?[] RedCard { get; set; }
 
         public int?[] OutBall { get; set; }
 
         [JsonProperty("fKick")]
-        public int[] FreeKick { get; set; }
+        public int?[] FreeKick { get; set; }
 
         [JsonProperty("gKick")]
-        public int[] GoalKick { get; set; }
+        public int?[] GoalKick { get; set; }
 
         [JsonProperty("pKick")]
-        public int[] PenaltyKick { get; set; }
+        public int?[] PenaltyKick { get; set; }
 
         [JsonProperty("Surfaces")]
-        public int[] YellowToRed { get; set; }
+        public int?[] YellowToRed { get; set; }
 
         [JsonProperty("fpKick")]
-        public int[] FailedPenalty { get; set; }
+        public int?[] FailedPenalty { get; set; }
 
-        public int[] OwnGoal { get; set; }
-        public int[] InjuryTime { get; set; }
-        public int[] OnGoal { get; set; }
-        public int[] MissGoal { get; set; }
-        public int[] Attack { get; set; }
-        public int[] DangerAttack { get; set; }
-        public int[] ControlRate { get; set; }
-        public int[] ExtraScore { get; set; }
+        public int?[] OwnGoal { get; set; }
+        public int?[] InjuryTime { get; set; }
+        public int?[] OnGoal { get; set; }
+        public int?[] MissGoal { get; set; }
+        public int?[] Attack { get; set; }
+        public int?[] DangerAttack { get; set; }
+        public int?[] ControlRate { get; set; }
+        public int?[] ExtraScore { get; set; }
 
         [JsonProperty("pScore")]
-        public int[] PenaltyScore { get; set; }
+        public int?[] PenaltyScore { get; set; }
 
         public int?[] Assists { get; set; }
         public int?[] First { get; set; }
