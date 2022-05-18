@@ -55,7 +55,6 @@
                 {
                     MatchId = match.MatchId,
                     StartTime = match.StartTime,
-                    EndTime = match.EndTime,
                     Status = match.Status,
                     GroupNum = match.GroupNum,
                     Round = match.Round,
