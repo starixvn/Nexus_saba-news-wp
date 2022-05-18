@@ -284,6 +284,7 @@
                         height: 2.2rem;
                         margin-right: 1.6rem;
                         image-rendering: -webkit-optimize-contrast;
+
                         @include tableMobile {
                             width: 2rem;
                             height: 2rem;
@@ -374,6 +375,10 @@
 
         &.live-intermission {
             .soccer-match-stage {
+                @include Mobile {
+                    margin-top: 1.2rem;
+                }
+
                 span {
                     font-size: 1.2rem;
                     line-height: 1.6rem;
