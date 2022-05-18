@@ -7,7 +7,7 @@
         public int[] Goal { get; set; }
 
         [JsonProperty("cKick")]
-        public int[] CornerKick { get; set; }
+        public int?[] CornerKick { get; set; }
 
         [JsonProperty("yCard")]
         public int[] YellowCard { get; set; }
@@ -15,7 +15,7 @@
         [JsonProperty("rCard")]
         public int[] RedCard { get; set; }
 
-        public int[] OutBall { get; set; }
+        public int?[] OutBall { get; set; }
 
         [JsonProperty("fKick")]
         public int[] FreeKick { get; set; }
