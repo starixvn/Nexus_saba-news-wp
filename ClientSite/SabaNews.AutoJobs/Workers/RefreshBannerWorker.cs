@@ -4,11 +4,12 @@ using SabaNews.AutoJobs.Helpers;
 using SabaNews.AutoJobs.Models;
 using SabaNews.Core.Services;
 using SabaNews.Services.Interfaces;
+
 namespace SabaNews.AutoJobs.Workers
 {
-    using SabaNews.WinowsService.Workers;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.WinowsService.Workers;
 
     public class RefreshBannerWorker : BaseWorker
     {
