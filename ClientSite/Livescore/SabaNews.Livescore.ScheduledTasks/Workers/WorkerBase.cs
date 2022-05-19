@@ -34,20 +34,7 @@
             {
                 while (!stoppingToken.IsCancellationRequested)
                 {
-                    try
-                    {
-                        if (jobSetting.Enabled)
-                        {
-                            logService.WriteLogFileInfo($"{jobSetting.Name}: Doing...");
-                            await DoWorkAsync();
-                            logService.WriteLogFileInfo($"{jobSetting.Name}: Done.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        await logService.WriteExceptionSentryErrorAsync(ex);
-                        logService.WriteLogFileInfo($"{jobSetting.Name}: Error - {ex.Message}");
-                    }
+                    await RunJobAsync();
 
                     await Task.Delay(TimeSpan.FromMinutes(jobSetting.Interval), stoppingToken);
                 }
@@ -58,6 +45,24 @@
             {
                 logService.WriteLogFileInfo("Unhandeled exception. Execution Stopping");
                 logService.WriteLogFileInfo(ex.Message);
+            }
+        }
+
+        private async Task RunJobAsync()
+        {
+            try
+            {
+                if (jobSetting.Enabled)
+                {
+                    logService.WriteLogFileInfo($"{jobSetting.Name}: Doing...");
+                    await DoWorkAsync();
+                    logService.WriteLogFileInfo($"{jobSetting.Name}: Done.");
+                }
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo($"{jobSetting.Name}: Error - {ex.Message}");
             }
         }
 
