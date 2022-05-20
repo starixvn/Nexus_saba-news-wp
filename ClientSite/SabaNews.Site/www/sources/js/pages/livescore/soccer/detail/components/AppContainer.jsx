@@ -31,9 +31,15 @@ export class AppContainer extends Component {
     }
 
     render() {
+        const { match, favLeagues } = this.props;
         if (!this.props.match || !this.props.match.generalInfo) {
             return null;
         }
+
+        const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
+        const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
+        document.title = `${homeTeamName} vs ${awayTeamName}`;
+
         return (
             <>
                 <div className="container livescore-container">
@@ -47,7 +53,7 @@ export class AppContainer extends Component {
                         </div>
                         <div className="livescore-soccer-extension">
                             <FavoriteMatches />
-                            <FavoriteLeagues leagues={this.props.favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                            <FavoriteLeagues leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
                         </div>
                     </div>
                 </div>

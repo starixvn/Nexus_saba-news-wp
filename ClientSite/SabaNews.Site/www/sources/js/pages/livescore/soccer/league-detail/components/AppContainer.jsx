@@ -84,7 +84,8 @@ export class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${params.date}/${params.leagueId}/${params.seasonId}/${key}`);
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(this.props.league));
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
         this.props.navigate(url);
     };
 
@@ -102,7 +103,7 @@ export class AppContainer extends Component {
                         preMatches === null && <SkeletonGrid />
                     }
                     {
-                        preMatches !== null && <MatchGrid sortAsc stages={stages} matches={preMatches} />
+                        preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
                     }
                 </Tab>
                 <Tab eventKey="results" title="Kết quả">
@@ -111,7 +112,7 @@ export class AppContainer extends Component {
                     }
                     {
                         selectedResultsTab && postMatches !== null &&
-                        <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
+                        <MatchGrid sortAsc={false} league={league} stages={stages} matches={postMatches} />
                     }
                 </Tab>
                 <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
@@ -139,13 +140,14 @@ export class AppContainer extends Component {
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
-                            league !== null && <Breadscrum currentPage = {CommonFunctions.getLeagueName(league)} currentPageUrl = {window.location.href} />
-                        }
-                        {
                             league === null && <SkeletonLeague />
                         }
                         {
-                            league !== null && <League league={league} flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
+                            league !== null &&
+                            <>
+                                <Breadscrum currentPage={CommonFunctions.getLeagueName(league)} currentPageUrl={window.location.href} />
+                                <League league={league} />
+                            </>
                         }
                         {this.renderTabs()}
                     </div>
