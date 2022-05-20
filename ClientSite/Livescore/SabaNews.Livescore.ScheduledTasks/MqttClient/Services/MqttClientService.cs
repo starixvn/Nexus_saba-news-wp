@@ -111,8 +111,6 @@
         {
             var topic = eventArgs.ApplicationMessage.Topic;
             var json = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
-            logger.WriteLogFileInfo($"Received messages from topic: {topic}");
-            logger.WriteLogFileInfo(json);
 
             if (topic.StartsWith("/stats"))
             {
