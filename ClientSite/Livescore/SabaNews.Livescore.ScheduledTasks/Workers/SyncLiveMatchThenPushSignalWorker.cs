@@ -66,7 +66,6 @@
                 await pushSignalService.PushMatchListAsync(liveMatchList);
 
                 await SyncMatchLineUpAsync(matchIds);
-                await SyncLiveMatchIncidents(matchIds);
 
                 await GetMatchDetailThenPushSignalToHubAsync(matchIds);
             }
@@ -116,15 +115,6 @@
                 var liveMatchLineup = await fetchMatchService.FetchMatchLineupAsync(matchIds);
 
                 await syncMatchService.SyncMatchLineupByIdsAsync(liveMatchLineup);
-            }
-        }
-
-        private async Task SyncLiveMatchIncidents(long[] matchIds)
-        {
-            foreach (var matchId in matchIds)
-            {
-                var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
-                await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
             }
         }
     }

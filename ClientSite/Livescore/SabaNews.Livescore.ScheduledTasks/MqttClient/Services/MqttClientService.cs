@@ -12,10 +12,13 @@
     using MQTTnet.Client.Options;
     using Newtonsoft.Json;
     using SabaNews.Core.Services;
+    using SabaNews.Livescore.Core.Enum;
     using SabaNews.Livescore.Core.Extensions;
     using SabaNews.Livescore.Models.Mqtt;
+    using SabaNews.Livescore.Provider.API.Services;
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
     using SabaNews.Livescore.Services.Interfaces;
+    using SabaNews.Livescore.SyncData.Services;
 
     public class MqttClientService : IMqttClientService
     {
@@ -23,13 +26,22 @@
         private readonly ILogServiceProvider logger;
         private readonly IMqttClientOptions options;
         private readonly ILiveMatchService liveMatchService;
+        private readonly IFetchMatchService fetchMatchService;
+        private readonly ISyncMatchService syncMatchService;
         private readonly string[] subscribedTopics;
 
-        public MqttClientService(ILogServiceProvider logger, IMqttClientOptions options, MqttSettings settings, ILiveMatchService liveMatchService)
+        public MqttClientService(ILogServiceProvider logger,
+            IMqttClientOptions options,
+            MqttSettings settings,
+            ILiveMatchService liveMatchService,
+            IFetchMatchService fetchMatchService,
+            ISyncMatchService syncMatchService)
         {
             this.options = options;
             this.logger = logger;
             this.liveMatchService = liveMatchService;
+            this.fetchMatchService = fetchMatchService;
+            this.syncMatchService = syncMatchService;
             subscribedTopics = settings.SubscribedTopics;
             mqttClient = new MqttFactory().CreateMqttClient();
             ConfigureMqttClient();
@@ -117,6 +129,18 @@
                 var match = JsonConvert.DeserializeObject<MqttLiveMatch>(json);
                 await HandleMatchDetailResponse(match);
             }
+
+            if (topic.StartsWith("/tlive"))
+            {
+                var incidents = JsonConvert.DeserializeObject<MqttTextLiveIncidents>(json);
+                await HandleTextLiveResponse(incidents.MatchId);
+            }
+        }
+
+        private async Task HandleTextLiveResponse(long matchId)
+        {
+            var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
+            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
         }
 
         private async Task HandleMatchDetailResponse(MqttLiveMatch match)
