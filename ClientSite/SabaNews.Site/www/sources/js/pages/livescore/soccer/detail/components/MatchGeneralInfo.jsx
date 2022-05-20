@@ -32,12 +32,29 @@ export default class MatchGeneralInfo extends Component {
         }
     };
 
+    getAggregateScore = match => {
+        const homeScore = match.homeTeamAggregateScore;
+        const awayScore = match.awayTeamAggregateScore;
+
+        if (match.isSecondLeg && match.status === MatchStatus.Finished && (homeScore > 0 || awayScore > 0)) {
+            return <li>AGG: {homeScore} - {awayScore}</li>;
+        }
+
+        return null;
+    };
+
+    getPenaltyScore = match => {
+        const homeScore = match.homeTeamPenaltyScore;
+        const awayScore = match.awayTeamPenaltyScore;
+        if (match.status === MatchStatus.Finished && (homeScore > 0 || awayScore > 0)) {
+            return <li>PEN: {homeScore} - {awayScore}</li>;
+        }
+
+        return null;
+    };
+
     getSubScore = () => {
         const match = this.props.match.generalInfo;
-        const homePenaltyShootOut = match.homeTeamPenaltyScore;
-        const awayPenaltyShootOut = match.awayTeamPenaltyScore;
-        const homeAGG = match.homeTeamAggregateScore;
-        const awayAGG = match.awayTeamAggregateScore;
         const isPreMatch = CommonFunctions.isPreMatch(match.status);
         return (
             <>
@@ -45,14 +62,8 @@ export default class MatchGeneralInfo extends Component {
                     !isPreMatch &&
                     <li>H1: {match.homeTeamHalfScore} - {match.awayTeamHalfScore}</li>
                 }
-                {
-                    match.isSecondLeg && match.status === MatchStatus.Finished && (homeAGG > 0 || awayAGG > 0) &&
-                    <li>AGG: {homeAGG} - {awayAGG}</li>
-                }
-                {
-                    match.status === MatchStatus.Finished && (homePenaltyShootOut > 0 || awayPenaltyShootOut > 0) &&
-                    <li>PEN: {homePenaltyShootOut} - {awayPenaltyShootOut}</li>
-                }
+                {this.getAggregateScore(match)}
+                {this.getPenaltyScore(match)}
             </>
         );
     };

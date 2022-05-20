@@ -39,6 +39,4 @@ const DateBar = props => {
     );
 };
 
-const DateBarWithNavigation = withNavigation(DateBar);
-
-export default DateBarWithNavigation;
+export default withNavigation(DateBar);

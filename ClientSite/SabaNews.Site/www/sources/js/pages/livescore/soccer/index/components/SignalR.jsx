@@ -13,7 +13,6 @@ export class SignalR extends Component {
     }
 
     componentDidMount() {
-        const protocol = new JsonHubProtocol();
         const options = {
             transport: HttpTransportType.WebSockets,
             logMessageContent: false,
@@ -23,15 +22,15 @@ export class SignalR extends Component {
 
         this.connection = new HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
-            .withHubProtocol(protocol)
+            .withHubProtocol(new JsonHubProtocol())
             .build();
-
-        this.connection.on('UpdateLiveMatches', matches => {
-            this.props.setLiveMatches(matches);
-        });
 
         this.connection.onclose(async () => {
             await this.start();
+        });
+
+        this.connection.on('UpdateLiveMatches', matches => {
+            this.props.setLiveMatches(matches);
         });
 
         Site.lockNavigator();
