@@ -13,15 +13,15 @@ export class SignalR extends Component {
     }
 
     componentDidMount() {
-        const options = {
-            transport: HttpTransportType.WebSockets,
-            skipNegotiation: true,
-            logMessageContent: false,
-            logger: LogLevel.None
-        };
+        Site.lockNavigator();
 
         this.connection = new HubConnectionBuilder()
-            .withUrl('/livescore/hubs', options)
+            .withUrl('/livescore/hubs', {
+                transport: HttpTransportType.WebSockets,
+                skipNegotiation: true,
+                logMessageContent: false,
+                logger: LogLevel.None
+            })
             .withHubProtocol(new JsonHubProtocol())
             .build();
 
@@ -32,8 +32,6 @@ export class SignalR extends Component {
         this.connection.on('UpdateLiveMatches', matches => {
             this.props.setLiveMatches(matches);
         });
-
-        Site.lockNavigator();
 
         this.start();
     }
@@ -48,12 +46,12 @@ export class SignalR extends Component {
                 console.log('SignalR connected!!!'); //NOSONAR
             });
         } catch (err) {
-            console.log(err); //NOSONAR
-
             setTimeout(() => {
                 this.props.getMatches();
                 this.start();
             }, 60 * 1000);
+
+            console.log(err); //NOSONAR
         }
     };
 

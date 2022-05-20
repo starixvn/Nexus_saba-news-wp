@@ -49,7 +49,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     groupMatchesByStageAndRound = matches => {
-        let totalItems = matches.length;
+        const totalItems = matches.length;
         const tempMatches = [];
         for (let i = 0; i < totalItems; i++) {
             const match = matches[i];

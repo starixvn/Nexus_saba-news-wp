@@ -36,17 +36,9 @@ export default class MatchStage extends PureComponent {
         }
     }
 
-    getMatchStage = () => {
-        const match = this.props.match;
-        let className = '';
-        let stage = '';
+    getMatchStageOfLiveMatch = match => {
+        let stage;
         switch (match.status) {
-            case MatchStatus.NotStarted:
-                const startTime = DateTimeService.convertFromUTC(match.startTime);
-                className = 'font-weight-bold';
-                stage = DateTimeService.toShortTimeFormat(startTime);
-                break;
-
             case MatchStatus.FirstHalf:
                 this.intervalId = setInterval(() => this.setState({ stage: this.getFirstHalfTimeMinutes(match) }), 1000 * 60);
                 stage = this.getFirstHalfTimeMinutes(match);
@@ -68,6 +60,22 @@ export default class MatchStage extends PureComponent {
 
             case MatchStatus.PenaltyShootout:
                 stage = LangHelper.getResource('Penalty');
+                break;
+
+            default:
+                stage = '';
+                break;
+        }
+
+        return stage;
+    };
+
+    getMatchStageOfPreAndPostMatch = match => {
+        let stage = '';
+        switch (match.status) {
+            case MatchStatus.NotStarted:
+                const startTime = DateTimeService.convertFromUTC(match.startTime);
+                stage = DateTimeService.toShortTimeFormat(startTime);
                 break;
 
             case MatchStatus.Delay:
@@ -93,6 +101,23 @@ export default class MatchStage extends PureComponent {
             default:
                 stage = LangHelper.getResource('Finish');
                 break;
+        }
+
+        return stage;
+    };
+
+    getMatchStage = () => {
+        const match = this.props.match;
+        let className = match.status === MatchStatus.NotStarted ? 'font-weight-bold' : '';
+        let stage = '';
+        if (match.status === MatchStatus.FirstHalf
+            || match.status === MatchStatus.SecondHalf
+            || match.status === MatchStatus.ExtraTime
+            || match.status === MatchStatus.Intermission
+            || match.status === MatchStatus.PenaltyShootout) {
+            stage = this.getMatchStageOfLiveMatch(match);
+        } else {
+            stage = this.getMatchStageOfPreAndPostMatch(match);
         }
 
         this.setState({ stage, className });

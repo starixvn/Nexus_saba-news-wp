@@ -21,7 +21,6 @@ export class SignalR extends Component {
             logger: LogLevel.None,
             logMessageContent: false
         };
-
         this.connection = new HubConnectionBuilder()
             .withUrl('/livescore/hubs', options)
             .withHubProtocol(new JsonHubProtocol())
