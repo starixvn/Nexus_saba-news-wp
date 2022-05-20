@@ -47,12 +47,13 @@ export class AppContainer extends Component {
         this.state = {
             selectedTab,
             selectedResultsTab,
-            selectedStandingsTab
+            selectedStandingsTab,
+            flagToggleFavLeagueIcon: false
         };
     }
 
     componentDidMount() {
-        this.props.getMajorLeagues();
+        this.props.getFavLeagues();
         this.getMatches();
     }
 
@@ -83,8 +84,7 @@ export class AppContainer extends Component {
         this.setState({ selectedTab: key, selectedResultsTab, selectedStandingsTab });
 
         const params = window.getMatchByStageParams;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(this.props.league));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${params.seasonId}/${params.date}/${params.leagueId}/${key}`);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${params.date}/${params.leagueId}/${params.seasonId}/${key}`);
         this.props.navigate(url);
     };
 
@@ -102,7 +102,7 @@ export class AppContainer extends Component {
                         preMatches === null && <SkeletonGrid />
                     }
                     {
-                        preMatches !== null && <MatchGrid sortAsc league={league} stages={stages} matches={preMatches} />
+                        preMatches !== null && <MatchGrid sortAsc stages={stages} matches={preMatches} />
                     }
                 </Tab>
                 <Tab eventKey="results" title="Kết quả">
@@ -111,7 +111,7 @@ export class AppContainer extends Component {
                     }
                     {
                         selectedResultsTab && postMatches !== null &&
-                        <MatchGrid sortAsc={false} league={league} stages={stages} matches={postMatches} />
+                        <MatchGrid sortAsc={false} stages={stages} matches={postMatches} />
                     }
                 </Tab>
                 <Tab eventKey="standings" title="BXH" disabled={!league || !league.hasSeasonStandings}>
@@ -123,32 +123,35 @@ export class AppContainer extends Component {
             </Tabs>);
     };
 
-    render() {
-        const { majorLeagues, league } = this.props;
-        if (league !== null) {
-            document.title = CommonFunctions.getLeagueName(league);
-        }
+    onUpdateFavLeague = () => {
+        this.props.setFavLeagues(CommonFunctions.getFavLeagues());
+    }
 
+    onToggleFavLeaguesIcon = () => {
+        this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
+    }
+
+    render() {
+        const { favLeagues, league } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
                 <div className="livescore-soccer">
                     <div className="livescore-soccer-main">
                         {
+                            league !== null && <Breadscrum currentPage = {CommonFunctions.getLeagueName(league)} currentPageUrl = {window.location.href} />
+                        }
+                        {
                             league === null && <SkeletonLeague />
                         }
                         {
-                            league !== null &&
-                            <>
-                                <Breadscrum currentPage={CommonFunctions.getLeagueName(league)} currentPageUrl={window.location.href} />
-                                <League league={league} />
-                            </>
+                            league !== null && <League league={league} flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
                         }
                         {this.renderTabs()}
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
-                        <FavoriteLeagues leagues={majorLeagues} />
+                        <FavoriteLeagues leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
                     </div>
                 </div>
             </div>
@@ -161,8 +164,8 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { majorLeagues, league, stages, preMatches, postMatches } = state;
-    return { majorLeagues, league, stages, preMatches, postMatches };
+    const { favLeagues, league, stages, preMatches, postMatches, flagToggleFavLeagueIcon } = state;
+    return { favLeagues, league, stages, preMatches, postMatches, flagToggleFavLeagueIcon };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

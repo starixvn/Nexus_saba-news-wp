@@ -47,6 +47,21 @@ export class MatchGrid extends PureComponent {
         return tempMatches;
     };
 
+    groupLeagues = matches => {
+        const tmpMatches = this.groupMatchesByStage(matches);
+        let tmpLeagues = [];
+        let favLeagues = CommonFunctions.getFavLeagues();
+        favLeagues = favLeagues.sort((item1, item2) => (item2.order - item1.order));
+        const favLeagueIds = favLeagues.map(item => item.leagueId);
+        const outfavLeagues = tmpMatches.filter(item => !favLeagueIds.includes(item.leagueId));
+        favLeagueIds.map(leagueId => {
+            const infavLeagues = tmpMatches.filter(item => item.leagueId === leagueId);
+            infavLeagues.map(item => {  tmpLeagues.push(item) });
+        })
+        tmpLeagues = [...tmpLeagues, ...outfavLeagues];
+        return tmpLeagues;
+    }
+
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
         if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
@@ -66,8 +81,7 @@ export class MatchGrid extends PureComponent {
         matches = this.filterMatches(matches, searchKey);
         totalMatches = matches.length;
 
-        const leagues = this.groupMatchesByStage(matches);
-
+        const leagues = this.groupLeagues(matches);
         return (
             <>
                 <SearchBar />
@@ -77,7 +91,7 @@ export class MatchGrid extends PureComponent {
                 }
                 {
                     totalMatches > 0 &&
-                    <Grid leagues={leagues} selectedDate={selectedDate} searchKey={searchKey} />
+                    <Grid leagues={leagues} />
                 }
             </>
         );

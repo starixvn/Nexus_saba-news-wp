@@ -1,5 +1,6 @@
 ﻿window._language_vi_VN = {
     AddFavouriteMatchTooltip: 'Thêm vào "Trận Đấu Quan Tâm"',
+    AddFavouriteLeagueTooltip: 'Thêm vào "Giải Đấu Của Tôi"',
     Cancel: 'Hủy',
     Defender: 'Hậu vệ',
     Delay: 'Tạm hoãn',
@@ -32,6 +33,7 @@
     RedCardValid: 'Thẻ đỏ',
     RedCardCancelled: 'Hủy thẻ đỏ',
     RemoveFavouriteMatchTooltip: 'Xóa khỏi "Trận Đấu Quan Tâm"',
+    RemoveFavouriteLeagueTooltip: 'Xóa khỏi "Giải Đấu Của Tôi"',
     Striker: 'Tiền đạo',
     SendPenaltyChange: 'Nâng mức thẻ',
     ToBeDecided: 'Chờ xác định',

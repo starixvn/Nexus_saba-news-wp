@@ -6,7 +6,7 @@ import { MatchStatus } from '@jsroot/common/constants';
 const leagueDetailSlice = createSlice({
     name: 'leagueDetailSlice',
     initialState: {
-        majorLeagues: [],
+        favLeagues: [],
         league: null,
         stages: [],
         preMatches: null,
@@ -14,8 +14,8 @@ const leagueDetailSlice = createSlice({
         seasonStandings: []
     },
     reducers: {
-        setMajorLeagues: (state, action) => {
-            state.majorLeagues = action.payload;
+        setFavLeagues: (state, action) => {
+            state.favLeagues = action.payload;
         },
         setLeague: (state, action) => {
             state.league = action.payload;
@@ -71,7 +71,7 @@ const leagueDetailSlice = createSlice({
 const { actions, reducer } = leagueDetailSlice;
 
 export const {
-    setMajorLeagues,
+    setFavLeagues,
     setLeague,
     setMatches,
     setLiveMatches,

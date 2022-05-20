@@ -22,5 +22,11 @@
             var leagues = await baseService.GetDataAsync<League>(criteria);
             return leagues.ToList();
         }
+
+         public async Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria)
+        {
+            var leagues = await baseService.GetDataAsync<League>(criteria);
+            return leagues.ToList();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿import React, { Component, Fragment } from 'react';
+﻿import React, { Fragment, PureComponent } from 'react';
 import { MatchStatus, IncidentStatus, IncidentPosition } from '@jsroot/common/constants';
 import IncidentIcon from '@jsroot/components/Icon/IncidentIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
@@ -9,8 +9,16 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 import Site from '@jsroot/common/site';
+import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 
-export default class MatchGeneralInfo extends Component {
+
+export default class MatchGeneralInfo extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            flagToggleMatchIcon: false
+        }
+    }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
@@ -64,6 +72,7 @@ export default class MatchGeneralInfo extends Component {
                 }
                 {this.getAggregateScore(match)}
                 {this.getPenaltyScore(match)}
+                    && (homeAGG > 0 || awayAGG > 0) &&
             </>
         );
     };
@@ -138,15 +147,22 @@ export default class MatchGeneralInfo extends Component {
     };
 
     handleClickLeague = (event, league) => {
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet-giai-dau/${today}/${league.leagueId}/${seasonId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
             window.location = url;
         }
+    };
+
+    onUpdateFavLeague = () => {
+        this.props.onUpdateFavLeague();
+    };
+
+    onUpdateFavouriteMatch = () => {
+        this.setState({flagToggleMatchIcon: !this.state.flagToggleMatchIcon});
     };
 
     renderBody = () => {
@@ -168,14 +184,14 @@ export default class MatchGeneralInfo extends Component {
                         <div className="livescore-league-header-detail-name">
                             {leagueName} - <span>{startTime.format('DD/MM/YYYY')}</span>
                         </div>
-                        <i className="icon-livescore icon-live-start start-active" />
+                        <FavouriteLeagueIcon league={generalInfo.league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={this.props.flagToggleFavLeagueIcon} />
                     </div>
                     <div className="group-searchbar">
                         <FavoriteMatches isMobile  />
                     </div>
                 </div>
                 <div className="duel-participant">
-                    <FavouriteIcon matchId={generalInfo.matchId} />
+                    <FavouriteIcon matchId={generalInfo.matchId} flagToggle={this.state.flagToggleMatchIcon} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
                     {
                         !isPreMatch &&
                         <div className="flex-league first-league">

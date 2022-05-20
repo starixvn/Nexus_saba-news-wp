@@ -14,6 +14,7 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
@@ -229,6 +230,21 @@
                 LiveMatches = await matchService.GetLiveMatchAsync()
             };
             return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetFavLeagues([FromBody] FavLeagueModel model)
+        {
+            IList<League> leagues;
+            if (model.LeagueIds == null)
+            {
+                leagues = await leagueService.GetMajorLeagueAsync();
+            }
+            else
+            {
+                leagues = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = model.LeagueIds });
+            }
+            return Ok(leagues);
         }
 
     }

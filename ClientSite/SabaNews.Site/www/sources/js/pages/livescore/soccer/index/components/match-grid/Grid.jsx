@@ -61,7 +61,6 @@ export default class Grid extends PureComponent {
 
     render() {
         const { hasMore, leagues } = this.state;
-        const { selectedDate, searchKey } = this.props;
 
         return (
             <div className="soccer-match-grid">
@@ -73,7 +72,7 @@ export default class Grid extends PureComponent {
                 >
                     {
                         leagues.map((league, index) =>
-                            <League key={index} selectedDate={selectedDate} searchKey={searchKey} league={league} />)
+                            <League key={index} league={league} />)
                     }
                 </InfiniteScroll>
             </div>

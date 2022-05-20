@@ -20,6 +20,18 @@ export default class FavouriteIcon extends PureComponent {
         };
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.flagToggle !== this.props.flagToggle) {
+            const matchId = this.props.matchId;
+            const favMatches = CommonFunctions.getFavouriteMatches();
+            const matchIndex = favMatches.findIndex(item => item === matchId);
+            const isFavourite =  matchIndex >= 0;
+            if(isFavourite !== this.state.isFavourite) {
+                this.setState({isFavourite: isFavourite});
+            }
+        }
+    };
+
     handleUpdateFavourite = () => {
         const matchId = this.props.matchId;
         const isFavourite = CommonFunctions.updateFavouriteMatch(matchId);

@@ -96,6 +96,7 @@ export default class CommonFunctions {
         return matchIds;
     }
 
+
     static updateFavouriteMatchesCount(matches) {
         const count = matches.length;
         let favCountDesktop = document.querySelector('.livescore-like .like-count');
@@ -118,7 +119,7 @@ export default class CommonFunctions {
                 favCountMobile.innerHTML = "";
             }
         }
-    }
+    };
 
     static updateFavouriteMatch(matchId) {
         if (!matchId) {
@@ -138,6 +139,72 @@ export default class CommonFunctions {
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
         this.updateFavouriteMatchesCount(favouriteMatches);
         return isFavourite;
+    }
+
+
+    static getFavLeagues() {
+        let favLeagues = localStorage.getItem('favourite-leagues');
+        if(!favLeagues) {
+            favLeagues = [];
+        } else {
+            favLeagues = JSON.parse(favLeagues.toString());
+            favLeagues = favLeagues.filter(item => item !== null);
+        }
+        return favLeagues;
+    }
+
+    static updateFavLeague(league) {
+        let favLeague = this.getFavLeagues();
+        const favourite = favLeague.find(item => item.leagueId === league.leagueId);
+        let isFavourite = false;
+        if (favourite) {
+            favLeague = favLeague.filter(item => item.leagueId !== league.leagueId);
+        } else {
+            const leagueTmp = {
+                leagueId: league.leagueId,
+                leagueNameEN: league.leagueNameEN,
+                leagueFullNameEN: league.leagueFullNameEN,
+                leagueNameVN: league.leagueNameVN,
+                icon: league.icon,
+                sessionId: league.season ? league.season.seasonId : league.currentSeasonId
+            }
+            favLeague.push(leagueTmp);
+            isFavourite = true;
+        }
+    }
+
+    static refreshFavLeagues(leagues) {
+        const currentLeague = this.getFavLeagues();
+        const orders = currentLeague.map(item => item.order);
+        localStorage.removeItem('favourite-leagues');
+        const favLeagues = [];
+        leagues = orders.length > 0 ? leagues : leagues.reverse();
+        leagues.map((league, index) => {
+            const leagueTmp = {
+                leagueId: league.leagueId,
+                leagueNameEN: league.leagueNameEN,
+                leagueFullNameEN: league.leagueFullNameEN,
+                leagueNameVN: league.leagueNameVN,
+                icon: league.icon,
+                sessionId: league.season ? league.season.seasonId : league.currentSeasonId,
+                order: index + 1
+            };
+            favLeagues.push(leagueTmp);
+        });
+        localStorage.setItem('favourite-leagues', JSON.stringify(favLeagues));
+        return favLeagues;
+    }
+
+    static getFavLeagueParam() {
+        const favLeague = this.getFavLeagues();
+        let leagueIds = '';
+        if (localStorage.getItem('favourite-leagues') === null) {
+            leagueIds  = null;
+        } else if (favLeague.length > 0) {
+            const orders = favLeague.sort((item1, item2) => (item1.order - item2.order));
+            leagueIds =  JSON.stringify(orders.map(a => a.leagueId));
+        }
+        return leagueIds;
     }
 
     static checkIncidentTypeToUpdateScore(type) {

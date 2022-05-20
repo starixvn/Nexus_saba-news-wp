@@ -2,8 +2,9 @@
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 
-const League = ({ league }) => {
+const League = ({ league, onUpdateFavLeague, flagToggleFavLeagueIcon }) => {
     return (
         <div className="livescore-league-header-detail">
             <div className="livescore-league-header-detail-group">
@@ -11,7 +12,7 @@ const League = ({ league }) => {
                 <div className="livescore-league-header-detail-name">
                     {CommonFunctions.getLeagueName(league)}
                 </div>
-                <i className="icon-livescore icon-live-start start-active" />
+                <FavouriteLeagueIcon league={league} onUpdateFavLeague={onUpdateFavLeague} flagToggle={flagToggleFavLeagueIcon}/>
             </div>
             <div className="group-searchbar">
                 <FavoriteMatches isMobile />

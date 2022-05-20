@@ -15,7 +15,8 @@ const soccerMatchSlice = createSlice({
         searchKey: '',
         selectedDate: DateTimeService.formatDateTime(selectedDate, 'YYYY-MM-DD'),
         dateRanges: [],
-        majorLeagues: [],
+        favLeagues: [],
+        flagToggleFavLeagueIcon: false,
         matches: null,
         totalLiveMatches: 0
     },
@@ -29,8 +30,8 @@ const soccerMatchSlice = createSlice({
         setDateRanges: (state, action) => {
             state.dateRanges = action.payload;
         },
-        setMajorLeagues: (state, action) => {
-            state.majorLeagues = action.payload;
+        setFavLeagues: (state, action) => {
+            state.favLeagues = action.payload;
         },
         setMatches: (state, action) => {
             state.matches = action.payload;
@@ -51,6 +52,9 @@ const soccerMatchSlice = createSlice({
                     }
                 }
             }
+        },
+        setFlagToggleFavLeagueIcon: (state, action) => {
+            state.flagToggleFavLeagueIcon = action.payload;
         }
     }
 });
@@ -61,9 +65,10 @@ export const {
     setSearchKey,
     setSelectedDate,
     setDateRanges,
-    setMajorLeagues,
+    setFavLeagues,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setFlagToggleFavLeagueIcon
 } = actions;
 
 export default reducer;

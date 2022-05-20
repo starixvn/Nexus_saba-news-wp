@@ -1,4 +1,4 @@
-﻿import React, { Component, Fragment } from 'react';
+﻿import React, { Fragment, PureComponent } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from './TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 toast.configure();
 
-export default class Match extends Component {
+export default class Match extends PureComponent {
     getTeamStatus = (match, isHomeTeam) => {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
@@ -41,11 +41,8 @@ export default class Match extends Component {
             return;
         }
 
-        const { matchId, league, homeTeam, awayTeam } = this.props.match;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
-        const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        const matchId = this.props.match.matchId;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/chi-tiet/${matchId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -58,6 +55,7 @@ export default class Match extends Component {
             this.props.onUpdateFavouriteMatch(matchId);
         }
     };
+
 
     render() {
         const { match, searchKey } = this.props;
