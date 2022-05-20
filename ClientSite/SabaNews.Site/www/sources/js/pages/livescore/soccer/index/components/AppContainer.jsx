@@ -11,7 +11,6 @@ import SignalR from './SignalR';
 import SkeletonGrid from './match-grid/SkeletonGrid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { MobileMaxWidth } from '@jsroot/common/constants';
-import CommonFunctions from '@jsroot/common/common-functions';
 
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
@@ -119,7 +118,7 @@ export class AppContainer extends Component {
 
     onToggleFavLeaguesIcon = () => {
         this.props.setFlagToggleFavLeagueIcon(!this.props.flagToggleFavLeagueIcon);
-    }
+    };
 
     render() {
         const isMobile = this.state.isMobile;

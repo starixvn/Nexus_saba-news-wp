@@ -15,7 +15,7 @@ export class League extends PureComponent {
 
     onUpdateFavLeague = () => {
         this.props.setFavLeagues(CommonFunctions.getFavLeagues());
-    }
+    };
 
     handleClick = event => {
         const { league, selectedDate } = this.props;
@@ -57,7 +57,7 @@ export class League extends PureComponent {
             </div>
         );
     }
-};
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 

@@ -28,7 +28,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
                 this.setState({ isFavourite: isFavourite });
             }
         }
-    };
+    }
 
     handleUpdateFavourite = () => {
         const league = this.props.league;
@@ -55,7 +55,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
                 icon: league.icon,
                 sessionId: league.season ? league.season.seasonId : league.currentSeasonId,
                 order: currentOrder + 1
-            }
+            };
             favLeague.push(leagueTmp);
             message = (<div className="fav-match fav-match-add">
                 <ul>

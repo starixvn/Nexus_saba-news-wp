@@ -56,11 +56,11 @@ export class MatchGrid extends PureComponent {
         const outfavLeagues = tmpMatches.filter(item => !favLeagueIds.includes(item.leagueId));
         favLeagueIds.map(leagueId => {
             const infavLeagues = tmpMatches.filter(item => item.leagueId === leagueId);
-            infavLeagues.map(item => {  tmpLeagues.push(item) });
-        })
+            infavLeagues.map(item => tmpLeagues.push(item) );
+        });
         tmpLeagues = [...tmpLeagues, ...outfavLeagues];
         return tmpLeagues;
-    }
+    };
 
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;

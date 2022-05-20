@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import LangHelper from '@jsroot/common/langHelper';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import CommonFunctions from '@jsroot/common/common-functions';
 import { toast } from 'react-toastify';
 import Site from '@jsroot/common/site';
-import CommonFunctions from '@jsroot/common/common-functions';
+
 toast.configure();
 
 export default class FavouriteIcon extends PureComponent {
@@ -30,7 +31,7 @@ export default class FavouriteIcon extends PureComponent {
                 this.setState({isFavourite: isFavourite});
             }
         }
-    };
+    }
 
     handleUpdateFavourite = () => {
         const matchId = this.props.matchId;
