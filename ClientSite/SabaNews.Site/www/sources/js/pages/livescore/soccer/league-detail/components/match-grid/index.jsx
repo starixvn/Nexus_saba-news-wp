@@ -48,11 +48,7 @@ export default class MatchGrid extends PureComponent {
         return tempMatches;
     };
 
-    groupMatches = (stages, matches) => {
-        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0) {
-            return this.groupMatchesByDate(matches);
-        }
-
+    groupMatchesByStageAndRound = matches => {
         let totalItems = matches.length;
         const tempMatches = [];
         for (let i = 0; i < totalItems; i++) {
@@ -77,7 +73,17 @@ export default class MatchGrid extends PureComponent {
             }
         }
 
-        totalItems = tempMatches.length;
+        return tempMatches;
+    };
+
+    groupMatches = (stages, matches) => {
+        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0) {
+            return this.groupMatchesByDate(matches);
+        }
+
+        const tempMatches = this.groupMatchesByStageAndRound(matches);
+
+        const totalItems = tempMatches.length;
         const result = [];
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];

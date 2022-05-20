@@ -41,52 +41,52 @@ export default class MatchStage extends PureComponent {
         let className = '';
         let stage = '';
         switch (match.status) {
-            case MatchStatus.NotStarted: //NOSONAR
+            case MatchStatus.NotStarted:
                 const startTime = DateTimeService.convertFromUTC(match.startTime);
                 className = 'font-weight-bold';
                 stage = DateTimeService.toShortTimeFormat(startTime);
                 break;
 
-            case MatchStatus.FirstHalf: //NOSONAR
+            case MatchStatus.FirstHalf:
                 this.intervalId = setInterval(() => this.setState({ stage: this.getFirstHalfTimeMinutes(match) }), 1000 * 60);
                 stage = this.getFirstHalfTimeMinutes(match);
                 break;
 
-            case MatchStatus.SecondHalf: //NOSONAR
+            case MatchStatus.SecondHalf:
                 this.intervalId = setInterval(() => this.setState({ stage: this.getSecondHalfTimeMinutes(match) }), 1000 * 60);
                 stage = this.getSecondHalfTimeMinutes(match);
                 break;
 
-            case MatchStatus.ExtraTime: //NOSONAR
+            case MatchStatus.ExtraTime:
                 this.intervalId = setInterval(() => this.setState({ stage: this.getExtraTimeMinutes(match) }), 1000 * 60);
                 stage = this.getExtraTimeMinutes(match);
                 break;
 
-            case MatchStatus.Intermission: //NOSONAR
+            case MatchStatus.Intermission:
                 stage = LangHelper.getResource('Intermission');
                 break;
 
-            case MatchStatus.PenaltyShootout: //NOSONAR
+            case MatchStatus.PenaltyShootout:
                 stage = LangHelper.getResource('Penalty');
                 break;
 
-            case MatchStatus.Delay: //NOSONAR
+            case MatchStatus.Delay:
                 stage = LangHelper.getResource('Delay');
                 break;
 
-            case MatchStatus.Interrupt: //NOSONAR
+            case MatchStatus.Interrupt:
                 stage = LangHelper.getResource('Interrupt');
                 break;
 
-            case MatchStatus.Postpone: //NOSONAR
+            case MatchStatus.Postpone:
                 stage = LangHelper.getResource('Postponed');
                 break;
 
-            case MatchStatus.Cancel: //NOSONAR
+            case MatchStatus.Cancel:
                 stage = LangHelper.getResource('Cancel');
                 break;
 
-            case MatchStatus.TBD: //NOSONAR
+            case MatchStatus.TBD:
                 stage = LangHelper.getResource('ToBeDecided');
                 break;
 

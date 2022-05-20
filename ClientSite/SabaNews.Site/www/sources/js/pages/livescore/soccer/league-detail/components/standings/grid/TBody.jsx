@@ -3,42 +3,35 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class TBody extends PureComponent {
+    getResult = (homeScore, awayScore) => {
+        const win = <div className="wld win">T</div>;
+        const loss = <div className="wld loss">B</div>;
+        const draw = <div className="wld draw">H</div>;
+        let result;
+        if (homeScore > awayScore) {
+            result = win;
+        } else if (homeScore < awayScore) {
+            result = loss;
+        } else {
+            result = draw;
+        }
+
+        return result;
+    };
+
     getMatchResult = (teamId, match) => {
         const isHomeTeam = match.homeTeamId === teamId;
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
         let result;
-        const win = <div className="wld win">T</div>;
-        const loss = <div className="wld loss">B</div>;
-        const draw = <div className="wld draw">H</div>;
-        if (match[`${homeFieldName}PenaltyScore`]) {
-            if (match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
-                result = win;
-            } else {
-                result = loss;
-            }
-        } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]) {
-            if (match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                result = win;
-            } else {
-                result = loss;
-            }
-        } else if (match[`${homeFieldName}ExtraScore`]) {
-            if (match[`${homeFieldName}ExtraScore`] > match[`${awayFieldName}ExtraScore`]) {
-                result = win;
-            } else if (match[`${homeFieldName}ExtraScore`] < match[`${awayFieldName}ExtraScore`]) {
-                result = loss;
-            } else {
-                result = draw;
-            }
+        if (match[`${homeFieldName}PenaltyScore`] || match[`${awayFieldName}PenaltyScore`]) {
+            result = this.getResult(match[`${homeFieldName}PenaltyScore`], match[`${awayFieldName}PenaltyScore`]);
+        } else if (match.isSecondLeg && (match[`${homeFieldName}AggregateScore`] || match[`${awayFieldName}AggregateScore`])) {
+            result = this.getResult(match[`${homeFieldName}AggregateScore`], match[`${awayFieldName}AggregateScore`]);
+        } else if (match[`${homeFieldName}ExtraScore`] || match[`${awayFieldName}ExtraScore`]) {
+            result = this.getResult(match[`${homeFieldName}ExtraScore`], match[`${awayFieldName}ExtraScore`]);
         } else {
-            if (match[`${homeFieldName}TotalScore`] > match[`${awayFieldName}TotalScore`]) {
-                result = win;
-            } else if (match[`${homeFieldName}TotalScore`] < match[`${awayFieldName}TotalScore`]) {
-                result = loss;
-            } else {
-                result = draw;
-            }
+            result = this.getResult(match[`${homeFieldName}TotalScore`], match[`${awayFieldName}TotalScore`]);
         }
 
         return result;

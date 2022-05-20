@@ -113,37 +113,37 @@ export default class IncidentIcon extends PureComponent {
         const type = this.props.type;
         let icon;
         switch (type) {
-            case IncidentIconType.Goal: //NOSONAR
+            case IncidentIconType.Goal:
                 icon = this.renderGoalIcon();
                 break;
-            case IncidentIconType.OwnGoal: //NOSONAR
+            case IncidentIconType.OwnGoal:
                 icon = this.renderOwnGoalIcon();
                 break;
             case IncidentIconType.Penalty:
-                icon = this.renderPenaltyIcon(); //NOSONAR
+                icon = this.renderPenaltyIcon();
                 break;
-            case IncidentIconType.PenaltyMissed: //NOSONAR
+            case IncidentIconType.PenaltyMissed:
                 icon = this.renderPenaltyShootoutMissedIcon();
                 break;
-            case IncidentIconType.PenaltyShootOutSuccess: //NOSONAR
+            case IncidentIconType.PenaltyShootOutSuccess:
                 icon = this.renderPenaltyShootoutIcon();
                 break;
-            case IncidentIconType.RedCard: //NOSONAR
+            case IncidentIconType.RedCard:
                 icon = this.renderRedCardIcon();
                 break;
-            case IncidentIconType.YellowCard: //NOSONAR
+            case IncidentIconType.YellowCard:
                 icon = this.renderYellowCardIcon();
                 break;
-            case IncidentIconType.YellowTurnRedCard: //NOSONAR
+            case IncidentIconType.YellowTurnRedCard:
                 icon = this.renderYellowTurnRedCardIcon();
                 break;
-            case IncidentIconType.VAR: //NOSONAR
+            case IncidentIconType.VAR:
                 icon = this.renderVARIcon();
                 break;
-            case IncidentIconType.outSubsitution: //NOSONAR
+            case IncidentIconType.outSubsitution:
                 icon = this.renderOutSubsitutionIcon();
                 break;
-            case IncidentIconType.inSubsitution: //NOSONAR
+            case IncidentIconType.inSubsitution:
                 icon = this.renderInSubsitutionIcon();
                 break;
             default:
