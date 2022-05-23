@@ -11,7 +11,7 @@ export default class FavoriteLeagues extends  PureComponent  {
         super(props);
         this.state = {
             leagues: props.leagues
-        }
+        };
     }
 
     componentDidUpdate(prevProps) {
@@ -78,4 +78,4 @@ export default class FavoriteLeagues extends  PureComponent  {
             </div>
         );
     }
-};
+}

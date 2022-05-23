@@ -17,7 +17,7 @@ export default class MatchGeneralInfo extends PureComponent {
         super(props);
         this.state = {
             flagToggleMatchIcon: false
-        }
+        };
     }
     getMatchScores = () => {
         const match = this.props.match.generalInfo;

@@ -38,7 +38,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
         let message = '';
         if (favourite) {
             favLeague = favLeague.filter(item => item.leagueId !== league.leagueId);
-            message = (<div className="fav-match fav-match-add">
+            message = (<div className="fav-league fav-league-add">
                 <ul>
                     <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Đã xóa khỏi Giải Đấu Của Tôi</li>
                 </ul>
@@ -57,7 +57,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
                 order: currentOrder + 1
             };
             favLeague.push(leagueTmp);
-            message = (<div className="fav-match fav-match-add">
+            message = (<div className="fav-league fav-league-add">
                 <ul>
                     <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Đã thêm vào "Giải Đấu Của Tôi</li>
                 </ul>
@@ -100,7 +100,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
 
     render() {
         const { isFavourite, isShowTooltip } = this.state;
-        const favIconClass = isFavourite ? 'icon-live-start start-active' : 'icon-favourite-outline';
+        const favClass = isFavourite ? 'icon-live-start start-active' : 'icon-favourite-outline';
         return (
             <>
                 {
@@ -110,11 +110,11 @@ export default class FavouriteLeagueIcon extends PureComponent {
                             overlay={this.renderTooltip()}
                         >
                             <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                                className={`icon-fav-league icon-livescore ${favIconClass}`}
+                                className={`icon-fav-league icon-livescore ${favClass}`}
                             />
                         </OverlayTrigger> :
                         <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                            className={`icon-fav-league icon-livescore ${favIconClass}`}
+                            className={`icon-fav-league icon-livescore ${favClass}`}
                         />
                 }
             </>

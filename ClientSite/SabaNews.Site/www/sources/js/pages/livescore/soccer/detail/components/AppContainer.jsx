@@ -14,7 +14,7 @@ export class AppContainer extends Component {
         super(props);
         this.state = {
             flagToggleFavLeagueIcon: false
-        }
+        };
     }
     componentDidMount() {
         this.props.getMatchDetail();
@@ -24,11 +24,11 @@ export class AppContainer extends Component {
     onUpdateFavLeague = () => {
         this.props.setFavLeagues(CommonFunctions.getFavLeagues());
         this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
-    }
+    };
 
     onToggleFavLeaguesIcon = () => {
         this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
-    }
+    };
 
     render() {
         const { match, favLeagues } = this.props;
