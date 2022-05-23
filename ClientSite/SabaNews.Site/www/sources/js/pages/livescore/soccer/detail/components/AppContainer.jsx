@@ -57,6 +57,22 @@ export class AppContainer extends Component {
                         </div>
                     </div>
                 </div>
+                <Modal className="modal-exp" size="sm" show={showPopupSearch} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h1>hello</h1>
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={this.handleClose}>
+                        Save Changes
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
             </>
         );
     }
