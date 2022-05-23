@@ -6,7 +6,6 @@ import SearchBar from '../SearchBar';
 import Grid from './Grid';
 import { ActionCreators } from '../../actions';
 import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
 import { LeagueType, MatchStatus } from '@jsroot/common/constants';
 
 export class MatchGrid extends PureComponent {
@@ -47,11 +46,7 @@ export class MatchGrid extends PureComponent {
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
         if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
-            matches = matches.filter(match => {
-                const endTime = moment(DateTimeService.convertFromUTC(match.endTime)).format('YYYY-MM-DD');
-                return match.status !== MatchStatus.NotStarted
-                    && moment(endTime).isBefore(today);
-            });
+            matches = matches.filter(match => match.status !== MatchStatus.NotStarted);
         }
 
         const totalMatches = matches.length;
