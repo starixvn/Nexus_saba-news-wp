@@ -108,16 +108,19 @@ export default class MatchStage extends PureComponent {
 
     getMatchStage = () => {
         const match = this.props.match;
-        let className = match.status === MatchStatus.NotStarted ? 'font-weight-bold' : '';
+        const className = match.status === MatchStatus.NotStarted ? 'font-weight-bold' : '';
         let stage = '';
-        if (match.status === MatchStatus.FirstHalf
-            || match.status === MatchStatus.SecondHalf
-            || match.status === MatchStatus.ExtraTime
-            || match.status === MatchStatus.Intermission
-            || match.status === MatchStatus.PenaltyShootout) {
-            stage = this.getMatchStageOfLiveMatch(match);
-        } else {
-            stage = this.getMatchStageOfPreAndPostMatch(match);
+        switch (match.status) {
+            case MatchStatus.FirstHalf:
+            case MatchStatus.SecondHalf:
+            case MatchStatus.ExtraTime:
+            case MatchStatus.Intermission:
+            case MatchStatus.PenaltyShootout:
+                stage = this.getMatchStageOfLiveMatch(match);
+                break;
+            default:
+                stage = this.getMatchStageOfPreAndPostMatch(match);
+                break;
         }
 
         this.setState({ stage, className });
