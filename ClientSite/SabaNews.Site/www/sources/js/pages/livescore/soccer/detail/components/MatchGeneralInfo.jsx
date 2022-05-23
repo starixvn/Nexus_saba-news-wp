@@ -72,7 +72,6 @@ export default class MatchGeneralInfo extends PureComponent {
                 }
                 {this.getAggregateScore(match)}
                 {this.getPenaltyScore(match)}
-                    && (homeAGG > 0 || awayAGG > 0) &&
             </>
         );
     };
