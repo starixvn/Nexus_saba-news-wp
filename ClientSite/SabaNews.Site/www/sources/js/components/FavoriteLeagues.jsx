@@ -6,14 +6,13 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { Modal } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 
 export default class FavoriteLeagues extends  PureComponent  {
     constructor(props) {
         super(props);
         this.state = {
             leagues: props.leagues,
-            showPopupSearch: false,
+            showPopupSearch: false
         };
     }
 
@@ -56,13 +55,13 @@ export default class FavoriteLeagues extends  PureComponent  {
 
     handleOpenSearchPopup = () => {
         this.setState({showPopupSearch: true});
-    }
+    };
     handleClose = () => {
         this.setState({showPopupSearch: false});
-    }
+    };
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
-        const { showPopupSearch } = this.state
+        const { showPopupSearch } = this.state;
         return (
             <div className="leagues">
                 <div className="leagues-title">
