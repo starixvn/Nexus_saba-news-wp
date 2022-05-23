@@ -166,7 +166,7 @@ export default class CommonFunctions {
                 leagueFullNameEN: league.leagueFullNameEN,
                 leagueNameVN: league.leagueNameVN,
                 icon: league.icon,
-                sessionId: league.season ? league.season.seasonId : league.currentSeasonId
+                currentSeasonId: league.season ? league.season.seasonId : league.currentSeasonId
             }
             favLeague.push(leagueTmp);
             isFavourite = true;
@@ -186,7 +186,7 @@ export default class CommonFunctions {
                 leagueFullNameEN: league.leagueFullNameEN,
                 leagueNameVN: league.leagueNameVN,
                 icon: league.icon,
-                sessionId: league.season ? league.season.seasonId : league.currentSeasonId,
+                currentSeasonId: league.season ? league.season.seasonId : league.currentSeasonId,
                 order: index + 1
             };
             favLeagues.push(leagueTmp);

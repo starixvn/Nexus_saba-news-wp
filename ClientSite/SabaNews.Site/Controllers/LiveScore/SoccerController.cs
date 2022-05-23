@@ -235,15 +235,9 @@
         [HttpPost]
         public async Task<IActionResult> GetFavLeagues([FromBody] FavLeagueModel model)
         {
-            IList<League> leagues;
-            if (model.LeagueIds == null)
-            {
-                leagues = await leagueService.GetMajorLeagueAsync();
-            }
-            else
-            {
-                leagues = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = model.LeagueIds });
-            }
+            var leagues = model.LeagueIds == null
+                        ? await leagueService.GetMajorLeagueAsync() 
+                        : await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = model.LeagueIds });
             return Ok(leagues);
         }
 

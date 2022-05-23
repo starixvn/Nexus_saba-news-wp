@@ -5,12 +5,15 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
+import { Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export default class FavoriteLeagues extends  PureComponent  {
     constructor(props) {
         super(props);
         this.state = {
-            leagues: props.leagues
+            leagues: props.leagues,
+            showPopupSearch: false,
         };
     }
 
@@ -50,12 +53,21 @@ export default class FavoriteLeagues extends  PureComponent  {
             this.props.onToggleIcon();
         }
     };
+
+    handleOpenSearchPopup = () => {
+        this.setState({showPopupSearch: true});
+    }
+    handleClose = () => {
+        this.setState({showPopupSearch: false});
+    }
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
+        const { showPopupSearch } = this.state
         return (
             <div className="leagues">
                 <div className="leagues-title">
                     <i className="icon-livescore icon-live-start" /> <span>{LangHelper.getResource('HotLeague')}</span>
+                    <span onClick={this.handleOpenSearchPopup}>plus</span>
                 </div>
                 <div className="leagues-main">
                     {
@@ -68,13 +80,28 @@ export default class FavoriteLeagues extends  PureComponent  {
                                     </div>
                                     <div className="toggle-league">
                                         <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague}/>
-                                        {/* <span className="icon-livescore icon-live-start start-active" /> */}
                                     </div>
                                 </div>
                             );
                         })
                     }
                 </div>
+                <Modal className="modal-exp" size="sm" show={showPopupSearch} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h1>hello</h1>
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={this.handleClose}>
+                        Save Changes
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }
