@@ -59,7 +59,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
             favLeague.push(leagueTmp);
             message = (<div className="fav-league fav-league-add">
                 <ul>
-                    <li className="text-fav"><i className="icon-livescore icon-favourite-outline"></i> Đã thêm vào Giải Đấu Của Tôi</li>
+                    <li className="text-fav"><i className="icon-livescore icon-live-start start-active"></i> Đã thêm vào Giải Đấu Của Tôi</li>
                 </ul>
             </div>);
         }
