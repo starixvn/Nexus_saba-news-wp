@@ -5,14 +5,15 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 export default class FavoriteLeagues extends  PureComponent  {
     constructor(props) {
         super(props);
         this.state = {
             leagues: props.leagues,
-            showPopupSearch: false
+            showPopupSearch: false,
         };
     }
 
@@ -55,13 +56,13 @@ export default class FavoriteLeagues extends  PureComponent  {
 
     handleOpenSearchPopup = () => {
         this.setState({showPopupSearch: true});
-    };
+    }
     handleClose = () => {
         this.setState({showPopupSearch: false});
-    };
+    }
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
-        const { showPopupSearch } = this.state;
+        const { showPopupSearch } = this.state
         return (
             <div className="leagues">
                 <div className="leagues-title">
@@ -88,21 +89,17 @@ export default class FavoriteLeagues extends  PureComponent  {
                         })
                     }
                 </div>
-                <Modal className="modal-exp" size="sm" show={showPopupSearch} onHide={this.handleClose} dialogClassName="modal-90w">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                <Modal className="modal-livescore" size="sm" show={showPopupSearch} onHide={this.handleClose}>
+                    <Modal.Header>
+                        <Modal.Title>Thêm giải đấu</Modal.Title>
+                        <i className="icon-livescore icon-close" onClick={this.handleClose} />
                     </Modal.Header>
-                    <Modal.Body className="modal-content modal-auth">
-                        <h1>hello</h1>
+                    <Modal.Body>
+                        <div class="livescore-soccer-search-bar">
+                            <input placeholder="tìm kiếm giải đấu..." type="text" class="livescore-soccer-searchbox form-control" value="" />
+                            <span class="btn-search-match"><i class="icon-livescore icon-search"></i></span>
+                        </div>
                     </Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={this.handleClose}>
-                        Save Changes
-                    </Button>
-                    </Modal.Footer>
                 </Modal>
             </div>
         );
