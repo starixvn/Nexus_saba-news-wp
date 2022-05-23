@@ -66,8 +66,11 @@ export default class FavoriteLeagues extends  PureComponent  {
         return (
             <div className="leagues">
                 <div className="leagues-title">
-                    <i className="icon-livescore icon-live-start" /> <span>{LangHelper.getResource('HotLeague')}</span>
-                    <span onClick={this.handleOpenSearchPopup}>plus</span>
+                    <div className="leagues-group">
+                        <i className="icon-livescore icon-live-start" />
+                        <span>{LangHelper.getResource('HotLeague')}</span>
+                    </div>
+                    <i onClick={this.handleOpenSearchPopup} className="icon-livescore icon-close rotare-plus" />
                 </div>
                 <div className="leagues-main">
                     {

@@ -17,7 +17,8 @@
         border: 1px solid #E6E6E6;
         margin-bottom: .8rem;
         position: relative;
-        cursor : pointer;
+        cursor: pointer;
+
         @include tableMobile {
             display: none;
         }
@@ -56,11 +57,17 @@
         border: 1px solid $border-color;
         border-radius: 3px;
 
+        &-group {
+            display: flex;
+            align-items: center;
+        }
+
         &-title {
             background-color: #fffdf9;
             border-bottom: 1px solid $border-color;
-            padding: .8rem 1.2rem;
+            padding: 0.8rem .8rem 0.8rem 1.2rem;
             display: flex;
+            justify-content: space-between;
 
             span {
                 font-weight: bold;
@@ -147,3 +154,13 @@
         }
     }
 }
+
+.icon-close {
+    cursor: pointer;
+
+    &.rotare-plus {
+        transform: rotate(135deg);
+    }
+}
+
+
