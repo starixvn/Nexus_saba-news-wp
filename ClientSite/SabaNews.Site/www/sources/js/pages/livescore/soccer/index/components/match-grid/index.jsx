@@ -46,7 +46,10 @@ export class MatchGrid extends PureComponent {
     render() {
         let { matches, selectedDate, today, searchKey } = this.props;
         if (moment(selectedDate).isBefore(today) && !window.isLivePage) {
-            matches = matches.filter(match => match.status !== MatchStatus.NotStarted);
+            matches = matches.filter(match => match.status === MatchStatus.Finished
+                || match.status === MatchStatus.Postpone
+                || match.status === MatchStatus.Cancel
+                || match.status === MatchStatus.TBD);
         }
 
         const totalMatches = matches.length;
