@@ -146,7 +146,7 @@ export class AppContainer extends Component {
                             league !== null &&
                             <>
                                 <Breadscrum currentPage={CommonFunctions.getLeagueName(league)} currentPageUrl={window.location.href} />
-                                <League league={league} />
+                                <League league={league} flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
                             </>
                         }
                         {this.renderTabs()}
@@ -166,8 +166,8 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { favLeagues, league, stages, preMatches, postMatches, flagToggleFavLeagueIcon } = state;
-    return { favLeagues, league, stages, preMatches, postMatches, flagToggleFavLeagueIcon };
+    const { favLeagues, league, stages, preMatches, postMatches } = state;
+    return { favLeagues, league, stages, preMatches, postMatches };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);
