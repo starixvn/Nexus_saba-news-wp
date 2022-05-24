@@ -6,13 +6,17 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { Modal } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import SearchLeague from './SearchLeague';
 
 export default class FavoriteLeagues extends  PureComponent  {
     constructor(props) {
         super(props);
         this.state = {
             leagues: props.leagues,
-            showPopupSearch: false
+            isShowSearchPopup: false,
+            searchLeagueKey: '',
+            leagueSearch: []
         };
     }
 
@@ -54,14 +58,15 @@ export default class FavoriteLeagues extends  PureComponent  {
     };
 
     handleOpenSearchPopup = () => {
-        this.setState({showPopupSearch: true});
+        this.setState({isShowSearchPopup: true});
     };
-    handleClose = () => {
-        this.setState({showPopupSearch: false});
+    handleCloseSearchPopup = () => {
+        this.setState({isShowSearchPopup: false});
     };
+
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
-        const { showPopupSearch } = this.state;
+        const { isShowSearchPopup } = this.state;
         return (
             <div className="leagues">
                 <div className="leagues-title">
@@ -88,14 +93,18 @@ export default class FavoriteLeagues extends  PureComponent  {
                         })
                     }
                 </div>
-                <Modal className="modal-livescore" size="sm" show={showPopupSearch} onHide={this.handleClose}>
+                <SearchLeague leagues={leagues} isShowSearchPopup={isShowSearchPopup} onClose={this.handleCloseSearchPopup} />
+                <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
                     <Modal.Header>
                         <Modal.Title>Thêm giải đấu</Modal.Title>
                         <i className="icon-livescore icon-close" onClick={this.handleClose} />
                     </Modal.Header>
                     <Modal.Body>
                         <div class="livescore-soccer-search-bar">
-                            <input placeholder="tìm kiếm giải đấu..." type="text" class="livescore-soccer-searchbox form-control" value="" />
+                        <Form.Control type="text" placeholder="tìm kiếm giải đấu..."
+                            className="livescore-soccer-searchbox form-control"
+                            onChange={this.handleChangeSearch}
+                        />
                             <span class="btn-search-match"><i class="icon-livescore icon-search"></i></span>
                             <div className="modal-data">
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
