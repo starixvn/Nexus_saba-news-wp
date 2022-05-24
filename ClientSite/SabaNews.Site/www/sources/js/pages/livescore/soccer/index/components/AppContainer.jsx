@@ -55,6 +55,7 @@ export class AppContainer extends Component {
 
         this.props.setDateRanges(this.getDateRanges(this.props.selectedDate));
         this.props.getFavLeagues();
+        this.props.getLeagues();
         this.getMatches(this.props.selectedDate);
     }
 
@@ -122,7 +123,7 @@ export class AppContainer extends Component {
 
     render() {
         const isMobile = this.state.isMobile;
-        const { matches, favLeagues, totalLiveMatches } = this.props;
+        const { matches, favLeagues, totalLiveMatches, leagues } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
@@ -141,7 +142,7 @@ export class AppContainer extends Component {
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
-                        <FavoriteLeagues leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                        <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
                     </div>
                 </div>
             </div>
@@ -154,11 +155,13 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispat
 const mapStateToProps = state => {
     const {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, favLeagues, matches, totalLiveMatches,flagToggleFavLeagueIcon
+        searchKey, favLeagues, matches, totalLiveMatches,
+        flagToggleFavLeagueIcon, leagues
     } = state;
     return {
         minDate, maxDate, selectedDate, dateRanges,
-        searchKey, favLeagues, matches, totalLiveMatches,flagToggleFavLeagueIcon
+        searchKey, favLeagues, matches, totalLiveMatches,
+        flagToggleFavLeagueIcon, leagues
     };
 };
 

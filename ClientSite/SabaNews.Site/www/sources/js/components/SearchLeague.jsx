@@ -12,13 +12,15 @@ export default class SearchLeague extends  PureComponent  {
         searchKey: PropTypes.string,
         isShowResult: PropTypes.bool,
         leagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
+        favLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
         onClose: PropTypes.func
     };
 
     static defaultProps = {
         searchKey: '',
         isShowResult: false,
-        leagues: []
+        leagues: [],
+        favLeagues: []
     };
 
     constructor(props) {
@@ -26,15 +28,15 @@ export default class SearchLeague extends  PureComponent  {
         this.state = {
             searchKey: '',
             isShowResult: false,
-            leagues: props.leagues
+            leagues: [],
+            favLeagues: props.favLeagues
         };
     }
 
     componentDidUpdate(prevProps) {
-        if (!this.state.isShowResult & this.props.leagues.length > 0) {
+        if (this.props.favLeagues !== prevProps.favLeagues) {
             this.setState({
-                leagues: this.props.leagues,
-                isShowResult: true
+                favLeagues: this.props.favLeagues
             });
         }
     }
@@ -42,19 +44,18 @@ export default class SearchLeague extends  PureComponent  {
     handleChange = event => {
         const searchKey = event.target.value;
         this.setState({searchKey: searchKey});
-        const leagues = this.props.leagues;
+        const searchLeagues = this.props.searchLeagues;
         let result = null;
         if (searchKey.length > 2) {
-            result = leagues.filter(item =>
+            result = searchLeagues.filter(item =>
                 CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
             this.setState({leagues: result, isShowResult: true});
-        } else if(searchKey === '') {
-            this.setState({leagues: leagues});
         }
     };
 
     handleClose = () => {
         this.props.onClose();
+        this.setState({searchKey: ''});
     };
 
     handleClick = (event, league) => {
@@ -73,9 +74,17 @@ export default class SearchLeague extends  PureComponent  {
         }
     };
 
+    getLeagues = () => {
+        if(this.state.searchKey === '') {
+            return this.state.favLeagues;
+        }
+        return this.state.leagues;
+    }
+
     render()  {
         const { isShowSearchPopup } = this.props;
-        const { isShowResult, leagues, searchKey } = this.state;
+        const { isShowResult, searchKey } = this.state;
+        let leagues = this.getLeagues();
         return (
             <>
                 <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
@@ -93,7 +102,7 @@ export default class SearchLeague extends  PureComponent  {
                         </div>
                         <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
                             {
-                                isShowResult && leagues.length > 0 &&
+                                leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
                                     {
                                         leagues.map((league, index) => {

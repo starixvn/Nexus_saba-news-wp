@@ -241,5 +241,12 @@
             return Ok(leagues);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> GetLeagues()
+        {
+            var leagues = await leagueService.GetLeaguesAsync();
+            return Ok(leagues);
+        }
+
     }
 }

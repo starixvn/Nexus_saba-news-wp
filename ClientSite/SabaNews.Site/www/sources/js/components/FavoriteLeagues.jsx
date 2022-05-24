@@ -63,6 +63,7 @@ export default class FavoriteLeagues extends  PureComponent  {
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
         const { isShowSearchPopup } = this.state;
+        const { searchLeagues } = this.props;
         return (
             <div className="leagues">
                 <div className="leagues-title">
@@ -93,7 +94,7 @@ export default class FavoriteLeagues extends  PureComponent  {
                         <div>Nhấp vào biểu tượng <i className="icon-fav-league icon-livescore icon-favourite-outline" /> để thêm giải đấu yêu thích</div>
                     }
                 </div>
-                <SearchLeague leagues={leagues} isShowSearchPopup={isShowSearchPopup} onClose={this.handleCloseSearchPopup} onUpdateFavLeague={this.onUpdateFavLeague} />
+                <SearchLeague searchLeagues={searchLeagues} favLeagues={leagues} isShowSearchPopup={isShowSearchPopup} onClose={this.handleCloseSearchPopup} onUpdateFavLeague={this.onUpdateFavLeague} />
             </div>
         );
     }
