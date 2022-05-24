@@ -12,9 +12,7 @@ export default class FavoriteLeagues extends  PureComponent  {
         super(props);
         this.state = {
             leagues: props.leagues,
-            isShowSearchPopup: false,
-            searchLeagueKey: '',
-            leagueSearch: []
+            isShowSearchPopup: false
         };
     }
 

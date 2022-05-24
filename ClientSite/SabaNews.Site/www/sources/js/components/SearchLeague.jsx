@@ -10,8 +10,16 @@ export default class SearchLeague extends  PureComponent  {
         this.state = {
             searchKey: '',
             isShowResult: false,
-            result: []
+            leagues: []
         };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.leagues !== prevProps.leagues) {
+            this.setState({
+                leagues: this.props.leagues
+            });
+        }
     }
 
     handleChange = event => {
@@ -21,9 +29,8 @@ export default class SearchLeague extends  PureComponent  {
         let result = null;
         if (searchKey.length > 2) {
             result = leagues.filter(item =>
-                CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-                || CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
-            this.setState({result: result, isShowResult: true});
+                CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+            this.setState({leagues: result, isShowResult: true});
         }
     };
 
@@ -33,7 +40,7 @@ export default class SearchLeague extends  PureComponent  {
 
     render()  {
         const { isShowSearchPopup } = this.props;
-        const { isShowResult, result, searchValue } = this.state;
+        const { isShowResult, leagues, searchValue } = this.state;
         return (
             <>
                 <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
@@ -50,10 +57,10 @@ export default class SearchLeague extends  PureComponent  {
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
                             <div className="modal-data">
                             {
-                                isShowResult && result.length > 0 &&
+                                isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension modal-data">
                                     {
-                                        result.map((league, index) => {
+                                        leagues.map((league, index) => {
                                             const reg = new RegExp(`(${searchValue})`, 'gi');
                                             const displayValue = CommonFunctions.getLeagueName(league)
                                                 .replace(reg, "<span class='text-matched'>$1</span>");
@@ -74,7 +81,7 @@ export default class SearchLeague extends  PureComponent  {
                                 </div>
                             }
                             {
-                                isShowResult && result.length === 0 &&
+                                isShowResult && leagues.length === 0 &&
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
                             }
                             </div>
