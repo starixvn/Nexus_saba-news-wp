@@ -105,9 +105,17 @@
             .leagues-item {
                 padding: .5rem 1.2rem;
 
+                .text {
+                    color: $color-detail-league;
+                }
+
+               .text-matched {
+                    font-weight: bold;
+                }
+
                 &:hover {
                     .text {
-                        font-weight: 700 !important;
+                        color: $color-active-icon;
                     }
                 }
             }
