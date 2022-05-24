@@ -10,24 +10,23 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 export default class SearchLeague extends  PureComponent  {
     static propTypes = {
         searchKey: PropTypes.string,
-        isShowResult: PropTypes.bool,
         leagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
         favLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
+        toggleIcon: PropTypes.bool,
         onClose: PropTypes.func
     };
 
     static defaultProps = {
         searchKey: '',
-        isShowResult: false,
         leagues: [],
-        favLeagues: []
+        favLeagues: [],
+        toggleIcon: false
     };
 
     constructor(props) {
         super(props);
         this.state = {
             searchKey: '',
-            isShowResult: false,
             leagues: [],
             favLeagues: props.favLeagues
         };
@@ -49,7 +48,10 @@ export default class SearchLeague extends  PureComponent  {
         if (searchKey.length > 2) {
             result = searchLeagues.filter(item =>
                 CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
-            this.setState({leagues: result, isShowResult: true});
+            this.setState({leagues: result, toggleIcon: !this.state.toggleIcon });
+        }
+        if(searchKey === '') {
+            this.setState({toggleIcon: !this.state.toggleIcon });
         }
     };
 
@@ -81,9 +83,14 @@ export default class SearchLeague extends  PureComponent  {
         return this.state.leagues;
     };
 
+    onUpdateFavLeague = () => {
+        this.props.onUpdateFavLeague();
+        this.setState({toggleIcon: !this.state.toggleIcon });
+    }
+
     render()  {
         const { isShowSearchPopup } = this.props;
-        const { isShowResult, searchKey } = this.state;
+        const { searchKey, toggleIcon } = this.state;
         const leagues = this.getLeagues();
         return (
             <>
@@ -100,7 +107,7 @@ export default class SearchLeague extends  PureComponent  {
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
                         </div>
-                        <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
+                        <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
                             {
                                 leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
@@ -117,7 +124,7 @@ export default class SearchLeague extends  PureComponent  {
                                                         <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
                                                     </div>
                                                     <div className="toggle-league">
-                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.props.onUpdateFavLeague} />
+                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={toggleIcon} />
                                                     </div>
                                                 </div>
                                             );
@@ -126,7 +133,7 @@ export default class SearchLeague extends  PureComponent  {
                                 </div>
                             }
                             {
-                                isShowResult && leagues.length === 0 && searchKey.length >= 3 &&
+                                this.state.leagues.length === 0 && searchKey.length >= 3 &&
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
                             }
                         </div>
