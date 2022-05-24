@@ -4,6 +4,8 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import PropTypes from 'prop-types';
+import Site from '@jsroot/common/site';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class SearchLeague extends  PureComponent  {
     static propTypes = {
@@ -46,11 +48,29 @@ export default class SearchLeague extends  PureComponent  {
             result = leagues.filter(item =>
                 CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
             this.setState({leagues: result, isShowResult: true});
+        } else if(searchKey === '') {
+            this.setState({leagues: leagues});
         }
     };
 
     handleClose = () => {
         this.props.onClose();
+    };
+
+    handleClick = (event, league) => {
+        const className = event.target.className;
+        if(className.includes('icon-livescore')) {
+            return;
+        }
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
     };
 
     render()  {
@@ -71,7 +91,7 @@ export default class SearchLeague extends  PureComponent  {
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
                         </div>
-                        <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
+                        <div className={`${searchKey.length < 3 && leagues.length === 0 ? '' : 'modal-data'} ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
@@ -88,7 +108,7 @@ export default class SearchLeague extends  PureComponent  {
                                                         <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
                                                     </div>
                                                     <div className="toggle-league">
-                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} />
+                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.props.onUpdateFavLeague} />
                                                     </div>
                                                 </div>
                                             );
@@ -97,7 +117,7 @@ export default class SearchLeague extends  PureComponent  {
                                 </div>
                             }
                             {
-                                isShowResult && leagues.length === 0 &&
+                                isShowResult && leagues.length === 0 && searchKey >= 3 &&
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
                             }
                         </div>
