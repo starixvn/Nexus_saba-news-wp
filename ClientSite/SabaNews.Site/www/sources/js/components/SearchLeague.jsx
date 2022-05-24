@@ -3,8 +3,22 @@ import { Modal, Form } from 'react-bootstrap';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
+import PropTypes from 'prop-types';
 
 export default class SearchLeague extends  PureComponent  {
+    static propTypes = {
+        searchKey: PropTypes.string,
+        isShowResult: PropTypes.bool,
+        leagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
+        onClose: PropTypes.func
+    };
+
+    static defaultProps = {
+        searchKey: '',
+        isShowResult: false,
+        leagues: []
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +69,7 @@ export default class SearchLeague extends  PureComponent  {
                             onChange={this.handleChange}
                         />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <div className={`modal-data ${isShowResult && result.length ? "spacing-top" : ""}`}>
+                            <div className={`modal-data ${isShowResult && leagues.length ? "spacing-top" : ""}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension modal-data">
