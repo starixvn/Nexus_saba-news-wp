@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Modal } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
@@ -49,33 +48,36 @@ export default class SearchLeague extends  PureComponent  {
                             onChange={this.handleChange}
                         />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
+                            <div className="modal-data">
                             {
-                                isShowResult &&
-                                <div className="autocomplete-items-container">
-                                    <div className="livescore-soccer-extension">
-                                        {
-                                            result.map((league, index) => {
-                                                const reg = new RegExp(`(${searchValue})`, 'gi');
-                                                const displayValue = CommonFunctions.getLeagueName(league)
-                                                    .replace(reg, "<span class='text-matched'>$1</span>");
+                                isShowResult && result.length > 0 &&
+                                <div className="livescore-soccer-extension modal-data">
+                                    {
+                                        result.map((league, index) => {
+                                            const reg = new RegExp(`(${searchValue})`, 'gi');
+                                            const displayValue = CommonFunctions.getLeagueName(league)
+                                                .replace(reg, "<span class='text-matched'>$1</span>");
 
-                                                return (
-                                                    <div key={league.leagueId} className="leagues-item" onClick={event => this.handleClick(event, league)}>
-                                                        <div className="leagues-name">
-                                                            <TeamIcon className="logo" src={league.icon} />
-                                                            <span className="text">{CommonFunctions.getLeagueName(league)}</span>
-                                                        </div>
-                                                        <div className="toggle-league">
-                                                            <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague}/>
-                                                        </div>
+                                            return (
+                                                <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
+                                                    <div className="leagues-name">
+                                                        <TeamIcon className="logo" src={league.icon} />
+                                                        <span className="text">{displayValue}</span>
                                                     </div>
-                                                );
-                                            })
-                                        }
-                                    </div>
+                                                    <div className="toggle-league">
+                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague}/>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
+                                    }
                                 </div>
                             }
-                            <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                            {
+                                isShowResult && result.length === 0 &&
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                            }
+                            </div>
                         </div>
                     </Modal.Body>
                 </Modal>

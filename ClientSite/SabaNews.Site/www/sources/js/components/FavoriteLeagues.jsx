@@ -5,8 +5,6 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
-import { Modal } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
 import SearchLeague from './SearchLeague';
 
 export default class FavoriteLeagues extends  PureComponent  {
@@ -94,41 +92,6 @@ export default class FavoriteLeagues extends  PureComponent  {
                     }
                 </div>
                 <SearchLeague leagues={leagues} isShowSearchPopup={isShowSearchPopup} onClose={this.handleCloseSearchPopup} />
-                <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
-                    <Modal.Header>
-                        <Modal.Title>Thêm giải đấu</Modal.Title>
-                        <i className="icon-livescore icon-close" onClick={this.handleClose} />
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div class="livescore-soccer-search-bar">
-                        <Form.Control type="text" placeholder="tìm kiếm giải đấu..."
-                            className="livescore-soccer-searchbox form-control"
-                            onChange={this.handleChangeSearch}
-                        />
-                            <span class="btn-search-match"><i class="icon-livescore icon-search"></i></span>
-                            <div className="modal-data">
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                            </div>
-                        </div>
-                    </Modal.Body>
-                </Modal>
             </div>
         );
     }
