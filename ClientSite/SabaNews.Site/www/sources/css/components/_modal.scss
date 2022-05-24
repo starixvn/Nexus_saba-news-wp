@@ -95,6 +95,11 @@
     min-height: 11.3rem;
     max-height: 33rem;
     overflow: auto;
+    margin-top: 1rem;
+
+    .livescore-soccer-extension {
+        padding-left: 0;
+    }
 
     &.spacing-top {
         margin-top: 1rem;
@@ -105,22 +110,10 @@
             .leagues-item {
                 padding: .5rem 1.2rem;
 
-                .text {
-                    color: $color-detail-league;
-                }
-
-                .text-matched {
-                    font-weight: bold;
-                }
-
                 &:hover {
                     .text {
-                        color: $color-active-icon;
+                        font-weight: 700 !important;
                     }
-                }
-
-                .toggle-league {
-                    display: block !important;
                 }
             }
         }
