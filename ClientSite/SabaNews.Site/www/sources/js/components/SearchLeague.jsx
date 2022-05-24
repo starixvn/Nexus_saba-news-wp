@@ -55,7 +55,7 @@ export default class SearchLeague extends  PureComponent  {
                             onChange={this.handleChange}
                         />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <div className="modal-data">
+                            <div className={`modal-data ${isShowResult && result.length ? "spacing-top" : ""}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension modal-data">

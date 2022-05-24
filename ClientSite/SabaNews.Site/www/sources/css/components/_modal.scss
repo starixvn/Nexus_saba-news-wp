@@ -93,7 +93,9 @@
     min-height: 11.3rem;
     max-height: 33rem;
     overflow: auto;
-    margin-top : 1rem;
+    &.spacing-top {
+        margin-top: 1rem;
+    }
     &::-webkit-scrollbar {
         width: .6rem;
     }
