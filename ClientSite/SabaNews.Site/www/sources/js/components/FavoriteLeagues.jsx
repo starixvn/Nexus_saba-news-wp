@@ -97,7 +97,26 @@ export default class FavoriteLeagues extends  PureComponent  {
                         <div class="livescore-soccer-search-bar">
                             <input placeholder="tìm kiếm giải đấu..." type="text" class="livescore-soccer-searchbox form-control" value="" />
                             <span class="btn-search-match"><i class="icon-livescore icon-search"></i></span>
-                            <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                            <div className="modal-data">
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                            </div>
                         </div>
                     </Modal.Body>
                 </Modal>

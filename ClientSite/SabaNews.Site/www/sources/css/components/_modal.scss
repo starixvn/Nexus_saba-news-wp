@@ -5,12 +5,11 @@
     background: $primary-bg;
     position: fixed;
     width: 100%;
-    top: 9rem;
+    top: 2%;
     right: 50%;
-    transform: translate(50%, -50%);
+    transform: translate(50%, 0);
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     max-width: 50rem;
-
     @include tableMobile {
         max-width: 70rem;
     }
@@ -90,6 +89,21 @@
     }
 }
 
-.not-found{
-    margin-top : .5rem;
+.modal-data {
+    min-height: 11.3rem;
+    max-height: 33rem;
+    overflow: auto;
+    margin-top : 1rem;
+    &::-webkit-scrollbar {
+        width: .6rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(#D0D0D0, .2);
+        border-radius: 3px;
+    }
+
+    .not-found {
+        margin-top: .5rem;
+    }
 }
