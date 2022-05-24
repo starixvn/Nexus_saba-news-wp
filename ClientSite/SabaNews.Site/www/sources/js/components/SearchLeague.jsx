@@ -29,9 +29,10 @@ export default class SearchLeague extends  PureComponent  {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.leagues !== prevProps.leagues) {
+        if (this.props.leagues !== prevProps.leagues || !this.state.isShowResult) {
             this.setState({
-                leagues: this.props.leagues
+                leagues: this.props.leagues,
+                isShowResult: true
             });
         }
     }
@@ -69,7 +70,7 @@ export default class SearchLeague extends  PureComponent  {
                             onChange={this.handleChange}
                         />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <div className={`modal-data ${isShowResult && leagues.length ? "spacing-top" : ""}`}>
+                            <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension modal-data">
