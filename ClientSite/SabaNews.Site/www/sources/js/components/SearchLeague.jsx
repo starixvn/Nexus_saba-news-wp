@@ -91,7 +91,7 @@ export default class SearchLeague extends  PureComponent  {
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
                         </div>
-                        <div className={`${searchKey.length < 3 && leagues.length === 0 ? '' : 'modal-data'} ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
+                        <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
