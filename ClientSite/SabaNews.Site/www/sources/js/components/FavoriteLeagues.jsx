@@ -94,7 +94,11 @@ export default class FavoriteLeagues extends  PureComponent  {
                         <div>Nhấp vào biểu tượng <i className="icon-fav-league icon-livescore icon-favourite-outline" /> để thêm giải đấu yêu thích</div>
                     }
                 </div>
-                <SearchLeague searchLeagues={searchLeagues} favLeagues={leagues} isShowSearchPopup={isShowSearchPopup} onClose={this.handleCloseSearchPopup} onUpdateFavLeague={this.onUpdateFavLeague} />
+                <SearchLeague searchLeagues={searchLeagues}
+                        favLeagues={leagues}
+                        isShowSearchPopup={isShowSearchPopup}
+                        onClose={this.handleCloseSearchPopup}
+                        onUpdateFavLeague={this.onUpdateFavLeague} />
             </div>
         );
     }

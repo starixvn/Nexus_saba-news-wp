@@ -79,12 +79,12 @@ export default class SearchLeague extends  PureComponent  {
             return this.state.favLeagues;
         }
         return this.state.leagues;
-    }
+    };
 
     render()  {
         const { isShowSearchPopup } = this.props;
         const { isShowResult, searchKey } = this.state;
-        let leagues = this.getLeagues();
+        const leagues = this.getLeagues();
         return (
             <>
                 <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
