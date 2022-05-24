@@ -24,7 +24,7 @@ export default class SearchLeague extends  PureComponent  {
         this.state = {
             searchKey: '',
             isShowResult: false,
-            leagues: []
+            leagues: props.leagues
         };
     }
 
@@ -55,7 +55,7 @@ export default class SearchLeague extends  PureComponent  {
 
     render()  {
         const { isShowSearchPopup } = this.props;
-        const { isShowResult, leagues, searchValue } = this.state;
+        const { isShowResult, leagues, searchKey } = this.state;
         return (
             <>
                 <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
@@ -71,21 +71,21 @@ export default class SearchLeague extends  PureComponent  {
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
                         </div>
-                        <div className={`modal-data ${isShowResult && leagues.length ? "spacing-top" : ""}`}>
+                        <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
                                     {
                                         leagues.map((league, index) => {
-                                            const reg = new RegExp(`(${searchValue})`, 'gi');
-                                            const displayValue = CommonFunctions.getLeagueName(league)
+                                            const reg = new RegExp(`(${searchKey})`, 'gi');
+                                            const leagueName = CommonFunctions.getLeagueName(league)
                                                 .replace(reg, "<span class='text-matched'>$1</span>");
 
                                             return (
                                                 <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
                                                     <div className="leagues-name">
                                                         <TeamIcon className="logo" src={league.icon} />
-                                                        <span className="text">{displayValue}</span>
+                                                        <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
                                                     </div>
                                                     <div className="toggle-league">
                                                         <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} />
