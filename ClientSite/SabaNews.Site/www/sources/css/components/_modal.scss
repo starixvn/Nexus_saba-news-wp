@@ -10,6 +10,7 @@
     transform: translate(50%, 0);
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
     max-width: 50rem;
+
     @include tableMobile {
         max-width: 70rem;
     }
@@ -40,12 +41,13 @@
     }
 
     .modal-body {
-        padding: 1rem;
+        padding: 1rem 0;
 
         .livescore-soccer-search-bar {
             position: relative;
             margin-right: 0;
             width: 100%;
+            padding: 0 1rem;
 
             @include tableMobile {
                 margin-right: .4rem;
@@ -56,7 +58,7 @@
                 border: 1px solid $border-color;
                 background: transparent;
                 height: 3.6rem;
-                padding: 1.2rem 0rem 1.2rem 4rem;
+                padding: 1.2rem 0rem 1.2rem 3rem;
                 border-radius: 3px;
                 font-size: 1.4rem;
 
@@ -79,7 +81,7 @@
             .btn-search-match {
                 position: absolute;
                 float: right;
-                left: 13px;
+                left: 15px;
                 cursor: pointer;
                 color: #7e7e7e;
                 top: 8px;
@@ -93,9 +95,25 @@
     min-height: 11.3rem;
     max-height: 33rem;
     overflow: auto;
+
     &.spacing-top {
         margin-top: 1rem;
+
+        .livescore-soccer-extension {
+            padding-left: 0;
+
+            .leagues-item {
+                padding: .5rem 1.2rem;
+
+                &:hover {
+                    .text {
+                        font-weight: 700 !important;
+                    }
+                }
+            }
+        }
     }
+
     &::-webkit-scrollbar {
         width: .6rem;
     }
@@ -107,5 +125,6 @@
 
     .not-found {
         margin-top: .5rem;
+        padding: 0 1rem;
     }
 }

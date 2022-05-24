@@ -65,15 +65,16 @@ export default class SearchLeague extends  PureComponent  {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="livescore-soccer-search-bar">
-                        <Form.Control type="text" placeholder="tìm kiếm giải đấu..."
-                            className="livescore-soccer-searchbox form-control"
-                            onChange={this.handleChange}
-                        />
+                            <Form.Control type="text" placeholder="tìm kiếm giải đấu..."
+                                className="livescore-soccer-searchbox form-control"
+                                onChange={this.handleChange}
+                            />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <div className={`modal-data ${isShowResult && leagues.length ? 'spacing-top' : ''}`}>
+                        </div>
+                        <div className={`modal-data ${isShowResult && leagues.length ? "spacing-top" : ""}`}>
                             {
                                 isShowResult && leagues.length > 0 &&
-                                <div className="livescore-soccer-extension modal-data">
+                                <div className="livescore-soccer-extension">
                                     {
                                         leagues.map((league, index) => {
                                             const reg = new RegExp(`(${searchValue})`, 'gi');
@@ -87,7 +88,7 @@ export default class SearchLeague extends  PureComponent  {
                                                         <span className="text">{displayValue}</span>
                                                     </div>
                                                     <div className="toggle-league">
-                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague}/>
+                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} />
                                                     </div>
                                                 </div>
                                             );
@@ -99,7 +100,6 @@ export default class SearchLeague extends  PureComponent  {
                                 isShowResult && leagues.length === 0 &&
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
                             }
-                            </div>
                         </div>
                     </Modal.Body>
                 </Modal>
