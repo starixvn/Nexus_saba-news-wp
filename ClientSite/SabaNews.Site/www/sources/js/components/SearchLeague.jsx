@@ -31,7 +31,7 @@ export default class SearchLeague extends  PureComponent  {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.leagues !== prevProps.leagues || !this.state.isShowResult) {
+        if (!this.state.isShowResult & this.props.leagues.length > 0) {
             this.setState({
                 leagues: this.props.leagues,
                 isShowResult: true
@@ -62,10 +62,10 @@ export default class SearchLeague extends  PureComponent  {
         if(className.includes('icon-livescore')) {
             return;
         }
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const season = league.currentSeasonId ? league.currentSeasonId : 0;
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${season}/${today}/${league.leagueId}`);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -117,7 +117,7 @@ export default class SearchLeague extends  PureComponent  {
                                 </div>
                             }
                             {
-                                isShowResult && leagues.length === 0 && searchKey >= 3 &&
+                                isShowResult && leagues.length === 0 && searchKey.length >= 3 &&
                                 <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
                             }
                         </div>
