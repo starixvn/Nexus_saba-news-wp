@@ -16,22 +16,30 @@ pipeline{
     stage('Build'){
       steps {
         script{
-          pipelineLib.beginSonarQubeForMsBuild("SabaNews", "Nexus / SabaNews", "/d:sonar.cs.opencover.reportsPaths=\"${WORKSPACE}\\CoverageReports\\*.xml\" /d:sonar.cs.vstest.reportsPaths=\"${WORKSPACE}\\TestResults\\*.trx\"")
+          pipelineLib.beginSonarQubeForMsBuild("SabaNews", "Nexus / SabaNews", "/d:sonar.cs.opencover.reportsPaths=\"${WORKSPACE}\\CoverageReports\\*.xml\" /d:sonar.cs.vstest.reportsPaths=\"${WORKSPACE}\\TestResults\\*.trx\" /d:sonar.javascript.lcov.reportPaths=\"${WORKSPACE}\\js-lcov\\lcov.info\" /d:sonar.testExecutionReportPaths=\"${WORKSPACE}\\js-test-report.xml\" /d:sonar.tests=__tests__ /d:sonar.test.inclusions=**/*.test.js")
           pipelineLib.msBuild16("ClientSite/SabaNews.sln")
         }
       }
     }
 	
-	stage("Test") {
-	  parallel{
-	    stage("C# Unit Test"){
-		  steps{
-            script{
-              pipelineLib.xUnitForNet5()
-            }
-          }
-		    }
-	    }
+	stage("Test"){
+		parallel{
+			stage("C# Unit Test"){
+			  steps{
+				script{
+				  pipelineLib.xUnitForNet5()
+				}
+			  }
+			}
+			
+			stage("JS Unit Test"){
+			  steps{
+				script{
+				  pipelineLib.jsJest("ClientSite/SabaNews.Site")
+				}
+			  }
+			}
+		}
     }
 
     stage("SonarQube Analysis"){
