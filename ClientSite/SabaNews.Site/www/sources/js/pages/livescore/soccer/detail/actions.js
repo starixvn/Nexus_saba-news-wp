@@ -4,7 +4,8 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import {
     setMatch,
     setFavLeagues,
-    setActiveTab
+    setActiveTab,
+    setLeagues
 } from './soccerMatchDetailSlice';
 
 const getMatchDetail = () => async dispatch => {
@@ -32,10 +33,19 @@ const getFavLeagues = () => async dispatch => {
     }
 };
 
+const getLeagues = () => async dispatch => {
+    const url = Site.resolveClientUrl('soccer/getLeagues');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setLeagues(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setMatch,
     setFavLeagues,
+    setLeagues,
+    setActiveTab,
     getMatchDetail,
     getFavLeagues,
-    setActiveTab
+    getLeagues
 };

@@ -99,7 +99,7 @@ export default class SearchLeague extends  PureComponent  {
 
     getMajorLeagues = () => {
         const searchLeagues = this.props.searchLeagues;
-        const leagues = searchLeagues.filter(item => item.priority !== 0);
+        const leagues = searchLeagues ? searchLeagues.filter(item => item.priority !== 0) : [];
         return leagues;
     };
 

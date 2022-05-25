@@ -6,15 +6,16 @@ import { MatchStatus } from '@jsroot/common/constants';
 const favouriteMatchSlice = createSlice({
     name: 'favouriteMatchSlice',
     initialState: {
-        majorLeagues: [],
         matches: null,
         preMatches: null,
         postMatches: null,
-        liveMatches: null
+        liveMatches: null,
+        leagues: [],
+        favLeagues: []
     },
     reducers: {
-        setMajorLeagues: (state, action) => {
-            state.majorLeagues = action.payload;
+        setFavLeagues: (state, action) => {
+            state.favLeagues = action.payload;
         },
         setMatches: (state, action) => {
             const data = action.payload;
@@ -94,6 +95,9 @@ const favouriteMatchSlice = createSlice({
             if (index >= 0) {
                 state.liveMatches[index].isFavourite = !state.liveMatches[index].isFavourite;
             }
+        },
+        setLeagues: (state, action) => {
+            state.leagues = action.payload;
         }
     },
 });
@@ -104,7 +108,9 @@ export const {
     setMajorLeagues,
     setMatches,
     setLiveMatches,
-    setFavouriteMatches
+    setFavouriteMatches,
+    setLeagues,
+    setFavLeagues
 } = actions;
 
 export default reducer;

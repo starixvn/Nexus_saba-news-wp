@@ -11,7 +11,8 @@ const leagueDetailSlice = createSlice({
         stages: [],
         preMatches: null,
         postMatches: null,
-        seasonStandings: []
+        seasonStandings: [],
+        leagues: []
     },
     reducers: {
         setFavLeagues: (state, action) => {
@@ -64,6 +65,9 @@ const leagueDetailSlice = createSlice({
         },
         setSeasonStandings: (state, action) => {
             state.seasonStandings = action.payload;
+        },
+        setLeagues: (state, action) => {
+            state.leagues = action.payload;
         }
     }
 });
@@ -75,7 +79,8 @@ export const {
     setLeague,
     setMatches,
     setLiveMatches,
-    setSeasonStandings
+    setSeasonStandings,
+    setLeagues
 } = actions;
 
 export default reducer;

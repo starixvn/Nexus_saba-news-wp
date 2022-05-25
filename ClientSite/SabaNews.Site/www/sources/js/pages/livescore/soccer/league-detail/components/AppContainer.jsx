@@ -54,6 +54,7 @@ export class AppContainer extends Component {
 
     componentDidMount() {
         this.props.getFavLeagues();
+        this.props.getLeagues();
         this.getMatches();
     }
 
@@ -133,7 +134,7 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { favLeagues, league } = this.props;
+        const { favLeagues, league, leagues } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />
@@ -153,7 +154,7 @@ export class AppContainer extends Component {
                     </div>
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
-                        <FavoriteLeagues leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                        <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
                     </div>
                 </div>
             </div>
@@ -166,8 +167,8 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { favLeagues, league, stages, preMatches, postMatches } = state;
-    return { favLeagues, league, stages, preMatches, postMatches };
+    const { favLeagues, league, stages, preMatches, postMatches, leagues } = state;
+    return { favLeagues, league, stages, preMatches, postMatches, leagues };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

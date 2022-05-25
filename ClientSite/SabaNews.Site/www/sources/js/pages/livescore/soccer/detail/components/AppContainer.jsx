@@ -19,6 +19,7 @@ export class AppContainer extends Component {
     componentDidMount() {
         this.props.getMatchDetail();
         this.props.getFavLeagues();
+        this.props.getLeagues();
     }
 
     onUpdateFavLeague = () => {
@@ -31,7 +32,7 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { match, favLeagues } = this.props;
+        const { match, favLeagues, leagues } = this.props;
         if (!this.props.match || !this.props.match.generalInfo) {
             return null;
         }
@@ -53,7 +54,7 @@ export class AppContainer extends Component {
                         </div>
                         <div className="livescore-soccer-extension">
                             <FavoriteMatches />
-                            <FavoriteLeagues leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                            <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
                         </div>
                     </div>
                 </div>
@@ -65,8 +66,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { match, favLeagues } = state;
-    return { match, favLeagues };
+    const { match, favLeagues, leagues } = state;
+    return { match, favLeagues, leagues };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
