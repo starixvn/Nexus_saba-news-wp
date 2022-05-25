@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Livescore.SyncData.Helpers
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Models.Team;
@@ -202,7 +203,16 @@
 
         private static int? GetDangerAttack(MatchExtraData data, byte index) => data.DangerAttack is not null ? data.DangerAttack[index] : null;
 
-        private static int? GetControlRate(MatchExtraData data, byte index) => data.ControlRate is not null ? data.ControlRate[index] : null;
+        private static int? GetControlRate(MatchExtraData data, byte index)
+        {
+            if (data.ControlRate is null || string.IsNullOrWhiteSpace(data.ControlRate[index]))
+            {
+                return null;
+            }
+
+            string controlRate = data.ControlRate[index].Replace("%", string.Empty);
+            return int.Parse(controlRate, NumberStyles.Integer);
+        }
 
         private static int? GetExtraScore(MatchExtraData data, byte index) => data.ExtraScore is not null ? data.ExtraScore[index] : null;
 

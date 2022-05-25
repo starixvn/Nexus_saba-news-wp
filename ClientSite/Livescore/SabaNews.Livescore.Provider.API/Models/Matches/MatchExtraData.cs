@@ -38,7 +38,7 @@
         public int?[] MissGoal { get; set; }
         public int?[] Attack { get; set; }
         public int?[] DangerAttack { get; set; }
-        public int?[] ControlRate { get; set; }
+        public string[] ControlRate { get; set; }
         public int?[] ExtraScore { get; set; }
 
         [JsonProperty("pScore")]
