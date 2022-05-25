@@ -111,7 +111,7 @@ export default class SearchLeague extends  PureComponent  {
         return (
             <>
                 {
-                    title !== null && <div>{title}</div>
+                    title !== null && <div className="search-league-title">{title}</div>
                 }
                 {
                     leagues.map((league, index) => {
