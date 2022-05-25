@@ -98,10 +98,9 @@
         }
     }
 }
-
 .modal-data {
     min-height: 11.3rem;
-    max-height: 33rem;
+    max-height: 50rem;
     overflow: auto;
     margin-top: 1rem;
 
@@ -110,6 +109,14 @@
 
         .toggle-league {
             display: block !important;
+        }
+
+        .leagues-item {
+            .leagues-name{
+                span{
+                    font-size : 1.3rem;
+                }
+            }
         }
     }
 
@@ -127,14 +134,12 @@
                     .toggle-league {
                         display: block !important;
                     }
-
-                    .text {
-                        font-weight: 700 !important;
-                    }
                 }
             }
         }
     }
+
+
 
     &::-webkit-scrollbar {
         width: .6rem;
@@ -157,4 +162,7 @@
 
 .text-matched {
     font-weight: 700;
+}
+.txt {
+    font-size: 1.3rem !important;
 }
