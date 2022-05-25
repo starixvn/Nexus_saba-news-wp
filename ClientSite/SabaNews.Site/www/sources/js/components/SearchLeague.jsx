@@ -28,19 +28,10 @@ export default class SearchLeague extends  PureComponent  {
         this.state = {
             searchKey: '',
             leagues: [],
-            favLeagues: props.favLeagues
+            favLeagues: []
         };
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.favLeagues !== prevProps.favLeagues) {
-            this.setState({
-                favLeagues: this.props.favLeagues,
-                searchKey: '',
-                leagues: []
-            });
-        }
-    }
 
     handleChange = event => {
         const searchKey = event.target.value;
@@ -66,6 +57,7 @@ export default class SearchLeague extends  PureComponent  {
 
     handleClose = () => {
         this.props.onClose();
+        this.setState({ searchKey: '', leagues: [], favLeagues: []});
     };
 
     handleClick = (event, league) => {
@@ -84,23 +76,67 @@ export default class SearchLeague extends  PureComponent  {
         }
     };
 
-    getLeagues = () => {
-        const { searchKey, favLeagues, leagues } = this.state;
-        if(searchKey.length < 3 && leagues.length === 0) {
-            return favLeagues;
+    isDefault = () => {
+        const { searchKey, leagues } = this.state;
+        return searchKey.length < 3 && leagues.length === 0;
+    };
+
+    onUpdateFavLeague = league => {
+        const { favLeagues, toggleIcon } = this.state;
+        const currentFavLeagues = CommonFunctions.getFavLeagues();
+        const leagueIndex = currentFavLeagues.findIndex(item => item.leagueId === league.leagueId);
+        const isFavourite = leagueIndex >= 0;
+        if(isFavourite) {
+            const index = favLeagues.findIndex(item => item.leagueId === league.leagueId);
+            if(index < 0) {
+                favLeagues.push(league);
+            }
         }
+        this.setState({favLeagues: favLeagues, toggleIcon: !toggleIcon });
+        this.props.onUpdateFavLeague();
+    };
+
+    getMajorLeagues = () => {
+        const searchLeagues = this.props.searchLeagues;
+        const leagues = searchLeagues.filter(item => item.priority !== 0);
         return leagues;
     };
 
-    onUpdateFavLeague = () => {
-        this.setState({toggleIcon: !this.state.toggleIcon });
-        this.props.onUpdateFavLeague();
-    }
+    renderLeagues = (leagues, title) => {
+        if(leagues.length === 0) return null;
+        const { searchKey, toggleIcon } = this.state;
+        return (
+            <>
+                {
+                    title !== null && <div>{title}</div>
+                }
+                {
+                    leagues.map((league, index) => {
+                        const reg = new RegExp(`(${searchKey})`, 'gi');
+                        const leagueName = CommonFunctions.getLeagueName(league)
+                            .replace(reg, "<span class='text-matched'>$1</span>");
+                        return (
+                            <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
+                                <div className="leagues-name">
+                                    <TeamIcon className="logo" src={league.icon} />
+                                    <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
+                                </div>
+                                <div className="toggle-league">
+                                    <FavouriteLeagueIcon league={league} onUpdateFavLeague={() => this.onUpdateFavLeague(league)} flagToggle={toggleIcon} />
+                                </div>
+                            </div>
+                        );
+                    })
+                }
+            </>
+        );
+    };
 
     render()  {
         const { isShowSearchPopup } = this.props;
-        const { searchKey, toggleIcon } = this.state;
-        const leagues = this.getLeagues();
+        const { searchKey, leagues, favLeagues } = this.state;
+        const isDefault = this.isDefault();
+        const majorLeagues = this.getMajorLeagues();
         return (
             <>
                 <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
@@ -118,26 +154,17 @@ export default class SearchLeague extends  PureComponent  {
                         </div>
                         <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
                             {
-                                leagues.length > 0 &&
                                 <div className="livescore-soccer-extension">
                                     {
-                                        leagues.map((league, index) => {
-                                            const reg = new RegExp(`(${searchKey})`, 'gi');
-                                            const leagueName = CommonFunctions.getLeagueName(league)
-                                                .replace(reg, "<span class='text-matched'>$1</span>");
-
-                                            return (
-                                                <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
-                                                    <div className="leagues-name">
-                                                        <TeamIcon className="logo" src={league.icon} />
-                                                        <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
-                                                    </div>
-                                                    <div className="toggle-league">
-                                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={toggleIcon} />
-                                                    </div>
-                                                </div>
-                                            );
-                                        })
+                                        isDefault &&
+                                        <>
+                                            {this.renderLeagues(favLeagues, "Giải đấu được thêm gần đây")}
+                                            {this.renderLeagues(majorLeagues, "Giải nổi bật")}
+                                        </>
+                                    }
+                                    {
+                                        !isDefault &&
+                                        this.renderLeagues(leagues)
                                     }
                                 </div>
                             }

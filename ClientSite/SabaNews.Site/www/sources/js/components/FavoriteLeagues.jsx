@@ -95,7 +95,6 @@ export default class FavoriteLeagues extends  PureComponent  {
                     }
                 </div>
                 <SearchLeague searchLeagues={searchLeagues}
-                        favLeagues={leagues}
                         isShowSearchPopup={isShowSearchPopup}
                         onClose={this.handleCloseSearchPopup}
                         onUpdateFavLeague={this.onUpdateFavLeague} />
