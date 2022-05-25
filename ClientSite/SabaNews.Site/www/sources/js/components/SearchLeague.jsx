@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Modal, Form } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
@@ -45,7 +45,7 @@ export default class SearchLeague extends PureComponent {
             leagues: [],
             toggleIcon: !this.state.toggleIcon
         });
-    }
+    };
 
     debounceSearchKeyInputChange = Site.debounce(searchKey => {
         this.setState({
@@ -91,7 +91,7 @@ export default class SearchLeague extends PureComponent {
     };
 
     onUpdateFavLeague = league => {
-        let { favLeagues } = this.state;
+        const { favLeagues } = this.state;
         const currentFavLeagues = CommonFunctions.getFavLeagues();
         const leagueIndex = currentFavLeagues.findIndex(item => item.leagueId === league.leagueId);
         const isFavourite = leagueIndex >= 0;
