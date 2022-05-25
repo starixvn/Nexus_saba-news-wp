@@ -80,8 +80,16 @@
 
             .btn-search-match {
                 position: absolute;
-                float: right;
                 left: 15px;
+                cursor: pointer;
+                color: #7e7e7e;
+                top: 8px;
+                line-height: 1;
+            }
+
+            .btn-close-match {
+                position: absolute;
+                right: 20px;
                 cursor: pointer;
                 color: #7e7e7e;
                 top: 8px;

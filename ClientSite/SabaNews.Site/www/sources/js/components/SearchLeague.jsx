@@ -154,6 +154,7 @@ export default class SearchLeague extends  PureComponent  {
                                 onChange={this.handleChange}
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
+                            <span className="btn-close-match"><i className="icon-livescore icon-close"></i></span>
                         </div>
                         <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
                             {
