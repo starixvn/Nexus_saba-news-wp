@@ -10,26 +10,25 @@ import LangHelper from '@jsroot/common/langHelper';
 
 export default class SearchLeague extends  PureComponent  {
     static propTypes = {
-        searchKey: PropTypes.string,
-        leagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
-        favLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
-        toggleIcon: PropTypes.bool,
-        onClose: PropTypes.func
+        isShowSearchPopup: PropTypes.bool,
+        searchLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
+        onClose: PropTypes.func,
+        onUpdateFavLeague: PropTypes.func
     };
 
     static defaultProps = {
-        searchKey: '',
-        leagues: [],
-        favLeagues: [],
-        toggleIcon: false
+        searchLeagues: [],
+        isShowSearchPopup: false
     };
 
     constructor(props) {
         super(props);
+        this.searchRef = React.createRef();
         this.state = {
             searchKey: '',
             leagues: [],
-            favLeagues: []
+            favLeagues: [],
+            toggleIcon: false
         };
     }
 
@@ -38,6 +37,15 @@ export default class SearchLeague extends  PureComponent  {
         const searchKey = event.target.value;
         this.debounceSearchKeyInputChange(searchKey);
     };
+
+    resetSearchBox = () => {
+        this.searchInput.value = '';
+        this.setState({
+            searchKey: '',
+            leagues: [],
+            toggleIcon: !this.state.toggleIcon
+        });
+    }
 
     debounceSearchKeyInputChange = Site.debounce(searchKey => {
         this.setState({
@@ -149,12 +157,13 @@ export default class SearchLeague extends  PureComponent  {
                     </Modal.Header>
                     <Modal.Body>
                         <div className="livescore-soccer-search-bar">
-                            <Form.Control type="text" placeholder="tìm kiếm giải đấu..."
+                            <input type="text" placeholder="tìm kiếm giải đấu..."
                                 className="livescore-soccer-searchbox form-control"
                                 onChange={this.handleChange}
+                                ref={input => this.searchInput = input}
                             />
                             <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <span className="btn-close-match"><i className="icon-livescore icon-close"></i></span>
+                            <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
                         </div>
                         <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
                             {
