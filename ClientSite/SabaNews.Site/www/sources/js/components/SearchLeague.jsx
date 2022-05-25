@@ -6,6 +6,7 @@ import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import PropTypes from 'prop-types';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class SearchLeague extends  PureComponent  {
     static propTypes = {
@@ -103,7 +104,9 @@ export default class SearchLeague extends  PureComponent  {
     };
 
     renderLeagues = (leagues, title) => {
-        if(leagues.length === 0) return null;
+        if(leagues.length === 0) {
+            return null;
+        }
         const { searchKey, toggleIcon } = this.state;
         return (
             <>
@@ -158,8 +161,8 @@ export default class SearchLeague extends  PureComponent  {
                                     {
                                         isDefault &&
                                         <>
-                                            {this.renderLeagues(favLeagues, "Giải đấu được thêm gần đây")}
-                                            {this.renderLeagues(majorLeagues, "Giải nổi bật")}
+                                            {this.renderLeagues(favLeagues, LangHelper.getResource('RecentLeague'))}
+                                            {this.renderLeagues(majorLeagues, LangHelper.getResource('MajorLeague'))}
                                         </>
                                     }
                                     {
