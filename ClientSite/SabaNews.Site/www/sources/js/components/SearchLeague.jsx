@@ -8,7 +8,7 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
-export default class SearchLeague extends  PureComponent  {
+export default class SearchLeague extends PureComponent {
     static propTypes = {
         isShowSearchPopup: PropTypes.bool,
         searchLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
@@ -57,21 +57,21 @@ export default class SearchLeague extends  PureComponent  {
                 result = searchLeagues.filter(item =>
                     (item.leagueNameEN && item.leagueNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1)
                     || (item.leagueNameVN && item.leagueNameVN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1));
-                this.setState({leagues: result, toggleIcon: !this.state.toggleIcon });
+                this.setState({ leagues: result, toggleIcon: !this.state.toggleIcon });
             } else if (searchKey.length === 0) {
-                this.setState({leagues: [], toggleIcon: !this.state.toggleIcon});
+                this.setState({ leagues: [], toggleIcon: !this.state.toggleIcon });
             }
         });
     });
 
     handleClose = () => {
         this.props.onClose();
-        this.setState({ searchKey: '', leagues: [], favLeagues: []});
+        this.setState({ searchKey: '', leagues: [], favLeagues: [] });
     };
 
     handleClick = (event, league) => {
         const className = event.target.className;
-        if(className.includes('icon-livescore')) {
+        if (className.includes('icon-livescore')) {
             return;
         }
         const season = league.currentSeasonId ? league.currentSeasonId : 0;
@@ -91,17 +91,17 @@ export default class SearchLeague extends  PureComponent  {
     };
 
     onUpdateFavLeague = league => {
-        const { favLeagues, toggleIcon } = this.state;
+        let { favLeagues } = this.state;
         const currentFavLeagues = CommonFunctions.getFavLeagues();
         const leagueIndex = currentFavLeagues.findIndex(item => item.leagueId === league.leagueId);
         const isFavourite = leagueIndex >= 0;
-        if(isFavourite) {
+        if (isFavourite) {
             const index = favLeagues.findIndex(item => item.leagueId === league.leagueId);
-            if(index < 0) {
-                favLeagues.push(league);
+            if (index < 0) {
+                favLeagues.unshift(league);
             }
         }
-        this.setState({favLeagues: favLeagues, toggleIcon: !toggleIcon });
+        this.setState({ favLeagues: favLeagues, toggleIcon: !this.state.toggleIcon });
         this.props.onUpdateFavLeague();
     };
 
@@ -112,7 +112,7 @@ export default class SearchLeague extends  PureComponent  {
     };
 
     renderLeagues = (leagues, title) => {
-        if(leagues.length === 0) {
+        if (leagues.length === 0) {
             return null;
         }
         const { searchKey, toggleIcon } = this.state;
@@ -130,7 +130,7 @@ export default class SearchLeague extends  PureComponent  {
                             <div key={index} className="leagues-item" onClick={event => this.handleClick(event, league)}>
                                 <div className="leagues-name">
                                     <TeamIcon className="logo" src={league.icon} />
-                                    <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }}/>
+                                    <span className="text" dangerouslySetInnerHTML={{ __html: leagueName }} />
                                 </div>
                                 <div className="toggle-league">
                                     <FavouriteLeagueIcon league={league} onUpdateFavLeague={() => this.onUpdateFavLeague(league)} flagToggle={toggleIcon} />
@@ -143,52 +143,50 @@ export default class SearchLeague extends  PureComponent  {
         );
     };
 
-    render()  {
+    render() {
         const { isShowSearchPopup } = this.props;
         const { searchKey, leagues, favLeagues } = this.state;
         const isDefault = this.isDefault();
         const majorLeagues = this.getMajorLeagues();
         return (
-            <>
-                <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
-                    <Modal.Header>
-                        <Modal.Title>Thêm giải đấu</Modal.Title>
-                        <i className="icon-livescore icon-close" onClick={this.handleClose} />
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div className="livescore-soccer-search-bar">
-                            <input type="text" placeholder="tìm kiếm giải đấu..."
-                                className="livescore-soccer-searchbox form-control"
-                                onChange={this.handleChange}
-                                ref={input => this.searchInput = input}
-                            />
-                            <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                            <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
-                        </div>
-                        <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
-                            {
-                                <div className="livescore-soccer-extension">
-                                    {
-                                        isDefault &&
-                                        <>
-                                            {this.renderLeagues(favLeagues, LangHelper.getResource('RecentLeague'))}
-                                            {this.renderLeagues(majorLeagues, LangHelper.getResource('MajorLeague'))}
-                                        </>
-                                    }
-                                    {
-                                        !isDefault &&
-                                        this.renderLeagues(leagues)
-                                    }
-                                </div>
-                            }
-                            {
-                                this.state.leagues.length === 0 && searchKey.length >= 3 &&
-                                <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
-                            }
-                        </div>
-                    </Modal.Body>
-                </Modal>
-            </>
+            <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
+                <Modal.Header>
+                    <Modal.Title>Thêm giải đấu</Modal.Title>
+                    <i className="icon-livescore icon-close" onClick={this.handleClose} />
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="livescore-soccer-search-bar">
+                        <input type="text" placeholder="tìm kiếm giải đấu..."
+                            className="livescore-soccer-searchbox form-control"
+                            onChange={this.handleChange}
+                            ref={input => this.searchInput = input}
+                        />
+                        <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
+                        <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
+                    </div>
+                    <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
+                        {
+                            <div className="livescore-soccer-extension">
+                                {
+                                    isDefault &&
+                                    <>
+                                        {this.renderLeagues(favLeagues, LangHelper.getResource('RecentLeague'))}
+                                        {this.renderLeagues(majorLeagues, LangHelper.getResource('MajorLeague'))}
+                                    </>
+                                }
+                                {
+                                    !isDefault &&
+                                    this.renderLeagues(leagues)
+                                }
+                            </div>
+                        }
+                        {
+                            this.state.leagues.length === 0 && searchKey.length >= 3 &&
+                            <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                        }
+                    </div>
+                </Modal.Body>
+            </Modal>
         );
     }
 }
