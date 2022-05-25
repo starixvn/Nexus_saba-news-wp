@@ -107,7 +107,7 @@
                         width: 100%;
                         flex-wrap: wrap;
                         list-style: none;
-
+                        align-items :center;
                         li {
                             width: 100%;
                             display: flex;
@@ -277,7 +277,7 @@
 
     .time-event {
         justify-content: center;
-
+        text-align :center;
         &-title {
             font-weight: 600;
             font-size: 1.4rem;
