@@ -35,29 +35,37 @@ export default class SearchLeague extends  PureComponent  {
     componentDidUpdate(prevProps) {
         if (this.props.favLeagues !== prevProps.favLeagues) {
             this.setState({
-                favLeagues: this.props.favLeagues
+                favLeagues: this.props.favLeagues,
+                searchKey: '',
+                leagues: []
             });
         }
     }
 
     handleChange = event => {
         const searchKey = event.target.value;
-        this.setState({searchKey: searchKey});
-        const searchLeagues = this.props.searchLeagues;
-        let result = null;
-        if (searchKey.length > 2) {
-            result = searchLeagues.filter(item =>
-                CommonFunctions.getLeagueName(item).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
-            this.setState({leagues: result, toggleIcon: !this.state.toggleIcon });
-        }
-        if(searchKey === '') {
-            this.setState({toggleIcon: !this.state.toggleIcon });
-        }
+        this.debounceSearchKeyInputChange(searchKey);
     };
+
+    debounceSearchKeyInputChange = Site.debounce(searchKey => {
+        this.setState({
+            searchKey: searchKey
+        }, () => {
+            if (searchKey.length > 2) {
+                const searchLeagues = this.props.searchLeagues;
+                let result = [];
+                result = searchLeagues.filter(item =>
+                    (item.leagueNameEN && item.leagueNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1)
+                    || (item.leagueNameVN && item.leagueNameVN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1));
+                this.setState({leagues: result, toggleIcon: !this.state.toggleIcon });
+            } else if (searchKey.length === 0) {
+                this.setState({leagues: [], toggleIcon: !this.state.toggleIcon});
+            }
+        });
+    });
 
     handleClose = () => {
         this.props.onClose();
-        this.setState({searchKey: ''});
     };
 
     handleClick = (event, league) => {
@@ -77,15 +85,16 @@ export default class SearchLeague extends  PureComponent  {
     };
 
     getLeagues = () => {
-        if(this.state.searchKey === '') {
-            return this.state.favLeagues;
+        const { searchKey, favLeagues, leagues } = this.state;
+        if(searchKey.length < 3 && leagues.length === 0) {
+            return favLeagues;
         }
-        return this.state.leagues;
+        return leagues;
     };
 
     onUpdateFavLeague = () => {
-        this.props.onUpdateFavLeague();
         this.setState({toggleIcon: !this.state.toggleIcon });
+        this.props.onUpdateFavLeague();
     }
 
     render()  {

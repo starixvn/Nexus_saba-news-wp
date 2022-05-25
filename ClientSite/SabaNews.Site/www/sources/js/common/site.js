@@ -75,4 +75,19 @@ export default class Site {
             navigator.locks.request('livescore_lock_navigator', { mode: 'shared' }, () => promise);
         }
     }
+
+    static debounce(func, wait) {
+        let timeout;
+        return function (...theArgs) {
+            const context = this,
+                args = theArgs;
+
+            const later = () => {
+                func.apply(context, args);
+            };
+
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait || 500);
+        };
+    }
 }
