@@ -9,8 +9,5 @@
         public override string GetSettingKey() => "Livescore_Match_GetByIds";
 
         public override bool IsValid() => true;
-
-
     }
-   
 }

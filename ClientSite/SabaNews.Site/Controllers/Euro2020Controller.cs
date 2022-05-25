@@ -1,5 +1,9 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
@@ -7,11 +11,8 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Globalization;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class Euro2020Controller : Controller
     {

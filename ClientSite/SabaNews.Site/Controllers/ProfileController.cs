@@ -1,5 +1,10 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     using BCrypt.Net;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,12 +17,8 @@
     using SabaNews.Criteria.Email;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Models.ViewModel.Profile;
+    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Net.Http.Headers;
-    using System.Threading.Tasks;
 
     public class ProfileController : Controller
     {
@@ -43,6 +44,7 @@
             this.pathService = pathService;
             this.emailService = emailService;
         }
+
         [Route("Profile")]
         public async Task<IActionResult> Index()
         {

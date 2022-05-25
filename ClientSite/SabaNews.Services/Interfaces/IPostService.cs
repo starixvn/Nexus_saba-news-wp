@@ -1,12 +1,12 @@
-﻿namespace SabaNews.Services.Interfaces
+﻿namespace SabaNews.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public interface IPostService
     {

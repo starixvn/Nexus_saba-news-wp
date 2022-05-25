@@ -19,6 +19,7 @@
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
     using SabaNews.Criteria.Email;
+    using SabaNews.Services;
 
     public class ProfileControllerTests : Controller
     {

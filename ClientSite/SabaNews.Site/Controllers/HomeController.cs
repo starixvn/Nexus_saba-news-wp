@@ -11,6 +11,7 @@
     using SabaNews.Models;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
     public class HomeController : Controller

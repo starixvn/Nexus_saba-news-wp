@@ -17,7 +17,7 @@
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
-    using SabaNews.Services.Interfaces;
+    using SabaNews.Services;
 
     public class SoccerController : Controller
     {
@@ -46,7 +46,7 @@
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle ??= pageDetail.Title;
-            var description = pageDetail.Description ??= title;
+            var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
             var model = new PageViewModel
             {
                 Category = pageDetail,
@@ -68,7 +68,7 @@
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
             var title = pageDetail.SEOTitle ??= pageDetail.Title;
-            var description = pageDetail.Description ??= title;
+            var description = !string.IsNullOrWhiteSpace(pageDetail.Description) ? pageDetail.Description : title;
             var model = new PageViewModel
             {
                 Category = pageDetail,
@@ -86,7 +86,7 @@
         [Route("lich-thi-dau/bong-da/{league}/{match}/{matchId:long}")]
         public IActionResult MatchResult(string league, string match, long matchId)
         {
-            return View("~/Views/LiveScore/Soccer/Detail.cshtml", matchId);
+            return View("~/Views/Livescore/Soccer/Detail.cshtml", matchId);
         }
 
         [Route("lich-thi-dau/bong-da/{league}/{seasonId:long}/{date:datetime}/{leagueId:long}/{selectedTab?}")]
@@ -183,7 +183,7 @@
             {
                 const byte TotalMonths = 6;
                 criteria.FromTime = model.Date.AddMonths(-TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
-                criteria.ToTime = model.Date.AddMonths(TotalMonths).ToStartOfDay().ConvertToUTC(model.Timezone);
+                criteria.ToTime = model.Date.AddMonths(TotalMonths).ToEndOfDay().ConvertToUTC(model.Timezone);
             }
 
             (League league, IList<Match> matches) = await matchService.GetMatchBySeasonAsync(criteria);
@@ -217,19 +217,18 @@
                 Lineup = await matchService.GetLineupAsync(new GetMatchLineupCriteria { MatchId = matchId }),
                 Incidents = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria { MatchId = matchId })
             };
-
-            return Ok(result);
+            return Json(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMatchByIds([FromBody] GetMatchByIdsCriteria model)
+        public async Task<IActionResult> GetMatchByIds([FromBody] GetMatchByIdsCriteria criteria)
         {
             var result = new MatchFavourite
             {
-                Matches = await matchService.GetMatchByIdsAsync(model),
+                Matches = await matchService.GetMatchByIdsAsync(criteria),
                 LiveMatches = await matchService.GetLiveMatchAsync()
             };
-            return Ok(result);
+            return Json(result);
         }
 
     }

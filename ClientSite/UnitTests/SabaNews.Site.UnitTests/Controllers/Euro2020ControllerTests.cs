@@ -1,6 +1,9 @@
-﻿
-namespace SabaNews.Site.UnitTests.Controllers
+﻿namespace SabaNews.Site.UnitTests.Controllers
 {
+    using System.Threading.Tasks;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Globalization;
     using AutoFixture;
     using Microsoft.AspNetCore.Mvc;
     using NSubstitute;
@@ -12,11 +15,8 @@ namespace SabaNews.Site.UnitTests.Controllers
     using SabaNews.Core.Constants;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using SabaNews.Services;
     using Xunit;
-    using System.Globalization;
 
     public class Euro2020ControllerTests : Controller
     {

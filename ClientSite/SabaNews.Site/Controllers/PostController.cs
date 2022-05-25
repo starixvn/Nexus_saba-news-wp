@@ -1,5 +1,8 @@
 ﻿namespace SabaNews.Site.Controllers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -8,11 +11,8 @@
     using SabaNews.Criteria.Poll;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-    using System;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     public class PostController : Controller
     {

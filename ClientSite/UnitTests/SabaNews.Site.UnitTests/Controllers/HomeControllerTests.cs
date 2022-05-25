@@ -1,11 +1,11 @@
 ﻿namespace SabaNews.Site.UnitTests.Controllers
 {
+    using System.Collections.Generic;
     using AutoFixture;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using NSubstitute;
     using SabaNews.Controllers;
-    using SabaNews.Models.Banner;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
     using System.Threading.Tasks;
@@ -14,9 +14,9 @@
     using SabaNews.Models.Posts;
     using SabaNews.Models;
     using SabaNews.Criteria.Posts;
-    using System.Collections.Generic;
-    using Microsoft.AspNetCore.Http;
+    using SabaNews.Services;
     using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.AspNetCore.Http;
 
     public class HomeControllerTests : Controller
     {

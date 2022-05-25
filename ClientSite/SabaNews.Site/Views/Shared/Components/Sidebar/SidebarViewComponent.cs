@@ -1,12 +1,12 @@
 ﻿namespace SabaNews.Views.Shared.Components
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
-    using SabaNews.Services.Interfaces;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using SabaNews.Services;
 
     public class SidebarViewComponent : ViewComponent
     {

@@ -117,7 +117,6 @@
 
             services.AddResponseCompression();
             services.AddResponseCaching();
-            services.AddControllersWithViews();
             services.AddSingleton(Configuration);
 
             CoreDI.RegisterService(services);
@@ -125,22 +124,19 @@
             services.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
 
             services.RegisterServices();
-            services.AddRazorPages();
             services.AddHttpClient();
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseForwardedHeaders();
             }
             else
             {
                 app.UseMiddleware<ErrorHandler>();
-                app.UseForwardedHeaders();
                 app.UseHsts();
 
                 app.Use((context, next) =>

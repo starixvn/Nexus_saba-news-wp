@@ -1,13 +1,13 @@
 ﻿namespace SabaNews.Site.Views.Shared.Components.RelatedPosts
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
-    using SabaNews.Services.Interfaces;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using SabaNews.Services;
 
     public class RelatedPostsViewComponent : ViewComponent
     {

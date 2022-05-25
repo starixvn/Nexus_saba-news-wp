@@ -5,7 +5,7 @@
     using NSubstitute;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
-    using SabaNews.Services.Interfaces;
+    using SabaNews.Services;
     using SabaNews.Views.Shared.Components;
     using System.Collections.Generic;
     using System.Threading.Tasks;

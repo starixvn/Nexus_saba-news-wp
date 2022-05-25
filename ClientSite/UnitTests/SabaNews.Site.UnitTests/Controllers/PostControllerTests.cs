@@ -19,6 +19,7 @@
     using Microsoft.AspNetCore.Http;
     using System.Net;
     using System;
+    using SabaNews.Services;
 
     public class PostControllerTests : Controller
     {

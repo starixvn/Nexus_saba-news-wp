@@ -1,12 +1,11 @@
-﻿
-namespace SabaNews.Site.UnitTests.ViewComponent
+﻿namespace SabaNews.Site.UnitTests.ViewComponent
 {
     using AutoFixture;
     using Microsoft.AspNetCore.Mvc.ViewComponents;
     using NSubstitute;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models.Posts;
-    using SabaNews.Services.Interfaces;
+    using SabaNews.Services;
     using SabaNews.Site.Views.Shared.Components.RelatedPosts;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -22,7 +21,6 @@ namespace SabaNews.Site.UnitTests.ViewComponent
         {
             //Arrange
             var component = GetViewComponent();
-            var fixture = new Fixture();
             var postId = fixture.Create<int>();
             var slug = "";
             var model = fixture.Create<GetRecentPostsParam>();
