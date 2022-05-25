@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria;
@@ -214,6 +215,7 @@
 
         private static Category ReplaceStringFromVarSeo(Category cate)
         {
+            const string dateFormat = "dd/MM/yyyy";
             if (cate == null)
             {
                 return cate;
@@ -221,22 +223,26 @@
             if (cate.SEOTitle != null)
             {
                 var result = Regex.Replace(cate.SEOTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                cate.SEOTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                result =  Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.SEOTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.Description != null)
             {
                 var result = Regex.Replace(cate.Description, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                cate.Description = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.Description = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.OgDescription != null)
             {
                 var result = Regex.Replace(cate.OgDescription, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                cate.OgDescription = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.OgDescription = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
             }
             if (cate.OgTitle != null)
             {
                 var result = Regex.Replace(cate.OgTitle, Constants.SepVar, Constants.Separate, RegexOptions.IgnoreCase);
-                cate.OgTitle = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                result = Regex.Replace(result, Constants.SiteNameVar, Constants.SiteName, RegexOptions.IgnoreCase);
+                cate.OgTitle = Regex.Replace(result, Constants.CurrentDateVar, DateTimeUtilize.FormatDateTime(DateTime.UtcNow, dateFormat), RegexOptions.IgnoreCase);
             }
 
             return cate;

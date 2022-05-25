@@ -45,7 +45,7 @@
         public async Task<IActionResult> Index(DateTime? eventDate)
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.Title;
+            var title = pageDetail.SEOTitle ??= pageDetail.Title;
             var description = pageDetail.Description ??= title;
             var model = new PageViewModel
             {
@@ -67,7 +67,7 @@
         public async Task<IActionResult> Live()
         {
             var pageDetail = await postService.GetPageDetailBySlugAsync(Constants.MatchScheduleSlug);
-            var title = pageDetail.Title;
+            var title = pageDetail.SEOTitle ??= pageDetail.Title;
             var description = pageDetail.Description ??= title;
             var model = new PageViewModel
             {
