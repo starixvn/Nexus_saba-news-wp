@@ -56,6 +56,14 @@
                         }
                     }
 
+                    .icon-favourite-outline {
+                        &:hover {
+                            &:before {
+                                color: $fav-icon;
+                            }
+                        }
+                    }
+
                     .livescore-logo-team {
                         width: 3rem;
                         height: 3rem;
