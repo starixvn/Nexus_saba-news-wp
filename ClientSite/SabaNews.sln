@@ -57,6 +57,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Hubs", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SabaNews.Livescore.Repositories", "Livescore\SabaNews.Livescore.Repositories\SabaNews.Livescore.Repositories.csproj", "{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livescore", "Livescore", "{9A5E1408-0F2E-4CD5-AA5A-4A73A5D1086D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SabaNews.Livescore.Provider.API.Tests", "..\SabaNews.Livescore.Provider.API\SabaNews.Livescore.Provider.API.Tests.csproj", "{01D8B11D-A0A5-4295-9553-7D57CFAE784D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +150,10 @@ Global
 		{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6D668F7-B4F1-4EF5-8012-C2070DB59C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01D8B11D-A0A5-4295-9553-7D57CFAE784D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D8B11D-A0A5-4295-9553-7D57CFAE784D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D8B11D-A0A5-4295-9553-7D57CFAE784D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D8B11D-A0A5-4295-9553-7D57CFAE784D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +172,8 @@ Global
 		{54871CD7-BD07-4B5D-8FAA-6DF8322050DA} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{ACA69633-940F-428C-B786-C1903FA2D2B3} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
 		{B6D668F7-B4F1-4EF5-8012-C2070DB59C15} = {F860F67B-2E4E-4F4D-918C-F9808DB1DA0D}
+		{9A5E1408-0F2E-4CD5-AA5A-4A73A5D1086D} = {372CA7FB-9DB9-4410-953A-3BE40850ED27}
+		{01D8B11D-A0A5-4295-9553-7D57CFAE784D} = {9A5E1408-0F2E-4CD5-AA5A-4A73A5D1086D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65F3DDDD-509D-408F-83E6-FA3E192D5ABB}

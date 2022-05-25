@@ -139,7 +139,7 @@
             return default;
         }
 
-        private static bool IsSuccess(JObject jObject) => (int)jObject["code"] == 0;
+        private static bool IsSuccess(JObject jObject) => jObject.ContainsKey("code") && (int)jObject["code"] == 0;
 
         private async Task<string> GetTokenAsync()
         {
@@ -149,15 +149,19 @@
             return tokenModel?.Token;
         }
 
-        private async Task<AuthToken> RefreshTokenAsync()
+        public async Task<AuthToken> RefreshTokenAsync()
         {
             var tokenModel = await AuthenticateAsync();
 
-            await cacheWrapperService.SetAsync(CachingKeys.APITokenKey, tokenModel,
+            if (tokenModel is not null)
+            {
+                await cacheWrapperService.SetAsync(CachingKeys.APITokenKey, tokenModel,
                 new CacheItemOptions
                 {
                     AbsoluteExpiration = tokenModel.TokenExpired
                 });
+            }
+
             return tokenModel;
         }
 

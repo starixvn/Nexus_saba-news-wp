@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class InsertSendHttpRequestLogCommand : BaseNonQueryCommand
+    public class InsertSendHttpRequestLogCommand : BaseNonQueryCommand
     {
         public string RequestUrl { get; set; }
         public string Param { get; set; }
