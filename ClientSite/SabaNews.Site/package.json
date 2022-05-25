@@ -6,7 +6,9 @@
     "scripts": {
         "build-dev": "node node_modules/webpack/bin/webpack.js --config www/webpackconfig/build/webpack.dev.conf.js",
         "build-pro": "node node_modules/webpack/bin/webpack.js --config www/webpackconfig/build/webpack.pro.conf.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest --coverage --config ./jest.config.js",
+        "test:watch": "npm test -- --watch",
+        "jest-update-snapshot": "jest --updateSnapshot"
     },
     "author": "",
     "license": "ISC",
