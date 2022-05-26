@@ -10,5 +10,6 @@
     ],
     coveragePathIgnorePatterns: [
         '<rootDir>/node_modules/'
-    ]
+    ],
+    snapshotSerializers: ['enzyme-to-json/serializer']
 };

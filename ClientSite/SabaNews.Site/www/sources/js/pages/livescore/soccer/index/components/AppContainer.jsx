@@ -19,6 +19,29 @@ moment.updateLocale('vi', {
 moment.locale('vi');
 
 export class AppContainer extends Component {
+    static defaultProps = {
+        selectedDate: '',
+        searchKey: '',
+        matches: null,
+        majorLeagues: [],
+        totalLiveMatches: 0,
+        getMajorLeagues: function () {
+            // nothing
+        },
+        getMatchesByDate: function () {
+            // nothing
+        },
+        getLiveMatches: function () {
+            // nothing
+        },
+        setDateRanges: function () {
+            // nothing
+        },
+        setMatches: function () {
+            // nothing
+        }
+    };
+
     constructor(props) {
         super(props);
 

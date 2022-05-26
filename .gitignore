@@ -55,3 +55,4 @@ ClientSite/SabaNews.Site/LogFiles/TrackingSP.txt
 ClientSite/SabaNews.Site/wwwroot/css/dev
 ClientSite/SabaNews.Site/wwwroot/js/dev
 ClientSite/SabaNews.Site/coverage
+ClientSite/SabaNews.Site/www/**/__snapshots__/*.snap
