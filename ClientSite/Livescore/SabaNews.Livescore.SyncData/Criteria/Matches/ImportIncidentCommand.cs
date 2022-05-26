@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class ImportIncidentCommand : BaseNonQueryCommand
+    public class ImportIncidentCommand : BaseNonQueryCommand
     {
         public string IncidentJson { get; set; }
 

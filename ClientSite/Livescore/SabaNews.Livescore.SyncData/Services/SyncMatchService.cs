@@ -74,7 +74,7 @@
 
         public async Task SyncMultipleMatchCommentaryAsync(List<MatchCommentary> commentaries)
         {
-            if (commentaries.Any())
+            if (commentaries is not null && commentaries.Any())
             {
                 var command = new ImportCommentaryCommand
                 {
@@ -87,7 +87,7 @@
 
         public async Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents)
         {
-            if (incidents.Any())
+            if (incidents is not null && incidents.Any())
             {
                 var command = new ImportIncidentCommand
                 {
@@ -105,7 +105,7 @@
 
         public async Task SyncDeletedMatchesAsync(List<DeletedMatch> delMatches)
         {
-            if (delMatches.Any())
+            if (delMatches is not null && delMatches.Any())
             {
                 var command = new ImportDeletedMatchCommand
                 {

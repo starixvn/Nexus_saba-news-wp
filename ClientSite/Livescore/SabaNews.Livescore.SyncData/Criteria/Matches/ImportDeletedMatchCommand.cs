@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class ImportDeletedMatchCommand : BaseNonQueryCommand
+    public class ImportDeletedMatchCommand : BaseNonQueryCommand
     {
         public string DeletedMatchJson { get; set; }
 

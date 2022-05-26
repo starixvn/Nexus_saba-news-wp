@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class SyncMqttMatchResponseCommand : BaseNonQueryCommand
+    public class SyncMqttMatchResponseCommand : BaseNonQueryCommand
     {
         public string MatchJson { get; set; }
 

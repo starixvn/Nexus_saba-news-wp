@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class UpdateSyncedH2HMatchList : BaseNonQueryCommand
+    public class UpdateSyncedH2HMatchList : BaseNonQueryCommand
     {
         public long MatchId { get; set; }
 

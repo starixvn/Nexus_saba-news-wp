@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class ImportCommentaryCommand : BaseNonQueryCommand
+    public class ImportCommentaryCommand : BaseNonQueryCommand
     {
         public string CommentaryJson { get; set; }
 

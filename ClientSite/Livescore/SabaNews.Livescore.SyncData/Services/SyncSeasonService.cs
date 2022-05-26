@@ -38,7 +38,7 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<SeasonListResponse> seasons = await fetchSeasonService.FetchSeasonListAsync(param);
-            if (seasons.Any(x => x.SportId == (short)SportType.Soccer))
+            if (seasons is not null && seasons.Any(x => x.SportId == (short)SportType.Soccer))
             {
                 var json = JsonConvert.SerializeObject(seasons.Where(x => x.SportId == (short)SportType.Soccer).ToList());
                 var command = new ImportSeasonCommand
@@ -58,7 +58,7 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<StageListResponse> stages = await fetchSeasonService.FetchStageListAsync(param);
-            if (stages.Any(x => x.SportId == (short)SportType.Soccer))
+            if (stages is not null && stages.Any(x => x.SportId == (short)SportType.Soccer))
             {
                 var json = JsonConvert.SerializeObject(stages.Where(x => x.SportId == (short)SportType.Soccer).ToList());
                 var command = new ImportStageCommand
@@ -75,7 +75,8 @@
             if (lastUpdatedTime.HasValue)
             {
                 lastUpdatedTime = lastUpdatedTime.Value.AddMilliseconds(1);
-            } else
+            }
+            else
             {
                 lastUpdatedTime = appSettings.MinDateSyncLivescoreData;
             }
@@ -85,13 +86,9 @@
             for (var date = lastUpdatedTime.Value.Date; date.Date < today.Date; date = date.AddDays(TotalDaysOfWeek))
             {
                 IList<UpdatedSeasonIdListResponse> updatedSeasonIds = await GetSeasonStandingsAsync(date);
-                foreach (var item in updatedSeasonIds)
+                if (updatedSeasonIds is not null && updatedSeasonIds.Any())
                 {
-                    foreach (var seasonId in item.UpdatedSeasonIdList)
-                    {
-                        var seasonStandings = await GetSeasonStandingsByIdAsync(seasonId);
-                        await ImportSeasonStandingsAsync(seasonId, seasonStandings);
-                    }
+                    await GetStandingByIdThenImportAsync(updatedSeasonIds);
                 }
             }
         }
@@ -105,7 +102,7 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<TeamHonorResponse> honors = await fetchSeasonService.FetchTeamHonorAsync(param);
-            if (honors.Any())
+            if (honors is not null && honors.Any())
             {
                 var command = new ImportSeasonTeamHonorCommand
                 {
@@ -124,13 +121,28 @@
                 RowLimit = appSettings.BatchSizeSyncLivescoreData
             };
             List<PlayerHonorResponse> honors = await fetchSeasonService.FetchPlayerHonorAsync(param);
-            if (honors.Any())
+            if (honors is not null && honors.Any())
             {
                 var command = new ImportSeasonPlayerHonorCommand
                 {
                     PlayerHonorListJson = JsonConvert.SerializeObject(honors)
                 };
                 await baseService.ExecuteNonQueryAsync(command);
+            }
+        }
+
+        private async Task GetStandingByIdThenImportAsync(IList<UpdatedSeasonIdListResponse> updatedSeasonIds)
+        {
+            foreach (var item in updatedSeasonIds)
+            {
+                foreach (var seasonId in item.UpdatedSeasonIdList)
+                {
+                    var seasonStandings = await GetSeasonStandingsByIdAsync(seasonId);
+                    if (seasonStandings is not null && seasonStandings.Any())
+                    {
+                        await ImportSeasonStandingsAsync(seasonId, seasonStandings);
+                    }
+                }
             }
         }
 

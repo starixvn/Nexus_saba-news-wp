@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class ImportHeadToHeadCommand : BaseNonQueryCommand
+    public class ImportHeadToHeadCommand : BaseNonQueryCommand
     {
         public string HeadToHeadJson { get; set; }
 

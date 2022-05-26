@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class ImportMatchCommand : BaseNonQueryCommand
+    public class ImportMatchCommand : BaseNonQueryCommand
     {
         public string MatchListJson { get; set; }
 

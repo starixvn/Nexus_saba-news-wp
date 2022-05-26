@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    internal class GatMatchMaxIdCriteria : CriteriaBase
+    public class GatMatchMaxIdCriteria : CriteriaBase
     {
         public override string GetSettingKey() => "Livesocre_Match_GetMaxMatchId";
 
