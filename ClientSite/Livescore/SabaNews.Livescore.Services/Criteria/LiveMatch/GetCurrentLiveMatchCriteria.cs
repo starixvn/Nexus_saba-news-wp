@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    internal class GetCurrentLiveMatchCriteria : CriteriaBase
+    public class GetCurrentLiveMatchCriteria : CriteriaBase
     {
         public override string GetSettingKey() => "Livescore_LiveMatch_Get";
 

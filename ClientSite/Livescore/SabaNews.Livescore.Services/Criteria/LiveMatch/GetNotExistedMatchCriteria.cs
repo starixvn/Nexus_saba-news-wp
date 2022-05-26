@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    internal class GetNotExistedMatchCriteria : CriteriaBase
+    public class GetNotExistedMatchCriteria : CriteriaBase
     {
         public override string GetSettingKey() => "Livescore_Livematch_GetNotExistedMatch";
 

@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    internal class InsertLiveMatchToTemporayTableCommand : BaseNonQueryCommand
+    public class InsertLiveMatchToTemporayTableCommand : BaseNonQueryCommand
     {
         public string MatchIds { get; set; }
 

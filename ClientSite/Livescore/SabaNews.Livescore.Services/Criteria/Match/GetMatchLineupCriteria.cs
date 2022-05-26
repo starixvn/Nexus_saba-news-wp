@@ -8,6 +8,6 @@
 
         public override string GetSettingKey() => "Livescore_Match_GetLineup";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => MatchId > 0;
     }
 }

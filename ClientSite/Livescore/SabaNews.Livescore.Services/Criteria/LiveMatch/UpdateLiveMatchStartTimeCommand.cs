@@ -3,7 +3,7 @@
     using System;
     using SabaNews.Core.Models;
 
-    internal class UpdateLiveMatchStartTimeCommand : BaseNonQueryCommand
+    public class UpdateLiveMatchStartTimeCommand : BaseNonQueryCommand
     {
         public long MatchId { get; set; }
 

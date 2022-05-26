@@ -1,0 +1,160 @@
+﻿namespace SabaNews.Livescore.Services.Tests.Services
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using AutoFixture;
+    using Fanex.Data.Repository;
+    using Newtonsoft.Json;
+    using NSubstitute;
+    using SabaNews.Core.Services;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Lineup;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Repositories;
+    using SabaNews.Livescore.Services.Criteria.Match;
+    using Xunit;
+
+    public class MatchServiceTests
+    {
+        private readonly IBaseService baseService;
+        private readonly IMatchRepository matchRepository;
+        private readonly Fixture fixture;
+        private readonly MatchService matchService;
+
+        public MatchServiceTests()
+        {
+            baseService = Substitute.For<IBaseService>();
+            matchRepository = Substitute.For<IMatchRepository>();
+            fixture = new Fixture();
+            matchService = new MatchService(matchRepository, baseService);
+        }
+
+        [Fact]
+        public async Task GetMatchByDateAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var matches = fixture.Create<IList<Match>>();
+            matchRepository.GetMatchByDateAsync(Arg.Any<ICriteria>()).Returns(matches);
+            var actual = await matchService.GetMatchByDateAsync(new GetMatchByDateCriteria());
+            Assert.Equal(matches, actual);
+        }
+
+        [Fact]
+        public async Task GetLiveMatchAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var matches = fixture.Create<IList<Match>>();
+            matchRepository.GetMatchByDateAsync(Arg.Any<ICriteria>()).Returns(matches);
+            var actual = await matchService.GetLiveMatchAsync();
+            Assert.Equal(matches, actual);
+        }
+
+        [Fact]
+        public async Task GetSeasonStandingsAsync_WhenNullStandings_ReturnExpectedResult()
+        {
+            baseService.FetchMultipleAsync<SeasonStandings, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((null, null));
+
+            var actual = await matchService.GetSeasonStandingsAsync(Arg.Any<GetSeasonStandingsCriteria>());
+
+            Assert.Null(actual);
+        }
+
+        [Fact]
+        public async Task GetSeasonStandingsAsync_WhenHasStandings_ReturnExpectedResult()
+        {
+            (var standings, var floatMatches) = fixture.Create<(IEnumerable<SeasonStandings>, IEnumerable<FloatMatchModel>)>();
+            baseService.FetchMultipleAsync<SeasonStandings, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((standings, floatMatches));
+
+            var actual = await matchService.GetSeasonStandingsAsync(new GetSeasonStandingsCriteria());
+            foreach (var item in standings)
+            {
+                item.Matches = floatMatches.Where(match => match.StageId == item.StageId
+                    && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId))
+                    .OrderByDescending(x => x.StartTime).ToList();
+            }
+
+            Assert.Equal(standings, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchByIdAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var match = fixture.Create<Match>();
+            matchRepository.GetMatchByIdAsync(Arg.Any<ICriteria>()).Returns(match);
+            var actual = await matchService.GetMatchByIdAsync(new GetMatchByIdCriteria());
+            Assert.Equal(match, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchIncidentAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var match = fixture.Create<IEnumerable<MatchIncident>>();
+            baseService.GetDataAsync<MatchIncident>(Arg.Any<GetMatchIncidentCriteria>()).Returns(match);
+
+            var actual = await matchService.GetMatchIncidentAsync(new GetMatchIncidentCriteria());
+            Assert.Equal(match, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchStatisticAsync_WhenHasStandings_ReturnExpectedResult()
+        {
+            (var home, var away) = fixture.Create<(IEnumerable<TeamStatistic>, IEnumerable<TeamStatistic>)>();
+            baseService.FetchMultipleAsync<TeamStatistic, TeamStatistic>(Arg.Any<ICriteria>()).Returns((home, away));
+            var expected = new Statistic
+            {
+                HomeStatistic = home.FirstOrDefault(),
+                AwayStatistic = away.FirstOrDefault()
+            };
+            var actual = await matchService.GetMatchStatisticAsync(new GetMatchStatisticCriteria());
+
+            Assert.Equal(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
+        }
+
+        [Fact]
+        public async Task GetLineupAsync_WhenHasStandings_ReturnExpectedResult()
+        {
+            var (generalInfo, home, away) = fixture.Create<(IEnumerable<Lineup>, IEnumerable<LineupTeam>, IEnumerable<LineupTeam>)>();
+            baseService.FetchMultipleAsync<Lineup, LineupTeam, LineupTeam>(Arg.Any<ICriteria>()).Returns((generalInfo, home, away));
+            var expected = new LineupDetail
+            {
+                GeneralInfo = generalInfo.FirstOrDefault(),
+                Home = home.ToList(),
+                Away = away.ToList()
+            };
+
+            var actual = await matchService.GetLineupAsync(new GetMatchLineupCriteria());
+
+            Assert.Equal(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(actual));
+        }
+
+        [Fact]
+        public async Task GetHeadToHeadAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var h2h = fixture.Create<HeadToHeadDetail>();
+            matchRepository.GetHeadToHeadAsync(Arg.Any<ICriteria>()).Returns(h2h);
+
+            var actual = await matchService.GetHeadToHeadAsync(new GetHeadToHeadCriteria());
+            Assert.Equal(h2h, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchByIdsAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var matches = fixture.Create<IList<Match>>();
+            matchRepository.GetMatchByIdsAsync(Arg.Any<ICriteria>()).Returns(matches);
+
+            var actual = await matchService.GetMatchByIdsAsync(new GetMatchByIdsCriteria());
+            Assert.Equal(matches, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonAsync_WhenCalled_ReturnExpectedResult()
+        {
+            (var leagues, var floatMatches) = fixture.Create<(IEnumerable<League>, IEnumerable<FloatMatchModel>)>();
+            baseService.FetchMultipleAsync<League, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((leagues, floatMatches));
+
+            var actual = await matchService.GetMatchBySeasonAsync(new GetMatchBySeasonCriteria());
+            Assert.Equal(leagues.FirstOrDefault(), actual.Item1);
+            Assert.Equal(floatMatches.Count(), actual.Item2.Count);
+        }
+    }
+}

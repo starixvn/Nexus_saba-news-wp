@@ -35,10 +35,7 @@
 
         public async Task PushMatchListAsync(IEnumerable<Match> matches)
         {
-            if (hubConnection.State == HubConnectionState.Disconnected)
-            {
-                await hubConnection.StartAsync();
-            }
+            await ReInitConnect();
             await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchMethod, matches).ContinueWith(task =>
             {
                 if (task.IsFaulted)
@@ -50,10 +47,7 @@
 
         public async Task PushMatchDetailcAsync(long matchId, MatchDetail detail)
         {
-            if (hubConnection.State == HubConnectionState.Disconnected)
-            {
-                await hubConnection.StartAsync();
-            }
+            await ReInitConnect();
 
             await hubConnection.InvokeAsync(signalRSettings.UpdateLiveMatchDetail, matchId, detail).ContinueWith(task =>
             {
@@ -62,6 +56,14 @@
                     logger.WriteExceptionSentryErrorAsync(task.Exception);
                 }
             });
+        }
+
+        private async Task ReInitConnect()
+        {
+            if (hubConnection.State == HubConnectionState.Disconnected)
+            {
+                await hubConnection.StartAsync();
+            }
         }
     }
 }

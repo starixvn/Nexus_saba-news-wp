@@ -37,7 +37,7 @@
         {
             (var leagues, var floatMatches) = await baseService.FetchMultipleAsync<League, FloatMatchModel>(criteria);
             var matches = new List<Match>();
-            foreach(FloatMatchModel match in floatMatches)
+            foreach (FloatMatchModel match in floatMatches)
             {
                 var stage = match.StageId.HasValue
                     ? new SeasonStage
@@ -94,21 +94,22 @@
         public async Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria)
         {
             (var standings, var floatMatches) = await baseService.FetchMultipleAsync<SeasonStandings, FloatMatchModel>(criteria);
-            foreach(var item in standings)
+            if (standings is not null && standings.Any())
             {
-                item.Matches = floatMatches.Where(match => match.StageId == item.StageId
-                    && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId))
-                    .OrderByDescending(x => x.StartTime).ToList();
+                foreach (var item in standings)
+                {
+                    item.Matches = floatMatches.Where(match => match.StageId == item.StageId
+                        && (match.HomeTeamId == item.TeamId || match.AwayTeamId == item.TeamId))
+                        .OrderByDescending(x => x.StartTime).ToList();
+                }
             }
-
-            return standings.ToList();
+            return standings?.ToList();
         }
 
         public async Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria)
         {
             return await matchRepository.GetMatchByIdAsync(criteria);
         }
-
 
         public async Task<IEnumerable<MatchIncident>> GetMatchIncidentAsync(GetMatchIncidentCriteria criteria)
         {
