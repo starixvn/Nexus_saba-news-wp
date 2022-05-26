@@ -257,5 +257,7 @@
         <Setting Key="Livescore_Match_GetBySeason" SpName="Livescore_Match_GetBySeason" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetSeasonStandings" SpName="Livescore_Match_GetSeasonStandings" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_Match_GetByIds" SpName="Livescore_Match_GetByIds" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_League_GetByIds" SpName="Livescore_League_GetByIds" DbName="sabasports" Plain="0" />
+        <Setting Key="Livescore_League_Get" SpName="Livescore_League_Get" DbName="sabasports" Plain="0" />
     </Function>
 </Functions>
