@@ -6,6 +6,8 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import SearchLeague from './SearchLeague';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 export default class FavoriteLeagues extends  PureComponent  {
     constructor(props) {
@@ -59,6 +61,13 @@ export default class FavoriteLeagues extends  PureComponent  {
     handleCloseSearchPopup = () => {
         this.setState({isShowSearchPopup: false});
     };
+    renderTooltip = () => {
+        return (
+            <Tooltip className="tooltip-add-favourite-match" >
+                {LangHelper.getResource('AddLeague')}
+            </Tooltip>
+        );
+    };
 
     render()  {
         const leagues = this.sortLeagues(this.state.leagues);
@@ -71,7 +80,12 @@ export default class FavoriteLeagues extends  PureComponent  {
                         <i className="icon-livescore icon-live-start" />
                         <span>{LangHelper.getResource('HotLeague')}</span>
                     </div>
-                    <i onClick={this.handleOpenSearchPopup} className="icon-livescore icon-close rotare-plus" />
+                    <OverlayTrigger
+                        placement="bottom"
+                        overlay={this.renderTooltip()}
+                    >
+                        <i onClick={this.handleOpenSearchPopup} className="icon-livescore icon-close rotare-plus" />
+                    </OverlayTrigger>
                 </div>
                 <div className="leagues-main">
                     {

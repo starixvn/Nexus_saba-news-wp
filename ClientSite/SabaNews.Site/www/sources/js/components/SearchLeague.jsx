@@ -151,7 +151,7 @@ export default class SearchLeague extends PureComponent {
         return (
             <Modal className="modal-livescore" size="sm" show={isShowSearchPopup} onHide={this.handleClose}>
                 <Modal.Header>
-                    <Modal.Title>Thêm giải đấu</Modal.Title>
+                    <Modal.Title>{LangHelper.getResource('AddLeague')}</Modal.Title>
                     <i className="icon-livescore icon-close" onClick={this.handleClose} />
                 </Modal.Header>
                 <Modal.Body>
@@ -182,7 +182,7 @@ export default class SearchLeague extends PureComponent {
                         }
                         {
                             this.state.leagues.length === 0 && searchKey.length >= 3 &&
-                            <p className="not-found">Không tìm thấy giải đấu phù hợp</p>
+                            <p className="not-found">{LangHelper.getResource('NotFoundLeague')}</p>
                         }
                     </div>
                 </Modal.Body>
