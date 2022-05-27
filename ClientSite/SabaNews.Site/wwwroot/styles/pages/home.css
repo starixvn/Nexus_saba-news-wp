@@ -99,8 +99,41 @@ body {
       line-height: 2.8rem; } }
   .content p {
     margin-bottom: 1rem; }
+  .content h1 {
+    font-size: 2.8rem;
+    line-height: 3.8rem; }
+    @media screen and (max-width: 1024px) {
+      .content h1 {
+        font-size: 2.2rem;
+        line-height: 3rem; } }
+  .content h2 {
+    font-size: 2.4rem;
+    margin: 1rem 0; }
+    @media screen and (max-width: 1024px) {
+      .content h2 {
+        font-size: 2rem;
+        margin: .5rem 0; } }
+  .content h3 {
+    font-size: 2.1rem;
+    margin: 1rem 0; }
+    @media screen and (max-width: 1024px) {
+      .content h3 {
+        font-size: 1.7rem;
+        margin: .5rem 0; } }
+  .content h4 {
+    font-size: 1.8rem;
+    margin: 1rem 0; }
+    @media screen and (max-width: 1024px) {
+      .content h4 {
+        font-size: 1.6rem;
+        margin: .5rem 0; } }
   .content h6 {
     font-size: inherit; }
+  .content li {
+    margin-bottom: 1rem; }
+    @media screen and (max-width: 1024px) {
+      .content li {
+        margin-bottom: .5rem; } }
 
 .text-center {
   text-align: center; }
