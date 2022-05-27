@@ -109,12 +109,20 @@
 
         .toggle-league {
             display: block !important;
+
+            .icon-favourite-outline {
+                &:hover {
+                    &:before {
+                        color: $fav-icon;
+                    }
+                }
+            }
         }
 
         .leagues-item {
-            .leagues-name{
-                span{
-                    font-size : 1.3rem;
+            .leagues-name {
+                span {
+                    font-size: 1.3rem;
                 }
             }
         }

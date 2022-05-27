@@ -3,7 +3,7 @@
 .tooltip-add-favourite-match {
     z-index: 99999999;
     padding: .4rem 0;
-
+    pointer-events : none;
     .arrow {
         display: block;
         width: .8rem;
