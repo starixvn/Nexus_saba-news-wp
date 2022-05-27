@@ -1,6 +1,6 @@
 ﻿namespace SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations
 {
-    internal class MqttSettings
+    public class MqttSettings
     {
         public const string ConfigurationKey = "MQTTSettings";
         public bool Enabled { get; set; }

@@ -24,4 +24,8 @@
     <ItemGroup>
         <ProjectReference Include="..\ClientSite\Livescore\SabaNews.Livescore.ScheduledTasks\SabaNews.Livescore.ScheduledTasks.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Mqtt\" />
+    </ItemGroup>
 </Project>

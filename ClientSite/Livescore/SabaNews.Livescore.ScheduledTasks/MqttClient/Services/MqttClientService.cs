@@ -17,7 +17,7 @@
     using SabaNews.Livescore.ScheduledTasks.MqttClient.Configurations;
     using SabaNews.Livescore.Services.Interfaces;
 
-    internal class MqttClientService : IMqttClientService
+    public class MqttClientService : IMqttClientService
     {
         private readonly IMqttClient mqttClient;
         private readonly ILogServiceProvider logger;
