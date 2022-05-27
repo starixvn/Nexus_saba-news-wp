@@ -7,7 +7,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Models.Matches;
     using SabaNews.Livescore.Provider.API.Services;
-    using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.SyncData.Services;
@@ -29,12 +28,6 @@
             logService = Substitute.For<ILogServiceProvider>();
             fixture = new Fixture();
             jobSettings = fixture.Create<List<ScheduledTaskSettings>>();
-            jobSettings.Add(new ScheduledTaskSettings
-            {
-                Enabled = true,
-                Interval = 1000,
-                Name = JobName.SyncDeletedMatchesInTwoWeek
-            });
             worker = new SyncDeleledMatchesWorker(syncMatchService, fetchMatchService, jobSettings, logService);
         }
 

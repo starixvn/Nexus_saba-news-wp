@@ -9,7 +9,6 @@
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Provider.API.Models.Team;
     using SabaNews.Livescore.Provider.API.Services;
-    using SabaNews.Livescore.ScheduledTasks.Constants;
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.ScheduledTasks.Workers;
     using SabaNews.Livescore.SyncData.Models.HeadToHead;
@@ -34,12 +33,6 @@
             fixture = new Fixture();
             appSettings = fixture.Create<AppSettings>();
             jobSettings = fixture.Create<List<ScheduledTaskSettings>>();
-            jobSettings.Add(new ScheduledTaskSettings
-            {
-                Enabled = true,
-                Interval = 1000,
-                Name = JobName.SyncHeadToHeadFromCurrentToFuture
-            });
             worker = new SyncHeadToHeadFromCurrentDateToFutureWorker(synch2hService, fetchTeamService, jobSettings, appSettings, logService);
         }
 
