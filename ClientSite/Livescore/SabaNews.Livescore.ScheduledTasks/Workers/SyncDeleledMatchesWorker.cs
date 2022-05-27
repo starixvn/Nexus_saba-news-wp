@@ -9,7 +9,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncDeleledMatchesWorker : WorkerBase
+    public class SyncDeleledMatchesWorker : WorkerBase
     {
         private readonly IFetchMatchService fetchMatchService;
         private readonly ISyncMatchService syncMatchService;

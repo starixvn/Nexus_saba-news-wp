@@ -6,7 +6,6 @@
     using Fanex.Data;
     using Fanex.Data.Repository;
     using SabaNews.Livescore.Models.League;
-    using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
 
@@ -57,7 +56,8 @@
                     var common = new List<Match>();
                     var home = new List<Match>();
                     var away = new List<Match>();
-                    if (matches.Any() && team != null) {
+                    if (matches.Any() && team != null)
+                    {
                         const byte TotalMatches = 5;
                         common = matches.Where(item => (item.HomeTeam.TeamId == team.HomeId && item.AwayTeam.TeamId == team.AwayId)
                                     || (item.HomeTeam.TeamId == team.AwayId && item.AwayTeam.TeamId == team.HomeId))
