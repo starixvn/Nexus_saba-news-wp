@@ -1,25 +1,31 @@
-﻿import React from 'react';
+﻿import React, { PureComponent } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 
-const SearchBar = props => {
-    return (
-        <div className="group-searchbar">
-            <div className="livescore-soccer-search-bar">
-                <Form.Control type="text" placeholder="Tìm kiếm giải đấu, đội bóng..."
-                    id="livescore-soccer-searchbox" className="livescore-soccer-searchbox"
-                    value={props.searchKey}
-                    onChange={event => props.setSearchKey(event.target.value)}
-                />
-                <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
+export class SearchBar extends PureComponent {
+    onChange = event => {
+        this.props.setSearchKey(event.target.value);
+    };
+
+    render() {
+        return (
+            <div className="group-searchbar">
+                <div className="livescore-soccer-search-bar">
+                    <Form.Control type="text" placeholder="Tìm kiếm giải đấu, đội bóng..."
+                        id="livescore-soccer-searchbox" className="livescore-soccer-searchbox"
+                        value={this.props.searchKey}
+                        onChange={this.onChange}
+                    />
+                    <span className="btn-search-match"><i className="icon-livescore icon-search" /></span>
+                </div>
+                <FavoriteMatches isMobile />
             </div>
-            <FavoriteMatches isMobile />
-        </div>
-    );
-};
+        );
+    }
+}
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
