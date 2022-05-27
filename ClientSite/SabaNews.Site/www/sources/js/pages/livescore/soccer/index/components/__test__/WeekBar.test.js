@@ -23,7 +23,7 @@ describe('WeekBar', () => {
     });
 
     describe('onPrev', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             DateTimeService.formatDateTime = jest.fn(() => '2022-05-24');
             const props = {
@@ -42,7 +42,7 @@ describe('WeekBar', () => {
     });
 
     describe('onNext', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             DateTimeService.formatDateTime = jest.fn(() => '2022-05-27');
             const props = {
@@ -61,7 +61,7 @@ describe('WeekBar', () => {
     });
 
     describe('onSelectDate', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             Site.resolveClientUrl = jest.fn(url => url);
             const container = shallow(<WeekBar {...defaultProps} />);

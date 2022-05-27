@@ -22,7 +22,7 @@ describe('SearchBar', () => {
     });
 
     describe('onChange', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             const container = shallow(<SearchBar {...defaultProps} />);
 

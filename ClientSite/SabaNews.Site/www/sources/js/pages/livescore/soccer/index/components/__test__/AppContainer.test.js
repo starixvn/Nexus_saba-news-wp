@@ -69,7 +69,7 @@ describe('AppContainer', () => {
     });
 
     describe('componentDidMount', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             window.addEventListener = jest.fn();
 
@@ -91,7 +91,7 @@ describe('AppContainer', () => {
     });
 
     describe('componentWillUnmount', () => {
-        it('should call correctly functions', () => {
+        it('calls correctly functions', () => {
             // Arrange
             window.removeEventListener = jest.fn();
 
@@ -107,7 +107,7 @@ describe('AppContainer', () => {
     });
 
     describe('handleResize', () => {
-        it('should update correctly state when isMobile = false and window.innerWidth < 768', () => {
+        it('updates correctly state when isMobile = false and window.innerWidth < 768', () => {
             // Arrange
             window.innerWidth = 767;
             const wrapper = shallow(<AppContainer />);
@@ -121,7 +121,7 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('should update correctly state when isMobile = false and window.innerWidth = 768', () => {
+        it('updates correctly state when isMobile = false and window.innerWidth = 768', () => {
             // Arrange
             window.innerWidth = 768;
             const wrapper = shallow(<AppContainer />);
@@ -167,7 +167,7 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('should update correctly state when isMobile = true and window.innerWidth > 768', () => {
+        it('updates correctly state when isMobile = true and window.innerWidth > 768', () => {
             // Arrange
             window.innerWidth = 769;
             const wrapper = shallow(<AppContainer />);
@@ -183,7 +183,7 @@ describe('AppContainer', () => {
     });
 
     describe('getDateRanges', () => {
-        it('should return correctly dates when selectedDate = minDate', () => {
+        it('returns correctly dates when selectedDate = minDate', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -204,7 +204,7 @@ describe('AppContainer', () => {
             expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
         });
 
-        it('should return correctly dates when selectedDate = minDate + 1', () => {
+        it('returns correctly dates when selectedDate = minDate + 1', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -225,7 +225,7 @@ describe('AppContainer', () => {
             expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-29').format('YYYY-MM-DD'));
         });
 
-        it('should return correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate', () => {
+        it('returns correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -247,7 +247,7 @@ describe('AppContainer', () => {
             expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-30').format('YYYY-MM-DD'));
         });
 
-        it('should return correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate - 1', () => {
+        it('returns correctly dates when selectedDate > minDate + 1 and selectedDate = maxDate - 1', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -269,7 +269,7 @@ describe('AppContainer', () => {
             expect(moment(dates[4]).format('YYYY-MM-DD')).toEqual(moment('2022-05-30').format('YYYY-MM-DD'));
         });
 
-        it('should return correctly dates when selectedDate > minDate + 1 and selectedDate < maxDate - 1', () => {
+        it('returns correctly dates when selectedDate > minDate + 1 and selectedDate < maxDate - 1', () => {
             // Arrange
             const props = {
                 ...defaultProps,
@@ -293,7 +293,7 @@ describe('AppContainer', () => {
     });
 
     describe('getMatches', () => {
-        it('should call correctly functions when searchKey.length = 0', () => {
+        it('calls correctly functions when searchKey.length = 0', () => {
             // Arrange
             const wrapper = shallow(<AppContainer {...defaultProps} />);
             const instance = wrapper.instance();
@@ -307,7 +307,7 @@ describe('AppContainer', () => {
             expect(defaultProps.getLiveMatches).toHaveBeenCalledTimes(2);
         });
 
-        it('should call correctly functions when searchKey.length > 0', () => {
+        it('calls correctly functions when searchKey.length > 0', () => {
             // Arrange
             const props = { ...defaultProps, searchKey: 'key' };
             const wrapper = shallow(<AppContainer {...props} />);
@@ -322,7 +322,7 @@ describe('AppContainer', () => {
             expect(props.getLiveMatches).toHaveBeenCalledTimes(2);
         });
 
-        it('should call correctly functions when window.isLivePage = true', () => {
+        it('calls correctly functions when window.isLivePage = true', () => {
             // Arrange
             const props = { ...defaultProps, searchKey: 'key' };
             const wrapper = shallow(<AppContainer {...props} />);

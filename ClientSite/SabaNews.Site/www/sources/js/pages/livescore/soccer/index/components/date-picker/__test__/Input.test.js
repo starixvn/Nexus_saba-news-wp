@@ -33,7 +33,7 @@ describe('Input', () => {
         expect(toJson(container)).toMatchSnapshot();
     });
 
-    it('should call correctly function when click on element', () => {
+    it('calls correctly function when click on element', () => {
         // Arrange
         const container = shallow(<Input {...defaultProps} />);
 

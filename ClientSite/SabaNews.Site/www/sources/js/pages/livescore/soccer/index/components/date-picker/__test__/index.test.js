@@ -35,7 +35,7 @@ describe('index', () => {
     });
 
     describe('handleToggle', () => {
-        it('should update correctly state', () => {
+        it('updates correctly state', () => {
             // Arrange
             const instance = shallow(<Index {...defaultProps} />).instance();
 
@@ -60,7 +60,7 @@ describe('index', () => {
             expect(instance.setState).toHaveBeenCalledTimes(0);
         });
 
-        it('should update correctly state when open = true', () => {
+        it('updates correctly state when open = true', () => {
             // Arrange
             const instance = shallow(<Index {...defaultProps} />).instance();
             instance.setState({ open: true });
@@ -78,7 +78,7 @@ describe('index', () => {
             jest.clearAllMocks();
         });
 
-        it('should call correctly functions when dateRanges exclude date', () => {
+        it('calls correctly functions when dateRanges exclude date', () => {
             // Arrange
             const date = '2022-05-25';
             const props = {
@@ -102,7 +102,7 @@ describe('index', () => {
             expect(props.setDateRanges).toHaveBeenCalledWith(['2022-05-25', '2022-05-26']);
         });
 
-        it('should call correctly functions when dateRanges include date', () => {
+        it('calls correctly functions when dateRanges include date', () => {
             // Arrange
             const date = '2022-05-25';
             const props = {

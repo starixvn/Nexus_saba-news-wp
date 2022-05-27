@@ -90,7 +90,7 @@ describe('DateBar', () => {
         expect(toJson(container)).toMatchSnapshot();
     });
 
-    it('should call correctly functions when click on live button', () => {
+    it('calls correctly functions when click on live button', () => {
         // Arrange
         const container = shallow(<DateBar {...defaultProps} />);
 

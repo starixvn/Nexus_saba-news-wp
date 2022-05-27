@@ -109,4 +109,25 @@ describe('TeamScore', () => {
         // Assert
         expect(toJson(container)).toMatchSnapshot();
     });
+
+    it('renders correctly when match isHomeTeam = false and ExtraScore = 0', () => {
+        // Arrange
+        const props = {
+            ...defaultProps,
+            match: {
+                ...defaultProps.match,
+                awayTeamExtraScore: 0,
+                awayTeamTotalScore: 1,
+                awayTeamHalfScore: 0,
+                status: 50
+            },
+            isHomeTeam: false
+        };
+
+        // Act
+        const container = shallow(TeamScore(props));
+
+        // Assert
+        expect(toJson(container)).toMatchSnapshot();
+    });
 });

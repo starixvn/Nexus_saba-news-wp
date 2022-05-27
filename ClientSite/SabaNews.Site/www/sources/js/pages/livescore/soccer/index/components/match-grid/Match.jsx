@@ -18,11 +18,11 @@ export default class Match extends Component {
             if (match[`${homeFieldName}PenaltyScore`]
                 && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
+            } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
+                && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+                return <li>AGG</li>;
             } else {
-                if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
-                    && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
-                    return <li>AGG</li>;
-                }
+                return <Fragment />;
             }
         }
 
@@ -35,7 +35,7 @@ export default class Match extends Component {
         return searchKey.length > 0 ? teamName.replace(reg, "<span class='text-matched'>$1</span>") : teamName;
     };
 
-    handleClick = event => {
+    onClick = event => {
         const className = event.target.className;
         if(className.includes('icon-livescore')) {
             return;
@@ -65,7 +65,7 @@ export default class Match extends Component {
         const isIntermission = match.status === MatchStatus.Intermission;
 
         return (
-            <div className="group-match-item"  onClick={this.handleClick}>
+            <div className="group-match-item" onClick={this.onClick}>
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                 >
                     <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
