@@ -177,6 +177,12 @@ body {
             margin-bottom: .5rem;
         }
     }
+    li{
+        margin-bottom : 1rem;
+        @include tableMobile{
+            margin-bottom : .5rem;
+        }
+    }
 }
 
 .text-center {
