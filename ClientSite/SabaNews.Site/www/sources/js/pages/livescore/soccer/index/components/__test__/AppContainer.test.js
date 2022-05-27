@@ -6,7 +6,7 @@ import { AppContainer } from '../AppContainer';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 describe('AppContainer', () => {
-    let defaultProps = {
+    const defaultProps = {
         selectedDate: '2022-05-25',
         searchKey: '',
         matches: null,

@@ -2,13 +2,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
-import { ActionCreators } from '../actions';
+import { ActionCreators } from '../../actions';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import vi from 'date-fns/locale/vi';
+import Input from './Input';
 import Site from '@jsroot/common/site';
 registerLocale('vi', vi);
 
-export class DatePickerField extends PureComponent {
+export class Index extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -47,20 +48,13 @@ export class DatePickerField extends PureComponent {
         const { selectedDate, minDate, maxDate } = this.props;
         const open = this.state.open;
 
-        const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-            <i onClick={() => {
-                this.handleToggle();
-                onClick();
-            }} className={`date-picker-icon icon-livescore icon-live-calender ${open ? 'active' : ''}`} ref={ref} />
-        ));
-
         return (
             <div className="date-picker">
                 <DatePicker
                     className={`datetime-picker`}
                     dateFormat={'MMM dd, yyyy'}
                     locale="vi"
-                    customInput={<CustomInput />}
+                    customInput={<Input onToggle={this.handleToggle} />}
                     selected={new Date(selectedDate)}
                     minDate={new Date(minDate)}
                     maxDate={new Date(maxDate)}
@@ -77,8 +71,8 @@ export class DatePickerField extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { today, minDate, maxDate, selectedDate, dateRanges } = state;
-    return { today, minDate, maxDate, selectedDate, dateRanges };
+    const { minDate, maxDate, selectedDate, dateRanges } = state;
+    return { minDate, maxDate, selectedDate, dateRanges };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DatePickerField);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

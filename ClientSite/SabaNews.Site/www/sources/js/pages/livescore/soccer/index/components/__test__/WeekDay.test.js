@@ -1,4 +1,5 @@
-﻿import { shallow } from 'enzyme';
+﻿import React from 'react';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import WeekDay from '../WeekDay';
 
@@ -19,7 +20,7 @@ describe('WeekDay', () => {
         };
 
         // Act
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Assert
         expect(toJson(container)).toMatchSnapshot();
@@ -36,7 +37,7 @@ describe('WeekDay', () => {
         };
 
         // Act
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Assert
         expect(toJson(container)).toMatchSnapshot();
@@ -53,7 +54,7 @@ describe('WeekDay', () => {
         };
 
         // Act
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Assert
         expect(toJson(container)).toMatchSnapshot();
@@ -70,7 +71,7 @@ describe('WeekDay', () => {
         };
 
         // Act
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Assert
         expect(toJson(container)).toMatchSnapshot();
@@ -87,7 +88,7 @@ describe('WeekDay', () => {
         };
 
         // Act
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Assert
         expect(toJson(container)).toMatchSnapshot();
@@ -102,7 +103,7 @@ describe('WeekDay', () => {
             currentDate: '2022-05-26',
             onClick: jest.fn()
         };
-        const container = shallow(WeekDay(props));
+        const container = shallow(<WeekDay {...props} />);
 
         // Act
         container.find('div.week-date').simulate('click');

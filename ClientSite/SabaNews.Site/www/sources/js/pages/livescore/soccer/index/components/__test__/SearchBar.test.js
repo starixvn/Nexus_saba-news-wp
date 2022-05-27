@@ -24,14 +24,10 @@ describe('SearchBar', () => {
     describe('onChange', () => {
         it('should call correctly functions', () => {
             // Arrange
-            const event = {
-                target: { value: 'key' }
-            };
             const container = shallow(<SearchBar {...defaultProps} />);
-            const instance = container.instance();
 
             // Act
-            instance.onChange(event);
+            container.find('#livescore-soccer-searchbox').simulate('change', { target: { value: 'key' } });
 
             // Assert
             expect(defaultProps.setSearchKey).toHaveBeenCalledWith('key');

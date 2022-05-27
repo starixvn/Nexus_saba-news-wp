@@ -1,21 +1,21 @@
 ﻿import React from 'react';
-import DatePickerField from './DatePickerField';
+import DatePicker from './date-picker/index';
 import WeekBar from './WeekBar';
 import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
 
-const DateBar = props => {
-    const { isMobile, totalMatches } = props;
+export const DateBar = ({ isMobile, totalMatches, onClick, navigate, getDateRanges }) => {
+    const onClickLiveButton = () => {
+        window.isLivePage = true;
+        onClick();
+        navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`));
+    };
 
     return (
         <div className="livescore-soccer-date-bar">
             <div className={`btn-live ${window.isLivePage ? 'active' : ''}`}
-                onClick={() => {
-                    window.isLivePage = true;
-                    props.onClick();
-                    props.navigate(Site.resolveClientUrl(`lich-thi-dau/bong-da/truc-tiep`));
-                }}
+                onClick={onClickLiveButton}
             >
                 <i className="icon-livescore icon-live-realtime"></i>
                 <div className="btn-live-realtime">
@@ -27,13 +27,13 @@ const DateBar = props => {
                 </div>
             </div>
             <WeekBar isMobile={isMobile}
-                getDateRanges={props.getDateRanges}
-                onClick={props.onClick}
+                getDateRanges={getDateRanges}
+                onClick={onClick}
             />
-            <DatePickerField
-                getDateRanges={props.getDateRanges}
-                onChange={props.onClick}
-                navigate={props.navigate}
+            <DatePicker
+                getDateRanges={getDateRanges}
+                onChange={onClick}
+                navigate={navigate}
             />
         </div>
     );

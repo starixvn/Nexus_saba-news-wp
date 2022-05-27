@@ -5,7 +5,7 @@ import { WeekBar } from '../WeekBar';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
-describe('SearchBar', () => {
+describe('WeekBar', () => {
     let defaultProps = {
         today: '2022-05-25',
         minDate: '2022-01-01',
