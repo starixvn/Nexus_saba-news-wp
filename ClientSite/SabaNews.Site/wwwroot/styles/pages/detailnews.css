@@ -2755,6 +2755,8 @@ img {
 
 .ul1 {
   margin-left: 2rem; }
+  .ul1 li {
+    margin-bottom: 0; }
 
 .content .p1 {
   margin-top: 1.2rem;
