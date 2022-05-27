@@ -9,7 +9,7 @@ import SearchLeague from './SearchLeague';
 import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
-export default class FavoriteLeagues extends  PureComponent  {
+export default class FavoriteLeagues extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export default class FavoriteLeagues extends  PureComponent  {
 
     handleClick = (event, league) => {
         const className = event.target.className;
-        if(className.includes('icon-livescore')) {
+        if (className.includes('icon-livescore')) {
             return;
         }
         const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
@@ -49,17 +49,17 @@ export default class FavoriteLeagues extends  PureComponent  {
 
     onUpdateFavLeague = () => {
         const favLeagues = CommonFunctions.getFavLeagues();
-        this.setState({leagues: favLeagues});
-        if(typeof(this.props.onToggleIcon) === 'function') {
+        this.setState({ leagues: favLeagues });
+        if (typeof (this.props.onToggleIcon) === 'function') {
             this.props.onToggleIcon();
         }
     };
 
     handleOpenSearchPopup = () => {
-        this.setState({isShowSearchPopup: true});
+        this.setState({ isShowSearchPopup: true });
     };
     handleCloseSearchPopup = () => {
-        this.setState({isShowSearchPopup: false});
+        this.setState({ isShowSearchPopup: false });
     };
     renderTooltip = () => {
         return (
@@ -69,7 +69,7 @@ export default class FavoriteLeagues extends  PureComponent  {
         );
     };
 
-    render()  {
+    render() {
         const leagues = this.sortLeagues(this.state.leagues);
         const { isShowSearchPopup } = this.state;
         const { searchLeagues } = this.props;
@@ -78,7 +78,7 @@ export default class FavoriteLeagues extends  PureComponent  {
                 <div className="leagues-title">
                     <div className="leagues-group">
                         <i className="icon-livescore icon-live-start" />
-                        <span>{LangHelper.getResource('HotLeague')}</span>
+                        <span>{LangHelper.getResource('MyLeagues')}</span>
                     </div>
                     <OverlayTrigger
                         placement="bottom"
@@ -97,7 +97,7 @@ export default class FavoriteLeagues extends  PureComponent  {
                                         <span className="text">{CommonFunctions.getLeagueName(league)}</span>
                                     </div>
                                     <div className="toggle-league">
-                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague}/>
+                                        <FavouriteLeagueIcon league={league} onUpdateFavLeague={this.onUpdateFavLeague} />
                                     </div>
                                 </div>
                             );
@@ -109,9 +109,9 @@ export default class FavoriteLeagues extends  PureComponent  {
                     }
                 </div>
                 <SearchLeague searchLeagues={searchLeagues}
-                        isShowSearchPopup={isShowSearchPopup}
-                        onClose={this.handleCloseSearchPopup}
-                        onUpdateFavLeague={this.onUpdateFavLeague} />
+                    isShowSearchPopup={isShowSearchPopup}
+                    onClose={this.handleCloseSearchPopup}
+                    onUpdateFavLeague={this.onUpdateFavLeague} />
             </div>
         );
     }

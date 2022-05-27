@@ -10,13 +10,6 @@ import {
     setFavLeagues
 } from './favouriteMatchSlice';
 
-const getMajorLeagues = () => async dispatch => {
-    const url = Site.resolveClientUrl('soccer/getMajorLeagues');
-    await DataService.postDataAsync(url).then(response => {
-        dispatch(setMajorLeagues(response.data));
-    }).catch(Site.handleAxiosError);
-};
-
 const getMatches = () => async dispatch => {
     const matchIds = CommonFunctions.getFavouriteMatches();
     const param = {

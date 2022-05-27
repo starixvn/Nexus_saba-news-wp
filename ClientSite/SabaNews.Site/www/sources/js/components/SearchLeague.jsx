@@ -3,27 +3,14 @@ import { Modal } from 'react-bootstrap';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
-import PropTypes from 'prop-types';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class SearchLeague extends PureComponent {
-    static propTypes = {
-        isShowSearchPopup: PropTypes.bool,
-        searchLeagues: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.object)]),
-        onClose: PropTypes.func,
-        onUpdateFavLeague: PropTypes.func
-    };
-
-    static defaultProps = {
-        searchLeagues: [],
-        isShowSearchPopup: false
-    };
-
     constructor(props) {
         super(props);
-        this.searchRef = React.createRef();
+        this.searchInput = React.createRef();
         this.state = {
             searchKey: '',
             leagues: [],
@@ -31,7 +18,6 @@ export default class SearchLeague extends PureComponent {
             toggleIcon: false
         };
     }
-
 
     handleChange = event => {
         const searchKey = event.target.value;

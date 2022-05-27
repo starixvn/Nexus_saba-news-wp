@@ -22,6 +22,7 @@
     Live: 'Trực tiếp',
     MaintainOriginalJudgment: 'Giữ nguyên quyết định',
     MajorLeague: 'Giải nổi bật',
+    MyLeagues: 'Giải đấu của tôi',
     Midfielder: 'Trung vệ',
     NotFoundLeague: 'Không tìm thấy giải đấu phù hợp',
     Penalty: 'Penalty',
