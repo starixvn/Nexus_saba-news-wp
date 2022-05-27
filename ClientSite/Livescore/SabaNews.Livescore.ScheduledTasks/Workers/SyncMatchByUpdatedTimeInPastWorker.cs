@@ -10,7 +10,7 @@
     using SabaNews.Livescore.ScheduledTasks.Models;
     using SabaNews.Livescore.SyncData.Services;
 
-    internal class SyncMatchByUpdatedTimeInPastWorker : WorkerBase
+    public class SyncMatchByUpdatedTimeInPastWorker : WorkerBase
     {
         private readonly ISyncMatchService syncMatchService;
         private readonly AppSettings appSettings;
