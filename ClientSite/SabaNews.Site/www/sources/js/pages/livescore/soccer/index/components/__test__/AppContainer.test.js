@@ -73,8 +73,8 @@ describe('AppContainer', () => {
             // Arrange
             window.addEventListener = jest.fn();
 
-            const wrapper = shallow(<AppContainer {...defaultProps} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
             instance.handleResize = jest.fn();
             instance.getDateRanges = jest.fn(() => ['2022-05-24', '2022-05-25', '2022-05-26']);
             instance.getMatches = jest.fn();
@@ -95,8 +95,8 @@ describe('AppContainer', () => {
             // Arrange
             window.removeEventListener = jest.fn();
 
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
 
             // Act
             instance.componentWillUnmount();
@@ -110,8 +110,8 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = false and window.innerWidth < 768', () => {
             // Arrange
             window.innerWidth = 767;
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
             instance.setState({ isMobile: false });
 
             // Act
@@ -124,8 +124,8 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = false and window.innerWidth = 768', () => {
             // Arrange
             window.innerWidth = 768;
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
             instance.setState({ isMobile: false });
 
             // Act
@@ -138,8 +138,8 @@ describe('AppContainer', () => {
         it('do nothing when isMobile = true and window.innerWidth < 768', () => {
             // Arrange
             window.innerWidth = 767;
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
             instance.setState({ isMobile: true });
             instance.setState = jest.fn();
 
@@ -154,8 +154,8 @@ describe('AppContainer', () => {
         it('do nothing when isMobile = true and window.innerWidth = 768', () => {
             // Arrange
             window.innerWidth = 768;
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
             instance.setState({ isMobile: true });
             instance.setState = jest.fn();
 
@@ -170,8 +170,8 @@ describe('AppContainer', () => {
         it('updates correctly state when isMobile = true and window.innerWidth > 768', () => {
             // Arrange
             window.innerWidth = 769;
-            const wrapper = shallow(<AppContainer />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer />);
+            const instance = container.instance();
             instance.setState({ isMobile: true });
 
             // Act
@@ -189,8 +189,8 @@ describe('AppContainer', () => {
                 ...defaultProps,
                 minDate: '2022-05-25'
             };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             const dates = instance.getDateRanges('2022-05-25');
@@ -210,8 +210,8 @@ describe('AppContainer', () => {
                 ...defaultProps,
                 minDate: '2022-05-25'
             };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             const dates = instance.getDateRanges('2022-05-26');
@@ -232,8 +232,8 @@ describe('AppContainer', () => {
                 minDate: '2022-05-25',
                 maxDate: '2022-05-30'
             };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             const dates = instance.getDateRanges('2022-05-30');
@@ -254,8 +254,8 @@ describe('AppContainer', () => {
                 minDate: '2022-05-25',
                 maxDate: '2022-05-30'
             };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             const dates = instance.getDateRanges('2022-05-29');
@@ -276,8 +276,8 @@ describe('AppContainer', () => {
                 minDate: '2022-05-25',
                 maxDate: '2022-05-30'
             };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             const dates = instance.getDateRanges('2022-05-27');
@@ -295,8 +295,8 @@ describe('AppContainer', () => {
     describe('getMatches', () => {
         it('calls correctly functions when searchKey.length = 0', () => {
             // Arrange
-            const wrapper = shallow(<AppContainer {...defaultProps} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
 
             // Act
             instance.getMatches('2022-05-25');
@@ -310,8 +310,8 @@ describe('AppContainer', () => {
         it('calls correctly functions when searchKey.length > 0', () => {
             // Arrange
             const props = { ...defaultProps, searchKey: 'key' };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             instance.getMatches('2022-05-25');
@@ -325,8 +325,8 @@ describe('AppContainer', () => {
         it('calls correctly functions when window.isLivePage = true', () => {
             // Arrange
             const props = { ...defaultProps, searchKey: 'key' };
-            const wrapper = shallow(<AppContainer {...props} />);
-            const instance = wrapper.instance();
+            const container = shallow(<AppContainer {...props} />);
+            const instance = container.instance();
 
             // Act
             instance.getMatches('2022-05-25');

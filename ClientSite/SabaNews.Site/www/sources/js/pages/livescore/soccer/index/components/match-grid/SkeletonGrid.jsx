@@ -1,9 +1,9 @@
-﻿import React from 'react';
+﻿import React, { Fragment } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const SkeletonGrid = () => {
     return (
-        <>
+        <Fragment>
             <div className="group-searchbar">
                 <div className="livescore-soccer-search-bar">
                     <Skeleton className="livescore-soccer-searchbox" />
@@ -46,7 +46,7 @@ const SkeletonGrid = () => {
                     )
                 }
             </div>
-        </>
+        </Fragment>
     );
 };
 export default SkeletonGrid;

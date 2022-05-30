@@ -8,7 +8,7 @@ export default class Grid extends PureComponent {
 
         this.batchSize = 50;
         const leagues = props.leagues;
-        const groupIndex = this.getGroupIndex(0) + 1;
+        const groupIndex = this.getGroupIndex(leagues, 0) + 1;
         const items = leagues.slice(0, groupIndex);
         this.state = ({
             groupIndex,
@@ -21,7 +21,7 @@ export default class Grid extends PureComponent {
     componentDidUpdate(prevProps) {
         if (this.props.leagues !== prevProps.leagues) {
             const leagues = this.props.leagues;
-            const groupIndex = this.getGroupIndex(0) + 1;
+            const groupIndex = this.getGroupIndex(leagues, 0) + 1;
             const items = leagues.slice(0, groupIndex);
             this.setState({
                 groupIndex,
@@ -32,8 +32,7 @@ export default class Grid extends PureComponent {
         }
     }
 
-    getGroupIndex = currentIndex => {
-        const leagues = this.props.leagues;
+    getGroupIndex = (leagues, currentIndex) => {
         const totalItems = leagues.length;
         let count = 0;
         let index = currentIndex;
@@ -50,7 +49,7 @@ export default class Grid extends PureComponent {
 
     loadMore = pageIndex => {
         const leagues = this.props.leagues;
-        const groupIndex = this.getGroupIndex(this.state.groupIndex) + 1;
+        const groupIndex = this.getGroupIndex(leagues, this.state.groupIndex) + 1;
         const items = leagues.slice(0, groupIndex);
         this.setState({
             groupIndex,

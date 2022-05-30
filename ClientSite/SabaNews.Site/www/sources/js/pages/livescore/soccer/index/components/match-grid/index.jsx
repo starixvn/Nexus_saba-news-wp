@@ -10,9 +10,13 @@ import { LeagueType, MatchStatus } from '@jsroot/common/constants';
 
 export class MatchGrid extends PureComponent {
     filterMatches = (matches, searchKey) => {
-        return matches.filter(match => CommonFunctions.getLeagueName(match.league).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-            || CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-            || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+        if (searchKey.length > 0) {
+            return matches.filter(match => CommonFunctions.getLeagueName(match.league).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+                || CommonFunctions.getTeamName(match.homeTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+                || CommonFunctions.getTeamName(match.awayTeam).toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
+        } else {
+            return matches;
+        }
     };
 
     groupMatchesByStage = matches => {
@@ -52,16 +56,15 @@ export class MatchGrid extends PureComponent {
                 || match.status === MatchStatus.TBD);
         }
 
-        const totalMatches = matches.length;
+        let totalMatches = matches.length;
         if (totalMatches === 0) {
             return <div className="none-livescore">
                 { !window.isLivePage ? 'Không có trận đấu nào.' : 'Hiện tại không có trận đấu trực tiếp nào.' }
             </div>;
         }
 
-        if (searchKey.length > 0) {
-            matches = this.filterMatches(matches, searchKey);
-        }
+        matches = this.filterMatches(matches, searchKey);
+        totalMatches = matches.length;
 
         const leagues = this.groupMatchesByStage(matches);
 

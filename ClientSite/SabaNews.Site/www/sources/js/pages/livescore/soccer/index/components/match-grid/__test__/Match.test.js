@@ -43,7 +43,70 @@ describe('Match', () => {
             const instance = container.instance();
 
             // Act
-            const result = instance.getTeamStatus(defaultProps.match, false);
+            const result = instance.getTeamStatus(defaultProps.match, true);
+
+            // Assert
+            expect(result).toEqual(<Fragment />);
+        });
+
+        it('return as expected when match status = Finished and PenaltyScore > 0', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: 50,
+                    homeTeamPenaltyScore: 1,
+                    awayTeamPenaltyScore: 0
+                }
+            };
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamStatus(props.match, true);
+
+            // Assert
+            expect(result).toEqual(<li>PEN</li>);
+        });
+
+        it('return as expected when match status = Finished and isSecondLeg = true and AggregateScore > 0', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: 50,
+                    homeTeamAggregateScore: 1,
+                    awayTeamAggregateScore: 0,
+                    isSecondLeg: true
+                }
+            };
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamStatus(props.match, true);
+
+            // Assert
+            expect(result).toEqual(<li>AGG</li>);
+        });
+
+        it('return as expected when match status = Finished and isSecondLeg = false and PenaltyScore = 0', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                match: {
+                    ...defaultProps.match,
+                    status: 50,
+                    isSecondLeg: false
+                }
+            };
+            const container = shallow(<Match {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getTeamStatus(props.match, true);
 
             // Assert
             expect(result).toEqual(<Fragment />);
