@@ -60,16 +60,10 @@ describe('actionCreators', () => {
                     league: {
                         leagueId: 1,
                         leagueNameEN: 'Premier League',
-                        leagueNameVN: 'Ngoại hạng Anh',
+                        leagueNameVN: 'Ngoại hạng Anh'
                     },
-                    homeTeam: {
-                        teamId: 1,
-                        teamNameEN: 'Arsenal',
-                    },
-                    awayTeam: {
-                        teamId: 2,
-                        teamNameEN: 'Everton',
-                    }
+                    homeTeam: { teamId: 1, teamNameEN: 'Arsenal' },
+                    awayTeam: { teamId: 2, teamNameEN: 'Everton' }
                 }]
             };
             const promise = Promise.resolve(response);
@@ -98,16 +92,10 @@ describe('actionCreators', () => {
                     league: {
                         leagueId: 1,
                         leagueNameEN: 'Premier League',
-                        leagueNameVN: 'Ngoại hạng Anh',
+                        leagueNameVN: 'Ngoại hạng Anh'
                     },
-                    homeTeam: {
-                        teamId: 1,
-                        teamNameEN: 'Arsenal',
-                    },
-                    awayTeam: {
-                        teamId: 2,
-                        teamNameEN: 'Everton',
-                    }
+                    homeTeam: { teamId: 1, teamNameEN: 'Arsenal' },
+                    awayTeam: { teamId: 2, teamNameEN: 'Everton' }
                 }]
             };
             const promise = Promise.resolve(response);

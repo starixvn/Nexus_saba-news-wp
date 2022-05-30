@@ -10,7 +10,7 @@
 describe('soccerMatchSlice', () => {
     describe('reducers', () => {
         describe('setSearchKey', () => {
-            it('should update state correctly', () => {
+            it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
@@ -27,7 +27,7 @@ describe('soccerMatchSlice', () => {
         });
 
         describe('setSelectedDate', () => {
-            it('should update state correctly', () => {
+            it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
@@ -44,7 +44,7 @@ describe('soccerMatchSlice', () => {
         });
 
         describe('setDateRanges', () => {
-            it('should update state correctly', () => {
+            it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
@@ -61,7 +61,7 @@ describe('soccerMatchSlice', () => {
         });
 
         describe('setMajorLeagues', () => {
-            it('should update state correctly', () => {
+            it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
@@ -100,7 +100,7 @@ describe('soccerMatchSlice', () => {
         });
 
         describe('setMatches', () => {
-            it('should update state correctly', () => {
+            it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
@@ -155,7 +155,7 @@ describe('soccerMatchSlice', () => {
                 window.isLivePage = false;
             });
 
-            it('should update state correctly when isLivePage = true', () => {
+            it('updates state correctly when isLivePage = true', () => {
                 window.isLivePage = true;
 
                 expect(
@@ -261,7 +261,7 @@ describe('soccerMatchSlice', () => {
                 });
             });
 
-            it('should update state correctly when isLivePage = false, today === selectedDate, matches != null', () => {
+            it('updates state correctly when isLivePage = false, today === selectedDate, matches != null', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
