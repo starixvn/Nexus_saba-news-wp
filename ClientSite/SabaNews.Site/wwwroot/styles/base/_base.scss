@@ -142,6 +142,7 @@ body {
     h2 {
         font-size: 2.4rem;
         margin: 1rem 0;
+
         @include tableMobile {
             font-size: 2rem;
             margin: .5rem 0;
@@ -151,6 +152,7 @@ body {
     h3 {
         font-size: 2.1rem;
         margin: 1rem 0;
+
         @include tableMobile {
             font-size: 1.7rem;
             margin: .5rem 0;
@@ -160,6 +162,7 @@ body {
     h4 {
         font-size: 1.8rem;
         margin: 1rem 0;
+
         @include tableMobile {
             font-size: 1.6rem;
             margin: .5rem 0;
@@ -175,12 +178,6 @@ body {
 
         @include tableMobile {
             margin-bottom: .5rem;
-        }
-    }
-    li{
-        margin-bottom : 1rem;
-        @include tableMobile{
-            margin-bottom : .5rem;
         }
     }
 }
