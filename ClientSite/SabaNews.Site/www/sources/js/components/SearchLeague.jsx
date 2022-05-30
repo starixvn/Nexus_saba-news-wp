@@ -42,7 +42,9 @@ export default class SearchLeague extends PureComponent {
                 let result = [];
                 result = searchLeagues.filter(item =>
                     (item.leagueNameEN && item.leagueNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1)
-                    || (item.leagueNameVN && item.leagueNameVN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1));
+                    || (item.leagueFullNameEN && item.leagueFullNameEN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1)
+                    || (item.leagueNameVN && item.leagueNameVN.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1)
+                    );
                 this.setState({ leagues: result, toggleIcon: !this.state.toggleIcon });
             } else if (searchKey.length === 0) {
                 this.setState({ leagues: [], toggleIcon: !this.state.toggleIcon });
