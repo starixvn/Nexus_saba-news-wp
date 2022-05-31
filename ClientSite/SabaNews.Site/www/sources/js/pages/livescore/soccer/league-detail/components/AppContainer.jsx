@@ -23,7 +23,7 @@ moment.updateLocale('vi', {
 });
 moment.locale('vi');
 
-class AppContainer extends Component {
+export class AppContainer extends Component {
     constructor(props) {
         super(props);
 
