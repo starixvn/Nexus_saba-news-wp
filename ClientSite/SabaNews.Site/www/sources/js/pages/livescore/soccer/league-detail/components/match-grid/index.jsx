@@ -130,9 +130,7 @@ export default class MatchGrid extends PureComponent {
             matches = this.filterMatches(matches, searchKey);
         }
 
-        if (matches.length > 0) {
-            matches = this.groupMatches(stages, matches);
-        }
+        matches = this.groupMatches(stages, matches);
 
         return (
             <>

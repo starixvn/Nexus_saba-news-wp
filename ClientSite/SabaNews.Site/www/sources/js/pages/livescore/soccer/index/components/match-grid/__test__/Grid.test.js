@@ -10,15 +10,11 @@ describe('Grid', () => {
         leagues: []
     };
 
-    afterEach(() => {
+    afterAll(() => {
         jest.clearAllMocks();
     });
 
     describe('constructor', () => {
-        afterEach(() => {
-            window.innerWidth = 0;
-        });
-
         it('inital correctly state', () => {
             // Arrange
             const container = shallow(<Grid {...defaultProps} />);
@@ -90,7 +86,7 @@ describe('Grid', () => {
                 leagues: [
                     { leagueId: 1, matches: [{ matchId: 1 }, { matchId: 2 }] },
                     { leagueId: 2, matches: [{ matchId: 3 }, { matchId: 4 }] },
-                    { leagueId: 3, matches: [{ matchId: 4 }, { matchId: 5 }, { matchId: 6 }] }
+                    { leagueId: 3, matches: [{ matchId: 5 }, { matchId: 6 }, { matchId: 7 }] }
                 ]
             };
             const container = shallow(<Grid {...props} />);
@@ -120,7 +116,7 @@ describe('Grid', () => {
             leagues: [
                 { leagueId: 1, matches: [{ matchId: 1 }, { matchId: 2 }] },
                 { leagueId: 2, matches: [{ matchId: 3 }, { matchId: 4 }] },
-                { leagueId: 3, matches: [{ matchId: 4 }, { matchId: 5 }, { matchId: 6 }] }
+                { leagueId: 3, matches: [{ matchId: 5 }, { matchId: 6 }, { matchId: 7 }] }
             ]
         };
 

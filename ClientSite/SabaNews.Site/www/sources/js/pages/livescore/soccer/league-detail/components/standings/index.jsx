@@ -113,8 +113,6 @@ export class SeasonStandings extends PureComponent {
         return promotions;
     };
 
-    getGroupName = groupName => `Bảng ${groupName.charAt(0)}`;
-
     render() {
         const seasonStandings = this.groupStandingsByStage(this.props.seasonStandings);
         const promotions = this.getPromotionStandings(this.props.seasonStandings);

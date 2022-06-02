@@ -8,6 +8,9 @@ import LangHelper from '@jsroot/common/langHelper';
 
 describe('index', () => {
     const defaultProps = {
+        league: null,
+        stages: [],
+        sortAsc: '',
         matches: []
     };
 
@@ -346,6 +349,63 @@ describe('index', () => {
                 homeTeam: { teamId: 3, nameEN: 'Liverpool' },
                 awayTeam: { teamId: 4, nameEN: 'Real Madrid' }
             }]);
+        });
+    });
+
+    describe('render', () => {
+        it('renders correctly when matches.length = 0', () => {
+            // Act
+            const container = shallow(<MatchGrid {...defaultProps} />);
+
+            // Assert
+            expect(toJson(container)).toMatchSnapshot();
+        });
+
+        it('renders correctly when matches.length > 0 and searchKey.length = 0', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                matches: [
+                    { matchId: 1, startTime: '2022-05-25' },
+                    { matchId: 2, startTime: '2022-05-25' },
+                    { matchId: 3, startTime: '2022-05-26' }
+                ]
+            };
+
+            // Act
+            const container = shallow(<MatchGrid {...props} />);
+
+            // Assert
+            expect(toJson(container)).toMatchSnapshot();
+        });
+
+        it('renders correctly when matches.length > 0 and searchKey not match home, away team', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                matches: [
+                    {
+                        matchId: 1, startTime: '2022-05-25',
+                        homeTeam: { teamId: 1, nameEN: 'Belgium' },
+                        awayTeam: { teamId: 2, nameEN: 'Croatia' }
+                    },
+                    {
+                        matchId: 2, startTime: '2022-05-26',
+                        homeTeam: { teamId: 3, nameEN: 'Liverpool' },
+                        awayTeam: { teamId: 4, nameEN: 'Real Madrid' }
+                    }
+                ]
+            };
+            CommonFunctions.getTeamName = jest.fn();
+            CommonFunctions.getTeamName.mockReturnValueOnce('Belgium').mockReturnValueOnce('Croatia')
+                .mockReturnValueOnce('Liverpool').mockReturnValueOnce('Real Madrid');
+
+            // Act
+            const container = shallow(<MatchGrid {...props} />);
+            container.setState({ searchKey: 'abc' });
+
+            // Assert
+            expect(toJson(container)).toMatchSnapshot();
         });
     });
 });

@@ -1,27 +1,25 @@
-﻿import React, { PureComponent } from 'react';
+﻿import React from 'react';
 import THead from './THead';
 import TBody from './TBody';
 
-export default class Index extends PureComponent {
-    getGroupName = groupName => `Bảng ${groupName.charAt(0)}`;
+const Index = ({ standings, isMobile }) => {
+    const totalItems = standings.length;
+    return (
+        <>
+            {
+                standings.map((group, index) => {
+                    const groupName = totalItems > 1 ? `Bảng ${group.key.charAt(0)}` : 'Đội';
 
-    render() {
-        const { standings, isMobile } = this.props;
-        const totalItems = standings.length;
+                    return (
+                        <div key={index} className="table-custom">
+                            <THead groupName={groupName} isMobile={isMobile} />
+                            <TBody teams={group.childs} isMobile={isMobile} />
+                        </div>
+                    );
+                })
+            }
+        </>
+    );
+};
 
-        return (
-            <>
-                {
-                    standings.map((group, index) => {
-                        return (
-                            <div key={index} className="table-custom">
-                                <THead groupName={totalItems > 1 ? this.getGroupName(group.key) : 'Đội'} isMobile={isMobile} />
-                                <TBody group={group} isMobile={isMobile} />
-                            </div>
-                        );
-                    })
-                }
-            </>
-        );
-    }
-}
+export default Index;

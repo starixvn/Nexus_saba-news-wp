@@ -1,6 +1,6 @@
 ﻿import React, { PureComponent } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
-import Match from '../../../index/components/match-grid/Match';
+import GridItem from './GridItem';
 
 export default class Grid extends PureComponent {
     constructor(props) {
@@ -8,7 +8,7 @@ export default class Grid extends PureComponent {
 
         this.batchSize = 50;
         const matches = props.matches;
-        const groupIndex = this.getGroupIndex(0) + 1;
+        const groupIndex = this.getGroupIndex(matches, 0) + 1;
         const items = matches.slice(0, groupIndex);
         this.state = ({
             groupIndex,
@@ -21,7 +21,7 @@ export default class Grid extends PureComponent {
     componentDidUpdate(prevProps) {
         if (this.props.matches !== prevProps.matches) {
             const matches = this.props.matches;
-            const groupIndex = this.getGroupIndex(0) + 1;
+            const groupIndex = this.getGroupIndex(matches, 0) + 1;
             const items = matches.slice(0, groupIndex);
             this.setState({
                 groupIndex,
@@ -32,8 +32,7 @@ export default class Grid extends PureComponent {
         }
     }
 
-    getGroupIndex = currentIndex => {
-        const matches = this.props.matches;
+    getGroupIndex = (matches, currentIndex) => {
         const totalItems = matches.length;
         let count = 0;
         let index = currentIndex;
@@ -52,7 +51,7 @@ export default class Grid extends PureComponent {
 
     loadMore = pageIndex => {
         const matches = this.props.matches;
-        const groupIndex = this.getGroupIndex(this.state.groupIndex) + 1;
+        const groupIndex = this.getGroupIndex(matches, this.state.groupIndex) + 1;
         const items = matches.slice(0, groupIndex);
         this.setState({
             groupIndex,
@@ -74,34 +73,7 @@ export default class Grid extends PureComponent {
                 useWindow={true}
             >
                 {
-                    matches.map(item => {
-                        return (
-                            <div className="soccer-match-grid" key={item.key}>
-                                <div className="soccer-match-grid-item">
-                                    <div className="soccer-match-grid-item-header">{item.text}</div>
-                                    <div className="soccer-match-grid-item-body">
-                                        {
-                                            item.childs.map(child => {
-                                                if (child.key) {
-                                                    return (
-                                                        <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan">{child.text}</div>
-                                                            {
-                                                                child.childs.map(match =>
-                                                                    <Match key={match.matchId} searchKey={searchKey} match={{ ...match, league }} />)
-                                                            }
-                                                        </div>
-                                                    );
-                                                } else {
-                                                    return <Match key={child.matchId} searchKey={searchKey} match={{ ...child, league }} />;
-                                                }
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })
+                    matches.map(item => <GridItem key={item.key} searchKey={searchKey} league={league} item={item} />)
                 }
             </InfiniteScroll>
         );
