@@ -528,7 +528,6 @@
 
     @include tableMobile {
         width: 100%;
-        padding: 0 1.2rem;
         margin: 1rem 0 2rem 0;
         display: block;
     }
@@ -552,9 +551,10 @@
                 font-weight: 400;
                 font-size: 1.6rem;
                 display: block;
-                background: $block-highlight-bgcolor;
                 border-radius: 28px;
                 padding: 0 3.2rem 0 1.6rem;
+                background: $bg-nav;
+                border: 1px solid #DADADA;
             }
         }
 
@@ -575,6 +575,10 @@
 
             .icon-search {
                 font-size: 2.4rem;
+
+                &:before {
+                    color: #4F4F4F;
+                }
             }
         }
     }

@@ -650,7 +650,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   @media screen and (max-width: 1024px) {
     .right-header-section {
       width: 100%;
-      padding: 0 1.2rem;
       margin: 1rem 0 2rem 0;
       display: block; } }
   @media (max-width: 767px) {
@@ -668,9 +667,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       font-weight: 400;
       font-size: 1.6rem;
       display: block;
-      background: #E8EAEF;
       border-radius: 28px;
-      padding: 0 3.2rem 0 1.6rem; } }
+      padding: 0 3.2rem 0 1.6rem;
+      background: #FFFDF9;
+      border: 1px solid #DADADA; } }
   .search-input form .btn-search {
     background: none;
     position: absolute;
@@ -686,6 +686,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         position: absolute; } }
     .search-input form .btn-search .icon-search {
       font-size: 2.4rem; }
+      .search-input form .btn-search .icon-search:before {
+        color: #4F4F4F; }
 
 .button-mobile, .button-detail-page {
   width: 2.8rem;
