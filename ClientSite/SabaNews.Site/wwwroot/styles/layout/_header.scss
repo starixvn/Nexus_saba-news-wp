@@ -373,6 +373,10 @@
                     text-decoration: none;
                     display: block;
                 }
+
+                &.active {
+                    color: $color-main-title;
+                }
             }
         }
     }

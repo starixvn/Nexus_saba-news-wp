@@ -55,7 +55,13 @@ $(document).ready(function () {
     })
 
 
-   
+    $(window).on("load resize", function (e) {
+        $('body').removeClass('hidden-body');
+        $('.button-mobile').removeClass('open');
+        $('.main-menu').removeClass('active-main-menu');
+        $('.nav-menu').removeClass('active-nav');
+        $('.header-controls').addClass('width-100-saba');
+    });
     //mobile
     $('.button-mobile').click(function () {
         var windowWidth = window.innerWidth;
@@ -68,7 +74,10 @@ $(document).ready(function () {
             $('.header-controls').css('width', windowWidth);
         }
     });
+    
 
+
+   
 
     $('.button-detail-page').click(function () {
         if ($(window).innerWidth() <= 1024) {
@@ -77,9 +86,7 @@ $(document).ready(function () {
         }
     });
 
-    $(window).on("load resize", function (e) {
-        $('.header-controls').addClass('width-100-saba');
-    });
+   
 
     //desktop
     if ($(window).innerWidth() < 1024) {
