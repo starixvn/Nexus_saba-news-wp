@@ -131,7 +131,10 @@ BEGIN
     SELECT DISTINCT tpl.MatchId
            ,tpl.TeamId    
            ,tpl.PlayerId
-           ,IFNULL(p.NameEN, "")
+           ,(CASE
+                WHEN IFNULL(p.NameEN, '') <> '' THEN p.NameEN
+                ELSE IFNULL(p.FullNameEN, '')
+                END) AS PlayerName
            ,tpl.IsSubstitute
            ,tpl.PlayerNumber
            ,tpl.Position

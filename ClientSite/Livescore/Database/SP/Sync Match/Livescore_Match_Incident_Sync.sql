@@ -84,13 +84,25 @@ BEGIN
             ti.HomeScore,
             ti.AwayScore,
             ti.PlayerId,
-            p.NameEN,
+            (CASE
+                WHEN IFNULL(p.NameEN, '') <> '' THEN p.NameEN
+                ELSE IFNULL(p.FullNameEN, '')
+                END) AS PlayerName,
             ti.AssistId,
-            a.NameEN,
+            (CASE
+                WHEN IFNULL(a.NameEN, '') <> '' THEN a.NameEN
+                ELSE IFNULL(a.FullNameEN, '')
+                END) AS AssistPlayerName,
             ti.InPlayerId,
-            i.NameEN,
+            (CASE
+                WHEN IFNULL(i.NameEN, '') <> '' THEN i.NameEN
+                ELSE IFNULL(i.FullNameEN, '')
+                END) AS InPlayerName,
             ti.OutPlayerId,
-            o.NameEN,
+            (CASE
+                WHEN IFNULL(o.NameEN, '') <> '' THEN o.NameEN
+                ELSE IFNULL(o.FullNameEN, '')
+                END) AS OutPlayerName,
             ti.VarReason,
             ti.VarResult,
             ti.ReasonType
