@@ -109,6 +109,22 @@ export default class IncidentIcon extends PureComponent {
 
     renderInSubsitutionIcon = () => <i className="icon-livescore icon-in" />;
 
+    getSubsitutionIcon = type => {
+        let icon;
+        switch(type) {
+            case IncidentIconType.outSubsitution:
+                icon = this.renderOutSubsitutionIcon();
+                break;
+            case IncidentIconType.inSubsitution:
+                icon = this.renderInSubsitutionIcon();
+                break;
+            default:
+                icon = null;
+                break;
+        }
+        return icon;
+    };
+
     render() {
         const type = this.props.type;
         let icon;
@@ -140,14 +156,8 @@ export default class IncidentIcon extends PureComponent {
             case IncidentIconType.VAR:
                 icon = this.renderVARIcon();
                 break;
-            case IncidentIconType.outSubsitution:
-                icon = this.renderOutSubsitutionIcon();
-                break;
-            case IncidentIconType.inSubsitution:
-                icon = this.renderInSubsitutionIcon();
-                break;
             default:
-                icon = null;
+                icon = this.getSubsitutionIcon(type);
                 break;
         }
 
