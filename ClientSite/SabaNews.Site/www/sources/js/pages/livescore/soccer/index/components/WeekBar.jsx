@@ -45,7 +45,7 @@ export class WeekBar extends PureComponent {
                         <WeekDay key={index} isMobile={isMobile}
                             today={today}
                             selectedDate={selectedDate}
-                            value={item}
+                            currentDate={item}
                             onClick={this.onSelectDate}
                         />
                     )

@@ -21,11 +21,12 @@ export const getMatchResult = (teamId, match) => {
     const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
     const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
     let result;
-    if (match[`${homeFieldName}PenaltyScore`] || match[`${awayFieldName}PenaltyScore`]) {
+
+    if (match[`${homeFieldName}PenaltyScore`] > 0 || match[`${awayFieldName}PenaltyScore`] > 0) {
         result = getResult(match[`${homeFieldName}PenaltyScore`], match[`${awayFieldName}PenaltyScore`]);
-    } else if (match.isSecondLeg && (match[`${homeFieldName}AggregateScore`] || match[`${awayFieldName}AggregateScore`])) {
+    } else if (match.isSecondLeg && (match[`${homeFieldName}AggregateScore`] > 0 || match[`${awayFieldName}AggregateScore`] > 0)) {
         result = getResult(match[`${homeFieldName}AggregateScore`], match[`${awayFieldName}AggregateScore`]);
-    } else if (match[`${homeFieldName}ExtraScore`] || match[`${awayFieldName}ExtraScore`]) {
+    } else if (match[`${homeFieldName}ExtraScore`] > 0 || match[`${awayFieldName}ExtraScore`] > 0) {
         result = getResult(match[`${homeFieldName}ExtraScore`], match[`${awayFieldName}ExtraScore`]);
     } else {
         result = getResult(match[`${homeFieldName}TotalScore`], match[`${awayFieldName}TotalScore`]);
