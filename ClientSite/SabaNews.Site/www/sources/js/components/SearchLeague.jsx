@@ -33,9 +33,7 @@ export default class SearchLeague extends PureComponent {
         });
     };
 
-    checkSearchLeague = (fieldName, searchKey) => {
-        return fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
-    }
+    checkSearchLeague = (fieldName, searchKey) =>  fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
 
     debounceSearchKeyInputChange = Site.debounce(searchKey => {
         this.setState({
