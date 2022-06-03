@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -66,12 +66,12 @@ export class Lineups extends Component {
 
     getGoalsNumber = (goals, className) => {
         return (
-            <>
+            <Fragment>
                 {
                     goals > 1 &&
                     <span className={className}>{goals}</span>
                 }
-            </>
+            </Fragment>
         );
     };
 
@@ -79,15 +79,15 @@ export class Lineups extends Component {
         const playerIncident = this.getPlayerIncident(player.playerId);
         const goalsClass = 'number-position';
         return (
-            <>
+            <Fragment>
                 {
                     playerIncident.goals > 0 &&
-                    <>
+                    <Fragment>
                         <span className="icon-line-up">
                             {this.getGoalsNumber(playerIncident.goals, goalsClass)}
                             <IncidentIcon type={IncidentIconType.Goal} />
                         </span>
-                    </>
+                    </Fragment>
                 }
                 {
                     playerIncident.ownGoals > 0 &&
@@ -137,7 +137,7 @@ export class Lineups extends Component {
                         <IncidentIcon type={IncidentIconType.YellowCard} />
                     </span>
                 }
-            </>
+            </Fragment>
         );
     };
 
@@ -203,7 +203,7 @@ export class Lineups extends Component {
     renderIconLineup = player => {
         const goalClass = 'number-goal';
         return (
-            <>
+            <Fragment>
 
                 {this.getIconGoalLineup(player)}
                 {
@@ -290,7 +290,7 @@ export class Lineups extends Component {
                         </svg>
                     </span>
                 }
-            </>
+            </Fragment>
         );
     };
 
@@ -467,11 +467,8 @@ export class Lineups extends Component {
         const lineup = this.props.match.lineup;
         const players = position === IncidentPosition.Home ? lineup.home : lineup.away;
         const substitution = incidents.filter(item => item.type === IncidentStatus.Substitution && item.position === position);
-        if (!substitution) {
-            return null;
-        }
         return (
-            substitution.map((incident, key) => {
+            substitution && substitution.map((incident, key) => {
                 const inPlayer = players.find(item => item.playerId === incident.inPlayerId);
                 const outPlayer = players.find(item => item.playerId === incident.outPlayerId);
                 return (

@@ -8,7 +8,7 @@ import Statistics from './Statistics';
 import HeadToHead from './HeadToHead';
 import queryString from 'query-string';
 
-class Details extends PureComponent {
+export class Details extends PureComponent {
     componentDidMount() {
         let defaultTab = '';
         const params = queryString.parse(window.location.search);

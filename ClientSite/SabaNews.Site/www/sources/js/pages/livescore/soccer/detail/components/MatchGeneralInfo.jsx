@@ -243,7 +243,7 @@ export default class MatchGeneralInfo extends Component {
 
     render() {
         return (
-            <>
+            <Fragment>
                 <div className="sticky-header">
                     {this.renderBody()}
                 </div>
@@ -252,7 +252,7 @@ export default class MatchGeneralInfo extends Component {
                         {this.renderBody()}
                     </div>
                 </div>
-            </>
+            </Fragment>
         );
     }
 }

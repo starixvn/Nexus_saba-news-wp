@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-class FunctionBar extends Component {
+export class FunctionBar extends Component {
     componentDidMount() {
         const tabStatus = this.updateTabStatus();
         const defaultTab = this.getDefaultActiveKey(tabStatus);
@@ -130,7 +130,7 @@ class FunctionBar extends Component {
         const { activeTab } = this.props;
         const isTabEnable = this.checkTabEnable(tabStatus);
         return (
-            <>
+            <Fragment>
                 <div className="detail-function-bar">
                     <ul>
                         <li>
@@ -159,7 +159,7 @@ class FunctionBar extends Component {
                     !isTabEnable &&
                     <div className="none-livescore">Đang cập nhật dữ liệu...</div>
                 }
-            </>
+            </Fragment>
         );
     }
 }

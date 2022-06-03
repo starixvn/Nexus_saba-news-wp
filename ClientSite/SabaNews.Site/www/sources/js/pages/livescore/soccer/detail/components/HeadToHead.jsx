@@ -14,7 +14,7 @@ export class HeadToHead extends Component {
         const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
-        if (MatchStatus.Finished) {
+        if (match.status === MatchStatus.Finished) {
             if (match[`${homeFieldName}PenaltyScore`]
                 && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
                 return <li>PEN</li>;
@@ -103,21 +103,21 @@ export class HeadToHead extends Component {
 
                                     <div className="txt">{CommonFunctions.getLeagueNameWithStage(match.league)}</div>
                                 </div>
-                                <div className="group-match-item" onClick={() => this.handleClick(event, match)}>
+                                <div className="group-match-item" onClick={event => this.handleClick(event, match)}>
                                     <div className="soccer-match-item">
                                         <div className="soccer-match-stage">
                                             <div className="soccer-match-star-icon soccer-match-star-hidden-pc">
                                                 {
                                                     matchStatus.result === 0 &&
-                                                    <span className="bg-color  bgyelow" title="Hòa">D</span>
+                                                    <span className="bg-color  bgyelow" title="Hòa">H</span>
                                                 }
                                                 {
                                                     matchStatus.result === 1 &&
-                                                    <span className="bg-color bggreen" title="Thắng">W</span>
+                                                    <span className="bg-color bggreen" title="Thắng">T</span>
                                                 }
                                                 {
                                                     matchStatus.result === 2 &&
-                                                    <span className="bg-color bgred" title="Bại">L</span>
+                                                    <span className="bg-color bgred" title="Bại">B</span>
                                                 }
                                                 <i className="icon-livescore icon-live-right" />
                                             </div>
@@ -284,10 +284,9 @@ export class HeadToHead extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { match, headToHead } = state;
+    const { match } = state;
     return {
-        match,
-        headToHead
+        match
     };
 };
 
