@@ -4,7 +4,10 @@ const Input = React.forwardRef(({ open, onClick, onToggle }, ref) => {
     return (
         <i ref={ref}
             className={`date-picker-icon icon-livescore icon-live-calender ${open ? 'active' : ''}`}
-            onClick={() => { onToggle(); onClick(); }}
+            onClick={() => {
+                onToggle();
+                onClick();
+            }}
         />
     );
 });
