@@ -5,7 +5,10 @@
     using System.Threading.Tasks;
     using AutoFixture;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
     using NSubstitute;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
@@ -476,12 +479,22 @@
 
         #region Helpers
 
-        private SoccerController GetController()
+        private SoccerController GetController(bool enabledCache = true)
         {
+            var cacheConfigs = new LivescoreMainPageCacheConfig
+            {
+                Enabled = enabledCache,
+                DateRange = 2,
+                OutOfRangeTimeout = 5
+            };
+            var options = Substitute.For<IOptionsSnapshot<LivescoreMainPageCacheConfig>>();
+            options.Value.Returns(cacheConfigs);
+
+            var cacheService = Substitute.For<ICacheWrapperService>();
             postService = Substitute.For<IPostService>();
             leagueService = Substitute.For<ILeagueService>();
             matchService = Substitute.For<IMatchService>();
-            return new SoccerController(postService, leagueService, matchService);
+            return new SoccerController(options, cacheService, postService, leagueService, matchService);
         }
 
         #endregion
