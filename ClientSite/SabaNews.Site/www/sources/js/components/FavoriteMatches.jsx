@@ -2,7 +2,7 @@
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-const FavoriteMatches = ({ isMobile }) => {
+export const FavoriteMatches = ({ isMobile }) => {
     const matches = CommonFunctions.getFavouriteMatches();
     const count = matches.length > 0 ? matches.length : '';
 

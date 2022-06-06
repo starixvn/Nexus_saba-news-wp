@@ -172,10 +172,6 @@ export default class MatchGrid extends PureComponent {
                                                                 )
                                                             }
                                                         </div>;
-                                                    } else {
-                                                        return <Match key={child.matchId}
-                                                                    searchKey={searchKey}
-                                                                    match={child} onUpdateFavouriteMatch = {this.onUpdateFavouriteMatch}/>;
                                                     }
                                                 })
                                             }

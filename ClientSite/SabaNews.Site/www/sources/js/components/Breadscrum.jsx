@@ -1,7 +1,7 @@
 import React from 'react';
 import Site from '@jsroot/common/site';
 
-const Breadscrum = ({ currentPage, currentPageUrl }) => {
+export const Breadscrum = ({ currentPage, currentPageUrl }) => {
     const handleClick = (event, currentPageUrl) => {
         let url = Site.resolveClientUrl('lich-thi-dau/bong-da');
         if (currentPageUrl) {
