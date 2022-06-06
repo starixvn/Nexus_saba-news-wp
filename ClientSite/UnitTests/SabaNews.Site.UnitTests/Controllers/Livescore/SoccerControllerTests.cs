@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using AutoFixture;
+    using Fanex.Caching;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
     using NSubstitute;
@@ -25,6 +26,7 @@
         private IPostService postService;
         private ILeagueService leagueService;
         private IMatchService matchService;
+        private ICacheWrapperService cacheService;
         private readonly IFixture fixture = new Fixture();
 
         #region Index
@@ -257,8 +259,10 @@
             Assert.Null(viewResult.Model);
         }
 
+        #region GetMatches
+
         [Fact]
-        public async Task GetMatches_WhenCalled_ReturnExpectedJsonResult()
+        public async Task GetMatches_WhenCacheIsDisabled_ReturnExpectedJsonResult()
         {
             // Arrange
             var matches = fixture.Create<IList<Match>>();
@@ -270,7 +274,7 @@
                 EventDate = eventDate,
                 Timezone = 7
             };
-            var controller = GetController();
+            var controller = GetController(false);
             matchService.GetMatchByDateAsync(criteria).Returns(matches);
 
             // Act
@@ -287,6 +291,150 @@
             Assert.Equal(toTime, criteria.ToTime);
             Assert.Equal(1, criteria.SportId);
         }
+
+        [Fact]
+        public async Task GetMatches_WhenCacheReturnEmptyAndInRangeTimeout_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            List<Match> tmpMatches = null;
+            var key = fixture.Create<string>();
+            var today = DateTime.UtcNow.Date;
+            var eventDate = today.AddDays(1);
+            var fromTime = eventDate.AddHours(-7);
+            var toTime = eventDate.AddDays(1).AddSeconds(-1).AddHours(-7);
+            var criteria = new GetMatchByDateCriteria
+            {
+                EventDate = eventDate,
+                Timezone = 7
+            };
+            var controller = GetController();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(tmpMatches);
+            matchService.GetMatchByDateAsync(criteria).Returns(matches);
+
+            // Act
+            var result = await controller.GetMatches(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+
+            Assert.Equal(eventDate, criteria.EventDate);
+            Assert.Equal(7, criteria.Timezone);
+            Assert.Equal(fromTime, criteria.FromTime);
+            Assert.Equal(toTime, criteria.ToTime);
+            Assert.Equal(1, criteria.SportId);
+            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<Match>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetMatches_WhenCacheReturnEmptyAndDateMoreThanTwo_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            List<Match> tmpMatches = null;
+            var key = fixture.Create<string>();
+            var today = DateTime.UtcNow.Date;
+            var eventDate = today.AddDays(3);
+            var fromTime = eventDate.AddHours(-7);
+            var toTime = eventDate.AddDays(1).AddSeconds(-1).AddHours(-7);
+            var criteria = new GetMatchByDateCriteria
+            {
+                EventDate = eventDate,
+                Timezone = 7
+            };
+            var controller = GetController();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(tmpMatches);
+            matchService.GetMatchByDateAsync(criteria).Returns(matches);
+
+            // Act
+            var result = await controller.GetMatches(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+
+            Assert.Equal(eventDate, criteria.EventDate);
+            Assert.Equal(7, criteria.Timezone);
+            Assert.Equal(fromTime, criteria.FromTime);
+            Assert.Equal(toTime, criteria.ToTime);
+            Assert.Equal(1, criteria.SportId);
+            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<Match>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetMatches_WhenCacheReturnEmptyAndDateLowerThanTwo_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            List<Match> tmpMatches = null;
+            var key = fixture.Create<string>();
+            var today = DateTime.UtcNow.Date;
+            var eventDate = today.AddDays(-3);
+            var fromTime = eventDate.AddHours(-7);
+            var toTime = eventDate.AddDays(1).AddSeconds(-1).AddHours(-7);
+            var criteria = new GetMatchByDateCriteria
+            {
+                EventDate = eventDate,
+                Timezone = 7
+            };
+            var controller = GetController();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(tmpMatches);
+            matchService.GetMatchByDateAsync(criteria).Returns(matches);
+
+            // Act
+            var result = await controller.GetMatches(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+
+            Assert.Equal(eventDate, criteria.EventDate);
+            Assert.Equal(7, criteria.Timezone);
+            Assert.Equal(fromTime, criteria.FromTime);
+            Assert.Equal(toTime, criteria.ToTime);
+            Assert.Equal(1, criteria.SportId);
+            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<Match>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetMatches_WhenCacheReturnExpectedData_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            var key = fixture.Create<string>();
+            var today = DateTime.UtcNow.Date;
+            var eventDate = today.AddDays(3);
+            var fromTime = eventDate.AddHours(-7);
+            var toTime = eventDate.AddDays(1).AddSeconds(-1).AddHours(-7);
+            var criteria = new GetMatchByDateCriteria
+            {
+                EventDate = eventDate,
+                Timezone = 7
+            };
+            var controller = GetController();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(matches);
+            matchService.GetMatchByDateAsync(criteria).Returns(matches);
+
+            // Act
+            var result = await controller.GetMatches(criteria);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+
+            Assert.Equal(eventDate, criteria.EventDate);
+            Assert.Equal(7, criteria.Timezone);
+            Assert.Equal(fromTime, criteria.FromTime);
+            Assert.Equal(toTime, criteria.ToTime);
+            Assert.Equal(1, criteria.SportId);
+        }
+
+        #endregion
 
         #region GetMatchesBySeason
 
@@ -363,12 +511,13 @@
 
         #endregion
 
+        #region GetLiveMatches
         [Fact]
-        public async Task GetLiveMatches_WhenCalled_ReturnExpectedJsonResult()
+        public async Task GetLiveMatches_WhenCacheIsDisabled_ReturnExpectedJsonResult()
         {
             // Arrange
             var matches = fixture.Create<IList<Match>>();
-            var controller = GetController();
+            var controller = GetController(false);
             matchService.GetLiveMatchAsync().Returns(matches);
 
             // Act
@@ -379,6 +528,45 @@
             var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
             Assert.Equal(matches, actual);
         }
+
+        [Fact]
+        public async Task GetLiveMatches_WhenCacheReturnNull_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            List<Match> tmpMatches = null;
+            var controller = GetController();
+            var key = fixture.Create<string>();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(tmpMatches);
+            matchService.GetLiveMatchAsync().Returns(matches);
+            // Act
+            var result = await controller.GetLiveMatches();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+            await cacheService.Received().SetAsync(Arg.Any<string>(), Arg.Any<IList<Match>>(), Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task GetLiveMatches_WhenCacheReturnExpectedData_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            var controller = GetController();
+            var key = fixture.Create<string>();
+            cacheService.GetAsync<IList<Match>>(Arg.Do<string>(x => x = key)).Returns(matches);
+            // Act
+            var result = await controller.GetLiveMatches();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
+        }
+
+        #endregion
 
         [Fact]
         public async Task GetSeasonStandings_WhenCalled_ReturnExpectedJsonResult()
@@ -490,7 +678,7 @@
             var options = Substitute.For<IOptionsSnapshot<LivescoreMainPageCacheConfig>>();
             options.Value.Returns(cacheConfigs);
 
-            var cacheService = Substitute.For<ICacheWrapperService>();
+            cacheService = Substitute.For<ICacheWrapperService>();
             postService = Substitute.For<IPostService>();
             leagueService = Substitute.For<ILeagueService>();
             matchService = Substitute.For<IMatchService>();
