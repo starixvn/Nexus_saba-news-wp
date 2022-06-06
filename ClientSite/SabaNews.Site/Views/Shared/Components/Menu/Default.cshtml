@@ -150,6 +150,13 @@
                                 {
                                     <span class="marked-icon"></span>
                                 }
+                                @if (menu.PageSlug == Constants.MatchScheduleSlug)
+                                { 
+                                    <ul>
+                                        <li>Trận đấu quan tâm</li>
+                                        <li>Giải đấu của tôi</li>
+                                    </ul>
+                                }
                             </li>
                         }
 
@@ -199,7 +206,10 @@
             if (menu.CatId != Constants.Home)
             {
                 var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
-                <li class="menu-item"><a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a></li>
+                <li class="menu-item">
+                    <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
+                    
+                </li>
             }
 
         }
