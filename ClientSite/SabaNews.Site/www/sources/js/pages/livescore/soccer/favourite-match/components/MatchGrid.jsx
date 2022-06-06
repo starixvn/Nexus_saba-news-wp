@@ -157,22 +157,20 @@ export default class MatchGrid extends PureComponent {
                                         <div className="soccer-match-grid-item-body">
                                             {
                                                 item.childs.map(child => {
-                                                    if (child.key) {
-                                                        return <div className="group-match-item" key={child.key}>
-                                                            <div className="group-match-item-slogan"
-                                                                onClick={event => this.handleClickLeague(event, child.league)}>
-                                                                <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
-                                                            </div>
-                                                            {
-                                                                child.childs.map(match =>
-                                                                    <Match key={match.matchId}
-                                                                        searchKey={searchKey} match={match}
-                                                                        onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}
-                                                                    />
-                                                                )
-                                                            }
-                                                        </div>;
-                                                    }
+                                                    return <div className="group-match-item" key={child.key}>
+                                                        <div className="group-match-item-slogan"
+                                                            onClick={event => this.handleClickLeague(event, child.league)}>
+                                                            <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
+                                                        </div>
+                                                        {
+                                                            child.childs.map(match =>
+                                                                <Match key={match.matchId}
+                                                                    searchKey={searchKey} match={match}
+                                                                    onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}
+                                                                />
+                                                            )
+                                                        }
+                                                    </div>;
                                                 })
                                             }
                                         </div>
