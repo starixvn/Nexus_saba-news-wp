@@ -78,7 +78,6 @@
             Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
             Assert.Null(viewModel.ViewData);
             Assert.Null(viewModel.RelatedPosts);
-            await postService.Received().UpdateViewAsync(expected.ID, false);
         }
 
         [Fact]
@@ -107,7 +106,6 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
-            await postService.Received().UpdateViewAsync(expected.ID, true);
         }
 
         [Theory]
@@ -141,7 +139,6 @@
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(expectedRecentPosts, viewModel.RecentPosts);
             Assert.Equal(Constants.OtherPostSlug, viewModel.CateSlug);
-            await postService.Received().UpdateViewAsync(expected.ID, true);
         }
 
         [Fact]
