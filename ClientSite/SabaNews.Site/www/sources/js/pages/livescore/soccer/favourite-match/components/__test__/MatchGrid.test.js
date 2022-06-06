@@ -244,7 +244,7 @@ describe('MatchGrid', () => {
             const props = {
                 ...defaultProps,
                 matches: [
-                    {matchId: 1, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 1}},
+                    {matchId: 1, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 1, currentSeasonId: 2}},
                     {matchId: 2, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 1}},
                     {matchId: 3, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 2}},
                     {matchId: 4, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 2}}
@@ -257,7 +257,7 @@ describe('MatchGrid', () => {
             // Act
             container.find('.group-match-item-slogan').first().simulate('click', event, league);
             // Assert
-            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/chi-tiet-giai-dau/2022-06-03/1/0', '_blank');
+            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/chi-tiet-giai-dau/2022-06-03/1/2', '_blank');
         });
     });
 

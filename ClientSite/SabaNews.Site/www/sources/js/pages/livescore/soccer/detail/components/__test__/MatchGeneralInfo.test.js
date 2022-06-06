@@ -271,7 +271,31 @@ describe('MatchGeneralInfo', () => {
             expect(result).toEqual(null);
         });
 
-        it('return null when dont have aggscore', () => {
+        it('return correctly when isSecondLeg = true and not have agg data ', () => {
+            const match = {
+                matchId: 1,
+                startTime: '2022-06-12',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 1,
+                homeTeamPenaltyScore: 1,
+                awayTeamPenaltyScore: 2,
+                status: 50,
+                league: {icon: 'icon'},
+                homeTeam: {icon:'icon'},
+                awayTeam: {icon:'icon'},
+                isSecondLeg: true
+            };
+            const container = shallow(<MatchGeneralInfo {...defaultProps}/>);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.getAggregateScore(match);
+
+            // Assert
+            expect(result).toEqual(null);
+        });
+
+        it('return correctly when have aggscore', () => {
             const match = {
                 matchId: 1,
                 startTime: '2022-06-12',
@@ -496,11 +520,12 @@ describe('MatchGeneralInfo', () => {
             expect(result).toMatchSnapshot();
         });
 
-        it('return correctly when away team dont have any goals & card', () => {
+        it('return correctly when team have goals & card', () => {
             const incidents = [
                 { matchId: 1, type: 1, position: 1, timeShow: 1, homeScore: 1, awayScore: 2 },
                 { matchId: 1, type: 8, position: 2, timeShow: 2, homeScore: 2, awayScore: 2 },
-                { matchId: 1, type: 17, position: 1, timeShow: 3, homeScore: 3, awayScore: 2}
+                { matchId: 1, type: 17, position: 1, timeShow: 3, homeScore: 3, awayScore: 2},
+                { matchId: 1, type: 8, position: 1, timeShow: 3, homeScore: 0, awayScore: 0}
             ];
             const props = {
                 ...defaultProps,
@@ -520,15 +545,15 @@ describe('MatchGeneralInfo', () => {
                     },
                     incidents: incidents,
                     statistic: {
-                        homeStatistic: {redCard: 0, yellowCard: 0},
-                        awayStatistic: {redCard: 0, yellowCard: 0}
+                        homeStatistic: {redCard: 1, yellowCard: 1},
+                        awayStatistic: {redCard: 1, yellowCard: 1}
                     }
                 }
             };
             const container = shallow(<MatchGeneralInfo {...props}/>);
             const instance = container.instance();
             // Act
-            const result = instance.getBallAndCardNumber(2);
+            const result = instance.getBallAndCardNumber(1);
 
             // Assert
             expect(result).toMatchSnapshot();
@@ -700,7 +725,7 @@ describe('MatchGeneralInfo', () => {
                 target: { className: 'livescore' }
             };
             window.open = jest.fn();
-            const league = { leagueId: 12036, leagueNameVN: 'Euro', season: 123};
+            const league = { leagueId: 12036, leagueNameVN: 'Euro', currentSeasonId: 123};
             DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-01');
             const container = shallow(<MatchGeneralInfo {...defaultProps} />);
             const instance = container.instance();
@@ -709,7 +734,7 @@ describe('MatchGeneralInfo', () => {
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/0/2022-06-01/12036');
+            expect(window.location).toEqual('lich-thi-dau/bong-da/world-cup/123/2022-06-01/12036');
         });
 
         it('calls correctly when ctrlKey = true', () => {
@@ -794,7 +819,7 @@ describe('MatchGeneralInfo', () => {
             const container = shallow(<MatchGeneralInfo {...defaultProps} />);
             const instance = container.instance();
             CommonFunctions.isPreMatch = jest.fn().mockReturnValue(false);
-            CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(false);
+            CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(true);
             // Act
             const result = instance.renderBody();
 
