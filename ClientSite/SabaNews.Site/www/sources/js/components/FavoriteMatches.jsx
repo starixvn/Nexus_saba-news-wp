@@ -18,7 +18,7 @@ export const FavoriteMatches = ({ isMobile }) => {
     const desktopIcon = () => {
         return (
             <>
-                <i className="icon-livescore icon-live-start" /> <span className="title">Trận đấu quan tâm</span>
+                <span className="title">Trận đấu quan tâm</span>
                 <span className={`like-count ${count > 0 ? 'number-like' : ''}`}>{count}</span>
             </>
         );
@@ -29,7 +29,6 @@ export const FavoriteMatches = ({ isMobile }) => {
             <>
                 <span>Trận đấu quan tâm</span>
                 <div className="count-start">
-                    <i className="icon-livescore icon-live-start" />
                     <i className={`mobile-count ${count > 0 ? 'count-number' : ''}`}>{count}</i>
                 </div>
             </>

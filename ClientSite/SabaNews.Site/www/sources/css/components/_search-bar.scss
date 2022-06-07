@@ -10,7 +10,7 @@
         margin-right: 0;
         width: 100%;
         @include tableMobile {
-            margin-right: .4rem;
+            margin-right: 0;
         }
 
         .livescore-soccer-searchbox {
@@ -67,6 +67,7 @@
             width: 3rem;
             margin-left: .4rem;
             display: flex;
+            display : none;
         }
 
 

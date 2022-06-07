@@ -9,7 +9,6 @@
     }
 
     .livescore-like {
-        background: $border-soccer-item;
         padding: .8rem 1.2rem;
         display: flex;
         align-items: center;
@@ -28,7 +27,6 @@
             font-size: 1.4rem;
             line-height: 2.4rem;
             color: $color-active-icon;
-            padding-left: 1.6rem;
             text-transform: uppercase;
         }
 
@@ -76,8 +74,6 @@
                 color: #f12f19;
                 text-transform: uppercase;
                 background-color: #fffdf9;
-                padding-left: 1.6rem;
-
                 @include tableMobile {
                     font-size: 1.6rem
                 }

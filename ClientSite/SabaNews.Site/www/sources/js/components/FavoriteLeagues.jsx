@@ -77,7 +77,6 @@ export default class FavoriteLeagues extends PureComponent {
             <div className="leagues">
                 <div className="leagues-title">
                     <div className="leagues-group">
-                        <i className="icon-livescore icon-live-start" />
                         <span>{LangHelper.getResource('MyLeagues')}</span>
                     </div>
                     <OverlayTrigger
