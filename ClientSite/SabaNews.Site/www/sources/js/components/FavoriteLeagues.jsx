@@ -5,7 +5,7 @@ import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-const FavoriteLeagues = ({ leagues }) => {
+export const FavoriteLeagues = ({ leagues }) => {
     const handleClick = (event, league) => {
         const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
