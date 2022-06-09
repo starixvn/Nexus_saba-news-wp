@@ -4,6 +4,7 @@ DROP PROCEDURE IF EXISTS Livescore_Match_Incident_Sync;
 DELIMITER //
 
 CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Incident_Sync(
+    IN matchId BIGINT
     IN incidentJson JSON
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
@@ -40,7 +41,6 @@ BEGIN
     
     DROP TEMPORARY TABLE IF EXISTS tmp_incident;
     CREATE TEMPORARY TABLE IF NOT EXISTS tmp_incident(
-                        MatchId BIGINT NOT NULL,
                         Type TINYINT,
                         Position TINYINT,
                         Time SMALLINT,
@@ -60,7 +60,6 @@ BEGIN
                         ReasonType SMALLINT);
     
 	INSERT INTO tmp_incident(
-        MatchId,
         Type,
         Position,
         Time,
@@ -78,8 +77,7 @@ BEGIN
         VarReason,
         VarResult,
         ReasonType)
-    SELECT  ti.MatchId,
-            ti.Type,
+    SELECT  ti.Type,
             ti.Position,
             ti.Time,
             ti.Second,
@@ -115,7 +113,6 @@ BEGIN
             "$[*]"
             COLUMNS
             (
-                MatchId BIGINT PATH "$.MatchId",
                 Type TINYINT PATH "$.Type",
                 Position TINYINT PATH "$.Position",
                 Time SMALLINT PATH "$.Time",
@@ -141,7 +138,7 @@ BEGIN
     LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId AND o.TeamId > 0;
 
     DELETE FROM livescore_match_incident lmi
-    WHERE lmi.MatchId IN (SELECT DISTINCT MatchId FROM tmp_incident);
+    WHERE lmi.MatchId = matchId;
 
     INSERT INTO livescore_match_incident(
         MatchId,
@@ -162,7 +159,7 @@ BEGIN
         VarReason,
         VarResult,
         ReasonType)
-    SELECT DISTINCT ti.matchId,
+    SELECT DISTINCT matchId,
             ti.Type,
             ti.Position,
             ti.Time,
