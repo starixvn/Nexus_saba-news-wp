@@ -1,5 +1,4 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
-
 DROP PROCEDURE IF EXISTS Livescore_Match_Incident_Sync;
 DELIMITER //
 
@@ -183,5 +182,4 @@ BEGIN
 END;
 
 //
-DELIMITER ;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_Incident_Sync TO 'sabasports'@'%';
+DELIMITER;
