@@ -1,3 +1,5 @@
+/*<info serverAlias=”SSMS-sabasports” databaseType="2" executers=”sabasports” selecters=”” isFunction=”0” isNested=”1”></info>*/
+
 DROP PROCEDURE IF EXISTS Livescore_Match_Incident_Sync_xtest;
 DELIMITER //
 
