@@ -4,7 +4,7 @@ DELIMITER //
 
 CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Incident_Sync(
     IN matchId BIGINT
-    IN incidentJson JSON
+    ,IN incidentJson JSON
     ,OUT errCode SMALLINT
 	,OUT errMsg VARCHAR(100)
     /*
