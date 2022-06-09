@@ -123,7 +123,7 @@
             foreach (var matchId in matchIds)
             {
                 var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
-                await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
+                await syncMatchService.SyncMatchIncidentAsync(matchId, incidents);
             }
         }
     }

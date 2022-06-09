@@ -13,10 +13,13 @@
             Assert.Equal("Livescore_Match_Incident_Sync", actual);
         }
 
-        [Fact]
-        public void IsValid_InValidParam_ReturnFalse()
+        [Theory]
+        [InlineData(0, "")]
+        [InlineData(1, "")]
+        [InlineData(0, "abc")]
+        public void IsValid_InValidParam_ReturnFalse(long matchId, string incidentJson)
         {
-            var criteria = new ImportIncidentCommand();
+            var criteria = new ImportIncidentCommand { MatchId = matchId, IncidentJson = incidentJson };
             var actual = criteria.IsValid();
             Assert.False(actual);
         }
@@ -24,7 +27,7 @@
         [Fact]
         public void IsValid_ValidParam_ReturnTrue()
         {
-            var criteria = new ImportIncidentCommand { IncidentJson = "Json" };
+            var criteria = new ImportIncidentCommand { IncidentJson = "Json", MatchId = 1 };
             var actual = criteria.IsValid();
             Assert.True(actual);
         }

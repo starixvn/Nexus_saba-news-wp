@@ -97,14 +97,14 @@
         [Fact]
         public async Task SyncMultipleMatchIncidentAsync_WhenNoMatchResponse_DoNothing()
         {
-            await sync.SyncMultipleMatchIncidentAsync(new List<MatchIncident>());
+            await sync.SyncMatchIncidentAsync(1, new List<MatchIncident>());
             await baseService.DidNotReceive().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
         }
 
         [Fact]
         public async Task SyncMultipleMatchIncidentAsync_WhenHasMatchResponse_CallExecuteNonQuery()
         {
-            await sync.SyncMultipleMatchIncidentAsync(fixture.Create<List<MatchIncident>>());
+            await sync.SyncMatchIncidentAsync(100, fixture.Create<List<MatchIncident>>());
             await baseService.Received().ExecuteNonQueryAsync(Arg.Any<INonQueryCommand>());
         }
 

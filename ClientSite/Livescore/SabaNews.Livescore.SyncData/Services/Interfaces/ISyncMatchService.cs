@@ -19,7 +19,7 @@
 
         Task SyncMultipleMatchCommentaryAsync(List<MatchCommentary> commentaries);
 
-        Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents);
+        Task SyncMatchIncidentAsync(long matchId, List<MatchIncident> incidents);
 
         Task SyncDeletedMatchesAsync(List<DeletedMatch> delMatches);
 

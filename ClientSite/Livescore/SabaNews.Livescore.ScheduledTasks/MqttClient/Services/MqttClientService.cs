@@ -122,6 +122,8 @@
         public async Task HandleApplicationMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs eventArgs)
         {
             var topic = eventArgs.ApplicationMessage.Topic;
+            logger.WriteLogFileInfo($"Received Mqtt Message, topic: {topic}");
+
             var json = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
 
             if (topic.StartsWith("/stats"))
@@ -140,7 +142,7 @@
         private async Task HandleTextLiveResponse(long matchId)
         {
             var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
-            await syncMatchService.SyncMultipleMatchIncidentAsync(incidents);
+            await syncMatchService.SyncMatchIncidentAsync(matchId, incidents);
         }
 
         private async Task HandleMatchDetailResponse(MqttLiveMatch match)

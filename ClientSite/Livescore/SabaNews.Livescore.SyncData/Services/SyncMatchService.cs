@@ -85,7 +85,7 @@
             }
         }
 
-        public async Task SyncMultipleMatchIncidentAsync(List<MatchIncident> incidents)
+        public async Task SyncMatchIncidentAsync(long matchId, List<MatchIncident> incidents)
         {
             if (incidents is not null && incidents.Any())
             {
@@ -187,7 +187,7 @@
             foreach (var matchId in matchIds)
             {
                 var incidents = await fetchMatchService.FetchMatchIncidentAsync((int)SportType.Soccer, matchId);
-                await SyncMultipleMatchIncidentAsync(incidents);
+                await SyncMatchIncidentAsync(matchId, incidents);
             }
         }
     }
