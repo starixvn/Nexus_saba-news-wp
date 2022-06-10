@@ -12,6 +12,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 			- 20220412@Tim: init
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
+            - 202200610@Hank: check deleted match
     */
 )
 BEGIN    
@@ -29,7 +30,8 @@ BEGIN
         AND IFNULL(m.SeasonId, 0) = seasonId
         AND m.CombinedId IS NULL
         AND m.Status IS NOT NULL
-        AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime);
+        AND (fromTime IS NULL OR m.StartTime BETWEEN fromTime AND toTime)
+        AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId);
 	
     SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, _hasStandings AS HasSeasonStandings, l.Icon
     FROM livescore_league l
