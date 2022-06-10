@@ -76,7 +76,7 @@ export default class MatchGrid extends PureComponent {
         return tempMatches;
     };
 
-    groupMatches = (stages, matches) => {
+    groupMatches = (stages, matches, league) => {
         if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0) {
             return this.groupMatchesByDate(matches);
         }
@@ -88,7 +88,9 @@ export default class MatchGrid extends PureComponent {
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
             let text = '';
-            if (item.round > 0 && item.stage.roundCount > 1) {
+            if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === 2) {
+                text = CommonFunctions.getStageName(item.stage) + ' - ' + this.getRoundName(item.round);
+            } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType !== 2) {
                 text = this.getRoundName(item.round);
             } else {
                 text = CommonFunctions.getStageName(item.stage);
@@ -130,7 +132,7 @@ export default class MatchGrid extends PureComponent {
             matches = this.filterMatches(matches, searchKey);
         }
 
-        matches = this.groupMatches(stages, matches);
+        matches = this.groupMatches(stages, matches, league);
 
         return (
             <>
