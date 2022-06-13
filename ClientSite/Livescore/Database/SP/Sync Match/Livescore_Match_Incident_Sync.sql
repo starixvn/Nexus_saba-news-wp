@@ -161,7 +161,7 @@ BEGIN
     SELECT DISTINCT matchId,
             ti.Type,
             ti.Position,
-            ABS(ti.Time),
+            ABS(ti.Time) As MatchTime,
             ABS(ti.Second),
             ti.HomeScore,
             ti.AwayScore,
@@ -177,7 +177,7 @@ BEGIN
             ti.VarResult,
             ti.ReasonType
     FROM tmp_incident ti
-    ORDER BY ti.Time;
+    ORDER BY MatchTime;
         
 END;
 
