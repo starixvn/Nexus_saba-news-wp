@@ -91,6 +91,7 @@
             {
                 var command = new ImportIncidentCommand
                 {
+                    MatchId = matchId,
                     IncidentJson = JsonConvert.SerializeObject(incidents)
                 };
                 await baseService.ExecuteNonQueryAsync(command);
