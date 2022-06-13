@@ -36,5 +36,6 @@
     SendPenaltyChange: 'Nâng mức thẻ',
     ToBeDecided: 'Chờ xác định',
     Today: 'Hôm nay',
+    Turn: 'Lượt',
     Unknown: 'Không xác định',
 };

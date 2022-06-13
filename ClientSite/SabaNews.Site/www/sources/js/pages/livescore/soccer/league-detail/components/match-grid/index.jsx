@@ -5,6 +5,7 @@ import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import LangHelper from '@jsroot/common/langHelper';
+import { LeagueType } from '@jsroot/common/constants';
 
 export default class MatchGrid extends PureComponent {
     constructor(props) {
@@ -19,7 +20,8 @@ export default class MatchGrid extends PureComponent {
         this.setState({ searchKey: event.target.value });
     };
 
-    getRoundName = round => `${LangHelper.getResource('Round')} ${round}`;
+    getRoundName = (round, type) => type === LeagueType.Cup ? `${LangHelper.getResource('Turn')} ${round}`
+                                                            : `${LangHelper.getResource('Round')} ${round}`;
 
     groupMatchesByDate = matches => {
         const totalItems = matches.length;
@@ -88,10 +90,10 @@ export default class MatchGrid extends PureComponent {
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
             let text = '';
-            if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === 2) {
-                text = CommonFunctions.getStageName(item.stage) + ' - ' + this.getRoundName(item.round);
+            if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
+                text = CommonFunctions.getStageName(item.stage) + ' - ' + this.getRoundName(item.round, league.leagueType);
             } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType !== 2) {
-                text = this.getRoundName(item.round);
+                text = this.getRoundName(item.round, league.leagueType);
             } else {
                 text = CommonFunctions.getStageName(item.stage);
             }
