@@ -91,7 +91,7 @@ export default class MatchGrid extends PureComponent {
             const item = tempMatches[i];
             let text = '';
             if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
-                text = CommonFunctions.getStageName(item.stage) + ' - ' + this.getRoundName(item.round, league.leagueType);
+                text = `${CommonFunctions.getStageName(item.stage)} - ${this.getRoundName(item.round, league.leagueType)}`;
             } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType !== 2) {
                 text = this.getRoundName(item.round, league.leagueType);
             } else {
