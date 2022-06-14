@@ -29,7 +29,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Home &&
                             <>
-                                <div className="item-th-time">{incident.timeShow + "'"}</div>
+                                <div className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'" : ''}</div>
                                 <div className="item-th flexbox">
                                     <i className="in-out-icon icon-livescore icon-in"/>
                                     <span className="name-th">{incident.inPlayerName} <span className="noted"></span></span>
@@ -53,7 +53,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Away &&
                             <>
-                                <div className="item-th-time">{incident.timeShow + "'"}</div>
+                                <div className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'" : ''}</div>
                                 <div className="item-th flexbox">
                                     <span className="name-th">{incident.inPlayerName} <span className="noted"></span></span>
                                     <i className="in-out-icon icon-livescore icon-in" />
@@ -80,7 +80,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Home &&
                             <ul className="item-th flexbox">
-                                <li className="item-th-time">{incident.timeShow + "'"}</li>
+                                <li className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'" : ''}</li>
                                 <li>
                                     <span className="item-th-name">
                                         {incident.varResult === 0 ? incident.playerName : CommonFunctions.mappingVarResultText(incident.varResult)}
@@ -111,7 +111,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Away &&
                             <ul className="item-th flexbox">
-                                <li className="item-th-time">{incident.timeShow + "'"}</li>
+                                <li className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'": ''}</li>
                                 <li>
                                     <span className="item-th-name">
                                         {incident.varResult === 0 ? incident.playerName : CommonFunctions.mappingVarResultText(incident.varResult)}

@@ -59,7 +59,7 @@ export default class CommonFunctions {
                 incident.homeScore = homeScore;
                 incident.awayScore = awayScore;
             }
-            incident.timeShow = time;
+            incident.timeShow = (item.time < 0 || item.second < 0 ) ? '' : time;
             summary.push(incident);
         });
         return summary;

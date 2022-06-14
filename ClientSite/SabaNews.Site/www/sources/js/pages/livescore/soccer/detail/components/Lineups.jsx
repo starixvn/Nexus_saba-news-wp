@@ -473,7 +473,7 @@ export class Lineups extends Component {
                 const outPlayer = players.find(item => item.playerId === incident.outPlayerId);
                 return (
                     <ul key={key} className="list-paticipant list-change-main">
-                        <li className="number-player">{incident.timeShow}'</li>
+                        <li className="number-player">{incident.timeShow !== '' ? incident.timeShow + "'" : ''}</li>
                         <li className="name-player">
                             <p><i className="icon-livescore icon-in"></i> {inPlayer?.playerNumber || 0} - {incident.inPlayerName}</p>
                             <p> <i className="icon-livescore icon-out"></i> {outPlayer?.playerNumber || 0} - {incident.outPlayerName}</p>

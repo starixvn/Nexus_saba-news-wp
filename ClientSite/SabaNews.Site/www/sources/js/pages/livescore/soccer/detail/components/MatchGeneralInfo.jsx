@@ -90,7 +90,7 @@ export default class MatchGeneralInfo extends Component {
                         return (
                             <ul key={gkey} className="participant-detail-group name-player-goal">
                                 <li><IncidentIcon type={goal.type} />
-                                    <span className="name-player">({goal.timeShow}') - {goal.playerName}</span>
+                                    <span className="name-player">({goal.timeShow !== '' ? goal.timeShow + "'" : ''}) - {goal.playerName}</span>
                                 </li>
                             </ul>
                         );
