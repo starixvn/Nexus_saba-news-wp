@@ -5,6 +5,7 @@ import { ActionCreators } from '../../actions';
 import Grid from './grid/index';
 import Promotion from './Promotion';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { Tabs, Tab } from 'react-bootstrap';
 
 export class SeasonStandings extends PureComponent {
     constructor(props) {
@@ -113,16 +114,30 @@ export class SeasonStandings extends PureComponent {
         return promotions;
     };
 
+    checkShowTab = (seasonStandings, stages) => {
+        if(seasonStandings.length > 1) {
+            return true;
+        }
+        const standingStageId = seasonStandings.map(item => item.orderIndex);
+        const maxOrder = Math.max(standingStageId);
+        const playoffStages = stages.filter(item => item.orderIndex > maxOrder && item.mode === 2);
+        if(playoffStages.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
     render() {
+        const stages = this.props.stages
         const seasonStandings = this.groupStandingsByStage(this.props.seasonStandings);
         const promotions = this.getPromotionStandings(this.props.seasonStandings);
         const totalItems = seasonStandings.length;
         const isMobile = this.state.isMobile;
-
+        const isShowTab = this.checkShowTab(seasonStandings, stages);
         return (
             <div className="season-standings">
                 {
-                    seasonStandings.map(group => {
+                    !isShowTab && seasonStandings.map(group => {
                         return <div key={group.stageId}>
                             {totalItems > 1 && <div className="group-stage">{CommonFunctions.getStageName(group)}</div>}
                             <Grid standings={group.childs} isMobile={isMobile} />
@@ -130,7 +145,26 @@ export class SeasonStandings extends PureComponent {
                     })
                 }
                 {
-                    promotions.length > 0 && <Promotion promotions={promotions} />
+                    !isShowTab && promotions.length > 0 && <Promotion promotions={promotions} />
+                }
+                {
+                    isShowTab &&
+                    <Tabs >
+                        {
+                            seasonStandings.map(group => {
+                                return (
+                                    <Tab eventKey={group.stageId} title={CommonFunctions.getStageName(group)}  key={group.stageId}>
+                                        <div>
+                                            <Grid standings={group.childs} isMobile={isMobile} />
+                                        </div>
+                                        {
+                                            promotions.length > 0 && <Promotion promotions={promotions} />
+                                        }
+                                    </Tab>
+                                );
+                            })
+                        }
+                    </Tabs>
                 }
             </div>
         );
@@ -140,8 +174,8 @@ export class SeasonStandings extends PureComponent {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { seasonStandings } = state;
-    return { seasonStandings };
+    const { seasonStandings, stages } = state;
+    return { seasonStandings, stages };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SeasonStandings);
