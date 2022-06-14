@@ -80,7 +80,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Home &&
                             <ul className="item-th flexbox">
-                                <li className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'" : ''}</li>
+                                <li className="item-th-time">{this.getIncidentTimeShow(incident.timeShow)}</li>
                                 <li>
                                     <span className="item-th-name">
                                         {incident.varResult === 0 ? incident.playerName : CommonFunctions.mappingVarResultText(incident.varResult)}
@@ -111,7 +111,7 @@ export default class GeneralIncident extends Component {
                         {
                             incident.position === IncidentPosition.Away &&
                             <ul className="item-th flexbox">
-                                <li className="item-th-time">{incident.timeShow !== '' ? incident.timeShow + "'": ''}</li>
+                                <li className="item-th-time">{this.getIncidentTimeShow(incident.timeShow)}</li>
                                 <li>
                                     <span className="item-th-name">
                                         {incident.varResult === 0 ? incident.playerName : CommonFunctions.mappingVarResultText(incident.varResult)}
@@ -131,6 +131,8 @@ export default class GeneralIncident extends Component {
             </div>
         );
     };
+
+    getIncidentTimeShow = time => time !== '' ? `${time}'`: '';
 
     render() {
         if (!this.props.incident) {
