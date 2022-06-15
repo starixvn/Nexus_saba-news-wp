@@ -153,7 +153,7 @@ export class SeasonStandings extends PureComponent {
                         {
                             seasonStandings.map(group => {
                                 return (
-                                    <Tab eventKey={group.stageId} title={CommonFunctions.getStageName(group)}  key={group.stageId}>
+                                    <Tab eventKey={group.stageId} title={CommonFunctions.getStageName(group)}  key={group.stageId}  className="season-standings">
                                         <div>
                                             <Grid standings={group.childs} isMobile={isMobile} />
                                         </div>
