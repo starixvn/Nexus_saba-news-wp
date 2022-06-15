@@ -12,9 +12,9 @@ export class SeasonStandings extends PureComponent {
         super(props);
 
         this.MobileMaxWidth = 580;
-
         this.state = {
-            isMobile: window.innerWidth <= this.MobileMaxWidth ? true : false
+            isMobile: window.innerWidth <= this.MobileMaxWidth ? true : false,
+            selectedTab: ''
         };
     }
 
@@ -24,6 +24,12 @@ export class SeasonStandings extends PureComponent {
         this.props.getSeasonStandings({
             leagueId: window.getMatchByStageParams.leagueId,
             seasonId: window.getMatchByStageParams.seasonId
+        }).then(() =>  {
+            if(this.props.seasonStandings.length > 0) {
+                const stageIds = this.props.seasonStandings.map(item => item.stageId);
+                const activeStage = Math.max(...stageIds);
+                this.setState({selectedTab: activeStage});
+            }
         });
     }
 
@@ -114,6 +120,10 @@ export class SeasonStandings extends PureComponent {
         return promotions;
     };
 
+    handleSelectTab = key => {
+        this.setState({selectedTab: key})
+    }
+
     checkShowTab = (seasonStandings, stages) => {
         if(seasonStandings.length > 1) {
             return true;
@@ -125,31 +135,37 @@ export class SeasonStandings extends PureComponent {
             return true;
         }
         return false;
-    }
+    };
 
     render() {
-        const stages = this.props.stages
+        const stages = this.props.stages;
         const seasonStandings = this.groupStandingsByStage(this.props.seasonStandings);
         const promotions = this.getPromotionStandings(this.props.seasonStandings);
         const totalItems = seasonStandings.length;
         const isMobile = this.state.isMobile;
         const isShowTab = this.checkShowTab(seasonStandings, stages);
+        const { selectedTab } = this.state;
         return (
-            <div className="season-standings">
+            <div>
                 {
-                    !isShowTab && seasonStandings.map(group => {
-                        return <div key={group.stageId}>
-                            {totalItems > 1 && <div className="group-stage">{CommonFunctions.getStageName(group)}</div>}
-                            <Grid standings={group.childs} isMobile={isMobile} />
-                        </div>;
-                    })
-                }
-                {
-                    !isShowTab && promotions.length > 0 && <Promotion promotions={promotions} />
+                    !isShowTab &&
+                    <div className="season-standings">
+                        {
+                             seasonStandings.map(group => {
+                                return <div key={group.stageId}>
+                                    {totalItems > 1 && <div className="group-stage">{CommonFunctions.getStageName(group)}</div>}
+                                    <Grid standings={group.childs} isMobile={isMobile} />
+                                </div>;
+                            })
+                        }
+                        {
+                            promotions.length > 0 && <Promotion promotions={promotions} />
+                        }
+                    </div>
                 }
                 {
                     isShowTab &&
-                    <Tabs >
+                    <Tabs activeKey={selectedTab} onSelect={this.handleSelectTab}>
                         {
                             seasonStandings.map(group => {
                                 return (
