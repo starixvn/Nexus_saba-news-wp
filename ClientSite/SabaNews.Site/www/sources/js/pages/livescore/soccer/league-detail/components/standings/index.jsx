@@ -121,8 +121,8 @@ export class SeasonStandings extends PureComponent {
     };
 
     handleSelectTab = key => {
-        this.setState({selectedTab: key})
-    }
+        this.setState({selectedTab: key});
+    };
 
     checkShowTab = (seasonStandings, stages) => {
         if(seasonStandings.length > 1) {
