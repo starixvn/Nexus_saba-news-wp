@@ -9,6 +9,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetSeasonStandings`(
         Revisions:
 			- 20220418@Tim: init
 			- 202200512@Tim: check 2nd leg
+            - 202200615@Hank: check combine & delete match
     */
 )
 BEGIN
@@ -53,6 +54,8 @@ BEGIN
 			AND (m.HomeTeamId = _teamId OR m.AwayTeamId = _teamId)
 			AND m.SeasonId = seasonId
 			AND m.StageId = _stageId
+            AND m.CombinedId IS NULL
+            AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId)
 		ORDER BY m.StartTime DESC
 		LIMIT 5;
 
