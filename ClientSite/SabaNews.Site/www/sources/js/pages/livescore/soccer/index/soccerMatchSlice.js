@@ -37,6 +37,7 @@ const soccerMatchSlice = createSlice({
         },
         setLiveMatches: (state, action) => {
             const liveMatches = action.payload;
+            console.log(liveMatches);
             state.totalLiveMatches = liveMatches.length;
 
             if (window.isLivePage) {

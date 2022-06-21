@@ -26,6 +26,7 @@
                             match.League = league;
                             match.HomeTeam = home;
                             match.AwayTeam = away;
+                            match.Stage = stage;
 
                             return match;
                         },
