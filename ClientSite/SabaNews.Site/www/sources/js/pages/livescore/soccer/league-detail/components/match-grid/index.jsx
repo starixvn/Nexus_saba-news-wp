@@ -137,7 +137,7 @@ export default class MatchGrid extends PureComponent {
         matches = this.groupMatches(stages, matches, league);
 
         return (
-            <>
+            <div className="league-story">
                 <div className="group-searchbar">
                     <div className="livescore-soccer-search-bar">
                         <Form.Control type="text" placeholder="Tìm kiếm đội bóng..."
@@ -155,8 +155,9 @@ export default class MatchGrid extends PureComponent {
                 {
                     matches.length > 0 &&
                     <Grid league={league} matches={matches} searchKey={searchKey} />
+                   
                 }
-            </>
+            </div>
         );
     }
 }
