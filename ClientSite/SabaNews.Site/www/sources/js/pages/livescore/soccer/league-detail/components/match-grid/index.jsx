@@ -78,10 +78,19 @@ export default class MatchGrid extends PureComponent {
         return tempMatches;
     };
 
+    checkGroupLeagueType =  (stages, matches, league) => {
+        return stages.length <= 1
+            && matches.filter(item => item.round > 0).length === 0
+            && league.leagueType === LeagueType.League;
+    };
+
+    checkGroupMatches = (stages, matches, league) => {
+        return this.checkGroupLeagueType(stages, matches, league)
+        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0);
+    };
+
     groupMatches = (stages, matches, league) => {
-        console.log(stages);
-        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0 && league.leagueType === LeagueType.League
-        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)) {
+        if (this.checkGroupMatches(stages, matches, league)) {
             return this.groupMatchesByDate(matches);
         }
 
@@ -91,7 +100,7 @@ export default class MatchGrid extends PureComponent {
         const result = [];
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
-            let text = '';
+            let text;
             if(!item.stage) {
                 text = '';
             } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
