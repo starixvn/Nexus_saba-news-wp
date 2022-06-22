@@ -79,7 +79,9 @@ export default class MatchGrid extends PureComponent {
     };
 
     groupMatches = (stages, matches, league) => {
-        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0) {
+        console.log(stages);
+        if (stages.length <= 1 && matches.filter(item => item.round > 0).length === 0 && league.leagueType === LeagueType.League
+        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)) {
             return this.groupMatchesByDate(matches);
         }
 
@@ -90,7 +92,9 @@ export default class MatchGrid extends PureComponent {
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
             let text = '';
-            if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
+            if(!item.stage) {
+                text = '';
+            } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType === LeagueType.Cup) {
                 text = `${CommonFunctions.getStageName(item.stage)} - ${this.getRoundName(item.round, league.leagueType)}`;
             } else if (item.round > 0 && item.stage.roundCount > 1 && league.leagueType !== 2) {
                 text = this.getRoundName(item.round, league.leagueType);
@@ -155,7 +159,6 @@ export default class MatchGrid extends PureComponent {
                 {
                     matches.length > 0 &&
                     <Grid league={league} matches={matches} searchKey={searchKey} />
-                   
                 }
             </div>
         );
