@@ -970,6 +970,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to League Name.
+        /// </summary>
+        public static string LeagueName {
+            get {
+                return ResourceManager.GetString("LeagueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List Detail Electronic Direct Mail.
         /// </summary>
         public static string ListDetailElectronicDirectMail {
@@ -1087,11 +1096,29 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Major.
+        /// </summary>
+        public static string Major {
+            get {
+                return ResourceManager.GetString("Major", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nam.
         /// </summary>
         public static string Male {
             get {
                 return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Management League.
+        /// </summary>
+        public static string ManagementLeague {
+            get {
+                return ResourceManager.GetString("ManagementLeague", resourceCulture);
             }
         }
         
@@ -1425,6 +1452,15 @@ namespace SabaNews.Resources {
         public static string PostViewStatisticPage {
             get {
                 return ResourceManager.GetString("PostViewStatisticPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        public static string Priority {
+            get {
+                return ResourceManager.GetString("Priority", resourceCulture);
             }
         }
         

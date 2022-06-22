@@ -861,4 +861,16 @@
   <data name="SidebarPostView" xml:space="preserve">
     <value>~/Views/Component/_SidebarPosts.cshtml</value>
   </data>
+  <data name="ManagementLeague" xml:space="preserve">
+    <value>Management League</value>
+  </data>
+  <data name="LeagueName" xml:space="preserve">
+    <value>League Name</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
 </root>
