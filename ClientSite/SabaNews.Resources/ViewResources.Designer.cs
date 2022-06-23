@@ -79,6 +79,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add League.
+        /// </summary>
+        public static string AddLeague {
+            get {
+                return ResourceManager.GetString("AddLeague", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administration.
         /// </summary>
         public static string Administration {
@@ -961,6 +970,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IsMajor.
+        /// </summary>
+        public static string IsMajor {
+            get {
+                return ResourceManager.GetString("IsMajor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Joined Date.
         /// </summary>
         public static string JoinedDate {
@@ -1326,6 +1344,15 @@ namespace SabaNews.Resources {
         public static string New {
             get {
                 return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -2325,6 +2352,15 @@ namespace SabaNews.Resources {
         public static string VoteResult {
             get {
                 return ResourceManager.GetString("VoteResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

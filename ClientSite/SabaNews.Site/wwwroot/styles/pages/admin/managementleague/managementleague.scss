@@ -11,7 +11,27 @@
     max-width: 80.8rem;
 }
 
+.filter-majorLeague {
+    width: 70px;
+}
+
 .table-admin {
     margin-top: 0;
     max-width: 80.8rem;
+
+    .priority-league {
+        width: 30px;
+    }
+
+    .icon-delete-admin:hover {
+        cursor: pointer;
+    }
+
+    .icon-sort-admin:hover {
+        cursor: pointer;
+    }
+
+    .icon-delete-admin{
+        font-size: 20px;
+    }
 }

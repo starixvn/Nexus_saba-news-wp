@@ -98,5 +98,9 @@
   {
     "outputFile": "wwwroot/styles/pages/admin/event/membership-event.css",
     "inputFile": "wwwroot/styles/pages/admin/event/membership-event.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/admin/managementleague/managementleague.css",
+    "inputFile": "wwwroot/styles/pages/admin/managementleague/managementleague.scss"
   }
 ]

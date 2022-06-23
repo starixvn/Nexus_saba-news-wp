@@ -873,4 +873,16 @@
   <data name="Priority" xml:space="preserve">
     <value>Priority</value>
   </data>
+  <data name="IsMajor" xml:space="preserve">
+    <value>IsMajor</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="AddLeague" xml:space="preserve">
+    <value>Add League</value>
+  </data>
 </root>

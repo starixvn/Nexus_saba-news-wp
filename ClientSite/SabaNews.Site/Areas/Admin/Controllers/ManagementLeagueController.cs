@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Services.Interfaces;
+    using System.Threading.Tasks;
 
     public class ManagementLeagueController : AdminController
     {
@@ -15,6 +16,14 @@
         {
             return View();
         }
+        public async Task<ActionResult> GetManagementLeagueData()
+        {            
+            return PartialView("_ManagementLeagueDataGrid");
+        }
 
+        public async Task<ActionResult> GetLeagueData()
+        {
+            return PartialView("");
+        }
     }
 }

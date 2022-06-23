@@ -22,14 +22,22 @@
     <div class="form-filter" style="margin-bottom: 2rem">
         <form class="form-horizontal" action="/Admin/ManagementLeague/SearchData" method="get">
             <div class="form-input">
+                <p class="label-admin">@ViewResources.SearchLabel</p>
                 <input type="text" class="custom-input list-input" id="search" name="resultNumber" placeholder="Enter League Name..." />
             </div>
-
-            <button class="btn-custom-admin" type="submit" id="submit-btn">Search</button>
+            <div class="form-input">
+                <p class="label-admin">@ViewResources.IsMajor</p>
+                <select class="custom-input list-input filter-majorLeague" name="status" id="status">
+                    <option value="-1">@ViewResources.All</option>
+                    <option value="1">@ViewResources.Yes</option>
+                    <option value="0">@ViewResources.No</option>
+                </select>
+            </div>
+            <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
         </form>
     </div>
     <div class="content">
-        <div class="add-league"><a href="" class="label label-blue">Add League</a></div>
+        <div class="add-league"><a href="" class="label label-blue">@ViewResources.AddLeague</a></div>
         <div class="data-grid" id="data-grid"></div>
     </div>
 </section>
