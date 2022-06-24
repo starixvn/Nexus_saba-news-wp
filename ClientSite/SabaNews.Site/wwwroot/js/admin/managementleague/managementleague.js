@@ -11,7 +11,17 @@
                 $('.data-grid').html(res);
                 initPaging();
                 initSortLeague();
-
+                $('.btn_league').click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/Admin/ManagementLeague/AddLeague',
+                        success: function (html) {
+                            $('#AddLeagueContent .title').html('Add League');
+                            $('#AddLeagueContent .modal-body').html(html);
+                            $('#AddLeagueContent').modal('show');
+                        }
+                    })
+                });
             }
         });
     }

@@ -885,4 +885,19 @@
   <data name="AddLeague" xml:space="preserve">
     <value>Add League</value>
   </data>
+  <data name="LeagueFullNameCN" xml:space="preserve">
+    <value>League Full Name CN</value>
+  </data>
+  <data name="LeagueFullNameEN" xml:space="preserve">
+    <value>League Full Name EN</value>
+  </data>
+  <data name="LeagueNameCN" xml:space="preserve">
+    <value>League Name CN</value>
+  </data>
+  <data name="LeagueNameEN" xml:space="preserve">
+    <value>League Name EN</value>
+  </data>
+  <data name="LeagueNameVN" xml:space="preserve">
+    <value>League Name VN</value>
+  </data>
 </root>

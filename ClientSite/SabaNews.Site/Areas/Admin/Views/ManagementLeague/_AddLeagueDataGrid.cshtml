@@ -1,0 +1,34 @@
+﻿@using SabaNews.Resources
+<div class="form-horizontal" style="margin-bottom:20px;">
+    <div class="form-input">
+        <p class="label-admin">@ViewResources.SearchLabel</p>
+        <input type="text" class="custom-input list-input" id="search" name="resultNumber" placeholder="Enter League Name..." />
+    </div>
+    <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
+</div>
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>@ViewResources.LeagueNameEN</th>
+                <th>@ViewResources.LeagueFullNameEN</th>
+                <th>@ViewResources.LeagueNameCN</th>
+                <th>@ViewResources.LeagueFullNameCN</th>
+                <th>@ViewResources.LeagueNameVN</th>
+                <th>@ViewResources.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center" width="3%">1</td>
+                <td class="text-center" width="18%">1</td>
+                <td class="text-center" width="18%">1</td>
+                <td class="text-center" width="18%">1</td>
+                <td class="text-center" width="18%">1</td>
+                <td class="text-center" width="18%">1</td>
+                <td class="text-center btn-addleague" width="7%">Add</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -17,13 +17,14 @@
             return View();
         }
         public async Task<ActionResult> GetManagementLeagueData()
-        {            
+        {
             return PartialView("_ManagementLeagueDataGrid");
         }
 
-        public async Task<ActionResult> GetLeagueData()
+        [HttpGet]
+        public ActionResult AddLeague()
         {
-            return PartialView("");
+            return PartialView("_AddLeagueDataGrid");
         }
     }
 }

@@ -1,4 +1,24 @@
-﻿.add-league {
+﻿@import '../custom-modal';
+
+#AddLeagueContent .modal-content {
+    max-width: 1000px;
+    max-height: 750px;
+
+    .table-admin {
+        margin-top: 0;
+        max-width: 95.8rem;
+
+        .btn-addleague {
+            color: blue;
+        }
+
+        .btn-addleague:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.add-league {
     border-top: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
     border-left: 1px solid #e3e3e3;

@@ -988,11 +988,56 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to League Full Name CN.
+        /// </summary>
+        public static string LeagueFullNameCN {
+            get {
+                return ResourceManager.GetString("LeagueFullNameCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to League Full Name EN.
+        /// </summary>
+        public static string LeagueFullNameEN {
+            get {
+                return ResourceManager.GetString("LeagueFullNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to League Name.
         /// </summary>
         public static string LeagueName {
             get {
                 return ResourceManager.GetString("LeagueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to League Name CN.
+        /// </summary>
+        public static string LeagueNameCN {
+            get {
+                return ResourceManager.GetString("LeagueNameCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to League Name EN.
+        /// </summary>
+        public static string LeagueNameEN {
+            get {
+                return ResourceManager.GetString("LeagueNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to League Name VN.
+        /// </summary>
+        public static string LeagueNameVN {
+            get {
+                return ResourceManager.GetString("LeagueNameVN", resourceCulture);
             }
         }
         
