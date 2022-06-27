@@ -109,6 +109,12 @@
             return View("~/Views/Livescore/Soccer/FavouriteMatch.cshtml");
         }
 
+        [Route("lich-thi-dau/bong-da/giai-dau-quan-tam")]
+        public IActionResult FavouriteLeague()
+        {
+            return View("~/Views/Livescore/Soccer/FavouriteLeague.cshtml");
+        }
+
         [HttpPost]
         public async Task<IActionResult> GetMatches([FromBody] GetMatchByDateCriteria criteria)
         {

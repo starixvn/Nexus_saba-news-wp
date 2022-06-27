@@ -19,12 +19,14 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/league-detail`]: pathConfig.scriptPaths.livescore_soccer_league_detail,
             [`${jsPath}/pages/livescore/soccer/detail`]: pathConfig.scriptPaths.livescore_soccer_detail,
             [`${jsPath}/pages/livescore/soccer/favourite-match`]: pathConfig.scriptPaths.livescore_soccer_favourite_match,
+            [`${jsPath}/pages/livescore/soccer/favourite-league`]: pathConfig.scriptPaths.livescore_soccer_favourite_league,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
             [`${cssPath}/pages/livescore/soccer/league-detail`]: pathConfig.cssPaths.livescore_soccer_league_detail,
             [`${cssPath}/pages/livescore/soccer/detail`]: pathConfig.cssPaths.livescore_soccer_detail,
-            [`${cssPath}/pages/livescore/soccer/favourite-match`]: pathConfig.cssPaths.livescore_soccer_favourite_match
+            [`${cssPath}/pages/livescore/soccer/favourite-match`]: pathConfig.cssPaths.livescore_soccer_favourite_match,
+            [`${cssPath}/pages/livescore/soccer/favourite-league`]: pathConfig.cssPaths.livescore_soccer_favourite_league
         },
         output: {
             path: pathConfig.projectRoot,
