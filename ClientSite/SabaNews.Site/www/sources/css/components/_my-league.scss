@@ -8,8 +8,12 @@
     border-radius: 3px;
     padding: 0 0 0 1.2rem;
     display: grid;
-    grid-template: "myLeagueAction myLeagueImg myLeagueName myLeagueDrop" 4rem;
+    grid-template: "myLeagueAction myLeagueImg myLeagueName myLeagueDrop" 3.8rem/3.3rem 3.8rem 1fr;
     align-items: center;
+    @include Mobile{
+      padding: 0 0 0 .8rem;
+      grid-template: "myLeagueAction myLeagueImg myLeagueName myLeagueDrop" 3.8rem/2.5rem 3.8rem 1fr;
+    }
     &-action {
       grid-area: myLeagueAction;
     }
