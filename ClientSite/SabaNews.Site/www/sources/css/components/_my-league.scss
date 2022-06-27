@@ -1,4 +1,37 @@
 .my-league {
+  display: grid;
+  grid-gap: 1rem;
   &-item {
+    cursor: pointer;
+    background: $primary-bg;
+    border: 1px solid $bg-table-title-grey;
+    border-radius: 3px;
+    padding: 0 0 0 1.2rem;
+    display: grid;
+    grid-template: "myLeagueAction myLeagueImg myLeagueName myLeagueDrop" 4rem;
+    align-items: center;
+    &-action {
+      grid-area: myLeagueAction;
+    }
+    &-img {
+      grid-area: myLeagueImg;
+      width: 3rem;
+      object-position: top;
+      -webkit-backface-visibility: hidden;
+      -ms-transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0) scale(1, 1);
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor;
+    }
+    &-name {
+      grid-area: myLeagueName;
+    }
+    &-drop {
+      grid-area: myLeagueDrop;
+    }
   }
 }
