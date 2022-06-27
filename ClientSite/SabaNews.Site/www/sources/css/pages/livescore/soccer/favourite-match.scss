@@ -54,6 +54,9 @@
 }
 .livescore-league-header-detail {
   margin-bottom: 1.6rem;
+  @include Mobile{
+    margin-bottom: 1rem;
+  }
   &-name {
     text-transform: uppercase;
   }
