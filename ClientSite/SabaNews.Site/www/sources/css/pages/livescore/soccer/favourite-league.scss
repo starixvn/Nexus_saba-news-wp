@@ -23,10 +23,16 @@
 
 .my-league {
   margin-top: 1.2rem;
+  @include Mobile{
+    margin-top: 1rem;;
+  }
 }
 
 .livescore-league-header-detail {
   margin-bottom: 1.6rem;
+  @include Mobile{
+    margin-bottom: 1rem;
+  }
   &-name {
     text-transform: uppercase;
   }
