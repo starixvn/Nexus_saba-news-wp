@@ -1,0 +1,24 @@
+@import "../../../abstracts/variables";
+@import "../../../abstracts/mixins";
+@import "../../../base/base";
+@import "../../../components/block-extension";
+@import "../../../components/container";
+@import "../../../components/league-header-detail";
+@import "../../../components/search-bar";
+@import "../../../components/tooltip";
+@import "../../../components/breadcrumb";
+@import "../../../components/modal";
+@import "../../../components/fav-search";
+
+.livescore-soccer {
+  .livescore-soccer-search-bar {
+    padding: 0;
+  }
+}
+
+.livescore-league-header-detail {
+  margin-bottom: 1.6rem;
+  &-name {
+    text-transform: uppercase;
+  }
+}

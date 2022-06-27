@@ -1,176 +1,119 @@
 ﻿.modal-livescore {
-    z-index: 99999999;
-    padding-right: 0 !important;
-    outline: none !important;
-    background: $primary-bg;
-    position: fixed;
-    width: 100%;
-    top: 10%;
-    right: 50%;
-    transform: translate(50%, 0);
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
-    max-width: 50rem;
+  z-index: 99999999;
+  padding-right: 0 !important;
+  outline: none !important;
+  background: $primary-bg;
+  position: fixed;
+  width: 100%;
+  top: 10%;
+  right: 50%;
+  transform: translate(50%, 0);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
+  max-width: 50rem;
 
-    @include tableMobile {
-        max-width: 70rem;
+  @include tableMobile {
+    max-width: 70rem;
+  }
+
+  @include Mobile {
+    max-width: 36.5rem;
+  }
+
+  .modal-header {
+    position: relative;
+    border-bottom: 1px solid $border-color;
+    align-items: center;
+    text-transform: uppercase;
+
+    .modal-title {
+      color: $color-active-icon;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      padding: 1rem 1.2rem;
+      font-weight: bold;
     }
 
-    @include Mobile {
-        max-width: 36.5rem;
+    .icon-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
+  }
 
-    .modal-header {
-        position: relative;
-        border-bottom: 1px solid $border-color;
-        align-items: center;
-        text-transform: uppercase;
-
-        .modal-title {
-            color: $color-active-icon;
-            font-size: 1.4rem;
-            line-height: 1.5;
-            padding: 1rem 1.2rem;
-            font-weight: bold;
-        }
-
-        .icon-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-    }
-
-    .modal-body {
-        padding: 1rem 0;
-
-        .livescore-soccer-search-bar {
-            position: relative;
-            margin-right: 0;
-            width: 100%;
-            padding: 0 1rem;
-
-            @include tableMobile {
-                margin-right: .4rem;
-            }
-
-            .livescore-soccer-searchbox {
-                width: 100%;
-                border: 1px solid $border-color;
-                background: transparent;
-                height: 3.6rem;
-                padding: 1.2rem 0rem 1.2rem 3rem;
-                border-radius: 3px;
-                font-size: 1.4rem;
-
-                @include Mobile {
-                    height: 3.4rem;
-                }
-
-                &::placeholder {
-                    font-style: italic;
-                    font-size: 1.4rem !important;
-
-                    @include tableMobile {
-                        font-size: 1.2rem !important;
-                    }
-                }
-            }
-
-
-
-            .btn-search-match {
-                position: absolute;
-                left: 15px;
-                cursor: pointer;
-                color: #7e7e7e;
-                top: 8px;
-                line-height: 1;
-            }
-
-            .btn-close-match {
-                position: absolute;
-                right: 20px;
-                cursor: pointer;
-                color: #7e7e7e;
-                top: 8px;
-                line-height: 1;
-            }
-        }
-    }
+  .modal-body {
+    padding: 1rem 0;
+  }
 }
 .modal-data {
-    min-height: 11.3rem;
-    max-height: 50rem;
-    overflow: auto;
+  min-height: 11.3rem;
+  max-height: 50rem;
+  overflow: auto;
+  margin-top: 1rem;
+
+  .livescore-soccer-extension {
+    padding-left: 0;
+
+    .toggle-league {
+      display: block !important;
+
+      .icon-favourite-outline {
+        &:hover {
+          &:before {
+            color: $fav-icon;
+          }
+        }
+      }
+    }
+
+    .leagues-item {
+      .leagues-name {
+        span {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  &.spacing-top {
     margin-top: 1rem;
 
     .livescore-soccer-extension {
-        padding-left: 0;
+      padding-left: 0;
 
-        .toggle-league {
+      .leagues-item {
+        padding: 0.5rem 1.2rem;
+
+        &:hover {
+          .toggle-league {
             display: block !important;
-
-            .icon-favourite-outline {
-                &:hover {
-                    &:before {
-                        color: $fav-icon;
-                    }
-                }
-            }
+          }
         }
-
-        .leagues-item {
-            .leagues-name {
-                span {
-                    font-size: 1.3rem;
-                }
-            }
-        }
+      }
     }
+  }
 
-    &.spacing-top {
-        margin-top: 1rem;
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
 
-        .livescore-soccer-extension {
-            padding-left: 0;
+  &::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 3px;
+  }
 
-            .leagues-item {
-                padding: .5rem 1.2rem;
-
-
-                &:hover {
-                    .toggle-league {
-                        display: block !important;
-                    }
-                }
-            }
-        }
-    }
-
-
-
-    &::-webkit-scrollbar {
-        width: .6rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #D0D0D0;
-        border-radius: 3px;
-    }
-
-    .not-found {
-        margin-top: .5rem;
-        padding: 0 1rem;
-    }
+  .not-found {
+    margin-top: 0.5rem;
+    padding: 0 1rem;
+  }
 }
-.search-league-title{
-    padding : 1rem;
-   font-weight : 700;
+.search-league-title {
+  padding: 1rem;
+  font-weight: 700;
 }
 
 .text-matched {
-    font-weight: 700;
+  font-weight: 700;
 }
 .txt {
-    font-size: 1.3rem !important;
+  font-size: 1.3rem !important;
 }
