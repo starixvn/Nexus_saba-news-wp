@@ -25,16 +25,19 @@ export class AppContainer extends Component {
                 </div>
               </div>
             </div>
-            <div className="livescore-soccer-search-bar">
-              <input
-                type="text"
-                placeholder="tìm kiếm giải đấu..."
-                className="livescore-soccer-searchbox form-control"
-              />
-              <span className="btn-search-match">
-                <i className="icon-livescore icon-search"></i>
-              </span>
+            <div className='group-searchbar'>
+                <div className="livescore-soccer-search-bar">
+                <input
+                    type="text"
+                    placeholder="tìm kiếm giải đấu..."
+                    className="livescore-soccer-searchbox form-control"
+                />
+                <span className="btn-search-match">
+                    <i className="icon-livescore icon-search"></i>
+                </span>
+                </div>
             </div>
+            
 
             <div className="my-league">
               <div className="my-league-item">

@@ -4,19 +4,18 @@
 @import "../../../components/block-extension";
 @import "../../../components/container";
 @import "../../../components/league-header-detail";
-@import "../../../components/search-bar";
 @import "../../../components/tooltip";
 @import "../../../components/breadcrumb";
 @import "../../../components/modal";
-@import "../../../components/fav-search";
 @import "../../../components/my-league";
+@import "../../../components/fav-search";
 
 .livescore-soccer {
   .livescore-soccer-search-bar {
     padding: 0;
   }
   .btn-search-match {
-    left: 7px;
+    left: 10px;
     cursor: pointer;
   }
 }
