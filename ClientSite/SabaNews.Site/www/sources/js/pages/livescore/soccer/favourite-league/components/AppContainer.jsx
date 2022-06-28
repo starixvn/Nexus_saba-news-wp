@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
+import RecentPosts from '@jsroot/components/RecentPosts';
 import Breadscrum from '@jsroot/components/Breadscrum';
 import { Container, Draggable } from 'react-smooth-dnd';
 
@@ -127,6 +128,7 @@ export class AppContainer extends Component {
           </div>
           <div className="livescore-soccer-extension">
             <FavoriteMatches />
+            <RecentPosts />
           </div>
         </div>
       </div>

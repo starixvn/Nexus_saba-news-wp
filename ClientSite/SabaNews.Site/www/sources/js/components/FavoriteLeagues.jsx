@@ -68,6 +68,14 @@ export default class FavoriteLeagues extends PureComponent {
             </Tooltip>
         );
     };
+    handleNavigateToMyLeaguePage = event => {
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/giai-dau-quan-tam`);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    }
 
     render() {
         const leagues = this.sortLeagues(this.state.leagues);
@@ -76,7 +84,7 @@ export default class FavoriteLeagues extends PureComponent {
         return (
             <div className="leagues">
                 <div className="leagues-title">
-                    <div className="leagues-group">
+                    <div className="leagues-group" onClick={this.handleNavigateToMyLeaguePage}>
                         <span>{LangHelper.getResource('MyLeagues')}</span>
                     </div>
                     <OverlayTrigger
