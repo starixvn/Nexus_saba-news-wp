@@ -46,7 +46,7 @@ export class AppContainer extends Component {
                   alt="logo-my-league"
                   className="my-league-item-img"
                 />
-                <div className="my-league-item-name">Premier League</div>
+                <div className="my-league-item-name"> <span>Premier League</span> </div>
                 <i className="my-league-item-drop icon-livescore icon-drop-drag"></i>
               </div>
               <div className="my-league-item">
@@ -56,7 +56,7 @@ export class AppContainer extends Component {
                   alt="logo-my-league"
                   className="my-league-item-img"
                 />
-                <div className="my-league-item-name">Premier League</div>
+                <div className="my-league-item-name"><span>Premier League</span></div>
                 <i className="my-league-item-drop icon-livescore icon-drop-drag"></i>
               </div>
             </div>

@@ -5,7 +5,8 @@
     grid-gap: .8rem;
   }
   &-item {
-    cursor: pointer;
+    cursor: move;
+    
     background: $primary-bg;
     border: 1px solid $bg-table-title-grey;
     border-radius: 3px;
@@ -19,6 +20,7 @@
     }
     &-action {
       grid-area: myLeagueAction;
+      cursor: pointer;
     }
     &-img {
       grid-area: myLeagueImg;
@@ -33,6 +35,7 @@
       image-rendering: -webkit-optimize-contrast;
       image-rendering: crisp-edges;
       -ms-interpolation-mode: nearest-neighbor;
+      cursor: pointer;
     }
     &-name {
       grid-area: myLeagueName;
@@ -40,10 +43,13 @@
       @include Mobile{
         font-size: 1.2rem;
       }
+      span{
+        cursor: pointer;
+      }
     }
     &-drop {
       grid-area: myLeagueDrop;
-      cursor: move;
+      
     }
   }
 }

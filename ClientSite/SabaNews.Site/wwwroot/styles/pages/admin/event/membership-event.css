@@ -1,14 +1,23 @@
-﻿.export-excel {
+.export-excel {
   border-top: 1px solid #e3e3e3;
   border-right: 1px solid #e3e3e3;
   border-left: 1px solid #e3e3e3;
   height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   background: #ededed;
   padding: 0 1rem;
-  max-width: 105.8rem; }
+  max-width: 105.8rem;
+}
 
 .table-admin {
-  margin-top: 0; }
+  margin-top: 0;
+}
+/*# sourceMappingURL=membership-event.css.map */
