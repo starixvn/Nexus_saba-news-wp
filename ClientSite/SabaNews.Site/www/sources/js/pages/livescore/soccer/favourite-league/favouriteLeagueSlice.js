@@ -3,19 +3,24 @@ import { createSlice } from '@reduxjs/toolkit';
 const favouriteLeagueSlice = createSlice({
     name: 'favouriteLeagueSlice',
     initialState: {
-        matches: null
+        favLeagues: null,
+        leagues: null
     },
     reducers: {
-        setMatches: (state, action) => {
-            state.matches = action.payload;
+        setFavLeagues: (state, action) => {
+            state.favLeagues = action.payload;
         },
+        setLeagues: (state, action) => {
+            state.leagues = action.payload;
+        }
     },
 });
 
 const { actions, reducer } = favouriteLeagueSlice;
 
 export const {
-    setMatches
+    setFavLeagues,
+    setLeagues
 } = actions;
 
 export default reducer;
