@@ -1113,7 +1113,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       background-color: #FFFDF9;
       position: relative;
       z-index: 9;
-      padding-right: 1rem; }
+      padding-right: 1rem;
+      line-height: 1; }
       .block__title a:hover {
         color: #cb200c; }
       @media screen and (max-width: 1024px) {
