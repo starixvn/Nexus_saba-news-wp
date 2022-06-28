@@ -8,8 +8,10 @@
 .my-league {
   display: grid;
   grid-gap: 1rem;
+  margin-bottom: 3rem;
   @include Mobile{
     grid-gap: .8rem;
+    margin-bottom: 1.5rem;
   }
   &-item {
     cursor: move;
