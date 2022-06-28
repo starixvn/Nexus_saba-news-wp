@@ -7,7 +7,7 @@ import Breadscrum from '@jsroot/components/Breadscrum';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
-    };
+    }
 
     render() {
         return (
@@ -37,7 +37,6 @@ export class AppContainer extends Component {
                 </span>
                 </div>
             </div>
-            
 
             <div className="my-league">
               <div className="my-league-item">
@@ -67,7 +66,7 @@ export class AppContainer extends Component {
           </div>
         </div>
       </div>
-        )
+        );
     }
 }
 
