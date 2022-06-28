@@ -89,6 +89,10 @@
                 font-size: 1.4rem;
                 color: #333333;
                 font-weight: 600;
+                transition: all .5s ease;
+                &:hover{
+                    color: #F12F19;
+                }
             }
         }
     }
