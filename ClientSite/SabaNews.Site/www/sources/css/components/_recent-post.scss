@@ -1,6 +1,5 @@
 .livescore-recent-post{
-    margin-bottom: 2rem;
-
+    margin-top: 1.7rem;
     @include tableMobile {
         margin-bottom: 0;
         padding-bottom: 1.6rem;
@@ -10,7 +9,6 @@
         margin-bottom: 1.3rem;
         position: relative;
         padding-left: 1rem;
-        margin-top: 1.7rem;
         @include tableMobile {
             margin-bottom: .9rem;
         }
