@@ -5,6 +5,7 @@
     Defender: 'Hậu vệ',
     Delay: 'Tạm hoãn',
     ExtraTimeEnd: 'Kết thúc hiệp phụ',
+    EmptyFavLeague: 'Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.',
     Finish: 'Kết thúc',
     FullTimeEnd: 'Kết thúc hiệp 2',
     AddLeague: 'Thêm giải đấu',
