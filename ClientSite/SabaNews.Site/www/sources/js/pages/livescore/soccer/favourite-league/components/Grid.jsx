@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import GridItem from './GridItem';
+import GridDragItem from './GridDragItem';
 
 export class Grid extends PureComponent {
     constructor(props) {
@@ -62,6 +63,10 @@ export class Grid extends PureComponent {
         const items = [...leagues];
         return items.sort((item1, item2) => (item2.order - item1.order));
     };
+
+    onUpdateDropLeague = (removeIndex, addIndex) => {
+
+    }
     render() {
         const { searchKey, searchLeagues } = this.state;
         const isDefault = this.isDefault();
@@ -84,7 +89,7 @@ export class Grid extends PureComponent {
 
                 <div className="my-league">
                     {
-                        isDefault && favLeagues !== null && <GridItem leagues={favLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} isFav />
+                        isDefault && favLeagues !== null && <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} />
                     }
                     {
                         !isDefault && <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
