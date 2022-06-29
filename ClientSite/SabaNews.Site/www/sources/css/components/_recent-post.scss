@@ -45,7 +45,7 @@
     }
     &__item{
         display: grid;
-        grid-template: "recentPostImg recentPostDescription" ;
+        grid-template: "recentPostImg recentPostDescription" 8rem / 12rem ;
         grid-gap: 1.2rem;
         border-bottom: 1px solid #E9E9E9;
         padding-bottom: 1.2rem;
@@ -74,6 +74,8 @@
                 image-rendering: crisp-edges;
                 -ms-interpolation-mode: nearest-neighbor;
                 display: block;
+                height: 8rem;
+                object-fit: cover;
             }
             &:hover{
                 img{
