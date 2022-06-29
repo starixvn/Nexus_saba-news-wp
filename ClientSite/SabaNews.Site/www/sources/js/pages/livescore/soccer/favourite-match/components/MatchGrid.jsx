@@ -60,7 +60,7 @@ export default class MatchGrid extends PureComponent {
             const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
             const item = {
                 key,
-                text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
+                text: DateTimeService.formatDateTime(key, 'dddd - DD/MM/YYYY'),
                 childs: [match]
             };
             if (tmpMatches.length === 0) {
