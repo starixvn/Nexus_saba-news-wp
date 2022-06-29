@@ -1,83 +1,105 @@
 import React, { PureComponent } from 'react';
-import { Container, Draggable } from 'react-smooth-dnd';
-import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
-import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import Site from '@jsroot/common/site';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from '../actions';
+import GridItem from './GridItem';
 
-export const applyDrag = (arr, dragResult) => {
-    const { removedIndex, addedIndex, payload } = dragResult;
-    if (removedIndex === null && addedIndex === null) return arr;
-
-    const result = [...arr];
-    let itemToAdd = payload;
-
-    if (removedIndex !== null) {
-        itemToAdd = result.splice(removedIndex, 1)[0];
-    }
-
-    if (addedIndex !== null) {
-        result.splice(addedIndex, 0, itemToAdd);
-    }
-
-    return result;
-};
-
-export const generateItems = (count, creator) => {
-    const result = [];
-    for (let i = 0; i < count; i++) {
-        result.push(creator(i))
-    }
-    return result
-}
-
-
-// on mobile clean overflow when user touch
-const cleanClasses = () => {
-    document.body.className = '';
-};
-document.addEventListener('touchend', cleanClasses, false);
-export default class Grid extends PureComponent {
+export class Grid extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            items: generateItems(100, i => ({
-              id: i,
-              data: `
-                  Premier League ${i + 1}
-                  `
-            })),
-            leagues: props.leagues
-        }
-    };
-
-    componentDidUpdate(prevProps) {
-        if(prevProps.leagues !== this.props.leagues) {
-            this.setState({leagues: this.props.leagues});
+            searchKey: '',
+            searchLeagues: []
         }
     }
+    handleChange = event => {
+        const searchKey = event.target.value;
+        this.debounceSearchKeyInputChange(searchKey);
+    };
+
+    debounceSearchKeyInputChange = Site.debounce(searchKey => {
+        this.setState({
+            searchKey: searchKey
+        }, () => {
+            if (searchKey.length > 2) {
+                const leagues = this.props.leagues;
+                let result = [];
+                result = leagues.filter(item =>
+                    this.checkSearchLeague(item.leagueNameEN, searchKey)
+                    || this.checkSearchLeague(item.leagueFullNameEN, searchKey)
+                    || this.checkSearchLeague(item.leagueNameVN, searchKey));
+                this.setState({ searchLeagues: result });
+            } else if (searchKey.length === 0) {
+                this.setState({ searchLeagues: [] });
+            }
+        });
+    });
+
+    checkSearchLeague = (fieldName, searchKey) => fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
 
     onUpdateFavLeague = league => {
-        this.props.onUpdateFavLeague(league);
+        const favLeagues = [...this.props.favLeagues];
+        const currentFavLeagues = CommonFunctions.getFavLeagues();
+        const favLeague = currentFavLeagues.find(item => item.leagueId === league.leagueId);
+        if (favLeague) {
+            const index = favLeagues.findIndex(item => item.leagueId === league.leagueId);
+            if (index < 0) {
+                favLeagues.unshift(favLeague);
+            }
+        }
+        this.props.setFavLeagues(favLeagues);
+    }
+
+    isDefault = () => {
+        const { searchKey, searchLeagues } = this.state;
+        return searchKey.length < 3 && searchLeagues.length === 0;
     };
 
+    sortLeagues = leagues => {
+        if (!leagues) return leagues;
+        const items = [...leagues];
+        return items.sort((item1, item2) => (item2.order - item1.order));
+    };
     render() {
-        const { leagues } = this.state;
+        const { searchKey, searchLeagues } = this.state;
+        const isDefault = this.isDefault();
+        const favLeagues = this.sortLeagues(this.props.favLeagues);
         return (
-            <Container lockAxis="y" onDrop={e => this.setState({ items: applyDrag(this.state.items, e) })}>
-                {leagues && leagues.map(league => {
-                    return (
-                        <Draggable key={league.leagueId}>
-                            <div className="draggable-item my-league-item">
-                                <FavouriteLeagueIcon league={league} order={league.order}  onUpdateFavLeague={() => this.onUpdateFavLeague(league)}/>
-                                <TeamIcon className="my-league-item-img" src={league.icon} />
-                                <div className="my-league-item-name"> <span>{CommonFunctions.getLeagueName(league)}</span> </div>
-                                <i className="my-league-item-drop icon-livescore icon-drop-drag"></i>
-                            </div>
-                        </Draggable>
-                    );
-                })}
-            </Container>
-        );
+            <>
+                <div className='group-searchbar'>
+                    <div className="livescore-soccer-search-bar">
+                        <input
+                            type="text"
+                            placeholder="tìm kiếm giải đấu..."
+                            className="livescore-soccer-searchbox form-control"
+                            onChange={this.handleChange}
+                        />
+                        <span className="btn-search-match">
+                            <i className="icon-livescore icon-search"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div className="my-league">
+                    {
+                        isDefault && favLeagues !== null && <GridItem leagues={favLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} isFav />
+                    }
+                    {
+                        !isDefault && <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
+                    }
+                </div>
+            </>
+        )
     }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+const mapStateToProps = state => {
+    const { leagues, favLeagues } = state;
+    return { leagues, favLeagues };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Grid);

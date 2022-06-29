@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Site from '@jsroot/common/site';
 
 export const LastestNews = ({posts}) => {
