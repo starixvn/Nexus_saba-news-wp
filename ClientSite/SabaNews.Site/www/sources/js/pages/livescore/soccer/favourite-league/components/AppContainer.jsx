@@ -3,58 +3,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
-import RecentPosts from '@jsroot/components/RecentPosts';
+import LastestNews from '@jsroot/components/LastestNews';
 import Breadscrum from '@jsroot/components/Breadscrum';
-import { Container, Draggable } from 'react-smooth-dnd';
-import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import CommonFunctions from '@jsroot/common/common-functions';
-import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import Site from '@jsroot/common/site';
 import Grid from './Grid';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 
-export const applyDrag = (arr, dragResult) => {
-  const { removedIndex, addedIndex, payload } = dragResult;
-  if (removedIndex === null && addedIndex === null) return arr;
-
-  const result = [...arr];
-  let itemToAdd = payload;
-
-  if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0];
-  }
-
-  if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd);
-  }
-
-  return result;
-};
-
-export const generateItems = (count, creator) => {
-  const result = [];
-  for (let i = 0; i < count; i++) {
-    result.push(creator(i))
-  }
-  return result
-}
-
-
-// on mobile clean overflow when user touch
-const cleanClasses = () => {
-  document.body.className = '';
-};
-document.addEventListener('touchend', cleanClasses, false);
 export class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: generateItems(100, i => ({
-        id: i,
-        data: `
-            Premier League ${i + 1}
-            `
-      })),
       searchKey: '',
       toggleIcon: false,
       searchLeagues: []
@@ -64,6 +23,7 @@ export class AppContainer extends Component {
   componentDidMount() {
     this.props.getFavLeagues();
     this.props.getLeagues();
+    this.props.getLastestNews();
   }
 
   handleChange = event => {
@@ -76,9 +36,9 @@ export class AppContainer extends Component {
       searchKey: searchKey
     }, () => {
       if (searchKey.length > 2) {
-        const searchLeagues = this.props.leagues;
+        const leagues = this.props.leagues;
         let result = [];
-        result = searchLeagues.filter(item =>
+        result = leagues.filter(item =>
           this.checkSearchLeague(item.leagueNameEN, searchKey)
           || this.checkSearchLeague(item.leagueFullNameEN, searchKey)
           || this.checkSearchLeague(item.leagueNameVN, searchKey));
@@ -91,14 +51,34 @@ export class AppContainer extends Component {
 
   checkSearchLeague = (fieldName, searchKey) =>  fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
 
+  onUpdateFavLeague = league => {
+    const favLeagues  = [...this.props.favLeagues];
+      const currentFavLeagues = CommonFunctions.getFavLeagues();
+      const favLeague = currentFavLeagues.find(item => item.leagueId === league.leagueId);
+      if (favLeague) {
+          const index = favLeagues.findIndex(item => item.leagueId === league.leagueId);
+          if (index < 0) {
+              favLeagues.unshift(favLeague);
+          }
+      }
+      this.props.setFavLeagues(favLeagues);
+  }
+
   isDefault = () => {
     const { searchKey, searchLeagues } = this.state;
     return searchKey.length < 3 && searchLeagues.length === 0;
   };
+
+  sortLeagues = leagues => {
+    if(!leagues) return [];
+    const items = [...leagues];
+    return items.sort((item1, item2) => (item2.order - item1.order));
+};
   render() {
-    const { favLeagues, leagues } = this.props;
+    const { posts } = this.props;
     const { searchKey, searchLeagues } = this.state;
     const isDefault = this.isDefault();
+    const favLeagues = this.sortLeagues(this.props.favLeagues);
     return (
       <div className="container livescore-container">
         <div className="livescore-soccer">
@@ -130,16 +110,16 @@ export class AppContainer extends Component {
 
             <div className="my-league">
               {
-                isDefault && <Grid leagues={favLeagues} />
+                isDefault && <Grid leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} isFav  />
               }
               {
-                !isDefault && <Grid leagues={searchLeagues} />
+                !isDefault && <Grid leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
               }
             </div>
           </div>
           <div className="livescore-soccer-extension">
             <FavoriteMatches />
-            <RecentPosts />
+            <LastestNews posts={posts} />
           </div>
         </div>
       </div>
@@ -151,8 +131,8 @@ export class AppContainer extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-  const { favLeagues, leagues } = state;
-  return { favLeagues, leagues };
+  const { favLeagues, leagues, posts } = state;
+  return { favLeagues, leagues, posts };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

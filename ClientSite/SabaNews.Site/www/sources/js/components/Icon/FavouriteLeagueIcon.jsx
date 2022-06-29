@@ -31,7 +31,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
     }
 
     handleUpdateFavourite = () => {
-        const league = this.props.league;
+        const { league, order } = this.props;
         let favLeague = CommonFunctions.getFavLeagues();
         const favourite = favLeague.find(item => item.leagueId === league.leagueId);
         let isFavourite = false;
@@ -54,7 +54,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
                 leagueNameVN: league.leagueNameVN,
                 icon: league.icon,
                 currentSeasonId: league.season ? league.season.seasonId : league.currentSeasonId,
-                order: currentOrder + 1
+                order: order ? order : currentOrder + 1
             };
             favLeague.push(leagueTmp);
             message = (<div className="fav-league fav-league-add">

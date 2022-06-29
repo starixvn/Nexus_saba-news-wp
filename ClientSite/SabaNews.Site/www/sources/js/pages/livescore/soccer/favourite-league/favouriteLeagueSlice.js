@@ -4,7 +4,8 @@ const favouriteLeagueSlice = createSlice({
     name: 'favouriteLeagueSlice',
     initialState: {
         favLeagues: null,
-        leagues: null
+        leagues: null,
+        posts: []
     },
     reducers: {
         setFavLeagues: (state, action) => {
@@ -12,6 +13,9 @@ const favouriteLeagueSlice = createSlice({
         },
         setLeagues: (state, action) => {
             state.leagues = action.payload;
+        },
+        setPosts: (state,action) => {
+            state.posts = action.payload;
         }
     },
 });
@@ -20,7 +24,8 @@ const { actions, reducer } = favouriteLeagueSlice;
 
 export const {
     setFavLeagues,
-    setLeagues
+    setLeagues,
+    setPosts
 } = actions;
 
 export default reducer;

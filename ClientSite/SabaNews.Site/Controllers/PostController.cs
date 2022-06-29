@@ -177,6 +177,14 @@
             return Ok(banner);
         }
 
+        [HttpPost]
+        [Route("api/post/lastestNews")]
+        public async Task<IActionResult> GetLastestNews()
+        {
+            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems});
+            return Ok(posts);
+        }
+
 
         public string GetClientIP()
         {

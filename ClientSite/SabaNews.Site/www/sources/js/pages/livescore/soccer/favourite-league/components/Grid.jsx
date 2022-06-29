@@ -47,18 +47,29 @@ export default class Grid extends PureComponent {
                   Premier League ${i + 1}
                   `
             })),
+            leagues: props.leagues
+        }
+    };
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.leagues !== this.props.leagues) {
+            this.setState({leagues: this.props.leagues});
         }
     }
 
+    onUpdateFavLeague = league => {
+        this.props.onUpdateFavLeague(league);
+    };
+
     render() {
-        const { leagues } = this.props;
+        const { leagues } = this.state;
         return (
             <Container lockAxis="y" onDrop={e => this.setState({ items: applyDrag(this.state.items, e) })}>
                 {leagues && leagues.map(league => {
                     return (
                         <Draggable key={league.leagueId}>
                             <div className="draggable-item my-league-item">
-                                <FavouriteLeagueIcon league={league} />
+                                <FavouriteLeagueIcon league={league} order={league.order}  onUpdateFavLeague={() => this.onUpdateFavLeague(league)}/>
                                 <TeamIcon className="my-league-item-img" src={league.icon} />
                                 <div className="my-league-item-name"> <span>{CommonFunctions.getLeagueName(league)}</span> </div>
                                 <i className="my-league-item-drop icon-livescore icon-drop-drag"></i>
