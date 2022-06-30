@@ -87,7 +87,7 @@ export class Grid extends PureComponent {
                     </div>
                 </div>
 
-                <div className="my-league">
+                <div className="drop-and-drag-league">
                     {
                         isDefault && favLeagues !== null && <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} />
                     }
