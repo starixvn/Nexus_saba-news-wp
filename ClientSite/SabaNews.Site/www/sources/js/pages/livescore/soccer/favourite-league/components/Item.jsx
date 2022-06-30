@@ -3,7 +3,7 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 
-export default class GridItem extends PureComponent {
+export default class Item extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

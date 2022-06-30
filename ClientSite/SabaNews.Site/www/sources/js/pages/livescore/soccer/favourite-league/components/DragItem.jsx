@@ -4,7 +4,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-export default class GridDragItem extends PureComponent {
+export default class DragItem extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ export default class GridDragItem extends PureComponent {
         this.props.onUpdateFavLeague(league);
     };
 
-    onDrop = dragData => {
+    onDrag = dragData => {
         const { source, destination } = dragData;
         if(!source || !destination || (source.index === destination.index))  {
             return;
@@ -35,7 +35,7 @@ export default class GridDragItem extends PureComponent {
         favLeagueIds = favLeagueIds.join(',');
         const favLeague = orderNewLeagues.filter(item => favLeagueIds.includes(item.leagueId.toString()));
         localStorage.setItem('favourite-leagues', JSON.stringify(favLeague));
-        this.props.onUpdateOrderLeagues(orderNewLeagues);
+        this.props.onDrag(orderNewLeagues);
         this.setState({ toggleIcon: !this.state.toggleIcon});
     };
 
@@ -72,7 +72,7 @@ export default class GridDragItem extends PureComponent {
             return <div>Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.</div>;
         }
         return (
-            <DragDropContext onDragEnd={this.onDrop}>
+            <DragDropContext onDragEnd={this.onDrag}>
                 <Droppable droppableId='my-league'>
                     {provided => (
                         <div className="my-league" {...provided.droppableProps} ref={provided.innerRef}>

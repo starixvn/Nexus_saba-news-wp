@@ -4,8 +4,8 @@ import Site from '@jsroot/common/site';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import GridItem from './GridItem';
-import GridDragItem from './GridDragItem';
+import Item from './Item';
+import DragItem from './DragItem';
 
 export class Grid extends PureComponent {
     constructor(props) {
@@ -72,7 +72,7 @@ export class Grid extends PureComponent {
         return items.sort((item1, item2) => (item2.order - item1.order));
     };
 
-    onUpdateOrderLeagues = league => {
+    onDrag = league => {
         this.props.setFavLeagues(league);
     };
     render() {
@@ -102,11 +102,11 @@ export class Grid extends PureComponent {
                 <div className="drop-and-drag-league">
                     {
                         isDefault && favLeagues !== null &&
-                        <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} onUpdateOrderLeagues={this.onUpdateOrderLeagues} />
+                        <DragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} onDrag={this.onDrag} />
                     }
                     {
                         !isDefault &&
-                        <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
+                        <Item leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
                     }
                 </div>
             </>
