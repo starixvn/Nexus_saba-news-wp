@@ -597,6 +597,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           position: relative;
           display: flex;
           align-items: center; }
+          @media screen and (max-width: 1024px) {
+            .top-header .group-menu .nav-menu .main-menu .menu-item {
+              display: inherit; } }
           .top-header .group-menu .nav-menu .main-menu .menu-item [class*="icon-"] {
             font-size: 2.4rem;
             cursor: pointer;
@@ -623,7 +626,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             color: #4F4F4F; }
             @media screen and (max-width: 1024px) {
               .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-                padding: 1.6rem 1.2rem;
+                padding: 1.5rem 1.2rem;
                 margin-right: 0; } }
             .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
               color: #F12F19; }
@@ -820,10 +823,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
   width: 36px;
   height: 36px;
   margin-left: .3rem; }
-  @media (max-width: 767px) {
+  @media screen and (max-width: 1024px) {
     .marked-icon {
-      position: relative;
-      top: -2px; } }
+      position: absolute;
+      top: 8px;
+      left: 85px;
+      display: block; } }
 
 @media screen and (max-width: 1024px) {
   .hidden-body .group-menu, .hidden-body .padding-mobile-none, .hidden-body .top-header, .hidden-body .nav-menu {
@@ -865,6 +870,27 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
 
 .overflow-modal {
   overflow: hidden; }
+
+.livescore-child-menu {
+  display: none; }
+  @media screen and (max-width: 1024px) {
+    .livescore-child-menu {
+      display: block;
+      list-style: none;
+      padding-left: 3.4rem;
+      margin-top: -1.5rem; } }
+  .livescore-child-menu li {
+    border-bottom: 1px solid #E0E0E0; }
+    .livescore-child-menu li:last-child {
+      border-bottom: none; }
+    .livescore-child-menu li a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.3rem;
+      line-height: 1.8rem;
+      padding: 1.5rem 0;
+      display: block;
+      color: #2F2F2F; }
 
 /* vietnamese */
 @font-face {
@@ -989,7 +1015,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       background-color: #FFFDF9;
       position: relative;
       z-index: 9;
-      padding-right: 1rem; }
+      padding-right: 1rem;
+      line-height: 1; }
       .block__title a:hover {
         color: #cb200c; }
       @media screen and (max-width: 1024px) {
@@ -1704,7 +1731,7 @@ button {
 .banner-change-domain, .skeleton-banner-align {
   position: absolute;
   top: 18rem;
-  z-index: 99999999999; }
+  z-index: 9; }
   .banner-change-domain.active-ads, .skeleton-banner-align.active-ads {
     top: 7.5rem;
     position: fixed; }
