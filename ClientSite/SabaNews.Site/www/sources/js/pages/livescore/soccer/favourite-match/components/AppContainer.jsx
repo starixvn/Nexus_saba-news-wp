@@ -12,6 +12,7 @@ import SignalR from './SignalR';
 import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
+import LastestNews from '@jsroot/components/LastestNews';
 
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
@@ -64,6 +65,7 @@ export class AppContainer extends Component {
         this.props.getMatches();
         this.props.getFavLeagues();
         this.props.getLeagues();
+        this.props.getLastestNews();
     }
 
     handleSelectTab = key => {
@@ -104,7 +106,7 @@ export class AppContainer extends Component {
 
     render() {
         const { selectedTab } = this.state;
-        const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues } = this.props;
+        const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR />
@@ -151,6 +153,7 @@ export class AppContainer extends Component {
                     <div className="livescore-soccer-extension">
                         <FavoriteMatches />
                         <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} />
+                        <LastestNews posts={posts} />
                     </div>
                 </div>
             </div>
@@ -162,8 +165,8 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues } = state;
-    return { favLeagues, matches, postMatches, preMatches, liveMatches, leagues };
+    const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts } = state;
+    return { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

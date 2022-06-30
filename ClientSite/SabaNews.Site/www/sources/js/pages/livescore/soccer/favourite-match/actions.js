@@ -7,7 +7,8 @@ import {
     setLiveMatches,
     setFavouriteMatches,
     setLeagues,
-    setFavLeagues
+    setFavLeagues,
+    setPosts
 } from './favouriteMatchSlice';
 
 const getMatches = () => async dispatch => {
@@ -49,14 +50,23 @@ const getLeagues = () => async dispatch => {
     }).catch(Site.handleAxiosError);
 };
 
+const getLastestNews = () => async dispatch => {
+    const url = Site.resolveClientUrl('api/post/lastestNews');
+    await DataService.postDataAsync(url).then(response => {
+        dispatch(setPosts(response.data));
+    }).catch(Site.handleAxiosError);
+};
+
 export const ActionCreators = {
     setMatches,
     setLiveMatches,
     setFavouriteMatches,
     setLeagues,
     setFavLeagues,
+    setPosts,
     getFavLeagues,
     getMatches,
     getLiveMatches,
-    getLeagues
+    getLeagues,
+    getLastestNews
 };
