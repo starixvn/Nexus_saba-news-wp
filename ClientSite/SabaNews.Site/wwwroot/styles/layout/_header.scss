@@ -442,9 +442,11 @@
                     position: relative;
                     display: flex;
                     align-items: center;
-                    @include tableMobile{
-                        display : inherit;
+
+                    @include tableMobile {
+                        display: inherit;
                     }
+
                     [class*="icon-"] {
                         font-size: 2.4rem;
                         cursor: pointer;
@@ -463,6 +465,19 @@
                         order: 2;
                         border-bottom: 1px solid $border-calendar;
                         margin-right: 0;
+                    }
+
+
+                    &:first-child {
+                        @include tableMobile {
+                            border-bottom : none;
+                        }
+
+                        a {
+                            @include tableMobile {
+                                display: none;
+                            }
+                        }
                     }
 
                     &:nth-last-child(2) {

@@ -356,6 +356,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               order: 2;
               border-bottom: 1px solid #E0E0E0;
               margin-right: 0; } }
+          @media screen and (max-width: 1024px) {
+            .top-header .group-menu .nav-menu .main-menu .menu-item:first-child {
+              border-bottom: none; } }
+          @media screen and (max-width: 1024px) {
+            .top-header .group-menu .nav-menu .main-menu .menu-item:first-child a {
+              display: none; } }
           .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(2) {
             border-bottom: none; }
             .top-header .group-menu .nav-menu .main-menu .menu-item:nth-last-child(2) a {
