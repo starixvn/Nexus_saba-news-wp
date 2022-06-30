@@ -2,7 +2,6 @@
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import LangHelper from '@jsroot/common/langHelper';
 import Site from '@jsroot/common/site';
-import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import SearchLeague from './SearchLeague';
@@ -72,7 +71,7 @@ export default class FavoriteLeagues extends PureComponent {
         } else {
             window.location = url;
         }
-    }
+    };
 
     render() {
         const leagues = this.sortLeagues(this.state.leagues);

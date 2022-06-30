@@ -8,8 +8,8 @@ export default class GridItem extends PureComponent {
         super(props);
         this.state = {
             leagues: props.leagues
-        }
-    };
+        };
+    }
 
     componentDidUpdate(prevProps) {
         if (prevProps.leagues !== this.props.leagues) {

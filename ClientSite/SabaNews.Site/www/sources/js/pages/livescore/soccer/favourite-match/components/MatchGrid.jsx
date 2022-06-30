@@ -3,7 +3,6 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { Form } from 'react-bootstrap';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
 

@@ -112,11 +112,11 @@ export default class FavouriteLeagueIcon extends PureComponent {
                             overlay={this.renderTooltip()}
                         >
                             <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                                className={`icon-fav-league icon-livescore ${className} ${favClass}`}
+                                className={`icon-fav-league icon-livescore ${defaultClass} ${favClass}`}
                             />
                         </OverlayTrigger> :
                         <i onClick={this.handleUpdateFavourite} onMouseOut={this.onMouseOut}
-                            className={`icon-fav-league icon-livescore ${className} ${favClass}`}
+                            className={`icon-fav-league icon-livescore ${defaultClass} ${favClass}`}
                         />
                 }
             </>

@@ -4,7 +4,6 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import Site from '@jsroot/common/site';
-import DateTimeService from '@jsroot/common/dateTimeService';
 import LangHelper from '@jsroot/common/langHelper';
 
 export default class SearchLeague extends PureComponent {

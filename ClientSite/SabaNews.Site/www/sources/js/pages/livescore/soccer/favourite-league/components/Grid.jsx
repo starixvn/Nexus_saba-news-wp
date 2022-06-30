@@ -14,7 +14,7 @@ export class Grid extends PureComponent {
         this.state = {
             searchKey: '',
             searchLeagues: []
-        }
+        };
     }
     handleChange = event => {
         const searchKey = event.target.value;
@@ -65,7 +65,9 @@ export class Grid extends PureComponent {
     };
 
     sortLeagues = leagues => {
-        if (!leagues) return leagues;
+        if (!leagues) {
+            return leagues;
+        }
         const items = [...leagues];
         return items.sort((item1, item2) => (item2.order - item1.order));
     };
@@ -99,10 +101,12 @@ export class Grid extends PureComponent {
 
                 <div className="drop-and-drag-league">
                     {
-                        isDefault && favLeagues !== null && <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} onUpdateOrderLeagues={this.onUpdateOrderLeagues} />
+                        isDefault && favLeagues !== null &&
+                        <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} onUpdateOrderLeagues={this.onUpdateOrderLeagues} />
                     }
                     {
-                        !isDefault && <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
+                        !isDefault &&
+                        <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
                     }
                 </div>
             </>

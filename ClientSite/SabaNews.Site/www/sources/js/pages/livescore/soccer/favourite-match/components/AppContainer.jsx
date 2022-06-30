@@ -151,7 +151,6 @@ export class AppContainer extends Component {
                         </Tabs>
                     </div>
                     <div className="livescore-soccer-extension">
-                        <FavoriteMatches />
                         <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} />
                         <LastestNews posts={posts} />
                     </div>
