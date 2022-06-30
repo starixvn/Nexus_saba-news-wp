@@ -26,7 +26,7 @@ export default class GridItem extends PureComponent {
         if (className.includes('icon-livescore')) {
             return;
         }
-        const url = CommonFunctions.getLeagueUrl(league);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

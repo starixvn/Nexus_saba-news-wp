@@ -102,10 +102,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     handleClickLeague = (event, league) => {
-        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
-        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const leagueNameSlug = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueNameSlug}/${seasonId}/${today}/${league.leagueId}`);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

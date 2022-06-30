@@ -10,6 +10,7 @@ import GridDragItem from './GridDragItem';
 export class Grid extends PureComponent {
     constructor(props) {
         super(props);
+        this.searchInput = React.createRef();
         this.state = {
             searchKey: '',
             searchLeagues: []
@@ -37,6 +38,11 @@ export class Grid extends PureComponent {
             }
         });
     });
+
+    resetSearchBox = () => {
+        this.searchInput.value = '';
+        this.setState({ searchKey: ''});
+    };
 
     checkSearchLeague = (fieldName, searchKey) => fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);
 
@@ -80,10 +86,14 @@ export class Grid extends PureComponent {
                             placeholder="tìm kiếm giải đấu..."
                             className="livescore-soccer-searchbox form-control"
                             onChange={this.handleChange}
+                            ref={input => this.searchInput = input}
                         />
                         <span className="btn-search-match">
                             <i className="icon-livescore icon-search"></i>
                         </span>
+                        {
+                            searchKey.length > 0 && <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
+                        }
                     </div>
                 </div>
 

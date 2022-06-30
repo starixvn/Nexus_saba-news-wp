@@ -63,10 +63,7 @@ export default class SearchLeague extends PureComponent {
         if (className.includes('icon-livescore')) {
             return;
         }
-        const season = league.currentSeasonId ? league.currentSeasonId : 0;
-        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${season}/${today}/${league.leagueId}`);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -151,7 +148,10 @@ export default class SearchLeague extends PureComponent {
                             ref={input => this.searchInput = input}
                         />
                         <span className="btn-search-match"><i className="icon-livescore icon-search"></i></span>
-                        <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
+                        {
+                            searchKey.length > 0 &&
+                            <span className="btn-close-match" onClick={this.resetSearchBox}><i className="icon-livescore icon-close"></i></span>
+                        }
                     </div>
                     <div className={`modal-data ${this.state.leagues.length ? 'spacing-top' : ''}`}>
                         {

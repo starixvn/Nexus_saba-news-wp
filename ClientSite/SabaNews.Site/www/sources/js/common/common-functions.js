@@ -248,7 +248,7 @@ export default class CommonFunctions {
         }
     }
 
-    static getLeagueUrl(league) {
+    static getLeaguePageUrl(league) {
         const leagueName = Site.toSlug(this.getLeagueName(league));
         const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
         const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;

@@ -30,10 +30,7 @@ export class HeadToHead extends Component {
     };
 
     handleClickLeague = (event, league) => {
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
-        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
