@@ -21,13 +21,26 @@ export default class GridItem extends PureComponent {
         this.props.onUpdateFavLeague(league);
     };
 
+    handleClickLeague = (event, league) => {
+        const className = event.target.className;
+        if (className.includes('icon-livescore')) {
+            return;
+        }
+        const url = CommonFunctions.getLeagueUrl(league);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
+
     render() {
         const { leagues } = this.state;
         return (
-            <div>
+            <div className="my-league">
                 {leagues.map(league => {
                     return (
-                        <div className="draggable-item my-league-item" key={league.leagueId}>
+                        <div className="draggable-item my-league-item" key={league.leagueId}  onClick={event => this.handleClickLeague(event, league)}>
                             <FavouriteLeagueIcon league={league}
                                 order={league.order}
                                 onUpdateFavLeague={() => this.onUpdateFavLeague(league)}

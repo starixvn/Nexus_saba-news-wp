@@ -1,5 +1,7 @@
 ﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode } from './constants';
 import LangHelper from '@jsroot/common/langHelper';
+import Site from '@jsroot/common/site';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class CommonFunctions {
     static getLeagueName(league) {
@@ -244,5 +246,13 @@ export default class CommonFunctions {
             default:
                 return '';
         }
+    }
+
+    static getLeagueUrl(league) {
+        const leagueName = Site.toSlug(this.getLeagueName(league));
+        const today = DateTimeService.formatDateTime(DateTimeService.getCurrentClientDateTime(), 'YYYY-MM-DD');
+        const seasonId = league.currentSeasonId ? league.currentSeasonId : 0;
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
+        return url;
     }
 }

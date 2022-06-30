@@ -8,7 +8,8 @@ export default class GridItem extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            leagues: props.leagues
+            leagues: props.leagues,
+            toggleIcon: false
         }
     };
 
@@ -24,32 +25,49 @@ export default class GridItem extends PureComponent {
 
     onDrop = dragData => {
         const { source, destination } = dragData;
-        if(!source || !destination) {
+        if(!source || !destination || (source.index === destination.index))  {
             return;
         }
         const { leagues } = this.state;
-        //const removedLeague = {...leagues[removedIndex], order: leagues[addedIndex].order};
-        //const addedLeague = {...leagues[addedIndex], order: leagues[removedIndex].order};
-        const itemToAdd = leagues.splice(source.index, 1)[0];
-        leagues.splice(destination.index, 0, itemToAdd);
-        // leagues[removedIndex]  = addedLeague;
-        // leagues[addedIndex] = removedLeague;
-        this.setState({leagues: [...leagues]});
-        // let currentFavLeagues = CommonFunctions.getFavLeagues();
-        // const removeFavIndex = currentFavLeagues.findIndex(item => item.leagueId === removedLeague.leagueId);
-        // if(removeFavIndex > 0) {
-        //     currentFavLeagues[removeFavIndex] = removedLeague;
-        // }
+        const orderNewLeagues = this.orderNewLeagues(source.index, destination.index, leagues);
+        const currentFavLeagues = CommonFunctions.getFavLeagues();
+        let favLeagueIds = currentFavLeagues.map(item => item.leagueId);
+        favLeagueIds = favLeagueIds.join(',');
+        const favLeague = orderNewLeagues.filter(item => favLeagueIds.includes(item.leagueId.toString()));
+        localStorage.setItem('favourite-leagues', JSON.stringify(favLeague));
+        this.props.onUpdateOrderLeagues(orderNewLeagues);
+        this.setState({ toggleIcon: !this.state.toggleIcon});
+    };
 
-        // const addedFavIndex = currentFavLeagues.findIndex(item => item.leagueId === addedLeague.leagueId);
-        // if(addedFavIndex > 0) {
-        //     currentFavLeagues[addedFavIndex] = addedLeague;
-        // }
-        // localStorage.setItem('favourite-leagues', JSON.stringify(currentFavLeagues));
-    }
+    orderNewLeagues = (source, destination, leagues) => {
+        const itemToAdd = leagues.splice(source, 1)[0];
+        leagues.splice(destination, 0, itemToAdd);
+        let count = leagues.length;
+        const tmpLeague = [];
+        leagues.map(item => {
+            const league = {...item};
+            league.order = count;
+            count--;
+            tmpLeague.push(league);
+        });
+        return tmpLeague;
+    };
+
+    handleClickLeague = (event, league) => {
+        const className = event.target.className;
+        if (className.includes('icon-livescore')) {
+            return;
+        }
+        const url = CommonFunctions.getLeagueUrl(league);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
+    };
 
     render() {
-        const { leagues } = this.state;
+        const { leagues, toggleIcon } = this.state;
         if( this.props.leagues.length === 0) {
             return <div>Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.</div>
         }
@@ -63,10 +81,10 @@ export default class GridItem extends PureComponent {
                                     <Draggable key={index} draggableId={`${index}`} index={index}>
                                     {(provided) => (
                                         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                            <div className="draggable-item my-league-item" >
-                                                <FavouriteLeagueIcon
-                                                    league={league}
+                                            <div className="draggable-item my-league-item" onClick={event => this.handleClickLeague(event, league)}>
+                                                <FavouriteLeagueIcon league={league}
                                                     order={league.order}
+                                                    flagToggle={toggleIcon}
                                                     onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
                                                     className='my-league-item-action'/>
                                                 <TeamIcon className="my-league-item-img" src={league.icon} />

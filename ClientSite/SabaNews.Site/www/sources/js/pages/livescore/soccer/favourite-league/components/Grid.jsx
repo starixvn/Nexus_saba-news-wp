@@ -51,7 +51,7 @@ export class Grid extends PureComponent {
             }
         }
         this.props.setFavLeagues(favLeagues);
-    }
+    };
 
     isDefault = () => {
         const { searchKey, searchLeagues } = this.state;
@@ -64,9 +64,9 @@ export class Grid extends PureComponent {
         return items.sort((item1, item2) => (item2.order - item1.order));
     };
 
-    onUpdateDropLeague = (removeIndex, addIndex) => {
-
-    }
+    onUpdateOrderLeagues = league => {
+        this.props.setFavLeagues(league);
+    };
     render() {
         const { searchKey, searchLeagues } = this.state;
         const isDefault = this.isDefault();
@@ -89,14 +89,14 @@ export class Grid extends PureComponent {
 
                 <div className="drop-and-drag-league">
                     {
-                        isDefault && favLeagues !== null && <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} />
+                        isDefault && favLeagues !== null && <GridDragItem leagues={favLeagues} onUpdateFavLeague={this.onUpdateFavLeague} onUpdateOrderLeagues={this.onUpdateOrderLeagues} />
                     }
                     {
                         !isDefault && <GridItem leagues={searchLeagues} searchKey={searchKey} onUpdateFavLeague={this.onUpdateFavLeague} />
                     }
                 </div>
             </>
-        )
+        );
     }
 }
 
