@@ -46,6 +46,9 @@
     .livescore-soccer-search-bar {
       padding: 0 1rem;
     }
+    .btn-close-match{
+      right: 20px;
+    }
   }
 }
 .modal-data {
@@ -56,7 +59,7 @@
 
   .livescore-soccer-extension {
     padding-left: 0;
-
+    margin-bottom: 0;
     .toggle-league {
       display: block !important;
 
