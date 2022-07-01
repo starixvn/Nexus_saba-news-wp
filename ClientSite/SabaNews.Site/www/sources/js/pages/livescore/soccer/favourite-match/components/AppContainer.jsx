@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { Tabs, Tab } from 'react-bootstrap';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
-import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import Breadscrum from '@jsroot/components/Breadscrum';
 import MatchGrid from './MatchGrid';
 import moment from 'moment';

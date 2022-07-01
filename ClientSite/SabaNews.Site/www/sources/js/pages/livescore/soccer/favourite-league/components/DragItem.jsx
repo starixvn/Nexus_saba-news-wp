@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
@@ -81,14 +81,18 @@ export default class DragItem extends PureComponent {
                                     <Draggable key={index} draggableId={`${index}`} index={index}>
                                     {provided => (
                                         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                            <div className="draggable-item my-league-item" onClick={event => this.handleClickLeague(event, league)}>
+                                            <div className="draggable-item my-league-item">
                                                 <FavouriteLeagueIcon league={league}
                                                     order={league.order}
                                                     flagToggle={toggleIcon}
                                                     onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
                                                     className='my-league-item-action'/>
-                                                <TeamIcon className="my-league-item-img" src={league.icon} />
-                                                <div className="my-league-item-name"> <span>{CommonFunctions.getLeagueName(league)}</span> </div>
+                                                <div onClick={event => this.handleClickLeague(event, league)}>
+                                                    <TeamIcon className="my-league-item-img" src={league.icon} />
+                                                </div>
+                                                <div className="my-league-item-name">
+                                                    <span onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
+                                                </div>
                                                 <i className="my-league-item-drop icon-livescore icon-drop-drag"></i>
                                             </div>
                                         </div>
