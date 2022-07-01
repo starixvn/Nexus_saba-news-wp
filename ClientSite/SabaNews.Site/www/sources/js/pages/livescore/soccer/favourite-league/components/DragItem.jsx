@@ -69,7 +69,7 @@ export default class DragItem extends PureComponent {
     render() {
         const { leagues, toggleIcon } = this.state;
         if( this.props.leagues.length === 0) {
-            return <div>Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.</div>;
+            return <div className="none-livescore">Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.</div>;
         }
         return (
             <DragDropContext onDragEnd={this.onDrag}>
