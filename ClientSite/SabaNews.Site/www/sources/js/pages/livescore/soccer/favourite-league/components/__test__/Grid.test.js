@@ -144,7 +144,31 @@ describe('Grid', () =>{
             expect(instance.state.searchLeagues).toEqual([]);
         });
 
-        it('search correctly when searcKey.length == 0', () => {
+        it('search correctly when searcKey.length === 1', () => {
+            // Arrange
+            const searchKey = '1';
+            const leagues = [
+                {leagueId: 1, leagueNameEN: 'leagueName'},
+                {leagueId: 2, leagueFullNameEN: 'leagueName'},
+                {leagueId: 3, leagueNameVN: 'leagueName'}
+            ];
+            const props = {
+                ...defaultProps,
+                leagues: leagues
+            };
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+
+            // Act
+            instance.debounceSearchKeyInputChange(searchKey);
+            jest.runAllTimers();
+
+            // Assert
+            expect(instance.state.searchKey).toEqual(searchKey);
+            expect(instance.state.searchLeagues).toEqual([]);
+        });
+
+        it('search correctly when searcKey.length === 0', () => {
             // Arrange
             const searchKey = '';
             const leagues = [
@@ -297,5 +321,63 @@ describe('Grid', () =>{
 
         // Assert
         expect(defaultProps.setFavLeagues).toHaveBeenCalled();
-    })
+    });
+
+    describe('renders', () => {
+        it('render correctly when isDefault = true', () => {
+            // Arrange
+            const leagues = [{leagueId: 1, leagueNameEN:'name', order: 2}, {leagueId: 2, leagueNameEN:'name', order: 1}];
+            const props = {
+                ...defaultProps,
+                favLeagues: leagues
+            };
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            instance.isDefault = jest.fn().mockReturnValue(true);
+            instance.state.searchKey = '';
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when isDefault = false', () => {
+            // Arrange
+            const leagues = [{leagueId: 1, leagueNameEN:'name', order: 2}, {leagueId: 2, leagueNameEN:'name', order: 1}];
+            const props = {
+                ...defaultProps,
+                favLeagues: leagues
+            };
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            instance.isDefault = jest.fn().mockReturnValue(false);
+            instance.state.searchKey = 'league';
+            instance.searchInput = {value: 'value'};
+
+            // Act
+            const result = instance.render();
+
+            // Assert
+            expect(result).toMatchSnapshot();
+        });
+
+        it('render correctly when change search league', () => {
+            // Arrange
+            const leagues = [{leagueId: 1, leagueNameEN:'name', order: 2}, {leagueId: 2, leagueNameEN:'name', order: 1}];
+            const props = {
+                ...defaultProps,
+                favLeagues: leagues
+            };
+            const container = shallow(<Grid {...props} />);
+
+
+            // Assert
+            const inputSearch = container.find('.livescore-soccer-search-bar').find('input');
+            inputSearch.simulate('change', {target: {value: 'value'}});
+            container.find('.livescore-soccer-search-bar').find('input').simulate('change', {target: {value: 'value'}});
+            expect(container).toMatchSnapshot();
+        });
+    });
 });

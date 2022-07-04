@@ -1,8 +1,9 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class DragItem extends PureComponent {
     constructor(props) {
@@ -69,7 +70,7 @@ export default class DragItem extends PureComponent {
     render() {
         const { leagues, toggleIcon } = this.state;
         if( this.props.leagues.length === 0) {
-            return <div className="none-livescore">Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.</div>;
+            return <div className="none-livescore">{LangHelper.getResource('EmptyFavLeague')}</div>;
         }
         return (
             <DragDropContext onDragEnd={this.onDrag}>

@@ -41,7 +41,7 @@ export class Grid extends PureComponent {
 
     resetSearchBox = () => {
         this.searchInput.value = '';
-        this.setState({ searchKey: ''});
+        this.setState({ searchKey: '', searchLeagues: []});
     };
 
     checkSearchLeague = (fieldName, searchKey) => fieldName && (fieldName.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1);

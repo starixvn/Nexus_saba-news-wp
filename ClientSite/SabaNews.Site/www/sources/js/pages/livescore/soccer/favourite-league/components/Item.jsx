@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import CommonFunctions from '@jsroot/common/common-functions';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class Item extends PureComponent {
     constructor(props) {
@@ -37,6 +38,9 @@ export default class Item extends PureComponent {
     render() {
         const { leagues } = this.state;
         const { searchKey } = this.props;
+        if( this.props.leagues.length === 0) {
+            return <div className="none-livescore">{LangHelper.getResource('NotFoundLeague')}</div>;
+        }
         return (
             <div className="my-league">
                 {leagues.map(league => {
