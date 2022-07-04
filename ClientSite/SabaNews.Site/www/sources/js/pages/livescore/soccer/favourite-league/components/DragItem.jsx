@@ -87,9 +87,7 @@ export default class DragItem extends PureComponent {
                                                     flagToggle={toggleIcon}
                                                     onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
                                                     className='my-league-item-action'/>
-                                                <div onClick={event => this.handleClickLeague(event, league)}>
-                                                    <TeamIcon className="my-league-item-img" src={league.icon} />
-                                                </div>
+                                                <TeamIcon className="my-league-item-img" src={league.icon} onClick={event => this.handleClickLeague(event, league)}/>
                                                 <div className="my-league-item-name">
                                                     <span onClick={event => this.handleClickLeague(event, league)}>{CommonFunctions.getLeagueName(league)}</span>
                                                 </div>

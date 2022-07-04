@@ -40,7 +40,7 @@ export default class Item extends PureComponent {
             <div className="my-league">
                 {leagues.map(league => {
                     return (
-                        <div className="draggable-item my-league-item" key={league.leagueId}  onClick={event => this.handleClickLeague(event, league)}>
+                        <div className="draggable-item my-league-item result-search" key={league.leagueId}  onClick={event => this.handleClickLeague(event, league)}>
                             <FavouriteLeagueIcon league={league}
                                 order={league.order}
                                 onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
