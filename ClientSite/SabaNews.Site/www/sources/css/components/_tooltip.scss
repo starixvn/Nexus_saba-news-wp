@@ -41,7 +41,7 @@
         list-style: none;
         display: flex;
         align-items: center;
-
+        justify-content: center;
         li {
             font-weight: 600;
             font-size: 1.4rem;
@@ -49,7 +49,10 @@
             display: inline-flex;
             margin-right: 1rem;
             align-items: center;
-
+            justify-content: center;
+            @include tableMobile{
+                margin-right: 0;
+            }
             &:last-child {
                 margin-right: 0;
             }
@@ -103,7 +106,7 @@
     .text-fav {
 
         @include tableMobile {
-            width: 22rem;
+            width: 23rem;
         }
     }
 }
