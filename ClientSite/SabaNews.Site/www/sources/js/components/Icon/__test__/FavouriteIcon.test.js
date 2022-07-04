@@ -43,6 +43,47 @@ describe('FavouriteIcon', () => {
 
         });
     });
+
+    describe('componentDidUpdate', () => {
+        it('update fav when flagToggle is change', () => {
+            // Arrange
+            const matches = [1, 2];
+            const props = {
+                ...defaultProps,
+                flagToggle: false,
+                matchId: 1
+            }
+            CommonFunctions.getFavouriteMatches = jest.fn().mockReturnValue(matches);
+            const container = shallow(<FavouriteIcon {...props} />);
+            const instance = container.instance();
+            instance.state.isFavourite = false;
+
+            // Act
+            instance.componentDidUpdate({flagToggle:true});
+            // Assert
+            expect(instance.state.isFavourite).toEqual(true);
+        });
+
+        it('remain fav when flagToggle is change', () => {
+            // Arrange
+            const matches = [1, 2];
+            const props = {
+                ...defaultProps,
+                flagToggle: false,
+                matchId: 3
+            }
+            CommonFunctions.getFavouriteMatches = jest.fn().mockReturnValue(matches);
+            const container = shallow(<FavouriteIcon {...props} />);
+            const instance = container.instance();
+            instance.state.isFavourite = false;
+
+            // Act
+            instance.componentDidUpdate({flagToggle:true});
+            // Assert
+            expect(instance.state.isFavourite).toEqual(false);
+        });
+    });
+
     describe('handleUpdateFavourite', () => {
         it('setState correctly when isFavouriteMatch = true', () => {
              // Arrange
