@@ -98,9 +98,12 @@ export default class MatchGrid extends PureComponent {
         }
     };
 
-    onUpdateFavouriteMatch = matchId => {
-        this.props.onUpdateFavouriteMatch(matchId);
+    onToggleIcon = () => {
+        this.props.onToggleIcon();
     };
+    onUpdateFavLeague = () => {
+        this.props.onUpdateFavLeague();
+    }
 
     handleClickLeague = (event, league) => {
         const className = event.target.className;
@@ -116,7 +119,7 @@ export default class MatchGrid extends PureComponent {
     };
 
     render() {
-        let { matches, sortAsc, isAllMatches } = this.props;
+        let { matches, sortAsc, isAllMatches, flagToggleIcon } = this.props;
         if (matches.length === 0) {
             if (isAllMatches) {
                 return (<div className="none-livescore">
@@ -163,14 +166,15 @@ export default class MatchGrid extends PureComponent {
                                                     return <div className="group-match-item" key={child.key}>
                                                         <div className="group-match-item-slogan"
                                                             onClick={event => this.handleClickLeague(event, child.league)}>
-                                                            <FavouriteLeagueIcon league={child.league} />
+                                                            <FavouriteLeagueIcon league={child.league} flagToggle={flagToggleIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
                                                             <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
                                                         </div>
                                                         {
                                                             child.childs.map(match =>
                                                                 <Match key={match.matchId}
                                                                     searchKey={searchKey} match={match}
-                                                                    onUpdateFavouriteMatch={this.onUpdateFavouriteMatch}
+                                                                    onUpdateFavouriteMatch={this.onToggleIcon}
+                                                                    flagToggle={flagToggleIcon}
                                                                 />
                                                             )
                                                         }

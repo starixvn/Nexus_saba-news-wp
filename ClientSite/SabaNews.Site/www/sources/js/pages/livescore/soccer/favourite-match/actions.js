@@ -8,7 +8,8 @@ import {
     setFavouriteMatches,
     setLeagues,
     setFavLeagues,
-    setPosts
+    setPosts,
+    setFlagToggleIcon
 } from './favouriteMatchSlice';
 
 const getMatches = () => async dispatch => {
@@ -64,6 +65,7 @@ export const ActionCreators = {
     setLeagues,
     setFavLeagues,
     setPosts,
+    setFlagToggleIcon,
     getFavLeagues,
     getMatches,
     getLiveMatches,

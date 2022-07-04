@@ -12,6 +12,7 @@ import withNavigation from '@jsroot/components/withNavigation';
 import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 import LastestNews from '@jsroot/components/LastestNews';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 moment.updateLocale('vi', {
     weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
@@ -99,13 +100,18 @@ export class AppContainer extends Component {
         this.props.navigate(url);
     };
 
-    onUpdateFavouriteMatch = matchId => {
-        this.props.setFavouriteMatches({matchId: matchId});
+    onToggleIcon = () => {
+        this.props.setFlagToggleIcon(!this.props.flagToggleIcon);
+    };
+
+    onUpdateFavLeague = () => {
+        this.props.setFavLeagues(CommonFunctions.getFavLeagues());
+        this.props.setFlagToggleIcon(!this.props.flagToggleIcon);
     };
 
     render() {
         const { selectedTab } = this.state;
-        const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts } = this.props;
+        const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts, flagToggleIcon } = this.props;
         return (
             <div className="container livescore-container">
                 <SignalR />
@@ -126,31 +132,47 @@ export class AppContainer extends Component {
                             <Tab eventKey={this.tabsParam.all} title="Tất cả">
                                 {
                                     matches &&
-                                    <MatchGrid isAllMatches sortAsc matches={matches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                    <MatchGrid isAllMatches sortAsc
+                                    matches={matches}
+                                    onToggleIcon={this.onToggleIcon}
+                                    flagToggleIcon={flagToggleIcon}
+                                    onUpdateFavLeague={this.onUpdateFavLeague} />
                                 }
                             </Tab>
                             <Tab eventKey={this.tabsParam.live} title="Trực tiếp">
                                 {
                                     liveMatches &&
-                                    <MatchGrid sortAsc matches={liveMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                    <MatchGrid sortAsc
+                                    matches={liveMatches}
+                                    onToggleIcon={this.onToggleIcon}
+                                    flagToggleIcon={flagToggleIcon}
+                                    onUpdateFavLeague={this.onUpdateFavLeague} />
                                 }
                             </Tab>
                             <Tab eventKey={this.tabsParam.pre} title="Chưa diễn ra">
                                 {
                                     preMatches &&
-                                    <MatchGrid sortAsc matches={preMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                    <MatchGrid sortAsc
+                                    matches={preMatches}
+                                    onToggleIcon={this.onToggleIcon}
+                                    flagToggleIcon={flagToggleIcon}
+                                    onUpdateFavLeague={this.onUpdateFavLeague} />
                                 }
                             </Tab>
                             <Tab eventKey={this.tabsParam.post} title="Đã diễn ra">
                                 {
                                     postMatches &&
-                                    <MatchGrid sortAsc={false} matches={postMatches} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                                    <MatchGrid sortAsc={false}
+                                    matches={postMatches}
+                                    onToggleIcon={this.onToggleIcon}
+                                    flagToggleIcon={flagToggleIcon}
+                                    onUpdateFavLeague={this.onUpdateFavLeague} />
                                 }
                             </Tab>
                         </Tabs>
                     </div>
                     <div className="livescore-soccer-extension">
-                        <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} />
+                        <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleIcon} />
                         <LastestNews posts={posts} />
                     </div>
                 </div>
@@ -163,8 +185,10 @@ const AppContainerWithNavigation = withNavigation(AppContainer);
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts } = state;
-    return { favLeagues, matches, postMatches, preMatches, liveMatches, leagues, posts };
+    const { favLeagues, matches, postMatches, preMatches,
+            liveMatches, leagues, posts, flagToggleIcon } = state;
+    return { favLeagues, matches, postMatches, preMatches,
+            liveMatches, leagues, posts, flagToggleIcon };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainerWithNavigation);

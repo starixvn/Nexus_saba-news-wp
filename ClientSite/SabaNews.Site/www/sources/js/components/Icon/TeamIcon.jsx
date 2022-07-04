@@ -6,9 +6,9 @@ const TeamIcon = ({ className, src, onClick }) => {
         if(onClick) {
             onClick(event);
         }
-    }
+    };
     return (
-        <img className={className} loading="lazy"  onClick={handleClick}
+        <img className={className} loading="lazy" onClick={handleClick}
             src={src ? src : Site.resolveClientUrl('css/images/logo-dummy.png')}
         />
     );

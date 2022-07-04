@@ -12,7 +12,8 @@ const favouriteMatchSlice = createSlice({
         liveMatches: null,
         leagues: [],
         favLeagues: [],
-        posts: []
+        posts: [],
+        flagToggleIcon: false
     },
     reducers: {
         setFavLeagues: (state, action) => {
@@ -102,6 +103,9 @@ const favouriteMatchSlice = createSlice({
         },
         setPosts: (state,action) => {
             state.posts = action.payload;
+        },
+        setFlagToggleIcon: (state, action) => {
+            state.flagToggleIcon = action.payload;
         }
     },
 });
@@ -115,7 +119,8 @@ export const {
     setFavouriteMatches,
     setLeagues,
     setFavLeagues,
-    setPosts
+    setPosts,
+    setFlagToggleIcon
 } = actions;
 
 export default reducer;

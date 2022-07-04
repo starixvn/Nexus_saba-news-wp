@@ -61,7 +61,7 @@ export default class Match extends PureComponent {
 
 
     render() {
-        const { match, searchKey } = this.props;
+        const { match, searchKey, flagToggle } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
 
@@ -69,7 +69,7 @@ export default class Match extends PureComponent {
             <div className="group-match-item" onClick={this.onClick}>
                 <div className={`soccer-match-item ${isLiveMatch ? 'live' : ''} ${isIntermission ? 'live-intermission' : ''}`}
                 >
-                    <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                    <FavouriteIcon matchId={match.matchId} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} flagToggle={flagToggle} />
                     <MatchStage match={match} />
                     <div className="soccer-match-team">
                         <div className="group-team">
