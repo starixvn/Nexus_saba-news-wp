@@ -1,19 +1,20 @@
 import soccerMatchDetailSlice, {
-    setMajorLeagues,
+    setFavLeagues,
     setMatch,
-    setActiveTab
+    setActiveTab,
+    setLeagues
 } from '../soccerMatchDetailSlice';
 
 
 describe('soccerMatchDetailSlice', () => {
     describe('reducers', () => {
-        describe('setMajorLeagues', () => {
+        describe('setFavLeagues', () => {
             it('should update state correctly', () => {
                 expect(
                     soccerMatchDetailSlice({
-                        majorLeagues: []
+                        favLeagues: []
                     }, {
-                        type: setMajorLeagues.type,
+                        type: setFavLeagues.type,
                         payload: [
                             {
                                 leagueId: 1,
@@ -28,7 +29,7 @@ describe('soccerMatchDetailSlice', () => {
                         ]
                     })
                 ).toEqual({
-                    majorLeagues: [
+                    favLeagues: [
                         {
                             leagueId: 1,
                             leagueNameEN: 'Champions League',
@@ -275,6 +276,43 @@ describe('soccerMatchDetailSlice', () => {
                     })
                 ).toEqual({
                     activeTab: 'dien-bien',
+                });
+            });
+        });
+
+        describe('setLeagues', () => {
+            it('should update state correctly', () => {
+                expect(
+                    soccerMatchDetailSlice({
+                        leagues: []
+                    }, {
+                        type: setLeagues.type,
+                        payload: [
+                            {
+                                leagueId: 1,
+                                leagueNameEN: 'Champions League',
+                                leagueNameVN: 'Champions League'
+                            },
+                            {
+                                leagueId: 2,
+                                leagueNameEN: 'Premier League',
+                                leagueNameVN: 'Ngoại hạng Anh'
+                            }
+                        ]
+                    })
+                ).toEqual({
+                    leagues: [
+                        {
+                            leagueId: 1,
+                            leagueNameEN: 'Champions League',
+                            leagueNameVN: 'Champions League'
+                        },
+                        {
+                            leagueId: 2,
+                            leagueNameEN: 'Premier League',
+                            leagueNameVN: 'Ngoại hạng Anh'
+                        }
+                    ]
                 });
             });
         });

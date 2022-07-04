@@ -2,7 +2,11 @@ import favouriteMatchSlice, {
     setMajorLeagues,
     setMatches,
     setLiveMatches,
-    setFavouriteMatches
+    setFavouriteMatches,
+    setLeagues,
+    setFavLeagues,
+    setPosts,
+    setFlagToggleIcon
 } from '../favouriteMatchSlice';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
@@ -15,13 +19,13 @@ describe('favouriteMatchSlice', () => {
         jest.clearAllMocks();
     });
     describe('reducers', () => {
-        describe('setMajorLeagues', () => {
+        describe('setFavLeagues', () => {
             it('should update state correctly', () => {
                 expect(
                     favouriteMatchSlice({
                         majorLeagues: []
                     }, {
-                        type: setMajorLeagues.type,
+                        type: setFavLeagues.type,
                         payload: [
                             {
                                 leagueId: 1,
@@ -36,7 +40,7 @@ describe('favouriteMatchSlice', () => {
                         ]
                     })
                 ).toEqual({
-                    majorLeagues: [
+                    favLeagues: [
                         {
                             leagueId: 1,
                             leagueNameEN: 'Champions League',
@@ -275,6 +279,63 @@ describe('favouriteMatchSlice', () => {
                     preMatches: [{matchId: 1, isFavourite: false}]
                 });
             });
+        });
+
+        describe('setLeagues', () => {
+            it('should update state correctly', () => {
+                expect(
+                    favouriteMatchSlice({
+                        leagues: []
+                    }, {
+                        type: setLeagues.type,
+                        payload: [
+                            {leagueId: 1},
+                            {leagueId: 2}
+                        ]
+                    })
+                ).toEqual({
+                    leagues: [
+                        {leagueId: 1},
+                        {leagueId: 2}
+                    ]
+                });
+            })
+        });
+
+        describe('setPosts', () => {
+            it('should update state correctly', () => {
+                expect(
+                    favouriteMatchSlice({
+                        posts: []
+                    }, {
+                        type: setPosts.type,
+                        payload: [
+                            {postId: 1},
+                            {postId: 2}
+                        ]
+                    })
+                ).toEqual({
+                    posts: [
+                        {postId: 1},
+                        {postId: 2}
+                    ]
+                });
+            })
+        });
+
+        describe('setFlagToggleIcon', () => {
+            it('should update state correctly', () => {
+                expect(
+                    favouriteMatchSlice({
+                        flagToggleIcon: false
+                    }, {
+                        type: setFlagToggleIcon.type,
+                        payload: true
+                    })
+                ).toEqual({
+                    flagToggleIcon: true
+                });
+            })
         });
     });
 });

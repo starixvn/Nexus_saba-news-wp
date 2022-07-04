@@ -12,6 +12,6 @@ const TeamIcon = ({ className, src, onClick }) => {
             src={src ? src : Site.resolveClientUrl('css/images/logo-dummy.png')}
         />
     );
-}
+};
 
 export default TeamIcon;

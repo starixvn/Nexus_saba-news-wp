@@ -653,9 +653,9 @@ describe('Lineups', () => {
         it('return correctly when have subsitution event', () => {
             // Arrange
             const incidents = [
-                { matchId: 1, position: 1, type: 9, outPlayerId: 1, inPlayerId: 2 },
-                { matchId: 1, position: 1, type: 9, outPlayerId: 2, inPlayerId: 3 },
-                { matchId: 1, position: 1, type: 9, outPlayerId: 4, inPlayerId: 5 },
+                { matchId: 1, position: 1, time: -1, type: 9, outPlayerId: 1, inPlayerId: 2 },
+                { matchId: 1, position: 1, time: 0, type: 9, outPlayerId: 2, inPlayerId: 3 },
+                { matchId: 1, position: 1, time: 1, type: 9, outPlayerId: 4, inPlayerId: 5 },
                 { matchId: 1, type: 1, playerId: 2, inPlayerId: 3}
             ];
             const lineup = {

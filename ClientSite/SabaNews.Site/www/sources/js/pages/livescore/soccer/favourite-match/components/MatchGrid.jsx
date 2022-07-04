@@ -103,7 +103,7 @@ export default class MatchGrid extends PureComponent {
     };
     onUpdateFavLeague = () => {
         this.props.onUpdateFavLeague();
-    }
+    };
 
     handleClickLeague = (event, league) => {
         const className = event.target.className;

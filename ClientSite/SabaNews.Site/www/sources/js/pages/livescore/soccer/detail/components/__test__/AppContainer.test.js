@@ -14,7 +14,8 @@ describe('AppContainer', () => {
             // Arrange
             const props = {
                 getMatchDetail: jest.fn(),
-                getMajorLeagues: jest.fn()
+                getFavLeagues: jest.fn(),
+                getLeagues: jest.fn()
             };
             const container = shallow(<AppContainer {...props} />).instance();
 
@@ -23,16 +24,58 @@ describe('AppContainer', () => {
 
             // Assert
             expect(props.getMatchDetail).toHaveBeenCalled();
-            expect(props.getMajorLeagues).toHaveBeenCalled();
+            expect(props.getFavLeagues).toHaveBeenCalled();
+            expect(props.getLeagues).toHaveBeenCalled();
         });
     });
+
+    describe('onUpdateFavLeague', () => {
+        it('call correctly functions', () => {
+            // Arrange
+            const props = {
+                getMatchDetail: jest.fn(),
+                getFavLeagues: jest.fn(),
+                getLeagues: jest.fn(),
+                setFavLeagues: jest.fn(),
+                flagToggleFavLeagueIcon: false
+            };
+            const container = shallow(<AppContainer {...props} />).instance();
+
+            // Act
+            container.onUpdateFavLeague();
+
+            // Assert
+            expect(props.setFavLeagues).toHaveBeenCalled();
+            expect(container.state.flagToggleFavLeagueIcon).toEqual(true);
+        });
+    });
+
+    describe('onToggleFavLeaguesIcon', () => {
+        it('call correctly functions', () => {
+            // Arrange
+            const props = {
+                getMatchDetail: jest.fn(),
+                getFavLeagues: jest.fn(),
+                getLeagues: jest.fn(),
+                flagToggleFavLeagueIcon: false
+            };
+            const container = shallow(<AppContainer {...props} />).instance();
+
+            // Act
+            container.onToggleFavLeaguesIcon();
+
+            // Assert
+            expect(container.state.flagToggleFavLeagueIcon).toEqual(true);
+        });
+    })
 
     describe('render', () => {
         it('renders correctly when match is null', () => {
             // Arrange
             const props = {
                 getMatchDetail: jest.fn(),
-                getMajorLeagues: jest.fn()
+                getFavLeagues: jest.fn(),
+                getLeagues: jest.fn()
             };
             const container = shallow(<AppContainer {...props} />);
 
@@ -63,17 +106,18 @@ describe('AppContainer', () => {
                     }
                 },
                 getMatchDetail: jest.fn(),
-                getMajorLeagues: jest.fn()
+                getFavLeagues: jest.fn(),
+                getLeagues: jest.fn()
             };
             CommonFunctions.getTeamName = jest.fn(() => props.match.generalInfo.homeTeam);
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
 
             // Act
-            const result = shallow(instance.render());
+            const result = instance.render();
 
             // Assert
-            expect(toJson(result)).toMatchSnapshot();
+            expect(result).toMatchSnapshot();
         })
     });
 

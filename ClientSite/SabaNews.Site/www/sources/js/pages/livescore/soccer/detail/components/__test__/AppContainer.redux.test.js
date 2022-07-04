@@ -25,11 +25,13 @@ describe('connect ', () => {
         // Arrange
         const expected = {
             match: [],
-            majorLeagues: [],
+            favLeagues: [],
+            leagues: []
         };
         const state = {
             match: [],
-            majorLeagues: [],
+            favLeagues: [],
+            leagues: []
         };
 
         // Act

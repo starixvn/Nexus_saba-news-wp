@@ -11,10 +11,14 @@ describe('AppContainer', () => {
         postMatches: [],
         preMatches: [],
         liveMatches: [],
-        getMajorLeagues: jest.fn(),
+        getFavLeagues: jest.fn(),
         getMatches: jest.fn(),
+        getLeagues: jest.fn(),
+        getLastestNews: jest.fn(),
         navigate: jest.fn(),
-        setFavouriteMatches: jest.fn()
+        setFavouriteMatches: jest.fn(),
+        setFlagToggleIcon: jest.fn(),
+        setFavLeagues: jest.fn()
     };
 
     afterEach(() => {
@@ -124,8 +128,10 @@ describe('AppContainer', () => {
             instance.componentDidMount();
 
             // Assert
-            expect(defaultProps.getMajorLeagues).toHaveBeenCalled();
+            expect(defaultProps.getFavLeagues).toHaveBeenCalled();
             expect(defaultProps.getMatches).toHaveBeenCalled();
+            expect(defaultProps.getLeagues).toHaveBeenCalled();
+            expect(defaultProps.getLastestNews).toHaveBeenCalled();
         });
     });
 
@@ -324,20 +330,29 @@ describe('AppContainer', () => {
         });
     });
 
-    describe('onUpdateFavouriteMatch', () => {
-        it('call correcly functions', () => {
-            // Arrange
-            const instance = shallow(<AppContainer {...defaultProps} />).instance();
+    describe('onToggleIcon call correctly function', () => {
+        // Arrange
+        const instance = shallow(<AppContainer {...defaultProps} />).instance();
 
-            // Act
-            instance.onUpdateFavouriteMatch(1);
+        // Act
+        instance.onToggleIcon();
 
-            // Assert
-            expect(defaultProps.setFavouriteMatches).toHaveBeenCalledWith({
-                matchId: 1
-            });
-        });
+        // Assert
+        expect(defaultProps.setFlagToggleIcon).toHaveBeenCalled();
     });
+
+    describe('onUpdateFavLeague call correctly function', () => {
+        // Arrange
+        const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+        // Act
+        instance.onUpdateFavLeague();
+
+        // Assert
+        expect(defaultProps.setFavLeagues).toHaveBeenCalled();
+        expect(defaultProps.setFlagToggleIcon).toHaveBeenCalled();
+    });
+
 
     describe('render', () => {
         it('render correctly with default props', () => {

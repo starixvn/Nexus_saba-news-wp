@@ -11,7 +11,9 @@ describe('MatchGrid', () => {
         matches: [],
         isAllMatches: false,
         sortAsc: false,
-        onUpdateFavouriteMatch: jest.fn()
+        onUpdateFavouriteMatch: jest.fn(),
+        onToggleIcon:  jest.fn(),
+        onUpdateFavLeague: jest.fn()
     };
     afterEach(() => {
         jest.clearAllMocks();
@@ -121,12 +123,12 @@ describe('MatchGrid', () => {
             const response = [
                 {
                     key: '2020-06-01',
-                    text: moment('2020-06-01').format('dddd, DD/MM/YYYY'),
+                    text: moment('2020-06-01').format('dddd - DD/MM/YYYY'),
                     childs: []
                 },
                 {
                     key: '2020-06-02',
-                    text:  moment('2020-06-02').format('dddd, DD/MM/YYYY'),
+                    text:  moment('2020-06-02').format('dddd - DD/MM/YYYY'),
                     childs: []
                 }
             ]
@@ -186,16 +188,26 @@ describe('MatchGrid', () => {
         });
     });
 
-    describe('onUpdateFavouriteMatch', () => {
-        it('call correctly function', () => {
-            //Arrange
-            const instance = shallow(<MatchGrid {...defaultProps} />).instance();
-            // Act
-            instance.onUpdateFavouriteMatch(1);
+    describe('onToggleIcon call correctly function', () => {
+        // Arrange
+        const instance = shallow(<MatchGrid {...defaultProps} />).instance();
 
-            // Assert
-            expect(defaultProps.onUpdateFavouriteMatch).toHaveBeenCalledWith(1);
-        });
+        // Act
+        instance.onToggleIcon();
+
+        // Assert
+        expect(defaultProps.onToggleIcon).toHaveBeenCalled();
+    });
+
+    describe('onUpdateFavLeague call correctly function', () => {
+        // Arrange
+        const instance = shallow(<MatchGrid {...defaultProps} />).instance();
+
+        // Act
+        instance.onUpdateFavLeague();
+
+        // Assert
+        expect(defaultProps.onUpdateFavLeague).toHaveBeenCalled();
     });
 
     describe('handleClickLeague', () => {
@@ -209,55 +221,58 @@ describe('MatchGrid', () => {
         afterAll(() => {
             window.location = location;
         });
-        it('calls correctly functions when ctrlKey = false', () => {
-            //Arrange
+
+        it('redirect correctly when click into icon', () => {
+            // Arrange
+            const event = {
+                target: { className: 'icon-livescore' },
+                ctrlKey: false
+            };
+            window.open = jest.fn();
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+            // Act
+            instance.handleClickLeague(event);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+        });
+
+        it('redirect correctly when ctrlKey = false', () => {
+            // Arrange
             const event = {
                 target: { className: '' },
                 ctrlKey: false
             };
-            const props = {
-                ...defaultProps,
-                matches: [
-                    {matchId: 1, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 1}},
-                    {matchId: 2, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 1}},
-                    {matchId: 3, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 2}},
-                    {matchId: 4, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 2}}
-                ]
-            };
-            const league = {leagueId: 2, currentSeasonId: 1};
+
             window.open = jest.fn();
-            const container = shallow(<MatchGrid {...props} />);
-            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-03');
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
             // Act
-            container.find('.group-match-item-slogan').first().simulate('click', event, league);
+            instance.handleClickLeague(event);
+
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da/chi-tiet-giai-dau/2022-06-03/1/0');
+            expect(window.location).toEqual('/lich-thi-dau/bong-da');
         });
 
-        it('calls correctly functions when ctrlKey = true', () => {
-            //Arrange
-            const event = {
+        it('calls correctly when ctrlKey = true', () => {
+           // Arrange
+           const event = {
                 target: { className: '' },
                 ctrlKey: true
             };
-            const props = {
-                ...defaultProps,
-                matches: [
-                    {matchId: 1, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 1, currentSeasonId: 2}},
-                    {matchId: 2, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 1}},
-                    {matchId: 3, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-01', league: {leagueId: 2}},
-                    {matchId: 4, homeTeam:{icon: 'icon'}, awayTeam: {icon: 'icon'}, startTime:'2020-06-02', league: {leagueId: 2}}
-                ]
-            };
-            const league = {leagueId: 2, currentSeasonId: 1};
             window.open = jest.fn();
-            const container = shallow(<MatchGrid {...props} />);
-            DateTimeService.formatDateTime = jest.fn().mockReturnValue('2022-06-03');
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
+
             // Act
-            container.find('.group-match-item-slogan').first().simulate('click', event, league);
+            instance.handleClickLeague(event);
+
             // Assert
-            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da/chi-tiet-giai-dau/2022-06-03/1/2', '_blank');
+            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da', '_blank');
         });
     });
 

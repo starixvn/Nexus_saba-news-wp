@@ -355,7 +355,6 @@ describe('Grid', () =>{
             instance.isDefault = jest.fn().mockReturnValue(false);
             instance.state.searchKey = 'league';
             instance.searchInput = {value: 'value'};
-
             // Act
             const result = instance.render();
 
@@ -378,6 +377,7 @@ describe('Grid', () =>{
             inputSearch.simulate('change', {target: {value: 'value'}});
             container.find('.livescore-soccer-search-bar').find('input').simulate('change', {target: {value: 'value'}});
             expect(container).toMatchSnapshot();
+            expect(container.find('input')).toHaveLength(1)
         });
     });
 });

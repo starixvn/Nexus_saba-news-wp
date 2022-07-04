@@ -22,7 +22,8 @@ describe('MatchGeneralInfo', () => {
             headToHead: null,
             statistic: {homeStatistic: [], awayStatistic: []}
         },
-        setActiveTab: jest.fn(() => '')
+        setActiveTab: jest.fn(() => ''),
+        onUpdateFavLeague: jest.fn()
     };
     beforeEach(() => {
         Site.resolveClientUrl = jest.fn(url => url);
@@ -522,10 +523,10 @@ describe('MatchGeneralInfo', () => {
 
         it('return correctly when team have goals & card', () => {
             const incidents = [
-                { matchId: 1, type: 1, position: 1, timeShow: 1, homeScore: 1, awayScore: 2 },
-                { matchId: 1, type: 8, position: 2, timeShow: 2, homeScore: 2, awayScore: 2 },
-                { matchId: 1, type: 17, position: 1, timeShow: 3, homeScore: 3, awayScore: 2},
-                { matchId: 1, type: 8, position: 1, timeShow: 3, homeScore: 0, awayScore: 0}
+                { matchId: 1, type: 1, position: 1, time: 1, timeShow: 1, homeScore: 1, awayScore: 2 },
+                { matchId: 1, type: 8, position: 2, time: -1, timeShow: 2, homeScore: 2, awayScore: 2 },
+                { matchId: 1, type: 17, position: 1, time: -2, timeShow: 3, homeScore: 3, awayScore: 2},
+                { matchId: 1, type: 8, position: 1, time: 0, timeShow: 3, homeScore: 0, awayScore: 0}
             ];
             const props = {
                 ...defaultProps,
@@ -776,18 +777,39 @@ describe('MatchGeneralInfo', () => {
         });
     });
 
+    describe('onUpdateFavLeague call correctly function', () => {
+        // Arrange
+        const container = shallow(<MatchGeneralInfo {...defaultProps} />);
+        const instance = container.instance();
+
+        // Act
+        instance.onUpdateFavLeague();
+
+        // Assert
+        expect(defaultProps.onUpdateFavLeague).toHaveBeenCalled();
+    });
+
+    describe('onUpdateFavouriteMatch setState correctly', () => {
+        // Arrange
+        const container = shallow(<MatchGeneralInfo {...defaultProps} />);
+        const instance = container.instance();
+
+        // Act
+        instance.onUpdateFavouriteMatch();
+
+        // Assert
+        expect(instance.state.flagToggleMatchIcon).toEqual(true);
+    });
+
     describe('renderBody', () => {
         it('render correctly when match is preMatch', () => {
             // Arrange
             const container = shallow(<MatchGeneralInfo {...defaultProps} />);
-            const instance = container.instance();
             CommonFunctions.isPreMatch = jest.fn().mockReturnValue(true);
             CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(true);
             // Act
-            const result = instance.renderBody();
-
-            // Assert
-            expect(result).toMatchSnapshot();
+            container.find('.breadcrumb').find('li').at(1).simulate('click', {target: {value:'value'}})
+            expect(container).toMatchSnapshot();
 
         });
 
