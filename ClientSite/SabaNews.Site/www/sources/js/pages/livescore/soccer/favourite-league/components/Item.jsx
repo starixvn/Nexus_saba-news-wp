@@ -36,9 +36,13 @@ export default class Item extends PureComponent {
 
     render() {
         const { leagues } = this.state;
+        const { searchKey } = this.props;
         return (
             <div className="my-league">
                 {leagues.map(league => {
+                    const reg = new RegExp(`(${searchKey})`, 'gi');
+                    const leagueName = CommonFunctions.getLeagueName(league)
+                        .replace(reg, "<span class='text-matched'>$1</span>");
                     return (
                         <div className="draggable-item my-league-item result-search" key={league.leagueId}  onClick={event => this.handleClickLeague(event, league)}>
                             <FavouriteLeagueIcon league={league}
@@ -46,7 +50,7 @@ export default class Item extends PureComponent {
                                 onUpdateFavLeague={() => this.onUpdateFavLeague(league)}
                                 className='my-league-item-action' />
                             <TeamIcon className="my-league-item-img" src={league.icon} />
-                            <div className="my-league-item-name"> <span>{CommonFunctions.getLeagueName(league)}</span> </div>
+                            <div className="my-league-item-name"> <span dangerouslySetInnerHTML={{ __html: leagueName }}></span> </div>
                         </div>
                     );
                 })}
