@@ -163,8 +163,8 @@ export default class MatchGrid extends PureComponent {
                                                     return <div className="group-match-item" key={child.key}>
                                                         <div className="group-match-item-slogan"
                                                             onClick={event => this.handleClickLeague(event, child.league)}>
-                                                            <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
                                                             <FavouriteLeagueIcon league={child.league} />
+                                                            <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
                                                         </div>
                                                         {
                                                             child.childs.map(match =>
