@@ -5,6 +5,8 @@ import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
+import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
+
 
 export default class MatchGrid extends PureComponent {
     constructor(props) {
@@ -101,6 +103,10 @@ export default class MatchGrid extends PureComponent {
     };
 
     handleClickLeague = (event, league) => {
+        const className = event.target.className;
+        if (className.includes('icon-livescore')) {
+            return;
+        }
         const url = CommonFunctions.getLeaguePageUrl(league);
         if (event.ctrlKey) {
             window.open(url, '_blank');
@@ -158,6 +164,7 @@ export default class MatchGrid extends PureComponent {
                                                         <div className="group-match-item-slogan"
                                                             onClick={event => this.handleClickLeague(event, child.league)}>
                                                             <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
+                                                            <FavouriteLeagueIcon league={child.league} />
                                                         </div>
                                                         {
                                                             child.childs.map(match =>
