@@ -13,22 +13,29 @@
                 <th>#</th>
                 <th>@ViewResources.LeagueNameEN</th>
                 <th>@ViewResources.LeagueFullNameEN</th>
-                <th>@ViewResources.LeagueNameCN</th>
-                <th>@ViewResources.LeagueFullNameCN</th>
-                <th>@ViewResources.LeagueNameVN</th>
                 <th>@ViewResources.Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="text-center" width="3%">1</td>
-                <td class="text-center" width="18%">1</td>
-                <td class="text-center" width="18%">1</td>
-                <td class="text-center" width="18%">1</td>
-                <td class="text-center" width="18%">1</td>
-                <td class="text-center" width="18%">1</td>
-                <td class="text-center btn-addleague" width="7%">Add</td>
-            </tr>
+            @{
+                var count = 0;
+                foreach (var league in Model)
+                {
+                    count++;
+                        <tr>
+                            <td class="text-center" width="2%">@count</td>
+                            <td class="text-left" width="18%">@league.LeagueNameEN</td>
+                            <td class="text-left" width="18%">@league.LeagueFullNameEN</td>
+                            <td class="text-center btn-addleague" width="8%">Add</td>
+                        </tr>
+                }
+            }
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

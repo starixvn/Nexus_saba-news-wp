@@ -7,6 +7,8 @@
     .table-admin {
         margin-top: 0;
         max-width: 95.8rem;
+        height: 530px;
+        overflow-x: auto;
 
         .btn-addleague {
             color: blue;
@@ -51,7 +53,7 @@
         cursor: pointer;
     }
 
-    .icon-delete-admin{
+    .icon-delete-admin {
         font-size: 20px;
     }
 }
