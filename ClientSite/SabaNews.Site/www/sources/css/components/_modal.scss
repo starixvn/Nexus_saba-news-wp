@@ -56,7 +56,9 @@
   max-height: 50rem;
   overflow: auto;
   margin-top: 1rem;
-
+  @media screen and (max-width: 1367px) and (min-width: 900px), (max-height: 601px){
+    max-height: 40rem;
+  }
   .livescore-soccer-extension {
     padding-left: 0;
     margin-bottom: 0;
