@@ -72,6 +72,7 @@ $(document).ready(function () {
             $('body').toggleClass('hidden-body');
             $('.header-controls').removeClass('width-100-saba');
             $('.header-controls').css('width', windowWidth);
+            $('.has-sub ul').hide();
         }
     });
     
@@ -248,3 +249,53 @@ $(document).ready(function () {
 
     $('#EventModal').modal('hide');
 });
+
+
+
+//submenu
+(function ($) {
+    $.fn.menumaker = function (options) {
+        var cssmenu = $(this), settings = $.extend({
+            format: "dropdown",
+            sticky: false
+        }, options);
+        cssmenu.find('li ul').parent().addClass('has-sub');
+        multiTg = function () {
+            cssmenu.find(".has-sub").prepend('<span class="submenu-button"> <i class="icon-chevron-down"></i> </span>');
+            cssmenu.find('.submenu-button').on('click', function () {
+                $(this).toggleClass('submenu-opened');
+                if ($(this).siblings('ul').hasClass('open')) {
+                    $(this).siblings('ul').removeClass('open').slideToggle();
+                }
+                else {
+                    $(this).siblings('ul').addClass('open').slideToggle();
+                }
+            });
+        };
+        if (settings.format === 'multitoggle') multiTg()
+        else cssmenu.addClass('dropdown')
+        resizeFix = function () {
+            //when resize window
+        };
+    }
+})(jQuery);
+(function ($) {
+    $(document).ready(function () {
+        $("#meumutilv").menumaker({
+            format: "multitoggle"
+        });
+    });
+})(jQuery);
+
+$('.main-menu').on('click', 'li .mark-click', function (e) {
+    var animationSpeed = 300;
+    var $this = $(this);
+    var checkElement = $this.next();
+    var subMenuSelector = $('.nav-submenu')
+    if (checkElement.is(subMenuSelector) && checkElement.is(':visible')) {
+        checkElement.slideUp(animationSpeed, function () {
+            checkElement.removeClass('menu-open');
+        });
+        checkElement.parent("li").removeClass("active");
+    }
+})

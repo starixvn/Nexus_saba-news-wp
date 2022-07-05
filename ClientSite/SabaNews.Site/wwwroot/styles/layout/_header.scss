@@ -444,7 +444,33 @@
                     align-items: center;
 
                     @include tableMobile {
-                        display: inherit;
+                        display: block;
+                    }
+
+                    &:after {
+                        @include tableMobile {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            bottom: 0;
+                            width: 96%;
+                            right: 50%;
+                            height: 1px;
+                            background: $border-calendar;
+                            transform: translate(50%,0);
+                        }
+
+                        @include Mobile {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            bottom: 0;
+                            width: 93%;
+                            right: 50%;
+                            height: 1px;
+                            background: $border-calendar;
+                            transform: translate(50%,0);
+                        }
                     }
 
                     [class*="icon-"] {
@@ -454,23 +480,17 @@
                         display: block;
                     }
 
-                    &:first-child {
-                        @include tableMobile {
-                            border-top: 1px solid $border-calendar;
-                        }
-                    }
-
                     @include tableMobile {
                         width: 100%;
                         order: 2;
-                        border-bottom: 1px solid $border-calendar;
                         margin-right: 0;
                     }
 
 
                     &:first-child {
                         @include tableMobile {
-                            border-bottom : none;
+                            border-top: 1px solid $border-calendar;
+                            border-bottom: none;
                         }
 
                         a {
@@ -478,13 +498,27 @@
                                 display: none;
                             }
                         }
+
+                        &:after {
+                            @include tableMobile {
+                                display: none;
+                            }
+                        }
                     }
 
                     &:nth-last-child(2) {
-                        border-bottom: none;
+                        @include tableMobile {
+                            border-bottom: 1px solid $border-calendar;
+                        }
 
                         a {
                             border: none;
+                        }
+
+                        &:after {
+                            @include tableMobile {
+                                display: none;
+                            }
                         }
                     }
 
@@ -493,13 +527,14 @@
                     .item {
                         text-decoration: none;
                         display: inline-block;
-                        font-weight: 600;
+                        font-weight: 700;
                         transition: color .2s ease;
-                        color: $color-content;
+                        color: #2F2F2F;
 
                         @include tableMobile {
                             padding: 1.5rem 1.2rem;
                             margin-right: 0;
+                            display: block;
                         }
 
                         &:hover {
@@ -507,8 +542,76 @@
                         }
                     }
 
+                    .number-count-fav {
+                        background: $color-main-title;
+                        color: #fff;
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        font-weight: 600;
+                        font-size: 1.2rem;
+                        line-height: 2.4rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 3px;
+                        position: absolute;
+                        right: 0;
+                        top: 3px;
+                    }
+
                     .active {
                         color: $color-main-title;
+                    }
+                }
+
+                li {
+                    position: relative;
+
+                    &.has-sub {
+                        .submenu-button {
+                            display: none;
+                            transition: all .3s ease;
+
+                            @include tableMobile {
+                                display: block;
+                                position: absolute;
+                                right: 12px;
+                                top: 14px;
+                            }
+
+                            &.submenu-opened {
+                                transform: rotate(180deg);
+                                transition: all .3s ease;
+                            }
+                        }
+
+                        ul {
+                            display: none;
+                            list-style: none;
+                            padding-left: 3.2rem;
+                            padding-right: 1.2rem;
+
+                            li {
+                                padding: 1.2rem 0;
+                                border-bottom: 1px solid $border-calendar;
+
+                                &:first-child {
+                                    padding: .5rem 0 1.2rem;
+                                }
+
+                                &:last-child {
+                                    border-bottom: none;
+                                }
+
+                                a {
+                                    text-decoration: none;
+                                    display: block;
+                                    font-weight: 600;
+                                    font-size: 1.3rem;
+                                    color: #2F2F2F;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -519,6 +622,7 @@
                 @include Mobile {
                     display: block;
                     padding-top: 6.6rem;
+                    padding-bottom: 4rem;
                 }
             }
         }
@@ -534,7 +638,7 @@
 
 .padding-mobile-none {
     @include tableMobile {
-        padding: 0;
+        padding: 0 !important;
     }
 }
 
@@ -545,11 +649,13 @@
         width: 100%;
         margin: 1rem 0 2rem 0;
         display: block;
+        padding: 0 1.2rem !important;
     }
 
     @include Mobile {
-        position: absolute;
+        position: absolute !important;
         top: 0;
+        padding: 0 1.2rem !important;
     }
 }
 
@@ -848,33 +954,4 @@
 
 .overflow-modal {
     overflow: hidden;
-}
-
-.livescore-child-menu {
-    display: none;
-
-    @include tableMobile {
-        display: block;
-        list-style: none;
-        padding-left: 3.4rem;
-        margin-top: -1.5rem;
-    }
-
-    li {
-        border-bottom: 1px solid #E0E0E0;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        a {
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.3rem;
-            line-height: 1.8rem;
-            padding: 1.5rem 0;
-            display: block;
-            color: #2F2F2F;
-        }
-    }
 }
