@@ -29,9 +29,11 @@ describe('connect ', () => {
             selectedDate: '2022-05-25',
             dateRanges: [],
             searchKey: '',
-            majorLeagues: [],
+            favLeagues: [],
             matches: [],
-            totalLiveMatches: 0
+            totalLiveMatches: 0,
+            flagToggleFavLeagueIcon: true,
+            leagues: []
         };
         const state = {
             anotherState: 123,
@@ -40,9 +42,11 @@ describe('connect ', () => {
             selectedDate: '2022-05-25',
             dateRanges: [],
             searchKey: '',
-            majorLeagues: [],
+            favLeagues: [],
             matches: [],
-            totalLiveMatches: 0
+            totalLiveMatches: 0,
+            flagToggleFavLeagueIcon: true,
+            leagues: []
         };
 
         // Act

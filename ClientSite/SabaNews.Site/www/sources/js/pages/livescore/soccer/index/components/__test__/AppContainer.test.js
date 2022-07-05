@@ -10,14 +10,17 @@ describe('AppContainer', () => {
         selectedDate: '2022-05-25',
         searchKey: '',
         matches: null,
-        majorLeagues: [],
+        favLeagues: [],
+        leagues:[],
         totalLiveMatches: 0,
-        getMajorLeagues: jest.fn(),
+        getFavLeagues: jest.fn(),
         getMatchesByDate: jest.fn(),
+        getLeagues: jest.fn(),
         setSearchKey: jest.fn(),
         getLiveMatches: jest.fn(),
         setDateRanges: jest.fn(),
-        setMatches: jest.fn()
+        setMatches: jest.fn(),
+        setFlagToggleFavLeagueIcon: jest.fn()
     };
 
     beforeEach(() => {
@@ -84,7 +87,8 @@ describe('AppContainer', () => {
 
             // Assert
             expect(defaultProps.setDateRanges).toHaveBeenCalledWith(['2022-05-24', '2022-05-25', '2022-05-26']);
-            expect(defaultProps.getMajorLeagues).toHaveBeenCalledTimes(2);
+            expect(defaultProps.getFavLeagues).toHaveBeenCalledTimes(2);
+            expect(defaultProps.getLeagues).toHaveBeenCalledTimes(2);
             expect(window.addEventListener).toHaveBeenCalledWith('resize', instance.handleResize);
             expect(instance.getMatches).toHaveBeenCalledWith('2022-05-25');
         });
@@ -337,6 +341,17 @@ describe('AppContainer', () => {
             expect(props.getLiveMatches).toHaveBeenCalledTimes(2);
             expect(props.getMatchesByDate).toHaveBeenCalledWith({ eventDate: '2022-05-25', timezone: 7 });
         });
+    });
+
+    describe('onToggleIcon call correctly function', () => {
+        // Arrange
+        const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+        // Act
+        instance.onToggleFavLeaguesIcon();
+
+        // Assert
+        expect(defaultProps.setFlagToggleFavLeagueIcon).toHaveBeenCalled();
     });
 
     describe('render', () => {

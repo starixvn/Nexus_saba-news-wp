@@ -135,6 +135,10 @@ export class AppContainer extends Component {
 
     render() {
         const { favLeagues, league, leagues } = this.props;
+        if (league !== null) {
+            document.title = CommonFunctions.getLeagueName(league);
+        }
+
         return (
             <div className="container livescore-container">
                 <SignalR getMatches={this.getMatches} />

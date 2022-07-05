@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import Site from '@jsroot/common/site';
 import DataService from '@jsroot/common/dataService';
 import { ActionCreators } from '../actions';
+import CommonFunctions from '@jsroot/common/common-functions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -16,29 +17,39 @@ describe('actionCreators', () => {
         jest.clearAllMocks();
     });
 
-    describe('getMajorLeagues', () => {
-        it('should call setMajorLeagues when get major leagues have been done', async () => {
+    describe('getFavLeagues', () => {
+        it('should call setMatches when fav league is empty', () => {
+            // Arrange
+            CommonFunctions.getFavLeagueParam = jest.fn().mockReturnValue('');
+            const store = mockStore({
+                favLeagues: []
+            });
+            // Act
+            store.dispatch(ActionCreators.getFavLeagues());
+        });
+
+        it('should call setMatches when have fav leagues', () => {
             // Arrange
             const response = {
-                data: [
-                    { leagueId: 1, leagueNameEN: 'Champions League', leagueNameVN: 'Champions League' },
-                    { leagueId: 2, leagueNameEN: 'Premier League', leagueNameVN: 'Ngoại hạng Anh' }
-                ]
+                data: [{leagueId: 1}, {leagueId: 2}]
             };
+            const params = {
+                leagueIds: response.data
+            };
+            CommonFunctions.getFavLeagueParam = jest.fn().mockReturnValue(response.data);
+            CommonFunctions.refreshFavLeagues = jest.fn().mockReturnValue(response.data);
+            const store = mockStore({
+                favLeagues: []
+            });
             const promise = Promise.resolve(response);
             DataService.postDataAsync = jest.fn(() => promise);
-            const expectedActions = [{ type: ActionCreators.setMajorLeagues.type, payload: response.data }];
-            const store = mockStore({
-                seasonStandings: [],
-                majorLeagues: []
-            });
+            const expectedActions = [{ type: ActionCreators.setFavLeagues.type, payload: response.data }];
 
             // Act
-            await store.dispatch(ActionCreators.getMajorLeagues());
+            store.dispatch(ActionCreators.getFavLeagues());
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getMajorLeagues');
-            expect(store.getActions()).toEqual(expectedActions);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/GetFavLeagues', params);
         });
     });
 
@@ -110,6 +121,37 @@ describe('actionCreators', () => {
 
             // Assert
             expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getSeasonStandings', expectedParams);
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    describe('getLeagues', () => {
+        it('should call setLeagues when get major leagues have been done', async () => {
+            // Arrange
+            const response = {
+                data: [{
+                    leagueId: 1,
+                    leagueNameEN: 'Champions League',
+                    leagueNameVN: 'Champions League'
+                },
+                {
+                    leagueId: 2,
+                    leagueNameEN: 'Premier League',
+                    leagueNameVN: 'Ngoại hạng Anh'
+                }]
+            };
+            const promise = Promise.resolve(response);
+            DataService.postDataAsync = jest.fn(() => promise);
+            const expectedActions = [{ type: ActionCreators.setLeagues.type, payload: response.data }];
+            const store = mockStore({
+                leagues: []
+            });
+
+            // Act
+            await store.dispatch(ActionCreators.getLeagues());
+
+            // Assert
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/getLeagues');
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

@@ -13,9 +13,11 @@ describe('AppContainer', () => {
         stages: [],
         preMatches: null,
         postMatches: null,
-        getMajorLeagues: jest.fn(),
+        getFavLeagues: jest.fn(),
         getMatchesBySeason: jest.fn(),
-        navigate: jest.fn()
+        getLeagues: jest.fn(),
+        navigate: jest.fn(),
+        setFavLeagues: jest.fn()
     };
 
     beforeEach(() => {
@@ -43,6 +45,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'fixtures',
                 selectedResultsTab: false,
                 selectedStandingsTab: false
@@ -60,6 +63,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'results',
                 selectedResultsTab: true,
                 selectedStandingsTab: false
@@ -77,6 +81,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'standings',
                 selectedResultsTab: false,
                 selectedStandingsTab: true
@@ -94,6 +99,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'fixtures',
                 selectedResultsTab: false,
                 selectedStandingsTab: false
@@ -115,23 +121,8 @@ describe('AppContainer', () => {
             instance.componentDidMount();
 
             // Assert
-            expect(defaultProps.getMajorLeagues).toHaveBeenCalledTimes(2);
-            expect(instance.getMatches).toHaveBeenCalledTimes(1);
-        });
-    });
-
-    describe('componentDidMount', () => {
-        it('calls correctly functions', () => {
-            // Arrange
-            const container = shallow(<AppContainer {...defaultProps} />);
-            const instance = container.instance();
-            instance.getMatches = jest.fn();
-
-            // Act
-            instance.componentDidMount();
-
-            // Assert
-            expect(defaultProps.getMajorLeagues).toHaveBeenCalledTimes(2);
+            expect(defaultProps.getFavLeagues).toHaveBeenCalledTimes(2);
+            expect(defaultProps.getLeagues).toHaveBeenCalledTimes(2);
             expect(instance.getMatches).toHaveBeenCalledTimes(1);
         });
     });
@@ -187,6 +178,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'fixtures',
                 selectedResultsTab: false,
                 selectedStandingsTab: false
@@ -204,6 +196,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'results',
                 selectedResultsTab: true,
                 selectedStandingsTab: false
@@ -221,6 +214,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.state).toEqual({
+                flagToggleFavLeagueIcon: false,
                 selectedTab: 'standings',
                 selectedResultsTab: false,
                 selectedStandingsTab: true
@@ -330,6 +324,28 @@ describe('AppContainer', () => {
             // Assert
             expect(toJson(result)).toMatchSnapshot();
         });
+    });
+
+    it('onToggleFavLeaguesIcon setState correctly', () => {
+        // Arrange
+        const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+        // Act
+        instance.onToggleFavLeaguesIcon();
+
+        // Assert
+        expect(instance.state.flagToggleFavLeagueIcon).toEqual(true);
+    });
+
+    it('onUpdateFavLeague call correctly function', () => {
+        // Arrange
+        const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+        // Act
+        instance.onUpdateFavLeague();
+
+        // Assert
+        expect(defaultProps.setFavLeagues).toHaveBeenCalled();
     });
 
     describe('render', () => {

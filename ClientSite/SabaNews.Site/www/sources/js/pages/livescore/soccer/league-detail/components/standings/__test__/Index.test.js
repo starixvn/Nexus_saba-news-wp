@@ -3,10 +3,12 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { SeasonStandings } from '../index';
 
-describe('AppContainer', () => {
+describe('Index', () => {
+    const promise = Promise.resolve([]);
     const defaultProps = {
         seasonStandings: [],
-        getSeasonStandings: jest.fn()
+        stages: [],
+        getSeasonStandings: jest.fn(() => promise)
     };
 
     beforeAll(() => {
@@ -34,7 +36,7 @@ describe('AppContainer', () => {
             const instance = shallow(<SeasonStandings {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('inital correctly state when window.innerWidth = 580', () => {
@@ -45,7 +47,7 @@ describe('AppContainer', () => {
             const instance = shallow(<SeasonStandings {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('inital correctly state when window.innerWidth > 580', () => {
@@ -56,7 +58,7 @@ describe('AppContainer', () => {
             const instance = shallow(<SeasonStandings {...defaultProps} />).instance();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: false });
+            expect(instance.state.isMobile).toEqual(false);
         });
     });
 
@@ -106,7 +108,7 @@ describe('AppContainer', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('updates correctly state when isMobile = false and window.innerWidth = 580', () => {
@@ -120,7 +122,7 @@ describe('AppContainer', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('do nothing when isMobile = true and window.innerWidth < 580', () => {
@@ -136,7 +138,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.setState).toHaveBeenCalledTimes(0);
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('do nothing when isMobile = true and window.innerWidth = 580', () => {
@@ -152,7 +154,7 @@ describe('AppContainer', () => {
 
             // Assert
             expect(instance.setState).toHaveBeenCalledTimes(0);
-            expect(instance.state).toEqual({ isMobile: true });
+            expect(instance.state.isMobile).toEqual(true);
         });
 
         it('updates correctly state when isMobile = true and window.innerWidth > 580', () => {
@@ -166,7 +168,7 @@ describe('AppContainer', () => {
             instance.handleResize();
 
             // Assert
-            expect(instance.state).toEqual({ isMobile: false });
+            expect(instance.state.isMobile).toEqual(false);
         });
     });
 
@@ -300,6 +302,64 @@ describe('AppContainer', () => {
                 { Id: 1, Color: '#00CCFF', NameEN: 'UEFA Cup' },
                 { Id: 3, Color: '#57A87B', NameEN: 'AFC Cup Playoffs' }
             ]);
+        });
+    });
+
+    describe('handleSelectTab', () => {
+        it('setState correctly', () => {
+            // Arrange
+            const container = shallow(<SeasonStandings {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            instance.handleSelectTab('fixture');
+
+            // Assert
+            expect(instance.state.selectedTab).toEqual('fixture');
+        });
+    });
+
+    describe('checkShowTab', () => {
+        it('return true when standing.length > 1', () => {
+            // Arrange
+            const seasonStandings = [{stageId: 1}, {stageId: 2}];
+            const stages = [{stageId: 1}, {stageId: 2}];
+            const container = shallow(<SeasonStandings {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkShowTab(seasonStandings, stages);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it('return true when has playoff stages', () => {
+            // Arrange
+            const seasonStandings = [{stageId: 1, orderIndex: 1}];
+            const stages = [{stageId: 2, orderIndex: 2, mode: 2}, {stageId: 3, orderIndex: 3, mode: 3}];
+            const container = shallow(<SeasonStandings {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkShowTab(seasonStandings, stages);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it('return false when has not any playoff stages', () => {
+            // Arrange
+            const seasonStandings = [{stageId: 1, orderIndex: 1}];
+            const stages = [];
+            const container = shallow(<SeasonStandings {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkShowTab(seasonStandings, stages);
+
+            // Assert
+            expect(result).toEqual(false);
         });
     });
 

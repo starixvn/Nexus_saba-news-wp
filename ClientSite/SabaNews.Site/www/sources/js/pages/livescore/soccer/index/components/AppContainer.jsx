@@ -25,7 +25,7 @@ export class AppContainer extends Component {
         matches: null,
         majorLeagues: [],
         totalLiveMatches: 0,
-        getMajorLeagues: function () {
+        getFavLeagues: function () {
             // nothing
         },
         getMatchesByDate: function () {
@@ -33,6 +33,9 @@ export class AppContainer extends Component {
         },
         getLiveMatches: function () {
             // nothing
+        },
+        getLeagues: function () {
+            //nothing
         },
         setDateRanges: function () {
             // nothing

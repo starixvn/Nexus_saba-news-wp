@@ -380,16 +380,18 @@ describe('MatchGrid', () => {
                     childs: [{matchId: 3, league: {leagueId: 2}}, {matchId: 4, league: {leagueId: 2}}]
                 }
             ]
+            const event = {
+                target: { className: 'icon-livescore' },
+                ctrlKey: false
+            };
             window.open = jest.fn();
             const container = shallow(<MatchGrid {...props} />);
-            const instance = container.instance();
-            instance.groupMatchesByDate = jest.fn().mockReturnValue(matches);
-            instance.sortMatches = jest.fn().mockReturnValue(matches);
 
             // Act
             const result = container.render();
 
             // Assert
+            container.find('.group-match-item-slogan').first().simulate('click', event)
             expect(result).toMatchSnapshot();
         });
     });

@@ -24,7 +24,8 @@ describe('connect ', () => {
     it('props should be mapped correctly', () => {
         // Arrange
         const expected = {
-            majorLeagues: [],
+            favLeagues: [],
+            leagues:[],
             league: null,
             stages: [],
             preMatches: [],
@@ -32,7 +33,8 @@ describe('connect ', () => {
         };
         const state = {
             anotherState: 123,
-            majorLeagues: [],
+            favLeagues: [],
+            leagues: [],
             league: null,
             stages: [],
             preMatches: [],

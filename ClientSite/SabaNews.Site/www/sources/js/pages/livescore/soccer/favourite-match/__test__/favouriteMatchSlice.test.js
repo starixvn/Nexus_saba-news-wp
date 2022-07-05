@@ -23,7 +23,7 @@ describe('favouriteMatchSlice', () => {
             it('should update state correctly', () => {
                 expect(
                     favouriteMatchSlice({
-                        majorLeagues: []
+                        favLeagues: []
                     }, {
                         type: setFavLeagues.type,
                         payload: [

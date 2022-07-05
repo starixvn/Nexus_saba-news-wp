@@ -24,11 +24,12 @@ describe('connect ', () => {
     it('props should be mapped correctly', () => {
         // Arrange
         const expected = {
-            seasonStandings: []
+            seasonStandings: [],
+            stages: []
         };
         const state = {
-            anotherState: 123,
-            seasonStandings: []
+            seasonStandings: [],
+            stages: []
         };
 
         // Act

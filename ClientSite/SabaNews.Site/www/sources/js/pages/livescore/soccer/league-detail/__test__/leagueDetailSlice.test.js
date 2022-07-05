@@ -1,9 +1,10 @@
 ﻿import leagueDetailSlice, {
-    setMajorLeagues,
+    setFavLeagues,
     setLeague,
     setMatches,
     setLiveMatches,
-    setSeasonStandings
+    setSeasonStandings,
+    setLeagues
 } from '../leagueDetailSlice';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
@@ -18,24 +19,25 @@ describe('leagueDetailSlice', () => {
 
     it('initial state correctly', () => {
         expect(leagueDetailSlice(undefined, {})).toEqual({
-            majorLeagues: [],
+            favLeagues: [],
             league: null,
             stages: [],
             preMatches: null,
             postMatches: null,
-            seasonStandings: []
+            seasonStandings: [],
+            leagues: []
         });
     });
 
     describe('reducers', () => {
-        describe('setMajorLeagues', () => {
+        describe('setFavLeagues', () => {
             it('updates state correctly', () => {
                 expect(
                     leagueDetailSlice({
                         preMatches: null,
-                        majorLeagues: []
+                        favLeagues: []
                     }, {
-                        type: setMajorLeagues.type,
+                        type: setFavLeagues.type,
                         payload: [
                             {
                                 leagueId: 1,
@@ -51,7 +53,7 @@ describe('leagueDetailSlice', () => {
                     })
                 ).toEqual({
                     preMatches: null,
-                    majorLeagues: [
+                    favLeagues: [
                         {
                             leagueId: 1,
                             leagueNameEN: 'Champions League',
@@ -164,6 +166,43 @@ describe('leagueDetailSlice', () => {
                             stageNameEN: 'League',
                             teamId: 1,
                             teamNameEN: 'Manchester City'
+                        }
+                    ]
+                });
+            });
+        });
+
+        describe('setLeagues', () => {
+            it('updates state correctly', () => {
+                expect(
+                    leagueDetailSlice({
+                        leagues: []
+                    }, {
+                        type: setLeagues.type,
+                        payload: [
+                            {
+                                leagueId: 1,
+                                leagueNameEN: 'Champions League',
+                                leagueNameVN: 'Champions League'
+                            },
+                            {
+                                leagueId: 2,
+                                leagueNameEN: 'Premier League',
+                                leagueNameVN: 'Ngoại hạng Anh'
+                            }
+                        ]
+                    })
+                ).toEqual({
+                    leagues: [
+                        {
+                            leagueId: 1,
+                            leagueNameEN: 'Champions League',
+                            leagueNameVN: 'Champions League'
+                        },
+                        {
+                            leagueId: 2,
+                            leagueNameEN: 'Premier League',
+                            leagueNameVN: 'Ngoại hạng Anh'
                         }
                     ]
                 });

@@ -166,6 +166,69 @@ describe('index', () => {
         });
     });
 
+    describe('checkGroupLeagueType', () =>  {
+        it('return correctly when leagueType is league', () => {
+            // Arrange
+            const stages = [{stageId: 1}];
+            const matches = [{matchId: 1, round: 0}];
+            const league = {leagueId: 1, leagueType: 1};
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkGroupLeagueType(stages, matches, league);
+
+            // Assert
+            expect(result).toEqual(true);
+        });
+
+        it('return false when stage > 1', () => {
+            // Arrange
+            const stages = [{stageId: 1}, {stageId: 2}];
+            const matches = [{matchId: 1, round: 1}];
+            const league = {leagueId: 1, leagueType: 2};
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkGroupLeagueType(stages, matches, league);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it('return false when not have any match round > 0', () => {
+            // Arrange
+            const stages = [{stageId: 1}, {stageId: 2}];
+            const matches = [{matchId: 1, round: 0}];
+            const league = {leagueId: 1, leagueType: 2};
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkGroupLeagueType(stages, matches, league);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+
+        it('return false when league type is cup', () => {
+            // Arrange
+            const stages = [{stageId: 1}, {stageId: 2}];
+            const matches = [{matchId: 1, round: 0}];
+            const league = {leagueId: 1, leagueType: 1};
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.checkGroupLeagueType(stages, matches, league);
+
+            // Assert
+            expect(result).toEqual(false);
+        });
+    });
+
+
     describe('groupMatches', () => {
         it('return as expected when stages.length < 1 and round = 0', () => {
             // Arrange

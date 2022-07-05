@@ -1,11 +1,11 @@
 ﻿import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import League from '../League';
+import { League } from '../League';
 import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 
-describe('Input', () => {
+describe('League', () => {
     const defaultProps = {
         league: {
             leagueId: 1,
@@ -16,7 +16,8 @@ describe('Input', () => {
             ]
         },
         searchKey: '',
-        selectedDate: '2022-05-25'
+        selectedDate: '2022-05-25',
+        setFavLeagues: jest.fn()
     };
 
     beforeAll(() => {
@@ -28,6 +29,17 @@ describe('Input', () => {
 
     afterAll(() => {
         jest.clearAllMocks();
+    });
+
+    describe('onUpdateFavLeague call exacly function', () => {
+        // Arrange
+        const instance = shallow(<League {...defaultProps} />).instance();
+
+        // Act
+        instance.onUpdateFavLeague();
+
+        // Assert
+        expect(defaultProps.setFavLeagues).toHaveBeenCalled();
     });
 
     it('renders correctly when searchKey.length = 0', () => {
@@ -49,7 +61,7 @@ describe('Input', () => {
         expect(toJson(container)).toMatchSnapshot();
     });
 
-    describe('onClick', () => {
+    describe('handleClick', () => {
         const { location } = window;
 
         beforeAll(() => {
@@ -61,13 +73,32 @@ describe('Input', () => {
             window.location = location;
         });
 
+
+        it('calls correctly functions when click into icon', () => {
+            // Arrange
+            window.open = jest.fn();
+            const container = shallow(<League {...defaultProps} />);
+            const event = {
+                target: {className: 'icon-fav-league'},
+                ctrlKey: false
+            }
+            // Act
+            container.find('div.soccer-match-grid-item-header').simulate('click', event);
+
+            // Assert
+            expect(window.open).toHaveBeenCalledTimes(0);
+        });
+
         it('calls correctly functions when ctrlKey = false', () => {
             // Arrange
             window.open = jest.fn();
             const container = shallow(<League {...defaultProps} />);
-
+            const event = {
+                target: {className: ''},
+                ctrlKey: false
+            }
             // Act
-            container.find('div.soccer-match-grid-item-header').simulate('click', { ctrlKey: false });
+            container.find('div.soccer-match-grid-item-header').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -84,10 +115,14 @@ describe('Input', () => {
                     season: { seasonId: 1 }
                 }
             };
+            const event = {
+                target: {className: ''},
+                ctrlKey: false
+            }
             const container = shallow(<League {...props} />);
 
             // Act
-            container.find('div.soccer-match-grid-item-header').simulate('click', { ctrlKey: false });
+            container.find('div.soccer-match-grid-item-header').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -97,10 +132,14 @@ describe('Input', () => {
         it('calls correctly functions when ctrlKey = true', () => {
             // Arrange
             window.open = jest.fn();
+            const event = {
+                target: {className: ''},
+                ctrlKey: true
+            }
             const container = shallow(<League {...defaultProps} />);
 
             // Act
-            container.find('div.soccer-match-grid-item-header').simulate('click', { ctrlKey: true });
+            container.find('div.soccer-match-grid-item-header').simulate('click', event);
 
             // Assert
             expect(window.open).toHaveBeenCalledWith('lich-thi-dau/bong-da/world-cup/0/2022-05-25/1', '_blank');

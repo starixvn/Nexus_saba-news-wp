@@ -2,9 +2,11 @@
     setSearchKey,
     setSelectedDate,
     setDateRanges,
-    setMajorLeagues,
+    setFavLeagues,
     setMatches,
-    setLiveMatches
+    setLiveMatches,
+    setFlagToggleFavLeagueIcon,
+    setLeagues
 } from '../soccerMatchSlice';
 
 describe('soccerMatchSlice', () => {
@@ -60,14 +62,14 @@ describe('soccerMatchSlice', () => {
             });
         });
 
-        describe('setMajorLeagues', () => {
+        describe('setFavLeagues', () => {
             it('updates state correctly', () => {
                 expect(
                     soccerMatchSlice({
                         today: '2022-05-25',
-                        majorLeagues: []
+                        favLeagues: []
                     }, {
-                        type: setMajorLeagues.type,
+                        type: setFavLeagues.type,
                         payload: [
                             {
                                 leagueId: 1,
@@ -83,7 +85,7 @@ describe('soccerMatchSlice', () => {
                     })
                 ).toEqual({
                     today: '2022-05-25',
-                    majorLeagues: [
+                    favLeagues: [
                         {
                             leagueId: 1,
                             leagueNameEN: 'Champions League',
@@ -335,6 +337,42 @@ describe('soccerMatchSlice', () => {
                     ]
                 });
             });
+        });
+
+        describe('setLeagues', () => {
+            it('should update state correctly', () => {
+                expect(
+                    soccerMatchSlice({
+                        leagues: []
+                    }, {
+                        type: setLeagues.type,
+                        payload: [
+                            {leagueId: 1},
+                            {leagueId: 2}
+                        ]
+                    })
+                ).toEqual({
+                    leagues: [
+                        {leagueId: 1},
+                        {leagueId: 2}
+                    ]
+                });
+            })
+        });
+
+        describe('setFlagToggleFavLeagueIcon', () => {
+            it('should update state correctly', () => {
+                expect(
+                    soccerMatchSlice({
+                        flagToggleFavLeagueIcon: false
+                    }, {
+                        type: setFlagToggleFavLeagueIcon.type,
+                        payload: true
+                    })
+                ).toEqual({
+                    flagToggleFavLeagueIcon: true
+                });
+            })
         });
     });
 });
