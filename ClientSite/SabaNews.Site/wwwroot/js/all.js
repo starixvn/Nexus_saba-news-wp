@@ -248,7 +248,32 @@ $(document).ready(function () {
     });
 
     $('#EventModal').modal('hide');
+
+    getFavouriteMatchCount();
 });
+
+function getFavouriteMatchCount() {
+    let matchIds = localStorage.getItem('favourite-matches');
+    if (!matchIds) {
+        matchIds = [];
+    } else {
+        matchIds = JSON.parse(matchIds.toString());
+        matchIds = matchIds.filter(match => match !== null);
+    }
+
+    const count = matchIds.length;
+    const favMatch = $('.mobile-fav');
+    if (favMatch) {
+        if (count > 0) {
+            favMatch.addClass('number-count-fav');
+            favMatch.html(count);
+        } else {
+            favMatch.removeClass('number-count-fav');
+            favMatch.html('');
+        }
+    }
+}
+
 
 
 

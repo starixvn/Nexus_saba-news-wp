@@ -123,6 +123,20 @@ export default class CommonFunctions {
         }
     };
 
+    static updateMobileMenuMatchCount(matches) {
+        const count = matches.length;
+        const favMatch = document.querySelector('.mobile-fav');
+        if (favMatch) {
+            if (count > 0) {
+                favMatch.classList.add('number-count-fav');
+                favMatch.innerHTML = count;
+            } else {
+                favMatch.classList.remove('number-count-fav');
+                favMatch.innerHTML = '';
+            }
+        }
+    }
+
     static updateFavouriteMatch(matchId) {
         if (!matchId) {
             return null;
@@ -140,6 +154,7 @@ export default class CommonFunctions {
 
         localStorage.setItem('favourite-matches', JSON.stringify(favouriteMatches));
         this.updateFavouriteMatchesCount(favouriteMatches);
+        this.updateMobileMenuMatchCount(favouriteMatches);
         return isFavourite;
     }
 
