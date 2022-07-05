@@ -228,40 +228,53 @@ describe('index', () => {
         });
     });
 
+    describe('checkGroupMatches', () => {
+        it('return correctly when stage.length = 0', () => {
+             // Arrange
+            const stages = [];
+            const matches = [{matchId: 1, round: 0}];
+            const league = {leagueId: 1, leagueType: 1};
+            const container = shallow(<MatchGrid {...defaultProps} />);
+            const instance = container.instance();
+            instance.checkGroupLeagueType = jest.fn().mockReturnValue(false);
 
+            // Act
+            const result = instance.checkGroupMatches(stages, matches, league);
+
+             // Assert
+             expect(result).toEqual(true);
+        });
+
+        it('return correctly when stage.length = 0', () => {
+            // Arrange
+           const stages = [{stageId: 1}];
+           const matches = [{matchId: 1, round: 0}];
+           const league = {leagueId: 1, leagueType: 1};
+           const container = shallow(<MatchGrid {...defaultProps} />);
+           const instance = container.instance();
+           instance.checkGroupLeagueType = jest.fn().mockReturnValue(false);
+
+           // Act
+           const result = instance.checkGroupMatches(stages, matches, league);
+
+            // Assert
+            expect(result).toEqual(false);
+       });
+    });
     describe('groupMatches', () => {
-        it('return as expected when stages.length < 1 and round = 0', () => {
+        it('return as expected when groupMatchesByDate is true', () => {
             // Arrange
             const stages = [];
             const matches = [
                 { matchId: 1, round: 0 },
                 { matchId: 2 }
             ];
+            const league = {}
             const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
             instance.groupMatchesByDate = jest.fn(() => [{ matchId: 1, round: 0 }]);
             instance.groupMatchesByStageAndRound = jest.fn();
-
-            // Act
-            const result = instance.groupMatches(stages, matches);
-
-            // Assert
-            expect(result).toEqual([{ matchId: 1, round: 0 }]);
-            expect(instance.groupMatchesByStageAndRound).toHaveBeenCalledTimes(0);
-        });
-
-        it('return as expected when stages.length = 1 and round = 0 and leagueType = 1', () => {
-            // Arrange
-            const stages = [{ stageId: 1 }];
-            const matches = [
-                { matchId: 1, round: 0 },
-                { matchId: 2 }
-            ];
-            const league = {leagueType: 1}
-            const container = shallow(<MatchGrid {...defaultProps} />);
-            const instance = container.instance();
-            instance.groupMatchesByDate = jest.fn(() => [{ matchId: 1, round: 0 }]);
-            instance.groupMatchesByStageAndRound = jest.fn();
+            instance.checkGroupMatches = jest.fn().mockReturnValue(true);
 
             // Act
             const result = instance.groupMatches(stages, matches, league);
@@ -270,6 +283,7 @@ describe('index', () => {
             expect(result).toEqual([{ matchId: 1, round: 0 }]);
             expect(instance.groupMatchesByStageAndRound).toHaveBeenCalledTimes(0);
         });
+
 
         it('return as expected when stages.length > 1 and leagueType = 1', () => {
             // Arrange
@@ -284,7 +298,6 @@ describe('index', () => {
                     matches: [{ matchId: 1, stage: { stageId: 1 } }]
                 },
                 {
-                    stage: { stageId: 1, roundCount: 1 }, round: 1,
                     matches: [{ matchId: 2, stage: { stageId: 1 } }]
                 },
                 {
@@ -295,6 +308,7 @@ describe('index', () => {
             const league = {leagueType: 1}
             const container = shallow(<MatchGrid {...defaultProps} />);
             const instance = container.instance();
+            instance.checkGroupMatches = jest.fn().mockReturnValue(false);
             instance.groupMatchesByDate = jest.fn(() => []);
             instance.groupMatchesByStageAndRound = jest.fn(() => groupMatches);
 
@@ -309,7 +323,7 @@ describe('index', () => {
 
             expect(result).toEqual([
                 { key: 0, text: '1/4 Finals', childs: [] },
-                { key: 1, text: 'Semi-finals', childs: [] },
+                { key: 1, text: '', childs: [] },
                 { key: 2, text: 'Round 1', childs: [] }
             ]);
         });
@@ -341,7 +355,7 @@ describe('index', () => {
             expect(instance.groupMatchesByDate.mock.calls[0][0]).toEqual([{ matchId: 2, stage: { stageId: 1 } }]);
 
             expect(result).toEqual([
-                { key: 0, text: 'Finals - Turn 1', childs: [] }
+                { key: 0, text: 'Semi-finals - Turn 1', childs: [] }
             ]);
         });
     });
@@ -477,7 +491,8 @@ describe('index', () => {
                     { matchId: 1, startTime: '2022-05-25' },
                     { matchId: 2, startTime: '2022-05-25' },
                     { matchId: 3, startTime: '2022-05-26' }
-                ]
+                ],
+                league: {leagueId: 1, leagueType: 1}
             };
 
             // Act
@@ -502,7 +517,8 @@ describe('index', () => {
                         homeTeam: { teamId: 3, nameEN: 'Liverpool' },
                         awayTeam: { teamId: 4, nameEN: 'Real Madrid' }
                     }
-                ]
+                ],
+                league: {leagueId: 1, leagueType: 1}
             };
             CommonFunctions.getTeamName = jest.fn();
             CommonFunctions.getTeamName.mockReturnValueOnce('Belgium').mockReturnValueOnce('Croatia')

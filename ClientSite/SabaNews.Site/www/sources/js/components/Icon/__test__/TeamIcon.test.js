@@ -29,7 +29,37 @@ describe('TeamIcon', () => {
         }
         const container = shallow(<TeamIcon {...props} />)
 
-       // Assert
-       expect(container).toMatchSnapshot();
+        // Assert
+        expect(container).toMatchSnapshot();
     });
+
+    describe('handleClick', () => {
+        it('call correctly function', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                src: 'src',
+                onClick: jest.fn()
+            }
+            const container = shallow(<TeamIcon {...props} />);
+
+            //Act
+            container.simulate('click', {});
+
+            // Assert
+            expect(props.onClick).toHaveBeenCalled();
+        });
+
+        it('do nothing when onClick function is not exitst', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                src: 'src',
+            }
+            const container = shallow(<TeamIcon {...props} />);
+
+            //Act & Act
+            container.simulate('click', {});
+        });
+    })
 })
