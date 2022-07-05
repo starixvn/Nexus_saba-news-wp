@@ -586,7 +586,6 @@
                         }
 
                         ul {
-                            display: none;
                             list-style: none;
                             padding-left: 3.2rem;
                             padding-right: 1.2rem;
@@ -612,6 +611,10 @@
                                 }
                             }
                         }
+                    }
+
+                    ul {
+                        display: none;
                     }
                 }
             }

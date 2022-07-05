@@ -708,7 +708,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               transform: rotate(180deg);
               transition: all .3s ease; }
           .top-header .group-menu .nav-menu .main-menu li.has-sub ul {
-            display: none;
             list-style: none;
             padding-left: 3.2rem;
             padding-right: 1.2rem; }
@@ -725,6 +724,8 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
                 font-weight: 600;
                 font-size: 1.3rem;
                 color: #2F2F2F; }
+          .top-header .group-menu .nav-menu .main-menu li ul {
+            display: none; }
       .top-header .group-menu .nav-menu .active-main-menu {
         display: flex; }
         @media (max-width: 767px) {
