@@ -1,3 +1,4 @@
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
 DROP PROCEDURE IF EXISTS Livescore_League_Get;
 
 DELIMITER //
@@ -13,7 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Get`(
 BEGIN
 	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, e.IsMajor, e.Priority
 	FROM livescore_league l
-	LEFT JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
+		LEFT JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
 	ORDER BY e.Priority is null, e.Priority;
 END
 

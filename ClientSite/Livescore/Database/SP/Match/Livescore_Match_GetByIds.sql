@@ -1,3 +1,4 @@
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
 DROP PROCEDURE IF EXISTS Livescore_Match_GetByIds;
 
 DELIMITER //
@@ -13,7 +14,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetByIds`(
 )
 BEGIN
 	DROP TEMPORARY TABLE IF EXISTS tmp_ids;
-    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_ids(MatchId BIGINT NOT NULL ,PRIMARY KEY (MatchId));
+    CREATE TEMPORARY TABLE IF NOT EXISTS tmp_ids(MatchId BIGINT NOT NULL);
 	
 	INSERT INTO tmp_ids(MatchId)
     SELECT MatchId
@@ -48,13 +49,15 @@ BEGIN
 		LEFT JOIN livescore_league_extra le ON l.LeagueId = le.LeagueId
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
         LEFT JOIN livescore_match_live live ON m.MatchId = live.MatchId
-    WHERE EXISTS (SELECT tmp.MatchId FROM tmp_ids tmp WHERE m.MatchId = tmp.MatchId)
+    WHERE m.CombinedId IS NULL
+			AND NOT EXISTS (SELECT md.MatchId FROM livescore_match_deleted md WHERE m.MatchId = md.MatchId)
+            AND EXISTS (SELECT tmp.MatchId FROM tmp_ids tmp WHERE m.MatchId = tmp.MatchId)
      ORDER BY CASE WHEN le.LeagueId IS NOT NULL THEN le.Priority ELSE 9999999 END ASC
         ,CASE WHEN l.LeagueNameVN IS NOT NULL THEN l.LeagueNameVN
 			WHEN l.LeagueNameEN IS NOT NULL THEN l.LeagueNameEN
             ELSE l.LeagueFullNameEN END ASC
 		,m.StartTime ASC;
-END;
+END
 
 //
 DELIMITER;
