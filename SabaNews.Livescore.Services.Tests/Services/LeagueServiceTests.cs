@@ -24,6 +24,28 @@
             Assert.Equal(leagues, actual);
         }
 
+        [Fact]
+        public async Task GetLeagueByIdsAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var service = GetService();
+            var fixture = new Fixture();
+            var leagues = fixture.Create<IList<League>>();
+            baseService.GetDataAsync<League>(Arg.Any<GetLeagueByIdsCriteria>()).Returns(leagues);
+            var actual = await service.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria());
+            Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetLeaguesAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var service = GetService();
+            var fixture = new Fixture();
+            var leagues = fixture.Create<IList<League>>();
+            baseService.GetDataAsync<League>(Arg.Any<GetLeaguesCriteria>()).Returns(leagues);
+            var actual = await service.GetLeaguesAsync();
+            Assert.Equal(leagues, actual);
+        }
+
         private LeagueService GetService()
         {
             baseService = Substitute.For<IBaseService>();

@@ -14,6 +14,7 @@
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models;
     using SabaNews.Models.ViewModel.Posts;
@@ -645,7 +646,7 @@
         }
 
         [Fact]
-        public async Task GetMatchByIds_WhenCalled_ReturnExpectedJsonResult()
+        public async Task GetFavMatches_WhenCalled_ReturnExpectedJsonResult()
         {
             // Arrange
             var matches = fixture.Create<IList<Match>>();
@@ -656,13 +657,67 @@
             matchService.GetLiveMatchAsync().Returns(liveMatches);
 
             // Act
-            var result = await controller.GetMatchByIds(criteria);
+            var result = await controller.GetFavMatches(criteria);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             var actual = Assert.IsAssignableFrom<MatchFavourite>(jsonResult.Value);
             Assert.Equal(matches, actual.Matches);
             Assert.Equal(liveMatches, actual.LiveMatches);
+        }
+
+        [Fact]
+        public async Task GetFavLeagues_WhemParamsIsNull_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var leagues = fixture.Create<IList<League>>();
+            var model = new FavLeagueModel {LeagueIds = null};
+            var controller = GetController();
+            leagueService.GetMajorLeagueAsync().Returns(leagues);
+
+            // Act
+            var result = await controller.GetFavLeagues(model);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<League>>(jsonResult.Value);
+            Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetFavLeagues_WhemParamsIsNotNull_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var leagues = fixture.Create<IList<League>>();
+            var criteria = fixture.Create<GetLeagueByIdsCriteria>();
+            var model = new FavLeagueModel { LeagueIds = "1,2" };
+            var controller = GetController();
+            leagueService.GetLeagueByIdsAsync(Arg.Do<GetLeagueByIdsCriteria>(x => criteria = x)).Returns(leagues);
+
+            // Act
+            var result = await controller.GetFavLeagues(model);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<League>>(jsonResult.Value);
+            Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagues_WhemCalled_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var leagues = fixture.Create<IList<League>>();
+            var controller = GetController();
+            leagueService.GetLeaguesAsync().Returns(leagues);
+
+            // Act
+            var result = await controller.GetLeagues();
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<League>>(jsonResult.Value);
+            Assert.Equal(leagues, actual);
         }
 
         #region Helpers

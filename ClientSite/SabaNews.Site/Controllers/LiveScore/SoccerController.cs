@@ -228,7 +228,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMatchByIds([FromBody] GetMatchByIdsCriteria criteria)
+        public async Task<IActionResult> GetFavMatches([FromBody] GetMatchByIdsCriteria criteria)
         {
             var result = new MatchFavourite
             {
@@ -239,19 +239,26 @@
         }
 
         [HttpPost]
+        public async Task<IActionResult> GetMatchByIds(string matchIds)
+        {
+            var result = await matchService.GetMatchByIdsAsync(new GetMatchByIdsCriteria { MatchIds = matchIds });
+            return Json(result);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> GetFavLeagues([FromBody] FavLeagueModel model)
         {
             var leagues = model.LeagueIds == null
                         ? await leagueService.GetMajorLeagueAsync() 
                         : await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = model.LeagueIds });
-            return Ok(leagues);
+            return Json(leagues);
         }
 
         [HttpPost]
         public async Task<IActionResult> GetLeagues()
         {
             var leagues = await leagueService.GetLeaguesAsync();
-            return Ok(leagues);
+            return Json(leagues);
         }
 
     }

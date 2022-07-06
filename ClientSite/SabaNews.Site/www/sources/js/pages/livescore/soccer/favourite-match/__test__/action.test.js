@@ -90,7 +90,7 @@ describe('actionCreators', () => {
             await store.dispatch(ActionCreators.getMatches());
 
             // Assert
-            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/GetMatchByIds', param);
+            expect(DataService.postDataAsync).toHaveBeenCalledWith('soccer/GetFavMatches', param);
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

@@ -17,7 +17,7 @@ const getMatches = () => async dispatch => {
     const param = {
         matchIds: JSON.stringify(matchIds)
     };
-    const url = Site.resolveClientUrl('soccer/GetMatchByIds');
+    const url = Site.resolveClientUrl('soccer/GetFavMatches');
     await DataService.postDataAsync(url, param).then(response => {
         dispatch(setMatches(response.data));
     }).catch(Site.handleAxiosError);
