@@ -20,6 +20,7 @@
             services.AddTransient<IFetchPlayerService, FetchPlayerService>();
             services.AddTransient<IFetchSeasonService, FetchSeasonService>();
             services.AddTransient<IFetchMatchService, FetchMatchService>();
+            services.AddTransient<IFetchCountryService, FetchCountryService>();
         }
 
         private static void RegisterHttpClientService(IServiceCollection services, IConfiguration configuration)

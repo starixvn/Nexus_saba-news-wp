@@ -164,6 +164,7 @@
             services.AddHostedService<SyncDeleledMatchesWorker>();
             services.AddHostedService<SyncMatchByUpdatedTimeInPastWorker>();
             services.AddHostedService<SyncMatchByUpdatedTimeFromCurrentToFutureWorker>();
+            services.AddHostedService<SyncCountryListWorker>();
         }
     }
 }

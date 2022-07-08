@@ -68,4 +68,7 @@
             <Mapping DataField="AwayTeamId" ObjectProperty="TeamId" class="Team" />
         </Setting>
     </Function>
+    <Function Name="Country">
+        <Setting Key="Livescore_Sync_Country_Import" SpName="Livescore_Sync_Country_Import" DbName="sabasports" Plain="0" />
+    </Function>
 </Functions>
