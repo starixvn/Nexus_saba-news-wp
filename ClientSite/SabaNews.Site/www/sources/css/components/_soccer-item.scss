@@ -65,16 +65,16 @@
                     }
 
                     .livescore-logo-team {
-                        width: 3rem;
-                        height: 3rem;
+                        width: 2.4rem;
+                        height: 1.8rem;
                         position: relative;
                         overflow: hidden;
                         margin-right: 1.2rem;
 
                         @include tableMobile {
                             margin-right: .6rem;
-                            width: 2.2rem;
-                            height: 2.2rem;
+                            width: 2.4rem;
+                            height: 1.8rem;
                         }
 
                         img {
@@ -103,11 +103,29 @@
                             font-size: 1.3rem;
                             line-height: 1.6rem;
                             width: 75%;
+                            display: flex;
+                            flex-wrap: wrap;
                         }
 
                         @include iphone5 {
                             font-size: 1.1rem;
                             width: 70%;
+                        }
+                        span{
+                            &.country-name{
+                                @include tableMobile{
+                                    order: 2;
+                                }
+                            }
+                            &.round-name{
+                                @include tableMobile{
+                                    order: 1;
+                                    width: 21.5rem;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+                            }
                         }
                     }
                 }
