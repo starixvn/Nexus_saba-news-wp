@@ -7,14 +7,37 @@ import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../../actions';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export class League extends PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+        };
     }
 
     onUpdateFavLeague = () => {
         this.props.setFavLeagues(CommonFunctions.getFavLeagues());
+    };
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
     };
 
     handleClick = event => {
@@ -34,6 +57,7 @@ export class League extends PureComponent {
     };
     render() {
         const { league, searchKey, flagToggleFavLeagueIcon } =  this.props;
+        const { isMobile } = this.state;
         const leagueName = CommonFunctions.getLeagueNameWithStage(league);
         const countryName = league.countryVN ? league.countryVN + ": " : '';
         const reg = new RegExp(`(${searchKey})`, 'gi');
