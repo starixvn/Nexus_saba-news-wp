@@ -17,11 +17,12 @@
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                var matches = await db.QueryAsync<Match, League, Season, SeasonStage, Team, Team, Match>(
-                        (match, league, season, stage, home, away) =>
+                var matches = await db.QueryAsync<Match, League, Country, Season, SeasonStage, Team, Team, Match>(
+                        (match, league, country, season, stage, home, away) =>
                         {
                             league.Season = season;
                             league.Stage = stage;
+                            league.Country = country;
 
                             match.League = league;
                             match.HomeTeam = home;
@@ -30,7 +31,7 @@
 
                             return match;
                         },
-                        splitOn: "LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId",
+                        splitOn: "LeagueId, CountryId, SeasonId, StageId, HomeTeamId, AwayTeamId",
                         parameterSet: criteria);
                 return matches.ToList();
             }
@@ -104,16 +105,17 @@
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                var matches = await db.QueryAsync<Match, League, Team, Team, Match>(
-                        (match, league, home, away) =>
+                var matches = await db.QueryAsync<Match, League, Country, Team, Team, Match>(
+                        (match, league, country, home, away) =>
                         {
                             match.League = league;
+                            match.League.Country = country;
                             match.HomeTeam = home;
                             match.AwayTeam = away;
 
                             return match;
                         },
-                        splitOn: splitOnMatch,
+                        splitOn: "LeagueId, CountryId, HomeTeamId, AwayTeamId",
                         parameterSet: criteria);
                 return matches.ToList();
             }

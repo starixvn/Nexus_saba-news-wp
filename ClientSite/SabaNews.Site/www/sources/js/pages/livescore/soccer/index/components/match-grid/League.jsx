@@ -35,15 +35,18 @@ export class League extends PureComponent {
     render() {
         const { league, searchKey, flagToggleFavLeagueIcon } =  this.props;
         const leagueName = CommonFunctions.getLeagueNameWithStage(league);
+        const countryName = league.countryVN ? league.countryVN + ":" : '';
         const reg = new RegExp(`(${searchKey})`, 'gi');
         const displayValue = searchKey.length > 0 ? leagueName.replace(reg, "<span class='text-matched'>$1</span>") : leagueName;
+        const leagueNameShow = `${countryName} ${displayValue}`;
+        const countryIcon = CommonFunctions.getCountryIcon(league.country);
         return (
             <div className="soccer-match-grid-item">
                 <div className="soccer-match-grid-item-header" onClick={this.handleClick}>
                     <div className="soccer-match-grid-item-league">
                         <FavouriteLeagueIcon league = {league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={flagToggleFavLeagueIcon}/>
-                        <div className="livescore-logo-team"><TeamIcon src={league.icon} /></div>
-                        <span className="livescore-name-team" dangerouslySetInnerHTML={{ __html: displayValue }} />
+                        <div className="livescore-logo-team"><TeamIcon src={countryIcon ? countryIcon : league.icon} /></div>
+                        <span className="livescore-name-team" dangerouslySetInnerHTML={{ __html: leagueNameShow }} />
                     </div>
                     <span className="icon-livescore icon-live-right" />
                 </div>

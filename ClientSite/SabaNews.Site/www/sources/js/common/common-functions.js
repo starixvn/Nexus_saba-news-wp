@@ -20,7 +20,7 @@ export default class CommonFunctions {
         const stage = league.stage;
 
         if (league.leagueType !== LeagueType.League && stage) {
-            leagueName += ` :: ${this.getStageName(stage)}`;
+            leagueName += ` - ${this.getStageName(stage)}`;
         }
 
         return leagueName;
@@ -28,6 +28,11 @@ export default class CommonFunctions {
 
     static getStageName(stage) {
         return stage.stageNameVN ? stage.stageNameVN : stage.stageNameEN;
+    }
+
+    static getCountryIcon(country) {
+        if(!country) return null;
+        return country.countryLogoCustom ? country.countryLogoCustom : country.countryLogo;
     }
 
     static produceIncidents(incidents) {

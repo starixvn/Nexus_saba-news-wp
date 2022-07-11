@@ -22,7 +22,10 @@
 
         public Season Season { get; set; }
         public SeasonStage Stage { get; set; }
+        public Country Country { get; set; }
+        public string CountryVN { get; set; }
 
         public long? CurrentSeasonId { get; set; }
+
     }
 }
