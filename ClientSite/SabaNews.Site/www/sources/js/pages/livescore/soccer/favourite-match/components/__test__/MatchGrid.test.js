@@ -210,71 +210,6 @@ describe('MatchGrid', () => {
         expect(defaultProps.onUpdateFavLeague).toHaveBeenCalled();
     });
 
-    describe('handleClickLeague', () => {
-        const { location } = window;
-
-        beforeAll(() => {
-            delete window.location;
-            window.location = { href: '' };
-        });
-
-        afterAll(() => {
-            window.location = location;
-        });
-
-        it('redirect correctly when click into icon', () => {
-            // Arrange
-            const event = {
-                target: { className: 'icon-livescore' },
-                ctrlKey: false
-            };
-            window.open = jest.fn();
-            const container = shallow(<MatchGrid {...defaultProps} />);
-            const instance = container.instance();
-            // Act
-            instance.handleClickLeague(event);
-
-            // Assert
-            expect(window.open).toHaveBeenCalledTimes(0);
-        });
-
-        it('redirect correctly when ctrlKey = false', () => {
-            // Arrange
-            const event = {
-                target: { className: '' },
-                ctrlKey: false
-            };
-
-            window.open = jest.fn();
-            const container = shallow(<MatchGrid {...defaultProps} />);
-            const instance = container.instance();
-            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
-            // Act
-            instance.handleClickLeague(event);
-
-            // Assert
-            expect(window.open).toHaveBeenCalledTimes(0);
-            expect(window.location).toEqual('/lich-thi-dau/bong-da');
-        });
-
-        it('calls correctly when ctrlKey = true', () => {
-           // Arrange
-           const event = {
-                target: { className: '' },
-                ctrlKey: true
-            };
-            window.open = jest.fn();
-            const container = shallow(<MatchGrid {...defaultProps} />);
-            const instance = container.instance();
-            CommonFunctions.getLeaguePageUrl = jest.fn().mockReturnValue('/lich-thi-dau/bong-da');
-
-            // Act
-            instance.handleClickLeague(event);
-
-            // Assert
-            expect(window.open).toHaveBeenCalledWith('/lich-thi-dau/bong-da', '_blank');
-        });
-    });
 
     describe('render', () => {
         it('render correctly with default props', () => {
@@ -391,7 +326,6 @@ describe('MatchGrid', () => {
             const result = container.render();
 
             // Assert
-            container.find('.group-match-item-slogan').first().simulate('click', event)
             expect(result).toMatchSnapshot();
         });
     });

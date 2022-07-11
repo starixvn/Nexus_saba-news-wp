@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
-import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { Form } from 'react-bootstrap';
 import Match from '../../index/components/match-grid/Match';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
-import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import League from './League';
 
 export default class MatchGrid extends PureComponent {
