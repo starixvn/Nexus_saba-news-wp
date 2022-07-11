@@ -201,6 +201,29 @@
             line-height: 1.5rem;
             padding: .4rem .8rem;
         }
+        .livescore-name-team{
+            @include tableMobile{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            span{
+                &.country-name{
+                    @include tableMobile{
+                        order: 2;
+                        width: 100%;
+                    }
+                }
+                &.round-name{
+                    @include tableMobile{
+                        order: 1;
+                        width: 21.5rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
     }
 
 
