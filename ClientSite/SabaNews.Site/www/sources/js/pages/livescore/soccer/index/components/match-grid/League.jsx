@@ -58,8 +58,9 @@ export class League extends PureComponent {
     render() {
         const { league, searchKey, flagToggleFavLeagueIcon } =  this.props;
         const { isMobile } = this.state;
+        const separate = isMobile ? '' : ': ';
         const leagueName = CommonFunctions.getLeagueNameWithStage(league);
-        const countryName = league.countryVN ? league.countryVN + ": " : '';
+        const countryName = league.countryVN ? league.countryVN + separate : '';
         const reg = new RegExp(`(${searchKey})`, 'gi');
         const displayValue = searchKey.length > 0 ? leagueName.replace(reg, "<span class='text-matched'>$1</span>") : leagueName;
         const countryIcon = CommonFunctions.getCountryIcon(league.country);
@@ -73,7 +74,6 @@ export class League extends PureComponent {
                             <span className="country-name">{countryName}</span>
                             <span className="round-name">{displayValue}</span>
                         </div>
-                        
                     </div>
                     <span className="icon-livescore icon-live-right" />
                 </div>

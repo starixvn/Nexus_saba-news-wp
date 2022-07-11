@@ -6,7 +6,7 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import CommonFunctions from '@jsroot/common/common-functions';
 import moment from 'moment';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
-
+import League from './League';
 
 export default class MatchGrid extends PureComponent {
     constructor(props) {
@@ -164,11 +164,7 @@ export default class MatchGrid extends PureComponent {
                                             {
                                                 item.childs.map(child => {
                                                     return <div className="group-match-item" key={child.key}>
-                                                        <div className="group-match-item-slogan"
-                                                            onClick={event => this.handleClickLeague(event, child.league)}>
-                                                            <FavouriteLeagueIcon league={child.league} flagToggle={flagToggleIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
-                                                            <TeamIcon src={child.league.icon} />  {CommonFunctions.getLeagueName(child.league)}
-                                                        </div>
+                                                        <League league={child.league} flagToggleIcon={flagToggleIcon} onUpdateFavLeague={this.onUpdateFavLeague}/>
                                                         {
                                                             child.childs.map(match =>
                                                                 <Match key={match.matchId}
