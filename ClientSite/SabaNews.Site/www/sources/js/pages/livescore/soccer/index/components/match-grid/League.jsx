@@ -69,7 +69,7 @@ export class League extends PureComponent {
                 <div className="soccer-match-grid-item-header" onClick={this.handleClick}>
                     <div className="soccer-match-grid-item-league">
                         <FavouriteLeagueIcon league = {league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={flagToggleFavLeagueIcon}/>
-                        <div className="livescore-logo-team"><TeamIcon src={countryIcon ? countryIcon : league.icon} /></div>
+                        <div className="livescore-logo-team"><TeamIcon src={countryIcon} /></div>
                         <div className="livescore-name-team">
                             <span className="country-name">{countryName}</span>
                             <span className="round-name">{displayValue}</span>

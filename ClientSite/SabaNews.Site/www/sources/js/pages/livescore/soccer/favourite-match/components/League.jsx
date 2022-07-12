@@ -54,7 +54,7 @@ export default class League extends PureComponent {
             <div className="group-match-item-slogan"
                 onClick={event => this.handleClickLeague(event, league)}>
                 <FavouriteLeagueIcon league={league} flagToggle={flagToggleIcon} onUpdateFavLeague={this.props.onUpdateFavLeague}/>
-                <TeamIcon src={countryIcon ? countryIcon : league.icon} />
+                <TeamIcon src={countryIcon} />
                 <div className="livescore-name-team">
                     <span className="country-name">{countryName}</span>
                     <span className="round-name">{leagueName}</span>
