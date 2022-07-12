@@ -72,7 +72,7 @@ export class League extends PureComponent {
                         <div className="livescore-logo-team"><TeamIcon src={countryIcon} /></div>
                         <div className="livescore-name-team">
                             <span className="country-name">{countryName}</span>
-                            <span className="round-name">{displayValue}</span>
+                            <span className="round-name" dangerouslySetInnerHTML={{ __html: displayValue }}></span>
                         </div>
                     </div>
                     <span className="icon-livescore icon-live-right" />
