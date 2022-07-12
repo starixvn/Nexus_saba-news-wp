@@ -103,19 +103,6 @@ export default class MatchGrid extends PureComponent {
         this.props.onUpdateFavLeague();
     };
 
-    handleClickLeague = (event, league) => {
-        const className = event.target.className;
-        if (className.includes('icon-livescore')) {
-            return;
-        }
-        const url = CommonFunctions.getLeaguePageUrl(league);
-        if (event.ctrlKey) {
-            window.open(url, '_blank');
-        } else {
-            window.location = url;
-        }
-    };
-
     render() {
         let { matches, sortAsc, isAllMatches, flagToggleIcon } = this.props;
         if (matches.length === 0) {

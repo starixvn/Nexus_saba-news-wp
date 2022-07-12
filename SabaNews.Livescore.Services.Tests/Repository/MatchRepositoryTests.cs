@@ -37,8 +37,8 @@
 
             var matches = fixture.Create<IList<Match>>();
 
-            objectDb.QueryAsync(Arg.Any<Func<Match, League, Season, SeasonStage, Team, Team, Match>>(),
-                splitOn: Arg.Is("LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId"),
+            objectDb.QueryAsync(Arg.Any<Func<Match, League, Country, Season, SeasonStage, Team, Team, Match>>(),
+                splitOn: Arg.Is("LeagueId, CountryId, SeasonId, StageId, HomeTeamId, AwayTeamId"),
                 Arg.Is(criteria)
                 ).Returns(matches);
             //Actual
@@ -57,8 +57,8 @@
 
             var matches = fixture.Create<IList<Match>>();
 
-            objectDb.QueryAsync(Arg.Any<Func<Match, League, Team, Team, Match>>(),
-                splitOn: Arg.Is("LeagueId, HomeTeamId, AwayTeamId"),
+            objectDb.QueryAsync(Arg.Any<Func<Match, League, Country, Team, Team, Match>>(),
+                splitOn: Arg.Is("LeagueId, CountryId, HomeTeamId, AwayTeamId"),
                 Arg.Is(criteria)
                 ).Returns(matches);
             //Actual
