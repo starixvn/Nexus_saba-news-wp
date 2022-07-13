@@ -30,6 +30,9 @@
             image-rendering: -webkit-optimize-contrast;
         }
     }
+    span{
+        height: 3rem;
+    }
 
     &-name {
         font-weight: 700;
