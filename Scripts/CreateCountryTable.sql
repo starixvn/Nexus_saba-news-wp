@@ -1,4 +1,4 @@
-/*<info serverAlias="SSMS-sabasports"></info>*/
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isNested="0"></info>*/
 
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --

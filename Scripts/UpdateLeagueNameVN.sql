@@ -1,4 +1,4 @@
-/*<info serverAlias="SSMS-sabasports"></info>*/
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isNested="0"></info>*/
 
 TRUNCATE TABLE sabasports.livescore_league_extra;
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14638,0,1);
