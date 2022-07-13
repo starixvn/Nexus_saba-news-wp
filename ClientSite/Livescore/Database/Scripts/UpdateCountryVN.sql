@@ -1,4 +1,4 @@
-/*<info serverAlias="SSMS-sabasports"></info>*/
+/*<info serverAlias="SSMS-sabasports"  databaseType="2" executers="sabasports"></info>*/
 ALTER TABLE  sabasports.livescore_league
 ADD COLUMN CountryVN VARCHAR(255) AFTER Country;
 
