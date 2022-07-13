@@ -49,12 +49,11 @@ export default class League extends PureComponent {
         const separate = isMobile ? '' : ': ';
         const leagueName = CommonFunctions.getLeagueName(league);
         const countryName = league.countryVN ? league.countryVN + separate : '';
-        const countryIcon = CommonFunctions.getCountryIcon(league.country);
         return(
             <div className="group-match-item-slogan"
                 onClick={event => this.handleClickLeague(event, league)}>
                 <FavouriteLeagueIcon league={league} flagToggle={flagToggleIcon} onUpdateFavLeague={this.props.onUpdateFavLeague}/>
-                <TeamIcon src={countryIcon} />
+                <TeamIcon src={null} />
                 <div className="livescore-name-team">
                     <span className="country-name">{countryName}</span>
                     <span className="round-name">{leagueName}</span>
