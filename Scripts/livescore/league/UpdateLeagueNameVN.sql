@@ -7,7 +7,6 @@ insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) value
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12052,0,4);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14844,0,5);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14843,0,6);
-insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(N/A,0,7);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(17000,0,8);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(11998,1,9);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(11997,1,10);
@@ -25,11 +24,9 @@ insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) value
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(53736,0,22);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12017,0,23);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14640,0,24);
-insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(N/A,0,25);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14991,0,26);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(50963,0,27);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(15653,0,28);
-insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(N/A,0,29);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(15514,0,30);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14863,0,31);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12992,0,32);
@@ -119,7 +116,6 @@ insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) value
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12344,0,116);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12579,0,117);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(38379,0,118);
-insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(14746,0,119);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(31036,0,120);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(13011,0,121);
 insert into sabasports.livescore_league_extra(LeagueId, IsMajor, Priority) values(12635,0,122);

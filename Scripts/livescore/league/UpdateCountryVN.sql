@@ -1,14 +1,10 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isNested="0"></info>*/
-ALTER TABLE  sabasports.livescore_league
-ADD COLUMN CountryVN VARCHAR(255) AFTER Country;
-
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'World Cup', CountryVN = 'THẾ GIỚI' WHERE LeagueId = 14638;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'Euro', CountryVN = 'CHÂU ÂU' WHERE LeagueId = 12015;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'Asian Cup', CountryVN = 'CHÂU Á' WHERE LeagueId = 12593;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'Copa America', CountryVN = 'NAM MỸ' WHERE LeagueId = 12052;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'AFF Cup', CountryVN = 'ĐÔNG NAM Á' WHERE LeagueId = 14844;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'SEA Games', CountryVN = 'ĐÔNG NAM Á' WHERE LeagueId = 14843;
-UPDATE sabasports.livescore_league SET LeagueNameVN = 'Asiad', CountryVN = 'CHÂU Á' WHERE LeagueId = N/A;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'U23 châu Á', CountryVN = 'CHÂU Á' WHERE LeagueId = 17000;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'Champions League', CountryVN = 'CHÂU ÂU' WHERE LeagueId = 11998;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'Ngoại hạng Anh', CountryVN = 'ANH' WHERE LeagueId = 11997;
@@ -26,11 +22,9 @@ UPDATE sabasports.livescore_league SET LeagueNameVN = 'Europa Conference League'
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'VLWC châu Âu', CountryVN = 'THẾ GIỚI' WHERE LeagueId = 53736;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'VLWC châu Á', CountryVN = 'THẾ GIỚI' WHERE LeagueId = 12017;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'VLWC Nam Mỹ', CountryVN = 'THẾ GIỚI' WHERE LeagueId = 14640;
-UPDATE sabasports.livescore_league SET LeagueNameVN = 'VL Euro', CountryVN = 'CHÂU ÂU' WHERE LeagueId = N/A;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'VL Asian Cup', CountryVN = 'CHÂU Á' WHERE LeagueId = 14991;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'VL U23 châu Á', CountryVN = 'CHÂU Á' WHERE LeagueId = 50963;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'UEFA Nations League', CountryVN = 'CHÂU ÂU' WHERE LeagueId = 15653;
-UPDATE sabasports.livescore_league SET LeagueNameVN = 'World Cup nữ', CountryVN = 'THẾ GIỚI' WHERE LeagueId = N/A;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'SEA Games nữ', CountryVN = 'ĐÔNG NAM Á' WHERE LeagueId = 15514;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'AFF Cup nữ', CountryVN = 'ĐÔNG NAM Á' WHERE LeagueId = 14863;
 UPDATE sabasports.livescore_league SET LeagueNameVN = 'AFCON', CountryVN = 'CHÂU PHI' WHERE LeagueId = 12992;
