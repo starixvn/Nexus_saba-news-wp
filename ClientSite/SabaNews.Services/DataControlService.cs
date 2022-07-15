@@ -61,18 +61,19 @@
             return await fetchDataService.GetHomePageViewModel();
         }
 
-        public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
+        public async Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param)
         {
-            if (IsUsingCache && page == Constants.FirstPage)
+            if (IsUsingCache && param.Page == Constants.FirstPage && param.Slug2 == null)
             {
+                var slug = param.Slug1;
                 var cacheKey = CacheKey.CategoryViewModel + "-" + slug;
-                var result = await cacheWrapperService.GetAsync<CategoryViewModel>(cacheKey);
+                var result = await cacheWrapperService.GetAsync<BlogViewModel>(cacheKey);
 
                 if (result == null)
                 {
                     logServiceProvider.WriteLogFileInfo($"-------Get Category {slug} data from DB---------");
 
-                    result = await fetchDataService.GetCategoryViewModel(slug, page);
+                    result = await fetchDataService.GetCategoryViewModel(param);
                     if (result != null)
                     {
                         await cacheWrapperService.SetAsync(cacheKey, result,
@@ -86,7 +87,7 @@
                 return result;
             }
 
-            return await fetchDataService.GetCategoryViewModel(slug, page);
+            return await fetchDataService.GetCategoryViewModel(param);
         }
 
         public async Task<IEnumerable<Menu>> GetMenuData()

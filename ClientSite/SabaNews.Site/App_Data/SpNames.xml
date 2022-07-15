@@ -54,7 +54,7 @@
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
             <Mapping DataField="comment_count" ObjectProperty="CommentCount" class="Post" />
         </Setting>
-        <Setting Key="get_menu" SpName="get_menu" DbName="sabasports" Plain="0">
+        <Setting Key="get_menu" SpName="get_menu_xtest" DbName="sabasports" Plain="0">
             <Mapping DataField="ID" ObjectProperty="ID" class="Menu" />
             <Mapping DataField="post_title" ObjectProperty="Name" class="Menu" />
             <Mapping DataField="term_id" ObjectProperty="CatId" class="Menu" />
@@ -63,16 +63,7 @@
             <Mapping DataField="page_slug" ObjectProperty="PageSlug" class="Menu" />
             <Mapping DataField="cate_title" ObjectProperty="Title" class="Menu" />
         </Setting>
-        <Setting Key="get_category_detail" SpName="get_category_detail" DbName="sabasports" Plain="0">
-            <Mapping DataField="title" ObjectProperty="Title" class="Category" />
-            <Mapping DataField="term_id" ObjectProperty="CatId" class="Category" />
-            <Mapping DataField="slug" ObjectProperty="Slug" class="Category" />
-            <Mapping DataField="description" ObjectProperty="Description" class="Category" />
-            <Mapping DataField="og_image" ObjectProperty="OgImage" class="Category" />
-            <Mapping DataField="og_description" ObjectProperty="OgDescription" class="Category" />
-            <Mapping DataField="og_title" ObjectProperty="OgTitle" class="Category" />
-            <Mapping DataField="seo_title" ObjectProperty="SEOTitle" class="Category" />
-        </Setting>
+        <Setting Key="get_category_detail" SpName="get_category_detail" DbName="sabasports" Plain="0"> </Setting>
         <Setting Key="get_page_detail_by_slug" SpName="get_page_detail_by_slug" DbName="sabasports" Plain="0">
             <Mapping DataField="title" ObjectProperty="Title" class="Category" />
             <Mapping DataField="term_id" ObjectProperty="CatId" class="Category" />
@@ -132,6 +123,7 @@
         <Setting Key="get_rss" SpName="get_rss" DbName="sabasports" Plain="0" />
         <Setting Key="post_update_video_view" SpName="post_update_video_view" DbName="sabasports" Plain="0" />
         <Setting Key="post_update_view" SpName="post_update_view" DbName="sabasports" Plain="0" />
+        <Setting Key="post_get_by_cate_slugs" SpName="post_get_by_cate_slugs" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">

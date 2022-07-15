@@ -9,6 +9,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
@@ -47,24 +48,28 @@
             return View(viewModel);
         }
 
-        [Route("/tin-the-thao/{slug?}/page/{page}")]
-        [Route("/tin-the-thao/{slug?}")]
-        public async Task<IActionResult> Category(string slug = null, int page = 1)
+        [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
+        public async Task<IActionResult> Category(string slug1 = null, string slug2 = null, string slug3 = null, int page = 1)
         {
-            slug ??= Constants.NewPostSlug;
-            var viewModel = await dataControlService.GetCategoryViewModel(slug, page);
+            var param = new GetPostsByCateSlugsParam
+            {
+                Slug1 = slug1,
+                Slug2 = slug2,
+                Slug3 = slug3,
+                Page = page
+              
+            };
+            var viewModel = await dataControlService.GetCategoryViewModel(param);
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
             }
 
-            viewModel.Header.ActiveCategory = slug;
-            viewModel.Paging.Href = Url.Action("Category", "Home", new { slug, page = (int?)null });
-            if (slug == Constants.FootballInside || slug == Constants.FootballOutside)
+            viewModel.Header.ActiveCategory = slug1;
+            viewModel.Paging.Href = Url.Action("Category", "Home", new { slug1, page = (int?)null });
+            if (slug1 == Constants.FootballSlug)
             {
-                viewModel.Header.HeadTitle = viewModel.Posts.First().CategoryParent;
-                viewModel.Header.IsChildren = true;
-                viewModel.Header.ActiveCategory = Constants.FootballSlug;
+                viewModel.Menus = await dataControlService.GetMenuData();
             }
             return View(Constants.BlogView, viewModel);
         }
@@ -73,7 +78,7 @@
         [Route("/video/")]
         public async Task<IActionResult> Video(int page = 1)
         {
-            var viewModel = await dataControlService.GetCategoryViewModel(Constants.VideoSlug, page);
+            var viewModel = await dataControlService.GetCategoryViewModel(new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug, Page = page });
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);

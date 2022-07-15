@@ -10,5 +10,6 @@
         public Category Category { get; set; }
         public HeaderViewModel Header { get; set; }
         public PagingModel Paging { get; set; }
+        public IEnumerable<Menu> Menus { get; set; }
     }
 }

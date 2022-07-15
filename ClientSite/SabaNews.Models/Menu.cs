@@ -1,13 +1,35 @@
-﻿namespace SabaNews.Models
+﻿using System.Collections.Generic;
+
+namespace SabaNews.Models
 {
     public class Menu
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public int CatId { get; set; }
+        public int PostId { get; set; }
+        public string PostTitle { get; set; }
+        public int CateId { get; set; }
+        public string CateTitle { get; set; }
+        public string CateSlug { get; set; }
         public int ParentId { get; set; }
-        public string Slug { get; set; }
         public string PageSlug { get; set; }
-        public string Title { get; set; }
+        public string PageTitle { get; set; }
+
+        public string MenuTitle
+        {
+            get
+            {
+                var title = PostTitle;
+                if (string.IsNullOrEmpty(PostTitle))
+                {
+                    title = CateTitle;
+                }
+                if (string.IsNullOrEmpty(PostTitle) && string.IsNullOrEmpty(CateTitle))
+                {
+                    title = PageTitle;
+                }
+                return title;
+            }
+        }
     }
+
+
 }

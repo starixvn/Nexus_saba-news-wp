@@ -56,37 +56,42 @@
             return viewModel;
         }
 
-        public async Task<CategoryViewModel> GetCategoryViewModel(string slug, int page)
+        public async Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param)
         {
-            const int perPage = Constants.Perpage;
+            const int pageSize = Constants.Perpage;
             var controller = "category";
+            var slug = param.Slug1;
+            var page = param.Page;
             if (slug == Constants.VideoSlug)
             {
                 controller = "video";
             }
-            var start = (page - 1) * perPage;
+            var start = (page - 1) * pageSize;
             IEnumerable<Post> posts;
             int totalItems;
-            if (slug == Constants.NewPostSlug)
+            if (slug == null)
             {
                 var paramGetRecent = new GetRecentPostsParam
                 {
                     Start = start,
-                    End = perPage
+                    End = pageSize
                 };
                 posts = await postService.GetRecentPostsAsync(paramGetRecent);
                 totalItems = paramGetRecent.TotalIItems;
             }
             else
             {
-                var paramGetCategory = new GetPostsByCateSlugCriteria
+                var criteriaCategory = new GetPostsByCateSlugsCriteria
                 {
-                    _CategorySlug = slug,
-                    _Start = start,
-                    _End = perPage
+                    Slug1 = param.Slug1,
+                    Slug2 = param.Slug2,
+                    Slug3 = param.Slug3,
+                    Start = start,
+                    End = pageSize
                 };
-                posts = await postService.GetPostsByCateSlugAsync(paramGetCategory);
-                totalItems = paramGetCategory.TotalItems;
+                posts = await postService.GetPostsByCateSlugs(criteriaCategory);
+                totalItems = criteriaCategory.TotalItems;
+                slug = criteriaCategory.Slug;
             }
             if (!posts.Any())
             {
@@ -106,23 +111,31 @@
             var paging = new PagingModel
             {
                 CurrentPage = page,
-                PageSize = perPage,
-                TotalPages = (int)Math.Ceiling(totalItems / (double)perPage)
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize)
             };
 
-            var model = new CategoryViewModel
+            var slugs = new Slugs
             {
-                Posts = (posts).ToArray(),
+                Slug1 = param.Slug1,
+                Slug2 = param.Slug2,
+                Slug3 = param.Slug3
+            };
+
+            var model = new BlogViewModel
+            {
+                Posts = posts.ToList(),
                 Category = cate,
                 Header = header,
-                Paging = paging
+                Paging = paging,
+                Slugs = slugs
             };
             return model;
         }
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            var menus = await postService.GetMenuAsync("New Site Menu");
+            var menus = await postService.GetMenuAsync(MenuKey.TestMenu);
             return menus;
         }
 

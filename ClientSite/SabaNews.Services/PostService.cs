@@ -162,7 +162,7 @@
         {
             var criteria = new GetCateDetailCriteria
             {
-                _Slug = slug
+                Slug = slug
             };
             var cate = await baseService.GetDataEntityAsync<Category>(criteria);
             return ReplaceStringFromVarSeo(cate);
@@ -196,6 +196,12 @@
                 _Menu_name = MenuName
             };
             return await baseService.GetDataAsync<Menu>(criteria);
+        }
+
+        public async Task<IEnumerable<Post>> GetPostsByCateSlugs(GetPostsByCateSlugsCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<Post>(criteria);
+            return result.ToList();
         }
 
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)

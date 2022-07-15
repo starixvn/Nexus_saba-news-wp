@@ -5,10 +5,10 @@
 
     public class GetCateDetailCriteria : CriteriaBase
     {
-        public string _Slug { get; set; }
+        public string Slug { get; set; }
 
         public override string GetSettingKey() => "get_category_detail";
 
-        public override bool IsValid() => !string.IsNullOrEmpty(_Slug) && _Slug.Length < Constants.StringLimitLength;
+        public override bool IsValid() => !string.IsNullOrEmpty(Slug) && Slug.Length < Constants.StringLimitLength;
     }
 }

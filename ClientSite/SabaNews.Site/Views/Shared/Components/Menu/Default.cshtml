@@ -1,4 +1,5 @@
 ﻿@using SabaNews.Core.Constants;
+@using System.Linq;
 @model MenuViewModel;
 
 <div class="header @Model.Page">
@@ -118,35 +119,37 @@
                         <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
                     </li>
                     @{ var VideoParentId = 0; }
-                    @foreach (var menu in Model.Menus)
+                    @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
                     {
 
-                        var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                        var slug = menu.CateSlug;
+                        var link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = (string)null });
                         if (menu.PageSlug == Constants.MatchScheduleSlug)
                         {
-                            menu.Slug = menu.PageSlug;
+                            slug = menu.PageSlug;
                             link = Url.Action("Index", "Soccer");
                         }
                         else if (menu.PageSlug == Constants.WarningSlug)
                         {
-                            menu.Slug = menu.PageSlug;
+                            slug = menu.PageSlug;
                             link = Url.Action("Warning", "Home");
                         }
-                        else if (menu.Slug == Constants.VideoSlug)
+                        else if (menu.CateSlug == Constants.VideoSlug)
                         {
-                            VideoParentId = menu.ID;
+                            VideoParentId = menu.PostId;
                             link = Url.Action("Video", "Home", new { slug = (int?)null });
                         }
-                        else if (menu.Slug == Constants.Euro2020Slug)
+                        else if (menu.CateSlug == Constants.Euro2020Slug)
                         {
                             link = Url.Action("index", "Euro2020");
                         }
-                        if (menu.CatId != Constants.Home)
+                        if (menu.CateId != Constants.Home)
                         {
-                            var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
+                            var activeMenu = (Model.CategorySlug != null && menu.CateSlug == Model.CategorySlug) ? "active" : "";
+                            var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
                             <li class="menu-item">
-                                <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
-                                @if (menu.Slug == Constants.GuessSlug)
+                                <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
+                                @if (menu.CateSlug == Constants.GuessSlug)
                                 {
                                     <span class="marked-icon"></span>
                                 }
@@ -160,6 +163,32 @@
                                             </span>
                                         </li>
                                         <li><a href="@Url.Action("FavouriteLeague", "Soccer")">Giải đấu của tôi</a></li>
+                                    </ul>
+                                }
+                                @if (lv2Menus.Count() > 0) { 
+                                     <ul>
+                                        @foreach (var lv2menu in lv2Menus)
+                                        {
+                                            var lv3Menus = Model.Menus.Where(item => item.ParentId == lv2menu.PostId);
+                                            var slug2 = lv2menu.CateSlug;
+                                            var lv2Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = (string)null });
+
+                                         <li>
+                                             <a href="@lv2Link">@lv2menu.MenuTitle</a>
+                                             @if (lv3Menus.Count() > 0)
+                                             {
+                                                 <ul>
+                                                     @foreach (var lv3menu in lv3Menus)
+                                                     {
+                                                         var slug3 = lv3menu.CateSlug;
+                                                         var lv3Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = lv3menu.CateSlug });
+
+                                                         <li><a href="@lv3Link">@lv3menu.MenuTitle</a></li>
+                                                     }
+                                                 </ul>
+                                             }
+                                         </li>
+                                        }
                                     </ul>
                                 }
                             </li>
@@ -184,35 +213,35 @@
         <li class="menu-item">
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
-        @foreach (var menu in Model.Menus)
+        @foreach (var menu in Model.Menus.Where(item => item.ParentId == 0))
         {
 
-            var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+            var slug = menu.CateSlug;
+            var link = Url.Action("Category", "Home", new { slug = slug });
             if (menu.PageSlug == Constants.MatchScheduleSlug)
             {
-                menu.Slug = menu.PageSlug;
+                slug = menu.PageSlug;
                 link = Url.Action("Index", "Soccer");
             }
-            if (menu.PageSlug == Constants.WarningSlug)
+            else if (menu.PageSlug == Constants.WarningSlug)
             {
-                menu.Slug = menu.PageSlug;
+                slug = menu.PageSlug;
                 link = Url.Action("Warning", "Home");
             }
-            else if (menu.Slug == Constants.VideoSlug)
+            else if (menu.CateSlug == Constants.VideoSlug)
             {
-                VideoParentId = menu.ID;
+                VideoParentId = menu.PostId;
                 link = Url.Action("Video", "Home", new { slug = (int?)null });
             }
-            else if (menu.Slug == Constants.Euro2020Slug)
+            else if (menu.CateSlug == Constants.Euro2020Slug)
             {
                 link = Url.Action("index", "Euro2020");
             }
-            if (menu.CatId != Constants.Home)
+            if (menu.CateId != Constants.Home)
             {
-                var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
+                var activeMenu = (Model.CategorySlug != null && menu.CateSlug == Model.CategorySlug) ? "active" : "";
                 <li class="menu-item">
-                    <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
-                    
+                    <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
                 </li>
             }
 

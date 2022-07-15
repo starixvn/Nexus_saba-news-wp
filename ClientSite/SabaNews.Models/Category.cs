@@ -13,5 +13,7 @@
         public string OgTitle { get; set; }
         public string SEOTitle { get; set; }
         public string Url { get; set; }
+        public string CateParentId { get; set; }
+        public string CateParentName { get; set; }
     }
 }

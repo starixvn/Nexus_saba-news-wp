@@ -1,10 +1,10 @@
 ﻿@{
     int CurrentPage = Model.CurrentPage;
     int TotalPages = Model.TotalPages;
-    var linkLast = CurrentPage < TotalPages ? Model.Href + "/page/" + Model.TotalPages : "javascript:;";
-    var linkFirst = CurrentPage > 1 ? Model.Href + "/page/" + 1 : "javascript:;";
-    var linkNext = CurrentPage < TotalPages ? Model.Href + "/page/" + (CurrentPage + 1) : "javascript:;";
-    var linkPrev = CurrentPage > 1 ? Model.Href + "/page/" + (CurrentPage - 1) : "javascript:;";
+    var linkLast = CurrentPage < TotalPages ? Model.Href + "?page=" + Model.TotalPages : "javascript:;";
+    var linkFirst = CurrentPage > 1 ? Model.Href + "?page=" + 1 : "javascript:;";
+    var linkNext = CurrentPage < TotalPages ? Model.Href + "?page=" + (CurrentPage + 1) : "javascript:;";
+    var linkPrev = CurrentPage > 1 ? Model.Href + "?page=" + (CurrentPage - 1) : "javascript:;";
     var disabledFirst = CurrentPage > 1 ? "" : "disabled";
     var disabledLast = CurrentPage < TotalPages ? "" : "disabled";
 
@@ -29,7 +29,7 @@
 
                 for (var i = CurrentPage - front; i <= CurrentPage + back; i++)
                 {
-                    var link = Model.Href + "/page/" + i;
+                    var link = Model.Href + "?page=" + i;
                     var active = i == CurrentPage ? "active" : "";
                     <li class="items-pagination @active"><a href="@link" class="item">@i</a></li>
                 }

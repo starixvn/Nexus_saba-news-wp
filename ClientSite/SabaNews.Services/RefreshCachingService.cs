@@ -6,6 +6,7 @@
     using Fanex.Caching;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
+    using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
     public class RefreshCachingService : IRefreshCachingService
@@ -97,7 +98,8 @@
                 foreach (var slug in listCategoryCaching)
                 {
                     var key = CacheKey.CategoryViewModel + "-" + slug;
-                    var data = await fetchDataService.GetCategoryViewModel(slug, Constants.FirstPage);
+                    var param = new GetPostsByCateSlugsParam { Slug1 = slug, Page = Constants.FirstPage };
+                    var data = await fetchDataService.GetCategoryViewModel(param);
                     logService.WriteLogFileInfo(string.Format("After GetCategoryViewModel - {1} - {0}", DateTime.Now.Subtract(startTime).Milliseconds, slug));
                     await cacheWrapperService.SetAsync(key,
                         data,

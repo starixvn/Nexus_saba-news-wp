@@ -54,15 +54,7 @@
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
             <Mapping DataField="comment_count" ObjectProperty="CommentCount" class="Post" />
         </Setting>
-        <Setting Key="get_menu" SpName="get_menu" DbName="sabasports" Plain="0">
-            <Mapping DataField="ID" ObjectProperty="ID" class="Menu" />
-            <Mapping DataField="post_title" ObjectProperty="Name" class="Menu" />
-            <Mapping DataField="term_id" ObjectProperty="CatId" class="Menu" />
-            <Mapping DataField="menu_parent" ObjectProperty="ParentId" class="Menu" />
-            <Mapping DataField="slug" ObjectProperty="Slug" class="Menu" />
-            <Mapping DataField="page_slug" ObjectProperty="PageSlug" class="Menu" />
-            <Mapping DataField="cate_title" ObjectProperty="Title" class="Menu" />
-        </Setting>
+        <Setting Key="get_menu" SpName="get_menu_xtest" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="get_category_detail" SpName="get_category_detail" DbName="sabasports" Plain="0">
             <Mapping DataField="title" ObjectProperty="Title" class="Category" />
             <Mapping DataField="term_id" ObjectProperty="CatId" class="Category" />
@@ -130,6 +122,7 @@
         <Setting Key="get_sitemap" SpName="get_sitemap" DbName="sabasports" Plain="0" />
         <Setting Key="get_sitemap_news" SpName="get_sitemap_news" DbName="sabasports" Plain="0" />
         <Setting Key="get_rss" SpName="get_rss" DbName="sabasports" Plain="0" />
+        <Setting Key="post_get_by_cate_slugs" SpName="post_get_by_cate_slugs" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Banner">
         <Setting Key="banner_get_info" SpName="banner_get_info" DbName="sabasports" Plain="0" />
