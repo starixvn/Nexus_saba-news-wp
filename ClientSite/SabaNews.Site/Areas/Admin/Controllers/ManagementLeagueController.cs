@@ -25,7 +25,7 @@
         }
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
         {
-            IList<League> leagues = await leagueService.GetLeaguesAsync();
+            IList<League> leagues = await leagueService.GetMajorLeagueAsync();
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -44,7 +44,7 @@
             return PartialView("_ManagementLeagueDataGrid", viewModel);
         }
 
-        public async Task<ActionResult> AddLeague(ManagementLeagueFilterModel model)
+        public async Task<ActionResult> AddLeague(ManagementAddLeagueFilterModel model)
         {
             var leagues = await leagueService.GetLeaguesAsync();
             return PartialView("_AddLeagueDataGrid", leagues);

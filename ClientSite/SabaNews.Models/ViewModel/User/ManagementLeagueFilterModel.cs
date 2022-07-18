@@ -6,7 +6,7 @@
 
         public int PageSize { get; set; }
 
-        public string SearchLeague { get; set; }
+        public string Search { get; set; }
 
         public string DateSort { get; set; }
     }
