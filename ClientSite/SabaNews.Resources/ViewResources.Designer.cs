@@ -1035,7 +1035,8 @@ namespace SabaNews.Resources {
         /// <summary>
         ///   Looks up a localized string similar to League Name VN.
         /// </summary>
-        public static string LeagueNameVN {
+        public static string LeagueNameVN
+        {
             get {
                 return ResourceManager.GetString("LeagueNameVN", resourceCulture);
             }
