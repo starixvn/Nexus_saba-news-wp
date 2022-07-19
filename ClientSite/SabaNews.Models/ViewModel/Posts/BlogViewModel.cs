@@ -18,8 +18,23 @@
             var menu = new List<Menu>();
             if (Menus.Any() && cateSlug != null)
             {
-                var menuItem = Menus.FirstOrDefault(item => item.CateSlug == cateSlug);
+                var menuItem = GetMenuDetail(cateSlug);
                 menu = Menus.Where(item => item.ParentId == menuItem.PostId).ToList();
+            }
+            return menu;
+        }
+
+        public Menu GetMenuDetail(string cateSlug) {
+            return Menus.FirstOrDefault(item => item.CateSlug == cateSlug);
+        }
+
+        public IEnumerable<Menu> GetCoMenu(string cateSlug)
+        {
+            var menu = new List<Menu>();
+            if (Menus.Any() && cateSlug != null)
+            {
+                var menuItem = GetMenuDetail(cateSlug);
+                menu = Menus.Where(item => item.ParentId == menuItem.ParentId).ToList();
             }
             return menu;
         }

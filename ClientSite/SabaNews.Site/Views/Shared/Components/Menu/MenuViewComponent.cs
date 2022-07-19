@@ -5,6 +5,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Core.Services;
     using SabaNews.Models;
+    using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
     public class MenuViewComponent : ViewComponent
@@ -18,7 +19,7 @@
             this.sessionService = sessionService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "")
+        public async Task<IViewComponentResult> InvokeAsync(string categorySlug = "", string page = "", Slugs slugs = null)
         {
             var menus = await dataControlService.GetMenuData();
             
@@ -29,6 +30,7 @@
                 Page = page,
                 IsAuthenticated = isAuthenticated,
                 CategorySlug = categorySlug,
+                Slugs = slugs,
                 IsAdmin = isAuthenticated && !string.IsNullOrWhiteSpace(sessionService.User.Metadata)
                         && sessionService.User.Metadata.Contains(Role.Administrator)
             };

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using SabaNews.Core.Models;
     using SabaNews.Models.Banner;
+    using SabaNews.Models.Posts;
 
     public class MenuViewModel
     {
@@ -14,5 +15,6 @@
         public string Page { get; set; }
         public string CategorySlug { get; set; }
         public bool IsAdmin { get; set; }
+        public Slugs Slugs { get; set; }
     }
 }
