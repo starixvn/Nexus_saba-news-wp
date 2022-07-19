@@ -274,6 +274,12 @@
                     display: none;
                 }
             }
+
+            &.active a {
+                &:before{
+                    display: none;
+                }
+            }
         }
     }
 }
