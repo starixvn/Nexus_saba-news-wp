@@ -587,7 +587,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
           width: calc(100% - 120px); } }
       @media screen and (max-width: 1024px) {
         .top-header .group-menu .nav-menu {
-          padding-top: 6.6rem;
+          padding-top: 4.6rem;
           padding-bottom: 4rem;
           overflow: auto; } }
       .top-header .group-menu .nav-menu .main-menu {
@@ -817,13 +817,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       background-color: #FFFDF9;
       position: absolute !important;
       top: 0;
-      z-index: 99;
-      padding-top: 1.5rem; } }
+      z-index: 99; } }
   @media (max-width: 767px) {
     .right-header-section {
       top: 0;
-      left: 0;
-      padding-top: 1.5rem; } }
+      left: 0; } }
 
 .search-input form {
   position: relative; }
