@@ -2537,7 +2537,14 @@ body {
   overflow-x: hidden; }
 
 img {
-  width: 100%; }
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; }
+
+.format-image-detail {
+  margin-bottom: 1.6rem;
+  background: #f0eeea; }
 
 @media screen and (max-width: 1024px) {
   .main {

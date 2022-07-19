@@ -35,8 +35,17 @@ body {
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
+.format-image-detail {
+    margin-bottom: 1.6rem;
+    background: #f0eeea;
+}
+
+
 
 .main {
     @include tableMobile {
