@@ -23,9 +23,17 @@
         {
             return View();
         }
+        public IActionResult SearchData(string searchLeague, int status)
+        {
+            ViewBag.SearchLeague = searchLeague;
+            ViewBag.IsMajor = status;
+            return View("Index");
+        }
+
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
         {
-            IList<League> leagues = await leagueService.GetMajorLeagueAsync();
+            IList<League> leagues = await leagueService.GetLeaguesAsync();
+            leagues = Searching(leagues, model.Search, model.IsMajor);
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -46,8 +54,31 @@
 
         public async Task<ActionResult> AddLeague(ManagementAddLeagueFilterModel model)
         {
-            var leagues = await leagueService.GetLeaguesAsync();
+            var leagues = await leagueService.GetAllLeaguesAsync();
             return PartialView("_AddLeagueDataGrid", leagues);
+        }
+
+        [HttpPost]
+        public ActionResult Deactive(int id, bool isMajor)
+        {         
+            return Json("");
+        }
+
+        private static IList<League> Searching(IList<League> leagues, string search, int isMajor)
+        {
+            if (search != null)
+            {
+                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search) || x.LeagueNameVN.Contains(search)).ToList();
+            }
+            if (isMajor == 1)
+            {
+                leagues = leagues.Where(x => x.IsMajor == true).ToList();
+            }
+            if (isMajor == 0)
+            {
+                leagues = leagues.Where(x => x.IsMajor == false).ToList();
+            }
+            return leagues;
         }
     }
 }

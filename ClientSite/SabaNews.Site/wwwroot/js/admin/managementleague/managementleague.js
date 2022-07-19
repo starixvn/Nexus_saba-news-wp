@@ -1,17 +1,24 @@
 ﻿var adminManagementLeague = (function ($) {
     var page = 1;
     var pageSize = 10;
-    var pageAddLeague = 1;
-    var pageSizeAddLeague = 10;
-    var searchAddLeague = $('#searchAddLeague').val();
     function GetDataCommentGrid(dateSort) {
-        var search = $('#search').val();
+        var search = document.getElementById("search").value;
+        var isMajor = document.getElementById("major").value;
         $.ajax({
             url: "/Admin/ManagementLeague/GetManagementLeagueData",
             type: 'POST',
-            data: { page, pageSize, search, dateSort },
+            data: { page, pageSize, search, dateSort, isMajor },
             success: function (res) {
                 $('.data-grid').html(res);
+                $('#checkMajor').on('click', function () {
+                    var url = $(this).data('url');
+                    var check = $(this).data('check');
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: {check}
+                    });
+                });
                 initPaging();
                 initSortLeague();
                 initAddLeague();
@@ -46,32 +53,6 @@
                     $('#AddLeagueContent').modal('show');
                 }
             })
-        });
-
-        $('.pagingAddLeague').on('click', function () {
-            page = $(this).data('page');
-            var dateSort = $("#date-sort").attr("sort-type");
-            initAddLeague(dateSort);
-
-        });
-
-        $('#page-size-AddLeague').on('change', function () {
-            pageSize = $(this).val();
-            page = 1;
-            var dateSort = $("#date-sort").attr("sort-type");
-            initAddLeague(dateSort);
-        });
-
-        $("#date-sort-AddLeague").on("click", function () {
-            var dateType = $(this).attr("sort-type");
-            if (!dateType) {
-                dateType = "desc";
-                GetDataCommentGrid(dateType);
-                return;
-            }
-
-            dateType = dateType === "desc" ? "asc" : "desc";
-            initAddLeague(dateType);
         });
     }
 

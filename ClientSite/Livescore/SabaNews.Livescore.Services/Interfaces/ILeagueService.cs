@@ -10,5 +10,6 @@
         Task<IList<League>> GetMajorLeagueAsync();
         Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria);
         Task<IList<League>> GetLeaguesAsync();
+        Task<IList<League>> GetAllLeaguesAsync();
     }
 }

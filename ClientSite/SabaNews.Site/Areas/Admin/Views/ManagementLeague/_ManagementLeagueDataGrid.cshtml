@@ -21,7 +21,11 @@
                             <td class="text-center" width="5%">@count</td>
                             <td class="text-left" width="25%">@league.LeagueFullNameEN</td>
                             <td class="text-left" width="25%">@league.LeagueNameVN</td>
-                            <td class="text-center" width="10%"><input type="checkbox" @(league.IsMajor == true ? "checked" : "") class="isMajor-league" /></td>
+                            <td class="text-center" width="10%"> 
+                                <input type="checkbox" @(league.IsMajor == true ? "checked" : "") 
+                                       data-check="@(league.IsMajor == true ? "checked" : "")"
+                                       data-url="@Url.Action("Deactive", "ManagementLeague", new { id = league.LeagueId, isMajor = !league.IsMajor })" 
+                                       class="isMajorLeague" id="checkMajor" /></td>
                             <td class="text-center" width="10%"><input type="text" class="text-center priority-league" value="@league.Priority" /></td>
                             <td class="text-center" width="5%"><i class="icon icon-delete-admin"></i></td>
                         </tr>
