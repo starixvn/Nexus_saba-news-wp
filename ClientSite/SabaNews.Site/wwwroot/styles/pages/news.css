@@ -1167,6 +1167,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       @media screen and (max-width: 1024px) {
         .block__title a {
           font-size: 1.6rem; } }
+  .block .title-new-page {
+    padding-left: 0; }
+    .block .title-new-page::after {
+      display: none; }
 
 button {
   outline: none;
@@ -2266,8 +2270,6 @@ button {
   display: flex;
   border-bottom: 1px solid #D4D4D4;
   margin-bottom: 1.2rem; }
-  .sub-category:last-child {
-    border: none; }
   .sub-category .sub-item {
     margin-right: 2.2rem;
     font-weight: bold; }
@@ -2290,6 +2292,12 @@ button {
       color: #F12F19; }
       .sub-category .sub-item:hover a:before, .sub-category .sub-item.active a:before {
         width: 100%; }
+  .sub-category:last-child {
+    border: none; }
+    .sub-category:last-child .sub-item {
+      font-weight: 400; }
+      .sub-category:last-child .sub-item:hover a:before {
+        display: none; }
 
 /*
 .wapper.active-fixed {

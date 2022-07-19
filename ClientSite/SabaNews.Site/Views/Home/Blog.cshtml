@@ -65,7 +65,7 @@
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory }))
 <section class="main">
     <div class="base-container">
-        <h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
+        <h2 class="block__title title-new-page"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
         @if (Model.Menus != null)
         {
             <ul class="sub-category">

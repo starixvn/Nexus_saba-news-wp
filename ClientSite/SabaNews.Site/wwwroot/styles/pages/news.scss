@@ -230,9 +230,7 @@
     display: flex;
     border-bottom: 1px solid #D4D4D4;
     margin-bottom: 1.2rem;
-    &:last-child{
-        border : none;
-    }
+
     .sub-item {
         margin-right: 2.2rem;
         font-weight: bold;
@@ -261,6 +259,19 @@
 
             &:before {
                 width: 100%;
+            }
+        }
+    }
+
+    &:last-child {
+        border: none;
+
+        .sub-item {
+            font-weight: 400;
+            &:hover a{
+                &:before{
+                    display : none;
+                }
             }
         }
     }
