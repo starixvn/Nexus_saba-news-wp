@@ -1336,16 +1336,16 @@ button {
   .swiper-slide, .swiper-button, .swiper-pagination, .swiper-slide .img-item {
     display: block; } }
 
-.container {
+.container, .base-container {
   width: 100%;
   padding: 0 1rem;
   margin-right: auto;
   margin-left: auto; }
   @media screen and (max-width: 1024px) {
-    .container {
+    .container, .base-container {
       padding: 0 1.2rem; } }
   @media (min-width: 1280px) {
-    .container {
+    .container, .base-container {
       max-width: 114rem; } }
 
 .block-list {

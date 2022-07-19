@@ -315,15 +315,3 @@ function getFavouriteMatchCount() {
     });
 })(jQuery);
 
-//$('.main-menu').on('click', 'li .mark-click', function (e) {
-//    var animationSpeed = 300;
-//    var $this = $(this);
-//    var checkElement = $this.next();
-//    var subMenuSelector = $('.nav-submenu')
-//    if (checkElement.is(subMenuSelector) && checkElement.is(':visible')) {
-//        checkElement.slideUp(animationSpeed, function () {
-//            checkElement.removeClass('menu-open');
-//        });
-//        checkElement.parent("li").removeClass("active");
-//    }
-//})

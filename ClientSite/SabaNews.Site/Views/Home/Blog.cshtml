@@ -64,25 +64,27 @@
 
 @(await Component.InvokeAsync("Menu", new { CategorySlug = Model.Header.ActiveCategory }))
 <section class="main">
+    <div class="base-container">
+        <h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
+        @if (Model.Menus != null)
+        {
+            <ul class="sub-category">
+                @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
+                {
+                    <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 =  menu.CateSlug, slug3 = (string)null })">@menu.MenuTitle</a></li>
+                }
+            </ul>
+            <ul class="sub-category">
+                @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
+                {
+                    <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 =  Model.Slugs.Slug2, slug3 = menu.CateSlug })">@menu.MenuTitle</a></li>
+                }
+            </ul>
+
+        }
+    </div>
     <div class="container">
         <div class="block block-main">
-            <h2 class="block__title"><a>@(Model.Header.HeadTitle != null ? Model.Header.HeadTitle : Model.Posts[0].Categories)</a></h2>
-            @if (Model.Menus != null)
-            {
-                <ul class="sub-category">
-                    @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug1))
-                    {
-                        <li class="sub-item @(Model.Slugs.Slug2 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 =  menu.CateSlug, slug3 = (string)null })">@menu.MenuTitle</a></li>
-                    }
-                </ul>
-                <ul class="sub-category">
-                    @foreach (var menu in Model.GetSubMenu(Model.Slugs.Slug2))
-                    {
-                        <li class="sub-item @(Model.Slugs.Slug3 == menu.CateSlug ? "active" : "")"><a href="@Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 =  Model.Slugs.Slug2, slug3 = menu.CateSlug })">@menu.MenuTitle</a></li>
-                    }
-                </ul>
-
-            }
             <div class="block__content">
                 <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
                     <a class="skeleton-horizontal__image"></a>
