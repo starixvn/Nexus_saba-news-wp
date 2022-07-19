@@ -1168,11 +1168,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
         .block__title a {
           font-size: 1.6rem; } }
 
-.title-new-page {
-  padding-left: 0; }
-  .title-new-page::after {
-    display: none; }
-
 button {
   outline: none;
   border: 0;

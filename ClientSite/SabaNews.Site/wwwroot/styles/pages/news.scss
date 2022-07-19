@@ -277,6 +277,16 @@
         }
     }
 }
+
+.title-new-page {
+    padding-left: 0;
+
+    &::after {
+        display: none;
+    }
+}
+
+
 /*
 .wapper.active-fixed {
     .child-mobile-menu, .button-mobile, .top-header {
