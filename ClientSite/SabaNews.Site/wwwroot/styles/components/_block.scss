@@ -49,11 +49,11 @@
             }
         }
     }
+}
+.title-new-page {
+    padding-left: 0;
 
-    .title-new-page {
-        padding-left: 0;
-        &::after{
-            display : none;
-        }
+    &::after {
+        display: none;
     }
 }
