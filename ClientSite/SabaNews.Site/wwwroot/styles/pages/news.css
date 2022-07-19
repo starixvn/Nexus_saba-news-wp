@@ -2296,7 +2296,7 @@ button {
     border: none; }
     .sub-category:last-child .sub-item {
       font-weight: 400; }
-      .sub-category:last-child .sub-item:hover a:before {
+      .sub-category:last-child .sub-item:hover a:before, .sub-category:last-child .sub-item:hover a.active a {
         display: none; }
 
 /*

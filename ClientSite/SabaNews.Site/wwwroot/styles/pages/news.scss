@@ -268,9 +268,10 @@
 
         .sub-item {
             font-weight: 400;
-            &:hover a{
-                &:before{
-                    display : none;
+
+            &:hover a {
+                &:before, &.active a {
+                    display: none;
                 }
             }
         }
