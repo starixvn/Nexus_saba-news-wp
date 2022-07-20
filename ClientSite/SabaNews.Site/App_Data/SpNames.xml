@@ -54,15 +54,7 @@
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
             <Mapping DataField="comment_count" ObjectProperty="CommentCount" class="Post" />
         </Setting>
-        <Setting Key="get_menu" SpName="get_menu_xtest" DbName="sabasports" Plain="0">
-            <Mapping DataField="ID" ObjectProperty="ID" class="Menu" />
-            <Mapping DataField="post_title" ObjectProperty="Name" class="Menu" />
-            <Mapping DataField="term_id" ObjectProperty="CatId" class="Menu" />
-            <Mapping DataField="menu_parent" ObjectProperty="ParentId" class="Menu" />
-            <Mapping DataField="slug" ObjectProperty="Slug" class="Menu" />
-            <Mapping DataField="page_slug" ObjectProperty="PageSlug" class="Menu" />
-            <Mapping DataField="cate_title" ObjectProperty="Title" class="Menu" />
-        </Setting>
+        <Setting Key="get_menu" SpName="get_menu" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="get_category_detail" SpName="get_category_detail" DbName="sabasports" Plain="0"> </Setting>
         <Setting Key="get_page_detail_by_slug" SpName="get_page_detail_by_slug" DbName="sabasports" Plain="0">
             <Mapping DataField="title" ObjectProperty="Title" class="Category" />
