@@ -38,5 +38,15 @@
             }
             return menu;
         }
+
+        public string HeadTitle
+        {
+            get
+            {
+                return (Category != null && !string.IsNullOrEmpty(Category.CateParentName) && Category.CateParentId != 175) ? Category.CateParentName : Header.HeadTitle;
+            }
+        }
+
+
     }
 }
