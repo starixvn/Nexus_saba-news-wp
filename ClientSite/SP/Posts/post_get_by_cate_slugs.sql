@@ -29,29 +29,40 @@ GetSlug:BEGIN
 	DROP TEMPORARY TABLE IF EXISTS tmp_PostIds;
     CREATE TEMPORARY TABLE tmp_PostIds (PostId BIGINT);
     
+    DROP TEMPORARY TABLE IF EXISTS tmp_Cate;
+    CREATE TEMPORARY TABLE tmp_Cate (term_id BIGINT, slug VARCHAR(255), term_taxonomy_id BIGINT);
+    
 	SELECT t.term_id, t.name, wtt.parent INTO category, cate_name, cate_parent 
     FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" WHERE t.slug = slug;
+    
+    INSERT INTO tmp_Cate (term_id, slug, term_taxonomy_id)
+    SELECT t.term_id, t.slug, wtt.term_taxonomy_id
+    FROM wp_terms t
+    INNER JOIN wp_term_taxonomy as wtt ON wtt.term_id = t.term_id AND wtt.taxonomy = "category" 
+    WHERE wtt.term_id = category OR wtt.parent = category;
+    
+    INSERT INTO tmp_Cate (term_id, slug, term_taxonomy_id)
+    SELECT t.term_id, t.slug, wtt.term_taxonomy_id
+    FROM wp_terms t
+    INNER JOIN wp_term_taxonomy as wtt ON wtt.term_id = t.term_id AND wtt.taxonomy = "category" 
+    WHERE wtt.parent IN (SELECT wtt1.term_id FROM wp_term_taxonomy as wtt1 WHERE wtt1.parent = category);
     
     INSERT INTO tmp_PostIds (PostId)
     SELECT p.ID
 	FROM wp_posts as p
 	WHERE p.post_type = 'post' AND p.post_status = 'publish'
 	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
-					INNER JOIN wp_term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id AND tt.taxonomy = "category"
-					WHERE tt.term_id = category OR tt.parent = category);
+					INNER JOIN tmp_Cate as c ON c.term_taxonomy_id = tr.term_taxonomy_id);
 	
     INSERT INTO tmp_PostIds (PostId)
     SELECT tr.object_id
 	FROM wp_terms t
 	INNER JOIN wp_term_taxonomy tt ON tt.term_id = t.term_id AND taxonomy = 'post_tag'
 	INNER JOIN wp_term_relationships tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
-	WHERE t.slug IN (SELECT t.slug from wp_terms as t
-					INNER JOIN wp_term_taxonomy as tt ON tt.term_id = t.term_id AND tt.taxonomy = "category"
-					WHERE tt.term_id = category OR tt.parent = category);
+	WHERE t.slug IN (SELECT c.slug from tmp_Cate c);
 	
     SELECT count(*) INTO TotalItems FROM tmp_PostIds;
                     
-	
     SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent, p.post_excerpt as PostExcerpt
     , p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_name as Slug
     , pp.guid as FeatureImage, m1.meta_value as Metadata, p.comment_count as CommentCount

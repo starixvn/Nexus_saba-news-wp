@@ -135,7 +135,7 @@
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            var menus = await postService.GetMenuAsync(MenuKey.TestMenu);
+            var menus = await postService.GetMenuAsync(MenuKey.NewSiteMenu);
             return menus;
         }
 
