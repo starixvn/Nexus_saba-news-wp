@@ -2546,6 +2546,9 @@ img {
   margin-bottom: 1.6rem;
   background: #f0eeea; }
 
+.wp-block-image.size-large {
+  margin-bottom: 1rem; }
+
 @media screen and (max-width: 1024px) {
   .main {
     position: relative;
