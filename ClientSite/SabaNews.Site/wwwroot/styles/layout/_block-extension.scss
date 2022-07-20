@@ -3,7 +3,9 @@
         position: -webkit-sticky;
         position: sticky;
         top: 7rem;
-
+        @include tableMobile{
+            position : unset;
+        }
         .skeleton-vertical {
             .skeleton-vertical__image {
                 height: 20.1rem;

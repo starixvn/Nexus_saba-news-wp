@@ -256,6 +256,9 @@ p.has-text-align-center {
   position: -webkit-sticky;
   position: sticky;
   top: 7rem; }
+  @media screen and (max-width: 1024px) {
+    .block-extension .block-sticky {
+      position: unset; } }
   .block-extension .block-sticky .skeleton-vertical .skeleton-vertical__image {
     height: 20.1rem; }
 
