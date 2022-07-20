@@ -539,6 +539,16 @@
                     padding: 0 1.2rem;
                 }
 
+                li {
+                    &:nth-child(2) {
+                        order: 2;
+                    }
+
+                    &:nth-child(7) {
+                        order: 1;
+                    }
+                }
+
                 .menu-item {
                     position: relative;
                     display: flex;
@@ -555,7 +565,7 @@
                             content: "";
                             display: block;
                             position: absolute;
-                            bottom: 0;
+                            top: 0;
                             width: 100%;
                             right: 50%;
                             height: 1px;
@@ -616,7 +626,6 @@
                             padding: 1.5rem 0;
                             margin-right: 0;
                             display: block;
-                            border-bottom: 1px solid $border-calendar;
                         }
 
                         &:hover {
@@ -796,10 +805,6 @@
 
             .active-main-menu {
                 display: flex;
-
-                @include Mobile {
-                    display: block;
-                }
             }
 
             .active-arrow {
