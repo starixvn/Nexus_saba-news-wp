@@ -1301,8 +1301,8 @@ button {
 .wp-block-image figcaption {
   text-align: center;
   position: relative;
-  top: -8px;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  margin-top: 5px; }
 
 /*:root {
     --column : 12;
