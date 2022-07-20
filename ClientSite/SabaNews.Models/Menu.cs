@@ -29,6 +29,14 @@ namespace SabaNews.Models
                 return title;
             }
         }
+
+        public string Slug
+        {
+            get
+            {
+                return string.IsNullOrEmpty(CateSlug) ? PageSlug : CateSlug;
+            }
+        }
     }
 
 

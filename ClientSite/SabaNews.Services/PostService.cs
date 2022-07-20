@@ -201,7 +201,7 @@
         public async Task<IEnumerable<Post>> GetPostsByCateSlugs(GetPostsByCateSlugsCriteria criteria)
         {
             var result = await baseService.GetDataAsync<Post>(criteria);
-            return result.ToList();
+            return FormatData(result).ToList();
         }
 
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)

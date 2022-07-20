@@ -54,7 +54,7 @@
             <Mapping DataField="metadata" ObjectProperty="Metadata" class="Post" />
             <Mapping DataField="comment_count" ObjectProperty="CommentCount" class="Post" />
         </Setting>
-        <Setting Key="get_menu" SpName="get_menu_xtest" DbName="sabasports" Plain="0"></Setting>
+        <Setting Key="get_menu" SpName="get_menu" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="get_category_detail" SpName="get_category_detail" DbName="sabasports" Plain="0"></Setting>
         <Setting Key="get_page_detail_by_slug" SpName="get_page_detail_by_slug" DbName="sabasports" Plain="0">
             <Mapping DataField="title" ObjectProperty="Title" class="Category" />

@@ -124,7 +124,7 @@
                         var link = getMenuLink(menu);
                         if (menu.CateId != Constants.Home)
                         {
-                            var activeMenu = (Model.CategorySlug != null && menu.CateSlug == Model.CategorySlug) ? "active" : "";
+                            var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                             var lv2Menus = Model.Menus.Where(item => item.ParentId == menu.PostId);
                             <li class="menu-item">
                                 <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
@@ -207,7 +207,7 @@
                 var link = getMenuLink(menu);
                 if (menu.CateId != Constants.Home)
                 {
-                    var activeMenu = (Model.CategorySlug != null && menu.CateSlug == Model.CategorySlug) ? "active" : "";
+                    var activeMenu = (Model.CategorySlug != null && menu.Slug == Model.CategorySlug) ? "active" : "";
                     <li class="menu-item">
                         <a href="@link" class="item @activeMenu">@menu.MenuTitle</a>
                     </li>
@@ -217,22 +217,23 @@
         }
 
     </ul>
-    <span class="icon-arrow scroll-mobile-menu"></span>
+    @if (arraySlugs.Length == 0)
+    { 
+        <span class="icon-arrow scroll-mobile-menu"></span>
+    }
+    
 </div>
 @functions {
     private string getMenuLink(Menu menu, string oldLink = null)
     {
-        var slug = menu.CateSlug;
         var link = "/tin-the-thao/" + menu.CateSlug;
         link = oldLink == null ? link : oldLink + "/" + menu.CateSlug;
         if (menu.PageSlug == Constants.MatchScheduleSlug)
         {
-            slug = menu.PageSlug;
             link = Url.Action("Index", "Soccer");
         }
         else if (menu.PageSlug == Constants.WarningSlug)
         {
-            slug = menu.PageSlug;
             link = Url.Action("Warning", "Home");
         }
         else if (menu.CateSlug == Constants.VideoSlug)
