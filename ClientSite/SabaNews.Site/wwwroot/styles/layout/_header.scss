@@ -541,11 +541,15 @@
 
                 li {
                     &:nth-child(2) {
-                        order: 2;
+                        @include tableMobile {
+                            order: 2;
+                        }
                     }
 
                     &:nth-child(7) {
-                        order: 1;
+                        @include tableMobile {
+                            order: 1;
+                        }
                     }
                 }
 
