@@ -99,7 +99,7 @@
                     var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
                     var coMenu = Model.GetCoMenu(Model.Slugs.Slug3);
                     var menuLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = Model.Slugs.Slug3 });
-                    <div class="menu-select">
+                    <div class="menu-select single-select-menu">
                         <a href="@menuLink">@menu.MenuTitle</a>
                         <select class="select_ad"   onChange="window.location.href=this.value">
                             @foreach (var item in coMenu)

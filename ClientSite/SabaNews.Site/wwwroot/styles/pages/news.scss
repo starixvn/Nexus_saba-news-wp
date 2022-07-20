@@ -129,7 +129,6 @@
             height: 9.3rem;
         }
     }
-
 }
 
 
@@ -231,9 +230,32 @@
     border-bottom: 1px solid #D4D4D4;
     margin-bottom: 1.2rem;
 
+    @include tableMobile {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+
+        &::-webkit-scrollbar {
+            height: .4rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba($color-000, .2);
+            border-radius: 3px;
+        }
+    }
+
     .sub-item {
         margin-right: 2.2rem;
         font-weight: bold;
+
+        &:last-child {
+            margin-right: 0;
+        }
 
         a {
             color: #4F4F4F;
@@ -241,6 +263,10 @@
             padding-bottom: 1.2rem;
             display: inline-block;
             position: relative;
+
+            @include tableMobile {
+                padding-bottom: 0;
+            }
 
             &:before {
                 position: absolute;
@@ -276,7 +302,7 @@
             }
 
             &.active a {
-                &:before{
+                &:before {
                     display: none;
                 }
             }

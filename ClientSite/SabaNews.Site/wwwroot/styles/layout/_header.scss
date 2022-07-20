@@ -380,6 +380,83 @@
             }
         }
     }
+
+    .multilv-menu-mobile {
+
+        li {
+            position: relative;
+            padding: 0 1.2rem;
+
+            &:before {
+                content: "";
+                display: block;
+                background: #929292;
+                width: .1rem;
+                height: 1.2rem;
+                position: absolute;
+                transform: rotate(20deg);
+                right: 0px;
+                top: 5px;
+            }
+
+            &:last-of-type {
+                padding-right: 0;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            a {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.menu-select {
+    display: flex;
+    align-items: center;
+
+    select {
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        background: #fff url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MkwxMCAxMC45NzQ5TDEzLjgyNSA3LjE1ODJMMTUgOC4zMzMyTDEwIDEzLjMzMzJMNSA4LjMzMzJMNi4xNzUgNy4xNTgyWiIgZmlsbD0iIzZENkQ2RCIvPgo8L3N2Zz4K');
+        background-position: 2px;
+        background-repeat: no-repeat;
+        width: 2.4rem;
+        height: 2rem;
+        font-size: 0;
+
+        option {
+            color: $color-content;
+            font-weight: 400;
+            padding: 0 15px;
+            font-size: 15px;
+        }
+    }
+
+    &.single-select-menu {
+        @include tableMobile {
+            margin-bottom: 1.2rem;
+        }
+
+        a {
+            @include tableMobile {
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                text-decoration: none;
+                color: $color-main-title;
+            }
+        }
+
+        select {
+            background: #fff url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyMiAyMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuNzkyNSA3Ljg3NUwxMSAxMi4wNzMzTDE1LjIwNzUgNy44NzVMMTYuNSA5LjE2NzVMMTEgMTQuNjY3NUw1LjUgOS4xNjc1TDYuNzkyNSA3Ljg3NVoiIGZpbGw9IiNGMTJGMTkiLz4KPC9zdmc+Cg==');
+        }
+    }
 }
 
 
