@@ -144,33 +144,7 @@
                                         <li><a href="@Url.Action("FavouriteLeague", "Soccer")">Giải đấu của tôi</a></li>
                                     </ul>
                                 }
-                                @if (lv2Menus.Count() > 0)
-                                {
-                                    <ul>
-                                        @foreach (var lv2menu in lv2Menus)
-                                        {
-                                            var lv3Menus = Model.Menus.Where(item => item.ParentId == lv2menu.PostId);
-                                            var slug2 = lv2menu.CateSlug;
-                                            var lv2Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = (string)null });
-
-                                            <li>
-                                                <a href="@lv2Link">@lv2menu.MenuTitle</a>
-                                                @if (lv3Menus.Count() > 0)
-                                                {
-                                                    <ul>
-                                                        @foreach (var lv3menu in lv3Menus)
-                                                        {
-                                                            var slug3 = lv3menu.CateSlug;
-                                                            var lv3Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = lv3menu.CateSlug });
-
-                                                            <li><a href="@lv3Link">@lv3menu.MenuTitle</a></li>
-                                                        }
-                                                    </ul>
-                                                }
-                                            </li>
-                                        }
-                                    </ul>
-                                }
+                                @{RenderSubMenu(Model.Menus, menu.PostId, link);}
                             </li>
                         }
                     }
@@ -198,27 +172,28 @@
             arraySlugs = new string[] { Model.Slugs.Slug1, Model.Slugs.Slug2 };
         }
     }
-    <ul class="main-child-menu">
+    <ul class="main-child-menu @(arraySlugs.Length > 0 ? "multilv-menu-mobile" : "")">
         <li class="menu-item">
             <a href="/" class="item @(Model.CategorySlug == "/" ? "active" : "")"><i class="icon-home"></i></a>
         </li>
         @foreach (var slug in arraySlugs)
         {
             if (slug == null) break;
-            var menu = Model.Menus.FirstOrDefault(item => item.CateSlug == slug || item.PageSlug == slug);
+            var menu = Model.Menus.FirstOrDefault(item => item.CateSlug == slug);
             var coMenu = Model.Menus.Where(item => item.ParentId == menu.ParentId);
-            menuLink = count == 0 ? getMenuLink(menu) : menuLink + "/" + menu.CateSlug;
+            menuLink = count == 0 ? getMenuLink(menu) : $"{menuLink}/{menu.CateSlug}";
             count++;
-            <li class="@getMenuLink(menu)">
+            <li>
                 <div class="menu-select">
                     <a href="@menuLink">@menu.MenuTitle</a>
-                    <select class="select_ad">
+                    <select class="select_ad" onChange="window.location.href=this.value">
                         @foreach (var item in coMenu)
                         {
+                            var selected = menu.PostId == item.PostId ? "selected" : "";
+                            var subLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = (string)null, slug3 = (string)null });
+                            var link = item.ParentId == 0 ? getMenuLink(item) : $"{subLink}/{item.CateSlug}";
 
-                            var selected = menu.PostId == item.PostId ? "active" : "";
-                            var subLink = getMenuLink(item, menuLink);
-                            <option class="@selected" value="@subLink">@item.MenuTitle</option>
+                            <!option class="@selected" @selected value="@link">@item.MenuTitle</!option>
                         }
                     </select>
                 </div>
@@ -270,36 +245,26 @@
         }
         return link;
     }
-}
-@*@functions {
-        private void RenderSubMenu(IEnumerable<Menu> Menus, Nullable<int> parentID)
+
+    void RenderSubMenu(IEnumerable<Menu> Menus, Nullable<int> parentID, string link)
+    {
+        var subMenus = Menus.Where(item => item.ParentId == parentID);
+        @if (subMenus.Count() > 0)
         {
-            var subMenus = Menus.Where(item => item.ParentId == parentID);
-            @if (subMenus.Count() > 0)
-            {
-                <ul>
-                    @foreach (var subMenu in subMenus)
-                    {
-                        var slug2 = subMenu.CateSlug;
-                        var lv2Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = (string)null });
-
-                        <li>
-                            <a href="@lv2Link">@lv2menu.MenuTitle</a>
-                            @if (lv3Menus.Count() > 0)
-                            {
-                                <ul>
-                                    @foreach (var lv3menu in lv3Menus)
-                                    {
-                                        var slug3 = lv3menu.CateSlug;
-                                        var lv3Link = Url.Action("Category", "Home", new { slug1 = slug, slug2 = slug2, Slug3 = lv3menu.CateSlug });
-
-                                        <li><a href="@lv3Link">@lv3menu.MenuTitle</a></li>
-                                    }
-                                </ul>
-                            }
-                        </li>
-                    }
-                </ul>
-            }
+            <ul>
+                @foreach (var subMenu in subMenus)
+                {
+                    var subLink = $"{link}/{subMenu.CateSlug}";
+                    var nextLevelMenu = Menus.Where(item => item.ParentId.Equals(subMenu.PostId)).Count();
+                    <li>
+                        <a href="@subLink">@subMenu.MenuTitle</a>
+                        @if (nextLevelMenu > 0)
+                        {
+                            { RenderSubMenu(Menus, subMenu.PostId, subLink); }
+                        }
+                    </li>
+                }
+            </ul>
         }
-    }*@
+    }
+}

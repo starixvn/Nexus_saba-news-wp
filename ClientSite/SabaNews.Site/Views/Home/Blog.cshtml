@@ -101,13 +101,13 @@
                     var menuLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = Model.Slugs.Slug2, slug3 = Model.Slugs.Slug3 });
                     <div class="menu-select">
                         <a href="@menuLink">@menu.MenuTitle</a>
-                        <select class="select_ad">
+                        <select class="select_ad"   onChange="window.location.href=this.value">
                             @foreach (var item in coMenu)
                             {
 
-                                var selected = menu.PostId == item.PostId ? "active" : "";
+                                var selected = menu.PostId == item.PostId ? "selected" : "";
                                 var subLink = $"/tin-the-thao/{Model.Slugs.Slug1}/{Model.Slugs.Slug2}/{item.CateSlug}";
-                                <option class="@selected" value="@subLink">@item.MenuTitle</option>
+                                <!option class="@selected" @selected value="@subLink">@item.MenuTitle</!option>
                             }
                         </select>
                     </div>
