@@ -54,7 +54,7 @@
                 Header = new HeaderViewModel
                 {
                     CategorySlug = Constants.MatchScheduleSlug,
-                    CategoryId = pageDetail.CatId,
+                    CategoryId = pageDetail.CateId,
                     Title = title,
                     Description = description
                 }
@@ -76,7 +76,7 @@
                 Header = new HeaderViewModel
                 {
                     CategorySlug = Constants.MatchScheduleSlug,
-                    CategoryId = pageDetail.CatId,
+                    CategoryId = pageDetail.CateId,
                     Title = title,
                     Description = description
                 }

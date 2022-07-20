@@ -104,7 +104,7 @@
                 HeadTitle = cate.Title,
                 Title = title,
                 Description = cate.Description,
-                CategoryId = cate.CatId,
+                CategoryId = cate.CateId,
                 Controller = controller,
                 Slug = slug
             };

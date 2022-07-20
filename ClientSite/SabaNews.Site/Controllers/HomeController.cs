@@ -100,7 +100,7 @@
             var criteria = new SearchPostsCriteria { _Keyword = keyword, _Start = start, _End = Constants.Perpage };
             var posts = await postService.SearchPostAsync(criteria);
             var totalItems = criteria.TotalItems;
-            var model = new CategoryViewModel
+            var model = new BlogViewModel
             {
                 Posts = posts,
                 Header = new HeaderViewModel
@@ -133,7 +133,7 @@
             var posts = await postService.GetPostByTagAsync(criteria);
             var totalItems = criteria.TotalItems;
             var tag = posts.Any() ? posts.First().Tags : tagname;
-            var model = new CategoryViewModel
+            var model = new BlogViewModel
             {
                 Posts = posts,
                 Category = new Category
@@ -174,7 +174,7 @@
                 Header = new HeaderViewModel
                 {
                     CategorySlug = Constants.WarningSlug,
-                    CategoryId = pageDetail.CatId,
+                    CategoryId = pageDetail.CateId,
                     Title = title,
                     Description = description
                 }
