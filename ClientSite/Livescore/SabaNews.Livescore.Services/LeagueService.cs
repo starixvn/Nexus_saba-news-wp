@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -39,6 +40,37 @@
         {
             var leagues = await baseService.GetDataAsync<League>(new GetAllLeaguesCriteria());
             return leagues.ToList();
+        }
+
+        public async Task<CommandResult> UpdateLeaguesExtraAsync(int leagueId, int priotiry, bool isMajor)
+        {
+            var command = new UpdateLeagueExtraCriteria
+            {
+                LeagueId = leagueId,
+                Priority = priotiry,
+                IsMajor = isMajor
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<CommandResult> DeleteLeaguesExtraAsync(int leagueId)
+        {
+            var command = new DeleteLeagueExtraCriteria
+            {
+                LeagueId = leagueId
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<CommandResult> InsertLeaguesExtraAsync(int leagueId)
+        {
+            var command = new InsertLeagueExtraCriteria
+            {
+                LeagueId = leagueId,
+                Priority = 0,
+                IsMajor = false
+            };
+            return await baseService.ExecuteNonQueryAsync(command);
         }
     }
 }

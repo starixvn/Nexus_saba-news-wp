@@ -52,23 +52,51 @@
             return PartialView("_ManagementLeagueDataGrid", viewModel);
         }
 
-        public async Task<ActionResult> AddLeague(ManagementAddLeagueFilterModel model)
+        public async Task<ActionResult> GetAllLeagues(ManagementAddLeagueFilterModel model)
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
             return PartialView("_AddLeagueDataGrid", leagues);
         }
 
+        public async Task<ActionResult> GetAllLeagues2(ManagementAddLeagueFilterModel model)
+        {
+            var leagues = await leagueService.GetAllLeaguesAsync();
+            return PartialView("_AddLeagueDataGrid", leagues[1]);
+        }
+
         [HttpPost]
-        public ActionResult Deactive(int id, bool isMajor)
+        public async Task<ActionResult> ChangeMajor(int leagueId, int priority, bool isMajor)
         {         
-            return Json("");
+           var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
+           return Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ChangePriority(int leagueId, int priority, bool isMajor)
+        {
+            var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
+            return Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> RemoveLeagueExtra(int leagueId)
+        {
+            var result = await leagueService.DeleteLeaguesExtraAsync(leagueId);
+            return Json(new { result });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddLeagueExtra(int leagueId)
+        {
+            var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
+            return Json(new { result });
         }
 
         private static IList<League> Searching(IList<League> leagues, string search, int isMajor)
         {
             if (search != null)
             {
-                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search) || x.LeagueNameVN.Contains(search)).ToList();
+                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search)).ToList();
             }
             if (isMajor == 1)
             {

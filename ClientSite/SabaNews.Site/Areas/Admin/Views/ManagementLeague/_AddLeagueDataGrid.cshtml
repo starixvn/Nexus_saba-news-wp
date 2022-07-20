@@ -4,11 +4,11 @@
         <p class="label-admin">@ViewResources.SearchLabel</p>
         <input type="text" class="custom-input list-input" id="searchLeague" name="resultNumber" placeholder="Enter League Name..." />
     </div>
-    <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
+    <button class="btn-custom-admin" type="submit" id="submit-btnAddLeague">@ViewResources.Submit</button>
 </div>
 <div class="table-admin">
-    <table class="data-grid">
-        <thead>
+    <table class="data-grid-addLeague">
+        <thead class="fixedHeader">
             <tr>
                 <th>#</th>
                 <th>@ViewResources.LeagueNameEN</th>
@@ -28,7 +28,10 @@
                             <td class="text-left" width="18%">@league.LeagueNameEN</td>
                             <td class="text-left" width="18%">@league.LeagueFullNameEN</td>
                             <td class="text-left" width="18%">@league.LeagueNameVN</td>
-                            <td class="text-center btn-addleague" width="8%">Add</td>
+                            <td class="text-center" width="8%">
+                                <span class="btn-addleague" id="@league.LeagueId"
+                                      data-id ="@(league.LeagueId)"
+                                      data-url="@Url.Action("AddLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId})">Add</span></td>
                         </tr>
                 }
             }

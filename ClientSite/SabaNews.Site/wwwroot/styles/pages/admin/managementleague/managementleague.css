@@ -84,9 +84,14 @@
     margin-top: 0;
     max-width: 95.8rem;
     height: 530px;
-    overflow-x: auto; }
+    overflow-x: auto;
+    position: relative; }
     #AddLeagueContent .modal-content .table-admin .btn-addleague {
       color: blue; }
+    #AddLeagueContent .modal-content .table-admin th {
+      position: sticky;
+      top: -1px;
+      box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #383333; }
     #AddLeagueContent .modal-content .table-admin .btn-addleague:hover {
       cursor: pointer; }
 
@@ -101,6 +106,9 @@
   background: #ededed;
   padding: 0 1rem;
   max-width: 80.8rem; }
+
+.filter {
+  margin-bottom: 20px; }
 
 .filter-majorLeague {
   width: 70px; }

@@ -21,22 +21,20 @@
 }
 
 <section class="page-content">
-    <div class="form-filter" style="margin-bottom: 2rem">
-        <form class="form-horizontal" action="/Admin/ManagementLeague/SearchData" method="post">
-            <div class="form-input">
-                <p class="label-admin">@ViewResources.SearchLabel</p>
-                <input type="text" class="custom-input list-input" id="search" value="@(search != null ? search : "")" name="searchLeague" placeholder="Enter League Name..." />
-            </div>
-            <div class="form-input">
-                <p class="label-admin">@ViewResources.IsMajor</p>
-                <select class="custom-input list-input filter-majorLeague" name="status" id="major">
-                    <option value="-1" @(isMajor == -1 ? "selected" : "")>@ViewResources.All</option>
-                    <option value="1" @(isMajor == 1 ? "selected" : "")>@ViewResources.Yes</option>
-                    <option value="0" @(isMajor == 0 ? "selected" : "")>@ViewResources.No</option>
-                </select>
-            </div>
-            <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
-        </form>
+    <div class="form-horizontal filter">
+        <div class="form-input">
+            <p class="label-admin">@ViewResources.SearchLabel</p>
+            <input type="text" class="custom-input list-input" id="search" value="@(search != null ? search : "")" name="searchLeague" placeholder="Enter League Name..." />
+        </div>
+        <div class="form-input">
+            <p class="label-admin">@ViewResources.IsMajor</p>
+            <select class="custom-input list-input filter-majorLeague" name="status" id="major">
+                <option value="-1" @(isMajor == -1 ? "selected" : "")>@ViewResources.All</option>
+                <option value="1" @(isMajor == 1 ? "selected" : "")>@ViewResources.Yes</option>
+                <option value="0" @(isMajor == 0 ? "selected" : "")>@ViewResources.No</option>
+            </select>
+        </div>
+        <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
     </div>
     <div class="content">
         <div class="add-league btn_league"><a href="javascript:;" class="label label-blue">@ViewResources.AddLeague</a></div>
@@ -54,6 +52,43 @@
                 </div>
 
                 <div class="modal-body ck-content">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="NoticeModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title title-success">
+                    <h2 class="title"><i class="icon-title icon-success-admin"></i> @ViewResources.Announcement</h2>
+
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal confirm" id="ConfirmModal" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title">@ViewResources.Confirmation</h2>
+                    <button type="button" class="close-login close-announcement" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body"></div>
+                <div class="button-confirm">
+                    <button class="btn-custom-outline confirm-action">Yes</button>
+                    <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
                 </div>
             </div>
         </div>

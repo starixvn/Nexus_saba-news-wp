@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services.Criteria.League;
 
@@ -11,5 +12,8 @@
         Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria);
         Task<IList<League>> GetLeaguesAsync();
         Task<IList<League>> GetAllLeaguesAsync();
+        Task<CommandResult> UpdateLeaguesExtraAsync(int leagueId, int priority, bool isMajor);
+        Task<CommandResult> DeleteLeaguesExtraAsync(int leagueId);
+        Task<CommandResult> InsertLeaguesExtraAsync(int leagueId);
     }
 }
