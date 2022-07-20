@@ -94,6 +94,7 @@
             }
             else
             {
+                var subMenu = Model.GetSubMenu(Model.Header.Slug);
                 if (Model.Slugs.Slug3 != null)
                 {
                     var menu = Model.GetMenuDetail(Model.Slugs.Slug3);
@@ -112,10 +113,10 @@
                         </select>
                     </div>
                 }
-                else
+                else if(subMenu.Count > 0)
                 {
                     <ul class="sub-category">
-                        @foreach (var menu in Model.GetSubMenu(Model.Header.Slug))
+                        @foreach (var menu in subMenu)
                         {
                             var link = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = menu.CateSlug, slug3 = Model.Slugs.Slug3 });
                             if (Model.Slugs.Slug2 != null)

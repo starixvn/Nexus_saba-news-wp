@@ -171,6 +171,7 @@
         {
             arraySlugs = new string[] { Model.Slugs.Slug1, Model.Slugs.Slug2 };
         }
+        arraySlugs = arraySlugs.Where(slug => slug != null).ToArray();
     }
     <ul class="main-child-menu @(arraySlugs.Length > 0 ? "multilv-menu-mobile" : "")">
         <li class="menu-item">
@@ -179,12 +180,13 @@
         @foreach (var slug in arraySlugs)
         {
             if (slug == null) break;
+            count++;
             var menu = Model.Menus.FirstOrDefault(item => item.CateSlug == slug);
             var coMenu = Model.Menus.Where(item => item.ParentId == menu.ParentId);
-            menuLink = count == 0 ? getMenuLink(menu) : $"{menuLink}/{menu.CateSlug}";
-            count++;
+            menuLink = count == 1 ? getMenuLink(menu) : $"{menuLink}/{menu.CateSlug}";
+            var active = count == arraySlugs.Length ? "active" : "";
             <li>
-                <div class="menu-select">
+                <div class="menu-select @active">
                     <a href="@menuLink">@menu.MenuTitle</a>
                     <select class="select_ad" onChange="window.location.href=this.value">
                         @foreach (var item in coMenu)
