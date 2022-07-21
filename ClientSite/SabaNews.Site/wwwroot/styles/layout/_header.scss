@@ -347,11 +347,11 @@
         }
 
         &::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
-            background: rgba($color-000, .2);
+            background: transparent;
             border-radius: 3px;
         }
 
@@ -566,10 +566,14 @@
                     }
 
                     [class*="icon-"] {
-                        font-size: 2.4rem;
+                        font-size: 2rem;
                         cursor: pointer;
                         text-decoration: none;
                         display: block;
+
+                        @include tableMobile {
+                            font-size: 2.4rem;
+                        }
                     }
 
                     @include tableMobile {
@@ -628,28 +632,6 @@
                         }
                     }
 
-                    .number-count-fav {
-                        background: $color-main-title;
-                        color: #fff;
-                        width: 2.4rem;
-                        height: 2.4rem;
-                        font-weight: 600;
-                        font-size: 1.2rem;
-                        line-height: 2.4rem;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        border-radius: 3px;
-                        position: absolute;
-                        right: 4px;
-                        top: 4px;
-
-                        @include tableMobile {
-                            right: 0;
-                            top: 12px;
-                        }
-                    }
-
                     .active {
                         color: $color-main-title;
 
@@ -667,8 +649,8 @@
                             display: none;
                             transition: all .3s ease;
                             position: absolute;
-                            right: 12px;
-                            top: 4px;
+                            right: 10px;
+                            top: 6px;
                             z-index: 9;
                             transform: rotate(-90deg);
 
@@ -767,7 +749,7 @@
                         visibility: hidden;
                         position: absolute;
                         width: 25rem;
-                        left: 0;
+                        left: -20px;
                         top: 50px;
                         background: $bg-nav;
                         border: 1px solid $border-heading;
