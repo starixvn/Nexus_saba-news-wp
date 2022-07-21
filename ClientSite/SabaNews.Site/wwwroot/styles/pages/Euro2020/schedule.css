@@ -530,17 +530,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     height: 4rem;
     background: #FFFDF9;
     padding: 0;
-    overflow-x: scroll;
+    overflow-x: overlay;
     overflow-y: hidden;
     white-space: nowrap;
     list-style: none; }
     .child-mobile-menu .main-child-menu::-webkit-scrollbar {
-      height: .4rem; }
-    .child-mobile-menu .main-child-menu::-webkit-scrollbar-track {
-      background: transparent; }
-    .child-mobile-menu .main-child-menu::-webkit-scrollbar-thumb {
-      background: transparent;
-      border-radius: 3px; }
+      display: none; }
     .child-mobile-menu .main-child-menu li:last-of-type {
       padding-right: 3rem; }
     .child-mobile-menu .main-child-menu li a {

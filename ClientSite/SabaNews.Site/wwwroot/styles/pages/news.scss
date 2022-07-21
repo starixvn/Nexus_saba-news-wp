@@ -231,22 +231,13 @@
     margin-bottom: 1.2rem;
 
     @include tableMobile {
-        overflow-x: scroll;
+        overflow-x: overlay;
         overflow-y: hidden;
         white-space: nowrap;
-        margin-bottom: .7rem;
+        margin-bottom: 1.2rem;
 
         &::-webkit-scrollbar {
-            height: .4rem;
-        }
-
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: transparent;
-            border-radius: 3px;
+            display: none;
         }
     }
 
