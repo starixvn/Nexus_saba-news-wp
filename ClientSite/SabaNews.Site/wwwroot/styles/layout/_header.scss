@@ -539,19 +539,6 @@
                     padding: 0 1.2rem;
                 }
 
-                li {
-                    &:nth-child(2) {
-                        @include tableMobile {
-                            order: 2;
-                        }
-                    }
-
-                    &:nth-child(7) {
-                        @include tableMobile {
-                            order: 1;
-                        }
-                    }
-                }
 
                 .menu-item {
                     position: relative;
@@ -569,7 +556,7 @@
                             content: "";
                             display: block;
                             position: absolute;
-                            top: 0;
+                            bottom: 0;
                             width: 100%;
                             right: 50%;
                             height: 1px;

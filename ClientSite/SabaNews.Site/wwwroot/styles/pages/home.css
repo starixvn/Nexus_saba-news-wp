@@ -659,12 +659,6 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             border-top: 1px solid #E0E0E0;
             border-bottom: 1px solid #E0E0E0;
             padding: 0 1.2rem; } }
-        @media screen and (max-width: 1024px) {
-          .top-header .group-menu .nav-menu .main-menu li:nth-child(2) {
-            order: 2; } }
-        @media screen and (max-width: 1024px) {
-          .top-header .group-menu .nav-menu .main-menu li:nth-child(7) {
-            order: 1; } }
         .top-header .group-menu .nav-menu .main-menu .menu-item {
           position: relative;
           display: flex;
@@ -679,7 +673,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
               content: "";
               display: block;
               position: absolute;
-              top: 0;
+              bottom: 0;
               width: 100%;
               right: 50%;
               height: 1px;
