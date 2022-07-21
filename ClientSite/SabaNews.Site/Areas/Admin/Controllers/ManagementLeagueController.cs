@@ -23,17 +23,12 @@
         {
             return View();
         }
-        public IActionResult SearchData(string searchLeague, int status)
-        {
-            ViewBag.SearchLeague = searchLeague;
-            ViewBag.IsMajor = status;
-            return View("Index");
-        }
 
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
             leagues = Searching(leagues, model.Search, model.IsMajor);
+            leagues = Sort(leagues, model.TypeSort);
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -75,28 +70,24 @@
             return PartialView("_AddLeagueDataGrid", viewModel);
         }
 
-        [HttpPost]
         public async Task<ActionResult> ChangeMajor(int leagueId, int priority, bool isMajor)
         {         
-           var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
-           return Json(new { result });
+            var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
+            return Json(new { result });
         }
 
-        [HttpPost]
         public async Task<ActionResult> ChangePriority(int leagueId, int priority, bool isMajor)
         {
             var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
             return Json(new { result });
         }
 
-        [HttpPost]
         public async Task<ActionResult> RemoveLeagueExtra(int leagueId)
         {
             var result = await leagueService.DeleteLeaguesExtraAsync(leagueId);
             return Json(new { result });
         }
 
-        [HttpPost]
         public async Task<ActionResult> AddLeagueExtra(int leagueId)
         {
             var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
@@ -105,17 +96,36 @@
 
         private static IList<League> Searching(IList<League> leagues, string search, int isMajor)
         {
-            if (search != null)
-            {
-                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search)).ToList();
+            if (search != null){
+                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search) 
+                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))
+                || (x.LeagueNameEN != null && x.LeagueNameEN.Contains(search))).ToList();
             }
-            if (isMajor == 1)
-            {
+            if (isMajor == 1){
                 leagues = leagues.Where(x => x.IsMajor == true).ToList();
             }
-            if (isMajor == 0)
-            {
+            if (isMajor == 0){
                 leagues = leagues.Where(x => x.IsMajor == false).ToList();
+            }
+            return leagues;
+        }
+
+        private static IList<League> Sort(IList<League> leagues, int typeSort)
+        {
+            if (typeSort == 1){
+                leagues = leagues.OrderBy(x => x.Priority).ToList();
+            }
+            else if(typeSort == 2)
+            {
+                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
+            }
+            else if (typeSort == 3)
+            {
+                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
+            }
+            else if (typeSort == 4)
+            {
+                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
             }
             return leagues;
         }

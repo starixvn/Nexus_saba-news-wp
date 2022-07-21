@@ -7,7 +7,7 @@
         public int LeagueId { get; set; }
         public int Priority { get; set; }
         public bool IsMajor { get; set; }
-        public override string GetSettingKey() => "livescore_league_extra_update";
+        public override string GetSettingKey() => "Livescore_League_Extra_Update";
 
         public override bool IsValid() => true;
     }

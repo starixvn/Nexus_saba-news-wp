@@ -11,5 +11,7 @@
         public string DateSort { get; set; }
 
         public int IsMajor { get; set; }
+
+        public int TypeSort { get; set; }
     }
 }

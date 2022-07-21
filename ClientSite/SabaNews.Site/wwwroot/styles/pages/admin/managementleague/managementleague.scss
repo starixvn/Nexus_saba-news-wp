@@ -30,6 +30,12 @@
             bottom: 0;
             box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #383333;
         }
+
+        .main-pagination {
+            .items-pagination {
+                margin-top: 1px !important;
+            }
+        }
     }
 }
 
@@ -43,7 +49,7 @@
     justify-content: flex-end;
     background: #ededed;
     padding: 0 1rem;
-    max-width: 80.8rem;
+    max-width: 100.8rem;
 }
 
 .filter {
@@ -56,7 +62,7 @@
 
 .table-admin {
     margin-top: 0;
-    max-width: 80.8rem;
+    max-width: 100.8rem;
 
     .priority-league {
         width: 30px;
@@ -72,5 +78,11 @@
 
     .icon-delete-admin {
         font-size: 20px;
+    }
+
+    .main-pagination {
+        .items-pagination {
+            margin-top: 10px;
+        }
     }
 }

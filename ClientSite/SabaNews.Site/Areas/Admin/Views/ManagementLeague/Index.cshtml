@@ -1,8 +1,6 @@
 ﻿@using SabaNews.Resources
 @{
     Layout = "_AdminLayout";
-    var search = @ViewBag.SearchLeague;
-    var isMajor = @ViewBag.IsMajor;
 }
 
 @section TopHeader{
@@ -24,14 +22,14 @@
     <div class="form-horizontal filter">
         <div class="form-input">
             <p class="label-admin">@ViewResources.SearchLabel</p>
-            <input type="text" class="custom-input list-input" id="search" value="@(search != null ? search : "")" name="searchLeague" placeholder="Enter League Full Name EN" />
+            <input type="text" class="custom-input list-input" id="search" name="searchLeague" placeholder="Enter League Name..." />
         </div>
         <div class="form-input">
             <p class="label-admin">@ViewResources.IsMajor</p>
             <select class="custom-input list-input filter-majorLeague" name="status" id="major">
-                <option value="-1" @(isMajor == -1 ? "selected" : "")>@ViewResources.All</option>
-                <option value="1" @(isMajor == 1 ? "selected" : "")>@ViewResources.Yes</option>
-                <option value="0" @(isMajor == 0 ? "selected" : "")>@ViewResources.No</option>
+                <option value="-1" >@ViewResources.All</option>
+                <option value="1" >@ViewResources.Yes</option>
+                <option value="0" >@ViewResources.No</option>
             </select>
         </div>
         <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>

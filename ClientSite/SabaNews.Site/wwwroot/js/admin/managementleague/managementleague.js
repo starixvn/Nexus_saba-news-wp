@@ -1,12 +1,12 @@
 ﻿var adminManagementLeague = (function ($) {
-    var page = 1, pageSize = 10, url = "", pageAddLeague = 1, pageSizeAddLeague = 10, searchAddleague = "";
+    var page = 1, pageSize = 10, url = "", pageAddLeague = 1, pageSizeAddLeague = 10, searchAddleague = "", typeSort = 3;
     function GetDataLeagueExtraGrid(dateSort) {
         var search = document.getElementById("search").value;
         var isMajor = document.getElementById("major").value;
         $.ajax({
             url: "/Admin/ManagementLeague/GetManagementLeagueData",
             type: 'POST',
-            data: { page, pageSize, search, dateSort, isMajor },
+            data: { page, pageSize, search, dateSort, isMajor, typeSort },
             success: function (res) {
                 $('.data-grid').html(res);
                 initLeague();
@@ -26,6 +26,26 @@
                 data: { isMajor }
             });
         });
+        $('#btn-sort-priority').on('click', function () {            
+            if (typeSort == 1) {
+                typeSort = 2;
+            }
+            else {
+                typeSort = 1;
+            }
+            GetDataLeagueExtraGrid(null);
+        });
+
+        $('#btn-sort-createdDate').on('click', function () {
+            if (typeSort == 3) {
+                typeSort = 4;
+            }
+            else {
+                typeSort = 3;
+            }
+            GetDataLeagueExtraGrid(null);
+        });
+
         $(".priority-league").blur(function () {
             var url = $(this).data('url');
             var priority = document.getElementById("textPriority").value;
@@ -72,6 +92,8 @@
                 $("#AddLeagueContent").on("hide.bs.modal", function () {
                     pageAddLeague = 1;
                     pageSizeAddLeague = 10;
+                    searchAddleague = "";
+                    typeSort = 3;
                     GetDataLeagueExtraGrid();
                 });
 

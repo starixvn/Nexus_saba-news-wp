@@ -1,4 +1,6 @@
-﻿namespace SabaNews.Livescore.Models.League
+﻿using System;
+
+namespace SabaNews.Livescore.Models.League
 {
     public class League
     {
@@ -17,6 +19,7 @@
 
         public bool IsMajor { get; set; }
         public int Priority { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public bool HasSeasonStandings { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -68,7 +69,8 @@
             {
                 LeagueId = leagueId,
                 Priority = 0,
-                IsMajor = false
+                IsMajor = false,
+                CreatedDate = DateTime.UtcNow
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }
