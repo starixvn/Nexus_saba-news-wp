@@ -73,6 +73,7 @@ $(document).ready(function () {
             $('.header-controls').removeClass('width-100-saba');
             $('.header-controls').css('width', windowWidth);
             $('.has-sub ul').hide();
+            $(".submenu-button").removeClass('submenu-opened');
         }
     });
     
