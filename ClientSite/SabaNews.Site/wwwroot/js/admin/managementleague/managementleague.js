@@ -1,8 +1,6 @@
 ﻿var adminManagementLeague = (function ($) {
-    var page = 1;
-    var pageSize = 10;
-    var url = "";
-    function GetDataCommentGrid(dateSort) {
+    var page = 1, pageSize = 10, url = "", pageAddLeague = 1, pageSizeAddLeague = 10, searchAddleague = "";
+    function GetDataLeagueExtraGrid(dateSort) {
         var search = document.getElementById("search").value;
         var isMajor = document.getElementById("major").value;
         $.ajax({
@@ -13,8 +11,7 @@
                 $('.data-grid').html(res);
                 initLeague();
                 initPaging();
-                initSortLeague();
-                initAddLeague();
+                initSortLeague();                
             }
         });
     }
@@ -50,7 +47,7 @@
         $('.paging').on('click', function () {
             page = $(this).data('page');
             var dateSort = $("#date-sort").attr("sort-type");
-            GetDataCommentGrid(dateSort);
+            GetDataLeagueExtraGrid(dateSort);
 
         });
 
@@ -58,53 +55,61 @@
             pageSize = $(this).val();
             page = 1;
             var dateSort = $("#date-sort").attr("sort-type");
-            GetDataCommentGrid(dateSort);
+            GetDataLeagueExtraGrid(dateSort);
         });
     }
 
-    function initAddLeague() {
-        $('.btn_league').click(function () {
-            $.ajax({
-                type: 'POST',
-                url: '/Admin/ManagementLeague/GetAllLeagues',
-                success: function (html) {
-                    $('#AddLeagueContent .title').html('Add League');
-                    $('#AddLeagueContent .modal-body').html(html);
-                    $('#AddLeagueContent').modal('show');
+    function initAddLeague(dateSort) {
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/ManagementLeague/GetAllLeagues',
+            data: { pageAddLeague, pageSizeAddLeague, searchAddleague, dateSort },
+            success: function (html) {
+                $('#AddLeagueContent .title').html('Add League');
+                $('#AddLeagueContent .modal-body').html(html);
+                $('#AddLeagueContent').modal('show');
 
-                    $("#AddLeagueContent").on("hidden.bs.modal", function () {
-                        GetDataCommentGrid();
-                    });
+                $("#AddLeagueContent").on("hide.bs.modal", function () {
+                    pageAddLeague = 1;
+                    pageSizeAddLeague = 10;
+                    GetDataLeagueExtraGrid();
+                });
 
-                    $('.btn-addleague').on('click', function () {
-                        url = $(this).data('url');
-                        var leagueId = $(this).data('id');
-                        $.ajax({
-                            type: 'POST',
-                            url: url,
-                            success: function (response) {
-                                if (response.result.isSuccessful) {
-                                    document.getElementById(leagueId).style.display = "none";
-                                } else {
-                                    GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
-                                }
+                $('.btn-addleague').on('click', function () {
+                    url = $(this).data('url');
+                    var leagueId = $(this).data('id');
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        success: function (response) {
+                            if (response.result.isSuccessful) {
+                                document.getElementById(leagueId).style.display = "none";
+                            } else {
+                                GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                             }
-                        });
+                        }
                     });
+                });
 
-                    $('#submit-btnAddLeague').on('click', function () {
-                        var search = document.getElementById("searchLeague").value;
-                        $.ajax({
-                            url: "/Admin/ManagementLeague/GetAllLeagues2",
-                            type: 'POST',
-                            success: function (res) {
-                                $('.data-grid').html(res);
-                            }
-                        });
-                    });
-                }
-            })
-        });
+                $('#submit-btnAddLeague').on('click', function () {
+                    searchAddleague = document.getElementById("searchLeague").value;
+                    initAddLeague(null);
+                });
+
+                $('#AddLeagueContent .paging').on('click', function () {
+                    pageAddLeague = $(this).data('page');
+                    var dateSort = $("#date-sort").attr("sort-type");
+                    initAddLeague(dateSort);
+                });
+
+                $('#AddLeagueContent #page-size').on('change', function () {
+                    pageSizeAddLeague = $(this).val();
+                    pageAddLeague = 1;
+                    var dateSort = $("#date-sort").attr("sort-type");
+                    initAddLeague(dateSort);
+                });
+            }
+        })
     }
 
     function initSortLeague() {
@@ -112,18 +117,21 @@
             var dateType = $(this).attr("sort-type");
             if (!dateType) {
                 dateType = "desc";
-                GetDataCommentGrid(dateType);
+                GetDataLeagueExtraGrid(dateType);
                 return;
             }
 
             dateType = dateType === "desc" ? "asc" : "desc";
-            GetDataCommentGrid(dateType);
+            GetDataLeagueExtraGrid(dateType);
         });
     }
 
     function initFilterBtn() {
         $("#submit-btn").on("click", function () {
-            GetDataCommentGrid(null);
+            GetDataLeagueExtraGrid(null);
+        });
+        $('.btn_league').click(function () {
+            initAddLeague();
         });
     }
 
@@ -140,7 +148,7 @@
                     if (response.result.isSuccessful) {
                         GetSuccessPopup('#NoticeModal', 'Remove league successfully.');
                         setTimeout(function () {
-                            GetDataCommentGrid();
+                            GetDataLeagueExtraGrid();
                             $('#NoticeModal').modal('hide');
                         }, 2000);
                     } else {
@@ -153,7 +161,7 @@
     }
 
     function init() {
-        GetDataCommentGrid();
+        GetDataLeagueExtraGrid();
         initFilterBtn();
         HandleModal();
     }

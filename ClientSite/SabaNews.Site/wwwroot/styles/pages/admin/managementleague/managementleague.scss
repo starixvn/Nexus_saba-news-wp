@@ -7,7 +7,7 @@
     .table-admin {
         margin-top: 0;
         max-width: 95.8rem;
-        height: 530px;
+        max-height: 530px;
         overflow-x: auto;
         position: relative;
 
@@ -17,12 +17,18 @@
 
         th {
             position: sticky;
-            top: -1px;
+            top: -0.2px;
             box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #383333;
         }
 
         .btn-addleague:hover {
             cursor: pointer;
+        }
+
+        .pagination {
+            position: sticky;
+            bottom: 0;
+            box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #383333;
         }
     }
 }

@@ -9,6 +9,7 @@
         public string Search { get; set; }
 
         public string DateSort { get; set; }
+
         public int IsMajor { get; set; }
     }
 }
