@@ -78,6 +78,7 @@
                 };
                 posts = await postService.GetRecentPostsAsync(paramGetRecent);
                 totalItems = paramGetRecent.TotalIItems;
+                slug = Constants.NewPostSlug;
             }
             else
             {
