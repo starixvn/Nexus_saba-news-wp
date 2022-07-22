@@ -2303,8 +2303,10 @@ button {
     color: #fff;
     padding-right: .4rem; }
   .main .block-guess .marked-icon {
-    position: relative;
-    top: -6px; }
+    position: absolute;
+    top: -6px;
+    right: 110px;
+    left: auto; }
   .main .block-guess .block__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

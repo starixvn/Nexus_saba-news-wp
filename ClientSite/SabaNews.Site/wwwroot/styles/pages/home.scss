@@ -153,6 +153,7 @@
         .banner {
             max-width: 1120px;
             max-height: 80px;
+
             img {
                 border: 1px solid #e0e0e0;
                 max-width: 100%;
@@ -413,8 +414,10 @@
         }
 
         .marked-icon {
-            position: relative;
+            position: absolute;
             top: -6px;
+            right: 110px;
+            left: auto;
         }
 
         .block__content {
