@@ -73,25 +73,25 @@
         public async Task<ActionResult> ChangeMajor(int leagueId, int priority, bool isMajor)
         {         
             var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
-            return Json(new { result });
+            return Json(result);
         }
 
         public async Task<ActionResult> ChangePriority(int leagueId, int priority, bool isMajor)
         {
             var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
-            return Json(new { result });
+            return Json(result);
         }
 
         public async Task<ActionResult> RemoveLeagueExtra(int leagueId)
         {
             var result = await leagueService.DeleteLeaguesExtraAsync(leagueId);
-            return Json(new { result });
+            return Json(result);
         }
 
         public async Task<ActionResult> AddLeagueExtra(int leagueId)
         {
             var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
-            return Json(new { result });
+            return Json(result);
         }
 
         private static IList<League> Searching(IList<League> leagues, string search, int isMajor)

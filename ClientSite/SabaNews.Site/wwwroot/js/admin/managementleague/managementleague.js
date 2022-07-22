@@ -104,7 +104,7 @@
                         type: 'POST',
                         url: url,
                         success: function (response) {
-                            if (response.result.isSuccessful) {
+                            if (response.isSuccessful) {
                                 document.getElementById(leagueId).style.display = "none";
                             } else {
                                 GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
@@ -167,7 +167,7 @@
                 type: 'POST',
                 url: url,
                 success: function (response) {
-                    if (response.result.isSuccessful) {
+                    if (response.isSuccessful) {
                         GetSuccessPopup('#NoticeModal', 'Remove league successfully.');
                         setTimeout(function () {
                             GetDataLeagueExtraGrid();
