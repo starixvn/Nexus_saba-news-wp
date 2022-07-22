@@ -77,8 +77,8 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
-            Assert.Equal(Constants.NewPostSlug, viewModel.Header.ActiveCategory);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
+            Assert.Null(viewModel.Header.ActiveCategory);
             Assert.Equal(Constants.BlogView, viewResult.ViewName);
         }
 
@@ -101,9 +101,9 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.True(viewModel.Header.IsChildren);
-            Assert.Equal(Constants.FootballSlug, viewModel.Header.ActiveCategory);
+            Assert.Equal(slug, viewModel.Header.ActiveCategory);
             Assert.Equal(Constants.BlogView, viewResult.ViewName);
         }
 
@@ -143,7 +143,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(Constants.VideoView, viewResult.ViewName);
         }
 
@@ -165,7 +165,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
 
@@ -258,7 +258,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
             Assert.Equal(Constants.BlogView, viewResult.ViewName);
         }
@@ -279,7 +279,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
@@ -306,7 +306,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
             Assert.Equal(Constants.BlogView, viewResult.ViewName);
         }
@@ -333,7 +333,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            var viewModel = Assert.IsType<CategoryViewModel>(viewResult.Model);
+            var viewModel = Assert.IsType<BlogViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.Posts);
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }

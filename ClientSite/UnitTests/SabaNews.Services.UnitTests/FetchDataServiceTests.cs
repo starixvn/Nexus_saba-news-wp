@@ -57,13 +57,13 @@
             var service = GetFetchDataService();
             var slug = Constants.VideoSlug;
             var page = fixture.Create<int>();
-            var param = new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug };
+            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
 
-            var paramGetPost = fixture.Create<GetPostsByCateSlugCriteria>();
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
             var category = fixture.Create<Category>();
-            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => paramGetPost = x)).Returns(posts);
+            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
 
             //Act
@@ -75,22 +75,22 @@
         }
 
         [Fact]
-        public async Task GetCategoryViewModel_WhenSlugIsNull_ReturnExpectedCategoryViewModel()
+        public async Task GetCategoryViewModel_WhenCallNewPostSlug_ReturnExpectedCategoryViewModel()
         {
             //Arrange
             var service = GetFetchDataService();
-            var slug = Constants.NewPostSlug;
-            var page = fixture.Create<int>();
-            var paramGetView = new GetPostsByCateSlugsParam();
-            var param = fixture.Create<GetRecentPostsParam>();
+            var slug = Constants.VideoSlug;
+            var param = new GetPostsByCateSlugsParam();
+
+            var paramGetRecent = fixture.Create<GetRecentPostsParam>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
             var category = new Category { CateId = 1, Description = "description", Title = "title" };
-            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(posts);
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => paramGetRecent = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
 
             //Act
-            var actual = await service.GetCategoryViewModel(paramGetView);
+            var actual = await service.GetCategoryViewModel(param);
 
             //Assert
             Assert.Equal(posts.ToArray(), actual.Posts);
@@ -106,19 +106,18 @@
         {
             //Arrange
             var service = GetFetchDataService();
-            var slug = Constants.Video;
-            var page = fixture.Create<int>();
-            var paramGetView = fixture.Create<GetPostsByCateSlugsParam>();
+            var slug = Constants.VideoSlug;
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
 
-            var param = fixture.Create<GetPostsByCateSlugCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var category = fixture.Create<Category>();
             IEnumerable<Post> posts = new List<Post>();
-            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => param = x)).Returns(posts);
+            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(posts);
             postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
 
             //Act
-            var actual = await service.GetCategoryViewModel(paramGetView);
+            var actual = await service.GetCategoryViewModel(param);
 
             //Assert
             Assert.Null(actual);

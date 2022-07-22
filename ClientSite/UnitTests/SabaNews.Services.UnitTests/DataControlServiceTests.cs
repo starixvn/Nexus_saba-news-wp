@@ -119,7 +119,7 @@ namespace SabaNews.Services.UnitTests
             //Assert
             Assert.Equal(expected, actual);
             logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
-            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<CategoryViewModel>(), Arg.Any<CacheItemOptions>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<BlogViewModel>(), Arg.Any<CacheItemOptions>());
 
         }
 
