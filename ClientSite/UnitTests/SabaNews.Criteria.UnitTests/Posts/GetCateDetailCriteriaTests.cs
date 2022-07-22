@@ -26,7 +26,7 @@
             // Arrange
             var criteria = new GetCateDetailCriteria()
             {
-                _Slug = slug
+                Slug = slug
             };
 
             // Act
@@ -42,7 +42,7 @@
             // Arrange
             var criteria = new GetCateDetailCriteria()
             {
-                _Slug = "slug"
+                Slug = "slug"
             };
 
             // Act

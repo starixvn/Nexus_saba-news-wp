@@ -68,11 +68,12 @@
             GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
-            var expectedViewModel = fixture.Create<CategoryViewModel>();
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Category(slug, page);
+            var result = await controller.Category(slug, slug, slug, page);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -84,17 +85,19 @@
         [Theory]
         [InlineData(Constants.FootballInside)]
         [InlineData(Constants.FootballOutside)]
+        [InlineData(Constants.FootballSlug)]
         public async Task Category_WhenSlugIsFootballChildrens_ReturnExpectedViewResult(string slug)
         {
             // Arrange
             var controller = GetController();
             GetDefaultContext(controller);
             var page = fixture.Create<int>();
-            var expectedViewModel = fixture.Create<CategoryViewModel>();
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Category(slug, page);
+            var result = await controller.Category(slug, slug, slug, page);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -111,11 +114,12 @@
             var controller = GetController();
             string slug = null;
             var page = fixture.Create<int>();
-            CategoryViewModel expectedViewModel = null;
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            BlogViewModel expectedViewModel = null;
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Category(slug, page);
+            var result = await controller.Category(slug, slug, slug, page);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -130,8 +134,9 @@
             GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
-            var expectedViewModel = fixture.Create<CategoryViewModel>();
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            var expectedViewModel = fixture.Create<BlogViewModel>();
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
             var result = await controller.Video(page);
@@ -150,9 +155,10 @@
             GetDefaultContext(controller);
             string slug = null;
             var page = fixture.Create<int>();
-            var expectedViewModel = fixture.Create<CategoryViewModel>();
+            var expectedViewModel = fixture.Create<BlogViewModel>();
             expectedViewModel.Posts = new List<Post>();
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
             var result = await controller.Video(page);
@@ -170,9 +176,10 @@
             var controller = GetController();
             GetDefaultContext(controller);
             string slug = null;
-            var page = fixture.Create<int>();
-            CategoryViewModel expectedViewModel = null;
-            dataControlService.GetCategoryViewModel(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => page = x)).Returns(expectedViewModel);
+            var param = fixture.Create<GetPostsByCateSlugsParam>();
+            var page = 1;
+            BlogViewModel expectedViewModel = null;
+            dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
             var result = await controller.Video(page);

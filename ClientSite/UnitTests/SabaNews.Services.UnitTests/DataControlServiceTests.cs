@@ -89,12 +89,12 @@ namespace SabaNews.Services.UnitTests
         {
             var service = GetDataControlServiceUsingCache();
             var slug = fixture.Create<string>();
-            var page = 1;
             var key = fixture.Create<string>();
-            var expected = fixture.Create<CategoryViewModel>();
-            cacheWrapperService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
+            var param = new GetPostsByCateSlugsParam { Slug1 = Constants.FootballSlug, Page = 1 };
+            var expected = fixture.Create<BlogViewModel>();
+            cacheWrapperService.GetAsync<BlogViewModel>(Arg.Do<string>(x => x = key)).Returns(expected);
             //Act
-            var actual = await service.GetCategoryViewModel(slug, page);
+            var actual = await service.GetCategoryViewModel(param);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -107,14 +107,14 @@ namespace SabaNews.Services.UnitTests
             var service = GetDataControlServiceUsingCache();
             var key = fixture.Create<string>();
             var slug = fixture.Create<string>();
-            var page = 1;
-            CategoryViewModel expectedFromCache = null;
-            var expected = fixture.Create<CategoryViewModel>();
-            cacheWrapperService.GetAsync<CategoryViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
-            fetchDataService.GetCategoryViewModel(Arg.Do<string>(x => x = slug), Arg.Do<int>(x => x = page)).Returns(expected);
+            var param = new GetPostsByCateSlugsParam { Slug1 = Constants.FootballSlug, Page = 1 };
+            BlogViewModel expectedFromCache = null;
+            var expected = fixture.Create<BlogViewModel>();
+            cacheWrapperService.GetAsync<BlogViewModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            fetchDataService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => x = param)).Returns(expected);
 
             //Act
-            var actual = await service.GetCategoryViewModel(slug, page);
+            var actual = await service.GetCategoryViewModel(param);
 
             //Assert
             Assert.Equal(expected, actual);
@@ -130,11 +130,12 @@ namespace SabaNews.Services.UnitTests
             var key = fixture.Create<string>();
             var slug = fixture.Create<string>();
             var page = 2;
-            var expected = fixture.Create<CategoryViewModel>();
-            fetchDataService.GetCategoryViewModel(Arg.Do<string>(x => x = slug), Arg.Do<int>(x => x = page)).Returns(expected);
+            var param = new GetPostsByCateSlugsParam { Page = 2, Slug1 = "slug1", Slug2 = "slug2" };
+            var expected = fixture.Create<BlogViewModel>();
+            fetchDataService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => x = param)).Returns(expected);
 
             //Act
-            var actual = await service.GetCategoryViewModel(slug, page);
+            var actual = await service.GetCategoryViewModel(param);
 
             //Assert
             Assert.Equal(expected, actual);

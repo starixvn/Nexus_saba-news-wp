@@ -55,7 +55,7 @@
             Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
             Assert.Null(viewModel.Post);
             Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CatId, viewModel.Header.CategoryId);
+            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
             Assert.Equal(pageDetail.Title, viewModel.Header.Title);
             Assert.Equal(pageDetail.Title, viewModel.Header.Description);
             Assert.Null(viewModel.Header.HeadTitle);
@@ -90,7 +90,7 @@
             Assert.Equal("~/Views/Livescore/Soccer/Index.cshtml", viewResult.ViewName);
             Assert.Null(viewModel.Post);
             Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CatId, viewModel.Header.CategoryId);
+            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
             Assert.Equal(pageDetail.Title, viewModel.Header.Title);
             Assert.Equal(pageDetail.Description, viewModel.Header.Description);
             Assert.Null(viewModel.Header.HeadTitle);
@@ -150,7 +150,7 @@
             Assert.Equal("~/Views/Livescore/Soccer/Live.cshtml", viewResult.ViewName);
             Assert.Null(viewModel.Post);
             Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CatId, viewModel.Header.CategoryId);
+            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
             Assert.Equal(pageDetail.Title, viewModel.Header.Title);
             Assert.Equal(pageDetail.Title, viewModel.Header.Description);
             Assert.Null(viewModel.Header.HeadTitle);
@@ -184,7 +184,7 @@
             Assert.Equal("~/Views/Livescore/Soccer/Live.cshtml", viewResult.ViewName);
             Assert.Null(viewModel.Post);
             Assert.Equal(pageDetail, viewModel.Category);
-            Assert.Equal(pageDetail.CatId, viewModel.Header.CategoryId);
+            Assert.Equal(pageDetail.CateId, viewModel.Header.CategoryId);
             Assert.Equal(pageDetail.Title, viewModel.Header.Title);
             Assert.Equal(pageDetail.Description, viewModel.Header.Description);
             Assert.Null(viewModel.Header.HeadTitle);
