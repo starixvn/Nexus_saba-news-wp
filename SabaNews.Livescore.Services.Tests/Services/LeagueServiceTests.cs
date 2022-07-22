@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using AutoFixture;
     using NSubstitute;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -44,6 +45,65 @@
             baseService.GetDataAsync<League>(Arg.Any<GetLeaguesCriteria>()).Returns(leagues);
             var actual = await service.GetLeaguesAsync();
             Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetAllLeaguesAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var service = GetService();
+            var fixture = new Fixture();
+            var leagues = fixture.Create<IList<League>>();
+            baseService.GetDataAsync<League>(Arg.Any<GetAllLeaguesCriteria>()).Returns(leagues);
+            var actual = await service.GetAllLeaguesAsync();
+            Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task UpdateLeaguesExtraAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateLeagueExtraCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.UpdateLeaguesExtraAsync(model.LeagueId, model.Priority, model.IsMajor);
+
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task DeleteLeaguesExtraAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<DeleteLeagueExtraCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<DeleteLeagueExtraCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.DeleteLeaguesExtraAsync(model.LeagueId);
+
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task InsertLeaguesExtraAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<InsertLeagueExtraCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<InsertLeagueExtraCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.InsertLeaguesExtraAsync(model.LeagueId);
+
+            //Assert
+            Assert.True(actual.IsSuccessful);
         }
 
         private LeagueService GetService()

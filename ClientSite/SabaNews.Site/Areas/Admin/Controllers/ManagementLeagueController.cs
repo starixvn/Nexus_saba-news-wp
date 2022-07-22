@@ -101,31 +101,34 @@
                 || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))
                 || (x.LeagueNameEN != null && x.LeagueNameEN.Contains(search))).ToList();
             }
-            if (isMajor == 1){
-                leagues = leagues.Where(x => x.IsMajor == true).ToList();
-            }
-            if (isMajor == 0){
-                leagues = leagues.Where(x => x.IsMajor == false).ToList();
+            switch (isMajor)
+            {
+                case 1:
+                    leagues = leagues.Where(x => x.IsMajor == true).ToList();
+                    break;
+                case 0:
+                    leagues = leagues.Where(x => x.IsMajor == false).ToList();
+                    break;                
             }
             return leagues;
         }
 
         private static IList<League> Sort(IList<League> leagues, int typeSort)
         {
-            if (typeSort == 1){
-                leagues = leagues.OrderBy(x => x.Priority).ToList();
-            }
-            else if(typeSort == 2)
+            switch (typeSort)
             {
-                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
-            }
-            else if (typeSort == 3)
-            {
-                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
-            }
-            else if (typeSort == 4)
-            {
-                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
+                case 1:
+                    leagues = leagues.OrderBy(x => x.Priority).ToList();
+                    break; 
+                case 2:
+                    leagues = leagues.OrderByDescending(x => x.Priority).ToList();
+                    break;
+                case 3:
+                    leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
+                    break;
+                case 4:
+                    leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
+                    break;
             }
             return leagues;
         }
