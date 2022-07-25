@@ -177,29 +177,27 @@
         @foreach (var slug in arraySlugs)
         {
             if (slug == null) break;
-            count++;
             var menu = Model.Menus.FirstOrDefault(item => item.CateSlug == slug);
+            if (menu == null) break;
+            count++;
             var coMenu = Model.Menus.Where(item => item.ParentId == menu.ParentId);
             menuLink = count == 1 ? getMenuLink(menu) : $"{menuLink}/{menu.CateSlug}";
             var active = count == arraySlugs.Length ? "active" : "";
-            if (menu != null)
-            {
-                <li>
-                    <div class="menu-select @active">
-                        <a href="@menuLink">@menu.MenuTitle</a>
-                        <select class="select_ad" onChange="window.location.href=this.value">
-                            @foreach (var item in coMenu)
-                            {
-                                var selected = menu.PostId == item.PostId ? "selected" : "";
-                                var subLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = (string)null, slug3 = (string)null });
-                                var link = item.ParentId == 0 ? getMenuLink(item) : $"{subLink}/{item.CateSlug}";
+            <li>
+                <div class="menu-select @active">
+                    <a href="@menuLink">@menu.MenuTitle</a>
+                    <select class="select_ad" onChange="window.location.href=this.value">
+                        @foreach (var item in coMenu)
+                        {
+                            var selected = menu.PostId == item.PostId ? "selected" : "";
+                            var subLink = Url.Action("Category", "Home", new { slug1 = Model.Slugs.Slug1, slug2 = (string)null, slug3 = (string)null });
+                            var link = item.ParentId == 0 ? getMenuLink(item) : $"{subLink}/{item.CateSlug}";
 
-                                <!option class="@selected" @selected value="@link">@item.MenuTitle</!option>
-                            }
-                        </select>
-                    </div>
-                </li>
-            }
+                            <!option class="@selected" @selected value="@link">@item.MenuTitle</!option>
+                        }
+                    </select>
+                </div>
+            </li>
         }
         @if (arraySlugs.Length == 0)
         {
