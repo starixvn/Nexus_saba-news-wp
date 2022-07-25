@@ -3,6 +3,7 @@
     public static class Constants
     {
         public const int Home = 587;
+        public const int PostsId = 175; 
 
         public const string HomeSlug = "home-3";
         public const string NewPostSlug = "tin-the-thao";

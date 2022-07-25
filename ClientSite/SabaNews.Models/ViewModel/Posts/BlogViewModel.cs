@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Models.ViewModel.Posts
 {
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Models.Posts;
     using System.Collections.Generic;
@@ -43,7 +44,7 @@
         {
             get
             {
-                return (Category != null && !string.IsNullOrEmpty(Category.CateParentName) && Category.CateParentId != 175) ? Category.CateParentName : Header.HeadTitle;
+                return (Category != null && !string.IsNullOrEmpty(Category.CateParentName) && Category.CateParentId != Constants.PostsId) ? Category.CateParentName : Header.HeadTitle;
             }
         }
 
