@@ -67,10 +67,7 @@
 
             viewModel.Header.ActiveCategory = slug1;
             viewModel.Paging.Href = Url.Action("Category", "Home", new { slug1, page = (int?)null });
-            if (slug1 == Constants.FootballSlug)
-            {
-                viewModel.Menus = await dataControlService.GetMenuData();
-            }
+            viewModel.Menus = await dataControlService.GetMenuData();
             return View(Constants.BlogView, viewModel);
         }
 
