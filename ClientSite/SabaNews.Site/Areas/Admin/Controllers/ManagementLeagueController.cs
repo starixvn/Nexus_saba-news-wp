@@ -97,7 +97,7 @@
         private static IList<League> Searching(IList<League> leagues, string search, int isMajor)
         {
             if (search != null){
-                leagues = leagues.Where(x => x.LeagueFullNameEN.Contains(search) 
+                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.Contains(search))
                 || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))
                 || (x.LeagueNameEN != null && x.LeagueNameEN.Contains(search))).ToList();
             }
