@@ -225,6 +225,7 @@
 @functions {
     private string getMenuLink(Menu menu, string oldLink = null)
     {
+        if (menu == null) return null;
         var link = "/tin-the-thao/" + menu.CateSlug;
         link = oldLink == null ? link : oldLink + "/" + menu.CateSlug;
         if (menu.PageSlug == Constants.MatchScheduleSlug)
