@@ -140,7 +140,7 @@
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
             var menuName = configuration.GetValue<string>("MenuName");
-            var menus = await postService.GetMenuAsync(menuName);
+            var menus = await postService.GetMenuAsync(MenuKey.NewSiteMenu);
             return menus;
         }
 
