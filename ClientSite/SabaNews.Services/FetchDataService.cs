@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services
 {
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
@@ -17,10 +18,12 @@
     public class FetchDataService : IFetchDataService
     {
         private readonly IPostService postService;
+        private readonly IConfiguration configuration;
 
-        public FetchDataService(IPostService postService)
+        public FetchDataService(IPostService postService, IConfiguration configuration)
         {
             this.postService = postService;
+            this.configuration = configuration;
         }
 
         public async Task<PostViewModel> GetHomePageViewModel()
@@ -136,7 +139,8 @@
 
         public async Task<IEnumerable<Menu>> GetMenuData()
         {
-            var menus = await postService.GetMenuAsync(MenuKey.NewSiteMenu);
+            var menuName = configuration.GetValue<string>("MenuName");
+            var menus = await postService.GetMenuAsync(menuName);
             return menus;
         }
 
