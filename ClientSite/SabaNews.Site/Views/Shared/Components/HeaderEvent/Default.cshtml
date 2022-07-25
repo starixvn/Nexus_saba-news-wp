@@ -116,31 +116,32 @@
                         {
 
                             var link = Url.Action("Category", "Home", new { slug = menu.Slug });
+                            var slug = menu.Slug;
                             if (menu.PageSlug == Constants.MatchScheduleSlug)
                             {
-                                menu.Slug = menu.PageSlug;
+                                slug = menu.PageSlug;
                                 link = Url.Action("Index", "Soccer");
                             }
                             else if (menu.PageSlug == Constants.WarningSlug)
                             {
-                                menu.Slug = menu.PageSlug;
+                                slug = menu.PageSlug;
                                 link = Url.Action("Warning", "Home");
                             }
                             else if (menu.Slug == Constants.VideoSlug)
                             {
-                                VideoParentId = menu.ID;
+                                VideoParentId = menu.PostId;
                                 link = Url.Action("Video", "Home", new { slug = (int?)null });
                             }
                             else if (menu.Slug == Constants.Euro2020Slug)
                             {
                                 link = Url.Action("index", "Euro2020");
                             }
-                            if (menu.CatId != Constants.Home)
+                            if (menu.CateId != Constants.Home)
                             {
-                                var activeMenu = menu.Slug == Constants.Euro2020Slug ? "active" : "";
+                                var activeMenu = slug == Constants.Euro2020Slug ? "active" : "";
                                 <li class="menu-item">
-                                    <a href="@link" class="item @activeMenu">@(menu.Name.Trim() == "" ? menu.Title : menu.Name)</a>
-                                    @if (menu.Slug == Constants.GuessSlug)
+                                    <a href="@link" class="item @activeMenu">@(menu.MenuTitle)</a>
+                                    @if (slug == Constants.GuessSlug)
                                     {
                                         <span class="marked-icon"></span>
                                     }
