@@ -3,7 +3,14 @@ DROP PROCEDURE IF EXISTS get_page_detail_by_slug;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_page_detail_by_slug`(Slug varchar(50))
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_page_detail_by_slug`(
+	Slug varchar(255)
+	/*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+    */
+)
 BEGIN
 	SELECT p.post_title as title, p.ID as CateId
     ,(SELECT meta_value FROM wp_postmeta pm1  WHERE  meta_key = "rank_math_title" AND pm1.post_id = p.ID) as SEOTitle

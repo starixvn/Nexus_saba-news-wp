@@ -3,7 +3,14 @@ DROP PROCEDURE IF EXISTS get_menu;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_menu`(_menu_name VARCHAR(50))
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_menu`(
+	_menu_name VARCHAR(255)
+	 /*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+    */
+)
 get_menu:BEGIN
 	SELECT p.ID as PostId, p.post_title as PostTitle
 	, pl.meta_value as CateId, pp.meta_value as ParentId, t.name as CateTitle, t.slug as CateSlug

@@ -3,7 +3,14 @@ DROP PROCEDURE IF EXISTS get_category_detail;
 
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(slug varchar(50))
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_category_detail`(
+	slug varchar(255)
+	/*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+    */
+)
 BEGIN
 	DECLARE count  INT;
 	DECLARE cateId INT;

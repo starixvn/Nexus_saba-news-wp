@@ -12,6 +12,12 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_cate_slugs`(
     end INT,
     OUT slug VARCHAR(255),
     OUT TotalItems int  
+	
+	/*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+    */
 )
 GetSlug:BEGIN
 	DECLARE count  INT;

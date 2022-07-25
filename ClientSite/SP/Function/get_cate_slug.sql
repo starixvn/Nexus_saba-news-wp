@@ -8,6 +8,11 @@ CREATE DEFINER=`sabasports`@`%` FUNCTION `get_cate_slug`(
 	slug1 VARCHAR(255),
 	slug2 VARCHAR(255),
     slug3 VARCHAR(255)
+	/*
+		Creator: Hank@20220720
+        Revisions:
+			- 20220720@Hank: init
+    */
 ) RETURNS varchar(255) CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci
     DETERMINISTIC
 BEGIN
