@@ -68,7 +68,7 @@
             }
 
             var err = await response.Content.ReadAsStringAsync();
-            await logService.WriteMessageSentryErrorAsync(err);
+            await logService.WriteMessageSentryErrorAsync($"API: {endPoint} - Params: {JsonConvert.SerializeObject(data)} - Message: {err}");
             return default;
         }
 
