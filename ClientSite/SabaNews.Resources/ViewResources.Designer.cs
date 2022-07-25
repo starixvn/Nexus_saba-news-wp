@@ -511,6 +511,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country VN.
+        /// </summary>
+        public static string CountryVN {
+            get {
+                return ResourceManager.GetString("CountryVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created By.
         /// </summary>
         public static string CreatedBy {
@@ -1035,8 +1053,7 @@ namespace SabaNews.Resources {
         /// <summary>
         ///   Looks up a localized string similar to League Name VN.
         /// </summary>
-        public static string LeagueNameVN
-        {
+        public static string LeagueNameVN {
             get {
                 return ResourceManager.GetString("LeagueNameVN", resourceCulture);
             }

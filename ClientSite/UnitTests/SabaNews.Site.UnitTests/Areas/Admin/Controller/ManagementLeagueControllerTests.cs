@@ -65,13 +65,11 @@
         {
             // Arrange
             var controller = GetController();
-            var leagueId = new Fixture().Create<int>();
-            var priority = new Fixture().Create<int>();
-            var isMajor = new Fixture().Create<bool>();
+            var league = new Fixture().Create<League>();
             var expected = new Fixture().Create<CommandResult>();
-            leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor).Returns(expected);
+            leagueService.UpdateLeaguesExtraAsync(league).Returns(expected);
             //Act
-            var result = await controller.ChangeMajor(leagueId, priority, isMajor);
+            var result = await controller.ChangeMajor(league);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
@@ -84,13 +82,11 @@
         {
             // Arrange
             var controller = GetController();
-            var leagueId = new Fixture().Create<int>();
-            var priority = new Fixture().Create<int>();
-            var isMajor = new Fixture().Create<bool>();
+            var league = new Fixture().Create<League>();
             var expected = new Fixture().Create<CommandResult>();
-            leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor).Returns(expected);
+            leagueService.UpdateLeaguesExtraAsync(league).Returns(expected);
             //Act
-            var result = await controller.ChangePriority(leagueId, priority, isMajor);
+            var result = await controller.ChangePriority(league);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);

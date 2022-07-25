@@ -4,7 +4,7 @@
 
     public class UpdateLeagueExtraCriteria : BaseNonQueryCommand
     {
-        public int LeagueId { get; set; }
+        public long LeagueId { get; set; }
         public int Priority { get; set; }
         public bool IsMajor { get; set; }
         public override string GetSettingKey() => "Livescore_League_Extra_Update";

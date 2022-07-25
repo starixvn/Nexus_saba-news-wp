@@ -43,18 +43,18 @@
             return leagues.ToList();
         }
 
-        public async Task<CommandResult> UpdateLeaguesExtraAsync(int leagueId, int priotiry, bool isMajor)
+        public async Task<CommandResult> UpdateLeaguesExtraAsync(League league)
         {
             var command = new UpdateLeagueExtraCriteria
             {
-                LeagueId = leagueId,
-                Priority = priotiry,
-                IsMajor = isMajor
+                LeagueId = league.LeagueId,
+                Priority = league.Priority,
+                IsMajor = league.IsMajor
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> DeleteLeaguesExtraAsync(int leagueId)
+        public async Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId)
         {
             var command = new DeleteLeagueExtraCriteria
             {
@@ -63,7 +63,7 @@
             return await baseService.ExecuteNonQueryAsync(command);
         }
 
-        public async Task<CommandResult> InsertLeaguesExtraAsync(int leagueId)
+        public async Task<CommandResult> InsertLeaguesExtraAsync(long leagueId)
         {
             var command = new InsertLeagueExtraCriteria
             {

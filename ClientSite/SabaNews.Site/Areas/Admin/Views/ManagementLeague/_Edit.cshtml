@@ -1,0 +1,65 @@
+﻿@using SabaNews.Resources
+
+<table width="100%">
+    <tbody>
+        <tr>
+            <td style="vertical-align: top;">
+                <form id="edit-league">
+                    <div class="error-message"></div>
+                    <table style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label>@ViewResources.Major</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="checkbox-major" id="Major" name="Major" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>@ViewResources.Priority</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="txt-priority" id="Priority" name="Priority"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>@ViewResources.Country</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="txt-country" id="Country" name="Country"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>@ViewResources.CountryVN</label>
+                                </td>
+                                <td>
+                                    <input type="text" class="txt-countryVn" id="CountryVN" name="CountryVN"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label>@ViewResources.LeagueNameVN</label>
+                                </td>
+                                <td width="30%">
+                                    <input type="text" class="txt-leagueNameVn" id="LeagueNameVN" name="LeagueNameVN"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-btn">
+                        <button class="btn btn-primary pl-4 pr-4" type="submit">Save</button>
+                        <button class="btn btn-secondary pl-4 pr-4" type="button" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -56,11 +56,24 @@
                 data: { priority }
             });
         });
+
         $('.btn-Delete').on('click', function () {
             url = $(this).data('url');
             $('#ConfirmModal .confirm-action').data('action', 'remove');
             $('#ConfirmModal .modal-body').html('Are you sure you want to remove this league ?');
             $('#ConfirmModal').modal('show');
+        });
+
+        $('.btn-Edit').on('click', function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Admin/ManagementLeague/EditLeague',
+                success: function (html) {
+                    $('#EditLeagueContent .title').html('Edit League');
+                    $('#EditLeagueContent .modal-body').html(html);
+                    $('#EditLeagueContent').modal('show');
+                }
+            })
         });
     }
 

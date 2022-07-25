@@ -47,6 +47,12 @@
             return PartialView("_ManagementLeagueDataGrid", viewModel);
         }
 
+        [HttpGet]
+        public ActionResult EditLeague()
+        {            
+            return PartialView("_Edit");
+        }
+
         public async Task<ActionResult> GetAllLeagues(ManagementAddLeagueFilterModel model)
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
@@ -70,25 +76,25 @@
             return PartialView("_AddLeagueDataGrid", viewModel);
         }
 
-        public async Task<ActionResult> ChangeMajor(int leagueId, int priority, bool isMajor)
+        public async Task<ActionResult> ChangeMajor(League league)
         {         
-            var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
+            var result = await leagueService.UpdateLeaguesExtraAsync(league);
             return Json(result);
         }
 
-        public async Task<ActionResult> ChangePriority(int leagueId, int priority, bool isMajor)
+        public async Task<ActionResult> ChangePriority(League league)
         {
-            var result = await leagueService.UpdateLeaguesExtraAsync(leagueId, priority, isMajor);
+            var result = await leagueService.UpdateLeaguesExtraAsync(league);
             return Json(result);
         }
 
-        public async Task<ActionResult> RemoveLeagueExtra(int leagueId)
+        public async Task<ActionResult> RemoveLeagueExtra(long leagueId)
         {
             var result = await leagueService.DeleteLeaguesExtraAsync(leagueId);
             return Json(result);
         }
 
-        public async Task<ActionResult> AddLeagueExtra(int leagueId)
+        public async Task<ActionResult> AddLeagueExtra(long leagueId)
         {
             var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
             return Json(result);

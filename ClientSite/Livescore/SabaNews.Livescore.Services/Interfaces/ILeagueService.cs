@@ -12,8 +12,8 @@
         Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria);
         Task<IList<League>> GetLeaguesAsync();
         Task<IList<League>> GetAllLeaguesAsync();
-        Task<CommandResult> UpdateLeaguesExtraAsync(int leagueId, int priority, bool isMajor);
-        Task<CommandResult> DeleteLeaguesExtraAsync(int leagueId);
-        Task<CommandResult> InsertLeaguesExtraAsync(int leagueId);
+        Task<CommandResult> UpdateLeaguesExtraAsync(League league);
+        Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId);
+        Task<CommandResult> InsertLeaguesExtraAsync(long leagueId);
     }
 }

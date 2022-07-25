@@ -5,7 +5,7 @@
 
     public class InsertLeagueExtraCriteria : BaseNonQueryCommand
     {
-        public int LeagueId { get; set; }
+        public long LeagueId { get; set; }
         public int Priority { get; set; }
         public bool IsMajor { get; set; }
         public DateTime CreatedDate { get; set; }

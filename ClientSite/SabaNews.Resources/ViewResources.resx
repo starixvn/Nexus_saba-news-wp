@@ -900,4 +900,10 @@
   <data name="LeagueNameVN" xml:space="preserve">
     <value>League Name VN</value>
   </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="CountryVN" xml:space="preserve">
+    <value>Country VN</value>
+  </data>
 </root>

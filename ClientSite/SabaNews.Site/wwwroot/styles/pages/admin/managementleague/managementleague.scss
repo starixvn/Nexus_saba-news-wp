@@ -39,17 +39,64 @@
     }
 }
 
+#EditLeagueContent .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .modal-body {
+        padding: 1rem 1.6rem !important;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+    input {
+        width: 410px !important;
+        height: 33px;
+        padding: 5px;
+    }
+
+    .form-btn {
+        padding-top: 15px;
+        padding-right: 5px;
+        text-align: right;
+    }
+
+    .form-btn .btn {
+        margin-left: 12px;
+        width: 80px;
+        font-size: 15px;
+    }
+
+    .error-message {
+        display: none;
+        background-color: #faa;
+        border: solid 1px #a00;
+        padding: 10px 30px;
+        color: #333;
+        margin: 0 0 10px;
+    }
+}
+
 .add-league {
     border-top: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
     border-left: 1px solid #e3e3e3;
-    height: 4rem;
+    height: 4.2rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     background: #ededed;
     padding: 0 1rem;
-    max-width: 100.8rem;
+    max-width: 100%;
 }
 
 .filter {
@@ -60,9 +107,41 @@
     width: 70px;
 }
 
+.btn_league {
+    background-color: #6699FF;
+    border: none;
+    color: white;
+    padding: 1px 10px;
+    margin-right: -5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.btn_league:hover {
+    cursor: pointer;
+    background-color: #3333FF;
+    border: none;
+    color: white;
+    padding: 1px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.icon-add-league {
+    width: 20px;
+    height: 20px;
+    margin: -2px 5px 0 0;
+}
+
 .table-admin {
     margin-top: 0;
-    max-width: 100.8rem;
+    max-width: 100%;
 
     .priority-league {
         width: 30px;
@@ -78,6 +157,15 @@
 
     .icon-delete-admin {
         font-size: 20px;
+    }
+
+    .icon-edit-admin {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+
+    .icon-edit-admin:hover {
+        cursor: pointer;
     }
 
     .main-pagination {

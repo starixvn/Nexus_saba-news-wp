@@ -27,15 +27,17 @@
         <div class="form-input">
             <p class="label-admin">@ViewResources.IsMajor</p>
             <select class="custom-input list-input filter-majorLeague" name="status" id="major">
-                <option value="-1" >@ViewResources.All</option>
-                <option value="1" >@ViewResources.Yes</option>
-                <option value="0" >@ViewResources.No</option>
+                <option value="-1">@ViewResources.All</option>
+                <option value="1">@ViewResources.Yes</option>
+                <option value="0">@ViewResources.No</option>
             </select>
         </div>
         <button class="btn-custom-admin" type="submit" id="submit-btn">@ViewResources.Submit</button>
     </div>
     <div class="content">
-        <div class="add-league btn_league"><a href="javascript:;" class="label label-blue">@ViewResources.AddLeague</a></div>
+        <div class="add-league">
+            <button href="javascript:;" class="label label-blue btn-link btn_league"><img src="~/images/icon/icon-plus.png" class="icon-add-league" />@ViewResources.AddLeague</button>
+        </div>
         <div class="data-grid" id="data-grid"></div>
     </div>
 
@@ -87,6 +89,22 @@
                 <div class="button-confirm">
                     <button class="btn-custom-outline confirm-action">Yes</button>
                     <button data-dismiss="modal" aria-label="Close" class="btn-custom-admin">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="EditLeagueContent" style="display:none">
+        <div class="modal-content">
+            <div class="modal-warning">
+                <div class="modal-title">
+                    <h2 class="title"></h2>
+                    <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                        <i class="icon-close"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body ck-content">
                 </div>
             </div>
         </div>
