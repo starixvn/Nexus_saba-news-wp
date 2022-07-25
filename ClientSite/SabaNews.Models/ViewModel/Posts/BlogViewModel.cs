@@ -20,7 +20,7 @@
             if (Menus.Any() && cateSlug != null)
             {
                 var menuItem = GetMenuDetail(cateSlug);
-                menu = Menus.Where(item => item.ParentId == menuItem.PostId).ToList();
+                menu = Menus?.Where(item => item.ParentId == menuItem?.PostId).ToList();
             }
             return menu;
         }
@@ -35,7 +35,7 @@
             if (Menus.Any() && cateSlug != null)
             {
                 var menuItem = GetMenuDetail(cateSlug);
-                menu = Menus.Where(item => item.ParentId == menuItem.ParentId).ToList();
+                menu = Menus?.Where(item => item.ParentId == menuItem?.ParentId).ToList();
             }
             return menu;
         }
