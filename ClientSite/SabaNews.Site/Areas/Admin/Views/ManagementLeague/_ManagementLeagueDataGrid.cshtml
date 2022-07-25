@@ -31,8 +31,9 @@
                             </td>
                             <td class="text-center" width="9%">
                                 <input type="text" class="text-center priority-league"
+                                       data-id="@league.LeagueId"
                                        data-url="@Url.Action("ChangePriority", "ManagementLeague", new { leagueId = league.LeagueId, isMajor = league.IsMajor})"
-                                       value="@league.Priority" id="textPriority" />
+                                       value="@league.Priority" id="@league.LeagueId" />
                             </td>
                             <td class="text-center" width="8%">
                                 <i class="icon icon-delete-admin btn-Delete"

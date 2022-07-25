@@ -48,7 +48,8 @@
 
         $(".priority-league").blur(function () {
             var url = $(this).data('url');
-            var priority = document.getElementById("textPriority").value;
+            var id = $(this).data('id');
+            var priority = document.getElementById(id).value;
             $.ajax({
                 type: 'POST',
                 url: url,
