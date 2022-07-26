@@ -16,10 +16,10 @@
     public class ManagementLeagueController : AdminController
     {
         private readonly ILeagueService leagueService;
-        private static readonly int priorityAscending = 1;
-        private static readonly int priorityDescending = 2;
-        private static readonly int createdDateDescending = 3;
-        private static readonly int createdDateAscending = 4;
+        private const int priorityAscending = 1;
+        private const int priorityDescending = 2;
+        private const int createdDateDescending = 3;
+        private const int createdDateAscending = 4;
         public ManagementLeagueController(
             ILeagueService leagueService)
         {
@@ -130,7 +130,7 @@
             if(isMajor == 1){
                 leagues = leagues.Where(x => x.IsMajor).ToList();
             }
-            else if (isMajor == 0)
+            if (isMajor == 0)
             {
                 leagues = leagues.Where(x => !x.IsMajor).ToList();
             }            
@@ -142,15 +142,15 @@
             if (typeSort == priorityAscending) { 
                 leagues = leagues.OrderBy(x => x.Priority).ToList();
             }
-            else if (typeSort == priorityDescending)
+            if (typeSort == priorityDescending)
             {
                 leagues = leagues.OrderByDescending(x => x.Priority).ToList();
             }
-            else if (typeSort == createdDateDescending)
+            if (typeSort == createdDateDescending)
             {
                 leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
             }
-            else if (typeSort == createdDateAscending)
+            if (typeSort == createdDateAscending)
             {
                 leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
             }
