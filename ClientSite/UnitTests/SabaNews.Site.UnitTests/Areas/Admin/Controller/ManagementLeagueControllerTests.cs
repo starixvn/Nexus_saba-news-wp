@@ -6,6 +6,8 @@
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Site.Areas.Admin.Controllers;
     using System.Collections.Generic;
@@ -123,6 +125,22 @@
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expected, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task GetEditLeague_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var LeagueId = new Fixture().Create<long>();
+            var expected = new Fixture().Create<IList<League>>();
+            leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + LeagueId.ToString() + "]") }).Returns(expected);
+            //Act
+            var result = await controller.EditLeague(LeagueId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("_Edit", viewResult.ViewName);
         }
 
         #region Helpers

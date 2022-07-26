@@ -65,10 +65,11 @@
             var service = GetService();
             var fixture = new Fixture();
             var model = fixture.Create<UpdateLeagueExtraCriteria>();
+            var league = fixture.Create<League>();
             var expected = new CommandResult { Code = 0 };
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
-            var actual = await service.UpdateLeaguesExtraAsync(model.LeagueId, model.Priority, model.IsMajor);
+            var actual = await service.UpdateLeaguesExtraAsync(league);
 
             //Assert
             Assert.True(actual.IsSuccessful);

@@ -4,6 +4,8 @@
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Models.ManagementLeague;
     using SabaNews.Models.ViewModel.User;
     using System;
     using System.Collections.Generic;
@@ -48,9 +50,30 @@
         }
 
         [HttpGet]
-        public ActionResult EditLeague()
-        {            
-            return PartialView("_Edit");
+        public async Task<ActionResult> EditLeague(long leagueId)
+        {
+            IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("["+leagueId.ToString()+"]")});
+            
+            return PartialView("_Edit", league);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditLeague(LeagueUpdateViewModel leagueUpdate)
+        {
+            var resultUpdateLeague = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
+            {
+                LeagueId = leagueUpdate.LeagueId,
+                LeagueNameVN = leagueUpdate.LeagueNameVN,
+                Country = leagueUpdate.Country,
+                CountryVN = leagueUpdate.CountryVN.ToUpper()
+            });
+            _ = await leagueService.UpdateLeaguesExtraAsync(new League
+            {
+                LeagueId = leagueUpdate.LeagueId,
+                IsMajor = leagueUpdate.IsMajor,
+                Priority = leagueUpdate.Priority
+            });
+            return Json(resultUpdateLeague);
         }
 
         public async Task<ActionResult> GetAllLeagues(ManagementAddLeagueFilterModel model)

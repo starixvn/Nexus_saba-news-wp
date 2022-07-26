@@ -101,37 +101,76 @@
     #AddLeagueContent .modal-content .table-admin .main-pagination .items-pagination {
       margin-top: 1px !important; }
 
-#EditLeagueContent .modal-content {
+.modal-edit-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
-  #EditLeagueContent .modal-content .modal-body {
-    padding: 1rem 1.6rem !important; }
-  #EditLeagueContent .modal-content td {
-    padding: 5px; }
-  #EditLeagueContent .modal-content label {
-    display: inline-block;
-    margin-bottom: 0; }
-  #EditLeagueContent .modal-content input {
-    width: 410px !important;
-    height: 33px;
-    padding: 5px; }
-  #EditLeagueContent .modal-content .form-btn {
-    padding-top: 15px;
-    padding-right: 5px;
-    text-align: right; }
-  #EditLeagueContent .modal-content .form-btn .btn {
-    margin-left: 12px;
-    width: 80px;
-    font-size: 15px; }
-  #EditLeagueContent .modal-content .error-message {
-    display: none;
-    background-color: #faa;
-    border: solid 1px #a00;
-    padding: 10px 30px;
-    color: #333;
-    margin: 0 0 10px; }
+
+#EditLeagueContent .modal-content .modal-body {
+  padding: 1rem 1.6rem !important; }
+
+#EditLeagueContent .modal-content .row {
+  display: inline;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+  margin: 0; }
+
+#EditLeagueContent .modal-content td {
+  padding: 7px; }
+
+#EditLeagueContent .modal-content label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333; }
+
+#EditLeagueContent .modal-content .lable-major {
+  margin-left: 120px; }
+
+#EditLeagueContent .modal-content .checkbox-major {
+  margin-left: 20px; }
+
+#EditLeagueContent .modal-content .form-control {
+  display: block;
+  height: 31px;
+  padding: 5px 8px;
+  line-height: 1.5;
+  border: 1px solid #CCC;
+  font-size: 14px;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+
+#EditLeagueContent .modal-content .txt-country, #EditLeagueContent .modal-content .txt-countryVn, #EditLeagueContent .modal-content .txt-leagueNameVn {
+  width: 397px !important;
+  margin-left: -282px; }
+
+#EditLeagueContent .modal-content .txt-countryVn {
+  text-transform: uppercase; }
+
+#EditLeagueContent .modal-content .txt-priority {
+  width: 50px !important;
+  margin-left: 84px; }
+
+#EditLeagueContent .modal-content .form-btn {
+  padding-top: 15px;
+  padding-right: 5px;
+  text-align: right; }
+
+#EditLeagueContent .modal-content .form-btn .btn {
+  margin-left: 12px;
+  width: 80px;
+  font-size: 15px; }
+
+#EditLeagueContent .modal-content .error-message {
+  display: none;
+  background-color: #faa;
+  border: solid 1px #a00;
+  padding: 10px 30px;
+  color: #333;
+  margin: 0 0 10px; }
 
 .add-league {
   border-top: 1px solid #e3e3e3;
@@ -189,11 +228,8 @@
     cursor: pointer; }
   .table-admin .icon-sort-admin:hover {
     cursor: pointer; }
-  .table-admin .icon-delete-admin {
+  .table-admin .icon-delete-admin, .table-admin .icon-edit-admin {
     font-size: 20px; }
-  .table-admin .icon-edit-admin {
-    font-size: 20px;
-    margin-right: 8px; }
   .table-admin .icon-edit-admin:hover {
     cursor: pointer; }
   .table-admin .main-pagination .items-pagination {

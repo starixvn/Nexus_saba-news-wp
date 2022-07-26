@@ -74,5 +74,10 @@
             };
             return await baseService.ExecuteNonQueryAsync(command);
         }
+
+        public async Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague)
+        {
+            return await baseService.ExecuteNonQueryAsync(updateLeague);
+        }
     }
 }

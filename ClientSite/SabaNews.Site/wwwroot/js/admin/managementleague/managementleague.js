@@ -65,13 +65,40 @@
         });
 
         $('.btn-Edit').on('click', function () {
+            var url = $(this).data('url');
             $.ajax({
                 type: 'GET',
-                url: '/Admin/ManagementLeague/EditLeague',
+                url: url,
                 success: function (html) {
                     $('#EditLeagueContent .title').html('Edit League');
                     $('#EditLeagueContent .modal-body').html(html);
                     $('#EditLeagueContent').modal('show');
+
+                    $('#btn-save').on('click', function () {
+                        var LeagueId = $(this).data('id');
+                        var IsMajor = document.getElementById("editMajor").checked;
+                        var Priority = document.getElementById("editPriority").value;
+                        var LeagueNameVN = document.getElementById("editLeagueNameVN").value;
+                        var Country = document.getElementById("editCountry").value;
+                        var CountryVN = document.getElementById("editCountryVN").value;
+                        $.ajax({
+                            type: 'POST',
+                            url: "/Admin/ManagementLeague/EditLeague",
+                            data: { LeagueId, IsMajor, Priority, LeagueNameVN, Country, CountryVN },
+                            success: function (response) {
+                                if (response.isSuccessful) {
+                                    $('#EditLeagueContent').modal('hide');
+                                    GetSuccessPopup('#NoticeModal', 'Update league successfully!');
+                                    setTimeout(function () {
+                                        $('#NoticeModal').modal('hide');
+                                        GetDataLeagueExtraGrid();
+                                    }, 2000);
+                                } else {
+                                    GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
+                                }
+                            }
+                        })
+                    });
                 }
             })
         });
@@ -129,6 +156,8 @@
 
                 $('#submit-btnAddLeague').on('click', function () {
                     searchAddleague = document.getElementById("searchLeague").value;
+                    pageAddLeague = 1;
+                    pageSizeAddLeague = 10;
                     initAddLeague(null);
                 });
 
@@ -164,6 +193,8 @@
 
     function initFilterBtn() {
         $("#submit-btn").on("click", function () {
+            page = 1;
+            pageSize = 10;
             GetDataLeagueExtraGrid(null);
         });
         $('.btn_league').click(function () {
@@ -182,7 +213,7 @@
                 url: url,
                 success: function (response) {
                     if (response.isSuccessful) {
-                        GetSuccessPopup('#NoticeModal', 'Remove league successfully.');
+                        GetSuccessPopup('#NoticeModal', 'Remove league successfully!');
                         setTimeout(function () {
                             GetDataLeagueExtraGrid();
                             $('#NoticeModal').modal('hide');

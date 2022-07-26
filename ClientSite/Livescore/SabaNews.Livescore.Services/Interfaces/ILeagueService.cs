@@ -15,5 +15,6 @@
         Task<CommandResult> UpdateLeaguesExtraAsync(League league);
         Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId);
         Task<CommandResult> InsertLeaguesExtraAsync(long leagueId);
+        Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague);
     }
 }

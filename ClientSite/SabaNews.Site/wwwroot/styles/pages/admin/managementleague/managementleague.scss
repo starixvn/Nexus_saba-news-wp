@@ -39,29 +39,69 @@
     }
 }
 
-#EditLeagueContent .modal-content {
+.modal-edit-center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
 
+#EditLeagueContent .modal-content {
     .modal-body {
         padding: 1rem 1.6rem !important;
     }
 
+    .row {
+        display: inline;
+        flex-wrap: wrap;
+        flex: 1 0 100%;
+        margin: 0;
+    }
+
     td {
-        padding: 5px;
+        padding: 7px;
     }
 
     label {
-        display: inline-block;
-        margin-bottom: 0;
+        font-weight: bold;
+        font-size: 14px;
+        color: #333333;
     }
 
-    input {
-        width: 410px !important;
-        height: 33px;
-        padding: 5px;
+    .lable-major {
+        margin-left: 120px;
+    }
+
+    .checkbox-major {
+        margin-left: 20px;
+    }
+
+    .form-control {
+        display: block;
+        height: 31px;
+        padding: 5px 8px;
+        line-height: 1.5;
+        border: 1px solid #CCC;
+        font-size: 14px;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .txt-country, .txt-countryVn, .txt-leagueNameVn {
+        width: 397px !important;
+        margin-left: -282px;
+    }
+
+    .txt-countryVn {
+        text-transform: uppercase;
+    }
+
+    .txt-priority {
+        width: 50px !important;
+        margin-left: 84px;
     }
 
     .form-btn {
@@ -155,13 +195,8 @@
         cursor: pointer;
     }
 
-    .icon-delete-admin {
+    .icon-delete-admin, .icon-edit-admin {
         font-size: 20px;
-    }
-
-    .icon-edit-admin {
-        font-size: 20px;
-        margin-right: 8px;
     }
 
     .icon-edit-admin:hover {
