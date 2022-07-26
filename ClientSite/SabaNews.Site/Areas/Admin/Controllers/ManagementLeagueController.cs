@@ -68,7 +68,6 @@
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
-                Country = leagueUpdate.Country,
                 CountryVN = leagueUpdate.CountryVN.ToUpper(CultureInfo.InvariantCulture)
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League

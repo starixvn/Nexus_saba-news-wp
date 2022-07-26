@@ -79,12 +79,11 @@
                         var IsMajor = document.getElementById("editMajor").checked;
                         var Priority = document.getElementById("editPriority").value;
                         var LeagueNameVN = document.getElementById("editLeagueNameVN").value;
-                        var Country = document.getElementById("editCountry").value;
                         var CountryVN = document.getElementById("editCountryVN").value;
                         $.ajax({
                             type: 'POST',
                             url: "/Admin/ManagementLeague/EditLeague",
-                            data: { LeagueId, IsMajor, Priority, LeagueNameVN, Country, CountryVN },
+                            data: { LeagueId, IsMajor, Priority, LeagueNameVN, CountryVN },
                             success: function (response) {
                                 if (response.isSuccessful) {
                                     $('#EditLeagueContent').modal('hide');

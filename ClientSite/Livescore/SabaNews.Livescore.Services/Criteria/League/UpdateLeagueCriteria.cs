@@ -6,7 +6,6 @@
     {
         public long LeagueId { get; set; }
         public string LeagueNameVN { get; set; }
-        public string Country { get; set; }
         public string CountryVN { get; set; }
         public override string GetSettingKey() => "Livescore_League_Update";
         public override bool IsValid() => true;
