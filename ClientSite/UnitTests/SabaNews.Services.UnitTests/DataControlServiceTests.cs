@@ -5,6 +5,7 @@ using NSubstitute;
 using SabaNews.Core.Constants;
 using SabaNews.Core.Services;
 using SabaNews.Models;
+using SabaNews.Models.Banner;
 using SabaNews.Models.Posts;
 using SabaNews.Models.ViewModel;
 using SabaNews.Models.ViewModel.Posts;
@@ -369,6 +370,59 @@ namespace SabaNews.Services.UnitTests
 
             //Act
             var actual = await service.GetEuro2020PageViewModel();
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetBannerData_WhenCacheHaveData_ReturnExpectedData()
+        {
+
+            var service = GetDataControlServiceUsingCache();
+            var key = fixture.Create<string>();
+            var expected = fixture.Create<BannerModel>();
+            cacheWrapperService.GetAsync<BannerModel>(Arg.Do<string>(x => x = key)).Returns(expected);
+            //Act
+            var actual = await service.GetBannerData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+
+        }
+
+        [Fact]
+        public async Task GetBannerData_WhenCacheReturnNull_ReturnExpectedData()
+        {
+
+            var service = GetDataControlServiceUsingCache();
+            var key = fixture.Create<string>();
+            BannerModel expectedFromCache = null;
+            var expected = fixture.Create<BannerModel>();
+            cacheWrapperService.GetAsync<BannerModel>(Arg.Do<string>(x => x = key)).Returns(expectedFromCache);
+            bannerService.GetBannerInfoAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetBannerData();
+
+            //Assert
+            Assert.Equal(expected, actual);
+            logServiceProvider.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), Arg.Any<BannerModel>(), Arg.Any<CacheItemOptions>());
+
+        }
+
+        [Fact]
+        public async Task GetBannerData_WhenNotUsingCache_ReturnExpectedData()
+        {
+
+            var service = GetDataControlServiceNotUsingCache();
+            var expected = fixture.Create<BannerModel>();
+            bannerService.GetBannerInfoAsync().Returns(expected);
+
+            //Act
+            var actual = await service.GetBannerData();
 
             //Assert
             Assert.Equal(expected, actual);

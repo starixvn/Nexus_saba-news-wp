@@ -260,6 +260,22 @@
             Assert.Null(viewResult.Model);
         }
 
+        [Fact]
+        public void FavouriteLeague_WhenCalled_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+
+            // Act
+            var result = controller.FavouriteLeague();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Empty(viewResult.ViewData);
+            Assert.Equal("~/Views/Livescore/Soccer/FavouriteLeague.cshtml", viewResult.ViewName);
+            Assert.Null(viewResult.Model);
+        }
+
         #region GetMatches
 
         [Fact]
@@ -718,6 +734,25 @@
             var jsonResult = Assert.IsType<JsonResult>(result);
             var actual = Assert.IsAssignableFrom<IList<League>>(jsonResult.Value);
             Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetMatchByIds_WhemCalled_ReturnExpectedJsonResult()
+        {
+            // Arrange
+            var matches = fixture.Create<IList<Match>>();
+            var matchIds = fixture.Create<string>();
+            var controller = GetController();
+            var criteria = fixture.Create<GetMatchByIdsCriteria>();
+            matchService.GetMatchByIdsAsync(Arg.Do<GetMatchByIdsCriteria>(x => criteria = x)).Returns(matches);
+
+            // Act
+            var result = await controller.GetMatchByIds(matchIds);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            var actual = Assert.IsAssignableFrom<IList<Match>>(jsonResult.Value);
+            Assert.Equal(matches, actual);
         }
 
         #region Helpers

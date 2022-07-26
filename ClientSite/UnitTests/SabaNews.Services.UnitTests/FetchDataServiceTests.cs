@@ -61,6 +61,7 @@
             var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
 
             var param = fixture.Create<GetPostsByCateSlugsParam>();
+            param.Slug1 = Constants.VideoSlug;
             var newPosts = fixture.Create<IEnumerable<Post>>();
             var posts = fixture.Create<IEnumerable<Post>>();
             var category = fixture.Create<Category>();

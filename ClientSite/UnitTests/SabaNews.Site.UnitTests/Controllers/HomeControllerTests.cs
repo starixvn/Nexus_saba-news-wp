@@ -338,6 +338,20 @@
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
         }
 
+        [Fact]
+        public void RedirectLivescorePage_WhenCalled_RedirectCorrectly()
+        {
+            // Arrange
+            var controller = GetController();
+
+            // Act
+            var result = controller.RedirectLivescorePage();
+
+            // Assert
+            var redirectResult = Assert.IsType<RedirectResult>(result);
+            Assert.Equal("/lich-thi-dau/bong-da", redirectResult.Url);
+        }
+
         #region Helpers
         private HomeController GetController()
         {
