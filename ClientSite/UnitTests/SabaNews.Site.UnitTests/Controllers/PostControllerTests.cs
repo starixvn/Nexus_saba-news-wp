@@ -20,6 +20,7 @@
     using System.Net;
     using System;
     using SabaNews.Services;
+    using SabaNews.Models.Banner;
 
     public class PostControllerTests : Controller
     {
@@ -327,6 +328,93 @@
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             Assert.Equal(expected, okResult.Value);
+        }
+
+        [Fact]
+        public async Task UpdatePostView_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var isVideo = false;
+            var criteria = fixture.Create<GetPollCriteria>();
+            var expected = fixture.Create<CommandResult>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+
+            postService.UpdateViewAsync(Arg.Do<int>(x => postId = x), Arg.Do<bool>(x => isVideo = x)).Returns(expected);
+
+            //Act
+            var result = await controller.UpdatePostView(postId, isVideo);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(expected, okResult.Value);
+        }
+
+        [Fact]
+        public void GetRelatedPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var slug = fixture.Create<string>();
+
+            //Act
+            var result = controller.GetRelatedPosts(slug, postId);
+
+            // Assert
+            Assert.IsType<ViewComponentResult>(result);
+        }
+
+        [Fact]
+        public void GetSidebarPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var slug = fixture.Create<string>();
+
+            //Act
+            var result = controller.GetSidebarPosts(slug, postId);
+
+            // Assert
+            Assert.IsType<ViewComponentResult>(result);
+        }
+
+        [Fact]
+        public async Task GetBanner_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = fixture.Create<BannerModel>();
+
+            dataControlService.GetBannerData().Returns(expected);
+
+            //Act
+            var result = await controller.GetBanner();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(expected, okResult.Value);
+        }
+
+
+        [Fact]
+        public async Task GetLastestNews_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<GetRecentPostsParam>();
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => param = x)).Returns(expectedRecentPosts);
+
+            //Act
+            var result = await controller.GetLastestNews();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(expectedRecentPosts, okResult.Value);
         }
 
         #region Helpers
