@@ -71,24 +71,7 @@
             var expected = new Fixture().Create<CommandResult>();
             leagueService.UpdateLeaguesExtraAsync(league).Returns(expected);
             //Act
-            var result = await controller.ChangeMajor(league);
-
-            // Assert
-            var jsonResult = Assert.IsType<JsonResult>(result);
-            Assert.Equal(expected, jsonResult.Value);
-        }
-
-
-        [Fact]
-        public async Task ChangePriority_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var league = new Fixture().Create<League>();
-            var expected = new Fixture().Create<CommandResult>();
-            leagueService.UpdateLeaguesExtraAsync(league).Returns(expected);
-            //Act
-            var result = await controller.ChangePriority(league);
+            var result = await controller.UpdateLeagueExtra(league);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
