@@ -161,7 +161,8 @@
             var service = GetService();
             // Arrange
             var endPoint = "http://endpoint";
-
+            var param = new Dictionary<string, object>();
+            param.Add("token", null);
             var fakeJson = FakeJson(false, new { test = "" });
             var response = new HttpResponseMessage(HttpStatusCode.Forbidden)
             {
@@ -173,7 +174,7 @@
 
             // Act
             await service.ExecutePostAsync<object>(endPoint, new Dictionary<string, object>());
-            await logService.Received().WriteMessageSentryErrorAsync(fakeJson);
+            await logService.Received().WriteMessageSentryErrorAsync($"API: {endPoint} - Params: {JsonConvert.SerializeObject(param)} - Message: {fakeJson}");
             // Assert
             clientFactory.Received().CreateClient(Arg.Is(HttpClientName.DefaultHttpClientWithProxy));
         }

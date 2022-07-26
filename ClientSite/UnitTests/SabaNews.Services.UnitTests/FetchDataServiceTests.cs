@@ -1,21 +1,22 @@
 ﻿namespace SabaNews.Services.UnitTests
 {
     using AutoFixture;
+    using Microsoft.Extensions.Configuration;
     using NSubstitute;
+    using SabaNews.Core.Constants;
+    using SabaNews.Criteria.Posts;
     using SabaNews.Models;
     using SabaNews.Models.Posts;
-    using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
     using Xunit;
-    using SabaNews.Core.Constants;
-    using SabaNews.Criteria.Posts;
-    using System.Globalization;
 
     public class FetchDataServiceTests
     {
         private IPostService postService;
+        private IConfiguration configuration;
         private readonly IFixture fixture = new Fixture();
 
         [Fact]
@@ -205,9 +206,15 @@
         #region Helpers
         private FetchDataService GetFetchDataService()
         {
+            var MenuNameSettings = new Dictionary<string, string> {
+                {"MenuName", "MenuName"}
+            };
+            configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(MenuNameSettings)
+                .Build();
             postService = Substitute.For<IPostService>();
 
-            var service = new FetchDataService(postService);
+            var service = new FetchDataService(postService, configuration);
 
             return service;
         }
