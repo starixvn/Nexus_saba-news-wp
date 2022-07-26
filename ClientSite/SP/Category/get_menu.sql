@@ -11,7 +11,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_menu`(
 			- 20220720@Hank: init
     */
 )
-get_menu:BEGIN
+BEGIN
 	SELECT p.ID as PostId, p.post_title as PostTitle
 	, pl.meta_value as CateId, pp.meta_value as ParentId, t.name as CateTitle, t.slug as CateSlug
     , p1.post_title as PageTitle, p1.post_name as PageSlug
@@ -22,7 +22,7 @@ get_menu:BEGIN
     LEFT JOIN wp_terms as t ON t.term_id = pl.meta_value
     LEFT JOIN wp_posts as p1 ON p1.ID = pl.meta_value AND p1.post_status = 'publish' AND p1.post_type = "page"
     
-	WHERE txr.term_taxonomy_id = (SELECT t.term_id 
+	WHERE txr.term_taxonomy_id = (SELECT tax.term_taxonomy_id 
 									FROM wp_term_taxonomy as tax 
 									LEFT JOIN wp_terms as t ON tax.term_id = t.term_id 
 									WHERE taxonomy = 'nav_menu' AND name = _menu_name) 
