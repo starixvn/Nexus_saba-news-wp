@@ -16,10 +16,6 @@
     public class ManagementLeagueController : AdminController
     {
         private readonly ILeagueService leagueService;
-        private const int priorityAscending = 1;
-        private const int priorityDescending = 2;
-        private const int createdDateDescending = 3;
-        private const int createdDateAscending = 4;
         public ManagementLeagueController(
             ILeagueService leagueService)
         {
@@ -33,8 +29,8 @@
         public async Task<ActionResult> GetManagementLeagueData(ManagementLeagueFilterModel model)
         {
             IList<League> leagues = await leagueService.GetLeaguesAsync();
-            leagues = Searching(leagues, model.Search, model.IsMajor);
-            leagues = Sort(leagues, model.TypeSort);
+            leagues = leagueService.SearchLeague(leagues, model.Search, model.IsMajor);
+            leagues = leagueService.SortLeague(leagues, model.TypeSort);
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -82,7 +78,7 @@
         public async Task<ActionResult> GetAllLeagues(ManagementAddLeagueFilterModel model)
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
-            leagues = Searching(leagues, model.SearchAddLeague, -1);
+            leagues = leagueService.SearchLeague(leagues, model.SearchAddLeague, -1);
             var totalLeague = leagues.Count;
             if (leagues.Count > 0)
             {
@@ -118,42 +114,6 @@
         {
             var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
             return Json(result);
-        }
-
-        private static IList<League> Searching(IList<League> leagues, string search, int isMajor)
-        {
-            if (search != null){
-                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.Contains(search))
-                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))).ToList();
-            }
-            if(isMajor == 1){
-                leagues = leagues.Where(x => x.IsMajor).ToList();
-            }
-            if (isMajor == 0)
-            {
-                leagues = leagues.Where(x => !x.IsMajor).ToList();
-            }            
-            return leagues;
-        }
-
-        private static IList<League> Sort(IList<League> leagues, int typeSort)
-        {
-            if (typeSort == priorityAscending) { 
-                leagues = leagues.OrderBy(x => x.Priority).ToList();
-            }
-            if (typeSort == priorityDescending)
-            {
-                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
-            }
-            if (typeSort == createdDateDescending)
-            {
-                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
-            }
-            if (typeSort == createdDateAscending)
-            {
-                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
-            }
-            return leagues;
         }
     }
 }

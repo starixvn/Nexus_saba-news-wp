@@ -164,14 +164,6 @@
   width: 80px;
   font-size: 15px; }
 
-#EditLeagueContent .modal-content .error-message {
-  display: none;
-  background-color: #faa;
-  border: solid 1px #a00;
-  padding: 10px 30px;
-  color: #333;
-  margin: 0 0 10px; }
-
 .add-league {
   border-top: 1px solid #e3e3e3;
   border-right: 1px solid #e3e3e3;

@@ -107,6 +107,22 @@
             Assert.True(actual.IsSuccessful);
         }
 
+        [Fact]
+        public async Task UpdateLeaguesAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateLeagueCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.UpdateLeaguesAsync(model);
+
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
         private LeagueService GetService()
         {
             baseService = Substitute.For<IBaseService>();

@@ -12,6 +12,8 @@
         Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria);
         Task<IList<League>> GetLeaguesAsync();
         Task<IList<League>> GetAllLeaguesAsync();
+        IList<League> SearchLeague(IList<League> leagues, string search, int isMajor);
+        IList<League> SortLeague(IList<League> leagues, int typeSort);
         Task<CommandResult> UpdateLeaguesExtraAsync(League league);
         Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId);
         Task<CommandResult> InsertLeaguesExtraAsync(long leagueId);

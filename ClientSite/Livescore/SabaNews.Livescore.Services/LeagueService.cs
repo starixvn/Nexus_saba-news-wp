@@ -12,7 +12,10 @@
     public class LeagueService : ILeagueService
     {
         private readonly IBaseService baseService;
-
+        private const int priorityAscending = 1;
+        private const int priorityDescending = 2;
+        private const int createdDateDescending = 3;
+        private const int createdDateAscending = 4;
         public LeagueService(IBaseService baseService)
         {
             this.baseService = baseService;
@@ -78,6 +81,45 @@
         public async Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague)
         {
             return await baseService.ExecuteNonQueryAsync(updateLeague);
+        }
+
+        public IList<League> SearchLeague(IList<League> leagues, string search, int isMajor)
+        {
+            if (search != null)
+            {
+                leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.Contains(search))
+                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))).ToList();
+            }
+            if (isMajor == 1)
+            {
+                leagues = leagues.Where(x => x.IsMajor).ToList();
+            }
+            if (isMajor == 0)
+            {
+                leagues = leagues.Where(x => !x.IsMajor).ToList();
+            }
+            return leagues;
+        }
+
+        public IList<League> SortLeague(IList<League> leagues, int typeSort)
+        {
+            if (typeSort == priorityAscending)
+            {
+                leagues = leagues.OrderBy(x => x.Priority).ToList();
+            }
+            if (typeSort == priorityDescending)
+            {
+                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
+            }
+            if (typeSort == createdDateDescending)
+            {
+                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
+            }
+            if (typeSort == createdDateAscending)
+            {
+                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
+            }
+            return leagues;
         }
     }
 }
