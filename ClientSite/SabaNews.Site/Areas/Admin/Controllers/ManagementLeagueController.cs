@@ -9,13 +9,17 @@
     using SabaNews.Models.ViewModel.User;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
     public class ManagementLeagueController : AdminController
     {
         private readonly ILeagueService leagueService;
-
+        private static readonly int priorityAscending = 1;
+        private static readonly int priorityDescending = 2;
+        private static readonly int createdDateDescending = 3;
+        private static readonly int createdDateAscending = 4;
         public ManagementLeagueController(
             ILeagueService leagueService)
         {
@@ -65,7 +69,7 @@
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
                 Country = leagueUpdate.Country,
-                CountryVN = leagueUpdate.CountryVN.ToUpper()
+                CountryVN = leagueUpdate.CountryVN.ToUpper(CultureInfo.InvariantCulture)
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {
@@ -99,14 +103,8 @@
             return PartialView("_AddLeagueDataGrid", viewModel);
         }
 
-        public async Task<ActionResult> ChangeMajor(League league)
+        public async Task<ActionResult> UpdateLeagueExtra(League league)
         {         
-            var result = await leagueService.UpdateLeaguesExtraAsync(league);
-            return Json(result);
-        }
-
-        public async Task<ActionResult> ChangePriority(League league)
-        {
             var result = await leagueService.UpdateLeaguesExtraAsync(league);
             return Json(result);
         }
@@ -127,37 +125,34 @@
         {
             if (search != null){
                 leagues = leagues.Where(x => (x.LeagueFullNameEN != null && x.LeagueFullNameEN.Contains(search))
-                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))
-                || (x.LeagueNameEN != null && x.LeagueNameEN.Contains(search))).ToList();
+                || (x.LeagueNameVN != null && x.LeagueNameVN.Contains(search))).ToList();
             }
-            switch (isMajor)
+            if(isMajor == 1){
+                leagues = leagues.Where(x => x.IsMajor).ToList();
+            }
+            else if (isMajor == 0)
             {
-                case 1:
-                    leagues = leagues.Where(x => x.IsMajor == true).ToList();
-                    break;
-                case 0:
-                    leagues = leagues.Where(x => x.IsMajor == false).ToList();
-                    break;                
-            }
+                leagues = leagues.Where(x => !x.IsMajor).ToList();
+            }            
             return leagues;
         }
 
         private static IList<League> Sort(IList<League> leagues, int typeSort)
         {
-            switch (typeSort)
+            if (typeSort == priorityAscending) { 
+                leagues = leagues.OrderBy(x => x.Priority).ToList();
+            }
+            else if (typeSort == priorityDescending)
             {
-                case 1:
-                    leagues = leagues.OrderBy(x => x.Priority).ToList();
-                    break; 
-                case 2:
-                    leagues = leagues.OrderByDescending(x => x.Priority).ToList();
-                    break;
-                case 3:
-                    leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
-                    break;
-                case 4:
-                    leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
-                    break;
+                leagues = leagues.OrderByDescending(x => x.Priority).ToList();
+            }
+            else if (typeSort == createdDateDescending)
+            {
+                leagues = leagues.OrderByDescending(x => x.CreatedDate).ToList();
+            }
+            else if (typeSort == createdDateAscending)
+            {
+                leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
             }
             return leagues;
         }

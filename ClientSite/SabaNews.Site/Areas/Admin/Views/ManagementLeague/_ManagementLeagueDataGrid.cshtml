@@ -30,13 +30,13 @@
                             <td class="text-center" width="12%">@DateTimeUtilize.ChangeTimeZoneToClient(league.CreatedDate)</td>
                             <td class="text-center" width="8%">
                                 <input type="checkbox" @(league.IsMajor == true ? "checked" : "")
-                                       data-url="@Url.Action("ChangeMajor", "ManagementLeague", new { leagueId = league.LeagueId, priority = league.Priority })"
+                                       data-url="@Url.Action("UpdateLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId, priority = league.Priority })"
                                        class="isMajorLeague" id="checkMajor" />
                             </td>
                             <td class="text-center" width="8%">
                                 <input type="text" class="text-center priority-league"
                                        data-id="@league.LeagueId"
-                                       data-url="@Url.Action("ChangePriority", "ManagementLeague", new { leagueId = league.LeagueId, isMajor = league.IsMajor})"
+                                       data-url="@Url.Action("UpdateLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId, isMajor = league.IsMajor})"
                                        value="@league.Priority" id="@league.LeagueId" />
                             </td>
                             <td class="text-center" width="8%">
