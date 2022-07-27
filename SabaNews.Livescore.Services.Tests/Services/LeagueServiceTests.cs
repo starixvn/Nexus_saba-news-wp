@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Livescore.Services.Tests.Services
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using AutoFixture;
@@ -13,6 +14,27 @@
     public class LeagueServiceTests
     {
         private IBaseService baseService;
+        private readonly List<League> league = new()
+        {
+                new League
+                {
+                    LeagueId = 1,
+                    LeagueFullNameEN = "Test1",
+                    LeagueNameVN = "TestVN1",
+                    IsMajor = true,
+                    Priority = 1,
+                    CreatedDate = DateTime.Parse("08/18/2018 07:22:16")
+                },
+                new League
+                {
+                    LeagueId = 1,
+                    LeagueFullNameEN = "Test1",
+                    LeagueNameVN = "TestVN1",
+                    IsMajor = false,
+                    Priority = 2,
+                    CreatedDate = DateTime.Parse("08/18/2018 08:22:16")
+                }
+            };
 
         [Fact]
         public async Task GetMajorLeagueAsync_WhenCalled_ReturnExpectedResult()
@@ -121,6 +143,79 @@
 
             //Assert
             Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public void SearchLeague_WhenCalledMajorTrue_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            //Act
+            var actual = service.SearchLeague(league, "Test1", 1);
+
+            //Assert
+            Assert.Equal(league[0], actual[0]);
+        }
+
+
+        [Fact]
+        public void SearchLeague_WhenCalledMajorFalse_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            //Act
+            var actual = service.SearchLeague(league, "Test1", 0);
+
+            //Assert
+            Assert.Equal(league[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeaguePriorityAscending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();            
+            //Act
+            var actual = service.SortLeague(league, 1);
+
+            //Assert
+            Assert.Equal(league[0], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeaguePriorityDescending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            //Act
+            var actual = service.SortLeague(league, 2);
+
+            //Assert
+            Assert.Equal(league[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeagueCreatedDateDescending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            //Act
+            var actual = service.SortLeague(league, 3);
+
+            //Assert
+            Assert.Equal(league[1], actual[0]);
+        }
+
+        [Fact]
+        public void SortLeagueCreatedDateAscending_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            //Act
+            var actual = service.SortLeague(league, 4);
+
+            //Assert
+            Assert.Equal(league[0], actual[0]);
         }
 
         private LeagueService GetService()
