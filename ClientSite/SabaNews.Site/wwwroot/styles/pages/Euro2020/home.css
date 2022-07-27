@@ -1028,7 +1028,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     .marked-icon {
       position: absolute;
       top: 8px;
-      left: 85px;
+      left: 135px;
       display: block; } }
 
 @media screen and (max-width: 1024px) {
