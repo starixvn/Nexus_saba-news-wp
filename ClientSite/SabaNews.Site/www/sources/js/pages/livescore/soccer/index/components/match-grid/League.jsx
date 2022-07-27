@@ -7,13 +7,13 @@ import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../../actions';
-import { MobileMaxWidth } from '@jsroot/common/constants';
+import { Width1024 } from '@jsroot/common/constants';
 
 export class League extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            isShowCountrySeparate: window.innerWidth <= Width1024 ? true : false
         };
     }
 
@@ -30,12 +30,12 @@ export class League extends PureComponent {
     }
 
     handleResize = () => {
-        const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
-            this.setState({ isMobile: true });
+        const isShowCountrySeparate = this.state.isShowCountrySeparate;
+        if (!isShowCountrySeparate && window.innerWidth <= Width1024) {
+            this.setState({ isShowCountrySeparate: true });
         } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
-                this.setState({ isMobile: false });
+            if (isShowCountrySeparate && window.innerWidth > Width1024) {
+                this.setState({ isShowCountrySeparate: false });
             }
         }
     };
@@ -57,8 +57,8 @@ export class League extends PureComponent {
     };
     render() {
         const { league, searchKey, flagToggleFavLeagueIcon } =  this.props;
-        const { isMobile } = this.state;
-        const separate = isMobile ? '' : ': ';
+        const { isShowCountrySeparate } = this.state;
+        const separate = isShowCountrySeparate ? '' : ': ';
         const leagueName = CommonFunctions.getLeagueNameWithStage(league);
         const countryName = league.countryVN ? league.countryVN + separate : '';
         const reg = new RegExp(`(${searchKey})`, 'gi');

@@ -1,5 +1,7 @@
 ﻿export const MobileMaxWidth = 768;
 
+export const Width1024 = 1024;
+
 export const LeagueType = {
     Unknown: 0,
     League: 1,
