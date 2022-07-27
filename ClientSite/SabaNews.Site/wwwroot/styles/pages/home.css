@@ -18,7 +18,8 @@ html {
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
   scrollbar-color: rgba(0, 0, 0, 0.2);
-  scrollbar-width: thin; }
+  scrollbar-width: thin;
+  -webkit-text-size-adjust: 100%; }
   html::-webkit-scrollbar {
     width: 1rem; }
   html::-webkit-scrollbar-track {
