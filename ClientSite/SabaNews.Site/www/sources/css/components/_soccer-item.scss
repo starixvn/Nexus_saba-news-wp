@@ -100,11 +100,12 @@
                         }
 
                         @include tableMobile {
-                            font-size: 1.3rem;
+                            font-size: 1.2rem;
                             line-height: 1.6rem;
                             width: 75%;
                             display: flex;
                             flex-wrap: wrap;
+                            font-weight: 700;
                         }
 
                         @include iphone5 {
@@ -115,6 +116,10 @@
                             &.country-name{
                                 @include tableMobile{
                                     order: 2;
+                                    width: 100%;
+                                    font-size: 1.1rem;
+                                    color: #60718E;
+                                    font-weight: 600;
                                 }
                             }
                             &.round-name{
