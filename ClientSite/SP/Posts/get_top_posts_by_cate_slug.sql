@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS get_top_posts_by_cate_slug;
 DELIMITER //
 
 
-CREATE DEFINER=`root`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
 	cateSlug varchar(200),
     start INT,
     end INT
