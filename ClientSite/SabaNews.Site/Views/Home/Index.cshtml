@@ -206,7 +206,7 @@
 
         <div class="block block-soccer">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.FootballSlug })">@ViewResources.Football</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.FootballSlug })">@ViewResources.Football</a></h2>
                 <div class="block__content">
                     @foreach (var post in Model.FootballPosts)
                     {
@@ -238,7 +238,7 @@
 
         <div class="block block-guess">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.GuessSlug })">@ViewResources.Guess</a><span class="marked-icon"></span></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.GuessSlug })">@ViewResources.Guess</a><span class="marked-icon"></span></h2>
                 <div class="block__content">
                     @foreach (var post in Model.GuessPosts)
                     {
@@ -279,7 +279,7 @@
         <div class="group-blocks group-change-column">
             <div class="container">
                 <div class="block block-behind">
-                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
+                    <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.BackstageSlug })">@ViewResources.Backstage</a></h2>
                     <div class="block__content">
                         <div class="skeleton skeleton-horizontal">
                             <a class="skeleton-horizontal__image"></a>
@@ -353,7 +353,7 @@
 
                 <div class="block block-transfer">
                     <h2 class="block__title">
-                        <a href="@Url.Action("Category", "Home", new { slug = Constants.TransferSlug })">@ViewResources.Transfer</a>
+                        <a href="@Url.Action("Category", "Home", new { slug1 = Constants.TransferSlug })">@ViewResources.Transfer</a>
                     </h2>
                     <div class="block__content">
                         @foreach (var post in Model.TransferPosts)
@@ -390,7 +390,7 @@
 
         <div class="block block-others">
             <div class="container">
-                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a></h2>
+                <h2 class="block__title"><a href="@Url.Action("Category", "Home", new { slug1 = Constants.OtherPostSlug  })">@ViewResources.OtherPosts</a></h2>
                 <div class="block__content">
                     <div class="post card-vertical card-vertical-highlight">
                         <a href="@Url.Action("Single", "Post", new { slug =  Model.OtherPosts[0].Slug })" class="card-vertical__image">
