@@ -10,13 +10,11 @@
     public class RobotsController : Controller
     {
         private readonly IDataControlService dataControlService;
-        private readonly IConfiguration configuration;
         private readonly string domain;
 
         public RobotsController(IDataControlService dataControlService, IConfiguration configuration)
         {
             this.dataControlService = dataControlService;
-            this.configuration = configuration;
             domain = configuration.GetValue<string>("BaseUrl");
         }
 

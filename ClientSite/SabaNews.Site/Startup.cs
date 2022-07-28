@@ -28,6 +28,7 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Site.Extensions;
     using SabaNews.Site.Hubs;
+    using SabaNews.Site.Middlewares;
     using Sentry;
     using StackExchange.Redis;
     using Newtonsoft.Json.Serialization;
@@ -125,6 +126,9 @@
             services.ResolveLivescoreServiceDI();
             services.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.All }));
 
+            var umSettings = Configuration.GetSection(UMSettings.SettingKey).Get<UMSettings>();
+            services.AddSingleton(umSettings);
+
             services.RegisterServices();
             services.AddHttpClient();
             services.AddControllersWithViews();
@@ -136,6 +140,13 @@
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/maintenance"),
+                appBuilder =>
+                {
+                    appBuilder.UseMiddleware<MaintenanceMiddleware>();
+                });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

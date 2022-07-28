@@ -46,7 +46,7 @@
             var expected = content.ToString();
 
             //Act
-            var actual = controller.Index();
+            var actual = controller.Whoami();
 
             //Assert
             var viewResult = Assert.IsType<ContentResult>(actual);

@@ -1,0 +1,24 @@
+﻿@using SabaNews.Core.Models
+@inject UMSettings settings
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Hệ thống đang bảo trì</title>
+</head>
+<body>
+  <h2>
+      Xin lỗi quý độc giả, SABA.vn đang tiến hành nâng cấp, bảo trì hệ thống.
+  </h2>
+   <h2>
+      Xin vui lòng quay lại sau!
+    </h2>
+    @if (!string.IsNullOrWhiteSpace(settings.From) && !string.IsNullOrWhiteSpace(settings.To))
+    {
+        <h4>Thời gian bảo trì từ @settings.From đến @settings.To</h4>
+    }
+
+</body>
+</html>

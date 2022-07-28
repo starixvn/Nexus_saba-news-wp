@@ -8,7 +8,7 @@
     [Route("/whoami.aspx")]
     public class WhoamiController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Whoami()
         {
             var context = HttpContext;
             var content = new StringBuilder();
