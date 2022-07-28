@@ -16,6 +16,7 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/styles/pages/admin/managementleague/managementleague.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/styles/pages/select2.min.css" asp-append-version="true">
 }
 
 <section class="page-content">
@@ -41,7 +42,7 @@
         <div class="data-grid" id="data-grid"></div>
     </div>
 
-    <div class="modal" id="AddLeagueContent" style="display:none">
+    <div class="modal modal-edit-center" id="AddLeagueContent" style="display:none">
         <div class="modal-content">
             <div class="modal-warning">
                 <div class="modal-title">
@@ -113,4 +114,5 @@
 
 @section Scripts {
     <script src="~/js/admin/managementleague/managementleague.js" asp-append-version="true"></script>
+    <script src="~/js/select2.min.js" asp-append-version="true"></script>
 }

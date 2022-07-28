@@ -862,7 +862,7 @@
     <value>~/Views/Component/_SidebarPosts.cshtml</value>
   </data>
   <data name="ManagementLeague" xml:space="preserve">
-    <value>Management League</value>
+    <value>League Management</value>
   </data>
   <data name="LeagueName" xml:space="preserve">
     <value>League Name</value>
@@ -905,5 +905,8 @@
   </data>
   <data name="CountryVN" xml:space="preserve">
     <value>Country VN</value>
+  </data>
+  <data name="Hot" xml:space="preserve">
+    <value>Hot</value>
   </data>
 </root>

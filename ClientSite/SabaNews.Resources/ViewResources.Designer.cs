@@ -925,6 +925,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hot.
+        /// </summary>
+        public static string Hot {
+            get {
+                return ResourceManager.GetString("Hot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tin nóng.
         /// </summary>
         public static string HotNews {
@@ -1195,7 +1204,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Management League.
+        ///   Looks up a localized string similar to League Management.
         /// </summary>
         public static string ManagementLeague {
             get {

@@ -46,15 +46,21 @@
             return leagues.ToList();
         }
 
-        public async Task<CommandResult> UpdateLeaguesExtraAsync(League league)
+        public async Task<CommandResult> UpdateLeaguesExtraAsync(League leagueUpdate)
         {
+            var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
             var command = new UpdateLeagueExtraCriteria
             {
-                LeagueId = league.LeagueId,
-                Priority = league.Priority,
-                IsMajor = league.IsMajor
+                LeagueId = leagueUpdate.LeagueId,
+                Priority = leagueUpdate.Priority,
+                IsMajor = leagueUpdate.IsMajor
             };
-            return await baseService.ExecuteNonQueryAsync(command);
+            var result = await baseService.ExecuteNonQueryAsync(command);
+            if(leagueItem[0].Priority != leagueUpdate.Priority){
+                var leagues = await GetLeaguesAsync();
+                await UpdateLeagueOtherAsync(SortLeague(leagues, 1), leagueUpdate);
+            }
+            return result;
         }
 
         public async Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId)
@@ -68,10 +74,11 @@
 
         public async Task<CommandResult> InsertLeaguesExtraAsync(long leagueId)
         {
+            var leagues = await GetLeaguesAsync();
             var command = new InsertLeagueExtraCriteria
             {
                 LeagueId = leagueId,
-                Priority = 0,
+                Priority = GetLeaguePriority(leagues),
                 IsMajor = false,
                 CreatedDate = DateTime.UtcNow
             };
@@ -120,6 +127,37 @@
                 leagues = leagues.OrderBy(x => x.CreatedDate).ToList();
             }
             return leagues;
+        }
+
+        private async Task UpdateLeagueOtherAsync(IList<League> leagues, League leagueUpdate)
+        {
+            foreach(var item in leagues)
+            {
+                if(item.Priority >= leagueUpdate.Priority && item.LeagueId != leagueUpdate.LeagueId)
+                {
+                    var command = new UpdateLeagueExtraCriteria
+                    {
+                        LeagueId = item.LeagueId,
+                        Priority = leagueUpdate.Priority + 1,
+                        IsMajor = item.IsMajor
+                    };
+                    await baseService.ExecuteNonQueryAsync(command);
+                    leagueUpdate.Priority++;
+                }
+            }
+        }
+
+        private static int GetLeaguePriority(IList<League> leagues)
+        {
+            int priority = 0;
+            foreach(var item in leagues)
+            {
+                if(item.Priority > priority)
+                {
+                    priority = item.Priority;
+                }
+            }
+            return priority + 1;
         }
     }
 }

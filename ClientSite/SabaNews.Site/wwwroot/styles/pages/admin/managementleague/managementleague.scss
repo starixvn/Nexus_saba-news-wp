@@ -1,44 +1,5 @@
 ﻿@import '../custom-modal';
 
-#AddLeagueContent .modal-content {
-    max-width: 1000px;
-    max-height: 750px;
-
-    .table-admin {
-        margin-top: 0;
-        max-width: 95.8rem;
-        max-height: 530px;
-        overflow-x: auto;
-        position: relative;
-
-        .btn-addleague {
-            color: blue;
-        }
-
-        th {
-            position: sticky;
-            top: -0.2px;
-            box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #b7b7b7;
-        }
-
-        .btn-addleague:hover {
-            cursor: pointer;
-        }
-
-        .pagination {
-            position: sticky;
-            bottom: 0;
-            box-shadow: inset 1px 1px 0 -1px #b7b7b7, inset 1px 1px 0 -1px #b7b7b7, inset 0px 1px 1px 0 #b7b7b7, inset 0 0 9px -8px #b7b7b7;
-        }
-
-        .main-pagination {
-            .items-pagination {
-                margin-top: 1px !important;
-            }
-        }
-    }
-}
-
 .modal-edit-center {
     position: absolute;
     top: 50%;
@@ -46,7 +7,24 @@
     transform: translate(-50%, -50%);
 }
 
-#EditLeagueContent .modal-content {
+.select2-dropdown {
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    left: -100000px;
+    width: 100%;
+    z-index: 1051;
+    width: 397px !important;
+}
+
+#AddLeagueContent .modal-content, #EditLeagueContent .modal-content {
+    .select2-container {
+        margin-left: -282px;
+    }
+
     .modal-body {
         padding: 1rem 1.6rem !important;
     }
@@ -90,7 +68,7 @@
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
 
-    .txt-countryVn, .txt-leagueNameVn {
+    .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
         width: 397px !important;
         margin-left: -282px;
     }
@@ -101,7 +79,7 @@
 
     .txt-priority {
         width: 50px !important;
-        margin-left: 84px;
+        margin-left: 100px;
     }
 
     .form-btn {
@@ -173,10 +151,6 @@
 .table-admin {
     margin-top: 0;
     max-width: 100%;
-
-    .priority-league {
-        width: 30px;
-    }
 
     .icon-delete-admin:hover {
         cursor: pointer;

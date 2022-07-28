@@ -75,27 +75,10 @@
             return Json(resultUpdateLeague);
         }
 
-        public async Task<ActionResult> GetAllLeagues(ManagementAddLeagueFilterModel model)
+        public async Task<ActionResult> GetAllLeagues()
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
-            leagues = leagueService.SearchLeague(leagues, model.SearchAddLeague, -1);
-            var totalLeague = leagues.Count;
-            if (leagues.Count > 0)
-            {
-                leagues = leagues.Skip(model.PageSizeAddLeague * (model.PageAddLeague - 1)).Take(model.PageSizeAddLeague).ToList();
-            }
-            var viewModel = new ManagementLeagueGridViewModel
-            {
-                Leagues = leagues,
-                Paging = new PagingModel
-                {
-                    CurrentPage = model.PageAddLeague,
-                    PageSize = model.PageSizeAddLeague,
-                    TotalPages = (int)Math.Ceiling(totalLeague / (double)model.PageSizeAddLeague),
-                }
-            };
-            ViewBag.SearchAddLeague = model.SearchAddLeague;
-            return PartialView("_AddLeagueDataGrid", viewModel);
+            return PartialView("_AddLeagueDataGrid", leagues);
         }
 
         public async Task<ActionResult> UpdateLeagueExtra(League league)

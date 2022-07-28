@@ -1,5 +1,5 @@
 ﻿var adminManagementLeague = (function ($) {
-    var page = 1, pageSize = 10, url = "", pageAddLeague = 1, pageSizeAddLeague = 10, searchAddleague = "", typeSort = 3;
+    var page = 1, pageSize = 10, url = "", typeSort = 1;
     function GetDataLeagueExtraGrid(dateSort) {
         var search = document.getElementById("search").value;
         var isMajor = document.getElementById("major").value;
@@ -26,15 +26,6 @@
                 data: { isMajor }
             });
         });
-        $('#btn-sort-priority').on('click', function () {            
-            if (typeSort == 1) {
-                typeSort = 2;
-            }
-            else {
-                typeSort = 1;
-            }
-            GetDataLeagueExtraGrid(null);
-        });
 
         $('#btn-sort-createdDate').on('click', function () {
             if (typeSort == 3) {
@@ -44,17 +35,6 @@
                 typeSort = 3;
             }
             GetDataLeagueExtraGrid(null);
-        });
-
-        $(".priority-league").blur(function () {
-            var url = $(this).data('url');
-            var id = $(this).data('id');
-            var priority = document.getElementById(id).value;
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: { priority }
-            });
         });
 
         $('.btn-Delete').on('click', function () {
@@ -123,17 +103,18 @@
         $.ajax({
             type: 'POST',
             url: '/Admin/ManagementLeague/GetAllLeagues',
-            data: { pageAddLeague, pageSizeAddLeague, searchAddleague, dateSort },
             success: function (html) {
                 $('#AddLeagueContent .title').html('Add League');
                 $('#AddLeagueContent .modal-body').html(html);
                 $('#AddLeagueContent').modal('show');
 
+                $("#leagueFullNameEN").select2();
+
                 $("#AddLeagueContent").on("hide.bs.modal", function () {
                     pageAddLeague = 1;
                     pageSizeAddLeague = 10;
                     searchAddleague = "";
-                    typeSort = 3;
+                    typeSort = 1;
                     GetDataLeagueExtraGrid();
                 });
 

@@ -11,8 +11,8 @@
                 <th>@ViewResources.Country</th>
                 <th>@ViewResources.CountryVN</th>
                 <th>@ViewResources.CreatedDate<i class="icon-sort-admin" id="btn-sort-createdDate"></i></th>
-                <th>@ViewResources.Major</th>
-                <th>@ViewResources.Priority<i class="icon-sort-admin" id="btn-sort-priority"></i></th>
+                <th>@ViewResources.Hot</th>
+                <th>@ViewResources.Priority</th>
                 <th>@ViewResources.Action</th>
             </tr>
         </thead>
@@ -23,8 +23,8 @@
                     count++;
                         <tr>
                             <td class="text-center" width="5%">@count</td>
-                            <td class="text-left" width="18%">@league.LeagueFullNameEN</td>
-                            <td class="text-left" width="18%">@league.LeagueNameVN</td>
+                            <td class="text-left" width="22%">@league.LeagueFullNameEN</td>
+                            <td class="text-left" width="22%">@league.LeagueNameVN</td>
                             <td class="text-left" width="12%">@league.CountryEN</td>
                             <td class="text-left" width="12%">@league.CountryVN</td>
                             <td class="text-center" width="12%">@DateTimeUtilize.ChangeTimeZoneToClient(league.CreatedDate)</td>
@@ -33,12 +33,8 @@
                                        data-url="@Url.Action("UpdateLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId, priority = league.Priority })"
                                        class="isMajorLeague" id="checkMajor" />
                             </td>
-                            <td class="text-center" width="8%">
-                                <input type="text" class="text-center priority-league"
-                                       data-id="@league.LeagueId"
-                                       data-url="@Url.Action("UpdateLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId, isMajor = league.IsMajor})"
-                                       value="@league.Priority" id="@league.LeagueId" />
-                            </td>
+                            <td class="text-left" width="12%">@league.Priority</td>
+
                             <td class="text-center" width="8%">
                                 <i class="icon icon-edit-admin btn-Edit" title="Edit"
                                    data-url="@Url.Action("EditLeague", "ManagementLeague", new { leagueId = league.LeagueId})"></i>

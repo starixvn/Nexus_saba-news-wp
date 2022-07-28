@@ -1,51 +1,70 @@
 ﻿@using SabaNews.Resources
-@{
-    var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize;
-    var searchAddLeague = @ViewBag.SearchAddLeague;
-}
-<div class="form-horizontal" style="margin-bottom:20px;">
-    <div class="form-input">
-        <p class="label-admin">@ViewResources.SearchLabel</p>
-        <input type="text" class="custom-input list-input" id="searchLeague" value="@(searchAddLeague != null ? searchAddLeague : "")" name="resultNumber" placeholder="Enter League Name..." />
-    </div>
-    <button class="btn-custom-admin" type="submit" id="submit-btnAddLeague">@ViewResources.Submit</button>
-</div>
-<div class="table-admin" id="data-grid-addLeague">
-    <table class="data-grid-addLeague">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>@ViewResources.LeagueFullNameEN</th>
-                <th>@ViewResources.LeagueNameEN</th>
-                <th>@ViewResources.LeagueNameVN</th>
-                <th>@ViewResources.Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @{
-                foreach (var league in Model.Leagues)
-                {
-                    count++;
-                    <tr>
-                        <td class="text-center" width="2%">@count</td>
-                        <td class="text-left" width="18%">@league.LeagueFullNameEN</td>
-                        <td class="text-left" width="18%">@league.LeagueNameEN</td>
-                        <td class="text-left" width="18%">@league.LeagueNameVN</td>
-                        <td class="text-center" width="8%">
-                            <span class="btn-addleague" id="@league.LeagueId"
-                                  data-id="@(league.LeagueId)"
-                                  data-url="@Url.Action("AddLeagueExtra", "ManagementLeague", new { leagueId = league.LeagueId})">Add</span>
-                        </td>
-                    </tr>
-                }
-            }
-            @if (Model.Leagues.Count == 0)
+@using SabaNews.Livescore.Models.League
+@{ 
+    IList<League> listLeagues = Model;
+    var selectListLeague =
+            from item in listLeagues
+            select new SelectListItem
             {
-                <tr>
-                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    @(await Component.InvokeAsync("Paging", new { model = Model.Paging }))
-</div>
+                Text = item.LeagueFullNameEN,
+                Value = item.LeagueId.ToString()
+            };
+    var a = 0;
+}
+<table width="100%" id="add-league">
+    <tbody>
+        <tr>
+            <td>
+                <table>
+                    <tbody>
+                        <tr class="row">
+                            <td class="col-sm">
+                                <label>@ViewResources.Priority</label>
+                            </td>
+                            <td class="col-sm">
+                                <input type="number" class="form-control txt-priority" id="addPriority" name="Priority" />
+                            </td>
+                            <td class="col-sm">
+                                <label class="lable-major">@ViewResources.Major</label>
+                            </td>
+                            <td class="col-sm">
+                                <input type="checkbox" class="checkbox-major" id="addMajor" name="Major" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.CountryVN</label>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control txt-countryVn" id="addCountryVN" name="CountryVN" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.LeagueNameVN</label>
+                            </td>
+                            <td >
+                                <input type="text" class="form-control txt-leagueNameVn" id="addLeagueNameVN" name="LeagueNameVN" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.LeagueFullNameEN</label>
+                            </td>
+                            <td>
+                                @Html.DropDownList("LeagueId", new SelectList(Model, "LeagueId", "LeagueFullNameEN"), new { @class = "form-control txt-leagueFullNameVn", value = "LeagueId", id = "leagueFullNameEN" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-btn">
+                    <button class="btn btn-primary pl-4 pr-4" id="btn-save">Save</button>
+                    <button class="btn btn-secondary pl-4 pr-4" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
