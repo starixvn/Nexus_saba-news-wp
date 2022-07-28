@@ -195,12 +195,40 @@ export default class CommonFunctions {
         }
     }
 
+    static refreshDefaultLeague(leagues) {
+        let isDefault = false;
+        const currentFavLeague = this.getFavLeagues();
+        leagues = leagues.reverse();
+        for (let i = 0; i < leagues.length; i++) {
+            if (currentFavLeague[i] && currentFavLeague[i].leagueId === leagues[i].leagueId) {
+                isDefault = true;
+            } else {
+                isDefault = false;
+                break;
+            }
+        }
+        if (isDefault) {
+            localStorage.setItem('isDefaultLeague', 1);
+        } else {
+            localStorage.setItem('isDefaultLeague', 0);
+        }
+        return currentFavLeague;
+    }
+
     static refreshFavLeagues(leagues) {
+        let isDefaultLeague = localStorage.getItem('isDefaultLeague');
+        if(localStorage.getItem('favourite-leagues') !== null && isDefaultLeague === null) {
+            return this.refreshDefaultLeague(leagues);
+        }
         const currentLeague = this.getFavLeagues();
         const orders = currentLeague.map(item => item.order);
+        if(orders.length === 0) {
+            localStorage.setItem('isDefaultLeague', 1);
+            isDefaultLeague = 1;
+        }
         localStorage.removeItem('favourite-leagues');
         const favLeagues = [];
-        leagues = orders.length > 0 ? leagues : leagues.reverse();
+        leagues = orders.length > 0 && parseInt(isDefaultLeague) === 0  ? leagues : leagues.reverse();
         leagues.map((league, index) => {
             const leagueTmp = {
                 leagueId: league.leagueId,
@@ -219,8 +247,12 @@ export default class CommonFunctions {
 
     static getFavLeagueParam() {
         const favLeague = this.getFavLeagues();
+        const isDefaultLeague = localStorage.getItem('isDefaultLeague');
+        const currentFavLeague = localStorage.getItem('favourite-leagues');
         let leagueIds = '';
-        if (localStorage.getItem('favourite-leagues') === null) {
+        if (currentFavLeague === null
+        || parseInt(isDefaultLeague) == 1
+        || (currentFavLeague !== null && isDefaultLeague === null) ) {
             leagueIds  = null;
         } else if (favLeague.length > 0) {
             const orders = favLeague.sort((item1, item2) => (item1.order - item2.order));

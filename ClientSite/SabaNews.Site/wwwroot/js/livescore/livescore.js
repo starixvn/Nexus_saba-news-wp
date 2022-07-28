@@ -42,6 +42,7 @@
 
         return matchIds;
     }
+
     function init() {
         RefreshFavMatch();
     }

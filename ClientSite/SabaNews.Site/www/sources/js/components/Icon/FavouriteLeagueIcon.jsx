@@ -72,6 +72,7 @@ export default class FavouriteLeagueIcon extends PureComponent {
         toast.update(toastId, { render: () => message, autoClose: 3000 });
         this.setState({ isFavourite: isFavourite, isShowTooltip: false });
         localStorage.setItem('favourite-leagues', JSON.stringify(favLeague));
+        localStorage.setItem('isDefaultLeague', 0);
         this.onUpdateFavLeague();
         return isFavourite;
     };
