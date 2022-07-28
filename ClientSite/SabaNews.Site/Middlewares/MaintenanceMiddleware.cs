@@ -32,8 +32,13 @@
         private bool IsBackdoorIPs(HttpContext context)
         {
             var currentIP = context.Connection.RemoteIpAddress?.ToString();
-            logServiceProvider.WriteLogFileInfo($"IP: {currentIP}");
-            return umSettings.BackdoorIPs.Any() && umSettings.BackdoorIPs.Any(ip => ip == currentIP);
+            bool IsBackdoorIPs = umSettings.BackdoorIPs.Any(ip =>
+                currentIP.Contains(ip, System.StringComparison.OrdinalIgnoreCase));
+            if (!IsBackdoorIPs)
+            {
+                logServiceProvider.WriteLogFileInfo($"IP: {currentIP} - Path: {context.Request.Path}");
+            }
+            return IsBackdoorIPs;
         }
     }
 }
