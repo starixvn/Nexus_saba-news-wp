@@ -10,7 +10,7 @@
     {
         Task<IList<League>> GetMajorLeagueAsync();
         Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria);
-        Task<League> GetLeagueByIdsAsync(long leagueId);
+        Task<League> GetLeagueByIdAsync(long leagueId);
         Task<IList<League>> GetLeaguesAsync();
         Task<IList<League>> GetAllLeaguesAsync();
         IList<League> SearchLeague(IList<League> leagues, string search, int isMajor);

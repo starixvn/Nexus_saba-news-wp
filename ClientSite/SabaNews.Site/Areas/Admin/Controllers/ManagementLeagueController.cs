@@ -93,7 +93,7 @@
 
         public async Task<ActionResult> GetAllLeagueById(long leagueId)
         {
-            League league = await leagueService.GetLeagueByIdsAsync(leagueId);
+            League league = await leagueService.GetLeagueByIdAsync(leagueId);
             return Json(league);
         }
 

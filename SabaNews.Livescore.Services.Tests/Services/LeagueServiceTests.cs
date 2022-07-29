@@ -88,7 +88,10 @@
             var fixture = new Fixture();
             var model = fixture.Create<UpdateLeagueExtraCriteria>();
             var league = fixture.Create<League>();
+            var leagues = fixture.Create<IList<League>>();
             var expected = new CommandResult { Code = 0 };
+            baseService.GetDataAsync<League>(Arg.Any<GetAllLeaguesCriteria>()).Returns(leagues);
+            baseService.GetDataAsync<League>(Arg.Any<GetLeagueByIdsCriteria>()).Returns(leagues);
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.UpdateLeaguesExtraAsync(league);
@@ -104,7 +107,10 @@
             var service = GetService();
             var fixture = new Fixture();
             var model = fixture.Create<DeleteLeagueExtraCriteria>();
+            var leagues = fixture.Create<IList<League>>();
             var expected = new CommandResult { Code = 0 };
+            baseService.GetDataAsync<League>(Arg.Any<GetAllLeaguesCriteria>()).Returns(leagues);
+            baseService.GetDataAsync<League>(Arg.Any<GetLeagueByIdsCriteria>()).Returns(leagues);
             baseService.ExecuteNonQueryAsync(Arg.Do<DeleteLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.DeleteLeaguesExtraAsync(model.LeagueId);
@@ -143,6 +149,21 @@
 
             //Assert
             Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task GetLeagueByIdAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var league = fixture.Create<League>();
+            baseService.GetDataEntityAsync<League>(Arg.Any<GetLeagueByIdCriteria>()).Returns(league);
+            //Act
+            var actual = await service.GetLeagueByIdAsync(league.LeagueId);
+
+            //Assert
+            Assert.Equal(league, actual);
         }
 
         [Fact]

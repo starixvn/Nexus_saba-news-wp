@@ -182,7 +182,7 @@
             return priority + 1;
         }
 
-        public async Task<League> GetLeagueByIdsAsync(long leagueId)
+        public async Task<League> GetLeagueByIdAsync(long leagueId)
         {
             var leagues = await baseService.GetDataEntityAsync<League>(new GetLeagueByIdCriteria
             {

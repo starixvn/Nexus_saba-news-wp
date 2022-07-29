@@ -51,11 +51,10 @@
         {
             // Arrange
             var controller = GetController();
-            var param = new Fixture().Create<ManagementAddLeagueFilterModel>();
             var expected = new Fixture().Create<IList<League>>();
             leagueService.GetAllLeaguesAsync().Returns(expected);
             //Act
-            var result = await controller.GetAllLeagues(param);
+            var result = await controller.GetAllLeagues();
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
@@ -99,11 +98,11 @@
         {
             // Arrange
             var controller = GetController();
-            var leagueId = new Fixture().Create<int>();
+            var league = new Fixture().Create<LeagueUpdateViewModel>();
             var expected = new Fixture().Create<CommandResult>();
-            leagueService.InsertLeaguesExtraAsync(leagueId).Returns(expected);
+            leagueService.InsertLeaguesExtraAsync(league.LeagueId).Returns(expected);
             //Act
-            var result = await controller.AddLeagueExtra(leagueId);
+            var result = await controller.AddLeagueExtra(league);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
@@ -125,6 +124,25 @@
             var viewResult = Assert.IsType<PartialViewResult>(result);
             Assert.Equal("_Edit", viewResult.ViewName);
         }
+
+
+        [Fact]
+        public async Task GetAllLeagueById_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var LeagueId = new Fixture().Create<long>();
+            var expected = new Fixture().Create<League>();
+            leagueService.GetLeagueByIdAsync(LeagueId).Returns(expected);
+            //Act
+            var result = await controller.GetAllLeagueById(LeagueId);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expected, jsonResult.Value);
+
+        }
+
 
         #region Helpers
         private ManagementLeagueController GetController()
