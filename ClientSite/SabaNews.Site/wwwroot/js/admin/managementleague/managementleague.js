@@ -71,7 +71,7 @@
                                     setTimeout(function () {
                                         $('#NoticeModal').modal('hide');
                                         GetDataLeagueExtraGrid();
-                                    }, 2000);
+                                    }, 1000);
                                 } else {
                                     GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                                 }
@@ -147,7 +147,7 @@
                                     $('#NoticeModal').modal('hide');
                                     typeSort = 1;
                                     GetDataLeagueExtraGrid();
-                                }, 2000);
+                                }, 1000);
                             } else {
                                 GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                             }
