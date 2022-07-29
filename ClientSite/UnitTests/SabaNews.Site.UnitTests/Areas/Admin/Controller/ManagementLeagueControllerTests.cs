@@ -53,6 +53,8 @@
             var controller = GetController();
             var expected = new Fixture().Create<IList<League>>();
             leagueService.GetAllLeaguesAsync().Returns(expected);
+            leagueService.GetLeaguesAsync().Returns(expected);
+
             //Act
             var result = await controller.GetAllLeagues();
 
@@ -99,8 +101,12 @@
             // Arrange
             var controller = GetController();
             var league = new Fixture().Create<LeagueUpdateViewModel>();
+
             var expected = new Fixture().Create<CommandResult>();
             leagueService.InsertLeaguesExtraAsync(league.LeagueId).Returns(expected);
+            leagueService.UpdateLeaguesExtraAsync(new League { LeagueId = league.LeagueId, IsMajor = league.IsMajor, Priority = league.Priority }).Returns(expected);
+            leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria { LeagueId = league.LeagueId, LeagueNameVN = league.LeagueNameVN, CountryVN = league.CountryVN }).Returns(expected);
+
             //Act
             var result = await controller.AddLeagueExtra(league);
 
