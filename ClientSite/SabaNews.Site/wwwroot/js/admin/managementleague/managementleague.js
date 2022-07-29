@@ -186,7 +186,6 @@
 
     function HandleModal() {
         $('.confirm-action').on('click', function () {
-            $('#ConfirmModal').modal('hide');
             if (url == "") {
                 return false;
             }
@@ -194,6 +193,7 @@
                 type: 'POST',
                 url: url,
                 success: function (response) {
+                    $('#ConfirmModal').modal('hide');
                     if (response.isSuccessful) {
                         GetSuccessPopup('#NoticeModal', 'Remove league successfully!');
                         setTimeout(function () {
