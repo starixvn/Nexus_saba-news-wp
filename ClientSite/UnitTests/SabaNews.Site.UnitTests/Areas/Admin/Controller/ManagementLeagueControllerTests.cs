@@ -11,6 +11,7 @@
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Site.Areas.Admin.Controllers;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading.Tasks;
     using Xunit;
     public class ManagementLeagueControllerTests : AdminController
@@ -38,6 +39,8 @@
             var param = new Fixture().Create<ManagementLeagueFilterModel>();
             var expected = new Fixture().Create<IList<League>>();
             leagueService.GetLeaguesAsync().Returns(expected);
+            leagueService.SearchLeague(expected, param.Search, param.IsMajor).Returns(expected);
+            leagueService.SortLeague(expected, param.TypeSort).Returns(expected);
             //Act
             var result = await controller.GetManagementLeagueData(param);
 
@@ -131,6 +134,31 @@
             Assert.Equal("_Edit", viewResult.ViewName);
         }
 
+        [Fact]
+        public async Task PostEditLeague_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var league = new Fixture().Create<LeagueUpdateViewModel>();
+            var expected = new Fixture().Create<CommandResult>();
+
+            leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
+            {
+                LeagueId = league.LeagueId,
+                LeagueNameVN = league.LeagueNameVN,
+                CountryVN = league.CountryVN?.ToUpper(CultureInfo.InvariantCulture)
+            }).Returns(expected);
+            leagueService.UpdateLeaguesExtraAsync(new League
+            {
+                LeagueId = league.LeagueId,
+                IsMajor = league.IsMajor,
+                Priority = league.Priority
+            }).Returns(expected);
+            //Act
+            var result = await controller.EditLeague(league);
+            // Assert
+
+        }
 
         [Fact]
         public async Task GetAllLeagueById_WhenCalled_ReturnExpectedData()

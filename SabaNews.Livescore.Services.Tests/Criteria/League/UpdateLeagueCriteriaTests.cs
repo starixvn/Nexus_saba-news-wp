@@ -16,7 +16,7 @@
         [Fact]
         public void IsValid_Always_ReturnTrue()
         {
-            var criteria = new UpdateLeagueExtraCriteria();
+            var criteria = new UpdateLeagueCriteria();
             var actual = criteria.IsValid();
             Assert.True(actual);
         }

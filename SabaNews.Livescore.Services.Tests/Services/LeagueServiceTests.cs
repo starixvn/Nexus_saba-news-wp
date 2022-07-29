@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
     using AutoFixture;
     using NSubstitute;
@@ -20,7 +22,7 @@
                 {
                     LeagueId = 1,
                     LeagueFullNameEN = "Test1",
-                    LeagueNameVN = "TestVN1",
+                    LeagueNameVN = "Test1",
                     IsMajor = true,
                     Priority = 1,
                     CreatedDate = DateTime.Parse("08/18/2018 07:22:16")
@@ -29,7 +31,7 @@
                 {
                     LeagueId = 1,
                     LeagueFullNameEN = "Test1",
-                    LeagueNameVN = "TestVN1",
+                    LeagueNameVN = "Test1",
                     IsMajor = false,
                     Priority = 2,
                     CreatedDate = DateTime.Parse("08/18/2018 08:22:16")
@@ -167,6 +169,40 @@
         }
 
         [Fact]
+        public async Task UpdateLeagueOtherDeleteAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var leagueUpdate = fixture.Create<League>();
+            var league = fixture.Create<IList<League>>();
+            var expected = new CommandResult { Code = 0 };
+            var criteria = fixture.Create<UpdateLeagueExtraCriteria>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            await service.UpdateLeagueOtherDeleteAsync(league, leagueUpdate);
+
+            //Assert
+        }
+
+        [Fact]
+        public async Task UpdateLeagueOtherAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var leagueUpdate = fixture.Create<League>();
+            var league = fixture.Create<IList<League>>();
+            var expected = new CommandResult { Code = 0 };
+            var criteria = fixture.Create<UpdateLeagueExtraCriteria>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            await service.UpdateLeagueOtherAsync(league, leagueUpdate);
+
+            //Assert
+        }
+
+        [Fact]
         public void SearchLeague_WhenCalledMajorTrue_ReturnExpectedResult()
         {
             //Arrange
@@ -237,6 +273,29 @@
 
             //Assert
             Assert.Equal(league[0], actual[0]);
+        }
+
+
+        [Fact]
+        public void GetLeaguePriority_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var fixture = new Fixture();
+            var league = fixture.Create<IList<League>>();
+            var service = GetService();
+            //Act
+
+            var actual = LeagueService.GetLeaguePriority(league);
+            int priority = 0;
+            foreach(var item in league)
+            {
+                if(item.Priority > priority)
+                {
+                    priority = item.Priority;
+                }
+            }
+            //Assert
+            Assert.Equal(priority + 1, actual);
         }
 
         private LeagueService GetService()

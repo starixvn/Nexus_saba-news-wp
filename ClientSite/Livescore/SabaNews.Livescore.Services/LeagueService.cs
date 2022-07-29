@@ -46,19 +46,19 @@
             return leagues.ToList();
         }
 
-        public async Task<CommandResult> UpdateLeaguesExtraAsync(League leagueUpdate)
+        public async Task<CommandResult> UpdateLeaguesExtraAsync(League league)
         {
-            var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueUpdate.LeagueId.ToString() + "]") });
+            var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + league.LeagueId.ToString() + "]") });
             var command = new UpdateLeagueExtraCriteria
             {
-                LeagueId = leagueUpdate.LeagueId,
-                Priority = leagueUpdate.Priority,
-                IsMajor = leagueUpdate.IsMajor
+                LeagueId = league.LeagueId,
+                Priority = league.Priority,
+                IsMajor = league.IsMajor
             };
             var result = await baseService.ExecuteNonQueryAsync(command);
-            if(leagueItem[0].Priority != leagueUpdate.Priority){
+            if(leagueItem[0].Priority != league.Priority){
                 var leagues = await GetLeaguesAsync();
-                await UpdateLeagueOtherAsync(SortLeague(leagues, 1), leagueUpdate);
+                await UpdateLeagueOtherAsync(SortLeague(leagues, 1), league);
             }
             return result;
         }
@@ -133,7 +133,7 @@
             return leagues;
         }
 
-        private async Task UpdateLeagueOtherAsync(IList<League> leagues, League leagueUpdate)
+        public async Task UpdateLeagueOtherAsync(IList<League> leagues, League leagueUpdate)
         {
             foreach(var item in leagues)
             {
@@ -151,7 +151,7 @@
             }
         }
 
-        private async Task UpdateLeagueOtherDeleteAsync(IList<League> leagues, League leagueUpdate)
+        public async Task UpdateLeagueOtherDeleteAsync(IList<League> leagues, League leagueUpdate)
         {
             foreach (var item in leagues)
             {
@@ -169,7 +169,7 @@
             }
         }
 
-        private static int GetLeaguePriority(IList<League> leagues)
+        public static int GetLeaguePriority(IList<League> leagues)
         {
             int priority = 0;
             foreach(var item in leagues)
