@@ -64,7 +64,7 @@
             {
                 LeagueId = leagueUpdate.LeagueId,
                 LeagueNameVN = leagueUpdate.LeagueNameVN,
-                CountryVN = leagueUpdate.CountryVN.ToUpper(CultureInfo.InvariantCulture)
+                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture)
             });
             _ = await leagueService.UpdateLeaguesExtraAsync(new League
             {
@@ -78,7 +78,23 @@
         public async Task<ActionResult> GetAllLeagues()
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
+            var leaguesExtra = await leagueService.GetLeaguesAsync();
+            int priority = 0;
+            foreach (var item in leaguesExtra)
+            {
+                if (item.Priority > priority)
+                {
+                    priority = item.Priority;
+                }
+            }
+            ViewBag.priority = priority + 1;
             return PartialView("_AddLeagueDataGrid", leagues);
+        }
+
+        public async Task<ActionResult> GetAllLeagueById(long leagueId)
+        {
+            League league = await leagueService.GetLeagueByIdsAsync(leagueId);
+            return Json(league);
         }
 
         public async Task<ActionResult> UpdateLeagueExtra(League league)
@@ -93,9 +109,21 @@
             return Json(result);
         }
 
-        public async Task<ActionResult> AddLeagueExtra(long leagueId)
+        public async Task<ActionResult> AddLeagueExtra(LeagueUpdateViewModel leagueUpdate)
         {
-            var result = await leagueService.InsertLeaguesExtraAsync(leagueId);
+            var result = await leagueService.InsertLeaguesExtraAsync(leagueUpdate.LeagueId);
+            _ = await leagueService.UpdateLeaguesAsync(new UpdateLeagueCriteria
+            {
+                LeagueId = leagueUpdate.LeagueId,
+                LeagueNameVN = leagueUpdate.LeagueNameVN,
+                CountryVN = leagueUpdate.CountryVN?.ToUpper(CultureInfo.InvariantCulture)
+            });
+            _ = await leagueService.UpdateLeaguesExtraAsync(new League
+            {
+                LeagueId = leagueUpdate.LeagueId,
+                IsMajor = leagueUpdate.IsMajor,
+                Priority = leagueUpdate.Priority
+            });
             return Json(result);
         }
     }

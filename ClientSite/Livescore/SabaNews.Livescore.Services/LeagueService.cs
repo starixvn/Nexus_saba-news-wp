@@ -65,11 +65,15 @@
 
         public async Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId)
         {
+            var leagueDelete = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + leagueId.ToString() + "]") });
             var command = new DeleteLeagueExtraCriteria
             {
                 LeagueId = leagueId
             };
-            return await baseService.ExecuteNonQueryAsync(command);
+            var result = await baseService.ExecuteNonQueryAsync(command);
+            var leagues = await GetLeaguesAsync();
+            await UpdateLeagueOtherDeleteAsync(SortLeague(leagues, 1), leagueDelete[0]);
+            return result;
         }
 
         public async Task<CommandResult> InsertLeaguesExtraAsync(long leagueId)
@@ -147,6 +151,24 @@
             }
         }
 
+        private async Task UpdateLeagueOtherDeleteAsync(IList<League> leagues, League leagueUpdate)
+        {
+            foreach (var item in leagues)
+            {
+                if (item.Priority >= leagueUpdate.Priority && item.LeagueId != leagueUpdate.LeagueId)
+                {
+                    var command = new UpdateLeagueExtraCriteria
+                    {
+                        LeagueId = item.LeagueId,
+                        Priority = leagueUpdate.Priority,
+                        IsMajor = item.IsMajor
+                    };
+                    await baseService.ExecuteNonQueryAsync(command);
+                    leagueUpdate.Priority++;
+                }
+            }
+        }
+
         private static int GetLeaguePriority(IList<League> leagues)
         {
             int priority = 0;
@@ -158,6 +180,15 @@
                 }
             }
             return priority + 1;
+        }
+
+        public async Task<League> GetLeagueByIdsAsync(long leagueId)
+        {
+            var leagues = await baseService.GetDataEntityAsync<League>(new GetLeagueByIdCriteria
+            {
+                LeagueId = leagueId
+            });
+            return leagues;
         }
     }
 }

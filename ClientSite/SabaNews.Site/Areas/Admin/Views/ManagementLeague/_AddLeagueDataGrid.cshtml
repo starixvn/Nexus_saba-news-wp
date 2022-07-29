@@ -22,7 +22,7 @@
                                 <label>@ViewResources.Priority</label>
                             </td>
                             <td class="col-sm">
-                                <input type="number" class="form-control txt-priority" id="addPriority" name="Priority" />
+                                <input type="number" value="@ViewBag.priority" class="form-control txt-priority" id="addPriority" name="Priority" />
                             </td>
                             <td class="col-sm">
                                 <label class="lable-major">@ViewResources.Major</label>
@@ -37,7 +37,7 @@
                                 <label>@ViewResources.CountryVN</label>
                             </td>
                             <td>
-                                <input type="text" class="form-control txt-countryVn" id="addCountryVN" name="CountryVN" />
+                                <input type="text" value="@Model[0].CountryVN" class="form-control txt-countryVn" id="addCountryVN" name="CountryVN" />
                             </td>
                         </tr>
 
@@ -46,7 +46,7 @@
                                 <label>@ViewResources.LeagueNameVN</label>
                             </td>
                             <td >
-                                <input type="text" class="form-control txt-leagueNameVn" id="addLeagueNameVN" name="LeagueNameVN" />
+                                <input type="text" value="@Model[0].LeagueNameVN" class="form-control txt-leagueNameVn" id="addLeagueNameVN" name="LeagueNameVN" />
                             </td>
                         </tr>
 
@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
                 <div class="form-btn">
-                    <button class="btn btn-primary pl-4 pr-4" id="btn-save">Save</button>
+                    <button class="btn btn-primary pl-4 pr-4" data-url="@Url.Action("AddLeagueExtra", "ManagementLeague")" id="btn-save-add">Save</button>
                     <button class="btn btn-secondary pl-4 pr-4" type="button" data-dismiss="modal">Cancel</button>
                 </div>
             </td>
