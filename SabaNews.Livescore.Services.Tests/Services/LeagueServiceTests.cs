@@ -169,40 +169,6 @@
         }
 
         [Fact]
-        public async Task UpdateLeagueOtherDeleteAsync_WhenCalled_ReturnExpectedResult()
-        {
-            //Arrange
-            var service = GetService();
-            var fixture = new Fixture();
-            var leagueUpdate = fixture.Create<League>();
-            var league = fixture.Create<IList<League>>();
-            var expected = new CommandResult { Code = 0 };
-            var criteria = fixture.Create<UpdateLeagueExtraCriteria>();
-            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => criteria = x)).Returns(expected);
-            //Act
-            await service.UpdateLeagueOtherDeleteAsync(league, leagueUpdate);
-
-            //Assert
-        }
-
-        [Fact]
-        public async Task UpdateLeagueOtherAsync_WhenCalled_ReturnExpectedResult()
-        {
-            //Arrange
-            var service = GetService();
-            var fixture = new Fixture();
-            var leagueUpdate = fixture.Create<League>();
-            var league = fixture.Create<IList<League>>();
-            var expected = new CommandResult { Code = 0 };
-            var criteria = fixture.Create<UpdateLeagueExtraCriteria>();
-            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => criteria = x)).Returns(expected);
-            //Act
-            await service.UpdateLeagueOtherAsync(league, leagueUpdate);
-
-            //Assert
-        }
-
-        [Fact]
         public void SearchLeague_WhenCalledMajorTrue_ReturnExpectedResult()
         {
             //Arrange

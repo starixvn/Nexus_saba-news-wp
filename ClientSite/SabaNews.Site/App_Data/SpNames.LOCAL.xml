@@ -193,6 +193,7 @@
 		<Setting Key="Livescore_League_Get" SpName="Livescore_League_Get" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_GetAll" SpName="Livescore_League_GetAll" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_Update" SpName="Livescore_League_Update" DbName="sabasports" Plain="0" />
+		<Setting Key="Livescore_League_Extra_UpdatePriorities" SpName="Livescore_League_Extra_UpdatePriorities" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_GetLeagueById" SpName="Livescore_League_GetLeagueById" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_Extra_Update" SpName="Livescore_League_Extra_Update" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_League_Extra_Remove" SpName="Livescore_League_Extra_Remove" DbName="sabasports" Plain="0" />
