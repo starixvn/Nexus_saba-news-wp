@@ -58,9 +58,22 @@
             var commandUpdatePriority = new UpdateLeagueExtraPriorityCriteria
             {
                 LeagueIdUpdate = league.LeagueId,
-                Priority = league.Priority,
-                IsDelete = false
+                Priority = league.Priority
             };
+            if(league.Priority > leagueItem[0].Priority)
+            {
+                commandUpdatePriority.Priority = leagueItem[0].Priority;
+                commandUpdatePriority.IsCheck = true;
+                commandUpdatePriority.IsDelete = true;
+                commandUpdatePriority.PriorityUpdate = league.Priority;
+            }
+            else
+            {
+                commandUpdatePriority.IsCheck = false;
+                commandUpdatePriority.PriorityUpdate = 0;
+                commandUpdatePriority.IsDelete = false;
+
+            }
             var result = await baseService.ExecuteNonQueryAsync(command);
             _ = await baseService.ExecuteNonQueryAsync(commandUpdatePriority);
             return result;
@@ -79,7 +92,9 @@
             {
                 LeagueIdUpdate = leagueDelete[0].LeagueId,
                 Priority = leagueDelete[0].Priority,
-                IsDelete = true
+                IsDelete = true,
+                PriorityUpdate = 0,
+                IsCheck = false
             };
             _ = await baseService.ExecuteNonQueryAsync(commandUpdatePriority);
             return result;
