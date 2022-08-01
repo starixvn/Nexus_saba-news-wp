@@ -57,9 +57,18 @@
                     display: block;
                 }
 
-                .card-vertical__image, .skeleton-vertical__image {
-                    height: 25.5rem;
+                .card-vertical__image {
+                    height: 100%;
+                    margin-bottom: 0;
 
+                    @include Mobile {
+                        height: 22.78rem;
+                        display: block;
+                    }
+                }
+
+                .skeleton-vertical__image {
+                    height: 25.5rem;
                     @include tableMobile {
                         height: 11rem;
                     }
@@ -70,8 +79,25 @@
                     }
                 }
 
+
                 .skeleton-vertical__title {
                     margin: 1rem auto;
+                }
+            }
+
+            .card-vertical {
+                background: unset;
+                position: relative;
+                padding-bottom: 0;
+
+                .group-title-home {
+                    position: absolute;
+                    background: rgba(232, 234, 239, 0.95);
+                    bottom: 0;
+                    padding: 1.2rem 0;
+                    @include Mobile{
+                        position : unset;
+                    }
                 }
             }
 

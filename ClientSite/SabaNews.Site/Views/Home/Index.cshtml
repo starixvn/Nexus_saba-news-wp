@@ -64,13 +64,15 @@
                                         <img asp-append-version="true" loading="lazy" src="@Url.Content(firstImgUrl)" alt="@firstPost.PostTitle" class="img-res img-block">
                                     </picture> }
                             </a>
-                            <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug })" class="card-vertical__title">@firstPost.PostTitle</a>
-                            <p class="card-vertical__description text-description">
-                                @Html.Raw(firstPost.PostExcerpt)
-                                @if (firstPost.CommentCount > 0)
-                                {
-                                    <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@firstPost.CommentCount</i></a>}
-                            </p>
+                            <div class="group-title-home">
+                                <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug })" class="card-vertical__title">@firstPost.PostTitle</a>
+                                <p class="card-vertical__description text-description">
+                                    @Html.Raw(firstPost.PostExcerpt)
+                                    @if (firstPost.CommentCount > 0)
+                                    {
+                                        <a href="@Url.Action("Single", "Post", new { slug =  firstPost.Slug})#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@firstPost.CommentCount</i></a>}
+                                </p>
+                            </div>
                         </div>
                     }
 
