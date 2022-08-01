@@ -10,7 +10,7 @@
                                 <label>@ViewResources.Priority</label>
                             </td>
                             <td class="col-sm">
-                                <input type="number" value="@Model[0].Priority" class="form-control txt-priority" id="editPriority" name="Priority" />
+                                <input type="number" value="@Model[0].Priority" min="0" max="@ViewBag.priority" class="form-control txt-priority" id="editPriority" name="Priority" />
                             </td>
                             <td class="col-sm">
                                 <label class="lable-major">@ViewResources.Major</label>

@@ -49,6 +49,11 @@
         public async Task<CommandResult> UpdateLeaguesExtraAsync(League league)
         {
             var leagueItem = await GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("[" + league.LeagueId.ToString() + "]") });
+            var leaguesExtra = await GetLeaguesAsync();
+            if(league.Priority > GetLeaguePriority(leaguesExtra))
+            {
+                league.Priority = GetLeaguePriority(leaguesExtra);
+            }
             var command = new UpdateLeagueExtraCriteria
             {
                 LeagueId = league.LeagueId,

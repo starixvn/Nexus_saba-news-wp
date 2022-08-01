@@ -55,6 +55,7 @@
                     $('#EditLeagueContent').modal('show');
 
                     $('#btn-save').on('click', function () {
+                        document.getElementById("btn-save").style.display = "none";
                         var LeagueId = $(this).data('id');
                         var IsMajor = document.getElementById("editMajor").checked;
                         var Priority = document.getElementById("editPriority").value;
@@ -73,6 +74,7 @@
                                         GetDataLeagueExtraGrid();
                                     }, 1000);
                                 } else {
+                                    document.getElementById("btn-save").style.display = "inline-block";
                                     GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                                 }
                             }
@@ -129,6 +131,7 @@
                 });
 
                 $('#btn-save-add').on('click', function () {
+                    document.getElementById("btn-save-add").style.display = "none";
                     url = $(this).data('url');
                     var LeagueId = document.getElementById("leagueFullNameEN").value;
                     var IsMajor = document.getElementById("addMajor").checked;
@@ -149,6 +152,7 @@
                                     GetDataLeagueExtraGrid();
                                 }, 1000);
                             } else {
+                                document.getElementById("btn-save-add").style.display = "inline-block";
                                 GetErrorPopup('#NoticeModal', 'An error occurred while add league, please try again');
                             }
                         }

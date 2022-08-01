@@ -53,7 +53,8 @@
         public async Task<ActionResult> EditLeague(long leagueId)
         {
             IList<League> league = await leagueService.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria { LeagueIds = ("["+leagueId.ToString()+"]")});
-            
+            var leaguesExtra = await leagueService.GetLeaguesAsync();
+            ViewBag.priority = LeagueService.GetLeaguePriority(leaguesExtra);
             return PartialView("_Edit", league);
         }
 
@@ -79,15 +80,7 @@
         {
             var leagues = await leagueService.GetAllLeaguesAsync();
             var leaguesExtra = await leagueService.GetLeaguesAsync();
-            int priority = 0;
-            foreach (var item in leaguesExtra)
-            {
-                if (item.Priority > priority)
-                {
-                    priority = item.Priority;
-                }
-            }
-            ViewBag.priority = priority + 1;
+            ViewBag.priority = LeagueService.GetLeaguePriority(leaguesExtra);
             return PartialView("_AddLeagueDataGrid", leagues);
         }
 
