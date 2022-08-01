@@ -141,8 +141,7 @@
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWhen(
-                context => !context.Request.Path.StartsWithSegments("/maintenance", StringComparison.OrdinalIgnoreCase) ||
-                !context.Request.Path.StartsWithSegments("/whoami", StringComparison.OrdinalIgnoreCase),
+                context => !context.Request.Path.StartsWithSegments("/maintenance", StringComparison.OrdinalIgnoreCase),
                 appBuilder =>
                 {
                     appBuilder.UseMiddleware<MaintenanceMiddleware>();

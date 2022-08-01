@@ -61,7 +61,6 @@
                 Slug2 = slug2,
                 Slug3 = slug3,
                 Page = Constants.FirstPage
-              
             };
             var viewModel = await dataControlService.GetCategoryViewModel(param);
             if (viewModel == null)
@@ -105,6 +104,7 @@
         {
             return RedirectToAction("Video", "Home");
         }
+        
 
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)

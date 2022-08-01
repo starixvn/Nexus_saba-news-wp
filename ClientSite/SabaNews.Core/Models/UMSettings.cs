@@ -8,6 +8,7 @@
         public bool Enabled { get; set; }
         public string From { get; set; }
         public string To { get; set; }
-        public List<string> BackdoorIPs { get; set; } = new List<string>();
+        public List<string> WhiteListUrls { get; set; } = new List<string>();
+        public List<string> WhiteListIPs { get; set; } = new List<string>();
     }
 }
