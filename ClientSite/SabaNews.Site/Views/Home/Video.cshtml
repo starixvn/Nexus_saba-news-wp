@@ -15,6 +15,20 @@
 }
 
 @section Scripts {
+    <script>
+        window.slugs = {
+            slug1: '@Model.Header.Slug'
+        };
+        window.paging = {
+            page: '@Model.Paging.CurrentPage',
+            pageSize: '@Model.Paging.PageSize',
+            TotalPages: '@Model.Paging.TotalPages'
+        };
+        window.isVideo = true;
+        window.type = '@Model.Header.Controller';
+
+    </script>
+    <script src="~/js/post/blog.js" asp-append-version="true"></script>
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
 }
 
@@ -52,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="block__video">
+            <div id="category-grid" class="block__video">
                 @{
                     int postIndex = 0;
                     foreach (var post in Model.Posts)
@@ -90,10 +104,7 @@
                         </div>
                     }
                 }
-
-
             </div>
-            @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
         </div>
         @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
     </div>

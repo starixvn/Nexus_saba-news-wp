@@ -27,8 +27,30 @@
     detector.Parse();
     bool isMobile = detector.IsMobile();
     bool isDesktop = detector.IsDesktop();
+    var slug1 = Model.Slugs != null ? Model.Slugs.Slug1 : null;
+    var slug2 = Model.Slugs != null ? Model.Slugs.Slug2 : null;
+    var slug3 = Model.Slugs != null ? Model.Slugs.Slug3 : null;
 }
 
+@section Scripts {
+    <script>
+        window.slugs = {
+            slug1: '@slug1',
+            slug2: '@slug2',
+            slug3: '@slug3'
+        };
+        window.paging = {
+            page: '@Model.Paging.CurrentPage',
+            pageSize: '@Model.Paging.PageSize',
+            totalPages: '@Model.Paging.TotalPages'
+        };
+        window.isVideo = false;
+        window.keyword = '@Model.Header.Keyword';
+        window.type = '@Model.Header.Controller';
+    </script>
+    <script src="~/js/post/blog.js" asp-append-version="true"></script>
+    
+}
 @section Metadata {
     <meta name="description" content='@Model.Header.Description' />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +154,7 @@
     </div>
     <div class="container">
         <div class="block block-main">
-            <div class="block__content">
+            <div id="category-grid" class="block__content">
                 <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
                     <a class="skeleton-horizontal__image"></a>
                     <div class="text-skeleton">
@@ -202,7 +224,6 @@
                         </div>
                     }
                 }
-                @(await Component.InvokeAsync("PagingCategory", new { model = Model.Paging }))
             </div>
         </div>
 

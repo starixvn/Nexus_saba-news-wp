@@ -59,7 +59,7 @@
 
         public const int FirstPage = 1;
         public const int Perpage = 10;
-        public const int PerpageVideo = 9;
+        public const int PageSizeVideo = 9;
         public const int Total = 10000;
         public const int ExcerptLength = 200;
         public const int NumberMinutesAHour = 60;

@@ -61,7 +61,7 @@
 
         public async Task<BlogViewModel> GetCategoryViewModel(GetPostsByCateSlugsParam param)
         {
-            const int pageSize = Constants.Perpage;
+            var pageSize = Constants.Perpage;
             var controller = "category";
             var slug = param.Slug1;
             var page = param.Page;
@@ -103,6 +103,7 @@
             }
             var cate = await postService.GetCateDetailAsync(slug);
             var title = cate.SEOTitle ??= cate.Title;
+            pageSize = slug == Constants.VideoSlug ? Constants.PageSizeVideo : Constants.Perpage;
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,

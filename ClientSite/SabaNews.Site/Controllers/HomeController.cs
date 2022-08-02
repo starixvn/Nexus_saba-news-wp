@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
@@ -49,14 +50,14 @@
         }
 
         [Route("/tin-the-thao/{slug1?}/{slug2?}/{slug3?}")]
-        public async Task<IActionResult> Category(string slug1 = null, string slug2 = null, string slug3 = null, int page = 1)
+        public async Task<IActionResult> Category(string slug1 = null, string slug2 = null, string slug3 = null)
         {
             var param = new GetPostsByCateSlugsParam
             {
                 Slug1 = slug1,
                 Slug2 = slug2,
                 Slug3 = slug3,
-                Page = page
+                Page = Constants.FirstPage
               
             };
             var viewModel = await dataControlService.GetCategoryViewModel(param);
@@ -71,7 +72,6 @@
             return View(Constants.BlogView, viewModel);
         }
 
-        [Route("/video/page/{page}")]
         [Route("/video/{slug2?}/{slug3?}")]
         public async Task<IActionResult> Video( string slug2 = null, string slug3 = null, int page = 1)
         {
@@ -84,8 +84,6 @@
             var view = (viewModel.Posts.Any()) ? Constants.VideoView : Constants.EmptyBlogView;
             return View(view, viewModel);
         }
-
-        
 
 
         [Route("Search/{keyword}/page/{page}")]
@@ -190,6 +188,63 @@
         public ActionResult RedirectLivescorePage()
         {
             return Redirect("/lich-thi-dau/bong-da");
+        }
+
+        [HttpPost]
+        [Route("api/post/category-posts")]
+        public async Task<IActionResult> GetCategoryGrid(CategoryPostParams param)
+        {
+            var slug = param.Slugs.Slug1 ??= Constants.NewPostSlug;
+            int pageSize = param.PageSize;
+            var start = (param.Page - 1) * pageSize;
+            if (param.IsVideo) {
+                start = param.Page > 2 ? (param.Page - 1) * pageSize + 1 : Constants.Perpage;
+            }
+            IEnumerable<Post> posts;
+            if (slug == Constants.NewPostSlug)
+            {
+                var paramGetRecent = new GetRecentPostsParam
+                {
+                    Start = start,
+                    End = pageSize
+                };
+                posts = await postService.GetRecentPostsAsync(paramGetRecent);
+            }
+            else
+            {
+                var criteria = new GetPostsByCateSlugsCriteria
+                {
+                    Slug1 = slug,
+                    Slug2 = param.Slugs.Slug2,
+                    Slug3 = param.Slugs.Slug3,
+                    Start = start,
+                    End = pageSize
+                };
+                posts = await postService.GetPostsByCateSlugs(criteria);
+            }
+            
+            if (!posts.Any())
+            {
+                return Ok(false);
+            }
+            var view = param.IsVideo ? "~/Views/Home/_VideoGridView.cshtml" : "~/Views/Home/_CategoryGridView.cshtml";
+            return PartialView(view, posts);
+        }
+
+        [HttpPost]
+        [Route("api/post/type-posts")]
+        public async Task<IActionResult> GetSearchGrid(TypePostParam param)
+        {
+            var start = (param.Page - 1) * param.PageSize;
+            var posts = param.Type == Constants.Search
+                        ? await postService.SearchPostAsync(new SearchPostsCriteria { _Keyword = param.Keyword, _Start = start, _End = param.PageSize })
+                        : await postService.GetPostByTagAsync(new GetPostsByTagCriteria { _Tag = param.Keyword, _Start = start, _End = param.PageSize });
+                                                 
+            if (!posts.Any())
+            {
+                return Ok(false);
+            }
+            return PartialView("~/Views/Home/_CategoryGridView.cshtml", posts);
         }
     }
 }

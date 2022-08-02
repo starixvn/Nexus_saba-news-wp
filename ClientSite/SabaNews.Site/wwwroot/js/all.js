@@ -13,7 +13,7 @@ $('.submenu').click(function () {
     }
 })
 
-$("a").mousedown(function () {
+$(document).mousedown('a', function () {
     $(window).unbind('beforeunload');
 });
 $("#search").submit(function () {
@@ -79,9 +79,6 @@ $(document).ready(function () {
         }
     });
     
-
-
-   
 
     $('.button-detail-page').click(function () {
         if ($(window).innerWidth() <= 1024) {
