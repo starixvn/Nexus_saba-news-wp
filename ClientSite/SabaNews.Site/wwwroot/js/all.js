@@ -278,6 +278,7 @@ function getFavouriteMatchCount() {
 //detail scroll click list
 var menuItems = $("#list-place").find("a"),
     topMenuHeight = $('.header-controls').outerHeight(),
+    socialHeight = $('.main-social').outerHeight(),
     scrollItems = menuItems.map(function () {
         var item = $($(this).attr("href"));
         if (item.length) { return item; }
@@ -289,7 +290,19 @@ if ($(window).innerWidth() > 1024) {
         var offsetTop = href === "#" ? 0 : $(href).offset().top - 110;
         if ($(window).scrollTop() > 120) {
             offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight;
-        } 
+        }
+        $('html, body').stop().animate({
+            scrollTop: offsetTop
+        }, 800);
+        e.preventDefault();
+    });
+} else {
+    menuItems.click(function (e) {
+        var href = $(this).attr("href");
+        var offsetTop = href === "#" ? 0 : $(href).offset().top - 50;
+        if ($(window).scrollTop() > 0) {
+            offsetTop = href === "#" ? 0 : $(href).offset().top - socialHeight;
+        }
         $('html, body').stop().animate({
             scrollTop: offsetTop
         }, 800);
