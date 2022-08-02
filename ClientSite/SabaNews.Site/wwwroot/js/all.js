@@ -275,25 +275,6 @@ function getFavouriteMatchCount() {
     }
 }
 
-    socialHeight = $('.main-social').outerHeight(),
-
-        }
-        $('html, body').stop().animate({
-            scrollTop: offsetTop
-        }, 800);
-        e.preventDefault();
-    });
-} else {
-    menuItems.click(function (e) {
-        var href = $(this).attr("href");
-        var offsetTop = href === "#" ? 0 : $(href).offset().top - 50;
-        if ($(window).scrollTop() > 0) {
-            offsetTop = href === "#" ? 0 : $(href).offset().top - socialHeight;
-        }
-
-
-
-
 //submenu
 (function ($) {
     $.fn.menumaker = function (options) {
