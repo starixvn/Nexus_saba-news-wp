@@ -52,7 +52,7 @@
             var leaguesExtra = await GetLeaguesAsync();
             if(league.Priority > GetLeaguePriority(leaguesExtra))
             {
-                league.Priority = GetLeaguePriority(leaguesExtra);
+                league.Priority = GetLeaguePriority(leaguesExtra) - 1;
             }
             var command = new UpdateLeagueExtraCriteria
             {
