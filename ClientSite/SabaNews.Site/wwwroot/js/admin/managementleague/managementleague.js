@@ -116,11 +116,12 @@
                     var LeagueId = document.getElementById("leagueFullNameEN").value;
                     $.ajax({
                         type: 'POST',
-                        url: "/Admin/ManagementLeague/GetAllLeagueById",
+                        url: "/Admin/ManagementLeague/GetLeagueById",
                         data: { LeagueId },
                         success: function (response) {
                             document.getElementById("addCountryVN").value = response.countryVN;
                             document.getElementById("addLeagueNameVN").value = response.leagueNameVN;
+                            document.getElementById("addLeagueId").value = response.leagueId;
                         }
                     });
                 });

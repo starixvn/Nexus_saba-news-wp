@@ -20,7 +20,92 @@
     width: 397px !important;
 }
 
-#AddLeagueContent .modal-content, #EditLeagueContent .modal-content {
+#AddLeagueContent .modal-content {
+    .select2-container {
+        margin-left: -336px;
+    }
+
+    .modal-body {
+        padding: 1rem 1.6rem !important;
+    }
+
+    .row {
+        display: inline;
+        flex-wrap: wrap;
+        flex: 1 0 100%;
+        margin: 0;
+    }
+
+    td {
+        padding: 7px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 14px;
+        color: #333333;
+    }
+
+    .lable-major {
+        margin-left: 20px;
+    }
+
+    .checkbox-major {
+        margin-left: 5px;
+    }
+
+    .form-control {
+        display: block;
+        height: 31px;
+        padding: 5px 8px;
+        line-height: 1.5;
+        border: 1px solid #CCC;
+        font-size: 14px;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    .label-LeagueID {
+        width: 70px;
+    }
+
+    .txt-countryVn, .txt-leagueNameVn, .txt-leagueFullNameVn {
+        width: 397px !important;
+        margin-left: -336px;
+    }
+
+    .txt-leagueId {
+        width: 60px !important;
+        margin-left: 77px;
+        margin-right: 20px;
+    }
+
+    .txt-countryVn {
+        text-transform: uppercase;
+    }
+
+    .txt-priority {
+        width: 65px !important;
+        margin-left: 10px;
+    }
+
+    .form-btn {
+        padding-top: 15px;
+        padding-right: 5px;
+        text-align: right;
+    }
+
+    .form-btn .btn {
+        margin-left: 12px;
+        width: 80px;
+        font-size: 15px;
+    }
+}
+
+#EditLeagueContent .modal-content {
     .select2-container {
         margin-left: -297px;
     }

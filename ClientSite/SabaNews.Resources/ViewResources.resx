@@ -909,4 +909,10 @@
   <data name="Hot" xml:space="preserve">
     <value>Hot</value>
   </data>
+  <data name="IsHot" xml:space="preserve">
+    <value>IsHot</value>
+  </data>
+  <data name="LeagueId" xml:space="preserve">
+    <value>League ID</value>
+  </data>
 </root>

@@ -997,6 +997,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IsHot.
+        /// </summary>
+        public static string IsHot {
+            get {
+                return ResourceManager.GetString("IsHot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IsMajor.
         /// </summary>
         public static string IsMajor {
@@ -1029,6 +1038,15 @@ namespace SabaNews.Resources {
         public static string LeagueFullNameEN {
             get {
                 return ResourceManager.GetString("LeagueFullNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to League ID.
+        /// </summary>
+        public static string LeagueId {
+            get {
+                return ResourceManager.GetString("LeagueId", resourceCulture);
             }
         }
         

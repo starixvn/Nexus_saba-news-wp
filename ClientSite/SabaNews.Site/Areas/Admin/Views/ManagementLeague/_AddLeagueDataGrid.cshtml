@@ -18,6 +18,12 @@
                 <table>
                     <tbody>
                         <tr class="row">
+                            <td>
+                                <label class="label-LeagueID">@ViewResources.LeagueId</label>
+                            </td>
+                            <td>
+                                <input type="text" value="@Model[0].LeagueId" class="form-control txt-leagueId" id="addLeagueId" name="LeagueId" readonly />
+                            </td>
                             <td class="col-sm">
                                 <label>@ViewResources.Priority</label>
                             </td>
@@ -25,10 +31,19 @@
                                 <input type="number" value="@ViewBag.priority" min="0" max="@ViewBag.priority" class="form-control txt-priority" id="addPriority" name="Priority" />
                             </td>
                             <td class="col-sm">
-                                <label class="lable-major">@ViewResources.Major</label>
+                                <label class="lable-major">@ViewResources.Hot</label>
                             </td>
                             <td class="col-sm">
                                 <input type="checkbox" class="checkbox-major" id="addMajor" name="Major" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label>@ViewResources.LeagueFullNameEN</label>
+                            </td>
+                            <td>
+                                @Html.DropDownList("LeagueId", new SelectList(Model, "LeagueId", "LeagueFullNameEN"), new { @class = "form-control txt-leagueFullNameVn", value = "LeagueId", id = "leagueFullNameEN" })
                             </td>
                         </tr>
 
@@ -45,17 +60,8 @@
                             <td>
                                 <label>@ViewResources.LeagueNameVN</label>
                             </td>
-                            <td >
+                            <td>
                                 <input type="text" value="@Model[0].LeagueNameVN" class="form-control txt-leagueNameVn" id="addLeagueNameVN" name="LeagueNameVN" />
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <label>@ViewResources.LeagueFullNameEN</label>
-                            </td>
-                            <td>
-                                @Html.DropDownList("LeagueId", new SelectList(Model, "LeagueId", "LeagueFullNameEN"), new { @class = "form-control txt-leagueFullNameVn", value = "LeagueId", id = "leagueFullNameEN" })
                             </td>
                         </tr>
                     </tbody>

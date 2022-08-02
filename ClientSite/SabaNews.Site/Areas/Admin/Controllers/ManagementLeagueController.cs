@@ -84,7 +84,7 @@
             return PartialView("_AddLeagueDataGrid", leagues);
         }
 
-        public async Task<ActionResult> GetAllLeagueById(long leagueId)
+        public async Task<ActionResult> GetLeagueById(long leagueId)
         {
             League league = await leagueService.GetLeagueByIdAsync(leagueId);
             return Json(league);
