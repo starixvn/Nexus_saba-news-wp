@@ -64,3 +64,18 @@
 .pagination a {
     text-decoration: none;
 }
+
+.load-more-page {
+    text-align: center;
+
+    button {
+        border: 1px solid #ddd;
+        width: 126px;
+        height: 37px;
+        margin: auto;
+        color: #1913e7;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
