@@ -69,6 +69,7 @@
 
                 .skeleton-vertical__image {
                     height: 25.5rem;
+
                     @include tableMobile {
                         height: 11rem;
                     }
@@ -92,11 +93,12 @@
 
                 .group-title-home {
                     position: absolute;
-                    background: rgba(255, 255, 255, 0.8);
+                    background: linear-gradient(180deg, #E8EAEF 0%, rgba(247, 247, 247, 0.9) 100%);
                     bottom: 0;
                     padding: 1.2rem 0;
-                    @include Mobile{
-                        position : unset;
+
+                    @include Mobile {
+                        position: unset;
                     }
                 }
             }
@@ -440,10 +442,12 @@
         }
 
         .marked-icon {
-            position: absolute;
-            top: -6px;
-            right: 110px;
-            left: auto;
+            @include Mobile {
+                position: absolute;
+                top: -6px;
+                right: 110px;
+                left: auto;
+            }
         }
 
         .block__content {

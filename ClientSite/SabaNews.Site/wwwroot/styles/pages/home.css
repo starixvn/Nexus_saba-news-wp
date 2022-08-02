@@ -2079,7 +2079,7 @@ button {
     padding-bottom: 0; }
     .main .block-hot-news .block__content .card-vertical .group-title-home {
       position: absolute;
-      background: rgba(255, 255, 255, 0.8);
+      background: linear-gradient(180deg, #E8EAEF 0%, rgba(247, 247, 247, 0.9) 100%);
       bottom: 0;
       padding: 1.2rem 0; }
       @media (max-width: 767px) {
@@ -2322,11 +2322,12 @@ button {
     background-color: #223453;
     color: #fff;
     padding-right: .4rem; }
-  .main .block-guess .marked-icon {
-    position: absolute;
-    top: -6px;
-    right: 110px;
-    left: auto; }
+  @media (max-width: 767px) {
+    .main .block-guess .marked-icon {
+      position: absolute;
+      top: -6px;
+      right: 110px;
+      left: auto; } }
   .main .block-guess .block__content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

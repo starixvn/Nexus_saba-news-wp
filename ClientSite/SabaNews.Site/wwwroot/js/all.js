@@ -275,6 +275,28 @@ function getFavouriteMatchCount() {
     }
 }
 
+//detail scroll click list
+var lastId,
+    topMenu = $("#list-place"),
+    menuItems = topMenu.find("a"),
+    topMenuHeight = $('.top-header').outerHeight() + 15,
+    scrollItems = menuItems.map(function () {
+        var item = $($(this).attr("href"));
+        if (item.length) { return item; }
+    });
+
+if ($(window).innerWidth() > 1024) {
+    menuItems.click(function (e) {
+        var href = $(this).attr("href"),
+            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+        $('html, body').stop().animate({
+            scrollTop: offsetTop
+        }, 800);
+        e.preventDefault();
+    });
+
+}
+
 
 
 
