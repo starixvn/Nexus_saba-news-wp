@@ -276,10 +276,8 @@ function getFavouriteMatchCount() {
 }
 
 //detail scroll click list
-var lastId,
-    topMenu = $("#list-place"),
-    menuItems = topMenu.find("a"),
-    topMenuHeight = $('.top-header').outerHeight() + 15,
+var menuItems = $("#list-place").find("a"),
+    topMenuHeight = $('.header-controls').outerHeight(),
     scrollItems = menuItems.map(function () {
         var item = $($(this).attr("href"));
         if (item.length) { return item; }
@@ -287,14 +285,16 @@ var lastId,
 
 if ($(window).innerWidth() > 1024) {
     menuItems.click(function (e) {
-        var href = $(this).attr("href"),
-            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+        var href = $(this).attr("href");
+        var offsetTop = href === "#" ? 0 : $(href).offset().top - 110;
+        if ($(window).scrollTop() > 120) {
+            offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight;
+        } 
         $('html, body').stop().animate({
             scrollTop: offsetTop
         }, 800);
         e.preventDefault();
     });
-
 }
 
 
