@@ -1606,13 +1606,16 @@ button {
 .load-more-page {
   text-align: center; }
   .load-more-page button {
-    border: 1px solid #ddd;
-    width: 126px;
-    height: 37px;
-    margin: auto;
-    color: #1913e7;
-    font-size: 14px;
-    border-radius: 5px;
+    border: 1px solid #BDBDBD;
+    background: #FFFDF9;
+    width: 13.5rem;
+    height: 4.2rem;
+    margin: .4rem auto;
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    border-radius: 4px;
     cursor: pointer; }
 
 .lazy {
