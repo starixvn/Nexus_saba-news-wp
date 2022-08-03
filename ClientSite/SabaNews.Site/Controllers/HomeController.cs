@@ -198,7 +198,7 @@
             int pageSize = param.PageSize;
             var start = (param.Page - 1) * pageSize;
             if (param.IsVideo) {
-                start = param.Page > 2 ? (param.Page - 1) * pageSize + 1 : Constants.Perpage;
+                start = param.Page > Constants.SecondPage ? (param.Page - 1) * pageSize + 1 : Constants.GetTenItems;
             }
             IEnumerable<Post> posts;
             if (slug == Constants.NewPostSlug)
@@ -233,7 +233,7 @@
 
         [HttpPost]
         [Route("api/post/type-posts")]
-        public async Task<IActionResult> GetSearchGrid(TypePostParam param)
+        public async Task<IActionResult> GetTypePostsGrid(TypePostParam param)
         {
             var start = (param.Page - 1) * param.PageSize;
             var posts = param.Type == Constants.Search

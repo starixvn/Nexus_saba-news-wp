@@ -308,6 +308,7 @@ function getFavouriteMatchCount() {
     }
 }
 
+
 //submenu
 (function ($) {
     $.fn.menumaker = function (options) {

@@ -58,6 +58,7 @@
         public const int GetElevenItems = 11;
 
         public const int FirstPage = 1;
+        public const int SecondPage = 2;
         public const int Perpage = 10;
         public const int PageSizeVideo = 9;
         public const int Total = 10000;

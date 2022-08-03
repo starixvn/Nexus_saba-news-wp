@@ -346,6 +346,143 @@
             Assert.Equal("/lich-thi-dau/bong-da", redirectResult.Url);
         }
 
+
+        [Fact]
+        public async Task GetCategoryGrid_WhenSlugIsVideoCategory_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<CategoryPostParams>();
+            param.IsVideo = true;
+            param.Page = 2;
+            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetCategoryGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+            Assert.Equal("~/Views/Home/_VideoGridView.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetCategoryGrid_WhenSlugIsPostsCategory_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<CategoryPostParams>();
+            param.IsVideo = false;
+            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetCategoryGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+            Assert.Equal("~/Views/Home/_CategoryGridView.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetCategoryGrid_WhenSlugIsNull_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetRecentPostsParam>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<CategoryPostParams>();
+            param.Slugs.Slug1 = null;
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetCategoryGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+        }
+
+        [Fact]
+        public async Task GetCategoryGrid_WhenPostsIsNull_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetRecentPostsParam>();
+            var expected = new List<Post>();
+            var param = fixture.Create<CategoryPostParams>();
+            param.Slugs.Slug1 = null;
+            postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetCategoryGrid(param);
+
+            // Assert
+            var okResult = Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.Equal(false, okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetTypePostsGrid_WhenIsSearchType_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<SearchPostsCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<TypePostParam>();
+            param.Type = Constants.Search;
+            postService.SearchPostAsync(Arg.Do<SearchPostsCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetTypePostsGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+            Assert.Equal("~/Views/Home/_CategoryGridView.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetTypePostsGrid_WhenIsTagType_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<GetPostsByTagCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            var param = fixture.Create<TypePostParam>();
+            param.Type = Constants.Tag;
+            postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetTypePostsGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(expected, viewModel);
+            Assert.Equal("~/Views/Home/_CategoryGridView.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetTypePostsGrid_WhenPostsIsNull_ReturnCorrectlyData()
+        {
+            // Arrange
+            var controller = GetController();
+            var criteria = fixture.Create<SearchPostsCriteria>();
+            var expected = new List<Post>();
+            var param = fixture.Create<TypePostParam>();
+            param.Type = Constants.Search;
+            postService.SearchPostAsync(Arg.Do<SearchPostsCriteria>(x => criteria = x)).Returns(expected);
+            // Act
+            var result = await controller.GetTypePostsGrid(param);
+
+            // Assert
+            var okResult = Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.Equal(false, okResult.Value);
+        }
+
         #region Helpers
         private HomeController GetController()
         {
@@ -369,6 +506,5 @@
             controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
         }
         #endregion Helpers
-
     }
 }
