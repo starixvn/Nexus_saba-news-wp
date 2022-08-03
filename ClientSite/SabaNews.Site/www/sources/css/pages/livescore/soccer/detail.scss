@@ -137,12 +137,11 @@
     background: $primary-bg;
     width: 100%;
     opacity: 0;
-    transition: .2s all ease;
     @include tableMobile {
         position: fixed;
         top: 3.9rem;
         left: 0;
-        width: 100%;
+        width: 100% !important;
         max-width: 100% !important;
     }
 

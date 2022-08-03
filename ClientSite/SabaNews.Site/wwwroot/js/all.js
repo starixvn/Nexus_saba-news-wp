@@ -56,11 +56,13 @@ $(document).ready(function () {
 
 
     $(window).on("load resize", function (e) {
+        var widthContainer = $('.livescore-soccer-main').innerWidth();
         $('body').removeClass('hidden-body');
         $('.button-mobile').removeClass('open');
         $('.main-menu').removeClass('active-main-menu');
         $('.nav-menu').removeClass('active-nav');
         $('.header-controls').addClass('width-100-saba');
+        $('.detail-fixed').css("width", widthContainer);
     });
     //mobile
     $('.button-mobile').click(function () {
@@ -113,15 +115,49 @@ $(document).ready(function () {
     
 
 
-
-    //back to top mb and des
-    $(window).scroll(function () {
-        if ($(this).scrollTop()) {
+    function scrollBackTop() {
+        if ($(window).scrollTop()) {
             $('.back-to-top').fadeIn();
         } else {
             $('.back-to-top').fadeOut();
         }
+    }
+
+    function scrollDetailPageLiveScore() {
+        var heightContainer = $('.sticky-header').outerHeight();
+        if ($(window).scrollTop() > heightContainer) {
+            $('.detail-fixed').addClass('active-scroll');
+        } else {
+            $('.detail-fixed').removeClass('active-scroll');
+        }
+    }
+
+    function scrollTopY() {
+        var top_of_window = $(window).scrollTop();
+        var widthContainer = $('.livescore-soccer-main').innerWidth();
+        if (top_of_window > 0) {
+            $('.detail-fixed').css("width", widthContainer);
+        } else {
+            $('.detail-fixed').css("width", "auto");
+        }
+    }
+
+
+
+
+    $(window).scroll(function () {
+        scrollBackTop();
+        scrollDetailPageLiveScore();
+        scrollTopY();
     });
+
+
+
+
+
+
+
+
     $('.back-to-top').click(function () {
         $('html, body').animate({ scrollTop: 0 }, 1000);
     });
