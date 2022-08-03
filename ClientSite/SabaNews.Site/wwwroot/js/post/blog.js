@@ -30,7 +30,7 @@
         } else {
             $('.ajax-load').hide();
             $('#category-grid').append(data);
-            if (page === 2 && page < paging.totalPages ) {
+            if (page === 5 && page < paging.totalPages ) {
                 const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                 if (isVideo) {
                     $('.block-main').append(loadMoreHtml);
