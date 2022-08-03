@@ -14,7 +14,6 @@
             isLoadData = false;
             return false;
         }
-        console.log(page, paging.totalPages);
         var url = '/api/post/category-posts';
         var data = { slugs, page, pageSize, type, isVideo };
         if (type === "Search" || type === "Tag") {
@@ -32,8 +31,13 @@
             $('.ajax-load').hide();
             $('#category-grid').append(data);
             if (page === 2 && page < paging.totalPages ) {
-                const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button><div>';
-                $('#category-grid').append(loadMoreHtml);
+                const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
+                if (isVideo) {
+                    $('.block-main').append(loadMoreHtml);
+                } else {
+                    $('#category-grid').append(loadMoreHtml);
+                }
+                
                 isLoadData = false;
             }
         }
