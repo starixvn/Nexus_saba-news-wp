@@ -169,14 +169,13 @@
             var expected = new Fixture().Create<League>();
             leagueService.GetLeagueByIdAsync(LeagueId).Returns(expected);
             //Act
-            var result = await controller.GetAllLeagueById(LeagueId);
+            var result = await controller.GetLeagueById(LeagueId);
 
             // Assert
             var jsonResult = Assert.IsType<JsonResult>(result);
             Assert.Equal(expected, jsonResult.Value);
 
         }
-
 
         #region Helpers
         private ManagementLeagueController GetController()
