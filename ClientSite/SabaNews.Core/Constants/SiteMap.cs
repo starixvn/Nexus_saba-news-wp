@@ -1,7 +1,8 @@
 ﻿namespace SabaNews.Core.Constants
 {
-    public static class SiteMap
+    public class SiteMap
     {
-        public static string[] Pages = { "lich-thi-dau/bong-da" };
+        public static readonly string[] Pages = { "lich-thi-dau/bong-da" };
+
     }
 }

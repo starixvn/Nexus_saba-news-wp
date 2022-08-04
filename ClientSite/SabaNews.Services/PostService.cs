@@ -317,7 +317,7 @@
                 cate.Url = url;
                 cateList.Add(cate);
                 var subCate = categories.Where(item => item.Parent == cate.ID).ToList();
-                if (subCate.Count() > 0)
+                if (subCate.Any())
                 {
                     var tmp = GetCategoriesSiteMap(categories, cate.ID, url);
                     cateList.AddRange(tmp);
