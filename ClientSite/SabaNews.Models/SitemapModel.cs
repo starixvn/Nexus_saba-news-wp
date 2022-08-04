@@ -13,5 +13,7 @@
         public DateTime? ModifiedDate { get; set; }
 
         public string Url { get; set; }
+
+        public int? Parent { get; set; }
     }
 }

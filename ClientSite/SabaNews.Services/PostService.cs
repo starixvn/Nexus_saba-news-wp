@@ -257,17 +257,19 @@
         public async Task<IEnumerable<SitemapModel>> GetSitemapDataAsync()
         {
             var sitemap = await baseService.GetDataAsync<SitemapModel>(new GetSitemapDataCriteria());
+            var posts = sitemap.Where(item => item.PostType != "category").ToList();
+            var categories = sitemap.Where(item => item.PostType == "category").ToList();
 
-            foreach (var item in sitemap)
+            foreach (var item in posts)
             {
-                if (item.Slug == Constants.WarningSlug)
-                {
-                    continue;
-                }
-                item.Url = item.PostType == "category" ? string.Format("tin-the-thao/{0}", item.Slug) : item.Slug;
+                item.Url = item.Slug;
             }
+            posts.Add(new SitemapModel { Url = "lich-thi-dau/bong-da" });
+            var cates = GetCategoriesSiteMap(categories);
 
-            return sitemap;
+            var newSiteMap = posts.Concat(cates);
+
+            return newSiteMap;
         }
 
         public async Task<IEnumerable<NewsSitemapModel>> GetNewsSitemapDataAsync()
@@ -300,6 +302,28 @@
             };
 
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories, int cateId = 0, string link = "")
+        {
+            var cateList = new List<SitemapModel>();
+            foreach (var cate in categories.Where(item => item.Parent == cateId).ToList())
+            {
+                var url = link != "" ? $"{link}/{cate.Slug}" : cate.Slug;
+                if (cate.Slug == Constants.Euro2020Slug)
+                {
+                    url = url.Replace($"{Constants.NewPostSlug}/", "");
+                }
+                cate.Url = url;
+                cateList.Add(cate);
+                var subCate = categories.Where(item => item.Parent == cate.ID).ToList();
+                if (subCate.Count() > 0)
+                {
+                    var tmp = GetCategoriesSiteMap(categories, cate.ID, url);
+                    cateList.AddRange(tmp);
+                }
+            }
+            return cateList.ToList();
         }
     }
 }
