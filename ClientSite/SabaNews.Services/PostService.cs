@@ -264,7 +264,7 @@
             {
                 item.Url = item.Slug;
             }
-            posts.Add(new SitemapModel { Url = "lich-thi-dau/bong-da" });
+            posts.AddRange(SiteMap.Pages.Select(item => new SitemapModel { Url = item }));
             var cates = GetCategoriesSiteMap(categories);
 
             var newSiteMap = posts.Concat(cates);
