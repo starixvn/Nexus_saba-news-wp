@@ -139,7 +139,7 @@
             dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(page);
+            var result = await controller.Video(slug, slug);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -161,7 +161,7 @@
             dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(page);
+            var result = await controller.Video(slug, slug);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -182,7 +182,7 @@
             dataControlService.GetCategoryViewModel(Arg.Do<GetPostsByCateSlugsParam>(x => param = x)).Returns(expectedViewModel);
 
             //Act
-            var result = await controller.Video(page);
+            var result = await controller.Video(slug, slug);
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);

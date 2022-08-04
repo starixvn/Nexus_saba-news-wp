@@ -417,14 +417,23 @@
             //Arrange
             var service = GetPostService();
             var criteria = fixture.Create<GetSitemapDataCriteria>();
-            var expected = fixture.Create<IEnumerable<SitemapModel>>();
-            baseService.GetDataAsync<SitemapModel>(Arg.Do<GetSitemapDataCriteria>(x => criteria = x)).Returns(expected);
+            var expectedReturn = new List<SitemapModel>();
+            expectedReturn.Add(new SitemapModel { ID = 2, Slug = "slug", PostType = "post" });
+            expectedReturn.Add(new SitemapModel { ID = 3, Slug = "slug1", PostType = "category", Parent = 0 });
+            expectedReturn.Add(new SitemapModel { ID = 4, Slug = "slug2", PostType = "category", Parent = 3 });
+
+            var expectedSitemap = new List<SitemapModel>();
+            expectedSitemap.Add(new SitemapModel { ID = 2, Slug = "slug", PostType = "post", Url = "slug" });
+            expectedSitemap.Add(new SitemapModel { Slug = "lich-thi-dau/bong-da", Url = "lich-thi-dau/bong-da" });
+            expectedSitemap.Add(new SitemapModel { ID = 3, Slug = "slug1", PostType = "category", Parent = 0, Url = "slug1" });
+            expectedSitemap.Add(new SitemapModel { ID = 4, Slug = "slug2", PostType = "category", Parent = 3, Url = "slug1/slug2" });
+            baseService.GetDataAsync<SitemapModel>(Arg.Do<GetSitemapDataCriteria>(x => criteria = x)).Returns(expectedReturn);
 
             //Act
             var actual = await service.GetSitemapDataAsync();
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expectedSitemap.Count(), actual.Count());
         }
 
         [Fact]
@@ -442,7 +451,7 @@
             var actual = await service.GetSitemapDataAsync();
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected.Count(), actual.Count());
         }
 
 
