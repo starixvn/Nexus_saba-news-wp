@@ -21,6 +21,7 @@
 @import '../components/modal';
 @import '../components/ads';
 @import '../components/_popup-event';
+@import '../components/loading';
 
 .main {
     @include tableMobile {

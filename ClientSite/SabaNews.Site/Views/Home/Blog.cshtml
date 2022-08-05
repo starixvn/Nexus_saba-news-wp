@@ -209,7 +209,7 @@
                                     <span>@post.PostTime</span>
                                     @if (post.CommentCount > 0)
                                     {
-                                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
+                                        <a href="@Url.Action("Single", "Post", new { slug = post.Slug })#comment" class="comment"><i class="icon-mode_comment_full"></i> <i class="number">@post.CommentCount</i></a>
                                     }
                                 </p>
                             </div>
@@ -224,6 +224,7 @@
                         </div>
                     }
                 }
+
             </div>
         </div>
 
