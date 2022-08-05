@@ -2081,7 +2081,8 @@ button {
       position: absolute;
       background: linear-gradient(180deg, #E8EAEF 0%, rgba(247, 247, 247, 0.9) 100%);
       bottom: 0;
-      padding: 1.2rem 0; }
+      padding: 1.2rem 0;
+      width: 100%; }
       @media (max-width: 767px) {
         .main .block-hot-news .block__content .card-vertical .group-title-home {
           position: unset; } }
