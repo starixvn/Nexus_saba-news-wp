@@ -23,8 +23,6 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_cate_slugs`(
 GetSlug:BEGIN
 	DECLARE count  INT;
 	DECLARE category INT;
-    DECLARE cate_name VARCHAR(200);
-    DECLARE cate_parent_name VARCHAR(200);
     DECLARE cate_parent INT;
     
     SET slug = get_cate_slug(slug1, slug2, slug3);
@@ -39,7 +37,7 @@ GetSlug:BEGIN
     DROP TEMPORARY TABLE IF EXISTS tmp_Cate;
     CREATE TEMPORARY TABLE tmp_Cate (term_id BIGINT, slug VARCHAR(255), term_taxonomy_id BIGINT);
     
-	SELECT t.term_id, t.name, wtt.parent INTO category, cate_name, cate_parent 
+	SELECT t.term_id INTO category
     FROM wp_terms t INNER JOIN wp_term_taxonomy wtt ON t.term_id = wtt.term_id AND wtt.taxonomy = "category" WHERE t.slug = slug;
     
     INSERT INTO tmp_Cate (term_id, slug, term_taxonomy_id)
@@ -73,7 +71,6 @@ GetSlug:BEGIN
     SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent, p.post_excerpt as PostExcerpt
     , p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_name as Slug
     , pp.guid as FeatureImage, m1.meta_value as Metadata, p.comment_count as CommentCount
-    , cate_parent_name as CategoryParent, cate_name as Categories
 	FROM wp_posts as p
 	LEFT JOIN wp_postmeta as m ON m.post_id = p.ID and m.meta_key = "_thumbnail_id"
 	LEFT JOIN wp_postmeta as m1 ON m1.post_id = m.meta_value AND m1.meta_key = "_wp_attachment_metadata"
