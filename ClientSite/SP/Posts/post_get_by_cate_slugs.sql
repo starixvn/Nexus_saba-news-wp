@@ -17,6 +17,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_cate_slugs`(
 		Creator: Hank@20220720
         Revisions:
 			- 20220720@Hank: init
+            - 202200805@Hank: Fix TotalItem
     */
 )
 GetSlug:BEGIN
@@ -67,7 +68,7 @@ GetSlug:BEGIN
 	INNER JOIN wp_term_relationships tr ON tr.term_taxonomy_id = tt.term_taxonomy_id
 	WHERE t.slug IN (SELECT c.slug from tmp_Cate c);
 	
-    SELECT count(*) INTO TotalItems FROM tmp_PostIds;
+    SELECT COUNT(DISTINCT(PostId)) INTO TotalItems FROM tmp_PostIds;
                     
     SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent, p.post_excerpt as PostExcerpt
     , p.post_date as PostDate, p.post_date_gmt as PostDateGMT, p.post_name as Slug
