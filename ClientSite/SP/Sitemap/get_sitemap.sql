@@ -1,4 +1,8 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
+DROP PROCEDURE IF EXISTS get_sitemap;
+
+DELIMITER //
+
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap`(
 	/*
 		Creator: Hank@20220720
@@ -33,3 +37,6 @@ get_sitemap:BEGIN
     ORDER BY PostType DESC
     ,ModifiedDate DESC;
 END
+
+//
+DELIMITER ;	
