@@ -204,6 +204,12 @@
             return FormatData(result).ToList();
         }
 
+        public async Task<IEnumerable<Post>> GetPostsByCateSlugsPaging(GetPostsByCateSlugsPagingCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<Post>(criteria);
+            return FormatData(result).ToList();
+        }
+
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
             foreach (var post in posts)

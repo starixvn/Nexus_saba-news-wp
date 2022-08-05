@@ -212,7 +212,7 @@
             }
             else
             {
-                var criteria = new GetPostsByCateSlugsCriteria
+                var criteria = new GetPostsByCateSlugsPagingCriteria
                 {
                     Slug1 = slug,
                     Slug2 = param.Slugs.Slug2,
@@ -220,7 +220,7 @@
                     Start = start,
                     End = pageSize
                 };
-                posts = await postService.GetPostsByCateSlugs(criteria);
+                posts = await postService.GetPostsByCateSlugsPaging(criteria);
             }
             
             if (!posts.Any())

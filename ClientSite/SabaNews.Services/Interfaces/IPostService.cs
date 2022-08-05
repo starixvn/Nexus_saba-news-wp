@@ -47,5 +47,7 @@
         Task<CommandResult> UpdateViewAsync(int postId, bool isVideo);
 
         Task<IEnumerable<Post>> GetPostsByCateSlugs(GetPostsByCateSlugsCriteria criteria);
+
+        Task<IEnumerable<Post>> GetPostsByCateSlugsPaging(GetPostsByCateSlugsPagingCriteria criteria);
     }
 }
