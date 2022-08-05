@@ -1,3 +1,4 @@
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_sitemap`(
 	/*
 		Creator: Hank@20220720
