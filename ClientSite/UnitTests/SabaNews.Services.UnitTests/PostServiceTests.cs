@@ -542,6 +542,23 @@
         }
 
         [Fact]
+        public async Task GetPostsByCateSlugsPaging_WhenCalled_ReturnExpectedPosts()
+        {
+            //Arrange
+            var service = GetPostService();
+            var Ids = fixture.Create<string>();
+            var criteria = fixture.Create<GetPostsByCateSlugsPagingCriteria>();
+            var expected = fixture.Create<IEnumerable<Post>>();
+            baseService.GetDataAsync<Post>(Arg.Do<GetPostsByCateSlugsPagingCriteria>(x => criteria = x)).Returns(expected);
+
+            //Act
+            var actual = await service.GetPostsByCateSlugsPaging(criteria);
+
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void PostFunction_WhenCalled_ReturnExpectedData()
         {
             //Arrange

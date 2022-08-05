@@ -352,12 +352,12 @@
         {
             // Arrange
             var controller = GetController();
-            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugsPagingCriteria>();
             var expected = fixture.Create<IEnumerable<Post>>();
             var param = fixture.Create<CategoryPostParams>();
             param.IsVideo = true;
             param.Page = 2;
-            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetPostsByCateSlugsPaging(Arg.Do<GetPostsByCateSlugsPagingCriteria>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
 
@@ -373,11 +373,11 @@
         {
             // Arrange
             var controller = GetController();
-            var criteria = fixture.Create<GetPostsByCateSlugsCriteria>();
+            var criteria = fixture.Create<GetPostsByCateSlugsPagingCriteria>();
             var expected = fixture.Create<IEnumerable<Post>>();
             var param = fixture.Create<CategoryPostParams>();
             param.IsVideo = false;
-            postService.GetPostsByCateSlugs(Arg.Do<GetPostsByCateSlugsCriteria>(x => criteria = x)).Returns(expected);
+            postService.GetPostsByCateSlugsPaging(Arg.Do<GetPostsByCateSlugsPagingCriteria>(x => criteria = x)).Returns(expected);
             // Act
             var result = await controller.GetCategoryGrid(param);
 
