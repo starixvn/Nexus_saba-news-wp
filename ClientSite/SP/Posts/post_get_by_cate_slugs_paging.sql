@@ -1,4 +1,8 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
+
+DROP PROCEDURE IF EXISTS post_get_by_cate_slugs_paging;
+
+DELIMITER //
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `post_get_by_cate_slugs_paging`(
 	slug1 VARCHAR(255),
     slug2 VARCHAR(255),
@@ -74,3 +78,6 @@ GetSlug:BEGIN
 	
     
 END
+
+//
+DELIMITER ;	
