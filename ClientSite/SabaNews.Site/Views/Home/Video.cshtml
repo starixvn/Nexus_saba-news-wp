@@ -105,6 +105,9 @@
                     }
                 }
             </div>
+            <div class="lds-ellipsis">
+                <div></div><div></div><div></div><div></div>
+            </div>
         </div>
         @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = Model.Header.Slug })
     </div>

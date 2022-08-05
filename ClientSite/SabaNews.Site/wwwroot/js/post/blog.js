@@ -12,14 +12,17 @@
     function GetDataGrid(page) {
         if (page > paging.totalPages) {
             isLoadData = false;
+            $('.lds-ellipsis').hide();
             return false;
         }
+        
         var url = '/api/post/category-posts';
         var data = { slugs, page, pageSize, type, isVideo };
         if (type === "Search" || type === "Tag") {
             url = '/api/post/type-posts';
             data = { keyword, type, page, pageSize }
         }
+        
         $.ajax({
             url: url,
             type: 'POST',
@@ -27,10 +30,12 @@
         }).done(function (data) {
         if (!data) {
             isLoadData = false;
+            $('.lds-ellipsis').hide();
         } else {
             $('.ajax-load').hide();
             $('#category-grid').append(data);
-            if (page === 5 && page < paging.totalPages ) {
+            if (page === 5 && page < paging.totalPages) {
+                
                 const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                 if (isVideo) {
                     $('.block-main').append(loadMoreHtml);
@@ -39,6 +44,7 @@
                 }
                 
                 isLoadData = false;
+                $('.lds-ellipsis').hide();
             }
         }
         })
@@ -53,6 +59,7 @@
             const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
             const isBottom = scrollHeight - $('.footer').innerHeight() < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
+                
                 page++;
                 GetDataGrid(page);
                 currentscrollHeight = scrollHeight;
@@ -63,6 +70,7 @@
             $(this).hide();
             page++;
             GetDataGrid(page);
+            $('.lds-ellipsis').show();
             currentscrollHeight = $(document).height();
             isLoadData = true;
         });
