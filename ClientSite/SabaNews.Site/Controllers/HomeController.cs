@@ -73,9 +73,9 @@
         }
 
         [Route("/video/{slug2?}/{slug3?}")]
-        public async Task<IActionResult> Video( string slug2 = null, string slug3 = null, int page = 1)
+        public async Task<IActionResult> Video( string slug2 = null, string slug3 = null)
         {
-            var viewModel = await dataControlService.GetCategoryViewModel(new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug, Slug2 = slug2, Slug3 = slug3, Page = page });
+            var viewModel = await dataControlService.GetCategoryViewModel(new GetPostsByCateSlugsParam { Slug1 = Constants.VideoSlug, Slug2 = slug2, Slug3 = slug3, Page = Constants.FirstPage });
             if (viewModel == null)
             {
                 return View(Constants.EmptyBlogView);
