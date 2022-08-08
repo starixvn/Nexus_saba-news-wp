@@ -1,6 +1,6 @@
 DROP PROCEDURE IF EXISTS Livescore_League_Extra_UpdatePriorities;
 DELIMITER //
-CREATE DEFINER=`root`@`%` PROCEDURE `Livescore_League_Extra_UpdatePriorities`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_Extra_UpdatePriorities`(
 	/*
 		Creator: Brian@20220808
         Revisions:
