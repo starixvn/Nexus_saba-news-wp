@@ -9,7 +9,8 @@ const cssPaths = {
     livescore_soccer_league_detail: ['./www/sources/css/pages/livescore/soccer/league-detail.scss'],
     livescore_soccer_detail: ['./www/sources/css/pages/livescore/soccer/detail.scss'],
     livescore_soccer_favourite_match: ['./www/sources/css/pages/livescore/soccer/favourite-match.scss'],
-    livescore_soccer_favourite_league: ['./www/sources/css/pages/livescore/soccer/favourite-league.scss']
+    livescore_soccer_favourite_league: ['./www/sources/css/pages/livescore/soccer/favourite-league.scss'],
+    livescore_soccer_worldcup_fixture: ['./www/sources/css/pages/livescore/soccer/world-cup/fixture.scss']
 };
 
 const scriptPaths = {
@@ -20,7 +21,8 @@ const scriptPaths = {
     livescore_soccer_league_detail: ['./www/sources/js/pages/livescore/soccer/league-detail/index.jsx'],
     livescore_soccer_detail: ['./www/sources/js/pages/livescore/soccer/detail/index.jsx'],
     livescore_soccer_favourite_match: ['./www/sources/js/pages/livescore/soccer/favourite-match/index.jsx'],
-    livescore_soccer_favourite_league: ['./www/sources/js/pages/livescore/soccer/favourite-league/index.jsx']
+    livescore_soccer_favourite_league: ['./www/sources/js/pages/livescore/soccer/favourite-league/index.jsx'],
+    livescore_soccer_worldcup_fixture: ['./www/sources/js/pages/livescore/soccer/world-cup/fixture/index.jsx']
 };
 
 module.exports = {
