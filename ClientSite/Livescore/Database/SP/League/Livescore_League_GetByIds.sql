@@ -10,6 +10,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_League_GetByIds`(
         Revisions:
 			- 20220520@Hank: init
             - 20220712@Hank: get only major league
+			- 20220808@Brian: get a few columns
     */
 )
 BEGIN
@@ -30,11 +31,12 @@ BEGIN
         ) AS t; 
 	
         
-	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, e.IsMajor, e.Priority
+	SELECT l.LeagueId, l.LeagueNameVN, l.LeagueNameEN, l.LeagueFullNameEN, l.LeagueType, l.Icon, l.CurrentSeasonId, l.Country as CountryEN, l.CountryVN, e.IsMajor, e.Priority
 	FROM livescore_league l
 	INNER JOIN livescore_league_extra e ON l.LeagueId = e.LeagueId
 	WHERE EXISTS (SELECT tmp.LeagueId FROM tmp_ids tmp WHERE l.LeagueId = tmp.LeagueId);
 END
+
 
 //
 DELIMITER ;	
