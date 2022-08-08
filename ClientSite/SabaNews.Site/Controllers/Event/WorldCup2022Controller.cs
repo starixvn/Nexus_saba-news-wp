@@ -1,6 +1,7 @@
 ﻿namespace SabaNews.Site.Controllers.Event
 {
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
 
@@ -17,7 +18,7 @@
             this.postService = postService;
             this.dataControlService = dataControlService;
         }
-        [Route("tin-the-thao/worldcup-2022")]
+        [Route("world-cup-2022")]
         public IActionResult Index()
         {
             return View("~/Views/Event/WorldCup2022/Index.cshtml");
