@@ -19,7 +19,7 @@ export default class CommonFunctions {
         let leagueName = this.getLeagueName(league);
         const stage = league.stage;
 
-        if (league.leagueType !== LeagueType.League && stage) {
+        if (league.leagueType !== LeagueType.League && league.leagueType !== LeagueType.Friendly && stage) {
             leagueName += ` - ${this.getStageName(stage)}`;
         }
 

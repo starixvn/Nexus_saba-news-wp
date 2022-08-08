@@ -18,6 +18,12 @@ export class MatchGrid extends PureComponent {
             return matches;
         }
     };
+    getStageKey = league => {
+        if(league.leagueType !== LeagueType.League && league.leagueType !== LeagueType.Friendly && league.stage) {
+            return league.stage.stageId;
+        }
+        return 0;
+    }
 
     groupMatchesByStage = matches => {
         const totalItems = matches.length;
@@ -26,7 +32,7 @@ export class MatchGrid extends PureComponent {
             const match = matches[i];
             const league = match.league;
             const key = `${league.leagueId}-${league.leagueType !== LeagueType.League && league.season ? league.season.seasonId : 0}`
-                + `-${league.leagueType !== LeagueType.League && league.stage ? league.stage.stageId : 0}`;
+                + `-${this.getStageKey(league)}`;
             const item = {
                 key,
                 ...league,
