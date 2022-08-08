@@ -12,13 +12,13 @@
     using System;
     using System.Threading.Tasks;
 
-    public class EventController : Controller
+    public class MemberEventController : Controller
     {
         private readonly ISessionService sessionService;
         private readonly IUserService userService;
         private readonly IConfiguration configuration;
 
-        public EventController(ISessionService sessionService, 
+        public MemberEventController(ISessionService sessionService, 
             IUserService userService, 
             IConfiguration configuration)
         {
