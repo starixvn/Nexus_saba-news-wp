@@ -8,7 +8,7 @@ export default class Grid extends PureComponent {
     render() {
         const { matches, league } = this.props;
         return (
-            <div className="wc-bg-overflow">
+            <div className="wc-date-bar">
                 {
                     matches.map((item, index) => 
                         <Match key={index} match={item} />

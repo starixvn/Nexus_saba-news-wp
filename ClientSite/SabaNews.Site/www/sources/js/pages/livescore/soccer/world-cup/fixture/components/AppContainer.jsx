@@ -15,7 +15,7 @@ export class AppContainer extends Component {
     render() {
         const { matches, league } = this.props;
         return (
-            <div className="wc-date-bar">
+            <div className="wc-bg-overflow">
                 { matches !== null && <Grid matches={matches} league={league} /> }
             </div>
         );

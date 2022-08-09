@@ -16,6 +16,10 @@
 // @import "../../../../components/recent-post";
 .wc-bg-overflow{
     background: linear-gradient(180deg, #750F2E 0%, #6A0E2B 100%);
+    padding: 2rem 0 1rem; 
+    @include tableMobile{
+        padding: 2rem 0 .7rem 1rem;
+    }
 }
 .wc-date-bar{
     overflow-x: auto;
@@ -23,15 +27,25 @@
     grid-template-columns: unset;
     grid-auto-flow: column;
     grid-gap: 1rem;
-    margin: 0 10rem;
+    margin: 0 2rem;
     &::-webkit-scrollbar {
         display: none;
     }
     @include tableMobile{
         margin: 0;
+        -webkit-scroll-snap-type: x mandatory;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+    }
+    @include Mobile{
+        
     }
     .group-match-item{
         margin-bottom: 0;
+        @include tableMobile{
+            scroll-snap-align: center;
+        }
         .soccer-match-item{
             display: inherit;
             margin-bottom: 0;
@@ -65,6 +79,7 @@
                 } 
                 .soccer-team-name{
                     font-size: 1.2rem;
+                    max-width: 100%;
                 }
             }
         }
