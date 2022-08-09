@@ -89,3 +89,8 @@ export const IncidentIconType = {
     outSubsitution: 32,
     inSubsitution: 33
 };
+
+export const WorldCup = {
+    leagueId: 11998,
+    seasonId: 10885
+}
