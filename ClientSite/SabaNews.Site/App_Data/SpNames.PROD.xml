@@ -2,7 +2,7 @@
 <Functions>
     <Function Name="Post">
         <Setting Key="get_posts_by_slug" SpName="get_posts_by_slug" DbName="sabasports" Plain="0"></Setting>
-        <Setting Key="get_posts_by_cate_slug" SpName="get_posts_by_cate_slug" DbName="sabasports" Plain="0">
+		<Setting Key="get_posts_by_cate_slug_xtest" SpName="get_posts_by_cate_slug_xtest" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
@@ -222,7 +222,8 @@
         <Setting Key="Livescore_Match_GetByIds" SpName="Livescore_Match_GetByIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_GetByIds" SpName="Livescore_League_GetByIds" DbName="sabasports" Plain="0" />
         <Setting Key="Livescore_League_Get" SpName="Livescore_League_Get" DbName="sabasports" Plain="0" />
+		<Setting Key="Livescore_Top_Scorers_Get" SpName="Livescore_Top_Scorers_Get" DbName="sabasports" Plain="0"></Setting>
 		<Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />
 		<Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
-    </Function>
+	</Function>
 </Functions>

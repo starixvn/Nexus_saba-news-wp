@@ -28,6 +28,12 @@
             return leagues.ToList();
         }
 
+        public async Task<IList<TopScorers>> GetTopScorersAsync(GetTopScorersCriteria topScorersCriteria)
+        {
+            var top = await baseService.GetDataAsync<TopScorers>(topScorersCriteria);
+            return top.ToList();
+        }
+
         public async Task<IList<League>> GetLeagueByIdsAsync(GetLeagueByIdsCriteria criteria)
         {
             var leagues = await baseService.GetDataAsync<League>(criteria);
@@ -183,5 +189,7 @@
             });
             return leagues;
         }
+
+
     }
 }

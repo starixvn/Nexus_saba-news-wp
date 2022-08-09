@@ -10,7 +10,7 @@
         public int _End { get; set; }
         public int TotalItems { get; set; }
 
-        public override string GetSettingKey() => "get_posts_by_cate_slug";
+        public override string GetSettingKey() => "get_posts_by_cate_slug_xtest";
 
         public override bool IsValid() => !string.IsNullOrEmpty(_CategorySlug) && _CategorySlug.Length < Constants.StringLimitLength;
     }

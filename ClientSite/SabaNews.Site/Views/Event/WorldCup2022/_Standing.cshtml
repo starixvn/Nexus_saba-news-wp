@@ -1,0 +1,24 @@
+﻿@{ 
+    var a = Model;
+}
+<div>
+    <p>Bảng xếp hạng</p>
+    <table>
+        <thead>
+            <tr>
+                <th><i class="icon-chevron-left"></i>Bảng A<i class="icon-chevron-right"></i></th>
+                <th>Trận</th>
+                <th>+/-</th>
+                <th>Điểm</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-left" width="130px">1 <img src="" />@Model.Standings[0].Standings[0].TeamFullNameEN</td>
+                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].Total</td>
+                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].GoalDiff</td>
+                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].Points</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
