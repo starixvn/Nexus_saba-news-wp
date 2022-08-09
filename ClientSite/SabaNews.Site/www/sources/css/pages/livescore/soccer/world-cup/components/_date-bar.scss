@@ -1,0 +1,20 @@
+.wc-date-bar{
+    margin: 0 10rem;
+    overflow-x: auto;
+    @include tableMobile{
+        margin: 0 1.5rem;
+    }
+    .soccer-match-item{
+        display: inherit;
+        .soccer-match-date-result{
+            display: flex;
+            justify-content: space-between;
+            .soccer-match-stage{
+                text-align: left;
+            }
+        }
+        .soccer-match-team{
+            width: 100%;
+        }
+    }
+}

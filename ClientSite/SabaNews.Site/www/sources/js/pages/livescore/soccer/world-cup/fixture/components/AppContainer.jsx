@@ -15,10 +15,9 @@ export class AppContainer extends Component {
     render() {
         const { matches, league } = this.props;
         return (
-            // <div className="wc-date-bar">
-            //     asddasdsa
-            // </div>
-            matches !== null && <Grid matches={matches} league={league} />
+            <div className="wc-date-bar">
+                { matches !== null && <Grid matches={matches} league={league} /> }
+            </div>
         );
     }
 
