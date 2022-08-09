@@ -86,7 +86,8 @@ export default class MatchGrid extends PureComponent {
 
     checkGroupMatches = (stages, matches, league) => {
         return this.checkGroupLeagueType(stages, matches, league)
-        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0);
+        || (stages.length === 0 && matches.filter(item => item.round > 0).length === 0)
+        || league.leagueType === LeagueType.Friendly;
     };
 
     groupMatches = (stages, matches, league) => {
