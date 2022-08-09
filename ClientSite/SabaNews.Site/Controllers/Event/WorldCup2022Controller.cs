@@ -41,6 +41,7 @@
         {
             var model = await dataControlService.GetWorldCupPageViewModel();
             return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
+        }
 
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
         public async Task<IActionResult> LastestNews()
