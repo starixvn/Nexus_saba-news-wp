@@ -3,7 +3,6 @@
 @import "../../../../base/base";
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
-@import "./components/date-bar";
 
 
 
@@ -15,4 +14,59 @@
 // @import "../../../../components/breadcrumb";
 // @import "../../../../components/modal";
 // @import "../../../../components/recent-post";
-
+.wc-bg-overflow{
+    background: linear-gradient(180deg, #750F2E 0%, #6A0E2B 100%);
+}
+.wc-date-bar{
+    overflow-x: auto;
+    display: grid;
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    margin: 0 10rem;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    @include tableMobile{
+        margin: 0;
+    }
+    .group-match-item{
+        margin-bottom: 0;
+        .soccer-match-item{
+            display: inherit;
+            margin-bottom: 0;
+            width: 25rem;
+            background: #EEEEE4;
+            padding: 0;
+            .soccer-match-date-result{
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid #CDCDBA;
+                border-radius: 5px;
+                padding: .7rem 1rem;
+                .soccer-match-stage{
+                    text-align: left;
+                    margin-right: 0;
+                }
+                .wc-date{
+                    font-size: 1.3rem;
+                }
+            }
+            .soccer-match-team{
+                width: 100%;
+            }
+            .group-team{
+                padding: .9rem 1rem;
+                .home-team{
+                    border-bottom: none;
+                }
+                .soccer-team-logo{
+                    margin-right: 1rem;
+                } 
+                .soccer-team-name{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
