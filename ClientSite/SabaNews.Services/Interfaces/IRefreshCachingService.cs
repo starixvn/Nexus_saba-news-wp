@@ -17,5 +17,7 @@
         Task UpdateRSSData();
 
         Task UpdateBannerCaching();
+
+        Task UpdateWorldCupCaching();
     }
 }

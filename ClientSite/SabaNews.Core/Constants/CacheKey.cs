@@ -21,6 +21,7 @@
         public const string LivescoreMainPage = "LivescoreMainPage";
         public const string LivescoreLiveMatch = "LivescoreLiveMatch";
 
+        public const string WorldCup = "WorldCup";
         public const string GetPostList = "GetPostList";
         public const string GetPostDetailContent = "GetPostDetailContent";
 

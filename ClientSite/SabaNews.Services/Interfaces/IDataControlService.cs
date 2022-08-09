@@ -4,6 +4,7 @@
     using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -25,5 +26,7 @@
         Task<Euro2020ViewModel> GetEuro2020PageViewModel();
 
         Task<BannerModel> GetBannerData();
+
+        Task<WorldCupViewModel> GetWorldCupPageViewModel();
     }
 }

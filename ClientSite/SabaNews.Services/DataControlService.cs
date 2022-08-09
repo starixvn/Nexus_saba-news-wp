@@ -11,6 +11,7 @@
     using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
 
@@ -214,6 +215,30 @@
         {
             var result = await fetchDataService.GetEuro2020ViewModel();
             return result;
+        }
+
+        public async Task<WorldCupViewModel> GetWorldCupPageViewModel()
+        {
+            if (IsUsingCache)
+            {
+                var result = await cacheWrapperService.GetAsync<WorldCupViewModel>(CacheKey.WorldCup);
+
+                if (result == null)
+                {
+                    logServiceProvider.WriteLogFileInfo($"-------Get world cup data from DB---------");
+
+                    result = await fetchDataService.GetWorldCupViewModel();
+                    await cacheWrapperService.SetAsync(CacheKey.WorldCup, result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheWorldCupTimeoutMinutes)
+                        });
+                }
+
+                return result;
+            }
+
+            return await fetchDataService.GetWorldCupViewModel();
         }
     }
 }

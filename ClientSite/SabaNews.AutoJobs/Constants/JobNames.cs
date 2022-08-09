@@ -9,5 +9,6 @@
         public const string RefreshNewsSitemapXmlFile = "RefreshNewsSitemapXmlFile";
         public const string RefreshRSS = "RefreshRSS";
         public const string RefreshBannerCaching = "RefreshBannerCaching";
+        public const string RefreshWorldCupCaching = "RefreshWorldCupCaching";
     }
 }

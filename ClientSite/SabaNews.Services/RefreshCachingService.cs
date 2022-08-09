@@ -217,5 +217,30 @@
 
             logService.WriteLogFileInfo(string.Format("Done UpdateBannerCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
         }
+
+        public async Task UpdateWorldCupCaching()
+        {
+            var startTime = DateTime.Now;
+            logService.WriteLogFileInfo("Start RefreshWorldCupCaching");
+
+            try
+            {
+                var result = await fetchDataService.GetWorldCupViewModel();
+                logService.WriteLogFileInfo(string.Format("After RefreshWorldCupCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+                await cacheWrapperService.SetAsync(CacheKey.WorldCup,
+                        result,
+                        new CacheItemOptions
+                        {
+                            RelativeExpiration = TimeSpan.FromMinutes(Constants.CacheWorldCupTimeoutMinutes)
+                        });
+            }
+            catch (Exception ex)
+            {
+                await logService.WriteExceptionSentryErrorAsync(ex);
+                logService.WriteLogFileInfo(ex.ToString());
+            }
+
+            logService.WriteLogFileInfo(string.Format("Done RefreshWorldCupCaching - {0}", DateTime.Now.Subtract(startTime).Milliseconds));
+        }
     }
 }

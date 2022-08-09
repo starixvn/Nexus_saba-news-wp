@@ -7,6 +7,7 @@
     using SabaNews.Models;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
     using System;
@@ -173,6 +174,31 @@
                 Identify = identify.ToArray(),
                 Category = cate,
                 ViewData = viewData
+            };
+            return Model;
+        }
+
+        public async Task<WorldCupViewModel> GetWorldCupViewModel()
+        {
+            var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetFiveItems);
+            var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetFiveItems);
+            var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
+            var title = cate.SEOTitle ??= cate.Title;
+            var header = new HeaderViewModel
+            {
+                HeadTitle = cate.Title,
+                Title = title,
+                Description = cate.Description,
+                Slug = WorldCup2022.HomepageSlug
+            };
+            var Model = new WorldCupViewModel
+            {
+                LastestNews = lastestNews,
+                Commentary = commentary,
+                Videos = videos,
+                Category = cate,
+                Header = header
             };
             return Model;
         }

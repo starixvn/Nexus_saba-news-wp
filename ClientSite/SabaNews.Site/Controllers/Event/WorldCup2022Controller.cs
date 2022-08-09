@@ -4,7 +4,7 @@
     using SabaNews.Core.Constants;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
-
+    using System.Threading.Tasks;
 
     public class WorldCup2022Controller : Controller
     {
@@ -19,9 +19,10 @@
             this.dataControlService = dataControlService;
         }
         [Route("world-cup-2022")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View("~/Views/Event/WorldCup2022/Index.cshtml");
+            var model = await dataControlService.GetWorldCupPageViewModel();
+            return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
         }
     }
 }

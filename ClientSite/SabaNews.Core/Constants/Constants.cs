@@ -180,6 +180,7 @@
         public const int CacheNewSitemapTimeoutMinutes = 30;
         public const int CacheRSSTimeoutMinutes = 30;
         public const int CacheBannerTimeoutMinutes = 20;
+        public const int CacheWorldCupTimeoutMinutes = 20;
 
         public const string TokenAPIGetData = "U0FCQSBTUE9SVFMgaMOyYSB2w6BvIGN14buZYyBjaMahaSE=";
     }

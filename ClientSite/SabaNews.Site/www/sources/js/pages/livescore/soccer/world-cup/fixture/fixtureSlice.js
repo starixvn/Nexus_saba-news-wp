@@ -13,6 +13,15 @@ const fixtureSlice = createSlice({
         },
         setLeague: (state, action) => {
             state.league = action.payload;
+        },
+        setLiveMatches: (state, action) => {
+            const liveMatches = action.payload;
+            for (let i = 0; i < totalItems; i++) {
+                let index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                if (index >= 0) {
+                    state.matches[index] = liveMatches[i];
+                }
+            }
         }
     }
 });
@@ -21,7 +30,8 @@ const { actions, reducer } = fixtureSlice;
 
 export const {
     setMatches,
-    setLeague
+    setLeague,
+    setLiveMatches
 } = actions;
 
 export default reducer;

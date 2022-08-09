@@ -124,6 +124,7 @@
             services.AddHostedService<RefreshRssWorker>();
             services.AddHostedService<RefreshSitemapXmlFileWorker>();
             services.AddHostedService<RefreshBannerWorker>();
+            services.AddHostedService<RefreshWorldCupCachingWorker>();
         }
     }
 }
