@@ -25,10 +25,10 @@ export class MatchGrid extends PureComponent {
             stage = league.stage.stageId;
         }
         if(league.leagueType !== LeagueType.League && league.leagueType !== LeagueType.Friendly && league.season) {
-            season = league.season.seasonId
+            season = league.season.seasonId;
         }
         return `${league.leagueId}-${season}-${stage}`;
-    }
+    };
 
     groupMatchesByStage = matches => {
         const totalItems = matches.length;
