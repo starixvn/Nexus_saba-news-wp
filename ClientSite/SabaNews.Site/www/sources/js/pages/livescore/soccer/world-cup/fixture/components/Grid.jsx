@@ -8,13 +8,13 @@ export default class Grid extends PureComponent {
     render() {
         const { matches, league } = this.props;
         return (
-            <div>
+            <>
                 {
                     matches.map((item, index) => 
                         <Match key={index} match={item} />
                     )
                 }
-            </div>
+            </>
         );
     }
 }
