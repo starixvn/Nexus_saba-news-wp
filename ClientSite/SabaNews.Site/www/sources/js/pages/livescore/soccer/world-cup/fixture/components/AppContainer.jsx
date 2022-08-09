@@ -17,6 +17,8 @@ export class AppContainer extends Component {
         return (
             <div className="wc-bg-overflow">
                 { matches !== null && <Grid matches={matches} league={league} /> }
+                <div className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
+                <div className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
             </div>
         );
     }
