@@ -1,2 +1,107 @@
-﻿body {
+﻿.top-header {
+    padding: 1.8rem 0;
+    background: $primary-bg;
+    box-shadow: none;
+
+    .group-menu {
+        .nav-menu {
+            .main-menu {
+                @include tableMobile {
+                    background-color: $primary-bg;
+                    border-top: 1px solid $nav-header-color;
+                    border-bottom: 1px solid $nav-header-color;
+                }
+
+                .menu-item {
+                    &:after {
+                        background: $nav-header-color;
+                    }
+
+                    .item {
+                        color: $nav-header-color;
+
+                        &:hover {
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .back-home-page {
+        display: block;
+
+        @include tableMobile {
+            display: none;
+        }
+    }
+}
+
+.right-header-section {
+    &.hidden-pc {
+        display: none;
+
+        @include tableMobile {
+            display: block;
+        }
+    }
+
+    &.hidden-mb {
+        display: block;
+
+        @include tableMobile {
+            display: none;
+        }
+    }
+
+    @include tableMobile {
+        background-color: $primary-bg;
+    }
+}
+
+.search-input {
+    form {
+        input {
+            border: 1px solid $nav-header-color;
+            outline: none;
+            background: transparent;
+            box-shadow: none;
+            height: 3.2rem;
+            width: 3.2rem;
+            border-radius: 50px;
+
+            @include tableMobile {
+                height: 3.6rem;
+                width: 100%;
+            }
+
+            &::placeholder {
+                color: transparent !important;
+
+                @include tableMobile {
+                    color: $nav-header-color !important;
+                }
+            }
+        }
+
+        i {
+            &:before {
+                color: $nav-header-color !important;
+            }
+        }
+
+        .btn-search {
+            left: 5px !important;
+            @include tableMobile{
+                left : 12px !important;
+            }
+        }
+    }
+}
+
+.button-mobile {
+    .line-mb {
+        background-color: $white-color;
+    }
 }
