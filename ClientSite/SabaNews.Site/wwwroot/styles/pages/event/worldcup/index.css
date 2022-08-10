@@ -17,20 +17,22 @@
     @media screen and (max-width: 1024px) {
       .top-header .group-menu .nav-menu {
         padding: 0; } }
-    @media screen and (max-width: 1024px) {
-      .top-header .group-menu .nav-menu .main-menu {
-        background-color: #48041A;
-        border-top: 1px solid #C598A7;
-        border-bottom: 1px solid #C598A7;
-        margin-top: 5rem; } }
-    .top-header .group-menu .nav-menu .main-menu .menu-item:after {
-      background: #C598A7; }
-    .top-header .group-menu .nav-menu .main-menu .menu-item .item {
-      color: #C598A7; }
-      .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
-        color: #fff; }
-      .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
-        color: #fff; }
+    .top-header .group-menu .nav-menu .main-menu {
+      justify-content: space-evenly; }
+      @media screen and (max-width: 1024px) {
+        .top-header .group-menu .nav-menu .main-menu {
+          background-color: #48041A;
+          border-top: 1px solid #C598A7;
+          border-bottom: 1px solid #C598A7;
+          margin-top: 5rem; } }
+      .top-header .group-menu .nav-menu .main-menu .menu-item:after {
+        background: #C598A7; }
+      .top-header .group-menu .nav-menu .main-menu .menu-item .item {
+        color: #C598A7; }
+        .top-header .group-menu .nav-menu .main-menu .menu-item .item.active {
+          color: #fff; }
+        .top-header .group-menu .nav-menu .main-menu .menu-item .item:hover {
+          color: #fff; }
   .top-header .back-home-page {
     display: block;
     padding-left: 2rem;
@@ -112,8 +114,37 @@
 .button-mobile .line-mb {
   background-color: #fff; }
 
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .title-section .title-section {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .title-section h2 {
+    color: #FF4700;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    margin: 0 1rem; }
+  .title-section .dots {
+    display: flex; }
+    .title-section .dots span {
+      display: block;
+      background: #FF4700;
+      width: .7rem;
+      height: .7rem;
+      margin: 0 .2rem; }
+      .title-section .dots span:first-child {
+        width: 1rem;
+        height: 1rem; }
+
 .wc-block {
   padding: 5rem 0; }
   @media screen and (max-width: 1024px) {
     .wc-block {
       padding: 2.5rem 0; } }
+
+.wc-main {
+  padding-top: 3rem; }

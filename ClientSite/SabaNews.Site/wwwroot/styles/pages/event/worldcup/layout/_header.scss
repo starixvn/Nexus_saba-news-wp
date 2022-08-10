@@ -25,6 +25,7 @@
             }
 
             .main-menu {
+                justify-content : space-evenly;
                 @include tableMobile {
                     background-color: $primary-bg;
                     border-top: 1px solid $nav-header-color;
