@@ -1,0 +1,6 @@
+﻿.wc-block{
+    padding : 5rem 0;
+    @include tableMobile{
+        padding : 2.5rem 0;
+    }
+}

@@ -141,6 +141,7 @@
             &:hover {
                 input {
                     width: 14rem;
+                    color : $white-color;
                     @include creen1391px {
                         width: 20rem;
                     }

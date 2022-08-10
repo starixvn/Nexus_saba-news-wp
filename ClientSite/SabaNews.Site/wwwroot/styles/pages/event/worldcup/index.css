@@ -91,7 +91,8 @@
       transition: width .2s ease;
       padding: 0 1rem; }
     .right-header-section.hidden-mb form:hover input {
-      width: 14rem; }
+      width: 14rem;
+      color: #fff; }
       @media screen and (min-width: 1391px) {
         .right-header-section.hidden-mb form:hover input {
           width: 20rem; } }
@@ -110,3 +111,9 @@
 
 .button-mobile .line-mb {
   background-color: #fff; }
+
+.wc-block {
+  padding: 5rem 0; }
+  @media screen and (max-width: 1024px) {
+    .wc-block {
+      padding: 2.5rem 0; } }
