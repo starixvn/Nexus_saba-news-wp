@@ -39,7 +39,7 @@
         [Route("world-cup-2022")]
         public async Task<IActionResult> Index()
         {
-            //var model = await dataControlService.GetWorldCupPageViewModel();
+            var model = await dataControlService.GetWorldCupPageViewModel();
             return View("~/Views/Event/WorldCup2022/Index.cshtml");
         }
 

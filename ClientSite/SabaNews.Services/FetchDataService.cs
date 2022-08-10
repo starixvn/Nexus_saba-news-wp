@@ -185,6 +185,7 @@
             var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
             var title = cate.SEOTitle ??= cate.Title;
+
             var header = new HeaderViewModel
             {
                 HeadTitle = cate.Title,

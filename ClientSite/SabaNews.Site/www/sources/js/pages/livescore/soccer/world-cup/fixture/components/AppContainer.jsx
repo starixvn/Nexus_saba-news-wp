@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import SignalR from './SignalR';
+import moment from 'moment';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -14,9 +15,9 @@ export class AppContainer extends Component {
     }
 
     render() {
-        const { matches, league } = this.props;
+        const { league, matches } = this.props;
         return (
-            <div className="wc-bg-overflow">
+            <div>
                 <SignalR getMatches={this.getMatches} />
                 { matches !== null && <Grid matches={matches} league={league} /> }
             </div>

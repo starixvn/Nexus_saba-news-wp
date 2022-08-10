@@ -50,7 +50,7 @@ export default class Match extends PureComponent {
     };
 
     render() {
-        const { match } = this.props;
+        const { match, league } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
