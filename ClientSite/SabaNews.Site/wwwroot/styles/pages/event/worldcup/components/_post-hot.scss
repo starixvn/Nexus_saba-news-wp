@@ -1,0 +1,42 @@
+﻿.post-hot {
+    .hover-image {
+        position: relative;
+        height: 100%;
+
+        .title-hot {
+            position: absolute;
+            bottom: 0;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
+
+            h1 {
+                a {
+                    font-size: 2.4rem;
+                    line-height: 3.3rem;
+                    font-weight: 700;
+                    color: $white-color;
+                    text-decoration: none;
+
+                    @include tableMobile {
+                        font-size: 1.4rem;
+                        line-height: 1.4rem;
+                    }
+                }
+            }
+
+            p {
+                a {
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    color: $white-color;
+                    text-decoration: none;
+
+                    @include tableMobile {
+                        font-size: 1.4rem;
+                        line-height: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

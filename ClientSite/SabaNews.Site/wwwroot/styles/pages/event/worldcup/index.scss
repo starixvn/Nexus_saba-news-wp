@@ -3,7 +3,69 @@
 @import './layout/header';
 @import './components/title-section';
 @import './components/wc-block';
+@import './components/hover-img-item';
+@import './components/post-hot';
+@import './components/post-items';
 
 .wc-main{
     padding-top : 3rem;
+    @include tableMobile{
+        padding-top : 1.5rem;
+    }
+}
+
+.gird-hot-news {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 55rem 17rem;
+    grid-gap: 2rem;
+
+    @include tableMobile {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include Mobile {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .post-items {
+        &-1 {
+            grid-column: 1/5;
+            grid-row: 1/2;
+
+            @include Mobile {
+                grid-column: 1/4;
+                grid-row: 1/2;
+            }
+        }
+
+        &-2 {
+            @include Mobile {
+                grid-column: 1/4;
+                grid-row: 2/3;
+            }
+        }
+
+        &-3 {
+            @include Mobile {
+                grid-column: 1/4;
+                grid-row: 3/4;
+            }
+        }
+
+        &-4 {
+            @include Mobile {
+                grid-column: 1/4;
+                grid-row: 4/5;
+            }
+        }
+
+        &-5 {
+            @include Mobile {
+                grid-column: 1/4;
+                grid-row: 5/6;
+            }
+        }
+    }
 }
