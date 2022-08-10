@@ -235,6 +235,17 @@
   line-height: 1.9rem;
   text-decoration: none; }
 
+.view-more {
+  text-align: right; }
+  .view-more a {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2F2F2F; }
+    .view-more a i:before {
+      font-size: 2rem; }
+
 .wc-main {
   padding-top: 3rem; }
   @media screen and (max-width: 1024px) {
