@@ -2,14 +2,17 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.WorldCup2022;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -20,9 +23,9 @@
         private readonly IPostService postService;
         private readonly IMatchService matchService;
         private readonly ILeagueService leagueService;
-        private const long LeagueIdWC = 14638;
-        private const long SeasonIdWC = 10810;
-        private const string CategorySlugWC = "world-cup-2022";
+        private const long LeagueIdWC = Constants.LeagueIdWorldCup2022;
+        private const long SeasonIdWC = Constants.SeasonIdWorldCup2022;
+        private const string CategorySlugWC = Constants.WorldCup2022Slug;
 
         public WorldCup2022Controller(
             IPostService postService,
@@ -46,24 +49,49 @@
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
         public async Task<IActionResult> LastestNews()
         {
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = 0, _End = 10 };
-            var standingsCriteria = new GetSeasonStandingsCriteria() {LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
             var topScorersCriteria = new GetTopScorersCriteria() {LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
 
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-            var standing = await matchService.GetSeasonStandingsAsync(standingsCriteria);
             var topScorers = await leagueService.GetTopScorersAsync(topScorersCriteria);
 
             var viewModel = new LastestNewsViewModel()
             {
                 Posts = news,
-                Standings = GroupStandingsByGroupName(standing),
-                TopScorers = topScorers
+                TopScorers = topScorers,
+                Paging = new PagingModel{
+                    PageSize = Constants.GetTenItems,
+                    CurrentPage = Constants.FirstPage,
+                    TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTenItems)
+                }
             };
             return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
-        private static List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
+        [Route("world-cup-2022/news-posts")]
+        public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
+        {
+            int pageSize = param.PageSize;
+            var start = (param.Page - 1) * pageSize;
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = start, _End = start + pageSize };
+            IEnumerable<Post> posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            return PartialView("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", posts);
+        }
+
+        [Route("world-cup-2022/get-standing")]
+        public async Task<IActionResult> GetStandings(int numRow)
+        {
+            var standingsCriteria = new GetSeasonStandingsCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var standing = await matchService.GetSeasonStandingsAsync(standingsCriteria);
+            ViewBag.NumRow = numRow;
+            ViewBag.Total = GroupStandingsByGroupName(standing).Count;
+            var viewModel = new LastestNewsViewModel(){
+                Standings = GroupStandingsByGroupName(standing)
+            };
+            return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", viewModel);
+        }
+
+        public static List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = GetGroupNames(seasonStandings);
             var standingsViewModels = new List<StandingViewModel>();
@@ -80,7 +108,7 @@
             return standingsViewModels;
         }
 
-        private static List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
+        public static List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = new List<string>();
             foreach(var item in seasonStandings)

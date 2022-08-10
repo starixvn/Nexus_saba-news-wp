@@ -1,10 +1,14 @@
-﻿@using SabaNews.Models.ViewModel.WorldCup2022 
+﻿@using SabaNews.Models.ViewModel.WorldCup2022
+@using DeviceDetectorNET;
 @section Title {
     Lastest News WorldCup 2022
 }
 
-@{ 
-    var count = 0;
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
 }
 
 @section Styles{
@@ -33,6 +37,14 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
+    <script>
+        window.paging = {
+            page: '@Model.Paging.CurrentPage',
+            pageSize: '@Model.Paging.PageSize',
+            totalPages: '@Model.Paging.TotalPages'
+        };
+    </script>
+    <script src="~/js/worldcup2022/lastestnews.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("Header"))
 @await Html.PartialAsync("~/Views/Event/WorldCup2022/_WorldCupMenu.cshtml", "abc")
@@ -41,9 +53,16 @@
     <div class="colums-main">
     </div>
 
+    <div class="base-container">
+        @if (!isMobile)
+        {
+            <h2 class="block__title title-new-page"><a>Tin Mới Nhất</a></h2>
+        }
+    </div>
+
     <div class="container">
         <div class="block block-main">
-            <div id="category-grid" class="block__content">
+            <div id="news-grid" class="block__content">
                 <div class="skeleton skeleton-horizontal skeleton-horizontal-highlight">
                     <a class="skeleton-horizontal__image"></a>
                     <div class="text-skeleton">
@@ -82,6 +101,11 @@
                             {
                                 continue;
                             }
+                            if (postIndex == 4 && isMobile)
+                            {
+                                <div id="standingWC"></div>
+                                @await Html.PartialAsync("_TopScorers.cshtml", new LastestNewsViewModel { TopScorers = Model.TopScorers })
+                            }
                         }
                         <div class="post card-horizontal">
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52">
@@ -112,7 +136,9 @@
                             </div>
                         </div>
                     }
-                }
+
+
+}
             </div>
             <div class="loading-page">
                 <div class="lds-ellipsis">
@@ -121,11 +147,11 @@
             </div>
         </div>
         <div>
-            @await Html.PartialAsync("_Standing.cshtml", new LastestNewsViewModel { Standings = Model.Standings })
-
-            <div>
-                <p>Vua phá lưới</p>
-            </div>
+            @if (isDesktop)
+            {
+                <div id="standingWC"></div>
+                @await Html.PartialAsync("_TopScorers.cshtml", new LastestNewsViewModel { TopScorers = Model.TopScorers })
+            }
         </div>
     </div>
 </section>

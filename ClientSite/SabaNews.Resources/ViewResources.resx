@@ -917,11 +917,28 @@
   </data>
   <data name="BasketballEN" xml:space="preserve">
     <value>Basketball</value>
+  <data name="Assist" xml:space="preserve">
+    <value>Kiến Tạo</value>
   </data>
   <data name="SoccerEN" xml:space="preserve">
     <value>Soccer</value>
   </data>
-  <data name="TennisEN" xml:space="preserve">
-    <value>Tennis</value>
+  <data name="Board" xml:space="preserve">
+    <value>Bảng</value>
+  </data>
+  <data name="FairPlay" xml:space="preserve">
+    <value>+/-</value>
+  </data>
+  <data name="Point" xml:space="preserve">
+    <value>Điểm</value>
+  </data>
+  <data name="Standing" xml:space="preserve">
+    <value>Bảng Xếp Hạng</value>
+  </data>
+  <data name="Top10" xml:space="preserve">
+    <value>TOP 10</value>
+  </data>
+  <data name="Win" xml:space="preserve">
+    <value>Bàn Thắng</value>
   </data>
 </root>

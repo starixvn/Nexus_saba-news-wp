@@ -1,24 +1,35 @@
-﻿@{ 
-    var a = Model;
+﻿@using SabaNews.Resources
+@{
+    var count = 0;
+    var numRow = ViewBag.NumRow != null ? ViewBag.NumRow : 0;
+    var total = ViewBag.Total != null ? ViewBag.Total : 0;
 }
 <div>
-    <p>Bảng xếp hạng</p>
+    <h1>@ViewResources.Standing</h1>
     <table>
         <thead>
             <tr>
-                <th><i class="icon-chevron-left"></i>Bảng A<i class="icon-chevron-right"></i></th>
-                <th>Trận</th>
-                <th>+/-</th>
-                <th>Điểm</th>
+                <th>
+                    <i class="icon-chevron-left" id="btn-back-standing"></i>
+                    @ViewResources.Board @Model.Standings[numRow].GroupName.Substring(0, 1)
+                    <i class="icon-chevron-right" data-total="@total" id="btn-next-standing"></i>
+                </th>
+                <th>@ViewResources.Battle</th>
+                <th>@ViewResources.FairPlay</th>
+                <th>@ViewResources.Point</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="text-left" width="130px">1 <img src="" />@Model.Standings[0].Standings[0].TeamFullNameEN</td>
-                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].Total</td>
-                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].GoalDiff</td>
-                <td class="text-center" width="65px">@Model.Standings[0].Standings[0].Points</td>
-            </tr>
+            @foreach (var item in Model.Standings[numRow].Standings)
+            {
+                count++;
+                <tr>
+                    <td class="text-left" width="130px">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                    <td class="text-center" width="65px">@item.Total</td>
+                    <td class="text-center" width="65px">@item.GoalDiff</td>
+                    <td class="text-center" width="65px">@item.Points</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

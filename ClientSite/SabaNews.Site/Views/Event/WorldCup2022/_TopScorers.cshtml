@@ -1,0 +1,23 @@
+﻿@using SabaNews.Resources
+<div>
+    <h1>@ViewResources.TopGoalScorer</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>@ViewResources.Top10</th>
+                <th>@ViewResources.Win</th>
+                <th>@ViewResources.Assist</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TopScorers)
+            {
+                <tr>
+                    <td class="text-left" width="175px">@item.Top <img src="@item.TeamLogo" />@item.PlayerFullNameEN</td>
+                    <td class="text-center" width="90px">@item.Goals</td>
+                    <td class="text-center" width="65px">@item.Assists</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

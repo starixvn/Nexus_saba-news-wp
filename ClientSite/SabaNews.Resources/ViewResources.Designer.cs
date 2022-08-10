@@ -160,6 +160,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kiến Tạo.
+        /// </summary>
+        public static string Assist {
+            get {
+                return ResourceManager.GetString("Assist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author.
         /// </summary>
         public static string Author {
@@ -306,9 +315,18 @@ namespace SabaNews.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Basketball.
         /// </summary>
-        public static string BasketballEN {
+        public static string Battle {
             get {
-                return ResourceManager.GetString("BasketballEN", resourceCulture);
+                return ResourceManager.GetString("Battle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bảng.
+        /// </summary>
+        public static string Board {
+            get {
+                return ResourceManager.GetString("Board", resourceCulture);
             }
         }
         
@@ -786,6 +804,15 @@ namespace SabaNews.Resources {
         public static string Failed {
             get {
                 return ResourceManager.GetString("Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to +/-.
+        /// </summary>
+        public static string FairPlay {
+            get {
+                return ResourceManager.GetString("FairPlay", resourceCulture);
             }
         }
         
@@ -1564,6 +1591,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Điểm.
+        /// </summary>
+        public static string Point {
+            get {
+                return ResourceManager.GetString("Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post Statistics.
         /// </summary>
         public static string PostViewStatistic {
@@ -2032,6 +2068,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bảng Xếp Hạng.
+        /// </summary>
+        public static string Standing {
+            get {
+                return ResourceManager.GetString("Standing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         public static string Status {
@@ -2181,6 +2226,15 @@ namespace SabaNews.Resources {
         public static string TooltipIcon {
             get {
                 return ResourceManager.GetString("TooltipIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOP 10.
+        /// </summary>
+        public static string Top10 {
+            get {
+                return ResourceManager.GetString("Top10", resourceCulture);
             }
         }
         
@@ -2469,6 +2523,15 @@ namespace SabaNews.Resources {
         public static string VoteResult {
             get {
                 return ResourceManager.GetString("VoteResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bàn Thắng.
+        /// </summary>
+        public static string Win {
+            get {
+                return ResourceManager.GetString("Win", resourceCulture);
             }
         }
         
