@@ -11,14 +11,7 @@
 // @import "../../../../components/breadcrumb";
 // @import "../../../../components/modal";
 // @import "../../../../components/recent-post";
-.wc-bg-overflow{
-    background: linear-gradient(180deg, #750F2E 0%, #6A0E2B 100%);
-    padding: 2rem 0 1rem; 
-    position: relative;
-    @include tableMobile{
-        padding: 2rem 0 1rem 1rem;
-    }
-}
+
 
 .wc-date-control{
     width: 4rem;
@@ -30,6 +23,7 @@
     position: absolute;
     top: 50%;
     transform: translate(0,-50%);
+    transition: all .4s ease-in-out;
     i{
         &::before{
             font-size: 2.4rem;
@@ -39,16 +33,36 @@
     &-next {
         clip-path: polygon(0 50%, 100% 100%, 100% 0);
         justify-content: flex-end;
-        right: 0;
+        right:-100px;
         @include tableMobile{
             display: none;
         }
     }
     &-prev{
         clip-path: polygon(100% 45%, 0% 100%, 0 0);
-        left: 0;
+        left: -100px;
         @include tableMobile{
             display: none;
+        }
+    }
+}
+
+.wc-bg-overflow{
+    background: linear-gradient(180deg, #750F2E 0%, #6A0E2B 100%);
+    padding: 2rem 0 1rem; 
+    position: relative;
+    transition: all .4s ease-in-out;
+    @include tableMobile{
+        padding: 2rem 0 1rem 1rem;
+    }
+    &:hover{
+        .wc-date-control{
+            &-next{
+                right: 0;
+            }
+            &-prev{
+                left: 0;
+            }
         }
     }
 }
@@ -59,7 +73,6 @@
     grid-template-columns: unset;
     grid-auto-flow: column;
     grid-gap: 1rem;
-    margin: 0 2rem;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -82,20 +95,24 @@
             display: inherit;
             margin-bottom: 0;
             width: 25rem;
-            background: #EEEEE4;
+            background: #753146;
             padding: 0;
+            color: #fff;
+            border: 1px solid #61132B;
             .soccer-match-date-result{
                 display: flex;
                 justify-content: space-between;
-                border: 1px solid #CDCDBA;
+                border: 1px solid #61132B;
                 border-radius: 5px;
                 padding: .7rem 1rem;
+                background: #894158;
                 .soccer-match-stage{
                     text-align: left;
                     margin-right: 0;
                 }
                 .wc-date{
-                    font-size: 1.3rem;
+                    font-size: 1.2rem;
+                    font-weight: 700;
                 }
             }
             .soccer-match-team{
