@@ -5,6 +5,7 @@ import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import SignalR from './SignalR';
 import moment from 'moment';
+import DateTimeService from '@jsroot/common/dateTimeService';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -14,8 +15,24 @@ export class AppContainer extends Component {
         this.props.getMatches();
     }
 
-    render() {
+    getMatches = () => {
         const { league, matches } = this.props;
+        if(!matches) {
+            return matches;
+        }
+        let tmpMatches = matches;
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
+        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
+        if(moment(today).isSameOrAfter(endTime)) {
+            console.log(today, endTime);
+            tmpMatches = [...matches].reverse();
+        }
+        return tmpMatches;
+    }
+
+    render() {
+        const { league } = this.props;
+        const matches = this.getMatches();
         return (
             <div>
                 <SignalR getMatches={this.getMatches} />

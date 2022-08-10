@@ -1,0 +1,45 @@
+﻿@using SabaNews.Site.Extensions;
+<div class="season-standings">
+    <div>
+        @foreach (var group in Model)
+        {
+            var position = 0;
+            var groupName = $"Bảng {group.GroupName[0]}";
+            <div class="table-custom">
+                <div class="table-custom-header">
+                    <div class="table-custom-cell cell-rank">#</div>
+                    <div class="table-custom-cell cell-participant">@groupName</div>
+                    <div class="table-custom-cell cell-rank">Trận</div>
+                    <div class="table-custom-cell cell-rank">+/-</div>
+                    <div class="table-custom-cell cell-rank">Điểm</div>
+                </div>
+                <div class="table-custom-body">
+                    @foreach (var standing in group.Standings)
+                    {
+                        position++;
+                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                        <div class="table-custom-row">
+                        <div class="table-custom-cell cell-rank">
+                            <div class="position ">@position</div>
+                        </div>
+                        <div class="table-custom-cell cell-participant">
+                            <div class="soccer-team">
+                                <div class="soccer-team-logo"><img class="soccer-team-logo" loading="lazy" src=@icon></div>
+                                <div class="soccer-team-name">@teamName</div>
+                            </div>
+                        </div>
+                        <div class="table-custom-cell cell-rank"><span>@standing.Total</span></div>
+                        <div class="table-custom-cell cell-rank"><span>@standing.GoalDiff</span></div>
+                        <div class="table-custom-cell cell-rank"><span class="table-bold">@standing.Points</span></div>
+                        <div class="table-custom-cell cell-rank cell-form">
+                            <div class="wld-wrapper"></div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        }
+
+    </div>
+    </div>

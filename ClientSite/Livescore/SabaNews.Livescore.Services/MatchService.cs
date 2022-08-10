@@ -35,7 +35,9 @@
 
         public async Task<(League, IList<Match>)> GetMatchBySeasonAsync(GetMatchBySeasonCriteria criteria)
         {
-            (var leagues, var floatMatches) = await baseService.FetchMultipleAsync<League, FloatMatchModel>(criteria);
+            (var leagues, var season, var floatMatches) = await baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(criteria);
+            var league = leagues.FirstOrDefault();
+            league.Season = season.FirstOrDefault();
             var matches = new List<Match>();
             foreach (FloatMatchModel match in floatMatches)
             {
@@ -74,6 +76,7 @@
                         TeamId = match.HomeTeamId,
                         TeamNameEN = match.HomeTeamNameEN,
                         TeamFullNameEN = match.HomeTeamFullNameEN,
+                        TeamNameVN = match.HomeTeamNameVN,
                         Icon = match.HomeTeamIcon
                     },
                     AwayTeam = new Team
@@ -81,6 +84,7 @@
                         TeamId = match.AwayTeamId,
                         TeamNameEN = match.AwayTeamNameEN,
                         TeamFullNameEN = match.AwayTeamFullNameEN,
+                        TeamNameVN = match.AwayTeamNameVN,
                         Icon = match.AwayTeamIcon
                     },
                     Stage = stage,
@@ -88,7 +92,7 @@
                 });
             }
 
-            return (leagues.FirstOrDefault(), matches);
+            return (league, matches);
         }
 
         public async Task<IList<SeasonStandings>> GetSeasonStandingsAsync(GetSeasonStandingsCriteria criteria)

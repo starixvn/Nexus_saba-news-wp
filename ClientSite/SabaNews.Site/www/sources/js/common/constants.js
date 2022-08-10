@@ -91,6 +91,7 @@ export const IncidentIconType = {
 };
 
 export const WorldCup = {
-    leagueId: 12002, //[11999, 12016, 11998]
-    seasonId: 10900 //[10923, 10632, 10885]
+    leagueId: 14638, //[11999, 12016, 11998]
+    seasonId: 10810, //[10923, 10632, 10885]
+    
 }

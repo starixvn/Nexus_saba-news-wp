@@ -89,6 +89,16 @@ export default class CommonFunctions {
         return team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
     }
 
+    static getTeamNameVN(team) {
+        let teamName = '';
+        if (team.teamNameVN) {
+            teamName = team.teamNameVN;
+        } else {
+            teamName = team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
+        }
+        return teamName;
+    }
+
     static isLiveMatch(statusId) {
         return statusId === MatchStatus.FirstHalf
             || statusId === MatchStatus.SecondHalf

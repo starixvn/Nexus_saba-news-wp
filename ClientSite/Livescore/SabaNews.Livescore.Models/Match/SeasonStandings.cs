@@ -12,6 +12,7 @@
         public long TeamId { get; set; }
         public string TeamNameEN { get; set; }
         public string TeamFullNameEN { get; set; }
+        public string TeamNameVN { get; set; }
         public string Icon { get; set; }
 
         public string GroupName { get; set; }

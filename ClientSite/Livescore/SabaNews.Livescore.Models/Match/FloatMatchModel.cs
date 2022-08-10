@@ -9,11 +9,13 @@
         public DateTime EndTime { get; set; }
 
         public long HomeTeamId { get; set; }
+        public string HomeTeamNameVN { get; set; }
         public string HomeTeamNameEN { get; set; }
         public string HomeTeamFullNameEN { get; set; }
         public string HomeTeamIcon { get; set; }
 
         public long AwayTeamId { get; set; }
+        public string AwayTeamNameVN { get; set; }
         public string AwayTeamNameEN { get; set; }
         public string AwayTeamFullNameEN { get; set; }
         public string AwayTeamIcon { get; set; }

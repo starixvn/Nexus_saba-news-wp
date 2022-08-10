@@ -128,5 +128,13 @@
             }
             return groupNames;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetHomepageStandings([FromBody] GetSeasonStandingsCriteria criteria)
+        {
+            IList<SeasonStandings> standings = await matchService.GetSeasonStandingsAsync(criteria);
+            var groups = GroupStandingsByGroupName(standings);
+            return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
+        }
     }
 }
