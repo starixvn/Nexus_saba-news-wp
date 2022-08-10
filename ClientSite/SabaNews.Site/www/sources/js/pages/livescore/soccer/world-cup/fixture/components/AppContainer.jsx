@@ -17,14 +17,8 @@ export class AppContainer extends Component {
         const { matches, league } = this.props;
         return (
             <div className="wc-bg-overflow">
-                { matches !== null && <Grid matches={matches} league={league} /> }
-                <div className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
-            <div>
                 <SignalR getMatches={this.getMatches} />
-                {
-            matches !== null && <Grid matches={matches} league={league} />
-            </div>
-                }
+                { matches !== null && <Grid matches={matches} league={league} /> }
             </div>
         );
     }

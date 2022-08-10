@@ -39,8 +39,8 @@
         [Route("world-cup-2022")]
         public async Task<IActionResult> Index()
         {
-            var model = await dataControlService.GetWorldCupPageViewModel();
-            return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
+            //var model = await dataControlService.GetWorldCupPageViewModel();
+            return View("~/Views/Event/WorldCup2022/Index.cshtml");
         }
 
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]

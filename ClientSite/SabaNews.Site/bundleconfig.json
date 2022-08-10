@@ -149,6 +149,13 @@
             "wwwroot/styles/pages/admin/banner/index.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/worldcup.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/worldcup/index.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
@@ -228,7 +235,7 @@
     {
         "outputFileName": "wwwroot/minify/js/membership-event.min.js",
         "inputFiles": [
-            "wwwroot/js/event/membership-event.js"
+            "wwwroot/js/membership-event/membership-event.js"
         ],
         "minify": {
             "enabled": true,
@@ -329,6 +336,19 @@
         "outputFileName": "wwwroot/minify/js/admin_banner.min.js",
         "inputFiles": [
             "wwwroot/js/admin/banner/index.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/worldcup.min.js",
+        "inputFiles": [
+            "wwwroot/lib/swipper/js/swiper.min.js",
+            "wwwroot/js/swiper.js",
+            "wwwroot/js/event/worldcup/index.js"
         ],
         "minify": {
             "enabled": true,

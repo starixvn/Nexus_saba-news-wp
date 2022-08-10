@@ -5,6 +5,7 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import Site from '@jsroot/common/site';
+import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class Match extends PureComponent {
     constructor(props) {
@@ -52,6 +53,7 @@ export default class Match extends PureComponent {
         const { match } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
         return (
             <>
                 <div className="group-match-item" onClick={this.onClick}>
@@ -59,7 +61,7 @@ export default class Match extends PureComponent {
                     >
                         <div className="soccer-match-date-result">
                             <MatchStage match={match} />
-                            <span className="wc-date">21/11</span>
+                            <span className="wc-date">{startTime.format('DD/MM')}</span>
                         </div>
                         <div className="soccer-match-team">
                             <div className="group-team">
