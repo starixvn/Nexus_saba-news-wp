@@ -19,7 +19,7 @@ export class AppContainer extends Component {
         return (
             <div>
                 <SignalR getMatches={this.getMatches} />
-                { matches !== null && <Grid matches={matches} league={league} /> }
+                { matches && matches.length > 0 && <Grid matches={matches} league={league} /> }
             </div>
         );
     }

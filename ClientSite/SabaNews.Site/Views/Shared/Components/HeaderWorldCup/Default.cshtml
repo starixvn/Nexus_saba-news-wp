@@ -123,11 +123,24 @@
                     @foreach (var menu in menus)
                     {
                         var active = menu.Slug == Model.CateSlug ? "active" : "";
-                        <li class="menu-item @active">
-                            <a href=@($"{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item">
-                                @menu.Name
-                            </a>
-                        </li>
+                        var link = $"{WorldCup2022.HomepageSlug}/{menu.Slug}";
+                        @if (menu.Slug == "/")
+                        {
+                            <li class="menu-item wc-logo">
+                                <a href=@link class="item">
+                                    <img src="~/images/worldcup/wc-logo.svg" asp-append-version="true"  />
+                                </a>
+                            </li>
+                        }
+                        else
+                        { 
+                            <li class="menu-item @active">
+                                <a href=@link class="item">
+                                    @menu.Name
+                                </a>
+                            </li>
+                        }
+                        
                     }
                     <li class="right-header-section search-input hidden-pc">
                         <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
