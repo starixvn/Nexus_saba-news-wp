@@ -1,15 +1,35 @@
-﻿.top-header {
+﻿.header {
+    @include tableMobile {
+        height: 7rem;
+        background: $primary-bg;
+    }
+}
+
+.top-header {
     padding: 1.8rem 0;
     background: $primary-bg;
     box-shadow: none;
+    display: flex;
+    align-items: center;
+
+    @include tableMobile {
+        padding: 0;
+    }
 
     .group-menu {
+        justify-content: center;
+
         .nav-menu {
+            @include tableMobile {
+                padding: 0;
+            }
+
             .main-menu {
                 @include tableMobile {
                     background-color: $primary-bg;
                     border-top: 1px solid $nav-header-color;
                     border-bottom: 1px solid $nav-header-color;
+                    margin-top : 5rem;
                 }
 
                 .menu-item {
@@ -19,6 +39,10 @@
 
                     .item {
                         color: $nav-header-color;
+
+                        &.active {
+                            color: $white-color;
+                        }
 
                         &:hover {
                             color: $white-color;
@@ -31,34 +55,21 @@
 
     .back-home-page {
         display: block;
-
+        padding-left: 2rem;
+        width : 20rem;
         @include tableMobile {
             display: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: $nav-header-color;
+            font-size : 1.2rem;
         }
     }
 }
 
-.right-header-section {
-    &.hidden-pc {
-        display: none;
 
-        @include tableMobile {
-            display: block;
-        }
-    }
-
-    &.hidden-mb {
-        display: block;
-
-        @include tableMobile {
-            display: none;
-        }
-    }
-
-    @include tableMobile {
-        background-color: $primary-bg;
-    }
-}
 
 .search-input {
     form {
@@ -70,7 +81,6 @@
             height: 3.2rem;
             width: 3.2rem;
             border-radius: 50px;
-
             @include tableMobile {
                 height: 3.6rem;
                 width: 100%;
@@ -93,10 +103,68 @@
 
         .btn-search {
             left: 5px !important;
-            @include tableMobile{
-                left : 12px !important;
+            @include tableMobile {
+                left: 12px !important;
             }
         }
+    }
+}
+
+.right-header-section {
+    &.hidden-pc {
+        display: none;
+
+        @include tableMobile {
+            display: block;
+        }
+    }
+
+    &.hidden-mb {
+        display: flex;
+        align-items: center;
+        padding-right: 2rem;
+        width: 35rem;
+        justify-content: flex-end;
+
+        @include tableMobile {
+            display: none;
+        }
+
+        form {
+            margin-right: 1.6rem;
+
+            input {
+                transition: width .2s ease;
+                padding: 0 1rem;
+            }
+
+            &:hover {
+                input {
+                    width: 14rem;
+                    @include creen1391px {
+                        width: 20rem;
+                    }
+
+                    &::placeholder {
+                        color: $nav-header-color !important;
+                    }
+                }
+            }
+
+            .btn-search {
+                left: auto !important;
+                right: 5px;
+            }
+        }
+
+        .auth-login {
+            text-decoration: none;
+            color: $nav-header-color;
+        }
+    }
+
+    @include tableMobile {
+        background-color: $primary-bg;
     }
 }
 
