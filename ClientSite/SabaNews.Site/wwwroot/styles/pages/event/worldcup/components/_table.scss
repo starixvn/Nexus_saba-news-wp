@@ -1,2 +1,56 @@
-﻿body {
+﻿.wc-table {
+    color: $white-color;
+    border: 1px solid $table-border;
+    border-radius: 5px;
+    position: relative;
+
+    .wc-table-header {
+        display: flex;
+        height: 5.8rem;
+        user-select: none;
+        align-items: flex-end;
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid #C49F5D;
+    }
+
+    .cell-participant {
+        align-self: center;
+        display: block;
+        flex: 1 0 15rem;
+        text-align: left;
+    }
+
+    .team {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+
+        &-logo {
+            margin-right: .8rem;
+            border: 1px solid $white-color;
+            border-radius: 3px;
+            width: 3.6rem;
+            height: 2.4rem;
+        }
+    }
+
+    .cell-rank {
+        width: 4.5rem;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+    }
+
+    .wc-table-row {
+        display: flex;
+        align-items: center;
+        padding: 1.6rem 1.2rem;
+        border-bottom: 1px solid #C49F5D;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
 }

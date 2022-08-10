@@ -1,12 +1,17 @@
 ﻿.view-more {
     text-align: right;
-
+    margin-top : 3.2rem;
+    @include tableMobile{
+        margin-top : 1.6rem;
+    }
     a {
         font-size: 1.4rem;
         display: flex;
         align-items: center;
         text-decoration: none;
-        color : #2F2F2F; 
+        color: #2F2F2F;
+        justify-content: flex-end;
+        font-weight : 700;
         i {
             &:before {
                 font-size: 2rem;

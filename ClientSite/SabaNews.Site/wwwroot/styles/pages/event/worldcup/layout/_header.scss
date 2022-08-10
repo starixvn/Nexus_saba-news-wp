@@ -66,6 +66,11 @@
             text-decoration: none;
             color: $nav-header-color;
             font-size : 1.2rem;
+            display : flex;
+            i{
+               margin-right : .5rem;
+               font-size : 2rem;
+            }
         }
     }
 }

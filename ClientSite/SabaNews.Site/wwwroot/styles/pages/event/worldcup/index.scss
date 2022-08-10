@@ -8,6 +8,9 @@
 @import './components/post-items';
 @import './components/view-more';
 @import './components/scroll-snap';
+@import './components/table';
+@import './components/title-items';
+@import './components/container';
 
 .wc-main{
     padding-top : 3rem;
@@ -68,6 +71,44 @@
                 grid-column: 1/4;
                 grid-row: 5/6;
             }
+        }
+    }
+}
+.wc-block-bxh {
+    background: $primary-bg;
+
+    .title-section {
+        h2 {
+            a {
+                color: #FFD68F;
+            }
+        }
+    }
+
+    .dots {
+
+
+        span {
+            background: #FFD68F;
+        }
+    }
+
+    .grid-bxh {
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 4rem 2rem;
+
+        @include tableMobile {
+            grid-template-columns: repeat( 8, 29rem);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+    }
+
+    .view-more {
+        a {
+            color: #FFD68F;
         }
     }
 }
