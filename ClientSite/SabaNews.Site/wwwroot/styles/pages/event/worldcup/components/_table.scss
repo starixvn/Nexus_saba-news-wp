@@ -1,6 +1,4 @@
 ﻿.wc-table {
-    color: $white-color;
-    border: 1px solid $table-border;
     border-radius: 5px;
     position: relative;
 
@@ -8,7 +6,7 @@
         display: flex;
         height: 5.8rem;
         user-select: none;
-        align-items: flex-end;
+        align-items: center;
         padding: 1rem 1.2rem;
         border-bottom: 1px solid #C49F5D;
     }

@@ -1,9 +1,6 @@
 ﻿.view-more {
     text-align: right;
     margin-top : 3.2rem;
-    @include tableMobile{
-        margin-top : 1.6rem;
-    }
     a {
         font-size: 1.4rem;
         display: flex;

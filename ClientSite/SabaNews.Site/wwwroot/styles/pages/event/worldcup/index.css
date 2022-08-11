@@ -172,7 +172,8 @@
 
 .wc-block {
   padding: 5rem 0;
-  margin-top: 5rem; }
+  margin-top: 5rem;
+  position: relative; }
   @media screen and (max-width: 1024px) {
     .wc-block {
       margin-top: 2.5rem;
@@ -243,9 +244,6 @@
 .view-more {
   text-align: right;
   margin-top: 3.2rem; }
-  @media screen and (max-width: 1024px) {
-    .view-more {
-      margin-top: 1.6rem; } }
   .view-more a {
     font-size: 1.4rem;
     display: flex;
@@ -266,22 +264,20 @@
     scroll-snap-stop: always;
     grid-template-columns: unset;
     grid-auto-flow: column;
-    grid-gap: 1.2rem; }
+    grid-gap: 1.2rem !important; }
     .scroll-snap::-webkit-scrollbar {
       display: none; }
     .scroll-snap .scroll-snap-items {
       scroll-snap-align: center; } }
 
 .wc-table {
-  color: #fff;
-  border: 1px solid #DFB56C;
   border-radius: 5px;
   position: relative; }
   .wc-table .wc-table-header {
     display: flex;
     height: 5.8rem;
     user-select: none;
-    align-items: flex-end;
+    align-items: center;
     padding: 1rem 1.2rem;
     border-bottom: 1px solid #C49F5D; }
   .wc-table .cell-participant {
@@ -402,5 +398,45 @@
         grid-template-columns: repeat(8, 29rem);
         padding-top: 2rem;
         margin-top: 2rem; } }
+  .wc-block-bxh .wc-table {
+    background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+    color: #fff;
+    border: 1px solid #DFB56C; }
+    .wc-block-bxh .wc-table .wc-table-header {
+      align-items: flex-end; }
+  .wc-block-bxh .img-section {
+    position: absolute;
+    left: 30px;
+    bottom: 30px; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-bxh .img-section {
+        display: none; } }
   .wc-block-bxh .view-more a {
     color: #FFD68F; }
+
+.wc-block-stories-post {
+  background: url("../../../../images/worldcup/bg.png") no-repeat;
+  background-size: contain;
+  background-position: center; }
+  .wc-block-stories-post .grid-stories-post {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-stories-post .grid-stories-post {
+        grid-template-columns: repeat(4, 30rem);
+        grid-gap: 2rem; } }
+    .wc-block-stories-post .grid-stories-post .hover-image {
+      max-height: 40rem; }
+      .wc-block-stories-post .grid-stories-post .hover-image .title-hot {
+        text-align: center;
+        padding: 4rem 3.2rem 2rem 3.2rem; }
+        .wc-block-stories-post .grid-stories-post .hover-image .title-hot p {
+          color: #fff;
+          font-size: 1.3rem;
+          font-weight: 700; }
+          @media screen and (max-width: 1024px) {
+            .wc-block-stories-post .grid-stories-post .hover-image .title-hot p {
+              font-size: 1.4rem; } }
+  .wc-block-stories-post .view-more a {
+    color: #FF4700; }
