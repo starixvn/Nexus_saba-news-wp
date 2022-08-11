@@ -27,5 +27,23 @@
                 font-size: 2.4rem;
             }
         }
+
+        .title-pc {
+            display: block;
+
+            @include tableMobile {
+                display: none;
+            }
+        }
+
+        .title-mb {
+            display: none;
+
+            @include tableMobile {
+                display: block;
+                text-align: center;
+                line-height: 3.3rem;
+            }
+        }
     }
 }

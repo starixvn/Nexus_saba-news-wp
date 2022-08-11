@@ -156,6 +156,18 @@
     @media screen and (max-width: 1024px) {
       .title-section h2 a {
         font-size: 2.4rem; } }
+  .title-section h2 .title-pc {
+    display: block; }
+    @media screen and (max-width: 1024px) {
+      .title-section h2 .title-pc {
+        display: none; } }
+  .title-section h2 .title-mb {
+    display: none; }
+    @media screen and (max-width: 1024px) {
+      .title-section h2 .title-mb {
+        display: block;
+        text-align: center;
+        line-height: 3.3rem; } }
 
 .wc-block {
   padding: 5rem 0;
@@ -234,6 +246,25 @@
         .post-hot .hover-image .title-hot h2 {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
+    .post-hot .hover-image .title-hot h3 a {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      line-height: 2.7rem; }
+      @media screen and (max-width: 1024px) {
+        .post-hot .hover-image .title-hot h3 a {
+          font-size: 1.4rem;
+          line-height: 1.9rem; } }
+
+.date-time {
+  color: #fff;
+  margin-top: .5rem; }
+  @media screen and (max-width: 1024px) {
+    .date-time {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.4rem; } }
 
 .post-items .title h2 a {
   color: #2F2F2F;
@@ -300,6 +331,10 @@
       .wc-table .team-logo img {
         width: 3.6rem;
         height: 2.4rem; }
+  .wc-table .number {
+    margin-right: .6rem;
+    width: 2rem;
+    text-align: center; }
   .wc-table .cell-rank {
     width: 4.5rem;
     text-align: center;
@@ -490,3 +525,34 @@
         min-height: 22rem; } }
     .wc-block-all .grid-all .dots span {
       background: #fff; }
+
+.grid-section-group {
+  display: grid;
+  grid-template-columns: 61% 37%;
+  grid-gap: 2rem; }
+  @media screen and (max-width: 1024px) {
+    .grid-section-group {
+      grid-template-columns: auto;
+      grid-gap: 4rem; } }
+
+.king-soccer .wc-table {
+  color: #fff;
+  border-radius: 5px;
+  overflow: hidden; }
+  .king-soccer .wc-table .wc-table-header {
+    border-bottom: none;
+    background: #6D2D42;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    height: 5rem;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-size: 1.4rem; }
+  .king-soccer .wc-table .wc-table-body {
+    background: linear-gradient(180deg, #531128 0%, #350717 100%); }
+  .king-soccer .wc-table .wc-table-row {
+    margin: 0 2rem;
+    border-bottom: 1px solid #58263F;
+    padding: 1.3rem 0; }
+  .king-soccer .wc-table .cell-rank {
+    width: 8rem;
+    font-weight: 700; }

@@ -90,6 +90,8 @@
         })
     }
 
+
+
     function init() {
         InfiniteScroll();
         getStandings();

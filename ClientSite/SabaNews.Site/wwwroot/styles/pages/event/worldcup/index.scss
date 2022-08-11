@@ -233,3 +233,54 @@
         }
     }
 }
+
+.wc-block-group {
+    
+}
+
+.grid-section-group {
+    display: grid;
+    grid-template-columns: 61% 37%;
+    grid-gap: 2rem;
+
+    @include tableMobile {
+        grid-template-columns: auto;
+        grid-gap: 4rem;
+    }
+}
+
+.guess {
+}
+
+.king-soccer {
+    .wc-table {
+        color: $white-color;
+        border-radius:  5px;
+        overflow: hidden;
+
+        .wc-table-header {
+            border-bottom: none;
+            background: #6D2D42;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+            height: 5rem;
+            padding: 1rem 2rem;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        .wc-table-body {
+            background: linear-gradient(180deg, #531128 0%, #350717 100%);
+        }
+
+        .wc-table-row {
+            margin: 0 2rem;
+            border-bottom: 1px solid #58263F;
+            padding: 1.3rem 0;
+        }
+
+        .cell-rank {
+            width: 8rem;
+            font-weight: 700;
+        }
+    }
+}
