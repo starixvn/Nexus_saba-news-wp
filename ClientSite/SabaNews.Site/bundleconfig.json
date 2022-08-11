@@ -152,6 +152,7 @@
     {
         "outputFileName": "wwwroot/minify/styles/worldcup.min.css",
         "inputFiles": [
+            "wwwroot/lib/swipper/css/swiper.min.css",
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/event/worldcup/index.css"
         ]
@@ -347,7 +348,6 @@
         "outputFileName": "wwwroot/minify/js/worldcup.min.js",
         "inputFiles": [
             "wwwroot/lib/swipper/js/swiper.min.js",
-            "wwwroot/js/swiper.js",
             "wwwroot/js/event/worldcup/index.js"
         ],
         "minify": {
