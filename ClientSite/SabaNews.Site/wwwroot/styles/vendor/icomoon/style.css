@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?yp0ot0');
-  src:  url('fonts/Fraud-Sensor.eot?yp0ot0#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?yp0ot0') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?yp0ot0') format('woff'),
-    url('fonts/Fraud-Sensor.svg?yp0ot0#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?pumu10');
+  src:  url('fonts/Fraud-Sensor.eot?pumu10#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?pumu10') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?pumu10') format('woff'),
+    url('fonts/Fraud-Sensor.svg?pumu10#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-next-wc:before {
+  content: "\e931";
+}
 .icon-double-arrow:before {
   content: "\e930";
 }
