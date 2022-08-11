@@ -288,11 +288,20 @@
 
 .wc-block-video {
     background: $primary-bg;
-   
+    position: relative;
 
     .view-more {
         a {
             color: $title-color;
+        }
+    }
+
+    .img-section{
+        position : absolute;
+        right : 30px;
+        bottom : 30px;
+        @include tableMobile {
+            display : none;
         }
     }
 }
