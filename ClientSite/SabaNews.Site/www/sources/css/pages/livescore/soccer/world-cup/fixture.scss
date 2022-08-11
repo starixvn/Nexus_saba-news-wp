@@ -12,7 +12,14 @@
 // @import "../../../../components/modal";
 // @import "../../../../components/recent-post";
 
-
+#worldcup-fixture {
+    position: sticky;
+    top: 76px;
+    z-index: 50;
+    @include tableMobile{
+        top: 40px;
+    }
+}
 .wc-date-control{
     width: 4rem;
     height: 8rem;
