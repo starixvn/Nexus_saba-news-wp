@@ -34,15 +34,51 @@
     </environment>
     <script src="~/minify/js/worldcup.min.js" asp-append-version="true"></script>
     <script>
-        var swipers = new Swiper('.swipper-guess', {
-            loop: false,
-            slidesPerView: 1,
-            spaceBetween: 20,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            }
-        });
+        if ($(window).innerWidth() > 1025) {
+            var swipers = new Swiper('.swipper-guess', {
+                loop: false,
+                slidesPerView: 1,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 1
+                    },
+                    1024: {
+                        slidesPerView: 1
+                    },
+                },
+            });
+            var Swipers= new Swiper('.swipper-video', {
+                loop: false,
+                slidesPerView: 3,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 1
+                    },
+                    1024: {
+                        slidesPerView: 1
+                    },
+                },
+            });
+        }
+
+
+        
     </script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
@@ -127,8 +163,8 @@
                             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                         </div>
                         <div class="swiper swipper-guess">
-                            <div class="swiper-wrapper mobile-slide">
-                                <div class="post-items swiper-slide post-hot">
+                            <div class="swiper-wrapper scroll-snap">
+                                <div class="post-items swiper-slide scroll-snap-items post-hot">
                                     <div class="hover-image">
                                         <a href="#">
                                             <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
@@ -140,7 +176,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="post-items swiper-slide post-hot">
+                                <div class="post-items swiper-slide scroll-snap-items post-hot">
+                                    <div class="hover-image">
+                                        <a href="#">
+                                            <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
+                                        </a>
+                                        <div class="title-hot">
+                                            <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
+                                            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan elementum quam adipiscing proin adipiscing dui ultricies posuere accumsan. Id ac varius facilisis rhoncus, in.</a></p>
+                                            <p class="date-time">00:00 DD/MM/YYYY</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="post-items swiper-slide scroll-snap-items post-hot">
                                     <div class="hover-image">
                                         <a href="#">
                                             <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
@@ -153,8 +201,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"><i class="icon-chevron-right"></i></div>
+                            <div class="swiper-button-prev"><i class="icon-chevron-left"></i></div>
                         </div>
                     </div>
                     <div class="king-soccer">
@@ -299,19 +347,70 @@
                     <h2><a href="#">Video</a></h2>
                     <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                 </div>
-                <div class="wc-block-video-main">
-                    <div class="post-items video-items post-items-2">
-                        <div class="hover-image">
-                            <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
-                            <div class="icon-play-video">
-                                <i class="icon-play"></i>
+                <div class="wrapper-arrow">
+                    <div class="swiper swipper-video">
+                        <div class="swiper-wrapper scroll-snap">
+                            <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
+                                <div class="hover-image">
+                                    <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                                    <div class="icon-play-video">
+                                        <i class="icon-play"></i>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                                </div>
+                            </div>
+                            <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
+                                <div class="hover-image">
+                                    <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                                    <div class="icon-play-video">
+                                        <i class="icon-play"></i>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                                </div>
+                            </div>
+                            <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
+                                <div class="hover-image">
+                                    <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                                    <div class="icon-play-video">
+                                        <i class="icon-play"></i>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                                </div>
+                            </div>
+                            <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
+                                <div class="hover-image">
+                                    <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                                    <div class="icon-play-video">
+                                        <i class="icon-play"></i>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                                </div>
+                            </div>
+                            <div class="post-items swiper-slide scroll-snap-items video-items post-items-2">
+                                <div class="hover-image">
+                                    <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                                    <div class="icon-play-video">
+                                        <i class="icon-play"></i>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                                </div>
                             </div>
                         </div>
-                        <div class="title">
-                            <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
-                        </div>
                     </div>
+                    <div class="swiper-button-next"><i class="icon-chevron-right"></i></div>
+                    <div class="swiper-button-prev"><i class="icon-chevron-left"></i></div>
                 </div>
+                
                 <div class="view-more">
                     <a href="#">Xem thêm <i class="icon-next-wc"></i></a>
                 </div>

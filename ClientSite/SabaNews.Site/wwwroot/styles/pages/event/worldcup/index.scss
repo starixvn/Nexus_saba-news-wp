@@ -245,7 +245,7 @@
     grid-gap: 2rem;
 
     @include tableMobile {
-        grid-template-columns: auto;
+        grid-template-columns: 100%;
         grid-gap: 4rem;
     }
 }
@@ -288,6 +288,7 @@
 
 .wc-block-video {
     background: $primary-bg;
+   
 
     .view-more {
         a {

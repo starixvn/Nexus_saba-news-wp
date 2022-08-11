@@ -427,17 +427,86 @@
 .swiper {
   width: 100%;
   height: auto; }
-
-.swiper-slide {
-  /* Center slide text vertically */
-  display: flex;
-  align-items: flex-start; }
+  @media screen and (max-width: 1024px) {
+    .swiper {
+      overflow-x: auto !important; } }
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover; }
+
+.swipper-guess .swiper-button-next, .swipper-guess .swiper-button-prev {
+  top: 40%;
+  background: rgba(53, 6, 21, 0.75);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
+  @media screen and (max-width: 1024px) {
+    .swipper-guess .swiper-button-next, .swipper-guess .swiper-button-prev {
+      display: none !important; } }
+
+.swipper-guess .swiper-button-next {
+  right: -30px !important;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  justify-content: flex-start; }
+  .swipper-guess .swiper-button-next i {
+    margin-left: 1rem; }
+
+.swipper-guess .swiper-button-prev {
+  width: 60px;
+  height: 60px;
+  left: -30px !important;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  justify-content: flex-end; }
+  .swipper-guess .swiper-button-prev i {
+    margin-right: 1rem; }
+
+@media screen and (max-width: 1024px) {
+  .swipper-guess .swiper-slide {
+    width: 30rem; } }
+
+.wc-block-video .wrapper-arrow {
+  position: relative; }
+  .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
+    top: 40%; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
+        display: none !important; } }
+    .wc-block-video .wrapper-arrow .swiper-button-next i, .wc-block-video .wrapper-arrow .swiper-button-prev i {
+      font-size: 3rem; }
+  .wc-block-video .wrapper-arrow .swiper-button-next {
+    right: -40px !important; }
+  .wc-block-video .wrapper-arrow .swiper-button-prev {
+    left: -40px !important; }
+  @media screen and (max-width: 1024px) {
+    .wc-block-video .wrapper-arrow .swiper-slide {
+      width: 30rem; } }
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  background-image: none !important; }
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  fill: #000; }
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  display: none; }
+
+.swiper-button-next i:before,
+.swiper-button-prev i:before {
+  color: #fff; }
+
+.swiper-button-next i,
+.swiper-button-prev i {
+  font-size: 2.4rem; }
 
 .wc-main {
   padding-top: 3rem; }
@@ -578,7 +647,7 @@
   grid-gap: 2rem; }
   @media screen and (max-width: 1024px) {
     .grid-section-group {
-      grid-template-columns: auto;
+      grid-template-columns: 100%;
       grid-gap: 4rem; } }
 
 .king-soccer .wc-table {
