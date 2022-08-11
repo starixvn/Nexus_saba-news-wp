@@ -101,6 +101,8 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 4rem 2rem;
+        position: relative;
+        z-index: 9;
 
         @include tableMobile {
             grid-template-columns: repeat( 8, 29rem);
@@ -123,6 +125,7 @@
         position: absolute;
         left: 30px;
         bottom: 30px;
+        z-index: 0;
 
         @include tableMobile {
             display: none;
@@ -130,6 +133,10 @@
     }
 
     .view-more {
+        @include tableMobile {
+            padding: 0 1.2rem;
+        }
+
         a {
             color: #FFD68F;
         }
@@ -177,6 +184,10 @@
     }
 
     .view-more {
+        @include tableMobile {
+            padding: 0 1.2rem;
+        }
+
         a {
             color: $title-color;
         }
@@ -231,12 +242,16 @@
             span {
                 background: $white-color;
             }
-        }
+        }  
     }
 }
 
 .wc-block-group {
-    
+    .king-soccer {
+        @include tableMobile {
+            padding: 0 1.2rem;
+        }
+    }
 }
 
 .grid-section-group {
@@ -289,19 +304,26 @@
 .wc-block-video {
     background: $primary-bg;
     position: relative;
+    z-index: 9;
 
     .view-more {
+        @include tableMobile {
+            padding: 0 1.2rem;
+        }
+
         a {
             color: $title-color;
         }
     }
 
-    .img-section{
-        position : absolute;
-        right : 30px;
-        bottom : 30px;
+    .img-section {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        z-index: 0;
+
         @include tableMobile {
-            display : none;
+            display: none;
         }
     }
 }
