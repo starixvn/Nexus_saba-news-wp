@@ -27,6 +27,23 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script src="~/minify/js/worldcup.min.js" asp-append-version="true"></script>
+    <script>
+        if ($(window).innerWidth() <= 500) {
+            var swiper = new Swiper('.swipper-guess', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        }
+    </script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup"))
 <section class="worldcup-main">
@@ -593,27 +610,29 @@
                             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                         </div>
                         <div class="swipper-guess">
-                            <div class="post-items post-hot">
-                                <div class="hover-image">
-                                    <a href="#">
-                                        <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
-                                    </a>
-                                    <div class="title-hot">
-                                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
-                                        <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan elementum quam adipiscing proin adipiscing dui ultricies posuere accumsan. Id ac varius facilisis rhoncus, in.</a></p>
-                                        <p class="date-time">00:00 DD/MM/YYYY</p>
+                            <div class="swipper-wrapper">
+                                <div class="post-items post-hot">
+                                    <div class="hover-image">
+                                        <a href="#">
+                                            <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
+                                        </a>
+                                        <div class="title-hot">
+                                            <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
+                                            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan elementum quam adipiscing proin adipiscing dui ultricies posuere accumsan. Id ac varius facilisis rhoncus, in.</a></p>
+                                            <p class="date-time">00:00 DD/MM/YYYY</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="post-items post-hot">
-                                <div class="hover-image">
-                                    <a href="#">
-                                        <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
-                                    </a>
-                                    <div class="title-hot">
-                                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
-                                        <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan elementum quam adipiscing proin adipiscing dui ultricies posuere accumsan. Id ac varius facilisis rhoncus, in.</a></p>
-                                        <p class="date-time">00:00 DD/MM/YYYY</p>
+                                <div class="post-items post-hot">
+                                    <div class="hover-image">
+                                        <a href="#">
+                                            <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
+                                        </a>
+                                        <div class="title-hot">
+                                            <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
+                                            <p><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Accumsan elementum quam adipiscing proin adipiscing dui ultricies posuere accumsan. Id ac varius facilisis rhoncus, in.</a></p>
+                                            <p class="date-time">00:00 DD/MM/YYYY</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
