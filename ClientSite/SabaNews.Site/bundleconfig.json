@@ -152,9 +152,9 @@
     {
         "outputFileName": "wwwroot/minify/styles/worldcup.min.css",
         "inputFiles": [
-            "wwwroot/lib/swipper/css/swiper.min.css",
-            "wwwroot/styles/vendor/icomoon/style.css",
-            "wwwroot/styles/pages/event/worldcup/index.css"
+          "wwwroot/lib/swipper/css/swiper-bundle.min.css",
+          "wwwroot/styles/vendor/icomoon/style.css",
+          "wwwroot/styles/pages/event/worldcup/index.css"
         ]
     },
     /*==================================================== Javascript ================================================*/
@@ -347,8 +347,8 @@
     {
         "outputFileName": "wwwroot/minify/js/worldcup.min.js",
         "inputFiles": [
-            "wwwroot/lib/swipper/js/swiper.min.js",
-            "wwwroot/js/event/worldcup/index.js"
+          "wwwroot/lib/swipper/js/swiper-bundle.min.js",
+          "wwwroot/js/event/worldcup/index.js"
         ],
         "minify": {
             "enabled": true,

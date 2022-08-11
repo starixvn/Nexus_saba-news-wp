@@ -35,9 +35,9 @@
     <script src="~/minify/js/worldcup.min.js" asp-append-version="true"></script>
     <script>
         var swipers = new Swiper('.swipper-guess', {
-            loop: true,
+            loop: false,
             slidesPerView: 1,
-            spaceBetween: 0,
+            spaceBetween: 20,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -126,7 +126,7 @@
                             </h2>
                             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                         </div>
-                        @*<div class="swiper swipper-guess">
+                        <div class="swiper swipper-guess">
                             <div class="swiper-wrapper mobile-slide">
                                 <div class="post-items swiper-slide post-hot">
                                     <div class="hover-image">
@@ -155,7 +155,7 @@
                             </div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
-                        </div>*@
+                        </div>
                     </div>
                     <div class="king-soccer">
                         <div class="title-section">
@@ -287,6 +287,8 @@
                 </div>
             </div>
         </div>
+
+
 
 
 
