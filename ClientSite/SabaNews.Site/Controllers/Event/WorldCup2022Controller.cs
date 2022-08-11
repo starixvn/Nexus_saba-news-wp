@@ -68,6 +68,12 @@
             return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
+        [Route("world-cup-2022/lich-thi-dau-world-cup-2022")]
+        public async Task<IActionResult> Fixture()
+        {
+            return View("~/Views/Event/WorldCup2022/Fixture.cshtml");
+        }
+
         [Route("world-cup-2022/news-posts")]
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
         {

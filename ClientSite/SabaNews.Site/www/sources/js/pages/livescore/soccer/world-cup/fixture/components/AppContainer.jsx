@@ -39,7 +39,7 @@ export class AppContainer extends Component {
         const matches = this.getMatches();
         return (
             <div>
-                <SignalR getMatches={this.getMatches} />
+                <SignalR  />
                 { matches && matches.length > 0 && <Grid matches={matches} league={league} /> }
             </div>
         );
