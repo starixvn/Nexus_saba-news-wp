@@ -140,6 +140,18 @@
     }
 }
 
+.main-child-menu {
+    background: $primary-bg !important;
+    border-top: 1px solid #601E33 !important;
+    border-bottom: 1px solid #601E33 !important;
+
+    li {
+        a {
+            color: $white-color !important;
+        }
+    }
+}
+
 .right-header-section {
     &.hidden-pc {
         display: none;
@@ -171,7 +183,8 @@
             &:hover {
                 input {
                     width: 14rem;
-                    color : $white-color;
+                    color: $white-color;
+
                     @include creen1391px {
                         width: 18rem;
                     }

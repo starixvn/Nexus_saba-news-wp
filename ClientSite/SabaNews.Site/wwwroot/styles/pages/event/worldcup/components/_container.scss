@@ -12,3 +12,8 @@
         max-width: 117rem !important;
     }
 }
+.mb-container {
+    @include tableMobile {
+        padding: 0 !important;
+    }
+}
