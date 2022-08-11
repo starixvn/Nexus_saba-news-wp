@@ -43,7 +43,7 @@
         public async Task<IActionResult> Index()
         {
             var model = await dataControlService.GetWorldCupPageViewModel();
-            return View("~/Views/Event/WorldCup2022/Index.cshtml");
+            return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
         }
 
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
@@ -130,9 +130,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetHomepageStandings([FromBody] GetSeasonStandingsCriteria criteria)
+        public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)
         {
-            IList<SeasonStandings> standings = await matchService.GetSeasonStandingsAsync(criteria);
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(criteria);
             var groups = GroupStandingsByGroupName(standings);
             return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
         }

@@ -30,6 +30,7 @@ namespace SabaNews.Livescore.Models.League
         public string CountryVN { get; set; }
 
         public long? CurrentSeasonId { get; set; }
+        public long CurrentStageId { get; set; }
 
     }
 }

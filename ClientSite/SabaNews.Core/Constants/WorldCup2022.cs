@@ -35,7 +35,7 @@ namespace SabaNews.Core.Constants
 
         public static readonly List<CateMenu> Menus = new List<CateMenu>
         {
-            new CateMenu { Name = Homepage, Slug = "/" },
+            new CateMenu { Name = Homepage, Slug = "" },
             new CateMenu { Name = LastestNews, Slug = LastestNewsSlug },
             new CateMenu { Name = Fixture, Slug = FixtureSlug },
             new CateMenu { Name = Standing, Slug = StandingSlug },

@@ -6,6 +6,7 @@ import Grid from './Grid';
 import SignalR from './SignalR';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import { WorldCup } from '@jsroot/common/constants';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +17,7 @@ export class AppContainer extends Component {
     }
 
     getMatches = () => {
-        const { league, matches } = this.props;
+        let { league, matches } = this.props;
         if(!matches) {
             return matches;
         }
@@ -24,8 +25,11 @@ export class AppContainer extends Component {
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
         if(moment(today).isSameOrAfter(endTime)) {
-            console.log(today, endTime);
             tmpMatches = [...matches].reverse();
+        } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
+            tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage)
+        } else if(league.currentStageId >= WorldCup.QuarterfinalsStage) {
+            tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
         return tmpMatches;
     }

@@ -7,6 +7,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Criteria.League;
 
     public class LeagueService : ILeagueService
@@ -188,6 +189,12 @@
                 LeagueId = leagueId
             });
             return leagues;
+        }
+
+        public async Task<IList<SeasonStandings>> GetLeagueSeasonStanding(GetLeagueSeasonStandingCriteria criteria)
+        {
+            var result = await baseService.GetDataAsync<SeasonStandings>(criteria);
+            return result.ToList();
         }
 
 

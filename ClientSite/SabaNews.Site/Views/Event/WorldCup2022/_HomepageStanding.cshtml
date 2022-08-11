@@ -1,45 +1,47 @@
 ﻿@using SabaNews.Site.Extensions;
-<div class="season-standings">
-    <div>
+
+<div class="container">
+    <div class="title-section">
+        <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
+        <h2><a href="#">Bảng xếp hạng</a></h2>
+        <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+    </div>
+    <div class="grid-bxh scroll-snap">
+
         @foreach (var group in Model)
         {
-            var position = 0;
             var groupName = $"Bảng {group.GroupName[0]}";
-            <div class="table-custom">
-                <div class="table-custom-header">
-                    <div class="table-custom-cell cell-rank">#</div>
-                    <div class="table-custom-cell cell-participant">@groupName</div>
-                    <div class="table-custom-cell cell-rank">Trận</div>
-                    <div class="table-custom-cell cell-rank">+/-</div>
-                    <div class="table-custom-cell cell-rank">Điểm</div>
+            <div class="wc-table scroll-snap-items">
+                <div class="name-bxh title-items">@groupName</div>
+                <div class="wc-table-header">
+                    <div class="wc-table-cell cell-participant"></div>
+                    <div class="wc-table-cell cell-rank">Trận</div>
+                    <div class="wc-table-cell cell-rank">+/-</div>
+                    <div class="wc-table-cell cell-rank">Điểm</div>
                 </div>
-                <div class="table-custom-body">
+
+                <div class="wc-table-body">
                     @foreach (var standing in group.Standings)
                     {
-                        position++;
                         var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
                         var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                        <div class="table-custom-row">
-                        <div class="table-custom-cell cell-rank">
-                            <div class="position ">@position</div>
-                        </div>
-                        <div class="table-custom-cell cell-participant">
-                            <div class="soccer-team">
-                                <div class="soccer-team-logo"><img class="soccer-team-logo" loading="lazy" src=@icon></div>
-                                <div class="soccer-team-name">@teamName</div>
+                        <div class="wc-table-row">
+                            <div class="wc-table-cell cell-participant">
+                                <ul class="team">
+                                    <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
+                                    <li class="team-name">@teamName</li>
+                                </ul>
                             </div>
+                            <div class="wc-table-cell cell-rank">@standing.Total</div>
+                            <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
+                            <div class="wc-table-cell cell-rank">@standing.Points</div>
                         </div>
-                        <div class="table-custom-cell cell-rank"><span>@standing.Total</span></div>
-                        <div class="table-custom-cell cell-rank"><span>@standing.GoalDiff</span></div>
-                        <div class="table-custom-cell cell-rank"><span class="table-bold">@standing.Points</span></div>
-                        <div class="table-custom-cell cell-rank cell-form">
-                            <div class="wld-wrapper"></div>
-                        </div>
-                    </div>
-                }
+                    }
                 </div>
             </div>
         }
-
     </div>
+    <div class="view-more">
+        <a href="@Url.Action("Standing", "WorldCup2022")">Xem thêm <i class="icon-double-arrow"></i></a>
     </div>
+</div>

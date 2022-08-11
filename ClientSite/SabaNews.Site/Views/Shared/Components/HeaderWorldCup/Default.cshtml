@@ -123,8 +123,8 @@
                     @foreach (var menu in menus)
                     {
                         var active = menu.Slug == Model.CateSlug ? "active" : "";
-                        var link = $"{WorldCup2022.HomepageSlug}/{menu.Slug}";
-                        @if (menu.Slug == "/")
+                        var link = $"/{WorldCup2022.HomepageSlug}/{menu.Slug}";
+                        @if (menu.Slug == "")
                         {
                             <li class="menu-item wc-logo">
                                 <a href=@link class="item">

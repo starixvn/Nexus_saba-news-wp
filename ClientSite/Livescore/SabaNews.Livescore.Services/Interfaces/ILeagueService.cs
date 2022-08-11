@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services.Criteria.League;
 
     public interface ILeagueService
@@ -20,5 +21,6 @@
         Task<CommandResult> DeleteLeaguesExtraAsync(long leagueId);
         Task<CommandResult> InsertLeaguesExtraAsync(long leagueId);
         Task<CommandResult> UpdateLeaguesAsync(UpdateLeagueCriteria updateLeague);
+        Task<IList<SeasonStandings>> GetLeagueSeasonStanding(GetLeagueSeasonStandingCriteria criteria);
     }
 }
