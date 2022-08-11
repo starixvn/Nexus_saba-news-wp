@@ -88,6 +88,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AddPlayer.
+        /// </summary>
+        public static string AddPlayer {
+            get {
+                return ResourceManager.GetString("AddPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administration.
         /// </summary>
         public static string Administration {
@@ -1591,6 +1600,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player Full Name EN.
+        /// </summary>
+        public static string PlayerFullNameEN {
+            get {
+                return ResourceManager.GetString("PlayerFullNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player Name EN.
+        /// </summary>
+        public static string PlayerNameEN {
+            get {
+                return ResourceManager.GetString("PlayerNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Điểm.
         /// </summary>
         public static string Point {
@@ -2158,6 +2185,24 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team Full Name EN.
+        /// </summary>
+        public static string TeamFullNameEN {
+            get {
+                return ResourceManager.GetString("TeamFullNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team Name EN.
+        /// </summary>
+        public static string TeamNameEN {
+            get {
+                return ResourceManager.GetString("TeamNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quần vợt.
         /// </summary>
         public static string Tennis {
@@ -2230,6 +2275,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top.
+        /// </summary>
+        public static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TOP 10.
         /// </summary>
         public static string Top10 {
@@ -2244,6 +2298,15 @@ namespace SabaNews.Resources {
         public static string TopGoalScorer {
             get {
                 return ResourceManager.GetString("TopGoalScorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top Scorers.
+        /// </summary>
+        public static string TopScorersManagement {
+            get {
+                return ResourceManager.GetString("TopScorersManagement", resourceCulture);
             }
         }
         

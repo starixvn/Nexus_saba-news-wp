@@ -3,6 +3,7 @@
     public class Team
     {
         public long TeamId { get; set; }
+        public long LeagueId { get; set; }
 
         public string TeamNameEN { get; set; }
         public string TeamFullNameEN { get; set; }

@@ -941,4 +941,25 @@
   <data name="Win" xml:space="preserve">
     <value>Bàn Thắng</value>
   </data>
+  <data name="PlayerFullNameEN" xml:space="preserve">
+    <value>Player Full Name EN</value>
+  </data>
+  <data name="PlayerNameEN" xml:space="preserve">
+    <value>Player Name EN</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="TopScorersManagement" xml:space="preserve">
+    <value>Top Scorers</value>
+  </data>
+  <data name="AddPlayer" xml:space="preserve">
+    <value>AddPlayer</value>
+  </data>
+  <data name="TeamFullNameEN" xml:space="preserve">
+    <value>Team Full Name EN</value>
+  </data>
+  <data name="TeamNameEN" xml:space="preserve">
+    <value>Team Name EN</value>
+  </data>
 </root>

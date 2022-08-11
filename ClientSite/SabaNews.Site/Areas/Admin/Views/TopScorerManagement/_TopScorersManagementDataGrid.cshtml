@@ -1,0 +1,43 @@
+﻿@using SabaNews.Resources
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th>@ViewResources.Top</th>
+                <th>@ViewResources.TeamNameEN</th>
+                <th>@ViewResources.TeamFullNameEN</th>
+                <th>@ViewResources.PlayerNameEN</th>
+                <th>@ViewResources.PlayerFullNameEN</th>
+                <th>@ViewResources.Win</th>
+                <th>@ViewResources.Assist</th>
+                <th>@ViewResources.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center" width="5%">@item.Top</td>
+                        <td class="text-left" width="16%">@(item.TeamNameEN != "null" ? item.TeamNameEN : "")</td>
+                        <td class="text-left" width="21%">@item.TeamFullNameEN</td>
+                        <td class="text-left" width="16%">@(item.PlayerNameEN != "null" ? item.PlayerNameEN : "")</td>
+                        <td class="text-left" width="21%">@item.PlayerFullNameEN</td>
+                        <td class="text-center" width="8%">@item.Goals</td>
+                        <td class="text-center" width="8%">@item.Assists</td>
+                        <td class="text-center" width="5%">
+                            <i class="icon icon-edit-admin btn-Edit" title="Edit"
+                               data-url="@Url.Action("UpdateTopScorers", "TopScorerManagement", new { rowNum = item.RowNum, teamId = item.TeamId})"></i>
+                        </td>
+                    </tr>
+                }
+            }
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

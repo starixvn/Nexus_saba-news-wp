@@ -9,7 +9,7 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Posts;
-    using SabaNews.Models.ViewModel.WorldCup2022;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using System;
@@ -50,10 +50,10 @@
         public async Task<IActionResult> LastestNews()
         {
             var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
-            var topScorersCriteria = new GetTopScorersCriteria() {LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var topScorersCriteria = new GetTop10ScorersCriteria() {LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
 
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-            var topScorers = await leagueService.GetTopScorersAsync(topScorersCriteria);
+            var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
 
             var viewModel = new LastestNewsViewModel()
             {

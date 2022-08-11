@@ -104,6 +104,10 @@
     "inputFile": "wwwroot/styles/pages/admin/managementleague/managementleague.scss"
   },
   {
+    "outputFile": "wwwroot/styles/pages/admin/topscorers/topscorers.css",
+    "inputFile": "wwwroot/styles/pages/admin/topscorers/topscorers.scss"
+  },
+  {
     "outputFile": "wwwroot/styles/pages/event/worldcup/index.css",
     "inputFile": "wwwroot/styles/pages/event/worldcup/index.scss"
   }

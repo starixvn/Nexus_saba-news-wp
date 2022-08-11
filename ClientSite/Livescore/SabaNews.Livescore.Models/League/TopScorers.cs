@@ -6,11 +6,13 @@
         public long SeasonId { get; set; }
         public long PlayerId { get; set; }
         public long TeamId { get; set; }
-        public long Goals { get; set; }
-        public long Assists { get; set; }
-        public long RowNum { get; set; }
-        public long Top { get; set; }
+        public int Goals { get; set; }
+        public int Assists { get; set; }
+        public int RowNum { get; set; }
+        public int Top { get; set; }
         public string TeamLogo { get; set; }
+        public string TeamNameEN { get; set; }
+        public string TeamFullNameEN { get; set; }
         public string PlayerNameEN { get; set; }
         public string PlayerFullNameEN { get; set; }
 

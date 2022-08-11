@@ -3,7 +3,7 @@
     public class Player
     {
         public long PlayerId { get; set; }
-
+        public long TeamId { get; set; }
         public string NameEN { get; set; }
         public string FullNameEN { get; set; }
 

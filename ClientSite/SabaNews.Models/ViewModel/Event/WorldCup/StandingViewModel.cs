@@ -1,7 +1,7 @@
 ﻿using SabaNews.Livescore.Models.Match;
 using System.Collections.Generic;
 
-namespace SabaNews.Models.ViewModel.WorldCup2022
+namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
     public class StandingViewModel
     {

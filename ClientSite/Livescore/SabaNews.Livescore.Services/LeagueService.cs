@@ -4,10 +4,12 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.League;
 
     public class LeagueService : ILeagueService
@@ -29,9 +31,29 @@
             return leagues.ToList();
         }
 
-        public async Task<IList<TopScorers>> GetTopScorersAsync(GetTopScorersCriteria topScorersCriteria)
+        public async Task<IList<TopScorers>> GetTop10ScorersAsync(GetTop10ScorersCriteria topScorersCriteria)
         {
             var top = await baseService.GetDataAsync<TopScorers>(topScorersCriteria);
+            return top.ToList();
+        }
+        public async Task<IList<Player>> GetPlayerByIdTeamAsync(long teamId)
+        {
+            var criteria = new GetPlayerByTeamId() { TeamId = teamId };
+            var players = await baseService.GetDataAsync<Player>(criteria);
+            return players.ToList();
+        }
+
+        public async Task<IList<Team>> GetAllTeamAsync()
+        {
+            var criteria = new GetAllTeam() { LeagueId = 11997};
+            var teams = await baseService.GetDataAsync<Team>(criteria);
+            return teams.ToList();
+        }
+
+        public async Task<IList<TopScorers>> GetAllTopScorersAsync()
+        {
+            var criteria = new GetAllTopScorersCriteria() { LeagueId = Constants.LeagueIdWorldCup2022, SeasonId = Constants.SeasonIdWorldCup2022 };
+            var top = await baseService.GetDataAsync<TopScorers>(criteria);
             return top.ToList();
         }
 
@@ -197,6 +219,70 @@
             return result.ToList();
         }
 
+        public async Task<CommandResult> InsertTopScorerAsync(TopScorers topScorers)
+        {
+            var criteria = new InsertTopScorers()
+            {
+                PlayerId = topScorers.PlayerId,
+                SeasonId = Constants.SeasonIdWorldCup2022,
+                LeagueId = Constants.LeagueIdWorldCup2022,
+                TeamId = topScorers.TeamId,
+                Goals = topScorers.Goals,
+                Assists = topScorers.Assists,
+                Top = topScorers.Top
+            };
 
+            var criteriaPriority = new UpdatePriorityTopScorers()
+            {
+                IsCheck = false,
+                TopUpdate = -1,
+                Top = topScorers.Top,
+                RowNum = topScorers.RowNum
+            };
+            _ = await baseService.ExecuteNonQueryAsync(criteriaPriority);
+            return await baseService.ExecuteNonQueryAsync(criteria);
+
+        }
+
+        public async Task<CommandResult> UpdateTopScorerAsync(TopScorers topScorers)
+        {
+            var playerUpdate = await GetTopScorersByRowNumAsync(topScorers.RowNum);
+            var criteria = new UpdateTopScorers()
+            {
+                PlayerId = topScorers.PlayerId,
+                SeasonId = Constants.SeasonIdWorldCup2022,
+                LeagueId = Constants.LeagueIdWorldCup2022,
+                TeamId = topScorers.TeamId,
+                Goals = topScorers.Goals,
+                Assists = topScorers.Assists,
+                Top = topScorers.Top,
+                RowNum = topScorers.RowNum
+            };
+            var criteriaPriority = new UpdatePriorityTopScorers()
+            {
+                Top = topScorers.Top,
+                RowNum = topScorers.RowNum
+            };
+            if (topScorers.Top > playerUpdate[0].Top)
+            {
+                criteriaPriority.Top = playerUpdate[0].Top;
+                criteriaPriority.IsCheck = true;
+                criteriaPriority.TopUpdate = topScorers.Top;
+            }
+            else
+            {
+                criteriaPriority.IsCheck = false;
+                criteriaPriority.TopUpdate = -99;
+            }
+            _ = await baseService.ExecuteNonQueryAsync(criteriaPriority);
+            return await baseService.ExecuteNonQueryAsync(criteria);
+        }
+
+        public async Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum)
+        {
+            var criteria = new GetTopScorersByRowNum() { RowNum = rowNum , LeagueId = Constants.LeagueIdWorldCup2022, SeasonId = Constants.SeasonIdWorldCup2022};
+            var topScorers = await baseService.GetDataAsync<TopScorers>(criteria);
+            return topScorers.ToList();
+        }
     }
 }
