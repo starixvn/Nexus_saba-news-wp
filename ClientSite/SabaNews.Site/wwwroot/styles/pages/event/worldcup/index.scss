@@ -12,6 +12,7 @@
 @import './components/title-items';
 @import './components/container';
 @import './components/dots-post';
+@import './components/swipper-slide';
 
 .wc-main{
     padding-top : 3rem;
@@ -281,6 +282,16 @@
         .cell-rank {
             width: 8rem;
             font-weight: 700;
+        }
+    }
+}
+
+.wc-block-video {
+    background: $primary-bg;
+
+    .view-more {
+        a {
+            color: $title-color;
         }
     }
 }

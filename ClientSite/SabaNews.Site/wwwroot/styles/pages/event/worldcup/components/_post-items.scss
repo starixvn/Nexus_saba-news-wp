@@ -11,3 +11,45 @@
         }
     }
 }
+
+.video-items {
+    .title {
+        margin-top : 1.2rem;
+        h2 {
+            a {
+                color: $white-color;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .hover-image {
+        position: relative;
+    }
+
+
+    .icon-play-video {
+        width: 6rem;
+        height: 6rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%,-50%);
+
+        i {
+            font-size: 3.2rem;
+
+            &:before {
+                color: $white-color;
+            }
+        }
+    }
+}

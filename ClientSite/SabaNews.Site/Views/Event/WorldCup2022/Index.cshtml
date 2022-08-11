@@ -34,21 +34,15 @@
     </environment>
     <script src="~/minify/js/worldcup.min.js" asp-append-version="true"></script>
     <script>
-        if ($(window).innerWidth() <= 500) {
-            var swiper = new Swiper('.swipper-guess', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        }
+        var swipers = new Swiper('.swipper-guess', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        });
     </script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
@@ -118,6 +112,8 @@
 
 
 
+
+
         <div class="wc-block wc-block-group">
             <div class="container">
                 <div class="grid-section-group">
@@ -130,9 +126,9 @@
                             </h2>
                             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                         </div>
-                        <div class="swipper-guess">
-                            <div class="swipper-wrapper">
-                                <div class="post-items post-hot">
+                        @*<div class="swiper swipper-guess">
+                            <div class="swiper-wrapper mobile-slide">
+                                <div class="post-items swiper-slide post-hot">
                                     <div class="hover-image">
                                         <a href="#">
                                             <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
@@ -144,7 +140,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="post-items post-hot">
+                                <div class="post-items swiper-slide post-hot">
                                     <div class="hover-image">
                                         <a href="#">
                                             <img src="~/images/worldcup/guess.png" alt="Alternate Text" class="img-res" />
@@ -157,7 +153,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>*@
                     </div>
                     <div class="king-soccer">
                         <div class="title-section">
@@ -290,6 +288,33 @@
             </div>
         </div>
 
+
+
+        <div class="wc-block wc-block-video">
+            <div class="container">
+                <div class="title-section">
+                    <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
+                    <h2><a href="#">Video</a></h2>
+                    <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+                </div>
+                <div class="wc-block-video-main">
+                    <div class="post-items video-items post-items-2">
+                        <div class="hover-image">
+                            <a href="#"><img src="~/images/worldcup/video.png" alt="Alternate Text" class="img-res" /></a>
+                            <div class="icon-play-video">
+                                <i class="icon-play"></i>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-more">
+                    <a href="#">Xem thêm <i class="icon-double-arrow"></i></a>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -436,6 +461,7 @@
 
             </div>
 
-
         </div>
+
+    </div>
 </section>
