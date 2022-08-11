@@ -11,6 +11,7 @@
 @import './components/table';
 @import './components/title-items';
 @import './components/container';
+@import './components/dots-post';
 
 .wc-main{
     padding-top : 3rem;
@@ -139,6 +140,11 @@
     background-size: contain;
     background-position: center;
 
+    @include tableMobile {
+        background-size: cover;
+        background-position: 0 -7rem;
+    }
+
     .grid-stories-post {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -172,6 +178,58 @@
     .view-more {
         a {
             color: $title-color;
+        }
+    }
+}
+
+
+.wc-block-all {
+    background: url('../../../../images/worldcup/section-4.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .title-section {
+        h2 {
+            a {
+                color: $white-color;
+            }
+        }
+
+        .dots {
+            span {
+                background: $white-color;
+            }
+        }
+    }
+
+    .grid-all {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+
+        @include tableMobile {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1.2rem;
+        }
+
+        .title-hot {
+            padding: 4rem 2rem 4rem 2rem;
+
+            @include tableMobile {
+                padding: 4rem 2rem 1.2rem 2rem;
+            }
+        }
+
+        .hover-image {
+            @include tableMobile {
+                min-height: 22rem;
+            }
+        }
+
+        .dots {
+            span {
+                background: $white-color;
+            }
         }
     }
 }

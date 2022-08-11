@@ -8,6 +8,7 @@
             bottom: 0;
             padding: 4rem 2rem 2rem 2rem;
             background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
+            width: 100%;
 
             h1 {
                 a {
@@ -32,9 +33,24 @@
                     text-decoration: none;
 
                     @include tableMobile {
+                        font-weight: 400;
                         font-size: 1.4rem;
                         line-height: 1.4rem;
                     }
+                }
+            }
+
+            h2 {
+                font-weight: 700;
+                font-size: 2.4rem;
+                line-height: 3.3rem;
+                text-transform: uppercase;
+                color: $white-color;
+                text-align :center;
+                margin-bottom :  .7rem;
+                @include tableMobile {
+                    font-size: 1.6rem;
+                    line-height: 2.2rem;
                 }
             }
         }

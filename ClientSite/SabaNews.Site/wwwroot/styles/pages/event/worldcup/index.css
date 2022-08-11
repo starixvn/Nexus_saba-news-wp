@@ -141,7 +141,7 @@
   margin-bottom: 3rem; }
   @media screen and (max-width: 1024px) {
     .title-section {
-      margin-bottom: 1.5rem; } }
+      margin-bottom: 2rem; } }
   .title-section .title-section {
     display: flex;
     align-items: center;
@@ -156,19 +156,6 @@
     @media screen and (max-width: 1024px) {
       .title-section h2 a {
         font-size: 2.4rem; } }
-  .title-section .dots {
-    display: flex;
-    align-items: center; }
-    .title-section .dots span {
-      display: block;
-      background: #FF4700;
-      width: .7rem;
-      height: .7rem;
-      margin: 0 .2rem;
-      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
-      .title-section .dots span.dots-items {
-        width: 1rem;
-        height: 1rem; }
 
 .wc-block {
   padding: 5rem 0;
@@ -213,7 +200,8 @@
     position: absolute;
     bottom: 0;
     padding: 4rem 2rem 2rem 2rem;
-    background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%); }
+    background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
+    width: 100%; }
     .post-hot .hover-image .title-hot h1 a {
       font-size: 2.4rem;
       line-height: 3.3rem;
@@ -231,8 +219,21 @@
       text-decoration: none; }
       @media screen and (max-width: 1024px) {
         .post-hot .hover-image .title-hot p a {
+          font-weight: 400;
           font-size: 1.4rem;
           line-height: 1.4rem; } }
+    .post-hot .hover-image .title-hot h2 {
+      font-weight: 700;
+      font-size: 2.4rem;
+      line-height: 3.3rem;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      margin-bottom: .7rem; }
+      @media screen and (max-width: 1024px) {
+        .post-hot .hover-image .title-hot h2 {
+          font-size: 1.6rem;
+          line-height: 2.2rem; } }
 
 .post-items .title h2 a {
   color: #2F2F2F;
@@ -296,6 +297,9 @@
       border-radius: 3px;
       width: 3.6rem;
       height: 2.4rem; }
+      .wc-table .team-logo img {
+        width: 3.6rem;
+        height: 2.4rem; }
   .wc-table .cell-rank {
     width: 4.5rem;
     text-align: center;
@@ -338,6 +342,21 @@
   @media (min-width: 1280px) {
     .container, .base-container {
       max-width: 117rem !important; } }
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .dots span {
+    display: block;
+    background: #FF4700;
+    width: .7rem;
+    height: .7rem;
+    margin: 0 .2rem;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+    .dots span.dots-items {
+      width: 1rem;
+      height: 1rem; }
 
 .wc-main {
   padding-top: 3rem; }
@@ -418,6 +437,10 @@
   background: url("../../../../images/worldcup/bg.png") no-repeat;
   background-size: contain;
   background-position: center; }
+  @media screen and (max-width: 1024px) {
+    .wc-block-stories-post {
+      background-size: cover;
+      background-position: 0 -7rem; } }
   .wc-block-stories-post .grid-stories-post {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -440,3 +463,30 @@
               font-size: 1.4rem; } }
   .wc-block-stories-post .view-more a {
     color: #FF4700; }
+
+.wc-block-all {
+  background: url("../../../../images/worldcup/section-4.png") no-repeat;
+  background-size: cover;
+  background-position: center; }
+  .wc-block-all .title-section h2 a {
+    color: #fff; }
+  .wc-block-all .title-section .dots span {
+    background: #fff; }
+  .wc-block-all .grid-all {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-all .grid-all {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.2rem; } }
+    .wc-block-all .grid-all .title-hot {
+      padding: 4rem 2rem 4rem 2rem; }
+      @media screen and (max-width: 1024px) {
+        .wc-block-all .grid-all .title-hot {
+          padding: 4rem 2rem 1.2rem 2rem; } }
+    @media screen and (max-width: 1024px) {
+      .wc-block-all .grid-all .hover-image {
+        min-height: 22rem; } }
+    .wc-block-all .grid-all .dots span {
+      background: #fff; }
