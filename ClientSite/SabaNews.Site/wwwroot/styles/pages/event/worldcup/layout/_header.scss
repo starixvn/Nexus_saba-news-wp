@@ -1,6 +1,8 @@
-﻿.header {
+﻿
+
+.header {
     @include tableMobile {
-        height: 7rem;
+        position : relative;
         background: $primary-bg;
     }
 }
@@ -76,6 +78,9 @@
 }
 
 .wc-logo {
+    @include tableMobile{
+        display : none !important;
+    }
     a {
         background: #EEEEE4;
         height: 9.5rem;
@@ -158,6 +163,7 @@
 
         @include tableMobile {
             display: block;
+            top : 6px;
         }
     }
 
@@ -215,5 +221,76 @@
 .button-mobile {
     .line-mb {
         background-color: $white-color;
+    }
+}
+
+.header-controls {
+    display: none;
+
+    @include tableMobile {
+        display: block;
+    }
+
+    .logo {
+        position: absolute;
+        height: 8rem;
+        left: 50%;
+        margin-left: -9rem;
+        top: -10px;
+        background: #EEEEE4;
+        /* height: 9.5rem; */
+        display: flex !important;
+        align-items: center;
+        width: 19rem;
+        justify-content: center;
+        clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+         img {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+.header-auth-provider {
+    list-style: none;
+    width: 38rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+
+    .auth-login {
+        text-decoration: none;
+        color: #C598A7 !important;
+    }
+
+    li {
+        margin-right: 1.6rem;
+
+        &:last-child {
+            margin-right: 2rem;
+        }
+    }
+}
+.languages-box {
+    .language-select {
+        border-right: none;
+        padding-right: 0;
+        color: #C598A7;
+
+        &:after {
+            border-top: 5px solid #C598A7;
+        }
+    }
+   
+}
+
+.show-on-pc {
+    display: flex;
+
+    @include tableMobile {
+        display: none;
     }
 }
