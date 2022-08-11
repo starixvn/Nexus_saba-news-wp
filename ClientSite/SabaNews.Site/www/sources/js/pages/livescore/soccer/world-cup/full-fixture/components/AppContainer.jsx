@@ -15,7 +15,7 @@ export class AppContainer extends Component {
     render() {
         const { league, matches } = this.props;
         return (
-            <div className="">
+            <div className="livescore-soccer">
                 { matches && matches.length > 0 && <Stage matches={matches} league={league} /> }
             </div>
         );

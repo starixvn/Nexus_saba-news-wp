@@ -3,7 +3,7 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import { Tabs, Tab } from 'react-bootstrap';
 import { MatchStatus, Width1024 } from '@jsroot/common/constants';
-import Date from './Date';
+import GridItem from './GridItem';
 
 export default class Stage extends PureComponent {
     constructor(props) {
@@ -90,13 +90,13 @@ export default class Stage extends PureComponent {
         const { selectedTab } = this.state;
         const stages = this.groupMatchesByStage(matches, league);
         return (
-            <div className="livescore-soccer" >
+            <div className="livescore-soccer-main" >
                 <Tabs className="live-score-nav" activeKey={selectedTab} onSelect={this.handleSelectTab}>
                         {
                             stages.map(group => {
                                 return (
                                     <Tab eventKey={group.key} title={CommonFunctions.getStageName(group.stage)}  key={group.key}  className="season-standings">
-                                        <Date dates={group.childs}/>
+                                        <GridItem items={group.childs}/>
                                     </Tab>
                                 );
                             })

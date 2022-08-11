@@ -30,7 +30,7 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/favourite-match`]: pathConfig.cssPaths.livescore_soccer_favourite_match,
             [`${cssPath}/pages/livescore/soccer/favourite-league`]: pathConfig.cssPaths.livescore_soccer_favourite_league,
             [`${cssPath}/pages/livescore/soccer/world-cup/fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_fixture,
-            [`${cssPath}/pages/livescore/soccer/world-cup/full_fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_full_fixture
+            [`${cssPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_full_fixture
         },
         output: {
             path: pathConfig.projectRoot,
