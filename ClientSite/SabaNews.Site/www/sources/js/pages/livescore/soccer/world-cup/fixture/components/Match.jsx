@@ -61,7 +61,7 @@ export default class Match extends PureComponent {
                     >
                         <div className="soccer-match-date-result">
                             <div className="group-live-icon">
-                                { isLiveMatch || isIntermission ? <i className="icon-livescore icon-wc-live" /> : '' }
+                                <i className="icon-livescore icon-wc-live" />
                                 <MatchStage match={match} />
                             </div>
                             <span className="wc-date">{startTime.format('DD/MM')}</span>

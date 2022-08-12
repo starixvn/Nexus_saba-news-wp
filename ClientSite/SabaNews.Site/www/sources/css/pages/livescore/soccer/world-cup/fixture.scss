@@ -13,7 +13,19 @@
     @include tableMobile{
         top: 40px;
     }
-    .live{
+    .group-live-icon{
+        display: flex;
+        align-items: center;
+        i{
+            display: none;
+            font-size: 1.6rem;
+            margin-right: .6rem;
+            &::before{
+                color: #EFF612;
+            }
+        }
+    }
+    .live,.live.live-intermission{
         .soccer-match-stage{
             width: auto;
             span{
@@ -23,18 +35,13 @@
                 }
             }
         }
-    }
-    .group-live-icon{
-        display: flex;
-        align-items: center;
-        i{
-            font-size: 1.6rem;
-            margin-right: .6rem;
-            &::before{
-                color: #EFF612;
+        .group-live-icon{
+            i{
+                display: block;
             }
         }
     }
+    
 }
 
 
