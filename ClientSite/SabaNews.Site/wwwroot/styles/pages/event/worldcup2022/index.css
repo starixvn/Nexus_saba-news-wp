@@ -895,11 +895,13 @@ body {
       grid-gap: 4rem; } }
 
 .guess .post-hot .hover-image {
-  max-height: 56rem; }
+  max-height: none; }
 
-@media screen and (max-width: 1024px) {
-  .guess .swiper {
-    height: 30rem; } }
+.guess .swiper {
+  max-height: 56rem; }
+  @media screen and (max-width: 1024px) {
+    .guess .swiper {
+      height: 30rem; } }
 
 .king-soccer .wc-table {
   color: #fff;

@@ -283,10 +283,11 @@
 .guess {
     .post-hot {
         .hover-image {
-            max-height: 56rem;
+            max-height: none;
         }
     }
     .swiper {
+        max-height: 56rem;
         @include tableMobile {
             height: 30rem;
         }
