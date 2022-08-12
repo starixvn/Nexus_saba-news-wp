@@ -1,23 +1,31 @@
-﻿@using SabaNews.Resources
-<div>
-    <h1>@ViewResources.TopGoalScorer</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>@ViewResources.Top10</th>
-                <th>@ViewResources.Win</th>
-                <th>@ViewResources.Assist</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.TopScorers)
+﻿<div class="king-soccer">
+    <div class="title-section">
+        <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
+        <h2><a href="#">Vua Phá Lưới</a></h2>
+        <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+    </div>
+    <div class="wc-table wc-table-king-soccer">
+        <div class="wc-table-header">
+            <div class="wc-table-cell cell-participant">TOP 10</div>
+            <div class="wc-table-cell cell-rank">Bàn thắng</div>
+            <div class="wc-table-cell cell-rank">Kiến tạo</div>
+        </div>
+
+        <div class="wc-table-body">
+            @foreach (var item in Model)
             {
-                <tr>
-                    <td class="text-left" width="175px">@item.Top <img src="@item.TeamLogo" />@item.PlayerFullNameEN</td>
-                    <td class="text-center" width="90px">@item.Goals</td>
-                    <td class="text-center" width="65px">@item.Assists</td>
-                </tr>
+                <div class="wc-table-row">
+                    <div class="wc-table-cell cell-participant">
+                        <ul class="team">
+                            <li class="number">@item.Top </li>
+                            <li class="team-logo"><img src="@item.TeamLogo"/></li>
+                            <li class="team-name">@item.PlayerFullNameEN</li>
+                        </ul>
+                    </div>
+                    <div class="wc-table-cell cell-rank">@item.Goals</div>
+                    <div class="wc-table-cell cell-rank">@item.Assists</div>
+                </div>              
             }
-        </tbody>
-    </table>
+        </div>
+    </div>
 </div>

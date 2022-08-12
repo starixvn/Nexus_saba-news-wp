@@ -33,6 +33,9 @@ namespace SabaNews.Core.Constants
 
         public const string MinigameSlug = "minigame-world-cup-2022";
 
+        public const long LeagueIdWorldCup2022 = 14638;
+        public const long SeasonIdWorldCup2022 = 10810;
+
         public static readonly List<CateMenu> Menus = new List<CateMenu>
         {
             new CateMenu { Name = Homepage, Slug = "" },

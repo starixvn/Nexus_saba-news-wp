@@ -14,7 +14,7 @@
         }
 
         $.ajax({
-            url: '/world-cup-2022/news-posts',
+            url: '/WorldCup2022/GetNewsGrid',
             type: 'POST',
             data: { page, pageSize }
         }).done(function (data) {
@@ -61,7 +61,7 @@
 
     function getStandings() {
         $.ajax({
-            url: '/world-cup-2022/get-standing',
+            url: '/WorldCup2022/GetStandings',
             type: 'POST',
             data: { numRow }
         }).done(function (data) {
@@ -90,11 +90,21 @@
         })
     }
 
+    function getTopScorers() {
+        $.ajax({
+            url: '/WorldCup2022/GetTopScorers',
+            type: 'GET',
+        }).done(function (data) {
+            $('#topScorersWC').html(data);
+        })
+    }
+
 
 
     function init() {
         InfiniteScroll();
         getStandings();
+        getTopScorers();
     }
 
     return {

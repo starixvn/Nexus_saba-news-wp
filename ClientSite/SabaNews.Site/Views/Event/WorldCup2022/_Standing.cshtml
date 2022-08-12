@@ -1,7 +1,6 @@
 ﻿@using SabaNews.Resources
 @{
     var count = 0;
-    var numRow = ViewBag.NumRow != null ? ViewBag.NumRow : 0;
     var total = ViewBag.Total != null ? ViewBag.Total : 0;
 }
 <div>
@@ -11,7 +10,7 @@
             <tr>
                 <th>
                     <i class="icon-chevron-left" id="btn-back-standing"></i>
-                    @ViewResources.Board @Model.Standings[numRow].GroupName.Substring(0, 1)
+                    @ViewResources.Board @Model.GroupName.Substring(0, 1)
                     <i class="icon-chevron-right" data-total="@total" id="btn-next-standing"></i>
                 </th>
                 <th>@ViewResources.Battle</th>
@@ -20,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Standings[numRow].Standings)
+            @foreach (var item in Model.Standings)
             {
                 count++;
                 <tr>

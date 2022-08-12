@@ -52,7 +52,7 @@
 
         public async Task<IList<TopScorers>> GetAllTopScorersAsync()
         {
-            var criteria = new GetAllTopScorersCriteria() { LeagueId = Constants.LeagueIdWorldCup2022, SeasonId = Constants.SeasonIdWorldCup2022 };
+            var criteria = new GetAllTopScorersCriteria() { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
             var top = await baseService.GetDataAsync<TopScorers>(criteria);
             return top.ToList();
         }
@@ -224,8 +224,8 @@
             var criteria = new InsertTopScorers()
             {
                 PlayerId = topScorers.PlayerId,
-                SeasonId = Constants.SeasonIdWorldCup2022,
-                LeagueId = Constants.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022,
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 TeamId = topScorers.TeamId,
                 Goals = topScorers.Goals,
                 Assists = topScorers.Assists,
@@ -250,8 +250,8 @@
             var criteria = new UpdateTopScorers()
             {
                 PlayerId = topScorers.PlayerId,
-                SeasonId = Constants.SeasonIdWorldCup2022,
-                LeagueId = Constants.LeagueIdWorldCup2022,
+                SeasonId = WorldCup2022.SeasonIdWorldCup2022,
+                LeagueId = WorldCup2022.LeagueIdWorldCup2022,
                 TeamId = topScorers.TeamId,
                 Goals = topScorers.Goals,
                 Assists = topScorers.Assists,
@@ -280,7 +280,7 @@
 
         public async Task<IList<TopScorers>> GetTopScorersByRowNumAsync(int rowNum)
         {
-            var criteria = new GetTopScorersByRowNum() { RowNum = rowNum , LeagueId = Constants.LeagueIdWorldCup2022, SeasonId = Constants.SeasonIdWorldCup2022};
+            var criteria = new GetTopScorersByRowNum() { RowNum = rowNum , LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022};
             var topScorers = await baseService.GetDataAsync<TopScorers>(criteria);
             return topScorers.ToList();
         }

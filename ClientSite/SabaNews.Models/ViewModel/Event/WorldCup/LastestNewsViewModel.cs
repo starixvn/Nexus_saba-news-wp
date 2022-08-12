@@ -8,8 +8,6 @@ namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
     public class LastestNewsViewModel
     {
-        public IEnumerable<TopScorers> TopScorers { get; set; }
-        public IEnumerable<StandingViewModel> Standings { get; set; }
         public IEnumerable<Post> Posts { get; set; }
         public PagingModel Paging { get; set; }
     }
