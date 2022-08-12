@@ -21,8 +21,8 @@
                 loop: false,
                 spaceBetween: 20,
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '.guess-next',
+                    prevEl: '.guess-prev',
                 }
             });
             var Swipers = new Swiper('.swipper-video', {
@@ -30,8 +30,8 @@
                 slidesPerView: 3,
                 spaceBetween: 20,
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '.video-next',
+                    prevEl: '.video-prev',
                 },
                 breakpoints: {
                     640: {
