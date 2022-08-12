@@ -14,7 +14,7 @@
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/news.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/minify/styles/worldcup.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -45,7 +45,7 @@
             totalPages: '@Model.Paging.TotalPages'
         };
     </script>
-    <script src="~/js/worldcup2022/lastestnews.js" asp-append-version="true"></script>
+    <script src="~/js/event/worldcup2022/lastestnews.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("Header"))
 @await Html.PartialAsync("~/Views/Event/WorldCup2022/_WorldCupMenu.cshtml", "abc")
