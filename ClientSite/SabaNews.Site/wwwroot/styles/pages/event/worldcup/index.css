@@ -203,6 +203,110 @@
     .show-on-pc {
       display: none; } }
 
+.child-mobile-menu .icon-arrow {
+  background: url("../../../../../images/worldcup/arrow.svg") no-repeat;
+  right: -12px; }
+
+.auth-provider {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: .5rem 1.2rem;
+  cursor: pointer; }
+  @media screen and (max-width: 1024px) {
+    .auth-provider {
+      padding: 0; } }
+  .auth-provider .avatar-user {
+    width: 3rem;
+    height: 3rem;
+    background: #8A2745;
+    border: 1px solid #A2435F;
+    font-weight: bold;
+    color: #C598A7;
+    border-radius: 50%;
+    margin: 0 .5rem 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; }
+    .auth-provider .avatar-user img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%; }
+  .auth-provider .auth-displayname {
+    position: relative;
+    padding-right: .8rem;
+    color: #C598A7; }
+    .auth-provider .auth-displayname:after {
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #C598A7;
+      position: absolute;
+      top: 10px;
+      right: -5px;
+      content: ''; }
+      @media screen and (max-width: 1024px) {
+        .auth-provider .auth-displayname:after {
+          display: none; } }
+    @media screen and (max-width: 1024px) {
+      .auth-provider .auth-displayname .display-user {
+        display: none; } }
+
+.box-auth {
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 1.2rem 1.2rem 0 1.2rem;
+  background: #fffdf9;
+  position: absolute;
+  width: 24rem;
+  top: 5.8rem;
+  z-index: 99999;
+  border: 1px solid #e5e5e5;
+  right: 0; }
+  .box-auth:before {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: solid #e5e5e5;
+    border-width: 0 1px 1px 0;
+    content: '';
+    position: absolute;
+    top: -.9rem;
+    right: 2.3rem;
+    background: #fff;
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg); }
+  @media screen and (max-width: 1024px) {
+    .box-auth {
+      right: 0; } }
+  .box-auth .info-user {
+    border-bottom: 1px solid #e5e5e5; }
+    .box-auth .info-user .item {
+      padding: 1rem 0;
+      display: block;
+      font-weight: normal;
+      color: #4f4f4f;
+      text-decoration: none; }
+      .box-auth .info-user .item .icon-logout {
+        font-weight: bold;
+        margin-left: 6px; }
+      .box-auth .info-user .item:hover {
+        color: #087CCE; }
+    .box-auth .info-user:last-child {
+      border-bottom: none; }
+  .box-auth .auth-provider .auth-displayname:after {
+    display: none; }
+  @media screen and (max-width: 1024px) {
+    .box-auth .auth-provider .display-user {
+      display: block; } }
+  .box-auth .auth-provider .avatar-user {
+    width: 4.8rem;
+    height: 4.8rem; }
+
+.active-box-auth {
+  display: block; }
+
 .title-section {
   display: flex;
   align-items: center;
@@ -274,9 +378,69 @@
   max-width: 100%;
   height: auto; }
 
+.post-items .title h2 a {
+  color: #2F2F2F;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  text-decoration: none; }
+
+.video-items .title {
+  margin-top: 1.2rem; }
+  .video-items .title h2 a {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    text-decoration: none; }
+
+.video-items .hover-image {
+  position: relative; }
+  .video-items .hover-image:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+    z-index: 1; }
+
+.video-items:hover .hover-image:after {
+  opacity: 1;
+  visibility: visible;
+  transition: all .2s ease-in-out; }
+
+.video-items .icon-play-video {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  cursor: pointer;
+  z-index: 9; }
+  .video-items .icon-play-video i {
+    font-size: 3.2rem; }
+    .video-items .icon-play-video i:before {
+      color: #fff; }
+
 .post-hot .hover-image {
   position: relative;
-  height: 100%; }
+  height: 100%;
+  max-height: 50rem; }
+  @media (max-width: 767px) {
+    .post-hot .hover-image {
+      max-height: 30rem !important; } }
   .post-hot .hover-image .title-hot {
     position: absolute;
     bottom: 0;
@@ -334,62 +498,6 @@
       font-weight: 400;
       font-size: 1.4rem;
       line-height: 1.4rem; } }
-
-.post-items .title h2 a {
-  color: #2F2F2F;
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 1.9rem;
-  text-decoration: none; }
-
-.video-items .title {
-  margin-top: 1.2rem; }
-  .video-items .title h2 a {
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.4rem;
-    line-height: 1.9rem;
-    text-decoration: none; }
-
-.video-items .hover-image {
-  position: relative; }
-  .video-items .hover-image:after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all .2s ease-in-out;
-    z-index: 1; }
-
-.video-items:hover .hover-image:after {
-  opacity: 1;
-  visibility: visible;
-  transition: all .2s ease-in-out; }
-
-.video-items .icon-play-video {
-  width: 6rem;
-  height: 6rem;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  cursor: pointer;
-  z-index: 9; }
-  .video-items .icon-play-video i {
-    font-size: 3.2rem; }
-    .video-items .icon-play-video i:before {
-      color: #fff; }
 
 .view-more {
   text-align: right;
@@ -529,7 +637,7 @@ body {
 
 .swiper {
   width: 100%;
-  height: auto; }
+  height: 100%; }
   @media screen and (max-width: 1024px) {
     .swiper {
       overflow-x: auto !important; } }
@@ -620,11 +728,12 @@ body {
 .gird-hot-news {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 55rem 20rem;
+  grid-template-rows: 50rem 20rem;
   grid-gap: 2rem; }
   @media screen and (max-width: 1024px) {
     .gird-hot-news {
-      grid-template-columns: repeat(4, 1fr); } }
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 50rem 10rem; } }
   @media (max-width: 767px) {
     .gird-hot-news {
       grid-template-columns: repeat(3, 1fr);
@@ -652,6 +761,14 @@ body {
     .gird-hot-news .post-items-5 {
       grid-column: 1/4;
       grid-row: 5/6; } }
+  .gird-hot-news .post-items-2 .hover-image, .gird-hot-news .post-items-3 .hover-image, .gird-hot-news .post-items-4 .hover-image, .gird-hot-news .post-items-5 .hover-image {
+    max-height: 15rem; }
+    @media screen and (max-width: 1024px) {
+      .gird-hot-news .post-items-2 .hover-image, .gird-hot-news .post-items-3 .hover-image, .gird-hot-news .post-items-4 .hover-image, .gird-hot-news .post-items-5 .hover-image {
+        max-height: 10rem; } }
+    @media (max-width: 767px) {
+      .gird-hot-news .post-items-2 .hover-image, .gird-hot-news .post-items-3 .hover-image, .gird-hot-news .post-items-4 .hover-image, .gird-hot-news .post-items-5 .hover-image {
+        max-height: 20rem; } }
 
 .wc-block-bxh {
   background: url("../../../../images/worldcup/section-2.png") no-repeat;
@@ -766,6 +883,13 @@ body {
       grid-template-columns: 100%;
       grid-gap: 4rem; } }
 
+.guess .post-hot .hover-image {
+  max-height: 56rem; }
+
+@media screen and (max-width: 1024px) {
+  .guess .swiper {
+    height: 30rem; } }
+
 .king-soccer .wc-table {
   color: #fff;
   border-radius: 5px;
@@ -805,3 +929,5 @@ body {
     @media screen and (max-width: 1024px) {
       .wc-block-video .img-section {
         display: none; } }
+  .wc-block-video .hover-image {
+    max-height: 20rem; }

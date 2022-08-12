@@ -4,8 +4,8 @@
 @import './components/title-section';
 @import './components/wc-block';
 @import './components/hover-img-item';
-@import './components/post-hot';
 @import './components/post-items';
+@import './components/post-hot';
 @import './components/view-more';
 @import './components/scroll-snap';
 @import './components/table';
@@ -24,11 +24,12 @@
 .gird-hot-news {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 55rem 20rem;
+    grid-template-rows: 50rem 20rem;
     grid-gap: 2rem;
 
     @include tableMobile {
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 50rem 10rem;
     }
 
     @include Mobile {
@@ -72,6 +73,20 @@
             @include Mobile {
                 grid-column: 1/4;
                 grid-row: 5/6;
+            }
+        }
+
+        &-2, &-3, &-4, &-5 {
+            .hover-image {
+                max-height: 15rem;
+
+                @include tableMobile {
+                    max-height: 10rem;
+                }
+
+                @include Mobile {
+                    max-height: 20rem;
+                }
             }
         }
     }
@@ -266,12 +281,24 @@
 }
 
 .guess {
+    .post-hot {
+        .hover-image {
+            max-height: 56rem;
+        }
+    }
+    .swiper {
+        @include tableMobile {
+            height: 30rem;
+        }
+    }
 }
+
+
 
 .king-soccer {
     .wc-table {
         color: $white-color;
-        border-radius:  5px;
+        border-radius: 5px;
         overflow: hidden;
 
         .wc-table-header {
@@ -325,5 +352,9 @@
         @include tableMobile {
             display: none;
         }
+    }
+
+    .hover-image{
+        max-height : 20rem;
     }
 }
