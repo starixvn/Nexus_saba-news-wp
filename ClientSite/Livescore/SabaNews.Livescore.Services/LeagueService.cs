@@ -45,7 +45,7 @@
 
         public async Task<IList<Team>> GetAllTeamAsync()
         {
-            var criteria = new GetAllTeam() { LeagueId = 11997};
+            var criteria = new GetAllTeam() { LeagueId = WorldCup2022.LeagueIdWorldCup2022 };
             var teams = await baseService.GetDataAsync<Team>(criteria);
             return teams.ToList();
         }
