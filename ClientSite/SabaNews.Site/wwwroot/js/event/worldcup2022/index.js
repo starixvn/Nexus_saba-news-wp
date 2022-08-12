@@ -19,23 +19,11 @@
         if ($(window).innerWidth() > 1025) {
             var swipers = new Swiper('.swipper-guess', {
                 loop: false,
-                slidesPerView: 1,
                 spaceBetween: 20,
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1
-                    },
-                    768: {
-                        slidesPerView: 1
-                    },
-                    1024: {
-                        slidesPerView: 1
-                    },
-                },
+                }
             });
             var Swipers = new Swiper('.swipper-video', {
                 loop: false,

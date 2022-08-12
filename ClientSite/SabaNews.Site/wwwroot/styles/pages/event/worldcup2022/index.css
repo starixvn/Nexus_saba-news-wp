@@ -837,7 +837,7 @@ body {
         grid-template-columns: repeat(4, 30rem);
         grid-gap: 2rem; } }
     .wc-block-stories-post .grid-stories-post .hover-image {
-      max-height: 40rem; }
+      max-height: 40rem !important; }
       .wc-block-stories-post .grid-stories-post .hover-image .title-hot {
         text-align: center;
         padding: 4rem 3.2rem 2rem 3.2rem; }
