@@ -9,6 +9,7 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
@@ -71,7 +72,12 @@
         [Route("world-cup-2022/lich-thi-dau-world-cup-2022")]
         public async Task<IActionResult> Fixture()
         {
-            return View("~/Views/Event/WorldCup2022/Fixture.cshtml");
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.Fixture,
+                Slug = WorldCup2022.FixtureSlug
+            };
+            return View("~/Views/Event/WorldCup2022/Fixture.cshtml", header);
         }
 
         [Route("world-cup-2022/news-posts")]

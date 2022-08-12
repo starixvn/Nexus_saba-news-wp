@@ -108,7 +108,7 @@
 </div>
 <div class="top-header">
     <div class="back-home-page">
-        <a href="#">
+        <a href="/">
             <i class="icon-arrow-left"></i>
             Quay về Saba.vn
         </a>
@@ -134,8 +134,8 @@
                         }
                         else
                         {
-                            <li class="menu-item @active">
-                                <a href=@link class="item">
+                            <li class="menu-item">
+                                <a href=@link class="item @active">
                                     @menu.Name
                                 </a>
                             </li>
@@ -247,7 +247,7 @@
         {
             var active = menu.Slug == Model.CateSlug ? "active" : "";
             <li class="menu-item @active">
-                <a href=@($"{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item">
+                <a href=@($"{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item @active">
                     @menu.Name
                 </a>
             </li>

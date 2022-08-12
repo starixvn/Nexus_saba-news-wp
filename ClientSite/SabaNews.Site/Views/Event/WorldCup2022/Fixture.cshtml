@@ -1,4 +1,13 @@
-﻿
+﻿@section Metadata {
+    <meta name="description" content='@Model.Description' />
+    <meta property="og:description" content='@Model.Description' />
+    <meta property="og:title" content='@Model.Title' />
+}
+
+@section Title {
+    @Model.Title
+}
+
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup.min.css" asp-append-version="true">
@@ -36,7 +45,7 @@
         });
     </script>
 }
-@(await Component.InvokeAsync("HeaderWorldCup"))
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Slug }))
 
 <section class="worldcup-fixture">
     <div id="world-full-fixture"></div>

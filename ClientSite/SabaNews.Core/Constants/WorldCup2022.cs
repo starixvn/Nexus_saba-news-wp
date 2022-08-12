@@ -19,7 +19,7 @@ namespace SabaNews.Core.Constants
 
         public const string Standing = "Bảng xếp hạng";
 
-        public const string StandingSlug = "lich-thi-dau-world-cup-2022";
+        public const string StandingSlug = "bang-xep-hang-world-cup-2022";
 
         public const string Commentary = "Nhận định";
 
