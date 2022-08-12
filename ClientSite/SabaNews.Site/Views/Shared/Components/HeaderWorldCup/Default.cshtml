@@ -32,14 +32,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="item-control search-desktop search-input">
-                        <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
-                            <input class="keyword-input search-box" name="keyword" id="keyword-desktop" type="text" placeholder="Tìm kiếm...">
-                            <button type="submit" class="btn btn-search" aria-label="search">
-                                <i class="icon-search"></i>
-                            </button>
-                        </form>
-                    </li>
 
                     <li class="item-control notification-auth">
                         <span class="bell">
@@ -143,8 +135,8 @@
 
                     }
                     <li class="right-header-section search-input hidden-pc">
-                        <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
-                            <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
+                        <form action="/Search" method="post">
+                            <input class="keyword-input search-box"  type="text" placeholder="Tìm kiếm...">
                             <button type="submit" class="btn btn-search" aria-label="search">
                                 <i class="icon-search"></i>
                             </button>
@@ -166,8 +158,8 @@
             </ul>
         </li>
         <li class="item-control search-desktop search-input">
-            <form action="@Url.Action("Search", "home", new { page = (int?)null })" method="get">
-                <input class="keyword-input search-box" name="keyword" id="keyword-desktop" type="text" placeholder="Tìm kiếm...">
+            <form action="/Search" method="post">
+                <input class="keyword-input search-box"  type="text" placeholder="Tìm kiếm...">
                 <button type="submit" class="btn btn-search" aria-label="search">
                     <i class="icon-search"></i>
                 </button>
@@ -230,16 +222,6 @@
         </li>
     </ul>
 
-
-    @*<div class="right-header-section search-input hidden-mb">
-            <form action="" method="get">
-                <input class="keyword-input search-box" name="keyword" id="keyword" type="text" placeholder="Tìm kiếm...">
-                <button type="submit" class="btn btn-search" aria-label="search">
-                    <i class="icon-search"></i>
-                </button>
-            </form>
-            <a class="item auth-login" href="javascript:;">@ViewResources.Login</a>
-        </div>*@
 </div>
 <div class="child-mobile-menu">
     <ul class="main-child-menu">

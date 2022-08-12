@@ -252,12 +252,12 @@ $(document).ready(function () {
   
     $('.search-input button').on('click', function (e) {
         e.preventDefault();
-        var keyword = $('#search-keyword').val();
-        
+        var input = $(this).parent().find('.keyword-input');
+        var form = $(this).parent();
+        var keyword = input.val();
         if ($.trim(keyword) === '') {
-            $('#search-keyword').focus();
+            input.focus();
         } else {
-            form = $('#search');
             form.trigger("reset");
             form.attr('action', '/Search/' + keyword);
             form.submit();
