@@ -284,13 +284,18 @@
         border-radius: 50px;
 
         form {
-            input {
-                width: auto;
+            .search-hover {
+                width: 20rem;
                 position: absolute;
                 top: -1px;
                 right: -1px;
+                z-index: 9;
+            }
+
+            input {
+                width: 100%;
                 background: $input-bg;
-                padding: 0 1.5rem;
+                padding: 0 0 0 3.5rem;
                 visibility: hidden;
                 opacity: 0;
                 transition: all .3s ease-in-out;
@@ -301,24 +306,22 @@
                 }
             }
 
-            .btn-search {
-                z-index: 99;
+            .icon-search-hover {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+                font-size: 2.4rem;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .3s ease-in-out;
             }
         }
 
         &:hover {
             form {
-                input {
+                input, .icon-search-hover {
                     visibility: visible;
                     opacity: 1;
-                }
-
-                .btn-search {
-                    i {
-                        &:before {
-                            color: $nav-header-color !important;
-                        }
-                    }
                 }
             }
         }

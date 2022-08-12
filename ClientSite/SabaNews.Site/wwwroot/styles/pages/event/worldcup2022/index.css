@@ -199,26 +199,33 @@
     position: relative;
     border: 1px solid #C598A7;
     border-radius: 50px; }
-    .show-on-pc .search-input form input {
-      width: auto;
+    .show-on-pc .search-input form .search-hover {
+      width: 20rem;
       position: absolute;
       top: -1px;
       right: -1px;
+      z-index: 9; }
+    .show-on-pc .search-input form input {
+      width: 100%;
       background: #5C2034;
-      padding: 0 1.5rem;
+      padding: 0 0 0 3.5rem;
       visibility: hidden;
       opacity: 0;
       transition: all .3s ease-in-out;
       color: #C598A7; }
       .show-on-pc .search-input form input::placeholder {
         color: #C598A7 !important; }
-    .show-on-pc .search-input form .btn-search {
-      z-index: 99; }
-    .show-on-pc .search-input:hover form input {
+    .show-on-pc .search-input form .icon-search-hover {
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      font-size: 2.4rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .3s ease-in-out; }
+    .show-on-pc .search-input:hover form input, .show-on-pc .search-input:hover form .icon-search-hover {
       visibility: visible;
       opacity: 1; }
-    .show-on-pc .search-input:hover form .btn-search i:before {
-      color: #C598A7 !important; }
 
 .child-mobile-menu .icon-arrow {
   background: url("../../../../../images/worldcup/arrow.svg") no-repeat;

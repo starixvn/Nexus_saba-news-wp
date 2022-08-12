@@ -7,12 +7,6 @@
 
 
 #worldcup-fixture {
-    position: sticky;
-    top: 76px;
-    z-index: 50;
-    @include tableMobile{
-        top: 40px;
-    }
     .group-live-icon{
         display: flex;
         align-items: center;

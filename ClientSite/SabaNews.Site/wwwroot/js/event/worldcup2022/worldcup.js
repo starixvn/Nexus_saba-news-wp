@@ -12,6 +12,8 @@
     }
 
 
+
+
     function init() {
         getTopScorers();
     }
@@ -23,4 +25,9 @@
 
 $(document).ready(function () {
     worldcup.init();
+
+    $(window).scroll(function () {
+        console.log('1111')
+    });
 });
+
