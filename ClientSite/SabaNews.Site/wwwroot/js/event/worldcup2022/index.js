@@ -55,7 +55,8 @@
             var content = $(this).find('input[name=content]').val();
             var title = $(this).find('input[name=title]').val();
             $('#PlayIframeVideo').modal('show');
-            $('.show-iframe').html(content);
+            $('#PlayIframeVideo .if-content').html(content);
+            $('#PlayIframeVideo .if-title').html(title);
         });
     }
 

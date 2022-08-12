@@ -338,16 +338,15 @@
 </section>
 
 <div class="auth-form">
-    <div class="modal" id="PlayIframeVideo">
+    <div class="modal" id="PlayIframeVideo" style="display: none">
         <div class="modal-content modal-auth">
             <div class="modal-warning">
                 <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <div class="tab-content" id="nav-tabContent">
-                    <h3 class="heading-warning">@ViewResources.Message</h3>
-                    <hr />
-                    <h3 class="slogan">@ViewResources.MessageRequestLogin</h3>
+                <div class="tab-content">
+                    <div class="if-content"></div>
+                    <div class="if-title"></div>
                 </div>
             </div>
         </div>
