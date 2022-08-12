@@ -233,7 +233,8 @@
 
 .child-mobile-menu .icon-arrow {
   background: url("../../../../../images/worldcup/arrow.svg") no-repeat;
-  right: -12px; }
+  right: 0;
+  width: 3rem; }
 
 .auth-provider {
   list-style: none;
