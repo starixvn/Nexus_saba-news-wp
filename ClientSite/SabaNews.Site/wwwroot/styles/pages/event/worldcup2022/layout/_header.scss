@@ -79,6 +79,7 @@
 }
 
 .wc-logo {
+    margin-right: -2rem;
     @include tableMobile {
         display: none !important;
     }
@@ -101,6 +102,7 @@
             display: block;
             margin-top: 0.5rem;
             width: 100px;
+
             @include creen1391px {
                 width: 120px;
             }
@@ -120,7 +122,7 @@
             height: 3.2rem;
             width: 3.2rem;
             border-radius: 50px;
-
+            color: $nav-header-color;
             @include tableMobile {
                 height: 3.6rem;
                 width: 100%;
@@ -143,6 +145,7 @@
 
         .btn-search {
             left: 3px !important;
+
             @include tableMobile {
                 left: 12px !important;
             }
@@ -229,7 +232,7 @@
 
 .header-auth-provider {
     list-style: none;
-    width: 38rem;
+    width: 42rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -238,6 +241,7 @@
     .auth-login {
         text-decoration: none;
         color: #C598A7 !important;
+        font-weight: 700;
     }
 
     .item-control {
@@ -284,14 +288,15 @@
                 position: absolute;
                 top: -1px;
                 right: -1px;
-                background: $nav-header-color;
+                background: $input-bg;
                 padding: 0 1.5rem;
                 visibility: hidden;
                 opacity: 0;
                 transition: all .3s ease-in-out;
-                color : $white-color;
+                color: $nav-header-color;
+
                 &::placeholder {
-                    color: $white-color !important;
+                    color: $nav-header-color !important;
                 }
             }
 
@@ -309,9 +314,9 @@
                 }
 
                 .btn-search {
-                    i{
-                        &:before{
-                            color : $white-color !important;
+                    i {
+                        &:before {
+                            color: $nav-header-color !important;
                         }
                     }
                 }
@@ -345,10 +350,10 @@
     .avatar-user {
         width: 3rem;
         height: 3rem;
-        background: #8A2745;
+        background: #8A2745 !important;
         border: 1px solid #A2435F;
         font-weight: bold;
-        color: $nav-header-color;
+        color: $nav-header-color !important;
         border-radius: 50%;
         margin: 0 .5rem 0 0;
         display: flex;
@@ -367,6 +372,7 @@
         position: relative;
         padding-right: .8rem;
         color : $nav-header-color;
+        font-weight : 700;
         &:after {
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
@@ -391,52 +397,46 @@
 
 .box-auth {
     display: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+    border: 1px solid #9A576C;
+    border-radius: 5px;
     list-style: none;
-    padding: 1.2rem 1.2rem 0 1.2rem;
-    background: #fffdf9;
+    padding: 1.6rem 1.6rem 0;
     position: absolute;
     width: 24rem;
-    top: 5.8rem;
+    top: 6.2rem;
     z-index: 99999;
-    border: 1px solid #e5e5e5;
-    right: 0;
+    right: 10px;
 
     &:before {
-        width: 1.5rem;
-        height: 1.5rem;
-        border: solid #e5e5e5;
-        border-width: 0 1px 1px 0;
-        content: '';
-        position: absolute;
-        top: -.9rem;
-        right: 2.3rem;
-        background: $white-color;
-        -webkit-transform: rotate( 225deg );
-        -ms-transform: rotate(225deg);
-        transform: rotate( 225deg );
+        display: none;
     }
 
     @include tableMobile {
         right: 0;
     }
 
+    .auth-displayname {
+        color: $white-color;
+    }
+
     .info-user {
-        border-bottom: 1px solid #e5e5e5;
+        border-bottom: 1px solid #9A576C;
 
         .item {
             padding: 1rem 0;
             display: block;
             font-weight: normal;
-            color: #4f4f4f;
-            text-decoration : none;
+            color: $white-color;
+            text-decoration: none;
+
             .icon-logout {
                 font-weight: bold;
                 margin-left: 6px;
             }
 
             &:hover {
-                color: #087CCE;
+                color: #9A576C;
             }
         }
 

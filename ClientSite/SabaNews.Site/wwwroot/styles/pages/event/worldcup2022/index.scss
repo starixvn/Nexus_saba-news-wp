@@ -120,7 +120,7 @@
         z-index: 9;
 
         @include tableMobile {
-            grid-template-columns: repeat( 8, 29rem);
+            grid-template-columns: repeat( 8, 32rem);
             padding-top: 2rem;
             margin-top: 2rem;
         }
@@ -174,7 +174,7 @@
         grid-gap: 2rem;
 
         @include tableMobile {
-            grid-template-columns: repeat(4,30rem);
+            grid-template-columns: repeat(4,32rem);
             grid-gap: 2rem;
         }
 

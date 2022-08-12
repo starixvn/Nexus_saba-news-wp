@@ -50,10 +50,11 @@
         }
     }
 
-    .swiper-slide {
-        @include tableMobile {
-            width: 30rem;
-        }
+}
+
+.swiper-slide {
+    @include tableMobile {
+        width: 32rem;
     }
 }
 
@@ -79,13 +80,7 @@
 
         .swiper-button-prev {
             left: -40px !important;
-        }
-
-        .swiper-slide {
-            @include tableMobile {
-                width: 30rem;
-            }
-        }
+        }   
     }
 }
 

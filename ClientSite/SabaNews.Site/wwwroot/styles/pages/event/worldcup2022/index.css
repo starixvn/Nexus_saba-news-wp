@@ -51,29 +51,30 @@
         margin-right: .5rem;
         font-size: 2rem; }
 
-@media screen and (max-width: 1024px) {
-  .wc-logo {
-    display: none !important; } }
-
-.wc-logo a {
-  background: #EEEEE4;
-  height: 9.5rem;
-  display: flex !important;
-  align-items: center;
-  width: 19rem;
-  justify-content: center;
-  clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); }
-  @media screen and (min-width: 1391px) {
-    .wc-logo a {
-      width: 23rem; } }
-  .wc-logo a img {
-    display: block;
-    margin-top: 0.5rem;
-    width: 100px; }
+.wc-logo {
+  margin-right: -2rem; }
+  @media screen and (max-width: 1024px) {
+    .wc-logo {
+      display: none !important; } }
+  .wc-logo a {
+    background: #EEEEE4;
+    height: 9.5rem;
+    display: flex !important;
+    align-items: center;
+    width: 19rem;
+    justify-content: center;
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); }
     @media screen and (min-width: 1391px) {
-      .wc-logo a img {
-        width: 120px; } }
+      .wc-logo a {
+        width: 23rem; } }
+    .wc-logo a img {
+      display: block;
+      margin-top: 0.5rem;
+      width: 100px; }
+      @media screen and (min-width: 1391px) {
+        .wc-logo a img {
+          width: 120px; } }
 
 .search-input form input {
   border: 1px solid #C598A7;
@@ -82,7 +83,8 @@
   box-shadow: none;
   height: 3.2rem;
   width: 3.2rem;
-  border-radius: 50px; }
+  border-radius: 50px;
+  color: #C598A7; }
   @media screen and (max-width: 1024px) {
     .search-input form input {
       height: 3.6rem;
@@ -161,13 +163,14 @@
 
 .header-auth-provider {
   list-style: none;
-  width: 38rem;
+  width: 42rem;
   display: flex;
   align-items: center;
   justify-content: flex-end; }
   .header-auth-provider .auth-login {
     text-decoration: none;
-    color: #C598A7 !important; }
+    color: #C598A7 !important;
+    font-weight: 700; }
   .header-auth-provider .item-control {
     margin-right: 1.6rem; }
     .header-auth-provider .item-control:last-child {
@@ -199,14 +202,14 @@
       position: absolute;
       top: -1px;
       right: -1px;
-      background: #C598A7;
+      background: #5C2034;
       padding: 0 1.5rem;
       visibility: hidden;
       opacity: 0;
       transition: all .3s ease-in-out;
-      color: #fff; }
+      color: #C598A7; }
       .show-on-pc .search-input form input::placeholder {
-        color: #fff !important; }
+        color: #C598A7 !important; }
     .show-on-pc .search-input form .btn-search {
       z-index: 99; }
     .show-on-pc .search-input:hover form input {
@@ -214,7 +217,7 @@
       opacity: 1;
       transition: all .3s ease-in-out; }
     .show-on-pc .search-input:hover form .btn-search i:before {
-      color: #fff !important; }
+      color: #C598A7 !important; }
 
 .child-mobile-menu .icon-arrow {
   background: url("../../../../../images/worldcup/arrow.svg") no-repeat;
@@ -232,10 +235,10 @@
   .auth-provider .avatar-user {
     width: 3rem;
     height: 3rem;
-    background: #8A2745;
+    background: #8A2745 !important;
     border: 1px solid #A2435F;
     font-weight: bold;
-    color: #C598A7;
+    color: #C598A7 !important;
     border-radius: 50%;
     margin: 0 .5rem 0 0;
     display: flex;
@@ -249,7 +252,8 @@
   .auth-provider .auth-displayname {
     position: relative;
     padding-right: .8rem;
-    color: #C598A7; }
+    color: #C598A7;
+    font-weight: 700; }
     .auth-provider .auth-displayname:after {
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
@@ -267,45 +271,36 @@
 
 .box-auth {
   display: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+  border: 1px solid #9A576C;
+  border-radius: 5px;
   list-style: none;
-  padding: 1.2rem 1.2rem 0 1.2rem;
-  background: #fffdf9;
+  padding: 1.6rem 1.6rem 0;
   position: absolute;
   width: 24rem;
-  top: 5.8rem;
+  top: 6.2rem;
   z-index: 99999;
-  border: 1px solid #e5e5e5;
-  right: 0; }
+  right: 10px; }
   .box-auth:before {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: solid #e5e5e5;
-    border-width: 0 1px 1px 0;
-    content: '';
-    position: absolute;
-    top: -.9rem;
-    right: 2.3rem;
-    background: #fff;
-    -webkit-transform: rotate(225deg);
-    -ms-transform: rotate(225deg);
-    transform: rotate(225deg); }
+    display: none; }
   @media screen and (max-width: 1024px) {
     .box-auth {
       right: 0; } }
+  .box-auth .auth-displayname {
+    color: #fff; }
   .box-auth .info-user {
-    border-bottom: 1px solid #e5e5e5; }
+    border-bottom: 1px solid #9A576C; }
     .box-auth .info-user .item {
       padding: 1rem 0;
       display: block;
       font-weight: normal;
-      color: #4f4f4f;
+      color: #fff;
       text-decoration: none; }
       .box-auth .info-user .item .icon-logout {
         font-weight: bold;
         margin-left: 6px; }
       .box-auth .info-user .item:hover {
-        color: #087CCE; }
+        color: #9A576C; }
     .box-auth .info-user:last-child {
       border-bottom: none; }
   .box-auth .auth-provider .auth-displayname:after {
@@ -688,8 +683,8 @@ body {
     margin-right: 1rem; }
 
 @media screen and (max-width: 1024px) {
-  .swipper-guess .swiper-slide {
-    width: 30rem; } }
+  .swiper-slide {
+    width: 32rem; } }
 
 .wc-block-video .wrapper-arrow {
   position: relative; }
@@ -704,9 +699,6 @@ body {
     right: -40px !important; }
   .wc-block-video .wrapper-arrow .swiper-button-prev {
     left: -40px !important; }
-  @media screen and (max-width: 1024px) {
-    .wc-block-video .wrapper-arrow .swiper-slide {
-      width: 30rem; } }
 
 .swiper-button-next,
 .swiper-container-rtl .swiper-button-prev,
@@ -798,7 +790,7 @@ body {
     z-index: 9; }
     @media screen and (max-width: 1024px) {
       .wc-block-bxh .grid-bxh {
-        grid-template-columns: repeat(8, 29rem);
+        grid-template-columns: repeat(8, 32rem);
         padding-top: 2rem;
         margin-top: 2rem; } }
   .wc-block-bxh .wc-table {
@@ -835,7 +827,7 @@ body {
     grid-gap: 2rem; }
     @media screen and (max-width: 1024px) {
       .wc-block-stories-post .grid-stories-post {
-        grid-template-columns: repeat(4, 30rem);
+        grid-template-columns: repeat(4, 32rem);
         grid-gap: 2rem; } }
     .wc-block-stories-post .grid-stories-post .hover-image {
       max-height: 40rem !important; }
