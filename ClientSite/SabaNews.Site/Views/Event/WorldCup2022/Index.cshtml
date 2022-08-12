@@ -162,6 +162,8 @@
                                         <a href="#"><img src=@video.FeatureImage alt=@video.PostTitle class="img-res" /></a>
                                         <div class="icon-play-video">
                                             <i class="icon-play"></i>
+                                            <input type="hidden" value="@video.PostContent" name="content" />
+                                            <input type="hidden" value="@video.PostTitle" name="title" />
                                         </div>
                                     </div>
                                     <div class="title">
@@ -173,6 +175,9 @@
                     </div>
                     <div class="swiper-button-next video-next"><i class="icon-chevron-right"></i></div>
                     <div class="swiper-button-prev video-prev"><i class="icon-chevron-left"></i></div>
+                </div>
+                <div class="show-iframe">
+
                 </div>
 
                 <div class="img-section">
@@ -331,3 +336,20 @@
 
     </div>
 </section>
+
+<div class="auth-form">
+    <div class="modal" id="PlayIframeVideo">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="tab-content" id="nav-tabContent">
+                    <h3 class="heading-warning">@ViewResources.Message</h3>
+                    <hr />
+                    <h3 class="slogan">@ViewResources.MessageRequestLogin</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
