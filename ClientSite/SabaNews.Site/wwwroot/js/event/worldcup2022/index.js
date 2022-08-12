@@ -1,4 +1,4 @@
-﻿var worldcup = (function ($) {
+﻿var worldcup_home = (function ($) {
     var leagueId = 14638;
     var seasonId = 10810;
     function getStanding() {
@@ -59,5 +59,5 @@
 })(jQuery);
 
 $(document).ready(function () {
-    worldcup.init();
+    worldcup_home.init();
 });

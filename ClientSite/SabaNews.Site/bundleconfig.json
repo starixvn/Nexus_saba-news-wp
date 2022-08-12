@@ -348,6 +348,7 @@
         "outputFileName": "wwwroot/minify/js/worldcup2022.min.js",
         "inputFiles": [
             "wwwroot/lib/swipper/js/swiper-bundle.min.js",
+            "wwwroot/js/event/worldcup2022/worldcup.js",
             "wwwroot/js/event/worldcup2022/index.js"
         ],
         "minify": {
