@@ -9,11 +9,15 @@
   box-shadow: none;
   display: flex;
   align-items: center;
-  height: 7.7rem; }
+  height: 7.7rem;
+  transition: height .3s ease-in-out; }
   @media screen and (max-width: 1024px) {
     .top-header {
       padding: 0;
       height: auto; } }
+  @media screen and (min-width: 1199px) {
+    .top-header.scroll-height {
+      height: 5rem; } }
   .top-header .group-menu {
     justify-content: center; }
     .top-header .group-menu .nav-menu {
@@ -632,9 +636,6 @@
 @media screen and (max-width: 1024px) {
   .mb-container {
     padding: 0 !important; } }
-
-body {
-  overflow-x: hidden; }
 
 .dots {
   display: flex;

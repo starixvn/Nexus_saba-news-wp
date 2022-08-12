@@ -13,28 +13,38 @@
     box-shadow: none;
     display: flex;
     align-items: center;
-    height : 7.7rem;
+    height: 7.7rem;
+    transition : height .3s ease-in-out;
     @include tableMobile {
         padding: 0;
-        height : auto;
+        height: auto;
     }
+
+    @include creen1199px {
+        &.scroll-height {
+            height: 5rem;
+        }
+    }
+
 
     .group-menu {
         justify-content: center;
 
         .nav-menu {
             width: 100% !important;
+
             @include tableMobile {
                 padding: 0;
             }
 
             .main-menu {
-                justify-content : space-evenly;
+                justify-content: space-evenly;
+
                 @include tableMobile {
                     background-color: $primary-bg;
                     border-top: 1px solid $nav-header-color;
                     border-bottom: 1px solid $nav-header-color;
-                    margin-top : 5rem;
+                    margin-top: 5rem;
                 }
 
                 .menu-item {
@@ -61,7 +71,8 @@
     .back-home-page {
         display: block;
         padding-left: 2rem;
-        width : 20rem;
+        width: 20rem;
+
         @include tableMobile {
             display: none;
         }
@@ -69,11 +80,12 @@
         a {
             text-decoration: none;
             color: $nav-header-color;
-            font-size : 1.2rem;
-            display : flex;
-            i{
-               margin-right : .5rem;
-               font-size : 2rem;
+            font-size: 1.2rem;
+            display: flex;
+
+            i {
+                margin-right: .5rem;
+                font-size: 2rem;
             }
         }
     }

@@ -12,11 +12,23 @@
     }
 
 
-
+    function scrollEffectHeader() {
+        $(window).scroll(function () {
+            var topScroll = $(window).scrollTop();
+            var header = $('.top-header');
+            if (topScroll > 0) {
+                header.addClass('scroll-height');
+            } else {
+                header.removeClass('scroll-height');
+            }
+        });
+    }
 
     function init() {
         getTopScorers();
+        scrollEffectHeader();
     }
+   
 
     return {
         init
@@ -25,9 +37,5 @@
 
 $(document).ready(function () {
     worldcup.init();
-
-    $(window).scroll(function () {
-        console.log('1111')
-    });
 });
 
