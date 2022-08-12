@@ -63,7 +63,7 @@
         position: relative;
 
         .swiper-button-next, .swiper-button-prev {
-            top: 40%;
+            top: 30%;
 
             @include tableMobile {
                 display: none !important;

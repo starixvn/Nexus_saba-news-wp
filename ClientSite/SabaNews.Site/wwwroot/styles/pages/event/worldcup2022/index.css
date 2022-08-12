@@ -693,7 +693,7 @@ body {
 .wc-block-video .wrapper-arrow {
   position: relative; }
   .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
-    top: 40%; }
+    top: 30%; }
     @media screen and (max-width: 1024px) {
       .wc-block-video .wrapper-arrow .swiper-button-next, .wc-block-video .wrapper-arrow .swiper-button-prev {
         display: none !important; } }
