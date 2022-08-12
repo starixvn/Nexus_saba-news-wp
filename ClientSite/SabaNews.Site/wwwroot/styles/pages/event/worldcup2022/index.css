@@ -4,14 +4,16 @@
     background: #48041A; } }
 
 .top-header {
-  padding: 1.8rem 0;
+  padding: 0;
   background: #48041A;
   box-shadow: none;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  height: 7.7rem; }
   @media screen and (max-width: 1024px) {
     .top-header {
-      padding: 0; } }
+      padding: 0;
+      height: auto; } }
   .top-header .group-menu {
     justify-content: center; }
     .top-header .group-menu .nav-menu {
@@ -214,8 +216,7 @@
       z-index: 99; }
     .show-on-pc .search-input:hover form input {
       visibility: visible;
-      opacity: 1;
-      transition: all .3s ease-in-out; }
+      opacity: 1; }
     .show-on-pc .search-input:hover form .btn-search i:before {
       color: #C598A7 !important; }
 

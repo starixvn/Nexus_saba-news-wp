@@ -8,14 +8,15 @@
 }
 
 .top-header {
-    padding: 1.8rem 0;
+    padding: 0;
     background: $primary-bg;
     box-shadow: none;
     display: flex;
     align-items: center;
-
+    height : 7.7rem;
     @include tableMobile {
         padding: 0;
+        height : auto;
     }
 
     .group-menu {
@@ -310,7 +311,6 @@
                 input {
                     visibility: visible;
                     opacity: 1;
-                    transition: all .3s ease-in-out;
                 }
 
                 .btn-search {
