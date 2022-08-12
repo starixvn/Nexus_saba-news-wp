@@ -671,7 +671,6 @@ body {
   right: -30px !important;
   width: 60px;
   height: 60px;
-  display: flex;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   justify-content: flex-start; }
   .swipper-guess .swiper-button-next i {

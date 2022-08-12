@@ -20,6 +20,7 @@
             var swipers = new Swiper('.swipper-guess', {
                 loop: false,
                 spaceBetween: 20,
+                watchOverflow: true,
                 navigation: {
                     nextEl: '.guess-next',
                     prevEl: '.guess-prev',
@@ -29,6 +30,7 @@
                 loop: false,
                 slidesPerView: 3,
                 spaceBetween: 20,
+                watchOverflow: true,
                 navigation: {
                     nextEl: '.video-next',
                     prevEl: '.video-prev',
