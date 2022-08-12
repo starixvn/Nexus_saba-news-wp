@@ -22,6 +22,7 @@
         justify-content: center;
 
         .nav-menu {
+            width: 100% !important;
             @include tableMobile {
                 padding: 0;
             }
