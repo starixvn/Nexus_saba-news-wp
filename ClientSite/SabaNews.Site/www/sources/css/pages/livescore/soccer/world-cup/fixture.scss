@@ -4,13 +4,7 @@
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
 @import "../../../../components/soccer-item";
-// @import "../../../../components/league-header-detail";
-// @import "../../../../components/nav-tab";
-// @import "../../../../components/search-bar";
-// @import "../../../../components/tooltip";
-// @import "../../../../components/breadcrumb";
-// @import "../../../../components/modal";
-// @import "../../../../components/recent-post";
+
 
 #worldcup-fixture {
     position: sticky;
@@ -19,7 +13,32 @@
     @include tableMobile{
         top: 40px;
     }
+    .live{
+        .soccer-match-stage{
+            width: auto;
+            span{
+                color: #EFF612 !important;
+                &::before,&::after{
+                    display: none;
+                }
+            }
+        }
+    }
+    .group-live-icon{
+        display: flex;
+        align-items: center;
+        i{
+            font-size: 1.6rem;
+            margin-right: .6rem;
+            &::before{
+                color: #EFF612;
+            }
+        }
+    }
 }
+
+
+
 .wc-date-control{
     width: 4rem;
     height: 8rem;
