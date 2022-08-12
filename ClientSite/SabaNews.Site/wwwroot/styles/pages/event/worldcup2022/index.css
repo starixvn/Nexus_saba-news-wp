@@ -95,7 +95,7 @@
   color: #C598A7 !important; }
 
 .search-input form .btn-search {
-  left: 5px !important; }
+  left: 3px !important; }
   @media screen and (max-width: 1024px) {
     .search-input form .btn-search {
       left: 12px !important; } }
@@ -123,22 +123,6 @@
   @media screen and (max-width: 1024px) {
     .right-header-section.hidden-mb {
       display: none; } }
-  .right-header-section.hidden-mb form {
-    margin-right: 1.6rem; }
-    .right-header-section.hidden-mb form input {
-      transition: width .2s ease;
-      padding: 0 1rem; }
-    .right-header-section.hidden-mb form:hover input {
-      width: 14rem;
-      color: #fff; }
-      @media screen and (min-width: 1391px) {
-        .right-header-section.hidden-mb form:hover input {
-          width: 18rem; } }
-      .right-header-section.hidden-mb form:hover input::placeholder {
-        color: #C598A7 !important; }
-    .right-header-section.hidden-mb form .btn-search {
-      left: auto !important;
-      right: 5px; }
   .right-header-section.hidden-mb .auth-login {
     text-decoration: none;
     color: #C598A7; }
@@ -202,6 +186,33 @@
   @media screen and (max-width: 1024px) {
     .show-on-pc {
       display: none; } }
+  .show-on-pc .search-input {
+    width: 3.2rem;
+    height: 3.2rem;
+    position: relative;
+    border: 1px solid #C598A7;
+    border-radius: 50px; }
+    .show-on-pc .search-input form input {
+      width: auto;
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background: #C598A7;
+      padding: 0 1.5rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+      color: #fff; }
+      .show-on-pc .search-input form input::placeholder {
+        color: #fff !important; }
+    .show-on-pc .search-input form .btn-search {
+      z-index: 99; }
+    .show-on-pc .search-input:hover form input {
+      visibility: visible;
+      opacity: 1;
+      transition: all .3s ease-in-out; }
+    .show-on-pc .search-input:hover form .btn-search i:before {
+      color: #fff !important; }
 
 .child-mobile-menu .icon-arrow {
   background: url("../../../../../images/worldcup/arrow.svg") no-repeat;
@@ -737,7 +748,7 @@ body {
   @media (max-width: 767px) {
     .gird-hot-news {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(5, 1fr); } }
+      grid-template-rows: repeat(1, 1fr); } }
   .gird-hot-news .post-items-1 {
     grid-column: 1/5;
     grid-row: 1/2; }

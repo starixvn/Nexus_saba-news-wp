@@ -141,8 +141,7 @@
         }
 
         .btn-search {
-            left: 5px !important;
-
+            left: 3px !important;
             @include tableMobile {
                 left: 12px !important;
             }
@@ -171,7 +170,6 @@
             top : 6px;
         }
     }
-
     &.hidden-mb {
         display: flex;
         align-items: center;
@@ -182,36 +180,6 @@
         @include tableMobile {
             display: none;
         }
-
-        form {
-            margin-right: 1.6rem;
-
-            input {
-                transition: width .2s ease;
-                padding: 0 1rem;
-            }
-
-            &:hover {
-                input {
-                    width: 14rem;
-                    color: $white-color;
-
-                    @include creen1391px {
-                        width: 18rem;
-                    }
-
-                    &::placeholder {
-                        color: $nav-header-color !important;
-                    }
-                }
-            }
-
-            .btn-search {
-                left: auto !important;
-                right: 5px;
-            }
-        }
-
         .auth-login {
             text-decoration: none;
             color: $nav-header-color;
@@ -301,7 +269,59 @@
     @include tableMobile {
         display: none;
     }
+
+    .search-input {
+        width: 3.2rem;
+        height: 3.2rem;
+        position: relative;
+        border: 1px solid $nav-header-color;
+        border-radius: 50px;
+
+        form {
+            input {
+                width: auto;
+                position: absolute;
+                top: -1px;
+                right: -1px;
+                background: $nav-header-color;
+                padding: 0 1.5rem;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .3s ease-in-out;
+                color : $white-color;
+                &::placeholder {
+                    color: $white-color !important;
+                }
+            }
+
+            .btn-search {
+                z-index: 99;
+            }
+        }
+
+        &:hover {
+            form {
+                input {
+                    visibility: visible;
+                    opacity: 1;
+                    transition: all .3s ease-in-out;
+                }
+
+                .btn-search {
+                    i{
+                        &:before{
+                            color : $white-color !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+
+
 
 .child-mobile-menu {
     .icon-arrow {
