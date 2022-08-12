@@ -24,7 +24,7 @@
 .gird-hot-news {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50rem 20rem;
+    grid-template-rows: 50rem auto;
     grid-gap: 2rem;
 
     @include tableMobile {
