@@ -15,17 +15,19 @@
     }
 
     h2 {
-        a {
-            color: $title-color;
-            font-weight: 700;
+        color: $title-color;
+        font-weight: 700;
+        font-size: 2.4rem;
+        text-transform: uppercase;
+
+        @include tableMobile {
             font-size: 2.4rem;
-            text-transform: uppercase;
+        }
+
+        a {
             margin: 0 1rem;
             text-decoration: none;
-
-            @include tableMobile {
-                font-size: 2.4rem;
-            }
+            color: $title-color;
         }
 
         .title-pc {
