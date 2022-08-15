@@ -53,8 +53,15 @@
             var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
 
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.LastestNews,
+                Slug = WorldCup2022.LastestNewsSlug
+            };
+
             var viewModel = new LastestNewsViewModel()
             {
+                Header =header,
                 Posts = news,
                 Paging = new PagingModel{
                     PageSize = Constants.GetTenItems,

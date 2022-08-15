@@ -356,5 +356,16 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/lastestnews.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/lastestnews.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 ]

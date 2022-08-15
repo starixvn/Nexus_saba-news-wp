@@ -1,7 +1,13 @@
 ﻿@using SabaNews.Models.ViewModel.Event.WorldCup
 @using DeviceDetectorNET;
 @section Title {
-    Lastest News WorldCup 2022
+    @Model.Header.Title
+}
+
+@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Header.Description' />
+    <meta property="og:title" content='@Model.Header.Title' />
 }
 
 @{
@@ -45,10 +51,9 @@
             totalPages: '@Model.Paging.TotalPages'
         };
     </script>
-    <script src="~/js/event/worldcup2022/lastestnews.js" asp-append-version="true"></script>
+    <script src="~/minify/js/lastestnews.min.js" asp-append-version="true"></script>
 }
-@(await Component.InvokeAsync("Header"))
-@await Html.PartialAsync("~/Views/Event/WorldCup2022/_WorldCupMenu.cshtml", "abc")
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="main">
     <div id="worldcup-fixture"></div>
     <div class="colums-main">
