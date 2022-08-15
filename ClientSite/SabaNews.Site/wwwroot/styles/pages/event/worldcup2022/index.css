@@ -607,10 +607,12 @@
       border: 1px solid #fff;
       border-radius: 3px;
       width: 3.6rem;
-      height: 2.4rem; }
+      height: 2.4rem;
+      overflow: hidden; }
       .wc-table .team-logo img {
         width: 3.6rem;
-        height: 2.4rem; }
+        height: 2.4rem;
+        object-fit: cover; }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;
