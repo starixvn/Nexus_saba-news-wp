@@ -1,8 +1,8 @@
-﻿using SabaNews.Core.Models;
-using System.Collections.Generic;
-
-namespace SabaNews.Core.Constants
+﻿namespace SabaNews.Core.Constants
 {
+    using SabaNews.Core.Models;
+    using System.Collections.Generic;
+
     public static class WorldCup2022
     {
         public const string Homepage = "Trang chủ";
@@ -51,7 +51,7 @@ namespace SabaNews.Core.Constants
         {
             new CateInfo { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
             new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{LastestNewsSlug}" },
-            new CateInfo { Name = Commentary, Slug = CommentarySlug },
+            new CateInfo { Name = Commentary, Slug = CommentarySlug, Url = $"/{HomepageSlug}/{CommentarySlug}" },
             new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{VideoSlug}" },
         };
     }

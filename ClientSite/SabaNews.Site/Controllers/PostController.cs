@@ -57,12 +57,6 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            var postParam = new GetRecentPostsParam
-            {
-                Start = Constants.FromFirstItem,
-                End = Constants.GetElevenItems,
-                PostID = post.ID
-            };
             SavePost savePost = null;
             var isLogin = sessionService.User != null;
             if (isLogin)
@@ -70,10 +64,15 @@
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
-            (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.slug);
             var cateUrl = PostHelper.GetCategoryLink(cateParents);
             var topParentCate = PostHelper.GetTopCateParent(cateParents);
+            var cateParents = await categoryService.GetCateParentsAsync(cateInfo.Slug);
+            if (cateInfo.Url == null)
+            {
+                cateInfo.Url = PostHelper.GetUrl(cateParents);
+            }
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
@@ -82,7 +81,7 @@
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
                 IsVideo = post.Type == Constants.VideoPostType,
-                CateSlug = cateInfo.slug,
+                CateInfo = cateInfo
                 CateName = cateInfo.name,
                 CateUrl = cateUrl,
                 CateParent = topParentCate
@@ -117,15 +116,19 @@
             return Json(result);
         }
 
-        private static (string, string) GetCateInfo(string cateName, string cateSlug)
+        private static CateInfo GetCateInfo(string cateName, string cateSlug)
         {
             var slug = cateSlug;
             var name = cateName;
-            var test = GetEventInfo(cateSlug);
+            var cateEvent = GetEventInfo(cateSlug);
+            if (cateEvent != null)
+            {
+                return cateEvent;
+            }
             if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug) 
                 && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
             {
-                return (Constants.OtherPostSlug, Constants.OtherPosts);
+                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts }; 
             }
             if (cateSlug.Contains(","))
             {
@@ -136,7 +139,7 @@
                 slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
                 name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
             }
-            return (slug.Trim(), name.Trim());
+            return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
         }
 
         private static CateInfo GetEventInfo(string cateSlug)

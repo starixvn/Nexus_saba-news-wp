@@ -21,9 +21,7 @@
 
 }
 
-@{
     var linkReturn = Model.CateUrl;
-}
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
     <div class="container detail-container">
@@ -79,9 +77,9 @@
                     }
                     else
                     {
-                        <a href="@linkReturn"
+                        <a href="@Model.CateInfo.Url"
                            class="item intent"
-                           title="@ViewResources.Back @Model.CateName">
+                           title="@ViewResources.Back @Model.CateInfo.Name">
                             <i class="icon-social icon-back"></i>
                         </a>
                     }
@@ -147,9 +145,9 @@
                         }
                         else
                         {
-                            <a href="@linkReturn"
+                            <a href="@Model.CateInfo.Url"
                                class="item intent"
-                               title="@ViewResources.Back @Model.CateName">
+                               title="@ViewResources.Back @Model.CateInfo.Name">
                                 <i class="icon-social icon-back"></i>
                             </a>
                         }

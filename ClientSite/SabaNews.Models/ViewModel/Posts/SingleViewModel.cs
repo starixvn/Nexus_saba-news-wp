@@ -14,6 +14,7 @@
         public SavePost SavePost { get; set; }
         public string AbsoluteUrl { get; set; }
         public bool IsVideo { get; set; }
+        public CateInfo CateInfo { get; set; }
         public string CateSlug { get; set; }
         public string CateName { get; set; }
         public string CateUrl { get; set; }
