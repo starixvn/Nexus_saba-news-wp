@@ -1,3 +1,36 @@
-﻿.wc-modal{
+﻿.wc-modal {
+    .modal {
+        &.show {
+            position: fixed;
+            z-index: 99999;
+            top: 50%;
+            background: red;
+            right: 50%;
+            transform: translate(50%,-50%);
+            width: 100%;
+            max-width: 75rem;
+        }
 
+        .modal-auth {
+            border: none;
+            border-radius: 0;
+            position: relative;
+        }
+
+        .close-wc {
+            position: absolute;
+            top: -1.2rem;
+            right: -1.6rem;
+            z-index: 999999;
+            cursor: pointer;
+            color: #4f4f4f;
+            width: 3.2rem;
+            height: 3.2rem;
+            background: #fff;
+            border-radius: 50%;
+            line-height: 0;
+            font-size: 2.4rem;
+            outline: none;
+        }
+    }
 }
