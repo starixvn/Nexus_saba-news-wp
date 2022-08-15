@@ -118,5 +118,9 @@
   {
     "outputFile": "wwwroot/styles/pages/event/worldcup2022/lastestnews.css",
     "inputFile": "wwwroot/styles/pages/event/worldcup2022/lastestnews.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/event/worldcup2022/fixture.css",
+    "inputFile": "wwwroot/styles/pages/event/worldcup2022/fixture.scss"
   }
 ]
