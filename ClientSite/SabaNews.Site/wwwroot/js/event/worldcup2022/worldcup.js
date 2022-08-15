@@ -24,9 +24,21 @@
         });
     }
 
+    function handleActions() {
+
+        $(document).on('shown.bs.modal', '.modal', function (e) {
+            $('html').addClass('overflow-page');
+        })
+
+        $(document).on('hidden.bs.modal', '.modal', function (e) {
+            $('html').removeClass('overflow-page');
+        })
+    }
+
     function init() {
         getTopScorers();
         scrollEffectHeader();
+        handleActions();
     }
    
 

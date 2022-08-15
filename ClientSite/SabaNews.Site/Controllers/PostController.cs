@@ -60,7 +60,6 @@
                 End = Constants.GetElevenItems,
                 PostID = post.ID
             };
-            var recentPosts = await postService.GetRecentPostsAsync(postParam);
             SavePost savePost = null;
             var isLogin = sessionService.User != null;
             if (isLogin)
@@ -76,7 +75,6 @@
             var model = new SingleViewModel
             {
                 SinglePost = post,
-                RecentPosts = recentPosts,
                 IsLogin = isLogin,
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
