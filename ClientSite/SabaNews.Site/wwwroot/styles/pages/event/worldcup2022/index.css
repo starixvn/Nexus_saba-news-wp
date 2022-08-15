@@ -15,7 +15,7 @@
     align-items: center;
     width: 19rem;
     justify-content: center;
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+    clip-path: polygon(0 0, 100% 0, 77% 100%, 23% 100%);
     transition: height .5s, polygon .5s !important;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25); }
     @media screen and (min-width: 1391px) {
@@ -24,7 +24,8 @@
     .wc-logo a img {
       display: block;
       margin-top: 0.5rem;
-      width: 100px; }
+      width: 100px;
+      transition: opacity .5s ease-in; }
       @media screen and (min-width: 1391px) {
         .wc-logo a img {
           width: 120px; } }
@@ -46,7 +47,10 @@
       height: 5rem; }
       .top-header.scroll-height .wc-logo a {
         height: 5rem;
-        clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%); } }
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%); }
+      .top-header.scroll-height .wc-logo img {
+        opacity: 0;
+        visibility: hidden; } }
   .top-header .group-menu {
     justify-content: center; }
     .top-header .group-menu .nav-menu {
