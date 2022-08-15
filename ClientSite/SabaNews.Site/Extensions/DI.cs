@@ -42,6 +42,7 @@
             services.AddTransient<IBannerService, BannerService>();
             services.AddTransient<ILogService, LogService>();
             services.AddTransient<IExportExcelService, ExportExcelService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         public static void RegisterAuthentication(this IServiceCollection services, IConfiguration configuration)
