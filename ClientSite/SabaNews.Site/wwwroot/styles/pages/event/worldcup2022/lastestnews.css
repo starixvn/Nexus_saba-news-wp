@@ -733,3 +733,8 @@
 
 .page-items-hot {
   margin-bottom: 2rem; }
+
+.page-items-box {
+  margin-bottom: 3rem; }
+  .page-items-box:last-child {
+    margin-bottom: 0; }
