@@ -80,7 +80,7 @@
                 IsLogin = isLogin,
                 SavePost = savePost,
                 AbsoluteUrl = $"{domain}{slug}",
-                IsVideo = post.Type == Constants.VideoPostType,
+                IsVideo = PostHelper.CheckIsVideo(cateParents),
                 CateInfo = cateInfo
                 CateName = cateInfo.name,
                 CateUrl = cateUrl,
@@ -89,6 +89,8 @@
             
             return View(model);
         }
+        
+        
 
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
@@ -144,11 +146,11 @@
 
         private static CateInfo GetEventInfo(string cateSlug)
         {
-            var worldcup = WorldCup2022.Cates;
+            var cateEvents =  PostHelper.GetEventCates();
             var listCateSlug = cateSlug.Split(',');
             foreach (var slug in listCateSlug)
             {
-                var cate = worldcup.Find(item => item.Slug == slug.Trim());
+                var cate = cateEvents.Find(item => item.Slug == slug.Trim());
                 if (cate != null)
                 {
                     return cate;

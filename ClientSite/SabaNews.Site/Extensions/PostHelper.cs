@@ -1,4 +1,5 @@
 ﻿using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
 using SabaNews.Models.Categories;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,13 @@ namespace SabaNews.Site.Extensions
             var video = cates.Where(cate => cate.Slug == Constants.VideoSlug).ToList();
             return video.Any();
 
+        }
+
+        public static List<CateInfo> GetEventCates()
+        {
+            var cates = new List<CateInfo>();
+            cates.AddRange(WorldCup2022.Cates);
+            return cates;
         }
 
         public static string GetTopCateParent(IList<CategoryGeneral> cates)

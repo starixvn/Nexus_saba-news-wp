@@ -121,7 +121,7 @@
                                 {
                                     <div class="post-items swiper-slide scroll-snap-items post-hot">
                                         <div class="hover-image">
-                                            <a href=@Url.Action("LastestNews", "WorldCup2022")>
+                                            <a href=@Url.Action("Single", "Post", new { slug = post.Slug })>
                                                 <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" />
                                             </a>
                                             <div class="title-hot">
