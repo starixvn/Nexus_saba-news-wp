@@ -7,6 +7,42 @@
     }
 }
 
+
+
+.wc-logo {
+    margin-right: -2rem;
+
+    @include tableMobile {
+        display: none !important;
+    }
+
+    a {
+        background: #EEEEE4;
+        height: 9.5rem;
+        display: flex !important;
+        align-items: center;
+        width: 19rem;
+        justify-content: center;
+        clip-path: polygon(0 0,100% 0,80% 100%,20% 100%);
+        transition: height .5s, polygon .5s !important;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+        @include creen1391px {
+            width: 23rem;
+        }
+
+        img {
+            display: block;
+            margin-top: 0.5rem;
+            width: 100px;
+
+            @include creen1391px {
+                width: 120px;
+            }
+        }
+    }
+}
+
+
 .top-header {
     padding: 0;
     background: $primary-bg;
@@ -14,7 +50,8 @@
     display: flex;
     align-items: center;
     height: 7.7rem;
-    transition : height .3s ease-in-out;
+    transition: height .5s ease;
+
     @include tableMobile {
         padding: 0;
         height: auto;
@@ -23,6 +60,13 @@
     @include creen1199px {
         &.scroll-height {
             height: 5rem;
+
+            .wc-logo {
+                a {
+                    height: 5rem;
+                    clip-path: polygon(0 0,100% 0,80% 100%,20% 100%);
+                }
+            }
         }
     }
 
@@ -86,38 +130,6 @@
             i {
                 margin-right: .5rem;
                 font-size: 2rem;
-            }
-        }
-    }
-}
-
-.wc-logo {
-    margin-right: -2rem;
-    @include tableMobile {
-        display: none !important;
-    }
-
-    a {
-        background: #EEEEE4;
-        height: 9.5rem;
-        display: flex !important;
-        align-items: center;
-        width: 19rem;
-        justify-content: center;
-        clip-path: polygon(0 0,100% 0,75% 100%,25% 100%);
-        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-
-        @include creen1391px {
-            width: 23rem;
-        }
-
-        img {
-            display: block;
-            margin-top: 0.5rem;
-            width: 100px;
-
-            @include creen1391px {
-                width: 120px;
             }
         }
     }
