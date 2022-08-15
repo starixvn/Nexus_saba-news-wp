@@ -157,6 +157,13 @@
             "wwwroot/styles/pages/event/worldcup2022/index.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/worldcup2022-fixture.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/worldcup2022/fixture.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
@@ -361,6 +368,17 @@
         "outputFileName": "wwwroot/minify/js/lastestnews.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/lastestnews.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/worldcup2022-fixture.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/worldcup.js"
         ],
         "minify": {
             "enabled": true,
