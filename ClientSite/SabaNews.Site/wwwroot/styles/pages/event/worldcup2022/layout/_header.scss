@@ -36,9 +36,19 @@
             margin-top: 0.5rem;
             width: 100px;
             transition: opacity .5s ease-in;
+
             @include creen1391px {
                 width: 120px;
             }
+        }
+
+        .logo-scroll-header {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%,-50%);
         }
     }
 }
@@ -67,10 +77,15 @@
                     height: 5rem;
                     clip-path: polygon(0 0,100% 0,80% 100%,20% 100%);
                 }
-                img{
-                    opacity : 0;
-                    visibility : hidden;
 
+                .logo-none-scroll {
+                    opacity: 0;
+                    visibility: hidden;
+                }
+
+                .logo-scroll-header {
+                    opacity: 1;
+                    visibility: visible;
                 }
             }
         }
