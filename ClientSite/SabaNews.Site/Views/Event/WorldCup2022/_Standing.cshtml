@@ -3,32 +3,30 @@
     var count = 0;
     var total = ViewBag.Total != null ? ViewBag.Total : 0;
 }
-<div>
-    <h1>@ViewResources.Standing</h1>
-    <table>
-        <thead>
+<h1 class="wc-heading-box">@ViewResources.Standing</h1>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <i class="icon-chevron-left" id="btn-back-standing"></i>
+                @ViewResources.Board @Model.GroupName.Substring(0, 1)
+                <i class="icon-chevron-right" data-total="@total" id="btn-next-standing"></i>
+            </th>
+            <th>@ViewResources.Battle</th>
+            <th>@ViewResources.FairPlay</th>
+            <th>@ViewResources.Point</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Standings)
+        {
+            count++;
             <tr>
-                <th>
-                    <i class="icon-chevron-left" id="btn-back-standing"></i>
-                    @ViewResources.Board @Model.GroupName.Substring(0, 1)
-                    <i class="icon-chevron-right" data-total="@total" id="btn-next-standing"></i>
-                </th>
-                <th>@ViewResources.Battle</th>
-                <th>@ViewResources.FairPlay</th>
-                <th>@ViewResources.Point</th>
+                <td class="text-left" width="130px">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                <td class="text-center" width="65px">@item.Total</td>
+                <td class="text-center" width="65px">@item.GoalDiff</td>
+                <td class="text-center" width="65px">@item.Points</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Standings)
-            {
-                count++;
-                <tr>
-                    <td class="text-left" width="130px">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
-                    <td class="text-center" width="65px">@item.Total</td>
-                    <td class="text-center" width="65px">@item.GoalDiff</td>
-                    <td class="text-center" width="65px">@item.Points</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
