@@ -1,4 +1,13 @@
-﻿@media screen and (max-width: 1024px) {
+﻿.wc-main {
+  padding-top: 3rem; }
+  @media screen and (max-width: 1024px) {
+    .wc-main {
+      padding-top: 1.5rem; } }
+
+.overflow-page {
+  overflow: hidden; }
+
+@media screen and (max-width: 1024px) {
   .header {
     position: relative;
     background: #48041A; } }
@@ -348,9 +357,6 @@
 
 .active-box-auth {
   display: block; }
-
-.overflow-page {
-  overflow: hidden; }
 
 .title-section {
   display: flex;
@@ -802,12 +808,6 @@
     right: 0;
     width: 100%;
     height: 100%; }
-
-.wc-main {
-  padding-top: 3rem; }
-  @media screen and (max-width: 1024px) {
-    .wc-main {
-      padding-top: 1.5rem; } }
 
 .gird-hot-news {
   display: grid;

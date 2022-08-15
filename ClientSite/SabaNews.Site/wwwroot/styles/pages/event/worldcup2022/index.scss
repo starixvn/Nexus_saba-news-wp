@@ -1,5 +1,6 @@
 ﻿@import './abstracts/wc-variables';
 @import '../../../abstracts/mixins';
+@import './abstracts/wc-base';
 @import './layout/header';
 @import './components/title-section';
 @import './components/wc-block';
@@ -14,13 +15,6 @@
 @import './components/dots-post';
 @import './components/swipper-slide';
 @import './components/wc-modal';
-
-.wc-main{
-    padding-top : 3rem;
-    @include tableMobile{
-        padding-top : 1.5rem;
-    }
-}
 
 .gird-hot-news {
     display: grid;

@@ -4,15 +4,21 @@
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
 @import "../../../../components/soccer-item";
-@import "../../../../components/league-header-detail";
+// @import "../../../../components/league-header-detail";
 @import "../../../../components/nav-tab";
-@import "../../../../components/search-bar";
+// @import "../../../../components/search-bar";
 @import "../../../../components/tooltip";
-@import "../../../../components/breadcrumb";
-@import "../../../../components/modal";
+// @import "../../../../components/breadcrumb";
+// @import "../../../../components/modal";
 @import "../../../../components/recent-post";
 
+
+
+
 .livescore-soccer {
+  display: unset;
+  grid-template-columns: unset;
+  grid-template-rows: unset;
   .soccer-match-grid {
     &-item {
       .soccer-match-grid-item-header {
