@@ -346,6 +346,9 @@
 .active-box-auth {
   display: block; }
 
+.overflow-page {
+  overflow: hidden; }
+
 .title-section {
   display: flex;
   align-items: center;
