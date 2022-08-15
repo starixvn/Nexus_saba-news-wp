@@ -232,7 +232,7 @@
         {
             var active = menu.Slug == Model.CateSlug ? "active" : "";
             <li class="menu-item @active">
-                <a href=@($"{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item @active">
+                <a href=@($"/{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item @active">
                     @menu.Name
                 </a>
             </li>

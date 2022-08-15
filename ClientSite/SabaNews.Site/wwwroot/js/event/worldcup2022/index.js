@@ -58,6 +58,11 @@
             $('#PlayIframeVideo .if-content').html(content);
             $('#PlayIframeVideo .if-title').html(title);
         });
+
+        $('#PlayIframeVideo').on('hidden.bs.modal', function () {
+            $('#PlayIframeVideo .if-content').html('');
+            $('#PlayIframeVideo .if-title').html('');
+        });
     }
 
     function init() {
