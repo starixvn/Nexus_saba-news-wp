@@ -56,6 +56,9 @@
                 matches.Add(new Match
                 {
                     MatchId = match.MatchId,
+                    FootballAddStartTime = match.FootballAddStartTime,
+                    FootballStartTime = match.FootballStartTime,
+                    FootballNextHalfStartTime = match.FootballNextHalfStartTime,
                     StartTime = match.StartTime,
                     EndTime = match.EndTime,
                     Status = match.Status,

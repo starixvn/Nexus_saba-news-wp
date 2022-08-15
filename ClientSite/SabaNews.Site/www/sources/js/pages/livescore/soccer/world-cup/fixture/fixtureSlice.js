@@ -15,7 +15,8 @@ const fixtureSlice = createSlice({
             state.league = action.payload;
         },
         setLiveMatches: (state, action) => {
-            const liveMatches = action.payload;
+            const liveMatches = action.payload,
+            totalItems = liveMatches.length;
             for (let i = 0; i < totalItems; i++) {
                 let index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {

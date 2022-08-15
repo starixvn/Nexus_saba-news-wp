@@ -4,7 +4,8 @@ import { WorldCup } from '@jsroot/common/constants';
 
 import {
     setMatches,
-    setLeague
+    setLeague,
+    setLiveMatches
 } from './fixtureSlice';
 
 const getMatches = () => async dispatch => {
@@ -19,5 +20,6 @@ const getMatches = () => async dispatch => {
 export const ActionCreators = {
     setMatches,
     setLeague,
+    setLiveMatches,
     getMatches
 };
