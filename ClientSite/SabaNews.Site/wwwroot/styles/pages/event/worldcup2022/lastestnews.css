@@ -665,6 +665,13 @@
   .mb-container {
     padding: 0 !important; } }
 
+.page-grid {
+  display: grid;
+  grid-template-columns: 63% 35%;
+  grid-gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid #ddd; }
+
 .dots {
   display: flex;
   align-items: center;
@@ -723,3 +730,6 @@
     right: 0;
     width: 100%;
     height: 100%; }
+
+.page-items-hot {
+  margin-bottom: 2rem; }

@@ -17,3 +17,11 @@
         padding: 0 !important;
     }
 }
+
+.page-grid {
+    display: grid;
+    grid-template-columns: 63% 35%;
+    grid-gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid #ddd;
+}
