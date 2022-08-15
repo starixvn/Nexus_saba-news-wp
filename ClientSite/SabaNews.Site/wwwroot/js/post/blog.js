@@ -8,6 +8,7 @@
     var type = window.type;
     var currentscrollHeight = 0;
     var isLoadData = true;
+    var windowWidth = window.innerWidth;
     
     function GetDataGrid(page) {
         if (page > paging.totalPages) {
@@ -57,7 +58,8 @@
         $(window).on("scroll", function () {
             const scrollHeight = $(document).height();
             const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
-            const isBottom = scrollHeight - $('.footer').innerHeight() < scrollPos;
+            const mobileScroll = windowWidth > 768 ? 0 : $('.sidebar-posts').innerHeight();
+            const isBottom = scrollHeight - $('.footer').innerHeight() - mobileScroll < scrollPos;
             if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
                 
                 page++;
