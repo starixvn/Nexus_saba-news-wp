@@ -83,6 +83,24 @@
             return View("~/Views/Event/WorldCup2022/Fixture.cshtml", header);
         }
 
+        [Route("world-cup-2022/bang-xep-hang-world-cup-2022")]
+        public async Task<IActionResult> Standing()
+        {
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.Standing,
+                Slug = WorldCup2022.StandingSlug
+            };
+            var viewModel = new LastestNewsViewModel()
+            {
+                Header = header,
+                StandingsViewModel = GroupStandingsByGroupName(standings)
+            };
+            return View("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewModel);
+        }
+
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
         {
             int pageSize = param.PageSize;

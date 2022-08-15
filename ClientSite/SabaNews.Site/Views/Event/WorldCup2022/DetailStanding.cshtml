@@ -1,0 +1,90 @@
+﻿@using DeviceDetectorNET;
+@section Title {
+    @Model.Header.Title
+}
+
+@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Header.Description' />
+    <meta property="og:title" content='@Model.Header.Title' />
+}
+
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+    </environment>
+}
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/livescore/livescore.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/livescore/livescore.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+    </environment>
+}
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
+<section class="main">
+    <div id="worldcup-fixture"></div>
+    <div class="colums-main">
+        @foreach (var standing in Model.StandingsViewModel)
+        {
+            var count = 0;
+            <div>
+                <h1> @ViewResources.Board @standing.GroupName.Substring(0, 1)</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Trận</th>
+                            <th>Thắng</th>
+                            <th>Hòa</th>
+                            <th>Thua</th>
+                            <th>Bàn Thắng</th>
+                            <th>Bàn Bại</th>
+                            <th>+/-</th>
+                            <th>Diểm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in standing.Standings)
+                        {
+                            count++;
+                            <tr>
+                                <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                                <td class="text-center">@item.Total</td>
+                                <td class="text-center">@item.Won</td>
+                                <td class="text-center">@item.Draw</td>
+                                <td class="text-center">@item.Loss</td>
+                                <td class="text-center">@item.Goals</td>
+                                <td class="text-center">@item.GoalsAgainst</td>
+                                <td class="text-center">@item.GoalDiff</td>
+                                <td class="text-center">@item.Points</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</section>
