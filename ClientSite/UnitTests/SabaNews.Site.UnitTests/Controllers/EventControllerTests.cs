@@ -152,12 +152,12 @@ namespace SabaNews.Site.UnitTests.Controllers
 
 
         #region Helpers
-        private EventController GetController()
+        private MemberEventController GetController()
         {
             sessionService = Substitute.For<ISessionService>();
             userService = Substitute.For<IUserService>();
             configuration = Substitute.For<IConfiguration>();
-            var controller = new EventController(sessionService, userService, configuration);
+            var controller = new MemberEventController(sessionService, userService, configuration);
 
             return controller;
         }

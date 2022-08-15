@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    class GetTopScorersByRowNum : CriteriaBase
+    public class GetTopScorersByRowNumCriteria : CriteriaBase
     {
         public long LeagueId { get; set; }
         public long SeasonId { get; set; }

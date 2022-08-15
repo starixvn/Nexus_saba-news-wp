@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    public class UpdateTopScorers : BaseNonQueryCommand
+    public class InsertTopScorersCriteria : BaseNonQueryCommand
     {
         public long PlayerId { get; set; }
         public long SeasonId { get; set; }
@@ -11,8 +11,7 @@
         public int Goals { get; set; }
         public int Assists { get; set; }
         public int Top { get; set; }
-        public int RowNum { get; set; }
-        public override string GetSettingKey() => "Livescore_Top_Scorers_Update";
+        public override string GetSettingKey() => "Livescore_Top_Scorers_Insert";
         public override bool IsValid() => true;
     }
 }

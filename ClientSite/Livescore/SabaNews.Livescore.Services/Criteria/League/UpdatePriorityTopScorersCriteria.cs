@@ -2,7 +2,7 @@
 {
     using SabaNews.Core.Models;
 
-    public class UpdatePriorityTopScorers : BaseNonQueryCommand
+    public class UpdatePriorityTopScorersCriteria : BaseNonQueryCommand
     {
         public bool IsCheck { get; set; }
         public int TopUpdate { get; set; }

@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
     
-    class GetAllTeam : CriteriaBase
+    public class GetAllTeamCriteria : CriteriaBase
     {        
         public long LeagueId { get; set; }
         public override string GetSettingKey() => "Livescore_Team_GetAll";

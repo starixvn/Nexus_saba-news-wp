@@ -107,12 +107,20 @@
             return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
         }
 
-        public static List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
+        [HttpPost]
+        public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)
+        {
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(criteria);
+            var groups = GroupStandingsByGroupName(standings);
+            return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
+        }
+
+        public List<StandingViewModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = GetGroupNames(seasonStandings);
             var standingsViewModels = new List<StandingViewModel>();
-            
-            for(int i = 0; i < groupNames.Count; i++)
+
+            for (int i = 0; i < groupNames.Count; i++)
             {
                 standingsViewModels.Add(new StandingViewModel
                 {
@@ -124,33 +132,24 @@
             return standingsViewModels;
         }
 
-        public static List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
+        public List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
         {
             var groupNames = new List<string>();
-            foreach(var item in seasonStandings)
+            foreach (var item in seasonStandings)
             {
-                if(groupNames.Count == 0)
+                if (groupNames.Count == 0)
+                {
+                    groupNames.Add(item.GroupName);
+                    continue;
+                }
+
+                var check = groupNames.Where(x => x == item.GroupName).ToList();
+                if (check.Count == 0)
                 {
                     groupNames.Add(item.GroupName);
                 }
-                else
-                {
-                    var check = groupNames.Where(x => x == item.GroupName).ToList();
-                    if(check.Count == 0)
-                    {
-                        groupNames.Add(item.GroupName);
-                    }
-                }
             }
             return groupNames;
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)
-        {
-            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(criteria);
-            var groups = GroupStandingsByGroupName(standings);
-            return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
         }
     }
 }

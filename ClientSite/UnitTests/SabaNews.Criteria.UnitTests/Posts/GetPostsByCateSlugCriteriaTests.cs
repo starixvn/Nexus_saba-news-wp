@@ -10,7 +10,7 @@
         {
             // Arrange
             var criteria = new GetPostsByCateSlugCriteria();
-            var expected = "get_posts_by_cate_slug";
+            var expected = "get_posts_by_cate_slug_xtest";
 
             // Act
             var actual = criteria.GetSettingKey();

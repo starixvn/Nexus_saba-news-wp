@@ -10,6 +10,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.League;
     using Xunit;
 
@@ -41,44 +42,114 @@
         [Fact]
         public async Task GetMajorLeagueAsync_WhenCalled_ReturnExpectedResult()
         {
+            //Arrange
             var service = GetService();
             var fixture = new Fixture();
             var leagues = fixture.Create<IList<League>>();
             baseService.GetDataAsync<League>(Arg.Any<GetMajorLeagueCriteria>()).Returns(leagues);
+            //Act
             var actual = await service.GetMajorLeagueAsync();
+            //Assert
             Assert.Equal(leagues, actual);
         }
 
         [Fact]
         public async Task GetLeagueByIdsAsync_WhenCalled_ReturnExpectedResult()
         {
+            //Arrange
             var service = GetService();
             var fixture = new Fixture();
             var leagues = fixture.Create<IList<League>>();
             baseService.GetDataAsync<League>(Arg.Any<GetLeagueByIdsCriteria>()).Returns(leagues);
+            //Act
             var actual = await service.GetLeagueByIdsAsync(new GetLeagueByIdsCriteria());
+            //Assert
             Assert.Equal(leagues, actual);
+        }
+
+        [Fact]
+        public async Task GetPlayerByIdTeamAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var players = fixture.Create<IList<Player>>();
+            var teamId = fixture.Create<long>();
+            baseService.GetDataAsync<Player>(Arg.Any<GetPlayerByTeamIdCriteria>()).Returns(players);
+            //Act
+            var actual = await service.GetPlayerByIdTeamAsync(teamId);
+            //Assert
+            Assert.Equal(players, actual);
+        }
+
+        [Fact]
+        public async Task GetTop10ScorersAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var topScorers = fixture.Create<IList<TopScorers>>();
+            var scorersCriteria = fixture.Create<GetTop10ScorersCriteria>();
+            baseService.GetDataAsync<TopScorers>(Arg.Any<GetTop10ScorersCriteria>()).Returns(topScorers);
+            //Act
+            var actual = await service.GetTop10ScorersAsync(scorersCriteria);
+            //Assert
+            Assert.Equal(topScorers, actual);
+        }
+
+        [Fact]
+        public async Task GetAllTeamAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var teams = fixture.Create<IList<Team>>();
+            baseService.GetDataAsync<Team>(Arg.Any<GetAllTeamCriteria>()).Returns(teams);
+            //Act
+            var actual = await service.GetAllTeamAsync();
+            //Assert
+            Assert.Equal(teams, actual);
+        }
+
+        [Fact]
+        public async Task GetAllTopScorersAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var topScorers = fixture.Create<IList<TopScorers>>();
+            baseService.GetDataAsync<TopScorers>(Arg.Any<GetAllTopScorersCriteria>()).Returns(topScorers);
+            //Act
+            var actual = await service.GetAllTopScorersAsync();
+            //Assert
+            Assert.Equal(topScorers, actual);
         }
 
         [Fact]
         public async Task GetLeaguesAsync_WhenCalled_ReturnExpectedResult()
         {
+            //Arrange
             var service = GetService();
             var fixture = new Fixture();
             var leagues = fixture.Create<IList<League>>();
             baseService.GetDataAsync<League>(Arg.Any<GetLeaguesCriteria>()).Returns(leagues);
+            //Act
             var actual = await service.GetLeaguesAsync();
+            //Assert
             Assert.Equal(leagues, actual);
         }
 
         [Fact]
         public async Task GetAllLeaguesAsync_WhenCalled_ReturnExpectedResult()
         {
+            //Arrange
             var service = GetService();
             var fixture = new Fixture();
             var leagues = fixture.Create<IList<League>>();
             baseService.GetDataAsync<League>(Arg.Any<GetAllLeaguesCriteria>()).Returns(leagues);
+            //Act
             var actual = await service.GetAllLeaguesAsync();
+            //Assert
             Assert.Equal(leagues, actual);
         }
 
@@ -97,7 +168,6 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.UpdateLeaguesExtraAsync(league);
-
             //Assert
             Assert.True(actual.IsSuccessful);
         }
@@ -116,7 +186,6 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<DeleteLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.DeleteLeaguesExtraAsync(model.LeagueId);
-
             //Assert
             Assert.True(actual.IsSuccessful);
         }
@@ -132,7 +201,45 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<InsertLeagueExtraCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.InsertLeaguesExtraAsync(model.LeagueId);
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
 
+        [Fact]
+        public async Task InsertTopScorerAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<InsertTopScorersCriteria>();
+            var topScorers = fixture.Create<TopScorers>();
+            var modelPriority = fixture.Create<UpdatePriorityTopScorersCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<InsertTopScorersCriteria>(x => model = x)).Returns(expected);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdatePriorityTopScorersCriteria>(x => modelPriority = x)).Returns(expected);
+            //Act
+            var actual = await service.InsertTopScorerAsync(topScorers);
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task UpdateTopScorerAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateTopScorersCriteria>();
+            var topScorersList = fixture.Create<IList<TopScorers>>();
+            var topScorers = fixture.Create<TopScorers>();
+            var modelPriority = fixture.Create<UpdatePriorityTopScorersCriteria>();
+            var expected = new CommandResult { Code = 0 };
+
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateTopScorersCriteria>(x => model = x)).Returns(expected);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdatePriorityTopScorersCriteria>(x => modelPriority = x)).Returns(expected);
+            baseService.GetDataAsync<TopScorers>(Arg.Any<GetTopScorersByRowNumCriteria>()).Returns(topScorersList);
+            //Act
+            var actual = await service.UpdateTopScorerAsync(topScorers);
             //Assert
             Assert.True(actual.IsSuccessful);
         }
@@ -148,9 +255,23 @@
             baseService.ExecuteNonQueryAsync(Arg.Do<UpdateLeagueCriteria>(x => model = x)).Returns(expected);
             //Act
             var actual = await service.UpdateLeaguesAsync(model);
-
             //Assert
             Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task GetTopScorersByRowNumAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var topScorers = fixture.Create<IList<TopScorers>>();
+            var rowNum = fixture.Create<int>();
+            baseService.GetDataAsync<TopScorers>(Arg.Any<GetTopScorersByRowNumCriteria>()).Returns(topScorers);
+            //Act
+            var actual = await service.GetTopScorersByRowNumAsync(rowNum);
+            //Assert
+            Assert.Equal(topScorers, actual);
         }
 
         [Fact]
@@ -163,7 +284,6 @@
             baseService.GetDataEntityAsync<League>(Arg.Any<GetLeagueByIdCriteria>()).Returns(league);
             //Act
             var actual = await service.GetLeagueByIdAsync(league.LeagueId);
-
             //Assert
             Assert.Equal(league, actual);
         }
@@ -175,7 +295,6 @@
             var service = GetService();
             //Act
             var actual = service.SearchLeague(league, "Test1", 1);
-
             //Assert
             Assert.Equal(league[0], actual[0]);
         }
@@ -188,7 +307,6 @@
             var service = GetService();
             //Act
             var actual = service.SearchLeague(league, "Test1", 0);
-
             //Assert
             Assert.Equal(league[1], actual[0]);
         }
@@ -200,7 +318,6 @@
             var service = GetService();            
             //Act
             var actual = service.SortLeague(league, 1);
-
             //Assert
             Assert.Equal(league[0], actual[0]);
         }
@@ -212,7 +329,6 @@
             var service = GetService();
             //Act
             var actual = service.SortLeague(league, 2);
-
             //Assert
             Assert.Equal(league[1], actual[0]);
         }
@@ -224,7 +340,6 @@
             var service = GetService();
             //Act
             var actual = service.SortLeague(league, 3);
-
             //Assert
             Assert.Equal(league[1], actual[0]);
         }
@@ -236,7 +351,6 @@
             var service = GetService();
             //Act
             var actual = service.SortLeague(league, 4);
-
             //Assert
             Assert.Equal(league[0], actual[0]);
         }
@@ -250,7 +364,6 @@
             var league = fixture.Create<IList<League>>();
             var service = GetService();
             //Act
-
             var actual = LeagueService.GetLeaguePriority(league);
             int priority = 0;
             foreach(var item in league)
