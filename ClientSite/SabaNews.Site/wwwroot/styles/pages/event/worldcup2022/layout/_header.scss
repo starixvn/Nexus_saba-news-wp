@@ -335,7 +335,7 @@
                 position: absolute;
                 top: -1px;
                 right: -1px;
-                z-index: 9;
+                z-index: -1;
             }
 
             input {
@@ -365,6 +365,9 @@
 
         &:hover {
             form {
+                .search-hover {
+                    z-index : 9;
+                }
                 input, .icon-search-hover {
                     visibility: visible;
                     opacity: 1;

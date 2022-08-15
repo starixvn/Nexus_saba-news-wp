@@ -227,7 +227,7 @@
       position: absolute;
       top: -1px;
       right: -1px;
-      z-index: 9; }
+      z-index: -1; }
     .show-on-pc .search-input form input {
       width: 100%;
       background: #5C2034;
@@ -246,6 +246,8 @@
       visibility: hidden;
       opacity: 0;
       transition: all .3s ease-in-out; }
+    .show-on-pc .search-input:hover form .search-hover {
+      z-index: 9; }
     .show-on-pc .search-input:hover form input, .show-on-pc .search-input:hover form .icon-search-hover {
       visibility: visible;
       opacity: 1; }
