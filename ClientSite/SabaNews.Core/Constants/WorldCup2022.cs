@@ -36,15 +36,23 @@ namespace SabaNews.Core.Constants
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
 
-        public static readonly List<CateMenu> Menus = new List<CateMenu>
+        public static readonly List<CateInfo> Menus = new List<CateInfo>
         {
-            new CateMenu { Name = Homepage, Slug = "" },
-            new CateMenu { Name = LastestNews, Slug = LastestNewsSlug },
-            new CateMenu { Name = Fixture, Slug = FixtureSlug },
-            new CateMenu { Name = Standing, Slug = StandingSlug },
-            new CateMenu { Name = Commentary, Slug = CommentarySlug },
-            new CateMenu { Name = Video, Slug = VideoSlug },
-            new CateMenu { Name = Minigame, Slug = MinigameSlug }
+            new CateInfo { Name = Homepage, Slug = "" },
+            new CateInfo { Name = LastestNews, Slug = LastestNewsSlug },
+            new CateInfo { Name = Fixture, Slug = FixtureSlug },
+            new CateInfo { Name = Standing, Slug = StandingSlug },
+            new CateInfo { Name = Commentary, Slug = CommentarySlug },
+            new CateInfo { Name = Video, Slug = VideoSlug },
+            new CateInfo { Name = Minigame, Slug = MinigameSlug }
+        };
+
+        public static readonly List<CateInfo> Cates = new List<CateInfo>
+        {
+            new CateInfo { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
+            new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{LastestNewsSlug}" },
+            new CateInfo { Name = Commentary, Slug = CommentarySlug },
+            new CateInfo { Name = Video, Slug = VideoSlug, Url = $"/{HomepageSlug}/{VideoSlug}" },
         };
     }
 }

@@ -28,6 +28,7 @@
         private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
+        private readonly ICategoryService categoryService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
@@ -35,7 +36,8 @@
             IUserService userService,
             IStatisticService statisticService,
             IPollService pollService,
-            IDataControlService dataControlService)
+            IDataControlService dataControlService,
+            ICategoryService categoryService)
         {
             this.postService = postService;
             this.configuration = configuration;
@@ -44,6 +46,7 @@
             this.statisticService = statisticService;
             this.pollService = pollService;
             this.dataControlService = dataControlService;
+            this.categoryService = categoryService;
         }
 
         [Route("{slug}")]
@@ -118,6 +121,7 @@
         {
             var slug = cateSlug;
             var name = cateName;
+            var test = GetEventInfo(cateSlug);
             if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug) 
                 && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
             {
@@ -131,9 +135,24 @@
                 var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
                 slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
                 name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
-                
             }
             return (slug.Trim(), name.Trim());
+        }
+
+        private static CateInfo GetEventInfo(string cateSlug)
+        {
+            var worldcup = WorldCup2022.Cates;
+            var listCateSlug = cateSlug.Split(',');
+            foreach (var slug in listCateSlug)
+            {
+                var cate = worldcup.Find(item => item.Slug == slug.Trim());
+                if (cate != null)
+                {
+                    return cate;
+                }
+            }
+            return null;
+
         }
 
         [HttpPost]

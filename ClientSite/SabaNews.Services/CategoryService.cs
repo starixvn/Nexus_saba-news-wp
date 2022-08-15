@@ -4,6 +4,7 @@
     using SabaNews.Criteria.Category;
     using SabaNews.Models.Categories;
     using SabaNews.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -20,7 +21,8 @@
         public async Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug)
         {
             var result =  await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
-            return result.ToList();
+            var cates = result.Reverse();
+            return cates.ToList();
         }
     }
 }
