@@ -137,6 +137,13 @@
       }
     }
   }
+  .live-intermission{
+    .soccer-match-date-result{
+      @include creen1199px{
+        top: 55%;
+      }
+    }
+  }
 }
 
 .wc-round-score{
