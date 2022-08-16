@@ -1,7 +1,12 @@
 ﻿@using SabaNews.Resources
+@using DeviceDetectorNET;
 @{
-    var count = 0;
+    var standingNum = 1;
     var total = ViewBag.Total != null ? ViewBag.Total : 0;
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
 }
 
 
@@ -15,9 +20,8 @@
     <div class="wc-table wc-table-king-soccer">
         <div class="wc-table-header">
             <div class="wc-table-cell cell-participant">
-                <i class="icon-chevron-left" id="btn-back-standing"></i>
-                @ViewResources.Board @Model.GroupName.Substring(0, 1)
-                <i class="icon-chevron-right" data-total="@total" id="btn-next-standing"></i>
+                        @ViewResources.Board @group.GroupName.Substring(0, 1)
+                        <i class="icon-chevron-right btn-next-standing" data-total="@total"></i>
             </div>
             <div class="wc-table-cell cell-rank">@ViewResources.Battle</div>
             <div class="wc-table-cell cell-rank">@ViewResources.FairPlay</div>
@@ -44,3 +48,11 @@
         </div>
     </div>
 </div>
+
+}
+@if (isMobile) {
+    <div>
+        <h1>Xem chi tiết >></h1>
+    </div>
+}
+

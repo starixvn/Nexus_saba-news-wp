@@ -4,7 +4,9 @@
     var page = paging.page;
     var currentscrollHeight = 0;
     var isLoadData = true;
-    var numRow = 0;
+    var numRow = 1;
+    var isMobile = false;
+
 
     function GetDataGrid(page) {
         if (page > paging.totalPages) {
@@ -62,14 +64,26 @@
     function getStandings() {
         $.ajax({
             url: '/WorldCup2022/GetStandings',
-            type: 'POST',
-            data: { numRow }
+            type: 'POST'
         }).done(function (data) {
             $('#standingWC').html(data);
 
-            $('#btn-back-standing').on('click', function () {
+            var total = $(".btn-next-standing").data('total');
+            var isMobile = $("#standingWC").data('ismobile');
+            if (isMobile === "False") {
+                for (var i = 1; i <= total; i++) {
+                    if (i != numRow) {
+                        $('#standing-' + i).hide();
+                    }
+                    else {
+                        $('#standing-' + i).show();
+                    }
+                }
+            }
+           
+            $('.btn-back-standing').on('click', function () {
                 numRow--;
-                if (numRow >= 0) {
+                if (numRow >= 1) {
                     getStandings();
                 }
                 else {
@@ -77,7 +91,7 @@
                 }
             });
 
-            $('#btn-next-standing').on('click', function () {
+            $('.btn-next-standing').on('click', function () {
                 numRow++;
                 var total = $(this).data("total");
                 if (numRow < total) {

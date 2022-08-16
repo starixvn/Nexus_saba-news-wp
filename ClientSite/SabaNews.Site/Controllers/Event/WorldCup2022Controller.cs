@@ -110,12 +110,12 @@
             return PartialView("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", posts);
         }
 
-        public async Task<IActionResult> GetStandings(int numRow)
+        public async Task<IActionResult> GetStandings()
         {
             var standingsCriteria = new GetLeagueSeasonStandingCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             ViewBag.Total = GroupStandingsByGroupName(standings).Count;
-            return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings)[numRow]);
+            return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings));
         }
 
         public async Task<IActionResult> GetTopScorers()

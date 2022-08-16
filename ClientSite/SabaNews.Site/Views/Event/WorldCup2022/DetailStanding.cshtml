@@ -42,49 +42,101 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
+    <script src="~/js/event/worldcup2022/Standing.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="main">
     <div id="worldcup-fixture"></div>
+    <div>
+        <h1>Bảng Xếp hạng</h1>
+        <button id="btn-detail-standing">Vòng bảng</button>
+        <button id="btn-knock-out">Knock-out</button>
+    </div>
     <div class="colums-main">
-        @foreach (var standing in Model.StandingsViewModel)
-        {
-            var count = 0;
-            <div>
-                <h1> @ViewResources.Board @standing.GroupName.Substring(0, 1)</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Trận</th>
-                            <th>Thắng</th>
-                            <th>Hòa</th>
-                            <th>Thua</th>
-                            <th>Bàn Thắng</th>
-                            <th>Bàn Bại</th>
-                            <th>+/-</th>
-                            <th>Diểm</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in standing.Standings)
-                        {
-                            count++;
-                            <tr>
-                                <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
-                                <td class="text-center">@item.Total</td>
-                                <td class="text-center">@item.Won</td>
-                                <td class="text-center">@item.Draw</td>
-                                <td class="text-center">@item.Loss</td>
-                                <td class="text-center">@item.Goals</td>
-                                <td class="text-center">@item.GoalsAgainst</td>
-                                <td class="text-center">@item.GoalDiff</td>
-                                <td class="text-center">@item.Points</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
+        <div id="detail-standing">
+            @{if (isDesktop)
+                {
+                    @foreach (var standing in Model.StandingsViewModel)
+                    {
+                        var count = 0;
+                        <div>
+                            <h1> @ViewResources.Board @standing.GroupName.Substring(0, 1)</h1>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Trận</th>
+                                        <th>Thắng</th>
+                                        <th>Hòa</th>
+                                        <th>Thua</th>
+                                        <th>Bàn Thắng</th>
+                                        <th>Bàn Bại</th>
+                                        <th>+/-</th>
+                                        <th>Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in standing.Standings)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                                            <td class="text-center">@item.Total</td>
+                                            <td class="text-center">@item.Won</td>
+                                            <td class="text-center">@item.Draw</td>
+                                            <td class="text-center">@item.Loss</td>
+                                            <td class="text-center">@item.Goals</td>
+                                            <td class="text-center">@item.GoalsAgainst</td>
+                                            <td class="text-center">@item.GoalDiff</td>
+                                            <td class="text-center">@item.Points</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+                else
+                {
+                    @foreach (var standing in Model.StandingsViewModel)
+                    {
+                        var count = 0;
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th># @ViewResources.Board @standing.GroupName.Substring(0, 1)</th>
+                                        <th>Trận</th>                                        
+                                        <th>+/-</th>
+                                        <th>Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in standing.Standings)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                                            <td class="text-center">@item.Total</td>
+                                            <td class="text-center">@item.Won</td>
+                                            <td class="text-center">@item.Draw</td>
+                                            <td class="text-center">@item.Loss</td>
+                                            <td class="text-center">@item.Goals</td>
+                                            <td class="text-center">@item.GoalsAgainst</td>
+                                            <td class="text-center">@item.GoalDiff</td>
+                                            <td class="text-center">@item.Points</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+        <div id="knock-out">
+            <p>Page Knock-out</p>
+        </div>
     </div>
 </section>

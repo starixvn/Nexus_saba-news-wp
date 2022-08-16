@@ -97,7 +97,7 @@
                                 }
                                 if (postIndex == 4 && isMobile)
                                 {
-                                    <div id="standingWC"></div>
+                                    <div id="standingWC" data-isMobile="@isMobile"></div>
                                     <div id="topScorersWC"></div>
                                 }
                             }
@@ -135,7 +135,7 @@
             <div class="page-items-right">
                 @if (isDesktop)
                 {
-                    <div id="standingWC" class="page-items-box"></div>
+                    <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
                     <div id="topScorersWC"  class="page-items-box"></div>
                 }
             </div>
