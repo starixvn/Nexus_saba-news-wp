@@ -20,11 +20,12 @@
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/detailstanding.min.css" asp-append-version="true">
     <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true"/>
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true"/>
     </environment>
 }
 
@@ -50,7 +51,7 @@
     <div id="worldcup-fixture"></div>
     <div>
         <h1>Bảng Xếp hạng</h1>
-        <button id="btn-detail-standing">Vòng bảng</button>
+        <button class="btn-detail-standing" id="btn-detail-standing">Vòng bảng</button>
         <button id="btn-knock-out">Knock-out</button>
     </div>
     <div class="colums-main">
@@ -66,8 +67,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Trận</th>
                                         <th>Đội</th>
+                                        <th>Trận</th>
                                         <th>Thắng</th>
                                         <th>Hòa</th>
                                         <th>Thua</th>
@@ -81,18 +82,18 @@
                                     @foreach (var item in standing.Standings)
                                     {
                                         count++;
-                                    <tr>
-                                        <td class="text-center">@count</td>
-                                        <td class="text-left"><img src="@GetTeamIcon(item.Icon)" /> @GetStandingTeamName(item)</td>
-                                        <td class="text-center">@item.Total</td>
-                                        <td class="text-center">@item.Won</td>
-                                        <td class="text-center">@item.Draw</td>
-                                        <td class="text-center">@item.Loss</td>
-                                        <td class="text-center">@item.Goals</td>
-                                        <td class="text-center">@item.GoalsAgainst</td>
-                                        <td class="text-center">@item.GoalDiff</td>
-                                        <td class="text-center">@item.Points</td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-center">@count</td>
+                                            <td class="text-left"><img src="@GetTeamIcon(item.Icon)" /> @GetStandingTeamName(item)</td>
+                                            <td class="text-center">@item.Total</td>
+                                            <td class="text-center">@item.Won</td>
+                                            <td class="text-center">@item.Draw</td>
+                                            <td class="text-center">@item.Loss</td>
+                                            <td class="text-center">@item.Goals</td>
+                                            <td class="text-center">@item.GoalsAgainst</td>
+                                            <td class="text-center">@item.GoalDiff</td>
+                                            <td class="text-center">@item.Points</td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -133,7 +134,6 @@
                     }
                 }
             }
-
         </div>
         <div id="knock-out">
             <p>Page Knock-out</p>
