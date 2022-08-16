@@ -29,6 +29,7 @@ $border-block-color: #4DAEC6;
         }
 
         .group-menu .nav-menu {
+            padding : 0;
             .main-menu {
                 display: none;
             }
@@ -123,4 +124,11 @@ $border-block-color: #4DAEC6;
             height: 7.8rem;
         }
     }
+}
+
+.child-mobile-menu{
+    z-index : 99;
+}
+.main {
+    padding-top: 2rem !important;
 }

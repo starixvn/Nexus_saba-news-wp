@@ -28,7 +28,7 @@
 }
 
 .main-content {
-    padding-top: 18rem;
+    padding-top: 3.2rem;
     @media screen and (max-device-width: 768px){
         padding-top: 1.2rem;
     }
@@ -54,11 +54,7 @@
     }
 
     .main-content {
-        padding-top: 4rem;
-
-        @media screen and (max-device-width: 768px) {
-            padding-top: 3.2rem;
-        }
+        padding-top: 0 !important;
     }
 }
 

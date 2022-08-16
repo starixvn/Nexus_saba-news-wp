@@ -24,7 +24,7 @@
 
 
 .main {
-    padding-top: 18rem;
+    padding-top: 2rem;
 
     @include Mobile {
         padding-top: 2rem;
@@ -548,10 +548,6 @@ img {
 
     .button-mobile {
         z-index: 10004;
-    }
-
-    .main {
-        padding-top: 4rem;
     }
 }
 

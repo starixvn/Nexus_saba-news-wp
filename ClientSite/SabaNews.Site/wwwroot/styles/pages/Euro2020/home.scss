@@ -177,7 +177,7 @@ $main-color: #03647B;
 $border-block-color: #4DAEC6;
 
 .main-content {
-    padding-top: 18rem;
+    padding-top: 2rem;
     @include Mobile {
         padding-top: 2rem;
     }
@@ -267,7 +267,7 @@ $border-block-color: #4DAEC6;
     .container {
         display: grid;
         grid-template-columns: 75rem 1fr;
-        grid-column-gap: 2rem;
+        grid-gap: 2rem;
 
         @include Mobile {
             display: block;
@@ -644,10 +644,9 @@ $border-block-color: #4DAEC6;
     .button-mobile {
         z-index: 10004;
     }
-
-    .main-content {
-        padding-top: 4rem;
-    }
+}
+.wapper {
+    height: auto;
 }
 
 

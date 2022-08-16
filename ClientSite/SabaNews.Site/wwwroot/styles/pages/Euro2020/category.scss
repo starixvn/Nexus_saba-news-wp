@@ -26,7 +26,7 @@ $main-color: #03647B;
 $border-block-color: #4DAEC6;
 
 .main {
-    padding-top: 18rem;
+    padding-top: 2rem;
 
     @include Mobile {
         padding-top: 2rem;
@@ -155,10 +155,6 @@ $border-block-color: #4DAEC6;
 
     .button-mobile {
         z-index: 10004;
-    }
-
-    .main {
-        padding-top: 4rem;
     }
 }
 

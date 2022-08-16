@@ -13,6 +13,7 @@
     }
     function init() {
         handleRankingTable();
+        scrollHeader();
     }
 
     return {

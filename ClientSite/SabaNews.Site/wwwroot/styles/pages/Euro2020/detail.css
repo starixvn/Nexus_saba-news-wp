@@ -1074,8 +1074,10 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     @media (max-width: 767px) {
       .header .top-header .logo-euro {
         display: none; } }
-  .header .top-header .group-menu .nav-menu .main-menu {
-    display: none; }
+  .header .top-header .group-menu .nav-menu {
+    padding: 0; }
+    .header .top-header .group-menu .nav-menu .main-menu {
+      display: none; }
 
 .header .child-mobile-menu {
   display: block;
@@ -1143,6 +1145,12 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
     background: url(../../../images/euro2020/logo-euro.svg) no-repeat;
     width: 6.8rem;
     height: 7.8rem; }
+
+.child-mobile-menu {
+  z-index: 99; }
+
+.main {
+  padding-top: 2rem !important; }
 
 .block-extension .block-sticky {
   position: -webkit-sticky;
@@ -2043,7 +2051,7 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       padding-top: 2.4rem; } }
 
 .main {
-  padding-top: 18rem; }
+  padding-top: 2rem; }
   @media (max-width: 767px) {
     .main {
       padding-top: 2rem; } }
@@ -2429,9 +2437,6 @@ img {
 
 .wapper.active-fixed .button-mobile {
   z-index: 10004; }
-
-.wapper.active-fixed .main {
-  padding-top: 4rem; }
 
 @media screen and (max-device-width: 768px) {
   .hidden-body .top-header {
