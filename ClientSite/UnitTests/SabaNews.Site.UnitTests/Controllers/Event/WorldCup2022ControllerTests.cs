@@ -93,9 +93,8 @@
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
             Assert.Equal("~/Views/Event/WorldCup2022/_Standing.cshtml", viewResult.ViewName);
-            var standingResult = Assert.IsType<StandingViewModel>(viewResult.Model);
-            Assert.Equal(standingGroup[0].GroupName, standingResult.GroupName);
-            Assert.Equal(standingGroup[0].Standings, standingResult.Standings);
+            var standingResult = Assert.IsType<List<StandingViewModel>>(viewResult.Model);
+            Assert.Equal(standingGroup.Count, standingResult.Count);
         }
 
         [Fact]
