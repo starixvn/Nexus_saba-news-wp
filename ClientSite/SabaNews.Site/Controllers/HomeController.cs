@@ -72,6 +72,19 @@
             return View(Constants.BlogView, viewModel);
         }
 
+        [Route("/tin-the-thao/{slug?}/page/{page}")]
+        [Route("/tin-the-thao/page/{page}")]
+        public IActionResult OldCategory(string slug = null, int page = 1)
+        {
+            if (slug == Constants.NewPostSlug)
+            {
+                slug = null;
+            }
+            var url = Url.Action("Category", "Home", new { slug1 = slug });
+            return Redirect(url);
+            
+        }
+
         [Route("/video/{slug2?}/{slug3?}")]
         public async Task<IActionResult> Video( string slug2 = null, string slug3 = null)
         {
@@ -85,8 +98,15 @@
             return View(view, viewModel);
         }
 
+        [Route("/video/page/{page}")]
+        public IActionResult OldVideo(int page = 1)
+        {
+            var url = "/video";
+            return Redirect(url);
 
-        [Route("Search/{keyword}/page/{page}")]
+        }
+
+
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
         {
@@ -117,6 +137,15 @@
 
             var view = (posts != null && posts.Any()) ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, model);
+        }
+
+        [Route("/Search/page/{page}")]
+        [Route("/Search/")]
+        public IActionResult OldSearch(string keyword = "")
+        {
+            var url = $"/Search/{keyword}";
+            return Redirect(url);
+
         }
 
         [Route("tag/{tagname}/page/{page}")]
