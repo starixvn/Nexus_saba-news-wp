@@ -330,4 +330,13 @@ export default class CommonFunctions {
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${seasonId}/${today}/${league.leagueId}`);
         return url;
     }
+
+    static getMatchDetailPageUrl(match) {
+        const { matchId, league, homeTeam, awayTeam } = match;
+        const leagueName = Site.toSlug(this.getLeagueName(league));
+        const homeTeamName = Site.toSlug(this.getTeamName(homeTeam));
+        const awayTeamName = Site.toSlug(this.getTeamName(awayTeam));
+        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        return url;
+    }
 }

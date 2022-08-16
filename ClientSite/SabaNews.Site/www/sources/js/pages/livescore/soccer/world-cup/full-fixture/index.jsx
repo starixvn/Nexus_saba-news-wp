@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import fixtureSlice from '../fixture/fixtureSlice';
+import fullFixtureSlice from './fullFixtureSlice';
 import AppContainer from './components/AppContainer';
 
 const store = configureStore({
-    reducer: fixtureSlice
+    reducer: fullFixtureSlice
 });
 
 ReactDOM.render(

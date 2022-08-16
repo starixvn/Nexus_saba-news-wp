@@ -4,8 +4,9 @@ import { WorldCup } from '@jsroot/common/constants';
 
 import {
     setMatches,
-    setLeague
-} from '../fixture/fixtureSlice';
+    setLeague,
+    setSelectedStageId
+} from './fullFixtureSlice';
 
 const getMatches = () => async dispatch => {
     const url = Site.resolveClientUrl('soccer/GetMatchesBySeason');
@@ -19,5 +20,6 @@ const getMatches = () => async dispatch => {
 export const ActionCreators = {
     setMatches,
     setLeague,
+    setSelectedStageId,
     getMatches
 };

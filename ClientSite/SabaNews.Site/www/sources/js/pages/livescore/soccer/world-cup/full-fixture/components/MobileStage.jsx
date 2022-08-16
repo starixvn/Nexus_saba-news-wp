@@ -1,18 +1,35 @@
 import React, { PureComponent } from 'react';
+import GridItem from './GridItem';
 import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
+
 export default class MobileStage extends PureComponent {
+
+    getMatchWithStage = () => {
+        const { stages, selectedStageId } = this.props;
+        const stage = stages.find(item => item.key === parseInt(selectedStageId))
+        return stage;
+    }
+
+    onChange = event => {
+        this.props.onSetStageId(event.target.value);
+    }
     render() {
-        const { stages } = this.props;
+        const { stages, selectedStageId } = this.props;
+        const currentStage = this.getMatchWithStage();
         return (
             <div>
-                Mobile Stage
-                <select>
+                {CommonFunctions.getStageName(currentStage)}
+                <select onChange={this.onChange} value={selectedStageId}>
                     {
                         stages.map(group =>
-                            <option key={group.key}>{CommonFunctions.getStageName(group.stage)}</option>)
+                            <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
                     }
                 </select>
+                <div>
+                    {
+                        <GridItem items={currentStage.childs} />
+                    }
+                </div>
             </div>
         );
     }

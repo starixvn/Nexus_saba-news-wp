@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Stage from './Stage';
+import Grid from './Grid';
+import DateTimeService from '@jsroot/common/dateTimeService';
+import SignalR from './SignalR';
+
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -12,11 +15,85 @@ export class AppContainer extends Component {
         this.props.getMatches();
     }
 
+    groupMatchesByDate = matches => {
+        const totalItems = matches.length;
+        const tempMatches = [];
+        for (let i = 0; i < totalItems; i++) {
+            const match = matches[i];
+            const startTime = DateTimeService.convertFromUTC(match.startTime);
+            const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
+            const item = {
+                key,
+                text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
+                childs: [match]
+            };
+            if (tempMatches.length === 0) {
+                tempMatches.push(item);
+            } else {
+                const index = tempMatches.findIndex(x => x.key === key);
+                if (index === - 1) {
+                    tempMatches.push(item);
+                } else {
+                    tempMatches[index].childs.push(match);
+                }
+            }
+        }
+
+        return tempMatches;
+    };
+
+    groupMatchesByStage = (matches, league) => {
+        let totalItems = matches.length;
+        const tempMatches = [];
+        for (let i = 0; i < totalItems; i++) {
+            const match = matches[i];
+            const stage = match.stage;
+            const key = stage ? stage.stageId : 0;
+            const item = {
+                key,
+                stage,
+                matches: [{...match, league}]
+            };
+
+            if (tempMatches.length === 0) {
+                tempMatches.push(item);
+            } else {
+                const index = tempMatches.findIndex(x => x.key === key);
+                if (index === -1) {
+                    tempMatches.push(item);
+                } else {
+                    tempMatches[index].matches.push(match);
+                }
+            }
+        }
+
+        totalItems = tempMatches.length;
+        const result = [];
+        for (let i = 0; i < totalItems; i++) {
+            const item = tempMatches[i];
+            let text;
+
+            result.push({
+                key: item.key,
+                stage: item.stage,
+                childs: this.groupMatchesByDate(item.matches)
+            });
+        }
+        return result;
+    };
+
     render() {
         const { league, matches } = this.props;
+        if(!matches || matches.length === 0) {
+            return null;
+        }
+        const stages = this.groupMatchesByStage(matches, league);
         return (
             <div className="livescore-soccer">
-                { matches && matches.length > 0 && <Stage matches={matches} league={league} /> }
+                <SignalR  />
+                <div className="livescore-soccer-main" >
+                    <Grid stages={stages}/>
+                </div>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Match from '../../../index/components/match-grid/Match';
+import Item from './Item';
 const GridItem = ({ items }) => {
     return (
         <div className="soccer-match-grid-item">
@@ -11,7 +11,7 @@ const GridItem = ({ items }) => {
                             <div className="soccer-match-grid-item-body">
                                 {
                                     group.childs.map(match =>
-                                        <Match key={match.matchId} searchKey='' match={match} />)
+                                        <Item key={match.matchId} match={match} />)
                                 }
                             </div>
                         </div>

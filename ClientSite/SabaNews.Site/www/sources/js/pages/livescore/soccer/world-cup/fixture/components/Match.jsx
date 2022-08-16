@@ -32,16 +32,7 @@ export default class Match extends PureComponent {
     };
 
     onClick = event => {
-        const className = event.target.className;
-        if(className.includes('icon-livescore')) {
-            return;
-        }
-
-        const { matchId, league, homeTeam, awayTeam } = this.props.match;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
-        const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {
@@ -50,7 +41,7 @@ export default class Match extends PureComponent {
     };
 
     render() {
-        const { match, league } = this.props;
+        const { match } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
