@@ -1,4 +1,5 @@
 ﻿@using DeviceDetectorNET;
+@using static SabaNews.Site.Extensions.LivescoreHelper
 @section Title {
     @Model.Header.Title
 }
@@ -42,7 +43,7 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
-    <script src="~/js/event/worldcup2022/Standing.js" asp-append-version="true"></script>
+    <script src="~/minify/js/standing.min.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="main">
@@ -66,11 +67,12 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Trận</th>
+                                        <th>Đội</th>
                                         <th>Thắng</th>
                                         <th>Hòa</th>
                                         <th>Thua</th>
-                                        <th>Bàn Thắng</th>
-                                        <th>Bàn Bại</th>
+                                        <th>Bàn thắng</th>
+                                        <th>Bàn bại</th>
                                         <th>+/-</th>
                                         <th>Điểm</th>
                                     </tr>
@@ -79,17 +81,18 @@
                                     @foreach (var item in standing.Standings)
                                     {
                                         count++;
-                                        <tr>
-                                            <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
-                                            <td class="text-center">@item.Total</td>
-                                            <td class="text-center">@item.Won</td>
-                                            <td class="text-center">@item.Draw</td>
-                                            <td class="text-center">@item.Loss</td>
-                                            <td class="text-center">@item.Goals</td>
-                                            <td class="text-center">@item.GoalsAgainst</td>
-                                            <td class="text-center">@item.GoalDiff</td>
-                                            <td class="text-center">@item.Points</td>
-                                        </tr>
+                                    <tr>
+                                        <td class="text-center">@count</td>
+                                        <td class="text-left"><img src="@GetTeamIcon(item.Icon)" /> @GetStandingTeamName(item)</td>
+                                        <td class="text-center">@item.Total</td>
+                                        <td class="text-center">@item.Won</td>
+                                        <td class="text-center">@item.Draw</td>
+                                        <td class="text-center">@item.Loss</td>
+                                        <td class="text-center">@item.Goals</td>
+                                        <td class="text-center">@item.GoalsAgainst</td>
+                                        <td class="text-center">@item.GoalDiff</td>
+                                        <td class="text-center">@item.Points</td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>
@@ -105,8 +108,9 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th># @ViewResources.Board @standing.GroupName.Substring(0, 1)</th>
-                                        <th>Trận</th>                                        
+                                        <th>#</th>
+                                        <th>@ViewResources.Board @standing.GroupName.Substring(0, 1)</th>
+                                        <th>Trận</th>
                                         <th>+/-</th>
                                         <th>Điểm</th>
                                     </tr>
@@ -116,13 +120,9 @@
                                     {
                                         count++;
                                         <tr>
-                                            <td class="text-left">@count <img src="@item.Icon" />@item.TeamFullNameEN</td>
+                                            <td class="text-left">@count</td>
+                                            <td class="text-left"><img src="@GetTeamIcon(item.Icon)" />@GetStandingTeamName(item)</td>
                                             <td class="text-center">@item.Total</td>
-                                            <td class="text-center">@item.Won</td>
-                                            <td class="text-center">@item.Draw</td>
-                                            <td class="text-center">@item.Loss</td>
-                                            <td class="text-center">@item.Goals</td>
-                                            <td class="text-center">@item.GoalsAgainst</td>
                                             <td class="text-center">@item.GoalDiff</td>
                                             <td class="text-center">@item.Points</td>
                                         </tr>
