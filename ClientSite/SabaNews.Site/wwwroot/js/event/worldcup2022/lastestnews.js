@@ -6,7 +6,7 @@
     var isLoadData = true;
     var numRow = 1;
     var isMobile = false;
-
+    var total = 0;
 
     function GetDataGrid(page) {
         if (page > paging.totalPages) {
@@ -60,6 +60,18 @@
             isLoadData = true;
         });
     }
+    function showStandings() {
+        if (isMobile === "False") {
+            for (var i = 1; i <= total; i++) {
+                if (i != numRow) {
+                    $('#standing-' + i).hide();
+                }
+                else {
+                    $('#standing-' + i).show();
+                }
+            }
+        }
+    }
 
     function getStandings() {
         $.ajax({
@@ -68,23 +80,14 @@
         }).done(function (data) {
             $('#standingWC').html(data);
 
-            var total = $(".btn-next-standing").data('total');
-            var isMobile = $("#standingWC").data('ismobile');
-            if (isMobile === "False") {
-                for (var i = 1; i <= total; i++) {
-                    if (i != numRow) {
-                        $('#standing-' + i).hide();
-                    }
-                    else {
-                        $('#standing-' + i).show();
-                    }
-                }
-            }
+            total = $(".btn-next-standing").data('total');
+            isMobile = $("#standingWC").data('ismobile');
+            showStandings();
            
             $('.btn-back-standing').on('click', function () {
                 numRow--;
                 if (numRow >= 1) {
-                    getStandings();
+                    showStandings();
                 }
                 else {
                     numRow++;
@@ -95,7 +98,7 @@
                 numRow++;
                 var total = $(this).data("total");
                 if (numRow < total) {
-                    getStandings();
+                    showStandings();
                 }
                 else {
                     numRow--;

@@ -69,7 +69,7 @@
         <div class="page-items-hot">
             <div class="post-items post-hot">
                 <div class="hover-image">
-                    <a href=@Url.Action("LastestNews", "WorldCup2022")>
+                    <a href=@Url.Action("Single", "Post", new { slug = Model.Posts[0].Slug })>
                         <img src="@Url.Content(Model.Posts[0].FeatureImage)" alt="@Model.Posts[0].PostTitle" asp-append-version="true" loading="lazy"  class="img-res lazy" />
                     </a>
                     <div class="title-hot">
