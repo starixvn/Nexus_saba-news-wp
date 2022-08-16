@@ -29,6 +29,10 @@
 
         public const string VideoSlug = "video-world-cup-2022";
 
+        public const string VideoHighlightSlug = "video-highlights-world-cup-2022";
+
+        public const string VideoGuessSlug = "video-du-doan-world-cup-2022";
+
         public const string Minigame = "Minigame";
 
         public const string MinigameSlug = "minigame-world-cup-2022";

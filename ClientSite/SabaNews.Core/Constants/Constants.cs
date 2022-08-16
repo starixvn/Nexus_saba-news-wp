@@ -61,8 +61,10 @@
         public const int GetFiveItems = 5;
         public const int GetSixItems = 6;
         public const int GetEightItems = 8;
+        public const int GetNineItems = 9;
         public const int GetTenItems = 10;
         public const int GetElevenItems = 11;
+        public const int GetTwelveItems = 12;
 
         public const int FirstPage = 1;
         public const int SecondPage = 2;

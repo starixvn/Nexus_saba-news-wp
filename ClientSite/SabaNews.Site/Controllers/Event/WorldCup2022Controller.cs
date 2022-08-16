@@ -101,6 +101,30 @@
             return View("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewModel);
         }
 
+        [Route("world-cup-2022/video-world-cup-2022")]
+        public async Task<IActionResult> Video()
+        {
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.Video,
+                Slug = WorldCup2022.VideoSlug
+            };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            var viewModel = new VideoViewModel()
+            {
+                Header = header,
+                Videos = videos,
+                Paging = new PagingModel
+                {
+                    PageSize = Constants.GetTwelveItems,
+                    CurrentPage = Constants.FirstPage,
+                    TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTwelveItems)
+                }
+            };
+            return View("~/Views/Event/WorldCup2022/Video.cshtml", viewModel);
+        }
+
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
         {
             int pageSize = param.PageSize;
@@ -108,6 +132,15 @@
             var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = start, _End = start + pageSize };
             IEnumerable<Post> posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
             return PartialView("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", posts);
+        }
+
+        public async Task<IActionResult> GetVideoGrid(CategoryPostParams param)
+        {
+            int pageSize = param.PageSize;
+            var start = (param.Page - 1) * pageSize;
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = param.Slugs.Slug1 ?? WorldCup2022.VideoSlug, _Start = start, _End = start + pageSize - 1 };
+            IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);
         }
 
         public async Task<IActionResult> GetStandings()
