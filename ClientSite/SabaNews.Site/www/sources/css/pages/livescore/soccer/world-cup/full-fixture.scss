@@ -90,3 +90,70 @@
     }
   }
 }
+
+.group-match-item{
+  .soccer-match-item{
+    .soccer-match-team{
+      .group-team{
+        @include creen1199px{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .soccer-team-result{
+          display: none;
+          @include tableMobile{
+            display: flex;
+          }
+        }
+        .home-team{
+          @include creen1199px{
+            border-bottom: none;
+            padding-bottom: 0;
+            justify-content: flex-end;
+            .soccer-team-logo{
+              order: 1;
+            }
+          }
+        }
+        .away-team{
+          @include creen1199px{
+            padding-top: 0;
+          }
+        }
+        .soccer-team{
+          @include creen1199px{
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.wc-round-score{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  @include creen1199px{
+    width: 10%;
+  }
+  @include tableMobile{
+    display: none;
+  }
+}
+
+.group-match-item{
+  .soccer-match-item{
+    .soccer-match-stage{
+      margin-right: 0;
+    }
+    .soccer-match-team{
+      @include creen1199px{
+        width: 90%;
+      }
+    }
+  } 
+} 

@@ -51,10 +51,9 @@ export default class Item extends PureComponent {
                     >
                         <div className="soccer-match-date-result">
                             <div className="group-live-icon">
-                                <i className="icon-livescore icon-wc-live" />
+                                {/* <i className="icon-livescore icon-wc-live" /> */}
                                 <MatchStage match={match} />
                             </div>
-                            <span className="wc-date">{startTime.format('DD/MM')}</span>
                         </div>
                         <div className="soccer-match-team">
                             <div className="group-team">
@@ -66,6 +65,12 @@ export default class Item extends PureComponent {
                                     </ul>
                                     <TeamScore match={match} isHomeTeam />
                                 </div>
+
+                                <ul className="wc-round-score">
+                                    <li> <span>5</span> - <span>3</span> </li>
+                                    <li> HT : <span>5</span> - <span>3</span> </li>
+                                </ul>
+
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
                                     <div className="soccer-team-name">{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
