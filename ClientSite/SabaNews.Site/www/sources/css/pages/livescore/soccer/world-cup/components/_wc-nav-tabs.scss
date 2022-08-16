@@ -1,0 +1,11 @@
+.live-score-nav{
+    border-bottom: none;
+    text-align: center;
+    a{
+       &.active{
+            &::after{
+                display: none;
+            }
+       }
+    }
+}
