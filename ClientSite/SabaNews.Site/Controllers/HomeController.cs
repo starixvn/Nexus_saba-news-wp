@@ -103,9 +103,7 @@
         {
             var url = "/video";
             return Redirect(url);
-
         }
-
 
         [Route("Search/{keyword}")]
         public async Task<IActionResult> Search(string keyword, int page = 1)
@@ -141,6 +139,7 @@
 
         [Route("/Search/page/{page}")]
         [Route("/Search/")]
+        [Route("Search/{keyword}/page/{page}")]
         public IActionResult OldSearch(string keyword = "")
         {
             var url = $"/Search/{keyword}";
@@ -148,7 +147,6 @@
 
         }
 
-        [Route("tag/{tagname}/page/{page}")]
         [Route("tag/{tagname}")]
         public async Task<IActionResult> Tag(string tagname, int page = 1)
         {
@@ -184,6 +182,13 @@
 
             var view = posts.Any() ? Constants.BlogView : Constants.EmptyBlogView;
             return View(view, model);
+        }
+
+        [Route("tag/{tagname}/page/{page}")]
+        public IActionResult OldTag(string tagname, int page = 1)
+        {
+            var url = $"/tag/{tagname}";
+            return Redirect(url);
         }
 
         [Route("warning")]
