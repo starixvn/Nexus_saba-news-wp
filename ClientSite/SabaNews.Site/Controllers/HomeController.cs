@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
@@ -142,6 +143,7 @@
         [Route("Search/{keyword}/page/{page}")]
         public IActionResult OldSearch(string keyword = "")
         {
+            keyword = WebUtility.UrlEncode(keyword);
             var url = $"/Search/{keyword}";
             return Redirect(url);
 
@@ -187,6 +189,7 @@
         [Route("tag/{tagname}/page/{page}")]
         public IActionResult OldTag(string tagname, int page = 1)
         {
+            tagname = WebUtility.UrlEncode(tagname);
             var url = $"/tag/{tagname}";
             return Redirect(url);
         }
