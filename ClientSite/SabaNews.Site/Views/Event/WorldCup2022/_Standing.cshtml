@@ -17,36 +17,43 @@
         <h2><a href="#">Bảng Xếp Hạng</a></h2>
         <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
     </div>
-    <div class="wc-table wc-table-king-soccer">
-        <div class="wc-table-header">
-            <div class="wc-table-cell cell-participant">
-                        @ViewResources.Board @group.GroupName.Substring(0, 1)
-                        <i class="icon-chevron-right btn-next-standing" data-total="@total"></i>
-            </div>
-            <div class="wc-table-cell cell-rank">@ViewResources.Battle</div>
-            <div class="wc-table-cell cell-rank">@ViewResources.FairPlay</div>
-            <div class="wc-table-cell cell-rank">@ViewResources.Point</div>
-        </div>
+    @foreach (var group in Model)
+    {
+        var count = 0;
 
-        <div class="wc-table-body">
-            @foreach (var item in Model.Standings)
-            {
-                count++;
-                <div class="wc-table-row">
-                    <div class="wc-table-cell cell-participant">
-                        <ul class="team">
-                            <li class="number">@count</li>
-                            <li class="team-logo"><img src="@item.Icon" /></li>
-                            <li class="team-name">@item.TeamFullNameEN</li>
-                        </ul>
-                    </div>
-                    <div class="wc-table-cell cell-rank">@item.Total</div>
-                    <div class="wc-table-cell cell-rank">@item.GoalDiff</div>
-                    <div class="wc-table-cell cell-rank">@item.Points</div>
+        <div class="wc-table wc-table-king-soccer" id="standing-@standingNum">
+            <div class="wc-table-header">
+                <div class="wc-table-cell cell-participant">
+                    <i class="icon-chevron-left btn-back-standing"></i>
+                    @ViewResources.Board @group.GroupName.Substring(0, 1)
+                    <i class="icon-chevron-right btn-next-standing" data-total="@total"></i>
                 </div>
-            }
+                <div class="wc-table-cell cell-rank">@ViewResources.Battle</div>
+                <div class="wc-table-cell cell-rank">@ViewResources.FairPlay</div>
+                <div class="wc-table-cell cell-rank">@ViewResources.Point</div>
+            </div>
+
+            <div class="wc-table-body">
+                @foreach (var item in group.Standings)
+                {
+                    count++;
+                    <div class="wc-table-row">
+                        <div class="wc-table-cell cell-participant">
+                            <ul class="team">
+                                <li class="number">@count</li>
+                                <li class="team-logo"><img src="@item.Icon" /></li>
+                                <li class="team-name">@item.TeamFullNameEN</li>
+                            </ul>
+                        </div>
+                        <div class="wc-table-cell cell-rank">@item.Total</div>
+                        <div class="wc-table-cell cell-rank">@item.GoalDiff</div>
+                        <div class="wc-table-cell cell-rank">@item.Points</div>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
+        standingNum++;
+    }
 </div>
 
 }

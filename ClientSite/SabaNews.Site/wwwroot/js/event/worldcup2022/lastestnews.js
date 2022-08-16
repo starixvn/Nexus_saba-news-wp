@@ -64,7 +64,7 @@
     function getStandings() {
         $.ajax({
             url: '/WorldCup2022/GetStandings',
-            type: 'POST'
+            type: 'GET'
         }).done(function (data) {
             $('#standingWC').html(data);
 
