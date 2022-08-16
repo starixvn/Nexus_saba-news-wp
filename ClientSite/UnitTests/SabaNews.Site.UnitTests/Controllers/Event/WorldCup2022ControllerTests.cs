@@ -88,7 +88,7 @@
             leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => standingsCriteria = x)).Returns(standings);
             var standingGroup = controller.GroupStandingsByGroupName(standings);
             //Act
-            var result = await controller.GetStandings(0);
+            var result = await controller.GetStandings();
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
