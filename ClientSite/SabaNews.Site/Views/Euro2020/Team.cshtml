@@ -31,7 +31,7 @@
 						var teamName = arrTeamInfo[0];
 						var teamFlag = arrTeamInfo[arrTeamInfo.Length - 1].Trim().ToLower();
 
-						<a class="team" href="@Url.Action("Single", "Home", new { slug = post.Slug  })">
+						<a class="team" href="@Url.Action("Single", "Post", new { slug = post.Slug  })">
 							<span class="flag-@teamFlag"></span>
 							<span class="name">@teamName</span>
 						</a>
