@@ -4,14 +4,37 @@ import DateTimeService from '@jsroot/common/dateTimeService';
 import { Tabs, Tab } from 'react-bootstrap';
 import { MatchStatus, Width1024 } from '@jsroot/common/constants';
 import GridItem from './GridItem';
+import { MobileMaxWidth } from '@jsroot/common/constants';
+import MobileStage from './MobileStage';
 
 export default class Stage extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: props.league.currentStageId
+            selectedTab: props.league.currentStageId,
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
         };
     }
+
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
+    };
 
     groupMatchesByDate = matches => {
         const totalItems = matches.length;
@@ -87,11 +110,14 @@ export default class Stage extends PureComponent {
 
     render() {
         const { league, matches } = this.props;
-        const { selectedTab } = this.state;
+        const { selectedTab, isMobile } = this.state;
         const stages = this.groupMatchesByStage(matches, league);
+        console.log(1);
         return (
             <div className="livescore-soccer-main" >
-                <Tabs className="live-score-nav" activeKey={selectedTab} onSelect={this.handleSelectTab}>
+                {
+                    !isMobile &&
+                    <Tabs className="live-score-nav" activeKey={selectedTab} onSelect={this.handleSelectTab}>
                         {
                             stages.map(group => {
                                 return (
@@ -102,6 +128,11 @@ export default class Stage extends PureComponent {
                             })
                         }
                     </Tabs>
+                }
+                {
+                    isMobile &&
+                    <MobileStage stages={stages} />
+                }
             </div>
         )
     }

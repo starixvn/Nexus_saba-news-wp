@@ -233,7 +233,7 @@
         @foreach (var menu in menus)
         {
             var active = menu.Slug == Model.CateSlug ? "active" : "";
-            <li class="menu-item @active">
+            <li class="menu-item">
                 <a href=@($"/{WorldCup2022.HomepageSlug}/{menu.Slug}") class="item @active">
                     @menu.Name
                 </a>
