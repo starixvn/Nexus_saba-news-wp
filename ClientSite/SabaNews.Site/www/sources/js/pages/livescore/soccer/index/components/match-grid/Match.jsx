@@ -4,7 +4,6 @@ import TeamScore from './TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import Site from '@jsroot/common/site';
 import { toast } from 'react-toastify';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 toast.configure();
@@ -40,12 +39,7 @@ export default class Match extends PureComponent {
         if(className.includes('icon-livescore')) {
             return;
         }
-
-        const { matchId, league, homeTeam, awayTeam } = this.props.match;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
-        const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

@@ -39,11 +39,7 @@ export class HeadToHead extends Component {
     };
 
     handleClick = (event, match) => {
-        const { matchId, league, homeTeam, awayTeam } = match;
-        const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-        const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
-        const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        const url = CommonFunctions.getMatchDetailPageUrl(match);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

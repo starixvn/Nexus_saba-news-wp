@@ -108,12 +108,8 @@ export class FunctionBar extends Component {
                 behavior: 'smooth'
             });
             this.props.setActiveTab(tab);
-
-            const { matchId, league, homeTeam, awayTeam } = this.props.match.generalInfo;
-            const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
-            const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
-            const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
-            const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}/?tab=${tab}`);
+            let url = CommonFunctions.getMatchDetailPageUrl(this.props.match.generalInfo);
+            url = `${url}/?tab=${tab}`;
             this.props.navigate(url);
         }
     };
