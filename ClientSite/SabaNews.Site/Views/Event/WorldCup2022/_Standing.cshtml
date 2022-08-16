@@ -55,11 +55,10 @@
         standingNum++;
     }
 </div>
-
-}
-@if (isMobile) {
-    <div>
-        <h1>Xem chi tiết >></h1>
-    </div>
+@if (isMobile)
+{
+    <li>
+        <a href="@Url.Action("Standing", "WorldCup2022")">Xem chi tiết >></a>
+    </li>
 }
 
