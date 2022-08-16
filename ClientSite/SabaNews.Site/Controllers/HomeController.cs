@@ -102,7 +102,7 @@
         [Route("/video/page/{page}")]
         public IActionResult OldVideo(int page = 1)
         {
-            var url = "/video";
+            const string url = "/video";
             return Redirect(url);
         }
 
