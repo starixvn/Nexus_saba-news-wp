@@ -93,6 +93,7 @@
 
 .group-match-item{
   .soccer-match-item{
+    position: relative;
     .soccer-match-team{
       .group-team{
         @include creen1199px{
@@ -128,6 +129,13 @@
         }
       }
     }
+    .soccer-match-date-result{
+      @include creen1199px{
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
   }
 }
 
@@ -152,7 +160,7 @@
     }
     .soccer-match-team{
       @include creen1199px{
-        width: 90%;
+        width: 100%;
       }
     }
   } 
