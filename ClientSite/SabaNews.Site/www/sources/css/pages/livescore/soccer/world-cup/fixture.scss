@@ -162,6 +162,13 @@
                 .soccer-team-name{
                     font-size: 1.2rem;
                     max-width: 100%;
+                    font-weight: 400;
+                    &.win{
+                        font-weight: 700;
+                    }
+                }
+                .soccer-team-result{
+                    font-size: 1.2rem;
                 }
             }
         }
