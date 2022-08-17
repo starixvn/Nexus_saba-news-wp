@@ -91,8 +91,19 @@ export const IncidentIconType = {
 };
 
 export const WorldCup = {
-    leagueId: 14638, //[11999, 12016, 11998]
-    seasonId: 10810, //[10923, 10632, 10885]
+    leagueId: 14638, //[14638, 11999, 12016, 11998]
+    seasonId: 10810, //[10810, 10923, 10632, 10230]
     QuarterfinalsStage: 30539,
     GroupsStage: 30537
+};
+
+export const StageMode = {
+    Points: 1,
+    Knockout: 2
+};
+
+export const MatchResult = {
+    Draw: 0,
+    Win: 1,
+    Lose: 2
 }

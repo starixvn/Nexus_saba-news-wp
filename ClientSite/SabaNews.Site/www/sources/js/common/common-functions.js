@@ -1,4 +1,4 @@
-﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode } from './constants';
+﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode, MatchResult } from './constants';
 import LangHelper from '@jsroot/common/langHelper';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -338,5 +338,43 @@ export default class CommonFunctions {
         const awayTeamName = Site.toSlug(this.getTeamName(awayTeam));
         const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         return url;
+    }
+
+    static getResult(homeScore, awayScore) {
+        let result;
+        if (homeScore > awayScore) {
+            result = MatchResult.Win;
+        } else if (homeScore < awayScore) {
+            result = MatchResult.Lose;
+        } else {
+            result = MatchResult.Draw;
+        }
+
+        return result;
+    };
+
+
+    static getMatchResult(teamId, match) {
+        const isHomeTeam = match.homeTeam.teamId === teamId;
+        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+        let result;
+        if (match[`${homeFieldName}PenaltyScore`] > 0 || match[`${awayFieldName}PenaltyScore`] > 0) {
+            result = this.getResult(match[`${homeFieldName}PenaltyScore`], match[`${awayFieldName}PenaltyScore`]);
+        } else if (match.isSecondLeg && (match[`${homeFieldName}AggregateScore`] > 0 || match[`${awayFieldName}AggregateScore`] > 0)) {
+            result = this.getResult(match[`${homeFieldName}AggregateScore`], match[`${awayFieldName}AggregateScore`]);
+        } else if (match[`${homeFieldName}ExtraScore`] > 0 || match[`${awayFieldName}ExtraScore`] > 0) {
+            result = this.getResult(match[`${homeFieldName}ExtraScore`], match[`${awayFieldName}ExtraScore`]);
+        } else {
+            result = this.getResult(match[`${homeFieldName}TotalScore`], match[`${awayFieldName}TotalScore`]);
+        }
+
+        return result;
+    };
+
+    static getScore(match, isHomeTeam) {
+        const FieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const score = match[`${FieldName}ExtraScore`] ? match[`${FieldName}ExtraScore`] : match[`${FieldName}TotalScore`];
+        return score;
     }
 }

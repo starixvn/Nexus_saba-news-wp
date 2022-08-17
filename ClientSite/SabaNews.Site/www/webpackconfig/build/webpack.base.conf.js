@@ -22,6 +22,7 @@ function generateConfig(environment) {
             [`${jsPath}/pages/livescore/soccer/favourite-league`]: pathConfig.scriptPaths.livescore_soccer_favourite_league,
             [`${jsPath}/pages/livescore/soccer/world-cup/fixture`]: pathConfig.scriptPaths.livescore_soccer_worldcup_fixture,
             [`${jsPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.scriptPaths.livescore_soccer_worldcup_full_fixture,
+            [`${jsPath}/pages/livescore/soccer/world-cup/standing-playoff`]: pathConfig.scriptPaths.livescore_soccer_worldcup_standing_playoff,
 
             /*css*/
             [`${cssPath}/pages/livescore/soccer/index`]: pathConfig.cssPaths.livescore_soccer_index,
@@ -30,7 +31,8 @@ function generateConfig(environment) {
             [`${cssPath}/pages/livescore/soccer/favourite-match`]: pathConfig.cssPaths.livescore_soccer_favourite_match,
             [`${cssPath}/pages/livescore/soccer/favourite-league`]: pathConfig.cssPaths.livescore_soccer_favourite_league,
             [`${cssPath}/pages/livescore/soccer/world-cup/fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_fixture,
-            [`${cssPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_full_fixture
+            [`${cssPath}/pages/livescore/soccer/world-cup/full-fixture`]: pathConfig.cssPaths.livescore_soccer_worldcup_full_fixture,
+            [`${cssPath}/pages/livescore/soccer/world-cup/standing-playoff`]: pathConfig.cssPaths.livescore_soccer_worldcup_standing_playoff
         },
         output: {
             path: pathConfig.projectRoot,
