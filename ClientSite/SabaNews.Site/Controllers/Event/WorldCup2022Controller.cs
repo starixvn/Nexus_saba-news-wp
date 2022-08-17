@@ -119,7 +119,7 @@
                 {
                     PageSize = Constants.GetTwelveItems,
                     CurrentPage = Constants.FirstPage,
-                    TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTwelveItems)
+                    TotalPages = (int)Math.Ceiling((cateSlugCriteria.TotalItems - 1) / (double)Constants.GetTwelveItems)
                 }
             };
             return View("~/Views/Event/WorldCup2022/Video.cshtml", viewModel);
@@ -136,10 +136,13 @@
 
         public async Task<IActionResult> GetVideoGrid(CategoryPostParams param)
         {
+            var outstandingCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
             int pageSize = param.PageSize;
-            var start = (param.Page - 1) * pageSize;
+            var start = param.Page == 1 ? (param.Page - 1) : ((param.Page - 1) * pageSize + 1);
             var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = param.Slugs.Slug1 ?? WorldCup2022.VideoSlug, _Start = start, _End = start + pageSize - 1 };
             IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
             return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);
         }
 

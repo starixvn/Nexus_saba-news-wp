@@ -397,12 +397,22 @@
             "renameLocals": true
         },
         "sourceMap": false
-    }
-    ,
+    },
     {
         "outputFileName": "wwwroot/minify/js/standing.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/standing.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/video.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/video.js"
         ],
         "minify": {
             "enabled": true,

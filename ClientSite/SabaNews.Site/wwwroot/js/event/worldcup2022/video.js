@@ -9,7 +9,7 @@
     };
 
     function GetDataGrid(page) {
-        if (page > paging.totalPages) {
+        if (page > paging.totalPages || page >= 125) {
             isLoadData = false;
             $('.lds-ellipsis').hide();
             return false;
@@ -19,21 +19,21 @@
             url: '/WorldCup2022/GetVideoGrid',
             type: 'POST',
             data: { slugs, page, pageSize }
-        }).done(function (data) {
-            if (!data) {
-                isLoadData = false;
-                $('.lds-ellipsis').hide();
-            } else {
-                $('.ajax-load').hide();
-                $('#video-grid').append(data);
-                if (page === 5 && page < paging.totalPages) {
-                    const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
-                    $('#video-grid').append(loadMoreHtml);
+            }).done(function (data) {
+                if (!data) {
                     isLoadData = false;
                     $('.lds-ellipsis').hide();
+                } else {
+                    $('.ajax-load').hide();
+                    $('#video-grid').append(data);
+                    if (page === 13 && page < paging.totalPages) {
+                        const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
+                        $('#video-grid').append(loadMoreHtml);
+                        isLoadData = false;
+                        $('.lds-ellipsis').hide();
+                    }
                 }
-            }
-        })
+            })
             .fail(function (jqXHR, ajaxOptions, thrownError) {
                 console.log('server not responding...');
             });
@@ -61,7 +61,42 @@
         });
     }
 
+    function GetVideo() {
+        page = 1;
+        $.ajax({
+            url: '/WorldCup2022/GetVideoGrid',
+            type: 'POST',
+            data: { slugs, page, pageSize }
+            }).done(function (data) {
+                $('#video-grid').html(data);
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                console.log('server not responding...');
+            });
+    }
+
     function HandleBtn() {
+        $(document).on('click', '#btn-showall', function () {
+            slugs.slug1 = 'video-world-cup-2022';
+            GetVideo();
+        });
+        $(document).on('click', '#btn-showhighlight', function () {
+            slugs.slug1 = 'video-highlights-world-cup-2022';
+            GetVideo();
+        });
+        $(document).on('click', '#btn-showguess', function () {
+            slugs.slug1 = 'video-du-doan-world-cup-2022';
+            GetVideo();
+        });
+
+        $('.btn-play-orthers').on('click', function () {
+            var url = $(this).data('url');
+            window.location = url;
+        });
+        $('.play-orthers').on('click', function () {
+            var url = $(this).data('url');
+            window.location = url;
+        });
     }
 
     function init() {

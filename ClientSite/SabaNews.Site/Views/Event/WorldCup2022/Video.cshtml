@@ -45,15 +45,14 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script>
-
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
             totalPages: '@Model.Paging.TotalPages'
         };
     </script>
-    <script src="~/js/event/worldcup2022/video.js" asp-append-version="true"></script>
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/video.min.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 <section class="main">
@@ -124,6 +123,9 @@
                                     <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
                                     <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
                                 </picture>
+                                <div class="btn-play-video btn-play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })">
+                                    <span class="icon-play play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })"></span>
+                                </div>
                             </a>
                             <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a>
                             <p class="card-vertical__datetime">
