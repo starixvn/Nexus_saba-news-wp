@@ -221,7 +221,7 @@ export class AppContainer extends Component {
         return (
             <div className="play-offs">
                 <div className="draw-container">
-                    <div className="draw-wrapper">
+                    <div className="draw-wrapper draw-show-pc">
                         <div className="shadowHeader"></div>
                         <div className="learHeader"></div>
                         <Grid matches={groupMatches} />

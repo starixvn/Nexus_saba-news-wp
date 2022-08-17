@@ -2,13 +2,43 @@
 @import '../../../../abstracts/variables';
 @import '../../../../abstracts/mixins';
 @import '../../../../base/base';
-@import '../../../../components/block-extension';
+// @import '../../../../components/block-extension';
 @import '../../../../components/container';
 @import '../../../../components/soccer-item';
-@import '../../../../components/league-header-detail';
-@import '../../../../components/nav-tab';
-@import '../../../../components/search-bar';
-@import '../../../../components/table-custom';
-@import '../../../../components/tooltip';
-@import '../../../../components/breadcrumb';
+// @import '../../../../components/league-header-detail';
+// @import '../../../../components/nav-tab';
+// @import '../../../../components/search-bar';
+// @import '../../../../components/table-custom';
+// @import '../../../../components/tooltip';
+// @import '../../../../components/breadcrumb';
 @import '../../../../components/play-offs';
+
+.group-match-item {
+    .soccer-match-item{
+        &:hover{
+            background: #753146;
+        }
+    }
+}
+
+.draw-show-pc{
+    display: none;
+    @include tableMobile{
+        display: block;
+    }
+}
+
+// .play-offs {
+//     .draw-container {
+//         .draw-wrapper {
+//             .draw{
+//                 @include tableMobile{
+//                     grid-auto-columns: 100%;
+//                     overflow-x: visible;
+//                     transition: transform 350ms ease-out;
+//                     margin-top: initial;
+//                 }
+//             }
+//         }
+//     }
+// }

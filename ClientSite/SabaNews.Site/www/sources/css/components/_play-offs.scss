@@ -14,7 +14,7 @@
         z-index: 0;
         position: relative;
   
-        @include Mobile {
+        @include tableMobile {
           overflow-x: hidden;
           margin: initial;
         }
@@ -47,7 +47,7 @@
           top: 0;
           border-radius: 3px;
   
-          @include Mobile {
+          @include tableMobile {
             display: none;
           }
         }
@@ -62,7 +62,7 @@
           left: 0;
           margin-top: -8rem;
   
-          @include Mobile {
+          @include tableMobile {
             display: none;
           }
         }
@@ -74,7 +74,7 @@
           user-select: none;
           padding-bottom: 1rem;
   
-          @include Mobile {
+          @include tableMobile {
             grid-auto-columns: 100%;
             overflow-x: visible;
             transition: transform 350ms ease-out;
@@ -87,7 +87,7 @@
             row-gap: 1rem;
             min-width: 19rem;
   
-            @include Mobile {
+            @include tableMobile {
               grid-template-rows: 2.6rem;
             }
   
@@ -107,7 +107,7 @@
                   border-radius: 0;
                   border-right: none;
   
-                  @include Mobile {
+                  @include tableMobile {
                     left: -15px;
                   }
                 }
@@ -116,7 +116,7 @@
               .draw__brackets {
                 align-content: space-around;
   
-                @include Mobile {
+                @include tableMobile {
                   align-content: flex-start;
                 }
               }
@@ -136,7 +136,7 @@
             font-size: 1.3rem;
             z-index: 999999;
   
-            @include Mobile {
+            @include tableMobile {
               display: grid;
               grid-template: "previous label next" 2.5rem / 1.6rem 1fr 1.6rem;
               background-color: $border-soccer-item;
@@ -151,7 +151,7 @@
           &__label {
             color: $color-title;
   
-            @include Mobile {
+            @include tableMobile {
               grid-area: label;
               place-self: center;
               font-size: 1.2rem;
@@ -161,7 +161,7 @@
           &__arrow {
             display: none;
   
-            @include Mobile {
+            @include tableMobile {
               display: flex;
               position: relative;
               align-items: center;
@@ -177,13 +177,13 @@
             }
   
             &--next {
-              @include Mobile {
+              @include tableMobile {
                 grid-area: next;
               }
             }
   
             &--previous {
-              @include Mobile {
+              @include tableMobile {
                 grid-area: previous;
               }
             }
@@ -195,7 +195,7 @@
             z-index: 1;
             margin: 0 1rem;
   
-            @include Mobile {
+            @include tableMobile {
               grid-gap: 0.8rem 0;
               grid-auto-rows: min-content;
               align-content: flex-start;
@@ -218,7 +218,7 @@
               border-right: 1px solid #d9d9d9;
               border-color: #d9d9d9;
   
-              @include Mobile {
+              @include tableMobile {
                 width: calc(100% + 2.4rem);
                 right: -8px;
               }
@@ -231,7 +231,7 @@
               }
   
               &:before {
-                @include Mobile {
+                @include tableMobile {
                   content: "";
                   background-color: #d9d9d9;
                   position: absolute;
@@ -245,7 +245,7 @@
             }
   
             &--odd {
-              @include Mobile {
+              @include tableMobile {
                 margin-bottom: -0.4rem;
               }
   
@@ -322,7 +322,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
   
-                @include Mobile {
+                @include tableMobile {
                   width: 26rem;
                 }
               }
@@ -352,7 +352,7 @@
                   padding-bottom: 0.4rem;
                   margin-bottom: 0.4rem;
   
-                  @include Mobile {
+                  @include tableMobile {
                     grid-template: ". time names . result ." auto / 0px 3.7rem 1fr 0px max-content 0;
                   }
   
@@ -385,7 +385,7 @@
                           font-weight: 700;
                         }
   
-                        @include Mobile {
+                        @include tableMobile {
                           width: 23rem;
                         }
   
@@ -443,7 +443,7 @@
             border: 1px solid $border-color;
             border-radius: 3px;
   
-            @include Mobile {
+            @include tableMobile {
               margin-top: 0;
             }
   
@@ -459,7 +459,7 @@
             }
   
             .draw__bracket {
-              @include Mobile {
+              @include tableMobile {
                 margin-bottom: 0 !important;
               }
   
