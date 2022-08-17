@@ -81,8 +81,7 @@
             {
                 slug = null;
             }
-            var url = Url.Action("Category", "Home", new { slug1 = slug });
-            return Redirect(url);
+            return RedirectToAction("Category", "Home", new { slug1 = slug });
             
         }
 
@@ -102,8 +101,7 @@
         [Route("/video/page/{page}")]
         public IActionResult OldVideo(int page = 1)
         {
-            const string url = "/video";
-            return Redirect(url);
+            return RedirectToAction("Video", "Home");
         }
 
         [Route("Search/{keyword}")]
@@ -144,8 +142,7 @@
         public IActionResult OldSearch(string keyword = "")
         {
             keyword = WebUtility.UrlEncode(keyword);
-            var url = $"/Search/{keyword}";
-            return Redirect(url);
+            return RedirectToAction("Search", "Home", new { keyword });
 
         }
 
@@ -189,9 +186,7 @@
         [Route("tag/{tagname}/page/{page}")]
         public IActionResult OldTag(string tagname, int page = 1)
         {
-            tagname = WebUtility.UrlEncode(tagname);
-            var url = $"/tag/{tagname}";
-            return Redirect(url);
+            return RedirectToAction("Tag", "Home", new { tagname });
         }
 
         [Route("warning")]
