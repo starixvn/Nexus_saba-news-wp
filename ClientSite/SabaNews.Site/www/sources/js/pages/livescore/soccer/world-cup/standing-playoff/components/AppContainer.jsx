@@ -2,18 +2,38 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import { StageMode } from '@jsroot/common/constants';
+import { StageMode, WorldCup } from '@jsroot/common/constants';
 import Grid from './Grid';
+import { MobileMaxWidth } from '@jsroot/common/constants';
 
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+        };
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
     }
 
     componentDidMount() {
         this.props.getMatches();
+        window.addEventListener('resize', this.handleResize);
     }
+
+    handleResize = () => {
+        const isMobile = this.state.isMobile;
+        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+            this.setState({ isMobile: true });
+        } else {
+            if (isMobile && window.innerWidth > MobileMaxWidth) {
+                this.setState({ isMobile: false });
+            }
+        }
+    };
 
     getPlayoffStages = () => {
         const { stages } = this.props;
@@ -32,10 +52,10 @@ export class AppContainer extends Component {
         const playoffStages = this.getPlayoffStages();
         let tempMatches = [];
         matches.map(value => {
-            const match = {...value, league};
+            const match = { ...value, league };
             const stage = match.stage;
             const stageIndex = playoffStages.findIndex(item => item.stageId === stage.stageId);
-            if(stageIndex < 0) {
+            if (stageIndex < 0) {
                 return;
             }
             const key = stage.stageId;
@@ -67,9 +87,9 @@ export class AppContainer extends Component {
         const playoffStages = this.groupMatchByStage(matches);
         const totalItems = playoffStages.length;
         const tmpStages = [];
-        for(let i = 0; i < totalItems; i++) {
+        for (let i = 0; i < totalItems; i++) {
             const stage = playoffStages[i];
-            if(tmpStages.length === 0) {
+            if (tmpStages.length === 0) {
                 const item = {
                     ...stage,
                     matches: this.groupMatchBySecondLeg(stage.matches, false)
@@ -93,22 +113,19 @@ export class AppContainer extends Component {
         const tmpMatches = [];
         const matchIds = [];
         lastStage.map(match => {
-            if(!match.matchId) {
-                // const emptyMatches = this.getEmptyMatch(match, matches);
-                // emptyMatches.matches.forEach(item => tmpMatches.push(item));
-                // emptyMatches.matchIds.forEach(item => matchIds.push(item));
+            if (!match.matchId) {
                 return;
             }
             const homeMatch = matches.filter(item => item.homeTeam.teamId === match.homeTeam.teamId || item.awayTeam.teamId === match.homeTeam.teamId);
             const awayMatch = matches.filter(item => item.homeTeam.teamId === match.awayTeam.teamId || item.awayTeam.teamId === match.awayTeam.teamId);
             const homeResult = this.getMatchMapWithStage(homeMatch, match, true);
-            if(homeResult.match !== null) {
+            if (homeResult.match !== null) {
                 tmpMatches.push(homeResult.match);
             }
             homeResult.matchIds.forEach(item => matchIds.push(item));
 
             const awayResult = this.getMatchMapWithStage(awayMatch, match, false);
-            if(awayResult.match !== null) {
+            if (awayResult.match !== null) {
                 tmpMatches.push(awayResult.match);
             }
             awayResult.matchIds.forEach(item => matchIds.push(item));
@@ -122,13 +139,13 @@ export class AppContainer extends Component {
     groupMatchBySecondLeg = (matches, isOutMatches) => {
         const tmpMatches = [];
         matches.map(match => {
-            if(!match.isSecondLeg) {
+            if (!match.isSecondLeg) {
                 const matchSecondLeg = matches.find(item => item.isSecondLeg && (item.homeTeam.teamId === match.homeTeam.teamId || item.awayTeam.teamId === match.homeTeam.teamId));
-                const item = {...match};
-                if(isOutMatches) {
+                const item = { ...match };
+                if (isOutMatches) {
                     item.isDraw = false;
                 }
-                if(matchSecondLeg) {
+                if (matchSecondLeg) {
                     item.secondLeg = matchSecondLeg;
                 }
                 tmpMatches.push(item);
@@ -141,68 +158,58 @@ export class AppContainer extends Component {
     getEmptyMatch = (match, matchesFilter) => {
         const tmpMatches = [];
         const matchIds = [];
-        if(match.awayTeam) {
+        if (match.awayTeam) {
             tmpMatches.push({});
             const awayMathch = matchesFilter.filter(item => item.homeTeam.teamId === match.awayTeam.teamId || item.awayTeam.teamId === match.awayTeam.teamId);
             const awayResult = this.getMatchMapWithStage(awayMathch, match, false);
-            if(awayResult.match !== null) {
+            if (awayResult.match !== null) {
                 tmpMatches.push(awayResult.match);
             }
             awayResult.matchIds.forEach(item => matchIds.push(item));
         }
-        if(match.homeTeam) {
+        if (match.homeTeam) {
             const homeMatch = matchesFilter.filter(item => item.homeTeam.teamId === match.homeTeam.teamId || item.awayTeam.teamId === match.homeTeam.teamId);
             const homeResult = this.getMatchMapWithStage(homeMatch, match, true);
-            if(homeResult.match !== null) {
+            if (homeResult.match !== null) {
                 tmpMatches.push(homeResult.match);
             }
             homeResult.matchIds.forEach(item => matchIds.push(item));
             tmpMatches.push({});
         }
-        if(!match.homeTeam &&  !match.awayTeam) {
+        if (!match.homeTeam && !match.awayTeam) {
             tmpMatches.push({});
             tmpMatches.push({});
         }
-        return {matches: tmpMatches, matchIds: matchIds};
+        return { matches: tmpMatches, matchIds: matchIds };
     };
 
     getMatchMapWithStage = (matchFilter, match, isHome) => {
         let tmpMatch = null;
         const matchIds = [];
-        if(matchFilter.length === 1) {
+        if (matchFilter.length === 1) {
             tmpMatch = matchFilter[0];
             matchIds.push(matchFilter[0].matchId);
-        } else if(matchFilter.length === 2) {
+        } else if (matchFilter.length === 2) {
             const firstlegIndex = matchFilter.findIndex(item => !item.isSecondLeg);
-            const firstleg = {...matchFilter[firstlegIndex]};
+            const firstleg = { ...matchFilter[firstlegIndex] };
             firstleg.secondLeg = matchFilter[1 - firstlegIndex];
             tmpMatch = firstleg;
             matchIds.push(matchFilter[0].matchId);
             matchIds.push(matchFilter[1].matchId);
-        } else if(matchFilter.length === 0) {
-            // if(isHome) {
-            //     tmpMatch = {
-            //         homeTeam: match.homeTeam
-            //     };
-            // } else {
-            //     tmpMatch = {
-            //         awayTeam: match.awayTeam
-            //     };
-            // }
         }
-        return {match: tmpMatch, matchIds: matchIds};
+        return { match: tmpMatch, matchIds: matchIds };
     };
 
     groupMatchBySecondLeg = (matches, isOutMatches) => {
         const tmpMatches = [];
         matches.map(match => {
-            if(!match.isSecondLeg) {
+            if (!match.isSecondLeg) {
                 const matchSecondLeg = matches.find(item => item.isSecondLeg && (item.homeTeam.teamId === match.homeTeam.teamId || item.awayTeam.teamId === match.homeTeam.teamId));
-                const item = {...match};
-                if(isOutMatches) {
+                const item = { ...match };
+                if (isOutMatches) {
                     item.isDraw = false;
                 }
-                if(matchSecondLeg) {
+                if (matchSecondLeg) {
                     item.secondLeg = matchSecondLeg;
                 }
                 tmpMatches.push(item);
@@ -211,22 +218,74 @@ export class AppContainer extends Component {
         return tmpMatches;
     };
 
+    separateMatches = (stages, isPrev) => {
+        const tmpStages = stages.filter(item => item.matches.length > 1);
+        const totalItems = tmpStages.length;
+        const newStages = []
+        for (let i = 0; i < totalItems; i++) {
+            let stage = { ...tmpStages[i] };
+            const matches = stage.matches;
+            if (matches.length % 2 === 0) {
+                if (isPrev) {
+                    stage.matches = matches.slice(0, matches.length / 2);
+                } else {
+                    stage.matches = matches.slice(matches.length / 2);
+                }
+            }
+            newStages.push(stage);
+        }
+        return newStages;
+    };
+
     render() {
         const { matches } = this.props;
-        if(!matches || matches.length === 0) {
+        const { isMobile } = this.state;
+        if (!matches || matches.length === 0) {
             return null;
         }
         let groupMatches = this.groupMatches(matches);
         groupMatches = groupMatches.reverse();
+        const prevMatchStages = this.separateMatches(groupMatches, true);
+        const lastMatchStages = this.separateMatches(groupMatches, false);
         return (
             <div className="play-offs">
-                <div className="draw-container">
-                    <div className="draw-wrapper draw-show-mb">
-                        <div className="shadowHeader"></div>
-                        <div className="learHeader"></div>
-                        <Grid matches={groupMatches} />
+                {
+                    isMobile &&
+                    <div className="draw-container">
+                        <div className="draw-wrapper">
+                            <div className="shadowHeader"></div>
+                            <div className="learHeader"></div>
+                            <Grid matches={groupMatches} isMobile={isMobile} />
+                        </div>
                     </div>
-                </div>
+                }
+                {
+                    !isMobile &&
+                    <div>
+                        <div className="draw-container">
+                            <div className="draw-wrapper">
+                                <div className="shadowHeader"></div>
+                                <div className="learHeader"></div>
+                                <Grid matches={prevMatchStages} isMobile={isMobile} />
+                            </div>
+                        </div>
+                        <div className="draw-container">
+                            <div className="draw-wrapper">
+                                <div className="shadowHeader"></div>
+                                <div className="learHeader"></div>
+                                <div>Chung kết</div>
+                            </div>
+                        </div>
+                        <div className="draw-container">
+                            <div className="draw-wrapper">
+                                <div className="shadowHeader"></div>
+                                <div className="learHeader"></div>
+                                <Grid matches={lastMatchStages} isMobile={isMobile} />
+                            </div>
+                        </div>
+                    </div>
+                }
+
             </div>
         );
     }

@@ -1,36 +1,16 @@
 import React, { PureComponent } from 'react';
 import Item from './Item';
 import CommonFunctions from '@jsroot/common/common-functions';
-import { MobileMaxWidth } from '@jsroot/common/constants';
+
 
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
 
         this.state = {
-            activeIndex: 0,
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            activeIndex: 0
         };
     }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    handleResize = () => {
-        const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
-            this.setState({ isMobile: true });
-        } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
-                this.setState({ isMobile: false });
-            }
-        }
-    };
 
     handleActiveTab = isNext => {
         const matches = this.props.matches;
@@ -42,8 +22,8 @@ export default class Grid extends PureComponent {
     };
 
     render() {
-        const { matches } = this.props;
-        const { activeIndex, isMobile } = this.state;
+        const { matches, isMobile} = this.props;
+        const { activeIndex } = this.state;
         return (
             <div className="draw" style={{transform: `${isMobile ? `translateX(-${activeIndex}00%)` : 'none'}`}}>
                 {
