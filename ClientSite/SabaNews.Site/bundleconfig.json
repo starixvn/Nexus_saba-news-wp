@@ -176,6 +176,12 @@
             "wwwroot/styles/pages/event/worldcup2022/detailstanding.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/videoworldcup2022.min.css",
+        "inputFiles": [
+            "wwwroot/styles/pages/event/worldcup2022/video.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",
