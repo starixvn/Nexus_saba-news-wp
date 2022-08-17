@@ -18,6 +18,13 @@
         &:hover{
             background: #753146;
         }
+        .soccer-match-team {
+            .group-team {
+                .home-team{
+                    border-bottom: none;
+                }
+            }
+        }
     }
 }
 
