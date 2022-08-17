@@ -2,9 +2,8 @@ import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus } from '@jsroot/common/constants';
+import { MatchStatus, MatchResult } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class Match extends PureComponent {
@@ -45,6 +44,7 @@ export default class Match extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
+        const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
         return (
             <>
                 <div className="group-match-item" onClick={this.onClick}>
@@ -61,7 +61,7 @@ export default class Match extends PureComponent {
                             <div className="group-team">
                                 <div className="soccer-team home-team">
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
-                                    <div className="soccer-team-name">{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
+                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'wc-win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, true)}
                                     </ul>
@@ -69,7 +69,7 @@ export default class Match extends PureComponent {
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
-                                    <div className="soccer-team-name">{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
+                                    <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'wc-win': ''}`}>{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, false)}
                                     </ul>
