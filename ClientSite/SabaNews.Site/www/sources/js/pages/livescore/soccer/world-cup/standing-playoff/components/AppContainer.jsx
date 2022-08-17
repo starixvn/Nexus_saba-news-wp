@@ -212,8 +212,8 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { league, matches, stages } = this.props;
-        if(!matches || matches.length == 0) {
+        const { matches } = this.props;
+        if(!matches || matches.length === 0) {
             return null;
         }
         let groupMatches = this.groupMatches(matches);
@@ -228,7 +228,7 @@ export class AppContainer extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 

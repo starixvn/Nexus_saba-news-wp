@@ -13,12 +13,12 @@ export default class Grid extends PureComponent {
         };
     }
 
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
     }
 
     handleResize = () => {
@@ -84,6 +84,6 @@ export default class Grid extends PureComponent {
                     })
                 }
             </div>
-        )
+        );
     }
 }

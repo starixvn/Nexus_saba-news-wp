@@ -33,7 +33,7 @@ const { actions, reducer } = standingPlayoffSlice;
 
 export const {
     setMatches,
-    setLeague,
+    setLeague
 } = actions;
 
 export default reducer;

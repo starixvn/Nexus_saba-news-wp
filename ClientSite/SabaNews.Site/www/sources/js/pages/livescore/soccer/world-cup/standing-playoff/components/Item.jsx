@@ -3,7 +3,6 @@ import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchResult } from '@jsroot/common/constants';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import { MatchStatus } from '@jsroot/common/constants';
 
 export default class Item extends PureComponent {
     constructor(props) {
