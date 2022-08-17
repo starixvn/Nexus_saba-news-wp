@@ -29,6 +29,6 @@ export default class Stage extends PureComponent {
                     })
                 }
             </Tabs>
-        )
+        );
     }
 }

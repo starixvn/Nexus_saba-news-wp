@@ -7,29 +7,15 @@
     {
         public static string GetTeamName(Team team)
         {
-            string teamName;
-            if (!string.IsNullOrEmpty(team.TeamNameVN))
-            {
-                teamName = team.TeamNameVN;
-            }
-            else
-            {
-                teamName = string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
-            }
+            string teamName = string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
+            teamName = !string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : teamName;
             return teamName;
         }
 
         public static string GetStandingTeamName(SeasonStandings standing)
         {
-            string teamName;
-            if (!string.IsNullOrEmpty(standing.TeamNameVN))
-            {
-                teamName = standing.TeamNameVN;
-            }
-            else
-            { 
-                teamName = string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
-            }
+            string teamName = string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
+            teamName = !string.IsNullOrEmpty(standing.TeamNameVN) ? standing.TeamNameVN : teamName;
             return teamName;
         }
 

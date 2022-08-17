@@ -43,7 +43,6 @@ export default class Item extends PureComponent {
         const { match } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
-        const startTime = DateTimeService.convertFromUTC(match.startTime);
         return (
             <>
                 <div className="group-match-item" onClick={this.onClick}>

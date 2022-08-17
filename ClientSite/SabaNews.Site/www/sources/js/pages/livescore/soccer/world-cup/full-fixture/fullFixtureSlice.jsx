@@ -21,14 +21,14 @@ const fullFixtureSlice = createSlice({
             const liveMatches = action.payload,
             totalItems = liveMatches.length;
             for (let i = 0; i < totalItems; i++) {
-                let index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
+                const index = state.matches.findIndex(item => item.matchId === liveMatches[i].matchId);
                 if (index >= 0) {
                     state.matches[index] = liveMatches[i];
                 }
             }
         },
         setSelectedStageId: (state, action) => {
-            state.selectedStageId = action.payload
+            state.selectedStageId = action.payload;
         }
     }
 });

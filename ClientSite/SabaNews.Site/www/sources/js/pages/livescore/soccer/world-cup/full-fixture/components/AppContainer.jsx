@@ -71,7 +71,6 @@ export class AppContainer extends Component {
         const result = [];
         for (let i = 0; i < totalItems; i++) {
             const item = tempMatches[i];
-            let text;
 
             result.push({
                 key: item.key,

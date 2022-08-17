@@ -17,7 +17,7 @@ export class AppContainer extends Component {
     }
 
     getMatches = () => {
-        let { league, matches } = this.props;
+        const { league, matches } = this.props;
         if(!matches) {
             return matches;
         }
@@ -27,12 +27,12 @@ export class AppContainer extends Component {
         if(moment(today).isSameOrAfter(endTime)) {
             tmpMatches = [...matches].reverse();
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
-            tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage)
+            tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
         } else if(league.currentStageId >= WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
         return tmpMatches;
-    }
+    };
 
     render() {
         const { league } = this.props;

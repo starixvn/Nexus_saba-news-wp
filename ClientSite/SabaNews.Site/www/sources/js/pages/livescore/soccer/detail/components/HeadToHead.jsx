@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { Tabs, Tab } from 'react-bootstrap';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 import CommonFunctions from '@jsroot/common/common-functions';
 import { MatchStatus } from '@jsroot/common/constants';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';

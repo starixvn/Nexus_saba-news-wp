@@ -21,7 +21,7 @@ const GridItem = ({ items }) => {
             }
         </div>
     );
-}
+};
 
 
 export default GridItem;

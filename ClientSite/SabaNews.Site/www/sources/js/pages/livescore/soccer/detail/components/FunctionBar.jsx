@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Site from '@jsroot/common/site';
 import queryString from 'query-string';
 import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';

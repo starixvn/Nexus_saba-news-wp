@@ -2,6 +2,7 @@
 {
     using SabaNews.Core.Models;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
 
     public static class WorldCup2022
     {
@@ -40,7 +41,7 @@
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
 
-        public static readonly List<CateInfo> Menus = new List<CateInfo>
+        public static readonly ImmutableArray<CateInfo> Menus = new ImmutableArray<CateInfo>
         {
             new CateInfo { Name = Homepage, Slug = "" },
             new CateInfo { Name = LastestNews, Slug = LastestNewsSlug },
@@ -51,7 +52,7 @@
             new CateInfo { Name = Minigame, Slug = MinigameSlug }
         };
 
-        public static readonly List<CateInfo> Cates = new List<CateInfo>
+        public static readonly ImmutableArray<CateInfo> Cates = new ImmutableArray<CateInfo>
         {
             new CateInfo { Name = Homepage, Slug = HomepageSlug, Url = $"/{HomepageSlug}" },
             new CateInfo { Name = LastestNews, Slug = LastestNewsSlug, Url = $"/{HomepageSlug}/{LastestNewsSlug}" },

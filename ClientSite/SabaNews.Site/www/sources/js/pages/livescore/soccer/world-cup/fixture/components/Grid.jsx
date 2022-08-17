@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import CommonFunctions from '@jsroot/common/common-functions';
 import Match from './Match';
 import { MatchStatus, Width1024 } from '@jsroot/common/constants';
 
@@ -12,7 +11,7 @@ export default class Grid extends PureComponent {
             start: 0,
             end: this.showItems,
             isScroll: window.innerWidth <= Width1024 ? true : false
-        }
+        };
     }
 
     componentDidMount() {
@@ -23,7 +22,7 @@ export default class Grid extends PureComponent {
         const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
         const startLastPage = matches.length - this.showItems + 1;
         if(postMatchIndex >= 0) {
-            let lastIndex = matches.length - postMatchIndex;
+            const lastIndex = matches.length - postMatchIndex;
             if(lastIndex > startLastPage) {
                 start = startLastPage;
             } else {
@@ -56,7 +55,7 @@ export default class Grid extends PureComponent {
     onPrev = () => {
         const { start, end } = this.state;
         if(start === 0) {
-            return false;
+            return;
         }
         this.setState({
             start: start - 1,
@@ -67,7 +66,7 @@ export default class Grid extends PureComponent {
     onNext = () => {
         const { start, end } = this.state;
         if(end === this.matchLength + 1) {
-            return false;
+            return;
         }
         this.setState({
             start: start + 1,
