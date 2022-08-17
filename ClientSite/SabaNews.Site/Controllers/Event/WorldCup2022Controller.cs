@@ -50,7 +50,7 @@
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
         public async Task<IActionResult> LastestNews()
         {
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems };
             var news = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
 
             var header = new HeaderViewModel
@@ -59,7 +59,7 @@
                 Slug = WorldCup2022.LastestNewsSlug
             };
 
-            var viewModel = new LastestNewsViewModel()
+            var viewModel = new LastestNewsViewModel
             {
                 Header =header,
                 Posts = news,
@@ -86,14 +86,14 @@
         [Route("world-cup-2022/bang-xep-hang-world-cup-2022")]
         public async Task<IActionResult> Standing()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.Standing,
                 Slug = WorldCup2022.StandingSlug
             };
-            var viewModel = new LastestNewsViewModel()
+            var viewModel = new LastestNewsViewModel
             {
                 Header = header,
                 StandingsViewModel = GroupStandingsByGroupName(standings)
@@ -109,9 +109,9 @@
                 Title = WorldCup2022.Video,
                 Slug = WorldCup2022.VideoSlug
             };
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
             var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
-            var viewModel = new VideoViewModel()
+            var viewModel = new VideoViewModel
             {
                 Header = header,
                 Videos = videos,
@@ -129,18 +129,18 @@
         {
             int pageSize = param.PageSize;
             var start = (param.Page - 1) * pageSize;
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = CategorySlugWC, _Start = start, _End = start + pageSize };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugWC, _Start = start, _End = start + pageSize };
             IEnumerable<Post> posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
             return PartialView("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", posts);
         }
 
         public async Task<IActionResult> GetVideoGrid(CategoryPostParams param)
         {
-            var outstandingCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+            var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
             var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
             int pageSize = param.PageSize;
             var start = param.Page == 1 ? (param.Page - 1) : ((param.Page - 1) * pageSize + 1);
-            var cateSlugCriteria = new GetPostsByCateSlugCriteria() { _CategorySlug = param.Slugs.Slug1 ?? WorldCup2022.VideoSlug, _Start = start, _End = start + pageSize - 1 };
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slugs.Slug1 ?? WorldCup2022.VideoSlug, _Start = start, _End = start + pageSize - 1 };
             IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
             videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
             return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);
@@ -148,7 +148,7 @@
 
         public async Task<IActionResult> GetStandings()
         {
-            var standingsCriteria = new GetLeagueSeasonStandingCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             ViewBag.Total = GroupStandingsByGroupName(standings).Count;
             return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings));
@@ -156,7 +156,7 @@
 
         public async Task<IActionResult> GetTopScorers()
         {
-            var topScorersCriteria = new GetTop10ScorersCriteria() { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            var topScorersCriteria = new GetTop10ScorersCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
             return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
         }
