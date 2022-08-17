@@ -182,7 +182,6 @@
                     Standings = seasonStandings.Where(x => x.GroupName == groupNames[i]).ToList()
                 });
             }
-
             return standingsViewModels;
         }
 

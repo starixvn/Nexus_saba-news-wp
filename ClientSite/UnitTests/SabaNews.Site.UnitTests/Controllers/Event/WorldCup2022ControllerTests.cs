@@ -31,9 +31,6 @@
         private IMatchService matchService;
         private ILeagueService leagueService;
         private readonly IFixture fixture = new Fixture();
-        private const long LeagueIdWC = WorldCup2022.LeagueIdWorldCup2022;
-        private const long SeasonIdWC = WorldCup2022.SeasonIdWorldCup2022;
-        private const string CategorySlugWC = WorldCup2022.HomepageSlug;
 
         [Fact]
         public async Task GetLastestNews_WhenCalled_ReturnExpectedData()
@@ -56,6 +53,42 @@
         }
 
         [Fact]
+        public async Task GetVideo_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var news = new Fixture().Create<IEnumerable<Post>>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.Video();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Video.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<VideoViewModel>(viewResult.Model);
+            Assert.Equal(news, newsResult.Videos);
+        }
+
+        [Fact]
+        public async Task GetStanding_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var news = new Fixture().Create<IList<SeasonStandings>>();
+            var cateSlugCriteria = new Fixture().Create<GetLeagueSeasonStandingCriteria>();
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.Standing();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewResult.ViewName);
+        }
+
+        [Fact]
         public async Task GetNewsGrid_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -74,9 +107,29 @@
             Assert.Equal("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", viewResult.ViewName);
             var newsResult = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
             Assert.Equal(news, newsResult);
-
         }
 
+        [Fact]
+        public async Task GetVideoGrid_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = new Fixture().Create<CategoryPostParams>();
+
+            var news = new Fixture().Create<IEnumerable<Post>>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.GetVideoGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsAssignableFrom<IList<Post>>(viewResult.Model);
+            Assert.Equal(news.Last(), newsResult[newsResult.Count - 1]);
+            Assert.Equal(news.Count() - 1, newsResult.Count);
+        }
 
         [Fact]
         public async Task GetStandings_WhenCalled_ReturnExpectedData()
