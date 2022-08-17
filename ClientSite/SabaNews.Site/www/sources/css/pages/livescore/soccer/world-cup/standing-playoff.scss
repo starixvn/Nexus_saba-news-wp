@@ -28,9 +28,16 @@
     }
 }
 
-.draw-show-pc{
+.draw-show-mb{
     display: none;
     @include tableMobile{
         display: block;
     }
 }
+.draw-show-pc{
+    display: block;
+    @include tableMobile{
+        display: none;
+    }
+}
+
