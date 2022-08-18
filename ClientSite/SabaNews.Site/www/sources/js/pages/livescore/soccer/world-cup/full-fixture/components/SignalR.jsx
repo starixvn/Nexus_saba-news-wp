@@ -30,7 +30,7 @@ export class SignalR extends Component {
             .build();
 
         this.connection.onclose(async () => {
-            await this.start();
+            await this.startFixtureWC();
         });
 
         this.connection.on('UpdateLiveMatches', matches => {
@@ -39,10 +39,10 @@ export class SignalR extends Component {
 
         Site.lockNavigator();
 
-        this.start();
+        this.startFixtureWC();
     }
 
-    start = async () => {
+    startFixtureWC = async () => {
         try {
             await this.connection.start().then(() => {
                 console.log('SignalR wc-fixture connected!!!'); //NOSONAR
@@ -50,7 +50,7 @@ export class SignalR extends Component {
         } catch (err) {
             setTimeout(() => {
                 this.props.getMatches();
-                this.start();
+                this.startFixtureWC();
             }, 60 * 1000);
 
             console.log(err); //NOSONAR

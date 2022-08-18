@@ -75,6 +75,17 @@ export default class Item extends PureComponent {
         );
     };
 
+    getResultClass = (matchResult, isHome) => {
+        let className = '';
+        if(isHome && matchResult === MatchResult.Win) {
+            className = 'win'
+        }
+        if(!isHome && matchResult === MatchResult.Lose) {
+            className = 'win';
+        }
+        return className;
+    }
+
     renderBody = match => {
         const { isHighLight } = this.state;
         let matchResult = MatchResult.Draw;
@@ -89,7 +100,7 @@ export default class Item extends PureComponent {
                     match.homeTeam &&
                     <TeamIcon className="bracket__image bracket__image--home" src={match.homeTeam.icon} />
                 }
-                <div className={`bracket__participant bracket__participant--home ${matchResult === MatchResult.Win ? 'win' : ''}`}>
+                <div className={`bracket__participant bracket__participant--home ${this.getResultClass(matchResult, true)}`}>
                     <span className="bracket__name ">{this.getTeamName(match.homeTeam)}</span>
                 </div>
                 <div className="bracket__result bracket__result--home">
@@ -99,7 +110,7 @@ export default class Item extends PureComponent {
                     match.awayTeam &&
                     <TeamIcon className="bracket__image bracket__image--away" src={match.awayTeam.icon} />
                 }
-                <div className={`bracket__participant bracket__participant--away ${matchResult === MatchResult.Lose ? 'win' : ''}`}>
+                <div className={`bracket__participant bracket__participant--away ${this.getResultClass(matchResult, false)}`}>
                     <span className="bracket__name bracket__name--advancing">{this.getTeamName(match.awayTeam)}</span>
                 </div>
                 <div className="bracket__result bracket__result--away">
