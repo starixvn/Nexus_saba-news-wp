@@ -270,3 +270,17 @@
   margin-bottom: 4rem;
   position: relative;
 }
+
+
+.sticker-standing-left {
+  position: fixed;
+  top: 50%;
+  left: 3rem;
+  transform: translate(0,-50%);
+}
+
+.sticker-standing-right {
+  position: fixed;
+  right: 3rem;
+  bottom: 9rem;
+}
