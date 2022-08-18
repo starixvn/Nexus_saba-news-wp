@@ -149,8 +149,8 @@
         [Fact]
         public async Task GetMatchBySeasonAsync_WhenCalled_ReturnExpectedResult()
         {
-            (var leagues, var floatMatches) = fixture.Create<(IEnumerable<League>, IEnumerable<FloatMatchModel>)>();
-            baseService.FetchMultipleAsync<League, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((leagues, floatMatches));
+            (var leagues, var season, var floatMatches) = fixture.Create<(IEnumerable<League>, IEnumerable<Season>, IEnumerable<FloatMatchModel>)>();
+            baseService.FetchMultipleAsync<League, Season, FloatMatchModel>(Arg.Any<ICriteria>()).Returns((leagues, season, floatMatches));
 
             var actual = await matchService.GetMatchBySeasonAsync(new GetMatchBySeasonCriteria());
             Assert.Equal(leagues.FirstOrDefault(), actual.Item1);
