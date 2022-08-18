@@ -764,7 +764,8 @@ body {
   line-height: 3.3rem;
   text-align: center;
   position: absolute;
-  bottom: 30px; }
+  bottom: 30px;
+  width: 100%; }
 
 .page-items-hot {
   margin-bottom: 2rem; }
