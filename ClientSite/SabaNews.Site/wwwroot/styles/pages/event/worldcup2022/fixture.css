@@ -13,6 +13,9 @@
 .overflow-page {
   overflow: hidden; }
 
+body {
+  background: #EEEEE4 !important; }
+
 @media screen and (max-width: 1024px) {
   .header {
     position: relative;

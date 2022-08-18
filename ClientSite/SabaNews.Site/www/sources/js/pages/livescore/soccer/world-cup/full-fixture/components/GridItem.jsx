@@ -6,7 +6,7 @@ const GridItem = ({ items }) => {
             {
                 items.map(group => {
                     return (
-                        <div key={group.key}>
+                        <div key={group.key} className="wc-soccer-items">
                             <div className="soccer-match-grid-item-header">{group.text}</div>
                             <div className="soccer-match-grid-item-body">
                                 {

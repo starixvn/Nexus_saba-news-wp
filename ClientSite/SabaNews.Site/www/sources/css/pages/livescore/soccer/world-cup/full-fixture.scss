@@ -21,18 +21,31 @@
   grid-template-rows: unset;
   .soccer-match-grid {
     &-item {
+      background: none;
+      border: none;
       .soccer-match-grid-item-header {
         padding: 1rem 1.2rem;
         color: $color-title;
         font-weight: 700;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         line-height: 1.9rem;
-
+        max-width: 23rem;
+        margin: auto;
+        background: #540F1F;
+        border: 2px solid #DFB56C;
+        display: flex;
+        justify-content: center;
+        color: #FFFFFF;
         @include tableMobile {
           font-size: 1.2rem;
           line-height: 1.6rem;
           padding: 1rem 0.8rem;
         }
+      }
+      .soccer-match-grid-item-body{
+        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+        border-radius: 5px;
+        padding: 3rem 2rem 2rem 2rem;
       }
     }
   }
@@ -92,10 +105,26 @@
 }
 
 .group-match-item{
+  margin-bottom: 0;
+  &:last-child{
+    .soccer-match-item{
+      border-width: 0;
+    }
+  }
   .soccer-match-item{
+    background: none;
     position: relative;
+    border-radius: 0;
+    border-width: 0 0 1px 0;
+    border-color: #C49F5D;
+    padding: 1rem 0;
+    &:hover{
+      background: none;
+    }
     .soccer-match-team{
       .group-team{
+        color: #fff;
+        font-weight: 600;
         @include creen1199px{
           display: flex;
           justify-content: center;
@@ -116,15 +145,36 @@
               order: 1;
             }
           }
+          .soccer-team-logo{
+            margin-left: 1rem;
+            margin-right: 0;
+          }
         }
         .away-team{
           @include creen1199px{
             padding-top: 0;
           }
+          .soccer-team-logo{
+            margin-right: 1rem;
+          }
         }
         .soccer-team{
           @include creen1199px{
             width: 20%;
+          }
+        }
+        .soccer-team-name{
+          font-size: 1.6rem;
+          padding-right: 0;
+        }
+        .soccer-team-logo{
+          border: 1px solid #FFFFFF;
+          border-radius: 3px;
+          width: 4.2rem;
+          height: 2.8rem;
+          overflow: hidden;
+          img{
+            object-fit: cover;
           }
         }
       }
@@ -152,11 +202,26 @@
   align-items: center;
   list-style: none;
   padding-left: 0;
+  background: linear-gradient(157.5deg, #FFD68F 0%, #C2A97D 93.61%);
+  margin: 0 2rem;
+  clip-path: polygon(85% 0,100% 49%,85% 100%,15% 100%,0 49%,15% 0);
+  height: 50px;
+  justify-content: center;
   @include creen1199px{
     width: 10%;
   }
   @include tableMobile{
     display: none;
+  }
+  .total-score{
+    font-size: 2rem;
+    color: #2F2F2F;
+    font-weight: 700;
+  }
+  .haft-score{
+    font-size: 1.4rem;
+    color: #2F2F2F;
+    font-weight: 400;
   }
 }
 
@@ -164,6 +229,9 @@
   .soccer-match-item{
     .soccer-match-stage{
       margin-right: 0;
+      text-align: left;
+      color: #fff;
+      font-weight: 600;
     }
     .soccer-match-team{
       @include creen1199px{
@@ -172,3 +240,7 @@
     }
   } 
 } 
+
+.wc-soccer-items{
+  margin-bottom: 4rem;
+}
