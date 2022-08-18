@@ -2,7 +2,13 @@
   padding-top: 3rem; }
   @media screen and (max-width: 1024px) {
     .wc-main {
-      padding-top: 1.5rem; } }
+      padding-top: 2rem; } }
+
+.wc-page-main {
+  padding-top: 4rem; }
+  @media screen and (max-width: 1024px) {
+    .wc-page-main {
+      padding-top: 2rem; } }
 
 .overflow-page {
   overflow: hidden; }
