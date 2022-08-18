@@ -62,102 +62,104 @@
     <script src="~/minify/js/video.min.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
-<section class="main">
+<section class="worldcup-video">
     <div id="worldcup-fixture"></div>
-    <div class="container">
-        <div class="block block-main">
-            @if (Model.Videos.Count > 0)
-            {
-                <h2 class="block__title"><a>Video</a></h2>
-                <h2 class="block__title"><a>Nổi Bật</a></h2>
-                <div class="block__swipper">
-                    <div class="swiper-container">
-                        <div class="skeleton skeleton-swiper-slide">
-                            <div class="img-item"></div>
-                            <div class="content-box"></div>
-                        </div>
-                        <div class="post swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="img-item">
-                                    <input type="hidden" name="iframe_value" value="@Model.Videos[0].PostContent" />
-                                    <picture>
-                                        <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/webp">
-                                        <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/jpeg">
-                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
-                                    </picture>
-                                    <div class="btn-play-video" post-id="@Model.Videos[0].ID">
-                                        <span class="icon-play"></span>
+    <div class="wc-page-main">
+        <div class="container">
+            <div class="block block-main">
+                @if (Model.Videos.Count > 0)
+                {
+                    <h2 class="block__title"><a>Video</a></h2>
+                    <h2 class="block__title"><a>Nổi Bật</a></h2>
+                    <div class="block__swipper">
+                        <div class="swiper-container">
+                            <div class="skeleton skeleton-swiper-slide">
+                                <div class="img-item"></div>
+                                <div class="content-box"></div>
+                            </div>
+                            <div class="post swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="img-item">
+                                        <input type="hidden" name="iframe_value" value="@Model.Videos[0].PostContent" />
+                                        <picture>
+                                            <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/webp">
+                                            <source srcset="@Url.Content(Model.Videos[0].FeatureImage)" type="image/jpeg">
+                                            <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
+                                        </picture>
+                                        <div class="btn-play-video" post-id="@Model.Videos[0].ID">
+                                            <span class="icon-play"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="play_video"></div>
-                                <div class="content-box">
-                                    <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Videos[0].Slug })" class="heading">@Model.Videos[0].PostTitle</a></h4>
-                                </div>
-                                <div class="card-vertical__datetime">
-                                    <span>
-                                        @Model.Videos[0].PostTime
-                                        @if (Model.Videos[0].CommentCount > 0)
-                                        {
-                                            <a href="@Url.Action("Single", "Post", new { slug = Model.Videos[0].Slug })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Videos[0].CommentCount</i></a>
-                                        }
-                                    </span>
+                                    <div class="play_video"></div>
+                                    <div class="content-box">
+                                        <h4 class="title-box"><a href="@Url.Action("Single", "Post", new { slug = Model.Videos[0].Slug })" class="heading">@Model.Videos[0].PostTitle</a></h4>
+                                    </div>
+                                    <div class="card-vertical__datetime">
+                                        <span>
+                                            @Model.Videos[0].PostTime
+                                            @if (Model.Videos[0].CommentCount > 0)
+                                            {
+                                                <a href="@Url.Action("Single", "Post", new { slug = Model.Videos[0].Slug })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@Model.Videos[0].CommentCount</i></a>
+                                            }
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
-            <div>
-                <a id="btn-showall">Tất cả</a>
-                <a id="btn-showhighlight">Highlights</a>
-                <a id="btn-showguess">Dự đoán</a>
-            </div>
-
-            <div id="news-grid" class="block__video">
-                @{
-                    int postIndex = 0;
-                    foreach (var post in Model.Videos)
-                    {
-                        {
-                            postIndex++;
-                            if (postIndex <= 1)
-                            {
-                                continue;
-                            }
-                        }
-                        <div class="post card-vertical card-vertical-highlight">
-                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb">
-                                <picture>
-                                    <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
-                                    <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
-                                    <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
-                                </picture>
-                                <div class="btn-play-video btn-play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })">
-                                    <span class="icon-play play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })"></span>
-                                </div>
-                            </a>
-                            <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a>
-                            <p class="card-vertical__datetime">
-                                <span>
-                                    @post.PostTime
-                                    @if (post.CommentCount > 0)
-                                    {
-                                        <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
-                                    }
-                                </span>
-                            </p>
-                        </div>
-                        <div class="skeleton skeleton-vertical">
-                            <a class="skeleton-vertical__image"></a>
-                            <a class="skeleton-vertical__title"></a>
-                            <p class="skeleton-vertical__description text-description"></p>
-                        </div>
-                    }
                 }
-            </div>
-            <div class="loading-page">
-                <div class="lds-ellipsis">
-                    <div></div><div></div><div></div><div></div>
+                <div>
+                    <a id="btn-showall">Tất cả</a>
+                    <a id="btn-showhighlight">Highlights</a>
+                    <a id="btn-showguess">Dự đoán</a>
+                </div>
+
+                <div id="news-grid" class="block__video">
+                    @{
+                        int postIndex = 0;
+                        foreach (var post in Model.Videos)
+                        {
+                            {
+                                postIndex++;
+                                if (postIndex <= 1)
+                                {
+                                    continue;
+                                }
+                            }
+                            <div class="post card-vertical card-vertical-highlight">
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__image thumb">
+                                    <picture>
+                                        <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
+                                        <source srcset="@Url.Content(post.FeatureImage)" type="image/jpeg" class="img-res">
+                                        <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
+                                    </picture>
+                                    <div class="btn-play-video btn-play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })">
+                                        <span class="icon-play play-orthers" data-url="@Url.Action("Single", "Post", new { slug = post.Slug })"></span>
+                                    </div>
+                                </a>
+                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a>
+                                <p class="card-vertical__datetime">
+                                    <span>
+                                        @post.PostTime
+                                        @if (post.CommentCount > 0)
+                                        {
+                                            <a href="@Url.Action("Single", "Post", new { slug =  post.Slug})#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
+                                        }
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="skeleton skeleton-vertical">
+                                <a class="skeleton-vertical__image"></a>
+                                <a class="skeleton-vertical__title"></a>
+                                <p class="skeleton-vertical__description text-description"></p>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="loading-page">
+                    <div class="lds-ellipsis">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
                 </div>
             </div>
         </div>
