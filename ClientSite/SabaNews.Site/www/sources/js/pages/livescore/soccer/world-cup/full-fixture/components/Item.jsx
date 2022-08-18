@@ -65,8 +65,8 @@ export default class Item extends PureComponent {
                                 </div>
 
                                 <ul className="wc-round-score">
-                                    <li> <span>5</span> - <span>3</span> </li>
-                                    <li> HT : <span>5</span> - <span>3</span> </li>
+                                    <li className="total-score"> <span>5</span> - <span>3</span> </li>
+                                    <li className="haft-score"> HT : <span>5</span> - <span>3</span> </li>
                                 </ul>
 
                                 <div className="soccer-team away-team">

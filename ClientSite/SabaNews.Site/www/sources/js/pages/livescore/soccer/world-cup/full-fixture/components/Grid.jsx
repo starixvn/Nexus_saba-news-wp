@@ -47,6 +47,7 @@ export class Grid extends Component {
                     {
                         !isMobile &&
                         <Stage stages={stages} selectedStageId={selectedStageId} onSetStageId={this.onSetStageId} />
+                        
                     }
                     {
                         isMobile &&

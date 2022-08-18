@@ -23,23 +23,41 @@
     &-item {
       background: none;
       border: none;
+      overflow : unset;
       .soccer-match-grid-item-header {
         padding: 1rem 1.2rem;
         color: $color-title;
         font-weight: 700;
         font-size: 1.6rem;
         line-height: 1.9rem;
-        max-width: 23rem;
+        width: 23rem;
+        height: 4rem;
         margin: auto;
-        background: #540F1F;
-        border: 2px solid #DFB56C;
+        background: #DFB56C;
+        border: none;
         display: flex;
         justify-content: center;
         color: #FFFFFF;
+        position: absolute;
+        top: 0;
+        right: 50%;
+        transform: translate(50%,-50%);
+        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%, 5% 0);
         @include tableMobile {
-          font-size: 1.2rem;
+          font-size: 1.6rem;
           line-height: 1.6rem;
           padding: 1rem 0.8rem;
+        }
+        &::after{
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 4px;
+          right: 4px;
+          bottom: 3px;
+          background: #66172A;
+          clip-path: polygon(96% 0, 100% 50%, 96% 100%, 4% 100%, 0 50%, 4% 0);
+          z-index: -1;
         }
       }
       .soccer-match-grid-item-body{
@@ -243,4 +261,5 @@
 
 .wc-soccer-items{
   margin-bottom: 4rem;
+  position: relative;
 }

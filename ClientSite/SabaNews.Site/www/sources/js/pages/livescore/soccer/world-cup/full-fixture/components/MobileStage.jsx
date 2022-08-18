@@ -17,20 +17,22 @@ export default class MobileStage extends PureComponent {
         const { stages, selectedStageId } = this.props;
         const currentStage = this.getMatchWithStage();
         return (
-            <div>
+            <>
                 {CommonFunctions.getStageName(currentStage)}
-                <select onChange={this.onChange} value={selectedStageId}>
-                    {
-                        stages.map(group =>
-                            <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
-                    }
-                </select>
-                <div>
+                <div className="nav-select-mb">
+                    <select onChange={this.onChange} value={selectedStageId}>
+                        {
+                            stages.map(group =>
+                                <option value={group.key} key={group.key} >{CommonFunctions.getStageName(group.stage)}</option>)
+                        }
+                    </select>
+                </div>
+                <>
                     {
                         <GridItem items={currentStage.childs} />
                     }
-                </div>
-            </div>
+                </>
+            </>
         );
     }
 }
