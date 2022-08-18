@@ -23,3 +23,17 @@
         margin-bottom : 0;
     }
 }
+.page-grid {
+    width: 100%;
+    margin: 0 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top : 2rem;
+    @include tableMobile {
+        padding: 0;
+    }
+
+    @media (min-width : 1280px) {
+        max-width: 115rem !important;
+    }
+}

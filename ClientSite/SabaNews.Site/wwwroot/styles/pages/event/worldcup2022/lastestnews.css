@@ -678,8 +678,10 @@ body {
   display: grid;
   grid-template-columns: 63% 35%;
   grid-gap: 2rem;
-  padding: 2rem 0;
   border-top: 1px solid #ddd; }
+  @media screen and (max-width: 1024px) {
+    .page-grid {
+      grid-template-columns: 100%; } }
 
 .dots {
   display: flex;
@@ -774,3 +776,16 @@ body {
   margin-bottom: 3rem; }
   .page-items-box:last-child {
     margin-bottom: 0; }
+
+.page-grid {
+  width: 100%;
+  margin: 0 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 2rem; }
+  @media screen and (max-width: 1024px) {
+    .page-grid {
+      padding: 0; } }
+  @media (min-width: 1280px) {
+    .page-grid {
+      max-width: 115rem !important; } }

@@ -492,8 +492,10 @@ body {
   display: grid;
   grid-template-columns: 63% 35%;
   grid-gap: 2rem;
-  padding: 2rem 0;
   border-top: 1px solid #ddd; }
+  @media screen and (max-width: 1024px) {
+    .page-grid {
+      grid-template-columns: 100%; } }
 
 .dots {
   display: flex;
