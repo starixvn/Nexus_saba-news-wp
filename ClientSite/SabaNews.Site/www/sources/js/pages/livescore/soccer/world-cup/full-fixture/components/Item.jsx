@@ -87,12 +87,12 @@ export default class Item extends PureComponent {
                         <div className="soccer-match-team">
                             <div className="group-team">
                                 <div className="soccer-team home-team">
-                                    <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
-                                    <div className="soccer-team-name">{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, true)}
                                     </ul>
                                     <TeamScore match={match} isHomeTeam />
+                                    <div className="soccer-team-name">{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
+                                    <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
                                 </div>
 
                                 {this.getScores(match)}

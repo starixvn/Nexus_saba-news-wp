@@ -159,15 +159,18 @@
             border-bottom: none;
             padding-bottom: 0;
             justify-content: flex-end;
-            .soccer-team-logo{
-              order: 1;
-            }
           }
           .soccer-team-logo{
             margin-left: 1rem;
             margin-right: 0;
             @include tableMobile{
               margin-left: 0;
+              margin-right: 1rem;
+              order: 1;
+            }
+          }
+          .soccer-team-status{
+            @include creen1199px{
               margin-right: 1rem;
             }
           }
@@ -178,6 +181,11 @@
           }
           .soccer-team-logo{
             margin-right: 1rem;
+          }
+          .soccer-team-status{
+            @include creen1199px{
+              margin-left: 1rem;
+            }
           }
         }
         .soccer-team{
@@ -190,6 +198,7 @@
           padding-right: 0;
           @include tableMobile{
             font-size: 1.2rem;
+            order: 2;
           }
         }
         .soccer-team-logo{
@@ -200,6 +209,12 @@
           overflow: hidden;
           img{
             object-fit: cover;
+          }
+        }
+        .soccer-team-status{
+          @include tableMobile{
+            order: 3;
+            margin-left: .6rem;
           }
         }
       }
@@ -257,6 +272,10 @@
       text-align: left;
       color: #fff;
       font-weight: 600;
+      @include tableMobile{
+        width: 6rem;
+        text-align: center;
+      }
     }
     .soccer-match-team{
       @include creen1199px{
@@ -277,12 +296,20 @@
   top: 50%;
   left: 3rem;
   transform: translate(0,-50%);
+  z-index: -1;
+  @include tableMobile{
+    display: none;
+  }
 }
 
 .sticker-standing-right {
   position: fixed;
   right: 3rem;
   bottom: 9rem;
+  z-index: -1;
+  @include tableMobile{
+    display: none;
+  }
 }
 
 
