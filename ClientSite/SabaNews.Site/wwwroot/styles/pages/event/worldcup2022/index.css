@@ -789,31 +789,47 @@ body {
   position: fixed;
   z-index: 99999;
   top: 50%;
-  background: red;
+  background: #000;
   right: 50%;
   transform: translate(50%, -50%);
   width: 100%;
-  max-width: 75rem; }
+  max-width: 100%;
+  height: 100%; }
+
+.wc-modal .modal .tab-content {
+  max-width: 75rem;
+  width: 100%; }
 
 .wc-modal .modal .modal-auth {
   border: none;
   border-radius: 0;
-  position: relative; }
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 75rem;
+  margin: 0 auto; }
 
 .wc-modal .modal .close-wc {
-  position: absolute;
-  top: -1.2rem;
-  right: -1.6rem;
+  position: fixed;
+  top: 25px;
+  right: 25px;
   z-index: 999999;
   cursor: pointer;
-  color: #4f4f4f;
+  color: #fff;
   width: 3.2rem;
   height: 3.2rem;
-  background: #fff;
+  background: transparent;
   border-radius: 50%;
   line-height: 0;
-  font-size: 2.4rem;
+  font-size: 4rem;
   outline: none; }
+  @media screen and (max-width: 1024px) {
+    .wc-modal .modal .close-wc {
+      top: 10px;
+      right: 10px;
+      font-size: 3rem; } }
 
 .wc-modal .modal .if-content {
   position: relative;
@@ -828,6 +844,16 @@ body {
     right: 0;
     width: 100%;
     height: 100%; }
+
+.wc-modal .modal .if-title {
+  color: #FF4700;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+  text-align: center;
+  position: absolute;
+  bottom: 30px; }
 
 .gird-hot-news {
   display: grid;
