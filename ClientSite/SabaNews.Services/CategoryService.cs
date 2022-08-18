@@ -17,12 +17,5 @@
         {
             this.baseService = baseService;
         }
-
-        public async Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug)
-        {
-            var result =  await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
-            var cates = result.Reverse();
-            return cates.ToList();
-        }
     }
 }

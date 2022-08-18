@@ -6,6 +6,5 @@
 
     public interface ICategoryService
     {
-        Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);
     }
 }

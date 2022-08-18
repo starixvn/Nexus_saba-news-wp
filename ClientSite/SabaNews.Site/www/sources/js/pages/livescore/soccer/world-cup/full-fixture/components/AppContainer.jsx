@@ -19,13 +19,13 @@ export class AppContainer extends Component {
         const totalItems = matches.length;
         const tmpMatches = [];
         for (let i = 0; i < totalItems; i++) {
-            const match = matches[i];
-            const startTime = DateTimeService.convertFromUTC(match.startTime);
+            const tmpMatch = matches[i];
+            const startTime = DateTimeService.convertFromUTC(tmpMatch.startTime);
             const key = DateTimeService.formatDateTime(startTime, 'YYYY-MM-DD');
             const item = {
                 key,
                 text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
-                childs: [match]
+                childs: [tmpMatch]
             };
             if (tmpMatches.length === 0) {
                 tmpMatches.push(item);
@@ -34,7 +34,7 @@ export class AppContainer extends Component {
                 if (index === - 1) {
                     tmpMatches.push(item);
                 } else {
-                    tmpMatches[index].childs.push(match);
+                    tmpMatches[index].childs.push(tmpMatch);
                 }
             }
         }

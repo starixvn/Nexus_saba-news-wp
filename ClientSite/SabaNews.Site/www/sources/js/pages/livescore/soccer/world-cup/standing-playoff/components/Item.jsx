@@ -78,13 +78,13 @@ export default class Item extends PureComponent {
     getResultClass = (matchResult, isHome) => {
         let className = '';
         if(isHome && matchResult === MatchResult.Win) {
-            className = 'win'
+            className = 'win';
         }
         if(!isHome && matchResult === MatchResult.Lose) {
             className = 'win';
         }
         return className;
-    }
+    };
 
     renderBody = match => {
         const { isHighLight } = this.state;

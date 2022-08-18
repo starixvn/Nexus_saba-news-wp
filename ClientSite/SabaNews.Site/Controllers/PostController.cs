@@ -28,7 +28,6 @@
         private readonly IStatisticService statisticService;
         private readonly IPollService pollService;
         private readonly IDataControlService dataControlService;
-        private readonly ICategoryService categoryService;
 
         public PostController(IPostService postService,
             IConfiguration configuration,
@@ -36,8 +35,7 @@
             IUserService userService,
             IStatisticService statisticService,
             IPollService pollService,
-            IDataControlService dataControlService,
-            ICategoryService categoryService)
+            IDataControlService dataControlService)
         {
             this.postService = postService;
             this.configuration = configuration;
@@ -46,7 +44,6 @@
             this.statisticService = statisticService;
             this.pollService = pollService;
             this.dataControlService = dataControlService;
-            this.categoryService = categoryService;
         }
 
         [Route("{slug}")]
@@ -68,7 +65,6 @@
             var cateParents = await postService.GetCateParentsAsync(cateInfo.slug);
             var cateUrl = PostHelper.GetCategoryLink(cateParents);
             var topParentCate = PostHelper.GetTopCateParent(cateParents);
-            var cateParents = await categoryService.GetCateParentsAsync(cateInfo.Slug);
             cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
