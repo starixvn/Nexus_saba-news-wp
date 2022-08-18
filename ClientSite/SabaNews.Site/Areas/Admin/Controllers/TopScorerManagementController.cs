@@ -47,7 +47,7 @@
             else {
                 ViewBag.TopTotal = 1;
             }
-            player = player.Where(x => !topScorers.Where(y => y.PlayerId == x.PlayerId).Any()).ToList();
+            player = player.Where(x => !topScorers.Any(y => y.PlayerId == x.PlayerId)).ToList();
             var model = new PlayerViewModel {
                 Teams = teams,
                 Players = player
@@ -67,7 +67,7 @@
         {
             var player = await leagueService.GetPlayerByIdTeamAsync(teamId);
             var topScorers = await leagueService.GetAllTopScorersAsync();
-            player = player.Where(x => !topScorers.Where(y => y.PlayerId == x.PlayerId).Any()).ToList();
+            player = player.Where(x => !topScorers.Any(y => y.PlayerId == x.PlayerId)).ToList();
             return Json(player);
         }
 
