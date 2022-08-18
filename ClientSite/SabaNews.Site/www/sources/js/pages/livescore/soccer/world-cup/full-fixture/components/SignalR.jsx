@@ -12,6 +12,10 @@ export class SignalR extends Component {
         this.connection = null;
     }
 
+    componentWillUnmount() {
+        this.connection.stop();
+    }
+
     componentDidMount() {
         const options = {
             transport: HttpTransportType.WebSockets,
@@ -38,14 +42,10 @@ export class SignalR extends Component {
         this.start();
     }
 
-    componentWillUnmount() {
-        this.connection.stop();
-    }
-
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                console.log('SignalR connected!!!'); //NOSONAR
+                console.log('SignalR  connected!!!'); //NOSONAR
             });
         } catch (err) {
             setTimeout(() => {
@@ -58,7 +58,7 @@ export class SignalR extends Component {
     };
 
     render() {
-        return <span />;
+        return <div />;
     }
 }
 

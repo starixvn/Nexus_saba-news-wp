@@ -69,10 +69,7 @@
             var cateUrl = PostHelper.GetCategoryLink(cateParents);
             var topParentCate = PostHelper.GetTopCateParent(cateParents);
             var cateParents = await categoryService.GetCateParentsAsync(cateInfo.Slug);
-            if (cateInfo.Url == null)
-            {
-                cateInfo.Url = PostHelper.GetCategoryUrl(cateParents);
-            }
+            cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
@@ -132,15 +129,13 @@
             {
                 return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts }; 
             }
-            if (cateSlug.Contains(","))
-            {
-                var listCateSlug = cateSlug.Split(',');
-                var listCateName = cateName.Split(',');
-                var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-                var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-                slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
-                name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
-            }
+            
+            var listCateSlug = cateSlug.Split(',');
+            var listCateName = cateName.Split(',');
+            var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
+            var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+            slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
+            name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
             return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
         }
 

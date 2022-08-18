@@ -4,7 +4,6 @@ import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class Item extends PureComponent {
     constructor(props) {
@@ -21,15 +20,15 @@ export default class Item extends PureComponent {
     };
 
     getTeamStatus = (match, isHomeTeam) => {
-        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+        const homeField = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const awayField = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
         if (match.status === MatchStatus.Finished) {
-            if (match[`${homeFieldName}PenaltyScore`]
-                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+            if (match[`${homeField}PenaltyScore`]
+                && match[`${homeField}PenaltyScore`] > match[`${awayField}PenaltyScore`]) {
                 return <li>PEN</li>;
-            } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
-                && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+            } else if (match.isSecondLeg && match[`${homeField}AggregateScore`]
+                && match[`${homeField}AggregateScore`] > match[`${awayField}AggregateScore`]) {
                 return <li>AGG</li>;
             } else {
                 return <Fragment />;

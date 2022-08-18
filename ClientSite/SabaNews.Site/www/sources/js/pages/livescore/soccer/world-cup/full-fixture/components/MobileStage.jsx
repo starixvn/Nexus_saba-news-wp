@@ -6,7 +6,7 @@ export default class MobileStage extends PureComponent {
 
     getMatchWithStage = () => {
         const { stages, selectedStageId } = this.props;
-        const stage = stages.find(item => item.key === parseInt(selectedStageId, 10))
+        const stage = stages.find(item => item.key === parseInt(selectedStageId, 10));
         return stage;
     };
 

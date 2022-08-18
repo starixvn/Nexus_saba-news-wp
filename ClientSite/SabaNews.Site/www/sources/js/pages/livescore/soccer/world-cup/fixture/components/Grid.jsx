@@ -15,18 +15,20 @@ export default class Grid extends PureComponent {
     }
 
     componentDidMount() {
-        const { matches } = this.props;
+        const { matches, isFinished } = this.props;
         let { start, end } = this.state;
         const gridWidth = window.innerWidth - 40;
         this.showItems = Math.ceil(gridWidth / 260);
-        const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
-        const startLastPage = matches.length - this.showItems + 1;
-        if(postMatchIndex >= 0) {
-            const lastIndex = matches.length - postMatchIndex;
-            if(lastIndex > startLastPage) {
-                start = startLastPage;
-            } else {
-                start = lastIndex - 3 > 0 ? lastIndex - 3 : 0;
+        if(!isFinished) {
+            const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
+            const startLastPage = matches.length - this.showItems + 1;
+            if(postMatchIndex >= 0) {
+                const lastIndex = matches.length - postMatchIndex;
+                if(lastIndex - 3 > startLastPage) {
+                    start = startLastPage;
+                } else {
+                    start = lastIndex - 3 > 0 ? lastIndex - 3 : 0;
+                }
             }
         }
         end = start + this.showItems;

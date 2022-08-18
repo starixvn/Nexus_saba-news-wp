@@ -16,15 +16,16 @@ export class AppContainer extends Component {
         this.props.getMatches();
     }
 
-    getMatches = () => {
-        const { league, matches } = this.props;
-        if(!matches) {
-            return matches;
-        }
-        let tmpMatches = matches;
+    checkIsFinished = league => {
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        if(moment(today).isSameOrAfter(endTime)) {
+        return moment(today).isSameOrAfter(endTime);
+    }
+
+    getMatches = () => {
+        const { league, matches } = this.props;
+        let tmpMatches = matches;
+        if(this.checkIsFinished(league)) {
             tmpMatches = [...matches].reverse();
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
@@ -35,12 +36,17 @@ export class AppContainer extends Component {
     };
 
     render() {
-        const { league } = this.props;
-        const matches = this.getMatches();
+        const { league, matches } = this.props;
+        if(!matches || matches.length === 0) {
+            return null;
+        }
+        const matchGrid = this.getMatches();
+        const isFinished = this.checkIsFinished(league);
+        console.log(isFinished);
         return (
             <div>
                 <SignalR  />
-                { matches && matches.length > 0 && <Grid matches={matches} league={league} /> }
+                { matches && matches.length > 0 && <Grid matches={matchGrid} league={league} isFinished={isFinished} /> }
             </div>
         );
     }

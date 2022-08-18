@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 export class SignalR extends Component {
     constructor(props) {
         super(props);
-
         this.connection = null;
     }
 
@@ -38,10 +37,6 @@ export class SignalR extends Component {
         this.start();
     }
 
-    componentWillUnmount() {
-        this.connection.stop();
-    }
-
     start = async () => {
         try {
             await this.connection.start().then(() => {
@@ -56,6 +51,10 @@ export class SignalR extends Component {
             console.log(err); //NOSONAR
         }
     };
+
+    componentWillUnmount() {
+        this.connection.stop();
+    }
 
     render() {
         return <span />;
