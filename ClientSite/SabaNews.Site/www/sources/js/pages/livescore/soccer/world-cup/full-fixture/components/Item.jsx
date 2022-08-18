@@ -38,6 +38,37 @@ export default class Item extends PureComponent {
         return <Fragment />;
     };
 
+    getScores = match => {
+        switch (match.status) {
+            case MatchStatus.NotStarted:
+            case MatchStatus.Delay:
+            case MatchStatus.Postpone:
+            case MatchStatus.Cancel:
+            case MatchStatus.TBD:
+                return (
+                    <ul className="wc-round-score">
+                        <li className="total-score"> VS </li>
+                    </ul>
+                );
+            default:
+                return (
+                    <ul className="wc-round-score">
+                        <li className="total-score">
+                            <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
+                            <span> - </span>
+                            <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
+                        </li>
+                        <li className="haft-score">
+                            <span>  HT: </span>
+                            <span>{match.homeTeamHalfScore}</span>
+                            <span> - </span>
+                            <span>{match.awayTeamHalfScore}</span>
+                        </li>
+                    </ul>
+                );
+        }
+    };
+
     render() {
         const { match } = this.props;
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
@@ -64,10 +95,7 @@ export default class Item extends PureComponent {
                                     <TeamScore match={match} isHomeTeam />
                                 </div>
 
-                                <ul className="wc-round-score">
-                                    <li className="total-score"> <span>5</span> - <span>3</span> </li>
-                                    <li className="haft-score"> HT : <span>5</span> - <span>3</span> </li>
-                                </ul>
+                                {this.getScores(match)}
 
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
