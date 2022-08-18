@@ -681,7 +681,8 @@ body {
   border-top: 1px solid #ddd; }
   @media screen and (max-width: 1024px) {
     .page-grid {
-      grid-template-columns: 100%; } }
+      grid-template-columns: 100%;
+      border-top: none; } }
 
 .dots {
   display: flex;
@@ -785,7 +786,24 @@ body {
   padding-top: 2rem; }
   @media screen and (max-width: 1024px) {
     .page-grid {
-      padding: 0; } }
+      padding-top: 0; } }
   @media (min-width: 1280px) {
     .page-grid {
       max-width: 115rem !important; } }
+  @media screen and (max-width: 1024px) {
+    .page-grid .card-horizontal {
+      margin-left: 1.2rem;
+      margin-right: 1.2rem; } }
+  @media screen and (max-width: 1024px) {
+    .page-grid #topScorersWC {
+      padding: 0 1.2rem;
+      margin: 3rem 0; } }
+  @media screen and (max-width: 1024px) {
+    .page-grid #standingWC {
+      margin: 3rem 0; } }
+  @media screen and (max-width: 1024px) {
+    .page-grid #standingWC .king-soccer {
+      display: grid; } }
+  @media screen and (max-width: 1024px) {
+    .page-grid #standingWC .king-soccer .wc-table {
+      width: 32rem; } }

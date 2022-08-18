@@ -10,18 +10,19 @@
     bool isDesktop = detector.IsDesktop();
 }
 
-<div class="king-soccer">
-    <div class="title-section">
-        <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
 
-        <h2><a href="#">Bảng Xếp Hạng</a></h2>
-        <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
-    </div>
+<div class="title-section">
+    <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
+
+    <h2><a href="#">Bảng Xếp Hạng</a></h2>
+    <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+</div>
+<div class="king-soccer scroll-snap">
     @foreach (var group in Model)
     {
         var count = 0;
 
-        <div class="wc-table wc-table-king-soccer" id="standing-@standingNum">
+        <div class="wc-table wc-table-king-soccer scroll-snap-items" id="standing-@standingNum">
             <div class="wc-table-header">
                 <div class="wc-table-cell cell-participant">
                     <i class="@(isMobile ? "":"icon-chevron-left btn-back-standing")"></i>
@@ -41,7 +42,7 @@
                         <div class="wc-table-cell cell-participant">
                             <ul class="team">
                                 <li class="number">@count</li>
-                                <li class="team-logo"><img src="@GetTeamIcon(item.Icon)"/></li>
+                                <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>
                                 <li class="team-name">@GetStandingTeamName(item)</li>
                             </ul>
                         </div>

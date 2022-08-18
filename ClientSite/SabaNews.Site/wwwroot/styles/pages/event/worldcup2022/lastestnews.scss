@@ -28,12 +28,45 @@
     margin: 0 1rem;
     margin-right: auto;
     margin-left: auto;
-    padding-top : 2rem;
+    padding-top: 2rem;
+
     @include tableMobile {
-        padding: 0;
+        padding-top: 0;
     }
 
     @media (min-width : 1280px) {
         max-width: 115rem !important;
+    }
+
+    .card-horizontal {
+        @include tableMobile {
+            margin-left: 1.2rem;
+            margin-right: 1.2rem;
+        }
+    }
+
+    #topScorersWC {
+        @include tableMobile {
+            padding: 0 1.2rem;
+            margin: 3rem 0;
+        }
+    }
+
+    #standingWC {
+        @include tableMobile {
+            margin: 3rem 0;
+        }
+
+        .king-soccer {
+            @include tableMobile {
+                display: grid;
+            }
+
+            .wc-table {
+                @include tableMobile {
+                    width: 32rem;
+                }
+            }
+        }
     }
 }
