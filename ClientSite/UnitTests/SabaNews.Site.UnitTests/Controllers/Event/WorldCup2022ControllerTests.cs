@@ -5,20 +5,16 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Routing;
     using NSubstitute;
-    using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Posts;
-    using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers.Event;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -31,6 +27,61 @@
         private IMatchService matchService;
         private ILeagueService leagueService;
         private readonly IFixture fixture = new Fixture();
+
+
+        [Fact]
+        public async Task Index_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = new Fixture().Create<WorldCupViewModel>();
+            dataControlService.GetWorldCupPageViewModel().Returns(expected);
+
+            //Act
+            var result = await controller.Index();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Index.cshtml", viewResult.ViewName);
+            var dataResult = Assert.IsType<WorldCupViewModel>(viewResult.Model);
+            Assert.Equal(expected, dataResult);
+
+        }
+
+        [Fact]
+        public async Task Index_WhenCateDontHaveSeoData_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var expected = new Fixture().Create<WorldCupViewModel>();
+            expected.Category.SEOTitle = null;
+            dataControlService.GetWorldCupPageViewModel().Returns(expected);
+
+            //Act
+            var result = await controller.Index();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Index.cshtml", viewResult.ViewName);
+            var dataResult = Assert.IsType<WorldCupViewModel>(viewResult.Model);
+            Assert.Equal(expected, dataResult);
+
+        }
+
+        [Fact]
+        public void Fixture_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.Fixture();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Fixture.cshtml", viewResult.ViewName);
+
+        }
 
         [Fact]
         public async Task GetLastestNews_WhenCalled_ReturnExpectedData()

@@ -40,7 +40,7 @@ export class SignalR extends Component {
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                console.log('SignalR connected!!!'); //NOSONAR
+                console.log('SignalR wc-short-fixture connected!!!'); //NOSONAR
             });
         } catch (err) {
             setTimeout(() => {

@@ -5,7 +5,9 @@
     using NSubstitute;
     using SabaNews.Core.Services;
     using SabaNews.Models;
+    using SabaNews.Models.Banner;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
     using System;
@@ -262,6 +264,86 @@
 
             //Act
             await service.UpdateRSSData();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
+        [Fact]
+        public async Task UpdateBannerCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<BannerModel>();
+
+            bannerService.GetBannerInfoAsync().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateBannerCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateBannerCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+
+            bannerService.When(x => x.GetBannerInfoAsync()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateBannerCaching();
+
+            //Assert
+            await logService.Received().WriteExceptionSentryErrorAsync(exception);
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+        }
+
+        [Fact]
+        public async Task UpdateWorldCupCaching_WhenCalled_CallExpectedFunction()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var data = fixture.Create<WorldCupViewModel>();
+
+            fetchDataService.GetWorldCupViewModel().Returns(data);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateWorldCupCaching();
+
+            //Assert
+            logService.Received().WriteLogFileInfo(Arg.Any<string>());
+            await cacheWrapperService.Received().SetAsync(Arg.Any<string>(), data, Arg.Any<CacheItemOptions>());
+        }
+
+        [Fact]
+        public async Task UpdateWorldCupCaching_WhenCalled_ThrowException()
+        {
+            //Arrange
+            var service = GetRefreshCachingService();
+            var logMessage = fixture.Create<string>();
+            var exception = fixture.Create<Exception>();
+
+            fetchDataService.When(x => x.GetWorldCupViewModel()).Throw(exception);
+            logService.WriteLogFileInfo(Arg.Do<string>(x => logMessage = x));
+
+
+            //Act
+            await service.UpdateWorldCupCaching();
 
             //Assert
             await logService.Received().WriteExceptionSentryErrorAsync(exception);

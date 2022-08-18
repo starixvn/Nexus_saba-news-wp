@@ -7,7 +7,6 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
-    using SabaNews.Livescore.Services.Criteria.Match;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -44,6 +43,16 @@
         public async Task<IActionResult> Index()
         {
             var model = await dataControlService.GetWorldCupPageViewModel();
+            var title = model.Category.SEOTitle ??= model.Category.Title;
+
+            var header = new HeaderViewModel
+            {
+                HeadTitle = model.Category.Title,
+                Title = title,
+                Description = model.Category.Description,
+                Slug = WorldCup2022.HomepageSlug
+            };
+            model.Header = header;
             return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
         }
 
@@ -73,7 +82,7 @@
         }
 
         [Route("world-cup-2022/lich-thi-dau-world-cup-2022")]
-        public async Task<IActionResult> Fixture()
+        public IActionResult Fixture()
         {
             var header = new HeaderViewModel
             {

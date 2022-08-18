@@ -149,7 +149,7 @@
             var actual = await service.GetTopPostsByCateSlugAsync(param);
 
             //Assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected.ToList(), actual);
         }
 
         [Fact]

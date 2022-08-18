@@ -17,7 +17,7 @@ export class AppContainer extends Component {
 
     groupMatchesByDate = matches => {
         const totalItems = matches.length;
-        const tempMatches = [];
+        const tmpMatches = [];
         for (let i = 0; i < totalItems; i++) {
             const match = matches[i];
             const startTime = DateTimeService.convertFromUTC(match.startTime);
@@ -27,19 +27,19 @@ export class AppContainer extends Component {
                 text: DateTimeService.formatDateTime(key, 'dddd, DD/MM/YYYY'),
                 childs: [match]
             };
-            if (tempMatches.length === 0) {
-                tempMatches.push(item);
+            if (tmpMatches.length === 0) {
+                tmpMatches.push(item);
             } else {
-                const index = tempMatches.findIndex(x => x.key === key);
+                const index = tmpMatches.findIndex(x => x.key === key);
                 if (index === - 1) {
-                    tempMatches.push(item);
+                    tmpMatches.push(item);
                 } else {
-                    tempMatches[index].childs.push(match);
+                    tmpMatches[index].childs.push(match);
                 }
             }
         }
 
-        return tempMatches;
+        return tmpMatches;
     };
 
     groupMatchesByStage = (matches, league) => {

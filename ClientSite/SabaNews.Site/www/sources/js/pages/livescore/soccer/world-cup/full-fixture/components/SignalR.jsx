@@ -18,10 +18,10 @@ export class SignalR extends Component {
 
     componentDidMount() {
         const options = {
+            logger: LogLevel.None,
             transport: HttpTransportType.WebSockets,
             logMessageContent: false,
-            skipNegotiation: true,
-            logger: LogLevel.None
+            skipNegotiation: true
         };
 
         this.connection = new HubConnectionBuilder()
@@ -45,7 +45,7 @@ export class SignalR extends Component {
     start = async () => {
         try {
             await this.connection.start().then(() => {
-                console.log('SignalR  connected!!!'); //NOSONAR
+                console.log('SignalR wc-fixture connected!!!'); //NOSONAR
             });
         } catch (err) {
             setTimeout(() => {

@@ -81,7 +81,7 @@
         {
             //Arrange
             var service = GetFetchDataService();
-            var slug = Constants.VideoSlug;
+            var slug = fixture.Create<string>();
             var param = new GetPostsByCateSlugsParam();
 
             var paramGetRecent = fixture.Create<GetRecentPostsParam>();
@@ -202,6 +202,30 @@
             Assert.Equal(category.Title, actual.ViewData.HeadTitle);
             Assert.Equal(category.Title, actual.ViewData.Title);
             Assert.Equal(category.Description, actual.ViewData.Description);
+        }
+
+        [Fact]
+        public async Task GetWorldCupViewModel_WhenCalled_ReturnExpectedPostViewModel()
+        {
+            //Arrange
+            var service = GetFetchDataService();
+            var slug = fixture.Create<string>();
+            var first = fixture.Create<int>();
+            var end = fixture.Create<int>();
+
+            var posts = fixture.Create<IEnumerable<Post>>();
+            var category = fixture.Create<Category>();
+            postService.GetPostsBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<int>(x => first = x), Arg.Do<int>(x => end = x)).Returns(posts);
+            postService.GetCateDetailAsync(Arg.Do<string>(x => slug = x)).Returns(category);
+
+            //Act
+            var actual = await service.GetWorldCupViewModel();
+
+            //Assert
+            Assert.Equal(posts, actual.LastestNews);
+            Assert.Equal(posts, actual.Commentary);
+            Assert.Equal(posts, actual.Videos);
+            Assert.Equal(category, actual.Category);
         }
 
         #region Helpers

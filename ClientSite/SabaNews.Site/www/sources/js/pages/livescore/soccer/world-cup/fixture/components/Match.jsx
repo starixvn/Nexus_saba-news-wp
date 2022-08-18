@@ -12,15 +12,15 @@ export default class Match extends PureComponent {
     }
 
     getTeamStatus = (match, isHomeTeam) => {
-        const homeFieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
-        const awayFieldName = isHomeTeam ? 'awayTeam' : 'homeTeam';
+        const hField = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const aField = isHomeTeam ? 'awayTeam' : 'homeTeam';
 
         if (match.status === MatchStatus.Finished) {
-            if (match[`${homeFieldName}PenaltyScore`]
-                && match[`${homeFieldName}PenaltyScore`] > match[`${awayFieldName}PenaltyScore`]) {
+            if (match[`${hField}PenaltyScore`]
+                && match[`${hField}PenaltyScore`] > match[`${aField}PenaltyScore`]) {
                 return <li>PEN</li>;
-            } else if (match.isSecondLeg && match[`${homeFieldName}AggregateScore`]
-                && match[`${homeFieldName}AggregateScore`] > match[`${awayFieldName}AggregateScore`]) {
+            } else if (match.isSecondLeg && match[`${hField}AggregateScore`]
+                && match[`${hField}AggregateScore`] > match[`${aField}AggregateScore`]) {
                 return <li>AGG</li>;
             } else {
                 return <Fragment />;

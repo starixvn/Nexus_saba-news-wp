@@ -20,7 +20,7 @@ export class AppContainer extends Component {
         const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
         const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
         return moment(today).isSameOrAfter(endTime);
-    }
+    };
 
     getMatches = () => {
         const { league, matches } = this.props;
@@ -42,7 +42,6 @@ export class AppContainer extends Component {
         }
         const matchGrid = this.getMatches();
         const isFinished = this.checkIsFinished(league);
-        console.log(isFinished);
         return (
             <div>
                 <SignalR  />

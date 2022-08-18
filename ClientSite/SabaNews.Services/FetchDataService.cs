@@ -184,22 +184,13 @@
             var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetFiveItems);
             var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
             var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
-            var title = cate.SEOTitle ??= cate.Title;
-
-            var header = new HeaderViewModel
-            {
-                HeadTitle = cate.Title,
-                Title = title,
-                Description = cate.Description,
-                Slug = WorldCup2022.HomepageSlug
-            };
+            
             var Model = new WorldCupViewModel
             {
                 LastestNews = lastestNews,
                 Commentary = commentary,
                 Videos = videos,
                 Category = cate,
-                Header = header
             };
             return Model;
         }
