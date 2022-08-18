@@ -284,3 +284,18 @@
   right: 3rem;
   bottom: 9rem;
 }
+
+
+.live,.live.live-intermission{
+  .soccer-match-stage{
+      width: auto;
+      margin-top: 0;
+      font-size: 1.3rem !important;
+      span{
+          color: #EFF612 !important;
+          &::before,&::after{
+              display: none;
+          }
+      }
+  }
+}
