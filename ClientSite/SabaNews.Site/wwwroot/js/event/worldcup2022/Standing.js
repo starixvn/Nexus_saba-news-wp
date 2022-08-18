@@ -1,5 +1,4 @@
 ﻿var standing = (function ($) {
-
     function handleBtn() {
         $('#detail-standing').show();
         $('#knock-out').hide();

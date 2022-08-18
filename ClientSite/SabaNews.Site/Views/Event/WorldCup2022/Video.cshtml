@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/videoworldcup2022.min.css" asp-append-version="true">
+
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -45,11 +46,17 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script>
+        window.slugs = {
+            slug1: '@Model.Header.Slug'
+        };
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
             totalPages: '@Model.Paging.TotalPages'
         };
+        window.isVideo = true;
+        window.type = '@Model.Header.Controller';
+        window.keyword = '@Model.Header.Keyword';
     </script>
     <script src="~/minify/js/swiper.min.js" asp-append-version="true"></script>
     <script src="~/minify/js/video.min.js" asp-append-version="true"></script>
@@ -106,7 +113,7 @@
                 <a id="btn-showguess">Dự đoán</a>
             </div>
 
-            <div id="video-grid" class="block__video">
+            <div id="news-grid" class="block__video">
                 @{
                     int postIndex = 0;
                     foreach (var post in Model.Videos)

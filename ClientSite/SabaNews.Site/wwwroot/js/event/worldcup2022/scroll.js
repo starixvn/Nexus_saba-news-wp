@@ -1,0 +1,90 @@
+﻿var scroll = (function ($) {
+    var paging = window.paging;
+    var pageSize = paging.pageSize;
+    var page = paging.page;
+    var currentscrollHeight = 0;
+    var isLoadData = true;
+    var isVideo = window.isVideo;
+    var slugs = window.slugs;
+    var keyword = window.keyword;
+    var type = window.type;
+
+
+    function GetDataGrid(page) {
+        if (page > paging.totalPages) {
+            isLoadData = false;
+            $('.lds-ellipsis').hide();
+            return false;
+        }
+
+        var url = '/WorldCup2022/GetNewsGrid';
+        var data = { slugs, page, pageSize, type, isVideo };
+        if (type === "Search" || type === "Tag") {
+            url = '/api/post/type-posts';
+            data = { keyword, type, page, pageSize }
+        }
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data
+        }).done(function (data) {
+            if (!data) {
+                isLoadData = false;
+                $('.lds-ellipsis').hide();
+            } else {
+                $('.ajax-load').hide();
+                $('#news-grid').append(data);
+                if (page === 5 && page < paging.totalPages && isVideo == "False") {
+                    const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
+                    $('#news-grid').append(loadMoreHtml);
+                    isLoadData = false;
+                    $('.lds-ellipsis').hide();
+                }
+                if (page === 13 && page < paging.totalPages && isVideo == "True") {
+                    const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
+                    $('#video-grid').append(loadMoreHtml);
+                    isLoadData = false;
+                    $('.lds-ellipsis').hide();
+                }
+            }
+        })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                console.log('server not responding...');
+            });
+    }
+
+    function InfiniteScroll() {
+        $(window).on("scroll", function () {
+            const scrollHeight = $(document).height();
+            const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
+            const isBottom = scrollHeight - $('.footer').innerHeight() < scrollPos;
+            if (isBottom && currentscrollHeight < scrollHeight && isLoadData && page < 50) {
+                page++;
+                GetDataGrid(page);
+                currentscrollHeight = scrollHeight;
+            }
+        });
+
+        $(document).on('click', '.load-more-page', function () {
+            $(this).hide();
+            page++;
+            GetDataGrid(page);
+            $('.lds-ellipsis').show();
+            currentscrollHeight = $(document).height();
+            isLoadData = true;
+        });
+    }
+
+    function init() {
+        InfiniteScroll();
+    }
+
+    return {
+        init
+    }
+})(jQuery);
+
+$(document).ready(function () {
+    scroll.init();
+});

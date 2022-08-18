@@ -385,7 +385,9 @@
     {
         "outputFileName": "wwwroot/minify/js/lastestnews.min.js",
         "inputFiles": [
-            "wwwroot/js/event/worldcup2022/lastestnews.js"
+            "wwwroot/js/event/worldcup2022/lastestnews.js",
+            "wwwroot/js/event/worldcup2022/scroll.js",
+            "wwwroot/js/event/worldcup2022/worldcup.js"
         ],
         "minify": {
             "enabled": true,
@@ -418,7 +420,8 @@
     {
         "outputFileName": "wwwroot/minify/js/video.min.js",
         "inputFiles": [
-            "wwwroot/js/event/worldcup2022/video.js"
+            "wwwroot/js/event/worldcup2022/video.js",
+            "wwwroot/js/event/worldcup2022/scroll.js"
         ],
         "minify": {
             "enabled": true,

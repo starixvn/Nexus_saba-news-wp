@@ -104,6 +104,26 @@
         }
 
         [Fact]
+        public async Task GetCommentaryNews_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var news = new Fixture().Create<IEnumerable<Post>>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.CommentaryNews();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Commentary.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<LastestNewsViewModel>(viewResult.Model);
+            Assert.Equal(news, newsResult.Posts);
+
+        }
+
+        [Fact]
         public async Task GetVideo_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -145,9 +165,9 @@
             // Arrange
             var controller = GetController();
             var param = new Fixture().Create<CategoryPostParams>();
-
             var news = new Fixture().Create<IEnumerable<Post>>();
             var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+
             postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
 
             //Act
@@ -155,31 +175,12 @@
 
             // Assert
             var viewResult = Assert.IsType<PartialViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", viewResult.ViewName);
-            var newsResult = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
-            Assert.Equal(news, newsResult);
-        }
-
-        [Fact]
-        public async Task GetVideoGrid_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var param = new Fixture().Create<CategoryPostParams>();
-
-            var news = new Fixture().Create<IEnumerable<Post>>();
-            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
-            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
-
-            //Act
-            var result = await controller.GetVideoGrid(param);
-
-            // Assert
-            var viewResult = Assert.IsType<PartialViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", viewResult.ViewName);
-            var newsResult = Assert.IsAssignableFrom<IList<Post>>(viewResult.Model);
-            Assert.Equal(news.Last(), newsResult[newsResult.Count - 1]);
-            Assert.Equal(news.Count() - 1, newsResult.Count);
+            if (!param.IsVideo){
+                Assert.Equal("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", viewResult.ViewName);
+            }
+            else{
+                Assert.Equal("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", viewResult.ViewName);
+            }
         }
 
         [Fact]

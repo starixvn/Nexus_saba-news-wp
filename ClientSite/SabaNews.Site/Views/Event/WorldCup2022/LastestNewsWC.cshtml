@@ -45,11 +45,17 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script>
+        window.slugs = {
+            slug1: '@ViewBag.Slug'
+        };
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
             totalPages: '@Model.Paging.TotalPages'
         };
+        window.isVideo = false;
+        window.type = '@Model.Header.Controller';
+        window.keyword = '@Model.Header.Keyword';
     </script>
     <script src="~/minify/js/lastestnews.min.js" asp-append-version="true"></script>
 }
@@ -62,7 +68,7 @@
 
         <div class="title-section">
             <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-            <h2>Tin Mới Nhất</h2>
+            <h2>@Model.Header.Title</h2>
             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
         </div>
         @if (Model.Posts.Count > 0)
