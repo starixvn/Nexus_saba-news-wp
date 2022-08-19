@@ -685,13 +685,17 @@ body {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 63% 35%;
+  grid-template-columns: auto 43.2rem;
   grid-gap: 2rem;
-  border-top: 1px solid #ddd; }
+  padding-top: 1rem; }
   @media screen and (max-width: 1024px) {
     .page-grid {
       grid-template-columns: 100%;
-      border-top: none; } }
+      border-top: none;
+      padding-top: 0; } }
+
+.news-grid {
+  margin-bottom: 2rem; }
 
 .dots {
   display: flex;
@@ -1029,7 +1033,8 @@ body {
 .king-soccer .wc-table {
   color: #fff;
   border-radius: 5px;
-  overflow: hidden; }
+  overflow: hidden;
+  background: linear-gradient(180deg, #531128 0%, #350717 100%); }
   .king-soccer .wc-table .wc-table-header {
     border-bottom: none;
     background: #6D2D42;
@@ -1038,8 +1043,6 @@ body {
     padding: 1rem 2rem;
     font-weight: 700;
     font-size: 1.4rem; }
-  .king-soccer .wc-table .wc-table-body {
-    background: linear-gradient(180deg, #531128 0%, #350717 100%); }
   .king-soccer .wc-table .wc-table-row {
     margin: 0 2rem;
     border-bottom: 1px solid #58263F;

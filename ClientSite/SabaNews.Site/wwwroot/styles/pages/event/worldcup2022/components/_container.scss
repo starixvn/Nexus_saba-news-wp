@@ -12,6 +12,7 @@
         max-width: 117rem !important;
     }
 }
+
 .mb-container {
     @include tableMobile {
         padding: 0 !important;
@@ -20,11 +21,17 @@
 
 .page-grid {
     display: grid;
-    grid-template-columns: 63% 35%;
+    grid-template-columns: auto 43.2rem;
     grid-gap: 2rem;
-    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+
     @include tableMobile {
         grid-template-columns: 100%;
-        border-top : none;
+        border-top: none;
+        padding-top: 0;
     }
+}
+
+.news-grid {
+    margin-bottom: 2rem;
 }

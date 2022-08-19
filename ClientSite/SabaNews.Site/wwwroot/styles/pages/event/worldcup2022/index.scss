@@ -86,6 +86,7 @@
         }
     }
 }
+
 .wc-block-bxh {
     background: url('../../../../images/worldcup/section-2.png') no-repeat;
     background-size: cover;
@@ -175,7 +176,7 @@
 
         .hover-image {
             max-height: 40rem !important;
-            
+
             .title-hot {
                 text-align: center;
                 padding: 4rem 3.2rem 2rem 3.2rem;
@@ -252,7 +253,7 @@
             span {
                 background: $white-color;
             }
-        }  
+        }
     }
 }
 
@@ -281,8 +282,10 @@
             max-height: none;
         }
     }
+
     .swiper {
         max-height: 56rem;
+
         @include tableMobile {
             height: 30rem;
         }
@@ -296,6 +299,7 @@
         color: $white-color;
         border-radius: 5px;
         overflow: hidden;
+        background: linear-gradient(180deg,#531128 0%,#350717 100%);
 
         .wc-table-header {
             border-bottom: none;
@@ -305,10 +309,6 @@
             padding: 1rem 2rem;
             font-weight: 700;
             font-size: 1.4rem;
-        }
-
-        .wc-table-body {
-            background: linear-gradient(180deg, #531128 0%, #350717 100%);
         }
 
         .wc-table-row {
@@ -350,7 +350,7 @@
         }
     }
 
-    .hover-image{
-        height : 20rem;
+    .hover-image {
+        height: 20rem;
     }
 }

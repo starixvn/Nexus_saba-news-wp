@@ -13,26 +13,29 @@
 @import './components/container';
 @import './components/dots-post';
 @import './components/wc-modal';
+@import './components/wc-card-horizontal';
 
 .page-items-hot {
-    margin-bottom : 2rem;
+    margin-bottom: 2rem;
 }
-.page-items-box{
-    margin-bottom : 3rem; 
-    &:last-child{
-        margin-bottom : 0;
+
+.page-items-box {
+    margin-bottom: 3rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .title-section {
+        margin-bottom: 1.6rem !important;
     }
 }
+
 .page-grid {
     width: 100%;
     margin: 0 1rem;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 2rem;
-
-    @include tableMobile {
-        padding-top: 0;
-    }
 
     @media (min-width : 1280px) {
         max-width: 115rem !important;
@@ -68,5 +71,12 @@
                 }
             }
         }
+    }
+}
+
+.view-more {
+    margin-bottom : 3rem;
+    @include tableMobile {
+        margin-right: 1.2rem;
     }
 }

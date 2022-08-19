@@ -676,13 +676,17 @@ body {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 63% 35%;
+  grid-template-columns: auto 43.2rem;
   grid-gap: 2rem;
-  border-top: 1px solid #ddd; }
+  padding-top: 1rem; }
   @media screen and (max-width: 1024px) {
     .page-grid {
       grid-template-columns: 100%;
-      border-top: none; } }
+      border-top: none;
+      padding-top: 0; } }
+
+.news-grid {
+  margin-bottom: 2rem; }
 
 .dots {
   display: flex;
@@ -770,6 +774,13 @@ body {
   bottom: 30px;
   width: 100%; }
 
+.card-horizontal {
+  border-bottom: none;
+  padding-bottom: 2rem;
+  margin-bottom: 0; }
+  .card-horizontal__image {
+    border-radius: 5px; }
+
 .page-items-hot {
   margin-bottom: 2rem; }
 
@@ -777,16 +788,14 @@ body {
   margin-bottom: 3rem; }
   .page-items-box:last-child {
     margin-bottom: 0; }
+  .page-items-box .title-section {
+    margin-bottom: 1.6rem !important; }
 
 .page-grid {
   width: 100%;
   margin: 0 1rem;
   margin-right: auto;
-  margin-left: auto;
-  padding-top: 2rem; }
-  @media screen and (max-width: 1024px) {
-    .page-grid {
-      padding-top: 0; } }
+  margin-left: auto; }
   @media (min-width: 1280px) {
     .page-grid {
       max-width: 115rem !important; } }
@@ -807,3 +816,9 @@ body {
   @media screen and (max-width: 1024px) {
     .page-grid #standingWC .king-soccer .wc-table {
       width: 32rem; } }
+
+.view-more {
+  margin-bottom: 3rem; }
+  @media screen and (max-width: 1024px) {
+    .view-more {
+      margin-right: 1.2rem; } }
