@@ -626,7 +626,7 @@ body {
   .wc-table .cell-participant {
     align-self: center;
     display: flex;
-    flex: 1 0 15rem;
+    flex: 1 0 16rem;
     text-align: left;
     align-items: center; }
   .wc-table .team {
@@ -646,7 +646,7 @@ body {
         height: 2.4rem;
         object-fit: cover; }
     .wc-table .team-name {
-      width: 9rem;
+      width: 8rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
@@ -677,6 +677,10 @@ body {
     margin-left: .6rem; }
   .wc-table .btn-back-standing {
     margin-right: .6rem; }
+
+@media screen and (min-width: 1199px) {
+  .wc-table-king-soccer .team-name {
+    width: 15rem; } }
 
 .title-items {
   width: 17.9rem;
