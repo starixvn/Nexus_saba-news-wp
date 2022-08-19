@@ -25,9 +25,9 @@
         <div class="wc-table wc-table-king-soccer scroll-snap-items" id="standing-@standingNum">
             <div class="wc-table-header">
                 <div class="wc-table-cell cell-participant">
-                    <i class="@(isMobile ? "":"icon-chevron-left btn-back-standing")"></i>
+                    <i class="@(isMobile ? "":"icon-chevron-left btn-back-standing ") @(group.GroupName == Model[0].GroupName ? "button-stop" : "")"></i>
                     @ViewResources.Board @group.GroupName.Substring(0, 1)
-                    <i class="@(isMobile ? "":"icon-chevron-right btn-next-standing")" data-total="@total"></i>
+                    <i class="@(isMobile ? "":"icon-chevron-right btn-next-standing") @(group.GroupName == Model[Model.Count - 1].GroupName ? "button-stop" : "")" data-total="@total"></i>
                 </div>
                 <div class="wc-table-cell cell-rank">@ViewResources.Battle</div>
                 <div class="wc-table-cell cell-rank">@ViewResources.FairPlay</div>
