@@ -15,7 +15,9 @@
 .video-items {
     .title {
         margin-top: 1.2rem;
-
+        @include tableMobile{
+            margin-top : .6rem;
+        }
         h2 {
             a {
                 color: $white-color;

@@ -3,7 +3,10 @@
     padding-bottom: 2rem;
     margin-bottom: 0;
     position: relative;
-    border-radius: 5px;
+
+    &__image {
+        border-radius: 5px;
+    }
 
     @include tableMobile {
         display: flex;
@@ -11,20 +14,24 @@
         padding-bottom: 0;
         overflow: hidden;
         margin-bottom: 2rem;
+        border-radius: 5px;
 
         &__image {
             max-height: 30rem;
             height: 30rem;
+            border-radius: 5px;
         }
 
         &__content {
             position: absolute;
             bottom: 0;
-            padding: 4rem 2rem 2rem 2rem;
+            padding: 1.2rem;
             background: linear-gradient(180deg,rgba(72,4,26,0) 0%,#48041a 100%);
             width: 100%;
             left: 0;
-
+            .title{
+                margin-bottom : .6rem;
+            }
             .title, .datetime {
                 color: $white-color;
                 font-size: 1.4rem;

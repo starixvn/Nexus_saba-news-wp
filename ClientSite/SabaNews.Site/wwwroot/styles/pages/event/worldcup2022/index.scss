@@ -175,7 +175,13 @@
         }
 
         .hover-image {
-            max-height: 40rem !important;
+            max-height: 40rem;
+            height: 40rem ;
+
+            @include tableMobile {
+                max-height: 45rem !important;
+                height: 45rem !important;
+            }
 
             .title-hot {
                 text-align: center;
@@ -246,6 +252,7 @@
         .hover-image {
             @include tableMobile {
                 min-height: 22rem;
+                height : 22rem;
             }
         }
 

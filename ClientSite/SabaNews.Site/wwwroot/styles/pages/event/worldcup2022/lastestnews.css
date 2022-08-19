@@ -440,6 +440,9 @@ body {
 
 .video-items .title {
   margin-top: 1.2rem; }
+  @media screen and (max-width: 1024px) {
+    .video-items .title {
+      margin-top: .6rem; } }
   .video-items .title h2 a {
     color: #fff;
     font-weight: 700;
@@ -501,6 +504,9 @@ body {
     padding: 4rem 2rem 2rem 2rem;
     background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
     width: 100%; }
+    @media screen and (max-width: 1024px) {
+      .post-hot .hover-image .title-hot {
+        padding: 1.2rem; } }
     .post-hot .hover-image .title-hot h1 a {
       font-size: 2.4rem;
       line-height: 3.3rem;
@@ -535,6 +541,9 @@ body {
         .post-hot .hover-image .title-hot h2 {
           font-size: 1.6rem;
           line-height: 2.2rem; } }
+    @media screen and (max-width: 1024px) {
+      .post-hot .hover-image .title-hot h3 {
+        margin-bottom: .6rem; } }
     .post-hot .hover-image .title-hot h3 a {
       font-size: 2rem;
       font-weight: 700;
@@ -797,25 +806,30 @@ body {
   border-bottom: none;
   padding-bottom: 2rem;
   margin-bottom: 0;
-  position: relative;
-  border-radius: 5px; }
+  position: relative; }
+  .card-horizontal__image {
+    border-radius: 5px; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: flex;
       flex-direction: column;
       padding-bottom: 0;
       overflow: hidden;
-      margin-bottom: 2rem; }
+      margin-bottom: 2rem;
+      border-radius: 5px; }
       .card-horizontal__image {
         max-height: 30rem;
-        height: 30rem; }
+        height: 30rem;
+        border-radius: 5px; }
       .card-horizontal__content {
         position: absolute;
         bottom: 0;
-        padding: 4rem 2rem 2rem 2rem;
+        padding: 1.2rem;
         background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041a 100%);
         width: 100%;
         left: 0; }
+        .card-horizontal__content .title {
+          margin-bottom: .6rem; }
         .card-horizontal__content .title, .card-horizontal__content .datetime {
           color: #fff;
           font-size: 1.4rem;
