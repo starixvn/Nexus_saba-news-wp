@@ -10,7 +10,6 @@
     bool isDesktop = detector.IsDesktop();
 }
 
-
 <div class="title-section">
     <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
 
@@ -43,7 +42,7 @@
                             <ul class="team">
                                 <li class="number">@count</li>
                                 <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>
-                                <li class="team-name">@GetStandingTeamName(item)</li>
+                                <li class="team-name" title="@(@GetStandingTeamName(item).Length > 12 ? @GetStandingTeamName(item): "")">@GetStandingTeamName(item)</li>
                             </ul>
                         </div>
                         <div class="wc-table-cell cell-rank">@item.Total</div>
@@ -55,4 +54,7 @@
         </div>
         standingNum++;
     }
+</div>
+<div class="view-more">
+    <a href="@Url.Action("Standing", "WorldCup2022")">Chi tiết <i class="icon-next-wc"></i></a>
 </div>
