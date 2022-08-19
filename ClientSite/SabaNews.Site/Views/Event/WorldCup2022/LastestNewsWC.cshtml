@@ -106,6 +106,7 @@
                                 if (postIndex == 4 && isMobile)
                                 {
                                     <div id="standingWC" data-isMobile="@isMobile"></div>
+                                    <a href="@Url.Action("Standing", "WorldCup2022")">Chi tiết >></a>
                                     <div id="topScorersWC"></div>
                                 }
                             }
@@ -144,6 +145,7 @@
                 @if (isDesktop)
                 {
                     <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
+                    <a href="@Url.Action("Standing", "WorldCup2022")">Chi tiết >></a>
                     <div id="topScorersWC" class="page-items-box"></div>
                 }
             </div>
