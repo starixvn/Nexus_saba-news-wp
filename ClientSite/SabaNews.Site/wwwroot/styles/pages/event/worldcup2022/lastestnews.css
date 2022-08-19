@@ -797,7 +797,8 @@ body {
   border-bottom: none;
   padding-bottom: 2rem;
   margin-bottom: 0;
-  position: relative; }
+  position: relative;
+  border-radius: 5px; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: flex;
@@ -806,7 +807,6 @@ body {
       overflow: hidden;
       margin-bottom: 2rem; }
       .card-horizontal__image {
-        border-radius: 5px;
         max-height: 30rem;
         height: 30rem; }
       .card-horizontal__content {
