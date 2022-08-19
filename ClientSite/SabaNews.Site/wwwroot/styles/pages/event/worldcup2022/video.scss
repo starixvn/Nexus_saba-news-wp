@@ -1,1 +1,46 @@
-﻿
+﻿@import './abstracts/wc-variables';
+@import '../../../abstracts/mixins';
+@import './abstracts/wc-base';
+@import './layout/header';
+@import './components/title-section';
+@import './components/wc-block';
+@import './components/hover-img-item';
+@import './components/post-items';
+@import './components/post-hot';
+@import './components/view-more';
+@import './components/title-items';
+@import './components/container';
+
+
+.video-items {
+    .title {
+        h2 {
+            a {
+                color: #000;
+            }
+        }
+    }
+    .hover-image{
+        max-height : 15rem;
+        @include tableMobile{
+            max-height : 20rem;
+        }
+    }
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin: 2rem 0;
+
+    @include tableMobile {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include Mobile {
+        grid-template-columns: 100%;
+    }
+}
+
+
