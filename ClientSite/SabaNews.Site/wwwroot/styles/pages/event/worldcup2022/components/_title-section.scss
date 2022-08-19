@@ -48,3 +48,23 @@
         }
     }
 }
+
+.page-items-box{
+    margin-bottom: 3rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .title-section {
+        margin-bottom: 1rem !important;
+
+        h2 {
+            font-size: 2rem;
+
+            @include tableMobile {
+                font-size: 2rem;
+            }
+        }
+    }
+}

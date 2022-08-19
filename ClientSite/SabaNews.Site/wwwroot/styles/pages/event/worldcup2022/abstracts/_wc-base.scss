@@ -1,14 +1,5 @@
-﻿.wc-main {
+﻿.wc-main, .wc-page-main {
     padding-top: 3rem;
-
-    @include tableMobile {
-        padding-top: 2rem;
-    }
-}
-
-
-.wc-page-main {
-    padding-top: 4rem;
 
     @include tableMobile {
         padding-top: 2rem;

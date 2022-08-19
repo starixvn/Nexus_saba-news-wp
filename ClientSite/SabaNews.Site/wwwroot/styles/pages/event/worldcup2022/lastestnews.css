@@ -1,13 +1,7 @@
-﻿.wc-main {
+﻿.wc-main, .wc-page-main {
   padding-top: 3rem; }
   @media screen and (max-width: 1024px) {
-    .wc-main {
-      padding-top: 2rem; } }
-
-.wc-page-main {
-  padding-top: 4rem; }
-  @media screen and (max-width: 1024px) {
-    .wc-page-main {
+    .wc-main, .wc-page-main {
       padding-top: 2rem; } }
 
 .overflow-page {
@@ -380,7 +374,7 @@ body {
     align-items: center;
     justify-content: center; }
   .title-section h2 {
-    color: #FF4700;
+    color: #EF4300;
     font-weight: 700;
     font-size: 2.4rem;
     text-transform: uppercase;
@@ -390,7 +384,7 @@ body {
         font-size: 2.4rem; } }
     .title-section h2 a {
       text-decoration: none;
-      color: #FF4700; }
+      color: #EF4300; }
     .title-section h2 .title-pc {
       display: block; }
       @media screen and (max-width: 1024px) {
@@ -403,6 +397,18 @@ body {
           display: block;
           text-align: center;
           line-height: 3.3rem; } }
+
+.page-items-box {
+  margin-bottom: 3rem; }
+  .page-items-box:last-child {
+    margin-bottom: 0; }
+  .page-items-box .title-section {
+    margin-bottom: 1rem !important; }
+    .page-items-box .title-section h2 {
+      font-size: 2rem; }
+      @media screen and (max-width: 1024px) {
+        .page-items-box .title-section h2 {
+          font-size: 2rem; } }
 
 .hover-image {
   overflow: hidden;
@@ -720,8 +726,8 @@ body {
 
 .page-grid {
   display: grid;
-  grid-template-columns: auto 43.2rem;
-  grid-gap: 2rem;
+  grid-template-columns: auto 37.7rem;
+  grid-gap: 0;
   padding-top: 1rem; }
   @media screen and (max-width: 1024px) {
     .page-grid {
@@ -729,7 +735,21 @@ body {
       border-top: none;
       padding-top: 0; } }
 
-.news-grid {
+.page-items-right {
+  padding-left: 2rem;
+  border-left: 1px solid #DADACB; }
+  @media screen and (max-width: 1024px) {
+    .page-items-right {
+      padding-left: 0;
+      border-left: none; } }
+
+.page-main-items {
+  padding-right: 2rem; }
+  @media screen and (max-width: 1024px) {
+    .page-main-items {
+      padding-right: 0; } }
+
+.page-main {
   margin-bottom: 2rem; }
 
 .dots {
@@ -738,7 +758,7 @@ body {
   justify-content: center; }
   .dots span {
     display: block;
-    background: #FF4700;
+    background: #EF4300;
     width: .7rem;
     height: .7rem;
     margin: 0 .2rem;
@@ -808,7 +828,7 @@ body {
     height: 100%; }
 
 .wc-modal .modal .if-title {
-  color: #FF4700;
+  color: #EF4300;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 2.4rem;
@@ -819,12 +839,14 @@ body {
   width: 100%; }
 
 .card-horizontal {
-  border-bottom: none;
-  padding-bottom: 2rem;
-  margin-bottom: 0;
-  position: relative; }
+  position: relative;
+  grid-template-columns: 21rem 1fr;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #DADACB; }
   .card-horizontal__image {
-    border-radius: 5px; }
+    border-radius: 5px;
+    height: 12rem; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
       display: flex;
@@ -853,13 +875,6 @@ body {
 
 .page-items-hot {
   margin-bottom: 2rem; }
-
-.page-items-box {
-  margin-bottom: 3rem; }
-  .page-items-box:last-child {
-    margin-bottom: 0; }
-  .page-items-box .title-section {
-    margin-bottom: 1.6rem !important; }
 
 .page-grid {
   width: 100%;

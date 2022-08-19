@@ -21,8 +21,8 @@
 
 .page-grid {
     display: grid;
-    grid-template-columns: auto 43.2rem;
-    grid-gap: 2rem;
+    grid-template-columns: auto 37.7rem;
+    grid-gap: 0;
     padding-top: 1rem;
 
     @include tableMobile {
@@ -32,6 +32,23 @@
     }
 }
 
-.news-grid {
-    margin-bottom: 2rem;
+
+.page-items-right {
+    padding-left: 2rem;
+    border-left: 1px solid #DADACB;
+
+    @include tableMobile {
+        padding-left: 0;
+        border-left: none;
+    }
+}
+.page-main-items {
+    padding-right: 2rem;
+
+    @include tableMobile {
+        padding-right: 0;
+    }
+}
+.page-main{
+    margin-bottom : 2rem;
 }
