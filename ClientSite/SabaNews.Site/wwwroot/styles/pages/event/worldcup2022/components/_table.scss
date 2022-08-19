@@ -11,6 +11,10 @@
         border-bottom: 1px solid #C49F5D;
     }
 
+    .wc-table-body {
+        font-size: 1.3rem;
+    }
+
     .cell-participant {
         align-self: center;
         display: flex;
@@ -39,6 +43,15 @@
                 object-fit: cover;
             }
         }
+
+        &-name {
+            @include tableMobile {
+                width: 9rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
     }
 
     .number {
@@ -58,7 +71,8 @@
     .wc-table-row {
         display: flex;
         align-items: center;
-        padding: 1.6rem 1.2rem;
+        padding: 1.6rem 0;
+        margin: 0 1.2rem;
         border-bottom: 1px solid #C49F5D;
 
         &:last-child {
@@ -69,8 +83,9 @@
     .btn-next-standing, .btn-back-standing {
         cursor: pointer;
         font-size: 2.4rem;
-        &.button-stop{
-            color : #A46E80;
+
+        &.button-stop {
+            color: #A46E80;
         }
     }
 

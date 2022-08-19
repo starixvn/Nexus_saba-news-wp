@@ -2,6 +2,9 @@
     border-bottom: none;
     padding-bottom: 2rem;
     margin-bottom: 0;
+    @include tableMobile {
+        display: block;
+    }
 
     &__image {
         border-radius: 5px;

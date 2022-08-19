@@ -116,7 +116,7 @@
         z-index: 9;
 
         @include tableMobile {
-            grid-template-columns: repeat( 8, 32rem);
+            grid-template-columns: repeat( 8, 33.2rem);
             padding-top: 2rem;
             margin-top: 2rem;
         }
@@ -170,7 +170,7 @@
         grid-gap: 2rem;
 
         @include tableMobile {
-            grid-template-columns: repeat(4,32rem);
+            grid-template-columns: repeat(4,33.2rem);
             grid-gap: 2rem;
         }
 
@@ -315,6 +315,9 @@
             margin: 0 2rem;
             border-bottom: 1px solid #58263F;
             padding: 1.3rem 0;
+            @include tableMobile{
+                margin : 0 1.2rem;
+            }
         }
 
         .cell-rank {

@@ -611,6 +611,8 @@ body {
     align-items: center;
     padding: 1rem 1.2rem;
     border-bottom: 1px solid #C49F5D; }
+  .wc-table .wc-table-body {
+    font-size: 1.3rem; }
   .wc-table .cell-participant {
     align-self: center;
     display: flex;
@@ -633,6 +635,12 @@ body {
         width: 3.6rem;
         height: 2.4rem;
         object-fit: cover; }
+    @media screen and (max-width: 1024px) {
+      .wc-table .team-name {
+        width: 9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; } }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;
@@ -646,7 +654,8 @@ body {
   .wc-table .wc-table-row {
     display: flex;
     align-items: center;
-    padding: 1.6rem 1.2rem;
+    padding: 1.6rem 0;
+    margin: 0 1.2rem;
     border-bottom: 1px solid #C49F5D; }
     .wc-table .wc-table-row:last-child {
       border-bottom: none; }
@@ -934,7 +943,7 @@ body {
     z-index: 9; }
     @media screen and (max-width: 1024px) {
       .wc-block-bxh .grid-bxh {
-        grid-template-columns: repeat(8, 32rem);
+        grid-template-columns: repeat(8, 33.2rem);
         padding-top: 2rem;
         margin-top: 2rem; } }
   .wc-block-bxh .wc-table {
@@ -971,7 +980,7 @@ body {
     grid-gap: 2rem; }
     @media screen and (max-width: 1024px) {
       .wc-block-stories-post .grid-stories-post {
-        grid-template-columns: repeat(4, 32rem);
+        grid-template-columns: repeat(4, 33.2rem);
         grid-gap: 2rem; } }
     .wc-block-stories-post .grid-stories-post .hover-image {
       max-height: 40rem !important; }
@@ -1057,6 +1066,9 @@ body {
     margin: 0 2rem;
     border-bottom: 1px solid #58263F;
     padding: 1.3rem 0; }
+    @media screen and (max-width: 1024px) {
+      .king-soccer .wc-table .wc-table-row {
+        margin: 0 1.2rem; } }
   .king-soccer .wc-table .cell-rank {
     width: 8rem;
     font-weight: 700; }
