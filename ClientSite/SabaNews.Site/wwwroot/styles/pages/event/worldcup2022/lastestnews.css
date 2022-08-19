@@ -700,6 +700,16 @@ body {
 .page-items-box .wc-table .wc-table-row {
   padding: .8rem 0 !important; }
 
+.page-items-box .view-more {
+  margin-top: .8rem; }
+  .page-items-box .view-more a {
+    color: #EF4300; }
+
+#standingWC .view-more {
+  margin-top: .8rem; }
+  #standingWC .view-more a {
+    color: #EF4300; }
+
 .title-items {
   width: 17.9rem;
   height: 4rem;

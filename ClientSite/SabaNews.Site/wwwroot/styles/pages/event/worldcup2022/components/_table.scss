@@ -116,8 +116,24 @@
             width: 5rem !important;
         }
 
-        .wc-table-row{
-            padding : .8rem 0 !important;
+        .wc-table-row {
+            padding: .8rem 0 !important;
+        }
+    }
+
+    .view-more{
+        margin-top : .8rem;
+        a{
+            color : $title-color;
+        }
+    }
+}
+#standingWC {
+    .view-more {
+        margin-top: .8rem;
+
+        a {
+            color: $title-color;
         }
     }
 }
