@@ -604,9 +604,10 @@ body {
     border-bottom: 1px solid #C49F5D; }
   .wc-table .cell-participant {
     align-self: center;
-    display: block;
+    display: flex;
     flex: 1 0 15rem;
-    text-align: left; }
+    text-align: left;
+    align-items: center; }
   .wc-table .team {
     list-style: none;
     padding-left: 0;
@@ -640,6 +641,15 @@ body {
     border-bottom: 1px solid #C49F5D; }
     .wc-table .wc-table-row:last-child {
       border-bottom: none; }
+  .wc-table .btn-next-standing, .wc-table .btn-back-standing {
+    cursor: pointer;
+    font-size: 2.4rem; }
+    .wc-table .btn-next-standing.button-stop, .wc-table .btn-back-standing.button-stop {
+      color: #A46E80; }
+  .wc-table .btn-next-standing {
+    margin-left: .6rem; }
+  .wc-table .btn-back-standing {
+    margin-right: .6rem; }
 
 .title-items {
   width: 17.9rem;

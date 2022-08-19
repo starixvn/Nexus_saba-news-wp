@@ -13,9 +13,10 @@
 
     .cell-participant {
         align-self: center;
-        display: block;
+        display: flex;
         flex: 1 0 15rem;
         text-align: left;
+        align-items: center;
     }
 
     .team {
@@ -30,11 +31,12 @@
             border-radius: 3px;
             width: 3.6rem;
             height: 2.4rem;
-            overflow : hidden;
+            overflow: hidden;
+
             img {
                 width: 3.6rem;
                 height: 2.4rem;
-                object-fit : cover;
+                object-fit: cover;
             }
         }
     }
@@ -62,5 +64,21 @@
         &:last-child {
             border-bottom: none;
         }
+    }
+
+    .btn-next-standing, .btn-back-standing {
+        cursor: pointer;
+        font-size: 2.4rem;
+        &.button-stop{
+            color : #A46E80;
+        }
+    }
+
+    .btn-next-standing {
+        margin-left: .6rem;
+    }
+
+    .btn-back-standing {
+        margin-right: .6rem;
     }
 }
