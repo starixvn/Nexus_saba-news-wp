@@ -40,7 +40,7 @@
             $('.btn-next-standing').on('click', function () {
                 numRow++;
                 var total = $(this).data("total");
-                if (numRow < total) {
+                if (numRow <= total) {
                     showStandings();
                 }
                 else {
