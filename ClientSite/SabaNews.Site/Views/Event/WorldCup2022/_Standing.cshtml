@@ -42,7 +42,7 @@
                             <ul class="team">
                                 <li class="number">@count</li>
                                 <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>
-                                <li class="team-name" title="@(@GetStandingTeamName(item).Length > 12 ? @GetStandingTeamName(item): "")">@GetStandingTeamName(item)</li>
+                                <li class="team-name" title="@(GetStandingTeamName(item).Length > 12 ? GetStandingTeamName(item): "")">@GetStandingTeamName(item)</li>
                             </ul>
                         </div>
                         <div class="wc-table-cell cell-rank">@item.Total</div>

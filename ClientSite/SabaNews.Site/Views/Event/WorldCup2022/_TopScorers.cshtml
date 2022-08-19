@@ -21,7 +21,7 @@
                         <ul class="team">
                             <li class="number">@item.Top </li>
                             <li class="team-logo"><img src="@GetTeamIcon(item.TeamLogo)" /></li>
-                            <li class="team-name">@item.PlayerFullNameEN</li>
+                            <li class="team-name" title="@(item.PlayerFullNameEN.Length > 12 ? item.PlayerFullNameEN: "")">@item.PlayerFullNameEN</li>
                         </ul>
                     </div>
                     <div class="wc-table-cell cell-rank">@item.Goals</div>
