@@ -143,8 +143,10 @@
             <div class="page-items-right">
                 @if (isDesktop)
                 {
-                    <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
-                    <div id="topScorersWC" class="page-items-box"></div>
+                    <div class="sticky-position">
+                        <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
+                        <div id="topScorersWC" class="page-items-box"></div>
+                    </div>
                 }
             </div>
         </div>
