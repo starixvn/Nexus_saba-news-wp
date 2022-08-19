@@ -458,6 +458,18 @@ body {
     font-size: 1.4rem;
     line-height: 1.9rem;
     text-decoration: none; }
+  .video-items .title p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.3rem; }
+    @media screen and (max-width: 1024px) {
+      .video-items .title p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.4rem; } }
+    .video-items .title p a {
+      color: #fff;
+      text-decoration: none; }
 
 .video-items .hover-image {
   position: relative; }
@@ -637,13 +649,18 @@ body {
   margin-bottom: 2rem; }
 
 .video-items .title h2 a {
-  color: #000; }
+  color: #2f2f2f; }
+
+.video-items .title p {
+  color: #2f2f2f; }
 
 .video-items .hover-image {
   max-height: 15rem; }
   @media screen and (max-width: 1024px) {
     .video-items .hover-image {
       max-height: 20rem; } }
+  .video-items .hover-image:after {
+    display: none; }
 
 .video-grid {
   display: grid;

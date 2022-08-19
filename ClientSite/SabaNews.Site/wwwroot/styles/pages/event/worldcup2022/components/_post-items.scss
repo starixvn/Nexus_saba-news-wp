@@ -15,15 +15,34 @@
 .video-items {
     .title {
         margin-top: 1.2rem;
-        @include tableMobile{
-            margin-top : .6rem;
+
+        @include tableMobile {
+            margin-top: .6rem;
         }
+
         h2 {
             a {
                 color: $white-color;
                 font-weight: 700;
                 font-size: 1.4rem;
                 line-height: 1.9rem;
+                text-decoration: none;
+            }
+        }
+
+        p {
+            color: $white-color;
+            font-weight: 600;
+            font-size: 1.3rem;
+
+            @include tableMobile {
+                font-weight: 400;
+                font-size: 1.4rem;
+                line-height: 1.4rem;
+            }
+
+            a {
+                color: $white-color;
                 text-decoration: none;
             }
         }

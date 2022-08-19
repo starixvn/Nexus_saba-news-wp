@@ -458,6 +458,18 @@ body {
     font-size: 1.4rem;
     line-height: 1.9rem;
     text-decoration: none; }
+  .video-items .title p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.3rem; }
+    @media screen and (max-width: 1024px) {
+      .video-items .title p {
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.4rem; } }
+    .video-items .title p a {
+      color: #fff;
+      text-decoration: none; }
 
 .video-items .hover-image {
   position: relative; }
