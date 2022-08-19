@@ -689,7 +689,16 @@ body {
 
 @media screen and (min-width: 1199px) {
   .wc-table-king-soccer .team-name {
-    width: 15rem; } }
+    width: 13rem; } }
+
+.page-items-box .wc-table .cell-participant {
+  flex: 1 0 20rem; }
+
+.page-items-box .wc-table .cell-rank {
+  width: 5rem !important; }
+
+.page-items-box .wc-table .wc-table-row {
+  padding: .8rem 0 !important; }
 
 .title-items {
   width: 17.9rem;
@@ -901,11 +910,6 @@ body {
   @media screen and (max-width: 1024px) {
     .page-grid #standingWC .king-soccer .wc-table {
       width: 32rem; } }
-  .page-grid #standingWC .king-soccer .wc-table .cell-participant {
-    flex: 1 0 25rem; }
-    @media screen and (max-width: 1024px) {
-      .page-grid #standingWC .king-soccer .wc-table .cell-participant {
-        flex: 1 0 15rem; } }
 
 .view-more {
   margin-bottom: 3rem; }

@@ -100,8 +100,24 @@
     .team {
         &-name {
             @include creen1199px{
-                width: 15rem;
+                width: 13rem;
             }
+        }
+    }
+}
+
+.page-items-box {
+    .wc-table {
+        .cell-participant {
+            flex: 1 0 20rem;
+        }
+
+        .cell-rank {
+            width: 5rem !important;
+        }
+
+        .wc-table-row{
+            padding : .8rem 0 !important;
         }
     }
 }
