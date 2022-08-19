@@ -45,12 +45,10 @@
         }
 
         &-name {
-            @include tableMobile {
-                width: 9rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+            width: 9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

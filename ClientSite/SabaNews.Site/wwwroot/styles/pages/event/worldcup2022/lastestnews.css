@@ -493,7 +493,8 @@ body {
   max-height: 50rem; }
   @media (max-width: 767px) {
     .post-hot .hover-image {
-      max-height: 30rem !important; } }
+      max-height: 30rem !important;
+      height: 30rem; } }
   .post-hot .hover-image .title-hot {
     position: absolute;
     bottom: 0;
@@ -626,12 +627,11 @@ body {
         width: 3.6rem;
         height: 2.4rem;
         object-fit: cover; }
-    @media screen and (max-width: 1024px) {
-      .wc-table .team-name {
-        width: 9rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; } }
+    .wc-table .team-name {
+      width: 9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;
@@ -796,12 +796,30 @@ body {
 .card-horizontal {
   border-bottom: none;
   padding-bottom: 2rem;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  position: relative; }
   @media screen and (max-width: 1024px) {
     .card-horizontal {
-      display: block; } }
-  .card-horizontal__image {
-    border-radius: 5px; }
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 0;
+      overflow: hidden;
+      margin-bottom: 2rem; }
+      .card-horizontal__image {
+        border-radius: 5px;
+        max-height: 30rem;
+        height: 30rem; }
+      .card-horizontal__content {
+        position: absolute;
+        bottom: 0;
+        padding: 4rem 2rem 2rem 2rem;
+        background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041a 100%);
+        width: 100%;
+        left: 0; }
+        .card-horizontal__content .title, .card-horizontal__content .datetime {
+          color: #fff;
+          font-size: 1.4rem;
+          line-height: 1.9rem; } }
 
 .page-items-hot {
   margin-bottom: 2rem; }
@@ -838,6 +856,11 @@ body {
   @media screen and (max-width: 1024px) {
     .page-grid #standingWC .king-soccer .wc-table {
       width: 32rem; } }
+  .page-grid #standingWC .king-soccer .wc-table .cell-participant {
+    flex: 1 0 25rem; }
+    @media screen and (max-width: 1024px) {
+      .page-grid #standingWC .king-soccer .wc-table .cell-participant {
+        flex: 1 0 15rem; } }
 
 .view-more {
   margin-bottom: 3rem; }

@@ -502,7 +502,8 @@ body {
   max-height: 50rem; }
   @media (max-width: 767px) {
     .post-hot .hover-image {
-      max-height: 30rem !important; } }
+      max-height: 30rem !important;
+      height: 30rem; } }
   .post-hot .hover-image .title-hot {
     position: absolute;
     bottom: 0;
@@ -635,12 +636,11 @@ body {
         width: 3.6rem;
         height: 2.4rem;
         object-fit: cover; }
-    @media screen and (max-width: 1024px) {
-      .wc-table .team-name {
-        width: 9rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; } }
+    .wc-table .team-name {
+      width: 9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;

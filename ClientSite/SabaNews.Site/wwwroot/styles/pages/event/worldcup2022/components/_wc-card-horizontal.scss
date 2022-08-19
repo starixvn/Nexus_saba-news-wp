@@ -2,11 +2,34 @@
     border-bottom: none;
     padding-bottom: 2rem;
     margin-bottom: 0;
-    @include tableMobile {
-        display: block;
-    }
+    position: relative;
 
-    &__image {
-        border-radius: 5px;
+    @include tableMobile {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
+        overflow: hidden;
+        margin-bottom: 2rem;
+
+        &__image {
+            border-radius: 5px;
+            max-height: 30rem;
+            height: 30rem;
+        }
+
+        &__content {
+            position: absolute;
+            bottom: 0;
+            padding: 4rem 2rem 2rem 2rem;
+            background: linear-gradient(180deg,rgba(72,4,26,0) 0%,#48041a 100%);
+            width: 100%;
+            left: 0;
+
+            .title, .datetime {
+                color: $white-color;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+            }
+        }
     }
 }
