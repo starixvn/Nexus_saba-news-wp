@@ -106,7 +106,9 @@
                                 if (postIndex == 4 && isMobile)
                                 {
                                     <div id="standingWC" data-isMobile="@isMobile"></div>
-                                    <a href="@Url.Action("Standing", "WorldCup2022")">Chi tiết >></a>
+                                    <div class="view-more">
+                                        <a href="@Url.Action("Standing", "WorldCup2022")">Chi tiết <i class="icon-next-wc"></i></a>
+                                    </div>
                                     <div id="topScorersWC"></div>
                                 }
                             }
