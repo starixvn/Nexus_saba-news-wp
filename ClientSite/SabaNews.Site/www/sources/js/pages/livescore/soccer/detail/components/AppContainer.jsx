@@ -31,16 +31,19 @@ export class AppContainer extends Component {
         this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
     };
 
+    checkIsWorldCup = league => {
+        return CommonFunctions.isWorldCupLeague(league);
+    }
+
     render() {
         const { match, favLeagues, leagues } = this.props;
         if (!this.props.match || !this.props.match.generalInfo) {
             return null;
         }
-
         const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
         const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
         document.title = `${homeTeamName} vs ${awayTeamName}`;
-
+        const isWorldCup = this.checkIsWorldCup(match.generalInfo.league);
         return (
             <>
                 <div className="container livescore-container">
@@ -50,12 +53,15 @@ export class AppContainer extends Component {
                             <MatchGeneralInfo match={this.props.match}
                                         flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon}
                                         onUpdateFavLeague={this.onUpdateFavLeague}/>
-                            <Details />
+                            <Details isWorldCup/>
                         </div>
-                        <div className="livescore-soccer-extension">
-                            <FavoriteMatches />
-                            <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
-                        </div>
+                        {
+                            !isWorldCup &&
+                            <div className="livescore-soccer-extension">
+                                <FavoriteMatches />
+                                <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>
+                            </div>
+                        }
                     </div>
                 </div>
             </>

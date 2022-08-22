@@ -1,4 +1,4 @@
-﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode, MatchResult } from './constants';
+﻿import { LeagueType, IncidentStatus, MatchStatus, VARResultCode, MatchResult, WorldCup } from './constants';
 import LangHelper from '@jsroot/common/langHelper';
 import Site from '@jsroot/common/site';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -376,5 +376,9 @@ export default class CommonFunctions {
         const FieldName = isHomeTeam ? 'homeTeam' : 'awayTeam';
         const score = match[`${FieldName}ExtraScore`] ? match[`${FieldName}ExtraScore`] : match[`${FieldName}TotalScore`];
         return score;
+    }
+
+    static isWorldCupLeague(league) {
+        return league.leagueId === WorldCup.leagueId && league.season.seasonId === WorldCup.seasonId
     }
 }

@@ -7,6 +7,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -159,6 +160,21 @@
                 }
             };
             return View("~/Views/Event/WorldCup2022/Video.cshtml", viewModel);
+        }
+
+        [Route("lich-thi-dau/world-cup/{match}/{matchId:long}")]
+        public IActionResult MatchDetail(long matchId)
+        {
+            var model = new MatchDetailModel
+            {
+                Header = new HeaderViewModel
+                {
+                    Title = WorldCup2022.Fixture,
+                    Slug = WorldCup2022.FixtureSlug
+                },
+                MatchId = matchId
+            };
+            return View("~/Views/Event/WorldCup2022/MatchDetail.cshtml", model);
         }
 
         [Route("world-cup-2022/story-post")]

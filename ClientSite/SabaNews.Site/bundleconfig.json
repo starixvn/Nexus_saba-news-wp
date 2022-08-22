@@ -163,7 +163,7 @@
             "wwwroot/styles/vendor/icomoon/style.css",
             "wwwroot/styles/pages/event/worldcup2022/fixture.css"
         ]
-    },    
+    },
     {
         "outputFileName": "wwwroot/minify/styles/lastestnews.min.css",
         "inputFiles": [
@@ -180,6 +180,13 @@
         "outputFileName": "wwwroot/minify/styles/videoworldcup2022.min.css",
         "inputFiles": [
             "wwwroot/styles/pages/event/worldcup2022/video.css"
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/minify/styles/worldcup2022-story-post.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/worldcup2022/story-post.css"
         ]
     },
     /*==================================================== Javascript ================================================*/
