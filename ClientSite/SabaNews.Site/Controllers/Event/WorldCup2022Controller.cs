@@ -161,6 +161,17 @@
             return View("~/Views/Event/WorldCup2022/Video.cshtml", viewModel);
         }
 
+        [Route("world-cup-2022/story-post")]
+        public async Task<IActionResult> StoryPosts()
+        {
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.Fixture,
+                Slug = WorldCup2022.FixtureSlug
+            };
+            return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", header);
+        }
+
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)
         {
             int pageSize = param.PageSize;
@@ -182,6 +193,8 @@
                 return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);
             }
         }
+
+        
 
         public async Task<IActionResult> GetStandings()
         {
