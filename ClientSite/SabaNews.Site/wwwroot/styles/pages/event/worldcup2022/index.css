@@ -651,7 +651,14 @@ body {
     list-style: none;
     padding-left: 0;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    /*
+        &-name {
+            width: 8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }*/ }
     .wc-table .team-logo {
       margin-right: .8rem;
       border: 1px solid #fff;
@@ -663,11 +670,6 @@ body {
         width: 3.6rem;
         height: 2.4rem;
         object-fit: cover; }
-    .wc-table .team-name {
-      width: 8rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;
@@ -696,10 +698,15 @@ body {
   .wc-table .btn-back-standing {
     margin-right: .6rem; }
 
-@media screen and (min-width: 1199px) {
-  .wc-table-king-soccer .team-name {
-    width: 13rem; } }
-
+/*.wc-table-king-soccer {
+    .team {
+        &-name {
+            @include creen1199px{
+                width: 13rem;
+            }
+        }
+    }
+}*/
 .page-items-box .wc-table .cell-participant {
   flex: 1 0 20rem; }
 
