@@ -315,3 +315,79 @@
 .soccer-match-item{
     justify-content : space-between;
 }
+
+
+
+
+
+
+
+
+//worldcup
+
+.container-match-detail{
+    padding-top: 0;
+}
+
+.match-detail-world-cup{
+    grid-template-columns: 61%;
+    .duel-participant{
+
+    }
+    .block-line-up{
+        &-main{
+            margin-top: 0 !important;
+        }
+    }
+    
+    .detail-function-bar{
+        background: #eeeee4;
+        padding-top: 0 !important;
+        margin-bottom: 0 !important;
+        border-bottom: none !important;
+    
+        ul{
+            li{
+                a{
+                    color: #2F2F2F;
+                    padding-bottom: 0;
+                    &::after{
+                        display: none;
+                    }
+                    &:hover{
+                        color: #2F2F2F;
+                    }
+                }
+                .active{
+                    color: #fff !important;
+                    &::after{
+                        display: none !important;
+                    }
+                }
+            }
+            border-bottom: none;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 38.6rem;
+            margin: 1.5rem auto;
+            position: relative;
+            padding: 5px;
+            background: #66172A;
+            clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+            &::after{
+                content: '';
+                display: block;
+                position: absolute;
+                top: 1px;
+                left: 1px;
+                right: 1px;
+                bottom: 1px;
+                background: #EEEEE4;;
+                clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+                z-index: -1;
+            }
+        }
+    }
+}
