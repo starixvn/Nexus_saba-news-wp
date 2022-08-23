@@ -207,10 +207,8 @@
                     margin-bottom: .6rem;
                 }
 
-
-
-                &:last-child {
-                    display: none;
+                &:last-child{
+                    margin-bottom: 0;
                 }
 
                 &:nth-child(3) {
@@ -291,6 +289,9 @@
                     @include Mobile {
                         line-height: 1;
                     }
+                }
+                .detail-score-status{
+                    display: none;
                 }
             }
         }
