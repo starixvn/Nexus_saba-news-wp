@@ -9,6 +9,10 @@
         align-items: center;
         padding: 1rem 1.2rem;
         border-bottom: 1px solid #C49F5D;
+
+        @include tableMobile {
+            padding: 1.6rem 1.2rem !important;
+        }
     }
 
     .wc-table-body {
@@ -18,9 +22,13 @@
     .cell-participant {
         align-self: center;
         display: flex;
-        flex: 1 0 16rem;
+        flex: 1 0 22rem;
         text-align: left;
         align-items: center;
+
+        @include tableMobile {
+            flex: 1 0 17rem;
+        }
     }
 
     .team {
@@ -45,10 +53,14 @@
         }
 
         &-name {
-            width: 8rem;
+            width: 14rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+
+            @include tableMobile {
+                width: 11rem;
+            }
         }
     }
 
@@ -96,15 +108,7 @@
     }
 }
 
-/*.wc-table-king-soccer {
-    .team {
-        &-name {
-            @include creen1199px{
-                width: 13rem;
-            }
-        }
-    }
-}*/
+
 
 .page-items-box {
     .wc-table {
@@ -121,13 +125,15 @@
         }
     }
 
-    .view-more{
-        margin-top : .8rem;
-        a{
-            color : $title-color;
+    .view-more {
+        margin-top: .8rem;
+
+        a {
+            color: $title-color;
         }
     }
 }
+
 #standingWC {
     .view-more {
         margin-top: .8rem;

@@ -56,10 +56,7 @@
             $('.king-soccer .wc-table').css({
                 width: '100%',
                 marginLeft: "0"
-            });
-            $('.king-soccer').css({
-                padding: '0 1.2rem'
-            });
+            })
         })
     }
 

@@ -639,14 +639,20 @@ body {
     align-items: center;
     padding: 1rem 1.2rem;
     border-bottom: 1px solid #C49F5D; }
+    @media screen and (max-width: 1024px) {
+      .wc-table .wc-table-header {
+        padding: 1.6rem 1.2rem !important; } }
   .wc-table .wc-table-body {
     font-size: 1.3rem; }
   .wc-table .cell-participant {
     align-self: center;
     display: flex;
-    flex: 1 0 16rem;
+    flex: 1 0 22rem;
     text-align: left;
     align-items: center; }
+    @media screen and (max-width: 1024px) {
+      .wc-table .cell-participant {
+        flex: 1 0 17rem; } }
   .wc-table .team {
     list-style: none;
     padding-left: 0;
@@ -664,10 +670,13 @@ body {
         height: 2.4rem;
         object-fit: cover; }
     .wc-table .team-name {
-      width: 8rem;
+      width: 14rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
+      @media screen and (max-width: 1024px) {
+        .wc-table .team-name {
+          width: 11rem; } }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;
@@ -696,15 +705,6 @@ body {
   .wc-table .btn-back-standing {
     margin-right: .6rem; }
 
-/*.wc-table-king-soccer {
-    .team {
-        &-name {
-            @include creen1199px{
-                width: 13rem;
-            }
-        }
-    }
-}*/
 .page-items-box .wc-table .cell-participant {
   flex: 1 0 20rem; }
 
@@ -1033,6 +1033,13 @@ body {
     border: 1px solid #DFB56C; }
     .wc-block-bxh .wc-table .wc-table-header {
       align-items: flex-end; }
+    .wc-block-bxh .wc-table .cell-participant {
+      flex: 1 0 16rem; }
+    .wc-block-bxh .wc-table .team-name {
+      width: 8rem; }
+      @media screen and (max-width: 1024px) {
+        .wc-block-bxh .wc-table .team-name {
+          width: 12rem; } }
   .wc-block-bxh .img-section {
     position: absolute;
     left: 30px;
@@ -1159,6 +1166,9 @@ body {
   .king-soccer .wc-table .cell-rank {
     width: 8rem;
     font-weight: 700; }
+    @media screen and (max-width: 1024px) {
+      .king-soccer .wc-table .cell-rank {
+        width: 7rem; } }
 
 .wc-block-video {
   background: #48041A;

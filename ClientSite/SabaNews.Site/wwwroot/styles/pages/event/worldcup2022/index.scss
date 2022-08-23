@@ -130,6 +130,20 @@
         .wc-table-header {
             align-items: flex-end;
         }
+
+        .cell-participant {
+            flex: 1 0 16rem;
+        }
+
+        .team {
+            &-name {
+                width: 8rem;
+
+                @include tableMobile {
+                    width: 12rem;
+                }
+            }
+        }
     }
 
     .img-section {
@@ -176,7 +190,7 @@
 
         .hover-image {
             max-height: 40rem;
-            height: 40rem ;
+            height: 40rem;
 
             @include tableMobile {
                 max-height: 45rem !important;
@@ -252,7 +266,7 @@
         .hover-image {
             @include tableMobile {
                 min-height: 22rem;
-                height : 22rem;
+                height: 22rem;
             }
         }
 
@@ -322,14 +336,19 @@
             margin: 0 2rem;
             border-bottom: 1px solid #58263F;
             padding: 1.3rem 0;
-            @include tableMobile{
-                margin : 0 1.2rem;
+
+            @include tableMobile {
+                margin: 0 1.2rem;
             }
         }
 
         .cell-rank {
             width: 8rem;
             font-weight: 700;
+
+            @include tableMobile {
+                width: 7rem;
+            }
         }
     }
 }
