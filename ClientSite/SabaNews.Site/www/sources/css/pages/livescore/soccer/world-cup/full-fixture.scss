@@ -277,6 +277,9 @@
         text-align: center;
       }
     }
+    &:hover{
+      box-shadow: none;
+    }
     .soccer-match-team{
       @include creen1199px{
         width: 100%;
