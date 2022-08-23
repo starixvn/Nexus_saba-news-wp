@@ -11,6 +11,7 @@
             contentType: "application/json",
             success: function (res) {
                 $('#home-standing').html(res);
+                $('[data-toggle="tooltip"]').tooltip();
             }
         })
     }
