@@ -13,6 +13,7 @@
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
 
     public class PostController : Controller
     {
@@ -64,6 +65,9 @@
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
             (string slug, string name) cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var cateParents = await postService.GetCateParentsAsync(cateInfo.slug);
+            var cateUrl = PostHelper.GetCategoryLink(cateParents);
+            var topParentCate = PostHelper.GetTopCateParent(cateParents);
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
@@ -74,7 +78,9 @@
                 AbsoluteUrl = $"{domain}{slug}",
                 IsVideo = post.Type == Constants.VideoPostType,
                 CateSlug = cateInfo.slug,
-                CateName = cateInfo.name
+                CateName = cateInfo.name,
+                CateUrl = cateUrl,
+                CateParent = topParentCate
             };
             
             return View(model);

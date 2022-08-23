@@ -11,8 +11,10 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria;
+    using SabaNews.Criteria.Category;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using SabaNews.Services.Interfaces;
 
@@ -308,6 +310,13 @@
             };
 
             return await baseService.ExecuteNonQueryAsync(command);
+        }
+
+        public async Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug)
+        {
+            var result = await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
+            var cates = result.Reverse();
+            return cates.ToList();
         }
 
         private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories, int cateId = 0, string link = "")

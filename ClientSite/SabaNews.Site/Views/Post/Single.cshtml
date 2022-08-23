@@ -22,7 +22,7 @@
 }
 
 @{
-    var linkReturn = Url.Action("Category", "Home", new { slug = Model.CateSlug });
+    var linkReturn = Model.CateUrl;
 }
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
@@ -215,7 +215,7 @@
             @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateSlug })
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateParent })
 
     </div>
     @await Html.PartialAsync(ViewResources.SidebarBannerView)

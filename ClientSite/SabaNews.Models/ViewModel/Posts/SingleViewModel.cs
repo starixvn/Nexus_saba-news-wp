@@ -16,5 +16,7 @@
         public bool IsVideo { get; set; }
         public string CateSlug { get; set; }
         public string CateName { get; set; }
+        public string CateUrl { get; set; }
+        public string CateParent { get; set; }
     }
 }

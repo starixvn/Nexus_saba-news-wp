@@ -87,6 +87,7 @@
         <Setting Key="post_update_view" SpName="post_update_view_xtest" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_by_cate_slugs" SpName="post_get_by_cate_slugs" DbName="sabasports" Plain="0" />
         <Setting Key="post_get_by_cate_slugs_paging" SpName="post_get_by_cate_slugs_paging" DbName="sabasports" Plain="0" />
+        <Setting Key="cate_get_parents" SpName="cate_get_parents" DbName="sabasports" Plain="0" />
     </Function>
     <Function Name="Comment">
         <Setting  Key="cmt_get_parent_and_number_children" SpName="cmt_get_parent_and_number_children" DbName="sabasports" Plain="0">

@@ -232,7 +232,7 @@
             </div>
         </div>
 
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.Slug })
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { CateSlug = @Model.Header.ActiveCategory })
     </div>
     @await Html.PartialAsync(ViewResources.SidebarBannerView)
 </section>
