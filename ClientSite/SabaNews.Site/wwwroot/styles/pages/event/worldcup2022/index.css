@@ -651,14 +651,7 @@ body {
     list-style: none;
     padding-left: 0;
     display: flex;
-    align-items: center;
-    /*
-        &-name {
-            width: 8rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }*/ }
+    align-items: center; }
     .wc-table .team-logo {
       margin-right: .8rem;
       border: 1px solid #fff;
@@ -670,6 +663,11 @@ body {
         width: 3.6rem;
         height: 2.4rem;
         object-fit: cover; }
+    .wc-table .team-name {
+      width: 8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
   .wc-table .number {
     margin-right: .6rem;
     width: 2rem;

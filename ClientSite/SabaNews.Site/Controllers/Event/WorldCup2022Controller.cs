@@ -210,13 +210,12 @@
             }
         }
 
-        
-
         public async Task<IActionResult> GetStandings()
         {
             var standingsCriteria = new GetLeagueSeasonStandingCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             ViewBag.Total = GroupStandingsByGroupName(standings).Count;
+            standings[0].TeamFullNameEN += "testtooltipdemo";
             return PartialView("~/Views/Event/WorldCup2022/_Standing.cshtml", GroupStandingsByGroupName(standings));
         }
 
@@ -224,6 +223,7 @@
         {
             var topScorersCriteria = new GetTop10ScorersCriteria{ LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             var topScorers = await leagueService.GetTop10ScorersAsync(topScorersCriteria);
+            topScorers[0].PlayerFullNameEN += "testtooltipdemo";
             return PartialView("~/Views/Event/WorldCup2022/_TopScorers.cshtml", topScorers);
         }
 
@@ -231,6 +231,8 @@
         public async Task<IActionResult> GetHomepageStandings([FromBody] GetLeagueSeasonStandingCriteria criteria)
         {
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(criteria);
+            standings[0].TeamFullNameEN += "testtooltipdemo";
+
             var groups = GroupStandingsByGroupName(standings);
             return PartialView("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", groups);
         }

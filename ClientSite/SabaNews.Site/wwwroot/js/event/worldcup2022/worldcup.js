@@ -7,6 +7,7 @@
                 type: 'GET',
             }).done(function (data) {
                 $('#topScorersWC').html(data);
+                $('[data-toggle="tooltip"]').tooltip();
             })
         }
     }

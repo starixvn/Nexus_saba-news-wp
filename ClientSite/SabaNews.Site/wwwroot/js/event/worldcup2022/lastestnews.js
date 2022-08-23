@@ -22,6 +22,7 @@
             type: 'GET'
         }).done(function (data) {
             $('#standingWC').html(data);
+            $('[data-toggle="tooltip"]').tooltip();
 
             total = $(".btn-next-standing").data('total');
             isMobile = $("#standingWC").data('ismobile');

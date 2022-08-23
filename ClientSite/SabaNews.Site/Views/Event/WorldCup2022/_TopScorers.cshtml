@@ -1,4 +1,5 @@
 ﻿@using static SabaNews.Site.Extensions.LivescoreHelper
+
 <div class="king-soccer">
     <div class="title-section">
         <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
@@ -6,7 +7,7 @@
         <h2><a href="#">Vua Phá Lưới</a></h2>
         <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
     </div>
-    <div class="wc-table wc-table-king-soccer">
+    <div class="wc-table wc-table-king-soccer" id="Hidden1">
         <div class="wc-table-header">
             <div class="wc-table-cell cell-participant">TOP 10</div>
             <div class="wc-table-cell cell-rank">Bàn thắng</div>
@@ -21,9 +22,10 @@
                         <ul class="team">
                             <li class="number">@item.Top </li>
                             <li class="team-logo"><img src="@GetTeamIcon(item.TeamLogo)" /></li>
-                            <li class="team-name" title="@(item.PlayerFullNameEN.Length > 12 ? item.PlayerFullNameEN: "")">@item.PlayerFullNameEN</li>
+                            <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(item.PlayerFullNameEN.Length > 11 ? item.PlayerFullNameEN : "")">@item.PlayerFullNameEN</li>
                         </ul>
                     </div>
+
                     <div class="wc-table-cell cell-rank">@item.Goals</div>
                     <div class="wc-table-cell cell-rank">@item.Assists</div>
                 </div>
