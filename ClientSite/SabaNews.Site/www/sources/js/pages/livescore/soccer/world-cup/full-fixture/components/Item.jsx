@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import MatchStage from '@jsroot/components/MatchStage';
 import TeamScore from '../../../index/components/match-grid/TeamScore';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchStatus } from '@jsroot/common/constants';
+import { MatchStatus, WorldCup } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 
 export default class Item extends PureComponent {
@@ -11,7 +11,7 @@ export default class Item extends PureComponent {
     }
 
     onClick = event => {
-        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

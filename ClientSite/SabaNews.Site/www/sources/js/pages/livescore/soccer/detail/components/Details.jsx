@@ -30,12 +30,13 @@ export class Details extends PureComponent {
     }
 
     render() {
+        const { isEvent } = this.props;
         return (
             <div className="details">
                 <MatchSummary />
                 <Statistics />
                 <Lineups />
-                <HeadToHead />
+                {!isEvent && <HeadToHead />}
             </div>
         );
     }

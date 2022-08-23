@@ -331,12 +331,13 @@ export default class CommonFunctions {
         return url;
     }
 
-    static getMatchDetailPageUrl(match) {
+    static getMatchDetailPageUrl(match, baseUrl = '') {
         const { matchId, league, homeTeam, awayTeam } = match;
         const leagueName = Site.toSlug(this.getLeagueName(league));
         const homeTeamName = Site.toSlug(this.getTeamName(homeTeam));
         const awayTeamName = Site.toSlug(this.getTeamName(awayTeam));
-        const url = Site.resolveClientUrl(`lich-thi-dau/bong-da/${leagueName}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
+        baseUrl = baseUrl === '' ? `lich-thi-dau/bong-da/${leagueName}` : baseUrl;
+        const url = Site.resolveClientUrl(`${baseUrl}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
         return url;
     }
 
@@ -378,7 +379,7 @@ export default class CommonFunctions {
         return score;
     }
 
-    static isWorldCupLeague(league) {
-        return league.leagueId === WorldCup.leagueId && league.season.seasonId === WorldCup.seasonId
+    static isEvent(league, isEventPage) {
+        return isEventPage && league.leagueId === WorldCup.leagueId && league.season.seasonId === WorldCup.seasonId
     }
 }

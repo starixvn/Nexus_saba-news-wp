@@ -5,6 +5,7 @@ import TeamIcon from '@jsroot/components/Icon/TeamIcon';
 import { MatchStatus, MatchResult } from '@jsroot/common/constants';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
+import { WorldCup } from '../../../../../../common/constants';
 
 export default class Match extends PureComponent {
     constructor(props) {
@@ -31,7 +32,7 @@ export default class Match extends PureComponent {
     };
 
     onClick = event => {
-        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match);
+        const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
         if (event.ctrlKey) {
             window.open(url, '_blank');
         } else {

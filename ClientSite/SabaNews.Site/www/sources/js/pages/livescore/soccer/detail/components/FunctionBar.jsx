@@ -5,6 +5,8 @@ import { ActionCreators } from '../actions';
 import queryString from 'query-string';
 import withNavigation from '@jsroot/components/withNavigation';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { WorldCup } from '@jsroot/common/constants';
+import Site from '@jsroot/common/site';
 
 export class FunctionBar extends Component {
     componentDidMount() {
@@ -97,6 +99,7 @@ export class FunctionBar extends Component {
     scrollToTab = tab =>  {
         const section = document.getElementById(tab);
         if (section) {
+            const { match, isEvent } = this.props;
             const isMobile = window.innerWidth < 768;
             const generalHeight = document.querySelector('.detail-fixed').offsetHeight;
             const headerHeight = document.querySelector('.header').offsetHeight;
@@ -107,7 +110,12 @@ export class FunctionBar extends Component {
                 behavior: 'smooth'
             });
             this.props.setActiveTab(tab);
-            let url = CommonFunctions.getMatchDetailPageUrl(this.props.match.generalInfo);
+            const { matchId, league, homeTeam, awayTeam } = match.generalInfo;
+            const leagueName = Site.toSlug(CommonFunctions.getLeagueName(league));
+            const homeTeamName = Site.toSlug(CommonFunctions.getTeamName(homeTeam));
+            const awayTeamName = Site.toSlug(CommonFunctions.getTeamName(awayTeam));
+            const path = isEvent ? WorldCup.MatchDetailUrl : `lich-thi-dau/bong-da/${leagueName}`;
+            let url = Site.resolveClientUrl(`${path}/${homeTeamName}-vs-${awayTeamName}/${matchId}`);
             url = `${url}/?tab=${tab}`;
             this.props.navigate(url);
         }
@@ -122,7 +130,7 @@ export class FunctionBar extends Component {
 
     render() {
         const tabStatus = this.updateTabStatus();
-        const { activeTab } = this.props;
+        const { activeTab, isEvent } = this.props;
         const isTabEnable = this.checkTabEnable(tabStatus);
         return (
             <Fragment>
@@ -143,11 +151,14 @@ export class FunctionBar extends Component {
                                 className={`${activeTab === 'doi-hinh' ? 'active' : ''} ${!tabStatus.enableTabLineups ? 'disabled' : ''}`}
                             >Đội hình</a>
                         </li>
-                        <li>
-                            <a onClick={() => this.scrollToTab('doi-dau')}
-                                className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled' : ''}`}
-                            >Đối đầu</a>
-                        </li>
+                        {
+                            !isEvent &&
+                            <li>
+                                <a onClick={() => this.scrollToTab('doi-dau')}
+                                    className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled' : ''}`}
+                                >Đối đầu</a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 {

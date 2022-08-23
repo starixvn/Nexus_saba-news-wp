@@ -31,8 +31,8 @@ export class AppContainer extends Component {
         this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
     };
 
-    checkIsWorldCup = league => {
-        return CommonFunctions.isWorldCupLeague(league);
+    checkIsEvent = (league, isEventPage) => {
+        return CommonFunctions.isEvent(league, isEventPage);
     }
 
     render() {
@@ -43,7 +43,7 @@ export class AppContainer extends Component {
         const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
         const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
         document.title = `${homeTeamName} vs ${awayTeamName}`;
-        const isWorldCup = this.checkIsWorldCup(match.generalInfo.league);
+        const isEvent = this.checkIsEvent(match.generalInfo.league, window.isEventPage);
         return (
             <>
                 <div className="container livescore-container">
@@ -52,11 +52,12 @@ export class AppContainer extends Component {
                         <div className="livescore-soccer-main">
                             <MatchGeneralInfo match={this.props.match}
                                         flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon}
-                                        onUpdateFavLeague={this.onUpdateFavLeague}/>
-                            <Details isWorldCup/>
+                                        onUpdateFavLeague={this.onUpdateFavLeague}
+                                        isEvent={isEvent}/>
+                            <Details isEvent={isEvent}/>
                         </div>
                         {
-                            !isWorldCup &&
+                            !isEvent &&
                             <div className="livescore-soccer-extension">
                                 <FavoriteMatches />
                                 <FavoriteLeagues searchLeagues={leagues} leagues={favLeagues} onToggleIcon={this.onToggleFavLeaguesIcon}/>

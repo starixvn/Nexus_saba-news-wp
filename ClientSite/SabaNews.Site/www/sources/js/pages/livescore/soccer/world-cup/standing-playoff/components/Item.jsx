@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import CommonFunctions from '@jsroot/common/common-functions';
 import TeamIcon from '@jsroot/components/Icon/TeamIcon';
-import { MatchResult, MatchStatus  } from '@jsroot/common/constants';
+import { MatchResult, MatchStatus, WorldCup  } from '@jsroot/common/constants';
 import DateTimeService from '@jsroot/common/dateTimeService';
 
 export default class Item extends PureComponent {
@@ -29,7 +29,12 @@ export default class Item extends PureComponent {
     };
 
     handleClick = (event, match) => {
-        CommonFunctions.navigateToMatchDetail(event, match);
+        const url = CommonFunctions.getMatchDetailPageUrl(match, WorldCup.MatchDetailUrl);
+        if (event.ctrlKey) {
+            window.open(url, '_blank');
+        } else {
+            window.location = url;
+        }
     };
 
     handleShowPopup = () => {

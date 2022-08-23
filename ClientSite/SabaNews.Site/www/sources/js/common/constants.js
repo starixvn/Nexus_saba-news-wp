@@ -95,7 +95,8 @@ export const WorldCup = {
     seasonId: 10230, //[10810, 10923, 10632, 10230]
     QuarterfinalsStage: 30539,
     GroupsStage: 30537,
-    FinalStage: 30542
+    FinalStage: 30542,
+    MatchDetailUrl: 'lich-thi-dau/world-cup'
 };
 
 export const StageMode = {

@@ -164,7 +164,7 @@ export default class MatchGeneralInfo extends PureComponent {
     };
 
     onUpdateFavouriteMatch = () => {
-        this.setState({flagToggleMatchIcon: !this.state.flagToggleMatchIcon});
+        this.setState({ flagToggleMatchIcon: !this.state.flagToggleMatchIcon });
     };
 
     renderBody = () => {
@@ -174,12 +174,16 @@ export default class MatchGeneralInfo extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
         const isIntermission = generalInfo.status === MatchStatus.Intermission;
         const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
+        const isEvent = this.props.isEvent;
         return (
             <>
-                <ul className="breadcrumb">
-                    <li onClick={this.handleClick}><span>LTĐ</span> </li>
-                    <li onClick={event => this.handleClickLeague(event, generalInfo.league)}> <span>{leagueName}</span>  </li>
-                </ul>
+                {
+                    !isEvent &&
+                    <ul className="breadcrumb">
+                        <li onClick={this.handleClick}><span>LTĐ</span> </li>
+                        <li onClick={event => this.handleClickLeague(event, generalInfo.league)}> <span>{leagueName}</span>  </li>
+                    </ul>
+                }
                 <div className="livescore-league-header-detail">
                     <div className="livescore-league-header-detail-group">
                         <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>
@@ -189,7 +193,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         <FavouriteLeagueIcon league={generalInfo.league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={this.props.flagToggleFavLeagueIcon} />
                     </div>
                     <div className="group-searchbar">
-                        <FavoriteMatches isMobile  />
+                        <FavoriteMatches isMobile />
                     </div>
                 </div>
                 <div className="duel-participant">
@@ -254,7 +258,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         </div>
                     }
                 </div>
-                <FunctionBar />
+                <FunctionBar isEvent={isEvent} />
             </>
         );
     };
