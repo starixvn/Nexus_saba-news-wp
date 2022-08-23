@@ -351,6 +351,10 @@
             &:last-of-type {
                 padding-right: 3rem;
             }
+            img{
+                width : 9rem;
+                display : block;
+            }
 
             a {
                 display: block;
@@ -630,6 +634,14 @@
                         @include tableMobile {
                             color: inherit;
                         }
+                    }
+                }
+                .hiden-icon-mobile{
+                    @include tableMobile{
+                        display : none;
+                    }
+                    img{
+                        display : block;
                     }
                 }
 

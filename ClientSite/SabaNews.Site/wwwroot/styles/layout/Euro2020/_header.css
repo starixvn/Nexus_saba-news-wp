@@ -264,6 +264,9 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
       display: none; }
     .child-mobile-menu .main-child-menu li:last-of-type {
       padding-right: 3rem; }
+    .child-mobile-menu .main-child-menu li img {
+      width: 9rem;
+      display: block; }
     .child-mobile-menu .main-child-menu li a {
       display: block;
       text-decoration: none;
@@ -461,6 +464,11 @@ textarea, input[type]:not([type=number]):not([type=button]):not([type=search]) {
             @media screen and (max-width: 1024px) {
               .top-header .group-menu .nav-menu .main-menu .menu-item .active {
                 color: inherit; } }
+        @media screen and (max-width: 1024px) {
+          .top-header .group-menu .nav-menu .main-menu .hiden-icon-mobile {
+            display: none; } }
+        .top-header .group-menu .nav-menu .main-menu .hiden-icon-mobile img {
+          display: block; }
         .top-header .group-menu .nav-menu .main-menu li {
           position: relative; }
           .top-header .group-menu .nav-menu .main-menu li.has-sub .submenu-button {
