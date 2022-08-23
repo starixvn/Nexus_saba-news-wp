@@ -48,7 +48,7 @@ export class AppContainer extends Component {
             <>
                 <div className="container livescore-container">
                     <SignalR />
-                    <div className="livescore-soccer">
+                    <div className={`livescore-soccer ${isEvent ? 'match-detail-world-cup' : ''}`}>
                         <div className="livescore-soccer-main">
                             <MatchGeneralInfo match={this.props.match}
                                         flagToggleFavLeagueIcon={this.state.flagToggleFavLeagueIcon}
