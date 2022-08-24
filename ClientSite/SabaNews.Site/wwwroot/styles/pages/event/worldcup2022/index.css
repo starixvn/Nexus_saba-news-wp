@@ -1142,6 +1142,9 @@ body {
       align-items: flex-end; }
     .wc-block-bxh .wc-table .cell-participant {
       flex: 1 0 13rem; }
+      @media screen and (max-width: 1024px) {
+        .wc-block-bxh .wc-table .cell-participant {
+          flex: 1 0 16rem; } }
     .wc-block-bxh .wc-table .team-name {
       width: 8rem; }
       @media screen and (max-width: 1024px) {
