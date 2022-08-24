@@ -183,6 +183,12 @@
         ]
     },
     {
+        "outputFileName": "wwwroot/minify/styles/postdetail-wc.min.css",
+        "inputFiles": [
+            "wwwroot/styles/pages/event/worldcup2022/postdetail-wc.css"
+        ]
+    },
+    {
         "outputFileName": "wwwroot/minify/styles/worldcup2022-story-post.min.css",
         "inputFiles": [
             "wwwroot/styles/vendor/icomoon/style.css",
