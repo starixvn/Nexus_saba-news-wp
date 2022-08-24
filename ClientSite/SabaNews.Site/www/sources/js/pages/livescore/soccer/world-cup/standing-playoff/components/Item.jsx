@@ -10,7 +10,7 @@ export default class Item extends PureComponent {
 
         this.state = {
             isHighLight: false,
-            isShowPopup: false
+            isShowPopup: true
         };
     }
     getScore = (match, isHomeTeam) => {

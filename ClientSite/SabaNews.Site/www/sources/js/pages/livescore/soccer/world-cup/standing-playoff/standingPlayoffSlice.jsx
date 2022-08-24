@@ -24,7 +24,6 @@ const standingPlayoffSlice = createSlice({
         setLeague: (state, action) => {
             const league = action.payload;
             state.league = league;
-            state.selectedStageId = league.currentStageId;
         }
     }
 });

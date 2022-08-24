@@ -79,9 +79,6 @@ export class AppContainer extends Component {
         return tempMatches;
     };
 
-    sortStage = stages => stages.sort((item1, item2) => item2.stage.orderIndex - item1.stage.orderIndex);
-
-
     groupMatches = matches => {
         const playoffStages = this.groupMatchByStage(matches);
         const totalItems = playoffStages.length;
@@ -153,34 +150,6 @@ export class AppContainer extends Component {
         return tmpMatches;
     };
 
-
-    getEmptyMatch = (match, matchesFilter) => {
-        const tmpMatches = [];
-        const matchIds = [];
-        if (match.awayTeam) {
-            tmpMatches.push({});
-            const awayMathch = matchesFilter.filter(item => item.homeTeam.teamId === match.awayTeam.teamId || item.awayTeam.teamId === match.awayTeam.teamId);
-            const awayResult = this.getMatchMapWithStage(awayMathch);
-            if (awayResult.match !== null) {
-                tmpMatches.push(awayResult.match);
-            }
-            awayResult.matchIds.forEach(item => matchIds.push(item));
-        }
-        if (match.homeTeam) {
-            const homeMatch = matchesFilter.filter(item => item.homeTeam.teamId === match.homeTeam.teamId || item.awayTeam.teamId === match.homeTeam.teamId);
-            const homeResult = this.getMatchMapWithStage(homeMatch);
-            if (homeResult.match !== null) {
-                tmpMatches.push(homeResult.match);
-            }
-            homeResult.matchIds.forEach(item => matchIds.push(item));
-            tmpMatches.push({});
-        }
-        if (!match.homeTeam && !match.awayTeam) {
-            tmpMatches.push({});
-            tmpMatches.push({});
-        }
-        return { matches: tmpMatches, matchIds: matchIds };
-    };
 
     getMatchMapWithStage = matchFilter => {
         let tmpMatch = null;
