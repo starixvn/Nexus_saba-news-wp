@@ -1,5 +1,11 @@
 ﻿@using static SabaNews.Site.Extensions.LivescoreHelper
-
+@using DeviceDetectorNET;
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
 <div class="king-soccer">
     <div class="title-section">
         <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
@@ -22,7 +28,7 @@
                         <ul class="team">
                             <li class="number">@item.Top </li>
                             <li class="team-logo"><img src="@GetTeamIcon(item.TeamLogo)" /></li>
-                            <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(item.PlayerFullNameEN.Length > 11 ? item.PlayerFullNameEN : "")">@item.PlayerFullNameEN</li>
+                            <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(item.PlayerFullNameEN.Length > (isMobile? 15 : 22) ? item.PlayerFullNameEN : "")">@item.PlayerFullNameEN</li>
                         </ul>
                     </div>
 

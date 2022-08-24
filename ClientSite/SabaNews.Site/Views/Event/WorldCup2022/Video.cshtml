@@ -84,7 +84,7 @@
                                 <img asp-append-version="true" loading="lazy" src="@Url.Content(Model.Videos[0].FeatureImage)" alt="@Model.Videos[0].PostTitle">
                             </picture>
                             <div class="title-hot">
-                                <h3><a href="@Url.Action("Single", "Post", new { slug = Model.Videos[0].Slug })">@Model.Videos[0].PostTitle</a></h3>
+                                <h3><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = Model.Videos[0].Slug })">@Model.Videos[0].PostTitle</a></h3>
                                 <p class="date-time"> @Model.Videos[0].PostTime</p>
                             </div>
                             <div class="btn-play-video" post-id="@Model.Videos[0].ID">
@@ -105,21 +105,34 @@
             <div class="page-main">
                 <div class="video-grid" id="video-grid">
                     @{
+                        int postIndex = 0;
                         foreach (var post in Model.Videos)
                         {
+                            {
+                                postIndex++;
+                                if (postIndex <= 1)
+                                {
+                                    continue;
+                                }
+                            }
                             <div class="video-items">
                                 <div class="hover-image">
-                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">
+                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })" class="card-vertical__title text-description">
                                         <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
                                     </a>
                                 </div>
                                 <div class="title">
-                                    <h2><a href="@Url.Action("Single", "Post", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a></h2>
+                                    <h2><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })" class="card-vertical__title text-description">@post.PostTitle</a></h2>
                                     <p class="date-time"> @post.PostTime</p>
                                 </div>
                             </div>
                         }
                     }
+                </div>
+                <div class="loading-page">
+                    <div class="lds-ellipsis">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
 ﻿namespace SabaNews.Site.Controllers.Event
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
@@ -11,8 +13,10 @@
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -24,6 +28,9 @@
         private readonly IPostService postService;
         private readonly IMatchService matchService;
         private readonly ILeagueService leagueService;
+        private readonly IConfiguration configuration;
+        private readonly ISessionService sessionService;
+        private readonly IUserService userService;
         private const long LeagueIdWC = WorldCup2022.LeagueIdWorldCup2022;
         private const long SeasonIdWC = WorldCup2022.SeasonIdWorldCup2022;
         private const string CategorySlugWC = WorldCup2022.HomepageSlug;
@@ -32,12 +39,18 @@
             IPostService postService,
             IDataControlService dataControlService,
             IMatchService matchService,
-            ILeagueService leagueService)
+            ILeagueService leagueService,
+            IConfiguration configuration,
+            ISessionService sessionService,
+            IUserService userService)
         {
             this.postService = postService;
             this.dataControlService = dataControlService;
             this.matchService = matchService;
             this.leagueService = leagueService;
+            this.configuration = configuration;
+            this.sessionService = sessionService;
+            this.userService = userService;
         }
 
         [Route("world-cup-2022")]
@@ -55,6 +68,38 @@
             };
             model.Header = header;
             return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
+        }
+
+        [Route("world-cup-2022/{slug}")]
+        public async Task<IActionResult> PostDetailWC(string slug)
+        {
+            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+            if (post == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            SavePost savePost = null;
+            var isLogin = sessionService.User != null;
+            if (isLogin)
+            {
+                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
+                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+            }
+            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
+            var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
+            cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
+            var domain = configuration.GetValue<string>("BaseUrl");
+            var model = new SingleViewModel
+            {
+                SinglePost = post,
+                IsLogin = isLogin,
+                SavePost = savePost,
+                AbsoluteUrl = $"{domain}{slug}",
+                IsVideo = PostHelper.CheckIsVideo(cateParents),
+                CateInfo = cateInfo
+            };
+
+            return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", model);
         }
 
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
@@ -271,6 +316,46 @@
                 }
             }
             return groupNames;
+        }
+
+        private static CateInfo GetCateInfo(string cateName, string cateSlug)
+        {
+            var slug = cateSlug;
+            var name = cateName;
+            var cateEvent = GetEventInfo(cateSlug);
+            if (cateEvent != null)
+            {
+                return cateEvent;
+            }
+            if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug)
+                && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
+            {
+                return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
+            }
+
+            var listCateSlug = cateSlug.Split(',');
+            var listCateName = cateName.Split(',');
+            var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
+            var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+            slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
+            name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
+            return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
+        }
+
+        private static CateInfo GetEventInfo(string cateSlug)
+        {
+            var cateEvents = PostHelper.GetEventCates();
+            var listCateSlug = cateSlug.Split(',');
+            foreach (var slug in listCateSlug)
+            {
+                var cate = cateEvents.Find(item => item.Slug == slug.Trim());
+                if (cate != null)
+                {
+                    return cate;
+                }
+            }
+            return null;
+
         }
     }
 }

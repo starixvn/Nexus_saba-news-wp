@@ -1,4 +1,11 @@
 ﻿@using SabaNews.Site.Extensions;
+@using DeviceDetectorNET;
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
 
 <div class="container mb-container">
     <div class="title-section">
@@ -29,7 +36,7 @@
                             <div class="wc-table-cell cell-participant">
                                 <ul class="team">
                                     <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
-                                    <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > 12 ? teamName : "")">@teamName</li>
+                                    <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 11) ? teamName : "")">@teamName</li>
                                 </ul>
                             </div>
                             <div class="wc-table-cell cell-rank">@standing.Total</div>
