@@ -50,6 +50,9 @@
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             grid-gap: .6rem 1.2rem;
+            @include tableMobile{
+                padding-bottom : 0;
+            }
 
             &__image {
                 height: 8rem;
@@ -70,6 +73,26 @@
                 letter-spacing: -.02rem;
                 text-decoration: none;
                 transition: color .3s ease;
+
+                @include tableMobile {
+                    color: #fff;
+                }
+
+                &.ishow-pc {
+                    display: block;
+
+                    @include tableMobile {
+                        display: none;
+                    }
+                }
+
+                &.ishow-mobile {
+                    display: none;
+
+                    @include tableMobile {
+                        display: block;
+                    }
+                }
             }
         }
     }

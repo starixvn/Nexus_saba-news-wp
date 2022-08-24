@@ -113,7 +113,7 @@
                                     if (postIndexhot <= 4)
                                     {
                                         <div class="post card-horizontal">
-                                            <a class="title" href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
+                                            <a class="title ishow-pc" href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
                                             <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })" class="card-horizontal__image thumb thumb-52">
                                                 <picture>
                                                     <source srcset="@Url.Content(post.FeatureImage)" type="image/webp" class="img-res">
@@ -122,6 +122,7 @@
                                                 </picture>
                                             </a>
                                             <div class="card-horizontal__content">
+                                                <a class="title ishow-mobile" href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
                                                 <p class="description">@Html.Raw(post.PostExcerpt)</p>
                                                 <p class="datetime">
                                                     <span>@post.PostTime</span>
