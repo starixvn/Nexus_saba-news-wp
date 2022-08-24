@@ -629,7 +629,8 @@ body {
     user-select: none;
     align-items: center;
     padding: 1rem 1.2rem;
-    border-bottom: 1px solid #C49F5D; }
+    border-bottom: 1px solid #C49F5D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
     @media screen and (max-width: 1024px) {
       .wc-table .wc-table-header {
         padding: 1.6rem 1.2rem !important; } }
