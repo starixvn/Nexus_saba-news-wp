@@ -15,4 +15,17 @@
 @import './components/wc-modal';
 @import './components/tooltip';
 
-
+.block-extension{
+    padding-left : 0;
+    position : unset;
+}
+.block-main{
+    padding-right : 2rem;
+}
+.sticky-position {
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+}
+.main .detail-container {
+    grid-template-columns: 5% 64% 35.7rem;
+}

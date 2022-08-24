@@ -46,16 +46,19 @@
         border-left: none;
         position : unset;
     }
+}
 
-    .sticky-position {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 7rem;
-        @include tableMobile{
-            position : unset;
-        }
+
+.sticky-position {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 7rem;
+
+    @include tableMobile {
+        position: unset;
     }
 }
+
 .page-main-items {
     padding-right: 2rem;
 

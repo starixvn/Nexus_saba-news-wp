@@ -784,13 +784,14 @@ body {
       padding-left: 0;
       border-left: none;
       position: unset; } }
-  .page-items-right .sticky-position {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7rem; }
-    @media screen and (max-width: 1024px) {
-      .page-items-right .sticky-position {
-        position: unset; } }
+
+.sticky-position {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7rem; }
+  @media screen and (max-width: 1024px) {
+    .sticky-position {
+      position: unset; } }
 
 .page-main-items {
   padding-right: 2rem; }
@@ -992,3 +993,17 @@ body {
   text-align: center;
   background-color: #000;
   border-radius: 0.25rem; }
+
+.block-extension {
+  padding-left: 0;
+  position: unset; }
+
+.block-main {
+  padding-right: 2rem; }
+
+.sticky-position {
+  padding-left: 2rem;
+  margin-bottom: 2rem; }
+
+.main .detail-container {
+  grid-template-columns: 5% 64% 35.7rem; }

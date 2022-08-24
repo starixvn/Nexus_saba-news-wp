@@ -793,13 +793,14 @@ body {
       padding-left: 0;
       border-left: none;
       position: unset; } }
-  .page-items-right .sticky-position {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7rem; }
-    @media screen and (max-width: 1024px) {
-      .page-items-right .sticky-position {
-        position: unset; } }
+
+.sticky-position {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7rem; }
+  @media screen and (max-width: 1024px) {
+    .sticky-position {
+      position: unset; } }
 
 .page-main-items {
   padding-right: 2rem; }
