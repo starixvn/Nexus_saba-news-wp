@@ -319,3 +319,35 @@ function make_registered_column_sortable( $columns ) {
 add_filter( 'manage_users_sortable_columns', 'make_registered_column_sortable' );
 add_filter('manage_users_columns', 'add_register_date_column' );
 add_filter( 'manage_users_custom_column', 'modify_user_table_row', 10, 3 );
+
+// Register Custom Post Type
+function custom_post_type() {
+
+	$labels = array(
+		'name'                  => _x( 'Story Post', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Story Post', 'Post Type Singular Name', 'text_domain' ),
+	);
+	$args = array(
+		'label'                 => __( 'Story Posts', 'text_domain' ),
+		'description'           => __( 'Story Posts', 'text_domain' ),
+		'labels'                => $labels,
+		'supports'              => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'revisions', 'page-attributes', 'post-formats'),
+		'taxonomies'            => array('category'),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+		'show_in_rest' 			=> true
+	);
+	register_post_type( 'story_post', $args );
+
+}
+add_action( 'init', 'custom_post_type', 0 );
