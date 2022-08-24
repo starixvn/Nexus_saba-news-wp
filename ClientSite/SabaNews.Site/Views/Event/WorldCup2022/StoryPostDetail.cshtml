@@ -1,37 +1,37 @@
-﻿@section Metadata {
-    <meta name="description" content='@(Model.PostExcerpt != "" ? Model.PostExcerpt : "&nbsp;" )' />
-    <meta property="og:description" content="&nbsp;" />
-    <meta property="og:title" content='@Model.PostTitle' />
-    <meta property="og:image" content='@Model.FeatureImage' />
-}
+﻿
 
-@section Title {
-    @Model.PostTitle
-}
-
-@section Styles{
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.PostTitle</title>
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup2022-story-post-detail.min.css" asp-append-version="true">
-}
+</head>
+<body>
 
-@section Scripts{
-    <script src="~/minify/js/worldcup-2022-story-post.min.js" asp-append-version="true"></script>
-    <script async custom-element="amp-story" src="~/lib/amp/amp-story-1.0.js"></script>
-    <script async custom-element="amp-video" src="~/lib/amp/amp-video-0.1.js"></script>
-    <script async custom-element="amp-analytics" src="~/lib/amp/amp-analytics-0.1.js"></script>
-    <script async custom-element="amp-youtube" src="~/lib/amp/amp-youtube-0.1.js"></script>
-}
-
-
-<section class="worldcup-fixture">
-    <div class="wc-page-main">
-        <div class="title-section">
-            <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-            <h2>@Model.PostTitle</h2>
-            <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+    <section class="worldcup-fixture">
+        <div class="wc-page-main">
+            <div class="title-section">
+                <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
+                <h2>@Model.PostTitle</h2>
+                <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+            </div>
+            <div class="container">
+                @Html.Raw(Model.PostContent)
+            </div>
         </div>
-        <div class="container">
+        <input type="hidden" class="story-data" value=@Model.PostContent />
+    </section>
 
-        </div>
-    </div>
-</section>
+</body>
+</html>
+
+<script src="~/js/event/worldcup2022/story-post-detail.js" asp-append-version="true"></script>
+<script async custom-element="amp-story" src="~/lib/amp/amp-story-1.0.js"></script>
+<script async custom-element="amp-video" src="~/lib/amp/amp-video-0.1.js"></script>
+<script async custom-element="amp-analytics" src="~/lib/amp/amp-analytics-0.1.js"></script>
+<script async custom-element="amp-youtube" src="~/lib/amp/amp-youtube-0.1.js"></script>
+<script>
+        var content = '@Html.Raw(Model.PostContent)';
+</script>
+

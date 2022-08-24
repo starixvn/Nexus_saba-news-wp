@@ -276,7 +276,7 @@
                 return View(Constants.EmptyBlogView);
             }
 
-            return View("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", post);
+            return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", post);
         }
 
         public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
