@@ -74,7 +74,7 @@
                 <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
             </div>
         </div>
-        @*@if (Model.Posts.Count > 0)
+        @if (Model.Posts.Count > 0)
         {
             <div class="container">
                 <div class="page-items-hot">
@@ -92,51 +92,9 @@
                     </div>
                 </div>
             </div>
-        }*@
-
-        @if (Model.Posts.Count > 0)
-        {
-            var firstPost = Model.Posts[0];
-            <div class="post-items post-items-1 post-hot">
-                <div class="hover-image">
-                    <a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">
-                        <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" asp-append-version="true" loading="lazy" />
-                    </a>
-                    <div class="title-hot">
-                        <h1><a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">@firstPost.PostTitle</a></h1>
-                        <p><a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">@firstPost.PostExcerpt</a></p>
-                    </div>
-                </div>
-            </div>
         }
 
-        @{
-            int lastestPostIndex = 0;
-            foreach (var post in Model.Posts)
-            {
-                {
-                    lastestPostIndex++;
-                    if (lastestPostIndex <= 1)
-                    {
-                        continue;
-                    }
-                    if (lastestPostIndex <= 4)
-                    {
-                        <div class="post-items post-items-@lastestPostIndex">
-                            <div class="hover-image">
-                                <a href="@Url.Action("Single", "Post", new { slug = post.Slug })"><img src=@post.FeatureImage alt=@post.PostTitle class="img-res" /></a>
-                            </div>
-                            <div class="title">
-                                <h2><a href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h2>
-                            </div>
-                        </div>
-                    }
-                }
-
-            }
-        }
-
-        @*<div class="page-main page-grid">
+        <div class="page-main page-grid">
             <div class="page-main-items">
                 <div id="news-grid" class="news-grid">
                     @{
@@ -145,9 +103,14 @@
                         {
                             {
                                 postIndex++;
-                                if (postIndex <= 1)
+                                if (postIndex < 1)
                                 {
                                     continue;
+                                }
+                                if (postIndex == 4 && isMobile)
+                                {
+                                    <div id="standingWC" data-isMobile="@isMobile"></div>
+                                    <div id="topScorersWC"></div>
                                 }
                                 if (postIndex <= 4)
                                 {
@@ -167,11 +130,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                }
-                                if (postIndex == 4 && isMobile)
-                                {
-                                    <div id="standingWC" data-isMobile="@isMobile"></div>
-                                    <div id="topScorersWC"></div>
+                                    continue;
                                 }
                             }
 
@@ -209,6 +168,6 @@
                     </div>
                 }
             </div>
-        </div>*@
+        </div>
     </div>
 </section>
