@@ -1020,8 +1020,11 @@ body {
   .block__content .title-section h2 {
     margin: 0 1rem 0 0; }
 
-.block__content .card-horizontal__image {
-  border-radius: 5px; }
+.block__content .card-horizontal {
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem; }
+  .block__content .card-horizontal__image {
+    border-radius: 5px; }
 
 .block-extension .card-vertical:last-child {
   border-bottom: 1px solid #e5e5e5 !important; }
