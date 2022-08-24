@@ -16,10 +16,64 @@
 @import './components/wc-card-horizontal';
 @import './components/tooltip';
 
-.page-items-hot {
-    margin-bottom: 2rem;
-}
 
+.pages-main-hot {
+    display: grid;
+    grid-template-columns: 55rem auto;
+    grid-gap: 2rem;
+    margin-bottom: 2rem;
+
+    @include tableMobile {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    .page-items-hot {
+        max-height: 40rem;
+        height: 40rem;
+
+        @include tableMobile {
+            max-height: 30rem;
+            height: 30rem;
+        }
+
+        .post-hot {
+            .hover-image {
+                height: 40rem;
+            }
+        }
+    }
+
+    .page-hot-right {
+        .card-horizontal {
+            grid-template-columns: 14rem 1fr;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            grid-gap: .6rem 1.2rem;
+
+            &__image {
+                height: 8rem;
+                max-height: 8rem;
+
+                @include tableMobile {
+                    max-height: 30rem;
+                    height: 30rem;
+                }
+            }
+
+            .title {
+                grid-column: 1/3;
+                grid-row: 1;
+                color: #333;
+                font-weight: bold;
+                font-size: 1.6rem;
+                letter-spacing: -.02rem;
+                text-decoration: none;
+                transition: color .3s ease;
+            }
+        }
+    }
+}
 
 
 .page-grid {
@@ -27,7 +81,8 @@
     margin: 0 1rem;
     margin-right: auto;
     margin-left: auto;
-
+    padding-top: 2rem !important;
+    border-top : 1px solid #DADACB;
     @media (min-width : 1280px) {
         max-width: 115rem !important;
     }
