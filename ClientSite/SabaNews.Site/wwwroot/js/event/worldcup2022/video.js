@@ -13,7 +13,7 @@
             type: 'POST',
             data: { slugs, page, pageSize, isVideo, type }
             }).done(function (data) {
-                $('#video-grid').html(data);
+                $('#news-grid').html(data);
             })
             .fail(function (jqXHR, ajaxOptions, thrownError) {
                 console.log('server not responding...');

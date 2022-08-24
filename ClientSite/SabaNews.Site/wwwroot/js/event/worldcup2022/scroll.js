@@ -35,15 +35,9 @@
             } else {
                 $('.ajax-load').hide();
                 $('#news-grid').append(data);
-                if (page === 5 && page < paging.totalPages && isVideo == "False") {
+                if (page === 5 && page < paging.totalPages) {
                     const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                     $('#news-grid').append(loadMoreHtml);
-                    isLoadData = false;
-                    $('.lds-ellipsis').hide();
-                }
-                if (page === 13 && page < paging.totalPages && isVideo == "True") {
-                    const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
-                    $('#video-grid').append(loadMoreHtml);
                     isLoadData = false;
                     $('.lds-ellipsis').hide();
                 }
