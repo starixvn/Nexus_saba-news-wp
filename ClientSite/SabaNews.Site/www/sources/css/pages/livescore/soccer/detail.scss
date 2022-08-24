@@ -482,11 +482,12 @@
                     &:hover{
                         color: #2F2F2F;
                     }
-                    .disabled{
-                        &:hover{
-                            color: #BCBCBC;
-                        }    
-                    }
+                }
+                .disabled{
+                    color: #BCBCBC;
+                    &:hover{
+                        color: #BCBCBC;
+                    }    
                 }
                 .active{
                     color: #fff !important;
@@ -520,6 +521,32 @@
                 clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
                 z-index: -1;
             }
+        }
+    }
+    .livescore-league-header-detail{
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    .title-section {
+        margin-bottom: 2rem;;
+        h2{
+            text-align: center;
+            text-transform: inherit;
+            line-height: 3.3rem;
+            p{
+                margin-top: .4rem;
+                font-weight: 600;
+                font-size: 1.6rem;
+                line-height: 2.2rem;
+            }
+        }
+    }
+    .dots {
+        span{
+            height: 0.7rem;
+        }
+        .dots-items{
+            height: 1rem;
         }
     }
 }
