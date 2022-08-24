@@ -6,6 +6,7 @@ DELIMITER //
 
 CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
 	cateSlug varchar(200),
+    postId BIGINT,
     start INT,
     end INT
     /*
@@ -45,23 +46,24 @@ BEGIN
             )
         ) AS t; 
     
+    
     INSERT INTO tmp_PostIds (PostId)
     SELECT p.ID
 	FROM wp_posts as p
-	WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate
+	WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate  AND p.ID != postId
 	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
 					INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-	LIMIT start, end;
+	LIMIT start,end;
 	
     IF (SELECT COUNT(*) FROM tmp_PostIds) = 0 THEN 
 		SELECT DATE_SUB(UTC_TIMESTAMP, INTERVAL 72 HOUR) INTO limitDate;
         INSERT INTO tmp_PostIds (PostId)
 		SELECT p.ID
 		FROM wp_posts as p
-		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate
+		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate AND p.ID != postId
 		AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
 						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-		LIMIT start, end;
+		LIMIT start,end;
     END IF;
     
     IF (SELECT COUNT(*) FROM tmp_PostIds) = 0 THEN 
@@ -69,10 +71,10 @@ BEGIN
         INSERT INTO tmp_PostIds (PostId)
 		SELECT p.ID
 		FROM wp_posts as p
-		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate
+		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate  AND p.ID != postId
 		AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
 						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-		LIMIT start, end;
+		LIMIT start,end;
     END IF;
     
 	SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent
