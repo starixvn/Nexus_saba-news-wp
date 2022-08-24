@@ -15,9 +15,17 @@
 @import './components/wc-modal';
 @import './components/tooltip';
 
+
+body{
+    overflow : unset;
+}
+
 .block-extension{
     padding-left : 0;
     position : unset;
+}
+img{
+    margin : unset;
 }
 .block-main {
     padding-right: 2rem;
@@ -33,8 +41,20 @@
         padding-left : 0;
     }
 }
-.main .detail-container {
+.detail-container {
+    display: grid;
     grid-template-columns: 5% 64% 35.7rem;
+    grid-template-rows: unset;
+    grid-gap: 0;
+    align-items: start;
+
+    @include tableMobile {
+        grid-template-columns: 60% 40%;
+    }
+
+    @include Mobile {
+        display: inherit;
+    }
 }
 
 .block__content {
