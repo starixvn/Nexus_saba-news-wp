@@ -281,14 +281,19 @@
 
         public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
         {
+            var start = (param.Page - 1) * param.PageSize;
             var cateSlugCriteria = new GetPostsByCateSlugCriteria
             {
                 _CategorySlug = param.Slug,
-                _Start = 0,
+                _Start = start,
                 _End = param.PageSize,
                 PostType = Constants.storyPostType
             };
             var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            if (!posts.Any())
+            {
+                return Ok(false);
+            }
             return PartialView("~/Views/Event/WorldCup2022/_StoryPost.cshtml", posts);
         }
 
