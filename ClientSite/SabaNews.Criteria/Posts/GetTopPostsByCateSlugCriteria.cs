@@ -7,9 +7,12 @@
     {
         public string CateSlug { get; set; }
 
+        public long PostId { get; set; } = 0;
+
         public int Start { get; set; }
 
         public int End { get; set; }
+
 
         public override string GetSettingKey() => "get_top_posts_by_cate_slug";
 

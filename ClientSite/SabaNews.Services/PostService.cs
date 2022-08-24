@@ -83,20 +83,10 @@
             {
                 CateSlug = postParam.Slug.Trim(),
                 Start = postParam.Start,
-                End = postParam.End
+                End = postParam.End,
+                PostId = postParam.PostID
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
-
-            if (postParam.PostID != 0)
-            {
-                var totalRealItems = postParam.End - 1;
-                var excerptCurrentPost = posts.Where(item => item.ID != postParam.PostID).ToList();
-                posts = excerptCurrentPost;
-                if (excerptCurrentPost.Count > totalRealItems)
-                {
-                    posts = excerptCurrentPost.Skip(postParam.Start).Take(totalRealItems).ToList();
-                }
-            }
 
             return FormatData(posts).ToList();
         }
@@ -212,6 +202,13 @@
             return FormatData(result).ToList();
         }
 
+        public async Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug)
+        {
+            var result = await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
+            var cates = result.Reverse();
+            return cates.ToList();
+        }
+
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)
         {
             foreach (var post in posts)
@@ -310,13 +307,6 @@
             };
 
             return await baseService.ExecuteNonQueryAsync(command);
-        }
-
-        public async Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug)
-        {
-            var result = await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
-            var cates = result.Reverse();
-            return cates.ToList();
         }
 
         private List<SitemapModel> GetCategoriesSiteMap(IList<SitemapModel> categories, int cateId = 0, string link = "")
