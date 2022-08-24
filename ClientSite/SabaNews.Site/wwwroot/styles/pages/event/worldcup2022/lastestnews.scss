@@ -24,8 +24,7 @@
     margin-bottom: 2rem;
 
     @include tableMobile {
-        grid-template-columns: auto;
-        grid-template-rows: auto;
+        display: unset;
     }
 
     .page-items-hot {
@@ -35,6 +34,7 @@
         @include tableMobile {
             max-height: 30rem;
             height: 30rem;
+            margin-bottom: 2rem;
         }
 
         .post-hot {
@@ -50,8 +50,12 @@
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             grid-gap: .6rem 1.2rem;
-            @include tableMobile{
-                padding-bottom : 0;
+            @include tableMobile {
+                padding-bottom: 0;
+                margin-bottom: 2rem;
+                &:last-child{
+                    margin-bottom : 0;
+                }
             }
 
             &__image {

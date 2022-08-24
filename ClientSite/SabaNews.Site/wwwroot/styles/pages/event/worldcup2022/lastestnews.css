@@ -1023,15 +1023,15 @@ body {
   margin-bottom: 2rem; }
   @media screen and (max-width: 1024px) {
     .pages-main-hot {
-      grid-template-columns: auto;
-      grid-template-rows: auto; } }
+      display: unset; } }
   .pages-main-hot .page-items-hot {
     max-height: 40rem;
     height: 40rem; }
     @media screen and (max-width: 1024px) {
       .pages-main-hot .page-items-hot {
         max-height: 30rem;
-        height: 30rem; } }
+        height: 30rem;
+        margin-bottom: 2rem; } }
     .pages-main-hot .page-items-hot .post-hot .hover-image {
       height: 40rem; }
   .pages-main-hot .page-hot-right .card-horizontal {
@@ -1041,7 +1041,10 @@ body {
     grid-gap: .6rem 1.2rem; }
     @media screen and (max-width: 1024px) {
       .pages-main-hot .page-hot-right .card-horizontal {
-        padding-bottom: 0; } }
+        padding-bottom: 0;
+        margin-bottom: 2rem; }
+        .pages-main-hot .page-hot-right .card-horizontal:last-child {
+          margin-bottom: 0; } }
     .pages-main-hot .page-hot-right .card-horizontal__image {
       height: 8rem;
       max-height: 8rem; }
