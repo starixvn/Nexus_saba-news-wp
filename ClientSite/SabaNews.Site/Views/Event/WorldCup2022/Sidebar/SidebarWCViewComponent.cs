@@ -8,11 +8,11 @@
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
 
-    public class SidebarViewWCComponent : ViewComponent
+    public class SidebarWCViewComponent : ViewComponent
     {
         private readonly IPostService postService;
 
-        public SidebarViewWCComponent(IPostService postService)
+        public SidebarWCViewComponent(IPostService postService)
         {
             this.postService = postService;
         }
@@ -52,7 +52,7 @@
                 Posts = posts,
             };
 
-            return View(Model);
+            return View("~/Views/Event/WorldCup2022/Sidebar/Default.cshtml", Model);
         }
     }
 }

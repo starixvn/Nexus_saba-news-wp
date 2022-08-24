@@ -51,7 +51,7 @@
                 posts = GetPostsExcerptPostID(allPosts, relatedParam);
             }
             
-            return View(posts);
+            return View("~/Views/Event/WorldCup2022/RelatedPosts/Default.cshtml", posts);
         }
 
         public static IEnumerable<Post> GetPostsExcerptPostID(IEnumerable<Post> posts, PostParam param)

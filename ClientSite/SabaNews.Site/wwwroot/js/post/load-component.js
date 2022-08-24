@@ -18,6 +18,25 @@
         }
     }
 
+    function LoadRelatedWorldCupPosts() {
+        var block = $("body").find(".relatedwc-posts");
+        if (block.length > 0) {
+            var postID = block.data("postid");
+            var cateSlug = block.data("cateslug");
+            $.ajax({
+                url: "/world-cup-2022/related-posts",
+                type: "POST",
+                data: { postID, cateSlug },
+                success: function (res) {
+                    block.html(res);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ': ' + errorThrown);
+                }
+            });
+        }
+    }
+
     function LoadSidebarPosts() {
         var block = $("body").find(".sidebar-posts");
         if (block.length > 0) {
@@ -25,6 +44,25 @@
             var cateSlug = block.data("cateslug");
             $.ajax({
                 url: "/api/post/sidebar-posts",
+                type: "POST",
+                data: { postID, cateSlug },
+                success: function (res) {
+                    block.html(res);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus + ': ' + errorThrown);
+                }
+            })
+        }
+    }
+
+    function LoadSidebarWorldCupPosts() {
+        var block = $("body").find(".sidebarwc-posts");
+        if (block.length > 0) {
+            var postID = block.data("postid");
+            var cateSlug = block.data("cateslug");
+            $.ajax({
+                url: "/world-cup-2022/sidebar-posts",
                 type: "POST",
                 data: { postID, cateSlug },
                 success: function (res) {
@@ -73,6 +111,8 @@
     function init() {
         LoadRelatedPosts();
         LoadSidebarPosts();
+        LoadSidebarWorldCupPosts();
+        LoadRelatedWorldCupPosts();
         LoadBanner();
     }
 

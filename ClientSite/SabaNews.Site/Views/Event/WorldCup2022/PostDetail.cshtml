@@ -1,4 +1,5 @@
-﻿@section Metadata {
+﻿@using DeviceDetectorNET;
+@section Metadata {
     <meta name="description" content='@(Model.SinglePost.PostExcerpt != "" ? Model.SinglePost.PostExcerpt : "&nbsp;" )' />
     <meta property="og:url" content='@Model.AbsoluteUrl' />
     <meta property="og:description" content="&nbsp;" />
@@ -6,6 +7,13 @@
     <meta property="og:image" content='@Model.SinglePost.FeatureImage' />
     <link rel="canonical" href="@Model.AbsoluteUrl" />
     <link rel="alternate" href="@Model.AbsoluteUrl" hreflang="vi-vn" />
+}
+
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
 }
 
 @section Title{
@@ -42,6 +50,7 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script src="~/minify/js/worldcup2022.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/lastestnews.min.js" asp-append-version="true"></script>
 
     <script src="~/js/profile/profile.js" asp-append-version="true"></script>
     <script src="~/js/comment.js" asp-append-version="true"></script>
@@ -154,12 +163,7 @@
                 }
             </div>
 
-
-
             <div class="main-social">
-
-
-
                 <ul class="social left-social">
                     <li class="item-social">
                         @if (Model.IsVideo)
@@ -237,11 +241,14 @@
             <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
             <div class="comment-post" id="comment">
             </div>
-            @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
+            @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_RelatedPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Slug })
-
+        <div class="sticky-position">
+            @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_SidebarPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Slug })
+            <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
+            <div id="topScorersWC" class="page-items-box"></div>
+        </div>
     </div>
 </section>
 <div class="auth-form">

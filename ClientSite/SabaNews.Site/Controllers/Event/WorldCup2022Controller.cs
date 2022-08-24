@@ -102,6 +102,20 @@
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", model);
         }
 
+        [HttpPost]
+        [Route("world-cup-2022/related-posts")]
+        public IActionResult GetRelatedPosts(string cateSlug, int postID)
+        {
+            return ViewComponent("RelatedPostsWC", new { cateSlug, postID });
+        }
+
+        [HttpPost]
+        [Route("world-cup-2022/sidebar-posts")]
+        public IActionResult GetSidebarPosts(string cateSlug, int postID)
+        {
+            return ViewComponent("SidebarWC", new { cateSlug, postID });
+        }
+
         [Route("world-cup-2022/tin-tuc-world-cup-2022")]
         public async Task<IActionResult> LastestNews()
         {

@@ -103,7 +103,7 @@
         }
 
         #region Helpers
-        private RelatedPostsWCViewComponent GetViewComponent()
+        private RelatedPostsViewComponent GetViewComponent()
         {
             postService = Substitute.For<IPostService>();
             

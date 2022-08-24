@@ -61,12 +61,12 @@
                         var firstPost = Model.LastestNews[0];
                         <div class="post-items post-items-1 post-hot">
                             <div class="hover-image">
-                                <a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">
+                                <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">
                                     <img src=@firstPost.FeatureImage alt=@firstPost.PostTitle class="img-res" asp-append-version="true" loading="lazy" />
                                 </a>
                                 <div class="title-hot">
-                                    <h1><a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">@firstPost.PostTitle</a></h1>
-                                    <p><a href="@Url.Action("Single", "Post", new { slug = firstPost.Slug })">@firstPost.PostExcerpt</a></p>
+                                    <h1><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">@firstPost.PostTitle</a></h1>
+                                    <p><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = firstPost.Slug })">@firstPost.PostExcerpt</a></p>
                                 </div>
                             </div>
                         </div>
@@ -85,10 +85,10 @@
                             }
                             <div class="post-items post-items-@lastestPostIndex">
                                 <div class="hover-image">
-                                    <a href="@Url.Action("Single", "Post", new { slug = post.Slug })"><img src=@post.FeatureImage alt=@post.PostTitle class="img-res" /></a>
+                                    <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"><img src=@post.FeatureImage alt=@post.PostTitle class="img-res" /></a>
                                 </div>
                                 <div class="title">
-                                    <h2><a href="@Url.Action("Single", "Post", new { slug = post.Slug })">@post.PostTitle</a></h2>
+                                    <h2><a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a></h2>
                                 </div>
                             </div>
                         }
@@ -122,12 +122,12 @@
                                 {
                                     <div class="post-items swiper-slide scroll-snap-items post-hot">
                                         <div class="hover-image">
-                                            <a href=@Url.Action("Single", "Post", new { slug = post.Slug })>
+                                            <a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>
                                                 <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" />
                                             </a>
                                             <div class="title-hot">
-                                                <h3><a href=@Url.Action("Single", "Post", new { slug = post.Slug })>@post.PostTitle</a></h3>
-                                                <p><a href=@Url.Action("Single", "Post", new { slug = post.Slug })>@post.PostExcerpt</a></p>
+                                                <h3><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostTitle</a></h3>
+                                                <p><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })>@post.PostExcerpt</a></p>
                                                 <p class="date-time">@post.PostTime</p>
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                     <div class="title">
-                                        <h2><a href=@Url.Action("Single", "Post", new { slug = video.Slug })>@video.PostTitle</a></h2>
+                                        <h2><a href=@Url.Action("PostDetailWC", "WorldCup2022", new { slug = video.Slug })>@video.PostTitle</a></h2>
                                     </div>
                                 </div>
                             }
