@@ -167,25 +167,57 @@ export default class MatchGeneralInfo extends PureComponent {
         this.setState({ flagToggleMatchIcon: !this.state.flagToggleMatchIcon });
     };
 
+    renderLeague = (match, isEvent) => {
+        const startTime = DateTimeService.convertFromUTC(match.startTime);
+        if (!isEvent) {
+            return (
+                <div className="livescore-league-header-detail">
+                    <div className="livescore-league-header-detail-group">
+                        <div className="livescore-league-header-detail-logo"><TeamIcon src={match.league.icon} /></div>
+                        <div className="livescore-league-header-detail-name">
+                            {CommonFunctions.getLeagueName(match.league)} - <span>{startTime.format('DD/MM/YYYY')}</span>
+                        </div>
+                        <FavouriteLeagueIcon league={match.league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={this.props.flagToggleFavLeagueIcon} />
+                    </div>
+                    <div className="group-searchbar">
+                        <FavoriteMatches isMobile />
+                    </div>
+                </div>
+            )
+        } else {
+            const leagueName = this.getLeagueName(match, isEvent);
+            return (
+                <div className="livescore-league-header-detail">
+                    <div className="livescore-league-header-detail-group">
+                        <div className="title-section">
+                            <div className="dots"><span></span><span></span><span className="dots-items"></span></div>
+                            <h2>{leagueName}</h2>
+                            <div className="dots"><span></span><span></span><span className="dots-items"></span></div>
+                            <div className="start-date">{startTime.format('DD/MM/YYYY')}</div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    };
     getLeagueName = (match, isEvent) => {
         let leagueName = '';
-        if(isEvent) {
+        if (isEvent) {
             const round = match.round > 0 ? `- ${LangHelper.getResource('Turn')} ${match.round}` : '';
-            leagueName =  `${CommonFunctions.getStageName(match.stage)} ${round}`;
+            leagueName = `${CommonFunctions.getStageName(match.stage)} ${round}`;
         } else {
-            leagueName = CommonFunctions.getLeagueNameWithStage(match.league);
+            leagueName = CommonFunctions.getLeagueName(match.league);
         }
         return leagueName;
-    }
+    };
 
     renderBody = () => {
         const { generalInfo } = this.props.match;
         const isEvent = this.props.isEvent;
-        const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
         const isIntermission = generalInfo.status === MatchStatus.Intermission;
         const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
-        const leagueName = this.getLeagueName(generalInfo, isEvent);
+        const leagueName = CommonFunctions.getLeagueName(generalInfo.league);
         return (
             <>
                 {
@@ -195,20 +227,12 @@ export default class MatchGeneralInfo extends PureComponent {
                         <li onClick={event => this.handleClickLeague(event, generalInfo.league)}> <span>{leagueName}</span>  </li>
                     </ul>
                 }
-                <div className="livescore-league-header-detail">
-                    <div className="livescore-league-header-detail-group">
-                        <div className="livescore-league-header-detail-logo"><TeamIcon src={generalInfo.league.icon} /></div>
-                        <div className="livescore-league-header-detail-name">
-                            {leagueName} - <span>{startTime.format('DD/MM/YYYY')}</span>
-                        </div>
-                        <FavouriteLeagueIcon league={generalInfo.league} onUpdateFavLeague={this.onUpdateFavLeague} flagToggle={this.props.flagToggleFavLeagueIcon} />
-                    </div>
-                    <div className="group-searchbar">
-                        <FavoriteMatches isMobile />
-                    </div>
-                </div>
+                {this.renderLeague(generalInfo, isEvent)}
                 <div className="duel-participant">
-                    <FavouriteIcon matchId={generalInfo.matchId} flagToggle={this.state.flagToggleMatchIcon} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                    {
+                        !isEvent &&
+                        <FavouriteIcon matchId={generalInfo.matchId} flagToggle={this.state.flagToggleMatchIcon} onUpdateFavouriteMatch={this.onUpdateFavouriteMatch} />
+                    }
                     {
                         !isPreMatch &&
                         <div className="flex-league first-league">
