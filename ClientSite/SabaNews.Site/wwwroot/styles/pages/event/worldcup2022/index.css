@@ -720,6 +720,18 @@ body {
   .page-items-box .view-more a {
     color: #EF4300; }
 
+@media screen and (max-width: 1024px) {
+  #standingWC {
+    margin: 3rem -1.2rem 3rem -1.2rem; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer {
+    display: grid; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer .wc-table {
+    width: 32rem; } }
+
 #standingWC .view-more {
   margin-top: .8rem; }
   #standingWC .view-more a {

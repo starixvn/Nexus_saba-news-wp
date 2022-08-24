@@ -711,6 +711,18 @@ body {
   .page-items-box .view-more a {
     color: #EF4300; }
 
+@media screen and (max-width: 1024px) {
+  #standingWC {
+    margin: 3rem -1.2rem 3rem -1.2rem; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer {
+    display: grid; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer .wc-table {
+    width: 32rem; } }
+
 #standingWC .view-more {
   margin-top: .8rem; }
   #standingWC .view-more a {
@@ -874,41 +886,6 @@ body {
   position: absolute;
   bottom: 30px;
   width: 100%; }
-
-.card-horizontal {
-  position: relative;
-  grid-template-columns: 21rem 1fr;
-  padding-bottom: 1.2rem;
-  margin-bottom: 1.2rem;
-  border-bottom: 1px solid #DADACB; }
-  .card-horizontal__image {
-    border-radius: 5px;
-    height: 12rem; }
-  @media screen and (max-width: 1024px) {
-    .card-horizontal {
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 0;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      border-radius: 5px; }
-      .card-horizontal__image {
-        max-height: 30rem;
-        height: 30rem;
-        border-radius: 5px; }
-      .card-horizontal__content {
-        position: absolute;
-        bottom: 0;
-        padding: 1.2rem;
-        background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041a 100%);
-        width: 100%;
-        left: 0; }
-        .card-horizontal__content .title {
-          margin-bottom: .6rem; }
-        .card-horizontal__content .title, .card-horizontal__content .datetime {
-          color: #fff;
-          font-size: 1.4rem;
-          line-height: 1.9rem; } }
 
 .tooltip {
   position: absolute;

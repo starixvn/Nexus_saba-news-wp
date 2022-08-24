@@ -135,6 +135,22 @@
 }
 
 #standingWC {
+    @include tableMobile {
+        margin: 3rem -1.2rem 3rem -1.2rem;
+    }
+
+    .king-soccer {
+        @include tableMobile {
+            display: grid;
+        }
+
+        .wc-table {
+            @include tableMobile {
+                width: 32rem;
+            }
+        }
+    }
+
     .view-more {
         margin-top: .8rem;
 
