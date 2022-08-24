@@ -195,6 +195,13 @@
             "wwwroot/styles/pages/event/worldcup2022/story-post.css"
         ]
     },
+    {
+        "outputFileName": "wwwroot/minify/styles/worldcup2022-story-post-detail.min.css",
+        "inputFiles": [
+            "wwwroot/styles/vendor/icomoon/style.css",
+            "wwwroot/styles/pages/event/worldcup2022/story-post-detail.css"
+        ]
+    },
     /*==================================================== Javascript ================================================*/
     {
         "outputFileName": "wwwroot/minify/js/site.min.js",

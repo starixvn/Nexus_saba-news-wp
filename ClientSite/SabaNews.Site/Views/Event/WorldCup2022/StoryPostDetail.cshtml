@@ -11,38 +11,19 @@
 
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/minify/styles/worldcup2022-story-post.min.css" asp-append-version="true">
-    <environment include="Development">
-        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
-    </environment>
+    <link rel="stylesheet" href="~/minify/styles/worldcup2022-story-post-detail.min.css" asp-append-version="true">
 }
 
 @section Scripts{
-    <environment include="Development">
-        <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
-        <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
-    </environment>
     <script src="~/minify/js/worldcup-2022-story-post.min.js" asp-append-version="true"></script>
     <script async custom-element="amp-story" src="~/lib/amp/amp-story-1.0.js"></script>
     <script async custom-element="amp-video" src="~/lib/amp/amp-video-0.1.js"></script>
     <script async custom-element="amp-analytics" src="~/lib/amp/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-youtube" src="~/lib/amp/amp-youtube-0.1.js"></script>
 }
-@(await Component.InvokeAsync("HeaderWorldCup"))
+
 
 <section class="worldcup-fixture">
-    <div id="worldcup-fixture"></div>
     <div class="wc-page-main">
         <div class="title-section">
             <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
