@@ -52,7 +52,7 @@ body {
 
 .top-header {
   padding: 0;
-  background: #48041A;
+  background-color: #48041A;
   box-shadow: none;
   display: flex;
   align-items: center;
