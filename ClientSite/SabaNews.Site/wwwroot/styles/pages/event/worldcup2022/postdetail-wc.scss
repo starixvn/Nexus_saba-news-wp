@@ -117,3 +117,19 @@
         width : 100%;
     }
 }
+
+.comment-post .list_comments .comment_item .group-comment .avatar {
+    background: #48041A;
+}
+.comment-post .list_comments .comment_item .group-comment .user-comment .controls-comment a{
+    color : #838383;
+}
+.comment-post .list_comments .comment_item .group-comment .user-comment .nick-name a {
+    color: #333333;
+}
+
+.icon-reply {
+    &:before {
+        color: #838383;
+    }
+}
