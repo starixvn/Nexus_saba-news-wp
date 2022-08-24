@@ -1026,6 +1026,9 @@ body {
 .block-extension .card-vertical:last-child {
   border-bottom: 1px solid #e5e5e5 !important; }
 
+.block-extension .card-vertical__image {
+  border-radius: 5px; }
+
 .comment-post .filter_comment a {
   color: #333333;
   font-size: 1.6rem;
@@ -1062,3 +1065,6 @@ body {
 @media screen and (max-width: 1024px) {
   .view-more {
     margin-right: 1.2rem; } }
+
+.card-vertical__video img {
+  width: 100%; }

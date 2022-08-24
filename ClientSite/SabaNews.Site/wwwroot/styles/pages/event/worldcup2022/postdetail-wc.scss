@@ -47,7 +47,7 @@
         }
     }
 
-    .card-horizontal {
+    .card-horizontal{
         &__image {
             border-radius: 5px;
         }
@@ -57,6 +57,9 @@
     .card-vertical {
         &:last-child {
             border-bottom: 1px solid #e5e5e5 !important;
+        }
+        &__image{
+            border-radius : 5px;
         }
     }
 }
@@ -106,5 +109,11 @@
 .view-more{
     @include tableMobile{
         margin-right : 1.2rem;
+    }
+}
+
+.card-vertical__video{
+    img{
+        width : 100%;
     }
 }
