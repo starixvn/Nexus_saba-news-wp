@@ -29,10 +29,6 @@
                 <a class="title" href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">@post.PostTitle</a>
                 <p class="datetime">
                     <span>@post.PostTime</span>
-                    @if (post.CommentCount > 0)
-                    {
-                        <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug  })#comment" class="comment"><i class="icon-mode_comment"></i> <i class="number">@post.CommentCount</i></a>
-                    }
                 </p>
                 <p class="description">@post.PostExcerpt</p>
             </div>

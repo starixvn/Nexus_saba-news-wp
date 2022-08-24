@@ -1000,10 +1000,16 @@ body {
 
 .block-main {
   padding-right: 2rem; }
+  @media screen and (max-width: 1024px) {
+    .block-main {
+      padding-right: 0; } }
 
 .sticky-position {
   padding-left: 2rem;
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem !important; }
+  @media screen and (max-width: 1024px) {
+    .sticky-position {
+      padding-left: 0; } }
 
 .main .detail-container {
   grid-template-columns: 5% 64% 35.7rem; }
@@ -1013,3 +1019,46 @@ body {
   margin-bottom: 2rem !important; }
   .block__content .title-section h2 {
     margin: 0 1rem 0 0; }
+
+.block__content .card-horizontal__image {
+  border-radius: 5px; }
+
+.block-extension .card-vertical:last-child {
+  border-bottom: 1px solid #e5e5e5 !important; }
+
+.comment-post .filter_comment a {
+  color: #333333;
+  font-size: 1.6rem;
+  padding-bottom: 1rem; }
+  .comment-post .filter_comment a:after {
+    bottom: -1px; }
+  .comment-post .filter_comment a.active {
+    color: #48041A;
+    font-weight: 700; }
+
+.comment-post .add_comment, .comment-post .add_sub_comment {
+  background: #EF4300;
+  cursor: pointer;
+  margin: 1.6rem 0 2.4rem 0; }
+
+.comment-post .show_get_more_comment:hover:not(.active), .comment-post .show_get_more_comment {
+  background-color: #48041A;
+  color: #fff; }
+
+.comment-post {
+  border-bottom: 1px solid #DADACB;
+  margin-bottom: 2rem; }
+
+.block {
+  margin-bottom: 2.9rem; }
+
+.comment-post form .comment-content-box, .comment-post form .comment-content-box textarea {
+  background-color: #F6F6EE; }
+
+.tag-post .tag-item {
+  background: #DBDBC9;
+  color: #6B6B60; }
+
+@media screen and (max-width: 1024px) {
+  .view-more {
+    margin-right: 1.2rem; } }
