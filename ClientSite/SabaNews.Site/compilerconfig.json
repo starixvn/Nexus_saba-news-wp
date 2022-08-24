@@ -134,5 +134,9 @@
   {
     "outputFile": "wwwroot/styles/pages/event/worldcup2022/postdetail-wc.css",
     "inputFile": "wwwroot/styles/pages/event/worldcup2022/postdetail-wc.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/event/worldcup2022/story-post-detail.css",
+    "inputFile": "wwwroot/styles/pages/event/worldcup2022/story-post-detail.scss"
   }
 ]
