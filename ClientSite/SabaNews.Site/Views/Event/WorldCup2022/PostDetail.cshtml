@@ -244,7 +244,7 @@
             @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_RelatedPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        <div class="sticky-position">
+        <div class="sticky-position page-items-box">
             @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_SidebarPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Slug })
             <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
             <div id="topScorersWC" class="page-items-box"></div>

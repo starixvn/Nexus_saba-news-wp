@@ -29,3 +29,14 @@
 .main .detail-container {
     grid-template-columns: 5% 64% 35.7rem;
 }
+
+.block__content {
+    .title-section {
+        justify-content: flex-start;
+        margin-bottom: 2rem !important;
+
+        h2 {
+            margin: 0 1rem 0 0;
+        }
+    }
+}

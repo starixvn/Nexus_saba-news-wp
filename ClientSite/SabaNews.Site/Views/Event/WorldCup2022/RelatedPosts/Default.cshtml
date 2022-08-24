@@ -8,8 +8,12 @@
    
 }
 
-<div class="block__content">
-    <h2 class="block__title"><a>@ViewResources.RelatedPosts</a></h2>
+<div class="block__content page-items-box">
+
+    <div class="title-section">
+        <h2>@ViewResources.RelatedPosts</h2>
+        <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
+    </div>
     @foreach (var post in Model)
     {
         string featureImg = isMobile ? post.GetImageBySize(ImageWidth.Width768) : post.FeatureImage;
