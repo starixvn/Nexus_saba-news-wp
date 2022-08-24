@@ -86,18 +86,19 @@
         {
             using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
-                var matches = await db.QueryEntityAsync<Match, League, Season, Team, Team, Match>(
-                        (match, league, season, home, away) =>
+                var matches = await db.QueryEntityAsync<Match, League, Season, SeasonStage, Team, Team, Match>(
+                        (match, league, season, stage, home, away) =>
                         {
                             league.Season = season;
                             match.League = league;
 
                             match.HomeTeam = home;
                             match.AwayTeam = away;
+                            match.Stage = stage;
 
                             return match;
                         },
-                        splitOn: "LeagueId, SeasonId, HomeTeamId, AwayTeamId",
+                        splitOn: "LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId",
                         parameterSet: criteria);
                 return matches;
             }

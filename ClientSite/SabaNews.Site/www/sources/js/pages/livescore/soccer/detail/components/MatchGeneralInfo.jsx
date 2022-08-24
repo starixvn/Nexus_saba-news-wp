@@ -10,7 +10,7 @@ import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import FavouriteIcon from '@jsroot/components/Icon/FavouriteIcon';
 import Site from '@jsroot/common/site';
 import FavouriteLeagueIcon from '@jsroot/components/Icon/FavouriteLeagueIcon';
-
+import LangHelper from '@jsroot/common/langHelper';
 
 export default class MatchGeneralInfo extends PureComponent {
     constructor(props) {
@@ -167,14 +167,25 @@ export default class MatchGeneralInfo extends PureComponent {
         this.setState({ flagToggleMatchIcon: !this.state.flagToggleMatchIcon });
     };
 
+    getLeagueName = (match, isEvent) => {
+        let leagueName = '';
+        if(isEvent) {
+            const round = match.round > 0 ? `- ${LangHelper.getResource('Turn')} ${match.round}` : '';
+            leagueName =  `${CommonFunctions.getStageName(match.stage)} ${round}`;
+        } else {
+            leagueName = CommonFunctions.getLeagueNameWithStage(match.league);
+        }
+        return leagueName;
+    }
+
     renderBody = () => {
         const { generalInfo } = this.props.match;
-        const leagueName = CommonFunctions.getLeagueNameWithStage(generalInfo.league);
+        const isEvent = this.props.isEvent;
         const startTime = DateTimeService.convertFromUTC(generalInfo.startTime);
         const isLiveMatch = CommonFunctions.isLiveMatch(generalInfo.status);
         const isIntermission = generalInfo.status === MatchStatus.Intermission;
         const isPreMatch = CommonFunctions.isPreMatch(generalInfo.status);
-        const isEvent = this.props.isEvent;
+        const leagueName = this.getLeagueName(generalInfo, isEvent);
         return (
             <>
                 {
