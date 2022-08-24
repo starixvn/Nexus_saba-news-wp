@@ -1093,15 +1093,18 @@ body {
     .page-grid #topScorersWC {
       padding: 0 1.2rem;
       margin: 3rem 0; } }
-  @media screen and (max-width: 1024px) {
-    .page-grid #standingWC {
-      margin: 3rem 0; } }
-  @media screen and (max-width: 1024px) {
-    .page-grid #standingWC .king-soccer {
-      display: grid; } }
-  @media screen and (max-width: 1024px) {
-    .page-grid #standingWC .king-soccer .wc-table {
-      width: 32rem; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC {
+    margin: 3rem 0; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer {
+    display: grid; } }
+
+@media screen and (max-width: 1024px) {
+  #standingWC .king-soccer .wc-table {
+    width: 32rem; } }
 
 .view-more {
   margin-bottom: 3rem; }

@@ -127,21 +127,22 @@
             margin: 3rem 0;
         }
     }
+}
 
-    #standingWC {
+
+#standingWC {
+    @include tableMobile {
+        margin: 3rem 0;
+    }
+
+    .king-soccer {
         @include tableMobile {
-            margin: 3rem 0;
+            display: grid;
         }
 
-        .king-soccer {
+        .wc-table {
             @include tableMobile {
-                display: grid;
-            }
-
-            .wc-table {
-                @include tableMobile {
-                    width: 32rem;
-                }
+                width: 32rem;
             }
         }
     }
