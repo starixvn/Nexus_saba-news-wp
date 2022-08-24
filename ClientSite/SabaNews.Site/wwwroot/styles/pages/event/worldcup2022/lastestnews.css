@@ -1032,8 +1032,12 @@ body {
         max-height: 30rem;
         height: 30rem;
         margin-bottom: 2rem; } }
-    .pages-main-hot .page-items-hot .post-hot .hover-image {
-      height: 40rem; }
+    @media screen and (max-width: 1024px) {
+      .pages-main-hot .page-items-hot .post-hot .hover-image {
+        height: 30rem; } }
+    @media (max-width: 767px) {
+      .pages-main-hot .page-items-hot .post-hot .hover-image {
+        height: 40rem; } }
   .pages-main-hot .page-hot-right .card-horizontal {
     grid-template-columns: 14rem 1fr;
     padding-bottom: 1rem;

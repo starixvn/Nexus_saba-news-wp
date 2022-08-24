@@ -39,7 +39,14 @@
 
         .post-hot {
             .hover-image {
-                height: 40rem;
+
+                @include tableMobile {
+                    height: 30rem;
+                }
+
+                @include Mobile {
+                    height: 40rem;
+                }
             }
         }
     }
@@ -50,11 +57,13 @@
             padding-bottom: 1rem;
             margin-bottom: 1rem;
             grid-gap: .6rem 1.2rem;
+
             @include tableMobile {
                 padding-bottom: 0;
                 margin-bottom: 2rem;
-                &:last-child{
-                    margin-bottom : 0;
+
+                &:last-child {
+                    margin-bottom: 0;
                 }
             }
 
