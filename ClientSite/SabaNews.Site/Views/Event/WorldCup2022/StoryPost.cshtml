@@ -1,11 +1,11 @@
 ﻿@section Metadata {
-    <meta name="description" content='@Model.Description' />
-    <meta property="og:description" content='@Model.Description' />
-    <meta property="og:title" content='@Model.Title' />
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Header.Description' />
+    <meta property="og:title" content='@Model.Header.Title' />
 }
 
 @section Title {
-    @Model.Title
+    @Model.Header.Title
 }
 
 @section Styles{
@@ -32,13 +32,13 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
-    <script src="~/minify/js/worldcup2022-fixture.min.js" asp-append-version="true"></script>
+    <script src="~/minify/js/worldcup-2022-story-post.min.js" asp-append-version="true"></script>
     <script async custom-element="amp-story" src="~/lib/amp/amp-story-1.0.js"></script>
     <script async custom-element="amp-video" src="~/lib/amp/amp-video-0.1.js"></script>
     <script async custom-element="amp-analytics" src="~/lib/amp/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-youtube" src="~/lib/amp/amp-youtube-0.1.js"></script>
 }
-@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Slug }))
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
 
 <section class="worldcup-fixture">
     <div id="worldcup-fixture"></div>
@@ -49,87 +49,20 @@
             <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
         </div>
         <div class="container">
-            <div class="grid-stories-post">
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
+            <div class="grid-stories-post" id="story-grid">
+                @foreach (var post in Model.Posts)
+                { 
+                    <div class="post-items post-hot">
+                        <div class="hover-image">
+                            <a href=@Url.Action("StoryPostsDetail", "WorldCup2022", new { slug = post.Slug })>
+                                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" />
+                            </a>
+                            <div class="title-hot">
+                                <p>@post.PostTitle</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-items post-hot">
-                    <div class="hover-image">
-                        <a href="#">
-                            <img src="~/images/worldcup/story-post.png" alt="Alternate Text" class="img-res" />
-                        </a>
-                        <div class="title-hot">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus sit mauris tortor tortor fermentum.</p>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>

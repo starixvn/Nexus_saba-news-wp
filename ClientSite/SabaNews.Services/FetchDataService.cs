@@ -183,6 +183,7 @@
             var lastestNews = await postService.GetPostsBySlugAsync(WorldCup2022.HomepageSlug, Constants.FromFirstItem, Constants.GetFiveItems);
             var commentary = await postService.GetPostsBySlugAsync(WorldCup2022.CommentarySlug, Constants.FromFirstItem, Constants.GetFiveItems);
             var videos = await postService.GetPostsBySlugAsync(WorldCup2022.VideoSlug, Constants.FromFirstItem, Constants.GetTenItems);
+            var storyPost = await postService.GetPostsBySlugAsync(WorldCup2022.StoryPostSlug, Constants.FromFirstItem, Constants.GetFourItems, Constants.storyPostType);
             var cate = await postService.GetCateDetailAsync(WorldCup2022.HomepageSlug);
             
             var Model = new WorldCupViewModel
@@ -190,6 +191,7 @@
                 LastestNews = lastestNews,
                 Commentary = commentary,
                 Videos = videos,
+                StoryPost = storyPost,
                 Category = cate,
             };
             return Model;

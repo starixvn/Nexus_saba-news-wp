@@ -1,8 +1,8 @@
-﻿namespace SabaNews.Models.Event.WorldCup
+﻿namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
     using SabaNews.Models.ViewModel;
 
-    public class MatchDetailModel
+    public class MatchDetailViewModel
     {
         public HeaderViewModel Header { get; set; }
 

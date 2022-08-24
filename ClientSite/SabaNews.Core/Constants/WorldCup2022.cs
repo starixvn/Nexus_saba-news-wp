@@ -37,6 +37,10 @@
 
         public const string MinigameSlug = "minigame-world-cup-2022";
 
+        public const string StoryPost = "Story post";
+
+        public const string StoryPostSlug = "story-post-world-cup-2022";
+
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
 

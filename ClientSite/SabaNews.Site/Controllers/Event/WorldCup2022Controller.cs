@@ -9,7 +9,6 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
-    using SabaNews.Models.Event.WorldCup;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
@@ -224,7 +223,7 @@
         [Route("lich-thi-dau/world-cup/{match}/{matchId:long}")]
         public IActionResult MatchDetail(long matchId)
         {
-            var model = new MatchDetailModel
+            var model = new MatchDetailViewModel
             {
                 Header = new HeaderViewModel
                 {
@@ -239,12 +238,58 @@
         [Route("world-cup-2022/story-post")]
         public async Task<IActionResult> StoryPosts()
         {
+            var pageSize = Constants.GetEightItems;
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.Fixture,
-                Slug = WorldCup2022.FixtureSlug
+                Title = WorldCup2022.StoryPost,
+                Slug = WorldCup2022.StoryPostSlug
             };
-            return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", header);
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria 
+            { 
+                _CategorySlug = WorldCup2022.StoryPostSlug,
+                _Start = 0, 
+                _End = pageSize,
+                PostType = Constants.storyPostType
+            };
+            var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            var model = new LastestNewsViewModel
+            {
+                Header = header,
+                Posts = posts,
+                Paging = new PagingModel
+                {
+                    PageSize = pageSize,
+                    CurrentPage = Constants.FirstPage,
+                    TotalPages = (int)Math.Ceiling((cateSlugCriteria.TotalItems - 1) / (double)pageSize)
+                }
+            };
+            
+            return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", model);
+        }
+
+        [Route("world-cup-2022/story-post/{slug}")]
+        public async Task<IActionResult> StoryPostsDetail(string slug)
+        {
+            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.storyPostType);
+            if (post == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+
+            return View("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", post);
+        }
+
+        public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
+        {
+            var cateSlugCriteria = new GetPostsByCateSlugCriteria
+            {
+                _CategorySlug = param.Slug,
+                _Start = 0,
+                _End = param.PageSize,
+                PostType = Constants.storyPostType
+            };
+            var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            return PartialView("~/Views/Event/WorldCup2022/_StoryPost.cshtml", posts);
         }
 
         public async Task<IActionResult> GetNewsGrid(CategoryPostParams param)

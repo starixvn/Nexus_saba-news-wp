@@ -1,6 +1,4 @@
 ﻿using SabaNews.Core.Models;
-using SabaNews.Livescore.Models.League;
-using SabaNews.Livescore.Models.Match;
 using SabaNews.Models.Posts;
 using System.Collections.Generic;
 

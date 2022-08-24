@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Core.Constants;
     using SabaNews.Core.Models;
     using SabaNews.Criteria.Posts;
     using SabaNews.Models;
@@ -12,7 +13,7 @@
 
     public interface IPostService
     {
-        Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end);
+        Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end, string postType = Constants.postType);
 
         Task<IEnumerable<Post>> GetPostsByCateSlugAsync(GetPostsByCateSlugCriteria criteria);
 

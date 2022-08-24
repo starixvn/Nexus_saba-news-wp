@@ -5,6 +5,7 @@
 
         public Slugs Slugs { get; set; }
 
+        public string Slug { get; set; }
         public int Page { get; set; }
 
         public int PageSize { get; set; }

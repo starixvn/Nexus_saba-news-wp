@@ -104,6 +104,7 @@
         public const string None = "none";
         public const string pageType = "page";
         public const string postType = "post";
+        public const string storyPostType = "story_post";
         public const string RecentPostsTitle = "TIN MỚI NHẤT";
         public const string MostViewPostTitle = "XEM NHIỀU NHẤT";
         public const string CommentTypeLike = "like";

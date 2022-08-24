@@ -443,5 +443,17 @@
             "renameLocals": true
         },
         "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/worldcup-2022-story-post.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/scroll.js",
+            "wwwroot/js/event/worldcup2022/worldcup.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
     }
 ]

@@ -19,10 +19,6 @@
 
         var url = '/WorldCup2022/GetNewsGrid';
         var data = { slugs, page, pageSize, type, isVideo };
-        if (type === "Search" || type === "Tag") {
-            url = '/api/post/type-posts';
-            data = { keyword, type, page, pageSize }
-        }
 
         $.ajax({
             url: url,

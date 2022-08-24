@@ -33,13 +33,14 @@
             this.configuration = configuration;
         }
 
-        public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end)
+        public async Task<IEnumerable<Post>> GetPostsBySlugAsync(string slug, int start, int end, string postType = Constants.postType)
         {
             var criteria = new GetPostsBySlugCriteria
             {
-                _CategorySlug = slug.Trim(),
-                _Start = start,
-                _End = end
+                CategorySlug = slug.Trim(),
+                Start = start,
+                End = end,
+                PostType = postType
             };
             var posts = await baseService.GetDataAsync<Post>(criteria);
             return FormatData(posts).ToList();
@@ -113,13 +114,6 @@
                 post.Images = serializerService.GetListImageFromMetadata(post.FeatureImage, post.Metadata);
                 post.CategoriesSlug ??= "";
                 post.CatesName ??= "";
-
-                if (postType == Constants.pageType)
-                {
-                    return post;
-                }
-                var isVideo = await CheckTypeCategoryAsync(Constants.VideoSlug, post.ID);
-                post.Type = isVideo ? Constants.VideoPostType : Constants.FootballPostType;
             }
             return post;
         }
