@@ -1096,7 +1096,7 @@ body {
 
 @media screen and (max-width: 1024px) {
   #standingWC {
-    margin: 3rem 0; } }
+    margin: 3rem -1.2rem 3rem -1.2rem; } }
 
 @media screen and (max-width: 1024px) {
   #standingWC .king-soccer {
@@ -1105,6 +1105,10 @@ body {
 @media screen and (max-width: 1024px) {
   #standingWC .king-soccer .wc-table {
     width: 32rem; } }
+
+@media screen and (max-width: 1024px) {
+  #topScorersWC {
+    margin-bottom: 3rem; } }
 
 .view-more {
   margin-bottom: 3rem; }
