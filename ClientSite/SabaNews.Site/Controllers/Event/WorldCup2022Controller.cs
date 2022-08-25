@@ -106,34 +106,6 @@
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
-        [Route("world-cup-2022/tag/{tagname}")]
-        public async Task<IActionResult> TagWC(string tagname, int page = 1)
-        {
-            var start = (page - 1) * Constants.Perpage;
-            var criteria = new GetPostsByTagCriteria { _Tag = tagname.Trim(), _Start = start, _End = Constants.Perpage };
-            var posts = await postService.GetPostByTagAsync(criteria);
-
-            var header = new HeaderViewModel
-            {
-                Title = WorldCup2022.LastestNews,
-                Slug = WorldCup2022.LastestNewsSlug
-            };
-
-            var viewModel = new LastestNewsViewModel
-            {
-                Header = header,
-                Posts = posts.ToList(),
-                Paging = new PagingModel
-                {
-                    PageSize = Constants.GetTenItems,
-                    CurrentPage = Constants.FirstPage,
-                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)Constants.GetTenItems)
-                }
-            };
-            ViewBag.Slug = CategorySlugWC;
-            return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);                       
-        }
-
         [HttpPost]
         [Route("world-cup-2022/related-posts")]
         public IActionResult GetRelatedPostsWC(string cateSlug, int postID)

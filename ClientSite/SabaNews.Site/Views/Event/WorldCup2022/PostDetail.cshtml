@@ -228,7 +228,7 @@
                         var tags = Model.SinglePost.Tags.Split(',');
                         @for (var i = 0; i < tags.Length; i++)
                         {
-                            <li class="tag-item"><a href="@Url.Action("TagWC", "WorldCup2022", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
+                            <li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
                         }
                     }
                 </ul>

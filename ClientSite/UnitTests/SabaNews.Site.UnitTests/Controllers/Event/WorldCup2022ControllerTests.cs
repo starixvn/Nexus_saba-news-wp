@@ -111,27 +111,7 @@
             Assert.Equal(news, newsResult.Posts);
 
         }
-
-        [Fact]
-        public async Task GetTagWC_WhenCalled_ReturnExpectedData()
-        {
-            // Arrange
-            var controller = GetController();
-            var news = new Fixture().Create<IEnumerable<Post>>();
-
-            var cateSlugCriteria = new Fixture().Create<GetPostsByTagCriteria>();
-            postService.GetPostByTagAsync(Arg.Do<GetPostsByTagCriteria>(x => cateSlugCriteria = x)).Returns(news);
-
-            //Act
-            var result = await controller.TagWC(cateSlugCriteria._Tag, 1);
-
-            // Assert
-            var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewResult.ViewName);
-            var newsResult = Assert.IsType<LastestNewsViewModel>(viewResult.Model);
-            Assert.Equal(news, newsResult.Posts);
-        }
-
+              
         [Fact]
         public async Task GetCommentaryNews_WhenCalled_ReturnExpectedData()
         {
