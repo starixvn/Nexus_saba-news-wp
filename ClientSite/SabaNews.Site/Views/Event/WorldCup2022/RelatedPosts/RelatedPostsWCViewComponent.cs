@@ -18,43 +18,42 @@
             this.postService = postService;
         }
 
-
-        public async Task<IViewComponentResult> InvokeAsync(int postID, string slug = "")
+        public async Task<IViewComponentResult> InvokeWCAsync(int postID, string slugWC = "")
         {
-            IEnumerable<Post> posts ;
-            if (slug == "")
+            IEnumerable<Post> postsWC ;
+            if (slugWC == "")
             {
-                var recentParam = new GetRecentPostsParam
+                var recentWCParam = new GetRecentPostsParam
                 {
                     Start = Constants.FromFirstItem,
                     End = Constants.GetElevenItems,
                     PostID = postID
                 };
-                posts = await postService.GetRecentPostsAsync(recentParam);
+                postsWC = await postService.GetRecentPostsAsync(recentWCParam);
             }
             else 
             {
-                var criteria = new GetPostsByCateSlugCriteria
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria
                 {
-                    _CategorySlug = slug,
+                    _CategorySlug = slugWC,
                     _Start = Constants.FromFirstItem,
                     _End = Constants.GetElevenItems,
                 };
-                var relatedParam = new PostParam
+                var relatedWCParam = new PostParam
                 {
-                    Slug = slug,
+                    Slug = slugWC,
                     Start = Constants.FromFirstItem,
                     End = Constants.GetElevenItems,
                     PostID = postID
                 };
-                var allPosts = await postService.GetPostsByCateSlugAsync(criteria);
-                posts = GetPostsExcerptPostID(allPosts, relatedParam);
+                var allPosts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+                postsWC = GetPostsExcerptPostID(allPosts, relatedWCParam);
             }
             
-            return View("~/Views/Event/WorldCup2022/RelatedPosts/Default.cshtml", posts);
+            return View("~/Views/Event/WorldCup2022/RelatedPosts/Default.cshtml", postsWC);
         }
 
-        public static IEnumerable<Post> GetPostsExcerptPostID(IEnumerable<Post> posts, PostParam param)
+        private static IEnumerable<Post> GetPostsExcerptPostID(IEnumerable<Post> posts, PostParam param)
         {
             var totalRealItems = param.End - 1;
             var excerptCurrentPost = posts.Where(item => item.ID != param.PostID).ToList();

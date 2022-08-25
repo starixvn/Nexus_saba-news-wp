@@ -26,9 +26,9 @@
             // Arrange
             var criteria = new GetPostsBySlugCriteria()
             {
-                _CategorySlug = slug,
-                _Start = 0,
-                _End = 10
+                CategorySlug = slug,
+                Start = 0,
+                End = 10
             };
 
             // Act
@@ -44,9 +44,9 @@
             // Arrange
             var criteria = new GetPostsBySlugCriteria()
             {
-                _CategorySlug = "slug",
-                _Start = 0,
-                _End = 10
+                CategorySlug = "slug",
+                Start = 0,
+                End = 10
             };
 
             // Act

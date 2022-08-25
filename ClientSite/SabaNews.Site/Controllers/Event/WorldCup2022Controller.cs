@@ -72,45 +72,45 @@
         [Route("world-cup-2022/{slug}")]
         public async Task<IActionResult> PostDetailWC(string slug)
         {
-            var post = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
-            if (post == null)
+            var postWC = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+            if (postWC == null)
             {
                 return View(Constants.EmptyBlogView);
             }
-            SavePost savePost = null;
-            var isLogin = sessionService.User != null;
-            if (isLogin)
+            SavePost savePostWC = null;
+            var isUserLogin = sessionService.User != null;
+            if (isUserLogin)
             {
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
-                savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+                savePostWC = user.HandleSavePosts.Find(val => val.PostID == postWC.ID);
             }
-            var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
-            var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
-            cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
+            var cateInfoWC = GetCateInfoWC(postWC.CatesName, postWC.CategoriesSlug);
+            var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
+            cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
             var domain = configuration.GetValue<string>("BaseUrl");
-            var model = new SingleViewModel
+            var viewModel = new SingleViewModel
             {
-                SinglePost = post,
-                IsLogin = isLogin,
-                SavePost = savePost,
+                SinglePost = postWC,
+                IsLogin = isUserLogin,
+                SavePost = savePostWC,
                 AbsoluteUrl = $"{domain}{slug}",
-                IsVideo = PostHelper.CheckIsVideo(cateParents),
-                CateInfo = cateInfo
+                IsVideo = PostHelper.CheckIsVideo(cateParentsWC),
+                CateInfo = cateInfoWC
             };
 
-            return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", model);
+            return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
         [HttpPost]
         [Route("world-cup-2022/related-posts")]
-        public IActionResult GetRelatedPosts(string cateSlug, int postID)
+        public IActionResult GetRelatedPostsWC(string cateSlug, int postID)
         {
             return ViewComponent("RelatedPostsWC", new { cateSlug, postID });
         }
 
         [HttpPost]
         [Route("world-cup-2022/sidebar-posts")]
-        public IActionResult GetSidebarPosts(string cateSlug, int postID)
+        public IActionResult GetSidebarPostsWC(string cateSlug, int postID)
         {
             return ViewComponent("SidebarWC", new { cateSlug, postID });
         }
@@ -164,7 +164,7 @@
                     TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTenItems)
                 }
             };
-            return View("~/Views/Event/WorldCup2022/Commentary.cshtml", viewModel);
+            return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
         [Route("world-cup-2022/lich-thi-dau-world-cup-2022")]
@@ -382,37 +382,37 @@
             return groupNames;
         }
 
-        private static CateInfo GetCateInfo(string cateName, string cateSlug)
+        private static CateInfo GetCateInfoWC(string cateName, string cateSlugWC)
         {
-            var slug = cateSlug;
-            var name = cateName;
-            var cateEvent = GetEventInfo(cateSlug);
-            if (cateEvent != null)
+            var slugWC = cateSlugWC;
+            var cateNameWC = cateName;
+            var cateEventWC = GetEventWCInfo(cateSlugWC);
+            if (cateEventWC != null)
             {
-                return cateEvent;
+                return cateEventWC;
             }
-            if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug)
-                && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
+            if (cateSlugWC.Contains(Constants.CollectionSlug) || (cateSlugWC.Contains(Constants.BasketballSlug)
+                && !cateSlugWC.Contains(Constants.BasketballVideoSlug)) || cateSlugWC.Contains(Constants.TennisSlug))
             {
                 return new CateInfo { Slug = Constants.OtherPostSlug, Name = Constants.OtherPosts };
             }
 
-            var listCateSlug = cateSlug.Split(',');
-            var listCateName = cateName.Split(',');
-            var subCateSlug = listCateSlug.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
-            var subCateName = listCateName.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
-            slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
-            name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
-            return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
+            var listCateSlugWC = cateSlugWC.Split(',');
+            var listCateNameWC = cateName.Split(',');
+            var subCateSlugWC = listCateSlugWC.Where(item => item.Trim() != Constants.FootballSlug && item.Trim() != Constants.VideoSlug).ToList();
+            var subCateNameWC = listCateNameWC.Where(item => item.Trim() != Constants.Football && item.Trim() != Constants.Video).ToList();
+            slugWC = subCateSlugWC.Count > 0 ? subCateSlugWC[0] : listCateSlugWC[0];
+            cateNameWC = subCateNameWC.Count > 0 ? subCateNameWC[0] : listCateNameWC[0];
+            return new CateInfo { Slug = slugWC.Trim(), Name = cateNameWC.Trim() };
         }
 
-        private static CateInfo GetEventInfo(string cateSlug)
+        private static CateInfo GetEventWCInfo(string cateSlugWC)
         {
-            var cateEvents = PostHelper.GetEventCates();
-            var listCateSlug = cateSlug.Split(',');
-            foreach (var slug in listCateSlug)
+            var cateEventWC = PostHelper.GetEventCates();
+            var listCateSlugWC = cateSlugWC.Split(',');
+            foreach (var slug in listCateSlugWC)
             {
-                var cate = cateEvents.Find(item => item.Slug == slug.Trim());
+                var cate = cateEventWC.Find(item => item.Slug == slug.Trim());
                 if (cate != null)
                 {
                     return cate;

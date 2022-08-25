@@ -17,42 +17,42 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string cateSlug = "", int postID = 0)
+        public async Task<IViewComponentResult> InvokeWCAsync(string cateSlugWC = "", int postID = 0)
         {
-            IEnumerable<Post> posts;
-            if (string.IsNullOrWhiteSpace(cateSlug))
+            IEnumerable<Post> postsWC;
+            if (string.IsNullOrWhiteSpace(cateSlugWC))
             {
-                var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postParam = new GetRecentPostsParam
+                var endItemsWC = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
+                var postWCParam = new GetRecentPostsParam
                 {
                     Start = Constants.FromFirstItem,
-                    End = end,
+                    End = endItemsWC,
                     PostID = postID
                 };
-                posts = await postService.GetRecentPostsAsync(postParam);
+                postsWC = await postService.GetRecentPostsAsync(postWCParam);
                 ViewData[Constants.ViewDataHeadTitle] = Constants.RecentPostsTitle;
             }
             else
             {
-                var end = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
-                var postParam = new PostParam
+                var endItemsWC = postID == 0 ? Constants.GetFourItems : Constants.GetFiveItems;
+                var postWCParam = new PostParam
                 {
-                    Slug = cateSlug,
+                    Slug = cateSlugWC,
                     Start = Constants.FromFirstItem,
-                    End = end,
+                    End = endItemsWC,
                     PostID = postID
                 };
-                posts = await postService.GetTopPostsByCateSlugAsync(postParam);
+                postsWC = await postService.GetTopPostsByCateSlugAsync(postWCParam);
                 
                 ViewData[Constants.ViewDataHeadTitle] = Constants.MostViewPostTitle;
             }
            
-            var Model = new SideBarViewModel
+            var viewModel = new SideBarViewModel
             {
-                Posts = posts,
+                Posts = postsWC,
             };
 
-            return View("~/Views/Event/WorldCup2022/Sidebar/Default.cshtml", Model);
+            return View("~/Views/Event/WorldCup2022/Sidebar/Default.cshtml", viewModel);
         }
     }
 }

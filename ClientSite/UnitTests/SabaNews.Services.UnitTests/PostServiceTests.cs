@@ -40,9 +40,9 @@
 
             //Assert
             Assert.Equal(expected, actual);
-            Assert.Equal(slug, criteria._CategorySlug);
-            Assert.Equal(start, criteria._Start);
-            Assert.Equal(end, criteria._End);
+            Assert.Equal(slug, criteria.CategorySlug);
+            Assert.Equal(start, criteria.Start);
+            Assert.Equal(end, criteria.End);
         }
 
         [Fact]

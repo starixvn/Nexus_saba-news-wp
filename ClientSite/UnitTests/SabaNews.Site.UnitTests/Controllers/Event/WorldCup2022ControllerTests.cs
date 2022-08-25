@@ -4,14 +4,20 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Routing;
+    using Microsoft.Extensions.Configuration;
     using NSubstitute;
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
+    using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Event.WorldCup;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers.Event;
@@ -26,6 +32,9 @@
         private IPostService postService;
         private IMatchService matchService;
         private ILeagueService leagueService;
+        private IConfiguration configuration;
+        private ISessionService sessionService;
+        private IUserService userService;
         private readonly IFixture fixture = new Fixture();
 
 
@@ -117,7 +126,7 @@
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            Assert.Equal("~/Views/Event/WorldCup2022/Commentary.cshtml", viewResult.ViewName);
+            Assert.Equal("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewResult.ViewName);
             var newsResult = Assert.IsType<LastestNewsViewModel>(viewResult.Model);
             Assert.Equal(news, newsResult.Posts);
 
@@ -249,6 +258,261 @@
             Assert.IsAssignableFrom<List<StandingViewModel>>(result);
         }
 
+        [Fact]
+        public void GetRelatedPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var slug = fixture.Create<string>();
+
+            //Act
+            var result = controller.GetRelatedPostsWC(slug, postId);
+
+            // Assert
+            Assert.IsType<ViewComponentResult>(result);
+        }
+
+        [Fact]
+        public void GetSidebarPosts_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var postId = fixture.Create<int>();
+            var slug = fixture.Create<string>();
+
+            //Act
+            var result = controller.GetSidebarPostsWC(slug, postId);
+
+            // Assert
+            Assert.IsType<ViewComponentResult>(result);
+        }
+
+        [Fact]
+        public async Task Single_WhenPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            Post expected = null;
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task Single_WhenAuthencated_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = "bong-da" }
+            };
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Null(viewModel.ViewData);
+        }
+
+        [Fact]
+        public async Task Single_WhenIsVideoPost_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = "video" }
+            };
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expected.Type = Constants.VideoPostType;
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.True(viewModel.IsVideo);
+        }
+
+        [Theory]
+        [InlineData(Constants.CollectionSlug)]
+        [InlineData(Constants.BasketballSlug)]
+        [InlineData(Constants.TennisSlug)]
+        public async Task Single_PostInOtherCategory_ReturnExpectedViewResult(string cateSlug)
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            expected.CatesName = cateSlug;
+            expected.CategoriesSlug = cateSlug;
+            var expectedRecentPosts = fixture.Create<IEnumerable<Post>>();
+            var expectedUser = fixture.Create<UserSession>();
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = cateSlug }
+            };
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(Constants.OtherPostSlug, viewModel.CateInfo.Slug);
+            Assert.Equal($"/tin-the-thao/{cateSlug}", viewModel.CateInfo.Url);
+        }
+
+        [Fact]
+        public async Task Single_PostInSubCategory_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            expected.CatesName = "schedule,transfer";
+            expected.CategoriesSlug = $"{ Constants.MatchScheduleSlug }, { Constants.TransferSlug}";
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 2, Slug = Constants.MatchScheduleSlug }
+            };
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(Constants.MatchScheduleSlug, viewModel.CateInfo.Slug);
+        }
+
+        [Fact]
+        public async Task Single_PostInGeneralCategory_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            expected.CatesName = "bong-da";
+            expected.CategoriesSlug = "bong-da";
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 1, Slug = "bong-da" }
+            };
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expected.CatesName = $"{ Constants.Football }, { Constants.Video}";
+            expected.CategoriesSlug = $"{ Constants.FootballSlug }, { Constants.VideoSlug}";
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(Constants.FootballSlug, viewModel.CateInfo.Slug);
+            Assert.Equal("/tin-the-thao/bong-da", viewModel.CateInfo.Url);
+        }
+
+        [Fact]
+        public async Task Single_PostInEventCategory_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            var param = fixture.Create<GetRecentPostsParam>();
+            Post expected = fixture.Create<Post>();
+            expected.CatesName = WorldCup2022.Homepage;
+            expected.CategoriesSlug = WorldCup2022.HomepageSlug;
+            var expectedCateInfos = new List<CategoryGeneral>()
+            {
+                new CategoryGeneral { Id = 1, Slug = "tin-the-thao" },
+                new CategoryGeneral { Id = 1, Slug = "bong-da" }
+            };
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = "[{\"PostID\":3963,\"Date\":\"2021-10-21\"},{\"PostID\":4255,\"Date\":\"2021-10-21\"},{\"PostID\":4249,\"Date\":\"2021-10-21\"}]";
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            postService.GetCateParentsAsync(Arg.Do<string>(x => x = slug)).Returns(expectedCateInfos);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.PostDetailWC(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Equal(WorldCup2022.HomepageSlug, viewModel.CateInfo.Slug);
+            Assert.Equal($"/{WorldCup2022.HomepageSlug}", viewModel.CateInfo.Url);
+        }
+
         #region Helpers
         private WorldCup2022Controller GetController()
         {
@@ -256,20 +520,11 @@
             postService = Substitute.For<IPostService>();
             matchService = Substitute.For<IMatchService>();
             leagueService = Substitute.For<ILeagueService>();
-            var controller = new WorldCup2022Controller(postService, dataControlService, matchService, leagueService);
+            configuration = Substitute.For<IConfiguration>();
+            sessionService = Substitute.For<ISessionService>();
+            userService = Substitute.For<IUserService>();
+            var controller = new WorldCup2022Controller(postService, dataControlService, matchService, leagueService, configuration, sessionService, userService);
             return controller;
-        }
-
-        private void GetDefaultContext(WorldCup2022Controller controller)
-        {
-            var urlHelperMock = Substitute.For<IUrlHelper>();
-            controller.Url = urlHelperMock;
-            urlHelperMock.Action(Arg.Any<UrlActionContext>()).Returns("url");
-            controller.ControllerContext = new ControllerContext
-            {
-                HttpContext = new DefaultHttpContext()
-            };
-            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
         }
         #endregion Helpers
     }
