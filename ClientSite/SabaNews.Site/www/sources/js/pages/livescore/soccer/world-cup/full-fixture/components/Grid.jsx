@@ -38,19 +38,28 @@ export class Grid extends Component {
         this.props.setSelectedStageId(key);
     };
 
+    getSelectedStageId = (selectedStageId, stages) => {
+        let stageId = selectedStageId;
+        if(selectedStageId === 0) {
+            stageId = stages[0].key;
+        }
+        return stageId;
+    }
+
     render() {
         const { selectedStageId, stages } = this.props;
         const { isMobile } = this.state;
+        const stageId = this.getSelectedStageId(selectedStageId, stages);
         return (
             <div className="livescore-soccer">
                 <div className="livescore-soccer-main" >
                     {
                         !isMobile &&
-                        <Stage stages={stages} selectedStageId={selectedStageId} onSetStageId={this.onSetStageId} />
+                        <Stage stages={stages} selectedStageId={stageId} onSetStageId={this.onSetStageId} />
                     }
                     {
                         isMobile &&
-                        <MobileStage stages={stages} selectedStageId={selectedStageId} onSetStageId={this.onSetStageId} />
+                        <MobileStage stages={stages} selectedStageId={stageId} onSetStageId={this.onSetStageId} />
                     }
                 </div>
             </div>
