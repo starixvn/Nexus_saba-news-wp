@@ -18,7 +18,7 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeWCAsync(int postID, string slugWC = "")
+        public async Task<IViewComponentResult> InvokeAsync(int postID, string slugWC = "")
         {
             IEnumerable<Post> postsWC ;
             if (slugWC == "")

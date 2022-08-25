@@ -17,7 +17,7 @@
             this.postService = postService;
         }
 
-        public async Task<IViewComponentResult> InvokeWCAsync(string cateSlugWC = "", int postID = 0)
+        public async Task<IViewComponentResult> InvokeAsync(string cateSlugWC = "", int postID = 0)
         {
             IEnumerable<Post> postsWC;
             if (string.IsNullOrWhiteSpace(cateSlugWC))

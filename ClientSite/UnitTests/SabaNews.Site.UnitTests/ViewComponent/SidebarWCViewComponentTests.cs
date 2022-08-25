@@ -29,7 +29,7 @@
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeWCAsync(cateSlug, postId);
+            var actual = await component.InvokeAsync(cateSlug, postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -50,7 +50,7 @@
             postService.GetRecentPostsAsync(Arg.Do<GetRecentPostsParam>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeWCAsync(cateSlug, postId);
+            var actual = await component.InvokeAsync(cateSlug, postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -71,7 +71,7 @@
             postService.GetTopPostsByCateSlugAsync(Arg.Do<PostParam>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeWCAsync(cateSlug, postId);
+            var actual = await component.InvokeAsync(cateSlug, postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
@@ -92,7 +92,7 @@
             postService.GetTopPostsByCateSlugAsync(Arg.Do<PostParam>(x => model = x)).Returns(expected);
 
             //Act
-            var actual = await component.InvokeWCAsync(cateSlug, postId);
+            var actual = await component.InvokeAsync(cateSlug, postId);
 
             //Assert
             var viewResult = Assert.IsType<ViewViewComponentResult>(actual);
