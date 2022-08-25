@@ -203,7 +203,6 @@
 
             //Assert
             Assert.Equal(expected, actual);
-            Assert.Equal("sport-soccer", actual.Type);
         }
 
         [Fact]
@@ -228,7 +227,6 @@
 
             //Assert
             Assert.Equal(expected, actual);
-            Assert.Equal("video", actual.Type);
         }
 
         [Fact]

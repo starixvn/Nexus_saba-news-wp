@@ -77,8 +77,8 @@
 
             var match = fixture.Create<Match>();
 
-            objectDb.QueryEntityAsync(Arg.Any<Func<Match, League, Team, Team, Match>>(),
-                splitOn: Arg.Is("LeagueId, HomeTeamId, AwayTeamId"),
+            objectDb.QueryEntityAsync(Arg.Any<Func<Match, League, Season, SeasonStage, Team, Team, Match>>(),
+                splitOn: Arg.Is("LeagueId, SeasonId, StageId, HomeTeamId, AwayTeamId"),
                 Arg.Is(criteria)
                 ).Returns(match);
 
