@@ -547,7 +547,8 @@ body {
     .post-hot .hover-image .title-hot p {
       color: #fff;
       font-weight: 600;
-      font-size: 1.3rem; }
+      font-size: 1.3rem;
+      max-width: 90rem; }
       @media screen and (max-width: 1024px) {
         .post-hot .hover-image .title-hot p {
           font-weight: 400;

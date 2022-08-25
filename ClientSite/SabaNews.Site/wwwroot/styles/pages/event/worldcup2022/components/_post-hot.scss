@@ -15,6 +15,7 @@
             padding: 4rem 2rem 2rem 2rem;
             background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
             width: 100%;
+
             @include tableMobile {
                 padding: 1.2rem;
             }
@@ -38,7 +39,7 @@
                 color: $white-color;
                 font-weight: 600;
                 font-size: 1.3rem;
-
+                max-width: 90rem;
                 @include tableMobile {
                     font-weight: 400;
                     font-size: 1.4rem;
