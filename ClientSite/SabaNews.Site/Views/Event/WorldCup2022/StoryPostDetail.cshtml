@@ -4,58 +4,93 @@
     <link rel="icon" href="/favicon.ico">
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>title</title>
-    <meta name="description" content="test" />
-    <meta name="keywords" content="test" />
-    <meta name="news_keywords" content="test" />
-
-    <link rel="canonical" href="https://thethao.vn/web-stories/tong-hop-vong-7-v-league-2022-sai-gon-thua-tham-hagl-thang-hoa-tt80.html" />
-
-
-
-    <meta name="robots" content="index, follow" />
-    <meta name="Googlebot-News" content="index, follow" />
+    <title>@Model.Post.PostTitle</title>
     <meta http-equiv="content-language" content="vi" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content='@(Model.Post.PostExcerpt != "" ? Model.Post.PostExcerpt : "&nbsp;" )' />
+    <!--Facebook-->
+    <meta property="og:title" content='@Model.Post.PostTitle' />
+    <meta property="og:description" content="&nbsp;" />
+    <meta property="og:image" content='@Model.Post.FeatureImage' />
 
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap&subset=vietnamese" rel="stylesheet" />
     <link href="~/styles/vendor/icomoon/style.css" rel="stylesheet" />
-    <script src="~/minify/js/site.min.js" asp-append-version="true"></script>
-    <script src="~/js/event/worldcup2022/story-post-detail.js" asp-append-version="true"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
     <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-    <script>
-        //console.log(1);
-        //console.log($('amp-story'));
-        //var html = '<amp-story-page id="page-cover" auto-advance-after="10s" class="amp-story-page__full page-cover">'
-        //    += '<amp-story-grid-layer template="fill">'
-        //    += '<amp-img src="https://vncdn.sabasports.com/2022/08/tottenam-quan-tam-daniel-james.jpg" width="1151" height="1535" layout="responsive">'
-        //    += '</amp-img>'
-        //    += '</amp-story-grid-layer>'
-        //    += '<amp-story-grid-layer template="vertical">'
-        //    += '<h1>Hello World</h1>'
-        //    += '<p>This is an AMP Story.</p>'
-        //    += '</amp-story-grid-layer>'
-        //    += '</amp-story-page>';
-        //$('amp-story').html('123');
-        //console.log($('amp-story'));
-    </script>
-    <noscript>
     <style amp-boilerplate>
         body {
-            -webkit-animation: none;
-            -moz-animation: none;
-            -ms-animation: none;
-            animation: none
+            -webkit-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1,end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1,end) 0s 1 normal both
         }
-    </style></noscript>
+
+        @@-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @@-moz-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @@-ms-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @@-o-keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+
+        @@keyframes -amp-start {
+            from {
+                visibility: hidden
+            }
+
+            to {
+                visibility: visible
+            }
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none
+            }
+        </style>
+    </noscript>
     <style amp-custom>
         amp-story {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI ", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji ", "Segoe UI Emoji ", "Segoe UI Symbol ";
@@ -69,38 +104,28 @@
         [template="thirds"] {
             padding: 0;
         }
-        .back-top-home{
-            position : absolute;
-            top : 20px;
-            right :20px;
-            z-index : 999999999999;
+
+        .back-top-home {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 999999999999;
         }
-        .back-top-home a{
-            color : #fff;
-            text-decoration : none;
-            font-size : 16px;
-        }
-        .detail-stories{
-            text-decoration : none;
-            background : red;
-            color : #fff;
-            padding : 10px 20px;
+
+            .back-top-home a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+        .detail-stories {
+            text-decoration: none;
+            background: red;
+            color: #fff;
+            padding: 10px 20px;
         }
     </style>
 
-    <!--DMCA-->
-    <meta name='dmca-site-verification' content='test' />
-    <meta name="p:domain_verify" content="test" />
-
-    <!--Facebook-->
-    <meta property="og:locale" content="vi_VN" />
-    <meta property="og:site_name" content="saba.vn" />
-    <meta property="og:title" content="Tổng hợp kết quả play-off Champions League: Benfica tiến vào vòng bảng" />
-    <meta property="og:description" content="Tổng hợp kết quả play-off Champions League: Benfica tiến vào vòng bảng" />
-    <meta property="og:url" content="https://saba.vn/tong-hop-ket-qua-play-off-champions-league-benfica-tien-vao-vong-bang" />
-    <meta property="og:image" content="https://vncdn.sabasports.com/2022/08/ket-qua-play-off-champions-league-1.jpg?v=1661297233" />
-    <meta property="og:type" content="article" />
-    <meta property="fb:pages" content="saba fanpage" />
 </head>
 <body>
 
@@ -129,12 +154,19 @@
                     </amp-story-grid-layer>
                     <amp-story-grid-layer template="vertical">
                         <h1>@Html.Raw(item.Title)</h1>
-                    <amp-story-page-outlink>
-                        <a href="https://www.google.com" title="Link Description" class="detail-stories">
-                            Call To Action
-                        </a>
-                    </amp-story-page-outlink>
+                        <amp-story-page-outlink>
+                            <a href=@item.Link title="Link Description" class="detail-stories">
+                                Xem chi tiết
+                            </a>
+                        </amp-story-page-outlink>
                     </amp-story-grid-layer>
+                    @if (count >= totalItems)
+                    {
+                        <amp-story-page-outlink layout="nodisplay" theme="custom" cta-accent-element="background" cta-accent-color="#894158">
+                            <a href=@Model.BackUrl>Xem thêm stories</a>
+                        </amp-story-page-outlink>
+                    }
+
                 </amp-story-page>
             }
         }
@@ -164,12 +196,7 @@
                     </div>
                 </div>
             </amp-story-grid-layer>
-            <amp-story-page-outlink layout="nodisplay"
-                                    theme="custom"
-                                    cta-accent-element="background"
-                                    cta-accent-color="#894158">
-                <a href="https://www.google.com">Xem thêm stories</a>
-            </amp-story-page-outlink>
+
         </amp-story-page>
     </amp-story>
     <div class="back-top-home">
