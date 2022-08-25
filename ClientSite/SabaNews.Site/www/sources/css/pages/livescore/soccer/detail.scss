@@ -424,6 +424,26 @@
     }
     .duel-participant{
         background: #FFFFF5;
+        .flex-league {
+            .column-center{
+                margin: 0 1.6rem;
+                width: 12.4rem;
+                &.result-league{
+                    .detail-score-wrapper{
+                        border-radius: 0;
+                        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+                        clip-path: polygon(90% 0,100% 50%,90% 100%,10% 100%,0 50%,10% 0);
+                        padding: .8rem 1rem;
+                        span{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .team-name{
+                color: #720E2D;
+            }
+        }
     }
     .block-line-up{
         margin-top: 2.1rem;
