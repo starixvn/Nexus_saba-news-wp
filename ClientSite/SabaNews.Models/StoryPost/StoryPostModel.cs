@@ -11,5 +11,7 @@ namespace SabaNews.Models.StoryPost
         public string ImgSrc { get; set; }
 
         public string Title { get; set; }
+
+        public string Link { get; set; }
     }
 }

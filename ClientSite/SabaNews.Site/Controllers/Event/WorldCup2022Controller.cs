@@ -284,11 +284,25 @@
             var nodes = document.DocumentNode.SelectNodes("figure");
             foreach (var item in nodes)
             {
+                var figcaption = item.SelectSingleNode("figcaption");
                 var img = item.SelectSingleNode("img").Attributes["src"].Value;
-                var title = item.SelectSingleNode("figcaption").InnerHtml;
-                stories.Add(new StoryPostModel { ImgSrc = img, Title = title });
+                var title = figcaption.InnerHtml;
+                var link = "";
+                if (figcaption.SelectSingleNode("a") != null)
+                {
+                    link = figcaption.SelectSingleNode("a").Attributes["href"].Value;
+                    title = figcaption.SelectSingleNode("a").InnerHtml;
+                }
+                stories.Add(new StoryPostModel { ImgSrc = img, Title = title, Link = link });
             }
-            return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", stories);
+            var model = new StoryPostDetailViewModel
+            {
+                Post = post,
+                Stories = stories,
+                BaseUrl = configuration.GetValue<string>("BaseUrl"),
+                BackUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.StoryPostSlug}"
+            };
+            return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
         }
 
         [HttpPost]
