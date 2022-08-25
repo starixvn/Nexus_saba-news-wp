@@ -23,11 +23,8 @@
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
-
-    <link rel="stylesheet" href="~/styles/vendor/icomoon/style.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/styles/pages/detailnews.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/minify/styles/postdetail-wc.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/styles/pages/super-web-share-public.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/detailnews.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/postdetail-worldcuop-2022.min.css" asp-append-version="true">
 
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
@@ -52,14 +49,7 @@
         <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
-
-    <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
-    <script src="~/js/event/worldcup2022/lastestnews.js" asp-append-version="true"></script>
-
-    <script src="~/js/profile/profile.js" asp-append-version="true"></script>
-    <script src="~/js/comment.js" asp-append-version="true"></script>
-    <script src="~/js/post/poll.js" asp-append-version="true"></script>
-    <script src="~/js/post/single.js" asp-append-version="true"></script>
+    <script src="~/minify/js/postdetail-worldcuop-2022.min.js" asp-append-version="true"></script>
 }
 
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = "AAA" }))
@@ -238,7 +228,7 @@
                         var tags = Model.SinglePost.Tags.Split(',');
                         @for (var i = 0; i < tags.Length; i++)
                         {
-                            <li class="tag-item"><a href="@Url.Action("Tag", "Home", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
+                            <li class="tag-item"><a href="@Url.Action("TagWC", "WorldCup2022", new { tagname = tags_slug[i].Trim() })" class="tag">@tags[i]</a></li>
                         }
                     }
                 </ul>
@@ -247,13 +237,21 @@
                 <input name="isLogin" id="isLogin" type="hidden" value="@Model.IsLogin.ToString()" />
                 <div class="comment-post" id="comment">
                 </div>
+                @if (isMobile)
+                {
+                    <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
+                    <div id="topScorersWC" class="page-items-box"></div>
+                }
                 @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_RelatedPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
             </div>
             <div class="sticky-position page-items-box">
                 @await Html.PartialAsync("~/Views/Event/WorldCup2022/Component/_SidebarPostsWC.cshtml", new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Slug })
-                <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
-                <div id="topScorersWC" class="page-items-box"></div>
+                @if (isDesktop)
+                {
+                    <div id="standingWC" data-ismobile="@isMobile" class="page-items-box"></div>
+                    <div id="topScorersWC" class="page-items-box"></div>
+                }
             </div>
         </div>
     </div>

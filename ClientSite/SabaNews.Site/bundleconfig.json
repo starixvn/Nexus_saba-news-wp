@@ -183,7 +183,7 @@
         ]
     },
     {
-        "outputFileName": "wwwroot/minify/styles/postdetail-wc.min.css",
+        "outputFileName": "wwwroot/minify/styles/postdetail-worldcuop-2022.min.css",
         "inputFiles": [
             "wwwroot/styles/pages/event/worldcup2022/postdetail-wc.css"
         ]
@@ -427,7 +427,7 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/standing.min.js",
+        "outputFileName": "wwwroot/minify/js/standingworldcup2022.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/standing.js",
             "wwwroot/js/event/worldcup2022/worldcup.js"
@@ -439,7 +439,7 @@
         "sourceMap": false
     },
     {
-        "outputFileName": "wwwroot/minify/js/video.min.js",
+        "outputFileName": "wwwroot/minify/js/videoworldcup2022.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/video.js",
             "wwwroot/js/event/worldcup2022/scroll.js",
@@ -467,6 +467,22 @@
         "outputFileName": "wwwroot/minify/js/worldcup-2022-story-post-detail.min.js",
         "inputFiles": [
             "wwwroot/js/event/worldcup2022/story-post-detail.js"
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    },
+    {
+        "outputFileName": "wwwroot/minify/js/postdetail-worldcuop-2022.min.js",
+        "inputFiles": [
+            "wwwroot/js/event/worldcup2022/worldcup.js",
+            "wwwroot/js/event/worldcup2022/lastestnews.js",
+            "wwwroot/js/profile/profile.js",
+            "wwwroot/js/comment.js",
+            "wwwroot/js/post/poll.js",
+            "wwwroot/js/post/single.js"
         ],
         "minify": {
             "enabled": true,

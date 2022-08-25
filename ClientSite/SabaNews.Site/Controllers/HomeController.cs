@@ -114,7 +114,7 @@
             var totalItems = criteria.TotalItems;
             var model = new BlogViewModel
             {
-                Posts = posts,
+                Posts = posts.ToList(),
                 Header = new HeaderViewModel
                 {
                     Title = Constants.SearchTitle + " '" + keyword + "'",
@@ -156,7 +156,7 @@
             var tag = posts.Any() ? posts.First().Tags : tagname;
             var model = new BlogViewModel
             {
-                Posts = posts,
+                Posts = posts.ToList(),
                 Category = new Category
                 {
                     OgTitle = string.Concat(tag, " | ", Constants.SiteName),
