@@ -136,13 +136,13 @@
             {
                 Header =header,
                 Posts = news,
+                CategorySlug = CategorySlugWC,
                 Paging = new PagingModel{
                     PageSize = Constants.GetTenItems,
                     CurrentPage = Constants.FirstPage,
                     TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)Constants.GetTenItems)
                 }
             };
-            ViewBag.Slug = CategorySlugWC;
             return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
@@ -162,6 +162,7 @@
             {
                 Header = header,
                 Posts = news,
+                CategorySlug = WorldCup2022.CommentarySlug,
                 Paging = new PagingModel
                 {
                     PageSize = Constants.GetTenItems,
@@ -332,7 +333,7 @@
             if (!param.IsVideo)
             {
                 var start = (param.Page - 1) * pageSize;
-                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slugs.Slug1, _Start = start, _End = pageSize };
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
                 IEnumerable<Post> posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
                 return PartialView("~/Views/Event/WorldCup2022/_NewsGridView.cshtml", posts);
             }
@@ -341,7 +342,7 @@
                 var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
                 var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
                 var start = param.Page == 1 ? (param.Page - 1) : ((param.Page - 1) * pageSize + 1);
-                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slugs.Slug1, _Start = start, _End = pageSize };
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
                 IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
                 videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
                 return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);

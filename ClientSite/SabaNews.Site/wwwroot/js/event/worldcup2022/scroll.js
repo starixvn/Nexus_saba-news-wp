@@ -5,7 +5,6 @@
     var currentscrollHeight = 0;
     var isLoadData = true;
     var isVideo = window.isVideo;
-    var slugs = window.slugs;
     var slug = window.slug;
     var type = window.type;
 
@@ -19,7 +18,7 @@
         }
 
         var url = '/WorldCup2022/GetNewsGrid';
-        var data = { slugs, page, pageSize, type, isVideo };
+        var data = { slug, page, pageSize, isVideo };
         if (type === 'story_post') {
             var url = '/WorldCup2022/GetStoryPostGrid';
             var data = { slug, page, pageSize };

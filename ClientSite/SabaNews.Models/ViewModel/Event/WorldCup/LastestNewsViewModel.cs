@@ -10,5 +10,6 @@ namespace SabaNews.Models.ViewModel.Event.WorldCup
         public IList<StandingViewModel> StandingsViewModel { get; set; }
         public IEnumerable<Post> Posts { get; set; }
         public PagingModel Paging { get; set; }
+        public string CategorySlug { get; set; }
     }
 }

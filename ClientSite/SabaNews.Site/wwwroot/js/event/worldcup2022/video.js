@@ -3,15 +3,14 @@
     var pageSize = paging.pageSize;
     var page = paging.page;
     var isVideo = window.isVideo;
-    var slugs = window.slugs;
-    var type = window.type;
+    var slug = window.slug;
 
     function GetVideo() {
         page = 1;
         $.ajax({
             url: '/WorldCup2022/GetNewsGrid',
             type: 'POST',
-            data: { slugs, page, pageSize, isVideo, type }
+            data: { slug, page, pageSize, isVideo }
             }).done(function (data) {
                 $('#news-grid').html(data);
             })

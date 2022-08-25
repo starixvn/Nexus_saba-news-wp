@@ -45,9 +45,7 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
     </environment>
     <script>
-        window.slugs = {
-            slug1: '@ViewBag.Slug'
-        };
+        window.slug = '@Model.CategorySlug';
         window.paging = {
             page: '@Model.Paging.CurrentPage',
             pageSize: '@Model.Paging.PageSize',
