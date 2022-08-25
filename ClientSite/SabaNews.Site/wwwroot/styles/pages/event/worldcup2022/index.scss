@@ -210,10 +210,17 @@
                     color: $white-color;
                     font-size: 1.3rem;
                     font-weight: 700;
+                    line-height: 1.8rem;
 
                     @include tableMobile {
                         font-size: 1.4rem;
                     }
+                }
+
+                .date-time {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    line-height: 2.4rem;
                 }
             }
         }
