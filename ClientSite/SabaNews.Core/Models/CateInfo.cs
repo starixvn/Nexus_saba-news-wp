@@ -9,5 +9,7 @@
         public string Url { get; set; }
 
         public string View { get; set; }
+
+        public string Parent { get; set; }
     }
 }

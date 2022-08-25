@@ -62,10 +62,11 @@
                 savePost = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
-            var cateParents = await postService.GetCateParentsAsync(cateInfo.slug);
+            var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
             var cateUrl = PostHelper.GetCategoryLink(cateParents);
             var topParentCate = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
+            cateInfo.Parent = topParentCate;
             var domain = configuration.GetValue<string>("BaseUrl");
             var model = new SingleViewModel
             {
@@ -75,9 +76,6 @@
                 AbsoluteUrl = $"{domain}{slug}",
                 IsVideo = PostHelper.CheckIsVideo(cateParents),
                 CateInfo = cateInfo
-                CateName = cateInfo.name,
-                CateUrl = cateUrl,
-                CateParent = topParentCate
             };
             
             return View(model);

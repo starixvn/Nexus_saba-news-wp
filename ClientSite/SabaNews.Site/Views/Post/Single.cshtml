@@ -21,7 +21,6 @@
 
 }
 
-    var linkReturn = Model.CateUrl;
 @(await Component.InvokeAsync("Menu", new { page = "singe-page" }))
 <section class="main">
     <div class="container detail-container">
@@ -213,7 +212,7 @@
             @await Html.PartialAsync(ViewResources.RelatedPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID })
 
         </div>
-        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateParent })
+        @await Html.PartialAsync(ViewResources.SidebarPostView, new PostComponentViewModel { PostId = Model.SinglePost.ID, CateSlug = @Model.CateInfo.Parent })
 
     </div>
     @await Html.PartialAsync(ViewResources.SidebarBannerView)
