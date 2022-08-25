@@ -17,10 +17,25 @@
     }
 
     function ScrollItem() {
+        if (location.hash) {
+            setTimeout(function () {
+
+                window.scrollTo(0, 0);
+            }, 1);
+        }
         //detail scroll click list
         var menuItems = $("#list-place").find("a"),
             topMenuHeight = $('.header-controls').outerHeight(),
             socialHeight = $('.main-social').outerHeight();
+        var tabId = location.hash;
+        var offsTop = $(tabId).offset();
+        if (typeof offsTop !== "undefined") {
+            $('html, body').animate({
+                scrollTop: offsTop.top
+            }, 800);
+        }
+        
+
 
         if ($(window).innerWidth() > 1024) {
             menuItems.click(function (e) {
@@ -48,6 +63,18 @@
             });
         }
 
+    }
+
+    function getScrollTop(isMobile, href, scrollTop) {
+        var offsetTop = 0;
+        if (isMobile) {
+            var offsetTop = $(href).offset().top - 50;
+            if ($(window).scrollTop() > 0) {
+                offsetTop = $(href).offset().top - socialHeight;
+            } else {
+                $(href).offset().top - 110
+            }
+        }
     }
    
 

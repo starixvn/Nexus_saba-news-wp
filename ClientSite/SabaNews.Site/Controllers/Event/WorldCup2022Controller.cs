@@ -70,6 +70,7 @@
                 Slug = WorldCup2022.HomepageSlug
             };
             model.Header = header;
+            model.OverviewPageUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.OverviewPageSlug}";
             return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
         }
 

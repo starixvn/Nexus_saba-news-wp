@@ -209,7 +209,7 @@
                                 </a>
                                 <div class="title-hot">
                                     <p>@story.PostTitle</p>
-                                    <p class="date-time">25/08/2022</p>
+                                    <p class="date-time">@story.PostTime</p>
                                 </div>
                             </div>
                         </div>
@@ -225,13 +225,13 @@
             <div class="container">
                 <div class="title-section">
                     <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-                    <h2><a href="#">Tổng quan</a></h2>
+                    <h2><a href="@Model.OverviewPageUrl">Tổng quan</a></h2>
                     <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                 </div>
                 <div class="grid-all">
                     <div class="post-items post-hot">
                         <div class="hover-image">
-                            <a href="#">
+                            <a href="@(Model.OverviewPageUrl + "#Wembley")">
                                 <img src="~/images/worldcup/section-4-items-1.png" alt="Alternate Text" class="img-res" />
                             </a>
                             <div class="title-hot">
@@ -244,7 +244,7 @@
                     </div>
                     <div class="post-items post-hot">
                         <div class="hover-image">
-                            <a href="#">
+                            <a href="@(Model.OverviewPageUrl + "#AllianzArena")">
                                 <img src="~/images/worldcup/section-4-items-2.png" alt="Alternate Text" class="img-res" />
                             </a>
                             <div class="title-hot">
@@ -257,7 +257,7 @@
                     </div>
                     <div class="post-items post-hot">
                         <div class="hover-image">
-                            <a href="#">
+                            <a href="@(Model.OverviewPageUrl + "#LaCartuja")">
                                 <img src="~/images/worldcup/section-4-items-3.png" alt="Alternate Text" class="img-res" />
                             </a>
                             <div class="title-hot">

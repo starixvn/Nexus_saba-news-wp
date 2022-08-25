@@ -41,6 +41,8 @@
 
         public const string StoryPostSlug = "story-post-world-cup-2022";
 
+        public const string OverviewPageSlug = "danh-sach-san-thi-dau-vong-chung-ket-euro-2020";
+
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
 

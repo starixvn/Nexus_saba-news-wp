@@ -15,5 +15,6 @@ namespace SabaNews.Models.ViewModel.Event.WorldCup
         public IEnumerable<Post> StoryPost { get; set; }
         public Category Category { get; set; }
         public HeaderViewModel Header { get; set; }
+        public string OverviewPageUrl { get; set; }
     }
 }
