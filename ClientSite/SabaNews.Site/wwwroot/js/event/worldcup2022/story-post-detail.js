@@ -8,12 +8,23 @@
             var block = { image, title };
             images.push(block);
         });
-        var html = '';
+        var html = '<amp-story-page id="page-cover" auto-advance-after="10s" class="amp-story-page__full page-cover">'
+            += '<amp-story-grid-layer template="fill">'
+            += '<amp-img src="https://vncdn.sabasports.com/2022/08/tottenam-quan-tam-daniel-james.jpg"width="1151" height="1535" layout="responsive">'
+            += '</amp-img>'
+            += '</amp-story-grid-layer>'
+            += '<amp-story-grid-layer template="vertical">'
+            += '<h1>Hello World</h1>'
+            += '<p>This is an AMP Story.</p>'
+            += '</amp-story-grid-layer>'
+            += '</amp-story-page>';
+        $('amp-story').html(html);
+        console.log($('html'));
         console.log(images);
         
     }
     function init() {
-        HandleGetImages();
+        //HandleGetImages();
     }
 
     return {
@@ -22,5 +33,7 @@
 })(jQuery);
 
 $(document).ready(function () {
+    
     storyPostDetail.init();
+    console.log(1);
 });

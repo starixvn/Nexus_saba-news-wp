@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Controllers.Event
 {
+    using HtmlAgilityPack;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -10,6 +11,7 @@
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.StoryPost;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
@@ -20,6 +22,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using System.Web;
 
     public class WorldCup2022Controller : Controller
     {
@@ -235,7 +238,7 @@
             return View("~/Views/Event/WorldCup2022/MatchDetail.cshtml", model);
         }
 
-        [Route("world-cup-2022/story-post")]
+        [Route("world-cup-2022/story-post-world-cup-2022")]
         public async Task<IActionResult> StoryPosts()
         {
             var pageSize = Constants.GetEightItems;
@@ -260,14 +263,14 @@
                 {
                     PageSize = pageSize,
                     CurrentPage = Constants.FirstPage,
-                    TotalPages = (int)Math.Ceiling((cateSlugCriteria.TotalItems - 1) / (double)pageSize)
+                    TotalPages = (int)Math.Ceiling(cateSlugCriteria.TotalItems / (double)pageSize)
                 }
             };
             
             return View("~/Views/Event/WorldCup2022/StoryPost.cshtml", model);
         }
 
-        [Route("world-cup-2022/story-post/{slug}")]
+        [Route("world-cup-2022/story-post-world-cup-2022/{slug}")]
         public async Task<IActionResult> StoryPostsDetail(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.storyPostType);
@@ -275,10 +278,20 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-
-            return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", post);
+            var stories = new List<StoryPostModel>();
+            HtmlDocument document = new HtmlDocument();
+            document.LoadHtml(post.PostContent);
+            var nodes = document.DocumentNode.SelectNodes("figure");
+            foreach (var item in nodes)
+            {
+                var img = item.SelectSingleNode("img").Attributes["src"].Value;
+                var title = item.SelectSingleNode("figcaption").InnerHtml;
+                stories.Add(new StoryPostModel { ImgSrc = img, Title = title });
+            }
+            return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", stories);
         }
 
+        [HttpPost]
         public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
         {
             var start = (param.Page - 1) * param.PageSize;

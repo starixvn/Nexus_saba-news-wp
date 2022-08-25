@@ -6,11 +6,12 @@
     var isLoadData = true;
     var isVideo = window.isVideo;
     var slugs = window.slugs;
-    var keyword = window.keyword;
+    var slug = window.slug;
     var type = window.type;
 
 
     function GetDataGrid(page) {
+        console.log(page);
         if (page > paging.totalPages) {
             isLoadData = false;
             $('.lds-ellipsis').hide();
@@ -19,6 +20,10 @@
 
         var url = '/WorldCup2022/GetNewsGrid';
         var data = { slugs, page, pageSize, type, isVideo };
+        if (type === 'story_post') {
+            var url = '/WorldCup2022/GetStoryPostGrid';
+            var data = { slug, page, pageSize };
+        }
 
         $.ajax({
             url: url,
@@ -76,5 +81,6 @@
 })(jQuery);
 
 $(document).ready(function () {
+    console.log(1);
     scroll.init();
 });

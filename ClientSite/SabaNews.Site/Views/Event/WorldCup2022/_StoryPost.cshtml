@@ -1,5 +1,13 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@foreach (var post in Model)
+{
+    <div class="post-items post-hot">
+        <div class="hover-image">
+            <a href=@Url.Action("StoryPostsDetail", "WorldCup2022", new { slug = post.Slug })>
+                <img src=@post.FeatureImage alt=@post.PostTitle class="img-res" />
+            </a>
+            <div class="title-hot">
+                <p>@post.PostTitle</p>
+            </div>
+        </div>
+    </div>
 }
