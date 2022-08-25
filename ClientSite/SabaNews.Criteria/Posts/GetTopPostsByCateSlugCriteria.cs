@@ -7,7 +7,7 @@
     {
         public string CateSlug { get; set; }
 
-        public long PostId { get; set; } = 0;
+        public long PostId { get; set; }
 
         public int Start { get; set; }
 
