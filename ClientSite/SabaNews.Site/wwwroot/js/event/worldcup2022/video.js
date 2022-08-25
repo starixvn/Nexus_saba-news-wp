@@ -24,21 +24,21 @@
             $('#btn-showhighlight').removeClass("active");
             $('#btn-showguess').removeClass("active");
             $("#btn-showall").addClass("active");
-            slugs.slug1 = 'video-world-cup-2022';
+            slug = 'video-world-cup-2022';
             GetVideo();
         });
         $(document).on('click', '#btn-showhighlight', function () {
             $('#btn-showhighlight').addClass("active");
             $('#btn-showguess').removeClass("active");
             $("#btn-showall").removeClass("active");
-            slugs.slug1 = 'video-highlights-world-cup-2022';
+            slug = 'video-highlights-world-cup-2022';
             GetVideo();
         });
         $(document).on('click', '#btn-showguess', function () {
             $('#btn-showhighlight').removeClass("active");
             $('#btn-showguess').addClass("active");
             $("#btn-showall").removeClass("active");
-            slugs.slug1 = 'video-du-doan-world-cup-2022';
+            slug = 'video-du-doan-world-cup-2022';
             GetVideo();
         });
 
