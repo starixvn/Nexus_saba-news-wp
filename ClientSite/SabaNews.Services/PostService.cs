@@ -1,10 +1,5 @@
 ﻿namespace SabaNews.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
     using SabaNews.Core.Helper;
@@ -16,9 +11,13 @@
     using SabaNews.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
+    using System;
+    using System.Collections.Generic;
     using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Resources;
-    using SabaNews.Services.Interfaces;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
 
     public class PostService : IPostService
     {
