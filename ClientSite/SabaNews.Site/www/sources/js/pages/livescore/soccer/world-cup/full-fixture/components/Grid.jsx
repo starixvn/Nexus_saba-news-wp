@@ -12,19 +12,11 @@ export class Grid extends Component {
         super(props);
         this.state = {
             isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
-            selectedStageId: 0
+            selectedStageId: this.initStageId()
         };
     }
 
     componentDidMount() {
-        const { league, stages } = this.props;
-        let stageId = league.currentStageId;
-        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
-        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
-        if(stageId === 0 || moment(today).isSameOrAfter(endTime)) {
-            stageId = stages[stages.length - 1].key;
-        }
-        this.setState({selectedStageId: stageId})
         window.addEventListener('resize', this.handleResize);
     }
 
@@ -43,7 +35,16 @@ export class Grid extends Component {
         }
     };
 
-
+    initStageId = () => {
+        const { league, stages } = this.props;
+        let stageId = league.currentStageId;
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
+        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
+        if(stageId === 0 || moment(today).isSameOrAfter(endTime)) {
+            stageId = stages[stages.length - 1].key;
+        }
+        return stageId;
+    }
     onSetStageId = key => {
         this.setState({selectedStageId: key});
     };
@@ -73,8 +74,8 @@ export class Grid extends Component {
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
 
 const mapStateToProps = state => {
-    const { matches, league, selectedStageId } = state;
-    return { matches, league, selectedStageId };
+    const { matches, league } = state;
+    return { matches, league };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);

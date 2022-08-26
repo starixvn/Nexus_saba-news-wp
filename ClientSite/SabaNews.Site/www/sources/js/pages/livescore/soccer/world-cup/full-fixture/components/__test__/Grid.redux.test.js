@@ -25,13 +25,11 @@ describe('connect ', () => {
         // Arrange
         const expected = {
             matches:null,
-            league: null,
-            selectedStageId: 0
+            league: null
         };
         const state = {
             matches:null,
-            league: null,
-            selectedStageId: 0
+            league: null
         };
 
         // Act

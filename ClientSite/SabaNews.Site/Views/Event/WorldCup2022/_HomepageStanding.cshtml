@@ -18,7 +18,7 @@
         @foreach (var group in Model)
         {
             var groupName = $"Bảng {group.GroupName[0]}";
-            <a href="#" class="scroll-snap-items">
+            <a href="@Url.Action("Standing", "WorldCup2022")" class="scroll-snap-items">
                 <div class="wc-table">
                     <div class="name-bxh title-items">@groupName</div>
                     <div class="wc-table-header">

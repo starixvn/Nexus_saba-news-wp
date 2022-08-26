@@ -61,70 +61,7 @@ describe('Grid', () => {
     });
 
     describe('componentDidMount', () => {
-        it('init state correctly when season is finished', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                league: {
-                    season: { endTime: '2022-08-18 02:00:00' }
-                }
-            }
-            window.addEventListener = jest.fn();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
-            const container = shallow(<Grid {...props} />);
-            const instance = container.instance();
-
-            // Act
-            instance.componentDidMount();
-
-            // Assert
-            expect(instance.state.selectedStageId).toEqual(2)
-            expect(window.addEventListener).toHaveBeenCalledWith('resize', instance.handleResize);
-        });
-
-        it('init state correctly when league current stage is null', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                league: {
-                    season: { endTime: '2022-09-18 02:00:00' },
-                    currentStageId: 0
-                }
-            }
-            window.addEventListener = jest.fn();
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
-            const container = shallow(<Grid {...props} />);
-            const instance = container.instance();
-            instance.handleResize = jest.fn();
-            // Act
-            instance.componentDidMount();
-
-            // Assert
-            expect(instance.state.selectedStageId).toEqual(2)
-            expect(window.addEventListener).toHaveBeenCalledWith('resize', instance.handleResize);
-        });
-
-        it('init state correctly when league have current stage', () => {
-            // Arrange
-            const props = {
-                ...defaultProps,
-                league: {
-                    season: { endTime: '2022-09-18 02:00:00' },
-                    currentStageId: 1
-                }
-            }
-            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
-            const container = shallow(<Grid {...props} />);
-            const instance = container.instance();
-            instance.handleResize = jest.fn();
-
-            // Act
-            instance.componentDidMount();
-
-            // Assert
-            expect(instance.state.selectedStageId).toEqual(1)
-            expect(window.addEventListener).toHaveBeenCalledWith('resize', instance.handleResize);
-        });
+        
         it('calls correctly functions', () => {
             // Arrange
             window.addEventListener = jest.fn();
@@ -232,6 +169,66 @@ describe('Grid', () => {
             expect(instance.state).toEqual({ isMobile: false });
         });
     });
+
+    describe('initStageId', () => {
+        it('init state correctly when season is finished', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {
+                    season: { endTime: '2022-08-18 02:00:00' }
+                }
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.initStageId();
+
+            // Assert
+            expect(result).toEqual(2)
+        });
+
+        it('init state correctly when league current stage is null', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {
+                    season: { endTime: '2022-09-18 02:00:00' },
+                    currentStageId: 0
+                }
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+            // Act
+            const result = instance.initStageId();
+
+            // Assert
+            expect(result).toEqual(2)
+        });
+
+        it('init state correctly when league have current stage', () => {
+            // Arrange
+            const props = {
+                ...defaultProps,
+                league: {
+                    season: { endTime: '2022-09-18 02:00:00' },
+                    currentStageId: 1
+                }
+            }
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
+            const container = shallow(<Grid {...props} />);
+            const instance = container.instance();
+
+            // Act
+            const result = instance.initStageId();
+
+            // Assert
+            expect(result).toEqual(1)
+        });
+    })
 
     describe('onSetStageId', () => {
         it('call exactly function', () => {
