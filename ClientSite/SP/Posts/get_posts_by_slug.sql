@@ -1,10 +1,10 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
-DROP PROCEDURE IF EXISTS get_posts_by_slug_xtest;
+DROP PROCEDURE IF EXISTS get_posts_by_slug;
 
 DELIMITER //
 
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_slug_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_slug`(
 	categorySlug VARCHAR(200),
     postType VARCHAR(200),
     start INT,
