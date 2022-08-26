@@ -190,16 +190,10 @@ export default class MatchGeneralInfo extends PureComponent {
                 <div className="livescore-league-header-detail">
                     <div className="livescore-league-header-detail-group">
                         <div className="title-section">
-                            <div className="dots"><span></span><span></span><span className="dots-items"></span></div>
                             <h2>
                                 {leagueName}
                                 <p className="start-date">{startTime.format('DD/MM/YYYY')}</p>
                             </h2>
-                            <div className="dots">
-                                <span className="dots-items"></span>
-                                <span></span>
-                                <span></span>
-                            </div>
                         </div>
                     </div>
                 </div>

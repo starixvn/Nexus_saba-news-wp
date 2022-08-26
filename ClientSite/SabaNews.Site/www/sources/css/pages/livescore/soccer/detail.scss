@@ -407,23 +407,66 @@
 }
 
 
-.container-match-detail{
-    padding-top: 0;
-}
 
 .match-detail-world-cup{
     grid-template-columns: 61%;
     justify-content: center;
+    @include tableMobile{
+        margin-top: 2rem;
+    }
+    .sticky-header{
+        position: relative;
+    }
     .detail-fixed{
+        top: 50px;
+        @include tableMobile{
+            top: 40px;
+        }
         &.active-scroll{
             background: #eeeee4;
+            .livescore-league-header-detail{
+                position: relative;
+                margin-bottom: 0;
+                &:after{
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 4rem;
+                    background: #eeeee4;
+                }
+                &-group{
+                    top: 100%;
+                    width: 100%;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .title-section{
+                        padding: 0;
+                        height: 5.3rem;
+                        h2{
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+                        }
+                        p{
+                            font-size: 1.3rem;
+                            line-height: 1.8rem;
+                        }
+                    }
+                }
+            }
         }
-        .detail-function-bar{
-            padding-bottom: 1.4rem;
+        .sticky-header-scroll {
+            .duel-participant{
+                padding: 3rem .6rem .6rem;
+            }
         }
     }
     .duel-participant{
         background: #FFFFF5;
+        border: 1px solid #540F1F;
+        padding: 4.5rem 1.2rem 1.7rem;
         .flex-league {
             .column-center{
                 margin: 0 1.6rem;
@@ -454,7 +497,7 @@
             background: #FFFFF5;
         }
         &-title{
-            background: #6D2D42;
+            background: linear-gradient(180deg, #67182B 0%, #470817 100%);
             border-radius: 3px 3px 0px 0px;
             color: #fff;
             border-bottom: none;
@@ -463,7 +506,7 @@
         }
     }
     .title-custom{
-        background: #6D2D42;
+        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
         border-radius: 3px;
         color: #fff;
         border: none;
@@ -471,87 +514,37 @@
         
     .detail-function-bar{
         background: #eeeee4;
-        padding: 0 ;
+        padding-top: 2rem !important;
         margin-bottom: 0;
-        border-bottom: none;
-        margin-top: 1.4rem;
+        @include tableMobile{
+            padding-top: .4rem !important;
+        }
         ul{
             li{
-                height: 100%;
                 a{
-                    color: #2F2F2F;
-                    padding-bottom: 0;
-                    margin-right: 0;
-                    padding: 0;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    margin: 0;
-                    position: relative;
-                    z-index: 1;
-                    width: 12.4rem;
-                    justify-content: center;
-                    font-size: 1.4rem;
-                    color: #2F2F2F;
-                    text-transform: unset;
+                    margin-right: 4rem;
+                    color: #9D9D9D;
                     @include tableMobile{
-                        width: 11.3rem;
-                        font-size: 1.2rem;
-                        line-height: 1.6rem;
+                        margin-right: 0;
                     }
-                    &::after{
-                        display: none;
-                    }
-                    &:hover{
-                        color: #2F2F2F;
-                    }
+                    
                 }
                 .disabled{
-                    color: #BCBCBC;
+                    color: #9D9D9D;
                     &:hover{
-                        color: #BCBCBC;
+                        color: #9D9D9D;
                     }    
                 }
                 .active{
-                    color: #fff !important;
-                    clip-path:polygon(87% 0, 100% 50%, 87% 100%, 13% 100%, 0 50%, 13% 0);
-                    @include tableMobile{
-                        clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
-                    }
-                    background: #66172A;
-                    &::after{
-                        display: none !important;
+                    color:#48041A;
+                    &:after{
+                        background : #48041A;
                     }
                 }
-            }
-            border-bottom: none;
-            height: 5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 38.6rem;
-            margin: 0 auto;
-            position: relative;
-            padding: 5px;
-            background: #66172A;
-            clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
-            @include tableMobile{
-                height: 4rem;
-                clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
-            }
-            &::after{
-                content: '';
-                display: block;
-                position: absolute;
-                top: 1px;
-                left: 1px;
-                right: 1px;
-                bottom: 1px;
-                background: #EEEEE4;;
-                clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
-                z-index: -1;
-                @include tableMobile{
-                    clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+                &:last-child{
+                    a{
+                        margin-right: 0;
+                    }
                 }
             }
         }
@@ -559,27 +552,79 @@
     .livescore-league-header-detail{
         justify-content: center;
         margin-bottom: 0;
-    }
-    .title-section {
-        margin-bottom: 2rem;;
-        h2{
-            text-align: center;
-            text-transform: inherit;
-            line-height: 3.3rem;
-            p{
-                margin-top: .4rem;
-                font-weight: 600;
-                font-size: 1.6rem;
-                line-height: 2.2rem;
+        &-group{
+            position: absolute;
+            top: -33px;
+            z-index: 9;
+            @include tableMobile{
+                top: -25px;
+            }
+            .title-section {
+                background: linear-gradient(162deg, #FFD68F 0%, #C2A97D 99.91%);
+                margin-bottom: 0;
+                clip-path: polygon(93% 0,100% 50%,93% 100%,7% 100%,0 50%,7% 0);
+                width: 26.6rem;
+                height: 6.6rem;
+                @include tableMobile{
+                    height: 5rem;
+                    width: 20rem;
+                }
+                h2{
+                    text-align: center;
+                    text-transform: inherit;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    line-height: 2.7rem;
+                    color: #510D1D;
+                    margin: 0;
+                    @include tableMobile{
+                        font-size: 1.4rem;
+                        line-height: 1.9rem;
+                    }
+                    p{
+                        margin-top: .4rem;
+                        font-weight: 600;
+                        font-size: 1.6rem;
+                        line-height: 2.2rem;
+                        font-weight: 600;
+                        color: #510D1D;
+                        @include tableMobile{
+                            font-size: 1.3rem;
+                            line-height: 1.8rem;
+                        }
+                    }
+                }
             }
         }
     }
+
+    
     .dots {
         span{
             height: 0.7rem;
         }
         .dots-items{
             height: 1rem;
+        }
+    }
+    .head-top-team{
+        clip-path: polygon(92% 0, 100% 50%, 92% 100%, 8% 100%, 0 50%, 8% 0);
+        background: #DDDDBF;
+        position: relative;
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            background: #EDEDD5;
+            clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+            z-index: -1;
+        }
+        .time-event-title,.time-event-score{
+            color: #720E2D;
         }
     }
 }
