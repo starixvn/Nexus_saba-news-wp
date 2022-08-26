@@ -330,6 +330,9 @@
 }
 
 .nav-select-mb{
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
   select {
     background-position: 2px;
     background-repeat: no-repeat;
@@ -346,5 +349,10 @@
     font-weight: 400;
     padding: 0 1.5rem;
     font-size: 1.5rem;
+  }
+  .name-round{
+    color: #ef4300;
+    font-weight: 700;
+    margin-right: .5rem;
   }
 }
