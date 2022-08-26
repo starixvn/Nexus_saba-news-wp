@@ -85,5 +85,4 @@ BEGIN
 END
 
 //
-DELIMITER;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_GetSeasonStandings TO 'sabasports'@'%';
+DELIMITER ;	
