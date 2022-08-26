@@ -35,7 +35,7 @@ export class Details extends PureComponent {
             <div className="details">
                 <MatchSummary />
                 <Statistics />
-                <Lineups />
+                <Lineups isEvent={isEvent} />
                 {!isEvent && <HeadToHead />}
             </div>
         );

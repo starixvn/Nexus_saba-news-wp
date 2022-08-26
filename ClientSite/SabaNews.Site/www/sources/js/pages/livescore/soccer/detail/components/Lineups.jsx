@@ -428,10 +428,12 @@ export class Lineups extends Component {
     };
 
     renderTeamLineup = (lineups, isHome) => {
+        const { isEvent } = this.props;
         return (
             <div className="team-content">
                 {
                     lineups.map((line, lineIndex) => {
+                        const shirtIcon = this.getShirtIcon(isHome, isEvent);
                         return (
                             <div className="pitch-row" key={lineIndex}>
                                 {
@@ -439,7 +441,7 @@ export class Lineups extends Component {
                                         return (
                                             <div className="pitch-item" key={pindex}>
                                                 <div className="team-player-img">
-                                                    <img src={Site.resolveClientUrl(`css/images/${isHome ? 'red.png' : 'blue.png'}`)} alt="" />
+                                                    <img src={Site.resolveClientUrl(`css/images/${shirtIcon}`)} alt="" />
                                                     <div className="team-number">
                                                         {player.number}
                                                         {this.renderIconLineup(player)}
@@ -456,6 +458,16 @@ export class Lineups extends Component {
                 }
             </div>
         );
+    };
+
+    getShirtIcon = (isHome, isEvent) => {
+        let shirtIcon = 'red.png';
+        if(!isHome && isEvent) {
+            shirtIcon = 'puple.png';
+        } else if(!isHome) {
+            shirtIcon = 'blue.png';
+        }
+        return shirtIcon;
     };
 
 
