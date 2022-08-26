@@ -120,9 +120,20 @@
 
         .detail-stories {
             text-decoration: none;
-            background: red;
+            background: #6D2D42;
             color: #fff;
             padding: 10px 20px;
+            display: block;
+        }
+        .view-more-stories {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            background: #6D2D42;
+            color: #fff;
+            left: 0;
+            text-decoration: none;
+            display : block;
         }
     </style>
 
@@ -173,17 +184,10 @@
                             </a>
                             @if (count >= totalItems)
                             {
-                                <a href=@Model.BackUrl>Xem thêm stories</a>
+                                <a href=@Model.BackUrl class="view-more-stories"><i class="icon-close"></i> Xem thêm stories</a>
                             }
                         </amp-story-page-outlink>
                     </amp-story-grid-layer>
-                    @if (count >= totalItems)
-                    {<amp-story-grid-layer template="vertical">
-                            <amp-story-page-outlink layout="nodisplay" theme="custom" cta-accent-element="background" cta-accent-color="#894158">
-                                <a href=@Model.BackUrl>Xem thêm stories</a>
-                            </amp-story-page-outlink>
-                        </amp-story-grid-layer>
-                    }
 
                 </amp-story-page>
             }
