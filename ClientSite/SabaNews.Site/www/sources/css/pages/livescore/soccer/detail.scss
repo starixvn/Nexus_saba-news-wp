@@ -455,7 +455,6 @@
         }
         &-title{
             background: #6D2D42;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             border-radius: 3px 3px 0px 0px;
             color: #fff;
             border-bottom: none;
@@ -465,7 +464,6 @@
     }
     .title-custom{
         background: #6D2D42;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 3px;
         color: #fff;
         border: none;
@@ -491,11 +489,16 @@
                     margin: 0;
                     position: relative;
                     z-index: 1;
-                    width: 124px;
+                    width: 12.4rem;
                     justify-content: center;
                     font-size: 1.4rem;
                     color: #2F2F2F;
                     text-transform: unset;
+                    @include tableMobile{
+                        width: 11.3rem;
+                        font-size: 1.2rem;
+                        line-height: 1.6rem;
+                    }
                     &::after{
                         display: none;
                     }
@@ -511,7 +514,7 @@
                 }
                 .active{
                     color: #fff !important;
-                    clip-path: polygon(88% 0, 100% 50%, 88% 100%, 12% 100%, 0 50%, 12% 0);
+                    clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
                     background: #66172A;
                     &::after{
                         display: none !important;
@@ -519,7 +522,7 @@
                 }
             }
             border-bottom: none;
-            height: 50px;
+            height: 5rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -528,7 +531,10 @@
             position: relative;
             padding: 5px;
             background: #66172A;
-            clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+            clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+            @include tableMobile{
+                height: 4rem;
+            }
             &::after{
                 content: '';
                 display: block;
@@ -538,7 +544,7 @@
                 right: 1px;
                 bottom: 1px;
                 background: #EEEEE4;;
-                clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
+                clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
                 z-index: -1;
             }
         }

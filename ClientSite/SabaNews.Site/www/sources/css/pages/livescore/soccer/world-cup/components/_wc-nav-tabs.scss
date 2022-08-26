@@ -1,6 +1,6 @@
 .live-score-nav{
     border-bottom: none;
-    height: 50px;
+    height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,6 +10,9 @@
     padding: 5px;
     background: #66172A;
     clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
+    @include tableMobile{
+        height: 4rem;
+    }
     &::after{
         content: '';
         display: block;
