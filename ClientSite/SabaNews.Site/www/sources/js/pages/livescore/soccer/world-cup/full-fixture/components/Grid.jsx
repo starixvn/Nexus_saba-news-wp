@@ -16,12 +16,13 @@ export class Grid extends Component {
         };
     }
 
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
     componentWillUnmount() {
         window.removeEventListener('resize', this.handleResize);
+    }
+
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize);
     }
 
     handleResize = () => {
@@ -44,7 +45,7 @@ export class Grid extends Component {
             stageId = stages[stages.length - 1].key;
         }
         return stageId;
-    }
+    };
     onSetStageId = key => {
         this.setState({selectedStageId: key});
     };
