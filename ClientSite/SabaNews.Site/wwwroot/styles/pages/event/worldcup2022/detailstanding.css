@@ -761,6 +761,8 @@ body {
         border-radius: 3px;
         color: #fff;
         display: block; }
+    .king-soccer .wc-table .team-logo {
+      border: 1px solid #5D1324; }
 
 .live-score-nav {
   border-bottom: 1px solid #DADADA;
