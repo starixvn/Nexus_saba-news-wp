@@ -2,15 +2,8 @@
 @import '../../../../abstracts/variables';
 @import '../../../../abstracts/mixins';
 @import '../../../../base/base';
-// @import '../../../../components/block-extension';
 @import '../../../../components/container';
 @import '../../../../components/soccer-item';
-// @import '../../../../components/league-header-detail';
-// @import '../../../../components/nav-tab';
-// @import '../../../../components/search-bar';
-// @import '../../../../components/table-custom';
-// @import '../../../../components/tooltip';
-// @import '../../../../components/breadcrumb';
 @import '../../../../components/play-offs';
 
 .group-match-item {
@@ -40,4 +33,27 @@
         display: none;
     }
 }
+
+.wc-bg{
+    background:  #eeeee4;
+    border: none;
+}
+
+.wc-playoffs-showpc{
+    .draw-container{
+        .draw-wrapper{
+            .draw{
+                padding-bottom: 0;
+                &__round{
+                    grid-template-rows: auto; 
+                }
+                &__header{
+                    display: none !important;
+                }
+            }
+        }
+    }
+}
+
+
 

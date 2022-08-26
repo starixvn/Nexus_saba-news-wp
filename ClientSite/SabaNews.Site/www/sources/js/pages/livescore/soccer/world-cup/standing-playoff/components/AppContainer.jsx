@@ -198,7 +198,7 @@ export class AppContainer extends Component {
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
         return (
-            <div className="play-offs">
+            <div className={`play-offs ${!isMobile ? "wc-bg" : ""}`}>
                 {
                     isMobile &&
                     <div className="draw-container">
@@ -211,25 +211,15 @@ export class AppContainer extends Component {
                 }
                 {
                     !isMobile &&
-                    <div>
+                    <div className="wc-playoffs-showpc">
                         <div className="draw-container">
                             <div className="draw-wrapper">
-                                <div className="shadowHeader"></div>
-                                <div className="learHeader"></div>
                                 <Grid matches={prevMatchStages} isMobile={isMobile} />
                             </div>
                         </div>
+                        <div className="wc-result">Chung kết</div>
                         <div className="draw-container">
                             <div className="draw-wrapper">
-                                <div className="shadowHeader"></div>
-                                <div className="learHeader"></div>
-                                <div>Chung kết</div>
-                            </div>
-                        </div>
-                        <div className="draw-container">
-                            <div className="draw-wrapper">
-                                <div className="shadowHeader"></div>
-                                <div className="learHeader"></div>
                                 <Grid matches={lastMatchStages} isMobile={isMobile} />
                             </div>
                         </div>
