@@ -8,7 +8,13 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_posts_by_cate_slug_xtest`(
     postType VARCHAR(200),
     _start INT,
     _end INT,
-    OUT TotalItems int  
+    OUT TotalItems int
+	 /*
+		Creator: Hank@20210720
+        Revisions:
+			- 20210720@Hank: init
+            - 20220727@Hank: get sub cate posts
+    */
 )
 BEGIN
 	DECLARE count  INT;
