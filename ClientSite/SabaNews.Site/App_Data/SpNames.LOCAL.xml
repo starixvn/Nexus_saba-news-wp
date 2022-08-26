@@ -219,7 +219,7 @@
 		<Setting Key="get_post_detail_by_postid" SpName="get_post_detail_by_postid" DbName="sabasports" Plain="0" />
 		<Setting Key="get_posts" SpName="get_posts" DbName="sabasports" Plain="0" />
 		<Setting Key="Livescore_Top_Scorers_UpdateTop" SpName="Livescore_Top_Scorers_UpdateTop_xtest" DbName="sabasports" Plain="0"></Setting>
-		<Setting Key="Livescore_Team_GetAll" SpName="Livescore_Team_GetAll" DbName="sabasports_xtest" Plain="0"></Setting>
+		<Setting Key="Livescore_Team_GetAll" SpName="Livescore_Team_GetAll" DbName="sabasports" Plain="0"></Setting>
 		<Setting Key="Livescore_Player_GetByTeamId" SpName="Livescore_Player_GetByTeamId_xtest" DbName="sabasports" Plain="0"></Setting>
 	</Function>
 </Functions>
