@@ -1158,6 +1158,8 @@ body {
 .wc-block-bxh {
   background: url("../../../../images/worldcup/section-2.png") no-repeat;
   background-size: cover; }
+  .wc-block-bxh a {
+    text-decoration: none; }
   .wc-block-bxh .title-section h2 a {
     color: #FFD68F; }
   .wc-block-bxh .dots span {
@@ -1177,7 +1179,8 @@ body {
   .wc-block-bxh .wc-table {
     background: linear-gradient(180deg, #67182B 0%, #470817 100%);
     color: #fff;
-    border: 1px solid #DFB56C; }
+    border: 1px solid #DFB56C;
+    height: 100%; }
     .wc-block-bxh .wc-table .wc-table-header {
       align-items: flex-end; }
     .wc-block-bxh .wc-table .cell-participant {

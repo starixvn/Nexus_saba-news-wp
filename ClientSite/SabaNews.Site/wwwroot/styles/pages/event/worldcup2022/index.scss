@@ -91,7 +91,9 @@
 .wc-block-bxh {
     background: url('../../../../images/worldcup/section-2.png') no-repeat;
     background-size: cover;
-
+    a{
+        text-decoration : none;
+    }
     .title-section {
         h2 {
             a {
@@ -127,7 +129,7 @@
         background: linear-gradient(180deg, #67182B 0%, #470817 100%);
         color: $white-color;
         border: 1px solid $table-border;
-
+        height :100%;
         .wc-table-header {
             align-items: flex-end;
         }

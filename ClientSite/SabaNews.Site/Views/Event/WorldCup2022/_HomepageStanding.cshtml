@@ -18,34 +18,36 @@
         @foreach (var group in Model)
         {
             var groupName = $"Bảng {group.GroupName[0]}";
-            <div class="wc-table scroll-snap-items">
-                <div class="name-bxh title-items">@groupName</div>
-                <div class="wc-table-header">
-                    <div class="wc-table-cell cell-participant"></div>
-                    <div class="wc-table-cell cell-rank">Trận</div>
-                    <div class="wc-table-cell cell-rank">+/-</div>
-                    <div class="wc-table-cell cell-rank">Điểm</div>
-                </div>
+            <a href="#" class="scroll-snap-items">
+                <div class="wc-table">
+                    <div class="name-bxh title-items">@groupName</div>
+                    <div class="wc-table-header">
+                        <div class="wc-table-cell cell-participant"></div>
+                        <div class="wc-table-cell cell-rank">Trận</div>
+                        <div class="wc-table-cell cell-rank">+/-</div>
+                        <div class="wc-table-cell cell-rank">Điểm</div>
+                    </div>
 
-                <div class="wc-table-body">
-                    @foreach (var standing in group.Standings)
-                    {
-                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                        <div class="wc-table-row">
-                            <div class="wc-table-cell cell-participant">
-                                <ul class="team">
-                                    <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
-                                    <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
-                                </ul>
+                    <div class="wc-table-body">
+                        @foreach (var standing in group.Standings)
+                        {
+                            var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                            var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                            <div class="wc-table-row">
+                                <div class="wc-table-cell cell-participant">
+                                    <ul class="team">
+                                        <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
+                                        <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
+                                    </ul>
+                                </div>
+                                <div class="wc-table-cell cell-rank">@standing.Total</div>
+                                <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
+                                <div class="wc-table-cell cell-rank">@standing.Points</div>
                             </div>
-                            <div class="wc-table-cell cell-rank">@standing.Total</div>
-                            <div class="wc-table-cell cell-rank">@standing.GoalDiff</div>
-                            <div class="wc-table-cell cell-rank">@standing.Points</div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
-            </div>
+            </a>
         }
     </div>
     <div class="img-section">
