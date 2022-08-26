@@ -53,9 +53,15 @@
 
     function resizeTable() {
         $(window).on('resize', function () {
+            var containerWidth = $('.container').innerWidth();
             $('.king-soccer .wc-table').css({
-                width: '100%',
-                marginLeft: "0"
+                width: "100%",
+                marginLeft: "0",
+            })
+            $('#standingWC .king-soccer').css({
+                width: containerWidth,
+                margin: "0 auto",
+                padding: "0 1.2rem"
             })
         })
     }
