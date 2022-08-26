@@ -1,1 +1,15 @@
-﻿
+﻿@import './abstracts/wc-variables';
+@import '../../../abstracts/mixins';
+@import './abstracts/wc-base';
+@import './layout/header';
+@import './components/title-section';
+@import './components/wc-block';
+@import './components/table';
+@import './components/title-items';
+@import './components/container';
+@import './components/dots-post';
+@import './components/wc-modal';
+
+.king-soccer{
+    margin-bottom : 2rem;
+}

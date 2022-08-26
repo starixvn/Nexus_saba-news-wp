@@ -327,43 +327,7 @@
 
 
 
-.king-soccer {
-    .wc-table {
-        color: $white-color;
-        border-radius: 5px;
-        overflow: hidden;
-        background: linear-gradient(180deg,#531128 0%,#350717 100%);
 
-        .wc-table-header {
-            border-bottom: none;
-            background: #6D2D42;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-            height: 5rem;
-            padding: 1rem 2rem;
-            font-weight: 700;
-            font-size: 1.4rem;
-        }
-
-        .wc-table-row {
-            margin: 0 2rem;
-            border-bottom: 1px solid #58263F;
-            padding: 1.3rem 0;
-
-            @include tableMobile {
-                margin: 0 1.2rem;
-            }
-        }
-
-        .cell-rank {
-            width: 8rem;
-            font-weight: 700;
-
-            @include tableMobile {
-                width: 7rem;
-            }
-        }
-    }
-}
 
 .wc-block-video {
     background: $primary-bg;
