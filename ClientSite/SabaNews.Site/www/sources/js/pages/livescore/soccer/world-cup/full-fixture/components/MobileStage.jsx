@@ -18,8 +18,8 @@ export default class MobileStage extends PureComponent {
         const currentStage = this.getMatchWithStage();
         return (
             <>
-                {CommonFunctions.getStageName(currentStage)}
                 <div className="nav-select-mb">
+                    <div>{CommonFunctions.getStageName(currentStage.stage)}</div>
                     <select onChange={this.onChange} value={selectedStageId}>
                         {
                             stages.map(group =>

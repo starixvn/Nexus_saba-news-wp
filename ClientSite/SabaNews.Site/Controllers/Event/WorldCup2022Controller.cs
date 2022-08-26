@@ -242,7 +242,7 @@
         }
 
         [Route("world-cup-2022/story-post-world-cup-2022")]
-        public async Task<IActionResult> StoryPosts()
+        public async Task<IActionResult> StoryPost()
         {
             const int pageSize = Constants.GetEightItems;
             var header = new HeaderViewModel
@@ -257,11 +257,11 @@
                 _End = pageSize,
                 PostType = Constants.storyPostType
             };
-            var posts = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
+            var stories = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
             var model = new LastestNewsViewModel
             {
                 Header = header,
-                Posts = posts,
+                Posts = stories,
                 Paging = new PagingModel
                 {
                     PageSize = pageSize,
@@ -274,7 +274,7 @@
         }
 
         [Route("world-cup-2022/story-post-world-cup-2022/{slug}")]
-        public async Task<IActionResult> StoryPostsDetail(string slug)
+        public async Task<IActionResult> StoryPostDetail(string slug)
         {
             var post = await postService.GetPostDetailBySlugAsync(slug, Constants.storyPostType);
             if (post == null)

@@ -56,7 +56,7 @@ export default class Item extends PureComponent {
                         <li className="total-score">
                             <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
                             <span> - </span>
-                            <span>{match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore}</span>
+                            <span>{match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore}</span>
                         </li>
                         <li className="haft-score">
                             <span>  HT: </span>

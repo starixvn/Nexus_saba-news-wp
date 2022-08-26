@@ -196,7 +196,7 @@
             <div class="container mb-container">
                 <div class="title-section">
                     <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-                    <h2><a href="#">Stories Post</a></h2>
+                    <h2><a href="@Url.Action("StoryPost", "WorldCup2022")">Stories Post</a></h2>
                     <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
                 </div>
                 <div class="grid-stories-post scroll-snap">
@@ -204,7 +204,7 @@
                     {
                         <div class="post-items scroll-snap-items post-hot">
                             <div class="hover-image">
-                                <a href=@Url.Action("StoryPostsDetail", "WorldCup2022", new { slug = story.Slug })>
+                                <a href=@Url.Action("StoryPostDetail", "WorldCup2022", new { slug = story.Slug })>
                                     <img src=@story.FeatureImage alt=@story.PostTitle class="img-res" />
                                 </a>
                                 <div class="title-hot">
@@ -216,7 +216,7 @@
                     }
                 </div>
                 <div class="view-more">
-                    <a href=@Url.Action("StoryPosts", "WorldCup2022")>Xem thêm <i class="icon-next-wc"></i></a>
+                    <a href=@Url.Action("StoryPost", "WorldCup2022")>Xem thêm <i class="icon-next-wc"></i></a>
                 </div>
             </div>
         </div>

@@ -46,13 +46,13 @@ export class AppContainer extends Component {
         let totalItems = matches.length;
         const tempMatches = [];
         for (let i = 0; i < totalItems; i++) {
-            const match = matches[i];
+            const match = { ...matches[i], league };
             const stage = match.stage;
             const key = stage ? stage.stageId : 0;
             const item = {
                 key,
                 stage,
-                matches: [{...match, league}]
+                matches: [match]
             };
 
             if (tempMatches.length === 0) {

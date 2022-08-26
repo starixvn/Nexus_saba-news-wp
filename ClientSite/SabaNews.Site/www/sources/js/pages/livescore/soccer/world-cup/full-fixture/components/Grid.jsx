@@ -5,16 +5,26 @@ import { ActionCreators } from '../actions';
 import Stage from './Stage';
 import MobileStage from './MobileStage';
 import { MobileMaxWidth } from '@jsroot/common/constants';
+import moment from 'moment';
+import DateTimeService from '@jsroot/common/dateTimeService';
 export class Grid extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            isMobile: window.innerWidth <= MobileMaxWidth ? true : false,
+            selectedStageId: 0
         };
     }
 
     componentDidMount() {
-        this.props.getMatches();
+        const { league, stages } = this.props;
+        let stageId = league.currentStageId;
+        const today = moment(DateTimeService.getCurrentClientDateTime()).format('YYYY-MM-DD HH:mm:ss');
+        const endTime = moment(DateTimeService.convertFromUTC(league.season.endTime)).format('YYYY-MM-DD HH:mm:ss');
+        if(stageId === 0 || moment(today).isSameOrAfter(endTime)) {
+            stageId = stages[stages.length - 1].key;
+        }
+        this.setState({selectedStageId: stageId})
         window.addEventListener('resize', this.handleResize);
     }
 
@@ -35,31 +45,22 @@ export class Grid extends Component {
 
 
     onSetStageId = key => {
-        this.props.setSelectedStageId(key);
-    };
-
-    getSelectedStageId = (selectedStageId, stages) => {
-        let stageId = selectedStageId;
-        if(selectedStageId === 0) {
-            stageId = stages[0].key;
-        }
-        return stageId;
+        this.setState({selectedStageId: key});
     };
 
     render() {
-        const { selectedStageId, stages } = this.props;
-        const { isMobile } = this.state;
-        const stageId = this.getSelectedStageId(selectedStageId, stages);
+        const { stages } = this.props;
+        const { isMobile, selectedStageId } = this.state;
         return (
             <div className="livescore-soccer">
                 <div className="livescore-soccer-main" >
                     {
                         !isMobile &&
-                        <Stage stages={stages} selectedStageId={stageId} onSetStageId={this.onSetStageId} />
+                        <Stage stages={stages} selectedStageId={selectedStageId} onSetStageId={this.onSetStageId} />
                     }
                     {
                         isMobile &&
-                        <MobileStage stages={stages} selectedStageId={stageId} onSetStageId={this.onSetStageId} />
+                        <MobileStage stages={stages} selectedStageId={selectedStageId} onSetStageId={this.onSetStageId} />
                     }
                 </div>
             </div>
