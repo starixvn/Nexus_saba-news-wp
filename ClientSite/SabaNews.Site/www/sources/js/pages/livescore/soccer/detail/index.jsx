@@ -6,12 +6,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import soccerMatchDetailSlice from './soccerMatchDetailSlice';
 import AppContainer from './components/AppContainer';
 import Site from '@jsroot/common/site';
-const store = configureStore({
+const detailStore = configureStore({
     reducer: soccerMatchDetailSlice
 });
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={detailStore}>
          <BrowserRouter>
             <Routes>
                 <Route path={Site.resolveClientUrl(`lich-thi-dau/world-cup/:match/:matchId`)} element={<AppContainer />} />

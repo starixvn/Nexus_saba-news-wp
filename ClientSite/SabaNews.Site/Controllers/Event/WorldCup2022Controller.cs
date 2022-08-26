@@ -281,23 +281,7 @@
             {
                 return View(Constants.EmptyBlogView);
             }
-            var stories = new List<StoryPostModel>();
-            HtmlDocument document = new HtmlDocument();
-            document.LoadHtml(post.PostContent);
-            var nodes = document.DocumentNode.SelectNodes("figure");
-            foreach (var item in nodes)
-            {
-                var figcaption = item.SelectSingleNode("figcaption");
-                var img = item.SelectSingleNode("img").Attributes["src"].Value;
-                var title = figcaption.InnerHtml;
-                var link = "";
-                if (figcaption.SelectSingleNode("a") != null)
-                {
-                    link = figcaption.SelectSingleNode("a").Attributes["href"].Value;
-                    title = figcaption.SelectSingleNode("a").InnerHtml;
-                }
-                stories.Add(new StoryPostModel { ImgSrc = img, Title = title, Link = link });
-            }
+            var stories = PostHelper.GetListImageFromPostContent(post.PostContent);
             var model = new StoryPostDetailViewModel
             {
                 Post = post,
