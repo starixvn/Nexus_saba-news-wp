@@ -63,6 +63,9 @@
                 margin: "0 auto",
                 padding: "0 1.2rem"
             })
+            $('#standingWC').css({
+                margin: "3rem 0 3rem 0",
+            })
         })
     }
 
