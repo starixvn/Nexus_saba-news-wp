@@ -34,7 +34,7 @@
             }
             else
             {
-                var end = Constants.GetFourItems;
+                const int end = Constants.GetFourItems;
                 var postParam = new PostParam
                 {
                     Slug = cateSlug,

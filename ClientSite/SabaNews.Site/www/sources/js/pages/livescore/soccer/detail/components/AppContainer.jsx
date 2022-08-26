@@ -31,9 +31,7 @@ export class AppContainer extends Component {
         this.setState({flagToggleFavLeagueIcon: !this.state.flagToggleFavLeagueIcon});
     };
 
-    checkIsEvent = (league, isEventPage) => {
-        return CommonFunctions.isEvent(league, isEventPage);
-    }
+    checkIsEvent = (league, isEventPage) =>  CommonFunctions.isEvent(league, isEventPage);
 
     render() {
         const { match, favLeagues, leagues } = this.props;

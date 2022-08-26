@@ -63,7 +63,6 @@
             }
             var cateInfo = GetCateInfo(post.CatesName, post.CategoriesSlug);
             var cateParents = await postService.GetCateParentsAsync(cateInfo.Slug);
-            var cateUrl = PostHelper.GetCategoryLink(cateParents);
             var topParentCate = PostHelper.GetTopCateParent(cateParents);
             cateInfo.Url ??= PostHelper.GetCategoryLink(cateParents);
             cateInfo.Parent = topParentCate;

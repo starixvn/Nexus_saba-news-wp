@@ -1,15 +1,13 @@
-﻿using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
-using SabaNews.Models.Categories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SabaNews.Site.Extensions
+﻿namespace SabaNews.Site.Extensions
 {
-    public class PostHelper
+    using SabaNews.Core.Constants;
+    using SabaNews.Core.Models;
+    using SabaNews.Models.Categories;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    public static class PostHelper
     {
         public static string GetCategoryLink(IList<CategoryGeneral> cates)
         {

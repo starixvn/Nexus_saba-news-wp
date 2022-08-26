@@ -128,6 +128,9 @@ export class FunctionBar extends Component {
             || tabStatus.enableTabHeadtohead;
     };
 
+    getActiveTabClass = (activeTab, tab) =>  activeTab === tab ? 'active' : '';
+
+
     render() {
         const tabStatus = this.updateTabStatus();
         const { activeTab, isEvent } = this.props;
@@ -138,24 +141,24 @@ export class FunctionBar extends Component {
                     <ul>
                         <li>
                             <a onClick={() => this.scrollToTab('dien-bien')}
-                                className={`${activeTab === 'dien-bien' ? 'active' : ''} ${!tabStatus.enableTabSummary ? 'disabled' : ''}`}
+                                className={`${this.getActiveTabClass(activeTab, 'dien-bien')} ${!tabStatus.enableTabSummary ? 'disabled' : ''}`}
                             >Diễn biến</a>
                         </li>
                         <li>
                             <a onClick={() => this.scrollToTab('thong-ke')}
-                                className={`${activeTab === 'thong-ke' ? 'active' : ''} ${!tabStatus.enableTabStatistics ? 'disabled' : ''}`}
+                                className={`${this.getActiveTabClass(activeTab, 'thong-ke')} ${!tabStatus.enableTabStatistics ? 'disabled' : ''}`}
                             >Thống kê</a>
                         </li>
                         <li>
                             <a onClick={() => this.scrollToTab('doi-hinh')}
-                                className={`${activeTab === 'doi-hinh' ? 'active' : ''} ${!tabStatus.enableTabLineups ? 'disabled' : ''}`}
+                                className={`${this.getActiveTabClass(activeTab, 'doi-hinh')} ${!tabStatus.enableTabLineups ? 'disabled' : ''}`}
                             >Đội hình</a>
                         </li>
                         {
                             !isEvent &&
                             <li>
                                 <a onClick={() => this.scrollToTab('doi-dau')}
-                                    className={`${activeTab === 'doi-dau' ? 'active' : ''} ${!tabStatus.enableTabHeadtohead ? 'disabled' : ''}`}
+                                    className={`${this.getActiveTabClass(activeTab, 'doi-dau')} ${!tabStatus.enableTabHeadtohead ? 'disabled' : ''}`}
                                 >Đối đầu</a>
                             </li>
                         }

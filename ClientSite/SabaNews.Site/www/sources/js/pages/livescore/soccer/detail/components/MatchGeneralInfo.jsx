@@ -183,7 +183,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         <FavoriteMatches isMobile />
                     </div>
                 </div>
-            )
+            );
         } else {
             const leagueName = this.getLeagueName(match, isEvent);
             return (
@@ -192,7 +192,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         <div className="title-section">
                             <div className="dots"><span></span><span></span><span className="dots-items"></span></div>
                             <h2>
-                                {leagueName} 
+                                {leagueName}
                                 <p className="start-date">{startTime.format('DD/MM/YYYY')}</p>
                             </h2>
                             <div className="dots">
@@ -203,7 +203,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         </div>
                     </div>
                 </div>
-            )
+            );
         }
     };
     getLeagueName = (match, isEvent) => {

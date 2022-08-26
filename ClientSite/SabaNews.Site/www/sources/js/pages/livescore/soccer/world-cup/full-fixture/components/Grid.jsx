@@ -44,7 +44,7 @@ export class Grid extends Component {
             stageId = stages[0].key;
         }
         return stageId;
-    }
+    };
 
     render() {
         const { selectedStageId, stages } = this.props;

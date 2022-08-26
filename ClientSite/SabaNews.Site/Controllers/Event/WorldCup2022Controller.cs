@@ -244,7 +244,7 @@
         [Route("world-cup-2022/story-post-world-cup-2022")]
         public async Task<IActionResult> StoryPosts()
         {
-            var pageSize = Constants.GetEightItems;
+            const int pageSize = Constants.GetEightItems;
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.StoryPost,
