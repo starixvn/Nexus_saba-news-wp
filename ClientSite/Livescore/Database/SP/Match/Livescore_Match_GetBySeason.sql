@@ -1,8 +1,8 @@
 /*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
-DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason_xtest;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason_xtest`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 	IN leagueId BIGINT
     ,IN seasonId BIGINT
     ,IN fromTime DATETIME
