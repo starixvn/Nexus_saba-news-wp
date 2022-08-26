@@ -27,7 +27,7 @@ BEGIN
     FROM livescore_season_standings s
 	WHERE s.SeasonId = seasonId AND s.StageId > 0;
     
-    SELECT t.TeamId, t.TeamNameEN, t.TeamFullNameEN, t.Icon, s.GroupName
+    SELECT t.TeamId, t.TeamNameVN, t.TeamNameEN, t.TeamFullNameEN, t.Icon, s.GroupName
 		,s.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.OrderIndex
         ,s.Position, s.Total, s.Won, s.Loss, s.Draw, s.Points, s.Goals, s.GoalsAgainst, s.GoalDiff, s.Promotion
     FROM livescore_season_standings s
@@ -36,6 +36,7 @@ BEGIN
         LEFT JOIN livescore_ref_resource rr ON rr.RefName = 'Stage' AND ss.StageNameEN = rr.NameEN
     WHERE s.SeasonId = seasonId AND s.StageId > 0
     ORDER BY ss.OrderIndex ASC, s.GroupName ASC, s.Position ASC;
+    
     
     lbltmpStandings: LOOP
 		IF NOT EXISTS (SELECT 1 FROM tmp_Standings) THEN
@@ -80,7 +81,7 @@ BEGIN
         LEFT JOIN livescore_match firstleg ON m.RelatedId = firstleg.MatchId AND m.LeagueId = firstleg.LeagueId AND m.StartTime > firstleg.StartTime
 	WHERE EXISTS (SELECT tmp.MatchId FROM tmp_MatchIds tmp WHERE m.MatchId = tmp.MatchId)
     ORDER BY m.StartTime DESC;
-END;
+END
 
 //
 DELIMITER;

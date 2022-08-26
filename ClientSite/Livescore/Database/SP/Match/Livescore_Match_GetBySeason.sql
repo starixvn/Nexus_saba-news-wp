@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason;
+DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason_xtest;
 DELIMITER //
 
-CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason_xtest`(
 	IN leagueId BIGINT
     ,IN seasonId BIGINT
     ,IN fromTime DATETIME
@@ -13,6 +13,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_GetBySeason`(
 			- 202200512@Tim: check 2nd leg
 			- 202200517@Tim: get start time for live match
             - 202200610@Hank: check deleted match
+            - 2022008100@Hank: add TeamNameVN &  select season
     */
 )
 BEGIN    
@@ -37,7 +38,9 @@ BEGIN
     FROM livescore_league l
 	WHERE l.LeagueId = leagueId;
     
-    SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum
+    SELECT s.SeasonId, s.StartTime, s.EndTime, Year FROM livescore_season s WHERE s.SeasonId = seasonId;
+    
+    SELECT m.MatchId, m.StartTime, m.EndTime, m.Status, m.Round, m.GroupNum, m.RelatedId
 		,CASE WHEN firstleg.MatchId IS NOT NULL THEN 1 ELSE 0 END AS IsSecondLeg
 		,m.HomeTeamHalfScore, m.AwayTeamHalfScore, m.HomeTeamTotalScore, m.AwayTeamTotalScore, m.HomeTeamAggregateScore, m.AwayTeamAggregateScore
         ,sh.ExtraScore AS HomeTeamExtraScore, sa.ExtraScore AS AwayTeamExtraScore
@@ -45,8 +48,8 @@ BEGIN
         ,CASE WHEN m.Status = 10 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballStartTime END AS FootballStartTime
         ,CASE WHEN m.Status = 30 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballNextHalfStartTime END AS FootballNextHalfStartTime
         ,CASE WHEN m.Status = 40 AND live.StartTime IS NOT NULL THEN live.StartTime ELSE m.FootballAddStartTime END AS FootballAddStartTime
-        ,m.HomeTeamId, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon
-        ,m.AwayTeamId, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon
+        ,m.HomeTeamId, h.TeamNameVN as HomeTeamNameVN, h.TeamNameEN AS HomeTeamNameEN, h.TeamFullNameEN AS HomeTeamFullNameEN, h.Icon AS HomeTeamIcon
+        ,m.AwayTeamId, a.TeamNameVN as AwayTeamNameVN, a.TeamNameEN AS AwayTeamNameEN, a.TeamFullNameEN AS AwayTeamFullNameEN, a.Icon AS AwayTeamIcon
         ,m.StageId, ss.StageNameEN, rr.NameVN AS StageNameVN, ss.Mode AS StageMode, ss.GroupCount, ss.RoundCount, ss.OrderIndex
     FROM livescore_match m
         INNER JOIN livescore_team h ON m.HomeTeamId = h.TeamId
@@ -61,8 +64,9 @@ BEGIN
     ORDER BY m.StartTime ASC
 		,CASE WHEN h.TeamNameEN IS NOT NULL THEN h.TeamNameEN
 			ELSE h.TeamFullNameEN END ASC;
-END;
+            
+	
+END
 
 //
-DELIMITER;
-GRANT EXECUTE ON PROCEDURE Livescore_Match_GetBySeason TO 'sabasports'@'%';
+DELIMITER ;	

@@ -2,7 +2,7 @@
 <Functions>
     <Function Name="Post">
         <Setting Key="get_posts_by_slug" SpName="get_posts_by_slug" DbName="sabasports" Plain="0"></Setting>
-        <Setting Key="get_posts_by_cate_slug_xtest" SpName="get_posts_by_cate_slug_xtest" DbName="sabasports" Plain="0">
+        <Setting Key="get_posts_by_cate_slug" SpName="get_posts_by_cate_slug" DbName="sabasports" Plain="0">
             <Mapping DataField="id" ObjectProperty="ID" class="Post" />
             <Mapping DataField="post_title" ObjectProperty="PostTitle" class="Post" />
             <Mapping DataField="post_content" ObjectProperty="PostContent" class="Post" />
