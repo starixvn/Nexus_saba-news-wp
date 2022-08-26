@@ -1,3 +1,2 @@
-FROM registry.nexdev.net:5050/docker/nginx:1.19.5
-COPY index.html /usr/share/nginx/index.html
+FROM hub.nexdev.net/base/nginx:1.23
 COPY ./.nginx/default.conf /etc/nginx/conf.d/default.conf

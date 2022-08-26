@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Remove="App_Data\SpNames.GC.xml" />
         <None Remove="App_Data\SpNames.LOCAL.xml" />
         <None Remove="App_Data\SpNames.PROD.xml" />
         <None Remove="App_Data\SpNames.UAT.xml" />
@@ -15,6 +16,9 @@
 
     <ItemGroup>
         <AdditionalFiles Include="..\.sonarlint\sabanews\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+        <Content Include="App_Data\SpNames.GC.xml">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
         <Content Include="App_Data\SpNames.LOCAL.xml">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
@@ -37,5 +41,13 @@
 
     <ItemGroup>
         <ProjectReference Include="..\SabaNews.Services\SabaNews.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="appsettings.GC.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 </Project>
