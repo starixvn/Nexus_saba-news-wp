@@ -4,12 +4,8 @@
 @import "../../../../components/block-extension";
 @import "../../../../components/container";
 @import "../../../../components/soccer-item";
-// @import "../../../../components/league-header-detail";
 @import "../../../../components/nav-tab";
-// @import "../../../../components/search-bar";
-@import "../../../../components/tooltip";
-// @import "../../../../components/breadcrumb";
-// @import "../../../../components/modal";
+@import "../../../../components/tooltip";;
 @import "../../../../components/recent-post";
 @import './components/wc-nav-tabs';
 
@@ -159,6 +155,9 @@
             border-bottom: none;
             padding-bottom: 0;
             justify-content: flex-end;
+          }
+          @include tableMobile{
+            border-bottom: 1px solid #C49F5D;
           }
           .soccer-team-logo{
             margin-left: 1rem;
@@ -327,5 +326,25 @@
               display: none;
           }
       }
+  }
+}
+
+.nav-select-mb{
+  select {
+    background-position: 2px;
+    background-repeat: no-repeat;
+    width: 2.4rem;
+    height: 2rem;
+    font-size: 0;
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MkwxMCAxMC45NzQ5TDEzLjgyNSA3LjE1ODJMMTUgOC4zMzMyTDEwIDEzLjMzMzJMNSA4LjMzMzJMNi4xNzUgNy4xNTgyWiIgZmlsbD0iI0YxMkYxOSIvPgo8L3N2Zz4K);
+  }
+  option {
+    color: #4f4f4f;
+    font-weight: 400;
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
   }
 }
