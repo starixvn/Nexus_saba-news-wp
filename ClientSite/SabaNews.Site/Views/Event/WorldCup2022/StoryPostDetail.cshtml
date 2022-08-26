@@ -139,13 +139,26 @@
                poster-portrait-src="https://amp.dev/static/samples/img/story_dog2_portrait.jpg"
                poster-square-src="https://amp.dev/static/samples/img/story_dog2_square.jpg"
                poster-landscape-src="https://amp.dev/static/samples/img/story_dog2_landscape.jpg">
+
+        <amp-story-page id="page-cover" auto-advance-after="10s" class="amp-story-page__full page-cover">
+            <amp-story-grid-layer template="fill">
+                <amp-img src=@Model.Post.FeatureImage
+                         width="1151" height="1535"
+                         layout="responsive">
+                </amp-img>
+            </amp-story-grid-layer>
+            <amp-story-grid-layer template="vertical">
+                <h1>@Html.Raw(Model.Post.PostTitle)</h1>
+                <p>@Model.Post.PostTime</p>
+            </amp-story-grid-layer>
+        </amp-story-page>
         @{
             var totalItems = Model.Stories.Count;
             var count = 0;
             foreach (var item in Model.Stories)
             {
                 count++;
-                <amp-story-page id="page-cover" auto-advance-after="10s" class="amp-story-page__full page-cover">
+                <amp-story-page id="page-@count" auto-advance-after="10s" class="amp-story-page__full page-cover">
                     <amp-story-grid-layer template="fill">
                         <amp-img src=@item.ImgSrc
                                  width="1151" height="1535"
@@ -158,49 +171,27 @@
                             <a href=@item.Link title="Link Description" class="detail-stories">
                                 Xem chi tiết
                             </a>
+                            @if (count >= totalItems)
+                            {
+                                <a href=@Model.BackUrl>Xem thêm stories</a>
+                            }
                         </amp-story-page-outlink>
                     </amp-story-grid-layer>
                     @if (count >= totalItems)
-                    {
-                        <amp-story-page-outlink layout="nodisplay" theme="custom" cta-accent-element="background" cta-accent-color="#894158">
-                            <a href=@Model.BackUrl>Xem thêm stories</a>
-                        </amp-story-page-outlink>
+                    {<amp-story-grid-layer template="vertical">
+                            <amp-story-page-outlink layout="nodisplay" theme="custom" cta-accent-element="background" cta-accent-color="#894158">
+                                <a href=@Model.BackUrl>Xem thêm stories</a>
+                            </amp-story-page-outlink>
+                        </amp-story-grid-layer>
                     }
 
                 </amp-story-page>
             }
         }
 
-
-
-        <amp-story-page auto-advance-after="10s" id="page-1" class="amp-story-page__full page-quote">
-            <amp-story-grid-layer template="fill">
-                <amp-img src="https://vncdn.sabasports.com/2022/08/tottenam-quan-tam-daniel-james.jpg"
-                         width="1151" height="1535"
-                         layout="responsive">
-                </amp-img>
-            </amp-story-grid-layer>
-
-            <amp-story-grid-layer template="vertical">
-                <div class="layer-content__inner">
-                    <div class="amp-quote">
-                        <div class="amp-quote__icon">
-                            <amp-img src="https://stamp.static.cnn.io/assets/images/quote-mark.svg" width="41" height="32" layout="intrinsic" class="amp-quote__icon"></amp-img>
-                        </div>
-                        <div class="amp-quote__inner">
-                            <div class="amp-quote__quote" style="color:#ffffff">
-                                <p>test</p>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam reprehenderit qui tempore assumenda dolorem, ipsam minima libero recusandae. Nisi quo aut voluptates qui magni temporibus vel ex omnis alias iure!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </amp-story-grid-layer>
-
-        </amp-story-page>
     </amp-story>
     <div class="back-top-home">
-        <a href=@Model.BackUrl><i class="icon-close"></i></a>
+        <a href="#" onclick="history.back()"><i class="icon-close"></i></a>
     </div>
 </body>
 </html>
