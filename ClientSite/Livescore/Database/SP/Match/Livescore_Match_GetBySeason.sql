@@ -1,3 +1,4 @@
+/*<info serverAlias="SSMS-sabasports" databaseType="2" executers="sabasports" isFunction="0" isNested="0"></info>*/
 DROP PROCEDURE IF EXISTS Livescore_Match_GetBySeason_xtest;
 DELIMITER //
 
