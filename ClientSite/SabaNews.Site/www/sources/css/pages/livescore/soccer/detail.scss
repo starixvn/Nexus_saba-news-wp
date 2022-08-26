@@ -514,7 +514,10 @@
                 }
                 .active{
                     color: #fff !important;
-                    clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+                    clip-path:polygon(87% 0, 100% 50%, 87% 100%, 13% 100%, 0 50%, 13% 0);
+                    @include tableMobile{
+                        clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+                    }
                     background: #66172A;
                     &::after{
                         display: none !important;
@@ -531,9 +534,10 @@
             position: relative;
             padding: 5px;
             background: #66172A;
-            clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+            clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
             @include tableMobile{
                 height: 4rem;
+                clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
             }
             &::after{
                 content: '';
@@ -544,8 +548,11 @@
                 right: 1px;
                 bottom: 1px;
                 background: #EEEEE4;;
-                clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+                clip-path: polygon(95% 0, 100% 49%, 95% 100%, 5% 100%, 0 50%, 5% 0);
                 z-index: -1;
+                @include tableMobile{
+                    clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+                }
             }
         }
     }

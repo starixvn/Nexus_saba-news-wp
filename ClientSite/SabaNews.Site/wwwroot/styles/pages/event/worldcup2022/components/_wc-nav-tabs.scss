@@ -1,6 +1,6 @@
 ﻿.live-score-nav {
     border-bottom: none;
-    height: 50px;
+    height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +11,11 @@
     background: #66172A;
     clip-path: polygon(96% 0,100% 49%,96% 100%,4% 100%,0 50%,4% 0);
 
+    @include tableMobile {
+        height: 4rem;
+        clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+    }
+
     &::after {
         content: '';
         display: block;
@@ -20,9 +25,12 @@
         right: 1px;
         bottom: 1px;
         background: #EEEEE4;
-        ;
         clip-path: polygon(96% 0,100% 49%,96% 100%,4% 100%,0 50%,4% 0);
         z-index: -1;
+
+        @include tableMobile {
+            clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+        }
     }
 
     a {
@@ -33,7 +41,7 @@
         margin: 0;
         position: relative;
         z-index: 1;
-        width: 124px;
+        width: 12.4rem;
         justify-content: center;
         font-size: 1.4rem;
         color: #2F2F2F;
@@ -42,10 +50,20 @@
         text-decoration: none;
         font-weight: 700;
 
+        @include tableMobile {
+            width: 11.3rem;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+        }
+
         &.active {
             clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
             background: #66172A;
             color: #fff;
+
+            @include tableMobile {
+                clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0);
+            }
 
             &::after {
                 display: none;

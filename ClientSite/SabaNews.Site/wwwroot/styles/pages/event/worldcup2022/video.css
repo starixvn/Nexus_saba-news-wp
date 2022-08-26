@@ -683,7 +683,7 @@ body {
 
 .live-score-nav {
   border-bottom: none;
-  height: 50px;
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -693,6 +693,10 @@ body {
   padding: 5px;
   background: #66172A;
   clip-path: polygon(96% 0, 100% 49%, 96% 100%, 4% 100%, 0 50%, 4% 0); }
+  @media screen and (max-width: 1024px) {
+    .live-score-nav {
+      height: 4rem;
+      clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0); } }
   .live-score-nav::after {
     content: '';
     display: block;
@@ -704,6 +708,9 @@ body {
     background: #EEEEE4;
     clip-path: polygon(96% 0, 100% 49%, 96% 100%, 4% 100%, 0 50%, 4% 0);
     z-index: -1; }
+    @media screen and (max-width: 1024px) {
+      .live-score-nav::after {
+        clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0); } }
   .live-score-nav a {
     padding: 0;
     height: 100%;
@@ -712,7 +719,7 @@ body {
     margin: 0;
     position: relative;
     z-index: 1;
-    width: 124px;
+    width: 12.4rem;
     justify-content: center;
     font-size: 1.4rem;
     color: #2F2F2F;
@@ -720,10 +727,18 @@ body {
     cursor: pointer;
     text-decoration: none;
     font-weight: 700; }
+    @media screen and (max-width: 1024px) {
+      .live-score-nav a {
+        width: 11.3rem;
+        font-size: 1.2rem;
+        line-height: 1.6rem; } }
     .live-score-nav a.active {
       clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
       background: #66172A;
       color: #fff; }
+      @media screen and (max-width: 1024px) {
+        .live-score-nav a.active {
+          clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0); } }
       .live-score-nav a.active::after {
         display: none; }
 
