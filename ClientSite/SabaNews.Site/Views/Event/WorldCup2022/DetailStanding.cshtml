@@ -63,8 +63,14 @@
 
 
             <div class="live-score-nav">
-                <a href="#vong-bang" class="active" id="btn-detail-standing">Vòng bảng</a>
-                <a href="#knock-out" id="btn-knock-out">Knock-out</a>
+                <ul>
+                    <li>
+                        <a href="#vong-bang" class="active" id="btn-detail-standing">Vòng bảng</a>
+                    </li>
+                    <li>
+                        <a href="#knock-out" id="btn-knock-out">Knock-out</a>
+                    </li>
+                </ul>
             </div>
 
 
@@ -77,11 +83,11 @@
                                 var count = 0;
                                 <div class="king-soccer">
                                     <div class="wc-table wc-table-king-soccer scroll-snap-items">
+                                        <div class="name-bxh title-items">@ViewResources.Board @standing.GroupName.Substring(0, 1)</div>
                                         <div class="wc-table-header">
-                                            <div class="wc-table-cell cell-rank">#</div>
+                                            <div class="wc-table-cell cell-rank first-width">#</div>
                                             <div class="wc-table-cell cell-participant">
                                                 Đội
-                                                @*@ViewResources.Board @standing.GroupName.Substring(0, 1)*@
                                             </div>
                                             <div class="wc-table-cell cell-rank">Trận</div>
                                             <div class="wc-table-cell cell-rank">Thắng</div>
@@ -98,7 +104,11 @@
                                             {
                                                 count++;
                                                 <div class="wc-table-row">
-                                                    <div class="wc-table-cell cell-rank">@count</div>
+                                                    <div class="wc-table-cell cell-rank first-width">
+                                                        <span class="first-width-number">
+                                                            @count
+                                                        </span>
+                                                    </div>
                                                     <div class="wc-table-cell cell-participant">
                                                         <ul class="team">
                                                             <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>
@@ -127,11 +137,11 @@
                                 var count = 0;
                                 <div class="king-soccer">
                                     <div class="wc-table wc-table-king-soccer scroll-snap-items">
+                                        <div class="name-bxh title-items">@ViewResources.Board @standing.GroupName.Substring(0, 1)</div>
                                         <div class="wc-table-header">
-                                            <div class="wc-table-cell cell-rank">#</div>
+                                            <div class="wc-table-cell cell-rank first-width">#</div>
                                             <div class="wc-table-cell cell-participant">
                                                 Đội
-                                                @*@ViewResources.Board @standing.GroupName.Substring(0, 1)*@
                                             </div>
                                             <div class="wc-table-cell cell-rank">Trận</div>
                                             <div class="wc-table-cell cell-rank">+/-</div>
@@ -143,7 +153,11 @@
                                             {
                                                 count++;
                                                 <div class="wc-table-row">
-                                                    <div class="wc-table-cell cell-rank">@count</div>
+                                                    <div class="wc-table-cell cell-rank first-width">
+                                                        <span class="first-width-number">
+                                                            @count
+                                                        </span>
+                                                    </div>
                                                     <div class="wc-table-cell cell-participant">
                                                         <ul class="team">
                                                             <li class="team-logo"><img src="@GetTeamIcon(item.Icon)" /></li>

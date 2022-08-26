@@ -714,69 +714,84 @@ body {
   bottom: 30px;
   width: 100%; }
 
-.live-score-nav {
-  border-bottom: none;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 38.6rem;
-  margin: 2rem auto;
-  position: relative;
-  padding: 5px;
-  background: #66172A;
-  clip-path: polygon(96% 0, 100% 49%, 96% 100%, 4% 100%, 0 50%, 4% 0); }
-  @media screen and (max-width: 1024px) {
-    .live-score-nav {
-      height: 4rem;
-      clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0); } }
-  .live-score-nav::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    right: 1px;
-    bottom: 1px;
-    background: #EEEEE4;
-    clip-path: polygon(96% 0, 100% 49%, 96% 100%, 4% 100%, 0 50%, 4% 0);
-    z-index: -1; }
-    @media screen and (max-width: 1024px) {
-      .live-score-nav::after {
-        clip-path: polygon(97% 0, 100% 49%, 97% 100%, 3% 100%, 0 50%, 3% 0); } }
-  .live-score-nav a {
-    padding: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    width: 12.4rem;
-    justify-content: center;
-    font-size: 1.4rem;
-    color: #2F2F2F;
-    text-transform: unset;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: 700; }
-    @media screen and (max-width: 1024px) {
-      .live-score-nav a {
-        width: 11.3rem;
-        font-size: 1.2rem;
-        line-height: 1.6rem; } }
-    .live-score-nav a.active {
-      clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-      background: #66172A;
-      color: #fff; }
-      @media screen and (max-width: 1024px) {
-        .live-score-nav a.active {
-          clip-path: polygon(93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%, 7% 0); } }
-      .live-score-nav a.active::after {
-        display: none; }
-
-.nav-select-mb {
-  margin-bottom: 4rem; }
-
 .king-soccer {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  max-width: 80rem;
+  margin: 0 auto; }
+  .king-soccer .wc-table {
+    background: #FAFAED;
+    color: #2F2F2F;
+    font-weight: 400 !important;
+    overflow: unset;
+    margin-bottom: 3rem; }
+    .king-soccer .wc-table-header {
+      box-shadow: none !important;
+      background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
+      color: #fff;
+      border-radius: 5px 5px 0px 0px;
+      height: 7rem !important;
+      padding: 1.5rem 1.2rem 0 1.2rem !important; }
+      @media screen and (max-width: 1024px) {
+        .king-soccer .wc-table-header {
+          height: 6rem !important; } }
+      .king-soccer .wc-table-header .cell-rank {
+        color: #fff !important;
+        font-weight: 700 !important; }
+    .king-soccer .wc-table-body {
+      border: 1px solid #C8C8B0;
+      overflow: hidden;
+      border-radius: 0px 0px 5px 5px; }
+      .king-soccer .wc-table-body .wc-table-row {
+        border-bottom: 1px solid #C8C8B0;
+        margin: 0 1.2rem; }
+        .king-soccer .wc-table-body .wc-table-row:last-child {
+          border: none; }
+    .king-soccer .wc-table .cell-rank {
+      color: #2F2F2F;
+      font-weight: 400; }
+      .king-soccer .wc-table .cell-rank.first-width {
+        width: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+      .king-soccer .wc-table .cell-rank .first-width-number {
+        width: 2rem;
+        height: 2rem;
+        background: #5C1224;
+        border-radius: 3px;
+        color: #fff;
+        display: block; }
+
+.live-score-nav {
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 0.4rem;
+  margin-bottom: 4rem;
+  max-width: 80rem;
+  margin: 4rem auto; }
+  .live-score-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; }
+    .live-score-nav ul li a {
+      color: #9D9D9D;
+      margin-right: 4rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 1.9rem;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 0.7rem; }
+      .live-score-nav ul li a.active {
+        color: #48041A; }
+        .live-score-nav ul li a.active:after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 0.2rem;
+          background: #48041A;
+          position: absolute;
+          bottom: 0;
+          left: 0; }
+    .live-score-nav ul li:last-child {
+      margin-right: 0; }
