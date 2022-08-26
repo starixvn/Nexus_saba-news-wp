@@ -40,7 +40,7 @@ describe('AppContainer', () => {
             }
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime('2022-08-18 10:00:00');
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
             // Act
             const result = instance.checkIsFinished(league);
 
@@ -55,7 +55,7 @@ describe('AppContainer', () => {
             }
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
-            DateTimeService.getCurrentClientDateTime('2022-08-18 10:00:00');
+            DateTimeService.getCurrentClientDateTime = jest.fn().mockReturnValue('2022-08-18 10:00:00');
             // Act
             const result = instance.checkIsFinished(league);
 

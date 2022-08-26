@@ -8,7 +8,9 @@ import Site from '@jsroot/common/site';
 describe('Grid', () => {
     const defaultProps = {
         selectedStageId: 0,
-        stages: 0,
+        stages: [
+            {key: 1}, {key: 2}
+        ],
         setSelectedStageId: jest.fn(),
         getMatches: jest.fn()
     };
@@ -181,9 +183,13 @@ describe('Grid', () => {
     })
 
     describe('renders', () => {
-        it('render correctly when isMobile = true', () => {
+        it('render correctly when isMobile = true & selectedStageId = 0', () => {
             // Arrange
-            const container = shallow(<Grid {...defaultProps} />);
+            const props = {
+                ...defaultProps,
+                selectedStageId: 0
+            };
+            const container = shallow(<Grid {...props} />);
             const instance = container.instance();
             instance.setState({ isMobile: true });
 
@@ -193,9 +199,13 @@ describe('Grid', () => {
             // Assert
             expect(result).toMatchSnapshot();
         });
-        it('render correctly when isMobile = false', () => {
+        it('render correctly when isMobile = false & selectedStageId != 0', () => {
             // Arrange
-            const container = shallow(<Grid {...defaultProps} />);
+            const props = {
+                ...defaultProps,
+                selectedStageId: 1
+            };
+            const container = shallow(<Grid {...props} />);
             const instance = container.instance();
             instance.setState({ isMobile: false });
 
