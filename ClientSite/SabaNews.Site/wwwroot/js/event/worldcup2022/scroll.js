@@ -83,36 +83,35 @@
             });
     }
 
+    function dataInit() {
+        page = 1;
+        isLoadData = true;
+        $('.lds-ellipsis').show();
+        currentscrollHeight = 0;
+        GetVideo();
+    }
+
     function HandleBtn() {
         $(document).on('click', '#btn-showall', function () {
             $('#btn-showhighlight').removeClass("active");
             $('#btn-showguess').removeClass("active");
             $("#btn-showall").addClass("active");
             slug = 'video-world-cup-2022';
-            page = 1;
-            isLoadData = true;
-            currentscrollHeight = 0;
-            GetVideo();
+            dataInit();
         });
         $(document).on('click', '#btn-showhighlight', function () {
             $('#btn-showhighlight').addClass("active");
             $('#btn-showguess').removeClass("active");
             $("#btn-showall").removeClass("active");
             slug = 'video-highlights-world-cup-2022';
-            page = 1;
-            isLoadData = true;
-            currentscrollHeight = 0;
-            GetVideo();
+            dataInit();
         });
         $(document).on('click', '#btn-showguess', function () {
             $('#btn-showhighlight').removeClass("active");
             $('#btn-showguess').addClass("active");
             $("#btn-showall").removeClass("active");
             slug = 'video-du-doan-world-cup-2022';
-            page = 1;
-            isLoadData = true;
-            currentscrollHeight = 0;
-            GetVideo();
+            dataInit();
         });
     }
 
