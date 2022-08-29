@@ -97,7 +97,8 @@ export const WorldCup = {
     GroupsStage: 30537,
     ThirdPlace: 30541,
     FinalStage: 30542,
-    MatchDetailUrl: 'lich-thi-dau/world-cup'
+    MatchDetailUrl: 'lich-thi-dau/world-cup',
+    Title: 'World Cup 2022:'
 };
 
 export const StageMode = {

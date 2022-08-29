@@ -8,6 +8,7 @@ import MatchGeneralInfo from './MatchGeneralInfo';
 import FavoriteLeagues from '@jsroot/components/FavoriteLeagues';
 import FavoriteMatches from '@jsroot/components/FavoriteMatches';
 import CommonFunctions from '@jsroot/common/common-functions';
+import { WorldCup } from '../../../../../common/constants';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -33,15 +34,17 @@ export class AppContainer extends Component {
 
     checkIsEvent = (league, isEventPage) =>  CommonFunctions.isEvent(league, isEventPage);
 
+    getEventTitle = isEvent => isEvent ? WorldCup.Title : '';
+
     render() {
         const { match, favLeagues, leagues } = this.props;
         if (!this.props.match || !this.props.match.generalInfo) {
             return null;
         }
+        const isEvent = this.checkIsEvent(match.generalInfo.league, window.isEventPage);
         const homeTeamName = CommonFunctions.getTeamName(match.generalInfo.homeTeam);
         const awayTeamName = CommonFunctions.getTeamName(match.generalInfo.awayTeam);
-        document.title = `${homeTeamName} vs ${awayTeamName}`;
-        const isEvent = this.checkIsEvent(match.generalInfo.league, window.isEventPage);
+        document.title = `${this.getEventTitle(isEvent)} ${homeTeamName} vs ${awayTeamName}`;
         return (
             <>
                 <div className="container livescore-container">
