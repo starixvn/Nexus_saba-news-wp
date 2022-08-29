@@ -26,7 +26,7 @@ describe('AppContainer', () => {
             window.innerWidth = 0;
         });
 
-        it('inital correctly state when innerWidth < 768', () => {
+        it('inital correctly state when innerWidth < 1024', () => {
             // Arrange
             window.innerWidth = 600;
 
@@ -37,9 +37,9 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('inital correctly state when innerWidth = 768', () => {
+        it('inital correctly state when innerWidth = 1024', () => {
             // Arrange
-            window.innerWidth = 768;
+            window.innerWidth = 1024;
 
             // Act
             const instance = shallow(<AppContainer {...defaultProps} />).instance();
@@ -48,9 +48,9 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('inital correctly state when innerWidth > 768', () => {
+        it('inital correctly state when innerWidth > 1024', () => {
             // Arrange
-            window.innerWidth = 960;
+            window.innerWidth = 1030;
 
             // Act
             const instance = shallow(<AppContainer {...defaultProps} />).instance();
@@ -94,7 +94,7 @@ describe('AppContainer', () => {
     });
 
     describe('handleResize', () => {
-        it('updates correctly state when isMobile = false and window.innerWidth < 768', () => {
+        it('updates correctly state when isMobile = false and window.innerWidth < 1024', () => {
             // Arrange
             window.innerWidth = 767;
             const container = shallow(<AppContainer {...defaultProps} />);
@@ -108,9 +108,9 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('updates correctly state when isMobile = false and window.innerWidth = 768', () => {
+        it('updates correctly state when isMobile = false and window.innerWidth = 1024', () => {
             // Arrange
-            window.innerWidth = 768;
+            window.innerWidth = 1024;
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
             instance.setState({ isMobile: false });
@@ -122,7 +122,7 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('do nothing when isMobile = true and window.innerWidth < 768', () => {
+        it('do nothing when isMobile = true and window.innerWidth < 1024', () => {
             // Arrange
             window.innerWidth = 767;
             const container = shallow(<AppContainer {...defaultProps} />);
@@ -140,7 +140,7 @@ describe('AppContainer', () => {
 
         it('do nothing when isMobile = true and window.innerWidth = 768', () => {
             // Arrange
-            window.innerWidth = 768;
+            window.innerWidth = 1024;
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
             instance.setState({ isMobile: true });
@@ -154,9 +154,9 @@ describe('AppContainer', () => {
             expect(instance.state).toEqual({ isMobile: true });
         });
 
-        it('updates correctly state when isMobile = true and window.innerWidth > 768', () => {
+        it('updates correctly state when isMobile = true and window.innerWidth > 1024', () => {
             // Arrange
-            window.innerWidth = 769;
+            window.innerWidth = 1030;
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
             instance.setState({ isMobile: true });

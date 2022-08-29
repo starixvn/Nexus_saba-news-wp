@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { StageMode, MobileMaxWidth } from '@jsroot/common/constants';
+import { StageMode, Width1024 } from '@jsroot/common/constants';
 import Grid from './Grid';
 
 export class AppContainer extends Component {
@@ -10,7 +10,7 @@ export class AppContainer extends Component {
         super(props);
 
         this.state = {
-            isMobile: window.innerWidth <= MobileMaxWidth ? true : false
+            isMobile: window.innerWidth <= Width1024 ? true : false
         };
     }
 
@@ -25,10 +25,10 @@ export class AppContainer extends Component {
 
     handleResize = () => {
         const isMobile = this.state.isMobile;
-        if (!isMobile && window.innerWidth <= MobileMaxWidth) {
+        if (!isMobile && window.innerWidth <= Width1024) {
             this.setState({ isMobile: true });
         } else {
-            if (isMobile && window.innerWidth > MobileMaxWidth) {
+            if (isMobile && window.innerWidth > Width1024) {
                 this.setState({ isMobile: false });
             }
         }
