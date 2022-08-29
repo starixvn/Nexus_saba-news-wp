@@ -198,7 +198,7 @@ export class AppContainer extends Component {
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
         return (
-            <div className={`play-offs ${!isMobile ? "wc-bg" : ""}`}>
+            <div className={`play-offs ${!isMobile ? 'wc-bg' : ''}`}>
                 {
                     isMobile &&
                     <div className="draw-container">

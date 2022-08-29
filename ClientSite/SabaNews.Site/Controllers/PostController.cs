@@ -112,11 +112,6 @@
         {
             var slug = cateSlug;
             var name = cateName;
-            var cateEvent = GetEventInfo(cateSlug);
-            if (cateEvent != null)
-            {
-                return cateEvent;
-            }
             if (cateSlug.Contains(Constants.CollectionSlug) || (cateSlug.Contains(Constants.BasketballSlug) 
                 && !cateSlug.Contains(Constants.BasketballVideoSlug)) || cateSlug.Contains(Constants.TennisSlug))
             {
@@ -130,22 +125,6 @@
             slug = subCateSlug.Count > 0 ? subCateSlug[0] : listCateSlug[0];
             name = subCateName.Count > 0 ? subCateName[0] : listCateName[0];
             return new CateInfo { Slug = slug.Trim(), Name = name.Trim() };
-        }
-
-        private static CateInfo GetEventInfo(string cateSlug)
-        {
-            var cateEvents =  PostHelper.GetEventCates();
-            var listCateSlug = cateSlug.Split(',');
-            foreach (var slug in listCateSlug)
-            {
-                var cate = cateEvents.Find(item => item.Slug == slug.Trim());
-                if (cate != null)
-                {
-                    return cate;
-                }
-            }
-            return null;
-
         }
 
         [HttpPost]
