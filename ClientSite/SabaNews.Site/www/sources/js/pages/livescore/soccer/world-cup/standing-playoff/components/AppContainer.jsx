@@ -201,11 +201,13 @@ export class AppContainer extends Component {
             <div className={`play-offs ${!isMobile ? 'wc-bg' : ''}`}>
                 {
                         isMobile &&
-                        <div className="draw-container">
-                            <div className="draw-wrapper">
-                                <div className="shadowHeader"></div>
-                                <div className="learHeader"></div>
-                                <Grid matches={groupMatches} isMobile={isMobile} />
+                        <div className="wc-playoffs-showmb">
+                            <div className="draw-container">
+                                <div className="draw-wrapper">
+                                    <div className="shadowHeader"></div>
+                                    <div className="learHeader"></div>
+                                    <Grid matches={groupMatches} isMobile={isMobile} />
+                                </div>
                             </div>
                         </div>
                     }
@@ -213,17 +215,72 @@ export class AppContainer extends Component {
                         !isMobile &&
                        
                         <div className="wc-playoffs-showpc">
-                                <div className="flex-play-offs">
+                            <div className="flex-play-offs">
                                 <div className="draw-container">
                                     <div className="draw-wrapper">
                                         <Grid matches={prevMatchStages} isMobile={isMobile} />
                                     </div>
                                 </div>
                                 <div className="wc-result">
-                                    <i className="icon-cup"></i>
-                                    <p>Chung kết</p>
+                                    <ul className="wc-result-header">
+                                        <li><i className="icon-cup"></i></li>
+                                        <li>Chung kết</li>
+                                    </ul>
+                                    <div className="draw">
+                                        <div className="draw__round draw__round--result">
+                                            <div className="draw__brackets">
+                                                <div className="draw__bracket draw__bracket--odd ">
+                                                    <div className="bracket">
+                                                        <img class="bracket__image bracket__image--home" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/8i06y1H02Qa.png"/>
+                                                        <div className="bracket__participant bracket__participant--home win">
+                                                            <span className="bracket__name ">
+                                                                 Manchester City
+                                                            </span>
+                                                        </div>
+                                                        <div class="bracket__result bracket__result--home">
+                                                            <div class="result ">1</div>
+                                                            <div class="result ">0</div>
+                                                        </div>
+                                                        <img class="bracket__image bracket__image--away" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/d1OqEYFeRpM.png" />
+                                                        <div class="bracket__participant bracket__participant--away ">
+                                                            <span class="bracket__name bracket__name--advancing">Atletico Madrid</span>
+                                                        </div>
+                                                        <div class="bracket__result bracket__result--away">
+                                                            <div class="result ">0</div>
+                                                            <div class="result ">0</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="draw__bracket draw__bracket--even ">
+                                                    <div className="bracket">
+                                                        <img class="bracket__image bracket__image--home" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/8i06y1H02Qa.png"/>
+                                                        <div className="bracket__participant bracket__participant--home win">
+                                                            <span className="bracket__name ">
+                                                                 Manchester City
+                                                            </span>
+                                                        </div>
+                                                        <div class="bracket__result bracket__result--home">
+                                                            <div class="result ">1</div>
+                                                            <div class="result ">0</div>
+                                                        </div>
+                                                        <img class="bracket__image bracket__image--away" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/d1OqEYFeRpM.png" />
+                                                        <div class="bracket__participant bracket__participant--away ">
+                                                            <span class="bracket__name bracket__name--advancing">Atletico Madrid</span>
+                                                        </div>
+                                                        <div class="bracket__result bracket__result--away">
+                                                            <div class="result ">0</div>
+                                                            <div class="result ">0</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul className="wc-result-footer">
+                                        <li>Tranh hạng 3</li>
+                                    </ul>
                                 </div>
-                                <div className="draw-container">
+                                <div className="draw-container wc-flip-x">
                                     <div className="draw-wrapper">
                                         <Grid matches={lastMatchStages} isMobile={isMobile} />
                                     </div>
