@@ -123,20 +123,60 @@
 
         .detail-stories {
             text-decoration: none;
-            background: #6D2D42;
+            background: #EF4300;
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 16px;
+            width: 200px;
+            border-radius: 5px;
+            margin: 0 auto;
             display: block;
         }
         .view-more-stories {
             position: fixed;
             bottom: 20px;
-            width: 100%;
-            background: #6D2D42;
+            background: #EF4300;
             color: #fff;
-            left: 0;
             text-decoration: none;
-            display : block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            width: 200px;
+            left: 50%;
+            transform: translate(-50%,0);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .view-more-stories i{
+            margin-right: 5px;
+        }
+        .align-end{
+            align-content : end;
+        }
+        .amp-inner{
+            margin-bottom : 90px;
+        }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .amp-image__overlay:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
         }
     </style>
 
@@ -158,12 +198,14 @@
             <amp-story-grid-layer template="fill">
                 <amp-img src=@Model.Post.FeatureImage
                          width="1151" height="1535"
-                         layout="responsive">
+                         layout="responsive" class="amp-image amp-image__overlay">
                 </amp-img>
             </amp-story-grid-layer>
-            <amp-story-grid-layer template="vertical">
-                <h1>@Html.Raw(Model.Post.PostTitle)</h1>
-                <p>@Model.Post.PostTime</p>
+            <amp-story-grid-layer template="vertical" class="align-end">
+                <div class="amp-inner">
+                    <h1>@Html.Raw(Model.Post.PostTitle)</h1>
+                    <p>@Model.Post.PostTime</p>
+                </div>
             </amp-story-grid-layer>
         </amp-story-page>
         @{
@@ -176,20 +218,22 @@
                     <amp-story-grid-layer template="fill">
                         <amp-img src=@item.ImgSrc
                                  width="1151" height="1535"
-                                 layout="responsive">
+                                 layout="responsive" class="amp-image amp-image__overlay">
                         </amp-img>
                     </amp-story-grid-layer>
-                    <amp-story-grid-layer template="vertical">
-                        <h1>@Html.Raw(item.Title)</h1>
-                        <amp-story-page-outlink>
+                    <amp-story-grid-layer template="vertical" class="align-end">
+                        <div class="amp-inner">
+                            <h1>@Html.Raw(item.Title)</h1>
+                            <amp-story-page-outlink>
                             <a href="@(item.Link != "" ? item.Link : "javascripts:;")" title="Link Description" class="detail-stories">
-                                Xem chi tiết
-                            </a>
-                            @if (count >= totalItems)
-                            {
-                                <a href=@Model.BackUrl class="view-more-stories"><i class="icon-close"></i> Xem thêm stories</a>
-                            }
-                        </amp-story-page-outlink>
+                                    Xem chi tiết
+                                </a>
+                                @if (count >= totalItems)
+                                {
+                                    <a href=@Model.BackUrl class="view-more-stories"><i class="icon-close"></i> Xem thêm stories</a>
+                                }
+                            </amp-story-page-outlink>
+                        </div>
                     </amp-story-grid-layer>
 
                 </amp-story-page>
