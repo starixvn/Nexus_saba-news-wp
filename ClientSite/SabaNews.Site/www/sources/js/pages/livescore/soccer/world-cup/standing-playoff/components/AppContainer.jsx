@@ -200,31 +200,39 @@ export class AppContainer extends Component {
         return (
             <div className={`play-offs ${!isMobile ? 'wc-bg' : ''}`}>
                 {
-                    isMobile &&
-                    <div className="draw-container">
-                        <div className="draw-wrapper">
-                            <div className="shadowHeader"></div>
-                            <div className="learHeader"></div>
-                            <Grid matches={groupMatches} isMobile={isMobile} />
-                        </div>
-                    </div>
-                }
-                {
-                    !isMobile &&
-                    <div className="wc-playoffs-showpc">
+                        isMobile &&
                         <div className="draw-container">
                             <div className="draw-wrapper">
-                                <Grid matches={prevMatchStages} isMobile={isMobile} />
+                                <div className="shadowHeader"></div>
+                                <div className="learHeader"></div>
+                                <Grid matches={groupMatches} isMobile={isMobile} />
                             </div>
                         </div>
-                        <div className="wc-result">Chung kết</div>
-                        <div className="draw-container">
-                            <div className="draw-wrapper">
-                                <Grid matches={lastMatchStages} isMobile={isMobile} />
-                            </div>
+                    }
+                    {
+                        !isMobile &&
+                       
+                        <div className="wc-playoffs-showpc">
+                                <div className="flex-play-offs">
+                                <div className="draw-container">
+                                    <div className="draw-wrapper">
+                                        <Grid matches={prevMatchStages} isMobile={isMobile} />
+                                    </div>
+                                </div>
+                                <div className="wc-result">
+                                    <i className="icon-cup"></i>
+                                    <p>Chung kết</p>
+                                </div>
+                                <div className="draw-container">
+                                    <div className="draw-wrapper">
+                                        <Grid matches={lastMatchStages} isMobile={isMobile} />
+                                    </div>
+                                </div>
+                                </div>
                         </div>
-                    </div>
-                }
+                    
+                    }
+                
 
             </div>
         );

@@ -40,8 +40,14 @@
 }
 
 .wc-playoffs-showpc{
+    max-width: 150rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.2rem;
     .draw-container{
         .draw-wrapper{
+            display: unset;
+            overflow: unset;
             .draw{
                 padding-bottom: 0;
                 &__round{
@@ -53,6 +59,10 @@
             }
         }
     }
+    .flex-play-offs{
+        
+    }
+   
 }
 
 
