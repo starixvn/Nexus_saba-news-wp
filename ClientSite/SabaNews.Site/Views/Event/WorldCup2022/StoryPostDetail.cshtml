@@ -182,7 +182,7 @@
                     <amp-story-grid-layer template="vertical">
                         <h1>@Html.Raw(item.Title)</h1>
                         <amp-story-page-outlink>
-                            <a href=@item.Link title="Link Description" class="detail-stories">
+                            <a href="@(item.Link != "" ? item.Link : "javascripts:;")" title="Link Description" class="detail-stories">
                                 Xem chi tiết
                             </a>
                             @if (count >= totalItems)
