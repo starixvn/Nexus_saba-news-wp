@@ -11,6 +11,16 @@
 @import './components/wc-modal';
 
 
+
+
+#detail-standing {
+    padding: 0 1.2rem;
+
+    @include tableMobile {
+        margin-top: 4rem;
+    }
+}
+
 .king-soccer {
     margin-bottom: 2rem;
     max-width: 80rem;
@@ -89,6 +99,10 @@
     margin-bottom: 4rem;
     max-width: 80rem;
     margin: 4rem auto;
+
+    @include tableMobile {
+        margin: 2rem auto;
+    }
 
     ul {
         list-style: none;

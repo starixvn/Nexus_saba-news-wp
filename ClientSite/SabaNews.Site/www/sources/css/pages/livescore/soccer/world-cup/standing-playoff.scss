@@ -50,6 +50,7 @@
             overflow: unset;
             .draw{
                 padding-bottom: 0;
+                margin-left: -1rem;
                 &__round{
                     grid-template-rows: auto; 
                 }
@@ -60,7 +61,24 @@
         }
     }
     .flex-play-offs{
-        
+        display: grid;
+        grid-template-columns: 64rem 21rem 64rem;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0.6rem;
+            height: 0.6rem;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #ededed;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #ddd;
+            border-radius: 3px;
+        }
     }
    
 }

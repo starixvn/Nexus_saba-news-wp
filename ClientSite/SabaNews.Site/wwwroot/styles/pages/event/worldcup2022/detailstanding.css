@@ -714,6 +714,12 @@ body {
   bottom: 30px;
   width: 100%; }
 
+#detail-standing {
+  padding: 0 1.2rem; }
+  @media screen and (max-width: 1024px) {
+    #detail-standing {
+      margin-top: 4rem; } }
+
 .king-soccer {
   margin-bottom: 2rem;
   max-width: 80rem;
@@ -770,6 +776,9 @@ body {
   margin-bottom: 4rem;
   max-width: 80rem;
   margin: 4rem auto; }
+  @media screen and (max-width: 1024px) {
+    .live-score-nav {
+      margin: 2rem auto; } }
   .live-score-nav ul {
     list-style: none;
     display: flex;
