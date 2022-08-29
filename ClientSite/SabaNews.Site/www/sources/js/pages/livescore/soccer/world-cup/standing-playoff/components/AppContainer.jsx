@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import { StageMode, Width1024 } from '@jsroot/common/constants';
 import Grid from './Grid';
+import { WorldCup } from '@jsroot/common/constants';
+import Item from './Item';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -187,8 +189,13 @@ export class AppContainer extends Component {
         return newStages;
     };
 
+    getMatchByStage = (matches, stage) => {
+        const match = matches.find(item => item.stage?.stageId === stage);
+        return match;
+    }
+
     render() {
-        const { matches } = this.props;
+        const { matches, league } = this.props;
         const { isMobile } = this.state;
         if (!matches || matches.length === 0) {
             return null;
@@ -197,6 +204,8 @@ export class AppContainer extends Component {
         groupMatches = groupMatches.reverse();
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
+        const finalMatch = this.getMatchByStage(matches, WorldCup.FinalStage);
+        const thirdPlace = this.getMatchByStage(matches, WorldCup.ThirdPlace);
         return (
             <div className={`play-offs ${!isMobile ? 'wc-bg' : ''}`}>
                 {
@@ -213,7 +222,6 @@ export class AppContainer extends Component {
                     }
                     {
                         !isMobile &&
-                       
                         <div className="wc-playoffs-showpc">
                             <div className="flex-play-offs">
                                 <div className="draw-container">
@@ -229,50 +237,8 @@ export class AppContainer extends Component {
                                     <div className="draw">
                                         <div className="draw__round draw__round--result">
                                             <div className="draw__brackets">
-                                                <div className="draw__bracket draw__bracket--odd ">
-                                                    <div className="bracket">
-                                                        <img class="bracket__image bracket__image--home" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/8i06y1H02Qa.png"/>
-                                                        <div className="bracket__participant bracket__participant--home win">
-                                                            <span className="bracket__name ">
-                                                                 Manchester City
-                                                            </span>
-                                                        </div>
-                                                        <div class="bracket__result bracket__result--home">
-                                                            <div class="result ">1</div>
-                                                            <div class="result ">0</div>
-                                                        </div>
-                                                        <img class="bracket__image bracket__image--away" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/d1OqEYFeRpM.png" />
-                                                        <div class="bracket__participant bracket__participant--away ">
-                                                            <span class="bracket__name bracket__name--advancing">Atletico Madrid</span>
-                                                        </div>
-                                                        <div class="bracket__result bracket__result--away">
-                                                            <div class="result ">0</div>
-                                                            <div class="result ">0</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="draw__bracket draw__bracket--even ">
-                                                    <div className="bracket">
-                                                        <img class="bracket__image bracket__image--home" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/8i06y1H02Qa.png"/>
-                                                        <div className="bracket__participant bracket__participant--home win">
-                                                            <span className="bracket__name ">
-                                                                 Manchester City
-                                                            </span>
-                                                        </div>
-                                                        <div class="bracket__result bracket__result--home">
-                                                            <div class="result ">1</div>
-                                                            <div class="result ">0</div>
-                                                        </div>
-                                                        <img class="bracket__image bracket__image--away" loading="lazy" src="https://sports-cdn.gszs388.com/uploads/teamIcon/1628/d1OqEYFeRpM.png" />
-                                                        <div class="bracket__participant bracket__participant--away ">
-                                                            <span class="bracket__name bracket__name--advancing">Atletico Madrid</span>
-                                                        </div>
-                                                        <div class="bracket__result bracket__result--away">
-                                                            <div class="result ">0</div>
-                                                            <div class="result ">0</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <Item match={{...finalMatch, league}} positionClass={'draw__bracket--odd'} index={0}/>
+                                                <Item match={{...thirdPlace, league}} positionClass={'draw__bracket--even'} index={1}/>
                                             </div>
                                         </div>
                                     </div>
@@ -287,9 +253,7 @@ export class AppContainer extends Component {
                                 </div>
                                 </div>
                         </div>
-                    
                     }
-                
 
             </div>
         );
