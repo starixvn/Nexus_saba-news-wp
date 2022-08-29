@@ -40,12 +40,16 @@
 }
 
 .wc-playoffs-showmb{
-    .draw{
-        &__bracket {
-            .bracket {
-                background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
-                border: none !important;
-                color: #fff;
+    .draw-container {
+        .draw-wrapper{
+            .draw{
+                &__bracket {
+                    .bracket {
+                        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+                        border: none;
+                        color: #fff;
+                    }
+                }
             }
         }
     }
@@ -94,12 +98,20 @@
             background: #ddd;
             border-radius: 3px;
         }
-        .draw{
-            &__bracket {
-                .bracket {
-                    background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
-                    border: none !important;
-                    color: #fff;
+        .draw-container {
+            .draw-wrapper{
+                .draw{
+                    &__bracket {
+                        .bracket {
+                            background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+                            border: none;
+                            color: #fff;
+                            &--active{
+                                background: linear-gradient(162.06deg, #FFD68F 0%, #C2A97D 100%);
+                                color:#510D1D;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -160,8 +172,9 @@
                     background: linear-gradient(180deg, #67182B 0%, #470817 100%);
                     border-radius: 3px;
                     cursor: pointer;
+                    color : #fff;
                     grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem / max-content 1fr max-content;
-        
+                    
                     &--eventless {
                       cursor: default;
                     }
@@ -171,11 +184,10 @@
                     }
         
                     &--active {
-                      background: #3b3a3c;
-                      border: 1px solid #3b3a3c;
-                      color: $white;
-                      position: relative;
-                      z-index: 2;
+                        background: linear-gradient(162.06deg, #FFD68F 0%, #C2A97D 100%);
+                        color:#510D1D;
+                        position: relative;
+                        z-index: 2;
                     }
         
                     &__image {
@@ -231,8 +243,7 @@
                       width: 100%;
                       box-sizing: border-box;
                       z-index: 1;
-                      background: linear-gradient(180deg, #67182B 0%, #470817 100%);
-                      border: 1px solid red;
+                      background: #fff;
                       border-radius: 3px;
                       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
                       padding: 0.6rem;
