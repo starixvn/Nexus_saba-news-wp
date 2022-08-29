@@ -1160,6 +1160,19 @@ body {
   background-size: cover; }
   .wc-block-bxh a {
     text-decoration: none; }
+    @media screen and (max-width: 1024px) {
+      .wc-block-bxh a {
+        margin-left: 1.2rem; }
+        .wc-block-bxh a:first-child {
+          margin-left: 1.2rem; }
+        .wc-block-bxh a:last-child {
+          margin-right: 0; }
+        .wc-block-bxh a .wc-table {
+          margin-left: 0; }
+          .wc-block-bxh a .wc-table:first-child {
+            margin-left: 0; }
+          .wc-block-bxh a .wc-table:last-child {
+            margin-right: 0; } }
   .wc-block-bxh .title-section h2 a {
     color: #FFD68F; }
   .wc-block-bxh .dots span {
