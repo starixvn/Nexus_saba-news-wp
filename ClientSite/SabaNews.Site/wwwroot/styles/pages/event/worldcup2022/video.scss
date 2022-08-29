@@ -15,6 +15,7 @@
 
 .video-items {
     .title {
+        margin-top : 0;
         h2 {
             a {
                 color: #2f2f2f;
@@ -26,6 +27,7 @@
     }
     .hover-image{
         max-height : 15rem;
+        height: 15rem;
         @include tableMobile{
             max-height : 20rem;
         }
