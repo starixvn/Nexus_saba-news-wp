@@ -62,10 +62,11 @@
     }
     .flex-play-offs{
         display: grid;
-        grid-template-columns: 64rem 21rem 64rem;
+        grid-template-columns: 61rem 20rem 61rem;
         align-items: center;
         justify-content: flex-start;
         overflow: auto;
+        grid-gap: 1rem;
         &::-webkit-scrollbar {
             width: 0.6rem;
             height: 0.6rem;
@@ -81,6 +82,27 @@
         }
     }
    
+    .wc-result{
+        &-header{
+            list-style: none;
+            text-align: center;
+            li{
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.9rem;
+                color: #EF4300;
+                i{
+                    font-size: 2.4rem;
+                }
+            }
+        }
+        .draw{
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 21rem;
+            user-select: none;
+        }
+    }
 }
 
 
