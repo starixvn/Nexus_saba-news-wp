@@ -60,12 +60,11 @@
         public async Task<IActionResult> Index()
         {
             var model = await dataControlService.GetWorldCupPageViewModel();
-            var title = model.Category.SEOTitle ??= model.Category.Title;
 
             var header = new HeaderViewModel
             {
                 HeadTitle = model.Category.Title,
-                Title = title,
+                Title = WorldCup2022.TitleHomepage,
                 Description = model.Category.Description,
                 Slug = WorldCup2022.HomepageSlug
             };
@@ -82,6 +81,19 @@
             {
                 return View(Constants.EmptyBlogView);
             }
+            var cateInfoWC = GetCateInfoWC(postWC.CatesName, postWC.CategoriesSlug);
+            if (cateInfoWC.Slug == WorldCup2022.CommentarySlug)
+            {
+                Response.Redirect("nhan-dinh/" + slug);
+            }
+
+            var viewModel = await GetViewModelPostDetail(postWC, cateInfoWC, slug);
+
+            return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
+        }
+
+        private async Task<SingleViewModel> GetViewModelPostDetail(Post postWC, CateInfo cateInfoWC, string slug)
+        {
             SavePost savePostWC = null;
             var isUserLogin = sessionService.User != null;
             if (isUserLogin)
@@ -89,7 +101,6 @@
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePostWC = user.HandleSavePosts.Find(val => val.PostID == postWC.ID);
             }
-            var cateInfoWC = GetCateInfoWC(postWC.CatesName, postWC.CategoriesSlug);
             var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
             cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
             var domain = configuration.GetValue<string>("BaseUrl");
@@ -102,6 +113,20 @@
                 IsVideo = PostHelper.CheckIsVideo(cateParentsWC),
                 CateInfo = cateInfoWC
             };
+            return viewModel;
+        }
+
+        [Route("world-cup-2022/nhan-dinh/{slug}")]
+        public async Task<IActionResult> CommentaryDetail(string slug)
+        {
+            var postCommentary = await postService.GetPostDetailBySlugAsync(slug, Constants.postType);
+            if (postCommentary == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            var cateInfoCommentary = GetCateInfoWC(postCommentary.CatesName, postCommentary.CategoriesSlug);
+
+            var viewModel = await GetViewModelPostDetail(postCommentary, cateInfoCommentary, slug);
 
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
@@ -120,7 +145,7 @@
             return ViewComponent("SidebarWC", new { cateSlug, postID });
         }
 
-        [Route("world-cup-2022/tin-tuc-world-cup-2022")]
+        [Route("world-cup-2022/tin-moi-nhat")]
         public async Task<IActionResult> LastestNews()
         {
             var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = CategorySlugWC, _Start = 0, _End = Constants.GetTenItems};
@@ -128,8 +153,8 @@
 
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.LastestNews,
-                Slug = WorldCup2022.LastestNewsSlug
+                Title = WorldCup2022.TitleLastestNews,
+                Slug = WorldCup2022.UrlLastestNewsSlug
             };
 
             var viewModel = new LastestNewsViewModel
@@ -146,7 +171,7 @@
             return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
-        [Route("world-cup-2022/nhan-dinh-world-cup-2022")]
+        [Route("world-cup-2022/nhan-dinh")]
         public async Task<IActionResult> CommentaryNews()
         {
             var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.CommentarySlug, _Start = 0, _End = Constants.GetTenItems };
@@ -154,8 +179,8 @@
 
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.Commentary,
-                Slug = WorldCup2022.CommentarySlug
+                Title = WorldCup2022.TitleCommentary,
+                Slug = WorldCup2022.UrlCommentarySlug
             };
 
             var viewModel = new LastestNewsViewModel
@@ -173,26 +198,26 @@
             return View("~/Views/Event/WorldCup2022/LastestNewsWC.cshtml", viewModel);
         }
 
-        [Route("world-cup-2022/lich-thi-dau-world-cup-2022")]
+        [Route("world-cup-2022/lich-thi-dau")]
         public IActionResult Fixture()
         {
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.Fixture,
-                Slug = WorldCup2022.FixtureSlug
+                Title = WorldCup2022.TitleFixture,
+                Slug = WorldCup2022.UrlFixtureSlug
             };
             return View("~/Views/Event/WorldCup2022/Fixture.cshtml", header);
         }
 
-        [Route("world-cup-2022/bang-xep-hang-world-cup-2022")]
+        [Route("world-cup-2022/bang-xep-hang")]
         public async Task<IActionResult> Standing()
         {
             var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.Standing,
-                Slug = WorldCup2022.StandingSlug
+                Title = WorldCup2022.TitleStanding,
+                Slug = WorldCup2022.UrlStandingSlug
             };
             var viewModel = new LastestNewsViewModel
             {
@@ -202,13 +227,13 @@
             return View("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewModel);
         }
 
-        [Route("world-cup-2022/video-world-cup-2022")]
+        [Route("world-cup-2022/video")]
         public async Task<IActionResult> Video()
         {
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.Video,
-                Slug = WorldCup2022.VideoSlug
+                Title = WorldCup2022.TitleVideo,
+                Slug = WorldCup2022.UrlVideoSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
             var videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
@@ -233,7 +258,7 @@
             {
                 Header = new HeaderViewModel
                 {
-                    Title = WorldCup2022.Fixture,
+                    Title = WorldCup2022.TitleFixture,
                     Slug = WorldCup2022.FixtureSlug
                 },
                 MatchId = matchId
@@ -247,8 +272,8 @@
             const int pageSize = Constants.GetEightItems;
             var header = new HeaderViewModel
             {
-                Title = WorldCup2022.StoryPost,
-                Slug = WorldCup2022.StoryPostSlug
+                Title = WorldCup2022.TitleStoryPost,
+                Slug = WorldCup2022.UrlStoryPostSlug
             };
             var cateSlugCriteria = new GetPostsByCateSlugCriteria 
             { 
@@ -291,6 +316,7 @@
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
