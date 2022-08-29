@@ -111,6 +111,21 @@
                                 color:#510D1D;
                             }
                         }
+                        &:after {
+                            border-color: #C8C8B0;
+                          }
+                        &--even {
+                            &:after {
+                              border-bottom: 1px solid #C8C8B0;
+                            }
+            
+                          }
+                
+                        &--odd {
+                            &:after {
+                              border-top: 1px solid #C8C8B0;
+                            }
+                        }
                     }
                 }
             }
