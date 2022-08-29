@@ -323,12 +323,16 @@
             }
             else
             {
-                var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = 0, _End = Constants.GetTwelveItems + 1 };
+                var outstandingCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = WorldCup2022.VideoSlug, _Start = (param.Page - 1) * pageSize, _End = Constants.GetTwelveItems + 1 };
                 var videosOutstanding = await postService.GetPostsByCateSlugAsync(outstandingCriteria);
-                var start = param.Page == 1 ? (param.Page - 1) : ((param.Page - 1) * pageSize + 1);
-                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize };
+                var start = (param.Page - 1) * pageSize;
+                var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
                 IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
                 videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
+                if(videos.Count() > 12) {
+                    var idlast = videos.Last().ID;
+                    videos = videos.Where(x => x.ID != idlast).ToList();
+                }
                 return PartialView("~/Views/Event/WorldCup2022/_VideoGridView.cshtml", videos);
             }
         }
