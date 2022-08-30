@@ -6,6 +6,7 @@ import { StageMode, Width1024 } from '@jsroot/common/constants';
 import Grid from './Grid';
 import { WorldCup } from '@jsroot/common/constants';
 import Item from './Item';
+import Site from '@jsroot/common/site';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -231,7 +232,7 @@ export class AppContainer extends Component {
                                 </div>
                                 <div className="wc-result">
                                     <ul className="wc-result-header">
-                                        <li><i className="icon-cup"></i></li>
+                                        <li><img src={Site.resolveClientUrl(`images/worldcup/cup.png`)}/></li>
                                         <li>Chung kết</li>
                                     </ul>
                                     <div className="draw">
