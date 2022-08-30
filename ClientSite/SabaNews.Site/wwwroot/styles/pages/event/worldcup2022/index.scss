@@ -91,7 +91,10 @@
 .wc-block-bxh {
     background: url('../../../../images/worldcup/section-2.png') no-repeat;
     background-size: cover;
-
+    margin-top : 5rem;
+    @include tableMobile{
+        margin-top : 2.5rem;
+    }
     a {
         text-decoration: none;
 
@@ -362,6 +365,10 @@
     background: $primary-bg;
     position: relative;
     z-index: 9;
+    margin-top : 5rem;
+    @include tableMobile {
+        margin-top: 2.5rem;
+    }
 
     .view-more {
         @include tableMobile {

@@ -412,11 +412,11 @@ body {
 
 .wc-block {
   padding: 5rem 0;
-  margin-top: 5rem;
+  /*    margin-top: 5rem;*/
   position: relative; }
   @media screen and (max-width: 1024px) {
     .wc-block {
-      margin-top: 2.5rem;
+      /*margin-top: 2.5rem;*/
       padding: 3rem 0; } }
 
 .wc-table {
