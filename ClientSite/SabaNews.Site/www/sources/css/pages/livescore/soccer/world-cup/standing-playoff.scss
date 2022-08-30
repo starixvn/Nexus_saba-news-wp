@@ -144,9 +144,9 @@
     }
     .flex-play-offs{
         display: grid;
-        grid-template-columns: 43rem 19rem 43rem;
+        grid-template-columns: 40rem 19rem 40rem;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         grid-gap: 1rem;
         &::-webkit-scrollbar {
             width: 0.6rem;

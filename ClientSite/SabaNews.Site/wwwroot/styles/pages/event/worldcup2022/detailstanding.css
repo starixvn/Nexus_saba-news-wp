@@ -723,7 +723,7 @@ body {
 
 .king-soccer {
   margin-bottom: 2rem;
-  max-width: 102rem;
+  max-width: 80rem;
   margin: 0 auto; }
   .king-soccer .wc-table {
     background: #FAFAED;
@@ -799,7 +799,7 @@ body {
   border-bottom: 1px solid #DADADA;
   padding-bottom: 0.4rem;
   margin-bottom: 4rem;
-  max-width: 80rem;
+  max-width: 102rem;
   margin: 4rem auto; }
   @media screen and (max-width: 1024px) {
     .live-score-nav {
