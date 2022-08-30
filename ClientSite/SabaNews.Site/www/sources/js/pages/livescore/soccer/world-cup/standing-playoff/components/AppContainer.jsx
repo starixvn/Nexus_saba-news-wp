@@ -215,7 +215,7 @@ export class AppContainer extends Component {
                                 <div className="draw-wrapper">
                                     <div className="shadowHeader"></div>
                                     <div className="learHeader"></div>
-                                    <Grid matches={groupMatches} isMobile={isMobile} />
+                                    <Grid matches={groupMatches}  thirdPlace={{...thirdPlace, league}} isMobile={isMobile} />
                                 </div>
                             </div>
                         </div>
