@@ -45,17 +45,25 @@
         .draw-wrapper{
             .draw{
               margin-bottom: 5rem;;
+                &__brackets{
+                  grid-gap: 1rem 0;
+                }
                 &__header{
                   background: linear-gradient(180deg, #67182B 0%, #470817 100%);
                 }
                 &__bracket {
                     .bracket {
-                        padding: 1rem 2rem;
                         background: #631628;
                         border: none;
-                        color: #fff;
+                        color: #561020;
                         position: relative;
                         clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+                        @include tableMobile{
+                          padding: 1rem 6rem;
+                        }
+                        @include Mobile{
+                          padding: 1rem 3rem;
+                        }
                         &::after{
                           content: "";
                           display: block;
@@ -67,8 +75,28 @@
                           background: #FFFFF8;
                           clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
                           z-index: -1;
+                          border-color: #631628;
                         }
                     }
+                    &:after {
+                      border-color: #631628;
+                    }
+                    &--even {
+                        &:after {
+                          border-bottom: 1px solid #631628;
+                        }
+                        &::before{
+                          background:#631628;
+                        }
+        
+                      }
+            
+                    &--odd {
+                        &:after {
+                          border-top: 1px solid #631628;
+                        }
+                    }
+                    
                 }
                 &__round{
                   grid-template-rows: 2.8rem;
@@ -178,19 +206,19 @@
                             }
                         }
                         &:after {
-                            border-color: #C8C8B0;
+                            border-color: #631628;
                             width: calc(90% + 2rem);
                           }
                         &--even {
                             &:after {
-                              border-bottom: 1px solid #C8C8B0;
+                              border-bottom: 1px solid #631628;
                             }
             
                           }
                 
                         &--odd {
                             &:after {
-                              border-top: 1px solid #C8C8B0;
+                              border-top: 1px solid #631628;
                             }
                         }
                     }
@@ -455,12 +483,12 @@
       z-index: 999;
     }
 
-    // .wc-flip-x{
-    //     transform: rotateY(180deg);
-    //     .bracket,.bracket__series{
-    //         transform: rotateY(180deg);
-    //     }
-    // }
+    .wc-flip-x{
+        transform: rotateY(180deg);
+        .bracket,.bracket__series{
+            transform: rotateY(180deg);
+        }
+    }
 }
 
 
