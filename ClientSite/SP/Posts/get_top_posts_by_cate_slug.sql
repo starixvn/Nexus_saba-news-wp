@@ -15,6 +15,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `get_top_posts_by_cate_slug`(
 			- 20210720@Hank: init
             - 20220727@Hank: get sub cate posts
             - 20220823@Hank: change hour to get posts
+            - 20220830@Hank: order by view
     */
 )
 BEGIN
@@ -46,14 +47,12 @@ BEGIN
             )
         ) AS t; 
     
-    
     INSERT INTO tmp_PostIds (PostId)
     SELECT p.ID
 	FROM wp_posts as p
 	WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate  AND p.ID != postId
 	AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
-					INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-	LIMIT start,end;
+					INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id);
 	
     IF (SELECT COUNT(*) FROM tmp_PostIds) = 0 THEN 
 		SELECT DATE_SUB(UTC_TIMESTAMP, INTERVAL 72 HOUR) INTO limitDate;
@@ -62,8 +61,7 @@ BEGIN
 		FROM wp_posts as p
 		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate AND p.ID != postId
 		AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
-						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-		LIMIT start,end;
+						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id);
     END IF;
     
     IF (SELECT COUNT(*) FROM tmp_PostIds) = 0 THEN 
@@ -73,8 +71,7 @@ BEGIN
 		FROM wp_posts as p
 		WHERE p.post_type = 'post' AND p.post_status = 'publish' AND p.post_date_gmt >= limitDate  AND p.ID != postId
 		AND p.ID IN (SELECT tr.object_id from wp_term_relationships as tr 
-						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id)
-		LIMIT start,end;
+						INNER JOIN tmp_Cates as c ON c.term_taxonomy_id = tr.term_taxonomy_id);
     END IF;
     
 	SELECT p.id as ID, p.post_title as PostTitle, p.post_content as PostContent
@@ -87,7 +84,8 @@ BEGIN
 	LEFT JOIN wp_posts as pp ON pp.ID = m.meta_value AND pp.post_type="attachment"
 	WHERE p.post_type = "post" AND p.post_status = "publish" AND p.post_date_gmt >= limitDate
 	AND p.ID IN (SELECT tmp.PostId FROM tmp_PostIds tmp WHERE tmp.PostId = p.ID)
-	ORDER BY ABS(pm.meta_value) DESC;
+	ORDER BY ABS(pm.meta_value) DESC
+    limit start, end;
 END
 //
 DELIMITER ;	
