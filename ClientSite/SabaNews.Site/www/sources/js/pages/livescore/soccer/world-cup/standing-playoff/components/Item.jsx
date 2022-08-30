@@ -37,48 +37,7 @@ export default class Item extends PureComponent {
         }
     };
 
-    handleShowPopup = () => {
-        this.setState({isHighLight: !this.state.isHighLight});
-    };
-
     getTeamName = team =>  team ? CommonFunctions.getTeamName(team) : '';
-
-
-    renderMatch = match => {
-        const time = DateTimeService.convertFromUTC(match.startTime);
-        const homeTeamScore = match.homeTeamExtraScore ? match.homeTeamExtraScore : match.homeTeamTotalScore;
-        const awayTeamScore = match.awayTeamExtraScore ? match.awayTeamExtraScore : match.awayTeamTotalScore;
-        const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
-        return (
-            <div className="series" onClick={event => this.handleClick(event, match)}>
-                <div className="series__names">
-                    <ul>
-                        <li className={matchResult === MatchResult.Win ? 'win': ''}>{CommonFunctions.getTeamName(match.homeTeam)}</li>
-                        <li className={matchResult === MatchResult.Lose ? 'win': ''}>{CommonFunctions.getTeamName(match.awayTeam)}</li>
-                    </ul>
-                </div>
-                <div className="result ">
-                    <ul>
-                        <li className="win">{match.status === MatchStatus.Finished ? homeTeamScore : '-'}</li>
-                        <li>{match.status === MatchStatus.Finished ? awayTeamScore: '-'}</li>
-                    </ul>
-                </div>
-                <div className="series__time">{time.format('DD.MM')}</div>
-            </div>
-        );
-    };
-
-    renderPopup = match => {
-        return (
-            <div className="bracket__series">
-                {this.renderMatch(match)}
-                {
-                    match.secondLeg &&
-                    this.renderMatch(match.secondLeg)
-                }
-            </div>
-        );
-    };
 
     getResultClass = (matchResult, isHome) => {
         let className = '';
@@ -98,7 +57,7 @@ export default class Item extends PureComponent {
             matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, checkMatch);
         }
         return (
-            <div className={`bracket ${match.matchId ? '' : 'bracket--eventless'}`} onClick={this.handleShowPopup}
+            <div className={`bracket ${match.matchId ? '' : 'bracket--eventless'}`} onClick={event => this.handleClick(event, match)}
                 title={match.matchId ? 'Nhấp để xem danh sách trận đấu' : ''}>
                 {
                     match.homeTeam &&
