@@ -1,4 +1,5 @@
 ﻿@using DeviceDetectorNET;
+@using SabaNews.Core.Constants
 @section Title {
     @Model.Header.Title
 }
@@ -65,7 +66,7 @@
         <div class="container">
             <div class="title-section">
                 <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-                <h2>@Model.Header.Title</h2>
+                <h2>@WorldCup2022.Video</h2>
                 <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
             </div>
 
@@ -126,11 +127,14 @@
                         }
                     }
                 </div>
-                <div class="loading-page">
-                    <div class="lds-ellipsis">
-                        <div></div><div></div><div></div><div></div>
+                @if (Model.Paging.TotalPages > 1)
+                {
+                    <div class="loading-page">
+                        <div class="lds-ellipsis">
+                            <div></div><div></div><div></div><div></div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>

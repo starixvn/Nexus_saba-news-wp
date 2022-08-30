@@ -1,4 +1,4 @@
-﻿@using SabaNews.Models.ViewModel.Event.WorldCup
+﻿@using SabaNews.Core.Constants
 @using DeviceDetectorNET;
 @section Title {
     @Model.Header.Title
@@ -64,7 +64,7 @@
         <div class="container">
             <div class="title-section">
                 <div class="dots"><span></span><span></span><span class="dots-items"></span></div>
-                <h2>@Model.Header.Title</h2>
+                <h2>@(Model.Header.Title == WorldCup2022.TitleLastestNews ? WorldCup2022.LastestNews : WorldCup2022.Commentary)</h2>
                 <div class="dots"><span class="dots-items"></span><span></span><span></span></div>
             </div>
         </div>
@@ -143,7 +143,7 @@
                         {
                             {
                                 postIndex++;
-                                if (postIndex <= 4 )
+                                if (postIndex <= 4)
                                 {
                                     continue;
                                 }
@@ -168,11 +168,14 @@
                         }
                     }
                 </div>
-                <div class="loading-page">
-                    <div class="lds-ellipsis">
-                        <div></div><div></div><div></div><div></div>
+                @if (Model.Paging.TotalPages > 1)
+                {
+                    <div class="loading-page">
+                        <div class="lds-ellipsis">
+                            <div></div><div></div><div></div><div></div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             <div class="page-items-right">
                 @if (isDesktop)
