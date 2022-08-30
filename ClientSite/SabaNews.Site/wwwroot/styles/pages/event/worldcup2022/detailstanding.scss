@@ -59,6 +59,7 @@
             .wc-table-row {
                 border-bottom: 1px solid #C8C8B0;
                 margin: 0 1.2rem;
+                padding: 1rem 0;
 
                 &:last-child {
                     border: none;
@@ -71,15 +72,19 @@
             font-weight: 400;
 
             &.first-width {
-                width: 6rem;
+                width: 4rem;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
             }
 
-            .first-width-number {
+            span {
                 width: 2rem;
                 height: 2rem;
+                text-align: center;
+            }
+
+            .first-width-number {
                 background: #5C1224;
                 border-radius: 3px;
                 color: #fff;
