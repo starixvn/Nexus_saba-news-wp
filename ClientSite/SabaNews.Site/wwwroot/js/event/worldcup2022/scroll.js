@@ -10,7 +10,6 @@
 
 
     function GetDataGrid(page) {
-        console.log(page);
         if (page > paging.totalPages) {
             isLoadData = false;
             $('.lds-ellipsis').hide();
@@ -126,6 +125,5 @@
 })(jQuery);
 
 $(document).ready(function () {
-    console.log(1);
     scroll.init();
 });

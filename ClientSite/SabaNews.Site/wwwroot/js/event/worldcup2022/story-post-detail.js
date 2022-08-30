@@ -33,7 +33,5 @@
 })(jQuery);
 
 $(document).ready(function () {
-    
     storyPostDetail.init();
-    console.log(1);
 });
