@@ -768,6 +768,8 @@ body {
         border-radius: 3px;
         color: #fff;
         display: block; }
+    .king-soccer .wc-table .points-table {
+      font-weight: 700; }
     .king-soccer .wc-table .team-logo {
       border: 1px solid #5D1324; }
 
