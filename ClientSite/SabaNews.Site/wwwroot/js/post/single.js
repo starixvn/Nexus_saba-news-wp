@@ -31,7 +31,7 @@
         var offsTop = $(tabId).offset();
         if (typeof offsTop !== "undefined") {
             $('html, body').animate({
-                scrollTop: offsTop.top - $('.top-header').outerHeight() - 50
+                scrollTop: offsTop.top
             }, 800);
         }
 

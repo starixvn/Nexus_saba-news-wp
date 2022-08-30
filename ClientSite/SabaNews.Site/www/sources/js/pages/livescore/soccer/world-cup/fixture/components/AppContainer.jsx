@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
 import Grid from './Grid';
+import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
@@ -24,12 +25,15 @@ export class AppContainer extends Component {
 
     getMatches = () => {
         const { league, matches } = this.props;
+        if (!matches) {
+            return null;
+        }
         let tmpMatches = matches;
-        if(this.checkIsFinished(league)) {
+        if (this.checkIsFinished(league)) {
             tmpMatches = [...matches].reverse();
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
-        } else if(league.currentStageId >= WorldCup.QuarterfinalsStage) {
+        } else if (league.currentStageId >= WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage.stageId !== WorldCup.GroupsStage);
         }
         return tmpMatches;
@@ -37,15 +41,12 @@ export class AppContainer extends Component {
 
     render() {
         const { league, matches } = this.props;
-        if(!matches || matches.length === 0) {
-            return null;
-        }
         const matchGrid = this.getMatches();
-        const isFinished = this.checkIsFinished(league);
         return (
             <div>
-                <SignalR  />
-                { matches && matches.length > 0 && <Grid matches={matchGrid} league={league} isFinished={isFinished} /> }
+                <SignalR />
+                <SkeletonGrid />
+                {matchGrid && matchGrid.length > 0 && <Grid matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)} />}
             </div>
         );
     }

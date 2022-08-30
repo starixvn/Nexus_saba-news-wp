@@ -19,12 +19,12 @@ export default class Grid extends PureComponent {
         let { start, end } = this.state;
         const gridWidth = window.innerWidth - 40;
         this.showItems = Math.ceil(gridWidth / 260);
-        if(!isFinished) {
+        if (!isFinished) {
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
-            if(postMatchIndex >= 0) {
+            if (postMatchIndex >= 0) {
                 const lastIndex = matches.length - postMatchIndex;
-                if(lastIndex - 3 > startLastPage) {
+                if (lastIndex - 3 > startLastPage) {
                     start = startLastPage;
                 } else {
                     start = lastIndex - 3 > 0 ? lastIndex - 3 : 0;
@@ -56,7 +56,7 @@ export default class Grid extends PureComponent {
 
     onPrev = () => {
         const { start, end } = this.state;
-        if(start === 0) {
+        if (start === 0) {
             return;
         }
         this.setState({
@@ -67,7 +67,7 @@ export default class Grid extends PureComponent {
 
     onNext = () => {
         const { start, end } = this.state;
-        if(end === this.matchLength + 1) {
+        if (end === this.matchLength + 1) {
             return;
         }
         this.setState({
@@ -79,7 +79,7 @@ export default class Grid extends PureComponent {
     getGridMatches = () => {
         const { start, end, isScroll } = this.state;
         const { matches } = this.props;
-        if(!isScroll) {
+        if (!isScroll) {
             return matches.slice(start, end);
         }
         return matches;
@@ -91,14 +91,14 @@ export default class Grid extends PureComponent {
         return (
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
-                {
-                    grid.map((item, index) =>
-                        <Match key={index} match={{...item, league}} />
-                    )
-                }
-                <div onClick={this.onNext} className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
-                <div onClick={this.onPrev} className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
-            </div>
+                    {
+                        grid.map((item, index) =>
+                            <Match key={index} match={{ ...item, league }} />
+                        )
+                    }
+                    <div onClick={this.onNext} className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
+                    <div onClick={this.onPrev} className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
+                </div>
             </div>
         );
     }
