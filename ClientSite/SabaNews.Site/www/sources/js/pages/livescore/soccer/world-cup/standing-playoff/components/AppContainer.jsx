@@ -194,7 +194,7 @@ export class AppContainer extends Component {
     getMatchByStage = (matches, stage) => {
         const match = matches.find(item => item.stage?.stageId === stage);
         return match;
-    }
+    };
 
     render() {
         const { matches, league } = this.props;

@@ -93,18 +93,6 @@ describe('Item', () => {
             expect(window.open).toHaveBeenCalledWith('url', '_blank');
         });
     });
-    describe('handleShowPopup', () => {
-        it('setState correctly', () => {
-            // Arrange
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
-
-            // Act
-            instance.handleShowPopup()
-            // Assert
-            expect(instance.state.isHighLight).toEqual(true);
-        });
-    });
 
     describe('getTeamName', () => {
         it('return correctly when dont have team data', () => {
@@ -130,116 +118,8 @@ describe('Item', () => {
         });
     });
 
-    describe('renderMatch', () => {
-        it('return correctly when match have extra score and homeTeam win', () => {
-            // Arrange
-            const match = {
-                matchId: 1,
-                startTime: '2022-10-10',
-                homeTeamExtraScore: 1,
-                awayTeamExtraScore: 2,
-                status: 50,
-                homeTeam: {teamNameEN: 'team name'},
-                awayTeam: {teamNameEN: 'team name'}
-            }
-            CommonFunctions.getMatchResult = jest.fn().mockReturnValue(1);
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
 
-            // Act
-            const result = instance.renderMatch(match)
-            // Assert
-            expect(result).toMatchSnapshot();
-        });
-
-        it('return correctly when match dont have extra score and homeTeam lose', () => {
-            // Arrange
-            const match = {
-                matchId: 1,
-                startTime: '2022-10-10',
-                homeTeamTotalScore: 1,
-                awayTeamTotalScore: 2,
-                status: 0,
-                homeTeam: {teamNameEN: 'team name'},
-                awayTeam: {teamNameEN: 'team name'}
-            }
-            CommonFunctions.getMatchResult = jest.fn().mockReturnValue(2);
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.renderMatch(match)
-            // Assert
-            expect(result).toMatchSnapshot();
-        });
-
-        it('return correctly when match dont have extra score and homeTeam draw', () => {
-            // Arrange
-            const match = {
-                matchId: 1,
-                startTime: '2022-10-10',
-                homeTeamTotalScore: 1,
-                awayTeamTotalScore: 2,
-                status: 0,
-                homeTeam: {teamNameEN: 'team name'},
-                awayTeam: {teamNameEN: 'team name'}
-            }
-            CommonFunctions.getMatchResult = jest.fn().mockReturnValue(0);
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
-
-            // Act
-            const result = instance.renderMatch(match)
-            // Assert
-            expect(result).toMatchSnapshot();
-        });
-    });
-
-    describe('renderPopup', () => {
-        it('render correctly when have second leg', () => {
-            // Arrange
-            const match = {
-                matchId: 1,
-                startTime: '2022-10-10',
-                homeTeamTotalScore: 1,
-                awayTeamTotalScore: 2,
-                status: 0,
-                homeTeam: {teamNameEN: 'team name'},
-                awayTeam: {teamNameEN: 'team name'},
-                isDraw: false,
-                secondLeg: {matchId: 1}
-            }
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
-            instance.renderMatch = jest.fn().mockReturnValue('html');
-
-            // Act
-            const result = instance.renderPopup(match)
-            // Assert
-            expect(result).toMatchSnapshot();
-        });
-
-        it('render correctly when dont have second leg', () => {
-            // Arrange
-            const match = {
-                matchId: 1,
-                startTime: '2022-10-10',
-                homeTeamTotalScore: 1,
-                awayTeamTotalScore: 2,
-                status: 0,
-                homeTeam: {teamNameEN: 'team name'},
-                awayTeam: {teamNameEN: 'team name'},
-            }
-            const container = shallow(<Item {...defaultProps} />);
-            const instance = container.instance();
-            instance.renderMatch = jest.fn().mockReturnValue('html');
-
-            // Act
-            const result = instance.renderPopup(match)
-            // Assert
-            expect(result).toMatchSnapshot();
-        });
-    });
+    
 
     describe('getResultClass', () => {
         it('return correctly class when isHome = true, and homeTeam win', () => {
@@ -382,7 +262,6 @@ describe('Item', () => {
             // Act
             const result = shallow(instance.render());
             // Assert
-            result.find('.series').first().simulate('click', event);
             expect(result).toMatchSnapshot();
         });
     });

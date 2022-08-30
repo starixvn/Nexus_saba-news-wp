@@ -83,14 +83,9 @@ export default class Item extends PureComponent {
     };
     render() {
         const { match, positionClass, index} = this.props;
-        const { isHighLight } = this.state;
         return (
             <div className={`draw__bracket ${positionClass} ${match.isDraw === false ? 'no-border' : ''}`} style={{zIndex: -index}}>
                 {this.renderBody(match)}
-                {
-                    match.matchId && isHighLight &&
-                    this.renderPopup(match)
-                }
             </div>
         );
     }
