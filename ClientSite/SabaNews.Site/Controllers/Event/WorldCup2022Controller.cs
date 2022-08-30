@@ -251,7 +251,7 @@
             return View("~/Views/Event/WorldCup2022/Video.cshtml", viewModel);
         }
 
-        [Route("lich-thi-dau/world-cup/{match}/{matchId:long}")]
+        [Route("lich-thi-dau/world-cup-2022/{match}/{matchId:long}")]
         public IActionResult MatchDetail(long matchId)
         {
             var model = new MatchDetailViewModel
@@ -315,6 +315,39 @@
                 BackUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.StoryPostSlug}"
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
+        }
+
+        [Route("world-cup-2022/tong-quan")]
+        public async Task<IActionResult> Overview()
+        {
+            var post = await postService.GetPostDetailBySlugAsync(WorldCup2022.OverviewPageSlug, Constants.postType);
+            if (post == null)
+            {
+                return View(Constants.EmptyBlogView);
+            }
+            SavePost savePostWC = null;
+            var isUserLogin = sessionService.User != null;
+            if (isUserLogin)
+            {
+                var user = await userService.GetUserByIdAsync(sessionService.User.Id);
+                savePostWC = user.HandleSavePosts.Find(val => val.PostID == post.ID);
+            }
+            var domain = configuration.GetValue<string>("BaseUrl");
+            var viewModel = new SingleViewModel
+            {
+                SinglePost = post,
+                IsLogin = isUserLogin,
+                SavePost = savePostWC,
+                AbsoluteUrl = $"{domain}{WorldCup2022.OverviewRoute}",
+                IsVideo = false,
+                CateInfo = new CateInfo
+                {
+                    Name = WorldCup2022.Overview,
+                    Url = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.OverviewRoute}",
+                    Slug = WorldCup2022.HomepageSlug
+                }
+            };
+            return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
 
