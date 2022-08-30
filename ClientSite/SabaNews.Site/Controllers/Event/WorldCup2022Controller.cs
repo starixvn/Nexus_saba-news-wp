@@ -69,7 +69,7 @@
                 Slug = WorldCup2022.HomepageSlug
             };
             model.Header = header;
-            model.OverviewPageUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.OverviewPageSlug}";
+            model.OverviewPageUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.OverviewRoute}";
             return View("~/Views/Event/WorldCup2022/Index.cshtml", model);
         }
 
@@ -342,8 +342,8 @@
                 IsVideo = false,
                 CateInfo = new CateInfo
                 {
-                    Name = WorldCup2022.Overview,
-                    Url = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.OverviewRoute}",
+                    Name = WorldCup2022.Homepage,
+                    Url = $"/{WorldCup2022.HomepageSlug}",
                     Slug = WorldCup2022.HomepageSlug
                 }
             };

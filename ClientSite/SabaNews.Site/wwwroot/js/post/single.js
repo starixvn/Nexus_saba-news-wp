@@ -31,11 +31,9 @@
         var offsTop = $(tabId).offset();
         if (typeof offsTop !== "undefined") {
             $('html, body').animate({
-                scrollTop: offsTop.top
+                scrollTop: offsTop.top - $('.top-header').outerHeight() - 50
             }, 800);
         }
-        
-
 
         if ($(window).innerWidth() > 1024) {
             menuItems.click(function (e) {
