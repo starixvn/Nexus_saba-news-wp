@@ -92,14 +92,13 @@ export default class Item extends PureComponent {
     };
 
     renderBody = match => {
-        const { isHighLight } = this.state;
         let matchResult = MatchResult.Draw;
         if(match.matchId) {
             const checkMatch = match.secondLeg ? match.secondLeg : match;
             matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, checkMatch);
         }
         return (
-            <div className={`bracket ${isHighLight && match.matchId ? 'bracket--active' : ''} ${match.matchId ? '' : 'bracket--eventless'}`} onClick={this.handleShowPopup}
+            <div className={`bracket ${match.matchId ? '' : 'bracket--eventless'}`} onClick={this.handleShowPopup}
                 title={match.matchId ? 'Nhấp để xem danh sách trận đấu' : ''}>
                 {
                     match.homeTeam &&
