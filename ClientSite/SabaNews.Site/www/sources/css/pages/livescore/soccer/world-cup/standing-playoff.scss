@@ -57,10 +57,11 @@
 
 
 .wc-playoffs-showpc{
-    max-width: 147rem;
+    max-width: 110rem;
     margin-left: auto;
     margin-right: auto;
     padding: 0 1.2rem;
+    margin-bottom: 10rem;
     .draw-container{
         .draw-wrapper{
             display: unset;
@@ -79,12 +80,10 @@
     }
     .flex-play-offs{
         display: grid;
-        grid-template-columns: 61rem 19rem 61rem;
-        align-items: flex-start;
+        grid-template-columns: 43rem 19rem 43rem;
+        align-items: center;
         justify-content: flex-start;
-        overflow: auto;
         grid-gap: 1rem;
-        height: 40rem;
         &::-webkit-scrollbar {
             width: 0.6rem;
             height: 0.6rem;
@@ -101,11 +100,29 @@
         .draw-container {
             .draw-wrapper{
                 .draw{
+                    grid-auto-columns: 12rem;
+                    &__round {
+                      min-width: 21rem;
+                      &--last{
+                        .draw__brackets{
+                          .draw__bracket{
+                            &::after{
+                              display: none;
+                            }
+                          }
+                        }
+                      }
+                    } 
+                    &__brackets {
+                      grid-gap: 10rem 0;
+                    }
                     &__bracket {
                         .bracket {
                             background: linear-gradient(180deg, #67182B 0%, #470817 100%);
                             border: none;
                             color: #fff;
+                            clip-path: polygon(92% 0,100% 49%,94% 100%,7% 100%,0 49%,7% 0);
+                            padding: .8rem 2rem;
                             &--active{
                                 background: linear-gradient(162.06deg, #FFD68F 0%, #C2A97D 100%);
                                 color:#510D1D;
@@ -113,6 +130,7 @@
                         }
                         &:after {
                             border-color: #C8C8B0;
+                            width: calc(90% + 2rem);
                           }
                         &--even {
                             &:after {
@@ -133,10 +151,14 @@
     }
    
     .wc-result{
+      position: relative;
         &-header{
             list-style: none;
             text-align: center;
-            margin-bottom: 1rem;
+            position: absolute;
+            top: -90px;
+            right: 50%;
+            transform: translate(50%,0);
             li{
                 font-weight: 700;
                 font-size: 1.4rem;
@@ -148,7 +170,10 @@
             }
         }
         &-footer{
-            margin-top: 1rem;
+            position: absolute;
+            bottom: -25px;
+            right: 50%;
+            transform: translate(50%,0);
             list-style: none;
             text-align: center;
             li{
@@ -174,7 +199,7 @@
             }
             &__brackets {
                 display: grid;
-                grid-gap: 2rem 0;
+                grid-gap: 10rem 0;
                 z-index: 1;
             }
             &__bracket {
@@ -186,6 +211,8 @@
                     padding: 0.6rem;
                     background: linear-gradient(180deg, #67182B 0%, #470817 100%);
                     border-radius: 3px;
+                    padding: .8rem 2rem;
+                    clip-path: polygon(92% 0,100% 49%,94% 100%,7% 100%,0 49%,7% 0);
                     cursor: pointer;
                     color : #fff;
                     grid-template: "homeImage homeParticipant homeResult " 2rem " . . . " 5px "awayImage awayParticipant awayResult" 2rem / max-content 1fr max-content;
