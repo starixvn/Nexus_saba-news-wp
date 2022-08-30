@@ -7,6 +7,7 @@ import Grid from './Grid';
 import { WorldCup } from '@jsroot/common/constants';
 import Item from './Item';
 import Site from '@jsroot/common/site';
+import LangHelper from '@jsroot/common/langHelper';
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -233,7 +234,7 @@ export class AppContainer extends Component {
                                 <div className="wc-result">
                                     <ul className="wc-result-header">
                                         <li><img src={Site.resolveClientUrl(`images/worldcup/cup.png`)}/></li>
-                                        <li>Chung kết</li>
+                                        <li>{LangHelper.getResource('FinalStage')}</li>
                                     </ul>
                                     <div className="draw">
                                         <div className="draw__round draw__round--result">
@@ -244,7 +245,7 @@ export class AppContainer extends Component {
                                         </div>
                                     </div>
                                     <ul className="wc-result-footer">
-                                        <li>Tranh hạng 3</li>
+                                        <li>{LangHelper.getResource('ThirdPlace')}</li>
                                     </ul>
                                 </div>
                                 <div className="draw-container wc-flip-x">

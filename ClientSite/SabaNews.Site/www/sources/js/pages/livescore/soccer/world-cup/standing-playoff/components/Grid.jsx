@@ -24,7 +24,6 @@ export default class Grid extends PureComponent {
     render() {
         const { matches, isMobile, thirdPlace} = this.props;
         const { activeIndex } = this.state;
-        console.log(thirdPlace);
         return (
             <div className="draw" style={{transform: `${isMobile ? `translateX(-${activeIndex}00%)` : 'none'}`}}>
                 {
@@ -59,13 +58,14 @@ export default class Grid extends PureComponent {
                                             );
                                         })
                                     }
-                                </div>
-                                {
-                                    index === matches.length - 1 && thirdPlace &&
-                                    <div className="draw__brackets third-place">
-                                        <Item match={thirdPlace} positionClass={''}  index={2}/>
+                                    {
+                                    index === matches.length - 1 && thirdPlace && thirdPlace.matchId &&
+                                    <div className="draw__final">
+                                        <div className="draw__final--header">tranh hạng 3</div>
+                                        <Item match={thirdPlace} positionClass={'draw__bracket--odd'}  index={2}/>
                                     </div>
                                 }
+                                </div>
                             </div>
                         );
                     })

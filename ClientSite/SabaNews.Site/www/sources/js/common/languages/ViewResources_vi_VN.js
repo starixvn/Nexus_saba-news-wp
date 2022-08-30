@@ -8,6 +8,7 @@
     EmptyFavLeague: 'Vui lòng nhập để tìm kiếm và thêm các giải đấu yêu thích vào đây.',
     Finish: 'Kết thúc',
     FullTimeEnd: 'Kết thúc hiệp 2',
+    FinalStage:'Chung kết',
     AddLeague: 'Thêm giải đấu',
     Goalkeeper: 'Thủ môn',
     GoalValid: 'Bàn thắng hợp lệ',
@@ -45,5 +46,6 @@
     ToBeDecided: 'Chờ xác định',
     Today: 'Hôm nay',
     Turn: 'Lượt',
+    ThirdPlace: 'Tranh hạng 3',
     Unknown: 'Không xác định',
 };
