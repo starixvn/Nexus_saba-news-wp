@@ -209,7 +209,7 @@ export class AppContainer extends Component {
         const finalMatch = this.getMatchByStage(matches, WorldCup.FinalStage);
         const thirdPlace = this.getMatchByStage(matches, WorldCup.ThirdPlace);
         return (
-            <div className={`play-offs ${!isMobile ? 'wc-bg' : ''}`}>
+            <div className="play-offs">
                 {
                         isMobile &&
                         <div className="wc-playoffs-showmb">

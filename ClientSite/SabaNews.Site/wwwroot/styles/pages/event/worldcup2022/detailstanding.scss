@@ -33,16 +33,20 @@
         overflow: unset;
         margin-bottom: 3rem;
 
+        @include tableMobile {
+            margin-bottom: 2.5rem;
+        }
+
         &-header {
             box-shadow: none !important;
             background: linear-gradient(180deg, #67182B 0%, #470817 100%) !important;
             color: #fff;
             border-radius: 5px 5px 0px 0px;
             height: 7rem !important;
-            padding: 1.5rem 1.2rem 0 1.2rem !important;
+            padding: 1rem 1.2rem 0 1.2rem !important;
 
             @include tableMobile {
-                height: 6rem !important;
+                height: 4rem !important;
             }
 
             .cell-rank {
@@ -52,15 +56,19 @@
         }
 
         &-body {
-            border: 1px solid #C8C8B0;
+            border: 1px solid #631628;
             overflow: hidden;
             border-radius: 0px 0px 5px 5px;
+            background: #FFFFF8;
 
             .wc-table-row {
                 border-bottom: 1px solid #C8C8B0;
                 margin: 0 1.2rem;
                 padding: 1rem 0;
-
+                @include tableMobile{
+                    margin: 0;
+                     padding: 1rem 1rem;
+                }
                 &:last-child {
                     border: none;
                 }
@@ -70,6 +78,10 @@
         .cell-rank {
             color: #2F2F2F;
             font-weight: 400;
+
+            @include tableMobile {
+                font-size: 1.2rem;
+            }
 
             &.first-width {
                 width: 4rem;
@@ -92,6 +104,20 @@
             }
         }
 
+        .cell-participant {
+            @include tableMobile {
+                font-size: 1.2rem;
+            }
+        }
+
+        .title-items {
+            @include tableMobile {
+                width: 10rem;
+                height: 2.6rem;
+                font-size: 1.4rem;
+            }
+        }
+
         .points-table {
             font-weight: 700;
         }
@@ -110,13 +136,19 @@
     margin: 4rem auto;
 
     @include tableMobile {
-        margin: 2rem auto;
+        margin: 3rem auto;
+        border-bottom: none;
     }
 
     ul {
         list-style: none;
         display: flex;
         justify-content: center;
+
+        @include tableMobile {
+            justify-content: flex-start;
+            padding: 0 1.2rem;
+        }
 
         li {
             a {
@@ -130,6 +162,14 @@
                 position: relative;
                 padding-bottom: 0.7rem;
 
+                @include tableMobile {
+                    margin-right: 1rem;
+                    background: #FAFAED;
+                    border: 1px solid #C8C8B0;
+                    border-radius: 5px;
+                    padding: 0.5rem 1rem;
+                }
+
                 &.active {
                     color: #48041A;
 
@@ -142,6 +182,10 @@
                         position: absolute;
                         bottom: 0;
                         left: 0;
+
+                        @include tableMobile {
+                            display: none;
+                        }
                     }
                 }
             }
