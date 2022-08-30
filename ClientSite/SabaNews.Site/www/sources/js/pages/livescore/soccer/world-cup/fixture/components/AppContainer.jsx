@@ -45,8 +45,14 @@ export class AppContainer extends Component {
         return (
             <div>
                 <SignalR />
-                <SkeletonGrid />
-                {matchGrid && matchGrid.length > 0 && <Grid matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)} />}
+                {
+                    matches === null &&
+                    <SkeletonGrid />
+                }
+                {
+                    matchGrid && matchGrid.length > 0 &&
+                    <Grid matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)} />
+                }
             </div>
         );
     }
