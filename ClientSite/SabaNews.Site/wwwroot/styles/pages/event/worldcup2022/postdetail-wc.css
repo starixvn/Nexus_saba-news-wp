@@ -653,6 +653,7 @@ body {
     .wc-table .team-logo {
       margin-right: .8rem;
       border: 1px solid #fff;
+      background: #fff;
       border-radius: 3px;
       width: 3.6rem;
       height: 2.4rem;
