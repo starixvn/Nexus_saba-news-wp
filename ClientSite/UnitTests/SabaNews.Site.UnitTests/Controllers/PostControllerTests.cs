@@ -258,7 +258,7 @@
             var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
             Assert.Equal(expected, viewModel.SinglePost);
             Assert.Equal(WorldCup2022.HomepageSlug, viewModel.CateInfo.Slug);
-            Assert.Equal($"/{WorldCup2022.HomepageSlug}", viewModel.CateInfo.Url);
+            Assert.Equal("/tin-the-thao/bong-da", viewModel.CateInfo.Url);
         }
 
 

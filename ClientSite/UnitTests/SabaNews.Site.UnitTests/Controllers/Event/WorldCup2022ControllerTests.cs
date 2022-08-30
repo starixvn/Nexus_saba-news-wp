@@ -93,6 +93,118 @@
         }
 
         [Fact]
+        public void MatchDetail_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+
+            //Act
+            var result = controller.MatchDetail(10);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/MatchDetail.cshtml", viewResult.ViewName);
+
+        }
+
+        [Fact]
+        public async Task StoryPost_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var news = new Fixture().Create<IEnumerable<Post>>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.StoryPost();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/StoryPost.cshtml", viewResult.ViewName);
+            var newsResult = Assert.IsType<LastestNewsViewModel>(viewResult.Model);
+            Assert.Equal(news, newsResult.Posts);
+        }
+        [Fact]
+        public async Task StoryPostGrid_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<CategoryPostParams>();
+            var news = new Fixture().Create<IEnumerable<Post>>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.GetStoryPostGrid(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/_StoryPost.cshtml", viewResult.ViewName);
+            var model = Assert.IsAssignableFrom<IEnumerable<Post>>(viewResult.Model);
+            Assert.Equal(news, model);
+        }
+
+        [Fact]
+        public async Task StoryPostGrid_WhenDataIsEmpty_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<CategoryPostParams>();
+            var news = new List<Post>();
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostsByCateSlugAsync(Arg.Do<GetPostsByCateSlugCriteria>(x => cateSlugCriteria = x)).Returns(news);
+
+            //Act
+            var result = await controller.GetStoryPostGrid(param);
+
+            // Assert
+            var okResult = Assert.IsAssignableFrom<OkObjectResult>(result);
+            Assert.Equal(false, okResult.Value);
+        }
+
+        [Fact]
+        public async Task StoryPostDetail_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var story = fixture.Create<Post>();
+            story.PostContent = "<figure class=\"wp-block-image size-large\"><img src=\"img\" alt=\"\" class=\"wp-image-3928\"/><figcaption><a href=\"link\">Pic 1</a></figcaption></figure><figure class=\"wp-block-image size-large\"><img src=\"img\" alt=\"\" class=\"wp-image-3928\"/></figure>";
+            var cateSlugCriteria = fixture.Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<string>(x => slug = x)).Returns(story);
+
+            //Act
+            var result = await controller.StoryPostDetail(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", viewResult.ViewName);
+            var model = Assert.IsType<StoryPostDetailViewModel>(viewResult.Model);
+            Assert.Equal(story, model.Post);
+
+        }
+
+        [Fact]
+        public async Task StoryPostDetail_WhenDataIsEmpty_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            Post story = null;
+            var cateSlugCriteria = new Fixture().Create<GetPostsByCateSlugCriteria>();
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => slug = x), Arg.Do<string>(x => slug = x)).Returns(story);
+
+            //Act
+            var result = await controller.StoryPostDetail(slug);
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+
+        }
+
+        [Fact]
         public async Task GetLastestNews_WhenCalled_ReturnExpectedData()
         {
             // Arrange
@@ -228,6 +340,25 @@
             Assert.Equal("~/Views/Event/WorldCup2022/_TopScorers.cshtml", viewResult.ViewName);
             var topResult = Assert.IsAssignableFrom<IList<TopScorers>>(viewResult.Model);
             Assert.Equal(topScorers, topResult);
+        }
+
+        [Fact]
+        public async Task GetHomepageStandings_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var standings = new Fixture().Create<IList<SeasonStandings>>();
+            var standingsCriteria = new Fixture().Create<GetLeagueSeasonStandingCriteria>();
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => standingsCriteria = x)).Returns(standings);
+            var standingGroup = controller.GroupStandingsByGroupName(standings);
+            //Act
+            var result = await controller.GetHomepageStandings(standingsCriteria);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/_HomepageStanding.cshtml", viewResult.ViewName);
+            var standingResult = Assert.IsType<List<StandingViewModel>>(viewResult.Model);
+            Assert.Equal(standingGroup.Count, standingResult.Count);
         }
 
         [Fact]
