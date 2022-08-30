@@ -22,7 +22,7 @@
 
 #AddPlayerContent .modal-content, #EditPlayerContent .modal-content {
     .select2-container {
-        margin-left: -408px;
+        margin-left: -408px !important;
     }
 
     .modal-body {
@@ -79,7 +79,7 @@
 
     .txt-teamFullNameEn, .txt-playerFullNameEn {
         width: 397px !important;
-        margin-left: -375px;
+        margin-left: -408px;
     }
 
     .txt-top {
