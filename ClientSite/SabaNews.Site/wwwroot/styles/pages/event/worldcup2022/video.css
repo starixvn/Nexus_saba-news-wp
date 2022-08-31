@@ -825,6 +825,10 @@ body {
     .video-grid {
       grid-template-columns: 100%; } }
 
+@media screen and (max-width: 1024px) {
+  .live-score-nav {
+    max-width: 30rem; } }
+
 .video-hot {
   position: relative;
   overflow: hidden;
