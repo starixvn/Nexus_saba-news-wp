@@ -14,10 +14,6 @@
                 $('[data-toggle="tooltip"]').tooltip();
             }
         });
-
-        $(document).on('click','.swiper-button-disabled', function (e) {
-            e.preventDefault();
-        });
     }
 
     function HandleSlide() {
@@ -29,6 +25,7 @@
                 navigation: {
                     nextEl: '.guess-next',
                     prevEl: '.guess-prev',
+                    disabledClass: 'disabled-swiper-navigation'
                 }
             });
             var Swipers = new Swiper('.swipper-video', {
