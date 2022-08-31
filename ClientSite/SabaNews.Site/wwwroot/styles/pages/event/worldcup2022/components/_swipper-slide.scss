@@ -58,6 +58,11 @@
     }
 }
 
+.disabled-swiper-navigation {
+    opacity: .5;
+    cursor: no-drop;
+}
+
 .wc-block-video {
     .wrapper-arrow {
         position: relative;
@@ -80,7 +85,7 @@
 
         .swiper-button-prev {
             left: -40px !important;
-        }   
+        }
     }
 }
 
