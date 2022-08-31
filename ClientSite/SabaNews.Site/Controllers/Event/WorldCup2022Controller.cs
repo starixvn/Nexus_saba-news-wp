@@ -315,7 +315,7 @@
                 Post = post,
                 Stories = stories,
                 BaseUrl = configuration.GetValue<string>("BaseUrl"),
-                BackUrl = $"/{WorldCup2022.HomepageSlug}/{WorldCup2022.StoryPostSlug}"
+                BackUrl = Url.Action("StoryPost", "WorldCup2022")
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
         }

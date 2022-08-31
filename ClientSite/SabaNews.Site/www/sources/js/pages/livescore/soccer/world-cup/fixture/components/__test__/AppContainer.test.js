@@ -133,7 +133,7 @@ describe('AppContainer', () => {
     });
 
     describe('renders', () => {
-        it('return null when match is null', () => {
+        it('render skeleton when match is null', () => {
             // Arrange
             const container = shallow(<AppContainer {...defaultProps} />);
             const instance = container.instance();
@@ -141,7 +141,7 @@ describe('AppContainer', () => {
             const result = instance.render();
 
             // Assert
-            expect(result).toEqual(null);
+            expect(result).toMatchSnapshot();
         });
 
         it('return null when match is empty', () => {
