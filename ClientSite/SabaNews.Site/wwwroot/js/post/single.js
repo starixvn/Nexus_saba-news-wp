@@ -31,7 +31,7 @@
         var offsTop = $(tabId).offset();
         if (typeof offsTop !== "undefined") {
             $('html, body').animate({
-                scrollTop: offsTop.top
+                scrollTop: offsTop.top - $('.wc-bg-overflow').outerHeight()
             }, 800);
         }
 
