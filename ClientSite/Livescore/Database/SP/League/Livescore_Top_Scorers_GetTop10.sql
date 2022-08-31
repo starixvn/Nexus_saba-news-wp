@@ -16,7 +16,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Top_Scorers_GetTop10`(
 BEGIN
 	SELECT t.LeagueId, t.SeasonId, t.PlayerId, t.TeamId, t.Goals, t.Assists, t.RowNum, t.Top , m.Icon AS TeamLogo, p.NameEN AS PlayerNameEN, p.FullNameEN AS PlayerFullNameEN
 	FROM livescore_top_scorers AS t INNER JOIN livescore_team AS m ON t.TeamId = m.TeamId
-			INNER JOIN livescore_player AS p ON t.PlayerId = p.PlayerId
+			INNER JOIN livescore_player AS p ON t.PlayerId = p.PlayerId AND p.TeamId = t.TeamId
     WHERE t.LeagueId = LeagueId AND t.SeasonId = SeasonId
     ORDER BY t.Top LIMIT 10;
 END
