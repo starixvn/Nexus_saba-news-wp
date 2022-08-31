@@ -264,20 +264,47 @@
         }
 
         [Fact]
-        public async Task GetStanding_WhenCalled_ReturnExpectedData()
+        public async Task GetStanding_WhenCurrentStageIsGroup_ReturnExpectedData()
         {
             // Arrange
             var controller = GetController();
+            var leagueID = WorldCup2022.LeagueIdWorldCup2022;
+            var league = new Fixture().Create<League>();
+            league.CurrentStageId = WorldCup2022.GroupStageId;
             var news = new Fixture().Create<IList<SeasonStandings>>();
             var cateSlugCriteria = new Fixture().Create<GetLeagueSeasonStandingCriteria>();
             leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => cateSlugCriteria = x)).Returns(news);
-
+            leagueService.GetLeagueByIdAsync(Arg.Do<long>(x => leagueID = x)).Returns(league);
             //Act
             var result = await controller.Standing();
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             Assert.Equal("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewResult.ViewName);
+            var model = Assert.IsType<StandingDetailViewModel>(viewResult.Model);
+            Assert.False(model.IsKnockoutStage);
+        }
+
+        [Fact]
+        public async Task GetStanding_WhenCurrentStageIsKnockout_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var leagueID = WorldCup2022.LeagueIdWorldCup2022;
+            var league = new Fixture().Create<League>();
+            league.CurrentStageId = 30538;
+            var news = new Fixture().Create<IList<SeasonStandings>>();
+            var cateSlugCriteria = new Fixture().Create<GetLeagueSeasonStandingCriteria>();
+            leagueService.GetLeagueSeasonStanding(Arg.Do<GetLeagueSeasonStandingCriteria>(x => cateSlugCriteria = x)).Returns(news);
+            leagueService.GetLeagueByIdAsync(Arg.Do<long>(x => leagueID = x)).Returns(league);
+            //Act
+            var result = await controller.Standing();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewResult.ViewName);
+            var model = Assert.IsType<StandingDetailViewModel>(viewResult.Model);
+            Assert.True(model.IsKnockoutStage);
         }
 
         [Fact]

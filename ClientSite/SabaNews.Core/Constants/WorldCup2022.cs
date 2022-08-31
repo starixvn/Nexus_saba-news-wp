@@ -62,6 +62,7 @@
 
         public const long LeagueIdWorldCup2022 = 14638;
         public const long SeasonIdWorldCup2022 = 10810;
+        public const long GroupStageId = 30537;
 
         public static readonly IReadOnlyList<CateInfo> Menus = new List<CateInfo>
         {

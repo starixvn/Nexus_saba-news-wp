@@ -48,6 +48,9 @@
         <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
         <script src="~/js/pro/pages/livescore/soccer/world-cup/standing-playoff.chunk.js" asp-append-version="true"></script>
     </environment>
+    <script>
+        window.isKnockout = '@Model.IsKnockoutStage'
+    </script>
     <script src="~/minify/js/standingworldcup2022.min.js" asp-append-version="true"></script>
 }
 @(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))

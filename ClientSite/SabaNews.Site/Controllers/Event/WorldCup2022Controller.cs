@@ -214,15 +214,18 @@
         {
             var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
             IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var league = await leagueService.GetLeagueByIdAsync(WorldCup2022.LeagueIdWorldCup2022);
+            var isKnockout = league.CurrentStageId > WorldCup2022.GroupStageId;
             var header = new HeaderViewModel
             {
                 Title = WorldCup2022.TitleStanding,
                 Slug = WorldCup2022.UrlStandingSlug
             };
-            var viewModel = new LastestNewsViewModel
+            var viewModel = new StandingDetailViewModel
             {
                 Header = header,
-                StandingsViewModel = GroupStandingsByGroupName(standings)
+                StandingsViewModel = GroupStandingsByGroupName(standings),
+                IsKnockoutStage = isKnockout
             };
             return View("~/Views/Event/WorldCup2022/DetailStanding.cshtml", viewModel);
         }
