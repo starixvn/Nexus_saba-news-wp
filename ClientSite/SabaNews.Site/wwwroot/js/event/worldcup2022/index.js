@@ -13,7 +13,11 @@
                 $('#home-standing').html(res);
                 $('[data-toggle="tooltip"]').tooltip();
             }
-        })
+        });
+
+        $('.swiper-button-disabled').on('click', function (e) {
+            e.preventDefault();
+        });
     }
 
     function HandleSlide() {
