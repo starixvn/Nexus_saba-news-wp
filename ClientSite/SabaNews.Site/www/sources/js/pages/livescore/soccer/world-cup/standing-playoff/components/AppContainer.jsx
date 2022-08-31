@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import { StageMode, Width1024 } from '@jsroot/common/constants';
+import { StageMode, Width1024, WorldCup } from '@jsroot/common/constants';
 import Grid from './Grid';
-import { WorldCup } from '@jsroot/common/constants';
 import Item from './Item';
 import Site from '@jsroot/common/site';
 import LangHelper from '@jsroot/common/langHelper';
@@ -191,9 +190,11 @@ export class AppContainer extends Component {
         return newStages;
     };
 
-    getMatchByStage = (matches, stage) => {
-        const match = matches.find(item => item.stage?.stageId === stage);
-        return match;
+    getFinalAndPlaceMatch = (groupMatches, matches) => {
+        const placeMatch = matches.find(item => item.stage?.stageNameEN.toLowerCase().includes('place'));
+        const finalStage = groupMatches[groupMatches.length - 1];
+        const finalMatch = finalStage.matches[0];
+        return {placeMatch, finalMatch};
     };
 
     render() {
@@ -206,56 +207,62 @@ export class AppContainer extends Component {
         groupMatches = groupMatches.reverse();
         const prevMatchStages = this.separateMatches(groupMatches, true);
         const lastMatchStages = this.separateMatches(groupMatches, false);
-        const finalMatch = this.getMatchByStage(matches, WorldCup.FinalStage);
-        const thirdPlace = this.getMatchByStage(matches, WorldCup.ThirdPlace);
+        const {placeMatch, finalMatch} = this.getFinalAndPlaceMatch(groupMatches, matches);
         return (
             <div className="play-offs">
                 {
-                        isMobile &&
-                        <div className="wc-playoffs-showmb">
-                            <div className="draw-container">
-                                <div className="draw-wrapper">
-                                    <div className="shadowHeader"></div>
-                                    <div className="learHeader"></div>
-                                    <Grid matches={groupMatches}  thirdPlace={{...thirdPlace, league}} isMobile={isMobile} />
-                                </div>
+                    isMobile &&
+                    <div className="wc-playoffs-showmb">
+                        <div className="draw-container">
+                            <div className="draw-wrapper">
+                                <div className="shadowHeader"></div>
+                                <div className="learHeader"></div>
+                                <Grid matches={groupMatches} thirdPlace={{ ...placeMatch, league }} isMobile={isMobile} />
                             </div>
                         </div>
-                    }
-                    {
-                        !isMobile &&
-                        <div className="wc-playoffs-showpc">
-                            <div className="flex-play-offs">
-                                <div className="draw-container">
-                                    <div className="draw-wrapper">
-                                        <Grid matches={prevMatchStages} isMobile={isMobile} />
-                                    </div>
+                    </div>
+                }
+                {
+                    !isMobile &&
+                    <div className="wc-playoffs-showpc">
+                        <div className="flex-play-offs">
+                            <div className="draw-container">
+                                <div className="draw-wrapper">
+                                    <Grid matches={prevMatchStages} isMobile={isMobile} />
                                 </div>
-                                <div className="wc-result">
+                            </div>
+                            <div className="wc-result">
+                                {
+                                    finalMatch &&
                                     <ul className="wc-result-header">
-                                        <li><img src={Site.resolveClientUrl(`images/worldcup/cup.png`)}/></li>
+                                        <li><img src={Site.resolveClientUrl(`images/worldcup/cup.png`)} /></li>
                                         <li>{LangHelper.getResource('FinalStage')}</li>
                                     </ul>
-                                    <div className="draw">
-                                        <div className="draw__round draw__round--result">
-                                            <div className="draw__brackets">
-                                                <Item match={{...finalMatch, league}} positionClass={'draw__bracket--odd'} index={0}/>
-                                                <Item match={{...thirdPlace, league}} positionClass={'draw__bracket--even'} index={1}/>
-                                            </div>
+                                }
+                                <div className="draw">
+                                    <div className="draw__round draw__round--result">
+                                        <div className="draw__brackets">
+                                            {finalMatch && <Item match={{ ...finalMatch, league }} positionClass={'draw__bracket--odd'} index={0} />}
+                                            {placeMatch && <Item match={{ ...placeMatch, league }} positionClass={'draw__bracket--even'} index={1} />}
                                         </div>
                                     </div>
+                                </div>
+                                {
+                                    placeMatch &&
                                     <ul className="wc-result-footer">
                                         <li>{LangHelper.getResource('ThirdPlace')}</li>
                                     </ul>
+                                }
+
+                            </div>
+                            <div className="draw-container wc-flip-x">
+                                <div className="draw-wrapper">
+                                    <Grid matches={lastMatchStages} isMobile={isMobile} />
                                 </div>
-                                <div className="draw-container wc-flip-x">
-                                    <div className="draw-wrapper">
-                                        <Grid matches={lastMatchStages} isMobile={isMobile} />
-                                    </div>
-                                </div>
-                                </div>
+                            </div>
                         </div>
-                    }
+                    </div>
+                }
 
             </div>
         );
