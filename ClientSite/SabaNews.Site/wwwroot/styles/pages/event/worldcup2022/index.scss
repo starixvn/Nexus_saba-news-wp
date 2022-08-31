@@ -20,7 +20,7 @@
 .gird-hot-news {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 50rem auto;
+    grid-template-rows: 60rem auto;
     grid-gap: 2rem;
 
     @include tableMobile {
@@ -84,6 +84,12 @@
                     max-height: 20rem;
                 }
             }
+        }
+    }
+    .post-hot{
+        .hover-image{
+            height : 60rem;
+            max-height : 60rem;
         }
     }
 }
