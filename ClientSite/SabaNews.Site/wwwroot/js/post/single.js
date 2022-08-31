@@ -27,11 +27,12 @@
         var menuItems = $("#list-place").find("a"),
             topMenuHeight = $('.header-controls').outerHeight(),
             socialHeight = $('.main-social').outerHeight();
+        var fixtureHeight = $('.wc-bg-overflow').length > 0 ? $('.wc-bg-overflow').outerHeight() : 0;
         var tabId = location.hash;
         var offsTop = $(tabId).offset();
         if (typeof offsTop !== "undefined") {
             $('html, body').animate({
-                scrollTop: offsTop.top - $('.wc-bg-overflow').outerHeight()
+                scrollTop: offsTop.top - fixtureHeight
             }, 800);
         }
 
