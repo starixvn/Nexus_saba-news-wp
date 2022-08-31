@@ -388,7 +388,7 @@
                 var cateSlugCriteria = new GetPostsByCateSlugCriteria { _CategorySlug = param.Slug, _Start = start, _End = pageSize + 1 };
                 IEnumerable<Post> videos = await postService.GetPostsByCateSlugAsync(cateSlugCriteria);
                 videos = videos.Where(x => x.ID != videosOutstanding.First().ID).ToList();
-                if(videos.Count() > 12) {
+                if(videos.Count() > pageSize) {
                     var idlast = videos.Last().ID;
                     videos = videos.Where(x => x.ID != idlast).ToList();
                 }
