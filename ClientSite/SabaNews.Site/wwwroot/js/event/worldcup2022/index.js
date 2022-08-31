@@ -15,7 +15,7 @@
             }
         });
 
-        $('.swiper-button-disabled').on('click', function (e) {
+        $(document).on('click','.swiper-button-disabled', function (e) {
             e.preventDefault();
         });
     }
