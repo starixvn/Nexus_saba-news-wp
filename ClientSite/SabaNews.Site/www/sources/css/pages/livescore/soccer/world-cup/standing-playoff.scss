@@ -56,7 +56,7 @@
                         border: none;
                         color: #561020;
                         position: relative;
-                        clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+                        clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
                         @include tableMobile{
                           padding: 1rem 6rem;
                         }
@@ -72,7 +72,7 @@
                           right: 1px;
                           bottom: 0.7px;
                           background: #FFFFF8;
-                          clip-path: polygon(92% 0, 100% 49%, 94% 100%, 7% 100%, 0 49%, 7% 0);
+                          clip-path: polygon(94% 0, 100% 50%, 94% 100%, 6% 100%, 0 50%, 6% 0);
                           z-index: -1;
                           border-color: #631628;
                         }
@@ -113,9 +113,21 @@
                     color: #FFFFFF;
                   }
                 }
+                &__final{
+                  &--header{
+                    text-align: center;
+                    color: #561020;
+                  }
+                }
             }
         }
     }
+}
+
+.bracket-final{
+  &::after{
+    display: none;
+  }
 }
 
 

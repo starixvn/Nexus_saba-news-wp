@@ -60,7 +60,7 @@ export default class Grid extends PureComponent {
                                     }
                                     {
                                     index === matches.length - 1 && thirdPlace && thirdPlace.matchId &&
-                                    <div className="draw__final">
+                                    <div className="draw__bracket draw__bracket--odd bracket-final">
                                         <div className="draw__final--header">tranh hạng 3</div>
                                         <Item match={thirdPlace} positionClass={'draw__bracket--odd'}  index={2}/>
                                     </div>
