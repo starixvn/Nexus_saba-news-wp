@@ -104,7 +104,7 @@
 }
 
 .wc-date-bar{
-    overflow-x: auto;
+    overflow-x: hidden;
     display: grid;
     grid-template-columns: unset;
     grid-auto-flow: column;
@@ -118,6 +118,7 @@
         -ms-scroll-snap-type: x mandatory;
         scroll-snap-type: x mandatory;
         scroll-snap-stop: always;
+        overflow-x: auto;
     }
     @include Mobile{
         
