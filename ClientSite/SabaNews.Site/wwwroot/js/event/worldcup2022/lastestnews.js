@@ -51,23 +51,7 @@
         })
     }
 
-    function resizeTable() {
-        $(window).on('resize', function () {
-            var containerWidth = $('.container').innerWidth();
-            $('.king-soccer .wc-table').css({
-                width: "100%",
-                marginLeft: "0",
-            })
-            $('#standingWC .king-soccer').css({
-                width: containerWidth,
-                margin: "0 auto",
-                padding: "0 1.2rem"
-            })
-            $('#standingWC').css({
-                margin: "3rem 0 3rem 0",
-            })
-        })
-    }
+ 
 
     function init() {
         getStandings();
