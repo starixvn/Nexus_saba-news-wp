@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Site.Extensions
 {
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
 
@@ -16,6 +17,12 @@
         {
             string teamName = string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN;
             teamName = !string.IsNullOrEmpty(standing.TeamNameVN) ? standing.TeamNameVN : teamName;
+            return teamName;
+        }
+
+        public static string GetTopScorersPlayerName(TopScorers topScorers)
+        {
+            string teamName = string.IsNullOrEmpty(topScorers.PlayerNameEN) ? topScorers.PlayerFullNameEN : topScorers.PlayerNameEN;
             return teamName;
         }
 

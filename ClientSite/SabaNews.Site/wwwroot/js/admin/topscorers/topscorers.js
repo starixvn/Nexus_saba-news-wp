@@ -17,6 +17,21 @@
                             $('#EditPlayerContent .modal-body').html(html);
                             $('#EditPlayerContent').modal('show');
 
+                            $("#TeamFullNameEN").on("change", function () {
+                                var teamId = document.getElementById("TeamFullNameEN").value;
+                                $.ajax({
+                                    type: 'Get',
+                                    url: '/Admin/TopScorerManagement/GetPlayerByTeamId',
+                                    data: { teamId },
+                                    success: function (data) {
+                                        $("#PlayerFullNameEN").empty();
+                                        data.forEach(function (obj) {
+                                            $('#PlayerFullNameEN').append($('<option></option>').val(obj.playerId).html(obj.fullNameEN));
+                                        })
+                                    }
+                                })
+                            });
+
                             $("#TeamFullNameEN").select2();
                             $("#PlayerFullNameEN").select2();
 
@@ -70,23 +85,23 @@
                     $('#AddPlayerContent').modal('show');
 
 
-                    $("#TeamFullNameEN").on("change", function () {
-                        var teamId = document.getElementById("TeamFullNameEN").value;
+                    $("#TeamFullNameENAdd").on("change", function () {
+                        var teamId = document.getElementById("TeamFullNameENAdd").value;
                         $.ajax({
                             type: 'Get',
                             url: '/Admin/TopScorerManagement/GetPlayerByTeamId',
                             data: { teamId},
                             success: function (data) {
-                                $("#PlayerFullNameEN").empty();
+                                $("#PlayerFullNameENAdd").empty();
                                 data.forEach(function (obj) {
-                                    $('#PlayerFullNameEN').append($('<option></option>').val(obj.playerId).html(obj.fullNameEN));
+                                    $('#PlayerFullNameENAdd').append($('<option></option>').val(obj.playerId).html(obj.fullNameEN));
                                 })
                             }
                         })
                     });
 
-                    $("#TeamFullNameEN").select2();
-                    $("#PlayerFullNameEN").select2();
+                    $("#TeamFullNameENAdd").select2();
+                    $("#PlayerFullNameENAdd").select2();
 
                     $('#btn-save-add').on('click', function () {
                         document.getElementById("btn-save-add").style.display = "none";
@@ -94,8 +109,8 @@
                         var Top = document.getElementById("addTop").value;
                         var Goals = document.getElementById("addGoals").value;
                         var Assists = document.getElementById("addAssist").value;
-                        var TeamId = document.getElementById("TeamFullNameEN").value;
-                        var PlayerId = document.getElementById("PlayerFullNameEN").value;
+                        var TeamId = document.getElementById("TeamFullNameENAdd").value;
+                        var PlayerId = document.getElementById("PlayerFullNameENAdd").value;
                         $.ajax({
                             type: 'POST',
                             url: url,

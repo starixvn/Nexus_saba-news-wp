@@ -32,7 +32,7 @@
                                 <label>@ViewResources.Team</label>
                             </td>
                             <td>
-                                @Html.DropDownList("TeamId", new SelectList(Model.Teams, "TeamId", "TeamFullNameEN"), new { @class = "form-control txt-teamFullNameEn", id = "TeamFullNameEN", value = "TeamId" })
+                                @Html.DropDownList("TeamId", new SelectList(Model.Teams, "TeamId", "TeamFullNameEN"), new { @class = "form-control txt-teamFullNameEn", id = "TeamFullNameENAdd", value = "TeamId" })
 
                             </td>
                         </tr>
@@ -43,7 +43,7 @@
                             </td>
                             <td id="dropdowplaer">
                                 <div>
-                                    @Html.DropDownList("PlayerId", new SelectList(Model.Players, "PlayerId", "FullNameEN"), new { @class = "form-control txt-playerFullNameEn", id = "PlayerFullNameEN", value = "PlayerId" })
+                                    @Html.DropDownList("PlayerId", new SelectList(Model.Players, "PlayerId", "FullNameEN"), new { @class = "form-control txt-playerFullNameEn", id = "PlayerFullNameENAdd", value = "PlayerId" })
                                 </div>
                             </td>
                         </tr>

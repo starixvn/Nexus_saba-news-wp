@@ -1,8 +1,11 @@
 ﻿namespace SabaNews.Site.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using SabaNews.Core.Constants;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.User;
     using System;
@@ -39,7 +42,8 @@
         public async Task<ActionResult> AddPlayer()
         {
             var topScorers = await leagueService.GetAllTopScorersAsync();
-            var teams = await leagueService.GetAllTeamAsync();
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
             var player = await leagueService.GetPlayerByIdTeamAsync(teams[0].TeamId);
             if (topScorers.Any()) {
                 ViewBag.TopTotal = topScorers[topScorers.Count - 1].Top + 1;
@@ -74,8 +78,9 @@
         [HttpGet]
         public async Task<ActionResult> UpdateTopScorers(int rowNum, int teamId)
         {
-             var teams = await leagueService.GetAllTeamAsync();
-             var players = await leagueService.GetPlayerByIdTeamAsync(teamId);
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022 };
+            IList<SeasonStandings> teams = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var players = await leagueService.GetPlayerByIdTeamAsync(teamId);
              var playUpdate = await leagueService.GetTopScorersByRowNumAsync(rowNum);
              
              var model = new PlayerViewModel
