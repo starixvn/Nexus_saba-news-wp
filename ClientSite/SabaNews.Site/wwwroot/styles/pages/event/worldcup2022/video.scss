@@ -57,8 +57,17 @@
             width: 6rem;
             height: 6rem;
 
+            @include tableMobile {
+                height: 4.6rem;
+                width: 4.6rem;
+            }
+
             span {
                 font-size: 2.5rem;
+
+                @include tableMobile {
+                    font-size: 2rem;
+                }
             }
         }
     }
