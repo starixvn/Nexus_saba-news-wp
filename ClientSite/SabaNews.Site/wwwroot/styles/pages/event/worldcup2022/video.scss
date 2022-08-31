@@ -30,6 +30,7 @@
         height: 15rem;
         @include tableMobile{
             max-height : 20rem;
+            height : 20rem;
         }
         &:after{
             display : none;
@@ -50,11 +51,23 @@
     @include Mobile {
         grid-template-columns: 100%;
     }
+
+    .hover-image {
+        .btn-play-video {
+            width: 6rem;
+            height: 6rem;
+
+            span {
+                font-size: 2.5rem;
+            }
+        }
+    }
 }
 
-.live-score-nav{
-    @include tableMobile{
-        max-width : 30rem;
+.live-score-nav {
+    @include tableMobile {
+        padding: .4rem .5rem;
+        max-width: 30rem;
     }
 }
 
