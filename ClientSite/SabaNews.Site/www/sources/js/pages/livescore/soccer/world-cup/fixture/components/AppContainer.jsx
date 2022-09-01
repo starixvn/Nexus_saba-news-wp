@@ -46,12 +46,12 @@ export class AppContainer extends Component {
             <div>
                 <SignalR />
                 {
-                    matches === null &&
+                    // matches === null &&
                     <SkeletonGrid />
                 }
                 {
                     matchGrid && matchGrid.length > 0 &&
-                    <Grid matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)} />
+                    <Grid matches={matchGrid} league={league} isFinished={this.checkIsFinished(league)}/>
                 }
             </div>
         );

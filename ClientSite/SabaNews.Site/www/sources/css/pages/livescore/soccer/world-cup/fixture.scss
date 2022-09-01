@@ -57,6 +57,7 @@
     top: 50%;
     transform: translate(0,-50%);
     transition: all .4s ease-in-out;
+    z-index: 99;
     i{
         &::before{
             font-size: 2.4rem;
@@ -120,9 +121,6 @@
         scroll-snap-stop: always;
         overflow-x: auto;
     }
-    @include Mobile{
-        
-    }
     .group-match-item{
         margin-bottom: 0;
         @include tableMobile{
@@ -131,11 +129,14 @@
         .soccer-match-item{
             display: inherit;
             margin-bottom: 0;
-            width: 25rem;
+            width: 20rem;
             background: #753146;
             padding: 0;
             color: #fff;
             border: 1px solid #61132B;
+            @include tableMobile{
+                width: 23rem !important;
+            }
             &:hover{
                 box-shadow: none;
                 background: #753146;
@@ -183,6 +184,50 @@
                 .soccer-team-result{
                     font-size: 1.2rem;
                 }
+            }
+        }
+    }
+}
+
+.swiper-container {
+    .swiper-slide{
+        background: transparent;
+        width: 20rem !important;
+        @include tableMobile{
+            width: 23rem !important;
+        }
+    }
+}
+
+
+.scroll-snap {
+    @include tableMobile {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-scroll-snap-type: x mandatory;
+        -ms-scroll-snap-type: x mandatory;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        grid-template-columns: unset;
+        grid-auto-flow: column;
+        grid-gap: 0 !important;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-snap-items {
+            scroll-snap-align: center;
+        }
+
+        .post-items, .wc-table {
+            margin-left: 1.2rem;
+
+            &:first-child {
+                margin-left: 1.2rem;
+            }
+
+            &:last-child {
+                margin-right: 0;
             }
         }
     }

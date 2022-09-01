@@ -96,8 +96,9 @@ export default class Grid extends PureComponent {
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
                 <Swiper
-                    spaceBetween={50}
+                    spaceBetween={10}
                     slidesPerView={7}
+                    watchOverflow={true}
                     navigation={{
                         prevEl: '#prev',
                         nextEl: '#next',
@@ -105,7 +106,7 @@ export default class Grid extends PureComponent {
                 >
                 {
                     matches.map((item, index) =>
-                        <SwiperSlide><Match key={index} match={{ ...item, league }} /></SwiperSlide>
+                        <SwiperSlide className="scroll-snap-items"><Match key={index} match={{ ...item, league }} /></SwiperSlide>
                     )
                 }
                     <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
