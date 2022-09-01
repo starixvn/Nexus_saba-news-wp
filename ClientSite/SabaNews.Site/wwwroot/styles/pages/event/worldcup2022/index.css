@@ -1160,8 +1160,8 @@ body {
       .gird-hot-news .post-items-2 .hover-image, .gird-hot-news .post-items-3 .hover-image, .gird-hot-news .post-items-4 .hover-image, .gird-hot-news .post-items-5 .hover-image {
         max-height: 20rem; } }
   .gird-hot-news .post-hot .hover-image {
-    height: 60rem;
-    max-height: 60rem; }
+    height: 50rem;
+    max-height: 50rem; }
 
 .wc-block-bxh {
   background: url("../../../../images/worldcup/section-2.png") no-repeat;
