@@ -21,8 +21,8 @@ export default class Grid extends PureComponent {
     componentDidMount() {
         const { matches, isFinished } = this.props;
         let { start, end } = this.state;
-        const gridWidth = window.innerWidth - 40;
-        this.showItems = Math.ceil(gridWidth / 260);
+        const gridWidth = window.innerWidth;
+        this.showItems = Math.ceil(gridWidth / 200);
         if (!isFinished) {
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
@@ -91,27 +91,37 @@ export default class Grid extends PureComponent {
 
     render() {
         const { league, matches } = this.props;
+        const { isScroll }  = this.state;
         //const grid = this.getGridMatches();
         return (
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={7}
-                    watchOverflow={true}
-                    navigation={{
-                        prevEl: '#prev',
-                        nextEl: '#next',
-                      }}
-                >
-                {
-                    matches.map((item, index) =>
-                        <SwiperSlide className="scroll-snap-items"><Match key={index} match={{ ...item, league }} /></SwiperSlide>
-                    )
-                }
-                    <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
-                    <div id='prev' className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
-                </Swiper>
+                    {
+                        !isScroll &&
+                        <Swiper
+                            spaceBetween={10}
+                            slidesPerView={this.showItems}
+                            watchOverflow={true}
+                            navigation={{
+                                prevEl: '#prev',
+                                nextEl: '#next',
+                            }}
+                        >
+                        {
+                            matches.map((item, index) =>
+                                <SwiperSlide className="scroll-snap-items"><Match key={index} match={{ ...item, league }} /></SwiperSlide>
+                            )
+                        }
+                            <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
+                            <div id='prev' className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
+                        </Swiper>
+                    }
+                    {
+                        isScroll &&
+                        matches.map((item, index) =>
+                           <Match key={index} match={{ ...item, league }} />
+                        )
+                    }
                 </div>
             </div>
         );
