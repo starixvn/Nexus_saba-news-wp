@@ -42,6 +42,9 @@
           padding: .5rem;
           width: 22.5rem;
           height: 2.6rem;
+          background: linear-gradient(157.5deg, #FFD68F 0%, #C2A97D 93.61%);
+          clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
+          color: #2F2F2F;
         }
       }
       .soccer-match-grid-item-body{
@@ -355,6 +358,7 @@
   display: flex;
   align-items: center;
   font-size: 1.4rem;
+  justify-content: center;
   select {
     background-position: 2px;
     background-repeat: no-repeat;
@@ -364,7 +368,7 @@
     outline: none;
     border: none;
     -webkit-appearance: none;
-    background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MkwxMCAxMC45NzQ5TDEzLjgyNSA3LjE1ODJMMTUgOC4zMzMyTDEwIDEzLjMzMzJMNSA4LjMzMzJMNi4xNzUgNy4xNTgyWiIgZmlsbD0iI0YxMkYxOSIvPgo8L3N2Zz4K);
+    background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuMTc1IDcuMTU4MzNMMTAgMTAuOTc1TDEzLjgyNSA3LjE1ODMzTDE1IDguMzMzMzNMMTAgMTMuMzMzM0w1IDguMzMzMzNMNi4xNzUgNy4xNTgzM1oiIGZpbGw9IiM1QTExMjMiLz4KPC9zdmc+Cg==);
   }
   option {
     color: #4f4f4f;
@@ -373,9 +377,10 @@
     font-size: 1.5rem;
   }
   .name-round{
-    color: #ef4300;
+    color: #5A1123;
     font-weight: 700;
     margin-right: .5rem;
+    font-size: 1.3rem;
   }
 }
 
