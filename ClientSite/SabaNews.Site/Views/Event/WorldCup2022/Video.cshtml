@@ -118,8 +118,8 @@
                                     <a href="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })" class="card-vertical__title text-description">
                                         <img asp-append-version="true" loading="lazy" src="@Url.Content(post.FeatureImage)" alt="@post.PostTitle" class="img-res img-block lazy">
                                     </a>
-                                    <div class="btn-play-video" post-id="@Model.Videos[0].ID">
-                                        <span class="icon-play"></span>
+                                    <div class="btn-play-video btn-play-orthers" post-id="@Model.Videos[0].ID" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })">
+                                        <span class="icon-play play-orthers" data-url ="@Url.Action("PostDetailWC", "WorldCup2022", new { slug = post.Slug })"></span>
                                     </div>
                                 </div>
                                 <div class="title">

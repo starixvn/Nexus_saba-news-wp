@@ -34,6 +34,16 @@
             } else {
                 $('.ajax-load').hide();
                 $('#news-grid').append(data);
+
+                $('.btn-play-orthers').on('click', function () {
+                    var url = $(this).data('url');
+                    window.location = url;
+                });
+                $('.play-orthers').on('click', function () {
+                    var url = $(this).data('url');
+                    window.location = url;
+                });
+
                 if (page === 5 && page < paging.totalPages) {
                     const loadMoreHtml = '<div class="load-more-page"><button>Hiển thị thêm</button></div>';
                     $('#news-grid').append(loadMoreHtml);
@@ -76,6 +86,7 @@
             data: { slug, page, pageSize, isVideo }
         }).done(function (data) {
             $('#news-grid').html(data);
+
         })
             .fail(function (jqXHR, ajaxOptions, thrownError) {
                 console.log('server not responding...');
