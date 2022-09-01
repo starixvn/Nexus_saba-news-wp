@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { AppContainer }  from '../Appcontainer';
+import { AppContainer } from '../Appcontainer';
 import CommonFunctions from '@jsroot/common/common-functions';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import Site from '@jsroot/common/site';
@@ -175,8 +175,8 @@ describe('AppContainer', () => {
             const props = {
                 ...defaultProps,
                 stages: [
-                    {stageId: 1, stageNameEN:'stage1', mode: 1, orderIndex: 0}, {stageId: 2, stageNameEN:'stage2', mode: 1, orderIndex: 1},
-                    {stageId: 1, stageNameEN:'third place', mode: 2, orderIndex: 2}, {stageId: 4, stageNameEN:'stage3', mode: 2, orderIndex: 3}
+                    { stageId: 1, stageNameEN: 'stage1', mode: 1, orderIndex: 0 }, { stageId: 2, stageNameEN: 'stage2', mode: 1, orderIndex: 1 },
+                    { stageId: 1, stageNameEN: 'third place', mode: 2, orderIndex: 2 }, { stageId: 4, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }
                 ]
             }
             const container = shallow(<AppContainer {...props} />);
@@ -186,7 +186,7 @@ describe('AppContainer', () => {
             const result = instance.getPlayoffStages();
 
             // Assert
-            expect(result).toEqual([{stageId: 4, stageNameEN:'stage3', mode: 2, orderIndex: 3}]);
+            expect(result).toEqual([{ stageId: 4, stageNameEN: 'stage3', mode: 2, orderIndex: 3 }]);
         });
     });
 
@@ -196,32 +196,32 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 2,
-                    stage: {stageId: 2},
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 3,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 }
             ];
 
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const playoffStages = [
-                {stageId: 1, orderIndex: 1}, {stageId: 2, orderIndex: 2}, {stageId: 10, orderIndex: 10}
+                { stageId: 1, orderIndex: 1 }, { stageId: 2, orderIndex: 2 }, { stageId: 10, orderIndex: 10 }
             ]
 
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
             instance.getPlayoffStages = jest.fn().mockReturnValue(playoffStages);
-
+            instance.getFinalAndPlaceMatch = jest.fn().mockReturnValue('final');
             // Act
             const result = instance.groupMatchByStage();
 
@@ -229,28 +229,28 @@ describe('AppContainer', () => {
             expect(result).toEqual([
                 {
                     key: 1,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                     matches: [
                         {
                             matchId: 1,
-                            stage: {stageId: 1},
-                            league: {leagueId: 1}
+                            stage: { stageId: 1, stageNameEN: 'stage' },
+                            league: { leagueId: 1 }
                         },
                         {
                             matchId: 3,
-                            stage: {stageId: 1},
-                            league: {leagueId: 1}
+                            stage: { stageId: 1, stageNameEN: 'stage' },
+                            league: { leagueId: 1 }
                         }
                     ]
                 },
                 {
                     key: 2,
-                    stage: {stageId: 2},
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                     matches: [
                         {
                             matchId: 2,
-                            stage: {stageId: 2},
-                            league: {leagueId: 1}
+                            stage: { stageId: 2, stageNameEN: 'stage' },
+                            league: { leagueId: 1 }
                         },
                     ]
                 }
@@ -264,29 +264,29 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 2,
-                    stage: {stageId: 2},
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 3,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 }
             ];
 
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const playoffStages = [
-                {key: 1, stage:{stageId: 1}, matches: [{matchId: 1}, {matchId: 2}]},
-                {key: 2, stage:{stageId: 2}, matches: [{matchId: 3}, {matchId: 4}]}
+                { key: 1, stage: { stageId: 1 }, matches: [{ matchId: 1 }, { matchId: 2 }] },
+                { key: 2, stage: { stageId: 2 }, matches: [{ matchId: 3 }, { matchId: 4 }] }
             ]
-            const groupSecondLegMatches = [{matchId: 1}, {matchId: 2}];
+            const groupSecondLegMatches = [{ matchId: 1 }, { matchId: 2 }];
 
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
@@ -301,16 +301,16 @@ describe('AppContainer', () => {
             expect(result).toEqual([
                 {
                     key: 1,
-                    stage: {stageId: 1},
+                    stage: { stageId: 1 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1 }, { matchId: 2 },
                     ]
                 },
                 {
                     key: 2,
-                    stage: {stageId: 2},
+                    stage: { stageId: 2 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1}, { matchId: 2 },
                     ]
                 }
             ]);
@@ -318,52 +318,52 @@ describe('AppContainer', () => {
     });
 
     describe('sortMatchByLastStage', () => {
-        it('return correctly data when call function',  () => {
+        it('return correctly data when call function', () => {
             // Arrange
             const matches = [
                 {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
-                    stage: {stageId: 1},
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 2,
-                    homeTeam: {teamId: 3},
-                    awayTeam: {teamId: 4},
-                    stage: {stageId: 2},
+                    homeTeam: { teamId: 3 },
+                    awayTeam: { teamId: 4 },
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                 },
                 {
                     matchId: 3,
-                    homeTeam: {teamId: 5},
-                    awayTeam: {teamId: 6},
-                    stage: {stageId: 1},
+                    homeTeam: { teamId: 5 },
+                    awayTeam: { teamId: 6 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                 }
             ];
 
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const lastStage = [
                 {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
                 },
                 {
                     matchId: 2,
-                    homeTeam: {teamId: 3},
-                    awayTeam: {teamId: 4},
+                    homeTeam: { teamId: 3 },
+                    awayTeam: { teamId: 4 },
                 }
             ];
             const matchMapWithStage = {
                 match: {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
                 },
                 matchIds: [1, 2]
             };
@@ -376,18 +376,18 @@ describe('AppContainer', () => {
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
             instance.getMatchMapWithStage = jest.fn().mockReturnValueOnce(matchMapWithStage)
-                                                    .mockReturnValueOnce(matchMapWithStageEmpty)
-                                                    .mockReturnValueOnce(matchMapWithStage)
-                                                    .mockReturnValueOnce(matchMapWithStageEmpty);
+                .mockReturnValueOnce(matchMapWithStageEmpty)
+                .mockReturnValueOnce(matchMapWithStage)
+                .mockReturnValueOnce(matchMapWithStageEmpty);
 
             // Act
             const result = instance.sortMatchByLastStage(matches, lastStage);
 
             // Assert
             expect(result).toEqual([
-                {"awayTeam": {"teamId": 2}, "homeTeam": {"teamId": 1}, "matchId": 1},
-                {"awayTeam": {"teamId": 2}, "homeTeam": {"teamId": 1}, "matchId": 1},
-                {"awayTeam": {"teamId": 6}, "homeTeam": {"teamId": 5}, "isDraw": false, "matchId": 3, "stage": {"stageId": 1}}
+                { "awayTeam": { "teamId": 2 }, "homeTeam": { "teamId": 1 }, "matchId": 1 },
+                { "awayTeam": { "teamId": 2 }, "homeTeam": { "teamId": 1 }, "matchId": 1 },
+                { "awayTeam": { "teamId": 6 }, "homeTeam": { "teamId": 5 }, "isDraw": false, "matchId": 3, "stage": { "stageId": 1, "stageNameEN": 'stage' } }
             ]);
         });
     });
@@ -398,23 +398,23 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
-                    stage: {stageId: 1},
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                     isSecondLeg: false
                 },
                 {
                     matchId: 2,
-                    homeTeam: {teamId: 2},
-                    awayTeam: {teamId: 1},
-                    stage: {stageId: 2},
+                    homeTeam: { teamId: 2 },
+                    awayTeam: { teamId: 1 },
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                     isSecondLeg: true
                 },
                 {
                     matchId: 3,
-                    homeTeam: {teamId: 5},
-                    awayTeam: {teamId: 6},
-                    stage: {stageId: 1},
+                    homeTeam: { teamId: 5 },
+                    awayTeam: { teamId: 6 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                     isSecondLeg: false
                 }
             ];
@@ -422,7 +422,7 @@ describe('AppContainer', () => {
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const container = shallow(<AppContainer {...props} />);
@@ -432,9 +432,22 @@ describe('AppContainer', () => {
 
             // Assert
             expect(result).toEqual([
-                {awayTeam: {teamId: 2}, homeTeam: {teamId: 1}, isDraw: false, isSecondLeg: false, matchId: 1, 
-                secondLeg: {awayTeam: {teamId: 1}, homeTeam: {teamId: 2}, isSecondLeg: true, matchId: 2, stage: {stageId: 2}}, stage: {stageId: 1}},
-                {awayTeam: {teamId: 6}, homeTeam: {teamId: 5}, isDraw: false, isSecondLeg: false, matchId: 3, stage: {stageId: 1}}
+                {
+                    awayTeam: { teamId: 2 },
+                    homeTeam: { teamId: 1 },
+                    isDraw: false,
+                    isSecondLeg: false,
+                    matchId: 1,
+                    secondLeg: { awayTeam: { teamId: 1 }, homeTeam: { teamId: 2 }, isSecondLeg: true, matchId: 2, stage: { stageId: 2, stageNameEN: 'stage' } }, stage: { stageId: 1, stageNameEN: 'stage' }
+                },
+                {
+                    awayTeam: { teamId: 6 },
+                    homeTeam: { teamId: 5 },
+                    isDraw: false,
+                    isSecondLeg: false,
+                    matchId: 3,
+                    stage: { stageId: 1, stageNameEN: 'stage' }
+                }
             ]);
         });
 
@@ -443,23 +456,23 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
-                    stage: {stageId: 1},
-                    isSecondLeg: false
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
+                    isSecondLeg: false,
                 },
                 {
                     matchId: 2,
-                    homeTeam: {teamId: 2},
-                    awayTeam: {teamId: 1},
-                    stage: {stageId: 2},
+                    homeTeam: { teamId: 2 },
+                    awayTeam: { teamId: 1 },
+                    stage: { stageId: 2, stageNameEN: 'stage' },
                     isSecondLeg: true
                 },
                 {
                     matchId: 3,
-                    homeTeam: {teamId: 5},
-                    awayTeam: {teamId: 6},
-                    stage: {stageId: 1},
+                    homeTeam: { teamId: 5 },
+                    awayTeam: { teamId: 6 },
+                    stage: { stageId: 1, stageNameEN: 'stage' },
                     isSecondLeg: false
                 }
             ];
@@ -467,7 +480,7 @@ describe('AppContainer', () => {
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const container = shallow(<AppContainer {...props} />);
@@ -477,9 +490,11 @@ describe('AppContainer', () => {
 
             // Assert
             expect(result).toEqual([
-                {awayTeam: {teamId: 2}, homeTeam: {teamId: 1}, isSecondLeg: false, matchId: 1,
-                secondLeg: {awayTeam: {teamId: 1}, homeTeam: {teamId: 2}, isSecondLeg: true, matchId: 2, stage: {stageId: 2}}, stage: {stageId: 1}},
-                {awayTeam: {teamId: 6}, homeTeam: {teamId: 5}, isSecondLeg: false, matchId: 3, stage: {stageId: 1}}
+                {
+                    awayTeam: { teamId: 2 }, homeTeam: { teamId: 1 }, isSecondLeg: false, matchId: 1,
+                    secondLeg: { awayTeam: { teamId: 1 }, homeTeam: { teamId: 2 }, isSecondLeg: true, matchId: 2, stage: { stageId: 2, stageNameEN: 'stage' } }, stage: { stageId: 1, stageNameEN: 'stage' }
+                },
+                { awayTeam: { teamId: 6 }, homeTeam: { teamId: 5 }, isSecondLeg: false, matchId: 3, stage: { stageId: 1, stageNameEN: 'stage' } }
             ]);
         });
     });
@@ -490,17 +505,18 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    homeTeam: {teamId: 1},
-                    awayTeam: {teamId: 2},
-                    stage: {stageId: 1},
-                    isSecondLeg: false
+                    homeTeam: { teamId: 1 },
+                    awayTeam: { teamId: 2 },
+                    stage: { stageId: 1 },
+                    isSecondLeg: false,
+                    stage: { stageNameEN: 'stage' }
                 },
             ];
 
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const container = shallow(<AppContainer {...props} />);
@@ -518,18 +534,20 @@ describe('AppContainer', () => {
             const matches = [
                 {
                     matchId: 1,
-                    isSecondLeg: false
+                    isSecondLeg: false,
+                    stage: { stageNameEN: 'stage' }
                 },
                 {
                     matchId: 2,
-                    isSecondLeg: true
+                    isSecondLeg: true,
+                    stage: { stageNameEN: 'stage' }
                 },
             ];
 
             const props = {
                 ...defaultProps,
                 matches: matches,
-                league: {leagueId: 1}
+                league: { leagueId: 1 }
             }
 
             const container = shallow(<AppContainer {...props} />);
@@ -538,7 +556,7 @@ describe('AppContainer', () => {
             const result = instance.getMatchMapWithStage(matches);
 
             // Assert
-            expect(result.match).toEqual({isSecondLeg: false, matchId: 1, secondLeg: {isSecondLeg: true, matchId: 2}});
+            expect(result.match).toEqual({ isSecondLeg: false, matchId: 1, stage: { stageNameEN: 'stage' }, secondLeg: { isSecondLeg: true, matchId: 2, stage: { stageNameEN: 'stage' } } });
             expect(result.matchIds).toEqual([1, 2]);
         });
     });
@@ -548,15 +566,15 @@ describe('AppContainer', () => {
             // Arrange
             const stages = [
                 {
-                    stage: {stageId: 1},
+                    stage: { stageId: 1 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1 }, { matchId: 2 },
                     ]
                 },
                 {
-                    stage: {stageId: 2},
+                    stage: { stageId: 2 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1 }, { matchId: 2 },
                     ]
                 }
             ];
@@ -569,23 +587,23 @@ describe('AppContainer', () => {
 
             // Assert
             expect(result).toEqual([
-                {matches: [{matchId: 2}], stage: {stageId: 1}},
-                {matches: [{matchId: 2}], stage: {stageId: 2}}]);
+                { matches: [{ matchId: 2 }], stage: { stageId: 1 } },
+                { matches: [{ matchId: 2 }], stage: { stageId: 2 } }]);
         });
 
         it('return correctly when isPrev = true', () => {
             // Arrange
             const stages = [
                 {
-                    stage: {stageId: 1},
+                    stage: { stageId: 1 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1 }, { matchId: 2 },
                     ]
                 },
                 {
-                    stage: {stageId: 2},
+                    stage: { stageId: 2 },
                     matches: [
-                        {matchId: 1}, {matchId: 2},
+                        { matchId: 1 }, { matchId: 2 },
                     ]
                 }
             ];
@@ -598,8 +616,8 @@ describe('AppContainer', () => {
 
             // Assert
             expect(result).toEqual([
-                {matches: [{matchId: 1}], stage: {stageId: 1}},
-                {matches: [{matchId: 1}], stage: {stageId: 2}}]);
+                { matches: [{ matchId: 1 }], stage: { stageId: 1 } },
+                { matches: [{ matchId: 1 }], stage: { stageId: 2 } }]);
         });
     });
 
@@ -632,7 +650,7 @@ describe('AppContainer', () => {
 
         it('render correctly when isMobile = true', () => {
             // Arrange
-            const matches = [{matchId: 1}, {matchId: 2}]
+            const matches = [{ matchId: 1, stage: { stageNameEN: 'stage' } }, { matchId: 2, stage: { stageNameEN: 'stage' } }]
             const props = {
                 ...defaultProps,
                 matches: matches
@@ -641,7 +659,7 @@ describe('AppContainer', () => {
             const instance = container.instance();
             instance.groupMatches = jest.fn().mockReturnValue(matches);
             instance.separateMatches = jest.fn().mockReturnValue(matches);
-            instance.setState({isMobile: true});
+            instance.setState({ isMobile: true });
             // Act
             const result = instance.render();
 
@@ -651,7 +669,7 @@ describe('AppContainer', () => {
 
         it('render correctly when isMobile = false', () => {
             // Arrange
-            const matches = [{matchId: 1}, {matchId: 2}]
+            const matches = [{ matchId: 1, stage: { stageNameEN: 'stage' } }, { matchId: 2, stage: { stageNameEN: 'stage' } }]
             const props = {
                 ...defaultProps,
                 matches: matches
@@ -660,7 +678,8 @@ describe('AppContainer', () => {
             const instance = container.instance();
             instance.groupMatches = jest.fn().mockReturnValue(matches);
             instance.separateMatches = jest.fn().mockReturnValue(matches);
-            instance.setState({isMobile: false});
+            instance.getFinalAndPlaceMatch = jest.fn().mockReturnValue('final');
+            instance.setState({ isMobile: false });
             // Act
             const result = instance.render();
 

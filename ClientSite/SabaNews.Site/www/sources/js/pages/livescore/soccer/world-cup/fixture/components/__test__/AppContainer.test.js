@@ -18,6 +18,45 @@ describe('AppContainer', () => {
         jest.clearAllMocks();
     });
 
+    describe('constructor', () => {
+        afterEach(() => {
+            window.innerWidth = 0;
+        });
+
+        it('inital correctly state when innerWidth < 1024', () => {
+            // Arrange
+            window.innerWidth = 600;
+
+            // Act
+            const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('inital correctly state when innerWidth = 1024', () => {
+            // Arrange
+            window.innerWidth = 1024;
+
+            // Act
+            const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('inital correctly state when innerWidth > 1024', () => {
+            // Arrange
+            window.innerWidth = 1026;
+
+            // Act
+            const instance = shallow(<AppContainer {...defaultProps} />).instance();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(false);
+        });
+    })
+
     describe('componentDidMount', () => {
         it('calls correctly functions', () => {
             // Arrange
@@ -31,6 +70,98 @@ describe('AppContainer', () => {
             expect(defaultProps.getMatches).toHaveBeenCalledTimes(2);
         });
     })
+
+    describe('componentWillUnmount', () => {
+        it('calls correctly functions', () => {
+            // Arrange
+            window.removeEventListener = jest.fn();
+
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+
+            // Act
+            instance.componentWillUnmount();
+
+            // Assert
+            expect(window.removeEventListener).toHaveBeenCalledWith('resize', instance.handleResize);
+        });
+    });
+
+    describe('handleResize', () => {
+        it('updates correctly state when isMobile = false and window.innerWidth < 1024', () => {
+            // Arrange
+            window.innerWidth = 767;
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            instance.setState({ isMobile: false });
+
+            // Act
+            instance.handleResize();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('updates correctly state when isMobile = false and window.innerWidth = 1024', () => {
+            // Arrange
+            window.innerWidth = 1024;
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            instance.setState({ isMobile: false });
+
+            // Act
+            instance.handleResize();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('do nothing when isMobile = true and window.innerWidth < 1024', () => {
+            // Arrange
+            window.innerWidth = 767;
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            instance.setState({ isMobile: true });
+            instance.setState = jest.fn();
+
+            // Act
+            instance.handleResize();
+
+            // Assert
+            expect(instance.setState).toHaveBeenCalledTimes(0);
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('do nothing when isMobile = true and window.innerWidth = 1024', () => {
+            // Arrange
+            window.innerWidth = 1024;
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            instance.setState({ isMobile: true });
+            instance.setState = jest.fn();
+
+            // Act
+            instance.handleResize();
+
+            // Assert
+            expect(instance.setState).toHaveBeenCalledTimes(0);
+            expect(instance.state.isMobile).toEqual(true);
+        });
+
+        it('updates correctly state when isMobile = true and window.innerWidth > 1024', () => {
+            // Arrange
+            window.innerWidth = 1025;
+            const container = shallow(<AppContainer {...defaultProps} />);
+            const instance = container.instance();
+            instance.setState({ isMobile: true });
+
+            // Act
+            instance.handleResize();
+
+            // Assert
+            expect(instance.state.isMobile).toEqual(false);
+        });
+    });
 
     describe('checkIsFinished', () => {
         it('return as expected when season finished', () => {
@@ -144,22 +275,24 @@ describe('AppContainer', () => {
             expect(result).toMatchSnapshot();
         });
 
-        it('return null when match is empty', () => {
+        it('return correct when match is empty', () => {
             // Arrange
             const props = {
                 ...defaultProps,
-                matches: []
-            }
+                matches: [],
+                league: {leagueId: 1, season:{endTime: '2022-10-10'}}
+            };
             const container = shallow(<AppContainer {...props} />);
             const instance = container.instance();
+            instance.checkIsFinished = jest.fn();
             // Act
             const result = instance.render();
 
             // Assert
-            expect(result).toEqual(null);
+            expect(result).toMatchSnapshot();
         });
 
-        it('render correctly ', () => {
+        it('render correctly when matches has data', () => {
             // Arrange
             const matches = [{ matchId: 1, stage: { stageId: 30537 } }, { matchId: 2, stage: { stageId: 0 } }];
             const league = {

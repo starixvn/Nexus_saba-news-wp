@@ -1,6 +1,6 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { SwiperSlide, Swiper } from "swiper/react";
+import { SwiperSlide, Swiper } from 'swiper/react';
 
 const SkeletonGrid = ({ isMobile }) => {
     const showItems = Math.ceil(window.innerWidth / 200) - 1;
@@ -39,8 +39,8 @@ const SkeletonGrid = ({ isMobile }) => {
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
     return (
         <div className="wc-bg-overflow">
             <div className="wc-date-bar">

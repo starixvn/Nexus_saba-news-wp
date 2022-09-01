@@ -64,12 +64,30 @@ describe('Item', () => {
                 target: { className: '' },
                 ctrlKey: false
             };
+            const match = {
+                matchId: 1,
+                startTime: '2022-10-10',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 2,
+                status: 0,
+                homeTeam: {teamId: 1, teamNameEN: 'team name'},
+                awayTeam: {teamId: 2, teamNameEN: 'team name'},
+                secondLeg: {
+                    matchId: 1,
+                    homeTeam: {teamId: 1, teamNameEN: 'team name'},
+                    awayTeam: {teamId: 2, teamNameEN: 'team name'}
+                }
+            }
+            const props = {
+                ...defaultProps,
+                match: match
+            }
             window.open = jest.fn();
             CommonFunctions.getMatchDetailPageUrl = jest.fn().mockReturnValue('url');
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<Item {...props} />);
 
             // Act
-            container.instance().handleClick(event, { matchId: 1 });
+            container.find('.bracket').simulate('click', event, match);
 
             // Assert
             expect(window.open).toHaveBeenCalledTimes(0);
@@ -82,12 +100,30 @@ describe('Item', () => {
                 target: { className: '' },
                 ctrlKey: true
             };
+            const match = {
+                matchId: 1,
+                startTime: '2022-10-10',
+                homeTeamTotalScore: 1,
+                awayTeamTotalScore: 2,
+                status: 0,
+                homeTeam: {teamId: 1, teamNameEN: 'team name'},
+                awayTeam: {teamId: 2, teamNameEN: 'team name'},
+                secondLeg: {
+                    matchId: 1,
+                    homeTeam: {teamId: 1, teamNameEN: 'team name'},
+                    awayTeam: {teamId: 2, teamNameEN: 'team name'}
+                }
+            }
+            const props = {
+                ...defaultProps,
+                match: match
+            }
             CommonFunctions.getMatchDetailPageUrl = jest.fn().mockReturnValue('url');
             window.open = jest.fn();
-            const container = shallow(<Item {...defaultProps} />);
+            const container = shallow(<Item {...props} />);
 
             // Act
-            container.instance().handleClick(event, { matchId: 2 });
+            container.find('.bracket').simulate('click', event, match);
 
             // Assert
             expect(window.open).toHaveBeenCalledWith('url', '_blank');

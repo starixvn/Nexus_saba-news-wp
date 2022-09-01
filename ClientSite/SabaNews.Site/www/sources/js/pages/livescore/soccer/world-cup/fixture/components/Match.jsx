@@ -45,7 +45,7 @@ export default class Match extends PureComponent {
         const isLiveMatch = CommonFunctions.isLiveMatch(match.status);
         const isIntermission = match.status === MatchStatus.Intermission;
         const startTime = DateTimeService.convertFromUTC(match.startTime);
-        const matchResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
+        const teamResult = CommonFunctions.getMatchResult(match.homeTeam.teamId, match);
         return (
             <>
                 <div className="group-match-item" onClick={this.onClick}>
@@ -62,15 +62,15 @@ export default class Match extends PureComponent {
                             <div className="group-team">
                                 <div className="soccer-team home-team">
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
-                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
+                                    <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, true)}
                                     </ul>
-                                    <TeamScore match={match} isHomeTeam />
+                                    <TeamScore match={match}     />
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
-                                    <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
+                                    <div className={`soccer-team-name ${teamResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, false)}
                                     </ul>

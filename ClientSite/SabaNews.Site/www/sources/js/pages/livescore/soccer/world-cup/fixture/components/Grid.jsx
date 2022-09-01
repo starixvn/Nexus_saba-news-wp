@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import Match from './Match';
 import { MatchStatus } from '@jsroot/common/constants';
-import { SwiperSlide, Swiper } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
+import { SwiperSlide, Swiper } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
 
 SwiperCore.use([Navigation]);
 export default class Grid extends PureComponent {
@@ -26,8 +26,8 @@ export default class Grid extends PureComponent {
                 }
             }
         }
-        return { start, showItems }
-    }
+        return { start, showItems };
+    };
 
 
     render() {
@@ -44,8 +44,8 @@ export default class Grid extends PureComponent {
                             slidesPerView={slide.showItems}
                             watchOverflow={true}
                             navigation={{
-                                prevEl: '#prev',
-                                nextEl: '#next',
+                                prevEl: '.wc-date-control-prev',
+                                nextEl: '.wc-date-control-next'
                             }}
                         >
                             {
@@ -55,8 +55,8 @@ export default class Grid extends PureComponent {
                                     </SwiperSlide>
                                 )
                             }
-                            <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
-                            <div id='prev' className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
+                            <div className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
+                            <div className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
                         </Swiper>
                     }
                     {

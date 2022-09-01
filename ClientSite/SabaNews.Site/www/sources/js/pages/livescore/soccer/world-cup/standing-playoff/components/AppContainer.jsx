@@ -193,7 +193,7 @@ export class AppContainer extends Component {
     getFinalAndPlaceMatch = (groupMatches, matches) => {
         const placeMatch = matches.find(item => item.stage?.stageNameEN.toLowerCase().includes('place'));
         const finalStage = groupMatches[groupMatches.length - 1];
-        const finalMatch = finalStage.matches[0];
+        const finalMatch = finalStage?.matches && finalStage.matches.length > 0 ? finalStage.matches[0]: null;
         return {placeMatch, finalMatch};
     };
 

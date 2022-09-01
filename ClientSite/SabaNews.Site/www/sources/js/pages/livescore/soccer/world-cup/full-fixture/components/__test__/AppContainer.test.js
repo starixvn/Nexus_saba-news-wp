@@ -49,14 +49,14 @@ describe('AppContainer', () => {
             // Assert
             expect(result).toEqual([
                 {
-                    key: '2022-05-25', text: 'Wednesday, 25/05/2022',
+                    key: '2022-05-25', text: 'Thứ tư, 25/05/2022',
                     childs: [
                         { matchId: 1, startTime: '2022-05-25' },
                         { matchId: 2, startTime: '2022-05-25' }
                     ]
                 },
                 {
-                    key: '2022-05-26', text: 'Thursday, 26/05/2022',
+                    key: '2022-05-26', text: 'Thứ năm, 26/05/2022',
                     childs: [
                         { matchId: 3, startTime: '2022-05-26' }
                     ]
@@ -76,7 +76,7 @@ describe('AppContainer', () => {
             ];
             const groupDate = [
                 {
-                    key: '2022-05-25', text: 'Wednesday, 25/05/2022',
+                    key: '2022-05-25', text: 'Thứ tư, 25/05/2022',
                 }
             ]
             const container = shallow(<AppContainer {...defaultProps} />);
@@ -89,9 +89,9 @@ describe('AppContainer', () => {
             // Assert
             expect(result).toEqual([
                 {"key": 1, "stage": {"stageId": 1}, "childs": [
-                    {"key": "2022-05-25", "text": "Wednesday, 25/05/2022"}
+                    {"key": "2022-05-25", "text": "Thứ tư, 25/05/2022"}
                 ]},
-                {"key": 2, "stage": {"stageId": 2}, "childs": [{"key": "2022-05-25", "text": "Wednesday, 25/05/2022"}
+                {"key": 2, "stage": {"stageId": 2}, "childs": [{"key": "2022-05-25", "text": "Thứ tư, 25/05/2022"}
                 ]}
             ]);
         });
