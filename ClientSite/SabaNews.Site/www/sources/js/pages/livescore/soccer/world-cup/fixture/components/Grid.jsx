@@ -1,7 +1,11 @@
 import React, { PureComponent } from 'react';
 import Match from './Match';
 import { MatchStatus, Width1024 } from '@jsroot/common/constants';
-
+import { SwiperSlide, Swiper } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
+SwiperCore.use([Navigation]);
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
@@ -86,18 +90,27 @@ export default class Grid extends PureComponent {
     };
 
     render() {
-        const { league } = this.props;
-        const grid = this.getGridMatches();
+        const { league, matches } = this.props;
+        //const grid = this.getGridMatches();
         return (
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
-                    {
-                        grid.map((item, index) =>
-                            <Match key={index} match={{ ...item, league }} />
-                        )
-                    }
-                    <div onClick={this.onNext} className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
-                    <div onClick={this.onPrev} className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
+                <Swiper
+                    spaceBetween={50}
+                    slidesPerView={7}
+                    navigation={{
+                        prevEl: '#prev',
+                        nextEl: '#next',
+                      }}
+                >
+                {
+                    matches.map((item, index) =>
+                        <SwiperSlide><Match key={index} match={{ ...item, league }} /></SwiperSlide>
+                    )
+                }
+                    <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
+                    <div id='prev' className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
+                </Swiper>
                 </div>
             </div>
         );

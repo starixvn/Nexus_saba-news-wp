@@ -5,7 +5,11 @@ import { ActionCreators } from '../actions';
 import Grid from './Grid';
 import DateTimeService from '@jsroot/common/dateTimeService';
 import SignalR from './SignalR';
-
+import moment from 'moment';
+moment.updateLocale('vi', {
+    weekdays: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy']
+});
+moment.locale('vi');
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
