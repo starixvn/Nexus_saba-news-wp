@@ -86,6 +86,12 @@
         .swiper-button-prev {
             left: -40px !important;
         }
+
+        .swiper-button-disabled {
+            opacity: .5;
+            cursor: not-allowed;
+            pointer-events: unset;
+        }
     }
 }
 

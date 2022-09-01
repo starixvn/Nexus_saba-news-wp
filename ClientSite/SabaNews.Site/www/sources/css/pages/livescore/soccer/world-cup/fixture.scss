@@ -176,6 +176,10 @@
                     font-size: 1.2rem;
                     max-width: 100%;
                     font-weight: 400;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 12rem;
                     &.win{
                         font-weight: 700;
                     }
