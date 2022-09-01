@@ -11,18 +11,19 @@ export default class Grid extends PureComponent {
         super(props);
         this.matchLength = props.matches.length;
         this.showItems = 8;
+        var state = this.initState()
         this.state = {
-            start: 0,
-            end: this.showItems,
+            start: state.start,
+            end:  state.end,
             isScroll: window.innerWidth <= Width1024 ? true : false
         };
     }
 
-    componentDidMount() {
+    initState = () => {
         const { matches, isFinished } = this.props;
-        let { start, end } = this.state;
+        let start = 0;
         const gridWidth = window.innerWidth;
-        this.showItems = Math.ceil(gridWidth / 200);
+        this.showItems = gridWidth / 200;
         if (!isFinished) {
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
@@ -35,11 +36,11 @@ export default class Grid extends PureComponent {
                 }
             }
         }
-        end = start + this.showItems;
-        this.setState({
-            start: start,
-            end: end
-        });
+        const end = start + this.showItems;
+        return {start, end}
+    }
+
+    componentDidMount() {
         window.addEventListener('resize', this.handleResize);
     }
 
@@ -91,14 +92,14 @@ export default class Grid extends PureComponent {
 
     render() {
         const { league, matches } = this.props;
-        const { isScroll }  = this.state;
-        //const grid = this.getGridMatches();
+        const { isScroll, start }  = this.state;
         return (
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
                     {
                         !isScroll &&
                         <Swiper
+                            initialSlide={start}
                             spaceBetween={10}
                             slidesPerView={this.showItems}
                             watchOverflow={true}
