@@ -1,29 +1,19 @@
 import React, { PureComponent } from 'react';
 import Match from './Match';
-import { MatchStatus, Width1024 } from '@jsroot/common/constants';
+import { MatchStatus } from '@jsroot/common/constants';
 import { SwiperSlide, Swiper } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-import 'swiper/swiper-bundle.min.css'
-import 'swiper/swiper.min.css'
+
 SwiperCore.use([Navigation]);
 export default class Grid extends PureComponent {
     constructor(props) {
         super(props);
-        this.matchLength = props.matches.length;
-        this.showItems = 8;
-        var state = this.initState()
-        this.state = {
-            start: state.start,
-            end:  state.end,
-            isScroll: window.innerWidth <= Width1024 ? true : false
-        };
     }
 
-    initState = () => {
+    initSlide = () => {
         const { matches, isFinished } = this.props;
         let start = 0;
-        const gridWidth = window.innerWidth;
-        this.showItems = gridWidth / 200;
+        const showItems = Math.ceil(window.innerWidth / 200) - 1;
         if (!isFinished) {
             const postMatchIndex = [...matches].reverse().findIndex(item => item.status === MatchStatus.Finished);
             const startLastPage = matches.length - this.showItems + 1;
@@ -36,91 +26,43 @@ export default class Grid extends PureComponent {
                 }
             }
         }
-        const end = start + this.showItems;
-        return {start, end}
+        return { start, showItems }
     }
 
-    componentDidMount() {
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    handleResize = () => {
-        const isScroll = this.state.isScroll;
-        if (!isScroll && window.innerWidth <= Width1024) {
-            this.setState({ isScroll: true });
-        } else {
-            if (isScroll && window.innerWidth > Width1024) {
-                this.setState({ isScroll: false });
-            }
-        }
-    };
-
-    onPrev = () => {
-        const { start, end } = this.state;
-        if (start === 0) {
-            return;
-        }
-        this.setState({
-            start: start - 1,
-            end: end - 1
-        });
-    };
-
-    onNext = () => {
-        const { start, end } = this.state;
-        if (end === this.matchLength + 1) {
-            return;
-        }
-        this.setState({
-            start: start + 1,
-            end: end + 1
-        });
-    };
-
-    getGridMatches = () => {
-        const { start, end, isScroll } = this.state;
-        const { matches } = this.props;
-        if (!isScroll) {
-            return matches.slice(start, end);
-        }
-        return matches;
-    };
 
     render() {
-        const { league, matches } = this.props;
-        const { isScroll, start }  = this.state;
+        const { league, matches, isMobile } = this.props;
+        const slide = this.initSlide();
         return (
             <div className="wc-bg-overflow">
                 <div className="wc-date-bar">
                     {
-                        !isScroll &&
+                        !isMobile &&
                         <Swiper
-                            initialSlide={start}
+                            initialSlide={slide.start}
                             spaceBetween={10}
-                            slidesPerView={this.showItems}
+                            slidesPerView={slide.showItems}
                             watchOverflow={true}
                             navigation={{
                                 prevEl: '#prev',
                                 nextEl: '#next',
                             }}
                         >
-                        {
-                            matches.map((item, index) =>
-                                <SwiperSlide className="scroll-snap-items"><Match key={index} match={{ ...item, league }} /></SwiperSlide>
-                            )
-                        }
+                            {
+                                matches.map((item, index) =>
+                                    <SwiperSlide key={index} className="scroll-snap-items">
+                                        <Match match={{ ...item, league }} />
+                                    </SwiperSlide>
+                                )
+                            }
                             <div id='next' className="wc-date-control wc-date-control-next"><i className="icon-chevron-right"></i></div>
                             <div id='prev' className="wc-date-control wc-date-control-prev"><i className="icon-chevron-left"></i></div>
                         </Swiper>
                     }
                     {
-                        isScroll &&
+                        isMobile &&
                         matches.map((item, index) =>
-                           <Match key={index} match={{ ...item, league }} />
+                            <Match key={index} match={{ ...item, league }} />
                         )
                     }
                 </div>
