@@ -129,7 +129,6 @@
         .soccer-match-item{
             display: inherit;
             margin-bottom: 0;
-            width: 20rem;
             background: #753146;
             padding: 0;
             color: #fff;
@@ -192,9 +191,14 @@
 .swiper-container {
     .swiper-slide{
         background: transparent;
-        width: 20rem !important;
         @include tableMobile{
             width: 23rem !important;
+        }
+    }
+    .wc-date-control{
+        &.swiper-button-disabled{
+            opacity: .5;
+            cursor: not-allowed;
         }
     }
 }
