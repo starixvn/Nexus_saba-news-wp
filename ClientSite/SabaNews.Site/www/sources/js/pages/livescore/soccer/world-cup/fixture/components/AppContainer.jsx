@@ -7,7 +7,7 @@ import SkeletonGrid from './SkeletonGrid';
 import SignalR from './SignalR';
 import moment from 'moment';
 import DateTimeService from '@jsroot/common/dateTimeService';
-import { WorldCup, Width1024 } from '@jsroot/common/constants';
+import { WorldCup, Width1024, MatchStatus } from '@jsroot/common/constants';
 export class AppContainer extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +48,8 @@ export class AppContainer extends Component {
             return null;
         }
         let tmpMatches = matches;
-        if (this.checkIsFinished(league)) {
+        const finalMatches = tmpMatches[tmpMatches.length - 1];
+        if (this.checkIsFinished(league) || finalMatches.status !== MatchStatus.NotStarted) {
             tmpMatches = [...matches].reverse();
         } else if (league.currentStageId < WorldCup.QuarterfinalsStage) {
             tmpMatches = matches.filter(item => item.stage?.stageId < WorldCup.QuarterfinalsStage);
