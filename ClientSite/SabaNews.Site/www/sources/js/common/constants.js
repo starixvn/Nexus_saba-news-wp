@@ -91,8 +91,8 @@ export const IncidentIconType = {
 };
 
 export const WorldCup = {
-    leagueId: 14638, //[14638, 11999, 12016, 11998, 11997]
-    seasonId: 10810, //[10810, 10923, 10632, 10230, 10889]
+    leagueId: 12593, //[14638, 11999, 12036, 11998, 11997]
+    seasonId: 10269, //[10810, 10923, 10375, 10230, 10889]
     QuarterfinalsStage: 30539,
     GroupsStage: 30537,
     ThirdPlace: 30541,
