@@ -49,6 +49,7 @@
 
         public const string MinigameSlug = "minigame-world-cup-2022";
         public const string UrlMinigameSlug = "su-kien-du-doan-hay-qua-lien-tay";
+        public const string TitleMinigameSlug = "Sự kiện World Cup 2022 - DỰ ĐOÁN HAY QUÀ LIỀN TAY";
 
         public const string StoryPost = "Story post";
         public const string TitleStoryPost = "Stories World Cup 2022 - SABA Sports";

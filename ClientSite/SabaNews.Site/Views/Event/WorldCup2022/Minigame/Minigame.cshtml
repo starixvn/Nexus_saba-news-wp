@@ -1,0 +1,347 @@
+﻿@using System.Text;
+@using SabaNews.Site.Extensions;
+@using DeviceDetectorNET;
+@section Title {
+    @Model.Header.Title
+}
+
+@section Metadata {
+    <meta name="description" content='@Model.Header.Description' />
+    <meta property="og:description" content='@Model.Header.Description' />
+    <meta property="og:title" content='@Model.Header.Title' />
+}
+
+@{
+    var detector = new DeviceDetector(Context.Request.Headers["User-Agent"].ToString());
+    detector.Parse();
+    bool isMobile = detector.IsMobile();
+    bool isDesktop = detector.IsDesktop();
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pro/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
+    </environment>
+}
+
+@section Scripts{
+    <environment include="Development">
+        <script src="~/js/livescore/livescore.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/dev/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/livescore/livescore.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/lang-vi-VN.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/lib/react-bootstrap-vendor.chunk.js" asp-append-version="true"></script>
+        <script src="~/js/pro/pages/livescore/soccer/world-cup/fixture.chunk.js" asp-append-version="true"></script>
+    </environment>
+    <script>
+        var checkLogin = '@Model.IsLogin';
+    </script>
+    <script src="~/minify/js/membership-event.min.js" asp-append-version="true"></script>
+    <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
+}
+
+@(await Component.InvokeAsync("HeaderWorldCup", new { cateSlug = Model.Header.Slug }))
+<section class="worldcup-lastest-news">
+    <div id="worldcup-fixture"></div>
+    <div class="wrapper-header">
+        <div class="header-control">
+            <ul>
+                <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
+                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wc-page-main">
+        <div class="block-men-event">
+            <div class="img-event img-left"><img src="~/images/event/img6.png" class="img-res" /></div>
+            <div class="img-event img-right"><img src="~/images/event/img1.png" class="img-res" /></div>
+            <div class="main-event-img">
+                <img src="~/images/event/gif.png" class="img-res img-event-desktop" />
+                <img src="~/images/event/gif-mobile.png" class="img-res img-event-mobile" />
+            </div>
+        </div>
+
+        <div class="wc-block wc-block-bxh" id="home-standing">
+            <div class="grid-bxh scroll-snap">
+
+                @foreach (var group in Model.StandingsViewModel)
+                {
+                    var groupName = $"Bảng {group.GroupName[0]}";
+                    <a class="scroll-snap-items">
+                        <div class="wc-table">
+                            <div class="name-bxh title-items">@groupName</div>
+                            <div class="wc-table-header">
+                                <div class="wc-table-cell cell-participant"></div>
+                            </div>
+
+                            <div class="wc-table-body">
+                                @foreach (var standing in group.Standings)
+                                {
+                                    var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                                    var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                                    <div class="wc-table-row" data-standing="@standing">
+                                        <div class="wc-table-cell cell-participant">
+                                            <ul class="team">
+                                                <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
+                                                <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="block-group" id="field-number-event">
+            <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
+            <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
+            <div class="block-field-number">
+                @if (!Model.IsLogin && Model.MembershipEventDetail == null)
+                {
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Nhập Số May Mắn</span>
+                    </div>
+                    <div class="field-number field-number-validate">
+                        <div class="validate-vent-input">
+                            <div class="warning-event">
+                                Vui lòng đăng nhập hoặc đăng ký
+                                để tham gia
+                            </div>
+                            <ul class="flex-btn auth-input">
+                                <li><a href="javascript:;" class="btn btn-event auth-login">Đăng nhập</a></li>
+                                <li><a href="javascript:;" class="btn btn-event auth-login active" data-form="register">Đăng ký</a></li>
+                            </ul>
+                        </div>
+                        <span><img src="~/images/event/dot-input.png" /></span>
+                    </div>
+                }
+                else if (Model.IsLogin && Model.MembershipEventDetail != null && Model.MembershipEventDetail.LuckyNumber != null)
+                {
+                    var luckyNumber = Model.MembershipEventDetail.LuckyNumber.Trim();
+                    var arrNumber = new StringBuilder(luckyNumber);
+                    string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Số may mắn của bạn</span>
+                    </div>
+                    <div class="field-number field-number-result @arrNumberAsWord[0]">
+                        <div class="form-event">
+                            <div class="form-input">
+                                @for (var i = 0; i < arrNumber.Length; i++)
+                                {
+                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
+                                    <div class="dots">
+                                        <input type="number" readonly value="@number" class="input-field-event" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-input">
+                                @for (var i = 0; i < arrNumber.Length; i++)
+                                {
+                                    var number = !string.IsNullOrEmpty(arrNumber[i].ToString()) ? Convert.ToInt32(arrNumber[i].ToString()) : 0;
+                                    <div class="result">@arrNumberAsWord[number]</div>
+                                }
+                            </div>
+                        </div>
+                        <span><img src="~/images/event/dot-input.png" /></span>
+                    </div>
+                }
+                else
+                {
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>Số may mắn của bạn</span>
+                    </div>
+                    <div class="field-number">
+                        <form class="form-event" id="membership-event-form">
+                            <div class="form-input">
+                                <input type="text" min="0" max="9" maxlength="1" id="number1" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="9" maxlength="1" id="number2" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                            </div>
+                            <button type="button" disabled class="btn btn-event btn-submit-number active">Gửi</button>
+                        </form>
+                        <span><img src="~/images/event/dot-input.png" /></span>
+                    </div>
+                }
+            </div>
+            <div class="block-list-connect" id="list-rigister-event">
+                <div class="title-event">
+                    <img src="~/images/event/line.png" class="img-res" />
+                    <span>DANH SÁCH THAM GIA</span>
+                </div>
+                <div class="data-grid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="auth-form">
+    <div class="modal" id="register" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body register">
+                    <div class="heading-modal-event">BẠN ĐÃ DỰ ĐOÁN</div>
+
+                    <ul class="review-team">
+                    </ul>
+
+                    <ul class="review-number">
+                    </ul>
+
+                    <p class="text-event-modal">Bạn đã chắc chắn chứ?</p>
+                    <ul>
+                        <li><a href="#nhap-so-may-man" class="btn btn-event btn-accept active">ĐỒNG Ý</a></li>
+                        <li><a href="javascript:;" data-dismiss="modal" class="btn btn-event btn-btn-skip btn-reset-number">CHỌN LẠI</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="notice" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body register">
+                    <div class="heading-modal-event">nhập số may mắn</div>
+                    <p class="text-event-modal"></p>
+                    <ul>
+                        <li><a href="javascript:;" data-dismiss="modal" aria-label="Close" class="btn btn-event btn-btn-skip action">đóng</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="success" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body register">
+                    <div class="heading-modal-event">chọn đội vô địch thành công</div>
+                    <p class="text-event-modal">Cảm ơn bạn đã tham gia chương trình.</p>
+                    <ul>
+                        <li><a href="javascript:;" data-dismiss="modal" aria-label="Close" class="btn btn-event btn-btn-skip action">đóng</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="auth-form event-guide">
+    <div class="modal" id="guide" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body guide">
+                    <div class="title-event">
+                        <img src="~/images/event/line.png" class="img-res" />
+                        <span>THÔNG TIN & THỂ LỆ</span>
+                    </div>
+                    <div class="main-guide scooped-corners">
+                        <div class="txt-guide">
+                            <div class="event-txt">
+                                <h2>CHƯƠNG TRÌNH "RƯỚC LỘC TÂN NIÊN"</h2>
+                                <p>
+                                    Kính gửi Quý độc giả,
+                                </p>
+                                <p>
+                                    Nhân dịp năm mới 2022, SABA Sports xin gửi tới Quý độc giả lời chúc năm mới thật nhiều "May Mắn - Sức Khỏe - Thành Đạt" và mong muốn tiếp tục đón nhận sự tin tưởng, đồng hành của Quý độc giả trong thời gian tới. Bên cạnh đó, hòa vào không khí tưng bừng đón xuân Nhâm Dần, chúng tôi chính thức triển khai chương trình minigame “<b>Rước Lộc Tân Niên</b>” dành cho Quý độc giả với nhiều phần thưởng hấp dẫn:
+
+                                </p>
+                                <div class="text-event-section">
+                                    <p class="event-text-header">1. Cơ cấu giải thưởng</p>
+                                    <p>01 Giải Nhất: trị giá <b>2,000,000 VNĐ</b></p>
+                                    <p>02 Giải Nhì: mỗi giải trị giá <b>1,000,000 VNĐ</b></p>
+                                    <p>03 Giải Ba: mỗi giải trị giá <b>500,000 VNĐ</b></p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">2. Thời gian tham gia</p>
+                                    <p>Từ ngày <b>14/02/2022</b> đến hết ngày <b>27/02/2022</b></p>
+                                    <p>Công bố người trúng thưởng: ngày <b>01/03/2022</b></p>
+                                    <p>Trao giải: ngày <b>15/03/2022</b></p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">3. Đối tượng và thể lệ tham dự</p>
+                                    <p><u>Đối tượng</u>:</p>
+                                    <p>Chỉ áp dụng cho những độc giả có tài khoản thành viên trên trang Saba.vn. </p>
+                                    <p><u>Thể lệ</u>:</p>
+                                    <p><b>Bước 1</b>: đăng nhập tài khoản trên trang Saba.vn. </p>
+                                    <p><b>Bước 2</b>: chọn một dãy số bất kỳ gồm 3 chữ số (từ 000 - 999). Ví dụ: 789 - Bảy Trăm Tám Mươi Chín.</p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">4. Cách tính giải thưởng</p>
+                                    <p>
+                                        Chúng tôi sẽ lấy 3 SỐ ĐUÔI CỦA GIẢI ĐẶC BIỆT từ kết quả xổ số miền Bắc ngày <b>28/02/2022</b> để làm căn cứ xác định giải thưởng. Lưu ý, dãy số này sẽ được xem xét là một con số (Ví dụ: 567 - Năm Trăm Sáu Mươi Bảy).
+                                    </p>
+                                    <p>Độc giả có dự đoán CHÍNH XÁC và SỚM NHẤT sẽ có cơ hội trúng thưởng.</p>
+                                    <p>
+                                        Trường hợp không có độc giả nào lựa chọn chính xác số may mắn thì độc giả có bình chọn GẦN ĐÚNG và SỚM NHẤT sẽ nhận được Giải Nhất, tiếp theo là các Giải Nhì, Ba trao cho các độc giả có thời gian dự đoán chậm hơn.
+                                    </p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">5. Hình thức nhận giải</p>
+                                    <p>
+                                        Chúng tôi sẽ chủ động liên hệ với độc giả may mắn trúng thưởng (qua địa chỉ email đã đăng ký) để trao giải. Trong trường hợp không liên hệ được với độc giả trúng thưởng trong thời gian quy định (7 ngày kể từ ngày có kết quả xổ số) thì xem như độc giả đó từ chối nhận giải thưởng.
+                                    </p>
+                                </div>
+
+                                <div class="text-event-section">
+                                    <p class="event-text-header">***Lưu ý</p>
+                                    <p>- Điều kiện trúng thưởng phải thực hiện đủ 2 bước theo yêu cầu.</p>
+                                    <p>- Mỗi độc giả chỉ được thực hiện dự đoán duy nhất 1 lần trong suốt quá trình diễn ra chương trình. Tài khoản có 2 lượt dự đoán (hoặc nhiều hơn) được xem là không hợp lệ và sẽ bị loại khỏi chương trình minigame.</p>
+                                    <p>- Những dự đoán sau 23:59:59 ngày 27/02/2022 cũng được xem là không hợp lệ.</p>
+                                    <p>- Nếu có bất kỳ sự nghi ngờ nào, chúng tôi cũng có thể tiến hành chứng thực, và từ chối trao giải cho các tài khoản có dấu hiệu gian lận.</p>
+                                    <p>- Saba.vn có toàn quyền tạm dừng hay điều chỉnh thể lệ cho phù hợp với tình hình thực tế vào bất kỳ thời điểm nào trước khi chương trình kết thúc mà không cần thông báo trước.</p>
+                                    <p>- Trong trường hợp phát sinh tranh chấp, khiếu nại liên quan đến chương trình, Saba.vn sẽ đứng ra trực tiếp giải quyết và quyết định của Saba.vn là quyết định cuối cùng.</p>
+                                    <p>- Saba.vn cam kết bảo mật thông tin cá nhân cho độc giả tham gia, không chia sẻ cho bên thứ ba và chỉ sử dụng cho mục đích công bố kết quả trúng thưởng (nếu có).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,9 +4,11 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
+    using SabaNews.Criteria.User;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -16,6 +18,7 @@
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
@@ -353,6 +356,73 @@
             return View("~/Views/Event/WorldCup2022/PostDetail.cshtml", viewModel);
         }
 
+        [Route("world-cup-2022/su-kien-du-doan-hay-qua-lien-tay")]
+        public async Task<ActionResult> Minigame()
+        {
+            var standingsCriteria = new GetLeagueSeasonStandingCriteria { LeagueId = LeagueIdWC, SeasonId = SeasonIdWC };
+            IList<SeasonStandings> standings = await leagueService.GetLeagueSeasonStanding(standingsCriteria);
+            var header = new HeaderViewModel
+            {
+                Title = WorldCup2022.TitleMinigame,
+                Slug = WorldCup2022.UrlMinigameSlug
+            };
+            var isLogin = sessionService.User != null;
+            var model = new MinigameViewModel
+            {
+                Header = header,
+                IsLogin = isLogin,
+                StandingsViewModel = GroupStandingsByGroupName(standings),
+                IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
+                BaseUrl = configuration.GetValue<string>("BaseUrl")
+            };
+            if (sessionService.User != null)
+            {
+                model.User = sessionService.User;
+                model.MinigameDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
+            }
+            return View("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", model);
+        }
+
+        public async Task<ActionResult> GetMinigameData(UserFilterMembershipEventModel model)
+        {
+            var criteria = new GetMembershipEventDataCriteria
+            {
+                Start = (model.Page - 1) * model.PageSize,
+                End = model.PageSize,
+                ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 12, 18))
+            };
+            var users = await userService.GetUserMembershipEventDataAsync(criteria);
+            var viewModel = new MembershipEventGridViewModel
+            {
+                Users = users,
+                Paging = new PagingModel
+                {
+                    CurrentPage = model.Page,
+                    PageSize = model.PageSize,
+                    TotalPages = (int)Math.Ceiling(criteria.TotalItems / (double)model.PageSize),
+                }
+            };
+            return PartialView("~/Views/Event/WorldCup2022/Minigame/_MinigameGridView.cshtml", viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMinigameData(string luckyNumber)
+        {
+            var result = new CommandResult();
+            if (sessionService.User == null)
+            {
+                result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
+                return Json(result);
+            }
+            var command = new CreateUserMembershipEventDataCommand
+            {
+                LuckyNumber = luckyNumber,
+                UserId = sessionService.User.Id,
+                JoinDate = DateTime.UtcNow
+            };
+            result = await userService.CreateUserMembershipEventDataAsync(command);
+            return Json(result);
+        }
 
         [HttpPost]
         public async Task<IActionResult> GetStoryPostGrid(CategoryPostParams param)
@@ -496,7 +566,6 @@
                 }
             }
             return null;
-
         }
     }
 }
