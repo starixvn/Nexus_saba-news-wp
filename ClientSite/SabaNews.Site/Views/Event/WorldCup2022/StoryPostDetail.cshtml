@@ -111,7 +111,7 @@
         .back-top-home {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
             z-index: 999999999999;
         }
 
@@ -120,49 +120,78 @@
             text-decoration: none;
             font-size: 16px;
         }
+        .back-top-home a i{
+            font-size : 24px;
+        }
 
         .detail-stories {
             text-decoration: none;
             background: #EF4300;
             color: #fff;
-            padding: 15px;
+            padding: 5px 18px;
             font-weight: 700;
             font-size: 16px;
-            width: 200px;
+            line-height: 24px;
+            width: 180px;
             border-radius: 5px;
             margin: 0 auto;
             display: block;
+            clip-path: polygon(93% 0,100% 50%,93% 100%,7% 100%,0 50%,7% 0);
         }
         .view-more-stories {
             position: fixed;
-            bottom: 70px;
-            background: #EF4300;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: bold;
-            width: 200px;
+            bottom: 30px;
+            width: 180px;
             left: 50%;
             transform: translate(-50%,0);
-            padding: 15px;
-            border-radius: 5px;
         }
-        .view-more-stories i{
+
+        .view-more-stories a {
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 1;
+            font-weight: bold;
+            display : block;
+            color: #EF4300;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: #FFFFFF;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        .view-more-stories .icon-link-post{
             margin-right: 5px;
+            background : #E9E9E9;
+            padding : 5px;
+            border-radius : 50%;
         }
-        .align-end{
-            align-content : end;
+
+        
+
+        .view-more-stories .icon-chevron-up:before{
+            color : #fff;
         }
-        .amp-inner{
-            margin-bottom : 150px;
+
+
+        .align-end {
+            align-content: end;
+        }
+        .amp-inner {
+            margin-bottom: 126px;
         }
         h1 {
-            font-size: 30px;
-            margin-bottom: 10px;
+            margin: 10px 0 16px 0;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 33px;
         }
+
+        .icon-tick-post{
+            font-size : 38px;
+        }
+
         p {
             font-size: 18px;
             margin-bottom: 10px;
@@ -178,9 +207,10 @@
             pointer-events: none;
             background: linear-gradient(180deg, rgba(72, 4, 26, 0) 0%, #48041A 100%);
         }
+
+
         @@media (max-width: 1024px) {
             .back-top-home {
-                left: auto;
                 top: 50px;
                 right: 20px;
             }
@@ -230,6 +260,7 @@
                     </amp-story-grid-layer>
                     <amp-story-grid-layer template="vertical" class="align-end">
                         <div class="amp-inner">
+                            <i class="icon-tick-post"></i>
                             <h1>@Html.Raw(item.Title)</h1>
                             <amp-story-page-outlink>
                             <a href="@(item.Link != "" ? item.Link : "javascripts:;")" title="Link Description" class="detail-stories">
@@ -237,7 +268,10 @@
                                 </a>
                                 @if (count >= totalItems)
                                 {
-                                    <a href=@Model.BackUrl class="view-more-stories"><i class="icon-close"></i> Xem thêm stories</a>
+                                    <div class="view-more-stories">
+                                        <i class="icon-chevron-up"></i>
+                                        <a href=@Model.BackUrl><i class="icon-link-post"></i> Xem thêm stories</a>
+                                    </div>
                                 }
                             </amp-story-page-outlink>
                         </div>

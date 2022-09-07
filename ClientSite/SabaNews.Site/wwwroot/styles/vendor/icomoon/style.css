@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Fraud-Sensor';
-  src:  url('fonts/Fraud-Sensor.eot?ifq7ee');
-  src:  url('fonts/Fraud-Sensor.eot?ifq7ee#iefix') format('embedded-opentype'),
-    url('fonts/Fraud-Sensor.ttf?ifq7ee') format('truetype'),
-    url('fonts/Fraud-Sensor.woff?ifq7ee') format('woff'),
-    url('fonts/Fraud-Sensor.svg?ifq7ee#Fraud-Sensor') format('svg');
+  src:  url('fonts/Fraud-Sensor.eot?rgugg8');
+  src:  url('fonts/Fraud-Sensor.eot?rgugg8#iefix') format('embedded-opentype'),
+    url('fonts/Fraud-Sensor.ttf?rgugg8') format('truetype'),
+    url('fonts/Fraud-Sensor.woff?rgugg8') format('woff'),
+    url('fonts/Fraud-Sensor.svg?rgugg8#Fraud-Sensor') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-tick-amp:before {
+.icon-link-post:before {
   content: "\e933";
   color: #ef4300;
 }
-.icon-link-amp:before {
+.icon-tick-post:before {
   content: "\e934";
   color: #ef4300;
 }
