@@ -43,7 +43,7 @@ export default class Match extends PureComponent {
                                 <div className="soccer-team home-team">
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
                                     <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
-                                    <TeamScore match={match}     />
+                                    <TeamScore match={match}  isHomeTeam   />
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
