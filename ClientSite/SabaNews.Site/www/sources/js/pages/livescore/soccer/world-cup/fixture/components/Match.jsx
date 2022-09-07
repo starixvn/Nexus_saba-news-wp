@@ -11,6 +11,25 @@ export default class Match extends PureComponent {
         super(props);
     }
 
+    getTeamStatus = (match, isHomeTeam) => {
+        const hField = isHomeTeam ? 'homeTeam' : 'awayTeam';
+        const aField = isHomeTeam ? 'awayTeam' : 'homeTeam';
+
+        if (match.status === MatchStatus.Finished) {
+            if (match[`${hField}PenaltyScore`]
+                && match[`${hField}PenaltyScore`] > match[`${aField}PenaltyScore`]) {
+                return <li>PEN</li>;
+            } else if (match.isSecondLeg && match[`${hField}AggregateScore`]
+                && match[`${hField}AggregateScore`] > match[`${aField}AggregateScore`]) {
+                return <li>AGG</li>;
+            } else {
+                return <Fragment />;
+            }
+        }
+
+        return <Fragment />;
+    };
+
     onClick = event => {
         const url = CommonFunctions.getMatchDetailPageUrl(this.props.match, WorldCup.MatchDetailUrl);
         if (event.ctrlKey) {
@@ -44,10 +63,16 @@ export default class Match extends PureComponent {
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
                                     <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
                                     <TeamScore match={match}  isHomeTeam   />
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(match, true)}
+                                    </ul>
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
                                     <div className={`soccer-team-name ${teamResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
+                                    <ul className="soccer-team-status">
+                                        {this.getTeamStatus(match, false)}
+                                    </ul>
                                     <TeamScore match={match} />
                                 </div>
                             </div>
