@@ -1,7 +1,7 @@
 ﻿namespace SabaNews.Models.ViewModel.Event.WorldCup
 {
     using SabaNews.Core.Models;
-    using SabaNews.Models.ViewModel.User;
+    using SabaNews.Livescore.Models.League;
     using System.Collections.Generic;
 
     public class MinigameViewModel
@@ -17,6 +17,6 @@
         public bool IsAdmin { get; set; }
 
         public string BaseUrl { get; set; }
-        public MembershipEventModel MinigameDetail { get; set; }
+        public IList<MiniGame> MinigameDetail { get; set; }
     }
 }

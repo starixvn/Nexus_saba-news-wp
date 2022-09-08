@@ -142,5 +142,9 @@
   {
     "outputFile": "wwwroot/styles/pages/event/worldcup2022/story-post.css",
     "inputFile": "wwwroot/styles/pages/event/worldcup2022/story-post.scss"
+  },
+  {
+    "outputFile": "wwwroot/styles/pages/event/worldcup2022/minigame.css",
+    "inputFile": "wwwroot/styles/pages/event/worldcup2022/minigame.scss"
   }
 ]

@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using SabaNews.Core.Constants;
+    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
@@ -283,6 +284,32 @@
             var criteria = new GetTopScorersByRowNumCriteria { RowNum = rowNum , LeagueId = WorldCup2022.LeagueIdWorldCup2022, SeasonId = WorldCup2022.SeasonIdWorldCup2022};
             var topScorers = await baseService.GetDataAsync<TopScorers>(criteria);
             return topScorers.ToList();
+        }
+
+        public async Task<IEnumerable<MiniGame>> GetDataMinigameAsync(GetDataMinigameCriteria criteria)
+        {
+            var dataMinigames = await baseService.GetDataAsync<MiniGame>(criteria);
+            return dataMinigames;
+        }
+
+        public async Task<IList<MiniGame>> GetDetailMinigameAsync(int UserId)
+        {
+            var criteria = new GetDetailMinigameCriteria { UserId = UserId};
+            var dataMinigame = await baseService.GetDataAsync<MiniGame>(criteria);
+            return dataMinigame.ToList();
+        }
+
+        public async Task<CommandResult> InsertMinigameAsync(MiniGame miniGame)
+        {
+            var criteria = new InsertMinigameCriteria
+            {
+                UserId = miniGame.ID,
+                LuckyNumber = miniGame.LuckyNumber,
+                JoinDate = miniGame.JoinDate,
+                TeamId = miniGame.TeamId
+            };
+
+            return await baseService.ExecuteNonQueryAsync(criteria);
         }
     }
 }

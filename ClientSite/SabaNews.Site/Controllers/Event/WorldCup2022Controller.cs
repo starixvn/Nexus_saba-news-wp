@@ -8,6 +8,7 @@
     using SabaNews.Core.Services;
     using SabaNews.Criteria.Posts;
     using SabaNews.Criteria.User;
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -374,23 +375,23 @@
             if (sessionService.User != null)
             {
                 model.User = sessionService.User;
-                model.MinigameDetail = await userService.GetDetailMembershipEventDataAsync(new GetDetailMembershipEventCriteria { UserId = sessionService.User.Id });
+                model.MinigameDetail = await leagueService.GetDetailMinigameAsync(sessionService.User.Id);
             }
             return View("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", model);
         }
 
         public async Task<ActionResult> GetMinigameData(UserFilterMembershipEventModel model)
         {
-            var criteria = new GetMembershipEventDataCriteria
+            var criteria = new GetDataMinigameCriteria
             {
                 Start = (model.Page - 1) * model.PageSize,
                 End = model.PageSize,
                 ToDate = DateTimeUtilize.TransformDatetimeToGMT(new DateTime(2022, 12, 18))
             };
-            var users = await userService.GetUserMembershipEventDataAsync(criteria);
-            var viewModel = new MembershipEventGridViewModel
+            var miniGames = await leagueService.GetDataMinigameAsync(criteria);
+            var viewModel = new MinigameGridViewModel
             {
-                Users = users,
+                MiniGames = miniGames,
                 Paging = new PagingModel
                 {
                     CurrentPage = model.Page,
@@ -402,7 +403,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMinigameData(string luckyNumber)
+        public async Task<IActionResult> CreateMinigameData(string luckyNumber, int teamId)
         {
             var result = new CommandResult();
             if (sessionService.User == null)
@@ -410,13 +411,14 @@
                 result.Message = "Vui lòng đăng nhập để tham gia sự kiện";
                 return Json(result);
             }
-            var command = new CreateUserMembershipEventDataCommand
+            var command = new MiniGame
             {
                 LuckyNumber = luckyNumber,
-                UserId = sessionService.User.Id,
-                JoinDate = DateTime.UtcNow
+                ID = sessionService.User.Id,
+                JoinDate = DateTime.UtcNow,
+                TeamId = teamId
             };
-            result = await userService.CreateUserMembershipEventDataAsync(command);
+            result = await leagueService.InsertMinigameAsync(command);
             return Json(result);
         }
 

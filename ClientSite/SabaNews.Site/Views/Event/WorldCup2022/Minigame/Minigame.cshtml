@@ -21,7 +21,10 @@
 @section Styles{
     <link rel="stylesheet" href="~/minify/styles/home.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/worldcup2022.min.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/styles/pages/event/worldcup2022/minigame.css" asp-append-version="true">
     <link rel="stylesheet" href="~/minify/styles/membership-event.min.css" asp-append-version="true">
+
     <environment include="Development">
         <link rel="stylesheet" href="~/css/dev/pages/livescore/soccer/world-cup/fixture.chunk.css" asp-append-version="true" />
     </environment>
@@ -48,7 +51,7 @@
     <script>
         var checkLogin = '@Model.IsLogin';
     </script>
-    <script src="~/minify/js/membership-event.min.js" asp-append-version="true"></script>
+    <script src="~/js/event/worldcup2022/minigame.js" asp-append-version="true"></script>
     <script src="~/js/event/worldcup2022/worldcup.js" asp-append-version="true"></script>
 }
 
@@ -91,11 +94,11 @@
                                 {
                                     var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
                                     var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                                    <div class="wc-table-row" data-standing="@standing">
-                                        <div class="wc-table-cell cell-participant">
-                                            <ul class="team">
-                                                <li class="team-logo"><img src=@icon alt="Alternate Text" /></li>
-                                                <li class="team-name" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
+                                    <div class="wc-table-row btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                        <div class="wc-table-cell cell-participant btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                            <ul class="team btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                                <li class="team-logo btn-choseTeam" data-teamname="@teamName" data-teamid="@standing.TeamId"><img src=@icon alt="Alternate Text" /></li>
+                                                <li class="team-name btn-choseTeam" data-teamname="@teamName" data-teamid="@standing.TeamId" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -111,7 +114,7 @@
             <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
             <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
             <div class="block-field-number">
-                @if (!Model.IsLogin && Model.MembershipEventDetail == null)
+                @if (!Model.IsLogin && Model.MinigameDetail == null)
                 {
                     <div class="title-event">
                         <img src="~/images/event/line.png" class="img-res" />
@@ -131,9 +134,9 @@
                         <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
                 }
-                else if (Model.IsLogin && Model.MembershipEventDetail != null && Model.MembershipEventDetail.LuckyNumber != null)
+                else if (Model.IsLogin && Model.MinigameDetail.Count != 0)
                 {
-                    var luckyNumber = Model.MembershipEventDetail.LuckyNumber.Trim();
+                    var luckyNumber = Model.MinigameDetail[0].LuckyNumber.Trim();
                     var arrNumber = new StringBuilder(luckyNumber);
                     string[] arrNumberAsWord = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
                     <div class="title-event">
@@ -171,14 +174,9 @@
                     <div class="field-number">
                         <form class="form-event" id="membership-event-form">
                             <div class="form-input">
-                                <input type="text" min="0" max="9" maxlength="1" id="number1" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number2" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
-                                <input type="text" min="0" max="9" maxlength="1" id="number3" class="input-field-event input-event-number" />
+                                <input type="text" min="0" max="999999" id="luckyNumber" class="input-field-event input-event-number" />
                             </div>
-                            <button type="button" disabled class="btn btn-event btn-submit-number active">Gửi</button>
+                            <button type="button" class="btn btn-event btn-submit-number active">Gửi</button>
                         </form>
                         <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
@@ -206,9 +204,6 @@
                 </button>
                 <div class="modal-body register">
                     <div class="heading-modal-event">BẠN ĐÃ DỰ ĐOÁN</div>
-
-                    <ul class="review-team">
-                    </ul>
 
                     <ul class="review-number">
                     </ul>

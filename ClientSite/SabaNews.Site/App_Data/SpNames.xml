@@ -221,5 +221,8 @@
 		<Setting Key="Livescore_Top_Scorers_UpdateTop" SpName="Livescore_Top_Scorers_UpdateTop" DbName="sabasports" Plain="0"></Setting>
 		<Setting Key="Livescore_Team_GetAll" SpName="Livescore_Team_GetAll" DbName="sabasports" Plain="0"></Setting>
 		<Setting Key="Livescore_Player_GetByTeamId" SpName="Livescore_Player_GetByTeamId" DbName="sabasports" Plain="0"></Setting>
+		<Setting Key="Livescorer_Minigame_Get_Data" SpName="Livescorer_Minigame_Get_Data" DbName="sabasports" Plain="0"></Setting>
+		<Setting Key="Livescorer_Minigame_Get_Detail" SpName="Livescorer_Minigame_Get_Detail" DbName="sabasports" Plain="0"></Setting>
+		<Setting Key="Livescorer_Minigame_Create" SpName="Livescorer_Minigame_Create" DbName="sabasports" Plain="0"></Setting>
 	</Function>
 </Functions>

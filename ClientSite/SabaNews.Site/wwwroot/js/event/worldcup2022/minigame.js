@@ -1,20 +1,19 @@
 ﻿var minigame = (function ($) {
     var isLogin = typeof checkLogin != 'undefined' ? checkLogin.toLowerCase() === 'true' : false;
+    var teamId = 0;
+    var teamName = "";
     function HandleSubmitNumber() {
         $('#membership-event-form').on('submit', function (e) {
             e.preventDefault();
-            var number1 = $('#number1').val();
-            var number2 = $('#number2').val();
-            var number3 = $('#number3').val();
-            var isValid = ValidateFormEnterLuckynumber(number1, number2, number3);
+            var luckyNumber = $('#luckyNumber').val();
+            var isValid = ValidateFormEnterLuckynumber(luckyNumber);
             if (!isValid) {
                 return false;
             }
-            var luckyNumber = number1 + number2 + number3;
             $.ajax({
                 method: 'POST',
-                url: '/WorldCup2022/CreateMembershipEventData',
-                data: { luckyNumber },
+                url: '/WorldCup2022/CreateMinigameData',
+                data: { luckyNumber, teamId },
                 success: function (res) {
                     if (res.isSuccessful) {
                         $('#success').bind('hidden.bs.modal', function () {
@@ -30,17 +29,21 @@
             });
         });
 
+        $('.btn-choseTeam').on('click', function () {
+            teamId = $(this).data("teamid");
+            teamName = $(this).data("teamname");
+            var a = 0;
+        });
+
         $('.btn-submit-number').on('click', function () {
-            var number1 = $('#number1').val();
-            var number2 = $('#number2').val();
-            var number3 = $('#number3').val();
-            var isValid = ValidateFormEnterLuckynumber(number1, number2, number3);
+            var luckyNumber = $('#luckyNumber').val();
+
+            var isValid = ValidateFormEnterLuckynumber(luckyNumber);
             if (!isValid) {
                 return false;
             }
-            var html = "<li>" + number1 + "</li>";
-            html += "<li>" + number2 + "</li>";
-            html += "<li>" + number3 + "</li>";
+            var html = "<li>" + teamName + " sẽ vô địch World Cup 2022 và</li>";
+            html += "<li>" + luckyNumber + " là số người có cùng dự đoán với b</li>";
             $('#register .review-number').html(html);
             $('#register').modal('show');
         });
@@ -58,6 +61,7 @@
                 }
             }
         });
+
         $('.input-event-number').on('keypress', function (e) {
             $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
             if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {
@@ -66,11 +70,10 @@
         });
 
         $('.input-event-number').on("input", function () {
-            if ($(this).val().length == $(this).attr("maxlength")) {
+            if ($(this).val().length == $(this).attr("maxlength")){
                 $(this).next().focus();
             }
         });
-
 
         $('.input-event-number').on("click focus", function () {
             $(this).select();
@@ -80,26 +83,35 @@
             $('.input-event-number').val('');
             $('#number1').focus();
         });
-
-
     }
 
-    function ValidateFormEnterLuckynumber(number1, number2, number3) {
-        var luckyNumber = number1 + number2 + number3;
+    function ValidateFormEnterLuckynumber(luckyNumber) {
         if (!isLogin) {
             $('#notice .modal-body  .text-event-modal').html("Vui lòng đăng nhập để tham gia sự kiện!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
         }
-        if (!$.isNumeric(number1) || !$.isNumeric(number2) || !$.isNumeric(number3) || !$.isNumeric(luckyNumber)) {
-            $('#notice .modal-body  .text-event-modal').html("Số may mắn không hợp lệ, vui lòng kiểm tra lại!");
+        if (!$.isNumeric(luckyNumber) && teamName == "") {
+            $('#notice .modal-body  .text-event-modal').html("Vui lòng chọn đội tuyển tên và nhập số người cùng dự đoán với bạn!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
         }
-        if (luckyNumber < 0 && luckyNumber > 999) {
-            $('#notice .modal-body  .text-event-modal').html("Số may mắn phải là số nằm trong khoảng từ 000 đến 999!");
+        if (teamName == "") {
+            $('#notice .modal-body  .text-event-modal').html(" Vui lòng chọn tên đội tuyển!");
+            $('#notice').unbind('hidden.bs.modal');
+            $('#notice').modal('show');
+            return false;
+        }
+        if (!$.isNumeric(luckyNumber)) {
+            $('#notice .modal-body  .text-event-modal').html(" Vui lòng nhập số người cùng dự đoán với bạn!");
+            $('#notice').unbind('hidden.bs.modal');
+            $('#notice').modal('show');
+            return false;
+        }
+        if (luckyNumber < 0 && luckyNumber > 999999) {
+            $('#notice .modal-body  .text-event-modal').html("Số may mắn phải là số nằm trong khoảng từ 000 đến 999999!");
             $('#notice').unbind('hidden.bs.modal');
             $('#notice').modal('show');
             return false;
@@ -108,12 +120,6 @@
     }
 
     function HandleUI() {
-        $('.toggle-mobile-event').click(function () {
-            $('.header-nav-event,.wrapper-menu-event').toggleClass('active')
-        })
-        $('.header-nav-event li a, .wrapper-menu-event').click(function () {
-            $('.header-nav-event,.wrapper-menu-event').removeClass('active')
-        })
         $('#btn-register').on('click', function () {
             $('#register').modal('show');
         })
@@ -138,8 +144,6 @@
             }, 500)
         })
 
-
-
         $('.click-list-rigister').click(function () {
             $('html, body').animate({
                 scrollTop: $("#list-rigister-event").offset().top
@@ -151,18 +155,9 @@
             $(this).addClass("active");
         });
 
-        $('.btn-accept,.btn-outline-event').click(function () {
+        $('.btn-accept').click(function () {
             $('#register').modal('hide');
         })
-
-        $('.btn-home').click(function () {
-            $('html, body').animate({ scrollTop: 0 }, 1000);
-        });
-
-        $('.auth-section').click(function (e) {
-            $('.profile-login').toggleClass('active-login-review');
-
-        });
 
         $(window).click(function (e) {
             var elmAuth = $(e.target).parent().parent();
@@ -179,7 +174,7 @@
     function GetDataMinigame() {
         $.ajax({
             type: "GET",
-            url: "/WorldCup2022/GetMembershipEventData",
+            url: "/WorldCup2022/GetMinigameData",
             data: { page, pageSize },
             success: function (res) {
                 $('.data-grid').html(res);
