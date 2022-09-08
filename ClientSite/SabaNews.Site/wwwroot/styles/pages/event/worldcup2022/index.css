@@ -1122,12 +1122,12 @@ body {
 .gird-hot-news {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 50rem auto;
+  grid-template-rows: 60rem auto;
   grid-gap: 2rem; }
   @media screen and (max-width: 1024px) {
     .gird-hot-news {
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 50rem 10rem; } }
+      grid-template-rows: 60rem 10rem; } }
   @media (max-width: 767px) {
     .gird-hot-news {
       grid-template-columns: repeat(3, 1fr);
@@ -1164,8 +1164,8 @@ body {
       .gird-hot-news .post-items-2 .hover-image, .gird-hot-news .post-items-3 .hover-image, .gird-hot-news .post-items-4 .hover-image, .gird-hot-news .post-items-5 .hover-image {
         max-height: 20rem; } }
   .gird-hot-news .post-hot .hover-image {
-    height: 50rem;
-    max-height: 50rem; }
+    height: 60rem;
+    max-height: 60rem; }
 
 .wc-block-bxh {
   background: url("../../../../images/worldcup/section-2.png") no-repeat;
