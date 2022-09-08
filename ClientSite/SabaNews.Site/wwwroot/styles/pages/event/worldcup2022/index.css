@@ -1333,8 +1333,7 @@ body {
 .wc-block-video {
   background: #48041A;
   position: relative;
-  z-index: 9;
-  margin-top: 5rem; }
+  z-index: 9; }
   @media screen and (max-width: 1024px) {
     .wc-block-video {
       margin-top: 2.5rem; } }

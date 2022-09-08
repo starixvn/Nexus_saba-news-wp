@@ -372,7 +372,6 @@
     background: $primary-bg;
     position: relative;
     z-index: 9;
-    margin-top : 5rem;
     @include tableMobile {
         margin-top: 2.5rem;
     }
