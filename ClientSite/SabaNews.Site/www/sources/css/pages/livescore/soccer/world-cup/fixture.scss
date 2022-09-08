@@ -179,13 +179,25 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    width: 12rem;
+                    width: 7rem;
+                    margin-right: .4rem;
+                    padding: 0;
                     &.win{
                         font-weight: 700;
                     }
                 }
                 .soccer-team-result{
                     font-size: 1.2rem;
+                    .total-score{
+                        width: 1.4rem;
+                        margin-right: .4rem;
+                    }
+                }
+                .soccer-team-status{
+                    li{
+                        padding: .1rem .2rem;
+                        border: none;
+                    }
                 }
             }
         }

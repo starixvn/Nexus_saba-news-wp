@@ -7,7 +7,7 @@
     max-width: 76rem;
     margin: auto;
     position: relative;
-    padding: 5px;
+    padding: 5px 7px;
     background: #66172A;
     clip-path: polygon(98% 0, 100% 49%, 98% 100%, 2% 100%, 0 50%, 2% 0);
     @include tableMobile{
@@ -40,7 +40,7 @@
         text-transform: unset;
         &.active{
                 clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-                background: #66172A;
+                background: linear-gradient(180deg, #67182B 0%, #470817 100%);
                 color: #fff;
                 &::after{
                     display: none;

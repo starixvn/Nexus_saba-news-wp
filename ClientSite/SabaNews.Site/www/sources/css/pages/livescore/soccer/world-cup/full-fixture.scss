@@ -54,6 +54,7 @@
         border: 1px solid #5A1122;
         .group-match-item{
           background: linear-gradient(180deg, #470817 0%, #67182B 100%);
+          border-radius: 5px;
         }
         @include tableMobile{
           padding: 2.3rem 1.2rem 1rem 1.2rem;
@@ -272,7 +273,7 @@
   height: 50px;
   justify-content: center;
   @include creen1199px{
-    width: 10%;
+    width: 12rem;
   }
   @include tableMobile{
     display: none;
@@ -385,5 +386,7 @@
 }
 
 .tab-content {
-  margin-top: 4rem;
+  max-width: 80rem;
+  margin: auto;
+  padding-top: 4rem;
 }
