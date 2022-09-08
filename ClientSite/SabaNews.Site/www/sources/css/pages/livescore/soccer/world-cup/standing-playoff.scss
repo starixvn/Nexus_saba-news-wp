@@ -155,7 +155,7 @@
     }
     .flex-play-offs{
         display: grid;
-        grid-template-columns: 40rem 19rem 40rem;
+        grid-template-columns: 40rem 24rem 40rem;
         align-items: center;
         justify-content: center;
         grid-gap: 1rem;
@@ -240,6 +240,8 @@
    
     .wc-result{
       position: relative;
+      display: flex;
+      justify-content: center;
       &-header{
           list-style: none;
           text-align: center;
