@@ -734,7 +734,7 @@ body {
         line-height: 1.6rem; } }
     .live-score-nav a.active {
       clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
-      background: #66172A;
+      background: linear-gradient(180deg, #67182B 0%, #470817 100%);
       color: #fff; }
       @media screen and (max-width: 1024px) {
         .live-score-nav a.active {

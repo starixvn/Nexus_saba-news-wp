@@ -185,6 +185,9 @@
                     &.win{
                         font-weight: 700;
                     }
+                    @include Mobile{
+                        line-height: normal;
+                    }
                 }
                 .soccer-team-result{
                     font-size: 1.2rem;
