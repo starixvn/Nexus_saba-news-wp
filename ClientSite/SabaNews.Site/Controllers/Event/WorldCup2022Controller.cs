@@ -1,6 +1,5 @@
 ﻿namespace SabaNews.Site.Controllers.Event
 {
-    using HtmlAgilityPack;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -12,9 +11,7 @@
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
-    using SabaNews.Models;
     using SabaNews.Models.Posts;
-    using SabaNews.Models.StoryPost;
     using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
@@ -26,7 +23,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Web;
 
     public class WorldCup2022Controller : Controller
     {
@@ -106,7 +102,7 @@
             }
             var cateParentsWC = await postService.GetCateParentsAsync(cateInfoWC.Slug);
             cateInfoWC.Url ??= PostHelper.GetCategoryLink(cateParentsWC);
-            var domain = configuration.GetValue<string>("BaseUrl");
+            var domain = configuration.GetValue<string>(Constants.BaseUrl);
             var viewModel = new SingleViewModel
             {
                 SinglePost = postWC,
@@ -317,7 +313,7 @@
             {
                 Post = post,
                 Stories = stories,
-                BaseUrl = configuration.GetValue<string>("BaseUrl"),
+                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl),
                 BackUrl = Url.Action("StoryPost", "WorldCup2022")
             };
             return PartialView("~/Views/Event/WorldCup2022/StoryPostDetail.cshtml", model);
@@ -338,7 +334,7 @@
                 var user = await userService.GetUserByIdAsync(sessionService.User.Id);
                 savePostWC = user.HandleSavePosts.Find(val => val.PostID == post.ID);
             }
-            var domain = configuration.GetValue<string>("BaseUrl");
+            var domain = configuration.GetValue<string>(Constants.BaseUrl);
             var viewModel = new SingleViewModel
             {
                 SinglePost = post,
@@ -373,7 +369,7 @@
                 IsLogin = isLogin,
                 StandingsViewModel = GroupStandingsByGroupName(standings),
                 IsAdmin = isLogin && sessionService.User.Metadata.Contains(Role.Administrator),
-                BaseUrl = configuration.GetValue<string>("BaseUrl")
+                BaseUrl = configuration.GetValue<string>(Constants.BaseUrl)
             };
             if (sessionService.User != null)
             {

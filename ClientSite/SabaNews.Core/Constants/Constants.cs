@@ -171,6 +171,7 @@
         public const string UploadFolder = "/uploads/";
         public const string BannerUploadFolder = "uploads/banner/";
         public const string HomepageUrl = "/";
+        public const string BaseUrl = "BaseUrl";
 
         public const int CacheHomePageTimeoutMinutes = 20;
         public const int CacheCategoryTimeoutMinutes = 10;
