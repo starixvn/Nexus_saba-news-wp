@@ -4,21 +4,9 @@
 @import '../../../../components/container';
 @import '../../../../components/soccer-item';
 @import '../../../../components/play-offs';
+@import './components/wc-date-bar';
 
-.group-match-item {
-    .soccer-match-item{
-        &:hover{
-            background: #753146;
-        }
-        .soccer-match-team {
-            .group-team {
-                .home-team{
-                    border-bottom: none;
-                }
-            }
-        }
-    }
-}
+
 
 .draw-show-mb{
     display: none;

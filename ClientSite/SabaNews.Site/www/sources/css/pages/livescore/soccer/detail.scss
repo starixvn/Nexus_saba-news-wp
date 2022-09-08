@@ -20,6 +20,9 @@
 @import '../../../components/breadcrumb';
 @import '../../../components/modal';
 
+//wc
+@import './world-cup/components/wc-date-bar';
+
 
 .livescore-soccer {
     padding-bottom: 5rem;
@@ -323,90 +326,11 @@
 
 
 
+
+
+
+
 //worldcup
-
-
-
-.wc-date-bar{
-    overflow-x: auto;
-    display: grid;
-    grid-template-columns: unset;
-    grid-auto-flow: column;
-    grid-gap: 1rem;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    @include tableMobile{
-        margin: 0;
-        -webkit-scroll-snap-type: x mandatory;
-        -ms-scroll-snap-type: x mandatory;
-        scroll-snap-type: x mandatory;
-        scroll-snap-stop: always;
-    }
-    @include Mobile{
-        
-    }
-    .group-match-item{
-        margin-bottom: 0;
-        @include tableMobile{
-            scroll-snap-align: center;
-        }
-        .soccer-match-item{
-            display: inherit;
-            margin-bottom: 0;
-            background: #753146;
-            padding: 0;
-            color: #fff;
-            border: 1px solid #61132B;
-            &:hover{
-                box-shadow: none;
-                background: #753146;
-            }
-            .soccer-match-date-result{
-                display: flex;
-                justify-content: space-between;
-                border-bottom: 1px solid #61132B;
-                border-radius: 5px;
-                padding: .7rem 1rem;
-                background: #894158;
-                .soccer-match-stage{
-                    text-align: left;
-                    margin-right: 0;
-                }
-                .wc-date{
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                }
-            }
-            .soccer-match-team{
-                width: 100%;
-            }
-            .group-team{
-                padding: .9rem 1rem;
-                .home-team{
-                    border-bottom: none;
-                }
-                .soccer-team-logo{
-                    margin-right: 1rem;
-                } 
-                .soccer-team-name{
-                    font-size: 1.2rem;
-                    max-width: 100%;
-                    font-weight: 400;
-                    &.win{
-                        font-weight: 700;
-                    }
-                }
-                .soccer-team-result{
-                    font-size: 1.2rem;
-                }
-            }
-        }
-    }
-}
-
-
-
 .match-detail-world-cup{
     grid-template-columns: 61%;
     justify-content: center;
