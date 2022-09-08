@@ -146,5 +146,7 @@
   {
     "outputFile": "wwwroot/styles/pages/event/worldcup2022/minigame.css",
     "inputFile": "wwwroot/styles/pages/event/worldcup2022/minigame.scss"
+    "outputFile": "wwwroot/styles/pages/admin/livescore/match-management/match-management.css",
+    "inputFile": "wwwroot/styles/pages/admin/livescore/match-management/match-management.scss"
   }
 ]

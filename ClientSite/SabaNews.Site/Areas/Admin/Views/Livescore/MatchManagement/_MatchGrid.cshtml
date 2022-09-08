@@ -1,0 +1,64 @@
+﻿@using SabaNews.Resources
+@using SabaNews.Core.Helper
+@using SabaNews.Site.Extensions;
+@{ var count = (Model.Paging.CurrentPage - 1) * Model.Paging.PageSize; }
+<div class="table-admin">
+    <table class="data-grid">
+        <thead>
+            <tr>
+                <th width="5%">#</th>
+                <th width="10%">@ViewResources.HomeLogo</th>
+                <th width="10%">@ViewResources.HomeName</th>
+                <th width="10%">@ViewResources.AwayLogo</th>
+                <th width="10%">@ViewResources.AwayName</th>
+                <th width="15%">@ViewResources.StartTime <i class="icon-sort-admin" id="date-sort" sort-type="@Model.DateSort"></i></th>
+                <th width="10%">@ViewResources.HomeIconVN</th>
+                <th width="10%">@ViewResources.HomeNameVN</th>
+                <th width="10%">@ViewResources.AwayIconVN</th>
+                <th width="10%">@ViewResources.AwayNameVN</th>
+                <th>@ViewResources.Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var match in Model.Matches)
+                {
+                    count++;
+                        <tr>
+                            <td class="text-center">@count</td>
+                            <td class="text-left"><img src="@LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon)" width="100"></td>
+                            <td class="text-left">@LivescoreHelper.GetTeamNameEN(match.HomeTeam)</td>
+                            <td class="text-left"><img src="@LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon)" width="100"></td>
+                            <td class="text-left">@LivescoreHelper.GetTeamNameEN(match.AwayTeam)</td>
+                            <td class="text-left">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
+                            <td class="text-left">
+                                @if (!string.IsNullOrEmpty(match.HomeTeam.IconVN))
+                                {
+                                    <img src="@match.HomeTeam.IconVN" width="100">
+                                }
+                            </td>
+                            <td class="text-left">@match.HomeTeam.TeamNameVN</td>
+                            <td class="text-left">
+                                @if (!string.IsNullOrEmpty(match.AwayTeam.IconVN))
+                                {
+                                    <img src="@match.AwayTeam.IconVN" width="100">
+                                }
+                            </td>
+                            <td class="text-left">@match.AwayTeam.TeamNameVN</td>
+                            <td class="text-center">
+                                <i class="icon icon-edit-admin btn-Edit" title="Edit"
+                                   data-url="@Url.Action("EditMatch", "MatchManagement", new { matchId = match.MatchId})"></i>
+                            </td>
+                        </tr>
+                }
+            }
+            @if (Model.Matches.Count == 0)
+            {
+                <tr>
+                    <td class="nodata_table" colspan="9">@ViewResources.EmptyData</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @(await Component.InvokeAsync("Paging", new { model = Model.Paging }))
+</div>

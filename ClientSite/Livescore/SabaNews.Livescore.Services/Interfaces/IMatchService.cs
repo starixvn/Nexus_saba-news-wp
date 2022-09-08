@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
     using SabaNews.Livescore.Models.Match;
@@ -28,6 +29,10 @@
         Task<Match> GetMatchByIdAsync(GetMatchByIdCriteria criteria);
 
         Task<IList<Match>> GetMatchByIdsAsync(GetMatchByIdsCriteria criteria);
+
+        Task<IList<Match>> GetMatchBySeasonFilterAsync(GetMatchBySeasonFilterCriteria criteria);
+
+        Task<CommandResult> UpdateMatchAsync(UpdateMatchCommand cmd);
 
 
     }

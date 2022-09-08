@@ -187,6 +187,42 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Away Icon VN.
+        /// </summary>
+        public static string AwayIconVN {
+            get {
+                return ResourceManager.GetString("AwayIconVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away Logo.
+        /// </summary>
+        public static string AwayLogo {
+            get {
+                return ResourceManager.GetString("AwayLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away Name.
+        /// </summary>
+        public static string AwayName {
+            get {
+                return ResourceManager.GetString("AwayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Away Name VN.
+        /// </summary>
+        public static string AwayNameVN {
+            get {
+                return ResourceManager.GetString("AwayNameVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trở lại.
         /// </summary>
         public static string Back {
@@ -970,6 +1006,42 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home Icon VN.
+        /// </summary>
+        public static string HomeIconVN {
+            get {
+                return ResourceManager.GetString("HomeIconVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Logo.
+        /// </summary>
+        public static string HomeLogo {
+            get {
+                return ResourceManager.GetString("HomeLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Name.
+        /// </summary>
+        public static string HomeName {
+            get {
+                return ResourceManager.GetString("HomeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Name VN.
+        /// </summary>
+        public static string HomeNameVN {
+            get {
+                return ResourceManager.GetString("HomeNameVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hot.
         /// </summary>
         public static string Hot {
@@ -1281,6 +1353,15 @@ namespace SabaNews.Resources {
         public static string Mascot {
             get {
                 return ResourceManager.GetString("Mascot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MatchManagement.
+        /// </summary>
+        public static string MatchManagement {
+            get {
+                return ResourceManager.GetString("MatchManagement", resourceCulture);
             }
         }
         
@@ -2100,6 +2181,15 @@ namespace SabaNews.Resources {
         public static string Standing {
             get {
                 return ResourceManager.GetString("Standing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
             }
         }
         

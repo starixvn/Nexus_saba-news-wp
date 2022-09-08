@@ -123,5 +123,24 @@
                 return matches.ToList();
             }
         }
+
+        public async Task<IList<Match>> GetMatchBySeasonFilterAsync(ICriteria criteria)
+        {
+            using (IObjectDb db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                var matches = await db.QueryAsync<Match, Team, Team, SeasonStage, Match >(
+                        (match, home, away, stage) =>
+                        {
+                            match.HomeTeam = home;
+                            match.AwayTeam = away;
+                            match.Stage = stage;
+
+                            return match;
+                        },
+                        splitOn: "HomeTeamId, AwayTeamId, StageId",
+                        parameterSet: criteria);
+                return matches.ToList();
+            }
+        }
     }
 }

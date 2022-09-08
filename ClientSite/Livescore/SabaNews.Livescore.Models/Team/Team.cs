@@ -10,5 +10,6 @@
         public string TeamNameVN { get; set; }
 
         public string Icon { get; set; }
+        public string IconVN { get; set; }
     }
 }

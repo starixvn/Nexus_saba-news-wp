@@ -11,7 +11,7 @@
                 $('.data-grid').html(res);
                 initLeague();
                 initPaging();
-                initSortLeague();                
+                initSortLeague();
             }
         });
     }

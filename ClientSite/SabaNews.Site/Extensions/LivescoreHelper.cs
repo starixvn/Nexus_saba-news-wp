@@ -8,8 +8,14 @@
     {
         public static string GetTeamName(Team team)
         {
-            string teamName = string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
+            string teamName = !string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
             teamName = !string.IsNullOrEmpty(team.TeamNameVN) ? team.TeamNameVN : teamName;
+            return teamName;
+        }
+
+        public static string GetTeamNameEN(Team team)
+        {
+            string teamName = !string.IsNullOrEmpty(team.TeamNameEN) ? team.TeamNameEN : team.TeamFullNameEN;
             return teamName;
         }
 
@@ -28,7 +34,14 @@
 
         public static string GetTeamIcon(string src)
         {
-            return string.IsNullOrEmpty(src) ? "css/images/logo-dummy.png" : src;
+            return string.IsNullOrEmpty(src) ? "/css/images/logo-dummy.png" : src;
+        }
+
+        public static string GetLeagueName(League league)
+        {
+            string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
+            leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
+            return leagueName;
         }
     }
 }

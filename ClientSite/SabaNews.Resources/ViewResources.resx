@@ -962,4 +962,34 @@
   <data name="TeamNameEN" xml:space="preserve">
     <value>Team Name EN</value>
   </data>
+  <data name="MatchManagement" xml:space="preserve">
+    <value>MatchManagement</value>
+  </data>
+  <data name="AwayIconVN" xml:space="preserve">
+    <value>Away Icon VN</value>
+  </data>
+  <data name="AwayLogo" xml:space="preserve">
+    <value>Away Logo</value>
+  </data>
+  <data name="AwayName" xml:space="preserve">
+    <value>Away Name</value>
+  </data>
+  <data name="AwayNameVN" xml:space="preserve">
+    <value>Away Name VN</value>
+  </data>
+  <data name="HomeIconVN" xml:space="preserve">
+    <value>Home Icon VN</value>
+  </data>
+  <data name="HomeLogo" xml:space="preserve">
+    <value>Home Logo</value>
+  </data>
+  <data name="HomeName" xml:space="preserve">
+    <value>Home Name</value>
+  </data>
+  <data name="HomeNameVN" xml:space="preserve">
+    <value>Home Name VN</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
 </root>

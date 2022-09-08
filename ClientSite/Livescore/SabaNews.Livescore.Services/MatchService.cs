@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
@@ -154,6 +155,17 @@
         public async Task<IList<Match>> GetMatchByIdsAsync(GetMatchByIdsCriteria criteria)
         {
             return await matchRepository.GetMatchByIdsAsync(criteria);
+        }
+
+        public async Task<IList<Match>> GetMatchBySeasonFilterAsync(GetMatchBySeasonFilterCriteria criteria)
+        {
+            return await matchRepository.GetMatchBySeasonFilterAsync(criteria);
+        }
+
+
+        public async Task<CommandResult> UpdateMatchAsync(UpdateMatchCommand cmd)
+        {
+            return await baseService.ExecuteNonQueryAsync(cmd);
         }
     }
 }

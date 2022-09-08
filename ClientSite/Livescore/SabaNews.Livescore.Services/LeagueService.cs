@@ -311,5 +311,12 @@
 
             return await baseService.ExecuteNonQueryAsync(criteria);
         }
+
+        public async Task<IList<Season>> GetSeasonByLeagueIdAsync(int leagueId)
+        {
+            var criteria = new GetSeasonByLeagueIdCriteria { LeagueId  = leagueId };
+            var seasons = await baseService.GetDataAsync<Season>(criteria);
+            return seasons.ToList();
+        }
     }
 }
