@@ -11,8 +11,7 @@ import LangHelper from '@jsroot/common/langHelper';
 export class MatchSummary extends Component {
     checkIncidentMainTimeEventType = type => {
         return type === IncidentStatus.End
-            || type === IncidentStatus.OvertimeEnds
-            || type === IncidentStatus.PenaltyShootoutEnd
+            || type === IncidentStatus.ExtraTimeEnd
             || type === IncidentStatus.Halftime;
     };
 

@@ -44,7 +44,7 @@ export default class CommonFunctions {
             let incident = {...item};
             if(index > 0 ) {
                 const lastIncident = incidents[index - 1];
-                if(lastIncident.time === incident.time && lastIncident.second === incident.second && lastIncident.PlayerId === incident.PlayerId) {
+                if(lastIncident.time === incident.time && lastIncident.second === incident.second && lastIncident.playerId === incident.playerId) {
                     return false;
                 }
             }
