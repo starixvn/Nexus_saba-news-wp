@@ -40,8 +40,14 @@ export default class CommonFunctions {
         let isInjurytime = false;
         let homeScore = 0;
         let awayScore = 0;
-        incidents.map(item => {
+        incidents.map((item, index) => {
             let incident = {...item};
+            if(index > 0 ) {
+                const lastIncident = incidents[index - 1];
+                if(lastIncident.time === incident.time && lastIncident.second === incident.second && lastIncident.PlayerId === incident.PlayerId) {
+                    return false;
+                }
+            }
             let time = item.time + (item.second % 60 > 0 ? 1 : 0);
             if(incident.type === IncidentStatus.InjuryTime && (incident.time >= 45 && incident.time < 105)) {
                 isInjurytime = true;
