@@ -81,22 +81,7 @@
 #TestSendEmail .button-confirm {
   padding: 0; }
 
-.modal-edit-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-
 .select2-dropdown {
-  background-color: white;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  left: -100000px;
-  width: 100%;
-  z-index: 1051;
   width: 397px !important; }
 
 .modal-content .select2-container {
@@ -180,7 +165,7 @@
   margin: 0; }
 
 #EditLeagueContent .modal-content td {
-  padding: 7px; }
+  padding: 5px; }
 
 #EditLeagueContent .modal-content label {
   font-weight: bold;
@@ -287,19 +272,30 @@
     cursor: pointer; }
   .table-admin .main-pagination .items-pagination {
     margin-top: 10px; }
+  .table-admin td img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover; }
 
 .input-upload {
   border: 1px dashed #BDBDBD;
   position: relative;
   width: 100%;
   text-align: center;
-  padding: 1rem 0;
+  padding: .5rem;
   background: #f7f7f7; }
+  .input-upload img {
+    width: 100%; }
   .input-upload .icon-close {
     position: absolute;
-    right: 16px;
-    top: 16px;
-    font-size: 1.8rem; }
+    right: 10px;
+    top: 10px;
+    font-size: 1.8rem;
+    background: transparent;
+    cursor: pointer;
+    color: #fff; }
+    .input-upload .icon-close:focus {
+      outline: none; }
   .input-upload .txt-img {
     display: flex;
     align-items: center;
@@ -307,7 +303,7 @@
     justify-content: center;
     flex-direction: row; }
     .input-upload .txt-img .icon-upload {
-      font-size: 5rem;
+      font-size: 3rem;
       margin-right: 1rem; }
   .input-upload .photo-error {
     margin: 0; }
@@ -345,3 +341,7 @@
   background-size: cover;
   border: 1px solid #000;
   cursor: pointer; }
+
+.page-content .error {
+  margin-bottom: 0 !important;
+  margin-top: 1rem !important; }

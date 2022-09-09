@@ -7,27 +7,27 @@
                 <table  width="100%">
                     <tbody>
                         <tr>
-                            <td>
+                            <td width="30%">
                                 <label>@ViewResources.HomeNameVN</label>
                             </td>
-                            <td>
+                            <td width="70%">
                                 <input type="hidden" id="editHomeId" value="@Model.HomeTeam.TeamId" />
                                 <input type="text" value="@Model.HomeTeam.TeamNameVN" class="form-control txt-homeVN" id="editHomeVN" name="HomeVN" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="30%">
                                 <label>@ViewResources.HomeIconVN</label>
                             </td>
-                            <td>
+                            <td width="70%">
                                 @{
                                     var display = !string.IsNullOrEmpty(Model.HomeTeam.IconVN);
-                                    var hide = display ? "none" : "block";
-                                    var show = display ? "block" : "none";
+                                    var hide = display ? "none" : "flex";
+                                    var show = display ? "flex" : "none";
                                 }
                                 <div class="input-upload">
                                     <input type="file" class="input-file photo" id="editHomeIcon">
-                                    <span class="txt-img" style="display:@hide"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
+                                    <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                     <div class="img-upload">
                                         <img class="review_photo" src="@Model.HomeTeam.IconVN" alt="review photo" width="150" style="display:@show" />
                                         <p class="error photo-error" style="display:none"></p>
@@ -37,27 +37,27 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="30%">
                                 <label>@ViewResources.AwayNameVN</label>
                             </td>
-                            <td>
+                            <td width="70%">
                                 <input type="hidden" id="editAwayId" value="@Model.AwayTeam.TeamId" />
                                 <input type="text" value="@Model.AwayTeam.TeamNameVN" class="form-control txt-awayVN" id="editAwayVN" name="AwayVN" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="30%">
                                 <label>@ViewResources.AwayIconVN</label>
                             </td>
-                            <td>
+                            <td width="70%">
                                 @{
                                     display = !string.IsNullOrEmpty(Model.AwayTeam.IconVN);
-                                    hide = display ? "none" : "block";
-                                    show = display ? "block" : "none";
+                                    hide = display ? "none" : "flex";
+                                    show = display ? "flex" : "none";
                                 }
                                 <div class="input-upload">
                                     <input type="file" class="input-file photo" id="editAwayIcon">
-                                    <span class="txt-img"  style="display:@hide"><i class="icon-upload"></i> @ViewResources.UploadNewImage</span>
+                                    <div class="txt-img"  style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                     <div class="img-upload">
                                         <img class="review_photo" src="@Model.AwayTeam.IconVN" alt="review photo" width="150" style="display:@show" />
                                         <p class="error photo-error" style="display:none"></p>

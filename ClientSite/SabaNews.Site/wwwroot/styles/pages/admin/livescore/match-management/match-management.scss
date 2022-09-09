@@ -2,23 +2,9 @@
 @import '../../../../abstracts/mixins';
 @import '../../custom-modal';
 
-.modal-edit-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 
 .select2-dropdown {
-    background-color: white;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    left: -100000px;
-    width: 100%;
-    z-index: 1051;
     width: 397px !important;
 }
 
@@ -124,7 +110,7 @@
     }
 
     td {
-        padding: 7px;
+        padding: 5px;
     }
 
     label {
@@ -260,6 +246,14 @@
             margin-top: 10px;
         }
     }
+
+    td {
+        img {
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+        }
+    }
 }
 
 .input-upload {
@@ -267,21 +261,31 @@
     position: relative;
     width: 100%;
     text-align: center;
-    padding: 1rem 0;
+    padding: .5rem;
     background: #f7f7f7;
+
+    img{
+        width : 100%;
+    }
 
     .icon-close {
         position: absolute;
-        right: 16px;
-        top: 16px;
+        right: 10px;
+        top: 10px;
         font-size: 1.8rem;
+        background: transparent;
+        cursor : pointer;
+        color : #fff;
+        &:focus{
+            outline :none;
+        }
     }
 
     .txt-img {
         @include flex(center, nowrap,center);
 
         .icon-upload {
-            font-size: 5rem;
+            font-size: 3rem;
             margin-right: 1rem;
         }
     }
@@ -330,4 +334,9 @@
     background-size: cover;
     border: 1px solid #000;
     cursor: pointer;
+}
+
+.page-content .error{
+    margin-bottom : 0 !important;
+    margin-top : 1rem !important;
 }
