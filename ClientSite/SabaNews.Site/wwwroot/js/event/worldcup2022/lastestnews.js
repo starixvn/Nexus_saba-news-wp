@@ -51,11 +51,8 @@
         })
     }
 
- 
-
     function init() {
         getStandings();
-        resizeTable();
     }
 
     return {

@@ -20,6 +20,7 @@
         <tbody>
             @foreach (var user in Model.MiniGames)
             {
+                var teamName = GetTeamName(new Team {TeamNameEN = user.TeamNameEN, TeamNameVN = user.TeamNameVN});
                 var joinDate = SabaNews.Core.Helper.DateTimeUtilize.FormatDateTime(user.JoinDate, "dd/MM/yyyy HH:mm:ssss");
 
                 var emailFormat = user.Email;
@@ -33,7 +34,7 @@
                 emailFormat = first + "***" + last + "@" + emailSplit[1];
                 <tr>
                     <td class="child-table child-first">@emailFormat</td>
-                    <td class="child-table child-two text-center font-weight-bold">@user.TeamNameEN</td>
+                    <td class="child-table child-two text-center font-weight-bold">@teamName</td>
                     <td class="child-table child-two text-center font-weight-bold">@user.LuckyNumber</td>
                     <td class="child-table child-three text-center">@joinDate</td>
                 </tr>
