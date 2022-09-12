@@ -32,7 +32,6 @@
         $('.btn-choseTeam').on('click', function () {
             teamId = $(this).data("teamid");
             teamName = $(this).data("teamname");
-            var a = 0;
         });
 
         $('.btn-submit-number').on('click', function () {
@@ -135,13 +134,14 @@
 
 
         $('.click-number-event').click(function () {
-            const windowHeight = window.innerHeight;
-            const blockNumber = $('.field-number');
-            const blockNumberHeight = blockNumber.innerHeight();
-            const heightElement = windowHeight / 2 - blockNumberHeight / 3;
-            $('html, body').animate({
-                scrollTop: blockNumber.offset().top - heightElement
-            }, 500)
+            $('#joining').modal('show');
+            //const windowHeight = window.innerHeight;
+            //const blockNumber = $('.field-number');
+            //const blockNumberHeight = blockNumber.innerHeight();
+            //const heightElement = windowHeight / 2 - blockNumberHeight / 3;
+            //$('html, body').animate({
+            //    scrollTop: blockNumber.offset().top - heightElement
+            //}, 500)
         })
 
         $('.click-list-rigister').click(function () {

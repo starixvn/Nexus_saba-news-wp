@@ -62,7 +62,12 @@
         <div class="header-control">
             <ul>
                 <li><a href="javascript:;" class="btn btn-event" id="btn-guide">Thể Lệ</a></li>
-                <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
+                @{
+                    if (!Model.IsLogin)
+                    {
+                        <li><a href="#nhap-so-may-man" class="btn btn-event active click-number-event">Tham Gia</a></li>
+                    }
+                }
             </ul>
         </div>
     </div>
@@ -75,66 +80,48 @@
                 <img src="~/images/event/gif-mobile.png" class="img-res img-event-mobile" />
             </div>
         </div>
+        @if (Model.IsLogin)
+        {
+            <div class="wc-block wc-block-bxh" id="home-standing">
+                <div class="grid-bxh scroll-snap">
 
-        <div class="wc-block wc-block-bxh" id="home-standing">
-            <div class="grid-bxh scroll-snap">
+                    @foreach (var group in Model.StandingsViewModel)
+                    {
+                        var groupName = $"Bảng {group.GroupName[0]}";
+                        <a class="scroll-snap-items">
+                            <div class="wc-table">
+                                <div class="name-bxh title-items">@groupName</div>
+                                <div class="wc-table-header">
+                                    <div class="wc-table-cell cell-participant"></div>
+                                </div>
 
-                @foreach (var group in Model.StandingsViewModel)
-                {
-                    var groupName = $"Bảng {group.GroupName[0]}";
-                    <a class="scroll-snap-items">
-                        <div class="wc-table">
-                            <div class="name-bxh title-items">@groupName</div>
-                            <div class="wc-table-header">
-                                <div class="wc-table-cell cell-participant"></div>
-                            </div>
-
-                            <div class="wc-table-body">
-                                @foreach (var standing in group.Standings)
-                                {
-                                    var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
-                                    var teamName = LivescoreHelper.GetStandingTeamName(standing);
-                                    <div class="wc-table-row btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                        <div class="wc-table-cell cell-participant btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                            <ul class="team btn-choseTeam" data-teamid="@standing.TeamId" data-teamname="@teamName">
-                                                <li class="team-logo btn-choseTeam" data-teamname="@teamName" data-teamid="@standing.TeamId"><img src=@icon alt="Alternate Text" /></li>
-                                                <li class="team-name btn-choseTeam" data-teamname="@teamName" data-teamid="@standing.TeamId" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
-                                            </ul>
+                                <div class="wc-table-body">
+                                    @foreach (var standing in group.Standings)
+                                    {
+                                        var icon = LivescoreHelper.GetTeamIcon(standing.Icon);
+                                        var teamName = LivescoreHelper.GetStandingTeamName(standing);
+                                        <div class="wc-table-row @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                            <div class="wc-table-cell cell-participant @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                                <ul class="team @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamid="@standing.TeamId" data-teamname="@teamName">
+                                                    <li class="team-logo @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamname="@teamName" data-teamid="@standing.TeamId"><img src=@icon alt="Alternate Text" /></li>
+                                                    <li class="team-name @(Model.MinigameDetail.Count == 0 ? "btn-choseTeam" : "")" data-teamname="@teamName" data-teamid="@standing.TeamId" tabindex="0" data-toggle="tooltip" title="@(teamName.Length > (isMobile? 17 : 12) ? teamName : "")">@teamName</li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                }
+                        </a>
+                    }
+                </div>
             </div>
-        </div>
+        }
 
         <div class="block-group" id="field-number-event">
             <div class="flower flower-left"><img src="~/images/event/img5.png" class="img-res" /></div>
             <div class="flower flower-right"><img src="~/images/event/img4.png" class="img-res" /></div>
             <div class="block-field-number">
-                @if (!Model.IsLogin && Model.MinigameDetail == null)
-                {
-                    <div class="title-event">
-                        <img src="~/images/event/line.png" class="img-res" />
-                        <span>Nhập Số May Mắn</span>
-                    </div>
-                    <div class="field-number field-number-validate">
-                        <div class="validate-vent-input">
-                            <div class="warning-event">
-                                Vui lòng đăng nhập hoặc đăng ký
-                                để tham gia
-                            </div>
-                            <ul class="flex-btn auth-input">
-                                <li><a href="javascript:;" class="btn btn-event auth-login">Đăng nhập</a></li>
-                                <li><a href="javascript:;" class="btn btn-event auth-login active" data-form="register">Đăng ký</a></li>
-                            </ul>
-                        </div>
-                        <span><img src="~/images/event/dot-input.png" /></span>
-                    </div>
-                }
-                else if (Model.IsLogin && Model.MinigameDetail.Count != 0)
+                @if (Model.IsLogin && Model.MinigameDetail.Count != 0)
                 {
                     var luckyNumber = Model.MinigameDetail[0].LuckyNumber.Trim();
                     var arrNumber = new StringBuilder(luckyNumber);
@@ -165,7 +152,7 @@
                         <span><img src="~/images/event/dot-input.png" /></span>
                     </div>
                 }
-                else
+                else if (Model.IsLogin && Model.MinigameDetail.Count == 0)
                 {
                     <div class="title-event">
                         <img src="~/images/event/line.png" class="img-res" />
@@ -252,6 +239,30 @@
                     </ul>
                 </div>
 
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal" id="joining" style="display:none">
+        <div class="modal-content modal-auth">
+            <div class="modal-warning">
+                <button type="button" class="close-event" data-dismiss="modal" aria-label="Close">
+                    <i class="icon icon-close-event"></i>
+                </button>
+                <div class="modal-body field-number field-number-validate">
+                    <div class="validate-vent-input">
+                        <div class="warning-event">
+                            Vui lòng đăng nhập hoặc đăng ký
+                            để tham gia
+                        </div>
+                        <ul class="flex-btn auth-input">
+                            <li><a href="javascript:;" class="btn btn-event auth-login">Đăng nhập</a></li>
+                            <li><a href="javascript:;" class="btn btn-event auth-login active" data-form="register">Đăng ký</a></li>
+                        </ul>
+                    </div>
+                    <span><img src="~/images/event/dot-input.png" /></span>
+                </div>
             </div>
 
         </div>
