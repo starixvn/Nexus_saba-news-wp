@@ -1411,6 +1411,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minigame WorldCup.
+        /// </summary>
+        public static string MinigameWorldCup2022 {
+            get {
+                return ResourceManager.GetString("MinigameWorldCup2022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string MobileBottomBanner {
@@ -2289,6 +2298,15 @@ namespace SabaNews.Resources {
         public static string TeamNameEN {
             get {
                 return ResourceManager.GetString("TeamNameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team Winner.
+        /// </summary>
+        public static string TeamWinner {
+            get {
+                return ResourceManager.GetString("TeamWinner", resourceCulture);
             }
         }
         

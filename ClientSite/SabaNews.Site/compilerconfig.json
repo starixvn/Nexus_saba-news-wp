@@ -151,5 +151,9 @@
 	{
 		"outputFile": "wwwroot/styles/pages/admin/livescore/match-management/match-management.css",
 		"inputFile": "wwwroot/styles/pages/admin/livescore/match-management/match-management.scss"
+	},
+	{
+		"outputFile": "wwwroot/styles/pages/admin/minigameworldcup/minigame.css",
+		"inputFile": "wwwroot/styles/pages/admin/minigameworldcup/minigame.scss"
 	}
 ]

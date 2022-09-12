@@ -1,5 +1,6 @@
 ﻿namespace SabaNews.Services.ExportExcel
 {
+    using SabaNews.Livescore.Models.League;
     using SabaNews.Models.ViewModel.User;
     using SabaNews.Services.Interfaces;
     using System.Collections.Generic;
@@ -16,6 +17,14 @@
             const string ExcelTemplatePath = "ExcelTemplates/Event.xlsx";
             var templatePath = pathService.MapPathContentRoot(ExcelTemplatePath);
             var excel = new MembershipEventExcel(templatePath, users);
+            return excel.Export();
+        }
+
+        public byte[] ExportMinigameWorldCup2022(IEnumerable<MiniGame> miniGames)
+        {
+            const string ExcelTemplatePath = "ExcelTemplates/MiniGameWorldCup2022.xlsx";
+            var templatePath = pathService.MapPathContentRoot(ExcelTemplatePath);
+            var excel = new MinigameWorldCup2022Excel(templatePath, miniGames);
             return excel.Export();
         }
     }

@@ -260,6 +260,52 @@
         }
 
         [Fact]
+        public async Task InsertMinigameAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var minigame = fixture.Create<MiniGame>();
+            var model = fixture.Create<InsertMinigameCriteria>();
+            var expected = new CommandResult { Code = 0 };
+            baseService.ExecuteNonQueryAsync(Arg.Do<InsertMinigameCriteria>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await service.InsertMinigameAsync(minigame);
+            //Assert
+            Assert.True(actual.IsSuccessful);
+        }
+
+        [Fact]
+        public async Task GetDetailMinigameAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetDetailMinigameCriteria>();
+            var miniGames = fixture.Create<IList<MiniGame>>();
+            baseService.GetDataAsync<MiniGame>(Arg.Any<GetDetailMinigameCriteria>()).Returns(miniGames);
+            //Act
+            var actual = await service.GetDetailMinigameAsync(criteria.UserId);
+            //Assert
+            Assert.Equal(miniGames, actual);
+        }
+
+        [Fact]
+        public async Task GetDataMinigameAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetDataMinigameCriteria>();
+            var miniGames = fixture.Create<IList<MiniGame>>();
+            baseService.GetDataAsync<MiniGame>(Arg.Any<GetDataMinigameCriteria>()).Returns(miniGames);
+            //Act
+            var actual = await service.GetDataMinigameAsync(criteria);
+            //Assert
+            Assert.Equal(miniGames, actual);
+        }
+
+        [Fact]
         public async Task GetTopScorersByRowNumAsync_WhenCalled_ReturnExpectedResult()
         {
             //Arrange

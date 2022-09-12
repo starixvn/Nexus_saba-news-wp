@@ -242,7 +242,6 @@
             };
             _ = await baseService.ExecuteNonQueryAsync(criteriaPriority);
             return await baseService.ExecuteNonQueryAsync(criteria);
-
         }
 
         public async Task<CommandResult> UpdateTopScorerAsync(TopScorers topScorers)

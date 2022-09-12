@@ -16,8 +16,10 @@
     using SabaNews.Livescore.Services.Criteria.League;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel;
     using SabaNews.Models.ViewModel.Event.WorldCup;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Models.ViewModel.User;
     using SabaNews.Services;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Controllers.Event;
@@ -463,6 +465,58 @@
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task GetDataMinigameWorldCup2022_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var param = fixture.Create<UserFilterMembershipEventModel>();
+            var criteria = fixture.Create<GetDataMinigameCriteria>();
+            var expected = fixture.Create<IEnumerable<MiniGame>>();
+            leagueService.GetDataMinigameAsync(Arg.Do<GetDataMinigameCriteria>(x => criteria = x)).Returns(expected);
+            //Act
+            var result = await controller.GetMinigameData(param);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsType<MinigameGridViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.MiniGames);
+        }
+
+        [Fact]
+        public async Task CreateMinigameData_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var minigame = fixture.Create<MiniGame>();
+            var expected = fixture.Create<CommandResult>();
+            leagueService.InsertMinigameAsync(minigame).Returns(expected);
+            //Act
+            var result = await controller.CreateMinigameData(minigame.LuckyNumber, minigame.TeamId);
+
+            // Assert
+            var viewResult = Assert.IsType<JsonResult>(result);
+            var viewModel = Assert.IsType<CommandResult>(viewResult.Value);
+            Assert.Equal("Vui lòng đăng nhập để tham gia sự kiện", viewModel.Message);
+        }
+
+        [Fact]
+        public async Task GetMinigame_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var standingsCriteria = fixture.Create<GetLeagueSeasonStandingCriteria>();
+            var standings = fixture.Create<IList<SeasonStandings>>();
+
+            leagueService.GetLeagueSeasonStanding(standingsCriteria).Returns(standings);
+            //Act
+            var result = await controller.Minigame();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal("~/Views/Event/WorldCup2022/Minigame/Minigame.cshtml", viewResult.ViewName);
         }
 
         [Fact]

@@ -403,7 +403,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMinigameData(string luckyNumber, int teamId)
+        public async Task<IActionResult> CreateMinigameData(string luckyNumber, long teamId)
         {
             var result = new CommandResult();
             if (sessionService.User == null)

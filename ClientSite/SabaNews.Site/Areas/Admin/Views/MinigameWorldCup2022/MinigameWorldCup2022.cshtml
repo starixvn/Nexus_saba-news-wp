@@ -1,0 +1,42 @@
+﻿@using SabaNews.Resources
+@{
+    Layout = "_AdminLayout";
+}
+
+@section TopHeader{
+    @ViewResources.MinigameWorldCup2022
+}
+
+@section Title{
+    @ViewResources.MinigameWorldCup2022
+}
+
+@section ActiveMenu {
+    <input type="text" readonly hidden name="activeMenu" value="@ViewResources.MinigameWorldCup2022" />
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/styles/pages/admin/minigameworldcup/minigame.css" asp-append-version="true">
+}
+
+<section class="page-content">
+    <div class="form-filter" style="margin-bottom: 2rem">
+        <form class="form-horizontal" action="/Admin/MinigameWorldCup2022/MinigameWorldCup2022Result" method="get">
+            <div class="form-input">
+                <input type="number" class="custom-input list-input" id="search" name="resultNumber" placeholder="Enter Lucky Number..." />
+            </div>
+
+            <button class="btn-custom-admin" type="submit" id="submit-btn">Check Winner</button>
+        </form>
+    </div>
+
+
+    <div class="content">
+        <div class="export-excel"><a href="@Url.Action("ExportExcel", "MinigameWorldCup2022", new { Area = "Admin" })" class="label label-blue">Export excel</a></div>
+        <div class="data-grid" id="data-grid"></div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/admin/minigameworldcup2022/minigameworldcup2022.js" asp-append-version="true"></script>
+}
