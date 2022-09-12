@@ -44,7 +44,7 @@ export class MatchSummary extends Component {
         return (
             <div className="head-top-team" >
                 <div className="flexbox time-event">
-                    <p className="time-event-title">Trận Đấu kết thúc</p>
+                    <p className="time-event-title">Kết thúc trận đấu</p>
                 </div>
                 <div className="flexbox time-event">
                     <p className="time-event-score">{(homeFinalPenalty !== 0 || awayFinalPenalty !== 0) ? 'PEN: ' + finalPenalty : finalScore}</p>
@@ -91,6 +91,45 @@ export class MatchSummary extends Component {
             && (lastIncident.type !== IncidentStatus.End || incident.type !== IncidentStatus.End);
     };
 
+    getPenaltyShootout = (incidents) => {
+        const Pen = incidents.filter(item => item.isPenaltyShootout === true);
+        if(Pen.length === 0) {
+            return null;
+        }
+        const homePen = Pen.filter(item => item.position === IncidentPosition.Home);
+        const awayPen = Pen.filter(item => item.position === IncidentPosition.Away);
+        let homeScore = 0;
+        let awayScore = 0;
+        return (
+            <>
+                {
+                    homePen.map((hPen, index) => {
+                        let component = <Fragment key={index} />
+                        const aPen = awayPen[index]
+                        if(aPen) {
+                            if (hPen.position === IncidentPosition.Home && hPen.type === IncidentStatus.Penalty) {
+                                homeScore++;
+                            }
+                            if (aPen.position === IncidentPosition.Away && aPen.type === IncidentStatus.Penalty) {
+                                awayScore++;
+                            }
+                            const penaltyShootOutData = {
+                                homeType: hPen.type,
+                                homePlayerName: hPen.playerName,
+                                awayType: aPen.type,
+                                awayPlayerName: aPen.playerName,
+                                score: `${homeScore} -  ${awayScore}`
+                            }
+                            component = <PenaltyShootOut key={index} penaltyShootOutData={penaltyShootOutData} />;
+                        }
+                        return component;
+                    })
+                }
+            </>
+        );
+    };
+
+
 
     render() {
         const { match } = this.props;
@@ -99,8 +138,10 @@ export class MatchSummary extends Component {
         }
 
         const { generalInfo } = this.props.match;
-        const incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
+        let incidents = CommonFunctions.produceIncidents(this.props.match.incidents);
         const lastIncident = incidents[incidents.length - 1];
+        const mainIncidents = incidents.filter(item => !item.isPenaltyShootout);
+        const test = this.getPenaltyShootout(incidents);
         let homePenaltyShootoutScore = 0;
         let awayPenaltyShootoutScore = 0;
         let hasPenaltyShootout = false;
@@ -123,7 +164,7 @@ export class MatchSummary extends Component {
                             </div>
                             <div className="time-line-main">
                                 {
-                                    incidents.map((incident, key) => {
+                                    mainIncidents.map((incident, key) => {
                                         hasPenaltyShootout = false;
                                         const processScore = `${incident.homeScore} - ${incident.awayScore}`;
                                         if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
@@ -166,6 +207,7 @@ export class MatchSummary extends Component {
                                         }
                                     })
                                 }
+                                {this.getPenaltyShootout(incidents)}
                                 {
                                     generalInfo.status === MatchStatus.Finished &&
                                     this.renderFinishStatus()

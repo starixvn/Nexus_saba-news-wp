@@ -42,9 +42,12 @@ export default class CommonFunctions {
         let awayScore = 0;
         incidents.map((item, index) => {
             let incident = {...item};
+            incident.isPenaltyShootout = false;
             if(index > 0 ) {
                 const lastIncident = incidents[index - 1];
-                if(lastIncident.time === incident.time && lastIncident.second === incident.second && lastIncident.playerId === incident.playerId) {
+                if(lastIncident.time === incident.time && lastIncident.second === incident.second 
+                    && incident.playerId > 0
+                    && lastIncident.playerId === incident.playerId) {
                     return false;
                 }
             }
@@ -64,6 +67,10 @@ export default class CommonFunctions {
                 } else if(time > 90 && time < 105) {
                     time = "90" + "+" + (time - 90);
                 }
+            }
+            if ((incident.type === IncidentStatus.Penalty || incident.type === IncidentStatus.PenaltyMissed)
+                && incident.homeScore === 0 && incident.awayScore === 0) {
+                incident.isPenaltyShootout = true;
             }
             if(this.checkIncidentTypeToUpdateScore(item.type)) {
                 homeScore = item.homeScore;
