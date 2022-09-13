@@ -17,6 +17,9 @@
       background: none;
       border: none;
       overflow : unset;
+      @include tableMobile{
+        padding: 0 1.2rem;
+      }
       .soccer-match-grid-item-header {
         padding: 1rem 1.2rem;
         color: $color-title;
@@ -26,11 +29,11 @@
         width: 23rem;
         height: 4rem;
         margin: auto;
-        background: linear-gradient(180deg, #67182B 0%, #470817 100%);
+        background: linear-gradient(160.96deg, #FFD68F -2.57%, #C2A97D 95.84%);
         border: none;
         display: flex;
         justify-content: center;
-        color: #FFFFFF;
+        color: #2F2F2F;
         position: absolute;
         top: 0;
         right: 50%;
@@ -40,31 +43,31 @@
           font-size: 1.4rem;
           line-height: 1;
           padding: .5rem;
-          width: 22.5rem;
-          height: 2.6rem;
-          background: linear-gradient(157.5deg, #FFD68F 0%, #C2A97D 93.61%);
+          width: 100%;
+          height: 3rem;
+          background: linear-gradient(180deg, #67182B 0%, #470817 100%);
           clip-path: polygon(97% 0, 100% 50%, 97% 100%, 3% 100%, 0 50%, 3% 0);
-          color: #2F2F2F;
+          color: #fff;
         }
       }
       .soccer-match-grid-item-body{
         border-radius: 5px;
-        padding: 3rem 1.2rem 1rem 1.2rem;
+        padding: 3rem 0 0;
         background: #EEEEE4;
-        border: 1px solid #5A1122;
         .group-match-item{
-          background: linear-gradient(180deg, #470817 0%, #67182B 100%);
+          background: #FAFAED;
+          border: 1px solid #66172A;
           border-radius: 5px;
+          margin-bottom: 1rem;
+          &:last-child{
+            margin-bottom: 0;
+          }
         }
         @include tableMobile{
-          padding: 2.3rem 1.2rem 1rem 1.2rem;
+          padding: 2rem 0 1rem 0;
           .group-match-item{
             border-radius: 5px;
             padding: 1rem .5rem 1rem 1.2rem;
-            margin-bottom: 1rem;
-            &:last-child{
-              margin-bottom: 0;
-            }
             .soccer-match-item{
               padding: 0;
               .soccer-match-date-result{
@@ -153,16 +156,15 @@
     border-radius: 0;
     border: none;
     padding: 0;
-    margin-bottom: 1rem;
-    @include tableMobile{
-      margin-bottom: 0;
-    }
     &:hover{
       background: none;
     }
     .soccer-match-team{
+      @include tableMobile{
+        width: 75%;
+      }
       .group-team{
-        color: #fff;
+        color: #67182B;
         font-weight: 600;
         @include creen1199px{
           display: flex;
@@ -182,7 +184,7 @@
             justify-content: flex-end;
           }
           @include tableMobile{
-            border-bottom: 1px solid #C49F5D;
+            border-bottom: 1px solid #C4C4B8;;
           }
           .soccer-team-logo{
             margin-left: 1rem;
@@ -226,8 +228,7 @@
           }
         }
         .soccer-team-logo{
-          border: 1px solid #FFF;
-          background: #FFF;
+          border: 1px solid #66172A;
           border-radius: 3px;
           width: 4.2rem;
           height: 2.8rem;
@@ -267,25 +268,25 @@
   align-items: center;
   list-style: none;
   padding-left: 0;
-  background: linear-gradient(157.5deg, #FFD68F 0%, #C2A97D 93.61%);
+  background: linear-gradient(180deg, #67182B 0%, #470817 100%);
   margin: 0 2rem;
-  clip-path: polygon(85% 0,100% 49%,85% 100%,15% 100%,0 49%,15% 0);
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%, 10% 0);
   height: 50px;
   justify-content: center;
   @include creen1199px{
-    width: 12rem;
+    width: 10rem;
   }
   @include tableMobile{
     display: none;
   }
   .total-score{
     font-size: 2rem;
-    color: #2F2F2F;
+    color: #fff;
     font-weight: 700;
   }
   .haft-score{
     font-size: 1.4rem;
-    color: #2F2F2F;
+    color: #fff;
     font-weight: 400;
   }
 }
@@ -295,7 +296,7 @@
     .soccer-match-stage{
       margin-right: 0;
       text-align: center;
-      color: #fff;
+      color: #67182B;
       font-weight: 600;
       @include tableMobile{
         width: 6rem;
@@ -316,6 +317,12 @@
 .wc-soccer-items{
   margin-bottom: 4rem;
   position: relative;
+  @include tableMobile{
+    margin-bottom: 1.6rem;
+    &:first-child{
+      margin-top: 2.5rem;
+    }
+  }
 }
 
 
@@ -343,14 +350,14 @@
 
 .live,.live.live-intermission{
   .soccer-match-stage{
-      width: auto;
+      width: 12rem;
       margin-top: 0;
       font-size: 1.3rem !important;
+      @include tableMobile{
+        width: 6rem;
+      }
       span{
-          color: #EFF612 !important;
-          &::before,&::after{
-              display: none;
-          }
+          color: #E13C29 !important;
       }
   }
 }
@@ -359,7 +366,12 @@
   display: flex;
   align-items: center;
   font-size: 1.4rem;
-  justify-content: center;
+  justify-content: space-between;
+  border: 1px solid #66172A;
+  width: 14rem;
+  padding: .8rem 0 .8rem 1.2rem;
+  border-radius: 5px;
+  margin: 0 auto;
   select {
     background-position: 2px;
     background-repeat: no-repeat;
