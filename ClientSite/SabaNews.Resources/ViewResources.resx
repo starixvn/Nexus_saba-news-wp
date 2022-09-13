@@ -963,7 +963,7 @@
     <value>Team Name EN</value>
   </data>
   <data name="MatchManagement" xml:space="preserve">
-    <value>MatchManagement</value>
+    <value>Match Management</value>
   </data>
   <data name="AwayIconVN" xml:space="preserve">
     <value>Away Icon VN</value>
@@ -991,6 +991,18 @@
   </data>
   <data name="StartTime" xml:space="preserve">
     <value>Start Time</value>
+  </data>
+  <data name="StandingManagement" xml:space="preserve">
+    <value>Standing Management</value>
+  </data>
+  <data name="IconVN" xml:space="preserve">
+    <value>Icon VN</value>
+  </data>
+  <data name="TeamNameVN" xml:space="preserve">
+    <value>Team Name VN</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
   </data>
   <data name="MinigameWorldCup2022" xml:space="preserve">
     <value>Minigame WorldCup</value>

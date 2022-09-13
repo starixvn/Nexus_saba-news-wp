@@ -3,6 +3,9 @@
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
+    using SabaNews.Models.ViewModel.Event.WorldCup;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public static class LivescoreHelper
     {
@@ -42,6 +45,42 @@
             string leagueName = string.IsNullOrEmpty(league.LeagueNameEN) ? league.LeagueNameEN : league.LeagueFullNameEN;
             leagueName = !string.IsNullOrEmpty(league.LeagueNameVN) ? league.LeagueNameVN : leagueName;
             return leagueName;
+        }
+
+        public static List<StandingGroupModel> GroupStandingsByGroupName(IList<SeasonStandings> seasonStandings)
+        {
+            var groupNames = GetGroupNames(seasonStandings);
+            var standingsViewModels = new List<StandingGroupModel>();
+
+            for (int i = 0; i < groupNames.Count; i++)
+            {
+                standingsViewModels.Add(new StandingGroupModel
+                {
+                    GroupName = groupNames[i],
+                    Standings = seasonStandings.Where(x => x.GroupName == groupNames[i]).ToList()
+                });
+            }
+            return standingsViewModels;
+        }
+
+        public static List<string> GetGroupNames(IList<SeasonStandings> seasonStandings)
+        {
+            var groupNames = new List<string>();
+            foreach (var item in seasonStandings)
+            {
+                if (groupNames.Count == 0)
+                {
+                    groupNames.Add(item.GroupName);
+                    continue;
+                }
+
+                var check = groupNames.Where(x => x == item.GroupName).ToList();
+                if (check.Count == 0)
+                {
+                    groupNames.Add(item.GroupName);
+                }
+            }
+            return groupNames;
         }
     }
 }

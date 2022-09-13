@@ -1,0 +1,64 @@
+﻿@using SabaNews.Resources
+@using SabaNews.Site.Extensions;
+
+<div class="table-admin">
+    @foreach (var group in Model.Groups)
+    {
+        var count = 0;
+        <div class="name-bxh title-items">@ViewResources.Board @group.GroupName.Substring(0, 1)</div>
+        <table class="data-grid">
+            <thead>
+                <tr>
+                    <th width="2%">#</th>
+                    <th width="8%">Team Icon</th>
+                    <th width="8%">Team Name</th>
+                    <th width="8%">Team Icon VN</th>
+                    <th width="8%">Team Name VN</th>
+                    <th width="8%">Total</th>
+                    <th width="8%">Won</th>
+                    <th width="8%">Draw</th>
+                    <th width="8%">Loss</th>
+                    <th width="8%">Goal</th>
+                    <th width="8%">GoalsAgainst</th>
+                    <th width="8%">GoalDiff</th>
+                    <th width="8%">Points</th>
+                    <th>@ViewResources.Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var standing in group.Standings)
+                    {
+                        count++;
+                                <tr>
+                                    <td class="text-center">@standing.Position</td>
+                                    <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(standing.Icon)" width="100"></td>
+                                    <td class="text-center">@(!string.IsNullOrEmpty(standing.TeamNameEN) ? standing.TeamNameEN : standing.TeamFullNameEN)</td>
+                                    <td class="text-center">
+                                        @if (!string.IsNullOrEmpty(standing.IconVN))
+                                        {
+                                            <img src="@LivescoreHelper.GetTeamIcon(standing.IconVN)" width="100">
+                                        }
+                                    </td>
+                                    <td class="text-center">@standing.TeamNameVN</td>
+                                    <td class="text-center">@standing.Total</td>
+                                    <td class="text-center">@standing.Won</td>
+                                    <td class="text-center">@standing.Draw</td>
+                                    <td class="text-center">@standing.Loss</td>
+                                    <td class="text-center">@standing.Goals</td>
+                                    <td class="text-center">@standing.GoalsAgainst</td>
+                                    <td class="text-center">@standing.GoalDiff</td>
+                                    <td class="text-center">@standing.Points</td>
+                                    <td class="text-center">
+                                        <i class="icon icon-edit-admin btn-Edit" title="Edit"
+                                           data-url="@Url.Action("EditStanding", "StandingManagement", new { seasonId = Model.SeasonId, stageId = standing.StageId, teamId = standing.TeamId})">
+                                        </i>
+                                    </td>
+                                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

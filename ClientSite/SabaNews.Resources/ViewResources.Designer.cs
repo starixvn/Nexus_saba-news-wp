@@ -1060,6 +1060,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Icon VN.
+        /// </summary>
+        public static string IconVN {
+            get {
+                return ResourceManager.GetString("IconVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Link xác thực email không đúng.
         /// </summary>
         public static string IncorrectLinkForConfirmEmail {
@@ -1357,7 +1366,7 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MatchManagement.
+        ///   Looks up a localized string similar to Match Management.
         /// </summary>
         public static string MatchManagement {
             get {
@@ -1713,6 +1722,15 @@ namespace SabaNews.Resources {
         public static string Point {
             get {
                 return ResourceManager.GetString("Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         
@@ -2194,6 +2212,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Standing Management.
+        /// </summary>
+        public static string StandingManagement {
+            get {
+                return ResourceManager.GetString("StandingManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Time.
         /// </summary>
         public static string StartTime {
@@ -2303,6 +2330,7 @@ namespace SabaNews.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Team Winner.
+        ///   Looks up a localized string similar to Team Name VN.
         /// </summary>
         public static string TeamWinner {
             get {

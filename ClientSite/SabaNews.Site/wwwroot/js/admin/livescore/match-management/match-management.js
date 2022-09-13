@@ -123,6 +123,7 @@
         $(form).find('.review_photo').hide();
         $(form).find('.txt-img').css('display', 'flex');
         $(form).find('.cancel-upload').hide();
+        $(form).find('.photo').val('');
     }
 
     function ValidatePhoto(files, self) {

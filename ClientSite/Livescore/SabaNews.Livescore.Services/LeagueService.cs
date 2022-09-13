@@ -1,17 +1,16 @@
 ﻿namespace SabaNews.Livescore.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Helper;
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.League;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class LeagueService : ILeagueService
     {
@@ -316,6 +315,41 @@
             var criteria = new GetSeasonByLeagueIdCriteria { LeagueId  = leagueId };
             var seasons = await baseService.GetDataAsync<Season>(criteria);
             return seasons.ToList();
+        }
+
+        public async Task<SeasonStandings> GetLeagueSeasonStandingDetailAsync(GetLeagueSeasonStandingDetailCriteria criteria)
+        {
+            return await baseService.GetDataEntityAsync<SeasonStandings>(criteria);
+        }
+
+        public async Task<CommandResult> UpdateStandingAsync(StandingUpdateModel model)
+        {
+            var cmdUpdate = new UpdateStandingCommand
+            {
+                SeasonId = model.SeasonId,
+                StageId = model.StageId,
+                TeamId = model.TeamId,
+                TeamNameVN = model.TeamNameVN,
+                IconVN = model.TeamIconVN
+            };
+            var cmdUpdatePosition = new UpdateStandingPositionCommand
+            {
+                SeasonId = model.SeasonId,
+                StageId = model.StageId,
+                TeamId = model.TeamId,
+                Position = model.Position
+            };
+            var result =  await baseService.ExecuteNonQueryAsync(cmdUpdate);
+            if (result.IsSuccessful && model.IsUpdatePosition)
+            {
+                result = await baseService.ExecuteNonQueryAsync(cmdUpdatePosition);
+            }
+            return result;
+        }
+
+        public async Task<CommandResult> UpdateStandingPositionAsync(UpdateStandingPositionCommand cmd)
+        {
+            return await baseService.ExecuteNonQueryAsync(cmd);
         }
     }
 }

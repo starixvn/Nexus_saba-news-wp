@@ -34,5 +34,7 @@
         Task<IEnumerable<MiniGame>> GetDataMinigameAsync(GetDataMinigameCriteria criteria);
         Task<IList<MiniGame>> GetDetailMinigameAsync(int UserId);
         Task<CommandResult> InsertMinigameAsync(MiniGame miniGame);
+        Task<SeasonStandings> GetLeagueSeasonStandingDetailAsync(GetLeagueSeasonStandingDetailCriteria criteria);
+        Task<CommandResult> UpdateStandingAsync(StandingUpdateModel model);
     }
 }

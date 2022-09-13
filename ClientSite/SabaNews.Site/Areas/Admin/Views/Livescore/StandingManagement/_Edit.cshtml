@@ -1,0 +1,56 @@
+﻿@using SabaNews.Resources
+@using SabaNews.Site.Extensions;
+<table width="100%">
+    <tbody>
+        <tr>
+            <td>
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td width="30%">
+                                <label>@ViewResources.Position</label>
+                            </td>
+                            <td width="70%">
+                                <input type="number" min="1" value="@Model.Position" class="form-control" id="editPosition" name="Position" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                <label>@ViewResources.TeamNameVN</label>
+                            </td>
+                            <td width="70%">
+                                <input type="hidden" id="editTeamId" value="@Model.TeamId" />
+                                <input type="text" value="@Model.TeamNameVN" class="form-control txt-homeVN" id="editTeamNameVN" name="HomeVN" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                <label>@ViewResources.IconVN</label>
+                            </td>
+                            <td width="70%">
+                                @{
+                                    var display = !string.IsNullOrEmpty(Model.IconVN);
+                                    var hide = display ? "none" : "flex";
+                                    var show = display ? "flex" : "none";
+                                }
+                                <div class="input-upload">
+                                    <input type="file" class="input-file photo" id="editIconVN">
+                                    <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                    <div class="img-upload">
+                                        <img class="review_photo" src="@Model.IconVN" alt="review photo" width="150" style="display:@show" />
+                                        <p class="error photo-error" style="display:none"></p>
+                                        <button type="button" class="cancel-upload icon-close" style="display:@show"></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-btn">
+                    <button class="btn btn-primary pl-4 pr-4"  data-stageid="@Model.StageId" id="btn-save">Save</button>
+                    <button class="btn btn-secondary pl-4 pr-4" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

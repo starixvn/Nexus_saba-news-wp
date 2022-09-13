@@ -4,7 +4,6 @@
     using SabaNews.Core.Constants;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.Match;
-    using SabaNews.Models.MatchManagement;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using SabaNews.Livescore.Models.Match;
@@ -13,6 +12,7 @@
     using SabaNews.Core.Models;
     using System;
     using SabaNews.Services.Interfaces;
+    using SabaNews.Models.Livescore.MatchManagement;
 
     public class MatchManagementController : AdminController
     {

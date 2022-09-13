@@ -1,4 +1,4 @@
-﻿namespace SabaNews.Models.MatchManagement
+﻿namespace SabaNews.Models.Livescore.MatchManagement
 {
     public class MatchFilterModel
     {
