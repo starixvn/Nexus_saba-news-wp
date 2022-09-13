@@ -170,6 +170,14 @@
         {
             // Arrange
             var controller = GetController();
+            var urlHelperMock = Substitute.For<IUrlHelper>();
+            controller.Url = urlHelperMock;
+            urlHelperMock.Action(Arg.Any<UrlActionContext>()).Returns("url");
+            controller.ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext()
+            };
+            controller.ControllerContext.HttpContext.Request.Scheme = fixture.Create<string>();
             var slug = fixture.Create<string>();
             var story = fixture.Create<Post>();
             story.PostContent = "<figure class=\"wp-block-image size-large\"><img src=\"img\" alt=\"\" class=\"wp-image-3928\"/><figcaption><a href=\"link\">Pic 1</a></figcaption></figure><figure class=\"wp-block-image size-large\"><img src=\"img\" alt=\"\" class=\"wp-image-3928\"/></figure>";
@@ -205,6 +213,51 @@
             Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
 
         }
+
+        [Fact]
+        public async Task OverView_WhenPostIsNull_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            Post expected = null;
+
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+
+            //Act
+            var result = await controller.Overview();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            Assert.Equal(Constants.EmptyBlogView, viewResult.ViewName);
+        }
+
+        [Fact]
+        public async Task OverView_WhenAuthencated_ReturnExpectedViewResult()
+        {
+            // Arrange
+            var controller = GetController();
+            var slug = fixture.Create<string>();
+            var postType = fixture.Create<string>();
+            Post expected = fixture.Create<Post>();
+            
+            var expectedUser = fixture.Create<UserSession>();
+            sessionService.User = fixture.Create<UserSession>();
+            expectedUser.SavedPosts = null;
+            postService.GetPostDetailBySlugAsync(Arg.Do<string>(x => x = slug), Arg.Do<string>(x => x = postType)).Returns(expected);
+            userService.GetUserByIdAsync(Arg.Do<int>(x => x = sessionService.User.Id)).Returns(expectedUser);
+
+            //Act
+            var result = await controller.Overview();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<SingleViewModel>(viewResult.Model);
+            Assert.Equal(expected, viewModel.SinglePost);
+            Assert.Null(viewModel.SavePost);
+        }
+
 
         [Fact]
         public async Task GetLastestNews_WhenCalled_ReturnExpectedData()
