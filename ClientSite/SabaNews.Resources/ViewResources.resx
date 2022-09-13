@@ -1010,4 +1010,7 @@
   <data name="TeamWinner" xml:space="preserve">
     <value>Team Winner</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value>Team Name VN</value>
+  </data>
 </root>

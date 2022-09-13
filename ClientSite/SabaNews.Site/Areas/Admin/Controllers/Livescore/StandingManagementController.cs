@@ -20,8 +20,7 @@
         private readonly IFileService fileService;
         private const long DefaultLeagueId = WorldCup2022.LeagueIdWorldCup2022;
         private const long DefaultSeasonId = WorldCup2022.SeasonIdWorldCup2022;
-        private const string SortDesc = "desc";
-        private const string SortAsc = "asc";
+       
         public StandingManagementController(
             ILeagueService leagueService,
             IMatchService matchService,

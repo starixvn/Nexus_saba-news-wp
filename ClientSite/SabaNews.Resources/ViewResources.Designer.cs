@@ -2239,6 +2239,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team Name VN.
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #.
         /// </summary>
         public static string STT {
@@ -2329,8 +2338,16 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team Winner.
         ///   Looks up a localized string similar to Team Name VN.
+        /// </summary>
+        public static string TeamNameVN {
+            get {
+                return ResourceManager.GetString("TeamNameVN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team Winner.
         /// </summary>
         public static string TeamWinner {
             get {
