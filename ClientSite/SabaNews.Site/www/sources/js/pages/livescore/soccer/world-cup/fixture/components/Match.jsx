@@ -63,7 +63,9 @@ export default class Match extends PureComponent {
                             <div className="group-team">
                                 <div className="soccer-team home-team">
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
-                                    <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>{this.getTeamName(CommonFunctions.getTeamNameVN(match.homeTeam))}</div>
+                                    <div className={`soccer-team-name ${teamResult === MatchResult.Win ? 'win': ''}`}>
+                                        {this.getTeamName(CommonFunctions.getTeamNameVN(match.homeTeam))}
+                                    </div>
                                     <TeamScore match={match}  isHomeTeam   />
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, true)}
@@ -71,7 +73,9 @@ export default class Match extends PureComponent {
                                 </div>
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
-                                    <div className={`soccer-team-name ${teamResult === MatchResult.Lose ? 'win': ''}`}>{this.getTeamName(CommonFunctions.getTeamNameVN(match.awayTeam))}</div>
+                                    <div className={`soccer-team-name ${teamResult === MatchResult.Lose ? 'win': ''}`}>
+                                        {this.getTeamName(CommonFunctions.getTeamNameVN(match.awayTeam))}
+                                    </div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, false)}
                                     </ul>

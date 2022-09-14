@@ -118,8 +118,8 @@
         private static IList<Match> SearchMatch(IList<Match> matches, string search)
         {
             search ??= "";
-            matches = matches.Where(x => (LivescoreHelper.GetTeamNameEN(x.HomeTeam).ToLower().Contains(search))
-                || (LivescoreHelper.GetTeamNameEN(x.AwayTeam).ToLower().Contains(search))).ToList();
+            matches = matches.Where(x => (LivescoreHelper.GetTeamNameEN(x.HomeTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))
+                || (LivescoreHelper.GetTeamNameEN(x.AwayTeam).ToLower(CultureInfo.InvariantCulture).Contains(search))).ToList();
             return matches;
         }
 

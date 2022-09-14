@@ -1,0 +1,301 @@
+﻿namespace SabaNews.Site.UnitTests.Areas.Admin.Controller.Livescore
+{
+    using AutoFixture;
+    using Microsoft.AspNetCore.Mvc;
+    using NSubstitute;
+    using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Services;
+    using SabaNews.Livescore.Services.Criteria.Match;
+    using SabaNews.Models.Livescore.MatchManagement;
+    using SabaNews.Services.Interfaces;
+    using SabaNews.Site.Areas.Admin.Controllers;
+    using SabaNews.Site.Areas.Admin.Controllers.Livescore;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Xunit;
+    using SabaNews.Livescore.Models.Match;
+    using SabaNews.Livescore.Models.Team;
+    using System.Linq;
+    using System;
+    using SabaNews.Core.Models;
+    using System.IO;
+    using Microsoft.AspNetCore.Http;
+    using SabaNews.Core.Constants;
+
+    public class MatchManagementControllerTests : AdminController
+    {
+
+        private ILeagueService leagueService;
+        private IMatchService matchService;
+        private IFileService fileService;
+        private readonly IFixture fixture = new Fixture();
+
+        [Fact]
+        public async Task Index_WhenCalled_ReturnExpectedView()
+        {
+            // Arrange
+            var controller = GetController();
+            var expectedLeague = fixture.Create<IList<League>>();
+
+            leagueService.GetLeaguesAsync().Returns(expectedLeague);
+            //Act
+            var result = await controller.Index();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var viewModel = Assert.IsType<MatchManageModel>(viewResult.Model);
+            Assert.Equal(expectedLeague, viewModel.Leagues);
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
+        public async Task GetSeason_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var leagueId = fixture.Create<int>();
+            var expectedLeague = fixture.Create<IList<Season>>();
+
+            leagueService.GetSeasonByLeagueIdAsync(Arg.Do<int>(x => x = leagueId)).Returns(expectedLeague);
+            //Act
+            var result = await controller.GetSeason(leagueId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<IList<Season>>(viewResult.Model);
+            Assert.Equal(expectedLeague, viewModel);
+        }
+
+        [Fact]
+        public async Task GetMatchGrid_WhenSearchASC_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var leagueId = fixture.Create<int>();
+            var criteria = fixture.Create<GetMatchBySeasonFilterCriteria>();
+            var model = new MatchFilterModel 
+            { 
+                DateSort = "asc",
+                SeasonId = 1,
+                LeagueId = 1,
+                Page = 1,
+                PageSize = 2,
+                Search = "",
+            };
+            var expectedMatch = new List<Match>();
+            expectedMatch.Add(new Match 
+            { 
+                MatchId = 1,
+                StartTime = DateTime.Parse("2022-10-10"),
+                HomeTeam =  new Team { TeamNameEN = "home team 1" }, 
+                AwayTeam = new Team { TeamNameEN = "away team 1" } 
+            });
+            expectedMatch.Add(new Match
+            {
+                MatchId = 2,
+                StartTime = DateTime.Parse("2022-10-11"),
+                HomeTeam = new Team { TeamNameEN = "home team 2" },
+                AwayTeam = new Team { TeamNameEN = "away team 2" }
+            });
+            expectedMatch.Add(new Match
+            {
+                MatchId = 3,
+                StartTime = DateTime.Parse("2022-10-12"),
+                HomeTeam = new Team { TeamNameEN = "home team 3" },
+                AwayTeam = new Team { TeamNameEN = "away team 3" }
+            });
+
+            matchService.GetMatchBySeasonFilterAsync(Arg.Do<GetMatchBySeasonFilterCriteria>(x => x = criteria)).Returns(expectedMatch);
+            //Act
+            var result = await controller.GetMatchGrid(model);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<MatchManageGridVewModel>(viewResult.Model);
+            Assert.Equal(expectedMatch.Skip(0).Take(2).ToList(), viewModel.Matches);
+        }
+
+        [Fact]
+        public async Task GetMatchGrid_WhenSearchDESC_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var leagueId = fixture.Create<int>();
+            var criteria = fixture.Create<GetMatchBySeasonFilterCriteria>();
+            var model = new MatchFilterModel
+            {
+                DateSort = "desc",
+                SeasonId = 1,
+                LeagueId = 1,
+                Page = 1,
+                PageSize = 2
+            };
+            var expectedMatch = new List<Match>();
+            expectedMatch.Add(new Match
+            {
+                MatchId = 1,
+                StartTime = DateTime.Parse("2022-10-10"),
+                HomeTeam = new Team { TeamNameEN = "home team 1" },
+                AwayTeam = new Team { TeamNameEN = "away team 1" }
+            });
+            expectedMatch.Add(new Match
+            {
+                MatchId = 2,
+                StartTime = DateTime.Parse("2022-10-11"),
+                HomeTeam = new Team { TeamNameEN = "home team 2" },
+                AwayTeam = new Team { TeamNameEN = "away team 2" }
+            });
+            expectedMatch.Add(new Match
+            {
+                MatchId = 3,
+                StartTime = DateTime.Parse("2022-10-12"),
+                HomeTeam = new Team { TeamNameEN = "home team 3" },
+                AwayTeam = new Team { TeamNameEN = "away team 3" }
+            });
+            var resultMatch = new List<Match>();
+            resultMatch.Add(expectedMatch[2]);
+            resultMatch.Add(expectedMatch[1]);
+
+            matchService.GetMatchBySeasonFilterAsync(Arg.Do<GetMatchBySeasonFilterCriteria>(x => x = criteria)).Returns(expectedMatch);
+            //Act
+            var result = await controller.GetMatchGrid(model);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<MatchManageGridVewModel>(viewResult.Model);
+            Assert.Equal(resultMatch, viewModel.Matches);
+        }
+
+        [Fact]
+        public async Task EditMatch_WhenCalled_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var matchId = fixture.Create<int>();
+            var criteria = fixture.Create<GetMatchByIdCriteria>();
+            var expectedMatch = fixture.Create<Match>();
+
+            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            //Act
+            var result = await controller.EditMatch(matchId);
+
+            // Assert
+            var viewResult = Assert.IsType<PartialViewResult>(result);
+            var viewModel = Assert.IsAssignableFrom<Match>(viewResult.Model);
+            Assert.Equal(expectedMatch, viewModel);
+        }
+
+        [Fact]
+        public async Task EditMatch_WhenNotUploadIcon_ReturnExpectedData()
+        {
+            // Arrange
+            var controller = GetController();
+            var model = new MatchUpdateModel { };
+            model.IsDeletedAwayIcon = true;
+            model.IsDeletedHomeIcon = true;
+            var cmd = fixture.Create<UpdateMatchCommand>();
+            var criteria = fixture.Create<GetMatchByIdCriteria>();
+            var expectedMatch = fixture.Create<Match>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+
+            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            //Act
+            var result = await controller.EditMatch(model);
+
+            // Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task EditMatch_WhenUploadIconSuccessful_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+            var model = new MatchUpdateModel();
+            model.IsDeletedAwayIcon = false;
+            model.IsDeletedHomeIcon = false;
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            header.Add("Name", new string[1] { "Value" });
+            model.AwayIcon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            model.HomeIcon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            var cmd = fixture.Create<UpdateMatchCommand>();
+            var criteria = fixture.Create<GetMatchByIdCriteria>();
+            var expectedMatch = fixture.Create<Match>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+            var expectedUploadResult = new CommandResult { Code = Constants.SuccessCode, Message = "url" };
+
+            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.AwayIcon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
+            //Act
+            var result = await controller.EditMatch(model);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+        [Fact]
+        public async Task EditMatch_WhenUploadIconFailed_ReturnExpectedData()
+        {
+            //Arrange
+            var controller = GetController();
+            var model = new MatchUpdateModel();
+            model.IsDeletedAwayIcon = false;
+            model.IsDeletedHomeIcon = false;
+            var stream = new MemoryStream();
+            var header = new HeaderDictionary();
+            header.Add("Name", new string[1] { "Value" });
+            model.AwayIcon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            model.HomeIcon = new FormFile(new MemoryStream(), 0, stream.Length, "id_from_form", "test.png")
+            {
+                Headers = header,
+                ContentType = "application/pdf"
+            };
+            var cmd = fixture.Create<UpdateMatchCommand>();
+            var criteria = fixture.Create<GetMatchByIdCriteria>();
+            var expectedMatch = fixture.Create<Match>();
+            var expectedUpdateResult = fixture.Create<CommandResult>();
+            var expectedUploadResult = new CommandResult {  Message = "error code" };
+
+            matchService.GetMatchByIdAsync(Arg.Do<GetMatchByIdCriteria>(x => x = criteria)).Returns(expectedMatch);
+            matchService.UpdateMatchAsync(Arg.Do<UpdateMatchCommand>(x => x = cmd)).Returns(expectedUpdateResult);
+            fileService.UploadFileAsync(Arg.Do<IFormFile>(x => x = model.AwayIcon), Arg.Do<string>(x => x = UploadDir.MatchTeamUploadFolder)).Returns(expectedUploadResult);
+            //Act
+            var result = await controller.EditMatch(model);
+
+            //Assert
+            var jsonResult = Assert.IsType<JsonResult>(result);
+            Assert.Equal(expectedUpdateResult, jsonResult.Value);
+        }
+
+
+        #region Helpers
+        private MatchManagementController GetController()
+        {
+            leagueService = Substitute.For<ILeagueService>();
+            matchService = Substitute.For<IMatchService>();
+            fileService = Substitute.For<IFileService>();
+            var controller = new MatchManagementController(leagueService, matchService, fileService);
+
+            return controller;
+        }
+
+        #endregion Helpers
+    }
+}
