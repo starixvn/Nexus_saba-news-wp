@@ -227,38 +227,61 @@
                 PostId = post.First().ID,
                 Title = post.First().PostTitle,
                 PublishDate = post.First().PostDateGMT.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                Subjects = HandleSubjects(post.First().CategoriesSlug),
-                Content = post.First().Type == Constants.VideoPostType ? null : post.First().PostContent,
-                SabaVideoContent = post.First().Type == Constants.VideoPostType ? post.First().PostContent : null,
+                Subjects = post.First().CategoriesSlug != null ? HandleSubjects(post.First().CategoriesSlug) : null,
+                Content = CheckVideo(post.First().CategoriesSlug) ? null : post.First().PostContent,
+                SabaVideoContent = CheckVideo(post.First().CategoriesSlug) ? post.First().PostContent : null,
                 EditorId = post.First().EditorId,               
-                Tags = HandleTags(post.First().Tags),
+                Tags = post.First().Tags != null ? HandleTags(post.First().Tags) : null,
                 Category = post.First().Type == Constants.VideoPostType ? Constants.GetFourItems : Constants.GetThreeItems,
                 UrlSlug = configuration.GetValue<string>("BaseUrl") + post.First().PostName
             };
-            if (post.First().Type == Constants.VideoPostType)
-            {
-                result.Content = post.First().PostContent;
-            }
-            else
-            {
-                result.SabaVideoContent = post.First().PostContent;
-            }
             return result;
         }
 
-        private IList<Subjects> HandleSubjects(string categoriesSlug)
+        private static IList<Subjects> HandleSubjects(string categoriesSlug)
         {
             var subjects = new List<Subjects>();
             string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
             foreach(var item in categories)
             {
-                if(item == Constants.FootballSlug || 
-                    item == Constants.FootballSlug)
+                if(item == Constants.BasketballSlug || 
+                    item == Constants.BasketballVideoSlug)
                 {
-                    subjects.Add(new Subjects { Id = })
+                    subjects.Add(new Subjects { Id = 3, Name = "Basketball" });
+                }
+                else if (item == Constants.TennisSlug ||
+                    item == Constants.TennisVideoSlug)
+                {
+                    subjects.Add(new Subjects { Id = 81, Name = "Tennis" });
+                }
+                else if (item == Constants.FootballSlug ||
+                    item == Constants.VideoFootballSlug ||
+                    item == Constants.Euro2020VideoSlug ||
+                    item == Constants.VideoWorldCup2022Slug ||
+                    item == Constants.VideoGuessWorldCup2022Slug ||
+                    item == Constants.VideoHighlightWorldCup2022Slug)
+                {
+                    subjects.Add(new Subjects { Id = 2, Name = "Soccer" });
                 }
             }
-            
+            if(subjects.Count > 1)
+            {
+                subjects = new List<Subjects> { new Subjects { Id = 0, Name = "All" } };
+            }
+            return subjects;
+        }
+
+        private static bool CheckVideo(string categoriesSlug)
+        {
+            string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
+            foreach (var item in categories)
+            {
+                if (item.Contains("video"))
+                {
+                    return true;
+                }
+            }           
+            return false;
         }
 
         private static IList<Tags> HandleTags(string tags)

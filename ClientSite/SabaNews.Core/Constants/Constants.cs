@@ -9,6 +9,7 @@
         public const string NewPostSlug = "tin-the-thao";
         public const string VideoSlug = "video";
         public const string FootballSlug = "bong-da";
+        public const string VideoFootballSlug = "video-bong-da";
         public const string BasketballSlug = "bong-ro";
         public const string TennisSlug = "quan-vot";
         public const string GuessSlug = "nhan-dinh-bong-da";
@@ -23,6 +24,7 @@
         public const string CollectionSlug = "tong-hop";
         public const string MembershipEventSlug = "membership-event";
         public const string BasketballVideoSlug = "video-bong-ro";
+        public const string TennisVideoSlug = "quan-vot";
 
         public const string SingleNewsType = "single";
         public const string SingleVideoType = "single-video";
@@ -138,6 +140,10 @@
         public const string Euro2020MascotSlug = "linh-vat-qua-cac-vck-euro";
         public const string Euro2020RecordSlug = "nhung-ky-luc-dac-biet-trong-lich-su-euro";
         public const string Euro2020TopGoalScorer = "vua-pha-luoi-tai-cac-vck-euro";
+
+        public const string VideoWorldCup2022Slug = "video-world-cup-2022";
+        public const string VideoGuessWorldCup2022Slug = "video-du-doan-world-cup-2022";
+        public const string VideoHighlightWorldCup2022Slug = "video-highlights-world-cup-2022";
 
         public const string AdministratorRole = "administrator";
         public const string NormalRole = "normal";
