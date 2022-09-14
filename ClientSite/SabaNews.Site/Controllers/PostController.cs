@@ -191,6 +191,21 @@
             return Ok(posts);
         }
 
+        [HttpGet]
+        [Route("api/post-list")]
+        public async Task<IActionResult> GetData(GetDataViewModel getData)
+        {
+            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
+            return Ok(posts);
+        }
+
+        [HttpGet]
+        [Route("api/post-detail-content")]
+        public async Task<IActionResult> GetDetailContent(GetDataViewModel getData)
+        {
+            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
+            return Ok(posts);
+        }
 
         public string GetClientIP()
         {
