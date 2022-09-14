@@ -86,8 +86,6 @@
             return View(model);
         }
 
-        
-
         [HttpPost]
         public async Task<IActionResult> GetPollData(int questId, int themeId)
         {
@@ -113,7 +111,6 @@
             }
             return Json(result);
         }
-
 
         private static (string, string) GetCateInfo(string cateName, string cateSlug)
         {
@@ -192,19 +189,19 @@
         }
 
         [HttpGet]
-        [Route("api/post-list")]
+        [Route("post-list")]
         public async Task<IActionResult> GetData(GetDataViewModel getData)
         {
-            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
-            return Ok(posts);
+            var posts = await postService.GetPostlist(getData);
+            return Json(posts);
         }
 
         [HttpGet]
-        [Route("api/post-detail-content")]
+        [Route("post-detail-content")]
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getData)
         {
-            var posts = await postService.GetRecentPostsAsync(new GetRecentPostsParam { Start = Constants.FromFirstItem, End = Constants.GetFiveItems });
-            return Ok(posts);
+            var posts = await postService.GetPostDetailContent(getData);
+            return Json(posts);
         }
 
         public string GetClientIP()

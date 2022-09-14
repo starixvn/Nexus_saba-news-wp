@@ -16,6 +16,7 @@
     using SabaNews.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel.Posts;
     using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
@@ -207,6 +208,65 @@
             var result = await baseService.GetDataAsync<CategoryGeneral>(new GetCateParentsCriteria { Slug = slug });
             var cates = result.Reverse();
             return cates.ToList();
+        }
+
+        public async Task<IEnumerable<GetData>> GetPostlist(GetDataViewModel getData)
+        {
+            DateTime dateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
+            var result = await baseService.GetDataAsync<GetData>(new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject });
+            result.ToList().ForEach(x => x.FormatDate());
+            return result.ToList();
+        }
+
+        public async Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData)
+        {
+            var post = await baseService.GetDataAsync<Post>(new GetPostDetailContentCriteria { _postId = getData.PostId });
+            var result = new GetDetailContent
+            {
+                PostId = post.First().ID,
+                Title = post.First().PostTitle,
+                PublishDate = post.First().PostDateGMT.AddHours(8).ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                Subjects = HandleSubjects(post.First().CategoriesSlug),
+                Content = post.First().Type == Constants.VideoPostType ? null : post.First().PostContent,
+                SabaVideoContent = post.First().Type == Constants.VideoPostType ? post.First().PostContent : null,
+                EditorId = post.First().EditorId,               
+                Tags = HandleTags(post.First().Tags),
+                Category = post.First().Type == Constants.VideoPostType ? Constants.GetFourItems : Constants.GetThreeItems,
+                UrlSlug = configuration.GetValue<string>("BaseUrl") + post.First().PostName
+            };
+            if (post.First().Type == Constants.VideoPostType)
+            {
+                result.Content = post.First().PostContent;
+            }
+            else
+            {
+                result.SabaVideoContent = post.First().PostContent;
+            }
+            return result;
+        }
+
+        private IList<Subjects> HandleSubjects(string categoriesSlug)
+        {
+            var subjects = new List<Subjects>();
+            string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
+            foreach(var item in categories)
+            {
+                if(item == Constants.FootballSlug || 
+                    item == Constants.FootballSlug)
+                {
+                    subjects.Add(new Subjects { Id = })
+                }
+            }
+            
+        }
+
+        private static IList<Tags> HandleTags(string tags)
+        {
+            var result = new List<Tags>();
+            string[] tagsList = tags.Split(new string[] { "," }, StringSplitOptions.None);
+            tagsList.ToList().ForEach(x => result.Add(new Tags { Tag = x }));
+            return result;
         }
 
         private IEnumerable<Post> FormatData(IEnumerable<Post> posts)

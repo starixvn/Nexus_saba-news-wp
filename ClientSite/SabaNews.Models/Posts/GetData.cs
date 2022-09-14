@@ -1,12 +1,19 @@
-﻿namespace SabaNews.Models.Posts
+﻿using SabaNews.Livescore.Provider.API.Constants;
+using System;
+
+namespace SabaNews.Models.Posts
 {
     public class GetData
     {
         public int PostId { get; set; }
         public string Title { get; set; }
-        public string PublishDate { get; set; }
+        public string PublishDate{ get ; set; }
         public string Image { get; set; }
-        public int Timestamp { get; set; }
+        public int Timestamp { get => (int)(DateTime.Parse(PublishDate) - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds; }
         public int Category { get; set; }
+        public void FormatDate()
+        {
+            PublishDate = DateTime.Parse(PublishDate).ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+        }
     }
 }

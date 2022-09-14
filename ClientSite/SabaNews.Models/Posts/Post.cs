@@ -9,6 +9,8 @@
     public class Post
     {
         public int ID { get; set; }
+        public int EditorId { get; set; }
+        public string PostName { get; set; }
         public string PostTitle { get; set; }
         public string PostContent { get; set; }
         public string PostExcerpt { get; set; }

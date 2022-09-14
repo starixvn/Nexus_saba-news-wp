@@ -8,6 +8,7 @@
     using SabaNews.Models;
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
+    using SabaNews.Models.ViewModel.Posts;
 
     public interface IPostService
     {
@@ -50,6 +51,8 @@
         Task<IEnumerable<Post>> GetPostsByCateSlugs(GetPostsByCateSlugsCriteria criteria);
 
         Task<IEnumerable<Post>> GetPostsByCateSlugsPaging(GetPostsByCateSlugsPagingCriteria criteria);
+        Task<IEnumerable<GetData>> GetPostlist(GetDataViewModel getData);
+        Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData);
 
         Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);
     }
