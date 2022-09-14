@@ -44,7 +44,7 @@ export class AppContainer extends Component {
 
     getMatches = () => {
         const { league, matches } = this.props;
-        if (!matches) {
+        if (!matches || matches.length === 0) {
             return null;
         }
         let tmpMatches = matches;

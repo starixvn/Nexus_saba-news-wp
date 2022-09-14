@@ -1,10 +1,7 @@
 import React, { Fragment } from 'react';
 import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import Match from '../Match';
 import CommonFunctions from '@jsroot/common/common-functions';
-import DateTimeService from '@jsroot/common/dateTimeService';
-import Site from '@jsroot/common/site';
 
 describe('Match', () => {
     const defaultProps = {
@@ -19,6 +16,7 @@ describe('Match', () => {
     describe('getTeamStatus', () => {
         it('return as expected when match status != Finished', () => {
             // Arrange
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             const container = shallow(<Match {...defaultProps} />);
             const instance = container.instance();
 
@@ -40,6 +38,7 @@ describe('Match', () => {
                     awayTeamPenaltyScore: 0
                 }
             };
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             const container = shallow(<Match {...props} />);
             const instance = container.instance();
 
@@ -62,6 +61,7 @@ describe('Match', () => {
                     isSecondLeg: true
                 }
             };
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             const container = shallow(<Match {...props} />);
             const instance = container.instance();
 
@@ -82,6 +82,7 @@ describe('Match', () => {
                     isSecondLeg: false
                 }
             };
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             const container = shallow(<Match {...props} />);
             const instance = container.instance();
 
@@ -113,6 +114,7 @@ describe('Match', () => {
                 ctrlKey: false
             };
             window.open = jest.fn();
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('test team name vn');
             CommonFunctions.getMatchDetailPageUrl = jest.fn().mockReturnValue('url');
             const container = shallow(<Match {...defaultProps} />);
 
@@ -130,6 +132,7 @@ describe('Match', () => {
                 target: { className: '' },
                 ctrlKey: true
             };
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             CommonFunctions.getMatchDetailPageUrl = jest.fn().mockReturnValue('url');
             window.open = jest.fn();
             const container = shallow(<Match {...defaultProps} />);
@@ -169,6 +172,7 @@ describe('Match', () => {
             }
             CommonFunctions.isLiveMatch = jest.fn().mockReturnValue(false);
             CommonFunctions.getMatchResult = jest.fn().mockReturnValue(2);
+            CommonFunctions.getTeamNameVN = jest.fn().mockReturnValue('name');
             const container = shallow(<Match {...props} />);
             const instance = container.instance();
 

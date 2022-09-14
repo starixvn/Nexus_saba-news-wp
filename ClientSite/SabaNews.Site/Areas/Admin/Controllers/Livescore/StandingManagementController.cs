@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SabaNews.Core.Constants;
-    using SabaNews.Core.Models;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Services;
     using SabaNews.Livescore.Services.Criteria.League;
@@ -10,7 +9,6 @@
     using SabaNews.Models.Livescore.StandingManagement;
     using SabaNews.Services.Interfaces;
     using SabaNews.Site.Extensions;
-    using System;
     using System.Threading.Tasks;
 
     public class StandingManagementController : AdminController

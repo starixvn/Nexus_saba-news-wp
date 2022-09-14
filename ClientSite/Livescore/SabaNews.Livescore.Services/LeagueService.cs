@@ -346,10 +346,5 @@
             }
             return result;
         }
-
-        public async Task<CommandResult> UpdateStandingPositionAsync(UpdateStandingPositionCommand cmd)
-        {
-            return await baseService.ExecuteNonQueryAsync(cmd);
-        }
     }
 }

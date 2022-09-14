@@ -220,7 +220,7 @@ describe('AppContainer', () => {
 
         it('return correctly when stage < QuarterfinalsStage', () => {
             // Arrange
-            const matches = [{ matchId: 1, stage: { stageId: 0 } }, { matchId: 2, stage: { stageId: 0 } }];
+            const matches = [{ matchId: 1, status:0, stage: { stageId: 0 } }, { matchId: 2, status:0, stage: { stageId: 0 } }];
             const league = {
                 season: { endTime: '2022-08-19 05:00:00' },
                 currentStageId: 0
@@ -242,7 +242,7 @@ describe('AppContainer', () => {
 
         it('return correctly when stage >= 30539', () => {
             // Arrange
-            const matches = [{ matchId: 1, stage: { stageId: 30537 } }, { matchId: 2, stage: { stageId: 0 } }];
+            const matches = [{ matchId: 1, status: 0, stage: { stageId: 30537 } }, { matchId: 2, status:0 , stage: { stageId: 0 } }];
             const league = {
                 season: { endTime: '2022-08-19 05:00:00' },
                 currentStageId: 30540
@@ -259,7 +259,7 @@ describe('AppContainer', () => {
             const result = instance.getMatches(league);
 
             // Assert
-            expect(result).toEqual([{ matchId: 2, stage: { stageId: 0 } }]);
+            expect(result).toEqual([{ matchId: 2, status: 0, stage: { stageId: 0 } }]);
         });
     });
 
@@ -294,7 +294,7 @@ describe('AppContainer', () => {
 
         it('render correctly when matches has data', () => {
             // Arrange
-            const matches = [{ matchId: 1, stage: { stageId: 30537 } }, { matchId: 2, stage: { stageId: 0 } }];
+            const matches = [{ matchId: 1, status: 0, stage: { stageId: 30537 } }, { matchId: 2, status: 0, stage: { stageId: 0 } }];
             const league = {
                 season: { endTime: '2022-08-19 05:00:00' },
                 currentStageId: 30540

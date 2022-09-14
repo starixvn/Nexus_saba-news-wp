@@ -7,6 +7,7 @@
     using Fanex.Data.Repository;
     using Newtonsoft.Json;
     using NSubstitute;
+    using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
     using SabaNews.Livescore.Models.Lineup;
@@ -155,6 +156,30 @@
             var actual = await matchService.GetMatchBySeasonAsync(new GetMatchBySeasonCriteria());
             Assert.Equal(leagues.FirstOrDefault(), actual.Item1);
             Assert.Equal(floatMatches.Count(), actual.Item2.Count);
+        }
+
+        [Fact]
+        public async Task GetMatchBySeasonFilterAsync_WhenCalled_ReturnExpectedResult()
+        {
+            var matches = fixture.Create<IList<Match>>();
+            matchRepository.GetMatchBySeasonFilterAsync(Arg.Any<ICriteria>()).Returns(matches);
+
+            var actual = await matchService.GetMatchBySeasonFilterAsync(new GetMatchBySeasonFilterCriteria());
+            Assert.Equal(matches, actual);
+        }
+
+        [Fact]
+        public async Task UpdateMatchAsync_WhenCalled_ReturnExpectedResult()
+        {
+            //Arrange
+            var fixture = new Fixture();
+            var model = fixture.Create<UpdateMatchCommand>();
+            var expected = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateMatchCommand>(x => model = x)).Returns(expected);
+            //Act
+            var actual = await matchService.UpdateMatchAsync(model);
+            //Assert
+            Assert.Equal(expected, actual);
         }
     }
 }

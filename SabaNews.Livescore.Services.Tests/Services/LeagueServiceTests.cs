@@ -10,6 +10,7 @@
     using SabaNews.Core.Models;
     using SabaNews.Core.Services;
     using SabaNews.Livescore.Models.League;
+    using SabaNews.Livescore.Models.Match;
     using SabaNews.Livescore.Models.Team;
     using SabaNews.Livescore.Services.Criteria.League;
     using Xunit;
@@ -332,6 +333,108 @@
             var actual = await service.GetLeagueByIdAsync(league.LeagueId);
             //Assert
             Assert.Equal(league, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStanding_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetLeagueSeasonStandingCriteria>();
+            var standings = fixture.Create<IList<SeasonStandings>>();
+            baseService.GetDataAsync<SeasonStandings>(Arg.Any<GetLeagueSeasonStandingCriteria>()).Returns(standings);
+            //Act
+            var actual = await service.GetLeagueSeasonStanding(criteria);
+            //Assert
+            Assert.Equal(standings, actual);
+        }
+
+        [Fact]
+        public async Task GetSeasonByLeagueIdAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetSeasonByLeagueIdCriteria>();
+            var expectedData = fixture.Create<IList<Season>>();
+            baseService.GetDataAsync<Season>(Arg.Any<GetSeasonByLeagueIdCriteria>()).Returns(expectedData);
+            //Act
+            var actual = await service.GetSeasonByLeagueIdAsync(1);
+            //Assert
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task GetLeagueSeasonStandingDetailAsync_WhenCalled_ReturnExpectedData()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var criteria = fixture.Create<GetLeagueSeasonStandingDetailCriteria>();
+            var expectedData = fixture.Create<SeasonStandings>();
+            baseService.GetDataEntityAsync<SeasonStandings>(Arg.Any<GetLeagueSeasonStandingDetailCriteria>()).Returns(expectedData);
+            //Act
+            var actual = await service.GetLeagueSeasonStandingDetailAsync(criteria);
+            //Assert
+            Assert.Equal(expectedData, actual);
+        }
+
+        [Fact]
+        public async Task UpdateStandingAsync_WhenNotUpdateStandingPosition_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = new StandingUpdateModel
+            {
+                SeasonId = 1,
+                StageId = 1,
+                TeamId = 1,
+                TeamNameVN = "name",
+                TeamIconVN = "icon",
+                Position = 1,
+                IsUpdatePosition = false
+            };
+            var updateCmd = fixture.Create<UpdateStandingCommand>();
+            var league = fixture.Create<League>();
+            var leagues = fixture.Create<IList<League>>();
+            var expected = new CommandResult { Code = 1, Message = "msg" };
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingCommand>(x => updateCmd = x)).Returns(expected);
+            //Act
+            var actual = await service.UpdateStandingAsync(model);
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public async Task UpdateStandingAsync_WhenUpdateStandingPosition_ReturnExpectedResult()
+        {
+            //Arrange
+            var service = GetService();
+            var fixture = new Fixture();
+            var model = new StandingUpdateModel
+            {
+                SeasonId = 1,
+                StageId = 1,
+                TeamId = 1,
+                TeamNameVN = "name",
+                TeamIconVN = "icon",
+                Position = 1,
+                IsUpdatePosition = true
+            };
+            var updateCmd = fixture.Create<UpdateStandingCommand>();
+            var updatePositionCmd = fixture.Create<UpdateStandingPositionCommand>();
+            var league = fixture.Create<League>();
+            var leagues = fixture.Create<IList<League>>();
+            var expected = new CommandResult { Message = "msg" };
+            var expectedUpdatePosition = fixture.Create<CommandResult>();
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingCommand>(x => updateCmd = x)).Returns(expected);
+            baseService.ExecuteNonQueryAsync(Arg.Do<UpdateStandingPositionCommand>(x => updatePositionCmd = x)).Returns(expectedUpdatePosition);
+            //Act
+            var actual = await service.UpdateStandingAsync(model);
+            //Assert
+            Assert.Equal(expectedUpdatePosition, actual);
         }
 
         [Fact]
