@@ -49,6 +49,11 @@
         public const string BasketballPostType = "sport-basketball";
         public const string TennisPostType = "sport-tennis-2";
 
+        public const int IdBasketballEN = 3;
+        public const int IdTennisEN = 81;
+        public const int IdSoccerEN = 2;
+        public const int IdAll = 0;
+
         public const int FromFirstItem = 0;
         public const int GetFirstItem = 1;
         public const int GetThreeItems = 3;

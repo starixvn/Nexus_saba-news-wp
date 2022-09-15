@@ -197,7 +197,7 @@
         {
             var token = Request.Headers["Token"];
             IList<GetData> posts = new List<GetData>();
-            if (getData.IsValid(token))
+            if (GetDataViewModel.IsValid(token))
             {
                 posts = await postService.GetPostlist(getData);
             }
@@ -209,7 +209,7 @@
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getData)
         {
             var token = Request.Headers["Token"];
-            if (getData.IsValid(token)) 
+            if (GetDataViewModel.IsValid(token)) 
             {
                 var posts = await postService.GetPostDetailContent(getData);
                 return Json(posts);

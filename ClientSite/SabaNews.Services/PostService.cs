@@ -215,7 +215,8 @@
         {
             DateTime dateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
-            var result = await baseService.GetDataAsync<GetData>(new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject });
+            var criteria = new GetPostlistCriteria { _ToDate = dateTime, _Category = getData.Category, _Subject = getData.Subject };
+            var result = await baseService.GetDataAsync<GetData>(criteria);
             result.ToList().ForEach(x => x.FormatDate());
             return result.ToList();
         }
@@ -231,7 +232,7 @@
                 Subjects = post.First().CategoriesSlug != null ? HandleSubjects(post.First().CategoriesSlug) : null,
                 Content = CheckVideo(post.First().CategoriesSlug) ? null : post.First().PostContent,
                 SabaVideoContent = CheckVideo(post.First().CategoriesSlug) ? post.First().PostContent : null,
-                EditorId = post.First().EditorId,               
+                EditorId = post.First().EditorId,
                 Tags = post.First().Tags != null ? HandleTags(post.First().Tags) : null,
                 Category = CheckVideo(post.First().CategoriesSlug) ? Constants.GetFourItems : Constants.GetThreeItems,
                 UrlSlug = configuration.GetValue<string>("BaseUrl") + post.First().PostName
@@ -242,39 +243,48 @@
         private static IList<Subjects> HandleSubjects(string categoriesSlug)
         {
             var subjects = new List<Subjects>();
-            string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
+            string[] categories = categoriesSlug.Split(new []{ "," }, StringSplitOptions.None);
             foreach(var item in categories)
             {
                 if(item == Constants.BasketballSlug || 
                     item == Constants.BasketballVideoSlug)
                 {
-                    subjects.Add(new Subjects { Id = 3, Name = ViewResources.BasketballEN });
+                    subjects.Add(new Subjects { Id = Constants.IdBasketballEN, Name = ViewResources.BasketballEN });
                 }
                 else if (item == Constants.TennisSlug ||
                     item == Constants.TennisVideoSlug)
                 {
-                    subjects.Add(new Subjects { Id = 81, Name = ViewResources.TennisEN });
+                    subjects.Add(new Subjects { Id = Constants.IdTennisEN, Name = ViewResources.TennisEN });
                 }
-                else if (item == Constants.FootballSlug ||
-                    item == Constants.VideoFootballSlug ||
-                    item == Constants.Euro2020VideoSlug ||
-                    item == Constants.VideoWorldCup2022Slug ||
-                    item == Constants.VideoGuessWorldCup2022Slug ||
-                    item == Constants.VideoHighlightWorldCup2022Slug)
+                else if (CheckSoccer(item))
                 {
-                    subjects.Add(new Subjects { Id = 2, Name = ViewResources.SoccerEN });
+                    subjects.Add(new Subjects { Id = Constants.IdSoccerEN, Name = ViewResources.SoccerEN });
                 }
             }
             if(subjects.Count > 1)
             {
-                subjects = new List<Subjects> { new Subjects { Id = 0, Name = ViewResources.All} };
+                subjects = new List<Subjects> { new Subjects { Id = Constants.IdAll, Name = ViewResources.All} };
             }
             return subjects;
         }
 
+        private static bool CheckSoccer(string category)
+        {
+            if(category == Constants.FootballSlug ||
+                    category == Constants.VideoFootballSlug ||
+                    category == Constants.Euro2020VideoSlug ||
+                    category == Constants.VideoWorldCup2022Slug ||
+                    category == Constants.VideoGuessWorldCup2022Slug ||
+                    category == Constants.VideoHighlightWorldCup2022Slug)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private static bool CheckVideo(string categoriesSlug)
         {
-            string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
+            string[] categories = categoriesSlug.Split(new []{ "," }, StringSplitOptions.None);
             foreach (var item in categories)
             {
                 if (item.Contains(Constants.VideoSlug))
@@ -288,7 +298,7 @@
         private static IList<Tags> HandleTags(string tags)
         {
             var result = new List<Tags>();
-            string[] tagsList = tags.Split(new string[] { "," }, StringSplitOptions.None);
+            string[] tagsList = tags.Split(new []{ "," }, StringSplitOptions.None);
             tagsList.ToList().ForEach(x => result.Add(new Tags { Tag = x }));
             return result;
         }

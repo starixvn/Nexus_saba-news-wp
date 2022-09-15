@@ -10,6 +10,6 @@ namespace SabaNews.Models.ViewModel.Posts
         public int Subject { get; set; }
         public int LangKey { get; set; }
 
-        public bool IsValid(string token) => token != null && token.Equals(Constants.TokenAPIGetData);
+        public static bool IsValid(string token) => token != null && token.Equals(Constants.TokenAPIGetData);
     }
 }
