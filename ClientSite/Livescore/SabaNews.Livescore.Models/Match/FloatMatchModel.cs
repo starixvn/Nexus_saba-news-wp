@@ -13,12 +13,14 @@
         public string HomeTeamNameEN { get; set; }
         public string HomeTeamFullNameEN { get; set; }
         public string HomeTeamIcon { get; set; }
+        public string HomeTeamIconVN { get; set; }
 
         public long AwayTeamId { get; set; }
         public string AwayTeamNameVN { get; set; }
         public string AwayTeamNameEN { get; set; }
         public string AwayTeamFullNameEN { get; set; }
         public string AwayTeamIcon { get; set; }
+        public string AwayTeamIconVN { get; set; }
 
         public long? StageId { get; set; }
         public string StageNameEN { get; set; }

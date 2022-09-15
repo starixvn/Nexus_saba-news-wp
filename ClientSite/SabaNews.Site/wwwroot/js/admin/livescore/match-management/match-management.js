@@ -3,6 +3,7 @@
     var leagueId = window.leagueId;
     var seasonId = window.seasonId;
     var search = '';
+    var dateSort = 'asc';
     function GetSeason(leagueId) {
         $.ajax({
             url: "/Admin/MatchManagement/GetSeason",
@@ -13,7 +14,7 @@
             }
         });
     }
-    function GetDataGrid(dateSort) {
+    function GetDataGrid() {
         $.ajax({
             url: "/Admin/MatchManagement/GetMatchGrid",
             type: 'POST',
@@ -155,16 +156,16 @@
     function initPaging() {
         $('.paging').on('click', function () {
             page = $(this).data('page');
-            var dateSort = $("#date-sort").attr("sort-type");
-            GetDataGrid(dateSort);
+            dateSort = $("#date-sort").attr("sort-type");
+            GetDataGrid();
 
         });
 
         $('#page-size').on('change', function () {
             pageSize = $(this).val();
             page = 1;
-            var dateSort = $("#date-sort").attr("sort-type");
-            GetDataGrid(dateSort);
+            dateSort = $("#date-sort").attr("sort-type");
+            GetDataGrid();
         });
     }
 
@@ -172,12 +173,12 @@
         $("#date-sort").on("click", function () {
             var dateType = $(this).attr("sort-type");
             if (!dateType) {
-                dateType = "desc";
+                dateSort = "desc";
                 GetDataGrid(dateType);
                 return;
             }
-            dateType = dateType === "desc" ? "asc" : "desc";
-            GetDataGrid(dateType);
+            dateSort = dateType === "desc" ? "asc" : "desc";
+            GetDataGrid();
         });
     }
 

@@ -118,7 +118,7 @@ export class HeadToHead extends Component {
                                         <div className="soccer-match-team">
                                             <div className="group-team">
                                                 <div className="soccer-team home-team">
-                                                    <TeamIcon src={match.homeTeam.icon} className="soccer-team-logo" />
+                                                    <TeamIcon src={CommonFunctions.getTeamIcon(match.homeTeam)} className="soccer-team-logo" />
                                                     <div className={`soccer-team-name ${matchStatus.homeWinclass}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(true, match)}
@@ -129,7 +129,7 @@ export class HeadToHead extends Component {
 
                                                 </div>
                                                 <div className="soccer-team away-team">
-                                                    <TeamIcon src={match.awayTeam.icon} className="soccer-team-logo" />
+                                                    <TeamIcon src={CommonFunctions.getTeamIcon(match.awayTeam)} className="soccer-team-logo" />
                                                     <div className={`soccer-team-name ${matchStatus.awayWinClass}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                                     <ul className="soccer-team-status">
                                                         {this.getTeamStatus(false, match)}

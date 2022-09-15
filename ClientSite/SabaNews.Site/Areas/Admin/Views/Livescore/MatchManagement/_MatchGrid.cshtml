@@ -7,11 +7,11 @@
         <thead>
             <tr>
                 <th width="2%">#</th>
+                <th width="13%">@ViewResources.StartTime <i class="icon-sort-admin" id="date-sort" sort-type="@Model.DateSort"></i></th>
                 <th width="10%">@ViewResources.HomeLogo</th>
                 <th width="10%">@ViewResources.HomeName</th>
                 <th width="10%">@ViewResources.AwayLogo</th>
                 <th width="10%">@ViewResources.AwayName</th>
-                <th width="13%">@ViewResources.StartTime <i class="icon-sort-admin" id="date-sort" sort-type="@Model.DateSort"></i></th>
                 <th width="10%">@ViewResources.HomeIconVN</th>
                 <th width="10%">@ViewResources.HomeNameVN</th>
                 <th width="10%">@ViewResources.AwayIconVN</th>
@@ -26,11 +26,11 @@
                     count++;
                         <tr>
                             <td class="text-center">@count</td>
+                            <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
                             <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(match.HomeTeam.Icon)" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamNameEN(match.HomeTeam)</td>
                             <td class="text-center"><img src="@LivescoreHelper.GetTeamIcon(match.AwayTeam.Icon)" width="100"></td>
                             <td class="text-center">@LivescoreHelper.GetTeamNameEN(match.AwayTeam)</td>
-                            <td class="text-center">@DateTimeUtilize.ChangeTimeZoneToClient(match.StartTime)</td>
                             <td class="text-center">
                                 @if (!string.IsNullOrEmpty(match.HomeTeam.IconVN))
                                 {

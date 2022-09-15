@@ -8,6 +8,22 @@
                     <tbody>
                         <tr>
                             <td width="30%">
+                                <label>@ViewResources.HomeName</label>
+                            </td>
+                            <td width="70%">
+                                <h4>@(!string.IsNullOrEmpty(Model.HomeTeam.TeamNameEN) ? Model.HomeTeam.TeamNameEN : Model.HomeTeam.TeamFullNameEN)</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
+                                <label>@ViewResources.AwayName</label>
+                            </td>
+                            <td width="70%">
+                                <h4>@(!string.IsNullOrEmpty(Model.AwayTeam.TeamNameEN) ? Model.AwayTeam.TeamNameEN : Model.AwayTeam.TeamFullNameEN)</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
                                 <label>@ViewResources.HomeNameVN</label>
                             </td>
                             <td width="70%">
@@ -57,7 +73,7 @@
                                 }
                                 <div class="input-upload">
                                     <input type="file" class="input-file photo" id="editAwayIcon">
-                                    <div class="txt-img"  style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
+                                    <div class="txt-img" style="display:@hide"><i class="icon-upload"></i> <span>@ViewResources.UploadNewImage</span></div>
                                     <div class="img-upload">
                                         <img class="review_photo" src="@Model.AwayTeam.IconVN" alt="review photo" width="150" style="display:@show" />
                                         <p class="error photo-error" style="display:none"></p>

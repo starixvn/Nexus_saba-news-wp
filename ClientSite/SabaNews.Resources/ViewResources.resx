@@ -1013,4 +1013,7 @@
   <data name="String1" xml:space="preserve">
     <value>Team Name VN</value>
   </data>
+  <data name="TeamName" xml:space="preserve">
+    <value>Team Name</value>
+  </data>
 </root>

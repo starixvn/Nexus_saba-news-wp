@@ -86,10 +86,6 @@ export default class CommonFunctions {
     }
 
     static getTeamName(team) {
-        return team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
-    }
-
-    static getTeamNameVN(team) {
         let teamName = '';
         if (team.teamNameVN) {
             teamName = team.teamNameVN;
@@ -97,6 +93,10 @@ export default class CommonFunctions {
             teamName = team.teamNameEN ? team.teamNameEN : team.teamFullNameEN;
         }
         return teamName;
+    }
+
+    static getTeamIcon(team) {
+        return team.iconVN ? team.iconVN : team.icon;
     }
 
     static isLiveMatch(statusId) {

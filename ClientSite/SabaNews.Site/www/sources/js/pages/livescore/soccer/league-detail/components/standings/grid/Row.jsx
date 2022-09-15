@@ -15,7 +15,7 @@ const Row = ({ team, isMobile }) => {
             </div>
             <div className="table-custom-cell cell-participant">
                 <div className="soccer-team">
-                    <div className="soccer-team-logo"><TeamIcon className="soccer-team-logo" src={team.icon} /></div>
+                    <div className="soccer-team-logo"><TeamIcon className="soccer-team-logo" src={CommonFunctions.getTeamIcon(team)} /></div>
                     <div className="soccer-team-name">{CommonFunctions.getTeamName(team)}</div>
                 </div>
             </div>

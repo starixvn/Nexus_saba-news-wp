@@ -92,7 +92,7 @@ export default class Item extends PureComponent {
                                         {this.getTeamStatus(match, true)}
                                     </ul>
                                     <TeamScore match={match} isHomeTeam />
-                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.homeTeam)}</div>
+                                    <div className={`soccer-team-name ${matchResult === MatchResult.Win ? 'win': ''}`}>{CommonFunctions.getTeamName(match.homeTeam)}</div>
                                     <TeamIcon className="soccer-team-logo" src={match.homeTeam.icon} />
                                 </div>
 
@@ -100,7 +100,7 @@ export default class Item extends PureComponent {
 
                                 <div className="soccer-team away-team">
                                     <TeamIcon className="soccer-team-logo" src={match.awayTeam.icon} />
-                                    <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamNameVN(match.awayTeam)}</div>
+                                    <div className={`soccer-team-name ${matchResult === MatchResult.Lose ? 'win': ''}`}>{CommonFunctions.getTeamName(match.awayTeam)}</div>
                                     <ul className="soccer-team-status">
                                         {this.getTeamStatus(match, false)}
                                     </ul>

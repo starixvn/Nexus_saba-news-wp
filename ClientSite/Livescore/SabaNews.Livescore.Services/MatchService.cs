@@ -81,7 +81,8 @@
                         TeamNameEN = match.HomeTeamNameEN,
                         TeamFullNameEN = match.HomeTeamFullNameEN,
                         TeamNameVN = match.HomeTeamNameVN,
-                        Icon = match.HomeTeamIcon
+                        Icon = match.HomeTeamIcon,
+                        IconVN = match.HomeTeamIconVN
                     },
                     AwayTeam = new Team
                     {
@@ -89,7 +90,8 @@
                         TeamNameEN = match.AwayTeamNameEN,
                         TeamFullNameEN = match.AwayTeamFullNameEN,
                         TeamNameVN = match.AwayTeamNameVN,
-                        Icon = match.AwayTeamIcon
+                        Icon = match.AwayTeamIcon,
+                        IconVN = match.AwayTeamIconVN
                     },
                     Stage = stage,
                     IsSecondLeg = match.IsSecondLeg

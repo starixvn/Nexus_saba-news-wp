@@ -8,6 +8,14 @@
                     <tbody>
                         <tr>
                             <td width="30%">
+                                <label>@ViewResources.TeamName</label>
+                            </td>
+                            <td width="70%">
+                                <h4>@(!string.IsNullOrEmpty(Model.TeamNameEN) ? Model.TeamNameEN : Model.TeamFullNameEN)</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="30%">
                                 <label>@ViewResources.Position</label>
                             </td>
                             <td width="70%">

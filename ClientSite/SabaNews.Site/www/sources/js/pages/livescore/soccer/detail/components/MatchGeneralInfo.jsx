@@ -260,7 +260,7 @@ export default class MatchGeneralInfo extends PureComponent {
                                     {CommonFunctions.getTeamName(generalInfo.homeTeam)}
                                 </li>
                                 <li className="team-logo">
-                                    <TeamIcon src={generalInfo.homeTeam.icon} className="duel-participant-home-wrapper-logo" />
+                                    <TeamIcon src={CommonFunctions.getTeamIcon(generalInfo.homeTeam)} className="duel-participant-home-wrapper-logo" />
                                 </li>
                             </ul>
                         </div>
@@ -268,7 +268,7 @@ export default class MatchGeneralInfo extends PureComponent {
                         <div className="column column-right away-team">
                             <ul className="team">
                                 <li className="team-logo">
-                                    <TeamIcon src={generalInfo.awayTeam.icon} />
+                                    <TeamIcon src={CommonFunctions.getTeamIcon(generalInfo.awayTeam)} />
                                 </li>
                                 <li className="team-name">{CommonFunctions.getTeamName(generalInfo.awayTeam)}</li>
                             </ul>
