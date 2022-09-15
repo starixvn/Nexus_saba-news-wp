@@ -31,6 +31,7 @@ CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_Incident_Sync`(
                             "ReasonType": 1
                         }]
         Revisions: - 20220328@Oliver: init
+		Revisions: - 20220915@Hank: fix duplicate player name
     */
 )
 BEGIN
