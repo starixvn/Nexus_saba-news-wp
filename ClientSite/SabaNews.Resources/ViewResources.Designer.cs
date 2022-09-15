@@ -304,6 +304,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Basketball.
+        /// </summary>
+        public static string BasketballEN {
+            get {
+                return ResourceManager.GetString("BasketballEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thay đổi.
         /// </summary>
         public static string Change {
@@ -2005,6 +2014,15 @@ namespace SabaNews.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Soccer.
+        /// </summary>
+        public static string SoccerEN {
+            get {
+                return ResourceManager.GetString("SoccerEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sân vận động.
         /// </summary>
         public static string Stadium {
@@ -2100,6 +2118,15 @@ namespace SabaNews.Resources {
         public static string Tennis {
             get {
                 return ResourceManager.GetString("Tennis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tennis.
+        /// </summary>
+        public static string TennisEN {
+            get {
+                return ResourceManager.GetString("TennisEN", resourceCulture);
             }
         }
         

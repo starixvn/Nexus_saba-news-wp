@@ -51,7 +51,7 @@
         Task<IEnumerable<Post>> GetPostsByCateSlugs(GetPostsByCateSlugsCriteria criteria);
 
         Task<IEnumerable<Post>> GetPostsByCateSlugsPaging(GetPostsByCateSlugsPagingCriteria criteria);
-        Task<IEnumerable<GetData>> GetPostlist(GetDataViewModel getData);
+        Task<IList<GetData>> GetPostlist(GetDataViewModel getData);
         Task<GetDetailContent> GetPostDetailContent(GetDataViewModel getData);
 
         Task<IList<CategoryGeneral>> GetCateParentsAsync(string slug);

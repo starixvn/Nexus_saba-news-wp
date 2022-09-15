@@ -1,8 +1,11 @@
 ﻿namespace SabaNews.Site.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SabaNews.Core.Constants;
@@ -192,7 +195,12 @@
         [Route("post-list")]
         public async Task<IActionResult> GetData(GetDataViewModel getData)
         {
-            var posts = await postService.GetPostlist(getData);
+            var token = Request.Headers["Token"];
+            IList<GetData> posts = new List<GetData>();
+            if (getData.IsValid(token))
+            {
+                posts = await postService.GetPostlist(getData);
+            }
             return Json(posts);
         }
 
@@ -200,8 +208,13 @@
         [Route("post-detail-content")]
         public async Task<IActionResult> GetDetailContent(GetDataViewModel getData)
         {
-            var posts = await postService.GetPostDetailContent(getData);
-            return Json(posts);
+            var token = Request.Headers["Token"];
+            if (getData.IsValid(token)) 
+            {
+                var posts = await postService.GetPostDetailContent(getData);
+                return Json(posts);
+            }
+            return Ok();
         }
 
         public string GetClientIP()

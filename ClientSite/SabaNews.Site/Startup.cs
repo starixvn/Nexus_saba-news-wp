@@ -30,6 +30,7 @@
     using SabaNews.Site.Hubs;
     using Sentry;
     using StackExchange.Redis;
+    using Newtonsoft.Json.Serialization;
 
     public class Startup
     {
@@ -51,7 +52,7 @@
                          .Where(x => !string.IsNullOrWhiteSpace(x.GetValue<string>("Name")))
                          .ToDictionary(x => x.GetValue<string>("Name"),
                              y => new ConnectionConfiguration(y.GetValue<string>("Name"), y.GetValue<string>("ConnectionString"), y.GetValue<string>("ProviderName")));
-
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             DbSettingProviderManager
                .StartNewSession()
                .Use(connections)

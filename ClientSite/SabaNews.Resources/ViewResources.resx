@@ -915,4 +915,13 @@
   <data name="LeagueId" xml:space="preserve">
     <value>League ID</value>
   </data>
+  <data name="BasketballEN" xml:space="preserve">
+    <value>Basketball</value>
+  </data>
+  <data name="SoccerEN" xml:space="preserve">
+    <value>Soccer</value>
+  </data>
+  <data name="TennisEN" xml:space="preserve">
+    <value>Tennis</value>
+  </data>
 </root>

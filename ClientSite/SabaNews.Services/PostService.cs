@@ -17,6 +17,7 @@
     using SabaNews.Models.Categories;
     using SabaNews.Models.Posts;
     using SabaNews.Models.ViewModel.Posts;
+    using SabaNews.Resources;
     using SabaNews.Services.Interfaces;
 
     public class PostService : IPostService
@@ -210,7 +211,7 @@
             return cates.ToList();
         }
 
-        public async Task<IEnumerable<GetData>> GetPostlist(GetDataViewModel getData)
+        public async Task<IList<GetData>> GetPostlist(GetDataViewModel getData)
         {
             DateTime dateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dateTime = dateTime.AddSeconds(getData.LastTimestamp).ToLocalTime();
@@ -232,7 +233,7 @@
                 SabaVideoContent = CheckVideo(post.First().CategoriesSlug) ? post.First().PostContent : null,
                 EditorId = post.First().EditorId,               
                 Tags = post.First().Tags != null ? HandleTags(post.First().Tags) : null,
-                Category = post.First().Type == Constants.VideoPostType ? Constants.GetFourItems : Constants.GetThreeItems,
+                Category = CheckVideo(post.First().CategoriesSlug) ? Constants.GetFourItems : Constants.GetThreeItems,
                 UrlSlug = configuration.GetValue<string>("BaseUrl") + post.First().PostName
             };
             return result;
@@ -247,12 +248,12 @@
                 if(item == Constants.BasketballSlug || 
                     item == Constants.BasketballVideoSlug)
                 {
-                    subjects.Add(new Subjects { Id = 3, Name = "Basketball" });
+                    subjects.Add(new Subjects { Id = 3, Name = ViewResources.BasketballEN });
                 }
                 else if (item == Constants.TennisSlug ||
                     item == Constants.TennisVideoSlug)
                 {
-                    subjects.Add(new Subjects { Id = 81, Name = "Tennis" });
+                    subjects.Add(new Subjects { Id = 81, Name = ViewResources.TennisEN });
                 }
                 else if (item == Constants.FootballSlug ||
                     item == Constants.VideoFootballSlug ||
@@ -261,12 +262,12 @@
                     item == Constants.VideoGuessWorldCup2022Slug ||
                     item == Constants.VideoHighlightWorldCup2022Slug)
                 {
-                    subjects.Add(new Subjects { Id = 2, Name = "Soccer" });
+                    subjects.Add(new Subjects { Id = 2, Name = ViewResources.SoccerEN });
                 }
             }
             if(subjects.Count > 1)
             {
-                subjects = new List<Subjects> { new Subjects { Id = 0, Name = "All" } };
+                subjects = new List<Subjects> { new Subjects { Id = 0, Name = ViewResources.All} };
             }
             return subjects;
         }
@@ -276,7 +277,7 @@
             string[] categories = categoriesSlug.Split(new string[] { "," }, StringSplitOptions.None);
             foreach (var item in categories)
             {
-                if (item.Contains("video"))
+                if (item.Contains(Constants.VideoSlug))
                 {
                     return true;
                 }
