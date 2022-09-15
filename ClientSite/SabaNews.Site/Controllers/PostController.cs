@@ -193,25 +193,25 @@
 
         [HttpGet]
         [Route("post-list")]
-        public async Task<IActionResult> GetData(GetDataViewModel getData)
+        public async Task<IActionResult> GetData(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
             IList<GetData> posts = new List<GetData>();
             if (GetDataViewModel.IsValid(token))
             {
-                posts = await postService.GetPostlist(getData);
+                posts = await postService.GetPostlist(getDataView);
             }
             return Json(posts);
         }
 
         [HttpGet]
         [Route("post-detail-content")]
-        public async Task<IActionResult> GetDetailContent(GetDataViewModel getData)
+        public async Task<IActionResult> GetDetailContent(GetDataViewModel getDataView)
         {
             var token = Request.Headers["Token"];
             if (GetDataViewModel.IsValid(token)) 
             {
-                var posts = await postService.GetPostDetailContent(getData);
+                var posts = await postService.GetPostDetailContent(getDataView);
                 return Json(posts);
             }
             return Ok();
