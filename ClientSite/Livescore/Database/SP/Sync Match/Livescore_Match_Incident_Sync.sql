@@ -2,7 +2,7 @@
 DROP PROCEDURE IF EXISTS Livescore_Match_Incident_Sync;
 DELIMITER //
 
-CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Incident_Sync(
+CREATE DEFINER=`sabasports`@`%` PROCEDURE `Livescore_Match_Incident_Sync`(
     IN matchId BIGINT
     ,IN incidentJson JSON
     ,OUT errCode SMALLINT
@@ -33,7 +33,6 @@ CREATE DEFINER = 'sabasports'@'%' PROCEDURE Livescore_Match_Incident_Sync(
         Revisions: - 20220328@Oliver: init
     */
 )
-SQL SECURITY DEFINER
 BEGIN
  # Variables
     SET errCode=0, errMsg='';
@@ -83,25 +82,29 @@ BEGIN
             ti.HomeScore,
             ti.AwayScore,
             ti.PlayerId,
-            (CASE
+            (SELECT 
+				(CASE
                 WHEN IFNULL(p.NameEN, '') <> '' THEN p.NameEN
                 ELSE IFNULL(p.FullNameEN, '')
-                END) AS PlayerName,
+                END) FROM livescore_player p WHERE ti.PlayerId = p.PlayerId AND p.TeamId > 0 LIMIT 0,1) as PlayerName,
             ti.AssistId,
-            (CASE
+            (SELECT 
+				(CASE
                 WHEN IFNULL(a.NameEN, '') <> '' THEN a.NameEN
                 ELSE IFNULL(a.FullNameEN, '')
-                END) AS AssistPlayerName,
+                END) FROM livescore_player a WHERE ti.AssistId = a.PlayerId AND a.TeamId > 0 LIMIT 0,1) AS AssistPlayerName,
             ti.InPlayerId,
-            (CASE
+            (SELECT 
+				(CASE
                 WHEN IFNULL(i.NameEN, '') <> '' THEN i.NameEN
                 ELSE IFNULL(i.FullNameEN, '')
-                END) AS InPlayerName,
+                END) FROM livescore_player i WHERE ti.InPlayerId = i.PlayerId AND i.TeamId > 0 LIMIT 0,1) AS InPlayerName,
             ti.OutPlayerId,
-            (CASE
+            (SELECT 
+				(CASE
                 WHEN IFNULL(o.NameEN, '') <> '' THEN o.NameEN
                 ELSE IFNULL(o.FullNameEN, '')
-                END) AS OutPlayerName,
+                END) FROM livescore_player o WHERE ti.OutPlayerId = o.PlayerId AND o.TeamId > 0 LIMIT 0,1) AS OutPlayerName,
             ti.VarReason,
             ti.VarResult,
             ti.ReasonType
@@ -130,14 +133,11 @@ BEGIN
                 VarResult SMALLINT PATH "$.VarResult",
                 ReasonType SMALLINT PATH "$.ReasonType"
             )
-        ) AS ti
-    LEFT JOIN livescore_player p ON ti.PlayerId = p.PlayerId AND p.TeamId > 0
-    LEFT JOIN livescore_player a ON ti.AssistId = a.PlayerId AND a.TeamId > 0
-    LEFT JOIN livescore_player i ON ti.InPlayerId = i.PlayerId AND i.TeamId > 0
-    LEFT JOIN livescore_player o ON ti.OutPlayerId = o.PlayerId AND o.TeamId > 0;
+        ) AS ti;
 
     DELETE FROM livescore_match_incident lmi
     WHERE lmi.MatchId = matchId;
+    
 
     INSERT INTO livescore_match_incident(
         MatchId,
@@ -179,7 +179,7 @@ BEGIN
     FROM tmp_incident ti
     ORDER BY ti.Time;
         
-END;
+END
 
 //
 DELIMITER ;
